@@ -7,4 +7,4 @@ css_DATA =								\
 
 EXTRA_DIST = 								\
 	$(css_DATA)							\
-	terminal-nochunk.xsl
+	terminal.xsl

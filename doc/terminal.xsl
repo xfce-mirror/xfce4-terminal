@@ -4,9 +4,7 @@
                 xmlns="http://www.w3.org/TR/xhtml1/transitional"
                 exclude-result-prefixes="#default">
 
-<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/onechunk.xsl"/>
-
-<xsl:param name="suppress.navigation">1</xsl:param>
+<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/html/chunk.xsl"/>
 
 <!-- Use stylesheet -->
 <xsl:param name="html.stylesheet" select="'../terminal.css'"/>

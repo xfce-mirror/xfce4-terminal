@@ -191,7 +191,11 @@ noinst_DATA = \
 
 docdir = $(datadir)/doc/Terminal/C
 doc_DATA = \
-	Terminal.html
+	copyright.html							\
+	getting-started.html						\
+	index.html							\
+	preferences.html						\
+	usage.html
 
 EXTRA_DIST = \
 	$(noinst_DATA)							\
@@ -508,7 +512,7 @@ uninstall-info: uninstall-info-recursive
 
 
 html:
-	xsltproc $(srcdir)/../terminal-nochunk.xsl			\
+	xsltproc $(srcdir)/../terminal.xsl				\
 		$(srcdir)/Terminal.xml
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -31,15 +31,19 @@ else
   LC="C"
 fi
 
-if test -r "$HELPDIR/$LC/Terminal.html"; then
-  URL="$HELPDIR/$LC/Terminal.html"
-elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/Terminal.html"; then
-  URL="$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/'Terminal.html"
-else 
-  URL="$HELPDIR/C/Terminal.html"
+if test -n "$1"; then
+  HELPFILE="$1.html"
+else
+  HELPFILE="index.html"
 fi
 
-test -n "$1" && URL="$URL#$1"
+if test -r "$HELPDIR/$LC/$HELPFILE"; then
+  URL="$HELPDIR/$LC/$HELPFILE"
+elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"; then
+  URL="$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/'$HELPFILE"
+else 
+  URL="$HELPDIR/C/index.html"
+fi
 
 case "$BROWSER" in
 communicator*|netscape*|mozilla*|phoenix*|firebird*|firefox*)

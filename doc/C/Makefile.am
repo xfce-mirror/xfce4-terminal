@@ -6,12 +6,16 @@ noinst_DATA =								\
 
 docdir = $(datadir)/doc/Terminal/C
 doc_DATA =								\
-	Terminal.html
+	copyright.html							\
+	getting-started.html						\
+	index.html							\
+	preferences.html						\
+	usage.html
 
 EXTRA_DIST =								\
 	$(noinst_DATA)							\
 	$(doc_DATA)
 
 html:
-	xsltproc $(srcdir)/../terminal-nochunk.xsl			\
+	xsltproc $(srcdir)/../terminal.xsl				\
 		$(srcdir)/Terminal.xml
