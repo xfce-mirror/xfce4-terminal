@@ -91,6 +91,7 @@ Makefile
 Terminal.spec
 doc/Makefile
 doc/C/Makefile
+doc/C/Terminal.xml
 doc/C/images/Makefile
 helpers/Makefile
 pixmaps/Makefile

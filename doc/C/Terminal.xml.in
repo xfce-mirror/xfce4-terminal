@@ -2,8 +2,8 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "March 2005"> 
-  <!ENTITY appversion "0.2.4pre1"> 
-  <!ENTITY app "Terminal"> 
+  <!ENTITY version "@PACKAGE_VERSION@">
+  <!ENTITY application "@PACKAGE_NAME@"> 
 ]>
 
 <article id="index" lang="en">
@@ -46,14 +46,14 @@
     </authorgroup>
 
     <releaseinfo>
-      This manual describes the &app; software, version &appversion;.
+      This manual describes version &version; of &application;.
     </releaseinfo>
   </articleinfo>
 
   <para>&nbsp;</para>
 
   <sect1 id="intro">
-    <title>Introduction to &app;</title>
+    <title>Introduction to &application;</title>
 
     <sect2>
       <title>What is a terminal emulator?</title>
@@ -70,7 +70,7 @@
       </para>
 
       <para>
-        &app; is what is known as an X terminal emulator, often referred
+        &application; is what is known as an X terminal emulator, often referred
         to as terminal or shell. It provides an equivalent to the old fashioned
         text screen on your desktop, but on which can easily share the screen
         with other graphical applications. Windows users may already be familar
@@ -80,20 +80,20 @@
       </para>
 
       <para>
-        &app; emulates the <application>xterm</application> application
+        &application; emulates the <application>xterm</application> application
         developed by the X Consortium. In turn, the <application>xterm</application>
         application emulates the DEC VT102 terminal and also supports the DEC VT220
         escape sequences. An escape sequence is a series of characters that start
-        with the <keycap>Esc</keycap> character. &app; accepts all of the escape
+        with the <keycap>Esc</keycap> character. &application; accepts all of the escape
         sequences that the VT102 and VT220 terminals use for functions such as to
         position the cursor and to clear the screen.
       </para>
     </sect2>
 
     <sect2>
-      <title>What makes &app; special?</title>
+      <title>What makes &application; special?</title>
 
-      <para>&app;'s advanced features include a simple configuration interface, the
+      <para>&application;'s advanced features include a simple configuration interface, the
       ability to use multiple tabs with terminals within a single window, the possibility
       to have a pseudo-transparent terminal background and a compact mode, where both the
       menubar and the window decorations are hidden, that helps you to save space on your
@@ -132,7 +132,7 @@
         </listitem>
       </itemizedlist>
 
-      <para>Besides these key features, &app; supports all features you would expect from a modern
+      <para>Besides these key features, &application; supports all features you would expect from a modern
       terminal emulator.</para>
     </sect2>
   </sect1>
@@ -141,17 +141,17 @@
     <title>Getting started</title>
 
     <sect2>
-      <title>Starting &app;</title>
+      <title>Starting &application;</title>
 
       <para>
-        The easiest way to start &app; is to use the applications menu of your desktop -
+        The easiest way to start &application; is to use the applications menu of your desktop -
         in case of Xfce, point your mouse cursor to the desktop, press the right mouse button
         and choose <menuchoice><guimenu>System</guimenu>
         <guimenuitem>Terminal</guimenuitem></menuchoice>.
       </para>
 
       <para>
-        You can also start &app; from a command line or from the <guilabel>Application
+        You can also start &application; from a command line or from the <guilabel>Application
         launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap>
         <keycap>F2</keycap></keycombo>, type
         <userinput><command>Terminal</command></userinput> and click the button
@@ -160,10 +160,10 @@
     </sect2>
 
     <sect2>
-      <title>When you first start &app;</title>
+      <title>When you first start &application;</title>
 
       <para>
-        When you start &app; for the first time, the application opens a terminal window
+        When you start &application; for the first time, the application opens a terminal window
         with default settings.
       </para>
 
@@ -184,13 +184,13 @@
         commands. The command prompt may vary depending on the configuration of
         your shell. The cursor is positioned at the command prompt. When you type a
         UNIX command and press <keycap>Return</keycap>, the computer
-        executes the command. By default, &app; will use the login shell of the user
+        executes the command. By default, &application; will use the login shell of the user
         who starts the application (<filename>/bin/bash</filename> in case of a
         default Linux installation).
       </para>
 
       <para>
-        &app; sets the following environment variables for the command
+        &application; sets the following environment variables for the command
         running inside the terminal window:
       </para>
 
@@ -227,7 +227,7 @@
       <title>Working with multiple terminals</title>
 
       <para>
-        &app; provides a tab feature that enables you to open several terminals
+        &application; provides a tab feature that enables you to open several terminals
         within a single window. Each terminal is opened in a separate tab. Click on the
         appropriate tab to display the terminal in the window. Each tabbed terminal in
         a window is separate subprocess, so you can use each terminal for a different
@@ -284,7 +284,7 @@
             Window</guimenuitem></menuchoice>.</para>
             <para>This action closes the terminal and terminates any subprocesses that
             you opened from the terminal. If you close the last terminal window, the
-            &app; application exits.</para>
+            &application; application exits.</para>
           </listitem>
         </varlistentry>
 
@@ -384,7 +384,7 @@
             </itemizedlist>
 
             <para>
-              &app; mimics the FreeBSD console when <keycap>Scroll Lock</keycap> is pressed. When scroll lock is
+              &application; mimics the FreeBSD console when <keycap>Scroll Lock</keycap> is pressed. When scroll lock is
               active, ordinary input and output from the shell is suspended, and you can scroll through
               the history with <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> and
               <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> or using the optional
@@ -419,7 +419,7 @@
               </listitem> 
             </itemizedlist> 
             <para>These actions select all text between the first and last items. For all text selections,
-            &app; copies the selected text into the clipboard when you release the mouse button. To
+            &application; copies the selected text into the clipboard when you release the mouse button. To
             explicitly copy the selected text, choose <menuchoice><guimenu>Edit</guimenu>
             <guimenuitem>Copy</guimenuitem></menuchoice>.</para>
           </listitem> 
@@ -477,7 +477,7 @@
           tab header.</para>
         </listitem>
         <listitem>
-          <para>Type the new title in the <guilabel>Title</guilabel> text box. &app; applies
+          <para>Type the new title in the <guilabel>Title</guilabel> text box. &application; applies
           the change immediately.</para>
         </listitem>
         <listitem>
@@ -519,7 +519,7 @@
     <sect2 id="customize-toolbars">
       <title>To customize the toolbars</title>
 
-      <para>As already mentioned, &app; includes support for customizable toolbars. The toolbars
+      <para>As already mentioned, &application; includes support for customizable toolbars. The toolbars
       are disabled by default, you will have to explicitly enable it. Choose
       <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice> from
       the menubar to display the toolbars in the current window. If you want to permanently use
@@ -555,8 +555,8 @@
     <sect2 id="luit">
       <title>To switch between different encodings</title>
 
-      <para>&app; itself does not (yet) include builtin support for switching encodings
-      on the fly in a terminal session. But since &app; implements an UTF-8 mode, you
+      <para>&application; itself does not (yet) include builtin support for switching encodings
+      on the fly in a terminal session. But since &application; implements an UTF-8 mode, you
       can use the <ulink url="http://www.pps.jussieu.fr/~jch/software/luit/">Luit
       application</ulink> to switch between different character encodings within a terminal
       session.</para>
@@ -579,10 +579,10 @@
       </mediaobject>
     </screenshot>
 
-    <para>To configure &app;, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences...</guimenuitem>
+    <para>To configure &application;, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences...</guimenuitem>
     </menuchoice> or right-click the terminal area of the window and choose
     <menuchoice><guimenuitem>Preferences...</guimenuitem></menuchoice>. This will bring up the <guilabel>Terminal
-    Preferences</guilabel> dialog, which allows you to adjust &app;'s behaviour to your needs.</para>
+    Preferences</guilabel> dialog, which allows you to adjust &application;'s behaviour to your needs.</para>
 
     <sect2 id="preferences-general">
       <title>General</title>
@@ -618,7 +618,7 @@
         <varlistentry>
           <term><guilabel>Run command as login shell</guilabel></term>
           <listitem>
-            <para>Select this option to force &app; to run your shell as a
+            <para>Select this option to force &application; to run your shell as a
             login shell when you open new terminals. See the documentation of your
             shell for details about differences between running it as interactive
             shell and running it as login shell.</para>
@@ -691,7 +691,7 @@
 
             <para>
               Use the option <guilabel>Enable anti-aliasing for the terminal font</guilabel>
-              to control whether you want &app; to use anti-aliasing when rendering text in
+              to control whether you want &application; to use anti-aliasing when rendering text in
               the terminals. Disabling this option can impressively speed up terminal rendering
               performance and reduce the overall system load on slow systems.
             </para>
@@ -724,7 +724,7 @@
                 the button besides the entry box to search for and select the image
                 file.</para>
                 <para>Use the <guilabel>Style</guilabel> option to control the appearance
-                of the background image. &app; supports tiling, centering, scaling and
+                of the background image. &application; supports tiling, centering, scaling and
                 strechting background images.</para>
               </listitem>
               <listitem>
@@ -779,7 +779,7 @@
           <term><guilabel>Foreground and Background</guilabel></term>
           <listitem>
             <para>Click on the <guilabel>Text color</guilabel> button to choose the color
-            &app; uses to draw normal text - an application running inside the terminal can
+            &application; uses to draw normal text - an application running inside the terminal can
             also request a different color choosen from the palette below to draw text.</para>
 
             <para>Click on the <guilabel>Background color</guilabel> button to choose the
@@ -860,7 +860,7 @@
           <term><guilabel>Disable menu shortcut key (F10 by default)</guilabel></term>
           <listitem>
             <para>Select this option to disable the shortcut key that is defined to
-            enable you to access the &app; menus. The default shortcut key to access
+            enable you to access the &application; menus. The default shortcut key to access
             the menus is <keycap>F10</keycap>.</para>
           </listitem>
         </varlistentry>
@@ -918,7 +918,7 @@
         <varlistentry>
           <term><guilabel>Double click</guilabel></term>
           <listitem>
-            <para>Use this text box to specify characters or groups of characters that &app;
+            <para>Use this text box to specify characters or groups of characters that &application;
             considers to be words when you select text by word.</para>
           </listitem>
         </varlistentry>
@@ -933,7 +933,7 @@
       <title>Command line Options</title>
 
       <para>
-        When &app; is started from the command line or from a panel launcher, several options
+        When &application; is started from the command line or from a panel launcher, several options
         can be specified to modify its behaviour.
       </para>
 
@@ -941,7 +941,7 @@
         <varlistentry>
           <term><option>--help</option></term>
           <listitem>
-            <para>List the various command line options supported by &app; and exit</para>
+            <para>List the various command line options supported by &application; and exit</para>
           </listitem>
         </varlistentry>
 
@@ -1013,7 +1013,7 @@
             <para>
               Sets the window role of the last-specified window to <parameter>role</parameter>. Applies
               to only one window and can be specified once for each window you create from the command
-              line. It is mostly used for session management inside &app;.
+              line. It is mostly used for session management inside &application;.
             </para>
           </listitem>
         </varlistentry>
@@ -1192,7 +1192,7 @@
           <listitem>
             <para>
               This is the location of the configuration file that includes the
-              preferences which control the look and feel of &app;.
+              preferences which control the look and feel of &application;.
             </para>
           </listitem>
         </varlistentry>
@@ -1213,7 +1213,7 @@
           <listitem>
             <para>
               This file includes the user interface definition for the toolbars. If
-              you customize the toolbars using the graphical toolbars editor, &app;
+              you customize the toolbars using the graphical toolbars editor, &application;
               will store the new toolbars layout in the file
               <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>.
             </para>
@@ -1226,7 +1226,7 @@
       <title>Hidden options</title>
 
       <para>
-        &app; offers a few hidden options to allow powerusers to control various advanced settings and
+        &application; offers a few hidden options to allow powerusers to control various advanced settings and
         to reduce the number of options in the user interface. To set any of these options, you will have
         to open the file <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> in your favourite
         text editor and edit the section <varname>[Configuration]</varname>; simply create the file if
@@ -1238,7 +1238,8 @@
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
-MiscCycleTabs=TRUE</programlisting>
+MiscCycleTabs=TRUE
+MiscTabCloseButtons=TRUE</programlisting>
 
       <para>
         plus all the options that are controlled through the preferences dialog.
@@ -1259,7 +1260,7 @@ MiscCycleTabs=TRUE</programlisting>
           <term><varname>MiscConfirmClose</varname></term>
           <listitem>
             <para>
-              Controls whether &app; popups a confirmation dialog when the user tries to close
+              Controls whether &application; popups a confirmation dialog when the user tries to close
               a terminal window with multiple tabs in it. Can be either <literal>TRUE</literal>
               (the default) or <literal>FALSE</literal>.
             </para>
@@ -1293,6 +1294,17 @@ MiscCycleTabs=TRUE</programlisting>
           </listitem>
         </varlistentry>
 
+        <varlistentry>
+          <term><varname>MiscTabCloseButtons</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether &application; provides a close button with the
+              terminal tab title. Can be either <literal>TRUE</literal> (the default) or
+              <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
 <!--
         <varlistentry>
           <term><varname>VteWorkaroundTitleBug</varname></term>
@@ -1301,8 +1313,8 @@ MiscCycleTabs=TRUE</programlisting>
               This option controls a work-around to a known problem with some terminal applications,
               like <ulink url="http://www.vim.org/" type="http">Vim</ulink>, which try to set the terminal
               title by querying the title of the window reported in the <varname>$WINDOWID</varname>
-              environment variable. Unfortunately this causes &app; to append/prepend the user
-              specified initial title again and again. By default, &app; will strip off the initial
+              environment variable. Unfortunately this causes &application; to append/prepend the user
+              specified initial title again and again. By default, &application; will strip off the initial
               title from the beginning and the end of the window title supplied by the application
               running inside the terminal. If this is not what you want, you can disable this option
               with <varname>VteWorkaroundTitleBug=FALSE</varname>.
@@ -1318,16 +1330,16 @@ MiscCycleTabs=TRUE</programlisting>
     <title>Frequently asked questions</title>
 
     <para>The intent of this section is to collect the quite numerous frequently asked
-    question that relate to working with &app;, or even terminal emulators in general. If
+    question that relate to working with &application;, or even terminal emulators in general. If
     you know of a question thats missing from this page, please <ulink
     url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal&amp;component=docs">file a request</ulink>.</para>
 
     <sect3>
-      <title>&app; complains about <literal>Unable to start terminal server: Unable to connect
+      <title>&application; complains about <literal>Unable to start terminal server: Unable to connect
         to D-BUS message daemon</literal>, what can I do?</title>
 
-      <para>&app; tries to reduce the number of running instances by establishing a D-BUS service
-      that handles all terminal windows. The message above tells you that &app; wasn't able to
+      <para>&application; tries to reduce the number of running instances by establishing a D-BUS service
+      that handles all terminal windows. The message above tells you that &application; wasn't able to
       connect to the D-BUS session message daemon and register a service. This is just a warning,
       you can use the terminal without the D-BUS service feature as well.</para>
 
@@ -1339,16 +1351,16 @@ MiscCycleTabs=TRUE</programlisting>
     </sect3>
 
     <sect3>
-      <title><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &app;, what's wrong?</title>
+      <title><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &application;, what's wrong?</title>
 
       <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
-      the terminal widget used by &app;. A patch for vte that fixes the problem is available <ulink
+      the terminal widget used by &application;. A patch for vte that fixes the problem is available <ulink
       url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
       with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
     </sect3>
 
     <sect3>
-      <title>How to customize the menus in &app;?</title>
+      <title>How to customize the menus in &application;?</title>
 
       <para>You can customize the main menubar and the right-click popup menu by editing the file
       <filename>Terminal/Terminal.ui</filename>. Create a copy of this file before you actually
@@ -1365,7 +1377,7 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
       for details on the file format. The changes will only be visible in new terminal windows.</para>
 
       <para>If you choose to customize your menus this way, you'll have to take care to sync
-      your customized <filename>Terminal.ui</filename> file when you upgrade to a newer &app;
+      your customized <filename>Terminal.ui</filename> file when you upgrade to a newer &application;
       release to keep up with user interface changes and additions.</para>
     </sect3>
   </sect1>
@@ -1405,10 +1417,10 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
   </sect1>
 
   <sect1 id="copyright">
-    <title>About &app;</title>
+    <title>About &application;</title>
 
     <para>
-      &app; was written by Benedikt Meurer (<email>benny@xfce.org</email>). Visit the
+      &application; was written by Benedikt Meurer (<email>benny@xfce.org</email>). Visit the
       <ulink url="http://www.os-cillation.com/" type="http">os-cillation website</ulink>
       for more information.
     </para>

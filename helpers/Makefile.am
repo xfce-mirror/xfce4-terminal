@@ -4,6 +4,7 @@ desktop_in_files =							\
 	epiphany.desktop.in						\
 	evolution.desktop.in						\
 	firefox.desktop.in						\
+	galeon.desktop.in						\
 	kmail.desktop.in						\
 	konqueror.desktop.in						\
 	lynx.desktop.in							\
