@@ -1,3 +1,10 @@
+2004-11-16	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-widget.c: Apply the color settings right after
+	  the VTE widget was realized, and the background settings right
+	  after the VTE widget was mapped. This should fix several problems
+	  where the VTE widget was misdisplayed initially.
+
 2004-11-15	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-preferences-dialog.c, terminal/terminal-window.c:

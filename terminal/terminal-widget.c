@@ -130,6 +130,8 @@ static gboolean terminal_widget_vte_key_press_event           (VteTerminal    *t
                                                                TerminalWidget *widget);
 static void     terminal_widget_vte_realize                   (VteTerminal    *terminal,
                                                                TerminalWidget *widget);
+static void     terminal_widget_vte_map                       (VteTerminal    *terminal,
+                                                               TerminalWidget *widget);
 static void     terminal_widget_vte_selection_changed         (VteTerminal    *terminal,
                                                                TerminalWidget *widget);
 static void     terminal_widget_vte_window_title_changed      (VteTerminal    *terminal,
@@ -266,10 +268,12 @@ terminal_widget_init (TerminalWidget *widget)
                     G_CALLBACK (terminal_widget_vte_key_press_event), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "selection-changed",
                     G_CALLBACK (terminal_widget_vte_selection_changed), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "realize",
-                    G_CALLBACK (terminal_widget_vte_realize), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "window-title-changed",
                     G_CALLBACK (terminal_widget_vte_window_title_changed), widget);
+  g_signal_connect_after (G_OBJECT (widget->terminal), "realize",
+                          G_CALLBACK (terminal_widget_vte_realize), widget);
+  g_signal_connect_after (G_OBJECT (widget->terminal), "map",
+                          G_CALLBACK (terminal_widget_vte_map), widget);
   g_signal_connect_swapped (G_OBJECT (widget->terminal), "size-allocate",
                             G_CALLBACK (terminal_widget_timer_background), widget);
   g_signal_connect_swapped (G_OBJECT (widget->terminal), "style-set",
@@ -653,32 +657,29 @@ terminal_widget_update_colors (TerminalWidget *widget)
   gchar    name[32];
   guint    n;
 
-  if (GTK_WIDGET_REALIZED (widget))
+  g_object_get (G_OBJECT (widget->preferences),
+                "color-system-theme", &system_theme,
+                NULL);
+
+  if (system_theme)
     {
-      g_object_get (G_OBJECT (widget->preferences),
-                    "color-system-theme", &system_theme,
-                    NULL);
-
-      if (system_theme)
-        {
-          bg = widget->terminal->style->base[GTK_STATE_NORMAL];
-          fg = widget->terminal->style->text[GTK_STATE_NORMAL];
-        }
-      else
-        {
-          query_color (widget->preferences, "color-background", &bg);
-          query_color (widget->preferences, "color-foreground", &fg);
-        }
-
-      for (n = 0; n < 16; ++n)
-        {
-          g_snprintf (name, 32, "color-palette%u", n + 1);
-          query_color (widget->preferences, name, palette + n);
-        }
-
-      vte_terminal_set_colors (VTE_TERMINAL (widget->terminal), &fg, &bg, palette, 16);
-      vte_terminal_set_background_tint_color (VTE_TERMINAL (widget->terminal), &bg);
+      bg = widget->terminal->style->base[GTK_STATE_NORMAL];
+      fg = widget->terminal->style->text[GTK_STATE_NORMAL];
     }
+  else
+    {
+      query_color (widget->preferences, "color-background", &bg);
+      query_color (widget->preferences, "color-foreground", &fg);
+    }
+
+  for (n = 0; n < 16; ++n)
+    {
+      g_snprintf (name, 32, "color-palette%u", n + 1);
+      query_color (widget->preferences, name, palette + n);
+    }
+
+  vte_terminal_set_colors (VTE_TERMINAL (widget->terminal), &fg, &bg, palette, 16);
+  vte_terminal_set_background_tint_color (VTE_TERMINAL (widget->terminal), &bg);
 }
 
 
@@ -974,8 +975,16 @@ terminal_widget_vte_realize (VteTerminal    *terminal,
                              TerminalWidget *widget)
 {
   vte_terminal_set_allow_bold (terminal, TRUE);
-  terminal_widget_timer_background (TERMINAL_WIDGET (widget));
   terminal_widget_update_colors (TERMINAL_WIDGET (widget));
+}
+
+
+
+static void
+terminal_widget_vte_map (VteTerminal    *terminal,
+                         TerminalWidget *widget)
+{
+  terminal_widget_timer_background (TERMINAL_WIDGET (widget));
 }
 
 
