@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-09 23:16+0100\n"
+"POT-Creation-Date: 2004-11-13 18:08+0100\n"
 "PO-Revision-Date: 2004-10-01 18:17+0200\n"
 "Last-Translator: Benedikt Meurer <benny@xfce.org>\n"
 "Language-Team: os-cillation <info@os-cillation.de>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: terminal/main.c:114
+#: terminal/main.c:166
 #, c-format
 msgid ""
 "Usage: Terminal [OPTION...]\n"
@@ -40,12 +40,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#: terminal/main.c:151 terminal/terminal-preferences.c:1048
+#: terminal/main.c:203 terminal/terminal-preferences.c:1048
 #: terminal/terminal-shortcut-editor.c:114
 msgid "Terminal"
 msgstr ""
 
-#: terminal/main.c:174
+#: terminal/main.c:228
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -60,12 +60,12 @@ msgid ""
 "Please report bugs to <%s>.\n"
 msgstr ""
 
-#: terminal/main.c:214
+#: terminal/main.c:268
 #, c-format
 msgid "Unable to start terminal server: %s\n"
 msgstr ""
 
-#: terminal/main.c:222
+#: terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr ""
@@ -98,35 +98,35 @@ msgstr ""
 msgid "Invalid geometry string \"%s\"\n"
 msgstr ""
 
-#: terminal/terminal-options.c:68
+#: terminal/terminal-options.c:72
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
 
-#: terminal/terminal-options.c:96
+#: terminal/terminal-options.c:100
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:146
+#: terminal/terminal-options.c:150
 msgid "Option \"--title\" requires specifying the title as its parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:172
+#: terminal/terminal-options.c:176
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:198
+#: terminal/terminal-options.c:201
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:215
+#: terminal/terminal-options.c:217
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr ""
@@ -420,22 +420,23 @@ msgstr ""
 msgid "Advanced"
 msgstr "Avançé"
 
-#: terminal/terminal-preferences-dialog.c:1035 terminal/terminal-window.c:817
-#: terminal/terminal-window.c:844 terminal/terminal-window.c:908
+#: terminal/terminal-preferences-dialog.c:1035 terminal/terminal-window.c:882
+#: terminal/terminal-window.c:909 terminal/terminal-window.c:973
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1121
-msgid "Select image file"
-msgstr ""
+#: terminal/terminal-preferences-dialog.c:1135
+#, fuzzy
+msgid "Select background image file"
+msgstr "Image d'arrière-plan"
 
-#: terminal/terminal-preferences-dialog.c:1131
+#: terminal/terminal-preferences-dialog.c:1146
 #, fuzzy
 msgid "All Files"
 msgstr "Fichier"
 
-#: terminal/terminal-preferences-dialog.c:1136
+#: terminal/terminal-preferences-dialog.c:1151
 #, fuzzy
 msgid "Image Files"
 msgstr "_Fichier:"
@@ -465,7 +466,7 @@ msgid "Paste"
 msgstr "Coller"
 
 #: terminal/terminal-preferences.c:389 terminal/terminal-preferences.c:390
-#: terminal/terminal-window.c:162
+#: terminal/terminal-window.c:166
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -495,7 +496,7 @@ msgid "Next Tab"
 msgstr "Onglet suivant"
 
 #: terminal/terminal-preferences.c:466 terminal/terminal-preferences.c:467
-#: terminal/terminal-window.c:940
+#: terminal/terminal-window.c:1005
 msgid "Set Title"
 msgstr "Modifier le titre"
 
@@ -803,193 +804,206 @@ msgstr ""
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: terminal/terminal-widget.c:1321
+#: terminal/terminal-widget.c:1323
 msgid "Untitled"
 msgstr ""
 
-#: terminal/terminal-window.c:153
+#: terminal/terminal-window.c:157
 msgid "_File"
 msgstr "_Fichier"
 
-#: terminal/terminal-window.c:154
+#: terminal/terminal-window.c:158
 msgid "Open _Tab"
 msgstr "Ouvrir un _onglet"
 
-#: terminal/terminal-window.c:154
+#: terminal/terminal-window.c:158
 #, fuzzy
 msgid "Open a new terminal tab"
 msgstr "Ouvrir un terminal"
 
-#: terminal/terminal-window.c:155
+#: terminal/terminal-window.c:159
 msgid "Open _Terminal"
 msgstr "Ouvrir un _terminal"
 
-#: terminal/terminal-window.c:155
+#: terminal/terminal-window.c:159
 #, fuzzy
 msgid "Open a new terminal window"
 msgstr "Ouvrir un terminal"
 
-#: terminal/terminal-window.c:156
+#: terminal/terminal-window.c:160
 msgid "C_lose Tab"
 msgstr "C_lose Tab"
 
-#: terminal/terminal-window.c:156
+#: terminal/terminal-window.c:160
 msgid "Close the current terminal tab"
 msgstr ""
 
-#: terminal/terminal-window.c:157
+#: terminal/terminal-window.c:161
 msgid "_Close Window"
 msgstr "_Fermer la fenêtre"
 
-#: terminal/terminal-window.c:157
+#: terminal/terminal-window.c:161
 msgid "Close the terminal window"
 msgstr ""
 
-#: terminal/terminal-window.c:158
+#: terminal/terminal-window.c:162
 msgid "_Edit"
 msgstr "_Édition"
 
-#: terminal/terminal-window.c:159
+#: terminal/terminal-window.c:163
 msgid "_Copy"
 msgstr "_Copier"
 
-#: terminal/terminal-window.c:160
+#: terminal/terminal-window.c:163
+msgid "Copy to clipboard"
+msgstr ""
+
+#: terminal/terminal-window.c:164
 msgid "_Paste"
 msgstr "C_oller"
 
-#: terminal/terminal-window.c:161
+#: terminal/terminal-window.c:164
+msgid "Paste from clipboard"
+msgstr ""
+
+#: terminal/terminal-window.c:165
 #, fuzzy
 msgid "_Toolbars"
 msgstr "La _barre de défilement est:"
 
-#: terminal/terminal-window.c:162
+#: terminal/terminal-window.c:165
+#, fuzzy
+msgid "Customize toolbars"
+msgstr "Afficher la barre de menus"
+
+#: terminal/terminal-window.c:166
 #, fuzzy
 msgid "Open the Terminal preferences dialog"
 msgstr "Préférences"
 
-#: terminal/terminal-window.c:163
+#: terminal/terminal-window.c:167
 msgid "_View"
 msgstr "Afficha_ge"
 
-#: terminal/terminal-window.c:164
+#: terminal/terminal-window.c:168
 msgid "_Terminal"
 msgstr ""
 
-#: terminal/terminal-window.c:165
+#: terminal/terminal-window.c:169
 msgid "_Previous Tab"
 msgstr "Onglet _précédent"
 
-#: terminal/terminal-window.c:165
+#: terminal/terminal-window.c:169
 msgid "Switch to previous tab"
 msgstr ""
 
-#: terminal/terminal-window.c:166
+#: terminal/terminal-window.c:170
 msgid "_Next Tab"
 msgstr "Onglet _suivant"
 
-#: terminal/terminal-window.c:166
+#: terminal/terminal-window.c:170
 msgid "Switch to next tab"
 msgstr ""
 
-#: terminal/terminal-window.c:167
+#: terminal/terminal-window.c:171
 msgid "_Set Title"
 msgstr "_Modifier le titre"
 
-#: terminal/terminal-window.c:167
+#: terminal/terminal-window.c:171
 msgid "Set a custom title for the current tab"
 msgstr ""
 
-#: terminal/terminal-window.c:168
+#: terminal/terminal-window.c:172
 msgid "_Reset"
 msgstr "_Réinitialiser"
 
-#: terminal/terminal-window.c:169
+#: terminal/terminal-window.c:173
 msgid "Reset and C_lear"
 msgstr "Réinitialiser et _effacer"
 
-#: terminal/terminal-window.c:170
+#: terminal/terminal-window.c:174
 msgid "_Help"
 msgstr "_Aide"
 
-#: terminal/terminal-window.c:171
+#: terminal/terminal-window.c:175
 msgid "_Contents"
 msgstr "_Sommaire"
 
-#: terminal/terminal-window.c:171
+#: terminal/terminal-window.c:175
 msgid "Display help contents"
 msgstr ""
 
-#: terminal/terminal-window.c:172
+#: terminal/terminal-window.c:176
 msgid "_Report a bug"
 msgstr "_Rapportez un bogue"
 
-#: terminal/terminal-window.c:172
+#: terminal/terminal-window.c:176
 #, fuzzy
 msgid "Report a bug in Terminal"
 msgstr "_Rapportez un bogue"
 
-#: terminal/terminal-window.c:174 terminal/terminal-window.c:176
+#: terminal/terminal-window.c:178 terminal/terminal-window.c:180
 msgid "_About"
 msgstr "À _propos"
 
-#: terminal/terminal-window.c:174 terminal/terminal-window.c:176
+#: terminal/terminal-window.c:178 terminal/terminal-window.c:180
 msgid "Display information about Terminal"
 msgstr ""
 
-#: terminal/terminal-window.c:178
+#: terminal/terminal-window.c:182
 msgid "_Input Methods"
 msgstr "_Méthodes de saisie"
 
-#: terminal/terminal-window.c:183
+#: terminal/terminal-window.c:187
 msgid "Show _Menubar"
 msgstr "Afficher la _barre de menus"
 
-#: terminal/terminal-window.c:183
+#: terminal/terminal-window.c:187
 #, fuzzy
 msgid "Show/hide the menubar"
 msgstr "Afficher la barre de menus"
 
-#: terminal/terminal-window.c:184
+#: terminal/terminal-window.c:188
 #, fuzzy
 msgid "Show _Toolbars"
 msgstr "Afficher la _barre de menus"
 
-#: terminal/terminal-window.c:184
+#: terminal/terminal-window.c:188
 msgid "Show/hide the toolbars"
 msgstr ""
 
-#: terminal/terminal-window.c:185
+#: terminal/terminal-window.c:189
 msgid "Show Window _Borders"
 msgstr ""
 
-#: terminal/terminal-window.c:185
+#: terminal/terminal-window.c:189
 msgid "Show/hide the window decorations"
 msgstr ""
 
-#: terminal/terminal-window.c:186
+#: terminal/terminal-window.c:190
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
-#: terminal/terminal-window.c:186
+#: terminal/terminal-window.c:190
 msgid "Toggle fullscreen mode"
 msgstr ""
 
-#: terminal/terminal-window.c:954
+#: terminal/terminal-window.c:1019
 msgid "<b>Title:</b>"
 msgstr "<b>Titre:</b>"
 
-#: terminal/terminal-window.c:1000
+#: terminal/terminal-window.c:1065
 msgid "X Terminal Emulator"
 msgstr ""
 
-#: terminal/terminal-window.c:1004
+#: terminal/terminal-window.c:1069
 msgid "Maintainer"
 msgstr ""
 
-#: terminal/terminal-window.c:1005
+#: terminal/terminal-window.c:1070
 msgid "Icon Designer"
 msgstr "Concepteur D'Icône"
 
-#: terminal/terminal-window.c:1006
+#: terminal/terminal-window.c:1071
 msgid "Translator (nl)"
 msgstr ""

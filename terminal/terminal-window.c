@@ -160,8 +160,8 @@ static GtkActionEntry action_entries[] =
   { "close-tab", "terminal-closetab", N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
   { "close-window", "terminal-closewindow", N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"),  },
-  { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, NULL, G_CALLBACK (terminal_window_action_copy), },
-  { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, NULL, G_CALLBACK (terminal_window_action_paste), },
+  { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
+  { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
   { "edit-toolbars", NULL, N_ ("_Toolbars"), NULL, N_ ("Customize toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
   { "preferences", GTK_STOCK_PREFERENCES, N_ ("Preferences"), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), },
@@ -1060,7 +1060,7 @@ terminal_window_about_idle (gpointer user_data)
   GtkWidget      *dialog;
   GdkPixbuf      *icon;
 
-  icon = xfce_themed_icon_load ("terminal", 48);
+  icon = xfce_themed_icon_load ("Terminal", 48);
 
   info = xfce_about_info_new ("Terminal", VERSION, _("X Terminal Emulator"),
                               XFCE_COPYRIGHT_TEXT ("2003-2004", "os-cillation"),

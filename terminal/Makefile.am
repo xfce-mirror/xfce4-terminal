@@ -1,17 +1,17 @@
 stock_icons =								\
-		stock-icon-closetab16.png				\
-		stock-icon-closetab24.png				\
-		stock-icon-closewindow16.png				\
-		stock-icon-closewindow24.png				\
-		stock-icon-fullscreen24.png				\
-		stock-icon-newtab16.png					\
-		stock-icon-newtab24.png					\
-		stock-icon-newwindow16.png				\
-		stock-icon-newwindow24.png				\
-		stock-icon-reportbug16.png				\
-		stock-icon-reportbug24.png				\
-		stock-icon-showborders24.png				\
-		stock-icon-showmenu24.png
+	stock-icon-closetab16.png					\
+	stock-icon-closetab24.png					\
+	stock-icon-closewindow16.png					\
+	stock-icon-closewindow24.png					\
+	stock-icon-fullscreen24.png					\
+	stock-icon-newtab16.png						\
+	stock-icon-newtab24.png						\
+	stock-icon-newwindow16.png					\
+	stock-icon-newwindow24.png					\
+	stock-icon-reportbug16.png					\
+	stock-icon-reportbug24.png					\
+	stock-icon-showborders24.png					\
+	stock-icon-showmenu24.png
 
 INCLUDES =								\
 	-DDATADIR=\"$(datadir)\"					\
@@ -112,6 +112,9 @@ terminal-enum-types.c: $(Terminal_headers) Makefile
 
 clean-local:
 	rm -f *.core core core.* stamp-*.h
+
+distclean-local:
+	rm -f stock-icons.h terminal-enum-types.*
 
 EXTRA_DIST =								\
 	$(stock_icons)

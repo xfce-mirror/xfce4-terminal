@@ -5,7 +5,7 @@ SUBDIRS =								\
 	terminal
 
 distclean-local:
-	rm -rf *.spec *.cache *~
+	rm -rf *.spec *.cache *~ TerminalHelp
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz

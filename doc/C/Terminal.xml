@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "Oct 2004"> 
-  <!ENTITY appversion "0.1.9"> 
+  <!ENTITY appversion "0.1.10"> 
   <!ENTITY app "<application>Terminal</application>"> 
 ]>
 
@@ -426,7 +426,51 @@
           </listitem>
         </varlistentry>
       </variablelist>
+    </sect2>
 
+    <sect2 id="toolbars">
+      <title>To customize the toolbars</title>
+
+      <para>As already mentioned, &app; includes support for customizable toolbars. The toolbars
+      are disabled by default, you will have to explicitly enabed it. Choose
+      <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice> from
+      the menubar to display the toolbars in the current window. If you want to permanently use
+      the toolbars, see <xref linkend="preferences-general" />.</para>
+
+      <para>Once the toolbars are shown choose <menuchoice><guimenu>Edit</guimenu>
+      <guimenuitem>Toolbars</guimenuitem></menuchoice> from the menubar. This opens the
+      <guilabel>Toolbar Editor</guilabel> window, which allows you to customize the
+      toolbars in the current terminal window.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-toolbars.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Customizing the toolbars</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Just drag an item from the <guilabel>Toolbar Editor</guilabel> window and drop
+      it on a toolbar to add that item to the specific toolbar or drag an item from a toolbar
+      to the <guilabel>Toolbar Editor</guilabel> to remove it from the toolbar. You can add
+      additional toolbars by clicking the button <guibutton>Add a new toolbar</guibutton>
+      and remove toolbars by right-clicking the toolbar and selecting
+      <menuchoice><guimenuitem>Remove Toolbar</guimenuitem></menuchoice> from the context
+      menu. You can also choose a different style for a toolbar from the context menu.</para>
+    </sect2>
+
+    <sect2 id="luit">
+      <title>To switch between different encodings</title>
+
+      <para>&app; itself does not (yet) include builtin support for switching encodings
+      on the fly in a terminal session. But since &app; implements an UTF-8 mode, you
+      can use the <ulink url="http://www.pps.jussieu.fr/~jch/software/luit/">Luit
+      application</ulink> to switch between different character encodings within a terminal
+      session.</para>
     </sect2>
 
   </sect1>
@@ -451,7 +495,7 @@
     <menuchoice><guimenuitem>Preferences</guimenuitem></menuchoice>. This will bring up the <guilabel>Terminal
     Preferences</guilabel> dialog, which allows you to adjust &app;'s behaviour to your needs.</para>
 
-    <sect2>
+    <sect2 id="preferences-general">
       <title>General</title>
 
       <screenshot>
@@ -562,7 +606,7 @@
     </sect2>
 
     <sect2>
-      <title>Advanced</title>
+      <title>Appearance</title>
 
       <screenshot>
         <mediaobject>

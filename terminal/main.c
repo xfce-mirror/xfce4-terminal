@@ -252,7 +252,7 @@ main (int argc, char **argv)
   gtk_init (&argc, &argv);
   stock_icons_init ();
 
-  icon = xfce_themed_icon_load ("terminal", 48);
+  icon = xfce_themed_icon_load ("Terminal", 48);
   if (G_LIKELY (icon != NULL))
     {
       gtk_window_set_default_icon (icon);

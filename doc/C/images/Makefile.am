@@ -8,7 +8,8 @@ images_DATA =								\
 	terminal-preferences-appearance.png				\
 	terminal-preferences-general.png				\
 	terminal-preferences-shortcuts.png				\
-	terminal-set-title.png
+	terminal-set-title.png						\
+	terminal-toolbars.png
 
 EXTRA_DIST = 								\
 	$(images_DATA)

@@ -449,7 +449,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
-  icon = xfce_themed_icon_load ("terminal-general", 48);
+  icon = xfce_themed_icon_load ("Terminal-general", 48);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
@@ -788,7 +788,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   g_object_unref (G_OBJECT (proxy));
 
-  icon = xfce_themed_icon_load ("terminal-appearance.png", 48);
+  icon = xfce_themed_icon_load ("Terminal-appearance.png", 48);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
@@ -848,7 +848,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_container_add (GTK_CONTAINER (ibox), editor);
   gtk_widget_show (editor);
 
-  icon = xfce_themed_icon_load ("terminal-shortcuts.png", 48);
+  icon = xfce_themed_icon_load ("Terminal-shortcuts.png", 48);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
@@ -987,7 +987,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
   g_object_unref (G_OBJECT (proxy));
 
-  icon = xfce_themed_icon_load ("terminal-advanced.png", 48);
+  icon = xfce_themed_icon_load ("Terminal-advanced.png", 48);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,

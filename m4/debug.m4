@@ -65,7 +65,7 @@ dnl # --enable-final
   AC_REQUIRE([AC_PROG_LD])
   AC_ARG_ENABLE([final],
 AC_HELP_STRING([--enable-final], [Build final version]),
-    [], [enable_final=no])
+    [], [enable_final=yes])
 
   AC_MSG_CHECKING([whether to build final version])
   if test x"$enable_final" = x"yes"; then

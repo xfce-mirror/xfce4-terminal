@@ -1,10 +1,10 @@
 iconsdir = $(datadir)/icons/hicolor/48x48/apps
 icons_DATA =								\
-	terminal-advanced.png						\
-	terminal-appearance.png						\
-	terminal-compose-key.png					\
-	terminal-general.png						\
-	terminal-shortcuts.png						\
-	terminal.png
+	Terminal-advanced.png						\
+	Terminal-appearance.png						\
+	Terminal-compose-key.png					\
+	Terminal-general.png						\
+	Terminal-shortcuts.png						\
+	Terminal.png
 
 EXTRA_DIST = $(icons_DATA)

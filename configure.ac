@@ -9,7 +9,7 @@ dnl
 dnl Version information
 m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [1])
-m4_define([terminal_version_micro], [9])
+m4_define([terminal_version_micro], [10])
 m4_define([terminal_version], [terminal_version_major.terminal_version_minor.terminal_version_micro])
 
 dnl Initialize autoconf
@@ -44,7 +44,7 @@ dnl Check for i18n support
 BM_I18N([Terminal], [de fr nl])
 
 dnl Check for required packages
-BM_DEPEND([EXO], [exo-0.1], [0.1.2])
+BM_DEPEND([EXO], [exo-0.1], [0.1.3])
 BM_DEPEND([VTE], [vte], [0.11.0])
 
 dnl Check for debugging support
