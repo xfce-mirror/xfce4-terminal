@@ -47,6 +47,7 @@
 #endif
 
 #include <terminal/terminal-enum-types.h>
+#include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-tab-header.h>
@@ -119,6 +120,8 @@ static void            terminal_window_action_close_window      (GtkAction      
 static void            terminal_window_action_copy              (GtkAction              *action,
                                                                  TerminalWindow         *window);
 static void            terminal_window_action_paste             (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_edit_helpers      (GtkAction              *action,
                                                                  TerminalWindow         *window);
 static void            terminal_window_action_edit_toolbars     (GtkAction              *action,
                                                                  TerminalWindow         *window);
@@ -196,6 +199,7 @@ static GtkActionEntry action_entries[] =
   { "edit-menu", NULL, N_ ("_Edit"), NULL, },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
+  { "edit-helpers", NULL, N_ ("_Applications..."), NULL, N_ ("Customize your preferred applications"), G_CALLBACK (terminal_window_action_edit_helpers), },
   { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
   { "preferences", GTK_STOCK_PREFERENCES, N_ ("_Preferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, },
@@ -1120,6 +1124,42 @@ terminal_window_action_paste (GtkAction       *action,
 
 
 static void
+terminal_window_action_edit_helpers (GtkAction      *action,
+                                     TerminalWindow *window)
+{
+  GtkWidget *dialog;
+
+  dialog = g_object_new (TERMINAL_TYPE_HELPER_DIALOG, NULL);
+  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+  gtk_widget_show (dialog);
+}
+
+
+
+static void
+terminal_window_action_edit_toolbars (GtkAction       *action,
+                                      TerminalWindow  *window)
+{
+  if (G_LIKELY (window->toolbars != NULL))
+    terminal_toolbars_view_edit (TERMINAL_TOOLBARS_VIEW (window->toolbars));
+}
+
+
+
+static void
+terminal_window_action_prefs (GtkAction       *action,
+                              TerminalWindow  *window)
+{
+  if (G_LIKELY (window->prefs_idle_id == 0))
+    {
+      window->prefs_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_window_prefs_idle,
+                                               window, terminal_window_prefs_idle_destroy);
+    }
+}
+
+
+
+static void
 terminal_window_action_show_menubar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
@@ -1198,29 +1238,6 @@ terminal_window_action_fullscreen (GtkToggleAction *action,
     gtk_window_fullscreen (GTK_WINDOW (window));
   else
     gtk_window_unfullscreen (GTK_WINDOW (window));
-}
-
-
-
-static void
-terminal_window_action_edit_toolbars (GtkAction       *action,
-                                      TerminalWindow  *window)
-{
-  if (G_LIKELY (window->toolbars != NULL))
-    terminal_toolbars_view_edit (TERMINAL_TOOLBARS_VIEW (window->toolbars));
-}
-
-
-
-static void
-terminal_window_action_prefs (GtkAction       *action,
-                              TerminalWindow  *window)
-{
-  if (G_LIKELY (window->prefs_idle_id == 0))
-    {
-      window->prefs_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_window_prefs_idle,
-                                               window, terminal_window_prefs_idle_destroy);
-    }
 }
 
 

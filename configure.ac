@@ -43,7 +43,7 @@ AC_PROG_INTLTOOL()
 AC_PROG_LIBTOOL()
 
 dnl Check for standard headers
-AC_CHECK_HEADERS([errno.h limits.h pwd.h time.h])
+AC_CHECK_HEADERS([ctype.h errno.h limits.h pwd.h time.h])
 
 dnl Check for i18n support
 XDT_I18N([de en_GB es fi fr he nl ru zh_CN zh_TW])
@@ -81,6 +81,7 @@ Terminal.spec
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
+helpers/Makefile
 pixmaps/Makefile
 po/Makefile.in
 terminal/stock-icons/Makefile

@@ -1,11 +1,12 @@
 SUBDIRS =								\
 	doc								\
+	helpers								\
 	pixmaps								\
 	po								\
 	terminal
 
 distclean-local:
-	rm -rf *.spec *.cache *~
+	rm -rf *.cache *~
 
 dist-bz2: dist
 	zcat $(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.gz | \
@@ -42,7 +43,6 @@ ui_DATA = 								\
 EXTRA_DIST =								\
 	HACKING								\
 	TerminalHelp.in							\
-	Terminal.spec							\
 	intltool-extract.in						\
 	intltool-merge.in						\
 	intltool-update.in						\
@@ -51,9 +51,9 @@ EXTRA_DIST =								\
 	$(ui_DATA)
 
 DISTCLEANFILES =							\
+	Terminal.spec							\
 	TerminalHelp							\
 	intltool-extract						\
 	intltool-merge							\
 	intltool-update							\
 	$(desktop_DATA)
-

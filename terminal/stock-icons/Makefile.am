@@ -1,6 +1,7 @@
 IMAGES =								\
 	 stock_advanced_48.png						\
 	 stock_appearance_48.png					\
+	 stock_browser_48.png						\
 	 stock_closetab_16.png						\
 	 stock_closetab_24.png						\
 	 stock_closewindow_16.png					\
@@ -9,6 +10,7 @@ IMAGES =								\
 	 stock_compose_48.png						\
 	 stock_fullscreen_24.png					\
 	 stock_general_48.png						\
+	 stock_mailer_48.png						\
 	 stock_newtab_16.png						\
 	 stock_newtab_24.png						\
 	 stock_newwindow_16.png						\
@@ -18,6 +20,10 @@ IMAGES =								\
 	 stock_shortcuts_48.png						\
 	 stock_showborders_24.png					\
 	 stock_showmenu_24.png
+
+VARIABLES_HELPER =							\
+	stock_browser_48	$(srcdir)/stock_browser_48.png		\
+	stock_mailer_48		$(srcdir)/stock_mailer_48.png
 
 VARIABLES_MAIN =							\
 	stock_closetab_16	$(srcdir)/stock_closetab_16.png		\
@@ -49,7 +55,10 @@ noinst_DATA =								\
 
 terminal-stock-pixbufs.h: $(IMAGES)
 	gdk-pixbuf-csource --raw --static --build-list			\
-		$(VARIABLES_MAIN) > terminal-stock-pixbufs.h ||		\
+		$(VARIABLES_HELPER) > terminal-stock-pixbufs.h ||	\
+		( rm -f terminal-stock-pixbufs.h && false)
+	gdk-pixbuf-csource --raw --static --build-list			\
+		$(VARIABLES_MAIN) >> terminal-stock-pixbufs.h ||	\
 		( rm -f terminal-stock-pixbufs.h && false)
 	gdk-pixbuf-csource --raw --static --build-list			\
 		$(VARIABLES_PREFERENCES) >> terminal-stock-pixbufs.h ||	\

@@ -1,4 +1,4 @@
-/* $Id: main.c 119 2005-01-23 18:30:24Z bmeurer $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004-2005 os-cillation e.K.
  *
@@ -26,6 +26,7 @@
 
 G_BEGIN_DECLS;
 
+void terminal_icons_setup_helper      (void);
 void terminal_icons_setup_main        (void);
 void terminal_icons_setup_preferences (void);
 void terminal_icons_setup_toolbar     (void);
