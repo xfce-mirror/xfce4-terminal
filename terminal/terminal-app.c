@@ -594,7 +594,11 @@ terminal_app_try_invoke (gint              argc,
 
   connection = exo_dbus_bus_connection ();
   if (G_UNLIKELY (connection == NULL))
-    return FALSE;
+    {
+      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
+                   "No session message bus daemon running");
+      return FALSE;
+    }
 
   message = dbus_message_new_method_call (TERMINAL_DBUS_SERVICE,
                                           TERMINAL_DBUS_PATH,

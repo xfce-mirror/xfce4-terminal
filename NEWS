@@ -1,5 +1,5 @@
-0.2.0pre2
-=========
+0.2.0
+=====
 - The user interface was reworked to comply with the GNOME Human Interface
   Guidelines (HIG).
 - Terminal can now use the foreground and background color from the selected
@@ -7,6 +7,8 @@
 - Toolbars can now be edited by right-clicking the appriorate toolbar.
 - The preferences dialog and the title dialog are now accessible.
 - Avoid flickering when opening a new terminal.
+- The terminal background is now set up before the terminal is mapped on
+  screen.
 - Menu access keys can now be disabled, which allows passing key combinations
   such as Alt+f to the application running inside the terminal.
 - Font-antialiasing can now be turned off for the terminal font rendering,
@@ -35,6 +37,11 @@
   right-click menu and forwards all button clicks to the application
   instead. Hold down shift while pressing the right mouse button to
   get a right-click menu in this situation.
+- Several bugfixes and improvements have been integrated into Terminal
+  (in order to reduce code-size and startup time).
+- The D-BUS interface was changed to include a version number and to
+  pass the argument vector instead of the parsed options to the
+  Terminal service.
 - The online documentation and the manual page have been updated.
 
 
