@@ -256,28 +256,19 @@ terminal_widget_init (TerminalWidget *widget)
   widget->custom_title = g_strdup ("");
 
   widget->terminal = vte_terminal_new ();
-  g_signal_connect (G_OBJECT (widget->terminal), "child-exited",
-                    G_CALLBACK (terminal_widget_vte_child_exited), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "encoding-changed",
-                    G_CALLBACK (terminal_widget_vte_encoding_changed), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "eof",
-                    G_CALLBACK (terminal_widget_vte_eof), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "button-press-event",
-                    G_CALLBACK (terminal_widget_vte_button_press_event), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "key-press-event",
-                    G_CALLBACK (terminal_widget_vte_key_press_event), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "selection-changed",
-                    G_CALLBACK (terminal_widget_vte_selection_changed), widget);
-  g_signal_connect (G_OBJECT (widget->terminal), "window-title-changed",
-                    G_CALLBACK (terminal_widget_vte_window_title_changed), widget);
-  g_signal_connect_after (G_OBJECT (widget->terminal), "realize",
-                          G_CALLBACK (terminal_widget_vte_realize), widget);
-  g_signal_connect_after (G_OBJECT (widget->terminal), "map",
-                          G_CALLBACK (terminal_widget_vte_map), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->terminal), "size-allocate",
-                            G_CALLBACK (terminal_widget_timer_background), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->terminal), "style-set",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_object_connect (G_OBJECT (widget->terminal),
+                    "signal::child-exited", G_CALLBACK (terminal_widget_vte_child_exited), widget,
+                    "signal::encoding-changed", G_CALLBACK (terminal_widget_vte_encoding_changed), widget,
+                    "signal::eof", G_CALLBACK (terminal_widget_vte_eof), widget,
+                    "signal::button-press-event", G_CALLBACK (terminal_widget_vte_button_press_event), widget,
+                    "signal::key-press-event", G_CALLBACK (terminal_widget_vte_key_press_event), widget,
+                    "signal::selection-changed", G_CALLBACK (terminal_widget_vte_selection_changed), widget,
+                    "signal::window-title-changed", G_CALLBACK (terminal_widget_vte_window_title_changed), widget,
+                    "signal-after::realize", G_CALLBACK (terminal_widget_vte_realize), widget,
+                    "signal-after::map", G_CALLBACK (terminal_widget_vte_map), widget,
+                    "swapped-signal::size-allocate", G_CALLBACK (terminal_widget_timer_background), widget,
+                    "swapped-signal::style-set", G_CALLBACK (terminal_widget_update_colors), widget,
+                    NULL);
   gtk_box_pack_start (GTK_BOX (widget), widget->terminal, TRUE, TRUE, 0);
   gtk_widget_show (widget->terminal);
 
@@ -296,76 +287,43 @@ terminal_widget_init (TerminalWidget *widget)
   gtk_widget_show (widget->scrollbar);
 
   widget->preferences = terminal_preferences_get ();
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-mode",
-                            G_CALLBACK (terminal_widget_update_background), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-image-file",
-                            G_CALLBACK (terminal_widget_update_background), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-image-style",
-                            G_CALLBACK (terminal_widget_update_background), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-darkness",
-                            G_CALLBACK (terminal_widget_update_background), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::binding-backspace",
-                            G_CALLBACK (terminal_widget_update_binding_backspace), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::binding-delete",
-                            G_CALLBACK (terminal_widget_update_binding_delete), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-system-theme",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-foreground",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-background",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette1",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette2",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette3",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette4",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette5",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette6",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette7",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette8",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette9",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette10",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette11",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette12",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette13",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette14",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette15",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette16",
-                            G_CALLBACK (terminal_widget_update_colors), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::font-name",
-                            G_CALLBACK (terminal_widget_update_font_name), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-bell",
-                            G_CALLBACK (terminal_widget_update_misc_bell), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-cursor-blinks",
-                            G_CALLBACK (terminal_widget_update_misc_cursor_blinks), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::scrolling-bar",
-                            G_CALLBACK (terminal_widget_update_scrolling_bar), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::scrolling-lines",
-                            G_CALLBACK (terminal_widget_update_scrolling_lines), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::scrolling-on-output",
-                            G_CALLBACK (terminal_widget_update_scrolling_on_output), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::scrolling-on-keystroke",
-                            G_CALLBACK (terminal_widget_update_scrolling_on_keystroke), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::title-initial",
-                            G_CALLBACK (terminal_widget_update_title), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::title-mode",
-                            G_CALLBACK (terminal_widget_update_title), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::word-chars",
-                            G_CALLBACK (terminal_widget_update_word_chars), widget);
+  g_object_connect (G_OBJECT (widget->preferences),
+                    "swapped-signal::notify::background-mode", G_CALLBACK (terminal_widget_update_background), widget,
+                    "swapped-signal::notify::background-image-file", G_CALLBACK (terminal_widget_update_background), widget,
+                    "swapped-signal::notify::background-image-style", G_CALLBACK (terminal_widget_update_background), widget,
+                    "swapped-signal::notify::background-darkness", G_CALLBACK (terminal_widget_update_background), widget,
+                    "swapped-signal::notify::binding-backspace", G_CALLBACK (terminal_widget_update_binding_backspace), widget,
+                    "swapped-signal::notify::binding-delete", G_CALLBACK (terminal_widget_update_binding_delete), widget,
+                    "swapped-signal::notify::color-system-theme", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-foreground", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-background", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette1", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette2", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette3", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette4", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette5", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette6", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette7", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette8", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette9", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette10", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette11", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette12", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette13", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette14", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette15", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::color-palette16", G_CALLBACK (terminal_widget_update_colors), widget,
+                    "swapped-signal::notify::font-name", G_CALLBACK (terminal_widget_update_font_name), widget,
+                    "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_widget_update_misc_bell), widget,
+                    "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_widget_update_misc_cursor_blinks), widget,
+                    "swapped-signal::notify::scrolling-bar", G_CALLBACK (terminal_widget_update_scrolling_bar), widget,
+                    "swapped-signal::notify::scrolling-lines", G_CALLBACK (terminal_widget_update_scrolling_lines), widget,
+                    "swapped-signal::notify::scrolling-on-output", G_CALLBACK (terminal_widget_update_scrolling_on_output), widget,
+                    "swapped-signal::notify::scrolling-on-keystroke", G_CALLBACK (terminal_widget_update_scrolling_on_keystroke), widget,
+                    "swapped-signal::notify::title-initial", G_CALLBACK (terminal_widget_update_title), widget,
+                    "swapped-signal::notify::title-mode", G_CALLBACK (terminal_widget_update_title), widget,
+                    "swapped-signal::notify::word-chars", G_CALLBACK (terminal_widget_update_word_chars), widget,
+                    NULL);
 
   /* apply current settings */
   terminal_widget_update_binding_backspace (widget);

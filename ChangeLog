@@ -1,3 +1,10 @@
+2004-11-17	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-widget.c: Use g_object_connect() instead of
+	  g_signal_connect()'s when connecting a large number of signals.
+	* po/de.po, po/de.gmo: Small fix to shrink the size of the utmp/wtmp
+	  translation.
+
 2004-11-16	Benedikt Meurer <benny@xfce.org>
 
 	* po/de.po, po/de.gmo: Translate `General' with `Allgemein' instead
