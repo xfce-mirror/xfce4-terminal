@@ -55,6 +55,10 @@ terminal_options_from_args (gint     argc,
 
   options = g_new0 (TerminalOptions, 1);
 
+  /* default to current working directory */
+  options->working_directory = g_get_current_dir ();
+  options->mask |= TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
+
   for (n = 1; n < argc; ++n)
     {
       if (strcmp ("--execute", argv[n]) == 0
@@ -178,8 +182,7 @@ terminal_options_from_args (gint     argc,
               s = argv[++n];
             }
 
-          if (options->working_directory != NULL)
-            g_free (options->working_directory);
+          g_free (options->working_directory);
           options->working_directory = g_strdup (s);
           options->mask |= TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
         }
@@ -204,8 +207,7 @@ terminal_options_from_args (gint     argc,
               s = argv[++n];
             }
 
-          if (options->geometry != NULL)
-            g_free (options->geometry);
+          g_free (options->geometry);
           options->geometry = g_strdup (s);
           options->mask |= TERMINAL_OPTIONS_MASK_GEOMETRY;
         }
@@ -344,11 +346,8 @@ terminal_options_free (TerminalOptions *options)
 {
   if (options->command != NULL)
     g_strfreev (options->command);
-  if (options->title != NULL)
-    g_free (options->title);
-  if (options->working_directory != NULL)
-    g_free (options->working_directory);
-  if (options->geometry != NULL)
-    g_free (options->geometry);
+  g_free (options->working_directory);
+  g_free (options->geometry);
+  g_free (options->title);
   g_free (options);
 }

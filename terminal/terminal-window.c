@@ -235,6 +235,8 @@ terminal_window_init (TerminalWindow *window)
   gchar               *file;
 
   window->preferences = terminal_preferences_get ();
+  g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::font-name",
+                            G_CALLBACK (terminal_window_queue_reset_size), window);
 
   window->action_group = gtk_action_group_new ("terminal-window");
   gtk_action_group_set_translation_domain (window->action_group,

@@ -1,5 +1,14 @@
 2004-11-10	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-window.c(terminal_window_init): Also reset the
+	  Terminal window size and update the geometry hints when the font
+	  is changed.
+	* terminal/terminal-options.c: Default to current working directory
+	  if no --working-directory option was specified. This fix a problem
+	  with ROX XTerm-here as reported by an user on the forums.
+
+2004-11-10	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-preferences-dialog.c: Reworked the background
 	  image file selector a bit.
 	* terminal/terminal-window.c: Finally found a way to fix the long
