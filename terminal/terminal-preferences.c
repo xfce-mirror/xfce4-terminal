@@ -335,7 +335,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-paste",
                                                         _("Paste"),
                                                         _("Paste"),
-                                                        "<control><shift>p",
+                                                        "<control><shift>v",
                                                         G_PARAM_READWRITE));
 
   /**
