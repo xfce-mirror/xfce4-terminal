@@ -567,7 +567,6 @@ terminal_window_action_new_tab (GtkAction       *action,
       directory = terminal_widget_get_working_directory (active);
       terminal_widget_set_working_directory (TERMINAL_WIDGET (terminal),
                                              directory);
-      g_message ("USING DIRECTORY = \"%s\"", directory);
     }
 
   terminal_window_add (window, TERMINAL_WIDGET (terminal));
