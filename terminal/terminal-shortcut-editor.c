@@ -185,6 +185,9 @@ terminal_shortcut_editor_init (TerminalShortcutEditor *editor)
 
           g_object_get (G_OBJECT (editor->preferences), pspec->name, &accel, NULL);
 
+          if (accel == NULL)
+            accel = g_strdup (_("Disabled"));
+
           gtk_tree_store_append (store, &child, &parent);
           gtk_tree_store_set (store, &child,
                               COLUMN_TITLE, g_param_spec_get_nick (pspec),
@@ -345,7 +348,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
 
   response = gtk_dialog_run (GTK_DIALOG (dialog));
   if (response == TERMINAL_RESPONSE_CLEAR)
-    g_object_set (G_OBJECT (editor->preferences), property, NULL, NULL);
+    g_object_set (G_OBJECT (editor->preferences), property, _("Disabled"), NULL);
 
   gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 

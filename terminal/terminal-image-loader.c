@@ -106,9 +106,10 @@ static void
 terminal_image_loader_check (TerminalImageLoader *loader)
 {
   TerminalBackgroundStyle selected_style;
-  GdkColor               *selected_color;
+  GdkColor                selected_color;
   gboolean                invalidate = FALSE;
   gdouble                 selected_darkness;
+  gchar                  *selected_color_spec;
   gchar                  *selected_path;
 
   g_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
@@ -117,7 +118,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
                 "background-darkness", &selected_darkness,
                 "background-image-file", &selected_path,
                 "background-image-style", &selected_style,
-                "color-background", &selected_color,
+                "color-background", &selected_color_spec,
                 NULL);
 
   if (!exo_str_is_equal (selected_path, loader->path))
@@ -145,9 +146,10 @@ terminal_image_loader_check (TerminalImageLoader *loader)
       invalidate = TRUE;
     }
 
-  if (!gdk_color_equal (selected_color, &loader->bgcolor))
+  gdk_color_parse (selected_color_spec, &selected_color);
+  if (!gdk_color_equal (&selected_color, &loader->bgcolor))
     {
-      loader->bgcolor = *selected_color;
+      loader->bgcolor = selected_color;
       invalidate = TRUE;
     }
 
@@ -158,7 +160,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
       loader->cache = NULL;
     }
 
-  gdk_color_free (selected_color);
+  g_free (selected_color_spec);
   g_free (selected_path);
 }
 

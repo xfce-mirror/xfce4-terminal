@@ -534,11 +534,11 @@ query_color (TerminalPreferences *preferences,
              const gchar         *property,
              GdkColor            *color_return)
 {
-  GdkColor *color;
+  gchar *spec;
 
-  g_object_get (G_OBJECT (preferences), property, &color, NULL);
-  *color_return = *color;
-  gdk_color_free (color);
+  g_object_get (G_OBJECT (preferences), property, &spec, NULL);
+  gdk_color_parse (spec, color_return);
+  g_free (spec);
 }
 
 
@@ -809,7 +809,7 @@ terminal_screen_timer_background (gpointer user_data)
                                               screen->terminal->allocation.width,
                                               screen->terminal->allocation.height);
           vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-          if (GDK_IS_PIXBUF (image))
+          if (image != NULL)
             g_object_unref (G_OBJECT (image));
           g_object_unref (G_OBJECT (loader));
         }
@@ -1080,7 +1080,7 @@ terminal_screen_get_title (TerminalScreen *screen)
                 NULL);
 
   vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
-  window_title = (vte_title != NULL) ? g_strdup (vte_title) : NULL;
+  window_title = g_strdup (vte_title);
 
   /* work around VTE problem, see #10 for details */
   if (window_title != NULL && vte_workaround_title_bug)
@@ -1095,8 +1095,8 @@ terminal_screen_get_title (TerminalScreen *screen)
       tmp = g_strconcat (initial, " - ", NULL);
       while (g_str_has_prefix (window_title, tmp))
         {
-          memmove (window_title, window_title + strlen (tmp),
-                   strlen (window_title) + 1 - strlen (tmp));
+          g_memmove (window_title, window_title + strlen (tmp),
+                     strlen (window_title) + 1 - strlen (tmp));
         }
       g_free (tmp);
 

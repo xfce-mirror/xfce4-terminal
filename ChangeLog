@@ -1,3 +1,12 @@
+2004-11-29	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-screen.c, terminal/terminal-shortcut-editor.c,
+	  terminal/terminal-preferences.c, terminal/terminal-image-loader.c:
+	  Drastically simplified the TerminalPreferences class. Its nearly
+	  100% generic now.
+	* terminal/terminal-accel-map.c: Call the notify handler directly
+	  instead of calling g_object_notify.
+
 2004-11-28	Benedikt Meurer <benny@xfce.org>
 
 	* po/de.po, po/de.gmo: Fix version number.

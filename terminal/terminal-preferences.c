@@ -105,78 +105,17 @@ enum
   PROP_TERM,
   PROP_VTE_WORKAROUND_TITLE_BUG,
   PROP_WORD_CHARS,
+  N_PROPERTIES,
 };
 
 struct _TerminalPreferences
 {
-  GObject                  __parent__;
+  GObject __parent__;
 
-  gchar                   *accel_new_tab;
-  gchar                   *accel_new_window;
-  gchar                   *accel_close_tab;
-  gchar                   *accel_close_window;
-  gchar                   *accel_copy;
-  gchar                   *accel_paste;
-  gchar                   *accel_preferences;
-  gchar                   *accel_show_menubar;
-  gchar                   *accel_show_toolbars;
-  gchar                   *accel_show_borders;
-  gchar                   *accel_fullscreen;
-  gchar                   *accel_prev_tab;
-  gchar                   *accel_next_tab;
-  gchar                   *accel_set_title;
-  gchar                   *accel_reset;
-  gchar                   *accel_reset_and_clear;
-  gchar                   *accel_contents;
-  TerminalBackground       background_mode;
-  gchar                   *background_image_file;
-  TerminalBackgroundStyle  background_image_style;
-  gdouble                  background_darkness;
-  TerminalEraseBinding     binding_backspace;
-  TerminalEraseBinding     binding_delete;
-  gboolean                 color_system_theme;
-  GdkColor                 color_foreground;
-  GdkColor                 color_background;
-  GdkColor                 color_palette1;
-  GdkColor                 color_palette2;
-  GdkColor                 color_palette3;
-  GdkColor                 color_palette4;
-  GdkColor                 color_palette5;
-  GdkColor                 color_palette6;
-  GdkColor                 color_palette7;
-  GdkColor                 color_palette8;
-  GdkColor                 color_palette9;
-  GdkColor                 color_palette10;
-  GdkColor                 color_palette11;
-  GdkColor                 color_palette12;
-  GdkColor                 color_palette13;
-  GdkColor                 color_palette14;
-  GdkColor                 color_palette15;
-  GdkColor                 color_palette16;
-  gboolean                 command_update_records;
-  gboolean                 command_login_shell;
-  gboolean                 font_anti_alias;
-  gchar                   *font_name;
-  gboolean                 misc_bell;
-  gboolean                 misc_borders_default;
-  gboolean                 misc_cursor_blinks;
-  gboolean                 misc_menubar_default;
-  gboolean                 misc_toolbars_default;
-  gboolean                 misc_confirm_close;
-  TerminalScrollbar        scrolling_bar;
-  guint                    scrolling_lines;
-  gboolean                 scrolling_on_output;
-  gboolean                 scrolling_on_keystroke;
-  gboolean                 shortcuts_no_menukey;
-  gboolean                 shortcuts_no_mnemonics;
-  gchar                   *title_initial;
-  TerminalTitle            title_mode;
-  gchar                   *term;
-  gboolean                 vte_workaround_title_bug;
-  gchar                   *word_chars;
-
-  guint                 store_idle_id;
-  guint                 loading_in_progress : 1;
+  /*< private >*/
+  GValue *values;
+  guint   store_idle_id;
+  guint   loading_in_progress : 1;
 };
 
 
@@ -198,7 +137,7 @@ static void     terminal_preferences_store_idle_destroy (gpointer             us
 
 
 
-static GObjectClass *parent_class;
+static GObjectClass        *parent_class;
 static TerminalPreferences *default_preferences = NULL;
 
 
@@ -332,7 +271,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-new-tab",
                                                         _("Open Tab"),
                                                         _("Open Tab"),
-                                                        NULL,
+                                                        "<control><shift>t",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -343,7 +282,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-new-window",
                                                         _("Open Terminal"),
                                                         _("Open Terminal"),
-                                                        NULL,
+                                                        "<control><shift>n",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -354,7 +293,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-close-tab",
                                                         _("Close Tab"),
                                                         _("Close Tab"),
-                                                        NULL,
+                                                        "<control><shift>w",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -365,7 +304,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-close-window",
                                                         _("Close Window"),
                                                         _("Close Window"),
-                                                        NULL,
+                                                        "<control><shift>q",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -376,7 +315,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-copy",
                                                         _("Copy"),
                                                         _("Copy"),
-                                                        NULL,
+                                                        "<control><shift>c",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -387,7 +326,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-paste",
                                                         _("Paste"),
                                                         _("Paste"),
-                                                        NULL,
+                                                        "<control><shift>p",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -398,7 +337,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-preferences",
                                                         _("Preferences"),
                                                         _("Preferences"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -409,7 +348,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-menubar",
                                                         _("Show menubar"),
                                                         _("Show menubar"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -420,7 +359,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-toolbars",
                                                         _("Show toolbars"),
                                                         _("Show toolbars"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -431,7 +370,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-borders",
                                                         _("Show borders"),
                                                         _("Show borders"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -442,7 +381,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-fullscreen",
                                                         _("Fullscreen"),
                                                         _("Fullscreen"),
-                                                        NULL,
+                                                        "F11",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -453,7 +392,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-prev-tab",
                                                         _("Previous Tab"),
                                                         _("Previous Tab"),
-                                                        NULL,
+                                                        "<control>Page_Up",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -464,7 +403,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-next-tab",
                                                         _("Next Tab"),
                                                         _("Next Tab"),
-                                                        NULL,
+                                                        "<control>Page_Down",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -475,7 +414,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-set-title",
                                                         _("Set Title"),
                                                         _("Set Title"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -486,7 +425,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-reset",
                                                         _("Reset"),
                                                         _("Reset"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -497,7 +436,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-reset-and-clear",
                                                         _("Reset and Clear"),
                                                         _("Reset and Clear"),
-                                                        NULL,
+                                                        _("Disabled"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -508,7 +447,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-contents",
                                                         _("Contents"),
                                                         _("Contents"),
-                                                        NULL,
+                                                        "F1",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -531,7 +470,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("background-image-file",
                                                         _("Background image file"),
                                                         _("Background image file"),
-                                                        NULL,
+                                                        "",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -602,198 +541,198 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_FOREGROUND,
-                                   g_param_spec_boxed ("color-foreground",
-                                                       _("Foreground color"),
-                                                       _("Terminal foreground color"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-foreground",
+                                                        _("Foreground color"),
+                                                        _("Terminal foreground color"),
+                                                        "White",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-background:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_BACKGROUND,
-                                   g_param_spec_boxed ("color-background",
-                                                       _("Background color"),
-                                                       _("Terminal background color"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-background",
+                                                        _("Background color"),
+                                                        _("Terminal background color"),
+                                                        "Black",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette1:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE1,
-                                   g_param_spec_boxed ("color-palette1",
-                                                       _("Palette entry 1"),
-                                                       _("Palette entry 1"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette1",
+                                                        _("Palette entry 1"),
+                                                        _("Palette entry 1"),
+                                                        "#000000000000",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette2:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE2,
-                                   g_param_spec_boxed ("color-palette2",
-                                                       _("Palette entry 2"),
-                                                       _("Palette entry 2"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette2",
+                                                        _("Palette entry 2"),
+                                                        _("Palette entry 2"),
+                                                        "#aaaa00000000",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette3:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE3,
-                                   g_param_spec_boxed ("color-palette3",
-                                                       _("Palette entry 3"),
-                                                       _("Palette entry 3"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette3",
+                                                        _("Palette entry 3"),
+                                                        _("Palette entry 3"),
+                                                        "#0000aaaa0000",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette4:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE4,
-                                   g_param_spec_boxed ("color-palette4",
-                                                       _("Palette entry 4"),
-                                                       _("Palette entry 4"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette4",
+                                                        _("Palette entry 4"),
+                                                        _("Palette entry 4"),
+                                                        "#aaaa55550000",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette5:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE5,
-                                   g_param_spec_boxed ("color-palette5",
-                                                       _("Palette entry 5"),
-                                                       _("Palette entry 5"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette5",
+                                                        _("Palette entry 5"),
+                                                        _("Palette entry 5"),
+                                                        "#00000000aaaa",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette6:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE6,
-                                   g_param_spec_boxed ("color-palette6",
-                                                       _("Palette entry 6"),
-                                                       _("Palette entry 6"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette6",
+                                                        _("Palette entry 6"),
+                                                        _("Palette entry 6"),
+                                                        "#aaaa0000aaaa",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette7:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE7,
-                                   g_param_spec_boxed ("color-palette7",
-                                                       _("Palette entry 7"),
-                                                       _("Palette entry 7"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette7",
+                                                        _("Palette entry 7"),
+                                                        _("Palette entry 7"),
+                                                        "#0000aaaaaaaa",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette8:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE8,
-                                   g_param_spec_boxed ("color-palette8",
-                                                       _("Palette entry 8"),
-                                                       _("Palette entry 8"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette8",
+                                                        _("Palette entry 8"),
+                                                        _("Palette entry 8"),
+                                                        "#aaaaaaaaaaaa",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette9:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE9,
-                                   g_param_spec_boxed ("color-palette9",
-                                                       _("Palette entry 9"),
-                                                       _("Palette entry 9"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette9",
+                                                        _("Palette entry 9"),
+                                                        _("Palette entry 9"),
+                                                        "#555555555555",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette10:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE10,
-                                   g_param_spec_boxed ("color-palette10",
-                                                       _("Palette entry 10"),
-                                                       _("Palette entry 10"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette10",
+                                                        _("Palette entry 10"),
+                                                        _("Palette entry 10"),
+                                                        "#ffff55555555",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette11:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE11,
-                                   g_param_spec_boxed ("color-palette11",
-                                                       _("Palette entry 11"),
-                                                       _("Palette entry 11"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette11",
+                                                        _("Palette entry 11"),
+                                                        _("Palette entry 11"),
+                                                        "#5555ffff5555",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette12:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE12,
-                                   g_param_spec_boxed ("color-palette12",
-                                                       _("Palette entry 12"),
-                                                       _("Palette entry 12"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette12",
+                                                        _("Palette entry 12"),
+                                                        _("Palette entry 12"),
+                                                        "#ffffffff5555",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette13:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE13,
-                                   g_param_spec_boxed ("color-palette13",
-                                                       _("Palette entry 13"),
-                                                       _("Palette entry 13"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette13",
+                                                        _("Palette entry 13"),
+                                                        _("Palette entry 13"),
+                                                        "#55555555ffff",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette14:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE14,
-                                   g_param_spec_boxed ("color-palette14",
-                                                       _("Palette entry 14"),
-                                                       _("Palette entry 14"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette14",
+                                                        _("Palette entry 14"),
+                                                        _("Palette entry 14"),
+                                                        "#ffff5555ffff",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette15:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE15,
-                                   g_param_spec_boxed ("color-palette15",
-                                                       _("Palette entry 15"),
-                                                       _("Palette entry 15"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette15",
+                                                        _("Palette entry 15"),
+                                                        _("Palette entry 15"),
+                                                        "#5555ffffffff",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-palette16:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR_PALETTE16,
-                                   g_param_spec_boxed ("color-palette16",
-                                                       _("Palette entry 16"),
-                                                       _("Palette entry 16"),
-                                                       GDK_TYPE_COLOR,
-                                                       G_PARAM_READWRITE));
+                                   g_param_spec_string ("color-palette16",
+                                                        _("Palette entry 16"),
+                                                        _("Palette entry 16"),
+                                                        "#ffffffffffff",
+                                                        G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:command-update-records:
@@ -836,7 +775,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("font-name",
                                                         _("Font name"),
                                                         _("Terminal font name"),
-                                                        NULL,
+                                                        "Monospace 12",
                                                         G_PARAM_READWRITE));
 
   /**
@@ -982,7 +921,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("title-initial",
                                                         _("Initial title"),
                                                         _("Initial Terminal title"),
-                                                        NULL,
+                                                        _("Terminal"),
                                                         G_PARAM_READWRITE));
 
   /**
@@ -1027,7 +966,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("word-chars",
                                                         _("Word chars"),
                                                         _("Word characters"),
-                                                        NULL,
+                                                        "-A-Za-z0-9,./?%&#:_",
                                                         G_PARAM_READWRITE));
 }
 
@@ -1036,81 +975,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  preferences->accel_new_tab          = g_strdup ("<control><shift>t");
-  preferences->accel_new_window       = g_strdup ("<control><shift>n");
-  preferences->accel_close_tab        = g_strdup ("<control><shift>w");
-  preferences->accel_close_window     = g_strdup ("<control><shift>q");
-  preferences->accel_copy             = g_strdup ("<control><shift>c");
-  preferences->accel_paste            = g_strdup ("<control><shift>p");
-  preferences->accel_preferences      = g_strdup (_("Disabled"));
-  preferences->accel_show_menubar     = g_strdup (_("Disabled"));
-  preferences->accel_show_toolbars    = g_strdup (_("Disabled"));
-  preferences->accel_show_borders     = g_strdup (_("Disabled"));
-  preferences->accel_fullscreen       = g_strdup ("F11");
-  preferences->accel_prev_tab         = g_strdup ("<control>Page_Up");
-  preferences->accel_next_tab         = g_strdup ("<control>Page_Down");
-  preferences->accel_set_title        = g_strdup (_("Disabled"));
-  preferences->accel_reset            = g_strdup (_("Disabled"));
-  preferences->accel_reset_and_clear  = g_strdup (_("Disabled"));
-  preferences->accel_contents         = g_strdup ("F1");
-
-  preferences->background_mode        = TERMINAL_BACKGROUND_SOLID;
-  preferences->background_image_file  = g_strdup ("");
-  preferences->background_image_style = TERMINAL_BACKGROUND_STYLE_TILED;
-  preferences->background_darkness    = 0.5;
-
-  preferences->binding_backspace      = TERMINAL_ERASE_BINDING_ASCII_DELETE;
-  preferences->binding_delete         = TERMINAL_ERASE_BINDING_DELETE_SEQUENCE;
-
-  preferences->color_system_theme     = FALSE;
-  gdk_color_parse ("White", &preferences->color_foreground);
-  gdk_color_parse ("Black", &preferences->color_background);
-  gdk_color_parse ("#000000000000", &preferences->color_palette1);
-  gdk_color_parse ("#aaaa00000000", &preferences->color_palette2);
-  gdk_color_parse ("#0000aaaa0000", &preferences->color_palette3);
-  gdk_color_parse ("#aaaa55550000", &preferences->color_palette4);
-  gdk_color_parse ("#00000000aaaa", &preferences->color_palette5);
-  gdk_color_parse ("#aaaa0000aaaa", &preferences->color_palette6);
-  gdk_color_parse ("#0000aaaaaaaa", &preferences->color_palette7);
-  gdk_color_parse ("#aaaaaaaaaaaa", &preferences->color_palette8);
-  gdk_color_parse ("#555555555555", &preferences->color_palette9);
-  gdk_color_parse ("#ffff55555555", &preferences->color_palette10);
-  gdk_color_parse ("#5555ffff5555", &preferences->color_palette11);
-  gdk_color_parse ("#ffffffff5555", &preferences->color_palette12);
-  gdk_color_parse ("#55555555ffff", &preferences->color_palette13);
-  gdk_color_parse ("#ffff5555ffff", &preferences->color_palette14);
-  gdk_color_parse ("#5555ffffffff", &preferences->color_palette15);
-  gdk_color_parse ("#ffffffffffff", &preferences->color_palette16);
-
-  preferences->command_update_records   = TRUE;
-  preferences->command_login_shell      = FALSE;
-
-  preferences->misc_bell                = FALSE;
-  preferences->misc_borders_default     = TRUE;
-  preferences->misc_cursor_blinks       = FALSE;
-  preferences->misc_menubar_default     = TRUE;
-  preferences->misc_toolbars_default    = FALSE;
-  preferences->misc_confirm_close       = TRUE;
-
-  preferences->font_anti_alias          = TRUE;
-  preferences->font_name                = g_strdup ("Monospace 12");
-
-  preferences->scrolling_bar            = TERMINAL_SCROLLBAR_RIGHT;
-  preferences->scrolling_lines          = 1000;
-  preferences->scrolling_on_output      = TRUE;
-  preferences->scrolling_on_keystroke   = TRUE;
-
-  preferences->shortcuts_no_menukey     = FALSE;
-  preferences->shortcuts_no_mnemonics   = FALSE;
-
-  preferences->title_initial            = g_strdup (_("Terminal"));
-  preferences->title_mode               = TERMINAL_TITLE_APPEND;
-
-  preferences->term                     = g_strdup ("xterm");
-
-  preferences->vte_workaround_title_bug = TRUE;
-
-  preferences->word_chars               = g_strdup ("-A-Za-z0-9,./?%&#:_");
+  preferences->values = g_new0 (GValue, N_PROPERTIES);
 
   terminal_preferences_load (preferences);
 }
@@ -1138,28 +1003,12 @@ static void
 terminal_preferences_finalize (GObject *object)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
+  guint                n;
 
-  g_free (preferences->accel_new_tab);
-  g_free (preferences->accel_new_window);
-  g_free (preferences->accel_close_tab);
-  g_free (preferences->accel_close_window);
-  g_free (preferences->accel_copy);
-  g_free (preferences->accel_paste);
-  g_free (preferences->accel_preferences);
-  g_free (preferences->accel_show_menubar);
-  g_free (preferences->accel_show_toolbars);
-  g_free (preferences->accel_show_borders);
-  g_free (preferences->accel_fullscreen);
-  g_free (preferences->accel_prev_tab);
-  g_free (preferences->accel_next_tab);
-  g_free (preferences->accel_set_title);
-  g_free (preferences->accel_reset);
-  g_free (preferences->accel_reset_and_clear);
-  g_free (preferences->accel_contents);
-  g_free (preferences->background_image_file);
-  g_free (preferences->font_name);
-  g_free (preferences->title_initial);
-  g_free (preferences->word_chars);
+  for (n = 1; n < N_PROPERTIES; ++n)
+    if (G_IS_VALUE (preferences->values + n))
+      g_value_unset (preferences->values + n);
+  g_free (preferences->values);
 
   parent_class->finalize (object);
 }
@@ -1173,265 +1022,15 @@ terminal_preferences_get_property (GObject    *object,
                                    GParamSpec *pspec)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-
-  switch (prop_id)
-    {
-    case PROP_ACCEL_NEW_TAB:
-      g_value_set_string (value, preferences->accel_new_tab);
-      break;
-
-    case PROP_ACCEL_NEW_WINDOW:
-      g_value_set_string (value, preferences->accel_new_window);
-      break;
-
-    case PROP_ACCEL_CLOSE_TAB:
-      g_value_set_string (value, preferences->accel_close_tab);
-      break;
-
-    case PROP_ACCEL_CLOSE_WINDOW:
-      g_value_set_string (value, preferences->accel_close_window);
-      break;
-
-    case PROP_ACCEL_COPY:
-      g_value_set_string (value, preferences->accel_copy);
-      break;
-
-    case PROP_ACCEL_PASTE:
-      g_value_set_string (value, preferences->accel_paste);
-      break;
-
-    case PROP_ACCEL_PREFERENCES:
-      g_value_set_string (value, preferences->accel_preferences);
-      break;
-
-    case PROP_ACCEL_SHOW_MENUBAR:
-      g_value_set_string (value, preferences->accel_show_menubar);
-      break;
-
-    case PROP_ACCEL_SHOW_TOOLBARS:
-      g_value_set_string (value, preferences->accel_show_toolbars);
-      break;
-
-    case PROP_ACCEL_SHOW_BORDERS:
-      g_value_set_string (value, preferences->accel_show_borders);
-      break;
-
-    case PROP_ACCEL_FULLSCREEN:
-      g_value_set_string (value, preferences->accel_fullscreen);
-      break;
-
-    case PROP_ACCEL_PREV_TAB:
-      g_value_set_string (value, preferences->accel_prev_tab);
-      break;
-
-    case PROP_ACCEL_NEXT_TAB:
-      g_value_set_string (value, preferences->accel_next_tab);
-      break;
-
-    case PROP_ACCEL_SET_TITLE:
-      g_value_set_string (value, preferences->accel_set_title);
-      break;
-
-    case PROP_ACCEL_RESET:
-      g_value_set_string (value, preferences->accel_reset);
-      break;
-
-    case PROP_ACCEL_RESET_AND_CLEAR:
-      g_value_set_string (value, preferences->accel_reset_and_clear);
-      break;
-
-    case PROP_ACCEL_CONTENTS:
-      g_value_set_string (value, preferences->accel_contents);
-      break;
-
-    case PROP_BACKGROUND_MODE:
-      g_value_set_enum (value, preferences->background_mode);
-      break;
-
-    case PROP_BACKGROUND_IMAGE_FILE:
-      g_value_set_string (value, preferences->background_image_file);
-      break;
-
-    case PROP_BACKGROUND_IMAGE_STYLE:
-      g_value_set_enum (value, preferences->background_image_style);
-      break;
-
-    case PROP_BACKGROUND_DARKNESS:
-      g_value_set_double (value, preferences->background_darkness);
-      break;
-
-    case PROP_BINDING_BACKSPACE:
-      g_value_set_enum (value, preferences->binding_backspace);
-      break;
-
-    case PROP_BINDING_DELETE:
-      g_value_set_enum (value, preferences->binding_delete);
-      break;
-
-    case PROP_COLOR_SYSTEM_THEME:
-      g_value_set_boolean (value, preferences->color_system_theme);
-      break;
-
-    case PROP_COLOR_FOREGROUND:
-      g_value_set_boxed (value, &preferences->color_foreground);
-      break;
-
-    case PROP_COLOR_BACKGROUND:
-      g_value_set_boxed (value, &preferences->color_background);
-      break;
-
-    case PROP_COLOR_PALETTE1:
-      g_value_set_boxed (value, &preferences->color_palette1);
-      break;
-
-    case PROP_COLOR_PALETTE2:
-      g_value_set_boxed (value, &preferences->color_palette2);
-      break;
-
-    case PROP_COLOR_PALETTE3:
-      g_value_set_boxed (value, &preferences->color_palette3);
-      break;
-
-    case PROP_COLOR_PALETTE4:
-      g_value_set_boxed (value, &preferences->color_palette4);
-      break;
-
-    case PROP_COLOR_PALETTE5:
-      g_value_set_boxed (value, &preferences->color_palette5);
-      break;
-
-    case PROP_COLOR_PALETTE6:
-      g_value_set_boxed (value, &preferences->color_palette6);
-      break;
-
-    case PROP_COLOR_PALETTE7:
-      g_value_set_boxed (value, &preferences->color_palette7);
-      break;
-
-    case PROP_COLOR_PALETTE8:
-      g_value_set_boxed (value, &preferences->color_palette8);
-      break;
-
-    case PROP_COLOR_PALETTE9:
-      g_value_set_boxed (value, &preferences->color_palette9);
-      break;
-
-    case PROP_COLOR_PALETTE10:
-      g_value_set_boxed (value, &preferences->color_palette10);
-      break;
-
-    case PROP_COLOR_PALETTE11:
-      g_value_set_boxed (value, &preferences->color_palette11);
-      break;
-
-    case PROP_COLOR_PALETTE12:
-      g_value_set_boxed (value, &preferences->color_palette12);
-      break;
-
-    case PROP_COLOR_PALETTE13:
-      g_value_set_boxed (value, &preferences->color_palette13);
-      break;
-
-    case PROP_COLOR_PALETTE14:
-      g_value_set_boxed (value, &preferences->color_palette14);
-      break;
-
-    case PROP_COLOR_PALETTE15:
-      g_value_set_boxed (value, &preferences->color_palette15);
-      break;
-
-    case PROP_COLOR_PALETTE16:
-      g_value_set_boxed (value, &preferences->color_palette16);
-      break;
-
-    case PROP_COMMAND_UPDATE_RECORDS:
-      g_value_set_boolean (value, preferences->command_update_records);
-      break;
-
-    case PROP_COMMAND_LOGIN_SHELL:
-      g_value_set_boolean (value, preferences->command_login_shell);
-      break;
-
-    case PROP_FONT_ANTI_ALIAS:
-      g_value_set_boolean (value, preferences->font_anti_alias);
-      break;
-
-    case PROP_FONT_NAME:
-      g_value_set_string (value, preferences->font_name);
-      break;
-
-    case PROP_MISC_BELL:
-      g_value_set_boolean (value, preferences->misc_bell);
-      break;
-
-    case PROP_MISC_BORDERS_DEFAULT:
-      g_value_set_boolean (value, preferences->misc_borders_default);
-      break;
-
-    case PROP_MISC_CURSOR_BLINKS:
-      g_value_set_boolean (value, preferences->misc_cursor_blinks);
-      break;
-
-    case PROP_MISC_MENUBAR_DEFAULT:
-      g_value_set_boolean (value, preferences->misc_menubar_default);
-      break;
-
-    case PROP_MISC_TOOLBARS_DEFAULT:
-      g_value_set_boolean (value, preferences->misc_toolbars_default);
-      break;
-
-    case PROP_MISC_CONFIRM_CLOSE:
-      g_value_set_boolean (value, preferences->misc_confirm_close);
-      break;
-
-    case PROP_SCROLLING_BAR:
-      g_value_set_enum (value, preferences->scrolling_bar);
-      break;
-
-    case PROP_SCROLLING_LINES:
-      g_value_set_uint (value, preferences->scrolling_lines);
-      break;
-
-    case PROP_SCROLLING_ON_OUTPUT:
-      g_value_set_boolean (value, preferences->scrolling_on_output);
-      break;
-
-    case PROP_SCROLLING_ON_KEYSTROKE:
-      g_value_set_boolean (value, preferences->scrolling_on_keystroke);
-      break;
-
-    case PROP_SHORTCUTS_NO_MENUKEY:
-      g_value_set_boolean (value, preferences->shortcuts_no_menukey);
-      break;
-
-    case PROP_SHORTCUTS_NO_MNEMONICS:
-      g_value_set_boolean (value, preferences->shortcuts_no_mnemonics);
-      break;
-
-    case PROP_TITLE_INITIAL:
-      g_value_set_string (value, preferences->title_initial);
-      break;
-
-    case PROP_TITLE_MODE:
-      g_value_set_enum (value, preferences->title_mode);
-      break;
-
-    case PROP_TERM:
-      g_value_set_string (value, preferences->term);
-      break;
-
-    case PROP_VTE_WORKAROUND_TITLE_BUG:
-      g_value_set_boolean (value, preferences->vte_workaround_title_bug);
-      break;
-
-    case PROP_WORD_CHARS:
-      g_value_set_string (value, preferences->word_chars);
-      break;
-
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-      break;
-    }
+  GValue              *src;
+
+  g_return_if_fail (prop_id < N_PROPERTIES);
+
+  src = preferences->values + prop_id;
+  if (G_VALUE_HOLDS (src, pspec->value_type))
+    g_value_copy (src, value);
+  else
+    g_param_value_set_default (pspec, value);
 }
 
 
@@ -1443,670 +1042,19 @@ terminal_preferences_set_property (GObject      *object,
                                    GParamSpec   *pspec)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
-  const gchar         *sval;
-  GdkColor            *color;
-  gboolean             bval;
-  gdouble              dval;
-  guint                uval;
-  gint                 ival;
+  GValue              *dst;
 
-  switch (prop_id)
+  g_return_if_fail (prop_id < N_PROPERTIES);
+
+  dst = preferences->values + prop_id;
+  if (!G_IS_VALUE (dst))
+    g_value_init (dst, pspec->value_type);
+
+  if (g_param_values_cmp (pspec, value, dst) != 0)
     {
-    case PROP_ACCEL_NEW_TAB:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_new_tab))
-        {
-          g_free (preferences->accel_new_tab);
-          preferences->accel_new_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-new-tab");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_NEW_WINDOW:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_new_window))
-        {
-          g_free (preferences->accel_new_window);
-          preferences->accel_new_window = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-new-window");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_CLOSE_TAB:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_close_tab))
-        {
-          g_free (preferences->accel_close_tab);
-          preferences->accel_close_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-close-tab");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_CLOSE_WINDOW:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_close_window))
-        {
-          g_free (preferences->accel_close_window);
-          preferences->accel_close_window = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-close-window");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_COPY:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_copy))
-        {
-          g_free (preferences->accel_copy);
-          preferences->accel_copy = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-copy");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_PASTE:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_paste))
-        {
-          g_free (preferences->accel_paste);
-          preferences->accel_paste = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-paste");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_PREFERENCES:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_preferences))
-        {
-          g_free (preferences->accel_preferences);
-          preferences->accel_preferences = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-preferences");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_SHOW_MENUBAR:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_show_menubar))
-        {
-          g_free (preferences->accel_show_menubar);
-          preferences->accel_show_menubar = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-show-menubar");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_SHOW_TOOLBARS:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_show_toolbars))
-        {
-          g_free (preferences->accel_show_toolbars);
-          preferences->accel_show_toolbars = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-show-toolbars");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_SHOW_BORDERS:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_show_borders))
-        {
-          g_free (preferences->accel_show_borders);
-          preferences->accel_show_borders = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-show-borders");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_FULLSCREEN:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_fullscreen))
-        {
-          g_free (preferences->accel_fullscreen);
-          preferences->accel_fullscreen = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-fullscreen");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_PREV_TAB:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_prev_tab))
-        {
-          g_free (preferences->accel_prev_tab);
-          preferences->accel_prev_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-prev-tab");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_NEXT_TAB:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_next_tab))
-        {
-          g_free (preferences->accel_next_tab);
-          preferences->accel_next_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-next-tab");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_SET_TITLE:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_set_title))
-        {
-          g_free (preferences->accel_set_title);
-          preferences->accel_set_title = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-set-title");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_RESET:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_reset))
-        {
-          g_free (preferences->accel_reset);
-          preferences->accel_reset = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-reset");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_RESET_AND_CLEAR:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_reset_and_clear))
-        {
-          g_free (preferences->accel_reset_and_clear);
-          preferences->accel_reset_and_clear = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-reset-and-clear");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_CONTENTS:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_contents))
-        {
-          g_free (preferences->accel_contents);
-          preferences->accel_contents = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-contents");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_BACKGROUND_MODE:
-      ival = g_value_get_enum (value);
-      if (ival != preferences->background_mode)
-        {
-          preferences->background_mode = ival;
-          g_object_notify (object, "background-mode");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_BACKGROUND_IMAGE_FILE:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->background_image_file))
-        {
-          g_free (preferences->background_image_file);
-          preferences->background_image_file = g_strdup (sval);
-          g_object_notify (object, "background-image-file");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_BACKGROUND_IMAGE_STYLE:
-      ival = g_value_get_enum (value);
-      if (ival != preferences->background_image_style)
-        {
-          preferences->background_image_style = ival;
-          g_object_notify (object, "background-image-style");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_BACKGROUND_DARKNESS:
-      dval = g_value_get_double (value);
-      if (dval != preferences->background_darkness)
-        {
-          preferences->background_darkness = dval;
-          g_object_notify (object, "background-darkness");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_BINDING_BACKSPACE:
-      ival = g_value_get_enum (value);
-      if (ival != preferences->binding_backspace)
-        {
-          preferences->binding_backspace = ival;
-          g_object_notify (object, "binding-backspace");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_BINDING_DELETE:
-      ival = g_value_get_enum (value);
-      if (ival != preferences->binding_delete)
-        {
-          preferences->binding_delete = ival;
-          g_object_notify (object, "binding-delete");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_SYSTEM_THEME:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->color_system_theme)
-        {
-          preferences->color_system_theme = bval;
-          g_object_notify (object, "color-system-theme");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_FOREGROUND:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_foreground))
-        {
-          preferences->color_foreground = *color;
-          g_object_notify (object, "color-foreground");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_BACKGROUND:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_background))
-        {
-          preferences->color_background = *color;
-          g_object_notify (object, "color-background");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE1:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette1))
-        {
-          preferences->color_palette1 = *color;
-          g_object_notify (object, "color-palette1");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE2:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette2))
-        {
-          preferences->color_palette2 = *color;
-          g_object_notify (object, "color-palette2");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE3:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette3))
-        {
-          preferences->color_palette3 = *color;
-          g_object_notify (object, "color-palette3");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE4:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette4))
-        {
-          preferences->color_palette4 = *color;
-          g_object_notify (object, "color-palette4");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE5:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette5))
-        {
-          preferences->color_palette5 = *color;
-          g_object_notify (object, "color-palette5");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE6:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette6))
-        {
-          preferences->color_palette6 = *color;
-          g_object_notify (object, "color-palette6");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE7:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette7))
-        {
-          preferences->color_palette7 = *color;
-          g_object_notify (object, "color-palette7");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE8:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette8))
-        {
-          preferences->color_palette8 = *color;
-          g_object_notify (object, "color-palette8");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE9:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette9))
-        {
-          preferences->color_palette9 = *color;
-          g_object_notify (object, "color-palette9");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE10:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette10))
-        {
-          preferences->color_palette10 = *color;
-          g_object_notify (object, "color-palette10");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE11:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette11))
-        {
-          preferences->color_palette11 = *color;
-          g_object_notify (object, "color-palette11");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE12:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette12))
-        {
-          preferences->color_palette12 = *color;
-          g_object_notify (object, "color-palette12");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE13:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette13))
-        {
-          preferences->color_palette13 = *color;
-          g_object_notify (object, "color-palette13");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE14:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette14))
-        {
-          preferences->color_palette14 = *color;
-          g_object_notify (object, "color-palette14");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE15:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette15))
-        {
-          preferences->color_palette15 = *color;
-          g_object_notify (object, "color-palette15");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COLOR_PALETTE16:
-      color = g_value_get_boxed (value);
-      if (!gdk_color_equal (color, &preferences->color_palette16))
-        {
-          preferences->color_palette16 = *color;
-          g_object_notify (object, "color-palette16");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COMMAND_UPDATE_RECORDS:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->command_update_records)
-        {
-          preferences->command_update_records = bval;
-          g_object_notify (object, "command-update-records");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COMMAND_LOGIN_SHELL:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->command_login_shell)
-        {
-          preferences->command_login_shell = bval;
-          g_object_notify (object, "command-login-shell");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_FONT_ANTI_ALIAS:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->font_anti_alias)
-        {
-          preferences->font_anti_alias = bval;
-          g_object_notify (object, "font-anti-alias");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_FONT_NAME:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->font_name))
-        {
-          g_free (preferences->font_name);
-          preferences->font_name = (sval != NULL) ? g_strdup (sval) : NULL;
-          g_object_notify (object, "font-name");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_BELL:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_bell)
-        {
-          preferences->misc_bell = bval;
-          g_object_notify (object, "misc-bell");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_BORDERS_DEFAULT:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_borders_default)
-        {
-          preferences->misc_borders_default = bval;
-          g_object_notify (object, "misc-borders-default");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_CURSOR_BLINKS:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_cursor_blinks)
-        {
-          preferences->misc_cursor_blinks = bval;
-          g_object_notify (object, "misc-cursor-blinks");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_MENUBAR_DEFAULT:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_menubar_default)
-        {
-          preferences->misc_menubar_default = bval;
-          g_object_notify (object, "misc-menubar-default");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_TOOLBARS_DEFAULT:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_toolbars_default)
-        {
-          preferences->misc_toolbars_default = bval;
-          g_object_notify (object, "misc-toolbars-default");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_CONFIRM_CLOSE:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_confirm_close)
-        {
-          preferences->misc_confirm_close = bval;
-          g_object_notify (object, "misc-confirm-close");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_SCROLLING_BAR:
-      ival = g_value_get_enum (value);
-      if (ival != preferences->scrolling_bar)
-        {
-          preferences->scrolling_bar = ival;
-          g_object_notify (object, "scrolling-bar");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_SCROLLING_LINES:
-      uval = g_value_get_uint (value);
-      if (uval != preferences->scrolling_lines)
-        {
-          preferences->scrolling_lines = uval;
-          g_object_notify (object, "scrolling-lines");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_SCROLLING_ON_OUTPUT:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->scrolling_on_output)
-        {
-          preferences->scrolling_on_output = bval;
-          g_object_notify (object, "scrolling-on-output");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_SCROLLING_ON_KEYSTROKE:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->scrolling_on_keystroke)
-        {
-          preferences->scrolling_on_keystroke = bval;
-          g_object_notify (object, "scrolling-on-keystroke");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_SHORTCUTS_NO_MENUKEY:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->shortcuts_no_menukey)
-        {
-          preferences->shortcuts_no_menukey = bval;
-          g_object_notify (object, "shortcuts-no-menukey");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_SHORTCUTS_NO_MNEMONICS:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->shortcuts_no_mnemonics)
-        {
-          preferences->shortcuts_no_mnemonics = bval;
-          g_object_notify (object, "shortcuts-no-mnemonics");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_TITLE_INITIAL:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->title_initial))
-        {
-          g_free (preferences->title_initial);
-          preferences->title_initial = g_strdup (sval);
-          g_object_notify (object, "title-initial");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_TITLE_MODE:
-      ival = g_value_get_enum (value);
-      if (ival != preferences->title_mode)
-        {
-          preferences->title_mode = ival;
-          g_object_notify (object, "title-mode");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_TERM:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->term))
-        {
-          g_free (preferences->term);
-          preferences->term = g_strdup (sval);
-          g_object_notify (object, "term");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_VTE_WORKAROUND_TITLE_BUG:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->vte_workaround_title_bug)
-        {
-          preferences->vte_workaround_title_bug = bval;
-          g_object_notify (object, "vte-workaround-title-bug");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_WORD_CHARS:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->word_chars))
-        {
-          g_free (preferences->word_chars);
-          preferences->word_chars = g_strdup (sval);
-          g_object_notify (object, "word-chars");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-      break;
+      g_value_copy (value, dst);
+      g_object_notify (object, pspec->name);
+      terminal_preferences_schedule_store (preferences);
     }
 }
 
@@ -2120,7 +1068,7 @@ property_name_to_option_name (const gchar *property_name)
   gchar       *option;
   gchar       *t;
 
-  option = g_strdup (property_name);
+  option = g_new (gchar, strlen (property_name) + 1);
   for (s = property_name, t = option; *s != '\0'; ++s)
     {
       if (*s == '-')
@@ -2164,6 +1112,8 @@ terminal_preferences_load (TerminalPreferences *preferences)
       return;
     }
 
+  g_object_freeze_notify (G_OBJECT (preferences));
+
   xfce_rc_set_group (rc, "Configuration");
 
   preferences->loading_in_progress = TRUE;
@@ -2176,10 +1126,6 @@ terminal_preferences_load (TerminalPreferences *preferences)
       option = property_name_to_option_name (spec->name);
       string = xfce_rc_read_entry (rc, option, NULL);
       g_free (option);
-
-      /* retry with old config name, to get smooth transition */
-      if (G_UNLIKELY (string == NULL))
-        string = xfce_rc_read_entry (rc, spec->name, NULL);
 
       if (G_UNLIKELY (string == NULL))
         continue;
@@ -2210,6 +1156,8 @@ terminal_preferences_load (TerminalPreferences *preferences)
   preferences->loading_in_progress = FALSE;
 
   xfce_rc_close (rc);
+
+  g_object_thaw_notify (G_OBJECT (preferences));
 }
 
 

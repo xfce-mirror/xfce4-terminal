@@ -89,7 +89,7 @@ terminal_accel_map_init (TerminalAccelMap *map)
                         G_CALLBACK (terminal_accel_map_notify), map);
       g_free (signal_name);
 
-      g_object_notify (G_OBJECT (map->preferences), spec->name);
+      terminal_accel_map_notify (map->preferences, spec, map);
     }
   g_free (specs);
 }
