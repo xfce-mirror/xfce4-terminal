@@ -366,6 +366,7 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
 {
   GdkModifierType consumed_modifiers = 0;
   guint           keyval;
+  guint           modifiers;
   gchar          *accelerator;
   gchar          *property;
 
@@ -386,7 +387,13 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
   if (keyval != event->keyval && (consumed_modifiers & GDK_SHIFT_MASK))
     consumed_modifiers &= ~GDK_SHIFT_MASK;
 
-  accelerator = gtk_accelerator_name (keyval, event->state & ~consumed_modifiers);
+  /* filter out invalid modifiers */
+  modifiers = event->state & (~consumed_modifiers | GDK_MODIFIER_MASK);
+  modifiers = modifiers & ~GDK_LOCK_MASK;
+  modifiers = modifiers & ~GDK_MOD2_MASK;
+  modifiers = modifiers & ~GDK_MOD5_MASK;
+
+  accelerator = gtk_accelerator_name (keyval, modifiers);
   property = g_object_get_data (G_OBJECT (dialog), "property-name");
   g_object_set (G_OBJECT (editor->preferences), property, accelerator, NULL);
   g_free (accelerator);

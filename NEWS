@@ -6,6 +6,11 @@
 - The shortcut for the commandline option --title is now -T, because thats
   seems to be common among terminal emulators. -t is still supported for
   compatbility with gnome-terminal, but may be removed in the future.
+- Remote displays are supported properly now. But multi-screen mode will only
+  work with solid background until the Vte guys fix the multi-screen issue.
+- Modifiers like <Mod2> or <Lock> are now stripped off when using the
+  shortcut editor, since it turned out that they don't work properly with
+  some X setups.
 
 
 0.2.0

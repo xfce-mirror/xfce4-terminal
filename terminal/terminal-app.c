@@ -352,10 +352,12 @@ terminal_app_find_screen (const gchar *display_name)
       displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
       for (dp = displays; dp != NULL; dp = dp->next)
         {
-          display = dp->data;
-          other_name = gdk_display_get_name (display);
+          other_name = gdk_display_get_name (dp->data);
           if (strncmp (other_name, name, strlen (name)) == 0)
-            break;
+            {
+              display = dp->data;
+              break;
+            }
         }
       g_slist_free (displays);
 
