@@ -394,6 +394,15 @@ main (int argc, char **argv)
           g_warning ("Unable to invoke remote terminal: %s",
                      error->message);
 #endif
+
+          /* handle "User mismatch" special */
+          if (error->domain == TERMINAL_APP_ERROR
+              && error->code == TERMINAL_APP_ERROR_USER_MISMATCH)
+            {
+              /* don't try to establish another service here */
+              options->disable_server = TRUE;
+            }
+
           g_error_free (error);
           error = NULL;
         }

@@ -36,6 +36,11 @@
   a right-click menu that was added to the tab title widgets.
 - The about dialog now uses the Terminal application icon instead of the
   terminal-general stock icon.
+- The terminal service now checks the user id of callers and if the
+  user ids doesn't match the caller will automatically run in its
+  own Terminal instance. This allows users to run Terminal with different
+  users without having to supply the --disable-server option, e.g. running
+  "sudo Terminal" (please note that this is not recommended!).
 - Several other bugs and glitches have been fixed.
 - New translations: Dwayne Bailey (en_GB), Hydonsingore Sie (zh_TW),
   Jaime Buffery (es)

@@ -817,7 +817,7 @@ regenerate:
 	&& (cmp -s xgen terminal-enum-types.h || cp xgen terminal-enum-types.h ) \
 	&& rm -f xgen
 	( cd $(srcdir) && glib-mkenums \
-		--fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-options.h>\n#include <terminal/terminal-preferences.h>" \
+		--fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
 		--vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \

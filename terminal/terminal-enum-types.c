@@ -4,8 +4,25 @@
 #undef GTK_DISABLE_DEPRECATED
 #define GTK_ENABLE_BROKEN
 #include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-options.h>
+#include <terminal/terminal-app.h>
 #include <terminal/terminal-preferences.h>
+
+/* enumerations from "terminal-app.h" */
+GType
+terminal_app_error_get_type (void)
+{
+	static GType type = 0;
+	if (type == 0) {
+	static const GEnumValue values[] = {
+	{ TERMINAL_APP_ERROR_USER_MISMATCH, "TERMINAL_APP_ERROR_USER_MISMATCH", "user-mismatch" },
+	{ TERMINAL_APP_ERROR_FAILED, "TERMINAL_APP_ERROR_FAILED", "failed" },
+	{ 0, NULL, NULL }
+	};
+	type = g_enum_register_static ("TerminalAppError", values);
+  }
+	return type;
+}
+
 
 /* enumerations from "terminal-options.h" */
 GType

@@ -6,6 +6,11 @@
 #include <libxfce4util/libxfce4util.h>
 G_BEGIN_DECLS
 
+/* enumerations from "terminal-app.h" */
+
+GType terminal_app_error_get_type (void);
+#define TERMINAL_TYPE_APP_ERROR (terminal_app_error_get_type())
+
 /* enumerations from "terminal-options.h" */
 
 GType terminal_visibility_get_type (void);

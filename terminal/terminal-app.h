@@ -31,6 +31,19 @@
 
 G_BEGIN_DECLS;
 
+#define TERMINAL_APP_ERROR (terminal_app_error_quark ())
+
+typedef enum /*< enum,prefix=TERMINAL_APP_ERROR >*/
+{
+  /* different user id in service */
+  TERMINAL_APP_ERROR_USER_MISMATCH,
+  /* general failure */
+  TERMINAL_APP_ERROR_FAILED,
+} TerminalAppError;
+
+GQuark terminal_app_error_quark (void) G_GNUC_CONST;
+
+
 #define TERMINAL_TYPE_APP         (terminal_app_get_type ())
 #define TERMINAL_APP(obj)         (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_APP, TerminalApp))
 #define TERMINAL_APP_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_APP, TerminalAppClass))

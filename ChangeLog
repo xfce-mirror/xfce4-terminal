@@ -1,3 +1,19 @@
+2004-12-28	Benedikt Meurer <benny@xfce.org>
+
+	* Makefile.am: Added dist-bz2 and distcheck-bz2 targets.
+	* configure.ac: Incremeted Terminal D-BUS interface version.
+	* terminal/terminal-enum-types.c, terminal/terminal-enum-types.h,
+	  terminal/terminal-app.h, terminal/terminal-config.h.in,
+	  terminal/terminal-app.c, terminal/main.c: Added user id checking;
+	  that is, when connecting to a terminal service, the user id of
+	  the caller is supplied and checked against the user id of the
+	  service. If the user ids doesn't match, an error is returned to
+	  the caller and the caller will run its own terminal instance,
+	  w/o trying to establish a new terminal service. This fixes
+	  bug #42.
+	* po/: Updated.
+	* configure.ac, NEWS, doc/: Version 0.2.2pre2.
+
 2004-12-23	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-window.c(terminal_window_about_idle): Don't use
