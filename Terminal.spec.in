@@ -3,9 +3,10 @@ Name:			Terminal
 Version:		@VERSION@
 Release:		1
 License:		GPL
-URL:			http://www.os-cillation.com/
-Source:			%{name}-%{version}.tar.gz
+URL:			http://terminal.os-cillation.com/
+Source0:		%{name}-%{version}.tar.gz
 Group:			Applications/X11
+BuildRoot:		%{_tmppath}/%{name}-root
 Requires:		vte >= @VTE_REQUIRED_VERSION@
 Requires:		libexo >= @EXO_REQUIRED_VERSION@
 BuildRequires:		vte-devel >= @VTE_REQUIRED_VERSION@
