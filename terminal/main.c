@@ -243,6 +243,7 @@ main (int argc, char **argv)
   const gchar     *description;
 #endif
   const gchar     *startup_id;
+  const gchar     *display;
   GdkPixbuf       *icon;
   GError          *error = NULL;
   gchar          **nargv;
@@ -292,7 +293,7 @@ main (int argc, char **argv)
     }
 
   /* create a copy of the standard arguments with our additional stuff */
-  nargv = g_new (gchar*, argc + 4);
+  nargv = g_new (gchar*, argc + 5);
   for (nargc = 0; nargc < argc; ++nargc)
     nargv[nargc] = g_strdup (argv[nargc]);
   nargv[nargc++] = g_strdup ("--default-working-directory");
@@ -305,6 +306,11 @@ main (int argc, char **argv)
       nargv[nargc++] = g_strdup_printf ("--startup-id=%s", startup_id);
       xfce_putenv ("DESKTOP_STARTUP_ID=");
     }
+
+  /* append default display if given */
+  display = g_getenv ("DISPLAY");
+  if (display != NULL)
+    nargv[nargc++] = g_strdup_printf ("--default-display=%s", display);
   nargv[nargc] = NULL;
 
   if (!options->disable_server)

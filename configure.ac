@@ -49,9 +49,6 @@ AC_CHECK_HEADERS([errno.h limits.h pwd.h time.h])
 dnl Check for i18n support
 BM_I18N([Terminal], [de fr nl])
 
-dnl Check for X11 libraries
-BM_LIBX11_REQUIRE()
-
 dnl Check for required packages
 BM_DEPEND([EXO], [exo-0.2], [0.2.0])
 BM_DEPEND([VTE], [vte], [0.11.0])
