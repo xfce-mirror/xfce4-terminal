@@ -34,6 +34,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include <terminal/terminal-preferences.h>
 #include <terminal/terminal-widget.h>
 
 
@@ -44,14 +45,24 @@ enum
   LAST_SIGNAL,
 };
 
+enum
+{
+  TARGET_URI_LIST,
+  TARGET_UTF8_STRING,
+  TARGET_TEXT,
+  TARGET_COMPOUND_TEXT,
+  TARGET_STRING,
+  TARGET_TEXT_PLAIN,
+  TARGET_MOZ_URL,
+};
+
 
 
 static void     terminal_widget_class_init          (TerminalWidgetClass  *klass);
 static void     terminal_widget_init                (TerminalWidget       *widget);
+static void     terminal_widget_finalize            (GObject              *object);
 static gboolean terminal_widget_button_press_event  (GtkWidget            *widget,
                                                      GdkEventButton       *event);
-static gboolean terminal_widget_key_press_event     (GtkWidget            *widget,
-                                                     GdkEventKey          *event);
 static void     terminal_widget_drag_data_received  (GtkWidget            *widget,
                                                      GdkDragContext       *context,
                                                      gint                  x,
@@ -59,6 +70,8 @@ static void     terminal_widget_drag_data_received  (GtkWidget            *widge
                                                      GtkSelectionData     *selection_data,
                                                      guint                 info,
                                                      guint                 time);
+static gboolean terminal_widget_key_press_event     (GtkWidget            *widget,
+                                                     GdkEventKey          *event);
 
 
 
@@ -74,23 +87,15 @@ struct _TerminalWidgetClass
 struct _TerminalWidget
 {
   VteTerminal __parent__;
+
+  /*< private >*/
+  TerminalPreferences *preferences;
 };
 
 
 
 static GObjectClass *parent_class;
 static guint         widget_signals[LAST_SIGNAL];
-
-enum
-{
-  TARGET_URI_LIST,
-  TARGET_UTF8_STRING,
-  TARGET_TEXT,
-  TARGET_COMPOUND_TEXT,
-  TARGET_STRING,
-  TARGET_TEXT_PLAIN,
-  TARGET_MOZ_URL,
-};
 
 static GtkTargetEntry targets[] =
 {
@@ -113,13 +118,17 @@ static void
 terminal_widget_class_init (TerminalWidgetClass *klass)
 {
   GtkWidgetClass  *gtkwidget_class;
+  GObjectClass    *gobject_class;
 
   parent_class = g_type_class_peek_parent (klass);
 
+  gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->finalize = terminal_widget_finalize;
+
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->button_press_event = terminal_widget_button_press_event;
-  gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
   gtkwidget_class->drag_data_received = terminal_widget_drag_data_received;
+  gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
 
   /**
    * TerminalWidget::context-menu:
@@ -139,6 +148,9 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 static void
 terminal_widget_init (TerminalWidget *widget)
 {
+  /* query preferences connection */
+  widget->preferences = terminal_preferences_get ();
+
   /* setup Drag'n'Drop support */
   gtk_drag_dest_set (GTK_WIDGET (widget),
                      GTK_DEST_DEFAULT_MOTION |
@@ -147,6 +159,18 @@ terminal_widget_init (TerminalWidget *widget)
                      targets, G_N_ELEMENTS (targets),
                      GDK_ACTION_COPY);
 
+}
+
+
+
+static void
+terminal_widget_finalize (GObject *object)
+{
+  TerminalWidget *widget = TERMINAL_WIDGET (object);
+
+  g_object_unref (G_OBJECT (widget->preferences));
+
+  G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
 
@@ -190,22 +214,6 @@ terminal_widget_button_press_event (GtkWidget       *widget,
     }
 
   return TRUE;
-}
-
-
-
-static gboolean
-terminal_widget_key_press_event (GtkWidget    *widget,
-                                 GdkEventKey  *event)
-{
-  /* popup context menu if the "Menu" key is pressed */
-  if (event->state == 0 && event->keyval == GDK_Menu)
-    {
-      g_signal_emit (G_OBJECT (widget), widget_signals[CONTEXT_MENU], 0, event);
-      return TRUE;
-    }
-
-  return GTK_WIDGET_CLASS (parent_class)->key_press_event (widget, event);
 }
 
 
@@ -314,6 +322,22 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
         }
       break;
     }
+}
+
+
+
+static gboolean
+terminal_widget_key_press_event (GtkWidget    *widget,
+                                 GdkEventKey  *event)
+{
+  /* popup context menu if the "Menu" key is pressed */
+  if (event->state == 0 && event->keyval == GDK_Menu)
+    {
+      g_signal_emit (G_OBJECT (widget), widget_signals[CONTEXT_MENU], 0, event);
+      return TRUE;
+    }
+
+  return GTK_WIDGET_CLASS (parent_class)->key_press_event (widget, event);
 }
 
 

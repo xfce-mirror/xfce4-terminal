@@ -22455,6 +22455,7 @@ fi;
 echo $ECHO_N "checking whether to build with profiling support... $ECHO_C" >&6
   if test x"$enable_profiling" != x"no"; then
     CFLAGS="$CFLAGS -pg"
+    LDFLAGS="$LDFLAGS -pg"
     echo "$as_me:$LINENO: result: yes" >&5
 echo "${ECHO_T}yes" >&6
   else

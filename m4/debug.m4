@@ -40,6 +40,7 @@ AC_HELP_STRING([--disable-profiling],
   AC_MSG_CHECKING([whether to build with profiling support])
   if test x"$enable_profiling" != x"no"; then
     CFLAGS="$CFLAGS -pg"
+    LDFLAGS="$LDFLAGS -pg"
     AC_MSG_RESULT([yes])
   else
     AC_MSG_RESULT([no])

@@ -84,6 +84,7 @@ struct _TerminalScreen
   gchar               *custom_title;
 
   guint                background_timer_id;
+  guint                launch_idle_id;
 };
 
 
@@ -124,14 +125,14 @@ static void     terminal_screen_vte_context_menu              (TerminalWidget *w
                                                                TerminalScreen *screen);
 static void     terminal_screen_vte_realize                   (VteTerminal    *terminal,
                                                                TerminalScreen *screen);
-static void     terminal_screen_vte_map                       (VteTerminal    *terminal,
-                                                               TerminalScreen *screen);
 static void     terminal_screen_vte_selection_changed         (VteTerminal    *terminal,
                                                                TerminalScreen *screen);
 static void     terminal_screen_vte_window_title_changed      (VteTerminal    *terminal,
                                                                TerminalScreen *screen);
 static gboolean terminal_screen_timer_background              (gpointer        user_data);
 static void     terminal_screen_timer_background_destroy      (gpointer        user_data);
+static gboolean terminal_screen_idle_launch                   (gpointer        user_data);
+static void     terminal_screen_idle_launch_destroy           (gpointer        user_data);
 
 
 
@@ -219,7 +220,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
                     "signal-after::realize", G_CALLBACK (terminal_screen_vte_realize), screen,
-                    "signal-after::map", G_CALLBACK (terminal_screen_vte_map), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
                     "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
@@ -281,6 +281,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_scrolling_on_output (screen);
   terminal_screen_update_scrolling_on_keystroke (screen);
   terminal_screen_update_word_chars (screen);
+  terminal_screen_timer_background (TERMINAL_SCREEN (screen));
 }
 
 
@@ -292,6 +293,8 @@ terminal_screen_finalize (GObject *object)
 
   if (G_UNLIKELY (screen->background_timer_id != 0))
     g_source_remove (screen->background_timer_id);
+  if (G_UNLIKELY (screen->launch_idle_id != 0))
+    g_source_remove (screen->launch_idle_id);
 
   g_signal_handlers_disconnect_matched (G_OBJECT (screen->preferences),
                                         G_SIGNAL_MATCH_DATA,
@@ -299,8 +302,8 @@ terminal_screen_finalize (GObject *object)
 
   g_object_unref (G_OBJECT (screen->preferences));
 
-  g_free (screen->working_directory);
   g_strfreev (screen->custom_command);
+  g_free (screen->working_directory);
   g_free (screen->custom_title);
 
   parent_class->finalize (object);
@@ -428,7 +431,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           || (strncmp (*p, "TERM=", 5) == 0)
           || (strncmp (*p, "GNOME_DESKTOP_ICON=", 19) == 0)
           || (strncmp (*p, "COLORTERM=", 10) == 0)
-          || (strncmp ( *p, "DISPLAY=", 8) == 0))
+          || (strncmp (*p, "DISPLAY=", 8) == 0))
         {
           /* nothing: do not copy */
         }
@@ -748,15 +751,6 @@ terminal_screen_vte_realize (VteTerminal    *terminal,
 
 
 static void
-terminal_screen_vte_map (VteTerminal    *terminal,
-                         TerminalScreen *screen)
-{
-  terminal_screen_timer_background (TERMINAL_SCREEN (screen));
-}
-
-
-
-static void
 terminal_screen_vte_selection_changed (VteTerminal    *terminal,
                                        TerminalScreen *screen)
 {
@@ -789,37 +783,34 @@ terminal_screen_timer_background (gpointer user_data)
   GdkPixbuf           *image;
   gdouble              background_darkness;
 
-  if (GTK_WIDGET_MAPPED (screen))
+  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
+
+  if (background_mode == TERMINAL_BACKGROUND_SOLID)
     {
-      g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
+      vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
+      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
+      vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
+    }
+  else if (background_mode == TERMINAL_BACKGROUND_IMAGE)
+    {
+      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
+      vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
 
-      if (background_mode == TERMINAL_BACKGROUND_SOLID)
-        {
-          vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
-          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
-        }
-      else if (background_mode == TERMINAL_BACKGROUND_IMAGE)
-        {
-          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
-
-          loader = terminal_image_loader_get ();
-          image = terminal_image_loader_load (loader,
-                                              screen->terminal->allocation.width,
-                                              screen->terminal->allocation.height);
-          vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-          if (image != NULL)
-            g_object_unref (G_OBJECT (image));
-          g_object_unref (G_OBJECT (loader));
-        }
-      else
-        {
-          g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
-          vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
-          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
-          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
-        }
+      loader = terminal_image_loader_get ();
+      image = terminal_image_loader_load (loader,
+                                          screen->terminal->allocation.width,
+                                          screen->terminal->allocation.height);
+      vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
+      if (image != NULL)
+        g_object_unref (G_OBJECT (image));
+      g_object_unref (G_OBJECT (loader));
+    }
+  else
+    {
+      g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
+      vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
+      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
+      vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
     }
 
   return FALSE;
@@ -831,6 +822,55 @@ static void
 terminal_screen_timer_background_destroy (gpointer user_data)
 {
   TERMINAL_SCREEN (user_data)->background_timer_id = 0;
+}
+
+
+
+static gboolean
+terminal_screen_idle_launch (gpointer user_data)
+{
+  TerminalScreen *screen = TERMINAL_SCREEN (user_data);
+  gboolean        update;
+  GError         *error = NULL;
+  gchar          *command;
+  gchar         **argv;
+  gchar         **env;
+
+#ifdef DEBUG
+  if (!GTK_WIDGET_REALIZED (screen))
+    g_error ("Tried to launch command in a TerminalScreen that is not realized");
+#endif
+
+  if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
+    {
+      g_error_free (error);
+      return FALSE;
+    }
+
+  g_object_get (G_OBJECT (screen->preferences),
+                "command-update-records", &update,
+                NULL);
+
+  env = terminal_screen_get_child_environment (screen);
+
+  screen->pid = vte_terminal_fork_command (VTE_TERMINAL (screen->terminal),
+                                           command, argv, env,
+                                           screen->working_directory,
+                                           update, update, update);
+
+  g_strfreev (argv);
+  g_strfreev (env);
+  g_free (command);
+
+  return FALSE;
+}
+
+
+
+static void
+terminal_screen_idle_launch_destroy (gpointer user_data)
+{
+  TERMINAL_SCREEN (user_data)->launch_idle_id = 0;
 }
 
 
@@ -857,39 +897,13 @@ terminal_screen_new (void)
 void
 terminal_screen_launch_child (TerminalScreen *screen)
 {
-  gboolean update;
-  GError  *error = NULL;
-  gchar   *command;
-  gchar  **argv;
-  gchar  **env;
-
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-#ifdef DEBUG
-  if (!GTK_WIDGET_REALIZED (screen))
-    g_error ("Tried to launch command in a TerminalScreen that is not realized");
-#endif
-
-  if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
+  if (G_LIKELY (screen->launch_idle_id == 0))
     {
-      g_error_free (error);
-      return;
+      screen->launch_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_screen_idle_launch,
+                                                screen, terminal_screen_idle_launch_destroy);
     }
-
-  g_object_get (G_OBJECT (screen->preferences),
-                "command-update-records", &update,
-                NULL);
-
-  env = terminal_screen_get_child_environment (screen);
-
-  screen->pid = vte_terminal_fork_command (VTE_TERMINAL (screen->terminal),
-                                           command, argv, env,
-                                           screen->working_directory,
-                                           update, update, update);
-
-  g_strfreev (argv);
-  g_strfreev (env);
-  g_free (command);
 }
 
 

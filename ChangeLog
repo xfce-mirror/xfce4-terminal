@@ -1,5 +1,14 @@
 2004-11-29	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-screen.c, terminal/terminal-widget.c: Setup
+	  background in _init() instead of _map() to avoid flickering on
+	  startup. Delay execution of the child command until all windows
+	  are setup properly and the application becomes idle. These
+	  fixes together should give a smoother and probably faster
+	  startup.
+
+2004-11-29	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-screen.c, terminal/terminal-shortcut-editor.c,
 	  terminal/terminal-preferences.c, terminal/terminal-image-loader.c:
 	  Drastically simplified the TerminalPreferences class. Its nearly
