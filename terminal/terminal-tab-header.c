@@ -152,10 +152,10 @@ terminal_tab_header_init (TerminalTabHeader *header)
   gtk_box_pack_start (GTK_BOX (header), header->ebox, TRUE, TRUE, 0);
   gtk_widget_show (header->ebox);
 
-  header->label = exo_ellipsized_label_new ("");
-  exo_ellipsized_label_set_mode (EXO_ELLIPSIZED_LABEL (header->label),
-                                 EXO_PANGO_ELLIPSIZE_END);
-  gtk_misc_set_alignment (GTK_MISC (header->label), 0.0, 0.5);
+  header->label = g_object_new (EXO_TYPE_ELLIPSIZED_LABEL,
+                                "ellipsize", EXO_PANGO_ELLIPSIZE_END,
+                                "xalign", 0.0,
+                                NULL);
   gtk_container_add (GTK_CONTAINER (header->ebox), header->label);
   gtk_widget_show (header->label);
 
@@ -199,7 +199,7 @@ terminal_tab_header_get_property (GObject    *object,
   switch (prop_id)
     {
     case PROP_TITLE:
-      g_object_get_property (G_OBJECT (header->label), "full-text", value);
+      g_object_get_property (G_OBJECT (header->label), "label", value);
       break;
 
     default:
@@ -224,7 +224,7 @@ terminal_tab_header_set_property (GObject      *object,
     case PROP_TITLE:
       title = g_value_get_string (value);
       gtk_tooltips_set_tip (header->tooltips, header->ebox, title, NULL);
-      exo_ellipsized_label_set_full_text (EXO_ELLIPSIZED_LABEL (header->label), title);
+      gtk_label_set_text (GTK_LABEL (header->label), title);
       break;
 
     default:
