@@ -46,7 +46,7 @@ dnl Check for standard headers
 AC_CHECK_HEADERS([errno.h limits.h pwd.h time.h])
 
 dnl Check for i18n support
-XDT_I18N([de en_GB es fi fr he nl ru zh_TW])
+XDT_I18N([de en_GB es fi fr he nl ru zh_CN zh_TW])
 
 dnl Check for required packages
 XDT_CHECK_PACKAGE([EXO], [exo-0.3], [0.3.0])

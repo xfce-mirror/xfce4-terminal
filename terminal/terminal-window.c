@@ -1515,6 +1515,7 @@ terminal_window_about_idle (gpointer user_data)
     { "Yuval Tanny", "tanai@int.gov.il", "he" },
     { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
     { "Anthony Ivanoff", "a-i@bk.ru", "ru" },
+    { "Army Gu", "redarmy@gmail.com", "zh_CN" },
     { "Hydonsingore Sie", "hydonsingore@mail.educities.edu.tw", "zh_TW" },
     { NULL, },
   };
