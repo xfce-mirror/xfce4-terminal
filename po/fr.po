@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-12 16:50+0100\n"
+"POT-Creation-Date: 2004-12-12 20:39+0100\n"
 "PO-Revision-Date: 2004-10-01 18:17+0200\n"
 "Last-Translator: Benedikt Meurer <benny@xfce.org>\n"
 "Language-Team: os-cillation <info@os-cillation.de>\n"
@@ -14,90 +14,158 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: terminal/main.c:226
-#, c-format
+#: terminal/main.c:225
+msgid "Usage: Terminal [OPTION...]"
+msgstr ""
+
+#: terminal/main.c:227
+msgid "  -h, --help                          Print this help message and exit"
+msgstr ""
+
+#: terminal/main.c:228
 msgid ""
-"Usage: Terminal [OPTION...]\n"
-"\n"
-"  -h, --help                          Print this help message and exit\n"
-"  -v, --version                       Print version information and exit\n"
-"  --disable-server                    Do not register with the D-BUS "
-"session\n"
-"                                      message bus\n"
-"\n"
+"  -v, --version                       Print version information and exit"
+msgstr ""
+
+#: terminal/main.c:229
+msgid ""
+"  --disable-server                    Do not register with the D-BUS\n"
+"                                      session message bus"
+msgstr ""
+
+#: terminal/main.c:232
+msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal\n"
+"                                      line inside the terminal"
+msgstr ""
+
+#: terminal/main.c:234
+msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal\n"
-"  --working-directory=DIRNAME         Set the terminals working directory\n"
-"  -T, --title=TITLE                   Set the terminals title\n"
-"\n"
-"  --display=DISPLAY                   X display to use for the last-"
-"specified\n"
-"                                      window\n"
+"                                      inside the terminal"
+msgstr ""
+
+#: terminal/main.c:236
+msgid ""
+"  --working-directory=DIRNAME         Set the terminals working directory"
+msgstr ""
+
+#: terminal/main.c:237
+msgid "  -T, --title=TITLE                   Set the terminals title"
+msgstr ""
+
+#: terminal/main.c:239
+msgid ""
+"  --display=DISPLAY                   X display to use for the last-\n"
+"                                      specified window"
+msgstr ""
+
+#: terminal/main.c:241
+msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
-"                                      window to be opened\n"
+"                                      window to be opened"
+msgstr ""
+
+#: terminal/main.c:244
+msgid ""
 "  --role=ROLE                         Set the role for the last-specified;\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
-"                                      you create from the command line\n"
+"                                      you create from the command line"
+msgstr ""
+
+#: terminal/main.c:248
+msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol\n"
-"  --fullscreen                        Set the last-specified window into "
-"full-\n"
-"                                      screen mode; applies to only one "
-"window;\n"
-"                                      can be specified once for each window "
-"you\n"
-"                                      create from the command line.\n"
+"                                      protocol"
+msgstr ""
+
+#: terminal/main.c:250
+msgid ""
+"  --fullscreen                        Set the last-specified window into\n"
+"                                      fullscreen mode; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line."
+msgstr ""
+
+#: terminal/main.c:255
+msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line\n"
+"                                      command line"
+msgstr ""
+
+#: terminal/main.c:260
+msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line\n"
-"  --show-borders                      Turn on the window decorations for "
-"the\n"
-"                                      last-specified window; applies to "
-"only\n"
-"                                      one window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line\n"
-"  --hide-borders                      Turn off the window decorations for "
-"the\n"
-"                                      last-specified window; applies to "
-"only\n"
-"                                      one window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line\n"
+"                                      command line"
+msgstr ""
+
+#: terminal/main.c:265
+msgid ""
+"  --show-borders                      Turn on the window decorations for\n"
+"                                      the last-specified window; applies\n"
+"                                      to only one window; can be specified\n"
+"                                      once for each window you create from\n"
+"                                      the command line"
+msgstr ""
+
+#: terminal/main.c:270
+msgid ""
+"  --hide-borders                      Turn off the window decorations for\n"
+"                                      the last-specified window; applies\n"
+"                                      to only one window; can be specified\n"
+"                                      once for each window you create from\n"
+"                                      the command line"
+msgstr ""
+
+#: terminal/main.c:275
+msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line\n"
+"                                      command line"
+msgstr ""
+
+#: terminal/main.c:280
+msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line\n"
-"\n"
+"                                      command line"
+msgstr ""
+
+#: terminal/main.c:286
+msgid ""
 "  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these "
-"options\n"
-"                                      can be provided\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+
+#: terminal/main.c:289
+msgid ""
 "  --window                            Open a new window containing one tab;\n"
 "                                      more than one of these options can be\n"
-"                                      provided\n"
-"\n"
-"  --default-display=DISPLAY           default X display to use\n"
+"                                      provided"
+msgstr ""
+
+#: terminal/main.c:293
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr ""
+
+#: terminal/main.c:294
+msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
-"                                      directory\n"
-"\n"
+"                                      directory"
 msgstr ""
 
 #: terminal/main.c:318 terminal/terminal-preferences.c:924

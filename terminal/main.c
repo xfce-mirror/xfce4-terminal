@@ -222,78 +222,78 @@ stock_icons_init (void)
 static void
 usage (FILE *fp)
 {
-  fprintf (fp,
-           _("Usage: Terminal [OPTION...]\n"
-             "\n"
-             "  -h, --help                          Print this help message and exit\n"
-             "  -v, --version                       Print version information and exit\n"
-             "  --disable-server                    Do not register with the D-BUS session\n"
-             "                                      message bus\n"
-             "\n"
-             "  -x, --execute                       Execute the remainder of the command\n"
-             "                                      line inside the terminal\n"
-             "  -e, --command=STRING                Execute the argument to this option\n"
-             "                                      inside the terminal\n"
-             "  --working-directory=DIRNAME         Set the terminals working directory\n"
-             "  -T, --title=TITLE                   Set the terminals title\n"
-             "\n"
-             "  --display=DISPLAY                   X display to use for the last-specified\n"
-             "                                      window\n"
-             "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-             "                                      man page), can be specified once per\n"
-             "                                      window to be opened\n"
-             "  --role=ROLE                         Set the role for the last-specified;\n"
-             "                                      window; applies to only one window;\n"
-             "                                      can be specified once for each window\n"
-             "                                      you create from the command line\n"
-             "  --startup-id=STRING                 ID for the startup notification\n"
-             "                                      protocol\n"
-             "  --fullscreen                        Set the last-specified window into full-\n"
-             "                                      screen mode; applies to only one window;\n"
-             "                                      can be specified once for each window you\n"
-             "                                      create from the command line.\n"
-             "  --show-menubar                      Turn on the menubar for the last-\n"
-             "                                      specified window; applies to only one\n"
-             "                                      window; can be specified once for\n"
-             "                                      each window you create from the\n"
-             "                                      command line\n"
-             "  --hide-menubar                      Turn off the menubar for the last-\n"
-             "                                      specified window; applies to only one\n"
-             "                                      window; can be specified once for\n"
-             "                                      each window you create from the\n"
-             "                                      command line\n"
-             "  --show-borders                      Turn on the window decorations for the\n"
-             "                                      last-specified window; applies to only\n"
-             "                                      one window; can be specified once for\n"
-             "                                      each window you create from the\n"
-             "                                      command line\n"
-             "  --hide-borders                      Turn off the window decorations for the\n"
-             "                                      last-specified window; applies to only\n"
-             "                                      one window; can be specified once for\n"
-             "                                      each window you create from the\n"
-             "                                      command line\n"
-             "  --show-toolbars                     Turn on the toolbars for the last-\n"
-             "                                      specified window; applies to only one\n"
-             "                                      window; can be specified once for\n"
-             "                                      each window you create from the\n"
-             "                                      command line\n"
-             "  --hide-toolbars                     Turn off the toolbars for the last-\n"
-             "                                      specified window; applies to only one\n"
-             "                                      window; can be specified once for\n"
-             "                                      each window you create from the\n"
-             "                                      command line\n"
-             "\n"
-             "  --tab                               Open a new tab in the last-specified\n"
-             "                                      window; more than one of these options\n"
-             "                                      can be provided\n"
-             "  --window                            Open a new window containing one tab;\n"
-             "                                      more than one of these options can be\n"
-             "                                      provided\n"
-             "\n"
-             "  --default-display=DISPLAY           default X display to use\n"
-             "  --default-working-directory=DIRNAME Set the default terminals working\n"
-             "                                      directory\n"
-             "\n"));
+  fprintf (fp, "%s\n", _("Usage: Terminal [OPTION...]"));
+  fprintf (fp, "\n");
+  fprintf (fp, "%s\n", _("  -h, --help                          Print this help message and exit"));
+  fprintf (fp, "%s\n", _("  -v, --version                       Print version information and exit"));
+  fprintf (fp, "%s\n", _("  --disable-server                    Do not register with the D-BUS\n"
+                         "                                      session message bus"));
+  fprintf (fp, "\n");
+  fprintf (fp, "%s\n", _("  -x, --execute                       Execute the remainder of the command\n"
+                         "                                      line inside the terminal"));
+  fprintf (fp, "%s\n", _("  -e, --command=STRING                Execute the argument to this option\n"
+                         "                                      inside the terminal"));
+  fprintf (fp, "%s\n", _("  --working-directory=DIRNAME         Set the terminals working directory"));
+  fprintf (fp, "%s\n", _("  -T, --title=TITLE                   Set the terminals title"));
+  fprintf (fp, "\n");
+  fprintf (fp, "%s\n", _("  --display=DISPLAY                   X display to use for the last-\n"
+                         "                                      specified window"));
+  fprintf (fp, "%s\n", _("  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+                         "                                      man page), can be specified once per\n"
+                         "                                      window to be opened"));
+  fprintf (fp, "%s\n", _("  --role=ROLE                         Set the role for the last-specified;\n"
+                         "                                      window; applies to only one window;\n"
+                         "                                      can be specified once for each window\n"
+                         "                                      you create from the command line"));
+  fprintf (fp, "%s\n", _("  --startup-id=STRING                 ID for the startup notification\n"
+                         "                                      protocol"));
+  fprintf (fp, "%s\n", _("  --fullscreen                        Set the last-specified window into\n"
+                         "                                      fullscreen mode; applies to only one\n"
+                         "                                      window; can be specified once for\n"
+                         "                                      each window you create from the\n"
+                         "                                      command line."));
+  fprintf (fp, "%s\n", _("  --show-menubar                      Turn on the menubar for the last-\n"
+                         "                                      specified window; applies to only one\n"
+                         "                                      window; can be specified once for\n"
+                         "                                      each window you create from the\n"
+                         "                                      command line"));
+  fprintf (fp, "%s\n", _("  --hide-menubar                      Turn off the menubar for the last-\n"
+                         "                                      specified window; applies to only one\n"
+                         "                                      window; can be specified once for\n"
+                         "                                      each window you create from the\n"
+                         "                                      command line"));
+  fprintf (fp, "%s\n", _("  --show-borders                      Turn on the window decorations for\n"
+                         "                                      the last-specified window; applies\n"
+                         "                                      to only one window; can be specified\n"
+                         "                                      once for each window you create from\n"
+                         "                                      the command line"));
+  fprintf (fp, "%s\n", _("  --hide-borders                      Turn off the window decorations for\n"
+                         "                                      the last-specified window; applies\n"
+                         "                                      to only one window; can be specified\n"
+                         "                                      once for each window you create from\n"
+                         "                                      the command line"));
+  fprintf (fp, "%s\n", _("  --show-toolbars                     Turn on the toolbars for the last-\n"
+                         "                                      specified window; applies to only one\n"
+                         "                                      window; can be specified once for\n"
+                         "                                      each window you create from the\n"
+                         "                                      command line"));
+  fprintf (fp, "%s\n", _("  --hide-toolbars                     Turn off the toolbars for the last-\n"
+                         "                                      specified window; applies to only one\n"
+                         "                                      window; can be specified once for\n"
+                         "                                      each window you create from the\n"
+                         "                                      command line"));
+  fprintf (fp, "\n");
+  fprintf (fp, "%s\n", _("  --tab                               Open a new tab in the last-specified\n"
+                         "                                      window; more than one of these\n"
+                         "                                      options can be provided"));
+  fprintf (fp, "%s\n", _("  --window                            Open a new window containing one tab;\n"
+                         "                                      more than one of these options can be\n"
+                         "                                      provided"));
+  fprintf (fp, "\n");
+  fprintf (fp, "%s\n", _("  --default-display=DISPLAY           default X display to use"));
+  fprintf (fp, "%s\n", _("  --default-working-directory=DIRNAME Set the default terminals working\n"
+                         "                                      directory"));
+  fprintf (fp, "\n");
 }
 
 
