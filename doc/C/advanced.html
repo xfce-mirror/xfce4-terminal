@@ -40,7 +40,12 @@
               Open a new tab in the last-specified window. More than one of these options can be provided.
             </p></dd><dt><span class="term"><tt class="option">--window</tt></span></dt><dd><p>
               Open a new window containing one tab. More than one of these options can be provided.
-            </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="files-and-env-vars"></a>Files and Environment Variables</h3></div></div></div><p>
+            </p></dd></dl></div><p>
+        For example, say you want to open a new terminal window with two tabs in it, where the first
+        tab should run <span><b class="command">mutt</b></span> and the second tab should run <span><b class="command">mc</b></span>,
+        and the window should have 80 columns and 40 rows, then you would use the following command
+        to start Terminal:
+      </p><table border="0" bgcolor="#ffffff" width="100%"><tr><td><pre class="screen">Terminal --geometry 80x40 --command mutt --tab --command mc</pre></td></tr></table></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="files-and-env-vars"></a>Files and Environment Variables</h3></div></div></div><p>
         Terminal uses the Basedir Specification as defined on <a href="http://freedesktop.org/" target="_top">Freedesktop.org</a> to locate its data and configuration files. This means
         that file locations will be specified as a path relative to the directories described in
         the specification.
@@ -95,13 +100,4 @@ MiscCursorBlinks=TRUE</pre></td></tr></table><p>
             </p></dd><dt><span class="term"><tt class="varname">MiscCursorBlinks</tt></span></dt><dd><p>
               Enable this option to display cursor that blinks. Can be either <tt class="literal">TRUE</tt>
               or <tt class="literal">FALSE</tt> (the default).
-            </p></dd><dt><span class="term"><tt class="varname">VteWorkaroundTitleBug</tt></span></dt><dd><p>
-              This option controls a work-around to a known problem with some terminal applications,
-              like <a href="http://www.vim.org/" target="_top">Vim</a>, which try to set the terminal
-              title by querying the title of the window reported in the <tt class="varname">$WINDOWID</tt>
-              environment variable. Unfortunately this causes Terminal to append/prepend the user
-              specified initial title again and again. By default, Terminal will strip off the initial
-              title from the beginning and the end of the window title supplied by the application
-              running inside the terminal. If this is not what you want, you can disable this option
-              with <tt class="varname">VteWorkaroundTitleBug=FALSE</tt>.
             </p></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Preferences </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Frequently asked questions</td></tr></table></div></body></html>

@@ -5,29 +5,30 @@
       </p><p>
         You can also start Terminal from a command line or from the <span><b class="guilabel">Application
         launcher</b></span>. Just hit <span><b class="keycap">Alt</b></span>-<span><b class="keycap">F2</b></span>, type
-        <b class="userinput"><tt><span><b class="command">Terminal</b></span></tt></b> and press the button
+        <b class="userinput"><tt><span><b class="command">Terminal</b></span></tt></b> and click the button
         <span><b class="guibutton">Run</b></span>.
       </p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2533097"></a>When you first start Terminal</h3></div></div></div><p>
         When you start Terminal for the first time, the application opens a terminal window
         with default settings.
-      </p><div class="screenshot"><div class="mediaobject"><img src="images/terminal-first-time.png" alt="Example of a default terminal window"></div></div><p>
+      </p><div class="screenshot"><div class="mediaobject" align="center"><img src="images/terminal-first-time.png" align="middle" alt="Example of a default terminal window"></div></div><p>
         The terminal window displays a command prompt where you can type UNIX
         commands. The command prompt may vary depending on the configuration of
         your shell. The cursor is positioned at the command prompt. When you type a
         UNIX command and press <span><b class="keycap">Return</b></span>, the computer
         executes the command. By default, Terminal will use the login shell of the user
-        who starts the application.
+        who starts the application (<tt class="filename">/bin/bash</tt> in case of a
+        default Linux installation).
       </p><p>
         Terminal sets the following environment variables for the command
         running inside the terminal window:
       </p><div class="variablelist"><dl><dt><span class="term"><tt class="varname">TERM</tt></span></dt><dd><p>Set to <tt class="literal">xterm</tt> or <tt class="literal">xterm-color</tt>, you
-            can configured the value from the preferences dialog.</p></dd><dt><span class="term"><tt class="varname">COLORTERM</tt></span></dt><dd><p>Set to <tt class="literal">Terminal</tt> by default.</p></dd><dt><span class="term"><tt class="varname">DISPLAY</tt></span></dt><dd><p>Set to the X11 display of the terminal by default.</p></dd><dt><span class="term"><tt class="varname">WINDOWID</tt></span></dt><dd><p>Set to the X11 window identifier of the terminal by default.</p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2533355"></a>Working with multiple terminals</h3></div></div></div><p>
+            can configured the value from the preferences dialog.</p></dd><dt><span class="term"><tt class="varname">COLORTERM</tt></span></dt><dd><p>Set to <tt class="literal">Terminal</tt> by default.</p></dd><dt><span class="term"><tt class="varname">DISPLAY</tt></span></dt><dd><p>Set to the X11 display of the terminal by default.</p></dd><dt><span class="term"><tt class="varname">WINDOWID</tt></span></dt><dd><p>Set to the X11 window identifier of the terminal by default.</p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2533364"></a>Working with multiple terminals</h3></div></div></div><p>
         Terminal provides a tab feature that enables you to open several terminals
         within a single window. Each terminal is opened in a separate tab. Click on the
         appropriate tab to display the terminal in the window. Each tabbed terminal in
         a window is separate subprocess, so you can use each terminal for a different
         task.
-      </p><div class="screenshot"><div class="mediaobject"><img src="images/terminal-multiple-tabs.png" alt="Example of a terminal window with tabs"></div></div><p>
+      </p><div class="screenshot"><div class="mediaobject" align="center"><img src="images/terminal-multiple-tabs.png" align="middle" alt="Example of a terminal window with tabs"></div></div><p>
         See <a href="usage.html" title="Usage">the section called &#8220;Usage&#8221;</a> for information about how to open a new tabbed
         terminal.
       </p><p>

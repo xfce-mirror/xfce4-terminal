@@ -153,7 +153,7 @@
         You can also start &app; from a command line or from the <guilabel>Application
         launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap>
         <keycap>F2</keycap></keycombo>, type
-        <userinput><command>Terminal</command></userinput> and press the button
+        <userinput><command>Terminal</command></userinput> and click the button
         <guibutton>Run</guibutton>.
       </para>
     </sect2>
@@ -169,7 +169,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-first-time.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-first-time.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -184,7 +184,8 @@
         your shell. The cursor is positioned at the command prompt. When you type a
         UNIX command and press <keycap>Return</keycap>, the computer
         executes the command. By default, &app; will use the login shell of the user
-        who starts the application.
+        who starts the application (<filename>/bin/bash</filename> in case of a
+        default Linux installation).
       </para>
 
       <para>
@@ -235,7 +236,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-multiple-tabs.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-multiple-tabs.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -507,6 +508,11 @@
           </listitem>
         </varlistentry>
       </variablelist>
+
+      <para>
+        You can also use the shell commands <userinput><command>reset</command></userinput> and
+        <userinput><command>clear</command></userinput> to recover your terminal.
+      </para>
     </sect2>
 
     <sect2 id="customize-toolbars">
@@ -520,14 +526,14 @@
 
       <para>Once the toolbars are shown, choose <menuchoice><guimenu>Edit</guimenu>
       <guimenuitem>Toolbars...</guimenuitem></menuchoice> from the menubar or right-click one of
-      the toolbars and choose <menuchoice><guimenuitem>Customize...</guimenuitem></menuchoice> from
+      the toolbars and choose <menuchoice><guimenuitem>Customize Toolbar...</guimenuitem></menuchoice> from
       the context menu. This opens the <guilabel>Toolbar Editor</guilabel> window, which allows you
       to customize the toolbars in the current terminal window.</para>
 
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-toolbars.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-toolbars.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -583,7 +589,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-preferences-general.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-preferences-general.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -664,7 +670,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-preferences-appearance.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-preferences-appearance.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -677,12 +683,24 @@
         <varlistentry>
           <term><guilabel>Font</guilabel></term>
           <listitem>
-            <para>Click on the button to select the font type and font size you want to
-            use for the terminal.</para>
-            <para>Use the option <guilabel>Enable anti-aliasing for the terminal font</guilabel>
-            to control whether you want &app; to use anti-aliasing when rendering text in
-            the terminals. Disabling this option can impressively speed up terminal rendering
-            performance and reduce the overall system load on slow systems.</para>
+            <para>
+              Click on the button to select the font type and font size you want to
+              use for the terminal.
+            </para>
+
+            <para>
+              Use the option <guilabel>Enable anti-aliasing for the terminal font</guilabel>
+              to control whether you want &app; to use anti-aliasing when rendering text in
+              the terminals. Disabling this option can impressively speed up terminal rendering
+              performance and reduce the overall system load on slow systems.
+            </para>
+
+            <para>
+              The option <guilabel>Allow bold text</guilabel> controls whether Terminal
+              allows the application running inside to use bold text or not. If disabled,
+              all text will appear in the selected font, else certain text will appear in
+              bold face.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -746,7 +764,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-preferences-colors.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-preferences-colors.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -766,14 +784,16 @@
             <para>Click on the <guilabel>Background color</guilabel> button to choose the
             default background for terminal windows. This color is also used in background
             tinting when <guilabel>Transparent background</guilabel> or <guilabel>Background
-            image</guilabel> is selected below.</para>
+            image</guilabel> is selected.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><guilabel>Palette</guilabel></term>
           <listitem>
-            <para>The terminal provides the application running inside with a palette of
-            16 colors. You can customize this colors using the 16 color buttons.</para>
+            <para>
+              The terminal provides the application running inside with a palette of
+              16 colors. You can customize this colors using the 16 color buttons.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -785,7 +805,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-preferences-shortcuts.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-preferences-shortcuts.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -852,7 +872,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG" />
+            <imagedata align="center" fileref="images/terminal-preferences-advanced.png" format="PNG" />
           </imageobject>
 
           <textobject>
@@ -879,9 +899,12 @@
         <varlistentry>
           <term><guilabel>$TERM setting</guilabel></term>
           <listitem>
-            <para>This specifies the value the $TERM environment variable is set to, when a
-            new terminal tab or terminal window is opened. The default should be ok for most
-            systems. If you have problems with colors in some applications, try xterm-color here.</para>
+            <para>
+              This specifies the value the <varname>$TERM</varname> environment variable is set to, when
+              a new terminal tab or terminal window is opened. The default should be ok for most
+              systems. If you have problems with colors in some applications or if you think that a
+              certain application behaves oddly, try <userinput>xterm-color</userinput> here.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1093,6 +1116,16 @@
           </listitem>
         </varlistentry>
       </variablelist>
+
+      <para>
+        For example, say you want to open a new terminal window with two tabs in it, where the first
+        tab should run <command>mutt</command> and the second tab should run <command>mc</command>,
+        and the window should have 80 columns and 40 rows, then you would use the following command
+        to start Terminal:
+      </para>
+
+      <screen>Terminal --geometry 80x40 --command mutt --tab --command mc</screen>
+
     </sect2>
 
     <sect2 id="files-and-env-vars">
@@ -1240,7 +1273,7 @@ MiscCursorBlinks=TRUE</programlisting>
             </para>
           </listitem>
         </varlistentry>
-
+<!--
         <varlistentry>
           <term><varname>VteWorkaroundTitleBug</varname></term>
           <listitem>
@@ -1256,6 +1289,7 @@ MiscCursorBlinks=TRUE</programlisting>
             </para>
           </listitem>
         </varlistentry>
+-->
       </variablelist>
     </sect2>
   </sect1>
