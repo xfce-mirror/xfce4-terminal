@@ -930,7 +930,7 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
       if (G_LIKELY (popup != NULL))
         {
           item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
-          if (G_LIKELY (item != NULL))
+          if (G_LIKELY (item != NULL && GTK_IS_MENU_ITEM (item)))
             {
               /* append input methods */
               menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (item));

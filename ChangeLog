@@ -1,3 +1,9 @@
+2005-03-24	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-window.c: Work-around the problem where
+	  gtk_ui_manager_get_widget() does return a valid widget, which
+	  is not a GtkMenuItem.
+
 2005-03-19	Benedikt Meurer <benny@xfce.org>
 
 	* configure.ac, NEWS: Bump version to 0.2.5cvs.
