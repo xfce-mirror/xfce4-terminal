@@ -1,3 +1,34 @@
+0.2.0svn
+========
+- The user interface was reworked to comply with the GNOME Human Interface
+  Guidelines (HIG).
+- Terminal can now use the foreground and background color from the selected
+  Gtk+ theme.
+- Toolbars can now be edited by right-clicking the appriorate toolbar.
+- The preferences dialog and the title dialog are now accessible.
+- Avoid flickering when opening a new terminal.
+- Menu access keys can now be disabled, which allows passing key combinations
+  such as Alt+f to the application running inside the terminal.
+- Font-antialiasing can now be turned off for the terminal font rendering,
+  which impressively speeds up Terminal performance and reduces system
+  load on slow systems.
+- Optional support for startup notification was added.
+- A bunch of new command line options were added, which allow the user
+  to control every aspect of a terminal window from the command line and
+  its also possible to open multiple windows and multiple tabs from the
+  command line.
+- The terminal title can now be changed by double-clicking the terminal
+  tab header.
+- Multi-screen and multi-display configurations are now properly supported
+  by Terminal.
+- A bug in the backspace binding preference was fixed, which caused Terminal
+  to use Control+H if the user configured ASCII DEL and vice versa.
+- Support for session management was added (using X11R5 WM_SAVE_YOURSELF).
+- Added a confirmation dialog, that pops up when a window with more than
+  one tab is about to be closed. The confirmation can be disabled from
+  the dialog.
+
+
 0.1.10
 ======
 - The configure option --enable-final is now on by default for plattforms
