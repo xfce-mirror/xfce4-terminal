@@ -1,7 +1,16 @@
+2004-12-20	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-preferences.c: Removed the color-system-theme
+	  setting, as it seems to be mostly unused.
+	* terminal/terminal-widget.c(terminal_widget_key_press_event): Allow
+	  users to scroll up/down one line using Shift+Up and Shift+Down,
+	  in the same manner as aterm does. This fixes bug #36.
+
 2004-12-19	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-tab-header.c, terminal/terminal-tab-header.h: Better
-	  fix for bug #23. GtkEventBox can easily be triggered to not create
+	  fix for bug #33. GtkEventBox can easily be triggered to not create
 	  a GdkWindow itself, which in turn doesn't break engines.
 
 2004-12-18	Benedikt Meurer <benny@xfce.org>

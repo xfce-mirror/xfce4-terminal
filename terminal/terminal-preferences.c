@@ -74,7 +74,6 @@ enum
   PROP_BACKGROUND_DARKNESS,
   PROP_BINDING_BACKSPACE,
   PROP_BINDING_DELETE,
-  PROP_COLOR_SYSTEM_THEME,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
   PROP_COLOR_PALETTE1,
@@ -632,17 +631,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       TERMINAL_TYPE_ERASE_BINDING,
                                                       TERMINAL_ERASE_BINDING_DELETE_SEQUENCE,
                                                       G_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:color-system-theme:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_SYSTEM_THEME,
-                                   g_param_spec_boolean ("color-system-theme",
-                                                         _("Use colors from system theme"),
-                                                         _("Use colors from system theme"),
-                                                         FALSE,
-                                                         G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:color-foreground:

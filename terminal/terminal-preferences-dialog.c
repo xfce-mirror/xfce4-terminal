@@ -603,20 +603,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  vbox = gtk_vbox_new (FALSE, 6);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
-  gtk_container_add (GTK_CONTAINER (frame), vbox);
-  gtk_widget_show (vbox);
-
-  button = gtk_check_button_new_with_mnemonic (_("Use colors from s_ystem theme"));
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-system-theme", G_OBJECT (button), "active");
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
-
   table = gtk_table_new (3, 2, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-  gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
+  gtk_container_add (GTK_CONTAINER (frame), table);
   gtk_widget_show (table);
 
   label = g_object_new (GTK_TYPE_LABEL,
@@ -636,7 +626,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = g_object_new (GTK_TYPE_COLOR_BUTTON,
                          "title", _("Choose terminal text color"),
                          NULL);
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-system-theme", G_OBJECT (button), "sensitive");
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-foreground", G_OBJECT (button), "color");
   gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);
@@ -668,7 +657,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = g_object_new (GTK_TYPE_COLOR_BUTTON,
                          "title", _("Choose terminal background color"),
                          NULL);
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-system-theme", G_OBJECT (button), "sensitive");
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-background", G_OBJECT (button), "color");
   gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);

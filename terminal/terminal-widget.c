@@ -329,11 +329,28 @@ static gboolean
 terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
+  GtkAdjustment *adjustment = VTE_TERMINAL (widget)->adjustment;
+  gdouble        value;
+
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
-  if ((event->state == 0 && event->keyval == GDK_Menu)
-   || (event->state == GDK_SHIFT_MASK && event->keyval == GDK_F10))
+  if (event->keyval == GDK_Menu || ((event->state & GDK_SHIFT_MASK) != 0 && event->keyval == GDK_F10))
     {
       g_signal_emit (G_OBJECT (widget), widget_signals[CONTEXT_MENU], 0, event);
+      return TRUE;
+    }
+  /* scroll up one line with "<Shift>Up" */
+  else if ((event->state & GDK_SHIFT_MASK) != 0
+        && (event->keyval == GDK_Up || event->keyval == GDK_KP_Up))
+    {
+      gtk_adjustment_set_value (adjustment, adjustment->value - 1);
+      return TRUE;
+    }
+  /* scroll down one line with "<Shift>Down" */
+  else if ((event->state & GDK_SHIFT_MASK) != 0
+        && (event->keyval == GDK_Down || event->keyval == GDK_KP_Down))
+    {
+      value = MIN (adjustment->value + 1, adjustment->upper - adjustment->page_size);
+      gtk_adjustment_set_value (adjustment, value);
       return TRUE;
     }
 
