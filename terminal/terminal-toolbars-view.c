@@ -26,6 +26,7 @@
 #include <config.h>
 #endif
 
+#include <terminal/terminal-icons.h>
 #include <terminal/terminal-toolbars-model.h>
 #include <terminal/terminal-toolbars-view.h>
 
@@ -56,6 +57,9 @@ terminal_toolbars_view_class_init (TerminalToolbarsViewClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_toolbars_view_finalize;
+
+  /* register stock icons required for the toolbars */
+  terminal_icons_setup_toolbar ();
 }
 
 

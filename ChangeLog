@@ -1,3 +1,16 @@
+2005-01-24	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/stock-icon-*.png, terminal/stock-icons/*.png,
+	  terminal/terminal-icons.c, terminal/terminal-icons.h,
+	  terminal/terminal-preferences-dialog.c, terminal/main.c,
+	  terminal/terminal-toolbars-view.c, configure.ac,
+	  terminal/stock-icons/Makefile.am, terminal/Makefile.am:
+	  Moved all stock icons to stock-icons/ sub directory and
+	  generate the C source file on the target machine, rather
+	  than generating it prior to distribution. Stock icons are
+	  now loaded on-demand, rather than setting up all stock
+	  icons on startup. This should speed up startup slightly.
+
 2005-01-23	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/main.c: Be sure to initialize the locale first, using

@@ -29,11 +29,13 @@
 #include <dbus/dbus-glib-lowlevel.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
 
-#include <terminal/stock-icons.h>
+//#include <terminal/stock-icons.h>
 #include <terminal/terminal-app.h>
+#include <terminal/terminal-icons.h>
 
 
 
+#if 0
 static void
 stock_icons_init (void)
 {
@@ -216,6 +218,7 @@ stock_icons_init (void)
 
   gtk_icon_factory_add_default (factory);
 }
+#endif
 
 
 
@@ -308,7 +311,7 @@ main (int argc, char **argv)
 #endif
   const gchar     *startup_id;
   const gchar     *display;
-  GdkPixbuf       *icon;
+  //GdkPixbuf       *icon;
   GError          *error = NULL;
   gchar          **nargv;
   gint             nargc;
@@ -415,11 +418,14 @@ main (int argc, char **argv)
   gtk_window_set_auto_startup_notification (FALSE);
 
   gtk_init (&argc, &argv);
-  stock_icons_init ();
+  //stock_icons_init ();
 
+#if 0
   icon = gdk_pixbuf_from_pixdata (&stock_general48, FALSE, NULL);
   gtk_window_set_default_icon (icon);
   g_object_unref (G_OBJECT (icon));
+#endif
+  terminal_icons_setup_main ();
 
   app = terminal_app_new ();
 

@@ -68,6 +68,7 @@ doc/C/Makefile
 doc/C/images/Makefile
 pixmaps/Makefile
 po/Makefile.in
+terminal/stock-icons/Makefile
 terminal/Makefile
 terminal/terminal-config.h
 ])

@@ -1,3 +1,6 @@
+SUBDIRS =								\
+	stock-icons
+
 INCLUDES =								\
 	-DDATADIR=\"$(datadir)\"					\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
@@ -18,6 +21,7 @@ Terminal_build_sources =						\
 Terminal_headers =							\
 	terminal-accel-map.h						\
 	terminal-app.h							\
+	terminal-icons.h						\
 	terminal-image-loader.h						\
 	terminal-options.h						\
 	terminal-preferences.h						\
@@ -34,9 +38,9 @@ Terminal_SOURCES =							\
 	$(Terminal_build_sources)					\
 	$(Terminal_headers)						\
 	main.c								\
-	stock-icons.h							\
 	terminal-accel-map.c						\
 	terminal-app.c							\
+	terminal-icons.c						\
 	terminal-image-loader.c						\
 	terminal-options.c						\
 	terminal-preferences.c						\
@@ -68,27 +72,6 @@ install-data-local:
 # Used to regenerate all automatic files
 regenerate:
 	echo "Regenerating source files"
-	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
-		stock_advanced48 stock-icon-advanced48.png \
-		stock_appearance48 stock-icon-appearance48.png \
-		stock_closetab16 stock-icon-closetab16.png \
-		stock_closetab24 stock-icon-closetab24.png \
-		stock_closewindow16 stock-icon-closewindow16.png \
-		stock_closewindow24 stock-icon-closewindow24.png \
-		stock_colors48 stock-icon-colors48.png \
-		stock_compose48 stock-icon-compose48.png \
-		stock_fullscreen24 stock-icon-fullscreen24.png \
-		stock_general48 stock-icon-general48.png \
-		stock_newtab16 stock-icon-newtab16.png \
-		stock_newtab24 stock-icon-newtab24.png \
-		stock_newwindow16 stock-icon-newwindow16.png \
-		stock_newwindow24 stock-icon-newwindow24.png \
-		stock_reportbug16 stock-icon-reportbug16.png \
-		stock_reportbug24 stock-icon-reportbug24.png \
-		stock_shortcuts48 stock-icon-shortcuts48.png \
-		stock_showborders24 stock-icon-showborders24.png \
-		stock_showmenu24 stock-icon-showmenu24.png ) \
-	> stock-icons.h
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <libxfce4util/libxfce4util.h>\nG_BEGIN_DECLS\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \

@@ -24,6 +24,7 @@
 #endif
 
 #include <terminal/terminal-enum-types.h>
+#include <terminal/terminal-icons.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
 
@@ -125,6 +126,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   AtkRelation       *relation;
   AtkObject         *object;
   gint               index;
+
+  /* register stock icons required for the preferences dialog */
+  terminal_icons_setup_preferences ();
 
   dialog->preferences = terminal_preferences_get ();
 
