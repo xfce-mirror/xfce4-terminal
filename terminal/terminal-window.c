@@ -158,7 +158,7 @@ static GtkActionEntry action_entries[] =
   { "edit-menu", NULL, N_ ("_Edit"),  },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, NULL, G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, NULL, G_CALLBACK (terminal_window_action_paste), },
-  { "edit-toolbars", NULL, N_ ("_Toolbars"), NULL, NULL, G_CALLBACK (terminal_window_action_edit_toolbars), },
+  { "edit-toolbars", NULL, N_ ("_Toolbars"), NULL, N_ ("Customize toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
   { "preferences", GTK_STOCK_PREFERENCES, N_ ("Preferences"), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), },
   { "terminal-menu", NULL, N_ ("_Terminal"), },
