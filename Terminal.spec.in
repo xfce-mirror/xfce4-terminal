@@ -8,9 +8,9 @@ Source0:		%{name}-%{version}.tar.gz
 Group:			Applications/X11
 BuildRoot:		%{_tmppath}/%{name}-root
 Requires:		vte >= @VTE_REQUIRED_VERSION@
-Requires:		libexo >= @EXO_REQUIRED_VERSION@
+Requires:		exo >= @EXO_REQUIRED_VERSION@
 BuildRequires:		vte-devel >= @VTE_REQUIRED_VERSION@
-BuildRequires:		libexo-devel >= @EXO_REQUIRED_VERSION@
+BuildRequires:		exo-devel >= @EXO_REQUIRED_VERSION@
 
 %description
 Advanced lightweight Terminal Emulator for the X windowing system
@@ -25,7 +25,7 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT mandir=${_mandir}
+make install DESTDIR=$RPM_BUILD_ROOT mandir=%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT

@@ -10,7 +10,7 @@ dnl Version information
 m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [2])
 m4_define([terminal_version_micro], [1])
-m4_define([terminal_version_tag], [])
+m4_define([terminal_version_tag], [pre1])
 m4_define([terminal_version_dbus], [2])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
 
