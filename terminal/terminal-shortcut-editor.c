@@ -104,6 +104,7 @@ static ToplevelMenu toplevel_menus[] =
     N_ ("View"),
     {
       "accel-show-menubar",
+      "accel-show-toolbars",
       "accel-show-borders",
       "accel-fullscreen",
       NULL,

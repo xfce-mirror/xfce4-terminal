@@ -50,6 +50,7 @@ enum
   PROP_ACCEL_PASTE,
   PROP_ACCEL_PREFERENCES,
   PROP_ACCEL_SHOW_MENUBAR,
+  PROP_ACCEL_SHOW_TOOLBARS,
   PROP_ACCEL_SHOW_BORDERS,
   PROP_ACCEL_FULLSCREEN,
   PROP_ACCEL_PREV_TAB,
@@ -89,6 +90,7 @@ enum
   PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
   PROP_MISC_MENUBAR_DEFAULT,
+  PROP_MISC_TOOLBARS_DEFAULT,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -113,6 +115,7 @@ struct _TerminalPreferences
   gchar                   *accel_paste;
   gchar                   *accel_preferences;
   gchar                   *accel_show_menubar;
+  gchar                   *accel_show_toolbars;
   gchar                   *accel_show_borders;
   gchar                   *accel_fullscreen;
   gchar                   *accel_prev_tab;
@@ -152,6 +155,7 @@ struct _TerminalPreferences
   gboolean                 misc_borders_default;
   gboolean                 misc_cursor_blinks;
   gboolean                 misc_menubar_default;
+  gboolean                 misc_toolbars_default;
   TerminalScrollbar        scrolling_bar;
   guint                    scrolling_lines;
   gboolean                 scrolling_on_output;
@@ -395,6 +399,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-menubar",
                                                         _("Show menubar"),
                                                         _("Show menubar"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-show-toolbars:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SHOW_TOOLBARS,
+                                   g_param_spec_string ("accel-show-toolbars",
+                                                        _("Show toolbars"),
+                                                        _("Show toolbars"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -837,6 +852,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:misc-toolbars-default:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_TOOLBARS_DEFAULT,
+                                   g_param_spec_boolean ("misc-toolbars-default",
+                                                         _("Show toolbars by default"),
+                                                         _("Show toolbars by default"),
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:scrolling-bar:
    **/
   g_object_class_install_property (gobject_class,
@@ -964,6 +990,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->accel_paste            = g_strdup ("<control><shift>p");
   preferences->accel_preferences      = g_strdup (_("Disabled"));
   preferences->accel_show_menubar     = g_strdup (_("Disabled"));
+  preferences->accel_show_toolbars    = g_strdup (_("Disabled"));
   preferences->accel_show_borders     = g_strdup (_("Disabled"));
   preferences->accel_fullscreen       = g_strdup ("F11");
   preferences->accel_prev_tab         = g_strdup ("<control>Page_Up");
@@ -1007,6 +1034,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->misc_borders_default     = TRUE;
   preferences->misc_cursor_blinks       = FALSE;
   preferences->misc_menubar_default     = TRUE;
+  preferences->misc_toolbars_default    = FALSE;
 
   preferences->font_name                = g_strdup ("Monospace 12");
 
@@ -1047,6 +1075,7 @@ terminal_preferences_finalize (GObject *object)
   g_free (preferences->accel_paste);
   g_free (preferences->accel_preferences);
   g_free (preferences->accel_show_menubar);
+  g_free (preferences->accel_show_toolbars);
   g_free (preferences->accel_show_borders);
   g_free (preferences->accel_fullscreen);
   g_free (preferences->accel_prev_tab);
@@ -1105,6 +1134,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_ACCEL_SHOW_MENUBAR:
       g_value_set_string (value, preferences->accel_show_menubar);
+      break;
+
+    case PROP_ACCEL_SHOW_TOOLBARS:
+      g_value_set_string (value, preferences->accel_show_toolbars);
       break;
 
     case PROP_ACCEL_SHOW_BORDERS:
@@ -1263,6 +1296,10 @@ terminal_preferences_get_property (GObject    *object,
       g_value_set_boolean (value, preferences->misc_menubar_default);
       break;
 
+    case PROP_MISC_TOOLBARS_DEFAULT:
+      g_value_set_boolean (value, preferences->misc_toolbars_default);
+      break;
+
     case PROP_SCROLLING_BAR:
       g_value_set_enum (value, preferences->scrolling_bar);
       break;
@@ -1411,6 +1448,17 @@ terminal_preferences_set_property (GObject      *object,
           g_free (preferences->accel_show_menubar);
           preferences->accel_show_menubar = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-show-menubar");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_ACCEL_SHOW_TOOLBARS:
+      sval = g_value_get_string (value);
+      if (!exo_str_is_equal (sval, preferences->accel_show_toolbars))
+        {
+          g_free (preferences->accel_show_toolbars);
+          preferences->accel_show_toolbars = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
+          g_object_notify (object, "accel-show-toolbars");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1811,6 +1859,16 @@ terminal_preferences_set_property (GObject      *object,
         {
           preferences->misc_menubar_default = bval;
           g_object_notify (object, "misc-menubar-default");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_MISC_TOOLBARS_DEFAULT:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->misc_toolbars_default)
+        {
+          preferences->misc_toolbars_default = bval;
+          g_object_notify (object, "misc-toolbars-default");
           terminal_preferences_schedule_store (preferences);
         }
       break;

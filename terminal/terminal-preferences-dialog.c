@@ -425,12 +425,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_mnemonic (_("Show _borders by default"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-borders-default");
+  button = gtk_check_button_new_with_mnemonic (_("Show _toolbars by default"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-toolbars-default");
   exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
-  gtk_tooltips_set_tip (dialog->tooltips, button,
-                        _("Enable to show window decorations around newly "
-                          "created terminal windows."), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 3, 4,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
@@ -439,6 +436,16 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-cursor-blinks");
   exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
   gtk_table_attach (GTK_TABLE (table), button, 1, 2, 3, 4,
+                    GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_check_button_new_with_mnemonic (_("Show _borders by default"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-borders-default");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  gtk_tooltips_set_tip (dialog->tooltips, button,
+                        _("Enable to show window decorations around newly "
+                          "created terminal windows."), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 4, 5,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 

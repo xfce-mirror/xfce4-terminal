@@ -1,3 +1,31 @@
+2004-11-09	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-widget.c(terminal_widget_force_resize_window): Grab
+	  focus to VTE terminal widget every time we get here, so windows
+	  don't get focus on the toolbars.
+	* terminal/stock-icon-fullscreen24.png,
+	  terminal/stock-icon-newtab16.png,
+	  terminal/stock-icon-newtab24.png,
+	  terminal/stock-icon-newwindow16.png,
+	  terminal/stock-icon-newwindow24.png,
+	  terminal/stock-icon-reportbug16.png,
+	  terminal/stock-icon-reportbut48.png,
+	  terminal/stock-icons.h, terminal/main.c(stock_icons_init): Use and
+	  setup Gtk+ stock icons with all required icon sizes.
+	* terminal/terminal-toolbars-model.h,
+	  terminal/terminal-toolbars-model.c,
+	  terminal/terminal-toolbars-view.h,
+	  terminal/terminal-toolbars-view.c,
+	  terminal/terminal-window.c: Add new customizable toolbar based on
+	  the new implementation in libexo. In addition, add some tooltips
+	  to the GtkActions.
+	* terminal/terminal-preferences.c, terminal/terminal-shortcut-editor.c,
+	  terminal/terminal-preferences-dialog.c: Added shortcut and option
+	  for the toolbars stuff.
+	* po/: Updated .po files. Updated german translations.
+	* Terminal-toolbars.ui: Default .ui file for the toolbars.
+	* Terminal.ui: Added new menu items.
+
 2004-11-03	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-image-loader.c: Fix crash with width/height == 1/1.

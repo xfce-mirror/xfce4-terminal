@@ -1,4 +1,5 @@
 INCLUDES =								\
+	-DDATADIR=\"$(datadir)\"					\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
@@ -21,6 +22,8 @@ Terminal_headers =							\
 	terminal-preferences-dialog.h					\
 	terminal-shortcut-editor.h					\
 	terminal-tab-header.h						\
+	terminal-toolbars-model.h					\
+	terminal-toolbars-view.h					\
 	terminal-widget.h						\
 	terminal-window.h
 
@@ -37,6 +40,8 @@ Terminal_SOURCES =							\
 	terminal-preferences-dialog.c					\
 	terminal-shortcut-editor.c					\
 	terminal-tab-header.c						\
+	terminal-toolbars-model.c					\
+	terminal-toolbars-view.c					\
 	terminal-widget.c						\
 	terminal-window.c
 
@@ -49,17 +54,16 @@ Terminal_LDFLAGS =							\
 	@EXO_LIBS@							\
 	@VTE_LIBS@
 
-stock-icons.h: stamp-stock-icons.h
-	@true
-stamp-stock-icons.h: stock-icon-newtab.png stock-icon-newwindow.png \
-                     stock-icon-reportbug.png Makefile
+stock-icons.h: stock-icon-fullscreen24.png stock-icon-newtab16.png stock-icon-newtab24.png stock-icon-newwindow16.png stock-icon-newwindow24.png stock-icon-reportbug16.png stock-icon-reportbug48.png Makefile
 	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
-		stock_newtab stock-icon-newtab.png \
-		stock_newwindow stock-icon-newwindow.png \
-		stock_reportbug stock-icon-reportbug.png > xgen) \
-	&& cp xgen stock-icons.h \
-	&& rm -f xgen \
-	&& echo timestamp > $(@F)
+		stock_fullscreen24 stock-icon-fullscreen24.png \
+		stock_newtab16 stock-icon-newtab16.png \
+		stock_newtab24 stock-icon-newtab24.png \
+		stock_newwindow16 stock-icon-newwindow16.png \
+		stock_newwindow24 stock-icon-newwindow24.png \
+		stock_reportbug16 stock-icon-reportbug16.png \
+		stock_reportbug48 stock-icon-reportbug48.png ) \
+	> stock-icons.h
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true

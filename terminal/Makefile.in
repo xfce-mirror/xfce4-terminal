@@ -64,6 +64,8 @@ am_Terminal_OBJECTS = $(am__objects_1) $(am__objects_2) \
 	Terminal-terminal-preferences-dialog.$(OBJEXT) \
 	Terminal-terminal-shortcut-editor.$(OBJEXT) \
 	Terminal-terminal-tab-header.$(OBJEXT) \
+	Terminal-terminal-toolbars-model.$(OBJEXT) \
+	Terminal-terminal-toolbars-view.$(OBJEXT) \
 	Terminal-terminal-widget.$(OBJEXT) \
 	Terminal-terminal-window.$(OBJEXT)
 Terminal_OBJECTS = $(am_Terminal_OBJECTS)
@@ -81,6 +83,8 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-preferences.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-shortcut-editor.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-tab-header.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-toolbars-model.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-toolbars-view.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-widget.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-window.Po
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -218,6 +222,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 INCLUDES = \
+	-DDATADIR=\"$(datadir)\"					\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
@@ -237,6 +242,8 @@ Terminal_headers = \
 	terminal-preferences-dialog.h					\
 	terminal-shortcut-editor.h					\
 	terminal-tab-header.h						\
+	terminal-toolbars-model.h					\
+	terminal-toolbars-view.h					\
 	terminal-widget.h						\
 	terminal-window.h
 
@@ -253,6 +260,8 @@ Terminal_SOURCES = \
 	terminal-preferences-dialog.c					\
 	terminal-shortcut-editor.c					\
 	terminal-tab-header.c						\
+	terminal-toolbars-model.c					\
+	terminal-toolbars-view.c					\
 	terminal-widget.c						\
 	terminal-window.c
 
@@ -351,6 +360,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-preferences.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-shortcut-editor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-tab-header.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-toolbars-model.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-toolbars-view.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-widget.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-window.Po@am__quote@
 
@@ -618,6 +629,54 @@ Terminal-terminal-tab-header.lo: terminal-tab-header.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-tab-header.lo `test -f 'terminal-tab-header.c' || echo '$(srcdir)/'`terminal-tab-header.c
 
+Terminal-terminal-toolbars-model.o: terminal-toolbars-model.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-toolbars-model.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo" -c -o Terminal-terminal-toolbars-model.o `test -f 'terminal-toolbars-model.c' || echo '$(srcdir)/'`terminal-toolbars-model.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo" "$(DEPDIR)/Terminal-terminal-toolbars-model.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-toolbars-model.c' object='Terminal-terminal-toolbars-model.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-toolbars-model.Po' tmpdepfile='$(DEPDIR)/Terminal-terminal-toolbars-model.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-toolbars-model.o `test -f 'terminal-toolbars-model.c' || echo '$(srcdir)/'`terminal-toolbars-model.c
+
+Terminal-terminal-toolbars-model.obj: terminal-toolbars-model.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-toolbars-model.obj -MD -MP -MF "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo" -c -o Terminal-terminal-toolbars-model.obj `if test -f 'terminal-toolbars-model.c'; then $(CYGPATH_W) 'terminal-toolbars-model.c'; else $(CYGPATH_W) '$(srcdir)/terminal-toolbars-model.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo" "$(DEPDIR)/Terminal-terminal-toolbars-model.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-toolbars-model.c' object='Terminal-terminal-toolbars-model.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-toolbars-model.Po' tmpdepfile='$(DEPDIR)/Terminal-terminal-toolbars-model.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-toolbars-model.obj `if test -f 'terminal-toolbars-model.c'; then $(CYGPATH_W) 'terminal-toolbars-model.c'; else $(CYGPATH_W) '$(srcdir)/terminal-toolbars-model.c'; fi`
+
+Terminal-terminal-toolbars-model.lo: terminal-toolbars-model.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-toolbars-model.lo -MD -MP -MF "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo" -c -o Terminal-terminal-toolbars-model.lo `test -f 'terminal-toolbars-model.c' || echo '$(srcdir)/'`terminal-toolbars-model.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo" "$(DEPDIR)/Terminal-terminal-toolbars-model.Plo"; else rm -f "$(DEPDIR)/Terminal-terminal-toolbars-model.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-toolbars-model.c' object='Terminal-terminal-toolbars-model.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-toolbars-model.Plo' tmpdepfile='$(DEPDIR)/Terminal-terminal-toolbars-model.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-toolbars-model.lo `test -f 'terminal-toolbars-model.c' || echo '$(srcdir)/'`terminal-toolbars-model.c
+
+Terminal-terminal-toolbars-view.o: terminal-toolbars-view.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-toolbars-view.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo" -c -o Terminal-terminal-toolbars-view.o `test -f 'terminal-toolbars-view.c' || echo '$(srcdir)/'`terminal-toolbars-view.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo" "$(DEPDIR)/Terminal-terminal-toolbars-view.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-toolbars-view.c' object='Terminal-terminal-toolbars-view.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-toolbars-view.Po' tmpdepfile='$(DEPDIR)/Terminal-terminal-toolbars-view.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-toolbars-view.o `test -f 'terminal-toolbars-view.c' || echo '$(srcdir)/'`terminal-toolbars-view.c
+
+Terminal-terminal-toolbars-view.obj: terminal-toolbars-view.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-toolbars-view.obj -MD -MP -MF "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo" -c -o Terminal-terminal-toolbars-view.obj `if test -f 'terminal-toolbars-view.c'; then $(CYGPATH_W) 'terminal-toolbars-view.c'; else $(CYGPATH_W) '$(srcdir)/terminal-toolbars-view.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo" "$(DEPDIR)/Terminal-terminal-toolbars-view.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-toolbars-view.c' object='Terminal-terminal-toolbars-view.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-toolbars-view.Po' tmpdepfile='$(DEPDIR)/Terminal-terminal-toolbars-view.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-toolbars-view.obj `if test -f 'terminal-toolbars-view.c'; then $(CYGPATH_W) 'terminal-toolbars-view.c'; else $(CYGPATH_W) '$(srcdir)/terminal-toolbars-view.c'; fi`
+
+Terminal-terminal-toolbars-view.lo: terminal-toolbars-view.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-toolbars-view.lo -MD -MP -MF "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo" -c -o Terminal-terminal-toolbars-view.lo `test -f 'terminal-toolbars-view.c' || echo '$(srcdir)/'`terminal-toolbars-view.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo" "$(DEPDIR)/Terminal-terminal-toolbars-view.Plo"; else rm -f "$(DEPDIR)/Terminal-terminal-toolbars-view.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-toolbars-view.c' object='Terminal-terminal-toolbars-view.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-toolbars-view.Plo' tmpdepfile='$(DEPDIR)/Terminal-terminal-toolbars-view.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-toolbars-view.lo `test -f 'terminal-toolbars-view.c' || echo '$(srcdir)/'`terminal-toolbars-view.c
+
 Terminal-terminal-widget.o: terminal-widget.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-widget.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-widget.Tpo" -c -o Terminal-terminal-widget.o `test -f 'terminal-widget.c' || echo '$(srcdir)/'`terminal-widget.c; \
 @am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-widget.Tpo" "$(DEPDIR)/Terminal-terminal-widget.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-widget.Tpo"; exit 1; fi
@@ -845,17 +904,16 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	uninstall-info-am
 
 
-stock-icons.h: stamp-stock-icons.h
-	@true
-stamp-stock-icons.h: stock-icon-newtab.png stock-icon-newwindow.png \
-                     stock-icon-reportbug.png Makefile
+stock-icons.h: stock-icon-fullscreen24.png stock-icon-newtab16.png stock-icon-newtab24.png stock-icon-newwindow16.png stock-icon-newwindow24.png stock-icon-reportbug16.png stock-icon-reportbug48.png Makefile
 	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
-		stock_newtab stock-icon-newtab.png \
-		stock_newwindow stock-icon-newwindow.png \
-		stock_reportbug stock-icon-reportbug.png > xgen) \
-	&& cp xgen stock-icons.h \
-	&& rm -f xgen \
-	&& echo timestamp > $(@F)
+		stock_fullscreen24 stock-icon-fullscreen24.png \
+		stock_newtab16 stock-icon-newtab16.png \
+		stock_newtab24 stock-icon-newtab24.png \
+		stock_newwindow16 stock-icon-newwindow16.png \
+		stock_newwindow24 stock-icon-newwindow24.png \
+		stock_reportbug16 stock-icon-reportbug16.png \
+		stock_reportbug48 stock-icon-reportbug48.png ) \
+	> stock-icons.h
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true

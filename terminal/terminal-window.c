@@ -42,6 +42,7 @@
 
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-tab-header.h>
+#include <terminal/terminal-toolbars-view.h>
 #include <terminal/terminal-window.h>
 
 
@@ -87,9 +88,13 @@ static void            terminal_window_action_copy              (GtkAction      
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_paste             (GtkAction       *action,
                                                                  TerminalWindow  *window);
+static void            terminal_window_action_edit_toolbars     (GtkAction       *action,
+                                                                 TerminalWindow  *window);
 static void            terminal_window_action_prefs             (GtkAction       *action,
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_show_menubar      (GtkToggleAction *action,
+                                                                 TerminalWindow  *window);
+static void            terminal_window_action_show_toolbars     (GtkToggleAction *action,
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_show_borders      (GtkToggleAction *action,
                                                                  TerminalWindow  *window);
@@ -130,6 +135,7 @@ struct _TerminalWindow
   GtkUIManager        *ui_manager;
   
   GtkWidget           *menubar;
+  GtkWidget           *toolbars;
   GtkWidget           *notebook;
 
   guint                prefs_idle_id;
@@ -145,89 +151,40 @@ static guint         window_signals[LAST_SIGNAL];
 static GtkActionEntry action_entries[] =
 {
   { "file-menu", NULL, N_ ("_File"), },
-  { "new-tab", "terminal-newtab", N_ ("Open _Tab"), NULL, NULL, G_CALLBACK (terminal_window_action_new_tab), }, 
-  { "new-window", "terminal-newwindow", N_ ("Open _Terminal"), "<control><shift>N", NULL, G_CALLBACK (terminal_window_action_new_window), }, 
-  { "close-tab", NULL, N_ ("C_lose Tab"), NULL, NULL, G_CALLBACK (terminal_window_action_close_tab), },
-  { "close-window", NULL, N_ ("_Close Window"), NULL, NULL, G_CALLBACK (terminal_window_action_close_window), },
+  { "new-tab", "terminal-newtab", N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
+  { "new-window", "terminal-newwindow", N_ ("Open _Terminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
+  { "close-tab", NULL, N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
+  { "close-window", NULL, N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"),  },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, NULL, G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, NULL, G_CALLBACK (terminal_window_action_paste), },
-  { "preferences", GTK_STOCK_PREFERENCES, N_ ("Preferences"), NULL, NULL, G_CALLBACK (terminal_window_action_prefs), },
+  { "edit-toolbars", NULL, N_ ("_Toolbars"), NULL, NULL, G_CALLBACK (terminal_window_action_edit_toolbars), },
+  { "preferences", GTK_STOCK_PREFERENCES, N_ ("Preferences"), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), },
   { "terminal-menu", NULL, N_ ("_Terminal"), },
-  { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), NULL, NULL, G_CALLBACK (terminal_window_action_prev_tab), },
-  { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), NULL, NULL, G_CALLBACK (terminal_window_action_next_tab), },
-  { "set-title", NULL, N_ ("_Set Title"), NULL, NULL, G_CALLBACK (terminal_window_action_set_title), },
-  { "reset", NULL, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
-  { "reset-and-clear", NULL, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
+  { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), NULL, N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
+  { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), NULL, N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
+  { "set-title", NULL, N_ ("_Set Title"), NULL, N_ ("Set a custom title for the current tab"), G_CALLBACK (terminal_window_action_set_title), },
+  { "reset", GTK_STOCK_REFRESH, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
+  { "reset-and-clear", GTK_STOCK_CLEAR, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "help-menu", NULL, N_ ("_Help"), },
-  { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, NULL, G_CALLBACK (terminal_window_action_contents), },
-  { "report-bug", "terminal-reportbug", N_ ("_Report a bug"), NULL, NULL, G_CALLBACK (terminal_window_action_report_bug), },
-  { "about", GTK_STOCK_DIALOG_INFO, N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
+  { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
+  { "report-bug", "terminal-reportbug", N_ ("_Report a bug"), NULL, N_ ("Report a bug in Terminal"), G_CALLBACK (terminal_window_action_report_bug), },
+#if GTK_CHECK_VERSION(2,6,0)
+  { "about", GTK_STOCK_ABOUT, N_ ("_About"), NULL, N_ ("Display information about Terminal"), G_CALLBACK (terminal_window_action_about), },
+#else
+  { "about", GTK_STOCK_DIALOG_INFO, N_ ("_About"), NULL, N_ ("Display information about Terminal"), G_CALLBACK (terminal_window_action_about), },
+#endif
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
 
 static GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "show-menubar", NULL, N_ ("Show _Menubar"), NULL, NULL, G_CALLBACK (terminal_window_action_show_menubar), },
-  { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, NULL, G_CALLBACK (terminal_window_action_show_borders), },
-  { "fullscreen", NULL, N_ ("_Fullscreen"), NULL, NULL, G_CALLBACK (terminal_window_action_fullscreen), },
+  { "show-menubar", NULL, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
+  { "show-toolbars", NULL, N_ ("Show _Toolbars"), NULL, N_ ("Show/hide the toolbars"), G_CALLBACK (terminal_window_action_show_toolbars), FALSE, },
+  { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
+  { "fullscreen", "terminal-fullscreen", N_ ("_Fullscreen"), NULL, N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
 };
-
-#if 0
-static const gchar ui_description[] =
- "<ui>"
- "  <menubar name='main-menu'>"
- "    <menu action='file-menu'>"
- "      <menuitem action='new-tab'/>"
- "      <menuitem action='new-window'/>"
- "      <separator/>"
- "      <menuitem action='close-tab'/>"
- "      <menuitem action='close-window'/>"
- "    </menu>"
- "    <menu action='edit-menu'>"
- "      <menuitem action='copy'/>"
- "      <menuitem action='paste'/>"
- "      <separator/>"
- "      <menuitem action='preferences'/>"
- "    </menu>"
- "    <menu action='view-menu'>"
- "      <menuitem action='show-menubar'/>"
- "      <menuitem action='show-borders'/>"
- "      <menuitem action='fullscreen'/>"
- "    </menu>"
- "    <menu action='terminal-menu'>"
- "      <menuitem action='prev-tab'/>"
- "      <menuitem action='next-tab'/>"
- "      <separator/>"
- "      <menuitem action='set-title'/>"
- "      <menuitem action='reset'/>"
- "      <menuitem action='reset-and-clear'/>"
- "    </menu>"
- "    <menu action='help-menu'>"
- "      <menuitem action='contents'/>"
- "      <menuitem action='report-bug'/>"
- "      <menuitem action='about'/>"
- "    </menu>"
- "  </menubar>"
- ""
- "  <popup name='popup-menu'>"
- "    <menuitem action='new-window'/>"
- "    <menuitem action='new-tab'/>"
- "    <separator/>"
- "    <menuitem action='close-tab'/>"
- "    <separator/>"
- "    <menuitem action='copy'/>"
- "    <menuitem action='paste'/>"
- "    <separator/>"
- "    <menuitem action='show-menubar'/>"
- "    <menuitem action='fullscreen'/>"
- "    <menuitem action='preferences'/>"
- "    <separator/>"
- "    <menuitem action='input-methods'/>"
- "  </popup>"
- "</ui>";
-#endif
 
 
 
@@ -289,7 +246,11 @@ terminal_window_init (TerminalWindow *window)
 
   window->ui_manager = gtk_ui_manager_new ();
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
+
+  xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
   file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.ui");
+  xfce_resource_pop_path (XFCE_RESOURCE_DATA);
+
   if (G_LIKELY (file != NULL))
     {
       if (gtk_ui_manager_add_ui_from_file (window->ui_manager, file, &error) == 0)
@@ -319,6 +280,32 @@ terminal_window_init (TerminalWindow *window)
       gtk_widget_show (window->menubar);
     }
 
+  /* setup menubar visibility */
+  g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &bval, NULL);
+  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
+
+  /* setup toolbars visibility */
+  action = gtk_action_group_get_action (window->action_group, "edit-toolbars");
+  g_object_set (G_OBJECT (action), "visible", FALSE, NULL);
+  g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &bval, NULL);
+  action = gtk_action_group_get_action (window->action_group, "show-toolbars");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
+
+  /* setup borders visibility */
+  g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &bval, NULL);
+  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
+
+  /* setup fullscreen mode */
+  if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
+    {
+      action = gtk_action_group_get_action (window->action_group, "fullscreen");
+      g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
+    }
+
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
@@ -334,25 +321,6 @@ terminal_window_init (TerminalWindow *window)
 
   g_signal_connect (G_OBJECT (window), "delete-event",
                     G_CALLBACK (gtk_widget_destroy), window);
-
-  /* setup menubar visibility */
-  g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &bval, NULL);
-  action = gtk_action_group_get_action (window->action_group, "show-menubar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
-
-  /* setup borders visibility */
-  g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &bval, NULL);
-  action = gtk_action_group_get_action (window->action_group, "show-borders");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
-
-  /* setup fullscreen mode */
-  if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
-    {
-      action = gtk_action_group_get_action (window->action_group, "fullscreen");
-      g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
-    }
 
   /* set a unique role on each window (for session management) */
   role = g_strdup_printf ("Terminal-%p-%d-%d", window, getpid (), (gint) time (NULL));
@@ -689,6 +657,48 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
 
 
 static void
+terminal_window_action_show_toolbars (GtkToggleAction *action,
+                                      TerminalWindow  *window)
+{
+  GtkAction *action_edit;
+  GtkWidget *vbox;
+
+  action_edit = gtk_action_group_get_action (window->action_group,
+                                             "edit-toolbars");
+
+  if (gtk_toggle_action_get_active (action))
+    {
+      if (window->toolbars == NULL)
+        {
+          vbox = gtk_bin_get_child (GTK_BIN (window));
+
+          window->toolbars = terminal_toolbars_view_new (window->ui_manager);
+          gtk_box_pack_start (GTK_BOX (vbox), window->toolbars, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (vbox), window->toolbars, 1);
+          gtk_widget_show (window->toolbars);
+
+          g_object_add_weak_pointer (G_OBJECT (window->toolbars),
+                                     (gpointer) &window->toolbars);
+        }
+
+      g_object_set (G_OBJECT (action_edit),
+                    "visible", TRUE,
+                    NULL);
+    }
+  else
+    {
+      if (window->toolbars != NULL)
+        gtk_widget_destroy (window->toolbars);
+
+      g_object_set (G_OBJECT (action_edit),
+                    "visible", FALSE,
+                    NULL);
+    }
+}
+
+
+
+static void
 terminal_window_action_show_borders (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
@@ -706,6 +716,16 @@ terminal_window_action_fullscreen (GtkToggleAction *action,
     gtk_window_fullscreen (GTK_WINDOW (window));
   else
     gtk_window_unfullscreen (GTK_WINDOW (window));
+}
+
+
+
+static void
+terminal_window_action_edit_toolbars (GtkAction       *action,
+                                      TerminalWindow  *window)
+{
+  if (G_LIKELY (window->toolbars != NULL))
+    terminal_toolbars_view_edit (TERMINAL_TOOLBARS_VIEW (window->toolbars));
 }
 
 

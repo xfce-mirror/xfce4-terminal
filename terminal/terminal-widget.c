@@ -1217,6 +1217,8 @@ terminal_widget_force_resize_window (TerminalWidget *widget,
     gtk_window_resize (window, width, height);
   else
     gtk_window_set_default_size (window, width, height);
+
+  gtk_widget_grab_focus (widget->terminal);
 }
 
 

@@ -25,7 +25,9 @@ desktopdir = $(datadir)/applications
 desktop_DATA = Terminal.desktop
 
 uidir = $(datadir)/Terminal
-ui_DATA = Terminal.ui
+ui_DATA = 								\
+	Terminal-toolbars.ui						\
+	Terminal.ui
 
 EXTRA_DIST =								\
 	$(desktop_DATA)							\
