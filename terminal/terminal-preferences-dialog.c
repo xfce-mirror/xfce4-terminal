@@ -556,11 +556,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_check_button_new_with_mnemonic (_("Display _menubar in new windows"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-menubar-default", G_OBJECT (button), "active");
+  gtk_tooltips_set_tip (dialog->tooltips, button,
+                        _("Enable to show the menubar in newly "
+                          "created terminal windows."), NULL);
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Display _toolbars in new windows"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-toolbars-default", G_OBJECT (button), "active");
+  gtk_tooltips_set_tip (dialog->tooltips, button,
+                        _("Enable to show the toolbars in newly "
+                          "created terminal windows."), NULL);
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
@@ -831,6 +837,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = gtk_button_new ();
   g_signal_connect (G_OBJECT (button), "clicked",
                     G_CALLBACK (terminal_preferences_dialog_load_palette), dialog);
+  gtk_tooltips_set_tip (dialog->tooltips, button, 
+                        _("Load a custom color palette from an external file"), NULL);
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
@@ -853,6 +861,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = gtk_button_new ();
   g_signal_connect (G_OBJECT (button), "clicked",
                     G_CALLBACK (terminal_preferences_dialog_save_palette), dialog);
+  gtk_tooltips_set_tip (dialog->tooltips, button, 
+                        _("Save the current color palette to an external file"), NULL);
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 

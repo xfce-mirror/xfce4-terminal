@@ -329,8 +329,9 @@ static gboolean
 terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
-  /* popup context menu if the "Menu" key is pressed */
-  if (event->state == 0 && event->keyval == GDK_Menu)
+  /* popup context menu if "Menu" or "<Shift>F10" is pressed */
+  if ((event->state == 0 && event->keyval == GDK_Menu)
+   || (event->state == GDK_SHIFT_MASK && event->keyval == GDK_F10))
     {
       g_signal_emit (G_OBJECT (widget), widget_signals[CONTEXT_MENU], 0, event);
       return TRUE;
