@@ -24,6 +24,8 @@ TerminalHelp: TerminalHelp.in Makefile
 desktopdir = $(datadir)/applications
 desktop_DATA = Terminal.desktop
 
+man_MANS = Terminal.1
+
 uidir = $(datadir)/Terminal
 ui_DATA = 								\
 	Terminal-toolbars.ui						\
@@ -31,6 +33,7 @@ ui_DATA = 								\
 
 EXTRA_DIST =								\
 	$(desktop_DATA)							\
+	$(man_MANS)							\
 	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\

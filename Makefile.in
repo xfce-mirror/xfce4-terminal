@@ -54,7 +54,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = Terminal.spec
-am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"
+am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"
 libexecSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(libexec_SCRIPTS)
 SOURCES =
@@ -65,6 +65,9 @@ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	install-recursive installcheck-recursive installdirs-recursive \
 	pdf-recursive ps-recursive uninstall-info-recursive \
 	uninstall-recursive
+man1dir = $(mandir)/man1
+NROFF = nroff
+MANS = $(man_MANS)
 desktopDATA_INSTALL = $(INSTALL_DATA)
 uiDATA_INSTALL = $(INSTALL_DATA)
 DATA = $(desktop_DATA) $(ui_DATA)
@@ -214,6 +217,7 @@ libexec_SCRIPTS = \
 
 desktopdir = $(datadir)/applications
 desktop_DATA = Terminal.desktop
+man_MANS = Terminal.1
 uidir = $(datadir)/Terminal
 ui_DATA = \
 	Terminal-toolbars.ui						\
@@ -221,6 +225,7 @@ ui_DATA = \
 
 EXTRA_DIST = \
 	$(desktop_DATA)							\
+	$(man_MANS)							\
 	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\
@@ -321,6 +326,51 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-man1: $(man1_MANS) $(man_MANS)
+	@$(NORMAL_INSTALL)
+	test -z "$(man1dir)" || $(mkdir_p) "$(DESTDIR)$(man1dir)"
+	@list='$(man1_MANS) $(dist_man1_MANS) $(nodist_man1_MANS)'; \
+	l2='$(man_MANS) $(dist_man_MANS) $(nodist_man_MANS)'; \
+	for i in $$l2; do \
+	  case "$$i" in \
+	    *.1*) list="$$list $$i" ;; \
+	  esac; \
+	done; \
+	for i in $$list; do \
+	  if test -f $(srcdir)/$$i; then file=$(srcdir)/$$i; \
+	  else file=$$i; fi; \
+	  ext=`echo $$i | sed -e 's/^.*\\.//'`; \
+	  case "$$ext" in \
+	    1*) ;; \
+	    *) ext='1' ;; \
+	  esac; \
+	  inst=`echo $$i | sed -e 's/\\.[0-9a-z]*$$//'`; \
+	  inst=`echo $$inst | sed -e 's/^.*\///'`; \
+	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
+	  echo " $(INSTALL_DATA) '$$file' '$(DESTDIR)$(man1dir)/$$inst'"; \
+	  $(INSTALL_DATA) "$$file" "$(DESTDIR)$(man1dir)/$$inst"; \
+	done
+uninstall-man1:
+	@$(NORMAL_UNINSTALL)
+	@list='$(man1_MANS) $(dist_man1_MANS) $(nodist_man1_MANS)'; \
+	l2='$(man_MANS) $(dist_man_MANS) $(nodist_man_MANS)'; \
+	for i in $$l2; do \
+	  case "$$i" in \
+	    *.1*) list="$$list $$i" ;; \
+	  esac; \
+	done; \
+	for i in $$list; do \
+	  ext=`echo $$i | sed -e 's/^.*\\.//'`; \
+	  case "$$ext" in \
+	    1*) ;; \
+	    *) ext='1' ;; \
+	  esac; \
+	  inst=`echo $$i | sed -e 's/\\.[0-9a-z]*$$//'`; \
+	  inst=`echo $$inst | sed -e 's/^.*\///'`; \
+	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
+	  echo " rm -f '$(DESTDIR)$(man1dir)/$$inst'"; \
+	  rm -f "$(DESTDIR)$(man1dir)/$$inst"; \
+	done
 install-desktopDATA: $(desktop_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(desktopdir)" || $(mkdir_p) "$(DESTDIR)$(desktopdir)"
@@ -614,10 +664,10 @@ distcleancheck: distclean
 	       exit 1; } >&2
 check-am: all-am
 check: check-recursive
-all-am: Makefile $(SCRIPTS) $(DATA) config.h
+all-am: Makefile $(SCRIPTS) $(MANS) $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"; do \
+	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-recursive
@@ -664,13 +714,13 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-desktopDATA install-uiDATA
+install-data-am: install-desktopDATA install-man install-uiDATA
 
 install-exec-am: install-libexecSCRIPTS
 
 install-info: install-info-recursive
 
-install-man:
+install-man: install-man1
 
 installcheck-am:
 
@@ -693,9 +743,11 @@ ps: ps-recursive
 ps-am:
 
 uninstall-am: uninstall-desktopDATA uninstall-info-am \
-	uninstall-libexecSCRIPTS uninstall-uiDATA
+	uninstall-libexecSCRIPTS uninstall-man uninstall-uiDATA
 
 uninstall-info: uninstall-info-recursive
+
+uninstall-man: uninstall-man1
 
 .PHONY: $(RECURSIVE_TARGETS) CTAGS GTAGS all all-am am--refresh check \
 	check-am clean clean-generic clean-libtool clean-recursive \
@@ -707,14 +759,15 @@ uninstall-info: uninstall-info-recursive
 	html-am info info-am install install-am install-data \
 	install-data-am install-desktopDATA install-exec \
 	install-exec-am install-info install-info-am \
-	install-libexecSCRIPTS install-man install-strip \
+	install-libexecSCRIPTS install-man install-man1 install-strip \
 	install-uiDATA installcheck installcheck-am installdirs \
 	installdirs-am maintainer-clean maintainer-clean-generic \
 	maintainer-clean-recursive mostlyclean mostlyclean-generic \
 	mostlyclean-libtool mostlyclean-recursive pdf pdf-am ps ps-am \
 	tags tags-recursive uninstall uninstall-am \
 	uninstall-desktopDATA uninstall-info-am \
-	uninstall-libexecSCRIPTS uninstall-uiDATA
+	uninstall-libexecSCRIPTS uninstall-man uninstall-man1 \
+	uninstall-uiDATA
 
 
 distclean-local:

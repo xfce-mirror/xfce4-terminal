@@ -87,6 +87,9 @@
           Supports multiple tabs per window
         </listitem>
         <listitem>
+          Includes support for customizable toolbars, which can be changed using an integrated graphical toolbar editor
+        </listitem>
+        <listitem>
           Nearly every aspect of the terminal itself is configurable through the <guilabel>Terminal Preferences</guilabel> dialog
         </listitem>
         <listitem>
@@ -258,6 +261,18 @@
           <listitem>
             <para>Right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>
             from the popup menu.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To show or hide the toolbars:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To customize the toolbars:</term>
+          <listitem>
+            <para>Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Toolbars</guimenuitem></menuchoice>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -526,15 +541,21 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Show borders by default</guilabel></term>
+          <term><guilabel>Show toolbars by default</guilabel></term>
           <listitem>
-            <para>Select this option to show window decorations on new terminal windows by default.</para>
+            <para>Select this option to show toolbars on new terminal windows by default.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><guilabel>Cursor blinks</guilabel></term>
           <listitem>
             <para>Select this option to display a cursor that blinks.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Show borders by default</guilabel></term>
+          <listitem>
+            <para>Select this option to show window decorations on new terminal windows by default.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -749,6 +770,7 @@
           desktop environment on how to enable the D-BUS session daemon.</para>
         </listitem>
       </varlistentry>
+
       <varlistentry>
         <term><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &app;, what's wrong?</term>
         <listitem>
@@ -756,6 +778,29 @@
           the terminal widget used by &app;. A patch for vte that fixes the problem is available <ulink
           url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
           with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>How to customize the menus in &app;?</term>
+        <listitem>
+          <para>You can customize the main menubar and the right-click popup menu by editing the file
+          <filename>Terminal/Terminal.ui</filename>. Create a copy of this file before you actually
+          start editing it. For example, say you installed Terminal in <filename>/usr/local</filename>,
+          then you would perform the following steps:</para>
+
+<screen>$ mkdir -p ~/.local/share/Terminal
+$ cd ~/.local/share/Terminal
+$ cp /usr/local/share/Terminal/Terminal.ui .</screen>
+
+          <para>Now you can safely edit the file <filename>~/.local/share/Terminal/Terminal.ui</filename>
+          to customize the menus. See the <ulink
+          url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> documentation
+          for details on the file format. The changes will only be visible in new terminal windows.</para>
+
+          <para>If you choose to customize your menus this way, you'll have to take care to sync
+          your customized <filename>Terminal.ui</filename> file when you upgrade to a newer &app;
+          release to keep up with user interface changes and additions.</para>
         </listitem>
       </varlistentry>
     </variablelist>
