@@ -55,6 +55,12 @@ stock_icons_init (void)
   g_object_unref (G_OBJECT (pixbuf));
   gtk_icon_set_unref (set);
 
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_reportbug, FALSE, NULL);
+  set = gtk_icon_set_new_from_pixbuf (pixbuf);
+  gtk_icon_factory_add (factory, "terminal-reportbug", set);
+  g_object_unref (G_OBJECT (pixbuf));
+  gtk_icon_set_unref (set);
+
   gtk_icon_factory_add_default (factory);
 }
 

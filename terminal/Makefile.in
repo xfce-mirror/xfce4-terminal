@@ -817,10 +817,12 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 
 stock-icons.h: stamp-stock-icons.h
 	@true
-stamp-stock-icons.h: stock-icon-newtab.png stock-icon-newwindow.png Makefile
+stamp-stock-icons.h: stock-icon-newtab.png stock-icon-newwindow.png \
+                     stock-icon-reportbug.png Makefile
 	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
 		stock_newtab stock-icon-newtab.png \
-		stock_newwindow stock-icon-newwindow.png > xgen) \
+		stock_newwindow stock-icon-newwindow.png \
+		stock_reportbug stock-icon-reportbug.png > xgen) \
 	&& cp xgen stock-icons.h \
 	&& rm -f xgen \
 	&& echo timestamp > $(@F)

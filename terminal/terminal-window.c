@@ -162,7 +162,7 @@ static GtkActionEntry action_entries[] =
   { "reset-and-clear", NULL, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "help-menu", NULL, N_ ("_Help"), },
   { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, NULL, G_CALLBACK (terminal_window_action_contents), },
-  { "report-bug", NULL, N_ ("_Report a bug"), NULL, NULL, G_CALLBACK (terminal_window_action_report_bug), },
+  { "report-bug", "terminal-reportbug", N_ ("_Report a bug"), NULL, NULL, G_CALLBACK (terminal_window_action_report_bug), },
   { "about", GTK_STOCK_DIALOG_INFO, N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
