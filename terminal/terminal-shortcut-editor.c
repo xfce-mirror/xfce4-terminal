@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2005 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -396,17 +396,27 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
                                        &consumed_modifiers);
 
   keyval = gdk_keyval_to_lower (event->keyval);
-  if (keyval == GDK_ISO_Left_Tab)
-    keyval = GDK_Tab;
+  switch (keyval)
+    {
+    case GDK_ISO_Left_Tab:
+      keyval = GDK_Tab;
+      break;
+
+    case GDK_ISO_Level3_Latch:
+    case GDK_ISO_Level3_Lock:
+    case GDK_ISO_Level3_Shift:
+    case GDK_Scroll_Lock:
+    case GDK_Super_L:
+    case GDK_Super_R:
+      return TRUE;
+    }
 
   if (keyval != event->keyval && (consumed_modifiers & GDK_SHIFT_MASK))
     consumed_modifiers &= ~GDK_SHIFT_MASK;
 
   /* filter out invalid modifiers */
   modifiers = event->state & (~consumed_modifiers | GDK_MODIFIER_MASK);
-  modifiers = modifiers & ~GDK_LOCK_MASK;
-  modifiers = modifiers & ~GDK_MOD2_MASK;
-  modifiers = modifiers & ~GDK_MOD5_MASK;
+  modifiers = modifiers & gtk_accelerator_get_default_mod_mask ();
 
   accelerator = gtk_accelerator_name (keyval, modifiers);
   property = g_object_get_data (G_OBJECT (dialog), "property-name");

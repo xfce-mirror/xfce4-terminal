@@ -19,7 +19,7 @@
  * Place, Suite 330, Boston, MA  02111-1307  USA.
  *
  * The geometry handling code was taken from gnome-terminal. The geometry hacks
- * where initially written by Owen Taylor.
+ * were initially written by Owen Taylor.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -504,6 +504,7 @@ static gboolean
 terminal_window_confirm_close (TerminalWindow *window)
 {
   GtkWidget *dialog;
+  GtkWidget *button;
   GtkWidget *hbox;
   GtkWidget *image;
   GtkWidget *vbox;
@@ -527,9 +528,17 @@ terminal_window_confirm_close (TerminalWindow *window)
                                         GTK_DIALOG_DESTROY_WITH_PARENT
                                         | GTK_DIALOG_NO_SEPARATOR
                                         | GTK_DIALOG_MODAL,
-                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                        _("Close all tabs"), GTK_RESPONSE_YES,
                                         NULL);
+
+  button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+                                  GTK_STOCK_CANCEL,
+                                  GTK_RESPONSE_CANCEL);
+
+  button = gtk_dialog_add_button (GTK_DIALOG (dialog),
+                                  _("Close all tabs"),
+                                  GTK_RESPONSE_YES);
+  gtk_widget_grab_default (button);
+  gtk_widget_grab_focus (button);
 
   hbox = gtk_hbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
@@ -780,7 +789,6 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
   GtkWidget *label;
   GtkWidget *item;
   GSList    *group = NULL;
-  GList     *closures;
   gchar      name[32];
   gchar     *path;
   gint       npages;
@@ -794,13 +802,20 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
     {
       terminal = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n);
 
+      /* Create the new radio menu item, and be sure to override
+       * the "can-activate-accel" method, which by default requires
+       * that the widget is on-screen, but we want the accelerators
+       * to work even if the menubar is hidden.
+       */
       item = gtk_radio_menu_item_new (group);
+      g_signal_connect (G_OBJECT (item), "can-activate-accel", G_CALLBACK (gtk_true), NULL);
       gtk_menu_shell_append (GTK_MENU_SHELL (window->gomenu), item);
       gtk_widget_show (item);
 
       label = g_object_new (GTK_TYPE_ACCEL_LABEL, "xalign", 0.0, NULL);
       exo_binding_new (G_OBJECT (terminal), "title", G_OBJECT (label), "label");
       gtk_container_add (GTK_CONTAINER (item), label);
+      gtk_accel_label_set_accel_widget (GTK_ACCEL_LABEL (label), item);
       gtk_widget_show (label);
 
       /* only connect an accelerator if we have a preference for this item */
@@ -811,16 +826,6 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
           path = g_strconcat ("<Actions>/terminal-window/", name + 6, NULL);
           gtk_menu_item_set_accel_path (GTK_MENU_ITEM (item), path);
           g_free (path);
-
-          /* display accelerator in the item label */
-          closures = gtk_widget_list_accel_closures (item);
-          if (G_LIKELY (closures != NULL))
-            {
-              g_object_set (G_OBJECT (label),
-                            "accel-closure", closures->data,
-                            NULL);
-              g_list_free (closures);
-            }
         }
 
       if (gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook)) == n)
@@ -1690,8 +1695,8 @@ terminal_window_add (TerminalWindow *window,
 
 /**
  * terminal_window_remove:
- * @window  :
- * @screen  :
+ * @window  : A #TerminalWindow.
+ * @screen  : A #TerminalScreen.
  **/
 void
 terminal_window_remove (TerminalWindow *window,

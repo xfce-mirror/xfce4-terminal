@@ -1,3 +1,21 @@
+2005-01-30	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-window.c(terminal_window_confirm_close): Made
+	  "Close all tabs" the default button.
+	* terminal/main.c(main): Made GtkAccelGroup accept Mod5 (Super_L
+	  and Super_R) as modifier.
+	* terminal/terminal-shortcut-editor.c(terminal_shortcut_editor_compose):
+	  Use gtk_accelerator_get_default_mod_mask() as mask for valid
+	  modifiers and make sure, that Terminal doesn't pick up AltGr,
+	  Scroll_Lock, Super_L or Super_R as key values.
+	* terminal/terminal-screen.c(terminal_screen_get_title): Removed
+	  disturbing debug message.
+	* terminal/terminal-window.c(terminal_window_rebuild_gomenu): Be sure
+	  to override the "can-activate-accel" method of the Go menu items,
+	  which by default requires that the widget is on-screen, but we want
+	  the accelerators to work even if the menubar is hidden. This fixes
+	  bug #53.
+
 2005-01-28	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-window.c: Fix bug in next/previous tab functions,

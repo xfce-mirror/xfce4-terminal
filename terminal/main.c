@@ -29,196 +29,8 @@
 #include <dbus/dbus-glib-lowlevel.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
 
-//#include <terminal/stock-icons.h>
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-icons.h>
-
-
-
-#if 0
-static void
-stock_icons_init (void)
-{
-  GtkIconFactory *factory;
-  GtkIconSource  *source;
-  GtkIconSet     *set;
-  GdkPixbuf      *pixbuf;
-
-  factory = gtk_icon_factory_new ();
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_advanced48, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-advanced", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_appearance48, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-appearance", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_closetab16, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_closetab24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-closetab", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_closewindow16, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_closewindow24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-closewindow", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_colors48, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-colors", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_compose48, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-compose", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_fullscreen24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-fullscreen", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_general48, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-general", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_newtab16, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_newtab24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-newtab", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_newwindow16, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_newwindow24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-newwindow", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_reportbug16, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_reportbug24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-reportbug", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_shortcuts48, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-shortcuts", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_showborders24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-showborders", set);
-  gtk_icon_set_unref (set);
-
-  set = gtk_icon_set_new ();
-  source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_showmenu24, FALSE, NULL);
-  gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
-  gtk_icon_set_add_source (set, source);
-  g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (factory, "terminal-showmenu", set);
-  gtk_icon_set_unref (set);
-
-  gtk_icon_factory_add_default (factory);
-}
-#endif
 
 
 
@@ -305,13 +117,13 @@ int
 main (int argc, char **argv)
 {
   TerminalOptions *options;
+  GdkModifierType  modifiers;
   TerminalApp     *app;
 #if GLIB_CHECK_VERSION(2,6,0)
   const gchar     *description;
 #endif
   const gchar     *startup_id;
   const gchar     *display;
-  //GdkPixbuf       *icon;
   GError          *error = NULL;
   gchar          **nargv;
   gint             nargc;
@@ -418,13 +230,11 @@ main (int argc, char **argv)
   gtk_window_set_auto_startup_notification (FALSE);
 
   gtk_init (&argc, &argv);
-  //stock_icons_init ();
 
-#if 0
-  icon = gdk_pixbuf_from_pixdata (&stock_general48, FALSE, NULL);
-  gtk_window_set_default_icon (icon);
-  g_object_unref (G_OBJECT (icon));
-#endif
+  /* Make GtkAccelGroup accept Mod5 (Windows Key) as modifier */
+  modifiers = gtk_accelerator_get_default_mod_mask ();
+  gtk_accelerator_set_default_mod_mask (modifiers | GDK_MOD4_MASK);
+
   terminal_icons_setup_main ();
 
   app = terminal_app_new ();

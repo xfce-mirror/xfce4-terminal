@@ -1104,12 +1104,6 @@ terminal_screen_get_title (TerminalScreen *screen)
                      strlen (window_title) + 1 - strlen (tmp));
         }
       g_free (tmp);
-
-#ifdef DEBUG
-      g_print ("Terminal application specified title \"%s\", "
-               "we've stripped that down to \"%s\"\n",
-               vte_title, window_title);
-#endif
     }
 
   switch (mode)
