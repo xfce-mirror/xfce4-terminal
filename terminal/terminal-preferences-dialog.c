@@ -183,6 +183,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->preferences = terminal_preferences_get ();
 
+  dialog->tooltips = gtk_tooltips_new ();
+  g_object_ref (G_OBJECT (dialog->tooltips));
+  gtk_object_sink (GTK_OBJECT (dialog->tooltips));
+
   g_object_set (G_OBJECT (dialog),
                 "title", _("Terminal Preferences"),
                 "destroy-with-parent", TRUE,
@@ -201,7 +205,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_signal_connect (G_OBJECT (dialog), "response",
                     G_CALLBACK (terminal_preferences_dialog_response), NULL);
 
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_hbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
@@ -240,17 +244,23 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
      General
    */
   box = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 12);
   index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
-  frame = xfce_framebox_new (_("Title"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Title</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+  
   table = gtk_table_new (2, 2, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), table);
+  gtk_container_set_border_width (GTK_CONTAINER (table), 12);
+  gtk_container_add (GTK_CONTAINER (frame), table);
   gtk_widget_show (table);
 
   label = g_object_new (GTK_TYPE_LABEL,
@@ -301,12 +311,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
   g_object_unref (G_OBJECT (proxy));
 
-  frame = xfce_framebox_new (_("Command"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Command</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
   vbox = gtk_vbox_new (FALSE, 10);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
 
   button = gtk_check_button_new_with_mnemonic (_("_Run command as login shell"));
@@ -321,34 +336,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_mnemonic (_("Ru_n a custom command instead of my shell"));
-  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
-  gtk_widget_show (button);
-
-  hbox = gtk_hbox_new (FALSE, 12);
-  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
-  gtk_widget_show (hbox);
-
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "command-run-custom");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (hbox), "sensitive", NULL, NULL, NULL);
-
-  label = gtk_label_new (_("Custom command:"));
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
-  gtk_widget_show (label);
-
-  entry = gtk_entry_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "command-custom");
-  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
-  gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
-  gtk_widget_show (entry);
-
-  frame = xfce_framebox_new (_("Misc"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Misc</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+  
   vbox = gtk_vbox_new (FALSE, 6);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
 
   table = gtk_table_new (2, 2, FALSE);
@@ -412,23 +410,26 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_mnemonic (_("_Audible bell"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-bell-audible");
+  button = gtk_check_button_new_with_mnemonic (_("Show _menubar by default"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-menubar-default");
   exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 2, 3,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_mnemonic (_("_Visible bell"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-bell-visible");
+  button = gtk_check_button_new_with_mnemonic (_("Terminal _bell"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-bell");
   exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
   gtk_table_attach (GTK_TABLE (table), button, 1, 2, 2, 3,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
-  button = gtk_check_button_new_with_mnemonic (_("Use compact mode by default"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-compact-default");
+  button = gtk_check_button_new_with_mnemonic (_("Show _borders by default"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-borders-default");
   exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  gtk_tooltips_set_tip (dialog->tooltips, button,
+                        _("Enable to show window decorations around newly "
+                          "created terminal windows."), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 3, 4,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
@@ -455,25 +456,40 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
      Appearance
    */
   box = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 12);
   index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
-  frame = xfce_framebox_new (_("Font"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Font</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
+  vbox = gtk_vbox_new (FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  gtk_widget_show (vbox);
 
   button = g_object_new (GTK_TYPE_FONT_BUTTON, "title", _("Choose Terminal Font"), "use-font", TRUE, NULL);
   proxy = terminal_preferences_get_proxy (dialog->preferences, "font-name");
   exo_property_proxy_add (proxy, G_OBJECT (button), "font-name", NULL, NULL, NULL);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), button);
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
-  frame = xfce_framebox_new (_("Colors"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Colors</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
   hbox = gtk_hbox_new (FALSE, 10);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), hbox);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), hbox);
   gtk_widget_show (hbox);
 
   label = gtk_label_new_with_mnemonic (_("_Text color:"));
@@ -496,12 +512,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  frame = xfce_framebox_new (_("Background"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Background</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
   vbox = gtk_vbox_new (FALSE, 24);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
 
   combo = gtk_combo_box_new_text ();
@@ -610,22 +631,36 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
      Shortcuts
    */
   box = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 12);
   index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
-  frame = xfce_framebox_new (_("Menubar accelerator"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Menubar accelerator</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
+  vbox = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  gtk_widget_show (vbox);
 
   button = gtk_check_button_new_with_mnemonic (_("Disable m_enu shortcut key (F10 by default)"));
   proxy = terminal_preferences_get_proxy (dialog->preferences, "shortcuts-no-menukey");
   exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), button);
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
-  frame = xfce_framebox_new (_("Shortcut keys"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
   gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Shortcut keys</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
 
   ibox = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (ibox),
@@ -633,7 +668,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                   GTK_POLICY_ALWAYS);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (ibox),
                                        GTK_SHADOW_ETCHED_IN);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), ibox);
+  gtk_container_set_border_width (GTK_CONTAINER (ibox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), ibox);
   gtk_widget_show (ibox);
 
   editor = terminal_shortcut_editor_new ();
@@ -655,17 +691,23 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
      Advanced
    */
   box = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 12);
   index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
-  frame = xfce_framebox_new (_("Compatibility"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Compatibility</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
 
   table = gtk_table_new (4, 3, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 12);
   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), table);
+  gtk_container_set_border_width (GTK_CONTAINER (table), 12);
+  gtk_container_add (GTK_CONTAINER (frame), table);
   gtk_widget_show (table);
 
   label = gtk_label_new (_("These options may cause some applications to behave incorrectly. They are only "
@@ -729,12 +771,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  frame = xfce_framebox_new (_("Double click"), TRUE);
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Double click</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
   vbox = gtk_vbox_new (FALSE, 6);
-  xfce_framebox_add (XFCE_FRAMEBOX (frame), vbox);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
 
   label = gtk_label_new (_("Consider the following characters part of a word when double clicking:"));
@@ -772,6 +819,7 @@ terminal_preferences_dialog_finalize (GObject *object)
 {
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
   g_object_unref (G_OBJECT (dialog->preferences));
+  g_object_unref (G_OBJECT (dialog->tooltips));
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 

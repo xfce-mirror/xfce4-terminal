@@ -49,10 +49,12 @@ enum
   PROP_ACCEL_COPY,
   PROP_ACCEL_PASTE,
   PROP_ACCEL_PREFERENCES,
+  PROP_ACCEL_SHOW_MENUBAR,
+  PROP_ACCEL_SHOW_BORDERS,
   PROP_ACCEL_FULLSCREEN,
-  PROP_ACCEL_COMPACT_MODE,
   PROP_ACCEL_PREV_TAB,
   PROP_ACCEL_NEXT_TAB,
+  PROP_ACCEL_SET_TITLE,
   PROP_ACCEL_RESET,
   PROP_ACCEL_RESET_AND_CLEAR,
   PROP_ACCEL_CONTENTS,
@@ -65,13 +67,11 @@ enum
   PROP_COLOR_BACKGROUND,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
-  PROP_COMMAND_RUN_CUSTOM,
-  PROP_COMMAND_CUSTOM,
   PROP_FONT_NAME,
-  PROP_MISC_BELL_AUDIBLE,
-  PROP_MISC_BELL_VISIBLE,
-  PROP_MISC_COMPACT_DEFAULT,
+  PROP_MISC_BELL,
+  PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
+  PROP_MISC_MENUBAR_DEFAULT,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -93,10 +93,12 @@ struct _TerminalPreferences
   gchar                *accel_copy;
   gchar                *accel_paste;
   gchar                *accel_preferences;
+  gchar                *accel_show_menubar;
+  gchar                *accel_show_borders;
   gchar                *accel_fullscreen;
-  gchar                *accel_compact_mode;
   gchar                *accel_prev_tab;
   gchar                *accel_next_tab;
+  gchar                *accel_set_title;
   gchar                *accel_reset;
   gchar                *accel_reset_and_clear;
   gchar                *accel_contents;
@@ -113,15 +115,13 @@ struct _TerminalPreferences
 
   gboolean              command_update_records;
   gboolean              command_login_shell;
-  gboolean              command_run_custom;
-  gchar                *command_custom;
 
   gchar                *font_name;
 
-  gboolean              misc_bell_audible;
-  gboolean              misc_bell_visible;
-  gboolean              misc_compact_default;
+  gboolean              misc_bell;
+  gboolean              misc_borders_default;
   gboolean              misc_cursor_blinks;
+  gboolean              misc_menubar_default;
 
   TerminalScrollbar     scrolling_bar;
   guint                 scrolling_lines;
@@ -278,7 +278,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_NEW_TAB,
                                    g_param_spec_string ("accel-new-tab",
                                                         _("New Tab"),
-                                                        _("New Tab Accelerator"),
+                                                        _("New Tab"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -289,7 +289,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_NEW_WINDOW,
                                    g_param_spec_string ("accel-new-window",
                                                         _("New Window"),
-                                                        _("New Window Accelerator"),
+                                                        _("New Window"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -300,7 +300,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_CLOSE_TAB,
                                    g_param_spec_string ("accel-close-tab",
                                                         _("Close Tab"),
-                                                        _("Close Tab Accelerator"),
+                                                        _("Close Tab"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -311,7 +311,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_CLOSE_WINDOW,
                                    g_param_spec_string ("accel-close-window",
                                                         _("Close Window"),
-                                                        _("Close Window Accelerator"),
+                                                        _("Close Window"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -322,7 +322,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_COPY,
                                    g_param_spec_string ("accel-copy",
                                                         _("Copy"),
-                                                        _("Copy Accelerator"),
+                                                        _("Copy"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -333,7 +333,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PASTE,
                                    g_param_spec_string ("accel-paste",
                                                         _("Paste"),
-                                                        _("Paste Accelerator"),
+                                                        _("Paste"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -344,7 +344,29 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PREFERENCES,
                                    g_param_spec_string ("accel-preferences",
                                                         _("Preferences"),
-                                                        _("Preferences Accelerator"),
+                                                        _("Preferences"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-show-menubar:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SHOW_MENUBAR,
+                                   g_param_spec_string ("accel-show-menubar",
+                                                        _("Show menubar"),
+                                                        _("Show menubar"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-show-borders:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SHOW_BORDERS,
+                                   g_param_spec_string ("accel-show-borders",
+                                                        _("Show borders"),
+                                                        _("Show borders"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -355,18 +377,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_FULLSCREEN,
                                    g_param_spec_string ("accel-fullscreen",
                                                         _("Fullscreen"),
-                                                        _("Fullscreen Accelerator"),
-                                                        NULL,
-                                                        G_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:accel-compact-mode:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_COMPACT_MODE,
-                                   g_param_spec_string ("accel-compact-mode",
-                                                        _("Compact mode"),
-                                                        _("Compact mode Accelerator"),
+                                                        _("Fullscreen"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -377,7 +388,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PREV_TAB,
                                    g_param_spec_string ("accel-prev-tab",
                                                         _("Prev Tab"),
-                                                        _("Prev Tab Accelerator"),
+                                                        _("Prev Tab"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -388,7 +399,18 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_NEXT_TAB,
                                    g_param_spec_string ("accel-next-tab",
                                                         _("Next Tab"),
-                                                        _("Next Tab Accelerator"),
+                                                        _("Next Tab"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-set-title:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SET_TITLE,
+                                   g_param_spec_string ("accel-set-title",
+                                                        _("Set Title"),
+                                                        _("Set Title"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -399,7 +421,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_RESET,
                                    g_param_spec_string ("accel-reset",
                                                         _("Reset"),
-                                                        _("Reset Accelerator"),
+                                                        _("Reset"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -410,7 +432,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_RESET_AND_CLEAR,
                                    g_param_spec_string ("accel-reset-and-clear",
                                                         _("Reset and Clear"),
-                                                        _("Reset and Clear Accelerator"),
+                                                        _("Reset and Clear"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -421,7 +443,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_CONTENTS,
                                    g_param_spec_string ("accel-contents",
                                                         _("Contents"),
-                                                        _("Contents Accelerator"),
+                                                        _("Contents"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -533,28 +555,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:command-run-custom:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COMMAND_RUN_CUSTOM,
-                                   g_param_spec_boolean ("command-run-custom",
-                                                         _("Run custom command"),
-                                                         _("Run custom command"),
-                                                         FALSE,
-                                                         G_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:command-custom:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COMMAND_CUSTOM,
-                                   g_param_spec_string ("command-custom",
-                                                        _("Custom command"),
-                                                        _("Custom command to be run"),
-                                                        NULL,
-                                                        G_PARAM_READWRITE));
-
-  /**
    * TerminalPreferences:font-name:
    **/
   g_object_class_install_property (gobject_class,
@@ -566,36 +566,25 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:misc-bell-audible:
+   * TerminalPreferences:misc-bell:
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_MISC_BELL_AUDIBLE,
-                                   g_param_spec_boolean ("misc-bell-audible",
-                                                         _("Audible bell"),
-                                                         _("Audible bell"),
+                                   PROP_MISC_BELL,
+                                   g_param_spec_boolean ("misc-bell",
+                                                         _("Terminal bell"),
+                                                         _("Terminal bell"),
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-borders-default:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_BORDERS_DEFAULT,
+                                   g_param_spec_boolean ("misc-borders-default",
+                                                         _("Show window borders by default"),
+                                                         _("Show window borders by default"),
                                                          TRUE,
-                                                         G_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:misc-bell-visible:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_BELL_VISIBLE,
-                                   g_param_spec_boolean ("misc-bell-visible",
-                                                         _("Visible bell"),
-                                                         _("Visible bell"),
-                                                         FALSE,
-                                                         G_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:misc-compact-default:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_COMPACT_DEFAULT,
-                                   g_param_spec_boolean ("misc-compact-default",
-                                                         _("Compact default"),
-                                                         _("Use compact mode by default"),
-                                                         FALSE,
                                                          G_PARAM_READWRITE));
 
   /**
@@ -607,6 +596,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          _("Cursor blinks"),
                                                          _("Cursor blinks"),
                                                          FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-menubar-default:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_MENUBAR_DEFAULT,
+                                   g_param_spec_boolean ("misc-menubar-default",
+                                                         _("Show menubar by default"),
+                                                         _("Show menubar by default"),
+                                                         TRUE,
                                                          G_PARAM_READWRITE));
 
   /**
@@ -717,10 +717,12 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->accel_copy             = g_strdup ("<control><shift>c");
   preferences->accel_paste            = g_strdup ("<control><shift>p");
   preferences->accel_preferences      = g_strdup (_("Disabled"));
+  preferences->accel_show_menubar     = g_strdup (_("Disabled"));
+  preferences->accel_show_borders     = g_strdup (_("Disabled"));
   preferences->accel_fullscreen       = g_strdup ("F11");
-  preferences->accel_compact_mode     = g_strdup ("<control>F11");
   preferences->accel_prev_tab         = g_strdup ("<control>Page_Up");
   preferences->accel_next_tab         = g_strdup ("<control>Page_Down");
+  preferences->accel_set_title        = g_strdup (_("Disabled"));
   preferences->accel_reset            = g_strdup (_("Disabled"));
   preferences->accel_reset_and_clear  = g_strdup (_("Disabled"));
   preferences->accel_contents         = g_strdup ("F1");
@@ -734,13 +736,11 @@ terminal_preferences_init (TerminalPreferences *preferences)
 
   preferences->command_update_records = TRUE;
   preferences->command_login_shell    = FALSE;
-  preferences->command_run_custom     = FALSE;
-  preferences->command_custom         = g_strdup ("");
 
-  preferences->misc_bell_audible      = TRUE;
-  preferences->misc_bell_visible      = FALSE;
-  preferences->misc_compact_default   = FALSE;
+  preferences->misc_bell              = FALSE;
+  preferences->misc_borders_default   = TRUE;
   preferences->misc_cursor_blinks     = FALSE;
+  preferences->misc_menubar_default   = TRUE;
 
   preferences->font_name              = g_strdup ("Monospace 12");
 
@@ -769,44 +769,26 @@ terminal_preferences_finalize (GObject *object)
   if (G_UNLIKELY (preferences->store_idle_id != 0))
     g_source_remove (preferences->store_idle_id);
 
-  if (preferences->accel_new_tab != NULL)
-    g_free (preferences->accel_new_tab);
-  if (preferences->accel_new_window != NULL)
-    g_free (preferences->accel_new_window);
-  if (preferences->accel_close_tab != NULL)
-    g_free (preferences->accel_close_tab);
-  if (preferences->accel_close_window != NULL)
-    g_free (preferences->accel_close_window);
-  if (preferences->accel_copy != NULL)
-    g_free (preferences->accel_copy);
-  if (preferences->accel_paste != NULL)
-    g_free (preferences->accel_paste);
-  if (preferences->accel_preferences != NULL)
-    g_free (preferences->accel_preferences);
-  if (preferences->accel_fullscreen != NULL)
-    g_free (preferences->accel_fullscreen);
-  if (preferences->accel_compact_mode != NULL)
-    g_free (preferences->accel_compact_mode);
-  if (preferences->accel_prev_tab != NULL)
-    g_free (preferences->accel_prev_tab);
-  if (preferences->accel_next_tab != NULL)
-    g_free (preferences->accel_next_tab);
-  if (preferences->accel_reset != NULL)
-    g_free (preferences->accel_reset);
-  if (preferences->accel_reset_and_clear != NULL)
-    g_free (preferences->accel_reset_and_clear);
-  if (preferences->accel_contents != NULL)
-    g_free (preferences->accel_contents);
-  if (preferences->background_image_file != NULL)
-    g_free (preferences->background_image_file);
-  if (preferences->command_custom != NULL)
-    g_free (preferences->command_custom);
-  if (preferences->font_name != NULL)
-    g_free (preferences->font_name);
-  if (preferences->title_initial != NULL)
-    g_free (preferences->title_initial);
-  if (preferences->word_chars != NULL)
-    g_free (preferences->word_chars);
+  g_free (preferences->accel_new_tab);
+  g_free (preferences->accel_new_window);
+  g_free (preferences->accel_close_tab);
+  g_free (preferences->accel_close_window);
+  g_free (preferences->accel_copy);
+  g_free (preferences->accel_paste);
+  g_free (preferences->accel_preferences);
+  g_free (preferences->accel_show_menubar);
+  g_free (preferences->accel_show_borders);
+  g_free (preferences->accel_fullscreen);
+  g_free (preferences->accel_prev_tab);
+  g_free (preferences->accel_next_tab);
+  g_free (preferences->accel_set_title);
+  g_free (preferences->accel_reset);
+  g_free (preferences->accel_reset_and_clear);
+  g_free (preferences->accel_contents);
+  g_free (preferences->background_image_file);
+  g_free (preferences->font_name);
+  g_free (preferences->title_initial);
+  g_free (preferences->word_chars);
 
   parent_class->finalize (object);
 }
@@ -851,12 +833,16 @@ terminal_preferences_get_property (GObject    *object,
       g_value_set_string (value, preferences->accel_preferences);
       break;
 
-    case PROP_ACCEL_FULLSCREEN:
-      g_value_set_string (value, preferences->accel_fullscreen);
+    case PROP_ACCEL_SHOW_MENUBAR:
+      g_value_set_string (value, preferences->accel_show_menubar);
       break;
 
-    case PROP_ACCEL_COMPACT_MODE:
-      g_value_set_string (value, preferences->accel_compact_mode);
+    case PROP_ACCEL_SHOW_BORDERS:
+      g_value_set_string (value, preferences->accel_show_borders);
+      break;
+
+    case PROP_ACCEL_FULLSCREEN:
+      g_value_set_string (value, preferences->accel_fullscreen);
       break;
 
     case PROP_ACCEL_PREV_TAB:
@@ -865,6 +851,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_ACCEL_NEXT_TAB:
       g_value_set_string (value, preferences->accel_next_tab);
+      break;
+
+    case PROP_ACCEL_SET_TITLE:
+      g_value_set_string (value, preferences->accel_set_title);
       break;
 
     case PROP_ACCEL_RESET:
@@ -915,32 +905,24 @@ terminal_preferences_get_property (GObject    *object,
       g_value_set_boolean (value, preferences->command_login_shell);
       break;
 
-    case PROP_COMMAND_RUN_CUSTOM:
-      g_value_set_boolean (value, preferences->command_run_custom);
-      break;
-
-    case PROP_COMMAND_CUSTOM:
-      g_value_set_string (value, preferences->command_custom);
-      break;
-
     case PROP_FONT_NAME:
       g_value_set_string (value, preferences->font_name);
       break;
 
-    case PROP_MISC_BELL_AUDIBLE:
-      g_value_set_boolean (value, preferences->misc_bell_audible);
+    case PROP_MISC_BELL:
+      g_value_set_boolean (value, preferences->misc_bell);
       break;
 
-    case PROP_MISC_BELL_VISIBLE:
-      g_value_set_boolean (value, preferences->misc_bell_visible);
-      break;
-
-    case PROP_MISC_COMPACT_DEFAULT:
-      g_value_set_boolean (value, preferences->misc_compact_default);
+    case PROP_MISC_BORDERS_DEFAULT:
+      g_value_set_boolean (value, preferences->misc_borders_default);
       break;
 
     case PROP_MISC_CURSOR_BLINKS:
       g_value_set_boolean (value, preferences->misc_cursor_blinks);
+      break;
+
+    case PROP_MISC_MENUBAR_DEFAULT:
+      g_value_set_boolean (value, preferences->misc_menubar_default);
       break;
 
     case PROP_SCROLLING_BAR:
@@ -1003,8 +985,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_new_tab))
         {
-          if (preferences->accel_new_tab != NULL)
-            g_free (preferences->accel_new_tab);
+          g_free (preferences->accel_new_tab);
           preferences->accel_new_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-new-tab");
           terminal_preferences_schedule_store (preferences);
@@ -1015,8 +996,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_new_window))
         {
-          if (preferences->accel_new_window != NULL)
-            g_free (preferences->accel_new_window);
+          g_free (preferences->accel_new_window);
           preferences->accel_new_window = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-new-window");
           terminal_preferences_schedule_store (preferences);
@@ -1027,8 +1007,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_close_tab))
         {
-          if (preferences->accel_close_tab != NULL)
-            g_free (preferences->accel_close_tab);
+          g_free (preferences->accel_close_tab);
           preferences->accel_close_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-close-tab");
           terminal_preferences_schedule_store (preferences);
@@ -1039,8 +1018,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_close_window))
         {
-          if (preferences->accel_close_window != NULL)
-            g_free (preferences->accel_close_window);
+          g_free (preferences->accel_close_window);
           preferences->accel_close_window = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-close-window");
           terminal_preferences_schedule_store (preferences);
@@ -1051,8 +1029,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_copy))
         {
-          if (preferences->accel_copy != NULL)
-            g_free (preferences->accel_copy);
+          g_free (preferences->accel_copy);
           preferences->accel_copy = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-copy");
           terminal_preferences_schedule_store (preferences);
@@ -1063,8 +1040,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_paste))
         {
-          if (preferences->accel_paste != NULL)
-            g_free (preferences->accel_paste);
+          g_free (preferences->accel_paste);
           preferences->accel_paste = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-paste");
           terminal_preferences_schedule_store (preferences);
@@ -1075,10 +1051,31 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_preferences))
         {
-          if (preferences->accel_preferences != NULL)
-            g_free (preferences->accel_preferences);
+          g_free (preferences->accel_preferences);
           preferences->accel_preferences = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-preferences");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_ACCEL_SHOW_MENUBAR:
+      sval = g_value_get_string (value);
+      if (!exo_str_is_equal (sval, preferences->accel_show_menubar))
+        {
+          g_free (preferences->accel_show_menubar);
+          preferences->accel_show_menubar = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
+          g_object_notify (object, "accel-show-menubar");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_ACCEL_SHOW_BORDERS:
+      sval = g_value_get_string (value);
+      if (!exo_str_is_equal (sval, preferences->accel_show_borders))
+        {
+          g_free (preferences->accel_show_borders);
+          preferences->accel_show_borders = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
+          g_object_notify (object, "accel-show-borders");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1087,22 +1084,9 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_fullscreen))
         {
-          if (preferences->accel_fullscreen != NULL)
-            g_free (preferences->accel_fullscreen);
+          g_free (preferences->accel_fullscreen);
           preferences->accel_fullscreen = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-fullscreen");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_ACCEL_COMPACT_MODE:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->accel_compact_mode))
-        {
-          if (preferences->accel_compact_mode != NULL)
-            g_free (preferences->accel_compact_mode);
-          preferences->accel_compact_mode = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
-          g_object_notify (object, "accel-compact-mode");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1111,8 +1095,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_prev_tab))
         {
-          if (preferences->accel_prev_tab != NULL)
-            g_free (preferences->accel_prev_tab);
+          g_free (preferences->accel_prev_tab);
           preferences->accel_prev_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-prev-tab");
           terminal_preferences_schedule_store (preferences);
@@ -1123,10 +1106,20 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_next_tab))
         {
-          if (preferences->accel_next_tab != NULL)
-            g_free (preferences->accel_next_tab);
+          g_free (preferences->accel_next_tab);
           preferences->accel_next_tab = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-next-tab");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_ACCEL_SET_TITLE:
+      sval = g_value_get_string (value);
+      if (!exo_str_is_equal (sval, preferences->accel_set_title))
+        {
+          g_free (preferences->accel_set_title);
+          preferences->accel_set_title = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
+          g_object_notify (object, "accel-set-title");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1135,8 +1128,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_reset))
         {
-          if (preferences->accel_reset != NULL)
-            g_free (preferences->accel_reset);
+          g_free (preferences->accel_reset);
           preferences->accel_reset = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-reset");
           terminal_preferences_schedule_store (preferences);
@@ -1147,8 +1139,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_reset_and_clear))
         {
-          if (preferences->accel_reset_and_clear != NULL)
-            g_free (preferences->accel_reset_and_clear);
+          g_free (preferences->accel_reset_and_clear);
           preferences->accel_reset_and_clear = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-reset-and-clear");
           terminal_preferences_schedule_store (preferences);
@@ -1159,8 +1150,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->accel_contents))
         {
-          if (preferences->accel_contents != NULL)
-            g_free (preferences->accel_contents);
+          g_free (preferences->accel_contents);
           preferences->accel_contents = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-contents");
           terminal_preferences_schedule_store (preferences);
@@ -1181,8 +1171,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->background_image_file))
         {
-          if (preferences->background_image_file != NULL)
-            g_free (preferences->background_image_file);
+          g_free (preferences->background_image_file);
           preferences->background_image_file = g_strdup (sval);
           g_object_notify (object, "background-image-file");
           terminal_preferences_schedule_store (preferences);
@@ -1259,72 +1248,33 @@ terminal_preferences_set_property (GObject      *object,
         }
       break;
 
-    case PROP_COMMAND_RUN_CUSTOM:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->command_run_custom)
-        {
-          preferences->command_run_custom = bval;
-          g_object_notify (object, "command-run-custom");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_COMMAND_CUSTOM:
-      sval = g_value_get_string (value);
-      if (!exo_str_is_equal (sval, preferences->command_custom))
-        {
-          if (preferences->command_custom != NULL)
-            g_free (preferences->command_custom);
-          if (sval != NULL)
-            preferences->command_custom = g_strdup (sval);
-          else
-            preferences->command_custom = NULL;
-          g_object_notify (object, "command-custom");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
     case PROP_FONT_NAME:
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->font_name))
         {
-          if (preferences->font_name != NULL)
-            g_free (preferences->font_name);
-          if (sval != NULL)
-            preferences->font_name = g_strdup (sval);
-          else
-            preferences->font_name = NULL;
+          g_free (preferences->font_name);
+          preferences->font_name = (sval != NULL) ? g_strdup (sval) : NULL;
           g_object_notify (object, "font-name");
           terminal_preferences_schedule_store (preferences);
         }
       break;
 
-    case PROP_MISC_BELL_AUDIBLE:
+    case PROP_MISC_BELL:
       bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_bell_audible)
+      if (bval != preferences->misc_bell)
         {
-          preferences->misc_bell_audible = bval;
-          g_object_notify (object, "misc-bell-audible");
+          preferences->misc_bell = bval;
+          g_object_notify (object, "misc-bell");
           terminal_preferences_schedule_store (preferences);
         }
       break;
 
-    case PROP_MISC_BELL_VISIBLE:
+    case PROP_MISC_BORDERS_DEFAULT:
       bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_bell_visible)
+      if (bval != preferences->misc_borders_default)
         {
-          preferences->misc_bell_visible = bval;
-          g_object_notify (object, "misc-bell-visible");
-          terminal_preferences_schedule_store (preferences);
-        }
-      break;
-
-    case PROP_MISC_COMPACT_DEFAULT:
-      bval = g_value_get_boolean (value);
-      if (bval != preferences->misc_compact_default)
-        {
-          preferences->misc_compact_default = bval;
-          g_object_notify (object, "misc-compact-default");
+          preferences->misc_borders_default = bval;
+          g_object_notify (object, "misc-borders-default");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1335,6 +1285,16 @@ terminal_preferences_set_property (GObject      *object,
         {
           preferences->misc_cursor_blinks = bval;
           g_object_notify (object, "misc-cursor-blinks");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_MISC_MENUBAR_DEFAULT:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->misc_menubar_default)
+        {
+          preferences->misc_menubar_default = bval;
+          g_object_notify (object, "misc-menubar-default");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1393,8 +1353,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->title_initial))
         {
-          if (preferences->title_initial != NULL)
-            g_free (preferences->title_initial);
+          g_free (preferences->title_initial);
           preferences->title_initial = g_strdup (sval);
           g_object_notify (object, "title-initial");
           terminal_preferences_schedule_store (preferences);
@@ -1415,8 +1374,7 @@ terminal_preferences_set_property (GObject      *object,
       sval = g_value_get_string (value);
       if (!exo_str_is_equal (sval, preferences->word_chars))
         {
-          if (preferences->word_chars != NULL)
-            g_free (preferences->word_chars);
+          g_free (preferences->word_chars);
           preferences->word_chars = g_strdup (sval);
           g_object_notify (object, "word-chars");
           terminal_preferences_schedule_store (preferences);

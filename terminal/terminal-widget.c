@@ -49,6 +49,7 @@ enum
 {
   PROP_0,
   PROP_CUSTOM_TITLE,
+  PROP_ENCODING,
   PROP_TITLE,
 };
 
@@ -88,7 +89,6 @@ static void     terminal_widget_set_property                  (GObject          
                                                                guint             prop_id,
                                                                const GValue     *value,
                                                                GParamSpec       *pspec);
-static void     terminal_widget_map                           (GtkWidget        *widget);
 static gboolean terminal_widget_get_child_command             (TerminalWidget   *widget,
                                                                gchar           **command,
                                                                gchar          ***argv,
@@ -99,8 +99,7 @@ static void terminal_widget_update_binding_delete             (TerminalWidget   
 static void terminal_widget_update_color_foreground           (TerminalWidget   *widget);
 static void terminal_widget_update_color_background           (TerminalWidget   *widget);
 static void terminal_widget_update_font_name                  (TerminalWidget   *widget);
-static void terminal_widget_update_misc_bell_audible          (TerminalWidget   *widget);
-static void terminal_widget_update_misc_bell_visible          (TerminalWidget   *widget);
+static void terminal_widget_update_misc_bell                  (TerminalWidget   *widget);
 static void terminal_widget_update_misc_cursor_blinks         (TerminalWidget   *widget);
 static void terminal_widget_update_scrolling_bar              (TerminalWidget   *widget);
 static void terminal_widget_update_scrolling_lines            (TerminalWidget   *widget);
@@ -118,13 +117,17 @@ static void terminal_widget_vte_drag_data_received            (VteTerminal      
                                                                guint             info,
                                                                guint             time,
                                                                TerminalWidget   *widget);
-static void terminal_widget_vte_eof                           (VteTerminal    *terminal,
+static void     terminal_widget_vte_encoding_changed          (VteTerminal    *terminal,
+                                                               TerminalWidget *widget);
+static void     terminal_widget_vte_eof                       (VteTerminal    *terminal,
                                                                TerminalWidget *widget);
 static gboolean terminal_widget_vte_button_press_event        (VteTerminal    *terminal,
                                                                GdkEventButton *event,
                                                                TerminalWidget *widget);
 static gboolean terminal_widget_vte_key_press_event           (VteTerminal    *terminal,
                                                                GdkEventKey    *event,
+                                                               TerminalWidget *widget);
+static void     terminal_widget_vte_realize                   (VteTerminal    *terminal,
                                                                TerminalWidget *widget);
 static void     terminal_widget_vte_selection_changed         (VteTerminal    *terminal,
                                                                TerminalWidget *widget);
@@ -169,8 +172,7 @@ G_DEFINE_TYPE (TerminalWidget, terminal_widget, GTK_TYPE_HBOX);
 static void
 terminal_widget_class_init (TerminalWidgetClass *klass)
 {
-  GtkWidgetClass *gtkwidget_class;
-  GObjectClass   *gobject_class;
+  GObjectClass *gobject_class;
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -178,9 +180,6 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
   gobject_class->finalize = terminal_widget_finalize;
   gobject_class->get_property = terminal_widget_get_property;
   gobject_class->set_property = terminal_widget_set_property;
-
-  gtkwidget_class = GTK_WIDGET_CLASS (klass);
-  gtkwidget_class->map = terminal_widget_map;
 
   /**
    * TerminalWidget:custom-title:
@@ -190,6 +189,22 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
                                    g_param_spec_string ("custom-title",
                                                         _("Custom title"),
                                                         _("Custom title"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalWidget:encoding:
+   *
+   * The encoding the terminal will expect data from the child to be encoded
+   * with. For certain terminal types, applications executing in the terminal
+   * can change the encoding. The default encoding is defined by the application's
+   * locale settings.
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ENCODING,
+                                   g_param_spec_string ("encoding",
+                                                        _("Encoding"),
+                                                        _("Terminal encoding"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -240,6 +255,8 @@ terminal_widget_init (TerminalWidget *widget)
   widget->terminal = vte_terminal_new ();
   g_signal_connect (G_OBJECT (widget->terminal), "child-exited",
                     G_CALLBACK (terminal_widget_vte_child_exited), widget);
+  g_signal_connect (G_OBJECT (widget->terminal), "encoding-changed",
+                    G_CALLBACK (terminal_widget_vte_encoding_changed), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "eof",
                     G_CALLBACK (terminal_widget_vte_eof), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "button-press-event",
@@ -248,6 +265,8 @@ terminal_widget_init (TerminalWidget *widget)
                     G_CALLBACK (terminal_widget_vte_key_press_event), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "selection-changed",
                     G_CALLBACK (terminal_widget_vte_selection_changed), widget);
+  g_signal_connect (G_OBJECT (widget->terminal), "realize",
+                    G_CALLBACK (terminal_widget_vte_realize), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "window-title-changed",
                     G_CALLBACK (terminal_widget_vte_window_title_changed), widget);
   gtk_box_pack_start (GTK_BOX (widget), widget->terminal, TRUE, TRUE, 0);
@@ -284,10 +303,8 @@ terminal_widget_init (TerminalWidget *widget)
                             G_CALLBACK (terminal_widget_update_color_background), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::font-name",
                             G_CALLBACK (terminal_widget_update_font_name), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-bell-audible",
-                            G_CALLBACK (terminal_widget_update_misc_bell_audible), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-bell-visible",
-                            G_CALLBACK (terminal_widget_update_misc_bell_visible), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-bell",
+                            G_CALLBACK (terminal_widget_update_misc_bell), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-cursor-blinks",
                             G_CALLBACK (terminal_widget_update_misc_cursor_blinks), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::scrolling-bar",
@@ -309,8 +326,7 @@ terminal_widget_init (TerminalWidget *widget)
   terminal_widget_update_binding_backspace (widget);
   terminal_widget_update_binding_delete (widget);
   terminal_widget_update_font_name (widget);
-  terminal_widget_update_misc_bell_audible (widget);
-  terminal_widget_update_misc_bell_visible (widget);
+  terminal_widget_update_misc_bell (widget);
   terminal_widget_update_misc_cursor_blinks (widget);
   terminal_widget_update_scrolling_bar (widget);
   terminal_widget_update_scrolling_lines (widget);
@@ -360,6 +376,10 @@ terminal_widget_get_property (GObject          *object,
       g_value_set_string (value, widget->custom_title);
       break;
 
+    case PROP_ENCODING:
+      g_value_set_string (value, vte_terminal_get_encoding (VTE_TERMINAL (widget->terminal)));
+      break;
+
     case PROP_TITLE:
       g_value_take_string (value, terminal_widget_get_title (widget));
       break;
@@ -386,22 +406,14 @@ terminal_widget_set_property (GObject          *object,
       terminal_widget_set_custom_title (widget, g_value_get_string (value));
       break;
 
+    case PROP_ENCODING:
+      vte_terminal_set_encoding (VTE_TERMINAL (widget->terminal), g_value_get_string (value));
+      break;
+
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
     }
-}
-
-
-
-static void
-terminal_widget_map (GtkWidget *widget)
-{
-  GTK_WIDGET_CLASS (parent_class)->map (widget);
-
-  terminal_widget_timer_background (TERMINAL_WIDGET (widget));
-  terminal_widget_update_color_foreground (TERMINAL_WIDGET (widget));
-  terminal_widget_update_color_background (TERMINAL_WIDGET (widget));
 }
 
 
@@ -414,10 +426,7 @@ terminal_widget_get_child_command (TerminalWidget   *widget,
 {
   struct passwd *pw;
   const gchar   *shell_name;
-  gboolean       result;
   gboolean       command_login_shell;
-  gboolean       command_run_custom;
-  gchar         *command_custom;
 
   if (widget->custom_command != NULL)
     {
@@ -426,49 +435,31 @@ terminal_widget_get_child_command (TerminalWidget   *widget,
     }
   else
     {
+      pw = getpwuid (getuid ());
+      if (G_UNLIKELY (pw == NULL))
+        {
+          g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
+                       _("Current user unknown"));
+          return FALSE;
+        }
+
       g_object_get (G_OBJECT (widget->preferences),
-                    "command-run-custom", &command_run_custom,
+                    "command-login-shell", &command_login_shell,
                     NULL);
 
-      if (command_run_custom)
-        {
-          g_object_get (G_OBJECT (widget->preferences),
-                        "command-custom", &command_custom,
-                        NULL);
-          result = g_shell_parse_argv (command_custom, NULL, argv, error);
-          g_free (command_custom);
-          if (result)
-            *command = g_strdup ((*argv)[0]);
-          return result;
-        }
+      shell_name = strrchr (pw->pw_shell, '/');
+      if (shell_name != NULL)
+        ++shell_name;
       else
-        {
-          pw = getpwuid (getuid ());
-          if (G_UNLIKELY (pw == NULL))
-            {
-              g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                           _("Current user unknown"));
-              return FALSE;
-            }
+        shell_name = pw->pw_shell;
+      *command = g_strdup (pw->pw_shell);
 
-          g_object_get (G_OBJECT (widget->preferences),
-                        "command-login-shell", &command_login_shell,
-                        NULL);
-
-          shell_name = strrchr (pw->pw_shell, '/');
-          if (shell_name != NULL)
-            ++shell_name;
-          else
-            shell_name = pw->pw_shell;
-          *command = g_strdup (pw->pw_shell);
-
-          *argv = g_new (gchar *, 2);
-          if (command_login_shell)
-            (*argv)[0] = g_strconcat ("-", shell_name, NULL);
-          else
-            (*argv)[0] = g_strdup (shell_name);
-          (*argv)[1] = NULL;
-        }
+      *argv = g_new (gchar *, 2);
+      if (command_login_shell)
+        (*argv)[0] = g_strconcat ("-", shell_name, NULL);
+      else
+        (*argv)[0] = g_strdup (shell_name);
+      (*argv)[1] = NULL;
     }
 
   return TRUE;
@@ -590,21 +581,11 @@ terminal_widget_update_font_name (TerminalWidget *widget)
 
 
 static void
-terminal_widget_update_misc_bell_audible (TerminalWidget *widget)
+terminal_widget_update_misc_bell (TerminalWidget *widget)
 {
   gboolean bval;
-  g_object_get (G_OBJECT (widget->preferences), "misc-bell-audible", &bval, NULL);
+  g_object_get (G_OBJECT (widget->preferences), "misc-bell", &bval, NULL);
   vte_terminal_set_audible_bell (VTE_TERMINAL (widget->terminal), bval);
-}
-
-
-
-static void
-terminal_widget_update_misc_bell_visible (TerminalWidget *widget)
-{
-  gboolean bval;
-  g_object_get (G_OBJECT (widget->preferences), "misc-bell-visible", &bval, NULL);
-  vte_terminal_set_visible_bell (VTE_TERMINAL (widget->terminal), bval);
 }
 
 
@@ -821,12 +802,18 @@ terminal_widget_vte_drag_data_received (VteTerminal      *terminal,
 
 
 static void
+terminal_widget_vte_encoding_changed (VteTerminal     *terminal,
+                                      TerminalWidget  *widget)
+{
+  g_object_notify (G_OBJECT (widget), "encoding");
+}
+
+
+
+static void
 terminal_widget_vte_eof (VteTerminal    *terminal,
                          TerminalWidget *widget)
 {
-  g_return_if_fail (VTE_IS_TERMINAL (terminal));
-  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
-
   gtk_widget_destroy (GTK_WIDGET (widget));
 }
 
@@ -860,6 +847,18 @@ terminal_widget_vte_key_press_event (VteTerminal    *terminal,
     }
 
   return FALSE;
+}
+
+
+
+static void
+terminal_widget_vte_realize (VteTerminal    *terminal,
+                             TerminalWidget *widget)
+{
+  vte_terminal_set_allow_bold (terminal, TRUE);
+  terminal_widget_timer_background (TERMINAL_WIDGET (widget));
+  terminal_widget_update_color_foreground (TERMINAL_WIDGET (widget));
+  terminal_widget_update_color_background (TERMINAL_WIDGET (widget));
 }
 
 

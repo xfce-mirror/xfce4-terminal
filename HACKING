@@ -17,18 +17,19 @@ Coding Style
 Release process
 ===============
 
- 1) Check out a fresh copy from Subversion
- 2) Increment the version number in configure.ac
- 3) Update NEWS and ChangeLog, and don't forget to add an entry
-    ("Released x.y.z") to ChangeLog, so people can see which changes
-    were before and after a given release.
- 4) Update doc/*/Terminal.xml. Also update the figures in doc/*/images
-    if the UI has changed. Run "make html" in doc/*/.
- 5) Verify that make dist works.
- 6) "svn commit" the changes.
- 7) Create a simple tag for the release,
-      "svn copy http://os-cillation.de:8080/repos/terminal/trunk \
-         http://os-cillation.de:8080/repos/terminal/tags/release-X.Y.Z"
-    where X.Y.Z is the version number.
- 8) upload the tarball to os-cillation ftp
- 9) Update freshmeat entry.
+  1) Check out a fresh copy from Subversion
+  2) Increment the version number in configure.ac
+  3) Update NEWS and ChangeLog, and don't forget to add an entry
+     ("Released x.y.z") to ChangeLog, so people can see which changes
+     were before and after a given release.
+  4) Update doc/*/Terminal.xml. Also update the figures in doc/*/images
+     if the UI has changed. Run "make html" in doc/*/.
+  5) Run make update-po in po/ and update po/de.po (don't forget the header)!
+  6) Verify that make dist works.
+  7) "svn commit" the changes.
+  8) Create a simple tag for the release,
+       "svn copy https://os-cillation.de:8080/repos/terminal/trunk \
+          https://os-cillation.de:8080/repos/terminal/tags/release-X.Y.Z"
+     where X.Y.Z is the version number.
+  9) upload the tarball to os-cillation ftp
+ 10) Update freshmeat entry.

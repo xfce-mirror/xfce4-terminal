@@ -69,9 +69,9 @@ static void            terminal_window_notify_page              (GtkNotebook    
 static void            terminal_window_context_menu             (TerminalWidget  *widget,
                                                                  GdkEvent        *event,
                                                                  TerminalWindow  *window);
-static void            terminal_window_notify_title             (TerminalWidget  *widget,
-                                                                 GParamSpec      *pspec,
-                                                                 TerminalWindow  *window);
+static void            terminal_window_notify_title             (TerminalWidget       *widget,
+                                                                 GParamSpec           *pspec,
+                                                                 TerminalWindow       *window);
 static void            terminal_window_widget_removed           (GtkNotebook     *notebook,
                                                                  TerminalWidget  *widget,
                                                                  TerminalWindow  *window);
@@ -89,9 +89,11 @@ static void            terminal_window_action_paste             (GtkAction      
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_prefs             (GtkAction       *action,
                                                                  TerminalWindow  *window);
-static void            terminal_window_action_fullscreen        (GtkToggleAction *action,
+static void            terminal_window_action_show_menubar      (GtkToggleAction *action,
                                                                  TerminalWindow  *window);
-static void            terminal_window_action_compact_mode      (GtkToggleAction *action,
+static void            terminal_window_action_show_borders      (GtkToggleAction *action,
+                                                                 TerminalWindow  *window);
+static void            terminal_window_action_fullscreen        (GtkToggleAction *action,
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_prev_tab          (GtkAction       *action,
                                                                  TerminalWindow  *window);
@@ -164,8 +166,9 @@ static GtkActionEntry action_entries[] =
 
 static GtkToggleActionEntry toggle_action_entries[] =
 {
+  { "show-menubar", NULL, N_ ("Show _Menubar"), NULL, NULL, G_CALLBACK (terminal_window_action_show_menubar), },
+  { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, NULL, G_CALLBACK (terminal_window_action_show_borders), },
   { "fullscreen", NULL, N_ ("_Fullscreen"), NULL, NULL, G_CALLBACK (terminal_window_action_fullscreen), },
-  { "compact-mode", NULL, N_ ("_Compact Mode"), NULL, NULL, G_CALLBACK (terminal_window_action_compact_mode), },
 };
 
 static const gchar ui_description[] =
@@ -185,7 +188,8 @@ static const gchar ui_description[] =
  "      <menuitem action='preferences'/>"
  "    </menu>"
  "    <menu action='view-menu'>"
- "      <menuitem action='compact-mode'/>"
+ "      <menuitem action='show-menubar'/>"
+ "      <menuitem action='show-borders'/>"
  "      <menuitem action='fullscreen'/>"
  "    </menu>"
  "    <menu action='terminal-menu'>"
@@ -211,7 +215,7 @@ static const gchar ui_description[] =
  "    <menuitem action='copy'/>"
  "    <menuitem action='paste'/>"
  "    <separator/>"
- "    <menuitem action='compact-mode'/>"
+ "    <menuitem action='show-menubar'/>"
  "    <menuitem action='fullscreen'/>"
  "    <menuitem action='preferences'/>"
  "    <separator/>"
@@ -259,12 +263,14 @@ terminal_window_init (TerminalWindow *window)
   GtkAction           *action;
   GtkWidget           *vbox;
   GdkPixbuf           *icon;
-  gboolean             compact;
+  gboolean             bval;
   gchar               *role;
 
   window->preferences = terminal_preferences_get ();
 
   window->action_group = gtk_action_group_new ("terminal-window");
+  gtk_action_group_set_translation_domain (window->action_group,
+                                           GETTEXT_PACKAGE);
   gtk_action_group_add_actions (window->action_group,
                                 action_entries,
                                 G_N_ELEMENTS (action_entries),
@@ -306,10 +312,17 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect (G_OBJECT (window), "delete-event",
                     G_CALLBACK (gtk_widget_destroy), window);
 
-  /* setup compact mode */
-  g_object_get (G_OBJECT (window->preferences), "misc-compact-default", &compact, NULL);
-  action = gtk_action_group_get_action (window->action_group, "compact-mode");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), compact);
+  /* setup menubar visibility */
+  g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &bval, NULL);
+  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
+
+  /* setup borders visibility */
+  g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &bval, NULL);
+  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
 
   /* setup fullscreen mode */
   if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
@@ -641,6 +654,28 @@ terminal_window_action_paste (GtkAction       *action,
 
 
 static void
+terminal_window_action_show_menubar (GtkToggleAction *action,
+                                     TerminalWindow  *window)
+{
+  if (gtk_toggle_action_get_active (action))
+    gtk_widget_show (window->menubar);
+  else
+    gtk_widget_hide (window->menubar);
+}
+
+
+
+static void
+terminal_window_action_show_borders (GtkToggleAction *action,
+                                     TerminalWindow  *window)
+{
+  gtk_window_set_decorated (GTK_WINDOW (window),
+                            gtk_toggle_action_get_active (action));
+}
+
+
+
+static void
 terminal_window_action_fullscreen (GtkToggleAction *action,
                                    TerminalWindow  *window)
 {
@@ -648,24 +683,6 @@ terminal_window_action_fullscreen (GtkToggleAction *action,
     gtk_window_fullscreen (GTK_WINDOW (window));
   else
     gtk_window_unfullscreen (GTK_WINDOW (window));
-}
-
-
-
-static void
-terminal_window_action_compact_mode (GtkToggleAction *action,
-                                     TerminalWindow  *window)
-{
-  if (gtk_toggle_action_get_active (action))
-    {
-      gtk_window_set_decorated (GTK_WINDOW (window), FALSE);
-      gtk_widget_hide (window->menubar);
-    }
-  else
-    {
-      gtk_window_set_decorated (GTK_WINDOW (window), TRUE);
-      gtk_widget_show (window->menubar);
-    }
 }
 
 

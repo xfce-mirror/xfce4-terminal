@@ -1,7 +1,31 @@
+2004-09-25	Benedikt Meurer <benny@xfce.org>
+
+	* po/de.po: Translation updates.
+	* terminal/terminal-window.c: Setup correct translation domain 
+	  for the actions.
+	* HACKING: Added note to update translations to Release process
+	  section.
+	* terminal/terminal-preferences-dialog.c, terminal/terminal-widget.c,
+	  terminal/terminal-preferences.c: Remove custom command functionality,
+	  since its useless, because Terminal offers -x/--execute command
+	  line option. Remove visible bell option, as the visible bell provided
+	  by VTE isn't worth to have an option.
+	* terminal/terminal-preferences-dialog.c, terminal/terminal-window.c,
+	  terminal/terminal-preferences.c, terminal/terminal-shortcut-editors.c:
+	  Remove compact mode and replace it by two other options,
+	  'show menubar' and 'show borders'.
+	* terminal/terminal-preferences-dialog.c: Use GtkFrame instead of
+	  XfceFramebox for smoother look.
+	* terminal/terminal-widget.c: Bind to realize signal of VteTerminal
+	  for setting terminal parameters instead of overloading the map
+	  method of GtkWidget.
+
 2004-09-24	Benedikt Meurer <benny@xfce.org>
 
 	* TerminalHelp.in, doc/: Produce multiple html files for each toplevel
-	  section instead of a single html file.
+	  section instead of a single html file. Added more documentation.
+	* terminal/terminal-widget.c, terminal/terminal-widget.h: Added
+	  encoding property.
 
 2004-09-23	Benedikt Meurer <benny@xfce.org>
 

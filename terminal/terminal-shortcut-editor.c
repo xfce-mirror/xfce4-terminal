@@ -103,7 +103,8 @@ static ToplevelMenu toplevel_menus[] =
   {
     N_ ("View"),
     {
-      "accel-compact-mode",
+      "accel-show-menubar",
+      "accel-show-borders",
       "accel-fullscreen",
       NULL,
     },
@@ -113,7 +114,7 @@ static ToplevelMenu toplevel_menus[] =
     {
       "accel-prev-tab",
       "accel-next-tab",
-      /*"accel-set-title", FIXME */
+      "accel-set-title",
       "accel-reset",
       "accel-reset-and-clear",
       NULL,
