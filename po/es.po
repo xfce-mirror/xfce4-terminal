@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.2pre1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-14 23:00+0100\n"
-"PO-Revision-Date: 2004-12-22 00:00+0100\n"
+"POT-Creation-Date: 2005-03-18 23:24+0100\n"
+"PO-Revision-Date: 2005-03-18 00:00+0100\n"
 "Last-Translator:Jaime Buffery  <nestu@lunar-linux.org>\n"
 "Language-Team: es <nestu@lunar-linux.org>\n"
 "MIME-Version: 1.0\n"
@@ -234,8 +234,8 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
-"  --tab                               Abrir una lengüeta en la última "
-"ventana especificada;\n"
+"  --tab                               Abrir una pestaña en la última ventana "
+"especificada;\n"
 "                                      Se puede usar más de una de estas "
 "opciones"
 
@@ -246,7 +246,7 @@ msgid ""
 "                                      provided"
 msgstr ""
 "  --window                            Abrir una ventana conteniendo una "
-"lengüeta;\n"
+"pestaña;\n"
 "                                      Se puede proporcionar más de una de "
 "estas\n"
 "                                      opciones"
@@ -269,7 +269,7 @@ msgid "Terminal"
 msgstr "Terminal"
 
 #: ../terminal/main.c:162
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
@@ -284,7 +284,7 @@ msgid ""
 msgstr ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) 2003-2005\n"
 "        os-cillation e.K. Todos los derechos reservados.\n"
 "\n"
 "Escrito por Benedikt Meurer <benny@xfce.org>.\n"
@@ -294,9 +294,9 @@ msgstr ""
 "Por favor, envíen los avisos de error a <%s>.\n"
 
 #: ../terminal/main.c:251
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "Imposible arrancar el servidor de terminal: %s\n"
+msgstr "Imposible registar el servicio del terminal: %s\n"
 
 #: ../terminal/main.c:260
 #, c-format
@@ -310,28 +310,28 @@ msgstr "Cadena de geometría no válida \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:115
 msgid "User id mismatch"
-msgstr ""
+msgstr "no coincide el id de usuario"
 
 #: ../terminal/terminal-dbus.c:147
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Bus de mensajes D-BUS desconectado, saliendo...\n"
 
 #: ../terminal/terminal-dbus.c:208
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to register object %s"
-msgstr "Imposible registrar objeto %s\n"
+msgstr "Imposible registrar objeto %s"
 
 #: ../terminal/terminal-helper-dialog.c:52
 #: ../terminal/terminal-preferences.c:922
 #: ../terminal/terminal-preferences.c:923
 msgid "Web Browser"
-msgstr ""
+msgstr "Navegador web"
 
 #: ../terminal/terminal-helper-dialog.c:53
 #: ../terminal/terminal-preferences.c:911
 #: ../terminal/terminal-preferences.c:912
 msgid "Mail Reader"
-msgstr ""
+msgstr "Cliente de correo"
 
 #: ../terminal/terminal-helper-dialog.c:58
 msgid ""
@@ -339,6 +339,9 @@ msgid ""
 "Web Browser opens when you right-click on a URL\n"
 "and select Open Link from the context menu."
 msgstr ""
+"Seleccione su navegador web preferido. Dicho navegador\n"
+"se abre cuando hace click con el botón derecho sobre\n"
+"una URL y selecciona Abrir URL desde el menú contextual."
 
 #: ../terminal/terminal-helper-dialog.c:61
 msgid ""
@@ -347,47 +350,57 @@ msgid ""
 "address and select Compose Email from the context\n"
 "menu."
 msgstr ""
+"Seleccione su cliente de correo preferido. Dicho cliente\n"
+"de correo se abrirá cuando haga click con el botón derecho\n"
+"sobre una dirección de correo y cuando elija Componer E-Mail\n"
+"desde el menú contextual."
 
 #: ../terminal/terminal-helper-dialog.c:173
 msgid ""
 "Click here to change the selected application or to disable this feature."
 msgstr ""
+"Cliquee aquí para cambiar la aplicación seleccionada o\n"
+"para deshabilitar esta característica."
 
 #: ../terminal/terminal-helper-dialog.c:316
 msgid "Select application"
-msgstr ""
+msgstr "Seleccione aplicación"
 
 #: ../terminal/terminal-helper-dialog.c:350
 msgid "Choose a custom Web Browser"
-msgstr ""
+msgstr "Elija un navegador web personalizado"
 
 #: ../terminal/terminal-helper-dialog.c:351
 msgid "Choose a custom Mail Reader"
-msgstr ""
+msgstr "Elija un cliente de correo personalizado"
 
 #: ../terminal/terminal-helper-dialog.c:356
 msgid ""
 "Specify the application you want to use as\n"
 "Web Browser in Terminal:"
 msgstr ""
+"Especifique la aplicación que desea usar como\n"
+"navegador web en Terminal:"
 
 #: ../terminal/terminal-helper-dialog.c:357
 msgid ""
 "Specify the application you want to use as\n"
 "Mail Reader in Terminal:"
 msgstr ""
+"Especifique la aplicación que desee usar como\n"
+"cliente de correo en Terminal:"
 
 #: ../terminal/terminal-helper-dialog.c:435
 msgid "_Browse..."
-msgstr ""
+msgstr "_Navegar..."
 
 #: ../terminal/terminal-helper-dialog.c:534
 msgid "Disable this feature"
-msgstr ""
+msgstr "Deshablitar esta característica"
 
 #: ../terminal/terminal-helper-dialog.c:575
 msgid "Other..."
-msgstr ""
+msgstr "Otro..."
 
 #: ../terminal/terminal-helper-dialog.c:615
 #: ../terminal/terminal-preferences-dialog.c:361
@@ -405,11 +418,11 @@ msgstr "Deshabilitado"
 
 #: ../terminal/terminal-helper-dialog.c:632
 msgid "No application selected"
-msgstr ""
+msgstr "Ninguna aplicación seleccionada"
 
 #: ../terminal/terminal-helper-dialog.c:787
 msgid "Preferred Applications"
-msgstr ""
+msgstr "Aplicaciones de preferencia"
 
 #: ../terminal/terminal-options.c:106
 msgid ""
@@ -559,6 +572,10 @@ msgid ""
 "about differences between running it as interactive shell and running it as "
 "login shell."
 msgstr ""
+"Seleccione esta opción para forzar que Terminal ejecute su shell como una "
+"shell con logueo cuando abra nuevas terminales. Vea la documentación de su "
+"shell para detalles sobre las diferencias entre ejecutarlo como una shell "
+"interactiva y como una shell con logueo."
 
 #: ../terminal/terminal-preferences-dialog.c:309
 msgid "_Update utmp/wtmp records when command is launched"
@@ -577,6 +594,8 @@ msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
 msgstr ""
+"Esta opción controla si la terminal hará scroll hacia abajo automáticamente "
+"cuando se genere nueva salida por los comandos corriendo dentro del terminal."
 
 #: ../terminal/terminal-preferences-dialog.c:343
 msgid "Scroll on key_stroke"
@@ -636,19 +655,22 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
+"Habilite esta opción si desea que Terminal use anti-aliasing cuando "
+"renderice texto en las ventanas del terminal. Deshabilitando esta opción "
+"puede acelerar de sobremanera el rendimiento del renderizado y reducir la "
+"carga absoluta en sistemas lentos."
 
 #: ../terminal/terminal-preferences-dialog.c:450
 msgid "Allow bold text"
 msgstr "Permitir texto bold"
 
 #: ../terminal/terminal-preferences-dialog.c:453
-#, fuzzy
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
-"Habilitar el mostrado de las decoraciones de ventana alrededor de ventanas "
-"de terminal nuevas"
+"Habilite esta opción para permitir a las aplicaciones que se están ejecutando "
+"dentro de ventanas de terminal usen texto en negrita."
 
 #: ../terminal/terminal-preferences-dialog.c:462
 msgid "<b>Background</b>"
@@ -711,37 +733,31 @@ msgid "Display _menubar in new windows"
 msgstr "Mostrar barra de _menú en nuevas ventanas"
 
 #: ../terminal/terminal-preferences-dialog.c:582
-#, fuzzy
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
-"Habilitar el mostrado de la barra de menú en ventanas nuevas creadas desde "
-"el terminal."
+"Habilite esta opción para mostrar la barra del menú en nuevas ventanas de terminal creadas."
 
 #: ../terminal/terminal-preferences-dialog.c:587
 msgid "Display _toolbars in new windows"
 msgstr "Mostrar barra de herramien_tas en nuevas ventanas"
 
 #: ../terminal/terminal-preferences-dialog.c:590
-#, fuzzy
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
-"Habilitar el mostrado de barras de herramientras en ventanas nuevas creadas "
-"de terminal"
+"Habilite esta opción para mostrar las barras de herramientas en nuevas ventanas de terminal creadas."
 
 #: ../terminal/terminal-preferences-dialog.c:595
 msgid "Display _borders around new windows"
 msgstr "Mostrar _bordes alrededor de nuevas ventanas"
 
 #: ../terminal/terminal-preferences-dialog.c:598
-#, fuzzy
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr ""
-"Habilitar el mostrado de las decoraciones de ventana alrededor de ventanas "
-"de terminal nuevas"
+"Habilite esta opción para mostrar las decoraciones de ventana alrededor de nuevas ventanas de terminal creadas."
 
 #: ../terminal/terminal-preferences-dialog.c:610
 msgid "Appearance"
@@ -833,7 +849,7 @@ msgstr "Tecla _Borrar genera:"
 #: ../terminal/terminal-preferences-dialog.c:961
 #: ../terminal/terminal-preferences-dialog.c:985
 msgid "Auto-detect"
-msgstr ""
+msgstr "Autodetectar"
 
 #: ../terminal/terminal-preferences-dialog.c:962
 #: ../terminal/terminal-preferences-dialog.c:986
@@ -866,7 +882,7 @@ msgid ""
 "xterm-color here."
 msgstr ""
 "Esto especifica qué valor tiene la variable de entorno $TERM, cuando una "
-"nueva lengüeta de terminal o terminal nueva se abre. El valor por defecto "
+"nueva pestaña de terminal o terminal nueva se abre. El valor por defecto "
 "será válido el mayoría de los sistemas. Si tiene problemas con colores en "
 "algunas aplicaciones, pruebe a poner xterm-color aquí"
 
@@ -910,7 +926,7 @@ msgstr "Archivos de Imagen"
 #: ../terminal/terminal-preferences.c:297
 #: ../terminal/terminal-preferences.c:298
 msgid "Open Tab"
-msgstr "Abrir Lengüeta"
+msgstr "Abrir Pestaña"
 
 #: ../terminal/terminal-preferences.c:308
 #: ../terminal/terminal-preferences.c:309
@@ -920,7 +936,7 @@ msgstr "Abrir Terminal"
 #: ../terminal/terminal-preferences.c:319
 #: ../terminal/terminal-preferences.c:320
 msgid "Close Tab"
-msgstr "Cerrar Lengüeta"
+msgstr "Cerrar Pestaña"
 
 #: ../terminal/terminal-preferences.c:330
 #: ../terminal/terminal-preferences.c:331
@@ -980,57 +996,57 @@ msgstr "Resetear y Borrar"
 #: ../terminal/terminal-preferences.c:451
 #: ../terminal/terminal-preferences.c:452
 msgid "Previous Tab"
-msgstr "Lengüeta anterior"
+msgstr "Pestaña anterior"
 
 #: ../terminal/terminal-preferences.c:462
 #: ../terminal/terminal-preferences.c:463
 msgid "Next Tab"
-msgstr "Lengüeta posterior"
+msgstr "Pestaña posterior"
 
 #: ../terminal/terminal-preferences.c:473
 #: ../terminal/terminal-preferences.c:474
 msgid "Switch to Tab 1"
-msgstr "Saltar a Lengüeta 1"
+msgstr "Saltar a Pestaña 1"
 
 #: ../terminal/terminal-preferences.c:484
 #: ../terminal/terminal-preferences.c:485
 msgid "Switch to Tab 2"
-msgstr "Saltar a Lengüeta 2"
+msgstr "Saltar a Pestaña 2"
 
 #: ../terminal/terminal-preferences.c:495
 #: ../terminal/terminal-preferences.c:496
 msgid "Switch to Tab 3"
-msgstr "Saltar a Lengüeta 3"
+msgstr "Saltar a Pestaña 3"
 
 #: ../terminal/terminal-preferences.c:506
 #: ../terminal/terminal-preferences.c:507
 msgid "Switch to Tab 4"
-msgstr "Saltar a Lengüeta 4"
+msgstr "Saltar a Pestaña 4"
 
 #: ../terminal/terminal-preferences.c:517
 #: ../terminal/terminal-preferences.c:518
 msgid "Switch to Tab 5"
-msgstr "Saltar a Lengüeta 5"
+msgstr "Saltar a Pestaña 5"
 
 #: ../terminal/terminal-preferences.c:528
 #: ../terminal/terminal-preferences.c:529
 msgid "Switch to Tab 6"
-msgstr "Saltar a Lengüeta 6"
+msgstr "Saltar a Pestaña 6"
 
 #: ../terminal/terminal-preferences.c:539
 #: ../terminal/terminal-preferences.c:540
 msgid "Switch to Tab 7"
-msgstr "Saltar a Lengüeta 7"
+msgstr "Saltar a Pestaña 7"
 
 #: ../terminal/terminal-preferences.c:550
 #: ../terminal/terminal-preferences.c:551
 msgid "Switch to Tab 8"
-msgstr "Saltar a Lengüeta 8"
+msgstr "Saltar a Pestaña 8"
 
 #: ../terminal/terminal-preferences.c:561
 #: ../terminal/terminal-preferences.c:562
 msgid "Switch to Tab 9"
-msgstr "Saltar a Lengüeta 9"
+msgstr "Saltar a Pestaña 9"
 
 #: ../terminal/terminal-preferences.c:572
 #: ../terminal/terminal-preferences.c:573
@@ -1222,24 +1238,23 @@ msgstr "Mostrar barras de herramientas por defecto"
 #: ../terminal/terminal-preferences.c:988
 #: ../terminal/terminal-preferences.c:989
 msgid "Confirm closing a window with multiple tabs"
-msgstr "Confirmar el cierre de ventana con varias lengüetas"
+msgstr "Confirmar el cierre de ventana con varias pestañas"
 
 #: ../terminal/terminal-preferences.c:999
-#, fuzzy
 msgid "Cycle tabs"
-msgstr "Cerrar todas las lengüetas"
+msgstr "Ciclar pestañas"
 
 #: ../terminal/terminal-preferences.c:1000
 msgid "Allow cycling through tabs"
-msgstr ""
+msgstr "Permitir el ciclado con tabs"
 
 #: ../terminal/terminal-preferences.c:1010
 msgid "Tab close buttons"
-msgstr ""
+msgstr "Botones de cierre en las pestañas"
 
 #: ../terminal/terminal-preferences.c:1011
 msgid "Show tab close buttons"
-msgstr ""
+msgstr "Mostrar botones de cierre en pestañas"
 
 #: ../terminal/terminal-preferences.c:1021
 msgid "Scrollbar setting"
@@ -1381,19 +1396,19 @@ msgstr "Otra aplicación ya tiene el control sobre su teclado."
 
 #: ../terminal/terminal-tab-header.c:123 ../terminal/terminal-tab-header.c:124
 msgid "Tab title"
-msgstr "Título de la lengüeta"
+msgstr "Título de la pestaña"
 
 #: ../terminal/terminal-tab-header.c:203
 msgid "Close this tab"
-msgstr "Cerrar esta lengüeta"
+msgstr "Cerrar esta pestaña"
 
 #: ../terminal/terminal-tab-header.c:306
 msgid "_Detach Tab"
-msgstr "_Separar lengüeta"
+msgstr "_Separar pestaña"
 
 #: ../terminal/terminal-tab-header.c:312 ../terminal/terminal-window.c:199
 msgid "C_lose Tab"
-msgstr "Cerrar _Lengüeta"
+msgstr "Cerrar _Pestaña"
 
 #: ../terminal/terminal-toolbars-view.c:142
 msgid "Toolbar Editor"
@@ -1401,20 +1416,19 @@ msgstr "Editor de la barra de herramientas"
 
 #: ../terminal/terminal-widget.c:318
 msgid "Copy Email Address"
-msgstr ""
+msgstr "Copiar correo electrónico"
 
 #: ../terminal/terminal-widget.c:319
 msgid "Compose Email"
-msgstr ""
+msgstr "Componer correo electrónico"
 
 #: ../terminal/terminal-widget.c:323
 msgid "Copy Link Address"
-msgstr ""
+msgstr "Copiar dirección de enlace"
 
 #: ../terminal/terminal-widget.c:324
-#, fuzzy
 msgid "Open Link"
-msgstr "Abrir Terminal"
+msgstr "Abrir enlace"
 
 #: ../terminal/terminal-widget.c:475
 #, c-format
@@ -1450,7 +1464,7 @@ msgstr "Abrir Lengüe_ta"
 
 #: ../terminal/terminal-window.c:197
 msgid "Open a new terminal tab"
-msgstr "Abrir una nueva lengüeta de terminal"
+msgstr "Abrir una nueva pestaña de terminal"
 
 #: ../terminal/terminal-window.c:198
 msgid "Open _Terminal"
@@ -1462,7 +1476,7 @@ msgstr "Abrir una nueva ventana de terminal"
 
 #: ../terminal/terminal-window.c:199
 msgid "Close the current terminal tab"
-msgstr "Cerrar la lengüeta actual de terminal"
+msgstr "Cerrar la pestaña actual de terminal"
 
 #: ../terminal/terminal-window.c:200
 msgid "_Close Window"
@@ -1494,11 +1508,11 @@ msgstr "Pegar del portapapeles"
 
 #: ../terminal/terminal-window.c:204
 msgid "_Applications..."
-msgstr ""
+msgstr "_Aplicaciones..."
 
 #: ../terminal/terminal-window.c:204
 msgid "Customize your preferred applications"
-msgstr ""
+msgstr "Personalizar sus aplicaciones preferidas"
 
 #: ../terminal/terminal-window.c:205
 msgid "_Toolbars..."
@@ -1530,7 +1544,7 @@ msgstr "_Fijar título..."
 
 #: ../terminal/terminal-window.c:209
 msgid "Set a custom title for the current tab"
-msgstr "Fijar un título peronalizado para la lengüeta actual"
+msgstr "Fijar un título peronalizado para la pestaña actual"
 
 #: ../terminal/terminal-window.c:210
 msgid "_Reset"
@@ -1546,15 +1560,15 @@ msgstr "_Ir"
 
 #: ../terminal/terminal-window.c:213
 msgid "_Previous Tab"
-msgstr "Lengüeta _Previa"
+msgstr "Pestaña _Previa"
 
 #: ../terminal/terminal-window.c:213
 msgid "Switch to previous tab"
-msgstr "Saltar al lengüeta previa"
+msgstr "Saltar al pestaña previa"
 
 #: ../terminal/terminal-window.c:214
 msgid "_Next Tab"
-msgstr "Lengüeta Siguie_nte"
+msgstr "Pestaña Siguie_nte"
 
 #: ../terminal/terminal-window.c:214
 msgid "Switch to next tab"
@@ -1630,7 +1644,7 @@ msgstr "Aviso"
 
 #: ../terminal/terminal-window.c:544
 msgid "Close all tabs"
-msgstr "Cerrar todas las lengüetas"
+msgstr "Cerrar todas las pestañas"
 
 #: ../terminal/terminal-window.c:563
 #, c-format
@@ -1638,12 +1652,12 @@ msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
-"Esta ventana tiene %d lengüetas abiertas. Cerrando\n"
-"esta ventana también cerrará todas sus lengüetas."
+"Esta ventana tiene %d pestañas abiertas. Cerrando\n"
+"esta ventana también cerrará todas sus pestañas."
 
 #: ../terminal/terminal-window.c:566
 msgid "Close all tabs?"
-msgstr "¿Cerrar todas las lengüetas?"
+msgstr "¿Cerrar todas las pestañas?"
 
 #: ../terminal/terminal-window.c:579
 msgid "Do _not ask me again"
@@ -1655,6 +1669,9 @@ msgid ""
 "Browser yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
+"No eligió aún una aplicación para la navegación\n"
+"web. ¿Desea configurar sus aplicaciones preferidas\n"
+"ahora?"
 
 #: ../terminal/terminal-window.c:959
 msgid ""
@@ -1662,6 +1679,9 @@ msgid ""
 "Reader yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
+"No eligió una aplicación para el correo electrónico\n"
+"todavía. ¿Desea configurar sus aplicaciones preferidas\n"
+"ahora?"
 
 #: ../terminal/terminal-window.c:1525
 msgid "<b>Title:</b>"
@@ -1669,21 +1689,21 @@ msgstr "<b>Título:</b>"
 
 #: ../terminal/terminal-window.c:1539
 msgid "Enter the title for the current terminal tab"
-msgstr "Introduzca el título para la lengüeta actual de terminal"
+msgstr "Introduzca el título para la pestaña actual de terminal"
 
-#: ../terminal/terminal-window.c:1596
+#: ../terminal/terminal-window.c:1597
 msgid "X Terminal Emulator"
 msgstr "Emulador de Terminal para las X"
 
-#: ../terminal/terminal-window.c:1600
+#: ../terminal/terminal-window.c:1601
 msgid "Maintainer"
 msgstr "Mantenido por:"
 
-#: ../terminal/terminal-window.c:1601
+#: ../terminal/terminal-window.c:1602
 msgid "Icon Designer"
 msgstr "Diseñador de Iconos"
 
-#: ../terminal/terminal-window.c:1605
+#: ../terminal/terminal-window.c:1606
 #, c-format
 msgid "Translator (%s)"
 msgstr "Traductor (%s)"
@@ -1694,63 +1714,63 @@ msgstr "Emulador de Terminal para las X"
 
 #: ../helpers/balsa.desktop.in.h:1
 msgid "Balsa"
-msgstr ""
+msgstr "Balsa"
 
 #: ../helpers/epiphany.desktop.in.h:1
 msgid "Epiphany Web Browser"
-msgstr ""
+msgstr "Navegador web Epiphany"
 
 #: ../helpers/evolution.desktop.in.h:1
 msgid "Novell Evolution"
-msgstr ""
+msgstr "Novell Evolution"
 
 #: ../helpers/firefox.desktop.in.h:1
 msgid "Mozilla Firefox"
-msgstr ""
+msgstr "Mozilla Firefox"
 
 #: ../helpers/galeon.desktop.in.h:1
 msgid "Galeon Web Browser"
-msgstr ""
+msgstr "Navegador web Galeon"
 
 #: ../helpers/kmail.desktop.in.h:1
 msgid "KMail"
-msgstr ""
+msgstr "KMail"
 
 #: ../helpers/konqueror.desktop.in.h:1
 msgid "Konqueror"
-msgstr ""
+msgstr "Konqueror"
 
 #: ../helpers/lynx.desktop.in.h:1
 msgid "Lynx"
-msgstr ""
+msgstr "Lynx"
 
 #: ../helpers/mozilla-browser.desktop.in.h:1
 msgid "Mozilla Browser"
-msgstr ""
+msgstr "Mozilla Browser"
 
 #: ../helpers/mozilla-mailer.desktop.in.h:1
 msgid "Mozilla Mail"
-msgstr ""
+msgstr "Mozilla Mail"
 
 #: ../helpers/mutt.desktop.in.h:1
 msgid "Mutt"
-msgstr ""
+msgstr "Mutt"
 
 #: ../helpers/opera-browser.desktop.in.h:1
 msgid "Opera Browser"
-msgstr ""
+msgstr "Navegador Opera"
 
 #: ../helpers/opera-mailer.desktop.in.h:1
 msgid "Opera Mail"
-msgstr ""
+msgstr "Opera Mail"
 
 #: ../helpers/sensible-browser.desktop.in.h:1
 msgid "Debian Sensible Browser"
-msgstr ""
+msgstr "Navegador de preferencia de Debian"
 
 #: ../helpers/thunderbird.desktop.in.h:1
 msgid "Mozilla Thunderbird"
-msgstr ""
+msgstr "Mozilla Thunderbird"
 
 #~ msgid "Unable to connect to D-BUS message daemon"
 #~ msgstr "Imposible conectar al demonio de mensajes D-BUS"
