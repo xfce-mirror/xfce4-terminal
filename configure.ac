@@ -58,6 +58,20 @@ XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
                            [0.4], [startup-notification],
                            [startup notification library])
 
+dnl Optional support for D-BUS
+XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1], [0.22],
+                           [dbus], [D-BUS GLib bindings])
+if test x"$DBUS_FOUND" = x"yes"; then
+  ac_save_LIBS="$LIBS"
+  ac_save_CFLAGS="$CFLAGS"
+  LIBS="$LIBS $DBUS_LIBS"
+  CFLAGS="$CFLAGS $DBUS_CFLAGS"
+  AC_CHECK_FUNCS([dbus_bus_request_name])
+  CFLAGS="$ac_save_CFLAGS"
+  LIBS="$ac_save_LIBS"
+fi
+
+
 dnl Check for debugging support
 BM_DEBUG_SUPPORT()
 

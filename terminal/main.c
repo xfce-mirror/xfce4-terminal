@@ -26,11 +26,13 @@
 #include <stdlib.h>
 
 #include <exo/exo.h>
-#include <dbus/dbus-glib-lowlevel.h>
-#include <gdk-pixbuf/gdk-pixdata.h>
 
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-icons.h>
+
+#ifdef HAVE_DBUS
+#include <terminal/terminal-dbus.h>
+#endif
 
 
 
@@ -158,7 +160,7 @@ main (int argc, char **argv)
   if (G_UNLIKELY (options->show_version))
     {
       printf (_("%s (Xfce %s)\n\n"
-                "Copyright (c) 2003-2004\n"
+                "Copyright (c) 2003-2005\n"
                 "        os-cillation e.K. All rights reserved.\n\n"
                 "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
                 "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
@@ -199,10 +201,11 @@ main (int argc, char **argv)
     nargv[nargc++] = g_strdup (argv[n]);
   nargv[nargc] = NULL;
 
+#ifdef HAVE_DBUS
   if (!options->disable_server)
     {
       /* try to connect to an existing Terminal service */
-      if (terminal_app_try_invoke (nargc, nargv, &error))
+      if (terminal_dbus_invoke_launch (nargc, nargv, &error))
         {
           return EXIT_SUCCESS;
         }
@@ -214,8 +217,8 @@ main (int argc, char **argv)
 #endif
 
           /* handle "User mismatch" special */
-          if (error->domain == TERMINAL_APP_ERROR
-              && error->code == TERMINAL_APP_ERROR_USER_MISMATCH)
+          if (error->domain == TERMINAL_ERROR
+              && error->code == TERMINAL_ERROR_USER_MISMATCH)
             {
               /* don't try to establish another service here */
               options->disable_server = TRUE;
@@ -225,6 +228,7 @@ main (int argc, char **argv)
           error = NULL;
         }
     }
+#endif /* !HAVE_DBUS */
 
   /* disable automatic startup notification completion */
   gtk_window_set_auto_startup_notification (FALSE);
@@ -239,15 +243,17 @@ main (int argc, char **argv)
 
   app = terminal_app_new ();
 
+#ifdef HAVE_DBUS
   if (!options->disable_server)
     {
-      if (!terminal_app_start_server (app, &error))
+      if (!terminal_dbus_register_service (app, &error))
         {
-          g_printerr (_("Unable to start terminal server: %s\n"), error->message);
+          g_printerr (_("Unable to register terminal service: %s\n"), error->message);
           g_error_free (error);
           error = NULL;
         }
     }
+#endif /* !HAVE_DBUS */
  
   if (!terminal_app_process (app, nargv, nargc, &error))
     {

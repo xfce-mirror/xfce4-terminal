@@ -24,24 +24,22 @@
 
 #include <exo/exo.h>
 
-#include <dbus/dbus.h>
-#include <dbus/dbus-glib.h>
-
 #include <terminal/terminal-options.h>
 
 G_BEGIN_DECLS;
 
-#define TERMINAL_APP_ERROR (terminal_app_error_quark ())
+#define TERMINAL_ERROR (terminal_error_quark ())
+GQuark terminal_error_quark (void) G_GNUC_CONST;
 
-typedef enum /*< enum,prefix=TERMINAL_APP_ERROR >*/
+typedef enum /*< enum,prefix=TERMINAL_ERROR >*/
 {
+  /* problem with the runtime linker */
+  TERMINAL_ERROR_LINKER_FAILURE,
   /* different user id in service */
-  TERMINAL_APP_ERROR_USER_MISMATCH,
+  TERMINAL_ERROR_USER_MISMATCH,
   /* general failure */
-  TERMINAL_APP_ERROR_FAILED,
-} TerminalAppError;
-
-GQuark terminal_app_error_quark (void) G_GNUC_CONST;
+  TERMINAL_ERROR_FAILED,
+} TerminalError;
 
 
 #define TERMINAL_TYPE_APP         (terminal_app_get_type ())
@@ -56,9 +54,6 @@ GType        terminal_app_get_type            (void) G_GNUC_CONST;
 
 TerminalApp *terminal_app_new                 (void);
 
-gboolean     terminal_app_start_server        (TerminalApp      *app,
-                                               GError          **error);
-
 gboolean     terminal_app_process             (TerminalApp        *app,
                                                gchar             **argv,
                                                gint                argc,
@@ -66,10 +61,6 @@ gboolean     terminal_app_process             (TerminalApp        *app,
 
 void         terminal_app_open_window         (TerminalApp        *app,
                                                TerminalWindowAttr *attr);
-
-gboolean     terminal_app_try_invoke          (gint              argc,
-                                               gchar           **argv,
-                                               GError          **error);
 
 G_END_DECLS;
 

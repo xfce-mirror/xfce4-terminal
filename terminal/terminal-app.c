@@ -23,10 +23,6 @@
 #include <config.h>
 #endif
 
-#ifdef HAVE_SYS_TYPES_H
-#include <sys/types.h>
-#endif
-
 #ifdef HAVE_ERRNO_H
 #include <errno.h>
 #endif
@@ -39,9 +35,6 @@
 #endif
 #ifdef HAVE_STRING_H
 #include <string.h>
-#endif
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
 #endif
 
 #include <terminal/terminal-accel-map.h>
@@ -56,11 +49,6 @@ static void               terminal_app_class_init               (TerminalAppClas
 static void               terminal_app_init                     (TerminalApp        *app);
 static void               terminal_app_finalize                 (GObject            *object);
 static void               terminal_app_update_accels            (TerminalApp        *app);
-static void               terminal_app_unregister               (DBusConnection     *connection,
-                                                                 void               *user_data);
-static DBusHandlerResult  terminal_app_message                  (DBusConnection     *connection,
-                                                                 DBusMessage        *message,
-                                                                 void               *user_data);
 static GtkWidget           *terminal_app_create_window          (TerminalApp        *app,
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
@@ -93,30 +81,20 @@ struct _TerminalApp
   ExoXsessionClient   *session_client;
   gchar               *initial_menu_bar_accel;
   GList               *windows;
-  guint                server_running : 1;
 };
 
 
 
 static GObjectClass *parent_class;
 
-static const struct DBusObjectPathVTable terminal_app_vtable =
-{
-  terminal_app_unregister,
-  terminal_app_message,
-  NULL,
-};
-
 
 
 GQuark
-terminal_app_error_quark (void)
+terminal_error_quark (void)
 {
   static GQuark quark = 0;
-
   if (G_UNLIKELY (quark == 0))
-    quark = g_quark_from_static_string ("terminal-app-error-quark");
-
+    quark = g_quark_from_static_string ("terminal-error-quark");
   return quark;
 }
 
@@ -209,114 +187,6 @@ terminal_app_update_accels (TerminalApp *app)
   gtk_settings_set_string_property (gtk_settings_get_default (),
                                     "gtk-menu-bar-accel", accel,
                                     "Terminal");
-}
-
-
-
-static void
-terminal_app_unregister (DBusConnection *connection,
-                         void           *user_data)
-{
-}
-
-
-
-static DBusHandlerResult
-terminal_app_message (DBusConnection  *connection,
-                      DBusMessage     *message,
-                      void            *user_data)
-{
-  DBusMessageIter  iter;
-  TerminalApp     *app = TERMINAL_APP (user_data);
-  DBusMessage     *reply;
-  GError          *error = NULL;
-  uid_t            user_id;
-  gchar          **argv;
-  gint             argc;
-
-  /* The D-BUS interface currently looks like this:
-   *
-   * The Terminal service offers a method "Launch", with
-   * the following parameters:
-   *
-   *  - UserId:int64
-   *    This is the real user id of the calling process.
-   *
-   *  - Arguments:string array
-   *    The argument array as passed to main(), with some
-   *    additions.
-   *
-   * "Launch" returns an empty reply message if everything
-   * worked, and an error message if anything failed. The
-   * error can be TERMINAL_DBUS_ERROR_USER if the user ids
-   * doesn't match, where the caller is expected to spawn
-   * a new terminal of its own and do _NOT_ establish a
-   * D-BUS service, or TERMINAL_DBUS_ERROR_GENERAL, which
-   * indicates a general problem, e.g. invalid parameters
-   * or something like that.
-   */
-
-  if (dbus_message_is_method_call (message, 
-                                   TERMINAL_DBUS_INTERFACE,
-                                   TERMINAL_DBUS_METHOD_LAUNCH))
-    {
-      if (!dbus_message_iter_init (message, &iter))
-        return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
-
-      /* check user id */
-      user_id = (uid_t) dbus_message_iter_get_int64 (&iter);
-      if (user_id != getuid ())
-        {
-          reply = dbus_message_new_error (message, TERMINAL_DBUS_ERROR_USER, "User id mismatch");
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-          return DBUS_HANDLER_RESULT_HANDLED;
-        }
-
-      if (!dbus_message_iter_next (&iter))
-        {
-          reply = dbus_message_new_error (message, TERMINAL_DBUS_ERROR_GENERAL, "Invalid arguments");
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-          return DBUS_HANDLER_RESULT_HANDLED;
-        }
-
-      if (!dbus_message_iter_get_string_array (&iter, &argv, &argc))
-        {
-          reply = dbus_message_new_error (message, TERMINAL_DBUS_ERROR_GENERAL, "Invalid arguments");
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-          return DBUS_HANDLER_RESULT_HANDLED;
-        }
-
-      if (!terminal_app_process (app, argv, argc, &error))
-        {
-          reply = dbus_message_new_error (message, TERMINAL_DBUS_ERROR_GENERAL, error->message);
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-        }
-      else
-        {
-          reply = dbus_message_new_method_return (message);
-          dbus_connection_send (connection, reply, NULL);
-        }
-
-      dbus_free_string_array (argv);
-      dbus_message_unref (reply);
-    }
-  else if (dbus_message_is_signal (message,
-                                   DBUS_INTERFACE_ORG_FREEDESKTOP_LOCAL,
-                                   "Disconnected"))
-    {
-      g_printerr (_("D-BUS message bus disconnected, exiting...\n"));
-      gtk_main_quit ();
-    }
-  else
-    {
-      return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
-    }
-
-  return DBUS_HANDLER_RESULT_HANDLED;
 }
 
 
@@ -543,62 +413,6 @@ terminal_app_new (void)
 
 
 /**
- * terminal_app_start_server:
- * @app         : A #TerminalApp.
- * @error       : The location to store the error to, or %NULL.
- *
- * Return value : %TRUE on success, %FALSE on failure.
- **/
-gboolean
-terminal_app_start_server (TerminalApp *app,
-                           GError     **error)
-{
-  DBusConnection *connection;
-  DBusError       derror;
-  
-  g_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
-
-  if (G_UNLIKELY (app->server_running))
-    return TRUE;
-
-  connection = exo_dbus_bus_connection ();
-  if (G_UNLIKELY (connection == NULL))
-    {
-      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
-                   _("Unable to connect to D-BUS message daemon"));
-      return FALSE;
-    }
-
-  dbus_error_init (&derror);
-
-  if (!dbus_bus_acquire_service (connection, TERMINAL_DBUS_SERVICE, 0, &derror))
-    {
-      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
-                   _("Unable to acquire service %s: %s"),
-                   TERMINAL_DBUS_SERVICE, derror.message);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  if (dbus_connection_register_object_path (connection,
-                                            TERMINAL_DBUS_PATH,
-                                            &terminal_app_vtable,
-                                            app) < 0)
-    {
-      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
-                   _("Unable to register object %s\n"),
-                   TERMINAL_DBUS_PATH);
-      return FALSE;
-    }
-
-  app->server_running = 1;
-
-  return TRUE;
-}
-
-
-
-/**
  * terminal_app_process:
  * @app
  * @argv
@@ -709,82 +523,6 @@ terminal_app_open_window (TerminalApp         *app,
       g_signal_connect (G_OBJECT (app->session_client), "save-yourself",
                         G_CALLBACK (terminal_app_save_yourself), app);
     }
-}
-
-
-
-/**
- * terminal_app_try_invoke:
- * @argc
- * @argv
- * @error
- *
- * Return value:
- **/
-gboolean
-terminal_app_try_invoke (gint              argc,
-                         gchar           **argv,
-                         GError          **error)
-{
-  DBusMessageIter  iter;
-  DBusConnection  *connection;
-  DBusMessage     *message;
-  DBusMessage     *result;
-  DBusError        derror;
-
-  connection = exo_dbus_bus_connection ();
-  if (G_UNLIKELY (connection == NULL))
-    {
-      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
-                   "No session message bus daemon running");
-      return FALSE;
-    }
-
-  message = dbus_message_new_method_call (TERMINAL_DBUS_SERVICE,
-                                          TERMINAL_DBUS_PATH,
-                                          TERMINAL_DBUS_INTERFACE,
-                                          TERMINAL_DBUS_METHOD_LAUNCH);
-  dbus_message_set_auto_activation (message, FALSE);
-  dbus_message_append_iter_init (message, &iter);
-  dbus_message_iter_append_int64 (&iter, getuid ());
-  dbus_message_iter_append_string_array (&iter, (const gchar **) argv, argc);
-
-  dbus_error_init (&derror);
-  result = dbus_connection_send_with_reply_and_block (connection,
-                                                      message,
-                                                      2000, &derror);
-  dbus_message_unref (message);
-
-  if (result == NULL)
-    {
-      g_set_error (error, TERMINAL_APP_ERROR, TERMINAL_APP_ERROR_FAILED,
-                   "%s", derror.message);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  if (dbus_message_is_error (result, TERMINAL_DBUS_ERROR_USER))
-    {
-      dbus_set_error_from_message (&derror, result);
-      g_set_error (error, TERMINAL_APP_ERROR, TERMINAL_APP_ERROR_USER_MISMATCH,
-                   "%s", derror.message);
-      dbus_message_unref (result);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  if (dbus_message_is_error (result, TERMINAL_DBUS_ERROR_GENERAL))
-    {
-      dbus_set_error_from_message (&derror, result);
-      g_set_error (error, TERMINAL_APP_ERROR, TERMINAL_APP_ERROR_FAILED,
-                   "%s", derror.message);
-      dbus_message_unref (result);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
-  dbus_message_unref (result);
-  return TRUE;
 }
 
 
