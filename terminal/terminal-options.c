@@ -296,7 +296,7 @@ terminal_options_parse (gint              argc,
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
                            _("Option \"--role\" requires specifying "
-                             "the window geometry as its parameter"));
+                             "the window role as its parameter"));
               goto failed;
             }
           else
