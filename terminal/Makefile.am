@@ -64,17 +64,17 @@ Terminal_SOURCES =							\
 	terminal-window.c
 
 Terminal_CFLAGS =							\
-	@DBUS_CFLAGS@							\
-	@EXO_CFLAGS@							\
-	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
-	@VTE_CFLAGS@
+	$(DBUS_CFLAGS)							\
+	$(EXO_CFLAGS)							\
+	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
+	$(VTE_CFLAGS)
 
 Terminal_LDFLAGS =							\
 	-no-undefined							\
-	@DBUS_LIBS@							\
-	@EXO_LIBS@							\
-	@LIBSTARTUP_NOTIFICATION_LIBS@					\
-	@VTE_LIBS@
+	$(DBUS_LIBS)							\
+	$(EXO_LIBS)							\
+	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
+	$(VTE_LIBS)
 
 # install symlink to 'terminal'
 install-data-local:

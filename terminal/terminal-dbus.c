@@ -43,18 +43,25 @@
 
 
 
+/* Yay for D-BUS breakage... */
+#ifndef DBUS_USE_NEW_API
+#define dbus_bus_request_name(c, n, f, e) dbus_bus_acquire_service((c), (n), (f), (e))
+#endif
+
+
+
 static DBusHandlerResult
 handle_message (DBusConnection *connection,
                 DBusMessage    *message,
                 void           *user_data)
 {
-  DBusMessageIter  iter;
-  TerminalApp     *app = TERMINAL_APP (user_data);
-  DBusMessage     *reply;
-  GError          *error = NULL;
-  uid_t            user_id;
-  gchar          **argv;
-  gint             argc;
+  TerminalApp *app = TERMINAL_APP (user_data);
+  DBusMessage *reply;
+  DBusError    derror;
+  GError      *error = NULL;
+  uid_t        user_id;
+  gchar      **argv;
+  gint         argc;
 
   /* The D-BUS interface currently looks like this:
    *
@@ -82,37 +89,31 @@ handle_message (DBusConnection *connection,
                                    TERMINAL_DBUS_INTERFACE,
                                    TERMINAL_DBUS_METHOD_LAUNCH))
     {
-      if (!dbus_message_iter_init (message, &iter))
-        return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
+      dbus_error_init (&derror);
+
+      /* query the list of arguments to this call */
+      if (!dbus_message_get_args (message, &derror,
+                                  DBUS_TYPE_INT64, &user_id,
+                                  DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &argv, &argc,
+                                  DBUS_TYPE_INVALID))
+        {
+          reply = dbus_message_new_error (message,
+                                          TERMINAL_DBUS_ERROR_GENERAL,
+                                          derror.message);
+          dbus_connection_send (connection, reply, NULL);
+          dbus_message_unref (reply);
+          dbus_error_free (&derror);
+          return DBUS_HANDLER_RESULT_HANDLED;
+        }
 
       /* check user id */
-      user_id = (uid_t) dbus_message_iter_get_int64 (&iter);
       if (user_id != getuid ())
         {
           reply = dbus_message_new_error (message,
                                           TERMINAL_DBUS_ERROR_USER,
                                           _("User id mismatch"));
           dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-          return DBUS_HANDLER_RESULT_HANDLED;
-        }
-
-      if (!dbus_message_iter_next (&iter))
-        {
-          reply = dbus_message_new_error (message,
-                                          TERMINAL_DBUS_ERROR_GENERAL,
-                                          _("Invalid arguments"));
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-          return DBUS_HANDLER_RESULT_HANDLED;
-        }
-
-      if (!dbus_message_iter_get_string_array (&iter, &argv, &argc))
-        {
-          reply = dbus_message_new_error (message,
-                                          TERMINAL_DBUS_ERROR_GENERAL,
-                                          _("Invalid arguments"));
-          dbus_connection_send (connection, reply, NULL);
+          dbus_free_string_array (argv);
           dbus_message_unref (reply);
           return DBUS_HANDLER_RESULT_HANDLED;
         }
@@ -167,11 +168,6 @@ terminal_dbus_register_service (TerminalApp *app,
   DBusConnection *connection;
   DBusError       derror;
 
-#ifndef HAVE_DBUS_BUS_REQUEST_NAME
-  int (*acquire_service) (DBusConnection *, const char *, unsigned int, DBusError *);
-  GModule *module;
-#endif
-
   g_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
 
   /* check if the application object is already registered */
@@ -193,50 +189,12 @@ terminal_dbus_register_service (TerminalApp *app,
   /* register DBus connection with GLib main loop */
   dbus_connection_setup_with_g_main (connection, NULL);
 
-  /* Thanks havoc for this really very nice breakage!
-   * The only way to work-around the bus API break between
-   * D-BUS 0.23 and 0.30 is to use g_module_symbol() to
-   * determine the available function for acquiring services
-   * on the message bus (yeah, I still call it service,
-   * because calling it "name" is really confusing).
-   * This works for platforms that support
-   *
-   *  dlsym(RTLD_DEFAULT, symbol);
-   *
-   * Pray that it works for your platform as well...
-   */
-#ifdef HAVE_DBUS_BUS_REQUEST_NAME
   if (dbus_bus_request_name (connection, TERMINAL_DBUS_SERVICE, 0, &derror) < 0)
     {
       dbus_set_g_error (error, &derror);
       dbus_error_free (&derror);
       return FALSE;
     }
-#else
-  module = g_module_open (NULL, 0);
-  if (G_UNLIKELY (module == NULL))
-    {
-      g_set_error (error, TERMINAL_ERROR, TERMINAL_ERROR_LINKER_FAILURE,
-                   "%s", g_module_error ());
-      return FALSE;
-    }
-  else if (!g_module_symbol (module, "dbus_bus_request_name", (gpointer) &acquire_service)
-        && !g_module_symbol (module, "dbus_bus_acquire_service", (gpointer) &acquire_service))
-    {
-      g_set_error (error, TERMINAL_ERROR, TERMINAL_ERROR_LINKER_FAILURE,
-                   "Unsupported D-BUS library");
-      g_module_close (module);
-      return FALSE;
-    }
-  else if (acquire_service (connection, TERMINAL_DBUS_SERVICE, 0, &derror) < 0)
-    {
-      dbus_set_g_error (error, &derror);
-      dbus_error_free (&derror);
-      g_module_close (module);
-      return FALSE;
-    }
-  g_module_close (module);
-#endif /* !HAVE_DBUS_BUS_REQUEST_NAME */
 
   /* register the application object */
   if (dbus_connection_register_object_path (connection, TERMINAL_DBUS_PATH, &vtable, app) < 0)
@@ -268,8 +226,8 @@ terminal_dbus_invoke_launch (gint     argc,
                              gchar  **argv,
                              GError **error)
 {
-  DBusMessageIter iter;
   DBusConnection *connection;
+  dbus_int64_t    uid;
   DBusMessage    *message;
   DBusMessage    *result;
   DBusError       derror;
@@ -294,9 +252,18 @@ terminal_dbus_invoke_launch (gint     argc,
                                           TERMINAL_DBUS_INTERFACE,
                                           TERMINAL_DBUS_METHOD_LAUNCH);
   dbus_message_set_auto_activation (message, FALSE);
-  dbus_message_append_iter_init (message, &iter);
-  dbus_message_iter_append_int64 (&iter, getuid ());
-  dbus_message_iter_append_string_array (&iter, (const gchar **) argv, argc);
+
+  uid = getuid ();
+
+  dbus_message_append_args (message,
+#ifdef DBUS_USE_NEW_API
+                            DBUS_TYPE_INT64, &uid,
+                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &argv, argc,
+#else
+                            DBUS_TYPE_INT64, uid,
+                            DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, argv, argc,
+#endif
+                            DBUS_TYPE_INVALID);
 
   /* send the message */
   result = dbus_connection_send_with_reply_and_block (connection, message, 2000, &derror);

@@ -32,6 +32,7 @@
 
 #include <exo/exo.h>
 
+#include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-helper.h>
 #include <terminal/terminal-icons.h>
@@ -43,6 +44,30 @@ enum
 {
   PROP_0,
   PROP_ACTIVE,
+  PROP_CATEGORY,
+};
+
+static const gchar *category_names[] =
+{
+  "browser",
+  "mailer",
+};
+
+static const gchar *category_titles[] =
+{
+  N_ ("Web Browser"),
+  N_ ("Mail Reader"),
+};
+
+static const gchar *category_descriptions[] =
+{
+  N_ ("Choose your preferred Web Browser. The preferred\n"
+      "Web Browser opens when you right-click on a URL\n"
+      "and select Open URL from the context menu."),
+  N_ ("Choose your preferred Mail Reader. The preferred\n"
+      "Mail Reader opens when you right-click on a mail\n"
+      "address and select Compose E-Mail from the context\n"
+      "menu."),
 };
 
 
@@ -73,18 +98,17 @@ struct _TerminalHelperChooserClass
 
 struct _TerminalHelperChooser
 {
-  GtkHBox    __parent__;
+  GtkHBox                 __parent__;
 
-  GtkWidget *image;
-  GtkWidget *label;
+  GtkWidget              *image;
+  GtkWidget              *label;
 
-  gchar     *active;
-  GSList    *helpers;
-  gchar     *browse_message;
-  gchar     *browse_stock;
-  gchar     *browse_title;
+  TerminalHelperDatabase *database;
 
-  guint      update_idle_id;
+  gchar                  *active;
+  TerminalHelperCategory  category;
+
+  guint                   update_idle_id;
 };
 
 
@@ -119,6 +143,18 @@ terminal_helper_chooser_class_init (TerminalHelperChooserClass *klass)
                                                         "The currently selected helper",
                                                         NULL,
                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalHelperChooser:category:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_CATEGORY,
+                                   g_param_spec_enum ("category",
+                                                      "Helper category",
+                                                      "Helper category",
+                                                      TERMINAL_TYPE_HELPER_CATEGORY,
+                                                      TERMINAL_HELPER_WEBBROWSER,
+                                                      G_PARAM_READWRITE));
 }
 
 
@@ -130,6 +166,8 @@ terminal_helper_chooser_init (TerminalHelperChooser *chooser)
   GtkWidget *button;
   GtkWidget *arrow;
   GtkWidget *hbox;
+
+  chooser->database = terminal_helper_database_get ();
 
   gtk_widget_push_composite_child ();
 
@@ -170,10 +208,11 @@ terminal_helper_chooser_finalize (GObject *object)
   TerminalHelperChooser *chooser = TERMINAL_HELPER_CHOOSER (object);
 
   terminal_helper_chooser_set_active (chooser, NULL);
-  terminal_helper_chooser_set_helpers (chooser, NULL);
 
   if (G_LIKELY (chooser->update_idle_id != 0))
     g_source_remove (chooser->update_idle_id);
+
+  g_object_unref (G_OBJECT (chooser->database));
 
   G_OBJECT_CLASS (chooser_parent_class)->finalize (object);
 }
@@ -192,6 +231,10 @@ terminal_helper_chooser_get_property (GObject    *object,
     {
     case PROP_ACTIVE:
       g_value_set_string (value, terminal_helper_chooser_get_active (chooser));
+      break;
+
+    case PROP_CATEGORY:
+      g_value_set_enum (value, terminal_helper_chooser_get_category (chooser));
       break;
 
     default:
@@ -214,6 +257,10 @@ terminal_helper_chooser_set_property (GObject      *object,
     {
     case PROP_ACTIVE:
       terminal_helper_chooser_set_active (chooser, g_value_get_string (value));
+      break;
+
+    case PROP_CATEGORY:
+      terminal_helper_chooser_set_category (chooser, g_value_get_enum (value));
       break;
 
     default:
@@ -302,6 +349,18 @@ static void
 menu_activate_other (GtkWidget             *item,
                      TerminalHelperChooser *chooser)
 {
+  static const gchar *browse_titles[] =
+  {
+    N_ ("Choose a custom Web Browser"),
+    N_ ("Choose a custom Mail Reader"),
+  };
+
+  static const gchar *browse_messages[] =
+  {
+    N_ ("Specify the application you want to use as\nWeb Browser in Terminal:"),
+    N_ ("Specify the application you want to use as\nMail Reader in Terminal:"),
+  };
+
   GtkWidget *toplevel;
   GtkWidget *dialog;
   GtkWidget *hbox;
@@ -311,13 +370,18 @@ menu_activate_other (GtkWidget             *item,
   GtkWidget *entry;
   GtkWidget *button;
   gchar     *active;
+  gchar     *stock;
+
+  /* sanity check the category values */
+  g_assert (TERMINAL_HELPER_WEBBROWSER == 0);
+  g_assert (TERMINAL_HELPER_MAILREADER == 1);
 
   /* make sure the helper specific stock icons are loaded */
   terminal_icons_setup_helper ();
 
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (chooser));
 
-  dialog = gtk_dialog_new_with_buttons (chooser->browse_title,
+  dialog = gtk_dialog_new_with_buttons (dgettext (GETTEXT_PACKAGE, browse_titles[chooser->category]),
                                         GTK_WINDOW (toplevel),
                                         GTK_DIALOG_DESTROY_WITH_PARENT
                                         | GTK_DIALOG_NO_SEPARATOR
@@ -335,17 +399,19 @@ menu_activate_other (GtkWidget             *item,
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
-  image = gtk_image_new_from_stock (chooser->browse_stock, GTK_ICON_SIZE_DIALOG);
+  stock = g_strconcat ("terminal-", dgettext (GETTEXT_PACKAGE, category_names[chooser->category]), NULL);
+  image = gtk_image_new_from_stock (stock, GTK_ICON_SIZE_DIALOG);
   gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
   gtk_widget_show (image);
+  g_free (stock);
 
   vbox = gtk_vbox_new (FALSE, 6);
   gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
   gtk_widget_show (vbox);
 
   label = g_object_new (GTK_TYPE_LABEL, 
-                        "label", chooser->browse_message,
+                        "label", dgettext (GETTEXT_PACKAGE, browse_messages[chooser->category]),
                         "xalign", 0.0,
                         "yalign", 0.0,
                         NULL);
@@ -428,12 +494,23 @@ static void
 terminal_helper_chooser_pressed (GtkButton             *button,
                                  TerminalHelperChooser *chooser)
 {
-  TerminalHelper        *helper;
-  GMainLoop             *loop;
-  GtkWidget             *menu;
-  GtkWidget             *item;
-  GtkWidget             *image;
-  GSList                *lp;
+  TerminalHelper *helper;
+  GMainLoop      *loop;
+  GtkWidget      *menu;
+  GtkWidget      *item;
+  GtkWidget      *image;
+  GdkCursor      *cursor;
+  GSList         *helpers;
+  GSList         *lp;
+
+  /* set a watch cursor while loading the menu */
+  if (G_LIKELY (GTK_WIDGET (button)->window != NULL))
+    {
+      cursor = gdk_cursor_new (GDK_WATCH);
+      gdk_window_set_cursor (GTK_WIDGET (button)->window, cursor);
+      gdk_cursor_unref (cursor);
+      gdk_flush ();
+    }
 
   menu = gtk_menu_new ();
 
@@ -446,10 +523,11 @@ terminal_helper_chooser_pressed (GtkButton             *button,
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
   gtk_widget_show (item);
 
-  for (lp = chooser->helpers; lp != NULL; lp = lp->next)
+  helpers = terminal_helper_database_lookup_all (chooser->database,
+                                                 chooser->category);
+  for (lp = helpers; lp != NULL; lp = lp->next)
     {
       helper = TERMINAL_HELPER (lp->data);
-      g_object_ref (G_OBJECT (helper));
 
       item = gtk_image_menu_item_new_with_label (terminal_helper_get_name (helper));
       g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (menu_activate), chooser);
@@ -463,17 +541,23 @@ terminal_helper_chooser_pressed (GtkButton             *button,
       gtk_widget_show (image);
     }
 
-  if (G_LIKELY (chooser->helpers != NULL))
+  if (G_LIKELY (helpers != NULL))
     {
       item = gtk_separator_menu_item_new ();
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       gtk_widget_show (item);
     }
 
+  g_slist_free (helpers);
+
   item = gtk_menu_item_new_with_label (_("Other..."));
   g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (menu_activate_other), chooser);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
   gtk_widget_show (item);
+
+  /* reset the watch cursor on the chooser */
+  if (G_LIKELY (GTK_WIDGET (button)->window != NULL))
+    gdk_window_set_cursor (GTK_WIDGET (button)->window, NULL);
 
   loop = g_main_loop_new (NULL, FALSE);
 
@@ -515,7 +599,8 @@ terminal_helper_chooser_update_idle (gpointer user_data)
 {
   TerminalHelperChooser *chooser = TERMINAL_HELPER_CHOOSER (user_data);
   TerminalHelper        *helper;
-  GSList                *lp;
+  const gchar           *id;
+  GSList                *helpers;
 
   g_object_freeze_notify (G_OBJECT (chooser));
 
@@ -523,10 +608,19 @@ terminal_helper_chooser_update_idle (gpointer user_data)
     {
       if (G_UNLIKELY (chooser->active == NULL))
         {
-          if (G_LIKELY (chooser->helpers != NULL))
-            chooser->active = g_strconcat ("predefined:", terminal_helper_get_id (chooser->helpers->data), NULL);
+          helpers = terminal_helper_database_lookup_all (chooser->database,
+                                                         chooser->category);
+          if (G_LIKELY (helpers != NULL))
+            {
+              id = terminal_helper_get_id (helpers->data);
+              chooser->active = g_strconcat ("predefined:", id, NULL);
+              g_slist_foreach (helpers, (GFunc) g_object_unref, NULL);
+              g_slist_free (helpers);
+            }
           else
-            chooser->active = g_strdup ("disabled");
+            {
+              chooser->active = g_strdup ("disabled");
+            }
 
           g_object_notify (G_OBJECT (chooser), "active");
         }
@@ -539,13 +633,9 @@ terminal_helper_chooser_update_idle (gpointer user_data)
         }
       else if (strncmp (chooser->active, "predefined:", 11) == 0 && strlen (chooser->active) > 11)
         {
-          for (helper = NULL, lp = chooser->helpers; lp != NULL; lp = lp->next)
-            {
-              helper = TERMINAL_HELPER (lp->data);
-              if (exo_str_is_equal (terminal_helper_get_id (helper), chooser->active + 11))
-                break;
-            }
-
+          helper = terminal_helper_database_lookup (chooser->database,
+                                                    chooser->category,
+                                                    chooser->active + 11);
           if (G_LIKELY (helper != NULL))
             {
               gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), terminal_helper_get_icon (helper));
@@ -625,145 +715,39 @@ terminal_helper_chooser_set_active (TerminalHelperChooser *chooser,
 
 
 /**
- * terminal_helper_chooser_get_helpers:
+ * terminal_helper_chooser_get_category:
  * @chooser : A #TerminalHelperChooser.
  *
- * Returns the list of #TerminalHelper<!---->s associated with @chooser.
- * The returned list is owned by @chooser.
- *
- * Return value: the list of #TerminalHelper<!---->s associated with
- *               @chooser or %NULL if no #TerminalHelper<!---->s are
- *               associated with @chooser.
+ * Return value: 
  **/
-GSList*
-terminal_helper_chooser_get_helpers (TerminalHelperChooser *chooser)
+TerminalHelperCategory
+terminal_helper_chooser_get_category (TerminalHelperChooser *chooser)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser), NULL);
-  return chooser->helpers;
+  g_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser),
+                        TERMINAL_HELPER_WEBBROWSER);
+  return chooser->category;
 }
 
 
 
 /**
- * terminal_helper_chooser_set_helpers:
+ * terminal_helper_chooser_set_category:
  * @chooser : A #TerminalHelperChooser.
- * @helpers : A list of #TerminalHelper<!---->s or %NULL.
+ * @category:
  **/
 void
-terminal_helper_chooser_set_helpers (TerminalHelperChooser *chooser,
-                                     GSList                *helpers)
+terminal_helper_chooser_set_category (TerminalHelperChooser *chooser,
+                                      TerminalHelperCategory category)
 {
   g_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
+  g_return_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
+                 && category <= TERMINAL_HELPER_MAILREADER);
   
-  /* free all previously set helpers */
-  g_slist_foreach (chooser->helpers, (GFunc) g_object_unref, NULL);
-  g_slist_free (chooser->helpers);
-  chooser->helpers = NULL;
-
-  /* setup the new helpers */
-  if (helpers != NULL)
+  if (chooser->category != category)
     {
-      g_slist_foreach (helpers, (GFunc) g_object_ref, NULL);
-      chooser->helpers = g_slist_copy (helpers);
+      chooser->category = category;
+      terminal_helper_chooser_schedule_update (chooser);
     }
-
-  terminal_helper_chooser_schedule_update (chooser);
-}
-
-
-
-/**
- * terminal_helper_chooser_get_browse_message:
- * @chooser : A #TerminalHelperChooser.
- *
- * Return value: the browse dialog message text.
- **/
-const gchar*
-terminal_helper_chooser_get_browse_message (TerminalHelperChooser *chooser)
-{
-  g_return_val_if_fail (TERMINAL_HELPER_CHOOSER (chooser), NULL);
-  return chooser->browse_message;
-}
-
-
-
-/**
- * terminal_helper_chooser_set_browse_message:
- * @chooser : A #TerminalHelperChooser.
- * @message : The browse dialog message text.
- **/
-void
-terminal_helper_chooser_set_browse_message (TerminalHelperChooser *chooser,
-                                            const gchar           *message)
-{
-  g_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
-  
-  g_free (chooser->browse_message);
-  chooser->browse_message = g_strdup (message);
-}
-
-
-
-/**
- * terminal_helper_chooser_get_browse_stock:
- * @chooser : A #TerminalHelperChooser.
- * 
- * Return value: the browse dialog stock icon.
- **/
-const gchar*
-terminal_helper_chooser_get_browse_stock (TerminalHelperChooser *chooser)
-{
-  g_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser), NULL);
-  return chooser->browse_stock;
-}
-
-
-
-/**
- * terminal_helper_chooser_set_browse_stock:
- * @chooser : A #TerminalHelperChooser.
- * @stock   : A stock icon id.
- **/
-void
-terminal_helper_chooser_set_browse_stock (TerminalHelperChooser  *chooser,
-                                          const gchar            *stock)
-{
-  g_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
-
-  g_free (chooser->browse_stock);
-  chooser->browse_stock = g_strdup (stock);
-}
-
-
-
-/**
- * terminal_helper_chooser_get_browse_title:
- * @chooser : A #TerminalHelperChooser.
- *
- * Return value: the browse dialog title.
- **/
-const gchar*
-terminal_helper_chooser_get_browse_title (TerminalHelperChooser  *chooser)
-{
-  g_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser), NULL);
-  return chooser->browse_title;
-}
-
-
-
-/**
- * terminal_helper_chooser_set_browse_title:
- * @chooser : A #TerminalHelperChooser.
- * @title   : The browse dialog title.
- **/
-void
-terminal_helper_chooser_set_browse_title (TerminalHelperChooser  *chooser,
-                                          const gchar            *title)
-{
-  g_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
-
-  g_free (chooser->browse_title);
-  chooser->browse_title = g_strdup (title);
 }
 
 
@@ -777,7 +761,6 @@ struct _TerminalHelperDialogClass
 struct _TerminalHelperDialog
 {
   GtkDialog               __parent__;
-  TerminalHelperDatabase *database;
   TerminalPreferences    *preferences;
 };
 
@@ -819,55 +802,19 @@ terminal_helper_dialog_class_init (TerminalHelperDialogClass *klass)
 static void
 terminal_helper_dialog_init (TerminalHelperDialog *dialog)
 {
-  static const gchar *names[] =
-  {
-    "browser",
-    "mailer",
-  };
-
-  static const gchar *titles[] =
-  {
-    N_ ("Web Browser"),
-    N_ ("Mail Reader"),
-  };
-
-  static const gchar *descriptions[] =
-  {
-    N_ ("Choose your preferred Web Browser. The preferred\n"
-        "Web Browser opens when you right-click on a URL\n"
-        "and select Open URL from the context menu."),
-    N_ ("Choose your preferred Mail Reader. The preferred\n"
-        "Mail Reader opens when you right-click on a mail\n"
-        "address and select Compose E-Mail from the context\n"
-        "menu."),
-  };
-
-  static const gchar *browse_titles[] =
-  {
-    N_ ("Choose a custom Web Browser"),
-    N_ ("Choose a custom Mail Reader"),
-  };
-
-  static const gchar *browse_messages[] =
-  {
-    N_ ("Specify the application you want to use as\nWeb Browser in Terminal:"),
-    N_ ("Specify the application you want to use as\nMail Reader in Terminal:"),
-  };
-
   GtkWidget *vbox;
   GtkWidget *frame;
   GtkWidget *label;
   GtkWidget *box;
   GtkWidget *chooser;
-  GSList    *helpers;
   gchar     *name;
   guint      n;
 
+  /* sanity check the category values */
   g_assert (TERMINAL_HELPER_WEBBROWSER == 0);
   g_assert (TERMINAL_HELPER_MAILREADER == 1);
 
   dialog->preferences = terminal_preferences_get ();
-  dialog->database    = terminal_helper_database_get ();
 
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_HELP, GTK_RESPONSE_HELP);
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
@@ -889,7 +836,7 @@ terminal_helper_dialog_init (TerminalHelperDialog *dialog)
       gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
       gtk_widget_show (frame);
 
-      name = g_strdup_printf ("<b>%s</b>", dgettext (GETTEXT_PACKAGE, titles[n]));
+      name = g_strdup_printf ("<b>%s</b>", dgettext (GETTEXT_PACKAGE, category_titles[n]));
       label = g_object_new (GTK_TYPE_LABEL,
                             "label", name,
                             "use-markup", TRUE,
@@ -902,32 +849,18 @@ terminal_helper_dialog_init (TerminalHelperDialog *dialog)
       gtk_container_add (GTK_CONTAINER (frame), box);
       gtk_widget_show (box);
 
-      label = gtk_label_new (dgettext (GETTEXT_PACKAGE, descriptions[n]));
+      label = gtk_label_new (dgettext (GETTEXT_PACKAGE, category_descriptions[n]));
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
       gtk_widget_show (label);
 
-      chooser = g_object_new (TERMINAL_TYPE_HELPER_CHOOSER, NULL);
+      chooser = g_object_new (TERMINAL_TYPE_HELPER_CHOOSER, "category", n, NULL);
       gtk_box_pack_start (GTK_BOX (box), chooser, FALSE, FALSE, 0);
       gtk_widget_show (chooser);
 
-      name = g_strconcat ("terminal-", names[n], NULL);
-      terminal_helper_chooser_set_browse_stock (TERMINAL_HELPER_CHOOSER (chooser), name);
-      g_free (name);
-
-      terminal_helper_chooser_set_browse_message (TERMINAL_HELPER_CHOOSER (chooser),
-                                                  dgettext (GETTEXT_PACKAGE, browse_messages[n]));
-      terminal_helper_chooser_set_browse_title (TERMINAL_HELPER_CHOOSER (chooser),
-                                                dgettext (GETTEXT_PACKAGE, browse_titles[n]));
-
-      name = g_strconcat ("helper-", names[n], NULL);
+      name = g_strconcat ("helper-", category_names[n], NULL);
       exo_mutual_binding_new (G_OBJECT (dialog->preferences), name,
                               G_OBJECT (chooser), "active");
       g_free (name);
-
-      helpers = terminal_helper_database_lookup_all (dialog->database, n);
-      terminal_helper_chooser_set_helpers (TERMINAL_HELPER_CHOOSER (chooser), helpers);
-      g_slist_foreach (helpers, (GFunc) g_object_unref, NULL);
-      g_slist_free (helpers);
     }
 }
 
@@ -939,7 +872,6 @@ terminal_helper_dialog_finalize (GObject *object)
   TerminalHelperDialog *dialog = TERMINAL_HELPER_DIALOG (object);
 
   g_object_unref (G_OBJECT (dialog->preferences));
-  g_object_unref (G_OBJECT (dialog->database));
 
   G_OBJECT_CLASS (dialog_parent_class)->finalize (object);
 }

@@ -50,11 +50,9 @@ struct _TerminalHelper
   TerminalHelperCategory category;
 
   gchar                 *id;
+  gchar                 *icon;
   gchar                 *name;
   gchar                 *command;
-  gchar                **icons;
-
-  GdkPixbuf             *icon;
 };
 
 
@@ -119,11 +117,8 @@ terminal_helper_finalize (GObject *object)
 {
   TerminalHelper *helper = TERMINAL_HELPER (object);
 
-  if (G_LIKELY (helper->icon != NULL))
-    g_object_unref (G_OBJECT (helper->icon));
-
-  g_strfreev (helper->icons);
   g_free (helper->command);
+  g_free (helper->icon);
   g_free (helper->name);
   g_free (helper->id);
 
@@ -140,6 +135,7 @@ terminal_helper_load (XfceRc      *rc,
   TerminalHelper        *helper;
   const gchar           *command;
   const gchar           *name;
+  const gchar           *type;
   const gchar           *p;
   const gchar           *s;
   gchar                **binaries;
@@ -147,16 +143,21 @@ terminal_helper_load (XfceRc      *rc,
   gchar                 *t;
   guint                  n;
 
-  xfce_rc_set_group (rc, id);
+  xfce_rc_set_group (rc, "Desktop Entry");
+
+  /* verify that we have an Application .desktop file here */
+  type = xfce_rc_read_entry_untranslated (rc, "Type", NULL);
+  if (!exo_str_is_equal (type, "Application"))
+    return NULL;
 
   /* check if Command and Name are present */
-  command = xfce_rc_read_entry_untranslated (rc, "Command", NULL);
   name = xfce_rc_read_entry (rc, "Name", NULL);
+  command = xfce_rc_read_entry_untranslated (rc, "X-Terminal-Command", NULL);
   if (G_UNLIKELY (name == NULL || command == NULL))
     return NULL;
 
   /* check for a valid Category */
-  s = xfce_rc_read_entry_untranslated (rc, "Category", NULL);
+  s = xfce_rc_read_entry_untranslated (rc, "X-Terminal-Category", NULL);
   if (exo_str_is_equal (s, "WebBrowser"))
     category = TERMINAL_HELPER_WEBBROWSER;
   else if (exo_str_is_equal (s, "MailReader"))
@@ -165,7 +166,7 @@ terminal_helper_load (XfceRc      *rc,
     return NULL;
 
   /* check if Binaries is needed and present */
-  binaries = xfce_rc_read_list_entry (rc, "Binaries", ";");
+  binaries = xfce_rc_read_list_entry (rc, "X-Terminal-Binaries", ";");
   if (strstr (command, "%B") != NULL)
     {
       if (G_UNLIKELY (binaries == NULL))
@@ -195,7 +196,10 @@ terminal_helper_load (XfceRc      *rc,
   helper->category = category;
   helper->id = g_strdup (id);
   helper->name = g_strdup (name);
-  helper->icons = xfce_rc_read_list_entry (rc, "Icons", ";");
+
+  s = xfce_rc_read_entry_untranslated (rc, "Icon", NULL);
+  if (G_LIKELY (s != NULL))
+    helper->icon = g_strdup (s);
 
   if (G_UNLIKELY (path == NULL))
     {
@@ -227,8 +231,8 @@ static gint
 terminal_helper_compare (gconstpointer a,
                          gconstpointer b)
 {
-  return strcmp (TERMINAL_HELPER (a)->name,
-                 TERMINAL_HELPER (b)->name);
+  return g_utf8_collate (TERMINAL_HELPER (a)->name,
+                         TERMINAL_HELPER (b)->name);
 }
 
 
@@ -242,6 +246,7 @@ terminal_helper_compare (gconstpointer a,
 TerminalHelperCategory
 terminal_helper_get_category (TerminalHelper *helper)
 {
+  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), TERMINAL_HELPER_WEBBROWSER);
   return helper->category;
 }
 
@@ -301,25 +306,28 @@ terminal_helper_get_command (TerminalHelper *helper)
 GdkPixbuf*
 terminal_helper_get_icon (TerminalHelper *helper)
 {
-  guint n;
-  gint  size;
+  GdkPixbuf *pixbuf;
+  gint       size;
 
   g_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
 
-  if (helper->icon == NULL && helper->icons != NULL)
+  pixbuf = g_object_get_data (G_OBJECT (helper), "terminal-helper-icon");
+  if (pixbuf == NULL && helper->icon != NULL)
     {
       if (!gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &size, &size))
         size = 16;
 
-      for (n = 0; helper->icons[n] != NULL; ++n)
+      pixbuf = xfce_themed_icon_load (helper->icon, size);
+      if (G_LIKELY (pixbuf != NULL))
         {
-          helper->icon = xfce_themed_icon_load (helper->icons[n], size);
-          if (G_LIKELY (helper->icon != NULL))
-            break;
+          g_object_set_data_full (G_OBJECT (helper),
+                                  "terminal-helper-icon",
+                                  G_OBJECT (pixbuf),
+                                  g_object_unref);
         }
     }
 
-  return helper->icon;
+  return pixbuf;
 }
 
 
@@ -333,57 +341,36 @@ struct _TerminalHelperDatabaseClass
 struct _TerminalHelperDatabase
 {
   GObject  __parent__;
-  XfceRc  *helpers;
 };
 
 
 
-static void terminal_helper_database_class_init (TerminalHelperDatabaseClass  *klass);
-static void terminal_helper_database_init       (TerminalHelperDatabase       *database);
-static void terminal_helper_database_finalize   (GObject                      *object);
-
-
-static GObjectClass *database_parent_class;
-
-
-
-G_DEFINE_TYPE (TerminalHelperDatabase, terminal_helper_database, G_TYPE_OBJECT);
-
-
-
-static void
-terminal_helper_database_class_init (TerminalHelperDatabaseClass *klass)
+GType
+terminal_helper_database_get_type (void)
 {
-  GObjectClass *gobject_class;
+  static GType type = G_TYPE_INVALID;
 
-  database_parent_class = g_type_class_peek_parent (klass);
+  if (G_UNLIKELY (type == G_TYPE_INVALID))
+    {
+      static const GTypeInfo info =
+      {
+        sizeof (TerminalHelperDatabaseClass),
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        sizeof (TerminalHelperDatabase),
+        0,
+        NULL,
+      };
 
-  gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize = terminal_helper_database_finalize;
-}
+      type = g_type_register_static (G_TYPE_OBJECT,
+                                     "TerminalHelperDatabase",
+                                     &info, 0);
+    }
 
-
-
-static void
-terminal_helper_database_init (TerminalHelperDatabase *database)
-{
-  xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
-  database->helpers = xfce_rc_config_open (XFCE_RESOURCE_DATA,
-                                           "Terminal/helpers.ini",
-                                           TRUE);
-  xfce_resource_pop_path (XFCE_RESOURCE_DATA);
-}
-
-
-
-static void
-terminal_helper_database_finalize (GObject *object)
-{
-  TerminalHelperDatabase *database = TERMINAL_HELPER_DATABASE (object);
-
-  xfce_rc_close (database->helpers);
-
-  G_OBJECT_CLASS (database_parent_class)->finalize (object);
+  return type;
 }
 
 
@@ -428,22 +415,50 @@ terminal_helper_database_lookup (TerminalHelperDatabase *database,
                                  const gchar            *id)
 {
   TerminalHelper *helper;
+  XfceRc         *rc;
+  gchar          *file;
+  gchar          *spec;
 
   g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
   g_return_val_if_fail (id != NULL, NULL);
 
-  if (!xfce_rc_has_group (database->helpers, id))
-    return NULL;
+  spec = g_strconcat ("Terminal/apps/", id, ".desktop", NULL);
 
-  helper = terminal_helper_load (database->helpers, id);
-  if (G_UNLIKELY (helper == NULL))
-    return NULL;
-  
-  if (terminal_helper_get_category (helper) != category)
+  /* try to find a cached version */
+  helper = g_object_get_data (G_OBJECT (database), spec);
+
+  /* load helper from file */
+  if (G_LIKELY (helper == NULL))
     {
-      g_object_unref (G_OBJECT (helper));
-      return NULL;
+      xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
+      file = xfce_resource_lookup (XFCE_RESOURCE_DATA, spec);
+      xfce_resource_pop_path (XFCE_RESOURCE_DATA);
+
+      if (G_LIKELY (file != NULL))
+        {
+          rc = xfce_rc_simple_open (file, TRUE);
+          helper = terminal_helper_load (rc, id);
+          xfce_rc_close (rc);
+          g_free (file);
+        }
+
+      if (G_LIKELY (helper != NULL))
+        {
+          g_object_set_data_full (G_OBJECT (database),
+                                  spec, helper,
+                                  g_object_unref);
+        }
     }
+
+  if (G_LIKELY (helper != NULL))
+    {
+      if (terminal_helper_get_category (helper) == category)
+        g_object_ref (G_OBJECT (helper));
+      else
+        helper = NULL;
+    }
+
+  g_free (spec);
 
   return helper;
 }
@@ -475,24 +490,31 @@ terminal_helper_database_lookup_all (TerminalHelperDatabase *database,
 {
   TerminalHelper *helper;
   GSList         *result = NULL;
-  gchar         **groups;
+  gchar         **specs;
+  gchar          *id;
+  gchar          *s;
   guint           n;
 
   g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
 
-  groups = xfce_rc_get_groups (database->helpers);
-  for (n = 0; groups[n] != NULL; ++n)
-    {
-      helper = terminal_helper_load (database->helpers, groups[n]);
-      if (G_UNLIKELY (helper == NULL))
-        continue;
+  xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
+  specs = xfce_resource_match (XFCE_RESOURCE_DATA, "Terminal/apps/*.desktop", TRUE);
+  xfce_resource_pop_path (XFCE_RESOURCE_DATA);
 
-      if (terminal_helper_get_category (helper) == category)
+  for (n = 0; specs[n] != NULL; ++n)
+    {
+      s = strrchr (specs[n], '.');
+      if (G_LIKELY (s != NULL))
+        *s = '\0';
+
+      id = strrchr (specs[n], '/');
+      id = (id != NULL) ? id + 1 : specs[n];
+
+      helper = terminal_helper_database_lookup (database, category, id);
+      if (G_LIKELY (helper != NULL))
         result = g_slist_insert_sorted (result, helper, terminal_helper_compare);
-      else
-        g_object_unref (G_OBJECT (helper));
     }
-  g_strfreev (groups);
+  g_strfreev (specs);
 
   return result;
 }

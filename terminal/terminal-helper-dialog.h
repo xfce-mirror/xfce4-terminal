@@ -24,6 +24,8 @@
 
 #include <gtk/gtk.h>
 
+#include <terminal/terminal-helper.h>
+
 G_BEGIN_DECLS;
 
 #define TERMINAL_TYPE_HELPER_CHOOSER            (terminal_helper_chooser_get_type ())
@@ -36,22 +38,13 @@ G_BEGIN_DECLS;
 typedef struct _TerminalHelperChooserClass TerminalHelperChooserClass;
 typedef struct _TerminalHelperChooser      TerminalHelperChooser;
 
-GType        terminal_helper_chooser_get_type           (void) G_GNUC_CONST;
-const gchar *terminal_helper_chooser_get_active         (TerminalHelperChooser  *chooser);
-void         terminal_helper_chooser_set_active         (TerminalHelperChooser  *chooser,
-                                                         const gchar            *active);
-GSList      *terminal_helper_chooser_get_helpers        (TerminalHelperChooser  *chooser);
-void         terminal_helper_chooser_set_helpers        (TerminalHelperChooser  *chooser,
-                                                         GSList                 *helpers);
-const gchar *terminal_helper_chooser_get_browse_message (TerminalHelperChooser  *chooser);
-void         terminal_helper_chooser_set_browse_message (TerminalHelperChooser  *chooser,
-                                                         const gchar            *message);
-const gchar *terminal_helper_chooser_get_browse_stock   (TerminalHelperChooser  *chooser);
-void         terminal_helper_chooser_set_browse_stock   (TerminalHelperChooser  *chooser,
-                                                         const gchar            *stock);
-const gchar *terminal_helper_chooser_get_browse_title   (TerminalHelperChooser  *chooser);
-void         terminal_helper_chooser_set_browse_title   (TerminalHelperChooser  *chooser,
-                                                         const gchar            *title);
+GType                   terminal_helper_chooser_get_type      (void) G_GNUC_CONST;
+const gchar            *terminal_helper_chooser_get_active    (TerminalHelperChooser  *chooser);
+void                    terminal_helper_chooser_set_active    (TerminalHelperChooser  *chooser,
+                                                               const gchar            *active);
+TerminalHelperCategory  terminal_helper_chooser_get_category  (TerminalHelperChooser  *chooser);
+void                    terminal_helper_chooser_set_category  (TerminalHelperChooser  *chooser,
+                                                               TerminalHelperCategory  category);
 
 
 #define TERMINAL_TYPE_HELPER_DIALOG             (terminal_helper_dialog_get_type ())
