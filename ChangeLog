@@ -1,10 +1,8 @@
 2004-09-31	Benedikt Meurer <benny@xfce.org>
 
-	* terminal/terminal-preferences.c(transform_string_to_double): Use
-	  strtod instead of g_ascii_strtod, which cares about the current
-	  locale. Unfortunately the double to string transformation of
-	  GLib is performed in a locale sensitive matter. Should fix
-	  bug #2.
+	* terminal/terminal-preferences.c(transform_string_to_double): Try
+	  to transform using strtod first, fallback to g_ascii_strtod if
+	  the first failes. Should fix bug #2.
 	* terminal/terminal-app.c(terminal_app_new_window): Be sure to
 	  zero out options struct here. Should fix bug #3.
 

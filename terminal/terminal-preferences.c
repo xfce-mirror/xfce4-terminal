@@ -239,7 +239,17 @@ static void
 transform_string_to_double (const GValue *src,
                             GValue       *dst)
 {
-  g_value_set_double (dst, strtod (g_value_get_string (src), NULL));
+  const gchar *sval;
+  gdouble      dval;
+  gchar       *endptr;
+
+  sval = g_value_get_string (src);
+  dval = strtod (sval, &endptr);
+
+  if (*endptr != '\0')
+    dval = g_ascii_strtod (sval, NULL);
+
+  g_value_set_double (dst, dval);
 }
 
 
