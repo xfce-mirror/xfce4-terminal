@@ -69,7 +69,9 @@ Terminal_LDFLAGS =							\
 	@EXO_LIBS@							\
 	@VTE_LIBS@
 
-stock-icons.h: $(stock_icons) Makefile
+# Used to regenerate all automatic files
+regenerate:
+	echo "Regenerating source files"
 	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
 		stock_closetab16 stock-icon-closetab16.png \
 		stock_closetab24 stock-icon-closetab24.png \
@@ -85,21 +87,14 @@ stock-icons.h: $(stock_icons) Makefile
 		stock_showborders24 stock-icon-showborders24.png \
 		stock_showmenu24 stock-icon-showmenu24.png ) \
 	> stock-icons.h
-
-terminal-enum-types.h: stamp-terminal-enum-types.h
-	@true
-stamp-terminal-enum-types.h: $(Terminal_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <libxfce4util/libxfce4util.h>\nG_BEGIN_DECLS\n" \
 		--fprod "/* enumerations from \"@filename@\" */\n" \
 		--vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 		--ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \
-		$(Terminal_headers) ) >> xgen \
+		$(Terminal_headers) ) > xgen \
 	&& (cmp -s xgen terminal-enum-types.h || cp xgen terminal-enum-types.h ) \
-	&& rm -f xgen \
-	&& echo timestamp > $(@F)
-
-terminal-enum-types.c: $(Terminal_headers) Makefile
+	&& rm -f xgen
 	( cd $(srcdir) && glib-mkenums \
 		--fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-options.h>\n#include <terminal/terminal-preferences.h>" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
@@ -107,14 +102,12 @@ terminal-enum-types.c: $(Terminal_headers) Makefile
 		--vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
 		--vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
 		$(Terminal_headers) ) > xgen \
-	&& cp xgen terminal-enum-types.c  \
+	&& (cmp -s xgen terminal-enum-types.c || cp xgen terminal-enum-types.c ) \
 	&& rm -f xgen
+	echo "Regenerated source files"
 
 clean-local:
 	rm -f *.core core core.* stamp-*.h
-
-distclean-local:
-	rm -f stock-icons.h terminal-enum-types.*
 
 EXTRA_DIST =								\
 	$(stock_icons)

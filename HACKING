@@ -27,15 +27,16 @@ Release process
      were before and after a given release.
   4) Update doc/*/Terminal.xml. Also update the figures in doc/*/images
      if the UI has changed. Run "make html" in doc/*/.
-  5) Run make update-po in po/ and update po/de.po (don't forget the header)!
-  6) Verify that make dist works.
-  7) "svn commit" the changes.
-  8) Create a simple tag for the release,
+  5) Run make regenerate in terminal/
+  6) Run make update-po in po/ and update po/de.po (don't forget the header)!
+  7) Verify that make dist works.
+  8) "svn commit" the changes.
+  9) Create a simple tag for the release,
        "svn copy https://os-cillation.de:8080/repos/terminal/trunk \
           https://os-cillation.de:8080/repos/terminal/tags/release-X.Y.Z"
      where X.Y.Z is the version number.
-  9) upload the tarball to os-cillation ftp
- 10) Run /etc/os-scripts/update-docs-from-svn.sh on os-cillation webserver.
- 11) Update freshmeat entry.
- 12) Add new version to bugzilla product at http://bugs.os-cillation.de
- 13) Update gnomefiles.org entry.
+ 10) upload the tarball to os-cillation ftp
+ 11) Run /etc/os-scripts/update-docs-from-svn.sh on os-cillation webserver.
+ 12) Update freshmeat entry.
+ 13) Add new version to bugzilla product at http://bugs.os-cillation.de
+ 14) Update gnomefiles.org entry.
