@@ -88,5 +88,6 @@ clean-local:
 
 EXTRA_DIST =								\
 	stock-icon-newtab.png						\
-	stock-icon-newwindow.png
+	stock-icon-newwindow.png					\
+	stock-icon-reportbug.png
 

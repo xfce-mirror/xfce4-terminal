@@ -9,11 +9,11 @@ dnl
 dnl Version information
 m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [1])
-m4_define([terminal_version_micro], [6])
+m4_define([terminal_version_micro], [7])
 m4_define([terminal_version], [terminal_version_major.terminal_version_minor.terminal_version_micro])
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2004
+AC_COPYRIGHT([Copyright (c) 2003-2004
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])

@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "Sep 2004"> 
-  <!ENTITY appversion "0.1.6"> 
+  <!ENTITY appversion "0.1.7"> 
   <!ENTITY app "<application>Terminal</application>"> 
 ]>
 
@@ -13,14 +13,20 @@
     <title>Terminal Emulator</title>
 
     <copyright>
-      <year>2004</year> <holder>os-cillation e.K.</holder>
+      <year>2003</year>
+      <year>2004</year>
+      <holder>os-cillation</holder>
     </copyright>
 
     <authorgroup>
       <author>
-        <firstname>Benedikt</firstname> <surname>Meurer</surname>
+        <firstname>Benedikt</firstname>
+        <surname>Meurer</surname>
         <affiliation>
           <address><email>benny@xfce.org</email></address>
+          <orgname>os-cillation</orgname>
+          <orgdiv>System development</orgdiv>
+          <jobtitle>Software developer</jobtitle>
         </affiliation>
       </author>
     </authorgroup>
@@ -55,6 +61,14 @@
       with the MS-DOS Prompt utility, which has the analogous function of
       offering a DOS command-line under Windows, though one should note, that
       the UNIX CLI offer far more power and ease of use than does DOS.</para>
+
+      <para>&app; emulates the <application>xterm</application> application
+      developed by the X Consortium. In turn, the <application>xterm</application>
+      application emulates the DEC VT102 terminal and also supports the DEC VT220
+      escape sequences. An escape sequence is a series of characters that start
+      with the <keycap>Esc</keycap> character. &app; accepts all of the escape
+      sequences that the VT102 and VT220 terminals use for functions such as to
+      position the cursor and to clear the screen.</para>
     </sect2>
 
     <sect2>
@@ -62,8 +76,9 @@
 
       <para>&app;'s advanced features include a simple configuration interface, the
       ability to use multiple tabs with terminals within a single window, the possibility
-      to have a pseudo-transparent terminal background and a compact mode, that helps
-      you to save space on your desktop.</para>
+      to have a pseudo-transparent terminal background and a compact mode, where both the
+      menubar and the window decorations are hidden, that helps you to save space on your
+      desktop.</para>
 
       <para>The following key features are available:</para>
 
@@ -82,6 +97,10 @@
         </listitem>
         <listitem>
           <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the number of processes in the system
+        </listitem>
+        <listitem>
+          High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">Gtk+</ulink>
+          and <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.
         </listitem>
       </itemizedlist>
 
@@ -110,7 +129,7 @@
       <title>When you first start &app;</title>
 
       <para>When you start &app; for the first time, the application opens a terminal window
-      with using default settings.</para>
+      with default settings.</para>
 
       <screenshot>
         <mediaobject>
@@ -130,6 +149,35 @@
       UNIX command and press <emphasis role="bold">Return</emphasis>, the computer
       executes the command. By default, &app; will use the login shell of the user
       who starts the application.</para>
+
+      <para>&app; also sets the following environment variables:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>TERM</varname></term>
+          <listitem>
+            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>COLORTERM</varname></term>
+          <listitem>
+            <para>Set to <literal>Terminal</literal> by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>DISPLAY</varname></term>
+          <listitem>
+            <para>Set to the X11 display of the terminal by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>WINDOWID</varname></term>
+          <listitem>
+            <para>Set to the X11 window identifier of the terminal by default.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
 
     <sect2>
@@ -153,6 +201,8 @@
         </mediaobject>
       </screenshot>
 
+      <para>See <xref linkend="usage" /> for information about how to open a new tabbed
+      terminal.</para>
     </sect2>
 
   </sect1>
@@ -496,6 +546,133 @@
       <screenshot>
         <mediaobject>
           <imageobject>
+            <imagedata fileref="images/terminal-preferences-appearance.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Appearance preferences</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Font</guilabel></term>
+          <listitem>
+            <para>Click on this button to select a font type and font size for the terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Colors</guilabel></term>
+          <listitem>
+            <para>Click on the <guilabel>Text color</guilabel> button to choose the color
+            &app; uses to draw normal text - an application running inside the terminal can
+            also request a different color choosen from the palette below to draw text.</para>
+
+            <para>Click on the <guilabel>Background color</guilabel> button to choose the
+            default background for terminal windows. This color is also used in background
+            tinting when <guilabel>Transparent background</guilabel> or <guilabel>Background
+            image</guilabel> is selected below.</para>
+
+            <para>The terminal provides the application running inside with a palette of
+            16 colors. You can customize this colors using the 16 color buttons.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Background</guilabel></term>
+          <listitem>
+            <para>Select a background for the terminal window. The options are as follows:</para>
+
+            <itemizedlist>
+              <listitem>
+                <guilabel>None (use solid color)</guilabel>
+                <para>Select this option to use the background color that is specified
+                in the <guilabel>Colors</guilabel> section as the background color for
+                the terminal.</para>
+              </listitem>
+              <listitem>
+                <guilabel>Background image</guilabel>
+                <para>Select this option to use an image file as the background for the
+                terminal. Use the <guilabel>Image file</guilabel> entry box to
+                specify the location and name of the image file. Alternatively, click on
+                the button besides the entry box to search for and select the image
+                file.</para>
+              </listitem>
+              <listitem>
+                <guilabel>Transparent background</guilabel>
+                <para>Select this option to use a transparent background for the terminal.</para>
+              </listitem>
+            </itemizedlist>
+
+            <para>If you have selected <guilabel>Background image</guilabel> or <guilabel>Transparent
+            background</guilabel>, you can use the slider <guilabel>Shade transparent or image
+            background</guilabel> to shade or dim the background of the terminal.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Shortcuts</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-shortcuts.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Shortcut preferences</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Disable menu shortcut key (F10 by default)</guilabel></term>
+          <listitem>
+            <para>Select this option to disable the shortcut key that is defined to
+            enable you to access the &app; menus. The default shortcut key to access
+            the menus is <keycap>F10</keycap>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Shortcut keys</guilabel></term>
+          <listitem>
+            <para>The <guilabel>Shortcut keys</guilabel> section of the dialog lists the
+            shortcut keys that are defined for each menu item. The shortcut keys enable
+            you to use the keyboard to choose a menu item rather than use the mouse. A
+            shortcut key can be any non-modifier key or any combination of a non-modifier
+            key and several modifier keys, where modifier keys are <keycap>Alt</keycap>,
+            <keycap>Ctrl</keycap> and the like.</para>
+
+            <screenshot>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG" />
+                </imageobject>
+                
+                <textobject>
+                  <phrase>Compose shortcut</phrase>
+                </textobject>
+              </mediaobject>
+            </screenshot>
+            
+            <para>To change a shortcut key for a menu item, double click the item in the list
+            and press the key combination you want to set. To disable a shortcut for a specific
+            menu item, double click the menu item in the list and click the button
+            <guilabel>Clear</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Advanced</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
             <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG" />
           </imageobject>
 
@@ -518,6 +695,14 @@
           <listitem>
             <para>Use the drop-down list to select the function that you want the
             <keycap>Delete</keycap> key to perform.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>$TERM setting</guilabel></term>
+          <listitem>
+            <para>This specifies the value the $TERM environment variable is set to, when a
+            new terminal tab or terminal window is opened. The default should be ok for most
+            systems. If you have problems with colors in some applications, try xterm-color here.</para>
           </listitem>
         </varlistentry>
         <varlistentry>

@@ -164,6 +164,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   ExoPropertyProxy  *proxy;
   ExoPropertyProxy  *proxy2;
   GtkListStore      *store;
+  GParamSpec        *pspec;
   GtkTreeIter        iter;
   GdkPixbuf         *icon;
   GtkWidget         *button;
@@ -487,9 +488,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
+  vbox = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  gtk_widget_show (vbox);
+
   hbox = gtk_hbox_new (FALSE, 10);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox), 12);
-  gtk_container_add (GTK_CONTAINER (frame), hbox);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
   gtk_widget_show (hbox);
 
   label = gtk_label_new_with_mnemonic (_("_Text color:"));
@@ -510,6 +515,152 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   proxy = terminal_preferences_get_proxy (dialog->preferences, "color-background");
   exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_widget_show (button);
+
+  label = g_object_new (GTK_TYPE_LABEL,
+                        "label", _("Terminal applications have this color palette available to them:"),
+                        "wrap", TRUE,
+                        NULL);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
+  gtk_widget_show (label);
+
+  hbox = gtk_hbox_new (FALSE, 10);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+  gtk_widget_show (hbox);
+
+  table = gtk_table_new (2, 8, TRUE);
+  gtk_table_set_row_spacings (GTK_TABLE (table), 0);
+  gtk_table_set_col_spacings (GTK_TABLE (table), 0);
+  gtk_box_pack_start (GTK_BOX (hbox), table, FALSE, TRUE, 0);
+  gtk_widget_show (table);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette1");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette1");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette2");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette2");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette3");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette3");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 2, 3, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette4");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette4");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 3, 4, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette5");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette5");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 4, 5, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette6");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette6");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 5, 6, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette7");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette7");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 6, 7, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette8");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette8");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 7, 8, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette9");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette9");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette10");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette10");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette11");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette11");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 2, 3, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette12");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette12");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 3, 4, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette13");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette13");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 4, 5, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette14");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette14");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 5, 6, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette15");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette15");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 6, 7, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  button = gtk_color_button_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette16");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette16");
+  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 7, 8, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -703,7 +854,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  table = gtk_table_new (4, 3, FALSE);
+  table = gtk_table_new (5, 3, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 12);
   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
   gtk_container_set_border_width (GTK_CONTAINER (table), 12);
@@ -760,8 +911,25 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
   g_object_unref (G_OBJECT (proxy));
 
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<tt>$TERM</tt> setting:"), "use-markup", TRUE, NULL);
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4,
+                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (label);
+
+  entry = gtk_entry_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "term");
+  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
+  gtk_tooltips_set_tip (dialog->tooltips, entry, _("This specifies the value the $TERM environment variable is set "
+                                                   "to, when a new terminal tab or terminal window is opened. The default "
+                                                   "should be ok for most systems. If you have problems with colors in "
+                                                   "some applications, try xterm-color here."), NULL);
+  gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 3, 4,
+                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (entry);
+
   hbox = gtk_hbox_new (FALSE, 0);
-  gtk_table_attach (GTK_TABLE (table), hbox, 0, 2, 3, 4,
+  gtk_table_attach (GTK_TABLE (table), hbox, 0, 2, 4, 5,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (hbox);
 
@@ -923,6 +1091,16 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
       g_value_init (&value, spec->value_type);
       g_param_value_set_default (spec, &value); 
       g_object_set_property (G_OBJECT (dialog->preferences), "binding-delete", &value);
+      g_value_unset (&value);
+    }
+
+  spec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences),
+                                       "term");
+  if (G_LIKELY (spec != NULL))
+    {
+      g_value_init (&value, spec->value_type);
+      g_param_value_set_default (spec, &value); 
+      g_object_set_property (G_OBJECT (dialog->preferences), "term", &value);
       g_value_unset (&value);
     }
 }

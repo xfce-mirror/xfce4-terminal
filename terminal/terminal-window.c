@@ -266,7 +266,6 @@ terminal_window_init (TerminalWindow *window)
   GtkAccelGroup       *accel_group;
   GtkAction           *action;
   GtkWidget           *vbox;
-  GdkPixbuf           *icon;
   gboolean             bval;
   gchar               *role;
 
@@ -333,14 +332,6 @@ terminal_window_init (TerminalWindow *window)
     {
       action = gtk_action_group_get_action (window->action_group, "fullscreen");
       g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
-    }
-
-  /* setup window icon */
-  icon = xfce_themed_icon_load ("terminal", 48);
-  if (G_LIKELY (icon != NULL))
-    {
-      gtk_window_set_icon (GTK_WINDOW (window), icon);
-      g_object_unref (G_OBJECT (icon));
     }
 
   /* set a unique role on each window (for session management) */

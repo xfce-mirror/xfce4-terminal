@@ -65,6 +65,22 @@ enum
   PROP_BINDING_DELETE,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
+  PROP_COLOR_PALETTE1,
+  PROP_COLOR_PALETTE2,
+  PROP_COLOR_PALETTE3,
+  PROP_COLOR_PALETTE4,
+  PROP_COLOR_PALETTE5,
+  PROP_COLOR_PALETTE6,
+  PROP_COLOR_PALETTE7,
+  PROP_COLOR_PALETTE8,
+  PROP_COLOR_PALETTE9,
+  PROP_COLOR_PALETTE10,
+  PROP_COLOR_PALETTE11,
+  PROP_COLOR_PALETTE12,
+  PROP_COLOR_PALETTE13,
+  PROP_COLOR_PALETTE14,
+  PROP_COLOR_PALETTE15,
+  PROP_COLOR_PALETTE16,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
   PROP_FONT_NAME,
@@ -79,6 +95,7 @@ enum
   PROP_SHORTCUTS_NO_MENUKEY,
   PROP_TITLE_INITIAL,
   PROP_TITLE_MODE,
+  PROP_TERM,
   PROP_WORD_CHARS,
 };
 
@@ -112,6 +129,22 @@ struct _TerminalPreferences
 
   GdkColor              color_foreground;
   GdkColor              color_background;
+  GdkColor              color_palette1;
+  GdkColor              color_palette2;
+  GdkColor              color_palette3;
+  GdkColor              color_palette4;
+  GdkColor              color_palette5;
+  GdkColor              color_palette6;
+  GdkColor              color_palette7;
+  GdkColor              color_palette8;
+  GdkColor              color_palette9;
+  GdkColor              color_palette10;
+  GdkColor              color_palette11;
+  GdkColor              color_palette12;
+  GdkColor              color_palette13;
+  GdkColor              color_palette14;
+  GdkColor              color_palette15;
+  GdkColor              color_palette16;
 
   gboolean              command_update_records;
   gboolean              command_login_shell;
@@ -133,6 +166,7 @@ struct _TerminalPreferences
   gchar                *title_initial;
   TerminalTitle         title_mode;
 
+  gchar                *term;
   gchar                *word_chars;
 
 
@@ -171,10 +205,10 @@ transform_color_to_string (const GValue *src,
   gchar     buffer[32];
 
   color = g_value_get_boxed (src);
-  g_snprintf (buffer, 32, "#%02x%02x%02x",
-              color->red / 256,
-              color->green / 256,
-              color->blue / 256);
+  g_snprintf (buffer, 32, "#%04x%04x%04x",
+              (guint) color->red,
+              (guint) color->green,
+              (guint) color->blue);
   g_value_set_string (dst, buffer);
 }
 
@@ -533,6 +567,182 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                        G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:color-palette1:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE1,
+                                   g_param_spec_boxed ("color-palette1",
+                                                       _("Palette entry 1"),
+                                                       _("Palette entry 1"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette2:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE2,
+                                   g_param_spec_boxed ("color-palette2",
+                                                       _("Palette entry 2"),
+                                                       _("Palette entry 2"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette3:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE3,
+                                   g_param_spec_boxed ("color-palette3",
+                                                       _("Palette entry 3"),
+                                                       _("Palette entry 3"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette4:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE4,
+                                   g_param_spec_boxed ("color-palette4",
+                                                       _("Palette entry 4"),
+                                                       _("Palette entry 4"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette5:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE5,
+                                   g_param_spec_boxed ("color-palette5",
+                                                       _("Palette entry 5"),
+                                                       _("Palette entry 5"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette6:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE6,
+                                   g_param_spec_boxed ("color-palette6",
+                                                       _("Palette entry 6"),
+                                                       _("Palette entry 6"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette7:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE7,
+                                   g_param_spec_boxed ("color-palette7",
+                                                       _("Palette entry 7"),
+                                                       _("Palette entry 7"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette8:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE8,
+                                   g_param_spec_boxed ("color-palette8",
+                                                       _("Palette entry 8"),
+                                                       _("Palette entry 8"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette9:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE9,
+                                   g_param_spec_boxed ("color-palette9",
+                                                       _("Palette entry 9"),
+                                                       _("Palette entry 9"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette10:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE10,
+                                   g_param_spec_boxed ("color-palette10",
+                                                       _("Palette entry 10"),
+                                                       _("Palette entry 10"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette11:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE11,
+                                   g_param_spec_boxed ("color-palette11",
+                                                       _("Palette entry 11"),
+                                                       _("Palette entry 11"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette12:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE12,
+                                   g_param_spec_boxed ("color-palette12",
+                                                       _("Palette entry 12"),
+                                                       _("Palette entry 12"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette13:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE13,
+                                   g_param_spec_boxed ("color-palette13",
+                                                       _("Palette entry 13"),
+                                                       _("Palette entry 13"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette14:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE14,
+                                   g_param_spec_boxed ("color-palette14",
+                                                       _("Palette entry 14"),
+                                                       _("Palette entry 14"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette15:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE15,
+                                   g_param_spec_boxed ("color-palette15",
+                                                       _("Palette entry 15"),
+                                                       _("Palette entry 15"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-palette16:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_PALETTE16,
+                                   g_param_spec_boxed ("color-palette16",
+                                                       _("Palette entry 16"),
+                                                       _("Palette entry 16"),
+                                                       GDK_TYPE_COLOR,
+                                                       G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:command-update-records:
    **/
   g_object_class_install_property (gobject_class,
@@ -691,6 +901,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:term:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_TERM,
+                                   g_param_spec_string ("term",
+                                                        _("Term"),
+                                                        _("Term"),
+                                                        "xterm",
+                                                        G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:word-chars:
    **/
   g_object_class_install_property (gobject_class,
@@ -707,9 +928,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  gdk_color_parse ("White", &preferences->color_foreground);
-  gdk_color_parse ("Black", &preferences->color_background);
-
   preferences->accel_new_tab          = g_strdup ("<control><shift>t");
   preferences->accel_new_window       = g_strdup ("<control><shift>n");
   preferences->accel_close_tab        = g_strdup ("<control><shift>w");
@@ -734,6 +952,25 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->binding_backspace      = TERMINAL_ERASE_BINDING_ASCII_BACKSPACE;
   preferences->binding_delete         = TERMINAL_ERASE_BINDING_DELETE_SEQUENCE;
 
+  gdk_color_parse ("White", &preferences->color_foreground);
+  gdk_color_parse ("Black", &preferences->color_background);
+  gdk_color_parse ("#000000000000", &preferences->color_palette1);
+  gdk_color_parse ("#aaaa00000000", &preferences->color_palette2);
+  gdk_color_parse ("#0000aaaa0000", &preferences->color_palette3);
+  gdk_color_parse ("#aaaa55550000", &preferences->color_palette4);
+  gdk_color_parse ("#00000000aaaa", &preferences->color_palette5);
+  gdk_color_parse ("#aaaa0000aaaa", &preferences->color_palette6);
+  gdk_color_parse ("#0000aaaaaaaa", &preferences->color_palette7);
+  gdk_color_parse ("#aaaaaaaaaaaa", &preferences->color_palette8);
+  gdk_color_parse ("#555555555555", &preferences->color_palette9);
+  gdk_color_parse ("#ffff55555555", &preferences->color_palette10);
+  gdk_color_parse ("#5555ffff5555", &preferences->color_palette11);
+  gdk_color_parse ("#ffffffff5555", &preferences->color_palette12);
+  gdk_color_parse ("#55555555ffff", &preferences->color_palette13);
+  gdk_color_parse ("#ffff5555ffff", &preferences->color_palette14);
+  gdk_color_parse ("#5555ffffffff", &preferences->color_palette15);
+  gdk_color_parse ("#ffffffffffff", &preferences->color_palette16);
+
   preferences->command_update_records = TRUE;
   preferences->command_login_shell    = FALSE;
 
@@ -753,6 +990,8 @@ terminal_preferences_init (TerminalPreferences *preferences)
 
   preferences->title_initial          = g_strdup (_("Terminal"));
   preferences->title_mode             = TERMINAL_TITLE_APPEND;
+
+  preferences->term                   = g_strdup ("xterm");
 
   preferences->word_chars             = g_strdup ("-A-Za-z0-9,./?%&#:_");
 
@@ -893,6 +1132,70 @@ terminal_preferences_get_property (GObject    *object,
       g_value_set_boxed (value, &preferences->color_foreground);
       break;
 
+    case PROP_COLOR_PALETTE1:
+      g_value_set_boxed (value, &preferences->color_palette1);
+      break;
+
+    case PROP_COLOR_PALETTE2:
+      g_value_set_boxed (value, &preferences->color_palette2);
+      break;
+
+    case PROP_COLOR_PALETTE3:
+      g_value_set_boxed (value, &preferences->color_palette3);
+      break;
+
+    case PROP_COLOR_PALETTE4:
+      g_value_set_boxed (value, &preferences->color_palette4);
+      break;
+
+    case PROP_COLOR_PALETTE5:
+      g_value_set_boxed (value, &preferences->color_palette5);
+      break;
+
+    case PROP_COLOR_PALETTE6:
+      g_value_set_boxed (value, &preferences->color_palette6);
+      break;
+
+    case PROP_COLOR_PALETTE7:
+      g_value_set_boxed (value, &preferences->color_palette7);
+      break;
+
+    case PROP_COLOR_PALETTE8:
+      g_value_set_boxed (value, &preferences->color_palette8);
+      break;
+
+    case PROP_COLOR_PALETTE9:
+      g_value_set_boxed (value, &preferences->color_palette9);
+      break;
+
+    case PROP_COLOR_PALETTE10:
+      g_value_set_boxed (value, &preferences->color_palette10);
+      break;
+
+    case PROP_COLOR_PALETTE11:
+      g_value_set_boxed (value, &preferences->color_palette11);
+      break;
+
+    case PROP_COLOR_PALETTE12:
+      g_value_set_boxed (value, &preferences->color_palette12);
+      break;
+
+    case PROP_COLOR_PALETTE13:
+      g_value_set_boxed (value, &preferences->color_palette13);
+      break;
+
+    case PROP_COLOR_PALETTE14:
+      g_value_set_boxed (value, &preferences->color_palette14);
+      break;
+
+    case PROP_COLOR_PALETTE15:
+      g_value_set_boxed (value, &preferences->color_palette15);
+      break;
+
+    case PROP_COLOR_PALETTE16:
+      g_value_set_boxed (value, &preferences->color_palette16);
+      break;
+
     case PROP_COLOR_BACKGROUND:
       g_value_set_boxed (value, &preferences->color_background);
       break;
@@ -951,6 +1254,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_TITLE_MODE:
       g_value_set_enum (value, preferences->title_mode);
+      break;
+
+    case PROP_TERM:
+      g_value_set_string (value, preferences->term);
       break;
 
     case PROP_WORD_CHARS:
@@ -1228,6 +1535,166 @@ terminal_preferences_set_property (GObject      *object,
         }
       break;
 
+    case PROP_COLOR_PALETTE1:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette1))
+        {
+          preferences->color_palette1 = *color;
+          g_object_notify (object, "color-palette1");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE2:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette2))
+        {
+          preferences->color_palette2 = *color;
+          g_object_notify (object, "color-palette2");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE3:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette3))
+        {
+          preferences->color_palette3 = *color;
+          g_object_notify (object, "color-palette3");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE4:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette4))
+        {
+          preferences->color_palette4 = *color;
+          g_object_notify (object, "color-palette4");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE5:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette5))
+        {
+          preferences->color_palette5 = *color;
+          g_object_notify (object, "color-palette5");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE6:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette6))
+        {
+          preferences->color_palette6 = *color;
+          g_object_notify (object, "color-palette6");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE7:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette7))
+        {
+          preferences->color_palette7 = *color;
+          g_object_notify (object, "color-palette7");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE8:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette8))
+        {
+          preferences->color_palette8 = *color;
+          g_object_notify (object, "color-palette8");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE9:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette9))
+        {
+          preferences->color_palette9 = *color;
+          g_object_notify (object, "color-palette9");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE10:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette10))
+        {
+          preferences->color_palette10 = *color;
+          g_object_notify (object, "color-palette10");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE11:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette11))
+        {
+          preferences->color_palette11 = *color;
+          g_object_notify (object, "color-palette11");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE12:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette12))
+        {
+          preferences->color_palette12 = *color;
+          g_object_notify (object, "color-palette12");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE13:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette13))
+        {
+          preferences->color_palette13 = *color;
+          g_object_notify (object, "color-palette13");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE14:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette14))
+        {
+          preferences->color_palette14 = *color;
+          g_object_notify (object, "color-palette14");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE15:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette15))
+        {
+          preferences->color_palette15 = *color;
+          g_object_notify (object, "color-palette15");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_PALETTE16:
+      color = g_value_get_boxed (value);
+      if (!gdk_color_equal (color, &preferences->color_palette16))
+        {
+          preferences->color_palette16 = *color;
+          g_object_notify (object, "color-palette16");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
     case PROP_COMMAND_UPDATE_RECORDS:
       bval = g_value_get_boolean (value);
       if (bval != preferences->command_update_records)
@@ -1366,6 +1833,17 @@ terminal_preferences_set_property (GObject      *object,
         {
           preferences->title_mode = ival;
           g_object_notify (object, "title-mode");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_TERM:
+      sval = g_value_get_string (value);
+      if (!exo_str_is_equal (sval, preferences->term))
+        {
+          g_free (preferences->term);
+          preferences->term = g_strdup (sval);
+          g_object_notify (object, "term");
           terminal_preferences_schedule_store (preferences);
         }
       break;
@@ -1524,7 +2002,6 @@ terminal_preferences_store_idle (gpointer user_data)
       return FALSE;
     }
 
-  xfce_rc_delete_group (rc, "Configuration", TRUE);
   xfce_rc_set_group (rc, "Configuration");
 
   specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);

@@ -1,3 +1,24 @@
+2004-09-30	Benedikt Meurer <benny@xfce.org>
+
+	* configure.ac: Version 0.1.7.
+	* terminal/terminal-preferences.c (transform_color_to_string): Use
+	  full 16bit of each color component when storing colors.
+	* terminal/terminal-preferences.c, terminal/terminal-widget.c,
+	  terminal/terminal-preferences-dialog.c: Allow to specify the
+	  color palette used by Terminal, defaults to the Linux console color
+	  palette. Also use the specified background color for tinting
+	  the terminal background in image and transparent mode.
+	* terminal/terminal-window.c, terminal/main.c: Setup default icon
+	  on startup not per newly created window.
+	* terminal/terminal-preferences.c: Don't delete the whole Configuration
+	  group when storing settings.
+	* terminal/terminal-preferences.c, terminal-preferences-dialog.c,
+	  terminal/terminal-widget.c, TODO: Allow the user to specify the
+	  setting of the $TERM variable on new terminals.
+	* doc/: Updated documentation and images to keep up with the
+	  recent changes.
+	* po/de.po: German translation updated.
+
 2004-09-29	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/stock-icon-reportbug.png, terminal/terminal-window.c,

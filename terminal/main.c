@@ -100,6 +100,7 @@ main (int argc, char **argv)
 {
   TerminalOptions *options;
   TerminalApp     *app;
+  GdkPixbuf       *icon;
   GError          *error = NULL;
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
@@ -143,6 +144,13 @@ main (int argc, char **argv)
 
   gtk_init (&argc, &argv);
   stock_icons_init ();
+
+  icon = xfce_themed_icon_load ("terminal", 48);
+  if (G_LIKELY (icon != NULL))
+    {
+      gtk_window_set_default_icon (icon);
+      g_object_unref (G_OBJECT (icon));
+    }
 
   app = terminal_app_new ();
 

@@ -1,10 +1,13 @@
 imagesdir = $(datadir)/doc/Terminal/C/images
 images_DATA =								\
+	terminal-compose-shortcut.png					\
 	terminal-edit-preferences.png					\
 	terminal-first-time.png						\
 	terminal-multiple-tabs.png					\
 	terminal-preferences-advanced.png				\
+	terminal-preferences-appearance.png				\
 	terminal-preferences-general.png				\
+	terminal-preferences-shortcuts.png				\
 	terminal-set-title.png
 
 EXTRA_DIST = 								\

@@ -98,8 +98,7 @@ static gchar  **terminal_widget_get_child_environment         (TerminalWidget   
 static void terminal_widget_update_background                 (TerminalWidget   *widget);
 static void terminal_widget_update_binding_backspace          (TerminalWidget   *widget);
 static void terminal_widget_update_binding_delete             (TerminalWidget   *widget);
-static void terminal_widget_update_color_foreground           (TerminalWidget   *widget);
-static void terminal_widget_update_color_background           (TerminalWidget   *widget);
+static void terminal_widget_update_colors                     (TerminalWidget   *widget);
 static void terminal_widget_update_font_name                  (TerminalWidget   *widget);
 static void terminal_widget_update_misc_bell                  (TerminalWidget   *widget);
 static void terminal_widget_update_misc_cursor_blinks         (TerminalWidget   *widget);
@@ -300,9 +299,41 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::binding-delete",
                             G_CALLBACK (terminal_widget_update_binding_delete), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-foreground",
-                            G_CALLBACK (terminal_widget_update_color_foreground), widget);
+                            G_CALLBACK (terminal_widget_update_colors), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-background",
-                            G_CALLBACK (terminal_widget_update_color_background), widget);
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette1",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette2",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette3",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette4",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette5",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette6",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette7",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette8",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette9",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette10",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette11",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette12",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette13",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette14",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette15",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-palette16",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::font-name",
                             G_CALLBACK (terminal_widget_update_font_name), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-bell",
@@ -352,12 +383,9 @@ terminal_widget_finalize (GObject *object)
 
   g_object_unref (G_OBJECT (widget->preferences));
 
-  if (widget->working_directory != NULL)
-    g_free (widget->working_directory);
-  if (widget->custom_command != NULL)
-    g_strfreev (widget->custom_command);
-  if (widget->custom_title != NULL)
-    g_free (widget->custom_title);
+  g_free (widget->working_directory);
+  g_strfreev (widget->custom_command);
+  g_free (widget->custom_title);
 
   parent_class->finalize (object);
 }
@@ -472,10 +500,11 @@ terminal_widget_get_child_command (TerminalWidget   *widget,
 static gchar**
 terminal_widget_get_child_environment (TerminalWidget *widget)
 {
-  extern gchar **environ;
-  gchar        **result;
-  gchar        **p;
-  guint          n;
+  extern gchar    **environ;
+  gchar           **result;
+  gchar           **p;
+  gchar            *term;
+  guint             n;
 
   /* count env vars that are set */
   for (p = environ; *p != NULL; ++p);
@@ -503,7 +532,13 @@ terminal_widget_get_child_environment (TerminalWidget *widget)
     }
 
   result[n++] = g_strdup ("COLORTERM=Terminal");
-  result[n++] = g_strdup ("TERM=xterm");
+
+  g_object_get (G_OBJECT (widget->preferences), "term", &term, NULL);
+  if (G_LIKELY (term != NULL))
+    {
+      result[n++] = g_strdup_printf ("TERM=%s", term);
+      g_free (term);
+    }
 
   if (GTK_WIDGET_REALIZED (widget->terminal))
     {
@@ -587,30 +622,41 @@ terminal_widget_update_binding_delete (TerminalWidget *widget)
 
 
 static void
-terminal_widget_update_color_foreground (TerminalWidget *widget)
+query_color (TerminalPreferences *preferences,
+             const gchar         *property,
+             GdkColor            *color_return)
 {
   GdkColor *color;
 
-  if (GTK_WIDGET_MAPPED (widget))
-    {
-      g_object_get (G_OBJECT (widget->preferences), "color-foreground", &color, NULL);
-      vte_terminal_set_color_foreground (VTE_TERMINAL (widget->terminal), color);
-      gdk_color_free (color);
-    }
+  g_object_get (G_OBJECT (preferences), property, &color, NULL);
+  *color_return = *color;
+  gdk_color_free (color);
 }
 
 
 
 static void
-terminal_widget_update_color_background (TerminalWidget *widget)
+terminal_widget_update_colors (TerminalWidget *widget)
 {
-  GdkColor *color;
+  GdkColor palette[16];
+  GdkColor bg;
+  GdkColor fg;
+  gchar    name[32];
+  guint    n;
 
-  if (GTK_WIDGET_MAPPED (widget))
+  if (GTK_WIDGET_REALIZED (widget))
     {
-      g_object_get (G_OBJECT (widget->preferences), "color-background", &color, NULL);
-      vte_terminal_set_color_background (VTE_TERMINAL (widget->terminal), color);
-      gdk_color_free (color);
+      query_color (widget->preferences, "color-background", &bg);
+      query_color (widget->preferences, "color-foreground", &fg);
+
+      for (n = 0; n < 16; ++n)
+        {
+          g_snprintf (name, 32, "color-palette%u", n + 1);
+          query_color (widget->preferences, name, palette + n);
+        }
+
+      vte_terminal_set_colors (VTE_TERMINAL (widget->terminal), &fg, &bg, palette, 16);
+      vte_terminal_set_background_tint_color (VTE_TERMINAL (widget->terminal), &bg);
     }
 }
 
@@ -908,8 +954,7 @@ terminal_widget_vte_realize (VteTerminal    *terminal,
 {
   vte_terminal_set_allow_bold (terminal, TRUE);
   terminal_widget_timer_background (TERMINAL_WIDGET (widget));
-  terminal_widget_update_color_foreground (TERMINAL_WIDGET (widget));
-  terminal_widget_update_color_background (TERMINAL_WIDGET (widget));
+  terminal_widget_update_colors (TERMINAL_WIDGET (widget));
 }
 
 
