@@ -24,8 +24,12 @@ TerminalHelp: TerminalHelp.in Makefile
 desktopdir = $(datadir)/applications
 desktop_DATA = Terminal.desktop
 
+uidir = $(datadir)/Terminal
+ui_DATA = Terminal.ui
+
 EXTRA_DIST =								\
 	$(desktop_DATA)							\
+	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\
 	ChangeLog							\

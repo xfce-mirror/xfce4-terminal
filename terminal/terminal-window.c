@@ -174,6 +174,7 @@ static GtkToggleActionEntry toggle_action_entries[] =
   { "fullscreen", NULL, N_ ("_Fullscreen"), NULL, NULL, G_CALLBACK (terminal_window_action_fullscreen), },
 };
 
+#if 0
 static const gchar ui_description[] =
  "<ui>"
  "  <menubar name='main-menu'>"
@@ -226,6 +227,7 @@ static const gchar ui_description[] =
  "    <menuitem action='input-methods'/>"
  "  </popup>"
  "</ui>";
+#endif
 
 
 
@@ -267,7 +269,9 @@ terminal_window_init (TerminalWindow *window)
   GtkAction           *action;
   GtkWidget           *vbox;
   gboolean             bval;
+  GError              *error = NULL;
   gchar               *role;
+  gchar               *file;
 
   window->preferences = terminal_preferences_get ();
 
@@ -285,7 +289,21 @@ terminal_window_init (TerminalWindow *window)
 
   window->ui_manager = gtk_ui_manager_new ();
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
-  gtk_ui_manager_add_ui_from_string (window->ui_manager, ui_description, -1, NULL);
+  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.ui");
+  if (G_LIKELY (file != NULL))
+    {
+      if (gtk_ui_manager_add_ui_from_file (window->ui_manager, file, &error) == 0)
+        {
+          g_warning ("Unable to load %s: %s", file, error->message);
+          g_error_free (error);
+        }
+      gtk_ui_manager_ensure_update (window->ui_manager);
+      g_free (file);
+    }
+  else
+    {
+      g_warning ("Unable to locate Terminal/Terminal.ui, the menus won't be available");
+    }
 
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
@@ -295,8 +313,11 @@ terminal_window_init (TerminalWindow *window)
   gtk_widget_show (vbox);
 
   window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
-  gtk_box_pack_start (GTK_BOX (vbox), window->menubar, FALSE, FALSE, 0);
-  gtk_widget_show (window->menubar);
+  if (G_LIKELY (window->menubar != NULL))
+    {
+      gtk_box_pack_start (GTK_BOX (vbox), window->menubar, FALSE, FALSE, 0);
+      gtk_widget_show (window->menubar);
+    }
 
   window->notebook = gtk_notebook_new ();
   g_object_set (G_OBJECT (window->notebook),
@@ -486,9 +507,14 @@ terminal_window_context_menu (TerminalWidget  *widget,
   if (G_LIKELY (widget == terminal))
     {
       popup = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu");
+      if (G_UNLIKELY (popup == NULL))
+        return;
+
+      item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
+      if (G_UNLIKELY (item == NULL))
+        return;
 
       /* append input methods */
-      item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
       menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (item));
       if (G_LIKELY (menu != NULL))
         gtk_widget_destroy (menu);
@@ -652,6 +678,9 @@ static void
 terminal_window_action_show_menubar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
+  if (G_UNLIKELY (window->menubar == NULL))
+    return;
+
   if (gtk_toggle_action_get_active (action))
     gtk_widget_show (window->menubar);
   else

@@ -54,7 +54,7 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = Terminal.spec
-am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(desktopdir)"
+am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"
 libexecSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(libexec_SCRIPTS)
 SOURCES =
@@ -66,7 +66,8 @@ RECURSIVE_TARGETS = all-recursive check-recursive dvi-recursive \
 	pdf-recursive ps-recursive uninstall-info-recursive \
 	uninstall-recursive
 desktopDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(desktop_DATA)
+uiDATA_INSTALL = $(INSTALL_DATA)
+DATA = $(desktop_DATA) $(ui_DATA)
 ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = $(SUBDIRS)
@@ -213,8 +214,11 @@ libexec_SCRIPTS = \
 
 desktopdir = $(datadir)/applications
 desktop_DATA = Terminal.desktop
+uidir = $(datadir)/Terminal
+ui_DATA = Terminal.ui
 EXTRA_DIST = \
 	$(desktop_DATA)							\
+	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\
 	ChangeLog							\
@@ -330,6 +334,23 @@ uninstall-desktopDATA:
 	  f="`echo $$p | sed -e 's|^.*/||'`"; \
 	  echo " rm -f '$(DESTDIR)$(desktopdir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(desktopdir)/$$f"; \
+	done
+install-uiDATA: $(ui_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(uidir)" || $(mkdir_p) "$(DESTDIR)$(uidir)"
+	@list='$(ui_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " $(uiDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(uidir)/$$f'"; \
+	  $(uiDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(uidir)/$$f"; \
+	done
+
+uninstall-uiDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(ui_DATA)'; for p in $$list; do \
+	  f="`echo $$p | sed -e 's|^.*/||'`"; \
+	  echo " rm -f '$(DESTDIR)$(uidir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(uidir)/$$f"; \
 	done
 
 # This directory's subdirectories are mostly independent; you can cd
@@ -593,7 +614,7 @@ check: check-recursive
 all-am: Makefile $(SCRIPTS) $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(desktopdir)"; do \
+	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-recursive
@@ -640,7 +661,7 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-desktopDATA
+install-data-am: install-desktopDATA install-uiDATA
 
 install-exec-am: install-libexecSCRIPTS
 
@@ -669,7 +690,7 @@ ps: ps-recursive
 ps-am:
 
 uninstall-am: uninstall-desktopDATA uninstall-info-am \
-	uninstall-libexecSCRIPTS
+	uninstall-libexecSCRIPTS uninstall-uiDATA
 
 uninstall-info: uninstall-info-recursive
 
@@ -683,13 +704,14 @@ uninstall-info: uninstall-info-recursive
 	html-am info info-am install install-am install-data \
 	install-data-am install-desktopDATA install-exec \
 	install-exec-am install-info install-info-am \
-	install-libexecSCRIPTS install-man install-strip installcheck \
-	installcheck-am installdirs installdirs-am maintainer-clean \
-	maintainer-clean-generic maintainer-clean-recursive \
-	mostlyclean mostlyclean-generic mostlyclean-libtool \
-	mostlyclean-recursive pdf pdf-am ps ps-am tags tags-recursive \
-	uninstall uninstall-am uninstall-desktopDATA uninstall-info-am \
-	uninstall-libexecSCRIPTS
+	install-libexecSCRIPTS install-man install-strip \
+	install-uiDATA installcheck installcheck-am installdirs \
+	installdirs-am maintainer-clean maintainer-clean-generic \
+	maintainer-clean-recursive mostlyclean mostlyclean-generic \
+	mostlyclean-libtool mostlyclean-recursive pdf pdf-am ps ps-am \
+	tags tags-recursive uninstall uninstall-am \
+	uninstall-desktopDATA uninstall-info-am \
+	uninstall-libexecSCRIPTS uninstall-uiDATA
 
 
 distclean-local:
