@@ -43,29 +43,31 @@ enum
 
 
 
-static void     terminal_tab_header_class_init          (TerminalTabHeaderClass *klass);
-static void     terminal_tab_header_init                (TerminalTabHeader      *header);
-static void     terminal_tab_header_finalize            (GObject                *object);
-static void     terminal_tab_header_get_property        (GObject                *object,
-                                                         guint                   prop_id,
-                                                         GValue                 *value,
-                                                         GParamSpec             *pspec);
-static void     terminal_tab_header_set_property        (GObject                *object,
-                                                         guint                   prop_id,
-                                                         const GValue           *value,
-                                                         GParamSpec             *pspec);
-static gboolean terminal_tab_header_button_press_event  (GtkWidget              *widget,
-                                                         GdkEventButton         *event);
-static void     terminal_tab_header_clicked             (GtkWidget              *button,
-                                                         TerminalTabHeader      *header);
+static void     terminal_tab_header_class_init    (TerminalTabHeaderClass *klass);
+static void     terminal_tab_header_init          (TerminalTabHeader      *header);
+static void     terminal_tab_header_finalize      (GObject                *object);
+static void     terminal_tab_header_get_property  (GObject                *object,
+                                                   guint                   prop_id,
+                                                   GValue                 *value,
+                                                   GParamSpec             *pspec);
+static void     terminal_tab_header_set_property  (GObject                *object,
+                                                   guint                   prop_id,
+                                                   const GValue           *value,
+                                                   GParamSpec             *pspec);
+static void     terminal_tab_header_clicked       (GtkWidget              *button,
+                                                   TerminalTabHeader      *header);
+static gboolean terminal_tab_header_button_press  (GtkWidget              *ebox,
+                                                   GdkEventButton         *event,
+                                                   TerminalTabHeader      *header);
 
 
 
 struct _TerminalTabHeader
 {
-  GtkEventBox __parent__;
+  GtkHBox      __parent__;
 
   GtkTooltips *tooltips;
+  GtkWidget   *ebox;
   GtkWidget   *label;
 };
 
@@ -76,15 +78,14 @@ static guint         header_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (TerminalTabHeader, terminal_tab_header, GTK_TYPE_EVENT_BOX);
+G_DEFINE_TYPE (TerminalTabHeader, terminal_tab_header, GTK_TYPE_HBOX);
 
 
 
 static void
 terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
 {
-  GtkWidgetClass *gtkwidget_class;
-  GObjectClass   *gobject_class;
+  GObjectClass *gobject_class;
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -92,9 +93,6 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
   gobject_class->finalize = terminal_tab_header_finalize;
   gobject_class->get_property = terminal_tab_header_get_property;
   gobject_class->set_property = terminal_tab_header_set_property;
-
-  gtkwidget_class = GTK_WIDGET_CLASS (klass);
-  gtkwidget_class->button_press_event = terminal_tab_header_button_press_event;
 
   /**
    * TerminalTabHeader:title:
@@ -143,26 +141,23 @@ terminal_tab_header_init (TerminalTabHeader *header)
 {
   GtkWidget *button;
   GtkWidget *image;
-  GtkWidget *align;
-  GtkWidget *hbox;
 
   header->tooltips = gtk_tooltips_new ();
   g_object_ref (G_OBJECT (header->tooltips));
   gtk_object_sink (GTK_OBJECT (header->tooltips));
 
-  hbox = gtk_hbox_new (FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (header), hbox);
-  gtk_widget_show (hbox);
-
-  align = gtk_alignment_new (0.0, 0.5, 1.0, 1.0);
-  gtk_box_pack_start (GTK_BOX (hbox), align, TRUE, TRUE, 0);
-  gtk_widget_show (align);
+  header->ebox = gtk_event_box_new ();
+  GTK_WIDGET_SET_FLAGS (header->ebox, GTK_NO_WINDOW);
+  g_signal_connect (G_OBJECT (header->ebox), "button-press-event",
+                    G_CALLBACK (terminal_tab_header_button_press), header);
+  gtk_box_pack_start (GTK_BOX (header), header->ebox, TRUE, TRUE, 0);
+  gtk_widget_show (header->ebox);
 
   header->label = g_object_new (EXO_TYPE_ELLIPSIZED_LABEL,
                                 "ellipsize", EXO_PANGO_ELLIPSIZE_END,
                                 "xalign", 0.0,
                                 NULL);
-  gtk_container_add (GTK_CONTAINER (align), header->label);
+  gtk_container_add (GTK_CONTAINER (header->ebox), header->label);
   gtk_widget_show (header->label);
 
   button = gtk_button_new ();
@@ -172,7 +167,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
                         _("Close this tab"), NULL);
   g_signal_connect (G_OBJECT (button), "clicked",
                     G_CALLBACK (terminal_tab_header_clicked), header);
-  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
   image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, gtk_icon_size_from_name ("terminal-icon-size-tab"));
@@ -229,7 +224,7 @@ terminal_tab_header_set_property (GObject      *object,
     {
     case PROP_TITLE:
       title = g_value_get_string (value);
-      gtk_tooltips_set_tip (header->tooltips, GTK_WIDGET (header), title, NULL);
+      gtk_tooltips_set_tip (header->tooltips, header->ebox, title, NULL);
       gtk_label_set_text (GTK_LABEL (header->label), title);
       break;
 
@@ -241,29 +236,27 @@ terminal_tab_header_set_property (GObject      *object,
 
 
 
-static gboolean
-terminal_tab_header_button_press_event (GtkWidget      *widget,
-                                        GdkEventButton *event)
-{
-  if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
-    {
-      g_signal_emit (G_OBJECT (widget), header_signals[DOUBLE_CLICKED], 0);
-      return TRUE;
-    }
-
-  if (G_UNLIKELY (GTK_WIDGET_CLASS (parent_class)->button_press_event != NULL))
-    return GTK_WIDGET_CLASS (parent_class)->button_press_event (widget, event);
-
-  return FALSE;
-}
-
-
-
 static void
 terminal_tab_header_clicked (GtkWidget         *button,
                              TerminalTabHeader *header)
 {
   g_signal_emit (G_OBJECT (header), header_signals[CLOSE], 0);
+}
+
+
+
+static gboolean
+terminal_tab_header_button_press (GtkWidget              *ebox,
+                                  GdkEventButton         *event,
+                                  TerminalTabHeader      *header)
+{
+  if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
+    {
+      g_signal_emit (G_OBJECT (header), header_signals[DOUBLE_CLICKED], 0);
+      return TRUE;
+    }
+
+  return FALSE;
 }
 
 

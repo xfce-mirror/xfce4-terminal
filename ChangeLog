@@ -1,3 +1,9 @@
+2004-12-19	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-tab-header.c, terminal/terminal-tab-header.h: Better
+	  fix for bug #23. GtkEventBox can easily be triggered to not create
+	  a GdkWindow itself, which in turn doesn't break engines.
+
 2004-12-18	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-tab-header.c, terminal/terminal-tab-header.h: Fix
