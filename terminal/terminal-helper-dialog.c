@@ -373,8 +373,6 @@ menu_activate_other (GtkWidget             *item,
   gchar           *stock;
 
   /* sanity check the category values */
-  g_return_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
-                 && category <= TERMINAL_HELPER_MAILREADER);
   g_assert (TERMINAL_HELPER_WEBBROWSER == 0);
   g_assert (TERMINAL_HELPER_MAILREADER == 1);
 

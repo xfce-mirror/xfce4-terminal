@@ -46,6 +46,7 @@
 /* Yay for D-BUS breakage... */
 #ifndef DBUS_USE_NEW_API
 #define dbus_bus_request_name(c, n, f, e) dbus_bus_acquire_service((c), (n), (f), (e))
+#define dbus_message_set_auto_start(m, v) dbus_message_set_auto_activation ((m), (v))
 #endif
 
 
@@ -136,7 +137,11 @@ handle_message (DBusConnection *connection,
       dbus_message_unref (reply);
     }
   else if (dbus_message_is_signal (message,
+#ifdef DBUS_USE_NEW_API
+                                   DBUS_INTERFACE_LOCAL,
+#else
                                    DBUS_INTERFACE_ORG_FREEDESKTOP_LOCAL,
+#endif
                                    "Disconnected"))
     {
       g_printerr (_("D-BUS message bus disconnected, exiting...\n"));
@@ -251,7 +256,7 @@ terminal_dbus_invoke_launch (gint     argc,
                                           TERMINAL_DBUS_PATH,
                                           TERMINAL_DBUS_INTERFACE,
                                           TERMINAL_DBUS_METHOD_LAUNCH);
-  dbus_message_set_auto_activation (message, FALSE);
+  dbus_message_set_auto_start (message, FALSE);
 
   uid = getuid ();
 

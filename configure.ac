@@ -62,8 +62,12 @@ dnl Optional support for D-BUS
 XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1], [0.22],
                            [dbus], [D-BUS GLib bindings])
 if test x"$DBUS_FOUND" = x"yes"; then
+  AC_MSG_CHECKING([whether to use new D-BUS API])
   if $PKG_CONFIG --atleast-version 0.31 dbus-1 >/dev/null 2>&1; then
     AC_DEFINE([DBUS_USE_NEW_API], [1], [Define to use new D-BUS API])
+    AC_MSG_RESULT([yes])
+  else
+    AC_MSG_RESULT([no])
   fi
 fi
 

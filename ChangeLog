@@ -1,5 +1,15 @@
 2005-03-14	Benedikt Meurer <benny@xfce.org>
 
+	* configure.ac: Be verbose when testing the D-BUS version.
+	* terminal/terminal-helper-dialog.c(menu_activate_other): Make this
+	  compile with --disable-final.
+	* terminal/terminal-dbus.c(handle_message): Use DBUS_INTERFACE_LOCAL
+	  when compiling with D-BUS >= 0.31.
+	* terminal/terminal-dbus.c: Use dbus_message_set_auto_start() when
+	  compiling with D-BUS >= 0.31.
+
+2005-03-14	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-tab-header.c, terminal/terminal-preferences.c, NEWS:
 	  Add a hidden option "MiscTabCloseButtons", which can be either "TRUE"
 	  or "FALSE" and determines whether close buttons should be shown in the
@@ -1037,4 +1047,4 @@
 
 	* Initial import.
 
-# vi:set ts=8 sw=8 noet ai:
+# vi:set ts=8 sw=8 noet ai nocindent:
