@@ -380,7 +380,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
       if (G_UNLIKELY (pw == NULL))
         {
           g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                       _("Current user unknown"));
+                       _("Unable to determine your login shell."));
           return FALSE;
         }
 
@@ -830,6 +830,8 @@ static gboolean
 terminal_screen_idle_launch (gpointer user_data)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
+  GtkWidget      *toplevel;
+  GtkWidget      *message;
   gboolean        update;
   GError         *error = NULL;
   gchar          *command;
@@ -843,6 +845,18 @@ terminal_screen_idle_launch (gpointer user_data)
 
   if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
+      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+      message = gtk_message_dialog_new_with_markup (GTK_WINDOW (toplevel),
+                                                    GTK_DIALOG_DESTROY_WITH_PARENT
+                                                    | GTK_DIALOG_MODAL,
+                                                    GTK_MESSAGE_ERROR,
+                                                    GTK_BUTTONS_CLOSE,
+                                                    "<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s\n%s",
+                                                    _("Failed to execute child"),
+                                                    error->message,
+                                                    _("Please check your system setup."));
+      gtk_dialog_run (GTK_DIALOG (message));
+      gtk_widget_destroy (message);
       g_error_free (error);
       return FALSE;
     }

@@ -1,5 +1,17 @@
 2004-12-03	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-options.c, terminal/terminal-options.h,
+	  terminal/terminal-window.c, terminal/terminal-window.h,
+	  terminal/terminal-app.c, terminal/main.c, doc/C/faq.html,
+	  doc/C/Terminal.xml, doc/C/advanced.html: Added command line option
+	  --fullscreen to put a window into fullscreen mode.
+	* terminal/terminal-screen.c: Display an error if Terminal is
+	  unable to determine the users login shell.
+	* configure.ac, NEWS: Bump version to 0.2.1svn. Bump D-BUS interface
+	  version to 2.
+
+2004-12-03	Benedikt Meurer <benny@xfce.org>
+
 	* configure.ac: Depend on vte 0.11.11, since AntiAlias API isn't
 	  available in earlier versions.
 

@@ -1300,6 +1300,7 @@ terminal_window_about_idle_destroy (gpointer user_data)
 
 /**
  * terminal_window_new:
+ * @fullscreen: Whether to set the window to fullscreen.
  * @menubar   : Visibility setting for the menubar.
  * @borders   : Visibility setting for the window borders.
  * @toolbars  : Visibility setting for the toolbars.
@@ -1307,7 +1308,8 @@ terminal_window_about_idle_destroy (gpointer user_data)
  * Return value:
  **/
 GtkWidget*
-terminal_window_new (TerminalVisibility menubar,
+terminal_window_new (gboolean           fullscreen,
+                     TerminalVisibility menubar,
                      TerminalVisibility borders,
                      TerminalVisibility toolbars)
 {
@@ -1316,6 +1318,12 @@ terminal_window_new (TerminalVisibility menubar,
   gboolean        setting;
   
   window = g_object_new (TERMINAL_TYPE_WINDOW, NULL);
+
+  /* setup full screen */
+  action = gtk_action_group_get_action (window->action_group, "fullscreen");
+  g_object_get (G_OBJECT (action), "sensitive", &setting, NULL);
+  if (setting && fullscreen)
+    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
   /* setup menubar visibility */
   if (menubar == TERMINAL_VISIBILITY_DEFAULT)
@@ -1486,6 +1494,10 @@ terminal_window_get_restart_command (TerminalWindow *window)
   role = gtk_window_get_role (GTK_WINDOW (window));
   if (G_LIKELY (role != NULL))
     result = g_list_append (result, g_strdup_printf ("--role=%s", role));
+
+  action = gtk_action_group_get_action (window->action_group, "fullscreen");
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
+    result = g_list_append (result, g_strdup ("--fullscreen"));
 
   action = gtk_action_group_get_action (window->action_group, "show-menubar");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))

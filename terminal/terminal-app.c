@@ -509,7 +509,10 @@ terminal_app_open_window (TerminalApp         *app,
   g_return_if_fail (TERMINAL_IS_APP (app));
   g_return_if_fail (attr != NULL);
 
-  window = terminal_window_new (attr->menubar, attr->borders, attr->toolbars);
+  window = terminal_window_new (attr->fullscreen,
+                                attr->menubar,
+                                attr->borders,
+                                attr->toolbars);
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (terminal_app_window_destroyed), app);
   g_signal_connect (G_OBJECT (window), "new-window",

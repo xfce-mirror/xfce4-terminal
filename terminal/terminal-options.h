@@ -59,6 +59,7 @@ struct _TerminalWindowAttr
   gchar               *geometry;
   gchar               *role;
   gchar               *startup_id;
+  gboolean             fullscreen;
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
   TerminalVisibility   toolbars;

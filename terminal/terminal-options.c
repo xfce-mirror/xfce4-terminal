@@ -344,6 +344,13 @@ terminal_options_parse (gint              argc,
                                 : TERMINAL_VISIBILITY_HIDE;
             }
         }
+      else if (strcmp ("--fullscreen", argv[n]) == 0)
+        {
+          if (win_attr != NULL)
+            {
+              win_attr->fullscreen = TRUE;
+            }
+        }
       else if (strcmp ("--show-borders", argv[n]) == 0
             || strcmp ("--hide-borders", argv[n]) == 0)
         {
@@ -518,6 +525,7 @@ terminal_window_attr_new (void)
   TerminalTabAttr    *tab_attr;
 
   win_attr = g_new0 (TerminalWindowAttr, 1);
+  win_attr->fullscreen = FALSE;
   win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->toolbars = TERMINAL_VISIBILITY_DEFAULT;
