@@ -76,7 +76,7 @@ static void            terminal_window_dispose                  (GObject        
 static void            terminal_window_finalize                 (GObject                *object);
 static void            terminal_window_show                     (GtkWidget              *widget);
 static TerminalScreen *terminal_window_get_active               (TerminalWindow         *window);
-static gboolean        terminal_window_confirm_close            (TerminalWindow  *window);
+static gboolean        terminal_window_confirm_close            (TerminalWindow         *window);
 static void            terminal_window_queue_reset_size         (TerminalWindow         *window);
 static gboolean        terminal_window_reset_size               (TerminalWindow         *window);
 static void            terminal_window_reset_size_destroy       (TerminalWindow         *window);
@@ -90,6 +90,9 @@ static void            terminal_window_update_actions           (TerminalWindow 
 static void            terminal_window_update_mnemonics         (TerminalWindow         *window);
 static void            terminal_window_rebuild_gomenu           (TerminalWindow         *window);
 static gboolean        terminal_window_delete_event             (TerminalWindow         *window);
+static void            terminal_window_page_notified            (GtkNotebook            *notebook,
+                                                                 GParamSpec             *pspec,
+                                                                 TerminalWindow         *window);
 static void            terminal_window_page_switched            (GtkNotebook            *notebook,
                                                                  GtkNotebookPage        *page,
                                                                  guint                   page_num,
@@ -380,8 +383,10 @@ terminal_window_init (TerminalWindow *window)
                                    "tab-hborder", 0,
                                    "tab-vborder", 0,
                                    NULL);
-  g_signal_connect (G_OBJECT (window->notebook), "switch-page",
-                    G_CALLBACK (terminal_window_page_switched), window);
+  g_signal_connect_after (G_OBJECT (window->notebook), "switch-page",
+                          G_CALLBACK (terminal_window_page_switched), window);
+  g_signal_connect (G_OBJECT (window->notebook), "notify::page",
+                    G_CALLBACK (terminal_window_page_notified), window);
   g_signal_connect (G_OBJECT (window->notebook), "remove",
                     G_CALLBACK (terminal_window_screen_removed), window);
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
@@ -840,15 +845,12 @@ terminal_window_delete_event (TerminalWindow *window)
 
 
 static void
-terminal_window_page_switched (GtkNotebook     *notebook,
-                               GtkNotebookPage *page,
-                               guint            page_num,
-                               TerminalWindow  *window)
+terminal_window_page_notified (GtkNotebook    *notebook,
+                               GParamSpec     *pspec,
+                               TerminalWindow *window)
 {
   TerminalScreen *terminal;
   gchar          *title;
-  gint            grid_width;
-  gint            grid_height;
 
   terminal = terminal_window_get_active (window);
   if (G_LIKELY (terminal != NULL))
@@ -857,6 +859,25 @@ terminal_window_page_switched (GtkNotebook     *notebook,
       gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
 
+      terminal_window_update_actions (window);
+    }
+}
+
+
+
+static void
+terminal_window_page_switched (GtkNotebook     *notebook,
+                               GtkNotebookPage *page,
+                               guint            page_num,
+                               TerminalWindow  *window)
+{
+  TerminalScreen *terminal;
+  gint            grid_width;
+  gint            grid_height;
+
+  terminal = terminal_window_get_active (window);
+  if (G_LIKELY (terminal != NULL))
+    {
       /* FIXME: This isn't really needed anymore, instead we
        * could grab the grid size of the previously selected
        * page and apply that to the newly selected page.
@@ -872,8 +893,6 @@ terminal_window_page_switched (GtkNotebook     *notebook,
       terminal_screen_get_size (terminal, &grid_width, &grid_height);
       terminal_screen_set_size (terminal, grid_width, grid_height);
       terminal_window_set_size_force_grid (window, terminal, grid_width, grid_height);
-
-      terminal_window_update_actions (window);
     }
 }
 
@@ -1474,10 +1493,12 @@ terminal_window_about_idle (gpointer user_data)
     { NULL, },
   };
 
-  icon = gtk_widget_render_icon (GTK_WIDGET (window),
-                                 "terminal-general",
-                                 GTK_ICON_SIZE_DIALOG,
-                                 NULL);
+  /* Try to load the Terminal icon using the icon-spec
+   * lookup. Fallback to the well-known location.
+   */
+  icon = xfce_themed_icon_load ("Terminal", 48);
+  if (G_UNLIKELY (icon == NULL))
+    icon = gdk_pixbuf_new_from_file (DATADIR "/icons/hicolor/48x48/apps/Terminal.png", NULL);
 
   info = xfce_about_info_new ("Terminal", VERSION, _("X Terminal Emulator"),
                               XFCE_COPYRIGHT_TEXT ("2003-2004", "os-cillation"),
@@ -1614,14 +1635,14 @@ terminal_window_add (TerminalWindow *window,
                           (GDestroyNotify) g_object_unref);
   gtk_widget_show (header);
 
-  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 0);
-
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),
                                    GTK_WIDGET (screen), header);
   gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (window->notebook),
                                       GTK_WIDGET (screen),
                                       TRUE, TRUE, GTK_PACK_START);
+
+  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
 
   g_signal_connect (G_OBJECT (screen), "context-menu",
                     G_CALLBACK (terminal_window_context_menu), window);
@@ -1637,7 +1658,6 @@ terminal_window_add (TerminalWindow *window,
 
   /* need to show this first, else we cannot switch to it */
   gtk_widget_show (GTK_WIDGET (screen));
-
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page);
 
   terminal_window_set_size_force_grid (window, screen, grid_width, grid_height);

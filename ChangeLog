@@ -1,5 +1,19 @@
 2004-12-23	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-window.c(terminal_window_about_idle): Don't use
+	  the terminal-general stock icon for the about dialog, but the
+	  Terminal application icon. This fixes bug #40.
+	* terminal/terminal-window.c: The switch-page handler for the
+	  GtkNotebook needs to be connected with G_CONNECT_AFTER, so the
+	  "page" property is up-to-date when the handler is run.
+	* terminal/terminal-window.c: Make sure that the window title and
+	  the menu actions are updated properly, everytime a new tab gets
+	  added or an existing tab is removed.
+	* configure.ac, NEWS, doc/: Version 0.2.2pre1. There'll be no
+	  0.2.1 release, due to certain issues.
+
+2004-12-23	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-screen.c, terminal/terminal-window.c: Finally
 	  found a solution to the shrinking-terminal-size problem, that has
 	  proven to work with several machines running different window
