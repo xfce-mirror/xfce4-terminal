@@ -54,15 +54,13 @@ msgstr ""
 "                                      als commando in de terminal"
 
 #: ../terminal/main.c:53
-#, fuzzy
 msgid ""
 "  --working-directory=DIRNAME         Set the terminals working directory"
 msgstr "  --working-directory=DIRNAME         De begindirectory instellen"
 
 #: ../terminal/main.c:54
-#, fuzzy
 msgid "  -T, --title=TITLE                   Set the terminals title"
-msgstr "  -T, --title=TITLE                   De terminal-title instellen"
+msgstr "  -T, --title=TITLE                   De terminal-titel instellen"
 
 #: ../terminal/main.c:56
 msgid ""
@@ -250,9 +248,9 @@ msgid ""
 msgstr ""
 
 #: ../terminal/main.c:251
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "Kan terminal server niet starten: %s\n"
+msgstr "Kan terminal service niet registreren: %s\n"
 
 #: ../terminal/main.c:260
 #, c-format
@@ -266,28 +264,28 @@ msgstr "Ongeldige geometrie \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:115
 msgid "User id mismatch"
-msgstr ""
+msgstr "Ongeldige gebruikers-id"
 
 #: ../terminal/terminal-dbus.c:147
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
+msgstr "Verbinding met D-BUS message bus is verbroken, bezig met afsluiten...\n"
 
 #: ../terminal/terminal-dbus.c:208
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to register object %s"
-msgstr "Kan terminal server niet starten: %s\n"
+msgstr "Kan object niet registreren: %s"
 
 #: ../terminal/terminal-helper-dialog.c:52
 #: ../terminal/terminal-preferences.c:922
 #: ../terminal/terminal-preferences.c:923
 msgid "Web Browser"
-msgstr ""
+msgstr "Webbrowser"
 
 #: ../terminal/terminal-helper-dialog.c:53
 #: ../terminal/terminal-preferences.c:911
 #: ../terminal/terminal-preferences.c:912
 msgid "Mail Reader"
-msgstr ""
+msgstr "Mailprogramma"
 
 #: ../terminal/terminal-helper-dialog.c:58
 msgid ""
@@ -295,6 +293,9 @@ msgid ""
 "Web Browser opens when you right-click on a URL\n"
 "and select Open Link from the context menu."
 msgstr ""
+"Webbrowser instellen. De browser zal worden gestart als u\n"
+"met de rechter muisknop op een URL klikt en vervolgens\n"
+"Koppeling openen kiest in het menu."
 
 #: ../terminal/terminal-helper-dialog.c:61
 msgid ""
@@ -303,47 +304,55 @@ msgid ""
 "address and select Compose Email from the context\n"
 "menu."
 msgstr ""
+"Mailprogramma instellen. Het mailprogramma zal worden\n"
+"gestart als u een met de rechter muisknop op een\n"
+"e-mail adres klikt en vervolgens E-mail versturen\n"
+"kiest in het menu."
 
 #: ../terminal/terminal-helper-dialog.c:173
 msgid ""
 "Click here to change the selected application or to disable this feature."
 msgstr ""
+"Hier klikken om het geselecteerde programma aan te passen of om deze "
+"functie uit te schakelen"
 
 #: ../terminal/terminal-helper-dialog.c:316
 msgid "Select application"
-msgstr ""
+msgstr "Programma selecteren"
 
 #: ../terminal/terminal-helper-dialog.c:350
 msgid "Choose a custom Web Browser"
-msgstr ""
+msgstr "Webbrowser kiezen"
 
 #: ../terminal/terminal-helper-dialog.c:351
 msgid "Choose a custom Mail Reader"
-msgstr ""
+msgstr "Mailprogramma kiezen"
 
 #: ../terminal/terminal-helper-dialog.c:356
 msgid ""
 "Specify the application you want to use as\n"
 "Web Browser in Terminal:"
 msgstr ""
+"Webrowser voor Terminal:"
 
 #: ../terminal/terminal-helper-dialog.c:357
 msgid ""
 "Specify the application you want to use as\n"
 "Mail Reader in Terminal:"
 msgstr ""
+"Mailprogramma voor Terminal:"
 
 #: ../terminal/terminal-helper-dialog.c:435
 msgid "_Browse..."
-msgstr ""
+msgstr "_Bladeren..."
 
 #: ../terminal/terminal-helper-dialog.c:534
 msgid "Disable this feature"
-msgstr ""
+msgstr "Deze functie uitschakelen"
 
 #: ../terminal/terminal-helper-dialog.c:575
 msgid "Other..."
-msgstr ""
+msgstr "Aangepast..."
 
 #: ../terminal/terminal-helper-dialog.c:615
 #: ../terminal/terminal-preferences-dialog.c:361
@@ -361,17 +370,16 @@ msgstr "Uitgeschakeld"
 
 #: ../terminal/terminal-helper-dialog.c:632
 msgid "No application selected"
-msgstr ""
+msgstr "Geen programma geselecteerd"
 
 #: ../terminal/terminal-helper-dialog.c:787
 msgid "Preferred Applications"
-msgstr ""
+msgstr "Programmas"
 
 #: ../terminal/terminal-options.c:106
-#, fuzzy
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr "De optie \"--title\" vereist de titel als argument"
+msgstr "De optie \"--sm-client-id\" vereist een sessie-id als argument"
 
 #: ../terminal/terminal-options.c:128
 msgid ""
@@ -495,6 +503,9 @@ msgid ""
 "about differences between running it as interactive shell and running it as "
 "login shell."
 msgstr ""
+"Start de shell in Terminal als loginshell voor nieuwe terminals. Raadpleeg "
+"voor het verschil tussen een een interactieve en een loginshell de "
+"documentatie voor uw shell."
 
 #: ../terminal/terminal-preferences-dialog.c:309
 msgid "_Update utmp/wtmp records when command is launched"
@@ -523,6 +534,8 @@ msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
+"Als deze optie is ingeschakeld zal iedere toetsaanslag de terminal laten "
+"scrollen naar de commandoregel."
 
 #: ../terminal/terminal-preferences-dialog.c:354
 msgid "_Scrollbar is:"
@@ -568,17 +581,19 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
+"Het uitschakelen van anti-aliasing kan de terminal zeer sterk versnellen en "
+"de systeembelasting verlagen bij langzamere systemen."
 
 #: ../terminal/terminal-preferences-dialog.c:450
 msgid "Allow bold text"
 msgstr "Vetgedrukte tekst weergeven"
 
 #: ../terminal/terminal-preferences-dialog.c:453
-#, fuzzy
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
-msgstr "Selecteer om vensterdecoraties te tonen bij nieuwe terminalvensters."
+msgstr "Selecteer om programma's in de terminal toe te staan een vet "
+"lettertype te gebruiken."
 
 #: ../terminal/terminal-preferences-dialog.c:462
 msgid "<b>Background</b>"
@@ -641,7 +656,6 @@ msgid "Display _menubar in new windows"
 msgstr "_Menubalk weergeven in nieuwe vensters"
 
 #: ../terminal/terminal-preferences-dialog.c:582
-#, fuzzy
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Selecteer om menubalk te tonen bij nieuwe terminalvensters."
@@ -651,7 +665,6 @@ msgid "Display _toolbars in new windows"
 msgstr "_Werkbalken weergeven in nieuwe vensters"
 
 #: ../terminal/terminal-preferences-dialog.c:590
-#, fuzzy
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr "Selecteer om werkbalken te tonen bij nieuwe terminalvensters."
@@ -661,7 +674,6 @@ msgid "Display _borders around new windows"
 msgstr "Vensterdecoraties weergeven voor nieuwe vensters"
 
 #: ../terminal/terminal-preferences-dialog.c:598
-#, fuzzy
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -672,9 +684,8 @@ msgid "Appearance"
 msgstr "Weergave"
 
 #: ../terminal/terminal-preferences-dialog.c:628
-#, fuzzy
 msgid "<b>Foreground and Background</b>"
-msgstr "<b>Achtergrond</b>"
+msgstr "<b>Voorgrond en Achtergrond</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:640
 msgid "_Text color:"
@@ -755,12 +766,12 @@ msgstr "_Backspace-toets genereert:"
 #: ../terminal/terminal-preferences-dialog.c:961
 #: ../terminal/terminal-preferences-dialog.c:985
 msgid "Auto-detect"
-msgstr ""
+msgstr "Automatisch detecteren"
 
 #: ../terminal/terminal-preferences-dialog.c:962
 #: ../terminal/terminal-preferences-dialog.c:986
 msgid "ASCII DEL"
-msgstr ""
+msgstr "ASCII DEL"
 
 #: ../terminal/terminal-preferences-dialog.c:963
 #: ../terminal/terminal-preferences-dialog.c:987
@@ -770,7 +781,7 @@ msgstr "Stuurcode"
 #: ../terminal/terminal-preferences-dialog.c:964
 #: ../terminal/terminal-preferences-dialog.c:988
 msgid "Control-H"
-msgstr ""
+msgstr "Control-H"
 
 #: ../terminal/terminal-preferences-dialog.c:978
 msgid "_Delete key generates:"
@@ -1145,21 +1156,21 @@ msgid "Confirm closing a window with multiple tabs"
 msgstr "Om bevestiging vragen bij sluiten van vensters met meerdere tabs"
 
 #: ../terminal/terminal-preferences.c:999
-#, fuzzy
 msgid "Cycle tabs"
-msgstr "Alle tabbladen sluiten"
+msgstr "Door tabs bladeren"
 
 #: ../terminal/terminal-preferences.c:1000
 msgid "Allow cycling through tabs"
-msgstr ""
+msgstr "Na laatste tab weer bij de eerste beginnen bij het wisselen tussen "
+"tabs."
 
 #: ../terminal/terminal-preferences.c:1010
 msgid "Tab close buttons"
-msgstr ""
+msgstr "Sluitknoppen op tabs"
 
 #: ../terminal/terminal-preferences.c:1011
 msgid "Show tab close buttons"
-msgstr ""
+msgstr "Sluitknoppen op tabs tonen"
 
 #: ../terminal/terminal-preferences.c:1021
 msgid "Scrollbar setting"
@@ -1321,20 +1332,19 @@ msgstr "Werkbalk aanpassen"
 
 #: ../terminal/terminal-widget.c:318
 msgid "Copy Email Address"
-msgstr ""
+msgstr "Emailadres kopiëren"
 
 #: ../terminal/terminal-widget.c:319
 msgid "Compose Email"
-msgstr ""
+msgstr "Email opstellen"
 
 #: ../terminal/terminal-widget.c:323
 msgid "Copy Link Address"
-msgstr ""
+msgstr "Adres koppeling kopiëren"
 
 #: ../terminal/terminal-widget.c:324
-#, fuzzy
 msgid "Open Link"
-msgstr "Terminal openen"
+msgstr "Koppeling openen"
 
 #: ../terminal/terminal-widget.c:475
 #, c-format
@@ -1414,15 +1424,15 @@ msgstr "Plakken vanuit klembord"
 
 #: ../terminal/terminal-window.c:204
 msgid "_Applications..."
-msgstr ""
+msgstr "_Programmas..."
 
 #: ../terminal/terminal-window.c:204
 msgid "Customize your preferred applications"
-msgstr ""
+msgstr "Programmas aanpassen"
 
 #: ../terminal/terminal-window.c:205
 msgid "_Toolbars..."
-msgstr "_werkbalken..."
+msgstr "_Werkbalken..."
 
 #: ../terminal/terminal-window.c:205
 msgid "Customize the toolbars"
@@ -1575,6 +1585,8 @@ msgid ""
 "Browser yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
+"U heeft nog geen webbrowser ingesteld.\n"
+"Wilt u dit nu instellen?"
 
 #: ../terminal/terminal-window.c:959
 msgid ""
@@ -1582,6 +1594,8 @@ msgid ""
 "Reader yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
+"U heeft nog geen mailprogramma ingesteld\n"
+"Wilt u dit nu instellen?"
 
 #: ../terminal/terminal-window.c:1525
 msgid "<b>Title:</b>"
@@ -1614,60 +1628,60 @@ msgstr "Terminal-emulatieprogramma"
 
 #: ../helpers/balsa.desktop.in.h:1
 msgid "Balsa"
-msgstr ""
+msgstr "Balsa"
 
 #: ../helpers/epiphany.desktop.in.h:1
 msgid "Epiphany Web Browser"
-msgstr ""
+msgstr "Epiphany Webbrowser"
 
 #: ../helpers/evolution.desktop.in.h:1
 msgid "Novell Evolution"
-msgstr ""
+msgstr "Novell Evolution"
 
 #: ../helpers/firefox.desktop.in.h:1
 msgid "Mozilla Firefox"
-msgstr ""
+msgstr "Mozilla Firefox"
 
 #: ../helpers/galeon.desktop.in.h:1
 msgid "Galeon Web Browser"
-msgstr ""
+msgstr "Galeon Webbrowser"
 
 #: ../helpers/kmail.desktop.in.h:1
 msgid "KMail"
-msgstr ""
+msgstr "KMail"
 
 #: ../helpers/konqueror.desktop.in.h:1
 msgid "Konqueror"
-msgstr ""
+msgstr "Konqueror"
 
 #: ../helpers/lynx.desktop.in.h:1
 msgid "Lynx"
-msgstr ""
+msgstr "Lynx"
 
 #: ../helpers/mozilla-browser.desktop.in.h:1
 msgid "Mozilla Browser"
-msgstr ""
+msgstr "Mozilla Browser"
 
 #: ../helpers/mozilla-mailer.desktop.in.h:1
 msgid "Mozilla Mail"
-msgstr ""
+msgstr "Mozilla Mail"
 
 #: ../helpers/mutt.desktop.in.h:1
 msgid "Mutt"
-msgstr ""
+msgstr "Mutt"
 
 #: ../helpers/opera-browser.desktop.in.h:1
 msgid "Opera Browser"
-msgstr ""
+msgstr "Opera Browser"
 
 #: ../helpers/opera-mailer.desktop.in.h:1
 msgid "Opera Mail"
-msgstr ""
+msgstr "Opera Mail"
 
 #: ../helpers/sensible-browser.desktop.in.h:1
 msgid "Debian Sensible Browser"
-msgstr ""
+msgstr "Debian Sensible Browser"
 
 #: ../helpers/thunderbird.desktop.in.h:1
 msgid "Mozilla Thunderbird"
-msgstr ""
+msgstr "Mozilla Thunderbird"
