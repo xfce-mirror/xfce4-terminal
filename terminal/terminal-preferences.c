@@ -53,11 +53,20 @@ enum
   PROP_ACCEL_SHOW_TOOLBARS,
   PROP_ACCEL_SHOW_BORDERS,
   PROP_ACCEL_FULLSCREEN,
-  PROP_ACCEL_PREV_TAB,
-  PROP_ACCEL_NEXT_TAB,
   PROP_ACCEL_SET_TITLE,
   PROP_ACCEL_RESET,
   PROP_ACCEL_RESET_AND_CLEAR,
+  PROP_ACCEL_PREV_TAB,
+  PROP_ACCEL_NEXT_TAB,
+  PROP_ACCEL_SWITCH_TO_TAB1,
+  PROP_ACCEL_SWITCH_TO_TAB2,
+  PROP_ACCEL_SWITCH_TO_TAB3,
+  PROP_ACCEL_SWITCH_TO_TAB4,
+  PROP_ACCEL_SWITCH_TO_TAB5,
+  PROP_ACCEL_SWITCH_TO_TAB6,
+  PROP_ACCEL_SWITCH_TO_TAB7,
+  PROP_ACCEL_SWITCH_TO_TAB8,
+  PROP_ACCEL_SWITCH_TO_TAB9,
   PROP_ACCEL_CONTENTS,
   PROP_BACKGROUND_MODE,
   PROP_BACKGROUND_IMAGE_FILE,
@@ -385,28 +394,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:accel-prev-tab:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_PREV_TAB,
-                                   g_param_spec_string ("accel-prev-tab",
-                                                        _("Previous Tab"),
-                                                        _("Previous Tab"),
-                                                        "<control>Page_Up",
-                                                        G_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:accel-next-tab:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_NEXT_TAB,
-                                   g_param_spec_string ("accel-next-tab",
-                                                        _("Next Tab"),
-                                                        _("Next Tab"),
-                                                        "<control>Page_Down",
-                                                        G_PARAM_READWRITE));
-
-  /**
    * TerminalPreferences:accel-set-title:
    **/
   g_object_class_install_property (gobject_class,
@@ -437,6 +424,127 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Reset and Clear"),
                                                         _("Reset and Clear"),
                                                         _("Disabled"),
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-prev-tab:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_PREV_TAB,
+                                   g_param_spec_string ("accel-prev-tab",
+                                                        _("Previous Tab"),
+                                                        _("Previous Tab"),
+                                                        "<control>Page_Up",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-next-tab:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_NEXT_TAB,
+                                   g_param_spec_string ("accel-next-tab",
+                                                        _("Next Tab"),
+                                                        _("Next Tab"),
+                                                        "<control>Page_Down",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab1:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB1,
+                                   g_param_spec_string ("accel-switch-to-tab1",
+                                                        _("Switch to Tab 1"),
+                                                        _("Switch to Tab 1"),
+                                                        "<Alt>1",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab2:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB2,
+                                   g_param_spec_string ("accel-switch-to-tab2",
+                                                        _("Switch to Tab 2"),
+                                                        _("Switch to Tab 2"),
+                                                        "<Alt>2",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab3:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB3,
+                                   g_param_spec_string ("accel-switch-to-tab3",
+                                                        _("Switch to Tab 3"),
+                                                        _("Switch to Tab 3"),
+                                                        "<Alt>3",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab4:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB4,
+                                   g_param_spec_string ("accel-switch-to-tab4",
+                                                        _("Switch to Tab 4"),
+                                                        _("Switch to Tab 4"),
+                                                        "<Alt>4",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab5:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB5,
+                                   g_param_spec_string ("accel-switch-to-tab5",
+                                                        _("Switch to Tab 5"),
+                                                        _("Switch to Tab 5"),
+                                                        "<Alt>5",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab6:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB6,
+                                   g_param_spec_string ("accel-switch-to-tab6",
+                                                        _("Switch to Tab 6"),
+                                                        _("Switch to Tab 6"),
+                                                        "<Alt>6",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab7:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB7,
+                                   g_param_spec_string ("accel-switch-to-tab7",
+                                                        _("Switch to Tab 7"),
+                                                        _("Switch to Tab 7"),
+                                                        "<Alt>7",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab8:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB8,
+                                   g_param_spec_string ("accel-switch-to-tab8",
+                                                        _("Switch to Tab 8"),
+                                                        _("Switch to Tab 8"),
+                                                        "<Alt>8",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-switch-to-tab9:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SWITCH_TO_TAB9,
+                                   g_param_spec_string ("accel-switch-to-tab9",
+                                                        _("Switch to Tab 9"),
+                                                        _("Switch to Tab 9"),
+                                                        "<Alt>9",
                                                         G_PARAM_READWRITE));
 
   /**

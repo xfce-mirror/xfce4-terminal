@@ -113,11 +113,26 @@ static ToplevelMenu toplevel_menus[] =
   {
     N_ ("Terminal"),
     {
-      "accel-prev-tab",
-      "accel-next-tab",
       "accel-set-title",
       "accel-reset",
       "accel-reset-and-clear",
+      NULL,
+    },
+  },
+  {
+    N_ ("Go"),
+    {
+      "accel-prev-tab",
+      "accel-next-tab",
+      "accel-switch-to-tab1",
+      "accel-switch-to-tab2",
+      "accel-switch-to-tab3",
+      "accel-switch-to-tab4",
+      "accel-switch-to-tab5",
+      "accel-switch-to-tab6",
+      "accel-switch-to-tab7",
+      "accel-switch-to-tab8",
+      "accel-switch-to-tab9",
       NULL,
     },
   },

@@ -1,3 +1,19 @@
+2004-12-18	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-window.c: Another attempt to fix the sizing
+	  bug with newly opened terminal tabs (bug #29).
+	* vim.tcpalette, linux.tcpalette, xterm.tcpalette, rxvt.tcpalette,
+	  terminal/terminal-preferences-dialog.c, pixmaps/, Terminal.mime.xml,
+	  Makefile.am: Remove the color palette stuff again. Will be replaced
+	  with a real color scheme management later (to fix bug #32).
+	* terminal/terminal-preferences.c, terminal/terminal-window.c,
+	  terminal/terminal-shortcut-editor.c, Terminal.ui, NEWS: Added a new
+	  toplevel menu "Go", and moved "Prev Tab" and "Next Tab" to this
+	  menu. All tabs are now listed in this "Go" and the first 9 tabs
+	  can be assigned a keyboard shortcut (Alt+# by default). This fixes
+	  bug #31.
+	* po/: Update .po files. Update german translations.
+
 2004-12-16	Benedikt Meurer <benny@xfce.org>
 
 	* Terminal.desktop: Update translations; enable startup notification;
