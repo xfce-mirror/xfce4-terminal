@@ -1,113 +1,113 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Advanced topics</title><link rel="stylesheet" href="../terminal.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.66.1"><link rel="start" href="index.html" title="Terminal Emulator"><link rel="up" href="index.html" title="Terminal Emulator"><link rel="prev" href="preferences.html" title="Preferences"><link rel="next" href="faq.html" title="Frequently asked questions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Advanced topics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="advanced"></a>Advanced topics</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="command-line-options"></a>Command line Options</h3></div></div></div><p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Advanced topics</title><link rel="stylesheet" href="../terminal.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Terminal Emulator"><link rel="up" href="index.html" title="Terminal Emulator"><link rel="prev" href="preferences.html" title="Preferences"><link rel="next" href="faq.html" title="Frequently asked questions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Advanced topics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="advanced"></a>Advanced topics</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="command-line-options"></a>Command line Options</h3></div></div></div><p>
         When Terminal is started from the command line or from a panel launcher, several options
         can be specified to modify its behaviour.
-      </p><div class="variablelist"><dl><dt><span class="term"><tt class="option">--help</tt></span></dt><dd><p>List the various command line options supported by Terminal and exit</p></dd><dt><span class="term"><tt class="option">--version</tt></span></dt><dd><p>Display version information and exit</p></dd><dt><span class="term"><tt class="option">--disable-server</tt></span></dt><dd><p>
+      </p><div class="variablelist"><dl><dt><span class="term"><code class="option">--help</code></span></dt><dd><p>List the various command line options supported by Terminal and exit</p></dd><dt><span class="term"><code class="option">--version</code></span></dt><dd><p>Display version information and exit</p></dd><dt><span class="term"><code class="option">--disable-server</code></span></dt><dd><p>
               Do not register with the D-BUS session message bus
-            </p></dd><dt><span class="term"><tt class="option">--execute</tt> <i class="parameter"><tt>...</tt></i></span></dt><dd><p>Execute the remainder of the command line inside the terminal</p></dd><dt><span class="term"><tt class="option">--command</tt> <i class="parameter"><tt>command</tt></i></span></dt><dd><p>Execute <i class="parameter"><tt>command</tt></i> inside the terminal</p></dd><dt><span class="term"><tt class="option">--working-directory</tt> <i class="parameter"><tt>directory</tt></i></span></dt><dd><p>Set <i class="parameter"><tt>directory</tt></i> as the working directory for the terminal</p></dd><dt><span class="term"><tt class="option">--title</tt> <i class="parameter"><tt>title</tt></i></span></dt><dd><p>Set <i class="parameter"><tt>title</tt></i> as the initial window title for the terminal</p></dd><dt><span class="term"><tt class="option">--display</tt> <i class="parameter"><tt>display</tt></i></span></dt><dd><p>Open terminal window on the X screen specified by <i class="parameter"><tt>display</tt></i>.</p></dd><dt><span class="term"><tt class="option">--geometry</tt> <i class="parameter"><tt>geometry</tt></i></span></dt><dd><p>
-              Sets the geometry of the last-specified window to <i class="parameter"><tt>geometry</tt></i>. Read
-              <b class="userinput"><tt><span><b class="command">man</b></span> <tt class="option">X</tt></tt></b> for more information on how
+            </p></dd><dt><span class="term"><code class="option">--execute</code> <em class="parameter"><code>...</code></em></span></dt><dd><p>Execute the remainder of the command line inside the terminal</p></dd><dt><span class="term"><code class="option">--command</code> <em class="parameter"><code>command</code></em></span></dt><dd><p>Execute <em class="parameter"><code>command</code></em> inside the terminal</p></dd><dt><span class="term"><code class="option">--working-directory</code> <em class="parameter"><code>directory</code></em></span></dt><dd><p>Set <em class="parameter"><code>directory</code></em> as the working directory for the terminal</p></dd><dt><span class="term"><code class="option">--title</code> <em class="parameter"><code>title</code></em></span></dt><dd><p>Set <em class="parameter"><code>title</code></em> as the initial window title for the terminal</p></dd><dt><span class="term"><code class="option">--display</code> <em class="parameter"><code>display</code></em></span></dt><dd><p>Open terminal window on the X screen specified by <em class="parameter"><code>display</code></em>.</p></dd><dt><span class="term"><code class="option">--geometry</code> <em class="parameter"><code>geometry</code></em></span></dt><dd><p>
+              Sets the geometry of the last-specified window to <em class="parameter"><code>geometry</code></em>. Read
+              <strong class="userinput"><code><span><strong class="command">man</strong></span> <code class="option">X</code></code></strong> for more information on how
               to specify window geometries.
-            </p></dd><dt><span class="term"><tt class="option">--role</tt> <i class="parameter"><tt>role</tt></i></span></dt><dd><p>
-              Sets the window role of the last-specified window to <i class="parameter"><tt>role</tt></i>. Applies
+            </p></dd><dt><span class="term"><code class="option">--role</code> <em class="parameter"><code>role</code></em></span></dt><dd><p>
+              Sets the window role of the last-specified window to <em class="parameter"><code>role</code></em>. Applies
               to only one window and can be specified once for each window you create from the command
               line. It is mostly used for session management inside Terminal.
-            </p></dd><dt><span class="term"><tt class="option">--startup-id</tt> <i class="parameter"><tt>id</tt></i></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--startup-id</code> <em class="parameter"><code>id</code></em></span></dt><dd><p>
               Specifies the startup notification id for the last-specified window. Used internally
               to forward the startup notification id when using the D-BUS service.
-            </p></dd><dt><span class="term"><tt class="option">--fullscreen</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--fullscreen</code></span></dt><dd><p>
               Set the last-specified window into fullscreen mode;
               applies to only one window; can be specified once
               for each window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--show-menubar</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--show-menubar</code></span></dt><dd><p>
               Turn on the menubar for the last-specified window. Can be specified once for each
               window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--hide-menubar</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--hide-menubar</code></span></dt><dd><p>
               Turn on the menubar for the last-specified window. Can be specified once for each
               window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--show-borders</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--show-borders</code></span></dt><dd><p>
               Turn on the window decorations for the last-specified window. Applies to only
               one window. Can be specified once for each window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--hide-borders</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--hide-borders</code></span></dt><dd><p>
               Turn off the window decorations for the last-specified window. Applies to only
               one window. Can be specified once for each window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--show-toolbars</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--show-toolbars</code></span></dt><dd><p>
               Turn on the toolbars for the last-specified window. Applies to only one window. Can
               be specified once for each window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--hide-toolbars</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--hide-toolbars</code></span></dt><dd><p>
               Turn off the toolbars for the last-specified window. Applies to only one window. Can
               be specified once for each window you create from the command line.
-            </p></dd><dt><span class="term"><tt class="option">--tab</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--tab</code></span></dt><dd><p>
               Open a new tab in the last-specified window. More than one of these options can be provided.
-            </p></dd><dt><span class="term"><tt class="option">--window</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="option">--window</code></span></dt><dd><p>
               Open a new window containing one tab. More than one of these options can be provided.
             </p></dd></dl></div><p>
         For example, say you want to open a new terminal window with two tabs in it, where the first
-        tab should run <span><b class="command">mutt</b></span> and the second tab should run <span><b class="command">mc</b></span>,
+        tab should run <span><strong class="command">mutt</strong></span> and the second tab should run <span><strong class="command">mc</strong></span>,
         and the window should have 80 columns and 40 rows, then you would use the following command
         to start Terminal:
-      </p><table border="0" bgcolor="#ffffff" width="100%"><tr><td><pre class="screen">Terminal --geometry 80x40 --command mutt --tab --command mc</pre></td></tr></table></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="files-and-env-vars"></a>Files and Environment Variables</h3></div></div></div><p>
+      </p><pre class="screen">Terminal --geometry 80x40 --command mutt --tab --command mc</pre></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="files-and-env-vars"></a>Files and Environment Variables</h3></div></div></div><p>
         Terminal uses the Basedir Specification as defined on <a href="http://freedesktop.org/" target="_top">Freedesktop.org</a> to locate its data and configuration files. This means
         that file locations will be specified as a path relative to the directories described in
         the specification.
-      </p><div class="variablelist"><dl><dt><span class="term"><tt class="varname">${XDG_CONFIG_HOME}</tt></span></dt><dd><p>
+      </p><div class="variablelist"><dl><dt><span class="term"><code class="varname">${XDG_CONFIG_HOME}</code></span></dt><dd><p>
               The first base directory to look for configuration 
-              files. By default this is set to <tt class="filename">~/.config/</tt>.
-            </p></dd><dt><span class="term"><tt class="varname">${XDG_CONFIG_DIRS}</tt></span></dt><dd><p>
+              files. By default this is set to <code class="filename">~/.config/</code>.
+            </p></dd><dt><span class="term"><code class="varname">${XDG_CONFIG_DIRS}</code></span></dt><dd><p>
               A colon separated list of base directories that contain configuration
-              data. By default the application will look in <tt class="filename">${sysconfdir}/xdg/</tt>. The value of
-              <tt class="varname">${sysconfdir}</tt> depends on how the program was
-              build and will often be <tt class="filename">/etc/</tt>
+              data. By default the application will look in <code class="filename">${sysconfdir}/xdg/</code>. The value of
+              <code class="varname">${sysconfdir}</code> depends on how the program was
+              build and will often be <code class="filename">/etc/</code>
               for binary packages.
-            </p></dd><dt><span class="term"><tt class="varname">${XDG_DATA_HOME}</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="varname">${XDG_DATA_HOME}</code></span></dt><dd><p>
               The root for all user-specific data files. By default this
-              is set to <tt class="filename">~/.local/share/</tt>.
-            </p></dd><dt><span class="term"><tt class="varname">${XDG_DATA_DIRS}</tt></span></dt><dd><p>
+              is set to <code class="filename">~/.local/share/</code>.
+            </p></dd><dt><span class="term"><code class="varname">${XDG_DATA_DIRS}</code></span></dt><dd><p>
               A set of preference ordered base directories relative to which
               data files should be searched in addition to the
-              <tt class="varname">${XDG_DATA_HOME}</tt> base directory. The directories
+              <code class="varname">${XDG_DATA_HOME}</code> base directory. The directories
               should be separated with a color.
-            </p></dd><dt><span class="term"><tt class="filename">${XDG_CONFIG_DIRS}/Terminal/terminalrc</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="filename">${XDG_CONFIG_DIRS}/Terminal/terminalrc</code></span></dt><dd><p>
               This is the location of the configuration file that includes the
               preferences which control the look and feel of Terminal.
-            </p></dd><dt><span class="term"><tt class="filename">${XDG_DATA_DIRS}/Terminal/Terminal.ui</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="filename">${XDG_DATA_DIRS}/Terminal/Terminal.ui</code></span></dt><dd><p>
               This is the location of the main user interface description file. It
               includes the definitions for the main menubar and the right-click
               menu.
-            </p></dd><dt><span class="term"><tt class="filename">${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="filename">${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</code></span></dt><dd><p>
               This file includes the user interface definition for the toolbars. If
               you customize the toolbars using the graphical toolbars editor, Terminal
               will store the new toolbars layout in the file
-              <tt class="filename">${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</tt>.
+              <code class="filename">${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</code>.
             </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="hidden-options"></a>Hidden options</h3></div></div></div><p>
         Terminal offers a few hidden options to allow powerusers to control various advanced settings and
         to reduce the number of options in the user interface. To set any of these options, you will have
-        to open the file <tt class="filename">${XDG_CONFIG_HOME}/Terminal/terminalrc</tt> in your favourite
-        text editor and edit the section <tt class="varname">[Configuration]</tt>; simply create the file if
-        it does not already exist. For example, your <tt class="filename">terminalrc</tt> could look like
-      </p><table border="0" bgcolor="#ffffff" width="100%"><tr><td><pre class="programlisting">
+        to open the file <code class="filename">${XDG_CONFIG_HOME}/Terminal/terminalrc</code> in your favourite
+        text editor and edit the section <code class="varname">[Configuration]</code>; simply create the file if
+        it does not already exist. For example, your <code class="filename">terminalrc</code> could look like
+      </p><pre class="programlisting">
 [Configuration]
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
-MiscCycleTabs=TRUE</pre></td></tr></table><p>
+MiscCycleTabs=TRUE</pre><p>
         plus all the options that are controlled through the preferences dialog.
-      </p><div class="variablelist"><dl><dt><span class="term"><tt class="varname">MiscBell</tt></span></dt><dd><p>
-              Enables (<tt class="varname">MiscBell=TRUE</tt>) or disables (<tt class="varname">MiscBell=FALSE</tt>)
+      </p><div class="variablelist"><dl><dt><span class="term"><code class="varname">MiscBell</code></span></dt><dd><p>
+              Enables (<code class="varname">MiscBell=TRUE</code>) or disables (<code class="varname">MiscBell=FALSE</code>)
               the audible terminal bell. It is disabled by default.
-            </p></dd><dt><span class="term"><tt class="varname">MiscConfirmClose</tt></span></dt><dd><p>
+            </p></dd><dt><span class="term"><code class="varname">MiscConfirmClose</code></span></dt><dd><p>
               Controls whether Terminal popups a confirmation dialog when the user tries to close
-              a terminal window with multiple tabs in it. Can be either <tt class="literal">TRUE</tt>
-              (the default) or <tt class="literal">FALSE</tt>.
-            </p></dd><dt><span class="term"><tt class="varname">MiscCursorBlinks</tt></span></dt><dd><p>
-              Enable this option to display a cursor that blinks. Can be either <tt class="literal">TRUE</tt>
-              or <tt class="literal">FALSE</tt> (the default).
-            </p></dd><dt><span class="term"><tt class="varname">MiscCycleTabs</tt></span></dt><dd><p>
+              a terminal window with multiple tabs in it. Can be either <code class="literal">TRUE</code>
+              (the default) or <code class="literal">FALSE</code>.
+            </p></dd><dt><span class="term"><code class="varname">MiscCursorBlinks</code></span></dt><dd><p>
+              Enable this option to display a cursor that blinks. Can be either <code class="literal">TRUE</code>
+              or <code class="literal">FALSE</code> (the default).
+            </p></dd><dt><span class="term"><code class="varname">MiscCycleTabs</code></span></dt><dd><p>
               This option controls whether you can circulate through terminal tabs. That is, whether
-              you are able to go from the last tab to the first tab using the <span><b class="guimenuitem">Next
-              Tab</b></span> button from the <span><b class="guimenu">Go</b></span> menu (or the associated keyboard
-              shortcut), and from the first tab to the last tab using the <span><b class="guimenuitem">Previous
-              Tab</b></span> button from the <span><b class="guimenu">Go</b></span> menu. The option can be either
-              <tt class="literal">TRUE</tt> or <tt class="literal">FALSE</tt>.
+              you are able to go from the last tab to the first tab using the <span><strong class="guimenuitem">Next
+              Tab</strong></span> button from the <span><strong class="guimenu">Go</strong></span> menu (or the associated keyboard
+              shortcut), and from the first tab to the last tab using the <span><strong class="guimenuitem">Previous
+              Tab</strong></span> button from the <span><strong class="guimenu">Go</strong></span> menu. The option can be either
+              <code class="literal">TRUE</code> or <code class="literal">FALSE</code>.
             </p><p>
               This behaviour is disabled by default, because it tends to confuse users.
-            </p></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Preferences </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Frequently asked questions</td></tr></table></div></body></html>
+            </p></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Preferences </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Frequently asked questions</td></tr></table></div></body></html>

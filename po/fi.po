@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.2pre1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-27 20:23+0100\n"
+"POT-Creation-Date: 2005-03-02 18:22+0100\n"
 "PO-Revision-Date: 2005-01-26 12:23+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: fi_FI <LL@li.org>\n"
@@ -15,20 +15,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: terminal/main.c:228
+#: terminal/main.c:42
 msgid "Usage: Terminal [OPTION...]"
 msgstr "Käyttö: Terminal [VALITSIN...]"
 
-#: terminal/main.c:230
+#: terminal/main.c:44
 msgid "  -h, --help                          Print this help message and exit"
 msgstr "  -h, --help                          Tulosta tämä ohje ja poistu"
 
-#: terminal/main.c:231
+#: terminal/main.c:45
 msgid ""
 "  -v, --version                       Print version information and exit"
 msgstr "  -v, --version                       Tulosta versiotiedot ja poistu"
 
-#: terminal/main.c:232
+#: terminal/main.c:46
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
@@ -36,7 +36,7 @@ msgstr ""
 "  --disable-server                    Älä rekisteröidy D-BUS-viestiväylän\n"
 "                                      yhteyteen"
 
-#: terminal/main.c:235
+#: terminal/main.c:49
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
@@ -44,7 +44,7 @@ msgstr ""
 "  -x, --execute                       Suorita komentorivin loppuosa\n"
 "                                      päätteessä"
 
-#: terminal/main.c:237
+#: terminal/main.c:51
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
@@ -52,16 +52,16 @@ msgstr ""
 "  -e, --command=MERKKIJONO            Suorita tämän valitsimen argumentti\n"
 "                                      päätteessä"
 
-#: terminal/main.c:239
+#: terminal/main.c:53
 msgid ""
 "  --working-directory=DIRNAME         Set the terminals working directory"
 msgstr "  --working-directory=HAKEMISTO       Aseta päätteen työhakemisto"
 
-#: terminal/main.c:240
+#: terminal/main.c:54
 msgid "  -T, --title=TITLE                   Set the terminals title"
 msgstr "  -T, --title=OTSAKE                  Aseta pääteikkunan otsake"
 
-#: terminal/main.c:242
+#: terminal/main.c:56
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
@@ -69,7 +69,7 @@ msgstr ""
 "  --display=NÄYTTÖ                    X:n näyttö, jota viimeksi valittu\n"
 "                                      ikkuna käyttää"
 
-#: terminal/main.c:244
+#: terminal/main.c:58
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
@@ -80,7 +80,7 @@ msgstr ""
 "                                      voi määrittää kerran avattavaa\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:247
+#: terminal/main.c:61
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified;\n"
 "                                      window; applies to only one window;\n"
@@ -92,7 +92,7 @@ msgstr ""
 "                                      voi määrittää kerran jokaiselle\n"
 "                                      komentoriviltä luodulle ikkunalle"
 
-#: terminal/main.c:251
+#: terminal/main.c:65
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
@@ -100,7 +100,7 @@ msgstr ""
 "  --startup-id=MERKKIJONO             Tunniste käynnistyksen huomautus-\n"
 "                                      protokollaa varten"
 
-#: terminal/main.c:253
+#: terminal/main.c:67
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
@@ -114,7 +114,7 @@ msgstr ""
 "                                      jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:258
+#: terminal/main.c:72
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -130,7 +130,7 @@ msgstr ""
 "                                      kerran jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:263
+#: terminal/main.c:77
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -146,7 +146,7 @@ msgstr ""
 "                                      kerran jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:268
+#: terminal/main.c:82
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -162,7 +162,7 @@ msgstr ""
 "                                      kerran jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:273
+#: terminal/main.c:87
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -177,7 +177,7 @@ msgstr ""
 "                                      kerran jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:278
+#: terminal/main.c:92
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -193,7 +193,7 @@ msgstr ""
 "                                      kerran jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:283
+#: terminal/main.c:97
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -209,7 +209,7 @@ msgstr ""
 "                                      kerran jokaista komentoriviltä luotua\n"
 "                                      ikkunaa kohden"
 
-#: terminal/main.c:289
+#: terminal/main.c:103
 msgid ""
 "  --tab                               Open a new tab in the last-specified\n"
 "                                      window; more than one of these\n"
@@ -220,7 +220,7 @@ msgstr ""
 "                                      ikkunassa. Näitä valitsimia voi olla\n"
 "                                      enemmän kuin yksi"
 
-#: terminal/main.c:292
+#: terminal/main.c:106
 msgid ""
 "  --window                            Open a new window containing one tab;\n"
 "                                      more than one of these options can be\n"
@@ -231,28 +231,28 @@ msgstr ""
 "                                      Näitä valitsimia voi olla enemmän\n"
 "                                      kuin yksi"
 
-#: terminal/main.c:296
+#: terminal/main.c:110
 msgid "  --default-display=DISPLAY           default X display to use"
 msgstr "  --default-display=NÄYTTÖ            oletuksena käytettävä X:n näyttö"
 
-#: terminal/main.c:297
+#: terminal/main.c:111
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
 "                                      directory"
 msgstr ""
 "  --default-working-directory=HAKEM.  Aseta oletuspäätteen työhakemisto"
 
-#: terminal/main.c:321 terminal/terminal-preferences.c:1044
+#: terminal/main.c:135 terminal/terminal-preferences.c:1056
 #: terminal/terminal-shortcut-editor.c:114 Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Pääte"
 
-#: terminal/main.c:348
-#, c-format
+#: terminal/main.c:162
+#, fuzzy, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) 2003-2005\n"
 "        os-cillation e.K. All rights reserved.\n"
 "\n"
 "Written by Benedikt Meurer <benny@xfce.org>.\n"
@@ -273,38 +273,37 @@ msgstr ""
 "\n"
 "Ilmoita viat osoitteeseen <%s>.\n"
 
-#: terminal/main.c:436
-#, c-format
-msgid "Unable to start terminal server: %s\n"
+#: terminal/main.c:251
+#, fuzzy, c-format
+msgid "Unable to register terminal service: %s\n"
 msgstr "Päätepalvelinta ei voi käynnistää: %s\n"
 
-#: terminal/main.c:444
+#: terminal/main.c:260
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Päätettä ei voi käynnistää: %s\n"
 
-#: terminal/terminal-app.c:311
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "D-BUS-viestiyhteys katkennut, poistutaan...\n"
-
-#: terminal/terminal-app.c:568
-msgid "Unable to connect to D-BUS message daemon"
-msgstr "Ei voi yhdistää D-BUS-viestipalveluun"
-
-#: terminal/terminal-app.c:577
-#, c-format
-msgid "Unable to acquire service %s: %s"
-msgstr "Palvelua %s ei voi ottaa käyttöön: %s"
-
-#: terminal/terminal-app.c:589
-#, c-format
-msgid "Unable to register object %s\n"
-msgstr "Ei voi rekisteröidä oliota %s\n"
-
-#: terminal/terminal-app.c:692
+#: terminal/terminal-app.c:506
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Epäkelpo geometriamääritys \"%s\"\n"
+
+#: terminal/terminal-dbus.c:94
+msgid "User id mismatch"
+msgstr ""
+
+#: terminal/terminal-dbus.c:104 terminal/terminal-dbus.c:114
+msgid "Invalid arguments"
+msgstr ""
+
+#: terminal/terminal-dbus.c:141
+msgid "D-BUS message bus disconnected, exiting...\n"
+msgstr "D-BUS-viestiyhteys katkennut, poistutaan...\n"
+
+#: terminal/terminal-dbus.c:245
+#, fuzzy, c-format
+msgid "Unable to register object %s"
+msgstr "Ei voi rekisteröidä oliota %s\n"
 
 #: terminal/terminal-options.c:106
 msgid ""
@@ -433,23 +432,37 @@ msgstr "Osoitin _vilkkuu"
 msgid "_Run command as login shell"
 msgstr "Suorita komento _ylimmän tason komentotulkkina"
 
-#: terminal/terminal-preferences-dialog.c:304
+#: terminal/terminal-preferences-dialog.c:302
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:309
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Päivitä utmp/wtmp -tietueet, kun komento käynnistetään"
 
-#: terminal/terminal-preferences-dialog.c:313
+#: terminal/terminal-preferences-dialog.c:318
 msgid "<b>Scrolling</b>"
 msgstr "<b>Vieritys</b>"
 
-#: terminal/terminal-preferences-dialog.c:328
+#: terminal/terminal-preferences-dialog.c:333
 msgid "Sc_roll on output"
 msgstr "Tuloste vie_rittää"
 
-#: terminal/terminal-preferences-dialog.c:334
+#: terminal/terminal-preferences-dialog.c:336
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:343
 msgid "Scroll on key_stroke"
 msgstr "_Näppäimet vierittävät"
 
-#: terminal/terminal-preferences-dialog.c:337
+#: terminal/terminal-preferences-dialog.c:346
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
@@ -457,212 +470,235 @@ msgstr ""
 "Vierittää pääteikkunan komentokehotteen luo painaessasi mitä tahansa "
 "näppäimistön näppäintä."
 
-#: terminal/terminal-preferences-dialog.c:345
+#: terminal/terminal-preferences-dialog.c:354
 msgid "_Scrollbar is:"
 msgstr "V_ierityspalkki on:"
 
-#: terminal/terminal-preferences-dialog.c:352
-#: terminal/terminal-preferences.c:350 terminal/terminal-preferences.c:361
-#: terminal/terminal-preferences.c:372 terminal/terminal-preferences.c:383
-#: terminal/terminal-preferences.c:405 terminal/terminal-preferences.c:416
-#: terminal/terminal-preferences.c:427 terminal/terminal-shortcut-editor.c:204
+#: terminal/terminal-preferences-dialog.c:361
+#: terminal/terminal-preferences.c:362 terminal/terminal-preferences.c:373
+#: terminal/terminal-preferences.c:384 terminal/terminal-preferences.c:395
+#: terminal/terminal-preferences.c:417 terminal/terminal-preferences.c:428
+#: terminal/terminal-preferences.c:439 terminal/terminal-shortcut-editor.c:204
 #: terminal/terminal-shortcut-editor.c:366
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
-#: terminal/terminal-preferences-dialog.c:353
+#: terminal/terminal-preferences-dialog.c:362
 msgid "On the left side"
 msgstr "Vasemmalla reunalla"
 
-#: terminal/terminal-preferences-dialog.c:354
+#: terminal/terminal-preferences-dialog.c:363
 msgid "On the right side"
 msgstr "Oikealla reunalla"
 
-#: terminal/terminal-preferences-dialog.c:368
+#: terminal/terminal-preferences-dialog.c:377
 msgid "Scr_ollback:"
 msgstr "Vieritysp_uskuri:"
 
-#: terminal/terminal-preferences-dialog.c:378
+#: terminal/terminal-preferences-dialog.c:387
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Määrittää, montako riviä päätettä voi vierittää taaksepäin vierityspalkin "
 "avulla."
 
-#: terminal/terminal-preferences-dialog.c:399
+#: terminal/terminal-preferences-dialog.c:408
 msgid "General"
 msgstr "Yleiset"
 
-#: terminal/terminal-preferences-dialog.c:417
+#: terminal/terminal-preferences-dialog.c:426
 msgid "<b>Font</b>"
 msgstr "<b>Kirjasin</b>"
 
-#: terminal/terminal-preferences-dialog.c:426
+#: terminal/terminal-preferences-dialog.c:435
 msgid "Choose Terminal Font"
 msgstr "Valitse Päätteen Kirjasin"
 
-#: terminal/terminal-preferences-dialog.c:431
+#: terminal/terminal-preferences-dialog.c:440
 msgid "Enable anti-aliasing for the terminal font"
 msgstr "Käytä aliasestoa päätteen kirjasimelle"
 
-#: terminal/terminal-preferences-dialog.c:436
+#: terminal/terminal-preferences-dialog.c:443
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:450
 msgid "Allow bold text"
 msgstr "Näytä paksunnettu teksti"
 
-#: terminal/terminal-preferences-dialog.c:445
-msgid "<b>Background</b>"
-msgstr "<b>Tausta</b>"
-
-#: terminal/terminal-preferences-dialog.c:455
-msgid "None (use solid color)"
-msgstr "Ei mitään (tasainen väri)"
-
-#: terminal/terminal-preferences-dialog.c:456
-msgid "Background image"
-msgstr "Taustakuva"
-
-#: terminal/terminal-preferences-dialog.c:457
-msgid "Transparent background"
-msgstr "Läpinäkyvä tausta"
-
-#: terminal/terminal-preferences-dialog.c:472
-msgid "_File:"
-msgstr "_Tiedosto:"
-
-#: terminal/terminal-preferences-dialog.c:497
-msgid "_Style:"
-msgstr "T_yyli:"
-
-#: terminal/terminal-preferences-dialog.c:504
-msgid "Tiled"
-msgstr "Vierekkäin"
-
-#: terminal/terminal-preferences-dialog.c:505
-msgid "Centered"
-msgstr "Keskitetty"
-
-#: terminal/terminal-preferences-dialog.c:506
-msgid "Scaled"
-msgstr "Skaalattu"
-
-#: terminal/terminal-preferences-dialog.c:507
-msgid "Stretched"
-msgstr "Venytetty"
-
-#: terminal/terminal-preferences-dialog.c:521
-msgid "Shade transparent or image background:"
-msgstr "Varjosta läpinäkyvää tai kuvataustaa:"
-
-#: terminal/terminal-preferences-dialog.c:534
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Ei yhtään</i></small>"
-
-#: terminal/terminal-preferences-dialog.c:545
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Täysin</i></small>"
-
-#: terminal/terminal-preferences-dialog.c:553
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Uusien Ikkunoiden Avaaminen</b>"
-
-#: terminal/terminal-preferences-dialog.c:562
-msgid "Display _menubar in new windows"
-msgstr "Näytä _valikkopalkki uusissa ikkunoissa"
-
-#: terminal/terminal-preferences-dialog.c:565
-msgid "Enable to show the menubar in newly created terminal windows."
-msgstr "Valitse asettaaksesi valikkopalkin näkyviin uusissa pääteikkunoissa."
-
-#: terminal/terminal-preferences-dialog.c:570
-msgid "Display _toolbars in new windows"
-msgstr "Näytä _työkalupalkit uusissa ikkunoissa"
-
-#: terminal/terminal-preferences-dialog.c:573
-msgid "Enable to show the toolbars in newly created terminal windows."
-msgstr "Valitse asettaaksesi työkalupalkit näkyviin uusissa pääteikkunoissa."
-
-#: terminal/terminal-preferences-dialog.c:578
-msgid "Display _borders around new windows"
-msgstr "Näytä _reunukset uusien ikkunoiden ympärillä"
-
-#: terminal/terminal-preferences-dialog.c:581
+#: terminal/terminal-preferences-dialog.c:453
+#, fuzzy
 msgid ""
-"Enable to show window decorations around newly created terminal windows."
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
 msgstr ""
 "Valitse asettaaksesi ikkunoiden reunukset näkyviin uusien pääteikkunoiden "
 "ympärillä."
 
-#: terminal/terminal-preferences-dialog.c:593
+#: terminal/terminal-preferences-dialog.c:462
+msgid "<b>Background</b>"
+msgstr "<b>Tausta</b>"
+
+#: terminal/terminal-preferences-dialog.c:472
+msgid "None (use solid color)"
+msgstr "Ei mitään (tasainen väri)"
+
+#: terminal/terminal-preferences-dialog.c:473
+msgid "Background image"
+msgstr "Taustakuva"
+
+#: terminal/terminal-preferences-dialog.c:474
+msgid "Transparent background"
+msgstr "Läpinäkyvä tausta"
+
+#: terminal/terminal-preferences-dialog.c:489
+msgid "_File:"
+msgstr "_Tiedosto:"
+
+#: terminal/terminal-preferences-dialog.c:514
+msgid "_Style:"
+msgstr "T_yyli:"
+
+#: terminal/terminal-preferences-dialog.c:521
+msgid "Tiled"
+msgstr "Vierekkäin"
+
+#: terminal/terminal-preferences-dialog.c:522
+msgid "Centered"
+msgstr "Keskitetty"
+
+#: terminal/terminal-preferences-dialog.c:523
+msgid "Scaled"
+msgstr "Skaalattu"
+
+#: terminal/terminal-preferences-dialog.c:524
+msgid "Stretched"
+msgstr "Venytetty"
+
+#: terminal/terminal-preferences-dialog.c:538
+msgid "Shade transparent or image background:"
+msgstr "Varjosta läpinäkyvää tai kuvataustaa:"
+
+#: terminal/terminal-preferences-dialog.c:551
+msgid "<small><i>None</i></small>"
+msgstr "<small><i>Ei yhtään</i></small>"
+
+#: terminal/terminal-preferences-dialog.c:562
+msgid "<small><i>Maximum</i></small>"
+msgstr "<small><i>Täysin</i></small>"
+
+#: terminal/terminal-preferences-dialog.c:570
+msgid "<b>Opening New Windows</b>"
+msgstr "<b>Uusien Ikkunoiden Avaaminen</b>"
+
+#: terminal/terminal-preferences-dialog.c:579
+msgid "Display _menubar in new windows"
+msgstr "Näytä _valikkopalkki uusissa ikkunoissa"
+
+#: terminal/terminal-preferences-dialog.c:582
+#, fuzzy
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "Valitse asettaaksesi valikkopalkin näkyviin uusissa pääteikkunoissa."
+
+#: terminal/terminal-preferences-dialog.c:587
+msgid "Display _toolbars in new windows"
+msgstr "Näytä _työkalupalkit uusissa ikkunoissa"
+
+#: terminal/terminal-preferences-dialog.c:590
+#, fuzzy
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Valitse asettaaksesi työkalupalkit näkyviin uusissa pääteikkunoissa."
+
+#: terminal/terminal-preferences-dialog.c:595
+msgid "Display _borders around new windows"
+msgstr "Näytä _reunukset uusien ikkunoiden ympärillä"
+
+#: terminal/terminal-preferences-dialog.c:598
+#, fuzzy
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Valitse asettaaksesi ikkunoiden reunukset näkyviin uusien pääteikkunoiden "
+"ympärillä."
+
+#: terminal/terminal-preferences-dialog.c:610
 msgid "Appearance"
 msgstr "Ulkoasu"
 
-#: terminal/terminal-preferences-dialog.c:611
+#: terminal/terminal-preferences-dialog.c:628
 msgid "<b>Foreground and Background</b>"
 msgstr "<b>Etuala ja Tausta</b>"
 
-#: terminal/terminal-preferences-dialog.c:623
+#: terminal/terminal-preferences-dialog.c:640
 msgid "_Text color:"
 msgstr "_Tekstin väri:"
 
-#: terminal/terminal-preferences-dialog.c:637
+#: terminal/terminal-preferences-dialog.c:654
 msgid "Choose terminal text color"
 msgstr "Valitse päätteen tekstin väri"
 
-#: terminal/terminal-preferences-dialog.c:646
-#: terminal/terminal-preferences-dialog.c:677
+#: terminal/terminal-preferences-dialog.c:663
+#: terminal/terminal-preferences-dialog.c:694
 msgid "Color Selector"
 msgstr "Värivalitsin"
 
-#: terminal/terminal-preferences-dialog.c:647
-#: terminal/terminal-preferences-dialog.c:678
+#: terminal/terminal-preferences-dialog.c:664
+#: terminal/terminal-preferences-dialog.c:695
 msgid "Open a dialog to specify the color"
 msgstr "Avaa dialogi värin valitsemiseksi"
 
-#: terminal/terminal-preferences-dialog.c:654
+#: terminal/terminal-preferences-dialog.c:671
 msgid "_Background color:"
 msgstr "T_austaväri:"
 
-#: terminal/terminal-preferences-dialog.c:668
+#: terminal/terminal-preferences-dialog.c:685
 msgid "Choose terminal background color"
 msgstr "Valitse päätteen taustaväri"
 
-#: terminal/terminal-preferences-dialog.c:688
+#: terminal/terminal-preferences-dialog.c:705
 msgid "<b>Palette</b>"
 msgstr "<b>Paletti</b>"
 
-#: terminal/terminal-preferences-dialog.c:698
+#: terminal/terminal-preferences-dialog.c:715
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Päätesovelluksilla on käytössään tämä väripaletti:"
 
-#: terminal/terminal-preferences-dialog.c:830
+#: terminal/terminal-preferences-dialog.c:847
 msgid "Colors"
 msgstr "Värit"
 
-#: terminal/terminal-preferences-dialog.c:848
+#: terminal/terminal-preferences-dialog.c:865
 msgid "<b>Shortcut keys</b>"
 msgstr "<b>Pikanäppäimet</b>"
 
-#: terminal/terminal-preferences-dialog.c:874
+#: terminal/terminal-preferences-dialog.c:891
 msgid "<b>Menubar access</b>"
 msgstr "<b>Pääsy valikkopalkkiin</b>"
 
-#: terminal/terminal-preferences-dialog.c:883
+#: terminal/terminal-preferences-dialog.c:900
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Poista kaikki valikko_näppäimet käytöstä (kuten Alt+T)"
 
-#: terminal/terminal-preferences-dialog.c:888
+#: terminal/terminal-preferences-dialog.c:905
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Poista valikon _pikanäppäin käytöstä (oletuksena F10)"
 
-#: terminal/terminal-preferences-dialog.c:900
+#: terminal/terminal-preferences-dialog.c:917
 msgid "Shortcuts"
 msgstr "Pikanäppäimet"
 
-#: terminal/terminal-preferences-dialog.c:918
+#: terminal/terminal-preferences-dialog.c:935
 msgid "<b>Compatibility</b>"
 msgstr "<b>Yhteensopivuus</b>"
 
-#: terminal/terminal-preferences-dialog.c:929
+#: terminal/terminal-preferences-dialog.c:946
 msgid ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
@@ -672,39 +708,39 @@ msgstr ""
 "tässä ainoastaan siksi, että voisit käyttää eräitä sovelluksia ja "
 "käyttöjärjestelmiä, jotka odottavat päätteen käyttäytyvän eri tavalla."
 
-#: terminal/terminal-preferences-dialog.c:937
+#: terminal/terminal-preferences-dialog.c:954
 msgid "_Backspace key generates:"
 msgstr "_Peruutusnäppäin tuottaa:"
 
-#: terminal/terminal-preferences-dialog.c:944
-#: terminal/terminal-preferences-dialog.c:968
+#: terminal/terminal-preferences-dialog.c:961
+#: terminal/terminal-preferences-dialog.c:985
 msgid "Auto-detect"
 msgstr "Tunnista automaattisesti"
 
-#: terminal/terminal-preferences-dialog.c:945
-#: terminal/terminal-preferences-dialog.c:969
+#: terminal/terminal-preferences-dialog.c:962
+#: terminal/terminal-preferences-dialog.c:986
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: terminal/terminal-preferences-dialog.c:946
-#: terminal/terminal-preferences-dialog.c:970
+#: terminal/terminal-preferences-dialog.c:963
+#: terminal/terminal-preferences-dialog.c:987
 msgid "Escape sequence"
 msgstr "Escape-merkki"
 
-#: terminal/terminal-preferences-dialog.c:947
-#: terminal/terminal-preferences-dialog.c:971
+#: terminal/terminal-preferences-dialog.c:964
+#: terminal/terminal-preferences-dialog.c:988
 msgid "Control-H"
 msgstr "Ctrl-H"
 
-#: terminal/terminal-preferences-dialog.c:961
+#: terminal/terminal-preferences-dialog.c:978
 msgid "_Delete key generates:"
 msgstr "_Delete-näppäin tuottaa:"
 
-#: terminal/terminal-preferences-dialog.c:985
+#: terminal/terminal-preferences-dialog.c:1002
 msgid "<tt>$TERM</tt> setting:"
 msgstr "<tt>$TERM</tt> -muuttuja:"
 
-#: terminal/terminal-preferences-dialog.c:993
+#: terminal/terminal-preferences-dialog.c:1010
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -716,371 +752,371 @@ msgstr ""
 "useimmissa järjestelmissä. Jos sinulla on ongelmia värien kanssa joissain "
 "sovelluksissa, kokeile tähän arvoa xterm-color."
 
-#: terminal/terminal-preferences-dialog.c:1013
+#: terminal/terminal-preferences-dialog.c:1030
 msgid "_Reset compatibility options to defaults"
 msgstr "P_alauta yhteensopivuusasetusten oletusarvot"
 
-#: terminal/terminal-preferences-dialog.c:1023
+#: terminal/terminal-preferences-dialog.c:1040
 msgid "<b>Double click</b>"
 msgstr "<b>Kaksoisnapsautus</b>"
 
-#: terminal/terminal-preferences-dialog.c:1032
+#: terminal/terminal-preferences-dialog.c:1049
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Oleta seuraavien merkkien olevan sanan osia kaksoisnapsautettaessa:"
 
-#: terminal/terminal-preferences-dialog.c:1056
+#: terminal/terminal-preferences-dialog.c:1073
 msgid "Advanced"
 msgstr "Lisäasetukset"
 
-#: terminal/terminal-preferences-dialog.c:1097 terminal/terminal-window.c:1306
-#: terminal/terminal-window.c:1333 terminal/terminal-window.c:1406
+#: terminal/terminal-preferences-dialog.c:1114 terminal/terminal-window.c:1311
+#: terminal/terminal-window.c:1338 terminal/terminal-window.c:1411
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr "Suoraohjetta ei voi käynnistää: %s"
 
-#: terminal/terminal-preferences-dialog.c:1197
+#: terminal/terminal-preferences-dialog.c:1214
 msgid "Select background image file"
 msgstr "Valitse taustakuvatiedosto"
 
-#: terminal/terminal-preferences-dialog.c:1208
+#: terminal/terminal-preferences-dialog.c:1225
 msgid "All Files"
 msgstr "Kaikki Tiedostot"
 
-#: terminal/terminal-preferences-dialog.c:1213
+#: terminal/terminal-preferences-dialog.c:1230
 msgid "Image Files"
 msgstr "Kuvatiedostot"
 
-#: terminal/terminal-preferences.c:282 terminal/terminal-preferences.c:283
+#: terminal/terminal-preferences.c:294 terminal/terminal-preferences.c:295
 msgid "Open Tab"
 msgstr "Avaa Välilehti"
 
-#: terminal/terminal-preferences.c:293 terminal/terminal-preferences.c:294
+#: terminal/terminal-preferences.c:305 terminal/terminal-preferences.c:306
 msgid "Open Terminal"
 msgstr "Avaa Pääte"
 
-#: terminal/terminal-preferences.c:304 terminal/terminal-preferences.c:305
+#: terminal/terminal-preferences.c:316 terminal/terminal-preferences.c:317
 msgid "Close Tab"
 msgstr "Sulje Välilehti"
 
-#: terminal/terminal-preferences.c:315 terminal/terminal-preferences.c:316
+#: terminal/terminal-preferences.c:327 terminal/terminal-preferences.c:328
 msgid "Close Window"
 msgstr "Sulje Ikkuna"
 
-#: terminal/terminal-preferences.c:326 terminal/terminal-preferences.c:327
+#: terminal/terminal-preferences.c:338 terminal/terminal-preferences.c:339
 msgid "Copy"
 msgstr "Kopioi"
 
-#: terminal/terminal-preferences.c:337 terminal/terminal-preferences.c:338
+#: terminal/terminal-preferences.c:349 terminal/terminal-preferences.c:350
 msgid "Paste"
 msgstr "Liitä"
 
-#: terminal/terminal-preferences.c:348 terminal/terminal-preferences.c:349
+#: terminal/terminal-preferences.c:360 terminal/terminal-preferences.c:361
 msgid "Preferences"
 msgstr "Asetukset"
 
-#: terminal/terminal-preferences.c:359 terminal/terminal-preferences.c:360
+#: terminal/terminal-preferences.c:371 terminal/terminal-preferences.c:372
 msgid "Show menubar"
 msgstr "Näytä valikkopalkki"
 
-#: terminal/terminal-preferences.c:370 terminal/terminal-preferences.c:371
+#: terminal/terminal-preferences.c:382 terminal/terminal-preferences.c:383
 msgid "Show toolbars"
 msgstr "Näytä työkalupalkit"
 
-#: terminal/terminal-preferences.c:381 terminal/terminal-preferences.c:382
+#: terminal/terminal-preferences.c:393 terminal/terminal-preferences.c:394
 msgid "Show borders"
 msgstr "Näytä reunukset"
 
-#: terminal/terminal-preferences.c:392 terminal/terminal-preferences.c:393
+#: terminal/terminal-preferences.c:404 terminal/terminal-preferences.c:405
 msgid "Fullscreen"
 msgstr "Täysruutu"
 
-#: terminal/terminal-preferences.c:403 terminal/terminal-preferences.c:404
-#: terminal/terminal-window.c:1440
+#: terminal/terminal-preferences.c:415 terminal/terminal-preferences.c:416
+#: terminal/terminal-window.c:1445
 msgid "Set Title"
 msgstr "Aseta Otsake"
 
-#: terminal/terminal-preferences.c:414 terminal/terminal-preferences.c:415
+#: terminal/terminal-preferences.c:426 terminal/terminal-preferences.c:427
 msgid "Reset"
 msgstr "Palauta"
 
-#: terminal/terminal-preferences.c:425 terminal/terminal-preferences.c:426
+#: terminal/terminal-preferences.c:437 terminal/terminal-preferences.c:438
 msgid "Reset and Clear"
 msgstr "Palauta ja Tyhjennä"
 
-#: terminal/terminal-preferences.c:436 terminal/terminal-preferences.c:437
+#: terminal/terminal-preferences.c:448 terminal/terminal-preferences.c:449
 msgid "Previous Tab"
 msgstr "Edellinen Välilehti"
 
-#: terminal/terminal-preferences.c:447 terminal/terminal-preferences.c:448
+#: terminal/terminal-preferences.c:459 terminal/terminal-preferences.c:460
 msgid "Next Tab"
 msgstr "Seuraava Välilehti"
 
-#: terminal/terminal-preferences.c:458 terminal/terminal-preferences.c:459
+#: terminal/terminal-preferences.c:470 terminal/terminal-preferences.c:471
 msgid "Switch to Tab 1"
 msgstr "Siirry välilehteen 1"
 
-#: terminal/terminal-preferences.c:469 terminal/terminal-preferences.c:470
+#: terminal/terminal-preferences.c:481 terminal/terminal-preferences.c:482
 msgid "Switch to Tab 2"
 msgstr "Siirry välilehteen 2"
 
-#: terminal/terminal-preferences.c:480 terminal/terminal-preferences.c:481
+#: terminal/terminal-preferences.c:492 terminal/terminal-preferences.c:493
 msgid "Switch to Tab 3"
 msgstr "Siirry välilehteen 3"
 
-#: terminal/terminal-preferences.c:491 terminal/terminal-preferences.c:492
+#: terminal/terminal-preferences.c:503 terminal/terminal-preferences.c:504
 msgid "Switch to Tab 4"
 msgstr "Siirry välilehteen 4"
 
-#: terminal/terminal-preferences.c:502 terminal/terminal-preferences.c:503
+#: terminal/terminal-preferences.c:514 terminal/terminal-preferences.c:515
 msgid "Switch to Tab 5"
 msgstr "Siirry välilehteen 5"
 
-#: terminal/terminal-preferences.c:513 terminal/terminal-preferences.c:514
+#: terminal/terminal-preferences.c:525 terminal/terminal-preferences.c:526
 msgid "Switch to Tab 6"
 msgstr "Siirry välilehteen 6"
 
-#: terminal/terminal-preferences.c:524 terminal/terminal-preferences.c:525
+#: terminal/terminal-preferences.c:536 terminal/terminal-preferences.c:537
 msgid "Switch to Tab 7"
 msgstr "Siirry välilehteen 7"
 
-#: terminal/terminal-preferences.c:535 terminal/terminal-preferences.c:536
+#: terminal/terminal-preferences.c:547 terminal/terminal-preferences.c:548
 msgid "Switch to Tab 8"
 msgstr "Siirry välilehteen 8"
 
-#: terminal/terminal-preferences.c:546 terminal/terminal-preferences.c:547
+#: terminal/terminal-preferences.c:558 terminal/terminal-preferences.c:559
 msgid "Switch to Tab 9"
 msgstr "Siirry välilehteen 9"
 
-#: terminal/terminal-preferences.c:557 terminal/terminal-preferences.c:558
+#: terminal/terminal-preferences.c:569 terminal/terminal-preferences.c:570
 msgid "Contents"
 msgstr "Sisältö"
 
-#: terminal/terminal-preferences.c:568 terminal/terminal-preferences.c:569
+#: terminal/terminal-preferences.c:580 terminal/terminal-preferences.c:581
 msgid "Background mode"
 msgstr "Taustan tila"
 
-#: terminal/terminal-preferences.c:580 terminal/terminal-preferences.c:581
+#: terminal/terminal-preferences.c:592 terminal/terminal-preferences.c:593
 msgid "Background image file"
 msgstr "Taustakuvatiedosto"
 
-#: terminal/terminal-preferences.c:591 terminal/terminal-preferences.c:592
+#: terminal/terminal-preferences.c:603 terminal/terminal-preferences.c:604
 msgid "Background image style"
 msgstr "Taustakuvan tyyli"
 
-#: terminal/terminal-preferences.c:608 terminal/terminal-preferences.c:609
+#: terminal/terminal-preferences.c:620 terminal/terminal-preferences.c:621
 msgid "Background darkness"
 msgstr "Taustan tummuus"
 
-#: terminal/terminal-preferences.c:619 terminal/terminal-preferences.c:620
+#: terminal/terminal-preferences.c:631 terminal/terminal-preferences.c:632
 msgid "Backspace binding"
 msgstr "Palautusnäppäimen sidonta"
 
-#: terminal/terminal-preferences.c:631 terminal/terminal-preferences.c:632
+#: terminal/terminal-preferences.c:643 terminal/terminal-preferences.c:644
 msgid "Delete binding"
 msgstr "Poista sidonta"
 
-#: terminal/terminal-preferences.c:643
+#: terminal/terminal-preferences.c:655
 msgid "Foreground color"
 msgstr "Etualan väri"
 
-#: terminal/terminal-preferences.c:644
+#: terminal/terminal-preferences.c:656
 msgid "Terminal foreground color"
 msgstr "Päätteen etualan väri"
 
-#: terminal/terminal-preferences.c:654
+#: terminal/terminal-preferences.c:666
 msgid "Background color"
 msgstr "Taustaväri"
 
-#: terminal/terminal-preferences.c:655
+#: terminal/terminal-preferences.c:667
 msgid "Terminal background color"
 msgstr "Päätteen taustaväri"
 
-#: terminal/terminal-preferences.c:665 terminal/terminal-preferences.c:666
+#: terminal/terminal-preferences.c:677 terminal/terminal-preferences.c:678
 msgid "Palette entry 1"
 msgstr "Paletin väri 1"
 
-#: terminal/terminal-preferences.c:676 terminal/terminal-preferences.c:677
+#: terminal/terminal-preferences.c:688 terminal/terminal-preferences.c:689
 msgid "Palette entry 2"
 msgstr "Paletin väri 2"
 
-#: terminal/terminal-preferences.c:687 terminal/terminal-preferences.c:688
+#: terminal/terminal-preferences.c:699 terminal/terminal-preferences.c:700
 msgid "Palette entry 3"
 msgstr "Paletin väri 3"
 
-#: terminal/terminal-preferences.c:698 terminal/terminal-preferences.c:699
+#: terminal/terminal-preferences.c:710 terminal/terminal-preferences.c:711
 msgid "Palette entry 4"
 msgstr "Paletin väri 4"
 
-#: terminal/terminal-preferences.c:709 terminal/terminal-preferences.c:710
+#: terminal/terminal-preferences.c:721 terminal/terminal-preferences.c:722
 msgid "Palette entry 5"
 msgstr "Paletin väri 5"
 
-#: terminal/terminal-preferences.c:720 terminal/terminal-preferences.c:721
+#: terminal/terminal-preferences.c:732 terminal/terminal-preferences.c:733
 msgid "Palette entry 6"
 msgstr "Paletin väri 6"
 
-#: terminal/terminal-preferences.c:731 terminal/terminal-preferences.c:732
+#: terminal/terminal-preferences.c:743 terminal/terminal-preferences.c:744
 msgid "Palette entry 7"
 msgstr "Paletin väri 7"
 
-#: terminal/terminal-preferences.c:742 terminal/terminal-preferences.c:743
+#: terminal/terminal-preferences.c:754 terminal/terminal-preferences.c:755
 msgid "Palette entry 8"
 msgstr "Paletin väri 8"
 
-#: terminal/terminal-preferences.c:753 terminal/terminal-preferences.c:754
+#: terminal/terminal-preferences.c:765 terminal/terminal-preferences.c:766
 msgid "Palette entry 9"
 msgstr "Paletin väri 9"
 
-#: terminal/terminal-preferences.c:764 terminal/terminal-preferences.c:765
+#: terminal/terminal-preferences.c:776 terminal/terminal-preferences.c:777
 msgid "Palette entry 10"
 msgstr "Paletin väri 10"
 
-#: terminal/terminal-preferences.c:775 terminal/terminal-preferences.c:776
+#: terminal/terminal-preferences.c:787 terminal/terminal-preferences.c:788
 msgid "Palette entry 11"
 msgstr "Paletin väri 11"
 
-#: terminal/terminal-preferences.c:786 terminal/terminal-preferences.c:787
+#: terminal/terminal-preferences.c:798 terminal/terminal-preferences.c:799
 msgid "Palette entry 12"
 msgstr "Paletin väri 12"
 
-#: terminal/terminal-preferences.c:797 terminal/terminal-preferences.c:798
+#: terminal/terminal-preferences.c:809 terminal/terminal-preferences.c:810
 msgid "Palette entry 13"
 msgstr "Paletin väri 13"
 
-#: terminal/terminal-preferences.c:808 terminal/terminal-preferences.c:809
+#: terminal/terminal-preferences.c:820 terminal/terminal-preferences.c:821
 msgid "Palette entry 14"
 msgstr "Paletin väri 14"
 
-#: terminal/terminal-preferences.c:819 terminal/terminal-preferences.c:820
+#: terminal/terminal-preferences.c:831 terminal/terminal-preferences.c:832
 msgid "Palette entry 15"
 msgstr "Paletin väri 15"
 
-#: terminal/terminal-preferences.c:830 terminal/terminal-preferences.c:831
+#: terminal/terminal-preferences.c:842 terminal/terminal-preferences.c:843
 msgid "Palette entry 16"
 msgstr "Paletin väri 16"
 
-#: terminal/terminal-preferences.c:841
+#: terminal/terminal-preferences.c:853
 msgid "Update records"
 msgstr "Päivitä tietueet"
 
-#: terminal/terminal-preferences.c:842
+#: terminal/terminal-preferences.c:854
 msgid "Update wtmp/utmp/lastlog records"
 msgstr "Päivitä wtmp/utmp/lastlog -tietueet"
 
-#: terminal/terminal-preferences.c:852 terminal/terminal-preferences.c:853
+#: terminal/terminal-preferences.c:864 terminal/terminal-preferences.c:865
 msgid "Run shell as login shell"
 msgstr "Suorita komentotulkki ylimmän tason komentotulkkina"
 
-#: terminal/terminal-preferences.c:863 terminal/terminal-preferences.c:864
+#: terminal/terminal-preferences.c:875 terminal/terminal-preferences.c:876
 msgid "Allow bold fonts"
 msgstr "Salli paksunnetut kirjasimet"
 
-#: terminal/terminal-preferences.c:874 terminal/terminal-preferences.c:875
+#: terminal/terminal-preferences.c:886 terminal/terminal-preferences.c:887
 msgid "Font anti-aliasing"
 msgstr "Kirjasinten aliasesto"
 
-#: terminal/terminal-preferences.c:885
+#: terminal/terminal-preferences.c:897
 msgid "Font name"
 msgstr "Kirjasimen nimi"
 
-#: terminal/terminal-preferences.c:886
+#: terminal/terminal-preferences.c:898
 msgid "Terminal font name"
 msgstr "Päätteen kirjasimen nimi"
 
-#: terminal/terminal-preferences.c:896 terminal/terminal-preferences.c:897
+#: terminal/terminal-preferences.c:908 terminal/terminal-preferences.c:909
 msgid "Terminal bell"
 msgstr "Päätteen kello"
 
-#: terminal/terminal-preferences.c:907 terminal/terminal-preferences.c:908
+#: terminal/terminal-preferences.c:919 terminal/terminal-preferences.c:920
 msgid "Show window borders by default"
 msgstr "Näytä ikkunan reunat oletuksena"
 
-#: terminal/terminal-preferences.c:918 terminal/terminal-preferences.c:919
+#: terminal/terminal-preferences.c:930 terminal/terminal-preferences.c:931
 msgid "Cursor blinks"
 msgstr "Osoitin vilkkuu"
 
-#: terminal/terminal-preferences.c:929 terminal/terminal-preferences.c:930
+#: terminal/terminal-preferences.c:941 terminal/terminal-preferences.c:942
 msgid "Show menubar by default"
 msgstr "Näytä valikkopalkki oletuksena"
 
-#: terminal/terminal-preferences.c:940 terminal/terminal-preferences.c:941
+#: terminal/terminal-preferences.c:952 terminal/terminal-preferences.c:953
 msgid "Show toolbars by default"
 msgstr "Näytä työkalupalkit oletuksena"
 
-#: terminal/terminal-preferences.c:951 terminal/terminal-preferences.c:952
+#: terminal/terminal-preferences.c:963 terminal/terminal-preferences.c:964
 msgid "Confirm closing a window with multiple tabs"
 msgstr "Vahvista useita välilehtiä sisältävän ikkunan sulkeminen"
 
-#: terminal/terminal-preferences.c:962
+#: terminal/terminal-preferences.c:974
 #, fuzzy
 msgid "Cycle tabs"
 msgstr "Sulje kaikki välilehdet"
 
-#: terminal/terminal-preferences.c:963
+#: terminal/terminal-preferences.c:975
 msgid "Allow cycling through tabs"
 msgstr ""
 
-#: terminal/terminal-preferences.c:973
+#: terminal/terminal-preferences.c:985
 msgid "Scrollbar setting"
 msgstr "Vierityspalkin asetus"
 
-#: terminal/terminal-preferences.c:974
+#: terminal/terminal-preferences.c:986
 msgid "Whether and where to display a scrollbar"
 msgstr "Näytetäänkö vierityspalkki, ja mihin se sijoittuu"
 
-#: terminal/terminal-preferences.c:985
+#: terminal/terminal-preferences.c:997
 msgid "Scrollback lines"
 msgstr "Rivejä vierityspuskurissa"
 
-#: terminal/terminal-preferences.c:986
+#: terminal/terminal-preferences.c:998
 msgid "Number of lines to keep in history"
 msgstr "Vierityshistoriassa säilytettävien rivien määrä."
 
-#: terminal/terminal-preferences.c:996 terminal/terminal-preferences.c:997
+#: terminal/terminal-preferences.c:1008 terminal/terminal-preferences.c:1009
 msgid "Scroll on output"
 msgstr "Tuloste vierittää"
 
-#: terminal/terminal-preferences.c:1007 terminal/terminal-preferences.c:1008
+#: terminal/terminal-preferences.c:1019 terminal/terminal-preferences.c:1020
 msgid "Scroll on keystroke"
 msgstr "Näppäimet vierittävät"
 
-#: terminal/terminal-preferences.c:1020 terminal/terminal-preferences.c:1021
+#: terminal/terminal-preferences.c:1032 terminal/terminal-preferences.c:1033
 msgid "Disable menu shortcut key"
 msgstr "Poista valikon pikanäppäin käytöstä"
 
-#: terminal/terminal-preferences.c:1031 terminal/terminal-preferences.c:1032
+#: terminal/terminal-preferences.c:1043 terminal/terminal-preferences.c:1044
 msgid "Disable all mnemonics"
 msgstr "Poista muistikkaat käytöstä"
 
-#: terminal/terminal-preferences.c:1042
+#: terminal/terminal-preferences.c:1054
 msgid "Initial title"
 msgstr "Aloitusotsake"
 
-#: terminal/terminal-preferences.c:1043
+#: terminal/terminal-preferences.c:1055
 msgid "Initial Terminal title"
 msgstr "Päätteen aloitusotsake"
 
-#: terminal/terminal-preferences.c:1053
+#: terminal/terminal-preferences.c:1065
 msgid "Title mode"
 msgstr "Otsaketila"
 
-#: terminal/terminal-preferences.c:1054
+#: terminal/terminal-preferences.c:1066
 msgid "Dynamic-title mode"
 msgstr "Dynaaminen otsaketila"
 
-#: terminal/terminal-preferences.c:1065 terminal/terminal-preferences.c:1066
+#: terminal/terminal-preferences.c:1077 terminal/terminal-preferences.c:1078
 msgid "Term"
 msgstr "Term"
 
-#: terminal/terminal-preferences.c:1076 terminal/terminal-preferences.c:1077
+#: terminal/terminal-preferences.c:1088 terminal/terminal-preferences.c:1089
 msgid "Workaround VTE title bug"
 msgstr "Ohita VTE:n otsakevika"
 
-#: terminal/terminal-preferences.c:1087
+#: terminal/terminal-preferences.c:1099
 msgid "Word chars"
 msgstr "Sanamerkit"
 
-#: terminal/terminal-preferences.c:1088
+#: terminal/terminal-preferences.c:1100
 msgid "Word characters"
 msgstr "Sanamerkit"
 
@@ -1104,7 +1140,7 @@ msgstr "Lapsiprosessin suorittaminen ei onnistu"
 msgid "Please check your system setup."
 msgstr "Tarkista järjestelmäsi asetukset."
 
-#: terminal/terminal-screen.c:1121
+#: terminal/terminal-screen.c:1115
 msgid "Untitled"
 msgstr "Nimetön"
 
@@ -1372,15 +1408,15 @@ msgstr "Täy_sruutu"
 msgid "Toggle fullscreen mode"
 msgstr "Vaihda täysruututilaan ja takaisin"
 
-#: terminal/terminal-window.c:526
+#: terminal/terminal-window.c:527
 msgid "Warning"
 msgstr "Varoitus"
 
-#: terminal/terminal-window.c:531
+#: terminal/terminal-window.c:538
 msgid "Close all tabs"
 msgstr "Sulje kaikki välilehdet"
 
-#: terminal/terminal-window.c:548
+#: terminal/terminal-window.c:557
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -1389,35 +1425,35 @@ msgstr ""
 "Ikkunassa on avoinna %d välilehteä.\n"
 "Ne kaikki sulkeutuvat ikkunan sulkeutuessa."
 
-#: terminal/terminal-window.c:551
+#: terminal/terminal-window.c:560
 msgid "Close all tabs?"
 msgstr "Suljetaanko kaikki välilehdet?"
 
-#: terminal/terminal-window.c:564
+#: terminal/terminal-window.c:573
 msgid "Do _not ask me again"
 msgstr "_Älä kysy uudelleen"
 
-#: terminal/terminal-window.c:1454
+#: terminal/terminal-window.c:1459
 msgid "<b>Title:</b>"
 msgstr "<b>Otsake:</b>"
 
-#: terminal/terminal-window.c:1468
+#: terminal/terminal-window.c:1473
 msgid "Enter the title for the current terminal tab"
 msgstr "Syötä nykyisen päätteen välilehden otsake"
 
-#: terminal/terminal-window.c:1524
+#: terminal/terminal-window.c:1530
 msgid "X Terminal Emulator"
 msgstr "X:n Pääte-emulaattori"
 
-#: terminal/terminal-window.c:1528
+#: terminal/terminal-window.c:1534
 msgid "Maintainer"
 msgstr "Ylläpitäjä"
 
-#: terminal/terminal-window.c:1529
+#: terminal/terminal-window.c:1535
 msgid "Icon Designer"
 msgstr "Kuvakesuunnittelija"
 
-#: terminal/terminal-window.c:1533
+#: terminal/terminal-window.c:1539
 #, c-format
 msgid "Translator (%s)"
 msgstr "Kääntäjä (%s)"
@@ -1426,3 +1462,9 @@ msgstr "Kääntäjä (%s)"
 #, fuzzy
 msgid "Terminal Emulator"
 msgstr "X:n Pääte-emulaattori"
+
+#~ msgid "Unable to connect to D-BUS message daemon"
+#~ msgstr "Ei voi yhdistää D-BUS-viestipalveluun"
+
+#~ msgid "Unable to acquire service %s: %s"
+#~ msgstr "Palvelua %s ei voi ottaa käyttöön: %s"
