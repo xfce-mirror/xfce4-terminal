@@ -840,29 +840,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (box);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
-  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
-  gtk_widget_show (frame);
-
-  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Menubar access</b>"), "use-markup", TRUE, NULL);
-  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
-  gtk_widget_show (label);
-
-  vbox = gtk_vbox_new (FALSE, 10);
-  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
-  gtk_container_add (GTK_CONTAINER (frame), vbox);
-  gtk_widget_show (vbox);
-
-  button = gtk_check_button_new_with_mnemonic (_("Disable all me_nu access keys (such as Alt+f)"));
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics", G_OBJECT (button), "active");
-  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
-  gtk_widget_show (button);
-
-  button = gtk_check_button_new_with_mnemonic (_("Disable m_enu shortcut key (F10 by default)"));
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-menukey", G_OBJECT (button), "active");
-  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
-  gtk_widget_show (button);
-
-  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, TRUE, TRUE, 0);
   gtk_widget_show (frame);
 
@@ -887,6 +864,29 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   editor = terminal_shortcut_editor_new ();
   gtk_container_add (GTK_CONTAINER (ibox), editor);
   gtk_widget_show (editor);
+
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
+  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
+  gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Menubar access</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
+  vbox = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  gtk_widget_show (vbox);
+
+  button = gtk_check_button_new_with_mnemonic (_("Disable all me_nu access keys (such as Alt+f)"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics", G_OBJECT (button), "active");
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
+
+  button = gtk_check_button_new_with_mnemonic (_("Disable m_enu shortcut key (F10 by default)"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-menukey", G_OBJECT (button), "active");
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
                                  "terminal-shortcuts",
