@@ -96,6 +96,7 @@ static ToplevelMenu toplevel_menus[] =
     {
       "accel-copy",
       "accel-paste",
+      "accel-edit-helpers",
       "accel-preferences",
       NULL,
     },

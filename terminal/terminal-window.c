@@ -1173,6 +1173,42 @@ terminal_window_action_paste (GtkAction       *action,
 
 
 static void
+helper_dialog_response (GtkWidget *dialog,
+                        gint       response)
+{
+  GtkWidget *message;
+  GError    *error = NULL;
+  gchar     *command;
+
+  if (response == GTK_RESPONSE_HELP)
+    {
+      command = g_strconcat (TERMINAL_HELP_BIN, " preferred-applications", NULL);
+      if (!g_spawn_command_line_async (command, &error))
+        {
+          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_MODAL,
+                                            GTK_MESSAGE_ERROR,
+                                            GTK_BUTTONS_OK,
+                                            _("Unable to launch online help: %s"),
+                                            error->message);
+          g_signal_connect (G_OBJECT (message), "response",
+                            G_CALLBACK (gtk_widget_destroy), NULL);
+          gtk_widget_show (message);
+
+          g_error_free (error);
+        }
+      g_free (command);
+    }
+  else
+    {
+      gtk_widget_destroy (dialog);
+    }
+}
+
+
+
+static void
 terminal_window_action_edit_helpers (GtkAction      *action,
                                      TerminalWindow *window)
 {
@@ -1180,6 +1216,8 @@ terminal_window_action_edit_helpers (GtkAction      *action,
 
   dialog = g_object_new (TERMINAL_TYPE_HELPER_DIALOG, NULL);
   gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+  g_signal_connect (G_OBJECT (dialog), "response",
+                    G_CALLBACK (helper_dialog_response), NULL);
   gtk_widget_show (dialog);
 }
 
