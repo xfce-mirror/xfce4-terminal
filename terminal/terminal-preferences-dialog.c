@@ -431,9 +431,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   button = gtk_check_button_new_with_mnemonic (_("Allow bold text"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "font-allow-bold", G_OBJECT (button), "active");
-  gtk_tooltips_set_tip (dialog->tooltips, button,
-                        _("Controls whether or not the terminal will attempt to draw "
-                          "bold text by repainting text with a different offset"), NULL);
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
