@@ -75,6 +75,7 @@ static void            terminal_window_dispose                  (GObject        
 static void            terminal_window_finalize                 (GObject                *object);
 static void            terminal_window_show                     (GtkWidget              *widget);
 static TerminalWidget *terminal_window_get_active               (TerminalWindow         *window);
+static gboolean        terminal_window_confirm_close            (TerminalWindow  *window);
 static void            terminal_window_queue_reset_size         (TerminalWindow         *window);
 static gboolean        terminal_window_reset_size               (TerminalWindow         *window);
 static void            terminal_window_reset_size_destroy       (TerminalWindow         *window);
@@ -85,6 +86,7 @@ static void            terminal_window_set_size_force_grid      (TerminalWindow 
 static void            terminal_window_update_geometry          (TerminalWindow         *window);
 static void            terminal_window_update_actions           (TerminalWindow         *window);
 static void            terminal_window_update_mnemonics         (TerminalWindow         *window);
+static gboolean        terminal_window_delete_event             (TerminalWindow         *window);
 static void            terminal_window_notify_page              (GtkNotebook            *notebook,
                                                                  GParamSpec             *pspec,
                                                                  TerminalWindow         *window);
@@ -343,10 +345,10 @@ terminal_window_init (TerminalWindow *window)
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
   gtk_widget_show (window->notebook);
 
-  g_signal_connect_after (G_OBJECT (window), "delete-event",
-                          G_CALLBACK (gtk_widget_destroy), NULL);
-  g_signal_connect_after (G_OBJECT (window), "style-set",
-                          G_CALLBACK (terminal_window_queue_reset_size), NULL);
+  g_object_connect (G_OBJECT (window),
+                    "signal::delete-event", G_CALLBACK (terminal_window_delete_event), NULL,
+                    "signal-after::style-set", G_CALLBACK (terminal_window_queue_reset_size), NULL,
+                    NULL);
 
   /* set a unique role on each window (for session management) */
   role = g_strdup_printf ("Terminal-%p-%d-%d", window, getpid (), (gint) time (NULL));
@@ -447,6 +449,89 @@ terminal_window_get_active (TerminalWindow *window)
     return TERMINAL_WIDGET (gtk_notebook_get_nth_page (notebook, page_num));
   else
     return NULL;
+}
+
+
+
+static gboolean
+terminal_window_confirm_close (TerminalWindow *window)
+{
+  GtkWidget *dialog;
+  GtkWidget *hbox;
+  GtkWidget *image;
+  GtkWidget *vbox;
+  GtkWidget *label;
+  GtkWidget *checkbox;
+  gboolean   confirm_close;
+  gchar     *message;
+  gchar     *markup;
+  gint       response;
+  gint       n_tabs;
+
+  n_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  if (G_UNLIKELY (n_tabs < 2))
+    return TRUE;
+
+  g_object_get (G_OBJECT (window->preferences), "misc-confirm-close", &confirm_close, NULL);
+  if (!confirm_close)
+    return TRUE;
+
+  dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
+                                        GTK_DIALOG_DESTROY_WITH_PARENT
+                                        | GTK_DIALOG_NO_SEPARATOR
+                                        | GTK_DIALOG_MODAL,
+                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                        _("Close all tabs"), GTK_RESPONSE_YES,
+                                        NULL);
+
+  hbox = gtk_hbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
+  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
+  gtk_widget_show (hbox);
+
+  image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+  gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
+  gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
+  gtk_widget_show (image);
+
+  vbox = gtk_vbox_new (FALSE, 6);
+  gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+  gtk_widget_show (vbox);
+
+  message = g_strdup_printf (_("This window has %d tabs open. Closing\nthis "
+                               "window will also close all its tabs."), n_tabs);
+  markup = g_strdup_printf ("<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
+                            _("Close all tabs?"), message);
+  g_free (message);
+
+  label = g_object_new (GTK_TYPE_LABEL,
+                        "label", markup,
+                        "use-markup", TRUE,
+                        "xalign", 0.0,
+                        NULL);
+  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
+  gtk_widget_show (label);
+
+  g_free (markup);
+
+  checkbox = gtk_check_button_new_with_mnemonic (_("Do _not ask me again"));
+  gtk_box_pack_start (GTK_BOX (vbox), checkbox, FALSE, FALSE, 0);
+  gtk_widget_show (checkbox);
+
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
+  if (response == GTK_RESPONSE_YES)
+    {
+      if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbox)))
+        {
+          g_object_set (G_OBJECT (window->preferences),
+                        "misc-confirm-close", FALSE,
+                        NULL);
+        }
+    }
+
+  gtk_widget_destroy (dialog);
+
+  return (response == GTK_RESPONSE_YES);
 }
 
 
@@ -596,6 +681,14 @@ terminal_window_update_mnemonics (TerminalWindow *window)
           g_free (label);
         }
   g_list_free (actions);
+}
+
+
+
+static gboolean
+terminal_window_delete_event (TerminalWindow *window)
+{
+  return !terminal_window_confirm_close (window);
 }
 
 
@@ -774,7 +867,8 @@ static void
 terminal_window_action_close_window (GtkAction       *action,
                                      TerminalWindow  *window)
 {
-  gtk_widget_destroy (GTK_WIDGET (window));
+  if (terminal_window_confirm_close (window))
+    gtk_widget_destroy (GTK_WIDGET (window));
 }
 
 

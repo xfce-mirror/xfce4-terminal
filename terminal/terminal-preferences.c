@@ -93,6 +93,7 @@ enum
   PROP_MISC_CURSOR_BLINKS,
   PROP_MISC_MENUBAR_DEFAULT,
   PROP_MISC_TOOLBARS_DEFAULT,
+  PROP_MISC_CONFIRM_CLOSE,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -161,6 +162,7 @@ struct _TerminalPreferences
   gboolean                 misc_cursor_blinks;
   gboolean                 misc_menubar_default;
   gboolean                 misc_toolbars_default;
+  gboolean                 misc_confirm_close;
   TerminalScrollbar        scrolling_bar;
   guint                    scrolling_lines;
   gboolean                 scrolling_on_output;
@@ -179,6 +181,7 @@ struct _TerminalPreferences
 
 
 
+static void     terminal_preferences_dispose            (GObject             *object);
 static void     terminal_preferences_finalize           (GObject             *object);
 static void     terminal_preferences_get_property       (GObject             *object,
                                                          guint                prop_id,
@@ -294,6 +297,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->dispose = terminal_preferences_dispose;
   gobject_class->finalize = terminal_preferences_finalize;
   gobject_class->get_property = terminal_preferences_get_property;
   gobject_class->set_property = terminal_preferences_set_property;
@@ -891,6 +895,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:misc-confirm-close:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_CONFIRM_CLOSE,
+                                   g_param_spec_boolean ("misc-confirm-close",
+                                                         _("Confirm closing a window with multiple tabs"),
+                                                         _("Confirm closing a window with multiple tabs"),
+                                                         TRUE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:scrolling-bar:
    **/
   g_object_class_install_property (gobject_class,
@@ -1075,6 +1090,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->misc_cursor_blinks       = FALSE;
   preferences->misc_menubar_default     = TRUE;
   preferences->misc_toolbars_default    = FALSE;
+  preferences->misc_confirm_close       = TRUE;
 
   preferences->font_anti_alias          = TRUE;
   preferences->font_name                = g_strdup ("Monospace 12");
@@ -1102,12 +1118,26 @@ terminal_preferences_init (TerminalPreferences *preferences)
 
 
 static void
-terminal_preferences_finalize (GObject *object)
+terminal_preferences_dispose (GObject *object)
 {
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
 
+  /* flush preferences */
   if (G_UNLIKELY (preferences->store_idle_id != 0))
-    g_source_remove (preferences->store_idle_id);
+    {
+      terminal_preferences_store_idle (preferences);
+      g_source_remove (preferences->store_idle_id);
+    }
+
+  G_OBJECT_CLASS (parent_class)->dispose (object);
+}
+
+
+
+static void
+terminal_preferences_finalize (GObject *object)
+{
+  TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
 
   g_free (preferences->accel_new_tab);
   g_free (preferences->accel_new_window);
@@ -1348,6 +1378,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_MISC_TOOLBARS_DEFAULT:
       g_value_set_boolean (value, preferences->misc_toolbars_default);
+      break;
+
+    case PROP_MISC_CONFIRM_CLOSE:
+      g_value_set_boolean (value, preferences->misc_confirm_close);
       break;
 
     case PROP_SCROLLING_BAR:
@@ -1947,6 +1981,16 @@ terminal_preferences_set_property (GObject      *object,
         }
       break;
 
+    case PROP_MISC_CONFIRM_CLOSE:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->misc_confirm_close)
+        {
+          preferences->misc_confirm_close = bval;
+          g_object_notify (object, "misc-confirm-close");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
     case PROP_SCROLLING_BAR:
       ival = g_value_get_enum (value);
       if (ival != preferences->scrolling_bar)
@@ -2273,7 +2317,6 @@ terminal_preferences_get (void)
 
   return default_preferences;
 }
-
 
 
 

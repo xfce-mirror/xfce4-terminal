@@ -73,6 +73,11 @@ Terminal_LDFLAGS =							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
 	@VTE_LIBS@
 
+# install symlink to 'terminal'
+install-data-local:
+	$(mkinstalldirs) $(DESTDIR)$(bindir)
+	( cd $(DESTDIR)$(bindir) ; ln -sf Terminal terminal )
+
 # Used to regenerate all automatic files
 regenerate:
 	echo "Regenerating source files"
