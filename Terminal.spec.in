@@ -7,10 +7,10 @@ URL:			http://terminal.os-cillation.com/
 Source0:		%{name}-%{version}.tar.gz
 Group:			Applications/X11
 BuildRoot:		%{_tmppath}/%{name}-root
-Requires:		vte >= @VTE_REQUIRED_VERSION@
 Requires:		exo >= @EXO_REQUIRED_VERSION@
-BuildRequires:		vte-devel >= @VTE_REQUIRED_VERSION@
+Requires:		vte >= @VTE_REQUIRED_VERSION@
 BuildRequires:		exo-devel >= @EXO_REQUIRED_VERSION@
+BuildRequires:		vte-devel >= @VTE_REQUIRED_VERSION@
 
 %description
 This is the Terminal emulator application. Terminal is a lightweight and
@@ -21,7 +21,7 @@ ideas and features that makes it unique among X terminal emulators.
 %setup -q
 
 %build
-%configure
+%configure --enable-final
 make
 
 %install

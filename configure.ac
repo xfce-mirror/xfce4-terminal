@@ -49,7 +49,7 @@ dnl Check for i18n support
 XDT_I18N([de en_GB es fi fr he nl ru zh_TW])
 
 dnl Check for required packages
-XDT_CHECK_PACKAGE([EXO], [exo-0.2], [0.2.0])
+XDT_CHECK_PACKAGE([EXO], [exo-0.3], [0.3.0])
 XDT_CHECK_PACKAGE([VTE], [vte], [0.11.11])
 
 dnl Optional support for startup notification
