@@ -57,10 +57,10 @@ static const gchar *category_descriptions[] =
 {
   N_ ("Choose your preferred Web Browser. The preferred\n"
       "Web Browser opens when you right-click on a URL\n"
-      "and select Open URL from the context menu."),
+      "and select Open Link from the context menu."),
   N_ ("Choose your preferred Mail Reader. The preferred\n"
-      "Mail Reader opens when you right-click on a mail\n"
-      "address and select Compose E-Mail from the context\n"
+      "Mail Reader opens when you right-click on an email\n"
+      "address and select Compose Email from the context\n"
       "menu."),
 };
 
