@@ -57,3 +57,7 @@ DISTCLEANFILES =							\
 	intltool-merge							\
 	intltool-update							\
 	$(desktop_DATA)
+
+DISTCHECK_CONFIGURE_FLAGS = --enable-xsltproc
+
+# vi:set ts=8 sw=8 noet ai nocindent:

@@ -72,6 +72,17 @@ if test x"$DBUS_FOUND" = x"yes"; then
 fi
 
 
+dnl Check for xsltproc
+AC_ARG_ENABLE([xsltproc], [AC_HELP_STRING([--enable-xsltproc], [Use xsltproc to build documentation [default=no]])],, [enable_xsltproc=no])
+if test x"$enable_xsltproc" = x"yes"; then
+  AC_PATH_PROG([XSLTPROC], [xsltproc], [no])
+  if test x"$XSLTPROC" = x"no"; then
+    enable_xsltproc=no
+  fi
+fi
+AM_CONDITIONAL([ENABLE_XSLTPROC], [test x"$enable_xsltproc" = x"yes"])
+
+
 dnl Check for debugging support
 BM_DEBUG_SUPPORT()
 

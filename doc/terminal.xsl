@@ -41,12 +41,6 @@
 
 <xsl:param name="graphic.default.extension" select="png"/>
 
-<xsl:attribute-set name="shade.verbatim.style">
-	<xsl:attribute name="border">0</xsl:attribute>
-	<xsl:attribute name="bgcolor">#ffffff</xsl:attribute>
-	<xsl:attribute name="width">100%</xsl:attribute>
-</xsl:attribute-set>
-
 <!-- This requires an adapted template for tgroup (see end of stylesheet) -->
 <xsl:attribute-set name="table.style">
 	<xsl:attribute name="bgcolor">#fdf9f8</xsl:attribute>
@@ -56,8 +50,6 @@
 
 
 <xsl:param name="generate.legalnotice.link" select="0"/>
-
-<xsl:param name="shade.verbatim" select="1"/>
 
 <!-- set font styles for various tags   -->
 <xsl:template match="guibutton">
