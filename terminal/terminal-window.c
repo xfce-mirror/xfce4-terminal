@@ -1264,7 +1264,10 @@ terminal_window_about_idle (gpointer user_data)
   GtkWidget      *dialog;
   GdkPixbuf      *icon;
 
-  icon = xfce_themed_icon_load ("Terminal", 48);
+  icon = gtk_widget_render_icon (GTK_WIDGET (window),
+                                 "terminal-general",
+                                 GTK_ICON_SIZE_DIALOG,
+                                 NULL);
 
   info = xfce_about_info_new ("Terminal", VERSION, _("X Terminal Emulator"),
                               XFCE_COPYRIGHT_TEXT ("2003-2004", "os-cillation"),

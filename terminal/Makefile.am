@@ -1,15 +1,21 @@
 stock_icons =								\
+	stock-icon-advanced48.png					\
+	stock-icon-appearance48.png					\
 	stock-icon-closetab16.png					\
 	stock-icon-closetab24.png					\
 	stock-icon-closewindow16.png					\
 	stock-icon-closewindow24.png					\
+	stock-icon-colors48.png						\
+	stock-icon-compose48.png					\
 	stock-icon-fullscreen24.png					\
+	stock-icon-general48.png					\
 	stock-icon-newtab16.png						\
 	stock-icon-newtab24.png						\
 	stock-icon-newwindow16.png					\
 	stock-icon-newwindow24.png					\
 	stock-icon-reportbug16.png					\
 	stock-icon-reportbug24.png					\
+	stock-icon-shortcuts48.png					\
 	stock-icon-showborders24.png					\
 	stock-icon-showmenu24.png
 
@@ -82,17 +88,23 @@ install-data-local:
 regenerate:
 	echo "Regenerating source files"
 	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
+		stock_advanced48 stock-icon-advanced48.png \
+		stock_appearance48 stock-icon-appearance48.png \
 		stock_closetab16 stock-icon-closetab16.png \
 		stock_closetab24 stock-icon-closetab24.png \
 		stock_closewindow16 stock-icon-closewindow16.png \
 		stock_closewindow24 stock-icon-closewindow24.png \
+		stock_colors48 stock-icon-colors48.png \
+		stock_compose48 stock-icon-compose48.png \
 		stock_fullscreen24 stock-icon-fullscreen24.png \
+		stock_general48 stock-icon-general48.png \
 		stock_newtab16 stock-icon-newtab16.png \
 		stock_newtab24 stock-icon-newtab24.png \
 		stock_newwindow16 stock-icon-newwindow16.png \
 		stock_newwindow24 stock-icon-newwindow24.png \
 		stock_reportbug16 stock-icon-reportbug16.png \
 		stock_reportbug24 stock-icon-reportbug24.png \
+		stock_shortcuts48 stock-icon-shortcuts48.png \
 		stock_showborders24 stock-icon-showborders24.png \
 		stock_showmenu24 stock-icon-showmenu24.png ) \
 	> stock-icons.h
@@ -119,6 +131,5 @@ clean-local:
 	rm -f *.core core core.* stamp-*.h
 
 EXTRA_DIST =								\
-	$(stock_icons)							\
 	terminal-config.h.in
 

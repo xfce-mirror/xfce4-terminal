@@ -385,15 +385,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-  icon = xfce_themed_icon_load ("Terminal-general", 48);
+  icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
+                                 "terminal-general",
+                                 GTK_ICON_SIZE_DIALOG,
+                                 NULL);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("General"),
                       INDEX_COLUMN, index,
                       -1);
-  if (icon != NULL)
-    g_object_unref (G_OBJECT (icon));
+  g_object_unref (G_OBJECT (icon));
 
 
   /*
@@ -566,15 +568,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  icon = xfce_themed_icon_load ("Terminal-appearance.png", 48);
+  icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
+                                 "terminal-appearance",
+                                 GTK_ICON_SIZE_DIALOG,
+                                 NULL);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Appearance"),
                       INDEX_COLUMN, index,
                       -1);
-  if (icon != NULL)
-    g_object_unref (icon);
+  g_object_unref (icon);
 
 
   /*
@@ -814,16 +818,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_table_attach (GTK_TABLE (table), button, 7, 8, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
-  icon = xfce_themed_icon_load ("Terminal-colors", 48);
+  icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
+                                 "terminal-colors",
+                                 GTK_ICON_SIZE_DIALOG,
+                                 NULL);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Colors"),
                       INDEX_COLUMN, index,
                       -1);
-
-  if (icon != NULL)
-    g_object_unref (G_OBJECT (icon));
+  g_object_unref (G_OBJECT (icon));
 
 
   /*
@@ -898,15 +903,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
   gtk_widget_show (label);
 
-  icon = xfce_themed_icon_load ("Terminal-shortcuts.png", 48);
+  icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
+                                 "terminal-shortcuts",
+                                 GTK_ICON_SIZE_DIALOG,
+                                 NULL);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Shortcuts"),
                       INDEX_COLUMN, index,
                       -1);
-  if (icon != NULL)
-    g_object_unref (icon);
+  g_object_unref (icon);
 
 
   /*
@@ -1050,15 +1057,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-  icon = xfce_themed_icon_load ("Terminal-advanced.png", 48);
+  icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
+                                 "terminal-advanced",
+                                 GTK_ICON_SIZE_DIALOG,
+                                 NULL);
   gtk_list_store_append (store, &iter);
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Advanced"),
                       INDEX_COLUMN, index,
                       -1);
-  if (icon != NULL)
-    g_object_unref (icon);
+  g_object_unref (icon);
 
   exo_mutual_binding_new (G_OBJECT (dialog->notebook), "page", G_OBJECT (dialog->icon_bar), "active");
 

@@ -1,6 +1,6 @@
 SUBDIRS =								\
 	doc								\
-	icons								\
+	pixmaps								\
 	po								\
 	terminal
 

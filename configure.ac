@@ -66,9 +66,7 @@ Terminal.spec
 doc/Makefile
 doc/C/Makefile
 doc/C/images/Makefile
-icons/Makefile
-icons/48x48/Makefile
-icons/scalable/Makefile
+pixmaps/Makefile
 po/Makefile.in
 terminal/Makefile
 terminal/terminal-config.h

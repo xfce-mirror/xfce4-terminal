@@ -270,7 +270,6 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   GtkWidget    *hbox;
   GtkWidget    *image;
   GtkWidget    *label;
-  GdkPixbuf    *icon;
   gchar        *property;
   gchar        *title;
   gchar        *text;
@@ -300,14 +299,9 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
-  icon = xfce_themed_icon_load ("terminal-compose-key", 48);
-  if (G_LIKELY (icon != NULL))
-    {
-      image = gtk_image_new_from_pixbuf (icon);
-      gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
-      gtk_widget_show (image);
-      g_object_unref (G_OBJECT (icon));
-    }
+  image = gtk_image_new_from_stock ("terminal-compose", GTK_ICON_SIZE_DIALOG);
+  gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
+  gtk_widget_show (image);
 
   gtk_tree_model_get (model, &iter, COLUMN_TITLE, &title, -1);
   text = g_strdup_printf ("<i>%s</i>\n<b>%s</b>",
