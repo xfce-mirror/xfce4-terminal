@@ -1,0 +1,82 @@
+/* $Id: terminal-preferences.h,v 1.5 2004/09/17 10:16:45 bmeurer Exp $ */
+/*-
+ * Copyright (c) 2004 os-cillation e.K.
+ *
+ * Written by Benedikt Meurer <benny@xfce.org>.
+ *
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation; either version 2 of the License, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+ * Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+#ifndef __TERMINAL_PREFERENCES_H__
+#define __TERMINAL_PREFERENCES_H__
+
+#include <exo/exo.h>
+
+G_BEGIN_DECLS;
+
+#define TERMINAL_TYPE_PREFERENCES             (terminal_preferences_get_type ())
+#define TERMINAL_PREFERENCES(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferences))
+#define TERMINAL_PREFERENCES_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_PREFERENCES, TerminalPreferencesClass))
+#define TERMINAL_IS_PREFERENCES(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), TERMINAL_TYPE_PREFERENCES))
+#define TERMINAL_IS_PREFERENCES_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_PREFERENCES))
+#define TERMINAL_PREFERENCES_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferencesClass))
+
+typedef struct _TerminalPreferencesClass TerminalPreferencesClass;
+typedef struct _TerminalPreferences      TerminalPreferences;
+
+typedef enum /*< enum,prefix=TERMINAL_SCROLLBAR >*/
+{
+  TERMINAL_SCROLLBAR_NONE,
+  TERMINAL_SCROLLBAR_LEFT,
+  TERMINAL_SCROLLBAR_RIGHT,
+} TerminalScrollbar;
+
+typedef enum /*< enum,prefix=TERMINAL_TITLE >*/
+{
+  TERMINAL_TITLE_REPLACE,
+  TERMINAL_TITLE_PREPEND,
+  TERMINAL_TITLE_APPEND,
+  TERMINAL_TITLE_HIDE,
+} TerminalTitle;
+
+typedef enum /*< enum,prefix=TERMINAL_BACKGROUND >*/
+{
+  TERMINAL_BACKGROUND_SOLID,
+  TERMINAL_BACKGROUND_IMAGE,
+  TERMINAL_BACKGROUND_TRANSPARENT,
+} TerminalBackground;
+
+typedef enum /*< enum,prefix=TERMINAL_ERASE_BINDING >*/
+{
+  TERMINAL_ERASE_BINDING_ASCII_BACKSPACE,
+  TERMINAL_ERASE_BINDING_ASCII_DELETE,
+  TERMINAL_ERASE_BINDING_DELETE_SEQUENCE,
+} TerminalEraseBinding;
+
+struct _TerminalPreferencesClass
+{
+  GObjectClass __parent__;
+};
+
+GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
+
+TerminalPreferences *terminal_preferences_get       (void);
+
+ExoPropertyProxy    *terminal_preferences_get_proxy (TerminalPreferences *preferences,
+                                                     const gchar         *property_name);
+
+G_END_DECLS;
+
+#endif /* !__TERMINAL_PREFERENCES_H__ */

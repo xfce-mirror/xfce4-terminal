@@ -1,0 +1,149 @@
+2004-09-17 12:16  bmeurer
+
+	* ChangeLog, configure, configure.ac, icons/48x48/Makefile.am,
+	icons/48x48/Makefile.in, icons/48x48/terminal-shortcuts.png,
+	terminal/Makefile.am, terminal/Makefile.in,
+	terminal/terminal-app.c, terminal/terminal-app.h,
+	terminal/terminal-options.c, terminal/terminal-options.h,
+	terminal/terminal-preferences-dialog.c,
+	terminal/terminal-preferences-dialog.h,
+	terminal/terminal-preferences.c, terminal/terminal-preferences.h,
+	terminal/terminal-widget.c, terminal/terminal-widget.h,
+	terminal/terminal-window.c, terminal/terminal-window.h: F10
+	accelerator is now configurable. Minor cleanups and adjustments for
+	the new version handling in exo.
+
+2004-09-16 21:47  bmeurer
+
+	* terminal/terminal-window.c: Disable F10 for menubar access (needs
+	to be configurable!).
+
+2004-09-16 20:46  bmeurer
+
+	* AUTHORS, ChangeLog, TODO, configure, configure.ac,
+	terminal/main.c, terminal/terminal-widget.c,
+	terminal/terminal-widget.h, terminal/terminal-window.c: Geometry
+	handling nearly fixed (only the case where a tab is removed isn't
+	handled yet). Also fixed the window icon issue. Misc other fixes.
+
+2004-09-16 13:02  bmeurer
+
+	* ChangeLog, Makefile.am, Makefile.in, configure, configure.ac,
+	icons/Makefile.am, icons/Makefile.in, icons/48x48/Makefile.am,
+	icons/48x48/Makefile.in, icons/48x48/terminal-advanced.png,
+	icons/48x48/terminal-appearance.png,
+	icons/48x48/terminal-general.png, icons/48x48/terminal.png,
+	terminal/main.c, terminal/terminal-app.c, terminal/terminal-app.h,
+	terminal/terminal-enum-types.c, terminal/terminal-options.c,
+	terminal/terminal-options.h, terminal/terminal-widget.c,
+	terminal/terminal-widget.h, terminal/terminal-window.c: Added
+	missing icons. Try to fix the geometry code.
+
+2004-09-16 02:14  bmeurer
+
+	* TODO: More TODO.
+
+2004-09-16 02:02  bmeurer
+
+	* TODO: Feature request by perldude.
+
+2004-09-16 01:38  bmeurer
+
+	* AUTHORS, Makefile.in, TODO, configure, configure.ac,
+	terminal/Makefile.am, terminal/Makefile.in, terminal/main.c,
+	terminal/terminal-app.c, terminal/terminal-app.h,
+	terminal/terminal-enum-types.c, terminal/terminal-options.c,
+	terminal/terminal-options.h, terminal/terminal-widget.c,
+	terminal/terminal-window.c, terminal/terminal-window.h: Initial
+	D-BUS interface finished. Command line options module added.
+
+2004-09-16 01:37  bmeurer
+
+	* terminal/main.c: Damn it.
+
+2004-09-15 19:05  bmeurer
+
+	* terminal/: main.c, terminal-enum-types.c, terminal-enum-types.h,
+	terminal-preferences-dialog.c, terminal-preferences.c,
+	terminal-preferences.h, terminal-widget.c, terminal-window.c: Added
+	DnD support (mostly based on the gnome-terminal implementation,
+	thanks Havoc). Added file chooser dialog for the background image,
+	the preferences dialog is now fully functional. Bugfixes in the
+	update_background code in TerminalWidget.
+
+2004-09-15 12:20  bmeurer
+
+	* configure, terminal/terminal-preferences-dialog.c: Additions to
+	the preferences dialog.
+
+2004-09-15 11:10  bmeurer
+
+	* terminal/terminal-window.c: Disable fullscreen if window manager
+	does not support it. Update actions on first newtab.
+
+2004-09-15 00:37  bmeurer
+
+	* config.h.in, configure, configure.ac, terminal/Makefile.am,
+	terminal/Makefile.in, terminal/main.c,
+	terminal/terminal-enum-types.c, terminal/terminal-enum-types.h,
+	terminal/terminal-preferences-dialog.c,
+	terminal/terminal-preferences.c, terminal/terminal-preferences.h,
+	terminal/terminal-widget.c, terminal/terminal-widget.h,
+	terminal/terminal-window.c: Store/load preferences. Added a lot of
+	missing preferences. Make the selection handling work. Use the new
+	ExoIconBar API. Make better use of ExoPropertyProxy's. Bugfixes.
+
+2004-09-14 13:02  bmeurer
+
+	* .in, configure, configure.ac,
+	terminal/terminal-preferences-dialog.c,
+	terminal/terminal-preferences.c, terminal/terminal-widget.c,
+	terminal/terminal-window.c: Fix 'New tab' bug. Added further
+	preferences (mostly background prefs).
+
+2004-09-14 01:11  bmeurer
+
+	* ChangeLog, configure, terminal/Makefile.am, terminal/Makefile.in,
+	terminal/main.c, terminal/terminal-enum-types.c,
+	terminal/terminal-enum-types.h,
+	terminal/terminal-preferences-dialog.c,
+	terminal/terminal-preferences-dialog.h,
+	terminal/terminal-preferences.c, terminal/terminal-preferences.h,
+	terminal/terminal-widget.c, terminal/terminal-window.c: Added
+	preferences dialog and several preferences.
+
+2004-09-11 13:59  bmeurer
+
+	* terminal/terminal-window.c: Don't show border around the
+	notebook.
+
+2004-09-11 00:31  bmeurer
+
+	* .in, AUTHORS, COPYING, ChangeLog, Makefile.am, Makefile.in,
+	aclocal.m4, autogen.sh, compile, config.guess, config.h.in,
+	config.sub, configure, configure.ac, depcomp, install-sh,
+	ltmain.sh, missing, m4/X11.m4, m4/debug.m4, m4/depends.m4,
+	m4/i18n.m4, m4/pkg.m4, terminal/Makefile.am, terminal/Makefile.in,
+	terminal/main.c, terminal/stock-icon-newtab.png,
+	terminal/stock-icon-newwindow.png, terminal/stock-icons.h,
+	terminal/terminal-enum-types.c, terminal/terminal-enum-types.h,
+	terminal/terminal-preferences.c, terminal/terminal-preferences.h,
+	terminal/terminal-widget.c, terminal/terminal-widget.h,
+	terminal/terminal-window.c, terminal/terminal-window.h: Initial
+	revision
+
+2004-09-11 00:31  bmeurer
+
+	* .in, AUTHORS, COPYING, ChangeLog, Makefile.am, Makefile.in,
+	aclocal.m4, autogen.sh, compile, config.guess, config.h.in,
+	config.sub, configure, configure.ac, depcomp, install-sh,
+	ltmain.sh, missing, m4/X11.m4, m4/debug.m4, m4/depends.m4,
+	m4/i18n.m4, m4/pkg.m4, terminal/Makefile.am, terminal/Makefile.in,
+	terminal/main.c, terminal/stock-icon-newtab.png,
+	terminal/stock-icon-newwindow.png, terminal/stock-icons.h,
+	terminal/terminal-enum-types.c, terminal/terminal-enum-types.h,
+	terminal/terminal-preferences.c, terminal/terminal-preferences.h,
+	terminal/terminal-widget.c, terminal/terminal-widget.h,
+	terminal/terminal-window.c, terminal/terminal-window.h: Initial
+	import.
+
