@@ -17,7 +17,13 @@ EXTRA_DIST =								\
 	$(desktop_DATA)							\
 	AUTHORS								\
 	COPYING								\
+	ChangeLog							\
 	HACKING								\
-	TODO
+	INSTALL								\
+	NEWS								\
+	README								\
+	TODO								\
+	Terminal.spec.in						\
+	Terminal.spec
 
 ACLOCAL_AMFLAGS = -I m4

@@ -1,0 +1,35 @@
+Summary:		X Terminal Emulator
+Name:			Terminal
+Version:		@VERSION@
+Release:		1
+License:		GPL
+URL:			http://www.os-cillation.com/
+Source:			%{name}-%{version}.tar.gz
+Group:			Applications/X11
+Requires:		vte >= @VTE_REQUIRED_VERSION@
+Requires:		libexo >= @EXO_REQUIRED_VERSION@
+BuildRequires:		vte-devel >= @VTE_REQUIRED_VERSION@
+BuildRequires:		libexo-devel >= @EXO_REQUIRED_VERSION@
+
+%description
+Advanced lightweight Terminal Emulator for the X windowing system.
+
+%prep
+%setup -q
+
+%build
+%configure
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT mandir=${_mandir}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(-,root,root)
+%doc README TODO ChangeLog NEWS INSTALL COPYING AUTHORS HACKING
+%{_bindir}/*
+%{_datadir}/*

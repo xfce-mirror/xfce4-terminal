@@ -65,6 +65,7 @@ fi
 
 AC_OUTPUT([
 Makefile
+Terminal.spec
 icons/Makefile
 icons/48x48/Makefile
 po/Makefile.in

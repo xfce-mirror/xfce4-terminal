@@ -1,0 +1,25 @@
+Coding Style
+============
+
+ - GNU coding conventions, with GLib-like extensions, mostly the same
+   as GTK+.
+ - Always expand tabs. This differs from the GNU suggestion, but is
+   necessary!
+
+
+Release process
+===============
+
+ 1) Check out the copy from Subversion
+ 2) Increment the version number in configure.ac
+ 3) Update NEWS and ChangeLog, and don't forget to add an entry
+    ("Released x.y.z") to ChangeLog, so people can see which changes
+    were before and after a given release.
+ 4) Verify that make dist works.
+ 5) "svn commit" the changes.
+ 6) Create a simple tag for the release,
+      "svn copy http://os-cillation.de:8080/repos/terminal/trunk \
+         http://os-cillation.de:8080/repos/terminal/tags/release-X.Y.Z"
+    where X.Y.Z is the version number.
+ 7) upload the tarball to os-cillation ftp
+ 8) Update freshmeat entry.

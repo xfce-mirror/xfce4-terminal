@@ -48,9 +48,6 @@ install: build
 
 	install -c -m 0755 `pwd`/debian/Terminal.wrapper `pwd`/debian/terminal/usr/bin
 
-	install -d `pwd`/debian/terminal/usr/share/pixmaps
-	install -c `pwd`/debian/Terminal.xpm `pwd`/debian/terminal/usr/share/pixmaps
-
 	install -d `pwd`/debian/terminal/usr/share/man/man1
 	install `pwd`/debian/Terminal.1 `pwd`/debian/terminal/usr/share/man/man1
 
