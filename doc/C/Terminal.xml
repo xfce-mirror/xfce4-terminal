@@ -18,6 +18,14 @@
       <holder>os-cillation</holder>
     </copyright>
 
+    <legalnotice id="legalnotice">
+      <para>
+        This document is distributed under the terms of the GNU General Public License
+        as published by the Free Software Foundation; either version 2 of the License, or
+        (at your option) any later version.
+      </para>
+    </legalnotice>
+
     <authorgroup>
       <author>
         <firstname>Benedikt</firstname>
@@ -35,7 +43,6 @@
       This manual describes the &app; software, version &appversion;.
       Last updated: &date;
     </releaseinfo>
-
   </articleinfo>
 
   <para>&nbsp;</para>
@@ -452,7 +459,7 @@
       </variablelist>
     </sect2>
 
-    <sect2 id="toolbars">
+    <sect2 id="customize-toolbars">
       <title>To customize the toolbars</title>
 
       <para>As already mentioned, &app; includes support for customizable toolbars. The toolbars
@@ -845,6 +852,125 @@
       </variablelist>
     </sect2>
 
+  </sect1>
+
+  <sect1 id="advanced">
+    <title>Advanced topics</title>
+
+    <sect2 id="files-and-env-vars">
+      <title>Files and Environment Variables</title>
+
+      <para>
+        Terminal uses the Basedir Specification as defined on <ulink url="http://freedesktop.org/"
+        type="http">Freedesktop.org</ulink> to locate its data and configuration files. This means
+        that file locations will be specified as a path relative to the directories described in
+        the specification.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_HOME}</varname></term>
+          <listitem>
+            <para>
+              The first base directory to look for configuration 
+              files. By default this is set to <filename
+              role="directory">~/.config/</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_DIRS}</varname></term>
+          <listitem>
+            <para>
+              A colon separated list of base directories that contain configuration
+              data. By default the application will look in <filename 
+              role="directory">${sysconfdir}/xdg/</filename>. The value of
+              <varname>${sysconfdir}</varname> depends on how the program was
+              build and will often be <filename role="directory">/etc/</filename>
+              for binary packages.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_HOME}</varname></term>
+          <listitem>
+            <para>
+              The root for all user-specific data files. By default this
+              is set to <filename role="directory">~/.local/share/</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_DIRS}</varname></term>
+          <listitem>
+            <para>
+              A set of preference ordered base directories relative to which
+              data files should be searched in addition to the
+              <varname>${XDG_DATA_HOME}</varname> base directory. The directories
+              should be separated with a color.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_CONFIG_DIRS}/Terminal/terminalrc</filename></term>
+          <listitem>
+            <para>
+              This is the location of the configuration file that includes the
+              preferences which control the look and feel of &app;.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal.ui</filename></term>
+          <listitem>
+            <para>
+              This is the location of the main user interface description file. It
+              includes the definitions for the main menubar and the right-click
+              menu.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
+          <listitem>
+            <para>
+              This file includes the user interface definition for the toolbars. If
+              you customize the toolbars using the graphical toolbars editor, &app;
+              will store the new toolbars layout in the file
+              <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="hidden-options">
+      <title>Hidden options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>MiscBell</varname></term>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscConfirmClose</varname></term>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorBlinks</varname></term>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>VteWorkaroundTitleBug</varname></term>
+        </varlistentry>
+      </variablelist>
+    </sect2>
   </sect1>
 
   <sect1 id="faq">

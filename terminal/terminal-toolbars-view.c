@@ -36,7 +36,6 @@ static void       terminal_toolbars_view_init              (TerminalToolbarsView
 static void       terminal_toolbars_view_finalize          (GObject                       *object);
 static void       terminal_toolbars_view_edit_done         (ExoToolbarsEditorDialog       *dialog,
                                                             TerminalToolbarsView          *toolbar);
-static gboolean   terminal_toolbars_view_popup_menu        (TerminalToolbarsView          *toolbar);
 
 
 
@@ -70,8 +69,8 @@ terminal_toolbars_view_init (TerminalToolbarsView *toolbar)
   exo_toolbars_view_set_model (EXO_TOOLBARS_VIEW (toolbar), model);
   g_object_unref (G_OBJECT (model));
 
-  g_signal_connect (G_OBJECT (toolbar), "popup-menu",
-                    G_CALLBACK (terminal_toolbars_view_popup_menu), NULL);
+  g_signal_connect (G_OBJECT (toolbar), "customize",
+                    G_CALLBACK (terminal_toolbars_view_edit), NULL);
 }
 
 
@@ -94,34 +93,6 @@ terminal_toolbars_view_edit_done (ExoToolbarsEditorDialog *dialog,
                                   TerminalToolbarsView    *toolbar)
 {
   exo_toolbars_view_set_editing (EXO_TOOLBARS_VIEW (toolbar), FALSE);
-}
-
-
-
-static gboolean
-terminal_toolbars_view_popup_menu (TerminalToolbarsView *toolbar)
-{
-  GdkScreen *screen;
-  GtkWidget *menu;
-  GtkWidget *item;
-
-  screen = gtk_widget_get_screen (GTK_WIDGET (toolbar));
-  if (G_UNLIKELY (screen == NULL))
-    return FALSE;
-
-  menu = gtk_menu_new ();
-  gtk_menu_set_screen (GTK_MENU (menu), screen);
-
-  item = gtk_menu_item_new_with_mnemonic (_("_Customize..."));
-  g_signal_connect_swapped (G_OBJECT (item), "activate",
-                            G_CALLBACK (terminal_toolbars_view_edit), toolbar);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-  gtk_widget_show (item);
-
-  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL,
-                  0, gtk_get_current_event_time ());
-
-  return TRUE;
 }
 
 
