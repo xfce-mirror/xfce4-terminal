@@ -238,7 +238,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::background-darkness", G_CALLBACK (terminal_screen_update_background), screen,
                     "swapped-signal::notify::binding-backspace", G_CALLBACK (terminal_screen_update_binding_backspace), screen,
                     "swapped-signal::notify::binding-delete", G_CALLBACK (terminal_screen_update_binding_delete), screen,
-                    "swapped-signal::notify::color-system-theme", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-foreground", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-background", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette1", G_CALLBACK (terminal_screen_update_colors), screen,
@@ -549,27 +548,14 @@ query_color (TerminalPreferences *preferences,
 static void
 terminal_screen_update_colors (TerminalScreen *screen)
 {
-  gboolean system_theme;
   GdkColor palette[16];
   GdkColor bg;
   GdkColor fg;
   gchar    name[32];
   guint    n;
 
-  g_object_get (G_OBJECT (screen->preferences),
-                "color-system-theme", &system_theme,
-                NULL);
-
-  if (system_theme)
-    {
-      bg = screen->terminal->style->base[GTK_STATE_NORMAL];
-      fg = screen->terminal->style->text[GTK_STATE_NORMAL];
-    }
-  else
-    {
-      query_color (screen->preferences, "color-background", &bg);
-      query_color (screen->preferences, "color-foreground", &fg);
-    }
+  query_color (screen->preferences, "color-background", &bg);
+  query_color (screen->preferences, "color-foreground", &fg);
 
   for (n = 0; n < 16; ++n)
     {
