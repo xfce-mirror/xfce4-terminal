@@ -272,6 +272,8 @@ terminal_widget_init (TerminalWidget *widget)
                     G_CALLBACK (terminal_widget_vte_window_title_changed), widget);
   g_signal_connect_swapped (G_OBJECT (widget->terminal), "size-allocate",
                             G_CALLBACK (terminal_widget_timer_background), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->terminal), "style-set",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
   gtk_box_pack_start (GTK_BOX (widget), widget->terminal, TRUE, TRUE, 0);
   gtk_widget_show (widget->terminal);
 
@@ -302,6 +304,8 @@ terminal_widget_init (TerminalWidget *widget)
                             G_CALLBACK (terminal_widget_update_binding_backspace), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::binding-delete",
                             G_CALLBACK (terminal_widget_update_binding_delete), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-system-theme",
+                            G_CALLBACK (terminal_widget_update_colors), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-foreground",
                             G_CALLBACK (terminal_widget_update_colors), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::color-background",
@@ -642,6 +646,7 @@ query_color (TerminalPreferences *preferences,
 static void
 terminal_widget_update_colors (TerminalWidget *widget)
 {
+  gboolean system_theme;
   GdkColor palette[16];
   GdkColor bg;
   GdkColor fg;
@@ -650,8 +655,20 @@ terminal_widget_update_colors (TerminalWidget *widget)
 
   if (GTK_WIDGET_REALIZED (widget))
     {
-      query_color (widget->preferences, "color-background", &bg);
-      query_color (widget->preferences, "color-foreground", &fg);
+      g_object_get (G_OBJECT (widget->preferences),
+                    "color-system-theme", &system_theme,
+                    NULL);
+
+      if (system_theme)
+        {
+          bg = widget->terminal->style->base[GTK_STATE_NORMAL];
+          fg = widget->terminal->style->text[GTK_STATE_NORMAL];
+        }
+      else
+        {
+          query_color (widget->preferences, "color-background", &bg);
+          query_color (widget->preferences, "color-foreground", &fg);
+        }
 
       for (n = 0; n < 16; ++n)
         {

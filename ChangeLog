@@ -1,3 +1,27 @@
+2004-11-15	Benedikt Meurer <benny@xfce.org>
+
+	* Terminal.ui: Removed close-tab from the default right-click
+	  menu.
+	* terminal/terminal-toolbars-view.c: Added a right-click menu
+	  to the toolbars that allows you to enter Editing mode.
+	* terminal/terminal-window.c: Added '...' to menu items that require
+	  further user input. Make close-tab insensitive if only one tab
+	  is currently open.
+	* terminal/terminal-preferences.c, terminal/terminal-widget.c,
+	  terminal/terminal-preferences-dialog.c: Added an option to use
+	  the terminal foreground and background color from the given
+	  Gtk+ theme.
+	* icons/48x48/Terminal-colors.png, icons/scalable/Terminal-colors.svg,
+	  icons/48x48/Terminal-appearance.png,
+	  icons/scalable/Terminal-appearance.svg,
+	  terminal/terminal-preferences-dialog.c: Major interface rework of
+	  the Preferences dialog picking up several ideas from the GNOME
+	  Human Interface Guidelines.
+	* po/: Updated translations.
+	* configure.ac, HACKING: Added terminal_version_tag M4 macro that is
+	  set to `svn' between releases to indicate that this is not an
+	  officially released version.
+
 2004-11-14	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/Makefile.am, terminal/Makefile.in, HACKING: Do not

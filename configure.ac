@@ -10,19 +10,20 @@ dnl Version information
 m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [1])
 m4_define([terminal_version_micro], [10])
-m4_define([terminal_version], [terminal_version_major.terminal_version_minor.terminal_version_micro])
+m4_define([terminal_version_tag], [svn])
+m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
 
 dnl Initialize autoconf
 AC_COPYRIGHT([Copyright (c) 2003-2004
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
-AC_INIT([Terminal], [terminal_version], [http://bugs.os-cillation.de/])
+AC_INIT([Terminal], [terminal_version()], [http://bugs.os-cillation.de/])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
 
 dnl Initialize automake
-TERMINAL_VERSION=terminal_version
+TERMINAL_VERSION=terminal_version()
 AM_INIT_AUTOMAKE([Terminal], [$TERMINAL_VERSION])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE

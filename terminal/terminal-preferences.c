@@ -65,6 +65,7 @@ enum
   PROP_BACKGROUND_DARKNESS,
   PROP_BINDING_BACKSPACE,
   PROP_BINDING_DELETE,
+  PROP_COLOR_SYSTEM_THEME,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
   PROP_COLOR_PALETTE1,
@@ -130,6 +131,7 @@ struct _TerminalPreferences
   gdouble                  background_darkness;
   TerminalEraseBinding     binding_backspace;
   TerminalEraseBinding     binding_delete;
+  gboolean                 color_system_theme;
   GdkColor                 color_foreground;
   GdkColor                 color_background;
   GdkColor                 color_palette1;
@@ -577,6 +579,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:color-system-theme:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_SYSTEM_THEME,
+                                   g_param_spec_boolean ("color-system-theme",
+                                                         _("Use colors from system theme"),
+                                                         _("Use colors from system theme"),
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:color-foreground:
    **/
   g_object_class_install_property (gobject_class,
@@ -1008,6 +1021,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->binding_backspace      = TERMINAL_ERASE_BINDING_ASCII_BACKSPACE;
   preferences->binding_delete         = TERMINAL_ERASE_BINDING_DELETE_SEQUENCE;
 
+  preferences->color_system_theme     = FALSE;
   gdk_color_parse ("White", &preferences->color_foreground);
   gdk_color_parse ("Black", &preferences->color_background);
   gdk_color_parse ("#000000000000", &preferences->color_palette1);
@@ -1194,6 +1208,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_BINDING_DELETE:
       g_value_set_enum (value, preferences->binding_delete);
+      break;
+
+    case PROP_COLOR_SYSTEM_THEME:
+      g_value_set_boolean (value, preferences->color_system_theme);
       break;
 
     case PROP_COLOR_FOREGROUND:
@@ -1608,6 +1626,16 @@ terminal_preferences_set_property (GObject      *object,
         {
           preferences->binding_delete = ival;
           g_object_notify (object, "binding-delete");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_COLOR_SYSTEM_THEME:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->color_system_theme)
+        {
+          preferences->color_system_theme = bval;
+          g_object_notify (object, "color-system-theme");
           terminal_preferences_schedule_store (preferences);
         }
       break;

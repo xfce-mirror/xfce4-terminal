@@ -162,13 +162,13 @@ static GtkActionEntry action_entries[] =
   { "edit-menu", NULL, N_ ("_Edit"),  },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
-  { "edit-toolbars", NULL, N_ ("_Toolbars"), NULL, N_ ("Customize toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
-  { "preferences", GTK_STOCK_PREFERENCES, N_ ("Preferences"), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
+  { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
+  { "preferences", GTK_STOCK_PREFERENCES, N_ ("Preferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), },
   { "terminal-menu", NULL, N_ ("_Terminal"), },
   { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), NULL, N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
   { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), NULL, N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
-  { "set-title", NULL, N_ ("_Set Title"), NULL, N_ ("Set a custom title for the current tab"), G_CALLBACK (terminal_window_action_set_title), },
+  { "set-title", NULL, N_ ("_Set Title..."), NULL, N_ ("Set a custom title for the current tab"), G_CALLBACK (terminal_window_action_set_title), },
   { "reset", GTK_STOCK_REFRESH, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
   { "reset-and-clear", GTK_STOCK_CLEAR, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "help-menu", NULL, N_ ("_Help"), },
@@ -300,7 +300,7 @@ terminal_window_init (TerminalWindow *window)
 
   /* setup toolbars visibility */
   action = gtk_action_group_get_action (window->action_group, "edit-toolbars");
-  g_object_set (G_OBJECT (action), "visible", FALSE, NULL);
+  g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
   g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &bval, NULL);
   action = gtk_action_group_get_action (window->action_group, "show-toolbars");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
@@ -478,6 +478,11 @@ terminal_window_update_actions (TerminalWindow *window)
     {
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (terminal));
       n_pages = gtk_notebook_get_n_pages (notebook);
+
+      action = gtk_action_group_get_action (window->action_group, "close-tab");
+      g_object_set (G_OBJECT (action),
+                    "sensitive", n_pages > 1,
+                    NULL);
 
       action = gtk_action_group_get_action (window->action_group, "prev-tab");
       g_object_set (G_OBJECT (action),
@@ -745,7 +750,7 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
         }
 
       g_object_set (G_OBJECT (action_edit),
-                    "visible", TRUE,
+                    "sensitive", TRUE,
                     NULL);
     }
   else
@@ -754,7 +759,7 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
         gtk_widget_destroy (window->toolbars);
 
       g_object_set (G_OBJECT (action_edit),
-                    "visible", FALSE,
+                    "sensitive", FALSE,
                     NULL);
     }
 
