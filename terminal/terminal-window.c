@@ -155,6 +155,7 @@ struct _TerminalWindow
   gchar               *startup_id;
 
   TerminalPreferences *preferences;
+  GtkWidget           *preferences_dialog;
 
   GtkActionGroup      *action_group;
   GtkUIManager        *ui_manager;
@@ -1131,10 +1132,19 @@ terminal_window_action_about (GtkAction       *action,
 static gboolean
 terminal_window_prefs_idle (gpointer user_data)
 {
-  GtkWidget *dialog;
+  TerminalWindow *window = TERMINAL_WINDOW (user_data);
 
-  dialog = terminal_preferences_dialog_new (GTK_WINDOW (user_data));
-  gtk_widget_show (dialog);
+  if (G_UNLIKELY (window->preferences_dialog != NULL)) 
+    {
+      gtk_window_present (GTK_WINDOW (window->preferences_dialog));
+    }
+  else
+    {
+      window->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
+      g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog),
+                                 (gpointer) &window->preferences_dialog);
+      gtk_widget_show (window->preferences_dialog);
+    }
 
   return FALSE;
 }
