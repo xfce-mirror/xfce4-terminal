@@ -470,7 +470,7 @@ ac_includes_default="\
 # include <unistd.h>
 #endif"
 
-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT TERMINAL_VERSION_DBUS CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir PKG_CONFIG EXO_CFLAGS EXO_LIBS EXO_REQUIRED_VERSION VTE_CFLAGS VTE_LIBS VTE_REQUIRED_VERSION SN_CFLAGS SN_LIBS SN_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
+ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT TERMINAL_VERSION_DBUS CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE CPP EGREP build build_cpu build_vendor build_os host host_cpu host_vendor host_os LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL GETTEXT_PACKAGE USE_NLS MSGFMT GMSGFMT XGETTEXT CATALOGS CATOBJEXT DATADIRNAME GMOFILES INSTOBJEXT INTLLIBS PO_IN_DATADIR_TRUE PO_IN_DATADIR_FALSE POFILES POSUB MKINSTALLDIRS localedir PKG_CONFIG EXO_CFLAGS EXO_LIBS EXO_REQUIRED_VERSION VTE_CFLAGS VTE_LIBS VTE_REQUIRED_VERSION LIBSTARTUP_NOTIFICATION_CFLAGS LIBSTARTUP_NOTIFICATION_LIBS LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION LIBOBJS LTLIBOBJS'
 ac_subst_files=''
 
 # Initialize some variables set by options.
@@ -1043,6 +1043,11 @@ Optional Features:
   --enable-fast-install[=PKGS]
                           optimize for fast installation [default=yes]
   --disable-libtool-lock  avoid locking (might break parallel builds)
+  --enable-startup-notification
+                          Enable checking for startup notification library
+                          (default=yes)
+  --disable-startup-notification
+                          Disable checking for startup notification library
   --enable-debug=yes|no|full
                           Build with debugging support
   --disable-debug         Include no debugging support default
@@ -5423,7 +5428,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 5426 "configure"' > conftest.$ac_ext
+  echo '#line 5431 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -6522,7 +6527,7 @@ fi
 
 
 # Provide some information about the compiler.
-echo "$as_me:6525:" \
+echo "$as_me:6530:" \
      "checking for Fortran 77 compiler version" >&5
 ac_compiler=`set X $ac_compile; echo $2`
 { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
@@ -7556,11 +7561,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7559: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7564: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7563: \$? = $ac_status" >&5
+   echo "$as_me:7568: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7789,11 +7794,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7792: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7797: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7796: \$? = $ac_status" >&5
+   echo "$as_me:7801: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -7849,11 +7854,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7852: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7857: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:7856: \$? = $ac_status" >&5
+   echo "$as_me:7861: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -9183,7 +9188,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*|s390x*|powerpc64*)
-    echo '#line 9186 "configure"' > conftest.$ac_ext
+    echo '#line 9191 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -10054,7 +10059,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10057 "configure"
+#line 10062 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -10152,7 +10157,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 10155 "configure"
+#line 10160 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -12331,11 +12336,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12334: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12339: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:12338: \$? = $ac_status" >&5
+   echo "$as_me:12343: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -12391,11 +12396,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:12394: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:12399: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:12398: \$? = $ac_status" >&5
+   echo "$as_me:12403: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -12902,7 +12907,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*|s390x*|powerpc64*)
-    echo '#line 12905 "configure"' > conftest.$ac_ext
+    echo '#line 12910 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -13773,7 +13778,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13776 "configure"
+#line 13781 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -13871,7 +13876,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 13874 "configure"
+#line 13879 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -14698,11 +14703,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14701: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14706: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:14705: \$? = $ac_status" >&5
+   echo "$as_me:14710: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -14758,11 +14763,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:14761: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:14766: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:14765: \$? = $ac_status" >&5
+   echo "$as_me:14770: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -16072,7 +16077,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*|s390x*|powerpc64*)
-    echo '#line 16075 "configure"' > conftest.$ac_ext
+    echo '#line 16080 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -16813,11 +16818,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:16816: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:16821: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:16820: \$? = $ac_status" >&5
+   echo "$as_me:16825: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17046,11 +17051,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17049: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17054: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:17053: \$? = $ac_status" >&5
+   echo "$as_me:17058: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings
@@ -17106,11 +17111,11 @@ else
    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:17109: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:17114: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:17113: \$? = $ac_status" >&5
+   echo "$as_me:17118: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -18440,7 +18445,7 @@ linux*)
   libsuff=
   case "$host_cpu" in
   x86_64*|s390x*|powerpc64*)
-    echo '#line 18443 "configure"' > conftest.$ac_ext
+    echo '#line 18448 "configure"' > conftest.$ac_ext
     if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -19311,7 +19316,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19314 "configure"
+#line 19319 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -19409,7 +19414,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<EOF
-#line 19412 "configure"
+#line 19417 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -20427,7 +20432,8 @@ LIBTOOL='$(SHELL) $(top_builddir)/libtool'
 
 
 
-for ac_header in limits.h pwd.h time.h
+
+for ac_header in errno.h limits.h pwd.h time.h
 do
 as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`
 if eval "test \"\${$as_ac_Header+set}\" = set"; then
@@ -22272,6 +22278,22 @@ echo "$as_me: error: Library requirements (vte >= 0.11.0) not met; consider adju
 
 
 
+  # Check whether --enable-startup-notification or --disable-startup-notification was given.
+if test "${enable_startup_notification+set}" = set; then
+  enableval="$enable_startup_notification"
+  ac_cv_LIBSTARTUP_NOTIFICATION_check=$enableval
+else
+  ac_cv_LIBSTARTUP_NOTIFICATION_check=yes
+fi;
+
+  if test x"$ac_cv_LIBSTARTUP_NOTIFICATION_check" = x"yes"; then
+    echo "$as_me:$LINENO: checking for libstartup-notification-1.0 >= 0.4" >&5
+echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.4... $ECHO_C" >&6
+    if $PKG_CONFIG --atleast-version=0.4 libstartup-notification-1.0 2> /dev/null; then
+      echo "$as_me:$LINENO: result: yes" >&5
+echo "${ECHO_T}yes" >&6
+
+
   succeeded=no
 
   if test -z "$PKG_CONFIG"; then
@@ -22333,24 +22355,24 @@ echo $ECHO_N "checking for libstartup-notification-1.0 >= 0.4... $ECHO_C" >&6
 echo "${ECHO_T}yes" >&6
             succeeded=yes
 
-            echo "$as_me:$LINENO: checking SN_CFLAGS" >&5
-echo $ECHO_N "checking SN_CFLAGS... $ECHO_C" >&6
-            SN_CFLAGS=`$PKG_CONFIG --cflags "libstartup-notification-1.0 >= 0.4"`
-            echo "$as_me:$LINENO: result: $SN_CFLAGS" >&5
-echo "${ECHO_T}$SN_CFLAGS" >&6
+            echo "$as_me:$LINENO: checking LIBSTARTUP_NOTIFICATION_CFLAGS" >&5
+echo $ECHO_N "checking LIBSTARTUP_NOTIFICATION_CFLAGS... $ECHO_C" >&6
+            LIBSTARTUP_NOTIFICATION_CFLAGS=`$PKG_CONFIG --cflags "libstartup-notification-1.0 >= 0.4"`
+            echo "$as_me:$LINENO: result: $LIBSTARTUP_NOTIFICATION_CFLAGS" >&5
+echo "${ECHO_T}$LIBSTARTUP_NOTIFICATION_CFLAGS" >&6
 
-            echo "$as_me:$LINENO: checking SN_LIBS" >&5
-echo $ECHO_N "checking SN_LIBS... $ECHO_C" >&6
-            SN_LIBS=`$PKG_CONFIG --libs "libstartup-notification-1.0 >= 0.4"`
-            echo "$as_me:$LINENO: result: $SN_LIBS" >&5
-echo "${ECHO_T}$SN_LIBS" >&6
+            echo "$as_me:$LINENO: checking LIBSTARTUP_NOTIFICATION_LIBS" >&5
+echo $ECHO_N "checking LIBSTARTUP_NOTIFICATION_LIBS... $ECHO_C" >&6
+            LIBSTARTUP_NOTIFICATION_LIBS=`$PKG_CONFIG --libs "libstartup-notification-1.0 >= 0.4"`
+            echo "$as_me:$LINENO: result: $LIBSTARTUP_NOTIFICATION_LIBS" >&5
+echo "${ECHO_T}$LIBSTARTUP_NOTIFICATION_LIBS" >&6
         else
-            SN_CFLAGS=""
-            SN_LIBS=""
+            LIBSTARTUP_NOTIFICATION_CFLAGS=""
+            LIBSTARTUP_NOTIFICATION_LIBS=""
             ## If we have a custom action on failure, don't print errors, but
             ## do set a variable so people can do so.
-            SN_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libstartup-notification-1.0 >= 0.4"`
-            echo $SN_PKG_ERRORS
+            LIBSTARTUP_NOTIFICATION_PKG_ERRORS=`$PKG_CONFIG --errors-to-stdout --print-errors "libstartup-notification-1.0 >= 0.4"`
+            echo $LIBSTARTUP_NOTIFICATION_PKG_ERRORS
         fi
 
 
@@ -22369,8 +22391,20 @@ echo "$as_me: error: Library requirements (libstartup-notification-1.0 >= 0.4) n
    { (exit 1); exit 1; }; }
   fi
 
-  SN_REQUIRED_VERSION=0.4
+  LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION=0.4
 
+
+
+cat >>confdefs.h <<\_ACEOF
+#define HAVE_LIBSTARTUP_NOTIFICATION 1
+_ACEOF
+
+      LIBSTARTUP_NOTIFICATION_FOUND="yes"
+    else
+      echo "$as_me:$LINENO: result: no" >&5
+echo "${ECHO_T}no" >&6
+    fi
+  fi
 
 
 
@@ -23246,9 +23280,9 @@ s,@EXO_REQUIRED_VERSION@,$EXO_REQUIRED_VERSION,;t t
 s,@VTE_CFLAGS@,$VTE_CFLAGS,;t t
 s,@VTE_LIBS@,$VTE_LIBS,;t t
 s,@VTE_REQUIRED_VERSION@,$VTE_REQUIRED_VERSION,;t t
-s,@SN_CFLAGS@,$SN_CFLAGS,;t t
-s,@SN_LIBS@,$SN_LIBS,;t t
-s,@SN_REQUIRED_VERSION@,$SN_REQUIRED_VERSION,;t t
+s,@LIBSTARTUP_NOTIFICATION_CFLAGS@,$LIBSTARTUP_NOTIFICATION_CFLAGS,;t t
+s,@LIBSTARTUP_NOTIFICATION_LIBS@,$LIBSTARTUP_NOTIFICATION_LIBS,;t t
+s,@LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION@,$LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION,;t t
 s,@LIBOBJS@,$LIBOBJS,;t t
 s,@LTLIBOBJS@,$LTLIBOBJS,;t t
 CEOF

@@ -45,20 +45,22 @@ struct _TerminalWindowClass
                       const gchar    *working_directory);
 };
 
-GType      terminal_window_get_type       (void) G_GNUC_CONST;
+GType      terminal_window_get_type             (void) G_GNUC_CONST;
 
-GtkWidget *terminal_window_new            (TerminalVisibility  menubar,
-                                           TerminalVisibility  borders,
-                                           TerminalVisibility  toolbars);
+GtkWidget *terminal_window_new                  (TerminalVisibility  menubar,
+                                                 TerminalVisibility  borders,
+                                                 TerminalVisibility  toolbars);
 
-void       terminal_window_add            (TerminalWindow     *window,
-                                           TerminalWidget     *widget);
+void       terminal_window_add                  (TerminalWindow     *window,
+                                                 TerminalWidget     *widget);
 
-void       terminal_window_remove         (TerminalWindow     *window,
-                                           TerminalWidget     *widget);
+void       terminal_window_remove               (TerminalWindow     *window,
+                                                 TerminalWidget     *widget);
 
-void       terminal_window_set_startup_id (TerminalWindow     *window,
-                                           const gchar        *startup_id);
+void       terminal_window_set_startup_id       (TerminalWindow     *window,
+                                                 const gchar        *startup_id);
+
+GList     *terminal_window_get_restart_command  (TerminalWindow     *window);
 
 G_END_DECLS;
 

@@ -165,24 +165,70 @@ usage (void)
   fprintf (stderr,
            _("Usage: Terminal [OPTION...]\n"
              "\n"
-             "GTK+\n"
-             "  --display=DISPLAY       X display to use\n"
+             "  -h, --help                          Print this help message and exit\n"
+             "  -v, --version                       Print version information and exit\n"
+             "  --disable-server                    Do not register with the D-BUS session\n"
+             "                                      message bus\n"
              "\n"
-             "Terminal\n"
-             "  -e, --command=STRING    Execute the argument to this option\n"
-             "                          inside the terminal.\n"
-             "  -x, --execute           Execute the remainder of the command\n"
-             "                          line inside the terminal.\n"
-             "  --tab                   Open a new tab in the last-opened\n"
-             "                          window.\n"
-             "  --geometry=GEOMETRY     X geometry specification (see \"X\"\n"
-             "                          manual page).\n"
-             "  --disable-server        Do not register with the D-BUS session\n"
-             "                          message bus.\n"
-             "  --title=TITLE           Set the terminal's title.\n"
-             "  --working-directory=DIR Set the terminal's working directory.\n"
-             "  --help                  Print this help message and exit\n"
-             "  --version               Print version information and exit\n"
+             "  -x, --execute                       Execute the remainder of the command\n"
+             "                                      line inside the terminal\n"
+             "  -e, --command=STRING                Execute the argument to this option\n"
+             "                                      inside the terminal\n"
+             "  --working-directory=DIRNAME         Set the terminals working directory\n"
+             "  -t, --title=TITLE                   Set the terminals title\n"
+             "\n"
+             "  --display=DISPLAY                   X display to use for the last-specified\n"
+             "                                      window\n"
+             "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+             "                                      man page), can be specified once per\n"
+             "                                      window to be opened\n"
+             "  --role=ROLE                         Set the role for the last-specified;\n"
+             "                                      window; applies to only one window;\n"
+             "                                      can be specified once for each window\n"
+             "                                      you create from the command line\n"
+             "  --startup-id=STRING                 ID for the startup notification\n"
+             "                                      protocol\n"
+             "  --show-menubar                      Turn on the menubar for the last-\n"
+             "                                      specified window; applies to only one\n"
+             "                                      window; can be specified once for\n"
+             "                                      each window you create from the\n"
+             "                                      command line\n"
+             "  --hide-menubar                      Turn off the menubar for the last-\n"
+             "                                      specified window; applies to only one\n"
+             "                                      window; can be specified once for\n"
+             "                                      each window you create from the\n"
+             "                                      command line\n"
+             "  --show-borders                      Turn on the window decorations for the\n"
+             "                                      last-specified window; applies to only\n"
+             "                                      one window; can be specified once for\n"
+             "                                      each window you create from the\n"
+             "                                      command line\n"
+             "  --hide-borders                      Turn off the window decorations for the\n"
+             "                                      last-specified window; applies to only\n"
+             "                                      one window; can be specified once for\n"
+             "                                      each window you create from the\n"
+             "                                      command line\n"
+             "  --show-toolbars                     Turn on the toolbars for the last-\n"
+             "                                      specified window; applies to only one\n"
+             "                                      window; can be specified once for\n"
+             "                                      each window you create from the\n"
+             "                                      command line\n"
+             "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+             "                                      specified window; applies to only one\n"
+             "                                      window; can be specified once for\n"
+             "                                      each window you create from the\n"
+             "                                      command line\n"
+             "\n"
+             "  --tab                               Open a new tab in the last-specified\n"
+             "                                      window; more than one of these options\n"
+             "                                      can be provided\n"
+             "  --window                            Open a new window containing one tab;\n"
+             "                                      more than one of these options can be\n"
+             "                                      provided\n"
+             "\n"
+             "  --default-display=DISPLAY           default X display to use\n"
+             "  --default-working-directory=DIRNAME Set the default terminals working\n"
+             "                                      directory\n"
              "\n"));
 }
 
@@ -191,7 +237,7 @@ usage (void)
 int
 main (int argc, char **argv)
 {
-  TerminalOptions  options;
+  TerminalOptions *options;
   TerminalApp     *app;
 #if GLIB_CHECK_VERSION(2,6,0)
   const gchar     *description;
@@ -225,7 +271,7 @@ main (int argc, char **argv)
       return EXIT_FAILURE;
     }
 
-  if (G_UNLIKELY (options & TERMINAL_OPTION_VERSION))
+  if (G_UNLIKELY (options->show_version))
     {
       printf (_("%s (Xfce %s)\n\n"
                 "Copyright (c) 2003-2004\n"
@@ -239,7 +285,7 @@ main (int argc, char **argv)
               PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options & TERMINAL_OPTION_HELP))
+  else if (G_UNLIKELY (options->show_help))
     {
       usage ();
       return EXIT_SUCCESS;
@@ -261,7 +307,7 @@ main (int argc, char **argv)
     }
   nargv[nargc] = NULL;
 
-  if ((options & TERMINAL_OPTION_DISABLESERVER) == 0)
+  if (!options->disable_server)
     {
       /* try to connect to an existing Terminal service */
       if (terminal_app_try_invoke (nargc, nargv, &error))
@@ -294,7 +340,7 @@ main (int argc, char **argv)
 
   app = terminal_app_new ();
 
-  if ((options & TERMINAL_OPTION_DISABLESERVER) == 0)
+  if (!options->disable_server)
     {
       if (!terminal_app_start_server (app, &error))
         {
@@ -310,6 +356,9 @@ main (int argc, char **argv)
       g_error_free (error);
       return EXIT_FAILURE;
     }
+
+  /* free parsed options */
+  terminal_options_free (options);
 
   /* free temporary arguments */
   g_strfreev (nargv);

@@ -42,7 +42,9 @@
 #include <gdk/gdkkeysyms.h>
 #include <gdk/gdkx.h>
 
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #include <libsn/sn-launchee.h>
+#endif
 
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-options.h>
@@ -396,6 +398,7 @@ terminal_window_finalize (GObject *object)
 static void
 terminal_window_show (GtkWidget *widget)
 {
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
   SnLauncheeContext *sn_context = NULL;
   TerminalWindow    *window = TERMINAL_WINDOW (widget);
   GdkScreen         *screen;
@@ -417,15 +420,18 @@ terminal_window_show (GtkWidget *widget)
                                             window->startup_id);
       sn_launchee_context_setup_window (sn_context, GDK_WINDOW_XWINDOW (widget->window));
     }
+#endif
 
   GTK_WIDGET_CLASS (parent_class)->show (widget);
 
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION
   if (G_LIKELY (sn_context != NULL))
     {
       sn_launchee_context_complete (sn_context);
       sn_launchee_context_unref (sn_context);
       sn_display_unref (sn_display);
     }
+#endif
 }
 
 
@@ -633,6 +639,7 @@ terminal_window_context_menu (TerminalWidget  *widget,
       popup = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu");
       if (G_UNLIKELY (popup == NULL))
         return;
+      gtk_menu_set_screen (GTK_MENU (popup), gtk_window_get_screen (GTK_WINDOW (window)));
 
       item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
       if (G_UNLIKELY (item == NULL))
@@ -1352,3 +1359,75 @@ terminal_window_set_startup_id (TerminalWindow     *window,
 
 
 
+/**
+ * terminal_window_get_restart_command:
+ * @window  : A #TerminalWindow.
+ *
+ * Return value: A list of strings, which are required to
+ *               restart the window properly with all tabs
+ *               and settings. The strings and the list itself
+ *               need to be freed afterwards.
+ **/
+GList*
+terminal_window_get_restart_command (TerminalWindow *window)
+{
+  TerminalWidget  *widget;
+  const gchar     *role;
+  GtkAction       *action;
+  GdkScreen       *screen;
+  GList           *children;
+  GList           *result = NULL;
+  GList           *lp;
+  gint             w;
+  gint             h;
+
+  g_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
+
+  widget = terminal_window_get_active (window);
+  if (G_LIKELY (widget != NULL))
+    {
+      terminal_widget_get_size (widget, &w, &h);
+      result = g_list_append (result, g_strdup_printf ("--geometry=%dx%d", w, h));
+    }
+
+  screen = gtk_window_get_screen (GTK_WINDOW (window));
+  if (G_LIKELY (screen != NULL))
+    {
+      result = g_list_append (result, g_strdup ("--display"));
+      result = g_list_append (result, gdk_screen_make_display_name (screen));
+    }
+
+  role = gtk_window_get_role (GTK_WINDOW (window));
+  if (G_LIKELY (role != NULL))
+    result = g_list_append (result, g_strdup_printf ("--role=%s", role));
+
+  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
+    result = g_list_append (result, g_strdup ("--show-menubar"));
+  else
+    result = g_list_append (result, g_strdup ("--hide-menubar"));
+
+  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
+    result = g_list_append (result, g_strdup ("--show-borders"));
+  else
+    result = g_list_append (result, g_strdup ("--hide-borders"));
+
+  action = gtk_action_group_get_action (window->action_group, "show-toolbars");
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
+    result = g_list_append (result, g_strdup ("--show-toolbars"));
+  else
+    result = g_list_append (result, g_strdup ("--hide-toolbars"));
+
+  /* set restart commands of the tabs */
+  children = gtk_container_get_children (GTK_CONTAINER (window->notebook));
+  for (lp = children; lp != NULL; lp = lp->next)
+    {
+      if (lp != children)
+        result = g_list_append (result, g_strdup ("--tab"));
+      result = g_list_concat (result, terminal_widget_get_restart_command (lp->data));
+    }
+  g_list_free (children);
+
+  return result;
+}

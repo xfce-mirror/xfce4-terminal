@@ -8,9 +8,6 @@ G_BEGIN_DECLS
 
 /* enumerations from "terminal-options.h" */
 
-GType terminal_options_get_type (void);
-#define TERMINAL_TYPE_OPTIONS (terminal_options_get_type())
-
 GType terminal_visibility_get_type (void);
 #define TERMINAL_TYPE_VISIBILITY (terminal_visibility_get_type())
 

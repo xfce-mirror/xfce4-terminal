@@ -9,22 +9,6 @@
 
 /* enumerations from "terminal-options.h" */
 GType
-terminal_options_get_type (void)
-{
-	static GType type = 0;
-	if (type == 0) {
-	static const GFlagsValue values[] = {
-	{ TERMINAL_OPTION_HELP, "TERMINAL_OPTION_HELP", "help" },
-	{ TERMINAL_OPTION_VERSION, "TERMINAL_OPTION_VERSION", "version" },
-	{ TERMINAL_OPTION_DISABLESERVER, "TERMINAL_OPTION_DISABLESERVER", "disableserver" },
-	{ 0, NULL, NULL }
-	};
-	type = g_flags_register_static ("TerminalOptions", values);
-  }
-	return type;
-}
-
-GType
 terminal_visibility_get_type (void)
 {
 	static GType type = 0;

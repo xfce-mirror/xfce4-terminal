@@ -101,10 +101,16 @@ terminal_toolbars_view_edit_done (ExoToolbarsEditorDialog *dialog,
 static gboolean
 terminal_toolbars_view_popup_menu (TerminalToolbarsView *toolbar)
 {
+  GdkScreen *screen;
   GtkWidget *menu;
   GtkWidget *item;
 
+  screen = gtk_widget_get_screen (GTK_WIDGET (toolbar));
+  if (G_UNLIKELY (screen == NULL))
+    return FALSE;
+
   menu = gtk_menu_new ();
+  gtk_menu_set_screen (GTK_MENU (menu), screen);
 
   item = gtk_menu_item_new_with_mnemonic (_("_Customize..."));
   g_signal_connect_swapped (G_OBJECT (item), "activate",

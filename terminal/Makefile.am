@@ -63,13 +63,13 @@ Terminal_SOURCES =							\
 
 Terminal_CFLAGS =							\
 	@EXO_CFLAGS@							\
-	@SN_CFLAGS@							\
+	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
 	@VTE_CFLAGS@
 
 Terminal_LDFLAGS =							\
 	-no-undefined							\
 	@EXO_LIBS@							\
-	@SN_LIBS@							\
+	@LIBSTARTUP_NOTIFICATION_LIBS@					\
 	@VTE_LIBS@
 
 # Used to regenerate all automatic files

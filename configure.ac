@@ -44,7 +44,7 @@ AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
 dnl Check for standard headers
-AC_CHECK_HEADERS([limits.h pwd.h time.h])
+AC_CHECK_HEADERS([errno.h limits.h pwd.h time.h])
 
 dnl Check for i18n support
 BM_I18N([Terminal], [de fr nl])
@@ -52,7 +52,10 @@ BM_I18N([Terminal], [de fr nl])
 dnl Check for required packages
 BM_DEPEND([EXO], [exo-0.1], [0.1.3])
 BM_DEPEND([VTE], [vte], [0.11.0])
-BM_DEPEND([SN], [libstartup-notification-1.0], [0.4])
+
+dnl Optional support for startup notification
+BM_DEPEND_CHECK([LIBSTARTUP_NOTIFICATION], [libstartup-notification-1.0], [0.4],
+                [startup-notification], [startup notification library], [yes])
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT

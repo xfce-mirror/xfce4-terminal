@@ -87,6 +87,8 @@ void       terminal_widget_reset                      (TerminalWidget *widget,
 void       terminal_widget_im_append_menuitems        (TerminalWidget *widget,
                                                        GtkMenuShell   *menushell);
 
+GList     *terminal_widget_get_restart_command        (TerminalWidget *widget);
+
 G_END_DECLS;
 
 #endif /* !__TERMINAL_WIDGET_H__ */

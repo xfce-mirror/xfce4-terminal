@@ -23,6 +23,13 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_ERRNO_H
+#include <errno.h>
+#endif
+#ifdef HAVE_LIMITS_H
+#include <limits.h>
+#endif
+#include <stdlib.h>
 #ifdef HAVE_MEMORY_H
 #include <memory.h>
 #endif
@@ -52,14 +59,21 @@ static void               terminal_app_new_window       (TerminalWindow   *windo
                                                          TerminalApp      *app);
 static void               terminal_app_window_destroyed (GtkWidget        *window,
                                                          TerminalApp      *app);
+static GdkScreen         *terminal_app_find_screen      (const gchar      *display_name);
 
 
+
+struct _TerminalAppClass
+{
+  GObjectClass  __parent__;
+};
 
 struct _TerminalApp
 {
   GObject              __parent__;
   TerminalPreferences *preferences;
   TerminalAccelMap    *accel_map;
+  SessionClient       *session_client;
   gchar               *initial_menu_bar_accel;
   GList               *windows;
   guint                server_running : 1;
@@ -240,8 +254,12 @@ terminal_app_new_window (TerminalWindow *window,
 {
   TerminalWindowAttr *win_attr;
   TerminalTabAttr    *tab_attr;
+  GdkScreen          *screen;
+
+  screen = gtk_window_get_screen (GTK_WINDOW (window));
 
   win_attr = terminal_window_attr_new ();
+  win_attr->display = gdk_screen_make_display_name (screen);
   tab_attr = win_attr->tabs->data;
   tab_attr->directory = g_strdup (working_directory);
 
@@ -262,6 +280,73 @@ terminal_app_window_destroyed (GtkWidget   *window,
 
   if (G_UNLIKELY (app->windows == NULL))
     gtk_main_quit ();
+}
+
+
+
+static GdkScreen*
+terminal_app_find_screen (const gchar *display_name)
+{
+  const gchar *other_name;
+  GdkDisplay  *display = NULL;
+  GdkScreen   *screen = NULL;
+  GSList      *displays;
+  GSList      *dp;
+  gulong       n;
+  gchar       *period;
+  gchar       *name;
+  gchar       *end;
+  gint         num = -1;
+
+  if (display_name != NULL)
+    {
+      name = g_strdup (display_name);
+      period = strrchr (name, '.');
+      if (period != NULL)
+        {
+          errno = 0;
+          *period++ = '\0';
+          end = period;
+          n = strtoul (period, &end, 0);
+          if (errno == 0 && period != end)
+            num = n;
+        }
+
+      displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
+      for (dp = displays; dp != NULL; dp = dp->next)
+        {
+          display = dp->data;
+          other_name = gdk_display_get_name (display);
+          if (strncmp (other_name, name, strlen (name)) == 0)
+            break;
+        }
+      g_slist_free (displays);
+
+      if (display == NULL)
+        display = gdk_display_open (display_name);
+
+      if (display != NULL)
+        {
+          if (num >= 0)
+            screen = gdk_display_get_screen (display, num);
+
+          if (screen == NULL)
+            screen = gdk_display_get_default_screen (display);
+
+          if (screen != NULL)
+            g_object_ref (G_OBJECT (screen));
+        }
+
+      g_free (name);
+    }
+
+  if (screen == NULL)
+    {
+      screen = gdk_screen_get_default ();
+      g_object_ref (G_OBJECT (screen));
+    }
+
+  return screen;
 }
 
 
@@ -350,8 +435,8 @@ terminal_app_process (TerminalApp  *app,
                       gint          argc,
                       GError      **error)
 {
-  GList *attrs;
-  GList *lp;
+  GList  *attrs;
+  GList  *lp;
 
   if (!terminal_options_parse (argc, argv, &attrs, NULL, error))
     return FALSE;
@@ -379,6 +464,7 @@ terminal_app_open_window (TerminalApp         *app,
   TerminalTabAttr *tab_attr;
   GtkWidget       *window;
   GtkWidget       *terminal;
+  GdkScreen       *screen;
   GList           *lp;
 
   g_return_if_fail (TERMINAL_IS_APP (app));
@@ -395,6 +481,13 @@ terminal_app_open_window (TerminalApp         *app,
     gtk_window_set_role (GTK_WINDOW (window), attr->role);
   if (attr->startup_id != NULL)
     terminal_window_set_startup_id (TERMINAL_WINDOW (window), attr->startup_id);
+
+  screen = terminal_app_find_screen (attr->display);
+  if (G_LIKELY (screen != NULL))
+    {
+      gtk_window_set_screen (GTK_WINDOW (window), screen);
+      g_object_unref (G_OBJECT (screen));
+    }
 
   for (lp = attr->tabs; lp != NULL; lp = lp->next)
     {

@@ -39,11 +39,6 @@ G_BEGIN_DECLS;
 typedef struct _TerminalAppClass TerminalAppClass;
 typedef struct _TerminalApp      TerminalApp;
 
-struct _TerminalAppClass
-{
-  GObjectClass  __parent__;
-};
-
 GType        terminal_app_get_type            (void) G_GNUC_CONST;
 
 TerminalApp *terminal_app_new                 (void);

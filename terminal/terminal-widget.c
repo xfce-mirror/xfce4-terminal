@@ -1507,3 +1507,44 @@ terminal_widget_im_append_menuitems (TerminalWidget *widget,
 
   vte_terminal_im_append_menuitems (VTE_TERMINAL (widget->terminal), menushell);
 }
+
+
+
+/**
+ * terminal_widget_get_restart_command:
+ * @widget  : A #TerminalWidget.
+ *
+ * Return value:
+ **/
+GList*
+terminal_widget_get_restart_command (TerminalWidget *widget)
+{
+  const gchar *directory;
+  GList       *result = NULL;
+
+  g_return_val_if_fail (TERMINAL_IS_WIDGET (widget), NULL);
+
+  if (widget->custom_command != NULL)
+    {
+      result = g_list_append (result, g_strdup ("-e"));
+      result = g_list_append (result, g_strjoinv (" ", widget->custom_command));
+    }
+
+  if (widget->custom_title != NULL)
+    {
+      result = g_list_append (result, g_strdup ("-t"));
+      result = g_list_append (result, g_strdup (widget->custom_title));
+    }
+
+  directory = terminal_widget_get_working_directory (widget);
+  if (G_LIKELY (directory != NULL))
+    {
+      result = g_list_append (result, g_strdup ("--working-directory"));
+      result = g_list_append (result, g_strdup (directory));
+    }
+
+  return result;
+}
+
+
+

@@ -1,5 +1,20 @@
 2004-11-22	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/configure.ac, terminal/terminal-window.c,
+	  terminal/Makefile.am: Startup notification support is optional
+	  now.
+	* terminal/main.c(usage): Update --help output.
+	* terminal/terminal-app.c, terminal/terminal-options.h,
+	  terminal/terminal-options.c, terminal/terminal-window.c,
+	  terminal/terminal-toolbars-view.c:
+	  Added multi-screen and multi-display support.
+	* terminal/terminal-options.h, terminal/terminal-options.c,
+	  terminal/terminal-widget.c, terminal/terminal-widget.h,
+	  terminal/terminal-window.c, terminal/terminal-window.h:
+	  Prepare for session management support.
+
+2004-11-22	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/Makefile.am: Include terminal-config.h.in in dist.
 	* TODO: Added note about optional startup notification dependency.
 

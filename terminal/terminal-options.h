@@ -26,15 +26,9 @@
 
 G_BEGIN_DECLS;
 
+typedef struct _TerminalOptions    TerminalOptions;
 typedef struct _TerminalTabAttr    TerminalTabAttr;
 typedef struct _TerminalWindowAttr TerminalWindowAttr;
-
-typedef enum /*< flags,prefix=TERMINAL_OPTION >*/
-{
-  TERMINAL_OPTION_HELP          = 1 << 0,
-  TERMINAL_OPTION_VERSION       = 1 << 1,
-  TERMINAL_OPTION_DISABLESERVER = 1 << 2,
-} TerminalOptions;
 
 typedef enum /*< enum,prefix=TERMINAL_VISIBILITY >*/
 {
@@ -42,6 +36,14 @@ typedef enum /*< enum,prefix=TERMINAL_VISIBILITY >*/
   TERMINAL_VISIBILITY_SHOW,
   TERMINAL_VISIBILITY_HIDE,
 } TerminalVisibility;
+
+struct _TerminalOptions
+{
+  gchar    *session_id;
+  gboolean  show_help;
+  gboolean  show_version;
+  gboolean  disable_server;
+};
 
 struct _TerminalTabAttr
 {
@@ -53,6 +55,7 @@ struct _TerminalTabAttr
 struct _TerminalWindowAttr
 {
   GList               *tabs;
+  gchar               *display;
   gchar               *geometry;
   gchar               *role;
   gchar               *startup_id;
@@ -64,8 +67,10 @@ struct _TerminalWindowAttr
 gboolean  terminal_options_parse    (gint                 argc,
                                      gchar              **argv,
                                      GList              **attrs_return,
-                                     TerminalOptions     *options_return,
+                                     TerminalOptions    **options_return,
                                      GError             **error);
+
+void                terminal_options_free     (TerminalOptions     *options);
 
 void                terminal_tab_attr_free    (TerminalTabAttr     *attr);
 

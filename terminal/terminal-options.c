@@ -50,12 +50,13 @@ gboolean
 terminal_options_parse (gint              argc,
                         gchar           **argv,
                         GList           **attrs_return,
-                        TerminalOptions  *options_return,
+                        TerminalOptions **options_return,
                         GError          **error)
 {
   TerminalWindowAttr *win_attr = NULL;
   TerminalTabAttr    *tab_attr = NULL;
   gchar              *default_directory = NULL;
+  gchar              *default_display = NULL;
   gchar              *s;
   GList              *tp;
   GList              *wp;
@@ -71,24 +72,51 @@ terminal_options_parse (gint              argc,
     }
 
   if (options_return != NULL)
-    *options_return = 0;
+    *options_return = g_new0 (TerminalOptions, 1);
 
   for (n = 1; n < argc; ++n)
     {
       if (strcmp ("--help", argv[n]) == 0 || strcmp ("-h", argv[n]) == 0)
         {
           if (options_return != NULL)
-            *options_return |= TERMINAL_OPTION_HELP;
+            (*options_return)->show_help = TRUE;
         }
       else if (strcmp ("--version", argv[n]) == 0 || strcmp ("-v", argv[n]) == 0)
         {
           if (options_return != NULL)
-            *options_return |= TERMINAL_OPTION_VERSION;
+            (*options_return)->show_version = TRUE;
         }
       else if (strcmp ("--disable-server", argv[n]) == 0)
         {
           if (options_return != NULL)
-            *options_return |= TERMINAL_OPTION_DISABLESERVER;
+            (*options_return)->disable_server = TRUE;
+        }
+      else if (strcmp ("--sm-client-id", argv[n]) == 0
+            || strncmp ("--sm-client-id=", argv[n], 15) == 0)
+        {
+          s = argv[n] + 14;
+
+          if (*s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--sm-client-id\" requires specifying "
+                             "the session id as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              s = argv[++n];
+            }
+
+          if (options_return != NULL)
+            {
+              g_free ((*options_return)->session_id);
+              (*options_return)->session_id = g_strdup (s);
+            }
         }
       else if (strcmp ("--execute", argv[n]) == 0 || strcmp ("-x", argv[n]) == 0)
         {
@@ -196,6 +224,33 @@ terminal_options_parse (gint              argc,
             {
               g_free (tab_attr->title);
               tab_attr->title = g_strdup (s);
+            }
+        }
+      else if (strcmp ("--display", argv[n]) == 0
+            || strncmp ("--display=", argv[n], 10) == 0)
+        {
+          s = argv[n] + 9;
+
+          if (*s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--display\" requires specifying "
+                             "the X display as its parameters"));
+              goto failed;
+            }
+          else
+            {
+              s = argv[++n];
+            }
+
+          if (win_attr != NULL)
+            {
+              g_free (win_attr->display);
+              win_attr->display = g_strdup (s);
             }
         }
       else if (strcmp ("--geometry", argv[n]) == 0
@@ -326,6 +381,30 @@ terminal_options_parse (gint              argc,
               *attrs_return = g_list_append (*attrs_return, win_attr);
             }
         }
+      else if (strcmp ("--default-display", argv[n]) == 0
+            || strncmp ("--default-display=", argv[n], 18) == 0)
+        {
+          s = argv[n] + 17;
+
+          if (*s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--default-display\" requires specifying "
+                             "the default X display as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              s = argv[++n];
+            }
+
+          g_free (default_display);
+          default_display = g_strdup (s);
+        }
       else if (strcmp ("--default-working-directory", argv[n]) == 0
             || strncmp ("--default-working-directory=", argv[n], 28) == 0)
         {
@@ -359,8 +438,8 @@ terminal_options_parse (gint              argc,
         }
     }
 
-  /* substitute default working directory if any */
-  if (attrs_return != NULL && default_directory != NULL)
+  /* substitute default working directory and default display if any */
+  if (attrs_return != NULL)
     {
       for (wp = *attrs_return; wp != NULL; wp = wp->next)
         {
@@ -368,16 +447,25 @@ terminal_options_parse (gint              argc,
           for (tp = win_attr->tabs; tp != NULL; tp = tp->next)
             {
               tab_attr = tp->data;
-              if (tab_attr->directory == NULL)
+              if (tab_attr->directory == NULL && default_directory != NULL)
                 tab_attr->directory = g_strdup (default_directory);
             }
+
+          if (win_attr->display == NULL && default_display != NULL)
+            win_attr->display = g_strdup (default_display);
         }
     }
   g_free (default_directory);
+  g_free (default_display);
   
   return TRUE;
 
 failed:
+  if (options_return != NULL)
+    {
+      terminal_options_free (*options_return);
+      *options_return = NULL;
+    }
   if (attrs_return != NULL)
     for (wp = *attrs_return; wp != NULL; wp = wp->next)
       terminal_window_attr_free (wp->data);
@@ -385,6 +473,20 @@ failed:
   g_free (default_directory);
 
   return FALSE;
+}
+
+
+
+/**
+ **/
+void
+terminal_options_free (TerminalOptions *options)
+{
+  if (G_LIKELY (options != NULL))
+    {
+      g_free (options->session_id);
+      g_free (options);
+    }
 }
 
 
@@ -438,6 +540,7 @@ terminal_window_attr_free (TerminalWindowAttr *attr)
   g_list_free (attr->tabs);
   g_free (attr->startup_id);
   g_free (attr->geometry);
+  g_free (attr->display);
   g_free (attr->role);
   g_free (attr);
 }
