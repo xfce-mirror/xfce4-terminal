@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.1svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-12-21 21:09+0100\n"
-"PO-Revision-Date: 2004-12-14 14:35+0800\n"
+"PO-Revision-Date: 2004-12-22 10:57+0800\n"
 "Last-Translator: Hydonsingore Sie <hydonsingore@mail.educities.edu.tw>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -34,11 +34,14 @@ msgid ""
 "                                      session message bus"
 msgstr ""
 
+
 #: terminal/main.c:232
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
 msgstr ""
+"  -x, --execute                       在終端機中執行命令列中\n"
+"                                      剩下的部份。"
 
 #: terminal/main.c:234
 msgid ""
@@ -50,9 +53,9 @@ msgstr ""
 msgid ""
 "  --working-directory=DIRNAME         Set the terminals working directory"
 msgstr ""
+"  --working-directory=DIRNAME         設定終端機工作目錄"
 
 #: terminal/main.c:237
-#, fuzzy
 msgid "  -T, --title=TITLE                   Set the terminals title"
 msgstr "  -T, --title=TITLE                   設定終端機標題"
 
@@ -169,6 +172,7 @@ msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
 "                                      directory"
 msgstr ""
+"  --default-working-directory=DIRNAME 設定預設的終端機工作目錄"
 
 #: terminal/main.c:318 terminal/terminal-preferences.c:1032
 #: terminal/terminal-shortcut-editor.c:114
@@ -194,7 +198,7 @@ msgstr ""
 "Copyright (c) 2003-2004\n"
 "        os-cillation e.K. All rights reserved.\n"
 "\n"
-"Benedikt Meurer <benny@xfce.org>.所撰寫\n"
+"由 Benedikt Meurer <benny@xfce.org>.所撰寫\n"
 "\n"
 "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
 "\n"
@@ -272,9 +276,8 @@ msgid ""
 msgstr "選項 \"--geometry\" 需要指定視窗大小作為其參數"
 
 #: terminal/terminal-options.c:298
-#, fuzzy
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr "選項 \"--role\" 需要指定視窗大小作為其參數"
+msgstr "選項 \"--role\" 需要指定視窗識別碼作為其參數"
 
 #: terminal/terminal-options.c:325
 msgid ""
@@ -421,7 +424,7 @@ msgstr "終端機字型使用反鋸齒"
 
 #: terminal/terminal-preferences-dialog.c:432
 msgid "Allow bold text"
-msgstr ""
+msgstr "可使用粗體字"
 
 #: terminal/terminal-preferences-dialog.c:441
 msgid "<b>Background</b>"
@@ -631,7 +634,7 @@ msgstr "<b>雙擊</b>"
 
 #: terminal/terminal-preferences-dialog.c:1026
 msgid "Consider the following characters part of a word when double clicking:"
-msgstr "雙擊時將下面的字元視為一個字的一部分"
+msgstr "雙擊時將下面的字元視為一個字詞的一部分"
 
 #: terminal/terminal-preferences-dialog.c:1050
 msgid "Advanced"
@@ -721,49 +724,40 @@ msgid "Next Tab"
 msgstr "下一個分頁"
 
 #: terminal/terminal-preferences.c:457 terminal/terminal-preferences.c:458
-#, fuzzy
 msgid "Switch to Tab 1"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 1"
 
 #: terminal/terminal-preferences.c:468 terminal/terminal-preferences.c:469
-#, fuzzy
 msgid "Switch to Tab 2"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 2"
 
 #: terminal/terminal-preferences.c:479 terminal/terminal-preferences.c:480
-#, fuzzy
 msgid "Switch to Tab 3"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 3"
 
 #: terminal/terminal-preferences.c:490 terminal/terminal-preferences.c:491
-#, fuzzy
 msgid "Switch to Tab 4"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 4"
 
 #: terminal/terminal-preferences.c:501 terminal/terminal-preferences.c:502
-#, fuzzy
 msgid "Switch to Tab 5"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 5"
 
 #: terminal/terminal-preferences.c:512 terminal/terminal-preferences.c:513
-#, fuzzy
 msgid "Switch to Tab 6"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 6"
 
 #: terminal/terminal-preferences.c:523 terminal/terminal-preferences.c:524
-#, fuzzy
 msgid "Switch to Tab 7"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 7"
 
 #: terminal/terminal-preferences.c:534 terminal/terminal-preferences.c:535
-#, fuzzy
 msgid "Switch to Tab 8"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 8"
 
 #: terminal/terminal-preferences.c:545 terminal/terminal-preferences.c:546
-#, fuzzy
 msgid "Switch to Tab 9"
-msgstr "切換到下一個分頁"
+msgstr "切換到分頁 9"
 
 #: terminal/terminal-preferences.c:556 terminal/terminal-preferences.c:557
 msgid "Contents"
@@ -887,7 +881,7 @@ msgstr "執行 shell 如同 login shell"
 
 #: terminal/terminal-preferences.c:862 terminal/terminal-preferences.c:863
 msgid "Allow bold fonts"
-msgstr ""
+msgstr "可使用粗體字"
 
 #: terminal/terminal-preferences.c:873 terminal/terminal-preferences.c:874
 msgid "Font anti-aliasing"
@@ -1027,7 +1021,7 @@ msgstr "檢視"
 
 #: terminal/terminal-shortcut-editor.c:123
 msgid "Go"
-msgstr ""
+msgstr "衝"
 
 #: terminal/terminal-shortcut-editor.c:140
 msgid "Help"
@@ -1066,9 +1060,8 @@ msgid "Close this tab"
 msgstr "關閉此分頁"
 
 #: terminal/terminal-tab-header.c:285
-#, fuzzy
 msgid "_Detach Tab"
-msgstr "下一個分頁(_N)"
+msgstr "抽離分頁"
 
 #: terminal/terminal-tab-header.c:291 terminal/terminal-window.c:189
 msgid "C_lose Tab"
@@ -1157,9 +1150,8 @@ msgid "Customize the toolbars"
 msgstr "自訂工具列"
 
 #: terminal/terminal-window.c:195
-#, fuzzy
 msgid "_Preferences..."
-msgstr "偏好設定"
+msgstr "偏好設定..."
 
 #: terminal/terminal-window.c:195
 msgid "Open the Terminal preferences dialog"
@@ -1191,7 +1183,7 @@ msgstr "重設與清除(_l)"
 
 #: terminal/terminal-window.c:201
 msgid "_Go"
-msgstr ""
+msgstr "衝"
 
 #: terminal/terminal-window.c:202
 msgid "_Previous Tab"
