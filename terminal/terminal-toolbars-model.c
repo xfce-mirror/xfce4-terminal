@@ -41,11 +41,15 @@ static void     terminal_toolbars_model_sync_destroy  (TerminalToolbarsModel    
 
 static const gchar *actions[] =
 {
+  "close-tab",
+  "close-window",
   "new-tab",
   "new-window",
   "copy",
   "paste",
   "preferences",
+  "show-menubar",
+  "show-borders",
   "fullscreen",
   "prev-tab",
   "next-tab",

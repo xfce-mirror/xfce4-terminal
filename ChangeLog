@@ -1,3 +1,19 @@
+2004-11-11	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-window.c(terminal_window_init): Also reset the
+	  Terminal size and update the geometry hints when the scrollbar
+	  visibility is changed.
+	* terminal/main.c, terminal/stock-icon-closetab16.png,
+	  terminal/stock-icon-closetab24.png,
+	  terminal/stock-icon-closewindow16.png,
+	  terminal/stock-icon-closewindow24.png,
+	  terminal/stock-icon-showborders24.png,
+	  terminal/stock-icon-showmenu24.png,
+	  terminal/stock-icon-reportbug24.png: Added a bunch of new
+	  icons, thanks to Francois.
+	* terminal/terminal-toolbars-model.c, terminal/terminal-window.c: Set
+	  up the newly added stock icons. Added more actions to the toolbars.
+
 2004-11-10	Benedikt Meurer <benny@xfce.org>
 
 	* Terminal.spec.in: Keep up with latest changes.

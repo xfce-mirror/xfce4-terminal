@@ -46,6 +46,38 @@ stock_icons_init (void)
 
   set = gtk_icon_set_new ();
   source = gtk_icon_source_new ();
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_closetab16, FALSE, NULL);
+  gtk_icon_source_set_pixbuf (source, pixbuf);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
+  gtk_icon_set_add_source (set, source);
+  g_object_unref (G_OBJECT (pixbuf));
+  source = gtk_icon_source_new ();
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_closetab24, FALSE, NULL);
+  gtk_icon_source_set_pixbuf (source, pixbuf);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
+  gtk_icon_set_add_source (set, source);
+  g_object_unref (G_OBJECT (pixbuf));
+  gtk_icon_factory_add (factory, "terminal-closetab", set);
+  gtk_icon_set_unref (set);
+
+  set = gtk_icon_set_new ();
+  source = gtk_icon_source_new ();
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_closewindow16, FALSE, NULL);
+  gtk_icon_source_set_pixbuf (source, pixbuf);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_MENU);
+  gtk_icon_set_add_source (set, source);
+  g_object_unref (G_OBJECT (pixbuf));
+  source = gtk_icon_source_new ();
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_closewindow24, FALSE, NULL);
+  gtk_icon_source_set_pixbuf (source, pixbuf);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
+  gtk_icon_set_add_source (set, source);
+  g_object_unref (G_OBJECT (pixbuf));
+  gtk_icon_factory_add (factory, "terminal-closewindow", set);
+  gtk_icon_set_unref (set);
+
+  set = gtk_icon_set_new ();
+  source = gtk_icon_source_new ();
   pixbuf = gdk_pixbuf_from_pixdata (&stock_fullscreen24, FALSE, NULL);
   gtk_icon_source_set_pixbuf (source, pixbuf);
   gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
@@ -94,12 +126,32 @@ stock_icons_init (void)
   gtk_icon_set_add_source (set, source);
   g_object_unref (G_OBJECT (pixbuf));
   source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_from_pixdata (&stock_reportbug48, FALSE, NULL);
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_reportbug24, FALSE, NULL);
   gtk_icon_source_set_pixbuf (source, pixbuf);
-  gtk_icon_source_set_size_wildcarded (source, TRUE);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
   gtk_icon_set_add_source (set, source);
   g_object_unref (G_OBJECT (pixbuf));
   gtk_icon_factory_add (factory, "terminal-reportbug", set);
+  gtk_icon_set_unref (set);
+
+  set = gtk_icon_set_new ();
+  source = gtk_icon_source_new ();
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_showborders24, FALSE, NULL);
+  gtk_icon_source_set_pixbuf (source, pixbuf);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
+  gtk_icon_set_add_source (set, source);
+  g_object_unref (G_OBJECT (pixbuf));
+  gtk_icon_factory_add (factory, "terminal-showborders", set);
+  gtk_icon_set_unref (set);
+
+  set = gtk_icon_set_new ();
+  source = gtk_icon_source_new ();
+  pixbuf = gdk_pixbuf_from_pixdata (&stock_showmenu24, FALSE, NULL);
+  gtk_icon_source_set_pixbuf (source, pixbuf);
+  gtk_icon_source_set_size (source, GTK_ICON_SIZE_LARGE_TOOLBAR);
+  gtk_icon_set_add_source (set, source);
+  g_object_unref (G_OBJECT (pixbuf));
+  gtk_icon_factory_add (factory, "terminal-showmenu", set);
   gtk_icon_set_unref (set);
 
   gtk_icon_factory_add_default (factory);

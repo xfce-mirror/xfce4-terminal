@@ -157,8 +157,8 @@ static GtkActionEntry action_entries[] =
   { "file-menu", NULL, N_ ("_File"), },
   { "new-tab", "terminal-newtab", N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
   { "new-window", "terminal-newwindow", N_ ("Open _Terminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
-  { "close-tab", NULL, N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
-  { "close-window", NULL, N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
+  { "close-tab", "terminal-closetab", N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
+  { "close-window", "terminal-closewindow", N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"),  },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, NULL, G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, NULL, G_CALLBACK (terminal_window_action_paste), },
@@ -184,9 +184,9 @@ static GtkActionEntry action_entries[] =
 
 static GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "show-menubar", NULL, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
+  { "show-menubar", "terminal-showmenu", N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
   { "show-toolbars", NULL, N_ ("Show _Toolbars"), NULL, N_ ("Show/hide the toolbars"), G_CALLBACK (terminal_window_action_show_toolbars), FALSE, },
-  { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
+  { "show-borders", "terminal-showborders", N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
   { "fullscreen", "terminal-fullscreen", N_ ("_Fullscreen"), NULL, N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
 };
 
@@ -235,7 +235,13 @@ terminal_window_init (TerminalWindow *window)
   gchar               *file;
 
   window->preferences = terminal_preferences_get ();
+
+  /* The Terminal size needs correction when the font name or the scrollbar
+   * visibility is changed.
+   */
   g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::font-name",
+                            G_CALLBACK (terminal_window_queue_reset_size), window);
+  g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::scrolling-bar",
                             G_CALLBACK (terminal_window_queue_reset_size), window);
 
   window->action_group = gtk_action_group_new ("terminal-window");

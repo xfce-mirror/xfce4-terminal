@@ -221,6 +221,21 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
+stock_icons = \
+		stock-icon-closetab16.png				\
+		stock-icon-closetab24.png				\
+		stock-icon-closewindow16.png				\
+		stock-icon-closewindow24.png				\
+		stock-icon-fullscreen24.png				\
+		stock-icon-newtab16.png					\
+		stock-icon-newtab24.png					\
+		stock-icon-newwindow16.png				\
+		stock-icon-newwindow24.png				\
+		stock-icon-reportbug16.png				\
+		stock-icon-reportbug24.png				\
+		stock-icon-showborders24.png				\
+		stock-icon-showmenu24.png
+
 INCLUDES = \
 	-DDATADIR=\"$(datadir)\"					\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
@@ -275,9 +290,7 @@ Terminal_LDFLAGS = \
 	@VTE_LIBS@
 
 EXTRA_DIST = \
-	stock-icon-newtab.png						\
-	stock-icon-newwindow.png					\
-	stock-icon-reportbug.png
+	$(stock_icons)
 
 all: all-am
 
@@ -904,15 +917,21 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	uninstall-info-am
 
 
-stock-icons.h: stock-icon-fullscreen24.png stock-icon-newtab16.png stock-icon-newtab24.png stock-icon-newwindow16.png stock-icon-newwindow24.png stock-icon-reportbug16.png stock-icon-reportbug48.png Makefile
+stock-icons.h: $(stock_icons) Makefile
 	( cd $(srcdir) && gdk-pixbuf-csource --static --struct --build-list \
+		stock_closetab16 stock-icon-closetab16.png \
+		stock_closetab24 stock-icon-closetab24.png \
+		stock_closewindow16 stock-icon-closewindow16.png \
+		stock_closewindow24 stock-icon-closewindow24.png \
 		stock_fullscreen24 stock-icon-fullscreen24.png \
 		stock_newtab16 stock-icon-newtab16.png \
 		stock_newtab24 stock-icon-newtab24.png \
 		stock_newwindow16 stock-icon-newwindow16.png \
 		stock_newwindow24 stock-icon-newwindow24.png \
 		stock_reportbug16 stock-icon-reportbug16.png \
-		stock_reportbug48 stock-icon-reportbug48.png ) \
+		stock_reportbug24 stock-icon-reportbug24.png \
+		stock_showborders24 stock-icon-showborders24.png \
+		stock_showmenu24 stock-icon-showmenu24.png ) \
 	> stock-icons.h
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
