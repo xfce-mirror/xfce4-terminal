@@ -317,6 +317,9 @@ main (int argc, char **argv)
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Terminal"));
 
+  /* required because we don't call gtk_init() prior to usage() */
+  gtk_set_locale ();
+
 #if 0
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL);
 #endif

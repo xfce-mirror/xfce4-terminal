@@ -1,3 +1,11 @@
+2005-01-23	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/main.c: Be sure to initialize the locale first, using
+	  gtk_set_locale(), because else usage() will not use the
+	  available translations.
+	* po/ru.po, po/ru.gmo, terminal/terminal-window.c: Added russian 
+	  translations, thanks to Anthony Ivanoff <a-i@bk.ru>.
+
 2005-01-21	Benedikt Meurer <benny@xfce.org>
 
 	* configure.ac, po/he.po, po/he.gmo, terminal/terminal-window.c,
