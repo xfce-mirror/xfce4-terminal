@@ -567,7 +567,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       _("Backspace binding"),
                                                       _("Backspace binding"),
                                                       TERMINAL_TYPE_ERASE_BINDING,
-                                                      TERMINAL_ERASE_BINDING_ASCII_BACKSPACE,
+                                                      TERMINAL_ERASE_BINDING_ASCII_DELETE,
                                                       G_PARAM_READWRITE));
 
   /**
@@ -1044,7 +1044,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->background_image_style = TERMINAL_BACKGROUND_STYLE_TILED;
   preferences->background_darkness    = 0.5;
 
-  preferences->binding_backspace      = TERMINAL_ERASE_BINDING_ASCII_BACKSPACE;
+  preferences->binding_backspace      = TERMINAL_ERASE_BINDING_ASCII_DELETE;
   preferences->binding_delete         = TERMINAL_ERASE_BINDING_DELETE_SEQUENCE;
 
   preferences->color_system_theme     = FALSE;
