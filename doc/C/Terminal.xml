@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "Sep 2004"> 
-  <!ENTITY appversion "0.1.x"> 
+  <!ENTITY appversion "0.1.5"> 
   <!ENTITY app "<application>Terminal</application>"> 
 ]>
 
@@ -82,13 +82,12 @@
 
       <para>The easiest way to start &app; is to use the applications menu of your desktop -
       for Xfce, point your mouse cursor to the desktop, press the right mouse button
-      and choose <application>Terminal</application> from the
-      <application>System</application> menu.</para>
+      and choose <menuchoice><guimenu>System</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
 
-      <para>You can also start &app; from a command line or from the <application>Application
-      launcher</application>. Just hit <emphasis>ALT+F2</emphasis>, type
+      <para>You can also start &app; from a command line or from the <guilabel>Application
+      launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, type
       <emphasis>Terminal</emphasis> and press the button
-      <emphasis role="bold">Run</emphasis>.</para>
+      <guilabel>Run</guilabel>.</para>
     </sect2>
 
     <sect2>
@@ -138,6 +137,340 @@
         </mediaobject>
       </screenshot>
 
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="usage">
+    <title>Usage</title>
+
+    <sect2>
+      <title>To open and close terminals</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>To open a new terminal window:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open
+            Terminal</guimenuitem></menuchoice>.</para>
+            <para>The new terminal inherits the working directory from its parent
+            terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To close a terminal window:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Close
+            Window</guimenuitem></menuchoice>.</para>
+            <para>This action closes the terminal and terminates any subprocesses that
+            you opened from the terminal. If you close the last terminal window, the
+            &app; application exits.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To add a new tabbed terminal to a window:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open
+            Tab</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>To work with the contents of terminal windows</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>To scroll through previous commands and output:</term>
+          <listitem>
+            <para>Perform one of the following actions:</para>
+            <itemizedlist>
+              <listitem>
+                <para>Use the scrollbar, which is usually displayed on the right side
+                of each terminal window.</para>
+              </listitem>
+              <listitem>
+                <para>Press the <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>,
+                <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo>,
+                <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, or
+                <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> keys.</para>
+              </listitem> 
+            </itemizedlist>
+            <para>The number of lines that you can scroll back in the terminal window is
+            determined by the <guilabel>Scrollback</guilabel> setting in the <guilabel>General</guilabel>
+            section of the <guilabel>Terminal Preferences</guilabel> dialog.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To select and copy text:</term>
+          <listitem>
+            <para>You can select text in any of the following ways:</para>
+            <itemizedlist> 
+              <listitem> 
+                <para>To select a character at a time, click on the first character that you want to
+                select and drag the mouse to the last character that you want to select.</para>
+              </listitem> 
+              <listitem> 
+                <para>To select a word at a time, double-click on the first word that you want to
+                select and drag the mouse to the last word that you want to select.</para>
+              </listitem> 
+              <listitem> 
+                <para>To select a line at a time, triple-click on the first line that you want to
+                select and drag the mouse to the last line that you want to select.</para>
+              </listitem> 
+            </itemizedlist> 
+            <para>These actions select all text between the first and last items. For all text selections,
+            &app; copies the selected text into the clipboard when you release the mouse button. To
+            explicitly copy the selected text, choose <menuchoice><guimenu>Edit</guimenu>
+            <guimenuitem>Copy</guimenuitem></menuchoice>.</para>
+          </listitem> 
+        </varlistentry> 
+        <varlistentry> 
+          <term>To paste text into a terminal:</term> 
+          <listitem> 
+            <para>If you previously copied text to the clipboard, you can paste the text into a
+            terminal by performing one of the following actions:</para>
+            <itemizedlist> 
+              <listitem> 
+                <para>To paste text that you copied by selection only, middle-click at the
+                command prompt. If you do not have a middle mouse button, refer to the X
+                Server documentation for information about how to emulate the middle mouse button.</para>
+              </listitem> 
+              <listitem> 
+                <para>To paste text that you explicitly copied, choose <menuchoice><guimenu>Edit</guimenu>
+                <guimenuitem>Paste</guimenuitem></menuchoice>.</para>
+              </listitem> 
+            </itemizedlist> 
+          </listitem> 
+        </varlistentry> 
+        <varlistentry> 
+          <term>To drag a file name into a terminal window:</term> 
+          <listitem> 
+            <para>You can drag a file name to a terminal from another application such as a file manager or
+            a web browser. The terminal displays the path and the full name of the URI.</para>
+          </listitem> 
+        </varlistentry> 
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>To change the terminal title</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-set-title.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Set title dialog</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>To change the title of the currently displayed terminal, perform the following
+      three steps:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Choose <menuchoice><guimenu>Terminal</guimenu>
+          <guimenuitem>Set Title</guimenuitem></menuchoice>.</para>
+        </listitem>
+        <listitem>
+          <para>Type the new title in the <guilabel>Title</guilabel> text box. &app; applies
+          the change immediately.</para>
+        </listitem>
+        <listitem>
+          <para>Click the button <guilabel>Close</guilabel> or press the <keycap>Return</keycap>
+          key to close the <guilabel>Set Title</guilabel> dialog.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>To reset the terminal title to its default behaviour, perform the same three steps
+      as described above, but enter an empty title.</para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="preferences">
+    <title>Preferences</title>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-edit-preferences.png" format="PNG" />
+        </imageobject>
+
+        <textobject>
+          <phrase>Preferences</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>To configure &app;, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</guimenuitem>
+    </menuchoice> or right-click the terminal area of the window and choose
+    <menuchoice><guimenuitem>Preferences</guimenuitem></menuchoice>. This will bring up the <guilabel>Terminal
+    Preferences</guilabel> dialog, which allows you to adjust &app;'s behaviour to your needs.</para>
+
+    <sect2>
+      <title>General</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-general.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>General preferences</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Initial title</guilabel></term>
+          <listitem>
+            <para>Use this text box to specify the initial title of terminals.
+            New terminals will have the initial title.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Dynamically-set title</guilabel></term>
+          <listitem>
+            <para>Use this drop-down list to specify how to handle dynamically-set
+            titles, that is, terminal titles set by the commands that run in the
+            terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Run command as login shell</guilabel></term>
+          <listitem>
+            <para>Select this option to force the command that currently runs inside
+            the terminal to run as a login shell. The setting has no effect if you
+            have selected <guilabel>Run a custom command instead of my shell</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Update utmp/wtmp records when command is launched</guilabel></term>
+          <listitem>
+            <para>Select this option to insert a new entry in the utmp and wtmp records
+            when a new terminal is opened.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Run a custom command instead of my shell</guilabel></term>
+          <listitem>
+            <para>Select this option to run a specified command, other than your normal
+            shell, in the terminal. Specify the custom command in the <guilabel>Custom
+            command</guilabel> text box.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scrollbar is</guilabel></term>
+          <listitem>
+            <para>Use this drop-down list to specify the position of the scrollbar on
+            the terminal window.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scrollback</guilabel></term>
+          <listitem>
+            <para>Use this spin box to specify the number of lines that you can scroll
+            back using the scrollbar or the mouse wheel. For example, if you specify
+            1000 you can scroll back the last 1000 lines displayed in the terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scroll on output</guilabel></term>
+          <listitem>
+            <para>Select this option to enable you to scroll the output on the terminal
+            while the terminal continues to display more output from a command.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scroll on keystroke</guilabel></term>
+          <listitem>
+            <para>Select this option to enable you to press any key on the keyboard to
+            scroll down the terminal window to the command prompt. This action only
+            applies if you scrolled up the terminal window and you want to return
+            to the command prompt.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Audible bell</guilabel></term>
+          <listitem>
+            <para>Select this option to enable an audible terminal bell.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Visible bell</guilabel></term>
+          <listitem>
+            <para>Select this option to enable a visible terminal bell.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Use compact mode by default</guilabel></term>
+          <listitem>
+            <para>Select this option if you want new terminal windows to start in
+            compact mode by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Cursor blinks</guilabel></term>
+          <listitem>
+            <para>Select this option to display a cursor that blinks.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Advanced</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Advanced preferences</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Backspace key generates</guilabel></term>
+          <listitem>
+            <para>Use the drop-down list to select the function that you want the
+            <keycap>Backspace</keycap> key to perform.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Delete key generates</guilabel></term>
+          <listitem>
+            <para>Use the drop-down list to select the function that you want the
+            <keycap>Delete</keycap> key to perform.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Reset compatibility options to defaults</guilabel></term>
+          <listitem>
+            <para>Click this button to reset the options on the <guilabel>Compatibility</guilabel>
+            tabbed section to its defaults settings.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Double click</guilabel></term>
+          <listitem>
+            <para>Use this text box to specify characters or groups of characters that &app;
+            considers to be words when you select text by word.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </sect2>
 
   </sect1>

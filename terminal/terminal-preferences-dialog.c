@@ -1,4 +1,4 @@
-/* $Id: terminal-preferences-dialog.c,v 1.9 2004/09/18 22:06:16 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -781,7 +781,34 @@ static void
 terminal_preferences_dialog_response (TerminalPreferencesDialog      *dialog,
                                       gint                            response)
 {
-  gtk_widget_destroy (GTK_WIDGET (dialog));
+  GtkWidget *message;
+  GError    *error = NULL;
+  gchar     *command;
+
+  if (response == GTK_RESPONSE_HELP)
+    {
+      command = g_strconcat (TERMINAL_HELP_BIN, " preferences", NULL);
+      if (!g_spawn_command_line_async (command, &error))
+        {
+          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_MODAL,
+                                            GTK_MESSAGE_ERROR,
+                                            GTK_BUTTONS_OK,
+                                            _("Unable to launch online help: %s"),
+                                            error->message);
+          g_signal_connect (G_OBJECT (message), "response",
+                            G_CALLBACK (gtk_widget_destroy), NULL);
+          gtk_widget_show (message);
+
+          g_error_free (error);
+        }
+      g_free (command);
+    }
+  else
+    {
+      gtk_widget_destroy (GTK_WIDGET (dialog));
+    }
 }
 
 
