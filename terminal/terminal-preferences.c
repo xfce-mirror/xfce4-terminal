@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2005 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -35,6 +35,7 @@
 #endif
 
 #include <terminal/terminal-enum-types.h>
+#include <terminal/terminal-monitor.h>
 #include <terminal/terminal-preferences.h>
 
 
@@ -123,9 +124,15 @@ struct _TerminalPreferences
   GObject __parent__;
 
   /*< private >*/
-  GValue *values;
-  guint   store_idle_id;
-  guint   loading_in_progress : 1;
+  TerminalMonitor *monitor;
+  GClosure        *notify;
+  gchar          **files;
+
+  GValue          *values;
+
+  guint            load_idle_id;
+  guint            store_idle_id;
+  guint            loading_in_progress : 1;
 };
 
 
@@ -140,15 +147,20 @@ static void     terminal_preferences_set_property       (GObject             *ob
                                                          guint                prop_id,
                                                          const GValue        *value,
                                                          GParamSpec          *pspec);
-static void     terminal_preferences_load               (TerminalPreferences *preferences);
+static void     terminal_preferences_schedule_load      (TerminalMonitor     *monitor,
+                                                         const gchar         *path,
+                                                         TerminalPreferences *preferences);
+static gboolean terminal_preferences_load_idle          (gpointer             user_data);
+static void     terminal_preferences_load_idle_destroy  (gpointer             user_data);
 static void     terminal_preferences_schedule_store     (TerminalPreferences *preferences);
 static gboolean terminal_preferences_store_idle         (gpointer             user_data);
 static void     terminal_preferences_store_idle_destroy (gpointer             user_data);
+static void     terminal_preferences_suspend_monitor    (TerminalPreferences *preferences);
+static void     terminal_preferences_resume_monitor     (TerminalPreferences *preferences);
 
 
 
 static GObjectClass        *parent_class;
-static TerminalPreferences *default_preferences = NULL;
 
 
 
@@ -1095,9 +1107,30 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  preferences->values = g_new0 (GValue, N_PROPERTIES);
+  gchar **directories;
+  guint   n;
 
-  terminal_preferences_load (preferences);
+  /* setup file monitor interface */
+  preferences->monitor = terminal_monitor_get ();
+  preferences->notify  = g_cclosure_new_object (G_CALLBACK (terminal_preferences_schedule_load),
+                                                G_OBJECT (preferences));
+  g_closure_set_marshal (preferences->notify, g_cclosure_marshal_VOID__STRING);
+
+  /* find all possible config files */
+  directories = xfce_resource_dirs (XFCE_RESOURCE_CONFIG);
+  for (n = 0; directories[n] != NULL; ++n) ;
+  preferences->files = g_new (gchar *, n + 1);
+  for (n = 0; directories[n] != NULL; ++n)
+    preferences->files[n] = g_build_filename (directories[n], "Terminal", "terminalrc", NULL);
+  preferences->files[n] = NULL;
+  g_strfreev (directories);
+
+  /* load the settings */
+  preferences->values = g_new0 (GValue, N_PROPERTIES);
+  terminal_preferences_load_idle (preferences);
+
+  /* launch the file monitor */
+  terminal_preferences_resume_monitor (preferences);
 }
 
 
@@ -1114,6 +1147,12 @@ terminal_preferences_dispose (GObject *object)
       g_source_remove (preferences->store_idle_id);
     }
 
+  if (G_UNLIKELY (preferences->load_idle_id != 0))
+    g_source_remove (preferences->load_idle_id);
+
+  terminal_preferences_suspend_monitor (preferences);
+  g_object_unref (G_OBJECT (preferences->monitor));
+
   G_OBJECT_CLASS (parent_class)->dispose (object);
 }
 
@@ -1129,6 +1168,9 @@ terminal_preferences_finalize (GObject *object)
     if (G_IS_VALUE (preferences->values + n))
       g_value_unset (preferences->values + n);
   g_free (preferences->values);
+
+  g_closure_unref (preferences->notify);
+  g_strfreev (preferences->files);
 
   parent_class->finalize (object);
 }
@@ -1213,8 +1255,23 @@ property_name_to_option_name (const gchar *property_name)
 
 
 static void
-terminal_preferences_load (TerminalPreferences *preferences)
+terminal_preferences_schedule_load (TerminalMonitor     *monitor,
+                                    const gchar         *path,
+                                    TerminalPreferences *preferences)
 {
+  if (preferences->load_idle_id == 0 && preferences->store_idle_id == 0)
+    {
+      preferences->load_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_preferences_load_idle,
+                                                   preferences, terminal_preferences_load_idle_destroy);
+    }
+}
+
+
+
+static gboolean
+terminal_preferences_load_idle (gpointer user_data)
+{
+  TerminalPreferences *preferences = TERMINAL_PREFERENCES (user_data);
   const gchar         *string;
   GParamSpec         **specs;
   GParamSpec          *spec;
@@ -1229,7 +1286,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
   if (G_UNLIKELY (rc == NULL))
     {
       g_warning ("Unable to load terminal preferences.");
-      return;
+      return FALSE;
     }
 
   g_object_freeze_notify (G_OBJECT (preferences));
@@ -1278,6 +1335,16 @@ terminal_preferences_load (TerminalPreferences *preferences)
   xfce_rc_close (rc);
 
   g_object_thaw_notify (G_OBJECT (preferences));
+
+  return FALSE;
+}
+
+
+
+static void
+terminal_preferences_load_idle_destroy (gpointer user_data)
+{
+  TERMINAL_PREFERENCES (user_data)->load_idle_id = 0;
 }
 
 
@@ -1315,6 +1382,8 @@ terminal_preferences_store_idle (gpointer user_data)
       return FALSE;
     }
 
+  terminal_preferences_suspend_monitor (preferences);
+
   xfce_rc_set_group (rc, "Configuration");
 
   specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
@@ -1351,6 +1420,8 @@ terminal_preferences_store_idle (gpointer user_data)
 
   xfce_rc_close (rc);
 
+  terminal_preferences_resume_monitor (preferences);
+
   return FALSE;
 }
 
@@ -1364,6 +1435,29 @@ terminal_preferences_store_idle_destroy (gpointer user_data)
 
 
 
+static void
+terminal_preferences_suspend_monitor (TerminalPreferences *preferences)
+{
+  terminal_monitor_remove_by_closure (preferences->monitor, preferences->notify);
+}
+
+
+
+static void
+terminal_preferences_resume_monitor (TerminalPreferences *preferences)
+{
+  guint n;
+
+  for (n = 0; preferences->files[n] != NULL; ++n)
+    {
+      terminal_monitor_add (preferences->monitor,
+                            preferences->files[n],
+                            preferences->notify);
+    }
+}
+
+
+
 /**
  * terminal_preferences_get:
  *
@@ -1372,18 +1466,20 @@ terminal_preferences_store_idle_destroy (gpointer user_data)
 TerminalPreferences*
 terminal_preferences_get (void)
 {
-  if (G_UNLIKELY (default_preferences == NULL))
+  static TerminalPreferences *preferences = NULL;
+
+  if (G_UNLIKELY (preferences == NULL))
     {
-      default_preferences = g_object_new (TERMINAL_TYPE_PREFERENCES, NULL);
-      g_object_add_weak_pointer (G_OBJECT (default_preferences),
-                                 (gpointer) &default_preferences);
+      preferences = g_object_new (TERMINAL_TYPE_PREFERENCES, NULL);
+      g_object_add_weak_pointer (G_OBJECT (preferences),
+                                 (gpointer) &preferences);
     }
   else
     {
-      g_object_ref (G_OBJECT (default_preferences));
+      g_object_ref (G_OBJECT (preferences));
     }
 
-  return default_preferences;
+  return preferences;
 }
 
 

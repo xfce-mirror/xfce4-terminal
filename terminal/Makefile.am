@@ -27,6 +27,7 @@ Terminal_headers =							\
 	terminal-app.h							\
 	terminal-icons.h						\
 	terminal-image-loader.h						\
+	terminal-monitor.h						\
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
@@ -46,6 +47,7 @@ Terminal_SOURCES =							\
 	terminal-app.c							\
 	terminal-icons.c						\
 	terminal-image-loader.c						\
+	terminal-monitor.c						\
 	terminal-options.c						\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\

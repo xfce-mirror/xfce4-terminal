@@ -1,3 +1,12 @@
+2005-02-27	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-monitor.c, terminal/terminal-monitor.h,
+	  terminal/Makefile.am: Add a simple file alteration monitor (similar
+	  to what ExoFileWatch did previously).
+	* terminal/terminal-preferences.c: Make use of TerminalMonitor to watch
+	  the possible configuration files for changes and reload them on
+	  demand.
+
 2005-02-19	Benedikt Meurer <benny@xfce.org>
 
 	* configure.ac, po/zh_CN.po, terminal/terminal-window.c, NEWS, THANKS:
