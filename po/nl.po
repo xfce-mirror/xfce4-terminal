@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.1.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-24 22:11+0100\n"
+"POT-Creation-Date: 2004-11-27 01:13+0100\n"
 "Last-Translator: Jasper Huijsmans <jasper@xfce.org>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
@@ -905,17 +905,22 @@ msgstr "Actie"
 msgid "Shortcut key"
 msgstr "Sneltoets"
 
-#: terminal/terminal-shortcut-editor.c:289
+#: terminal/terminal-shortcut-editor.c:290
 msgid "Compose shortcut"
 msgstr "Sneltoets instellen"
 
-#: terminal/terminal-shortcut-editor.c:308
+#: terminal/terminal-shortcut-editor.c:309
 msgid "Compose shortcut for:"
 msgstr "Sneltoets instellen voor:"
 
-#: terminal/terminal-shortcut-editor.c:325
-msgid "Failed to grab keyboard."
+#: terminal/terminal-shortcut-editor.c:332
+#, fuzzy
+msgid "Failed to acquire keyboard"
 msgstr "Kon toetsenbord niet vastzetten."
+
+#: terminal/terminal-shortcut-editor.c:333
+msgid "Another application has already acquired control over your keyboard."
+msgstr ""
 
 #: terminal/terminal-tab-header.c:103 terminal/terminal-tab-header.c:104
 #, fuzzy
@@ -927,12 +932,7 @@ msgstr "Titel"
 msgid "Close this tab"
 msgstr "Tabblad sluiten"
 
-#: terminal/terminal-toolbars-view.c:115
-#, fuzzy
-msgid "_Customize..."
-msgstr "Aangepaste titel"
-
-#: terminal/terminal-toolbars-view.c:170
+#: terminal/terminal-toolbars-view.c:141
 msgid "Toolbar Editor"
 msgstr ""
 
@@ -1219,6 +1219,10 @@ msgstr "De Pictogramontwerper"
 #: terminal/terminal-window.c:1278
 msgid "Translator (nl)"
 msgstr ""
+
+#, fuzzy
+#~ msgid "_Customize..."
+#~ msgstr "Aangepaste titel"
 
 #~ msgid "TerminalServer: %s\n"
 #~ msgstr "Terminal Server: %s\n"

@@ -270,6 +270,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   GtkWidget    *hbox;
   GtkWidget    *image;
   GtkWidget    *label;
+  GtkWidget    *message;
   gchar        *property;
   gchar        *title;
   gchar        *text;
@@ -322,7 +323,17 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   if (gdk_keyboard_grab (dialog->window, FALSE,
                          GDK_CURRENT_TIME) != GDK_GRAB_SUCCESS)
     {
-      xfce_err (_("Failed to grab keyboard."));
+      message = gtk_message_dialog_new_with_markup (GTK_WINDOW (dialog),
+                                                    GTK_DIALOG_DESTROY_WITH_PARENT
+                                                    | GTK_DIALOG_MODAL,
+                                                    GTK_MESSAGE_ERROR,
+                                                    GTK_BUTTONS_CLOSE,
+                                                    "<big>%s</big>\n\n%s",
+                                                    _("Failed to acquire keyboard"),
+                                                    _("Another application has already acquired "
+                                                      "control over your keyboard."));
+      gtk_dialog_run (GTK_DIALOG (message));
+      gtk_widget_destroy (message);
       goto done;
     }
 

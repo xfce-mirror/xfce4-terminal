@@ -870,21 +870,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  hbox = gtk_hbox_new (FALSE, 0);
-  gtk_container_add (GTK_CONTAINER (frame), hbox);
-  gtk_widget_show (hbox);
-
-  label = g_object_new (GTK_TYPE_ALIGNMENT, "width-request", 12, NULL);
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-  gtk_widget_show (label);
-
-  vbox = gtk_vbox_new (FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
+  vbox = gtk_vbox_new (FALSE, 10);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
-
-  label = g_object_new (GTK_TYPE_ALIGNMENT, "height-request", 12, NULL);
-  gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
-  gtk_widget_show (label);
 
   ibox = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (ibox),
@@ -898,10 +887,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   editor = terminal_shortcut_editor_new ();
   gtk_container_add (GTK_CONTAINER (ibox), editor);
   gtk_widget_show (editor);
-
-  label = g_object_new (GTK_TYPE_ALIGNMENT, "width-request", 12, NULL);
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-  gtk_widget_show (label);
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
                                  "terminal-shortcuts",
