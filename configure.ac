@@ -1,4 +1,4 @@
-dnl $Id: configure.ac,v 1.10 2004/09/22 18:41:04 bmeurer Exp $
+dnl $Id$
 dnl
 dnl Copyright (c) 2003-2004
 dnl         os-cillation e.K. All rights reserved.
@@ -17,9 +17,9 @@ AC_COPYRIGHT([Copyright (c) 2004
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
-AC_INIT([Terminal], [terminal_version], [xfce4-dev@xfce.org])
+AC_INIT([Terminal], [terminal_version], [http://bugs.os-cillation.de/])
 AC_PREREQ([2.50])
-AC_REVISION([$Id: configure.ac,v 1.10 2004/09/22 18:41:04 bmeurer Exp $])
+AC_REVISION([$Id$])
 
 dnl Initialize automake
 TERMINAL_VERSION=terminal_version
@@ -38,7 +38,7 @@ AC_PROG_INSTALL
 AC_PROG_LIBTOOL
 
 dnl Check for standard headers
-AC_CHECK_HEADERS([limits.h pwd.h])
+AC_CHECK_HEADERS([limits.h pwd.h time.h])
 
 dnl Check for i18n support
 BM_I18N([Terminal], [de])
@@ -66,6 +66,9 @@ fi
 AC_OUTPUT([
 Makefile
 Terminal.spec
+doc/Makefile
+doc/C/Makefile
+doc/C/images/Makefile
 icons/Makefile
 icons/48x48/Makefile
 po/Makefile.in

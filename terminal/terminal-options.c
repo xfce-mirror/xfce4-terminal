@@ -1,4 +1,4 @@
-/* $Id: terminal-options.c,v 1.3 2004/09/17 10:16:45 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -111,16 +111,6 @@ terminal_options_from_args (gint     argc,
       else if (strcmp ("--tab", argv[n]) == 0)
         {
           options->flags |= TERMINAL_FLAGS_OPENTAB;
-          options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else if (strcmp ("--compact-mode", argv[n]) == 0)
-        {
-          options->flags |= TERMINAL_FLAGS_COMPACTMODE;
-          options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else if (strcmp ("--fullscreen", argv[n]) == 0)
-        {
-          options->flags |= TERMINAL_FLAGS_FULLSCREEN;
           options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
         }
       else if (strcmp ("--disable-server", argv[n]) == 0)

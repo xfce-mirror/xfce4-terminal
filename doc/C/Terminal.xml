@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+  <!ENTITY date "Sep 2004"> 
+  <!ENTITY appversion "0.1.x"> 
+  <!ENTITY app "<application>Terminal</application>"> 
+]>
+
+<article id="Terminal" lang="en">
+
+  <!-- Header -->
+  <articleinfo>
+    <title>Terminal Emulator</title>
+
+    <copyright>
+      <year>2004</year> <holder>os-cillation e.K.</holder>
+    </copyright>
+
+    <authorgroup>
+      <author>
+        <firstname>Benedikt</firstname> <surname>Meurer</surname>
+        <affiliation>
+          <address><email>benny@xfce.org</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+    <releaseinfo>
+      This manual describes the &app; software, version &appversion;.
+    </releaseinfo>
+
+  </articleinfo>
+
+  <para>&nbsp;</para>
+
+  <sect1 id="intro">
+    <title>Introduction to &app;</title>
+
+    <sect2>
+      <title>What is a terminal emulator?</title>
+
+      <para>The UNIX operating system were originally designed as a text-only
+      system, controlled by commands entered with a keybaord. This is known
+      as a command-line interface (CLI). The X Window System, Xfce and other
+      projects have since added a graphical user interface to UNIX, thats
+      what you are actually using now. But the addition of a graphical user
+      interface doesn't mean, that the CLI is dead. The CLI is still around,
+      and is frequently the easiest, fastest and most powerful way to perform
+      a certain task. In fact, power users would be lost without the CLI.</para>
+
+      <para>&app; is what is known as an X terminal emulator, often referred
+      to as terminal or shell. It provides an equivalent to the old fashioned
+      text screen on your desktop, but on which can easily share the screen
+      with other graphical applications. Windows users may already be familar
+      with the MS-DOS Prompt utility, which has the analogous function of
+      offering a DOS command-line under Windows, though one should note, that
+      the UNIX CLI offer far more power and ease of use than does DOS.</para>
+    </sect2>
+
+    <sect2>
+      <title>What makes &app; special?</title>
+
+      <para>&app;'s advanced features include a simple configuration interface, the
+      ability to use multiple tabs with terminals within a single window, the possibility
+      to have a pseudo-transparent terminal background and a compact mode, that helps
+      you to save space on your desktop.</para>
+
+      <para>The following key features are available:</para>
+
+      <itemizedlist>
+        <listitem>Multiple tabs per window</listitem>
+        <listitem>Nearly every aspect of the terminal itself is configurable</listitem>
+      </itemizedlist>
+    </sect2>
+  </sect1>
+
+  <sect1 id="getting-started">
+    <title>Getting started</title>
+
+    <sect2>
+      <title>Starting &app;</title>
+
+      <para>The easiest way to start &app; is to use the applications menu of your desktop -
+      for Xfce, point your mouse cursor to the desktop, press the right mouse button
+      and choose <application>Terminal</application> from the
+      <application>System</application> menu.</para>
+
+      <para>You can also start &app; from a command line or from the <application>Application
+      launcher</application>. Just hit <emphasis>ALT+F2</emphasis>, type
+      <emphasis>Terminal</emphasis> and press the button
+      <emphasis role="bold">Run</emphasis>.</para>
+    </sect2>
+
+    <sect2>
+      <title>When you first start &app;</title>
+
+      <para>When you start &app; for the first time, the application opens a terminal window
+      with using default settings.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-first-time.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Example of a default terminal window</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>The terminal window displays a command prompt where you can type UNIX
+      commands. The command prompt may vary depending on the configuration of
+      your shell. The cursor is positioned at the command prompt. When you type a
+      UNIX command and press <emphasis role="bold">Return</emphasis>, the computer
+      executes the command. By default, &app; will use the login shell of the user
+      who starts the application.</para>
+    </sect2>
+
+    <sect2>
+      <title>Working with multiple terminals</title>
+
+      <para>&app; provides a tab feature that enables you to open several terminal
+      within a single window. Each terminal is opened in a separate tab. Click on the
+      appropriate tab to display the terminal in the window. Each tabbed terminal in
+      a window is separate subprocess, so you can use each terminal for a different
+      task.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-multiple-tabs.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Example of a terminal window with tabs</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="copyright">
+    <title>About &app;</title>
+
+    <para>&app; was written by Benedikt Meurer (<email>benny@xfce.org</email>). Visit the
+    <ulink url="http://www.os-cillation.com/" type="http">os-cillation website</ulink>
+    for more information.</para>
+
+    <para>To report a bug or make a suggestion regarding this application or this
+    manual, use the bug tracking system at <ulink
+    url="http://bugs.os-cillation.de/">http://bugs.os-cillation.de/</ulink>. If you
+    have questions about the use or installation of this software, please ask on the
+    <ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">os-cillation
+    forum</ulink>
+    or join the channel <emphasis role="bold">#xfce</emphasis> on <emphasis
+    role="bold">irc.freenode.net</emphasis> and ask for help.</para>
+
+    <para>This software is distributed under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.</para>
+
+    <para>You should have received a copy of the GNU General Public License 
+    along with this program; if not, write to the Free Software 
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.</para>
+
+  </sect1>
+
+</article>
+
+<!--
+	vim:set ts=2 sw=2 et ai:
+-->

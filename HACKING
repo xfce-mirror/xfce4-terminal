@@ -1,3 +1,10 @@
+Bug tracking system
+===================
+
+Terminal uses the bug tracking system at http://bugs.os-cillation.de/
+hosted and maintained by os-cillation.
+
+
 Coding Style
 ============
 
@@ -15,11 +22,13 @@ Release process
  3) Update NEWS and ChangeLog, and don't forget to add an entry
     ("Released x.y.z") to ChangeLog, so people can see which changes
     were before and after a given release.
- 4) Verify that make dist works.
- 5) "svn commit" the changes.
- 6) Create a simple tag for the release,
+ 4) Update doc/*/Terminal.xml. Also update the figures in doc/*/images
+    if the UI has changed. Run "make html" in doc/*/.
+ 5) Verify that make dist works.
+ 6) "svn commit" the changes.
+ 7) Create a simple tag for the release,
       "svn copy http://os-cillation.de:8080/repos/terminal/trunk \
          http://os-cillation.de:8080/repos/terminal/tags/release-X.Y.Z"
     where X.Y.Z is the version number.
- 7) upload the tarball to os-cillation ftp
- 8) Update freshmeat entry.
+ 8) upload the tarball to os-cillation ftp
+ 9) Update freshmeat entry.

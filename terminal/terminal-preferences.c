@@ -1,4 +1,4 @@
-/* $Id: terminal-preferences.c,v 1.8 2004/09/18 22:06:16 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -55,6 +55,7 @@ enum
   PROP_ACCEL_NEXT_TAB,
   PROP_ACCEL_RESET,
   PROP_ACCEL_RESET_AND_CLEAR,
+  PROP_ACCEL_CONTENTS,
   PROP_BACKGROUND_MODE,
   PROP_BACKGROUND_IMAGE_FILE,
   PROP_BACKGROUND_DARKNESS,
@@ -98,6 +99,7 @@ struct _TerminalPreferences
   gchar                *accel_next_tab;
   gchar                *accel_reset;
   gchar                *accel_reset_and_clear;
+  gchar                *accel_contents;
 
   TerminalBackground    background_mode;
   gchar                *background_image_file;
@@ -413,6 +415,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:accel-contents:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_CONTENTS,
+                                   g_param_spec_string ("accel-contents",
+                                                        _("Contents"),
+                                                        _("Contents Accelerator"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:background-mode:
    **/
   g_object_class_install_property (gobject_class,
@@ -710,6 +723,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->accel_next_tab         = g_strdup ("<control>Page_Down");
   preferences->accel_reset            = g_strdup (_("Disabled"));
   preferences->accel_reset_and_clear  = g_strdup (_("Disabled"));
+  preferences->accel_contents         = g_strdup ("F1");
 
   preferences->background_mode        = TERMINAL_BACKGROUND_SOLID;
   preferences->background_image_file  = g_strdup ("");
@@ -781,6 +795,8 @@ terminal_preferences_finalize (GObject *object)
     g_free (preferences->accel_reset);
   if (preferences->accel_reset_and_clear != NULL)
     g_free (preferences->accel_reset_and_clear);
+  if (preferences->accel_contents != NULL)
+    g_free (preferences->accel_contents);
   if (preferences->background_image_file != NULL)
     g_free (preferences->background_image_file);
   if (preferences->command_custom != NULL)
@@ -857,6 +873,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_ACCEL_RESET_AND_CLEAR:
       g_value_set_string (value, preferences->accel_reset_and_clear);
+      break;
+
+    case PROP_ACCEL_CONTENTS:
+      g_value_set_string (value, preferences->accel_contents);
       break;
 
     case PROP_BACKGROUND_MODE:
@@ -1131,6 +1151,18 @@ terminal_preferences_set_property (GObject      *object,
             g_free (preferences->accel_reset_and_clear);
           preferences->accel_reset_and_clear = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
           g_object_notify (object, "accel-reset-and-clear");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_ACCEL_CONTENTS:
+      sval = g_value_get_string (value);
+      if (!exo_str_is_equal (sval, preferences->accel_contents))
+        {
+          if (preferences->accel_contents != NULL)
+            g_free (preferences->accel_contents);
+          preferences->accel_contents = (sval != NULL) ? g_strdup (sval) : g_strdup (_("Disabled"));
+          g_object_notify (object, "accel-contents");
           terminal_preferences_schedule_store (preferences);
         }
       break;

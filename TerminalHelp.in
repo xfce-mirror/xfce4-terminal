@@ -1,0 +1,60 @@
+#!/bin/sh
+#
+# $Id$
+#
+# Copyright (c) 2004 os-cillation e.K.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+#
+
+test x"$BROWSER" = x"" && BROWSER="mozilla"
+
+HELPDIR="@datadir@/doc/Terminal/"
+
+if test -n "$LC_ALL"; then
+  LC=$LC_ALL
+elif test -n "$LANG"; then
+  LC=$LANG
+else
+  LC="C"
+fi
+
+if test -r "$HELPDIR/$LC/Terminal.html"; then
+  URL="$HELPDIR/$LC/Terminal.html"
+elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/Terminal.html"; then
+  URL="$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/'Terminal.html"
+else 
+  URL="$HELPDIR/C/Terminal.html"
+fi
+
+test -n "$1" && URL="$URL#$1"
+
+case "$BROWSER" in
+communicator*|netscape*|mozilla*|phoenix*|firebird*|firefox*)
+	$BROWSER -remote openurl\(file://"$URL",new-window\) || \
+		$BROWSER file://"$URL"
+	;;
+opera*)
+	$BROWSER -remote openURL\(file://"$URL",new-window\) || \
+		$BROWSER file://"$URL"
+	;;
+*)
+	$BROWSER "$URL"
+	;;
+esac
+
+exit $?
+
+# vim:set ts=2 sw=2 et ai:

@@ -1,4 +1,4 @@
-/* $Id: terminal-window.h,v 1.3 2004/09/17 10:16:45 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -41,7 +41,8 @@ struct _TerminalWindowClass
   GtkWindowClass __parent__;
 
   /* signals */
-  void (*new_window) (TerminalWindow *window);
+  void (*new_window) (TerminalWindow *window,
+                      const gchar    *working_directory);
 };
 
 GType      terminal_window_get_type (void) G_GNUC_CONST;

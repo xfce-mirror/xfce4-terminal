@@ -1,4 +1,4 @@
-/* $Id: terminal-widget.c,v 1.10 2004/09/17 23:37:55 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -47,9 +47,15 @@
 
 enum
 {
+  PROP_0,
+  PROP_CUSTOM_TITLE,
+  PROP_TITLE,
+};
+
+enum
+{
   CONTEXT_MENU,
   SELECTION_CHANGED,
-  TITLE_CHANGED,
   LAST_SIGNAL,
 };
 
@@ -61,41 +67,46 @@ struct _TerminalWidget
   TerminalPreferences *preferences;
   GtkWidget           *terminal;
   GtkWidget           *scrollbar;
+
   GPid                 pid;
+  gchar               *working_directory;
 
   gchar              **custom_command;
-
-  GtkWidget           *tab_box;
-  GtkWidget           *tab_label;
-  GtkWidget           *tab_button;
+  gchar               *custom_title;
 
   guint                background_timer_id;
 };
 
 
 
-static void     terminal_widget_finalize                  (GObject          *object);
-static void     terminal_widget_map                       (GtkWidget        *widget);
-static gboolean terminal_widget_get_child_command         (TerminalWidget   *widget,
-                                                           gchar           **command,
-                                                           gchar          ***argv,
-                                                           GError          **error);
-static void terminal_widget_set_tab_title                 (TerminalWidget   *widget);
-static void terminal_widget_update_background             (TerminalWidget   *widget);
-static void terminal_widget_update_binding_backspace      (TerminalWidget   *widget);
-static void terminal_widget_update_binding_delete         (TerminalWidget   *widget);
-static void terminal_widget_update_color_foreground       (TerminalWidget   *widget);
-static void terminal_widget_update_color_background       (TerminalWidget   *widget);
-static void terminal_widget_update_font_name              (TerminalWidget   *widget);
-static void terminal_widget_update_misc_bell_audible      (TerminalWidget   *widget);
-static void terminal_widget_update_misc_bell_visible      (TerminalWidget   *widget);
-static void terminal_widget_update_misc_cursor_blinks     (TerminalWidget   *widget);
-static void terminal_widget_update_scrolling_bar          (TerminalWidget   *widget);
-static void terminal_widget_update_scrolling_lines        (TerminalWidget   *widget);
-static void terminal_widget_update_scrolling_on_output    (TerminalWidget   *widget);
-static void terminal_widget_update_scrolling_on_keystroke (TerminalWidget   *widget);
-static void terminal_widget_update_title_initial          (TerminalWidget   *widget);
-static void terminal_widget_update_title_mode             (TerminalWidget   *widget);
+static void     terminal_widget_finalize                      (GObject          *object);
+static void     terminal_widget_get_property                  (GObject          *object,
+                                                               guint             prop_id,
+                                                               GValue           *value,
+                                                               GParamSpec       *pspec);
+static void     terminal_widget_set_property                  (GObject          *object,
+                                                               guint             prop_id,
+                                                               const GValue     *value,
+                                                               GParamSpec       *pspec);
+static void     terminal_widget_map                           (GtkWidget        *widget);
+static gboolean terminal_widget_get_child_command             (TerminalWidget   *widget,
+                                                               gchar           **command,
+                                                               gchar          ***argv,
+                                                               GError          **error);
+static void terminal_widget_update_background                 (TerminalWidget   *widget);
+static void terminal_widget_update_binding_backspace          (TerminalWidget   *widget);
+static void terminal_widget_update_binding_delete             (TerminalWidget   *widget);
+static void terminal_widget_update_color_foreground           (TerminalWidget   *widget);
+static void terminal_widget_update_color_background           (TerminalWidget   *widget);
+static void terminal_widget_update_font_name                  (TerminalWidget   *widget);
+static void terminal_widget_update_misc_bell_audible          (TerminalWidget   *widget);
+static void terminal_widget_update_misc_bell_visible          (TerminalWidget   *widget);
+static void terminal_widget_update_misc_cursor_blinks         (TerminalWidget   *widget);
+static void terminal_widget_update_scrolling_bar              (TerminalWidget   *widget);
+static void terminal_widget_update_scrolling_lines            (TerminalWidget   *widget);
+static void terminal_widget_update_scrolling_on_output        (TerminalWidget   *widget);
+static void terminal_widget_update_scrolling_on_keystroke     (TerminalWidget   *widget);
+static void terminal_widget_update_title                      (TerminalWidget   *widget);
 static void terminal_widget_update_word_chars                 (TerminalWidget   *widget);
 static void terminal_widget_vte_child_exited                  (VteTerminal      *terminal,
                                                                TerminalWidget   *widget);
@@ -165,9 +176,33 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_widget_finalize;
+  gobject_class->get_property = terminal_widget_get_property;
+  gobject_class->set_property = terminal_widget_set_property;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->map = terminal_widget_map;
+
+  /**
+   * TerminalWidget:custom-title:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_CUSTOM_TITLE,
+                                   g_param_spec_string ("custom-title",
+                                                        _("Custom title"),
+                                                        _("Custom title"),
+                                                        NULL,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalWidget:title:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_TITLE,
+                                   g_param_spec_string ("title",
+                                                        _("Title"),
+                                                        _("Title"),
+                                                        NULL,
+                                                        G_PARAM_READABLE));
 
   /**
    * TerminalWidget::context-menu
@@ -192,22 +227,6 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
-
-  /**
-   * TerminalWidget::window-title-changed
-   **/
-  widget_signals[TITLE_CHANGED] =
-    g_signal_new ("title-changed",
-                  G_TYPE_FROM_CLASS (gobject_class),
-                  G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalWidgetClass, title_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
-
-  /* register custom icon size for the tab close buttons */
-  if (gtk_icon_size_from_name ("terminal-icon-size-tab") == GTK_ICON_SIZE_INVALID)
-    gtk_icon_size_register ("terminal-icon-size-tab", 14, 14);
 }
 
 
@@ -215,7 +234,8 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 static void
 terminal_widget_init (TerminalWidget *widget)
 {
-  GtkWidget *image;
+  widget->working_directory = g_get_current_dir ();
+  widget->custom_title = g_strdup ("");
 
   widget->terminal = vte_terminal_new ();
   g_signal_connect (G_OBJECT (widget->terminal), "child-exited",
@@ -279,35 +299,11 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::scrolling-on-keystroke",
                             G_CALLBACK (terminal_widget_update_scrolling_on_keystroke), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::title-initial",
-                            G_CALLBACK (terminal_widget_update_title_initial), widget);
+                            G_CALLBACK (terminal_widget_update_title), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::title-mode",
-                            G_CALLBACK (terminal_widget_update_title_mode), widget);
+                            G_CALLBACK (terminal_widget_update_title), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::word-chars",
                             G_CALLBACK (terminal_widget_update_word_chars), widget);
-
-  widget->tab_box = gtk_hbox_new (FALSE, 2);
-  g_object_ref (G_OBJECT (widget->tab_box));
-  gtk_object_sink (GTK_OBJECT (widget->tab_box));
-  gtk_widget_show (widget->tab_box);
-
-  widget->tab_label = exo_ellipsized_label_new ("");
-  exo_ellipsized_label_set_mode (EXO_ELLIPSIZED_LABEL (widget->tab_label),
-                                 EXO_PANGO_ELLIPSIZE_END);
-  gtk_misc_set_alignment (GTK_MISC (widget->tab_label), 0.0, 0.5);
-  gtk_box_pack_start (GTK_BOX (widget->tab_box), widget->tab_label, TRUE, TRUE, 0);
-  gtk_widget_show (widget->tab_label);
-
-  image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, gtk_icon_size_from_name ("terminal-icon-size-tab"));
-  gtk_widget_show (image);
-
-  widget->tab_button = gtk_button_new ();
-  gtk_button_set_relief (GTK_BUTTON (widget->tab_button), GTK_RELIEF_NONE);
-  gtk_container_set_border_width (GTK_CONTAINER (widget->tab_button), 0);
-  gtk_container_add (GTK_CONTAINER (widget->tab_button), image);
-  g_signal_connect_swapped (G_OBJECT (widget->tab_button), "clicked",
-                            G_CALLBACK (gtk_widget_destroy), widget);
-  gtk_box_pack_start (GTK_BOX (widget->tab_box), widget->tab_button, FALSE, FALSE, 0);
-  gtk_widget_show (widget->tab_button);
 
   /* apply current settings */
   terminal_widget_update_binding_backspace (widget);
@@ -330,16 +326,70 @@ terminal_widget_finalize (GObject *object)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
 
-  if (widget->background_timer_id != 0)
+  if (G_UNLIKELY (widget->background_timer_id != 0))
     g_source_remove (widget->background_timer_id);
 
   g_signal_handlers_disconnect_matched (G_OBJECT (widget->preferences), G_SIGNAL_MATCH_DATA,
                                         0, 0, NULL, NULL, widget);
 
   g_object_unref (G_OBJECT (widget->preferences));
-  g_object_unref (G_OBJECT (widget->tab_box));
+
+  if (widget->working_directory != NULL)
+    g_free (widget->working_directory);
+  if (widget->custom_command != NULL)
+    g_strfreev (widget->custom_command);
+  if (widget->custom_title != NULL)
+    g_free (widget->custom_title);
 
   parent_class->finalize (object);
+}
+
+
+
+static void
+terminal_widget_get_property (GObject          *object,
+                              guint             prop_id,
+                              GValue           *value,
+                              GParamSpec       *pspec)
+{
+  TerminalWidget *widget = TERMINAL_WIDGET (object);
+
+  switch (prop_id)
+    {
+    case PROP_CUSTOM_TITLE:
+      g_value_set_string (value, widget->custom_title);
+      break;
+
+    case PROP_TITLE:
+      g_value_take_string (value, terminal_widget_get_title (widget));
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+
+
+static void
+terminal_widget_set_property (GObject          *object,
+                              guint             prop_id,
+                              const GValue     *value,
+                              GParamSpec       *pspec)
+{
+  TerminalWidget *widget = TERMINAL_WIDGET (object);
+
+  switch (prop_id)
+    {
+    case PROP_CUSTOM_TITLE:
+      terminal_widget_set_custom_title (widget, g_value_get_string (value));
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
 }
 
 
@@ -422,18 +472,6 @@ terminal_widget_get_child_command (TerminalWidget   *widget,
     }
 
   return TRUE;
-}
-
-
-
-static void
-terminal_widget_set_tab_title (TerminalWidget *widget)
-{
-  gchar *title;
-
-  title = terminal_widget_get_title (widget);
-  exo_ellipsized_label_set_full_text (EXO_ELLIPSIZED_LABEL (widget->tab_label), title);
-  g_free (title);
 }
 
 
@@ -639,19 +677,9 @@ terminal_widget_update_scrolling_on_keystroke (TerminalWidget *widget)
 
 
 static void
-terminal_widget_update_title_initial (TerminalWidget *widget)
+terminal_widget_update_title (TerminalWidget *widget)
 {
-  terminal_widget_set_tab_title (widget);
-  g_signal_emit (G_OBJECT (widget), widget_signals[TITLE_CHANGED], 0);
-}
-
-
-
-static void
-terminal_widget_update_title_mode (TerminalWidget *widget)
-{
-  terminal_widget_set_tab_title (widget);
-  g_signal_emit (G_OBJECT (widget), widget_signals[TITLE_CHANGED], 0);
+  g_object_notify (G_OBJECT (widget), "title");
 }
 
 
@@ -855,8 +883,7 @@ terminal_widget_vte_window_title_changed (VteTerminal    *terminal,
   g_return_if_fail (VTE_IS_TERMINAL (terminal));
   g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
-  terminal_widget_set_tab_title (widget);
-  g_signal_emit (G_OBJECT (widget), widget_signals[TITLE_CHANGED], 0);
+  g_object_notify (G_OBJECT (widget), "title");
 }
 
 
@@ -940,7 +967,6 @@ terminal_widget_launch_child (TerminalWidget *widget)
   GError  *error = NULL;
   gchar   *command;
   gchar  **argv;
-  GPid     pid;
 
   g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
@@ -954,9 +980,10 @@ terminal_widget_launch_child (TerminalWidget *widget)
                 "command-update-records", &update,
                 NULL);
 
-  pid = vte_terminal_fork_command (VTE_TERMINAL (widget->terminal),
-                                   command, argv, NULL, NULL,
-                                   update, update, update);
+  widget->pid = vte_terminal_fork_command (VTE_TERMINAL (widget->terminal),
+                                           command, argv, NULL,
+                                           widget->working_directory,
+                                           update, update, update);
 
   g_strfreev (argv);
   g_free (command);
@@ -982,6 +1009,28 @@ terminal_widget_set_custom_command (TerminalWidget *widget,
     widget->custom_command = g_strdupv (command);
   else
     widget->custom_command = NULL;
+}
+
+
+
+/**
+ * terminal_widget_set_custom_title:
+ * @widget  : A #TerminalWidget.
+ * @title   : Title string.
+ **/
+void
+terminal_widget_set_custom_title (TerminalWidget *widget,
+                                  const gchar    *title)
+{
+  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
+
+  if (!exo_str_is_equal (widget->custom_title, title))
+    {
+      g_free (widget->custom_title);
+      widget->custom_title = g_strdup (title != NULL ? title : "");
+      g_object_notify (G_OBJECT (widget), "custom-title");
+      g_object_notify (G_OBJECT (widget), "title");
+    }
 }
 
 
@@ -1096,25 +1145,6 @@ terminal_widget_set_window_geometry_hints (TerminalWidget *widget,
 
 
 /**
- * terminal_widget_get_tab_box:
- * @widget      : A #TerminalWidget.
- *
- * FIXME: get rid of this, and replace it with a property "active-title", which
- * gets connected to the "full-text" property of the label!
- *
- * Return value :
- **/
-GtkWidget*
-terminal_widget_get_tab_box (TerminalWidget *widget)
-{
-  g_return_val_if_fail (TERMINAL_IS_WIDGET (widget), NULL);
-  terminal_widget_set_tab_title (widget);
-  return widget->tab_box;
-}
-
-
-
-/**
  * terminal_widget_get_title:
  * @widget      : A #TerminalWidget.
  *
@@ -1129,6 +1159,9 @@ terminal_widget_get_title (TerminalWidget *widget)
   gchar        *title;
 
   g_return_val_if_fail (TERMINAL_IS_WIDGET (widget), NULL);
+
+  if (G_UNLIKELY (*widget->custom_title != '\0'))
+    return g_strdup (widget->custom_title);
 
   g_object_get (G_OBJECT (widget->preferences),
                 "title-initial", &initial,
@@ -1172,6 +1205,77 @@ terminal_widget_get_title (TerminalWidget *widget)
   g_free (initial);
 
   return title;
+}
+
+
+
+/**
+ * terminal_widget_get_working_directory:
+ * @widget      : A #TerminalWidget.
+ *
+ * Determinies the working directory using various OS-specific mechanisms.
+ *
+ * Return value : The current working directory of @widget.
+ **/
+const gchar*
+terminal_widget_get_working_directory (TerminalWidget *widget)
+{
+  gchar  buffer[4096 + 1];
+  gchar *file;
+  gchar *cwd;
+  gint   length;
+
+  g_return_val_if_fail (TERMINAL_IS_WIDGET (widget), NULL);
+
+  if (widget->pid >= 0)
+    {
+      file = g_strdup_printf ("/proc/%d/cwd", widget->pid);
+      length = readlink (file, buffer, sizeof (buffer));
+
+      if (length > 0 && *buffer == '/')
+        {
+          buffer[length] = '\0';
+          g_free (widget->working_directory);
+          widget->working_directory = g_strdup (buffer);
+        }
+      else if (length == 0)
+        {
+          cwd = g_get_current_dir ();
+          if (G_LIKELY (cwd != NULL))
+            {
+              if (chdir (file) == 0)
+                {
+                  g_free (widget->working_directory);
+                  widget->working_directory = g_get_current_dir ();
+                  chdir (cwd);
+                }
+
+              g_free (cwd);
+            }
+        }
+
+      g_free (file);
+    }
+
+  return widget->working_directory;
+}
+
+
+
+/**
+ * terminal_widget_set_working_directory:
+ * @widget    : A #TerminalWidget.
+ * @directory :
+ **/
+void
+terminal_widget_set_working_directory (TerminalWidget *widget,
+                                       const gchar    *directory)
+{
+  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
+  g_return_if_fail (directory != NULL);
+
+  g_free (widget->working_directory);
+  widget->working_directory = g_strdup (directory);
 }
 
 

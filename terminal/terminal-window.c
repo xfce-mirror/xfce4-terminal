@@ -1,4 +1,4 @@
-/* $Id: terminal-window.c,v 1.13 2004/09/17 23:37:55 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -26,10 +26,22 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_SYS_TYPES_H
+#include <sys/types.h>
+#endif
+
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+
 #include <exo/exo.h>
 #include <gdk/gdkkeysyms.h>
 
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-tab-header.h>
 #include <terminal/terminal-window.h>
 
 
@@ -57,7 +69,8 @@ static void            terminal_window_notify_page              (GtkNotebook    
 static void            terminal_window_context_menu             (TerminalWidget  *widget,
                                                                  GdkEvent        *event,
                                                                  TerminalWindow  *window);
-static void            terminal_window_title_changed            (TerminalWidget  *widget,
+static void            terminal_window_notify_title             (TerminalWidget  *widget,
+                                                                 GParamSpec      *pspec,
                                                                  TerminalWindow  *window);
 static void            terminal_window_widget_removed           (GtkNotebook     *notebook,
                                                                  TerminalWidget  *widget,
@@ -89,6 +102,8 @@ static void            terminal_window_action_set_title         (GtkAction      
 static void            terminal_window_action_reset             (GtkAction       *action,
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_reset_and_clear   (GtkAction       *action,
+                                                                 TerminalWindow  *window);
+static void            terminal_window_action_contents          (GtkAction       *action,
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_about             (GtkAction       *action,
                                                                  TerminalWindow  *window);
@@ -142,6 +157,7 @@ static GtkActionEntry action_entries[] =
   { "reset", NULL, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
   { "reset-and-clear", NULL, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "help-menu", NULL, N_ ("_Help"), },
+  { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, NULL, G_CALLBACK (terminal_window_action_contents), },
   { "about", GTK_STOCK_DIALOG_INFO, N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
@@ -181,6 +197,7 @@ static const gchar ui_description[] =
  "      <menuitem action='reset-and-clear'/>"
  "    </menu>"
  "    <menu action='help-menu'>"
+ "      <menuitem action='contents'/>"
  "      <menuitem action='about'/>"
  "    </menu>"
  "  </menubar>"
@@ -228,8 +245,9 @@ terminal_window_class_init (TerminalWindowClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalWindowClass, new_window),
                   NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+                  g_cclosure_marshal_VOID__STRING,
+                  G_TYPE_NONE, 1,
+                  G_TYPE_STRING);
 }
 
 
@@ -242,6 +260,7 @@ terminal_window_init (TerminalWindow *window)
   GtkWidget           *vbox;
   GdkPixbuf           *icon;
   gboolean             compact;
+  gchar               *role;
 
   window->preferences = terminal_preferences_get ();
 
@@ -306,6 +325,11 @@ terminal_window_init (TerminalWindow *window)
       gtk_window_set_icon (GTK_WINDOW (window), icon);
       g_object_unref (G_OBJECT (icon));
     }
+
+  /* set a unique role on each window (for session management) */
+  role = g_strdup_printf ("Terminal-%p-%d-%d", window, getpid (), (gint) time (NULL));
+  gtk_window_set_role (GTK_WINDOW (window), role);
+  g_free (role);
 }
 
 
@@ -483,8 +507,9 @@ terminal_window_context_menu (TerminalWidget  *widget,
 
 
 static void
-terminal_window_title_changed (TerminalWidget *widget,
-                               TerminalWindow *window)
+terminal_window_notify_title (TerminalWidget *widget,
+                              GParamSpec     *pspec,
+                              TerminalWindow *window)
 {
   TerminalWidget *terminal;
   gchar          *title;
@@ -530,11 +555,23 @@ static void
 terminal_window_action_new_tab (GtkAction       *action,
                                 TerminalWindow  *window)
 {
-  GtkWidget *new_terminal;
+  TerminalWidget *active;
+  const gchar    *directory;
+  GtkWidget      *terminal;
 
-  new_terminal = terminal_widget_new ();
-  terminal_window_add (window, TERMINAL_WIDGET (new_terminal));
-  terminal_widget_launch_child (TERMINAL_WIDGET (new_terminal));
+  terminal = terminal_widget_new ();
+
+  active = terminal_window_get_active (window);
+  if (G_LIKELY (active != NULL))
+    {
+      directory = terminal_widget_get_working_directory (active);
+      terminal_widget_set_working_directory (TERMINAL_WIDGET (terminal),
+                                             directory);
+      g_message ("USING DIRECTORY = \"%s\"", directory);
+    }
+
+  terminal_window_add (window, TERMINAL_WIDGET (terminal));
+  terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
 }
 
 
@@ -543,7 +580,15 @@ static void
 terminal_window_action_new_window (GtkAction       *action,
                                    TerminalWindow  *window)
 {
-  g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0);
+  TerminalWidget *active;
+  const gchar    *directory;
+
+  active = terminal_window_get_active (window);
+  if (G_LIKELY (active != NULL))
+    {
+      directory = terminal_widget_get_working_directory (active);
+      g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
+    }
 }
 
 
@@ -695,6 +740,32 @@ terminal_window_action_reset_and_clear (GtkAction       *action,
 
 
 static void
+terminal_window_action_contents (GtkAction       *action,
+                                 TerminalWindow  *window)
+{
+  GtkWidget *dialog;
+  GError    *error = NULL;
+
+  if (!g_spawn_command_line_async (TERMINAL_HELP_BIN, &error))
+    {
+      dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+                                       GTK_DIALOG_DESTROY_WITH_PARENT
+                                       | GTK_DIALOG_MODAL,
+                                       GTK_MESSAGE_ERROR,
+                                       GTK_BUTTONS_OK,
+                                       _("Unable to launch online help: %s"),
+                                       error->message);
+      g_signal_connect (G_OBJECT (dialog), "response",
+                        G_CALLBACK (gtk_widget_destroy), NULL);
+      gtk_widget_show (dialog);
+
+      g_error_free (error);
+    }
+}
+
+
+
+static void
 terminal_window_action_about (GtkAction       *action,
                               TerminalWindow  *window)
 {
@@ -731,7 +802,52 @@ terminal_window_prefs_idle_destroy (gpointer user_data)
 static gboolean
 terminal_window_title_idle (gpointer user_data)
 {
-  g_warning ("NOT IMPLEMENTED!");
+  ExoPropertyProxy *proxy;
+  TerminalWindow   *window = TERMINAL_WINDOW (user_data);
+  TerminalWidget   *widget;
+  GtkWidget        *dialog;
+  GtkWidget        *box;
+  GtkWidget        *label;
+  GtkWidget        *entry;
+
+  widget = terminal_window_get_active (window);
+  if (G_LIKELY (widget != NULL))
+    {
+      dialog = gtk_dialog_new_with_buttons (_("Set Title"),
+                                            GTK_WINDOW (window),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_NO_SEPARATOR,
+                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            NULL);
+
+      box = gtk_hbox_new (FALSE, 6);
+      gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), box, TRUE, TRUE, 0);
+      gtk_widget_show (box);
+
+      label = g_object_new (GTK_TYPE_LABEL,
+                            "label", _("<b>Title:</b>"),
+                            "use-markup", TRUE,
+                            NULL);
+      gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
+      gtk_widget_show (label);
+
+      entry = gtk_entry_new ();
+      gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
+      g_signal_connect_swapped (G_OBJECT (entry), "activate",
+                                G_CALLBACK (gtk_widget_destroy), dialog);
+      gtk_widget_show (entry);
+
+      proxy = exo_property_proxy_new ();
+      exo_property_proxy_add (proxy, G_OBJECT (widget), "custom-title", NULL, NULL, NULL);
+      exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
+      g_object_unref (G_OBJECT (proxy));
+
+      g_signal_connect (G_OBJECT (dialog), "response",
+                        G_CALLBACK (gtk_widget_destroy), NULL);
+
+      gtk_widget_show (dialog);
+    }
+
   return FALSE;
 }
 
@@ -804,12 +920,13 @@ void
 terminal_window_add (TerminalWindow *window,
                      TerminalWidget *widget)
 {
-  TerminalWidget *active;
-  GtkWidget      *tab_box;
-  gint            npages;
-  gint            page;
-  gint            grid_width = -1;
-  gint            grid_height = -1;
+  ExoPropertyProxy *proxy;
+  TerminalWidget   *active;
+  GtkWidget        *header;
+  gint              npages;
+  gint              page;
+  gint              grid_width = -1;
+  gint              grid_height = -1;
 
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
   g_return_if_fail (TERMINAL_IS_WIDGET (widget));
@@ -821,9 +938,18 @@ terminal_window_add (TerminalWindow *window,
       terminal_widget_set_size (widget, grid_width, grid_height);
     }
 
-  tab_box = terminal_widget_get_tab_box (widget);
+  header = terminal_tab_header_new ();
+  g_signal_connect_swapped (G_OBJECT (header), "close",
+                            G_CALLBACK (gtk_widget_destroy), widget);
+  gtk_widget_show (header);
+
+  proxy = exo_property_proxy_new ();
+  exo_property_proxy_add (proxy, G_OBJECT (widget), "title", NULL, NULL, NULL);
+  exo_property_proxy_add (proxy, G_OBJECT (header), "title", NULL, NULL, NULL);
+  g_object_unref (G_OBJECT (proxy));
+
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),
-                                   GTK_WIDGET (widget), tab_box);
+                                   GTK_WIDGET (widget), header);
   gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (window->notebook),
                                       GTK_WIDGET (widget),
                                       TRUE, TRUE, GTK_PACK_START);
@@ -834,8 +960,8 @@ terminal_window_add (TerminalWindow *window,
 
   g_signal_connect (G_OBJECT (widget), "context-menu",
                     G_CALLBACK (terminal_window_context_menu), window);
-  g_signal_connect (G_OBJECT (widget), "title-changed",
-                    G_CALLBACK (terminal_window_title_changed), window);
+  g_signal_connect (G_OBJECT (widget), "notify::title",
+                    G_CALLBACK (terminal_window_notify_title), window);
   g_signal_connect_swapped (G_OBJECT (widget), "selection-changed",
                             G_CALLBACK (terminal_window_update_actions), window);
 

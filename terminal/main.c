@@ -1,4 +1,4 @@
-/* $Id: main.c,v 1.10 2004/09/22 18:41:04 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -70,8 +70,18 @@ usage (void)
            "  --display=DISPLAY       X display to use\n"
            "\n"
            "Terminal\n"
-           "  --geometry=GEOMETRY     X geometry specification\n"
-           "\n"
+           "  --command=STRING        Execute the argument to this option\n"
+           "                          inside the terminal.\n"
+           "  -x, --execute           Execute the remainder of the command\n"
+           "                          line inside the terminal.\n"
+           "  --tab                   Open a new tab in the last-opened\n"
+           "                          window.\n"
+           "  --geometry=GEOMETRY     X geometry specification (see \"X\"\n"
+           "                          manual page).\n"
+           "  --disable-server        Do not register with the D-BUS session\n"
+           "                          message bus.\n"
+           "  --title=TITLE           Set the terminal's title.\n"
+           "  --working-directory=DIR Set the terminal's working directory.\n"
            "  --help                  Print this help message and exit\n"
            "  --version               Print version information and exit\n"
            "\n");

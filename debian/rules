@@ -13,7 +13,7 @@ configure: configure-stamp
 configure-stamp:
 
 	dh_testdir
-	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --sysconfdir=/etc
+	./configure --host=$(DEB_HOST_GNU_TYPE) --build=$(DEB_BUILD_GNU_TYPE) --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/sbin
 	touch configure-stamp
 
 build: configure build-stamp

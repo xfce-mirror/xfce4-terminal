@@ -1,3 +1,26 @@
+2004-09-23	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-tab-header.c, terminal/terminal-tab-header.h: Move
+	  the terminal tab header functionality here.
+	* terminal/terminal-widget.c, terminal-widget.h: Add possibility to
+	  set a custom title and added functionality to get/set the working
+	  directory in use for a widget.
+	* terminal/terminal-window.c: Implement the "Set title" action. Set
+	  a unique role on each newly created window. Added Help/Contents,
+	  which runs TerminalHelp.
+	* terminal/terminal-app.c: New terminal windows opened from existing
+	  terminal windows inherit the working directory, atleast on plattforms
+	  that supports getting the working directory for a child process.
+	* terminal/main.c(usage): Include all command line options in the
+	  usage output.
+	* doc: Added online documentation.
+	* HACKING: Added notes about updating documentation to the
+	  "Release process" section.
+	* TerminalHelp.in: Simple script to launch a browser with the
+	  Terminal online documentation.
+	* debian/rules: Use /usr/bin as libexecdir, since Debian policies
+	  seems to forbid the use of libexecdir.
+
 2004-09-22	Benedikt Meurer <benny@xfce.org>
 
 	* configure.ac: Version 0.1.5.

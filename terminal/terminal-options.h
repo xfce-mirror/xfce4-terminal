@@ -1,4 +1,4 @@
-/* $Id: terminal-options.h,v 1.3 2004/09/17 10:16:45 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -41,8 +41,6 @@ typedef enum /*< flags,prefix=TERMINAL_OPTIONS >*/
 typedef enum /*< flags,prefix=TERMINAL_FLAGS >*/
 {
   TERMINAL_FLAGS_OPENTAB        = 1 << 0,
-  TERMINAL_FLAGS_COMPACTMODE    = 1 << 1,
-  TERMINAL_FLAGS_FULLSCREEN     = 1 << 2,
   TERMINAL_FLAGS_DISABLESERVER  = 1 << 3,
   TERMINAL_FLAGS_SHOWVERSION    = 1 << 4,
   TERMINAL_FLAGS_SHOWHELP       = 1 << 5,

@@ -1,4 +1,4 @@
-/* $Id: terminal-widget.h,v 1.6 2004/09/17 23:37:55 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -43,35 +43,38 @@ struct _TerminalWidgetClass
   /* signals */
   void (*context_menu) (TerminalWidget *widget, GdkEvent *event);
   void (*selection_changed) (TerminalWidget *widget);
-  void (*title_changed) (TerminalWidget *widget);
 };
 
-GType      terminal_widget_get_type             (void) G_GNUC_CONST;
+GType        terminal_widget_get_type                     (void) G_GNUC_CONST;
 
-GtkWidget *terminal_widget_new                  (void);
+GtkWidget   *terminal_widget_new                          (void);
 
-void       terminal_widget_launch_child         (TerminalWidget *widget);
+void         terminal_widget_launch_child                 (TerminalWidget *widget);
 
-void       terminal_widget_set_custom_command   (TerminalWidget *widget,
-                                                 gchar         **command);
+void         terminal_widget_set_custom_command           (TerminalWidget *widget,
+                                                           gchar         **command);
+void         terminal_widget_set_custom_title             (TerminalWidget *widget,
+                                                           const gchar    *title);
 
-void       terminal_widget_get_size             (TerminalWidget *widget,
-                                                 gint           *width_chars,
-                                                 gint           *height_chars);
-void       terminal_widget_set_size             (TerminalWidget *widget,
-                                                 gint            width_chars,
-                                                 gint            height_chars);
+void         terminal_widget_get_size                     (TerminalWidget *widget,
+                                                           gint           *width_chars,
+                                                           gint           *height_chars);
+void         terminal_widget_set_size                     (TerminalWidget *widget,
+                                                           gint            width_chars,
+                                                           gint            height_chars);
 
-void       terminal_widget_force_resize_window        (TerminalWidget *widget,
-                                                       GtkWindow      *window,
-                                                       gint            force_columns,
-                                                       gint            force_rows);
-void       terminal_widget_set_window_geometry_hints  (TerminalWidget *widget,
-                                                       GtkWindow      *window);
+void       terminal_widget_force_resize_window          (TerminalWidget *widget,
+                                                         GtkWindow      *window,
+                                                         gint            force_columns,
+                                                         gint            force_rows);
+void       terminal_widget_set_window_geometry_hints    (TerminalWidget *widget,
+                                                         GtkWindow      *window);
 
-GtkWidget *terminal_widget_get_tab_box                (TerminalWidget *widget);
+gchar       *terminal_widget_get_title                  (TerminalWidget *widget);
 
-gchar     *terminal_widget_get_title                  (TerminalWidget *widget);
+const gchar *terminal_widget_get_working_directory      (TerminalWidget *widget);
+void         terminal_widget_set_working_directory      (TerminalWidget *widget,
+                                                         const gchar    *directory);
 
 gboolean   terminal_widget_has_selection              (TerminalWidget *widget);
 

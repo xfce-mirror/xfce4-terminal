@@ -2,6 +2,7 @@ INCLUDES =								\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
+	-DTERMINAL_HELP_BIN=\"$(libexecdir)/TerminalHelp\"		\
 	-I$(top_srcdir)
 
 bin_PROGRAMS = 								\
@@ -18,6 +19,7 @@ Terminal_headers =							\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
 	terminal-shortcut-editor.h					\
+	terminal-tab-header.h						\
 	terminal-widget.h						\
 	terminal-window.h
 
@@ -32,6 +34,7 @@ Terminal_SOURCES =							\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\
 	terminal-shortcut-editor.c					\
+	terminal-tab-header.c						\
 	terminal-widget.c						\
 	terminal-window.c
 

@@ -1,4 +1,4 @@
-/* $Id: terminal-app.c,v 1.4 2004/09/17 23:37:55 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -40,6 +40,7 @@ static DBusHandlerResult  terminal_app_message          (DBusConnection   *conne
                                                          DBusMessage      *message,
                                                          void             *user_data);
 static void               terminal_app_new_window       (TerminalWindow   *window,
+                                                         const gchar      *working_directory,
                                                          TerminalApp      *app);
 static void               terminal_app_window_destroyed (GtkWidget        *window,
                                                          TerminalApp      *app);
@@ -213,9 +214,15 @@ terminal_app_message (DBusConnection  *connection,
 
 static void
 terminal_app_new_window (TerminalWindow *window,
+                         const gchar    *working_directory,
                          TerminalApp    *app)
 {
-  terminal_app_launch_with_options (app, NULL, NULL);
+  TerminalOptions options;
+
+  options.mask = TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
+  options.working_directory = (gchar *) working_directory;
+
+  terminal_app_launch_with_options (app, &options, NULL);
 }
 
 
@@ -323,8 +330,15 @@ terminal_app_launch_with_options (TerminalApp     *app,
 
   /* setup the terminal widget */
   terminal = terminal_widget_new ();
-  if (options != NULL && (options->mask & TERMINAL_OPTIONS_MASK_COMMAND) != 0)
-    terminal_widget_set_custom_command (TERMINAL_WIDGET (terminal), options->command);
+  if (options != NULL)
+    {
+      if (options->mask & TERMINAL_OPTIONS_MASK_COMMAND)
+        terminal_widget_set_custom_command (TERMINAL_WIDGET (terminal), options->command);
+      if (options->mask & TERMINAL_OPTIONS_MASK_TITLE)
+        terminal_widget_set_custom_title (TERMINAL_WIDGET (terminal), options->title);
+      if (options->mask & TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY)
+        terminal_widget_set_working_directory (TERMINAL_WIDGET (terminal), options->working_directory);
+    }
 
   /* setup the window */
   if (options != NULL && (options->flags & TERMINAL_FLAGS_OPENTAB) != 0 && app->windows != NULL)
@@ -344,10 +358,13 @@ terminal_app_launch_with_options (TerminalApp     *app,
   terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_WIDGET (terminal));
   terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
 
-  if (options != NULL && (options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY))
+  if (options != NULL)
     {
-      if (!gtk_window_parse_geometry (GTK_WINDOW (window), options->geometry))
-        g_printerr (_("Invalid geometry string \"%s\"\n"), options->geometry);
+      if (options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY)
+        {
+          if (!gtk_window_parse_geometry (GTK_WINDOW (window), options->geometry))
+            g_printerr (_("Invalid geometry string \"%s\"\n"), options->geometry);
+        }
     }
 
   gtk_widget_show (window);
@@ -359,7 +376,9 @@ terminal_app_launch_with_options (TerminalApp     *app,
 
 /**
  * terminal_app_try_existing:
- * @options
+ * @options     : Pointer to a #TerminalOptions struct.
+ *
+ * Return value : %TRUE on success, %FALSE on error.
  **/
 gboolean
 terminal_app_try_existing (TerminalOptions *options)
@@ -367,6 +386,8 @@ terminal_app_try_existing (TerminalOptions *options)
   DBusMessageIter iter;
   DBusConnection *connection;
   DBusMessage    *message;
+
+  g_return_val_if_fail (options != NULL, FALSE);
 
   connection = exo_dbus_bus_connection ();
   if (connection == NULL)

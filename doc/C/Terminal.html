@@ -1,0 +1,47 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Terminal Emulator</title><link rel="stylesheet" href="../terminal.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.65.1"><link rel="home" href="#Terminal" title="Terminal Emulator"><link rel="next" href="#intro" title="Introduction to Terminal"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="Terminal"></a>Terminal Emulator</h1></div><div><div class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Benedikt</span> <span class="surname">Meurer</span></h3><div class="affiliation"><div class="address"><p><tt class="email">&lt;<a href="mailto:benny@xfce.org">benny@xfce.org</a>&gt;</tt></p></div></div></div></div></div><div><span xmlns="http://www.w3.org/TR/xhtml1/transitional" class="releaseinfo">
+      This manual describes the <b xmlns="" class="application"><tt>Terminal</tt></b> software, version 0.1.x.
+    <br></br></span></div><div><p class="copyright">Copyright © 2004 os-cillation e.K.</p></div></div><div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#intro">Introduction to Terminal</a></span></dt><dd><dl><dt><span class="sect2"><a href="#id2519453">What is a terminal emulator?</a></span></dt><dt><span class="sect2"><a href="#id2519470">What makes Terminal special?</a></span></dt></dl></dd><dt><span class="sect1"><a href="#getting-started">Getting started</a></span></dt><dd><dl><dt><span class="sect2"><a href="#id2519513">Starting Terminal</a></span></dt><dt><span class="sect2"><a href="#id2519570">When you first start Terminal</a></span></dt><dt><span class="sect2"><a href="#id2519627">Working with multiple terminals</a></span></dt></dl></dd><dt><span class="sect1"><a href="#copyright">About Terminal</a></span></dt></dl></div><p> </p><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="intro"></a>Introduction to <b class="application"><tt>Terminal</tt></b></h2></div></div><div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2519453"></a>What is a terminal emulator?</h3></div></div><div></div></div><p>The UNIX operating system were originally designed as a text-only
+      system, controlled by commands entered with a keybaord. This is known
+      as a command-line interface (CLI). The X Window System, Xfce and other
+      projects have since added a graphical user interface to UNIX, thats
+      what you are actually using now. But the addition of a graphical user
+      interface doesn't mean, that the CLI is dead. The CLI is still around,
+      and is frequently the easiest, fastest and most powerful way to perform
+      a certain task. In fact, power users would be lost without the CLI.</p><p><b class="application"><tt>Terminal</tt></b> is what is known as an X terminal emulator, often referred
+      to as terminal or shell. It provides an equivalent to the old fashioned
+      text screen on your desktop, but on which can easily share the screen
+      with other graphical applications. Windows users may already be familar
+      with the MS-DOS Prompt utility, which has the analogous function of
+      offering a DOS command-line under Windows, though one should note, that
+      the UNIX CLI offer far more power and ease of use than does DOS.</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2519470"></a>What makes <b class="application"><tt>Terminal</tt></b> special?</h3></div></div><div></div></div><p><b class="application"><tt>Terminal</tt></b>'s advanced features include a simple configuration interface, the
+      ability to use multiple tabs with terminals within a single window, the possibility
+      to have a pseudo-transparent terminal background and a compact mode, that helps
+      you to save space on your desktop.</p><p>The following key features are available:</p><div class="itemizedlist"><ul type="disc"><li>Multiple tabs per window</li><li>Nearly every aspect of the terminal itself is configurable</li></ul></div></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getting-started"></a>Getting started</h2></div></div><div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2519513"></a>Starting <b class="application"><tt>Terminal</tt></b></h3></div></div><div></div></div><p>The easiest way to start <b class="application"><tt>Terminal</tt></b> is to use the applications menu of your desktop -
+      for Xfce, point your mouse cursor to the desktop, press the right mouse button
+      and choose <b class="application"><tt>Terminal</tt></b> from the
+      <b class="application"><tt>System</tt></b> menu.</p><p>You can also start <b class="application"><tt>Terminal</tt></b> from a command line or from the <b class="application"><tt>Application
+      launcher</tt></b>. Just hit <span class="emphasis"><em>ALT+F2</em></span>, type
+      <span class="emphasis"><em>Terminal</em></span> and press the button
+      <span class="bold"><b>Run</b></span>.</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2519570"></a>When you first start <b class="application"><tt>Terminal</tt></b></h3></div></div><div></div></div><p>When you start <b class="application"><tt>Terminal</tt></b> for the first time, the application opens a terminal window
+      with using default settings.</p><div class="screenshot"><div class="mediaobject"><img src="images/terminal-first-time.png" alt="Example of a default terminal window"></div></div><p>The terminal window displays a command prompt where you can type UNIX
+      commands. The command prompt may vary depending on the configuration of
+      your shell. The cursor is positioned at the command prompt. When you type a
+      UNIX command and press <span class="bold"><b>Return</b></span>, the computer
+      executes the command. By default, <b class="application"><tt>Terminal</tt></b> will use the login shell of the user
+      who starts the application.</p></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="id2519627"></a>Working with multiple terminals</h3></div></div><div></div></div><p><b class="application"><tt>Terminal</tt></b> provides a tab feature that enables you to open several terminal
+      within a single window. Each terminal is opened in a separate tab. Click on the
+      appropriate tab to display the terminal in the window. Each tabbed terminal in
+      a window is separate subprocess, so you can use each terminal for a different
+      task.</p><div class="screenshot"><div class="mediaobject"><img src="images/terminal-multiple-tabs.png" alt="Example of a terminal window with tabs"></div></div></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="copyright"></a>About <b class="application"><tt>Terminal</tt></b></h2></div></div><div></div></div><p><b class="application"><tt>Terminal</tt></b> was written by Benedikt Meurer (<tt class="email">&lt;<a href="mailto:benny@xfce.org">benny@xfce.org</a>&gt;</tt>). Visit the
+    <a href="http://www.os-cillation.com/" target="_top">os-cillation website</a>
+    for more information.</p><p>To report a bug or make a suggestion regarding this application or this
+    manual, use the bug tracking system at <a href="http://bugs.os-cillation.de/" target="_top">http://bugs.os-cillation.de/</a>. If you
+    have questions about the use or installation of this software, please ask on the
+    <a href="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat" target="_top">os-cillation
+    forum</a>
+    or join the channel <span class="bold"><b>#xfce</b></span> on <span class="bold"><b>irc.freenode.net</b></span> and ask for help.</p><p>This software is distributed under the terms of the GNU General Public License
+    as published by the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.</p><p>You should have received a copy of the GNU General Public License 
+    along with this program; if not, write to the Free Software 
+    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+    USA.</p></div></div></body></html>
