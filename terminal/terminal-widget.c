@@ -99,7 +99,7 @@ static void terminal_widget_update_background                 (TerminalWidget   
 static void terminal_widget_update_binding_backspace          (TerminalWidget   *widget);
 static void terminal_widget_update_binding_delete             (TerminalWidget   *widget);
 static void terminal_widget_update_colors                     (TerminalWidget   *widget);
-static void terminal_widget_update_font_name                  (TerminalWidget   *widget);
+static void terminal_widget_update_font                       (TerminalWidget   *widget);
 static void terminal_widget_update_misc_bell                  (TerminalWidget   *widget);
 static void terminal_widget_update_misc_cursor_blinks         (TerminalWidget   *widget);
 static void terminal_widget_update_scrolling_bar              (TerminalWidget   *widget);
@@ -313,7 +313,8 @@ terminal_widget_init (TerminalWidget *widget)
                     "swapped-signal::notify::color-palette14", G_CALLBACK (terminal_widget_update_colors), widget,
                     "swapped-signal::notify::color-palette15", G_CALLBACK (terminal_widget_update_colors), widget,
                     "swapped-signal::notify::color-palette16", G_CALLBACK (terminal_widget_update_colors), widget,
-                    "swapped-signal::notify::font-name", G_CALLBACK (terminal_widget_update_font_name), widget,
+                    "swapped-signal::notify::font-anti-alias", G_CALLBACK (terminal_widget_update_font), widget,
+                    "swapped-signal::notify::font-name", G_CALLBACK (terminal_widget_update_font), widget,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_widget_update_misc_bell), widget,
                     "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_widget_update_misc_cursor_blinks), widget,
                     "swapped-signal::notify::scrolling-bar", G_CALLBACK (terminal_widget_update_scrolling_bar), widget,
@@ -328,7 +329,7 @@ terminal_widget_init (TerminalWidget *widget)
   /* apply current settings */
   terminal_widget_update_binding_backspace (widget);
   terminal_widget_update_binding_delete (widget);
-  terminal_widget_update_font_name (widget);
+  terminal_widget_update_font (widget);
   terminal_widget_update_misc_bell (widget);
   terminal_widget_update_misc_cursor_blinks (widget);
   terminal_widget_update_scrolling_bar (widget);
@@ -644,14 +645,25 @@ terminal_widget_update_colors (TerminalWidget *widget)
 
 
 static void
-terminal_widget_update_font_name (TerminalWidget *widget)
+terminal_widget_update_font (TerminalWidget *widget)
 {
-  gchar *font_name;
+  VteTerminalAntiAlias antialias;
+  gboolean             font_anti_alias;
+  gchar               *font_name;
 
-  g_object_get (G_OBJECT (widget->preferences), "font-name", &font_name, NULL);
+  g_object_get (G_OBJECT (widget->preferences),
+                "font-anti-alias", &font_anti_alias,
+                "font-name", &font_name,
+                NULL);
+
   if (G_LIKELY (font_name != NULL))
     {
-      vte_terminal_set_font_from_string (VTE_TERMINAL (widget->terminal), font_name);
+      antialias = font_anti_alias
+                ? VTE_ANTI_ALIAS_USE_DEFAULT
+                : VTE_ANTI_ALIAS_FORCE_DISABLE;
+
+      vte_terminal_set_font_from_string_full (VTE_TERMINAL (widget->terminal),
+                                              font_name, antialias);
       g_free (font_name);
     }
 }

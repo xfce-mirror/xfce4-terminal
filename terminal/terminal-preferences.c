@@ -86,6 +86,7 @@ enum
   PROP_COLOR_PALETTE16,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_FONT_ANTI_ALIAS,
   PROP_FONT_NAME,
   PROP_MISC_BELL,
   PROP_MISC_BORDERS_DEFAULT,
@@ -153,6 +154,7 @@ struct _TerminalPreferences
   GdkColor                 color_palette16;
   gboolean                 command_update_records;
   gboolean                 command_login_shell;
+  gboolean                 font_anti_alias;
   gchar                   *font_name;
   gboolean                 misc_bell;
   gboolean                 misc_borders_default;
@@ -812,6 +814,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:font-anti-alias:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_FONT_ANTI_ALIAS,
+                                   g_param_spec_boolean ("font-anti-alias",
+                                                         _("Font anti-aliasing"),
+                                                         _("Font anti-aliasing"),
+                                                         TRUE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:font-name:
    **/
   g_object_class_install_property (gobject_class,
@@ -1063,6 +1076,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->misc_menubar_default     = TRUE;
   preferences->misc_toolbars_default    = FALSE;
 
+  preferences->font_anti_alias          = TRUE;
   preferences->font_name                = g_strdup ("Monospace 12");
 
   preferences->scrolling_bar            = TERMINAL_SCROLLBAR_RIGHT;
@@ -1306,6 +1320,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_COMMAND_LOGIN_SHELL:
       g_value_set_boolean (value, preferences->command_login_shell);
+      break;
+
+    case PROP_FONT_ANTI_ALIAS:
+      g_value_set_boolean (value, preferences->font_anti_alias);
       break;
 
     case PROP_FONT_NAME:
@@ -1854,6 +1872,16 @@ terminal_preferences_set_property (GObject      *object,
         {
           preferences->command_login_shell = bval;
           g_object_notify (object, "command-login-shell");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_FONT_ANTI_ALIAS:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->font_anti_alias)
+        {
+          preferences->font_anti_alias = bval;
+          g_object_notify (object, "font-anti-alias");
           terminal_preferences_schedule_store (preferences);
         }
       break;

@@ -504,7 +504,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  vbox = gtk_vbox_new (FALSE, 0);
+  vbox = gtk_vbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
   gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
@@ -512,7 +512,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = g_object_new (GTK_TYPE_FONT_BUTTON, "title", _("Choose Terminal Font"), "use-font", TRUE, NULL);
   proxy = terminal_preferences_get_proxy (dialog->preferences, "font-name");
   exo_property_proxy_add (proxy, G_OBJECT (button), "font-name", NULL, NULL, NULL);
-  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
+  gtk_widget_show (button);
+
+  button = gtk_check_button_new_with_mnemonic (_("Enable anti-aliasing for the terminal font"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "font-anti-alias");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
