@@ -68,9 +68,25 @@
       <para>The following key features are available:</para>
 
       <itemizedlist>
-        <listitem>Multiple tabs per window</listitem>
-        <listitem>Nearly every aspect of the terminal itself is configurable</listitem>
+        <listitem>
+          Supports multiple tabs per window
+        </listitem>
+        <listitem>
+          Nearly every aspect of the terminal itself is configurable through the <guilabel>Terminal Preferences</guilabel> dialog
+        </listitem>
+        <listitem>
+          Integrates well with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink>, but also with every other Linux desktop
+        </listitem>
+        <listitem>
+          Standard compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
+        </listitem>
+        <listitem>
+          <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the number of processes in the system
+        </listitem>
       </itemizedlist>
+
+      <para>Besides these key features, &app; supports all features you would expect from a modern
+      terminal emulator.</para>
     </sect2>
   </sect1>
 
@@ -178,6 +194,41 @@
     </sect2>
 
     <sect2>
+      <title>To modify a terminal window</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>To hide the menubar:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To show a hidden menubar:</term>
+          <listitem>
+            <para>Right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>
+            from the popup menu.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To show or hide the window decorations:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window Borders</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To change the appearance of the terminal window:</term>
+          <listitem>
+            <para>See <xref linkend="preferences" /> for information about the options that you choose in
+            the <guilabel>Terminal Preferences</guilabel> dialog to change the appearance and behaviour
+            of the terminal windows. For example, you can change the background color or the location of
+            the scrollbar.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
       <title>To work with the contents of terminal windows</title>
 
       <variablelist>
@@ -254,7 +305,7 @@
       </variablelist>
     </sect2>
 
-    <sect2>
+    <sect2 id="set-title">
       <title>To change the terminal title</title>
 
       <screenshot>
@@ -382,14 +433,6 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Run a custom command instead of my shell</guilabel></term>
-          <listitem>
-            <para>Select this option to run a specified command, other than your normal
-            shell, in the terminal. Specify the custom command in the <guilabel>Custom
-            command</guilabel> text box.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
           <term><guilabel>Scrollbar is</guilabel></term>
           <listitem>
             <para>Use this drop-down list to specify the position of the scrollbar on
@@ -421,22 +464,21 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Audible bell</guilabel></term>
+          <term><guilabel>Show menubar by default</guilabel></term>
           <listitem>
-            <para>Select this option to enable an audible terminal bell.</para>
+            <para>Select this option to show the menubar on new terminal windows by default.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Visible bell</guilabel></term>
+          <term><guilabel>Terminal bell</guilabel></term>
           <listitem>
-            <para>Select this option to enable a visible terminal bell.</para>
+            <para>Select this option to enable the audible terminal bell.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Use compact mode by default</guilabel></term>
+          <term><guilabel>Show borders by default</guilabel></term>
           <listitem>
-            <para>Select this option if you want new terminal windows to start in
-            compact mode by default.</para>
+            <para>Select this option to show window decorations on new terminal windows by default.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -497,21 +539,46 @@
 
   </sect1>
 
+  <sect1 id="support">
+    <title>Support</title>
+
+    <para>To report a bug or make a suggestion regarding this application or this
+    manual, use the bug tracking system at <ulink
+    url="http://bugs.os-cillation.de/">http://bugs.os-cillation.de/</ulink>. Remember,
+    that useful bug reports are ones that get bugs fixed, and so a useful bug report
+    has two qualities:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Reproducible.</emphasis> If the developer cannot see the bug himself
+        to prove that it exists, he will most probably not be able to fix it at all. Every detail you
+        can provide helps.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Specific.</emphasis> The quicker the developer can isolate the problem
+        to a specific area, the more likely he will expediently fix it.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>In case you want to request a new feature, please make clear why you consider it a worth
+    addition for the application. It is more likely, that a new feature gets added if you provide
+    good arguments for the feature. It will increase the chance of addition even more, if you
+    provide a patch that implements the requested feature, but make sure that you read the file
+    <ulink url="https://www.os-cillation.de:8080/websvn/filedetails.php?repname=terminal&amp;path=%2Ftrunk%2FHACKING">HACKING</ulink>
+    - especially the section labeled <emphasis>Coding Style</emphasis> - before start hacking up the source.</para>
+
+    <para>Else, if you have questions about the use or installation of this software, please ask on the
+    <ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">os-cillation
+    forum</ulink> or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
+    join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
+  </sect1>
+
   <sect1 id="copyright">
     <title>About &app;</title>
 
     <para>&app; was written by Benedikt Meurer (<email>benny@xfce.org</email>). Visit the
     <ulink url="http://www.os-cillation.com/" type="http">os-cillation website</ulink>
     for more information.</para>
-
-    <para>To report a bug or make a suggestion regarding this application or this
-    manual, use the bug tracking system at <ulink
-    url="http://bugs.os-cillation.de/">http://bugs.os-cillation.de/</ulink>. If you
-    have questions about the use or installation of this software, please ask on the
-    <ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">os-cillation
-    forum</ulink>
-    or join the channel <emphasis role="bold">#xfce</emphasis> on <emphasis
-    role="bold">irc.freenode.net</emphasis> and ask for help.</para>
 
     <para>This software is distributed under the terms of the GNU General Public License
     as published by the Free Software Foundation; either version 2 of the License, or

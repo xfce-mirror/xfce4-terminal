@@ -10,6 +10,7 @@ doc_DATA =								\
 	getting-started.html						\
 	index.html							\
 	preferences.html						\
+	support.html							\
 	usage.html
 
 EXTRA_DIST =								\
