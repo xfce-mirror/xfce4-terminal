@@ -1,5 +1,21 @@
 2005-03-19	Benedikt Meurer <benny@xfce.org>
 
+	* configure.ac, NEWS: Version 0.2.4.
+	* terminal/terminal-helper-dialog.c, terminal/Makefile.am: Use
+	  Terminal's bindir as default location for the Browse... dialog.
+	* terminal/terminal-helper-dialog.c(browse_clicked): Use Ok instead
+	  of Open for the Browse... dialog, since we don't open anything here.
+	* terminal/terminal-helper-dialog.c(terminal_helper_dialog_init): Make
+	  sure the descriptions are aligned properly.
+	* Terminal.1: Update the manual page.
+	* THANKS: Add Andrew Conkling <andrewski@fr.st> as documentation writer.
+	* po/de.po: Update german translations.
+	* po/Terminal.pot: Update the .pot file.
+	* doc/: Update the documentation, with help from Andrew Conkling
+	  <andrewski@fr.st>.
+
+2005-03-19	Benedikt Meurer <benny@xfce.org>
+
 	* po/ru.po: Update the russian translations, thanks to Anthony Ivanoff
 	  <a-i@bk.ru>.
 

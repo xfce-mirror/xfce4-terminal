@@ -317,17 +317,21 @@ browse_clicked (GtkWidget *button,
                                         GTK_WINDOW (toplevel),
                                         GTK_FILE_CHOOSER_ACTION_OPEN,
                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                        GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+                                        GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
                                         NULL);
   gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (dialog), TRUE);
 
   filename = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
-  if (G_LIKELY (filename != NULL))
+  if (G_LIKELY (filename != NULL && *filename != '\0'))
     {
-      if (*filename != '\0')
-        gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog), filename);
-      g_free (filename);
+      gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (dialog), filename);
     }
+  else
+    {
+      /* set Terminal's bindir as default folder */
+      gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog), BINDIR);
+    }
+  g_free (filename);
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
     {
@@ -808,7 +812,7 @@ terminal_helper_dialog_init (TerminalHelperDialog *dialog)
       gtk_widget_show (box);
 
       text = dgettext (GETTEXT_PACKAGE, category_descriptions[category]);
-      label = gtk_label_new (text);
+      label = g_object_new (GTK_TYPE_LABEL, "label", text, "xalign", 0.0, "yalign", 0.0, NULL);
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
       gtk_widget_show (label);
 

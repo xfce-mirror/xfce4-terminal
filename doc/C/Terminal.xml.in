@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
-          "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+    "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "March 2005"> 
   <!ENTITY version "@PACKAGE_VERSION@">
   <!ENTITY application "@PACKAGE_NAME@"> 
 ]>
-
 <article id="index" lang="en">
 
   <!-- Header -->
@@ -27,8 +26,8 @@
         under the terms of the GNU Free Documentation License, Version 1.1 or
         any later version published by the Free Software Foundation; with no
         Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
-        Texts. The complete license text is available from the <ulink type="http"
-        url="http://www.gnu.org/">Free Software Foundation</ulink>.
+        Texts. The complete license text is available from the <ulink
+        type="http" url="http://www.gnu.org/">Free Software Foundation</ulink>.
       </para>
     </legalnotice>
 
@@ -43,14 +42,20 @@
           <jobtitle>Software developer</jobtitle>
         </affiliation>
       </author>
+
+      <author>
+        <firstname>Andrew</firstname>
+        <surname>Conkling</surname>
+        <affiliation>
+          <address><email>andrewski@fr.st</email></address>
+        </affiliation>
+      </author>
     </authorgroup>
 
     <releaseinfo>
       This manual describes version &version; of &application;.
     </releaseinfo>
   </articleinfo>
-
-  <para>&nbsp;</para>
 
   <sect1 id="intro">
     <title>Introduction to &application;</title>
@@ -59,23 +64,23 @@
       <title>What is a terminal emulator?</title>
 
       <para>
-        The UNIX operating system were originally designed as a text-only
+        The UNIX operating system was originally designed as a text-only
         system, controlled by commands entered with a keyboard. This is known
-        as a command-line interface (CLI). The X Window System, Xfce and other
+        as a command-line interface (CLI). The X Window System, Xfce, and other
         projects have since added a graphical user interface to UNIX, thats
         what you are actually using now. But the addition of a graphical user
-        interface doesn't mean, that the CLI is dead. The CLI is still around,
-        and is frequently the easiest, fastest and most powerful way to perform
+        interface doesn't mean that the CLI is dead. The CLI is still around
+        and is frequently the easiest, fastest, and most powerful way to perform
         a certain task. In fact, power users would be lost without the CLI.
       </para>
 
       <para>
         &application; is what is known as an X terminal emulator, often referred
-        to as terminal or shell. It provides an equivalent to the old fashioned
-        text screen on your desktop, but on which can easily share the screen
+        to as terminal or shell. It provides an equivalent to the old-fashioned
+        text screen on your desktop, but one which can easily share the screen
         with other graphical applications. Windows users may already be familar
         with the MS-DOS Prompt utility, which has the analogous function of
-        offering a DOS command-line under Windows, though one should note, that
+        offering a DOS command-line under Windows, though one should note that
         the UNIX CLI offer far more power and ease of use than does DOS.
       </para>
 
@@ -95,24 +100,24 @@
 
       <para>&application;'s advanced features include a simple configuration interface, the
       ability to use multiple tabs with terminals within a single window, the possibility
-      to have a pseudo-transparent terminal background and a compact mode, where both the
-      menubar and the window decorations are hidden, that helps you to save space on your
+      to have a pseudo-transparent terminal background, and a compact mode (where both the
+      menubar and the window decorations are hidden) that helps you to save space on your
       desktop.</para>
 
       <para>The following key features are available:</para>
 
       <itemizedlist>
         <listitem>
-          Supports multiple tabs per window
+          Multiple tabs per window
         </listitem>
         <listitem>
-          Includes support for customizable toolbars, which can be changed using an integrated graphical toolbar editor
+          Customizable toolbars, which can be changed using an integrated graphical toolbar editor
         </listitem>
         <listitem>
-          Nearly every aspect of the terminal itself is configurable through the <guilabel>Terminal Preferences</guilabel> dialog
+          Ability to configure nearly every aspect of &application; in the <guilabel>Preferences</guilabel> dialog
         </listitem>
         <listitem>
-          Integrates well with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink>, but also with every other Linux desktop
+          Good integration with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink> in particular, but also with every other Linux desktop
         </listitem>
         <listitem>
           Session management support
@@ -121,13 +126,13 @@
           Real multihead support (both MultiScreen and Xinerama mode)
         </listitem>
         <listitem>
-          Standard compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
+          Standards compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
         </listitem>
         <listitem>
           <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the number of processes in the system
         </listitem>
         <listitem>
-          High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">Gtk+</ulink>
+          High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink>
           and <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.
         </listitem>
       </itemizedlist>
@@ -144,8 +149,8 @@
       <title>Starting &application;</title>
 
       <para>
-        The easiest way to start &application; is to use the applications menu of your desktop -
-        in case of Xfce, point your mouse cursor to the desktop, press the right mouse button
+        The easiest way to start &application; is to use the applications menu of your desktop;
+        for Xfce, point your mouse cursor to the desktop, press the right mouse button
         and choose <menuchoice><guimenu>System</guimenu>
         <guimenuitem>Terminal</guimenuitem></menuchoice>.
       </para>
@@ -170,7 +175,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-first-time.png" format="PNG" />
+            <imagedata fileref="images/terminal-first-time.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -237,7 +242,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-multiple-tabs.png" format="PNG" />
+            <imagedata fileref="images/terminal-multiple-tabs.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -247,7 +252,7 @@
       </screenshot>
 
       <para>
-        See <xref linkend="usage" /> for information about how to open a new tabbed
+        See <xref linkend="usage"/> for information about how to open a new tabbed
         terminal.
       </para>
 
@@ -271,7 +276,7 @@
           <term>To open a new terminal window:</term>
           <listitem>
             <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open
-            Terminal</guimenuitem></menuchoice>.</para>
+            Terminal</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Open Terminal</guimenuitem></menuchoice>).</para>
             <para>The new terminal inherits the working directory from its parent
             terminal.</para>
           </listitem>
@@ -292,7 +297,7 @@
           <term>To add a new tabbed terminal to a window:</term>
           <listitem>
             <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open
-            Tab</guimenuitem></menuchoice>.</para>
+            Tab</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Open Tab</guimenuitem></menuchoice>).</para>
             <para>The new terminal inherits the working directory from the
             previously active terminal.</para>
           </listitem>
@@ -307,7 +312,7 @@
         <varlistentry>
           <term>To hide the menubar:</term>
           <listitem>
-            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</guimenuitem></menuchoice>.</para>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>).</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -339,14 +344,13 @@
           <term>To put a terminal window into fullscreen</term>
           <listitem>
             <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Fullscreen</guimenuitem></menuchoice> from
-            the menubar or <menuchoice><guimenuitem>Fullscreen</guimenuitem></menuchoice> from the right-click popup
-            menu to put the terminal window into fullscreen.</para>
+            the menubar (or right-click the terminal window and choose <menuchoice><guimenuitem>Fullscreen</guimenuitem></menuchoice>).</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>To change the appearance of the terminal window:</term>
           <listitem>
-            <para>See <xref linkend="preferences" /> for information about the options that you choose in
+            <para>See <xref linkend="preferences"/> for information about the options that you choose in
             the <guilabel>Terminal Preferences</guilabel> dialog to change the appearance and behaviour
             of the terminal windows. For example, you can change the background color or the location of
             the scrollbar.</para>
@@ -355,7 +359,7 @@
       </variablelist>
     </sect2>
 
-    <sect2>
+    <sect2 id="usage_to-work-with-contents-of-terminal-windows">
       <title>To work with the contents of terminal windows</title>
 
       <variablelist>
@@ -381,11 +385,15 @@
                 <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, or
                 <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> keys.</para>
               </listitem>
+              <listitem>
+                <para>
+                  Use the middle wheel button on your mouse if applicable
+                </para>
+              </listitem>
             </itemizedlist>
-
             <para>
               &application; mimics the FreeBSD console when <keycap>Scroll Lock</keycap> is pressed. When scroll lock is
-              active, ordinary input and output from the shell is suspended, and you can scroll through
+              active, ordinary input and output from the shell is suspended and you can scroll through
               the history with <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> and
               <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> or using the optional
               scrollbar. Press <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> to activate
@@ -449,6 +457,66 @@
             a web browser. The terminal displays the path and the full name of the URI.</para>
           </listitem> 
         </varlistentry> 
+        <varlistentry> 
+          <term>To access a hyperlink:</term>
+          <listitem>
+            <para>
+              To access a Uniform Resource Locator (URL) that is displayed in a terminal window,
+              perform the following steps:
+            </para>
+
+            <orderedlist>
+              <listitem>
+                <para>Move the mouse over the URL until the URL is underlined.</para>
+              </listitem>
+              <listitem>
+                <para>Right-click on the URL to open the context menu.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  Choose <guimenuitem>Open Link</guimenuitem> from the context menu
+                  to start your preferred Web Browser and display the file located
+                  at the URL.
+                </para>
+              </listitem>
+            </orderedlist>
+
+            <para>
+              See <xref linkend="preferred-applications"/> about how to configure
+              the preferred Web Browser for Terminal and how to disable this feature.
+            </para>
+          </listitem>
+        </varlistentry> 
+
+        <varlistentry> 
+          <term>To compose an email:</term>
+          <listitem>
+            <para>
+              To compose an email to an address that is displayed in a terminal window,
+              perform the following steps:
+            </para>
+
+            <orderedlist>
+              <listitem>
+                <para>Move the mouse over the email address until the email address is underlined.</para>
+              </listitem>
+              <listitem>
+                <para>Right-click on the email address to open the context menu.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  Choose <guimenuitem>Compose Email</guimenuitem> from the context menu
+                  to compose an email in your preferred Mail Reader.
+                </para>
+              </listitem>
+            </orderedlist>
+
+            <para>
+              See <xref linkend="preferred-applications"/> about how to configure the preferred
+              Mail Reader for Terminal and how to disable this feature.
+            </para>
+          </listitem>
+        </varlistentry> 
       </variablelist>
     </sect2>
 
@@ -458,7 +526,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata fileref="images/terminal-set-title.png" format="PNG" />
+            <imagedata fileref="images/terminal-set-title.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -523,7 +591,7 @@
       are disabled by default, you will have to explicitly enable it. Choose
       <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice> from
       the menubar to display the toolbars in the current window. If you want to permanently use
-      the toolbars, see <xref linkend="preferences-appearance" />.</para>
+      the toolbars, see <xref linkend="preferences-appearance"/>.</para>
 
       <para>Once the toolbars are shown, choose <menuchoice><guimenu>Edit</guimenu>
       <guimenuitem>Toolbars...</guimenuitem></menuchoice> from the menubar or right-click one of
@@ -534,7 +602,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-toolbars.png" format="PNG" />
+            <imagedata fileref="images/terminal-toolbars.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -570,7 +638,7 @@
     <screenshot>
       <mediaobject>
         <imageobject>
-          <imagedata fileref="images/terminal-edit-preferences.png" format="PNG" />
+          <imagedata fileref="images/terminal-edit-preferences.png" format="PNG"/>
         </imageobject>
 
         <textobject>
@@ -590,7 +658,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-preferences-general.png" format="PNG" />
+            <imagedata fileref="images/terminal-preferences-general.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -671,7 +739,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-preferences-appearance.png" format="PNG" />
+            <imagedata fileref="images/terminal-preferences-appearance.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -765,7 +833,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-preferences-colors.png" format="PNG" />
+            <imagedata fileref="images/terminal-preferences-colors.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -806,7 +874,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-preferences-shortcuts.png" format="PNG" />
+            <imagedata fileref="images/terminal-preferences-shortcuts.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -829,7 +897,7 @@
             <screenshot>
               <mediaobject>
                 <imageobject>
-                  <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG" />
+                  <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
                 </imageobject>
                 
                 <textobject>
@@ -873,7 +941,7 @@
       <screenshot>
         <mediaobject>
           <imageobject>
-            <imagedata align="center" fileref="images/terminal-preferences-advanced.png" format="PNG" />
+            <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG"/>
           </imageobject>
 
           <textobject>
@@ -924,8 +992,104 @@
         </varlistentry>
       </variablelist>
     </sect2>
-
   </sect1>
+
+
+  <sect1 id="preferred-applications">
+    <title>Preferred Applications</title>
+
+    <para>
+      As of version 0.2.4, &application; supports opening hyperlinks and composing emails using
+      an external web browser and mail reader. This section describes how to configure which
+      Web Browser and Mail Reader you want to use (see <xref linkend="usage_to-work-with-contents-of-terminal-windows"/> for details how access
+      hyperlinks and compose emails).
+    </para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-edit-applications.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Applications</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>
+      To configure your preferred applications for &application;, choose
+      <menuchoice><guimenu>Edit</guimenu><guimenuitem>Applications...</guimenuitem></menuchoice>
+      from the main menu bar. This will bring up the the <guilabel>Preferred Applications</guilabel>
+      dialog.
+    </para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-applications-dialog.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Preferred Applications</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>
+      This dialog allows you to choose your preferred Web Browser, which will be used to open
+      hyperlinks, and your preferred Mail Reader, which will be used to compose emails. Click
+      on the buttons to change the appropriate setting. This will bring up a drop down menu.
+    </para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-applications-menu.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Choose preferred application</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>
+      If you choose <guimenuitem>Disable this feature</guimenuitem> from the <guilabel>Web
+      Browser</guilabel> menu, opening hyperlinks from &application; will be disabled. If
+      you choose <guimenuitem>Disable this feature</guimenuitem> from the <guilabel>Mail
+      Reader</guilabel> menu, composing emails from &application; will be disabled.
+    </para>
+
+    <para>
+      Next in the menu is a list of default applications - automatically detected on your system
+      - you can choose from. Choose <guimenuitem>Other...</guimenuitem> in case your preferred
+      application does not show up in the list of default applications or if you want to use
+      specific flags to launch an application. (Use <parameter>%u</parameter> to represent the
+      URL when executed, e.g. <command>browser --newtab %u</command>.) This will bring up a
+      dialog that lets you enter a custom application.
+    </para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-choose-custom-webbrowser.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Choose custom Web Browser</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>
+      You can either enter the name or the full path of the application's binary, depending on
+      whether the application is installed in the systems search path, or you can press the button
+      labeled <guibutton>Browse...</guibutton> to select the application's binary in a graphical
+      way.
+    </para>
+  </sect1>
+
 
   <sect1 id="advanced">
     <title>Advanced topics</title>
@@ -1133,8 +1297,7 @@
       <title>Files and Environment Variables</title>
 
       <para>
-        Terminal uses the Basedir Specification as defined on <ulink url="http://freedesktop.org/"
-        type="http">Freedesktop.org</ulink> to locate its data and configuration files. This means
+        Terminal uses the Basedir Specification as defined on <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> to locate its data and configuration files. This means
         that file locations will be specified as a path relative to the directories described in
         the specification.
       </para>
@@ -1145,8 +1308,7 @@
           <listitem>
             <para>
               The first base directory to look for configuration 
-              files. By default this is set to <filename
-              role="directory">~/.config/</filename>.
+              files. By default this is set to <filename role="directory">~/.config/</filename>.
             </para>
           </listitem>
         </varlistentry>
@@ -1156,8 +1318,7 @@
           <listitem>
             <para>
               A colon separated list of base directories that contain configuration
-              data. By default the application will look in <filename 
-              role="directory">${sysconfdir}/xdg/</filename>. The value of
+              data. By default the application will look in <filename role="directory">${sysconfdir}/xdg/</filename>. The value of
               <varname>${sysconfdir}</varname> depends on how the program was
               build and will often be <filename role="directory">/etc/</filename>
               for binary packages.
@@ -1304,24 +1465,6 @@ MiscTabCloseButtons=TRUE</programlisting>
             </para>
           </listitem>
         </varlistentry>
-
-<!--
-        <varlistentry>
-          <term><varname>VteWorkaroundTitleBug</varname></term>
-          <listitem>
-            <para>
-              This option controls a work-around to a known problem with some terminal applications,
-              like <ulink url="http://www.vim.org/" type="http">Vim</ulink>, which try to set the terminal
-              title by querying the title of the window reported in the <varname>$WINDOWID</varname>
-              environment variable. Unfortunately this causes &application; to append/prepend the user
-              specified initial title again and again. By default, &application; will strip off the initial
-              title from the beginning and the end of the window title supplied by the application
-              running inside the terminal. If this is not what you want, you can disable this option
-              with <varname>VteWorkaroundTitleBug=FALSE</varname>.
-            </para>
-          </listitem>
-        </varlistentry>
--->
       </variablelist>
     </sect2>
   </sect1>
@@ -1331,8 +1474,7 @@ MiscTabCloseButtons=TRUE</programlisting>
 
     <para>The intent of this section is to collect the quite numerous frequently asked
     question that relate to working with &application;, or even terminal emulators in general. If
-    you know of a question thats missing from this page, please <ulink
-    url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal&amp;component=docs">file a request</ulink>.</para>
+    you know of a question thats missing from this page, please <ulink url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal&amp;component=docs">file a request</ulink>.</para>
 
     <sect3>
       <title>&application; complains about <literal>Unable to start terminal server: Unable to connect
@@ -1354,8 +1496,7 @@ MiscTabCloseButtons=TRUE</programlisting>
       <title><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &application;, what's wrong?</title>
 
       <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
-      the terminal widget used by &application;. A patch for vte that fixes the problem is available <ulink
-      url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
+      the terminal widget used by &application;. A patch for vte that fixes the problem is available <ulink url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
       with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
     </sect3>
 
@@ -1372,8 +1513,7 @@ $ cd ~/.local/share/Terminal
 $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
 
       <para>Now you can safely edit the file <filename>~/.local/share/Terminal/Terminal.ui</filename>
-      to customize the menus. See the <ulink
-      url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> documentation
+      to customize the menus. See the <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> documentation
       for details on the file format. The changes will only be visible in new terminal windows.</para>
 
       <para>If you choose to customize your menus this way, you'll have to take care to sync
@@ -1385,10 +1525,9 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
   <sect1 id="support">
     <title>Support</title>
 
-    <para>To report a bug or make a suggestion regarding this application or this
-    manual, use the bug tracking system at <ulink
-    url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal">http://bugs.os-cillation.de/</ulink>.
-    Remember, that useful bug reports are ones that get bugs fixed, and so a useful bug report
+    <para>To report a bug or to make a suggestion regarding this application or this
+    manual, use the bug tracking system at <ulink url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal">http://bugs.os-cillation.de/</ulink>.
+    Remember that useful bug reports are ones that get bugs fixed, so a useful bug report
     has two qualities:</para>
 
     <itemizedlist>
@@ -1404,8 +1543,8 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
     </itemizedlist>
 
     <para>In case you want to request a new feature, please make clear why you consider it a worth
-    addition for the application. It is more likely, that a new feature gets added if you provide
-    good arguments for the feature. It will increase the chance of addition even more, if you
+    addition for the application. It is more likely that a new feature gets added if you provide
+    good arguments for the feature. It will increase the chance of addition even more if you
     provide a patch that implements the requested feature, but make sure that you read the file
     <ulink url="https://www.os-cillation.de:8080/websvn/filedetails.php?repname=terminal&amp;path=%2Ftrunk%2FHACKING">HACKING</ulink>
     - especially the section labeled <emphasis>Coding Style</emphasis> - before you start hacking up the source.</para>
@@ -1426,6 +1565,13 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
     </para>
 
     <para>
+      This documentation was written by Benedikt Meurer (<email>benny@xfce.org</email>) and
+      Andrew Conkling (<email>andrewski@fr.st</email>). The lastest version of this document
+      is always available from the <ulink type="http"
+      url="http://terminal.os-cillation.com/">Terminal website</ulink>.
+    </para>
+
+    <para>
       This software is distributed under the terms of the GNU General Public License
       as published by the Free Software Foundation; either version 2 of the License, or
       (at your option) any later version.
@@ -1440,7 +1586,6 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
   </sect1>
 
 </article>
-
 <!--
 	vim:set ts=2 sw=2 et ai:
 -->

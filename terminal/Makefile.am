@@ -2,6 +2,7 @@ SUBDIRS =								\
 	stock-icons
 
 INCLUDES =								\
+	-DBINDIR=\"$(bindir)\"						\
 	-DDATADIR=\"$(datadir)\"					\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DEXO_DISABLE_DEPRECATED					\
