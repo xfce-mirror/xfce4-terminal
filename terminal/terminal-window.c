@@ -58,6 +58,9 @@ enum
 static void            terminal_window_dispose                  (GObject         *object);
 static void            terminal_window_finalize                 (GObject         *object);
 static TerminalWidget *terminal_window_get_active               (TerminalWindow  *window);
+static void            terminal_window_queue_reset_size         (TerminalWindow  *window);
+static gboolean        terminal_window_reset_size               (TerminalWindow  *window);
+static void            terminal_window_reset_size_destroy       (TerminalWindow  *window);
 static void            terminal_window_set_size_force_grid      (TerminalWindow  *window,
                                                                  TerminalWidget  *widget,
                                                                  gint             force_grid_width,
@@ -138,6 +141,7 @@ struct _TerminalWindow
   GtkWidget           *toolbars;
   GtkWidget           *notebook;
 
+  guint                reset_size_idle_id;
   guint                prefs_idle_id;
   guint                title_idle_id;
   guint                about_idle_id;
@@ -319,8 +323,10 @@ terminal_window_init (TerminalWindow *window)
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
   gtk_widget_show (window->notebook);
 
-  g_signal_connect (G_OBJECT (window), "delete-event",
-                    G_CALLBACK (gtk_widget_destroy), window);
+  g_signal_connect_after (G_OBJECT (window), "delete-event",
+                          G_CALLBACK (gtk_widget_destroy), NULL);
+  g_signal_connect_after (G_OBJECT (window), "style-set",
+                          G_CALLBACK (terminal_window_queue_reset_size), NULL);
 
   /* set a unique role on each window (for session management) */
   role = g_strdup_printf ("Terminal-%p-%d-%d", window, getpid (), (gint) time (NULL));
@@ -335,6 +341,8 @@ terminal_window_dispose (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
+  if (window->reset_size_idle_id != 0)
+    g_source_remove (window->reset_size_idle_id);
   if (window->prefs_idle_id != 0)
     g_source_remove (window->prefs_idle_id);
   if (window->title_idle_id != 0)
@@ -377,6 +385,53 @@ terminal_window_get_active (TerminalWindow *window)
 
 
 static void
+terminal_window_queue_reset_size (TerminalWindow *window)
+{
+  if (GTK_WIDGET_REALIZED (window) && window->reset_size_idle_id == 0)
+    {
+      /* Gtk+ uses a priority of G_PRIORITY_HIGH_IDLE + 10 for resizing operations, so we
+       * use a slightly higher priority for the reset size operation.
+       */
+      window->reset_size_idle_id = g_idle_add_full (G_PRIORITY_HIGH_IDLE + 5,
+                                                    (GSourceFunc) terminal_window_reset_size, window,
+                                                    (GDestroyNotify) terminal_window_reset_size_destroy);
+    }
+}
+
+
+
+static gboolean
+terminal_window_reset_size (TerminalWindow *window)
+{
+  TerminalWidget *active;
+  gint            grid_width;
+  gint            grid_height;
+  
+  /* The trick is rather simple here. This is called before any Gtk+ resizing operation takes
+   * place, so the columns/rows on the active terminal widget are still set to their old values.
+   * We simply query these values and force them to be set with the new style.
+   */
+  active = terminal_window_get_active (window);
+  if (G_LIKELY (active != NULL))
+    {
+      terminal_widget_get_size (active, &grid_width, &grid_height);
+      terminal_window_set_size_force_grid (window, active, grid_width, grid_height);
+    }
+
+  return FALSE;
+}
+
+
+
+static void
+terminal_window_reset_size_destroy (TerminalWindow *window)
+{
+  window->reset_size_idle_id = 0;
+}
+
+
+
+static void
 terminal_window_set_size_force_grid (TerminalWindow *window,
                                      TerminalWidget *widget,
                                      gint            force_grid_width,
@@ -395,10 +450,8 @@ terminal_window_update_geometry (TerminalWindow *window)
   TerminalWidget *widget;
 
   widget = terminal_window_get_active (window);
-  if (G_UNLIKELY (widget == NULL))
-    return;
-
-  terminal_widget_set_window_geometry_hints (widget, GTK_WINDOW (window));
+  if (G_LIKELY (widget != NULL))
+    terminal_widget_set_window_geometry_hints (widget, GTK_WINDOW (window));
 }
 
 
@@ -652,6 +705,8 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
     gtk_widget_show (window->menubar);
   else
     gtk_widget_hide (window->menubar);
+
+  terminal_window_queue_reset_size (window);
 }
 
 
@@ -694,6 +749,8 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
                     "visible", FALSE,
                     NULL);
     }
+
+  terminal_window_queue_reset_size (window);
 }
 
 

@@ -150,7 +150,9 @@ main (int argc, char **argv)
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Terminal"));
 
+#if 0
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL);
+#endif
 
 #if GLIB_CHECK_VERSION(2,6,0)
   description = glib_check_version (GLIB_MAJOR_VERSION,
