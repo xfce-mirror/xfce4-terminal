@@ -1,7 +1,8 @@
 INCLUDES =								\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
-	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"  
+	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
+	-I$(top_srcdir)
 
 bin_PROGRAMS = 								\
 	Terminal

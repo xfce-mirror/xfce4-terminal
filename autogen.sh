@@ -111,8 +111,8 @@ do
 	echo "Running autoheader..."
 	${AUTOHEADER}
       fi
-      echo "Running ${AUTOMAKE} --foreign $am_opt ..."
-      ${AUTOMAKE} --add-missing --foreign  --force --copy $am_opt
+      echo "Running ${AUTOMAKE} --gnu $am_opt ..."
+      ${AUTOMAKE} --add-missing --gnu  --force --copy $am_opt
       echo "Running ${AUTOCONF} ..."
       ${AUTOCONF}
     )
