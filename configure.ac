@@ -71,6 +71,7 @@ doc/C/Makefile
 doc/C/images/Makefile
 icons/Makefile
 icons/48x48/Makefile
+icons/scalable/Makefile
 po/Makefile.in
 terminal/Makefile
 ])

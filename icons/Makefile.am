@@ -1,5 +1,6 @@
 SUBDIRS =								\
-	48x48
+	48x48								\
+	scalable
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA =								\
