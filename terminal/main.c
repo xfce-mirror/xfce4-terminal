@@ -235,7 +235,7 @@ usage (FILE *fp)
              "  -e, --command=STRING                Execute the argument to this option\n"
              "                                      inside the terminal\n"
              "  --working-directory=DIRNAME         Set the terminals working directory\n"
-             "  -t, --title=TITLE                   Set the terminals title\n"
+             "  -T, --title=TITLE                   Set the terminals title\n"
              "\n"
              "  --display=DISPLAY                   X display to use for the last-specified\n"
              "                                      window\n"

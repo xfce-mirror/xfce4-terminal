@@ -200,18 +200,21 @@ terminal_options_parse (gint              argc,
         }
       else if (strcmp ("--title", argv[n]) == 0
             || strncmp ("--title=", argv[n], 8) == 0
-            || strcmp ("-t", argv[n]) == 0)
+            || strcmp ("-t", argv[n]) == 0
+            || strcmp ("-T", argv[n]) == 0)
         {
           s = argv[n] + 7;
 
-          if (strcmp ("-t", argv[n]) != 0 && *s == '=')
+          if (strcmp ("-T", argv[n]) != 0
+              && strcmp ("-t", argv[n]) != 0
+              && *s == '=')
             {
               ++s;
             }
           else if (n + 1 >= argc)
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--title/-t\" requires specifying "
+                           _("Option \"--title/-T\" requires specifying "
                              "the title as its parameter"));
               goto failed;
             }

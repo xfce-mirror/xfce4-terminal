@@ -1356,7 +1356,7 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
 
   if (screen->custom_title != NULL)
     {
-      result = g_list_append (result, g_strdup ("-t"));
+      result = g_list_append (result, g_strdup ("--title"));
       result = g_list_append (result, g_strdup (screen->custom_title));
     }
 
