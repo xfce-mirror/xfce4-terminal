@@ -41,7 +41,8 @@ struct _TerminalTabHeaderClass
   GtkHBoxClass __parent__;
 
   /* signals */
-  void (*close)           (TerminalTabHeader *header);
+  void (*close_tab)       (TerminalTabHeader *header);
+  void (*detach_tab)      (TerminalTabHeader *header);
   void (*double_clicked)  (TerminalTabHeader *header);
 };
 

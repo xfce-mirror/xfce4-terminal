@@ -1,5 +1,22 @@
 2004-12-21	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-tab-header.c, terminal/terminal-tab-header.h,
+	  terminal/terminal-window.c, terminal/terminal-window.h,
+	  terminal/terminal-app.c: Added a popup menu to the terminal tabs,
+	  with items "Close Tab" and "Detach Tab". "Detach Tab" allows users
+	  to detach a tab from an existing terminal window and reopen it
+	  in a new terminal window.
+	* terminal/terminal-screen.c: Set terminal colors at construction time
+	  instead of delaying it for realize(). The delay was only required for
+	  the color-system-theme setting, that was removed yesterday.
+	* terminal/terminal-screen.c, terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-preferences.c: Added an option "Allow bold text"
+	  to control whether or not the terminal will attempt to draw bold
+	  text by repainting text with a different offset.
+	* po/: Ran make update-po. Updated german translations.
+
+2004-12-21	Benedikt Meurer <benny@xfce.org>
+
 	* NEWS: Typos and updates.
 
 2004-12-20	Benedikt Meurer <benny@xfce.org>

@@ -45,23 +45,31 @@
 
 
 
-static void               terminal_app_class_init       (TerminalAppClass   *klass);
-static void               terminal_app_init             (TerminalApp        *app);
-static void               terminal_app_finalize         (GObject            *object);
-static void               terminal_app_update_accels    (TerminalApp        *app);
-static void               terminal_app_unregister       (DBusConnection     *connection,
-                                                         void               *user_data);
-static DBusHandlerResult  terminal_app_message          (DBusConnection     *connection,
-                                                         DBusMessage        *message,
-                                                         void               *user_data);
-static void               terminal_app_new_window       (TerminalWindow     *window,
-                                                         const gchar        *working_directory,
-                                                         TerminalApp        *app);
-static void               terminal_app_window_destroyed (GtkWidget          *window,
-                                                         TerminalApp        *app);
-static void               terminal_app_save_yourself    (ExoXsessionClient  *client,
-                                                         TerminalApp        *app);
-static GdkScreen         *terminal_app_find_screen      (const gchar        *display_name);
+static void               terminal_app_class_init               (TerminalAppClass   *klass);
+static void               terminal_app_init                     (TerminalApp        *app);
+static void               terminal_app_finalize                 (GObject            *object);
+static void               terminal_app_update_accels            (TerminalApp        *app);
+static void               terminal_app_unregister               (DBusConnection     *connection,
+                                                                 void               *user_data);
+static DBusHandlerResult  terminal_app_message                  (DBusConnection     *connection,
+                                                                 DBusMessage        *message,
+                                                                 void               *user_data);
+static GtkWidget           *terminal_app_create_window          (TerminalApp        *app,
+                                                                 gboolean            fullscreen,
+                                                                 TerminalVisibility  menubar,
+                                                                 TerminalVisibility  borders,
+                                                                 TerminalVisibility  toolbars);
+static void               terminal_app_new_window               (TerminalWindow     *window,
+                                                                 const gchar        *working_directory,
+                                                                 TerminalApp        *app);
+static void               terminal_app_new_window_with_terminal (TerminalWindow     *window,
+                                                                 TerminalScreen     *terminal,
+                                                                 TerminalApp        *app);
+static void               terminal_app_window_destroyed         (GtkWidget          *window,
+                                                                 TerminalApp        *app);
+static void               terminal_app_save_yourself            (ExoXsessionClient  *client,
+                                                                 TerminalApp        *app);
+static GdkScreen         *terminal_app_find_screen              (const gchar        *display_name);
 
 
 
@@ -252,6 +260,29 @@ terminal_app_message (DBusConnection  *connection,
 
 
 
+static GtkWidget*
+terminal_app_create_window (TerminalApp       *app,
+                            gboolean           fullscreen,
+                            TerminalVisibility menubar,
+                            TerminalVisibility borders,
+                            TerminalVisibility toolbars)
+{
+  GtkWidget *window;
+
+  window = terminal_window_new (fullscreen, menubar, borders, toolbars);
+  g_signal_connect (G_OBJECT (window), "destroy",
+                    G_CALLBACK (terminal_app_window_destroyed), app);
+  g_signal_connect (G_OBJECT (window), "new-window",
+                    G_CALLBACK (terminal_app_new_window), app);
+  g_signal_connect (G_OBJECT (window), "new-window-with-screen",
+                    G_CALLBACK (terminal_app_new_window_with_terminal), app);
+  app->windows = g_list_append (app->windows, window);
+
+  return window;
+}
+
+
+
 static void
 terminal_app_new_window (TerminalWindow *window,
                          const gchar    *working_directory,
@@ -271,6 +302,38 @@ terminal_app_new_window (TerminalWindow *window,
   terminal_app_open_window (app, win_attr);
 
   terminal_window_attr_free (win_attr);
+}
+
+
+
+static void
+terminal_app_new_window_with_terminal (TerminalWindow *existing,
+                                       TerminalScreen *terminal,
+                                       TerminalApp    *app)
+{
+  GtkWidget *window;
+  GdkScreen *screen;
+
+  window = terminal_app_create_window (app, FALSE,
+                                       TERMINAL_VISIBILITY_DEFAULT,
+                                       TERMINAL_VISIBILITY_DEFAULT,
+                                       TERMINAL_VISIBILITY_DEFAULT);
+
+  /* place the new window on the same screen as
+   * the existing window.
+   */
+  screen = gtk_window_get_screen (GTK_WINDOW (existing));
+  if (G_LIKELY (screen != NULL))
+    gtk_window_set_screen (GTK_WINDOW (window), screen);
+
+  /* this is required to get the geometry right
+   * later in the terminal_window_add() call.
+   */
+  gtk_widget_hide (GTK_WIDGET (terminal));
+
+  terminal_window_add (TERMINAL_WINDOW (window), terminal);
+
+  gtk_widget_show (window);
 }
 
 
@@ -526,15 +589,11 @@ terminal_app_open_window (TerminalApp         *app,
   g_return_if_fail (TERMINAL_IS_APP (app));
   g_return_if_fail (attr != NULL);
 
-  window = terminal_window_new (attr->fullscreen,
-                                attr->menubar,
-                                attr->borders,
-                                attr->toolbars);
-  g_signal_connect (G_OBJECT (window), "destroy",
-                    G_CALLBACK (terminal_app_window_destroyed), app);
-  g_signal_connect (G_OBJECT (window), "new-window",
-                    G_CALLBACK (terminal_app_new_window), app);
-  app->windows = g_list_append (app->windows, window);
+  window = terminal_app_create_window (app,
+                                       attr->fullscreen,
+                                       attr->menubar,
+                                       attr->borders,
+                                       attr->toolbars);
 
   if (attr->role != NULL)
     gtk_window_set_role (GTK_WINDOW (window), attr->role);

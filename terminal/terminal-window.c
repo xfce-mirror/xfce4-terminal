@@ -66,6 +66,7 @@ enum
 enum
 {
   NEW_WINDOW,
+  NEW_WINDOW_WITH_SCREEN,
   LAST_SIGNAL,
 };
 
@@ -94,6 +95,8 @@ static void            terminal_window_notify_page              (GtkNotebook    
 static void            terminal_window_context_menu             (TerminalScreen         *screen,
                                                                  GdkEvent               *event,
                                                                  TerminalWindow         *window);
+static void            terminal_window_detach_screen            (TerminalWindow         *window,
+                                                                 TerminalTabHeader      *header);
 static void            terminal_window_notify_title             (TerminalScreen         *screen,
                                                                  GParamSpec             *pspec,
                                                                  TerminalWindow         *window);
@@ -250,6 +253,19 @@ terminal_window_class_init (TerminalWindowClass *klass)
                   g_cclosure_marshal_VOID__STRING,
                   G_TYPE_NONE, 1,
                   G_TYPE_STRING);
+
+  /**
+   * TerminalWindow::new-window-with-screen:
+   **/
+  window_signals[NEW_WINDOW_WITH_SCREEN] =
+    g_signal_new ("new-window-with-screen",
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (TerminalWindowClass, new_window_with_screen),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1,
+                  G_TYPE_OBJECT);
 }
 
 
@@ -905,6 +921,24 @@ terminal_window_context_menu (TerminalScreen  *screen,
 
 
 static void
+terminal_window_detach_screen (TerminalWindow     *window,
+                               TerminalTabHeader  *header)
+{
+  GtkWidget *screen;
+
+  screen = g_object_get_data (G_OBJECT (header), "terminal-window-screen");
+  if (G_LIKELY (screen != NULL))
+    {
+      g_object_ref (G_OBJECT (screen));
+      gtk_container_remove (GTK_CONTAINER (window->notebook), screen);
+      g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_SCREEN], 0, screen);
+      g_object_unref (G_OBJECT (screen));
+    }
+}
+
+
+
+static void
 terminal_window_notify_title (TerminalScreen *screen,
                               GParamSpec     *pspec,
                               TerminalWindow *window)
@@ -1539,8 +1573,8 @@ terminal_window_add (TerminalWindow *window,
   GtkAction        *action;
   gint              npages;
   gint              page;
-  gint              grid_width = 80;
-  gint              grid_height = 24;
+  gint              grid_width;
+  gint              grid_height;
 
 
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -1548,17 +1582,24 @@ terminal_window_add (TerminalWindow *window,
 
   active = terminal_window_get_active (window);
   if (G_LIKELY (active != NULL))
-    terminal_screen_get_size (active, &grid_width, &grid_height);
-  terminal_screen_set_size (screen, grid_width, grid_height);
+    {
+      terminal_screen_get_size (active, &grid_width, &grid_height);
+      terminal_screen_set_size (screen, grid_width, grid_height);
+    }
 
   action = gtk_action_group_get_action (window->action_group, "set-title");
 
   header = terminal_tab_header_new ();
   exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (header), "title");
-  g_signal_connect_swapped (G_OBJECT (header), "close",
+  g_signal_connect_swapped (G_OBJECT (header), "close-tab",
                             G_CALLBACK (gtk_widget_destroy), screen);
+  g_signal_connect_swapped (G_OBJECT (header), "detach-tab",
+                            G_CALLBACK (terminal_window_detach_screen), window);
   g_signal_connect_swapped (G_OBJECT (header), "double-clicked",
                             G_CALLBACK (gtk_action_activate), action);
+  g_object_set_data_full (G_OBJECT (header), "terminal-window-screen",
+                          g_object_ref (G_OBJECT (screen)),
+                          (GDestroyNotify) g_object_unref);
   gtk_widget_show (header);
 
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),

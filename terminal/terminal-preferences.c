@@ -94,6 +94,7 @@ enum
   PROP_COLOR_PALETTE16,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_FONT_ALLOW_BOLD,
   PROP_FONT_ANTI_ALIAS,
   PROP_FONT_NAME,
   PROP_MISC_BELL,
@@ -850,6 +851,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          _("Run shell as login shell"),
                                                          _("Run shell as login shell"),
                                                          FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:font-allow-bold:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_FONT_ALLOW_BOLD,
+                                   g_param_spec_boolean ("font-allow-bold",
+                                                         _("Allow bold fonts"),
+                                                         _("Allow bold fonts"),
+                                                         TRUE,
                                                          G_PARAM_READWRITE));
 
   /**

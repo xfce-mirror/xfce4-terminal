@@ -41,8 +41,10 @@ struct _TerminalWindowClass
   GtkWindowClass __parent__;
 
   /* signals */
-  void (*new_window) (TerminalWindow *window,
-                      const gchar    *working_directory);
+  void  (*new_window)             (TerminalWindow *window,
+                                   const gchar    *working_directory);
+  void  (*new_window_with_screen) (TerminalWindow *window,
+                                   TerminalScreen *screen);
 };
 
 GType      terminal_window_get_type             (void) G_GNUC_CONST;

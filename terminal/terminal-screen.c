@@ -123,8 +123,6 @@ static void     terminal_screen_vte_eof                       (VteTerminal    *t
 static void     terminal_screen_vte_context_menu              (TerminalWidget *widget,
                                                                GdkEvent       *event,
                                                                TerminalScreen *screen);
-static void     terminal_screen_vte_realize                   (VteTerminal    *terminal,
-                                                               TerminalScreen *screen);
 static void     terminal_screen_vte_selection_changed         (VteTerminal    *terminal,
                                                                TerminalScreen *screen);
 static void     terminal_screen_vte_window_title_changed      (VteTerminal    *terminal,
@@ -219,7 +217,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::context-menu", G_CALLBACK (terminal_screen_vte_context_menu), screen,
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
-                    "signal-after::realize", G_CALLBACK (terminal_screen_vte_realize), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
                     "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
@@ -256,6 +253,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::color-palette14", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette15", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette16", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::font-allow-bold", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::font-anti-alias", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
@@ -272,6 +270,7 @@ terminal_screen_init (TerminalScreen *screen)
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
   terminal_screen_update_binding_delete (screen);
+  terminal_screen_update_colors (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
@@ -573,10 +572,12 @@ static void
 terminal_screen_update_font (TerminalScreen *screen)
 {
   VteTerminalAntiAlias antialias;
+  gboolean             font_allow_bold;
   gboolean             font_anti_alias;
   gchar               *font_name;
 
   g_object_get (G_OBJECT (screen->preferences),
+                "font-allow-bold", &font_allow_bold,
                 "font-anti-alias", &font_anti_alias,
                 "font-name", &font_name,
                 NULL);
@@ -587,6 +588,7 @@ terminal_screen_update_font (TerminalScreen *screen)
                 ? VTE_ANTI_ALIAS_USE_DEFAULT
                 : VTE_ANTI_ALIAS_FORCE_DISABLE;
 
+      vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
       vte_terminal_set_font_from_string_full (VTE_TERMINAL (screen->terminal),
                                               font_name, antialias);
       g_free (font_name);
@@ -722,16 +724,6 @@ terminal_screen_vte_context_menu (TerminalWidget  *widget,
                                   TerminalScreen  *screen)
 {
   g_signal_emit (G_OBJECT (screen), screen_signals[CONTEXT_MENU], 0, event);
-}
-
-
-
-static void
-terminal_screen_vte_realize (VteTerminal    *terminal,
-                             TerminalScreen *screen)
-{
-  vte_terminal_set_allow_bold (terminal, TRUE);
-  terminal_screen_update_colors (TERMINAL_SCREEN (screen));
 }
 
 

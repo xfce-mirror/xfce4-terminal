@@ -36,7 +36,8 @@ enum
 
 enum
 {
-  CLOSE,
+  CLOSE_TAB,
+  DETACH_TAB,
   DOUBLE_CLICKED,
   LAST_SIGNAL,
 };
@@ -54,10 +55,12 @@ static void     terminal_tab_header_set_property  (GObject                *objec
                                                    guint                   prop_id,
                                                    const GValue           *value,
                                                    GParamSpec             *pspec);
-static void     terminal_tab_header_clicked       (GtkWidget              *button,
-                                                   TerminalTabHeader      *header);
 static gboolean terminal_tab_header_button_press  (GtkWidget              *ebox,
                                                    GdkEventButton         *event,
+                                                   TerminalTabHeader      *header);
+static void     terminal_tab_header_close_tab     (GtkWidget              *widget,
+                                                   TerminalTabHeader      *header);
+static void     terminal_tab_header_detach_tab    (GtkWidget              *widget,
                                                    TerminalTabHeader      *header);
 
 
@@ -69,6 +72,9 @@ struct _TerminalTabHeader
   GtkTooltips *tooltips;
   GtkWidget   *ebox;
   GtkWidget   *label;
+
+  /* the popup menu */
+  GtkWidget   *menu;
 };
 
 
@@ -106,13 +112,25 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalTabHeader::close
+   * TerminalTabHeader::close-tab:
    **/
-  header_signals[CLOSE] =
-    g_signal_new ("close",
+  header_signals[CLOSE_TAB] =
+    g_signal_new ("close-tab",
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalTabHeaderClass, close),
+                  G_STRUCT_OFFSET (TerminalTabHeaderClass, close_tab),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
+
+  /**
+   * TerminalTabHeader::detach-tab:
+   **/
+  header_signals[DETACH_TAB] =
+    g_signal_new ("detach-tab",
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (TerminalTabHeaderClass, detach_tab),
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -166,7 +184,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
   gtk_tooltips_set_tip (header->tooltips, button,
                         _("Close this tab"), NULL);
   g_signal_connect (G_OBJECT (button), "clicked",
-                    G_CALLBACK (terminal_tab_header_clicked), header);
+                    G_CALLBACK (terminal_tab_header_close_tab), header);
   gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
@@ -181,6 +199,14 @@ static void
 terminal_tab_header_finalize (GObject *object)
 {
   TerminalTabHeader *header = TERMINAL_TAB_HEADER (object);
+
+  /* ensure that the open popup menu is
+   * destroyed now, or we risk to run into
+   * a crash when the user selects anything
+   * from the menu after this point.
+   */
+  if (G_UNLIKELY (header->menu != NULL))
+    gtk_widget_destroy (header->menu);
 
   g_object_unref (G_OBJECT (header->tooltips));
 
@@ -236,27 +262,64 @@ terminal_tab_header_set_property (GObject      *object,
 
 
 
-static void
-terminal_tab_header_clicked (GtkWidget         *button,
-                             TerminalTabHeader *header)
-{
-  g_signal_emit (G_OBJECT (header), header_signals[CLOSE], 0);
-}
-
-
-
 static gboolean
 terminal_tab_header_button_press (GtkWidget              *ebox,
                                   GdkEventButton         *event,
                                   TerminalTabHeader      *header)
 {
+  GtkWidget *item;
+
   if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
     {
       g_signal_emit (G_OBJECT (header), header_signals[DOUBLE_CLICKED], 0);
       return TRUE;
     }
+  else if (event->type == GDK_BUTTON_PRESS && event->button == 3)
+    {
+      if (G_LIKELY (header->menu == NULL))
+        {
+          header->menu = gtk_menu_new ();
+          g_object_add_weak_pointer (G_OBJECT (header->menu),
+                                     (gpointer) &header->menu);
+
+          item = gtk_menu_item_new_with_mnemonic (_("_Detach Tab"));
+          g_signal_connect (G_OBJECT (item), "activate",
+                            G_CALLBACK (terminal_tab_header_detach_tab), header);
+          gtk_menu_shell_append (GTK_MENU_SHELL (header->menu), item);
+          gtk_widget_show (item);
+
+          item = gtk_menu_item_new_with_mnemonic (_("C_lose Tab"));
+          g_signal_connect (G_OBJECT (item), "activate",
+                            G_CALLBACK (terminal_tab_header_close_tab), header);
+          gtk_menu_shell_append (GTK_MENU_SHELL (header->menu), item);
+          gtk_widget_show (item);
+        }
+
+      gtk_menu_popup (GTK_MENU (header->menu), NULL, NULL, NULL,
+                      NULL, event->button, event->time);
+
+      return TRUE;
+    }
 
   return FALSE;
+}
+
+
+
+static void
+terminal_tab_header_close_tab (GtkWidget         *widget,
+                               TerminalTabHeader *header)
+{
+  g_signal_emit (G_OBJECT (header), header_signals[CLOSE_TAB], 0);
+}
+
+
+
+static void
+terminal_tab_header_detach_tab (GtkWidget         *widget,
+                                TerminalTabHeader *header)
+{
+  g_signal_emit (G_OBJECT (header), header_signals[DETACH_TAB], 0);
 }
 
 
