@@ -44,15 +44,15 @@ install: build
 	dh_testroot
 	dh_clean -k
 
-	$(MAKE) install DESTDIR=`pwd`/debian/terminal
+	$(MAKE) install DESTDIR=`pwd`/debian/xterminal
 
-	install -c -m 0755 `pwd`/debian/Terminal.wrapper `pwd`/debian/terminal/usr/bin
+	install -c -m 0755 `pwd`/debian/Terminal.wrapper `pwd`/debian/xterminal/usr/bin
 
-	install -d `pwd`/debian/terminal/usr/share/man/man1
-	install `pwd`/debian/Terminal.1 `pwd`/debian/terminal/usr/share/man/man1
+	install -d `pwd`/debian/xterminal/usr/share/man/man1
+	install `pwd`/debian/Terminal.1 `pwd`/debian/xterminal/usr/share/man/man1
 
-	ln -s Terminal `pwd`/debian/terminal/usr/bin/terminal
-	ln -s Terminal `pwd`/debian/terminal/usr/bin/xfce4-terminal
+	ln -s Terminal `pwd`/debian/xterminal/usr/bin/xterminal
+	ln -s Terminal `pwd`/debian/xterminal/usr/bin/xfce4-terminal
 
 binary-indep: build install
 binary-arch: build install
