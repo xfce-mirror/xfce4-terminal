@@ -19,10 +19,10 @@ AC_HELP_STRING([--disable-debug], [Include no debugging support [default]]),
     AC_DEFINE(DEBUG, 1, Define for debugging support)
     if test x"$enable_debug" = x"full"; then
       AC_DEFINE(DEBUG_TRACE, 1, Define for tracing support)
-      CFLAGS="$CFLAGS -g3 -Wall -Werror -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DXFCE_DISABLE_DEPRECATED"
+      CFLAGS="$CFLAGS -g3 -Wall -Werror -DXFCE_DISABLE_DEPRECATED"
       AC_MSG_RESULT([full])
     else
-      CFLAGS="$CFLAGS -g -Wall -DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DXFCE_DISABLE_DEPRECATED"
+      CFLAGS="$CFLAGS -g -Wall -DXFCE_DISABLE_DEPRECATED"
       AC_MSG_RESULT([yes])
     fi
   else
@@ -61,18 +61,28 @@ AC_HELP_STRING([--disable-gcov],
     AC_MSG_RESULT([no])
   fi
 
-dnl # --enable-asserts
-  AC_ARG_ENABLE([asserts],
-AC_HELP_STRING([--enable-asserts], [Enable assert statements (default)])
-AC_HELP_STRING([--disable-asserts],
-    [Disable assert statements (USE WITH CARE!!!)]),
-    [], [enable_asserts=yes])
+dnl # --enable-final
+  AC_REQUIRE([AC_PROG_LD])
+  AC_ARG_ENABLE([final],
+AC_HELP_STRING([--enable-final], [Build final version]),
+    [], [enable_final=no])
 
-  AC_MSG_CHECKING([whether to enable assert statements])
-  if test x"$enable_asserts" != x"yes"; then
-    CFLAGS="$CFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
-    AC_MSG_RESULT([no])
-  else
+  AC_MSG_CHECKING([whether to build final version])
+  if test x"$enable_final" = x"yes"; then
     AC_MSG_RESULT([yes])
+    CPPFLAGS="$CPPFLAGS -DG_DISABLE_CHECKS -DG_DISABLE_ASSERT"
+    CPPFLAGS="$CPPFLAGS -DG_DISABLE_CAST_CHECKS"
+    AC_MSG_CHECKING([whether $LD accepts -O1])
+    case `$LD -O1 -v 2>&1 </dev/null` in
+    *GNU* | *'with BFD'*)
+      LDFLAGS="$LDFLAGS -Wl,-O1"
+      AC_MSG_RESULT([yes])
+    	;;
+    *)
+      AC_MSG_RESULT([no])
+    	;;
+    esac
+  else
+    AC_MSG_RESULT([no])
   fi
 ])
