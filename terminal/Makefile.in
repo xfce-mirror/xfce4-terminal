@@ -64,6 +64,7 @@ am_Terminal_OBJECTS = $(am__objects_1) $(am__objects_2) \
 	Terminal-terminal-options.$(OBJEXT) \
 	Terminal-terminal-preferences.$(OBJEXT) \
 	Terminal-terminal-preferences-dialog.$(OBJEXT) \
+	Terminal-terminal-screen.$(OBJEXT) \
 	Terminal-terminal-shortcut-editor.$(OBJEXT) \
 	Terminal-terminal-tab-header.$(OBJEXT) \
 	Terminal-terminal-toolbars-model.$(OBJEXT) \
@@ -236,6 +237,7 @@ Terminal_headers = \
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
+	terminal-screen.h						\
 	terminal-shortcut-editor.h					\
 	terminal-tab-header.h						\
 	terminal-toolbars-model.h					\
@@ -254,6 +256,7 @@ Terminal_SOURCES = \
 	terminal-options.c						\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\
+	terminal-screen.c						\
 	terminal-shortcut-editor.c					\
 	terminal-tab-header.c						\
 	terminal-toolbars-model.c					\
@@ -356,6 +359,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-options.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-preferences-dialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-preferences.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-screen.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-shortcut-editor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-tab-header.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-toolbars-model.Po@am__quote@
@@ -495,6 +499,20 @@ Terminal-terminal-preferences-dialog.obj: terminal-preferences-dialog.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-preferences-dialog.c' object='Terminal-terminal-preferences-dialog.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-preferences-dialog.obj `if test -f 'terminal-preferences-dialog.c'; then $(CYGPATH_W) 'terminal-preferences-dialog.c'; else $(CYGPATH_W) '$(srcdir)/terminal-preferences-dialog.c'; fi`
+
+Terminal-terminal-screen.o: terminal-screen.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-screen.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-screen.Tpo" -c -o Terminal-terminal-screen.o `test -f 'terminal-screen.c' || echo '$(srcdir)/'`terminal-screen.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-screen.Tpo" "$(DEPDIR)/Terminal-terminal-screen.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-screen.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-screen.c' object='Terminal-terminal-screen.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-screen.o `test -f 'terminal-screen.c' || echo '$(srcdir)/'`terminal-screen.c
+
+Terminal-terminal-screen.obj: terminal-screen.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-screen.obj -MD -MP -MF "$(DEPDIR)/Terminal-terminal-screen.Tpo" -c -o Terminal-terminal-screen.obj `if test -f 'terminal-screen.c'; then $(CYGPATH_W) 'terminal-screen.c'; else $(CYGPATH_W) '$(srcdir)/terminal-screen.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-screen.Tpo" "$(DEPDIR)/Terminal-terminal-screen.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-screen.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-screen.c' object='Terminal-terminal-screen.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-screen.obj `if test -f 'terminal-screen.c'; then $(CYGPATH_W) 'terminal-screen.c'; else $(CYGPATH_W) '$(srcdir)/terminal-screen.c'; fi`
 
 Terminal-terminal-shortcut-editor.o: terminal-shortcut-editor.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-shortcut-editor.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-shortcut-editor.Tpo" -c -o Terminal-terminal-shortcut-editor.o `test -f 'terminal-shortcut-editor.c' || echo '$(srcdir)/'`terminal-shortcut-editor.c; \

@@ -1,5 +1,22 @@
 2004-11-27	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-preferences-dialog.c: Widget layout fixes.
+	* terminal/main.c: Don't print the usage screen to stderr if
+	  --help was specified.
+	* doc/, TODO: Updated online documentation with new screenshots,
+	  hidden options and command line options.
+	* terminal/terminal-screen.c, terminal/terminal-screen.h,
+	  terminal/terminal-window.c, terminal/terminal-window.h,
+	  terminal/terminal-app.c, terminal/terminal-widget.c,
+	  terminal/terminal-widget.h: TerminalWidget is now a subclass
+	  of VteTerminal and TerminalScreen includes the hbox with the
+	  scrollbar.
+	* terminal/terminal-widget.c, terminal/terminal-widget.h: Added a
+	  work-around to allow passing mouse clicks to applications (like
+	  mc) properly. This fixes #18.
+
+2004-11-27	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-preferences-dialog.c:  "Shortcut keys" is now
 	  above the "Menubar access" controls.
 

@@ -530,17 +530,17 @@ terminal_app_open_window (TerminalApp         *app,
 
   for (lp = attr->tabs; lp != NULL; lp = lp->next)
     {
-      terminal = terminal_widget_new ();
+      terminal = terminal_screen_new ();
 
       tab_attr = lp->data;
       if (tab_attr->command != NULL)
-        terminal_widget_set_custom_command (TERMINAL_WIDGET (terminal), tab_attr->command);
+        terminal_screen_set_custom_command (TERMINAL_SCREEN (terminal), tab_attr->command);
       if (tab_attr->directory != NULL)
-        terminal_widget_set_working_directory (TERMINAL_WIDGET (terminal), tab_attr->directory);
+        terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal), tab_attr->directory);
       if (tab_attr->title != NULL)
-        terminal_widget_set_custom_title (TERMINAL_WIDGET (terminal), tab_attr->title);
+        terminal_screen_set_custom_title (TERMINAL_SCREEN (terminal), tab_attr->title);
 
-      terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_WIDGET (terminal));
+      terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_SCREEN (terminal));
 
       /* if this was the first tab, we set the geometry string now
        * and show the window. This is required to work around a hang
@@ -553,7 +553,7 @@ terminal_app_open_window (TerminalApp         *app,
           gtk_widget_show (window);
         }
 
-      terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
+      terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
     }
 
   /* register with session manager on first display

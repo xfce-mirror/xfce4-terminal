@@ -220,9 +220,9 @@ stock_icons_init (void)
 
 
 static void
-usage (void)
+usage (FILE *fp)
 {
-  fprintf (stderr,
+  fprintf (fp,
            _("Usage: Terminal [OPTION...]\n"
              "\n"
              "  -h, --help                          Print this help message and exit\n"
@@ -329,7 +329,7 @@ main (int argc, char **argv)
     {
       g_printerr ("%s\n", error->message);
       g_error_free (error);
-      usage ();
+      usage (stderr);
       return EXIT_FAILURE;
     }
 
@@ -349,7 +349,7 @@ main (int argc, char **argv)
     }
   else if (G_UNLIKELY (options->show_help))
     {
-      usage ();
+      usage (stdout);
       return EXIT_SUCCESS;
     }
 

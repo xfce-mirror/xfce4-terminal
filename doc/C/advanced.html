@@ -1,4 +1,42 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Advanced topics</title><link rel="stylesheet" href="../terminal.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.66.1"><link rel="start" href="index.html" title="Terminal Emulator"><link rel="up" href="index.html" title="Terminal Emulator"><link rel="prev" href="preferences.html" title="Preferences"><link rel="next" href="faq.html" title="Frequently asked questions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Advanced topics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="advanced"></a>Advanced topics</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="files-and-env-vars"></a>Files and Environment Variables</h3></div></div></div><p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Advanced topics</title><link rel="stylesheet" href="../terminal.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.66.1"><link rel="start" href="index.html" title="Terminal Emulator"><link rel="up" href="index.html" title="Terminal Emulator"><link rel="prev" href="preferences.html" title="Preferences"><link rel="next" href="faq.html" title="Frequently asked questions"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Advanced topics</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr></table><hr></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="advanced"></a>Advanced topics</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="command-line-options"></a>Command line Options</h3></div></div></div><p>
+        When <b class="application"><tt>Terminal</tt></b> is started from the command line or from a panel launcher, several options
+        can be specified to modify its behaviour.
+      </p><div class="variablelist"><dl><dt><span class="term"><tt class="option">--help</tt></span></dt><dd><p>List the various command line options supported by <b class="application"><tt>Terminal</tt></b> and exit</p></dd><dt><span class="term"><tt class="option">--version</tt></span></dt><dd><p>Display version information and exit</p></dd><dt><span class="term"><tt class="option">--disable-server</tt></span></dt><dd><p>
+              Do not register with the D-BUS session message bus
+            </p></dd><dt><span class="term"><tt class="option">--execute</tt> <i class="parameter"><tt>...</tt></i></span></dt><dd><p>Execute the remainder of the command line inside the terminal</p></dd><dt><span class="term"><tt class="option">--command</tt> <i class="parameter"><tt>command</tt></i></span></dt><dd><p>Execute <i class="parameter"><tt>command</tt></i> inside the terminal</p></dd><dt><span class="term"><tt class="option">--working-directory</tt> <i class="parameter"><tt>directory</tt></i></span></dt><dd><p>Set <i class="parameter"><tt>directory</tt></i> as the working directory for the terminal</p></dd><dt><span class="term"><tt class="option">--title</tt> <i class="parameter"><tt>title</tt></i></span></dt><dd><p>Set <i class="parameter"><tt>title</tt></i> as the initial window title for the terminal</p></dd><dt><span class="term"><tt class="option">--display</tt> <i class="parameter"><tt>display</tt></i></span></dt><dd><p>Open terminal window on the X screen specified by <i class="parameter"><tt>display</tt></i>.</p></dd><dt><span class="term"><tt class="option">--geometry</tt> <i class="parameter"><tt>geometry</tt></i></span></dt><dd><p>
+              Sets the geometry of the last-specified window to <i class="parameter"><tt>geometry</tt></i>. Read
+              <b class="userinput"><tt><span><b class="command">man</b></span> <tt class="option">X</tt></tt></b> for more information on how
+              to specify window geometries.
+            </p></dd><dt><span class="term"><tt class="option">--role</tt> <i class="parameter"><tt>role</tt></i></span></dt><dd><p>
+              Sets the window role of the last-specified window to <i class="parameter"><tt>role</tt></i>. Applies
+              to only one window and can be specified once for each window you create from the command
+              line. It is mostly used for session management inside <b class="application"><tt>Terminal</tt></b>.
+            </p></dd><dt><span class="term"><tt class="option">--startup-id</tt> <i class="parameter"><tt>id</tt></i></span></dt><dd><p>
+              Specifies the startup notification id for the last-specified window. Used internally
+              to forward the startup notification id when using the D-BUS service.
+            </p></dd><dt><span class="term"><tt class="option">--show-menubar</tt></span></dt><dd><p>
+              Turn on the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </p></dd><dt><span class="term"><tt class="option">--hide-menubar</tt></span></dt><dd><p>
+              Turn on the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </p></dd><dt><span class="term"><tt class="option">--show-borders</tt></span></dt><dd><p>
+              Turn on the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </p></dd><dt><span class="term"><tt class="option">--hide-borders</tt></span></dt><dd><p>
+              Turn off the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </p></dd><dt><span class="term"><tt class="option">--show-toolbars</tt></span></dt><dd><p>
+              Turn on the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </p></dd><dt><span class="term"><tt class="option">--hide-toolbars</tt></span></dt><dd><p>
+              Turn off the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </p></dd><dt><span class="term"><tt class="option">--tab</tt></span></dt><dd><p>
+              Open a new tab in the last-specified window. More than one of these options can be provided.
+            </p></dd><dt><span class="term"><tt class="option">--window</tt></span></dt><dd><p>
+              Open a new window containing one tab. More than one of these options can be provided.
+            </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="files-and-env-vars"></a>Files and Environment Variables</h3></div></div></div><p>
         Terminal uses the Basedir Specification as defined on <a href="http://freedesktop.org/" target="_top">Freedesktop.org</a> to locate its data and configuration files. This means
         that file locations will be specified as a path relative to the directories described in
         the specification.
@@ -31,4 +69,35 @@
               you customize the toolbars using the graphical toolbars editor, <b class="application"><tt>Terminal</tt></b>
               will store the new toolbars layout in the file
               <tt class="filename">${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</tt>.
-            </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="hidden-options"></a>Hidden options</h3></div></div></div><div class="variablelist"><dl><dt><span class="term"><tt class="varname">MiscBell</tt></span></dt><dd></dd><dt><span class="term"><tt class="varname">MiscConfirmClose</tt></span></dt><dd></dd><dt><span class="term"><tt class="varname">MiscCursorBlinks</tt></span></dt><dd></dd><dt><span class="term"><tt class="varname">VteWorkaroundTitleBug</tt></span></dt><dd></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Preferences </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Frequently asked questions</td></tr></table></div></body></html>
+            </p></dd></dl></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="hidden-options"></a>Hidden options</h3></div></div></div><p>
+        <b class="application"><tt>Terminal</tt></b> offers a few hidden options to allow powerusers to control various advanced settings and
+        to reduce the number of options in the user interface. To set any of these options, you will have
+        to open the file <tt class="filename">${XDG_CONFIG_HOME}/Terminal/terminalrc</tt> in your favourite
+        text editor and edit the section <tt class="varname">[Configuration]</tt>; simply create the file if
+        it does not already exist. For example, your <tt class="filename">terminalrc</tt> could look like
+      </p><table border="0" bgcolor="#E0E0E0" width="100%"><tr><td><pre class="programlisting">
+[Configuration]
+MiscBell=TRUE
+MiscConfirmClose=FALSE
+MiscCursorBlinks=TRUE</pre></td></tr></table><p>
+        plus all the options that are controlled through the preferences dialog.
+      </p><div class="variablelist"><dl><dt><span class="term"><tt class="varname">MiscBell</tt></span></dt><dd><p>
+              Enables (<tt class="varname">MiscBell=TRUE</tt>) or disables (<tt class="varname">MiscBell=FALSE</tt>)
+              the audible terminal bell. Its disabled by default.
+            </p></dd><dt><span class="term"><tt class="varname">MiscConfirmClose</tt></span></dt><dd><p>
+              Controls whether <b class="application"><tt>Terminal</tt></b> popups a confirmation dialog when the user tries to close
+              a terminal window with multiple tabs in it. Can be either <tt class="varname">TRUE</tt>
+              (the default) or <tt class="varname">FALSE</tt>.
+            </p></dd><dt><span class="term"><tt class="varname">MiscCursorBlinks</tt></span></dt><dd><p>
+              Enable this option to display cursor that blinks. Can be either <tt class="varname">TRUE</tt>
+              or <tt class="varname">FALSE</tt> (the default).
+            </p></dd><dt><span class="term"><tt class="varname">VteWorkaroundTitleBug</tt></span></dt><dd><p>
+              This option controls a work-around to a known problem with some terminal applications,
+              like <a href="http://www.vim.org/" target="_top">Vim</a>, which try to set the terminal
+              title by querying the title of the window reported in the <tt class="varname">$WINDOWID</tt>
+              environment variable. Unfortunately this causes <b class="application"><tt>Terminal</tt></b> to append/prepend the user
+              specified initial title again and again. By default, <b class="application"><tt>Terminal</tt></b> will strip off the initial
+              title from the beginning and the end of the window title supplied by the application
+              running inside the terminal. If this is not what you want, you can disable this option
+              with <tt class="varname">VteWorkaroundTitleBug=FALSE</tt>.
+            </p></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="preferences.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="faq.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Preferences </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Frequently asked questions</td></tr></table></div></body></html>

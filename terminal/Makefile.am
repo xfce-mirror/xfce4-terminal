@@ -22,6 +22,7 @@ Terminal_headers =							\
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
+	terminal-screen.h						\
 	terminal-shortcut-editor.h					\
 	terminal-tab-header.h						\
 	terminal-toolbars-model.h					\
@@ -40,6 +41,7 @@ Terminal_SOURCES =							\
 	terminal-options.c						\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\
+	terminal-screen.c						\
 	terminal-shortcut-editor.c					\
 	terminal-tab-header.c						\
 	terminal-toolbars-model.c					\

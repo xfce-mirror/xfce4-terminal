@@ -22,7 +22,7 @@
 #ifndef __TERMINAL_WINDOW_H__
 #define __TERMINAL_WINDOW_H__
 
-#include <terminal/terminal-widget.h>
+#include <terminal/terminal-screen.h>
 
 G_BEGIN_DECLS;
 
@@ -52,10 +52,10 @@ GtkWidget *terminal_window_new                  (TerminalVisibility  menubar,
                                                  TerminalVisibility  toolbars);
 
 void       terminal_window_add                  (TerminalWindow     *window,
-                                                 TerminalWidget     *widget);
+                                                 TerminalScreen     *screen);
 
 void       terminal_window_remove               (TerminalWindow     *window,
-                                                 TerminalWidget     *widget);
+                                                 TerminalScreen     *screen);
 
 void       terminal_window_set_startup_id       (TerminalWindow     *window,
                                                  const gchar        *startup_id);

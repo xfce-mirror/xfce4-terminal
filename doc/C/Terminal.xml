@@ -53,30 +53,36 @@
     <sect2>
       <title>What is a terminal emulator?</title>
 
-      <para>The UNIX operating system were originally designed as a text-only
-      system, controlled by commands entered with a keyboard. This is known
-      as a command-line interface (CLI). The X Window System, Xfce and other
-      projects have since added a graphical user interface to UNIX, thats
-      what you are actually using now. But the addition of a graphical user
-      interface doesn't mean, that the CLI is dead. The CLI is still around,
-      and is frequently the easiest, fastest and most powerful way to perform
-      a certain task. In fact, power users would be lost without the CLI.</para>
+      <para>
+        The UNIX operating system were originally designed as a text-only
+        system, controlled by commands entered with a keyboard. This is known
+        as a command-line interface (CLI). The X Window System, Xfce and other
+        projects have since added a graphical user interface to UNIX, thats
+        what you are actually using now. But the addition of a graphical user
+        interface doesn't mean, that the CLI is dead. The CLI is still around,
+        and is frequently the easiest, fastest and most powerful way to perform
+        a certain task. In fact, power users would be lost without the CLI.
+      </para>
 
-      <para>&app; is what is known as an X terminal emulator, often referred
-      to as terminal or shell. It provides an equivalent to the old fashioned
-      text screen on your desktop, but on which can easily share the screen
-      with other graphical applications. Windows users may already be familar
-      with the MS-DOS Prompt utility, which has the analogous function of
-      offering a DOS command-line under Windows, though one should note, that
-      the UNIX CLI offer far more power and ease of use than does DOS.</para>
+      <para>
+        &app; is what is known as an X terminal emulator, often referred
+        to as terminal or shell. It provides an equivalent to the old fashioned
+        text screen on your desktop, but on which can easily share the screen
+        with other graphical applications. Windows users may already be familar
+        with the MS-DOS Prompt utility, which has the analogous function of
+        offering a DOS command-line under Windows, though one should note, that
+        the UNIX CLI offer far more power and ease of use than does DOS.
+      </para>
 
-      <para>&app; emulates the <application>xterm</application> application
-      developed by the X Consortium. In turn, the <application>xterm</application>
-      application emulates the DEC VT102 terminal and also supports the DEC VT220
-      escape sequences. An escape sequence is a series of characters that start
-      with the <keycap>Esc</keycap> character. &app; accepts all of the escape
-      sequences that the VT102 and VT220 terminals use for functions such as to
-      position the cursor and to clear the screen.</para>
+      <para>
+        &app; emulates the <application>xterm</application> application
+        developed by the X Consortium. In turn, the <application>xterm</application>
+        application emulates the DEC VT102 terminal and also supports the DEC VT220
+        escape sequences. An escape sequence is a series of characters that start
+        with the <keycap>Esc</keycap> character. &app; accepts all of the escape
+        sequences that the VT102 and VT220 terminals use for functions such as to
+        position the cursor and to clear the screen.
+      </para>
     </sect2>
 
     <sect2>
@@ -246,6 +252,7 @@
             terminal.</para>
           </listitem>
         </varlistentry>
+
         <varlistentry>
           <term>To close a terminal window:</term>
           <listitem>
@@ -256,6 +263,7 @@
             &app; application exits.</para>
           </listitem>
         </varlistentry>
+
         <varlistentry>
           <term>To add a new tabbed terminal to a window:</term>
           <listitem>
@@ -330,11 +338,16 @@
         <varlistentry>
           <term>To scroll through previous commands and output:</term>
           <listitem>
-            <para>Perform one of the following actions:</para>
+            <para>
+              Perform one of the following actions:
+            </para>
+
             <itemizedlist>
               <listitem>
-                <para>Use the scrollbar, which is usually displayed on the right side
-                of each terminal window.</para>
+                <para>
+                  Use the scrollbar, which is usually displayed on the right side
+                  of each terminal window.
+                </para>
               </listitem>
               <listitem>
                 <para>Press the <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>,
@@ -343,9 +356,22 @@
                 <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> keys.</para>
               </listitem> 
             </itemizedlist>
-            <para>The number of lines that you can scroll back in the terminal window is
-            determined by the <guilabel>Scrollback</guilabel> setting in the <guilabel>General</guilabel>
-            section of the <guilabel>Terminal Preferences</guilabel> dialog.</para>
+
+            <para>
+              &app; mimics the FreeBSD console when <keycap>Scroll Lock</keycap> is pressed. When scroll lock is
+              active, ordinary input and output from the shell is suspended, and you can scroll through
+              the history with <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> and
+              <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> or using the optional
+              scrollbar. Press <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> to activate
+              the scroll lock and <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> to disable
+              it afterwards.
+            </para>
+
+            <para>
+              The number of lines that you can scroll back in the terminal window is
+              determined by the <guilabel>Scrollback</guilabel> setting in the <guilabel>General</guilabel>
+              section of the <guilabel>Terminal Preferences</guilabel> dialog.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -749,24 +775,6 @@
 
       <variablelist>
         <varlistentry>
-          <term><guilabel>Disable all menu access keys (such as Alt+f)</guilabel></term>
-          <listitem>
-            <para>Select this option to disable the access keys that are defined to
-            enable you to use keyboard instead of the mouse to select a menu item.
-            Each access key is identified by an underlined letter on a menu or dialog
-            option. In some cases, you must press the <keycap>Alt</keycap> key in
-            combination with the access key to perform the action.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Disable menu shortcut key (F10 by default)</guilabel></term>
-          <listitem>
-            <para>Select this option to disable the shortcut key that is defined to
-            enable you to access the &app; menus. The default shortcut key to access
-            the menus is <keycap>F10</keycap>.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
           <term><guilabel>Shortcut keys</guilabel></term>
           <listitem>
             <para>The <guilabel>Shortcut keys</guilabel> section of the dialog lists the
@@ -792,6 +800,26 @@
             and press the key combination you want to set. To disable a shortcut for a specific
             menu item, double click the menu item in the list and click the button
             <guilabel>Clear</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>Disable all menu access keys (such as Alt+f)</guilabel></term>
+          <listitem>
+            <para>Select this option to disable the access keys that are defined to
+            enable you to use keyboard instead of the mouse to select a menu item.
+            Each access key is identified by an underlined letter on a menu or dialog
+            option. In some cases, you must press the <keycap>Alt</keycap> key in
+            combination with the access key to perform the action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>Disable menu shortcut key (F10 by default)</guilabel></term>
+          <listitem>
+            <para>Select this option to disable the shortcut key that is defined to
+            enable you to access the &app; menus. The default shortcut key to access
+            the menus is <keycap>F10</keycap>.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -856,6 +884,184 @@
 
   <sect1 id="advanced">
     <title>Advanced topics</title>
+    <sect2 id="command-line-options">
+      <title>Command line Options</title>
+
+      <para>
+        When &app; is started from the command line or from a panel launcher, several options
+        can be specified to modify its behaviour.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--help</option></term>
+          <listitem>
+            <para>List the various command line options supported by &app; and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--version</option></term>
+          <listitem>
+            <para>Display version information and exit</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term><option>--disable-server</option></term>
+          <listitem>
+            <para>
+              Do not register with the D-BUS session message bus
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--execute</option> <parameter>...</parameter></term>
+          <listitem>
+            <para>Execute the remainder of the command line inside the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--command</option> <parameter>command</parameter></term>
+          <listitem>
+            <para>Execute <parameter>command</parameter> inside the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--working-directory</option> <parameter>directory</parameter></term>
+          <listitem>
+            <para>Set <parameter>directory</parameter> as the working directory for the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--title</option> <parameter>title</parameter></term>
+          <listitem>
+            <para>Set <parameter>title</parameter> as the initial window title for the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--display</option> <parameter>display</parameter></term>
+          <listitem>
+            <para>Open terminal window on the X screen specified by <parameter>display</parameter>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--geometry</option> <parameter>geometry</parameter></term>
+          <listitem>
+            <para>
+              Sets the geometry of the last-specified window to <parameter>geometry</parameter>. Read
+              <userinput><command>man</command> <option>X</option></userinput> for more information on how
+              to specify window geometries.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--role</option> <parameter>role</parameter></term>
+          <listitem>
+            <para>
+              Sets the window role of the last-specified window to <parameter>role</parameter>. Applies
+              to only one window and can be specified once for each window you create from the command
+              line. It is mostly used for session management inside &app;.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--startup-id</option> <parameter>id</parameter></term>
+          <listitem>
+            <para>
+              Specifies the startup notification id for the last-specified window. Used internally
+              to forward the startup notification id when using the D-BUS service.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-menubar</option></term>
+          <listitem>
+            <para>
+              Turn on the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-menubar</option></term>
+          <listitem>
+            <para>
+              Turn on the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-borders</option></term>
+          <listitem>
+            <para>
+              Turn on the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-borders</option></term>
+          <listitem>
+            <para>
+              Turn off the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-toolbars</option></term>
+          <listitem>
+            <para>
+              Turn on the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-toolbars</option></term>
+          <listitem>
+            <para>
+              Turn off the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--tab</option></term>
+          <listitem>
+            <para>
+              Open a new tab in the last-specified window. More than one of these options can be provided.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--window</option></term>
+          <listitem>
+            <para>
+              Open a new window containing one tab. More than one of these options can be provided.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
 
     <sect2 id="files-and-env-vars">
       <title>Files and Environment Variables</title>
@@ -953,21 +1159,70 @@
     <sect2 id="hidden-options">
       <title>Hidden options</title>
 
+      <para>
+        &app; offers a few hidden options to allow powerusers to control various advanced settings and
+        to reduce the number of options in the user interface. To set any of these options, you will have
+        to open the file <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> in your favourite
+        text editor and edit the section <varname>[Configuration]</varname>; simply create the file if
+        it does not already exist. For example, your <filename>terminalrc</filename> could look like
+      </para>
+
+      <programlisting>
+[Configuration]
+MiscBell=TRUE
+MiscConfirmClose=FALSE
+MiscCursorBlinks=TRUE</programlisting>
+
+      <para>
+        plus all the options that are controlled through the preferences dialog.
+      </para>
+
       <variablelist>
         <varlistentry>
           <term><varname>MiscBell</varname></term>
+          <listitem>
+            <para>
+              Enables (<varname>MiscBell=TRUE</varname>) or disables (<varname>MiscBell=FALSE</varname>)
+              the audible terminal bell. Its disabled by default.
+            </para>
+          </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><varname>MiscConfirmClose</varname></term>
+          <listitem>
+            <para>
+              Controls whether &app; popups a confirmation dialog when the user tries to close
+              a terminal window with multiple tabs in it. Can be either <varname>TRUE</varname>
+              (the default) or <varname>FALSE</varname>.
+            </para>
+          </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><varname>MiscCursorBlinks</varname></term>
+          <listitem>
+            <para>
+              Enable this option to display cursor that blinks. Can be either <varname>TRUE</varname>
+              or <varname>FALSE</varname> (the default).
+            </para>
+          </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><varname>VteWorkaroundTitleBug</varname></term>
+          <listitem>
+            <para>
+              This option controls a work-around to a known problem with some terminal applications,
+              like <ulink url="http://www.vim.org/" type="http">Vim</ulink>, which try to set the terminal
+              title by querying the title of the window reported in the <varname>$WINDOWID</varname>
+              environment variable. Unfortunately this causes &app; to append/prepend the user
+              specified initial title again and again. By default, &app; will strip off the initial
+              title from the beginning and the end of the window title supplied by the application
+              running inside the terminal. If this is not what you want, you can disable this option
+              with <varname>VteWorkaroundTitleBug=FALSE</varname>.
+            </para>
+          </listitem>
         </varlistentry>
       </variablelist>
     </sect2>
@@ -1011,7 +1266,7 @@
 
       <para>You can customize the main menubar and the right-click popup menu by editing the file
       <filename>Terminal/Terminal.ui</filename>. Create a copy of this file before you actually
-      start editing it. For example, say you installed Terminal in <filename>/usr/local</filename>,
+      start editing it. For example, say you installed Terminal in <filename role="directory">/usr/local</filename>,
       then you would perform the following steps:</para>
 
 <screen>$ mkdir -p ~/.local/share/Terminal
@@ -1066,19 +1321,24 @@ $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
   <sect1 id="copyright">
     <title>About &app;</title>
 
-    <para>&app; was written by Benedikt Meurer (<email>benny@xfce.org</email>). Visit the
-    <ulink url="http://www.os-cillation.com/" type="http">os-cillation website</ulink>
-    for more information.</para>
+    <para>
+      &app; was written by Benedikt Meurer (<email>benny@xfce.org</email>). Visit the
+      <ulink url="http://www.os-cillation.com/" type="http">os-cillation website</ulink>
+      for more information.
+    </para>
 
-    <para>This software is distributed under the terms of the GNU General Public License
-    as published by the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.</para>
+    <para>
+      This software is distributed under the terms of the GNU General Public License
+      as published by the Free Software Foundation; either version 2 of the License, or
+      (at your option) any later version.
+    </para>
 
-    <para>You should have received a copy of the GNU General Public License 
-    along with this program; if not, write to the Free Software 
-    Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
-    USA.</para>
-
+    <para>
+      You should have received a copy of the GNU General Public License 
+      along with this program; if not, write to the Free Software 
+      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+      USA.
+    </para>
   </sect1>
 
 </article>

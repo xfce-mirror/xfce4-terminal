@@ -22,7 +22,7 @@
 #ifndef __TERMINAL_WIDGET_H__
 #define __TERMINAL_WIDGET_H__
 
-#include <gtk/gtk.h>
+#include <vte/vte.h>
 
 G_BEGIN_DECLS;
 
@@ -33,61 +33,11 @@ G_BEGIN_DECLS;
 #define TERMINAL_IS_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_WIDGET))
 #define TERMINAL_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
 
-typedef struct _TerminalWidgetClass TerminalWidgetClass;
 typedef struct _TerminalWidget      TerminalWidget;
+typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
-struct _TerminalWidgetClass
-{
-  GtkHBoxClass __parent__;
-
-  /* signals */
-  void (*context_menu) (TerminalWidget *widget, GdkEvent *event);
-  void (*selection_changed) (TerminalWidget *widget);
-};
-
-GType        terminal_widget_get_type                     (void) G_GNUC_CONST;
-
-GtkWidget   *terminal_widget_new                          (void);
-
-void         terminal_widget_launch_child                 (TerminalWidget *widget);
-
-void         terminal_widget_set_custom_command           (TerminalWidget *widget,
-                                                           gchar         **command);
-void         terminal_widget_set_custom_title             (TerminalWidget *widget,
-                                                           const gchar    *title);
-
-void         terminal_widget_get_size                     (TerminalWidget *widget,
-                                                           gint           *width_chars,
-                                                           gint           *height_chars);
-void         terminal_widget_set_size                     (TerminalWidget *widget,
-                                                           gint            width_chars,
-                                                           gint            height_chars);
-
-void       terminal_widget_force_resize_window          (TerminalWidget *widget,
-                                                         GtkWindow      *window,
-                                                         gint            force_columns,
-                                                         gint            force_rows);
-void       terminal_widget_set_window_geometry_hints    (TerminalWidget *widget,
-                                                         GtkWindow      *window);
-
-gchar       *terminal_widget_get_title                  (TerminalWidget *widget);
-
-const gchar *terminal_widget_get_working_directory      (TerminalWidget *widget);
-void         terminal_widget_set_working_directory      (TerminalWidget *widget,
-                                                         const gchar    *directory);
-
-gboolean   terminal_widget_has_selection              (TerminalWidget *widget);
-
-void       terminal_widget_copy_clipboard             (TerminalWidget *widget);
-void       terminal_widget_paste_clipboard            (TerminalWidget *widget);
-
-void       terminal_widget_reset                      (TerminalWidget *widget,
-                                                       gboolean        clear);
-
-void       terminal_widget_im_append_menuitems        (TerminalWidget *widget,
-                                                       GtkMenuShell   *menushell);
-
-GList     *terminal_widget_get_restart_command        (TerminalWidget *widget);
+GType      terminal_widget_get_type (void) G_GNUC_CONST;
+GtkWidget *terminal_widget_new      (void);
 
 G_END_DECLS;
 
