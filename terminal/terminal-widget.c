@@ -190,13 +190,12 @@ static gboolean
 terminal_widget_button_press_event (GtkWidget       *widget,
                                     GdkEventButton  *event)
 {
-  TerminalWidget *terminal = TERMINAL_WIDGET (widget);
-  gboolean        committed = FALSE;
-  guint           signal_id = 0;
+  gboolean committed = FALSE;
+  guint    signal_id = 0;
 
   if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
-      signal_id = g_signal_connect (G_OBJECT (terminal), "commit",
+      signal_id = g_signal_connect (G_OBJECT (widget), "commit",
                                     G_CALLBACK (terminal_widget_commit), &committed);
     }
 
@@ -204,7 +203,7 @@ terminal_widget_button_press_event (GtkWidget       *widget,
 
   if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
-      g_signal_handler_disconnect (G_OBJECT (terminal), signal_id);
+      g_signal_handler_disconnect (G_OBJECT (widget), signal_id);
 
       /* no data (mouse actions) was committed to the terminal application
        * which means, we can safely popup a context menu now.

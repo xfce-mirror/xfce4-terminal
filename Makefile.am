@@ -29,6 +29,13 @@ man_MANS = Terminal.1
 mimedir = $(datadir)/mime/packages
 mime_DATA = Terminal.mime.xml
 
+palettedir = $(datadir)/Terminal/Palettes
+palette_DATA =								\
+	linux.tcpalette							\
+	rxvt.tcpalette							\
+	vim.tcpalette							\
+	xterm.tcpalette
+
 uidir = $(datadir)/Terminal
 ui_DATA = 								\
 	Terminal-toolbars.ui						\
@@ -38,6 +45,7 @@ EXTRA_DIST =								\
 	$(desktop_DATA)							\
 	$(man_MANS)							\
 	$(mime_DATA)							\
+	$(palette_DATA)							\
 	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\
