@@ -749,6 +749,15 @@
           desktop environment on how to enable the D-BUS session daemon.</para>
         </listitem>
       </varlistentry>
+      <varlistentry>
+        <term><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &app;, what's wrong?</term>
+        <listitem>
+          <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
+          the terminal widget used by &app;. A patch for vte that fixes the problem is available <ulink
+          url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
+          with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </sect1>
 
