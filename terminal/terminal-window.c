@@ -1436,6 +1436,12 @@ terminal_window_add (TerminalWindow *window,
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
 
+  /* Force a size allocation to get proper size requests later,
+   * which are required to get the grid size right.
+   */
+  gtk_container_resize_children (GTK_CONTAINER (window));
+
+  terminal_screen_set_size (screen, grid_width, grid_height);
   terminal_window_set_size_force_grid (window, screen, grid_width, grid_height);
 
   terminal_window_update_actions (window);

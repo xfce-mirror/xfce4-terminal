@@ -295,6 +295,7 @@ terminal_app_save_yourself (ExoXsessionClient *client,
 {
   GList               *result = NULL;
   GList               *lp;
+  gchar              **oargv;
   gchar              **argv;
   gint                 argc;
   gint                 n;
@@ -308,10 +309,24 @@ terminal_app_save_yourself (ExoXsessionClient *client,
 
   argc = g_list_length (result) + 1;
   argv = g_new (gchar*, argc + 1);
-  argv[0] = g_strdup ("Terminal");
   for (lp = result, n = 1; n < argc; lp = lp->next, ++n)
     argv[n] = lp->data;
   argv[n] = NULL;
+
+  if (exo_xsession_client_get_restart_command (client, &oargv, NULL))
+    {
+      g_assert (oargv[0] != NULL);
+
+      argv[0] = oargv[0];
+
+      for (n = 1; oargv[n] != NULL; ++n)
+        g_free (oargv[n]);
+      g_free (oargv);
+    }
+  else
+    {
+      argv[0] = g_strdup ("Terminal");
+    }
 
   exo_xsession_client_set_restart_command (client, argv, argc);
 

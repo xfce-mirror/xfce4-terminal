@@ -1,5 +1,14 @@
 2004-12-15	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-app.c(terminal_app_save_yourself): Use the command
+	  as specified for gtk_init() when setting the RestartCommand on
+	  SaveYourself if possible.
+	* terminal/terminal-window.c(terminal_window_add): Ensure that the
+	  widget allocation is done done before the grid size is applied after
+	  a new terminal tab is added. This fixes bug #29.
+
+2004-12-15	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-options.c: Fix a typo in the error message of
 	  the --role option. This fixes bug #30.
 
