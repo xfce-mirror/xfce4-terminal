@@ -16,6 +16,7 @@ stock_icons =								\
 INCLUDES =								\
 	-DDATADIR=\"$(datadir)\"					\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
+	-DEXO_DISABLE_DEPRECATED					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DSN_API_NOT_YET_FROZEN						\
@@ -64,12 +65,14 @@ Terminal_SOURCES =							\
 Terminal_CFLAGS =							\
 	@EXO_CFLAGS@							\
 	@LIBSTARTUP_NOTIFICATION_CFLAGS@				\
+	@LIBX11_CFLAGS@							\
 	@VTE_CFLAGS@
 
 Terminal_LDFLAGS =							\
 	-no-undefined							\
 	@EXO_LIBS@							\
 	@LIBSTARTUP_NOTIFICATION_LIBS@					\
+	@LIBX11_LIBS@							\
 	@VTE_LIBS@
 
 # Used to regenerate all automatic files

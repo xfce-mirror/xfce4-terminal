@@ -1,5 +1,15 @@
 2004-11-22	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-window.c, terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-preferences.h, terminal/terminal-preferences.c:
+	  Updated to use ExoBinding instead of ExoPropertyProxy.
+	* configure.ac: Updated version to 0.2.0svn. Depend on libexo 0.2.0.
+	* po/: Updated translations.
+	* TODO, terminal/terminal-app.c, configure.ac: Added session
+	  management support, based on the X11R5 session management protocol.
+
+2004-11-22	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-preferences.c: Use ASCII DEL for backspace binding
 	  by default.
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-15 20:51+0100\n"
+"POT-Creation-Date: 2004-11-23 01:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,33 +21,86 @@ msgstr ""
 msgid ""
 "Usage: Terminal [OPTION...]\n"
 "\n"
-"GTK+\n"
-"  --display=DISPLAY       X display to use\n"
+"  -h, --help                          Print this help message and exit\n"
+"  -v, --version                       Print version information and exit\n"
+"  --disable-server                    Do not register with the D-BUS "
+"session\n"
+"                                      message bus\n"
 "\n"
-"Terminal\n"
-"  -e, --command=STRING    Execute the argument to this option\n"
-"                          inside the terminal.\n"
-"  -x, --execute           Execute the remainder of the command\n"
-"                          line inside the terminal.\n"
-"  --tab                   Open a new tab in the last-opened\n"
-"                          window.\n"
-"  --geometry=GEOMETRY     X geometry specification (see \"X\"\n"
-"                          manual page).\n"
-"  --disable-server        Do not register with the D-BUS session\n"
-"                          message bus.\n"
-"  --title=TITLE           Set the terminal's title.\n"
-"  --working-directory=DIR Set the terminal's working directory.\n"
-"  --help                  Print this help message and exit\n"
-"  --version               Print version information and exit\n"
+"  -x, --execute                       Execute the remainder of the command\n"
+"                                      line inside the terminal\n"
+"  -e, --command=STRING                Execute the argument to this option\n"
+"                                      inside the terminal\n"
+"  --working-directory=DIRNAME         Set the terminals working directory\n"
+"  -t, --title=TITLE                   Set the terminals title\n"
+"\n"
+"  --display=DISPLAY                   X display to use for the last-"
+"specified\n"
+"                                      window\n"
+"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+"                                      man page), can be specified once per\n"
+"                                      window to be opened\n"
+"  --role=ROLE                         Set the role for the last-specified;\n"
+"                                      window; applies to only one window;\n"
+"                                      can be specified once for each window\n"
+"                                      you create from the command line\n"
+"  --startup-id=STRING                 ID for the startup notification\n"
+"                                      protocol\n"
+"  --show-menubar                      Turn on the menubar for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line\n"
+"  --hide-menubar                      Turn off the menubar for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line\n"
+"  --show-borders                      Turn on the window decorations for "
+"the\n"
+"                                      last-specified window; applies to "
+"only\n"
+"                                      one window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line\n"
+"  --hide-borders                      Turn off the window decorations for "
+"the\n"
+"                                      last-specified window; applies to "
+"only\n"
+"                                      one window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line\n"
+"  --show-toolbars                     Turn on the toolbars for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line\n"
+"  --hide-toolbars                     Turn off the toolbars for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line\n"
+"\n"
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these "
+"options\n"
+"                                      can be provided\n"
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided\n"
+"\n"
+"  --default-display=DISPLAY           default X display to use\n"
+"  --default-working-directory=DIRNAME Set the default terminals working\n"
+"                                      directory\n"
 "\n"
 msgstr ""
 
-#: terminal/main.c:203 terminal/terminal-preferences.c:1062
+#: terminal/main.c:252 terminal/terminal-preferences.c:1090
 #: terminal/terminal-shortcut-editor.c:114
 msgid "Terminal"
 msgstr ""
 
-#: terminal/main.c:228
+#: terminal/main.c:276
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -62,361 +115,414 @@ msgid ""
 "Please report bugs to <%s>.\n"
 msgstr ""
 
-#: terminal/main.c:268
+#: terminal/main.c:347
 #, c-format
 msgid "Unable to start terminal server: %s\n"
 msgstr ""
 
-#: terminal/main.c:276
+#: terminal/main.c:355
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr ""
 
-#: terminal/terminal-app.c:197
-#, c-format
-msgid "TerminalServer: %s\n"
-msgstr ""
-
-#: terminal/terminal-app.c:209
+#: terminal/terminal-app.c:237
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr ""
 
-#: terminal/terminal-app.c:288
+#: terminal/terminal-app.c:390
 msgid "Unable to connect to D-BUS message daemon"
 msgstr ""
 
-#: terminal/terminal-app.c:297
+#: terminal/terminal-app.c:399
 #, c-format
 msgid "Unable to acquire service %s: %s"
 msgstr ""
 
-#: terminal/terminal-app.c:309
+#: terminal/terminal-app.c:411
 #, c-format
 msgid "Unable to register object %s\n"
 msgstr ""
 
-#: terminal/terminal-app.c:371
+#: terminal/terminal-app.c:513
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr ""
 
-#: terminal/terminal-options.c:72
+#: terminal/terminal-options.c:106
+msgid ""
+"Option \"--sm-client-id\" requires specifying the session id as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:128
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
 
-#: terminal/terminal-options.c:100
+#: terminal/terminal-options.c:157
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:150
-msgid "Option \"--title\" requires specifying the title as its parameter"
-msgstr ""
-
-#: terminal/terminal-options.c:176
+#: terminal/terminal-options.c:186
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:201
+#: terminal/terminal-options.c:214
+msgid "Option \"--title/-t\" requires specifying the title as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:241
+msgid ""
+"Option \"--display\" requires specifying the X display as its parameters"
+msgstr ""
+
+#: terminal/terminal-options.c:268
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
 
-#: terminal/terminal-options.c:217
+#: terminal/terminal-options.c:295
+msgid ""
+"Option \"--role\" requires specifying the window geometry as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:322
+msgid ""
+"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:396
+msgid ""
+"Option \"--default-display\" requires specifying the default X display as "
+"its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:420
+msgid ""
+"Option \"--default-working-directory\" requires specifying the default "
+"working directory as its parameter"
+msgstr ""
+
+#: terminal/terminal-options.c:436
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:204
+#: terminal/terminal-preferences-dialog.c:136
 msgid "Terminal Preferences"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:268
+#: terminal/terminal-preferences-dialog.c:195
 msgid "<b>Title</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:281
+#: terminal/terminal-preferences-dialog.c:208
 msgid ""
 "The command running inside the terminal may dynamically set a new title."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:288
+#: terminal/terminal-preferences-dialog.c:215
 msgid "_Initial title:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:301
+#: terminal/terminal-preferences-dialog.c:234
 msgid "_Dynamically-set title:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:313
+#: terminal/terminal-preferences-dialog.c:246
 msgid "Replaces initial title"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:314
+#: terminal/terminal-preferences-dialog.c:247
 msgid "Goes before initial title"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:315
+#: terminal/terminal-preferences-dialog.c:248
 msgid "Goes after initial title"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:316
+#: terminal/terminal-preferences-dialog.c:249
 msgid "Isn't displayed"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:331
+#: terminal/terminal-preferences-dialog.c:266
 msgid "<b>Command</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:341
+#: terminal/terminal-preferences-dialog.c:277
 msgid "Terminal _bell"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:350
+#: terminal/terminal-preferences-dialog.c:287
 msgid "Cursor blin_ks"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:358
+#: terminal/terminal-preferences-dialog.c:295
 msgid "_Run command as login shell"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:364
+#: terminal/terminal-preferences-dialog.c:300
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:374
+#: terminal/terminal-preferences-dialog.c:309
 msgid "<b>Scrolling</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:389
+#: terminal/terminal-preferences-dialog.c:324
 msgid "Sc_roll on output"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:396
+#: terminal/terminal-preferences-dialog.c:330
 msgid "Scroll on key_stroke"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:400
+#: terminal/terminal-preferences-dialog.c:333
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:408
+#: terminal/terminal-preferences-dialog.c:341
 msgid "_Scrollbar is:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:415
-#: terminal/terminal-preferences.c:1004 terminal/terminal-preferences.c:1005
-#: terminal/terminal-preferences.c:1006 terminal/terminal-preferences.c:1007
-#: terminal/terminal-preferences.c:1011 terminal/terminal-preferences.c:1012
-#: terminal/terminal-preferences.c:1013 terminal/terminal-preferences.c:1390
-#: terminal/terminal-preferences.c:1401 terminal/terminal-preferences.c:1412
-#: terminal/terminal-preferences.c:1423 terminal/terminal-preferences.c:1434
-#: terminal/terminal-preferences.c:1445 terminal/terminal-preferences.c:1456
-#: terminal/terminal-preferences.c:1467 terminal/terminal-preferences.c:1478
-#: terminal/terminal-preferences.c:1489 terminal/terminal-preferences.c:1500
-#: terminal/terminal-preferences.c:1511 terminal/terminal-preferences.c:1522
-#: terminal/terminal-preferences.c:1533 terminal/terminal-preferences.c:1544
-#: terminal/terminal-preferences.c:1555 terminal/terminal-preferences.c:1566
+#: terminal/terminal-preferences-dialog.c:348
+#: terminal/terminal-preferences.c:1030 terminal/terminal-preferences.c:1031
+#: terminal/terminal-preferences.c:1032 terminal/terminal-preferences.c:1033
+#: terminal/terminal-preferences.c:1037 terminal/terminal-preferences.c:1038
+#: terminal/terminal-preferences.c:1039 terminal/terminal-preferences.c:1426
+#: terminal/terminal-preferences.c:1437 terminal/terminal-preferences.c:1448
+#: terminal/terminal-preferences.c:1459 terminal/terminal-preferences.c:1470
+#: terminal/terminal-preferences.c:1481 terminal/terminal-preferences.c:1492
+#: terminal/terminal-preferences.c:1503 terminal/terminal-preferences.c:1514
+#: terminal/terminal-preferences.c:1525 terminal/terminal-preferences.c:1536
+#: terminal/terminal-preferences.c:1547 terminal/terminal-preferences.c:1558
+#: terminal/terminal-preferences.c:1569 terminal/terminal-preferences.c:1580
+#: terminal/terminal-preferences.c:1591 terminal/terminal-preferences.c:1602
 msgid "Disabled"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:416
+#: terminal/terminal-preferences-dialog.c:349
 msgid "On the left side"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:417
+#: terminal/terminal-preferences-dialog.c:350
 msgid "On the right side"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:429
+#: terminal/terminal-preferences-dialog.c:364
 msgid "Scr_ollback:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:440
+#: terminal/terminal-preferences-dialog.c:374
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:451
+#: terminal/terminal-preferences-dialog.c:392
 msgid "General"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:470
+#: terminal/terminal-preferences-dialog.c:411
 msgid "<b>Font</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:479
+#: terminal/terminal-preferences-dialog.c:420
 msgid "Choose Terminal Font"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:489
+#: terminal/terminal-preferences-dialog.c:425
+msgid "Enable anti-aliasing for the terminal font"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:434
 msgid "<b>Background</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:499
+#: terminal/terminal-preferences-dialog.c:444
 msgid "None (use solid color)"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:500
+#: terminal/terminal-preferences-dialog.c:445
 msgid "Background image"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:501
+#: terminal/terminal-preferences-dialog.c:446
 msgid "Transparent background"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:519
+#: terminal/terminal-preferences-dialog.c:461
 msgid "_File:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:545
+#: terminal/terminal-preferences-dialog.c:486
 msgid "_Style:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:552
+#: terminal/terminal-preferences-dialog.c:493
 msgid "Tiled"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:553
+#: terminal/terminal-preferences-dialog.c:494
 msgid "Centered"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:554
+#: terminal/terminal-preferences-dialog.c:495
 msgid "Scaled"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:555
+#: terminal/terminal-preferences-dialog.c:496
 msgid "Stretched"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:573
+#: terminal/terminal-preferences-dialog.c:510
 msgid "Shade transparent or image background:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:586
+#: terminal/terminal-preferences-dialog.c:523
 msgid "<small><i>None</i></small>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:597
+#: terminal/terminal-preferences-dialog.c:534
 msgid "<small><i>Maximum</i></small>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:607
+#: terminal/terminal-preferences-dialog.c:542
 msgid "<b>Opening New Windows</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:616
+#: terminal/terminal-preferences-dialog.c:551
 msgid "Display _menubar in new windows"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:622
+#: terminal/terminal-preferences-dialog.c:556
 msgid "Display _toolbars in new windows"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:628
-msgid "Display _decorations around new windows"
+#: terminal/terminal-preferences-dialog.c:561
+msgid "Display _borders around new windows"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:632
+#: terminal/terminal-preferences-dialog.c:564
 msgid ""
 "Enable to show window decorations around newly created terminal windows."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:641
+#: terminal/terminal-preferences-dialog.c:573
 msgid "Appearance"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:660
+#: terminal/terminal-preferences-dialog.c:592
 msgid "<b>Foreground and Background</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:669
+#: terminal/terminal-preferences-dialog.c:601
 msgid "Use colors from s_ystem theme"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:682
+#: terminal/terminal-preferences-dialog.c:613
 msgid "_Text color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:704
+#: terminal/terminal-preferences-dialog.c:627
+msgid "Choose terminal text color"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:636
+#: terminal/terminal-preferences-dialog.c:667
+msgid "Color Selector"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:637
+#: terminal/terminal-preferences-dialog.c:668
+msgid "Open a dialog to specify the color"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:644
 msgid "_Background color:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:729
+#: terminal/terminal-preferences-dialog.c:658
+msgid "Choose terminal background color"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:678
 msgid "<b>Palette</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:739
+#: terminal/terminal-preferences-dialog.c:688
 msgid "Terminal applications have this color palette available to them:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:888
+#: terminal/terminal-preferences-dialog.c:821
 msgid "Colors"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:908
-msgid "<b>Menubar accelerator</b>"
+#: terminal/terminal-preferences-dialog.c:841
+msgid "<b>Menubar access</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:917
+#: terminal/terminal-preferences-dialog.c:850
+msgid "Disable all me_nu access keys (such as Alt+f to open the File menu)"
+msgstr ""
+
+#: terminal/terminal-preferences-dialog.c:855
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:927
+#: terminal/terminal-preferences-dialog.c:864
 msgid "<b>Shortcut keys</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:973
+#: terminal/terminal-preferences-dialog.c:905
 msgid "Shortcuts"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:992
+#: terminal/terminal-preferences-dialog.c:924
 msgid "<b>Compatibility</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1003
+#: terminal/terminal-preferences-dialog.c:935
 msgid ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
 "systems that expect different terminal behavior."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1011
+#: terminal/terminal-preferences-dialog.c:943
 msgid "_Backspace key generates:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1018
-#: terminal/terminal-preferences-dialog.c:1039
+#: terminal/terminal-preferences-dialog.c:950
+#: terminal/terminal-preferences-dialog.c:973
 msgid "ASCII DEL"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1019
-#: terminal/terminal-preferences-dialog.c:1040
+#: terminal/terminal-preferences-dialog.c:951
+#: terminal/terminal-preferences-dialog.c:974
 msgid "Escape sequence"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1020
-#: terminal/terminal-preferences-dialog.c:1041
+#: terminal/terminal-preferences-dialog.c:952
+#: terminal/terminal-preferences-dialog.c:975
 msgid "Control-H"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1032
+#: terminal/terminal-preferences-dialog.c:966
 msgid "_Delete key generates:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1053
+#: terminal/terminal-preferences-dialog.c:989
 msgid "<tt>$TERM</tt> setting:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1062
+#: terminal/terminal-preferences-dialog.c:997
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -424,314 +530,322 @@ msgid ""
 "xterm-color here."
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1075
+#: terminal/terminal-preferences-dialog.c:1017
 msgid "_Reset compatibility options to defaults"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1085
+#: terminal/terminal-preferences-dialog.c:1027
 msgid "<b>Double click</b>"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1094
+#: terminal/terminal-preferences-dialog.c:1036
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1112
+#: terminal/terminal-preferences-dialog.c:1057
 msgid "Advanced"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1153 terminal/terminal-window.c:887
-#: terminal/terminal-window.c:914 terminal/terminal-window.c:978
+#: terminal/terminal-preferences-dialog.c:1099 terminal/terminal-window.c:985
+#: terminal/terminal-window.c:1012 terminal/terminal-window.c:1076
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1253
+#: terminal/terminal-preferences-dialog.c:1199
 msgid "Select background image file"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1264
+#: terminal/terminal-preferences-dialog.c:1210
 msgid "All Files"
 msgstr ""
 
-#: terminal/terminal-preferences-dialog.c:1269
+#: terminal/terminal-preferences-dialog.c:1215
 msgid "Image Files"
 msgstr ""
 
-#: terminal/terminal-preferences.c:325 terminal/terminal-preferences.c:326
+#: terminal/terminal-preferences.c:329 terminal/terminal-preferences.c:330
 msgid "Open Tab"
 msgstr ""
 
-#: terminal/terminal-preferences.c:336 terminal/terminal-preferences.c:337
+#: terminal/terminal-preferences.c:340 terminal/terminal-preferences.c:341
 msgid "Open Terminal"
 msgstr ""
 
-#: terminal/terminal-preferences.c:347 terminal/terminal-preferences.c:348
+#: terminal/terminal-preferences.c:351 terminal/terminal-preferences.c:352
 msgid "Close Tab"
 msgstr ""
 
-#: terminal/terminal-preferences.c:358 terminal/terminal-preferences.c:359
+#: terminal/terminal-preferences.c:362 terminal/terminal-preferences.c:363
 msgid "Close Window"
 msgstr ""
 
-#: terminal/terminal-preferences.c:369 terminal/terminal-preferences.c:370
+#: terminal/terminal-preferences.c:373 terminal/terminal-preferences.c:374
 msgid "Copy"
 msgstr ""
 
-#: terminal/terminal-preferences.c:380 terminal/terminal-preferences.c:381
+#: terminal/terminal-preferences.c:384 terminal/terminal-preferences.c:385
 msgid "Paste"
 msgstr ""
 
-#: terminal/terminal-preferences.c:391 terminal/terminal-preferences.c:392
+#: terminal/terminal-preferences.c:395 terminal/terminal-preferences.c:396
 msgid "Preferences"
 msgstr ""
 
-#: terminal/terminal-preferences.c:402 terminal/terminal-preferences.c:403
+#: terminal/terminal-preferences.c:406 terminal/terminal-preferences.c:407
 msgid "Show menubar"
 msgstr ""
 
-#: terminal/terminal-preferences.c:413 terminal/terminal-preferences.c:414
+#: terminal/terminal-preferences.c:417 terminal/terminal-preferences.c:418
 msgid "Show toolbars"
 msgstr ""
 
-#: terminal/terminal-preferences.c:424 terminal/terminal-preferences.c:425
+#: terminal/terminal-preferences.c:428 terminal/terminal-preferences.c:429
 msgid "Show borders"
 msgstr ""
 
-#: terminal/terminal-preferences.c:435 terminal/terminal-preferences.c:436
+#: terminal/terminal-preferences.c:439 terminal/terminal-preferences.c:440
 msgid "Fullscreen"
 msgstr ""
 
-#: terminal/terminal-preferences.c:446 terminal/terminal-preferences.c:447
+#: terminal/terminal-preferences.c:450 terminal/terminal-preferences.c:451
 msgid "Previous Tab"
 msgstr ""
 
-#: terminal/terminal-preferences.c:457 terminal/terminal-preferences.c:458
+#: terminal/terminal-preferences.c:461 terminal/terminal-preferences.c:462
 msgid "Next Tab"
 msgstr ""
 
-#: terminal/terminal-preferences.c:468 terminal/terminal-preferences.c:469
-#: terminal/terminal-window.c:1010
+#: terminal/terminal-preferences.c:472 terminal/terminal-preferences.c:473
+#: terminal/terminal-window.c:1110
 msgid "Set Title"
 msgstr ""
 
-#: terminal/terminal-preferences.c:479 terminal/terminal-preferences.c:480
+#: terminal/terminal-preferences.c:483 terminal/terminal-preferences.c:484
 msgid "Reset"
 msgstr ""
 
-#: terminal/terminal-preferences.c:490 terminal/terminal-preferences.c:491
+#: terminal/terminal-preferences.c:494 terminal/terminal-preferences.c:495
 msgid "Reset and Clear"
 msgstr ""
 
-#: terminal/terminal-preferences.c:501 terminal/terminal-preferences.c:502
+#: terminal/terminal-preferences.c:505 terminal/terminal-preferences.c:506
 msgid "Contents"
 msgstr ""
 
-#: terminal/terminal-preferences.c:512 terminal/terminal-preferences.c:513
+#: terminal/terminal-preferences.c:516 terminal/terminal-preferences.c:517
 msgid "Background mode"
 msgstr ""
 
-#: terminal/terminal-preferences.c:524 terminal/terminal-preferences.c:525
+#: terminal/terminal-preferences.c:528 terminal/terminal-preferences.c:529
 msgid "Background image file"
 msgstr ""
 
-#: terminal/terminal-preferences.c:535 terminal/terminal-preferences.c:536
+#: terminal/terminal-preferences.c:539 terminal/terminal-preferences.c:540
 msgid "Background image style"
 msgstr ""
 
-#: terminal/terminal-preferences.c:552 terminal/terminal-preferences.c:553
+#: terminal/terminal-preferences.c:556 terminal/terminal-preferences.c:557
 msgid "Background darkness"
 msgstr ""
 
-#: terminal/terminal-preferences.c:563 terminal/terminal-preferences.c:564
+#: terminal/terminal-preferences.c:567 terminal/terminal-preferences.c:568
 msgid "Backspace binding"
 msgstr ""
 
-#: terminal/terminal-preferences.c:575 terminal/terminal-preferences.c:576
+#: terminal/terminal-preferences.c:579 terminal/terminal-preferences.c:580
 msgid "Delete binding"
 msgstr ""
 
-#: terminal/terminal-preferences.c:587 terminal/terminal-preferences.c:588
+#: terminal/terminal-preferences.c:591 terminal/terminal-preferences.c:592
 msgid "Use colors from system theme"
 msgstr ""
 
-#: terminal/terminal-preferences.c:598
+#: terminal/terminal-preferences.c:602
 msgid "Foreground color"
 msgstr ""
 
-#: terminal/terminal-preferences.c:599
+#: terminal/terminal-preferences.c:603
 msgid "Terminal foreground color"
 msgstr ""
 
-#: terminal/terminal-preferences.c:609
+#: terminal/terminal-preferences.c:613
 msgid "Background color"
 msgstr ""
 
-#: terminal/terminal-preferences.c:610
+#: terminal/terminal-preferences.c:614
 msgid "Terminal background color"
 msgstr ""
 
-#: terminal/terminal-preferences.c:620 terminal/terminal-preferences.c:621
+#: terminal/terminal-preferences.c:624 terminal/terminal-preferences.c:625
 msgid "Palette entry 1"
 msgstr ""
 
-#: terminal/terminal-preferences.c:631 terminal/terminal-preferences.c:632
+#: terminal/terminal-preferences.c:635 terminal/terminal-preferences.c:636
 msgid "Palette entry 2"
 msgstr ""
 
-#: terminal/terminal-preferences.c:642 terminal/terminal-preferences.c:643
+#: terminal/terminal-preferences.c:646 terminal/terminal-preferences.c:647
 msgid "Palette entry 3"
 msgstr ""
 
-#: terminal/terminal-preferences.c:653 terminal/terminal-preferences.c:654
+#: terminal/terminal-preferences.c:657 terminal/terminal-preferences.c:658
 msgid "Palette entry 4"
 msgstr ""
 
-#: terminal/terminal-preferences.c:664 terminal/terminal-preferences.c:665
+#: terminal/terminal-preferences.c:668 terminal/terminal-preferences.c:669
 msgid "Palette entry 5"
 msgstr ""
 
-#: terminal/terminal-preferences.c:675 terminal/terminal-preferences.c:676
+#: terminal/terminal-preferences.c:679 terminal/terminal-preferences.c:680
 msgid "Palette entry 6"
 msgstr ""
 
-#: terminal/terminal-preferences.c:686 terminal/terminal-preferences.c:687
+#: terminal/terminal-preferences.c:690 terminal/terminal-preferences.c:691
 msgid "Palette entry 7"
 msgstr ""
 
-#: terminal/terminal-preferences.c:697 terminal/terminal-preferences.c:698
+#: terminal/terminal-preferences.c:701 terminal/terminal-preferences.c:702
 msgid "Palette entry 8"
 msgstr ""
 
-#: terminal/terminal-preferences.c:708 terminal/terminal-preferences.c:709
+#: terminal/terminal-preferences.c:712 terminal/terminal-preferences.c:713
 msgid "Palette entry 9"
 msgstr ""
 
-#: terminal/terminal-preferences.c:719 terminal/terminal-preferences.c:720
+#: terminal/terminal-preferences.c:723 terminal/terminal-preferences.c:724
 msgid "Palette entry 10"
 msgstr ""
 
-#: terminal/terminal-preferences.c:730 terminal/terminal-preferences.c:731
+#: terminal/terminal-preferences.c:734 terminal/terminal-preferences.c:735
 msgid "Palette entry 11"
 msgstr ""
 
-#: terminal/terminal-preferences.c:741 terminal/terminal-preferences.c:742
+#: terminal/terminal-preferences.c:745 terminal/terminal-preferences.c:746
 msgid "Palette entry 12"
 msgstr ""
 
-#: terminal/terminal-preferences.c:752 terminal/terminal-preferences.c:753
+#: terminal/terminal-preferences.c:756 terminal/terminal-preferences.c:757
 msgid "Palette entry 13"
 msgstr ""
 
-#: terminal/terminal-preferences.c:763 terminal/terminal-preferences.c:764
+#: terminal/terminal-preferences.c:767 terminal/terminal-preferences.c:768
 msgid "Palette entry 14"
 msgstr ""
 
-#: terminal/terminal-preferences.c:774 terminal/terminal-preferences.c:775
+#: terminal/terminal-preferences.c:778 terminal/terminal-preferences.c:779
 msgid "Palette entry 15"
 msgstr ""
 
-#: terminal/terminal-preferences.c:785 terminal/terminal-preferences.c:786
+#: terminal/terminal-preferences.c:789 terminal/terminal-preferences.c:790
 msgid "Palette entry 16"
 msgstr ""
 
-#: terminal/terminal-preferences.c:796
+#: terminal/terminal-preferences.c:800
 msgid "Update records"
 msgstr ""
 
-#: terminal/terminal-preferences.c:797
+#: terminal/terminal-preferences.c:801
 msgid "Update wtmp/utmp/lastlog records"
 msgstr ""
 
-#: terminal/terminal-preferences.c:807 terminal/terminal-preferences.c:808
+#: terminal/terminal-preferences.c:811 terminal/terminal-preferences.c:812
 msgid "Run shell as login shell"
 msgstr ""
 
-#: terminal/terminal-preferences.c:818
+#: terminal/terminal-preferences.c:822 terminal/terminal-preferences.c:823
+msgid "Font anti-aliasing"
+msgstr ""
+
+#: terminal/terminal-preferences.c:833
 msgid "Font name"
 msgstr ""
 
-#: terminal/terminal-preferences.c:819
+#: terminal/terminal-preferences.c:834
 msgid "Terminal font name"
 msgstr ""
 
-#: terminal/terminal-preferences.c:829 terminal/terminal-preferences.c:830
+#: terminal/terminal-preferences.c:844 terminal/terminal-preferences.c:845
 msgid "Terminal bell"
 msgstr ""
 
-#: terminal/terminal-preferences.c:840 terminal/terminal-preferences.c:841
+#: terminal/terminal-preferences.c:855 terminal/terminal-preferences.c:856
 msgid "Show window borders by default"
 msgstr ""
 
-#: terminal/terminal-preferences.c:851 terminal/terminal-preferences.c:852
+#: terminal/terminal-preferences.c:866 terminal/terminal-preferences.c:867
 msgid "Cursor blinks"
 msgstr ""
 
-#: terminal/terminal-preferences.c:862 terminal/terminal-preferences.c:863
+#: terminal/terminal-preferences.c:877 terminal/terminal-preferences.c:878
 msgid "Show menubar by default"
 msgstr ""
 
-#: terminal/terminal-preferences.c:873 terminal/terminal-preferences.c:874
+#: terminal/terminal-preferences.c:888 terminal/terminal-preferences.c:889
 msgid "Show toolbars by default"
 msgstr ""
 
-#: terminal/terminal-preferences.c:884
+#: terminal/terminal-preferences.c:899
 msgid "Scrollbar setting"
 msgstr ""
 
-#: terminal/terminal-preferences.c:885
+#: terminal/terminal-preferences.c:900
 msgid "Whether and where to display a scrollbar"
 msgstr ""
 
-#: terminal/terminal-preferences.c:896
+#: terminal/terminal-preferences.c:911
 msgid "Scrollback lines"
 msgstr ""
 
-#: terminal/terminal-preferences.c:897
+#: terminal/terminal-preferences.c:912
 msgid "Number of lines to keep in history"
 msgstr ""
 
-#: terminal/terminal-preferences.c:907 terminal/terminal-preferences.c:908
+#: terminal/terminal-preferences.c:922 terminal/terminal-preferences.c:923
 msgid "Scroll on output"
 msgstr ""
 
-#: terminal/terminal-preferences.c:918 terminal/terminal-preferences.c:919
+#: terminal/terminal-preferences.c:933 terminal/terminal-preferences.c:934
 msgid "Scroll on keystroke"
 msgstr ""
 
-#: terminal/terminal-preferences.c:931 terminal/terminal-preferences.c:932
+#: terminal/terminal-preferences.c:946 terminal/terminal-preferences.c:947
 msgid "Disable menu shortcut key"
 msgstr ""
 
-#: terminal/terminal-preferences.c:942
+#: terminal/terminal-preferences.c:957 terminal/terminal-preferences.c:958
+msgid "Disable all mnemonics"
+msgstr ""
+
+#: terminal/terminal-preferences.c:968
 msgid "Initial title"
 msgstr ""
 
-#: terminal/terminal-preferences.c:943
+#: terminal/terminal-preferences.c:969
 msgid "Initial Terminal title"
 msgstr ""
 
-#: terminal/terminal-preferences.c:953
+#: terminal/terminal-preferences.c:979
 msgid "Title mode"
 msgstr ""
 
-#: terminal/terminal-preferences.c:954
+#: terminal/terminal-preferences.c:980
 msgid "Dynamic-title mode"
 msgstr ""
 
-#: terminal/terminal-preferences.c:965 terminal/terminal-preferences.c:966
+#: terminal/terminal-preferences.c:991 terminal/terminal-preferences.c:992
 msgid "Term"
 msgstr ""
 
-#: terminal/terminal-preferences.c:976 terminal/terminal-preferences.c:977
+#: terminal/terminal-preferences.c:1002 terminal/terminal-preferences.c:1003
 msgid "Workaround VTE title bug"
 msgstr ""
 
-#: terminal/terminal-preferences.c:987
+#: terminal/terminal-preferences.c:1013
 msgid "Word chars"
 msgstr ""
 
-#: terminal/terminal-preferences.c:988
+#: terminal/terminal-preferences.c:1014
 msgid "Word characters"
 msgstr ""
 
@@ -771,256 +885,260 @@ msgstr ""
 msgid "Failed to grab keyboard."
 msgstr ""
 
-#: terminal/terminal-tab-header.c:99 terminal/terminal-tab-header.c:100
+#: terminal/terminal-tab-header.c:103 terminal/terminal-tab-header.c:104
 msgid "Tab title"
 msgstr ""
 
-#: terminal/terminal-tab-header.c:148
+#: terminal/terminal-tab-header.c:166
 msgid "Close this tab"
 msgstr ""
 
-#: terminal/terminal-toolbars-view.c:109
+#: terminal/terminal-toolbars-view.c:115
 msgid "_Customize..."
 msgstr ""
 
-#: terminal/terminal-toolbars-view.c:164
+#: terminal/terminal-toolbars-view.c:170
 msgid "Toolbar Editor"
 msgstr ""
 
-#: terminal/terminal-widget.c:191 terminal/terminal-widget.c:192
+#: terminal/terminal-widget.c:193 terminal/terminal-widget.c:194
 msgid "Custom title"
 msgstr ""
 
-#: terminal/terminal-widget.c:207
+#: terminal/terminal-widget.c:209
 msgid "Encoding"
 msgstr ""
 
-#: terminal/terminal-widget.c:208
+#: terminal/terminal-widget.c:210
 msgid "Terminal encoding"
 msgstr ""
 
-#: terminal/terminal-widget.c:218 terminal/terminal-widget.c:219
+#: terminal/terminal-widget.c:220 terminal/terminal-widget.c:221
 msgid "Title"
 msgstr ""
 
-#: terminal/terminal-widget.c:480
+#: terminal/terminal-widget.c:444
 msgid "Current user unknown"
 msgstr ""
 
-#: terminal/terminal-widget.c:848
+#: terminal/terminal-widget.c:820
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
 
-#: terminal/terminal-widget.c:864
+#: terminal/terminal-widget.c:836
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: terminal/terminal-widget.c:890
+#: terminal/terminal-widget.c:862
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: terminal/terminal-widget.c:1340
+#: terminal/terminal-widget.c:1320
 msgid "Untitled"
 msgstr ""
 
-#: terminal/terminal-window.c:157
+#: terminal/terminal-window.c:177
 msgid "_File"
 msgstr ""
 
-#: terminal/terminal-window.c:158
+#: terminal/terminal-window.c:178
 msgid "Open _Tab"
 msgstr ""
 
-#: terminal/terminal-window.c:158
+#: terminal/terminal-window.c:178
 msgid "Open a new terminal tab"
 msgstr ""
 
-#: terminal/terminal-window.c:159
+#: terminal/terminal-window.c:179
 msgid "Open _Terminal"
 msgstr ""
 
-#: terminal/terminal-window.c:159
+#: terminal/terminal-window.c:179
 msgid "Open a new terminal window"
 msgstr ""
 
-#: terminal/terminal-window.c:160
+#: terminal/terminal-window.c:180
 msgid "C_lose Tab"
 msgstr ""
 
-#: terminal/terminal-window.c:160
+#: terminal/terminal-window.c:180
 msgid "Close the current terminal tab"
 msgstr ""
 
-#: terminal/terminal-window.c:161
+#: terminal/terminal-window.c:181
 msgid "_Close Window"
 msgstr ""
 
-#: terminal/terminal-window.c:161
+#: terminal/terminal-window.c:181
 msgid "Close the terminal window"
 msgstr ""
 
-#: terminal/terminal-window.c:162
+#: terminal/terminal-window.c:182
 msgid "_Edit"
 msgstr ""
 
-#: terminal/terminal-window.c:163
+#: terminal/terminal-window.c:183
 msgid "_Copy"
 msgstr ""
 
-#: terminal/terminal-window.c:163
+#: terminal/terminal-window.c:183
 msgid "Copy to clipboard"
 msgstr ""
 
-#: terminal/terminal-window.c:164
+#: terminal/terminal-window.c:184
 msgid "_Paste"
 msgstr ""
 
-#: terminal/terminal-window.c:164
+#: terminal/terminal-window.c:184
 msgid "Paste from clipboard"
 msgstr ""
 
-#: terminal/terminal-window.c:165
+#: terminal/terminal-window.c:185
 msgid "_Toolbars..."
 msgstr ""
 
-#: terminal/terminal-window.c:165
+#: terminal/terminal-window.c:185
 msgid "Customize the toolbars"
 msgstr ""
 
-#: terminal/terminal-window.c:166
+#: terminal/terminal-window.c:186
 msgid "Preferences..."
 msgstr ""
 
-#: terminal/terminal-window.c:166
+#: terminal/terminal-window.c:186
 msgid "Open the Terminal preferences dialog"
 msgstr ""
 
-#: terminal/terminal-window.c:167
+#: terminal/terminal-window.c:187
 msgid "_View"
 msgstr ""
 
-#: terminal/terminal-window.c:168
+#: terminal/terminal-window.c:188
 msgid "_Terminal"
 msgstr ""
 
-#: terminal/terminal-window.c:169
+#: terminal/terminal-window.c:189
 msgid "_Previous Tab"
 msgstr ""
 
-#: terminal/terminal-window.c:169
+#: terminal/terminal-window.c:189
 msgid "Switch to previous tab"
 msgstr ""
 
-#: terminal/terminal-window.c:170
+#: terminal/terminal-window.c:190
 msgid "_Next Tab"
 msgstr ""
 
-#: terminal/terminal-window.c:170
+#: terminal/terminal-window.c:190
 msgid "Switch to next tab"
 msgstr ""
 
-#: terminal/terminal-window.c:171
+#: terminal/terminal-window.c:191
 msgid "_Set Title..."
 msgstr ""
 
-#: terminal/terminal-window.c:171
+#: terminal/terminal-window.c:191
 msgid "Set a custom title for the current tab"
 msgstr ""
 
-#: terminal/terminal-window.c:172
+#: terminal/terminal-window.c:192
 msgid "_Reset"
 msgstr ""
 
-#: terminal/terminal-window.c:173
+#: terminal/terminal-window.c:193
 msgid "Reset and C_lear"
 msgstr ""
 
-#: terminal/terminal-window.c:174
+#: terminal/terminal-window.c:194
 msgid "_Help"
 msgstr ""
 
-#: terminal/terminal-window.c:175
+#: terminal/terminal-window.c:195
 msgid "_Contents"
 msgstr ""
 
-#: terminal/terminal-window.c:175
+#: terminal/terminal-window.c:195
 msgid "Display help contents"
 msgstr ""
 
-#: terminal/terminal-window.c:176
+#: terminal/terminal-window.c:196
 msgid "_Report a bug"
 msgstr ""
 
-#: terminal/terminal-window.c:176
+#: terminal/terminal-window.c:196
 msgid "Report a bug in Terminal"
 msgstr ""
 
-#: terminal/terminal-window.c:178 terminal/terminal-window.c:180
+#: terminal/terminal-window.c:198 terminal/terminal-window.c:200
 msgid "_About"
 msgstr ""
 
-#: terminal/terminal-window.c:178 terminal/terminal-window.c:180
+#: terminal/terminal-window.c:198 terminal/terminal-window.c:200
 msgid "Display information about Terminal"
 msgstr ""
 
-#: terminal/terminal-window.c:182
+#: terminal/terminal-window.c:202
 msgid "_Input Methods"
 msgstr ""
 
-#: terminal/terminal-window.c:187
+#: terminal/terminal-window.c:207
 msgid "Show _Menubar"
 msgstr ""
 
-#: terminal/terminal-window.c:187
+#: terminal/terminal-window.c:207
 msgid "Show/hide the menubar"
 msgstr ""
 
-#: terminal/terminal-window.c:188
+#: terminal/terminal-window.c:208
 msgid "Show _Toolbars"
 msgstr ""
 
-#: terminal/terminal-window.c:188
+#: terminal/terminal-window.c:208
 msgid "Show/hide the toolbars"
 msgstr ""
 
-#: terminal/terminal-window.c:189
+#: terminal/terminal-window.c:209
 msgid "Show Window _Borders"
 msgstr ""
 
-#: terminal/terminal-window.c:189
+#: terminal/terminal-window.c:209
 msgid "Show/hide the window decorations"
 msgstr ""
 
-#: terminal/terminal-window.c:190
+#: terminal/terminal-window.c:210
 msgid "_Fullscreen"
 msgstr ""
 
-#: terminal/terminal-window.c:190
+#: terminal/terminal-window.c:210
 msgid "Toggle fullscreen mode"
 msgstr ""
 
-#: terminal/terminal-window.c:1024
+#: terminal/terminal-window.c:1124
 msgid "<b>Title:</b>"
 msgstr ""
 
-#: terminal/terminal-window.c:1070
+#: terminal/terminal-window.c:1138
+msgid "Enter the title for the current terminal tab"
+msgstr ""
+
+#: terminal/terminal-window.c:1175
 msgid "X Terminal Emulator"
 msgstr ""
 
-#: terminal/terminal-window.c:1074
+#: terminal/terminal-window.c:1179
 msgid "Maintainer"
 msgstr ""
 
-#: terminal/terminal-window.c:1075
+#: terminal/terminal-window.c:1180
 msgid "Icon Designer"
 msgstr ""
 
-#: terminal/terminal-window.c:1076
+#: terminal/terminal-window.c:1181
 msgid "Translator (nl)"
 msgstr ""

@@ -37,6 +37,8 @@
 #include <string.h>
 #endif
 
+#include <X11/Xlib.h>
+
 #include <terminal/terminal-accel-map.h>
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-config.h>
@@ -76,6 +78,11 @@ struct _TerminalApp
   SessionClient       *session_client;
   gchar               *initial_menu_bar_accel;
   GList               *windows;
+
+  GdkWindow           *leader;
+  Atom                 wm_protocols_atom;
+  Atom                 wm_save_yourself_atom;
+
   guint                server_running : 1;
 };
 
@@ -351,6 +358,84 @@ terminal_app_find_screen (const gchar *display_name)
 
 
 
+/* FIXME: wrap this into a class */
+static GdkFilterReturn
+terminal_app_filter_leader (GdkXEvent *xevent,
+                            GdkEvent  *event,
+                            gpointer   data)
+{
+  XClientMessageEvent *xev = (XClientMessageEvent *) xevent;
+  TerminalApp         *app = TERMINAL_APP (data);
+  GList               *result = NULL;
+  GList               *lp;
+  gchar              **argv;
+  gint                 argc;
+  gint                 n;
+
+  if (xev->type == ClientMessage && xev->message_type == app->wm_protocols_atom
+      && xev->format == 32 && xev->data.l[0] == app->wm_save_yourself_atom)
+    {
+      for (lp = app->windows; lp != NULL; lp = lp->next)
+        {
+          if (lp != app->windows)
+            result = g_list_append (result, g_strdup ("--window"));
+          result = g_list_concat (result, terminal_window_get_restart_command (lp->data));
+        }
+
+      argc = g_list_length (result) + 1;
+      argv = g_new (gchar*, argc + 1);
+      argv[0] = g_strdup ("Terminal");
+      for (lp = result, n = 1; n < argc; lp = lp->next, ++n)
+        argv[n] = lp->data;
+      argv[n] = NULL;
+
+      XSetCommand (xev->display, xev->window, argv, argc);
+
+      g_list_free (result);
+      g_strfreev (argv);
+
+      return GDK_FILTER_REMOVE;
+    }
+
+  return GDK_FILTER_CONTINUE;
+}
+
+
+                            
+/* FIXME: wrap this into a class */
+static void
+terminal_app_register_leader (TerminalApp *app,
+                              GdkDisplay  *display)
+{
+  Atom  *protocols;
+  Atom  *protocols_custom;
+  int    nprotocols;
+
+  app->leader = gdk_display_get_default_group (display);
+  gdk_window_add_filter (app->leader, terminal_app_filter_leader, app);
+
+  app->wm_protocols_atom = XInternAtom (GDK_DISPLAY_XDISPLAY (display), "WM_PROTOCOLS", False);
+  app->wm_save_yourself_atom = XInternAtom (GDK_DISPLAY_XDISPLAY (display), "WM_SAVE_YOURSELF", False);
+
+  if (XGetWMProtocols (GDK_DISPLAY_XDISPLAY (display),
+                       GDK_DRAWABLE_XID (app->leader),
+                       &protocols, &nprotocols))
+    {
+      protocols_custom = g_new (Atom, nprotocols + 1);
+      bcopy (protocols, protocols_custom, nprotocols * sizeof (Atom));
+      protocols_custom[nprotocols] = app->wm_save_yourself_atom;
+
+      XSetWMProtocols (GDK_DISPLAY_XDISPLAY (display),
+                       GDK_DRAWABLE_XID (app->leader),
+                       protocols_custom, nprotocols + 1);
+
+      XFree ((void *) protocols);
+      g_free (protocols_custom);
+    }
+}
+
+
+
 /**
  * terminal_app_new:
  *
@@ -516,6 +601,14 @@ terminal_app_open_window (TerminalApp         *app,
 
       terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
     }
+
+  /* register with session manager on first display
+   * opened by Terminal. This is to ensure that we
+   * get restarted by only _one_ session manager (the
+   * one running on the first display).
+   */
+  if (G_UNLIKELY (app->leader == NULL))
+    terminal_app_register_leader (app, gtk_widget_get_display (GTK_WIDGET (window)));
 }
 
 

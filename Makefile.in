@@ -44,10 +44,10 @@ DIST_COMMON = README $(am__configure_deps) $(srcdir)/Makefile.am \
 	config.sub depcomp install-sh ltmain.sh missing mkinstalldirs
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/debug.m4 \
-	$(top_srcdir)/m4/depends.m4 $(top_srcdir)/m4/glib-gettext.m4 \
-	$(top_srcdir)/m4/i18n.m4 $(top_srcdir)/m4/pkg.m4 \
-	$(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/X11.m4 \
+	$(top_srcdir)/m4/debug.m4 $(top_srcdir)/m4/depends.m4 \
+	$(top_srcdir)/m4/glib-gettext.m4 $(top_srcdir)/m4/i18n.m4 \
+	$(top_srcdir)/m4/pkg.m4 $(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
@@ -144,6 +144,9 @@ LIBSTARTUP_NOTIFICATION_CFLAGS = @LIBSTARTUP_NOTIFICATION_CFLAGS@
 LIBSTARTUP_NOTIFICATION_LIBS = @LIBSTARTUP_NOTIFICATION_LIBS@
 LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION = @LIBSTARTUP_NOTIFICATION_REQUIRED_VERSION@
 LIBTOOL = @LIBTOOL@
+LIBX11_CFLAGS = @LIBX11_CFLAGS@
+LIBX11_LDFLAGS = @LIBX11_LDFLAGS@
+LIBX11_LIBS = @LIBX11_LIBS@
 LN_S = @LN_S@
 LTLIBOBJS = @LTLIBOBJS@
 MAINT = @MAINT@
@@ -176,6 +179,10 @@ VTE_CFLAGS = @VTE_CFLAGS@
 VTE_LIBS = @VTE_LIBS@
 VTE_REQUIRED_VERSION = @VTE_REQUIRED_VERSION@
 XGETTEXT = @XGETTEXT@
+X_CFLAGS = @X_CFLAGS@
+X_EXTRA_LIBS = @X_EXTRA_LIBS@
+X_LIBS = @X_LIBS@
+X_PRE_LIBS = @X_PRE_LIBS@
 ac_ct_AR = @ac_ct_AR@
 ac_ct_CC = @ac_ct_CC@
 ac_ct_CXX = @ac_ct_CXX@

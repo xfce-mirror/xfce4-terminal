@@ -2276,38 +2276,4 @@ terminal_preferences_get (void)
 
 
 
-/**
- * terminal_preferences_get_proxy:
- * @terminal      :
- * @property_name :
- *
- * Return value   :
- **/
-ExoPropertyProxy*
-terminal_preferences_get_proxy (TerminalPreferences *preferences,
-                                const gchar         *property_name)
-{
-  ExoPropertyProxy *proxy;
-  gchar            *name;
-
-  g_return_val_if_fail (TERMINAL_IS_PREFERENCES (preferences), NULL);
-  g_return_val_if_fail (property_name != NULL, NULL);
-
-  name = g_strconcat ("proxy-", property_name, NULL);
-  proxy = g_object_get_data (G_OBJECT (preferences), name);
-  if (G_UNLIKELY (proxy == NULL))
-    {
-      proxy = exo_property_proxy_new ();
-      exo_property_proxy_add (proxy, G_OBJECT (preferences), property_name, NULL, NULL, NULL);
-      g_object_set_data (G_OBJECT (preferences), name, proxy);
-      g_object_unref (G_OBJECT (proxy));
-    }
-  g_free (name);
-
-  return proxy;
-}
-
-
-
-
 

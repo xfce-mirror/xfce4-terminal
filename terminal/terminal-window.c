@@ -204,7 +204,7 @@ static GtkActionEntry action_entries[] =
 
 static GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "show-menubar", "terminal-showmenu", N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
+  { "show-menubar", "terminal-showmenu", N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), TRUE, },
   { "show-toolbars", NULL, N_ ("Show _Toolbars"), NULL, N_ ("Show/hide the toolbars"), G_CALLBACK (terminal_window_action_show_toolbars), FALSE, },
   { "show-borders", "terminal-showborders", N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
   { "fullscreen", "terminal-fullscreen", N_ ("_Fullscreen"), NULL, N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
@@ -1094,7 +1094,6 @@ title_dialog_response (GtkWidget *dialog,
 static gboolean
 terminal_window_title_idle (gpointer user_data)
 {
-  ExoPropertyProxy *proxy;
   TerminalWindow   *window = TERMINAL_WINDOW (user_data);
   TerminalWidget   *widget;
   AtkRelationSet   *relations;
@@ -1142,10 +1141,7 @@ terminal_window_title_idle (gpointer user_data)
       atk_relation_set_add (relations, relation);
       g_object_unref (G_OBJECT (relation));
 
-      proxy = exo_property_proxy_new ();
-      exo_property_proxy_add (proxy, G_OBJECT (widget), "custom-title", NULL, NULL, NULL);
-      exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
-      g_object_unref (G_OBJECT (proxy));
+      exo_mutual_binding_new (G_OBJECT (widget), "custom-title", G_OBJECT (entry), "text");
 
       g_signal_connect (G_OBJECT (dialog), "response",
                         G_CALLBACK (title_dialog_response), NULL);
@@ -1230,7 +1226,6 @@ terminal_window_new (TerminalVisibility menubar,
   else
     setting = (menubar == TERMINAL_VISIBILITY_SHOW);
   action = gtk_action_group_get_action (window->action_group, "show-menubar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !setting);
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
 
   /* setup toolbars visibility */
@@ -1249,7 +1244,6 @@ terminal_window_new (TerminalVisibility menubar,
   else
     setting = (borders == TERMINAL_VISIBILITY_SHOW);
   action = gtk_action_group_get_action (window->action_group, "show-borders");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !setting);
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
 
   return GTK_WIDGET (window);
@@ -1266,7 +1260,6 @@ void
 terminal_window_add (TerminalWindow *window,
                      TerminalWidget *widget)
 {
-  ExoPropertyProxy *proxy;
   TerminalWidget   *active;
   GtkWidget        *header;
   GtkAction        *action;
@@ -1286,16 +1279,12 @@ terminal_window_add (TerminalWindow *window,
   action = gtk_action_group_get_action (window->action_group, "set-title");
 
   header = terminal_tab_header_new ();
+  exo_binding_new (G_OBJECT (widget), "title", G_OBJECT (header), "title");
   g_signal_connect_swapped (G_OBJECT (header), "close",
                             G_CALLBACK (gtk_widget_destroy), widget);
   g_signal_connect_swapped (G_OBJECT (header), "double-clicked",
                             G_CALLBACK (gtk_action_activate), action);
   gtk_widget_show (header);
-
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (widget), "title", NULL, NULL, NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (header), "title", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
 
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),
                                    GTK_WIDGET (widget), header);

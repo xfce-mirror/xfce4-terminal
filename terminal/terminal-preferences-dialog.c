@@ -72,99 +72,30 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 
 
 
-static void
-converter_enum_int (GValue  *value,
-                    gboolean in,
-                    gpointer user_data)
-{
-  gint ival;
-
-  if (in)
-    {
-      ival = g_value_get_int (value);
-      g_value_unset (value);
-      g_value_init (value, GPOINTER_TO_INT (user_data));
-      g_value_set_enum (value, ival);
-    }
-  else
-    {
-      ival = g_value_get_enum (value);
-      g_value_unset (value);
-      g_value_init (value, G_TYPE_INT);
-      g_value_set_int (value, ival);
-    }
-}
-
-
-
-static void
-converter_double_uint (GValue    *value,
-                       gboolean   in,
-                       gpointer   user_data)
-{
-  guint uval;
-
-  if (in)
-    {
-      uval = g_value_get_uint (value);
-      g_value_unset (value);
-      g_value_init (value, G_TYPE_DOUBLE);
-      g_value_set_double (value, uval);
-    }
-  else
-    {
-      uval = (guint) g_value_get_double (value);
-      g_value_unset (value);
-      g_value_init (value, G_TYPE_UINT);
-      g_value_set_uint (value, uval);
-    }
-}
-
-
-
 /* Convert int -> boolean (i == 1) */
-static void
-converter_is1 (GValue  *value,
-               gboolean in,
-               gpointer user_data)
+static gboolean
+transform_is1 (const GValue *src_value,
+               GValue       *dst_value,
+               gpointer      user_data)
 {
-  gint ival;
-
-  g_assert (in);
-
-  ival = g_value_get_int (value);
-  g_value_unset (value);
-  g_value_init (value, G_TYPE_BOOLEAN);
-  g_value_set_boolean (value, ival == 1);
+  g_value_set_boolean (dst_value, g_value_get_enum (src_value) == 1);
+  return TRUE;
 }
 
 
 
 /* Convert int -> boolean (i == 1 || i == 2) */
-static void
-converter_is1_or_is2 (GValue  *value,
-                      gboolean in,
-                      gpointer user_data)
+static gboolean
+transform_is1_or_is2 (const GValue *src_value,
+                      GValue       *dst_value,
+                      gpointer      user_data)
 {
-  gint ival;
+  gint i;
 
-  g_assert (in);
+  i = g_value_get_enum (src_value);
+  g_value_set_boolean (dst_value, (i == 1 || i == 2));
 
-  ival = g_value_get_int (value);
-  g_value_unset (value);
-  g_value_init (value, G_TYPE_BOOLEAN);
-  g_value_set_boolean (value, ival == 1 || ival == 2);
-}
-
-
-
-/* negate booleans */
-static void
-converter_negate (GValue  *value,
-                  gboolean in,
-                  gpointer user_data)
-{
-  g_value_set_boolean (value, !g_value_get_boolean (value));
+  return TRUE;
 }
 
 
@@ -172,8 +103,6 @@ converter_negate (GValue  *value,
 static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
-  ExoPropertyProxy  *proxy;
-  ExoPropertyProxy  *proxy2;
   GtkListStore      *store;
   GParamSpec        *pspec;
   GtkTreeIter        iter;
@@ -250,11 +179,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), dialog->notebook, TRUE, TRUE, 0);
   gtk_widget_show (dialog->notebook);
 
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->notebook), "page", NULL, NULL, NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->icon_bar), "active", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
-
   
   /*
      General
@@ -295,8 +219,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "title-initial");
-  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "title-initial", G_OBJECT (entry), "text");
   gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 1, 2,
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (entry);
@@ -324,6 +247,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Goes before initial title"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Goes after initial title"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Isn't displayed"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "title-mode", G_OBJECT (combo), "active");
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, TRUE, 0);
   gtk_widget_show (combo);
@@ -334,12 +258,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
-
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "title-mode",
-                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_TITLE), NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
@@ -375,14 +293,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #endif
 
   button = gtk_check_button_new_with_mnemonic (_("_Run command as login shell"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "command-login-shell");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "command-login-shell", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("_Update utmp/wtmp records when command is launched"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "command-update-records");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "command-update-records", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
@@ -406,15 +322,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (table);
 
   button = gtk_check_button_new_with_mnemonic (_("Sc_roll on output"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "scrolling-on-output");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-on-output", G_OBJECT (button), "active");
   gtk_table_attach (GTK_TABLE (table), button, 0, 2, 0, 1,
                     GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Scroll on key_stroke"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "scrolling-on-keystroke");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-on-keystroke", G_OBJECT (button), "active");
   gtk_tooltips_set_tip (dialog->tooltips, button,
                         _("Enables you to press any key on the "
                           "keyboard to scroll down the terminal "
@@ -434,6 +348,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Disabled"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("On the left side"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("On the right side"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-bar", G_OBJECT (combo), "active");
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
@@ -446,12 +361,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "scrolling-bar",
-                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_SCROLLBAR), NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
-
   label = gtk_label_new_with_mnemonic (_("Scr_ollback:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4,
@@ -459,9 +368,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (48.0, 5 * 1024.0 * 1024.0, 1.0);
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "scrolling-lines");
-  exo_property_proxy_add (proxy, G_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (button))),
-                          "value", converter_double_uint, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-lines",
+                          G_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (button))), "value");
   gtk_tooltips_set_tip (dialog->tooltips, button,
                         _("Specifies the number of lines that you can "
                           "scroll back using the scrollbar."),
@@ -510,14 +418,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (vbox);
 
   button = g_object_new (GTK_TYPE_FONT_BUTTON, "title", _("Choose Terminal Font"), "use-font", TRUE, NULL);
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "font-name");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "font-name", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "font-name", G_OBJECT (button), "font-name");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Enable anti-aliasing for the terminal font"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "font-anti-alias");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "font-anti-alias", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
@@ -538,14 +444,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("None (use solid color)"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Background image"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Transparent background"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-mode", G_OBJECT (combo), "active");
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_box_pack_start (GTK_BOX (vbox), combo, FALSE, TRUE, 0);
   gtk_widget_show (combo);
-
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "background-mode",
-                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_BACKGROUND), NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
 
   table = gtk_table_new (2, 2, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
@@ -553,7 +455,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
   gtk_widget_show (table);
 
-  exo_property_proxy_add (proxy, G_OBJECT (table), "visible", converter_is1, NULL, NULL);
+  exo_binding_new_full (G_OBJECT (dialog->preferences), "background-mode", G_OBJECT (table), "visible",
+                        transform_is1, NULL, NULL);
 
   label = gtk_label_new_with_mnemonic (_("_File:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
@@ -567,8 +470,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (hbox);
 
   entry = gtk_entry_new ();
-  proxy2 = terminal_preferences_get_proxy (dialog->preferences, "background-image-file");
-  exo_property_proxy_add (proxy2, G_OBJECT (entry), "text", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-image-file", G_OBJECT (entry), "text");
   gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
   gtk_widget_show (entry);
 
@@ -592,22 +494,18 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Centered"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Scaled"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Stretched"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-image-style", G_OBJECT (combo), "active");
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
 
-  proxy2 = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy2, G_OBJECT (dialog->preferences), "background-image-style",
-                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_BACKGROUND_STYLE), NULL);
-  exo_property_proxy_add (proxy2, G_OBJECT (combo), "active", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy2));
-
   ibox = gtk_vbox_new (FALSE, 1);
   gtk_box_pack_start (GTK_BOX (vbox), ibox, FALSE, TRUE, 0);
   gtk_widget_show (ibox);
 
-  exo_property_proxy_add (proxy, G_OBJECT (ibox), "visible", converter_is1_or_is2, NULL, NULL);
+  exo_binding_new_full (G_OBJECT (dialog->preferences), "background-mode", G_OBJECT (ibox), "visible",
+                        transform_is1_or_is2, NULL, NULL);
 
   label = gtk_label_new (_("Shade transparent or image background:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
@@ -627,8 +525,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_hscale_new_with_range (0.0, 1.0, 0.05);
-  proxy2 = terminal_preferences_get_proxy (dialog->preferences, "background-darkness");
-  exo_property_proxy_add (proxy2, G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-darkness",
+                          G_OBJECT (gtk_range_get_adjustment (GTK_RANGE (button))), "value");
   gtk_scale_set_draw_value (GTK_SCALE (button), FALSE);
   gtk_box_pack_start (GTK_BOX (hbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
@@ -636,8 +534,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   label = g_object_new (GTK_TYPE_LABEL, "label", _("<small><i>Maximum</i></small>"), "use-markup", TRUE, NULL);
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
   gtk_widget_show (label);
-
-  g_object_unref (G_OBJECT (proxy));
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
@@ -653,20 +549,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (vbox);
 
   button = gtk_check_button_new_with_mnemonic (_("Display _menubar in new windows"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-menubar-default");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-menubar-default", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Display _toolbars in new windows"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-toolbars-default");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-toolbars-default", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Display _borders around new windows"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-borders-default");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "misc-borders-default", G_OBJECT (button), "active");
   gtk_tooltips_set_tip (dialog->tooltips, button,
                         _("Enable to show window decorations around newly "
                           "created terminal windows."), NULL);
@@ -706,8 +599,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (vbox);
 
   button = gtk_check_button_new_with_mnemonic (_("Use colors from s_ystem theme"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-system-theme");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-system-theme", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
@@ -732,12 +624,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (align);
 
   button = g_object_new (GTK_TYPE_COLOR_BUTTON,
-                         "title", _("Chooser terminal text color"),
+                         "title", _("Choose terminal text color"),
                          NULL);
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-foreground");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-system-theme");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "sensitive", converter_negate, NULL, NULL);
+  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-system-theme", G_OBJECT (button), "sensitive");
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-foreground", G_OBJECT (button), "color");
   gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);
 
@@ -765,12 +655,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (align);
 
   button = g_object_new (GTK_TYPE_COLOR_BUTTON,
-                         "title", _("Chooser terminal background color"),
+                         "title", _("Choose terminal background color"),
                          NULL);
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-background");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-system-theme");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "sensitive", converter_negate, NULL, NULL);
+  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-system-theme", G_OBJECT (button), "sensitive");
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-background", G_OBJECT (button), "color");
   gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);
 
@@ -815,128 +703,112 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (table);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette1");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette1", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette1");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette2");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette2", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette2");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 1, 2, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette3");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette3", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette3");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 2, 3, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette4");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette4", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette4");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 3, 4, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette5");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette5", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette5");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 4, 5, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette6");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette6", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette6");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 5, 6, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette7");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette7", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette7");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 6, 7, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette8");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette8", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette8");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 7, 8, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette9");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette9", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette9");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette10");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette10", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette10");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette11");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette11", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette11");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 2, 3, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette12");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette12", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette12");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 3, 4, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette13");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette13", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette13");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 4, 5, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette14");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette14", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette14");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 5, 6, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette15");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette15", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette15");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 6, 7, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_color_button_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "color-palette16");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette16", G_OBJECT (button), "color");
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette16");
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 7, 8, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
@@ -976,14 +848,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (vbox);
 
   button = gtk_check_button_new_with_mnemonic (_("Disable all me_nu access keys (such as Alt+f to open the File menu)"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "shortcuts-no-mnemonics");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Disable m_enu shortcut key (F10 by default)"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "shortcuts-no-menukey");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-menukey", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
 
@@ -1017,12 +887,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                   GTK_POLICY_ALWAYS);
   gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (ibox),
                                        GTK_SHADOW_ETCHED_IN);
-#if 0
-  gtk_container_set_border_width (GTK_CONTAINER (ibox), 12);
-  gtk_container_add (GTK_CONTAINER (frame), ibox);
-#else
   gtk_box_pack_start (GTK_BOX (vbox), ibox, TRUE, TRUE, 0);
-#endif
   gtk_widget_show (ibox);
 
   editor = terminal_shortcut_editor_new ();
@@ -1085,6 +950,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("ASCII DEL"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "binding-backspace", G_OBJECT (combo), "active");
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
                     GTK_FILL, GTK_FILL, 0, 0);
@@ -1097,12 +963,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "binding-backspace",
-                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_ERASE_BINDING), NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
-
   label = gtk_label_new_with_mnemonic (_("_Delete key generates:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3,
@@ -1113,6 +973,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("ASCII DEL"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "binding-delete", G_OBJECT (combo), "active");
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
                     GTK_FILL, GTK_FILL, 0, 0);
@@ -1125,12 +986,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "binding-delete",
-                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_ERASE_BINDING), NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
-
   label = g_object_new (GTK_TYPE_LABEL, "label", _("<tt>$TERM</tt> setting:"), "use-markup", TRUE, NULL);
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4,
@@ -1138,8 +993,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "term");
-  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "term", G_OBJECT (entry), "text");
   gtk_tooltips_set_tip (dialog->tooltips, entry, _("This specifies the value the $TERM environment variable is set "
                                                    "to, when a new terminal tab or terminal window is opened. The default "
                                                    "should be ok for most systems. If you have problems with colors in "
@@ -1185,8 +1039,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "word-chars");
-  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "word-chars", G_OBJECT (entry), "text");
   gtk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
   gtk_widget_show (entry);
 
@@ -1207,6 +1060,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   if (icon != NULL)
     g_object_unref (icon);
 
+  exo_mutual_binding_new (G_OBJECT (dialog->notebook), "page", G_OBJECT (dialog->icon_bar), "active");
 
   g_object_unref (G_OBJECT (store));
 }

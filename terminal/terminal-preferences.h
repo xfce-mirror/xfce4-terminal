@@ -82,9 +82,6 @@ GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
 
 TerminalPreferences *terminal_preferences_get       (void);
 
-ExoPropertyProxy    *terminal_preferences_get_proxy (TerminalPreferences *preferences,
-                                                     const gchar         *property_name);
-
 G_END_DECLS;
 
 #endif /* !__TERMINAL_PREFERENCES_H__ */

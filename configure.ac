@@ -8,8 +8,8 @@ dnl
 
 dnl Version information
 m4_define([terminal_version_major], [0])
-m4_define([terminal_version_minor], [1])
-m4_define([terminal_version_micro], [10])
+m4_define([terminal_version_minor], [2])
+m4_define([terminal_version_micro], [0])
 m4_define([terminal_version_tag], [svn])
 m4_define([terminal_version_dbus], [1])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
@@ -49,8 +49,11 @@ AC_CHECK_HEADERS([errno.h limits.h pwd.h time.h])
 dnl Check for i18n support
 BM_I18N([Terminal], [de fr nl])
 
+dnl Check for X11 libraries
+BM_LIBX11_REQUIRE()
+
 dnl Check for required packages
-BM_DEPEND([EXO], [exo-0.1], [0.1.3])
+BM_DEPEND([EXO], [exo-0.2], [0.2.0])
 BM_DEPEND([VTE], [vte], [0.11.0])
 
 dnl Optional support for startup notification

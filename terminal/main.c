@@ -279,10 +279,10 @@ main (int argc, char **argv)
                 "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
                 "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
                 "Please report bugs to <%s>.\n"),
-              PACKAGE_STRING, xfce_version_string (),
-              GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
-              gtk_major_version, gtk_minor_version, gtk_micro_version,
-              PACKAGE_BUGREPORT);
+                PACKAGE_STRING, xfce_version_string (),
+                GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
+                gtk_major_version, gtk_minor_version, gtk_micro_version,
+                PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }
   else if (G_UNLIKELY (options->show_help))
