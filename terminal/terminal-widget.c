@@ -348,7 +348,8 @@ terminal_widget_finalize (GObject *object)
   if (G_UNLIKELY (widget->background_timer_id != 0))
     g_source_remove (widget->background_timer_id);
 
-  g_signal_handlers_disconnect_matched (G_OBJECT (widget->preferences), G_SIGNAL_MATCH_DATA,
+  g_signal_handlers_disconnect_matched (G_OBJECT (widget->preferences),
+                                        G_SIGNAL_MATCH_DATA,
                                         0, 0, NULL, NULL, widget);
 
   g_object_unref (G_OBJECT (widget->preferences));

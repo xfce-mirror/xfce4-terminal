@@ -97,6 +97,7 @@ enum
   PROP_SCROLLING_ON_OUTPUT,
   PROP_SCROLLING_ON_KEYSTROKE,
   PROP_SHORTCUTS_NO_MENUKEY,
+  PROP_SHORTCUTS_NO_MNEMONICS,
   PROP_TITLE_INITIAL,
   PROP_TITLE_MODE,
   PROP_TERM,
@@ -163,6 +164,7 @@ struct _TerminalPreferences
   gboolean                 scrolling_on_output;
   gboolean                 scrolling_on_keystroke;
   gboolean                 shortcuts_no_menukey;
+  gboolean                 shortcuts_no_mnemonics;
   gchar                   *title_initial;
   TerminalTitle            title_mode;
   gchar                   *term;
@@ -934,6 +936,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:shortcuts-no-mnemonics:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_SHORTCUTS_NO_MNEMONICS,
+                                   g_param_spec_boolean ("shortcuts-no-mnemonics",
+                                                         _("Disable all mnemonics"),
+                                                         _("Disable all mnemonics"),
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:title-initial:
    **/
   g_object_class_install_property (gobject_class,
@@ -1058,6 +1071,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
   preferences->scrolling_on_keystroke   = TRUE;
 
   preferences->shortcuts_no_menukey     = FALSE;
+  preferences->shortcuts_no_mnemonics   = FALSE;
 
   preferences->title_initial            = g_strdup (_("Terminal"));
   preferences->title_mode               = TERMINAL_TITLE_APPEND;
@@ -1336,6 +1350,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_SHORTCUTS_NO_MENUKEY:
       g_value_set_boolean (value, preferences->shortcuts_no_menukey);
+      break;
+
+    case PROP_SHORTCUTS_NO_MNEMONICS:
+      g_value_set_boolean (value, preferences->shortcuts_no_mnemonics);
       break;
 
     case PROP_TITLE_INITIAL:
@@ -1947,6 +1965,16 @@ terminal_preferences_set_property (GObject      *object,
         {
           preferences->shortcuts_no_menukey = bval;
           g_object_notify (object, "shortcuts-no-menukey");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_SHORTCUTS_NO_MNEMONICS:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->shortcuts_no_mnemonics)
+        {
+          preferences->shortcuts_no_mnemonics = bval;
+          g_object_notify (object, "shortcuts-no-mnemonics");
           terminal_preferences_schedule_store (preferences);
         }
       break;

@@ -67,6 +67,7 @@ static void            terminal_window_set_size_force_grid      (TerminalWindow 
                                                                  gint             force_grid_height);
 static void            terminal_window_update_geometry          (TerminalWindow  *window);
 static void            terminal_window_update_actions           (TerminalWindow  *window);
+static void            terminal_window_update_mnemonics         (TerminalWindow  *window);
 static void            terminal_window_notify_page              (GtkNotebook     *notebook,
                                                                  GParamSpec      *pspec,
                                                                  TerminalWindow  *window);
@@ -243,6 +244,8 @@ terminal_window_init (TerminalWindow *window)
                             G_CALLBACK (terminal_window_queue_reset_size), window);
   g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::scrolling-bar",
                             G_CALLBACK (terminal_window_queue_reset_size), window);
+  g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::shortcuts-no-mnemonics",
+                            G_CALLBACK (terminal_window_update_mnemonics), window);
 
   window->action_group = gtk_action_group_new ("terminal-window");
   gtk_action_group_set_translation_domain (window->action_group,
@@ -311,6 +314,11 @@ terminal_window_init (TerminalWindow *window)
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
 
+  /* setup mnemonics */
+  g_object_get (G_OBJECT (window->preferences), "shortcuts-no-mnemonics", &bval, NULL);
+  if (G_UNLIKELY (bval))
+    terminal_window_update_mnemonics (window);
+
   /* setup fullscreen mode */
   if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
     {
@@ -357,6 +365,10 @@ terminal_window_dispose (GObject *object)
     g_source_remove (window->title_idle_id);
   if (window->about_idle_id != 0)
     g_source_remove (window->about_idle_id);
+
+  g_signal_handlers_disconnect_matched (G_OBJECT (window->preferences),
+                                        G_SIGNAL_MATCH_DATA,
+                                        0, 0, NULL, NULL, window);
 
   parent_class->dispose (object);
 }
@@ -499,6 +511,44 @@ terminal_window_update_actions (TerminalWindow *window)
                     "sensitive", terminal_widget_has_selection (terminal),
                     NULL);
     }
+}
+
+
+
+static void
+terminal_window_update_mnemonics (TerminalWindow *window)
+{
+  gboolean disable;
+  GSList  *wp;
+  GList   *actions;
+  GList   *ap;
+  gchar   *label;
+  gchar   *tmp;
+
+  g_object_get (G_OBJECT (window->preferences),
+                "shortcuts-no-mnemonics", &disable,
+                NULL);
+
+  actions = gtk_action_group_list_actions (window->action_group);
+  for (ap = actions; ap != NULL; ap = ap->next)
+    for (wp = gtk_action_get_proxies (ap->data); wp != NULL; wp = wp->next)
+      if (G_TYPE_CHECK_INSTANCE_TYPE (wp->data, GTK_TYPE_MENU_ITEM))
+        {
+          g_object_get (G_OBJECT (ap->data), "label", &label, NULL);
+          if (disable)
+            {
+              tmp = exo_str_elide_underscores (label);
+              g_free (label);
+              label = tmp;
+            }
+
+          g_object_set (G_OBJECT (GTK_BIN (wp->data)->child),
+                        "label", label,
+                        NULL);
+
+          g_free (label);
+        }
+  g_list_free (actions);
 }
 
 

@@ -960,7 +960,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
-  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Menubar accelerator</b>"), "use-markup", TRUE, NULL);
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Menubar access</b>"), "use-markup", TRUE, NULL);
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
@@ -968,6 +968,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
   gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
+
+  button = gtk_check_button_new_with_mnemonic (_("Disable all me_nu access keys (such as Alt+f to open the File menu)"));
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "shortcuts-no-mnemonics");
+  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
+  gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
+  gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Disable m_enu shortcut key (F10 by default)"));
   proxy = terminal_preferences_get_proxy (dialog->preferences, "shortcuts-no-menukey");

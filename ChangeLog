@@ -1,3 +1,11 @@
+2004-11-18	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-preferences-dialog.c, terminal/terminal-window.c,
+	  terminal/terminal-preferences.c: Added an option to disable all
+	  menu access keys (such as Alt+f, etc.). This allows to pass key
+	  combinations such as Alt+A to applications. The problem was
+	  reported by Bernhard Walle.
+
 2004-11-17	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-widget.c: Use g_object_connect() instead of
