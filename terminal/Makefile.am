@@ -113,5 +113,6 @@ clean-local:
 	rm -f *.core core core.* stamp-*.h
 
 EXTRA_DIST =								\
-	$(stock_icons)
+	$(stock_icons)							\
+	terminal-config.h.in
 
