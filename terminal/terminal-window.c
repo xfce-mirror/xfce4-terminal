@@ -1661,6 +1661,8 @@ terminal_window_add (TerminalWindow *window,
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page);
 
   terminal_window_set_size_force_grid (window, screen, grid_width, grid_height);
+
+  gtk_widget_queue_draw (GTK_WIDGET (screen));
 }
 
 
