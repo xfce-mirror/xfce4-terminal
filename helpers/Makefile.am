@@ -1,7 +1,10 @@
 desktopdir = $(pkgdatadir)/apps
 desktop_in_files =							\
+	balsa.desktop.in						\
 	epiphany.desktop.in						\
+	evolution.desktop.in						\
 	firefox.desktop.in						\
+	kmail.desktop.in						\
 	konqueror.desktop.in						\
 	lynx.desktop.in							\
 	mozilla-browser.desktop.in					\
@@ -9,6 +12,7 @@ desktop_in_files =							\
 	mutt.desktop.in							\
 	opera-browser.desktop.in					\
 	opera-mailer.desktop.in						\
+	sensible-browser.desktop.in					\
 	thunderbird.desktop.in
 desktop_DATA =								\
 	$(desktop_in_files:.desktop.in=.desktop)

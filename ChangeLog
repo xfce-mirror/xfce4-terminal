@@ -1,3 +1,22 @@
+2005-03-14	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-tab-header.c, terminal/terminal-preferences.c, NEWS:
+	  Add a hidden option "MiscTabCloseButtons", which can be either "TRUE"
+	  or "FALSE" and determines whether close buttons should be shown in the
+	  terminal tab headers or not. This works around bug #64 until we get
+	  a better notebook widget.
+	* helpers/balsa.desktop.in, helpers/evolution.desktop.in,
+	  helpers/sensible-browser.desktop.in, helpers/kmail.desktop.in,
+	  helpers/Makefile.am: Add .desktop files for the Balsa, KMail and
+	  Evolution Mail Readers. Add a .desktop file for the default Debian
+	  browser, the so called sensible-browser.
+	* terminal/terminal-helper-dialog.c: Add a tooltip to the chooser
+	  button.
+	* terminal/terminal-tab-header.c(terminal_tab_header_init): Add a border
+	  of 2 around the label to make it look less busy if the close button
+	  is disabled.
+	* po/: Update the translations with the recent string changes.
+
 2005-03-13	Benedikt Meurer <benny@xfce.org>
 
 	* po/he.po: The hebrew translations have been updated, thanks to
@@ -1017,3 +1036,5 @@
 2004-09-10	Benedikt Meurer <benny@xfce.org>
 
 	* Initial import.
+
+# vi:set ts=8 sw=8 noet ai:

@@ -107,6 +107,7 @@ enum
   PROP_MISC_TOOLBARS_DEFAULT,
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
+  PROP_MISC_TAB_CLOSE_BUTTONS,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -998,6 +999,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          _("Cycle tabs"),
                                                          _("Allow cycling through tabs"),
                                                          FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-tab-close-buttons:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_TAB_CLOSE_BUTTONS,
+                                   g_param_spec_boolean ("misc-tab-close-buttons",
+                                                         _("Tab close buttons"),
+                                                         _("Show tab close buttons"),
+                                                         TRUE,
                                                          G_PARAM_READWRITE));
 
   /**

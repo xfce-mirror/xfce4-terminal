@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2005 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -24,6 +24,8 @@
 #endif
 
 #include <exo/exo.h>
+
+#include <terminal/terminal-preferences.h>
 #include <terminal/terminal-tab-header.h>
 
 
@@ -77,14 +79,16 @@ struct _TerminalTabHeaderClass
 
 struct _TerminalTabHeader
 {
-  GtkHBox      __parent__;
+  GtkHBox              __parent__;
 
-  GtkTooltips *tooltips;
-  GtkWidget   *ebox;
-  GtkWidget   *label;
+  TerminalPreferences *preferences;
+
+  GtkTooltips         *tooltips;
+  GtkWidget           *ebox;
+  GtkWidget           *label;
 
   /* the popup menu */
-  GtkWidget   *menu;
+  GtkWidget           *menu;
 };
 
 
@@ -170,11 +174,15 @@ terminal_tab_header_init (TerminalTabHeader *header)
   GtkWidget *button;
   GtkWidget *image;
 
+  header->preferences = terminal_preferences_get ();
+
   header->tooltips = gtk_tooltips_new ();
   g_object_ref (G_OBJECT (header->tooltips));
   gtk_object_sink (GTK_OBJECT (header->tooltips));
 
-  header->ebox = gtk_event_box_new ();
+  gtk_widget_push_composite_child ();
+
+  header->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
   GTK_WIDGET_SET_FLAGS (header->ebox, GTK_NO_WINDOW);
   g_signal_connect (G_OBJECT (header->ebox), "button-press-event",
                     G_CALLBACK (terminal_tab_header_button_press), header);
@@ -196,11 +204,13 @@ terminal_tab_header_init (TerminalTabHeader *header)
   g_signal_connect (G_OBJECT (button), "clicked",
                     G_CALLBACK (terminal_tab_header_close_tab), header);
   gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
-  gtk_widget_show (button);
+  exo_binding_new (G_OBJECT (header->preferences), "misc-tab-close-buttons", G_OBJECT (button), "visible");
 
   image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, gtk_icon_size_from_name ("terminal-icon-size-tab"));
   gtk_container_add (GTK_CONTAINER (button), image);
   gtk_widget_show (image);
+
+  gtk_widget_pop_composite_child ();
 }
 
 
@@ -218,6 +228,7 @@ terminal_tab_header_finalize (GObject *object)
   if (G_UNLIKELY (header->menu != NULL))
     gtk_widget_destroy (header->menu);
 
+  g_object_unref (G_OBJECT (header->preferences));
   g_object_unref (G_OBJECT (header->tooltips));
 
   parent_class->finalize (object);

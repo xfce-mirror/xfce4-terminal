@@ -94,6 +94,7 @@ struct _TerminalHelperChooser
 
   GtkWidget              *image;
   GtkWidget              *label;
+  GtkTooltips            *tooltips;
 
   TerminalHelperDatabase *database;
 
@@ -159,11 +160,18 @@ terminal_helper_chooser_init (TerminalHelperChooser *chooser)
 
   chooser->database = terminal_helper_database_get ();
 
+  chooser->tooltips = gtk_tooltips_new ();
+  g_object_ref (G_OBJECT (chooser->tooltips));
+  gtk_object_sink (GTK_OBJECT (chooser->tooltips));
+
   gtk_widget_push_composite_child ();
 
   button = gtk_button_new ();
   g_signal_connect (G_OBJECT (button), "pressed",
                     G_CALLBACK (terminal_helper_chooser_pressed), chooser);
+  gtk_tooltips_set_tip (chooser->tooltips, button,
+                        _("Click here to change the selected application "
+                          "or to disable this feature."), NULL);
   gtk_container_add (GTK_CONTAINER (chooser), button);
   gtk_widget_show (button);
 
@@ -200,7 +208,7 @@ terminal_helper_chooser_finalize (GObject *object)
   TerminalHelperChooser *chooser = TERMINAL_HELPER_CHOOSER (object);
 
   g_object_unref (G_OBJECT (chooser->database));
-
+  g_object_unref (G_OBJECT (chooser->tooltips));
   g_free (chooser->active);
 
   G_OBJECT_CLASS (chooser_parent_class)->finalize (object);
