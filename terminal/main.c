@@ -308,6 +308,7 @@ main (int argc, char **argv)
   GError          *error = NULL;
   gchar          **nargv;
   gint             nargc;
+  gint             n;
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Terminal"));
@@ -353,9 +354,8 @@ main (int argc, char **argv)
     }
 
   /* create a copy of the standard arguments with our additional stuff */
-  nargv = g_new (gchar*, argc + 5);
-  for (nargc = 0; nargc < argc; ++nargc)
-    nargv[nargc] = g_strdup (argv[nargc]);
+  nargv = g_new (gchar*, argc + 5); nargc = 0;
+  nargv[nargc++] = g_strdup (argv[0]);
   nargv[nargc++] = g_strdup ("--default-working-directory");
   nargv[nargc++] = g_get_current_dir ();
 
@@ -371,6 +371,10 @@ main (int argc, char **argv)
   display = g_getenv ("DISPLAY");
   if (display != NULL)
     nargv[nargc++] = g_strdup_printf ("--default-display=%s", display);
+
+  /* append all given arguments */
+  for (n = 1; n < argc; ++n)
+    nargv[nargc++] = g_strdup (argv[n]);
   nargv[nargc] = NULL;
 
   if (!options->disable_server)

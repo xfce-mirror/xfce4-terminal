@@ -467,10 +467,13 @@ failed:
       *options_return = NULL;
     }
   if (attrs_return != NULL)
-    for (wp = *attrs_return; wp != NULL; wp = wp->next)
-      terminal_window_attr_free (wp->data);
-  g_list_free (*attrs_return);
+    {
+      for (wp = *attrs_return; wp != NULL; wp = wp->next)
+        terminal_window_attr_free (wp->data);
+      g_list_free (*attrs_return);
+    }
   g_free (default_directory);
+  g_free (default_display);
 
   return FALSE;
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "Oct 2004"> 
-  <!ENTITY appversion "0.1.10"> 
+  <!ENTITY appversion "0.2.0svn"> 
   <!ENTITY app "<application>Terminal</application>"> 
 ]>
 
@@ -33,6 +33,7 @@
 
     <releaseinfo>
       This manual describes the &app; software, version &appversion;.
+      Last updated: &date;
     </releaseinfo>
 
   </articleinfo>
@@ -96,6 +97,12 @@
           Integrates well with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink>, but also with every other Linux desktop
         </listitem>
         <listitem>
+          Session management support
+        </listitem>
+        <listitem>
+          Real multihead support (both MultiScreen and Xinerama mode)
+        </listitem>
+        <listitem>
           Standard compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
         </listitem>
         <listitem>
@@ -119,7 +126,7 @@
       <title>Starting &app;</title>
 
       <para>The easiest way to start &app; is to use the applications menu of your desktop -
-      for Xfce, point your mouse cursor to the desktop, press the right mouse button
+      in case of Xfce, point your mouse cursor to the desktop, press the right mouse button
       and choose <menuchoice><guimenu>System</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
 
       <para>You can also start &app; from a command line or from the <guilabel>Application
@@ -153,13 +160,15 @@
       executes the command. By default, &app; will use the login shell of the user
       who starts the application.</para>
 
-      <para>&app; also sets the following environment variables:</para>
+      <para>&app; sets the following environment variables for the command
+      running inside the terminal window:</para>
 
       <variablelist>
         <varlistentry>
           <term><varname>TERM</varname></term>
           <listitem>
-            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>.</para>
+            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you
+            can configured the value from the preferences dialog.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -186,7 +195,7 @@
     <sect2>
       <title>Working with multiple terminals</title>
 
-      <para>&app; provides a tab feature that enables you to open several terminal
+      <para>&app; provides a tab feature that enables you to open several terminals
       within a single window. Each terminal is opened in a separate tab. Click on the
       appropriate tab to display the terminal in the window. Each tabbed terminal in
       a window is separate subprocess, so you can use each terminal for a different
@@ -206,6 +215,10 @@
 
       <para>See <xref linkend="usage" /> for information about how to open a new tabbed
       terminal.</para>
+
+      <para>You can close terminal tabs by clicking on the close button in the terminal
+      tab header or by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Close
+      Tab</guimenuitem></menuchoice> from the menubar.</para>
     </sect2>
 
   </sect1>
@@ -241,6 +254,8 @@
           <listitem>
             <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open
             Tab</guimenuitem></menuchoice>.</para>
+            <para>The new terminal inherits the working directory from the
+            previously active terminal.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -272,13 +287,21 @@
         <varlistentry>
           <term>To customize the toolbars:</term>
           <listitem>
-            <para>Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Toolbars</guimenuitem></menuchoice>.</para>
+            <para>Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term>To show or hide the window decorations:</term>
           <listitem>
             <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window Borders</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To put a terminal window into fullscreen</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Fullscreen</guimenuitem></menuchoice> from
+            the menubar or <menuchoice><guimenuitem>Fullscreen</guimenuitem></menuchoice> from the right-click popup
+            menu to put the terminal window into fullscreen.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -391,7 +414,8 @@
       <orderedlist>
         <listitem>
           <para>Choose <menuchoice><guimenu>Terminal</guimenu>
-          <guimenuitem>Set Title</guimenuitem></menuchoice>.</para>
+          <guimenuitem>Set Title...</guimenuitem></menuchoice> or double-click the the terminal
+          tab header.</para>
         </listitem>
         <listitem>
           <para>Type the new title in the <guilabel>Title</guilabel> text box. &app; applies
@@ -432,15 +456,16 @@
       <title>To customize the toolbars</title>
 
       <para>As already mentioned, &app; includes support for customizable toolbars. The toolbars
-      are disabled by default, you will have to explicitly enabed it. Choose
+      are disabled by default, you will have to explicitly enable it. Choose
       <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice> from
       the menubar to display the toolbars in the current window. If you want to permanently use
       the toolbars, see <xref linkend="preferences-general" />.</para>
 
-      <para>Once the toolbars are shown choose <menuchoice><guimenu>Edit</guimenu>
-      <guimenuitem>Toolbars</guimenuitem></menuchoice> from the menubar. This opens the
-      <guilabel>Toolbar Editor</guilabel> window, which allows you to customize the
-      toolbars in the current terminal window.</para>
+      <para>Once the toolbars are shown, choose <menuchoice><guimenu>Edit</guimenu>
+      <guimenuitem>Toolbars...</guimenuitem></menuchoice> from the menubar or right-click one of
+      the toolbars and choose <menuchoice><guimenuitem>Customize...</guimenuitem></menuchoice> from
+      the context menu. This opens the <guilabel>Toolbar Editor</guilabel> window, which allows you
+      to customize the toolbars in the current terminal window.</para>
 
       <screenshot>
         <mediaobject>
@@ -490,9 +515,9 @@
       </mediaobject>
     </screenshot>
 
-    <para>To configure &app;, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences</guimenuitem>
+    <para>To configure &app;, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences...</guimenuitem>
     </menuchoice> or right-click the terminal area of the window and choose
-    <menuchoice><guimenuitem>Preferences</guimenuitem></menuchoice>. This will bring up the <guilabel>Terminal
+    <menuchoice><guimenuitem>Preferences...</guimenuitem></menuchoice>. This will bring up the <guilabel>Terminal
     Preferences</guilabel> dialog, which allows you to adjust &app;'s behaviour to your needs.</para>
 
     <sect2 id="preferences-general">
@@ -529,9 +554,10 @@
         <varlistentry>
           <term><guilabel>Run command as login shell</guilabel></term>
           <listitem>
-            <para>Select this option to force the command that currently runs inside
-            the terminal to run as a login shell. The setting has no effect if you
-            have selected <guilabel>Run a custom command instead of my shell</guilabel>.</para>
+            <para>Select this option to force &app; to run your shell as a
+            login shell when you open new terminals. See the documentation of your
+            shell for details about differences between running it as interactive
+            shell and running it as login shell.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -539,21 +565,6 @@
           <listitem>
             <para>Select this option to insert a new entry in the utmp and wtmp records
             when a new terminal is opened.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Scrollbar is</guilabel></term>
-          <listitem>
-            <para>Use this drop-down list to specify the position of the scrollbar on
-            the terminal window.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Scrollback</guilabel></term>
-          <listitem>
-            <para>Use this spin box to specify the number of lines that you can scroll
-            back using the scrollbar or the mouse wheel. For example, if you specify
-            1000 you can scroll back the last 1000 lines displayed in the terminal.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -573,33 +584,18 @@
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Show menubar by default</guilabel></term>
+          <term><guilabel>Scrollbar is</guilabel></term>
           <listitem>
-            <para>Select this option to show the menubar on new terminal windows by default.</para>
+            <para>Use this drop-down list to specify the position of the scrollbar in
+            terminal windows.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
-          <term><guilabel>Terminal bell</guilabel></term>
+          <term><guilabel>Scrollback</guilabel></term>
           <listitem>
-            <para>Select this option to enable the audible terminal bell.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Show toolbars by default</guilabel></term>
-          <listitem>
-            <para>Select this option to show toolbars on new terminal windows by default.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Cursor blinks</guilabel></term>
-          <listitem>
-            <para>Select this option to display a cursor that blinks.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Show borders by default</guilabel></term>
-          <listitem>
-            <para>Select this option to show window decorations on new terminal windows by default.</para>
+            <para>Use this spin box to specify the number of lines that you can scroll
+            back using the scrollbar or the mouse wheel. For example, if you specify
+            1000 you can scroll back the last 1000 lines displayed in the terminal.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -624,23 +620,12 @@
         <varlistentry>
           <term><guilabel>Font</guilabel></term>
           <listitem>
-            <para>Click on this button to select a font type and font size for the terminal.</para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term><guilabel>Colors</guilabel></term>
-          <listitem>
-            <para>Click on the <guilabel>Text color</guilabel> button to choose the color
-            &app; uses to draw normal text - an application running inside the terminal can
-            also request a different color choosen from the palette below to draw text.</para>
-
-            <para>Click on the <guilabel>Background color</guilabel> button to choose the
-            default background for terminal windows. This color is also used in background
-            tinting when <guilabel>Transparent background</guilabel> or <guilabel>Background
-            image</guilabel> is selected below.</para>
-
-            <para>The terminal provides the application running inside with a palette of
-            16 colors. You can customize this colors using the 16 color buttons.</para>
+            <para>Click on the button to select the font type and font size you want to
+            use for the terminal.</para>
+            <para>Use the option <guilabel>Enable anti-aliasing for the terminal font</guilabel>
+            to control whether you want &app; to use anti-aliasing when rendering text in
+            the terminals. Disabling this option can impressively speed up terminal rendering
+            performance and reduce the overall system load on slow systems.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -662,6 +647,9 @@
                 specify the location and name of the image file. Alternatively, click on
                 the button besides the entry box to search for and select the image
                 file.</para>
+                <para>Use the <guilabel>Style</guilabel> option to control the appearance
+                of the background image. &app; supports tiling, centering, scaling and
+                strechting background images.</para>
               </listitem>
               <listitem>
                 <guilabel>Transparent background</guilabel>
@@ -672,6 +660,66 @@
             <para>If you have selected <guilabel>Background image</guilabel> or <guilabel>Transparent
             background</guilabel>, you can use the slider <guilabel>Shade transparent or image
             background</guilabel> to shade or dim the background of the terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Display menubar in new windows</guilabel></term>
+          <listitem>
+            <para>Select this option to show the menubar on new terminal windows by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Display toolbars in new windows</guilabel></term>
+          <listitem>
+            <para>Select this option to show toolbars on new terminal windows by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Display borders around new windows</guilabel></term>
+          <listitem>
+            <para>Select this option to show window decorations on new terminal windows by default.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Colors</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-colors.png" format="PNG" />
+          </imageobject>
+
+          <textobject>
+            <phrase>Color preferences</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Foreground and Background</guilabel></term>
+          <listitem>
+            <para>Click on the <guilabel>Text color</guilabel> button to choose the color
+            &app; uses to draw normal text - an application running inside the terminal can
+            also request a different color choosen from the palette below to draw text.</para>
+
+            <para>Click on the <guilabel>Background color</guilabel> button to choose the
+            default background for terminal windows. This color is also used in background
+            tinting when <guilabel>Transparent background</guilabel> or <guilabel>Background
+            image</guilabel> is selected below.</para>
+
+            <para>You can also choose to use the colors from the currently active Gtk+
+            theme by selecting the option <guilabel>Use colors from system theme</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Palette</guilabel></term>
+          <listitem>
+            <para>The terminal provides the application running inside with a palette of
+            16 colors. You can customize this colors using the 16 color buttons.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -693,6 +741,16 @@
       </screenshot>
 
       <variablelist>
+        <varlistentry>
+          <term><guilabel>Disable all menu access keys (such as Alt+f)</guilabel></term>
+          <listitem>
+            <para>Select this option to disable the access keys that are defined to
+            enable you to use keyboard instead of the mouse to select a menu item.
+            Each access key is identified by an underlined letter on a menu or dialog
+            option. In some cases, you must press the <keycap>Alt</keycap> key in
+            combination with the access key to perform the action.</para>
+          </listitem>
+        </varlistentry>
         <varlistentry>
           <term><guilabel>Disable menu shortcut key (F10 by default)</guilabel></term>
           <listitem>
@@ -797,57 +855,52 @@
     you know of a question thats missing from this page, please <ulink
     url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal&amp;component=docs">file a request</ulink>.</para>
 
-    <variablelist>
-      <varlistentry>
-        <term>&app; complains about <literal>Unable to start terminal server: Unable to connect
-        to D-BUS message daemon</literal>, what can I do?</term>
-        <listitem>
-          <para>&app; tries to reduce the number of running instances by establishing a D-BUS service
-          that handles all terminal windows. The message above tells you that &app; wasn't able to
-          connect to the D-BUS session message daemon and register a service. This is just a warning,
-          you can use the terminal without the D-BUS service feature as well.</para>
+    <sect3>
+      <title>&app; complains about <literal>Unable to start terminal server: Unable to connect
+        to D-BUS message daemon</literal>, what can I do?</title>
 
-          <para>To start the D-BUS session message daemon when you login to your X session, either
-          modify your xinitrc file and change the line <literal>xfce4-session</literal> to
-          <literal>dbus-launch xfce4-session</literal> or use <literal>dbus-launch startxfce4</literal>
-          to start Xfce instead. If you don't use Xfce, please look at the documentation of your
-          desktop environment on how to enable the D-BUS session daemon.</para>
-        </listitem>
-      </varlistentry>
+      <para>&app; tries to reduce the number of running instances by establishing a D-BUS service
+      that handles all terminal windows. The message above tells you that &app; wasn't able to
+      connect to the D-BUS session message daemon and register a service. This is just a warning,
+      you can use the terminal without the D-BUS service feature as well.</para>
 
-      <varlistentry>
-        <term><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &app;, what's wrong?</term>
-        <listitem>
-          <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
-          the terminal widget used by &app;. A patch for vte that fixes the problem is available <ulink
-          url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
-          with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
-        </listitem>
-      </varlistentry>
+      <para>To start the D-BUS session message daemon when you login to your X session, either
+      modify your xinitrc file and change the line <literal>xfce4-session</literal> to
+      <literal>dbus-launch xfce4-session</literal> or use <literal>dbus-launch startxfce4</literal>
+      to start Xfce instead. If you don't use Xfce, please look at the documentation of your
+      desktop environment on how to enable the D-BUS session daemon.</para>
+    </sect3>
 
-      <varlistentry>
-        <term>How to customize the menus in &app;?</term>
-        <listitem>
-          <para>You can customize the main menubar and the right-click popup menu by editing the file
-          <filename>Terminal/Terminal.ui</filename>. Create a copy of this file before you actually
-          start editing it. For example, say you installed Terminal in <filename>/usr/local</filename>,
-          then you would perform the following steps:</para>
+    <sect3>
+      <title><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &app;, what's wrong?</title>
+
+      <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
+      the terminal widget used by &app;. A patch for vte that fixes the problem is available <ulink
+      url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
+      with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
+    </sect3>
+
+    <sect3>
+      <title>How to customize the menus in &app;?</title>
+
+      <para>You can customize the main menubar and the right-click popup menu by editing the file
+      <filename>Terminal/Terminal.ui</filename>. Create a copy of this file before you actually
+      start editing it. For example, say you installed Terminal in <filename>/usr/local</filename>,
+      then you would perform the following steps:</para>
 
 <screen>$ mkdir -p ~/.local/share/Terminal
 $ cd ~/.local/share/Terminal
 $ cp /usr/local/share/Terminal/Terminal.ui .</screen>
 
-          <para>Now you can safely edit the file <filename>~/.local/share/Terminal/Terminal.ui</filename>
-          to customize the menus. See the <ulink
-          url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> documentation
-          for details on the file format. The changes will only be visible in new terminal windows.</para>
+      <para>Now you can safely edit the file <filename>~/.local/share/Terminal/Terminal.ui</filename>
+      to customize the menus. See the <ulink
+      url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> documentation
+      for details on the file format. The changes will only be visible in new terminal windows.</para>
 
-          <para>If you choose to customize your menus this way, you'll have to take care to sync
-          your customized <filename>Terminal.ui</filename> file when you upgrade to a newer &app;
-          release to keep up with user interface changes and additions.</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+      <para>If you choose to customize your menus this way, you'll have to take care to sync
+      your customized <filename>Terminal.ui</filename> file when you upgrade to a newer &app;
+      release to keep up with user interface changes and additions.</para>
+    </sect3>
   </sect1>
 
   <sect1 id="support">

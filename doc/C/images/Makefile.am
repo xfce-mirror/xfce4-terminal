@@ -6,6 +6,7 @@ images_DATA =								\
 	terminal-multiple-tabs.png					\
 	terminal-preferences-advanced.png				\
 	terminal-preferences-appearance.png				\
+	terminal-preferences-colors.png					\
 	terminal-preferences-general.png				\
 	terminal-preferences-shortcuts.png				\
 	terminal-set-title.png						\

@@ -852,7 +852,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
 
-  button = gtk_check_button_new_with_mnemonic (_("Disable all me_nu access keys (such as Alt+f to open the File menu)"));
+  button = gtk_check_button_new_with_mnemonic (_("Disable all me_nu access keys (such as Alt+f)"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "shortcuts-no-mnemonics", G_OBJECT (button), "active");
   gtk_box_pack_start (GTK_BOX (vbox), button, TRUE, TRUE, 0);
   gtk_widget_show (button);
