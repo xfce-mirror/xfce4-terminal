@@ -38,7 +38,7 @@ typedef struct _TerminalTabHeader      TerminalTabHeader;
 
 struct _TerminalTabHeaderClass
 {
-  GtkHBoxClass __parent__;
+  GtkEventBoxClass __parent__;
 
   /* signals */
   void (*close)           (TerminalTabHeader *header);
