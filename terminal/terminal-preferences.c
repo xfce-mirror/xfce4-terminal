@@ -103,6 +103,7 @@ enum
   PROP_MISC_MENUBAR_DEFAULT,
   PROP_MISC_TOOLBARS_DEFAULT,
   PROP_MISC_CONFIRM_CLOSE,
+  PROP_MISC_CYCLE_TABS,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -950,6 +951,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          _("Confirm closing a window with multiple tabs"),
                                                          _("Confirm closing a window with multiple tabs"),
                                                          TRUE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-cycle-tabs:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_CYCLE_TABS,
+                                   g_param_spec_boolean ("misc-cycle-tabs",
+                                                         _("Cycle tabs"),
+                                                         _("Allow cycling through tabs"),
+                                                         FALSE,
                                                          G_PARAM_READWRITE));
 
   /**

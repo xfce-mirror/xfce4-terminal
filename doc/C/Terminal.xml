@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "December 2004"> 
-  <!ENTITY appversion "0.2.2"> 
+  <!ENTITY date "January 2005"> 
+  <!ENTITY appversion "0.2.3svn"> 
   <!ENTITY app "Terminal"> 
 ]>
 
@@ -17,6 +17,7 @@
     <copyright>
       <year>2003</year>
       <year>2004</year>
+      <year>2005</year>
       <holder>os-cillation</holder>
     </copyright>
 
@@ -1236,7 +1237,8 @@
 [Configuration]
 MiscBell=TRUE
 MiscConfirmClose=FALSE
-MiscCursorBlinks=TRUE</programlisting>
+MiscCursorBlinks=TRUE
+MiscCycleTabs=TRUE</programlisting>
 
       <para>
         plus all the options that are controlled through the preferences dialog.
@@ -1248,7 +1250,7 @@ MiscCursorBlinks=TRUE</programlisting>
           <listitem>
             <para>
               Enables (<varname>MiscBell=TRUE</varname>) or disables (<varname>MiscBell=FALSE</varname>)
-              the audible terminal bell. Its disabled by default.
+              the audible terminal bell. It is disabled by default.
             </para>
           </listitem>
         </varlistentry>
@@ -1268,11 +1270,29 @@ MiscCursorBlinks=TRUE</programlisting>
           <term><varname>MiscCursorBlinks</varname></term>
           <listitem>
             <para>
-              Enable this option to display cursor that blinks. Can be either <literal>TRUE</literal>
+              Enable this option to display a cursor that blinks. Can be either <literal>TRUE</literal>
               or <literal>FALSE</literal> (the default).
             </para>
           </listitem>
         </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCycleTabs</varname></term>
+          <listitem>
+            <para>
+              This option controls whether you can circulate through terminal tabs. That is, whether
+              you are able to go from the last tab to the first tab using the <guimenuitem>Next
+              Tab</guimenuitem> button from the <guimenu>Go</guimenu> menu (or the associated keyboard
+              shortcut), and from the first tab to the last tab using the <guimenuitem>Previous
+              Tab</guimenuitem> button from the <guimenu>Go</guimenu> menu. The option can be either
+              <literal>TRUE</literal> or <literal>FALSE</literal>.
+            </para>
+            <para>
+              This behaviour is disabled by default, because it tends to confuse users.
+            </para>
+          </listitem>
+        </varlistentry>
+
 <!--
         <varlistentry>
           <term><varname>VteWorkaroundTitleBug</varname></term>

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2005 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -663,6 +663,7 @@ terminal_window_update_actions (TerminalWindow *window)
   GtkNotebook    *notebook = GTK_NOTEBOOK (window->notebook);
   GtkAction      *action;
   GtkWidget      *tabitem;
+  gboolean        cycle_tabs;
   gint            page_num;
   gint            n_pages;
 
@@ -672,6 +673,10 @@ terminal_window_update_actions (TerminalWindow *window)
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (terminal));
       n_pages = gtk_notebook_get_n_pages (notebook);
 
+      g_object_get (G_OBJECT (window->preferences),
+                    "misc-cycle-tabs", &cycle_tabs,
+                    NULL);
+
       action = gtk_action_group_get_action (window->action_group, "close-tab");
       g_object_set (G_OBJECT (action),
                     "sensitive", n_pages > 1,
@@ -679,12 +684,12 @@ terminal_window_update_actions (TerminalWindow *window)
 
       action = gtk_action_group_get_action (window->action_group, "prev-tab");
       g_object_set (G_OBJECT (action),
-                    "sensitive", page_num > 0,
+                    "sensitive", (cycle_tabs && n_pages > 0) || (page_num > 0),
                     NULL);
 
       action = gtk_action_group_get_action (window->action_group, "next-tab");
       g_object_set (G_OBJECT (action),
-                    "sensitive", page_num < n_pages - 1,
+                    "sensitive", (cycle_tabs && n_pages > 0 ) || (page_num < n_pages - 1),
                     NULL);
 
       action = gtk_action_group_get_action (window->action_group, "copy");
@@ -1219,7 +1224,13 @@ static void
 terminal_window_action_prev_tab (GtkAction       *action,
                                  TerminalWindow  *window)
 {
-  gtk_notebook_prev_page (GTK_NOTEBOOK (window->notebook));
+  gint page_num;
+  gint n_pages;
+
+  page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook),
+                                 (page_num + 1) % n_pages);
 }
 
 
@@ -1228,7 +1239,13 @@ static void
 terminal_window_action_next_tab (GtkAction       *action,
                                  TerminalWindow  *window)
 {
-  gtk_notebook_next_page (GTK_NOTEBOOK (window->notebook));
+  gint page_num;
+  gint n_pages;
+
+  page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook),
+                                 (page_num - 1) % n_pages);
 }
 
 
@@ -1501,7 +1518,7 @@ terminal_window_about_idle (gpointer user_data)
     icon = gdk_pixbuf_new_from_file (DATADIR "/icons/hicolor/48x48/apps/Terminal.png", NULL);
 
   info = xfce_about_info_new ("Terminal", VERSION, _("X Terminal Emulator"),
-                              XFCE_COPYRIGHT_TEXT ("2003-2004", "os-cillation"),
+                              XFCE_COPYRIGHT_TEXT ("2003-2005", "os-cillation"),
                               XFCE_LICENSE_GPL);
   xfce_about_info_set_homepage (info, "http://www.os-cillation.com/");
   xfce_about_info_add_credit (info, "Benedikt Meurer", "benny@xfce.org", _("Maintainer"));

@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2003-2004
+dnl Copyright (c) 2003-2005
 dnl         os-cillation e.K. All rights reserved.
 dnl
 dnl Written by Benedikt Meurer <benny@xfce.org>.
@@ -15,7 +15,7 @@ m4_define([terminal_version_dbus], [3])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
 
 dnl Initialize autoconf
-AC_COPYRIGHT([Copyright (c) 2003-2004
+AC_COPYRIGHT([Copyright (c) 2003-2005
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
