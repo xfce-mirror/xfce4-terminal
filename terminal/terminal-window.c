@@ -1273,6 +1273,14 @@ terminal_window_about_idle (gpointer user_data)
   XfceAboutInfo  *info;
   GtkWidget      *dialog;
   GdkPixbuf      *icon;
+  gchar          *s;
+  guint           n;
+
+  static const struct { gchar *name, *email, *language; } translators[] = {
+    { "Dwayne Bailey", "dwayne@translate.org.za", "en_GB" },
+    { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
+    { NULL, },
+  };
 
   icon = gtk_widget_render_icon (GTK_WIDGET (window),
                                  "terminal-general",
@@ -1285,7 +1293,13 @@ terminal_window_about_idle (gpointer user_data)
   xfce_about_info_set_homepage (info, "http://www.os-cillation.com/");
   xfce_about_info_add_credit (info, "Benedikt Meurer", "benny@xfce.org", _("Maintainer"));
   xfce_about_info_add_credit (info, "Francois Le Clainche", "fleclainche@wanadoo.fr", _("Icon Designer"));
-  xfce_about_info_add_credit (info, "Jasper Huijsmans", "jasper@xfce.org", _("Translator (nl)"));
+
+  for (n = 0; translators[n].name != NULL; ++n)
+    {
+      s = g_strdup_printf (_("Translator (%s)"), translators[n].language);
+      xfce_about_info_add_credit (info, translators[n].name, translators[n].email, s);
+      g_free (s);
+    }
 
   dialog = xfce_about_dialog_new (GTK_WINDOW (window), info, icon);
   gtk_dialog_run (GTK_DIALOG (dialog));
