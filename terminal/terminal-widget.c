@@ -41,7 +41,7 @@
 #include <gdk/gdkkeysyms.h>
 #include <vte/vte.h>
 
-#include <terminal/terminal-preferences.h>
+#include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-widget.h>
 
 
@@ -270,6 +270,8 @@ terminal_widget_init (TerminalWidget *widget)
                     G_CALLBACK (terminal_widget_vte_realize), widget);
   g_signal_connect (G_OBJECT (widget->terminal), "window-title-changed",
                     G_CALLBACK (terminal_widget_vte_window_title_changed), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->terminal), "size-allocate",
+                            G_CALLBACK (terminal_widget_timer_background), widget);
   gtk_box_pack_start (GTK_BOX (widget), widget->terminal, TRUE, TRUE, 0);
   gtk_widget_show (widget->terminal);
 
@@ -291,6 +293,8 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-mode",
                             G_CALLBACK (terminal_widget_update_background), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-image-file",
+                            G_CALLBACK (terminal_widget_update_background), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-image-style",
                             G_CALLBACK (terminal_widget_update_background), widget);
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::background-darkness",
                             G_CALLBACK (terminal_widget_update_background), widget);
@@ -986,41 +990,43 @@ terminal_widget_vte_window_title_changed (VteTerminal    *terminal,
 static gboolean
 terminal_widget_timer_background (gpointer user_data)
 {
-  TerminalBackground background_mode;
-  TerminalWidget    *widget = TERMINAL_WIDGET (user_data);
-  gdouble            background_darkness;
-  gchar             *background_file;
+  TerminalImageLoader *loader;
+  TerminalBackground   background_mode;
+  TerminalWidget      *widget = TERMINAL_WIDGET (user_data);
+  GdkPixbuf           *image;
+  gdouble              background_darkness;
 
   if (GTK_WIDGET_MAPPED (widget))
     {
       g_object_get (G_OBJECT (widget->preferences), "background-mode", &background_mode, NULL);
 
-      if (background_mode == TERMINAL_BACKGROUND_IMAGE)
-        {
-          g_object_get (G_OBJECT (widget->preferences), "background-image-file", &background_file, NULL);
-          if (G_LIKELY (background_file != NULL))
-            {
-              vte_terminal_set_background_image_file (VTE_TERMINAL (widget->terminal), background_file);
-              g_free (background_file);
-            }
-        }
-      else
-        {
-          vte_terminal_set_background_image_file (VTE_TERMINAL (widget->terminal), NULL);
-        }
-
       if (background_mode == TERMINAL_BACKGROUND_SOLID)
         {
-          vte_terminal_set_background_saturation (VTE_TERMINAL (widget->terminal), 0.0);
+          vte_terminal_set_background_image (VTE_TERMINAL (widget->terminal), NULL);
+          vte_terminal_set_background_saturation (VTE_TERMINAL (widget->terminal), 1.0);
+          vte_terminal_set_background_transparent (VTE_TERMINAL (widget->terminal), FALSE);
+        }
+      else if (background_mode == TERMINAL_BACKGROUND_IMAGE)
+        {
+          vte_terminal_set_background_saturation (VTE_TERMINAL (widget->terminal), 1.0);
+          vte_terminal_set_background_transparent (VTE_TERMINAL (widget->terminal), FALSE);
+
+          loader = terminal_image_loader_get ();
+          image = terminal_image_loader_load (loader,
+                                              widget->terminal->allocation.width,
+                                              widget->terminal->allocation.height);
+          vte_terminal_set_background_image (VTE_TERMINAL (widget->terminal), image);
+          if (GDK_IS_PIXBUF (image))
+            g_object_unref (G_OBJECT (image));
+          g_object_unref (G_OBJECT (loader));
         }
       else
         {
           g_object_get (G_OBJECT (widget->preferences), "background-darkness", &background_darkness, NULL);
+          vte_terminal_set_background_image (VTE_TERMINAL (widget->terminal), NULL);
           vte_terminal_set_background_saturation (VTE_TERMINAL (widget->terminal), 1.0 - background_darkness);
+          vte_terminal_set_background_transparent (VTE_TERMINAL (widget->terminal), TRUE);
         }
-
-      vte_terminal_set_background_transparent (VTE_TERMINAL (widget->terminal),
-                                               background_mode == TERMINAL_BACKGROUND_TRANSPARENT);
     }
 
   return FALSE;
@@ -1253,9 +1259,11 @@ gchar*
 terminal_widget_get_title (TerminalWidget *widget)
 {
   TerminalTitle mode;
-  const gchar  *window_title;
+  const gchar  *vte_title;
+  gchar        *window_title;
   gchar        *initial;
   gchar        *title;
+  gchar        *tmp;
 
   g_return_val_if_fail (TERMINAL_IS_WIDGET (widget), NULL);
 
@@ -1267,7 +1275,25 @@ terminal_widget_get_title (TerminalWidget *widget)
                 "title-mode", &mode,
                 NULL);
 
-  window_title = vte_terminal_get_window_title (VTE_TERMINAL (widget->terminal));
+  vte_title = vte_terminal_get_window_title (VTE_TERMINAL (widget->terminal));
+  window_title = (vte_title != NULL) ? g_strdup (vte_title) : NULL;
+
+  /* work around VTE problem, see #10 for details */
+  if (window_title != NULL)
+    {
+      tmp = g_strconcat (" - ", initial, NULL);
+      if (g_str_has_suffix (window_title, tmp))
+        window_title[strlen (window_title) - strlen (tmp)] = '\0';
+      g_free (tmp);
+
+      tmp = g_strconcat (initial, " - ", NULL);
+      if (g_str_has_prefix (window_title, tmp))
+        {
+          memmove (window_title, window_title + strlen (tmp),
+                   strlen (window_title) + 1 - strlen (tmp));
+        }
+      g_free (tmp);
+    }
 
   switch (mode)
     {
@@ -1280,14 +1306,14 @@ terminal_widget_get_title (TerminalWidget *widget)
 
     case TERMINAL_TITLE_PREPEND:
       if (window_title != NULL)
-        title = g_strdup_printf ("%s - %s", window_title, initial);
+        title = g_strconcat (window_title, " - ", initial, NULL);
       else
         title = g_strdup (initial);
       break;
 
     case TERMINAL_TITLE_APPEND:
       if (window_title != NULL)
-        title = g_strdup_printf ("%s - %s", initial, window_title);
+        title = g_strconcat (initial, " - ", window_title, NULL);
       else
         title = g_strdup (initial);
       break;
@@ -1301,6 +1327,7 @@ terminal_widget_get_title (TerminalWidget *widget)
       title = NULL;
     }
 
+  g_free (window_title);
   g_free (initial);
 
   return title;

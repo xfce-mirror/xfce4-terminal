@@ -671,7 +671,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  vbox = gtk_vbox_new (FALSE, 24);
+  vbox = gtk_vbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
   gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
@@ -689,24 +689,24 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_BACKGROUND), NULL);
   exo_property_proxy_add (proxy, G_OBJECT (combo), "active", NULL, NULL, NULL);
 
-  ibox = gtk_vbox_new (FALSE, 1);
-  gtk_box_pack_start (GTK_BOX (vbox), ibox, FALSE, TRUE, 0);
-  gtk_widget_show (ibox);
+  table = gtk_table_new (2, 2, FALSE);
+  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+  gtk_table_set_col_spacings (GTK_TABLE (table), 12);
+  gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
+  gtk_widget_show (table);
 
-  exo_property_proxy_add (proxy, G_OBJECT (ibox), "visible", converter_is1, NULL, NULL);
+  exo_property_proxy_add (proxy, G_OBJECT (table), "visible", converter_is1, NULL, NULL);
 
-  label = gtk_label_new_with_mnemonic (_("_Image file:"));
+  label = gtk_label_new_with_mnemonic (_("_File:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_box_pack_start (GTK_BOX (ibox), label, FALSE, TRUE, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1,
+                    GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   hbox = gtk_hbox_new (FALSE, 1);
-  gtk_box_pack_start (GTK_BOX (ibox), hbox, FALSE, TRUE, 0);
+  gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 0, 1,
+                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (hbox);
-
-  label = g_object_new (GTK_TYPE_ALIGNMENT, "width-request", 12, NULL);
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
-  gtk_widget_show (label);
 
   entry = gtk_entry_new ();
   proxy2 = terminal_preferences_get_proxy (dialog->preferences, "background-image-file");
@@ -723,13 +723,27 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (image);
   gtk_widget_show (button);
 
-  hbox = gtk_hbox_new (FALSE, 1);
-  gtk_box_pack_start (GTK_BOX (ibox), hbox, FALSE, TRUE, 0);
-  gtk_widget_show (hbox);
-
-  label = g_object_new (GTK_TYPE_ALIGNMENT, "width-request", 12, NULL);
-  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
+  label = gtk_label_new_with_mnemonic (_("_Style:"));
+  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2,
+                    GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
+
+  combo = gtk_combo_box_new_text ();
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Tiled"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Centered"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Scaled"));
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Stretched"));
+  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
+                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (combo);
+
+  proxy2 = exo_property_proxy_new ();
+  exo_property_proxy_add (proxy2, G_OBJECT (dialog->preferences), "background-image-style",
+                          converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_BACKGROUND_STYLE), NULL);
+  exo_property_proxy_add (proxy2, G_OBJECT (combo), "active", NULL, NULL, NULL);
+  g_object_unref (G_OBJECT (proxy2));
 
   ibox = gtk_vbox_new (FALSE, 1);
   gtk_box_pack_start (GTK_BOX (vbox), ibox, FALSE, TRUE, 0);

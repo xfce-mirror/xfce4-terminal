@@ -25,6 +25,9 @@ GType terminal_title_get_type (void);
 GType terminal_background_get_type (void);
 #define TERMINAL_TYPE_BACKGROUND (terminal_background_get_type())
 
+GType terminal_background_style_get_type (void);
+#define TERMINAL_TYPE_BACKGROUND_STYLE (terminal_background_style_get_type())
+
 GType terminal_erase_binding_get_type (void);
 #define TERMINAL_TYPE_ERASE_BINDING (terminal_erase_binding_get_type())
 

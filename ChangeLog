@@ -1,3 +1,20 @@
+2004-11-02	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-widget.c: Work around a problem in VTE, where
+	  the initial title is prepended again and again. This fixes bug
+	  #10.
+	* terminal/terminal-image-loader.c, terminal/terminal-widget.c,
+	  terminal/terminal-image-loader.h, terminal/terminal-preferences.c,
+	  terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-preferences.h: Added style (centered, scaled,
+	  stretched, tiled) option for background images. This fixes bug
+	  #9.
+	* terminal/main.c: Don't make CRITICAL fatal with --enable-debug,
+	  since this crashes Terminal due to bugs in GtkFileChooser.
+	* po/: Run make update-po and updated de.po.
+	* TerminalHelp.in: Perform browser search instead of forcing
+	  mozilla.
+
 2004-10-12	Benedikt Meurer <benny@xfce.org>
 
 	* configure.ac: Version 0.1.9, depend on latest exo 0.1.2.

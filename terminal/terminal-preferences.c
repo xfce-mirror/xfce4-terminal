@@ -60,6 +60,7 @@ enum
   PROP_ACCEL_CONTENTS,
   PROP_BACKGROUND_MODE,
   PROP_BACKGROUND_IMAGE_FILE,
+  PROP_BACKGROUND_IMAGE_STYLE,
   PROP_BACKGROUND_DARKNESS,
   PROP_BINDING_BACKSPACE,
   PROP_BINDING_DELETE,
@@ -101,50 +102,51 @@ enum
 
 struct _TerminalPreferences
 {
-  GObject               __parent__;
+  GObject                  __parent__;
 
-  gchar                *accel_new_tab;
-  gchar                *accel_new_window;
-  gchar                *accel_close_tab;
-  gchar                *accel_close_window;
-  gchar                *accel_copy;
-  gchar                *accel_paste;
-  gchar                *accel_preferences;
-  gchar                *accel_show_menubar;
-  gchar                *accel_show_borders;
-  gchar                *accel_fullscreen;
-  gchar                *accel_prev_tab;
-  gchar                *accel_next_tab;
-  gchar                *accel_set_title;
-  gchar                *accel_reset;
-  gchar                *accel_reset_and_clear;
-  gchar                *accel_contents;
+  gchar                   *accel_new_tab;
+  gchar                   *accel_new_window;
+  gchar                   *accel_close_tab;
+  gchar                   *accel_close_window;
+  gchar                   *accel_copy;
+  gchar                   *accel_paste;
+  gchar                   *accel_preferences;
+  gchar                   *accel_show_menubar;
+  gchar                   *accel_show_borders;
+  gchar                   *accel_fullscreen;
+  gchar                   *accel_prev_tab;
+  gchar                   *accel_next_tab;
+  gchar                   *accel_set_title;
+  gchar                   *accel_reset;
+  gchar                   *accel_reset_and_clear;
+  gchar                   *accel_contents;
 
-  TerminalBackground    background_mode;
-  gchar                *background_image_file;
-  gdouble               background_darkness;
+  TerminalBackground       background_mode;
+  gchar                   *background_image_file;
+  TerminalBackgroundStyle  background_image_style;
+  gdouble                  background_darkness;
 
-  TerminalEraseBinding  binding_backspace;
-  TerminalEraseBinding  binding_delete;
+  TerminalEraseBinding     binding_backspace;
+  TerminalEraseBinding     binding_delete;
 
-  GdkColor              color_foreground;
-  GdkColor              color_background;
-  GdkColor              color_palette1;
-  GdkColor              color_palette2;
-  GdkColor              color_palette3;
-  GdkColor              color_palette4;
-  GdkColor              color_palette5;
-  GdkColor              color_palette6;
-  GdkColor              color_palette7;
-  GdkColor              color_palette8;
-  GdkColor              color_palette9;
-  GdkColor              color_palette10;
-  GdkColor              color_palette11;
-  GdkColor              color_palette12;
-  GdkColor              color_palette13;
-  GdkColor              color_palette14;
-  GdkColor              color_palette15;
-  GdkColor              color_palette16;
+  GdkColor                 color_foreground;
+  GdkColor                 color_background;
+  GdkColor                 color_palette1;
+  GdkColor                 color_palette2;
+  GdkColor                 color_palette3;
+  GdkColor                 color_palette4;
+  GdkColor                 color_palette5;
+  GdkColor                 color_palette6;
+  GdkColor                 color_palette7;
+  GdkColor                 color_palette8;
+  GdkColor                 color_palette9;
+  GdkColor                 color_palette10;
+  GdkColor                 color_palette11;
+  GdkColor                 color_palette12;
+  GdkColor                 color_palette13;
+  GdkColor                 color_palette14;
+  GdkColor                 color_palette15;
+  GdkColor                 color_palette16;
 
   gboolean              command_update_records;
   gboolean              command_login_shell;
@@ -306,6 +308,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_DOUBLE, transform_string_to_double);
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_UINT, transform_string_to_uint);
+  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND_STYLE))
+    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND_STYLE, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND))
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_SCROLLBAR))
@@ -513,6 +517,18 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Background image file"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:background-image-file:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_BACKGROUND_IMAGE_STYLE,
+                                   g_param_spec_enum ("background-image-style",
+                                                      _("Background image style"),
+                                                      _("Background image style"),
+                                                      TERMINAL_TYPE_BACKGROUND_STYLE,
+                                                      TERMINAL_BACKGROUND_STYLE_TILED,
+                                                      G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:background-darkness:
@@ -957,6 +973,7 @@ terminal_preferences_init (TerminalPreferences *preferences)
 
   preferences->background_mode        = TERMINAL_BACKGROUND_SOLID;
   preferences->background_image_file  = g_strdup ("");
+  preferences->background_image_style = TERMINAL_BACKGROUND_STYLE_TILED;
   preferences->background_darkness    = 0.5;
 
   preferences->binding_backspace      = TERMINAL_ERASE_BINDING_ASCII_BACKSPACE;
@@ -1124,6 +1141,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_BACKGROUND_IMAGE_FILE:
       g_value_set_string (value, preferences->background_image_file);
+      break;
+
+    case PROP_BACKGROUND_IMAGE_STYLE:
+      g_value_set_enum (value, preferences->background_image_style);
       break;
 
     case PROP_BACKGROUND_DARKNESS:
@@ -1491,6 +1512,16 @@ terminal_preferences_set_property (GObject      *object,
           g_free (preferences->background_image_file);
           preferences->background_image_file = g_strdup (sval);
           g_object_notify (object, "background-image-file");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_BACKGROUND_IMAGE_STYLE:
+      ival = g_value_get_enum (value);
+      if (ival != preferences->background_image_style)
+        {
+          preferences->background_image_style = ival;
+          g_object_notify (object, "background-image-style");
           terminal_preferences_schedule_store (preferences);
         }
       break;

@@ -319,13 +319,12 @@ terminal_window_init (TerminalWindow *window)
       gtk_widget_show (window->menubar);
     }
 
-  window->notebook = gtk_notebook_new ();
-  g_object_set (G_OBJECT (window->notebook),
-                "scrollable", TRUE,
-                "show-border", FALSE,
-                "tab-hborder", 0,
-                "tab-vborder", 0,
-                NULL);
+  window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
+                                   "scrollable", TRUE,
+                                   "show-border", FALSE,
+                                   "tab-hborder", 0,
+                                   "tab-vborder", 0,
+                                   NULL);
   g_signal_connect (G_OBJECT (window->notebook), "notify::page",
                     G_CALLBACK (terminal_window_notify_page), window);
   g_signal_connect (G_OBJECT (window->notebook), "remove",

@@ -58,6 +58,7 @@ am__objects_2 =
 am_Terminal_OBJECTS = $(am__objects_1) $(am__objects_2) \
 	Terminal-main.$(OBJEXT) Terminal-terminal-accel-map.$(OBJEXT) \
 	Terminal-terminal-app.$(OBJEXT) \
+	Terminal-terminal-image-loader.$(OBJEXT) \
 	Terminal-terminal-options.$(OBJEXT) \
 	Terminal-terminal-preferences.$(OBJEXT) \
 	Terminal-terminal-preferences-dialog.$(OBJEXT) \
@@ -74,6 +75,7 @@ am__depfiles_maybe = depfiles
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-accel-map.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-app.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-enum-types.Po \
+@AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-image-loader.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-options.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-preferences-dialog.Po \
 @AMDEP_TRUE@	./$(DEPDIR)/Terminal-terminal-preferences.Po \
@@ -229,6 +231,7 @@ Terminal_build_sources = \
 Terminal_headers = \
 	terminal-accel-map.h						\
 	terminal-app.h							\
+	terminal-image-loader.h						\
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
@@ -244,6 +247,7 @@ Terminal_SOURCES = \
 	stock-icons.h							\
 	terminal-accel-map.c						\
 	terminal-app.c							\
+	terminal-image-loader.c						\
 	terminal-options.c						\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\
@@ -341,6 +345,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-accel-map.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-app.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-enum-types.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-image-loader.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-options.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-preferences-dialog.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Terminal-terminal-preferences.Po@am__quote@
@@ -468,6 +473,30 @@ Terminal-terminal-app.lo: terminal-app.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-app.Plo' tmpdepfile='$(DEPDIR)/Terminal-terminal-app.TPlo' @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-app.lo `test -f 'terminal-app.c' || echo '$(srcdir)/'`terminal-app.c
+
+Terminal-terminal-image-loader.o: terminal-image-loader.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-image-loader.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-image-loader.Tpo" -c -o Terminal-terminal-image-loader.o `test -f 'terminal-image-loader.c' || echo '$(srcdir)/'`terminal-image-loader.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-image-loader.Tpo" "$(DEPDIR)/Terminal-terminal-image-loader.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-image-loader.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-image-loader.c' object='Terminal-terminal-image-loader.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-image-loader.Po' tmpdepfile='$(DEPDIR)/Terminal-terminal-image-loader.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-image-loader.o `test -f 'terminal-image-loader.c' || echo '$(srcdir)/'`terminal-image-loader.c
+
+Terminal-terminal-image-loader.obj: terminal-image-loader.c
+@am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-image-loader.obj -MD -MP -MF "$(DEPDIR)/Terminal-terminal-image-loader.Tpo" -c -o Terminal-terminal-image-loader.obj `if test -f 'terminal-image-loader.c'; then $(CYGPATH_W) 'terminal-image-loader.c'; else $(CYGPATH_W) '$(srcdir)/terminal-image-loader.c'; fi`; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-image-loader.Tpo" "$(DEPDIR)/Terminal-terminal-image-loader.Po"; else rm -f "$(DEPDIR)/Terminal-terminal-image-loader.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-image-loader.c' object='Terminal-terminal-image-loader.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-image-loader.Po' tmpdepfile='$(DEPDIR)/Terminal-terminal-image-loader.TPo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-image-loader.obj `if test -f 'terminal-image-loader.c'; then $(CYGPATH_W) 'terminal-image-loader.c'; else $(CYGPATH_W) '$(srcdir)/terminal-image-loader.c'; fi`
+
+Terminal-terminal-image-loader.lo: terminal-image-loader.c
+@am__fastdepCC_TRUE@	if $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-image-loader.lo -MD -MP -MF "$(DEPDIR)/Terminal-terminal-image-loader.Tpo" -c -o Terminal-terminal-image-loader.lo `test -f 'terminal-image-loader.c' || echo '$(srcdir)/'`terminal-image-loader.c; \
+@am__fastdepCC_TRUE@	then mv -f "$(DEPDIR)/Terminal-terminal-image-loader.Tpo" "$(DEPDIR)/Terminal-terminal-image-loader.Plo"; else rm -f "$(DEPDIR)/Terminal-terminal-image-loader.Tpo"; exit 1; fi
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='terminal-image-loader.c' object='Terminal-terminal-image-loader.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	depfile='$(DEPDIR)/Terminal-terminal-image-loader.Plo' tmpdepfile='$(DEPDIR)/Terminal-terminal-image-loader.TPlo' @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -c -o Terminal-terminal-image-loader.lo `test -f 'terminal-image-loader.c' || echo '$(srcdir)/'`terminal-image-loader.c
 
 Terminal-terminal-options.o: terminal-options.c
 @am__fastdepCC_TRUE@	if $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(Terminal_CFLAGS) $(CFLAGS) -MT Terminal-terminal-options.o -MD -MP -MF "$(DEPDIR)/Terminal-terminal-options.Tpo" -c -o Terminal-terminal-options.o `test -f 'terminal-options.c' || echo '$(srcdir)/'`terminal-options.c; \

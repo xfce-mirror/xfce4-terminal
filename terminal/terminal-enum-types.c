@@ -97,6 +97,23 @@ terminal_background_get_type (void)
 }
 
 GType
+terminal_background_style_get_type (void)
+{
+	static GType type = 0;
+	if (type == 0) {
+	static const GEnumValue values[] = {
+	{ TERMINAL_BACKGROUND_STYLE_TILED, "TERMINAL_BACKGROUND_STYLE_TILED", "tiled" },
+	{ TERMINAL_BACKGROUND_STYLE_CENTERED, "TERMINAL_BACKGROUND_STYLE_CENTERED", "centered" },
+	{ TERMINAL_BACKGROUND_STYLE_SCALED, "TERMINAL_BACKGROUND_STYLE_SCALED", "scaled" },
+	{ TERMINAL_BACKGROUND_STYLE_STRETCHED, "TERMINAL_BACKGROUND_STYLE_STRETCHED", "stretched" },
+	{ 0, NULL, NULL }
+	};
+	type = g_enum_register_static ("TerminalBackgroundStyle", values);
+  }
+	return type;
+}
+
+GType
 terminal_erase_binding_get_type (void)
 {
 	static GType type = 0;

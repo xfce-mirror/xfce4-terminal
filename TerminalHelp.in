@@ -19,7 +19,22 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #
 
-test x"$BROWSER" = x"" && BROWSER="mozilla"
+if test x"${BROWSER}" = x""; then
+  for browser in mozilla firefox epiphany galeon mozilla opera konqueror; do
+    if (which "${browser}") > /dev/null 2>&1; then
+      BROWSER="${browser}"
+      break;
+    fi
+  done
+fi
+
+if test x"${BROWSER}" = x""; then
+  xmessage -center -file - -title Error <<EOF
+TerminalHelp was unable to find a browser to use.
+Please set the BROWSER environment variable.
+EOF
+  exit 1
+fi
 
 HELPDIR="@datadir@/doc/Terminal/"
 
@@ -48,13 +63,17 @@ fi
 [ -n "$2" ] && URL="$URL#$2"
 
 case "$BROWSER" in
-communicator*|netscape*|mozilla*|phoenix*|firebird*|firefox*)
-	$BROWSER -remote openurl\(file://"$URL",new-window\) || \
-		$BROWSER file://"$URL"
+firefox*)
+  $BROWSER -a firefox -remote openurl\("file://$URL",new-window\) || \
+    $BROWSER "file://$URL"
+  ;;
+communicator*|netscape*|mozilla*|phoenix*|firebird*)
+	$BROWSER -remote openurl\("file://$URL",new-window\) || \
+		$BROWSER "file://$URL"
 	;;
 opera*)
-	$BROWSER -remote openURL\(file://"$URL",new-window\) || \
-		$BROWSER file://"$URL"
+	$BROWSER -remote openURL\("file://$URL",new-window\) || \
+		$BROWSER "file://$URL"
 	;;
 *)
 	$BROWSER "$URL"

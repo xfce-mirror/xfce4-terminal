@@ -105,8 +105,10 @@ main (int argc, char **argv)
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
 
+#if 0
 #ifdef DEBUG
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL);
+#endif
 #endif
 
   g_set_application_name (_("Terminal"));

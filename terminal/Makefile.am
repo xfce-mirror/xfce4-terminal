@@ -15,6 +15,7 @@ Terminal_build_sources =						\
 Terminal_headers =							\
 	terminal-accel-map.h						\
 	terminal-app.h							\
+	terminal-image-loader.h						\
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
@@ -30,6 +31,7 @@ Terminal_SOURCES =							\
 	stock-icons.h							\
 	terminal-accel-map.c						\
 	terminal-app.c							\
+	terminal-image-loader.c						\
 	terminal-options.c						\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\
