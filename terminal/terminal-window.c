@@ -999,6 +999,9 @@ terminal_window_title_idle (gpointer user_data)
   ExoPropertyProxy *proxy;
   TerminalWindow   *window = TERMINAL_WINDOW (user_data);
   TerminalWidget   *widget;
+  AtkRelationSet   *relations;
+  AtkRelation      *relation;
+  AtkObject        *object;
   GtkWidget        *dialog;
   GtkWidget        *box;
   GtkWidget        *label;
@@ -1032,6 +1035,14 @@ terminal_window_title_idle (gpointer user_data)
       g_signal_connect_swapped (G_OBJECT (entry), "activate",
                                 G_CALLBACK (gtk_widget_destroy), dialog);
       gtk_widget_show (entry);
+
+      /* set Atk description and label relation for the entry */
+      object = gtk_widget_get_accessible (entry);
+      atk_object_set_description (object, _("Enter the title for the current terminal tab"));
+      relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+      relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+      atk_relation_set_add (relations, relation);
+      g_object_unref (G_OBJECT (relation));
 
       proxy = exo_property_proxy_new ();
       exo_property_proxy_add (proxy, G_OBJECT (widget), "custom-title", NULL, NULL, NULL);

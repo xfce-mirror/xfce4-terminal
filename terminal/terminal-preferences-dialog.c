@@ -192,6 +192,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget         *ibox;
   GtkWidget         *align;
   GtkWidget         *editor;
+  AtkRelationSet    *relations;
+  AtkRelation       *relation;
+  AtkObject         *object;
   gint               index;
 
   dialog->preferences = terminal_preferences_get ();
@@ -298,6 +301,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (entry);
 
+  /* set Atk label relation for the entry */
+  object = gtk_widget_get_accessible (entry);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
+
   label = gtk_label_new_with_mnemonic (_("_Dynamically-set title:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3,
@@ -317,6 +327,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, TRUE, 0);
   gtk_widget_show (combo);
+
+  /* set Atk label relation for the combo */
+  object = gtk_widget_get_accessible (combo);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   proxy = exo_property_proxy_new ();
   exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "title-mode",
@@ -422,6 +439,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
 
+  /* set Atk label relation for the combo */
+  object = gtk_widget_get_accessible (combo);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
+
   proxy = exo_property_proxy_new ();
   exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "scrolling-bar",
                           converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_SCROLLBAR), NULL);
@@ -445,6 +469,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_table_attach (GTK_TABLE (table), button, 1, 2, 3, 4,
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
+
+  /* set Atk label relation for the spin button */
+  object = gtk_widget_get_accessible (button);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   icon = xfce_themed_icon_load ("Terminal-general", 48);
   gtk_list_store_append (store, &iter);
@@ -694,13 +725,24 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (align);
 
-  button = gtk_color_button_new ();
+  button = g_object_new (GTK_TYPE_COLOR_BUTTON,
+                         "title", _("Chooser terminal text color"),
+                         NULL);
   proxy = terminal_preferences_get_proxy (dialog->preferences, "color-foreground");
   exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
   proxy = terminal_preferences_get_proxy (dialog->preferences, "color-system-theme");
   exo_property_proxy_add (proxy, G_OBJECT (button), "sensitive", converter_negate, NULL, NULL);
   gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);
+
+  /* set Atk name/description and label relation for the button */
+  object = gtk_widget_get_accessible (button);
+  atk_object_set_name (object, _("Color Selector"));
+  atk_object_set_description (object, _("Open a dialog to specify the color"));
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   label = g_object_new (GTK_TYPE_LABEL,
                         "label", _("_Background color:"),
@@ -716,13 +758,24 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (align);
 
-  button = gtk_color_button_new ();
+  button = g_object_new (GTK_TYPE_COLOR_BUTTON,
+                         "title", _("Chooser terminal background color"),
+                         NULL);
   proxy = terminal_preferences_get_proxy (dialog->preferences, "color-background");
   exo_property_proxy_add (proxy, G_OBJECT (button), "color", NULL, NULL, NULL);
   proxy = terminal_preferences_get_proxy (dialog->preferences, "color-system-theme");
   exo_property_proxy_add (proxy, G_OBJECT (button), "sensitive", converter_negate, NULL, NULL);
   gtk_container_add (GTK_CONTAINER (align), button);
   gtk_widget_show (button);
+
+  /* set Atk name/description and label relation for the button */
+  object = gtk_widget_get_accessible (button);
+  atk_object_set_name (object, _("Color Selector"));
+  atk_object_set_description (object, _("Open a dialog to specify the color"));
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
@@ -1025,6 +1078,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
 
+  /* set Atk label relation for the combo */
+  object = gtk_widget_get_accessible (combo);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
+
   proxy = exo_property_proxy_new ();
   exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "binding-backspace",
                           converter_enum_int, GINT_TO_POINTER (TERMINAL_TYPE_ERASE_BINDING), NULL);
@@ -1045,6 +1105,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
                     GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
+
+  /* set Atk label relation for the combo */
+  object = gtk_widget_get_accessible (combo);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   proxy = exo_property_proxy_new ();
   exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "binding-delete",
@@ -1068,6 +1135,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 3, 4,
                     GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (entry);
+
+  /* set Atk label relation for the entry */
+  object = gtk_widget_get_accessible (entry);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   hbox = gtk_hbox_new (FALSE, 0);
   gtk_table_attach (GTK_TABLE (table), hbox, 0, 2, 4, 5,
@@ -1099,13 +1173,17 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
+  proxy = terminal_preferences_get_proxy (dialog->preferences, "word-chars");
+  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
   gtk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
   gtk_widget_show (entry);
 
-  proxy = exo_property_proxy_new ();
-  exo_property_proxy_add (proxy, G_OBJECT (dialog->preferences), "word-chars", NULL, NULL, NULL);
-  exo_property_proxy_add (proxy, G_OBJECT (entry), "text", NULL, NULL, NULL);
-  g_object_unref (G_OBJECT (proxy));
+  /* set Atk label relation for the entry */
+  object = gtk_widget_get_accessible (entry);
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
 
   icon = xfce_themed_icon_load ("Terminal-advanced.png", 48);
   gtk_list_store_append (store, &iter);
