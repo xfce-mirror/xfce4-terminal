@@ -1230,7 +1230,7 @@ terminal_window_action_prev_tab (GtkAction       *action,
   page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
   n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook),
-                                 (page_num + 1) % n_pages);
+                                 (page_num - 1) % n_pages);
 }
 
 
@@ -1245,7 +1245,7 @@ terminal_window_action_next_tab (GtkAction       *action,
   page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
   n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook),
-                                 (page_num - 1) % n_pages);
+                                 (page_num + 1) % n_pages);
 }
 
 
