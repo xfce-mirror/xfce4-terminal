@@ -47,12 +47,6 @@ enum
   PROP_CATEGORY,
 };
 
-static const gchar *category_names[] =
-{
-  "browser",
-  "mailer",
-};
-
 static const gchar *category_titles[] =
 {
   N_ ("Web Browser"),
@@ -85,9 +79,7 @@ static void     terminal_helper_chooser_set_property        (GObject            
                                                              GParamSpec                 *pspec);
 static void     terminal_helper_chooser_pressed             (GtkButton                  *button,
                                                              TerminalHelperChooser      *chooser);
-static void     terminal_helper_chooser_schedule_update     (TerminalHelperChooser      *chooser);
-static gboolean terminal_helper_chooser_update_idle         (gpointer                    user_data);
-static void     terminal_helper_chooser_update_idle_destroy (gpointer                    user_data);
+static void     terminal_helper_chooser_update_state        (TerminalHelperChooser      *chooser);
 
 
 
@@ -107,8 +99,6 @@ struct _TerminalHelperChooser
 
   gchar                  *active;
   TerminalHelperCategory  category;
-
-  guint                   update_idle_id;
 };
 
 
@@ -198,6 +188,8 @@ terminal_helper_chooser_init (TerminalHelperChooser *chooser)
   gtk_widget_show (arrow);
 
   gtk_widget_pop_composite_child ();
+
+  terminal_helper_chooser_update_state (chooser);
 }
 
 
@@ -207,12 +199,9 @@ terminal_helper_chooser_finalize (GObject *object)
 {
   TerminalHelperChooser *chooser = TERMINAL_HELPER_CHOOSER (object);
 
-  terminal_helper_chooser_set_active (chooser, NULL);
-
-  if (G_LIKELY (chooser->update_idle_id != 0))
-    g_source_remove (chooser->update_idle_id);
-
   g_object_unref (G_OBJECT (chooser->database));
+
+  g_free (chooser->active);
 
   G_OBJECT_CLASS (chooser_parent_class)->finalize (object);
 }
@@ -276,14 +265,13 @@ menu_activate (GtkWidget             *item,
                TerminalHelperChooser *chooser)
 {
   TerminalHelper *helper;
-  gchar          *active;
+  const gchar    *id;
 
   helper = g_object_get_data (G_OBJECT (item), "terminal-helper");
   if (G_LIKELY (helper != NULL))
     {
-      active = g_strconcat ("predefined:", terminal_helper_get_id (helper), NULL);
-      terminal_helper_chooser_set_active (chooser, active);
-      g_free (active); 
+      id = terminal_helper_get_id (helper);
+      terminal_helper_chooser_set_active (chooser, id);
     }
   else
     {
@@ -361,18 +349,24 @@ menu_activate_other (GtkWidget             *item,
     N_ ("Specify the application you want to use as\nMail Reader in Terminal:"),
   };
 
-  GtkWidget *toplevel;
-  GtkWidget *dialog;
-  GtkWidget *hbox;
-  GtkWidget *image;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *entry;
-  GtkWidget *button;
-  gchar     *active;
-  gchar     *stock;
+  TerminalHelper  *helper;
+  const gchar     *command;
+  const gchar     *id;
+  GEnumClass      *enum_class;
+  GEnumValue      *enum_value;
+  GtkWidget       *toplevel;
+  GtkWidget       *dialog;
+  GtkWidget       *hbox;
+  GtkWidget       *image;
+  GtkWidget       *vbox;
+  GtkWidget       *label;
+  GtkWidget       *entry;
+  GtkWidget       *button;
+  gchar           *stock;
 
   /* sanity check the category values */
+  g_return_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
+                 && category <= TERMINAL_HELPER_MAILREADER);
   g_assert (TERMINAL_HELPER_WEBBROWSER == 0);
   g_assert (TERMINAL_HELPER_MAILREADER == 1);
 
@@ -399,7 +393,12 @@ menu_activate_other (GtkWidget             *item,
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
-  stock = g_strconcat ("terminal-", dgettext (GETTEXT_PACKAGE, category_names[chooser->category]), NULL);
+  /* determine the stock icon for the helper category */
+  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
+  enum_value = g_enum_get_value (enum_class, chooser->category);
+  stock = g_strconcat ("terminal-", enum_value->value_nick, NULL);
+  g_type_class_unref (enum_class);
+
   image = gtk_image_new_from_stock (stock, GTK_ICON_SIZE_DIALOG);
   gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
@@ -423,25 +422,36 @@ menu_activate_other (GtkWidget             *item,
   gtk_widget_show (hbox);
 
   entry = g_object_new (GTK_TYPE_ENTRY, "activates-default", TRUE, NULL);
-  g_signal_connect (G_OBJECT (entry), "changed",
-                    G_CALLBACK (entry_changed), dialog);
+  g_signal_connect (G_OBJECT (entry), "changed", G_CALLBACK (entry_changed), dialog);
   gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
   gtk_widget_show (entry);
 
   button = gtk_button_new_with_mnemonic (_("_Browse..."));
-  g_signal_connect (G_OBJECT (button), "clicked",
-                    G_CALLBACK (browse_clicked), entry);
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (browse_clicked), entry);
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
-  if (strncmp (chooser->active, "custom:", 7) == 0)
-    gtk_entry_set_text (GTK_ENTRY (entry), chooser->active + 7);
+  /* set the current custom command (if any) */
+  helper = terminal_helper_database_get_custom (chooser->database, chooser->category);
+  if (G_LIKELY (helper != NULL))
+    {
+      command = terminal_helper_get_command (helper);
+      gtk_entry_set_text (GTK_ENTRY (entry), command);
+    }
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_OK)
     {
-      active = g_strconcat ("custom:", gtk_entry_get_text (GTK_ENTRY (entry)), NULL);
-      terminal_helper_chooser_set_active (TERMINAL_HELPER_CHOOSER (chooser), active);
-      g_free (active);
+      /* change the custom command in the database */
+      command = gtk_entry_get_text (GTK_ENTRY (entry));
+      terminal_helper_database_set_custom (chooser->database, chooser->category, command);
+
+      /* reload the custom helper */
+      helper = terminal_helper_database_get_custom (chooser->database, chooser->category);
+      if (G_LIKELY (helper != NULL))
+        {
+          id = terminal_helper_get_id (helper);
+          terminal_helper_chooser_set_active (chooser, id);
+        }
     }
 
   gtk_widget_destroy (dialog);
@@ -502,6 +512,7 @@ terminal_helper_chooser_pressed (GtkButton             *button,
   GdkCursor      *cursor;
   GSList         *helpers;
   GSList         *lp;
+  guint           n_helpers;
 
   /* set a watch cursor while loading the menu */
   if (G_LIKELY (GTK_WIDGET (button)->window != NULL))
@@ -523,32 +534,37 @@ terminal_helper_chooser_pressed (GtkButton             *button,
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
   gtk_widget_show (item);
 
-  helpers = terminal_helper_database_lookup_all (chooser->database,
-                                                 chooser->category);
-  for (lp = helpers; lp != NULL; lp = lp->next)
+  helpers = terminal_helper_database_lookup_all (chooser->database, chooser->category);
+  for (lp = helpers, n_helpers = 0; lp != NULL; lp = lp->next)
     {
+      /* skip hidden helpers (like custom ones) */
       helper = TERMINAL_HELPER (lp->data);
+      if (terminal_helper_is_hidden (helper))
+        {
+          g_object_unref (G_OBJECT (helper));
+          continue;
+        }
 
       item = gtk_image_menu_item_new_with_label (terminal_helper_get_name (helper));
       g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (menu_activate), chooser);
-      g_object_set_data_full (G_OBJECT (item), "terminal-helper",
-                              helper, g_object_unref);
+      g_object_set_data_full (G_OBJECT (item), "terminal-helper", helper, g_object_unref);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       gtk_widget_show (item);
 
       image = gtk_image_new_from_pixbuf (terminal_helper_get_icon (helper));
       gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
       gtk_widget_show (image);
-    }
 
-  if (G_LIKELY (helpers != NULL))
+      ++n_helpers;
+    }
+  g_slist_free (helpers);
+
+  if (G_LIKELY (n_helpers > 0))
     {
       item = gtk_separator_menu_item_new ();
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       gtk_widget_show (item);
     }
-
-  g_slist_free (helpers);
 
   item = gtk_menu_item_new_with_label (_("Other..."));
   g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (menu_activate_other), chooser);
@@ -583,89 +599,31 @@ terminal_helper_chooser_pressed (GtkButton             *button,
 
 
 static void
-terminal_helper_chooser_schedule_update (TerminalHelperChooser *chooser)
+terminal_helper_chooser_update_state (TerminalHelperChooser *chooser)
 {
-  if (G_LIKELY (chooser->update_idle_id == 0))
+  TerminalHelper *helper;
+
+  if (exo_str_is_equal (chooser->active, "disabled"))
     {
-      chooser->update_idle_id = g_idle_add_full (G_PRIORITY_HIGH, terminal_helper_chooser_update_idle,
-                                                 chooser, terminal_helper_chooser_update_idle_destroy);
+      gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), NULL);
+      gtk_label_set_text (GTK_LABEL (chooser->label), _("Disabled"));
+      return;
     }
-}
-
-
-
-static gboolean
-terminal_helper_chooser_update_idle (gpointer user_data)
-{
-  TerminalHelperChooser *chooser = TERMINAL_HELPER_CHOOSER (user_data);
-  TerminalHelper        *helper;
-  const gchar           *id;
-  GSList                *helpers;
-
-  g_object_freeze_notify (G_OBJECT (chooser));
-
-  for (;;)
+  else if (chooser->active != NULL)
     {
-      if (G_UNLIKELY (chooser->active == NULL))
+      helper = terminal_helper_database_lookup (chooser->database,
+                                                chooser->category,
+                                                chooser->active);
+      if (G_LIKELY (helper != NULL))
         {
-          helpers = terminal_helper_database_lookup_all (chooser->database,
-                                                         chooser->category);
-          if (G_LIKELY (helpers != NULL))
-            {
-              id = terminal_helper_get_id (helpers->data);
-              chooser->active = g_strconcat ("predefined:", id, NULL);
-              g_slist_foreach (helpers, (GFunc) g_object_unref, NULL);
-              g_slist_free (helpers);
-            }
-          else
-            {
-              chooser->active = g_strdup ("disabled");
-            }
-
-          g_object_notify (G_OBJECT (chooser), "active");
+          gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), terminal_helper_get_icon (helper));
+          gtk_label_set_text (GTK_LABEL (chooser->label), terminal_helper_get_name (helper));
+          return;
         }
-
-      if (exo_str_is_equal (chooser->active, "disabled"))
-        {
-          gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), NULL);
-          gtk_label_set_text (GTK_LABEL (chooser->label), _("Disabled"));
-          break;
-        }
-      else if (strncmp (chooser->active, "predefined:", 11) == 0 && strlen (chooser->active) > 11)
-        {
-          helper = terminal_helper_database_lookup (chooser->database,
-                                                    chooser->category,
-                                                    chooser->active + 11);
-          if (G_LIKELY (helper != NULL))
-            {
-              gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), terminal_helper_get_icon (helper));
-              gtk_label_set_text (GTK_LABEL (chooser->label), terminal_helper_get_name (helper));
-              break;
-            }
-        }
-      else if (strncmp (chooser->active, "custom:", 7) == 0 && strlen (chooser->active) > 7)
-        {
-          gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), NULL);
-          gtk_label_set_text (GTK_LABEL (chooser->label), chooser->active + 7);
-          break;
-        }
-
-      /* once again... */
-      g_free (chooser->active);
-      chooser->active = NULL;
     }
 
-  g_object_thaw_notify (G_OBJECT (chooser));
-
-  return FALSE;
-}
-
-
-
-static void
-terminal_helper_chooser_update_idle_destroy (gpointer user_data)
-{
-  TERMINAL_HELPER_CHOOSER (user_data)->update_idle_id = 0;
+  gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), NULL);
+  gtk_label_set_text (GTK_LABEL (chooser->label), _("No application selected"));
 }
 
 
@@ -674,14 +632,7 @@ terminal_helper_chooser_update_idle_destroy (gpointer user_data)
  * terminal_helper_chooser_get_active:
  * @chooser : A #TerminalHelperChooser.
  *
- * This function returns the currently active helper, encoded as a
- * string.
- *
- *  predefined:name
- *  custom:path
- *  disabled
- *
- * Return value: the active helper selection encoded into a string.
+ * Return value:
  **/
 const gchar*
 terminal_helper_chooser_get_active (TerminalHelperChooser *chooser)
@@ -708,8 +659,9 @@ terminal_helper_chooser_set_active (TerminalHelperChooser *chooser,
       g_free (chooser->active);
       chooser->active = g_strdup (active);
       g_object_notify (G_OBJECT (chooser), "active");
-      terminal_helper_chooser_schedule_update (chooser);
     }
+
+  terminal_helper_chooser_update_state (chooser);
 }
 
 
@@ -746,8 +698,10 @@ terminal_helper_chooser_set_category (TerminalHelperChooser *chooser,
   if (chooser->category != category)
     {
       chooser->category = category;
-      terminal_helper_chooser_schedule_update (chooser);
+      g_object_notify (G_OBJECT (chooser), "category");
     }
+
+  terminal_helper_chooser_update_state (chooser);
 }
 
 
@@ -802,13 +756,16 @@ terminal_helper_dialog_class_init (TerminalHelperDialogClass *klass)
 static void
 terminal_helper_dialog_init (TerminalHelperDialog *dialog)
 {
-  GtkWidget *vbox;
-  GtkWidget *frame;
-  GtkWidget *label;
-  GtkWidget *box;
-  GtkWidget *chooser;
-  gchar     *name;
-  guint      n;
+  TerminalHelperCategory category;
+  const gchar           *text;
+  GEnumClass            *enum_class;
+  GEnumValue            *enum_value;
+  GtkWidget             *vbox;
+  GtkWidget             *frame;
+  GtkWidget             *label;
+  GtkWidget             *box;
+  GtkWidget             *chooser;
+  gchar                 *name;
 
   /* sanity check the category values */
   g_assert (TERMINAL_HELPER_WEBBROWSER == 0);
@@ -827,20 +784,15 @@ terminal_helper_dialog_init (TerminalHelperDialog *dialog)
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), vbox, TRUE, TRUE, 0);
   gtk_widget_show (vbox);
 
-  for (n = 0; n < 2; ++n)
+  for (category = 0; category < 2; ++category)
     {
-      frame = g_object_new (GTK_TYPE_FRAME,
-                            "border-width", 0,
-                            "shadow-type", GTK_SHADOW_NONE,
-                            NULL);
+      frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
       gtk_box_pack_start (GTK_BOX (vbox), frame, FALSE, TRUE, 0);
       gtk_widget_show (frame);
 
-      name = g_strdup_printf ("<b>%s</b>", dgettext (GETTEXT_PACKAGE, category_titles[n]));
-      label = g_object_new (GTK_TYPE_LABEL,
-                            "label", name,
-                            "use-markup", TRUE,
-                            NULL);
+      text = dgettext (GETTEXT_PACKAGE, category_titles[category]);
+      name = g_strdup_printf ("<b>%s</b>", text);
+      label = g_object_new (GTK_TYPE_LABEL, "label", name, "use-markup", TRUE, NULL);
       gtk_frame_set_label_widget (GTK_FRAME (frame), label);
       gtk_widget_show (label);
       g_free (name);
@@ -849,17 +801,21 @@ terminal_helper_dialog_init (TerminalHelperDialog *dialog)
       gtk_container_add (GTK_CONTAINER (frame), box);
       gtk_widget_show (box);
 
-      label = gtk_label_new (dgettext (GETTEXT_PACKAGE, category_descriptions[n]));
+      text = dgettext (GETTEXT_PACKAGE, category_descriptions[category]);
+      label = gtk_label_new (text);
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
       gtk_widget_show (label);
 
-      chooser = g_object_new (TERMINAL_TYPE_HELPER_CHOOSER, "category", n, NULL);
+      chooser = g_object_new (TERMINAL_TYPE_HELPER_CHOOSER, "category", category, NULL);
       gtk_box_pack_start (GTK_BOX (box), chooser, FALSE, FALSE, 0);
       gtk_widget_show (chooser);
 
-      name = g_strconcat ("helper-", category_names[n], NULL);
-      exo_mutual_binding_new (G_OBJECT (dialog->preferences), name,
-                              G_OBJECT (chooser), "active");
+      /* determine the name for the helper setting name */
+      enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
+      enum_value = g_enum_get_value (enum_class, category);
+      name = g_strconcat ("helper-", enum_value->value_nick, NULL);
+      exo_mutual_binding_new (G_OBJECT (dialog->preferences), name, G_OBJECT (chooser), "active");
+      g_type_class_unref (enum_class);
       g_free (name);
     }
 }

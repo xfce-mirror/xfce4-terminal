@@ -16,7 +16,9 @@ bin_PROGRAMS = 								\
 
 Terminal_built_sources =						\
 	terminal-enum-types.c						\
-	terminal-enum-types.h
+	terminal-enum-types.h						\
+	terminal-marshal.c						\
+	terminal-marshal.h
 
 Terminal_dbus_sources =							\
 	terminal-dbus.c							\
@@ -101,10 +103,13 @@ endif
 if MAINTAINER_MODE
 CLEANFILES =								\
 	xgen-tetc							\
-	xgen-teth
+	xgen-teth							\
+	xgen-tmc							\
+	xgen-tmh
 
 DISTCLEANFILES =							\
 	stamp-terminal-enum-types.h					\
+	stamp-terminal-marshal.h					\
 	$(Terminal_built_sources)
 
 BUILT_SOURCES =								\
@@ -132,6 +137,23 @@ terminal-enum-types.c: $(Terminal_headers) Makefile
 		$(Terminal_headers) ) >> xgen-tetc \
 	&& cp xgen-tetc terminal-enum-types.c \
 	&& rm -f xgen-tetc
+
+terminal-marshal.h: stamp-terminal-marshal.h
+	@true
+stamp-terminal-marshal.h: terminal-marshal.list Makefile
+	( cd $(srcdir) && glib-genmarshal \
+		--prefix=_terminal_marshal \
+		--header terminal-marshal.list ) >> xgen-tmh \
+	&& ( cmp -s xgen-tmh terminal-marshal.h || cp xgen-tmh terminal-marshal.h ) \
+	&& rm -f xgen-tmh \
+	&& echo timestamp > $(@F)
+
+terminal-marshal.c: terminal-marshal.list Makefile
+	( cd $(srcdir) && glib-genmarshal \
+		--prefix=_terminal_marshal \
+		--body terminal-marshal.list ) >> xgen-tmc \
+	&& cp xgen-tmc terminal-marshal.c \
+	&& rm -f xgen-tmc
 endif
 
 
@@ -139,6 +161,7 @@ clean-local:
 	rm -f *.core core core.*
 
 EXTRA_DIST =								\
-	terminal-config.h.in
+	terminal-config.h.in						\
+	terminal-marshal.list
 
 # vi:set ts=8 sw=8 noet ai nocindent:

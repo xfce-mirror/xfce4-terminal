@@ -22,7 +22,7 @@
 #ifndef __TERMINAL_HELPER_H__
 #define __TERMINAL_HELPER_H__
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <gdk/gdk.h>
 
 G_BEGIN_DECLS;
 
@@ -44,11 +44,15 @@ typedef struct _TerminalHelperClass TerminalHelperClass;
 typedef struct _TerminalHelper      TerminalHelper;
 
 GType                   terminal_helper_get_type      (void) G_GNUC_CONST;
+gboolean                terminal_helper_is_hidden     (TerminalHelper *helper);
 TerminalHelperCategory  terminal_helper_get_category  (TerminalHelper *helper);
 const gchar            *terminal_helper_get_id        (TerminalHelper *helper);
 const gchar            *terminal_helper_get_name      (TerminalHelper *helper);
 const gchar            *terminal_helper_get_command   (TerminalHelper *helper);
 GdkPixbuf              *terminal_helper_get_icon      (TerminalHelper *helper);
+void                    terminal_helper_execute       (TerminalHelper *helper,
+                                                       GdkScreen      *screen,
+                                                       const gchar    *uri);
 
 
 #define TERMINAL_TYPE_HELPER_DATABASE             (terminal_helper_database_get_type ())
@@ -67,6 +71,11 @@ TerminalHelper          *terminal_helper_database_lookup      (TerminalHelperDat
                                                                const gchar            *name);
 GSList                  *terminal_helper_database_lookup_all  (TerminalHelperDatabase *database,
                                                                TerminalHelperCategory  category);
+TerminalHelper          *terminal_helper_database_get_custom  (TerminalHelperDatabase *database,
+                                                               TerminalHelperCategory  category);
+void                     terminal_helper_database_set_custom  (TerminalHelperDatabase *database,
+                                                               TerminalHelperCategory  category,
+                                                               const gchar            *command);
 
 
 G_END_DECLS;

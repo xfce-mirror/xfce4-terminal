@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.2pre1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-12 01:58+0100\n"
+"POT-Creation-Date: 2005-03-13 16:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Dwayne Bailey <dwayne@translate.org.za>\n"
 "Language-Team: en_GB <LL@li.org>\n"
@@ -279,40 +279,83 @@ msgstr "Unable to launch terminal: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Invalid geometry string \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:94
+#: ../terminal/terminal-dbus.c:114
 msgid "User id mismatch"
 msgstr ""
 
-#: ../terminal/terminal-dbus.c:104 ../terminal/terminal-dbus.c:114
-msgid "Invalid arguments"
-msgstr ""
-
-#: ../terminal/terminal-dbus.c:141
+#: ../terminal/terminal-dbus.c:142
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS message bus disconnected, exiting...\n"
 
-#: ../terminal/terminal-dbus.c:245
+#: ../terminal/terminal-dbus.c:203
 #, fuzzy, c-format
 msgid "Unable to register object %s"
 msgstr "Unable to register object %s\n"
 
-#: ../terminal/terminal-helper-dialog.c:273
+#: ../terminal/terminal-helper-dialog.c:52
+#: ../terminal/terminal-preferences.c:921
+#: ../terminal/terminal-preferences.c:922
+msgid "Web Browser"
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:53
+#: ../terminal/terminal-preferences.c:910
+#: ../terminal/terminal-preferences.c:911
+msgid "Mail Reader"
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:58
+msgid ""
+"Choose your preferred Web Browser. The preferred\n"
+"Web Browser opens when you right-click on a URL\n"
+"and select Open URL from the context menu."
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:61
+msgid ""
+"Choose your preferred Mail Reader. The preferred\n"
+"Mail Reader opens when you right-click on a mail\n"
+"address and select Compose E-Mail from the context\n"
+"menu."
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:308
 msgid "Select application"
 msgstr ""
 
-#: ../terminal/terminal-helper-dialog.c:365
+#: ../terminal/terminal-helper-dialog.c:342
+msgid "Choose a custom Web Browser"
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:343
+msgid "Choose a custom Mail Reader"
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:348
+msgid ""
+"Specify the application you want to use as\n"
+"Web Browser in Terminal:"
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:349
+msgid ""
+"Specify the application you want to use as\n"
+"Mail Reader in Terminal:"
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:429
 msgid "_Browse..."
 msgstr ""
 
-#: ../terminal/terminal-helper-dialog.c:440
+#: ../terminal/terminal-helper-dialog.c:528
 msgid "Disable this feature"
 msgstr ""
 
-#: ../terminal/terminal-helper-dialog.c:473
+#: ../terminal/terminal-helper-dialog.c:569
 msgid "Other..."
 msgstr ""
 
-#: ../terminal/terminal-helper-dialog.c:537
+#: ../terminal/terminal-helper-dialog.c:609
 #: ../terminal/terminal-preferences-dialog.c:361
 #: ../terminal/terminal-preferences.c:364
 #: ../terminal/terminal-preferences.c:375
@@ -326,54 +369,11 @@ msgstr ""
 msgid "Disabled"
 msgstr "Disabled"
 
-#: ../terminal/terminal-helper-dialog.c:830
-#: ../terminal/terminal-preferences.c:910
-#: ../terminal/terminal-preferences.c:911
-msgid "Web Browser"
+#: ../terminal/terminal-helper-dialog.c:626
+msgid "No application selected"
 msgstr ""
 
-#: ../terminal/terminal-helper-dialog.c:831
-#: ../terminal/terminal-preferences.c:921
-#: ../terminal/terminal-preferences.c:922
-msgid "Mail Reader"
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:836
-msgid ""
-"Choose your preferred Web Browser. The preferred\n"
-"Web Browser opens when you right-click on a URL\n"
-"and select Open URL from the context menu."
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:839
-msgid ""
-"Choose your preferred Mail Reader. The preferred\n"
-"Mail Reader opens when you right-click on a mail\n"
-"address and select Compose E-Mail from the context\n"
-"menu."
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:847
-msgid "Choose a custom Web Browser"
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:848
-msgid "Choose a custom Mail Reader"
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:853
-msgid ""
-"Specify the application you want to use as\n"
-"Web Browser in Terminal:"
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:854
-msgid ""
-"Specify the application you want to use as\n"
-"Mail Reader in Terminal:"
-msgstr ""
-
-#: ../terminal/terminal-helper-dialog.c:877
+#: ../terminal/terminal-helper-dialog.c:781
 msgid "Preferred Applications"
 msgstr ""
 
@@ -837,8 +837,8 @@ msgid "Advanced"
 msgstr "Advanced"
 
 #: ../terminal/terminal-preferences-dialog.c:1114
-#: ../terminal/terminal-window.c:1328 ../terminal/terminal-window.c:1355
-#: ../terminal/terminal-window.c:1428
+#: ../terminal/terminal-window.c:1377 ../terminal/terminal-window.c:1404
+#: ../terminal/terminal-window.c:1477
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr "Unable to launch online help: %s"
@@ -911,7 +911,7 @@ msgid "Fullscreen"
 msgstr "Fullscreen"
 
 #: ../terminal/terminal-preferences.c:417
-#: ../terminal/terminal-preferences.c:418 ../terminal/terminal-window.c:1462
+#: ../terminal/terminal-preferences.c:418 ../terminal/terminal-window.c:1511
 msgid "Set Title"
 msgstr "Set Title"
 
@@ -1260,27 +1260,27 @@ msgstr "Word chars"
 msgid "Word characters"
 msgstr "Word characters"
 
-#: ../terminal/terminal-screen.c:167 ../terminal/terminal-screen.c:168
+#: ../terminal/terminal-screen.c:177 ../terminal/terminal-screen.c:178
 msgid "Custom title"
 msgstr "Custom title"
 
-#: ../terminal/terminal-screen.c:178 ../terminal/terminal-screen.c:179
+#: ../terminal/terminal-screen.c:188 ../terminal/terminal-screen.c:189
 msgid "Title"
 msgstr "Title"
 
-#: ../terminal/terminal-screen.c:394
+#: ../terminal/terminal-screen.c:418
 msgid "Unable to determine your login shell."
 msgstr "Unable to determine your login shell."
 
-#: ../terminal/terminal-screen.c:874
+#: ../terminal/terminal-screen.c:913
 msgid "Failed to execute child"
 msgstr "Failed to execute child"
 
-#: ../terminal/terminal-screen.c:876
+#: ../terminal/terminal-screen.c:915
 msgid "Please check your system setup."
 msgstr "Please check your system setup."
 
-#: ../terminal/terminal-screen.c:1115
+#: ../terminal/terminal-screen.c:1154
 msgid "Untitled"
 msgstr "Untitled"
 
@@ -1341,7 +1341,7 @@ msgstr "Close this tab"
 msgid "_Detach Tab"
 msgstr "_Next Tab"
 
-#: ../terminal/terminal-tab-header.c:301 ../terminal/terminal-window.c:197
+#: ../terminal/terminal-tab-header.c:301 ../terminal/terminal-window.c:199
 msgid "C_lose Tab"
 msgstr "C_lose Tab"
 
@@ -1349,7 +1349,24 @@ msgstr "C_lose Tab"
 msgid "Toolbar Editor"
 msgstr "Toolbar Editor"
 
-#: ../terminal/terminal-widget.c:254
+#: ../terminal/terminal-widget.c:318
+msgid "Copy Email Address"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:319
+msgid "Compose Email"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:323
+msgid "Copy Link Address"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:324
+#, fuzzy
+msgid "Open Link"
+msgstr "Open Terminal"
+
+#: ../terminal/terminal-widget.c:459
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
@@ -1358,213 +1375,213 @@ msgstr ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 
-#: ../terminal/terminal-widget.c:270
+#: ../terminal/terminal-widget.c:475
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 
-#: ../terminal/terminal-widget.c:296
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 
-#: ../terminal/terminal-window.c:194
+#: ../terminal/terminal-window.c:196
 msgid "_File"
 msgstr "_File"
 
-#: ../terminal/terminal-window.c:195
+#: ../terminal/terminal-window.c:197
 msgid "Open _Tab"
 msgstr "Open _Tab"
 
-#: ../terminal/terminal-window.c:195
+#: ../terminal/terminal-window.c:197
 msgid "Open a new terminal tab"
 msgstr "Open a new terminal tab"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:198
 msgid "Open _Terminal"
 msgstr "Open _Terminal"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:198
 msgid "Open a new terminal window"
 msgstr "Open a new terminal window"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:199
 msgid "Close the current terminal tab"
 msgstr "Close the current terminal tab"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:200
 msgid "_Close Window"
 msgstr "_Close Window"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:200
 msgid "Close the terminal window"
 msgstr "Close the terminal window"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:201
 msgid "_Edit"
 msgstr "_Edit"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:202
 msgid "_Copy"
 msgstr "_Copy"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:202
 msgid "Copy to clipboard"
 msgstr "Copy to clipboard"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:203
 msgid "_Paste"
 msgstr "_Paste"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:203
 msgid "Paste from clipboard"
 msgstr "Paste from clipboard"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:204
 msgid "_Applications..."
 msgstr ""
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:204
 msgid "Customize your preferred applications"
 msgstr ""
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:205
 msgid "_Toolbars..."
 msgstr "_Toolbars..."
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:205
 msgid "Customize the toolbars"
 msgstr "Customise the toolbars"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:206
 #, fuzzy
 msgid "_Preferences..."
 msgstr "Preferences..."
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:206
 msgid "Open the Terminal preferences dialog"
 msgstr "Open the Terminal preferences dialogue"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:207
 msgid "_View"
 msgstr "_View"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:208
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:209
 msgid "_Set Title..."
 msgstr "_Set Title..."
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:209
 msgid "Set a custom title for the current tab"
 msgstr "Set a custom title for the current tab"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:210
 msgid "_Reset"
 msgstr "_Reset"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:211
 msgid "Reset and C_lear"
 msgstr "Reset and C_lear"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:212
 msgid "_Go"
 msgstr ""
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:213
 msgid "_Previous Tab"
 msgstr "_Previous Tab"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:213
 msgid "Switch to previous tab"
 msgstr "Switch to previous tab"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:214
 msgid "_Next Tab"
 msgstr "_Next Tab"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:214
 msgid "Switch to next tab"
 msgstr "Switch to next tab"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:215
 msgid "_Help"
 msgstr "_Help"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:216
 msgid "_Contents"
 msgstr "_Contents"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:216
 msgid "Display help contents"
 msgstr "Display help contents"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:217
 msgid "_Report a bug"
 msgstr "_Report a bug"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:217
 msgid "Report a bug in Terminal"
 msgstr "Report a bug in Terminal"
 
-#: ../terminal/terminal-window.c:217 ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:219 ../terminal/terminal-window.c:221
 msgid "_About"
 msgstr "_About"
 
-#: ../terminal/terminal-window.c:217 ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:219 ../terminal/terminal-window.c:221
 msgid "Display information about Terminal"
 msgstr "Display information about Terminal"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:223
 msgid "_Input Methods"
 msgstr "_Input Methods"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:228
 msgid "Show _Menubar"
 msgstr "Show _Menubar"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:228
 msgid "Show/hide the menubar"
 msgstr "Show/hide the menubar"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:229
 msgid "Show _Toolbars"
 msgstr "Show _Toolbars"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:229
 msgid "Show/hide the toolbars"
 msgstr "Show/hide the toolbars"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:230
 msgid "Show Window _Borders"
 msgstr "Show Window _Borders"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:230
 msgid "Show/hide the window decorations"
 msgstr "Show/hide the window decorations"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:231
 msgid "_Fullscreen"
 msgstr "_Fullscreen"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:231
 msgid "Toggle fullscreen mode"
 msgstr "Toggle fullscreen mode"
 
-#: ../terminal/terminal-window.c:531
+#: ../terminal/terminal-window.c:533
 msgid "Warning"
 msgstr "Warning"
 
-#: ../terminal/terminal-window.c:542
+#: ../terminal/terminal-window.c:544
 msgid "Close all tabs"
 msgstr "Close all tabs"
 
-#: ../terminal/terminal-window.c:561
+#: ../terminal/terminal-window.c:563
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -1573,35 +1590,49 @@ msgstr ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 
-#: ../terminal/terminal-window.c:564
+#: ../terminal/terminal-window.c:566
 msgid "Close all tabs?"
 msgstr "Close all tabs?"
 
-#: ../terminal/terminal-window.c:577
+#: ../terminal/terminal-window.c:579
 msgid "Do _not ask me again"
 msgstr "Do _not ask me again"
 
-#: ../terminal/terminal-window.c:1476
+#: ../terminal/terminal-window.c:958
+msgid ""
+"You did not choose your preferred Web\n"
+"Browser yet. Do you want to setup your\n"
+"preferred applications now?"
+msgstr ""
+
+#: ../terminal/terminal-window.c:959
+msgid ""
+"You did not choose your preferred Mail\n"
+"Reader yet. Do you want to setup your\n"
+"preferred applications now?"
+msgstr ""
+
+#: ../terminal/terminal-window.c:1525
 msgid "<b>Title:</b>"
 msgstr "<b>Title:</b>"
 
-#: ../terminal/terminal-window.c:1490
+#: ../terminal/terminal-window.c:1539
 msgid "Enter the title for the current terminal tab"
 msgstr "Enter the title for the current terminal tab"
 
-#: ../terminal/terminal-window.c:1547
+#: ../terminal/terminal-window.c:1596
 msgid "X Terminal Emulator"
 msgstr "X Terminal Emulator"
 
-#: ../terminal/terminal-window.c:1551
+#: ../terminal/terminal-window.c:1600
 msgid "Maintainer"
 msgstr "Maintainer"
 
-#: ../terminal/terminal-window.c:1552
+#: ../terminal/terminal-window.c:1601
 msgid "Icon Designer"
 msgstr "Icon Designer"
 
-#: ../terminal/terminal-window.c:1556
+#: ../terminal/terminal-window.c:1605
 #, c-format
 msgid "Translator (%s)"
 msgstr "Translator (%s)"

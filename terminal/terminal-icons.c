@@ -57,22 +57,22 @@ terminal_icons_setup_helper (void)
 
   set = gtk_icon_set_new ();
   source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_new_from_inline (sizeof (stock_browser_48), stock_browser_48, FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_inline (sizeof (stock_webbrowser_48), stock_webbrowser_48, FALSE, NULL);
   gtk_icon_source_set_pixbuf (source, pixbuf);
   gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
   gtk_icon_set_add_source (set, source);
   g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (icons_factory, "terminal-browser", set);
+  gtk_icon_factory_add (icons_factory, "terminal-webbrowser", set);
   gtk_icon_set_unref (set);
 
   set = gtk_icon_set_new ();
   source = gtk_icon_source_new ();
-  pixbuf = gdk_pixbuf_new_from_inline (sizeof (stock_mailer_48), stock_mailer_48, FALSE, NULL);
+  pixbuf = gdk_pixbuf_new_from_inline (sizeof (stock_mailreader_48), stock_mailreader_48, FALSE, NULL);
   gtk_icon_source_set_pixbuf (source, pixbuf);
   gtk_icon_source_set_size (source, GTK_ICON_SIZE_DIALOG);
   gtk_icon_set_add_source (set, source);
   g_object_unref (G_OBJECT (pixbuf));
-  gtk_icon_factory_add (icons_factory, "terminal-mailer", set);
+  gtk_icon_factory_add (icons_factory, "terminal-mailreader", set);
   gtk_icon_set_unref (set);
 }
 

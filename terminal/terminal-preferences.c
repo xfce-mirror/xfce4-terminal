@@ -98,8 +98,8 @@ enum
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_ANTI_ALIAS,
   PROP_FONT_NAME,
-  PROP_HELPER_BROWSER,
-  PROP_HELPER_MAILER,
+  PROP_HELPER_MAILREADER,
+  PROP_HELPER_WEBBROWSER,
   PROP_MISC_BELL,
   PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
@@ -902,24 +902,24 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:helper-browser:
+   * TerminalPreferences:helper-mailreader:
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_HELPER_BROWSER,
-                                   g_param_spec_string ("helper-browser",
-                                                        _("Web Browser"),
-                                                        _("Web Browser"),
+                                   PROP_HELPER_MAILREADER,
+                                   g_param_spec_string ("helper-mailreader",
+                                                        _("Mail Reader"),
+                                                        _("Mail Reader"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:helper-mailer:
+   * TerminalPreferences:helper-webbrowser:
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_HELPER_MAILER,
-                                   g_param_spec_string ("helper-mailer",
-                                                        _("Mail Reader"),
-                                                        _("Mail Reader"),
+                                   PROP_HELPER_WEBBROWSER,
+                                   g_param_spec_string ("helper-webbrowser",
+                                                        _("Web Browser"),
+                                                        _("Web Browser"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 

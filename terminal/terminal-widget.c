@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2005 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -34,14 +34,30 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include <terminal/terminal-enum-types.h>
+#include <terminal/terminal-helper.h>
+#include <terminal/terminal-marshal.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-widget.h>
 
 
 
+#define USERCHARS       "-A-Za-z0-9"
+#define PASSCHARS       "-A-Za-z0-9,?;.:/!%$^*&~\"#'"
+#define HOSTCHARS       "-A-Za-z0-9"
+#define USER            "[" USERCHARS "]+(:["PASSCHARS "]+)?"
+#define MATCH_BROWSER1  "((file|https?|ftps?)://(" USER "@)?)[" HOSTCHARS ".]+(:[0-9]+)?" \
+                        "(/[-A-Za-z0-9_$.+!*(),;:@&=?/~#%]*[^]'.}>) \t\r\n,\\\"])?"
+#define MATCH_BROWSER2  "(www|ftp)[" HOSTCHARS "]*\\.[" HOSTCHARS ".]+(:[0-9]+)?" \
+                        "(/[-A-Za-z0-9_$.+!*(),;:@&=?/~#%]*[^]'.}>) \t\r\n,\\\"])?"
+#define MATCH_MAILER    "(mailto:)?[a-z0-9][a-z0-9.-]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+"
+
+
+
 enum
 {
-  CONTEXT_MENU,
+  GET_CONTEXT_MENU,
+  OPEN_URI,
   LAST_SIGNAL,
 };
 
@@ -58,20 +74,25 @@ enum
 
 
 
-static void     terminal_widget_class_init          (TerminalWidgetClass  *klass);
-static void     terminal_widget_init                (TerminalWidget       *widget);
-static void     terminal_widget_finalize            (GObject              *object);
-static gboolean terminal_widget_button_press_event  (GtkWidget            *widget,
-                                                     GdkEventButton       *event);
-static void     terminal_widget_drag_data_received  (GtkWidget            *widget,
-                                                     GdkDragContext       *context,
-                                                     gint                  x,
-                                                     gint                  y,
-                                                     GtkSelectionData     *selection_data,
-                                                     guint                 info,
-                                                     guint                 time);
-static gboolean terminal_widget_key_press_event     (GtkWidget            *widget,
-                                                     GdkEventKey          *event);
+static void     terminal_widget_class_init            (TerminalWidgetClass  *klass);
+static void     terminal_widget_init                  (TerminalWidget       *widget);
+static void     terminal_widget_finalize              (GObject              *object);
+static gboolean terminal_widget_button_press_event    (GtkWidget            *widget,
+                                                       GdkEventButton       *event);
+static void     terminal_widget_drag_data_received    (GtkWidget            *widget,
+                                                       GdkDragContext       *context,
+                                                       gint                  x,
+                                                       gint                  y,
+                                                       GtkSelectionData     *selection_data,
+                                                       guint                 info,
+                                                       guint                 time);
+static gboolean terminal_widget_key_press_event       (GtkWidget            *widget,
+                                                       GdkEventKey          *event);
+static void     terminal_widget_open_uri              (TerminalWidget       *widget,
+                                                       const gchar          *link,
+                                                       gint                  tag);
+static void     terminal_widget_update_helper_browser (TerminalWidget       *widget);
+static void     terminal_widget_update_helper_mailer  (TerminalWidget       *widget);
 
 
 
@@ -80,8 +101,10 @@ struct _TerminalWidgetClass
   VteTerminalClass __parent__;
 
   /* signals */
-  void  (*context_menu)   (TerminalWidget *widget,
-                           GdkEvent       *event);
+  GtkWidget*  (*get_context_menu) (TerminalWidget        *widget);
+  void        (*open_uri)         (TerminalWidget        *widget,
+                                   const gchar           *uri,
+                                   TerminalHelperCategory category);
 };
 
 struct _TerminalWidget
@@ -90,6 +113,9 @@ struct _TerminalWidget
 
   /*< private >*/
   TerminalPreferences *preferences;
+  gint                 tag_browser1;
+  gint                 tag_browser2;
+  gint                 tag_mailer;
 };
 
 
@@ -131,16 +157,29 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
   gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
 
   /**
-   * TerminalWidget::context-menu:
+   * TerminalWidget::get-context-menu:
    **/
-  widget_signals[CONTEXT_MENU] =
+  widget_signals[GET_CONTEXT_MENU] =
     g_signal_new ("context-menu",
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalWidgetClass, context_menu),
+                  G_STRUCT_OFFSET (TerminalWidgetClass, get_context_menu),
                   NULL, NULL,
-                  g_cclosure_marshal_VOID__POINTER,
-                  G_TYPE_NONE, 1, G_TYPE_POINTER);
+                  _terminal_marshal_OBJECT__VOID,
+                  GTK_TYPE_MENU, 0);
+
+  /**
+   * TerminalWidget::open-uri:
+   **/
+  widget_signals[OPEN_URI] =
+    g_signal_new ("open-uri",
+                  G_TYPE_FROM_CLASS (klass),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (TerminalWidgetClass, open_uri),
+                  NULL, NULL,
+                  _terminal_marshal_VOID__STRING_ENUM,
+                  G_TYPE_NONE, 2, G_TYPE_STRING,
+                  TERMINAL_TYPE_HELPER_CATEGORY);
 }
 
 
@@ -148,6 +187,10 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 static void
 terminal_widget_init (TerminalWidget *widget)
 {
+  widget->tag_browser1 = -1;
+  widget->tag_browser2 = -1;
+  widget->tag_mailer   = -1;
+
   /* query preferences connection */
   widget->preferences = terminal_preferences_get ();
 
@@ -159,6 +202,15 @@ terminal_widget_init (TerminalWidget *widget)
                      targets, G_N_ELEMENTS (targets),
                      GDK_ACTION_COPY);
 
+  /* monitor the helper-* settings */
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::helper-webbrowser",
+                            G_CALLBACK (terminal_widget_update_helper_browser), widget);
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::helper-mailreader",
+                            G_CALLBACK (terminal_widget_update_helper_mailer), widget);
+
+  /* apply the initial helper-* settings */
+  terminal_widget_update_helper_browser (widget);
+  terminal_widget_update_helper_mailer (widget);
 }
 
 
@@ -168,9 +220,158 @@ terminal_widget_finalize (GObject *object)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
 
+  /* disconnect the helper-* watchers */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_helper_browser), widget);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_helper_mailer), widget);
+
+  /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
 
   G_OBJECT_CLASS (parent_class)->finalize (object);
+}
+
+
+
+static void
+terminal_widget_context_menu_copy (TerminalWidget *widget,
+                                   GtkWidget      *item)
+{
+  GtkClipboard *clipboard;
+  const gchar  *link;
+  GdkDisplay   *display;
+
+  link = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
+  if (G_LIKELY (link != NULL))
+    {
+      display = gtk_widget_get_display (GTK_WIDGET (widget));
+
+      /* copy the URI to "CLIPBOARD" */
+      clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
+      gtk_clipboard_set_text (clipboard, link, -1);
+
+      /* copy the URI to "PRIMARY" */
+      clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_PRIMARY);
+      gtk_clipboard_set_text (clipboard, link, -1);
+    }
+}
+
+
+
+static void
+terminal_widget_context_menu_open (TerminalWidget *widget,
+                                   GtkWidget      *item)
+{
+  const gchar *link;
+  gint        *tag;
+
+  link = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
+  tag  = g_object_get_data (G_OBJECT (item), "terminal-widget-tag");
+
+  if (G_LIKELY (link != NULL && tag != NULL))
+    terminal_widget_open_uri (widget, link, *tag);
+}
+
+
+
+static void
+terminal_widget_context_menu (TerminalWidget *widget,
+                              gint            button,
+                              gint            time,
+                              gint            x,
+                              gint            y)
+{
+  VteTerminal *terminal = VTE_TERMINAL (widget);
+  GMainLoop   *loop;
+  GtkWidget   *menu = NULL;
+  GtkWidget   *item_copy = NULL;
+  GtkWidget   *item_open = NULL;
+  GtkWidget   *item_separator = NULL;
+  GList       *children;
+  gchar       *match;
+  guint        id;
+  gint         tag;
+
+  g_signal_emit (G_OBJECT (widget), widget_signals[GET_CONTEXT_MENU], 0, &menu);
+  if (G_UNLIKELY (menu == NULL))
+    return;
+
+  /* check if we have a match */
+  match = vte_terminal_match_check (terminal, x / terminal->char_width, y / terminal->char_height, &tag);
+  if (G_UNLIKELY (match != NULL))
+    {
+      /* prepend a separator to the menu if it does not already contain one */
+      children = gtk_container_get_children (GTK_CONTAINER (menu));
+      item_separator = g_list_nth_data (children, 0);
+      if (G_LIKELY (item_separator != NULL && !GTK_IS_SEPARATOR_MENU_ITEM (item_separator)))
+        {
+          item_separator = gtk_separator_menu_item_new ();
+          gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_separator);
+          gtk_widget_show (item_separator);
+        }
+      else
+        item_separator = NULL;
+      g_list_free (children);
+
+      /* create menu items with appriorate labels */
+      if (tag == widget->tag_mailer)
+        {
+          item_copy = gtk_menu_item_new_with_label (_("Copy Email Address"));
+          item_open = gtk_menu_item_new_with_label (_("Compose Email"));
+        }
+      else
+        {
+          item_copy = gtk_menu_item_new_with_label (_("Copy Link Address"));
+          item_open = gtk_menu_item_new_with_label (_("Open Link"));
+        }
+
+      /* prepend the "COPY" menu item */
+      g_object_set_data_full (G_OBJECT (item_copy), "terminal-widget-link", g_strdup (match), g_free);
+      g_signal_connect_swapped (G_OBJECT (item_copy), "activate", G_CALLBACK (terminal_widget_context_menu_copy), widget);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_copy);
+      gtk_widget_show (item_copy);
+
+      /* prepend the "OPEN" menu item */
+      g_object_set_data_full (G_OBJECT (item_open), "terminal-widget-link", g_strdup (match), g_free);
+      g_object_set_data_full (G_OBJECT (item_open), "terminal-widget-tag", g_memdup (&tag, sizeof (tag)), g_free);
+      g_signal_connect_swapped (G_OBJECT (item_open), "activate", G_CALLBACK (terminal_widget_context_menu_open), widget);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_open);
+      gtk_widget_show (item_open);
+
+      g_free (match);
+    }
+
+  /* take a reference on the menu */
+  g_object_ref (G_OBJECT (menu));
+  gtk_object_sink (GTK_OBJECT (menu));
+
+  if (time < 0)
+    time = gtk_get_current_event_time ();
+
+  loop = g_main_loop_new (NULL, FALSE);
+
+  /* connect the deactivate handler */
+  id = g_signal_connect_swapped (G_OBJECT (menu), "deactivate", G_CALLBACK (g_main_loop_quit), loop);
+
+  /* make sure the menu is on the proper screen */
+  gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (widget)));
+
+  /* run our custom main loop */
+  gtk_grab_add (menu);
+  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
+  g_main_loop_run (loop);
+  g_main_loop_unref (loop);
+  gtk_grab_remove (menu);
+
+  /* remove the additional items (if any) */
+  if (item_separator != NULL) gtk_widget_destroy (item_separator);
+  if (item_open != NULL) gtk_widget_destroy (item_open);
+  if (item_copy != NULL) gtk_widget_destroy (item_copy);
+
+  /* unlink this deactivate callback */
+  g_signal_handler_disconnect (G_OBJECT (menu), id);
+
+  /* decrease the reference count on the menu */
+  g_object_unref (G_OBJECT (menu));
 }
 
 
@@ -191,9 +392,25 @@ terminal_widget_button_press_event (GtkWidget       *widget,
                                     GdkEventButton  *event)
 {
   gboolean committed = FALSE;
+  gchar   *match;
   guint    signal_id = 0;
+  gint     tag;
 
-  if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
+  if (event->button == 2 && event->type == GDK_BUTTON_PRESS)
+    {
+      /* middle-clicking on an URI fires the associated helper */
+      match = vte_terminal_match_check (VTE_TERMINAL (widget),
+                                        event->x / VTE_TERMINAL (widget)->char_width,
+                                        event->y / VTE_TERMINAL (widget)->char_height,
+                                        &tag);
+      if (G_UNLIKELY (match != NULL))
+        {
+          terminal_widget_open_uri (TERMINAL_WIDGET (widget), match, tag);
+          g_free (match);
+          return TRUE;
+        }
+    }
+  else if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
       signal_id = g_signal_connect (G_OBJECT (widget), "commit",
                                     G_CALLBACK (terminal_widget_commit), &committed);
@@ -209,7 +426,11 @@ terminal_widget_button_press_event (GtkWidget       *widget,
        * which means, we can safely popup a context menu now.
        */
       if (!committed || (event->state & GDK_MODIFIER_MASK) == GDK_SHIFT_MASK)
-        g_signal_emit (G_OBJECT (widget), widget_signals[CONTEXT_MENU], 0, event);
+        {
+          terminal_widget_context_menu (TERMINAL_WIDGET (widget),
+                                        event->button, event->time,
+                                        event->x, event->y);
+        }
     }
 
   return TRUE;
@@ -331,11 +552,14 @@ terminal_widget_key_press_event (GtkWidget    *widget,
 {
   GtkAdjustment *adjustment = VTE_TERMINAL (widget)->adjustment;
   gdouble        value;
+  gint           x;
+  gint           y;
 
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
   if (event->keyval == GDK_Menu || ((event->state & GDK_SHIFT_MASK) != 0 && event->keyval == GDK_F10))
     {
-      g_signal_emit (G_OBJECT (widget), widget_signals[CONTEXT_MENU], 0, event);
+      gtk_widget_get_pointer (widget, &x, &y);
+      terminal_widget_context_menu (TERMINAL_WIDGET (widget), 0, event->time, x, y);
       return TRUE;
     }
   /* scroll up one line with "<Shift>Up" */
@@ -355,6 +579,120 @@ terminal_widget_key_press_event (GtkWidget    *widget,
     }
 
   return GTK_WIDGET_CLASS (parent_class)->key_press_event (widget, event);
+}
+
+
+
+static void
+terminal_widget_open_uri (TerminalWidget *widget,
+                          const gchar    *link,
+                          gint            tag)
+{
+  TerminalHelperCategory category;
+  gchar                 *uri;
+
+  if (tag == widget->tag_browser1)
+    {
+      category = TERMINAL_HELPER_WEBBROWSER;
+      uri = g_strdup (link);
+    }
+  else if (tag == widget->tag_browser2)
+    {
+      category = TERMINAL_HELPER_WEBBROWSER;
+      uri = g_strconcat ("http://", link, NULL);
+    }
+  else if (tag == widget->tag_mailer)
+    {
+      category = TERMINAL_HELPER_MAILREADER;
+      if (strncmp (link, "mailto:", 7) == 0)
+        uri = g_strdup (link + 7);
+      else
+        uri = g_strdup (link);
+    }
+  else
+    {
+      g_warning ("Invalid tag specified while trying to open an URI.");
+      return;
+    }
+
+  g_signal_emit (G_OBJECT (widget), widget_signals[OPEN_URI], 0, uri, category);
+
+  g_free (uri);
+}
+
+
+
+static void
+terminal_widget_update_helper_browser (TerminalWidget *widget)
+{
+  gchar *setting;
+
+  g_object_get (G_OBJECT (widget->preferences), "helper-webbrowser", &setting, NULL);
+  if (exo_str_is_equal (setting, "disabled"))
+    {
+      if (widget->tag_browser1 >= 0)
+        {
+          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_browser1);
+          widget->tag_browser1 = -1;
+        }
+
+      if (widget->tag_browser2 >= 0)
+        {
+          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_browser2);
+          widget->tag_browser2 = -1;
+        }
+    }
+  else
+    {
+      if (widget->tag_browser1 < 0)
+        {
+          widget->tag_browser1 = vte_terminal_match_add (VTE_TERMINAL (widget),
+                                                         MATCH_BROWSER1);
+          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
+                                              widget->tag_browser1,
+                                              GDK_HAND2);
+        }
+
+      if (widget->tag_browser2 < 0)
+        {
+          widget->tag_browser2 = vte_terminal_match_add (VTE_TERMINAL (widget),
+                                                         MATCH_BROWSER2);
+          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
+                                              widget->tag_browser2,
+                                              GDK_HAND2);
+        }
+    }
+  g_free (setting);
+}
+
+
+
+static void
+terminal_widget_update_helper_mailer (TerminalWidget *widget)
+{
+  gchar *setting;
+
+  g_object_get (G_OBJECT (widget->preferences), "helper-mailreader", &setting, NULL);
+  if (exo_str_is_equal (setting, "disabled"))
+    {
+      if (widget->tag_mailer >= 0)
+        {
+          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_mailer);
+          widget->tag_mailer = -1;
+        }
+    }
+  else
+    {
+      if (widget->tag_mailer < 0)
+        {
+          widget->tag_mailer = vte_terminal_match_add (VTE_TERMINAL (widget),
+                                                       MATCH_MAILER);
+          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
+                                              widget->tag_mailer,
+                                              GDK_HAND2);
+        }
+    }
+  g_free (setting);
 }
 
 

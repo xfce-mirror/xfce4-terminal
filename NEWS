@@ -2,6 +2,9 @@
 =========
 - Added the possibility to let Vte auto-detect the backspace and delete bindings
   for the terminal.
+- You can now open hyperlinks (and email addresses) from within Terminal by
+  either middle-clicking the hyperlink or choosing the appropriate item from
+  the right-click menu. This feature is optional and can be disabled.
 - Changed default paste shortcut to Shift+Ctrl+V.
 - When terminal background was set to "background image" and the user opened
   a new terminal tab, the background image was not always set properly. This
@@ -10,6 +13,13 @@
   through terminal tabs, similar to what Mozilla Firefox does by default.
 - The keyboard shortcuts to go to a specific terminal tab now work properly
   even if the main menu bar is hidden.
+- The configuration file is watched for changes now and will be reread
+  automatically. You no longer need to restart Terminal if you manually edited
+  the terminalrc file.
+- Terminal now supports D-BUS 0.23 (and earlier) and D-BUS 0.31 (and later),
+  where the dependency on D-BUS is optional.
+- The output of "Terminal --help" now properly shows the translation (if any)
+  instead of the english text.
 - Various usability improvements.
 - Updated translations: os-cillation (de), Stephane Roy (fr)
 - New translations: Jari Rahkonen (fi), Yuval Tanny (he), Anthony Ivanoff (ru),

@@ -1,3 +1,29 @@
+2005-03-13	Benedikt Meurer <benny@xfce.org>
+
+	* po/he.po: The hebrew translations have been updated, thanks to
+	  Yuval Tanny <tanai@int.gov.il>.
+	* terminal/stock-icons/stock_mailreader_48.png,
+	  terminal/stock-icons/stock_webbrowser_48.png,
+	  terminal/stock-icons/stock_browser_48.png,
+	  terminal/stock-icons/stock_mailer_48.png: Unify the naming scheme
+	  for helper category related stuff.
+	* terminal/Makefile.am, terminal/terminal-marshal.list: Add custom
+	  marshallers for the "get-context-menu" and "open-uri" signals.
+	* terminal/terminal-helper-dialog.c, terminal/terminal-helper.c,
+	  terminal/terminal-helper.h, terminal/terminal-icons.c, 
+	  terminal/terminal-preferences.c, terminal/terminal-widget.c,
+	  terminal/terminal-widget.h, terminal/terminal-window.c: Use the simple
+	  way of handling custom helpers just like other helpers. Connect the
+	  "Open Link" and "Copy Link Address" controls. Various other
+	  improvements. This finally closes bug #52.
+	* terminal/terminal-screen.c: Forward the "get-context-menu" and
+	  "open-uri" signals from TerminalWidget.
+	* terminal/terminal-widget.c(terminal_widget_button_press_event): 
+	  Middle-clicking on an URI now fires the associated helper.
+	* po/: Update translations.
+	* NEWS: Add note about the new "URL clicking"-support. More details
+	  on the other items.
+
 2005-03-12	Benedikt Meurer <benny@xfce.org>
 
 	* helpers/epiphany.desktop.in: Add Epiphany.

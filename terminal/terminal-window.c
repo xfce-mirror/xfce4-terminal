@@ -98,9 +98,11 @@ static void            terminal_window_page_switched            (GtkNotebook    
                                                                  GtkNotebookPage        *page,
                                                                  guint                   page_num,
                                                                  TerminalWindow         *window);
-static void            terminal_window_context_menu             (TerminalScreen         *screen,
-                                                                 GdkEvent               *event,
+static GtkWidget      *terminal_window_get_context_menu         (TerminalScreen         *screen,
                                                                  TerminalWindow         *window);
+static void            terminal_window_open_uri                 (TerminalWindow         *window,
+                                                                 const gchar            *uri,
+                                                                 TerminalHelperCategory  category);
 static void            terminal_window_detach_screen            (TerminalWindow         *window,
                                                                  TerminalTabHeader      *header);
 static void            terminal_window_notify_title             (TerminalScreen         *screen,
@@ -912,52 +914,99 @@ terminal_window_page_switched (GtkNotebook     *notebook,
 
 
 
-static void
-terminal_window_context_menu (TerminalScreen  *screen,
-                              GdkEvent        *event,
-                              TerminalWindow  *window)
+static GtkWidget*
+terminal_window_get_context_menu (TerminalScreen  *screen,
+                                  TerminalWindow  *window)
 {
   TerminalScreen *terminal;
-  GtkWidget      *popup;
+  GtkWidget      *popup = NULL;
   GtkWidget      *menu;
   GtkWidget      *item;
-  gint            button = 0;
-  gint            time;
 
   terminal = terminal_window_get_active (window);
   if (G_LIKELY (screen == terminal))
     {
       popup = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu");
-      if (G_UNLIKELY (popup == NULL))
-        return;
-      gtk_menu_set_screen (GTK_MENU (popup), gtk_window_get_screen (GTK_WINDOW (window)));
-
-      item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
-      if (G_UNLIKELY (item == NULL))
-        return;
-
-      /* append input methods */
-      menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (item));
-      if (G_LIKELY (menu != NULL))
-        gtk_widget_destroy (menu);
-      menu = gtk_menu_new ();
-      terminal_screen_im_append_menuitems (screen, GTK_MENU_SHELL (menu));
-      gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), menu);
-
-      if (event != NULL)
+      if (G_LIKELY (popup != NULL))
         {
-          if (event->type == GDK_BUTTON_PRESS)
-            button = event->button.button;
-          time = event->button.time;
+          item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
+          if (G_LIKELY (item != NULL))
+            {
+              /* append input methods */
+              menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (item));
+              if (G_LIKELY (menu != NULL))
+                gtk_widget_destroy (menu);
+              menu = gtk_menu_new ();
+              terminal_screen_im_append_menuitems (screen, GTK_MENU_SHELL (menu));
+              gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), menu);
+            }
+        }
+    }
+
+  return popup;
+}
+
+
+
+static void
+terminal_window_open_uri (TerminalWindow         *window,
+                          const gchar            *uri,
+                          TerminalHelperCategory  category)
+{
+  static const gchar *messages[] =
+  {
+    N_ ("You did not choose your preferred Web\nBrowser yet. Do you want to setup your\npreferred applications now?"),
+    N_ ("You did not choose your preferred Mail\nReader yet. Do you want to setup your\npreferred applications now?"),
+  };
+
+  TerminalHelperDatabase *database;
+  TerminalHelper         *helper;
+  GEnumClass             *enum_class;
+  GEnumValue             *enum_value;
+  GdkScreen              *screen;
+  GtkAction              *action;
+  GtkWidget              *dialog;
+  gchar                   name[64];
+  gchar                  *setting;
+  gint                    response;
+
+  /* determine the setting name */
+  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
+  enum_value = g_enum_get_value (enum_class, category);
+  g_snprintf (name, 64, "helper-%s", enum_value->value_nick);
+  g_type_class_unref (enum_class);
+
+  /* query the setting value */
+  g_object_get (G_OBJECT (window->preferences), name, &setting, NULL);
+  if (!exo_str_is_equal (setting, "disabled"))
+    {
+      database = terminal_helper_database_get ();
+      helper = terminal_helper_database_lookup (database, category, setting);
+      if (G_LIKELY (helper != NULL))
+        {
+          screen = gtk_window_get_screen (GTK_WINDOW (window));
+          terminal_helper_execute (helper, screen, uri);
         }
       else
         {
-          time = gtk_get_current_event_time ();
+          dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+                                           GTK_DIALOG_DESTROY_WITH_PARENT
+                                           | GTK_DIALOG_MODAL,
+                                           GTK_MESSAGE_QUESTION,
+                                           GTK_BUTTONS_YES_NO,
+                                           "%s", _(messages[category]));
+          response = gtk_dialog_run (GTK_DIALOG (dialog));
+          if (response == GTK_RESPONSE_YES)
+            {
+              action = gtk_action_group_get_action (window->action_group, "edit-helpers");
+              if (G_LIKELY (action != NULL))
+                gtk_action_activate (action);
+            }
+          gtk_widget_destroy (dialog);
         }
-
-      gtk_menu_popup (GTK_MENU (popup), NULL, NULL,
-                      NULL, NULL, button, time);
+      g_object_unref (G_OBJECT (database));
     }
+  g_free (setting);
 }
 
 
@@ -1688,10 +1737,12 @@ terminal_window_add (TerminalWindow *window,
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
 
-  g_signal_connect (G_OBJECT (screen), "context-menu",
-                    G_CALLBACK (terminal_window_context_menu), window);
+  g_signal_connect (G_OBJECT (screen), "get-context-menu",
+                    G_CALLBACK (terminal_window_get_context_menu), window);
   g_signal_connect (G_OBJECT (screen), "notify::title",
                     G_CALLBACK (terminal_window_notify_title), window);
+  g_signal_connect_swapped (G_OBJECT (screen), "open-uri",
+                            G_CALLBACK (terminal_window_open_uri), window);
   g_signal_connect_swapped (G_OBJECT (screen), "selection-changed",
                             G_CALLBACK (terminal_window_update_actions), window);
 

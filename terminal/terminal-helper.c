@@ -35,6 +35,7 @@
 
 #include <exo/exo.h>
 
+#include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>
 
 
@@ -48,6 +49,8 @@ struct _TerminalHelper
 {
   GObject                __parent__;
   TerminalHelperCategory category;
+
+  gboolean               hidden;
 
   gchar                 *id;
   gchar                 *icon;
@@ -158,17 +161,17 @@ terminal_helper_load (XfceRc      *rc,
 
   /* check for a valid Category */
   s = xfce_rc_read_entry_untranslated (rc, "X-Terminal-Category", NULL);
-  if (exo_str_is_equal (s, "WebBrowser"))
+  if (s != NULL && g_ascii_strcasecmp (s, "WebBrowser") == 0)
     category = TERMINAL_HELPER_WEBBROWSER;
-  else if (exo_str_is_equal (s, "MailReader"))
+  else if (s != NULL && g_ascii_strcasecmp (s, "MailReader") == 0)
     category = TERMINAL_HELPER_MAILREADER;
   else
     return NULL;
 
   /* check if Binaries is needed and present */
-  binaries = xfce_rc_read_list_entry (rc, "X-Terminal-Binaries", ";");
   if (strstr (command, "%B") != NULL)
     {
+      binaries = xfce_rc_read_list_entry (rc, "X-Terminal-Binaries", ";");
       if (G_UNLIKELY (binaries == NULL))
         return NULL;
 
@@ -196,12 +199,13 @@ terminal_helper_load (XfceRc      *rc,
   helper->category = category;
   helper->id = g_strdup (id);
   helper->name = g_strdup (name);
+  helper->hidden = xfce_rc_read_bool_entry (rc, "NoDisplay", FALSE);
 
   s = xfce_rc_read_entry_untranslated (rc, "Icon", NULL);
   if (G_LIKELY (s != NULL))
     helper->icon = g_strdup (s);
 
-  if (G_UNLIKELY (path == NULL))
+  if (G_UNLIKELY (path == NULL || *path == '\0'))
     {
       helper->command = g_strdup (command);
     }
@@ -210,7 +214,7 @@ terminal_helper_load (XfceRc      *rc,
       helper->command = g_new (gchar, strlen (command) * strlen (path) + 1);
       for (s = command, t = helper->command; *s != '\0'; )
         {
-          if (s[0] == '%' && toupper (s[1]) == 'B')
+          if (s[0] == '%' && g_ascii_tolower (s[1]) == 'b')
             {
               for (p = path; *p != '\0'; )
                 *t++ = *p++;
@@ -219,8 +223,9 @@ terminal_helper_load (XfceRc      *rc,
           else
             *t++ = *s++;
         }
-      g_free (path);
+      *t = '\0';
     }
+  g_free (path);
 
   return helper;
 }
@@ -233,6 +238,21 @@ terminal_helper_compare (gconstpointer a,
 {
   return g_utf8_collate (TERMINAL_HELPER (a)->name,
                          TERMINAL_HELPER (b)->name);
+}
+
+
+
+/**
+ * terminal_helper_is_hidden:
+ * @helper  : A #TerminalHelper.
+ *
+ * Return value:
+ **/
+gboolean
+terminal_helper_is_hidden (TerminalHelper *helper)
+{
+  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), TRUE);
+  return helper->hidden;
 }
 
 
@@ -332,6 +352,68 @@ terminal_helper_get_icon (TerminalHelper *helper)
 
 
 
+/**
+ * terminal_helper_execute:
+ * @helper  : A #TerminalHelper.
+ * @screen  : A #GdkScreen or %NULL.
+ * @uri     : The URI for the command.
+ **/
+void
+terminal_helper_execute (TerminalHelper *helper,
+                         GdkScreen      *screen,
+                         const gchar    *uri)
+{
+  const gchar *s;
+  const gchar *u;
+  gchar       *argv[4];
+  gchar       *command;
+  gchar       *t;
+  guint        n;
+
+  g_return_if_fail (TERMINAL_IS_HELPER (helper));
+  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (uri != NULL);
+
+  for (n = 0, s = helper->command; *s != '\0'; ++s)
+    if (s[0] == '%' && g_ascii_tolower (s[1]) == 'u')
+      ++n;
+
+  if (n > 0)
+    {
+      command = g_new (gchar, strlen (helper->command) + n * strlen (uri) + 1);
+      for (s = helper->command, t = command; *s != '\0'; )
+        {
+          if (s[0] == '%' && g_ascii_tolower (s[1]) == 'u')
+            {
+              for (u = uri; *u != '\0'; )
+                *t++ = *u++;
+              s += 2;
+            }
+          else
+            {
+              *t++ = *s++;
+            }
+        }
+      *t = '\0';
+    }
+  else
+    {
+      command = g_strconcat (helper->command, " ", uri, NULL);
+    }
+
+  argv[0] = "/bin/sh";
+  argv[1] = "-c";
+  argv[2] = command;
+  argv[3] = NULL;
+
+  gdk_spawn_on_screen (screen, NULL, argv, NULL,
+                       0, NULL, NULL, NULL, NULL);
+
+  g_free (command);
+}
+
+
+
 
 struct _TerminalHelperDatabaseClass
 {
@@ -340,37 +422,58 @@ struct _TerminalHelperDatabaseClass
 
 struct _TerminalHelperDatabase
 {
-  GObject  __parent__;
+  GObject     __parent__;
+  GHashTable *helpers;
 };
 
 
 
-GType
-terminal_helper_database_get_type (void)
+static void terminal_helper_database_class_init (TerminalHelperDatabaseClass *klass);
+static void terminal_helper_database_init       (TerminalHelperDatabase      *database);
+static void terminal_helper_database_finalize   (GObject                     *object);
+
+
+
+static GObjectClass *database_parent_class;
+
+
+
+G_DEFINE_TYPE (TerminalHelperDatabase, terminal_helper_database, G_TYPE_OBJECT);
+
+
+
+static void
+terminal_helper_database_class_init (TerminalHelperDatabaseClass *klass)
 {
-  static GType type = G_TYPE_INVALID;
+  GObjectClass *gobject_class;
 
-  if (G_UNLIKELY (type == G_TYPE_INVALID))
-    {
-      static const GTypeInfo info =
-      {
-        sizeof (TerminalHelperDatabaseClass),
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        NULL,
-        sizeof (TerminalHelperDatabase),
-        0,
-        NULL,
-      };
+  database_parent_class = g_type_class_peek_parent (klass);
 
-      type = g_type_register_static (G_TYPE_OBJECT,
-                                     "TerminalHelperDatabase",
-                                     &info, 0);
-    }
+  gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->finalize = terminal_helper_database_finalize;
+}
 
-  return type;
+
+
+static void
+terminal_helper_database_init (TerminalHelperDatabase *database)
+{
+  database->helpers = g_hash_table_new_full (g_str_hash,
+                                             g_str_equal,
+                                             g_free,
+                                             g_object_unref);
+}
+
+
+
+static void
+terminal_helper_database_finalize (GObject *object)
+{
+  TerminalHelperDatabase *database = TERMINAL_HELPER_DATABASE (object);
+
+  g_hash_table_destroy (database->helpers);
+
+  G_OBJECT_CLASS (database_parent_class)->finalize (object);
 }
 
 
@@ -420,12 +523,14 @@ terminal_helper_database_lookup (TerminalHelperDatabase *database,
   gchar          *spec;
 
   g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
-  g_return_val_if_fail (id != NULL, NULL);
+
+  if (G_UNLIKELY (id == NULL))
+    return NULL;
 
   spec = g_strconcat ("Terminal/apps/", id, ".desktop", NULL);
 
   /* try to find a cached version */
-  helper = g_object_get_data (G_OBJECT (database), spec);
+  helper = g_hash_table_lookup (database->helpers, spec);
 
   /* load helper from file */
   if (G_LIKELY (helper == NULL))
@@ -442,11 +547,12 @@ terminal_helper_database_lookup (TerminalHelperDatabase *database,
           g_free (file);
         }
 
+      /* add the loaded helper to the cache */
       if (G_LIKELY (helper != NULL))
         {
-          g_object_set_data_full (G_OBJECT (database),
-                                  spec, helper,
-                                  g_object_unref);
+          g_hash_table_insert (database->helpers,
+                               g_strdup (spec),
+                               helper);
         }
     }
 
@@ -521,4 +627,81 @@ terminal_helper_database_lookup_all (TerminalHelperDatabase *database,
 
 
 
+/**
+ * terminal_helper_database_get_custom:
+ * @database  : A #TerminalHelperDatabase.
+ * @category  : A #TerminalHelperCategory.
+ **/
+TerminalHelper*
+terminal_helper_database_get_custom (TerminalHelperDatabase *database,
+                                     TerminalHelperCategory  category)
+{
+  GEnumClass *enum_class;
+  GEnumValue *enum_value;
+  gchar       id[64];
+
+  g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
+  g_return_val_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
+                     && category <= TERMINAL_HELPER_MAILREADER, NULL);
+
+  /* determine the id for the custom helper */
+  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
+  enum_value = g_enum_get_value (enum_class, category);
+  g_snprintf (id, 64, "custom-%s", enum_value->value_nick);
+  g_type_class_unref (enum_class);
+
+  return terminal_helper_database_lookup (database, category, id);
+}
+
+
+
+/**
+ * terminal_helper_database_set_custom:
+ * @database  : A #TerminalHelperDatabase.
+ * @category  : A #TerminalHelperCategory.
+ * @command   : The custom command.
+ **/
+void
+terminal_helper_database_set_custom (TerminalHelperDatabase *database,
+                                     TerminalHelperCategory  category,
+                                     const gchar            *command)
+{
+  GEnumClass *enum_class;
+  GEnumValue *enum_value;
+  XfceRc     *rc;
+  gchar       spec[128];
+  gchar      *file;
+
+  g_return_if_fail (TERMINAL_IS_HELPER_DATABASE (database));
+  g_return_if_fail (command != NULL && *command != '\0');
+
+  /* determine the spec for the custom helper */
+  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
+  enum_value = g_enum_get_value (enum_class, category);
+  g_snprintf (spec, 128, "Terminal/apps/custom-%s.desktop", enum_value->value_nick);
+
+  /* lookup the resource save location */
+  xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
+  file = xfce_resource_save_location (XFCE_RESOURCE_DATA, spec, TRUE);
+  xfce_resource_pop_path (XFCE_RESOURCE_DATA);
+
+  /* write the custom helper file */
+  rc = xfce_rc_simple_open (file, FALSE);
+  if (G_LIKELY (rc != NULL))
+    {
+      xfce_rc_set_group (rc, "Desktop Entry");
+      xfce_rc_write_bool_entry (rc, "NoDisplay", TRUE);
+      xfce_rc_write_entry (rc, "Type", "Application");
+      xfce_rc_write_entry (rc, "Name", command);
+      xfce_rc_write_entry (rc, "X-Terminal-Category", enum_value->value_nick);
+      xfce_rc_write_entry (rc, "X-Terminal-Command", command);
+      xfce_rc_close (rc);
+    }
+
+  /* ditch any cached object */
+  g_hash_table_remove (database->helpers, spec);
+
+  g_type_class_unref (enum_class);
+  g_free (file);
+}
 

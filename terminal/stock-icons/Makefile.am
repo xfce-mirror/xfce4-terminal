@@ -1,7 +1,7 @@
 IMAGES =								\
 	 stock_advanced_48.png						\
 	 stock_appearance_48.png					\
-	 stock_browser_48.png						\
+	 stock_webbrowser_48.png					\
 	 stock_closetab_16.png						\
 	 stock_closetab_24.png						\
 	 stock_closewindow_16.png					\
@@ -10,7 +10,7 @@ IMAGES =								\
 	 stock_compose_48.png						\
 	 stock_fullscreen_24.png					\
 	 stock_general_48.png						\
-	 stock_mailer_48.png						\
+	 stock_mailreader_48.png					\
 	 stock_newtab_16.png						\
 	 stock_newtab_24.png						\
 	 stock_newwindow_16.png						\
@@ -22,9 +22,9 @@ IMAGES =								\
 	 stock_showmenu_24.png
 
 VARIABLES_HELPER =							\
-	stock_browser_48	$(srcdir)/stock_browser_48.png		\
-	stock_mailer_48		$(srcdir)/stock_mailer_48.png
-
+	stock_webbrowser_48	$(srcdir)/stock_webbrowser_48.png	\
+	stock_mailreader_48	$(srcdir)/stock_mailreader_48.png
+	
 VARIABLES_MAIN =							\
 	stock_closetab_16	$(srcdir)/stock_closetab_16.png		\
 	stock_closewindow_16	$(srcdir)/stock_closewindow_16.png	\

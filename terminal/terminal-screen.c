@@ -1,6 +1,6 @@
-/* $Id: terminal-screen.c 57 2004-11-22 17:38:15Z bmeurer $ */
+/* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2005 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -39,7 +39,10 @@
 
 #include <exo/exo.h>
 
+#include <terminal/terminal-enum-types.h>
+#include <terminal/terminal-helper.h>
 #include <terminal/terminal-image-loader.h>
+#include <terminal/terminal-marshal.h>
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
 
@@ -54,7 +57,8 @@ enum
 
 enum
 {
-  CONTEXT_MENU,
+  GET_CONTEXT_MENU,
+  OPEN_URI,
   SELECTION_CHANGED,
   LAST_SIGNAL,
 };
@@ -93,15 +97,18 @@ static void terminal_screen_vte_child_exited                  (VteTerminal      
                                                                TerminalScreen   *screen);
 static void     terminal_screen_vte_eof                       (VteTerminal    *terminal,
                                                                TerminalScreen *screen);
-static void     terminal_screen_vte_context_menu              (TerminalWidget *widget,
-                                                               GdkEvent       *event,
-                                                               TerminalScreen *screen);
-static void     terminal_screen_vte_selection_changed         (VteTerminal    *terminal,
-                                                               TerminalScreen *screen);
-static void     terminal_screen_vte_window_title_changed      (VteTerminal    *terminal,
-                                                               TerminalScreen *screen);
-static gboolean terminal_screen_timer_background              (gpointer        user_data);
-static void     terminal_screen_timer_background_destroy      (gpointer        user_data);
+static GtkWidget *terminal_screen_vte_get_context_menu          (TerminalWidget         *widget,
+                                                                 TerminalScreen         *screen);
+static void       terminal_screen_vte_open_uri                  (TerminalWidget         *widget,
+                                                                 const gchar            *uri,
+                                                                 TerminalHelperCategory  category,
+                                                                 TerminalScreen         *screen);
+static void       terminal_screen_vte_selection_changed         (VteTerminal            *terminal,
+                                                                 TerminalScreen         *screen);
+static void       terminal_screen_vte_window_title_changed      (VteTerminal            *terminal,
+                                                                 TerminalScreen         *screen);
+static gboolean   terminal_screen_timer_background              (gpointer                user_data);
+static void       terminal_screen_timer_background_destroy      (gpointer                user_data);
 
 
 
@@ -110,8 +117,11 @@ struct _TerminalScreenClass
   GtkHBoxClass __parent__;
 
   /* signals */
-  void (*context_menu)      (TerminalScreen *screen, GdkEvent *event);
-  void (*selection_changed) (TerminalScreen *screen);
+  GtkWidget*  (*get_context_menu)  (TerminalScreen        *screen);
+  void        (*open_uri)          (TerminalScreen        *screen,
+                                    const gchar           *uri,
+                                    TerminalHelperCategory category);
+  void        (*selection_changed) (TerminalScreen        *screen);
 };
 
 struct _TerminalScreen
@@ -181,16 +191,29 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         G_PARAM_READABLE));
 
   /**
-   * TerminalScreen::context-menu
+   * TerminalScreen::get-context-menu
    **/
-  screen_signals[CONTEXT_MENU] =
-    g_signal_new ("context-menu",
+  screen_signals[GET_CONTEXT_MENU] =
+    g_signal_new ("get-context-menu",
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalScreenClass, context_menu),
+                  G_STRUCT_OFFSET (TerminalScreenClass, get_context_menu),
                   NULL, NULL,
-                  g_cclosure_marshal_VOID__POINTER,
-                  G_TYPE_NONE, 1, G_TYPE_POINTER);
+                  _terminal_marshal_OBJECT__VOID,
+                  GTK_TYPE_MENU, 0);
+
+  /**
+   * TerminalWidget::open-uri:
+   **/
+  screen_signals[OPEN_URI] =
+    g_signal_new ("open-uri",
+                  G_TYPE_FROM_CLASS (klass),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (TerminalScreenClass, open_uri),
+                  NULL, NULL,
+                  _terminal_marshal_VOID__STRING_ENUM,
+                  G_TYPE_NONE, 2, G_TYPE_STRING,
+                  TERMINAL_TYPE_HELPER_CATEGORY);
 
   /**
    * TerminalScreen::selection-changed
@@ -217,7 +240,8 @@ terminal_screen_init (TerminalScreen *screen)
   g_object_connect (G_OBJECT (screen->terminal),
                     "signal::child-exited", G_CALLBACK (terminal_screen_vte_child_exited), screen,
                     "signal::eof", G_CALLBACK (terminal_screen_vte_eof), screen,
-                    "signal::context-menu", G_CALLBACK (terminal_screen_vte_context_menu), screen,
+                    "signal::context-menu", G_CALLBACK (terminal_screen_vte_get_context_menu), screen,
+                    "signal::open-uri", G_CALLBACK (terminal_screen_vte_open_uri), screen,
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
@@ -739,12 +763,27 @@ terminal_screen_vte_eof (VteTerminal    *terminal,
 
 
 
-static void
-terminal_screen_vte_context_menu (TerminalWidget  *widget,
-                                  GdkEvent        *event,
-                                  TerminalScreen  *screen)
+static GtkWidget*
+terminal_screen_vte_get_context_menu (TerminalWidget  *widget,
+                                      TerminalScreen  *screen)
 {
-  g_signal_emit (G_OBJECT (screen), screen_signals[CONTEXT_MENU], 0, event);
+  GtkWidget *menu = NULL;
+  g_signal_emit (G_OBJECT (screen), screen_signals[GET_CONTEXT_MENU], 0, &menu);
+  return menu;
+}
+
+
+
+static void
+terminal_screen_vte_open_uri (TerminalWidget        *widget,
+                              const gchar           *uri,
+                              TerminalHelperCategory category,
+                              TerminalScreen        *screen)
+{
+  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
+  g_return_if_fail (uri != NULL);
+
+  g_signal_emit (G_OBJECT (screen), screen_signals[OPEN_URI], 0, uri, category);
 }
 
 
