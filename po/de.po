@@ -1,75 +1,79 @@
 # German translations for Terminal.
-# Copyright (c) 2004 os-cillation
+# Copyright (c) 2004-2005 os-cillation
 # This file is distributed under the same license as the Terminal package.
-# Benedikt Meurer <benny@xfce.org>, 2004.
+# Benedikt Meurer <benny@xfce.org>, 2004-2005.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.2\n"
+"Project-Id-Version: Terminal 0.2.3svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-27 20:23+0100\n"
-"PO-Revision-Date: 2004-12-21 21:15+0100\n"
+"POT-Creation-Date: 2005-01-31 21:56+0100\n"
+"PO-Revision-Date: 2005-01-31 22:14+0100\n"
 "Last-Translator: Benedikt Meurer <benny@xfce.org>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
-#: terminal/main.c:228
+#: terminal/main.c:42
 msgid "Usage: Terminal [OPTION...]"
-msgstr ""
+msgstr "Aufruf: Terminal [OPTIONEN...]"
 
-#: terminal/main.c:230
+#: terminal/main.c:44
 msgid "  -h, --help                          Print this help message and exit"
 msgstr "  -h, --help                          Diese Hilfe anzeigen"
 
-#: terminal/main.c:231
+#: terminal/main.c:45
 msgid ""
 "  -v, --version                       Print version information and exit"
 msgstr "  -v, --version                       Programmversion anzeigen"
 
-#: terminal/main.c:232
+#: terminal/main.c:46
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
 
-#: terminal/main.c:235
+#: terminal/main.c:49
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
 msgstr ""
 
-#: terminal/main.c:237
+#: terminal/main.c:51
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
 
-#: terminal/main.c:239
+#: terminal/main.c:53
 msgid ""
 "  --working-directory=DIRNAME         Set the terminals working directory"
 msgstr ""
+"  --working-directory=DIRNAME         Setzt das Arbeitsverzeichnis des\n"
+"                                      zuletzt angegebenen Terminal-Reiters"
 
-#: terminal/main.c:240
+#: terminal/main.c:54
 msgid "  -T, --title=TITLE                   Set the terminals title"
 msgstr ""
 "  -T, --title=TITEL                   Setzt den Titel des zuletzt\n"
 "                                      angegebenen Terminal-Reiters"
 
-#: terminal/main.c:242
+#: terminal/main.c:56
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
 
-#: terminal/main.c:244
+#: terminal/main.c:58
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
 
-#: terminal/main.c:247
+#: terminal/main.c:61
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified;\n"
 "                                      window; applies to only one window;\n"
@@ -77,13 +81,13 @@ msgid ""
 "                                      you create from the command line"
 msgstr ""
 
-#: terminal/main.c:251
+#: terminal/main.c:65
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
 
-#: terminal/main.c:253
+#: terminal/main.c:67
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
@@ -92,7 +96,7 @@ msgid ""
 "                                      command line."
 msgstr ""
 
-#: terminal/main.c:258
+#: terminal/main.c:72
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -101,7 +105,7 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: terminal/main.c:263
+#: terminal/main.c:77
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -110,7 +114,7 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: terminal/main.c:268
+#: terminal/main.c:82
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -119,7 +123,7 @@ msgid ""
 "                                      the command line"
 msgstr ""
 
-#: terminal/main.c:273
+#: terminal/main.c:87
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -128,7 +132,7 @@ msgid ""
 "                                      the command line"
 msgstr ""
 
-#: terminal/main.c:278
+#: terminal/main.c:92
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -137,7 +141,7 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: terminal/main.c:283
+#: terminal/main.c:97
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -146,41 +150,41 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: terminal/main.c:289
+#: terminal/main.c:103
 msgid ""
 "  --tab                               Open a new tab in the last-specified\n"
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
 
-#: terminal/main.c:292
+#: terminal/main.c:106
 msgid ""
 "  --window                            Open a new window containing one tab;\n"
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
 
-#: terminal/main.c:296
+#: terminal/main.c:110
 msgid "  --default-display=DISPLAY           default X display to use"
 msgstr ""
 
-#: terminal/main.c:297
+#: terminal/main.c:111
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
 "                                      directory"
 msgstr ""
 
-#: terminal/main.c:321 terminal/terminal-preferences.c:1044
+#: terminal/main.c:135 terminal/terminal-preferences.c:1044
 #: terminal/terminal-shortcut-editor.c:114 Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: terminal/main.c:348
+#: terminal/main.c:162
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) 2003-2005\n"
 "        os-cillation e.K. All rights reserved.\n"
 "\n"
 "Written by Benedikt Meurer <benny@xfce.org>.\n"
@@ -191,7 +195,7 @@ msgid ""
 msgstr ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) 2003-2005\n"
 "        os-cillation e.K. Alle Rechte vorbehalten.\n"
 "\n"
 "Entwickelt von Benedikt Meurer <benny@xfce.org>.\n"
@@ -200,76 +204,85 @@ msgstr ""
 "\n"
 "Bitte melden Sie Problem unter <%s>.\n"
 
-#: terminal/main.c:436
+#: terminal/main.c:251
 #, c-format
-msgid "Unable to start terminal server: %s\n"
-msgstr "Fehler beim Versuch den Terminal Server zu starten: %s\n"
+msgid "Unable to register terminal service: %s\n"
+msgstr "Fehler beim Registrieren des Terminal Services: %s\n"
 
-#: terminal/main.c:444
+#: terminal/main.c:260
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Terminal konnte nicht gestartet werden: %s\n"
 
-#: terminal/terminal-app.c:311
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
-
-#: terminal/terminal-app.c:568
-msgid "Unable to connect to D-BUS message daemon"
-msgstr ""
-
-#: terminal/terminal-app.c:577
-#, c-format
-msgid "Unable to acquire service %s: %s"
-msgstr ""
-
-#: terminal/terminal-app.c:589
-#, c-format
-msgid "Unable to register object %s\n"
-msgstr ""
-
-#: terminal/terminal-app.c:692
+#: terminal/terminal-app.c:506
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ungültige Geometrieangabe \"%s\"\n"
 
+#: terminal/terminal-dbus.c:94
+msgid "User id mismatch"
+msgstr "Benutzer IDs stimmen nicht überein"
+
+#: terminal/terminal-dbus.c:104 terminal/terminal-dbus.c:114
+msgid "Invalid arguments"
+msgstr "Ungültige Parameter"
+
+#: terminal/terminal-dbus.c:141
+msgid "D-BUS message bus disconnected, exiting...\n"
+msgstr ""
+
+#: terminal/terminal-dbus.c:245
+#, c-format
+msgid "Unable to register object %s"
+msgstr "Konnte das D-BUS object nicht registrieren: %s"
+
 #: terminal/terminal-options.c:106
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
+msgstr "Die Option \"--sm-client-id\" erwartet als Parameter die Sitzungsid."
 
 #: terminal/terminal-options.c:128
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
-msgstr ""
+msgstr "Die·Option·\"--execute/-x\"·erwartet·dass·die folgenden Kommandozeilen-\n"
+"parameter das auszuführende Kommand enthalten"
 
 #: terminal/terminal-options.c:157
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
-msgstr ""
+msgstr "Die Option \"--command/-e\" erwartet als Parameter den auszuführenden"
+"Befehl"
 
 #: terminal/terminal-options.c:186
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
-msgstr ""
+msgstr "Die Option \"--working-directory\" erwartet als Parameter den Pfad des\n"
+"Arbeitsverzeichnisses welches für den auszuführenden Befehl benutzt\n"
+"werden soll"
 
 #: terminal/terminal-options.c:217
-msgid "Option \"--title/-T\" requires specifying the title as its parameter"
+msgid ""
+"Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
+"Die Option \"--title/-T\" erwartet als Parameter den Titel für den zuletzt\n"
+"spezifizierten Terminal-Reiter"
 
 #: terminal/terminal-options.c:244
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
+"Die Option \"--display\" erwartet als Parameter die Angabe eines X Display\n"
+"Namens"
 
 #: terminal/terminal-options.c:271
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
+"Die Option \"--geometry\" erwartet als Parameter eine Geometrie-Spezifikation"
 
 #: terminal/terminal-options.c:298
 msgid "Option \"--role\" requires specifying the window role as its parameter"
@@ -555,7 +568,7 @@ msgstr "<b>Farbpalette</b>"
 
 #: terminal/terminal-preferences-dialog.c:698
 msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminal-Anwendungen dürfen diese Farbpalette verwenden:"
+msgstr "Terminal-Anwendungen verwenden diese Farbpalette:"
 
 #: terminal/terminal-preferences-dialog.c:830
 msgid "Colors"
@@ -571,7 +584,7 @@ msgstr "<b>Zugriff auf Menüs</b>"
 
 #: terminal/terminal-preferences-dialog.c:883
 msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Alle Menükürzelbuchstaben deaktivieren (z.B. Alt+d)"
+msgstr "_Alle Menükürzelbuchstaben deaktivieren (z.B. Alt+d)"
 
 #: terminal/terminal-preferences-dialog.c:888
 msgid "Disable m_enu shortcut key (F10 by default)"
@@ -580,8 +593,7 @@ msgstr "Me_nütastenkombination deaktivieren (Vorgabe ist F10)"
 #: terminal/terminal-preferences-dialog.c:900
 msgid "Shortcuts"
 msgstr ""
-"Tastenkom-\n"
-"binationen"
+"Tastenkürzel"
 
 #: terminal/terminal-preferences-dialog.c:918
 msgid "<b>Compatibility</b>"
@@ -605,7 +617,7 @@ msgstr "Rücktaste erzeugt:"
 #: terminal/terminal-preferences-dialog.c:944
 #: terminal/terminal-preferences-dialog.c:968
 msgid "Auto-detect"
-msgstr ""
+msgstr "Automatisch erkennen"
 
 #: terminal/terminal-preferences-dialog.c:945
 #: terminal/terminal-preferences-dialog.c:969
@@ -645,7 +657,7 @@ msgstr ""
 
 #: terminal/terminal-preferences-dialog.c:1013
 msgid "_Reset compatibility options to defaults"
-msgstr "Kompatibilitätseinstellungen auf Vorgabewerte zurücksetzen"
+msgstr "Kompatibilitätseinstellungen auf Vorgaben zurücksetzen"
 
 #: terminal/terminal-preferences-dialog.c:1023
 msgid "<b>Double click</b>"
@@ -659,8 +671,8 @@ msgstr "Folgende Zeichen beim Doppelklick als Teil eines Wortes ansehen:"
 msgid "Advanced"
 msgstr "Fortgeschritten"
 
-#: terminal/terminal-preferences-dialog.c:1097 terminal/terminal-window.c:1306
-#: terminal/terminal-window.c:1333 terminal/terminal-window.c:1406
+#: terminal/terminal-preferences-dialog.c:1097 terminal/terminal-window.c:1311
+#: terminal/terminal-window.c:1338 terminal/terminal-window.c:1411
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr "Fehler beim Starten der Hilfe: %s"
@@ -722,7 +734,7 @@ msgid "Fullscreen"
 msgstr "Vollbild"
 
 #: terminal/terminal-preferences.c:403 terminal/terminal-preferences.c:404
-#: terminal/terminal-window.c:1440
+#: terminal/terminal-window.c:1445
 msgid "Set Title"
 msgstr "Titel festlegen"
 
@@ -800,27 +812,27 @@ msgstr "Hintergrund Verdunklung"
 
 #: terminal/terminal-preferences.c:619 terminal/terminal-preferences.c:620
 msgid "Backspace binding"
-msgstr ""
+msgstr "Backspace Zuordnung"
 
 #: terminal/terminal-preferences.c:631 terminal/terminal-preferences.c:632
 msgid "Delete binding"
-msgstr ""
+msgstr "Delete Zuordnung"
 
 #: terminal/terminal-preferences.c:643
 msgid "Foreground color"
-msgstr ""
+msgstr "Vordergrundfarbe"
 
 #: terminal/terminal-preferences.c:644
 msgid "Terminal foreground color"
-msgstr ""
+msgstr "Terminal Vordergrundfarbe"
 
 #: terminal/terminal-preferences.c:654
 msgid "Background color"
-msgstr ""
+msgstr "Hintergrundfarbe"
 
 #: terminal/terminal-preferences.c:655
 msgid "Terminal background color"
-msgstr ""
+msgstr "Terminal Hintergrundfarbe"
 
 #: terminal/terminal-preferences.c:665 terminal/terminal-preferences.c:666
 msgid "Palette entry 1"
@@ -888,31 +900,31 @@ msgstr "Paletteneintrag 16"
 
 #: terminal/terminal-preferences.c:841
 msgid "Update records"
-msgstr ""
+msgstr "Datensätze aktualisieren"
 
 #: terminal/terminal-preferences.c:842
 msgid "Update wtmp/utmp/lastlog records"
-msgstr ""
+msgstr "wtmp/utmp/lastlog Datensätze aktualisieren"
 
 #: terminal/terminal-preferences.c:852 terminal/terminal-preferences.c:853
 msgid "Run shell as login shell"
-msgstr ""
+msgstr "Shell als Login-Shell ausführen"
 
 #: terminal/terminal-preferences.c:863 terminal/terminal-preferences.c:864
 msgid "Allow bold fonts"
-msgstr ""
+msgstr "Fette Schriften zulassen"
 
 #: terminal/terminal-preferences.c:874 terminal/terminal-preferences.c:875
 msgid "Font anti-aliasing"
-msgstr ""
+msgstr "Schriftglättung"
 
 #: terminal/terminal-preferences.c:885
 msgid "Font name"
-msgstr ""
+msgstr "Schriftart"
 
 #: terminal/terminal-preferences.c:886
 msgid "Terminal font name"
-msgstr ""
+msgstr "Terminal Schriftart"
 
 #: terminal/terminal-preferences.c:896 terminal/terminal-preferences.c:897
 msgid "Terminal bell"
@@ -920,15 +932,15 @@ msgstr "Terminalglocke"
 
 #: terminal/terminal-preferences.c:907 terminal/terminal-preferences.c:908
 msgid "Show window borders by default"
-msgstr ""
+msgstr "Fensterdekoration standardmäßig anzeigen"
 
 #: terminal/terminal-preferences.c:918 terminal/terminal-preferences.c:919
 msgid "Cursor blinks"
-msgstr ""
+msgstr "Blinkender Cursor"
 
 #: terminal/terminal-preferences.c:929 terminal/terminal-preferences.c:930
 msgid "Show menubar by default"
-msgstr ""
+msgstr "Menuleiste standardmäßig anzeigen"
 
 #: terminal/terminal-preferences.c:940 terminal/terminal-preferences.c:941
 msgid "Show toolbars by default"
@@ -936,7 +948,7 @@ msgstr "Werkzeugleisten in neuen Terminals"
 
 #: terminal/terminal-preferences.c:951 terminal/terminal-preferences.c:952
 msgid "Confirm closing a window with multiple tabs"
-msgstr ""
+msgstr "Schliessen von Fensters mit mehreren Reitern bestätigen"
 
 #: terminal/terminal-preferences.c:962
 msgid "Cycle tabs"
@@ -1030,7 +1042,7 @@ msgstr ""
 msgid "Please check your system setup."
 msgstr ""
 
-#: terminal/terminal-screen.c:1121
+#: terminal/terminal-screen.c:1115
 msgid "Untitled"
 msgstr "Unbenannt"
 
@@ -1292,15 +1304,15 @@ msgstr "_Vollbild"
 msgid "Toggle fullscreen mode"
 msgstr "Den Vollbildmodus betreten oder verlassen"
 
-#: terminal/terminal-window.c:526
+#: terminal/terminal-window.c:527
 msgid "Warning"
 msgstr "Warnung"
 
-#: terminal/terminal-window.c:531
+#: terminal/terminal-window.c:538
 msgid "Close all tabs"
 msgstr "Alle Reiter schließen"
 
-#: terminal/terminal-window.c:548
+#: terminal/terminal-window.c:557
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -1310,35 +1322,35 @@ msgstr ""
 "Sie das Fenster jetzt schließen, werden auch\n"
 "alle Reiter darin geschlossen."
 
-#: terminal/terminal-window.c:551
+#: terminal/terminal-window.c:560
 msgid "Close all tabs?"
 msgstr "Alle Reiter schließen?"
 
-#: terminal/terminal-window.c:564
+#: terminal/terminal-window.c:573
 msgid "Do _not ask me again"
 msgstr "In Zukunft _nicht mehr nachfragen"
 
-#: terminal/terminal-window.c:1454
+#: terminal/terminal-window.c:1459
 msgid "<b>Title:</b>"
 msgstr "<b>Titel:</b>"
 
-#: terminal/terminal-window.c:1468
+#: terminal/terminal-window.c:1473
 msgid "Enter the title for the current terminal tab"
 msgstr "Geben Sie den Titel für den aktuellen Terminal Reiter ein"
 
-#: terminal/terminal-window.c:1524
+#: terminal/terminal-window.c:1529
 msgid "X Terminal Emulator"
 msgstr "X Terminal Emulator"
 
-#: terminal/terminal-window.c:1528
+#: terminal/terminal-window.c:1533
 msgid "Maintainer"
 msgstr "Projektleiter"
 
-#: terminal/terminal-window.c:1529
+#: terminal/terminal-window.c:1534
 msgid "Icon Designer"
-msgstr ""
+msgstr "Icon Designer"
 
-#: terminal/terminal-window.c:1533
+#: terminal/terminal-window.c:1538
 #, c-format
 msgid "Translator (%s)"
 msgstr "Übersetzer (%s)"
@@ -1346,3 +1358,4 @@ msgstr "Übersetzer (%s)"
 #: Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Terminal-Programm"
+
