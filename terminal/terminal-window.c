@@ -372,6 +372,7 @@ terminal_window_init (TerminalWindow *window)
     }
 
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
+                                   "homogeneous", TRUE,
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
                                    "tab-hborder", 0,
@@ -1596,7 +1597,7 @@ terminal_window_add (TerminalWindow *window,
                             G_CALLBACK (gtk_widget_destroy), screen);
   g_signal_connect_swapped (G_OBJECT (header), "detach-tab",
                             G_CALLBACK (terminal_window_detach_screen), window);
-  g_signal_connect_swapped (G_OBJECT (header), "double-clicked",
+  g_signal_connect_swapped (G_OBJECT (header), "set-title",
                             G_CALLBACK (gtk_action_activate), action);
   g_object_set_data_full (G_OBJECT (header), "terminal-window-screen",
                           g_object_ref (G_OBJECT (screen)),

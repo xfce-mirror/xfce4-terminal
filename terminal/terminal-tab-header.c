@@ -38,7 +38,7 @@ enum
 {
   CLOSE_TAB,
   DETACH_TAB,
-  DOUBLE_CLICKED,
+  SET_TITLE,
   LAST_SIGNAL,
 };
 
@@ -64,6 +64,16 @@ static void     terminal_tab_header_detach_tab    (GtkWidget              *widge
                                                    TerminalTabHeader      *header);
 
 
+
+struct _TerminalTabHeaderClass
+{
+  GtkHBoxClass __parent__;
+
+  /* signals */
+  void (*close_tab)   (TerminalTabHeader *header);
+  void (*detach_tab)  (TerminalTabHeader *header);
+  void (*set_title)   (TerminalTabHeader *header);
+};
 
 struct _TerminalTabHeader
 {
@@ -136,13 +146,13 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * TerminalTabHeader::double-clicked:
+   * TerminalTabHeader::set-title:
    **/
-  header_signals[DOUBLE_CLICKED] =
-    g_signal_new ("double-clicked",
+  header_signals[SET_TITLE] =
+    g_signal_new ("set-title",
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalTabHeaderClass, double_clicked),
+                  G_STRUCT_OFFSET (TerminalTabHeaderClass, set_title),
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -271,7 +281,7 @@ terminal_tab_header_button_press (GtkWidget              *ebox,
 
   if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
     {
-      g_signal_emit (G_OBJECT (header), header_signals[DOUBLE_CLICKED], 0);
+      g_signal_emit (G_OBJECT (header), header_signals[SET_TITLE], 0);
       return TRUE;
     }
   else if (event->type == GDK_BUTTON_PRESS && event->button == 3)

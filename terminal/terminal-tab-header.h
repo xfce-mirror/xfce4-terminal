@@ -36,16 +36,6 @@ G_BEGIN_DECLS;
 typedef struct _TerminalTabHeaderClass TerminalTabHeaderClass;
 typedef struct _TerminalTabHeader      TerminalTabHeader;
 
-struct _TerminalTabHeaderClass
-{
-  GtkHBoxClass __parent__;
-
-  /* signals */
-  void (*close_tab)       (TerminalTabHeader *header);
-  void (*detach_tab)      (TerminalTabHeader *header);
-  void (*double_clicked)  (TerminalTabHeader *header);
-};
-
 GType      terminal_tab_header_get_type (void) G_GNUC_CONST;
 
 GtkWidget *terminal_tab_header_new      (void);
