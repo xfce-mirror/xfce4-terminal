@@ -56,12 +56,16 @@ am__vpath_adj = case $$p in \
     *) f=$$p;; \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
-am__installdirs = "$(DESTDIR)$(pixmapdir)" "$(DESTDIR)$(pngdir)" \
-	"$(DESTDIR)$(svgdir)"
+am__installdirs = "$(DESTDIR)$(apps_pngdir)" \
+	"$(DESTDIR)$(apps_svgdir)" "$(DESTDIR)$(mime_pngdir)" \
+	"$(DESTDIR)$(mime_svgdir)" "$(DESTDIR)$(pixmapdir)"
+apps_pngDATA_INSTALL = $(INSTALL_DATA)
+apps_svgDATA_INSTALL = $(INSTALL_DATA)
+mime_pngDATA_INSTALL = $(INSTALL_DATA)
+mime_svgDATA_INSTALL = $(INSTALL_DATA)
 pixmapDATA_INSTALL = $(INSTALL_DATA)
-pngDATA_INSTALL = $(INSTALL_DATA)
-svgDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(pixmap_DATA) $(png_DATA) $(svg_DATA)
+DATA = $(apps_png_DATA) $(apps_svg_DATA) $(mime_png_DATA) \
+	$(mime_svg_DATA) $(pixmap_DATA)
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 ACLOCAL = @ACLOCAL@
 AMDEP_FALSE = @AMDEP_FALSE@
@@ -190,21 +194,30 @@ sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
-pngdir = $(datadir)/icons/hicolor/48x48/apps
-png_DATA = \
+apps_pngdir = $(datadir)/icons/hicolor/48x48/apps
+apps_png_DATA = \
 	Terminal.png
 
-svgdir = $(datadir)/icons/hicolor/scalable/apps
-svg_DATA = \
+apps_svgdir = $(datadir)/icons/hicolor/scalable/apps
+apps_svg_DATA = \
 	Terminal.svg
+
+mime_svgdir = $(datadir)/icons/hicolor/scalable/mimetypes
+mime_svg_DATA = \
+	gnome-mime-application-x-terminal-color-palette.svg
+
+mime_pngdir = $(datadir)/icons/hicolor/22x22/mimetypes
+mime_png_DATA = \
+	gnome-mime-application-x-terminal-color-palette.png
 
 pixmapdir = $(datadir)/pixmaps
 pixmap_DATA = \
 	terminal.xpm
 
 EXTRA_DIST = \
-	$(png_DATA)							\
-	$(svg_DATA)							\
+	$(apps_png_DATA)						\
+	$(apps_svg_DATA)						\
+	$(mime_svg_DATA)						\
 	$(pixmap_DATA)
 
 all: all-am
@@ -249,6 +262,74 @@ clean-libtool:
 distclean-libtool:
 	-rm -f libtool
 uninstall-info-am:
+install-apps_pngDATA: $(apps_png_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(apps_pngdir)" || $(mkdir_p) "$(DESTDIR)$(apps_pngdir)"
+	@list='$(apps_png_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(apps_pngDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(apps_pngdir)/$$f'"; \
+	  $(apps_pngDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(apps_pngdir)/$$f"; \
+	done
+
+uninstall-apps_pngDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(apps_png_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(apps_pngdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(apps_pngdir)/$$f"; \
+	done
+install-apps_svgDATA: $(apps_svg_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(apps_svgdir)" || $(mkdir_p) "$(DESTDIR)$(apps_svgdir)"
+	@list='$(apps_svg_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(apps_svgDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(apps_svgdir)/$$f'"; \
+	  $(apps_svgDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(apps_svgdir)/$$f"; \
+	done
+
+uninstall-apps_svgDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(apps_svg_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(apps_svgdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(apps_svgdir)/$$f"; \
+	done
+install-mime_pngDATA: $(mime_png_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(mime_pngdir)" || $(mkdir_p) "$(DESTDIR)$(mime_pngdir)"
+	@list='$(mime_png_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(mime_pngDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(mime_pngdir)/$$f'"; \
+	  $(mime_pngDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(mime_pngdir)/$$f"; \
+	done
+
+uninstall-mime_pngDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(mime_png_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(mime_pngdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(mime_pngdir)/$$f"; \
+	done
+install-mime_svgDATA: $(mime_svg_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(mime_svgdir)" || $(mkdir_p) "$(DESTDIR)$(mime_svgdir)"
+	@list='$(mime_svg_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(mime_svgDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(mime_svgdir)/$$f'"; \
+	  $(mime_svgDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(mime_svgdir)/$$f"; \
+	done
+
+uninstall-mime_svgDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(mime_svg_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(mime_svgdir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(mime_svgdir)/$$f"; \
+	done
 install-pixmapDATA: $(pixmap_DATA)
 	@$(NORMAL_INSTALL)
 	test -z "$(pixmapdir)" || $(mkdir_p) "$(DESTDIR)$(pixmapdir)"
@@ -265,40 +346,6 @@ uninstall-pixmapDATA:
 	  f=$(am__strip_dir) \
 	  echo " rm -f '$(DESTDIR)$(pixmapdir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(pixmapdir)/$$f"; \
-	done
-install-pngDATA: $(png_DATA)
-	@$(NORMAL_INSTALL)
-	test -z "$(pngdir)" || $(mkdir_p) "$(DESTDIR)$(pngdir)"
-	@list='$(png_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f=$(am__strip_dir) \
-	  echo " $(pngDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(pngdir)/$$f'"; \
-	  $(pngDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(pngdir)/$$f"; \
-	done
-
-uninstall-pngDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(png_DATA)'; for p in $$list; do \
-	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(pngdir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(pngdir)/$$f"; \
-	done
-install-svgDATA: $(svg_DATA)
-	@$(NORMAL_INSTALL)
-	test -z "$(svgdir)" || $(mkdir_p) "$(DESTDIR)$(svgdir)"
-	@list='$(svg_DATA)'; for p in $$list; do \
-	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
-	  f=$(am__strip_dir) \
-	  echo " $(svgDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(svgdir)/$$f'"; \
-	  $(svgDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(svgdir)/$$f"; \
-	done
-
-uninstall-svgDATA:
-	@$(NORMAL_UNINSTALL)
-	@list='$(svg_DATA)'; for p in $$list; do \
-	  f=$(am__strip_dir) \
-	  echo " rm -f '$(DESTDIR)$(svgdir)/$$f'"; \
-	  rm -f "$(DESTDIR)$(svgdir)/$$f"; \
 	done
 tags: TAGS
 TAGS:
@@ -338,7 +385,7 @@ check-am: all-am
 check: check-am
 all-am: Makefile $(DATA)
 installdirs:
-	for dir in "$(DESTDIR)$(pixmapdir)" "$(DESTDIR)$(pngdir)" "$(DESTDIR)$(svgdir)"; do \
+	for dir in "$(DESTDIR)$(apps_pngdir)" "$(DESTDIR)$(apps_svgdir)" "$(DESTDIR)$(mime_pngdir)" "$(DESTDIR)$(mime_svgdir)" "$(DESTDIR)$(pixmapdir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-am
@@ -383,7 +430,9 @@ info: info-am
 
 info-am:
 
-install-data-am: install-pixmapDATA install-pngDATA install-svgDATA
+install-data-am: install-apps_pngDATA install-apps_svgDATA \
+	install-data-local install-mime_pngDATA install-mime_svgDATA \
+	install-pixmapDATA
 
 install-exec-am:
 
@@ -409,21 +458,37 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-info-am uninstall-pixmapDATA uninstall-pngDATA \
-	uninstall-svgDATA
+uninstall-am: uninstall-apps_pngDATA uninstall-apps_svgDATA \
+	uninstall-info-am uninstall-mime_pngDATA \
+	uninstall-mime_svgDATA uninstall-pixmapDATA
 
 .PHONY: all all-am check check-am clean clean-generic clean-libtool \
 	distclean distclean-generic distclean-libtool distdir dvi \
 	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-exec install-exec-am \
-	install-info install-info-am install-man install-pixmapDATA \
-	install-pngDATA install-strip install-svgDATA installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am \
-	uninstall-info-am uninstall-pixmapDATA uninstall-pngDATA \
-	uninstall-svgDATA
+	install-apps_pngDATA install-apps_svgDATA install-data \
+	install-data-am install-data-local install-exec \
+	install-exec-am install-info install-info-am install-man \
+	install-mime_pngDATA install-mime_svgDATA install-pixmapDATA \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	uninstall uninstall-am uninstall-apps_pngDATA \
+	uninstall-apps_svgDATA uninstall-info-am \
+	uninstall-mime_pngDATA uninstall-mime_svgDATA \
+	uninstall-pixmapDATA
 
+
+install-data-local:
+	$(mkinstalldirs) $(DESTDIR)$(mime_svgdir)
+	( cd $(DESTDIR)$(mime_svgdir) && \
+	  rm -f mime-application:x-terminal-color-palette.svg && \
+	  $(LN_S) gnome-mime-application-x-terminal-color-palette.svg \
+	          mime-application:x-terminal-color-palette.svg )
+	$(mkinstalldirs) $(DESTDIR)$(mime_pngdir)
+	( cd $(DESTDIR)$(mime_pngdir) && \
+	  rm -f mime-application:x-terminal-color-palette.png && \
+	  $(LN_S) gnome-mime-application-x-terminal-color-palette.png \
+	          mime-application:x-terminal-color-palette.png )
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

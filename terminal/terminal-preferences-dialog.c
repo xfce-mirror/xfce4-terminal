@@ -46,6 +46,10 @@ static void     terminal_preferences_dialog_response                (TerminalPre
                                                                      gint                            response);
 static void     terminal_preferences_open_image_file                (GtkWidget                      *button,
                                                                      GtkWidget                      *entry);
+static void     terminal_preferences_dialog_load_palette            (GtkWidget                      *button,
+                                                                     TerminalPreferencesDialog      *dialog);
+static void     terminal_preferences_dialog_save_palette            (GtkWidget                      *button,
+                                                                     TerminalPreferencesDialog      *dialog);
 static void     terminal_preferences_dialog_reset_compat            (GtkWidget                      *button,
                                                                      TerminalPreferencesDialog      *dialog);
 
@@ -636,6 +640,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
+  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
   object = gtk_widget_get_accessible (button);
   atk_object_set_name (object, _("Color Selector"));
   atk_object_set_description (object, _("Open a dialog to specify the color"));
@@ -667,6 +672,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
+  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
   object = gtk_widget_get_accessible (button);
   atk_object_set_name (object, _("Color Selector"));
   atk_object_set_description (object, _("Open a dialog to specify the color"));
@@ -696,7 +702,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
   gtk_widget_show (label);
 
-  table = gtk_table_new (2, 8, TRUE);
+  table = gtk_table_new (3, 8, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 0);
   gtk_table_set_col_spacings (GTK_TABLE (table), 0);
   gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
@@ -813,6 +819,58 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
   gtk_table_attach (GTK_TABLE (table), button, 7, 8, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (button);
+
+  align = gtk_alignment_new (1.0, 0.0, 0.0, 1.0);
+  gtk_table_attach (GTK_TABLE (table), align, 0, 8, 2, 3, GTK_FILL, GTK_FILL, 0, 12);
+  gtk_widget_show (align);
+
+  hbox = gtk_hbox_new (FALSE, 6);
+  gtk_container_add (GTK_CONTAINER (align), hbox);
+  gtk_widget_show (hbox);
+
+  button = gtk_button_new ();
+  g_signal_connect (G_OBJECT (button), "clicked",
+                    G_CALLBACK (terminal_preferences_dialog_load_palette), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
+  gtk_widget_show (button);
+
+  ibox = gtk_hbox_new (FALSE, 2);
+  gtk_container_add (GTK_CONTAINER (button), ibox);
+  gtk_widget_show (ibox);
+
+  image = gtk_image_new_from_stock (GTK_STOCK_OPEN, GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (ibox), image, FALSE, FALSE, 0);
+  gtk_widget_show (image);
+
+  label = g_object_new (GTK_TYPE_LABEL,
+                        "label", _("_Load palette"),
+                        "mnemonic-widget", button,
+                        "use-underline", TRUE,
+                        NULL);
+  gtk_box_pack_start (GTK_BOX (ibox), label, FALSE, TRUE, 0);
+  gtk_widget_show (label);
+
+  button = gtk_button_new ();
+  g_signal_connect (G_OBJECT (button), "clicked",
+                    G_CALLBACK (terminal_preferences_dialog_save_palette), dialog);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, TRUE, 0);
+  gtk_widget_show (button);
+
+  ibox = gtk_hbox_new (FALSE, 2);
+  gtk_container_add (GTK_CONTAINER (button), ibox);
+  gtk_widget_show (ibox);
+
+  image = gtk_image_new_from_stock (GTK_STOCK_SAVE_AS, GTK_ICON_SIZE_BUTTON);
+  gtk_box_pack_start (GTK_BOX (ibox), image, FALSE, FALSE, 0);
+  gtk_widget_show (image);
+
+  label = g_object_new (GTK_TYPE_LABEL,
+                        "label", _("_Save palette"),
+                        "mnemonic-widget", button,
+                        "use-underline", TRUE,
+                        NULL);
+  gtk_box_pack_start (GTK_BOX (ibox), label, FALSE, TRUE, 0);
+  gtk_widget_show (label);
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
                                  "terminal-colors",
@@ -1257,6 +1315,164 @@ terminal_preferences_open_image_file (GtkWidget *button,
     }
 
   gtk_widget_destroy (dialog);
+}
+
+
+
+static void
+terminal_preferences_dialog_load_palette (GtkWidget                 *button,
+                                          TerminalPreferencesDialog *dialog)
+{
+  GtkFileFilter *filter;
+  const gchar   *value;
+  GtkWidget     *chooser;
+  GtkWidget     *message;
+  gboolean       succeed = FALSE;
+  XfceRc        *rc;
+  gchar         *filename;
+  gchar         *name;
+  guint          n;
+
+  chooser = gtk_file_chooser_dialog_new (_("Select color palette file"),
+                                         GTK_WINDOW (dialog),
+                                         GTK_FILE_CHOOSER_ACTION_OPEN,
+                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                         GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
+                                         NULL);
+  gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), TRUE);
+  gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), DATADIR "/Terminal/Palettes");
+  gtk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (chooser), DATADIR "/Terminal/Palettes", NULL);
+
+  filter = gtk_file_filter_new ();
+  gtk_file_filter_set_name (filter, _("All Files"));
+  gtk_file_filter_add_pattern (filter, "*");
+  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+
+  filter = gtk_file_filter_new ();
+  gtk_file_filter_set_name (filter, _("Palette Files"));
+  gtk_file_filter_add_pattern (filter, "*.tcpalette");
+  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (chooser), filter);
+  gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (chooser), filter);
+
+  while (!succeed && gtk_dialog_run (GTK_DIALOG (chooser)) == GTK_RESPONSE_ACCEPT)
+    {
+      filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+      
+      rc = xfce_rc_simple_open (filename, TRUE);
+      if (G_LIKELY (rc != NULL))
+        {
+          if (!xfce_rc_has_group (rc, "Terminal color palette"))
+            {
+              message = gtk_message_dialog_new (GTK_WINDOW (chooser),
+                                                GTK_DIALOG_DESTROY_WITH_PARENT
+                                                | GTK_DIALOG_MODAL,
+                                                GTK_MESSAGE_WARNING,
+                                                GTK_BUTTONS_OK,
+                                                _("The file you selected is not a valid "
+                                                  "Terminal palette file.\nPlease choose "
+                                                  "a different file or click Cancel to\n"
+                                                  "quit the file selector."));
+              gtk_dialog_run (GTK_DIALOG (message));
+              gtk_widget_destroy (message);
+            }
+          else
+            {
+              /* stop notify signals for now */
+              g_object_freeze_notify (G_OBJECT (dialog->preferences));
+
+              xfce_rc_set_group (rc, "Terminal color palette");
+              for (n = 1; n <= 16; ++n)
+                {
+                  name = g_strdup_printf ("ColorPalette%u", n);
+                  value = xfce_rc_read_entry (rc, name, NULL);
+                  g_free (name);
+
+                  if (G_LIKELY (value != NULL))
+                    {
+                      name = g_strdup_printf ("color-palette%u", n);
+                      g_object_set (G_OBJECT (dialog->preferences), name, value, NULL);
+                      g_free (name);
+                    }
+                }
+
+              succeed = TRUE;
+
+              /* fire all notify signals */
+              g_object_thaw_notify (G_OBJECT (dialog->preferences));
+            }
+          xfce_rc_close (rc);
+        }
+
+      g_free (filename);
+    }
+
+  gtk_widget_destroy (chooser);
+}
+
+
+
+static void
+terminal_preferences_dialog_save_palette (GtkWidget                 *button,
+                                          TerminalPreferencesDialog *dialog)
+{
+  GtkWidget *chooser;
+  GtkWidget *message;
+  XfceRc    *rc;
+  gchar     *filename;
+  gchar     *value;
+  gchar     *name;
+  guint      n;
+
+  chooser = gtk_file_chooser_dialog_new (_("Select color palette filename"),
+                                         GTK_WINDOW (dialog),
+                                         GTK_FILE_CHOOSER_ACTION_SAVE,
+                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
+                                         GTK_STOCK_SAVE, GTK_RESPONSE_ACCEPT,
+                                         NULL);
+  gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (chooser), TRUE);
+  gtk_file_chooser_set_current_name (GTK_FILE_CHOOSER (chooser), _("custom.tcpalette"));
+  gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (chooser), xfce_get_homedir ());
+
+  if (gtk_dialog_run (GTK_DIALOG (chooser)) == GTK_RESPONSE_ACCEPT)
+    {
+      filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (chooser));
+      
+      rc = xfce_rc_simple_open (filename, FALSE);
+      if (G_UNLIKELY (rc == NULL))
+        {
+          message = gtk_message_dialog_new (GTK_WINDOW (chooser),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_MODAL,
+                                            GTK_MESSAGE_ERROR,
+                                            GTK_BUTTONS_OK,
+                                            _("Unable to open the selected file for writing."));
+          gtk_dialog_run (GTK_DIALOG (message));
+          gtk_widget_destroy (message);
+        }
+      else
+        {
+          xfce_rc_delete_group (rc, "Terminal color palette", TRUE);
+          xfce_rc_set_group (rc, "Terminal color palette");
+
+          for (n = 1; n <= 16; ++n)
+            {
+              name = g_strdup_printf ("color-palette%u", n);
+              g_object_get (G_OBJECT (dialog->preferences), name, &value, NULL);
+              g_free (name);
+
+              name = g_strdup_printf ("ColorPalette%u", n);
+              xfce_rc_write_entry (rc, name, value);
+              g_free (value);
+              g_free (name);
+            }
+
+          xfce_rc_close (rc);
+        }
+
+      g_free (filename);
+    }
+
+  gtk_widget_destroy (chooser);
 }
 
 

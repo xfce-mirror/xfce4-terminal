@@ -26,6 +26,9 @@ desktop_DATA = Terminal.desktop
 
 man_MANS = Terminal.1
 
+mimedir = $(datadir)/mime/packages
+mime_DATA = Terminal.mime.xml
+
 uidir = $(datadir)/Terminal
 ui_DATA = 								\
 	Terminal-toolbars.ui						\
@@ -34,6 +37,7 @@ ui_DATA = 								\
 EXTRA_DIST =								\
 	$(desktop_DATA)							\
 	$(man_MANS)							\
+	$(mime_DATA)							\
 	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\

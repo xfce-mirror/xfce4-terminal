@@ -56,7 +56,8 @@ mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = Terminal.spec
 am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(man1dir)" \
-	"$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"
+	"$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(mimedir)" \
+	"$(DESTDIR)$(uidir)"
 libexecSCRIPT_INSTALL = $(INSTALL_SCRIPT)
 SCRIPTS = $(libexec_SCRIPTS)
 SOURCES =
@@ -77,8 +78,9 @@ am__vpath_adj = case $$p in \
   esac;
 am__strip_dir = `echo $$p | sed -e 's|^.*/||'`;
 desktopDATA_INSTALL = $(INSTALL_DATA)
+mimeDATA_INSTALL = $(INSTALL_DATA)
 uiDATA_INSTALL = $(INSTALL_DATA)
-DATA = $(desktop_DATA) $(ui_DATA)
+DATA = $(desktop_DATA) $(mime_DATA) $(ui_DATA)
 ETAGS = etags
 CTAGS = ctags
 DIST_SUBDIRS = $(SUBDIRS)
@@ -232,6 +234,8 @@ libexec_SCRIPTS = \
 desktopdir = $(datadir)/applications
 desktop_DATA = Terminal.desktop
 man_MANS = Terminal.1
+mimedir = $(datadir)/mime/packages
+mime_DATA = Terminal.mime.xml
 uidir = $(datadir)/Terminal
 ui_DATA = \
 	Terminal-toolbars.ui						\
@@ -240,6 +244,7 @@ ui_DATA = \
 EXTRA_DIST = \
 	$(desktop_DATA)							\
 	$(man_MANS)							\
+	$(mime_DATA)							\
 	$(ui_DATA)							\
 	AUTHORS								\
 	COPYING								\
@@ -401,6 +406,23 @@ uninstall-desktopDATA:
 	  f=$(am__strip_dir) \
 	  echo " rm -f '$(DESTDIR)$(desktopdir)/$$f'"; \
 	  rm -f "$(DESTDIR)$(desktopdir)/$$f"; \
+	done
+install-mimeDATA: $(mime_DATA)
+	@$(NORMAL_INSTALL)
+	test -z "$(mimedir)" || $(mkdir_p) "$(DESTDIR)$(mimedir)"
+	@list='$(mime_DATA)'; for p in $$list; do \
+	  if test -f "$$p"; then d=; else d="$(srcdir)/"; fi; \
+	  f=$(am__strip_dir) \
+	  echo " $(mimeDATA_INSTALL) '$$d$$p' '$(DESTDIR)$(mimedir)/$$f'"; \
+	  $(mimeDATA_INSTALL) "$$d$$p" "$(DESTDIR)$(mimedir)/$$f"; \
+	done
+
+uninstall-mimeDATA:
+	@$(NORMAL_UNINSTALL)
+	@list='$(mime_DATA)'; for p in $$list; do \
+	  f=$(am__strip_dir) \
+	  echo " rm -f '$(DESTDIR)$(mimedir)/$$f'"; \
+	  rm -f "$(DESTDIR)$(mimedir)/$$f"; \
 	done
 install-uiDATA: $(ui_DATA)
 	@$(NORMAL_INSTALL)
@@ -687,7 +709,7 @@ check: check-recursive
 all-am: Makefile $(SCRIPTS) $(MANS) $(DATA) config.h
 installdirs: installdirs-recursive
 installdirs-am:
-	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(uidir)"; do \
+	for dir in "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(man1dir)" "$(DESTDIR)$(desktopdir)" "$(DESTDIR)$(mimedir)" "$(DESTDIR)$(uidir)"; do \
 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
 	done
 install: install-recursive
@@ -734,7 +756,8 @@ info: info-recursive
 
 info-am:
 
-install-data-am: install-desktopDATA install-man install-uiDATA
+install-data-am: install-desktopDATA install-man install-mimeDATA \
+	install-uiDATA
 
 install-exec-am: install-libexecSCRIPTS
 
@@ -763,7 +786,8 @@ ps: ps-recursive
 ps-am:
 
 uninstall-am: uninstall-desktopDATA uninstall-info-am \
-	uninstall-libexecSCRIPTS uninstall-man uninstall-uiDATA
+	uninstall-libexecSCRIPTS uninstall-man uninstall-mimeDATA \
+	uninstall-uiDATA
 
 uninstall-info: uninstall-info-recursive
 
@@ -779,15 +803,15 @@ uninstall-man: uninstall-man1
 	html-am info info-am install install-am install-data \
 	install-data-am install-desktopDATA install-exec \
 	install-exec-am install-info install-info-am \
-	install-libexecSCRIPTS install-man install-man1 install-strip \
-	install-uiDATA installcheck installcheck-am installdirs \
-	installdirs-am maintainer-clean maintainer-clean-generic \
-	maintainer-clean-recursive mostlyclean mostlyclean-generic \
-	mostlyclean-libtool mostlyclean-recursive pdf pdf-am ps ps-am \
-	tags tags-recursive uninstall uninstall-am \
-	uninstall-desktopDATA uninstall-info-am \
+	install-libexecSCRIPTS install-man install-man1 \
+	install-mimeDATA install-strip install-uiDATA installcheck \
+	installcheck-am installdirs installdirs-am maintainer-clean \
+	maintainer-clean-generic maintainer-clean-recursive \
+	mostlyclean mostlyclean-generic mostlyclean-libtool \
+	mostlyclean-recursive pdf pdf-am ps ps-am tags tags-recursive \
+	uninstall uninstall-am uninstall-desktopDATA uninstall-info-am \
 	uninstall-libexecSCRIPTS uninstall-man uninstall-man1 \
-	uninstall-uiDATA
+	uninstall-mimeDATA uninstall-uiDATA
 
 
 distclean-local:
