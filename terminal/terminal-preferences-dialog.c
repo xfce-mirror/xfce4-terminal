@@ -937,6 +937,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   combo = gtk_combo_box_new_text ();
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Auto-detect"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("ASCII DEL"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
@@ -960,6 +961,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   combo = gtk_combo_box_new_text ();
+  gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Auto-detect"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("ASCII DEL"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));

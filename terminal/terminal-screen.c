@@ -496,6 +496,10 @@ terminal_screen_update_binding_backspace (TerminalScreen *screen)
 
   switch (binding)
     {
+    case TERMINAL_ERASE_BINDING_AUTO:
+      vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_AUTO);
+      break;
+
     case TERMINAL_ERASE_BINDING_ASCII_BACKSPACE:
       vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_ASCII_BACKSPACE);
       break;
@@ -524,6 +528,10 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
 
   switch (binding)
     {
+    case TERMINAL_ERASE_BINDING_AUTO:
+      vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_AUTO);
+      break;
+
     case TERMINAL_ERASE_BINDING_ASCII_BACKSPACE:
       vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_ASCII_BACKSPACE);
       break;

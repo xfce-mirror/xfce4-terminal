@@ -618,7 +618,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       _("Backspace binding"),
                                                       _("Backspace binding"),
                                                       TERMINAL_TYPE_ERASE_BINDING,
-                                                      TERMINAL_ERASE_BINDING_ASCII_DELETE,
+                                                      TERMINAL_ERASE_BINDING_AUTO,
                                                       G_PARAM_READWRITE));
 
   /**
@@ -630,7 +630,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       _("Delete binding"),
                                                       _("Delete binding"),
                                                       TERMINAL_TYPE_ERASE_BINDING,
-                                                      TERMINAL_ERASE_BINDING_DELETE_SEQUENCE,
+                                                      TERMINAL_ERASE_BINDING_AUTO,
                                                       G_PARAM_READWRITE));
 
   /**

@@ -115,6 +115,7 @@ terminal_erase_binding_get_type (void)
 	static GType type = 0;
 	if (type == 0) {
 	static const GEnumValue values[] = {
+	{ TERMINAL_ERASE_BINDING_AUTO, "TERMINAL_ERASE_BINDING_AUTO", "auto" },
 	{ TERMINAL_ERASE_BINDING_ASCII_DELETE, "TERMINAL_ERASE_BINDING_ASCII_DELETE", "ascii-delete" },
 	{ TERMINAL_ERASE_BINDING_DELETE_SEQUENCE, "TERMINAL_ERASE_BINDING_DELETE_SEQUENCE", "delete-sequence" },
 	{ TERMINAL_ERASE_BINDING_ASCII_BACKSPACE, "TERMINAL_ERASE_BINDING_ASCII_BACKSPACE", "ascii-backspace" },
