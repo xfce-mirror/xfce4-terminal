@@ -70,27 +70,27 @@ static void
 usage (void)
 {
   fprintf (stderr,
-           "Usage: Terminal [OPTION...]\n"
-           "\n"
-           "GTK+\n"
-           "  --display=DISPLAY       X display to use\n"
-           "\n"
-           "Terminal\n"
-           "  --command=STRING        Execute the argument to this option\n"
-           "                          inside the terminal.\n"
-           "  -x, --execute           Execute the remainder of the command\n"
-           "                          line inside the terminal.\n"
-           "  --tab                   Open a new tab in the last-opened\n"
-           "                          window.\n"
-           "  --geometry=GEOMETRY     X geometry specification (see \"X\"\n"
-           "                          manual page).\n"
-           "  --disable-server        Do not register with the D-BUS session\n"
-           "                          message bus.\n"
-           "  --title=TITLE           Set the terminal's title.\n"
-           "  --working-directory=DIR Set the terminal's working directory.\n"
-           "  --help                  Print this help message and exit\n"
-           "  --version               Print version information and exit\n"
-           "\n");
+           _("Usage: Terminal [OPTION...]\n"
+             "\n"
+             "GTK+\n"
+             "  --display=DISPLAY       X display to use\n"
+             "\n"
+             "Terminal\n"
+             "  -e, --command=STRING    Execute the argument to this option\n"
+             "                          inside the terminal.\n"
+             "  -x, --execute           Execute the remainder of the command\n"
+             "                          line inside the terminal.\n"
+             "  --tab                   Open a new tab in the last-opened\n"
+             "                          window.\n"
+             "  --geometry=GEOMETRY     X geometry specification (see \"X\"\n"
+             "                          manual page).\n"
+             "  --disable-server        Do not register with the D-BUS session\n"
+             "                          message bus.\n"
+             "  --title=TITLE           Set the terminal's title.\n"
+             "  --working-directory=DIR Set the terminal's working directory.\n"
+             "  --help                  Print this help message and exit\n"
+             "  --version               Print version information and exit\n"
+             "\n"));
 }
 
 
@@ -122,11 +122,11 @@ main (int argc, char **argv)
 
   if (G_UNLIKELY (options->flags & TERMINAL_FLAGS_SHOWVERSION))
     {
-      printf ("%s (Xfce %s)\n\n"
-              "Copyright (c) 2003-2004\n"
-              "        os-cillation e.K. All rights reserved.\n\n"
-              "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
-              "Please report bugs to <%s>.\n",
+      printf (_("%s (Xfce %s)\n\n"
+                "Copyright (c) 2003-2004\n"
+                "        os-cillation e.K. All rights reserved.\n\n"
+                "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
+                "Please report bugs to <%s>.\n"),
               PACKAGE_STRING, xfce_version_string (), PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }

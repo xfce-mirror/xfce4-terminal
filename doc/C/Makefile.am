@@ -7,6 +7,7 @@ noinst_DATA =								\
 docdir = $(datadir)/doc/Terminal/C
 doc_DATA =								\
 	copyright.html							\
+	faq.html							\
 	getting-started.html						\
 	index.html							\
 	preferences.html						\

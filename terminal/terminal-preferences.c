@@ -321,8 +321,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_ACCEL_NEW_TAB,
                                    g_param_spec_string ("accel-new-tab",
-                                                        _("New Tab"),
-                                                        _("New Tab"),
+                                                        _("Open Tab"),
+                                                        _("Open Tab"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -332,8 +332,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_ACCEL_NEW_WINDOW,
                                    g_param_spec_string ("accel-new-window",
-                                                        _("New Window"),
-                                                        _("New Window"),
+                                                        _("Open Terminal"),
+                                                        _("Open Terminal"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -431,8 +431,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_ACCEL_PREV_TAB,
                                    g_param_spec_string ("accel-prev-tab",
-                                                        _("Prev Tab"),
-                                                        _("Prev Tab"),
+                                                        _("Previous Tab"),
+                                                        _("Previous Tab"),
                                                         NULL,
                                                         G_PARAM_READWRITE));
 

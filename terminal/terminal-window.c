@@ -955,6 +955,7 @@ terminal_window_about_idle (gpointer user_data)
   xfce_about_info_set_homepage (info, "http://www.os-cillation.com/");
   xfce_about_info_add_credit (info, "Benedikt Meurer", "benny@xfce.org", _("Maintainer"));
   xfce_about_info_add_credit (info, "Francois Le Clainche", "fleclainche@wanadoo.fr", _("Icon Designer"));
+  xfce_about_info_add_credit (info, "Jasper Huijsmans", "jasper@xfce.org", _("Translator (nl)"));
 
   dialog = xfce_about_dialog_new (GTK_WINDOW (window), info, icon);
   gtk_dialog_run (GTK_DIALOG (dialog));

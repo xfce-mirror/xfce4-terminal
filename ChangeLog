@@ -1,10 +1,24 @@
 2004-09-31	Benedikt Meurer <benny@xfce.org>
 
+	* configure.ac: Version 0.1.8.
 	* terminal/terminal-preferences.c(transform_string_to_double): Try
 	  to transform using strtod first, fallback to g_ascii_strtod if
 	  the first failes. Should fix bug #2.
 	* terminal/terminal-app.c(terminal_app_new_window): Be sure to
 	  zero out options struct here. Should fix bug #3.
+	* terminal/Terminal.desktop: Added translations.
+	* po/fr.po, po/nl.po: Added french and dutch translations.
+	  Dutch translation reviewed and fixed by Jasper Huijsmans
+	  <jasper@xfce.org>.
+	* po/de.po: Updated german translations.
+	* doc/C/Terminal.xml: Added FAQ to the documentation. Random
+	  tweaks.
+	* terminal/terminal-preferences.c: Corrected spelling of menu item
+	  accelerators.
+	* terminal/terminal-options.c, terminal/main.c: Added command line
+	  option -e as a shortcut for --command.
+	* THANKS: Added to list contributers.
+	* debian/rules: Include THANKS file with the docs.
 
 2004-09-30	Benedikt Meurer <benny@xfce.org>
 

@@ -2,7 +2,7 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "Sep 2004"> 
-  <!ENTITY appversion "0.1.7"> 
+  <!ENTITY appversion "0.1.8"> 
   <!ENTITY app "<application>Terminal</application>"> 
 ]>
 
@@ -724,13 +724,41 @@
 
   </sect1>
 
+  <sect1 id="faq">
+    <title>Frequently asked questions</title>
+
+    <para>The intent of this section is to collect the quite numerous frequently asked
+    question that relate to working with &app;, or even terminal emulators in general. If
+    you know of a question thats missing from this page, please <ulink
+    url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal&amp;component=docs">file a request</ulink>.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>&app; complains about <literal>Unable to start terminal server: Unable to connect
+        to D-BUS message daemon</literal>, what can I do?</term>
+        <listitem>
+          <para>&app; tries to reduce the number of running instances by establishing a D-BUS service
+          that handles all terminal windows. The message above tells you that &app; wasn't able to
+          connect to the D-BUS session message daemon and register a service. This is just a warning,
+          you can use the terminal without the D-BUS service feature as well.</para>
+
+          <para>To start the D-BUS session message daemon when you login to your X session, either
+          modify your xinitrc file and change the line <literal>xfce4-session</literal> to
+          <literal>dbus-launch xfce4-session</literal> or use <literal>dbus-launch startxfce4</literal>
+          to start Xfce instead. If you don't use Xfce, please look at the documentation of your
+          desktop environment on how to enable the D-BUS session daemon.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </sect1>
+
   <sect1 id="support">
     <title>Support</title>
 
     <para>To report a bug or make a suggestion regarding this application or this
     manual, use the bug tracking system at <ulink
-    url="http://bugs.os-cillation.de/">http://bugs.os-cillation.de/</ulink>. Remember,
-    that useful bug reports are ones that get bugs fixed, and so a useful bug report
+    url="http://bugs.os-cillation.de/enter_bug.cgi?product=Terminal">http://bugs.os-cillation.de/</ulink>.
+    Remember, that useful bug reports are ones that get bugs fixed, and so a useful bug report
     has two qualities:</para>
 
     <itemizedlist>
@@ -750,7 +778,7 @@
     good arguments for the feature. It will increase the chance of addition even more, if you
     provide a patch that implements the requested feature, but make sure that you read the file
     <ulink url="https://www.os-cillation.de:8080/websvn/filedetails.php?repname=terminal&amp;path=%2Ftrunk%2FHACKING">HACKING</ulink>
-    - especially the section labeled <emphasis>Coding Style</emphasis> - before start hacking up the source.</para>
+    - especially the section labeled <emphasis>Coding Style</emphasis> - before you start hacking up the source.</para>
 
     <para>Else, if you have questions about the use or installation of this software, please ask on the
     <ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">os-cillation

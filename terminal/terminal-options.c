@@ -81,18 +81,19 @@ terminal_options_from_args (gint     argc,
           break;
         }
       else if (strcmp ("--command", argv[n]) == 0
-          || strncmp ("--command=", argv[n], 10) == 0)
+          || strncmp ("--command=", argv[n], 10) == 0
+          || strcmp ("-e", argv[n]) == 0)
         {
           s = argv[n] + 9;
 
-          if (*s == '=')
+          if (strcmp ("-e", argv[n]) != 0 && *s == '=')
             {
               ++s;
             }
           else if (n + 1 >= argc)
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--command\" requires specifying "
+                           _("Option \"--command/-e\" requires specifying "
                              "the command to run as its parameter"));
               goto failed;
             }

@@ -33,6 +33,7 @@ EXTRA_DIST =								\
 	INSTALL								\
 	NEWS								\
 	README								\
+	THANKS								\
 	TODO								\
 	TerminalHelp.in							\
 	Terminal.spec.in						\
