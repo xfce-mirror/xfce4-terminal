@@ -5,15 +5,13 @@ SUBDIRS =								\
 	terminal
 
 distclean-local:
-	rm -rf *.spec *.cache *~ TerminalHelp
+	rm -rf *.spec *.cache *~
 
 dist-bz2: dist
-	zcat $(PACKAGE)-$(VERSION).tar.gz | \
-	  bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+	zcat $(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.gz | \
+	  bzip2 --best -c > $(PACKAGE_TARNAME)-$(PACKAGE_VERSION).tar.bz2
 
-distcheck-bz2: distcheck
-	zcat $(PACKAGE)-$(VERSION).tar.gz | \
-	  bzip2 --best -c > $(PACKAGE)-$(VERSION).tar.bz2
+distcheck-bz2: distcheck dist-bz2
 
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
@@ -30,7 +28,9 @@ TerminalHelp: TerminalHelp.in Makefile
 	mv TerminalHelp.gen TerminalHelp
 
 desktopdir = $(datadir)/applications
-desktop_DATA = Terminal.desktop
+desktop_in_files = Terminal.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
 
 man_MANS = Terminal.1
 
@@ -40,20 +40,20 @@ ui_DATA = 								\
 	Terminal.ui
 
 EXTRA_DIST =								\
-	$(desktop_DATA)							\
-	$(man_MANS)							\
-	$(ui_DATA)							\
-	AUTHORS								\
-	COPYING								\
-	ChangeLog							\
 	HACKING								\
-	INSTALL								\
-	NEWS								\
-	README								\
-	THANKS								\
-	TODO								\
 	TerminalHelp.in							\
-	Terminal.spec.in						\
-	Terminal.spec
+	Terminal.spec							\
+	intltool-extract.in						\
+	intltool-merge.in						\
+	intltool-update.in						\
+	$(desktop_in_files)						\
+	$(man_MANS)							\
+	$(ui_DATA)
 
-ACLOCAL_AMFLAGS = -I m4
+DISTCLEANFILES =							\
+	TerminalHelp							\
+	intltool-extract						\
+	intltool-merge							\
+	intltool-update							\
+	$(desktop_DATA)
+

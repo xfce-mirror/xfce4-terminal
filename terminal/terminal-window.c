@@ -1505,6 +1505,8 @@ terminal_window_about_idle (gpointer user_data)
   static const struct { gchar *name, *email, *language; } translators[] = {
     { "Dwayne Bailey", "dwayne@translate.org.za", "en_GB" },
     { "Jaime Buffery", "nestu@lunar-linux.org", "es" },
+    { "Jari Rahkonen", "jari.rahkonen@pp1.inet.fi", "fi" },
+    { "Stephane Roy", "sroy@j2n.net", "fr" },
     { "Yuval Tanny", "tanai@int.gov.il", "he" },
     { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
     { "Anthony Ivanoff", "a-i@bk.ru", "ru" },

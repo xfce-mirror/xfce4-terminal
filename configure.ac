@@ -19,46 +19,47 @@ AC_COPYRIGHT([Copyright (c) 2003-2005
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
-AC_INIT([Terminal], [terminal_version()], [http://bugs.os-cillation.com/])
-AC_PREREQ([2.50])
+AC_INIT([Terminal], [terminal_version()], [http://bugs.os-cillation.com/], [Terminal])
 AC_REVISION([$Id$])
 
 dnl Initialize automake
-TERMINAL_VERSION=terminal_version()
-AM_INIT_AUTOMAKE([Terminal], [$TERMINAL_VERSION])
+AM_INIT_AUTOMAKE([AC_PACKAGE_TARNAME()], [AC_PACKAGE_VERSION()])
 AM_CONFIG_HEADER([config.h])
-AM_MAINTAINER_MODE
+AM_MAINTAINER_MODE()
 
 dnl Subst D-BUS service version
 TERMINAL_VERSION_DBUS=terminal_version_dbus()
 AC_SUBST([TERMINAL_VERSION_DBUS])
 
 dnl check for UNIX variants
-AC_AIX
-AC_ISC_POSIX
-AC_MINIX
+AC_AIX()
+AC_ISC_POSIX()
+AC_MINIX()
 
 dnl check for basic programs
-AC_PROG_CC
-AC_PROG_INSTALL
-AC_PROG_LIBTOOL
+AC_PROG_CC()
+AC_PROG_INSTALL()
+AC_PROG_INTLTOOL()
+AC_PROG_LIBTOOL()
 
 dnl Check for standard headers
 AC_CHECK_HEADERS([errno.h limits.h pwd.h time.h])
 
 dnl Check for i18n support
-BM_I18N([Terminal], [de en_GB es fr he nl ru zh_TW])
+XDT_I18N([de en_GB es fi fr he nl ru zh_TW])
 
 dnl Check for required packages
-BM_DEPEND([EXO], [exo-0.2], [0.2.0])
-BM_DEPEND([VTE], [vte], [0.11.11])
+XDT_CHECK_PACKAGE([EXO], [exo-0.2], [0.2.0])
+XDT_CHECK_PACKAGE([VTE], [vte], [0.11.11])
 
 dnl Optional support for startup notification
-BM_DEPEND_CHECK([LIBSTARTUP_NOTIFICATION], [libstartup-notification-1.0], [0.4],
-                [startup-notification], [startup notification library], [yes])
+XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
+                           [libstartup-notification-1.0],
+                           [0.4], [startup-notification],
+                           [startup notification library])
 
 dnl Check for debugging support
-BM_DEBUG_SUPPORT
+BM_DEBUG_SUPPORT()
 
 AC_OUTPUT([
 Makefile
