@@ -45,6 +45,8 @@ else
   URL="$HELPDIR/C/index.html"
 fi
 
+[ -n "$2" ] && URL="$URL#$2"
+
 case "$BROWSER" in
 communicator*|netscape*|mozilla*|phoenix*|firebird*|firefox*)
 	$BROWSER -remote openurl\(file://"$URL",new-window\) || \

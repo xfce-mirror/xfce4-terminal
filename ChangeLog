@@ -1,5 +1,6 @@
 2004-09-25	Benedikt Meurer <benny@xfce.org>
 
+	* configure.ac, NEWS: Version 0.1.6, depends on exo-0.1 >= 0.1.1.
 	* po/de.po: Translation updates.
 	* terminal/terminal-window.c: Setup correct translation domain 
 	  for the actions.
@@ -18,7 +19,19 @@
 	  XfceFramebox for smoother look.
 	* terminal/terminal-widget.c: Bind to realize signal of VteTerminal
 	  for setting terminal parameters instead of overloading the map
-	  method of GtkWidget.
+	  method of GtkWidget. Fix problem with monochrom mc on some linux
+	  systems by explicitly setting TERM and COLORTERM environment
+	  variables.
+	* terminal/terminal-window.c: Added border and Help button to the
+	  Set Title dialog. Added Report a bug to the Help menu.
+	* TerminalHelp.in: Added second parameter to allow supplying a
+	  page section id.
+	* doc/: Lots of documentation updates. All images have been updated
+	  to display the new xfwm default theme and to keep up with the
+	  interface changes in Terminal.
+	* terminal/stock-newtab.png, terminal/stock-newwindow.png: New icons
+	  from Francois.
+	* AUTHOR: Added Francois Le Clainche <fleclainche@wanadoo.fr>.
 
 2004-09-24	Benedikt Meurer <benny@xfce.org>
 

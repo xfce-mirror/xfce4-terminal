@@ -107,6 +107,8 @@ static void            terminal_window_action_reset_and_clear   (GtkAction      
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_contents          (GtkAction       *action,
                                                                  TerminalWindow  *window);
+static void            terminal_window_action_report_bug        (GtkAction       *action,
+                                                                 TerminalWindow  *window);
 static void            terminal_window_action_about             (GtkAction       *action,
                                                                  TerminalWindow  *window);
 static gboolean        terminal_window_prefs_idle               (gpointer         user_data);
@@ -160,6 +162,7 @@ static GtkActionEntry action_entries[] =
   { "reset-and-clear", NULL, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "help-menu", NULL, N_ ("_Help"), },
   { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, NULL, G_CALLBACK (terminal_window_action_contents), },
+  { "report-bug", NULL, N_ ("_Report a bug"), NULL, NULL, G_CALLBACK (terminal_window_action_report_bug), },
   { "about", GTK_STOCK_DIALOG_INFO, N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
@@ -202,6 +205,7 @@ static const gchar ui_description[] =
  "    </menu>"
  "    <menu action='help-menu'>"
  "      <menuitem action='contents'/>"
+ "      <menuitem action='report-bug'/>"
  "      <menuitem action='about'/>"
  "    </menu>"
  "  </menubar>"
@@ -756,6 +760,35 @@ terminal_window_action_reset_and_clear (GtkAction       *action,
 
 
 static void
+terminal_window_action_report_bug (GtkAction       *action,
+                                   TerminalWindow  *window)
+{
+  GtkWidget *dialog;
+  GError    *error = NULL;
+  gchar     *command;
+
+  command = g_strconcat (TERMINAL_HELP_BIN, " support", NULL);
+  if (!g_spawn_command_line_async (command, &error))
+    {
+      dialog = gtk_message_dialog_new (GTK_WINDOW (window),
+                                       GTK_DIALOG_DESTROY_WITH_PARENT
+                                       | GTK_DIALOG_MODAL,
+                                       GTK_MESSAGE_ERROR,
+                                       GTK_BUTTONS_OK,
+                                       _("Unable to launch online help: %s"),
+                                       error->message);
+      g_signal_connect (G_OBJECT (dialog), "response",
+                        G_CALLBACK (gtk_widget_destroy), NULL);
+      gtk_widget_show (dialog);
+
+      g_error_free (error);
+    }
+  g_free (command);
+}
+
+
+
+static void
 terminal_window_action_contents (GtkAction       *action,
                                  TerminalWindow  *window)
 {
@@ -815,6 +848,42 @@ terminal_window_prefs_idle_destroy (gpointer user_data)
 
 
 
+static void
+title_dialog_response (GtkWidget *dialog,
+                       gint       response)
+{
+  GtkWidget *message;
+  GError    *error = NULL;
+  gchar     *command;
+
+  if (response == GTK_RESPONSE_HELP)
+    {
+      command = g_strconcat (TERMINAL_HELP_BIN, " usage set-title", NULL);
+      if (!g_spawn_command_line_async (command, &error))
+        {
+          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_MODAL,
+                                            GTK_MESSAGE_ERROR,
+                                            GTK_BUTTONS_OK,
+                                            _("Unable to launch online help: %s"),
+                                            error->message);
+          g_signal_connect (G_OBJECT (message), "response",
+                            G_CALLBACK (gtk_widget_destroy), NULL);
+          gtk_widget_show (message);
+
+          g_error_free (error);
+        }
+      g_free (command);
+    }
+  else
+    {
+      gtk_widget_destroy (dialog);
+    }
+}
+
+
+
 static gboolean
 terminal_window_title_idle (gpointer user_data)
 {
@@ -833,10 +902,12 @@ terminal_window_title_idle (gpointer user_data)
                                             GTK_WINDOW (window),
                                             GTK_DIALOG_DESTROY_WITH_PARENT
                                             | GTK_DIALOG_NO_SEPARATOR,
+                                            GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                             NULL);
 
       box = gtk_hbox_new (FALSE, 6);
+      gtk_container_set_border_width (GTK_CONTAINER (box), 6);
       gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), box, TRUE, TRUE, 0);
       gtk_widget_show (box);
 
@@ -859,7 +930,7 @@ terminal_window_title_idle (gpointer user_data)
       g_object_unref (G_OBJECT (proxy));
 
       g_signal_connect (G_OBJECT (dialog), "response",
-                        G_CALLBACK (gtk_widget_destroy), NULL);
+                        G_CALLBACK (title_dialog_response), NULL);
 
       gtk_widget_show (dialog);
     }
@@ -892,6 +963,7 @@ terminal_window_about_idle (gpointer user_data)
                               XFCE_LICENSE_GPL);
   xfce_about_info_set_homepage (info, "http://www.os-cillation.com/");
   xfce_about_info_add_credit (info, "Benedikt Meurer", "benny@xfce.org", _("Maintainer"));
+  xfce_about_info_add_credit (info, "Francois Le Clainche", "fleclainche@wanadoo.fr", _("Icon Designer"));
 
   dialog = xfce_about_dialog_new (GTK_WINDOW (window), info, icon);
   gtk_dialog_run (GTK_DIALOG (dialog));

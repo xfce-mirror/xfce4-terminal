@@ -29,6 +29,7 @@
 #ifdef HAVE_PWD_H
 #include <pwd.h>
 #endif
+#include <stdlib.h>
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
@@ -93,6 +94,7 @@ static gboolean terminal_widget_get_child_command             (TerminalWidget   
                                                                gchar           **command,
                                                                gchar          ***argv,
                                                                GError          **error);
+static gchar  **terminal_widget_get_child_environment         (TerminalWidget   *widget);
 static void terminal_widget_update_background                 (TerminalWidget   *widget);
 static void terminal_widget_update_binding_backspace          (TerminalWidget   *widget);
 static void terminal_widget_update_binding_delete             (TerminalWidget   *widget);
@@ -463,6 +465,55 @@ terminal_widget_get_child_command (TerminalWidget   *widget,
     }
 
   return TRUE;
+}
+
+
+
+static gchar**
+terminal_widget_get_child_environment (TerminalWidget *widget)
+{
+  extern gchar **environ;
+  gchar        **result;
+  gchar        **p;
+  guint          n;
+
+  /* count env vars that are set */
+  for (p = environ; *p != NULL; ++p);
+
+  n = p - environ;
+  result = g_new (gchar *, n + 1 + 4);
+
+  for (n = 0, p = environ; *p != NULL; ++p)
+    {
+      if ((strncmp (*p, "COLUMNS=", 8) == 0)
+          || (strncmp (*p, "LINES=", 6) == 0)
+          || (strncmp (*p, "WINDOWID=", 9) == 0)
+          || (strncmp (*p, "TERM=", 5) == 0)
+          || (strncmp (*p, "GNOME_DESKTOP_ICON=", 19) == 0)
+          || (strncmp (*p, "COLORTERM=", 10) == 0)
+          || (strncmp ( *p, "DISPLAY=", 8) == 0))
+        {
+          /* nothing: do not copy */
+        }
+      else
+        {
+          result[n] = g_strdup (*p);
+          ++n;
+        }
+    }
+
+  result[n++] = g_strdup ("COLORTERM=Terminal");
+  result[n++] = g_strdup ("TERM=xterm");
+
+  if (GTK_WIDGET_REALIZED (widget->terminal))
+    {
+      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_WINDOW_XWINDOW (widget->terminal->window));
+      result[n++] = g_strdup_printf ("DISPLAY=%s", gdk_display_get_name (gtk_widget_get_display (widget->terminal)));
+    }
+
+  result[n] = NULL;
+
+  return result;
 }
 
 
@@ -966,6 +1017,7 @@ terminal_widget_launch_child (TerminalWidget *widget)
   GError  *error = NULL;
   gchar   *command;
   gchar  **argv;
+  gchar  **env;
 
   g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
@@ -979,12 +1031,15 @@ terminal_widget_launch_child (TerminalWidget *widget)
                 "command-update-records", &update,
                 NULL);
 
+  env = terminal_widget_get_child_environment (widget);
+
   widget->pid = vte_terminal_fork_command (VTE_TERMINAL (widget->terminal),
-                                           command, argv, NULL,
+                                           command, argv, env,
                                            widget->working_directory,
                                            update, update, update);
 
   g_strfreev (argv);
+  g_strfreev (env);
   g_free (command);
 }
 

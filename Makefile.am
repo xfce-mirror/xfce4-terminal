@@ -34,6 +34,7 @@ EXTRA_DIST =								\
 	NEWS								\
 	README								\
 	TODO								\
+	TerminalHelp.in							\
 	Terminal.spec.in						\
 	Terminal.spec
 
