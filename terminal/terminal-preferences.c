@@ -1276,6 +1276,10 @@ terminal_preferences_get_property (GObject    *object,
       g_value_set_boxed (value, &preferences->color_foreground);
       break;
 
+    case PROP_COLOR_BACKGROUND:
+      g_value_set_boxed (value, &preferences->color_background);
+      break;
+
     case PROP_COLOR_PALETTE1:
       g_value_set_boxed (value, &preferences->color_palette1);
       break;
@@ -1338,10 +1342,6 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_COLOR_PALETTE16:
       g_value_set_boxed (value, &preferences->color_palette16);
-      break;
-
-    case PROP_COLOR_BACKGROUND:
-      g_value_set_boxed (value, &preferences->color_background);
       break;
 
     case PROP_COMMAND_UPDATE_RECORDS:

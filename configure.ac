@@ -10,7 +10,7 @@ dnl Version information
 m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [2])
 m4_define([terminal_version_micro], [0])
-m4_define([terminal_version_tag], [pre1])
+m4_define([terminal_version_tag], [pre2])
 m4_define([terminal_version_dbus], [1])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
 
@@ -19,7 +19,7 @@ AC_COPYRIGHT([Copyright (c) 2003-2004
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
-AC_INIT([Terminal], [terminal_version()], [http://bugs.os-cillation.de/])
+AC_INIT([Terminal], [terminal_version()], [http://bugs.os-cillation.com/])
 AC_PREREQ([2.50])
 AC_REVISION([$Id$])
 

@@ -2,8 +2,8 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
           "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
   <!ENTITY date "November 2004"> 
-  <!ENTITY appversion "0.2.0pre1"> 
-  <!ENTITY app "<application>Terminal</application>"> 
+  <!ENTITY appversion "0.2.0pre2"> 
+  <!ENTITY app "Terminal"> 
 ]>
 
 <article id="index" lang="en">
@@ -138,21 +138,29 @@
     <sect2>
       <title>Starting &app;</title>
 
-      <para>The easiest way to start &app; is to use the applications menu of your desktop -
-      in case of Xfce, point your mouse cursor to the desktop, press the right mouse button
-      and choose <menuchoice><guimenu>System</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
+      <para>
+        The easiest way to start &app; is to use the applications menu of your desktop -
+        in case of Xfce, point your mouse cursor to the desktop, press the right mouse button
+        and choose <menuchoice><guimenu>System</guimenu>
+        <guimenuitem>Terminal</guimenuitem></menuchoice>.
+      </para>
 
-      <para>You can also start &app; from a command line or from the <guilabel>Application
-      launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, type
-      <emphasis>Terminal</emphasis> and press the button
-      <guilabel>Run</guilabel>.</para>
+      <para>
+        You can also start &app; from a command line or from the <guilabel>Application
+        launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap>
+        <keycap>F2</keycap></keycombo>, type
+        <userinput><command>Terminal</command></userinput> and press the button
+        <guibutton>Run</guibutton>.
+      </para>
     </sect2>
 
     <sect2>
       <title>When you first start &app;</title>
 
-      <para>When you start &app; for the first time, the application opens a terminal window
-      with default settings.</para>
+      <para>
+        When you start &app; for the first time, the application opens a terminal window
+        with default settings.
+      </para>
 
       <screenshot>
         <mediaobject>
@@ -166,15 +174,19 @@
         </mediaobject>
       </screenshot>
 
-      <para>The terminal window displays a command prompt where you can type UNIX
-      commands. The command prompt may vary depending on the configuration of
-      your shell. The cursor is positioned at the command prompt. When you type a
-      UNIX command and press <emphasis role="bold">Return</emphasis>, the computer
-      executes the command. By default, &app; will use the login shell of the user
-      who starts the application.</para>
+      <para>
+        The terminal window displays a command prompt where you can type UNIX
+        commands. The command prompt may vary depending on the configuration of
+        your shell. The cursor is positioned at the command prompt. When you type a
+        UNIX command and press <keycap>Return</keycap>, the computer
+        executes the command. By default, &app; will use the login shell of the user
+        who starts the application.
+      </para>
 
-      <para>&app; sets the following environment variables for the command
-      running inside the terminal window:</para>
+      <para>
+        &app; sets the following environment variables for the command
+        running inside the terminal window:
+      </para>
 
       <variablelist>
         <varlistentry>
@@ -208,11 +220,13 @@
     <sect2>
       <title>Working with multiple terminals</title>
 
-      <para>&app; provides a tab feature that enables you to open several terminals
-      within a single window. Each terminal is opened in a separate tab. Click on the
-      appropriate tab to display the terminal in the window. Each tabbed terminal in
-      a window is separate subprocess, so you can use each terminal for a different
-      task.</para>
+      <para>
+        &app; provides a tab feature that enables you to open several terminals
+        within a single window. Each terminal is opened in a separate tab. Click on the
+        appropriate tab to display the terminal in the window. Each tabbed terminal in
+        a window is separate subprocess, so you can use each terminal for a different
+        task.
+      </para>
 
       <screenshot>
         <mediaobject>
@@ -226,12 +240,16 @@
         </mediaobject>
       </screenshot>
 
-      <para>See <xref linkend="usage" /> for information about how to open a new tabbed
-      terminal.</para>
+      <para>
+        See <xref linkend="usage" /> for information about how to open a new tabbed
+        terminal.
+      </para>
 
-      <para>You can close terminal tabs by clicking on the close button in the terminal
-      tab header or by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Close
-      Tab</guimenuitem></menuchoice> from the menubar.</para>
+      <para>
+        You can close a terminal tab by clicking on the close button in the terminal
+        tab header or by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Close
+        Tab</guimenuitem></menuchoice> from the menubar.
+      </para>
     </sect2>
 
   </sect1>
@@ -1193,8 +1211,8 @@ MiscCursorBlinks=TRUE</programlisting>
           <listitem>
             <para>
               Controls whether &app; popups a confirmation dialog when the user tries to close
-              a terminal window with multiple tabs in it. Can be either <varname>TRUE</varname>
-              (the default) or <varname>FALSE</varname>.
+              a terminal window with multiple tabs in it. Can be either <literal>TRUE</literal>
+              (the default) or <literal>FALSE</literal>.
             </para>
           </listitem>
         </varlistentry>
@@ -1203,8 +1221,8 @@ MiscCursorBlinks=TRUE</programlisting>
           <term><varname>MiscCursorBlinks</varname></term>
           <listitem>
             <para>
-              Enable this option to display cursor that blinks. Can be either <varname>TRUE</varname>
-              or <varname>FALSE</varname> (the default).
+              Enable this option to display cursor that blinks. Can be either <literal>TRUE</literal>
+              or <literal>FALSE</literal> (the default).
             </para>
           </listitem>
         </varlistentry>

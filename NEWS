@@ -1,4 +1,4 @@
-0.2.0pre1
+0.2.0pre2
 =========
 - The user interface was reworked to comply with the GNOME Human Interface
   Guidelines (HIG).
@@ -30,6 +30,11 @@
 - Icons are now built into the Terminal binary to avoid the 100-500ms
   increase in startup time when using the icon lookup functions in
   libxfcegui4.
+- If an application running inside the terminal supports using the
+  mouse (like mc for example), Terminal automatically disables the
+  right-click menu and forwards all button clicks to the application
+  instead. Hold down shift while pressing the right mouse button to
+  get a right-click menu in this situation.
 - The online documentation and the manual page have been updated.
 
 

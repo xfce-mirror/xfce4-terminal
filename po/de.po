@@ -4,10 +4,10 @@
 # Benedikt Meurer <benny@xfce.org>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.0svn\n"
+"Project-Id-Version: Terminal 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-11-27 01:13+0100\n"
-"PO-Revision-Date: 2004-11-13 15:01+0100\n"
+"POT-Creation-Date: 2004-11-28 16:20+0100\n"
+"PO-Revision-Date: 2004-11-28 16:40+0100\n"
 "Last-Translator: Benedikt Meurer <benny@xfce.org>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
@@ -297,6 +297,8 @@ msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
+"Ermöglicht es mit einem beliebigen Tastendruck zum Kommandoprompt herunter "
+"zu rollen."
 
 #: terminal/terminal-preferences-dialog.c:341
 msgid "_Scrollbar is:"
@@ -334,6 +336,8 @@ msgstr "Zurückrollen:"
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
+"Gibt die Anzahl der Zeilen an, die Sie mit Hilfe des Rollbalkens "
+"zurückrollen können."
 
 #: terminal/terminal-preferences-dialog.c:395
 msgid "General"
@@ -405,7 +409,7 @@ msgstr "<small><i>Maximal</i></small>"
 
 #: terminal/terminal-preferences-dialog.c:544
 msgid "<b>Opening New Windows</b>"
-msgstr ""
+msgstr "<b>Vorgaben für neue Fenster</b>"
 
 #: terminal/terminal-preferences-dialog.c:553
 msgid "Display _menubar in new windows"
@@ -472,38 +476,37 @@ msgstr "<b>Farbpalette</b>"
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminal-Anwendungen dürfen diese Farbpalette verwenden:"
 
-#: terminal/terminal-preferences-dialog.c:828
+#: terminal/terminal-preferences-dialog.c:824
 msgid "Colors"
 msgstr "Farben"
 
-#: terminal/terminal-preferences-dialog.c:846
-msgid "<b>Menubar access</b>"
-msgstr "<b>Zugriff auf Menüs</b>"
-
-#: terminal/terminal-preferences-dialog.c:855
-#, fuzzy
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Alle Menükürzelbuchstaben deaktivieren (z.B. Alt+d für Datei-Menü)"
-
-#: terminal/terminal-preferences-dialog.c:860
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Me_nütastenkombination deaktivieren (Vorgabe ist F10)"
-
-#: terminal/terminal-preferences-dialog.c:869
+#: terminal/terminal-preferences-dialog.c:842
 msgid "<b>Shortcut keys</b>"
 msgstr "<b>Schnellwahl Tasten</b>"
 
-#: terminal/terminal-preferences-dialog.c:913
+#: terminal/terminal-preferences-dialog.c:868
+msgid "<b>Menubar access</b>"
+msgstr "<b>Zugriff auf Menüs</b>"
+
+#: terminal/terminal-preferences-dialog.c:877
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Alle Menükürzelbuchstaben deaktivieren (z.B. Alt+d)"
+
+#: terminal/terminal-preferences-dialog.c:882
+msgid "Disable m_enu shortcut key (F10 by default)"
+msgstr "Me_nütastenkombination deaktivieren (Vorgabe ist F10)"
+
+#: terminal/terminal-preferences-dialog.c:894
 msgid "Shortcuts"
 msgstr ""
 "Tastenkom-\n"
 "binationen"
 
-#: terminal/terminal-preferences-dialog.c:931
+#: terminal/terminal-preferences-dialog.c:912
 msgid "<b>Compatibility</b>"
 msgstr "<b>Kompatibilität</b>"
 
-#: terminal/terminal-preferences-dialog.c:942
+#: terminal/terminal-preferences-dialog.c:923
 msgid ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
@@ -514,34 +517,34 @@ msgstr ""
 "oder Betriebssysteme reibungslos funktionieren, die ein anderes Terminal-"
 "Verhalten erwarten."
 
-#: terminal/terminal-preferences-dialog.c:950
+#: terminal/terminal-preferences-dialog.c:931
 msgid "_Backspace key generates:"
 msgstr "Rücktaste erzeugt:"
 
-#: terminal/terminal-preferences-dialog.c:957
-#: terminal/terminal-preferences-dialog.c:980
+#: terminal/terminal-preferences-dialog.c:938
+#: terminal/terminal-preferences-dialog.c:961
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: terminal/terminal-preferences-dialog.c:958
-#: terminal/terminal-preferences-dialog.c:981
+#: terminal/terminal-preferences-dialog.c:939
+#: terminal/terminal-preferences-dialog.c:962
 msgid "Escape sequence"
 msgstr "Escape-Sequenz"
 
-#: terminal/terminal-preferences-dialog.c:959
-#: terminal/terminal-preferences-dialog.c:982
+#: terminal/terminal-preferences-dialog.c:940
+#: terminal/terminal-preferences-dialog.c:963
 msgid "Control-H"
 msgstr "Steuerung-H"
 
-#: terminal/terminal-preferences-dialog.c:973
+#: terminal/terminal-preferences-dialog.c:954
 msgid "_Delete key generates:"
 msgstr "Entfernen-Taste erzeugt:"
 
-#: terminal/terminal-preferences-dialog.c:996
+#: terminal/terminal-preferences-dialog.c:977
 msgid "<tt>$TERM</tt> setting:"
 msgstr "<tt>$TERM</tt> Einstellung:"
 
-#: terminal/terminal-preferences-dialog.c:1004
+#: terminal/terminal-preferences-dialog.c:985
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -554,37 +557,37 @@ msgstr ""
 "Sollten Sie Probleme mit Farben in einigen Anwendungen haben, versuchen Sie "
 "xterm-color."
 
-#: terminal/terminal-preferences-dialog.c:1024
+#: terminal/terminal-preferences-dialog.c:1005
 msgid "_Reset compatibility options to defaults"
 msgstr "Kompatibilitätseinstellungen auf Vorgabewerte zurücksetzen"
 
-#: terminal/terminal-preferences-dialog.c:1034
+#: terminal/terminal-preferences-dialog.c:1015
 msgid "<b>Double click</b>"
 msgstr "<b>Doppelklick</b>"
 
-#: terminal/terminal-preferences-dialog.c:1043
+#: terminal/terminal-preferences-dialog.c:1024
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Folgende Zeichen beim Doppelklick als Teil eines Wortes ansehen:"
 
-#: terminal/terminal-preferences-dialog.c:1067
+#: terminal/terminal-preferences-dialog.c:1048
 msgid "Advanced"
 msgstr "Fortgeschritten"
 
-#: terminal/terminal-preferences-dialog.c:1108 terminal/terminal-window.c:1079
+#: terminal/terminal-preferences-dialog.c:1089 terminal/terminal-window.c:1079
 #: terminal/terminal-window.c:1106 terminal/terminal-window.c:1170
 #, c-format
 msgid "Unable to launch online help: %s"
-msgstr ""
+msgstr "Fehler beim Starten der Hilfe: %s"
 
-#: terminal/terminal-preferences-dialog.c:1208
+#: terminal/terminal-preferences-dialog.c:1189
 msgid "Select background image file"
 msgstr "Bilddatei für Hintergrund auswählen"
 
-#: terminal/terminal-preferences-dialog.c:1219
+#: terminal/terminal-preferences-dialog.c:1200
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: terminal/terminal-preferences-dialog.c:1224
+#: terminal/terminal-preferences-dialog.c:1205
 msgid "Image Files"
 msgstr "Bilddateien"
 
@@ -929,47 +932,23 @@ msgstr "Reiter schließen"
 msgid "Toolbar Editor"
 msgstr "Werkzeugleisten editieren..."
 
-#: terminal/terminal-widget.c:193 terminal/terminal-widget.c:194
-msgid "Custom title"
-msgstr "Benutzerdefinierter Titel"
-
-#: terminal/terminal-widget.c:209
-msgid "Encoding"
-msgstr "Zeichensatz"
-
-#: terminal/terminal-widget.c:210
-msgid "Terminal encoding"
-msgstr "Terminal Zeichensatz"
-
-#: terminal/terminal-widget.c:220 terminal/terminal-widget.c:221
-msgid "Title"
-msgstr "Titel"
-
-#: terminal/terminal-widget.c:444
-msgid "Current user unknown"
-msgstr "Aktueller Benutzer unbekannt"
-
-#: terminal/terminal-widget.c:820
+#: terminal/terminal-widget.c:247
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
 
-#: terminal/terminal-widget.c:836
+#: terminal/terminal-widget.c:263
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: terminal/terminal-widget.c:862
+#: terminal/terminal-widget.c:289
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-
-#: terminal/terminal-widget.c:1320
-msgid "Untitled"
-msgstr "Unbenannt"
 
 #: terminal/terminal-window.c:179
 msgid "_File"
@@ -1093,7 +1072,7 @@ msgstr "_Inhalt"
 
 #: terminal/terminal-window.c:197
 msgid "Display help contents"
-msgstr "Hilfe über Terminal anzeigen"
+msgstr "Die Terminal Benutzerdokumentation anzeigen"
 
 #: terminal/terminal-window.c:198
 msgid "_Report a bug"
@@ -1101,7 +1080,7 @@ msgstr "_Fehler melden"
 
 #: terminal/terminal-window.c:198
 msgid "Report a bug in Terminal"
-msgstr "Einen Fehler melden"
+msgstr "Einen Fehler in Terminal melden"
 
 #: terminal/terminal-window.c:200 terminal/terminal-window.c:202
 msgid "_About"
@@ -1121,7 +1100,7 @@ msgstr "_Menüleiste anzeigen"
 
 #: terminal/terminal-window.c:209
 msgid "Show/hide the menubar"
-msgstr "Menüleiste anzeigen/verbergen"
+msgstr "Die Menüleiste anzeigen oder verbergen"
 
 #: terminal/terminal-window.c:210
 msgid "Show _Toolbars"
@@ -1129,7 +1108,7 @@ msgstr "_Werkzeugleisten anzeigen"
 
 #: terminal/terminal-window.c:210
 msgid "Show/hide the toolbars"
-msgstr "Werkzeugleisten anzeigen/verbergen"
+msgstr "Die Werkzeugleisten anzeigen oder verbergen"
 
 #: terminal/terminal-window.c:211
 msgid "Show Window _Borders"
@@ -1137,7 +1116,7 @@ msgstr "_Fensterdekoration anzeigen"
 
 #: terminal/terminal-window.c:211
 msgid "Show/hide the window decorations"
-msgstr "Fensterdekorationen anzeigen/verbergen"
+msgstr "Die Fensterdekorationen anzeigen oder verbergen"
 
 #: terminal/terminal-window.c:212
 msgid "_Fullscreen"
@@ -1145,16 +1124,15 @@ msgstr "_Vollbild"
 
 #: terminal/terminal-window.c:212
 msgid "Toggle fullscreen mode"
-msgstr "Vollbildmodus ein/ausschalten"
+msgstr "Den Vollbildmodus betreten oder verlassen"
 
 #: terminal/terminal-window.c:479
 msgid "Warning"
-msgstr ""
+msgstr "Warnung"
 
 #: terminal/terminal-window.c:484
-#, fuzzy
 msgid "Close all tabs"
-msgstr "Reiter schließen"
+msgstr "Alle Reiter schließen"
 
 #: terminal/terminal-window.c:501
 #, c-format
@@ -1162,15 +1140,17 @@ msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
+"Dieses Fenster hat %d reiter geöffnet. Wenn\n"
+"Sie das Fenster jetzt schließen, werden auch\n"
+"alle Reiter darin geschlossen."
 
 #: terminal/terminal-window.c:504
-#, fuzzy
 msgid "Close all tabs?"
-msgstr "Reiter schließen"
+msgstr "Alle Reiter schließen?"
 
 #: terminal/terminal-window.c:517
 msgid "Do _not ask me again"
-msgstr ""
+msgstr "In Zukunft _nicht mehr nachfragen"
 
 #: terminal/terminal-window.c:1218
 msgid "<b>Title:</b>"
@@ -1195,6 +1175,3 @@ msgstr ""
 #: terminal/terminal-window.c:1278
 msgid "Translator (nl)"
 msgstr "Übersetzer (nl)"
-
-#~ msgid "_Customize..."
-#~ msgstr "_Anpassen..."
