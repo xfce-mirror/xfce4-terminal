@@ -1044,12 +1044,71 @@ terminal_preferences_dialog_response (TerminalPreferencesDialog      *dialog,
 
 
 static void
+update_preview (GtkFileChooser *chooser,
+                GtkImage       *image)
+{
+  GdkPixbuf *pixbuf;
+  GdkPixbuf *temp;
+  gchar     *filename;
+  gint       height;
+  gint       width;
+
+  filename = gtk_file_chooser_get_filename (chooser);
+  if (G_UNLIKELY (filename == NULL))
+    return;
+
+  pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
+  if (G_LIKELY (pixbuf != NULL))
+    {
+      width = gdk_pixbuf_get_width (pixbuf);
+      height = gdk_pixbuf_get_height (pixbuf);
+
+      if (width > 250 || height > 250)
+        {
+          temp = exo_gdk_pixbuf_scale_ratio (pixbuf, 250);
+          g_object_unref (G_OBJECT (pixbuf));
+          pixbuf = temp;
+        }
+      else if (width < 250 && height < 250)
+        {
+          temp = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, 250, 250);
+          gdk_pixbuf_fill (temp, 0x00000000);
+          gdk_pixbuf_copy_area (pixbuf, 0, 0,
+                                width, height,
+                                temp,
+                                (250 - width) / 2,
+                                (250 - height) / 2);
+          g_object_unref (G_OBJECT (pixbuf));
+          pixbuf = temp;
+        }
+
+      gtk_file_chooser_set_preview_widget_active (chooser, TRUE);
+      gtk_image_set_from_pixbuf (image, pixbuf);
+      g_object_unref (G_OBJECT (pixbuf));
+    }
+  else
+    {
+      gtk_file_chooser_set_preview_widget_active (chooser, FALSE);
+    }
+  g_free (filename);
+}
+
+
+
+static void
 terminal_preferences_open_image_file (GtkWidget *button,
                                       GtkWidget *entry)
 {
-  GtkWidget *toplevel;
-  GtkWidget *dialog;
-  gchar     *filename;
+  GtkFileFilter *filter;
+  GtkWidget     *toplevel;
+  GtkWidget     *preview;
+  GtkWidget     *dialog;
+  gchar        **extensions;
+  gchar         *filename;
+  gchar         *pattern;
+  GSList        *formats;
+  GSList        *lp;
+  guint          n;
 
   toplevel = gtk_widget_get_toplevel (entry);
   dialog = gtk_file_chooser_dialog_new (_("Select image file"),
@@ -1060,6 +1119,35 @@ terminal_preferences_open_image_file (GtkWidget *button,
                                         NULL);
 
   gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (dialog), TRUE);
+
+  filter = gtk_file_filter_new ();
+  gtk_file_filter_set_name (filter, _("All Files"));
+  gtk_file_filter_add_pattern (filter, "*");
+  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+
+  filter = gtk_file_filter_new ();
+  gtk_file_filter_set_name (filter, _("Image Files"));
+  formats = gdk_pixbuf_get_formats ();
+  for (lp = formats; lp != NULL; lp = lp->next)
+    {
+      extensions = gdk_pixbuf_format_get_extensions (lp->data);
+      for (n = 0; extensions[n] != NULL; ++n)
+        {
+          pattern = g_strconcat ("*.", extensions[n], NULL);
+          gtk_file_filter_add_pattern (filter, pattern);
+          g_free (pattern);
+        }
+      g_strfreev (extensions);
+    }
+  g_slist_free (formats);
+  gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+
+  preview = gtk_image_new ();
+  gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (dialog), preview);
+  gtk_file_chooser_set_preview_widget_active (GTK_FILE_CHOOSER (dialog), FALSE);
+  g_signal_connect (G_OBJECT (dialog), "update-preview",
+                    G_CALLBACK (update_preview), preview);
+  gtk_widget_show (preview);
 
   filename = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
   if (G_LIKELY (filename != NULL))
