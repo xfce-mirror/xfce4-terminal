@@ -1,5 +1,18 @@
 2004-12-23	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-screen.c, terminal/terminal-window.c: Finally
+	  found a solution to the shrinking-terminal-size problem, that has
+	  proven to work with several machines running different window
+	  managers (metacity on FC3 was the perfect debug tool here). The
+	  main problem was the asynchronous execution of the terminal
+	  application, which caused a second ConfigureEvent to be generated
+	  from time to time during Tab creation. Besides that, the GtkNotebook
+	  behaved badly if the signal handler for tab switching was bound
+	  to notify::page; its now bound to switch-page, which seems to
+	  work better, although I failed to understand why for now.
+
+2004-12-23	Benedikt Meurer <benny@xfce.org>
+
 	* Terminal.spec.in: Fix libexo dependencies. Fix mandir parameter.
 	* configure.ac, doc/, NEWS: Version 0.2.1pre1. 0.2.1 release was
 	  cancelled, due to problems on some Linux systems.

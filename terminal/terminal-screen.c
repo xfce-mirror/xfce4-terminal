@@ -61,34 +61,6 @@ enum
 
 
 
-struct _TerminalScreenClass
-{
-  GtkHBoxClass __parent__;
-
-  /* signals */
-  void (*context_menu)      (TerminalScreen *screen, GdkEvent *event);
-  void (*selection_changed) (TerminalScreen *screen);
-};
-
-struct _TerminalScreen
-{
-  GtkHBox              __parent__;
-  TerminalPreferences *preferences;
-  GtkWidget           *terminal;
-  GtkWidget           *scrollbar;
-
-  GPid                 pid;
-  gchar               *working_directory;
-
-  gchar              **custom_command;
-  gchar               *custom_title;
-
-  guint                background_timer_id;
-  guint                launch_idle_id;
-};
-
-
-
 static void     terminal_screen_finalize                      (GObject          *object);
 static void     terminal_screen_get_property                  (GObject          *object,
                                                                guint             prop_id,
@@ -98,6 +70,7 @@ static void     terminal_screen_set_property                  (GObject          
                                                                guint             prop_id,
                                                                const GValue     *value,
                                                                GParamSpec       *pspec);
+static void     terminal_screen_realize                       (GtkWidget       *widget);
 static gboolean terminal_screen_get_child_command             (TerminalScreen   *screen,
                                                                gchar           **command,
                                                                gchar          ***argv,
@@ -129,8 +102,34 @@ static void     terminal_screen_vte_window_title_changed      (VteTerminal    *t
                                                                TerminalScreen *screen);
 static gboolean terminal_screen_timer_background              (gpointer        user_data);
 static void     terminal_screen_timer_background_destroy      (gpointer        user_data);
-static gboolean terminal_screen_idle_launch                   (gpointer        user_data);
-static void     terminal_screen_idle_launch_destroy           (gpointer        user_data);
+
+
+
+struct _TerminalScreenClass
+{
+  GtkHBoxClass __parent__;
+
+  /* signals */
+  void (*context_menu)      (TerminalScreen *screen, GdkEvent *event);
+  void (*selection_changed) (TerminalScreen *screen);
+};
+
+struct _TerminalScreen
+{
+  GtkHBox              __parent__;
+  TerminalPreferences *preferences;
+  GtkWidget           *terminal;
+  GtkWidget           *scrollbar;
+
+  GPid                 pid;
+  gchar               *working_directory;
+
+  gchar              **custom_command;
+  gchar               *custom_title;
+
+  guint                background_timer_id;
+  guint                launch_idle_id;
+};
 
 
 
@@ -146,7 +145,8 @@ G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_HBOX);
 static void
 terminal_screen_class_init (TerminalScreenClass *klass)
 {
-  GObjectClass *gobject_class;
+  GtkWidgetClass *gtkwidget_class;
+  GObjectClass   *gobject_class;
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -154,6 +154,9 @@ terminal_screen_class_init (TerminalScreenClass *klass)
   gobject_class->finalize = terminal_screen_finalize;
   gobject_class->get_property = terminal_screen_get_property;
   gobject_class->set_property = terminal_screen_set_property;
+
+  gtkwidget_class = GTK_WIDGET_CLASS (klass);
+  gtkwidget_class->realize = terminal_screen_realize;
 
   /**
    * TerminalScreen:custom-title:
@@ -291,8 +294,6 @@ terminal_screen_finalize (GObject *object)
 
   if (G_UNLIKELY (screen->background_timer_id != 0))
     g_source_remove (screen->background_timer_id);
-  if (G_UNLIKELY (screen->launch_idle_id != 0))
-    g_source_remove (screen->launch_idle_id);
 
   g_signal_handlers_disconnect_matched (G_OBJECT (screen->preferences),
                                         G_SIGNAL_MATCH_DATA,
@@ -353,6 +354,18 @@ terminal_screen_set_property (GObject          *object,
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
     }
+}
+
+
+
+static void
+terminal_screen_realize (GtkWidget *widget)
+{
+  GTK_WIDGET_CLASS (parent_class)->realize (widget);
+
+  /* make sure the TerminalWidget is realized as well */
+  if (!GTK_WIDGET_REALIZED (TERMINAL_SCREEN (widget)->terminal))
+    gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
 }
 
 
@@ -804,69 +817,6 @@ terminal_screen_timer_background_destroy (gpointer user_data)
 
 
 
-static gboolean
-terminal_screen_idle_launch (gpointer user_data)
-{
-  TerminalScreen *screen = TERMINAL_SCREEN (user_data);
-  GtkWidget      *toplevel;
-  GtkWidget      *message;
-  gboolean        update;
-  GError         *error = NULL;
-  gchar          *command;
-  gchar         **argv;
-  gchar         **env;
-
-#ifdef DEBUG
-  if (!GTK_WIDGET_REALIZED (screen))
-    g_error ("Tried to launch command in a TerminalScreen that is not realized");
-#endif
-
-  if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
-    {
-      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-      message = gtk_message_dialog_new_with_markup (GTK_WINDOW (toplevel),
-                                                    GTK_DIALOG_DESTROY_WITH_PARENT
-                                                    | GTK_DIALOG_MODAL,
-                                                    GTK_MESSAGE_ERROR,
-                                                    GTK_BUTTONS_CLOSE,
-                                                    "<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s\n%s",
-                                                    _("Failed to execute child"),
-                                                    error->message,
-                                                    _("Please check your system setup."));
-      gtk_dialog_run (GTK_DIALOG (message));
-      gtk_widget_destroy (message);
-      g_error_free (error);
-      return FALSE;
-    }
-
-  g_object_get (G_OBJECT (screen->preferences),
-                "command-update-records", &update,
-                NULL);
-
-  env = terminal_screen_get_child_environment (screen);
-
-  screen->pid = vte_terminal_fork_command (VTE_TERMINAL (screen->terminal),
-                                           command, argv, env,
-                                           screen->working_directory,
-                                           update, update, update);
-
-  g_strfreev (argv);
-  g_strfreev (env);
-  g_free (command);
-
-  return FALSE;
-}
-
-
-
-static void
-terminal_screen_idle_launch_destroy (gpointer user_data)
-{
-  TERMINAL_SCREEN (user_data)->launch_idle_id = 0;
-}
-
-
-
 /**
  * terminal_screen_new:
  *
@@ -889,12 +839,53 @@ terminal_screen_new (void)
 void
 terminal_screen_launch_child (TerminalScreen *screen)
 {
+  GtkWidget *toplevel;
+  GtkWidget *message;
+  gboolean   update;
+  GError    *error = NULL;
+  gchar     *command;
+  gchar    **argv;
+  gchar    **env;
+
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  if (G_LIKELY (screen->launch_idle_id == 0))
+#ifdef DEBUG
+  if (!GTK_WIDGET_REALIZED (screen))
+    g_error ("Tried to launch command in a TerminalScreen that is not realized");
+#endif
+
+  if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
-      screen->launch_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_screen_idle_launch,
-                                                screen, terminal_screen_idle_launch_destroy);
+      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+      message = gtk_message_dialog_new_with_markup (GTK_WINDOW (toplevel),
+                                                    GTK_DIALOG_DESTROY_WITH_PARENT
+                                                    | GTK_DIALOG_MODAL,
+                                                    GTK_MESSAGE_ERROR,
+                                                    GTK_BUTTONS_CLOSE,
+                                                    "<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s\n%s",
+                                                    _("Failed to execute child"),
+                                                    error->message,
+                                                    _("Please check your system setup."));
+      gtk_dialog_run (GTK_DIALOG (message));
+      gtk_widget_destroy (message);
+      g_error_free (error);
+    }
+  else 
+    {
+      g_object_get (G_OBJECT (screen->preferences),
+                    "command-update-records", &update,
+                    NULL);
+
+      env = terminal_screen_get_child_environment (screen);
+
+      screen->pid = vte_terminal_fork_command (VTE_TERMINAL (screen->terminal),
+                                               command, argv, env,
+                                               screen->working_directory,
+                                               update, update, update);
+
+      g_strfreev (argv);
+      g_strfreev (env);
+      g_free (command);
     }
 }
 

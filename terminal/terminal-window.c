@@ -84,13 +84,15 @@ static void            terminal_window_set_size_force_grid      (TerminalWindow 
                                                                  TerminalScreen         *screen,
                                                                  gint                    force_grid_width,
                                                                  gint                    force_grid_height);
-static void            terminal_window_update_geometry          (TerminalWindow         *window);
+static void            terminal_window_update_geometry          (TerminalWindow         *window,
+                                                                 TerminalScreen         *screen);
 static void            terminal_window_update_actions           (TerminalWindow         *window);
 static void            terminal_window_update_mnemonics         (TerminalWindow         *window);
 static void            terminal_window_rebuild_gomenu           (TerminalWindow         *window);
 static gboolean        terminal_window_delete_event             (TerminalWindow         *window);
-static void            terminal_window_notify_page              (GtkNotebook            *notebook,
-                                                                 GParamSpec             *pspec,
+static void            terminal_window_page_switched            (GtkNotebook            *notebook,
+                                                                 GtkNotebookPage        *page,
+                                                                 guint                   page_num,
                                                                  TerminalWindow         *window);
 static void            terminal_window_context_menu             (TerminalScreen         *screen,
                                                                  GdkEvent               *event,
@@ -378,8 +380,8 @@ terminal_window_init (TerminalWindow *window)
                                    "tab-hborder", 0,
                                    "tab-vborder", 0,
                                    NULL);
-  g_signal_connect (G_OBJECT (window->notebook), "notify::page",
-                    G_CALLBACK (terminal_window_notify_page), window);
+  g_signal_connect (G_OBJECT (window->notebook), "switch-page",
+                    G_CALLBACK (terminal_window_page_switched), window);
   g_signal_connect (G_OBJECT (window->notebook), "remove",
                     G_CALLBACK (terminal_window_screen_removed), window);
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
@@ -629,7 +631,11 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
                                      gint            force_grid_width,
                                      gint            force_grid_height)
 {
-  terminal_window_update_geometry (window);
+  /* Required to get the char height/width right */
+  if (!GTK_WIDGET_REALIZED (GTK_WIDGET (screen)))
+    gtk_widget_realize (GTK_WIDGET (screen));
+
+  terminal_window_update_geometry (window, screen);
   terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
                                        force_grid_width, force_grid_height);
 }
@@ -637,13 +643,10 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
 
 
 static void
-terminal_window_update_geometry (TerminalWindow *window)
+terminal_window_update_geometry (TerminalWindow *window,
+                                 TerminalScreen *screen)
 {
-  TerminalScreen *screen;
-
-  screen = terminal_window_get_active (window);
-  if (G_LIKELY (screen != NULL))
-    terminal_screen_set_window_geometry_hints (screen, GTK_WINDOW (window));
+  terminal_screen_set_window_geometry_hints (screen, GTK_WINDOW (window));
 }
 
 
@@ -837,9 +840,10 @@ terminal_window_delete_event (TerminalWindow *window)
 
 
 static void
-terminal_window_notify_page (GtkNotebook    *notebook,
-                             GParamSpec     *pspec,
-                             TerminalWindow *window)
+terminal_window_page_switched (GtkNotebook     *notebook,
+                               GtkNotebookPage *page,
+                               guint            page_num,
+                               TerminalWindow  *window)
 {
   TerminalScreen *terminal;
   gchar          *title;
@@ -853,6 +857,11 @@ terminal_window_notify_page (GtkNotebook    *notebook,
       gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
 
+      /* FIXME: This isn't really needed anymore, instead we
+       * could grab the grid size of the previously selected
+       * page and apply that to the newly selected page.
+       */
+
       /* This is a bit tricky, but seems to be necessary to get the
        * sizing correct: First we query the current terminal size
        * (rows x columns), then we force a size update on the terminal
@@ -861,7 +870,6 @@ terminal_window_notify_page (GtkNotebook    *notebook,
        * resize the terminal window accordingly.
        */
       terminal_screen_get_size (terminal, &grid_width, &grid_height);
-      gtk_container_resize_children (GTK_CONTAINER (window));
       terminal_screen_set_size (terminal, grid_width, grid_height);
       terminal_window_set_size_force_grid (window, terminal, grid_width, grid_height);
 
@@ -966,6 +974,8 @@ terminal_window_screen_removed (GtkNotebook     *notebook,
 {
   TerminalScreen *active;
   gint            npages;
+  gint            grid_width;
+  gint            grid_height;
 
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   if (G_UNLIKELY (npages == 0))
@@ -977,7 +987,8 @@ terminal_window_screen_removed (GtkNotebook     *notebook,
       gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
 
       active = terminal_window_get_active (window);
-      terminal_window_set_size_force_grid (window, active, -1, -1);
+      terminal_screen_get_size (screen, &grid_width, &grid_height);
+      terminal_window_set_size_force_grid (window, active, grid_width, grid_height);
 
       /* regenerate the "Go" menu */
       terminal_window_rebuild_gomenu (window);
@@ -1578,7 +1589,6 @@ terminal_window_add (TerminalWindow *window,
   gint              grid_width;
   gint              grid_height;
 
-
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1604,6 +1614,9 @@ terminal_window_add (TerminalWindow *window,
                           (GDestroyNotify) g_object_unref);
   gtk_widget_show (header);
 
+  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 0);
+
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),
                                    GTK_WIDGET (screen), header);
   gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (window->notebook),
@@ -1617,14 +1630,17 @@ terminal_window_add (TerminalWindow *window,
   g_signal_connect_swapped (G_OBJECT (screen), "selection-changed",
                             G_CALLBACK (terminal_window_update_actions), window);
 
-  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
-
   terminal_window_rebuild_gomenu (window);
+
+  /* need to save the grid size here for detached screens */
+  terminal_screen_get_size (screen, &grid_width, &grid_height);
 
   /* need to show this first, else we cannot switch to it */
   gtk_widget_show (GTK_WIDGET (screen));
+
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), page);
+
+  terminal_window_set_size_force_grid (window, screen, grid_width, grid_height);
 }
 
 
