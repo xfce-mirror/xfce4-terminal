@@ -1072,6 +1072,11 @@ terminal_widget_launch_child (TerminalWidget *widget)
 
   g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
+#ifdef DEBUG
+  if (!GTK_WIDGET_REALIZED (widget))
+    g_error ("Tried to launch command in a TerminalWidget that is not realized");
+#endif
+
   if (!terminal_widget_get_child_command (widget, &command, &argv, &error))
     {
       g_error_free (error);
@@ -1253,13 +1258,16 @@ terminal_widget_set_window_geometry_hints (TerminalWidget *widget,
  * terminal_widget_get_title:
  * @widget      : A #TerminalWidget.
  *
- * Return value :
+ * Return value : The title to set for this terminal screen.
+ *                The returned string should be freed when
+ *                no longer needed.
  **/
 gchar*
 terminal_widget_get_title (TerminalWidget *widget)
 {
   TerminalTitle mode;
   const gchar  *vte_title;
+  gboolean      vte_workaround_title_bug;
   gchar        *window_title;
   gchar        *initial;
   gchar        *title;
@@ -1273,26 +1281,35 @@ terminal_widget_get_title (TerminalWidget *widget)
   g_object_get (G_OBJECT (widget->preferences),
                 "title-initial", &initial,
                 "title-mode", &mode,
+                "vte-workaround-title-bug", &vte_workaround_title_bug,
                 NULL);
 
   vte_title = vte_terminal_get_window_title (VTE_TERMINAL (widget->terminal));
   window_title = (vte_title != NULL) ? g_strdup (vte_title) : NULL;
 
   /* work around VTE problem, see #10 for details */
-  if (window_title != NULL)
+  if (window_title != NULL && vte_workaround_title_bug)
     {
+      /* remove initial title from the end of the dynamic title */
       tmp = g_strconcat (" - ", initial, NULL);
-      if (g_str_has_suffix (window_title, tmp))
+      while (g_str_has_suffix (window_title, tmp))
         window_title[strlen (window_title) - strlen (tmp)] = '\0';
       g_free (tmp);
 
+      /* remove initial title from the end of the dynamic title */
       tmp = g_strconcat (initial, " - ", NULL);
-      if (g_str_has_prefix (window_title, tmp))
+      while (g_str_has_prefix (window_title, tmp))
         {
           memmove (window_title, window_title + strlen (tmp),
                    strlen (window_title) + 1 - strlen (tmp));
         }
       g_free (tmp);
+
+#ifdef DEBUG
+      g_print ("Terminal application specified title \"%s\", "
+               "we've stripped that down to \"%s\"\n",
+               vte_title, window_title);
+#endif
     }
 
   switch (mode)

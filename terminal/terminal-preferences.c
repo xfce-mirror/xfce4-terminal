@@ -97,6 +97,7 @@ enum
   PROP_TITLE_INITIAL,
   PROP_TITLE_MODE,
   PROP_TERM,
+  PROP_VTE_WORKAROUND_TITLE_BUG,
   PROP_WORD_CHARS,
 };
 
@@ -120,15 +121,12 @@ struct _TerminalPreferences
   gchar                   *accel_reset;
   gchar                   *accel_reset_and_clear;
   gchar                   *accel_contents;
-
   TerminalBackground       background_mode;
   gchar                   *background_image_file;
   TerminalBackgroundStyle  background_image_style;
   gdouble                  background_darkness;
-
   TerminalEraseBinding     binding_backspace;
   TerminalEraseBinding     binding_delete;
-
   GdkColor                 color_foreground;
   GdkColor                 color_background;
   GdkColor                 color_palette1;
@@ -147,30 +145,23 @@ struct _TerminalPreferences
   GdkColor                 color_palette14;
   GdkColor                 color_palette15;
   GdkColor                 color_palette16;
-
-  gboolean              command_update_records;
-  gboolean              command_login_shell;
-
-  gchar                *font_name;
-
-  gboolean              misc_bell;
-  gboolean              misc_borders_default;
-  gboolean              misc_cursor_blinks;
-  gboolean              misc_menubar_default;
-
-  TerminalScrollbar     scrolling_bar;
-  guint                 scrolling_lines;
-  gboolean              scrolling_on_output;
-  gboolean              scrolling_on_keystroke;
-
-  gboolean              shortcuts_no_menukey;
-
-  gchar                *title_initial;
-  TerminalTitle         title_mode;
-
-  gchar                *term;
-  gchar                *word_chars;
-
+  gboolean                 command_update_records;
+  gboolean                 command_login_shell;
+  gchar                   *font_name;
+  gboolean                 misc_bell;
+  gboolean                 misc_borders_default;
+  gboolean                 misc_cursor_blinks;
+  gboolean                 misc_menubar_default;
+  TerminalScrollbar        scrolling_bar;
+  guint                    scrolling_lines;
+  gboolean                 scrolling_on_output;
+  gboolean                 scrolling_on_keystroke;
+  gboolean                 shortcuts_no_menukey;
+  gchar                   *title_initial;
+  TerminalTitle            title_mode;
+  gchar                   *term;
+  gboolean                 vte_workaround_title_bug;
+  gchar                   *word_chars;
 
   guint                 store_idle_id;
   guint                 loading_in_progress : 1;
@@ -519,7 +510,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:background-image-file:
+   * TerminalPreferences:background-image-style:
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_BACKGROUND_IMAGE_STYLE,
@@ -938,6 +929,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:vte-workaround-title-bug:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_VTE_WORKAROUND_TITLE_BUG,
+                                   g_param_spec_boolean ("vte-workaround-title-bug",
+                                                         _("Workaround VTE title bug"),
+                                                         _("Workaround VTE title bug"),
+                                                         TRUE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:word-chars:
    **/
   g_object_class_install_property (gobject_class,
@@ -998,29 +1000,31 @@ terminal_preferences_init (TerminalPreferences *preferences)
   gdk_color_parse ("#5555ffffffff", &preferences->color_palette15);
   gdk_color_parse ("#ffffffffffff", &preferences->color_palette16);
 
-  preferences->command_update_records = TRUE;
-  preferences->command_login_shell    = FALSE;
+  preferences->command_update_records   = TRUE;
+  preferences->command_login_shell      = FALSE;
 
-  preferences->misc_bell              = FALSE;
-  preferences->misc_borders_default   = TRUE;
-  preferences->misc_cursor_blinks     = FALSE;
-  preferences->misc_menubar_default   = TRUE;
+  preferences->misc_bell                = FALSE;
+  preferences->misc_borders_default     = TRUE;
+  preferences->misc_cursor_blinks       = FALSE;
+  preferences->misc_menubar_default     = TRUE;
 
-  preferences->font_name              = g_strdup ("Monospace 12");
+  preferences->font_name                = g_strdup ("Monospace 12");
 
-  preferences->scrolling_bar          = TERMINAL_SCROLLBAR_RIGHT;
-  preferences->scrolling_lines        = 1000;
-  preferences->scrolling_on_output    = TRUE;
-  preferences->scrolling_on_keystroke = TRUE;
+  preferences->scrolling_bar            = TERMINAL_SCROLLBAR_RIGHT;
+  preferences->scrolling_lines          = 1000;
+  preferences->scrolling_on_output      = TRUE;
+  preferences->scrolling_on_keystroke   = TRUE;
 
-  preferences->shortcuts_no_menukey   = FALSE;
+  preferences->shortcuts_no_menukey     = FALSE;
 
-  preferences->title_initial          = g_strdup (_("Terminal"));
-  preferences->title_mode             = TERMINAL_TITLE_APPEND;
+  preferences->title_initial            = g_strdup (_("Terminal"));
+  preferences->title_mode               = TERMINAL_TITLE_APPEND;
 
-  preferences->term                   = g_strdup ("xterm");
+  preferences->term                     = g_strdup ("xterm");
 
-  preferences->word_chars             = g_strdup ("-A-Za-z0-9,./?%&#:_");
+  preferences->vte_workaround_title_bug = TRUE;
+
+  preferences->word_chars               = g_strdup ("-A-Za-z0-9,./?%&#:_");
 
   terminal_preferences_load (preferences);
 }
@@ -1289,6 +1293,10 @@ terminal_preferences_get_property (GObject    *object,
 
     case PROP_TERM:
       g_value_set_string (value, preferences->term);
+      break;
+
+    case PROP_VTE_WORKAROUND_TITLE_BUG:
+      g_value_set_boolean (value, preferences->vte_workaround_title_bug);
       break;
 
     case PROP_WORD_CHARS:
@@ -1885,6 +1893,16 @@ terminal_preferences_set_property (GObject      *object,
           g_free (preferences->term);
           preferences->term = g_strdup (sval);
           g_object_notify (object, "term");
+          terminal_preferences_schedule_store (preferences);
+        }
+      break;
+
+    case PROP_VTE_WORKAROUND_TITLE_BUG:
+      bval = g_value_get_boolean (value);
+      if (bval != preferences->vte_workaround_title_bug)
+        {
+          preferences->vte_workaround_title_bug = bval;
+          g_object_notify (object, "vte-workaround-title-bug");
           terminal_preferences_schedule_store (preferences);
         }
       break;

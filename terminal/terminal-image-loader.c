@@ -466,21 +466,25 @@ terminal_image_loader_load (TerminalImageLoader *loader,
 
   terminal_image_loader_check (loader);
 
-  if (G_UNLIKELY (loader->pixbuf == NULL))
+  if (G_UNLIKELY (loader->pixbuf == NULL || width <= 1 || height <= 1))
     return NULL;
 
 #ifdef DEBUG
   g_print ("Image Loader memory status:\n"
-           "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-           "\n"
+           "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
            " Images in valid cache:\n");
   for (lp = loader->cache; lp != NULL; lp = lp->next)
-    g_print ("  %p with refcount of %d\n", lp->data, G_OBJECT (lp->data)->ref_count);
-  g_print ("\n");
+    {
+      g_print ("  %p with refcount of %d\n", lp->data,
+               G_OBJECT (lp->data)->ref_count);
+    }
 
-  g_print (" Images in invalid cache:\n");
+  g_print ("\n Images in invalid cache:\n");
   for (lp = loader->cache_invalid; lp != NULL; lp = lp->next)
-    g_print ("  %p with refcount of %d\n", lp->data, G_OBJECT (lp->data)->ref_count);
+    {
+      g_print ("  %p with refcount of %d\n", lp->data,
+               G_OBJECT (lp->data)->ref_count);
+    }
   g_print ("\n");
 #endif
 

@@ -100,18 +100,22 @@ main (int argc, char **argv)
 {
   TerminalOptions *options;
   TerminalApp     *app;
+#if GLIB_CHECK_VERSION(2,6,0)
+  const gchar     *description;
+#endif
   GdkPixbuf       *icon;
   GError          *error = NULL;
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-
-#if 0
-#ifdef DEBUG
-  g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL);
-#endif
-#endif
-
   g_set_application_name (_("Terminal"));
+
+#if GLIB_CHECK_VERSION(2,6,0)
+  description = glib_check_version (GLIB_MAJOR_VERSION,
+                                    GLIB_MINOR_VERSION,
+                                    GLIB_MICRO_VERSION);
+  if (G_UNLIKELY (description != NULL))
+    g_warning ("GLib version mismatch: %s", description);
+#endif
 
   options = terminal_options_from_args (argc, argv, &error);
   if (options == NULL) 
@@ -128,8 +132,12 @@ main (int argc, char **argv)
                 "Copyright (c) 2003-2004\n"
                 "        os-cillation e.K. All rights reserved.\n\n"
                 "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
+                "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
                 "Please report bugs to <%s>.\n"),
-              PACKAGE_STRING, xfce_version_string (), PACKAGE_BUGREPORT);
+              PACKAGE_STRING, xfce_version_string (),
+              GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
+              gtk_major_version, gtk_minor_version, gtk_micro_version,
+              PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }
   else if (G_UNLIKELY (options->flags & TERMINAL_FLAGS_SHOWHELP))

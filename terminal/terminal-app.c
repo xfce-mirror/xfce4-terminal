@@ -364,18 +364,16 @@ terminal_app_launch_with_options (TerminalApp     *app,
     }
 
   terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_WIDGET (terminal));
-  terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
 
-  if (options != NULL)
+  if (options != NULL && options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY)
     {
-      if (options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY)
-        {
-          if (!gtk_window_parse_geometry (GTK_WINDOW (window), options->geometry))
-            g_printerr (_("Invalid geometry string \"%s\"\n"), options->geometry);
-        }
+      if (!gtk_window_parse_geometry (GTK_WINDOW (window), options->geometry))
+        g_printerr (_("Invalid geometry string \"%s\"\n"), options->geometry);
     }
 
-  gtk_widget_show (window);
+  gtk_widget_show_now (window);
+
+  terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
 
   return TRUE;
 }

@@ -1,3 +1,17 @@
+2004-11-03	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-image-loader.c: Fix crash with width/height == 1/1.
+	* terminal/terminal-app.c(terminal_app_launch_with_options): Realize
+	  terminal window before launching the terminal command, so the
+	  environment variables WINDOWID and DISPLAY are set properly.
+	* terminal/terminal-preferences.c, terminal/terminal-widget.c: Made
+	  the window title workaround configurable as a hidden setting
+	  VteWorkaroundTitleBug, the actual bug do not seem to be in VTE,
+	  but a problem with applications that determine the window title
+	  using the environment variable WINDOWID.
+	* terminal/main.c(main): Added GLib version check (2.6 only). Print
+	  Gtk+ versions (built/runtime) with --version.
+
 2004-11-02	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-widget.c: Work around a problem in VTE, where
