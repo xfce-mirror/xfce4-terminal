@@ -1,4 +1,4 @@
-/* $Id: terminal-window.c 34 2004-11-02 21:30:46Z bmeurer $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

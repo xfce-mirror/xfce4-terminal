@@ -41,7 +41,8 @@ struct _TerminalTabHeaderClass
   GtkHBoxClass __parent__;
 
   /* signals */
-  void (*close) (TerminalTabHeader *header);
+  void (*close)           (TerminalTabHeader *header);
+  void (*double_clicked)  (TerminalTabHeader *header);
 };
 
 GType      terminal_tab_header_get_type (void) G_GNUC_CONST;

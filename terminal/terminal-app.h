@@ -1,4 +1,4 @@
-/* $Id: terminal-app.h,v 1.3 2004/09/17 10:16:45 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -23,14 +23,13 @@
 #define __TERMINAL_APP_H__
 
 #include <exo/exo.h>
+
+#include <dbus/dbus.h>
+#include <dbus/dbus-glib.h>
+
 #include <terminal/terminal-options.h>
 
 G_BEGIN_DECLS;
-
-#define TERMINAL_APP_METHOD_LAUNCH "Launch"
-#define TERMINAL_APP_INTERFACE     "com.os_cillation.Terminal"
-#define TERMINAL_APP_SERVICE       "com.os_cillation.Terminal"
-#define TERMINAL_APP_PATH          "/com/os_cillation/Terminal"
 
 #define TERMINAL_TYPE_APP         (terminal_app_get_type ())
 #define TERMINAL_APP(obj)         (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_APP, TerminalApp))
@@ -52,11 +51,17 @@ TerminalApp *terminal_app_new                 (void);
 gboolean     terminal_app_start_server        (TerminalApp      *app,
                                                GError          **error);
 
-gboolean     terminal_app_launch_with_options (TerminalApp      *app,
-                                               TerminalOptions  *options,
-                                               GError          **error);
+gboolean     terminal_app_process             (TerminalApp        *app,
+                                               gchar             **argv,
+                                               gint                argc,
+                                               GError            **error);
 
-gboolean     terminal_app_try_existing        (TerminalOptions  *options);
+void         terminal_app_open_window         (TerminalApp        *app,
+                                               TerminalWindowAttr *attr);
+
+gboolean     terminal_app_try_invoke          (gint              argc,
+                                               gchar           **argv,
+                                               GError          **error);
 
 G_END_DECLS;
 

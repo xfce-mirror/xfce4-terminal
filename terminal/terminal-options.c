@@ -37,56 +37,85 @@
 
 
 /**
- * terminal_options_from_args:
+ * terminal_options_parse:
+ * @argc            :
+ * @argv            :
+ * @attrs_return    :
+ * @options_return  :
+ * @error           :
+ *
+ * Return value: %TRUE on success.
  **/
-TerminalOptions*
-terminal_options_from_args (gint     argc,
-                            gchar  **argv,
-                            GError **error)
+gboolean
+terminal_options_parse (gint              argc,
+                        gchar           **argv,
+                        GList           **attrs_return,
+                        TerminalOptions  *options_return,
+                        GError          **error)
 {
-  TerminalOptions *options;
-  gchar           *s;
-  gint             i;
-  gint             j;
-  gint             n;
+  TerminalWindowAttr *win_attr = NULL;
+  TerminalTabAttr    *tab_attr = NULL;
+  gchar              *default_directory = NULL;
+  gchar              *s;
+  GList              *tp;
+  GList              *wp;
+  gint                i;
+  gint                j;
+  gint                n;
+  
+  if (attrs_return != NULL)
+    {
+      win_attr = terminal_window_attr_new ();
+      tab_attr = win_attr->tabs->data;
+      *attrs_return = g_list_append (NULL, win_attr);
+    }
 
-  g_return_val_if_fail (argc > 0, NULL);
-  g_return_val_if_fail (argv != NULL, NULL);
-
-  options = g_new0 (TerminalOptions, 1);
-
-  /* default to current working directory */
-  options->working_directory = g_get_current_dir ();
-  options->mask |= TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
+  if (options_return != NULL)
+    *options_return = 0;
 
   for (n = 1; n < argc; ++n)
     {
-      if (strcmp ("--execute", argv[n]) == 0
-          || strcmp ("-x", argv[n]) == 0)
+      if (strcmp ("--help", argv[n]) == 0 || strcmp ("-h", argv[n]) == 0)
+        {
+          if (options_return != NULL)
+            *options_return |= TERMINAL_OPTION_HELP;
+        }
+      else if (strcmp ("--version", argv[n]) == 0 || strcmp ("-v", argv[n]) == 0)
+        {
+          if (options_return != NULL)
+            *options_return |= TERMINAL_OPTION_VERSION;
+        }
+      else if (strcmp ("--disable-server", argv[n]) == 0)
+        {
+          if (options_return != NULL)
+            *options_return |= TERMINAL_OPTION_DISABLESERVER;
+        }
+      else if (strcmp ("--execute", argv[n]) == 0 || strcmp ("-x", argv[n]) == 0)
         {
           i = argc - ++n;
 
           if (i <= 0)
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--execute/-x\" requires specifying "
-                             "the command to run on the rest of the command "
-                             "line"));
+                           _("Option \"--execute/-x\" requires specifying the command "
+                             "to run on the rest of the command line"));
               goto failed;
             }
 
-          if (options->command != NULL)
-            g_strfreev (options->command);
-          options->command = g_new (gchar *, i + 1);
-          for (j = 0; j < i; ++j, ++n)
-            options->command[j] = g_strdup (argv[n]);
-          options->command[j] = NULL;
-          options->mask |= TERMINAL_OPTIONS_MASK_COMMAND;
+          if (tab_attr != NULL)
+            {
+              g_strfreev (tab_attr->command);
+              tab_attr->command = g_new (gchar *, i + 1);
+              for (j = 0; j < i; ++j, ++n)
+                tab_attr->command[j] = g_strdup (argv[n]);
+              tab_attr->command[j] = NULL;
+            }
+
           break;
         }
       else if (strcmp ("--command", argv[n]) == 0
-          || strncmp ("--command=", argv[n], 10) == 0
-          || strcmp ("-e", argv[n]) == 0)
+            || strncmp ("--command=", argv[n], 10) == 0
+            || strcmp ("-e", argv[n]) == 0)
         {
           s = argv[n] + 9;
 
@@ -106,63 +135,16 @@ terminal_options_from_args (gint     argc,
               s = argv[++n];
             }
 
-          if (options->command != NULL)
-            g_strfreev (options->command);
-          options->command = NULL;
-          if (!g_shell_parse_argv (s, NULL, &options->command, error))
-            goto failed;
-          options->mask |= TERMINAL_OPTIONS_MASK_COMMAND;
-        }
-      else if (strcmp ("--tab", argv[n]) == 0)
-        {
-          options->flags |= TERMINAL_FLAGS_OPENTAB;
-          options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else if (strcmp ("--disable-server", argv[n]) == 0)
-        {
-          options->flags |= TERMINAL_FLAGS_DISABLESERVER;
-          options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else if (strcmp ("--version", argv[n]) == 0
-          || strcmp ("-v", argv[n]) == 0)
-        {
-          options->flags |= TERMINAL_FLAGS_SHOWVERSION;
-          options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else if (strcmp ("--help", argv[n]) == 0
-          || strcmp ("-h", argv[n]) == 0)
-        {
-          options->flags |= TERMINAL_FLAGS_SHOWHELP;
-          options->mask |= TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else if (strcmp ("--title", argv[n]) == 0
-          || strncmp ("--title=", argv[n], 8) == 0)
-        {
-          s = argv[n] + 7;
-          
-          if (*s == '=')
+          if (tab_attr != NULL)
             {
-              ++s;
+              g_strfreev (tab_attr->command);
+              tab_attr->command = NULL;
+              if (!g_shell_parse_argv (s, NULL, &tab_attr->command, error))
+                goto failed;
             }
-          else if (n + 1 >= argc)
-            {
-              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--title\" requires specifying "
-                             "the title as its parameter"));
-              goto failed;
-            }
-          else
-            {
-              s = argv[++n];
-            }
-
-          if (options->title != NULL)
-            g_free (options->title);
-          options->title = g_strdup (s);
-          options->mask |= TERMINAL_OPTIONS_MASK_TITLE;
         }
       else if (strcmp ("--working-directory", argv[n]) == 0
-          || strncmp ("--working-directory", argv[n], 19) == 0)
+            || strncmp ("--working-directory=", argv[n], 19) == 0)
         {
           s = argv[n] + 18;
 
@@ -177,17 +159,47 @@ terminal_options_from_args (gint     argc,
                              "the working directory as its parameter"));
               goto failed;
             }
+          else 
+            {
+              s = argv[++n];
+            }
+
+          if (tab_attr != NULL)
+            {
+              g_free (tab_attr->directory);
+              tab_attr->directory = g_strdup (s);
+            }
+        }
+      else if (strcmp ("--title", argv[n]) == 0
+            || strncmp ("--title=", argv[n], 8) == 0
+            || strcmp ("-t", argv[n]) == 0)
+        {
+          s = argv[n] + 7;
+
+          if (strcmp ("-t", argv[n]) != 0 && *s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--title/-t\" requires specifying "
+                             "the title as its parameter"));
+              goto failed;
+            }
           else
             {
               s = argv[++n];
             }
 
-          g_free (options->working_directory);
-          options->working_directory = g_strdup (s);
-          options->mask |= TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
+          if (tab_attr != NULL)
+            {
+              g_free (tab_attr->title);
+              tab_attr->title = g_strdup (s);
+            }
         }
       else if (strcmp ("--geometry", argv[n]) == 0
-          || strncmp ("--geometry=", argv[n], 11) == 0)
+            || strncmp ("--geometry=", argv[n], 11) == 0)
         {
           s = argv[n] + 10;
 
@@ -198,8 +210,8 @@ terminal_options_from_args (gint     argc,
           else if (n + 1 >= argc)
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--geometry\" requires specifying the "
-                             "window geometry as its parameter"));
+                           _("Option \"--geometry\" requires specifying "
+                             "the window geometry as its parameter"));
               goto failed;
             }
           else
@@ -207,9 +219,137 @@ terminal_options_from_args (gint     argc,
               s = argv[++n];
             }
 
-          g_free (options->geometry);
-          options->geometry = g_strdup (s);
-          options->mask |= TERMINAL_OPTIONS_MASK_GEOMETRY;
+          if (win_attr != NULL)
+            {
+              g_free (win_attr->geometry);
+              win_attr->geometry = g_strdup (s);
+            }
+        }
+      else if (strcmp ("--role", argv[n]) == 0
+            || strncmp ("--role=", argv[n], 7) == 0)
+        {
+          s = argv[n] + 6;
+
+          if (*s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--role\" requires specifying "
+                             "the window geometry as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              s = argv[++n];
+            }
+
+          if (win_attr != NULL)
+            {
+              g_free (win_attr->role);
+              win_attr->role = g_strdup (s);
+            }
+        }
+      else if (strcmp ("--startup-id", argv[n]) == 0
+            || strncmp ("--startup-id=", argv[n], 13) == 0)
+        {
+          s = argv[n] + 12;
+
+          if (*s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--startup-id\" requires specifying "
+                             "the startup id as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              s = argv[++n];
+            }
+
+          if (win_attr != NULL)
+            {
+              g_free (win_attr->startup_id);
+              win_attr->startup_id = g_strdup (s);
+            }
+        }
+      else if (strcmp ("--show-menubar", argv[n]) == 0
+            || strcmp ("--hide-menubar", argv[n]) == 0)
+        {
+          if (win_attr != NULL)
+            {
+              win_attr->menubar = (argv[n][2] == 's') 
+                                ? TERMINAL_VISIBILITY_SHOW
+                                : TERMINAL_VISIBILITY_HIDE;
+            }
+        }
+      else if (strcmp ("--show-borders", argv[n]) == 0
+            || strcmp ("--hide-borders", argv[n]) == 0)
+        {
+          if (win_attr != NULL)
+            {
+              win_attr->borders = (argv[n][2] == 's')
+                                ? TERMINAL_VISIBILITY_SHOW
+                                : TERMINAL_VISIBILITY_HIDE;
+            }
+        }
+      else if (strcmp ("--show-toolbars", argv[n]) == 0
+            || strcmp ("--hide-toolbars", argv[n]) == 0)
+        {
+          if (win_attr != NULL)
+            {
+              win_attr->toolbars = (argv[n][2] == 's')
+                                ? TERMINAL_VISIBILITY_SHOW
+                                : TERMINAL_VISIBILITY_HIDE;
+            }
+        }
+      else if (strcmp ("--tab", argv[n]) == 0)
+        {
+          if (win_attr != NULL)
+            {
+              tab_attr = g_new0 (TerminalTabAttr, 1);
+              win_attr->tabs = g_list_append (win_attr->tabs, tab_attr);
+            }
+        }
+      else if (strcmp ("--window", argv[n]) == 0)
+        {
+          if (attrs_return != NULL)
+            {
+              win_attr = terminal_window_attr_new ();
+              tab_attr = win_attr->tabs->data;
+              *attrs_return = g_list_append (*attrs_return, win_attr);
+            }
+        }
+      else if (strcmp ("--default-working-directory", argv[n]) == 0
+            || strncmp ("--default-working-directory=", argv[n], 28) == 0)
+        {
+          s = argv[n] + 27;
+
+          if (*s == '=')
+            {
+              ++s;
+            }
+          else if (n + 1 >= argc)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--default-working-directory\" requires "
+                             "specifying the default working directory as its "
+                             "parameter"));
+              goto failed;
+            }
+          else
+            {
+              s = argv[++n];
+            }
+
+          g_free (default_directory);
+          default_directory = g_strdup (s);
         }
       else
         {
@@ -219,135 +359,89 @@ terminal_options_from_args (gint     argc,
         }
     }
 
-  if (options->command != NULL)
+  /* substitute default working directory if any */
+  if (attrs_return != NULL && default_directory != NULL)
     {
-      for (i = 0; options->command[i] != NULL; ++i)
-        ;
-      options->command_len = i;
+      for (wp = *attrs_return; wp != NULL; wp = wp->next)
+        {
+          win_attr = wp->data;
+          for (tp = win_attr->tabs; tp != NULL; tp = tp->next)
+            {
+              tab_attr = tp->data;
+              if (tab_attr->directory == NULL)
+                tab_attr->directory = g_strdup (default_directory);
+            }
+        }
     }
-
-  return options;
+  g_free (default_directory);
+  
+  return TRUE;
 
 failed:
-  terminal_options_free (options);
-  return NULL;
+  if (attrs_return != NULL)
+    for (wp = *attrs_return; wp != NULL; wp = wp->next)
+      terminal_window_attr_free (wp->data);
+  g_list_free (*attrs_return);
+  g_free (default_directory);
+
+  return FALSE;
 }
 
 
 
 /**
- * terminal_options_from_message:
- * @message   :
- **/
-TerminalOptions*
-terminal_options_from_message (DBusMessage *message)
-{
-  TerminalOptions *options;
-  DBusMessageIter  iter;
-  gchar          **command;
-  gint             length;
-  gchar           *sval;
-  gint             n;
-
-  if (!dbus_message_iter_init (message, &iter))
-    return NULL;
-
-  options = g_new0 (TerminalOptions, 1);
-  options->mask = dbus_message_iter_get_uint32 (&iter);
-  dbus_message_iter_next (&iter);
-
-  if (options->mask & TERMINAL_OPTIONS_MASK_COMMAND)
-    {
-      if (!dbus_message_iter_get_string_array (&iter, &command, &length))
-        {
-          options->mask &= ~TERMINAL_OPTIONS_MASK_COMMAND;
-        }
-      else
-        {
-          options->command = g_new (gchar *, length + 1);
-          for (n = 0; n < length; ++n)
-            options->command[n] = g_strdup (command[n]);
-          options->command[n] = NULL;
-          options->command_len = length;
-          dbus_free_string_array (command);
-          dbus_message_iter_next (&iter);
-        }
-    }
-
-  if (options->mask & TERMINAL_OPTIONS_MASK_TITLE)
-    {
-      if (dbus_message_iter_get_arg_type (&iter) != DBUS_TYPE_STRING)
-        {
-          options->mask &= ~TERMINAL_OPTIONS_MASK_TITLE;
-        }
-      else
-        {
-          sval = dbus_message_iter_get_string (&iter);
-          options->title = g_strdup (sval);
-          dbus_free (sval);
-          dbus_message_iter_next (&iter);
-        }
-    }
-
-  if (options->mask & TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY)
-    {
-      if (dbus_message_iter_get_arg_type (&iter) != DBUS_TYPE_STRING)
-        {
-          options->mask &= ~TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
-        }
-      else
-        {
-          sval = dbus_message_iter_get_string (&iter);
-          options->working_directory = g_strdup (sval);
-          dbus_free (sval);
-          dbus_message_iter_next (&iter);
-        }
-    }
-
-  if (options->mask & TERMINAL_OPTIONS_MASK_FLAGS)
-    {
-      if (dbus_message_iter_get_arg_type (&iter) != DBUS_TYPE_UINT32)
-        {
-          options->mask &= ~TERMINAL_OPTIONS_MASK_FLAGS;
-        }
-      else
-        {
-          options->flags = dbus_message_iter_get_uint32 (&iter);
-          dbus_message_iter_next (&iter);
-        }
-    }
-
-  if (options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY)
-    {
-      if (dbus_message_iter_get_arg_type (&iter) != DBUS_TYPE_STRING)
-        {
-          options->mask &= ~TERMINAL_OPTIONS_MASK_GEOMETRY;
-        }
-      else
-        {
-          sval = dbus_message_iter_get_string (&iter);
-          options->geometry = g_strdup (sval);
-          dbus_free (sval);
-          dbus_message_iter_next (&iter);
-        }
-    }
-
-  return options;
-}
-
-
-
-/**
- * terminal_options_free:
- * @options :
  **/
 void
-terminal_options_free (TerminalOptions *options)
+terminal_tab_attr_free (TerminalTabAttr *attr)
 {
-  if (options->command != NULL)
-    g_strfreev (options->command);
-  g_free (options->working_directory);
-  g_free (options->geometry);
-  g_free (options->title);
-  g_free (options);
+  g_return_if_fail (attr != NULL);
+
+  g_strfreev (attr->command);
+  g_free (attr->directory);
+  g_free (attr->title);
+  g_free (attr);
 }
+
+
+
+/**
+ **/
+TerminalWindowAttr*
+terminal_window_attr_new (void)
+{
+  TerminalWindowAttr *win_attr;
+  TerminalTabAttr    *tab_attr;
+
+  win_attr = g_new0 (TerminalWindowAttr, 1);
+  win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
+  win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
+  win_attr->toolbars = TERMINAL_VISIBILITY_DEFAULT;
+
+  tab_attr = g_new0 (TerminalTabAttr, 1);
+  win_attr->tabs = g_list_append (NULL, tab_attr);
+
+  return win_attr;
+}
+
+
+
+/**
+ * terminal_window_attr_free:
+ * @attr  : A #TerminalWindowAttr.
+ **/
+void
+terminal_window_attr_free (TerminalWindowAttr *attr)
+{
+  g_return_if_fail (attr != NULL);
+
+  g_list_foreach (attr->tabs, (GFunc) terminal_tab_attr_free, NULL);
+  g_list_free (attr->tabs);
+  g_free (attr->startup_id);
+  g_free (attr->geometry);
+  g_free (attr->role);
+  g_free (attr);
+}
+
+
+
+

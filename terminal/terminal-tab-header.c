@@ -37,24 +37,28 @@ enum
 enum
 {
   CLOSE,
+  DOUBLE_CLICKED,
   LAST_SIGNAL,
 };
 
 
 
-static void terminal_tab_header_class_init    (TerminalTabHeaderClass *klass);
-static void terminal_tab_header_init          (TerminalTabHeader      *header);
-static void terminal_tab_header_finalize      (GObject                *object);
-static void terminal_tab_header_get_property  (GObject                *object,
-                                               guint                   prop_id,
-                                               GValue                 *value,
-                                               GParamSpec             *pspec);
-static void terminal_tab_header_set_property  (GObject                *object,
-                                               guint                   prop_id,
-                                               const GValue           *value,
-                                               GParamSpec             *pspec);
-static void terminal_tab_header_clicked       (GtkWidget              *button,
-                                               TerminalTabHeader      *header);
+static void     terminal_tab_header_class_init    (TerminalTabHeaderClass *klass);
+static void     terminal_tab_header_init          (TerminalTabHeader      *header);
+static void     terminal_tab_header_finalize      (GObject                *object);
+static void     terminal_tab_header_get_property  (GObject                *object,
+                                                   guint                   prop_id,
+                                                   GValue                 *value,
+                                                   GParamSpec             *pspec);
+static void     terminal_tab_header_set_property  (GObject                *object,
+                                                   guint                   prop_id,
+                                                   const GValue           *value,
+                                                   GParamSpec             *pspec);
+static void     terminal_tab_header_clicked       (GtkWidget              *button,
+                                                   TerminalTabHeader      *header);
+static gboolean terminal_tab_header_button_press  (GtkWidget              *ebox,
+                                                   GdkEventButton         *event,
+                                                   TerminalTabHeader      *header);
 
 
 
@@ -113,6 +117,18 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * TerminalTabHeader::double-clicked:
+   **/
+  header_signals[DOUBLE_CLICKED] =
+    g_signal_new ("double-clicked",
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (TerminalTabHeaderClass, double_clicked),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
+
   /* register custom icon size for the tab close buttons */
   if (gtk_icon_size_from_name ("terminal-icon-size-tab") == GTK_ICON_SIZE_INVALID)
     gtk_icon_size_register ("terminal-icon-size-tab", 14, 14);
@@ -131,6 +147,8 @@ terminal_tab_header_init (TerminalTabHeader *header)
   gtk_object_sink (GTK_OBJECT (header->tooltips));
 
   header->ebox = gtk_event_box_new ();
+  g_signal_connect (G_OBJECT (header->ebox), "button-press-event",
+                    G_CALLBACK (terminal_tab_header_button_press), header);
   gtk_box_pack_start (GTK_BOX (header), header->ebox, TRUE, TRUE, 0);
   gtk_widget_show (header->ebox);
 
@@ -222,6 +240,22 @@ terminal_tab_header_clicked (GtkWidget         *button,
                              TerminalTabHeader *header)
 {
   g_signal_emit (G_OBJECT (header), header_signals[CLOSE], 0);
+}
+
+
+
+static gboolean
+terminal_tab_header_button_press (GtkWidget              *ebox,
+                                  GdkEventButton         *event,
+                                  TerminalTabHeader      *header)
+{
+  if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
+    {
+      g_signal_emit (G_OBJECT (header), header_signals[DOUBLE_CLICKED], 0);
+      return TRUE;
+    }
+
+  return FALSE;
 }
 
 

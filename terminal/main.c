@@ -191,13 +191,16 @@ usage (void)
 int
 main (int argc, char **argv)
 {
-  TerminalOptions *options;
+  TerminalOptions  options;
   TerminalApp     *app;
 #if GLIB_CHECK_VERSION(2,6,0)
   const gchar     *description;
 #endif
+  const gchar     *startup_id;
   GdkPixbuf       *icon;
   GError          *error = NULL;
+  gchar          **nargv;
+  gint             nargc;
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Terminal"));
@@ -214,8 +217,7 @@ main (int argc, char **argv)
     g_warning ("GLib version mismatch: %s", description);
 #endif
 
-  options = terminal_options_from_args (argc, argv, &error);
-  if (options == NULL) 
+  if (!terminal_options_parse (argc, argv, NULL, &options, &error))
     {
       g_printerr ("%s\n", error->message);
       g_error_free (error);
@@ -223,7 +225,7 @@ main (int argc, char **argv)
       return EXIT_FAILURE;
     }
 
-  if (G_UNLIKELY (options->flags & TERMINAL_FLAGS_SHOWVERSION))
+  if (G_UNLIKELY (options & TERMINAL_OPTION_VERSION))
     {
       printf (_("%s (Xfce %s)\n\n"
                 "Copyright (c) 2003-2004\n"
@@ -237,17 +239,48 @@ main (int argc, char **argv)
               PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options->flags & TERMINAL_FLAGS_SHOWHELP))
+  else if (G_UNLIKELY (options & TERMINAL_OPTION_HELP))
     {
       usage ();
       return EXIT_SUCCESS;
     }
 
-  if ((options->flags & TERMINAL_FLAGS_DISABLESERVER) == 0)
+  /* create a copy of the standard arguments with our additional stuff */
+  nargv = g_new (gchar*, argc + 4);
+  for (nargc = 0; nargc < argc; ++nargc)
+    nargv[nargc] = g_strdup (argv[nargc]);
+  nargv[nargc++] = g_strdup ("--default-working-directory");
+  nargv[nargc++] = g_get_current_dir ();
+
+  /* append startup if given */
+  startup_id = g_getenv ("DESKTOP_STARTUP_ID");
+  if (startup_id != NULL)
     {
-      if (terminal_app_try_existing (options))
-        return EXIT_SUCCESS;
+      nargv[nargc++] = g_strdup_printf ("--startup-id=%s", startup_id);
+      xfce_putenv ("DESKTOP_STARTUP_ID=");
     }
+  nargv[nargc] = NULL;
+
+  if ((options & TERMINAL_OPTION_DISABLESERVER) == 0)
+    {
+      /* try to connect to an existing Terminal service */
+      if (terminal_app_try_invoke (nargc, nargv, &error))
+        {
+          return EXIT_SUCCESS;
+        }
+      else
+        {
+#ifdef DEBUG
+          g_warning ("Unable to invoke remote terminal: %s",
+                     error->message);
+#endif
+          g_error_free (error);
+          error = NULL;
+        }
+    }
+
+  /* disable automatic startup notification completion */
+  gtk_window_set_auto_startup_notification (FALSE);
 
   gtk_init (&argc, &argv);
   stock_icons_init ();
@@ -261,7 +294,7 @@ main (int argc, char **argv)
 
   app = terminal_app_new ();
 
-  if ((options->flags & TERMINAL_FLAGS_DISABLESERVER) == 0)
+  if ((options & TERMINAL_OPTION_DISABLESERVER) == 0)
     {
       if (!terminal_app_start_server (app, &error))
         {
@@ -271,12 +304,15 @@ main (int argc, char **argv)
         }
     }
  
-  if (!terminal_app_launch_with_options (app, options, &error))
+  if (!terminal_app_process (app, nargv, nargc, &error))
     {
       g_printerr (_("Unable to launch terminal: %s\n"), error->message);
       g_error_free (error);
       return EXIT_FAILURE;
     }
+
+  /* free temporary arguments */
+  g_strfreev (nargv);
 
   gtk_main ();
 

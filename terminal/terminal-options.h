@@ -22,50 +22,56 @@
 #ifndef __TERMINAL_OPTIONS_H__
 #define __TERMINAL_OPTIONS_H__
 
+#include <glib.h>
+
 G_BEGIN_DECLS;
 
-#include <dbus/dbus.h>
-#include <dbus/dbus-glib.h>
+typedef struct _TerminalTabAttr    TerminalTabAttr;
+typedef struct _TerminalWindowAttr TerminalWindowAttr;
 
-typedef enum /*< flags,prefix=TERMINAL_OPTIONS >*/
+typedef enum /*< flags,prefix=TERMINAL_OPTION >*/
 {
-  TERMINAL_OPTIONS_MASK_COMMAND           = 1 << 0,
-  TERMINAL_OPTIONS_MASK_TITLE             = 1 << 1,
-  TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY = 1 << 2,
-  TERMINAL_OPTIONS_MASK_DISPLAY           = 1 << 3,
-  TERMINAL_OPTIONS_MASK_SCREEN            = 1 << 4,
-  TERMINAL_OPTIONS_MASK_FLAGS             = 1 << 5,
-  TERMINAL_OPTIONS_MASK_GEOMETRY          = 1 << 6,
-} TerminalOptionsMask;
-
-typedef enum /*< flags,prefix=TERMINAL_FLAGS >*/
-{
-  TERMINAL_FLAGS_OPENTAB        = 1 << 0,
-  TERMINAL_FLAGS_DISABLESERVER  = 1 << 3,
-  TERMINAL_FLAGS_SHOWVERSION    = 1 << 4,
-  TERMINAL_FLAGS_SHOWHELP       = 1 << 5,
-} TerminalFlags;
-
-typedef struct _TerminalOptions
-{
-  TerminalOptionsMask   mask;
-  gchar               **command;
-  gint                  command_len;
-  gchar                *title;
-  gchar                *working_directory;
-  TerminalFlags         flags;
-  gchar                *geometry;
+  TERMINAL_OPTION_HELP          = 1 << 0,
+  TERMINAL_OPTION_VERSION       = 1 << 1,
+  TERMINAL_OPTION_DISABLESERVER = 1 << 2,
 } TerminalOptions;
 
-TerminalOptions *terminal_options_from_args     (gint             argc,
-                                                 gchar          **argv,
-                                                 GError         **error);
+typedef enum /*< enum,prefix=TERMINAL_VISIBILITY >*/
+{
+  TERMINAL_VISIBILITY_DEFAULT,
+  TERMINAL_VISIBILITY_SHOW,
+  TERMINAL_VISIBILITY_HIDE,
+} TerminalVisibility;
 
-TerminalOptions *terminal_options_from_message  (DBusMessage     *message);
+struct _TerminalTabAttr
+{
+  gchar **command;
+  gchar  *directory;
+  gchar  *title;
+};
 
-void             terminal_options_free          (TerminalOptions *options);
+struct _TerminalWindowAttr
+{
+  GList               *tabs;
+  gchar               *geometry;
+  gchar               *role;
+  gchar               *startup_id;
+  TerminalVisibility   menubar;
+  TerminalVisibility   borders;
+  TerminalVisibility   toolbars;
+};
+
+gboolean  terminal_options_parse    (gint                 argc,
+                                     gchar              **argv,
+                                     GList              **attrs_return,
+                                     TerminalOptions     *options_return,
+                                     GError             **error);
+
+void                terminal_tab_attr_free    (TerminalTabAttr     *attr);
+
+TerminalWindowAttr *terminal_window_attr_new  (void);
+void                terminal_window_attr_free (TerminalWindowAttr  *attr);
 
 G_END_DECLS;
 
 #endif /* !__TERMINAL_OPTIONS_H__ */
-

@@ -8,11 +8,11 @@ G_BEGIN_DECLS
 
 /* enumerations from "terminal-options.h" */
 
-GType terminal_options_mask_get_type (void);
-#define TERMINAL_TYPE_OPTIONS_MASK (terminal_options_mask_get_type())
+GType terminal_options_get_type (void);
+#define TERMINAL_TYPE_OPTIONS (terminal_options_get_type())
 
-GType terminal_flags_get_type (void);
-#define TERMINAL_TYPE_FLAGS (terminal_flags_get_type())
+GType terminal_visibility_get_type (void);
+#define TERMINAL_TYPE_VISIBILITY (terminal_visibility_get_type())
 
 /* enumerations from "terminal-preferences.h" */
 

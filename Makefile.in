@@ -165,7 +165,11 @@ PO_IN_DATADIR_TRUE = @PO_IN_DATADIR_TRUE@
 RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SN_CFLAGS = @SN_CFLAGS@
+SN_LIBS = @SN_LIBS@
+SN_REQUIRED_VERSION = @SN_REQUIRED_VERSION@
 STRIP = @STRIP@
+TERMINAL_VERSION_DBUS = @TERMINAL_VERSION_DBUS@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 VTE_CFLAGS = @VTE_CFLAGS@
@@ -539,7 +543,7 @@ distclean-tags:
 distdir: $(DISTFILES)
 	$(am__remove_distdir)
 	mkdir $(distdir)
-	$(mkdir_p) $(distdir)/. $(distdir)/m4 $(distdir)/po
+	$(mkdir_p) $(distdir)/. $(distdir)/m4 $(distdir)/po $(distdir)/terminal
 	@srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`; \
 	topsrcdirstrip=`echo "$(top_srcdir)" | sed 's|.|.|g'`; \
 	list='$(DISTFILES)'; for file in $$list; do \

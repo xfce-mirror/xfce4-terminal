@@ -38,8 +38,14 @@
 #endif
 
 #include <exo/exo.h>
-#include <gdk/gdkkeysyms.h>
 
+#include <gdk/gdkkeysyms.h>
+#include <gdk/gdkx.h>
+
+#include <libsn/sn-launchee.h>
+
+#include <terminal/terminal-enum-types.h>
+#include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-tab-header.h>
 #include <terminal/terminal-toolbars-view.h>
@@ -49,57 +55,66 @@
 
 enum
 {
+  PROP_0,
+  PROP_SHOW_MENUBAR,
+  PROP_SHOW_BORDERS,
+  PROP_SHOW_TOOLBARS,
+};
+
+enum
+{
   NEW_WINDOW,
   LAST_SIGNAL,
 };
 
 
 
-static void            terminal_window_dispose                  (GObject         *object);
-static void            terminal_window_finalize                 (GObject         *object);
-static TerminalWidget *terminal_window_get_active               (TerminalWindow  *window);
-static void            terminal_window_queue_reset_size         (TerminalWindow  *window);
-static gboolean        terminal_window_reset_size               (TerminalWindow  *window);
-static void            terminal_window_reset_size_destroy       (TerminalWindow  *window);
-static void            terminal_window_set_size_force_grid      (TerminalWindow  *window,
-                                                                 TerminalWidget  *widget,
-                                                                 gint             force_grid_width,
-                                                                 gint             force_grid_height);
-static void            terminal_window_update_geometry          (TerminalWindow  *window);
-static void            terminal_window_update_actions           (TerminalWindow  *window);
-static void            terminal_window_update_mnemonics         (TerminalWindow  *window);
-static void            terminal_window_notify_page              (GtkNotebook     *notebook,
-                                                                 GParamSpec      *pspec,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_context_menu             (TerminalWidget  *widget,
-                                                                 GdkEvent        *event,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_notify_title             (TerminalWidget       *widget,
-                                                                 GParamSpec           *pspec,
-                                                                 TerminalWindow       *window);
-static void            terminal_window_widget_removed           (GtkNotebook     *notebook,
-                                                                 TerminalWidget  *widget,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_new_tab           (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_new_window        (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_close_tab         (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_close_window      (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_copy              (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_paste             (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_edit_toolbars     (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_prefs             (GtkAction       *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_show_menubar      (GtkToggleAction *action,
-                                                                 TerminalWindow  *window);
-static void            terminal_window_action_show_toolbars     (GtkToggleAction *action,
-                                                                 TerminalWindow  *window);
+static void            terminal_window_dispose                  (GObject                *object);
+static void            terminal_window_finalize                 (GObject                *object);
+static void            terminal_window_show                     (GtkWidget              *widget);
+static TerminalWidget *terminal_window_get_active               (TerminalWindow         *window);
+static void            terminal_window_queue_reset_size         (TerminalWindow         *window);
+static gboolean        terminal_window_reset_size               (TerminalWindow         *window);
+static void            terminal_window_reset_size_destroy       (TerminalWindow         *window);
+static void            terminal_window_set_size_force_grid      (TerminalWindow         *window,
+                                                                 TerminalWidget         *widget,
+                                                                 gint                    force_grid_width,
+                                                                 gint                    force_grid_height);
+static void            terminal_window_update_geometry          (TerminalWindow         *window);
+static void            terminal_window_update_actions           (TerminalWindow         *window);
+static void            terminal_window_update_mnemonics         (TerminalWindow         *window);
+static void            terminal_window_notify_page              (GtkNotebook            *notebook,
+                                                                 GParamSpec             *pspec,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_context_menu             (TerminalWidget         *widget,
+                                                                 GdkEvent               *event,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_notify_title             (TerminalWidget         *widget,
+                                                                 GParamSpec             *pspec,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_widget_removed           (GtkNotebook            *notebook,
+                                                                 TerminalWidget         *widget,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_new_tab           (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_new_window        (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_close_tab         (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_close_window      (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_copy              (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_paste             (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_edit_toolbars     (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_prefs             (GtkAction              *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_show_menubar      (GtkToggleAction        *action,
+                                                                 TerminalWindow         *window);
+static void            terminal_window_action_show_toolbars     (GtkToggleAction        *action,
+                                                                 TerminalWindow         *window);
 static void            terminal_window_action_show_borders      (GtkToggleAction *action,
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_fullscreen        (GtkToggleAction *action,
@@ -132,6 +147,8 @@ static void            terminal_window_about_idle_destroy       (gpointer       
 struct _TerminalWindow
 {
   GtkWindow            __parent__;
+
+  gchar               *startup_id;
 
   TerminalPreferences *preferences;
 
@@ -200,13 +217,17 @@ G_DEFINE_TYPE (TerminalWindow, terminal_window, GTK_TYPE_WINDOW);
 static void
 terminal_window_class_init (TerminalWindowClass *klass)
 {
-  GObjectClass *gobject_class;
+  GtkWidgetClass *gtkwidget_class;
+  GObjectClass   *gobject_class;
   
   parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->dispose = terminal_window_dispose;
   gobject_class->finalize = terminal_window_finalize;
+
+  gtkwidget_class = GTK_WIDGET_CLASS (klass);
+  gtkwidget_class->show = terminal_window_show;
 
   /**
    * TerminalWindow::new-window
@@ -295,25 +316,6 @@ terminal_window_init (TerminalWindow *window)
       gtk_widget_show (window->menubar);
     }
 
-  /* setup menubar visibility */
-  g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &bval, NULL);
-  action = gtk_action_group_get_action (window->action_group, "show-menubar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
-
-  /* setup toolbars visibility */
-  action = gtk_action_group_get_action (window->action_group, "edit-toolbars");
-  g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
-  g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &bval, NULL);
-  action = gtk_action_group_get_action (window->action_group, "show-toolbars");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
-
-  /* setup borders visibility */
-  g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &bval, NULL);
-  action = gtk_action_group_get_action (window->action_group, "show-borders");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !bval);
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), bval);
-
   /* setup mnemonics */
   g_object_get (G_OBJECT (window->preferences), "shortcuts-no-mnemonics", &bval, NULL);
   if (G_UNLIKELY (bval))
@@ -384,7 +386,46 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->ui_manager));
 
+  g_free (window->startup_id);
+
   parent_class->finalize (object);
+}
+
+
+
+static void
+terminal_window_show (GtkWidget *widget)
+{
+  SnLauncheeContext *sn_context = NULL;
+  TerminalWindow    *window = TERMINAL_WINDOW (widget);
+  GdkScreen         *screen;
+  SnDisplay         *sn_display = NULL;
+
+  if (!GTK_WIDGET_REALIZED (widget))
+    gtk_widget_realize (widget);
+
+  if (window->startup_id != NULL)
+    {
+      screen = gtk_window_get_screen (GTK_WINDOW (window));
+
+      sn_display = sn_display_new (GDK_SCREEN_XDISPLAY (screen),
+                                   (SnDisplayErrorTrapPush) gdk_error_trap_push,
+                                   (SnDisplayErrorTrapPop) gdk_error_trap_pop);
+
+      sn_context = sn_launchee_context_new (sn_display,
+                                            gdk_screen_get_number (screen),
+                                            window->startup_id);
+      sn_launchee_context_setup_window (sn_context, GDK_WINDOW_XWINDOW (widget->window));
+    }
+
+  GTK_WIDGET_CLASS (parent_class)->show (widget);
+
+  if (G_LIKELY (sn_context != NULL))
+    {
+      sn_launchee_context_complete (sn_context);
+      sn_launchee_context_unref (sn_context);
+      sn_display_unref (sn_display);
+    }
 }
 
 
@@ -1159,13 +1200,52 @@ terminal_window_about_idle_destroy (gpointer user_data)
 
 /**
  * terminal_window_new:
+ * @menubar   : Visibility setting for the menubar.
+ * @borders   : Visibility setting for the window borders.
+ * @toolbars  : Visibility setting for the toolbars.
  *
- * Return value :
+ * Return value:
  **/
 GtkWidget*
-terminal_window_new (void)
+terminal_window_new (TerminalVisibility menubar,
+                     TerminalVisibility borders,
+                     TerminalVisibility toolbars)
 {
-  return g_object_new (TERMINAL_TYPE_WINDOW, NULL);
+  TerminalWindow *window;
+  GtkAction      *action;
+  gboolean        setting;
+  
+  window = g_object_new (TERMINAL_TYPE_WINDOW, NULL);
+
+  /* setup menubar visibility */
+  if (menubar == TERMINAL_VISIBILITY_DEFAULT)
+    g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &setting, NULL);
+  else
+    setting = (menubar == TERMINAL_VISIBILITY_SHOW);
+  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !setting);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
+
+  /* setup toolbars visibility */
+  if (toolbars == TERMINAL_VISIBILITY_DEFAULT)
+    g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &setting, NULL);
+  else
+    setting = (toolbars == TERMINAL_VISIBILITY_SHOW);
+  action = gtk_action_group_get_action (window->action_group, "edit-toolbars");
+  g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
+  action = gtk_action_group_get_action (window->action_group, "show-toolbars");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
+
+  /* setup borders visibility */
+  if (borders == TERMINAL_VISIBILITY_DEFAULT)
+    g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &setting, NULL);
+  else
+    setting = (borders == TERMINAL_VISIBILITY_SHOW);
+  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !setting);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
+
+  return GTK_WIDGET (window);
 }
 
 
@@ -1182,24 +1262,27 @@ terminal_window_add (TerminalWindow *window,
   ExoPropertyProxy *proxy;
   TerminalWidget   *active;
   GtkWidget        *header;
+  GtkAction        *action;
   gint              npages;
   gint              page;
-  gint              grid_width = -1;
-  gint              grid_height = -1;
+  gint              grid_width = 80;
+  gint              grid_height = 24;
 
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
   g_return_if_fail (TERMINAL_IS_WIDGET (widget));
 
   active = terminal_window_get_active (window);
   if (G_LIKELY (active != NULL))
-    {
-      terminal_widget_get_size (active, &grid_width, &grid_height);
-      terminal_widget_set_size (widget, grid_width, grid_height);
-    }
+    terminal_widget_get_size (active, &grid_width, &grid_height);
+  terminal_widget_set_size (widget, grid_width, grid_height);
+
+  action = gtk_action_group_get_action (window->action_group, "set-title");
 
   header = terminal_tab_header_new ();
   g_signal_connect_swapped (G_OBJECT (header), "close",
                             G_CALLBACK (gtk_widget_destroy), widget);
+  g_signal_connect_swapped (G_OBJECT (header), "double-clicked",
+                            G_CALLBACK (gtk_action_activate), action);
   gtk_widget_show (header);
 
   proxy = exo_property_proxy_new ();
@@ -1248,3 +1331,24 @@ terminal_window_remove (TerminalWindow *window,
 
   gtk_widget_destroy (GTK_WIDGET (widget));
 }
+
+
+
+/**
+ * terminal_window_set_startup_id:
+ * @window
+ * @startup_id
+ **/
+void
+terminal_window_set_startup_id (TerminalWindow     *window,
+                                const gchar        *startup_id)
+{
+  g_return_if_fail (TERMINAL_IS_WINDOW (window));
+  g_return_if_fail (startup_id != NULL);
+
+  g_free (window->startup_id);
+  window->startup_id = g_strdup (startup_id);
+}
+
+
+

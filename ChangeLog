@@ -1,3 +1,25 @@
+2004-11-21	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-enum-types.c, terminal/terminal-preferences.h: Erase
+	  binding numbers where wrong (ASCII DEL was ASCII backspace, etc.).
+	  This should fix bug #20.
+	* terminal/terminal-tab-header.h, terminal/terminal-tab-header.c,
+	  terminal/terminal-window.c: Terminal title can be changed by
+	  double-clicking the tab title now.
+	* terminal/terminal-enum-types.c, terminal/terminal-enum-types.h,
+	  terminal/terminal-options.c, terminal/options.h, terminal/main.c:
+	  Replaced the old command line option module with a new and more
+	  flexible one, that allows for easy session management (similar
+	  to what gnome-terminal does). E.g. its now possible to show/hide
+	  menubar/toolbars/borders from the command line or to open multiple
+	  tabs/windows.
+	* terminal/terminal-app.h, terminal/terminal-app.c, configure.ac,
+	  terminal/terminal-config.h.in: New D-BUS interface, now in
+	  namespace `xfce.org' and versioned.
+	* configure.ac, terminal/terminal-window.c, terminal/Makefile.am,
+	  terminal/terminal-options.c: Added support for startup notification
+	  and thereby depend on libstartup-notification-1.0 now.
+
 2004-11-19	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-preferences.c, terminal/terminal-widget.c,

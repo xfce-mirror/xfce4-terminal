@@ -11,6 +11,7 @@ m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [1])
 m4_define([terminal_version_micro], [10])
 m4_define([terminal_version_tag], [svn])
+m4_define([terminal_version_dbus], [1])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
 
 dnl Initialize autoconf
@@ -27,6 +28,10 @@ TERMINAL_VERSION=terminal_version()
 AM_INIT_AUTOMAKE([Terminal], [$TERMINAL_VERSION])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE
+
+dnl Subst D-BUS service version
+TERMINAL_VERSION_DBUS=terminal_version_dbus()
+AC_SUBST([TERMINAL_VERSION_DBUS])
 
 dnl check for UNIX variants
 AC_AIX
@@ -47,6 +52,7 @@ BM_I18N([Terminal], [de fr nl])
 dnl Check for required packages
 BM_DEPEND([EXO], [exo-0.1], [0.1.3])
 BM_DEPEND([VTE], [vte], [0.11.0])
+BM_DEPEND([SN], [libstartup-notification-1.0], [0.4])
 
 dnl Check for debugging support
 BM_DEBUG_SUPPORT
@@ -62,4 +68,5 @@ icons/48x48/Makefile
 icons/scalable/Makefile
 po/Makefile.in
 terminal/Makefile
+terminal/terminal-config.h
 ])

@@ -40,7 +40,8 @@ build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = Terminal$(EXEEXT)
 subdir = terminal
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+	$(srcdir)/terminal-config.h.in
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/debug.m4 \
 	$(top_srcdir)/m4/depends.m4 $(top_srcdir)/m4/glib-gettext.m4 \
@@ -50,7 +51,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = terminal-config.h
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
@@ -159,7 +160,11 @@ PO_IN_DATADIR_TRUE = @PO_IN_DATADIR_TRUE@
 RANLIB = @RANLIB@
 SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
+SN_CFLAGS = @SN_CFLAGS@
+SN_LIBS = @SN_LIBS@
+SN_REQUIRED_VERSION = @SN_REQUIRED_VERSION@
 STRIP = @STRIP@
+TERMINAL_VERSION_DBUS = @TERMINAL_VERSION_DBUS@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
 VTE_CFLAGS = @VTE_CFLAGS@
@@ -230,6 +235,7 @@ INCLUDES = \
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
+	-DSN_API_NOT_YET_FROZEN						\
 	-DTERMINAL_HELP_BIN=\"$(libexecdir)/TerminalHelp\"		\
 	-I$(top_srcdir)
 
@@ -271,11 +277,13 @@ Terminal_SOURCES = \
 
 Terminal_CFLAGS = \
 	@EXO_CFLAGS@							\
+	@SN_CFLAGS@							\
 	@VTE_CFLAGS@
 
 Terminal_LDFLAGS = \
 	-no-undefined							\
 	@EXO_LIBS@							\
+	@SN_LIBS@							\
 	@VTE_LIBS@
 
 EXTRA_DIST = \
@@ -314,6 +322,8 @@ $(top_srcdir)/configure: @MAINTAINER_MODE_TRUE@ $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+terminal-config.h: $(top_builddir)/config.status $(srcdir)/terminal-config.h.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	test -z "$(bindir)" || $(mkdir_p) "$(DESTDIR)$(bindir)"

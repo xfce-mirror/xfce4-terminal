@@ -9,38 +9,33 @@
 
 /* enumerations from "terminal-options.h" */
 GType
-terminal_options_mask_get_type (void)
+terminal_options_get_type (void)
 {
 	static GType type = 0;
 	if (type == 0) {
 	static const GFlagsValue values[] = {
-	{ TERMINAL_OPTIONS_MASK_COMMAND, "TERMINAL_OPTIONS_MASK_COMMAND", "mask-command" },
-	{ TERMINAL_OPTIONS_MASK_TITLE, "TERMINAL_OPTIONS_MASK_TITLE", "mask-title" },
-	{ TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY, "TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY", "mask-working-directory" },
-	{ TERMINAL_OPTIONS_MASK_DISPLAY, "TERMINAL_OPTIONS_MASK_DISPLAY", "mask-display" },
-	{ TERMINAL_OPTIONS_MASK_SCREEN, "TERMINAL_OPTIONS_MASK_SCREEN", "mask-screen" },
-	{ TERMINAL_OPTIONS_MASK_FLAGS, "TERMINAL_OPTIONS_MASK_FLAGS", "mask-flags" },
-	{ TERMINAL_OPTIONS_MASK_GEOMETRY, "TERMINAL_OPTIONS_MASK_GEOMETRY", "mask-geometry" },
+	{ TERMINAL_OPTION_HELP, "TERMINAL_OPTION_HELP", "help" },
+	{ TERMINAL_OPTION_VERSION, "TERMINAL_OPTION_VERSION", "version" },
+	{ TERMINAL_OPTION_DISABLESERVER, "TERMINAL_OPTION_DISABLESERVER", "disableserver" },
 	{ 0, NULL, NULL }
 	};
-	type = g_flags_register_static ("TerminalOptionsMask", values);
+	type = g_flags_register_static ("TerminalOptions", values);
   }
 	return type;
 }
 
 GType
-terminal_flags_get_type (void)
+terminal_visibility_get_type (void)
 {
 	static GType type = 0;
 	if (type == 0) {
-	static const GFlagsValue values[] = {
-	{ TERMINAL_FLAGS_OPENTAB, "TERMINAL_FLAGS_OPENTAB", "opentab" },
-	{ TERMINAL_FLAGS_DISABLESERVER, "TERMINAL_FLAGS_DISABLESERVER", "disableserver" },
-	{ TERMINAL_FLAGS_SHOWVERSION, "TERMINAL_FLAGS_SHOWVERSION", "showversion" },
-	{ TERMINAL_FLAGS_SHOWHELP, "TERMINAL_FLAGS_SHOWHELP", "showhelp" },
+	static const GEnumValue values[] = {
+	{ TERMINAL_VISIBILITY_DEFAULT, "TERMINAL_VISIBILITY_DEFAULT", "default" },
+	{ TERMINAL_VISIBILITY_SHOW, "TERMINAL_VISIBILITY_SHOW", "show" },
+	{ TERMINAL_VISIBILITY_HIDE, "TERMINAL_VISIBILITY_HIDE", "hide" },
 	{ 0, NULL, NULL }
 	};
-	type = g_flags_register_static ("TerminalFlags", values);
+	type = g_enum_register_static ("TerminalVisibility", values);
   }
 	return type;
 }
@@ -119,9 +114,9 @@ terminal_erase_binding_get_type (void)
 	static GType type = 0;
 	if (type == 0) {
 	static const GEnumValue values[] = {
-	{ TERMINAL_ERASE_BINDING_ASCII_BACKSPACE, "TERMINAL_ERASE_BINDING_ASCII_BACKSPACE", "ascii-backspace" },
 	{ TERMINAL_ERASE_BINDING_ASCII_DELETE, "TERMINAL_ERASE_BINDING_ASCII_DELETE", "ascii-delete" },
 	{ TERMINAL_ERASE_BINDING_DELETE_SEQUENCE, "TERMINAL_ERASE_BINDING_DELETE_SEQUENCE", "delete-sequence" },
+	{ TERMINAL_ERASE_BINDING_ASCII_BACKSPACE, "TERMINAL_ERASE_BINDING_ASCII_BACKSPACE", "ascii-backspace" },
 	{ 0, NULL, NULL }
 	};
 	type = g_enum_register_static ("TerminalEraseBinding", values);

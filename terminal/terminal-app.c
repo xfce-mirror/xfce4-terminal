@@ -32,6 +32,7 @@
 
 #include <terminal/terminal-accel-map.h>
 #include <terminal/terminal-app.h>
+#include <terminal/terminal-config.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-window.h>
 
@@ -178,28 +179,41 @@ terminal_app_message (DBusConnection  *connection,
                       DBusMessage     *message,
                       void            *user_data)
 {
-  TerminalOptions *options;
+  DBusMessageIter  iter;
   TerminalApp     *app = TERMINAL_APP (user_data);
   DBusMessage     *reply;
-  gboolean         result;
   GError          *error = NULL;
+  gchar          **argv;
+  gint             argc;
 
   if (dbus_message_is_method_call (message, 
-                                   TERMINAL_APP_INTERFACE,
-                                   TERMINAL_APP_METHOD_LAUNCH))
+                                   TERMINAL_DBUS_INTERFACE,
+                                   TERMINAL_DBUS_METHOD_LAUNCH))
     {
-      options = terminal_options_from_message (message);
-      result = terminal_app_launch_with_options (app, options, &error);
-      terminal_options_free (options);
+      if (!dbus_message_iter_init (message, &iter))
+        return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 
-      if (!result)
+      if (!dbus_message_iter_get_string_array (&iter, &argv, &argc))
         {
-          g_printerr (_("TerminalServer: %s\n"), error->message);
-          g_error_free (error);
+          reply = dbus_message_new_error (message, TERMINAL_DBUS_ERROR, "Invalid arguments");
+          dbus_connection_send (connection, reply, NULL);
+          dbus_message_unref (reply);
+          return DBUS_HANDLER_RESULT_HANDLED;
         }
 
-      reply = dbus_message_new_method_return (message);
-      dbus_connection_send (connection, reply, NULL);
+      if (!terminal_app_process (app, argv, argc, &error))
+        {
+          reply = dbus_message_new_error (message, TERMINAL_DBUS_ERROR, error->message);
+          dbus_connection_send (connection, reply, NULL);
+          dbus_message_unref (reply);
+        }
+      else
+        {
+          reply = dbus_message_new_method_return (message);
+          dbus_connection_send (connection, reply, NULL);
+        }
+
+      dbus_free_string_array (argv);
       dbus_message_unref (reply);
     }
   else if (dbus_message_is_signal (message,
@@ -224,13 +238,16 @@ terminal_app_new_window (TerminalWindow *window,
                          const gchar    *working_directory,
                          TerminalApp    *app)
 {
-  TerminalOptions options;
+  TerminalWindowAttr *win_attr;
+  TerminalTabAttr    *tab_attr;
 
-  bzero (&options, sizeof (options));
-  options.mask = TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY;
-  options.working_directory = (gchar *) working_directory;
+  win_attr = terminal_window_attr_new ();
+  tab_attr = win_attr->tabs->data;
+  tab_attr->directory = g_strdup (working_directory);
 
-  terminal_app_launch_with_options (app, &options, NULL);
+  terminal_app_open_window (app, win_attr);
+
+  terminal_window_attr_free (win_attr);
 }
 
 
@@ -291,23 +308,23 @@ terminal_app_start_server (TerminalApp *app,
 
   dbus_error_init (&derror);
 
-  if (!dbus_bus_acquire_service (connection, TERMINAL_APP_SERVICE, 0, &derror))
+  if (!dbus_bus_acquire_service (connection, TERMINAL_DBUS_SERVICE, 0, &derror))
     {
       g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
                    _("Unable to acquire service %s: %s"),
-                   TERMINAL_APP_SERVICE, derror.message);
+                   TERMINAL_DBUS_SERVICE, derror.message);
       dbus_error_free (&derror);
       return FALSE;
     }
 
   if (dbus_connection_register_object_path (connection,
-                                            TERMINAL_APP_PATH,
+                                            TERMINAL_DBUS_PATH,
                                             &terminal_app_vtable,
                                             app) < 0)
     {
       g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
                    _("Unable to register object %s\n"),
-                   TERMINAL_APP_PATH);
+                   TERMINAL_DBUS_PATH);
       return FALSE;
     }
 
@@ -319,61 +336,31 @@ terminal_app_start_server (TerminalApp *app,
 
 
 /**
- * terminal_app_launch_with_options:
- * @app         : A #TerminalApp.
- * @options     :
- * @error       : Location to store error to, or %NULL.
+ * terminal_app_process:
+ * @app
+ * @argv
+ * @argc
+ * @error
  *
- * Return value : %TRUE on success, %FALSE on error.
+ * Return value:
  **/
 gboolean
-terminal_app_launch_with_options (TerminalApp     *app,
-                                  TerminalOptions *options,
-                                  GError         **error)
+terminal_app_process (TerminalApp  *app,
+                      gchar       **argv,
+                      gint          argc,
+                      GError      **error)
 {
-  GtkWidget *terminal;
-  GtkWidget *window;
+  GList *attrs;
+  GList *lp;
 
-  g_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
+  if (!terminal_options_parse (argc, argv, &attrs, NULL, error))
+    return FALSE;
 
-  /* setup the terminal widget */
-  terminal = terminal_widget_new ();
-  if (options != NULL)
-    {
-      if (options->mask & TERMINAL_OPTIONS_MASK_COMMAND)
-        terminal_widget_set_custom_command (TERMINAL_WIDGET (terminal), options->command);
-      if (options->mask & TERMINAL_OPTIONS_MASK_TITLE)
-        terminal_widget_set_custom_title (TERMINAL_WIDGET (terminal), options->title);
-      if (options->mask & TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY)
-        terminal_widget_set_working_directory (TERMINAL_WIDGET (terminal), options->working_directory);
-    }
+  for (lp = attrs; lp != NULL; lp = lp->next)
+    terminal_app_open_window (app, lp->data);
 
-  /* setup the window */
-  if (options != NULL && (options->flags & TERMINAL_FLAGS_OPENTAB) != 0 && app->windows != NULL)
-    {
-      window = GTK_WIDGET (g_list_last (app->windows)->data);
-    }
-  else
-    {
-      window = terminal_window_new ();
-      g_signal_connect (G_OBJECT (window), "destroy",
-                        G_CALLBACK (terminal_app_window_destroyed), app);
-      g_signal_connect (G_OBJECT (window), "new-window",
-                        G_CALLBACK (terminal_app_new_window), app);
-      app->windows = g_list_append (app->windows, window);
-    }
-
-  terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_WIDGET (terminal));
-
-  if (options != NULL && options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY)
-    {
-      if (!gtk_window_parse_geometry (GTK_WINDOW (window), options->geometry))
-        g_printerr (_("Invalid geometry string \"%s\"\n"), options->geometry);
-    }
-
-  gtk_widget_show_now (window);
-
-  terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
+  g_list_foreach (attrs, (GFunc) terminal_window_attr_free, NULL);
+  g_list_free (attrs);
 
   return TRUE;
 }
@@ -381,54 +368,124 @@ terminal_app_launch_with_options (TerminalApp     *app,
 
 
 /**
- * terminal_app_try_existing:
- * @options     : Pointer to a #TerminalOptions struct.
+ * terminal_app_open_window:
+ * @app   : A #TerminalApp object.
+ * @attr  : The attributes for the new window.
+ **/
+void
+terminal_app_open_window (TerminalApp         *app,
+                          TerminalWindowAttr  *attr)
+{
+  TerminalTabAttr *tab_attr;
+  GtkWidget       *window;
+  GtkWidget       *terminal;
+  GList           *lp;
+
+  g_return_if_fail (TERMINAL_IS_APP (app));
+  g_return_if_fail (attr != NULL);
+
+  window = terminal_window_new (attr->menubar, attr->borders, attr->toolbars);
+  g_signal_connect (G_OBJECT (window), "destroy",
+                    G_CALLBACK (terminal_app_window_destroyed), app);
+  g_signal_connect (G_OBJECT (window), "new-window",
+                    G_CALLBACK (terminal_app_new_window), app);
+  app->windows = g_list_append (app->windows, window);
+
+  if (attr->role != NULL)
+    gtk_window_set_role (GTK_WINDOW (window), attr->role);
+  if (attr->startup_id != NULL)
+    terminal_window_set_startup_id (TERMINAL_WINDOW (window), attr->startup_id);
+
+  for (lp = attr->tabs; lp != NULL; lp = lp->next)
+    {
+      terminal = terminal_widget_new ();
+
+      tab_attr = lp->data;
+      if (tab_attr->command != NULL)
+        terminal_widget_set_custom_command (TERMINAL_WIDGET (terminal), tab_attr->command);
+      if (tab_attr->directory != NULL)
+        terminal_widget_set_working_directory (TERMINAL_WIDGET (terminal), tab_attr->directory);
+      if (tab_attr->title != NULL)
+        terminal_widget_set_custom_title (TERMINAL_WIDGET (terminal), tab_attr->title);
+
+      terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_WIDGET (terminal));
+
+      /* if this was the first tab, we set the geometry string now
+       * and show the window. This is required to work around a hang
+       * in Gdk, which I failed to figure the cause til now.
+       */
+      if (lp == attr->tabs)
+        {
+          if (attr->geometry != NULL && !gtk_window_parse_geometry (GTK_WINDOW (window), attr->geometry))
+            g_printerr (_("Invalid geometry string \"%s\"\n"), attr->geometry);
+          gtk_widget_show (window);
+        }
+
+      terminal_widget_launch_child (TERMINAL_WIDGET (terminal));
+    }
+}
+
+
+
+/**
+ * terminal_app_try_invoke:
+ * @argc
+ * @argv
+ * @error
  *
- * Return value : %TRUE on success, %FALSE on error.
+ * Return value:
  **/
 gboolean
-terminal_app_try_existing (TerminalOptions *options)
+terminal_app_try_invoke (gint              argc,
+                         gchar           **argv,
+                         GError          **error)
 {
-  DBusMessageIter iter;
-  DBusConnection *connection;
-  DBusMessage    *message;
-
-  g_return_val_if_fail (options != NULL, FALSE);
+  DBusMessageIter  iter;
+  DBusConnection  *connection;
+  DBusMessage     *message;
+  DBusMessage     *result;
+  DBusError        derror;
 
   connection = exo_dbus_bus_connection ();
-  if (connection == NULL)
+  if (G_UNLIKELY (connection == NULL))
     return FALSE;
 
-  message = dbus_message_new_method_call (TERMINAL_APP_SERVICE,
-                                          TERMINAL_APP_PATH,
-                                          TERMINAL_APP_INTERFACE,
-                                          TERMINAL_APP_METHOD_LAUNCH);
+  message = dbus_message_new_method_call (TERMINAL_DBUS_SERVICE,
+                                          TERMINAL_DBUS_PATH,
+                                          TERMINAL_DBUS_INTERFACE,
+                                          TERMINAL_DBUS_METHOD_LAUNCH);
   dbus_message_set_auto_activation (message, FALSE);
   dbus_message_append_iter_init (message, &iter);
-  dbus_message_iter_append_uint32 (&iter, options->mask);
+  dbus_message_iter_append_string_array (&iter, (const gchar **) argv, argc);
 
-  /* FIXME: Move this to terminal_options_pack() or sth like that */
-  if (options->mask & TERMINAL_OPTIONS_MASK_COMMAND)
-    dbus_message_iter_append_string_array (&iter, (const gchar **) options->command, options->command_len);
-  if (options->mask & TERMINAL_OPTIONS_MASK_TITLE)
-    dbus_message_iter_append_string (&iter, options->title);
-  if (options->mask & TERMINAL_OPTIONS_MASK_WORKING_DIRECTORY)
-    dbus_message_iter_append_string (&iter, options->working_directory);
-  if (options->mask & TERMINAL_OPTIONS_MASK_FLAGS)
-    dbus_message_iter_append_uint32 (&iter, options->flags);
-  if (options->mask & TERMINAL_OPTIONS_MASK_GEOMETRY)
-    dbus_message_iter_append_string (&iter, options->geometry);
+  dbus_error_init (&derror);
+  result = dbus_connection_send_with_reply_and_block (connection,
+                                                      message,
+                                                      2000, &derror);
+  dbus_message_unref (message);
 
-  if (!dbus_connection_send_with_reply_and_block (connection, message, 2000, NULL))
+  if (result == NULL)
     {
-      dbus_message_unref (message);
+      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
+                   "%s", derror.message);
+      dbus_error_free (&derror);
       return FALSE;
     }
 
-  dbus_message_unref (message);
+  if (dbus_message_is_error (result, TERMINAL_DBUS_ERROR))
+    {
+      dbus_set_error_from_message (&derror, result);
+      g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
+                   "%s", derror.message);
+      dbus_message_unref (result);
+      dbus_error_free (&derror);
+      return FALSE;
+    }
 
+  dbus_message_unref (result);
   return TRUE;
 }
+
 
 
 

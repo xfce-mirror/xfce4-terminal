@@ -1,4 +1,4 @@
-/* $Id: terminal-widget.c 20 2004-09-30 16:20:20Z bmeurer $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

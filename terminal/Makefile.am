@@ -18,6 +18,7 @@ INCLUDES =								\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
+	-DSN_API_NOT_YET_FROZEN						\
 	-DTERMINAL_HELP_BIN=\"$(libexecdir)/TerminalHelp\"		\
 	-I$(top_srcdir)
 
@@ -62,11 +63,13 @@ Terminal_SOURCES =							\
 
 Terminal_CFLAGS =							\
 	@EXO_CFLAGS@							\
+	@SN_CFLAGS@							\
 	@VTE_CFLAGS@
 
 Terminal_LDFLAGS =							\
 	-no-undefined							\
 	@EXO_LIBS@							\
+	@SN_LIBS@							\
 	@VTE_LIBS@
 
 # Used to regenerate all automatic files
