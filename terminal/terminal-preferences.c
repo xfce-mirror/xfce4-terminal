@@ -105,6 +105,7 @@ enum
   PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
   PROP_MISC_MENUBAR_DEFAULT,
+  PROP_MISC_MOUSE_AUTOHIDE,
   PROP_MISC_TOOLBARS_DEFAULT,
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
@@ -978,6 +979,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          _("Show menubar by default"),
                                                          _("Show menubar by default"),
                                                          TRUE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-mouse-autohide:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_MOUSE_AUTOHIDE,
+                                   g_param_spec_boolean ("misc-mouse-autohide",
+                                                         _("Autohide mouse pointer"),
+                                                         _("Whether to autohide mouse pointer"),
+                                                         FALSE,
                                                          G_PARAM_READWRITE));
 
   /**

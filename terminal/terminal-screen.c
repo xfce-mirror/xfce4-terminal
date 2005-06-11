@@ -87,6 +87,7 @@ static void terminal_screen_update_colors                     (TerminalScreen   
 static void terminal_screen_update_font                       (TerminalScreen   *screen);
 static void terminal_screen_update_misc_bell                  (TerminalScreen   *screen);
 static void terminal_screen_update_misc_cursor_blinks         (TerminalScreen   *screen);
+static void terminal_screen_update_misc_mouse_autohide        (TerminalScreen   *screen);
 static void terminal_screen_update_scrolling_bar              (TerminalScreen   *screen);
 static void terminal_screen_update_scrolling_lines            (TerminalScreen   *screen);
 static void terminal_screen_update_scrolling_on_output        (TerminalScreen   *screen);
@@ -285,6 +286,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
                     "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_screen_update_misc_cursor_blinks), screen,
+                    "swapped-signal::notify::misc-mouse-autohide", G_CALLBACK (terminal_screen_update_misc_mouse_autohide), screen,
                     "swapped-signal::notify::scrolling-bar", G_CALLBACK (terminal_screen_update_scrolling_bar), screen,
                     "swapped-signal::notify::scrolling-lines", G_CALLBACK (terminal_screen_update_scrolling_lines), screen,
                     "swapped-signal::notify::scrolling-on-output", G_CALLBACK (terminal_screen_update_scrolling_on_output), screen,
@@ -301,6 +303,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
+  terminal_screen_update_misc_mouse_autohide (screen);
   terminal_screen_update_scrolling_bar (screen);
   terminal_screen_update_scrolling_lines (screen);
   terminal_screen_update_scrolling_on_output (screen);
@@ -658,6 +661,16 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-blinks", &bval, NULL);
   vte_terminal_set_cursor_blinks (VTE_TERMINAL (screen->terminal), bval);
+}
+
+
+
+static void
+terminal_screen_update_misc_mouse_autohide (TerminalScreen *screen)
+{
+  gboolean bval;
+  g_object_get (G_OBJECT (screen->preferences), "misc-mouse-autohide", &bval, NULL);
+  vte_terminal_set_mouse_autohide (VTE_TERMINAL (screen->terminal), bval);
 }
 
 
