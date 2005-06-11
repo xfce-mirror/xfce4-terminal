@@ -37,80 +37,80 @@
 
 
 static void
-usage (FILE *fp)
+usage (void)
 {
-  fprintf (fp, "%s\n", _("Usage: Terminal [OPTION...]"));
-  fprintf (fp, "\n");
-  fprintf (fp, "%s\n", _("  -h, --help                          Print this help message and exit"));
-  fprintf (fp, "%s\n", _("  -v, --version                       Print version information and exit"));
-  fprintf (fp, "%s\n", _("  --disable-server                    Do not register with the D-BUS\n"
+  g_print ("%s\n", _("Usage: Terminal [OPTION...]"));
+  g_print ("\n");
+  g_print ("%s\n", _("  -h, --help                          Print this help message and exit"));
+  g_print ("%s\n", _("  -v, --version                       Print version information and exit"));
+  g_print ("%s\n", _("  --disable-server                    Do not register with the D-BUS\n"
                          "                                      session message bus"));
-  fprintf (fp, "\n");
-  fprintf (fp, "%s\n", _("  -x, --execute                       Execute the remainder of the command\n"
+  g_print ("\n");
+  g_print ("%s\n", _("  -x, --execute                       Execute the remainder of the command\n"
                          "                                      line inside the terminal"));
-  fprintf (fp, "%s\n", _("  -e, --command=STRING                Execute the argument to this option\n"
+  g_print ("%s\n", _("  -e, --command=STRING                Execute the argument to this option\n"
                          "                                      inside the terminal"));
-  fprintf (fp, "%s\n", _("  --working-directory=DIRNAME         Set the terminals working directory"));
-  fprintf (fp, "%s\n", _("  -T, --title=TITLE                   Set the terminals title"));
-  fprintf (fp, "\n");
-  fprintf (fp, "%s\n", _("  --display=DISPLAY                   X display to use for the last-\n"
+  g_print ("%s\n", _("  --working-directory=DIRNAME         Set the terminals working directory"));
+  g_print ("%s\n", _("  -T, --title=TITLE                   Set the terminals title"));
+  g_print ("\n");
+  g_print ("%s\n", _("  --display=DISPLAY                   X display to use for the last-\n"
                          "                                      specified window"));
-  fprintf (fp, "%s\n", _("  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+  g_print ("%s\n", _("  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
                          "                                      man page), can be specified once per\n"
                          "                                      window to be opened"));
-  fprintf (fp, "%s\n", _("  --role=ROLE                         Set the role for the last-specified;\n"
+  g_print ("%s\n", _("  --role=ROLE                         Set the role for the last-specified;\n"
                          "                                      window; applies to only one window;\n"
                          "                                      can be specified once for each window\n"
                          "                                      you create from the command line"));
-  fprintf (fp, "%s\n", _("  --startup-id=STRING                 ID for the startup notification\n"
+  g_print ("%s\n", _("  --startup-id=STRING                 ID for the startup notification\n"
                          "                                      protocol"));
-  fprintf (fp, "%s\n", _("  --fullscreen                        Set the last-specified window into\n"
+  g_print ("%s\n", _("  --fullscreen                        Set the last-specified window into\n"
                          "                                      fullscreen mode; applies to only one\n"
                          "                                      window; can be specified once for\n"
                          "                                      each window you create from the\n"
                          "                                      command line."));
-  fprintf (fp, "%s\n", _("  --show-menubar                      Turn on the menubar for the last-\n"
+  g_print ("%s\n", _("  --show-menubar                      Turn on the menubar for the last-\n"
                          "                                      specified window; applies to only one\n"
                          "                                      window; can be specified once for\n"
                          "                                      each window you create from the\n"
                          "                                      command line"));
-  fprintf (fp, "%s\n", _("  --hide-menubar                      Turn off the menubar for the last-\n"
+  g_print ("%s\n", _("  --hide-menubar                      Turn off the menubar for the last-\n"
                          "                                      specified window; applies to only one\n"
                          "                                      window; can be specified once for\n"
                          "                                      each window you create from the\n"
                          "                                      command line"));
-  fprintf (fp, "%s\n", _("  --show-borders                      Turn on the window decorations for\n"
+  g_print ("%s\n", _("  --show-borders                      Turn on the window decorations for\n"
                          "                                      the last-specified window; applies\n"
                          "                                      to only one window; can be specified\n"
                          "                                      once for each window you create from\n"
                          "                                      the command line"));
-  fprintf (fp, "%s\n", _("  --hide-borders                      Turn off the window decorations for\n"
+  g_print ("%s\n", _("  --hide-borders                      Turn off the window decorations for\n"
                          "                                      the last-specified window; applies\n"
                          "                                      to only one window; can be specified\n"
                          "                                      once for each window you create from\n"
                          "                                      the command line"));
-  fprintf (fp, "%s\n", _("  --show-toolbars                     Turn on the toolbars for the last-\n"
+  g_print ("%s\n", _("  --show-toolbars                     Turn on the toolbars for the last-\n"
                          "                                      specified window; applies to only one\n"
                          "                                      window; can be specified once for\n"
                          "                                      each window you create from the\n"
                          "                                      command line"));
-  fprintf (fp, "%s\n", _("  --hide-toolbars                     Turn off the toolbars for the last-\n"
+  g_print ("%s\n", _("  --hide-toolbars                     Turn off the toolbars for the last-\n"
                          "                                      specified window; applies to only one\n"
                          "                                      window; can be specified once for\n"
                          "                                      each window you create from the\n"
                          "                                      command line"));
-  fprintf (fp, "\n");
-  fprintf (fp, "%s\n", _("  --tab                               Open a new tab in the last-specified\n"
+  g_print ("\n");
+  g_print ("%s\n", _("  --tab                               Open a new tab in the last-specified\n"
                          "                                      window; more than one of these\n"
                          "                                      options can be provided"));
-  fprintf (fp, "%s\n", _("  --window                            Open a new window containing one tab;\n"
+  g_print ("%s\n", _("  --window                            Open a new window containing one tab;\n"
                          "                                      more than one of these options can be\n"
                          "                                      provided"));
-  fprintf (fp, "\n");
-  fprintf (fp, "%s\n", _("  --default-display=DISPLAY           default X display to use"));
-  fprintf (fp, "%s\n", _("  --default-working-directory=DIRNAME Set the default terminals working\n"
+  g_print ("\n");
+  g_print ("%s\n", _("  --default-display=DISPLAY           default X display to use"));
+  g_print ("%s\n", _("  --default-working-directory=DIRNAME Set the default terminals working\n"
                          "                                      directory"));
-  fprintf (fp, "\n");
+  g_print ("\n");
 }
 
 
@@ -153,27 +153,27 @@ main (int argc, char **argv)
     {
       g_printerr ("%s\n", error->message);
       g_error_free (error);
-      usage (stderr);
+      usage ();
       return EXIT_FAILURE;
     }
 
   if (G_UNLIKELY (options->show_version))
     {
-      printf (_("%s (Xfce %s)\n\n"
-                "Copyright (c) 2003-2005\n"
-                "        os-cillation e.K. All rights reserved.\n\n"
-                "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
-                "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
-                "Please report bugs to <%s>.\n"),
-                PACKAGE_STRING, xfce_version_string (),
-                GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
-                gtk_major_version, gtk_minor_version, gtk_micro_version,
-                PACKAGE_BUGREPORT);
+      g_print (_("%s (Xfce %s)\n\n"
+                 "Copyright (c) 2003-2005\n"
+                 "        os-cillation e.K. All rights reserved.\n\n"
+                 "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
+                 "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
+                 "Please report bugs to <%s>.\n"),
+                 PACKAGE_STRING, xfce_version_string (),
+                 GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
+                 gtk_major_version, gtk_minor_version, gtk_micro_version,
+                 PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }
   else if (G_UNLIKELY (options->show_help))
     {
-      usage (stdout);
+      usage ();
       return EXIT_SUCCESS;
     }
 
