@@ -1617,6 +1617,7 @@ terminal_window_about_idle (gpointer user_data)
     { "Jari Rahkonen", "jari.rahkonen@pp1.inet.fi", "fi" },
     { "Stephane Roy", "sroy@j2n.net", "fr" },
     { "Yuval Tanny", "tanai@int.gov.il", "he" },
+    { "Szervác Attila", "sas@321.hu", "hu" },
     { "Daichi Kawahata", "daichik@users.sourceforge.net", "ja" },
     { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
     { "Anthony Ivanoff", "a-i@bk.ru", "ru" },
