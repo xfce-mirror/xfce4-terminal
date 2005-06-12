@@ -55,7 +55,7 @@ fi
 if test -r "$HELPDIR/$LC/$HELPFILE"; then
   URL="$HELPDIR/$LC/$HELPFILE"
 elif test -r "$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"; then
-  URL="$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/'$HELPFILE"
+  URL="$HELPDIR/`echo $LC | sed 's/\(..\)_.*/\1/'`/$HELPFILE"
 else 
   URL="$HELPDIR/C/index.html"
 fi
