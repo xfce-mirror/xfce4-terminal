@@ -10,7 +10,7 @@ dnl Version information
 m4_define([terminal_version_major], [0])
 m4_define([terminal_version_minor], [2])
 m4_define([terminal_version_micro], [5])
-m4_define([terminal_version_tag], [cvs])
+m4_define([terminal_version_tag], [svn])
 m4_define([terminal_version_dbus], [3])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()terminal_version_tag()])
 
@@ -46,7 +46,7 @@ dnl Check for standard headers
 AC_CHECK_HEADERS([ctype.h errno.h limits.h pwd.h time.h])
 
 dnl Check for i18n support
-XDT_I18N([de en_GB es fi fr he hu ja nl ru zh_CN zh_TW])
+XDT_I18N([de en_GB es fi fr he hu it ja nl ru zh_CN zh_TW])
 
 dnl Check for required packages
 XDT_CHECK_PACKAGE([EXO], [exo-0.3], [0.3.0])
