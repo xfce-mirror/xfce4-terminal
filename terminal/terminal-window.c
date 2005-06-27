@@ -193,26 +193,26 @@ static guint         window_signals[LAST_SIGNAL];
 
 static GtkActionEntry action_entries[] =
 {
-  { "file-menu", NULL, N_ ("_File"), NULL, },
+  { "file-menu", NULL, N_ ("_File"), NULL, NULL, NULL, },
   { "new-tab", "terminal-newtab", N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
   { "new-window", "terminal-newwindow", N_ ("Open _Terminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
   { "close-tab", "terminal-closetab", N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
   { "close-window", "terminal-closewindow", N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
-  { "edit-menu", NULL, N_ ("_Edit"), NULL, },
+  { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
   { "edit-helpers", NULL, N_ ("_Applications..."), NULL, N_ ("Customize your preferred applications"), G_CALLBACK (terminal_window_action_edit_helpers), },
   { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
   { "preferences", GTK_STOCK_PREFERENCES, N_ ("_Preferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
-  { "view-menu", NULL, N_ ("_View"), NULL, },
-  { "terminal-menu", NULL, N_ ("_Terminal"), NULL, },
+  { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
+  { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
   { "set-title", NULL, N_ ("_Set Title..."), NULL, N_ ("Set a custom title for the current tab"), G_CALLBACK (terminal_window_action_set_title), },
   { "reset", GTK_STOCK_REFRESH, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
   { "reset-and-clear", GTK_STOCK_CLEAR, N_ ("Reset and C_lear"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
-  { "go-menu", NULL, N_ ("_Go"), NULL, },
+  { "go-menu", NULL, N_ ("_Go"), NULL, NULL, NULL, },
   { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), NULL, N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
   { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), NULL, N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
-  { "help-menu", NULL, N_ ("_Help"), NULL, },
+  { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
   { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
   { "report-bug", "terminal-reportbug", N_ ("_Report a bug"), NULL, N_ ("Report a bug in Terminal"), G_CALLBACK (terminal_window_action_report_bug), },
 #if GTK_CHECK_VERSION(2,6,0)
@@ -404,7 +404,7 @@ terminal_window_init (TerminalWindow *window)
                     NULL);
 
   /* set a unique role on each window (for session management) */
-  role = g_strdup_printf ("Terminal-%p-%d-%d", window, getpid (), (gint) time (NULL));
+  role = g_strdup_printf ("Terminal-%p-%d-%d", window, (gint) getpid (), (gint) time (NULL));
   gtk_window_set_role (GTK_WINDOW (window), role);
   g_free (role);
 }
@@ -1625,7 +1625,7 @@ terminal_window_about_idle (gpointer user_data)
     { "Anthony Ivanoff", "a-i@bk.ru", "ru" },
     { "Army Gu", "redarmy@gmail.com", "zh_CN" },
     { "Hydonsingore Sie", "hydonsingore@mail.educities.edu.tw", "zh_TW" },
-    { NULL, },
+    { NULL, NULL, NULL },
   };
 
   /* Try to load the Terminal icon using the icon-spec

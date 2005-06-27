@@ -90,6 +90,7 @@ terminal_helper_get_type (void)
         sizeof (TerminalHelper),
         0,
         NULL,
+        NULL
       };
 
       type = g_type_register_static (G_TYPE_OBJECT,
@@ -179,7 +180,7 @@ terminal_helper_load (XfceRc      *rc,
       for (n = 0; binaries[n] != NULL; ++n)
         {
           /* skip empty binaries */
-          for (s = binaries[n]; isspace (*s); ++s);
+          for (s = binaries[n]; g_ascii_isspace (*s); ++s);
           if (*s == '\0')
             continue;
 

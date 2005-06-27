@@ -168,7 +168,7 @@ gboolean
 terminal_dbus_register_service (TerminalApp *app,
                                 GError     **error)
 {
-  static const struct DBusObjectPathVTable vtable = { NULL, handle_message, NULL, };
+  static const struct DBusObjectPathVTable vtable = { NULL, handle_message, NULL, NULL, NULL, NULL };
 
   DBusConnection *connection;
   DBusError       derror;
@@ -202,7 +202,7 @@ terminal_dbus_register_service (TerminalApp *app,
     }
 
   /* register the application object */
-  if (dbus_connection_register_object_path (connection, TERMINAL_DBUS_PATH, &vtable, app) < 0)
+  if (!dbus_connection_register_object_path (connection, TERMINAL_DBUS_PATH, &vtable, app))
     {
       g_set_error (error, DBUS_GERROR, DBUS_GERROR_FAILED,
                    _("Unable to register object %s"),

@@ -1,5 +1,16 @@
 2005-06-27	Benedikt Meurer <benny@xfce.org>
 
+	* helpers/*.desktop.in, po/*.po: Apply Daichi's patch to fix misc
+	  errors in the .desktop and .po files, see attachment 33 to #83.
+	* terminal/terminal-dbus.c, terminal/terminal-helper.c,
+	  terminal/terminal-monitor.c, terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-preferences.c, terminal/terminal-screen.c,
+	  terminal/terminal-window.c: Apply Daichi's patch to fix various
+	  compiler warnings. The patch was slightly modified. This finally
+	  fixes bug #83.
+
+2005-06-27	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-window.c(terminal_window_screen_removed,
 	  terminal_window_add): Don't give focus to the notebook tabs, fixes
 	  bug #93.

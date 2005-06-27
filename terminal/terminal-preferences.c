@@ -78,6 +78,9 @@ enum
   PROP_BINDING_DELETE,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
+  PROP_COLOR_USE_DEFAULT,
+  PROP_COLOR_CURSOR,
+  PROP_COLOR_HIGHLIGHT,
   PROP_COLOR_PALETTE1,
   PROP_COLOR_PALETTE2,
   PROP_COLOR_PALETTE3,
@@ -682,6 +685,39 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Background color"),
                                                         _("Terminal background color"),
                                                         "Black",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-use-default:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_USE_DEFAULT,
+                                   g_param_spec_boolean ("color-use-default",
+                                                        _("Use default colors"),
+                                                        _("Use default cursor and highlight colors"),
+                                                        TRUE,
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-cursor:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_CURSOR,
+                                   g_param_spec_string ("color-cursor",
+                                                        _("Cursor color"),
+                                                        _("Terminal cursor color"),
+                                                        "Green",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-highlight:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_HIGHLIGHT,
+                                   g_param_spec_string ("color-highlight",
+                                                        _("Highlight color"),
+                                                        _("Terminal highlight color"),
+                                                        "White",
                                                         G_PARAM_READWRITE));
 
   /**
