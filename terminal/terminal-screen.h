@@ -1,4 +1,4 @@
-/* $Id: terminal-screen.h 57 2004-11-22 17:38:15Z bmeurer $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
@@ -66,6 +66,10 @@ gchar       *terminal_screen_get_title                  (TerminalScreen *screen)
 const gchar *terminal_screen_get_working_directory      (TerminalScreen *screen);
 void         terminal_screen_set_working_directory      (TerminalScreen *screen,
                                                          const gchar    *directory);
+
+gboolean     terminal_screen_get_hold                   (TerminalScreen *screen);
+void         terminal_screen_set_hold                   (TerminalScreen *screen,
+                                                         gboolean        hold);
 
 gboolean   terminal_screen_has_selection              (TerminalScreen *screen);
 

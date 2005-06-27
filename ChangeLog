@@ -1,5 +1,13 @@
 2005-06-27	Benedikt Meurer <benny@xfce.org>
 
+	* doc/C/Terminal.xml.in, terminal/main.c, terminal/terminal-app.c,
+	  terminal/terminal-options.{c,h}, terminal/terminal-screen.{c,h}: Add
+	  new command line option -H, --hold which can be used to keep the
+	  terminal tab/window around even after the child command exited. This
+	  fixes bug #78.
+
+2005-06-27	Benedikt Meurer <benny@xfce.org>
+
 	* helpers/*.desktop.in, po/*.po: Apply Daichi's patch to fix misc
 	  errors in the .desktop and .po files, see attachment 33 to #83.
 	* terminal/terminal-dbus.c, terminal/terminal-helper.c,

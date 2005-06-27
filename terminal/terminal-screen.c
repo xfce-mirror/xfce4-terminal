@@ -138,6 +138,8 @@ struct _TerminalScreen
   gchar              **custom_command;
   gchar               *custom_title;
 
+  gboolean             hold;
+
   guint                background_timer_id;
   guint                launch_idle_id;
 };
@@ -775,7 +777,8 @@ terminal_screen_vte_child_exited (VteTerminal    *terminal,
   g_return_if_fail (VTE_IS_TERMINAL (terminal));
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  gtk_widget_destroy (GTK_WIDGET (screen));
+  if (G_LIKELY (!screen->hold))
+    gtk_widget_destroy (GTK_WIDGET (screen));
 }
 
 
@@ -784,7 +787,11 @@ static void
 terminal_screen_vte_eof (VteTerminal    *terminal,
                          TerminalScreen *screen)
 {
-  gtk_widget_destroy (GTK_WIDGET (screen));
+  g_return_if_fail (VTE_IS_TERMINAL (terminal));
+  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  if (G_LIKELY (!screen->hold))
+    gtk_widget_destroy (GTK_WIDGET (screen));
 }
 
 
@@ -1283,6 +1290,43 @@ terminal_screen_set_working_directory (TerminalScreen *screen,
 
 
 /**
+ * terminal_screen_get_hold:
+ * @screen : A #TerminalScreen.
+ *
+ * Checks whether the terminal screen will be destroyed when
+ * the child exits.
+ *
+ * Return value: %TRUE if @screen will be destroyed once
+ *               it's child exits.
+ **/
+gboolean
+terminal_screen_get_hold (TerminalScreen *screen)
+{
+  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  return screen->hold;
+}
+
+
+
+/**
+ * terminal_screen_set_hold:
+ * @screen : A #TerminalScreen.
+ * @hold   : %TRUE to keep @screen around when the child exits.
+ *
+ * Sets  whether the terminal screen will be destroyed when
+ * the child exits.
+ **/
+void
+terminal_screen_set_hold (TerminalScreen *screen,
+                          gboolean        hold)
+{
+  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  screen->hold = hold;
+}
+
+
+
+/**
  * terminal_screen_has_selection:
  * @screen      : A #TerminalScreen.
  *
@@ -1403,8 +1447,9 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
       result = g_list_append (result, g_strdup (directory));
     }
 
+  if (G_UNLIKELY (screen->hold))
+    result = g_list_append (result, g_strdup ("--hold"));
+
   return result;
 }
-
-
 

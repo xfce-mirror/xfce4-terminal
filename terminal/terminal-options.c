@@ -229,6 +229,12 @@ terminal_options_parse (gint              argc,
               tab_attr->title = g_strdup (s);
             }
         }
+      else if (strcmp ("--hold", argv[n]) == 0
+            || strcmp ("-H", argv[n]) == 0)
+        {
+          if (tab_attr != NULL)
+            tab_attr->hold = TRUE;
+        }
       else if (strcmp ("--display", argv[n]) == 0
             || strncmp ("--display=", argv[n], 10) == 0)
         {

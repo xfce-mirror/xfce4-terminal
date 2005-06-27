@@ -47,9 +47,10 @@ struct _TerminalOptions
 
 struct _TerminalTabAttr
 {
-  gchar **command;
-  gchar  *directory;
-  gchar  *title;
+  gchar  **command;
+  gchar   *directory;
+  gchar   *title;
+  gboolean hold;
 };
 
 struct _TerminalWindowAttr

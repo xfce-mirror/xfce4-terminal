@@ -493,6 +493,7 @@ terminal_app_open_window (TerminalApp         *app,
         terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal), tab_attr->directory);
       if (tab_attr->title != NULL)
         terminal_screen_set_custom_title (TERMINAL_SCREEN (terminal), tab_attr->title);
+      terminal_screen_set_hold (TERMINAL_SCREEN (terminal), tab_attr->hold);
 
       terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_SCREEN (terminal));
 
