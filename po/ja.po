@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.5cvs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-12 05:31+0900\n"
+"POT-Creation-Date: 2005-06-27 23:19+0200\n"
 "PO-Revision-Date: 2005-06-12 05:31+0900\n"
 "Last-Translator: Daichi Kawahata <daichik@users.sourceforge.net>\n"
 "Language-Team: xfce-users-jp <xfce-users-jp@ml.fdiary.net>\n"
@@ -63,7 +63,16 @@ msgstr ""
 msgid "  -T, --title=TITLE                   Set the terminals title"
 msgstr "  -T, --title=TITLE                   ターミナルのタイトルを指定します"
 
-#: ../terminal/main.c:56
+#: ../terminal/main.c:55
+#, fuzzy
+msgid ""
+"  -H, --hold                          Do not immediatly destroy the tab\n"
+"                                      when the child command exits"
+msgstr ""
+"  -x, --execute                       残りのコマンド行をターミナル内で\n"
+"                                      実行します"
+
+#: ../terminal/main.c:58
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
@@ -71,7 +80,7 @@ msgstr ""
 "  --display=DISPLAY                   最後に指定したウィンドウに使用する\n"
 "                                      X ディスプレイを指定します"
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:60
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
@@ -81,7 +90,7 @@ msgstr ""
 "                                      ページを参照)、開かれるウィンドウ\n"
 "                                      一つ毎に指定できます"
 
-#: ../terminal/main.c:61
+#: ../terminal/main.c:63
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified;\n"
 "                                      window; applies to only one window;\n"
@@ -94,14 +103,14 @@ msgstr ""
 "                                      各々のウィンドウに対して一度指定でき\n"
 "                                      ます"
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:67
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
 "  --startup-id=STRING                 起動通知プロトコルの ID を指定します"
 
-#: ../terminal/main.c:67
+#: ../terminal/main.c:69
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
@@ -117,7 +126,7 @@ msgstr ""
 "各々\n"
 "                                      のウィンドウに対して一度指定できます"
 
-#: ../terminal/main.c:72
+#: ../terminal/main.c:74
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -131,7 +140,7 @@ msgstr ""
 "                                      作成する各々のウィンドウに対して\n"
 "                                      一度指定できます"
 
-#: ../terminal/main.c:77
+#: ../terminal/main.c:79
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -145,7 +154,7 @@ msgstr ""
 "                                      作成する各々のウィンドウに対して一度\n"
 "                                      指定できます"
 
-#: ../terminal/main.c:82
+#: ../terminal/main.c:84
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -160,7 +169,7 @@ msgstr ""
 "                                      する各々のウィンドウに対して一度指定\n"
 "                                      できます"
 
-#: ../terminal/main.c:87
+#: ../terminal/main.c:89
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -175,7 +184,7 @@ msgstr ""
 "                                      する各々のウィンドウに対して一度指定\n"
 "                                      できます"
 
-#: ../terminal/main.c:92
+#: ../terminal/main.c:94
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -189,7 +198,7 @@ msgstr ""
 "                                      各々のウィンドウに対して一度指定でき\n"
 "                                      ます"
 
-#: ../terminal/main.c:97
+#: ../terminal/main.c:99
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -204,7 +213,7 @@ msgstr ""
 "                                      各々のウィンドウに対して一度指定でき\n"
 "                                      ます"
 
-#: ../terminal/main.c:103
+#: ../terminal/main.c:105
 msgid ""
 "  --tab                               Open a new tab in the last-specified\n"
 "                                      window; more than one of these\n"
@@ -214,7 +223,7 @@ msgstr ""
 "                                      を開きます; これらのオプションの内、\n"
 "                                      一つ以上を指定できます"
 
-#: ../terminal/main.c:106
+#: ../terminal/main.c:108
 msgid ""
 "  --window                            Open a new window containing one tab;\n"
 "                                      more than one of these options can be\n"
@@ -224,13 +233,13 @@ msgstr ""
 "                                      開きます; これらのオプションの内、\n"
 "                                      一つ以上を指定できます"
 
-#: ../terminal/main.c:110
+#: ../terminal/main.c:112
 msgid "  --default-display=DISPLAY           default X display to use"
 msgstr ""
 "  --default-display=DISPLAY           使用する標準の X ディスプレイを指定\n"
 "                                      します"
 
-#: ../terminal/main.c:111
+#: ../terminal/main.c:113
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
 "                                      directory"
@@ -238,12 +247,12 @@ msgstr ""
 "  --default-working-directory=DIRNAME ターミナルの標準の作業フォルダを指定\n"
 "                                      します"
 
-#: ../terminal/main.c:135 ../terminal/terminal-preferences.c:1116
+#: ../terminal/main.c:137 ../terminal/terminal-preferences.c:1152
 #: ../terminal/terminal-shortcut-editor.c:115 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:162
+#: ../terminal/main.c:164
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -268,17 +277,17 @@ msgstr ""
 "\n"
 "バグの報告は <%s> にお願いします。\n"
 
-#: ../terminal/main.c:251
+#: ../terminal/main.c:253
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ターミナル・サービスを登録できません: %s\n"
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:262
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "ターミナルを実行できません: %s\n"
 
-#: ../terminal/terminal-app.c:506
+#: ../terminal/terminal-app.c:507
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ジオメトリ文字列 \"%s\" は不適切です\n"
@@ -297,14 +306,14 @@ msgid "Unable to register object %s"
 msgstr "オブジェクト %s を登録できません"
 
 #: ../terminal/terminal-helper-dialog.c:52
-#: ../terminal/terminal-preferences.c:935
-#: ../terminal/terminal-preferences.c:936
+#: ../terminal/terminal-preferences.c:971
+#: ../terminal/terminal-preferences.c:972
 msgid "Web Browser"
 msgstr "ウェブ・ブラウザ"
 
 #: ../terminal/terminal-helper-dialog.c:53
-#: ../terminal/terminal-preferences.c:924
-#: ../terminal/terminal-preferences.c:925
+#: ../terminal/terminal-preferences.c:960
+#: ../terminal/terminal-preferences.c:961
 msgid "Mail Reader"
 msgstr "メール・リーダー"
 
@@ -380,14 +389,14 @@ msgstr "その他..."
 
 #: ../terminal/terminal-helper-dialog.c:619
 #: ../terminal/terminal-preferences-dialog.c:361
-#: ../terminal/terminal-preferences.c:367
-#: ../terminal/terminal-preferences.c:378
-#: ../terminal/terminal-preferences.c:389
-#: ../terminal/terminal-preferences.c:400
-#: ../terminal/terminal-preferences.c:411
-#: ../terminal/terminal-preferences.c:433
-#: ../terminal/terminal-preferences.c:444
-#: ../terminal/terminal-preferences.c:455
+#: ../terminal/terminal-preferences.c:370
+#: ../terminal/terminal-preferences.c:381
+#: ../terminal/terminal-preferences.c:392
+#: ../terminal/terminal-preferences.c:403
+#: ../terminal/terminal-preferences.c:414
+#: ../terminal/terminal-preferences.c:436
+#: ../terminal/terminal-preferences.c:447
+#: ../terminal/terminal-preferences.c:458
 #: ../terminal/terminal-shortcut-editor.c:205
 #: ../terminal/terminal-shortcut-editor.c:367
 msgid "Disabled"
@@ -437,14 +446,14 @@ msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 "オプション \"--title\" にはパラメータとしてタイトルを指定する必要があります"
 
-#: ../terminal/terminal-options.c:244
+#: ../terminal/terminal-options.c:250
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
 "オプション \"--display\" にはパラメータとして X ディスプレイを指定する必要が"
 "あります"
 
-#: ../terminal/terminal-options.c:271
+#: ../terminal/terminal-options.c:277
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
@@ -452,20 +461,20 @@ msgstr ""
 "オプション \"--geometry\" にはパラメータとしてウィンドウ位置を指定する必要が"
 "あります"
 
-#: ../terminal/terminal-options.c:298
+#: ../terminal/terminal-options.c:304
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "オプション \"--role\" にはパラメータとしてウィンドウ・ロールを指定する必要が"
 "あります"
 
-#: ../terminal/terminal-options.c:325
+#: ../terminal/terminal-options.c:331
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "オプション \"--startup-id\" にはパラメータとして起動 ID を指定する必要があり"
 "ます"
 
-#: ../terminal/terminal-options.c:406
+#: ../terminal/terminal-options.c:412
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
@@ -473,7 +482,7 @@ msgstr ""
 "オプション \"--default-display\" にはパラメータとして標準の X ディスプレイを"
 "指定する必要があります"
 
-#: ../terminal/terminal-options.c:430
+#: ../terminal/terminal-options.c:436
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
@@ -481,7 +490,7 @@ msgstr ""
 "オプション \"--default-working-directory\" にはパラメータとして標準の作業フォ"
 "ルダを指定する必要があります"
 
-#: ../terminal/terminal-options.c:446
+#: ../terminal/terminal-options.c:452
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "オプション \"%s\" は不明です"
@@ -754,11 +763,15 @@ msgstr "ターミナルの文字色を選択して下さい"
 
 #: ../terminal/terminal-preferences-dialog.c:663
 #: ../terminal/terminal-preferences-dialog.c:694
+#: ../terminal/terminal-preferences-dialog.c:749
+#: ../terminal/terminal-preferences-dialog.c:782
 msgid "Color Selector"
 msgstr "色の選択"
 
 #: ../terminal/terminal-preferences-dialog.c:664
 #: ../terminal/terminal-preferences-dialog.c:695
+#: ../terminal/terminal-preferences-dialog.c:750
+#: ../terminal/terminal-preferences-dialog.c:783
 msgid "Open a dialog to specify the color"
 msgstr "色を指定するダイアログを開きます"
 
@@ -771,42 +784,76 @@ msgid "Choose terminal background color"
 msgstr "ターミナルの背景色を選択して下さい"
 
 #: ../terminal/terminal-preferences-dialog.c:705
+msgid "<b>Cursor and highlight</b>"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:716
+#: ../terminal/terminal-preferences.c:696
+msgid "Use default colors"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:718
+#: ../terminal/terminal-preferences.c:697
+msgid "Use default cursor and highlight colors"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:724
+#, fuzzy
+msgid "_Cursor color:"
+msgstr "背景色(_B):"
+
+#: ../terminal/terminal-preferences-dialog.c:739
+#, fuzzy
+msgid "Choose terminal cursor color"
+msgstr "ターミナルの背景色を選択して下さい"
+
+#: ../terminal/terminal-preferences-dialog.c:757
+#, fuzzy
+msgid "_Highlight color:"
+msgstr "文字色(_T):"
+
+#: ../terminal/terminal-preferences-dialog.c:772
+#, fuzzy
+msgid "Choose terminal highlight color"
+msgstr "ターミナルの文字色を選択して下さい"
+
+#: ../terminal/terminal-preferences-dialog.c:793
 msgid "<b>Palette</b>"
 msgstr "<b>パレット</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:715
+#: ../terminal/terminal-preferences-dialog.c:803
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminal アプリケーションが利用できる色のパレット:"
 
-#: ../terminal/terminal-preferences-dialog.c:847
+#: ../terminal/terminal-preferences-dialog.c:935
 msgid "Colors"
 msgstr "色"
 
-#: ../terminal/terminal-preferences-dialog.c:865
+#: ../terminal/terminal-preferences-dialog.c:953
 msgid "<b>Shortcut keys</b>"
 msgstr "<b>ショートカットキー</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:891
+#: ../terminal/terminal-preferences-dialog.c:979
 msgid "<b>Menubar access</b>"
 msgstr "<b>メニューバーのアクセス</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:900
+#: ../terminal/terminal-preferences-dialog.c:988
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "全てのメニュー・アクセスキーを無効にする(_N) (例えば Alt+f)"
 
-#: ../terminal/terminal-preferences-dialog.c:905
+#: ../terminal/terminal-preferences-dialog.c:993
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "メニュー・ショートカットキーを無効にする(_E) (標準では F10)"
 
-#: ../terminal/terminal-preferences-dialog.c:917
+#: ../terminal/terminal-preferences-dialog.c:1005
 msgid "Shortcuts"
 msgstr "各ショートカット"
 
-#: ../terminal/terminal-preferences-dialog.c:935
+#: ../terminal/terminal-preferences-dialog.c:1023
 msgid "<b>Compatibility</b>"
 msgstr "<b>互換性</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:946
+#: ../terminal/terminal-preferences-dialog.c:1034
 msgid ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
@@ -816,39 +863,39 @@ msgstr ""
 "かもしれません。これらのオプションは、あらかじめ他の端末での動作を前提とする"
 "アプリケーションや OS の問題を解決させるためにあります。"
 
-#: ../terminal/terminal-preferences-dialog.c:954
+#: ../terminal/terminal-preferences-dialog.c:1042
 msgid "_Backspace key generates:"
 msgstr "バックスペース・キーの生成(_B):"
 
-#: ../terminal/terminal-preferences-dialog.c:961
-#: ../terminal/terminal-preferences-dialog.c:985
+#: ../terminal/terminal-preferences-dialog.c:1049
+#: ../terminal/terminal-preferences-dialog.c:1073
 msgid "Auto-detect"
 msgstr "自動検出"
 
-#: ../terminal/terminal-preferences-dialog.c:962
-#: ../terminal/terminal-preferences-dialog.c:986
+#: ../terminal/terminal-preferences-dialog.c:1050
+#: ../terminal/terminal-preferences-dialog.c:1074
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: ../terminal/terminal-preferences-dialog.c:963
-#: ../terminal/terminal-preferences-dialog.c:987
+#: ../terminal/terminal-preferences-dialog.c:1051
+#: ../terminal/terminal-preferences-dialog.c:1075
 msgid "Escape sequence"
 msgstr "エスケープ・シーケンス"
 
-#: ../terminal/terminal-preferences-dialog.c:964
-#: ../terminal/terminal-preferences-dialog.c:988
+#: ../terminal/terminal-preferences-dialog.c:1052
+#: ../terminal/terminal-preferences-dialog.c:1076
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:978
+#: ../terminal/terminal-preferences-dialog.c:1066
 msgid "_Delete key generates:"
 msgstr "デリート・キーの生成(_D):"
 
-#: ../terminal/terminal-preferences-dialog.c:1002
+#: ../terminal/terminal-preferences-dialog.c:1090
 msgid "<tt>$TERM</tt> setting:"
 msgstr "<tt>$TERM</tt> の設定:"
 
-#: ../terminal/terminal-preferences-dialog.c:1010
+#: ../terminal/terminal-preferences-dialog.c:1098
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -859,479 +906,498 @@ msgstr ""
 "す。一部のアプリケーションで色の表示に問題があるなら、ここに xterm-color を指"
 "定してみて下さい。"
 
-#: ../terminal/terminal-preferences-dialog.c:1030
+#: ../terminal/terminal-preferences-dialog.c:1118
 msgid "_Reset compatibility options to defaults"
 msgstr "互換オプションを標準にリセットする(_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:1040
+#: ../terminal/terminal-preferences-dialog.c:1128
 msgid "<b>Double click</b>"
 msgstr "<b>ダブルクリック</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1049
+#: ../terminal/terminal-preferences-dialog.c:1137
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "ダブル・クリックした時に以下の文字を単語の一部とします:"
 
-#: ../terminal/terminal-preferences-dialog.c:1073
+#: ../terminal/terminal-preferences-dialog.c:1161
 msgid "Advanced"
 msgstr "上級者"
 
-#: ../terminal/terminal-preferences-dialog.c:1114
-#: ../terminal/terminal-window.c:1193 ../terminal/terminal-window.c:1415
-#: ../terminal/terminal-window.c:1442 ../terminal/terminal-window.c:1515
+#: ../terminal/terminal-preferences-dialog.c:1202
+#: ../terminal/terminal-window.c:1194 ../terminal/terminal-window.c:1416
+#: ../terminal/terminal-window.c:1443 ../terminal/terminal-window.c:1516
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr "オンライン・ヘルプを実行できません: %s"
 
-#: ../terminal/terminal-preferences-dialog.c:1214
+#: ../terminal/terminal-preferences-dialog.c:1302
 msgid "Select background image file"
 msgstr "背景画像ファイルを選択して下さい"
 
-#: ../terminal/terminal-preferences-dialog.c:1225
+#: ../terminal/terminal-preferences-dialog.c:1313
 msgid "All Files"
 msgstr "全てのファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:1230
+#: ../terminal/terminal-preferences-dialog.c:1318
 msgid "Image Files"
 msgstr "各画像ファイル"
 
-#: ../terminal/terminal-preferences.c:299
-#: ../terminal/terminal-preferences.c:300
+#: ../terminal/terminal-preferences.c:302
+#: ../terminal/terminal-preferences.c:303
 msgid "Open Tab"
 msgstr "タブを開く"
 
-#: ../terminal/terminal-preferences.c:310
-#: ../terminal/terminal-preferences.c:311
+#: ../terminal/terminal-preferences.c:313
+#: ../terminal/terminal-preferences.c:314
 msgid "Open Terminal"
 msgstr "ターミナルを開く"
 
-#: ../terminal/terminal-preferences.c:321
-#: ../terminal/terminal-preferences.c:322
+#: ../terminal/terminal-preferences.c:324
+#: ../terminal/terminal-preferences.c:325
 msgid "Close Tab"
 msgstr "タブを閉じる"
 
-#: ../terminal/terminal-preferences.c:332
-#: ../terminal/terminal-preferences.c:333
+#: ../terminal/terminal-preferences.c:335
+#: ../terminal/terminal-preferences.c:336
 msgid "Close Window"
 msgstr "ウィンドウを閉じる"
 
-#: ../terminal/terminal-preferences.c:343
-#: ../terminal/terminal-preferences.c:344
+#: ../terminal/terminal-preferences.c:346
+#: ../terminal/terminal-preferences.c:347
 msgid "Copy"
 msgstr "コピー"
 
-#: ../terminal/terminal-preferences.c:354
-#: ../terminal/terminal-preferences.c:355
+#: ../terminal/terminal-preferences.c:357
+#: ../terminal/terminal-preferences.c:358
 msgid "Paste"
 msgstr "貼り付け"
 
-#: ../terminal/terminal-preferences.c:365
-#: ../terminal/terminal-preferences.c:366
+#: ../terminal/terminal-preferences.c:368
+#: ../terminal/terminal-preferences.c:369
 msgid "Applications"
 msgstr "アプリケーション"
 
-#: ../terminal/terminal-preferences.c:376
-#: ../terminal/terminal-preferences.c:377
+#: ../terminal/terminal-preferences.c:379
+#: ../terminal/terminal-preferences.c:380
 msgid "Preferences"
 msgstr "環境設定"
 
-#: ../terminal/terminal-preferences.c:387
-#: ../terminal/terminal-preferences.c:388
+#: ../terminal/terminal-preferences.c:390
+#: ../terminal/terminal-preferences.c:391
 msgid "Show menubar"
 msgstr "メニューバーを表示"
 
-#: ../terminal/terminal-preferences.c:398
-#: ../terminal/terminal-preferences.c:399
+#: ../terminal/terminal-preferences.c:401
+#: ../terminal/terminal-preferences.c:402
 msgid "Show toolbars"
 msgstr "ツールバーを表示"
 
-#: ../terminal/terminal-preferences.c:409
-#: ../terminal/terminal-preferences.c:410
+#: ../terminal/terminal-preferences.c:412
+#: ../terminal/terminal-preferences.c:413
 msgid "Show borders"
 msgstr "枠を表示"
 
-#: ../terminal/terminal-preferences.c:420
-#: ../terminal/terminal-preferences.c:421
+#: ../terminal/terminal-preferences.c:423
+#: ../terminal/terminal-preferences.c:424
 msgid "Fullscreen"
 msgstr "全画面表示"
 
-#: ../terminal/terminal-preferences.c:431
-#: ../terminal/terminal-preferences.c:432 ../terminal/terminal-window.c:1549
+#: ../terminal/terminal-preferences.c:434
+#: ../terminal/terminal-preferences.c:435 ../terminal/terminal-window.c:1550
 msgid "Set Title"
 msgstr "タイトルを設定"
 
-#: ../terminal/terminal-preferences.c:442
-#: ../terminal/terminal-preferences.c:443
+#: ../terminal/terminal-preferences.c:445
+#: ../terminal/terminal-preferences.c:446
 msgid "Reset"
 msgstr "リセット"
 
-#: ../terminal/terminal-preferences.c:453
-#: ../terminal/terminal-preferences.c:454
+#: ../terminal/terminal-preferences.c:456
+#: ../terminal/terminal-preferences.c:457
 msgid "Reset and Clear"
 msgstr "リセットして消去"
 
-#: ../terminal/terminal-preferences.c:464
-#: ../terminal/terminal-preferences.c:465
+#: ../terminal/terminal-preferences.c:467
+#: ../terminal/terminal-preferences.c:468
 msgid "Previous Tab"
 msgstr "前のタブ"
 
-#: ../terminal/terminal-preferences.c:475
-#: ../terminal/terminal-preferences.c:476
+#: ../terminal/terminal-preferences.c:478
+#: ../terminal/terminal-preferences.c:479
 msgid "Next Tab"
 msgstr "次のタブ"
 
-#: ../terminal/terminal-preferences.c:486
-#: ../terminal/terminal-preferences.c:487
+#: ../terminal/terminal-preferences.c:489
+#: ../terminal/terminal-preferences.c:490
 msgid "Switch to Tab 1"
 msgstr "タブ１に切替える"
 
-#: ../terminal/terminal-preferences.c:497
-#: ../terminal/terminal-preferences.c:498
+#: ../terminal/terminal-preferences.c:500
+#: ../terminal/terminal-preferences.c:501
 msgid "Switch to Tab 2"
 msgstr "タブ２に切替える"
 
-#: ../terminal/terminal-preferences.c:508
-#: ../terminal/terminal-preferences.c:509
+#: ../terminal/terminal-preferences.c:511
+#: ../terminal/terminal-preferences.c:512
 msgid "Switch to Tab 3"
 msgstr "タブ３に切替える"
 
-#: ../terminal/terminal-preferences.c:519
-#: ../terminal/terminal-preferences.c:520
+#: ../terminal/terminal-preferences.c:522
+#: ../terminal/terminal-preferences.c:523
 msgid "Switch to Tab 4"
 msgstr "タブ４に切替える"
 
-#: ../terminal/terminal-preferences.c:530
-#: ../terminal/terminal-preferences.c:531
+#: ../terminal/terminal-preferences.c:533
+#: ../terminal/terminal-preferences.c:534
 msgid "Switch to Tab 5"
 msgstr "タブ５に切替える"
 
-#: ../terminal/terminal-preferences.c:541
-#: ../terminal/terminal-preferences.c:542
+#: ../terminal/terminal-preferences.c:544
+#: ../terminal/terminal-preferences.c:545
 msgid "Switch to Tab 6"
 msgstr "タブ６に切替える"
 
-#: ../terminal/terminal-preferences.c:552
-#: ../terminal/terminal-preferences.c:553
+#: ../terminal/terminal-preferences.c:555
+#: ../terminal/terminal-preferences.c:556
 msgid "Switch to Tab 7"
 msgstr "タブ７に切替える"
 
-#: ../terminal/terminal-preferences.c:563
-#: ../terminal/terminal-preferences.c:564
+#: ../terminal/terminal-preferences.c:566
+#: ../terminal/terminal-preferences.c:567
 msgid "Switch to Tab 8"
 msgstr "タブ８に切替える"
 
-#: ../terminal/terminal-preferences.c:574
-#: ../terminal/terminal-preferences.c:575
+#: ../terminal/terminal-preferences.c:577
+#: ../terminal/terminal-preferences.c:578
 msgid "Switch to Tab 9"
 msgstr "タブ９に切替える"
 
-#: ../terminal/terminal-preferences.c:585
-#: ../terminal/terminal-preferences.c:586
+#: ../terminal/terminal-preferences.c:588
+#: ../terminal/terminal-preferences.c:589
 msgid "Contents"
 msgstr "目次"
 
-#: ../terminal/terminal-preferences.c:596
-#: ../terminal/terminal-preferences.c:597
+#: ../terminal/terminal-preferences.c:599
+#: ../terminal/terminal-preferences.c:600
 msgid "Background mode"
 msgstr "背景モード"
 
-#: ../terminal/terminal-preferences.c:608
-#: ../terminal/terminal-preferences.c:609
+#: ../terminal/terminal-preferences.c:611
+#: ../terminal/terminal-preferences.c:612
 msgid "Background image file"
 msgstr "背景画像ファイル"
 
-#: ../terminal/terminal-preferences.c:619
-#: ../terminal/terminal-preferences.c:620
+#: ../terminal/terminal-preferences.c:622
+#: ../terminal/terminal-preferences.c:623
 msgid "Background image style"
 msgstr "背景画像スタイル"
 
-#: ../terminal/terminal-preferences.c:636
-#: ../terminal/terminal-preferences.c:637
+#: ../terminal/terminal-preferences.c:639
+#: ../terminal/terminal-preferences.c:640
 msgid "Background darkness"
 msgstr "背景の暗さ"
 
-#: ../terminal/terminal-preferences.c:647
-#: ../terminal/terminal-preferences.c:648
+#: ../terminal/terminal-preferences.c:650
+#: ../terminal/terminal-preferences.c:651
 msgid "Backspace binding"
 msgstr "バックスペースの割当て"
 
-#: ../terminal/terminal-preferences.c:659
-#: ../terminal/terminal-preferences.c:660
+#: ../terminal/terminal-preferences.c:662
+#: ../terminal/terminal-preferences.c:663
 msgid "Delete binding"
 msgstr "デリートの割当て"
 
-#: ../terminal/terminal-preferences.c:671
+#: ../terminal/terminal-preferences.c:674
 msgid "Foreground color"
 msgstr "文字色"
 
-#: ../terminal/terminal-preferences.c:672
+#: ../terminal/terminal-preferences.c:675
 msgid "Terminal foreground color"
 msgstr "Terminal の文字色です"
 
-#: ../terminal/terminal-preferences.c:682
+#: ../terminal/terminal-preferences.c:685
 msgid "Background color"
 msgstr "背景色"
 
-#: ../terminal/terminal-preferences.c:683
+#: ../terminal/terminal-preferences.c:686
 msgid "Terminal background color"
 msgstr "Terminal の背景色です"
 
-#: ../terminal/terminal-preferences.c:693
-#: ../terminal/terminal-preferences.c:694
+#: ../terminal/terminal-preferences.c:707
+#, fuzzy
+msgid "Cursor color"
+msgstr "カーソルを点滅させる"
+
+#: ../terminal/terminal-preferences.c:708
+#, fuzzy
+msgid "Terminal cursor color"
+msgstr "Terminal の背景色です"
+
+#: ../terminal/terminal-preferences.c:718
+msgid "Highlight color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.c:719
+#, fuzzy
+msgid "Terminal highlight color"
+msgstr "Terminal の文字色です"
+
+#: ../terminal/terminal-preferences.c:729
+#: ../terminal/terminal-preferences.c:730
 msgid "Palette entry 1"
 msgstr "パレット・エントリー１"
 
-#: ../terminal/terminal-preferences.c:704
-#: ../terminal/terminal-preferences.c:705
+#: ../terminal/terminal-preferences.c:740
+#: ../terminal/terminal-preferences.c:741
 msgid "Palette entry 2"
 msgstr "パレット・エントリー２"
 
-#: ../terminal/terminal-preferences.c:715
-#: ../terminal/terminal-preferences.c:716
+#: ../terminal/terminal-preferences.c:751
+#: ../terminal/terminal-preferences.c:752
 msgid "Palette entry 3"
 msgstr "パレット・エントリー３"
 
-#: ../terminal/terminal-preferences.c:726
-#: ../terminal/terminal-preferences.c:727
+#: ../terminal/terminal-preferences.c:762
+#: ../terminal/terminal-preferences.c:763
 msgid "Palette entry 4"
 msgstr "パレット・エントリー４"
 
-#: ../terminal/terminal-preferences.c:737
-#: ../terminal/terminal-preferences.c:738
+#: ../terminal/terminal-preferences.c:773
+#: ../terminal/terminal-preferences.c:774
 msgid "Palette entry 5"
 msgstr "パレット・エントリー５"
 
-#: ../terminal/terminal-preferences.c:748
-#: ../terminal/terminal-preferences.c:749
+#: ../terminal/terminal-preferences.c:784
+#: ../terminal/terminal-preferences.c:785
 msgid "Palette entry 6"
 msgstr "パレット・エントリー６"
 
-#: ../terminal/terminal-preferences.c:759
-#: ../terminal/terminal-preferences.c:760
+#: ../terminal/terminal-preferences.c:795
+#: ../terminal/terminal-preferences.c:796
 msgid "Palette entry 7"
 msgstr "パレット・エントリー７"
 
-#: ../terminal/terminal-preferences.c:770
-#: ../terminal/terminal-preferences.c:771
+#: ../terminal/terminal-preferences.c:806
+#: ../terminal/terminal-preferences.c:807
 msgid "Palette entry 8"
 msgstr "パレット・エントリー８"
 
-#: ../terminal/terminal-preferences.c:781
-#: ../terminal/terminal-preferences.c:782
+#: ../terminal/terminal-preferences.c:817
+#: ../terminal/terminal-preferences.c:818
 msgid "Palette entry 9"
 msgstr "パレット・エントリー９"
 
-#: ../terminal/terminal-preferences.c:792
-#: ../terminal/terminal-preferences.c:793
+#: ../terminal/terminal-preferences.c:828
+#: ../terminal/terminal-preferences.c:829
 msgid "Palette entry 10"
 msgstr "パレット・エントリー10"
 
-#: ../terminal/terminal-preferences.c:803
-#: ../terminal/terminal-preferences.c:804
+#: ../terminal/terminal-preferences.c:839
+#: ../terminal/terminal-preferences.c:840
 msgid "Palette entry 11"
 msgstr "パレット・エントリー11"
 
-#: ../terminal/terminal-preferences.c:814
-#: ../terminal/terminal-preferences.c:815
+#: ../terminal/terminal-preferences.c:850
+#: ../terminal/terminal-preferences.c:851
 msgid "Palette entry 12"
 msgstr "パレット・エントリー12"
 
-#: ../terminal/terminal-preferences.c:825
-#: ../terminal/terminal-preferences.c:826
+#: ../terminal/terminal-preferences.c:861
+#: ../terminal/terminal-preferences.c:862
 msgid "Palette entry 13"
 msgstr "パレット・エントリー13"
 
-#: ../terminal/terminal-preferences.c:836
-#: ../terminal/terminal-preferences.c:837
+#: ../terminal/terminal-preferences.c:872
+#: ../terminal/terminal-preferences.c:873
 msgid "Palette entry 14"
 msgstr "パレット・エントリー14"
 
-#: ../terminal/terminal-preferences.c:847
-#: ../terminal/terminal-preferences.c:848
+#: ../terminal/terminal-preferences.c:883
+#: ../terminal/terminal-preferences.c:884
 msgid "Palette entry 15"
 msgstr "パレット・エントリー15"
 
-#: ../terminal/terminal-preferences.c:858
-#: ../terminal/terminal-preferences.c:859
+#: ../terminal/terminal-preferences.c:894
+#: ../terminal/terminal-preferences.c:895
 msgid "Palette entry 16"
 msgstr "パレット・エントリー16"
 
-#: ../terminal/terminal-preferences.c:869
+#: ../terminal/terminal-preferences.c:905
 msgid "Update records"
 msgstr "記録を更新する"
 
-#: ../terminal/terminal-preferences.c:870
+#: ../terminal/terminal-preferences.c:906
 msgid "Update wtmp/utmp/lastlog records"
 msgstr "wtmp/utmp/lastlog の記録を更新する"
 
-#: ../terminal/terminal-preferences.c:880
-#: ../terminal/terminal-preferences.c:881
+#: ../terminal/terminal-preferences.c:916
+#: ../terminal/terminal-preferences.c:917
 msgid "Run shell as login shell"
 msgstr "シェルをログインシェルとして実行する"
 
-#: ../terminal/terminal-preferences.c:891
-#: ../terminal/terminal-preferences.c:892
+#: ../terminal/terminal-preferences.c:927
+#: ../terminal/terminal-preferences.c:928
 msgid "Allow bold fonts"
 msgstr "太字フォントを使用する"
 
-#: ../terminal/terminal-preferences.c:902
-#: ../terminal/terminal-preferences.c:903
+#: ../terminal/terminal-preferences.c:938
+#: ../terminal/terminal-preferences.c:939
 msgid "Font anti-aliasing"
 msgstr "フォントをアンチ・エイリアス処理する"
 
-#: ../terminal/terminal-preferences.c:913
+#: ../terminal/terminal-preferences.c:949
 msgid "Font name"
 msgstr "フォント名"
 
-#: ../terminal/terminal-preferences.c:914
+#: ../terminal/terminal-preferences.c:950
 msgid "Terminal font name"
 msgstr "Terminal フォント名"
 
-#: ../terminal/terminal-preferences.c:946
-#: ../terminal/terminal-preferences.c:947
+#: ../terminal/terminal-preferences.c:982
+#: ../terminal/terminal-preferences.c:983
 msgid "Terminal bell"
 msgstr "Terminal ベル"
 
-#: ../terminal/terminal-preferences.c:957
-#: ../terminal/terminal-preferences.c:958
+#: ../terminal/terminal-preferences.c:993
+#: ../terminal/terminal-preferences.c:994
 msgid "Show window borders by default"
 msgstr "標準でウィンドウの枠を表示する"
 
-#: ../terminal/terminal-preferences.c:968
-#: ../terminal/terminal-preferences.c:969
+#: ../terminal/terminal-preferences.c:1004
+#: ../terminal/terminal-preferences.c:1005
 msgid "Cursor blinks"
 msgstr "カーソルを点滅させる"
 
-#: ../terminal/terminal-preferences.c:979
-#: ../terminal/terminal-preferences.c:980
+#: ../terminal/terminal-preferences.c:1015
+#: ../terminal/terminal-preferences.c:1016
 msgid "Show menubar by default"
 msgstr "標準でメニューバーを表示する"
 
-#: ../terminal/terminal-preferences.c:990
+#: ../terminal/terminal-preferences.c:1026
 msgid "Autohide mouse pointer"
 msgstr "マウスポインタを自動的に隠す"
 
-#: ../terminal/terminal-preferences.c:991
+#: ../terminal/terminal-preferences.c:1027
 msgid "Whether to autohide mouse pointer"
 msgstr "マウスポインタを自動的に隠すかどうかを選択します"
 
-#: ../terminal/terminal-preferences.c:1001
-#: ../terminal/terminal-preferences.c:1002
+#: ../terminal/terminal-preferences.c:1037
+#: ../terminal/terminal-preferences.c:1038
 msgid "Show toolbars by default"
 msgstr "標準でツールバーを表示する"
 
-#: ../terminal/terminal-preferences.c:1012
-#: ../terminal/terminal-preferences.c:1013
+#: ../terminal/terminal-preferences.c:1048
+#: ../terminal/terminal-preferences.c:1049
 msgid "Confirm closing a window with multiple tabs"
 msgstr "複数のタブがあるウィンドウを閉じる場合に確認する"
 
-#: ../terminal/terminal-preferences.c:1023
+#: ../terminal/terminal-preferences.c:1059
 msgid "Cycle tabs"
 msgstr "タブを循環する"
 
-#: ../terminal/terminal-preferences.c:1024
+#: ../terminal/terminal-preferences.c:1060
 msgid "Allow cycling through tabs"
 msgstr "タブの循環を許可します"
 
-#: ../terminal/terminal-preferences.c:1034
+#: ../terminal/terminal-preferences.c:1070
 msgid "Tab close buttons"
 msgstr "タブを閉じるボタン"
 
-#: ../terminal/terminal-preferences.c:1035
+#: ../terminal/terminal-preferences.c:1071
 msgid "Show tab close buttons"
 msgstr "タブを閉じるボタンを表示する"
 
-#: ../terminal/terminal-preferences.c:1045
+#: ../terminal/terminal-preferences.c:1081
 msgid "Scrollbar setting"
 msgstr "スクロールバーの設定"
 
-#: ../terminal/terminal-preferences.c:1046
+#: ../terminal/terminal-preferences.c:1082
 msgid "Whether and where to display a scrollbar"
 msgstr "スクロールバーを表示する場所を設定します"
 
-#: ../terminal/terminal-preferences.c:1057
+#: ../terminal/terminal-preferences.c:1093
 msgid "Scrollback lines"
 msgstr "スクロールバック行数"
 
-#: ../terminal/terminal-preferences.c:1058
+#: ../terminal/terminal-preferences.c:1094
 msgid "Number of lines to keep in history"
 msgstr "履歴に残しておく行数です"
 
-#: ../terminal/terminal-preferences.c:1068
-#: ../terminal/terminal-preferences.c:1069
+#: ../terminal/terminal-preferences.c:1104
+#: ../terminal/terminal-preferences.c:1105
 msgid "Scroll on output"
 msgstr "出力でスクロールさせる"
 
-#: ../terminal/terminal-preferences.c:1079
-#: ../terminal/terminal-preferences.c:1080
+#: ../terminal/terminal-preferences.c:1115
+#: ../terminal/terminal-preferences.c:1116
 msgid "Scroll on keystroke"
 msgstr "キー入力でスクロールさせる"
 
-#: ../terminal/terminal-preferences.c:1092
-#: ../terminal/terminal-preferences.c:1093
+#: ../terminal/terminal-preferences.c:1128
+#: ../terminal/terminal-preferences.c:1129
 msgid "Disable menu shortcut key"
 msgstr "メニュー・ショートカットキーを無効にする"
 
 # FIXME:
-#: ../terminal/terminal-preferences.c:1103
-#: ../terminal/terminal-preferences.c:1104
+#: ../terminal/terminal-preferences.c:1139
+#: ../terminal/terminal-preferences.c:1140
 msgid "Disable all mnemonics"
 msgstr "全ての記憶を無効にする"
 
-#: ../terminal/terminal-preferences.c:1114
+#: ../terminal/terminal-preferences.c:1150
 msgid "Initial title"
 msgstr "最初のタイトル"
 
-#: ../terminal/terminal-preferences.c:1115
+#: ../terminal/terminal-preferences.c:1151
 msgid "Initial Terminal title"
 msgstr "最初の Terminal タイトルです"
 
-#: ../terminal/terminal-preferences.c:1125
+#: ../terminal/terminal-preferences.c:1161
 msgid "Title mode"
 msgstr "タイトルモード"
 
-#: ../terminal/terminal-preferences.c:1126
+#: ../terminal/terminal-preferences.c:1162
 msgid "Dynamic-title mode"
 msgstr "動的タイトルモードです"
 
-#: ../terminal/terminal-preferences.c:1137
-#: ../terminal/terminal-preferences.c:1138
+#: ../terminal/terminal-preferences.c:1173
+#: ../terminal/terminal-preferences.c:1174
 msgid "Term"
 msgstr "Term"
 
-#: ../terminal/terminal-preferences.c:1148
-#: ../terminal/terminal-preferences.c:1149
+#: ../terminal/terminal-preferences.c:1184
+#: ../terminal/terminal-preferences.c:1185
 msgid "Workaround VTE title bug"
 msgstr "VTE のタイトルのバグを回避します"
 
-#: ../terminal/terminal-preferences.c:1159
+#: ../terminal/terminal-preferences.c:1195
 msgid "Word chars"
 msgstr "単語文字"
 
-#: ../terminal/terminal-preferences.c:1160
+#: ../terminal/terminal-preferences.c:1196
 msgid "Word characters"
 msgstr "単語として認識する文字です"
 
-#: ../terminal/terminal-screen.c:178 ../terminal/terminal-screen.c:179
+#: ../terminal/terminal-screen.c:180 ../terminal/terminal-screen.c:181
 msgid "Custom title"
 msgstr "指定タイトル"
 
-#: ../terminal/terminal-screen.c:189 ../terminal/terminal-screen.c:190
+#: ../terminal/terminal-screen.c:191 ../terminal/terminal-screen.c:192
 msgid "Title"
 msgstr "タイトル"
 
-#: ../terminal/terminal-screen.c:421
+#: ../terminal/terminal-screen.c:426
 msgid "Unable to determine your login shell."
 msgstr "あなたのログインシェルを特定できません。"
 
-#: ../terminal/terminal-screen.c:926
+#: ../terminal/terminal-screen.c:946
 msgid "Failed to execute child"
 msgstr "子プロセスの実行に失敗しました。"
 
-#: ../terminal/terminal-screen.c:928
+#: ../terminal/terminal-screen.c:948
 msgid "Please check your system setup."
 msgstr "あなたのシステムの設定を確認して下さい。"
 
-#: ../terminal/terminal-screen.c:1167
+#: ../terminal/terminal-screen.c:1187
 msgid "Untitled"
 msgstr "無題"
 
@@ -1668,27 +1734,27 @@ msgstr ""
 "いません。今優先アプリケーションを設定\n"
 "しますか？"
 
-#: ../terminal/terminal-window.c:1563
+#: ../terminal/terminal-window.c:1564
 msgid "<b>Title:</b>"
 msgstr "<b>タイトル:</b>"
 
-#: ../terminal/terminal-window.c:1577
+#: ../terminal/terminal-window.c:1578
 msgid "Enter the title for the current terminal tab"
 msgstr "現在のターミナルのタブのタイトルを入力して下さい"
 
-#: ../terminal/terminal-window.c:1636
+#: ../terminal/terminal-window.c:1638
 msgid "X Terminal Emulator"
 msgstr "X ターミナル・エミュレータ"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1642
 msgid "Maintainer"
 msgstr "メインテナー"
 
-#: ../terminal/terminal-window.c:1641
+#: ../terminal/terminal-window.c:1643
 msgid "Icon Designer"
 msgstr "アイコン設計者"
 
-#: ../terminal/terminal-window.c:1645
+#: ../terminal/terminal-window.c:1647
 #, c-format
 msgid "Translator (%s)"
 msgstr "翻訳者 (%s)"
