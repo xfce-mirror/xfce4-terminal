@@ -1067,6 +1067,7 @@ terminal_window_screen_removed (GtkNotebook     *notebook,
   else
     {
       gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
+      GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
       active = terminal_window_get_active (window);
       terminal_screen_get_size (screen, &grid_width, &grid_height);
@@ -1777,6 +1778,7 @@ terminal_window_add (TerminalWindow *window,
 
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
+  GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
   g_signal_connect (G_OBJECT (screen), "get-context-menu",
                     G_CALLBACK (terminal_window_get_context_menu), window);
