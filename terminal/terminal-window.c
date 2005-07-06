@@ -1623,6 +1623,7 @@ terminal_window_about_idle (gpointer user_data)
     { "Daichi Kawahata", "daichik@users.sourceforge.net", "ja" },
     { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
     { "Anthony Ivanoff", "a-i@bk.ru", "ru" },
+    { "Phan Vĩnh Thịnh", "teppi@vnlinux.org", "vi" },
     { "Army Gu", "redarmy@gmail.com", "zh_CN" },
     { "Hydonsingore Sie", "hydonsingore@mail.educities.edu.tw", "zh_TW" },
     { NULL, NULL, NULL },
