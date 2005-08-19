@@ -1,0 +1,148 @@
+dnl $Id$
+dnl
+dnl Copyright (c) 2003-2005
+dnl         os-cillation e.K. All rights reserved.
+dnl
+dnl Written by Benedikt Meurer <benny@xfce.org>.
+dnl
+
+dnl ***************************
+dnl *** Version information ***
+dnl ***************************
+m4_define([terminal_version_major], [0])
+m4_define([terminal_version_minor], [2])
+m4_define([terminal_version_micro], [5])
+m4_define([terminal_version_build], [@REVISION@])
+m4_define([terminal_version_tag], [svn])
+m4_define([terminal_version_dbus], [3])
+m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()ifelse(terminal_version_tag(), [], [], [terminal_version_tag()-terminal_version_build()])])
+
+dnl ***************************
+dnl *** Initialize autoconf ***
+dnl ***************************
+AC_COPYRIGHT([Copyright (c) 2003-2005
+        os-cillation e.K. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.])
+AC_INIT([Terminal], [terminal_version()], [http://bugs.os-cillation.com/], [Terminal])
+AC_REVISION([$Id$])
+AC_PREREQ([2.50])
+
+dnl ***************************
+dnl *** Initialize automake ***
+dnl ***************************
+AM_INIT_AUTOMAKE([AC_PACKAGE_TARNAME()], [AC_PACKAGE_VERSION()])
+AM_CONFIG_HEADER([config.h])
+AM_MAINTAINER_MODE()
+
+dnl ***********************************
+dnl *** Subst D-BUS service version ***
+dnl ***********************************
+TERMINAL_VERSION_DBUS=terminal_version_dbus()
+AC_SUBST([TERMINAL_VERSION_DBUS])
+
+dnl *******************************
+dnl *** Check for UNIX variants ***
+dnl *******************************
+AC_AIX()
+AC_MINIX()
+AC_ISC_POSIX()
+
+dnl ********************************
+dnl *** Check for basic programs ***
+dnl ********************************
+AC_PROG_CC()
+AC_PROG_INSTALL()
+AC_PROG_INTLTOOL([0.31], [no-xml])
+AC_PROG_LIBTOOL()
+
+dnl **********************************
+dnl *** Check for standard headers ***
+dnl **********************************
+AC_CHECK_HEADERS([ctype.h errno.h limits.h pwd.h time.h])
+
+dnl ******************************
+dnl *** Check for i18n support ***
+dnl ******************************
+XDT_I18N([de en_GB es fi fr he hu it ja nl ru vi zh_CN zh_TW])
+
+dnl ***********************************
+dnl *** Check for required packages ***
+dnl ***********************************
+XDT_CHECK_PACKAGE([EXO], [exo-0.3], [0.3.0])
+XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.2.0])
+XDT_CHECK_PACKAGE([VTE], [vte], [0.11.11])
+
+dnl *************************************************
+dnl *** Optional support for startup notification ***
+dnl *************************************************
+XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
+                           [libstartup-notification-1.0],
+                           [0.4], [startup-notification],
+                           [startup notification library])
+
+dnl **********************************
+dnl *** Optional support for D-BUS ***
+dnl **********************************
+XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1], [0.22],
+                           [dbus], [D-BUS GLib bindings])
+if test x"$DBUS_FOUND" = x"yes"; then
+  AC_MSG_CHECKING([whether to use new D-BUS API])
+  if $PKG_CONFIG --atleast-version 0.31 dbus-1 >/dev/null 2>&1; then
+    AC_DEFINE([DBUS_USE_NEW_API], [1], [Define to use new D-BUS API])
+    AC_MSG_RESULT([yes])
+  else
+    AC_MSG_RESULT([no])
+  fi
+fi
+
+dnl **************************
+dnl *** Check for xsltproc ***
+dnl **************************
+AC_ARG_ENABLE([xsltproc], [AC_HELP_STRING([--enable-xsltproc], [Use xsltproc to build documentation [default=no]])],, [enable_xsltproc=no])
+if test x"$enable_xsltproc" = x"yes"; then
+  AC_PATH_PROG([XSLTPROC], [xsltproc], [no])
+  if test x"$XSLTPROC" = x"no"; then
+    enable_xsltproc=no
+  fi
+fi
+AM_CONDITIONAL([ENABLE_XSLTPROC], [test x"$enable_xsltproc" = x"yes"])
+
+dnl ***********************************
+dnl *** Check for debugging support ***
+dnl ***********************************
+AC_ARG_ENABLE([debug], AC_HELP_STRING([--enable-debug], [Enable debugging support]), [], [enable_debug=no])
+AC_MSG_CHECKING([whether to enable debugging support])
+if test x"$enable_debug" != x"no"; then
+  CFLAGS="$CFLAGS -O0 -g3 -DG_DISABLE_DEPRECATED -Werror -Wall"
+  AC_MSG_RESULT([yes])
+else
+  CPPFLAGS="$CPPFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -DG_DISABLE_CHECKS"
+  AC_MSG_RESULT([no])
+
+  AC_MSG_CHECKING([whether $LD accepts -O1])
+  case `$LD -O1 -v 2>&1 </dev/null` in
+  *GNU* | *'with BFD'*)
+    LDFLAGS="$LDFLAGS -Wl,-O1"
+    AC_MSG_RESULT([yes])
+    ;;
+  *)
+    AC_MSG_RESULT([no])
+    ;;
+  esac
+fi
+
+AC_OUTPUT([
+Makefile
+Terminal.spec
+doc/Makefile
+doc/C/Makefile
+doc/C/Terminal.xml
+doc/C/images/Makefile
+helpers/Makefile
+pixmaps/Makefile
+po/Makefile.in
+terminal/stock-icons/Makefile
+terminal/Makefile
+terminal/terminal-config.h
+])

@@ -40,11 +40,15 @@
 #include <exo/exo.h>
 
 #include <gdk/gdkkeysyms.h>
+#if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
+#endif
 
 #ifdef HAVE_LIBSTARTUP_NOTIFICATION
 #include <libsn/sn-launchee.h>
 #endif
+
+#include <libxfcegui4/libxfcegui4.h>
 
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper-dialog.h>
@@ -375,12 +379,14 @@ terminal_window_init (TerminalWindow *window)
   if (G_UNLIKELY (bval))
     terminal_window_update_mnemonics (window);
 
+#if defined(GDK_WINDOWING_X11)
   /* setup fullscreen mode */
   if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
     {
       action = gtk_action_group_get_action (window->action_group, "fullscreen");
       g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
     }
+#endif
 
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
                                    "homogeneous", TRUE,
@@ -453,7 +459,7 @@ terminal_window_finalize (GObject *object)
 static void
 terminal_window_show (GtkWidget *widget)
 {
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION
+#if defined(GDK_WINDOWING_X11) && defined(HAVE_LIBSTARTUP_NOTIFICATION)
   SnLauncheeContext *sn_context = NULL;
   TerminalWindow    *window = TERMINAL_WINDOW (widget);
   GdkScreen         *screen;
@@ -479,7 +485,7 @@ terminal_window_show (GtkWidget *widget)
 
   GTK_WIDGET_CLASS (parent_class)->show (widget);
 
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION
+#if defined(GDK_WINDOWING_X11) && defined(HAVE_LIBSTARTUP_NOTIFICATION)
   if (G_LIKELY (sn_context != NULL))
     {
       sn_launchee_context_complete (sn_context);

@@ -35,6 +35,8 @@
 
 #include <exo/exo.h>
 
+#include <libxfcegui4/libxfcegui4.h>
+
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>
 

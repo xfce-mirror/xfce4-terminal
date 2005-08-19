@@ -46,6 +46,10 @@
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
 
+#if defined(GDK_WINDOWING_X11)
+#include <gdk/gdkx.h>
+#endif
+
 
 
 enum
@@ -496,7 +500,9 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   if (GTK_WIDGET_REALIZED (screen->terminal))
     {
+#ifdef GDK_WINDOWING_X11
       result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_WINDOW_XWINDOW (screen->terminal->window));
+#endif
       result[n++] = g_strdup_printf ("DISPLAY=%s", gdk_display_get_name (gtk_widget_get_display (screen->terminal)));
     }
 

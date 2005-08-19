@@ -70,6 +70,7 @@ Terminal_CFLAGS =							\
 	$(DBUS_CFLAGS)							\
 	$(EXO_CFLAGS)							\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
+	$(LIBXFCEGUI4_CFLAGS)						\
 	$(VTE_CFLAGS)
 
 Terminal_LDFLAGS =							\
@@ -77,6 +78,7 @@ Terminal_LDFLAGS =							\
 	$(DBUS_LIBS)							\
 	$(EXO_LIBS)							\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
+	$(LIBXFCEGUI4_LIBS)						\
 	$(VTE_LIBS)
 
 # install symlink to 'terminal'

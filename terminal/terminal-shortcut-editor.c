@@ -30,6 +30,12 @@
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-shortcut-editor.h>
 
+#if defined(GDK_WINDOWING_WIN32)
+#include <gdk/gdkwin32.h>
+#elif defined(GDK_WINDOWING_X11)
+#include <gdk/gdkx.h>
+#endif
+
 
 
 #define TERMINAL_RESPONSE_CLEAR   1
@@ -258,6 +264,24 @@ terminal_shortcut_editor_finalize (GObject *object)
 static gboolean
 is_modifier (guint keycode)
 {
+#if defined(GDK_WINDOWING_WIN32)
+  switch (keycode)
+    {
+    case VK_ALT:
+    case VK_LALT:
+    case VK_RALT:
+    case VK_CONTROL:
+    case VK_LCONTROL:
+    case VK_RCONTROL:
+    case VK_SHIFT:
+    case VK_LSHIFT:
+    case VK_RSHIFT:
+      return TRUE;
+
+    default:
+      return FALSE;
+    }
+#elif defined(GDK_WINDOWING_X11)
   XModifierKeymap *keymap;
   gboolean         result = FALSE;
   gint             n;
@@ -273,6 +297,9 @@ is_modifier (guint keycode)
   XFreeModifiermap (keymap);
 
   return result;
+#else
+  return FALSE;
+#endif
 }
 
 
