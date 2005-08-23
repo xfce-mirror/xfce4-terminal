@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.5svn\n"
+"Project-Id-Version: Terminal 0.2.5svn-r\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-16 03:07+0900\n"
-"PO-Revision-Date: 2005-08-16 03:13+0900\n"
+"POT-Creation-Date: 2005-08-20 18:45+0900\n"
+"PO-Revision-Date: 2005-08-20 19:00+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -117,13 +117,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
-"  --fullscreen                        最後に指定したウィンドウを全画面モー"
-"ド\n"
-"                                      にセットします; 一つのウィンドウのみ"
-"に\n"
-"                                      適用されます;コマンド行から作成する"
-"各々\n"
-"                                      のウィンドウに対して一度指定できます"
+"  --fullscreen                        最後に指定したウィンドウを全画面\n"
+"                                      モードにセットします; 一つのウィン\n"
+"                                      ドウのみに適用されます; コマンド行\n"
+"                                      から作成する各々のウィンドウに対して\n"
+"                                      一度指定できます"
 
 #: ../terminal/main.c:74
 msgid ""
@@ -163,10 +161,9 @@ msgid ""
 msgstr ""
 "  --show-borders                      最後に指定したウィンドウでウィンドウ\n"
 "                                      の枠を表示します; 一つのウィンドウ\n"
-"                                      のみに適用されます; コマンド行から作"
-"成\n"
-"                                      する各々のウィンドウに対して一度指定\n"
-"                                      できます"
+"                                      のみに適用されます; コマンド行から\n"
+"                                      作成する各々のウィンドウに対して一度\n"
+"                                      指定できます"
 
 #: ../terminal/main.c:89
 msgid ""
@@ -178,10 +175,9 @@ msgid ""
 msgstr ""
 "  --hide-borders                      最後に指定したウィンドウでウィンドウ\n"
 "                                      の枠を表示しません; 一つのウィンドウ\n"
-"                                      のみに適用されます; コマンド行から作"
-"成\n"
-"                                      する各々のウィンドウに対して一度指定\n"
-"                                      できます"
+"                                      のみに適用されます; コマンド行から\n"
+"                                      作成する各々のウィンドウに対して一度\n"
+"                                      指定できます"
 
 #: ../terminal/main.c:94
 msgid ""
@@ -207,10 +203,9 @@ msgid ""
 msgstr ""
 "  --hide-toolbars                     最後に指定したウィンドウでツールバー\n"
 "                                      を表示しません; 一つのウィンドウのみ\n"
-"                                      に適用されます; コマンド行から作成す"
-"る\n"
-"                                      各々のウィンドウに対して一度指定でき\n"
-"                                      ます"
+"                                      に適用されます; コマンド行から作成\n"
+"                                      する各々のウィンドウに対して一度指定\n"
+"                                      できます"
 
 #: ../terminal/main.c:105
 msgid ""
@@ -247,7 +242,7 @@ msgstr ""
 "                                      します"
 
 #: ../terminal/main.c:137 ../terminal/terminal-preferences.c:1152
-#: ../terminal/terminal-shortcut-editor.c:115 ../Terminal.desktop.in.h:1
+#: ../terminal/terminal-shortcut-editor.c:124 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -396,8 +391,8 @@ msgstr "その他..."
 #: ../terminal/terminal-preferences.c:436
 #: ../terminal/terminal-preferences.c:447
 #: ../terminal/terminal-preferences.c:458
-#: ../terminal/terminal-shortcut-editor.c:205
-#: ../terminal/terminal-shortcut-editor.c:367
+#: ../terminal/terminal-shortcut-editor.c:214
+#: ../terminal/terminal-shortcut-editor.c:397
 msgid "Disabled"
 msgstr "無効"
 
@@ -842,7 +837,7 @@ msgstr "メニュー・ショートカットキーを無効にする(_E) (標準
 
 #: ../terminal/terminal-preferences-dialog.c:1005
 msgid "Shortcuts"
-msgstr "各ショートカット"
+msgstr "ショートカット"
 
 #: ../terminal/terminal-preferences-dialog.c:1023
 msgid "<b>Compatibility</b>"
@@ -918,8 +913,8 @@ msgid "Advanced"
 msgstr "上級者"
 
 #: ../terminal/terminal-preferences-dialog.c:1202
-#: ../terminal/terminal-window.c:1194 ../terminal/terminal-window.c:1416
-#: ../terminal/terminal-window.c:1443 ../terminal/terminal-window.c:1516
+#: ../terminal/terminal-window.c:1200 ../terminal/terminal-window.c:1422
+#: ../terminal/terminal-window.c:1449 ../terminal/terminal-window.c:1522
 #, c-format
 msgid "Unable to launch online help: %s"
 msgstr "オンライン・ヘルプを実行できません: %s"
@@ -997,7 +992,7 @@ msgid "Fullscreen"
 msgstr "全画面表示"
 
 #: ../terminal/terminal-preferences.c:434
-#: ../terminal/terminal-preferences.c:435 ../terminal/terminal-window.c:1550
+#: ../terminal/terminal-preferences.c:435 ../terminal/terminal-window.c:1556
 msgid "Set Title"
 msgstr "タイトルを設定"
 
@@ -1369,71 +1364,71 @@ msgstr "単語文字"
 msgid "Word characters"
 msgstr "単語として認識する文字です"
 
-#: ../terminal/terminal-screen.c:180 ../terminal/terminal-screen.c:181
+#: ../terminal/terminal-screen.c:184 ../terminal/terminal-screen.c:185
 msgid "Custom title"
 msgstr "指定タイトル"
 
-#: ../terminal/terminal-screen.c:191 ../terminal/terminal-screen.c:192
+#: ../terminal/terminal-screen.c:195 ../terminal/terminal-screen.c:196
 msgid "Title"
 msgstr "タイトル"
 
-#: ../terminal/terminal-screen.c:426
+#: ../terminal/terminal-screen.c:430
 msgid "Unable to determine your login shell."
 msgstr "あなたのログインシェルを特定できません。"
 
-#: ../terminal/terminal-screen.c:946
+#: ../terminal/terminal-screen.c:952
 msgid "Failed to execute child"
 msgstr "子プロセスの実行に失敗しました。"
 
-#: ../terminal/terminal-screen.c:948
+#: ../terminal/terminal-screen.c:954
 msgid "Please check your system setup."
 msgstr "あなたのシステムの設定を確認して下さい。"
 
-#: ../terminal/terminal-screen.c:1187
+#: ../terminal/terminal-screen.c:1193
 msgid "Untitled"
 msgstr "無題"
 
-#: ../terminal/terminal-shortcut-editor.c:85
+#: ../terminal/terminal-shortcut-editor.c:94
 msgid "File"
 msgstr "ファイル"
 
-#: ../terminal/terminal-shortcut-editor.c:95
+#: ../terminal/terminal-shortcut-editor.c:104
 msgid "Edit"
 msgstr "編集"
 
-#: ../terminal/terminal-shortcut-editor.c:105
+#: ../terminal/terminal-shortcut-editor.c:114
 msgid "View"
 msgstr "表示"
 
-#: ../terminal/terminal-shortcut-editor.c:124
+#: ../terminal/terminal-shortcut-editor.c:133
 msgid "Go"
 msgstr "移動"
 
-#: ../terminal/terminal-shortcut-editor.c:141
+#: ../terminal/terminal-shortcut-editor.c:150
 msgid "Help"
 msgstr "ヘルプ"
 
-#: ../terminal/terminal-shortcut-editor.c:224
+#: ../terminal/terminal-shortcut-editor.c:233
 msgid "Action"
 msgstr "アクション"
 
-#: ../terminal/terminal-shortcut-editor.c:231
+#: ../terminal/terminal-shortcut-editor.c:240
 msgid "Shortcut key"
 msgstr "ショートカットキー"
 
-#: ../terminal/terminal-shortcut-editor.c:309
+#: ../terminal/terminal-shortcut-editor.c:339
 msgid "Compose shortcut"
 msgstr "ショートカットの編集"
 
-#: ../terminal/terminal-shortcut-editor.c:328
+#: ../terminal/terminal-shortcut-editor.c:358
 msgid "Compose shortcut for:"
 msgstr "このショートカットキーを編集:"
 
-#: ../terminal/terminal-shortcut-editor.c:351
+#: ../terminal/terminal-shortcut-editor.c:381
 msgid "Failed to acquire keyboard"
 msgstr "キーボードの取得に失敗しました"
 
-#: ../terminal/terminal-shortcut-editor.c:352
+#: ../terminal/terminal-shortcut-editor.c:382
 msgid "Another application has already acquired control over your keyboard."
 msgstr "既に他のアプリケーションがキーボードの制御を取得しています。"
 
@@ -1449,7 +1444,7 @@ msgstr "このタブを閉じる"
 msgid "_Detach Tab"
 msgstr "タブを取外す(_D)"
 
-#: ../terminal/terminal-tab-header.c:312 ../terminal/terminal-window.c:199
+#: ../terminal/terminal-tab-header.c:312 ../terminal/terminal-window.c:203
 msgid "C_lose Tab"
 msgstr "タブを閉じる(_L)"
 
@@ -1457,23 +1452,23 @@ msgstr "タブを閉じる(_L)"
 msgid "Toolbar Editor"
 msgstr "ツールバー・エディター"
 
-#: ../terminal/terminal-widget.c:318
+#: ../terminal/terminal-widget.c:322
 msgid "Copy Email Address"
 msgstr "Eメールアドレスをコピーする"
 
-#: ../terminal/terminal-widget.c:319
+#: ../terminal/terminal-widget.c:323
 msgid "Compose Email"
 msgstr "Eメールを編集する"
 
-#: ../terminal/terminal-widget.c:323
+#: ../terminal/terminal-widget.c:327
 msgid "Copy Link Address"
 msgstr "リンクのアドレスをコピーする"
 
-#: ../terminal/terminal-widget.c:324
+#: ../terminal/terminal-widget.c:328
 msgid "Open Link"
 msgstr "リンクを開く"
 
-#: ../terminal/terminal-widget.c:475
+#: ../terminal/terminal-widget.c:479
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
@@ -1482,7 +1477,7 @@ msgstr ""
 "MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
 "式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:491
+#: ../terminal/terminal-widget.c:495
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
@@ -1490,206 +1485,206 @@ msgstr ""
 "ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%"
 "d) です\n"
 
-#: ../terminal/terminal-widget.c:517
+#: ../terminal/terminal-widget.c:521
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) で"
 "す\n"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:200
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:201
 msgid "Open _Tab"
 msgstr "タブを開く(_T)"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:201
 msgid "Open a new terminal tab"
 msgstr "新しいタブをこのターミナルで開きます"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:202
 msgid "Open _Terminal"
 msgstr "ターミナルを開く(_O)"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:202
 msgid "Open a new terminal window"
 msgstr "新しいターミナル・ウィンドウを開きます"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:203
 msgid "Close the current terminal tab"
 msgstr "現在のターミナルのタブを閉じます"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:204
 msgid "_Close Window"
 msgstr "ウィンドウを閉じる(_C)"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:204
 msgid "Close the terminal window"
 msgstr "このターミナル・ウィンドウを閉じます"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:205
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:206
 msgid "_Copy"
 msgstr "コピー(_C)"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:206
 msgid "Copy to clipboard"
 msgstr "クリップボードへコピーします"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:207
 msgid "_Paste"
 msgstr "貼り付け(_P)"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:207
 msgid "Paste from clipboard"
 msgstr "クリップボードから貼り付けます"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:208
 msgid "_Applications..."
 msgstr "アプリケーション(_A)..."
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:208
 msgid "Customize your preferred applications"
 msgstr "好みのアプリケーションを指定します"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:209
 msgid "_Toolbars..."
 msgstr "ツールバー(_T)..."
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:209
 msgid "Customize the toolbars"
 msgstr "ツールバーをカスタマイズします"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:210
 msgid "_Preferences..."
 msgstr "環境設定(_P)..."
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:210
 msgid "Open the Terminal preferences dialog"
 msgstr "Terminal の環境設定ダイアログを開きます"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:211
 msgid "_View"
 msgstr "表示(_V)"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:212
 msgid "_Terminal"
 msgstr "ターミナル(_T)"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:213
 msgid "_Set Title..."
 msgstr "タイトルを設定(_S)..."
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:213
 msgid "Set a custom title for the current tab"
 msgstr "現在のタブに指定したタイトルを設定します"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:214
 msgid "_Reset"
 msgstr "リセット(_R)"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:215
 msgid "Reset and C_lear"
 msgstr "リセットして消去(_L)"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:216
 msgid "_Go"
 msgstr "タブ(_G)"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:217
 msgid "_Previous Tab"
 msgstr "前のタブ(_P)"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:217
 msgid "Switch to previous tab"
 msgstr "前のタブに切替えます"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:218
 msgid "_Next Tab"
 msgstr "次のタブ(_N)"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:218
 msgid "Switch to next tab"
 msgstr "次のタブに切替えます"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:219
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:220
 msgid "_Contents"
 msgstr "目次(_C)"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:220
 msgid "Display help contents"
 msgstr "ヘルプの目次を表示します"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:221
 msgid "_Report a bug"
 msgstr "バグを報告(_R)"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:221
 msgid "Report a bug in Terminal"
 msgstr "Terminal のバグを報告します"
 
-#: ../terminal/terminal-window.c:219 ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:223 ../terminal/terminal-window.c:225
 msgid "_About"
 msgstr "このプログラムについて(_A)"
 
-#: ../terminal/terminal-window.c:219 ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:223 ../terminal/terminal-window.c:225
 msgid "Display information about Terminal"
 msgstr "Terminal についての情報を表示します"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:227
 msgid "_Input Methods"
 msgstr "文字の入力方式(_I)"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:232
 msgid "Show _Menubar"
 msgstr "メニューバーを表示(_M)"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:232
 msgid "Show/hide the menubar"
 msgstr "メニューバーを表示/隠します"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:233
 msgid "Show _Toolbars"
 msgstr "ツールバーを表示(_T)"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:233
 msgid "Show/hide the toolbars"
 msgstr "ツールバーを表示/隠します"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:234
 msgid "Show Window _Borders"
 msgstr "ウィンドウの枠を表示(_B)"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:234
 msgid "Show/hide the window decorations"
 msgstr "ウィンドウの装飾枠を表示/隠します"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:235
 msgid "_Fullscreen"
 msgstr "全画面表示(_F)"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:235
 msgid "Toggle fullscreen mode"
 msgstr "全画面モードを切替えます"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:539
 msgid "Warning"
 msgstr "警告"
 
-#: ../terminal/terminal-window.c:544
+#: ../terminal/terminal-window.c:550
 msgid "Close all tabs"
 msgstr "全てのタブを閉じる"
 
-#: ../terminal/terminal-window.c:563
+#: ../terminal/terminal-window.c:569
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -1698,15 +1693,15 @@ msgstr ""
 "このウィンドウで %d のタブが開いています。\n"
 "このウィンドウを閉じると全てのタブも閉じます。"
 
-#: ../terminal/terminal-window.c:566
+#: ../terminal/terminal-window.c:572
 msgid "Close all tabs?"
 msgstr "全てのタブを閉じますか？"
 
-#: ../terminal/terminal-window.c:579
+#: ../terminal/terminal-window.c:585
 msgid "Do _not ask me again"
 msgstr "二度と尋ねない(_N)"
 
-#: ../terminal/terminal-window.c:958
+#: ../terminal/terminal-window.c:964
 msgid ""
 "You did not choose your preferred Web\n"
 "Browser yet. Do you want to setup your\n"
@@ -1716,7 +1711,7 @@ msgstr ""
 "いません。今優先アプリケーションを設定\n"
 "しますか？"
 
-#: ../terminal/terminal-window.c:959
+#: ../terminal/terminal-window.c:965
 msgid ""
 "You did not choose your preferred Mail\n"
 "Reader yet. Do you want to setup your\n"
@@ -1726,27 +1721,27 @@ msgstr ""
 "いません。今優先アプリケーションを設定\n"
 "しますか？"
 
-#: ../terminal/terminal-window.c:1564
+#: ../terminal/terminal-window.c:1570
 msgid "<b>Title:</b>"
 msgstr "<b>タイトル:</b>"
 
-#: ../terminal/terminal-window.c:1578
+#: ../terminal/terminal-window.c:1584
 msgid "Enter the title for the current terminal tab"
 msgstr "現在のターミナルのタブのタイトルを入力して下さい"
 
-#: ../terminal/terminal-window.c:1639
+#: ../terminal/terminal-window.c:1645
 msgid "X Terminal Emulator"
 msgstr "X ターミナル・エミュレータ"
 
-#: ../terminal/terminal-window.c:1643
+#: ../terminal/terminal-window.c:1649
 msgid "Maintainer"
 msgstr "メインテナー"
 
-#: ../terminal/terminal-window.c:1644
+#: ../terminal/terminal-window.c:1650
 msgid "Icon Designer"
-msgstr "アイコン設計者"
+msgstr "アイコンデザイナー"
 
-#: ../terminal/terminal-window.c:1648
+#: ../terminal/terminal-window.c:1654
 #, c-format
 msgid "Translator (%s)"
 msgstr "翻訳者 (%s)"
