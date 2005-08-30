@@ -125,6 +125,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   AtkRelationSet    *relations;
   AtkRelation       *relation;
   AtkObject         *object;
+  GSList            *group;
   gint               index;
 
   /* register stock icons required for the preferences dialog */
@@ -637,7 +638,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (table);
 
   label = g_object_new (GTK_TYPE_LABEL,
-                        "label", _("_Text color:"),
+                        "label", _("_Text and cursor color:"),
                         "use-underline", TRUE,
                         "xalign", 0.0,
                         NULL);
@@ -650,11 +651,28 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (align);
 
-  button = g_object_new (GTK_TYPE_COLOR_BUTTON,
-                         "title", _("Choose terminal text color"),
-                         NULL);
+  hbox = gtk_hbox_new (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (align), hbox);
+  gtk_widget_show (hbox);
+
+  button = g_object_new (GTK_TYPE_COLOR_BUTTON, "title", _("Choose terminal text color"), NULL);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-foreground", G_OBJECT (button), "color");
-  gtk_container_add (GTK_CONTAINER (align), button);
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_widget_show (button);
+
+  /* set Atk name/description and label relation for the button */
+  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
+  object = gtk_widget_get_accessible (button);
+  atk_object_set_name (object, _("Color Selector"));
+  atk_object_set_description (object, _("Open a dialog to specify the color"));
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
+
+  button = g_object_new (GTK_TYPE_COLOR_BUTTON, "title", _("Choose terminal cursor color"), NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-cursor", G_OBJECT (button), "color");
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
@@ -702,17 +720,53 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
 
-  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Cursor and highlight</b>"), "use-markup", TRUE, NULL);
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Text Selection</b>"), "use-markup", TRUE, NULL);
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
 
-  table = gtk_table_new (3, 3, FALSE);
+  table = gtk_table_new (2, 2, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
   gtk_container_set_border_width (GTK_CONTAINER (table), 12);
   gtk_container_add (GTK_CONTAINER (frame), table);
   gtk_widget_show (table);
 
+  button = gtk_radio_button_new_with_mnemonic (NULL, _("Use _default color"));
+  g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (g_object_notify), "active");
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-selection-use-default", G_OBJECT (button), "active");
+  gtk_tooltips_set_tip (dialog->tooltips, button, _("Use the default text selection background color"), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  group = gtk_radio_button_get_group (GTK_RADIO_BUTTON (button));
+  gtk_widget_show (button);
+
+  button = gtk_radio_button_new_with_mnemonic (group, _("Use _custom color"));
+  g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (g_object_notify), "active");
+  exo_mutual_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-selection-use-default", G_OBJECT (button), "active");
+  gtk_tooltips_set_tip (dialog->tooltips, button, _("Use a custom text selection background color"), NULL);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (button);
+
+  align = gtk_alignment_new (0.0, 0.5, 0.0, 0.0);
+  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (align);
+
+  button = g_object_new (GTK_TYPE_COLOR_BUTTON, "title", _("Choose terminal text selection background color"), NULL);
+  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-selection-use-default", G_OBJECT (button), "sensitive");
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-selection", G_OBJECT (button), "color");
+  gtk_container_add (GTK_CONTAINER (align), button);
+  gtk_widget_show (button);
+
+  /* set Atk name/description and label relation for the button */
+  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
+  object = gtk_widget_get_accessible (button);
+  atk_object_set_name (object, _("Color Selector"));
+  atk_object_set_description (object, _("Open a dialog to specify the color"));
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
+
+#if 0
   button = gtk_check_button_new_with_mnemonic (_("Use default colors"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-use-default", G_OBJECT (button), "active");
   gtk_tooltips_set_tip (dialog->tooltips, button, _("Use default cursor and highlight colors"), NULL);
@@ -785,6 +839,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
+#endif
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);

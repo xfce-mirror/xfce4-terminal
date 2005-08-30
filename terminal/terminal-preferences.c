@@ -78,9 +78,9 @@ enum
   PROP_BINDING_DELETE,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
-  PROP_COLOR_USE_DEFAULT,
   PROP_COLOR_CURSOR,
-  PROP_COLOR_HIGHLIGHT,
+  PROP_COLOR_SELECTION,
+  PROP_COLOR_SELECTION_USE_DEFAULT,
   PROP_COLOR_PALETTE1,
   PROP_COLOR_PALETTE2,
   PROP_COLOR_PALETTE3,
@@ -688,17 +688,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:color-use-default:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_USE_DEFAULT,
-                                   g_param_spec_boolean ("color-use-default",
-                                                        _("Use default colors"),
-                                                        _("Use default cursor and highlight colors"),
-                                                        TRUE,
-                                                        G_PARAM_READWRITE));
-
-  /**
    * TerminalPreferences:color-cursor:
    **/
   g_object_class_install_property (gobject_class,
@@ -710,14 +699,25 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:color-highlight:
+   * TerminalPreferences:color-selection:
    **/
   g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_HIGHLIGHT,
-                                   g_param_spec_string ("color-highlight",
-                                                        _("Highlight color"),
-                                                        _("Terminal highlight color"),
+                                   PROP_COLOR_SELECTION,
+                                   g_param_spec_string ("color-selection",
+                                                        _("Selection color"),
+                                                        _("Terminal selection color"),
                                                         "White",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:color-selection-use-default:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_COLOR_SELECTION_USE_DEFAULT,
+                                   g_param_spec_boolean ("color-selection-use-default",
+                                                        _("Use default selection color"),
+                                                        _("Use default selection color"),
+                                                        TRUE,
                                                         G_PARAM_READWRITE));
 
   /**

@@ -74,6 +74,7 @@ enum
   TARGET_STRING,
   TARGET_TEXT_PLAIN,
   TARGET_MOZ_URL,
+  TARGET_APPLICATION_X_COLOR,
 };
 
 
@@ -136,6 +137,7 @@ static GtkTargetEntry targets[] =
   { "COMPOUND_TEXT", 0, TARGET_COMPOUND_TEXT },
   { "STRING", 0, TARGET_STRING },
   { "text/plain", 0, TARGET_TEXT_PLAIN },
+  { "application/x-color", 0, TARGET_APPLICATION_X_COLOR },
 };
 
 
@@ -452,7 +454,9 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
                                     guint             time)
 {
   const guint16 *ucs;
+  GdkColor       color;
   GString       *str;
+  GValue         value = { 0, };
   gchar        **uris;
   gchar         *filename;
   gchar         *text;
@@ -543,6 +547,28 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
               vte_terminal_feed_child (VTE_TERMINAL (widget), text, strlen (text));
               g_strfreev (uris);
             }
+        }
+      break;
+
+    case TARGET_APPLICATION_X_COLOR:
+      if (selection_data->format != 16 || selection_data->length != 8)
+        {
+          g_printerr (_("Received invalid color data: Wrong format (%d) or length (%d)\n"),
+                      selection_data->format, selection_data->length);
+        }
+      else
+        {
+          /* get the color from the selection data (ignoring the alpha setting) */
+          color.red = ((guint16 *) selection_data->data)[0];
+          color.green = ((guint16 *) selection_data->data)[1];
+          color.blue = ((guint16 *) selection_data->data)[2];
+
+          /* prepare the value */
+          g_value_init (&value, GDK_TYPE_COLOR);
+          g_value_take_boxed (&value, &color);
+
+          /* change the background to the specified color */
+          g_object_set_property (G_OBJECT (TERMINAL_WIDGET (widget)->preferences), "color-background", &value);
         }
       break;
     }

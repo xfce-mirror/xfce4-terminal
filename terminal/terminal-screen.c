@@ -271,9 +271,9 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::binding-delete", G_CALLBACK (terminal_screen_update_binding_delete), screen,
                     "swapped-signal::notify::color-foreground", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-background", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-cursor", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-highlight", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::color-selection", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::color-selection-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette1", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette2", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette3", G_CALLBACK (terminal_screen_update_colors), screen,
@@ -610,16 +610,16 @@ terminal_screen_update_colors (TerminalScreen *screen)
   GdkColor bg;
   GdkColor fg;
   GdkColor cursor;
-  GdkColor highlight;
-  gboolean use_default;
+  GdkColor selection;
+  gboolean selection_use_default;
   gchar    name[32];
   guint    n;
 
   query_color (screen->preferences, "color-background", &bg);
   query_color (screen->preferences, "color-foreground", &fg);
   query_color (screen->preferences, "color-cursor", &cursor);
-  query_color (screen->preferences, "color-highlight", &highlight);
-  g_object_get (G_OBJECT (screen->preferences), "color-use-default", &use_default, NULL);
+  query_color (screen->preferences, "color-selection", &selection);
+  g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &selection_use_default, NULL);
 
   for (n = 0; n < 16; ++n)
     {
@@ -629,10 +629,8 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   vte_terminal_set_colors (VTE_TERMINAL (screen->terminal), &fg, &bg, palette, 16);
   vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), &bg);
-  vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), 
-                                 use_default ? NULL : &cursor);
-  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal),
-                                    use_default ? NULL : &highlight);
+  vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), &cursor);
+  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
 }
 
 
