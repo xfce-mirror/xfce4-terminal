@@ -199,7 +199,7 @@ static GtkActionEntry action_entries[] =
 {
   { "file-menu", NULL, N_ ("_File"), NULL, NULL, NULL, },
   { "new-tab", "terminal-newtab", N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
-  { "new-window", "terminal-newwindow", N_ ("Open _Terminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
+  { "new-window", "terminal-newwindow", N_ ("Open T_erminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
   { "close-tab", "terminal-closetab", N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
   { "close-window", "terminal-closewindow", N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
@@ -207,7 +207,7 @@ static GtkActionEntry action_entries[] =
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
   { "edit-helpers", NULL, N_ ("_Applications..."), NULL, N_ ("Customize your preferred applications"), G_CALLBACK (terminal_window_action_edit_helpers), },
   { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
-  { "preferences", GTK_STOCK_PREFERENCES, N_ ("_Preferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
+  { "preferences", GTK_STOCK_PREFERENCES, N_ ("Pr_eferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
   { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
   { "set-title", NULL, N_ ("_Set Title..."), NULL, N_ ("Set a custom title for the current tab"), G_CALLBACK (terminal_window_action_set_title), },
