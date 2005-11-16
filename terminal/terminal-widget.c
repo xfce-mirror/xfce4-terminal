@@ -468,7 +468,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
     case TARGET_UTF8_STRING:
     case TARGET_COMPOUND_TEXT:
     case TARGET_TEXT:
-      text = gtk_selection_data_get_text (selection_data);
+      text = (gchar *) gtk_selection_data_get_text (selection_data);
       if (G_LIKELY (text != NULL))
         {
           if (G_LIKELY (*text != '\0'))
@@ -486,7 +486,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       else
         {
           vte_terminal_feed_child (VTE_TERMINAL (widget),
-                                   selection_data->data,
+                                   (const gchar *) selection_data->data,
                                    selection_data->length);
         }
       break;
@@ -527,7 +527,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
         }
       else
         {
-          text = g_strndup (selection_data->data, selection_data->length);
+          text = g_strndup ((const gchar *) selection_data->data, selection_data->length);
           uris = g_strsplit (text, "\r\n", 0);
           g_free (text);
 
