@@ -253,7 +253,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Goes after initial title"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Isn't displayed"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "title-mode", G_OBJECT (combo), "active");
+#if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+#endif
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, TRUE, 0);
   gtk_widget_show (combo);
 
@@ -363,7 +365,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("On the left side"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("On the right side"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-bar", G_OBJECT (combo), "active");
+#if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
@@ -474,7 +478,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Background image"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Transparent background"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-mode", G_OBJECT (combo), "active");
+#if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+#endif
   gtk_box_pack_start (GTK_BOX (vbox), combo, FALSE, TRUE, 0);
   gtk_widget_show (combo);
 
@@ -524,7 +530,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Scaled"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Stretched"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-image-style", G_OBJECT (combo), "active");
+#if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
                     GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
@@ -1106,7 +1114,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "binding-backspace", G_OBJECT (combo), "active");
+#if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
                     GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
@@ -1130,7 +1140,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "binding-delete", G_OBJECT (combo), "active");
+#if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
+#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
                     GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (combo);
