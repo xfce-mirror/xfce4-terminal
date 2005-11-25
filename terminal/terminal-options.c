@@ -172,9 +172,9 @@ terminal_options_parse (gint              argc,
             }
         }
       else if (strcmp ("--working-directory", argv[n]) == 0
-            || strncmp ("--working-directory=", argv[n], 19) == 0)
+            || strncmp ("--working-directory=", argv[n], 20) == 0)
         {
-          s = argv[n] + 18;
+          s = argv[n] + 19;
 
           if (*s == '=')
             {
