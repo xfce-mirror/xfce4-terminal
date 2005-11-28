@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-11-28 19:07+0900\n"
-"PO-Revision-Date: 2005-10-21 21:03+0900\n"
+"PO-Revision-Date: 2005-11-28 21:59+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -286,11 +286,11 @@ msgstr "ターミナルを実行できません: %s\n"
 #: ../terminal/terminal-app.c:507
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "ジオメトリ文字列 \"%s\" は不適切です\n"
+msgstr "ジオメトリ文字列 \"%s\" は不適切です。\n"
 
 #: ../terminal/terminal-dbus.c:115
 msgid "User id mismatch"
-msgstr "ユーザ ID が一致しません"
+msgstr "ユーザー ID が一致しません。"
 
 #: ../terminal/terminal-dbus.c:147
 msgid "D-BUS message bus disconnected, exiting...\n"
@@ -299,19 +299,19 @@ msgstr "D-BUS メッセージ: バスの接続が切れました、終了しま�
 #: ../terminal/terminal-dbus.c:208
 #, c-format
 msgid "Unable to register object %s"
-msgstr "オブジェクト %s を登録できません"
+msgstr "オブジェクト %s を登録できません。"
 
 #: ../terminal/terminal-helper-dialog.c:52
 #: ../terminal/terminal-preferences.c:971
 #: ../terminal/terminal-preferences.c:972
 msgid "Web Browser"
-msgstr "ウェブ・ブラウザ"
+msgstr "ウェブブラウザー"
 
 #: ../terminal/terminal-helper-dialog.c:53
 #: ../terminal/terminal-preferences.c:960
 #: ../terminal/terminal-preferences.c:961
 msgid "Mail Reader"
-msgstr "メール・リーダー"
+msgstr "メールリーダー"
 
 #: ../terminal/terminal-helper-dialog.c:58
 msgid ""
@@ -319,8 +319,8 @@ msgid ""
 "Web Browser opens when you right-click on a URL\n"
 "and select Open Link from the context menu."
 msgstr ""
-"あなたの好きなウェブ・ブラウザを選択して下さい。この\n"
-"ウェブ・ブラウザは URL 上で右クリックして現れるコン\n"
+"あなたの好きなウェブブラウザーを選択して下さい。この\n"
+"ウェブブラウザーは URL 上で右クリックして現れるコン\n"
 "テキスト・メニューから、「リンクを開く」を選択した場合\n"
 "に実行されます。"
 
@@ -331,8 +331,8 @@ msgid ""
 "address and select Compose Email from the context\n"
 "menu."
 msgstr ""
-"あなたの好きなメール・リーダーを選択して下さい。この\n"
-"メール・リーダーは Eメール・アドレス 上で右クリックして\n"
+"あなたの好きなメールリーダーを選択して下さい。この\n"
+"メールリーダーは Eメール・アドレス 上で右クリックして\n"
 "現れるコンテキスト・メニューから、「Eメールを編集」を\n"
 "選択した場合に実行されます。"
 
@@ -349,18 +349,18 @@ msgstr "アプリケーションを選択して下さい"
 
 #: ../terminal/terminal-helper-dialog.c:354
 msgid "Choose a custom Web Browser"
-msgstr "指定ウェブ・ブラウザを選択して下さい"
+msgstr "ウェブブラウザーを選択して下さい"
 
 #: ../terminal/terminal-helper-dialog.c:355
 msgid "Choose a custom Mail Reader"
-msgstr "指定メール・リーダーを選択して下さい"
+msgstr "メールリーダーを選択して下さい"
 
 #: ../terminal/terminal-helper-dialog.c:360
 msgid ""
 "Specify the application you want to use as\n"
 "Web Browser in Terminal:"
 msgstr ""
-"Terminal でウェブ・ブラウザとして使用したい\n"
+"Terminal でウェブブラウザーとして使用したい\n"
 "アプリケーションを指定して下さい:"
 
 #: ../terminal/terminal-helper-dialog.c:361
@@ -368,7 +368,7 @@ msgid ""
 "Specify the application you want to use as\n"
 "Mail Reader in Terminal:"
 msgstr ""
-"Terminal でメール・リーダーとして使用したい\n"
+"Terminal でメールリーダーとして使用したい\n"
 "アプリケーションを指定して下さい:"
 
 #: ../terminal/terminal-helper-dialog.c:439
@@ -493,7 +493,7 @@ msgstr "オプション \"%s\" は不明です"
 
 #: ../terminal/terminal-preferences-dialog.c:141
 msgid "Terminal Preferences"
-msgstr "Terminal 環境設定"
+msgstr "Terminal の環境設定"
 
 #: ../terminal/terminal-preferences-dialog.c:200
 msgid "<b>Title</b>"
@@ -625,7 +625,7 @@ msgstr "ターミナルフォントを選択して下さい"
 
 #: ../terminal/terminal-preferences-dialog.c:445
 msgid "Enable anti-aliasing for the terminal font"
-msgstr "ターミナルフォントにアンチ・エイリアス処理を施す"
+msgstr "ターミナルフォントにアンチエイリアスを掛ける"
 
 #: ../terminal/terminal-preferences-dialog.c:448
 msgid ""
@@ -634,22 +634,22 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
-"ターミナル・ウィンドウで文字を描画する場合、アンチ・エイリアス処理をさせたけ"
-"ればこのオプションを有効にして下さい。このオプションを無効にすると、ターミナ"
-"ルの描画性能を劇的に向上させ、遅いシステムでのシステム全般の負荷を減らしま"
-"す。"
+"ターミナル・ウィンドウで文字を描画する際に、アンチエイリアスを掛けたければこ"
+"のオプションを有効にして下さい。このオプションを無効にすると、ターミナルの描"
+"画性能を劇的に向上させ、遅いシステムでのシステム全般の負荷を下げるかもしれま"
+"せん。"
 
 #: ../terminal/terminal-preferences-dialog.c:455
 msgid "Allow bold text"
-msgstr "太字フォントを使用する"
+msgstr "太字の使用を許可する"
 
 #: ../terminal/terminal-preferences-dialog.c:458
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
-"ターミナル・ウィンドウ内で実行するアプリケーションに太字フォントを使用させて"
-"もよいなら、このオプションを有効にして下さい。"
+"ターミナル・ウィンドウ内で実行するアプリケーションに太字を使用させてもよいな"
+"ら、このオプションを有効にして下さい。"
 
 #: ../terminal/terminal-preferences-dialog.c:467
 msgid "<b>Background</b>"
@@ -1742,8 +1742,8 @@ msgid ""
 "Browser yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
-"優先するウェブ・ブラウザをまだ選択して\n"
-"いません。今優先アプリケーションを設定\n"
+"お好みのウェブブラウザーをまだ選択して\n"
+"いません。このアプリケーションを今設定\n"
 "しますか？"
 
 #: ../terminal/terminal-window.c:965
@@ -1752,8 +1752,8 @@ msgid ""
 "Reader yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
-"優先するメール・リーダーをまだ選択して\n"
-"いません。今優先アプリケーションを設定\n"
+"お好みのメールリーダーをまだ選択して\n"
+"いません。このアプリケーションを今設定\n"
 "しますか？"
 
 #: ../terminal/terminal-window.c:1570
@@ -1766,7 +1766,7 @@ msgstr "現在のターミナルのタブのタイトルを入力して下さい
 
 #: ../terminal/terminal-window.c:1645
 msgid "X Terminal Emulator"
-msgstr "X ターミナル・エミュレータ"
+msgstr "X ターミナル・エミュレーター"
 
 #: ../terminal/terminal-window.c:1649
 msgid "Maintainer"
@@ -1791,7 +1791,7 @@ msgstr "Balsa"
 
 #: ../helpers/epiphany.desktop.in.h:1
 msgid "Epiphany Web Browser"
-msgstr "Epiphany ウェブ・ブラウザ"
+msgstr "Epiphany ウェブブラウザー"
 
 #: ../helpers/evolution.desktop.in.h:1
 msgid "Novell Evolution"
@@ -1803,7 +1803,7 @@ msgstr "Mozilla Firefox"
 
 #: ../helpers/galeon.desktop.in.h:1
 msgid "Galeon Web Browser"
-msgstr "Galeon ウェブ・ブラウザ"
+msgstr "Galeon ウェブブラウザー"
 
 #: ../helpers/kmail.desktop.in.h:1
 msgid "KMail"
@@ -1819,7 +1819,7 @@ msgstr "Lynx"
 
 #: ../helpers/mozilla-browser.desktop.in.h:1
 msgid "Mozilla Browser"
-msgstr "Mozilla ブラウザ"
+msgstr "Mozilla ブラウザー"
 
 #: ../helpers/mozilla-mailer.desktop.in.h:1
 msgid "Mozilla Mail"
@@ -1831,7 +1831,7 @@ msgstr "Mutt"
 
 #: ../helpers/opera-browser.desktop.in.h:1
 msgid "Opera Browser"
-msgstr "Opera ブラウザ"
+msgstr "Opera ブラウザー"
 
 #: ../helpers/opera-mailer.desktop.in.h:1
 msgid "Opera Mail"
@@ -1839,7 +1839,7 @@ msgstr "Opera メール"
 
 #: ../helpers/sensible-browser.desktop.in.h:1
 msgid "Debian Sensible Browser"
-msgstr "Debian Sensible ブラウザ"
+msgstr "Debian Sensible ブラウザー"
 
 #: ../helpers/thunderbird.desktop.in.h:1
 msgid "Mozilla Thunderbird"
