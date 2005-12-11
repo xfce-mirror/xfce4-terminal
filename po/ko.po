@@ -1,0 +1,1760 @@
+# Korean translations for Terminal package.
+# Copyright (C) 2003-2005 os-cillation e.K.
+# This file is distributed under the same license as the Terminal package.
+# Kibum Hanl <yui@yui.pe.kr>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Terminal 0.2.5svn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-12-05 09:25+0900\n"
+"PO-Revision-Date: 2005-12-11 13:48+0900\n"
+"Last-Translator: Kibum Hanl <yui@yui.pe.kr>\n"
+"Language-Team: Korean <translation-team-ko@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../terminal/main.c:42
+msgid "Usage: Terminal [OPTION...]"
+msgstr "사용법: Terminal [옵션...]"
+
+#: ../terminal/main.c:44
+msgid "  -h, --help                          Print this help message and exit"
+msgstr "  -h, --help                          이 도움말을 출력하고 끝냅니다"
+
+#: ../terminal/main.c:45
+msgid ""
+"  -v, --version                       Print version information and exit"
+msgstr "  -v, --version                       버전 정보를 출력하고 끝냅니다"
+
+#: ../terminal/main.c:46
+msgid ""
+"  --disable-server                    Do not register with the D-BUS\n"
+"                                      session message bus"
+msgstr ""
+"  --disable-server                    D-BUS, 세션 메시지 버스에 등록하지\n"
+"                                      않습니다"
+
+#: ../terminal/main.c:49
+msgid ""
+"  -x, --execute                       Execute the remainder of the command\n"
+"                                      line inside the terminal"
+msgstr ""
+"  -x, --execute                       이후에 나오는 명령어를 터미널에서\n"
+"                                      실행합니다"
+
+#: ../terminal/main.c:51
+msgid ""
+"  -e, --command=STRING                Execute the argument to this option\n"
+"                                      inside the terminal"
+msgstr ""
+"  -e, --command=STRING                이 옵션의 인자를 터미널에서 실행\n"
+"                                      합니다"
+
+#: ../terminal/main.c:53
+msgid ""
+"  --working-directory=DIRNAME         Set the terminals working directory"
+msgstr ""
+"  --working-directory=DIRNAME         터미널의 작업 디렉토리를 설정합니다"
+
+#: ../terminal/main.c:54
+msgid "  -T, --title=TITLE                   Set the terminals title"
+msgstr "  -T, --title=TITLE                   터미널의 타이틀을 설정합니다"
+
+#: ../terminal/main.c:55
+#, fuzzy
+msgid ""
+"  -H, --hold                          Do not immediatly destroy the tab\n"
+"                                      when the child command exits"
+msgstr ""
+"  -x, --execute                       이후에 나오는 명령어를 터미널에서\n"
+"                                      실행합니다"
+
+#: ../terminal/main.c:58
+msgid ""
+"  --display=DISPLAY                   X display to use for the last-\n"
+"                                      specified window"
+msgstr ""
+"  --display=DISPLAY                   지정한 창에서 사용할 X 디스플레이를\n"
+"                                      설정한다"
+
+#: ../terminal/main.c:60
+msgid ""
+"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+"                                      man page), can be specified once per\n"
+"                                      window to be opened"
+msgstr ""
+"  --geometry=GEOMETRY                 윈도의 크기와 위치 (\"X\" 맨페이지를\n"
+"                                      참고하세요)를 지정합니다"
+
+#: ../terminal/main.c:63
+msgid ""
+"  --role=ROLE                         Set the role for the last-specified;\n"
+"                                      window; applies to only one window;\n"
+"                                      can be specified once for each window\n"
+"                                      you create from the command line"
+msgstr ""
+
+#: ../terminal/main.c:67
+msgid ""
+"  --startup-id=STRING                 ID for the startup notification\n"
+"                                      protocol"
+msgstr ""
+"  --startup-id=STRING                 시작 알림 프로토콜에 사용할 ID를\n"
+"                                      지정합니다"
+
+#: ../terminal/main.c:69
+msgid ""
+"  --fullscreen                        Set the last-specified window into\n"
+"                                      fullscreen mode; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line."
+msgstr ""
+
+#: ../terminal/main.c:74
+msgid ""
+"  --show-menubar                      Turn on the menubar for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line"
+msgstr ""
+
+#: ../terminal/main.c:79
+msgid ""
+"  --hide-menubar                      Turn off the menubar for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line"
+msgstr ""
+
+#: ../terminal/main.c:84
+msgid ""
+"  --show-borders                      Turn on the window decorations for\n"
+"                                      the last-specified window; applies\n"
+"                                      to only one window; can be specified\n"
+"                                      once for each window you create from\n"
+"                                      the command line"
+msgstr ""
+
+#: ../terminal/main.c:89
+msgid ""
+"  --hide-borders                      Turn off the window decorations for\n"
+"                                      the last-specified window; applies\n"
+"                                      to only one window; can be specified\n"
+"                                      once for each window you create from\n"
+"                                      the command line"
+msgstr ""
+
+#: ../terminal/main.c:94
+msgid ""
+"  --show-toolbars                     Turn on the toolbars for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line"
+msgstr ""
+
+#: ../terminal/main.c:99
+msgid ""
+"  --hide-toolbars                     Turn off the toolbars for the last-\n"
+"                                      specified window; applies to only one\n"
+"                                      window; can be specified once for\n"
+"                                      each window you create from the\n"
+"                                      command line"
+msgstr ""
+
+#: ../terminal/main.c:105
+msgid ""
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+
+#: ../terminal/main.c:108
+msgid ""
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided"
+msgstr ""
+
+#: ../terminal/main.c:112
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr ""
+
+#: ../terminal/main.c:113
+msgid ""
+"  --default-working-directory=DIRNAME Set the default terminals working\n"
+"                                      directory"
+msgstr ""
+
+#: ../terminal/main.c:137 ../terminal/terminal-preferences.c:1152
+#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+msgid "Terminal"
+msgstr "터미널"
+
+#: ../terminal/main.c:164
+#, c-format
+msgid ""
+"%s (Xfce %s)\n"
+"\n"
+"Copyright (c) 2003-2005\n"
+"        os-cillation e.K. All rights reserved.\n"
+"\n"
+"Written by Benedikt Meurer <benny@xfce.org>.\n"
+"\n"
+"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+"\n"
+"Please report bugs to <%s>.\n"
+msgstr ""
+"%s (Xfce %s\n"
+"\n"
+"Copyright (c) 2003-2005\n"
+"        os-cillation e.K. All rights reserved.\n"
+"\n"
+"Benedikt Meurer <benny@xfce.org> 이 작성.\n"
+"\n"
+"Gtk+-%d.%d.%d로 빌드, Gtk+-%d.%d.%d로 동작.\n"
+"\n"
+"<%s>에 버그를 보고해주십시오.\n"
+
+#: ../terminal/main.c:253
+#, c-format
+msgid "Unable to register terminal service: %s\n"
+msgstr "터미널 서비스를 등록하는데 실패했습니다: %s\n"
+
+#: ../terminal/main.c:262
+#, c-format
+msgid "Unable to launch terminal: %s\n"
+msgstr "터미널을 실행하는데 실패했습니다: %s\n"
+
+#: ../terminal/terminal-app.c:507
+#, c-format
+msgid "Invalid geometry string \"%s\"\n"
+msgstr "\"%s\"는 잘못된 크기 및 위치입니다\n"
+
+#: ../terminal/terminal-dbus.c:115
+msgid "User id mismatch"
+msgstr "User id가 맞지 않습니다"
+
+#: ../terminal/terminal-dbus.c:147
+msgid "D-BUS message bus disconnected, exiting...\n"
+msgstr "D-BUS 메시지 버스의 연결이 끊어졌습니다. 종료합니다...\n"
+
+#: ../terminal/terminal-dbus.c:208
+#, c-format
+msgid "Unable to register object %s"
+msgstr "object %s를 등록하는데 실패했습니다"
+
+#: ../terminal/terminal-helper-dialog.c:52
+#: ../terminal/terminal-preferences.c:971
+#: ../terminal/terminal-preferences.c:972
+msgid "Web Browser"
+msgstr "웹 브라우저"
+
+#: ../terminal/terminal-helper-dialog.c:53
+#: ../terminal/terminal-preferences.c:960
+#: ../terminal/terminal-preferences.c:961
+msgid "Mail Reader"
+msgstr "메일 리더"
+
+#: ../terminal/terminal-helper-dialog.c:58
+msgid ""
+"Choose your preferred Web Browser. The preferred\n"
+"Web Browser opens when you right-click on a URL\n"
+"and select Open Link from the context menu."
+msgstr ""
+"선호하는 웹 브라우저를 선택하세요. URL을 오른쪽\n"
+"버튼으로 클릭하고 메뉴에서 링크 열기를 선택하면\n"
+"선호하는 웹 브라우저가 시작합니다."
+
+#: ../terminal/terminal-helper-dialog.c:61
+msgid ""
+"Choose your preferred Mail Reader. The preferred\n"
+"Mail Reader opens when you right-click on an email\n"
+"address and select Compose Email from the context\n"
+"menu."
+msgstr ""
+"선호하는 메일 리더를 선택하세요. 이메일 주소를 오\n"
+"른쪽 버튼으로 클릭하고 메뉴에서 메일 작성을 선택\n"
+"하면 선호하는 메일 리더가 시작합니다."
+
+#: ../terminal/terminal-helper-dialog.c:173
+msgid ""
+"Click here to change the selected application or to disable this feature."
+msgstr "선택한 어플리케이션을 변경하거나 이 기능을 끄려면 여기를 클릭하세요."
+
+#: ../terminal/terminal-helper-dialog.c:316
+msgid "Select application"
+msgstr "어플리케이션 선택"
+
+#: ../terminal/terminal-helper-dialog.c:354
+msgid "Choose a custom Web Browser"
+msgstr "기타 웹 브라우저를 선택하세요"
+
+#: ../terminal/terminal-helper-dialog.c:355
+msgid "Choose a custom Mail Reader"
+msgstr "기타 메일 리더를 선택하세요"
+
+#: ../terminal/terminal-helper-dialog.c:360
+msgid ""
+"Specify the application you want to use as\n"
+"Web Browser in Terminal:"
+msgstr ""
+"터미널에서 웹 브라우저로 사용할 어플리케이션\n"
+"을 지정하세요:"
+
+#: ../terminal/terminal-helper-dialog.c:361
+msgid ""
+"Specify the application you want to use as\n"
+"Mail Reader in Terminal:"
+msgstr ""
+"터미널에서 메일 리더로 사용할 어플리케이션\n"
+"을 지정하세요:"
+
+#: ../terminal/terminal-helper-dialog.c:439
+msgid "_Browse..."
+msgstr ""
+
+#: ../terminal/terminal-helper-dialog.c:538
+msgid "Disable this feature"
+msgstr "이 기능 끄기"
+
+#: ../terminal/terminal-helper-dialog.c:579
+msgid "Other..."
+msgstr "기타..."
+
+#: ../terminal/terminal-helper-dialog.c:619
+#: ../terminal/terminal-preferences-dialog.c:364
+#: ../terminal/terminal-preferences.c:370
+#: ../terminal/terminal-preferences.c:381
+#: ../terminal/terminal-preferences.c:392
+#: ../terminal/terminal-preferences.c:403
+#: ../terminal/terminal-preferences.c:414
+#: ../terminal/terminal-preferences.c:436
+#: ../terminal/terminal-preferences.c:447
+#: ../terminal/terminal-preferences.c:458
+#: ../terminal/terminal-shortcut-editor.c:211
+#: ../terminal/terminal-shortcut-editor.c:394
+msgid "Disabled"
+msgstr "끄기"
+
+#: ../terminal/terminal-helper-dialog.c:636
+msgid "No application selected"
+msgstr "아무 어플리케이션도 선택되지 않았습니다"
+
+#: ../terminal/terminal-helper-dialog.c:791
+msgid "Preferred Applications"
+msgstr "선호하는 어플리케이션"
+
+#: ../terminal/terminal-options.c:106
+msgid ""
+"Option \"--sm-client-id\" requires specifying the session id as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:128
+msgid ""
+"Option \"--execute/-x\" requires specifying the command to run on the rest "
+"of the command line"
+msgstr ""
+
+#: ../terminal/terminal-options.c:157
+msgid ""
+"Option \"--command/-e\" requires specifying the command to run as its "
+"parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:186
+msgid ""
+"Option \"--working-directory\" requires specifying the working directory as "
+"its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:217
+msgid "Option \"--title/-T\" requires specifying the title as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:250
+msgid ""
+"Option \"--display\" requires specifying the X display as its parameters"
+msgstr ""
+
+#: ../terminal/terminal-options.c:277
+msgid ""
+"Option \"--geometry\" requires specifying the window geometry as its "
+"parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:304
+msgid "Option \"--role\" requires specifying the window role as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:331
+msgid ""
+"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:412
+msgid ""
+"Option \"--default-display\" requires specifying the default X display as "
+"its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:436
+msgid ""
+"Option \"--default-working-directory\" requires specifying the default "
+"working directory as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:452
+#, c-format
+msgid "Unknown option \"%s\""
+msgstr "모르는 옵션 \"%s\""
+
+#: ../terminal/terminal-preferences-dialog.c:141
+msgid "Terminal Preferences"
+msgstr "터미널 설정"
+
+#: ../terminal/terminal-preferences-dialog.c:200
+msgid "<b>Title</b>"
+msgstr "<b>타이틀</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:213
+msgid ""
+"The command running inside the terminal may dynamically set a new title."
+msgstr "터미널에서 실행하는 명령어로 타이틀을 동적으로 변경될 수 있습니다."
+
+#: ../terminal/terminal-preferences-dialog.c:220
+msgid "_Initial title:"
+msgstr "초기 타이틀(_I):"
+
+#: ../terminal/terminal-preferences-dialog.c:239
+msgid "_Dynamically-set title:"
+msgstr "동적 설정 타이틀(_D):"
+
+#: ../terminal/terminal-preferences-dialog.c:251
+msgid "Replaces initial title"
+msgstr "초기 타이틀을 바꿉니다"
+
+#: ../terminal/terminal-preferences-dialog.c:252
+msgid "Goes before initial title"
+msgstr "초기 타이틀 앞에 추가합니다"
+
+#: ../terminal/terminal-preferences-dialog.c:253
+msgid "Goes after initial title"
+msgstr "초기 타이틀 뒤에 추가합니다"
+
+#: ../terminal/terminal-preferences-dialog.c:254
+msgid "Isn't displayed"
+msgstr "표시하지 않습니다"
+
+#: ../terminal/terminal-preferences-dialog.c:273
+msgid "<b>Command</b>"
+msgstr "<b>명령어</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:284
+msgid "Terminal _bell"
+msgstr "터미널 벨(_b)"
+
+#: ../terminal/terminal-preferences-dialog.c:294
+msgid "Cursor blin_ks"
+msgstr "커서 깜박임(_k)"
+
+#: ../terminal/terminal-preferences-dialog.c:302
+msgid "_Run command as login shell"
+msgstr "로긴 셸로 명령어 실행(_R)"
+
+#: ../terminal/terminal-preferences-dialog.c:305
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"새로운 터미널을 열 때 로긴 셸로 셸을 시작하는 옵션입니다. 인터렉티브 셸과 로"
+"긴 셸의 차이점은 셸의 문서를 참고하세요."
+
+#: ../terminal/terminal-preferences-dialog.c:312
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "명령어를 실행할 때 utmp/wtmp를 기록(_U)"
+
+#: ../terminal/terminal-preferences-dialog.c:321
+msgid "<b>Scrolling</b>"
+msgstr "<b>스크롤</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:336
+msgid "Sc_roll on output"
+msgstr "출력이 있으면 스크롤(_r)"
+
+#: ../terminal/terminal-preferences-dialog.c:339
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"터미널에서 실행중인 명령어가 새로운 출력을 내면 자동으로 스크롤을 맨 아래로 "
+"옮기도록 설정하는 옵션입니다."
+
+#: ../terminal/terminal-preferences-dialog.c:346
+msgid "Scroll on key_stroke"
+msgstr "키 입력이 있으면 스크롤(_s)"
+
+#: ../terminal/terminal-preferences-dialog.c:349
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr "키보드의 키를 누르면 스크롤을 아래로 옮기도록 설정하는 옵션입니다."
+
+#: ../terminal/terminal-preferences-dialog.c:357
+msgid "_Scrollbar is:"
+msgstr "스크롤 바(_S):"
+
+#: ../terminal/terminal-preferences-dialog.c:365
+msgid "On the left side"
+msgstr "왼쪽"
+
+#: ../terminal/terminal-preferences-dialog.c:366
+msgid "On the right side"
+msgstr "오른쪽"
+
+#: ../terminal/terminal-preferences-dialog.c:382
+msgid "Scr_ollback:"
+msgstr "이전 스크롤(_o):"
+
+#: ../terminal/terminal-preferences-dialog.c:392
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "스크롤 바로 볼 수 있는 줄 수를 지정합니다."
+
+#: ../terminal/terminal-preferences-dialog.c:413
+msgid "General"
+msgstr "일반"
+
+#: ../terminal/terminal-preferences-dialog.c:431
+msgid "<b>Font</b>"
+msgstr "<b>글꼴</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:440
+msgid "Choose Terminal Font"
+msgstr "터미널 글꼴 선택"
+
+#: ../terminal/terminal-preferences-dialog.c:445
+msgid "Enable anti-aliasing for the terminal font"
+msgstr "터미널 폰트의 안티-앨리어싱 설정"
+
+#: ../terminal/terminal-preferences-dialog.c:448
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"터미널 창에서 글자를 표현할 때 안티-앨리어싱을 사용하려면 이 옵션을 켜주세"
+"요. 느린 시스템에서는 이 옵션을 해제해서 터미널 렌더링 성능을 매우 향상시킬 "
+"수 있습니다."
+
+#: ../terminal/terminal-preferences-dialog.c:455
+msgid "Allow bold text"
+msgstr "굵은 글씨 허용"
+
+#: ../terminal/terminal-preferences-dialog.c:458
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr "터미널 윈도에서 굵은 글씨를 사용하려면 이 옵션을 켜세요."
+
+#: ../terminal/terminal-preferences-dialog.c:467
+msgid "<b>Background</b>"
+msgstr "<b>배경</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:477
+msgid "None (use solid color)"
+msgstr "없음 (단일 색상)"
+
+#: ../terminal/terminal-preferences-dialog.c:478
+msgid "Background image"
+msgstr "배경 그림"
+
+#: ../terminal/terminal-preferences-dialog.c:479
+msgid "Transparent background"
+msgstr "투명한 배경"
+
+#: ../terminal/terminal-preferences-dialog.c:496
+msgid "_File:"
+msgstr "파일(_F):"
+
+#: ../terminal/terminal-preferences-dialog.c:521
+msgid "_Style:"
+msgstr "스타일(_S):"
+
+#: ../terminal/terminal-preferences-dialog.c:528
+msgid "Tiled"
+msgstr "타일로 배치"
+
+#: ../terminal/terminal-preferences-dialog.c:529
+msgid "Centered"
+msgstr "중앙에 배치"
+
+#: ../terminal/terminal-preferences-dialog.c:530
+msgid "Scaled"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:531
+msgid "Stretched"
+msgstr "늘임"
+
+#: ../terminal/terminal-preferences-dialog.c:547
+msgid "Shade transparent or image background:"
+msgstr "그림자 투명 또는 그림 배경:"
+
+#: ../terminal/terminal-preferences-dialog.c:560
+msgid "<small><i>None</i></small>"
+msgstr "<small><i>없음</i></small>"
+
+#: ../terminal/terminal-preferences-dialog.c:571
+msgid "<small><i>Maximum</i></small>"
+msgstr "<small><i>최대화</i></small>"
+
+#: ../terminal/terminal-preferences-dialog.c:579
+msgid "<b>Opening New Windows</b>"
+msgstr "<b>새 창 열기</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:588
+msgid "Display _menubar in new windows"
+msgstr "새 창에 메뉴바 보이기(_m)"
+
+#: ../terminal/terminal-preferences-dialog.c:591
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "새로 생성되는 터미널 창에 메뉴바를 보이는 옵션입니다."
+
+#: ../terminal/terminal-preferences-dialog.c:596
+msgid "Display _toolbars in new windows"
+msgstr "새 창에 툴바 보이기(_t)"
+
+#: ../terminal/terminal-preferences-dialog.c:599
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "새로 생성되는 터미널 창에 툴바를 보이는 옵션입니다."
+
+#: ../terminal/terminal-preferences-dialog.c:604
+msgid "Display _borders around new windows"
+msgstr "새 창에 테두리 보이기(_b)"
+
+#: ../terminal/terminal-preferences-dialog.c:607
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "새로 생성되는 창 주위에 창 테두리를 표시하는 옵션입니다."
+
+#: ../terminal/terminal-preferences-dialog.c:619
+msgid "Appearance"
+msgstr "외관"
+
+#: ../terminal/terminal-preferences-dialog.c:637
+msgid "<b>Foreground and Background</b>"
+msgstr "<b>전경 및 배경</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:649
+#, fuzzy
+msgid "_Text and cursor color:"
+msgstr "글자 색(_T):"
+
+#: ../terminal/terminal-preferences-dialog.c:666
+msgid "Choose terminal text color"
+msgstr "터미널 글자 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:674
+#: ../terminal/terminal-preferences-dialog.c:689
+#: ../terminal/terminal-preferences-dialog.c:720
+#: ../terminal/terminal-preferences-dialog.c:770
+#: ../terminal/terminal-preferences-dialog.c:811
+#: ../terminal/terminal-preferences-dialog.c:844
+msgid "Color Selector"
+msgstr "색 선택"
+
+#: ../terminal/terminal-preferences-dialog.c:675
+#: ../terminal/terminal-preferences-dialog.c:690
+#: ../terminal/terminal-preferences-dialog.c:721
+#: ../terminal/terminal-preferences-dialog.c:771
+#: ../terminal/terminal-preferences-dialog.c:812
+#: ../terminal/terminal-preferences-dialog.c:845
+msgid "Open a dialog to specify the color"
+msgstr "색을 고르는 다이얼로그를 엽니다"
+
+#: ../terminal/terminal-preferences-dialog.c:681
+#: ../terminal/terminal-preferences-dialog.c:801
+#, fuzzy
+msgid "Choose terminal cursor color"
+msgstr "터미널 배경 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:697
+msgid "_Background color:"
+msgstr "배경 색(_B):"
+
+#: ../terminal/terminal-preferences-dialog.c:711
+msgid "Choose terminal background color"
+msgstr "터미널 배경 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:731
+#, fuzzy
+msgid "<b>Text Selection</b>"
+msgstr "<b>타이틀</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:742
+msgid "Use _default color"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:745
+#, fuzzy
+msgid "Use the default text selection background color"
+msgstr "터미널 배경 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:750
+msgid "Use _custom color"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:753
+#, fuzzy
+msgid "Use a custom text selection background color"
+msgstr "터미널 배경 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:761
+#, fuzzy
+msgid "Choose terminal text selection background color"
+msgstr "터미널 배경 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:778
+msgid "Use default colors"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:780
+msgid "Use default cursor and highlight colors"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:786
+#, fuzzy
+msgid "_Cursor color:"
+msgstr "배경 색(_B):"
+
+#: ../terminal/terminal-preferences-dialog.c:819
+#, fuzzy
+msgid "_Highlight color:"
+msgstr "글자 색(_T):"
+
+#: ../terminal/terminal-preferences-dialog.c:834
+#, fuzzy
+msgid "Choose terminal highlight color"
+msgstr "터미널 글자 색을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:856
+msgid "<b>Palette</b>"
+msgstr "<b>팔레트</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:866
+msgid "Terminal applications have this color palette available to them:"
+msgstr "터미털 어플리케이션에서 사용할 수 있는 팔레트는 다음과 같습니다:"
+
+#: ../terminal/terminal-preferences-dialog.c:998
+msgid "Colors"
+msgstr "색"
+
+#: ../terminal/terminal-preferences-dialog.c:1016
+msgid "<b>Shortcut keys</b>"
+msgstr "<b>단축키</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:1042
+msgid "<b>Menubar access</b>"
+msgstr "메뉴바 접근"
+
+#: ../terminal/terminal-preferences-dialog.c:1051
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "모든 메뉴 키(예: Alt+f)를 비활성화(_n)"
+
+#: ../terminal/terminal-preferences-dialog.c:1056
+msgid "Disable m_enu shortcut key (F10 by default)"
+msgstr "메뉴 단축키(기본 값 F10)을 비활성화(_e)"
+
+#: ../terminal/terminal-preferences-dialog.c:1068
+msgid "Shortcuts"
+msgstr "단축키"
+
+#: ../terminal/terminal-preferences-dialog.c:1086
+msgid "<b>Compatibility</b>"
+msgstr "<b>호환성</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:1097
+msgid ""
+"These options may cause some applications to behave incorrectly. They are "
+"only here to allow you to work around certain applications and operating "
+"systems that expect different terminal behavior."
+msgstr ""
+"이 옵션으로 몇몇 어플리케이션이 오동작할 수 있습니다. 특정 어플리케이션과 운"
+"영 체제가 특이한 터미널 동작을 원하는 경우에 사용하세요."
+
+#: ../terminal/terminal-preferences-dialog.c:1105
+msgid "_Backspace key generates:"
+msgstr "백 스페이스 키(_B):"
+
+#: ../terminal/terminal-preferences-dialog.c:1112
+#: ../terminal/terminal-preferences-dialog.c:1138
+msgid "Auto-detect"
+msgstr "자동 설정"
+
+#: ../terminal/terminal-preferences-dialog.c:1113
+#: ../terminal/terminal-preferences-dialog.c:1139
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../terminal/terminal-preferences-dialog.c:1114
+#: ../terminal/terminal-preferences-dialog.c:1140
+msgid "Escape sequence"
+msgstr "이스케이프 키"
+
+#: ../terminal/terminal-preferences-dialog.c:1115
+#: ../terminal/terminal-preferences-dialog.c:1141
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../terminal/terminal-preferences-dialog.c:1131
+msgid "_Delete key generates:"
+msgstr "딜리트 키(_D):"
+
+#: ../terminal/terminal-preferences-dialog.c:1157
+msgid "<tt>$TERM</tt> setting:"
+msgstr "<tt>$TERM</tt> 설정:"
+
+#: ../terminal/terminal-preferences-dialog.c:1165
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"새 터미널 탭이나 새 창이 열릴 때 $TERM 환경 변수에 들어가는 값을 지정합니다."
+"대부분의 시스템에서 기본 값으로 잘 동작할 것입니다. 몇몇 어플리케이션에서 색"
+"이 이상하게 표현되면 xterm-color라고 적어보십시오."
+
+#: ../terminal/terminal-preferences-dialog.c:1185
+msgid "_Reset compatibility options to defaults"
+msgstr "호환성 옵션을 기본값으로 설정(_R)"
+
+#: ../terminal/terminal-preferences-dialog.c:1195
+msgid "<b>Double click</b>"
+msgstr "<b>더블 클릭</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:1204
+msgid "Consider the following characters part of a word when double clicking:"
+msgstr "더블 클릭시 다음 문자를 한 단어로 여김"
+
+#: ../terminal/terminal-preferences-dialog.c:1228
+msgid "Advanced"
+msgstr "고급"
+
+#: ../terminal/terminal-preferences-dialog.c:1269
+#: ../terminal/terminal-window.c:1200 ../terminal/terminal-window.c:1422
+#: ../terminal/terminal-window.c:1449 ../terminal/terminal-window.c:1522
+#, c-format
+msgid "Unable to launch online help: %s"
+msgstr "온라인 도움말을 실행하는데 실패했습니다: %s"
+
+#: ../terminal/terminal-preferences-dialog.c:1369
+msgid "Select background image file"
+msgstr "배경 그림 파일을 선택하세요"
+
+#: ../terminal/terminal-preferences-dialog.c:1380
+msgid "All Files"
+msgstr "모든 파일"
+
+#: ../terminal/terminal-preferences-dialog.c:1385
+msgid "Image Files"
+msgstr "그림 파일"
+
+#: ../terminal/terminal-preferences.c:302
+#: ../terminal/terminal-preferences.c:303
+msgid "Open Tab"
+msgstr "탭 열기"
+
+#: ../terminal/terminal-preferences.c:313
+#: ../terminal/terminal-preferences.c:314
+msgid "Open Terminal"
+msgstr "터미널 열기"
+
+#: ../terminal/terminal-preferences.c:324
+#: ../terminal/terminal-preferences.c:325
+msgid "Close Tab"
+msgstr "탭 닫기"
+
+#: ../terminal/terminal-preferences.c:335
+#: ../terminal/terminal-preferences.c:336
+msgid "Close Window"
+msgstr "창 닫기"
+
+#: ../terminal/terminal-preferences.c:346
+#: ../terminal/terminal-preferences.c:347
+msgid "Copy"
+msgstr "복사"
+
+#: ../terminal/terminal-preferences.c:357
+#: ../terminal/terminal-preferences.c:358
+msgid "Paste"
+msgstr "붙여넣기"
+
+#: ../terminal/terminal-preferences.c:368
+#: ../terminal/terminal-preferences.c:369
+#, fuzzy
+msgid "Applications"
+msgstr "어플리케이션...(_A)"
+
+#: ../terminal/terminal-preferences.c:379
+#: ../terminal/terminal-preferences.c:380
+msgid "Preferences"
+msgstr "설정"
+
+#: ../terminal/terminal-preferences.c:390
+#: ../terminal/terminal-preferences.c:391
+msgid "Show menubar"
+msgstr "메뉴바 보이기"
+
+#: ../terminal/terminal-preferences.c:401
+#: ../terminal/terminal-preferences.c:402
+msgid "Show toolbars"
+msgstr "툴바 보이기"
+
+#: ../terminal/terminal-preferences.c:412
+#: ../terminal/terminal-preferences.c:413
+msgid "Show borders"
+msgstr "테두리 보이기"
+
+#: ../terminal/terminal-preferences.c:423
+#: ../terminal/terminal-preferences.c:424
+msgid "Fullscreen"
+msgstr "전체 화면"
+
+#: ../terminal/terminal-preferences.c:434
+#: ../terminal/terminal-preferences.c:435 ../terminal/terminal-window.c:1556
+msgid "Set Title"
+msgstr "타이틀 설정"
+
+#: ../terminal/terminal-preferences.c:445
+#: ../terminal/terminal-preferences.c:446
+msgid "Reset"
+msgstr "리셋"
+
+#: ../terminal/terminal-preferences.c:456
+#: ../terminal/terminal-preferences.c:457
+msgid "Reset and Clear"
+msgstr "리셋하고 비움"
+
+#: ../terminal/terminal-preferences.c:467
+#: ../terminal/terminal-preferences.c:468
+msgid "Previous Tab"
+msgstr "이전 탭"
+
+#: ../terminal/terminal-preferences.c:478
+#: ../terminal/terminal-preferences.c:479
+msgid "Next Tab"
+msgstr "다음 탭"
+
+#: ../terminal/terminal-preferences.c:489
+#: ../terminal/terminal-preferences.c:490
+msgid "Switch to Tab 1"
+msgstr "탭 1로 이동"
+
+#: ../terminal/terminal-preferences.c:500
+#: ../terminal/terminal-preferences.c:501
+msgid "Switch to Tab 2"
+msgstr "탭 2로 이동"
+
+#: ../terminal/terminal-preferences.c:511
+#: ../terminal/terminal-preferences.c:512
+msgid "Switch to Tab 3"
+msgstr "탭 3으로 이동"
+
+#: ../terminal/terminal-preferences.c:522
+#: ../terminal/terminal-preferences.c:523
+msgid "Switch to Tab 4"
+msgstr "탭 4로 이동"
+
+#: ../terminal/terminal-preferences.c:533
+#: ../terminal/terminal-preferences.c:534
+msgid "Switch to Tab 5"
+msgstr "탭 5로 이동"
+
+#: ../terminal/terminal-preferences.c:544
+#: ../terminal/terminal-preferences.c:545
+msgid "Switch to Tab 6"
+msgstr "탭 6으로 이동"
+
+#: ../terminal/terminal-preferences.c:555
+#: ../terminal/terminal-preferences.c:556
+msgid "Switch to Tab 7"
+msgstr "탭 7로 이동"
+
+#: ../terminal/terminal-preferences.c:566
+#: ../terminal/terminal-preferences.c:567
+msgid "Switch to Tab 8"
+msgstr "탭 8로 이동"
+
+#: ../terminal/terminal-preferences.c:577
+#: ../terminal/terminal-preferences.c:578
+msgid "Switch to Tab 9"
+msgstr "탭 9로 이동"
+
+#: ../terminal/terminal-preferences.c:588
+#: ../terminal/terminal-preferences.c:589
+msgid "Contents"
+msgstr "차례"
+
+#: ../terminal/terminal-preferences.c:599
+#: ../terminal/terminal-preferences.c:600
+msgid "Background mode"
+msgstr "배경 모드"
+
+#: ../terminal/terminal-preferences.c:611
+#: ../terminal/terminal-preferences.c:612
+msgid "Background image file"
+msgstr "배경 그림 파일"
+
+#: ../terminal/terminal-preferences.c:622
+#: ../terminal/terminal-preferences.c:623
+msgid "Background image style"
+msgstr "배경 그림 스타일"
+
+#: ../terminal/terminal-preferences.c:639
+#: ../terminal/terminal-preferences.c:640
+msgid "Background darkness"
+msgstr "배경 명도"
+
+#: ../terminal/terminal-preferences.c:650
+#: ../terminal/terminal-preferences.c:651
+msgid "Backspace binding"
+msgstr "백스페이스 바인딩"
+
+#: ../terminal/terminal-preferences.c:662
+#: ../terminal/terminal-preferences.c:663
+msgid "Delete binding"
+msgstr "딜리트 바인딩"
+
+#: ../terminal/terminal-preferences.c:674
+msgid "Foreground color"
+msgstr "전경 색"
+
+#: ../terminal/terminal-preferences.c:675
+msgid "Terminal foreground color"
+msgstr "터미널 전경 색"
+
+#: ../terminal/terminal-preferences.c:685
+msgid "Background color"
+msgstr "배경 색"
+
+#: ../terminal/terminal-preferences.c:686
+msgid "Terminal background color"
+msgstr "터미널 배경 색"
+
+#: ../terminal/terminal-preferences.c:696
+#, fuzzy
+msgid "Cursor color"
+msgstr "커서 깜박임"
+
+#: ../terminal/terminal-preferences.c:697
+#, fuzzy
+msgid "Terminal cursor color"
+msgstr "터미널 배경 색"
+
+#: ../terminal/terminal-preferences.c:707
+msgid "Selection color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.c:708
+#, fuzzy
+msgid "Terminal selection color"
+msgstr "터미널 전경 색"
+
+#: ../terminal/terminal-preferences.c:718
+#: ../terminal/terminal-preferences.c:719
+msgid "Use default selection color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.c:729
+#: ../terminal/terminal-preferences.c:730
+msgid "Palette entry 1"
+msgstr "팔레트 목록 1"
+
+#: ../terminal/terminal-preferences.c:740
+#: ../terminal/terminal-preferences.c:741
+msgid "Palette entry 2"
+msgstr "팔레트 목록 2"
+
+#: ../terminal/terminal-preferences.c:751
+#: ../terminal/terminal-preferences.c:752
+msgid "Palette entry 3"
+msgstr "팔레트 목록 3"
+
+#: ../terminal/terminal-preferences.c:762
+#: ../terminal/terminal-preferences.c:763
+msgid "Palette entry 4"
+msgstr "팔레트 목록 4"
+
+#: ../terminal/terminal-preferences.c:773
+#: ../terminal/terminal-preferences.c:774
+msgid "Palette entry 5"
+msgstr "팔레트 목록 5"
+
+#: ../terminal/terminal-preferences.c:784
+#: ../terminal/terminal-preferences.c:785
+msgid "Palette entry 6"
+msgstr "팔레트 목록 6"
+
+#: ../terminal/terminal-preferences.c:795
+#: ../terminal/terminal-preferences.c:796
+msgid "Palette entry 7"
+msgstr "팔레트 목록 7"
+
+#: ../terminal/terminal-preferences.c:806
+#: ../terminal/terminal-preferences.c:807
+msgid "Palette entry 8"
+msgstr "팔레트 목록 8"
+
+#: ../terminal/terminal-preferences.c:817
+#: ../terminal/terminal-preferences.c:818
+msgid "Palette entry 9"
+msgstr "팔레트 목록 9"
+
+#: ../terminal/terminal-preferences.c:828
+#: ../terminal/terminal-preferences.c:829
+msgid "Palette entry 10"
+msgstr "팔레트 목록 10"
+
+#: ../terminal/terminal-preferences.c:839
+#: ../terminal/terminal-preferences.c:840
+msgid "Palette entry 11"
+msgstr "팔레트 목록 11"
+
+#: ../terminal/terminal-preferences.c:850
+#: ../terminal/terminal-preferences.c:851
+msgid "Palette entry 12"
+msgstr "팔레트 목록 12"
+
+#: ../terminal/terminal-preferences.c:861
+#: ../terminal/terminal-preferences.c:862
+msgid "Palette entry 13"
+msgstr "팔레트 목록 13"
+
+#: ../terminal/terminal-preferences.c:872
+#: ../terminal/terminal-preferences.c:873
+msgid "Palette entry 14"
+msgstr "팔레트 목록 14"
+
+#: ../terminal/terminal-preferences.c:883
+#: ../terminal/terminal-preferences.c:884
+msgid "Palette entry 15"
+msgstr "팔레트 목록 15"
+
+#: ../terminal/terminal-preferences.c:894
+#: ../terminal/terminal-preferences.c:895
+msgid "Palette entry 16"
+msgstr "팔레트 목록 16"
+
+#: ../terminal/terminal-preferences.c:905
+msgid "Update records"
+msgstr "기록 갱신"
+
+#: ../terminal/terminal-preferences.c:906
+msgid "Update wtmp/utmp/lastlog records"
+msgstr "wtmp/utmp/lastlog 기록 갱신"
+
+#: ../terminal/terminal-preferences.c:916
+#: ../terminal/terminal-preferences.c:917
+msgid "Run shell as login shell"
+msgstr "로긴 셸로 셸 실행"
+
+#: ../terminal/terminal-preferences.c:927
+#: ../terminal/terminal-preferences.c:928
+msgid "Allow bold fonts"
+msgstr "굵은 글씨 허용"
+
+#: ../terminal/terminal-preferences.c:938
+#: ../terminal/terminal-preferences.c:939
+msgid "Font anti-aliasing"
+msgstr "글꼴 안티-앨리어싱"
+
+#: ../terminal/terminal-preferences.c:949
+msgid "Font name"
+msgstr "글꼴 이름"
+
+#: ../terminal/terminal-preferences.c:950
+msgid "Terminal font name"
+msgstr "터미널 글꼴 이름"
+
+#: ../terminal/terminal-preferences.c:982
+#: ../terminal/terminal-preferences.c:983
+msgid "Terminal bell"
+msgstr "터미널 벨"
+
+#: ../terminal/terminal-preferences.c:993
+#: ../terminal/terminal-preferences.c:994
+msgid "Show window borders by default"
+msgstr "기본으로 창 테두리 보이기"
+
+#: ../terminal/terminal-preferences.c:1004
+#: ../terminal/terminal-preferences.c:1005
+msgid "Cursor blinks"
+msgstr "커서 깜박임"
+
+#: ../terminal/terminal-preferences.c:1015
+#: ../terminal/terminal-preferences.c:1016
+msgid "Show menubar by default"
+msgstr "기본으로 메뉴바 보이기"
+
+#: ../terminal/terminal-preferences.c:1026
+msgid "Autohide mouse pointer"
+msgstr ""
+
+#: ../terminal/terminal-preferences.c:1027
+msgid "Whether to autohide mouse pointer"
+msgstr ""
+
+#: ../terminal/terminal-preferences.c:1037
+#: ../terminal/terminal-preferences.c:1038
+msgid "Show toolbars by default"
+msgstr "기본으로 툴바 보이기"
+
+#: ../terminal/terminal-preferences.c:1048
+#: ../terminal/terminal-preferences.c:1049
+msgid "Confirm closing a window with multiple tabs"
+msgstr "여러 탭이 있는 창 닫을 때 확인"
+
+#: ../terminal/terminal-preferences.c:1059
+msgid "Cycle tabs"
+msgstr "탭 순환"
+
+#: ../terminal/terminal-preferences.c:1060
+msgid "Allow cycling through tabs"
+msgstr "탭을 순환하도록 허용"
+
+#: ../terminal/terminal-preferences.c:1070
+msgid "Tab close buttons"
+msgstr "탭 닫기 버튼"
+
+#: ../terminal/terminal-preferences.c:1071
+msgid "Show tab close buttons"
+msgstr "탭 닫기 버튼 보이기"
+
+#: ../terminal/terminal-preferences.c:1081
+msgid "Scrollbar setting"
+msgstr "스크롤 바 설정"
+
+#: ../terminal/terminal-preferences.c:1082
+msgid "Whether and where to display a scrollbar"
+msgstr "스크롤바 표시 여부 및 표시 위치"
+
+#: ../terminal/terminal-preferences.c:1093
+msgid "Scrollback lines"
+msgstr "스크롤 줄 수"
+
+#: ../terminal/terminal-preferences.c:1094
+msgid "Number of lines to keep in history"
+msgstr "기억할 줄 수"
+
+#: ../terminal/terminal-preferences.c:1104
+#: ../terminal/terminal-preferences.c:1105
+msgid "Scroll on output"
+msgstr "출력 있으면 스크롤"
+
+#: ../terminal/terminal-preferences.c:1115
+#: ../terminal/terminal-preferences.c:1116
+msgid "Scroll on keystroke"
+msgstr "키 입력에 스크롤"
+
+#: ../terminal/terminal-preferences.c:1128
+#: ../terminal/terminal-preferences.c:1129
+msgid "Disable menu shortcut key"
+msgstr "메뉴 단축키 끄기"
+
+#: ../terminal/terminal-preferences.c:1139
+#: ../terminal/terminal-preferences.c:1140
+msgid "Disable all mnemonics"
+msgstr "모든 부호 끄기"
+
+#: ../terminal/terminal-preferences.c:1150
+msgid "Initial title"
+msgstr "초기 타이틀"
+
+#: ../terminal/terminal-preferences.c:1151
+msgid "Initial Terminal title"
+msgstr "초기 터미널 타이틀"
+
+#: ../terminal/terminal-preferences.c:1161
+msgid "Title mode"
+msgstr "타이틀 모드"
+
+#: ../terminal/terminal-preferences.c:1162
+msgid "Dynamic-title mode"
+msgstr "동적-변경 타이틀 모드"
+
+#: ../terminal/terminal-preferences.c:1173
+#: ../terminal/terminal-preferences.c:1174
+msgid "Term"
+msgstr "텀"
+
+#: ../terminal/terminal-preferences.c:1184
+#: ../terminal/terminal-preferences.c:1185
+msgid "Workaround VTE title bug"
+msgstr "VTE 타이틀 버그 피해가기"
+
+#: ../terminal/terminal-preferences.c:1195
+msgid "Word chars"
+msgstr "단어 문자"
+
+#: ../terminal/terminal-preferences.c:1196
+msgid "Word characters"
+msgstr "단어 문자"
+
+#: ../terminal/terminal-screen.c:184 ../terminal/terminal-screen.c:185
+msgid "Custom title"
+msgstr "타이틀 지정"
+
+#: ../terminal/terminal-screen.c:195 ../terminal/terminal-screen.c:196
+msgid "Title"
+msgstr "타이틀"
+
+#: ../terminal/terminal-screen.c:430
+msgid "Unable to determine your login shell."
+msgstr "로긴쉘을 정할 수 없음"
+
+#: ../terminal/terminal-screen.c:950
+msgid "Failed to execute child"
+msgstr "자식 프로세스 생성 실패"
+
+#: ../terminal/terminal-screen.c:952
+msgid "Please check your system setup."
+msgstr "시스템 설정을 확인하십시오"
+
+#: ../terminal/terminal-screen.c:1191
+msgid "Untitled"
+msgstr "무제"
+
+#: ../terminal/terminal-shortcut-editor.c:91
+msgid "File"
+msgstr "파일"
+
+#: ../terminal/terminal-shortcut-editor.c:101
+msgid "Edit"
+msgstr "편집"
+
+#: ../terminal/terminal-shortcut-editor.c:111
+msgid "View"
+msgstr "보기"
+
+#: ../terminal/terminal-shortcut-editor.c:130
+msgid "Go"
+msgstr "이동"
+
+#: ../terminal/terminal-shortcut-editor.c:147
+msgid "Help"
+msgstr "도움말"
+
+#: ../terminal/terminal-shortcut-editor.c:230
+msgid "Action"
+msgstr "동작"
+
+#: ../terminal/terminal-shortcut-editor.c:237
+msgid "Shortcut key"
+msgstr "단축키"
+
+#: ../terminal/terminal-shortcut-editor.c:336
+msgid "Compose shortcut"
+msgstr "단축키 설정"
+
+#: ../terminal/terminal-shortcut-editor.c:355
+msgid "Compose shortcut for:"
+msgstr "단축키 설정:"
+
+#: ../terminal/terminal-shortcut-editor.c:378
+msgid "Failed to acquire keyboard"
+msgstr "키보드 설정 실패"
+
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Another application has already acquired control over your keyboard."
+msgstr "다른 어플리케이션이 키보드를 사용중입니다."
+
+#: ../terminal/terminal-tab-header.c:123 ../terminal/terminal-tab-header.c:124
+msgid "Tab title"
+msgstr "탭 타이틀"
+
+#: ../terminal/terminal-tab-header.c:203
+msgid "Close this tab"
+msgstr "이 탭 닫기"
+
+#: ../terminal/terminal-tab-header.c:306
+msgid "_Detach Tab"
+msgstr "탭 분리(_D)"
+
+#: ../terminal/terminal-tab-header.c:312 ../terminal/terminal-window.c:203
+msgid "C_lose Tab"
+msgstr "탭 닫기(_l)"
+
+#: ../terminal/terminal-toolbars-view.c:142
+msgid "Toolbar Editor"
+msgstr "툴바 편집기"
+
+#: ../terminal/terminal-widget.c:324
+msgid "Copy Email Address"
+msgstr "이메일 주소 복사"
+
+#: ../terminal/terminal-widget.c:325
+msgid "Compose Email"
+msgstr "메일 작성"
+
+#: ../terminal/terminal-widget.c:329
+msgid "Copy Link Address"
+msgstr "링크 주소 복사"
+
+#: ../terminal/terminal-widget.c:330
+msgid "Open Link"
+msgstr "링크 열기"
+
+#: ../terminal/terminal-widget.c:483
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:499
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:525
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+
+#: ../terminal/terminal-widget.c:556
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr ""
+
+#: ../terminal/terminal-window.c:200
+msgid "_File"
+msgstr "파일(_F)"
+
+#: ../terminal/terminal-window.c:201
+msgid "Open _Tab"
+msgstr "탭 열기(_T)"
+
+#: ../terminal/terminal-window.c:201
+msgid "Open a new terminal tab"
+msgstr "새로운 터미널 탭을 엽니다"
+
+#: ../terminal/terminal-window.c:202
+#, fuzzy
+msgid "Open T_erminal"
+msgstr "터미널 열기"
+
+#: ../terminal/terminal-window.c:202
+msgid "Open a new terminal window"
+msgstr "새로운 터미널 창을 엽니다"
+
+#: ../terminal/terminal-window.c:203
+msgid "Close the current terminal tab"
+msgstr "현재 터미널 탭을 닫습니다"
+
+#: ../terminal/terminal-window.c:204
+msgid "_Close Window"
+msgstr "창 닫기(_C)"
+
+#: ../terminal/terminal-window.c:204
+msgid "Close the terminal window"
+msgstr "터미널 창을 닫습니다"
+
+#: ../terminal/terminal-window.c:205
+msgid "_Edit"
+msgstr "편집(_E)"
+
+#: ../terminal/terminal-window.c:206
+msgid "_Copy"
+msgstr "복사(_C)"
+
+#: ../terminal/terminal-window.c:206
+msgid "Copy to clipboard"
+msgstr "클립보드에 복사"
+
+#: ../terminal/terminal-window.c:207
+msgid "_Paste"
+msgstr "붙여넣기(_P)"
+
+#: ../terminal/terminal-window.c:207
+msgid "Paste from clipboard"
+msgstr "클립보드에서 붙여넣기"
+
+#: ../terminal/terminal-window.c:208
+msgid "_Applications..."
+msgstr "어플리케이션...(_A)"
+
+#: ../terminal/terminal-window.c:208
+msgid "Customize your preferred applications"
+msgstr "선호하는 어플리케이션을 설정합니다"
+
+#: ../terminal/terminal-window.c:209
+msgid "_Toolbars..."
+msgstr "툴바...(_T)"
+
+#: ../terminal/terminal-window.c:209
+msgid "Customize the toolbars"
+msgstr "툴바를 설정합니다"
+
+#: ../terminal/terminal-window.c:210
+#, fuzzy
+msgid "Pr_eferences..."
+msgstr "설정...(_P)"
+
+#: ../terminal/terminal-window.c:210
+msgid "Open the Terminal preferences dialog"
+msgstr "터미널 설정 창을 엽니다"
+
+#: ../terminal/terminal-window.c:211
+msgid "_View"
+msgstr "보기(_V)"
+
+#: ../terminal/terminal-window.c:212
+msgid "_Terminal"
+msgstr "터미널(_T)"
+
+#: ../terminal/terminal-window.c:213
+msgid "_Set Title..."
+msgstr "타이틀 설정...(_S)"
+
+#: ../terminal/terminal-window.c:213
+msgid "Set a custom title for the current tab"
+msgstr "현재 탭의 타이틀을 설정합니다"
+
+#: ../terminal/terminal-window.c:214
+msgid "_Reset"
+msgstr "리셋(_R)"
+
+#: ../terminal/terminal-window.c:215
+msgid "Reset and C_lear"
+msgstr "리셋하고 비움(_l)"
+
+#: ../terminal/terminal-window.c:216
+msgid "_Go"
+msgstr "이동(_G)"
+
+#: ../terminal/terminal-window.c:217
+msgid "_Previous Tab"
+msgstr "이전 탭(_P)"
+
+#: ../terminal/terminal-window.c:217
+msgid "Switch to previous tab"
+msgstr "이전 탭으로 이동합니다"
+
+#: ../terminal/terminal-window.c:218
+msgid "_Next Tab"
+msgstr "다음 탭(_N)"
+
+#: ../terminal/terminal-window.c:218
+msgid "Switch to next tab"
+msgstr "다음 탭으로 이동합니다"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Help"
+msgstr "도움말(_H)"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Contents"
+msgstr "차례(_C)"
+
+#: ../terminal/terminal-window.c:220
+msgid "Display help contents"
+msgstr "도움말의 차례를 표시합니다"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Report a bug"
+msgstr "버그 보고(_R)"
+
+#: ../terminal/terminal-window.c:221
+msgid "Report a bug in Terminal"
+msgstr "터미널의 버그를 보고합니다"
+
+#: ../terminal/terminal-window.c:223 ../terminal/terminal-window.c:225
+msgid "_About"
+msgstr "정보(_A)"
+
+#: ../terminal/terminal-window.c:223 ../terminal/terminal-window.c:225
+msgid "Display information about Terminal"
+msgstr "터미널에 대한 정보를 보여줍니다"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Input Methods"
+msgstr "입력기(_I)"
+
+#: ../terminal/terminal-window.c:232
+msgid "Show _Menubar"
+msgstr "메뉴바 보기(_M)"
+
+#: ../terminal/terminal-window.c:232
+msgid "Show/hide the menubar"
+msgstr "메뉴 바를 보이거나/숨깁니다"
+
+#: ../terminal/terminal-window.c:233
+msgid "Show _Toolbars"
+msgstr "툴바 보기(_T)"
+
+#: ../terminal/terminal-window.c:233
+msgid "Show/hide the toolbars"
+msgstr "툴바를 보이거나/숨깁니다"
+
+#: ../terminal/terminal-window.c:234
+msgid "Show Window _Borders"
+msgstr "테두리 보기(_B)"
+
+#: ../terminal/terminal-window.c:234
+msgid "Show/hide the window decorations"
+msgstr "창의 테두리를 보이거나/숨깁니다"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Fullscreen"
+msgstr "전체화면(_F)"
+
+#: ../terminal/terminal-window.c:235
+msgid "Toggle fullscreen mode"
+msgstr "전체 화면 모드를 켜고 끕니다"
+
+#: ../terminal/terminal-window.c:539
+msgid "Warning"
+msgstr "주의"
+
+#: ../terminal/terminal-window.c:550
+msgid "Close all tabs"
+msgstr "모든 탭을 닫습니다"
+
+#: ../terminal/terminal-window.c:569
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"%d 개의 탭이 열려있습니다. 창를 닫으면\n"
+"모든 탭이 닫힐 것입니다."
+
+#: ../terminal/terminal-window.c:572
+msgid "Close all tabs?"
+msgstr "모든 탭을 닫을까요?"
+
+#: ../terminal/terminal-window.c:585
+msgid "Do _not ask me again"
+msgstr "다시 묻지 마십시오(_n)"
+
+#: ../terminal/terminal-window.c:964
+msgid ""
+"You did not choose your preferred Web\n"
+"Browser yet. Do you want to setup your\n"
+"preferred applications now?"
+msgstr ""
+"선호하는 웹 브라우저를 선택하지 않았습\n"
+"니다. 지금 선호하는 어플리케이션을 설정\n"
+"하시겠습니까?"
+
+#: ../terminal/terminal-window.c:965
+msgid ""
+"You did not choose your preferred Mail\n"
+"Reader yet. Do you want to setup your\n"
+"preferred applications now?"
+msgstr ""
+"선호하는 메일 리더를 선택하지 않았습\n"
+"니다. 지금 선호하는 어플리케이션을 설정하시겠습니까?"
+
+#: ../terminal/terminal-window.c:1570
+msgid "<b>Title:</b>"
+msgstr "<b>타이틀:</b>"
+
+#: ../terminal/terminal-window.c:1584
+msgid "Enter the title for the current terminal tab"
+msgstr "현재 터미널 탭의 타이틀을 입력하세요"
+
+#: ../terminal/terminal-window.c:1646
+msgid "X Terminal Emulator"
+msgstr "X 터미널 에뮬레이터"
+
+#: ../terminal/terminal-window.c:1650
+msgid "Maintainer"
+msgstr "메인테이너"
+
+#: ../terminal/terminal-window.c:1651
+msgid "Icon Designer"
+msgstr "아이콘 디자이너"
+
+#: ../terminal/terminal-window.c:1655
+#, c-format
+msgid "Translator (%s)"
+msgstr "번역자 (%s)"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "터미널 에뮬레이터"
+
+#: ../helpers/balsa.desktop.in.h:1
+msgid "Balsa"
+msgstr "발사"
+
+#: ../helpers/epiphany.desktop.in.h:1
+msgid "Epiphany Web Browser"
+msgstr "이피파니 웹 브라우저"
+
+#: ../helpers/evolution.desktop.in.h:1
+msgid "Novell Evolution"
+msgstr "노벨 에볼루션"
+
+#: ../helpers/firefox.desktop.in.h:1
+msgid "Mozilla Firefox"
+msgstr "모질라 파이어폭스"
+
+#: ../helpers/galeon.desktop.in.h:1
+msgid "Galeon Web Browser"
+msgstr "갈레온 웹 브라우저"
+
+#: ../helpers/kmail.desktop.in.h:1
+msgid "KMail"
+msgstr "KMail"
+
+#: ../helpers/konqueror.desktop.in.h:1
+msgid "Konqueror"
+msgstr "컨커러"
+
+#: ../helpers/lynx.desktop.in.h:1
+msgid "Lynx"
+msgstr "Lynx"
+
+#: ../helpers/mozilla-browser.desktop.in.h:1
+msgid "Mozilla Browser"
+msgstr "모질라 브라우저"
+
+#: ../helpers/mozilla-mailer.desktop.in.h:1
+msgid "Mozilla Mail"
+msgstr "모질라 메일"
+
+#: ../helpers/mutt.desktop.in.h:1
+msgid "Mutt"
+msgstr "Mutt"
+
+#: ../helpers/opera-browser.desktop.in.h:1
+msgid "Opera Browser"
+msgstr "오페라 브라우저"
+
+#: ../helpers/opera-mailer.desktop.in.h:1
+msgid "Opera Mail"
+msgstr "오페라 메일"
+
+#: ../helpers/sensible-browser.desktop.in.h:1
+msgid "Debian Sensible Browser"
+msgstr ""
+
+#: ../helpers/thunderbird.desktop.in.h:1
+msgid "Mozilla Thunderbird"
+msgstr "모질라 썬더버드"
