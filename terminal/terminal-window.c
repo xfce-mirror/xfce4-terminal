@@ -1628,6 +1628,7 @@ terminal_window_about_idle (gpointer user_data)
     { "Szervác Attila", "sas@321.hu", "hu" },
     { "Vittorio Palmisano", "redclay@email.it", "it" },
     { "Daichi Kawahata", "daichi@xfce.org", "ja" },
+    { "Kibum Hanl", "yui@yui.pe.kr", "ko" },
     { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
     { "Anthony Ivanoff", "a-i@bk.ru", "ru" },
     { "Phan Vĩnh Thịnh", "teppi@vnlinux.org", "vi" },
