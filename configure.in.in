@@ -1,6 +1,6 @@
 dnl $Id$
 dnl
-dnl Copyright (c) 2003-2005
+dnl Copyright (c) 2003-2006
 dnl         os-cillation e.K. All rights reserved.
 dnl
 dnl Written by Benedikt Meurer <benny@xfce.org>.
@@ -20,7 +20,7 @@ m4_define([terminal_version], [terminal_version_major().terminal_version_minor()
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2003-2005
+AC_COPYRIGHT([Copyright (c) 2003-2006
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
@@ -70,7 +70,7 @@ dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
 XDT_CHECK_PACKAGE([EXO], [exo-0.3], [0.3.0])
-XDT_CHECK_PACKAGE([LIBXFCEGUI4], [libxfcegui4-1.0], [4.2.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.6.0])
 XDT_CHECK_PACKAGE([VTE], [vte], [0.11.11])
 
 dnl *************************************************
@@ -140,9 +140,12 @@ doc/C/Makefile
 doc/C/Terminal.xml
 doc/C/images/Makefile
 helpers/Makefile
-pixmaps/Makefile
+icons/Makefile
+icons/16x16/Makefile
+icons/24x24/Makefile
+icons/48x48/Makefile
+icons/scalable/Makefile
 po/Makefile.in
-terminal/stock-icons/Makefile
 terminal/Makefile
 terminal/terminal-config.h
 ])

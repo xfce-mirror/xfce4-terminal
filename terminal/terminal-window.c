@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -48,12 +48,11 @@
 #include <libsn/sn-launchee.h>
 #endif
 
-#include <libxfcegui4/libxfcegui4.h>
-
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-stock.h>
 #include <terminal/terminal-tab-header.h>
 #include <terminal/terminal-toolbars-view.h>
 #include <terminal/terminal-window.h>
@@ -157,12 +156,6 @@ static void            terminal_window_action_report_bug        (GtkAction      
                                                                  TerminalWindow  *window);
 static void            terminal_window_action_about             (GtkAction       *action,
                                                                  TerminalWindow  *window);
-static gboolean        terminal_window_prefs_idle               (gpointer         user_data);
-static void            terminal_window_prefs_idle_destroy       (gpointer         user_data);
-static gboolean        terminal_window_title_idle               (gpointer         user_data);
-static void            terminal_window_title_idle_destroy       (gpointer         user_data);
-static gboolean        terminal_window_about_idle               (gpointer         user_data);
-static void            terminal_window_about_idle_destroy       (gpointer         user_data);
 
 
 
@@ -185,23 +178,21 @@ struct _TerminalWindow
   GtkWidget           *gomenu;
 
   guint                reset_size_idle_id;
-  guint                prefs_idle_id;
-  guint                title_idle_id;
-  guint                about_idle_id;
 };
 
 
 
-static GObjectClass *parent_class;
-static guint         window_signals[LAST_SIGNAL];
+static guint window_signals[LAST_SIGNAL];
 
-static GtkActionEntry action_entries[] =
+
+
+static const GtkActionEntry action_entries[] =
 {
   { "file-menu", NULL, N_ ("_File"), NULL, NULL, NULL, },
-  { "new-tab", "terminal-newtab", N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
-  { "new-window", "terminal-newwindow", N_ ("Open T_erminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
-  { "close-tab", "terminal-closetab", N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
-  { "close-window", "terminal-closewindow", N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
+  { "new-tab", TERMINAL_STOCK_NEWTAB, N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
+  { "new-window", TERMINAL_STOCK_NEWWINDOW, N_ ("Open T_erminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
+  { "close-tab", TERMINAL_STOCK_CLOSETAB, N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
+  { "close-window", TERMINAL_STOCK_CLOSEWINDOW, N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
@@ -218,21 +209,17 @@ static GtkActionEntry action_entries[] =
   { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), NULL, N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
   { "contents", GTK_STOCK_HELP, N_ ("_Contents"), NULL, N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
-  { "report-bug", "terminal-reportbug", N_ ("_Report a bug"), NULL, N_ ("Report a bug in Terminal"), G_CALLBACK (terminal_window_action_report_bug), },
-#if GTK_CHECK_VERSION(2,6,0)
+  { "report-bug", TERMINAL_STOCK_REPORTBUG, N_ ("_Report a bug"), NULL, N_ ("Report a bug in Terminal"), G_CALLBACK (terminal_window_action_report_bug), },
   { "about", GTK_STOCK_ABOUT, N_ ("_About"), NULL, N_ ("Display information about Terminal"), G_CALLBACK (terminal_window_action_about), },
-#else
-  { "about", GTK_STOCK_DIALOG_INFO, N_ ("_About"), NULL, N_ ("Display information about Terminal"), G_CALLBACK (terminal_window_action_about), },
-#endif
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
 
-static GtkToggleActionEntry toggle_action_entries[] =
+static const GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "show-menubar", "terminal-showmenu", N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), TRUE, },
+  { "show-menubar", TERMINAL_STOCK_SHOWMENU, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), TRUE, },
   { "show-toolbars", NULL, N_ ("Show _Toolbars"), NULL, N_ ("Show/hide the toolbars"), G_CALLBACK (terminal_window_action_show_toolbars), FALSE, },
-  { "show-borders", "terminal-showborders", N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
-  { "fullscreen", "terminal-fullscreen", N_ ("_Fullscreen"), NULL, N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
+  { "show-borders", TERMINAL_STOCK_SHOWBORDERS, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
+  { "fullscreen", TERMINAL_STOCK_FULLSCREEN, N_ ("_Fullscreen"), NULL, N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
 };
 
 
@@ -247,8 +234,6 @@ terminal_window_class_init (TerminalWindowClass *klass)
   GtkWidgetClass *gtkwidget_class;
   GObjectClass   *gobject_class;
   
-  parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->dispose = terminal_window_dispose;
   gobject_class->finalize = terminal_window_finalize;
@@ -384,7 +369,7 @@ terminal_window_init (TerminalWindow *window)
   if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
     {
       action = gtk_action_group_get_action (window->action_group, "fullscreen");
-      g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
+      gtk_action_set_sensitive (action, FALSE);
     }
 #endif
 
@@ -424,18 +409,12 @@ terminal_window_dispose (GObject *object)
 
   if (window->reset_size_idle_id != 0)
     g_source_remove (window->reset_size_idle_id);
-  if (window->prefs_idle_id != 0)
-    g_source_remove (window->prefs_idle_id);
-  if (window->title_idle_id != 0)
-    g_source_remove (window->title_idle_id);
-  if (window->about_idle_id != 0)
-    g_source_remove (window->about_idle_id);
 
   g_signal_handlers_disconnect_matched (G_OBJECT (window->preferences),
                                         G_SIGNAL_MATCH_DATA,
                                         0, 0, NULL, NULL, window);
 
-  parent_class->dispose (object);
+  (*G_OBJECT_CLASS (terminal_window_parent_class)->dispose) (object);
 }
 
 
@@ -451,7 +430,7 @@ terminal_window_finalize (GObject *object)
 
   g_free (window->startup_id);
 
-  parent_class->finalize (object);
+  (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
 
 
@@ -483,7 +462,7 @@ terminal_window_show (GtkWidget *widget)
     }
 #endif
 
-  GTK_WIDGET_CLASS (parent_class)->show (widget);
+  (*GTK_WIDGET_CLASS (terminal_window_parent_class)->show) (widget);
 
 #if defined(GDK_WINDOWING_X11) && defined(HAVE_LIBSTARTUP_NOTIFICATION)
   if (G_LIKELY (sn_context != NULL))
@@ -699,24 +678,16 @@ terminal_window_update_actions (TerminalWindow *window)
                     NULL);
 
       action = gtk_action_group_get_action (window->action_group, "close-tab");
-      g_object_set (G_OBJECT (action),
-                    "sensitive", n_pages > 1,
-                    NULL);
+      gtk_action_set_sensitive (action, (n_pages > 1));
 
       action = gtk_action_group_get_action (window->action_group, "prev-tab");
-      g_object_set (G_OBJECT (action),
-                    "sensitive", (cycle_tabs && n_pages > 0) || (page_num > 0),
-                    NULL);
+      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 0) || (page_num > 0));
 
       action = gtk_action_group_get_action (window->action_group, "next-tab");
-      g_object_set (G_OBJECT (action),
-                    "sensitive", (cycle_tabs && n_pages > 0 ) || (page_num < n_pages - 1),
-                    NULL);
+      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 0 ) || (page_num < n_pages - 1));
 
       action = gtk_action_group_get_action (window->action_group, "copy");
-      g_object_set (G_OBJECT (action),
-                    "sensitive", terminal_screen_has_selection (terminal),
-                    NULL);
+      gtk_action_set_sensitive (action, terminal_screen_has_selection (terminal));
 
       /* update the "Go" menu */
       tabitem = g_object_get_data (G_OBJECT (terminal), "terminal-window-go-menu-item");
@@ -955,9 +926,9 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
 
 
 static void
-terminal_window_open_uri (TerminalWindow         *window,
-                          const gchar            *uri,
-                          TerminalHelperCategory  category)
+terminal_window_open_uri (TerminalWindow        *window,
+                          const gchar           *uri,
+                          TerminalHelperCategory category)
 {
   static const gchar *messages[] =
   {
@@ -1241,13 +1212,19 @@ terminal_window_action_edit_toolbars (GtkAction       *action,
 
 
 static void
-terminal_window_action_prefs (GtkAction       *action,
-                              TerminalWindow  *window)
+terminal_window_action_prefs (GtkAction      *action,
+                              TerminalWindow *window)
 {
-  if (G_LIKELY (window->prefs_idle_id == 0))
+  if (G_UNLIKELY (window->preferences_dialog != NULL)) 
     {
-      window->prefs_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_window_prefs_idle,
-                                               window, terminal_window_prefs_idle_destroy);
+      gtk_window_present (GTK_WINDOW (window->preferences_dialog));
+    }
+  else
+    {
+      window->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
+      g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog),
+                                 (gpointer) &window->preferences_dialog);
+      gtk_widget_show (window->preferences_dialog);
     }
 }
 
@@ -1295,18 +1272,14 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
                                      (gpointer) &window->toolbars);
         }
 
-      g_object_set (G_OBJECT (action_edit),
-                    "sensitive", TRUE,
-                    NULL);
+      gtk_action_set_sensitive (action_edit, TRUE);
     }
   else
     {
       if (window->toolbars != NULL)
         gtk_widget_destroy (window->toolbars);
 
-      g_object_set (G_OBJECT (action_edit),
-                    "sensitive", FALSE,
-                    NULL);
+      gtk_action_set_sensitive (action_edit, FALSE);
     }
 
   terminal_window_queue_reset_size (window);
@@ -1367,13 +1340,97 @@ terminal_window_action_next_tab (GtkAction       *action,
 
 
 static void
-terminal_window_action_set_title (GtkAction       *action,
-                                  TerminalWindow  *window)
+title_dialog_response (GtkWidget *dialog,
+                       gint       response)
 {
-  if (G_LIKELY (window->title_idle_id == 0))
+  GtkWidget *message;
+  GError    *error = NULL;
+  gchar     *command;
+
+  if (response == GTK_RESPONSE_HELP)
     {
-      window->title_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_window_title_idle,
-                                               window, terminal_window_title_idle_destroy);
+      command = g_strconcat (TERMINAL_HELP_BIN, " usage set-title", NULL);
+      if (!g_spawn_command_line_async (command, &error))
+        {
+          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_MODAL,
+                                            GTK_MESSAGE_ERROR,
+                                            GTK_BUTTONS_OK,
+                                            _("Unable to launch online help: %s"),
+                                            error->message);
+          g_signal_connect (G_OBJECT (message), "response",
+                            G_CALLBACK (gtk_widget_destroy), NULL);
+          gtk_widget_show (message);
+
+          g_error_free (error);
+        }
+      g_free (command);
+    }
+  else
+    {
+      gtk_widget_destroy (dialog);
+    }
+}
+
+
+
+static void
+terminal_window_action_set_title (GtkAction      *action,
+                                  TerminalWindow *window)
+{
+  TerminalScreen *screen;
+  AtkRelationSet *relations;
+  AtkRelation    *relation;
+  AtkObject      *object;
+  GtkWidget      *dialog;
+  GtkWidget      *box;
+  GtkWidget      *label;
+  GtkWidget      *entry;
+
+  screen = terminal_window_get_active (window);
+  if (G_LIKELY (screen != NULL))
+    {
+      dialog = gtk_dialog_new_with_buttons (_("Set Title"),
+                                            GTK_WINDOW (window),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT
+                                            | GTK_DIALOG_NO_SEPARATOR,
+                                            GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            NULL);
+
+      box = gtk_hbox_new (FALSE, 6);
+      gtk_container_set_border_width (GTK_CONTAINER (box), 6);
+      gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), box, TRUE, TRUE, 0);
+      gtk_widget_show (box);
+
+      label = g_object_new (GTK_TYPE_LABEL,
+                            "label", _("<b>Title:</b>"),
+                            "use-markup", TRUE,
+                            NULL);
+      gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
+      gtk_widget_show (label);
+
+      entry = gtk_entry_new ();
+      gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
+      g_signal_connect_swapped (G_OBJECT (entry), "activate",
+                                G_CALLBACK (gtk_widget_destroy), dialog);
+      gtk_widget_show (entry);
+
+      /* set Atk description and label relation for the entry */
+      object = gtk_widget_get_accessible (entry);
+      atk_object_set_description (object, _("Enter the title for the current terminal tab"));
+      relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+      relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+      atk_relation_set_add (relations, relation);
+      g_object_unref (G_OBJECT (relation));
+
+      exo_mutual_binding_new (G_OBJECT (screen), "custom-title", G_OBJECT (entry), "text");
+
+      g_signal_connect (G_OBJECT (dialog), "response",
+                        G_CALLBACK (title_dialog_response), NULL);
+
+      gtk_widget_show (dialog);
     }
 }
 
@@ -1459,222 +1516,179 @@ terminal_window_action_contents (GtkAction       *action,
 
 
 static void
-terminal_window_action_about (GtkAction       *action,
-                              TerminalWindow  *window)
+activate_link (GtkAboutDialog        *about_dialog,
+               const gchar           *link,
+               TerminalHelperCategory category)
 {
-  if (G_LIKELY (window->about_idle_id == 0))
+  TerminalHelperDatabase *database;
+  TerminalPreferences    *preferences;
+  TerminalHelper         *helper = NULL;
+  const gchar            *browser;
+  GEnumClass             *enum_class;
+  GEnumValue             *enum_value;
+  GdkScreen              *screen;
+  GtkWidget              *message;
+  GError                 *error = NULL;
+  gchar                   name[64];
+  gchar                  *command;
+  gchar                  *path;
+
+  /* determine the setting name */
+  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
+  enum_value = g_enum_get_value (enum_class, category);
+  g_snprintf (name, 64, "helper-%s", enum_value->value_nick);
+  g_type_class_unref (enum_class);
+
+  /* query the preferred application for the category */
+  preferences = terminal_preferences_get ();
+  g_object_get (G_OBJECT (preferences), name, &command, NULL);
+  g_object_unref (G_OBJECT (preferences));
+
+  /* determine the screen on which to run the command */
+  screen = gtk_widget_get_screen (GTK_WIDGET (about_dialog));
+
+  /* check if a helper is selected */
+  if (!exo_str_is_equal (command, "disabled"))
     {
-      window->about_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_window_about_idle,
-                                               window, terminal_window_about_idle_destroy);
+      database = terminal_helper_database_get ();
+      helper = terminal_helper_database_lookup (database, category, command);
+      g_object_unref (G_OBJECT (database));
     }
-}
 
+  /* release the helper id */
+  g_free (command);
 
-
-static gboolean
-terminal_window_prefs_idle (gpointer user_data)
-{
-  TerminalWindow *window = TERMINAL_WINDOW (user_data);
-
-  if (G_UNLIKELY (window->preferences_dialog != NULL)) 
+  /* check if we have a helper to run */
+  if (G_LIKELY (helper != NULL))
     {
-      gtk_window_present (GTK_WINDOW (window->preferences_dialog));
+      /* just run the helper */
+      terminal_helper_execute (helper, screen, link);
+      g_object_unref (G_OBJECT (helper));
     }
   else
     {
-      window->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
-      g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog),
-                                 (gpointer) &window->preferences_dialog);
-      gtk_widget_show (window->preferences_dialog);
-    }
-
-  return FALSE;
-}
-
-
-
-static void
-terminal_window_prefs_idle_destroy (gpointer user_data)
-{
-  TERMINAL_WINDOW (user_data)->prefs_idle_id = 0;
-}
-
-
-
-static void
-title_dialog_response (GtkWidget *dialog,
-                       gint       response)
-{
-  GtkWidget *message;
-  GError    *error = NULL;
-  gchar     *command;
-
-  if (response == GTK_RESPONSE_HELP)
-    {
-      command = g_strconcat (TERMINAL_HELP_BIN, " usage set-title", NULL);
-      if (!g_spawn_command_line_async (command, &error))
+      /* fallback to the first available browser */
+      path = g_find_program_in_path ("xfbrowser4");
+      if (G_UNLIKELY (path == NULL))
         {
-          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
+          browser = g_getenv ("BROWSER");
+          if (G_LIKELY (browser != NULL))
+            path = g_find_program_in_path (browser);
+        }
+
+      if (G_LIKELY (path != NULL))
+        command = g_strdup_printf ("%s \"%s\"", path, link);
+      else
+        command = g_strdup_printf ("ns-remote -remote \"openURL(%s)\"", link);
+
+      /* try to launch the command on the screen of the about dialog */
+      if (!gdk_spawn_command_line_on_screen (screen, command, &error))
+        {
+          /* notify the user that we failed to open the link */
+          message = gtk_message_dialog_new (GTK_WINDOW (about_dialog),
                                             GTK_DIALOG_DESTROY_WITH_PARENT
                                             | GTK_DIALOG_MODAL,
                                             GTK_MESSAGE_ERROR,
-                                            GTK_BUTTONS_OK,
-                                            _("Unable to launch online help: %s"),
-                                            error->message);
-          g_signal_connect (G_OBJECT (message), "response",
-                            G_CALLBACK (gtk_widget_destroy), NULL);
-          gtk_widget_show (message);
-
+                                            GTK_BUTTONS_CLOSE,
+                                            _("Failed to open `%s'."),
+                                            link);
+          gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (message), "%s.", error->message);
+          gtk_dialog_run (GTK_DIALOG (message));
+          gtk_widget_destroy (message);
           g_error_free (error);
         }
+
+      /* cleanup */
       g_free (command);
+      g_free (path);
     }
-  else
-    {
-      gtk_widget_destroy (dialog);
-    }
-}
-
-
-
-static gboolean
-terminal_window_title_idle (gpointer user_data)
-{
-  TerminalWindow   *window = TERMINAL_WINDOW (user_data);
-  TerminalScreen   *screen;
-  AtkRelationSet   *relations;
-  AtkRelation      *relation;
-  AtkObject        *object;
-  GtkWidget        *dialog;
-  GtkWidget        *box;
-  GtkWidget        *label;
-  GtkWidget        *entry;
-
-  screen = terminal_window_get_active (window);
-  if (G_LIKELY (screen != NULL))
-    {
-      dialog = gtk_dialog_new_with_buttons (_("Set Title"),
-                                            GTK_WINDOW (window),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT
-                                            | GTK_DIALOG_NO_SEPARATOR,
-                                            GTK_STOCK_HELP, GTK_RESPONSE_HELP,
-                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
-                                            NULL);
-
-      box = gtk_hbox_new (FALSE, 6);
-      gtk_container_set_border_width (GTK_CONTAINER (box), 6);
-      gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), box, TRUE, TRUE, 0);
-      gtk_widget_show (box);
-
-      label = g_object_new (GTK_TYPE_LABEL,
-                            "label", _("<b>Title:</b>"),
-                            "use-markup", TRUE,
-                            NULL);
-      gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
-      gtk_widget_show (label);
-
-      entry = gtk_entry_new ();
-      gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
-      g_signal_connect_swapped (G_OBJECT (entry), "activate",
-                                G_CALLBACK (gtk_widget_destroy), dialog);
-      gtk_widget_show (entry);
-
-      /* set Atk description and label relation for the entry */
-      object = gtk_widget_get_accessible (entry);
-      atk_object_set_description (object, _("Enter the title for the current terminal tab"));
-      relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
-      relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
-      atk_relation_set_add (relations, relation);
-      g_object_unref (G_OBJECT (relation));
-
-      exo_mutual_binding_new (G_OBJECT (screen), "custom-title", G_OBJECT (entry), "text");
-
-      g_signal_connect (G_OBJECT (dialog), "response",
-                        G_CALLBACK (title_dialog_response), NULL);
-
-      gtk_widget_show (dialog);
-    }
-
-  return FALSE;
 }
 
 
 
 static void
-terminal_window_title_idle_destroy (gpointer user_data)
+email_hook (GtkAboutDialog *about_dialog,
+            const gchar    *email,
+            gpointer        user_data)
 {
-  TERMINAL_WINDOW (user_data)->title_idle_id = 0;
+  activate_link (about_dialog, email, TERMINAL_HELPER_MAILREADER);
 }
 
 
 
-static gboolean
-terminal_window_about_idle (gpointer user_data)
+static void
+url_hook (GtkAboutDialog *about_dialog,
+          const gchar    *email,
+          gpointer        user_data)
 {
-  TerminalWindow *window = TERMINAL_WINDOW (user_data);
-  XfceAboutInfo  *info;
-  GtkWidget      *dialog;
-  GdkPixbuf      *icon;
-  gchar          *s;
-  guint           n;
+  activate_link (about_dialog, email, TERMINAL_HELPER_WEBBROWSER);
+}
 
-  static const struct { gchar *name, *email, *language; } translators[] = {
-    { "Dwayne Bailey", "dwayne@translate.org.za", "en_GB" },
-    { "Jaime Buffery", "nestu@lunar-linux.org", "es" },
-    { "Piarres Beobide Egaña", "pi@beobide.net", "eu" },
-    { "Jari Rahkonen", "jari.rahkonen@pp1.inet.fi", "fi" },
-    { "Stephane Roy", "sroy@j2n.net", "fr" },
-    { "Yuval Tanny", "tanai@int.gov.il", "he" },
-    { "Szervác Attila", "sas@321.hu", "hu" },
-    { "Vittorio Palmisano", "redclay@email.it", "it" },
-    { "Daichi Kawahata", "daichi@xfce.org", "ja" },
-    { "Kibum Hanl", "yui@yui.pe.kr", "ko" },
-    { "Jasper Huijsmans", "jasper@xfce.org", "nl" },
-    { "Anthony Ivanoff", "a-i@bk.ru", "ru" },
-    { "Phan Vĩnh Thịnh", "teppi@vnlinux.org", "vi" },
-    { "Army Gu", "redarmy@gmail.com", "zh_CN" },
-    { "Hydonsingore Sie", "hydonsingore@mail.educities.edu.tw", "zh_TW" },
-    { NULL, NULL, NULL },
+
+
+static void
+terminal_window_action_about (GtkAction      *action,
+                              TerminalWindow *window)
+{
+  static const gchar *authors[] =
+  {
+    "Benedikt Meurer <benny@xfce.org>",
+    NULL,
   };
 
-  /* Try to load the Terminal icon using the icon-spec
-   * lookup. Fallback to the well-known location.
-   */
-  icon = xfce_themed_icon_load ("Terminal", 48);
-  if (G_UNLIKELY (icon == NULL))
-    icon = gdk_pixbuf_new_from_file (DATADIR "/icons/hicolor/48x48/apps/Terminal.png", NULL);
+  static const gchar *artists[] =
+  {
+    "Francois Le Clainche <fleclainche@wanadoo.fr>",
+    NULL,
+  };
 
-  info = xfce_about_info_new ("Terminal", VERSION, _("X Terminal Emulator"),
-                              XFCE_COPYRIGHT_TEXT ("2003-2005", "os-cillation"),
-                              XFCE_LICENSE_GPL);
-  xfce_about_info_set_homepage (info, "http://www.os-cillation.com/");
-  xfce_about_info_add_credit (info, "Benedikt Meurer", "benny@xfce.org", _("Maintainer"));
-  xfce_about_info_add_credit (info, "Francois Le Clainche", "fleclainche@wanadoo.fr", _("Icon Designer"));
+  static const gchar *documenters[] =
+  {
+    "Benedikt Meurer <benny@xfce.org>",
+    "Andrew Conkling <andrewski@fr.st>",
+    NULL,
+  };
 
-  for (n = 0; translators[n].name != NULL; ++n)
-    {
-      s = g_strdup_printf (_("Translator (%s)"), translators[n].language);
-      xfce_about_info_add_credit (info, translators[n].name, translators[n].email, s);
-      g_free (s);
-    }
+  static const gchar license[] =
+    "This program is free software; you can redistribute it and/or modify it\n"
+    "under the terms of the GNU General Public License as published by the Free\n"
+    "Software Foundation; either version 2 of the License, or (at your option)\n"
+    "any later version.\n"
+    "\n"
+    "This program is distributed in the hope that it will be useful, but WITHOUT\n"
+    "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\n"
+    "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
+    "more details.\n"
+    "\n"
+    "You should have received a copy of the GNU General Public License along with\n"
+    "this program; if not, write to the Free Software Foundation, Inc., 59 Temple\n"
+    "Place, Suite 330, Boston, MA  02111-1307  USA.\n";
 
-  dialog = xfce_about_dialog_new (GTK_WINDOW (window), info, icon);
-  gtk_dialog_run (GTK_DIALOG (dialog));
-  gtk_widget_destroy (dialog);
+  GdkPixbuf *logo;
 
-  xfce_about_info_free (info);
-  if (G_LIKELY (icon != NULL))
-    g_object_unref (G_OBJECT (icon));
+  /* try to load the about logo */
+  logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 168, 168, NULL);
 
-  return FALSE;
-}
+  /* open the about dialog */
+  gtk_about_dialog_set_email_hook (email_hook, NULL, NULL);
+  gtk_about_dialog_set_url_hook (url_hook, NULL, NULL);
+  gtk_show_about_dialog (GTK_WINDOW (window),
+                         "authors", authors,
+                         "artists", artists,
+                         "comments", _("X Terminal Emulator"),
+                         "documenters", documenters,
+                         "copyright", "Copyright \302\251 2003-2006 Benedikt Meurer",
+                         "license", license,
+                         "logo", logo,
+                         "name", PACKAGE_NAME,
+                         "translator-credits", _("translator-credits"),
+                         "version", PACKAGE_VERSION,
+                         "website", "http://terminal.os-cillation.de",
+                         NULL);
 
-
-
-static void
-terminal_window_about_idle_destroy (gpointer user_data)
-{
-  TERMINAL_WINDOW (user_data)->about_idle_id = 0;
+  /* release the about logo (if any) */
+  if (G_LIKELY (logo != NULL))
+    g_object_unref (G_OBJECT (logo));
 }
 
 
@@ -1702,8 +1716,7 @@ terminal_window_new (gboolean           fullscreen,
 
   /* setup full screen */
   action = gtk_action_group_get_action (window->action_group, "fullscreen");
-  g_object_get (G_OBJECT (action), "sensitive", &setting, NULL);
-  if (setting && fullscreen)
+  if (fullscreen && gtk_action_is_sensitive (action))
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
   /* setup menubar visibility */
@@ -1720,7 +1733,7 @@ terminal_window_new (gboolean           fullscreen,
   else
     setting = (toolbars == TERMINAL_VISIBILITY_SHOW);
   action = gtk_action_group_get_action (window->action_group, "edit-toolbars");
-  g_object_set (G_OBJECT (action), "sensitive", FALSE, NULL);
+  gtk_action_set_sensitive (action, FALSE);
   action = gtk_action_group_get_action (window->action_group, "show-toolbars");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
 
@@ -1746,13 +1759,13 @@ void
 terminal_window_add (TerminalWindow *window,
                      TerminalScreen *screen)
 {
-  TerminalScreen   *active;
-  GtkWidget        *header;
-  GtkAction        *action;
-  gint              npages;
-  gint              page;
-  gint              grid_width;
-  gint              grid_height;
+  TerminalScreen *active;
+  GtkWidget      *header;
+  GtkAction      *action;
+  gint            npages;
+  gint            page;
+  gint            grid_width;
+  gint            grid_height;
 
   g_return_if_fail (TERMINAL_IS_WINDOW (window));
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));

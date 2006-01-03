@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -49,7 +49,7 @@ TerminalHelperCategory  terminal_helper_get_category  (TerminalHelper *helper);
 const gchar            *terminal_helper_get_id        (TerminalHelper *helper);
 const gchar            *terminal_helper_get_name      (TerminalHelper *helper);
 const gchar            *terminal_helper_get_command   (TerminalHelper *helper);
-GdkPixbuf              *terminal_helper_get_icon      (TerminalHelper *helper);
+const gchar            *terminal_helper_get_icon      (TerminalHelper *helper);
 void                    terminal_helper_execute       (TerminalHelper *helper,
                                                        GdkScreen      *screen,
                                                        const gchar    *uri);

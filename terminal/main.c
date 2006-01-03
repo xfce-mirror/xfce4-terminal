@@ -28,7 +28,7 @@
 #include <exo/exo.h>
 
 #include <terminal/terminal-app.h>
-#include <terminal/terminal-icons.h>
+#include <terminal/terminal-stock.h>
 
 #ifdef HAVE_DBUS
 #include <terminal/terminal-dbus.h>
@@ -123,9 +123,6 @@ main (int argc, char **argv)
   TerminalOptions *options;
   GdkModifierType  modifiers;
   TerminalApp     *app;
-#if GLIB_CHECK_VERSION(2,6,0)
-  const gchar     *description;
-#endif
   const gchar     *startup_id;
   const gchar     *display;
   GError          *error = NULL;
@@ -143,14 +140,6 @@ main (int argc, char **argv)
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL);
 #endif
 
-#if GLIB_CHECK_VERSION(2,6,0)
-  description = glib_check_version (GLIB_MAJOR_VERSION,
-                                    GLIB_MINOR_VERSION,
-                                    GLIB_MICRO_VERSION);
-  if (G_UNLIKELY (description != NULL))
-    g_warning ("GLib version mismatch: %s", description);
-#endif
-
   if (!terminal_options_parse (argc, argv, NULL, &options, &error))
     {
       g_printerr ("%s\n", error->message);
@@ -162,7 +151,7 @@ main (int argc, char **argv)
   if (G_UNLIKELY (options->show_version))
     {
       g_print (_("%s (Xfce %s)\n\n"
-                 "Copyright (c) 2003-2005\n"
+                 "Copyright (c) 2003-2006\n"
                  "        os-cillation e.K. All rights reserved.\n\n"
                  "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
                  "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
@@ -187,7 +176,7 @@ main (int argc, char **argv)
 
   /* append startup if given */
   startup_id = g_getenv ("DESKTOP_STARTUP_ID");
-  if (startup_id != NULL)
+  if (G_LIKELY (startup_id != NULL))
     {
       nargv[nargc++] = g_strdup_printf ("--startup-id=%s", startup_id);
       xfce_putenv ("DESKTOP_STARTUP_ID=");
@@ -195,7 +184,7 @@ main (int argc, char **argv)
 
   /* append default display if given */
   display = g_getenv ("DISPLAY");
-  if (display != NULL)
+  if (G_LIKELY (display != NULL))
     nargv[nargc++] = g_strdup_printf ("--default-display=%s", display);
 
   /* append all given arguments */
@@ -235,13 +224,18 @@ main (int argc, char **argv)
   /* disable automatic startup notification completion */
   gtk_window_set_auto_startup_notification (FALSE);
 
+  /* initialize Gtk+ */
   gtk_init (&argc, &argv);
 
   /* Make GtkAccelGroup accept Mod5 (Windows Key) as modifier */
   modifiers = gtk_accelerator_get_default_mod_mask ();
   gtk_accelerator_set_default_mod_mask (modifiers | GDK_MOD4_MASK);
 
-  terminal_icons_setup_main ();
+  /* register our stock icons */
+  terminal_stock_init ();
+
+  /* set default window icon */
+  gtk_window_set_default_icon_name ("Terminal");
 
   app = terminal_app_new ();
 

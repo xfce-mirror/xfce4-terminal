@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -29,6 +29,7 @@
 
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-shortcut-editor.h>
+#include <terminal/terminal-stock.h>
 
 #if defined(GDK_WINDOWING_WIN32)
 #include <gdk/gdkwin32.h>
@@ -83,9 +84,7 @@ struct _TerminalShortcutEditor
 
 
 
-static GObjectClass *parent_class;
-
-static ToplevelMenu toplevel_menus[] =
+static const ToplevelMenu toplevel_menus[] =
 {
   {
     N_ ("File"),
@@ -163,8 +162,6 @@ terminal_shortcut_editor_class_init (TerminalShortcutEditorClass *klass)
 {
   GObjectClass *gobject_class;
 
-  parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_shortcut_editor_finalize;
 }
@@ -174,16 +171,16 @@ terminal_shortcut_editor_class_init (TerminalShortcutEditorClass *klass)
 static void
 terminal_shortcut_editor_init (TerminalShortcutEditor *editor)
 {
-  GtkTreeViewColumn *column;
-  GtkCellRenderer   *renderer;
-  ToplevelMenu      *menu;
-  GtkTreeStore      *store;
-  GtkTreeIter        parent;
-  GtkTreeIter        child;
-  GParamSpec        *pspec;
-  gchar             *signal;
-  gchar             *accel;
-  gint               n;
+  const ToplevelMenu *menu;
+  GtkTreeViewColumn  *column;
+  GtkCellRenderer    *renderer;
+  GtkTreeStore       *store;
+  GtkTreeIter         parent;
+  GtkTreeIter         child;
+  GParamSpec         *pspec;
+  gchar              *signal;
+  gchar              *accel;
+  gint                n;
 
   editor->preferences = terminal_preferences_get ();
 
@@ -256,7 +253,7 @@ terminal_shortcut_editor_finalize (GObject *object)
                                         editor);
   g_object_unref (G_OBJECT (editor->preferences));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_shortcut_editor_parent_class)->finalize) (object);
 }
 
 
@@ -346,7 +343,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
-  image = gtk_image_new_from_stock ("terminal-compose", GTK_ICON_SIZE_DIALOG);
+  image = gtk_image_new_from_stock (TERMINAL_STOCK_COMPOSE, GTK_ICON_SIZE_DIALOG);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
   gtk_widget_show (image);
 

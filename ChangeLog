@@ -1,3 +1,38 @@
+2006-01-03	Benedikt Meurer <benny@xfce.org>
+
+	* doc/C/Terminal.xml.in, terminal/terminal-window.c,
+	  terminal/main.c, Terminal-toolbars.ui, Terminal.ui: Update copyright.
+	* terminal/stock-icons/, terminal/terminal-stock.{c,h}, Makefile.am,
+	  icons/, configure.in.in, terminal/Makefile.am, pixmaps/,
+	  terminal/main.c, terminal/terminal-helper-dialog.c,
+	  terminal/terminal-preferences-dialog.c, terminal/terminal-window.c,
+	  terminal/terminal-toolbars-view.c: Reorganize the stock icon handling
+	  to use themed icons instead of hardcoded defaults. The stock icon
+	  names weren't changed, so existing Gtk+ themes will continue to work
+	  properly.
+	* terminal/terminal-window.c, terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-shortcut-editor.c: Use stock-id macros.
+	* Terminal.desktop.in: Add Version key.
+	* terminal/terminal-accel-map.c, terminal/terminal-app.c,
+	  terminal/terminal-helper-dialog.c, terminal/terminal-helper.c,
+	  terminal/terminal-image-loader.c, terminal/terminal-monitor.c,
+	  terminal/terminal-preferences-dialog.c,
+	  terminal/terminal-preferences.c, terminal/terminal-screen.c,
+	  terminal/terminal-shortcut-editor.c, terminal/terminal-tab-header.c,
+	  terminal/terminal-toolbars-model.c, terminal/terminal-toolbars-view.c,
+	  terminal/terminal-widget.c, terminal/terminal-window.c: We don't need
+	  another parent_class pointer, as G_DEFINE_TYPE() already provides a
+	  pointer to the parent class.
+	* configure.in.in, terminal/Makefile.am: Drop dependency on libxfcegui4
+	  and add dependency on Gtk+ 2.6.0.
+	* terminal/terminal-window.c: Use GtkAboutDialog instead of
+	  XfceAboutDialog.
+	* terminal/terminal-helper.{c,h}, terminal/terminal-helper-dialog.c:
+	  Use GtkIconTheme instead of XfceIconTheme.
+	* terminal/terminal-window.c: Use Gtk+ 2.6.0 functions where applicable.
+	* NEWS: Add new items.
+	* po/*.po, po/Terminal.pot: Update translations.
+
 2005-12-12	Benedikt Meurer <benny@xfce.org>
 
 	* NEWS, THANKS, terminal/terminal-window.c: Add Kibum Hanl

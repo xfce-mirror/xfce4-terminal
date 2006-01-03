@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -125,10 +125,11 @@ struct _TerminalWidget
 
 
 
-static GObjectClass *parent_class;
-static guint         widget_signals[LAST_SIGNAL];
+static guint widget_signals[LAST_SIGNAL];
 
-static GtkTargetEntry targets[] =
+
+
+static const GtkTargetEntry targets[] =
 {
   { "text/uri-list", 0, TARGET_URI_LIST },
   { "text/x-moz-url", 0, TARGET_MOZ_URL },
@@ -151,8 +152,6 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 {
   GtkWidgetClass  *gtkwidget_class;
   GObjectClass    *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_widget_finalize;
@@ -233,7 +232,7 @@ terminal_widget_finalize (GObject *object)
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_widget_parent_class)->finalize) (object);
 }
 
 
@@ -422,7 +421,7 @@ terminal_widget_button_press_event (GtkWidget       *widget,
                                     G_CALLBACK (terminal_widget_commit), &committed);
     }
 
-  GTK_WIDGET_CLASS (parent_class)->button_press_event (widget, event);
+  (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->button_press_event) (widget, event);
 
   if (event->button == 3 && event->type == GDK_BUTTON_PRESS)
     {
@@ -608,7 +607,7 @@ terminal_widget_key_press_event (GtkWidget    *widget,
       return TRUE;
     }
 
-  return GTK_WIDGET_CLASS (parent_class)->key_press_event (widget, event);
+  return (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->key_press_event) (widget, event);
 }
 
 

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -23,21 +23,16 @@
 #include <config.h>
 #endif
 
-#include <terminal/terminal-icons.h>
 #include <terminal/terminal-toolbars-model.h>
 #include <terminal/terminal-toolbars-view.h>
 
 
 
-static void       terminal_toolbars_view_class_init        (TerminalToolbarsViewClass     *klass);
-static void       terminal_toolbars_view_init              (TerminalToolbarsView          *toolbar);
-static void       terminal_toolbars_view_finalize          (GObject                       *object);
-static void       terminal_toolbars_view_edit_done         (ExoToolbarsEditorDialog       *dialog,
-                                                            TerminalToolbarsView          *toolbar);
-
-
-
-static GObjectClass *parent_class;
+static void terminal_toolbars_view_class_init (TerminalToolbarsViewClass *klass);
+static void terminal_toolbars_view_init       (TerminalToolbarsView      *toolbar);
+static void terminal_toolbars_view_finalize   (GObject                   *object);
+static void terminal_toolbars_view_edit_done  (ExoToolbarsEditorDialog   *dialog,
+                                               TerminalToolbarsView      *toolbar);
 
 
 
@@ -50,13 +45,8 @@ terminal_toolbars_view_class_init (TerminalToolbarsViewClass *klass)
 {
   GObjectClass *gobject_class;
 
-  parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_toolbars_view_finalize;
-
-  /* register stock icons required for the toolbars */
-  terminal_icons_setup_toolbar ();
 }
 
 
@@ -84,7 +74,7 @@ terminal_toolbars_view_finalize (GObject *object)
   if (G_UNLIKELY (toolbar->editor_dialog != NULL))
     gtk_widget_destroy (toolbar->editor_dialog);
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_toolbars_view_parent_class)->finalize) (object);
 }
 
 

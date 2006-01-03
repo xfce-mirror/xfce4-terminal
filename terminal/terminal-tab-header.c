@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -93,8 +93,7 @@ struct _TerminalTabHeader
 
 
 
-static GObjectClass *parent_class;
-static guint         header_signals[LAST_SIGNAL];
+static guint header_signals[LAST_SIGNAL];
 
 
 
@@ -106,8 +105,6 @@ static void
 terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
 {
   GObjectClass *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_tab_header_finalize;
@@ -231,7 +228,7 @@ terminal_tab_header_finalize (GObject *object)
   g_object_unref (G_OBJECT (header->preferences));
   g_object_unref (G_OBJECT (header->tooltips));
 
-  parent_class->finalize (object);
+  (*G_OBJECT_CLASS (terminal_tab_header_parent_class)->finalize) (object);
 }
 
 

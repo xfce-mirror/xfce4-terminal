@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -66,14 +66,14 @@ struct _TerminalMonitorClass
 
 struct _TerminalMonitor
 {
-  GObject   __parent__;
-  GSList   *entities;
-  guint     idle_id;
+  GObject __parent__;
+  GSList *entities;
+  guint   idle_id;
 };
 
 
 
-static GObjectClass *parent_class;
+static GObjectClass *terminal_monitor_parent_class;
 
 
 
@@ -151,7 +151,7 @@ terminal_monitor_class_init (TerminalMonitorClass *klass)
 {
   GObjectClass *gobject_class;
 
-  parent_class = g_type_class_peek_parent (klass);
+  terminal_monitor_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_monitor_finalize;
@@ -177,7 +177,7 @@ terminal_monitor_finalize (GObject *object)
       g_free (entity);
     }
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_monitor_parent_class)->finalize) (object);
 }
 
 

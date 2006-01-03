@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -45,10 +45,6 @@ struct _TerminalAccelMap
 
 
 
-static GObjectClass *parent_class;
-
-
-
 G_DEFINE_TYPE (TerminalAccelMap, terminal_accel_map, G_TYPE_OBJECT);
 
 
@@ -57,8 +53,6 @@ static void
 terminal_accel_map_class_init (TerminalAccelMapClass *klass)
 {
   GObjectClass *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_accel_map_finalize;
@@ -104,7 +98,7 @@ terminal_accel_map_finalize (GObject *object)
   g_signal_handlers_disconnect_by_func (G_OBJECT (map->preferences), G_CALLBACK (terminal_accel_map_notify), map);
   g_object_unref (G_OBJECT (map->preferences));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_accel_map_parent_class)->finalize) (object);
 }
 
 

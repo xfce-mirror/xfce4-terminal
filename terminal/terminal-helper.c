@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -35,8 +35,6 @@
 
 #include <exo/exo.h>
 
-#include <libxfcegui4/libxfcegui4.h>
-
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>
 
@@ -70,7 +68,7 @@ static gint            terminal_helper_compare    (gconstpointer        a,
 
 
 
-static GObjectClass *helper_parent_class;
+static GObjectClass *terminal_helper_parent_class;
 
 
 
@@ -110,7 +108,7 @@ terminal_helper_class_init (TerminalHelperClass *klass)
 {
   GObjectClass *gobject_class;
 
-  helper_parent_class = g_type_class_peek_parent (klass);
+  terminal_helper_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_helper_finalize;
@@ -128,7 +126,7 @@ terminal_helper_finalize (GObject *object)
   g_free (helper->name);
   g_free (helper->id);
 
-  G_OBJECT_CLASS (helper_parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_helper_parent_class)->finalize) (object);
 }
 
 
@@ -326,31 +324,11 @@ terminal_helper_get_command (TerminalHelper *helper)
  *
  * Return value:
  **/
-GdkPixbuf*
+const gchar*
 terminal_helper_get_icon (TerminalHelper *helper)
 {
-  GdkPixbuf *pixbuf;
-  gint       size;
-
   g_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
-
-  pixbuf = g_object_get_data (G_OBJECT (helper), "terminal-helper-icon");
-  if (pixbuf == NULL && helper->icon != NULL)
-    {
-      if (!gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, &size, &size))
-        size = 16;
-
-      pixbuf = xfce_themed_icon_load (helper->icon, size);
-      if (G_LIKELY (pixbuf != NULL))
-        {
-          g_object_set_data_full (G_OBJECT (helper),
-                                  "terminal-helper-icon",
-                                  G_OBJECT (pixbuf),
-                                  g_object_unref);
-        }
-    }
-
-  return pixbuf;
+  return helper->icon;
 }
 
 
@@ -437,10 +415,6 @@ static void terminal_helper_database_finalize   (GObject                     *ob
 
 
 
-static GObjectClass *database_parent_class;
-
-
-
 G_DEFINE_TYPE (TerminalHelperDatabase, terminal_helper_database, G_TYPE_OBJECT);
 
 
@@ -449,8 +423,6 @@ static void
 terminal_helper_database_class_init (TerminalHelperDatabaseClass *klass)
 {
   GObjectClass *gobject_class;
-
-  database_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_helper_database_finalize;
@@ -476,7 +448,7 @@ terminal_helper_database_finalize (GObject *object)
 
   g_hash_table_destroy (database->helpers);
 
-  G_OBJECT_CLASS (database_parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_helper_database_parent_class)->finalize) (object);
 }
 
 

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -24,9 +24,9 @@
 #endif
 
 #include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-icons.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
+#include <terminal/terminal-stock.h>
 
 
 
@@ -40,19 +40,15 @@ enum
 
 
 
-static void     terminal_preferences_dialog_class_init              (TerminalPreferencesDialogClass *klass);
-static void     terminal_preferences_dialog_init                    (TerminalPreferencesDialog      *dialog);
-static void     terminal_preferences_dialog_finalize                (GObject                        *object);
-static void     terminal_preferences_dialog_response                (TerminalPreferencesDialog      *dialog,
-                                                                     gint                            response);
-static void     terminal_preferences_open_image_file                (GtkWidget                      *button,
-                                                                     GtkWidget                      *entry);
-static void     terminal_preferences_dialog_reset_compat            (GtkWidget                      *button,
-                                                                     TerminalPreferencesDialog      *dialog);
-
-
-
-static GObjectClass *parent_class;
+static void terminal_preferences_dialog_class_init   (TerminalPreferencesDialogClass *klass);
+static void terminal_preferences_dialog_init         (TerminalPreferencesDialog      *dialog);
+static void terminal_preferences_dialog_finalize     (GObject                        *object);
+static void terminal_preferences_dialog_response     (TerminalPreferencesDialog      *dialog,
+                                                      gint                            response);
+static void terminal_preferences_open_image_file     (GtkWidget                      *button,
+                                                      GtkWidget                      *entry);
+static void terminal_preferences_dialog_reset_compat (GtkWidget                      *button,
+                                                      TerminalPreferencesDialog      *dialog);
 
 
 
@@ -64,8 +60,6 @@ static void
 terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 {
   GObjectClass *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_preferences_dialog_finalize;
@@ -127,9 +121,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   AtkObject         *object;
   GSList            *group;
   gint               index;
-
-  /* register stock icons required for the preferences dialog */
-  terminal_icons_setup_preferences ();
 
   dialog->preferences = terminal_preferences_get ();
 
@@ -404,7 +395,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_unref (G_OBJECT (relation));
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
-                                 "terminal-general",
+                                 TERMINAL_STOCK_GENERAL,
                                  GTK_ICON_SIZE_DIALOG,
                                  NULL);
   gtk_list_store_append (store, &iter);
@@ -610,7 +601,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
-                                 "terminal-appearance",
+                                 TERMINAL_STOCK_APPEARANCE,
                                  GTK_ICON_SIZE_DIALOG,
                                  NULL);
   gtk_list_store_append (store, &iter);
@@ -774,81 +765,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-#if 0
-  button = gtk_check_button_new_with_mnemonic (_("Use default colors"));
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-use-default", G_OBJECT (button), "active");
-  gtk_tooltips_set_tip (dialog->tooltips, button, _("Use default cursor and highlight colors"), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 0, 2, 0, 1,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  label = g_object_new (GTK_TYPE_LABEL,
-                        "label", _("_Cursor color:"),
-                        "use-underline", TRUE,
-                        "xalign", 0.0,
-                        NULL);
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-use-default", G_OBJECT (label), "sensitive");
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2,
-                    GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (label);
-
-  align = gtk_alignment_new (0.0, 0.5, 0.0, 0.0);
-  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 1, 2,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (align);
-
-  button = g_object_new (GTK_TYPE_COLOR_BUTTON,
-                         "title", _("Choose terminal cursor color"),
-                         NULL);
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-use-default", G_OBJECT (button), "sensitive");
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-cursor", G_OBJECT (button), "color");
-  gtk_container_add (GTK_CONTAINER (align), button);
-  gtk_widget_show (button);
-
-  /* set Atk name/description and label relation for the button */
-  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
-  object = gtk_widget_get_accessible (button);
-  atk_object_set_name (object, _("Color Selector"));
-  atk_object_set_description (object, _("Open a dialog to specify the color"));
-  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
-  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
-  atk_relation_set_add (relations, relation);
-  g_object_unref (G_OBJECT (relation));
-
-  label = g_object_new (GTK_TYPE_LABEL,
-                        "label", _("_Highlight color:"),
-                        "use-underline", TRUE,
-                        "xalign", 0.0,
-                        NULL);
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-use-default", G_OBJECT (label), "sensitive");
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3,
-                    GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (label);
-
-  align = gtk_alignment_new (0.0, 0.5, 0.0, 0.0);
-  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 2, 3,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (align);
-
-  button = g_object_new (GTK_TYPE_COLOR_BUTTON,
-                         "title", _("Choose terminal highlight color"),
-                         NULL);
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-use-default", G_OBJECT (button), "sensitive");
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-highlight", G_OBJECT (button), "color");
-  gtk_container_add (GTK_CONTAINER (align), button);
-  gtk_widget_show (button);
-
-  /* set Atk name/description and label relation for the button */
-  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
-  object = gtk_widget_get_accessible (button);
-  atk_object_set_name (object, _("Color Selector"));
-  atk_object_set_description (object, _("Open a dialog to specify the color"));
-  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
-  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
-  atk_relation_set_add (relations, relation);
-  g_object_unref (G_OBJECT (relation));
-#endif
-
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
   gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
   gtk_widget_show (frame);
@@ -989,7 +905,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
-                                 "terminal-colors",
+                                 TERMINAL_STOCK_COLORS,
                                  GTK_ICON_SIZE_DIALOG,
                                  NULL);
   gtk_list_store_append (store, &iter);
@@ -1059,7 +975,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
-                                 "terminal-shortcuts",
+                                 TERMINAL_STOCK_SHORTCUTS,
                                  GTK_ICON_SIZE_DIALOG,
                                  NULL);
   gtk_list_store_append (store, &iter);
@@ -1219,7 +1135,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_unref (G_OBJECT (relation));
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
-                                 "terminal-advanced",
+                                 TERMINAL_STOCK_ADVANCED,
                                  GTK_ICON_SIZE_DIALOG,
                                  NULL);
   gtk_list_store_append (store, &iter);
@@ -1243,14 +1159,14 @@ terminal_preferences_dialog_finalize (GObject *object)
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
   g_object_unref (G_OBJECT (dialog->preferences));
   g_object_unref (G_OBJECT (dialog->tooltips));
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_preferences_dialog_parent_class)->finalize) (object);
 }
 
 
 
 static void
-terminal_preferences_dialog_response (TerminalPreferencesDialog      *dialog,
-                                      gint                            response)
+terminal_preferences_dialog_response (TerminalPreferencesDialog *dialog,
+                                      gint                       response)
 {
   GtkWidget *message;
   GError    *error = NULL;

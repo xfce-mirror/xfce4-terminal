@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -150,7 +150,6 @@ struct _TerminalScreen
 
 
 
-static GObjectClass *parent_class;
 static guint screen_signals[LAST_SIGNAL];
 
 
@@ -164,8 +163,6 @@ terminal_screen_class_init (TerminalScreenClass *klass)
 {
   GtkWidgetClass *gtkwidget_class;
   GObjectClass   *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_screen_finalize;
@@ -341,7 +338,7 @@ terminal_screen_finalize (GObject *object)
   g_free (screen->working_directory);
   g_free (screen->custom_title);
 
-  parent_class->finalize (object);
+  (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
 
 
@@ -397,7 +394,7 @@ terminal_screen_set_property (GObject          *object,
 static void
 terminal_screen_realize (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (parent_class)->realize (widget);
+  (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->realize) (widget);
 
   /* make sure the TerminalWidget is realized as well */
   if (!GTK_WIDGET_REALIZED (TERMINAL_SCREEN (widget)->terminal))

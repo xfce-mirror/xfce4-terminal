@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -60,8 +60,6 @@ static const gchar *actions[] =
   "about",
 };
 
-static GObjectClass *parent_class;
-
 
 
 G_DEFINE_TYPE (TerminalToolbarsModel, terminal_toolbars_model, EXO_TYPE_TOOLBARS_MODEL);
@@ -72,8 +70,6 @@ static void
 terminal_toolbars_model_class_init (TerminalToolbarsModelClass *klass)
 {
   GObjectClass *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_toolbars_model_finalize;
@@ -127,7 +123,7 @@ terminal_toolbars_model_finalize (GObject *object)
   if (G_UNLIKELY (model->sync_id != 0))
     g_source_remove (model->sync_id);
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_toolbars_model_parent_class)->finalize) (object);
 }
 
 

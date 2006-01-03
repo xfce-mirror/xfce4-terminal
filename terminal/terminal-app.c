@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -85,10 +85,6 @@ struct _TerminalApp
 
 
 
-static GObjectClass *parent_class;
-
-
-
 GQuark
 terminal_error_quark (void)
 {
@@ -109,8 +105,6 @@ terminal_app_class_init (TerminalAppClass *klass)
 {
   GObjectClass *gobject_class;
   
-  parent_class = g_type_class_peek_parent (klass);
-
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_app_finalize;
 }
@@ -164,7 +158,7 @@ terminal_app_finalize (GObject *object)
 
   g_object_unref (G_OBJECT (app->accel_map));
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
 
 

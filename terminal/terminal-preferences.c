@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -168,10 +168,6 @@ static void     terminal_preferences_resume_monitor     (TerminalPreferences *pr
 
 
 
-static GObjectClass        *parent_class;
-
-
-
 static void
 transform_color_to_string (const GValue *src,
                            GValue       *dst)
@@ -262,8 +258,6 @@ static void
 terminal_preferences_class_init (TerminalPreferencesClass *klass)
 {
   GObjectClass *gobject_class;
-
-  parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->dispose = terminal_preferences_dispose;
@@ -1249,7 +1243,7 @@ terminal_preferences_dispose (GObject *object)
   terminal_preferences_suspend_monitor (preferences);
   g_object_unref (G_OBJECT (preferences->monitor));
 
-  G_OBJECT_CLASS (parent_class)->dispose (object);
+  (*G_OBJECT_CLASS (terminal_preferences_parent_class)->dispose) (object);
 }
 
 
@@ -1268,7 +1262,7 @@ terminal_preferences_finalize (GObject *object)
   g_closure_unref (preferences->notify);
   g_strfreev (preferences->files);
 
-  parent_class->finalize (object);
+  (*G_OBJECT_CLASS (terminal_preferences_parent_class)->finalize) (object);
 }
 
 

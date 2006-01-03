@@ -1,7 +1,7 @@
 SUBDIRS =								\
 	doc								\
 	helpers								\
-	pixmaps								\
+	icons								\
 	po								\
 	terminal
 

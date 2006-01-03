@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -35,7 +35,6 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-helper.h>
-#include <terminal/terminal-icons.h>
 #include <terminal/terminal-preferences.h>
 
 
@@ -104,10 +103,6 @@ struct _TerminalHelperChooser
 
 
 
-static GObjectClass *chooser_parent_class;
-
-
-
 G_DEFINE_TYPE (TerminalHelperChooser, terminal_helper_chooser, GTK_TYPE_HBOX);
 
 
@@ -116,8 +111,6 @@ static void
 terminal_helper_chooser_class_init (TerminalHelperChooserClass *klass)
 {
   GObjectClass   *gobject_class;
-
-  chooser_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_helper_chooser_finalize;
@@ -211,7 +204,7 @@ terminal_helper_chooser_finalize (GObject *object)
   g_object_unref (G_OBJECT (chooser->tooltips));
   g_free (chooser->active);
 
-  G_OBJECT_CLASS (chooser_parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_helper_chooser_parent_class)->finalize) (object);
 }
 
 
@@ -379,9 +372,6 @@ menu_activate_other (GtkWidget             *item,
   /* sanity check the category values */
   g_assert (TERMINAL_HELPER_WEBBROWSER == 0);
   g_assert (TERMINAL_HELPER_MAILREADER == 1);
-
-  /* make sure the helper specific stock icons are loaded */
-  terminal_icons_setup_helper ();
 
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (chooser));
 
@@ -561,7 +551,7 @@ terminal_helper_chooser_pressed (GtkButton             *button,
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
       gtk_widget_show (item);
 
-      image = gtk_image_new_from_pixbuf (terminal_helper_get_icon (helper));
+      image = gtk_image_new_from_icon_name (terminal_helper_get_icon (helper), GTK_ICON_SIZE_MENU);
       gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
       gtk_widget_show (image);
 
@@ -626,7 +616,7 @@ terminal_helper_chooser_update_state (TerminalHelperChooser *chooser)
                                                 chooser->active);
       if (G_LIKELY (helper != NULL))
         {
-          gtk_image_set_from_pixbuf (GTK_IMAGE (chooser->image), terminal_helper_get_icon (helper));
+          gtk_image_set_from_icon_name (GTK_IMAGE (chooser->image), terminal_helper_get_icon (helper), GTK_ICON_SIZE_MENU);
           gtk_label_set_text (GTK_LABEL (chooser->label), terminal_helper_get_name (helper));
           return;
         }
@@ -738,10 +728,6 @@ static void terminal_helper_dialog_response   (GtkDialog                 *dialog
 
 
 
-static GObjectClass *dialog_parent_class;
-
-
-
 G_DEFINE_TYPE (TerminalHelperDialog, terminal_helper_dialog, GTK_TYPE_DIALOG);
 
 
@@ -751,8 +737,6 @@ terminal_helper_dialog_class_init (TerminalHelperDialogClass *klass)
 {
   GtkDialogClass *gtkdialog_class;
   GObjectClass   *gobject_class;
-
-  dialog_parent_class = g_type_class_peek_parent (klass);
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_helper_dialog_finalize;
@@ -839,7 +823,7 @@ terminal_helper_dialog_finalize (GObject *object)
 
   g_object_unref (G_OBJECT (dialog->preferences));
 
-  G_OBJECT_CLASS (dialog_parent_class)->finalize (object);
+  (*G_OBJECT_CLASS (terminal_helper_dialog_parent_class)->finalize) (object);
 }
 
 

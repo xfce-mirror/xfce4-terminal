@@ -1,5 +1,4 @@
-SUBDIRS =								\
-	stock-icons
+# $Id$
 
 INCLUDES =								\
 	-DBINDIR=\"$(bindir)\"						\
@@ -30,7 +29,6 @@ Terminal_headers =							\
 	terminal-app.h							\
 	terminal-helper-dialog.h					\
 	terminal-helper.h						\
-	terminal-icons.h						\
 	terminal-image-loader.h						\
 	terminal-monitor.h						\
 	terminal-options.h						\
@@ -38,6 +36,7 @@ Terminal_headers =							\
 	terminal-preferences-dialog.h					\
 	terminal-screen.h						\
 	terminal-shortcut-editor.h					\
+	terminal-stock.h						\
 	terminal-tab-header.h						\
 	terminal-toolbars-model.h					\
 	terminal-toolbars-view.h					\
@@ -52,7 +51,6 @@ Terminal_SOURCES =							\
 	terminal-app.c							\
 	terminal-helper-dialog.c					\
 	terminal-helper.c						\
-	terminal-icons.c						\
 	terminal-image-loader.c						\
 	terminal-monitor.c						\
 	terminal-options.c						\
@@ -60,6 +58,7 @@ Terminal_SOURCES =							\
 	terminal-preferences-dialog.c					\
 	terminal-screen.c						\
 	terminal-shortcut-editor.c					\
+	terminal-stock.c						\
 	terminal-tab-header.c						\
 	terminal-toolbars-model.c					\
 	terminal-toolbars-view.c					\
@@ -69,16 +68,16 @@ Terminal_SOURCES =							\
 Terminal_CFLAGS =							\
 	$(DBUS_CFLAGS)							\
 	$(EXO_CFLAGS)							\
+	$(GTK_CFLAGS)							\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
-	$(LIBXFCEGUI4_CFLAGS)						\
 	$(VTE_CFLAGS)
 
 Terminal_LDFLAGS =							\
 	-no-undefined							\
 	$(DBUS_LIBS)							\
 	$(EXO_LIBS)							\
+	$(GTK_LIBS)							\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
-	$(LIBXFCEGUI4_LIBS)						\
 	$(VTE_LIBS)
 
 # install symlink to 'terminal'
