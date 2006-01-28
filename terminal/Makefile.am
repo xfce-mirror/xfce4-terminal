@@ -131,7 +131,7 @@ stamp-terminal-enum-types.h: $(Terminal_headers) Makefile
 	&& echo timestamp > $(@F)
 terminal-enum-types.c: $(Terminal_headers) Makefile
 	( cd $(srcdir) && glib-mkenums \
-		--fhead "#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-helper.h>\n#include <terminal/terminal-preferences.h>" \
+		--fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-helper.h>\n#include <terminal/terminal-preferences.h>" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
 		--vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
