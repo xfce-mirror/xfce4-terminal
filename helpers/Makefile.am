@@ -3,6 +3,8 @@ desktop_in_files =							\
 	balsa.desktop.in						\
 	epiphany.desktop.in						\
 	evolution.desktop.in						\
+	exo-open-browser.desktop.in					\
+	exo-open-mailer.desktop.in					\
 	firefox.desktop.in						\
 	galeon.desktop.in						\
 	kmail.desktop.in						\
