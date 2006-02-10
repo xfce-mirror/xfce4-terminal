@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "January 2006">
+<!ENTITY version "@PACKAGE_VERSION@">
+<!ENTITY application "@PACKAGE_NAME@">
+]>
+<article id="index" lang="ja">
+
+  <!-- Header -->
+  <articleinfo>
+    <title>ターミナルエミュレーター</title>
+
+    <pubdate>&date;</pubdate>
+
+    <copyright>
+      <year>2003</year>
+      <year>2004</year>
+      <year>2005</year>
+      <year>2006</year>
+      <holder>os-cillation</holder>
+    </copyright><copyright><year>2005, 2006</year><holder>Daichi Kawahata (daichi@xfce.org)</holder></copyright>
+
+    <legalnotice id="legalnotice">
+      <para>フリーソフトウェア財団が公表する GNU フリー文書利用許諾契約書の第1.1版、あるいはそれ以降のいずれかの版の条件下において、この文書の複製、配布および/または変更が許可されます。変更出来ない箇所、表紙文および裏表紙文があってはいけません。この利用許諾契約書の全文は<ulink type="http" url="http://www.gnu.org/">フリーソフトウェア財団</ulink>から取得する事ができます。</para>
+    </legalnotice>
+
+    <authorgroup>
+      <author>
+        <firstname>Benedikt</firstname>
+        <surname>Mürer</surname>
+        <affiliation>
+          <address><email>benny@xfce.org</email></address>
+          <orgname>os-cillation</orgname>
+          <orgdiv>システム開発</orgdiv>
+          <jobtitle>ソフトウェア開発</jobtitle>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Andrew</firstname>
+        <surname>Conkling</surname>
+        <affiliation>
+          <address><email>andrewski@fr.st</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+    <releaseinfo>この説明書は @PACKAGE_NAME@ のバージョン @PACKAGE_VERSION@ について書かれています。</releaseinfo>
+  </articleinfo>
+
+  <sect1 id="intro">
+    <title>@PACKAGE_NAME@ 入門</title>
+
+    <sect2>
+      <title>ターミナルエミュレーターって何ですか？</title>
+
+      <para>元来 UNIX オペレーティングシステムは文字専用のシステムとして設計され、キーボードで入力するコマンドによって制御されていました。これはコマンド行インターフェイス (CLI) として知られています。X ウィンドウシステム、Xfce および他のプロジェクトは以来 UNIX にグラフィカルなユーザーインターフェイス (GUI) を追加していきました。あなたが今実際に使用しているのは正にこれです。GUI が備わったと言っても CLI が無用の長物になるわけではありません。辺りを見回せば CLI は未だに存在していて、一種の作業をこなすには最も容易、最速かつ強力な手段になることが少なからずあります。実際のところパワーユーザーは CLI 無しではやっていけないでしょう。</para>
+
+      <para>@PACKAGE_NAME@ は X ターミナルエミュレーターとして知られるものの一つで、ターミナルあるいはシェルとして言及されることが多いようです。あなたのデスクトップにやもすると大昔の文字スクリーンを思わせるようなものを持ち込んできますが、他のグラフィカルなアプリケーションとスクリーンを共有するのに何の問題もありません。Windows ユーザーには MS-DOS プロンプトというユーティリティ (Windows 環境下において DOS コマンド行での作業を可能にする類似機能) に詳しい方がいるかもしれませんが UNIX の CLI は能力的に遥かに勝っていて使いやすいという事をぜひとも知って頂きたいと思います。</para>
+
+      <para>@PACKAGE_NAME@ は X コンソーシアムが開発したアプリケーション <application>xterm</application> の動作を真似ます。ではその <application>xterm</application> はと言うと、これは DEC の VT102 ターミナルを真似て、DEC VT220 エスケープシーケンスも同様にサポートします。ここで言うエスケープシーケンスというのは、文字 <keycap>Esc</keycap> で始まる一連なりの文字のことです。VT102 や VT220 ターミナルがカーソルの位置を定めたり画面をクリアするような機能に使用する、これらエスケープシーケンスの全てを @PACKAGE_NAME@ は受け付けます。</para>
+    </sect2>
+
+    <sect2>
+      <title>@PACKAGE_NAME@ の何が特別なんですか？</title>
+
+      <para>@PACKAGE_NAME@ の先進的な機能に、シンプルな設定インターフェイス、単一ウィンドウ内ターミナルでの複数タブの利用、背景の疑似透過、デスクトップでスペースを節約するのに役立つ小型モード (メニューバーとウィンドウ装飾枠の非表示) が挙げられます。</para>
+
+      <para>以下に特色を並べます:</para>
+
+      <itemizedlist>
+        <listitem>一つのウィンドウ毎に複数のタブが利用可能</listitem>
+        <listitem>カスタマイズ可能なツールバー、統合されたグラフィカルなツールバーエディターを使用して変更できます</listitem>
+        <listitem>@PACKAGE_NAME@ のほぼ全ての箇所が<guilabel>環境設定</guilabel>で設定できます</listitem>
+        <listitem>特に<ulink url="http://xfce.org/">Xfce デスクトップ環境</ulink>とよく調和しますが、その他の Linux デスクトップとも似合います</listitem>
+        <listitem>セッション管理サポート</listitem>
+        <listitem>マルチヘッド・サポート (MultiSreen および Xinerama モードの両方)</listitem>
+        <listitem>標準規格への準拠 (ウェブサイト <ulink url="http://freedesktop.org/">freedesktop.org</ulink> を御覧下さい)</listitem>
+        <listitem>システム中のプロセスを最小に抑えるために <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> を基にしたターミナルサービス機能が備わっています。</listitem>
+        <listitem><ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink> および <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink> を最大限に活用していますので、格段に保守しやすくなっています。</listitem>
+      </itemizedlist>
+
+      <para>これらの特色に加えて、@PACKAGE_NAME@ は昨今のターミナルエミュレーターに望まれる全ての機能をサポートします</para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="getting-started">
+    <title>実際に始めてみましょう</title>
+
+    <sect2>
+      <title>@PACKAGE_NAME@ の起動</title>
+
+      <para>@PACKAGE_NAME@ を起動する最も簡単な方法はあなたのデスクトップのアプリケーション・メニューを使用することです。Xfce では、マウスカーソルをデスクトップに移動してマウスの右ボタンを押します。そこで <menuchoice><guimenu>システム</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice> を選択して下さい。</para>
+
+      <para>コマンド行または<guilabel>アプリケーション・ランチャー</guilabel>からTerminal を起動することもできます。単に <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo> と打って、<userinput><command>Terminal</command></userinput>と入力して下さい。<guibutton>実行</guibutton> ボタンをクリックすると @PACKAGE_NAME@ が起動します。</para>
+    </sect2>
+
+    <sect2>
+      <title>@PACKAGE_NAME@ を初めて起動する場合</title>
+
+      <para>@PACKAGE_NAME@ を初めて起動すると、一つのターミナルウィンドウが標準の設定で開かれます。</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-first-time.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>標準ターミナルウィンドウの例</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>このターミナルウィンドウはコマンドプロンプトを表示していて、ここに UNIX コマンドを入力することができます。このコマンドプロンプトは、シェルの設定によって変わるかもしれません。カーソルはコマンドプロンプトのある場所に位置しています。UNIX コマンドを入力して<keycap>リターン</keycap>を押すと、このコマンドがコンピューターによって実行されます。標準では、@PACKAGE_NAME@ はこのアプリケーションを起動したユーザーのログインシェルを使用します (もし普通に Linux をインストールしたのなら、<filename>/bin/bash</filename>になります)。</para>
+
+      <para>@PACKAGE_NAME@ はウィンドウ内で実行するコマンドのために以下の環境変数を設定します:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>TERM</varname></term>
+          <listitem>
+            <para><literal>xterm</literal> か <literal>xterm-color</literal> に設定します、環境設定ダイアログからこれを変更することができます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>COLORTERM</varname></term>
+          <listitem>
+            <para>標準では <literal>Terminal</literal> になっています。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>DISPLAY</varname></term>
+          <listitem>
+            <para>標準ではターミナルの X11 ディスプレイになっています。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>WINDOWID</varname></term>
+          <listitem>
+            <para>標準ではターミナルの X11 ウィンドウ識別子になっています。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>複数のターミナルでの作業</title>
+
+      <para>@PACKAGE_NAME@ には一つのウィンドウの中に複数のターミナルを開けるタブ機能があります。それそれのターミナルは別のタブに開かれます。ウィンドウで表示する適当なターミナルをクリックして下さい。これらタブ化されたターミナルは別個のサブプロセスですので、異なる用途に利用できます。</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-multiple-tabs.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>複数のタブがあるターミナルウィンドウの例</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>新しいタブターミナルの開き方についての情報は<xref linkend="usage"/>にあります。</para>
+
+      <para>ターミナルタブの右上にある「×」ボタンをクリックするか、メニューバーから<menuchoice><guimenu>ファイル</guimenu><guimenuitem>タブを閉じる</guimenuitem></menuchoice>でタブを閉じることができます。</para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="usage">
+    <title>使用法</title>
+
+    <sect2>
+      <title>ターミナルを開いたり閉じたりするには</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>新しいターミナルウィンドウを開くには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>ファイル</guimenu><guimenuitem>ターミナルを開く</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックして<menuchoice><guimenuitem>ターミナルを開く</guimenuitem></menuchoice>) を選びます。</para>
+            <para>新しいターミナルは、作業フォルダをその親ターミナルから引き継ぎます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>ターミナルウィンドウを閉じるには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>ファイル</guimenu><guimenuitem>ウィンドウを閉じる</guimenuitem></menuchoice>を選びます。</para>
+            <para>これはターミナルと、この中で開かれているサブプロセス全てを強制終了させます。最後のターミナルを閉じると @PACKAGE_NAME@ アプリケーションが終了します。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>ウィンドウに新しいタブターミナルを追加するには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>ファイル</guimenu><guimenuitem>タブを開く</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックして<menuchoice><guimenuitem>タブを開く</guimenuitem></menuchoice>) を選びます。</para>
+            <para>新しいターミナルは前の有効ターミナルから作業フォルダを引き継ぎます。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>ターミナルウィンドウを変更するには</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>メニューバーを隠すには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>表示</guimenu><guimenuitem>メニューバーを表示</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックして<menuchoice><guimenuitem>メニューバーを表示</guimenuitem></menuchoice>) を選びます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>隠したメニューバーを表示するには:</term>
+          <listitem>
+            <para>ターミナルウィンドウを右クリックして、そのポップアップメニューから<menuchoice><guimenuitem>メニューバーを表示</guimenuitem></menuchoice>を選んで下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ツールバーを隠したり表示したりするには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>表示</guimenu><guimenuitem>ツールバーを表示</guimenuitem></menuchoice>を選びます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ツールバーをカスタマイズするには:</term>
+          <listitem>
+            <para>最初に、ツールバーが表示されているか確かめて下さい。次に<menuchoice><guimenu>編集</guimenu><guimenuitem>ツールバー...</guimenuitem></menuchoice>を選びます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ウィンドウの枠を隠したり表示したりするには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>表示</guimenu><guimenuitem>ウィンドウ枠を表示</guimenuitem></menuchoice>を選びます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ターミナルを全画面モードにするには</term>
+          <listitem>
+            <para>メニューバーから<menuchoice><guimenu>表示</guimenu><guimenuitem>全画面表示</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックして<menuchoice><guimenuitem>全画面表示</guimenuitem>) を選んで下さい。</menuchoice></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ターミナルウィンドウの外観を変えるには:</term>
+          <listitem>
+            <para>ターミナルウィンドウの外観や振る舞いを変更するには<guilabel>ターミナルの環境設定</guilabel>ダイアログを使用します。ここにあるオプションについてもっと知りたければ<xref linkend="preferences"/>を御覧下さい。例えば、背景色やスクロールバーの位置を変えることができます。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="usage_to-work-with-contents-of-terminal-windows">
+      <title>ターミナルウィンドウの表示内容を利用するには</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>前のコマンドや出力をスクロールするには:</term>
+          <listitem>
+            <para>以下の動作のうち一つを実行して下さい:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>スクロールバーを使います、通常はターミナルウィンドウの右側に表示されています。</para>
+              </listitem>
+              <listitem>
+                <para>キー <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Up</keycap></keycombo>,<keycombo><keycap>Shift</keycap><keycap>Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo> あるいは <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> を押して下さい。</para>
+              </listitem>
+              <listitem>
+                <para>マウスの真ん中のホイールボタンを使って下さい</para>
+              </listitem>
+            </itemizedlist>
+            <para><keycap>Scroll Lock</keycap> が押されると @PACKAGE_NAME@ は FreeBSD コンソールを真似るようになります。このスクロールロックが有効になっている間は、シェルからの通常の入出力は休止状態になり、<keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> および <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> あるいはターミナル付属のスクロールバーを通してコマンドやログ等の履歴をたどることができます。スクロールロックを有効にするには <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> を、無効にするにはその後で <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> を押して下さい。</para>
+
+            <para>ターミナルウィンドウでスクロールし戻せる行数は、<guilabel>ターミナルの環境設定</guilabel>ダイアログの<guilabel>一般</guilabel>にある<guilabel>スクロールバック</guilabel>の設定によって決まります。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>テキストを選択したりコピーするには:</term>
+          <listitem>
+            <para>以下のどの方法でもテキストを選択できます:</para>
+            <itemizedlist> 
+              <listitem> 
+                <para>ある文字を一度に選択するためには、最初の文字をクリックして、選択する最後の文字までマウスをドラッグして下さい。</para>
+              </listitem> 
+              <listitem> 
+                <para>ある単語を一度に選択するためには、最初の単語をダブルクリックして、選択する最後の文字までマウスをドラッグして下さい。</para>
+              </listitem> 
+              <listitem> 
+                <para>ある行を一度に選択するためには、最初の行をトリプルクリックして、選択する最後の文字までマウスをドラッグして下さい。</para>
+              </listitem> 
+            </itemizedlist> 
+            <para>これらの動作は全て最初と最後の間にあるテキストを選択します。全ての選択テキストは、マウスボタンを離した段階で @PACKAGE_NAME@ によってクリップボードにコピーされます。選択テキストを明示的にコピーするのであれば、<menuchoice><guimenu>編集</guimenu><guimenuitem>コピー</guimenuitem></menuchoice>を選んで下さい。</para>
+          </listitem> 
+        </varlistentry> 
+        <varlistentry> 
+          <term>ターミナルにテキストを貼り付けるには:</term> 
+          <listitem> 
+            <para>テキストをクリップボードへコピーしてあるのなら、以下の動作の一つを実行してターミナルにそのテキストを貼り付けることができます:</para>
+            <itemizedlist> 
+              <listitem> 
+                <para>選択してコピーしたテキストを貼り付けるだけでしたら、コマンドプロンプトの所でミドルクリックして下さい。マウスが3ボタン式でないのなら、X サーバーの文書を参考にして下さい。マウスの中央ボタンのエミュレート方法に関する情報があると思います。</para>
+              </listitem> 
+              <listitem> 
+                <para>明示的にコピーしたテキストを貼り付けるには、<menuchoice><guimenu>編集</guimenu><guimenuitem>貼り付け</guimenuitem></menuchoice>を選びます。</para>
+              </listitem> 
+            </itemizedlist> 
+          </listitem> 
+        </varlistentry> 
+        <varlistentry> 
+          <term>ターミナルウィンドウにファイル名をドラッグするには:</term> 
+          <listitem> 
+            <para>ファイルマネージャーやウェブブラウザーのようなアプリケーションから、ターミナルにファイル名をドラッグすることができます。そうすると、パスや URI の完全名が表示されます。</para>
+          </listitem> 
+        </varlistentry> 
+        <varlistentry> 
+          <term>ハイパーリンクにアクセスするには:</term>
+          <listitem>
+            <para>ターミナルウィンドウに表示されている Uniform Resource Locator (URL) にアクセスするには以下の手順を行います:</para>
+
+            <orderedlist>
+              <listitem>
+                <para>下線が付くまでその URL 上にマウスを移動して下さい。</para>
+              </listitem>
+              <listitem>
+                <para>そこで右クリックするとコンテキストメニューが現れます。</para>
+              </listitem>
+              <listitem>
+                <para>そこから<guimenuitem>リンクを開く</guimenuitem>を選ぶと、あらかじめ設定したウェブブラウザーが起動してその URL にあるファイルを表示します。</para>
+              </listitem>
+            </orderedlist>
+
+            <para>ターミナルのウェブブラウザーの設定方法やこの機能を無効にするやり方は<xref linkend="preferred-applications"/>を御覧下さい。</para>
+          </listitem>
+        </varlistentry> 
+
+        <varlistentry> 
+          <term>メールを編集するには:</term>
+          <listitem>
+            <para>ターミナルウィンドウに表示されているアドレスへ送信するメールを編集するには、以下の手順を行います:</para>
+
+            <orderedlist>
+              <listitem>
+                <para>下線が付くまでそのメールアドレス上にマウスを移動して下さい。</para>
+              </listitem>
+              <listitem>
+                <para>そこで右クリックするとコンテキストメニューが現れます。</para>
+              </listitem>
+              <listitem>
+                <para>そこから<guimenuitem>メールを編集</guimenuitem>を選ぶと、あらかじめ設定したメールリーダーでメールを編集できます。</para>
+              </listitem>
+            </orderedlist>
+
+            <para>ターミナルのメールリーダーの設定方法やこの機能を無効にするやり方は<xref linkend="preferred-applications"/>を御覧下さい。</para>
+          </listitem>
+        </varlistentry> 
+      </variablelist>
+    </sect2>
+
+    <sect2 id="set-title">
+      <title>ターミナルのタイトルを変えるには</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-set-title.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>ダイアログ「タイトルを付けて下さい」</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>現在ターミナルが表示しているタイトルを変更するには、以下の手順を行います:</para>
+
+      <orderedlist>
+        <listitem>
+          <para><menuchoice><guimenu>ターミナル</guimenu><guimenuitem>タイトルを付ける...</guimenuitem></menuchoice>あるいはターミナルのタブ部分でダブルクリックして下さい。</para>
+        </listitem>
+        <listitem>
+          <para>テキストボックスが現れると思いますので、<guilabel>タイトル</guilabel>の所に新しいタイトルを入力して下さい。</para>
+        </listitem>
+        <listitem>
+          <para>ダイアログ<guilabel>タイトルを付けて下さい</guilabel>を閉じるには<guilabel>閉じる</guilabel>ボタンをクリックするか、<keycap>リターン</keycap>キーを押して下さい。</para>
+        </listitem>
+      </orderedlist>
+
+      <para>ターミナルのタイトルを標準値にリセットするには、上記の三つの手順を行った上で、タイトルを空欄のまま入力して下さい。</para>
+    </sect2>
+
+    <sect2>
+      <title>ターミナルを復元するには</title>
+
+      <para>この章ではターミナルで起こる問題に対するいくつかのアドバイスを載せます。</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>ターミナルの状態をリセットするには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>ターミナル</guimenu><guimenuitem>リセット</guimenuitem></menuchoice>を選びます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>ターミナルをリセットして画面をクリアするには:</term>
+          <listitem>
+            <para><menuchoice><guimenu>Terminal</guimenu><guimenuitem>リセットして消去</guimenuitem></menuchoice>を選びます。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>ターミナルを元の状態に戻すために、シェルコマンド <userinput><command>reset</command></userinput> および <userinput><command>clear</command></userinput> を使うこともできます。</para>
+    </sect2>
+
+    <sect2 id="customize-toolbars">
+      <title>ツールバーをカスタマイズするには</title>
+
+      <para>既に述べられていると思いますが、@PACKAGE_NAME@ はカスタマイズ可能なツールバーをサポートしています。標準では表示されませんので、明示的に表示してやる必要があります。現在のウィンドウでツールバーを表示するには、メニューバーから<menuchoice><guimenu>表示</guimenu><guimenuitem>ツールバーを表示</guimenuitem></menuchoice>を選択して下さい。ツールバーを常時表示したいのでしたら、<xref linkend="preferences-appearance"/>を御覧下さい。</para>
+
+      <para>ツールバーが表示されているのなら、メニューバーから<menuchoice><guimenu>編集</guimenu><guimenuitem>ツールバー...</guimenuitem></menuchoice>を選ぶか、ツールバーの一つを右クリックしてコンテキストメニューから<menuchoice><guimenuitem>ツールバーをカスタマイズ...</guimenuitem></menuchoice>を選んで下さい。これで<guilabel>ツールバーエディター</guilabel>が開きますので、現在のターミナルウィンドウのツールバーをカスタマイズできるようになります。</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-toolbars.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>ツールバーのカスタマイズ方法</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>アイテムを追加するには<guilabel>ツールバー・エディター</guilabel>ウィンドウからツールバーの特定の場所にそのアイテムをただドラッグしてして下さい、ツールバーからアイテムを削除するにはツールバーのアイテムを<guilabel>ツールバー・エディター</guilabel>にドラッグします。コンテキストメニューから<guibutton>新しいツールバーを追加</guibutton>ボタンをクリックすることで追加分のツールバーを追加できますし、<menuchoice><guimenuitem>ツールバーを削除</guimenuitem></menuchoice>を選択すると削除できます。コンテキストメニューから異なるスタイルのツールバーを選ぶことも可能です。</para>
+    </sect2>
+
+    <sect2 id="luit">
+      <title>異なるエンコーディングを切り換えるには</title>
+
+      <para>ターミナル・セッション中でのエンコーディングの即時切り換えはまだ @PACKAGE_NAME@ に組み込まれていません。しかしながら UTF-8 モードを実装していますので、異なる文字エンコーディングを切り換えるために <ulink url="http://www.pps.jussieu.fr/~jch/software/luit/">Luit アプリケーション</ulink> を使うことができます。</para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="preferences">
+    <title>環境設定</title>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-edit-preferences.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>環境設定</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>@PACKAGE_NAME@ を設定するには、<menuchoice><guimenu>編集</guimenu><guimenuitem>環境設定...</guimenuitem></menuchoice>を選択するかウィンドウのターミナル部分を右クリックして<menuchoice><guimenuitem>環境設定...</guimenuitem></menuchoice>を選択して下さい。これにより <guilabel>ターミナルの環境設定</guilabel>ダイアログが現れ、@PACKAGE_NAME@ の振る舞いを好きなように調節できます。</para>
+
+    <sect2 id="preferences-general">
+      <title>一般</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-general.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>一般の設定</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>最初のタイトル</guilabel></term>
+          <listitem>
+            <para>ターミナルの最初のタイトルは、このテキストボックスを使って指定します。新しいターミナルには最初のタイトルが付けられます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>自動的に付くタイトル</guilabel></term>
+          <listitem>
+            <para>ターミナルで実行するコマンドがターミナルのタイトルを付けることがありますので、そのような自動的に付くタイトルの扱い方をこのドロップダウン・リストで指定して下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>ログインシェルとしてコマンドを実行する</guilabel></term>
+          <listitem>
+            <para>新しいターミナルを開く時、@PACKAGE_NAME@ にシェルをログインシェルとして強制実行させたいのでしたら、このオプションを選択して下さい。インタラクティブシェルとして実行する場合とログインシェルとして実行する場合の違いを知りたいのでしたら、あなたのシェルの文書を御覧下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>コマンドが実行される時に utmp/wtmp の記録を更新する</guilabel></term>
+          <listitem>
+            <para>新しいターミナルが開かれる時、utmp と wtmp の記録に新規エントリーを挿入するにはこのオプションを選択します。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>出力でスクロールさせる</guilabel></term>
+          <listitem>
+            <para>ターミナルがコマンドからの多くの出力を表示し続けている間、その出力のスクロールを行うためにはこのオプションを選択して下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>キー入力でスクロールさせる</guilabel></term>
+          <listitem>
+            <para>コマンドプロンプトで何かキーを押すことによって、ターミナルウィンドウをスクロールさせるのなら、このオプションを選択して下さい。これはターミナルウィンドウを下までスクロールさせて、コマンドプロンプトに帰る場合に適用されます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>スクロールバー</guilabel></term>
+          <listitem>
+            <para>ターミナルウィンドウに表示されるスクロールバーの位置を指定するにはこのドロップダウン・リストを利用して下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>スクロールバック</guilabel></term>
+          <listitem>
+            <para>このスピンボックスにスクロールバーやマウスホイールを使用しながらスクロールバックできる行数を指定します。例えばここに 1000 と指定するとターミナルに表示された最新 1000 行をスクロールバックすることができます。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="preferences-appearance">
+      <title>外観</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-appearance.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>外観の設定</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>フォント</guilabel></term>
+          <listitem>
+            <para>ターミナルで使用したいフォントの種類やサイズを選択するには、このボタンをクリックします。</para>
+
+            <para>ターミナルでテキストが描画される時、@PACKAGE_NAME@ にアンチエイリアス処理を行わせるかどうかを決めるには、このオプション、<guilabel>アンチエイリアスをかける</guilabel>を使います。このオプションを無効にすると、ターミナルの描画性能が目に見えて向上する上に、処理速度が遅いシステムでのシステム全般の負荷を減らす可能性があります。</para>
+
+            <para>このオプション<guilabel>太字の使用を許可する</guilabel>で、ターミナル内で実行するアプリケーションに太字を使わせるかどうかを管理します。無効にされた場合、全てのテキストは選択されたフォントで描画されます。有効にした場合は、一定のテキストが太字で描画されます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>背景</guilabel></term>
+          <listitem>
+            <para>ターミナルウィンドウの背景を選択します。以下がそのオプションです:</para>
+
+            <itemizedlist>
+              <listitem>
+                <guilabel>指定無し (単色を使用する)</guilabel>
+                <para>ターミナルの背景色として、<guilabel>配色</guilabel>で指定される背景色を使用するなら、このオプションを選択して下さい。</para>
+              </listitem>
+              <listitem>
+                <guilabel>画像を使用する</guilabel>
+                <para>ターミナルの背景に画像を使用するのでしたら、このオプションを選択して下さい。画像の位置や名前を指定するためにエントリーボックス<guilabel>画像ファイル</guilabel>を使用します。</para>
+                <para>この<guilabel>スタイル</guilabel>オプションを使用して背景画像の見た目を管理します。@PACKAGE_NAME@ はタイル状、中央揃え、拡大縮小および背景画像の伸長をサポートします。</para>
+              </listitem>
+              <listitem>
+                <guilabel>透明にする</guilabel>
+                <para>ターミナルの背景を (擬似的に) 透明にする場合はこのオプションを選択します。</para>
+              </listitem>
+            </itemizedlist>
+
+            <para><guilabel>背景画像を使用する</guilabel>または<guilabel>背景を透明にする</guilabel>を選択しているのでしたら、ターミナルの背景に陰影を付けたり明るさを調整するためにスライダー<guilabel>背景の陰影</guilabel>を利用できます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>メニューバーを表示する</guilabel></term>
+          <listitem>
+            <para>新しいターミナルウィンドウに標準でメニューバーを表示するなら、このオプションを選択します。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>ツールバーを表示する</guilabel></term>
+          <listitem>
+            <para>新しいターミナルウィンドウに標準でツールバーを表示するなら、このオプションを選択します。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>枠を表示する</guilabel></term>
+          <listitem>
+            <para>新しいターミナルウィンドウに標準でウィンドウの装飾枠を表示するなら、このオプションを選択します。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>配色</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-colors.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>配色の設定</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>文字色と背景色</guilabel></term>
+          <listitem>
+            <para>@PACKAGE_NAME@ が通常のテキストを描画するのに使う色を選ぶには<guilabel>文字色</guilabel>ボタンをクリックして下さい。ターミナル内で実行するアプリケーションは、以下のパレットから選ばれる異なる色を使ってテキストを描画します。</para>
+
+            <para>ターミナルウィンドウの標準の背景色を選ぶには<guilabel>背景色</guilabel>ボタンをクリックします。この色は<guilabel>透明にする</guilabel>あるいは<guilabel>画像を使用する</guilabel>が選択されている時の配合色としても用いられます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>パレット</guilabel></term>
+          <listitem>
+            <para>ターミナル内では16色のパレットを使ってアプリケーションを走らせることができます。この16色のボタンをクリックすると、それぞれの色を変更できます。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>ショートカット</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-shortcuts.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>ショートカットの設定</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>ショートカットキー</guilabel></term>
+          <listitem>
+            <para>ダイアログの<guilabel>ショートカットキー</guilabel>の所には各メニュー項目に対して定義されているショートカットキーが並んでいます。これらのショートカットキーを使用することで、マウスを利用することなくメニュー項目を選択できます。ショートカットキーには、修飾キーでは無いキーのいずれか、またはそれらを複数組み合わせたものと、いくつかの修飾キーが指定されます。修飾キーには <keycap>Alt</keycap>, <keycap>Ctrl</keycap> のようなものがあります。</para>
+
+            <screenshot>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
+                </imageobject>
+                
+                <textobject>
+                  <phrase>ショートカットを編集</phrase>
+                </textobject>
+              </mediaobject>
+            </screenshot>
+            
+            <para>メニュー項目のショートカットキーを変更するには、リストのアイテムをダブルクリックして設定したいキーの組み合せを押して下さい。特定のメニュー項目に対するショートカットキーを無効にするのでしたら、リスト中の該当アイテムをダブルクリックして<guilabel>消去</guilabel>ボタンをクリックします。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>メニューへのアクセスキーを全て無効にする (例えば Alt+f)</guilabel></term>
+          <listitem>
+            <para>アクセスキーを無効にするのでしたらこのオプションを選択して下さい。このアクセスキーというのは、はメニュー項目の選択に際してマウスの代わりにキーボードで行えるよう定義されているものです。具体的に言うとメニューやダイアログオプションに見られる、下線付きのアルファベット文字によって識別されます。いくつかのケースでは、所与の動作を行うために、このアクセスキーを <keycap>Alt</keycap> キーと組み合わせて押す必要があります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>メニューへのショートカットキーを無効にする (標準では F10)</guilabel></term>
+          <listitem>
+            <para>@PACKAGE_NAME@ のメニューへアクセスできるよう定義されているショートカットキーを無効にするには、このオプションを選択して下さい。標準ショートカットキーは <keycap>F10</keycap> になっています。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>上級者向けの話題</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>高度な設定</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>バックスペースキーの生成</guilabel></term>
+          <listitem>
+            <para>実行させたい<keycap>バックスペース</keycap>キーの機能を選択するにはこのドロップダウン・リストを使用します。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>デリートキーの生成</guilabel></term>
+          <listitem>
+            <para>実行させたい<keycap>デリート</keycap>キーの機能を選択するにはこのドロップダウン・リストを使用します。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>$TERM の設定</guilabel></term>
+          <listitem>
+            <para>新しいターミナルタブまたはターミナルウィンドウが開かれる時に、環境変数 <varname>$TERM</varname> にセットされる値を指定します。大方のシステムはこの標準値で大丈夫なはずです。一部アプリケーションで色に関する問題が発生したり、特定のアプリケーションがおかしな振る舞いをしていると思うのでしたら、ここに <userinput>xterm-color</userinput> をセットしてみて下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>互換オプションを標準にリセットする</guilabel></term>
+          <listitem>
+            <para><guilabel>互換性</guilabel>に関する各オプションを、それぞれの標準値にリセットするには、このボタンをクリックして下さい。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>ダブルクリック</guilabel></term>
+          <listitem>
+            <para>テキストを単語単位で選択する時に @PACKAGE_NAME@ が単語の一部として見なす文字や文字のグループを指定するには、このテキストボックスを使用します。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+
+  <sect1 id="preferred-applications">
+    <title>常用アプリケーション</title>
+
+    <para>バージョン 0.2.4 現在、@PACKAGE_NAME@ は外部のウェブブラウザーおよびメールリーダーを利用して、ハイパーリンクを開いたり、メールを編集することができます。この章では利用したいウェブブラウザーやメールリーダーの設定方法について説明します (ハイパーリンクへのアクセスやメール編集方法に関する詳細は<xref linkend="usage_to-work-with-contents-of-terminal-windows"/>を御覧下さい)。</para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-edit-applications.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>アプリケーション</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>@PACKAGE_NAME@ で使用される外部アプリケーションを設定するには、メインのメニューバーから<menuchoice><guimenu>編集</guimenu><guimenuitem>アプリケーション...</guimenuitem></menuchoice>を選択して下さい。ダイアログ<guilabel>アプリケーション</guilabel>が現れます。</para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-applications-dialog.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>常用アプリケーション</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>このダイアログで、ハイパーリンクを開くのに使用されるウェブブラウザーや、メールの編集に使われるメールリーダーを選びます。設定を変更するにはボタンをクリックして下さい。これでドロップダウンメニューが表示されます。</para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-applications-menu.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>常用アプリケーションを選択して下さい</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>メニュー<guilabel>ウェブブラウザー</guilabel>で<guimenuitem>この機能を無効にする</guimenuitem>を選ぶと、@PACKAGE_NAME@ からハイパーリンクを開くことはできなくなります。同様に、<guilabel>メールリーダー</guilabel>メニューで<guimenuitem>この機能を無効にする</guimenuitem>を選択すると @PACKAGE_NAME@ からはメールを編集できなくなります。</para>
+
+    <para>次に選択可能な標準アプリケーションの一覧がメニューに表示されます、これはあなたのシステムで自動的に検出されます。この標準アプリケーションのリストにあなたが常用しているアプリケーションが存在しなかったり、特定の引数を渡してアプリケーションを実行させたい (<parameter>%u</parameter> は実行時に URL で置き換えられます、例 <command>browser --newtab %u</command>) のでしたら、<guimenuitem>その他...</guimenuitem>を選びます。これで指定アプリケーションを入力するためのダイアログが現れます。</para>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-choose-custom-webbrowser.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>ウェブブラウザーを選択して下さい</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>システムの検索パスにそのアプリケーションがインストールされているかどうかによりますが、アプリケーションのバイナリー名かその完全なパスのどちらかを入力できます。あるいは<guibutton>参照...</guibutton>というラベルが付いているボタンを押して、アプリケーションのバイナリーを目で見ながら選択することも可能です。</para>
+  </sect1>
+
+
+  <sect1 id="advanced">
+    <title>上級者向けの話題</title>
+    <sect2 id="command-line-options">
+      <title>コマンド行オプション</title>
+
+      <para>@PACKAGE_NAME@ をコマンド行またはパネルランチャーから起動する場合、その振る舞いを変えるためのいくつかのオプションが指定できます。</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--help</option></term>
+          <listitem>
+            <para>@PACKAGE_NAME@ がサポートする様々なコマンド行オプションをリストして終了します</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--version</option></term>
+          <listitem>
+            <para>バージョン情報を表示して終了します</para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term><option>--disable-server</option></term>
+          <listitem>
+            <para>D-BUS セッションのメッセージバスに登録しません</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--execute</option> <parameter>...</parameter></term>
+          <listitem>
+            <para>残りのコマンド行をターミナル内で実行します</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--command</option> <parameter>コマンド</parameter></term>
+          <listitem>
+            <para>ターミナル内で<parameter>コマンド</parameter>を実行します</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--working-directory</option> <parameter>フォルダ</parameter></term>
+          <listitem>
+            <para>ターミナルの作業フォルダにする<parameter>フォルダ</parameter>を指定します</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--title</option> <parameter>タイトル</parameter></term>
+          <listitem>
+            <para>ターミナルの初期ウィンドウのタイトルとして<parameter>タイトル</parameter>を付けます</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hold</option></term>
+          <listitem>
+            <para>子コマンドが終了してもターミナルをそのままにしておきます</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--display</option> <parameter>ディスプレイ</parameter></term>
+          <listitem>
+            <para><parameter>ディスプレイ</parameter>に指定された X スクリーンでターミナルを開きます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--geometry</option> <parameter>ジオメトリ</parameter></term>
+          <listitem>
+            <para>最後に指定されたウィンドウのジオメトリを<parameter>ジオメトリ</parameter>に指定します。ジオメトリの指定方法についての詳しい情報は <userinput><command>man</command> <option>X</option></userinput> を御覧下さい。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--role</option> <parameter>ロール</parameter></term>
+          <listitem>
+            <para>最後に指定されたウィンドウのウィンドウロールを<parameter>ロール</parameter>に指定します。一つのウィンドウのみに適用され、コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。大半は @PACKAGE_NAME@ 内でのセッション管理に使用されます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--startup-id</option> <parameter>ID</parameter></term>
+          <listitem>
+            <para>最後に指定されたウィンドウに起動通知 ID を指定します。D-BUS サービスを使用している時はこの起動通知 ID を転送するために内部で利用されます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--fullscreen</option></term>
+          <listitem>
+            <para>最後に指定したウィンドウを全画面モードにします。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-menubar</option></term>
+          <listitem>
+            <para>最後に指定したウィンドウでメニューバーを表示します。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-menubar</option></term>
+          <listitem>
+            <para>最後に指定したウィンドウでメニューバーを表示します。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-borders</option></term>
+          <listitem>
+            <para>最後に指定したウィンドウでウィンドウの装飾枠を表示します。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-borders</option></term>
+          <listitem>
+            <para>最後に指定したウィンドウでウィンドウの装飾枠を非表示にします。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-toolbars</option></term>
+          <listitem>
+            <para>最後に指定したウィンドウでツールバーを表示します。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-toolbars</option></term>
+          <listitem>
+            <para>最後に指定されたウィンドウのツールバーを非表示にします。一つのウィンドウのみに適用されます。コマンド行から立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--tab</option></term>
+          <listitem>
+            <para>最後に指定されたウィンドウで新しい一つのタブを開きます。このオプションは他と一緒に使うことができます。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--window</option></term>
+          <listitem>
+            <para>一つのタブを含む一つのウィンドウを開きます。これは他のオプションと一緒に使用できます。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>例えば二つのタブがある新しいターミナルウィンドウを開きたいとしましょう、最初のタブでは <command>mutt</command> を次のタブでは <command>mc</command> を実行させて、ウィンドウのサイズは横幅 80、高さ 40 にするとします。その場合は、以下のコマンドで Terminal を起動させます:</para>
+
+      <screen>Terminal --geometry 80x40 --command mutt --tab --command mc</screen>
+
+    </sect2>
+
+    <sect2 id="files-and-env-vars">
+      <title>ファイルおよび環境変数</title>
+
+      <para>Terminal はそのデータおよび設定ファイルの場所を探すために、<ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> で策定されている基本フォルダの仕様 (Basedir Specification) に従っています。従って、各ファイルの位置は、この仕様に記述されているフォルダの相対パスとして指定されます。</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_HOME}</varname></term>
+          <listitem>
+            <para>設定ファイルを見に行く最初の基本フォルダです。標準では <filename role="directory">~/.config/</filename> になっています。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_DIRS}</varname></term>
+          <listitem>
+            <para>設定データを含む基本フォルダのリストで、各フォルダはコロンで区切られています。標準ではアプリケーションは <filename role="directory">${sysconfdir}/xdg/</filename> を見に行きます。<varname>${sysconfdir}</varname> の値はプログラムがどのようにビルドされたかによって変わります。バイナリー配布されるパッケージでは <filename role="directory">/etc/</filename> になることが多いようです。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_HOME}</varname></term>
+          <listitem>
+            <para>ユーザー個別のデータファイル全てのルートフォルダです。標準では <filename role="directory">~/.local/share/</filename> になっています。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_DIRS}</varname></term>
+          <listitem>
+            <para>基本フォルダ <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを探す基本フォルダを並べていきます。フォルダはコロンで区切る必要があります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_CONFIG_DIRS}/Terminal/terminalrc</filename></term>
+          <listitem>
+            <para>@PACKAGE_NAME@ の見た目を管理する環境設定が含まれる設定ファイルの場所です。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal.ui</filename></term>
+          <listitem>
+            <para>メインユーザーインターフェイスの記述ファイルが置かれる場所です。メインのメニューバーおよび右クリックメニューがここで定義されています。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
+          <listitem>
+            <para>このファイルにはツールバーのインターフェイス定義が記述されています。ツールバーエディターを使用してツールバーをカスタマイズする場合、@PACKAGE_NAME@ はファイル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename> に新しいツールバーのレイアウト情報を保存します。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="hidden-options">
+      <title>隠しオプション</title>
+
+      <para>パワーユーザーが高度な設定を行えるようにしたり、ユーザーインターフェイスのオプション数を減らすために、@PACKAGE_NAME@ には少しながら隠しオプションがあります。これらのオプションを設定するには、テキストエディターでファイル <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> を開いて <varname>[Configuration]</varname> 以下の箇所を編集する必要があります (もし存在しなければ単純に作成して下さい)。例えば、<filename>terminalrc</filename> はこのようになっています</para>
+
+      <programlisting>
+[Configuration]
+MiscBell=TRUE
+MiscConfirmClose=FALSE
+MiscCursorBlinks=TRUE
+MiscCycleTabs=TRUE
+MiscMouseAutohide=FALSE
+MiscTabCloseButtons=TRUE</programlisting>
+
+      <para>これに環境設定ダイアログから変更するオプション全てがプラスされます。</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>MiscBell</varname></term>
+          <listitem>
+            <para>ターミナルのベルを鳴らす ((<varname>MiscBell=TRUE</varname>)) か鳴らさない (<varname>MiscBell=FALSE</varname>) かを設定します。標準では鳴りません。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscConfirmClose</varname></term>
+          <listitem>
+            <para>複数のタブがあるターミナルウィンドウを閉じようとする時に @PACKAGE_NAME@ が確認ダイアログを出すかどうかを決めます。<literal>TRUE</literal> (標準) または <literal>FALSE</literal> になります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorBlinks</varname></term>
+          <listitem>
+            <para>このオプションを有効にすると、カーソルが点滅します。<literal>TRUE</literal> あるいは <literal>FALSE</literal> (標準) のどちらかになります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCycleTabs</varname></term>
+          <listitem>
+            <para>このオプションで、ターミナルのタブを循環できるようにするかどうかを決めます。有効にするとメニュー<guimenu>移動</guimenu> (またはそれに割り当てられているキーボードショートカット) から<guimenuitem>次のタブ</guimenuitem>ボタンを使用して、右端のタブから左端のタブに移動したり、同じく<guimenu>移動</guimenu>メニューから<guimenuitem>前のタブ</guimenuitem>を使って左端から右端へ移れるようになります。このオプションは <literal>TRUE</literal> あるいは <literal>FALSE</literal> のどちらかになります。</para>
+            <para>ユーザーを混乱させてしまうようですので、この振る舞いは標準では無効にされています。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscMouseAutohide</varname></term>
+          <listitem>
+            <para>この設定で、ターミナルウィンドウでキー入力している最中に、@PACKAGE_NAME@ がマウスカーソルを隠すかどうかを決めます。<literal>TRUE</literal> または <literal>FALSE</literal> (標準) になります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabCloseButtons</varname></term>
+          <listitem>
+            <para>この設定で、@PACKAGE_NAME@ がターミナルタブのタイトルと一緒に、閉じるボタンも表示するかどうかを決めます。<literal>TRUE</literal> (標準) または <literal>FALSE</literal> になります。</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+  <sect1 id="faq">
+    <title>よく聞かれる質問</title>
+
+    <para>この章は @PACKAGE_NAME@ を使用に関連してよく質問される事や、ターミナルエミュレーター全般に関する事柄でも集めることを意図して作成されました。このページにない質問があるのでしたら、<ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">ここ</ulink>に要望を出して下さるようお願いします。</para>
+
+    <sect3>
+      <title>@PACKAGE_NAME@ が <literal>ターミナルサーバーを起動できません: D-BUS メッセージデーモンと接続できません</literal> 言ってきます、何をすればよいですか？</title>
+
+      <para>全てのターミナルウィンドウを取り扱う D-BUS サービスを立ち上げる事によって、@PACKAGE_NAME@ は実行インスタンスの数を減らすよう試みます。上のメッセージは @PACKAGE_NAME@ が D-BUS セッションメッセージのデーモンと接続できすに、サービスを登録できなかった事を伝えています。これは単なる警告メッセージですので、D-BUS のサービス機能が無くても普通にターミナルを使用することができます。</para>
+
+      <para>X セッションにログインする時に D-BUS セッションメッセージのデーモンを起動するには、xinitrc ファイルを編集して <literal>xfce4-session</literal> となっている行を <literal>dbus-launch xfce4-session</literal> に変更するか、代わりに Xfce の起動に <literal>dbus-launch startxfce4</literal> を使用するかのどちらかを行って下さい。Xfce を使用していないのでしたら、D-BUS セッションデーモンを有効にする方法に関して、あなたのデスクトップ環境の文書を御覧になって下さい。</para>
+    </sect3>
+
+    <sect3>
+      <title>@PACKAGE_NAME@ で <keycap>Home</keycap> および <keycap>End</keycap> キーが使えません、何が悪いんですか？</title>
+
+      <para>この問題は、実際のところ @PACKAGE_NAME@ が使用するターミナル・ウィジット <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink> のバグです。問題を解決するパッチは<ulink url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">ここ</ulink>にあります (このパッチは vte のバージョン 0.11.11 に対して作成されたので、他のバージョンではうまくいかないかもしれません)。パッチを作成した Auke Kok 氏に感謝します。</para>
+    </sect3>
+
+    <sect3>
+      <title>@PACKAGE_NAME@ のメニューはどのようにカスタマイズするんですか？</title>
+
+      <para>ファイル <filename>Terminal/Terminal.ui</filename> を編集することでメインのメニューバーと右クリックで現れるポップアップメニューをカスタマイズすることが可能です。これを実際に編集し始める前にコピーを作製して下さい。例えば、<filename role="directory">/usr/local</filename> にターミナルをインストールしたとします、それでしたら以下の手順を行って下さい:</para>
+
+<screen>$ mkdir -p ~/.local/share/Terminal
+$ cd ~/.local/share/Terminal
+$ cp /usr/local/share/Terminal/Terminal.ui .</screen>
+
+      <para>これでメニューを安全にカスタマイズするためにファイル <filename>~/.local/share/Terminal/Terminal.ui</filename> を編集できます。このファイル書式の詳細を知りたければ <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> を御覧下さい。変更は新しく起動されるターミナルウィンドウにのみ反映されます。</para>
+
+      <para>もしこの方法でメニューをカスタマイズするのでしたら、新しくリリースされた @PACKAGE_NAME@ にアップグレードする場合に、ユーザーインターフェイスの変更箇所やいくつか追加したものをそのまま保つために、変更を加えたファイル <filename>Terminal.ui</filename> がきちんと更新されているか気を配る必要があります。</para>
+    </sect3>
+  </sect1>
+
+  <sect1 id="support">
+    <title>サポート</title>
+
+    <para>このアプリケーションあるいは説明書に関するバグを報告したり何か提案をするなら、<ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">http://bugzilla.xfce.org/</ulink> にあるバグ追跡システムを御利用下さい。意味のあるバグ報告こそがバグを修正するのだという事を忘れないで下さい、ではどういったものが該当するかというと、二つの特質があります:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">再現可能であること。</emphasis>開発者自身がバグの存在を確認することができない場合は、それを修正するのはほぼ不可能に近くなります。どんな細かいことでも役立ちますので、詳細を余さず伝えて下さい。</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">具体的であること。</emphasis>開発者が問題を特定の箇所により早く絞れる程、その修正措置を取りやすくなります。</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>新機能の追加を要望する場合、何故それがアプリケーションにとって有意義だと考えるのか明らかにして下さるようお願いします。その機能について納得のいく議論を行えるのでしたら、追加される可能性は高くなります。要求する機能を実装したパッチを提供して下さるなら更に高くなりますが、事前にファイル <ulink url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink> を忘れずに読んで下さい。特に <emphasis>Coding Style</emphasis> と題されている箇所に目を通すようにして下さい。</para>
+
+    <para>それ以外、利用方法やこのソフトウェアのインストールに関する質問があるのでしたら、<ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">os-cillation フォーラム</ulink>で質問するか、IRC クライアントで <emphasis role="bold">irc.freenode.net</emphasis> のチャンネル <emphasis role="bold">#xfce</emphasis> に参加した上で手助けを求めてみて下さい。</para>
+  </sect1>
+
+  <sect1 id="copyright">
+    <title>@PACKAGE_NAME@ について</title>
+
+    <para>@PACKAGE_NAME@ は Benedikt Mürer (<email>benny@xfce.org</email>) が製作しました。より詳しい情報を得るには <ulink url="http://www.os-cillation.com/" type="http">os-cillation のウェブサイト</ulink>を訪れて下さい。</para>
+
+    <para>Benedikt Mürer (<email>benny@xfce.org</email>) および Andrew Conkling (<email>andrewski@fr.st</email>) がこの文書を製作しました。最新版は <ulink type="http" url="http://terminal.os-cillation.com/">Terminal のウェブサイト</ulink>にあります。</para>
+
+    <para>このソフトウェアはフリーソフトウェア財団が公表する GNU 一般公衆利用許諾契約書の条件下に配布されています。第2版あるいは、あなたが選ぶそれ以降の版のいずれかが適用されます。</para>
+
+    <para>このプログラムには、GNU 一般公衆利用許諾契約書のコピーが附属するはずですが、もし無いのであればフリーソフトウェア財団に連絡して下さい。59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.</para>
+  </sect1>
+
+</article>
+<!--
+	vim:set ts=2 sw=2 et ai:
+-->

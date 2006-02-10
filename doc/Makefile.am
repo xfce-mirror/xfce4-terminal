@@ -1,5 +1,6 @@
 SUBDIRS =								\
-	C
+	C								\
+	ja
 
 cssdir = $(datadir)/doc/Terminal
 css_DATA =								\
