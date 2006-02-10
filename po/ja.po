@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-03 21:50+0100\n"
-"PO-Revision-Date: 2006-02-09 00:35+0900\n"
+"PO-Revision-Date: 2006-02-10 23:23+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "  -T, --title=TITLE                   ターミナルのタイトルを�
 
 #: ../terminal/main.c:55
 msgid ""
-"  -H, --hold                          Do not immediatly destroy the tab\n"
+"  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
 "  -H, --hold                          子コマンドが終了してもすぐに\n"
@@ -313,17 +313,19 @@ msgstr "ウェブブラウザー"
 msgid "Mail Reader"
 msgstr "メールリーダー"
 
+# FIXME: preferred?
 #: ../terminal/terminal-helper-dialog.c:57
 msgid ""
 "Choose your preferred Web Browser. The preferred\n"
 "Web Browser opens when you right-click on a URL\n"
 "and select Open Link from the context menu."
 msgstr ""
-"あなたの好きなウェブブラウザーを選択して下さい。この\n"
-"ウェブブラウザーは URL 上で右クリックして現れるコン\n"
-"テキストメニューから、「リンクを開く」を選択した場合\n"
-"に実行されます。"
+"常用しているウェブブラウザーを選択して下さい。\n"
+"このウェブブラウザーは URL 上で右クリックして\n"
+"現れるコンテキストメニューから、「リンクを開く」\n"
+"を選択した場合に実行されます。"
 
+# FIXME: preferred?
 #: ../terminal/terminal-helper-dialog.c:60
 msgid ""
 "Choose your preferred Mail Reader. The preferred\n"
@@ -331,10 +333,10 @@ msgid ""
 "address and select Compose Email from the context\n"
 "menu."
 msgstr ""
-"あなたの好きなメールリーダーを選択して下さい。この\n"
-"メールリーダーはメールアドレス上で右クリックして\n"
-"現れるコンテキストメニューから、「Eメールを編集」を\n"
-"選択した場合に実行されます。"
+"常用しているメールリーダーを選択して下さい。\n"
+"このメールリーダーはメールアドレス上で右クリック\n"
+"して現れるコンテキストメニューから、「メールを編集」\n"
+"を選択した場合に実行されます。"
 
 #: ../terminal/terminal-helper-dialog.c:166
 msgid ""
@@ -402,9 +404,10 @@ msgstr "無効"
 msgid "No application selected"
 msgstr "アプリケーションが選択されていません"
 
+# FIXME: preferred?
 #: ../terminal/terminal-helper-dialog.c:775
 msgid "Preferred Applications"
-msgstr "優先アプリケーション"
+msgstr "常用アプリケーション"
 
 #: ../terminal/terminal-options.c:106
 msgid ""
@@ -659,13 +662,15 @@ msgstr "<b>背景</b>"
 msgid "None (use solid color)"
 msgstr "指定無し (単色を使用する)"
 
+# NOTE: `Background' may be redundant
 #: ../terminal/terminal-preferences-dialog.c:469
 msgid "Background image"
-msgstr "背景画像を使用する"
+msgstr "画像を使用する"
 
+# NOTE: `background' may be redundant
 #: ../terminal/terminal-preferences-dialog.c:470
 msgid "Transparent background"
-msgstr "背景を透明にする"
+msgstr "透明にする"
 
 #: ../terminal/terminal-preferences-dialog.c:487
 msgid "_File:"
@@ -689,19 +694,19 @@ msgstr "拡大縮小"
 
 #: ../terminal/terminal-preferences-dialog.c:522
 msgid "Stretched"
-msgstr "伸縮"
+msgstr "伸長"
 
 #: ../terminal/terminal-preferences-dialog.c:538
 msgid "Shade transparent or image background:"
-msgstr "透明または画像背景の陰影:"
+msgstr "背景の陰影:"
 
 #: ../terminal/terminal-preferences-dialog.c:551
 msgid "<small><i>None</i></small>"
-msgstr "<small><i>付けない</i></small>"
+msgstr "<small><i>無し</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:562
 msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>最大限付ける</i></small>"
+msgstr "<small><i>最大</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:570
 msgid "<b>Opening New Windows</b>"
@@ -831,11 +836,11 @@ msgstr "<b>メニューバーのアクセス</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:967
 msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "全てのメニュー・アクセスキーを無効にする(_N) (例えば Alt+f)"
+msgstr "メニューへのアクセスキーを全て無効にする(_N) (例えば Alt+f)"
 
 #: ../terminal/terminal-preferences-dialog.c:972
 msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "メニュー・ショートカットキーを無効にする(_E) (標準では F10)"
+msgstr "メニューへのショートカットキーを無効にする(_E) (標準では F10)"
 
 #: ../terminal/terminal-preferences-dialog.c:984
 msgid "Shortcuts"
@@ -931,7 +936,7 @@ msgstr "全てのファイル"
 
 #: ../terminal/terminal-preferences-dialog.c:1301
 msgid "Image Files"
-msgstr "各画像ファイル"
+msgstr "画像ファイル"
 
 #: ../terminal/terminal-preferences.c:296
 #: ../terminal/terminal-preferences.c:297
@@ -1560,9 +1565,10 @@ msgstr "クリップボードから貼り付けます。"
 msgid "_Applications..."
 msgstr "アプリケーション(_A)..."
 
+# FIXME: preferred?
 #: ../terminal/terminal-window.c:199
 msgid "Customize your preferred applications"
-msgstr "お好みのアプリケーションを指定します。"
+msgstr "常用アプリケーションを変更します。"
 
 #: ../terminal/terminal-window.c:200
 msgid "_Toolbars..."
@@ -1702,8 +1708,8 @@ msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
-"このウィンドウで %d のタブが開いています。\n"
-"このウィンドウを閉じると全てのタブも閉じます。"
+"このウィンドウで %d つのタブが開いています。\n"
+"ウィンドウを閉じると全てのタブも閉じられます。"
 
 #: ../terminal/terminal-window.c:551
 msgid "Close all tabs?"
@@ -1711,24 +1717,26 @@ msgstr "全てのタブを閉じますか？"
 
 #: ../terminal/terminal-window.c:564
 msgid "Do _not ask me again"
-msgstr "二度と尋ねない(_N)"
+msgstr "再び質問しない(_N)"
 
+# FIXME: preferred?
 #: ../terminal/terminal-window.c:935
 msgid ""
 "You did not choose your preferred Web\n"
 "Browser yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
-"ウェブブラウザーをまだ選択していません。\n"
+"まだ常用ウェブブラウザーを選択していません。\n"
 "このアプリケーションを今設定しますか？"
 
+# FIXME: preferred?
 #: ../terminal/terminal-window.c:936
 msgid ""
 "You did not choose your preferred Mail\n"
 "Reader yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
-"メールリーダーをまだ選択していません。\n"
+"まだ常用メールリーダーを選択していません。\n"
 "このアプリケーションを今設定しますか？"
 
 #: ../terminal/terminal-window.c:1408
