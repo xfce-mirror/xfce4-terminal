@@ -1,5 +1,18 @@
 2006-02-14	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-preferences.c, terminal/terminal-window.c: Add new
+	  hidden setting "MiscAlwaysShowTabs", based on a patch provided by
+	  Alexander Iliev <sasoiliev@mamul.dyndns.org>.
+	* terminal/terminal-preferences.c, terminal/terminal-window.c: Add new
+	  hidden setting "MiscTabPosition" which specifies the position where
+	  the notebook tabs should be placed (can be either GTK_POS_TOP,
+	  GTK_POS_BOTTOM, GTK_POS_RIGHT or GTK_POS_LEFT).
+	* terminal/terminal-tab-header.c: Use vertical labels if the tab 
+	  position is GTK_POS_RIGHT or GTK_POS_LEFT.
+	* doc/C/Terminal.xml.in: Add new hidden options to the manual.
+
+2006-02-14	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/terminal-screen.c(terminal_screen_get_child_environment):
 	  Set DISPLAY properly for multi-screen per display environments.
 	  Bug #1461.

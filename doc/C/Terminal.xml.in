@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
     "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "January 2006"> 
+  <!ENTITY date "February 2006"> 
   <!ENTITY version "@PACKAGE_VERSION@">
   <!ENTITY application "@PACKAGE_NAME@"> 
 ]>
@@ -1404,18 +1404,31 @@
 
       <programlisting>
 [Configuration]
+MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
 MiscCycleTabs=TRUE
 MiscMouseAutohide=FALSE
-MiscTabCloseButtons=TRUE</programlisting>
+MiscTabCloseButtons=TRUE
+MiscTabPosition=GTK_POS_TOP</programlisting>
 
       <para>
         plus all the options that are controlled through the preferences dialog.
       </para>
 
       <variablelist>
+        <varlistentry>
+          <term><varname>MiscAlwaysShowTabs</varname></term>
+          <listitem>
+            <para>
+              If <literal>TRUE</literal> the tab headers will always be displayed even if only a single
+              terminal tab is open. This option is useful if you do not want the terminal window to
+              resize when you open a second tab. It is disabled by default.
+            </para>
+          </listitem>
+        </varlistentry>
+
         <varlistentry>
           <term><varname>MiscBell</varname></term>
           <listitem>
@@ -1482,6 +1495,21 @@ MiscTabCloseButtons=TRUE</programlisting>
               This setting controls whether &application; provides a close button with the
               terminal tab title. Can be either <literal>TRUE</literal> (the default) or
               <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabPosition</varname></term>
+          <listitem>
+            <para>
+              Specifies the position where the tab headers should be displayed. This can
+              be either <literal>GTK_POS_TOP</literal> (the default), <literal>GTK_POS_LEFT</literal>,
+              <literal>GTK_POS_BOTTOM</literal> or <literal>GTK_POS_RIGHT</literal>. If you
+              specify <literal>GTK_POS_LEFT</literal> or <literal>GTK_POS_RIGHT</literal>
+              here, the tab header texts will be displayed vertically instead of horizontally.
+              It is highly recommended to disable <varname>MiscTabCloseButtons</varname> for
+              <literal>GTK_POS_LEFT</literal> and <literal>GTK_POS_RIGHT</literal>.
             </para>
           </listitem>
         </varlistentry>

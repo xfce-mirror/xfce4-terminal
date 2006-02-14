@@ -373,13 +373,19 @@ terminal_window_init (TerminalWindow *window)
     }
 #endif
 
+  /* check if tabs should always be shown */
+  g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &bval, NULL);
+
+  /* allocate the notebook for the terminal screens */
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
                                    "homogeneous", TRUE,
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
+                                   "show-tabs", bval,
                                    "tab-hborder", 0,
                                    "tab-vborder", 0,
                                    NULL);
+  exo_binding_new (G_OBJECT (window->preferences), "misc-tab-position", G_OBJECT (window->notebook), "tab-pos");
   g_signal_connect_after (G_OBJECT (window->notebook), "switch-page",
                           G_CALLBACK (terminal_window_page_switched), window);
   g_signal_connect (G_OBJECT (window->notebook), "notify::page",
@@ -1032,6 +1038,7 @@ terminal_window_screen_removed (GtkNotebook     *notebook,
                                 TerminalWindow  *window)
 {
   TerminalScreen *active;
+  gboolean        always_show_tabs;
   gint            npages;
   gint            grid_width;
   gint            grid_height;
@@ -1043,7 +1050,13 @@ terminal_window_screen_removed (GtkNotebook     *notebook,
     }
   else
     {
-      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
+      /* check tabs should always be visible */
+      g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
+
+      /* change the visibility of the tabs accordingly */
+      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
+
+      /* meh, Gtk+, who wants focus on the notebook? */
       GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
       active = terminal_window_get_active (window);
@@ -1762,6 +1775,7 @@ terminal_window_add (TerminalWindow *window,
   TerminalScreen *active;
   GtkWidget      *header;
   GtkAction      *action;
+  gboolean        always_show_tabs;
   gint            npages;
   gint            page;
   gint            grid_width;
@@ -1781,15 +1795,11 @@ terminal_window_add (TerminalWindow *window,
 
   header = terminal_tab_header_new ();
   exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (header), "title");
-  g_signal_connect_swapped (G_OBJECT (header), "close-tab",
-                            G_CALLBACK (gtk_widget_destroy), screen);
-  g_signal_connect_swapped (G_OBJECT (header), "detach-tab",
-                            G_CALLBACK (terminal_window_detach_screen), window);
-  g_signal_connect_swapped (G_OBJECT (header), "set-title",
-                            G_CALLBACK (gtk_action_activate), action);
-  g_object_set_data_full (G_OBJECT (header), "terminal-window-screen",
-                          g_object_ref (G_OBJECT (screen)),
-                          (GDestroyNotify) g_object_unref);
+  exo_binding_new (G_OBJECT (window->notebook), "tab-pos", G_OBJECT (header), "tab-pos");
+  g_signal_connect_swapped (G_OBJECT (header), "close-tab", G_CALLBACK (gtk_widget_destroy), screen);
+  g_signal_connect_swapped (G_OBJECT (header), "detach-tab", G_CALLBACK (terminal_window_detach_screen), window);
+  g_signal_connect_swapped (G_OBJECT (header), "set-title", G_CALLBACK (gtk_action_activate), action);
+  g_object_set_data_full (G_OBJECT (header), "terminal-window-screen", g_object_ref (G_OBJECT (screen)), (GDestroyNotify) g_object_unref);
   gtk_widget_show (header);
 
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),
@@ -1798,8 +1808,14 @@ terminal_window_add (TerminalWindow *window,
                                       GTK_WIDGET (screen),
                                       TRUE, TRUE, GTK_PACK_START);
 
+  /* check if we should always display tabs */
+  g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
+
+  /* change the visibility of the tabs accordingly */
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), npages > 1);
+  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), always_show_tabs || (npages > 1));
+
+  /* yep, still no focus on the notebook! */
   GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
   g_signal_connect (G_OBJECT (screen), "get-context-menu",

@@ -104,6 +104,7 @@ enum
   PROP_FONT_NAME,
   PROP_HELPER_MAILREADER,
   PROP_HELPER_WEBBROWSER,
+  PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_BELL,
   PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
@@ -113,6 +114,7 @@ enum
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
   PROP_MISC_TAB_CLOSE_BUTTONS,
+  PROP_MISC_TAB_POSITION,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -276,6 +278,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_DOUBLE, transform_string_to_double);
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_UINT, transform_string_to_uint);
+  if (!g_value_type_transformable (G_TYPE_STRING, GTK_TYPE_POSITION_TYPE))
+    g_value_register_transform_func (G_TYPE_STRING, GTK_TYPE_POSITION_TYPE, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND_STYLE))
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND_STYLE, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND))
@@ -968,6 +972,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         G_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:misc-always-show-tabs:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_ALWAYS_SHOW_TABS,
+                                   g_param_spec_boolean ("misc-always-show-tabs",
+                                                         _("Always show tabs"),
+                                                         _("Always show terminal tabs"),
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:misc-bell:
    **/
   g_object_class_install_property (gobject_class,
@@ -1065,6 +1080,18 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          _("Show tab close buttons"),
                                                          TRUE,
                                                          G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-tab-position:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_TAB_POSITION,
+                                   g_param_spec_enum ("misc-tab-position",
+                                                      _("Tab position"),
+                                                      _("Where to place the tabs"),
+                                                      GTK_TYPE_POSITION_TYPE,
+                                                      GTK_POS_TOP,
+                                                      G_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:scrolling-bar:

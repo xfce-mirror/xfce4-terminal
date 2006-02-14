@@ -33,6 +33,7 @@
 enum
 {
   PROP_0,
+  PROP_TAB_POS,
   PROP_TITLE,
 };
 
@@ -112,6 +113,18 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
   gobject_class->set_property = terminal_tab_header_set_property;
 
   /**
+   * TerminalTabHeader:tab-pos:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_TAB_POS,
+                                   g_param_spec_enum ("tab-pos",
+                                                      _("Tab position"),
+                                                      _("Tab position"),
+                                                      GTK_TYPE_POSITION_TYPE,
+                                                      GTK_POS_TOP,
+                                                      G_PARAM_CONSTRUCT | G_PARAM_WRITABLE));
+
+  /**
    * TerminalTabHeader:title:
    **/
   g_object_class_install_property (gobject_class,
@@ -187,7 +200,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
   gtk_widget_show (header->ebox);
 
   header->label = g_object_new (EXO_TYPE_ELLIPSIZED_LABEL,
-                                "ellipsize", EXO_PANGO_ELLIPSIZE_END,
+                                "selectable", FALSE,
                                 "xalign", 0.0,
                                 NULL);
   gtk_container_add (GTK_CONTAINER (header->ebox), header->label);
@@ -262,10 +275,33 @@ terminal_tab_header_set_property (GObject      *object,
                                   GParamSpec   *pspec)
 {
   TerminalTabHeader *header = TERMINAL_TAB_HEADER (object);
+  GtkPositionType    position;
   const gchar       *title;
 
   switch (prop_id)
     {
+    case PROP_TAB_POS:
+      position = g_value_get_enum (value);
+      if (position == GTK_POS_TOP || position == GTK_POS_BOTTOM)
+        {
+          gtk_label_set_angle (GTK_LABEL (header->label), 0.0);
+          gtk_label_set_ellipsize (GTK_LABEL (header->label), PANGO_ELLIPSIZE_END);
+          gtk_widget_set_size_request (header->label, -1, -1);
+        }
+      else if (position == GTK_POS_LEFT)
+        {
+          gtk_label_set_angle (GTK_LABEL (header->label), 90.0);
+          gtk_label_set_ellipsize (GTK_LABEL (header->label), PANGO_ELLIPSIZE_NONE);
+          gtk_widget_set_size_request (header->label, -1, 1);
+        }
+      else
+        {
+          gtk_label_set_angle (GTK_LABEL (header->label), 270.0);
+          gtk_label_set_ellipsize (GTK_LABEL (header->label), PANGO_ELLIPSIZE_NONE);
+          gtk_widget_set_size_request (header->label, -1, 1);
+        }
+      break;
+
     case PROP_TITLE:
       title = g_value_get_string (value);
       gtk_tooltips_set_tip (header->tooltips, header->ebox, title, NULL);
