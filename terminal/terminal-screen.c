@@ -455,11 +455,12 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
 static gchar**
 terminal_screen_get_child_environment (TerminalScreen *screen)
 {
-  extern gchar    **environ;
-  gchar           **result;
-  gchar           **p;
-  gchar            *term;
-  guint             n;
+  extern gchar **environ;
+  gchar         *display_name;
+  gchar        **result;
+  gchar        **p;
+  gchar         *term;
+  guint          n;
 
   /* count env vars that are set */
   for (p = environ; *p != NULL; ++p);
@@ -500,7 +501,11 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 #ifdef GDK_WINDOWING_X11
       result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_WINDOW_XWINDOW (screen->terminal->window));
 #endif
-      result[n++] = g_strdup_printf ("DISPLAY=%s", gdk_display_get_name (gtk_widget_get_display (screen->terminal)));
+
+      /* determine the DISPLAY value for the command */
+      display_name = gdk_screen_make_display_name (gtk_widget_get_screen (screen->terminal));
+      result[n++] = g_strdup_printf ("DISPLAY=%s", display_name);
+      g_free (display_name);
     }
 
   result[n] = NULL;
