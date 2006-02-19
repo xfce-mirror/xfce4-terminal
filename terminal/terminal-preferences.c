@@ -45,6 +45,7 @@ enum
   PROP_0,
   PROP_ACCEL_NEW_TAB,
   PROP_ACCEL_NEW_WINDOW,
+  PROP_ACCEL_DETACH_TAB,
   PROP_ACCEL_CLOSE_TAB,
   PROP_ACCEL_CLOSE_WINDOW,
   PROP_ACCEL_COPY,
@@ -311,6 +312,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Open Terminal"),
                                                         _("Open Terminal"),
                                                         "<control><shift>n",
+                                                        G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-detach-tab:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_DETACH_TAB,
+                                   g_param_spec_string ("accel-detach-tab",
+                                                        _("Detach Tab"),
+                                                        _("Detach Tab"),
+                                                        "<control><shift>d",
                                                         G_PARAM_READWRITE));
 
   /**

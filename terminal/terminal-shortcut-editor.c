@@ -91,6 +91,7 @@ static const ToplevelMenu toplevel_menus[] =
     {
       "accel-new-tab",
       "accel-new-window",
+      "accel-detach-tab",
       "accel-close-tab",
       "accel-close-window",
       NULL,
