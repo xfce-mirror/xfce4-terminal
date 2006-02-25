@@ -1409,6 +1409,7 @@ MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
 MiscCycleTabs=TRUE
+MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
 MiscTabPosition=GTK_POS_TOP</programlisting>
@@ -1473,6 +1474,18 @@ MiscTabPosition=GTK_POS_TOP</programlisting>
             </para>
             <para>
               This behavior is disabled by default, because it tends to confuse users.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscInheritGeometry</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether new windows will inherit the geometry (width
+              and height of the active tab) from its parent window (the window from which
+              the new window was opened). Can be either <literal>TRUE</literal> or
+              <literal>FALSE</literal> (the default).
             </para>
           </listitem>
         </varlistentry>

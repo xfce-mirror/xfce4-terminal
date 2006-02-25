@@ -79,7 +79,6 @@ enum
 static void            terminal_window_dispose                  (GObject                *object);
 static void            terminal_window_finalize                 (GObject                *object);
 static void            terminal_window_show                     (GtkWidget              *widget);
-static TerminalScreen *terminal_window_get_active               (TerminalWindow         *window);
 static gboolean        terminal_window_confirm_close            (TerminalWindow         *window);
 static void            terminal_window_queue_reset_size         (TerminalWindow         *window);
 static gboolean        terminal_window_reset_size               (TerminalWindow         *window);
@@ -481,21 +480,6 @@ terminal_window_show (GtkWidget *widget)
       sn_display_unref (sn_display);
     }
 #endif
-}
-
-
-
-static TerminalScreen*
-terminal_window_get_active (TerminalWindow *window)
-{
-  GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
-  gint         page_num;
-
-  page_num = gtk_notebook_get_current_page (notebook);
-  if (G_LIKELY (page_num >= 0))
-    return TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num));
-  else
-    return NULL;
 }
 
 
@@ -1885,6 +1869,30 @@ terminal_window_remove (TerminalWindow *window,
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   gtk_widget_destroy (GTK_WIDGET (screen));
+}
+
+
+
+/**
+ * terminal_window_get_active:
+ * @window : a #TerminalWindow.
+ *
+ * Returns the active #TerminalScreen for @window
+ * or %NULL.
+ *
+ * Return value: the active #TerminalScreen for @window.
+ **/
+TerminalScreen*
+terminal_window_get_active (TerminalWindow *window)
+{
+  GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
+  gint         page_num;
+
+  page_num = gtk_notebook_get_current_page (notebook);
+  if (G_LIKELY (page_num >= 0))
+    return TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num));
+  else
+    return NULL;
 }
 
 

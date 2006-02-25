@@ -215,7 +215,10 @@ terminal_app_new_window (TerminalWindow *window,
 {
   TerminalWindowAttr *win_attr;
   TerminalTabAttr    *tab_attr;
+  TerminalScreen     *terminal;
   GdkScreen          *screen;
+  gboolean            inherit_geometry;
+  gint                w, h;
 
   screen = gtk_window_get_screen (GTK_WINDOW (window));
 
@@ -223,6 +226,21 @@ terminal_app_new_window (TerminalWindow *window,
   win_attr->display = gdk_screen_make_display_name (screen);
   tab_attr = win_attr->tabs->data;
   tab_attr->directory = g_strdup (working_directory);
+
+  /* check if we should try to inherit the parent geometry */
+  g_object_get (G_OBJECT (app->preferences), "misc-inherit-geometry", &inherit_geometry, NULL);
+  if (G_UNLIKELY (inherit_geometry))
+    {
+      /* determine the currently active terminal screen for the window */
+      terminal = terminal_window_get_active (window);
+      if (G_LIKELY (terminal != NULL))
+        {
+          /* let the new window inherit the geometry from its parent */
+          g_free (win_attr->geometry);
+          terminal_screen_get_size (terminal, &w, &h);
+          win_attr->geometry = g_strdup_printf ("%dx%d", w, h);
+        }
+    }
 
   terminal_app_open_window (app, win_attr);
 

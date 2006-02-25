@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2006 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -47,23 +47,25 @@ struct _TerminalWindowClass
                                    TerminalScreen *screen);
 };
 
-GType      terminal_window_get_type             (void) G_GNUC_CONST;
+GType           terminal_window_get_type             (void) G_GNUC_CONST;
 
-GtkWidget *terminal_window_new                  (gboolean            fullscreen,
-                                                 TerminalVisibility  menubar,
-                                                 TerminalVisibility  borders,
-                                                 TerminalVisibility  toolbars);
+GtkWidget      *terminal_window_new                  (gboolean            fullscreen,
+                                                      TerminalVisibility  menubar,
+                                                      TerminalVisibility  borders,
+                                                      TerminalVisibility  toolbars);
 
-void       terminal_window_add                  (TerminalWindow     *window,
-                                                 TerminalScreen     *screen);
+void            terminal_window_add                  (TerminalWindow     *window,
+                                                      TerminalScreen     *screen);
 
-void       terminal_window_remove               (TerminalWindow     *window,
-                                                 TerminalScreen     *screen);
+void            terminal_window_remove               (TerminalWindow     *window,
+                                                      TerminalScreen     *screen);
 
-void       terminal_window_set_startup_id       (TerminalWindow     *window,
-                                                 const gchar        *startup_id);
+TerminalScreen *terminal_window_get_active           (TerminalWindow     *window);
 
-GList     *terminal_window_get_restart_command  (TerminalWindow     *window);
+void            terminal_window_set_startup_id       (TerminalWindow     *window,
+                                                      const gchar        *startup_id);
+
+GList          *terminal_window_get_restart_command  (TerminalWindow     *window);
 
 G_END_DECLS;
 

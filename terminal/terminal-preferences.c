@@ -109,6 +109,7 @@ enum
   PROP_MISC_BELL,
   PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
+  PROP_MISC_INHERIT_GEOMETRY,
   PROP_MISC_MENUBAR_DEFAULT,
   PROP_MISC_MOUSE_AUTOHIDE,
   PROP_MISC_TOOLBARS_DEFAULT,
@@ -1024,6 +1025,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_boolean ("misc-cursor-blinks",
                                                          _("Cursor blinks"),
                                                          _("Cursor blinks"),
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-inherit-geometry:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_INHERIT_GEOMETRY,
+                                   g_param_spec_boolean ("misc-inherit-geometry",
+                                                         _("Inherit parent geometry"),
+                                                         _("Inherit parent geometry"),
                                                          FALSE,
                                                          G_PARAM_READWRITE));
 
