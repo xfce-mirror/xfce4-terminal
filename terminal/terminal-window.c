@@ -1417,7 +1417,7 @@ terminal_window_action_set_title (GtkAction      *action,
   screen = terminal_window_get_active (window);
   if (G_LIKELY (screen != NULL))
     {
-      dialog = gtk_dialog_new_with_buttons (_("Set Title"),
+      dialog = gtk_dialog_new_with_buttons (Q_("Window Title|Set Title"),
                                             GTK_WINDOW (window),
                                             GTK_DIALOG_DESTROY_WITH_PARENT
                                             | GTK_DIALOG_NO_SEPARATOR,
