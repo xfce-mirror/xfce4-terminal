@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY date "January 2006">
+<!ENTITY date "February 2006">
 <!ENTITY version "@PACKAGE_VERSION@">
 <!ENTITY application "@PACKAGE_NAME@">
 ]>
@@ -1025,20 +1025,30 @@
 
       <programlisting>
 [Configuration]
+MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
 MiscCycleTabs=TRUE
+MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
-MiscTabCloseButtons=TRUE</programlisting>
+MiscTabCloseButtons=TRUE
+MiscTabPosition=GTK_POS_TOP</programlisting>
 
       <para>これに環境設定ダイアログから変更するオプション全てがプラスされます。</para>
 
       <variablelist>
         <varlistentry>
+          <term><varname>MiscAlwaysShowTabs</varname></term>
+          <listitem>
+            <para><literal>TRUE</literal> にすると、ただ一つのターミナルタブが開いている場合でも、常にタブヘッダーが表示されます。二つ目のタブを開く時にターミナルウィンドウの大きさをわざわざ変更したくないのでしたら、このオプションは便利です。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term><varname>MiscBell</varname></term>
           <listitem>
-            <para>ターミナルのベルを鳴らす ((<varname>MiscBell=TRUE</varname>)) か鳴らさない (<varname>MiscBell=FALSE</varname>) かを設定します。標準では鳴りません。</para>
+            <para>ターミナルのベルを鳴らす (<varname>MiscBell=TRUE</varname>) か鳴らさない (<varname>MiscBell=FALSE</varname>) かを設定します。標準では鳴りません。</para>
           </listitem>
         </varlistentry>
 
@@ -1065,6 +1075,13 @@ MiscTabCloseButtons=TRUE</programlisting>
         </varlistentry>
 
         <varlistentry>
+          <term><varname>MiscInheritGeometry</varname></term>
+          <listitem>
+            <para>この設定で、新しいウィンドウがその親ウィンドウのジオメトリー (有効になっているタブの幅と高さ) を引き継ぐかどうかを決めます。<literal>TRUE</literal> あるいは <literal>FALSE</literal> (標準) のどちらかになります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term><varname>MiscMouseAutohide</varname></term>
           <listitem>
             <para>この設定で、ターミナルウィンドウでキー入力している最中に、@PACKAGE_NAME@ がマウスカーソルを隠すかどうかを決めます。<literal>TRUE</literal> または <literal>FALSE</literal> (標準) になります。</para>
@@ -1075,6 +1092,13 @@ MiscTabCloseButtons=TRUE</programlisting>
           <term><varname>MiscTabCloseButtons</varname></term>
           <listitem>
             <para>この設定で、@PACKAGE_NAME@ がターミナルタブのタイトルと一緒に、閉じるボタンも表示するかどうかを決めます。<literal>TRUE</literal> (標準) または <literal>FALSE</literal> になります。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabPosition</varname></term>
+          <listitem>
+            <para>どこにタブヘッダーが表示されるかを指定します。これは <literal>GTK_POS_TOP</literal> (標準)、<literal>GTK_POS_LEFT</literal>, <literal>GTK_POS_BOTTOM</literal> あるいは <literal>GTK_POS_RIGHT</literal> のいずれかになります。ここに <literal>GTK_POS_LEFT</literal> または <literal>GTK_POS_RIGHT</literal> を指定すると、タブヘッダーは横ではなく縦に表示されます。<literal>GTK_POS_LEFT</literal> および <literal>GTK_POS_RIGHT</literal> に対しては <varname>MiscTabCloseButtons</varname> を無効にすることを推奨します。</para>
           </listitem>
         </varlistentry>
       </variablelist>
