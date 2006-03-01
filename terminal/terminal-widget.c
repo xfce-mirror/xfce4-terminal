@@ -32,7 +32,7 @@
 
 #include <gdk/gdkkeysyms.h>
 
-#include <libxfce4util/libxfce4util.h>
+#include <exo/exo.h>
 
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>

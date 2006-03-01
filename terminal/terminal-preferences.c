@@ -1091,7 +1091,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_boolean ("misc-cycle-tabs",
                                                          _("Cycle tabs"),
                                                          _("Allow cycling through tabs"),
-                                                         FALSE,
+                                                         TRUE,
                                                          G_PARAM_READWRITE));
 
   /**

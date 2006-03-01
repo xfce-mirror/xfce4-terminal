@@ -2,7 +2,7 @@
 #
 # $Id$
 #
-# Copyright (c) 2004 os-cillation e.K.
+# Copyright (c) 2004-2006 os-cillation e.K.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,23 +18,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 #
-
-if test x"${BROWSER}" = x""; then
-  for browser in mozilla firefox epiphany galeon mozilla opera konqueror; do
-    if (which "${browser}") > /dev/null 2>&1; then
-      BROWSER="${browser}"
-      break;
-    fi
-  done
-fi
-
-if test x"${BROWSER}" = x""; then
-  xmessage -center -file - -title Error <<EOF
-TerminalHelp was unable to find a browser to use.
-Please set the BROWSER environment variable.
-EOF
-  exit 1
-fi
 
 HELPDIR="@datadir@/doc/Terminal/"
 
@@ -62,24 +45,6 @@ fi
 
 [ -n "$2" ] && URL="$URL#$2"
 
-case "$BROWSER" in
-firefox*)
-  $BROWSER -a firefox -remote openurl\("file://$URL",new-window\) || \
-    $BROWSER "file://$URL"
-  ;;
-communicator*|netscape*|mozilla*|phoenix*|firebird*)
-	$BROWSER -remote openurl\("file://$URL",new-window\) || \
-		$BROWSER "file://$URL"
-	;;
-opera*)
-	$BROWSER -remote openURL\("file://$URL",new-window\) || \
-		$BROWSER "file://$URL"
-	;;
-*)
-	$BROWSER "$URL"
-	;;
-esac
-
-exit $?
+exec exo-open --launch WebBrowser "file://$URL"
 
 # vim:set ts=2 sw=2 et ai:

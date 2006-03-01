@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
     "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "February 2006"> 
+  <!ENTITY date "March 2006"> 
   <!ENTITY version "@PACKAGE_VERSION@">
   <!ENTITY application "@PACKAGE_NAME@"> 
 ]>
@@ -115,7 +115,8 @@
           Customizable toolbars, which can be changed using an integrated graphical toolbar editor
         </listitem>
         <listitem>
-          Ability to configure nearly every aspect of &application; in the <guilabel>Preferences</guilabel> dialog
+          Ability to configure nearly every aspect of &application; in the <guilabel>Preferences</guilabel> dialog plus a
+          bunch of so called <emphasis>hidden options</emphasis>
         </listitem>
         <listitem>
           Good integration with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink> in particular, but also with every other Linux desktop
@@ -130,7 +131,7 @@
           Standards compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
         </listitem>
         <listitem>
-          <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the number of processes in the system
+          <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the overall resource usage
         </listitem>
         <listitem>
           High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink>
@@ -847,9 +848,10 @@
         <varlistentry>
           <term><guilabel>Foreground and Background</guilabel></term>
           <listitem>
-            <para>Click on the <guilabel>Text color</guilabel> button to choose the color
-            &application; uses to draw normal text - an application running inside the terminal can
-            also request a different color chosen from the palette below to draw text.</para>
+            <para>The two buttons labelled with <guilabel>Text and cursor color</guilabel> allow
+            to select the color &application; uses to draw normal text and the color for the text
+            cursor. An application running inside the terminal can also request a different color
+            chosen from the palette below to draw text.</para>
 
             <para>Click on the <guilabel>Background color</guilabel> button to choose the
             default background for terminal windows. This color is also used in background
@@ -858,12 +860,17 @@
           </listitem>
         </varlistentry>
         <varlistentry>
+          <term><guilabel>Text Selection</guilabel></term>
+          <listitem>
+            <para>Select the background color to use when selecting text in a terminal window.
+            You can either specify a custom color or stick to the default color.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term><guilabel>Palette</guilabel></term>
           <listitem>
-            <para>
-              The terminal provides the application running inside with a palette of
-              16 colors. You can customize this colors using the 16 color buttons.
-            </para>
+            <para>The terminal provides the application running inside with a palette of
+            16 colors. You can customize this colors using the 16 color buttons.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1408,7 +1415,7 @@ MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
-MiscCycleTabs=TRUE
+MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
@@ -1470,10 +1477,7 @@ MiscTabPosition=GTK_POS_TOP</programlisting>
               Tab</guimenuitem> button from the <guimenu>Go</guimenu> menu (or the associated keyboard
               shortcut), and from the first tab to the last tab using the <guimenuitem>Previous
               Tab</guimenuitem> button from the <guimenu>Go</guimenu> menu. The option can be either
-              <literal>TRUE</literal> or <literal>FALSE</literal>.
-            </para>
-            <para>
-              This behavior is disabled by default, because it tends to confuse users.
+              <literal>TRUE</literal> (the default) or <literal>FALSE</literal>.
             </para>
           </listitem>
         </varlistentry>

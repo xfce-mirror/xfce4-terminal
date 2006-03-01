@@ -36,8 +36,6 @@
 #include <dbus/dbus.h>
 #include <dbus/dbus-glib-lowlevel.h>
 
-#include <libxfce4util/libxfce4util.h>
-
 #include <terminal/terminal-config.h>
 #include <terminal/terminal-dbus.h>
 
