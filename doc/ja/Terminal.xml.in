@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY date "February 2006">
+<!ENTITY date "March 2006">
 <!ENTITY version "@PACKAGE_VERSION@">
 <!ENTITY application "@PACKAGE_NAME@">
 ]>
@@ -71,12 +71,12 @@
       <itemizedlist>
         <listitem>一つのウィンドウ毎に複数のタブが利用可能</listitem>
         <listitem>カスタマイズ可能なツールバー、統合されたグラフィカルなツールバーエディターを使用して変更できます</listitem>
-        <listitem>@PACKAGE_NAME@ のほぼ全ての箇所が<guilabel>環境設定</guilabel>で設定できます</listitem>
+        <listitem>@PACKAGE_NAME@ のほぼ全ての箇所が<guilabel>環境設定</guilabel>で設定できます、それに加えていわゆる<emphasis>隠しオプション</emphasis>というものもあります</listitem>
         <listitem>特に<ulink url="http://xfce.org/">Xfce デスクトップ環境</ulink>とよく調和しますが、その他の Linux デスクトップとも似合います</listitem>
         <listitem>セッション管理サポート</listitem>
         <listitem>マルチヘッド・サポート (MultiSreen および Xinerama モードの両方)</listitem>
         <listitem>標準規格への準拠 (ウェブサイト <ulink url="http://freedesktop.org/">freedesktop.org</ulink> を御覧下さい)</listitem>
-        <listitem>システム中のプロセスを最小に抑えるために <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> を基にしたターミナルサービス機能が備わっています。</listitem>
+        <listitem>全体にわたるリソースの利用を最小に抑えるために <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> を基にしたターミナルサービス機能が備わっています。</listitem>
         <listitem><ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink> および <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink> を最大限に活用していますので、格段に保守しやすくなっています。</listitem>
       </itemizedlist>
 
@@ -616,9 +616,15 @@
         <varlistentry>
           <term><guilabel>文字色と背景色</guilabel></term>
           <listitem>
-            <para>@PACKAGE_NAME@ が通常のテキストを描画するのに使う色を選ぶには<guilabel>文字色</guilabel>ボタンをクリックして下さい。ターミナル内で実行するアプリケーションは、以下のパレットから選ばれる異なる色を使ってテキストを描画します。</para>
+            <para>@PACKAGE_NAME@ が通常の文字とカーソルを描画するのに使う色を選ぶために、<guilabel>文字とカーソル</guilabel>という所に二つのボタンがあります。ターミナル内で実行するアプリケーションは、下にあるパレットから異なる色を選んで利用することもできます。</para>
 
             <para>ターミナルウィンドウの標準の背景色を選ぶには<guilabel>背景色</guilabel>ボタンをクリックします。この色は<guilabel>透明にする</guilabel>あるいは<guilabel>画像を使用する</guilabel>が選択されている時の配合色としても用いられます。</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>テキストの選択</guilabel></term>
+          <listitem>
+            <para>ターミナルウィンドウでテキストを選択する時に使用する背景色を選択します。色を指定することもできますし、そのまま標準で決められているものを使用することもできます。</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -1029,7 +1035,7 @@ MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
-MiscCycleTabs=TRUE
+MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
@@ -1069,8 +1075,7 @@ MiscTabPosition=GTK_POS_TOP</programlisting>
         <varlistentry>
           <term><varname>MiscCycleTabs</varname></term>
           <listitem>
-            <para>このオプションで、ターミナルのタブを循環できるようにするかどうかを決めます。有効にするとメニュー<guimenu>移動</guimenu> (またはそれに割り当てられているキーボードショートカット) から<guimenuitem>次のタブ</guimenuitem>ボタンを使用して、右端のタブから左端のタブに移動したり、同じく<guimenu>移動</guimenu>メニューから<guimenuitem>前のタブ</guimenuitem>を使って左端から右端へ移れるようになります。このオプションは <literal>TRUE</literal> あるいは <literal>FALSE</literal> のどちらかになります。</para>
-            <para>ユーザーを混乱させてしまうようですので、この振る舞いは標準では無効にされています。</para>
+            <para>このオプションで、ターミナルのタブを循環できるようにするかどうかを決めます。有効にするとメニュー<guimenu>移動</guimenu> (またはそれに割り当てられているキーボードショートカット) から<guimenuitem>次のタブ</guimenuitem>ボタンを使用して、右端のタブから左端のタブに移動したり、同じく<guimenu>移動</guimenu>メニューから<guimenuitem>前のタブ</guimenuitem>を使って左端から右端へ移れるようになります。このオプションは <literal>TRUE</literal> (標準) あるいは <literal>FALSE</literal> のどちらかになります。</para>
           </listitem>
         </varlistentry>
 
