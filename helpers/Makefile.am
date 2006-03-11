@@ -16,6 +16,7 @@ desktop_in_files =							\
 	opera-browser.desktop.in					\
 	opera-mailer.desktop.in						\
 	sensible-browser.desktop.in					\
+	sylpheed-claws.desktop.in					\
 	thunderbird.desktop.in
 desktop_DATA =								\
 	$(desktop_in_files:.desktop.in=.desktop)
