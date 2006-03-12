@@ -1,8 +1,11 @@
+# $Id$
+
 SUBDIRS =								\
 	doc								\
 	helpers								\
 	icons								\
 	po								\
+	po-doc								\
 	terminal
 
 AUTOMAKE_OPTIONS =							\
@@ -56,6 +59,8 @@ DISTCLEANFILES =							\
 	intltool-update							\
 	$(desktop_DATA)
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-xsltproc
+DISTCHECK_CONFIGURE_FLAGS =						\
+	--enable-xml2po							\
+	--enable-xsltproc
 
 # vi:set ts=8 sw=8 noet ai nocindent:
