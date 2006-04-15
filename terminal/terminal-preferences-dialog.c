@@ -135,8 +135,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                 "resizable", FALSE,
                 NULL);
 
-  button = gtk_button_new_from_stock (GTK_STOCK_CLOSE);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
+  button = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
   gtk_widget_show (button);
 
   button = gtk_button_new_from_stock (GTK_STOCK_HELP);

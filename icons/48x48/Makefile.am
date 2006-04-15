@@ -1,6 +1,6 @@
 # $Id$
 
-iconsdir = $(datadir)/icons/hicolor/48x48/stock/generic
+iconsdir = $(datadir)/icons/hicolor/48x48/stock/navigation
 icons_DATA =								\
 	stock_terminal-advanced.png					\
 	stock_terminal-appearance.png					\
