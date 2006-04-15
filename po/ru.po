@@ -14,7 +14,7 @@ msgstr ""
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../terminal/main.c:42
 msgid "Usage: Terminal [OPTION...]"
@@ -245,8 +245,9 @@ msgstr ""
 msgid "Terminal"
 msgstr "Terminal"
 
+# c-format
 #: ../terminal/main.c:153
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
@@ -261,7 +262,7 @@ msgid ""
 msgstr ""
 "%s (Xfce %s)\n"
 "\n"
-"Авторское право (c) 2003-2005\n"
+"Авторское право (c) 2003-2006\n"
 "        os-cillation e.K. Все права защищены.\n"
 "\n"
 "Автор Benedikt Meurer <benny@xfce.org>.\n"
@@ -774,7 +775,7 @@ msgstr "<b>Выделение текста</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:733
 msgid "Use _default color"
-msgstr ""
+msgstr "Цвет по умолчанию"
 
 #: ../terminal/terminal-preferences-dialog.c:736
 msgid "Use the default text selection background color"
@@ -929,7 +930,6 @@ msgstr "Открыть терминал"
 
 #: ../terminal/terminal-preferences.c:324
 #: ../terminal/terminal-preferences.c:325
-#, fuzzy
 msgid "Detach Tab"
 msgstr "Отделить вкладку"
 
@@ -1271,11 +1271,11 @@ msgstr "По умолчанию показывать строку меню"
 
 #: ../terminal/terminal-preferences.c:1059
 msgid "Autohide mouse pointer"
-msgstr ""
+msgstr "Автоматически скрывать указатель мыши"
 
 #: ../terminal/terminal-preferences.c:1060
 msgid "Whether to autohide mouse pointer"
-msgstr ""
+msgstr "Будет ли скрываться курсор мыши"
 
 #: ../terminal/terminal-preferences.c:1070
 #: ../terminal/terminal-preferences.c:1071
@@ -1510,12 +1510,12 @@ msgstr ""
 "Невозможно выполнить перетаскивание URI: неверный формат (%d) или длина (%"
 "d)\n"
 
+# c-format
 #: ../terminal/terminal-widget.c:555
-#, fuzzy, c-format
+#, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"Невозможно выполнить перетаскивание URI: неверный формат (%d) или длина (%"
-"d)\n"
+"Получены недопустимые данные о цвете: неверный формат (%d) или длина (%d)\n"
 
 #: ../terminal/terminal-window.c:192
 msgid "_File"
@@ -1530,7 +1530,6 @@ msgid "Open a new terminal tab"
 msgstr "Открыть новую вкладку терминала"
 
 #: ../terminal/terminal-window.c:194
-#, fuzzy
 msgid "Open T_erminal"
 msgstr "Открыть терминал"
 
@@ -1591,9 +1590,8 @@ msgid "Customize the toolbars"
 msgstr "Настроить панели инструментов"
 
 #: ../terminal/terminal-window.c:203
-#, fuzzy
 msgid "Pr_eferences..."
-msgstr "Настройки..."
+msgstr "Параметры..."
 
 #: ../terminal/terminal-window.c:203
 msgid "Open the Terminal preferences dialog"
@@ -1752,7 +1750,7 @@ msgstr ""
 
 #: ../terminal/terminal-window.c:1420
 msgid "Window Title|Set Title"
-msgstr ""
+msgstr "Заголовок окна|Задать заголовок"
 
 #: ../terminal/terminal-window.c:1434
 msgid "<b>Title:</b>"
@@ -1772,9 +1770,10 @@ msgid "X Terminal Emulator"
 msgstr "Эмулятор терминала для X"
 
 #: ../terminal/terminal-window.c:1710
-#, fuzzy
 msgid "translator-credits"
-msgstr "Перевод (%s)"
+msgstr ""
+"Anthony Ivanoff <a-i@bk.ru>\n"
+"Andrey Fedoseev <andrey.fedoseev@gmail.com>"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
@@ -1839,4 +1838,3 @@ msgstr "Debian Sensible Browser"
 #: ../helpers/thunderbird.desktop.in.h:1
 msgid "Mozilla Thunderbird"
 msgstr "Mozilla Thunderbird"
-
