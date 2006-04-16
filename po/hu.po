@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-16 09:31+0200\n"
-"PO-Revision-Date: 2006-04-15 18:53+0100\n"
-"Last-Translator: SZERVÁC Attila <sas@321.hu>\n"
+"PO-Revision-Date: 2006-04-16 10:00+0100\n"
+"Last-Translator: SZERVÑC Attila <sas@321.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -95,13 +95,18 @@ msgid ""
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
+"  --role=SZEREP                       Utolsó ablakban szerepe;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:67
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
-"  --startup-id=SZÖVEG                 ID az indítási emlékeztető\n"
+"  --startup-id=SZÖVEG                 ID az indítás jelentő\n"
 "                                      protokollhoz"
 
 #: ../terminal/main.c:69
@@ -112,6 +117,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
+"  --fullscreen                        Utolsó ablak teljes képernyőre;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:74
 msgid ""
@@ -121,6 +131,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-menubar                      Menüsáv be az utolsó ablakban;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:79
 msgid ""
@@ -130,6 +145,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-menubar                      Menüsáv ki az utolsó ablakban;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:84
 msgid ""
@@ -139,6 +159,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --show-borders                      Keretek be az utolsó ablakban;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:89
 msgid ""
@@ -148,6 +173,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --hide-borders                      Keretek ki az utolsó ablakban;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:94
 msgid ""
@@ -157,6 +187,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-toolbars                     Eszközsorok be az utolsó ablakban;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:99
 msgid ""
@@ -166,6 +201,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-toolbars                     Eszközsorok ki az utolsó ablakban;\n"
+"                                      csak 1 ablakra működik;\n"
+"                                      minden parancssorból létrehozott\n"
+"                                      ablakra 1x adható meg\n"
+" "
 
 #: ../terminal/main.c:105
 msgid ""
@@ -173,6 +213,9 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
+"  --window                            Új lap az utolsó ablakban;\n"
+"                                      e lehetőségekből több is\n"
+"                                      megadható"
 
 #: ../terminal/main.c:108
 msgid ""
@@ -180,6 +223,9 @@ msgid ""
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
+"  --window                            Új ablak megnyitása 1 lappal;\n"
+"                                      e lehetőségekből több is\n"
+"                                      megadható"
 
 #: ../terminal/main.c:112
 msgid "  --default-display=DISPLAY           default X display to use"
@@ -848,7 +894,7 @@ msgstr "Haladó"
 #: ../terminal/terminal-window.c:1505 ../terminal/terminal-window.c:1532
 #, c-format
 msgid "Unable to launch online help: %s"
-msgstr ""
+msgstr "A súgógép nem futtatható: %s"
 
 #: ../terminal/terminal-preferences-dialog.c:1285
 msgid "Select background image file"
@@ -1185,9 +1231,8 @@ msgid "Always show tabs"
 msgstr "Fülek mutatása mindig"
 
 #: ../terminal/terminal-preferences.c:994
-#, fuzzy
 msgid "Always show terminal tabs"
-msgstr "Új terminál lap"
+msgstr "Mindig mutassa a terminál füleket"
 
 #: ../terminal/terminal-preferences.c:1004
 #: ../terminal/terminal-preferences.c:1005
@@ -1250,9 +1295,8 @@ msgstr "Lap"
 
 #: ../terminal/terminal-preferences.c:1114
 #: ../terminal/terminal-tab-header.c:121 ../terminal/terminal-tab-header.c:122
-#, fuzzy
 msgid "Tab position"
-msgstr "Lapzáró gombok"
+msgstr "Lap helyzete"
 
 #: ../terminal/terminal-preferences.c:1115
 msgid "Where to place the tabs"
@@ -1318,15 +1362,15 @@ msgstr "Term"
 #: ../terminal/terminal-preferences.c:1229
 #: ../terminal/terminal-preferences.c:1230
 msgid "Workaround VTE title bug"
-msgstr ""
+msgstr "VTE cím hiba elkerülése"
 
 #: ../terminal/terminal-preferences.c:1240
 msgid "Word chars"
-msgstr ""
+msgstr "Szó kr-k"
 
 #: ../terminal/terminal-preferences.c:1241
 msgid "Word characters"
-msgstr ""
+msgstr "Szó karakterek"
 
 #: ../terminal/terminal-screen.c:181 ../terminal/terminal-screen.c:182
 msgid "Custom title"
