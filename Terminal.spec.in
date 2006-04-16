@@ -21,7 +21,7 @@ ideas and features that makes it unique among X terminal emulators.
 %setup -q
 
 %build
-%configure --enable-final
+%configure --enable-final --enable-xsltproc
 make
 
 %install
@@ -30,6 +30,18 @@ make install DESTDIR=$RPM_BUILD_ROOT mandir=%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+touch --no-create %{_datadir}/icons/hicolor || :
+if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+fi
+
+%postun
+touch --no-create %{_datadir}/icons/hicolor || :
+if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+   %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
+fi
 
 %files
 %defattr(-,root,root)
