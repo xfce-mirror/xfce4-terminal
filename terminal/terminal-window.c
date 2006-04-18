@@ -1675,21 +1675,6 @@ terminal_window_action_about (GtkAction      *action,
     NULL,
   };
 
-  static const gchar license[] =
-    "This program is free software; you can redistribute it and/or modify it\n"
-    "under the terms of the GNU General Public License as published by the Free\n"
-    "Software Foundation; either version 2 of the License, or (at your option)\n"
-    "any later version.\n"
-    "\n"
-    "This program is distributed in the hope that it will be useful, but WITHOUT\n"
-    "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\n"
-    "FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for\n"
-    "more details.\n"
-    "\n"
-    "You should have received a copy of the GNU General Public License along with\n"
-    "this program; if not, write to the Free Software Foundation, Inc., 59 Temple\n"
-    "Place, Suite 330, Boston, MA  02111-1307  USA.\n";
-
   GdkPixbuf *logo;
 
   /* try to load the about logo */
@@ -1704,7 +1689,7 @@ terminal_window_action_about (GtkAction      *action,
                          "comments", _("X Terminal Emulator"),
                          "documenters", documenters,
                          "copyright", "Copyright \302\251 2003-2006 Benedikt Meurer",
-                         "license", license,
+                         "license", XFCE_LICENSE_GPL,
                          "logo", logo,
                          "name", PACKAGE_NAME,
                          "translator-credits", _("translator-credits"),
