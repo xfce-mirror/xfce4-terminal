@@ -128,20 +128,15 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_ref (G_OBJECT (dialog->tooltips));
   gtk_object_sink (GTK_OBJECT (dialog->tooltips));
 
-  g_object_set (G_OBJECT (dialog),
-                "title", _("Terminal Preferences"),
-                "destroy-with-parent", TRUE,
-                "has-separator", FALSE,
-                "resizable", FALSE,
-                NULL);
-
-  button = gtk_button_new_from_stock (GTK_STOCK_CANCEL);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
-  gtk_widget_show (button);
-
-  button = gtk_button_new_from_stock (GTK_STOCK_HELP);
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_HELP);
-  gtk_widget_show (button);
+  /* initialize the dialog window */
+  gtk_dialog_add_buttons (GTK_DIALOG (dialog),
+                          GTK_STOCK_CLOSE, GTK_RESPONSE_CANCEL,
+                          GTK_STOCK_HELP, GTK_RESPONSE_HELP,
+                          NULL);
+  gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
+  gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+  gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Terminal Preferences"));
 
   g_signal_connect (G_OBJECT (dialog), "response",
                     G_CALLBACK (terminal_preferences_dialog_response), NULL);
