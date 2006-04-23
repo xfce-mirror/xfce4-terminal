@@ -3,72 +3,86 @@
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
 #
-# Pau Rul·lan Ferragut <paurullan@bulma.net> 2005, 2006.
+# Pau Rul·lan Ferragut <paurullan@bulma.net>, 2005-2006.
+# Carles Muñoz Gorriz <carlesmu@internautas.org>, 2006.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.5svn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-04-16 09:31+0200\n"
-"PO-Revision-Date: 2006-04-04 05:20+0200\n"
-"Last-Translator: Pau Rul·lan Ferragut <paurullan@bulma.net>\n"
+"PO-Revision-Date: 2006-04-24 00:01+0200\n"
+"Last-Translator: Carles Muñoz Gorriz <carlesmu@internautas.org>\n"
 "Language-Team: Catalan\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.2\n"
 
 #: ../terminal/main.c:42
-#, fuzzy
 msgid "Usage: Terminal [OPTION...]"
-msgstr "Terminal"
+msgstr " Ús: Terminal [OPCIÓ…]"
 
 #: ../terminal/main.c:44
 msgid "  -h, --help                          Print this help message and exit"
 msgstr ""
+"  -h, --help                          Mostra aquest missatge d'ajuda i\n"
+"                                      surt"
 
 #: ../terminal/main.c:45
-msgid ""
-"  -v, --version                       Print version information and exit"
-msgstr "Imprimeix i"
+msgid "  -v, --version                       Print version information and exit"
+msgstr "  -v, --version                       Mostra la versió i surt"
 
 #: ../terminal/main.c:46
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
+"  --disable-server                    No registrar-se amb el gestor de\n"
+"                                      missatges de sessió D-BUS"
 
 #: ../terminal/main.c:49
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
 msgstr ""
+"  -x, --execute                       Executa la resta de la línia\n"
+"                                      d'ordres dins del terminal."
 
 #: ../terminal/main.c:51
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
+"  -e, --command=CADENA                Executa l'argument d'aquesta opció\n"
+"                                      dins del terminal."
 
 #: ../terminal/main.c:53
-msgid ""
-"  --working-directory=DIRNAME         Set the terminals working directory"
+msgid "  --working-directory=DIRNAME         Set the terminals working directory"
 msgstr ""
+"  --working-directory=DIRECTORI       Estableix el directori de treball dels\n"
+"                                      terminals"
 
 #: ../terminal/main.c:54
 msgid "  -T, --title=TITLE                   Set the terminals title"
-msgstr ""
+msgstr "  -T, --title=TÍTOL                   Estableix el títol del terminal"
 
 #: ../terminal/main.c:55
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
+"  -H, --hold                          No destrueixis immediatament la\n"
+"                                      pestanya quan el procés fill acabi."
 
 #: ../terminal/main.c:58
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
+"  --display=PANTALLA                  Pantalla de les X per la finestra\n"
+"                                      especificada"
 
 #: ../terminal/main.c:60
 msgid ""
@@ -76,6 +90,9 @@ msgid ""
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
+"  --geometry=GEOMETRIA                Especifiqueu la geometria de les X\n"
+"                                      (mireu «man X»), es pot especificar\n"
+"                                      una vegada per finestra oberta"
 
 #: ../terminal/main.c:63
 msgid ""
@@ -84,12 +101,19 @@ msgid ""
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
+"  --role=ROL                          Especifiqueu el rol per l'última\n"
+"                                      finestra; s'aplica només a una\n"
+"                                      finestra. Es pot especificar un cop\n"
+"                                      per cada finestra que es crei des de\n"
+"                                      la línia d'ordres"
 
 #: ../terminal/main.c:67
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
+"  --startup-id=CADENA                 Identificador pel protocol de\n"
+"                                      notificació d'engegada."
 
 #: ../terminal/main.c:69
 msgid ""
@@ -99,6 +123,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
+"  --fullscreen                        Posa l'última finestra en mode de\n"
+"                                      pantalla complerta; només s'aplica a\n"
+"                                      una finestra. Es pot especificar un\n"
+"                                      cop per cada finestra que es crei\n"
+"                                      des de la línia d'ordres"
 
 #: ../terminal/main.c:74
 msgid ""
@@ -108,6 +137,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-menubar                      Mostra la barra de menú a l'última\n"
+"                                      finestra; s'aplica només a una\n"
+"                                      finestra. Es por especificar un cop\n"
+"                                      per cada finestra que es crei des de\n"
+"                                      la línia d'ordres."
 
 #: ../terminal/main.c:79
 msgid ""
@@ -117,6 +151,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-menubar                      Oculta la barra de menú a l'última\n"
+"                                      finestra; s'aplica només a una\n"
+"                                      finestra. Es por especificar un cop\n"
+"                                      per cada finestra que es crei des de\n"
+"                                      la línia d'ordres."
 
 #: ../terminal/main.c:84
 msgid ""
@@ -126,6 +165,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --show-borders                      Mostra la decoració de les vores a\n"
+"                                      l'última finestra; s'aplica només a\n"
+"                                      una finestra. Es por especificar un\n"
+"                                      cop per cada finestra que es crei\n"
+"                                       des de la línia d'ordres."
 
 #: ../terminal/main.c:89
 msgid ""
@@ -135,6 +179,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --hide-borders                      Oculta la decoració de les vores a\n"
+"                                      l'última finestra; s'aplica només a\n"
+"                                      una finestra. Es por especificar un\n"
+"                                      cop per cada finestra que es crei\n"
+"                                       des de la línia d'ordres."
 
 #: ../terminal/main.c:94
 msgid ""
@@ -144,6 +193,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-toolbars                     Mostra la barra de ferramentes a\n"
+"                                      l'última finestra; s'aplica només a\n"
+"                                      una finestra. Es por especificar un\n"
+"                                      cop per cada finestra que es crei\n"
+"                                       des de la línia d'ordres."
 
 #: ../terminal/main.c:99
 msgid ""
@@ -153,6 +207,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-toolbars                     Oculta la barra de ferramentes a\n"
+"                                      l'última finestra; s'aplica només a\n"
+"                                      una finestra. Es por especificar un\n"
+"                                      cop per cada finestra que es crei\n"
+"                                      des de la línia d'ordres."
 
 #: ../terminal/main.c:105
 msgid ""
@@ -160,6 +219,9 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
+"  --tab                               Obre una nova pestanya a l'última\n"
+"                                      finestra; aquesta opció es pot\n"
+"                                      informar més d'un cop"
 
 #: ../terminal/main.c:108
 msgid ""
@@ -167,20 +229,28 @@ msgid ""
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
+"  --window                            Obre una nova finestra amb una\n"
+"                                      pestanya; aquesta opció es pot\n"
+"                                      informar més d'un cop"
 
 #: ../terminal/main.c:112
 msgid "  --default-display=DISPLAY           default X display to use"
 msgstr ""
+"  --default-display=PANTALLA          Pantalla de les X a emprar per\n"
+"                                      defecte"
 
 #: ../terminal/main.c:113
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
 "                                      directory"
 msgstr ""
+"  --default-working-directory=DIRECTORI Especifiqueu el directori de treball\n"
+"                                        per defecte dels terminals"
 
-#: ../terminal/main.c:134 ../terminal/terminal-preferences.c:1197
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
-#, fuzzy
+#: ../terminal/main.c:134
+#: ../terminal/terminal-preferences.c:1197
+#: ../terminal/terminal-shortcut-editor.c:121
+#: ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -198,47 +268,55 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 msgstr ""
+"%s (Xfce %s)\n"
+"\n"
+"Copyright (c) 2003-2006\n"
+"        os-cillation e.K. All rights reserved.\n"
+"\n"
+"Escrit per Benedikt Meurer <benny@xfce.org>.\n"
+"\n"
+"Muntat amb Gtk+-%d.%d.%d, executant-se amb Gtk+-%d.%d.%d.\n"
+"\n"
+"Envieu les errades a <%s>.\n"
 
 #: ../terminal/main.c:247
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr ""
+msgstr "No es por registrar el servei de terminal: %s\n"
 
 #: ../terminal/main.c:256
 #, c-format
 msgid "Unable to launch terminal: %s\n"
-msgstr ""
+msgstr "No es pot llançar el terminal: %s\n"
 
 #: ../terminal/terminal-app.c:519
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Cadena geomètrica invàlida \"%s\"\n"
+msgstr "Cadena de geometria invàlida «%s»\n"
 
+# mismatch = desajustat ?
 #: ../terminal/terminal-dbus.c:113
-#, fuzzy
 msgid "User id mismatch"
-msgstr "Usuari identificació"
+msgstr "L'identificador d'usuari no coincideix"
 
 #: ../terminal/terminal-dbus.c:145
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
+msgstr "Bus de missatges D-BUS desconnectat, sortint…\n"
 
 #: ../terminal/terminal-dbus.c:206
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to register object %s"
-msgstr "a "
+msgstr "No es por registrar l'objecte %s"
 
 #: ../terminal/terminal-helper-dialog.c:51
 #: ../terminal/terminal-preferences.c:982
 #: ../terminal/terminal-preferences.c:983
-#, fuzzy
 msgid "Web Browser"
 msgstr "Navegador web"
 
 #: ../terminal/terminal-helper-dialog.c:52
 #: ../terminal/terminal-preferences.c:971
 #: ../terminal/terminal-preferences.c:972
-#, fuzzy
 msgid "Mail Reader"
 msgstr "Lector de correu"
 
@@ -248,6 +326,9 @@ msgid ""
 "Web Browser opens when you right-click on a URL\n"
 "and select Open Link from the context menu."
 msgstr ""
+"Trieu el vostre navegador web preferit. El navegador\n"
+"s'obrirà quan cliqueu amb el botó dret en una URL i\n"
+"seleccioneu «obrir l'enllaç» des del menú contextual."
 
 #: ../terminal/terminal-helper-dialog.c:60
 msgid ""
@@ -256,53 +337,54 @@ msgid ""
 "address and select Compose Email from the context\n"
 "menu."
 msgstr ""
+"Trieu el vostre lector de correu preferit. El lector\n"
+"s'obrirà quan cliqueu amb el botó dret en una adreça\n"
+"i seleccioneu «Escriu correu electrònic» des del menú\n"
+"contextual."
 
 #: ../terminal/terminal-helper-dialog.c:166
-msgid ""
-"Click here to change the selected application or to disable this feature."
-msgstr ""
+msgid "Click here to change the selected application or to disable this feature."
+msgstr "Cliqueu aquí per canviar l'aplicació seleccionada o inhabilitar aquesta característica."
 
 #: ../terminal/terminal-helper-dialog.c:309
-#, fuzzy
 msgid "Select application"
-msgstr "Seleccioneu aplicació"
+msgstr "Seleccioneu l'aplicació"
 
 #: ../terminal/terminal-helper-dialog.c:347
-#, fuzzy
 msgid "Choose a custom Web Browser"
-msgstr "Selecciona... a personalitzat Web Navegador"
+msgstr "Trieu un navegador web personalitzat"
 
 #: ../terminal/terminal-helper-dialog.c:348
-#, fuzzy
 msgid "Choose a custom Mail Reader"
-msgstr "Selecciona... a personalitzat Correu"
+msgstr "Triei un lector de correu personalitzat"
 
 #: ../terminal/terminal-helper-dialog.c:353
 msgid ""
 "Specify the application you want to use as\n"
 "Web Browser in Terminal:"
 msgstr ""
+"Especifiqueu l'aplicació que voleu emprar\n"
+"com a navegador web al terminal:"
 
 #: ../terminal/terminal-helper-dialog.c:354
 msgid ""
 "Specify the application you want to use as\n"
 "Mail Reader in Terminal:"
 msgstr ""
+"Especifiqueu l'aplicació que voleu emprar\n"
+"com a lector de correu al terminal:"
 
 #: ../terminal/terminal-helper-dialog.c:429
-#, fuzzy
 msgid "_Browse..."
-msgstr "_Navega..."
+msgstr "_Navega…"
 
 #: ../terminal/terminal-helper-dialog.c:528
-#, fuzzy
 msgid "Disable this feature"
-msgstr "Inhabilita aquest"
+msgstr "Inhabilita aquesta característica"
 
 #: ../terminal/terminal-helper-dialog.c:569
-#, fuzzy
 msgid "Other..."
-msgstr "Un altre..."
+msgstr "Altre…"
 
 #: ../terminal/terminal-helper-dialog.c:609
 #: ../terminal/terminal-preferences-dialog.c:355
@@ -316,393 +398,294 @@ msgstr "Un altre..."
 #: ../terminal/terminal-preferences.c:469
 #: ../terminal/terminal-shortcut-editor.c:209
 #: ../terminal/terminal-shortcut-editor.c:392
-#, fuzzy
 msgid "Disabled"
 msgstr "Inhabilitat"
 
 #: ../terminal/terminal-helper-dialog.c:626
-#, fuzzy
 msgid "No application selected"
-msgstr "No aplicació seleccionat"
+msgstr "No s'ha seleccionat cap aplicació"
 
 #: ../terminal/terminal-helper-dialog.c:775
-#, fuzzy
 msgid "Preferred Applications"
 msgstr "Aplicacions preferides"
 
 #: ../terminal/terminal-options.c:106
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
+msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+msgstr "A l'opció «--sm-client-id» li cal que especifiqueu com a paràmetre l'identificador de sessió"
 
 #: ../terminal/terminal-options.c:128
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "A l'opció «--execute/-x» li cal que especifique l'ordre a executar en la resta de la línia d'ordres"
 
 #: ../terminal/terminal-options.c:157
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "A l'opció «--command/-e» lo cal que especifiqueu com a paràmetre l'ordre a executar"
 
 #: ../terminal/terminal-options.c:186
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "A l'opció «--working-directory» li cal que especifiqueu com a paràmetre el directori de treball"
 
 #: ../terminal/terminal-options.c:217
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr ""
+msgstr "A l'opció «--title/-T» li cal que especifiqueu com a paràmetre el títol."
 
 #: ../terminal/terminal-options.c:250
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
-msgstr ""
+msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgstr "A l'opció «--display» li cal que especifiqueu com a paràmetre la pantall de les X"
 
 #: ../terminal/terminal-options.c:277
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "A l'opció «--geometry» li cal que especifiqueu com a paràmetre la geometria de la finestra"
 
 #: ../terminal/terminal-options.c:304
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr ""
+msgstr "A l'opció «--role» li cal que especifiqueu com a paràmetre el rol de la finestra"
 
 #: ../terminal/terminal-options.c:331
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "A l'opció «--startup-id» li cal que especifiqueu com paràmetre l'identificador d'engegada"
 
 #: ../terminal/terminal-options.c:412
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "A l'opció «--default-display» li cal que especifiqueu com paràmetre le pantalla de les X"
 
 #: ../terminal/terminal-options.c:436
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "A l'opció «--default-working-derectoy» li cal que especifiqueu com paràmetre el directori de treball per defecte"
 
 #: ../terminal/terminal-options.c:452
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown option \"%s\""
-msgstr "Desconegut"
+msgstr "L'opció «%s» és desconeguda"
 
 #: ../terminal/terminal-preferences-dialog.c:132
-#, fuzzy
 msgid "Terminal Preferences"
-msgstr "Preferències de Terminal"
+msgstr "Preferències del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:191
-#, fuzzy
 msgid "<b>Title</b>"
 msgstr "<b>Títol</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:204
-#, fuzzy
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr ""
-"L'ordre en execució al terminal pot establir un nou títol dinàmicament."
+msgid "The command running inside the terminal may dynamically set a new title."
+msgstr "L'ordre en execució al terminal pot establir un nou títol dinàmicament."
 
 #: ../terminal/terminal-preferences-dialog.c:211
-#, fuzzy
 msgid "_Initial title:"
-msgstr "Inicial:"
+msgstr "Títol _inicial:"
 
 #: ../terminal/terminal-preferences-dialog.c:230
-#, fuzzy
 msgid "_Dynamically-set title:"
-msgstr "Estableix _dinàmicament el títol"
+msgstr "Estableix _dinàmicament el títol:"
 
 #: ../terminal/terminal-preferences-dialog.c:242
-#, fuzzy
 msgid "Replaces initial title"
 msgstr "Reemplaça el títol inicial"
 
 #: ../terminal/terminal-preferences-dialog.c:243
-#, fuzzy
 msgid "Goes before initial title"
-msgstr "Vés abans del títol inicial"
+msgstr "Va abans del títol inicial"
 
 #: ../terminal/terminal-preferences-dialog.c:244
-#, fuzzy
 msgid "Goes after initial title"
-msgstr "Vés després del títol inicial"
+msgstr "Va després del títol inicial"
 
 #: ../terminal/terminal-preferences-dialog.c:245
-#, fuzzy
 msgid "Isn't displayed"
 msgstr "Ocult"
 
 #: ../terminal/terminal-preferences-dialog.c:264
-#, fuzzy
 msgid "<b>Command</b>"
 msgstr "<b>Ordre</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:275
-#, fuzzy
 msgid "Terminal _bell"
 msgstr "A_vís sonor del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:285
-#, fuzzy
 msgid "Cursor blin_ks"
 msgstr "Parpelleig del _cursor"
 
 #: ../terminal/terminal-preferences-dialog.c:293
-#, fuzzy
 msgid "_Run command as login shell"
-msgstr "Ejecutar"
+msgstr "Executa l'o_rdre a l'intèrpret d'ordres d'entrada"
 
 #: ../terminal/terminal-preferences-dialog.c:296
-#, fuzzy
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Seleccioneu aquest a  Terminal a  a tu obre nou Vegeu   de per a quant a i."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Seleccioneu aquesta opció per forçar al terminal a executar-se en un intèrpret d'ordres quan obriu nous terminals. Mireu la documentació del vostre intèrpret d'ordres per veure les diferències entre executar-se com un intèrpret d'ordres interactiu («interactive shell») o d'entrada («login shell»)."
 
 #: ../terminal/terminal-preferences-dialog.c:303
-#, fuzzy
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "Act_ualitza el registre utmp/wtmp quan l'ordre s'executi"
 
 #: ../terminal/terminal-preferences-dialog.c:312
-#, fuzzy
 msgid "<b>Scrolling</b>"
 msgstr "<b>Desplaçament</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:327
-#, fuzzy
 msgid "Sc_roll on output"
-msgstr "D_esplaçament en sortida"
+msgstr "De_splaçament de sortida"
 
 #: ../terminal/terminal-preferences-dialog.c:330
-#, fuzzy
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr "  terminal avall nou és per   dins   terminal."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Aquesta opció controla si el terminal es desplaçarà cap abaix de forma automàtica quan es generi una nova sortida per les ordres executades al terminal."
 
 #: ../terminal/terminal-preferences-dialog.c:337
-#, fuzzy
 msgid "Scroll on key_stroke"
-msgstr "Desplaçament on"
+msgstr "Desplaça amb el pulsació de _tecles"
 
 #: ../terminal/terminal-preferences-dialog.c:340
-#, fuzzy
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr "tu a  qualsevol on   teclat a  avall   terminal finestra a   ."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Habilita que al prémer una tecla al teclat es desplaci el contingut de la finestra del terminal."
 
 #: ../terminal/terminal-preferences-dialog.c:348
-#, fuzzy
 msgid "_Scrollbar is:"
-msgstr "La barra de _desplaçament és:"
+msgstr "Barra de _desplaçament és:"
 
 #: ../terminal/terminal-preferences-dialog.c:356
-#, fuzzy
 msgid "On the left side"
-msgstr "A l'esquerra"
+msgstr "Al costat esquerra"
 
 #: ../terminal/terminal-preferences-dialog.c:357
-#, fuzzy
 msgid "On the right side"
-msgstr "A la dreta"
+msgstr "Al costat dret"
 
 #: ../terminal/terminal-preferences-dialog.c:373
-#, fuzzy
 msgid "Scr_ollback:"
-msgstr "De_splaçament cap enrrera:"
+msgstr "Desplaçament _endarrere:"
 
 #: ../terminal/terminal-preferences-dialog.c:383
-#, fuzzy
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "  nombre de Línies tu endarrere utilitzant  ."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Especifiqueu el nombre de línies que podeu desplaçar cap endarrere quan empreu el barra de desplaçament."
 
 #: ../terminal/terminal-preferences-dialog.c:404
-#, fuzzy
 msgid "General"
 msgstr "General"
 
 #: ../terminal/terminal-preferences-dialog.c:422
-#, fuzzy
 msgid "<b>Font</b>"
 msgstr "<b>Tipus de lletra</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:431
-#, fuzzy
 msgid "Choose Terminal Font"
-msgstr "Selecciona... Terminal Tipus de lletra"
+msgstr "Trieu el tipus de lletra del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:436
-#, fuzzy
 msgid "Enable anti-aliasing for the terminal font"
-msgstr "Habilita per a   terminal"
+msgstr "Habilita l'anti-aliasing per la font del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:439
-#, fuzzy
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Habilita aquest tu Terminal a  text po terminal finestres aquest amunt "
-"terminal i   càrrega on."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Habiliteu aquest opció si voleu que el terminal utilitzi l'anti-aliasing quan representi el text a la finestra del terminal. Inhabilitar-la pot fer augmentar molt la velocitat en que el terminal mostra el text i pot reduir la càrrega total del sistema en màquines lentes."
 
 #: ../terminal/terminal-preferences-dialog.c:446
-#, fuzzy
 msgid "Allow bold text"
-msgstr "Allow negreta text"
+msgstr "Permet text en negreta"
 
 #: ../terminal/terminal-preferences-dialog.c:449
-#, fuzzy
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr "Habilita aquest a  permet dins   terminal finestres a  negreta text."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Habiliteu aquesta opció per permetre utilitzar text en negreta a les aplicacions executant-se dins el terminal."
 
 #: ../terminal/terminal-preferences-dialog.c:458
-#, fuzzy
 msgid "<b>Background</b>"
 msgstr "<b>Fons</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:468
-#, fuzzy
 msgid "None (use solid color)"
-msgstr "Cap sòlid color"
+msgstr "Cap (empra un color sòlid)"
 
 #: ../terminal/terminal-preferences-dialog.c:469
-#, fuzzy
 msgid "Background image"
 msgstr "Imatge de fons"
 
 #: ../terminal/terminal-preferences-dialog.c:470
-#, fuzzy
 msgid "Transparent background"
-msgstr "Transparent"
+msgstr "Fons transparent"
 
 #: ../terminal/terminal-preferences-dialog.c:487
-#, fuzzy
 msgid "_File:"
 msgstr "_Fitxer:"
 
 #: ../terminal/terminal-preferences-dialog.c:512
-#, fuzzy
 msgid "_Style:"
 msgstr "E_stil:"
 
 #: ../terminal/terminal-preferences-dialog.c:519
-#, fuzzy
 msgid "Tiled"
-msgstr "En mosaic"
+msgstr "Mosaic"
 
 #: ../terminal/terminal-preferences-dialog.c:520
-#, fuzzy
 msgid "Centered"
 msgstr "Centrat"
 
 #: ../terminal/terminal-preferences-dialog.c:521
-#, fuzzy
 msgid "Scaled"
 msgstr "Escalat"
 
 #: ../terminal/terminal-preferences-dialog.c:522
-#, fuzzy
 msgid "Stretched"
 msgstr "Ampliat"
 
 #: ../terminal/terminal-preferences-dialog.c:538
-#, fuzzy
 msgid "Shade transparent or image background:"
-msgstr "Ombra o imatge:"
+msgstr "Enfosqueix la transparència o imatge de fons:"
 
 #: ../terminal/terminal-preferences-dialog.c:551
-#, fuzzy
 msgid "<small><i>None</i></small>"
 msgstr "<small><i>Cap</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:562
-#, fuzzy
 msgid "<small><i>Maximum</i></small>"
 msgstr "<small><i>Màxim</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:570
-#, fuzzy
 msgid "<b>Opening New Windows</b>"
-msgstr "<b> Nou Finestres</b>"
+msgstr "<b>Obrint noves finestres</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:579
-#, fuzzy
 msgid "Display _menubar in new windows"
-msgstr "Visualització po nou finestres"
+msgstr "Mostra la barra de _menús a les finestres noves"
 
 #: ../terminal/terminal-preferences-dialog.c:582
-#, fuzzy
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "Habilita aquest a    po terminal finestres."
+msgid "Enable this option to show the menubar in newly created terminal windows."
+msgstr "Habiliteu aquesta opció mer postrar la barra de menús a les finestres de terminal que creeu noves."
 
 #: ../terminal/terminal-preferences-dialog.c:587
-#, fuzzy
 msgid "Display _toolbars in new windows"
-msgstr "Visualització barres d'eines po nou finestres"
+msgstr "Mostra les barres d'_eines a les noves finestres"
 
 #: ../terminal/terminal-preferences-dialog.c:590
-#, fuzzy
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Habilita aquest a    barres d'eines po terminal finestres."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Habiliteu aquesta opció per mostrar les barres d'eines a les finestres de terminal que creeu noves."
 
 #: ../terminal/terminal-preferences-dialog.c:595
-#, fuzzy
 msgid "Display _borders around new windows"
-msgstr "Visualització nou finestres"
+msgstr "Mostra les _vores de les finestres noves"
 
 #: ../terminal/terminal-preferences-dialog.c:598
-#, fuzzy
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "Habilita aquest a  finestra terminal finestres."
+msgid "Enable this option to show window decorations around newly created terminal windows."
+msgstr "Habiliteu aquesta opció per mostrar la decoració de les finestres a les finestres de terminal que creeu noves."
 
 #: ../terminal/terminal-preferences-dialog.c:610
-#, fuzzy
 msgid "Appearance"
 msgstr "Aparença"
 
 #: ../terminal/terminal-preferences-dialog.c:628
-#, fuzzy
 msgid "<b>Foreground and Background</b>"
 msgstr "<b>Primer pla i fons</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:640
-#, fuzzy
 msgid "_Text and cursor color:"
-msgstr "Text i cursor color:"
+msgstr "_Color del text i del cursor:"
 
 #: ../terminal/terminal-preferences-dialog.c:657
-#, fuzzy
 msgid "Choose terminal text color"
-msgstr "Elegiu el color del texte del terminal"
+msgstr "Trieu el color del text del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:665
 #: ../terminal/terminal-preferences-dialog.c:680
 #: ../terminal/terminal-preferences-dialog.c:711
 #: ../terminal/terminal-preferences-dialog.c:761
-#, fuzzy
 msgid "Color Selector"
 msgstr "Selector de color"
 
@@ -710,139 +693,110 @@ msgstr "Selector de color"
 #: ../terminal/terminal-preferences-dialog.c:681
 #: ../terminal/terminal-preferences-dialog.c:712
 #: ../terminal/terminal-preferences-dialog.c:762
-#, fuzzy
 msgid "Open a dialog to specify the color"
-msgstr "Obre un diàleg per a especificar el color"
+msgstr "Obre una finestra de diàleg per especificar el color"
 
 #: ../terminal/terminal-preferences-dialog.c:672
-#, fuzzy
 msgid "Choose terminal cursor color"
-msgstr "Selecciona... terminal cursor color"
+msgstr "Trieu el color del cursor del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:688
-#, fuzzy
 msgid "_Background color:"
 msgstr "Color de _fons:"
 
 #: ../terminal/terminal-preferences-dialog.c:702
-#, fuzzy
 msgid "Choose terminal background color"
-msgstr "Elegiu el color de fons del terminal"
+msgstr "Trieu el color de fons del terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:722
-#, fuzzy
 msgid "<b>Text Selection</b>"
-msgstr "<b> Text Selecció</b>"
+msgstr "<b>Selecció de text</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:733
-#, fuzzy
 msgid "Use _default color"
-msgstr "Utilitza per defecte color"
+msgstr "Empra el color per _defecte"
 
 #: ../terminal/terminal-preferences-dialog.c:736
-#, fuzzy
 msgid "Use the default text selection background color"
-msgstr "Utilitza   per defecte text color"
+msgstr "Empra el color de fons per defecte pels texts seleccionats"
 
 #: ../terminal/terminal-preferences-dialog.c:741
-#, fuzzy
 msgid "Use _custom color"
-msgstr "Utilitza personalitzat color"
+msgstr "Empra un color _personalitzat"
 
 #: ../terminal/terminal-preferences-dialog.c:744
-#, fuzzy
 msgid "Use a custom text selection background color"
-msgstr "Utilitza a personalitzat text color"
+msgstr "Empra un color de fons personalitzat pels texts seleccionats"
 
 #: ../terminal/terminal-preferences-dialog.c:752
-#, fuzzy
 msgid "Choose terminal text selection background color"
-msgstr "Selecciona... terminal text color"
+msgstr "Trieu el color de fons dels texts seleccionats"
 
 #: ../terminal/terminal-preferences-dialog.c:772
-#, fuzzy
 msgid "<b>Palette</b>"
 msgstr "<b>Paleta</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:782
-#, fuzzy
 msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminal aquest color disponible a :"
+msgstr "Les aplicacions del terminal tenen aquestes paletes de color disponibles:"
 
 #: ../terminal/terminal-preferences-dialog.c:914
-#, fuzzy
 msgid "Colors"
 msgstr "Colors"
 
 #: ../terminal/terminal-preferences-dialog.c:932
-#, fuzzy
 msgid "<b>Shortcut keys</b>"
-msgstr "<b> Drecera</b>"
+msgstr "<b>Dreceres de teclat</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:958
-#, fuzzy
 msgid "<b>Menubar access</b>"
-msgstr "<b> accés</b>"
+msgstr "<b>Accés a la barra de menús</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:967
-#, fuzzy
 msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Inhabilita all nu accés Alt"
+msgstr "Inhabilita totes les tecles d'accés als menús (v. gr.: Alt+f)"
 
 #: ../terminal/terminal-preferences-dialog.c:972
-#, fuzzy
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Inhabilita la tecla d'accés al m_enú (F10 per defecte)"
 
 #: ../terminal/terminal-preferences-dialog.c:984
-#, fuzzy
 msgid "Shortcuts"
 msgstr "Dreceres"
 
 #: ../terminal/terminal-preferences-dialog.c:1002
-#, fuzzy
 msgid "<b>Compatibility</b>"
 msgstr "<b>Compatibilitat</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:1013
-#, fuzzy
-msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
-msgstr "a  a  permet tu a  treball i terminal."
+msgid "These options may cause some applications to behave incorrectly. They are only here to allow you to work around certain applications and operating systems that expect different terminal behavior."
+msgstr "Aquestes opcions por fer que algunes aplicacions es comportin de forma incorrecte. Són aquí per permetre-us una alternativa per certes aplicacions i sistemes operatius que esperen un comportament diferent del terminal."
 
 #: ../terminal/terminal-preferences-dialog.c:1021
-#, fuzzy
 msgid "_Backspace key generates:"
-msgstr "La tecla de re_trocés genera:"
+msgstr "La tecla de _retrocés genera:"
 
 #: ../terminal/terminal-preferences-dialog.c:1028
 #: ../terminal/terminal-preferences-dialog.c:1054
-#, fuzzy
 msgid "Auto-detect"
-msgstr "Auto"
+msgstr "Autodetecta"
 
 #: ../terminal/terminal-preferences-dialog.c:1029
 #: ../terminal/terminal-preferences-dialog.c:1055
-#, fuzzy
 msgid "ASCII DEL"
 msgstr "Supr ASCII"
 
 #: ../terminal/terminal-preferences-dialog.c:1030
 #: ../terminal/terminal-preferences-dialog.c:1056
-#, fuzzy
 msgid "Escape sequence"
 msgstr "Seqüència d'escapament"
 
 #: ../terminal/terminal-preferences-dialog.c:1031
 #: ../terminal/terminal-preferences-dialog.c:1057
-#, fuzzy
 msgid "Control-H"
 msgstr "Control-H"
 
 #: ../terminal/terminal-preferences-dialog.c:1047
-#, fuzzy
 msgid "_Delete key generates:"
 msgstr "La tecla de _suprimir genera:"
 
@@ -851,1016 +805,838 @@ msgid "<tt>$TERM</tt> setting:"
 msgstr "paràmetres de <tt>$TERM</tt>:"
 
 #: ../terminal/terminal-preferences-dialog.c:1081
-#, fuzzy
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"  valor   variable és set a  a nou terminal tabulador o terminal finestra és "
-"per defecte d'acord per a Si tu amb colors po color."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Això especifica que, quan s'obri una nova pestanya del terminal, el valor de la variable d'entorn $TERM estigui informada; el valor per defecte hauria de ser correcte per molts sistemes. Si teniu problemes amb els colors en algunes aplicacions, proveu a posar-hi «xterm-color»."
 
 #: ../terminal/terminal-preferences-dialog.c:1101
-#, fuzzy
 msgid "_Reset compatibility options to defaults"
-msgstr "_Reinicia les opcions de compatibilitat a les inicials"
+msgstr "_Reinicia les opcions de compatibilitat a les opcions per defecte"
 
 #: ../terminal/terminal-preferences-dialog.c:1111
-#, fuzzy
 msgid "<b>Double click</b>"
-msgstr "<b> Doble feu clic</b>"
+msgstr "<b>Doble clic</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:1120
-#, fuzzy
 msgid "Consider the following characters part of a word when double clicking:"
-msgstr "  següent caràcters de a paraula:"
+msgstr "Considera que els següents caràcters formen part de la paraula quan feu doble clic:"
 
 #: ../terminal/terminal-preferences-dialog.c:1144
-#, fuzzy
 msgid "Advanced"
 msgstr "Avançat"
 
 #: ../terminal/terminal-preferences-dialog.c:1185
-#: ../terminal/terminal-window.c:1197 ../terminal/terminal-window.c:1386
-#: ../terminal/terminal-window.c:1505 ../terminal/terminal-window.c:1532
-#, fuzzy, c-format
+#: ../terminal/terminal-window.c:1197
+#: ../terminal/terminal-window.c:1386
+#: ../terminal/terminal-window.c:1505
+#: ../terminal/terminal-window.c:1532
+#, c-format
 msgid "Unable to launch online help: %s"
-msgstr "a  ajuda"
+msgstr "No s'ha pogut executar l'ajuda en línia: %s"
 
 #: ../terminal/terminal-preferences-dialog.c:1285
-#, fuzzy
 msgid "Select background image file"
-msgstr "Seleccioneu imatge fitxer"
+msgstr "Seleccioneu el fitxer per la imatge de fons"
 
 #: ../terminal/terminal-preferences-dialog.c:1296
-#, fuzzy
 msgid "All Files"
 msgstr "Tots els fitxers"
 
 #: ../terminal/terminal-preferences-dialog.c:1301
-#, fuzzy
 msgid "Image Files"
 msgstr "Fitxers d'imatge"
 
 #: ../terminal/terminal-preferences.c:302
 #: ../terminal/terminal-preferences.c:303
-#, fuzzy
 msgid "Open Tab"
-msgstr "Obre Tab"
+msgstr "Obre una pertanya"
 
 #: ../terminal/terminal-preferences.c:313
 #: ../terminal/terminal-preferences.c:314
-#, fuzzy
 msgid "Open Terminal"
-msgstr "Obre Terminal"
+msgstr "Obre el terminal"
 
 #: ../terminal/terminal-preferences.c:324
 #: ../terminal/terminal-preferences.c:325
-#, fuzzy
 msgid "Detach Tab"
 msgstr "Separa la pestanya"
 
 #: ../terminal/terminal-preferences.c:335
 #: ../terminal/terminal-preferences.c:336
-#, fuzzy
 msgid "Close Tab"
 msgstr "Tanca la pestanya"
 
 #: ../terminal/terminal-preferences.c:346
 #: ../terminal/terminal-preferences.c:347
-#, fuzzy
 msgid "Close Window"
 msgstr "Tanca la finestra"
 
 #: ../terminal/terminal-preferences.c:357
 #: ../terminal/terminal-preferences.c:358
-#, fuzzy
 msgid "Copy"
 msgstr "Copia"
 
 #: ../terminal/terminal-preferences.c:368
 #: ../terminal/terminal-preferences.c:369
-#, fuzzy
 msgid "Paste"
 msgstr "Enganxa"
 
 #: ../terminal/terminal-preferences.c:379
 #: ../terminal/terminal-preferences.c:380
-#, fuzzy
 msgid "Applications"
 msgstr "Aplicacions"
 
 #: ../terminal/terminal-preferences.c:390
 #: ../terminal/terminal-preferences.c:391
-#, fuzzy
 msgid "Preferences"
 msgstr "Preferències"
 
 #: ../terminal/terminal-preferences.c:401
 #: ../terminal/terminal-preferences.c:402
-#, fuzzy
 msgid "Show menubar"
 msgstr "Mostra la barra de menú"
 
 #: ../terminal/terminal-preferences.c:412
 #: ../terminal/terminal-preferences.c:413
-#, fuzzy
 msgid "Show toolbars"
-msgstr "Mostra barres d'eines"
+msgstr "Mostra les barres d'eines"
 
 #: ../terminal/terminal-preferences.c:423
 #: ../terminal/terminal-preferences.c:424
-#, fuzzy
 msgid "Show borders"
-msgstr "Mostra"
+msgstr "Mostra les vores"
 
 #: ../terminal/terminal-preferences.c:434
 #: ../terminal/terminal-preferences.c:435
-#, fuzzy
 msgid "Fullscreen"
 msgstr "Pantalla completa"
 
 #: ../terminal/terminal-preferences.c:445
 #: ../terminal/terminal-preferences.c:446
-#, fuzzy
 msgid "Set Title"
-msgstr "Estableix un títol"
+msgstr "Estableix el títol"
 
 #: ../terminal/terminal-preferences.c:456
 #: ../terminal/terminal-preferences.c:457
-#, fuzzy
 msgid "Reset"
 msgstr "Reinicia"
 
 #: ../terminal/terminal-preferences.c:467
 #: ../terminal/terminal-preferences.c:468
-#, fuzzy
 msgid "Reset and Clear"
 msgstr "Reinicia i neteja"
 
 #: ../terminal/terminal-preferences.c:478
 #: ../terminal/terminal-preferences.c:479
-#, fuzzy
 msgid "Previous Tab"
-msgstr "Anterior Tab"
+msgstr "Pestanya anterior"
 
 #: ../terminal/terminal-preferences.c:489
 #: ../terminal/terminal-preferences.c:490
-#, fuzzy
 msgid "Next Tab"
-msgstr "Següent Tab"
+msgstr "Pestanya següent"
 
 #: ../terminal/terminal-preferences.c:500
 #: ../terminal/terminal-preferences.c:501
-#, fuzzy
 msgid "Switch to Tab 1"
 msgstr "Canvia a la pestanya 1"
 
 #: ../terminal/terminal-preferences.c:511
 #: ../terminal/terminal-preferences.c:512
-#, fuzzy
 msgid "Switch to Tab 2"
 msgstr "Canvia a la pestanya 2"
 
 #: ../terminal/terminal-preferences.c:522
 #: ../terminal/terminal-preferences.c:523
-#, fuzzy
 msgid "Switch to Tab 3"
 msgstr "Canvia a la pestanya 3"
 
 #: ../terminal/terminal-preferences.c:533
 #: ../terminal/terminal-preferences.c:534
-#, fuzzy
 msgid "Switch to Tab 4"
 msgstr "Canvia a la pestanya 4"
 
 #: ../terminal/terminal-preferences.c:544
 #: ../terminal/terminal-preferences.c:545
-#, fuzzy
 msgid "Switch to Tab 5"
 msgstr "Canvia a la pestanya 5"
 
 #: ../terminal/terminal-preferences.c:555
 #: ../terminal/terminal-preferences.c:556
-#, fuzzy
 msgid "Switch to Tab 6"
 msgstr "Canvia a la pestanya 6"
 
 #: ../terminal/terminal-preferences.c:566
 #: ../terminal/terminal-preferences.c:567
-#, fuzzy
 msgid "Switch to Tab 7"
 msgstr "Canvia a la pestanya 7"
 
 #: ../terminal/terminal-preferences.c:577
 #: ../terminal/terminal-preferences.c:578
-#, fuzzy
 msgid "Switch to Tab 8"
 msgstr "Canvia a la pestanya 8"
 
 #: ../terminal/terminal-preferences.c:588
 #: ../terminal/terminal-preferences.c:589
-#, fuzzy
 msgid "Switch to Tab 9"
 msgstr "Canvia a la pestanya 9"
 
 #: ../terminal/terminal-preferences.c:599
 #: ../terminal/terminal-preferences.c:600
-#, fuzzy
 msgid "Contents"
-msgstr "Contingut"
+msgstr "Continguts"
 
 #: ../terminal/terminal-preferences.c:610
 #: ../terminal/terminal-preferences.c:611
-#, fuzzy
 msgid "Background mode"
-msgstr "Rerefons mode"
+msgstr "Tipus de fons"
 
 #: ../terminal/terminal-preferences.c:622
 #: ../terminal/terminal-preferences.c:623
-#, fuzzy
 msgid "Background image file"
-msgstr "Rerefons imatge fitxer"
+msgstr "Fitxer de la imatge de fons"
 
 #: ../terminal/terminal-preferences.c:633
 #: ../terminal/terminal-preferences.c:634
-#, fuzzy
 msgid "Background image style"
-msgstr "Rerefons imatge"
+msgstr "Estil de la imatge de fons"
 
 #: ../terminal/terminal-preferences.c:650
 #: ../terminal/terminal-preferences.c:651
-#, fuzzy
 msgid "Background darkness"
-msgstr "Rerefons"
+msgstr "Foscor del fons"
 
 #: ../terminal/terminal-preferences.c:661
 #: ../terminal/terminal-preferences.c:662
-#, fuzzy
 msgid "Backspace binding"
-msgstr "Retrocés"
+msgstr "Assignació de «Retrocés»"
 
 #: ../terminal/terminal-preferences.c:673
 #: ../terminal/terminal-preferences.c:674
-#, fuzzy
 msgid "Delete binding"
-msgstr "Suprimeix"
+msgstr "Assignació de «Suprimeix»"
 
 #: ../terminal/terminal-preferences.c:685
-#, fuzzy
 msgid "Foreground color"
 msgstr "Color de primer pla"
 
 #: ../terminal/terminal-preferences.c:686
-#, fuzzy
 msgid "Terminal foreground color"
-msgstr "Terminal color"
+msgstr "Color del primer pla del terminal"
 
 #: ../terminal/terminal-preferences.c:696
-#, fuzzy
 msgid "Background color"
 msgstr "Color de fons"
 
 #: ../terminal/terminal-preferences.c:697
-#, fuzzy
 msgid "Terminal background color"
-msgstr "Terminal color"
+msgstr "Color de fons del terminal"
 
 #: ../terminal/terminal-preferences.c:707
-#, fuzzy
 msgid "Cursor color"
 msgstr "Color del cursor"
 
 #: ../terminal/terminal-preferences.c:708
-#, fuzzy
 msgid "Terminal cursor color"
-msgstr "Terminal cursor color"
+msgstr "Color del cursor del terminal"
 
 #: ../terminal/terminal-preferences.c:718
-#, fuzzy
 msgid "Selection color"
-msgstr "Selecció color"
+msgstr "Color de la selecció"
 
 #: ../terminal/terminal-preferences.c:719
-#, fuzzy
 msgid "Terminal selection color"
-msgstr "Terminal color"
+msgstr "Color de la selecció en el terminal"
 
 #: ../terminal/terminal-preferences.c:729
 #: ../terminal/terminal-preferences.c:730
-#, fuzzy
 msgid "Use default selection color"
-msgstr "Utilitza per defecte color"
+msgstr "Empra la selecció de colors per defecte"
 
 #: ../terminal/terminal-preferences.c:740
 #: ../terminal/terminal-preferences.c:741
-#, fuzzy
 msgid "Palette entry 1"
 msgstr "Entrada 1 de la paleta"
 
 #: ../terminal/terminal-preferences.c:751
 #: ../terminal/terminal-preferences.c:752
-#, fuzzy
 msgid "Palette entry 2"
 msgstr "Entrada 2 de la paleta"
 
 #: ../terminal/terminal-preferences.c:762
 #: ../terminal/terminal-preferences.c:763
-#, fuzzy
 msgid "Palette entry 3"
 msgstr "Entrada 3 de la paleta"
 
 #: ../terminal/terminal-preferences.c:773
 #: ../terminal/terminal-preferences.c:774
-#, fuzzy
 msgid "Palette entry 4"
 msgstr "Entrada 4 de la paleta"
 
 #: ../terminal/terminal-preferences.c:784
 #: ../terminal/terminal-preferences.c:785
-#, fuzzy
 msgid "Palette entry 5"
 msgstr "Entrada 5 de la paleta"
 
 #: ../terminal/terminal-preferences.c:795
 #: ../terminal/terminal-preferences.c:796
-#, fuzzy
 msgid "Palette entry 6"
 msgstr "Entrada 6 de la paleta"
 
 #: ../terminal/terminal-preferences.c:806
 #: ../terminal/terminal-preferences.c:807
-#, fuzzy
 msgid "Palette entry 7"
 msgstr "Entrada 7 de la paleta"
 
 #: ../terminal/terminal-preferences.c:817
 #: ../terminal/terminal-preferences.c:818
-#, fuzzy
 msgid "Palette entry 8"
 msgstr "Entrada 8 de la paleta"
 
 #: ../terminal/terminal-preferences.c:828
 #: ../terminal/terminal-preferences.c:829
-#, fuzzy
 msgid "Palette entry 9"
 msgstr "Entrada 9 de la paleta"
 
 #: ../terminal/terminal-preferences.c:839
 #: ../terminal/terminal-preferences.c:840
-#, fuzzy
 msgid "Palette entry 10"
 msgstr "Entrada 10 de la paleta"
 
 #: ../terminal/terminal-preferences.c:850
 #: ../terminal/terminal-preferences.c:851
-#, fuzzy
 msgid "Palette entry 11"
 msgstr "Entrada 11 de la paleta"
 
 #: ../terminal/terminal-preferences.c:861
 #: ../terminal/terminal-preferences.c:862
-#, fuzzy
 msgid "Palette entry 12"
 msgstr "Entrada 12 de la paleta"
 
 #: ../terminal/terminal-preferences.c:872
 #: ../terminal/terminal-preferences.c:873
-#, fuzzy
 msgid "Palette entry 13"
 msgstr "Entrada 13 de la paleta"
 
 #: ../terminal/terminal-preferences.c:883
 #: ../terminal/terminal-preferences.c:884
-#, fuzzy
 msgid "Palette entry 14"
 msgstr "Entrada 14 de la paleta"
 
 #: ../terminal/terminal-preferences.c:894
 #: ../terminal/terminal-preferences.c:895
-#, fuzzy
 msgid "Palette entry 15"
 msgstr "Entrada 15 de la paleta"
 
 #: ../terminal/terminal-preferences.c:905
 #: ../terminal/terminal-preferences.c:906
-#, fuzzy
 msgid "Palette entry 16"
 msgstr "Entrada 16 de la paleta"
 
 #: ../terminal/terminal-preferences.c:916
-#, fuzzy
 msgid "Update records"
-msgstr "Actualitza"
+msgstr "Actualitza els registres"
 
 #: ../terminal/terminal-preferences.c:917
-#, fuzzy
 msgid "Update wtmp/utmp/lastlog records"
-msgstr "Actualitza"
+msgstr "Actualitza els registres wtmp/utmp/lastlog "
 
 #: ../terminal/terminal-preferences.c:927
 #: ../terminal/terminal-preferences.c:928
-#, fuzzy
 msgid "Run shell as login shell"
-msgstr "Ejecutar"
+msgstr "executa l'intèrpret d'ordres com un intèrpret d'ordres d'entrada"
 
 #: ../terminal/terminal-preferences.c:938
 #: ../terminal/terminal-preferences.c:939
-#, fuzzy
 msgid "Allow bold fonts"
-msgstr "Allow negreta"
+msgstr "Permet fonts negretes"
 
 #: ../terminal/terminal-preferences.c:949
 #: ../terminal/terminal-preferences.c:950
-#, fuzzy
 msgid "Font anti-aliasing"
-msgstr "Tipus de lletra"
+msgstr "Utilitza suavitzat (anti-aliasing) per les fonts"
 
 #: ../terminal/terminal-preferences.c:960
-#, fuzzy
 msgid "Font name"
 msgstr "Nom del tipus de lletra"
 
 #: ../terminal/terminal-preferences.c:961
-#, fuzzy
 msgid "Terminal font name"
-msgstr "Terminal nom"
+msgstr "Nom de la font del terminal"
 
 #: ../terminal/terminal-preferences.c:993
-#, fuzzy
 msgid "Always show tabs"
 msgstr "Mostra sempre les pestanyes"
 
 #: ../terminal/terminal-preferences.c:994
-#, fuzzy
 msgid "Always show terminal tabs"
-msgstr "Sempre terminal"
+msgstr "Mostra sempre les pestanyes de terminal"
 
 #: ../terminal/terminal-preferences.c:1004
 #: ../terminal/terminal-preferences.c:1005
-#, fuzzy
 msgid "Terminal bell"
-msgstr "Terminal"
+msgstr "Avís sonor del terminal"
 
 #: ../terminal/terminal-preferences.c:1015
 #: ../terminal/terminal-preferences.c:1016
-#, fuzzy
 msgid "Show window borders by default"
-msgstr "Mostra finestra per per defecte"
+msgstr "Mostra per defecte les vores de la finestra"
 
 #: ../terminal/terminal-preferences.c:1026
 #: ../terminal/terminal-preferences.c:1027
 msgid "Cursor blinks"
-msgstr ""
+msgstr "Parpelleig del cursor"
 
 #: ../terminal/terminal-preferences.c:1037
 #: ../terminal/terminal-preferences.c:1038
-#, fuzzy
 msgid "Inherit parent geometry"
-msgstr "pare"
+msgstr "Hereta la geometria"
 
 #: ../terminal/terminal-preferences.c:1048
 #: ../terminal/terminal-preferences.c:1049
-#, fuzzy
 msgid "Show menubar by default"
-msgstr "Mostra per per defecte"
+msgstr "Mostra per defecte la barra de menús"
 
 #: ../terminal/terminal-preferences.c:1059
-#, fuzzy
 msgid "Autohide mouse pointer"
-msgstr "ratolí"
+msgstr "Oculta automàticament el punter del ratolí"
 
 #: ../terminal/terminal-preferences.c:1060
-#, fuzzy
 msgid "Whether to autohide mouse pointer"
-msgstr "a  ratolí"
+msgstr "Si s'ha d'ocultar o no el punter del ratolí"
 
 #: ../terminal/terminal-preferences.c:1070
 #: ../terminal/terminal-preferences.c:1071
-#, fuzzy
 msgid "Show toolbars by default"
-msgstr "Mostra les barres d'eines per defecte"
+msgstr "Mostra per defecte les barres d'eines"
 
 #: ../terminal/terminal-preferences.c:1081
 #: ../terminal/terminal-preferences.c:1082
-#, fuzzy
 msgid "Confirm closing a window with multiple tabs"
-msgstr "Confirma a finestra amb"
+msgstr "Confirma el tancar una finestra amb diverses pestanya"
 
 #: ../terminal/terminal-preferences.c:1092
-#, fuzzy
 msgid "Cycle tabs"
-msgstr "Cicle"
+msgstr "Salta entre pestanyes"
 
 #: ../terminal/terminal-preferences.c:1093
-#, fuzzy
 msgid "Allow cycling through tabs"
-msgstr "Allow"
+msgstr "Permet saltar entre pestanyes"
 
 #: ../terminal/terminal-preferences.c:1103
-#, fuzzy
 msgid "Tab close buttons"
-msgstr "Tab tanca"
+msgstr "Botons per tancar pestanyes"
 
 #: ../terminal/terminal-preferences.c:1104
-#, fuzzy
 msgid "Show tab close buttons"
-msgstr "Mostra tabulador tanca"
+msgstr "Mostra els botons per tancar pestanyes"
 
 #: ../terminal/terminal-preferences.c:1114
-#: ../terminal/terminal-tab-header.c:121 ../terminal/terminal-tab-header.c:122
-#, fuzzy
+#: ../terminal/terminal-tab-header.c:121
+#: ../terminal/terminal-tab-header.c:122
 msgid "Tab position"
-msgstr "Tab posició"
+msgstr "Posició de la pestanya"
 
 #: ../terminal/terminal-preferences.c:1115
-#, fuzzy
 msgid "Where to place the tabs"
-msgstr "On a   "
+msgstr "On coŀlocar les pestanyes"
 
 #: ../terminal/terminal-preferences.c:1126
-#, fuzzy
 msgid "Scrollbar setting"
-msgstr "Barra de desplaçament"
+msgstr "Paràmetres de la barra de desplaçament"
 
 #: ../terminal/terminal-preferences.c:1127
-#, fuzzy
 msgid "Whether and where to display a scrollbar"
-msgstr "i a  a"
+msgstr "Si s'ha de mostrar, i on, la barra de desplaçament"
 
 #: ../terminal/terminal-preferences.c:1138
-#, fuzzy
 msgid "Scrollback lines"
-msgstr "Desplaçament lateral de línies"
+msgstr "Línies de desplaçament cap endarrere"
 
 #: ../terminal/terminal-preferences.c:1139
-#, fuzzy
 msgid "Number of lines to keep in history"
-msgstr "Nú~mero de Línies a  po"
+msgstr "Nombre de línies a mantenir a l'historial"
 
 #: ../terminal/terminal-preferences.c:1149
 #: ../terminal/terminal-preferences.c:1150
-#, fuzzy
 msgid "Scroll on output"
-msgstr "Desplaçament on"
+msgstr "Desplaçament amb la sortida"
 
 #: ../terminal/terminal-preferences.c:1160
 #: ../terminal/terminal-preferences.c:1161
-#, fuzzy
 msgid "Scroll on keystroke"
-msgstr "Desplaçament on"
+msgstr "Desplaçament amb el tecleig"
 
 #: ../terminal/terminal-preferences.c:1173
 #: ../terminal/terminal-preferences.c:1174
-#, fuzzy
 msgid "Disable menu shortcut key"
-msgstr "Inhabilita menú drecera"
+msgstr "Inhabilita la drecera de teclat del menú"
 
 #: ../terminal/terminal-preferences.c:1184
 #: ../terminal/terminal-preferences.c:1185
-#, fuzzy
 msgid "Disable all mnemonics"
-msgstr "Inhabilita all"
+msgstr "Inhabilita els mnemotècnics"
 
 #: ../terminal/terminal-preferences.c:1195
-#, fuzzy
 msgid "Initial title"
-msgstr "Inicial"
+msgstr "Títol inicial"
 
 #: ../terminal/terminal-preferences.c:1196
-#, fuzzy
 msgid "Initial Terminal title"
-msgstr "Inicial Terminal"
+msgstr "Títol inicial del terminal"
 
 #: ../terminal/terminal-preferences.c:1206
-#, fuzzy
 msgid "Title mode"
-msgstr "Títol mode"
+msgstr "Mode del títol"
 
 #: ../terminal/terminal-preferences.c:1207
-#, fuzzy
 msgid "Dynamic-title mode"
-msgstr "mode"
+msgstr "Mode dinàmic de títol"
 
+# Term = Acaba (TERM) / terminal / terme (plaç) ?
 #: ../terminal/terminal-preferences.c:1218
 #: ../terminal/terminal-preferences.c:1219
-#, fuzzy
 msgid "Term"
-msgstr "Terme"
+msgstr "Terminal"
 
 #: ../terminal/terminal-preferences.c:1229
 #: ../terminal/terminal-preferences.c:1230
-#, fuzzy
 msgid "Workaround VTE title bug"
-msgstr "error"
+msgstr "eElternativa per l'error del títol «VTE»"
 
+# Ni idea de a que fa referència, hi ha una altra cadena anomenada «Word characters», les he traduit iguals
 #: ../terminal/terminal-preferences.c:1240
-#, fuzzy
 msgid "Word chars"
-msgstr "Paraula"
+msgstr "Caràcters de paraula"
 
 #: ../terminal/terminal-preferences.c:1241
-#, fuzzy
 msgid "Word characters"
-msgstr "Paraula caràcters"
+msgstr "Caràcters de paraula"
 
-#: ../terminal/terminal-screen.c:181 ../terminal/terminal-screen.c:182
-#, fuzzy
+#: ../terminal/terminal-screen.c:181
+#: ../terminal/terminal-screen.c:182
 msgid "Custom title"
-msgstr "Personalitzat"
+msgstr "Títol personalitzat"
 
-#: ../terminal/terminal-screen.c:192 ../terminal/terminal-screen.c:193
-#, fuzzy
+#: ../terminal/terminal-screen.c:192
+#: ../terminal/terminal-screen.c:193
 msgid "Title"
 msgstr "Títol"
 
 #: ../terminal/terminal-screen.c:427
-#, fuzzy
 msgid "Unable to determine your login shell."
-msgstr "a ."
+msgstr "No s'ha pogut determinar el vostre intèrpret d'ordres d'entrada."
 
 #: ../terminal/terminal-screen.c:952
-#, fuzzy
 msgid "Failed to execute child"
-msgstr "Fallit a  executa descendent"
+msgstr "No s'ha pogut executar el fill"
 
 #: ../terminal/terminal-screen.c:954
-#, fuzzy
 msgid "Please check your system setup."
-msgstr "activa."
+msgstr "Comproveu la vostra configuració del sistema."
 
 #: ../terminal/terminal-screen.c:1193
-#, fuzzy
 msgid "Untitled"
 msgstr "Sense títol"
 
 #: ../terminal/terminal-shortcut-editor.c:90
-#, fuzzy
 msgid "File"
 msgstr "Fitxer"
 
 #: ../terminal/terminal-shortcut-editor.c:101
-#, fuzzy
 msgid "Edit"
 msgstr "Edita"
 
 #: ../terminal/terminal-shortcut-editor.c:111
-#, fuzzy
 msgid "View"
 msgstr "Visualitza"
 
 #: ../terminal/terminal-shortcut-editor.c:130
-#, fuzzy
 msgid "Go"
-msgstr "Vés"
+msgstr "Vés a"
 
 #: ../terminal/terminal-shortcut-editor.c:147
-#, fuzzy
 msgid "Help"
 msgstr "Ajuda"
 
 #: ../terminal/terminal-shortcut-editor.c:228
-#, fuzzy
 msgid "Action"
 msgstr "Acció"
 
 #: ../terminal/terminal-shortcut-editor.c:235
-#, fuzzy
 msgid "Shortcut key"
-msgstr "Drecera"
+msgstr "Drecera de teclat"
 
 #: ../terminal/terminal-shortcut-editor.c:334
-#, fuzzy
 msgid "Compose shortcut"
-msgstr "Nou missatge drecera"
+msgstr "Crea una drecera"
 
 #: ../terminal/terminal-shortcut-editor.c:353
-#, fuzzy
 msgid "Compose shortcut for:"
-msgstr "Nou missatge drecera per a:"
+msgstr "Crea una drecera per:"
 
 #: ../terminal/terminal-shortcut-editor.c:376
-#, fuzzy
 msgid "Failed to acquire keyboard"
-msgstr "Fallit a  teclat"
+msgstr "No s'ha pogut accedir al teclat"
 
 #: ../terminal/terminal-shortcut-editor.c:377
-#, fuzzy
 msgid "Another application has already acquired control over your keyboard."
-msgstr "aplicació té tecla de control teclat."
+msgstr "Una altra aplicació ja ha accedit al teclat"
 
-#: ../terminal/terminal-tab-header.c:133 ../terminal/terminal-tab-header.c:134
-#, fuzzy
+#: ../terminal/terminal-tab-header.c:133
+#: ../terminal/terminal-tab-header.c:134
 msgid "Tab title"
-msgstr "Tab"
+msgstr "Títol de la pestanya"
 
 #: ../terminal/terminal-tab-header.c:213
-#, fuzzy
 msgid "Close this tab"
-msgstr "Tanca la pestanya"
+msgstr "Tanca aquesta pestanya"
 
-#: ../terminal/terminal-tab-header.c:339 ../terminal/terminal-window.c:195
-#, fuzzy
+#: ../terminal/terminal-tab-header.c:339
+#: ../terminal/terminal-window.c:195
 msgid "_Detach Tab"
 msgstr "_Separa la pestanya"
 
-#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:196
-#, fuzzy
+#: ../terminal/terminal-tab-header.c:345
+#: ../terminal/terminal-window.c:196
 msgid "C_lose Tab"
-msgstr "Tanca _la pestanya"
+msgstr "_Tanca la pestanya"
 
 #: ../terminal/terminal-toolbars-view.c:132
-#, fuzzy
 msgid "Toolbar Editor"
 msgstr "Editor de barres d'eines"
 
 #: ../terminal/terminal-widget.c:323
-#, fuzzy
 msgid "Copy Email Address"
 msgstr "Copia l'adreça electrònica"
 
 #: ../terminal/terminal-widget.c:324
-#, fuzzy
 msgid "Compose Email"
-msgstr "Nou missatge Correu electrònic"
+msgstr "Escriu un correu electrònic"
 
 #: ../terminal/terminal-widget.c:328
-#, fuzzy
 msgid "Copy Link Address"
-msgstr "Copia Enllaç Adreça"
+msgstr "Copia l'adreça de l'enllaç"
 
 #: ../terminal/terminal-widget.c:329
-#, fuzzy
 msgid "Open Link"
-msgstr "Obre Enllaç"
+msgstr "Obre l'enllaç"
 
 #: ../terminal/terminal-widget.c:482
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "No s'ha pogut deixar la selecció de tipus «text/plain» al terminal: Format (%d) o logitud (%d) errònia\n"
 
 #: ../terminal/terminal-widget.c:498
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "No s'ha pogut deixar la URL de Mozilla al terminal: format (%d) o longitud (%d) errònia\n"
 
 #: ../terminal/terminal-widget.c:524
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
+msgstr "No s'ha pogut deixar la llista d'URI al terminal: format (%d) o longitud (%d) errònia.\n"
 
+# color data = color ?
 #: ../terminal/terminal-widget.c:555
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
+msgstr "S'ha rebut un color invàlid: format (%d) o longitud (%d) errònia\n"
 
 #: ../terminal/terminal-window.c:192
-#, fuzzy
 msgid "_File"
 msgstr "_Fitxer"
 
 #: ../terminal/terminal-window.c:193
-#, fuzzy
 msgid "Open _Tab"
-msgstr "Obre Tab"
+msgstr "Obre una _pestanya"
 
 #: ../terminal/terminal-window.c:193
-#, fuzzy
 msgid "Open a new terminal tab"
-msgstr "Obre a nou terminal tabulador"
+msgstr "Obre una nova pestanya de terminal"
 
 #: ../terminal/terminal-window.c:194
-#, fuzzy
 msgid "Open T_erminal"
 msgstr "Obre un t_erminal"
 
 #: ../terminal/terminal-window.c:194
-#, fuzzy
 msgid "Open a new terminal window"
-msgstr "Obre a nou terminal finestra"
+msgstr "Obre una nova finestra de terminal"
 
 #: ../terminal/terminal-window.c:195
-#, fuzzy
 msgid "Open a new window for the current terminal tab"
-msgstr "Obre a nou finestra per a   terminal tabulador"
+msgstr "Obre una nova finestra per l'actual pestanya del terminal"
 
 #: ../terminal/terminal-window.c:196
-#, fuzzy
 msgid "Close the current terminal tab"
-msgstr "Tanca   terminal tabulador"
+msgstr "Tanca l'actual pestanya de terminal"
 
 #: ../terminal/terminal-window.c:197
-#, fuzzy
 msgid "_Close Window"
-msgstr "_Tanca la finestra"
+msgstr "Tan_ca la finestra"
 
 #: ../terminal/terminal-window.c:197
-#, fuzzy
 msgid "Close the terminal window"
-msgstr "Tanca   terminal finestra"
+msgstr "Tanca la finestra del terminal"
 
 #: ../terminal/terminal-window.c:198
-#, fuzzy
 msgid "_Edit"
 msgstr "_Edita"
 
 #: ../terminal/terminal-window.c:199
-#, fuzzy
 msgid "_Copy"
 msgstr "_Copia"
 
 #: ../terminal/terminal-window.c:199
-#, fuzzy
 msgid "Copy to clipboard"
 msgstr "Copia al porta-retalls"
 
 #: ../terminal/terminal-window.c:200
-#, fuzzy
 msgid "_Paste"
 msgstr "_Enganxa"
 
 #: ../terminal/terminal-window.c:200
-#, fuzzy
 msgid "Paste from clipboard"
 msgstr "Enganxa des del porta-retalls"
 
 #: ../terminal/terminal-window.c:201
-#, fuzzy
 msgid "_Applications..."
-msgstr "Aplicacions."
+msgstr "Aplicacions…"
 
 #: ../terminal/terminal-window.c:201
-#, fuzzy
 msgid "Customize your preferred applications"
-msgstr "Personalitza preferent"
+msgstr "Personalitza les aplicacions preferides"
 
 #: ../terminal/terminal-window.c:202
-#, fuzzy
 msgid "_Toolbars..."
-msgstr "_Barra d'eines"
+msgstr "Barres d'eines…"
 
 #: ../terminal/terminal-window.c:202
-#, fuzzy
 msgid "Customize the toolbars"
-msgstr "Personalitza   barres d'eines"
+msgstr "Personalitza les barres d'eines"
 
 #: ../terminal/terminal-window.c:203
 msgid "Pr_eferences..."
-msgstr ""
+msgstr "_Preferències"
 
 #: ../terminal/terminal-window.c:203
-#, fuzzy
 msgid "Open the Terminal preferences dialog"
-msgstr "Obre   Terminal preferències diàleg"
+msgstr "Obre el diàleg de preferències del terminal"
 
 #: ../terminal/terminal-window.c:204
-#, fuzzy
 msgid "_View"
 msgstr "_Visualitza"
 
 #: ../terminal/terminal-window.c:205
-#, fuzzy
 msgid "_Terminal"
 msgstr "_Terminal"
 
 #: ../terminal/terminal-window.c:206
-#, fuzzy
 msgid "_Set Title..."
-msgstr "E_stableix el títol..."
+msgstr "Estableix el _títol…"
 
 #: ../terminal/terminal-window.c:206
-#, fuzzy
 msgid "Set a custom title for the current tab"
-msgstr "Fixa a personalitzat per a   tabulador"
+msgstr "Fixa un títol personalitzat per la pestanya actual"
 
 #: ../terminal/terminal-window.c:207
-#, fuzzy
 msgid "_Reset"
 msgstr "_Reinicia"
 
 #: ../terminal/terminal-window.c:208
-#, fuzzy
 msgid "Reset and C_lear"
-msgstr "Reinicia i ne_teja"
+msgstr "Reinicia i _neteja"
 
 #: ../terminal/terminal-window.c:209
-#, fuzzy
 msgid "_Go"
-msgstr "_Vés"
+msgstr "Vé_s"
 
 #: ../terminal/terminal-window.c:210
-#, fuzzy
 msgid "_Previous Tab"
 msgstr "Pestanya _anterior"
 
 #: ../terminal/terminal-window.c:210
-#, fuzzy
 msgid "Switch to previous tab"
-msgstr "Commuta a  tabulador"
+msgstr "Canvia a la pestanya anterior"
 
 #: ../terminal/terminal-window.c:211
-#, fuzzy
 msgid "_Next Tab"
-msgstr "Pestanya següe_nt"
+msgstr "Pestanya _següent"
 
 #: ../terminal/terminal-window.c:211
-#, fuzzy
 msgid "Switch to next tab"
-msgstr "Commuta a  tabulador"
+msgstr "Canvia a la pestanya següent"
 
 #: ../terminal/terminal-window.c:212
-#, fuzzy
 msgid "_Help"
 msgstr "A_juda"
 
 #: ../terminal/terminal-window.c:213
-#, fuzzy
 msgid "_Contents"
 msgstr "_Continguts"
 
 #: ../terminal/terminal-window.c:213
-#, fuzzy
 msgid "Display help contents"
-msgstr "Visualització ajuda continguts"
+msgstr "Mostra els continguts de l'ajuda"
 
 #: ../terminal/terminal-window.c:214
-#, fuzzy
 msgid "_Report a bug"
-msgstr "Informe a error"
+msgstr "Informa d'un _error"
 
 #: ../terminal/terminal-window.c:214
-#, fuzzy
 msgid "Report a bug in Terminal"
-msgstr "Informe a error po Terminal"
+msgstr "Informa d'un error al terminal"
 
 #: ../terminal/terminal-window.c:215
-#, fuzzy
 msgid "_About"
-msgstr "_Quant a"
+msgstr "_Quant a…"
 
 #: ../terminal/terminal-window.c:215
-#, fuzzy
 msgid "Display information about Terminal"
-msgstr "Visualització quant a Terminal"
+msgstr "Mostra informació referent al terminal"
 
 #: ../terminal/terminal-window.c:216
-#, fuzzy
 msgid "_Input Methods"
 msgstr "Mètodes d'_entrada"
 
 #: ../terminal/terminal-window.c:221
-#, fuzzy
 msgid "Show _Menubar"
-msgstr "Mostra la barra del _menu"
+msgstr "Mostra la barra de _menús"
 
 #: ../terminal/terminal-window.c:221
-#, fuzzy
 msgid "Show/hide the menubar"
-msgstr "Mostra  "
+msgstr "Mostra/Amaga la barra de menús"
 
 #: ../terminal/terminal-window.c:222
-#, fuzzy
 msgid "Show _Toolbars"
-msgstr "Mostra Barres d'eines"
+msgstr "Mostra les barres d'_eines"
 
 #: ../terminal/terminal-window.c:222
-#, fuzzy
 msgid "Show/hide the toolbars"
-msgstr "Mostra   barres d'eines"
+msgstr "Mostra/Amaga les barres d'eines"
 
 #: ../terminal/terminal-window.c:223
-#, fuzzy
 msgid "Show Window _Borders"
-msgstr "Mostra Finestra Vores"
+msgstr "Mostra les _vores de la finestra"
 
 #: ../terminal/terminal-window.c:223
-#, fuzzy
 msgid "Show/hide the window decorations"
-msgstr "Mostra   finestra"
+msgstr "Mostra/Amaga les decoracions de la finestra"
 
 #: ../terminal/terminal-window.c:224
-#, fuzzy
 msgid "_Fullscreen"
-msgstr "Pantalla _Completa"
+msgstr "_Pantalla completa"
 
 #: ../terminal/terminal-window.c:224
-#, fuzzy
 msgid "Toggle fullscreen mode"
-msgstr "Si s'utilitza el mode a pantalla complerta"
+msgstr "Commuta el mode a pantalla completa"
 
 #: ../terminal/terminal-window.c:511
-#, fuzzy
 msgid "Warning"
 msgstr "Avís"
 
 #: ../terminal/terminal-window.c:522
-#, fuzzy
 msgid "Close all tabs"
-msgstr "Tanca all"
+msgstr "Tanca totes les pestanyes"
 
 #: ../terminal/terminal-window.c:541
 #, c-format
@@ -1868,16 +1644,17 @@ msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
+"La finestra té %d pestanyes obertes.\n"
+"Tancar aquesta finestra farà que es\n"
+"tanquin totes les pestanyes."
 
 #: ../terminal/terminal-window.c:544
-#, fuzzy
 msgid "Close all tabs?"
 msgstr "Voleu tancar totes les pestanyes?"
 
 #: ../terminal/terminal-window.c:557
-#, fuzzy
 msgid "Do _not ask me again"
-msgstr "no"
+msgstr "_No tornis a mostrar aquest missatge"
 
 #: ../terminal/terminal-window.c:936
 msgid ""
@@ -1885,6 +1662,9 @@ msgid ""
 "Browser yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
+"No heu triat encara el vostre navegador\n"
+"web preferit. Voleu configurar les vostres\n"
+"aplicacions preferides ara?"
 
 #: ../terminal/terminal-window.c:937
 msgid ""
@@ -1892,113 +1672,98 @@ msgid ""
 "Reader yet. Do you want to setup your\n"
 "preferred applications now?"
 msgstr ""
+"No heu triat encara el vostre lector de\n"
+"correus preferit. Voleu configurar les\n"
+"vostres aplicacions preferides ara?"
 
 #: ../terminal/terminal-window.c:1420
-#, fuzzy
 msgid "Window Title|Set Title"
-msgstr "Finestra Títol Fixa Títol"
+msgstr "Fixa el títol"
 
 #: ../terminal/terminal-window.c:1434
-#, fuzzy
 msgid "<b>Title:</b>"
 msgstr "<b>Títol:</b>"
 
 #: ../terminal/terminal-window.c:1448
-#, fuzzy
 msgid "Enter the title for the current terminal tab"
-msgstr "Retorn   per a   terminal tabulador"
+msgstr "Introduïu el títol del la pestanya del terminal actual"
 
 #: ../terminal/terminal-window.c:1619
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to open `%s'."
-msgstr "Fallit a  obre."
+msgstr "No s'ha pogut obrir «%s»."
 
 #: ../terminal/terminal-window.c:1704
-#, fuzzy
 msgid "X Terminal Emulator"
-msgstr "X Terminal"
+msgstr "Emulador de Terminal X"
 
+# translator-credits = Crèdits als traductors ?
 #: ../terminal/terminal-window.c:1710
 #, fuzzy
 msgid "translator-credits"
-msgstr "Jordi Mallach <jordi@sindominio.net>"
+msgstr "Crèdits als traductor"
 
 #: ../Terminal.desktop.in.h:2
-#, fuzzy
 msgid "Terminal Emulator"
-msgstr "Terminal"
+msgstr "Emulador de terminal"
 
 #: ../helpers/balsa.desktop.in.h:1
-#, fuzzy
 msgid "Balsa"
 msgstr "Balsa"
 
 #: ../helpers/epiphany.desktop.in.h:1
-#, fuzzy
 msgid "Epiphany Web Browser"
 msgstr "Navegador web Epiphany"
 
 #: ../helpers/evolution.desktop.in.h:1
-#, fuzzy
 msgid "Novell Evolution"
-msgstr "Evolution"
+msgstr "Novell Evolution"
 
 #: ../helpers/firefox.desktop.in.h:1
-#, fuzzy
 msgid "Mozilla Firefox"
-msgstr "Navegador Firefox"
+msgstr "Mozilla Firefox"
 
 #: ../helpers/galeon.desktop.in.h:1
-#, fuzzy
 msgid "Galeon Web Browser"
 msgstr "Navegador web Galeon"
 
 #: ../helpers/kmail.desktop.in.h:1
-#, fuzzy
 msgid "KMail"
 msgstr "KMail"
 
 #: ../helpers/konqueror.desktop.in.h:1
-#, fuzzy
 msgid "Konqueror"
 msgstr "Konqueror"
 
 #: ../helpers/lynx.desktop.in.h:1
-#, fuzzy
 msgid "Lynx"
 msgstr "Lynx"
 
 #: ../helpers/mozilla-browser.desktop.in.h:1
-#, fuzzy
 msgid "Mozilla Browser"
-msgstr "Navegador Navegador"
+msgstr "Navegador Mozilla"
 
 #: ../helpers/mozilla-mailer.desktop.in.h:1
-#, fuzzy
 msgid "Mozilla Mail"
-msgstr "Mozilla Mail"
+msgstr "Correu de Mozilla"
 
 #: ../helpers/mutt.desktop.in.h:1
-#, fuzzy
 msgid "Mutt"
 msgstr "Mutt"
 
 #: ../helpers/opera-browser.desktop.in.h:1
-#, fuzzy
 msgid "Opera Browser"
-msgstr "Òpera Navegador"
+msgstr "Navegador Opera"
 
 #: ../helpers/opera-mailer.desktop.in.h:1
-#, fuzzy
 msgid "Opera Mail"
-msgstr "Òpera Correu"
+msgstr "Correu d'Opera"
 
 #: ../helpers/sensible-browser.desktop.in.h:1
-#, fuzzy
 msgid "Debian Sensible Browser"
 msgstr "Navegador sensible de Debian"
 
 #: ../helpers/thunderbird.desktop.in.h:1
-#, fuzzy
 msgid "Mozilla Thunderbird"
 msgstr "Mozilla Thunderbird"
+
