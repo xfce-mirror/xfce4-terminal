@@ -1055,8 +1055,11 @@ terminal_window_screen_removed (GtkNotebook     *notebook,
       GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
 
       active = terminal_window_get_active (window);
-      terminal_screen_get_size (screen, &grid_width, &grid_height);
-      terminal_window_set_size_force_grid (window, active, grid_width, grid_height);
+      if (G_LIKELY (active != NULL))
+        {
+          terminal_screen_get_size (screen, &grid_width, &grid_height);
+          terminal_window_set_size_force_grid (window, active, grid_width, grid_height);
+        }
 
       /* regenerate the "Go" menu */
       terminal_window_rebuild_gomenu (window);
