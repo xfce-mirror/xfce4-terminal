@@ -1,5 +1,11 @@
 2006-05-20	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-preferences.c(terminal_preferences_set_property):
+	  Start with the default value, otherwise several settings will not
+	  be saved properly. Bug #1821.
+
+2006-05-20	Benedikt Meurer <benny@xfce.org>
+
 	* terminal/main.c(main): Make warnings fatal if built with
 	  --enable-debug=full.
 
