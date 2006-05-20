@@ -1,3 +1,31 @@
+2006-05-20	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-dialogs.{c,h}, terminal/Makefile.am,
+	  terminal/terminal-preferences-dialog.c, terminal/terminal-screen.c,
+	  terminal/terminal-shortcut-editor.c, terminal/terminal-window.c:
+	  Move common dialogs to terminal-dialogs.c.
+	* terminal/terminal-window.c(terminal_window_update_actions): If
+	  MiscCycleTabs is enabled, the "Previos Tab" and "Next Tab" actions
+	  should be sensitive only if the window contains more than one tab.
+	* terminal/terminal-preferences.c(terminal_preferences_class_init):
+	  Use EXO_PARAM_READWRITE instead of G_PARAM_READWRITE. Do not mark
+	  the property nicks/blurbs as translatable that are not used in the
+	  user interface.
+	* configure.in.in, terminal/Makefile.am: Improve debug support
+	  flags, based on Thunar's configure.in.in.
+	* terminal/terminal-preferences-dialog.c: Several cleanups.
+	* terminal/terminal-helper-dialog.c(terminal_helper_dialog_init):
+	  Allow to close the "Preferred Applications" dialog using Esc.
+	* terminal/terminal-app.c(terminal_app_open_window),
+	  terminal/terminal-preferences.c: Add "MiscDefaultGeometry" setting
+	  which specifies the default window geometry if no --geometry option
+	  is given on the command line. Bug #1820.
+	* doc/C/Terminal.xml.in, doc/ja/Terminal.xml.in, po-doc/ja.po: Update
+	  the user manual.
+	* po/POTFILES.in: Add new files here.
+	* po/Terminal.pot, po/*.po: Updated.
+	* po/de.po: Update german translations.
+
 2006-05-14	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-window.c(terminal_window_screen_removed): Fix a

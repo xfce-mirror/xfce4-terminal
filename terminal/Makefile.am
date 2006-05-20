@@ -6,10 +6,11 @@ INCLUDES =								\
 	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DEXO_DISABLE_DEPRECATED					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
+	-DLIBEXECDIR=\"$(libexecdir)\"					\
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
 	-DSN_API_NOT_YET_FROZEN						\
-	-DTERMINAL_HELP_BIN=\"$(libexecdir)/TerminalHelp\"		\
-	-I$(top_srcdir)
+	-I$(top_srcdir)							\
+	$(PLATFORM_CPPFLAGS)
 
 bin_PROGRAMS = 								\
 	Terminal
@@ -27,6 +28,7 @@ Terminal_dbus_sources =							\
 Terminal_headers =							\
 	terminal-accel-map.h						\
 	terminal-app.h							\
+	terminal-dialogs.h						\
 	terminal-helper-dialog.h					\
 	terminal-helper.h						\
 	terminal-image-loader.h						\
@@ -49,6 +51,7 @@ Terminal_SOURCES =							\
 	main.c								\
 	terminal-accel-map.c						\
 	terminal-app.c							\
+	terminal-dialogs.c						\
 	terminal-helper-dialog.c					\
 	terminal-helper.c						\
 	terminal-image-loader.c						\
@@ -70,7 +73,8 @@ Terminal_CFLAGS =							\
 	$(EXO_CFLAGS)							\
 	$(GTK_CFLAGS)							\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
-	$(VTE_CFLAGS)
+	$(VTE_CFLAGS)							\
+	$(PLATFORM_CFLAGS)
 
 Terminal_LDFLAGS =							\
 	-no-undefined							\
@@ -78,7 +82,8 @@ Terminal_LDFLAGS =							\
 	$(EXO_LIBS)							\
 	$(GTK_LIBS)							\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
-	$(VTE_LIBS)
+	$(VTE_LIBS)							\
+	$(TERMINAL_LIBS)
 
 # install symlink to 'terminal'
 install-data-local:

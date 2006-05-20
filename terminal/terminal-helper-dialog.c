@@ -768,7 +768,8 @@ terminal_helper_dialog_init (TerminalHelperDialog *dialog)
   dialog->preferences = terminal_preferences_get ();
 
   gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_HELP, GTK_RESPONSE_HELP);
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CANCEL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CANCEL);
   gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
 
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);

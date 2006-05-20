@@ -471,6 +471,7 @@ terminal_app_open_window (TerminalApp         *app,
   GtkWidget       *window;
   GtkWidget       *terminal;
   GdkScreen       *screen;
+  gchar           *geometry;
   GList           *lp;
 
   g_return_if_fail (TERMINAL_IS_APP (app));
@@ -515,8 +516,20 @@ terminal_app_open_window (TerminalApp         *app,
        */
       if (lp == attr->tabs)
         {
-          if (attr->geometry != NULL && !gtk_window_parse_geometry (GTK_WINDOW (window), attr->geometry))
-            g_printerr (_("Invalid geometry string \"%s\"\n"), attr->geometry);
+          /* determine the window geometry */
+          if (G_LIKELY (attr->geometry == NULL))
+            g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
+          else
+            geometry = g_strdup (attr->geometry);
+
+          /* try to apply the geometry to the window */
+          if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
+            g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
+
+          /* cleanup */
+          g_free (geometry);
+
+          /* show the window */
           gtk_widget_show (window);
         }
 

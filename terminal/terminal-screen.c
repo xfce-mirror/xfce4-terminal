@@ -39,6 +39,7 @@
 
 #include <exo/exo.h>
 
+#include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>
 #include <terminal/terminal-image-loader.h>
@@ -925,35 +926,23 @@ terminal_screen_new (void)
 void
 terminal_screen_launch_child (TerminalScreen *screen)
 {
-  GtkWidget *toplevel;
-  GtkWidget *message;
-  gboolean   update;
-  GError    *error = NULL;
-  gchar     *command;
-  gchar    **argv;
-  gchar    **env;
+  gboolean update;
+  GError  *error = NULL;
+  gchar   *command;
+  gchar  **argv;
+  gchar  **env;
 
   g_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-#ifdef DEBUG
+#ifdef G_ENABLE_DEBUG
   if (!GTK_WIDGET_REALIZED (screen))
     g_error ("Tried to launch command in a TerminalScreen that is not realized");
 #endif
 
   if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
-      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-      message = gtk_message_dialog_new_with_markup (GTK_WINDOW (toplevel),
-                                                    GTK_DIALOG_DESTROY_WITH_PARENT
-                                                    | GTK_DIALOG_MODAL,
-                                                    GTK_MESSAGE_ERROR,
-                                                    GTK_BUTTONS_CLOSE,
-                                                    "<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s\n%s",
-                                                    _("Failed to execute child"),
-                                                    error->message,
-                                                    _("Please check your system setup."));
-      gtk_dialog_run (GTK_DIALOG (message));
-      gtk_widget_destroy (message);
+      /* tell the user that we were unable to execute the command */
+      terminal_dialogs_show_error (GTK_WIDGET (screen), error, _("Failed to execute child"));
       g_error_free (error);
     }
   else 

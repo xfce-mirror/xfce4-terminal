@@ -23,6 +23,7 @@
 #include <config.h>
 #endif
 
+#include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
@@ -99,7 +100,6 @@ static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
   GtkListStore      *store;
-  GParamSpec        *pspec;
   GtkTreeIter        iter;
   GdkPixbuf         *icon;
   GtkWidget         *button;
@@ -120,19 +120,21 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   AtkRelation       *relation;
   AtkObject         *object;
   GSList            *group;
+  gchar             *name;
   gint               index;
+  gint               n;
 
   dialog->preferences = terminal_preferences_get ();
 
   dialog->tooltips = gtk_tooltips_new ();
-  g_object_ref (G_OBJECT (dialog->tooltips));
-  gtk_object_sink (GTK_OBJECT (dialog->tooltips));
+  exo_gtk_object_ref_sink (GTK_OBJECT (dialog->tooltips));
 
   /* initialize the dialog window */
   gtk_dialog_add_buttons (GTK_DIALOG (dialog),
                           GTK_STOCK_CLOSE, GTK_RESPONSE_CANCEL,
                           GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                           NULL);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CANCEL);
   gtk_dialog_set_has_separator (GTK_DIALOG (dialog), FALSE);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
   gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
@@ -199,20 +201,19 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                         "label", _("The command running inside the terminal may dynamically set a new title."),
                         "xalign", 0.0,
                         NULL);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 2, 0, 1,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 2, 0, 1, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   label = gtk_label_new_with_mnemonic (_("_Initial title:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "title-initial", G_OBJECT (entry), "text");
-  gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 1, 2,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
   gtk_widget_show (entry);
 
   /* set Atk label relation for the entry */
@@ -224,13 +225,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("_Dynamically-set title:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   hbox = gtk_hbox_new (FALSE, 0);
-  gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 2, 3,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (hbox);
   
   combo = gtk_combo_box_new_text ();
@@ -243,6 +242,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
 #endif
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, TRUE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
 
   /* set Atk label relation for the combo */
@@ -264,26 +264,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
   gtk_container_add (GTK_CONTAINER (frame), vbox);
   gtk_widget_show (vbox);
-
-  /* FIXME ?! */
-#if 0
-  button = gtk_check_button_new_with_mnemonic (_("Terminal _bell"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-bell");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 2, 3,
-                    GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-#endif
-
-  /* FIXME ?! */
-#if 0
-  button = gtk_check_button_new_with_mnemonic (_("Cursor blin_ks"));
-  proxy = terminal_preferences_get_proxy (dialog->preferences, "misc-cursor-blinks");
-  exo_property_proxy_add (proxy, G_OBJECT (button), "active", NULL, NULL, NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 3, 4,
-                    GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-#endif
 
   button = gtk_check_button_new_with_mnemonic (_("_Run command as login shell"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "command-login-shell", G_OBJECT (button), "active");
@@ -325,8 +305,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                         _("This option controls whether the terminal will scroll "
                           "down automatically whenever new output is generated by "
                           "the commands running inside the terminal."), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 0, 2, 0, 1,
-                    GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 2, 0, 1, GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   button = gtk_check_button_new_with_mnemonic (_("Scroll on key_stroke"));
@@ -336,14 +315,12 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                           "keyboard to scroll down the terminal "
                           "window to the command prompt."),
                         NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 0, 2, 1, 2,
-                    GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), button, 0, 2, 1, 2, GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
   gtk_widget_show (button);
 
   label = gtk_label_new_with_mnemonic (_("_Scrollbar is:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3,
-                    GTK_FILL, GTK_FILL, 0, 6);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3, GTK_FILL, GTK_FILL, 0, 6);
   gtk_widget_show (label);
 
   combo = gtk_combo_box_new_text ();
@@ -354,8 +331,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
 #endif
-  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
 
   /* set Atk label relation for the combo */
@@ -367,19 +344,19 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("Scr_ollback:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   button = gtk_spin_button_new_with_range (48.0, 5 * 1024.0 * 1024.0, 1.0);
+  gtk_entry_set_activates_default (GTK_ENTRY (button), TRUE);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-lines",
                           G_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (button))), "value");
   gtk_tooltips_set_tip (dialog->tooltips, button,
                         _("Specifies the number of lines that you can "
                           "scroll back using the scrollbar."),
                         NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 3, 4,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 3, 4, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
   gtk_widget_show (button);
 
   /* set Atk label relation for the spin button */
@@ -481,18 +458,18 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("_File:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   hbox = gtk_hbox_new (FALSE, 1);
-  gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 0, 1,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 0, 1, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (hbox);
 
   entry = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-image-file", G_OBJECT (entry), "text");
   gtk_box_pack_start (GTK_BOX (hbox), entry, TRUE, TRUE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
   gtk_widget_show (entry);
 
   button = gtk_button_new ();
@@ -506,8 +483,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("_Style:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   combo = gtk_combo_box_new_text ();
@@ -519,8 +495,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
 #endif
-  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
 
   ibox = gtk_vbox_new (FALSE, 1);
@@ -636,13 +612,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                         "use-underline", TRUE,
                         "xalign", 0.0,
                         NULL);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   align = gtk_alignment_new (0.0, 0.5, 0.0, 0.0);
-  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 0, 1,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 0, 1, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (align);
 
   hbox = gtk_hbox_new (FALSE, 0);
@@ -652,10 +626,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = g_object_new (GTK_TYPE_COLOR_BUTTON, "title", _("Choose terminal text color"), NULL);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-foreground", G_OBJECT (button), "color");
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
-  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
   object = gtk_widget_get_accessible (button);
   atk_object_set_name (object, _("Color Selector"));
   atk_object_set_description (object, _("Open a dialog to specify the color"));
@@ -667,10 +641,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   button = g_object_new (GTK_TYPE_COLOR_BUTTON, "title", _("Choose terminal cursor color"), NULL);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-cursor", G_OBJECT (button), "color");
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
-  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
   object = gtk_widget_get_accessible (button);
   atk_object_set_name (object, _("Color Selector"));
   atk_object_set_description (object, _("Open a dialog to specify the color"));
@@ -684,13 +658,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                         "use-underline", TRUE,
                         "xalign", 0.0,
                         NULL);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   align = gtk_alignment_new (0.0, 0.5, 0.0, 0.0);
-  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 1, 2,
-                    GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (align);
 
   button = g_object_new (GTK_TYPE_COLOR_BUTTON,
@@ -698,10 +670,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                          NULL);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-background", G_OBJECT (button), "color");
   gtk_container_add (GTK_CONTAINER (align), button);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
-  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
   object = gtk_widget_get_accessible (button);
   atk_object_set_name (object, _("Color Selector"));
   atk_object_set_description (object, _("Open a dialog to specify the color"));
@@ -751,7 +723,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   /* set Atk name/description and label relation for the button */
-  g_object_set (G_OBJECT (label), "mnemonic-widget", G_OBJECT (button), NULL);
   object = gtk_widget_get_accessible (button);
   atk_object_set_name (object, _("Color Selector"));
   atk_object_set_description (object, _("Open a dialog to specify the color"));
@@ -776,8 +747,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   label = g_object_new (GTK_TYPE_LABEL,
                         "label", _("Terminal applications have this color palette available to them:"),
                         "wrap", TRUE,
+                        "xalign", 0.0f,
                         NULL);
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
   gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
   gtk_widget_show (label);
 
@@ -787,117 +758,24 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, TRUE, 0);
   gtk_widget_show (table);
 
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette1", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette1");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
+  /* add the color buttons in 2 rows, with 8 buttons per row */
+  for (n = 0; n < 16; ++n)
+    {
+      /* setup and add the button */
+      button = gtk_color_button_new ();
+      gtk_table_attach (GTK_TABLE (table), button, (n % 8), (n % 8) + 1, (n / 8), (n / 8) + 1, GTK_FILL, GTK_FILL, 0, 0);
+      gtk_widget_show (button);
 
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette2", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette2");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
+      /* setup a tooltip */
+      name = g_strdup_printf (_("Palette entry %d"), (n + 1));
+      gtk_tooltips_set_tip (dialog->tooltips, button, name, NULL);
+      g_free (name);
 
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette3", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette3");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 2, 3, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette4", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette4");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 3, 4, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette5", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette5");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 4, 5, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette6", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette6");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 5, 6, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette7", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette7");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 6, 7, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette8", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette8");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 7, 8, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette9", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette9");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette10", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette10");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette11", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette11");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 2, 3, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette12", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette12");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 3, 4, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette13", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette13");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 4, 5, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette14", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette14");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 5, 6, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette15", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette15");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 6, 7, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
-
-  button = gtk_color_button_new ();
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-palette16", G_OBJECT (button), "color");
-  pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "color-palette16");
-  gtk_tooltips_set_tip (dialog->tooltips, button, g_param_spec_get_blurb (pspec), NULL);
-  gtk_table_attach (GTK_TABLE (table), button, 7, 8, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
-  gtk_widget_show (button);
+      /* sync with the appropriate preference */
+      name = g_strdup_printf ("color-palette%d", (n + 1));
+      exo_mutual_binding_new (G_OBJECT (dialog->preferences), name, G_OBJECT (button), "color");
+      g_free (name);
+    }
 
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
                                  TERMINAL_STOCK_COLORS,
@@ -1015,8 +893,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("_Backspace key generates:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   combo = gtk_combo_box_new_text ();
@@ -1028,8 +905,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
 #endif
-  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
 
   /* set Atk label relation for the combo */
@@ -1041,8 +918,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   label = gtk_label_new_with_mnemonic (_("_Delete key generates:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   combo = gtk_combo_box_new_text ();
@@ -1054,8 +930,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #if !GTK_CHECK_VERSION(2,9,0)
   g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
 #endif
-  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
 
   /* set Atk label relation for the combo */
@@ -1065,20 +941,19 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   atk_relation_set_add (relations, relation);
   g_object_unref (G_OBJECT (relation));
 
-  label = g_object_new (GTK_TYPE_LABEL, "label", _("<tt>$TERM</tt> setting:"), "use-markup", TRUE, NULL);
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<tt>$TERM</tt> setting:"), "use-markup", TRUE, "xalign", 0.0f, NULL);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "term", G_OBJECT (entry), "text");
   gtk_tooltips_set_tip (dialog->tooltips, entry, _("This specifies the value the $TERM environment variable is set "
                                                    "to, when a new terminal tab or terminal window is opened. The default "
                                                    "should be ok for most systems. If you have problems with colors in "
                                                    "some applications, try xterm-color here."), NULL);
-  gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 3, 4,
-                    GTK_FILL, GTK_FILL, 0, 0);
+  gtk_table_attach (GTK_TABLE (table), entry, 1, 2, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
   gtk_widget_show (entry);
 
   /* set Atk label relation for the entry */
@@ -1118,8 +993,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   entry = gtk_entry_new ();
+  gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "word-chars", G_OBJECT (entry), "text");
   gtk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
   gtk_widget_show (entry);
 
   /* set Atk label relation for the entry */
@@ -1152,8 +1029,11 @@ static void
 terminal_preferences_dialog_finalize (GObject *object)
 {
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
+
+  /* release the preferences and tooltips */
   g_object_unref (G_OBJECT (dialog->preferences));
   g_object_unref (G_OBJECT (dialog->tooltips));
+
   (*G_OBJECT_CLASS (terminal_preferences_dialog_parent_class)->finalize) (object);
 }
 
@@ -1163,32 +1043,15 @@ static void
 terminal_preferences_dialog_response (TerminalPreferencesDialog *dialog,
                                       gint                       response)
 {
-  GtkWidget *message;
-  GError    *error = NULL;
-  gchar     *command;
-
-  if (response == GTK_RESPONSE_HELP)
+  /* check if we should open the user manual */
+  if (G_UNLIKELY (response == GTK_RESPONSE_HELP))
     {
-      command = g_strconcat (TERMINAL_HELP_BIN, " preferences", NULL);
-      if (!g_spawn_command_line_async (command, &error))
-        {
-          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT
-                                            | GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_ERROR,
-                                            GTK_BUTTONS_OK,
-                                            _("Unable to launch online help: %s"),
-                                            error->message);
-          g_signal_connect (G_OBJECT (message), "response",
-                            G_CALLBACK (gtk_widget_destroy), NULL);
-          gtk_widget_show (message);
-
-          g_error_free (error);
-        }
-      g_free (command);
+      /* open the "Preferences" section of the user manual */
+      terminal_dialogs_show_help (GTK_WIDGET (dialog), "preferences", NULL);
     }
   else
     {
+      /* close the preferences dialog */
       gtk_widget_destroy (GTK_WIDGET (dialog));
     }
 }

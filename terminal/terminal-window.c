@@ -48,6 +48,7 @@
 #include <libsn/sn-launchee.h>
 #endif
 
+#include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-options.h>
@@ -59,6 +60,7 @@
 
 
 
+/* Property identifiers */
 enum
 {
   PROP_0,
@@ -67,6 +69,7 @@ enum
   PROP_SHOW_TOOLBARS,
 };
 
+/* Signal identifiers */
 enum
 {
   NEW_WINDOW,
@@ -682,10 +685,10 @@ terminal_window_update_actions (TerminalWindow *window)
                     NULL);
 
       action = gtk_action_group_get_action (window->action_group, "prev-tab");
-      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 0) || (page_num > 0));
+      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 1) || (page_num > 0));
 
       action = gtk_action_group_get_action (window->action_group, "next-tab");
-      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 0 ) || (page_num < n_pages - 1));
+      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 1 ) || (page_num < n_pages - 1));
 
       action = gtk_action_group_get_action (window->action_group, "copy");
       gtk_action_set_sensitive (action, terminal_screen_has_selection (terminal));
@@ -1183,32 +1186,15 @@ static void
 helper_dialog_response (GtkWidget *dialog,
                         gint       response)
 {
-  GtkWidget *message;
-  GError    *error = NULL;
-  gchar     *command;
-
+  /* check if we should open the user manual */
   if (response == GTK_RESPONSE_HELP)
     {
-      command = g_strconcat (TERMINAL_HELP_BIN, " preferred-applications", NULL);
-      if (!g_spawn_command_line_async (command, &error))
-        {
-          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT
-                                            | GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_ERROR,
-                                            GTK_BUTTONS_OK,
-                                            _("Unable to launch online help: %s"),
-                                            error->message);
-          g_signal_connect (G_OBJECT (message), "response",
-                            G_CALLBACK (gtk_widget_destroy), NULL);
-          gtk_widget_show (message);
-
-          g_error_free (error);
-        }
-      g_free (command);
+      /* open the "Preferred Applications" section in the manual */
+      terminal_dialogs_show_help (GTK_WIDGET (dialog), "preferred-applications", NULL);
     }
   else
     {
+      /* close the dialog */
       gtk_widget_destroy (dialog);
     }
 }
@@ -1223,8 +1209,7 @@ terminal_window_action_edit_helpers (GtkAction      *action,
 
   dialog = g_object_new (TERMINAL_TYPE_HELPER_DIALOG, NULL);
   gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
-  g_signal_connect (G_OBJECT (dialog), "response",
-                    G_CALLBACK (helper_dialog_response), NULL);
+  g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (helper_dialog_response), NULL);
   gtk_widget_show (dialog);
 }
 
@@ -1244,15 +1229,21 @@ static void
 terminal_window_action_prefs (GtkAction      *action,
                               TerminalWindow *window)
 {
+  /* check if we already have a preferences dialog instance */
   if (G_UNLIKELY (window->preferences_dialog != NULL)) 
     {
+      /* move to the current screen and make transient for this window */
+      gtk_window_set_screen (GTK_WINDOW (window->preferences_dialog), gtk_widget_get_screen (GTK_WIDGET (window)));
+      gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
+
+      /* present the preferences dialog on the current workspace */
       gtk_window_present (GTK_WINDOW (window->preferences_dialog));
     }
   else
     {
+      /* allocate a new preferences dialog instance */
       window->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
-      g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog),
-                                 (gpointer) &window->preferences_dialog);
+      g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog), (gpointer) &window->preferences_dialog);
       gtk_widget_show (window->preferences_dialog);
     }
 }
@@ -1372,32 +1363,15 @@ static void
 title_dialog_response (GtkWidget *dialog,
                        gint       response)
 {
-  GtkWidget *message;
-  GError    *error = NULL;
-  gchar     *command;
-
+  /* check if we should open the user manual */
   if (response == GTK_RESPONSE_HELP)
     {
-      command = g_strconcat (TERMINAL_HELP_BIN, " usage set-title", NULL);
-      if (!g_spawn_command_line_async (command, &error))
-        {
-          message = gtk_message_dialog_new (GTK_WINDOW (dialog),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT
-                                            | GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_ERROR,
-                                            GTK_BUTTONS_OK,
-                                            _("Unable to launch online help: %s"),
-                                            error->message);
-          g_signal_connect (G_OBJECT (message), "response",
-                            G_CALLBACK (gtk_widget_destroy), NULL);
-          gtk_widget_show (message);
-
-          g_error_free (error);
-        }
-      g_free (command);
+      /* open the "Set Title" paragraph in the "Usage" section */
+      terminal_dialogs_show_help (GTK_WIDGET (dialog), "usage", "set-title");
     }
   else
     {
+      /* close the dialog */
       gtk_widget_destroy (dialog);
     }
 }
@@ -1493,27 +1467,8 @@ static void
 terminal_window_action_report_bug (GtkAction       *action,
                                    TerminalWindow  *window)
 {
-  GtkWidget *dialog;
-  GError    *error = NULL;
-  gchar     *command;
-
-  command = g_strconcat (TERMINAL_HELP_BIN, " support", NULL);
-  if (!g_spawn_command_line_async (command, &error))
-    {
-      dialog = gtk_message_dialog_new (GTK_WINDOW (window),
-                                       GTK_DIALOG_DESTROY_WITH_PARENT
-                                       | GTK_DIALOG_MODAL,
-                                       GTK_MESSAGE_ERROR,
-                                       GTK_BUTTONS_OK,
-                                       _("Unable to launch online help: %s"),
-                                       error->message);
-      g_signal_connect (G_OBJECT (dialog), "response",
-                        G_CALLBACK (gtk_widget_destroy), NULL);
-      gtk_widget_show (dialog);
-
-      g_error_free (error);
-    }
-  g_free (command);
+  /* open the "Support" section of the user manual */
+  terminal_dialogs_show_help (GTK_WIDGET (window), "support", NULL);
 }
 
 
@@ -1522,135 +1477,8 @@ static void
 terminal_window_action_contents (GtkAction       *action,
                                  TerminalWindow  *window)
 {
-  GtkWidget *dialog;
-  GError    *error = NULL;
-
-  if (!g_spawn_command_line_async (TERMINAL_HELP_BIN, &error))
-    {
-      dialog = gtk_message_dialog_new (GTK_WINDOW (window),
-                                       GTK_DIALOG_DESTROY_WITH_PARENT
-                                       | GTK_DIALOG_MODAL,
-                                       GTK_MESSAGE_ERROR,
-                                       GTK_BUTTONS_OK,
-                                       _("Unable to launch online help: %s"),
-                                       error->message);
-      g_signal_connect (G_OBJECT (dialog), "response",
-                        G_CALLBACK (gtk_widget_destroy), NULL);
-      gtk_widget_show (dialog);
-
-      g_error_free (error);
-    }
-}
-
-
-
-static void
-activate_link (GtkAboutDialog        *about_dialog,
-               const gchar           *link,
-               TerminalHelperCategory category)
-{
-  TerminalHelperDatabase *database;
-  TerminalPreferences    *preferences;
-  TerminalHelper         *helper = NULL;
-  const gchar            *browser;
-  GEnumClass             *enum_class;
-  GEnumValue             *enum_value;
-  GdkScreen              *screen;
-  GtkWidget              *message;
-  GError                 *error = NULL;
-  gchar                   name[64];
-  gchar                  *command;
-  gchar                  *path;
-
-  /* determine the setting name */
-  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
-  enum_value = g_enum_get_value (enum_class, category);
-  g_snprintf (name, 64, "helper-%s", enum_value->value_nick);
-  g_type_class_unref (enum_class);
-
-  /* query the preferred application for the category */
-  preferences = terminal_preferences_get ();
-  g_object_get (G_OBJECT (preferences), name, &command, NULL);
-  g_object_unref (G_OBJECT (preferences));
-
-  /* determine the screen on which to run the command */
-  screen = gtk_widget_get_screen (GTK_WIDGET (about_dialog));
-
-  /* check if a helper is selected */
-  if (!exo_str_is_equal (command, "disabled"))
-    {
-      database = terminal_helper_database_get ();
-      helper = terminal_helper_database_lookup (database, category, command);
-      g_object_unref (G_OBJECT (database));
-    }
-
-  /* release the helper id */
-  g_free (command);
-
-  /* check if we have a helper to run */
-  if (G_LIKELY (helper != NULL))
-    {
-      /* just run the helper */
-      terminal_helper_execute (helper, screen, link);
-      g_object_unref (G_OBJECT (helper));
-    }
-  else
-    {
-      /* fallback to the first available browser */
-      path = g_find_program_in_path ("xfbrowser4");
-      if (G_UNLIKELY (path == NULL))
-        {
-          browser = g_getenv ("BROWSER");
-          if (G_LIKELY (browser != NULL))
-            path = g_find_program_in_path (browser);
-        }
-
-      if (G_LIKELY (path != NULL))
-        command = g_strdup_printf ("%s \"%s\"", path, link);
-      else
-        command = g_strdup_printf ("ns-remote -remote \"openURL(%s)\"", link);
-
-      /* try to launch the command on the screen of the about dialog */
-      if (!gdk_spawn_command_line_on_screen (screen, command, &error))
-        {
-          /* notify the user that we failed to open the link */
-          message = gtk_message_dialog_new (GTK_WINDOW (about_dialog),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT
-                                            | GTK_DIALOG_MODAL,
-                                            GTK_MESSAGE_ERROR,
-                                            GTK_BUTTONS_CLOSE,
-                                            _("Failed to open `%s'."),
-                                            link);
-          gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (message), "%s.", error->message);
-          gtk_dialog_run (GTK_DIALOG (message));
-          gtk_widget_destroy (message);
-          g_error_free (error);
-        }
-
-      /* cleanup */
-      g_free (command);
-      g_free (path);
-    }
-}
-
-
-
-static void
-email_hook (GtkAboutDialog *about_dialog,
-            const gchar    *email,
-            gpointer        user_data)
-{
-  activate_link (about_dialog, email, TERMINAL_HELPER_MAILREADER);
-}
-
-
-
-static void
-url_hook (GtkAboutDialog *about_dialog,
-          const gchar    *email,
-          gpointer        user_data)
-{
-  activate_link (about_dialog, email, TERMINAL_HELPER_WEBBROWSER);
+  /* open the Terminal user manual */
+  terminal_dialogs_show_help (GTK_WIDGET (window), NULL, NULL);
 }
 
 
@@ -1659,50 +1487,8 @@ static void
 terminal_window_action_about (GtkAction      *action,
                               TerminalWindow *window)
 {
-  static const gchar *authors[] =
-  {
-    "Benedikt Meurer <benny@xfce.org>",
-    NULL,
-  };
-
-  static const gchar *artists[] =
-  {
-    "Francois Le Clainche <fleclainche@wanadoo.fr>",
-    NULL,
-  };
-
-  static const gchar *documenters[] =
-  {
-    "Benedikt Meurer <benny@xfce.org>",
-    "Andrew Conkling <andrewski@fr.st>",
-    NULL,
-  };
-
-  GdkPixbuf *logo;
-
-  /* try to load the about logo */
-  logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 168, 168, NULL);
-
-  /* open the about dialog */
-  gtk_about_dialog_set_email_hook (email_hook, NULL, NULL);
-  gtk_about_dialog_set_url_hook (url_hook, NULL, NULL);
-  gtk_show_about_dialog (GTK_WINDOW (window),
-                         "authors", authors,
-                         "artists", artists,
-                         "comments", _("X Terminal Emulator"),
-                         "documenters", documenters,
-                         "copyright", "Copyright \302\251 2003-2006 Benedikt Meurer",
-                         "license", XFCE_LICENSE_GPL,
-                         "logo", logo,
-                         "name", PACKAGE_NAME,
-                         "translator-credits", _("translator-credits"),
-                         "version", PACKAGE_VERSION,
-                         "website", "http://terminal.os-cillation.de",
-                         NULL);
-
-  /* release the about logo (if any) */
-  if (G_LIKELY (logo != NULL))
-    g_object_unref (G_OBJECT (logo));
+  /* display the about dialog */
+  terminal_dialogs_show_about (GTK_WINDOW (window));
 }
 
 

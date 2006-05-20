@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.5svn\n"
-"POT-Creation-Date: 2006-04-16 09:39+0200\n"
+"POT-Creation-Date: 2006-05-20 17:59+0200\n"
 "PO-Revision-Date: 2006-03-05 02:01+0900\n"
 "Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -2281,10 +2281,22 @@ msgstr ""
 "<literal>FALSE</literal> のどちらかになります。"
 
 #: ../doc/C/Terminal.xml.in:1486 (varname)
-msgid "MiscInheritGeometry"
+#, fuzzy
+msgid "MiscDefaultGeometry"
 msgstr "MiscInheritGeometry"
 
 #: ../doc/C/Terminal.xml.in:1488 (para)
+msgid ""
+"The default geometry for new Terminal windows if no <option>--geometry</"
+"option> option is specified on the command line (defaults to <literal>80x24</"
+"literal>)."
+msgstr ""
+
+#: ../doc/C/Terminal.xml.in:1496 (varname)
+msgid "MiscInheritGeometry"
+msgstr "MiscInheritGeometry"
+
+#: ../doc/C/Terminal.xml.in:1498 (para)
 msgid ""
 "This setting controls whether new windows will inherit the geometry (width "
 "and height of the active tab) from its parent window (the window from which "
@@ -2295,11 +2307,11 @@ msgstr ""
 "るタブの幅と高さ) を引き継ぐかどうかを決めます。<literal>TRUE</literal> ある"
 "いは <literal>FALSE</literal> (標準) のどちらかになります。"
 
-#: ../doc/C/Terminal.xml.in:1498 (varname)
+#: ../doc/C/Terminal.xml.in:1508 (varname)
 msgid "MiscMouseAutohide"
 msgstr "MiscMouseAutohide"
 
-#: ../doc/C/Terminal.xml.in:1500 (para)
+#: ../doc/C/Terminal.xml.in:1510 (para)
 msgid ""
 "This setting controls whether @PACKAGE_NAME@ will hide the mouse cursor "
 "while you are typing in a terminal window. Can be either <literal>TRUE</"
@@ -2309,11 +2321,11 @@ msgstr ""
 "ウスカーソルを隠すかどうかを決めます。<literal>TRUE</literal> または "
 "<literal>FALSE</literal> (標準) になります。"
 
-#: ../doc/C/Terminal.xml.in:1509 (varname)
+#: ../doc/C/Terminal.xml.in:1519 (varname)
 msgid "MiscTabCloseButtons"
 msgstr "MiscTabCloseButtons"
 
-#: ../doc/C/Terminal.xml.in:1511 (para)
+#: ../doc/C/Terminal.xml.in:1521 (para)
 msgid ""
 "This setting controls whether @PACKAGE_NAME@ provides a close button with "
 "the terminal tab title. Can be either <literal>TRUE</literal> (the default) "
@@ -2323,11 +2335,11 @@ msgstr ""
 "表示するかどうかを決めます。<literal>TRUE</literal> (標準) または "
 "<literal>FALSE</literal> になります。"
 
-#: ../doc/C/Terminal.xml.in:1520 (varname)
+#: ../doc/C/Terminal.xml.in:1530 (varname)
 msgid "MiscTabPosition"
 msgstr "MiscTabPosition"
 
-#: ../doc/C/Terminal.xml.in:1522 (para)
+#: ../doc/C/Terminal.xml.in:1532 (para)
 msgid ""
 "Specifies the position where the tab headers should be displayed. This can "
 "be either <literal>GTK_POS_TOP</literal> (the default), "
@@ -2346,11 +2358,11 @@ msgstr ""
 "literal> および <literal>GTK_POS_RIGHT</literal> に対しては "
 "<varname>MiscTabCloseButtons</varname> を無効にすることを推奨します。"
 
-#: ../doc/C/Terminal.xml.in:1538 (title)
+#: ../doc/C/Terminal.xml.in:1548 (title)
 msgid "Frequently asked questions"
 msgstr "よく聞かれる質問"
 
-#: ../doc/C/Terminal.xml.in:1540 (para)
+#: ../doc/C/Terminal.xml.in:1550 (para)
 msgid ""
 "The intent of this section is to collect the quite numerous frequently asked "
 "question that relate to working with @PACKAGE_NAME@, or even terminal "
@@ -2364,7 +2376,7 @@ msgstr ""
 "enter_bug.cgi?product=Terminal&amp;format=guided\">要望</ulink>を出して下さる"
 "ようお願いします。"
 
-#: ../doc/C/Terminal.xml.in:1545 (title)
+#: ../doc/C/Terminal.xml.in:1555 (title)
 msgid ""
 "@PACKAGE_NAME@ complains about <literal>Unable to start terminal server: "
 "Unable to connect to D-BUS message daemon</literal>, what can I do?"
@@ -2372,7 +2384,7 @@ msgstr ""
 "@PACKAGE_NAME@ が <literal>ターミナルサーバーを起動できません: D-BUS メッセー"
 "ジデーモンと接続できません</literal> 言ってきます、何をすればよいですか？"
 
-#: ../doc/C/Terminal.xml.in:1548 (para)
+#: ../doc/C/Terminal.xml.in:1558 (para)
 msgid ""
 "@PACKAGE_NAME@ tries to reduce the number of running instances by "
 "establishing a D-BUS service that handles all terminal windows. The message "
@@ -2386,7 +2398,7 @@ msgstr ""
 "スを登録できなかった事を伝えています。これは単なる警告メッセージですので、D-"
 "BUS のサービス機能が無くても普通にターミナルを使用することができます。"
 
-#: ../doc/C/Terminal.xml.in:1553 (para)
+#: ../doc/C/Terminal.xml.in:1563 (para)
 msgid ""
 "To start the D-BUS session message daemon when you login to your X session, "
 "either modify your xinitrc file and change the line <literal>xfce4-session</"
@@ -2402,7 +2414,7 @@ msgstr ""
 "かを行って下さい。Xfce を使用していないのでしたら、D-BUS セッションデーモンを"
 "有効にする方法に関して、あなたのデスクトップ環境の文書を御覧になって下さい。"
 
-#: ../doc/C/Terminal.xml.in:1561 (title)
+#: ../doc/C/Terminal.xml.in:1571 (title)
 msgid ""
 "<keycap>Home</keycap> and <keycap>End</keycap> keys don't work in "
 "@PACKAGE_NAME@, what's wrong?"
@@ -2410,7 +2422,7 @@ msgstr ""
 "@PACKAGE_NAME@ で <keycap>Home</keycap> および <keycap>End</keycap> キーが使"
 "えません、何が悪いんですか？"
 
-#: ../doc/C/Terminal.xml.in:1563 (para)
+#: ../doc/C/Terminal.xml.in:1573 (para)
 msgid ""
 "This problem is actually a bug in <ulink url=\"http://developer.gnome.org/"
 "arch/gnome/widgets/vte.html\">vte</ulink>, the terminal widget used by "
@@ -2426,11 +2438,11 @@ msgstr ""
 "は vte のバージョン 0.11.11 に対して作成されたので、他のバージョンではうまく"
 "いかないかもしれません)。パッチを作成した Auke Kok 氏に感謝します。"
 
-#: ../doc/C/Terminal.xml.in:1569 (title)
+#: ../doc/C/Terminal.xml.in:1579 (title)
 msgid "How to customize the menus in @PACKAGE_NAME@?"
 msgstr "@PACKAGE_NAME@ のメニューはどのようにカスタマイズするんですか？"
 
-#: ../doc/C/Terminal.xml.in:1571 (para)
+#: ../doc/C/Terminal.xml.in:1581 (para)
 msgid ""
 "You can customize the main menubar and the right-click popup menu by editing "
 "the file <filename>Terminal/Terminal.ui</filename>. Create a copy of this "
@@ -2444,7 +2456,7 @@ msgstr ""
 "<filename role=\"directory\">/usr/local</filename> にターミナルをインストール"
 "したとします、それでしたら以下の手順を行って下さい:"
 
-#: ../doc/C/Terminal.xml.in:1576 (screen)
+#: ../doc/C/Terminal.xml.in:1586 (screen)
 #, no-wrap
 msgid ""
 "$ mkdir -p ~/.local/share/Terminal\n"
@@ -2455,7 +2467,7 @@ msgstr ""
 "$ cd ~/.local/share/Terminal\n"
 "$ cp /usr/local/share/Terminal/Terminal.ui ."
 
-#: ../doc/C/Terminal.xml.in:1580 (para)
+#: ../doc/C/Terminal.xml.in:1590 (para)
 msgid ""
 "Now you can safely edit the file <filename>~/.local/share/Terminal/Terminal."
 "ui</filename> to customize the menus. See the <ulink url=\"http://developer."
@@ -2469,7 +2481,7 @@ msgstr ""
 "GtkUIManager.html\">GtkUIManager</ulink> を御覧下さい。変更は新しく起動される"
 "ターミナルウィンドウにのみ反映されます。"
 
-#: ../doc/C/Terminal.xml.in:1584 (para)
+#: ../doc/C/Terminal.xml.in:1594 (para)
 msgid ""
 "If you choose to customize your menus this way, you'll have to take care to "
 "sync your customized <filename>Terminal.ui</filename> file when you upgrade "
@@ -2482,11 +2494,11 @@ msgstr ""
 "<filename>Terminal.ui</filename> がきちんと更新されているか気を配る必要があり"
 "ます。"
 
-#: ../doc/C/Terminal.xml.in:1591 (title)
+#: ../doc/C/Terminal.xml.in:1601 (title)
 msgid "Support"
 msgstr "サポート"
 
-#: ../doc/C/Terminal.xml.in:1593 (para)
+#: ../doc/C/Terminal.xml.in:1603 (para)
 msgid ""
 "To report a bug or to make a suggestion regarding this application or this "
 "manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
@@ -2500,7 +2512,7 @@ msgstr ""
 "利用下さい。意味のあるバグ報告こそがバグを修正するのだという事を忘れないで下"
 "さい、ではどういったものが該当するかというと、二つの特質があります:"
 
-#: ../doc/C/Terminal.xml.in:1600 (para)
+#: ../doc/C/Terminal.xml.in:1610 (para)
 msgid ""
 "<emphasis role=\"bold\">Reproducible.</emphasis> If the developer cannot see "
 "the bug himself to prove that it exists, he will most probably not be able "
@@ -2510,7 +2522,7 @@ msgstr ""
 "を確認することができない場合は、それを修正するのはほぼ不可能に近くなります。"
 "どんな細かいことでも役立ちますので、詳細を余さず伝えて下さい。"
 
-#: ../doc/C/Terminal.xml.in:1605 (para)
+#: ../doc/C/Terminal.xml.in:1615 (para)
 msgid ""
 "<emphasis role=\"bold\">Specific.</emphasis> The quicker the developer can "
 "isolate the problem to a specific area, the more likely he will expediently "
@@ -2519,7 +2531,7 @@ msgstr ""
 "<emphasis role=\"bold\">具体的であること。</emphasis>開発者が問題を特定の箇所"
 "により早く絞れる程、その修正措置を取りやすくなります。"
 
-#: ../doc/C/Terminal.xml.in:1610 (para)
+#: ../doc/C/Terminal.xml.in:1620 (para)
 msgid ""
 "In case you want to request a new feature, please make clear why you "
 "consider it a worth addition for the application. It is more likely that a "
@@ -2538,7 +2550,7 @@ msgstr ""
 "で下さい。特に <emphasis>Coding Style</emphasis> と題されている箇所に目を通す"
 "ようにして下さい。"
 
-#: ../doc/C/Terminal.xml.in:1617 (para)
+#: ../doc/C/Terminal.xml.in:1627 (para)
 msgid ""
 "Else, if you have questions about the use or installation of this software, "
 "please ask on the <ulink url=\"http://www.os-cillation.de/cgi-bin/yabb/YaBB."
@@ -2553,11 +2565,11 @@ msgstr ""
 "<emphasis role=\"bold\">#xfce</emphasis> に参加した上で手助けを求めてみて下さ"
 "い。"
 
-#: ../doc/C/Terminal.xml.in:1624 (title)
+#: ../doc/C/Terminal.xml.in:1634 (title)
 msgid "About @PACKAGE_NAME@"
 msgstr "@PACKAGE_NAME@ について"
 
-#: ../doc/C/Terminal.xml.in:1626 (para)
+#: ../doc/C/Terminal.xml.in:1636 (para)
 msgid ""
 "@PACKAGE_NAME@ was written by Benedikt Meurer (<email>benny@xfce.org</"
 "email>). Visit the <ulink url=\"http://www.os-cillation.com/\" type=\"http"
@@ -2567,7 +2579,7 @@ msgstr ""
 "た。より詳しい情報を得るには <ulink url=\"http://www.os-cillation.com/\" "
 "type=\"http\">os-cillation のウェブサイト</ulink>を訪れて下さい。"
 
-#: ../doc/C/Terminal.xml.in:1632 (para)
+#: ../doc/C/Terminal.xml.in:1642 (para)
 msgid ""
 "This documentation was written by Benedikt Meurer (<email>benny@xfce.org</"
 "email>) and Andrew Conkling (<email>andrewski@fr.st</email>). The latest "
@@ -2579,7 +2591,7 @@ msgstr ""
 "type=\"http\" url=\"http://terminal.os-cillation.com/\">Terminal のウェブサイ"
 "ト</ulink>にあります。"
 
-#: ../doc/C/Terminal.xml.in:1639 (para)
+#: ../doc/C/Terminal.xml.in:1649 (para)
 msgid ""
 "This software is distributed under the terms of the GNU General Public "
 "License as published by the Free Software Foundation; either version 2 of "
@@ -2589,7 +2601,7 @@ msgstr ""
 "の条件下に配布されています。第2版あるいは、あなたが選ぶそれ以降の版のいずれか"
 "が適用されます。"
 
-#: ../doc/C/Terminal.xml.in:1645 (para)
+#: ../doc/C/Terminal.xml.in:1655 (para)
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
