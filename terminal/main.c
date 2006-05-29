@@ -137,11 +137,10 @@ main (int argc, char **argv)
   gtk_set_locale ();
 
 #ifdef G_ENABLE_DEBUG
-  g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL);
   /* Do NOT remove this line for now, If something doesn't work,
    * fix your code instead!
    */
-  g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
+  //g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
 
   if (!terminal_options_parse (argc, argv, NULL, &options, &error))
