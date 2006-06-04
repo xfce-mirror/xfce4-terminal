@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Terminal package.
 # Benedikt Meurer <benny@xfce.org>, 2004.
 # Stephane Roy <sroy@j2n.net>, 2004.
+# Maximilian Schleiss <maxschleiss@bluewin.ch>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.5.2svn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-21 23:27+0900\n"
-"PO-Revision-Date: 2005-09-14 01:18+0900\n"
-"Last-Translator: Stephane Roy <sroy@j2n.net>\n"
-"Language-Team: os-cillation <info@os-cillation.de>\n"
+"POT-Creation-Date: 2006-06-03 22:53+0900\n"
+"PO-Revision-Date: 2006-05-31 18:29+0100\n"
+"Last-Translator: Maximilian Schleiss <maxschleiss@bluewin.ch>\n"
+"Language-Team: French <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,7 +23,8 @@ msgstr "Usage : Terminal [OPTION...]"
 
 #: ../terminal/main.c:44
 msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Affiche ce message et quitte"
+msgstr ""
+"  -h, --help                          Affiche ce message d'aide et quitte"
 
 #: ../terminal/main.c:45
 msgid ""
@@ -63,13 +65,12 @@ msgid "  -T, --title=TITLE                   Set the terminals title"
 msgstr "  -T, --title=TITRE                   Précise le titre du terminal"
 
 #: ../terminal/main.c:55
-#, fuzzy
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
-"  -x, --execute                       Exécute le reste de la ligne de\n"
-"                                      commande dans le terminal"
+"  -H, --hold                          Ne pas supprimer l'onglet\n"
+"                                    lorsque la commande est terminée"
 
 #: ../terminal/main.c:58
 msgid ""
@@ -267,8 +268,8 @@ msgstr ""
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:157
-#, fuzzy, c-format
+#: ../terminal/main.c:156
+#, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
@@ -283,21 +284,21 @@ msgid ""
 msgstr ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) 2003-2006\n"
 "        os-cillation e.K. Tous droits réservés.\n"
 "\n"
-"Fait par Benedikt Meurer <benny@xfce.org>.\n"
+"Écrit par Benedikt Meurer <benny@xfce.org>.\n"
 "\n"
 "Compilé avec Gtk+-%d.%d.%d, s'exécute avec Gtk+-%d.%d.%d.\n"
 "\n"
 "S'il vous plaît, reporter tout bogue à <%s>.\n"
 
-#: ../terminal/main.c:251
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr ""
+msgstr "Impossible d'enregistrer le service terminal: %s\n"
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:259
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Impossible de lancer le terminal : %s\n"
@@ -309,7 +310,7 @@ msgstr "Chaîne de géométrie invalide \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
-msgstr ""
+msgstr "Mauvaise concordance id utilisateur"
 
 #: ../terminal/terminal-dbus.c:145
 msgid "D-BUS message bus disconnected, exiting...\n"
@@ -325,14 +326,13 @@ msgid "X Terminal Emulator"
 msgstr "Émulateur de terminal X"
 
 #: ../terminal/terminal-dialogs.c:82
-#, fuzzy
 msgid "translator-credits"
-msgstr "Traducteur (%s)"
+msgstr "Traducteur"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:240
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Erreur à l'ouverture du navigateur de la documentation"
 
 #: ../terminal/terminal-helper-dialog.c:51
 msgid "Web Browser"
@@ -754,7 +754,7 @@ msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:566
 msgid "Display _borders around new windows"
-msgstr "Afficher les _bords de la fenêtre"
+msgstr "Afficher les bords de la _fenêtre"
 
 #: ../terminal/terminal-preferences-dialog.c:569
 msgid ""
@@ -773,13 +773,12 @@ msgid "<b>Foreground and Background</b>"
 msgstr "<b>Premier et arrière plans</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:611
-#, fuzzy
 msgid "_Text and cursor color:"
-msgstr "Couleur d'arrière-plan du Terminal"
+msgstr "Couleur du texte et du curseur"
 
 #: ../terminal/terminal-preferences-dialog.c:626
 msgid "Choose terminal text color"
-msgstr "Choisir la couleur du texte du terminal"
+msgstr "Choisir la couleur de texte du terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:634
 #: ../terminal/terminal-preferences-dialog.c:649
@@ -796,9 +795,8 @@ msgid "Open a dialog to specify the color"
 msgstr "Ouvre une fenêtre pour spécifier la couleur"
 
 #: ../terminal/terminal-preferences-dialog.c:641
-#, fuzzy
 msgid "Choose terminal cursor color"
-msgstr "Choisir la couleur d'arrière-plan du terminal"
+msgstr "Choisir la couleur du curseur"
 
 #: ../terminal/terminal-preferences-dialog.c:657
 msgid "_Background color:"
@@ -809,33 +807,28 @@ msgid "Choose terminal background color"
 msgstr "Choisir la couleur d'arrière-plan du terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:689
-#, fuzzy
 msgid "<b>Text Selection</b>"
-msgstr "<b>Titre</b>"
+msgstr "<b>Sélection de texte</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:700
 msgid "Use _default color"
-msgstr ""
+msgstr "Utiliser couleur par défaut"
 
 #: ../terminal/terminal-preferences-dialog.c:703
-#, fuzzy
 msgid "Use the default text selection background color"
-msgstr "Choisir la couleur d'arrière-plan du terminal"
+msgstr "Utiliser la couleur par défaut pour la sélection de texte"
 
 #: ../terminal/terminal-preferences-dialog.c:708
-#, fuzzy
 msgid "Use _custom color"
-msgstr "Couleur d'_arrière-plan :"
+msgstr "Utiliser _une couleur personnalisée"
 
 #: ../terminal/terminal-preferences-dialog.c:711
-#, fuzzy
 msgid "Use a custom text selection background color"
-msgstr "Choisir la couleur d'arrière-plan du terminal"
+msgstr "Utiliser une couleur par défaut pour la sélection de texte"
 
 #: ../terminal/terminal-preferences-dialog.c:719
-#, fuzzy
 msgid "Choose terminal text selection background color"
-msgstr "Choisir la couleur d'arrière-plan du terminal"
+msgstr "Choisir la couleur pour la sélection de texte"
 
 #: ../terminal/terminal-preferences-dialog.c:738
 msgid "<b>Palette</b>"
@@ -848,9 +841,9 @@ msgstr ""
 
 #. setup a tooltip
 #: ../terminal/terminal-preferences-dialog.c:770
-#, fuzzy, c-format
+#, c-format
 msgid "Palette entry %d"
-msgstr "Entrée de palette 1"
+msgstr "Entrée de palette %d"
 
 #: ../terminal/terminal-preferences-dialog.c:787
 msgid "Colors"
@@ -974,13 +967,12 @@ msgstr "Ouvrir un onglet"
 #: ../terminal/terminal-preferences.c:314
 #: ../terminal/terminal-preferences.c:315
 msgid "Open Terminal"
-msgstr "Ouvrir un terminal"
+msgstr "Ouvrir un _terminal"
 
 #: ../terminal/terminal-preferences.c:325
 #: ../terminal/terminal-preferences.c:326
-#, fuzzy
 msgid "Detach Tab"
-msgstr "_Détacher l'onglet"
+msgstr "Détacher l'onglet"
 
 #: ../terminal/terminal-preferences.c:336
 #: ../terminal/terminal-preferences.c:337
@@ -1004,9 +996,8 @@ msgstr "Coller"
 
 #: ../terminal/terminal-preferences.c:380
 #: ../terminal/terminal-preferences.c:381
-#, fuzzy
 msgid "Applications"
-msgstr "_Applications..."
+msgstr "Applications"
 
 #: ../terminal/terminal-preferences.c:391
 #: ../terminal/terminal-preferences.c:392
@@ -1174,9 +1165,8 @@ msgid "Another application has already acquired control over your keyboard."
 msgstr "Une autre application a déjà pris la main sur votre clavier."
 
 #: ../terminal/terminal-tab-header.c:121 ../terminal/terminal-tab-header.c:122
-#, fuzzy
 msgid "Tab position"
-msgstr "Boutons de fermeture d'onglet"
+msgstr "Position de l'onglet"
 
 #: ../terminal/terminal-tab-header.c:133 ../terminal/terminal-tab-header.c:134
 msgid "Tab title"
@@ -1239,11 +1229,9 @@ msgstr ""
 "ou taille (%d)\n"
 
 #: ../terminal/terminal-widget.c:555
-#, fuzzy, c-format
+#, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Incapable de lâcher la liste de liens sur le terminal : mauvais format (%d) "
-"ou taille (%d)\n"
+msgstr "Couleur non conforme: Mauvais format (%d) ou taille (%d)\n"
 
 #: ../terminal/terminal-window.c:195
 msgid "_File"
@@ -1258,18 +1246,16 @@ msgid "Open a new terminal tab"
 msgstr "Ouvre un terminal dans un nouvel onglet"
 
 #: ../terminal/terminal-window.c:197
-#, fuzzy
 msgid "Open T_erminal"
-msgstr "Ouvrir un terminal"
+msgstr "Ouvrir un _terminal"
 
 #: ../terminal/terminal-window.c:197
 msgid "Open a new terminal window"
 msgstr "Ouvrir un terminal dans une nouvelle fenêtre"
 
 #: ../terminal/terminal-window.c:198
-#, fuzzy
 msgid "Open a new window for the current terminal tab"
-msgstr "Entrer le titre l'onglet courant"
+msgstr "Ouvrir une nouvelle fenêtre pour l'onglet courant"
 
 #: ../terminal/terminal-window.c:199
 msgid "Close the current terminal tab"
@@ -1320,9 +1306,8 @@ msgid "Customize the toolbars"
 msgstr "Personnaliser la barre d'outils"
 
 #: ../terminal/terminal-window.c:206
-#, fuzzy
 msgid "Pr_eferences..."
-msgstr "_Préférences..."
+msgstr "Pr_éférences..."
 
 #: ../terminal/terminal-window.c:206
 msgid "Open the Terminal preferences dialog"
@@ -1386,11 +1371,11 @@ msgstr "Affiche le sommaire de l'aide"
 
 #: ../terminal/terminal-window.c:217
 msgid "_Report a bug"
-msgstr "_Rapportez un bogue"
+msgstr "_Rapporter un bogue"
 
 #: ../terminal/terminal-window.c:217
 msgid "Report a bug in Terminal"
-msgstr "Rapportez un bogue"
+msgstr "Rapporter un bogue"
 
 #: ../terminal/terminal-window.c:218
 msgid "_About"
@@ -1414,7 +1399,7 @@ msgstr "Afficher/cacher la barre de menus"
 
 #: ../terminal/terminal-window.c:225
 msgid "Show _Toolbars"
-msgstr "Afficher la _barre d'outils"
+msgstr "Afficher la barre d'_outils"
 
 #: ../terminal/terminal-window.c:225
 msgid "Show/hide the toolbars"
@@ -1479,13 +1464,13 @@ msgid ""
 "preferred applications now?"
 msgstr ""
 "Vous n'avez pas encore choisi votre\n"
-"lecteur de mail favori. Voulez-vous\n"
+"messagerie favorite. Voulez-vous\n"
 "configurer vos applications préférées\n"
 "maintenant ?"
 
 #: ../terminal/terminal-window.c:1397
 msgid "Window Title|Set Title"
-msgstr ""
+msgstr "Titre de la fenêtre|Donner un titre"
 
 #: ../terminal/terminal-window.c:1411
 msgid "<b>Title:</b>"
@@ -1493,7 +1478,7 @@ msgstr "<b>Titre :</b>"
 
 #: ../terminal/terminal-window.c:1425
 msgid "Enter the title for the current terminal tab"
-msgstr "Entrer le titre l'onglet courant"
+msgstr "Entrer le titre de l'onglet courant"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
@@ -1505,21 +1490,19 @@ msgstr "Balsa"
 
 #: ../helpers/epiphany.desktop.in.h:1
 msgid "Epiphany Web Browser"
-msgstr "Epiphany"
+msgstr "Navigateur web Epiphany"
 
 #: ../helpers/evolution.desktop.in.h:1
 msgid "Novell Evolution"
 msgstr "Novell Evolution"
 
 #: ../helpers/exo-open-browser.desktop.in.h:1
-#, fuzzy
 msgid "Default Web Browser (Xfce)"
-msgstr "Galeon"
+msgstr "Navigateur Web par défaut (Xfce)"
 
 #: ../helpers/exo-open-mailer.desktop.in.h:1
-#, fuzzy
 msgid "Default Mail Reader (Xfce)"
-msgstr "Choisir un lecteur de mail personnel"
+msgstr "Messagerie par défaut (Xfce)"
 
 #: ../helpers/firefox.desktop.in.h:1
 msgid "Mozilla Firefox"
@@ -1527,7 +1510,7 @@ msgstr "Mozilla Firefox"
 
 #: ../helpers/galeon.desktop.in.h:1
 msgid "Galeon Web Browser"
-msgstr "Galeon"
+msgstr "Navigateur web Galeon"
 
 #: ../helpers/kmail.desktop.in.h:1
 msgid "KMail"
@@ -1543,11 +1526,11 @@ msgstr "Lynx"
 
 #: ../helpers/mozilla-browser.desktop.in.h:1
 msgid "Mozilla Browser"
-msgstr "Mozilla"
+msgstr "Navigateur Mozilla"
 
 #: ../helpers/mozilla-mailer.desktop.in.h:1
 msgid "Mozilla Mail"
-msgstr "Mozilla Mail"
+msgstr "Mozilla Messagerie"
 
 #: ../helpers/mutt.desktop.in.h:1
 msgid "Mutt"
@@ -1555,19 +1538,20 @@ msgstr "Mutt"
 
 #: ../helpers/opera-browser.desktop.in.h:1
 msgid "Opera Browser"
-msgstr "Opera"
+msgstr "Navigateur web Opera"
 
 #: ../helpers/opera-mailer.desktop.in.h:1
 msgid "Opera Mail"
 msgstr "Opera Mail"
 
 #: ../helpers/sensible-browser.desktop.in.h:1
+#, fuzzy
 msgid "Debian Sensible Browser"
-msgstr "Debian Sensible"
+msgstr "Debian Sensible Browser"
 
 #: ../helpers/sylpheed-claws.desktop.in.h:1
 msgid "Sylpheed Claws"
-msgstr ""
+msgstr "Sylpheed Claws"
 
 #: ../helpers/thunderbird.desktop.in.h:1
 msgid "Mozilla Thunderbird"
