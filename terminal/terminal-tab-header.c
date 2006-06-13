@@ -199,7 +199,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
   gtk_box_pack_start (GTK_BOX (header), header->ebox, TRUE, TRUE, 0);
   gtk_widget_show (header->ebox);
 
-  header->label = g_object_new (EXO_TYPE_ELLIPSIZED_LABEL,
+  header->label = g_object_new (GTK_TYPE_LABEL,
                                 "selectable", FALSE,
                                 "xalign", 0.0,
                                 NULL);
