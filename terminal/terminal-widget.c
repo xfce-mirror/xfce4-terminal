@@ -51,9 +51,9 @@
 #define MATCH_BROWSER2  "(www|ftp)[" HOSTCHARS "]*\\.[" HOSTCHARS ".]+(:[0-9]+)?" \
                         "(/[-A-Za-z0-9_$.+!*(),;:@&=?/~#%]*[^]'.}>) \t\r\n,\\\"])?"
 #if !defined(__GLIBC__)
-#define MATCH_MAILER    "(mailto:)?[a-z0-9][a-z0-9.-+]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+"
+#define MATCH_MAILER    "(mailto:)?[a-z0-9][a-z0-9.-]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+"
 #else
-#define MATCH_MAILER    "\\<(mailto:)?[a-z0-9][a-z0-9.-+]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+\\>"
+#define MATCH_MAILER    "\\<(mailto:)?[a-z0-9][a-z0-9.-]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+\\>"
 #endif
 
 
