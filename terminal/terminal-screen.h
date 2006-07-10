@@ -1,4 +1,4 @@
-/* $Id: terminal-screen.h 57 2004-11-22 17:38:15Z bmeurer $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

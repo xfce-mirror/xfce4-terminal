@@ -1,4 +1,4 @@
-/* $Id: terminal-window.h 99 2004-12-21 19:40:47Z bmeurer $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004-2005 os-cillation e.K.
  *
