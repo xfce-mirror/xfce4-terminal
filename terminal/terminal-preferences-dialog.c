@@ -1,4 +1,4 @@
-/* $Id: terminal-preferences-dialog.c,v 1.9 2004/09/18 22:06:16 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

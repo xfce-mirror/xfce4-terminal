@@ -1,4 +1,4 @@
-dnl $Id: configure.ac,v 1.10 2004/09/22 18:41:04 bmeurer Exp $
+dnl $Id$
 dnl
 dnl Copyright (c) 2003-2004
 dnl         os-cillation e.K. All rights reserved.
@@ -19,7 +19,7 @@ AC_COPYRIGHT([Copyright (c) 2004
 Written by Benedikt Meurer <benny@xfce.org>.])
 AC_INIT([Terminal], [terminal_version], [xfce4-dev@xfce.org])
 AC_PREREQ([2.50])
-AC_REVISION([$Id: configure.ac,v 1.10 2004/09/22 18:41:04 bmeurer Exp $])
+AC_REVISION([$Id$])
 
 dnl Initialize automake
 TERMINAL_VERSION=terminal_version

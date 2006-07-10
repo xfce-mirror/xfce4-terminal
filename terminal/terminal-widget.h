@@ -1,4 +1,4 @@
-/* $Id: terminal-widget.h,v 1.6 2004/09/17 23:37:55 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

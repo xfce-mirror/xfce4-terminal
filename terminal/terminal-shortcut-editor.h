@@ -1,4 +1,4 @@
-/* $Id: terminal-shortcut-editor.h,v 1.1 2004/09/18 11:40:44 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

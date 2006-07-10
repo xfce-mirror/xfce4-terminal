@@ -1,4 +1,4 @@
-/* $Id: terminal-preferences.h,v 1.5 2004/09/17 10:16:45 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *

@@ -1,4 +1,4 @@
-/* $Id: main.c,v 1.10 2004/09/22 18:41:04 bmeurer Exp $ */
+/* $Id$ */
 /*-
  * Copyright (c) 2004 os-cillation e.K.
  *
