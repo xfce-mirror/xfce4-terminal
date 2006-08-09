@@ -1233,9 +1233,16 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
 
   if (screen->pid >= 0)
     {
+      /* make sure that we use linprocfs on all systems */
+#if defined(__FreeBSD__)
+      file = g_strdup_printf ("/compat/linux/proc/%d/cwd", screen->pid);
+#elif defined(__NetBSD__) || defined(__OpenBSD__)
+      file = g_strdup_printf ("/emul/linux/proc/%d/cwd", screen->pid);
+#else
       file = g_strdup_printf ("/proc/%d/cwd", screen->pid);
-      length = readlink (file, buffer, sizeof (buffer));
+#endif
 
+      length = readlink (file, buffer, sizeof (buffer));
       if (length > 0 && *buffer == '/')
         {
           buffer[length] = '\0';
