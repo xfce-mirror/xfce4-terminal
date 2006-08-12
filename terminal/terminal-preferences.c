@@ -1250,7 +1250,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("word-chars",
                                                         "word-chars",
                                                         "word-chars",
-                                                        "-A-Za-z0-9,./?%&#:_",
+                                                        "-A-Za-z0-9,./?%&#:_~",
                                                         EXO_PARAM_READWRITE));
 }
 
