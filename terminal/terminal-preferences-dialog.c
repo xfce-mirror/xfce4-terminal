@@ -31,6 +31,7 @@
 
 
 
+/* Property identifiers */
 enum
 {
   PIXBUF_COLUMN,
@@ -1059,142 +1060,45 @@ terminal_preferences_dialog_response (TerminalPreferencesDialog *dialog,
 
 
 static void
-update_preview (GtkFileChooser *chooser,
-                GtkWidget      *image)
-{
-  GdkPixbuf *pixbuf;
-  GdkPixbuf *temp;
-  gchar     *filename;
-  gchar     *basename;
-  gchar     *name;
-  gint       height;
-  gint       width;
-
-  filename = gtk_file_chooser_get_filename (chooser);
-
-  if (G_UNLIKELY (filename == NULL))
-    {
-      gtk_image_set_from_stock (GTK_IMAGE (image),
-                                GTK_STOCK_MISSING_IMAGE,
-                                GTK_ICON_SIZE_DIALOG);
-      gtk_frame_set_label (GTK_FRAME (image->parent), NULL);
-      gtk_widget_set_sensitive (image->parent, FALSE);
-      return;
-    }
-  else
-    {
-      basename = g_path_get_basename (filename);
-      name = g_filename_to_utf8 (basename, -1, NULL, NULL, NULL);
-      gtk_frame_set_label (GTK_FRAME (image->parent), name);
-      g_free (basename);
-      g_free (name);
-    }
-
-  pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
-  if (G_LIKELY (pixbuf != NULL))
-    {
-      g_object_get (G_OBJECT (pixbuf),
-                    "height", &height,
-                    "width", &width,
-                    NULL);
-
-      if (width > 256 || height > 256)
-        {
-          temp = exo_gdk_pixbuf_scale_ratio (pixbuf, 256);
-          g_object_unref (G_OBJECT (pixbuf));
-          pixbuf = temp;
-        }
-
-      gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
-      gtk_widget_set_sensitive (image->parent, TRUE);
-      g_object_unref (G_OBJECT (pixbuf));
-    }
-  else
-    {
-      gtk_image_set_from_stock (GTK_IMAGE (image),
-                                GTK_STOCK_MISSING_IMAGE,
-                                GTK_ICON_SIZE_DIALOG);
-      gtk_widget_set_sensitive (image->parent, FALSE);
-    }
-
-  g_free (filename);
-}
-
-
-
-static void
 terminal_preferences_open_image_file (GtkWidget *button,
                                       GtkWidget *entry)
 {
   GtkFileFilter *filter;
   GtkWidget     *toplevel;
-  GtkWidget     *frame;
-  GtkWidget     *preview;
   GtkWidget     *dialog;
-  gchar        **extensions;
-  gchar        **mime_types;
   gchar         *filename;
-  gchar         *pattern;
-  GSList        *formats;
-  GSList        *lp;
-  guint          n;
 
+  /* determine the toplevel window */
   toplevel = gtk_widget_get_toplevel (entry);
+  if (toplevel == NULL || !GTK_WIDGET_TOPLEVEL (toplevel))
+    return;
+
+  /* allocate the file chooser window */
   dialog = gtk_file_chooser_dialog_new (_("Select background image file"),
                                         GTK_WINDOW (toplevel),
                                         GTK_FILE_CHOOSER_ACTION_OPEN,
                                         GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
                                         GTK_STOCK_OPEN, GTK_RESPONSE_ACCEPT,
                                         NULL);
-
+  gtk_dialog_set_alternative_button_order (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT, GTK_RESPONSE_CANCEL, -1);
+  gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
+  exo_gtk_file_chooser_add_thumbnail_preview (GTK_FILE_CHOOSER (dialog));
   gtk_file_chooser_set_local_only (GTK_FILE_CHOOSER (dialog), TRUE);
-  gtk_file_chooser_set_use_preview_label (GTK_FILE_CHOOSER (dialog), FALSE);
 
+  /* add "All Files" filter */
   filter = gtk_file_filter_new ();
   gtk_file_filter_set_name (filter, _("All Files"));
   gtk_file_filter_add_pattern (filter, "*");
   gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
 
+  /* add "Image Files" filter */
   filter = gtk_file_filter_new ();
   gtk_file_filter_set_name (filter, _("Image Files"));
-  formats = gdk_pixbuf_get_formats ();
-  for (lp = formats; lp != NULL; lp = lp->next)
-    {
-      extensions = gdk_pixbuf_format_get_extensions (lp->data);
-      for (n = 0; extensions[n] != NULL; ++n)
-        {
-          pattern = g_strconcat ("*.", extensions[n], NULL);
-          gtk_file_filter_add_pattern (filter, pattern);
-          g_free (pattern);
-        }
-      g_strfreev (extensions);
-
-      mime_types = gdk_pixbuf_format_get_mime_types (lp->data);
-      for (n = 0; mime_types[n] != NULL; ++n)
-        gtk_file_filter_add_mime_type (filter, mime_types[n]);
-      g_strfreev (mime_types);
-    }
-  g_slist_free (formats);
+  gtk_file_filter_add_pixbuf_formats (filter);
   gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
   gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
 
-  frame = g_object_new (GTK_TYPE_FRAME,
-                        "sensitive", FALSE,
-                        "shadow-type", GTK_SHADOW_IN,
-                        NULL);
-  gtk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (dialog), frame);
-  gtk_file_chooser_set_preview_widget_active (GTK_FILE_CHOOSER (dialog), TRUE);
-  gtk_widget_show (frame);
-
-  preview = g_object_new (GTK_TYPE_IMAGE,
-                          "height-request", 256 + 2 * 12,
-                          "width-request", 256 + 2 * 12,
-                          NULL);
-  g_signal_connect (G_OBJECT (dialog), "update-preview",
-                    G_CALLBACK (update_preview), preview);
-  gtk_container_add (GTK_CONTAINER (frame), preview);
-  gtk_widget_show (preview);
-
+  /* preselect the previous filename */
   filename = gtk_editable_get_chars (GTK_EDITABLE (entry), 0, -1);
   if (G_LIKELY (filename != NULL))
     {
@@ -1203,6 +1107,7 @@ terminal_preferences_open_image_file (GtkWidget *button,
       g_free (filename);
     }
 
+  /* run the chooser dialog */
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
     {
       filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
@@ -1210,6 +1115,7 @@ terminal_preferences_open_image_file (GtkWidget *button,
       g_free (filename);
     }
 
+  /* destroy the dialog */
   gtk_widget_destroy (dialog);
 }
 

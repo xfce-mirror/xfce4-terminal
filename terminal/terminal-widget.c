@@ -459,6 +459,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
   gchar        **uris;
   gchar         *filename;
   gchar         *text;
+  gint           argc;
   gint           n;
 
   switch (info)
@@ -526,26 +527,40 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
         }
       else
         {
+          /* split the text/uri-list */
           text = g_strndup ((const gchar *) selection_data->data, selection_data->length);
-          uris = g_strsplit (text, "\r\n", 0);
+          uris = g_uri_list_extract_uris (text);
           g_free (text);
 
-          for (n = 0; uris != NULL && uris[n] != NULL; ++n)
+          /* translate all file:-URIs to quoted file names */
+          for (n = 0; uris[n] != NULL; ++n)
             {
+              /* check if we have a local file here */
               filename = g_filename_from_uri (uris[n], NULL, NULL);
               if (G_LIKELY (filename != NULL))
                 {
+                  /* release the file:-URI */
                   g_free (uris[n]);
-                  uris[n] = filename;
+
+                  /* check if we need to quote the file name (for the shell) */
+                  if (!g_shell_parse_argv (filename, &argc, NULL, NULL) || argc != 1)
+                    {
+                      /* we need to quote the filename */
+                      uris[n] = g_shell_quote (filename);
+                      g_free (filename);
+                    }
+                  else
+                    {
+                      /* no need to quote, shell will handle properly */
+                      uris[n] = filename;
+                    }
                 }
             }
 
-          if (uris != NULL)
-            {
-              text = g_strjoinv (" ", uris);
-              vte_terminal_feed_child (VTE_TERMINAL (widget), text, strlen (text));
-              g_strfreev (uris);
-            }
+          text = g_strjoinv (" ", uris);
+          vte_terminal_feed_child (VTE_TERMINAL (widget), text, strlen (text));
+          g_strfreev (uris);
+          g_free (text);
         }
       break;
 
@@ -564,10 +579,13 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
 
           /* prepare the value */
           g_value_init (&value, GDK_TYPE_COLOR);
-          g_value_take_boxed (&value, &color);
+          g_value_set_boxed (&value, &color);
 
           /* change the background to the specified color */
           g_object_set_property (G_OBJECT (TERMINAL_WIDGET (widget)->preferences), "color-background", &value);
+
+          /* release the value */
+          g_value_unset (&value);
         }
       break;
     }

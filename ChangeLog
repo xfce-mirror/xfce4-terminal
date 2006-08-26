@@ -1,3 +1,12 @@
+2006-08-26	Benedikt Meurer <benny@xfce.org>
+
+	* terminal/terminal-widget.c: Parse file:-URIs dropped to a Terminal
+	  window properly and format them so they can be used in shell commands
+	  directly without having to worry about quoting. Bug #2076.
+	* configure.in.in, terminal/terminal-preferences-dialog.c: Use the
+	  thumbnail preview support for the background image file selection
+	  that was added with exo 0.3.1.9. Bug #2069.
+
 2006-08-12	Benedikt Meurer <benny@xfce.org>
 
 	* terminal/terminal-preferences.c(terminal_preferences_init): Add
