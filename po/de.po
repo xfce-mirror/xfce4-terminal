@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.5.4beta2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-06-03 22:53+0900\n"
-"PO-Revision-Date: 2006-08-25 09:17+0200\n"
+"PO-Revision-Date: 2006-08-27 18:29+0200\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,8 @@ msgid ""
 "                                      specified window"
 msgstr ""
 "  --display=ANZEIGE                   X-Anzeige, die für das zuletzt\n"
-"                                      angegebene Fenster verwendet werden soll"
+"                                      angegebene Fenster verwendet werden "
+"soll"
 
 #: ../terminal/main.c:60
 msgid ""
@@ -98,12 +99,19 @@ msgid ""
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
+"  --role=ROLLE                        Die Rolle für das zuletzt genannte\n"
+"                                      Fenster angeben; dies gilt nur\n"
+"                                      für ein Fenster; kann für jedes zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:67
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
+"  --startup-id=STRING                 Identifikationsnummer für das "
+"Protokoll\n"
+"                                      zur grafischen Rückmeldung"
 
 #: ../terminal/main.c:69
 msgid ""
@@ -113,6 +121,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
+"  --fullscreen                        Setzen Sie das zuletzt genannte "
+"Fenster\n"
+"                                      in den Vollbildmodus; dies gilt nur\n"
+"                                      für ein Fenster; kann für jedes zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:74
 msgid ""
@@ -122,6 +135,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-menubar                      Die Menüleiste für das zuletzt "
+"genannte\n"
+"                                      Fenster einschalten; dies gilt nur\n"
+"                                      für ein Fenster; kann für jedes zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:79
 msgid ""
@@ -131,6 +149,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-menubar                      Die Menüleiste für das zuletzt "
+"genannte\n"
+"                                      Fenster abschalten; dies gilt nur\n"
+"                                      für ein Fenster; kann für jedes zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:84
 msgid ""
@@ -140,6 +163,12 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --show-borders                      Die Fensterdekoration für das zuletzt\n"
+"                                      genannte Fenster einschalten; dies "
+"gilt\n"
+"                                      nur für ein Fenster; kann für jedes "
+"zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:89
 msgid ""
@@ -149,6 +178,12 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --hide-borders                      Die Fensterdekoration für das zuletzt\n"
+"                                      genannte Fenster abschalten; dies "
+"gilt\n"
+"                                      nur für ein Fenster; kann für jedes "
+"zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:94
 msgid ""
@@ -158,6 +193,12 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-toolbars                     Die Werkzeugleisten für das zuletzt\n"
+"                                      genannte Fenster einschalten; dies "
+"gilt\n"
+"                                      nur für ein Fenster; kann für jedes "
+"zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:99
 msgid ""
@@ -167,6 +208,12 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-toolbars                     Die Werkzeugleisten für das zuletzt\n"
+"                                      genannte Fenster abschalten; dies "
+"gilt\n"
+"                                      nur für ein Fenster; kann für jedes "
+"zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:105
 msgid ""
@@ -174,6 +221,10 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
+"  --window                            Öffne einen neuen Reiter im zuletzt\n"
+"                                      angegebenen Fenster; diese Option "
+"kann\n"
+"                                      mehr als einmal angegeben werden"
 
 #: ../terminal/main.c:108
 msgid ""
@@ -181,16 +232,22 @@ msgid ""
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
+"  --window                            Öffne ein neues Fenster mit einem\n"
+"                                      Reiter; diese Option kann mehr als\n"
+"                                      einmal angegeben werden"
 
 #: ../terminal/main.c:112
 msgid "  --default-display=DISPLAY           default X display to use"
 msgstr ""
+"  --default-display=DISPLAY           Zu verwendende Standard-X-Anzeige"
 
 #: ../terminal/main.c:113
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminals working\n"
 "                                      directory"
 msgstr ""
+"  --default-working-directory=DIRNAME Das Standard-Arbeitsverzeichnis\n"
+"                                      einstellen"
 
 #: ../terminal/main.c:134 ../terminal/terminal-preferences.c:1208
 #: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
@@ -220,7 +277,7 @@ msgstr ""
 "\n"
 "Erstellt mit Gtk+-%d.%d.%d, läuft mit Gtk+-%d.%d.%d.\n"
 "\n"
-"Bitte melden Sie Problem unter <%s>.\n"
+"Bitte melden Sie Probleme unter <%s>.\n"
 
 #: ../terminal/main.c:250
 #, c-format
@@ -239,16 +296,16 @@ msgstr "Ungültige Geometrieangabe \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
-msgstr "Benutzer IDs stimmen nicht überein"
+msgstr "Benutzer-Identifikationsnummern stimmen nicht überein"
 
 #: ../terminal/terminal-dbus.c:145
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
+msgstr "Verbindung zum Nachrichtenbus D-Bus wurde abgebaut, beende...\n"
 
 #: ../terminal/terminal-dbus.c:206
 #, c-format
 msgid "Unable to register object %s"
-msgstr "Konnte das D-BUS object nicht registrieren: %s"
+msgstr "Konnte das D-BUS-Objekt nicht registrieren: %s"
 
 #: ../terminal/terminal-dialogs.c:76
 msgid "X Terminal Emulator"
@@ -261,7 +318,7 @@ msgstr "Benedikt Meurer <benny@xfce.org>"
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:240
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Konnte den Brwoser für die Dokumentation nicht öffnen"
 
 #: ../terminal/terminal-helper-dialog.c:51
 msgid "Web Browser"
@@ -367,22 +424,24 @@ msgstr "Bevorzugte Anwendungen"
 #: ../terminal/terminal-options.c:106
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr "Die Option \"--sm-client-id\" erwartet als Parameter die Sitzungsid."
+msgstr ""
+"Die Option \"--sm-client-id\" erwartet als Parameter die Sitzungs-\n"
+"Identifikationsnummer."
 
 #: ../terminal/terminal-options.c:128
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
-"Die·Option·\"--execute/-x\"·erwartet·dass·die folgenden Kommandozeilen-\n"
-"parameter das auszuführende Kommand enthalten"
+"Die·Option \"--execute/-x\" erwartet, dass die folgenden Befehlszeilen-\n"
+"parameter den auszuführenden Befehl enthalten"
 
 #: ../terminal/terminal-options.c:157
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
-"Die Option \"--command/-e\" erwartet als Parameter den auszuführendenBefehl"
+"Die Option \"--command/-e\" erwartet als Parameter den auszuführenden Befehl"
 
 #: ../terminal/terminal-options.c:186
 msgid ""
@@ -390,7 +449,7 @@ msgid ""
 "its parameter"
 msgstr ""
 "Die Option \"--working-directory\" erwartet als Parameter den Pfad des\n"
-"Arbeitsverzeichnisses welches für den auszuführenden Befehl benutzt\n"
+"Arbeitsverzeichnisses, welches für den auszuführenden Befehl benutzt\n"
 "werden soll"
 
 #: ../terminal/terminal-options.c:217
@@ -416,29 +475,31 @@ msgstr ""
 #: ../terminal/terminal-options.c:304
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
-"Die Option \"--role\" erwartet als Parameter die Angabe einer Identifikation "
+"Die Option \"--role\" erwartet als Parameter die Angabe einer Rolle\n"
 "für das Fenster"
 
 #: ../terminal/terminal-options.c:331
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
-"Für die Option »--startup-id« muss die Anfangs-ID als Parameter angegeben "
-"werden"
+"Die Option \"--startup-id\" erwartet als Parameter die Angabe einer\n"
+"Start-Identifikationsnummer"
 
 #: ../terminal/terminal-options.c:412
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
-"Für die Option »--default-display« muss die Standard-X-Anzeige als Parameter "
-"angegeben werden"
+"Die Option »--default-display« erwartet als Parameter die Angabe der\n"
+"Standard-X-Anzeige"
 
 #: ../terminal/terminal-options.c:436
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
+"Die Option »--default-working-directory« erwartet als Parameter die Angabe\n"
+"des Standard-Arbeitsverzeichnisses"
 
 #: ../terminal/terminal-options.c:452
 #, c-format
@@ -457,7 +518,7 @@ msgstr "<b>Titel</b>"
 msgid ""
 "The command running inside the terminal may dynamically set a new title."
 msgstr ""
-"Das im Terminal laufende Kommando kann zur Laufzeit einen neuen Titel "
+"Der im Terminal laufende Befehl kann zur Laufzeit einen neuen Titel "
 "einstellen."
 
 #: ../terminal/terminal-preferences-dialog.c:207
@@ -500,8 +561,8 @@ msgid ""
 "login shell."
 msgstr ""
 "Wenn Sie diesen Schalter aktivieren, wird Terminal versuchen Ihre Shell beim "
-"Öffnen neuer Terminals als Login-Shell zu starten. Konsultieren Sie hierzu "
-"die Dokumentation Ihrer Shell um Details über die Unterschiede zwischen dem "
+"Öffnen neuer Terminals als Login-Shell zu starten. Konsultieren Sie die "
+"Dokumentation Ihrer Shell um Details über die Unterschiede zwischen dem "
 "Starten als interaktive Shell und dem Starten als Login-Shell zu erfahren."
 
 #: ../terminal/terminal-preferences-dialog.c:278
@@ -514,7 +575,7 @@ msgstr "<b>Rollbalken</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:302
 msgid "Sc_roll on output"
-msgstr "Bei Ausgabe weiterrollen"
+msgstr "Bei _Ausgabe weiterrollen"
 
 #: ../terminal/terminal-preferences-dialog.c:305
 msgid ""
@@ -526,19 +587,19 @@ msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:311
 msgid "Scroll on key_stroke"
-msgstr "Bei Tastendruck weiterrollen"
+msgstr "Bei _Tastendruck weiterrollen"
 
 #: ../terminal/terminal-preferences-dialog.c:314
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
-"Ermöglicht es mit einem beliebigen Tastendruck zum Kommandoprompt herunter "
-"zu rollen."
+"Ermöglicht es mit einem beliebigen Tastendruck zum Befehlsprompt herunter zu "
+"rollen."
 
 #: ../terminal/terminal-preferences-dialog.c:321
 msgid "_Scrollbar is:"
-msgstr "Rollbalken ist:"
+msgstr "_Rollbalken ist:"
 
 #: ../terminal/terminal-preferences-dialog.c:328
 msgid "On the left side"
@@ -550,7 +611,7 @@ msgstr "Auf der rechten Seite"
 
 #: ../terminal/terminal-preferences-dialog.c:345
 msgid "Scr_ollback:"
-msgstr "Zurückrollen:"
+msgstr "_Zurückrollen:"
 
 #: ../terminal/terminal-preferences-dialog.c:355
 msgid ""
@@ -585,7 +646,7 @@ msgstr ""
 "Aktivieren Sie diese Option, wenn Terminal Anti-Aliasing zum Anzeigen des "
 "Textes in Terminal-Fenster verwenden soll. Ohne diese Option kann die "
 "Darstellungsgeschwindigkeit des Terminals erheblich erhöht werden und die "
-"Gesamtsystemlast auf lagsamen Systemen redutziert werden."
+"Gesamtsystemlast auf langsamen Systemen reduziert werden."
 
 #: ../terminal/terminal-preferences-dialog.c:418
 msgid "Allow bold text"
@@ -596,8 +657,8 @@ msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
-"Aktivieren Sie diesen Schalter um es Anwendungen, die in einem "
-"Terminalfenster laufen zu gestatten, fettgedruckten Text zu verwenden."
+"Aktivieren Sie diesen Schalter, um es Anwendungen, die in einem "
+"Terminalfenster laufen, zu gestatten, fettgedruckten Text zu verwenden."
 
 #: ../terminal/terminal-preferences-dialog.c:430
 msgid "<b>Background</b>"
@@ -657,7 +718,7 @@ msgstr "<b>Vorgaben für neue Fenster</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:550
 msgid "Display _menubar in new windows"
-msgstr "Menüleiste in neuen Terminals anzeigen"
+msgstr "_Menüleiste in neuen Terminals anzeigen"
 
 #: ../terminal/terminal-preferences-dialog.c:553
 msgid ""
@@ -668,7 +729,7 @@ msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:558
 msgid "Display _toolbars in new windows"
-msgstr "Werkzeugleisten in neuen Terminals anzeigen"
+msgstr "_Werkzeugleisten in neuen Terminals anzeigen"
 
 #: ../terminal/terminal-preferences-dialog.c:561
 msgid ""
@@ -685,9 +746,7 @@ msgstr "Fenster_dekorationen in neuen Terminals anzeigen"
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
-msgstr ""
-"Aktivieren Sie diese Option um neue Fenster per Vorgabe mit Dekoration zu "
-"starten."
+msgstr "Aktivieren Sie diese Option um neue Fenster mit Dekoration zu starten."
 
 #: ../terminal/terminal-preferences-dialog.c:581
 msgid "Appearance"
@@ -745,7 +804,7 @@ msgstr "Die Standard-Farbe für die Textauswahl benutzen"
 
 #: ../terminal/terminal-preferences-dialog.c:708
 msgid "Use _custom color"
-msgstr "Benutzerdefinierte Farbe benutzen"
+msgstr "_Benutzerdefinierte Farbe benutzen"
 
 #: ../terminal/terminal-preferences-dialog.c:711
 msgid "Use a custom text selection background color"
@@ -810,7 +869,7 @@ msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:894
 msgid "_Backspace key generates:"
-msgstr "Rücktaste erzeugt:"
+msgstr "_Rücktaste erzeugt:"
 
 #: ../terminal/terminal-preferences-dialog.c:900
 #: ../terminal/terminal-preferences-dialog.c:925
@@ -834,7 +893,7 @@ msgstr "Steuerung-H"
 
 #: ../terminal/terminal-preferences-dialog.c:919
 msgid "_Delete key generates:"
-msgstr "Entfernen-Taste erzeugt:"
+msgstr "_Entfernen-Taste erzeugt:"
 
 #: ../terminal/terminal-preferences-dialog.c:944
 msgid "<tt>$TERM</tt> setting:"
@@ -855,7 +914,7 @@ msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:971
 msgid "_Reset compatibility options to defaults"
-msgstr "Kompatibilitätseinstellungen auf Vorgaben zurücksetzen"
+msgstr "_Kompatibilitätseinstellungen auf Vorgaben zurücksetzen"
 
 #: ../terminal/terminal-preferences-dialog.c:981
 msgid "<b>Double click</b>"
@@ -1068,15 +1127,15 @@ msgstr "Aktion"
 
 #: ../terminal/terminal-shortcut-editor.c:235
 msgid "Shortcut key"
-msgstr "Schnellwahltaste"
+msgstr "Tastenkürzel"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 msgid "Compose shortcut"
-msgstr "Schnellwahltaste wählen"
+msgstr "Tastenkürzel wählen"
 
 #: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
-msgstr "Schnellwähltaste wählen für:"
+msgstr "Tastenkürzel wählen für:"
 
 #: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
@@ -1088,11 +1147,11 @@ msgstr "Eine andere Anwendung hat derzeit die Kontrolle über die Tastatur."
 
 #: ../terminal/terminal-tab-header.c:121 ../terminal/terminal-tab-header.c:122
 msgid "Tab position"
-msgstr "Reiter Position"
+msgstr "Reiter-Position"
 
 #: ../terminal/terminal-tab-header.c:133 ../terminal/terminal-tab-header.c:134
 msgid "Tab title"
-msgstr "Reiter Titel"
+msgstr "Reiter-Titel"
 
 #: ../terminal/terminal-tab-header.c:213
 msgid "Close this tab"
@@ -1112,7 +1171,7 @@ msgstr "Werkzeugleisten editieren..."
 
 #: ../terminal/terminal-widget.c:323
 msgid "Copy Email Address"
-msgstr "Email Adresse kopieren"
+msgstr "Email-Adresse kopieren"
 
 #: ../terminal/terminal-widget.c:324
 msgid "Compose Email"
@@ -1153,7 +1212,7 @@ msgstr ""
 #: ../terminal/terminal-widget.c:555
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Übgültige Farbdaten erhalten: Falsches Format (%d) oder Länge (%d)\n"
+msgstr "Ungültige Farbdaten erhalten: Falsches Format (%d) oder Länge (%d)\n"
 
 #: ../terminal/terminal-window.c:195
 msgid "_File"
@@ -1165,7 +1224,7 @@ msgstr "_Reiter öffnen"
 
 #: ../terminal/terminal-window.c:196
 msgid "Open a new terminal tab"
-msgstr "Einen neuen Terminal Reiter öffnen"
+msgstr "Einen neuen Terminal-Reiter öffnen"
 
 #: ../terminal/terminal-window.c:197
 msgid "Open T_erminal"
@@ -1173,15 +1232,15 @@ msgstr "F_enster öffnen"
 
 #: ../terminal/terminal-window.c:197
 msgid "Open a new terminal window"
-msgstr "Ein neues Terminal Fenster öffnen"
+msgstr "Ein neues Terminal-Fenster öffnen"
 
 #: ../terminal/terminal-window.c:198
 msgid "Open a new window for the current terminal tab"
-msgstr "Den aktuellen Terminal Reiter in neuem Fenster öffnen"
+msgstr "Den aktuellen Terminal-Reiter in neuem Fenster öffnen"
 
 #: ../terminal/terminal-window.c:199
 msgid "Close the current terminal tab"
-msgstr "Den aktuellen Terminal Reiter schließen"
+msgstr "Den aktuellen-Terminal Reiter schließen"
 
 #: ../terminal/terminal-window.c:200
 msgid "_Close Window"
@@ -1189,7 +1248,7 @@ msgstr "Fenster _schließen"
 
 #: ../terminal/terminal-window.c:200
 msgid "Close the terminal window"
-msgstr "Das Terminal Fenster schließen"
+msgstr "Das Terminal-Fenster schließen"
 
 #: ../terminal/terminal-window.c:201
 msgid "_Edit"
@@ -1213,7 +1272,7 @@ msgstr "Aus der Zwischenablage einfügen"
 
 #: ../terminal/terminal-window.c:204
 msgid "_Applications..."
-msgstr "Anwendungen..."
+msgstr "_Anwendungen..."
 
 #: ../terminal/terminal-window.c:204
 msgid "Customize your preferred applications"
@@ -1357,7 +1416,7 @@ msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
-"Dieses Fenster hat %d reiter geöffnet. Wenn\n"
+"Dieses Fenster hat %d Reiter geöffnet. Wenn\n"
 "Sie das Fenster jetzt schließen, werden auch\n"
 "alle Reiter darin geschlossen."
 
@@ -1399,7 +1458,7 @@ msgstr "<b>Titel:</b>"
 
 #: ../terminal/terminal-window.c:1425
 msgid "Enter the title for the current terminal tab"
-msgstr "Geben Sie den Titel für den aktuellen Terminal Reiter ein"
+msgstr "Geben Sie den Titel für den aktuellen Terminal-Reiter ein"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
