@@ -2,14 +2,15 @@
 # Copyright (c) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
 # Benedikt Meurer <benny@xfce.org>, 2004-2006.
+# Fabian Nowak <timystery@arcor.de>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.5.4beta2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-06-03 22:53+0900\n"
-"PO-Revision-Date: 2006-05-20 17:35+0100\n"
-"Last-Translator: Benedikt Meurer <benny@xfce.org>\n"
+"PO-Revision-Date: 2006-08-25 09:17+0200\n"
+"Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,18 +34,23 @@ msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
+"  --disable-server                    Nicht am Nachrichtenbus D-BUS anmelden"
 
 #: ../terminal/main.c:49
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
 msgstr ""
+"  -x, --execute                       Den verbleibenden Teil der Befehls-\n"
+"                                      zeile innerhalb des Terminals ausführen"
 
 #: ../terminal/main.c:51
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
+"  -e, --command=STRING                Das Argument dieser Option innerhalb\n"
+"                                      des Terminals ausführen"
 
 #: ../terminal/main.c:53
 msgid ""
@@ -64,12 +70,16 @@ msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
+"  -H, --hold                          Den Reiter nicht sofort schließen,\n"
+"                                      wenn der Kindprozess beendet wird"
 
 #: ../terminal/main.c:58
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
+"  --display=ANZEIGE                   X-Anzeige, die für das zuletzt\n"
+"                                      angegebene Fenster verwendet werden soll"
 
 #: ../terminal/main.c:60
 msgid ""
@@ -77,6 +87,9 @@ msgid ""
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
+"  --geometry=GEOMETRIE                X-Geometrie-Spezifikation (siehe \n"
+"                                      Handbuch zu »X«), kann für jedes zu\n"
+"                                      öffnende Fenster angegeben werden"
 
 #: ../terminal/main.c:63
 msgid ""
@@ -410,12 +423,16 @@ msgstr ""
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
+"Für die Option »--startup-id« muss die Anfangs-ID als Parameter angegeben "
+"werden"
 
 #: ../terminal/terminal-options.c:412
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
+"Für die Option »--default-display« muss die Standard-X-Anzeige als Parameter "
+"angegeben werden"
 
 #: ../terminal/terminal-options.c:436
 msgid ""
@@ -469,7 +486,7 @@ msgstr "Nicht anzeigen"
 
 #: ../terminal/terminal-preferences-dialog.c:259
 msgid "<b>Command</b>"
-msgstr "<b>Kommando</b>"
+msgstr "<b>Befehl</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:268
 msgid "_Run command as login shell"
@@ -565,6 +582,10 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
+"Aktivieren Sie diese Option, wenn Terminal Anti-Aliasing zum Anzeigen des "
+"Textes in Terminal-Fenster verwenden soll. Ohne diese Option kann die "
+"Darstellungsgeschwindigkeit des Terminals erheblich erhöht werden und die "
+"Gesamtsystemlast auf lagsamen Systemen redutziert werden."
 
 #: ../terminal/terminal-preferences-dialog.c:418
 msgid "Allow bold text"
@@ -1015,7 +1036,7 @@ msgstr "Konnte Login-Shell nicht ermitteln."
 #. tell the user that we were unable to execute the command
 #: ../terminal/terminal-screen.c:945
 msgid "Failed to execute child"
-msgstr ""
+msgstr "Konnte Kindprozess nicht ausführen"
 
 #: ../terminal/terminal-screen.c:1182
 msgid "Untitled"
@@ -1111,22 +1132,28 @@ msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
+"Kann Auswahl des Typs »text/plain« nicht auf Terminal ablegen: Falsches "
+"Format (%d) oder Länge (%d)\n"
 
 #: ../terminal/terminal-widget.c:498
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"Kann Mozilla-URL nicht auf Terminal ablegen: Falsches Format (%d) oder\n"
+"Länge (%d)\n"
 
 #: ../terminal/terminal-widget.c:524
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"Kann URI-Liste nicht auf Terminal ablegen: Falsches Format (%d) oder\n"
+"Länge (%d)\n"
 
 #: ../terminal/terminal-widget.c:555
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
+msgstr "Übgültige Farbdaten erhalten: Falsches Format (%d) oder Länge (%d)\n"
 
 #: ../terminal/terminal-window.c:195
 msgid "_File"
@@ -1391,14 +1418,12 @@ msgid "Novell Evolution"
 msgstr "Novell Evolution"
 
 #: ../helpers/exo-open-browser.desktop.in.h:1
-#, fuzzy
 msgid "Default Web Browser (Xfce)"
-msgstr "Galeon Webbrowser"
+msgstr "Standard-Webbrowser (Xfce)"
 
 #: ../helpers/exo-open-mailer.desktop.in.h:1
-#, fuzzy
 msgid "Default Mail Reader (Xfce)"
-msgstr "Wählen Sie Ihr bevorzugtes Mail-Programm"
+msgstr "Standard-Mail-Programm (Xfce)"
 
 #: ../helpers/firefox.desktop.in.h:1
 msgid "Mozilla Firefox"
@@ -1446,7 +1471,7 @@ msgstr "Debians voreingestellter Webbrowser"
 
 #: ../helpers/sylpheed-claws.desktop.in.h:1
 msgid "Sylpheed Claws"
-msgstr ""
+msgstr "Sylpheed Claws"
 
 #: ../helpers/thunderbird.desktop.in.h:1
 msgid "Mozilla Thunderbird"
