@@ -205,7 +205,7 @@ terminal_widget_init (TerminalWidget *widget)
                      GTK_DEST_DEFAULT_HIGHLIGHT |
                      GTK_DEST_DEFAULT_DROP,
                      targets, G_N_ELEMENTS (targets),
-                     GDK_ACTION_COPY);
+                     GDK_ACTION_COPY | GDK_ACTION_LINK);
 
   /* monitor the helper-* settings */
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::helper-webbrowser",
