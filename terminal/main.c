@@ -23,6 +23,9 @@
 #include <config.h>
 #endif
 
+#ifdef HAVE_SIGNAL_H
+#include <signal.h>
+#endif
 #include <stdlib.h>
 
 #include <exo/exo.h>
@@ -129,6 +132,9 @@ main (int argc, char **argv)
   gchar          **nargv;
   gint             nargc;
   gint             n;
+
+  /* install required signal handlers */
+  signal (SIGPIPE, SIG_IGN);
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Terminal"));
