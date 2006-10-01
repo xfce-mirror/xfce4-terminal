@@ -1379,6 +1379,24 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 
 
 /**
+ * terminal_screen_paste_primary:
+ * @screen : A #TerminalScreen.
+ *
+ * Sends the contents of the #GDK_SELECTION_PRIMARY selection to the terminal's child.
+ * If necessary, the data is converted from UTF-8 to the terminal's current encoding.
+ * The terminal will call also paste the #GDK_SELECTION_PRIMARY selection when the user
+ * clicks with the the second mouse button.
+ **/
+void
+terminal_screen_paste_primary (TerminalScreen *screen)
+{
+  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
+}
+
+
+
+/**
  * terminal_screen_reset:
  * @screen  : A #TerminalScreen.
  * @clear   : %TRUE to also clear the terminal screen.

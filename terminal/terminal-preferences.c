@@ -50,6 +50,7 @@ enum
   PROP_ACCEL_CLOSE_WINDOW,
   PROP_ACCEL_COPY,
   PROP_ACCEL_PASTE,
+  PROP_ACCEL_PASTE_SELECTION,
   PROP_ACCEL_EDIT_HELPERS,
   PROP_ACCEL_PREFERENCES,
   PROP_ACCEL_SHOW_MENUBAR,
@@ -369,6 +370,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Paste"),
                                                         _("Paste"),
                                                         "<control><shift>v",
+                                                        EXO_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-paste-selection:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_PASTE_SELECTION,
+                                   g_param_spec_string ("accel-paste-selection",
+                                                        _("Paste Selection"),
+                                                        _("Paste Selection"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**

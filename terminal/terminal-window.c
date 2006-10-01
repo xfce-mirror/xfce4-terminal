@@ -130,6 +130,8 @@ static void            terminal_window_action_copy              (GtkAction      
                                                                  TerminalWindow         *window);
 static void            terminal_window_action_paste             (GtkAction              *action,
                                                                  TerminalWindow         *window);
+static void            terminal_window_action_paste_selection   (GtkAction              *action,
+                                                                 TerminalWindow         *window);
 static void            terminal_window_action_edit_helpers      (GtkAction              *action,
                                                                  TerminalWindow         *window);
 static void            terminal_window_action_edit_toolbars     (GtkAction              *action,
@@ -201,6 +203,7 @@ static const GtkActionEntry action_entries[] =
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
+  { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, N_ ("Paste from primary selection"), G_CALLBACK (terminal_window_action_paste_selection), },
   { "edit-helpers", NULL, N_ ("_Applications..."), NULL, N_ ("Customize your preferred applications"), G_CALLBACK (terminal_window_action_edit_helpers), },
   { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
   { "preferences", GTK_STOCK_PREFERENCES, N_ ("Pr_eferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
@@ -1178,6 +1181,19 @@ terminal_window_action_paste (GtkAction       *action,
   terminal = terminal_window_get_active (window);
   if (G_LIKELY (terminal != NULL))
     terminal_screen_paste_clipboard (terminal);
+}
+
+
+
+static void
+terminal_window_action_paste_selection (GtkAction      *action,
+                                        TerminalWindow *window)
+{
+  TerminalScreen *terminal;
+
+  terminal = terminal_window_get_active (window);
+  if (G_LIKELY (terminal != NULL))
+    terminal_screen_paste_primary (terminal);
 }
 
 
