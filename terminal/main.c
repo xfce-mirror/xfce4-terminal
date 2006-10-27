@@ -53,8 +53,8 @@ usage (void)
                      "                                      line inside the terminal"));
   g_print ("%s\n", _("  -e, --command=STRING                Execute the argument to this option\n"
                      "                                      inside the terminal"));
-  g_print ("%s\n", _("  --working-directory=DIRNAME         Set the terminals working directory"));
-  g_print ("%s\n", _("  -T, --title=TITLE                   Set the terminals title"));
+  g_print ("%s\n", _("  --working-directory=DIRNAME         Set the terminal's working directory"));
+  g_print ("%s\n", _("  -T, --title=TITLE                   Set the terminal's title"));
   g_print ("%s\n", _("  -H, --hold                          Do not immediately destroy the tab\n"
                      "                                      when the child command exits"));
   g_print ("\n");
@@ -113,7 +113,7 @@ usage (void)
                      "                                      provided"));
   g_print ("\n");
   g_print ("%s\n", _("  --default-display=DISPLAY           default X display to use"));
-  g_print ("%s\n", _("  --default-working-directory=DIRNAME Set the default terminals working\n"
+  g_print ("%s\n", _("  --default-working-directory=DIRNAME Set the default terminal's working\n"
                      "                                      directory"));
   g_print ("\n");
 }
