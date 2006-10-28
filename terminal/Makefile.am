@@ -85,10 +85,12 @@ Terminal_LDFLAGS =							\
 	$(VTE_LIBS)							\
 	$(TERMINAL_LIBS)
 
+if !PLATFORM_WIN32
 # install symlink to 'terminal'
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 	( cd $(DESTDIR)$(bindir) ; ln -sf Terminal terminal )
+endif
 
 if HAVE_DBUS
 Terminal_CFLAGS +=							\
