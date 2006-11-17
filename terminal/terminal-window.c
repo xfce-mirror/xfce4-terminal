@@ -103,6 +103,12 @@ static void            terminal_window_page_switched            (GtkNotebook    
                                                                  GtkNotebookPage        *page,
                                                                  guint                   page_num,
                                                                  TerminalWindow         *window);
+#if GTK_CHECK_VERSION (2,10,0)
+static void            terminal_window_page_reordered           (GtkNotebook            *notebook,
+                                                                 GtkNotebookPage        *page,
+                                                                 guint                   page_num,
+                                                                 TerminalWindow         *window);
+#endif
 static GtkWidget      *terminal_window_get_context_menu         (TerminalScreen         *screen,
                                                                  TerminalWindow         *window);
 static void            terminal_window_open_uri                 (TerminalWindow         *window,
@@ -400,6 +406,12 @@ terminal_window_init (TerminalWindow *window)
                     G_CALLBACK (terminal_window_page_notified), window);
   g_signal_connect (G_OBJECT (window->notebook), "remove",
                     G_CALLBACK (terminal_window_screen_removed), window);
+
+#if GTK_CHECK_VERSION (2,10,0)
+  g_signal_connect (G_OBJECT (window->notebook), "page-reordered",
+                    G_CALLBACK (terminal_window_page_reordered), window);
+#endif
+
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
   gtk_widget_show (window->notebook);
 
@@ -895,6 +907,23 @@ terminal_window_page_switched (GtkNotebook     *notebook,
       terminal_window_set_size_force_grid (window, terminal, grid_width, grid_height);
     }
 }
+
+
+
+#if GTK_CHECK_VERSION (2,10,0)
+static void
+terminal_window_page_reordered (GtkNotebook     *notebook,
+                                GtkNotebookPage *page,
+                                guint            page_num,
+                                TerminalWindow  *window)
+{
+  
+  /* Regenerate the "Go" menu.
+   * This also updates the accelerators.
+   */
+  terminal_window_rebuild_gomenu (window);
+}
+#endif
 
 
 
@@ -1610,6 +1639,12 @@ terminal_window_add (TerminalWindow *window,
   gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (window->notebook),
                                       GTK_WIDGET (screen),
                                       TRUE, TRUE, GTK_PACK_START);
+
+#if GTK_CHECK_VERSION(2,10,0)
+  gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (window->notebook),
+                                    GTK_WIDGET (screen),
+                                    TRUE);
+#endif
 
   /* check if we should always display tabs */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
