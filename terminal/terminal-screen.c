@@ -70,51 +70,52 @@ enum
 
 
 
-static void     terminal_screen_finalize                      (GObject          *object);
-static void     terminal_screen_get_property                  (GObject          *object,
-                                                               guint             prop_id,
-                                                               GValue           *value,
-                                                               GParamSpec       *pspec);
-static void     terminal_screen_set_property                  (GObject          *object,
-                                                               guint             prop_id,
-                                                               const GValue     *value,
-                                                               GParamSpec       *pspec);
-static void     terminal_screen_realize                       (GtkWidget       *widget);
-static gboolean terminal_screen_get_child_command             (TerminalScreen   *screen,
-                                                               gchar           **command,
-                                                               gchar          ***argv,
-                                                               GError          **error);
-static gchar  **terminal_screen_get_child_environment         (TerminalScreen   *screen);
-static void terminal_screen_update_background                 (TerminalScreen   *screen);
-static void terminal_screen_update_binding_backspace          (TerminalScreen   *screen);
-static void terminal_screen_update_binding_delete             (TerminalScreen   *screen);
-static void terminal_screen_update_colors                     (TerminalScreen   *screen);
-static void terminal_screen_update_font                       (TerminalScreen   *screen);
-static void terminal_screen_update_misc_bell                  (TerminalScreen   *screen);
-static void terminal_screen_update_misc_cursor_blinks         (TerminalScreen   *screen);
-static void terminal_screen_update_misc_mouse_autohide        (TerminalScreen   *screen);
-static void terminal_screen_update_scrolling_bar              (TerminalScreen   *screen);
-static void terminal_screen_update_scrolling_lines            (TerminalScreen   *screen);
-static void terminal_screen_update_scrolling_on_output        (TerminalScreen   *screen);
-static void terminal_screen_update_scrolling_on_keystroke     (TerminalScreen   *screen);
-static void terminal_screen_update_title                      (TerminalScreen   *screen);
-static void terminal_screen_update_word_chars                 (TerminalScreen   *screen);
-static void terminal_screen_vte_child_exited                  (VteTerminal      *terminal,
-                                                               TerminalScreen   *screen);
-static void     terminal_screen_vte_eof                       (VteTerminal    *terminal,
-                                                               TerminalScreen *screen);
-static GtkWidget *terminal_screen_vte_get_context_menu          (TerminalWidget         *widget,
-                                                                 TerminalScreen         *screen);
-static void       terminal_screen_vte_open_uri                  (TerminalWidget         *widget,
-                                                                 const gchar            *uri,
-                                                                 TerminalHelperCategory  category,
-                                                                 TerminalScreen         *screen);
-static void       terminal_screen_vte_selection_changed         (VteTerminal            *terminal,
-                                                                 TerminalScreen         *screen);
-static void       terminal_screen_vte_window_title_changed      (VteTerminal            *terminal,
-                                                                 TerminalScreen         *screen);
-static gboolean   terminal_screen_timer_background              (gpointer                user_data);
-static void       terminal_screen_timer_background_destroy      (gpointer                user_data);
+static void       terminal_screen_finalize                      (GObject               *object);
+static void       terminal_screen_get_property                  (GObject               *object,
+                                                                 guint                  prop_id,
+                                                                 GValue                *value,
+                                                                 GParamSpec            *pspec);
+static void       terminal_screen_set_property                  (GObject               *object,
+                                                                 guint                  prop_id,
+                                                                 const GValue          *value,
+                                                                 GParamSpec            *pspec);
+static void       terminal_screen_realize                       (GtkWidget             *widget);
+static void       terminal_screen_unrealize                     (GtkWidget             *widget);
+static gboolean   terminal_screen_get_child_command             (TerminalScreen        *screen,
+                                                                 gchar                **command,
+                                                                 gchar               ***argv,
+                                                                 GError               **error);
+static gchar    **terminal_screen_get_child_environment         (TerminalScreen        *screen);
+static void       terminal_screen_update_background             (TerminalScreen        *screen);
+static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
+static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
+static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
+static void       terminal_screen_update_font                   (TerminalScreen        *screen);
+static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
+static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
+static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
+static void       terminal_screen_update_scrolling_bar          (TerminalScreen        *screen);
+static void       terminal_screen_update_scrolling_lines        (TerminalScreen        *screen);
+static void       terminal_screen_update_scrolling_on_output    (TerminalScreen        *screen);
+static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen        *screen);
+static void       terminal_screen_update_title                  (TerminalScreen        *screen);
+static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
+static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
+                                                                 TerminalScreen        *screen);
+static void       terminal_screen_vte_eof                       (VteTerminal           *terminal,
+                                                                 TerminalScreen        *screen);
+static GtkWidget *terminal_screen_vte_get_context_menu          (TerminalWidget        *widget,
+                                                                 TerminalScreen        *screen);
+static void       terminal_screen_vte_open_uri                  (TerminalWidget        *widget,
+                                                                 const gchar           *uri,
+                                                                 TerminalHelperCategory category,
+                                                                 TerminalScreen        *screen);
+static void       terminal_screen_vte_selection_changed         (VteTerminal           *terminal,
+                                                                 TerminalScreen        *screen);
+static void       terminal_screen_vte_window_title_changed      (VteTerminal           *terminal,
+                                                                 TerminalScreen        *screen);
+static gboolean   terminal_screen_timer_background              (gpointer               user_data);
+static void       terminal_screen_timer_background_destroy      (gpointer               user_data);
 
 
 
@@ -172,6 +173,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->realize = terminal_screen_realize;
+  gtkwidget_class->unrealize = terminal_screen_unrealize;
 
   /**
    * TerminalScreen:custom-title:
@@ -395,11 +397,37 @@ terminal_screen_set_property (GObject          *object,
 static void
 terminal_screen_realize (GtkWidget *widget)
 {
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+  GdkScreen *screen;
+#endif
+
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->realize) (widget);
 
   /* make sure the TerminalWidget is realized as well */
   if (!GTK_WIDGET_REALIZED (TERMINAL_SCREEN (widget)->terminal))
     gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
+
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+  /* connect to the "composited-changed" signal */
+  screen = gtk_widget_get_screen (widget);
+  g_signal_connect_swapped (G_OBJECT (screen), "composited-changed", G_CALLBACK (terminal_screen_update_background), widget);
+#endif
+}
+
+
+
+static void
+terminal_screen_unrealize (GtkWidget *widget)
+{
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+  GdkScreen *screen;
+
+  /* disconnect the "composited-changed" handler */
+  screen = gtk_widget_get_screen (widget);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (screen), terminal_screen_update_background, widget);
+#endif
+
+  (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->unrealize) (widget);
 }
 
 
@@ -868,6 +896,9 @@ terminal_screen_timer_background (gpointer user_data)
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
       vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
       vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+      vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
+#endif
     }
   else if (background_mode == TERMINAL_BACKGROUND_IMAGE)
     {
@@ -879,6 +910,9 @@ terminal_screen_timer_background (gpointer user_data)
                                           screen->terminal->allocation.width,
                                           screen->terminal->allocation.height);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+      vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
+#endif
       if (image != NULL)
         g_object_unref (G_OBJECT (image));
       g_object_unref (G_OBJECT (loader));
@@ -887,8 +921,24 @@ terminal_screen_timer_background (gpointer user_data)
     {
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
-      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
-      vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
+
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+      /* check if the X screen is composited */
+      if (gdk_screen_is_composited (gtk_widget_get_screen (user_data)))
+        {
+          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
+          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
+          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), (guint16) (0xFFFFu * background_darkness));
+        }
+      else
+        {
+#endif
+          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
+          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
+          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
+        }
+#endif
     }
 
   return FALSE;

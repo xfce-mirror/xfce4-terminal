@@ -126,6 +126,25 @@ if test x"$enable_xml2po" = x"yes"; then
 fi
 AM_CONDITIONAL([ENABLE_XML2PO], [test x"$enable_xml2po" = x"yes"])
 
+dnl **********************************
+dnl *** Check for VTE transparency ***
+dnl **********************************
+AC_MSG_CHECKING([whether VTE supports real transparency])
+save_LIBS="$LIBS"
+save_CFLAGS="$CFLAGS"
+LIBS="$LIBS $VTE_LIBS"
+CFLAGS="$CFLAGS $VTE_CFLAGS"
+AC_TRY_LINK([
+  #include <vte/vte.h>
+], [ vte_terminal_set_opacity (0, 0); ], [
+  AC_DEFINE_UNQUOTED([HAVE_VTE_TERMINAL_SET_OPACITY], [1], [Define to 1 if vte_terminal_set_opacity() is available])
+  AC_MSG_RESULT([yes])
+], [
+  AC_MSG_RESULT([no])
+])
+CFLAGS="$save_CFLAGS"
+LIBS="$save_LIBS"
+
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
