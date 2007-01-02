@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
+ * Copyright (c) 2005-2007 Benedikt Meurer <benny@xfce.org>
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -75,7 +75,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "artists", artists,
                          "comments", _("X Terminal Emulator"),
                          "documenters", documenters,
-                         "copyright", "Copyright \302\251 2003-2006 Benedikt Meurer",
+                         "copyright", "Copyright \302\251 2003-2007 Benedikt Meurer",
                          "license", XFCE_LICENSE_GPL,
                          "logo", logo,
                          "name", PACKAGE_NAME,

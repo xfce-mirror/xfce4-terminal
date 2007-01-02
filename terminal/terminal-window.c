@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -1030,13 +1030,19 @@ terminal_window_detach_screen (TerminalWindow     *window,
 {
   GtkWidget *screen;
 
-  screen = g_object_get_data (G_OBJECT (header), "terminal-window-screen");
-  if (G_LIKELY (screen != NULL))
+  /* verify that we have atleast two tabs, otherwise we'll crash,
+   * see http://bugzilla.xfce.org/show_bug.cgi?id=2686.
+   */
+  if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)) >= 2)
     {
-      g_object_ref (G_OBJECT (screen));
-      gtk_container_remove (GTK_CONTAINER (window->notebook), screen);
-      g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_SCREEN], 0, screen);
-      g_object_unref (G_OBJECT (screen));
+      screen = g_object_get_data (G_OBJECT (header), "terminal-window-screen");
+      if (G_LIKELY (screen != NULL))
+        {
+          g_object_ref (G_OBJECT (screen));
+          gtk_container_remove (GTK_CONTAINER (window->notebook), screen);
+          g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_SCREEN], 0, screen);
+          g_object_unref (G_OBJECT (screen));
+        }
     }
 }
 

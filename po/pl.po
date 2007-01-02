@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.5.8rc2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-04 14:26+0100\n"
+"POT-Creation-Date: 2007-01-02 12:38+0100\n"
 "PO-Revision-Date: 2006-11-10 20:57+0200\n"
 "Last-Translator: Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -58,8 +58,7 @@ msgstr ""
 #: ../terminal/main.c:56
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=DIRNAME         Ustaw katalog roboczy terminala"
+msgstr "  --working-directory=DIRNAME         Ustaw katalog roboczy terminala"
 
 #: ../terminal/main.c:57
 msgid "  -T, --title=TITLE                   Set the terminal's title"
@@ -247,11 +246,11 @@ msgid "Terminal"
 msgstr "Terminal"
 
 #: ../terminal/main.c:162
-#, c-format
+#, fuzzy, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2006\n"
+"Copyright (c) %s\n"
 "        os-cillation e.K. All rights reserved.\n"
 "\n"
 "Written by Benedikt Meurer <benny@xfce.org>.\n"
@@ -271,17 +270,17 @@ msgstr ""
 "\n"
 "Błędy proszę zgłaszać do <%s>.\n"
 
-#: ../terminal/main.c:256
+#: ../terminal/main.c:257
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nie udało się zarejestrować usługi terminala: %s\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:266
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Nie udało się uruchomić terminala: %s\n"
 
-#: ../terminal/terminal-app.c:527
+#: ../terminal/terminal-app.c:549
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Niepoprawna geometria \"%s\"\n"
@@ -1060,24 +1059,24 @@ msgstr "Przełącz do zakładki 9"
 msgid "Contents"
 msgstr "Zawartość"
 
-#: ../terminal/terminal-screen.c:182 ../terminal/terminal-screen.c:183
+#: ../terminal/terminal-screen.c:184 ../terminal/terminal-screen.c:185
 msgid "Custom title"
 msgstr "Inny tytuł"
 
-#: ../terminal/terminal-screen.c:193 ../terminal/terminal-screen.c:194
+#: ../terminal/terminal-screen.c:195 ../terminal/terminal-screen.c:196
 msgid "Title"
 msgstr "Tytuł"
 
-#: ../terminal/terminal-screen.c:428
+#: ../terminal/terminal-screen.c:456
 msgid "Unable to determine your login shell."
 msgstr "Nie udało się określić twojej powłoki."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:945
+#: ../terminal/terminal-screen.c:995
 msgid "Failed to execute child"
 msgstr "Nie udało się wywołać procesu potomnego"
 
-#: ../terminal/terminal-screen.c:1182
+#: ../terminal/terminal-screen.c:1232
 msgid "Untitled"
 msgstr "Bez tytułu"
 
@@ -1137,11 +1136,11 @@ msgstr "Tytuł zakładki"
 msgid "Close this tab"
 msgstr "Zamknij tą zakładkę"
 
-#: ../terminal/terminal-tab-header.c:339 ../terminal/terminal-window.c:200
+#: ../terminal/terminal-tab-header.c:339 ../terminal/terminal-window.c:206
 msgid "_Detach Tab"
 msgstr "_Odłącz zakładkę"
 
-#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:201
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:207
 msgid "C_lose Tab"
 msgstr "Z_amknij zakładkę"
 
@@ -1195,211 +1194,211 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "Odebrano złe dane o kolorze: nieprawidłowy format (%d) lub długość (%d)\n"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:203
 msgid "_File"
 msgstr "_Plik"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:204
 msgid "Open _Tab"
 msgstr "Otwórz _zakładkę"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:204
 msgid "Open a new terminal tab"
 msgstr "Otwórz nową zakładkę terminala"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:205
 msgid "Open T_erminal"
 msgstr "Otwórz _terminal"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:205
 msgid "Open a new terminal window"
 msgstr "Otwórz nowe okno terminala"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:206
 msgid "Open a new window for the current terminal tab"
 msgstr "Otwórz nowe okno z bieżącą zakładką terminala"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:207
 msgid "Close the current terminal tab"
 msgstr "Zamknij bieżącą zakładkę terminala"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:208
 msgid "_Close Window"
 msgstr "Zamknij o_kno"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:208
 msgid "Close the terminal window"
 msgstr "Zamknij okno terminala"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:209
 msgid "_Edit"
 msgstr "_Edycja"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:210
 msgid "_Copy"
 msgstr "_Kopiuj"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:210
 msgid "Copy to clipboard"
 msgstr "Skopiuj to schowka"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:211
 msgid "_Paste"
 msgstr "_Wklej"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:211
 msgid "Paste from clipboard"
 msgstr "Wklej z schowka"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:212
 msgid "Paste _Selection"
 msgstr "Wklej _zaznaczenie"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:212
 msgid "Paste from primary selection"
 msgstr "Wklej z zaznaczenia głównego"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:213
 msgid "_Applications..."
 msgstr "_Aplikacje..."
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:213
 msgid "Customize your preferred applications"
 msgstr "Dostosuj preferowane aplikacji"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:214
 msgid "_Toolbars..."
 msgstr "_Paski narzędzi"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:214
 msgid "Customize the toolbars"
 msgstr "Dostosuj paski narzędzi"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:215
 msgid "Pr_eferences..."
 msgstr "Pr_eferencje..."
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:215
 msgid "Open the Terminal preferences dialog"
 msgstr "Otwórz okno dialogowe preferencji Terminala"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:216
 msgid "_View"
 msgstr "_Widok"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:217
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:218
 msgid "_Set Title..."
 msgstr "_Ustaw tytuł..."
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:218
 msgid "Set a custom title for the current tab"
 msgstr "Ustaw inny tytuł dla bieżącej zakładki"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:219
 msgid "_Reset"
 msgstr "_Zresetuj"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:220
 msgid "Reset and C_lear"
 msgstr "Zresetuj i wy_czyść"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:221
 msgid "_Go"
 msgstr "P_rzejdź"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:222
 msgid "_Previous Tab"
 msgstr "_Poprzednia zakładka"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:222
 msgid "Switch to previous tab"
 msgstr "Przejdź do poprzedniej zakładki"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:223
 msgid "_Next Tab"
 msgstr "_Następna zakładka"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:223
 msgid "Switch to next tab"
 msgstr "Przejdź do następnej zakładki"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:224
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:225
 msgid "_Contents"
 msgstr "_Zawartość"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:225
 msgid "Display help contents"
 msgstr "Wyświetl zawartość pomocy"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:226
 msgid "_Report a bug"
 msgstr "Zgłoś _błąd"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:226
 msgid "Report a bug in Terminal"
 msgstr "Zgłoś błąd w Terminalu"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:227
 msgid "_About"
 msgstr "_O programie"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:227
 msgid "Display information about Terminal"
 msgstr "Wyświetl informacje o Terminalu"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:228
 msgid "_Input Methods"
 msgstr "_Metody wejściowe"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:233
 msgid "Show _Menubar"
 msgstr "Pokaż pasek _menu"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:233
 msgid "Show/hide the menubar"
 msgstr "Pokaż/ukryj pasek menu"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:234
 msgid "Show _Toolbars"
 msgstr "Pokaż pasek _narzędzi"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:234
 msgid "Show/hide the toolbars"
 msgstr "Pokaż/ukryj pasek narzędzi"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:235
 msgid "Show Window _Borders"
 msgstr "Pokaż o_bramowanie okna"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:235
 msgid "Show/hide the window decorations"
 msgstr "Pokaż/ukryj dekoracje okien"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:236
 msgid "_Fullscreen"
 msgstr "Pełny _ekran"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:236
 msgid "Toggle fullscreen mode"
 msgstr "Przełącz tryb pełnego ekranu"
 
-#: ../terminal/terminal-window.c:517
+#: ../terminal/terminal-window.c:529
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: ../terminal/terminal-window.c:528
+#: ../terminal/terminal-window.c:540
 msgid "Close all tabs"
 msgstr "Zamknij wszystkie zakładki"
 
-#: ../terminal/terminal-window.c:547
+#: ../terminal/terminal-window.c:559
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -1409,15 +1408,15 @@ msgstr ""
 "tego okna spowoduje zamknięcie wszystkich\n"
 "otwartych zakładek."
 
-#: ../terminal/terminal-window.c:550
+#: ../terminal/terminal-window.c:562
 msgid "Close all tabs?"
 msgstr "Zamknąć wszystkie zakładki?"
 
-#: ../terminal/terminal-window.c:563
+#: ../terminal/terminal-window.c:575
 msgid "Do _not ask me again"
 msgstr "_Nie pytaj ponownie"
 
-#: ../terminal/terminal-window.c:942
+#: ../terminal/terminal-window.c:971
 msgid ""
 "You did not choose your preferred Web\n"
 "Browser yet. Do you want to setup your\n"
@@ -1427,7 +1426,7 @@ msgstr ""
 "przeglądarki internetowej. Czy chcesz ją\n"
 "ustawić teraz?"
 
-#: ../terminal/terminal-window.c:943
+#: ../terminal/terminal-window.c:972
 msgid ""
 "You did not choose your preferred Mail\n"
 "Reader yet. Do you want to setup your\n"
@@ -1437,15 +1436,15 @@ msgstr ""
 "programu pocztowego. Czy chcesz go ustawić\n"
 "teraz?"
 
-#: ../terminal/terminal-window.c:1413
+#: ../terminal/terminal-window.c:1448
 msgid "Window Title|Set Title"
 msgstr "Ustaw tytuł"
 
-#: ../terminal/terminal-window.c:1427
+#: ../terminal/terminal-window.c:1462
 msgid "<b>Title:</b>"
 msgstr "<b>Tytuł:</b>"
 
-#: ../terminal/terminal-window.c:1441
+#: ../terminal/terminal-window.c:1476
 msgid "Enter the title for the current terminal tab"
 msgstr "Wprowadź tytuł dla bieżącej zakładki terminala"
 

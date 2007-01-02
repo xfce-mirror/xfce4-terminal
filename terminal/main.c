@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2005 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -160,12 +160,13 @@ main (int argc, char **argv)
   if (G_UNLIKELY (options->show_version))
     {
       g_print (_("%s (Xfce %s)\n\n"
-                 "Copyright (c) 2003-2006\n"
+                 "Copyright (c) %s\n"
                  "        os-cillation e.K. All rights reserved.\n\n"
                  "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
                  "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
                  "Please report bugs to <%s>.\n"),
                  PACKAGE_STRING, xfce_version_string (),
+                 "2003-2007",
                  GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                  gtk_major_version, gtk_minor_version, gtk_micro_version,
                  PACKAGE_BUGREPORT);
