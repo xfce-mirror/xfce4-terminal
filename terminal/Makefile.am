@@ -3,7 +3,6 @@
 INCLUDES =								\
 	-DBINDIR=\"$(bindir)\"						\
 	-DDATADIR=\"$(datadir)\"					\
-	-DEXO_API_SUBJECT_TO_CHANGE					\
 	-DEXO_DISABLE_DEPRECATED					\
 	-DG_LOG_DOMAIN=\"Terminal\"					\
 	-DLIBEXECDIR=\"$(libexecdir)\"					\
