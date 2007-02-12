@@ -280,7 +280,7 @@ is_modifier (guint keycode)
     default:
       return FALSE;
     }
-#elif defined(GDK_WINDOWING_X11)
+#elif (defined(GDK_WINDOWING_X11) && defined(HAVE_LIBX11))
   XModifierKeymap *keymap;
   gboolean         result = FALSE;
   gint             n;

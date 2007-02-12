@@ -72,6 +72,7 @@ Terminal_CFLAGS =							\
 	$(EXO_CFLAGS)							\
 	$(GTK_CFLAGS)							\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
+	$(LIBX11_CFLAGS)						\
 	$(VTE_CFLAGS)							\
 	$(PLATFORM_CFLAGS)
 
@@ -81,6 +82,8 @@ Terminal_LDFLAGS =							\
 	$(EXO_LIBS)							\
 	$(GTK_LIBS)							\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
+	$(LIBX11_LDFLAGS)						\
+	$(LIBX11_LIBS)							\
 	$(VTE_LIBS)							\
 	$(TERMINAL_LIBS)
 
