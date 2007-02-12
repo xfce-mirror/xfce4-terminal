@@ -58,7 +58,7 @@ handle_message (DBusConnection *connection,
   DBusMessage *reply;
   DBusError    derror;
   GError      *error = NULL;
-  uid_t        user_id;
+  dbus_int64_t user_id;
   gchar      **argv;
   gint         argc;
 
