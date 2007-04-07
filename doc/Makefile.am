@@ -1,11 +1,12 @@
-SUBDIRS =								\
+SUBDIRS =							\
 	C								\
+	fr								\
 	ja
 
 cssdir = $(datadir)/doc/Terminal
-css_DATA =								\
+css_DATA =							\
 	terminal.css
 
-EXTRA_DIST = 								\
-	$(css_DATA)							\
+EXTRA_DIST = 						\
+	$(css_DATA)					\
 	terminal.xsl
