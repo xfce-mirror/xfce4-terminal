@@ -1,5 +1,11 @@
 2007-07-20	Benedikt Meurer <benny@xfce.org>
 
+	* terminal/terminal-screen.c(terminal_screen_get_child_environment):
+	  Use the id of the toplevel window instead of the scrolled window
+	  for the $WINDOWID environment variable (Bug #3341).
+
+2007-07-20	Benedikt Meurer <benny@xfce.org>
+
 	* helpers/, icons/, terminal/, Makefile.am, NEWS, Terminal.ui,
 	  configure.in.in, doc/: Drop the preferred application handling
 	  from Terminal and use the Xfce preferred application directly.

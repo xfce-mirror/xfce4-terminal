@@ -461,6 +461,7 @@ static gchar**
 terminal_screen_get_child_environment (TerminalScreen *screen)
 {
   extern gchar **environ;
+  GtkWidget     *toplevel;
   gchar         *display_name;
   gchar        **result;
   gchar        **p;
@@ -501,14 +502,16 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
       g_free (term);
     }
 
-  if (GTK_WIDGET_REALIZED (screen->terminal))
+  /* determine the toplevel widget */
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  if (toplevel != NULL && GTK_WIDGET_REALIZED (toplevel))
     {
 #ifdef GDK_WINDOWING_X11
-      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_WINDOW_XWINDOW (screen->terminal->window));
+      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_WINDOW_XWINDOW (toplevel->window));
 #endif
 
       /* determine the DISPLAY value for the command */
-      display_name = gdk_screen_make_display_name (gtk_widget_get_screen (screen->terminal));
+      display_name = gdk_screen_make_display_name (gtk_widget_get_screen (toplevel));
       result[n++] = g_strdup_printf ("DISPLAY=%s", display_name);
       g_free (display_name);
     }
