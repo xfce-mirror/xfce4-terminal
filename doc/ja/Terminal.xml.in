@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY date "April 2006">
+<!ENTITY date "October 2006">
 <!ENTITY version "@PACKAGE_VERSION@">
 <!ENTITY application "@PACKAGE_NAME@">
 ]>
@@ -299,7 +299,11 @@
             <para>テキストをクリップボードへコピーしてあるのなら、以下の動作の一つを実行してターミナルにそのテキストを貼り付けることができます:</para>
             <itemizedlist> 
               <listitem> 
-                <para>選択してコピーしたテキストを貼り付けるだけでしたら、コマンドプロンプトの所でミドルクリックしてください。マウスが3ボタン式でないのなら、X サーバーの文書を参考にしてください。マウスの中央ボタンのエミュレート方法に関する情報があると思います。</para>
+                <para>To paste text that you copied by selection only, middle-click at the
+                command prompt. If you do not have a middle mouse button, refer to the X
+                Server documentation for information about how to emulate the middle mouse button.
+                This is equivalent to using the <menuchoice><guimenuitem>Paste Selection</guimenuitem></menuchoice>
+                item from <menuchoice><guimenu>Edit</guimenu></menuchoice> menu.</para>
               </listitem> 
               <listitem> 
                 <para>明示的にコピーしたテキストを貼り付けるには、<menuchoice><guimenu>編集</guimenu><guimenuitem>貼り付け</guimenuitem></menuchoice>を選びます。</para>
@@ -329,8 +333,6 @@
                 <para>そこから<guimenuitem>リンクを開く</guimenuitem>を選ぶと、お気に入りのウェブブラウザーが起動してその URL にあるファイルを表示します。</para>
               </listitem>
             </orderedlist>
-
-            <para>Terminalで使用されるお気に入りのウェブブラウザーの設定方法やこの機能を無効にするやり方は<xref linkend="preferred-applications"/>を御覧ください。</para>
           </listitem>
         </varlistentry> 
 
@@ -350,8 +352,6 @@
                 <para>そこから<guimenuitem>メールを編集</guimenuitem>を選ぶと、お気に入りのメーラーでメールを編集できます。</para>
               </listitem>
             </orderedlist>
-
-            <para>Terminalで使用されるお気に入りのメーラーの設定方法やこの機能を無効にするやり方は<xref linkend="preferred-applications"/>を御覧ください。</para>
           </listitem>
         </varlistentry> 
       </variablelist>
@@ -740,71 +740,6 @@
   </sect1>
 
 
-  <sect1 id="preferred-applications">
-    <title>お気に入りのアプリ</title>
-
-    <para>バージョン 0.2.4 の時点で、@PACKAGE_NAME@ は外部のウェブブラウザーおよびメーラーを利用して、ハイパーリンクを開いたり、メールを編集することができます。この章では利用したいウェブブラウザーやメーラーの設定方法について説明します (ハイパーリンクへのアクセスやメール編集方法に関する詳細は<xref linkend="usage_to-work-with-contents-of-terminal-windows"/>を御覧ください)。</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-edit-applications.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>アプリケーション</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>@PACKAGE_NAME@ で使用される外部アプリケーションを設定するには、メインのメニューバーから<menuchoice><guimenu>編集</guimenu><guimenuitem>アプリケーション...</guimenuitem></menuchoice>を選択してください。ダイアログ<guilabel>アプリケーション</guilabel>が現れます。</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-applications-dialog.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>お気に入りのアプリ</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>このダイアログで、ハイパーリンクを開くのに使用されるウェブブラウザーや、メールの編集に使われるメーラーを選びます。設定を変更するにはボタンをクリックしてください。これでドロップダウンメニューが表示されます。</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-applications-menu.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>お気に入りのアプリを選択してください</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>メニュー<guilabel>ウェブブラウザー</guilabel>で<guimenuitem>この機能を無効にする</guimenuitem>を選ぶと、@PACKAGE_NAME@ からハイパーリンクを開くことはできなくなります。同様に、<guilabel>メーラー</guilabel>メニューで<guimenuitem>この機能を無効にする</guimenuitem>を選択すると @PACKAGE_NAME@ からはメールを編集できなくなります。</para>
-
-    <para>次に選択可能な標準アプリケーションの一覧がメニューに表示されます、これはあなたのシステムで自動的に検出されます。この標準アプリケーションのリストにあなたのお気に入りのアプリケーションが存在しなかったり、特定の引数を渡してアプリケーションを実行させたい (<parameter>%u</parameter> は実行時に URL で置き換えられます、例 <command>browser --newtab %u</command>) のでしたら、<guimenuitem>その他...</guimenuitem>を選びます。これで指定アプリケーションを入力するためのダイアログが現れます。</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-choose-custom-webbrowser.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>ウェブブラウザーを選択してください</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>システムの検索パスにそのアプリケーションがインストールされているかどうかによりますが、アプリケーションのバイナリー名かその完全なパスのどちらかを入力できます。あるいは<guibutton>参照...</guibutton>というラベルが付いているボタンを押して、アプリケーションのバイナリーを目で見ながら選択することも可能です。</para>
-  </sect1>
-
-
   <sect1 id="advanced">
     <title>上級者向けの話題</title>
     <sect2 id="command-line-options">
@@ -1039,7 +974,8 @@ MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
-MiscTabPosition=GTK_POS_TOP</programlisting>
+MiscTabPosition=GTK_POS_TOP
+MiscHighlightUrls=TRUE</programlisting>
 
       <para>これに環境設定ダイアログから変更するオプション全てがプラスされます。</para>
 
@@ -1111,6 +1047,19 @@ MiscTabPosition=GTK_POS_TOP</programlisting>
           <term><varname>MiscTabPosition</varname></term>
           <listitem>
             <para>どこにタブヘッダーが表示されるかを指定します。これは <literal>GTK_POS_TOP</literal> (標準)、<literal>GTK_POS_LEFT</literal>, <literal>GTK_POS_BOTTOM</literal> あるいは <literal>GTK_POS_RIGHT</literal> のいずれかになります。ここに <literal>GTK_POS_LEFT</literal> または <literal>GTK_POS_RIGHT</literal> を指定すると、タブヘッダーは横ではなく縦に表示されます。<literal>GTK_POS_LEFT</literal> および <literal>GTK_POS_RIGHT</literal> に対しては <varname>MiscTabCloseButtons</varname> を無効にすることを推奨します。</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscHighlightUrls</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether URLs - both hyperlinks and email addresses - will
+              be highlighted in the text displayed in a terminal window. If you change this
+              option to <literal>FALSE</literal>, URLs won't be highlighted anymore and you
+              will no longer be able to middle-click the URL to open it in the preferred
+              application.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>

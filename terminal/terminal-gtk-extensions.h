@@ -24,9 +24,12 @@
 
 G_BEGIN_DECLS;
 
-void terminal_gtk_widget_set_tooltip (GtkWidget   *widget,
-                                      const gchar *format,
-                                      ...) G_GNUC_INTERNAL G_GNUC_PRINTF (2, 3);
+void terminal_gtk_label_set_a11y_relation (GtkLabel    *label,
+                                           GtkWidget   *widget) G_GNUC_INTERNAL;
+
+void terminal_gtk_widget_set_tooltip      (GtkWidget   *widget,
+                                           const gchar *format,
+                                           ...) G_GNUC_INTERNAL G_GNUC_PRINTF (2, 3);
 
 G_END_DECLS;
 

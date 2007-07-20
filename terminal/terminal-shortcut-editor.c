@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -103,7 +103,6 @@ static const ToplevelMenu toplevel_menus[] =
       "accel-copy",
       "accel-paste",
       "accel-paste-selection",
-      "accel-edit-helpers",
       "accel-preferences",
       NULL,
     },
@@ -383,7 +382,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
     }
 
   gtk_tree_model_get (model, &iter, COLUMN_PROPERTY, &property, -1);
-  g_object_set_data_full (G_OBJECT (dialog), "property-name", property, g_free);
+  g_object_set_data_full (G_OBJECT (dialog), I_("property-name"), property, g_free);
 
   g_signal_connect (G_OBJECT (dialog), "key-press-event",
                     G_CALLBACK (terminal_shortcut_editor_compose), editor);

@@ -1,5 +1,18 @@
 2007-07-20	Benedikt Meurer <benny@xfce.org>
 
+	* helpers/, icons/, terminal/, Makefile.am, NEWS, Terminal.ui,
+	  configure.in.in, doc/: Drop the preferred application handling
+	  from Terminal and use the Xfce preferred application directly.
+	  This fixes a security issue, where the URL handling allowed
+	  for remote shell command execution, because the helper scripts
+	  were run via the shell (Bug #3383).
+	* po/POTFILES.in: Update list of translatable files.
+	* po/Terminal.pot, po/*.po: Merge new strings.
+	* po/de.po: Update german translations.
+	* po-doc/*.po: Merge new translations.
+
+2007-07-20	Benedikt Meurer <benny@xfce.org>
+
 	* configure.in.in: Fix typo. Be sure to defined NDEBUG if debug
 	  support is minimal or disabled. Fix test for -errwarn=%all.
 	* terminal/: Several small improvements.

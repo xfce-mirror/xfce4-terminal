@@ -52,7 +52,6 @@ enum
   PROP_ACCEL_COPY,
   PROP_ACCEL_PASTE,
   PROP_ACCEL_PASTE_SELECTION,
-  PROP_ACCEL_EDIT_HELPERS,
   PROP_ACCEL_PREFERENCES,
   PROP_ACCEL_SHOW_MENUBAR,
   PROP_ACCEL_SHOW_TOOLBARS,
@@ -105,8 +104,6 @@ enum
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_ANTI_ALIAS,
   PROP_FONT_NAME,
-  PROP_HELPER_MAILREADER,
-  PROP_HELPER_WEBBROWSER,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_BELL,
   PROP_MISC_BORDERS_DEFAULT,
@@ -120,6 +117,7 @@ enum
   PROP_MISC_CYCLE_TABS,
   PROP_MISC_TAB_CLOSE_BUTTONS,
   PROP_MISC_TAB_POSITION,
+  PROP_MISC_HIGHLIGHT_URLS,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -382,17 +380,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Paste Selection"),
                                                         _("Paste Selection"),
                                                         NULL,
-                                                        EXO_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:accel-edit-helpers:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_EDIT_HELPERS,
-                                   g_param_spec_string ("accel-edit-helpers",
-                                                        _("Applications"),
-                                                        _("Applications"),
-                                                        _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -977,28 +964,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         EXO_PARAM_READWRITE));
 
   /**
-   * TerminalPreferences:helper-mailreader:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_HELPER_MAILREADER,
-                                   g_param_spec_string ("helper-mailreader",
-                                                        "helper-mailreader",
-                                                        "helper-mailreader",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:helper-webbrowser:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_HELPER_WEBBROWSER,
-                                   g_param_spec_string ("helper-webbrowser",
-                                                        "helper-webbrowser",
-                                                        "helper-webbrowser",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
-
-  /**
    * TerminalPreferences:misc-always-show-tabs:
    **/
   g_object_class_install_property (gobject_class,
@@ -1140,6 +1105,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                       GTK_TYPE_POSITION_TYPE,
                                                       GTK_POS_TOP,
                                                       EXO_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-highlight-urls:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_HIGHLIGHT_URLS,
+                                   g_param_spec_boolean ("misc-highlight-urls",
+                                                         "misc-highlight-urls",
+                                                         "misc-highlight-urls",
+                                                         TRUE,
+                                                         EXO_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:scrolling-bar:

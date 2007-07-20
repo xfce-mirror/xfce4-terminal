@@ -50,7 +50,6 @@
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-private.h>
@@ -112,9 +111,6 @@ static void            terminal_window_page_reordered           (GtkNotebook    
 #endif
 static GtkWidget      *terminal_window_get_context_menu         (TerminalScreen         *screen,
                                                                  TerminalWindow         *window);
-static void            terminal_window_open_uri                 (TerminalWindow         *window,
-                                                                 const gchar            *uri,
-                                                                 TerminalHelperCategory  category);
 static void            terminal_window_detach_screen            (TerminalWindow         *window,
                                                                  TerminalTabHeader      *header);
 static void            terminal_window_notify_title             (TerminalScreen         *screen,
@@ -138,8 +134,6 @@ static void            terminal_window_action_copy              (GtkAction      
 static void            terminal_window_action_paste             (GtkAction              *action,
                                                                  TerminalWindow         *window);
 static void            terminal_window_action_paste_selection   (GtkAction              *action,
-                                                                 TerminalWindow         *window);
-static void            terminal_window_action_edit_helpers      (GtkAction              *action,
                                                                  TerminalWindow         *window);
 static void            terminal_window_action_edit_toolbars     (GtkAction              *action,
                                                                  TerminalWindow         *window);
@@ -211,7 +205,6 @@ static const GtkActionEntry action_entries[] =
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
   { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, N_ ("Paste from primary selection"), G_CALLBACK (terminal_window_action_paste_selection), },
-  { "edit-helpers", NULL, N_ ("_Applications..."), NULL, N_ ("Customize your preferred applications"), G_CALLBACK (terminal_window_action_edit_helpers), },
   { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
   { "preferences", GTK_STOCK_PREFERENCES, N_ ("Pr_eferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
@@ -835,12 +828,12 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
         gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), TRUE);
 
       /* keep an extra ref terminal -> item, so we don't in trouble with gtk_widget_destroy */
-      g_object_set_data_full (G_OBJECT (terminal), "terminal-window-go-menu-item",
+      g_object_set_data_full (G_OBJECT (terminal), I_("terminal-window-go-menu-item"),
                               G_OBJECT (item), (GDestroyNotify) item_destroy);
       g_object_ref (G_OBJECT (item));
 
       /* do the item -> terminal connects */
-      g_object_set_data (G_OBJECT (item), "terminal-window-screen", terminal);
+      g_object_set_data (G_OBJECT (item), I_("terminal-window-screen"), terminal);
       g_signal_connect (G_OBJECT (item), "toggled", G_CALLBACK (item_toggled), window->notebook);
 
       group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item));
@@ -958,69 +951,6 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
     }
 
   return popup;
-}
-
-
-
-static void
-terminal_window_open_uri (TerminalWindow        *window,
-                          const gchar           *uri,
-                          TerminalHelperCategory category)
-{
-  static const gchar *messages[] =
-  {
-    N_ ("You did not choose your preferred Web\nBrowser yet. Do you want to setup your\npreferred applications now?"),
-    N_ ("You did not choose your preferred Mail\nReader yet. Do you want to setup your\npreferred applications now?"),
-  };
-
-  TerminalHelperDatabase *database;
-  TerminalHelper         *helper;
-  GEnumClass             *enum_class;
-  GEnumValue             *enum_value;
-  GdkScreen              *screen;
-  GtkAction              *action;
-  GtkWidget              *dialog;
-  gchar                   name[64];
-  gchar                  *setting;
-  gint                    response;
-
-  /* determine the setting name */
-  enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);
-  enum_value = g_enum_get_value (enum_class, category);
-  g_snprintf (name, 64, "helper-%s", enum_value->value_nick);
-  g_type_class_unref (enum_class);
-
-  /* query the setting value */
-  g_object_get (G_OBJECT (window->preferences), name, &setting, NULL);
-  if (!exo_str_is_equal (setting, "disabled"))
-    {
-      database = terminal_helper_database_get ();
-      helper = terminal_helper_database_lookup (database, category, setting);
-      if (G_LIKELY (helper != NULL))
-        {
-          screen = gtk_window_get_screen (GTK_WINDOW (window));
-          terminal_helper_execute (helper, screen, uri);
-        }
-      else
-        {
-          dialog = gtk_message_dialog_new (GTK_WINDOW (window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT
-                                           | GTK_DIALOG_MODAL,
-                                           GTK_MESSAGE_QUESTION,
-                                           GTK_BUTTONS_YES_NO,
-                                           "%s", _(messages[category]));
-          response = gtk_dialog_run (GTK_DIALOG (dialog));
-          if (response == GTK_RESPONSE_YES)
-            {
-              action = gtk_action_group_get_action (window->action_group, "edit-helpers");
-              if (G_LIKELY (action != NULL))
-                gtk_action_activate (action);
-            }
-          gtk_widget_destroy (dialog);
-        }
-      g_object_unref (G_OBJECT (database));
-    }
-  g_free (setting);
 }
 
 
@@ -1230,39 +1160,6 @@ terminal_window_action_paste_selection (GtkAction      *action,
   terminal = terminal_window_get_active (window);
   if (G_LIKELY (terminal != NULL))
     terminal_screen_paste_primary (terminal);
-}
-
-
-
-static void
-helper_dialog_response (GtkWidget *dialog,
-                        gint       response)
-{
-  /* check if we should open the user manual */
-  if (response == GTK_RESPONSE_HELP)
-    {
-      /* open the "Preferred Applications" section in the manual */
-      terminal_dialogs_show_help (GTK_WIDGET (dialog), "preferred-applications", NULL);
-    }
-  else
-    {
-      /* close the dialog */
-      gtk_widget_destroy (dialog);
-    }
-}
-
-
-
-static void
-terminal_window_action_edit_helpers (GtkAction      *action,
-                                     TerminalWindow *window)
-{
-  GtkWidget *dialog;
-
-  dialog = g_object_new (TERMINAL_TYPE_HELPER_DIALOG, NULL);
-  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
-  g_signal_connect (G_OBJECT (dialog), "response", G_CALLBACK (helper_dialog_response), NULL);
-  gtk_widget_show (dialog);
 }
 
 
@@ -1638,7 +1535,7 @@ terminal_window_add (TerminalWindow *window,
   g_signal_connect_swapped (G_OBJECT (header), "close-tab", G_CALLBACK (gtk_widget_destroy), screen);
   g_signal_connect_swapped (G_OBJECT (header), "detach-tab", G_CALLBACK (terminal_window_detach_screen), window);
   g_signal_connect_swapped (G_OBJECT (header), "set-title", G_CALLBACK (gtk_action_activate), action);
-  g_object_set_data_full (G_OBJECT (header), "terminal-window-screen", g_object_ref (G_OBJECT (screen)), (GDestroyNotify) g_object_unref);
+  g_object_set_data_full (G_OBJECT (header), I_("terminal-window-screen"), g_object_ref (G_OBJECT (screen)), (GDestroyNotify) g_object_unref);
   gtk_widget_show (header);
 
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook),
@@ -1667,8 +1564,6 @@ terminal_window_add (TerminalWindow *window,
                     G_CALLBACK (terminal_window_get_context_menu), window);
   g_signal_connect (G_OBJECT (screen), "notify::title",
                     G_CALLBACK (terminal_window_notify_title), window);
-  g_signal_connect_swapped (G_OBJECT (screen), "open-uri",
-                            G_CALLBACK (terminal_window_open_uri), window);
   g_signal_connect_swapped (G_OBJECT (screen), "selection-changed",
                             G_CALLBACK (terminal_window_update_actions), window);
 

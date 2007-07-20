@@ -23,6 +23,7 @@
 #include <config.h>
 #endif
 
+#include <terminal/terminal-gtk-extensions.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-stock.h>
 #include <terminal/terminal-tab-header.h>
@@ -83,7 +84,6 @@ struct _TerminalTabHeader
 
   TerminalPreferences *preferences;
 
-  GtkTooltips         *tooltips;
   GtkWidget           *ebox;
   GtkWidget           *label;
 
@@ -185,10 +185,6 @@ terminal_tab_header_init (TerminalTabHeader *header)
 
   header->preferences = terminal_preferences_get ();
 
-  header->tooltips = gtk_tooltips_new ();
-  g_object_ref (G_OBJECT (header->tooltips));
-  gtk_object_sink (GTK_OBJECT (header->tooltips));
-
   gtk_widget_push_composite_child ();
 
   header->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
@@ -204,7 +200,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
   button = gtk_button_new ();
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_container_set_border_width (GTK_CONTAINER (button), 0);
-  gtk_tooltips_set_tip (header->tooltips, button, _("Close this tab"), NULL);
+  terminal_gtk_widget_set_tooltip (button, _("Close this tab"));
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (terminal_tab_header_close_tab), header);
   gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
   exo_binding_new (G_OBJECT (header->preferences), "misc-tab-close-buttons", G_OBJECT (button), "visible");
@@ -232,7 +228,6 @@ terminal_tab_header_finalize (GObject *object)
     gtk_widget_destroy (header->menu);
 
   g_object_unref (G_OBJECT (header->preferences));
-  g_object_unref (G_OBJECT (header->tooltips));
 
   (*G_OBJECT_CLASS (terminal_tab_header_parent_class)->finalize) (object);
 }
@@ -297,7 +292,7 @@ terminal_tab_header_set_property (GObject      *object,
 
     case PROP_TITLE:
       title = g_value_get_string (value);
-      gtk_tooltips_set_tip (header->tooltips, header->ebox, title, NULL);
+      terminal_gtk_widget_set_tooltip (header->ebox, title);
       gtk_label_set_text (GTK_LABEL (header->label), title);
       break;
 

@@ -484,11 +484,6 @@
                 </para>
               </listitem>
             </orderedlist>
-
-            <para>
-              See <xref linkend="preferred-applications"/> about how to configure
-              the preferred Web Browser for Terminal and how to disable this feature.
-            </para>
           </listitem>
         </varlistentry> 
 
@@ -514,11 +509,6 @@
                 </para>
               </listitem>
             </orderedlist>
-
-            <para>
-              See <xref linkend="preferred-applications"/> about how to configure the preferred
-              Mail Reader for Terminal and how to disable this feature.
-            </para>
           </listitem>
         </varlistentry> 
       </variablelist>
@@ -1005,102 +995,6 @@
   </sect1>
 
 
-  <sect1 id="preferred-applications">
-    <title>Preferred Applications</title>
-
-    <para>
-      As of version 0.2.4, &application; supports opening hyperlinks and composing emails using
-      an external web browser and mail reader. This section describes how to configure which
-      Web Browser and Mail Reader you want to use (see <xref linkend="usage_to-work-with-contents-of-terminal-windows"/> for details how access
-      hyperlinks and compose emails).
-    </para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-edit-applications.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Applications</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>
-      To configure your preferred applications for &application;, choose
-      <menuchoice><guimenu>Edit</guimenu><guimenuitem>Applications...</guimenuitem></menuchoice>
-      from the main menu bar. This will bring up the the <guilabel>Preferred Applications</guilabel>
-      dialog.
-    </para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-applications-dialog.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Preferred Applications</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>
-      This dialog allows you to choose your preferred Web Browser, which will be used to open
-      hyperlinks, and your preferred Mail Reader, which will be used to compose emails. Click
-      on the buttons to change the appropriate setting. This will bring up a drop down menu.
-    </para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-applications-menu.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Choose preferred application</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>
-      If you choose <guimenuitem>Disable this feature</guimenuitem> from the <guilabel>Web
-      Browser</guilabel> menu, opening hyperlinks from &application; will be disabled. If
-      you choose <guimenuitem>Disable this feature</guimenuitem> from the <guilabel>Mail
-      Reader</guilabel> menu, composing emails from &application; will be disabled.
-    </para>
-
-    <para>
-      Next in the menu is a list of default applications - automatically detected on your system
-      - you can choose from. Choose <guimenuitem>Other...</guimenuitem> in case your preferred
-      application does not show up in the list of default applications or if you want to use
-      specific flags to launch an application (Use <parameter>%u</parameter> to represent the
-      URL when executed, e.g. <command>browser --newtab %u</command>). This will bring up a
-      dialog that lets you enter a custom application.
-    </para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-choose-custom-webbrowser.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Choose custom Web Browser</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>
-      You can either enter the name or the full path of the application's binary, depending on
-      whether the application is installed in the systems search path, or you can press the button
-      labeled <guibutton>Browse...</guibutton> to select the application's binary in a graphical
-      way.
-    </para>
-  </sect1>
-
-
   <sect1 id="advanced">
     <title>Advanced topics</title>
     <sect2 id="command-line-options">
@@ -1421,7 +1315,8 @@ MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
-MiscTabPosition=GTK_POS_TOP</programlisting>
+MiscTabPosition=GTK_POS_TOP
+MiscHighlightUrls=TRUE</programlisting>
 
       <para>
         plus all the options that are controlled through the preferences dialog.
@@ -1539,6 +1434,19 @@ MiscTabPosition=GTK_POS_TOP</programlisting>
               here, the tab header texts will be displayed vertically instead of horizontally.
               It is highly recommended to disable <varname>MiscTabCloseButtons</varname> for
               <literal>GTK_POS_LEFT</literal> and <literal>GTK_POS_RIGHT</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscHighlightUrls</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether URLs - both hyperlinks and email addresses - will
+              be highlighted in the text displayed in a terminal window. If you change this
+              option to <literal>FALSE</literal>, URLs won't be highlighted anymore and you
+              will no longer be able to middle-click the URL to open it in the preferred
+              application.
             </para>
           </listitem>
         </varlistentry>

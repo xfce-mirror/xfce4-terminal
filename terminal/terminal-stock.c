@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -53,9 +53,6 @@ static const gchar *terminal_stock_icons[] =
   TERMINAL_STOCK_COLORS,
   TERMINAL_STOCK_COMPOSE,
   TERMINAL_STOCK_SHORTCUTS,
-
-  TERMINAL_STOCK_WEBBROWSER,
-  TERMINAL_STOCK_MAILREADER,
 };
 
 

@@ -1,6 +1,12 @@
 0.2.7svn
 ========
 - Close tabs with middle mouse click (Bug #3380).
+- Security fix: URL handling allowed remote shell command execution
+  (Bug #3383).
+- The preferred application handling was completely removed from Terminal.
+  Instead the Xfce Preferred Applications are invoked directly now. The
+  URL highlighting can still be disabled via the hidden option
+  "MiscHighlightUrls" (see the documentation for details).
 - Test for support of -Wall, -Werror and -errwarn=%all (Bug #2920).
 
 

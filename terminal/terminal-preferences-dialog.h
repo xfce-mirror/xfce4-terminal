@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -48,7 +48,6 @@ struct _TerminalPreferencesDialog
   GtkDialog            __parent__;
 
   TerminalPreferences *preferences;
-  GtkTooltips         *tooltips;
 
   GtkWidget           *icon_bar;
   GtkWidget           *notebook;

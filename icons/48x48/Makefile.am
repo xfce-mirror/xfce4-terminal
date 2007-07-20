@@ -11,9 +11,7 @@ stock_DATA =								\
 	stock_terminal-colors.png					\
 	stock_terminal-compose.png					\
 	stock_terminal-general.png					\
-	stock_terminal-mailreader.png					\
-	stock_terminal-shortcuts.png					\
-	stock_terminal-webbrowser.png
+	stock_terminal-shortcuts.png
 
 EXTRA_DIST =								\
 	$(apps_DATA)							\

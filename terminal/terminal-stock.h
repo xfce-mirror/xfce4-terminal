@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -39,9 +39,6 @@ G_BEGIN_DECLS;
 #define TERMINAL_STOCK_COLORS       "terminal-colors"
 #define TERMINAL_STOCK_COMPOSE      "terminal-compose"
 #define TERMINAL_STOCK_SHORTCUTS    "terminal-shortcuts"
-
-#define TERMINAL_STOCK_WEBBROWSER   "terminal-webbrowser"
-#define TERMINAL_STOCK_MAILREADER   "terminal-mailreader"
 
 void terminal_stock_init (void);
 

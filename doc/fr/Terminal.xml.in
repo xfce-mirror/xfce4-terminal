@@ -18,7 +18,7 @@
       <year>2005</year>
       <year>2006</year>
       <holder>os-cillation</holder>
-    </copyright><copyright><year>2007.</year><holder>Maximilian Schleiss (maxschleiss@bluewin.ch)</holder></copyright><copyright><year>2007.</year><holder>Mike Massonnet (mmassonnet@gmail.org)</holder></copyright>
+    </copyright><copyright><year>2007.</year><holder>Maximilian Schleiss (maximilian@xfce.org)</holder></copyright><copyright><year>2007.</year><holder>Mike Massonnet (mmassonnet@gmail.org)</holder></copyright>
 
     <legalnotice id="legalnotice">
       <para>Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.1 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts. The complete license text is available from the <ulink type="http" url="http://www.gnu.org/">Free Software Foundation</ulink>.</para>
@@ -329,8 +329,6 @@
                 <para>Dans ce dernier, choisissez <guimenuitem>Ouvrir le lien</guimenuitem> pour afficher le lien dans la fenêtre de votre navigateur Web.</para>
               </listitem>
             </orderedlist>
-
-            <para>Lisez la section <xref linkend="preferred-applications"/> pour en savoir plus sur la configuration et la désactivation d'applications favorites pour Terminal.</para>
           </listitem>
         </varlistentry> 
 
@@ -350,8 +348,6 @@
                 <para>Dans ce dernier, choisissez <guimenuitem>Rédiger un e-mail</guimenuitem> pour créer un nouveau message dans votre application de messagerie favorite.</para>
               </listitem>
             </orderedlist>
-
-            <para>Lisez <xref linkend="preferred-applications"/> pour en savoir plus sur la configuration et la désactivation d'applications favorites pour Terminal.</para>
           </listitem>
         </varlistentry> 
       </variablelist>
@@ -740,77 +736,12 @@
   </sect1>
 
 
-  <sect1 id="preferred-applications">
-    <title>Applications favorites</title>
-
-    <para>À partir de la version 0.2.4, @PACKAGE_NAME@ vous offre la possibilité d'ouvrir des liens internet ou composer des messages électroniques avec vos applications favorites. Cette section vous décris comment configurer quel navigateur internet ou quelle messagerie utiliser pour ces actions (lire <xref linkend="usage_to-work-with-contents-of-terminal-windows"/> pour de plus amples explications concernant les liens internet et la compositions de messages électroniques).</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-edit-applications.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Applications</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>Pour configurer vos applications favorites dans @PACKAGE_NAME@, choisissez <menuchoice><guimenu>Editer</guimenu><guimenuitem>Applications...</guimenuitem></menuchoice> de la barre de menu. Ceci ouvrira la fenêtre de configuration des <guilabel>Applications favorites</guilabel>.</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-applications-dialog.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Applications favorites</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>Cette fenêtre permet de sélectionner le navigateur internet pour les liens hypertexte et l'assistant de messagerie pour le courrier électronique. Cliquez sur les boutons pour faire apparaître une liste déroulante d'où vous pouvez changer les applications.</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-applications-menu.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Choisir l'application préférée</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>Vous pouvez choisir de désactiver la fonction  d'ouverture de liens internet et de composition de courrier électronique en choisissant <guimenuitem>Désactiver cette fonction</guimenuitem>.</para>
-
-    <para>Dans la liste déroulante vous trouverez toutes les applications détectées automatiquement. Choisissez <guimenuitem>Autre...</guimenuitem> au cas où votre application favorite ne ferait pas partie de la liste ou si vous voulez ajouter des options à l'exécution de la commande (Utilisez <parameter>%u</parameter> pour représenter l'URL lors de l'exécution, e.g. <command>navigateur --newtab %u</command>). Ceci fera apparaître une fenêtre vous permettant d'entrer la commande de votre application.</para>
-
-    <screenshot>
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="images/terminal-choose-custom-webbrowser.png" format="PNG"/>
-        </imageobject>
-
-        <textobject>
-          <phrase>Choisir un navigateur Web personnel</phrase>
-        </textobject>
-      </mediaobject>
-    </screenshot>
-
-    <para>Vous pouvez soit entrer le nom de l'application ou le chemin d'accès complet de l'exécutable de l'application, pour autant que l'application est installée dans un chemin de recherche du système, ou presser le bouton <guibutton>Naviguer...</guibutton> pour "naviguer" jusqu'à votre application.</para>
-  </sect1>
-
-
   <sect1 id="advanced">
     <title>Configuration avancée</title>
     <sect2 id="command-line-options">
       <title>Options en ligne de commande</title>
 
-      <para>Lorsque @PACKAGE_NAME@ est lancé depuis la ligne de commande ou depuis un lanceur du panneau, plusieurs options peuvent être spécifiées pour modifié le comportement.</para>
+      <para>Lorsque @PACKAGE_NAME@ est lancé depuis la ligne de commande ou depuis un lanceur du panneau Xfce, plusieurs options peuvent être spécifiées pour modifier le comportement.</para>
 
       <variablelist>
         <varlistentry>
@@ -830,7 +761,7 @@
         <varlistentry>
           <term><option>--disable-server</option></term>
           <listitem>
-            <para>Ne pas utiliser D-BUS</para>
+            <para>Ne pas utiliser le service D-BUS</para>
           </listitem>
         </varlistentry>
 
@@ -865,7 +796,7 @@
         <varlistentry>
           <term><option>--hold</option></term>
           <listitem>
-            <para>Ne supprime pas le terminal lorsque le commande est terminée</para>
+            <para>Ne ferme pas le terminal lorsque la commande exécutée se termine</para>
           </listitem>
         </varlistentry>
 
@@ -886,7 +817,7 @@
         <varlistentry>
           <term><option>--role</option> <parameter>rôle</parameter></term>
           <listitem>
-            <para>Spécifie le rôle de la dernière fenêtre à <parameter>rôle</parameter>. S'applique seulement à une fenêtre et peut être appliqué à chaque fenêtre que vous créez depuis la ligne de commande. C'est principalement utilisé pour la gestion d'une session à l'intérieur de @PACKAGE_NAME@.</para>
+            <para>Spécifie le rôle de la dernière fenêtre à <parameter>rôle</parameter>. S'applique seulement à une fenêtre et peut être appliquée à chaque fenêtre que vous créez depuis la ligne de commande. C'est principalement utilisé en interne pour la gestion d'une session de @PACKAGE_NAME@.</para>
           </listitem>
         </varlistentry>
 
@@ -900,68 +831,68 @@
         <varlistentry>
           <term><option>--fullscreen</option></term>
           <listitem>
-            <para>Passe la dernière fenêtre en mode plein écran. S'applique uniquement à une fenêtre et peut être appliqué à chaque fenêtre que vous créez depuis la ligne de commande.</para>
+            <para>Passe la dernière fenêtre en mode plein écran. S'applique uniquement à une fenêtre et peut être appliquée à chaque fenêtre que vous créez depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--show-menubar</option></term>
           <listitem>
-            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifié pour chaque nouvelle fenêtre créée depuis la ligne de commande.</para>
+            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifiée pour chaque nouvelle fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--hide-menubar</option></term>
           <listitem>
-            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifié pour chaque nouvelle fenêtre créée depuis la ligne de commande.</para>
+            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifiée pour chaque nouvelle fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--show-borders</option></term>
           <listitem>
-            <para>Affiche la décoration de la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifié pour chaque fenêtre créée depuis la ligne de commande.</para>
+            <para>Affiche la décoration de la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifiée pour chaque fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--hide-borders</option></term>
           <listitem>
-            <para>Cache la décoration de la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifié pour chaque fenêtre créée depuis la ligne de commande.</para>
+            <para>Cache la décoration de la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifiée pour chaque fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--show-toolbars</option></term>
           <listitem>
-            <para>Affiche la barre d'outils pour la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifié pour chaque fenêtre créée depuis la ligne de commande.</para>
+            <para>Affiche la barre d'outils pour la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifiée pour chaque fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--hide-toolbars</option></term>
           <listitem>
-            <para>Cache la barre d'outils pour la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifié pour chaque fenêtre créée depuis la ligne de commande.</para>
+            <para>Cache la barre d'outils pour la dernière fenêtre. S'applique seulement à une fenêtre et peut être spécifiée pour chaque fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--tab</option></term>
           <listitem>
-            <para>Ouvre un nouvel onglet dans la dernière fenêtre. Cette option peut être spécifié plus d'une fois.</para>
+            <para>Ouvre un nouvel onglet dans la dernière fenêtre. Cette option peut être spécifiée plus d'une fois.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--window</option></term>
           <listitem>
-            <para>Ouvre une nouvelle fenêtre avec seulement un onglet. Cette option peut être spécifié plus d'une fois.</para>
+            <para>Ouvre une nouvelle fenêtre avec seulement un onglet. Cette option peut être spécifiée plus d'une fois.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para>Par exemple, si vous voulez ouvrir un nouveau terminal  avec deux onglets, où le premier exécuterais <command>mutt</command> et le second <command>mc</command>, et que la fenêtre aurait une géométrie de 80 colonnes par 40 lignes, alors la commande à exécuter @PACKAGE_NAME@ serait :</para>
+      <para>Par exemple, si vous voulez ouvrir un nouveau terminal  avec deux onglets, où le premier exécuterait <command>mutt</command> et le second <command>mc</command>, et que la fenêtre aurait une géométrie de 80 colonnes par 40 lignes, alors la commande à exécuter pour @PACKAGE_NAME@ serait :</para>
 
       <screen>Terminal --geometry 80x40 --command mutt --tab --command mc</screen>
 
@@ -970,7 +901,7 @@
     <sect2 id="files-and-env-vars">
       <title>Fichiers et Variables d'environnements</title>
 
-      <para>@PACKAGE_NAME@ utilise les spécifications Basedir qui sont définies par <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> afin de localiser ses données et ses fichiers de configurations. Cela signifie que les chemins vers les fichiers seront spécifiés de manière relative par rapport aux répertoires décrits dans les spécifications.</para>
+      <para>@PACKAGE_NAME@ utilise les spécifications Basedir qui sont définies par <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> afin de localiser ses données et ses fichiers de configurations. Cela signifie que les chemins vers les fichiers seront spécifiés de manière relatives par rapport aux répertoires décrits dans les spécifications.</para>
 
       <variablelist>
         <varlistentry>
@@ -1039,15 +970,16 @@ MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
-MiscTabPosition=GTK_POS_TOP</programlisting>
+MiscTabPosition=GTK_POS_TOP
+MiscHighlightUrls=TRUE</programlisting>
 
-      <para>en plus de toutes les options qui sont contrôler depuis la fenêtre des préférences.</para>
+      <para>en plus de toutes les options qui sont contrôlées depuis la fenêtre des préférences.</para>
 
       <variablelist>
         <varlistentry>
           <term><varname>MiscAlwaysShowTabs</varname></term>
           <listitem>
-            <para>Si <literal>TRUE</literal> alors l'en-tête des onglets est toujours visible même avec un unique onglet. Cette option est utile si vous ne désirez pas que la fenêtre de votre terminal soit redimensionnée lorsque vous ouvrez un second onglet. Désactivée par défaut.</para>
+            <para>Si <literal>TRUE</literal> alors l'en-tête des onglets est toujours visible même avec un unique onglet. Cette option est utile si vous désirez que la fenêtre de votre terminal ne soit pas redimensionnée lorsque vous ouvrez un second onglet. Désactivée par défaut.</para>
           </listitem>
         </varlistentry>
 
@@ -1111,6 +1043,19 @@ MiscTabPosition=GTK_POS_TOP</programlisting>
           <term><varname>MiscTabPosition</varname></term>
           <listitem>
             <para>Spécifie la position de l'en-tête onglets dans la fenêtre. Peut être <literal>GTK_POS_TOP</literal> (par défaut), <literal>GTK_POS_LEFT</literal>, <literal>GTK_POS_BOTTOM</literal> ou <literal>GTK_POS_RIGHT</literal>. Si vous spécifiez <literal>GTK_POS_LEFT</literal> ou <literal>GTK_POS_RIGHT</literal>, alors le texte dans les onglets sera affiché verticalement au lieu d'horizontalement. Il est vivement recommandé de désactiver <varname>MiscTabCloseButtons</varname> pour les valeurs <literal>GTK_POS_LEFT</literal> et <literal>GTK_POS_RIGHT</literal>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscHighlightUrls</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether URLs - both hyperlinks and email addresses - will
+              be highlighted in the text displayed in a terminal window. If you change this
+              option to <literal>FALSE</literal>, URLs won't be highlighted anymore and you
+              will no longer be able to middle-click the URL to open it in the preferred
+              application.
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>

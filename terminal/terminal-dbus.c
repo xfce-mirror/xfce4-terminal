@@ -208,7 +208,7 @@ terminal_dbus_register_service (TerminalApp *app,
       return FALSE;
     }
 
-  g_object_set_data_full (G_OBJECT (app), "terminal-dbus-connection",
+  g_object_set_data_full (G_OBJECT (app), I_("terminal-dbus-connection"),
                           connection, (GDestroyNotify) dbus_connection_unref);
 
   return TRUE;

@@ -425,7 +425,7 @@ terminal_app_find_screen (const gchar *display_name)
         }
 
       /* mark this screen as handled */
-      g_object_set_data (G_OBJECT (screen), "terminal-checked-screen", GINT_TO_POINTER (1));
+      g_object_set_data (G_OBJECT (screen), I_("terminal-checked-screen"), GINT_TO_POINTER (1));
     }
 #endif
 

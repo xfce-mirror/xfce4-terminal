@@ -39,7 +39,6 @@
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-helper.h>
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-private.h>
@@ -62,7 +61,6 @@ enum
 enum
 {
   GET_CONTEXT_MENU,
-  OPEN_URI,
   SELECTION_CHANGED,
   LAST_SIGNAL,
 };
@@ -105,10 +103,6 @@ static void       terminal_screen_vte_eof                       (VteTerminal    
                                                                  TerminalScreen        *screen);
 static GtkWidget *terminal_screen_vte_get_context_menu          (TerminalWidget        *widget,
                                                                  TerminalScreen        *screen);
-static void       terminal_screen_vte_open_uri                  (TerminalWidget        *widget,
-                                                                 const gchar           *uri,
-                                                                 TerminalHelperCategory category,
-                                                                 TerminalScreen        *screen);
 static void       terminal_screen_vte_selection_changed         (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_window_title_changed      (VteTerminal           *terminal,
@@ -124,9 +118,6 @@ struct _TerminalScreenClass
 
   /* signals */
   GtkWidget*  (*get_context_menu)  (TerminalScreen        *screen);
-  void        (*open_uri)          (TerminalScreen        *screen,
-                                    const gchar           *uri,
-                                    TerminalHelperCategory category);
   void        (*selection_changed) (TerminalScreen        *screen);
 };
 
@@ -209,19 +200,6 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                   GTK_TYPE_MENU, 0);
 
   /**
-   * TerminalWidget::open-uri:
-   **/
-  screen_signals[OPEN_URI] =
-    g_signal_new (I_("open-uri"),
-                  G_TYPE_FROM_CLASS (klass),
-                  G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalScreenClass, open_uri),
-                  NULL, NULL,
-                  _terminal_marshal_VOID__STRING_ENUM,
-                  G_TYPE_NONE, 2, G_TYPE_STRING,
-                  TERMINAL_TYPE_HELPER_CATEGORY);
-
-  /**
    * TerminalScreen::selection-changed
    **/
   screen_signals[SELECTION_CHANGED] =
@@ -247,7 +225,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::child-exited", G_CALLBACK (terminal_screen_vte_child_exited), screen,
                     "signal::eof", G_CALLBACK (terminal_screen_vte_eof), screen,
                     "signal::context-menu", G_CALLBACK (terminal_screen_vte_get_context_menu), screen,
-                    "signal::open-uri", G_CALLBACK (terminal_screen_vte_open_uri), screen,
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
@@ -837,20 +814,6 @@ terminal_screen_vte_get_context_menu (TerminalWidget  *widget,
   GtkWidget *menu = NULL;
   g_signal_emit (G_OBJECT (screen), screen_signals[GET_CONTEXT_MENU], 0, &menu);
   return menu;
-}
-
-
-
-static void
-terminal_screen_vte_open_uri (TerminalWidget        *widget,
-                              const gchar           *uri,
-                              TerminalHelperCategory category,
-                              TerminalScreen        *screen)
-{
-  _terminal_return_if_fail (TERMINAL_IS_WIDGET (widget));
-  _terminal_return_if_fail (uri != NULL);
-
-  g_signal_emit (G_OBJECT (screen), screen_signals[OPEN_URI], 0, uri, category);
 }
 
 

@@ -2,7 +2,6 @@
 
 SUBDIRS =								\
 	doc								\
-	helpers								\
 	icons								\
 	po								\
 	po-doc								\

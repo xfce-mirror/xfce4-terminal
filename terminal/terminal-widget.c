@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -32,10 +32,8 @@
 
 #include <gdk/gdkkeysyms.h>
 
-#include <exo/exo.h>
-
+#include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-helper.h>
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-widget.h>
@@ -61,7 +59,6 @@
 enum
 {
   GET_CONTEXT_MENU,
-  OPEN_URI,
   LAST_SIGNAL,
 };
 
@@ -96,8 +93,7 @@ static gboolean terminal_widget_key_press_event       (GtkWidget            *wid
 static void     terminal_widget_open_uri              (TerminalWidget       *widget,
                                                        const gchar          *link,
                                                        gint                  tag);
-static void     terminal_widget_update_helper_browser (TerminalWidget       *widget);
-static void     terminal_widget_update_helper_mailer  (TerminalWidget       *widget);
+static void     terminal_widget_update_highlight_urls (TerminalWidget       *widget);
 
 
 
@@ -107,9 +103,6 @@ struct _TerminalWidgetClass
 
   /* signals */
   GtkWidget*  (*get_context_menu) (TerminalWidget        *widget);
-  void        (*open_uri)         (TerminalWidget        *widget,
-                                   const gchar           *uri,
-                                   TerminalHelperCategory category);
 };
 
 struct _TerminalWidget
@@ -165,26 +158,13 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
    * TerminalWidget::get-context-menu:
    **/
   widget_signals[GET_CONTEXT_MENU] =
-    g_signal_new ("context-menu",
+    g_signal_new (I_("context-menu"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalWidgetClass, get_context_menu),
                   NULL, NULL,
                   _terminal_marshal_OBJECT__VOID,
                   GTK_TYPE_MENU, 0);
-
-  /**
-   * TerminalWidget::open-uri:
-   **/
-  widget_signals[OPEN_URI] =
-    g_signal_new ("open-uri",
-                  G_TYPE_FROM_CLASS (klass),
-                  G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalWidgetClass, open_uri),
-                  NULL, NULL,
-                  _terminal_marshal_VOID__STRING_ENUM,
-                  G_TYPE_NONE, 2, G_TYPE_STRING,
-                  TERMINAL_TYPE_HELPER_CATEGORY);
 }
 
 
@@ -207,15 +187,12 @@ terminal_widget_init (TerminalWidget *widget)
                      targets, G_N_ELEMENTS (targets),
                      GDK_ACTION_COPY | GDK_ACTION_LINK);
 
-  /* monitor the helper-* settings */
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::helper-webbrowser",
-                            G_CALLBACK (terminal_widget_update_helper_browser), widget);
-  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::helper-mailreader",
-                            G_CALLBACK (terminal_widget_update_helper_mailer), widget);
+  /* monitor the misc-highlight-urls setting */
+  g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-highlight-urls",
+                            G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
-  /* apply the initial helper-* settings */
-  terminal_widget_update_helper_browser (widget);
-  terminal_widget_update_helper_mailer (widget);
+  /* apply the initial misc-highlight-urls setting */
+  terminal_widget_update_highlight_urls (widget);
 }
 
 
@@ -225,9 +202,8 @@ terminal_widget_finalize (GObject *object)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
 
-  /* disconnect the helper-* watchers */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_helper_browser), widget);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_helper_mailer), widget);
+  /* disconnect the misc-highlight-urls watch */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
@@ -330,14 +306,14 @@ terminal_widget_context_menu (TerminalWidget *widget,
         }
 
       /* prepend the "COPY" menu item */
-      g_object_set_data_full (G_OBJECT (item_copy), "terminal-widget-link", g_strdup (match), g_free);
+      g_object_set_data_full (G_OBJECT (item_copy), I_("terminal-widget-link"), g_strdup (match), g_free);
       g_signal_connect_swapped (G_OBJECT (item_copy), "activate", G_CALLBACK (terminal_widget_context_menu_copy), widget);
       gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_copy);
       gtk_widget_show (item_copy);
 
       /* prepend the "OPEN" menu item */
-      g_object_set_data_full (G_OBJECT (item_open), "terminal-widget-link", g_strdup (match), g_free);
-      g_object_set_data_full (G_OBJECT (item_open), "terminal-widget-tag", g_memdup (&tag, sizeof (tag)), g_free);
+      g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-link"), g_strdup (match), g_free);
+      g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-tag"), g_memdup (&tag, sizeof (tag)), g_free);
       g_signal_connect_swapped (G_OBJECT (item_open), "activate", G_CALLBACK (terminal_widget_context_menu_open), widget);
       gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_open);
       gtk_widget_show (item_open);
@@ -403,7 +379,7 @@ terminal_widget_button_press_event (GtkWidget       *widget,
 
   if (event->button == 2 && event->type == GDK_BUTTON_PRESS)
     {
-      /* middle-clicking on an URI fires the associated helper */
+      /* middle-clicking on an URI fires the responsible application */
       match = vte_terminal_match_check (VTE_TERMINAL (widget),
                                         event->x / VTE_TERMINAL (widget)->char_width,
                                         event->y / VTE_TERMINAL (widget)->char_height,
@@ -635,26 +611,24 @@ terminal_widget_open_uri (TerminalWidget *widget,
                           const gchar    *link,
                           gint            tag)
 {
-  TerminalHelperCategory category;
-  gchar                 *uri;
+  GError *error = NULL;
+  gchar  *uri;
 
+  /* parse the URI from the link */
   if (tag == widget->tag_browser1)
     {
-      category = TERMINAL_HELPER_WEBBROWSER;
       uri = g_strdup (link);
     }
   else if (tag == widget->tag_browser2)
     {
-      category = TERMINAL_HELPER_WEBBROWSER;
       uri = g_strconcat ("http://", link, NULL);
     }
   else if (tag == widget->tag_mailer)
     {
-      category = TERMINAL_HELPER_MAILREADER;
       if (strncmp (link, "mailto:", 7) == 0)
-        uri = g_strdup (link + 7);
-      else
         uri = g_strdup (link);
+      else
+        uri = g_strconcat ("mailto:", link, NULL);
     }
   else
     {
@@ -662,7 +636,13 @@ terminal_widget_open_uri (TerminalWidget *widget,
       return;
     }
 
-  g_signal_emit (G_OBJECT (widget), widget_signals[OPEN_URI], 0, uri, category);
+  /* try to open the URI with the responsible application */
+  if (!exo_url_show_on_screen (uri, NULL, gtk_widget_get_screen (GTK_WIDGET (widget)), &error))
+    {
+      /* tell the user that we were unable to open the responsible application */
+      terminal_dialogs_show_error (widget, error, _("Failed to open the URL `%s'"), uri);
+      g_error_free (error);
+    }
 
   g_free (uri);
 }
@@ -670,12 +650,12 @@ terminal_widget_open_uri (TerminalWidget *widget,
 
 
 static void
-terminal_widget_update_helper_browser (TerminalWidget *widget)
+terminal_widget_update_highlight_urls (TerminalWidget *widget)
 {
-  gchar *setting;
+  gboolean highlight_urls;
 
-  g_object_get (G_OBJECT (widget->preferences), "helper-webbrowser", &setting, NULL);
-  if (exo_str_is_equal (setting, "disabled"))
+  g_object_get (G_OBJECT (widget->preferences), "misc-highlight-urls", &highlight_urls, NULL);
+  if (!highlight_urls)
     {
       if (widget->tag_browser1 >= 0)
         {
@@ -687,6 +667,12 @@ terminal_widget_update_helper_browser (TerminalWidget *widget)
         {
           vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_browser2);
           widget->tag_browser2 = -1;
+        }
+
+      if (widget->tag_mailer >= 0)
+        {
+          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_mailer);
+          widget->tag_mailer = -1;
         }
     }
   else
@@ -708,28 +694,7 @@ terminal_widget_update_helper_browser (TerminalWidget *widget)
                                               widget->tag_browser2,
                                               GDK_HAND2);
         }
-    }
-  g_free (setting);
-}
 
-
-
-static void
-terminal_widget_update_helper_mailer (TerminalWidget *widget)
-{
-  gchar *setting;
-
-  g_object_get (G_OBJECT (widget->preferences), "helper-mailreader", &setting, NULL);
-  if (exo_str_is_equal (setting, "disabled"))
-    {
-      if (widget->tag_mailer >= 0)
-        {
-          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_mailer);
-          widget->tag_mailer = -1;
-        }
-    }
-  else
-    {
       if (widget->tag_mailer < 0)
         {
           widget->tag_mailer = vte_terminal_match_add (VTE_TERMINAL (widget),
@@ -739,7 +704,6 @@ terminal_widget_update_helper_mailer (TerminalWidget *widget)
                                               GDK_HAND2);
         }
     }
-  g_free (setting);
 }
 
 
