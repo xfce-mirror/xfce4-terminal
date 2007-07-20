@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -41,6 +41,7 @@
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-config.h>
 #include <terminal/terminal-preferences.h>
+#include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 
 
@@ -285,7 +286,7 @@ static void
 terminal_app_window_destroyed (GtkWidget   *window,
                                TerminalApp *app)
 {
-  g_return_if_fail (g_list_find (app->windows, window) != NULL);
+  _terminal_return_if_fail (g_list_find (app->windows, window) != NULL);
 
   app->windows = g_list_remove (app->windows, window);
 
@@ -496,8 +497,8 @@ terminal_app_open_window (TerminalApp         *app,
   gchar           *geometry;
   GList           *lp;
 
-  g_return_if_fail (TERMINAL_IS_APP (app));
-  g_return_if_fail (attr != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_APP (app));
+  _terminal_return_if_fail (attr != NULL);
 
   window = terminal_app_create_window (app,
                                        attr->fullscreen,

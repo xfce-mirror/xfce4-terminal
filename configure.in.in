@@ -58,7 +58,7 @@ dnl ********************************
 dnl *** Check for basic programs ***
 dnl ********************************
 AC_PROG_CC()
-AC_PROG_CC_C_O()
+AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
 AC_PROG_INTLTOOL([0.31], [no-xml])
 AC_PROG_LIBTOOL()
@@ -159,18 +159,8 @@ AC_HELP_STRING([--enable-debug=@<:@no/minimum/yes/full@:>@], [Turn on debugging 
   [], [enable_debug=terminal_debug_default])
 AC_MSG_CHECKING([whether to enable debugging support])
 if test x"$enable_debug" = x"full" -o x"$enable_debug" = x"yes"; then
-
-  dnl Check whether the compiler accepts the -errwarn=%all
-  save_CFLAGS="$CFLAGS"
-  CFLAGS="$CFLAGS -errwarn=%all"
-  AC_MSG_CHECKING([whether $CC accepts -errwarn=%all])
-  AC_COMPILE_IFELSE(AC_LANG_SOURCE([int x;]), [
-    AC_MSG_RESULT([yes])
-    PLATFORM_CFLAGS="$PLATFORM_CFLAGS -errwarn=%all"
-  ], [
-    AC_MSG_RESULT([no])
-  ])
-  CFLAGS="$save_CFLAGS"
+  dnl Print the result
+  AC_MSG_RESULT([$enable_debug])
 
   dnl Check whether the compiler accepts the -Werror
   save_CFLAGS="$CFLAGS"
@@ -181,6 +171,16 @@ if test x"$enable_debug" = x"full" -o x"$enable_debug" = x"yes"; then
     PLATFORM_CFLAGS="$PLATFORM_CFLAGS -Werror"
   ], [
     AC_MSG_RESULT([no])
+
+		dnl Check whether the compiler accepts the -errwarn=%all
+		CFLAGS="$save_CFLAGS -errwarn=%all"
+		AC_MSG_CHECKING([whether $CC accepts -errwarn=%all])
+		AC_COMPILE_IFELSE(AC_LANG_SOURCE([int x;]), [
+			AC_MSG_RESULT([yes])
+			PLATFORM_CFLAGS="$PLATFORM_CFLAGS -errwarn=%all"
+		], [
+			AC_MSG_RESULT([no])
+		])
   ])
   CFLAGS="$save_CFLAGS"
 
@@ -216,6 +216,12 @@ if test x"$enable_debug" = x"full" -o x"$enable_debug" = x"yes"; then
     PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -DG_ENABLE_DEBUG"
   fi
 else
+  dnl Print the result
+  AC_MSG_RESULT([$enable_debug])
+
+  dnl Disable debugging (release build)
+  PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -DNDEBUG"
+
   dnl Disable object cast checks
   PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -DG_DISABLE_CAST_CHECKS"
 
@@ -224,7 +230,6 @@ else
     PLATFORM_CPPFLAGS="$PLATFORM_CPPFLAGS -DG_DISABLE_ASSERT -DG_DISABLE_CHECKS"
   fi
 fi
-AC_MSG_RESULT([$enable_debug])
 
 dnl **************************************
 dnl *** Check for linker optimizations ***

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -37,6 +37,7 @@
 
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -252,7 +253,7 @@ terminal_helper_compare (gconstpointer a,
 gboolean
 terminal_helper_is_hidden (TerminalHelper *helper)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), TRUE);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER (helper), TRUE);
   return helper->hidden;
 }
 
@@ -267,7 +268,7 @@ terminal_helper_is_hidden (TerminalHelper *helper)
 TerminalHelperCategory
 terminal_helper_get_category (TerminalHelper *helper)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), TERMINAL_HELPER_WEBBROWSER);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER (helper), TERMINAL_HELPER_WEBBROWSER);
   return helper->category;
 }
 
@@ -282,7 +283,7 @@ terminal_helper_get_category (TerminalHelper *helper)
 const gchar*
 terminal_helper_get_id (TerminalHelper *helper)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
   return helper->id;
 }
 
@@ -297,7 +298,7 @@ terminal_helper_get_id (TerminalHelper *helper)
 const gchar*
 terminal_helper_get_name (TerminalHelper *helper)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
   return helper->name;
 }
 
@@ -312,7 +313,7 @@ terminal_helper_get_name (TerminalHelper *helper)
 const gchar*
 terminal_helper_get_command (TerminalHelper *helper)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
   return helper->command;
 }
 
@@ -327,7 +328,7 @@ terminal_helper_get_command (TerminalHelper *helper)
 const gchar*
 terminal_helper_get_icon (TerminalHelper *helper)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER (helper), NULL);
   return helper->icon;
 }
 
@@ -351,9 +352,9 @@ terminal_helper_execute (TerminalHelper *helper,
   gchar       *t;
   guint        n;
 
-  g_return_if_fail (TERMINAL_IS_HELPER (helper));
-  g_return_if_fail (GDK_IS_SCREEN (screen));
-  g_return_if_fail (uri != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_HELPER (helper));
+  _terminal_return_if_fail (GDK_IS_SCREEN (screen));
+  _terminal_return_if_fail (uri != NULL);
 
   for (n = 0, s = helper->command; *s != '\0'; ++s)
     if (s[0] == '%' && g_ascii_tolower (s[1]) == 'u')
@@ -497,7 +498,7 @@ terminal_helper_database_lookup (TerminalHelperDatabase *database,
   gchar          *file;
   gchar          *spec;
 
-  g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
 
   if (G_UNLIKELY (id == NULL))
     return NULL;
@@ -576,7 +577,7 @@ terminal_helper_database_lookup_all (TerminalHelperDatabase *database,
   gchar          *s;
   guint           n;
 
-  g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
 
   xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
   specs = xfce_resource_match (XFCE_RESOURCE_DATA, "Terminal/apps/*.desktop", TRUE);
@@ -615,8 +616,8 @@ terminal_helper_database_get_custom (TerminalHelperDatabase *database,
   GEnumValue *enum_value;
   gchar       id[64];
 
-  g_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
-  g_return_val_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER_DATABASE (database), NULL);
+  _terminal_return_val_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
                      && category <= TERMINAL_HELPER_MAILREADER, NULL);
 
   /* determine the id for the custom helper */
@@ -647,8 +648,8 @@ terminal_helper_database_set_custom (TerminalHelperDatabase *database,
   gchar       spec[128];
   gchar      *file;
 
-  g_return_if_fail (TERMINAL_IS_HELPER_DATABASE (database));
-  g_return_if_fail (command != NULL && *command != '\0');
+  _terminal_return_if_fail (TERMINAL_IS_HELPER_DATABASE (database));
+  _terminal_return_if_fail (command != NULL && *command != '\0');
 
   /* determine the spec for the custom helper */
   enum_class = g_type_class_ref (TERMINAL_TYPE_HELPER_CATEGORY);

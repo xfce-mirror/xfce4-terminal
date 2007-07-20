@@ -30,11 +30,13 @@ Terminal_headers =							\
 	terminal-dialogs.h						\
 	terminal-helper-dialog.h					\
 	terminal-helper.h						\
+	terminal-gtk-extensions.h					\
 	terminal-image-loader.h						\
 	terminal-monitor.h						\
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
+	terminal-private.h						\
 	terminal-screen.h						\
 	terminal-shortcut-editor.h					\
 	terminal-stock.h						\
@@ -53,6 +55,7 @@ Terminal_SOURCES =							\
 	terminal-dialogs.c						\
 	terminal-helper-dialog.c					\
 	terminal-helper.c						\
+	terminal-gtk-extensions.c					\
 	terminal-image-loader.c						\
 	terminal-monitor.c						\
 	terminal-options.c						\

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  * Copyright (c) 2003      Red Hat, Inc.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
@@ -25,6 +25,7 @@
 #endif
 
 #include <terminal/terminal-image-loader.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -53,9 +54,6 @@ static void       terminal_image_loader_stretch           (TerminalImageLoader  
 static void       terminal_image_loader_saturate          (TerminalImageLoader      *loader,
                                                            GdkPixbuf                *pixbuf);
 
-
-
-static TerminalImageLoader *default_loader = NULL;
 
 
 G_DEFINE_TYPE (TerminalImageLoader, terminal_image_loader, G_TYPE_OBJECT);
@@ -99,6 +97,7 @@ terminal_image_loader_finalize (GObject *object)
 }
 
 
+
 static void
 terminal_image_loader_check (TerminalImageLoader *loader)
 {
@@ -109,7 +108,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   gchar                  *selected_color_spec;
   gchar                  *selected_path;
 
-  g_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
+  _terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
   g_object_get (G_OBJECT (loader->preferences),
                 "background-darkness", &selected_darkness,
@@ -426,18 +425,19 @@ terminal_image_loader_saturate (TerminalImageLoader *loader,
 TerminalImageLoader*
 terminal_image_loader_get (void)
 {
-  if (G_UNLIKELY (default_loader == NULL))
+  static TerminalImageLoader *loader = NULL;
+
+  if (G_UNLIKELY (loader == NULL))
     {
-      default_loader = g_object_new (TERMINAL_TYPE_IMAGE_LOADER, NULL);
-      g_object_add_weak_pointer (G_OBJECT (default_loader),
-                                 (gpointer) &default_loader);
+      loader = g_object_new (TERMINAL_TYPE_IMAGE_LOADER, NULL);
+      g_object_add_weak_pointer (G_OBJECT (loader), (gpointer) &loader);
     }
   else
     {
-      g_object_ref (G_OBJECT (default_loader));
+      g_object_ref (G_OBJECT (loader));
     }
 
-  return default_loader;
+  return loader;
 }
 
 
@@ -459,9 +459,9 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   GdkPixbuf *pixbuf;
   GList     *lp;
 
-  g_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
-  g_return_val_if_fail (width > 0, NULL);
-  g_return_val_if_fail (height > 0, NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
+  _terminal_return_val_if_fail (width > 0, NULL);
+  _terminal_return_val_if_fail (height > 0, NULL);
 
   terminal_image_loader_check (loader);
 

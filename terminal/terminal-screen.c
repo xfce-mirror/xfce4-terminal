@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -37,13 +37,12 @@
 #include <unistd.h>
 #endif
 
-#include <exo/exo.h>
-
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-helper.h>
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-marshal.h>
+#include <terminal/terminal-private.h>
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
 
@@ -181,8 +180,8 @@ terminal_screen_class_init (TerminalScreenClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_CUSTOM_TITLE,
                                    g_param_spec_string ("custom-title",
-                                                        _("Custom title"),
-                                                        _("Custom title"),
+                                                        "custom-title",
+                                                        "custom-title",
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -192,8 +191,8 @@ terminal_screen_class_init (TerminalScreenClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TITLE,
                                    g_param_spec_string ("title",
-                                                        _("Title"),
-                                                        _("Title"),
+                                                        "title",
+                                                        "title",
                                                         NULL,
                                                         G_PARAM_READABLE));
 
@@ -201,7 +200,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    * TerminalScreen::get-context-menu
    **/
   screen_signals[GET_CONTEXT_MENU] =
-    g_signal_new ("get-context-menu",
+    g_signal_new (I_("get-context-menu"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalScreenClass, get_context_menu),
@@ -213,7 +212,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    * TerminalWidget::open-uri:
    **/
   screen_signals[OPEN_URI] =
-    g_signal_new ("open-uri",
+    g_signal_new (I_("open-uri"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalScreenClass, open_uri),
@@ -226,7 +225,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    * TerminalScreen::selection-changed
    **/
   screen_signals[SELECTION_CHANGED] =
-    g_signal_new ("selection-changed",
+    g_signal_new (I_("selection-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalScreenClass, selection_changed),
@@ -809,8 +808,8 @@ static void
 terminal_screen_vte_child_exited (VteTerminal    *terminal,
                                   TerminalScreen *screen)
 {
-  g_return_if_fail (VTE_IS_TERMINAL (terminal));
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_LIKELY (!screen->hold))
     gtk_widget_destroy (GTK_WIDGET (screen));
@@ -822,8 +821,8 @@ static void
 terminal_screen_vte_eof (VteTerminal    *terminal,
                          TerminalScreen *screen)
 {
-  g_return_if_fail (VTE_IS_TERMINAL (terminal));
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_LIKELY (!screen->hold))
     gtk_widget_destroy (GTK_WIDGET (screen));
@@ -848,8 +847,8 @@ terminal_screen_vte_open_uri (TerminalWidget        *widget,
                               TerminalHelperCategory category,
                               TerminalScreen        *screen)
 {
-  g_return_if_fail (TERMINAL_IS_WIDGET (widget));
-  g_return_if_fail (uri != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_WIDGET (widget));
+  _terminal_return_if_fail (uri != NULL);
 
   g_signal_emit (G_OBJECT (screen), screen_signals[OPEN_URI], 0, uri, category);
 }
@@ -860,8 +859,8 @@ static void
 terminal_screen_vte_selection_changed (VteTerminal    *terminal,
                                        TerminalScreen *screen)
 {
-  g_return_if_fail (VTE_IS_TERMINAL (terminal));
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   g_signal_emit (G_OBJECT (screen), screen_signals[SELECTION_CHANGED], 0);
 }
@@ -872,8 +871,8 @@ static void
 terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
                                           TerminalScreen *screen)
 {
-  g_return_if_fail (VTE_IS_TERMINAL (terminal));
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   g_object_notify (G_OBJECT (screen), "title");
 }
@@ -982,7 +981,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
   gchar  **argv;
   gchar  **env;
 
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
 #ifdef G_ENABLE_DEBUG
   if (!GTK_WIDGET_REALIZED (screen))
@@ -1025,7 +1024,7 @@ void
 terminal_screen_set_custom_command (TerminalScreen *screen,
                                     gchar         **command)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_UNLIKELY (screen->custom_command != NULL))
     g_strfreev (screen->custom_command);
@@ -1047,7 +1046,7 @@ void
 terminal_screen_set_custom_title (TerminalScreen *screen,
                                   const gchar    *title)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (!exo_str_is_equal (screen->custom_title, title))
     {
@@ -1190,7 +1189,7 @@ terminal_screen_get_title (TerminalScreen *screen)
   gchar        *title;
   gchar        *tmp;
 
-  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (G_UNLIKELY (*screen->custom_title != '\0'))
     return g_strdup (screen->custom_title);
@@ -1279,7 +1278,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
   gchar *cwd;
   gint   length;
 
-  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (screen->pid >= 0)
     {
@@ -1332,8 +1331,8 @@ void
 terminal_screen_set_working_directory (TerminalScreen *screen,
                                        const gchar    *directory)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  g_return_if_fail (directory != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (directory != NULL);
 
   g_free (screen->working_directory);
   screen->working_directory = g_strdup (directory);
@@ -1354,7 +1353,7 @@ terminal_screen_set_working_directory (TerminalScreen *screen,
 gboolean
 terminal_screen_get_hold (TerminalScreen *screen)
 {
-  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   return screen->hold;
 }
 
@@ -1372,7 +1371,7 @@ void
 terminal_screen_set_hold (TerminalScreen *screen,
                           gboolean        hold)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   screen->hold = hold;
 }
 
@@ -1390,7 +1389,7 @@ terminal_screen_set_hold (TerminalScreen *screen,
 gboolean
 terminal_screen_has_selection (TerminalScreen *screen)
 {
-  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   return vte_terminal_get_has_selection (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1405,7 +1404,7 @@ terminal_screen_has_selection (TerminalScreen *screen)
 void
 terminal_screen_copy_clipboard (TerminalScreen *screen)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_copy_clipboard (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1422,7 +1421,7 @@ terminal_screen_copy_clipboard (TerminalScreen *screen)
 void
 terminal_screen_paste_clipboard (TerminalScreen *screen)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1440,7 +1439,7 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 void
 terminal_screen_paste_primary (TerminalScreen *screen)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1457,7 +1456,7 @@ void
 terminal_screen_reset (TerminalScreen *screen,
                        gboolean        clear)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_reset (VTE_TERMINAL (screen->terminal), TRUE, clear);
 }
 
@@ -1476,8 +1475,8 @@ void
 terminal_screen_im_append_menuitems (TerminalScreen *screen,
                                      GtkMenuShell   *menushell)
 {
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  g_return_if_fail (GTK_IS_MENU_SHELL (menushell));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (GTK_IS_MENU_SHELL (menushell));
 
   vte_terminal_im_append_menuitems (VTE_TERMINAL (screen->terminal), menushell);
 }
@@ -1496,7 +1495,7 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
   const gchar *directory;
   GList       *result = NULL;
 
-  g_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (screen->custom_command != NULL)
     {

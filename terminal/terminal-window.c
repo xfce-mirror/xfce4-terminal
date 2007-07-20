@@ -53,6 +53,7 @@
 #include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-private.h>
 #include <terminal/terminal-stock.h>
 #include <terminal/terminal-tab-header.h>
 #include <terminal/terminal-toolbars-view.h>
@@ -259,7 +260,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
    * TerminalWindow::new-window
    **/
   window_signals[NEW_WINDOW] =
-    g_signal_new ("new-window",
+    g_signal_new (I_("new-window"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalWindowClass, new_window),
@@ -272,7 +273,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
    * TerminalWindow::new-window-with-screen:
    **/
   window_signals[NEW_WINDOW_WITH_SCREEN] =
-    g_signal_new ("new-window-with-screen",
+    g_signal_new (I_("new-window-with-screen"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalWindowClass, new_window_with_screen),
@@ -1619,8 +1620,8 @@ terminal_window_add (TerminalWindow *window,
   gint            grid_width;
   gint            grid_height;
 
-  g_return_if_fail (TERMINAL_IS_WINDOW (window));
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   active = terminal_window_get_active (window);
   if (G_LIKELY (active != NULL))
@@ -1696,8 +1697,8 @@ void
 terminal_window_remove (TerminalWindow *window,
                         TerminalScreen *screen)
 {
-  g_return_if_fail (TERMINAL_IS_WINDOW (window));
-  g_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   gtk_widget_destroy (GTK_WIDGET (screen));
 }
@@ -1737,8 +1738,8 @@ void
 terminal_window_set_startup_id (TerminalWindow     *window,
                                 const gchar        *startup_id)
 {
-  g_return_if_fail (TERMINAL_IS_WINDOW (window));
-  g_return_if_fail (startup_id != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  _terminal_return_if_fail (startup_id != NULL);
 
   g_free (window->startup_id);
   window->startup_id = g_strdup (startup_id);
@@ -1768,7 +1769,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
   gint             w;
   gint             h;
 
-  g_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
 
   screen = terminal_window_get_active (window);
   if (G_LIKELY (screen != NULL))

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -23,6 +23,7 @@
 #include <config.h>
 #endif
 
+#include <terminal/terminal-private.h>
 #include <terminal/terminal-toolbars-model.h>
 #include <terminal/terminal-toolbars-view.h>
 
@@ -97,7 +98,7 @@ terminal_toolbars_view_edit_done (ExoToolbarsEditorDialog *dialog,
 GtkWidget*
 terminal_toolbars_view_new (GtkUIManager *ui_manager)
 {
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (ui_manager), NULL);
+  _terminal_return_val_if_fail (GTK_IS_UI_MANAGER (ui_manager), NULL);
 
   return g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW,
                        "ui-manager", ui_manager,
@@ -117,7 +118,7 @@ terminal_toolbars_view_edit (TerminalToolbarsView *toolbar)
   GtkUIManager      *ui_manager;
   GtkWidget         *toplevel;
 
-  g_return_if_fail (TERMINAL_IS_TOOLBARS_VIEW (toolbar));
+  _terminal_return_if_fail (TERMINAL_IS_TOOLBARS_VIEW (toolbar));
 
   exo_toolbars_view_set_editing (EXO_TOOLBARS_VIEW (toolbar), TRUE);
 

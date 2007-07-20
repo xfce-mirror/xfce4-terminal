@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -23,9 +23,8 @@
 #include <config.h>
 #endif
 
-#include <exo/exo.h>
-
 #include <terminal/terminal-preferences.h>
+#include <terminal/terminal-stock.h>
 #include <terminal/terminal-tab-header.h>
 
 
@@ -118,8 +117,8 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TAB_POS,
                                    g_param_spec_enum ("tab-pos",
-                                                      _("Tab position"),
-                                                      _("Tab position"),
+                                                      "tab-pos",
+                                                      "tab-pos",
                                                       GTK_TYPE_POSITION_TYPE,
                                                       GTK_POS_TOP,
                                                       G_PARAM_CONSTRUCT | G_PARAM_WRITABLE));
@@ -130,8 +129,8 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_TITLE,
                                    g_param_spec_string ("title",
-                                                        _("Tab title"),
-                                                        _("Tab title"),
+                                                        "title",
+                                                        "title",
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -139,7 +138,7 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
    * TerminalTabHeader::close-tab:
    **/
   header_signals[CLOSE_TAB] =
-    g_signal_new ("close-tab",
+    g_signal_new (I_("close-tab"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalTabHeaderClass, close_tab),
@@ -151,7 +150,7 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
    * TerminalTabHeader::detach-tab:
    **/
   header_signals[DETACH_TAB] =
-    g_signal_new ("detach-tab",
+    g_signal_new (I_("detach-tab"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalTabHeaderClass, detach_tab),
@@ -163,7 +162,7 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
    * TerminalTabHeader::set-title:
    **/
   header_signals[SET_TITLE] =
-    g_signal_new ("set-title",
+    g_signal_new (I_("set-title"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (TerminalTabHeaderClass, set_title),
@@ -194,25 +193,19 @@ terminal_tab_header_init (TerminalTabHeader *header)
 
   header->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
   GTK_WIDGET_SET_FLAGS (header->ebox, GTK_NO_WINDOW);
-  g_signal_connect (G_OBJECT (header->ebox), "button-press-event",
-                    G_CALLBACK (terminal_tab_header_button_press), header);
+  g_signal_connect (G_OBJECT (header->ebox), "button-press-event", G_CALLBACK (terminal_tab_header_button_press), header);
   gtk_box_pack_start (GTK_BOX (header), header->ebox, TRUE, TRUE, 0);
   gtk_widget_show (header->ebox);
 
-  header->label = g_object_new (GTK_TYPE_LABEL,
-                                "selectable", FALSE,
-                                "xalign", 0.0,
-                                NULL);
+  header->label = g_object_new (GTK_TYPE_LABEL, "selectable", FALSE, "xalign", 0.0, NULL);
   gtk_container_add (GTK_CONTAINER (header->ebox), header->label);
   gtk_widget_show (header->label);
 
   button = gtk_button_new ();
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_container_set_border_width (GTK_CONTAINER (button), 0);
-  gtk_tooltips_set_tip (header->tooltips, button,
-                        _("Close this tab"), NULL);
-  g_signal_connect (G_OBJECT (button), "clicked",
-                    G_CALLBACK (terminal_tab_header_close_tab), header);
+  gtk_tooltips_set_tip (header->tooltips, button, _("Close this tab"), NULL);
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (terminal_tab_header_close_tab), header);
   gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
   exo_binding_new (G_OBJECT (header->preferences), "misc-tab-close-buttons", G_OBJECT (button), "visible");
 
@@ -321,6 +314,7 @@ terminal_tab_header_button_press (GtkWidget              *ebox,
                                   GdkEventButton         *event,
                                   TerminalTabHeader      *header)
 {
+  GtkWidget *image;
   GtkWidget *item;
 
   if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
@@ -333,25 +327,33 @@ terminal_tab_header_button_press (GtkWidget              *ebox,
       if (G_LIKELY (header->menu == NULL))
         {
           header->menu = gtk_menu_new ();
-          g_object_add_weak_pointer (G_OBJECT (header->menu),
-                                     (gpointer) &header->menu);
+          g_object_add_weak_pointer (G_OBJECT (header->menu), (gpointer) &header->menu);
 
-          item = gtk_menu_item_new_with_mnemonic (_("_Detach Tab"));
-          g_signal_connect (G_OBJECT (item), "activate",
-                            G_CALLBACK (terminal_tab_header_detach_tab), header);
+          item = gtk_image_menu_item_new_with_mnemonic (_("_Detach Tab"));
+          g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (terminal_tab_header_detach_tab), header);
           gtk_menu_shell_append (GTK_MENU_SHELL (header->menu), item);
           gtk_widget_show (item);
 
-          item = gtk_menu_item_new_with_mnemonic (_("C_lose Tab"));
-          g_signal_connect (G_OBJECT (item), "activate",
-                            G_CALLBACK (terminal_tab_header_close_tab), header);
+          item = gtk_image_menu_item_new_with_mnemonic (_("C_lose Tab"));
+          g_signal_connect (G_OBJECT (item), "activate", G_CALLBACK (terminal_tab_header_close_tab), header);
           gtk_menu_shell_append (GTK_MENU_SHELL (header->menu), item);
           gtk_widget_show (item);
+
+          image = gtk_image_new_from_stock (TERMINAL_STOCK_CLOSETAB, GTK_ICON_SIZE_MENU);
+          gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
+          gtk_widget_show (image);
         }
 
-      gtk_menu_popup (GTK_MENU (header->menu), NULL, NULL, NULL,
-                      NULL, event->button, event->time);
+      gtk_menu_popup (GTK_MENU (header->menu), NULL, NULL, NULL, NULL, event->button, event->time);
 
+      return TRUE;
+    }
+  else if (event->type == GDK_BUTTON_PRESS && event->button == 2)
+    {
+      /* close terminal tab on middle-click, to be compatible with
+       * tabbed browsers and stuff like pidgin (bug #3380).
+       */
+      g_signal_emit (G_OBJECT (header), header_signals[CLOSE_TAB], 0);
       return TRUE;
     }
 

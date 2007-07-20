@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -36,6 +36,7 @@
 #include <terminal/terminal-helper-dialog.h>
 #include <terminal/terminal-helper.h>
 #include <terminal/terminal-preferences.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -123,8 +124,8 @@ terminal_helper_chooser_class_init (TerminalHelperChooserClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_ACTIVE,
                                    g_param_spec_string ("active",
-                                                        "Active helper",
-                                                        "The currently selected helper",
+                                                        "active",
+                                                        "active",
                                                         NULL,
                                                         G_PARAM_READWRITE));
 
@@ -134,8 +135,8 @@ terminal_helper_chooser_class_init (TerminalHelperChooserClass *klass)
   g_object_class_install_property (gobject_class,
                                    PROP_CATEGORY,
                                    g_param_spec_enum ("category",
-                                                      "Helper category",
-                                                      "Helper category",
+                                                      "category",
+                                                      "category",
                                                       TERMINAL_TYPE_HELPER_CATEGORY,
                                                       TERMINAL_HELPER_WEBBROWSER,
                                                       G_PARAM_READWRITE));
@@ -637,7 +638,7 @@ terminal_helper_chooser_update_state (TerminalHelperChooser *chooser)
 const gchar*
 terminal_helper_chooser_get_active (TerminalHelperChooser *chooser)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser), NULL);
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser), NULL);
   return chooser->active;
 }
 
@@ -652,7 +653,7 @@ void
 terminal_helper_chooser_set_active (TerminalHelperChooser *chooser,
                                     const gchar           *active)
 {
-  g_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
+  _terminal_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
 
   if (!exo_str_is_equal (chooser->active, active))
     {
@@ -675,7 +676,7 @@ terminal_helper_chooser_set_active (TerminalHelperChooser *chooser,
 TerminalHelperCategory
 terminal_helper_chooser_get_category (TerminalHelperChooser *chooser)
 {
-  g_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser),
+  _terminal_return_val_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser),
                         TERMINAL_HELPER_WEBBROWSER);
   return chooser->category;
 }
@@ -691,9 +692,9 @@ void
 terminal_helper_chooser_set_category (TerminalHelperChooser *chooser,
                                       TerminalHelperCategory category)
 {
-  g_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
-  g_return_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
-                 && category <= TERMINAL_HELPER_MAILREADER);
+  _terminal_return_if_fail (TERMINAL_IS_HELPER_CHOOSER (chooser));
+  _terminal_return_if_fail (category >= TERMINAL_HELPER_WEBBROWSER
+                         && category <= TERMINAL_HELPER_MAILREADER);
   
   if (chooser->category != category)
     {

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -33,6 +33,7 @@
 #include <exo/exo.h>
 
 #include <terminal/terminal-monitor.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -309,9 +310,9 @@ terminal_monitor_add (TerminalMonitor *monitor,
   MonitorEntity *entity = NULL;
   GSList        *lp;
 
-  g_return_if_fail (TERMINAL_IS_MONITOR (monitor));
-  g_return_if_fail (path != NULL);
-  g_return_if_fail (closure != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_MONITOR (monitor));
+  _terminal_return_if_fail (path != NULL);
+  _terminal_return_if_fail (closure != NULL);
 
   for (lp = monitor->entities; lp != NULL; lp = lp->next)
     {
@@ -359,8 +360,8 @@ terminal_monitor_remove_by_closure (TerminalMonitor *monitor,
   GSList        *link;
   GSList        *lp;
 
-  g_return_if_fail (TERMINAL_IS_MONITOR (monitor));
-  g_return_if_fail (closure != NULL);
+  _terminal_return_if_fail (TERMINAL_IS_MONITOR (monitor));
+  _terminal_return_if_fail (closure != NULL);
 
   for (lp = monitor->entities; lp != NULL; lp = lp->next)
     {

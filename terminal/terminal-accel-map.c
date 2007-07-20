@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -25,6 +25,7 @@
 
 #include <terminal/terminal-accel-map.h>
 #include <terminal/terminal-preferences.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -113,7 +114,7 @@ terminal_accel_map_notify (TerminalPreferences *preferences,
   guint           accelerator_key;
   gchar          *accelerator;
 
-  g_return_if_fail (g_str_has_prefix (pspec->name, "accel-"));
+  _terminal_return_if_fail (g_str_has_prefix (pspec->name, "accel-"));
 
   accelerator_path = g_strconcat ("<Actions>/terminal-window/", pspec->name + 6, NULL);
 

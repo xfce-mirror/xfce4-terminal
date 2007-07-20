@@ -28,6 +28,7 @@
 #include <exo/exo.h>
 
 #include <terminal/terminal-dialogs.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -122,7 +123,7 @@ terminal_dialogs_show_error (gpointer      parent,
   va_list    args;
   gchar     *primary_text;
 
-  g_return_if_fail (parent == NULL || GDK_IS_SCREEN (parent) || GTK_IS_WIDGET (parent));
+  _terminal_return_if_fail (parent == NULL || GDK_IS_SCREEN (parent) || GTK_IS_WIDGET (parent));
 
   /* determine the proper parent */
   if (parent == NULL)

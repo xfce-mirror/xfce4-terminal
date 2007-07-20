@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -37,6 +37,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-monitor.h>
 #include <terminal/terminal-preferences.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -1350,7 +1351,7 @@ terminal_preferences_get_property (GObject    *object,
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
   GValue              *src;
 
-  g_return_if_fail (prop_id < N_PROPERTIES);
+  _terminal_return_if_fail (prop_id < N_PROPERTIES);
 
   src = preferences->values + prop_id;
   if (G_VALUE_HOLDS (src, pspec->value_type))
@@ -1370,7 +1371,7 @@ terminal_preferences_set_property (GObject      *object,
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
   GValue              *dst;
 
-  g_return_if_fail (prop_id < N_PROPERTIES);
+  _terminal_return_if_fail (prop_id < N_PROPERTIES);
 
   dst = preferences->values + prop_id;
   if (!G_IS_VALUE (dst))

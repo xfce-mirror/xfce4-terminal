@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -33,6 +33,7 @@
 #include <libxfce4util/libxfce4util.h>
 
 #include <terminal/terminal-options.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -515,7 +516,7 @@ terminal_options_free (TerminalOptions *options)
 void
 terminal_tab_attr_free (TerminalTabAttr *attr)
 {
-  g_return_if_fail (attr != NULL);
+  _terminal_return_if_fail (attr != NULL);
 
   g_strfreev (attr->command);
   g_free (attr->directory);
@@ -554,7 +555,7 @@ terminal_window_attr_new (void)
 void
 terminal_window_attr_free (TerminalWindowAttr *attr)
 {
-  g_return_if_fail (attr != NULL);
+  _terminal_return_if_fail (attr != NULL);
 
   g_list_foreach (attr->tabs, (GFunc) terminal_tab_attr_free, NULL);
   g_list_free (attr->tabs);
