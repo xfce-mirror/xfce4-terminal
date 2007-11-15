@@ -57,6 +57,7 @@
 #include <terminal/terminal-tab-header.h>
 #include <terminal/terminal-toolbars-view.h>
 #include <terminal/terminal-window.h>
+#include <terminal/terminal-window-ui.h>
 
 
 
@@ -286,9 +287,7 @@ terminal_window_init (TerminalWindow *window)
   GtkWidget      *item;
   GtkWidget      *vbox;
   gboolean        bval;
-  GError         *error = NULL;
   gchar          *role;
-  gchar          *file;
 
   window->preferences = terminal_preferences_get ();
 
@@ -316,26 +315,8 @@ terminal_window_init (TerminalWindow *window)
 
   window->ui_manager = gtk_ui_manager_new ();
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
-
-  xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
-  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.ui");
-  xfce_resource_pop_path (XFCE_RESOURCE_DATA);
-
-  if (G_LIKELY (file != NULL))
-    {
-      if (gtk_ui_manager_add_ui_from_file (window->ui_manager, file, &error) == 0)
-        {
-          g_warning ("Unable to load %s: %s", file, error->message);
-          g_error_free (error);
-        }
-      gtk_ui_manager_ensure_update (window->ui_manager);
-      g_free (file);
-    }
-  else
-    {
-      g_warning ("Unable to locate Terminal/Terminal.ui, the menus won't be available");
-    }
-
+  gtk_ui_manager_add_ui_from_string (window->ui_manager, terminal_window_ui, terminal_window_ui_length, NULL);
+  
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 

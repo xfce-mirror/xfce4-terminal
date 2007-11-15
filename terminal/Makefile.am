@@ -42,7 +42,8 @@ Terminal_headers =							\
 	terminal-toolbars-model.h					\
 	terminal-toolbars-view.h					\
 	terminal-widget.h						\
-	terminal-window.h
+	terminal-window.h						\
+	terminal-window-ui.h
 
 Terminal_SOURCES =							\
 	$(Terminal_built_sources)					\
@@ -94,6 +95,7 @@ install-data-local:
 if HAVE_DBUS
 Terminal_CFLAGS +=							\
 	-DDBUS_API_SUBJECT_TO_CHANGE
+
 Terminal_SOURCES +=							\
 	$(Terminal_dbus_sources)
 endif
@@ -118,10 +120,15 @@ CLEANFILES =								\
 DISTCLEANFILES =							\
 	stamp-terminal-enum-types.h					\
 	stamp-terminal-marshal.h					\
+	terminal-window-ui.h						\
 	$(Terminal_built_sources)
 
 BUILT_SOURCES =								\
+	terminal-window-ui.h						\
 	$(Terminal_built_sources)
+
+terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
+	exo-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
@@ -170,6 +177,7 @@ clean-local:
 
 EXTRA_DIST =								\
 	terminal-config.h.in						\
-	terminal-marshal.list
+	terminal-marshal.list						\
+	terminal-window-ui.xml
 
 # vi:set ts=8 sw=8 noet ai nocindent:

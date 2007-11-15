@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-<!ENTITY date "October 2006">
+<!ENTITY date "November 2007">
 <!ENTITY version "@PACKAGE_VERSION@">
 <!ENTITY application "@PACKAGE_NAME@">
 ]>
@@ -17,6 +17,7 @@
       <year>2004</year>
       <year>2005</year>
       <year>2006</year>
+      <year>2007</year>
       <holder>os-cillation</holder>
     </copyright><copyright><year>2005, 2006</year><holder>Daichi Kawahata (daichi@xfce.org)</holder></copyright>
 
@@ -944,13 +945,6 @@
         </varlistentry>
 
         <varlistentry>
-          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal.ui</filename></term>
-          <listitem>
-            <para>メインユーザーインターフェイスの記述ファイルが置かれる場所です。メインのメニューバーおよび右クリックメニューがここで定義されています。</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
           <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
           <listitem>
             <para>このファイルにはツールバーのインターフェイス定義が記述されています。ツールバーエディターを使用してツールバーをカスタマイズする場合、@PACKAGE_NAME@ はファイル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename> に新しいツールバーのレイアウト情報を保存します。</para>
@@ -1083,20 +1077,6 @@ MiscHighlightUrls=TRUE</programlisting>
       <title>@PACKAGE_NAME@ で <keycap>Home</keycap> および <keycap>End</keycap> キーが使えません、何が悪いんですか？</title>
 
       <para>この問題は、実際のところ @PACKAGE_NAME@ が使用するターミナル・ウィジット <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink> のバグです。問題を解決するパッチは<ulink url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">ここ</ulink>にあります (このパッチは vte のバージョン 0.11.11 に対して作成されたので、他のバージョンではうまくいかないかもしれません)。パッチを作成した Auke Kok 氏に感謝します。</para>
-    </sect3>
-
-    <sect3>
-      <title>@PACKAGE_NAME@ のメニューはどのようにカスタマイズするんですか？</title>
-
-      <para>ファイル <filename>Terminal/Terminal.ui</filename> を編集することでメインのメニューバーと右クリックで現れるポップアップメニューをカスタマイズすることが可能です。これを実際に編集し始める前にコピーを作製してください。例えば、<filename role="directory">/usr/local</filename> にターミナルをインストールしたとします、それでしたら以下の手順を行ってください:</para>
-
-<screen>$ mkdir -p ~/.local/share/Terminal
-$ cd ~/.local/share/Terminal
-$ cp /usr/local/share/Terminal/Terminal.ui .</screen>
-
-      <para>これでメニューを安全にカスタマイズするためにファイル <filename>~/.local/share/Terminal/Terminal.ui</filename> を編集できます。このファイル書式の詳細を知りたければ <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/GtkUIManager.html">GtkUIManager</ulink> を御覧ください。変更は新しく起動されるターミナルウィンドウにのみ反映されます。</para>
-
-      <para>もしこの方法でメニューをカスタマイズするのでしたら、新しくリリースされた @PACKAGE_NAME@ にアップグレードする場合に、ユーザーインターフェイスの変更箇所やいくつか追加したものをそのまま保つために、変更を加えたファイル <filename>Terminal.ui</filename> がきちんと更新されているか気を配る必要があります。</para>
     </sect3>
   </sect1>
 

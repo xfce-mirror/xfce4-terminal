@@ -1,0 +1,70 @@
+<ui>
+  <!--
+    $Id$
+
+    Copyright (c) 2004-2007 os-cillation
+  
+    Terminal User Interface description file, parsed by Terminal to create
+    the menu bar and the right click menu.
+  -->
+
+  <!-- The main menu bar -->
+  <menubar name="main-menu">
+    <menu action="file-menu">
+      <menuitem action="new-tab" />
+      <menuitem action="new-window" />
+      <separator />
+      <menuitem action="detach-tab" />
+      <separator />
+      <menuitem action="close-tab" />
+      <menuitem action="close-window" />
+    </menu>
+    <menu action="edit-menu">
+      <menuitem action="copy" />
+      <menuitem action="paste" />
+      <menuitem action="paste-selection" />
+      <separator />
+      <menuitem action="edit-toolbars" />
+      <menuitem action="preferences" />
+    </menu>
+    <menu action="view-menu">
+      <menuitem action="show-menubar" />
+      <menuitem action="show-toolbars" />
+      <menuitem action="show-borders" />
+      <menuitem action="fullscreen" />
+    </menu>
+    <menu action="terminal-menu">
+      <menuitem action="set-title" />
+      <menuitem action="reset" />
+      <menuitem action="reset-and-clear" />
+    </menu>
+    <menu action="go-menu">
+      <menuitem action="prev-tab" />
+      <menuitem action="next-tab" />
+    </menu>
+    <menu action="help-menu">
+      <menuitem action="contents" />
+      <menuitem action="report-bug" />
+      <menuitem action="about" />
+    </menu>
+  </menubar>
+
+  <!-- The right click menu -->
+  <popup name="popup-menu">
+    <menuitem action="new-window" />
+    <menuitem action="new-tab" />
+    <separator />
+    <menuitem action="copy" />
+    <menuitem action="paste" />
+    <separator />
+    <menuitem action="show-menubar" />
+    <menuitem action="fullscreen" />
+    <menuitem action="preferences" />
+    <separator />
+    <menuitem action="input-methods" />
+  </popup>
+</ui>
+
+<!--
+  vi:set ts=2 sw=2 ai et:
+-->
