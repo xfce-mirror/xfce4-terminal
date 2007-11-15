@@ -574,31 +574,41 @@ terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
   GtkAdjustment *adjustment = VTE_TERMINAL (widget)->adjustment;
+  gboolean       scrolling_single_line;
+  gboolean       shortcuts_no_menukey;
   gdouble        value;
   gint           x;
   gint           y;
 
+  /* determine current settings */
+  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+                "scrolling-single-line", &scrolling_single_line,
+                "shortcuts-no-menukey", &shortcuts_no_menukey,
+                NULL);
+
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
-  if (event->keyval == GDK_Menu || ((event->state & GDK_SHIFT_MASK) != 0 && event->keyval == GDK_F10))
+  if (event->keyval == GDK_Menu ||
+      (!shortcuts_no_menukey && (event->state & GDK_SHIFT_MASK) != 0 && event->keyval == GDK_F10))
     {
       gtk_widget_get_pointer (widget, &x, &y);
       terminal_widget_context_menu (TERMINAL_WIDGET (widget), 0, event->time, x, y);
       return TRUE;
     }
-  /* scroll up one line with "<Shift>Up" */
-  else if ((event->state & GDK_SHIFT_MASK) != 0
-        && (event->keyval == GDK_Up || event->keyval == GDK_KP_Up))
+  else if (G_LIKELY (scrolling_single_line))
     {
-      gtk_adjustment_set_value (adjustment, adjustment->value - 1);
-      return TRUE;
-    }
-  /* scroll down one line with "<Shift>Down" */
-  else if ((event->state & GDK_SHIFT_MASK) != 0
-        && (event->keyval == GDK_Down || event->keyval == GDK_KP_Down))
-    {
-      value = MIN (adjustment->value + 1, adjustment->upper - adjustment->page_size);
-      gtk_adjustment_set_value (adjustment, value);
-      return TRUE;
+      /* scroll up one line with "<Shift>Up" */
+      if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_Up || event->keyval == GDK_KP_Up))
+        {
+          gtk_adjustment_set_value (adjustment, adjustment->value - 1);
+          return TRUE;
+        }
+      /* scroll down one line with "<Shift>Down" */
+      else if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_Down || event->keyval == GDK_KP_Down))
+        {
+          value = MIN (adjustment->value + 1, adjustment->upper - adjustment->page_size);
+          gtk_adjustment_set_value (adjustment, value);
+          return TRUE;
+        }
     }
 
   return (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->key_press_event) (widget, event);
