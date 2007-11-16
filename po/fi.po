@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-15 21:29+0100\n"
-"PO-Revision-Date: 2007-09-06 12:36+0300\n"
+"POT-Creation-Date: 2007-11-16 11:54+0200\n"
+"PO-Revision-Date: 2007-11-16 12:04+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -286,6 +286,7 @@ msgid "User id mismatch"
 msgstr "Käyttäjätunnus ei täsmää"
 
 #: ../terminal/terminal-dbus.c:145
+#, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS-viestiyhteys katkaistu, poistutaan...\n"
 
@@ -308,12 +309,14 @@ msgid "Failed to open the documentation browser"
 msgstr "Dokumentaatioselaimen avaaminen epäonnistui"
 
 #: ../terminal/terminal-options.c:107
+#, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr ""
 "\"--sm-client-id\" -valitsin tarvitsee parametrikseen istunnon tunnisteen"
 
 #: ../terminal/terminal-options.c:129
+#, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
@@ -322,6 +325,7 @@ msgstr ""
 "suoritettavan komennon"
 
 #: ../terminal/terminal-options.c:158
+#, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
@@ -329,6 +333,7 @@ msgstr ""
 "\"--command/-e\"  -valitsin tarvitsee parametrikseen suoritettavan komennon"
 
 #: ../terminal/terminal-options.c:187
+#, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
@@ -336,31 +341,37 @@ msgstr ""
 "\"--working-directory\"  -valitsin tarvitsee parametrikseen työhakemiston"
 
 #: ../terminal/terminal-options.c:218
+#, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "\"--title/-T\"  -valitsin tarvitsee parametrikseen otsakkeen"
 
 #: ../terminal/terminal-options.c:251
+#, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "\"--display\"  -valitsin tarvitsee parametreikseen X:n näytön"
 
 #: ../terminal/terminal-options.c:278
+#, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "\"--geometry\" -valitsin tarvitsee parametrikseen ikkunan geometrian"
 
 #: ../terminal/terminal-options.c:305
+#, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "\"--role\" -valitsin tarvitsee parametrikseen ikkunan roolin"
 
 #: ../terminal/terminal-options.c:332
+#, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "\"--startup-id\" -valitsin tarvitsee parametrikseen käynnistystunnisteen"
 
 #: ../terminal/terminal-options.c:413
+#, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
@@ -368,6 +379,7 @@ msgstr ""
 "\"--default-display\"  -valitsin tarvitsee parametrikseen X:n oletusnäytön"
 
 #: ../terminal/terminal-options.c:437
+#, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
@@ -448,13 +460,15 @@ msgstr "<b>Vieritys</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:293
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
+msgstr "Vieritä _rivin verran näppäimillä Vaihto+Ylös/Alas"
 
 #: ../terminal/terminal-preferences-dialog.c:296
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
+"Valitse tämä, jos haluat voida vierittää päätettä rivi kerrallaan ylös/alas "
+"-nuolinäppäimillä vaihtonäppäimen ollessa painettuna." 
 
 #: ../terminal/terminal-preferences-dialog.c:305
 msgid "Sc_roll on output"
@@ -469,7 +483,6 @@ msgstr ""
 "tuottama tulostus päätettä automaattisesti."
 
 #: ../terminal/terminal-preferences-dialog.c:314
-#, fuzzy
 msgid "Scroll on _keystroke"
 msgstr "_Näppäily vierittää"
 
@@ -975,6 +988,7 @@ msgid "Contents"
 msgstr "Sisältö"
 
 #: ../terminal/terminal-screen.c:432
+#, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
 
