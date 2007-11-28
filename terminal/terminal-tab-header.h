@@ -36,6 +36,21 @@ G_BEGIN_DECLS;
 typedef struct _TerminalTabHeaderClass TerminalTabHeaderClass;
 typedef struct _TerminalTabHeader      TerminalTabHeader;
 
+struct _TerminalTabHeader
+{
+  GtkHBox              __parent__;
+
+  TerminalPreferences *preferences;
+
+  GtkWidget           *ebox;
+  GtkWidget           *label;
+
+  /* the popup menu */
+  GtkWidget           *menu;
+
+  ExoBinding          *tab_pos_binding;
+};
+
 GType      terminal_tab_header_get_type (void) G_GNUC_CONST;
 
 GtkWidget *terminal_tab_header_new      (void);

@@ -78,19 +78,6 @@ struct _TerminalTabHeaderClass
   void (*set_title)   (TerminalTabHeader *header);
 };
 
-struct _TerminalTabHeader
-{
-  GtkHBox              __parent__;
-
-  TerminalPreferences *preferences;
-
-  GtkWidget           *ebox;
-  GtkWidget           *label;
-
-  /* the popup menu */
-  GtkWidget           *menu;
-};
-
 
 
 static guint header_signals[LAST_SIGNAL];
@@ -184,6 +171,8 @@ terminal_tab_header_init (TerminalTabHeader *header)
   GtkWidget *image;
 
   header->preferences = terminal_preferences_get ();
+
+  header->tab_pos_binding = NULL;
 
   gtk_widget_push_composite_child ();
 

@@ -60,6 +60,8 @@ static void               terminal_app_new_window               (TerminalWindow 
                                                                  TerminalApp        *app);
 static void               terminal_app_new_window_with_terminal (TerminalWindow     *window,
                                                                  TerminalScreen     *terminal,
+                                                                 gint                x,
+                                                                 gint                y,
                                                                  TerminalApp        *app);
 static void               terminal_app_window_destroyed         (GtkWidget          *window,
                                                                  TerminalApp        *app);
@@ -253,15 +255,25 @@ terminal_app_new_window (TerminalWindow *window,
 static void
 terminal_app_new_window_with_terminal (TerminalWindow *existing,
                                        TerminalScreen *terminal,
+                                       gint            x,
+                                       gint            y,
                                        TerminalApp    *app)
 {
   GtkWidget *window;
   GdkScreen *screen;
+  
+  _terminal_return_if_fail (TERMINAL_IS_WINDOW (existing));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
+  _terminal_return_if_fail (TERMINAL_IS_APP (app));
 
   window = terminal_app_create_window (app, FALSE,
                                        TERMINAL_VISIBILITY_DEFAULT,
                                        TERMINAL_VISIBILITY_DEFAULT,
                                        TERMINAL_VISIBILITY_DEFAULT);
+
+  /* set new window position */
+  if (x > -1 && y > -1)
+    gtk_window_move (GTK_WINDOW (window), x, y);
 
   /* place the new window on the same screen as
    * the existing window.
@@ -347,9 +359,7 @@ static GdkScreen*
 terminal_app_find_screen (const gchar *display_name)
 {
   const gchar *other_name;
-#if GTK_CHECK_VERSION(2,10,0)
   GdkColormap *colormap;
-#endif
   GdkDisplay  *display = NULL;
   GdkScreen   *screen = NULL;
   GSList      *displays;
@@ -410,7 +420,6 @@ terminal_app_find_screen (const gchar *display_name)
       g_object_ref (G_OBJECT (screen));
     }
 
-#if GTK_CHECK_VERSION(2,10,0)
   /* check if we already checked this screen */
   if (g_object_get_data (G_OBJECT (screen), "terminal-checked-screen") == NULL)
     {
@@ -427,7 +436,6 @@ terminal_app_find_screen (const gchar *display_name)
       /* mark this screen as handled */
       g_object_set_data (G_OBJECT (screen), I_("terminal-checked-screen"), GINT_TO_POINTER (1));
     }
-#endif
 
   return screen;
 }

@@ -44,7 +44,9 @@ struct _TerminalWindowClass
   void  (*new_window)             (TerminalWindow *window,
                                    const gchar    *working_directory);
   void  (*new_window_with_screen) (TerminalWindow *window,
-                                   TerminalScreen *screen);
+                                   TerminalScreen *screen,
+                                   gint            x,
+                                   gint            y);
 };
 
 GType           terminal_window_get_type             (void) G_GNUC_CONST;
