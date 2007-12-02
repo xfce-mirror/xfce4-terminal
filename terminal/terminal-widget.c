@@ -72,6 +72,7 @@ enum
   TARGET_TEXT_PLAIN,
   TARGET_MOZ_URL,
   TARGET_APPLICATION_X_COLOR,
+  TARGET_GTK_NOTEBOOK_TAB,
 };
 
 
@@ -132,6 +133,7 @@ static const GtkTargetEntry targets[] =
   { "STRING", 0, TARGET_STRING },
   { "text/plain", 0, TARGET_TEXT_PLAIN },
   { "application/x-color", 0, TARGET_APPLICATION_X_COLOR },
+  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
 };
 
 
@@ -185,7 +187,7 @@ terminal_widget_init (TerminalWidget *widget)
                      GTK_DEST_DEFAULT_HIGHLIGHT |
                      GTK_DEST_DEFAULT_DROP,
                      targets, G_N_ELEMENTS (targets),
-                     GDK_ACTION_COPY | GDK_ACTION_LINK);
+                     GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_MOVE);
 
   /* monitor the misc-highlight-urls setting */
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-highlight-urls",
@@ -437,6 +439,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
   gchar         *text;
   gint           argc;
   gint           n;
+  GtkWidget     *screen;
 
   switch (info)
     {
@@ -564,7 +567,24 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
           g_value_unset (&value);
         }
       break;
+
+    case TARGET_GTK_NOTEBOOK_TAB:
+      /* 'send' the drag to the parent widget (TerminalScreen) */
+      screen = gtk_widget_get_parent (widget);
+      if (G_LIKELY (screen))
+        {
+          g_signal_emit_by_name (G_OBJECT (screen), "drag-data-received", context,
+                                 x, y, selection_data, info, time);
+        }
+      break;
+
+    default:
+      /* never finish the drag */
+      return;
     }
+
+  if (info != TARGET_GTK_NOTEBOOK_TAB)
+    gtk_drag_finish (context, TRUE, FALSE, time);
 }
 
 
