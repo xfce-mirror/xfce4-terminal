@@ -373,7 +373,7 @@ terminal_screen_set_property (GObject          *object,
 static void
 terminal_screen_realize (GtkWidget *widget)
 {
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
   GdkScreen *screen;
 #endif
 
@@ -383,7 +383,7 @@ terminal_screen_realize (GtkWidget *widget)
   if (!GTK_WIDGET_REALIZED (TERMINAL_SCREEN (widget)->terminal))
     gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
 
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
   /* connect to the "composited-changed" signal */
   screen = gtk_widget_get_screen (widget);
   g_signal_connect_swapped (G_OBJECT (screen), "composited-changed", G_CALLBACK (terminal_screen_update_background), widget);
@@ -395,7 +395,7 @@ terminal_screen_realize (GtkWidget *widget)
 static void
 terminal_screen_unrealize (GtkWidget *widget)
 {
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
   GdkScreen *screen;
 
   /* disconnect the "composited-changed" handler */
@@ -854,11 +854,6 @@ terminal_screen_timer_background (gpointer user_data)
   GdkPixbuf           *image;
   gdouble              background_darkness;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-  _terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
-
-  GDK_THREADS_ENTER ();
-
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
   if (background_mode == TERMINAL_BACKGROUND_SOLID)
@@ -866,7 +861,7 @@ terminal_screen_timer_background (gpointer user_data)
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
       vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
       vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
       vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
 #endif
     }
@@ -880,7 +875,7 @@ terminal_screen_timer_background (gpointer user_data)
                                           screen->terminal->allocation.width,
                                           screen->terminal->allocation.height);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
       vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
 #endif
       if (image != NULL)
@@ -892,7 +887,7 @@ terminal_screen_timer_background (gpointer user_data)
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
 
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
       /* check if the X screen is composited */
       if (gdk_screen_is_composited (gtk_widget_get_screen (user_data)))
         {
@@ -905,13 +900,11 @@ terminal_screen_timer_background (gpointer user_data)
 #endif
           vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
           vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
+#if GTK_CHECK_VERSION(2,10,0) && defined(HAVE_VTE_TERMINAL_SET_OPACITY)
           vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
         }
 #endif
     }
-
-  GDK_THREADS_LEAVE ();
 
   return FALSE;
 }
@@ -1078,11 +1071,12 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   gint           xpad;
   gint           ypad;
 
+  gtk_widget_set_size_request (screen->terminal, 2000, 2000);
   gtk_widget_size_request (GTK_WIDGET (window), &window_requisition);
   gtk_widget_size_request (screen->terminal, &terminal_requisition);
 
-  width = MAX (window_requisition.width - terminal_requisition.width, 0);
-  height = MAX (window_requisition.height - terminal_requisition.height, 0);
+  width = window_requisition.width - terminal_requisition.width;
+  height = window_requisition.height - terminal_requisition.height;
 
   if (force_columns < 0)
     columns = VTE_TERMINAL (screen->terminal)->column_count;
