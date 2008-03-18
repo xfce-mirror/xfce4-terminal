@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-15 21:29+0100\n"
-"PO-Revision-Date: 2005-10-21 22:02+0900\n"
-"Last-Translator: Army Gu <redarmy@gmail.com>\n"
+"PO-Revision-Date: 2008-03-18 13:22+0100\n"
+"Last-Translator: Vern Sun <s5unty@gmail.com>\n"
 "Language-Team: Simplified Chinese <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,24 +50,20 @@ msgid ""
 msgstr ""
 
 #: ../terminal/main.c:56
-#, fuzzy
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr "  --working-directory=DIRNAME         设定终端工作目录"
 
 #: ../terminal/main.c:57
-#, fuzzy
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr "  -T, --title=TITLE                   设定终端标题"
 
 #: ../terminal/main.c:58
-#, fuzzy
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
-"  -x, --execute                       在终端中执行命令列\n"
-"                                      剩下的部份。"
+"  -H, --hold                          当子命令执行时并不立即关闭标签"
 
 #: ../terminal/main.c:61
 msgid ""
@@ -178,11 +174,11 @@ msgid "  --default-display=DISPLAY           default X display to use"
 msgstr ""
 
 #: ../terminal/main.c:116
-#, fuzzy
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 "                                      directory"
-msgstr "  --default-working-directory=DIRNAME 设定预设的终端工作目录"
+msgstr ""
+"  --default-working-directory=DIRNAME 设定预设的终端工作目录"
 
 #: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1211
 #: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
@@ -190,7 +186,7 @@ msgid "Terminal"
 msgstr "终端"
 
 #: ../terminal/main.c:162
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
@@ -205,19 +201,19 @@ msgid ""
 msgstr ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) %s\n"
 "        os-cillation e.K. All rights reserved.\n"
 "\n"
-"由 Benedikt Meurer <benny@xfce.org>.所撰写\n"
+"作者 Benedikt Meurer <benny@xfce.org>。\n"
 "\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+"编译环境 Gtk+-%d.%d.%d, 运行环境 Gtk+-%d.%d.%d.\n"
 "\n"
-"请将BUG报告至 <%s>.\n"
+"请将 BUG 报告至 <%s>。\n"
 
 #: ../terminal/main.c:257
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "无法启动终端服务器: %s\n"
+msgstr "无法注册终端服务器: %s\n"
 
 #: ../terminal/main.c:266
 #, c-format
@@ -247,9 +243,8 @@ msgid "X Terminal Emulator"
 msgstr "X 终端模拟器"
 
 #: ../terminal/terminal-dialogs.c:87
-#, fuzzy
 msgid "translator-credits"
-msgstr "翻译 (%s)"
+msgstr "向翻译人员致敬"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:245
@@ -402,9 +397,8 @@ msgid ""
 msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:314
-#, fuzzy
 msgid "Scroll on _keystroke"
-msgstr "击键时滚动(_s)"
+msgstr "击键时滚动(_k)"
 
 #: ../terminal/terminal-preferences-dialog.c:317
 msgid ""
@@ -475,11 +469,10 @@ msgid "Allow bold text"
 msgstr "允许粗体字"
 
 #: ../terminal/terminal-preferences-dialog.c:414
-#, fuzzy
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
-msgstr "启用该选项使新增的窗口中显示边框"
+msgstr "启用该选项将允许运行在终端窗口内的应用程序使用粗体子。"
 
 #: ../terminal/terminal-preferences-dialog.c:423
 msgid "<b>Background</b>"
@@ -542,31 +535,28 @@ msgid "Display _menubar in new windows"
 msgstr "在新窗口总显示菜单列(_m)"
 
 #: ../terminal/terminal-preferences-dialog.c:546
-#, fuzzy
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
-msgstr "启用该选项使新增的窗口中显示菜单列"
+msgstr "启用该选项使新建的终端窗口中显示菜单列"
 
 #: ../terminal/terminal-preferences-dialog.c:551
 msgid "Display _toolbars in new windows"
 msgstr "在新窗口中显示工具栏(_t)"
 
 #: ../terminal/terminal-preferences-dialog.c:554
-#, fuzzy
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
-msgstr "启用该选项使新增加的窗口中显示工具栏"
+msgstr "启用该选项使新建的终端窗口中显示工具栏"
 
 #: ../terminal/terminal-preferences-dialog.c:559
 msgid "Display _borders around new windows"
 msgstr "在新窗口中显示边框(_b)"
 
 #: ../terminal/terminal-preferences-dialog.c:562
-#, fuzzy
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
-msgstr "启用该选项使新增的窗口中显示边框"
+msgstr "启用该选项使新建的终端窗口显示其周围的装饰(decorations)"
 
 #: ../terminal/terminal-preferences-dialog.c:574
 msgid "Appearance"
@@ -577,9 +567,8 @@ msgid "<b>Foreground and Background</b>"
 msgstr "<b>前景与背景</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:604
-#, fuzzy
 msgid "_Text and cursor color:"
-msgstr "Terminal 背景颜色"
+msgstr "文本和光标的颜色(_T): "
 
 #: ../terminal/terminal-preferences-dialog.c:619
 msgid "Choose terminal text color"
@@ -600,9 +589,8 @@ msgid "Open a dialog to specify the color"
 msgstr "打开对话框来指定颜色"
 
 #: ../terminal/terminal-preferences-dialog.c:634
-#, fuzzy
 msgid "Choose terminal cursor color"
-msgstr "选择终端背景颜色"
+msgstr "选择终端光标颜色"
 
 #: ../terminal/terminal-preferences-dialog.c:650
 msgid "_Background color:"
@@ -613,33 +601,28 @@ msgid "Choose terminal background color"
 msgstr "选择终端背景颜色"
 
 #: ../terminal/terminal-preferences-dialog.c:682
-#, fuzzy
 msgid "<b>Text Selection</b>"
-msgstr "<b>标题</b>"
+msgstr "<b>被选定文本</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:693
 msgid "Use _default color"
 msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:696
-#, fuzzy
 msgid "Use the default text selection background color"
-msgstr "选择终端背景颜色"
+msgstr "使用被选定的文本的默认背景颜色"
 
 #: ../terminal/terminal-preferences-dialog.c:701
-#, fuzzy
 msgid "Use _custom color"
-msgstr "背景颜色(_B)"
+msgstr "使用自定义颜色(_c)"
 
 #: ../terminal/terminal-preferences-dialog.c:704
-#, fuzzy
 msgid "Use a custom text selection background color"
-msgstr "选择终端背景颜色"
+msgstr "自定义被选定的文本的背景颜色"
 
 #: ../terminal/terminal-preferences-dialog.c:712
-#, fuzzy
 msgid "Choose terminal text selection background color"
-msgstr "选择终端背景颜色"
+msgstr "选择被选定的文本的背景颜色"
 
 #: ../terminal/terminal-preferences-dialog.c:731
 msgid "<b>Palette</b>"
@@ -651,9 +634,9 @@ msgstr "Terminal应用程序可用的调色器:"
 
 #. setup a tooltip
 #: ../terminal/terminal-preferences-dialog.c:763
-#, fuzzy, c-format
+#, c-format
 msgid "Palette entry %d"
-msgstr "调色格 1"
+msgstr "调色格 %d"
 
 #: ../terminal/terminal-preferences-dialog.c:778
 msgid "Colors"
@@ -775,9 +758,8 @@ msgstr "打开Terminal"
 
 #: ../terminal/terminal-preferences.c:326
 #: ../terminal/terminal-preferences.c:327
-#, fuzzy
 msgid "Detach Tab"
-msgstr "分离标签(_D)"
+msgstr "分离标签"
 
 #: ../terminal/terminal-preferences.c:337
 #: ../terminal/terminal-preferences.c:338
@@ -801,9 +783,8 @@ msgstr "粘贴"
 
 #: ../terminal/terminal-preferences.c:381
 #: ../terminal/terminal-preferences.c:382
-#, fuzzy
 msgid "Paste Selection"
-msgstr "<b>标题</b>"
+msgstr "粘贴选定内容"
 
 #: ../terminal/terminal-preferences.c:392
 #: ../terminal/terminal-preferences.c:393
@@ -991,9 +972,8 @@ msgid "Copy Link Address"
 msgstr ""
 
 #: ../terminal/terminal-widget.c:305
-#, fuzzy
 msgid "Open Link"
-msgstr "打开Terminal"
+msgstr "打开链接"
 
 #: ../terminal/terminal-widget.c:459
 #, c-format
@@ -1014,9 +994,9 @@ msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "无法在终端上放置 URI 列表:  错误的格式(%d) 或长度 (%d)\n"
 
 #: ../terminal/terminal-widget.c:546
-#, fuzzy, c-format
+#, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "无法在终端上放置 URI 列表:  错误的格式(%d) 或长度 (%d)\n"
+msgstr "收到错误的颜色数据: 错误的格式(%d) 或长度 (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:653
@@ -1037,18 +1017,16 @@ msgid "Open a new terminal tab"
 msgstr "打开新终端标签"
 
 #: ../terminal/terminal-window.c:201
-#, fuzzy
 msgid "Open T_erminal"
-msgstr "打开Terminal"
+msgstr "打开Terminal(_e)"
 
 #: ../terminal/terminal-window.c:201
 msgid "Open a new terminal window"
 msgstr "打开新终端窗口"
 
 #: ../terminal/terminal-window.c:202
-#, fuzzy
 msgid "Open a new window for the current terminal tab"
-msgstr "请输入当前终端标签的标题"
+msgstr "以当前终端标签新建一个窗口"
 
 #: ../terminal/terminal-window.c:203
 msgid "Close the current terminal tab"
@@ -1099,9 +1077,8 @@ msgid "Customize the toolbars"
 msgstr "定制工具栏"
 
 #: ../terminal/terminal-window.c:210
-#, fuzzy
 msgid "Pr_eferences..."
-msgstr "属性..."
+msgstr "属性...(_e)"
 
 #: ../terminal/terminal-window.c:210
 msgid "Open the Terminal preferences dialog"
@@ -1253,19 +1230,5 @@ msgid "Enter the title for the current terminal tab"
 msgstr "请输入当前终端标签的标题"
 
 #: ../Terminal.desktop.in.h:2
-#, fuzzy
 msgid "Terminal Emulator"
-msgstr "X 终端模拟器"
-
-#, fuzzy
-#~ msgid "Applications"
-#~ msgstr "行为"
-
-#~ msgid "Custom title"
-#~ msgstr "自定义"
-
-#~ msgid "Title"
-#~ msgstr "标题"
-
-#~ msgid "Tab title"
-#~ msgstr "分頁標題"
+msgstr "终端模拟器"
