@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004 os-cillation e.K.
+ * Copyright (c) 2004-2008 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -64,6 +64,7 @@ struct _TerminalWindowAttr
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
   TerminalVisibility   toolbars;
+  gboolean             maximize;
 };
 
 gboolean  terminal_options_parse    (gint                 argc,

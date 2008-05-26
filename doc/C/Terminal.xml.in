@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
     "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "November 2007"> 
+  <!ENTITY date "May 2008"> 
   <!ENTITY version "@PACKAGE_VERSION@">
   <!ENTITY application "@PACKAGE_NAME@"> 
 ]>
@@ -19,6 +19,7 @@
       <year>2005</year>
       <year>2006</year>
       <year>2007</year>
+      <year>2008</year>
       <holder>os-cillation</holder>
     </copyright>
 
@@ -1109,6 +1110,17 @@
           <listitem>
             <para>
               Set the last-specified window into fullscreen mode;
+              applies to only one window; can be specified once
+              for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--maximize</option></term>
+          <listitem>
+            <para>
+              Set the last-specified window into maximized mode;
               applies to only one window; can be specified once
               for each window you create from the command line.
             </para>

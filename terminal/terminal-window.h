@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2006 os-cillation e.K.
+ * Copyright (c) 2004-2008 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -54,7 +54,8 @@ GType           terminal_window_get_type             (void) G_GNUC_CONST;
 GtkWidget      *terminal_window_new                  (gboolean            fullscreen,
                                                       TerminalVisibility  menubar,
                                                       TerminalVisibility  borders,
-                                                      TerminalVisibility  toolbars);
+                                                      TerminalVisibility  toolbars,
+                                                      gboolean            maximize);
 
 void            terminal_window_add                  (TerminalWindow     *window,
                                                       TerminalScreen     *screen);

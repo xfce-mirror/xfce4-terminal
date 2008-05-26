@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2007 os-cillation e.K.
+ * Copyright (c) 2004-2008 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -1636,7 +1636,8 @@ GtkWidget*
 terminal_window_new (gboolean           fullscreen,
                      TerminalVisibility menubar,
                      TerminalVisibility borders,
-                     TerminalVisibility toolbars)
+                     TerminalVisibility toolbars,
+                     gboolean           maximize)
 {
   TerminalWindow *window;
   GtkAction      *action;
@@ -1648,6 +1649,10 @@ terminal_window_new (gboolean           fullscreen,
   action = gtk_action_group_get_action (window->action_group, "fullscreen");
   if (fullscreen && gtk_action_is_sensitive (action))
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+
+  /* maximize */
+  if (maximize)
+    gtk_window_maximize (&window->__parent__);
 
   /* setup menubar visibility */
   if (menubar == TERMINAL_VISIBILITY_DEFAULT)

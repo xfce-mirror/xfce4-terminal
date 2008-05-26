@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2007 os-cillation e.K.
+ * Copyright (c) 2004-2008 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -54,7 +54,8 @@ static GtkWidget           *terminal_app_create_window          (TerminalApp    
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
                                                                  TerminalVisibility  borders,
-                                                                 TerminalVisibility  toolbars);
+                                                                 TerminalVisibility  toolbars,
+                                                                 gboolean            maximize);
 static void               terminal_app_new_window               (TerminalWindow     *window,
                                                                  const gchar        *working_directory,
                                                                  TerminalApp        *app);
@@ -193,11 +194,12 @@ terminal_app_create_window (TerminalApp       *app,
                             gboolean           fullscreen,
                             TerminalVisibility menubar,
                             TerminalVisibility borders,
-                            TerminalVisibility toolbars)
+                            TerminalVisibility toolbars,
+                            gboolean           maximize)
 {
   GtkWidget *window;
 
-  window = terminal_window_new (fullscreen, menubar, borders, toolbars);
+  window = terminal_window_new (fullscreen, menubar, borders, toolbars, maximize);
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (terminal_app_window_destroyed), app);
   g_signal_connect (G_OBJECT (window), "new-window",
@@ -269,7 +271,8 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   window = terminal_app_create_window (app, FALSE,
                                        TERMINAL_VISIBILITY_DEFAULT,
                                        TERMINAL_VISIBILITY_DEFAULT,
-                                       TERMINAL_VISIBILITY_DEFAULT);
+                                       TERMINAL_VISIBILITY_DEFAULT,
+                                       FALSE);
 
   /* set new window position */
   if (x > -1 && y > -1)
@@ -512,7 +515,8 @@ terminal_app_open_window (TerminalApp         *app,
                                        attr->fullscreen,
                                        attr->menubar,
                                        attr->borders,
-                                       attr->toolbars);
+                                       attr->toolbars,
+                                       attr->maximize);
 
   if (attr->role != NULL)
     gtk_window_set_role (GTK_WINDOW (window), attr->role);

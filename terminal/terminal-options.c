@@ -1,6 +1,6 @@
 /* $Id$ */
 /*-
- * Copyright (c) 2004-2007 os-cillation e.K.
+ * Copyright (c) 2004-2008 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
  *
@@ -359,6 +359,13 @@ terminal_options_parse (gint              argc,
           if (win_attr != NULL)
             {
               win_attr->fullscreen = TRUE;
+            }
+        }
+      else if (strcmp ("--maximize", argv[n]) == 0)
+        {
+          if (win_attr != NULL)
+            {
+              win_attr->maximize = TRUE;
             }
         }
       else if (strcmp ("--show-borders", argv[n]) == 0
