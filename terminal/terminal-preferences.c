@@ -130,6 +130,8 @@ enum
   PROP_TERM,
   PROP_VTE_WORKAROUND_TITLE_BUG,
   PROP_WORD_CHARS,
+  PROP_TAB_ACTIVITY_COLOR,
+  PROP_TAB_ACTIVITY_TIMEOUT,
   N_PROPERTIES,
 };
 
@@ -910,6 +912,27 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         EXO_PARAM_READWRITE));
 
   /**
+   * TerminalPreferences:tab-activity-color:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_TAB_ACTIVITY_COLOR,
+                                   g_param_spec_string ("tab-activity-color",
+                                                        "tab-activity-color",
+                                                        "tab-activity-color",
+                                                        "#afff00000000",
+                                                        EXO_PARAM_READWRITE));
+  /**
+   * TerminalPreferences:tab-activity-timeout:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_TAB_ACTIVITY_TIMEOUT,
+                                   g_param_spec_double ("tab-activity-timeout",
+                                                        "tab-activity-timeout",
+                                                        "tab-activity-timeout",
+                                                        0.0, 30.0, 2.0,
+                                                        EXO_PARAM_READWRITE));
+
+  /**
    * TerminalPreferences:command-update-records:
    **/
   g_object_class_install_property (gobject_class,
@@ -1640,5 +1663,16 @@ terminal_preferences_get (void)
   return preferences;
 }
 
+void
+query_color (TerminalPreferences *preferences,
+             const gchar         *property,
+             GdkColor            *color_return)
+{
+  gchar *spec;
+
+  g_object_get (G_OBJECT (preferences), property, &spec, NULL);
+  gdk_color_parse (spec, color_return);
+  g_free (spec);
+}
 
 

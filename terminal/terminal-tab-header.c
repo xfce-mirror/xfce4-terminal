@@ -27,6 +27,7 @@
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-stock.h>
 #include <terminal/terminal-tab-header.h>
+#include <terminal/terminal-screen.h>
 
 
 
@@ -35,6 +36,7 @@ enum
   PROP_0,
   PROP_TAB_POS,
   PROP_TITLE,
+  PROP_ACTIVITY,
 };
 
 enum
@@ -120,6 +122,17 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
                                                         "title",
                                                         NULL,
                                                         G_PARAM_READWRITE));
+
+  /**
+   * TerminalTabHeader:activity:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACTIVITY,
+                                   g_param_spec_boolean ("activity",
+                                                         "activity",
+                                                         "activity",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
 
   /**
    * TerminalTabHeader::close-tab:
@@ -237,6 +250,10 @@ terminal_tab_header_get_property (GObject    *object,
       g_object_get_property (G_OBJECT (header->label), "label", value);
       break;
 
+    case PROP_ACTIVITY:
+      g_object_get_property (G_OBJECT (header), "activity", value);
+      break;
+
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
@@ -254,7 +271,9 @@ terminal_tab_header_set_property (GObject      *object,
   TerminalTabHeader *header = TERMINAL_TAB_HEADER (object);
   GtkPositionType    position;
   const gchar       *title;
-
+  gboolean           act = FALSE;
+  GdkColor           act_color;
+  
   switch (prop_id)
     {
     case PROP_TAB_POS:
@@ -283,6 +302,13 @@ terminal_tab_header_set_property (GObject      *object,
       title = g_value_get_string (value);
       terminal_gtk_widget_set_tooltip (header->ebox, title);
       gtk_label_set_text (GTK_LABEL (header->label), title);
+      break;
+
+    case PROP_ACTIVITY:
+      act = g_value_get_boolean(value);
+      query_color (header->preferences, "tab-activity-color", &act_color);
+      /* strangely, inactive tab are in state ACTIVE */
+      gtk_widget_modify_fg(header->label, GTK_STATE_ACTIVE, act ? &act_color:NULL);
       break;
 
     default:

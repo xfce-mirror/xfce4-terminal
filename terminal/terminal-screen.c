@@ -44,6 +44,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-window.h>
 
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -56,6 +57,7 @@ enum
   PROP_0,
   PROP_CUSTOM_TITLE,
   PROP_TITLE,
+  PROP_ACTIVITY,
 };
 
 enum
@@ -107,6 +109,8 @@ static void       terminal_screen_vte_selection_changed         (VteTerminal    
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_window_title_changed      (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
+static void       terminal_screen_vte_window_contents_changed   (VteTerminal           *terminal,
+                                                                 TerminalScreen        *screen);
 static gboolean   terminal_screen_timer_background              (gpointer               user_data);
 static void       terminal_screen_timer_background_destroy      (gpointer               user_data);
 
@@ -138,6 +142,9 @@ struct _TerminalScreen
 
   guint                background_timer_id;
   guint                launch_idle_id;
+  
+  gboolean             activity;
+  guint                reset_activity_cb;
 };
 
 
@@ -188,6 +195,17 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         G_PARAM_READABLE));
 
   /**
+   * TerminalScreen:activity:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACTIVITY,
+                                   g_param_spec_boolean ("activity",
+                                                         "activity",
+                                                         "activity",
+                                                         FALSE,
+                                                         G_PARAM_READWRITE));
+
+  /**
    * TerminalScreen::get-context-menu
    **/
   screen_signals[GET_CONTEXT_MENU] =
@@ -227,6 +245,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::context-menu", G_CALLBACK (terminal_screen_vte_get_context_menu), screen,
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
+                    "signal::contents-changed", G_CALLBACK (terminal_screen_vte_window_contents_changed), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
                     "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
@@ -340,6 +359,10 @@ terminal_screen_get_property (GObject          *object,
       g_value_take_string (value, terminal_screen_get_title (screen));
       break;
 
+    case PROP_ACTIVITY:
+      g_value_set_boolean (value, screen->activity);
+      break;
+
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       break;
@@ -360,6 +383,10 @@ terminal_screen_set_property (GObject          *object,
     {
     case PROP_CUSTOM_TITLE:
       terminal_screen_set_custom_title (screen, g_value_get_string (value));
+      break;
+
+    case PROP_ACTIVITY:
+      screen->activity = g_value_get_boolean (value);
       break;
 
     default:
@@ -597,22 +624,6 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
     }
 }
 
-
-
-static void
-query_color (TerminalPreferences *preferences,
-             const gchar         *property,
-             GdkColor            *color_return)
-{
-  gchar *spec;
-
-  g_object_get (G_OBJECT (preferences), property, &spec, NULL);
-  gdk_color_parse (spec, color_return);
-  g_free (spec);
-}
-
-
-
 static void
 terminal_screen_update_colors (TerminalScreen *screen)
 {
@@ -843,7 +854,38 @@ terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
   g_object_notify (G_OBJECT (screen), "title");
 }
 
+static gboolean terminal_screen_reset_activity(TerminalScreen *screen)
+{
+  screen->activity = FALSE;
+  screen->reset_activity_cb = 0;
+  g_object_notify (G_OBJECT (screen), "activity");
+  return FALSE;
+}
 
+static void
+terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
+                                             TerminalScreen *screen)
+{
+  gdouble timeout_seconds = 2.0;
+
+  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  if (terminal_window_is_screen_active (screen))
+    return;
+
+  g_object_get (G_OBJECT (screen->preferences), "tab-activity-timeout", &timeout_seconds, NULL);
+  if (timeout_seconds < 1.0)
+    return;
+
+  screen->activity = TRUE;
+  g_object_notify (G_OBJECT (screen), "activity");
+  if (screen->reset_activity_cb != 0) {
+    g_source_remove(screen->reset_activity_cb);
+  }
+  screen->reset_activity_cb = g_timeout_add_seconds ((gint)timeout_seconds,
+                     (GSourceFunc)terminal_screen_reset_activity, screen);
+}
 
 static gboolean
 terminal_screen_timer_background (gpointer user_data)
@@ -1231,8 +1273,6 @@ terminal_screen_get_title (TerminalScreen *screen)
 
   return title;
 }
-
-
 
 /**
  * terminal_screen_get_working_directory:

@@ -768,6 +768,52 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
       g_free (name);
     }
 
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
+  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
+  gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Tab activity</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
+  table = gtk_table_new (2, 1, FALSE);
+  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
+  gtk_table_set_col_spacings (GTK_TABLE (table), 12);
+  gtk_container_set_border_width (GTK_CONTAINER (table), 12);
+  gtk_container_add (GTK_CONTAINER (frame), table);
+  gtk_widget_show (table);
+
+  label = g_object_new (GTK_TYPE_LABEL,
+                        "label", _("T_ab activity color:"),
+                        "use-underline", TRUE,
+                        "xalign", 0.0,
+                        NULL);
+  gtk_table_attach (GTK_TABLE (table), label, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (label);
+
+  align = gtk_alignment_new (0.0, 0.5, 0.0, 0.0);
+  gtk_table_attach (GTK_TABLE (table), align, 1, 2, 0, 1, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+  gtk_widget_show (align);
+
+  hbox = gtk_hbox_new (FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (align), hbox);
+  gtk_widget_show (hbox);
+
+  button = g_object_new (GTK_TYPE_COLOR_BUTTON, "title", _("Choose tab activity color"), NULL);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "tab-activity-color", G_OBJECT (button), "color");
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
+  gtk_widget_show (button);
+
+  /* set Atk name/description and label relation for the button */
+  object = gtk_widget_get_accessible (button);
+  atk_object_set_name (object, _("Color Selector"));
+  atk_object_set_description (object, _("Open a dialog to specify the color"));
+  relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
+  relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
+  atk_relation_set_add (relations, relation);
+  g_object_unref (G_OBJECT (relation));
+
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
                                  TERMINAL_STOCK_COLORS,
                                  GTK_ICON_SIZE_DIALOG,
@@ -982,6 +1028,46 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* set Atk label relation for the entry */
   terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), entry);
 
+/* start */
+  frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
+  gtk_box_pack_start (GTK_BOX (box), frame, FALSE, TRUE, 0);
+  gtk_widget_show (frame);
+
+  label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Tab activity indicator</b>"), "use-markup", TRUE, NULL);
+  gtk_frame_set_label_widget (GTK_FRAME (frame), label);
+  gtk_widget_show (label);
+
+  vbox = gtk_vbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
+  gtk_container_add (GTK_CONTAINER (frame), vbox);
+  gtk_widget_show (vbox);
+
+  hbox = gtk_hbox_new (FALSE, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 0);
+  gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+  gtk_widget_show (hbox);
+
+  label = gtk_label_new (_("Reset tab activity indicator after"));
+  g_object_set (G_OBJECT (label), "wrap", TRUE, "xalign", 0.0, NULL);
+  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  gtk_widget_show (label);
+
+  button = gtk_spin_button_new_with_range (0.0, 30.0, 1.0);
+  gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(button), TRUE);
+  exo_mutual_binding_new (G_OBJECT (dialog->preferences), "tab-activity-timeout", G_OBJECT (button), "value");
+  gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), button);
+  gtk_widget_show (button);
+
+  /* set Atk label relation for the button */
+  terminal_gtk_label_set_a11y_relation (GTK_LABEL (label), button);
+
+  label = gtk_label_new (_("seconds"));
+  g_object_set (G_OBJECT (label), "wrap", TRUE, "xalign", 0.0, NULL);
+  gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  gtk_widget_show (label);
+
+/*end */
   icon = gtk_widget_render_icon (GTK_WIDGET (dialog->icon_bar),
                                  TERMINAL_STOCK_ADVANCED,
                                  GTK_ICON_SIZE_DIALOG,

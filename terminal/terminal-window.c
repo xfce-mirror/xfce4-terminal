@@ -889,8 +889,8 @@ terminal_window_page_notified (GtkNotebook    *notebook,
       title = terminal_screen_get_title (terminal);
       gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
-
       terminal_window_update_actions (window);
+      g_object_set (G_OBJECT (terminal), "activity", FALSE, NULL);
     }
 }
 
@@ -1224,8 +1224,6 @@ terminal_window_notify_title (TerminalScreen *screen,
       g_free (title);
     }
 }
-
-
 
 static void
 terminal_window_action_new_tab (GtkAction       *action,
@@ -1702,9 +1700,11 @@ terminal_window_add (TerminalWindow *window,
 
   header = terminal_tab_header_new ();
   exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (header), "title");
+  exo_binding_new (G_OBJECT (screen), "activity", G_OBJECT (header), "activity");
   g_signal_connect_swapped (G_OBJECT (header), "close-tab", G_CALLBACK (gtk_widget_destroy), screen);
   g_object_set_data_full (G_OBJECT (header), I_("terminal-window-screen"), g_object_ref (G_OBJECT (screen)), (GDestroyNotify) g_object_unref);
   g_object_set_data_full (G_OBJECT (screen), I_("terminal-tab-header"), g_object_ref (G_OBJECT (header)), (GDestroyNotify) g_object_unref);
+  g_object_set_data_full (G_OBJECT (screen), I_("terminal-window"), g_object_ref (G_OBJECT (window)), (GDestroyNotify) g_object_unref);
   gtk_widget_show (header);
 
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), header);
@@ -1758,6 +1758,29 @@ terminal_window_get_active (TerminalWindow *window)
     return TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num));
   else
     return NULL;
+}
+
+/**
+ * terminal_window_is_screen_active:
+ * @screen : a #TerminalScreen.
+ *
+ * Return value: TRUE if @screen is active.
+ **/
+gboolean 
+terminal_window_is_screen_active (TerminalScreen *screen)
+{
+  TerminalWindow *window = NULL;
+  GtkNotebook    *notebook;
+  gint            page_num;
+  
+  window = g_object_get_data (G_OBJECT (screen), I_("terminal-window"));
+  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
+  notebook = GTK_NOTEBOOK (window->notebook);
+  page_num = gtk_notebook_get_current_page (notebook);
+  if (G_LIKELY (page_num >= 0))
+    return (TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num)) == screen);
+  else
+    return FALSE;
 }
 
 

@@ -83,6 +83,11 @@ GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
 
 TerminalPreferences *terminal_preferences_get       (void);
 
+void                 query_color                    (TerminalPreferences *preferences,
+                                                     const gchar         *property,
+                                                     GdkColor            *color_return);
+
+
 G_END_DECLS;
 
 #endif /* !__TERMINAL_PREFERENCES_H__ */

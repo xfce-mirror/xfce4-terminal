@@ -23,6 +23,7 @@
 #define __TERMINAL_WINDOW_H__
 
 #include <terminal/terminal-screen.h>
+#include <terminal/terminal-options.h>
 
 G_BEGIN_DECLS;
 
@@ -69,6 +70,8 @@ void            terminal_window_set_startup_id       (TerminalWindow     *window
                                                       const gchar        *startup_id);
 
 GList          *terminal_window_get_restart_command  (TerminalWindow     *window);
+
+gboolean        terminal_window_is_screen_active     (TerminalScreen     *screen);
 
 G_END_DECLS;
 
