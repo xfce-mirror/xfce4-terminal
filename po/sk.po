@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-15 21:29+0100\n"
-"PO-Revision-Date: 2006-02-19 17:25+0100\n"
+"PO-Revision-Date: 2008-05-28 01:17-0700\n"
 "Last-Translator: Roman Moravcik <roman.moravcik@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -32,40 +32,49 @@ msgstr "  -v, --version                       Zobrazí číslo verzie a ukončí
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
-msgstr ""
+msgstr "  --disable-server                    Neprihlási sa k zbernici D-BUS"
 
 #: ../terminal/main.c:52
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
 msgstr ""
+"  -x, --execute                       Spustí zvyšok príkazového riadka v "
+"termináli"
 
 #: ../terminal/main.c:54
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
+"  -e, --command=REŤAZEC               Spustí argument k tejto voľbe\n"
+"                                      v termináli"
 
 #: ../terminal/main.c:56
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
+"  --working-directory=NÁZOV_ADRESÁRA  Nastaví pracovný adresár terminálu"
 
 #: ../terminal/main.c:57
 msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr ""
+msgstr "  -T, --title=TITULOK                 Nastaví titulok terminálu"
 
 #: ../terminal/main.c:58
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
+"  -H, --hold                          Nezatvorí kartu inheď po skončení\n"
+"                                      potomka"
 
 #: ../terminal/main.c:61
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
+"  -display=DISPLEJ                    Displej X servera pre posledné\n"
+"                                      zadané okno"
 
 #: ../terminal/main.c:63
 msgid ""
@@ -73,6 +82,11 @@ msgid ""
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
+"  --geometry=GEOMETRIA                Špecifikácia geometrie X (viď "
+"manuálovú\n"
+"                                      stránku \"X\"), môže byť zadaná jedna "
+"na\n"
+"                                      otvorené okno"
 
 #: ../terminal/main.c:66
 msgid ""
@@ -81,12 +95,18 @@ msgid ""
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
+"  --role=ÚLOHA                        Nastaví úlohu pre posledné zadané\n"
+"                                      okno; použije sa len pre jedno okno;\n"
+"                                      môže byť zadané jeden raz pre každé\n"
+"                                      okno spustené z príkazovej riadky"
 
 #: ../terminal/main.c:70
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
+"  --startup-id=REŤAZEC                Identifikátor pre protokol oznámenia\n"
+"                                      pri spustení"
 
 #: ../terminal/main.c:72
 msgid ""
@@ -96,6 +116,12 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
+"  --fullscreen                        Prepne posledné zadané okno do režimu "
+"celej\n"
+"                                      obrazovky; použije sa len pre jedno "
+"okno;\n"
+"                                      môže byť zadané raz pre každé okno\n"
+"                                      spustené z príkazového riadku"
 
 #: ../terminal/main.c:77
 msgid ""
@@ -105,6 +131,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-menubar                      Zobrazí ponuku okna pre posledné "
+"zadané okno;\n"
+"                                      použije sa len pre jedno okno;\n"
+"                                      môže byť zadané raz pre každé okno\n"
+"                                      spustené z príkazového riadku"
 
 #: ../terminal/main.c:82
 msgid ""
@@ -114,6 +145,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide menubar                      Skryje ponuku okna pre posledné zadané "
+"okno;\n"
+"                                      použije sa len pre jedno okno;\n"
+"                                      môže byť zadané raz pre každé okno\n"
+"                                      spustené z príkazového riadku"
 
 #: ../terminal/main.c:87
 msgid ""
@@ -123,6 +159,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --show-borders                      Zapne dekoráciu okna pre posledné "
+"zadané okno;\n"
+"                                      použije sa len pre jedno okno;\n"
+"                                      môže byť zadané raz pre každé okno\n"
+"                                      spustené z príkazového riadku"
 
 #: ../terminal/main.c:92
 msgid ""
@@ -132,6 +173,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
+"  --hide-borders                      Vypne dekorácie okna pre posledné "
+"zadané\n"
+"                                      okno; použije sa len pre jedno okno;\n"
+"                                      môže byť zadané raz pre každé okno\n"
+"                                      spustené z príkazového riadku"
 
 #: ../terminal/main.c:97
 msgid ""
@@ -141,6 +187,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-toolbars                     Zapne panely nástrojov pre posledné\n"
+"                                      zadané okno; použije sa len na jedno "
+"okno;\n"
+"                                      môže byť zadané raz pre každé okno\n"
+"                                      vytvorené z príkazového riadka"
 
 #: ../terminal/main.c:102
 msgid ""
@@ -150,6 +201,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-toolbars                     Vypne panely nástrojov pre posledné\n"
+"                                      zadané okno; použije sa len na jedno\n"
+"                                      okno; môže byť zadané raz pre každé "
+"okno\n"
+"                                      vytvorené z príkazovej riadky"
 
 #: ../terminal/main.c:108
 msgid ""
@@ -157,6 +213,11 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
+"  --tab                               Otvorí novú záložku v poslednom "
+"špecifikovanom\n"
+"                                      okne; je povolených vykonať viac "
+"takýchto\n"
+"                                      volieb"
 
 #: ../terminal/main.c:111
 msgid ""
@@ -164,16 +225,22 @@ msgid ""
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
+"  --window                            Otvor nové okno obsahujúce jednu "
+"záložku;\n"
+"                                      je povolených vykonať viac takýchto\n"
+"                                      volieb"
 
 #: ../terminal/main.c:115
 msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
+msgstr "  --defalut-display=DISPEJ            použiť východzí X displej"
 
 #: ../terminal/main.c:116
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 "                                      directory"
 msgstr ""
+"  --default-working-directory=ZLOŽKA  Nastaví východzí pracovný adresár\n"
+"                                      pre terminál"
 
 #: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1211
 #: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
@@ -181,7 +248,7 @@ msgid "Terminal"
 msgstr "Terminál"
 
 #: ../terminal/main.c:162
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "%s (Xfce %s)\n"
 "\n"
@@ -196,7 +263,7 @@ msgid ""
 msgstr ""
 "%s (Xfce %s)\n"
 "\n"
-"Copyright (c) 2003-2004\n"
+"Copyright (c) %s\n"
 "        os-cillation e.K. Všetky práva vyhradené.\n"
 "\n"
 "Autor : Benedikt Meurer <benny@xfce.org>.\n"
@@ -208,30 +275,30 @@ msgstr ""
 #: ../terminal/main.c:257
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr ""
+msgstr "Nejde registrovať službu terminálu: %s\n"
 
 #: ../terminal/main.c:266
 #, c-format
 msgid "Unable to launch terminal: %s\n"
-msgstr ""
+msgstr "Nejde spustiť terminál: %s\n"
 
 #: ../terminal/terminal-app.c:550
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr ""
+msgstr "Neplatný reťazec geometrie \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
-msgstr ""
+msgstr "ID užívateľa sa nezhoduje"
 
 #: ../terminal/terminal-dbus.c:145
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
+msgstr "Zbernica D-BUS bola odpojená, ukončujem...\n"
 
 #: ../terminal/terminal-dbus.c:206
 #, c-format
 msgid "Unable to register object %s"
-msgstr ""
+msgstr "Nejde registrovať objekt %s"
 
 #: ../terminal/terminal-dialogs.c:77
 msgid "X Terminal Emulator"
@@ -239,71 +306,86 @@ msgstr "X Terminál Emulátor"
 
 #: ../terminal/terminal-dialogs.c:87
 msgid "translator-credits"
-msgstr "Prekladatelia"
+msgstr "Štefan Miklošovič <miklosovic@gmail.com>"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:245
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť prehliadač dokumentácie"
 
 #: ../terminal/terminal-options.c:107
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr ""
+"Voľba \"--sm-client-id\" vyžaduje zadanie identifikátoru sedenia (id) ako "
+"parametru"
 
 #: ../terminal/terminal-options.c:129
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
+"Voľba \"--execute/-x\" vyžaduje zadanie príkazu ku spusteniu na zvyšku "
+"príkazového riadka"
 
 #: ../terminal/terminal-options.c:158
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
+"Voľba \"--command/-e\" vyžaduje zadanie príkazu ku spusteniu ako jeho "
+"parametra"
 
 #: ../terminal/terminal-options.c:187
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
+"Voľba \"--working-directory\" vyžaduje zadanie pracovného adresára ako "
+"parametera"
 
 #: ../terminal/terminal-options.c:218
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr ""
+msgstr "Voľba \"--title/-T\" vyžaduje zadanie titulku ako jeho parametra"
 
 #: ../terminal/terminal-options.c:251
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
-msgstr ""
+msgstr "Voľba \"--display\" vyžaduje zadanie X displeja ako jeho parametra"
 
 #: ../terminal/terminal-options.c:278
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
+"Voľba \"--geometry\" vyžaduje zadanie geometrie okna ako jeho parametra"
 
 #: ../terminal/terminal-options.c:305
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr ""
+msgstr "Voľba \"--role\" vyžaduje zadanie úlohy okna ako jeho parametra"
 
 #: ../terminal/terminal-options.c:332
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
+"Voľba \"--startup-id\" vyžaduje zadanie spúšťacieho identifikátora (id) ako "
+"jeho parametra"
 
 #: ../terminal/terminal-options.c:413
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
+"Voľba \"--default-display\" vyžaduje zadanie východzieho X displeja ako jej "
+"parameter"
 
 #: ../terminal/terminal-options.c:437
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
+"Voľba \"--default-working-directory\" vyžaduje zadanie východziehopracovného "
+"adresára ako jej parameter"
 
 #: ../terminal/terminal-options.c:453
 #, c-format
@@ -362,6 +444,10 @@ msgid ""
 "about differences between running it as interactive shell and running it as "
 "login shell."
 msgstr ""
+"Výberom tejto voľby donútite Terminál, aby zobrazoval prihlasovacie "
+"rozhranie pri otvorení nových terminálov. Pozrite dokumentáciu vášho shellu "
+"pre viac informácii o rozdiele v spustení interaktívneho shellu a spustením "
+"ako prihlasovacieho shellu."
 
 #: ../terminal/terminal-preferences-dialog.c:269
 msgid "_Update utmp/wtmp records when command is launched"
@@ -369,37 +455,42 @@ msgstr "_Aktualizovať záznamy utmp/wtmp pri spustení príkazu"
 
 #: ../terminal/terminal-preferences-dialog.c:278
 msgid "<b>Scrolling</b>"
-msgstr ""
+msgstr "<b>Posun</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:293
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
+msgstr "Posúvať o jeden riadok pomocou kláves Šípka hore a Šípka dolu"
 
 #: ../terminal/terminal-preferences-dialog.c:296
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
+"Povolením tejto voľby umožníte posúvanie o jeden riadok šípkami hore a dole "
+"spoločne s klávesou Shift."
 
 #: ../terminal/terminal-preferences-dialog.c:305
 msgid "Sc_roll on output"
-msgstr ""
+msgstr "Posúvať pri _výstupe"
 
 #: ../terminal/terminal-preferences-dialog.c:308
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
 msgstr ""
+"Táto voľba určuje, či sa bude obsah terminálu automaticky posúvať pri "
+"generovaní výstupu programu bežiaceho v termináli."
 
 #: ../terminal/terminal-preferences-dialog.c:314
 msgid "Scroll on _keystroke"
-msgstr ""
+msgstr "Posúvať pri _stlačení klávesy"
 
 #: ../terminal/terminal-preferences-dialog.c:317
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
+"Spôsobí posunutie obsahu terminálu dole pri sltačení ľubovoľnej klávesy."
 
 #: ../terminal/terminal-preferences-dialog.c:323
 msgid "_Scrollbar is:"
@@ -428,12 +519,12 @@ msgstr "Na pravej strane"
 
 #: ../terminal/terminal-preferences-dialog.c:343
 msgid "Scr_ollback:"
-msgstr ""
+msgstr "Z_obrazenie posuvníka:"
 
 #: ../terminal/terminal-preferences-dialog.c:353
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
+msgstr "Špecifikuje počet riadkov, o koľko sa môžete vrátiť pri posuve nahor."
 
 #: ../terminal/terminal-preferences-dialog.c:369
 msgid "General"
@@ -458,6 +549,10 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
+"Povoľte túto voľbu, ak chcete aby Terminál používal vyhladené písmená v "
+"oknách\n"
+"terminálu. Zakázaním tejto voľby možete poznateľne zrýchliť vykreslovanie\n"
+"písma a tak zmenšiť celkové zaťaženie na pomalých systémoch."
 
 #: ../terminal/terminal-preferences-dialog.c:411
 msgid "Allow bold text"
@@ -468,6 +563,8 @@ msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
+"Povoľte túto voľbu, aby ste umožnili aplikáciám bežiacim v terminále "
+"používať tučné písmo."
 
 #: ../terminal/terminal-preferences-dialog.c:423
 msgid "<b>Background</b>"
@@ -533,6 +630,8 @@ msgstr "Zobraziť štandardne _menu v nových termináloch"
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
+"Povoľte túto voľbu pre zobrazenie hlavného menu v novo vytvorených oknách "
+"terminálu."
 
 #: ../terminal/terminal-preferences-dialog.c:551
 msgid "Display _toolbars in new windows"
@@ -542,6 +641,8 @@ msgstr "Zobraziť štandardne _panel nástrojov v nových termináloch"
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
+"Povoľte túto voľbu pre zobrazovanie panelov nástrojov v novo vytvorených "
+"oknách."
 
 #: ../terminal/terminal-preferences-dialog.c:559
 msgid "Display _borders around new windows"
@@ -552,6 +653,8 @@ msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr ""
+"Povoľte túto voľbu pre zobrazenie dekorácii okien okolo novo vytvorených "
+"okien terminálu."
 
 #: ../terminal/terminal-preferences-dialog.c:574
 msgid "Appearance"
@@ -581,7 +684,7 @@ msgstr "Výber farby"
 #: ../terminal/terminal-preferences-dialog.c:672
 #: ../terminal/terminal-preferences-dialog.c:721
 msgid "Open a dialog to specify the color"
-msgstr ""
+msgstr "Otvorí dialóg výberu farby"
 
 #: ../terminal/terminal-preferences-dialog.c:634
 msgid "Choose terminal cursor color"
@@ -605,7 +708,7 @@ msgstr "Použiť štan_dardnú farbu"
 
 #: ../terminal/terminal-preferences-dialog.c:696
 msgid "Use the default text selection background color"
-msgstr ""
+msgstr "Použiť východziu farbu pozadia vybraného textu"
 
 #: ../terminal/terminal-preferences-dialog.c:701
 msgid "Use _custom color"
@@ -613,7 +716,7 @@ msgstr "Použiť _vlastnú farbu"
 
 #: ../terminal/terminal-preferences-dialog.c:704
 msgid "Use a custom text selection background color"
-msgstr ""
+msgstr "Použiť vlastnú farbu pre pozadie vybraného textu"
 
 #: ../terminal/terminal-preferences-dialog.c:712
 msgid "Choose terminal text selection background color"
@@ -629,9 +732,9 @@ msgstr "Tieto farby budú dostupné terminálovým aplikáciam:"
 
 #. setup a tooltip
 #: ../terminal/terminal-preferences-dialog.c:763
-#, fuzzy, c-format
+#, c-format
 msgid "Palette entry %d"
-msgstr "Položka palety 1"
+msgstr "Položka palety %d"
 
 #: ../terminal/terminal-preferences-dialog.c:778
 msgid "Colors"
@@ -643,15 +746,15 @@ msgstr "<b>Klávesové skratky</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:822
 msgid "<b>Menubar access</b>"
-msgstr ""
+msgstr "<b>Prístup k ponuke</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:831
 msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr ""
+msgstr "Zakázať všetky klávesy pre prístup k po_nuke (také ako Alt+f)"
 
 #: ../terminal/terminal-preferences-dialog.c:836
 msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr ""
+msgstr "Zakázať klávesu pre _prístup k ponuke (východzia F10)"
 
 #: ../terminal/terminal-preferences-dialog.c:848
 msgid "Shortcuts"
@@ -668,7 +771,7 @@ msgid ""
 "systems that expect different terminal behavior."
 msgstr ""
 "Tieto volby môžu spôsobiť, že niektoré aplikácie nebudú fungovať správne. Sú "
-"tu iba preto, aby iné aplikácie mohli fungovať v prípade, že očkávajú iné "
+"tu iba preto, aby iné aplikácie mohli fungovať v prípade, že očakávajú iné "
 "chovanie terminálu."
 
 #: ../terminal/terminal-preferences-dialog.c:885
@@ -710,6 +813,10 @@ msgid ""
 "most systems. If you have problems with colors in some applications, try "
 "xterm-color here."
 msgstr ""
+"Toto upresňuje hodnotu na ktorú je nastavená premenná prostredia $TEMP  po "
+"otvorení nového panela alebo okna terminálu. Východzie nastavenie by malobyť "
+"v poriadku pre väčšinu systémov. Ak máte problémy s farbami v "
+"niektorýchaplikáciách, skúste použiť xterm-color."
 
 #: ../terminal/terminal-preferences-dialog.c:951
 msgid "_Reset compatibility options to defaults"
@@ -721,11 +828,11 @@ msgstr "<b>Dvojité kliknutie</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:970
 msgid "Consider the following characters part of a word when double clicking:"
-msgstr ""
+msgstr "Považovať nasledujúce znaky za časti slova pri dvojitom kliknutí:"
 
 #: ../terminal/terminal-preferences-dialog.c:992
 msgid "Advanced"
-msgstr ""
+msgstr "Pokročilé"
 
 #. allocate the file chooser window
 #: ../terminal/terminal-preferences-dialog.c:1051
@@ -752,9 +859,8 @@ msgstr "Otvoriť terminál"
 
 #: ../terminal/terminal-preferences.c:326
 #: ../terminal/terminal-preferences.c:327
-#, fuzzy
 msgid "Detach Tab"
-msgstr "Nasledujúca karta"
+msgstr "Odpojiť kartu"
 
 #: ../terminal/terminal-preferences.c:337
 #: ../terminal/terminal-preferences.c:338
@@ -778,9 +884,8 @@ msgstr "Vložiť"
 
 #: ../terminal/terminal-preferences.c:381
 #: ../terminal/terminal-preferences.c:382
-#, fuzzy
 msgid "Paste Selection"
-msgstr "<b>Textový výber</b>"
+msgstr "Vložiť vybrané"
 
 #: ../terminal/terminal-preferences.c:392
 #: ../terminal/terminal-preferences.c:393
@@ -884,16 +989,16 @@ msgstr "Obsah"
 
 #: ../terminal/terminal-screen.c:432
 msgid "Unable to determine your login shell."
-msgstr ""
+msgstr "Nejde zisiť vaše užívateľské meno."
 
 #. tell the user that we were unable to execute the command
 #: ../terminal/terminal-screen.c:960
 msgid "Failed to execute child"
-msgstr ""
+msgstr "Spustenie procesu potomka zlyhalo"
 
 #: ../terminal/terminal-screen.c:1197
 msgid "Untitled"
-msgstr ""
+msgstr "Bez názvu"
 
 #: ../terminal/terminal-shortcut-editor.c:90
 msgid "File"
@@ -925,7 +1030,7 @@ msgstr "Klávesová skratka"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 msgid "Compose shortcut"
-msgstr ""
+msgstr "Zvoliť klávesovú skratku"
 
 #: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
@@ -933,11 +1038,11 @@ msgstr "Zachytiť klávesový skratku pre:"
 
 #: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
-msgstr ""
+msgstr "Získanie klávesnice zlyhalo"
 
 #: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
-msgstr ""
+msgstr "Vašu klávesnicu už ovláda iná aplikácia."
 
 #: ../terminal/terminal-tab-header.c:203
 msgid "Close this tab"
@@ -945,7 +1050,7 @@ msgstr "Zavrieť túto kartu"
 
 #: ../terminal/terminal-tab-header.c:327 ../terminal/terminal-window.c:202
 msgid "_Detach Tab"
-msgstr ""
+msgstr "O_dpojiť kartu"
 
 #: ../terminal/terminal-tab-header.c:332 ../terminal/terminal-window.c:203
 msgid "C_lose Tab"
@@ -977,28 +1082,35 @@ msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
+"Nejde predať vybraný text typu text/plain na terminál. Nesprávny formát (%d)"
+"alebo dĺžka (%d)\n"
 
 #: ../terminal/terminal-widget.c:475
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"Nejde predať zoznam adries URL terminálu. Nesprávny formát (%d) alebo dĺžka "
+"(%d)\n"
 
 #: ../terminal/terminal-widget.c:501
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"Nejde predať zoznam adries URI terminálu. Nesprávny formát (%d) alebo dĺžka "
+"(%d)\n"
 
 #: ../terminal/terminal-widget.c:546
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"Prijaté neplatné dáta o farbách: Nesprávny formát (%d) alebo (%d) dĺžka\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:653
 #, c-format
 msgid "Failed to open the URL `%s'"
-msgstr ""
+msgstr "Nepodarilo sa otvoriť adresu URL `%s'"
 
 #: ../terminal/terminal-window.c:199
 msgid "_File"
@@ -1021,9 +1133,8 @@ msgid "Open a new terminal window"
 msgstr "Otvorí nové okno terminálu"
 
 #: ../terminal/terminal-window.c:202
-#, fuzzy
 msgid "Open a new window for the current terminal tab"
-msgstr "Zavrieť túto kartu"
+msgstr "Otvoriť nové okno pre súčasnú kartu terminálu"
 
 #: ../terminal/terminal-window.c:203
 msgid "Close the current terminal tab"
@@ -1059,11 +1170,11 @@ msgstr "Vložiť zo schránky"
 
 #: ../terminal/terminal-window.c:208
 msgid "Paste _Selection"
-msgstr ""
+msgstr "Vložiť _výber"
 
 #: ../terminal/terminal-window.c:208
 msgid "Paste from primary selection"
-msgstr ""
+msgstr "Vložiť z primárneho výberu"
 
 #: ../terminal/terminal-window.c:209
 msgid "_Toolbars..."
@@ -1071,7 +1182,7 @@ msgstr "Panel _nástrojov..."
 
 #: ../terminal/terminal-window.c:209
 msgid "Customize the toolbars"
-msgstr ""
+msgstr "Prispôsobiť panely nástrojov"
 
 #: ../terminal/terminal-window.c:210
 msgid "Pr_eferences..."
@@ -1095,7 +1206,7 @@ msgstr "_Nastaviť titulok..."
 
 #: ../terminal/terminal-window.c:213
 msgid "Set a custom title for the current tab"
-msgstr ""
+msgstr "Nastaví názov pre aktuálnu kartu terminálu"
 
 #: ../terminal/terminal-window.c:214
 msgid "_Reset"
@@ -1214,7 +1325,7 @@ msgstr "_Nepýtať sa v budúcnosti"
 
 #: ../terminal/terminal-window.c:1327
 msgid "Window Title|Set Title"
-msgstr ""
+msgstr "Nastaviť titulok"
 
 #: ../terminal/terminal-window.c:1341
 msgid "<b>Title:</b>"
@@ -1222,7 +1333,7 @@ msgstr "<b>Titulok:</b>"
 
 #: ../terminal/terminal-window.c:1355
 msgid "Enter the title for the current terminal tab"
-msgstr ""
+msgstr "Vložte názov pre aktuálnu kartu terminálu"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
