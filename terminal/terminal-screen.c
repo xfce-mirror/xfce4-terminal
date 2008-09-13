@@ -883,8 +883,14 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
   if (screen->reset_activity_cb != 0) {
     g_source_remove(screen->reset_activity_cb);
   }
+
+#if GLIB_CHECK_VERSION (2,14,0)
   screen->reset_activity_cb = g_timeout_add_seconds ((gint)timeout_seconds,
                      (GSourceFunc)terminal_screen_reset_activity, screen);
+#else
+  screen->reset_activity_cb = g_timeout_add ((gint)timeout_seconds * 1000,
+                     (GSourceFunc)terminal_screen_reset_activity, screen);
+#endif
 }
 
 static gboolean
