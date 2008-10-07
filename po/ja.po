@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-15 21:29+0100\n"
-"PO-Revision-Date: 2007-03-25 23:09+0900\n"
-"Last-Translator: Daichi Kawahata <daichi@xfce.org>\n"
+"PO-Revision-Date: 2008-10-07 23:09+0900\n"
+"Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -307,12 +307,14 @@ msgstr "X ターミナルエミュレーター"
 
 #: ../terminal/terminal-dialogs.c:87
 msgid "translator-credits"
-msgstr "Daichi Kawahata <daichi@xfce.org>"
+msgstr ""
+"Daichi Kawahata <daichi@xfce.org>\n"
+"Masato Hashimoto <cabezon.hashimoto@gmail.com>"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:245
 msgid "Failed to open the documentation browser"
-msgstr "文書をブラウザーで開くのに失敗しました"
+msgstr "文書をブラウザで開けませんでした"
 
 #: ../terminal/terminal-options.c:107
 msgid ""
@@ -397,7 +399,7 @@ msgstr ""
 #: ../terminal/terminal-options.c:453
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr "オプション \"%s\" は不明です"
+msgstr "\"%s\" は不明なオプションです"
 
 #: ../terminal/terminal-preferences-dialog.c:140
 msgid "Terminal Preferences"
@@ -454,7 +456,7 @@ msgid ""
 "login shell."
 msgstr ""
 "新しいターミナルを開く際に、シェルを強制的にログイン・シェルとして実行させる"
-"なら、このオプションを選択してください。シェルがインタラクティブ・シェルとし"
+"場合は、このオプションを選択してください。シェルがインタラクティブ・シェルとし"
 "て実行される場合と、ログイン・シェルとして実行される場合の違いに関する詳細"
 "は、シェルのマニュアルを御覧ください。"
 
@@ -468,13 +470,15 @@ msgstr "<b>スクロール</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:293
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
+msgstr "Shift+↑/+↓ キーを使用して1行ずつスクロールする(_L)"
 
 #: ../terminal/terminal-preferences-dialog.c:296
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
+"このオプションを有効にすると、Shiftキーを押しながら↑/↓キーを押すことによって1行"
+"ずつスクロールできるようになります。"
 
 #: ../terminal/terminal-preferences-dialog.c:305
 msgid "Sc_roll on output"
@@ -489,9 +493,8 @@ msgstr ""
 "的に下へスクロールするかどうかを選択します。"
 
 #: ../terminal/terminal-preferences-dialog.c:314
-#, fuzzy
 msgid "Scroll on _keystroke"
-msgstr "キー入力でスクロールさせる(_S)"
+msgstr "キー入力でスクロールさせる(_K)"
 
 #: ../terminal/terminal-preferences-dialog.c:317
 msgid ""
@@ -499,7 +502,7 @@ msgid ""
 "window to the command prompt."
 msgstr ""
 "有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンドウ"
-"が下にスクロールします。"
+"をコマンドプロンプトまでスクロールします。"
 
 #: ../terminal/terminal-preferences-dialog.c:323
 msgid "_Scrollbar is:"
@@ -549,7 +552,7 @@ msgstr "ターミナルフォントを選択してください"
 
 #: ../terminal/terminal-preferences-dialog.c:401
 msgid "Enable anti-aliasing for the terminal font"
-msgstr "アンチエイリアスを掛ける"
+msgstr "アンチエイリアスを有効にする"
 
 #: ../terminal/terminal-preferences-dialog.c:404
 msgid ""
@@ -613,7 +616,7 @@ msgstr "拡大縮小"
 
 #: ../terminal/terminal-preferences-dialog.c:486
 msgid "Stretched"
-msgstr "伸長"
+msgstr "伸長あり"
 
 #: ../terminal/terminal-preferences-dialog.c:502
 msgid "Shade transparent or image background:"
@@ -868,7 +871,7 @@ msgstr "ターミナルを開く"
 #: ../terminal/terminal-preferences.c:326
 #: ../terminal/terminal-preferences.c:327
 msgid "Detach Tab"
-msgstr "タブを取り外す"
+msgstr "タブを切り離す"
 
 #: ../terminal/terminal-preferences.c:337
 #: ../terminal/terminal-preferences.c:338
@@ -893,7 +896,7 @@ msgstr "貼り付け"
 #: ../terminal/terminal-preferences.c:381
 #: ../terminal/terminal-preferences.c:382
 msgid "Paste Selection"
-msgstr "選択領域の貼り付け"
+msgstr "選択領域を貼り付け"
 
 #: ../terminal/terminal-preferences.c:392
 #: ../terminal/terminal-preferences.c:393
@@ -948,47 +951,47 @@ msgstr "次のタブ"
 #: ../terminal/terminal-preferences.c:502
 #: ../terminal/terminal-preferences.c:503
 msgid "Switch to Tab 1"
-msgstr "タブ１に切り替える"
+msgstr "タブ1 に切り替える"
 
 #: ../terminal/terminal-preferences.c:513
 #: ../terminal/terminal-preferences.c:514
 msgid "Switch to Tab 2"
-msgstr "タブ２に切り替える"
+msgstr "タブ2 に切り替える"
 
 #: ../terminal/terminal-preferences.c:524
 #: ../terminal/terminal-preferences.c:525
 msgid "Switch to Tab 3"
-msgstr "タブ３に切り替える"
+msgstr "タブ3 に切り替える"
 
 #: ../terminal/terminal-preferences.c:535
 #: ../terminal/terminal-preferences.c:536
 msgid "Switch to Tab 4"
-msgstr "タブ４に切り替える"
+msgstr "タブ4 に切り替える"
 
 #: ../terminal/terminal-preferences.c:546
 #: ../terminal/terminal-preferences.c:547
 msgid "Switch to Tab 5"
-msgstr "タブ５に切り替える"
+msgstr "タブ5 に切り替える"
 
 #: ../terminal/terminal-preferences.c:557
 #: ../terminal/terminal-preferences.c:558
 msgid "Switch to Tab 6"
-msgstr "タブ６に切り替える"
+msgstr "タブ6 に切り替える"
 
 #: ../terminal/terminal-preferences.c:568
 #: ../terminal/terminal-preferences.c:569
 msgid "Switch to Tab 7"
-msgstr "タブ７に切り替える"
+msgstr "タブ7 に切り替える"
 
 #: ../terminal/terminal-preferences.c:579
 #: ../terminal/terminal-preferences.c:580
 msgid "Switch to Tab 8"
-msgstr "タブ８に切り替える"
+msgstr "タブ8 に切り替える"
 
 #: ../terminal/terminal-preferences.c:590
 #: ../terminal/terminal-preferences.c:591
 msgid "Switch to Tab 9"
-msgstr "タブ９に切り替える"
+msgstr "タブ9 に切り替える"
 
 #: ../terminal/terminal-preferences.c:601
 #: ../terminal/terminal-preferences.c:602
@@ -1058,7 +1061,7 @@ msgstr "このタブを閉じる"
 
 #: ../terminal/terminal-tab-header.c:327 ../terminal/terminal-window.c:202
 msgid "_Detach Tab"
-msgstr "タブを取外す(_D)"
+msgstr "タブを切り離す(_D)"
 
 #: ../terminal/terminal-tab-header.c:332 ../terminal/terminal-window.c:203
 msgid "C_lose Tab"
@@ -1066,7 +1069,7 @@ msgstr "タブを閉じる(_L)"
 
 #: ../terminal/terminal-toolbars-view.c:133
 msgid "Toolbar Editor"
-msgstr "ツールバー・エディター"
+msgstr "ツールバーエディター"
 
 #: ../terminal/terminal-widget.c:299
 msgid "Copy Email Address"
@@ -1090,7 +1093,7 @@ msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
-"MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
+"MIMEタイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
 "式 (%d) か長さ (%d) です\n"
 
 #: ../terminal/terminal-widget.c:475
@@ -1098,8 +1101,7 @@ msgstr ""
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%"
-"d) です\n"
+"ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
 #: ../terminal/terminal-widget.c:501
 #, c-format
@@ -1115,9 +1117,9 @@ msgstr "不正な色データを受け取りました: 不正な形式 (%d) か�
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:653
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to open the URL `%s'"
-msgstr "文書をブラウザーで開くのに失敗しました"
+msgstr "URL '%s' をブラウザで開けませんでした"
 
 #: ../terminal/terminal-window.c:199
 msgid "_File"
@@ -1129,7 +1131,7 @@ msgstr "タブを開く(_T)"
 
 #: ../terminal/terminal-window.c:200
 msgid "Open a new terminal tab"
-msgstr "新しいタブをこのターミナルで開きます。"
+msgstr "新しいタブをこのターミナルで開きます"
 
 #: ../terminal/terminal-window.c:201
 msgid "Open T_erminal"
@@ -1137,15 +1139,15 @@ msgstr "ターミナルを開く(_E)"
 
 #: ../terminal/terminal-window.c:201
 msgid "Open a new terminal window"
-msgstr "新しいターミナルウィンドウを開きます。"
+msgstr "新しいターミナルウィンドウを開きます"
 
 #: ../terminal/terminal-window.c:202
 msgid "Open a new window for the current terminal tab"
-msgstr "現在のタブターミナルを新しいウィンドウで開きます。"
+msgstr "現在のターミナルタブを新しいウィンドウで開きます"
 
 #: ../terminal/terminal-window.c:203
 msgid "Close the current terminal tab"
-msgstr "現在のターミナルのタブを閉じます。"
+msgstr "現在のターミナルタブを閉じます"
 
 #: ../terminal/terminal-window.c:204
 msgid "_Close Window"
@@ -1153,7 +1155,7 @@ msgstr "ウィンドウを閉じる(_C)"
 
 #: ../terminal/terminal-window.c:204
 msgid "Close the terminal window"
-msgstr "このターミナルウィンドウを閉じます。"
+msgstr "このターミナルウィンドウを閉じます"
 
 #: ../terminal/terminal-window.c:205
 msgid "_Edit"
@@ -1165,7 +1167,7 @@ msgstr "コピー(_C)"
 
 #: ../terminal/terminal-window.c:206
 msgid "Copy to clipboard"
-msgstr "クリップボードへコピーします。"
+msgstr "クリップボードへコピーします"
 
 #: ../terminal/terminal-window.c:207
 msgid "_Paste"
@@ -1173,7 +1175,7 @@ msgstr "貼り付け(_P)"
 
 #: ../terminal/terminal-window.c:207
 msgid "Paste from clipboard"
-msgstr "クリップボードから貼り付けます。"
+msgstr "クリップボードから貼り付けます"
 
 #: ../terminal/terminal-window.c:208
 msgid "Paste _Selection"
@@ -1181,7 +1183,7 @@ msgstr "選択領域を貼り付け(_S)"
 
 #: ../terminal/terminal-window.c:208
 msgid "Paste from primary selection"
-msgstr "主選択領域から貼り付けます。"
+msgstr "主選択領域から貼り付けます"
 
 #: ../terminal/terminal-window.c:209
 msgid "_Toolbars..."
@@ -1189,7 +1191,7 @@ msgstr "ツールバー(_T)..."
 
 #: ../terminal/terminal-window.c:209
 msgid "Customize the toolbars"
-msgstr "ツールバーをカスタマイズします。"
+msgstr "ツールバーをカスタマイズします"
 
 #: ../terminal/terminal-window.c:210
 msgid "Pr_eferences..."
@@ -1197,7 +1199,7 @@ msgstr "環境設定(_E)..."
 
 #: ../terminal/terminal-window.c:210
 msgid "Open the Terminal preferences dialog"
-msgstr "Terminal の環境設定ダイアログを開きます。"
+msgstr "Terminal の環境設定ダイアログを開きます"
 
 #: ../terminal/terminal-window.c:211
 msgid "_View"
@@ -1213,7 +1215,7 @@ msgstr "タイトルを付ける(_S)..."
 
 #: ../terminal/terminal-window.c:213
 msgid "Set a custom title for the current tab"
-msgstr "現在のタブに指定したタイトルを付けます。"
+msgstr "現在のタブに指定したタイトルを付けます"
 
 #: ../terminal/terminal-window.c:214
 msgid "_Reset"
@@ -1233,7 +1235,7 @@ msgstr "前のタブ(_P)"
 
 #: ../terminal/terminal-window.c:217
 msgid "Switch to previous tab"
-msgstr "前のタブに切り替えます。"
+msgstr "前のタブに切り替えます"
 
 #: ../terminal/terminal-window.c:218
 msgid "_Next Tab"
@@ -1241,7 +1243,7 @@ msgstr "次のタブ(_N)"
 
 #: ../terminal/terminal-window.c:218
 msgid "Switch to next tab"
-msgstr "次のタブに切り替えます。"
+msgstr "次のタブに切り替えます"
 
 #: ../terminal/terminal-window.c:219
 msgid "_Help"
@@ -1253,7 +1255,7 @@ msgstr "目次(_C)"
 
 #: ../terminal/terminal-window.c:220
 msgid "Display help contents"
-msgstr "ヘルプの目次を表示します。"
+msgstr "ヘルプの目次を表示します"
 
 #: ../terminal/terminal-window.c:221
 msgid "_Report a bug"
@@ -1261,7 +1263,7 @@ msgstr "バグを報告(_R)"
 
 #: ../terminal/terminal-window.c:221
 msgid "Report a bug in Terminal"
-msgstr "Terminal のバグを報告します。"
+msgstr "Terminal のバグを報告します"
 
 #: ../terminal/terminal-window.c:222
 msgid "_About"
@@ -1269,7 +1271,7 @@ msgstr "このプログラムについて(_A)"
 
 #: ../terminal/terminal-window.c:222
 msgid "Display information about Terminal"
-msgstr "Terminal に関する情報を表示します。"
+msgstr "Terminal に関する情報を表示します"
 
 #: ../terminal/terminal-window.c:223
 msgid "_Input Methods"
@@ -1281,7 +1283,7 @@ msgstr "メニューバー(_M)"
 
 #: ../terminal/terminal-window.c:228
 msgid "Show/hide the menubar"
-msgstr "メニューバーを表示/隠します。"
+msgstr "メニューバーを表示/隠します"
 
 #: ../terminal/terminal-window.c:229
 msgid "Show _Toolbars"
@@ -1289,7 +1291,7 @@ msgstr "ツールバー(_T)"
 
 #: ../terminal/terminal-window.c:229
 msgid "Show/hide the toolbars"
-msgstr "ツールバーを表示/隠します。"
+msgstr "ツールバーの表示/非表示を切り替えます"
 
 #: ../terminal/terminal-window.c:230
 msgid "Show Window _Borders"
@@ -1297,7 +1299,7 @@ msgstr "ウィンドウ枠(_B)"
 
 #: ../terminal/terminal-window.c:230
 msgid "Show/hide the window decorations"
-msgstr "ウィンドウの装飾枠を表示/隠します。"
+msgstr "ウィンドウの装飾枠の表示/非表示を切り替えます"
 
 #: ../terminal/terminal-window.c:231
 msgid "_Fullscreen"
@@ -1305,7 +1307,7 @@ msgstr "全画面表示(_F)"
 
 #: ../terminal/terminal-window.c:231
 msgid "Toggle fullscreen mode"
-msgstr "全画面モードの切り替えを行います。"
+msgstr "全画面モードの切り替えを行います"
 
 #: ../terminal/terminal-window.c:504
 msgid "Warning"
@@ -1342,171 +1344,8 @@ msgstr "<b>タイトル:</b>"
 
 #: ../terminal/terminal-window.c:1355
 msgid "Enter the title for the current terminal tab"
-msgstr "現在のタブターミナルのタイトルを入力してください"
+msgstr "現在のターミナルタブのタイトルを入力してください"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "ターミナルエミュレーター"
-
-#~ msgid "Web Browser"
-#~ msgstr "ウェブブラウザー"
-
-#~ msgid "Mail Reader"
-#~ msgstr "メーラー"
-
-#~ msgid ""
-#~ "Choose your preferred Web Browser. The preferred\n"
-#~ "Web Browser opens when you right-click on a URL\n"
-#~ "and select Open Link from the context menu."
-#~ msgstr ""
-#~ "お気に入りのウェブブラウザーを選択してください。\n"
-#~ "このウェブブラウザーは URL 上で右クリックして\n"
-#~ "現れるコンテキストメニューから、「リンクを開く」\n"
-#~ "を選択した場合に実行されます。"
-
-#~ msgid ""
-#~ "Choose your preferred Mail Reader. The preferred\n"
-#~ "Mail Reader opens when you right-click on an email\n"
-#~ "address and select Compose Email from the context\n"
-#~ "menu."
-#~ msgstr ""
-#~ "お気に入りのメーラーを選択してください。\n"
-#~ "このメーラーはメールアドレス上で右クリック\n"
-#~ "して現れるコンテキストメニューから、「メールを編集」\n"
-#~ "を選択した場合に実行されます。"
-
-#~ msgid ""
-#~ "Click here to change the selected application or to disable this feature."
-#~ msgstr ""
-#~ "指定アプリケーションを変更したり、この機能を無効にするにはここをクリックし"
-#~ "てください"
-
-#~ msgid "Select application"
-#~ msgstr "アプリケーションを選択してください"
-
-#~ msgid "Choose a custom Web Browser"
-#~ msgstr "ウェブブラウザーを選択してください"
-
-#~ msgid "Choose a custom Mail Reader"
-#~ msgstr "メーラーを選択して下さい"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Web Browser in Terminal:"
-#~ msgstr ""
-#~ "Terminal でウェブブラウザーとして使用したい\n"
-#~ "アプリケーションを指定してください:"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Mail Reader in Terminal:"
-#~ msgstr ""
-#~ "Terminal でメーラーとして使用したい\n"
-#~ "アプリケーションを指定してください:"
-
-#~ msgid "_Browse..."
-#~ msgstr "参照(_B)..."
-
-#~ msgid "Disable this feature"
-#~ msgstr "この機能を無効にする"
-
-#~ msgid "Other..."
-#~ msgstr "その他..."
-
-#~ msgid "No application selected"
-#~ msgstr "アプリケーションが選択されていません"
-
-#~ msgid "Preferred Applications"
-#~ msgstr "お気に入りのアプリ"
-
-#~ msgid "Applications"
-#~ msgstr "アプリケーション"
-
-#~ msgid "_Applications..."
-#~ msgstr "アプリケーション(_A)..."
-
-#~ msgid "Customize your preferred applications"
-#~ msgstr "お気に入りのアプリを変更します。"
-
-#~ msgid ""
-#~ "You did not choose your preferred Web\n"
-#~ "Browser yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "お気に入りのウェブブラウザーをまだ\n"
-#~ "選択していません。このアプリケーションを\n"
-#~ "今設定しますか？"
-
-#~ msgid ""
-#~ "You did not choose your preferred Mail\n"
-#~ "Reader yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "お気に入りのメーラーをまだ選択していません。\n"
-#~ "このアプリケーションを今設定しますか？"
-
-#~ msgid "Balsa"
-#~ msgstr "Balsa"
-
-#~ msgid "Epiphany Web Browser"
-#~ msgstr "Epiphany ウェブブラウザー"
-
-#~ msgid "Novell Evolution"
-#~ msgstr "Novell Evolution"
-
-#~ msgid "Default Web Browser (Xfce)"
-#~ msgstr "標準のウェブブラウザー (Xfce)"
-
-#~ msgid "Default Mail Reader (Xfce)"
-#~ msgstr "標準のメーラー (Xfce)"
-
-#~ msgid "Mozilla Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Galeon Web Browser"
-#~ msgstr "Galeon ウェブブラウザー"
-
-#~ msgid "KMail"
-#~ msgstr "KMail"
-
-#~ msgid "Konqueror"
-#~ msgstr "Konqueror"
-
-#~ msgid "Lynx"
-#~ msgstr "Lynx"
-
-#~ msgid "Mozilla Browser"
-#~ msgstr "Mozilla ブラウザー"
-
-#~ msgid "Mozilla Mail"
-#~ msgstr "Mozilla メール"
-
-#~ msgid "Mutt"
-#~ msgstr "Mutt"
-
-#~ msgid "Opera Browser"
-#~ msgstr "Opera ブラウザー"
-
-#~ msgid "Opera Mail"
-#~ msgstr "Opera メール"
-
-#~ msgid "Debian Sensible Browser"
-#~ msgstr "Debian Sensible ブラウザー"
-
-#~ msgid "Sylpheed Claws"
-#~ msgstr "Sylpheed Claws"
-
-#~ msgid "Mozilla Thunderbird"
-#~ msgstr "Mozilla Thunderbird"
-
-#~ msgid "Custom title"
-#~ msgstr "指定タイトル"
-
-#~ msgid "Title"
-#~ msgstr "タイトル"
-
-#~ msgid "Tab position"
-#~ msgstr "タブの位置"
-
-#~ msgid "Tab title"
-#~ msgstr "タブのタイトル"
