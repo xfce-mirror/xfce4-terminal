@@ -86,7 +86,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
 #endif
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
-                         "website", "http://terminal.os-cillation.de",
+                         "website", "http://www.xfce.org/projects/terminal/",
                          NULL);
 
   /* release the about logo (if any) */
