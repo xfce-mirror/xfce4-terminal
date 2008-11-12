@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Terminal package.
 # Joao Pedrosa <joaopedrosa@gmail.com>, 2005.
 # Adriano Winter Bess <awbess@gmail.com>, 2006.
-# FÃ¡bio Nogueira <deb-user-ba@ubuntu.com>, 2008.
+# Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
+# Og Maciel <ogmaciel@gnome.org>, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-15 21:29+0100\n"
-"PO-Revision-Date: 2008-01-21 16:05-0300\n"
-"Last-Translator: FÃ¡bio Nogueira <deb-user-ba@ubuntu.com>\n"
+"PO-Revision-Date: 2008-11-12 13:12-0500\n"
+"Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,25 +20,26 @@ msgstr ""
 
 #: ../terminal/main.c:45
 msgid "Usage: Terminal [OPTION...]"
-msgstr "Uso: Terminal [OPÃÃO...]"
+msgstr "Uso: Terminal [OPÇÃO...]"
 
 #: ../terminal/main.c:47
 msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Mostra esta mensagem de ajuda e sai"
+msgstr ""
+"  -h, --help                          Mostra esta mensagem de ajuda e sai"
 
 #: ../terminal/main.c:48
 msgid ""
 "  -v, --version                       Print version information and exit"
 msgstr ""
-"  -v, --version                       Mostra a informaÃ§Ã£o de versÃ£o e sai"
+"  -v, --version                       Mostra a informação de versão e sai"
 
 #: ../terminal/main.c:49
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
-"  --disable-server                    NÃ£o registre com o \"bus\" de\n"
-"                                      mensagem de sessÃ£o D-BUS"
+"  --disable-server                    Não registre com o \"bus\" de\n"
+"                                      mensagem de sessão D-BUS"
 
 #: ../terminal/main.c:52
 msgid ""
@@ -52,26 +54,26 @@ msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
-"  -e, --command=STRING                Execute o argumento para esta opÃ§Ã£o\n"
+"  -e, --command=STRING                Execute o argumento para esta opção\n"
 "                                      dentro do terminal"
 
 #: ../terminal/main.c:56
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
-"  --working-directory=NOMEDODIRETÃRIO         Configura o diretÃ³rio de "
+"  --working-directory=NOMEDODIRETÓRIO         Configura o diretório de "
 "trabalho do terminal"
 
 #: ../terminal/main.c:57
 msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TÃTULO                  Configura o tÃ­tulo do terminal"
+msgstr "  -T, --title=TÍTULO                  Configura o título do terminal"
 
 #: ../terminal/main.c:58
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
-"  -H, --hold                          NÃ£o destrÃ³i imediatamente a aba\n"
+"  -H, --hold                          Não destrói imediatamente a aba\n"
 "                                      quando o comando filho sair"
 
 #: ../terminal/main.c:61
@@ -79,7 +81,7 @@ msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
-"  --display=TELA                      Tela do X a usar para a Ãºltima\n"
+"  --display=TELA                      Tela do X a usar para a última\n"
 "                                      janela especificada"
 
 #: ../terminal/main.c:63
@@ -88,8 +90,8 @@ msgid ""
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
-"  --geometry=GEOMETRIA                EspecificaÃ§Ã£o de geometria do X\n"
-"                                      (veja a pÃ¡gina do manual do \"X\"),\n"
+"  --geometry=GEOMETRIA                Especificação de geometria do X\n"
+"                                      (veja a página do manual do \"X\"),\n"
 "                                      pode ser especificada uma vez para\n"
 "                                      cada janela a ser aberta"
 
@@ -100,11 +102,12 @@ msgid ""
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
-"  --role=REGRA                        Configura a regra para a Ãºltima\n"
-"                                      janela especificada; Ã© aplicado apenas\n"
-"                                      Ã  uma janela; pode ser\n"
+"  --role=REGRA                        Configura a regra para a última\n"
+"                                      janela especificada; é aplicado "
+"apenas\n"
+"                                      à uma janela; pode ser\n"
 "                                      especificado uma vez para cada janela\n"
-"                                      que vocÃª criar a partir da linha de\n"
+"                                      que você criar a partir da linha de\n"
 "                                      comando"
 
 #: ../terminal/main.c:70
@@ -113,7 +116,7 @@ msgid ""
 "                                      protocol"
 msgstr ""
 "  --startup-id=STRING                 Identificador para o protocolo de\n"
-"                                      notificaÃ§Ã£o de iniciaÃ§Ã£o"
+"                                      notificação de iniciação"
 
 #: ../terminal/main.c:72
 msgid ""
@@ -123,11 +126,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
-"  --fullscreen                        Configura a Ãºltima janela\n"
+"  --fullscreen                        Configura a última janela\n"
 "                                      especificada para modo tela cheia;\n"
-"                                      Ã© aplicado apenas Ã  uma janela;\n"
+"                                      é aplicado apenas à uma janela;\n"
 "                                      pode ser especificado uma vez para\n"
-"                                      cada janela que vocÃª criar a partir\n"
+"                                      cada janela que você criar a partir\n"
 "                                      da linha de comando."
 
 #: ../terminal/main.c:77
@@ -138,11 +141,12 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
-"  --show-menubar                      Liga a barra de menu para a Ãºltima\n"
-"                                      janela especificada; Ã© aplicado apenas\n"
-"                                      Ã  uma janela; pode ser\n"
+"  --show-menubar                      Liga a barra de menu para a última\n"
+"                                      janela especificada; é aplicado "
+"apenas\n"
+"                                      à uma janela; pode ser\n"
 "                                      especificado uma vez para cada janela\n"
-"                                      que vocÃª criar a partir da linha de\n"
+"                                      que você criar a partir da linha de\n"
 "                                      comando"
 
 #: ../terminal/main.c:82
@@ -153,11 +157,12 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
-"  --hide-menubar                      Desliga a barra de menu para a Ãºltima\n"
-"                                      janela especificada; Ã© aplicado apenas\n"
-"                                      Ã  uma janela; pode ser\n"
+"  --hide-menubar                      Desliga a barra de menu para a última\n"
+"                                      janela especificada; é aplicado "
+"apenas\n"
+"                                      à uma janela; pode ser\n"
 "                                      especificado uma vez para cada janela\n"
-"                                      que vocÃª criar a partir da linha de\n"
+"                                      que você criar a partir da linha de\n"
 "                                      comando"
 
 #: ../terminal/main.c:87
@@ -168,11 +173,12 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
-"  --show-borders                      Liga as decoraÃ§Ãµes de janela para a\n"
-"                                      Ãºltima janela especificada; Ã© aplicado\n"
-"                                      apenas Ã  uma janela; pode ser\n"
+"  --show-borders                      Liga as decorações de janela para a\n"
+"                                      última janela especificada; é "
+"aplicado\n"
+"                                      apenas à uma janela; pode ser\n"
 "                                      especificado uma vez para cada janela\n"
-"                                      que vocÃª criar a partir da linha de\n"
+"                                      que você criar a partir da linha de\n"
 "                                      comando"
 
 #: ../terminal/main.c:92
@@ -183,11 +189,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
-"  --hide-borders                      Desliga as decoraÃ§Ãµes de janela para\n"
-"                                      a Ãºltima janela especificada; Ã©\n"
-"                                      aplicado apenas Ã  uma janela; pode\n"
+"  --hide-borders                      Desliga as decorações de janela para\n"
+"                                      a última janela especificada; é\n"
+"                                      aplicado apenas à uma janela; pode\n"
 "                                      ser especificado uma vez para cada\n"
-"                                      janela que vocÃª criar a partr da\n"
+"                                      janela que você criar a partr da\n"
 "                                      linha de comando"
 
 #: ../terminal/main.c:97
@@ -199,10 +205,11 @@ msgid ""
 "                                      command line"
 msgstr ""
 "  --show-toolbars                     Liga as barras de ferramentas para a\n"
-"                                      Ãºltima janela especificada; Ã© aplicado\n"
-"                                      apenas Ã  uma janela; pode ser\n"
+"                                      última janela especificada; é "
+"aplicado\n"
+"                                      apenas à uma janela; pode ser\n"
 "                                      especificado uma vez para cada janela\n"
-"                                      que vocÃª criar a partir da linha de\n"
+"                                      que você criar a partir da linha de\n"
 "                                      comando"
 
 #: ../terminal/main.c:102
@@ -214,10 +221,11 @@ msgid ""
 "                                      command line"
 msgstr ""
 "  --hide-toolbars                     Desliga as barras de ferramentas para\n"
-"                                      a Ãºltima janela especificada; Ã©\n"
-"                                      aplicado apenas Ã  uma janela; pode ser\n"
+"                                      a última janela especificada; é\n"
+"                                      aplicado apenas à uma janela; pode "
+"ser\n"
 "                                      especificado uma vez para cada janela\n"
-"                                      que vocÃª criar a partir da linha de\n"
+"                                      que você criar a partir da linha de\n"
 "                                      comando"
 
 #: ../terminal/main.c:108
@@ -226,9 +234,9 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
-"  --tab                               Abre uma nova aba na Ãºltima janela\n"
+"  --tab                               Abre uma nova aba na última janela\n"
 "                                      especificada; mais de uma dessas\n"
-"                                      opÃ§Ãµes podem ser fornecidas"
+"                                      opções podem ser fornecidas"
 
 #: ../terminal/main.c:111
 msgid ""
@@ -236,20 +244,21 @@ msgid ""
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
-"  --window                            Abre uma nova janela contendo uma aba;\n"
-"                                      mais de uma dessas opÃ§Ãµes podem ser\n"
+"  --window                            Abre uma nova janela contendo uma "
+"aba;\n"
+"                                      mais de uma dessas opções podem ser\n"
 "                                      fornecidas"
 
 #: ../terminal/main.c:115
 msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=TELA             tela padrÃ£o do X para usar"
+msgstr "  --default-display=TELA             tela padrão do X para usar"
 
 #: ../terminal/main.c:116
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 "                                      directory"
 msgstr ""
-"  --default-working-directory=NOMEDODIRETÃRIO Configura o diretÃ³rio padrÃ£o\n"
+"  --default-working-directory=NOMEDODIRETÓRIO Configura o diretório padrão\n"
 "                                      de trabalho do terminal"
 
 #: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1211
@@ -285,21 +294,21 @@ msgstr ""
 #: ../terminal/main.c:257
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "NÃ£o foi possÃ­vel registrar o serviÃ§o de terminal: %s\n"
+msgstr "Não foi possível registrar o serviço de terminal: %s\n"
 
 #: ../terminal/main.c:266
 #, c-format
 msgid "Unable to launch terminal: %s\n"
-msgstr "NÃ£o foi possÃ­vel lanÃ§ar o terminal: %s\n"
+msgstr "Não foi possível lançar o terminal: %s\n"
 
 #: ../terminal/terminal-app.c:550
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "String de geometria invÃ¡lida \"%s\"\n"
+msgstr "String de geometria inválida \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
-msgstr "Erro de identificaÃ§Ã£o do usuÃ¡rio"
+msgstr "Erro de identificação do usuário"
 
 #: ../terminal/terminal-dbus.c:145
 msgid "D-BUS message bus disconnected, exiting...\n"
@@ -308,7 +317,7 @@ msgstr "\"bus\" de mensagem D-BUS desconectado, saindo...\n"
 #: ../terminal/terminal-dbus.c:206
 #, c-format
 msgid "Unable to register object %s"
-msgstr "NÃ£o foi possÃ­vel registrar o objeto %s"
+msgstr "Não foi possível registrar o objeto %s"
 
 #: ../terminal/terminal-dialogs.c:77
 msgid "X Terminal Emulator"
@@ -318,26 +327,27 @@ msgstr "Emulador de Terminal do X"
 msgid "translator-credits"
 msgstr ""
 "Adriano Winter Bess (awbess@gmail.com)\n"
-"JoÃ£o Pedrosa (joaopedrosa@gmail.com)\n"
-"FÃ¡bio Nogueira (deb-user-ba@ubuntu.com)"
+"João Pedrosa (joaopedrosa@gmail.com)\n"
+"Fábio Nogueira (deb-user-ba@ubuntu.com)"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:245
 msgid "Failed to open the documentation browser"
-msgstr "Falhou ao abrir o navegador de documentaÃ§Ã£o"
+msgstr "Falhou ao abrir o navegador de documentação"
 
 #: ../terminal/terminal-options.c:107
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr ""
-"A opÃ§Ã£o \"--sm-client-id\" requer especificar a identificaÃ§Ã£o da sessÃ£o como seu parÃ¢metro"
+"A opção \"--sm-client-id\" requer especificar a identificação da sessão como "
+"seu parâmetro"
 
 #: ../terminal/terminal-options.c:129
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
-"A opÃ§Ã£o \"--execute/-x\" requer especificar o comando para executar no resto "
+"A opção \"--execute/-x\" requer especificar o comando para executar no resto "
 "da linha de comando"
 
 #: ../terminal/terminal-options.c:158
@@ -345,105 +355,106 @@ msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
-"A opÃ§Ã£o \"--command/-e\" requer especificar o comando a executar como seu "
-"parÃ¢metro"
+"A opção \"--command/-e\" requer especificar o comando a executar como seu "
+"parâmetro"
 
 #: ../terminal/terminal-options.c:187
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
-"A opÃ§Ã£o \"--working-directory\" requer especificar o diretÃ³rio de trabalho "
-"como seu parÃ¢metro"
+"A opção \"--working-directory\" requer especificar o diretório de trabalho "
+"como seu parâmetro"
 
 #: ../terminal/terminal-options.c:218
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr "A opÃ§Ã£o \"--title/-T\" requer especificar o tÃ­tulo como seu parÃ¢metro"
+msgstr "A opção \"--title/-T\" requer especificar o título como seu parâmetro"
 
 #: ../terminal/terminal-options.c:251
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "A opÃ§Ã£o \"--display\" requer especificar a tela do X como seu parÃ¢metro"
+msgstr ""
+"A opção \"--display\" requer especificar a tela do X como seu parâmetro"
 
 #: ../terminal/terminal-options.c:278
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
-"A opÃ§Ã£o \"--geometry\" requer especificar a geometria de janela como "
-"seu parÃ¢metro"
+"A opção \"--geometry\" requer especificar a geometria de janela como seu "
+"parâmetro"
 
 #: ../terminal/terminal-options.c:305
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
-"A opÃ§Ã£o \"--role\" requer especificar a regra de janela como seu parÃ¢metro"
+"A opção \"--role\" requer especificar a regra de janela como seu parâmetro"
 
 #: ../terminal/terminal-options.c:332
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
-"A opÃ§Ã£o \"--startup-id\" requer especificar a identificaÃ§Ã£o de "
-"iniciaÃ§Ã£o como seu parÃ¢metro"
+"A opção \"--startup-id\" requer especificar a identificação de iniciação "
+"como seu parâmetro"
 
 #: ../terminal/terminal-options.c:413
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
-"A opÃ§Ã£o \"--default-display\" requer especificar a tela padrÃ£o do X como "
-"seu parÃ¢metro"
+"A opção \"--default-display\" requer especificar a tela padrão do X como seu "
+"parâmetro"
 
 #: ../terminal/terminal-options.c:437
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
-"A opÃ§Ã£o \"--default-working-directory\" requer especificar o diretÃ³rio de "
-"trabalho padrÃ£o como seu parÃ¢metro"
+"A opção \"--default-working-directory\" requer especificar o diretório de "
+"trabalho padrão como seu parâmetro"
 
 #: ../terminal/terminal-options.c:453
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr "OpÃ§Ã£o desconhecida \"%s\""
+msgstr "Opção desconhecida \"%s\""
 
 #: ../terminal/terminal-preferences-dialog.c:140
 msgid "Terminal Preferences"
-msgstr "PreferÃªncias do Terminal"
+msgstr "Preferências do Terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:187
 msgid "<b>Title</b>"
-msgstr "<b>TÃ­tulo</b>"
+msgstr "<b>Título</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:200
 msgid ""
 "The command running inside the terminal may dynamically set a new title."
 msgstr ""
-"O comando que estÃ¡ executando dentro do terminal pode dinamicamente "
-"configurar um novo tÃ­tulo."
+"O comando que está executando dentro do terminal pode dinamicamente "
+"configurar um novo título."
 
 #: ../terminal/terminal-preferences-dialog.c:206
 msgid "_Initial title:"
-msgstr "TÃ­tulo _inicial:"
+msgstr "Título _inicial:"
 
 #: ../terminal/terminal-preferences-dialog.c:221
 msgid "_Dynamically-set title:"
-msgstr "TÃ­tulo configurado _dinamicamente:"
+msgstr "Título configurado _dinamicamente:"
 
 #: ../terminal/terminal-preferences-dialog.c:231
 msgid "Replaces initial title"
-msgstr "Substitui o tÃ­tulo inicial"
+msgstr "Substitui o título inicial"
 
 #: ../terminal/terminal-preferences-dialog.c:232
 msgid "Goes before initial title"
-msgstr "Vai antes do tÃ­tulo inicial"
+msgstr "Vai antes do título inicial"
 
 #: ../terminal/terminal-preferences-dialog.c:233
 msgid "Goes after initial title"
-msgstr "Vai depois do tÃ­tulo inicial"
+msgstr "Vai depois do título inicial"
 
 #: ../terminal/terminal-preferences-dialog.c:234
 msgid "Isn't displayed"
-msgstr "NÃ£o Ã© mostrado"
+msgstr "Não é mostrado"
 
 #: ../terminal/terminal-preferences-dialog.c:250
 msgid "<b>Command</b>"
@@ -460,14 +471,14 @@ msgid ""
 "about differences between running it as interactive shell and running it as "
 "login shell."
 msgstr ""
-"Selecione esta opÃ§Ã£o para forÃ§ar o Terminal a executar o seu shell como "
-"shell de login quando vocÃª abre novos terminais. Veja a documentaÃ§Ã£o do seu "
-"shell para detalhes sobre as diferenÃ§as entre executÃ¡-lo como shell "
-"interativo e executÃ¡-lo como shell de login."
+"Selecione esta opção para forçar o Terminal a executar o seu shell como "
+"shell de login quando você abre novos terminais. Veja a documentação do seu "
+"shell para detalhes sobre as diferenças entre executá-lo como shell "
+"interativo e executá-lo como shell de login."
 
 #: ../terminal/terminal-preferences-dialog.c:269
 msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Atualiza registros utmp/wtmp quando o comando Ã© lanÃ§ado"
+msgstr "_Atualiza registros utmp/wtmp quando o comando é lançado"
 
 #: ../terminal/terminal-preferences-dialog.c:278
 msgid "<b>Scrolling</b>"
@@ -482,20 +493,21 @@ msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
-"Habilite esta opÃ§Ã£o para poder rolar uma linha simples usando as setas pra "
+"Habilite esta opção para poder rolar uma linha simples usando as setas pra "
 "cima/baixo juntamente com a tecla Shift."
 
 #: ../terminal/terminal-preferences-dialog.c:305
 msgid "Sc_roll on output"
-msgstr "_Rolar na saÃ­da"
+msgstr "_Rolar na saída"
 
 #: ../terminal/terminal-preferences-dialog.c:308
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
 msgstr ""
-"Esta opÃ§Ã£o controla se o terminal irÃ¡ rolar para baixo automaticamente sempre "
-"que nova saÃ­da for gerada pelos comandos sendo executados dentro do terminal."
+"Esta opção controla se o terminal irá rolar para baixo automaticamente "
+"sempre que nova saída for gerada pelos comandos sendo executados dentro do "
+"terminal."
 
 #: ../terminal/terminal-preferences-dialog.c:314
 msgid "Scroll on _keystroke"
@@ -506,12 +518,12 @@ msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
-"Permite a vocÃª pressionar qualquer tecla no teclado para rolar para baixo a "
-"janela do terminal atÃ© o prompt de comando."
+"Permite a você pressionar qualquer tecla no teclado para rolar para baixo a "
+"janela do terminal até o prompt de comando."
 
 #: ../terminal/terminal-preferences-dialog.c:323
 msgid "_Scrollbar is:"
-msgstr "_Barra de rolagem Ã©:"
+msgstr "_Barra de rolagem é:"
 
 #: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:394
@@ -536,14 +548,14 @@ msgstr "No lado direito"
 
 #: ../terminal/terminal-preferences-dialog.c:343
 msgid "Scr_ollback:"
-msgstr "R_olagem para trÃ¡s:"
+msgstr "R_olagem para trás:"
 
 #: ../terminal/terminal-preferences-dialog.c:353
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
-"Especifica o nÃºmero de linhas que vocÃª pode rolar para trÃ¡s usando a barra de "
-"rolagem."
+"Especifica o número de linhas que você pode rolar para trás usando a barra "
+"de rolagem."
 
 #: ../terminal/terminal-preferences-dialog.c:369
 msgid "General"
@@ -568,9 +580,9 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
-"Habilite esta opÃ§Ã£o se vocÃª quiser que o Terminal use anti-aliasing quando "
-"renderizar texto nas janelas do terminal. Desabilitando esta opÃ§Ã£o pode "
-"acelerar a performance de renderizaÃ§Ã£o do terminal impressivamente e reduzir "
+"Habilite esta opção se você quiser que o Terminal use anti-aliasing quando "
+"renderizar texto nas janelas do terminal. Desabilitando esta opção pode "
+"acelerar a performance de renderização do terminal impressivamente e reduzir "
 "a carga do sistema geral em sistemas lentos."
 
 #: ../terminal/terminal-preferences-dialog.c:411
@@ -582,7 +594,7 @@ msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
-"Habilite esta opÃ§Ã£o para permitir que as aplicaÃ§Ãµes sendo executadas dentro "
+"Habilite esta opção para permitir que as aplicações sendo executadas dentro "
 "das janelas do terminal usem texto em negrito."
 
 #: ../terminal/terminal-preferences-dialog.c:423
@@ -591,7 +603,7 @@ msgstr "<b>Fundo</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:433
 msgid "None (use solid color)"
-msgstr "Nenhum (use cor sÃ³lida)"
+msgstr "Nenhum (use cor sólida)"
 
 #: ../terminal/terminal-preferences-dialog.c:434
 msgid "Background image"
@@ -627,7 +639,7 @@ msgstr "Esticado"
 
 #: ../terminal/terminal-preferences-dialog.c:502
 msgid "Shade transparent or image background:"
-msgstr "TransparÃªncia sombreada ou imagem de tela de fundo:"
+msgstr "Transparência sombreada ou imagem de tela de fundo:"
 
 #: ../terminal/terminal-preferences-dialog.c:515
 msgid "<small><i>None</i></small>"
@@ -635,7 +647,7 @@ msgstr "<small><i>Nenhum</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:526
 msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>MÃ¡ximo</i></small>"
+msgstr "<small><i>Máximo</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:534
 msgid "<b>Opening New Windows</b>"
@@ -649,7 +661,7 @@ msgstr "Mostrar barra de _menu em novas janelas"
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
-"Habilite esta opÃ§Ã£o para mostrar a barra de menu em novas janelas de "
+"Habilite esta opção para mostrar a barra de menu em novas janelas de "
 "terminal criadas."
 
 #: ../terminal/terminal-preferences-dialog.c:551
@@ -660,7 +672,7 @@ msgstr "Mostrar barras de _tarefa em novas janelas"
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
-"Habilite esta opÃ§Ã£o para mostrar as barras de tarefa em novas janelas de "
+"Habilite esta opção para mostrar as barras de tarefa em novas janelas de "
 "terminal criadas."
 
 #: ../terminal/terminal-preferences-dialog.c:559
@@ -672,12 +684,12 @@ msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr ""
-"Habilite esta opÃ§Ã£o para mostrar decoraÃ§Ãµes de janela ao redor de novas "
+"Habilite esta opção para mostrar decorações de janela ao redor de novas "
 "janelas de terminal criadas."
 
 #: ../terminal/terminal-preferences-dialog.c:574
 msgid "Appearance"
-msgstr "AparÃªncia"
+msgstr "Aparência"
 
 #: ../terminal/terminal-preferences-dialog.c:592
 msgid "<b>Foreground and Background</b>"
@@ -703,7 +715,7 @@ msgstr "Seletor de Cor"
 #: ../terminal/terminal-preferences-dialog.c:672
 #: ../terminal/terminal-preferences-dialog.c:721
 msgid "Open a dialog to specify the color"
-msgstr "Abrir um diÃ¡logo para especificar a cor"
+msgstr "Abrir um diálogo para especificar a cor"
 
 #: ../terminal/terminal-preferences-dialog.c:634
 msgid "Choose terminal cursor color"
@@ -719,15 +731,15 @@ msgstr "Escolha a cor de fundo do terminal"
 
 #: ../terminal/terminal-preferences-dialog.c:682
 msgid "<b>Text Selection</b>"
-msgstr "<b>SeleÃ§Ã£o de Texto</b>"
+msgstr "<b>Seleção de Texto</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:693
 msgid "Use _default color"
-msgstr "Usar a cor _padrÃ£o"
+msgstr "Usar a cor _padrão"
 
 #: ../terminal/terminal-preferences-dialog.c:696
 msgid "Use the default text selection background color"
-msgstr "Usa a cor de fundo padrÃ£o de seleÃ§Ã£o de texto"
+msgstr "Usa a cor de fundo padrão de seleção de texto"
 
 #: ../terminal/terminal-preferences-dialog.c:701
 msgid "Use _custom color"
@@ -735,11 +747,11 @@ msgstr "Usar _cor personalizada"
 
 #: ../terminal/terminal-preferences-dialog.c:704
 msgid "Use a custom text selection background color"
-msgstr "Usar uma cor de fundo de seleÃ§Ã£o de texto personalizada"
+msgstr "Usar uma cor de fundo de seleção de texto personalizada"
 
 #: ../terminal/terminal-preferences-dialog.c:712
 msgid "Choose terminal text selection background color"
-msgstr "Escolha a cor de fundo do terminal de seleÃ§Ã£o de texto"
+msgstr "Escolha a cor de fundo do terminal de seleção de texto"
 
 #: ../terminal/terminal-preferences-dialog.c:731
 msgid "<b>Palette</b>"
@@ -747,7 +759,7 @@ msgstr "<b>Paleta</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:741
 msgid "Terminal applications have this color palette available to them:"
-msgstr "AplicaÃ§Ãµes de terminal tÃªm esta paleta de cor disponÃ­vel para elas:"
+msgstr "Aplicações de terminal têm esta paleta de cor disponível para elas:"
 
 #. setup a tooltip
 #: ../terminal/terminal-preferences-dialog.c:763
@@ -773,7 +785,7 @@ msgstr "Desabilitar todas as teclas de acesso de me_nu (como Alt+f)"
 
 #: ../terminal/terminal-preferences-dialog.c:836
 msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Desabilitar tecla de atalho de m_enu (F10 por padrÃ£o)"
+msgstr "Desabilitar tecla de atalho de m_enu (F10 por padrão)"
 
 #: ../terminal/terminal-preferences-dialog.c:848
 msgid "Shortcuts"
@@ -789,9 +801,9 @@ msgid ""
 "only here to allow you to work around certain applications and operating "
 "systems that expect different terminal behavior."
 msgstr ""
-"Estas opÃ§Ãµes podem causar algumas aplicaÃ§Ãµes a se comportarem de maneira "
-"incorreta. Elas apenas estÃ£o aqui para lhe permitir circundar certas "
-"aplicaÃ§Ãµes e sistemas operacionais que esperam comportamento de terminal "
+"Estas opções podem causar algumas aplicações a se comportarem de maneira "
+"incorreta. Elas apenas estão aqui para lhe permitir circundar certas "
+"aplicações e sistemas operacionais que esperam comportamento de terminal "
 "diferente."
 
 #: ../terminal/terminal-preferences-dialog.c:885
@@ -811,7 +823,7 @@ msgstr "ASCII DEL"
 #: ../terminal/terminal-preferences-dialog.c:893
 #: ../terminal/terminal-preferences-dialog.c:914
 msgid "Escape sequence"
-msgstr "SequÃªncia de Escape"
+msgstr "Sequência de Escape"
 
 #: ../terminal/terminal-preferences-dialog.c:894
 #: ../terminal/terminal-preferences-dialog.c:915
@@ -824,7 +836,7 @@ msgstr "Tecla _Delete gera:"
 
 #: ../terminal/terminal-preferences-dialog.c:927
 msgid "<tt>$TERM</tt> setting:"
-msgstr "ConfiguraÃ§Ã£o <tt>$TERM</tt>:"
+msgstr "Configuração <tt>$TERM</tt>:"
 
 #: ../terminal/terminal-preferences-dialog.c:935
 msgid ""
@@ -833,14 +845,14 @@ msgid ""
 "most systems. If you have problems with colors in some applications, try "
 "xterm-color here."
 msgstr ""
-"Isto especifica o valor que a variÃ¡vel de ambiente $TERM Ã© configurada, "
-"quando uma nova aba de terminal Ã© aberta. O padrÃ£o deve ser bom para a "
-"maioria dos sistemas. Se vocÃª tiver problemas com cores em algumas "
-"aplicaÃ§Ãµes, tente xterm-color aqui."
+"Isto especifica o valor que a variável de ambiente $TERM é configurada, "
+"quando uma nova aba de terminal é aberta. O padrão deve ser bom para a "
+"maioria dos sistemas. Se você tiver problemas com cores em algumas "
+"aplicações, tente xterm-color aqui."
 
 #: ../terminal/terminal-preferences-dialog.c:951
 msgid "_Reset compatibility options to defaults"
-msgstr "_Restaurar as opÃ§Ãµes de compatibilidade para os padrÃµes"
+msgstr "_Restaurar as opções de compatibilidade para os padrões"
 
 #: ../terminal/terminal-preferences-dialog.c:961
 msgid "<b>Double click</b>"
@@ -849,12 +861,12 @@ msgstr "<b>Clique duplo</b>"
 #: ../terminal/terminal-preferences-dialog.c:970
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr ""
-"Considere os seguintes caracteres parte de uma palavra quando efetuando "
-"um clique duplo:"
+"Considere os seguintes caracteres parte de uma palavra quando efetuando um "
+"clique duplo:"
 
 #: ../terminal/terminal-preferences-dialog.c:992
 msgid "Advanced"
-msgstr "AvanÃ§ado"
+msgstr "Avançado"
 
 #. allocate the file chooser window
 #: ../terminal/terminal-preferences-dialog.c:1051
@@ -863,36 +875,36 @@ msgstr "Selecionar arquivo de imagem de fundo"
 
 #: ../terminal/terminal-preferences-dialog.c:1064
 msgid "All Files"
-msgstr "Todos os Arquivos"
+msgstr "Todos os arquivos"
 
 #: ../terminal/terminal-preferences-dialog.c:1070
 msgid "Image Files"
-msgstr "Arquivos de Imagens"
+msgstr "Arquivos de imagens"
 
 #: ../terminal/terminal-preferences.c:304
 #: ../terminal/terminal-preferences.c:305
 msgid "Open Tab"
-msgstr "Abrir Aba"
+msgstr "Abrir aba"
 
 #: ../terminal/terminal-preferences.c:315
 #: ../terminal/terminal-preferences.c:316
 msgid "Open Terminal"
-msgstr "Abrir Terminal"
+msgstr "Abrir terminal"
 
 #: ../terminal/terminal-preferences.c:326
 #: ../terminal/terminal-preferences.c:327
 msgid "Detach Tab"
-msgstr "Destacar Aba"
+msgstr "Destacar aba"
 
 #: ../terminal/terminal-preferences.c:337
 #: ../terminal/terminal-preferences.c:338
 msgid "Close Tab"
-msgstr "Fechar Aba"
+msgstr "Fechar aba"
 
 #: ../terminal/terminal-preferences.c:348
 #: ../terminal/terminal-preferences.c:349
 msgid "Close Window"
-msgstr "Fechar Janela"
+msgstr "Fechar janela"
 
 #: ../terminal/terminal-preferences.c:359
 #: ../terminal/terminal-preferences.c:360
@@ -907,12 +919,12 @@ msgstr "Colar"
 #: ../terminal/terminal-preferences.c:381
 #: ../terminal/terminal-preferences.c:382
 msgid "Paste Selection"
-msgstr "Colar SeleÃ§Ã£o"
+msgstr "Colar seleção"
 
 #: ../terminal/terminal-preferences.c:392
 #: ../terminal/terminal-preferences.c:393
 msgid "Preferences"
-msgstr "PreferÃªncias"
+msgstr "Preferências"
 
 #: ../terminal/terminal-preferences.c:403
 #: ../terminal/terminal-preferences.c:404
@@ -937,7 +949,7 @@ msgstr "Tela cheia"
 #: ../terminal/terminal-preferences.c:447
 #: ../terminal/terminal-preferences.c:448
 msgid "Set Title"
-msgstr "Configurar TÃ­tulo"
+msgstr "Configurar Título"
 
 #: ../terminal/terminal-preferences.c:458
 #: ../terminal/terminal-preferences.c:459
@@ -952,75 +964,75 @@ msgstr "Restaurar e Limpar"
 #: ../terminal/terminal-preferences.c:480
 #: ../terminal/terminal-preferences.c:481
 msgid "Previous Tab"
-msgstr "Aba Anterior"
+msgstr "Aba anterior"
 
 #: ../terminal/terminal-preferences.c:491
 #: ../terminal/terminal-preferences.c:492
 msgid "Next Tab"
-msgstr "PrÃ³xima Aba"
+msgstr "Próxima aba"
 
 #: ../terminal/terminal-preferences.c:502
 #: ../terminal/terminal-preferences.c:503
 msgid "Switch to Tab 1"
-msgstr "Trocar para Aba 1"
+msgstr "Trocar para aba 1"
 
 #: ../terminal/terminal-preferences.c:513
 #: ../terminal/terminal-preferences.c:514
 msgid "Switch to Tab 2"
-msgstr "Trocar para Aba 2"
+msgstr "Trocar para aba 2"
 
 #: ../terminal/terminal-preferences.c:524
 #: ../terminal/terminal-preferences.c:525
 msgid "Switch to Tab 3"
-msgstr "Trocar para Aba 3"
+msgstr "Trocar para aba 3"
 
 #: ../terminal/terminal-preferences.c:535
 #: ../terminal/terminal-preferences.c:536
 msgid "Switch to Tab 4"
-msgstr "Trocar para Aba 4"
+msgstr "Trocar para aba 4"
 
 #: ../terminal/terminal-preferences.c:546
 #: ../terminal/terminal-preferences.c:547
 msgid "Switch to Tab 5"
-msgstr "Trocar para Aba 5"
+msgstr "Trocar para aba 5"
 
 #: ../terminal/terminal-preferences.c:557
 #: ../terminal/terminal-preferences.c:558
 msgid "Switch to Tab 6"
-msgstr "Trocar para Aba 6"
+msgstr "Trocar para aba 6"
 
 #: ../terminal/terminal-preferences.c:568
 #: ../terminal/terminal-preferences.c:569
 msgid "Switch to Tab 7"
-msgstr "Trocar para Aba 7"
+msgstr "Trocar para aba 7"
 
 #: ../terminal/terminal-preferences.c:579
 #: ../terminal/terminal-preferences.c:580
 msgid "Switch to Tab 8"
-msgstr "Trocar para Aba 8"
+msgstr "Trocar para aba 8"
 
 #: ../terminal/terminal-preferences.c:590
 #: ../terminal/terminal-preferences.c:591
 msgid "Switch to Tab 9"
-msgstr "Trocar para Aba 9"
+msgstr "Trocar para aba 9"
 
 #: ../terminal/terminal-preferences.c:601
 #: ../terminal/terminal-preferences.c:602
 msgid "Contents"
-msgstr "ConteÃºdo"
+msgstr "Conteúdo"
 
 #: ../terminal/terminal-screen.c:432
 msgid "Unable to determine your login shell."
-msgstr "NÃ£o foi possÃ­vel determinar seu shell de login."
+msgstr "Não foi possível determinar seu shell de login."
 
 #. tell the user that we were unable to execute the command
 #: ../terminal/terminal-screen.c:960
 msgid "Failed to execute child"
-msgstr "Falha na execuÃ§Ã£o do filho"
+msgstr "Falha na execução do filho"
 
 #: ../terminal/terminal-screen.c:1197
 msgid "Untitled"
-msgstr "Sem tÃ­tulo"
+msgstr "Sem título"
 
 #: ../terminal/terminal-shortcut-editor.c:90
 msgid "File"
@@ -1044,7 +1056,7 @@ msgstr "Ajuda"
 
 #: ../terminal/terminal-shortcut-editor.c:228
 msgid "Action"
-msgstr "AÃ§Ã£o"
+msgstr "Ação"
 
 #: ../terminal/terminal-shortcut-editor.c:235
 msgid "Shortcut key"
@@ -1052,19 +1064,19 @@ msgstr "Tecla de atalho"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 msgid "Compose shortcut"
-msgstr "Atalho de composiÃ§Ã£o"
+msgstr "Atalho de composição"
 
 #: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
-msgstr "Atalho de composiÃ§Ã£o para:"
+msgstr "Atalho de composição para:"
 
 #: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
-msgstr "Falha na aquisiÃ§Ã£o do teclado"
+msgstr "Falha na aquisição do teclado"
 
 #: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
-msgstr "Outra aplicaÃ§Ã£o jÃ¡ adquiriu o controle sobre seu teclado."
+msgstr "Outra aplicação já adquiriu o controle sobre seu teclado."
 
 #: ../terminal/terminal-tab-header.c:203
 msgid "Close this tab"
@@ -1072,31 +1084,31 @@ msgstr "Fechar esta aba"
 
 #: ../terminal/terminal-tab-header.c:327 ../terminal/terminal-window.c:202
 msgid "_Detach Tab"
-msgstr "_Destacar Aba"
+msgstr "_Destacar aba"
 
 #: ../terminal/terminal-tab-header.c:332 ../terminal/terminal-window.c:203
 msgid "C_lose Tab"
-msgstr "F_echar Aba"
+msgstr "F_echar aba"
 
 #: ../terminal/terminal-toolbars-view.c:133
 msgid "Toolbar Editor"
-msgstr "Editor de Barra de Ferramentas"
+msgstr "Editor da barra de ferramentas"
 
 #: ../terminal/terminal-widget.c:299
 msgid "Copy Email Address"
-msgstr "Copiar EndereÃ§o de E-mail"
+msgstr "Copiar o endereço de e-mail"
 
 #: ../terminal/terminal-widget.c:300
 msgid "Compose Email"
-msgstr "Compor E-mail"
+msgstr "Compor e-mail"
 
 #: ../terminal/terminal-widget.c:304
 msgid "Copy Link Address"
-msgstr "Copiar EndereÃ§o de Link"
+msgstr "Copiar o endereço do link"
 
 #: ../terminal/terminal-widget.c:305
 msgid "Open Link"
-msgstr "Abrir Link"
+msgstr "Abrir link"
 
 #: ../terminal/terminal-widget.c:459
 #, c-format
@@ -1104,29 +1116,29 @@ msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
-"NÃ£o foi possÃ­vel largar a seleÃ§Ã£o de tipo text/plain para o terminal: Formato (%d) "
-"ou comprimento (%d) errado\n"
+"Não foi possível largar a seleção de tipo text/plain para o terminal: "
+"Formato (%d) ou comprimento (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:475
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"NÃ£o foi possÃ­vel largar o URL de Mozilla no terminal: Formato (%d) ou "
+"Não foi possível largar o URL de Mozilla no terminal: Formato (%d) ou "
 "comprimento (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:501
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"NÃ£o foi possÃ­vel largar a lista de URI no terminal: Formato (%d) ou comprimento (%d) "
-"errado\n"
+"Não foi possível largar a lista de URI no terminal: Formato (%d) ou "
+"comprimento (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:546
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"Dado de cor invÃ¡lido recebido: Formato (%d) ou comprimento (%d) errado\n"
+"Dado de cor inválido recebido: Formato (%d) ou comprimento (%d) errado\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:653
@@ -1180,7 +1192,7 @@ msgstr "_Copiar"
 
 #: ../terminal/terminal-window.c:206
 msgid "Copy to clipboard"
-msgstr "Copiar para a Ã¡rea de transferÃªncia"
+msgstr "Copiar para a área de transferência"
 
 #: ../terminal/terminal-window.c:207
 msgid "_Paste"
@@ -1188,15 +1200,15 @@ msgstr "C_olar"
 
 #: ../terminal/terminal-window.c:207
 msgid "Paste from clipboard"
-msgstr "Colar da Ã¡rea de transferÃªncia"
+msgstr "Colar da área de transferência"
 
 #: ../terminal/terminal-window.c:208
 msgid "Paste _Selection"
-msgstr "Copiar _SeleÃ§Ã£o"
+msgstr "Copiar _Seleção"
 
 #: ../terminal/terminal-window.c:208
 msgid "Paste from primary selection"
-msgstr "Colar da seleÃ§Ã£o primÃ¡ria"
+msgstr "Colar da seleção primária"
 
 #: ../terminal/terminal-window.c:209
 msgid "_Toolbars..."
@@ -1208,11 +1220,11 @@ msgstr "Personalizar as barras de tarefas"
 
 #: ../terminal/terminal-window.c:210
 msgid "Pr_eferences..."
-msgstr "Pr_eferÃªncias..."
+msgstr "Pr_eferências..."
 
 #: ../terminal/terminal-window.c:210
 msgid "Open the Terminal preferences dialog"
-msgstr "Abrir o diÃ¡logo de preferÃªncias do Terminal"
+msgstr "Abrir o diálogo de preferências do Terminal"
 
 #: ../terminal/terminal-window.c:211
 msgid "_View"
@@ -1224,11 +1236,11 @@ msgstr "_Terminal"
 
 #: ../terminal/terminal-window.c:213
 msgid "_Set Title..."
-msgstr "_Configurar TÃ­tulo"
+msgstr "_Configurar Título"
 
 #: ../terminal/terminal-window.c:213
 msgid "Set a custom title for the current tab"
-msgstr "Configurar um tÃ­tulo personalizado para a aba atual"
+msgstr "Configurar um título personalizado para a aba atual"
 
 #: ../terminal/terminal-window.c:214
 msgid "_Reset"
@@ -1252,11 +1264,11 @@ msgstr "Trocar para a aba anterior"
 
 #: ../terminal/terminal-window.c:218
 msgid "_Next Tab"
-msgstr "_PrÃ³xima Aba"
+msgstr "_Próxima Aba"
 
 #: ../terminal/terminal-window.c:218
 msgid "Switch to next tab"
-msgstr "Trocar para a prÃ³xima aba"
+msgstr "Trocar para a próxima aba"
 
 #: ../terminal/terminal-window.c:219
 msgid "_Help"
@@ -1264,11 +1276,11 @@ msgstr "Aj_uda"
 
 #: ../terminal/terminal-window.c:220
 msgid "_Contents"
-msgstr "_ConteÃºdo"
+msgstr "_Conteúdo"
 
 #: ../terminal/terminal-window.c:220
 msgid "Display help contents"
-msgstr "Mostrar conteÃºdo de ajuda"
+msgstr "Mostrar conteúdo de ajuda"
 
 #: ../terminal/terminal-window.c:221
 msgid "_Report a bug"
@@ -1284,11 +1296,11 @@ msgstr "_Sobre"
 
 #: ../terminal/terminal-window.c:222
 msgid "Display information about Terminal"
-msgstr "Mostrar informaÃ§Ã£o sobre o Terminal"
+msgstr "Mostrar informação sobre o Terminal"
 
 #: ../terminal/terminal-window.c:223
 msgid "_Input Methods"
-msgstr "MÃ©todos de _Entrada"
+msgstr "Métodos de _Entrada"
 
 #: ../terminal/terminal-window.c:228
 msgid "Show _Menubar"
@@ -1312,7 +1324,7 @@ msgstr "Mostrar _Bordas de Janela"
 
 #: ../terminal/terminal-window.c:230
 msgid "Show/hide the window decorations"
-msgstr "Mostra/esconde as decoraÃ§Ãµes de janela"
+msgstr "Mostra/esconde as decorações de janela"
 
 #: ../terminal/terminal-window.c:231
 msgid "_Fullscreen"
@@ -1337,7 +1349,7 @@ msgid ""
 "this window will also close all its tabs."
 msgstr ""
 "Esta janela tem %d abas abertas. Fechando\n"
-"esta janela fecharÃ¡ tambÃ©m todas as suas abas."
+"esta janela fechará também todas as suas abas."
 
 #: ../terminal/terminal-window.c:537
 msgid "Close all tabs?"
@@ -1345,23 +1357,41 @@ msgstr "Fechar todas as abas?"
 
 #: ../terminal/terminal-window.c:550
 msgid "Do _not ask me again"
-msgstr "NÃ£o me pergunte _novamente"
+msgstr "Não me pergunte _novamente"
 
 #: ../terminal/terminal-window.c:1327
 msgid "Window Title|Set Title"
-msgstr "Ajustar TÃ­tulo"
+msgstr "Ajustar Título"
 
 #: ../terminal/terminal-window.c:1341
 msgid "<b>Title:</b>"
-msgstr "<b>TÃ­tulo:</b>"
+msgstr "<b>Título:</b>"
 
 #: ../terminal/terminal-window.c:1355
 msgid "Enter the title for the current terminal tab"
-msgstr "Entre com o tÃ­tulo para a aba de terminal atual"
+msgstr "Entre com o título para a aba de terminal atual"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Emulador de Terminal"
+
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Atividade de abas</b>"
+
+#~ msgid "T_ab activity color:"
+#~ msgstr "Cor da atividade de _abas:"
+
+#~ msgid "Choose tab activity color"
+#~ msgstr "Escolha a cor da atividade de _abas"
+
+#~ msgid "<b>Tab activity indicator</b>"
+#~ msgstr "<b>Indicador de atividade de abas</b>"
+
+#~ msgid "Reset tab activity indicator after"
+#~ msgstr "Restaurar o indicador de atividade de abas depois de"
+
+#~ msgid "seconds"
+#~ msgstr "segundos"
 
 #~ msgid "Web Browser"
 #~ msgstr "Navegador de Web"
@@ -1375,8 +1405,8 @@ msgstr "Emulador de Terminal"
 #~ "and select Open Link from the context menu."
 #~ msgstr ""
 #~ "Escolha seu Navegador de Web preferido. O Navegador\n"
-#~ "de Web preferido Ã© aberto quando vocÃª clica com o\n"
-#~ "botÃ£o direito em um URL e seleciona Abrir Link do\n"
+#~ "de Web preferido é aberto quando você clica com o\n"
+#~ "botão direito em um URL e seleciona Abrir Link do\n"
 #~ "menu de contexto"
 
 #~ msgid ""
@@ -1386,18 +1416,18 @@ msgstr "Emulador de Terminal"
 #~ "menu."
 #~ msgstr ""
 #~ "Escolha o seu Leitor de Email preferido. O Leitor\n"
-#~ "de Email preferido Ã© aberto quando vocÃª clica com o\n"
-#~ "botÃ£o direito em um endereÃ§o de email e seleciona\n"
+#~ "de Email preferido é aberto quando você clica com o\n"
+#~ "botão direito em um endereço de email e seleciona\n"
 #~ "Escrever Email no menu de contexto"
 
 #~ msgid ""
 #~ "Click here to change the selected application or to disable this feature."
 #~ msgstr ""
-#~ "Clique aqui para mudar a aplicaÃ§Ã£o selecionada ou para desabilitar esta "
-#~ "opÃ§Ã£o."
+#~ "Clique aqui para mudar a aplicação selecionada ou para desabilitar esta "
+#~ "opção."
 
 #~ msgid "Select application"
-#~ msgstr "Selecione aplicaÃ§Ã£o"
+#~ msgstr "Selecione aplicação"
 
 #~ msgid "Choose a custom Web Browser"
 #~ msgstr "Escolha um Navegador de Web personalizado"
@@ -1409,57 +1439,57 @@ msgstr "Emulador de Terminal"
 #~ "Specify the application you want to use as\n"
 #~ "Web Browser in Terminal:"
 #~ msgstr ""
-#~ "Especifique a aplicaÃ§Ã£o que vocÃª quer usar\n"
+#~ "Especifique a aplicação que você quer usar\n"
 #~ " como Navegador de Web no Terminal:"
 
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Mail Reader in Terminal:"
 #~ msgstr ""
-#~ "Especifique a aplicaÃ§Ã£o que vocÃª quer usar\n"
+#~ "Especifique a aplicação que você quer usar\n"
 #~ "como Leitor de Email no Terminal:"
 
 #~ msgid "_Browse..."
 #~ msgstr "_Navegue..."
 
 #~ msgid "Disable this feature"
-#~ msgstr "Desabilite esta opÃ§Ã£o"
+#~ msgstr "Desabilite esta opção"
 
 #~ msgid "Other..."
 #~ msgstr "Outro..."
 
 #~ msgid "No application selected"
-#~ msgstr "Nenhuma aplicaÃ§Ã£o selecionada"
+#~ msgstr "Nenhuma aplicação selecionada"
 
 #~ msgid "Preferred Applications"
-#~ msgstr "AplicaÃ§Ãµes preferidas"
+#~ msgstr "Aplicações preferidas"
 
 #~ msgid "Applications"
-#~ msgstr "AplicaÃ§Ãµes"
+#~ msgstr "Aplicações"
 
 #~ msgid "_Applications..."
-#~ msgstr "_AplicaÃ§Ãµes..."
+#~ msgstr "_Aplicações..."
 
 #~ msgid "Customize your preferred applications"
-#~ msgstr "Personalizar suas aplicaÃ§Ãµes preferidas"
+#~ msgstr "Personalizar suas aplicações preferidas"
 
 #~ msgid ""
 #~ "You did not choose your preferred Web\n"
 #~ "Browser yet. Do you want to setup your\n"
 #~ "preferred applications now?"
 #~ msgstr ""
-#~ "VocÃª nÃ£o escolheu seu Navegador de Web\n"
-#~ "preferido ainda. VocÃª quer configurar\n"
-#~ "suas aplicaÃ§Ãµes preferidas agora?"
+#~ "Você não escolheu seu Navegador de Web\n"
+#~ "preferido ainda. Você quer configurar\n"
+#~ "suas aplicações preferidas agora?"
 
 #~ msgid ""
 #~ "You did not choose your preferred Mail\n"
 #~ "Reader yet. Do you want to setup your\n"
 #~ "preferred applications now?"
 #~ msgstr ""
-#~ "VocÃª nÃ£o escolheu seu Leitor de Email\n"
-#~ "preferido ainda. VocÃª quer configurar\n"
-#~ "suas aplicaÃ§Ãµes preferidas agora?"
+#~ "Você não escolheu seu Leitor de Email\n"
+#~ "preferido ainda. Você quer configurar\n"
+#~ "suas aplicações preferidas agora?"
 
 #~ msgid "Balsa"
 #~ msgstr "Balsa"
@@ -1471,10 +1501,10 @@ msgstr "Emulador de Terminal"
 #~ msgstr "Leitor de Email Evolution"
 
 #~ msgid "Default Web Browser (Xfce)"
-#~ msgstr "Navegador Web PadrÃ£o (Xfce)"
+#~ msgstr "Navegador Web Padrão (Xfce)"
 
 #~ msgid "Default Mail Reader (Xfce)"
-#~ msgstr "Leitor de E-mail PadrÃ£o (Xfce)"
+#~ msgstr "Leitor de E-mail Padrão (Xfce)"
 
 #~ msgid "Mozilla Firefox"
 #~ msgstr "Navegador de Web Firefox"
@@ -1507,7 +1537,7 @@ msgstr "Emulador de Terminal"
 #~ msgstr "Leitor de Email Opera"
 
 #~ msgid "Debian Sensible Browser"
-#~ msgstr "Navegador de Web SensÃ­vel Debian"
+#~ msgstr "Navegador de Web Sensível Debian"
 
 #~ msgid "Sylpheed Claws"
 #~ msgstr "Sylpheed Claws"
@@ -1516,13 +1546,13 @@ msgstr "Emulador de Terminal"
 #~ msgstr "Leitor de Email Thunderbird"
 
 #~ msgid "Custom title"
-#~ msgstr "TÃ­tulo personalizado"
+#~ msgstr "Título personalizado"
 
 #~ msgid "Title"
-#~ msgstr "TÃ­tulo"
+#~ msgstr "Título"
 
 #~ msgid "Tab position"
-#~ msgstr "PosiÃ§Ã£o das abas"
+#~ msgstr "Posição das abas"
 
 #~ msgid "Tab title"
-#~ msgstr "TÃ­tulo de aba"
+#~ msgstr "Título de aba"
