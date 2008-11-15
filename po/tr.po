@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
 # Turker Gulum <turker.gulum@linux.org.tr>, 2007.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-15 21:29+0100\n"
+"POT-Creation-Date: 2008-11-15 11:40+0100\n"
 "PO-Revision-Date: 2007-03-06 23:47+0200\n"
 "Last-Translator: Türker Gülüm <turker.gulum@linux.org.tr>\n"
 "Language-Team: Turkish <turkce@pardus.org.tr>\n"
@@ -247,7 +247,7 @@ msgstr ""
 "  --default-working-directory=DİZİN   Uçbirimin öntanımlı çalışma dizini\n"
 "                                      belirler"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1211
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
 #: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Uçbirim"
@@ -287,7 +287,7 @@ msgstr "%s uçbirim hizmeti kayıt edilmiyor.\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "%s uçbirimi başlatılamadı.\n"
 
-#: ../terminal/terminal-app.c:550
+#: ../terminal/terminal-app.c:562
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Geçersiz geometri dizgesi \"%s\"\n"
@@ -297,6 +297,7 @@ msgid "User id mismatch"
 msgstr "uyumsuz kullanıcı kimliği (id)"
 
 #: ../terminal/terminal-dbus.c:145
+#, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS mesaj yolu bağlantısı kesildi, işlem sonlanıyor...\n"
 
@@ -319,6 +320,7 @@ msgid "Failed to open the documentation browser"
 msgstr "Belge tarayıcısının açılmasında hata oluştu"
 
 #: ../terminal/terminal-options.c:107
+#, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr ""
@@ -326,6 +328,7 @@ msgstr ""
 "ister"
 
 #: ../terminal/terminal-options.c:129
+#, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
@@ -334,12 +337,14 @@ msgstr ""
 "ister"
 
 #: ../terminal/terminal-options.c:158
+#, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "\"--command/-e\" seçeneği parametre olarak çalışacak komutu ister"
 
 #: ../terminal/terminal-options.c:187
+#, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
@@ -347,37 +352,44 @@ msgstr ""
 "\"--working-directory\" seçeneği parametre olarak çalışma dizininiister"
 
 #: ../terminal/terminal-options.c:218
+#, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "\"--title/-T\" seçeneği parametre olarak başlığı ister"
 
 #: ../terminal/terminal-options.c:251
+#, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "\"--display\" seçeneği parametre olarak belirlenen X ekranını ister"
 
 #: ../terminal/terminal-options.c:278
+#, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "\"--geometry\" seçeneği parametre olarak pencere biçimini ister."
 
 #: ../terminal/terminal-options.c:305
+#, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "\"--role\" seçeneği parameter olarak pencere rolünü ister"
 
 #: ../terminal/terminal-options.c:332
+#, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "\"--startup-id\" seçeneği parametre olarak başlangıç kimliğini ister"
 
-#: ../terminal/terminal-options.c:413
+#: ../terminal/terminal-options.c:420
+#, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
 "\"--default-display\" seçeneği parametre olarak varsayılan X ekranını ister"
 
-#: ../terminal/terminal-options.c:437
+#: ../terminal/terminal-options.c:444
+#, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
@@ -385,7 +397,7 @@ msgstr ""
 "\"--default-working-directory\" seçeneği parametre olarak varsayılan çalışma "
 "dizini ister"
 
-#: ../terminal/terminal-options.c:453
+#: ../terminal/terminal-options.c:460
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Bilinmeyen seçenek \"%s\""
@@ -496,13 +508,13 @@ msgid "_Scrollbar is:"
 msgstr "Kaydırma çubuğu:"
 
 #: ../terminal/terminal-preferences-dialog.c:329
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:471
+#: ../terminal/terminal-preferences.c:396
+#: ../terminal/terminal-preferences.c:407
+#: ../terminal/terminal-preferences.c:418
+#: ../terminal/terminal-preferences.c:429
+#: ../terminal/terminal-preferences.c:451
+#: ../terminal/terminal-preferences.c:462
+#: ../terminal/terminal-preferences.c:473
 #: ../terminal/terminal-shortcut-editor.c:209
 #: ../terminal/terminal-shortcut-editor.c:392
 msgid "Disabled"
@@ -674,6 +686,7 @@ msgstr "Uçbirim metin rengini seç\""
 #: ../terminal/terminal-preferences-dialog.c:642
 #: ../terminal/terminal-preferences-dialog.c:671
 #: ../terminal/terminal-preferences-dialog.c:720
+#: ../terminal/terminal-preferences-dialog.c:810
 msgid "Color Selector"
 msgstr "Renk Seçici"
 
@@ -681,6 +694,7 @@ msgstr "Renk Seçici"
 #: ../terminal/terminal-preferences-dialog.c:643
 #: ../terminal/terminal-preferences-dialog.c:672
 #: ../terminal/terminal-preferences-dialog.c:721
+#: ../terminal/terminal-preferences-dialog.c:811
 msgid "Open a dialog to specify the color"
 msgstr "Renk belirlemek için pencere aç"
 
@@ -734,35 +748,49 @@ msgstr "Bu renk paletini kullanabilecek uçbirim uygulamalar:"
 msgid "Palette entry %d"
 msgstr "Palet girişi %d"
 
-#: ../terminal/terminal-preferences-dialog.c:778
+#: ../terminal/terminal-preferences-dialog.c:775
+#, fuzzy
+msgid "<b>Tab activity</b>"
+msgstr "<b>Uyumluluk</b>"
+
+#: ../terminal/terminal-preferences-dialog.c:787
+msgid "T_ab activity color:"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:802
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "Uçbirim metin rengini seç\""
+
+#: ../terminal/terminal-preferences-dialog.c:824
 msgid "Colors"
 msgstr "Renkler"
 
-#: ../terminal/terminal-preferences-dialog.c:796
+#: ../terminal/terminal-preferences-dialog.c:842
 msgid "<b>Shortcut keys</b>"
 msgstr "<b>Kısayol tuşları</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:822
+#: ../terminal/terminal-preferences-dialog.c:868
 msgid "<b>Menubar access</b>"
 msgstr "<b>Menü çubuğu erimişi</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:831
+#: ../terminal/terminal-preferences-dialog.c:877
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Bütün me_nü erişim tuşlarını devre dışı bırak (örneğin Alt+f)"
 
-#: ../terminal/terminal-preferences-dialog.c:836
+#: ../terminal/terminal-preferences-dialog.c:882
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "M_enü kısayol tuşlarını devredışı bırak (Örneğin F10)"
 
-#: ../terminal/terminal-preferences-dialog.c:848
+#: ../terminal/terminal-preferences-dialog.c:894
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: ../terminal/terminal-preferences-dialog.c:866
+#: ../terminal/terminal-preferences-dialog.c:912
 msgid "<b>Compatibility</b>"
 msgstr "<b>Uyumluluk</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:877
+#: ../terminal/terminal-preferences-dialog.c:923
 msgid ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
@@ -772,39 +800,39 @@ msgstr ""
 "uçbirim ayarlarına gereksinim duyan özel uygulamalar ve işletim "
 "sistemlerinin çalıştırılması için bu seçenekler bulunmaktadır"
 
-#: ../terminal/terminal-preferences-dialog.c:885
+#: ../terminal/terminal-preferences-dialog.c:931
 msgid "_Backspace key generates:"
 msgstr "Geri tuşuna basıldığında:"
 
-#: ../terminal/terminal-preferences-dialog.c:891
-#: ../terminal/terminal-preferences-dialog.c:912
+#: ../terminal/terminal-preferences-dialog.c:937
+#: ../terminal/terminal-preferences-dialog.c:958
 msgid "Auto-detect"
 msgstr "Kendinden Algılama"
 
-#: ../terminal/terminal-preferences-dialog.c:892
-#: ../terminal/terminal-preferences-dialog.c:913
+#: ../terminal/terminal-preferences-dialog.c:938
+#: ../terminal/terminal-preferences-dialog.c:959
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
-#: ../terminal/terminal-preferences-dialog.c:893
-#: ../terminal/terminal-preferences-dialog.c:914
+#: ../terminal/terminal-preferences-dialog.c:939
+#: ../terminal/terminal-preferences-dialog.c:960
 msgid "Escape sequence"
 msgstr "Kaçış tuş dizisi"
 
-#: ../terminal/terminal-preferences-dialog.c:894
-#: ../terminal/terminal-preferences-dialog.c:915
+#: ../terminal/terminal-preferences-dialog.c:940
+#: ../terminal/terminal-preferences-dialog.c:961
 msgid "Control-H"
 msgstr "Control-H"
 
-#: ../terminal/terminal-preferences-dialog.c:906
+#: ../terminal/terminal-preferences-dialog.c:952
 msgid "_Delete key generates:"
 msgstr "Sil tuşuna basıldığında:"
 
-#: ../terminal/terminal-preferences-dialog.c:927
+#: ../terminal/terminal-preferences-dialog.c:973
 msgid "<tt>$TERM</tt> setting:"
 msgstr "<tt>$TERM</tt> ayarı:"
 
-#: ../terminal/terminal-preferences-dialog.c:935
+#: ../terminal/terminal-preferences-dialog.c:981
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -815,185 +843,198 @@ msgstr ""
 "değerini belirler. Varsayılan değer birçok sistem için yeterli olacaktır. "
 "Eğer renklerle ilgili sorun yaşarsanız, xterm-color seçeneğini deneyin."
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: ../terminal/terminal-preferences-dialog.c:997
 msgid "_Reset compatibility options to defaults"
 msgstr "Uyumluluk ayarlarını varsayına geri getir"
 
-#: ../terminal/terminal-preferences-dialog.c:961
+#: ../terminal/terminal-preferences-dialog.c:1007
 msgid "<b>Double click</b>"
 msgstr "<b>Çift tıklama</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:970
+#: ../terminal/terminal-preferences-dialog.c:1016
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr "Çift tıklandığında sözcüğün takip eden harflerini hesaba kat:"
 
-#: ../terminal/terminal-preferences-dialog.c:992
+#: ../terminal/terminal-preferences-dialog.c:1036
+msgid "<b>Tab activity indicator</b>"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1050
+msgid "Reset tab activity indicator after"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1065
+msgid "seconds"
+msgstr ""
+
+#: ../terminal/terminal-preferences-dialog.c:1078
 msgid "Advanced"
 msgstr "Gelişmiş"
 
 #. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1051
+#: ../terminal/terminal-preferences-dialog.c:1137
 msgid "Select background image file"
 msgstr "Arkaplan görüntü dosyasını seç"
 
-#: ../terminal/terminal-preferences-dialog.c:1064
+#: ../terminal/terminal-preferences-dialog.c:1150
 msgid "All Files"
 msgstr "Bütün Dosyalar"
 
-#: ../terminal/terminal-preferences-dialog.c:1070
+#: ../terminal/terminal-preferences-dialog.c:1156
 msgid "Image Files"
 msgstr "Resim Dosyaları"
 
-#: ../terminal/terminal-preferences.c:304
-#: ../terminal/terminal-preferences.c:305
+#: ../terminal/terminal-preferences.c:306
+#: ../terminal/terminal-preferences.c:307
 msgid "Open Tab"
 msgstr "Sekme Aç"
 
-#: ../terminal/terminal-preferences.c:315
-#: ../terminal/terminal-preferences.c:316
+#: ../terminal/terminal-preferences.c:317
+#: ../terminal/terminal-preferences.c:318
 msgid "Open Terminal"
 msgstr "Uçbirim Aç"
 
-#: ../terminal/terminal-preferences.c:326
-#: ../terminal/terminal-preferences.c:327
+#: ../terminal/terminal-preferences.c:328
+#: ../terminal/terminal-preferences.c:329
 msgid "Detach Tab"
 msgstr "Sekmeyi Ayır"
 
-#: ../terminal/terminal-preferences.c:337
-#: ../terminal/terminal-preferences.c:338
+#: ../terminal/terminal-preferences.c:339
+#: ../terminal/terminal-preferences.c:340
 msgid "Close Tab"
 msgstr "Sekmeyi Kapat"
 
-#: ../terminal/terminal-preferences.c:348
-#: ../terminal/terminal-preferences.c:349
+#: ../terminal/terminal-preferences.c:350
+#: ../terminal/terminal-preferences.c:351
 msgid "Close Window"
 msgstr "Pencereyi Kapat"
 
-#: ../terminal/terminal-preferences.c:359
-#: ../terminal/terminal-preferences.c:360
+#: ../terminal/terminal-preferences.c:361
+#: ../terminal/terminal-preferences.c:362
 msgid "Copy"
 msgstr "Kopyala"
 
-#: ../terminal/terminal-preferences.c:370
-#: ../terminal/terminal-preferences.c:371
+#: ../terminal/terminal-preferences.c:372
+#: ../terminal/terminal-preferences.c:373
 msgid "Paste"
 msgstr "Yapıştır"
 
-#: ../terminal/terminal-preferences.c:381
-#: ../terminal/terminal-preferences.c:382
+#: ../terminal/terminal-preferences.c:383
+#: ../terminal/terminal-preferences.c:384
 msgid "Paste Selection"
 msgstr "Seçileni Yapıştır"
 
-#: ../terminal/terminal-preferences.c:392
-#: ../terminal/terminal-preferences.c:393
+#: ../terminal/terminal-preferences.c:394
+#: ../terminal/terminal-preferences.c:395
 msgid "Preferences"
 msgstr "Tercihler"
 
-#: ../terminal/terminal-preferences.c:403
-#: ../terminal/terminal-preferences.c:404
+#: ../terminal/terminal-preferences.c:405
+#: ../terminal/terminal-preferences.c:406
 msgid "Show menubar"
 msgstr "Menü çubuğunu göster"
 
-#: ../terminal/terminal-preferences.c:414
-#: ../terminal/terminal-preferences.c:415
+#: ../terminal/terminal-preferences.c:416
+#: ../terminal/terminal-preferences.c:417
 msgid "Show toolbars"
 msgstr "Araç çubuğunu göster"
 
-#: ../terminal/terminal-preferences.c:425
-#: ../terminal/terminal-preferences.c:426
+#: ../terminal/terminal-preferences.c:427
+#: ../terminal/terminal-preferences.c:428
 msgid "Show borders"
 msgstr "Çerçeveyi Göster"
 
-#: ../terminal/terminal-preferences.c:436
-#: ../terminal/terminal-preferences.c:437
+#: ../terminal/terminal-preferences.c:438
+#: ../terminal/terminal-preferences.c:439
 msgid "Fullscreen"
 msgstr "Tam ekran"
 
-#: ../terminal/terminal-preferences.c:447
-#: ../terminal/terminal-preferences.c:448
+#: ../terminal/terminal-preferences.c:449
+#: ../terminal/terminal-preferences.c:450
 msgid "Set Title"
 msgstr "Başlık Belirle"
 
-#: ../terminal/terminal-preferences.c:458
-#: ../terminal/terminal-preferences.c:459
+#: ../terminal/terminal-preferences.c:460
+#: ../terminal/terminal-preferences.c:461
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: ../terminal/terminal-preferences.c:469
-#: ../terminal/terminal-preferences.c:470
+#: ../terminal/terminal-preferences.c:471
+#: ../terminal/terminal-preferences.c:472
 msgid "Reset and Clear"
 msgstr "Sıfırla ve Temizle"
 
-#: ../terminal/terminal-preferences.c:480
-#: ../terminal/terminal-preferences.c:481
+#: ../terminal/terminal-preferences.c:482
+#: ../terminal/terminal-preferences.c:483
 msgid "Previous Tab"
 msgstr "Önceki Sekme"
 
-#: ../terminal/terminal-preferences.c:491
-#: ../terminal/terminal-preferences.c:492
+#: ../terminal/terminal-preferences.c:493
+#: ../terminal/terminal-preferences.c:494
 msgid "Next Tab"
 msgstr "Sonraki Sekme"
 
-#: ../terminal/terminal-preferences.c:502
-#: ../terminal/terminal-preferences.c:503
+#: ../terminal/terminal-preferences.c:504
+#: ../terminal/terminal-preferences.c:505
 msgid "Switch to Tab 1"
 msgstr "Sekme 1'e Geç"
 
-#: ../terminal/terminal-preferences.c:513
-#: ../terminal/terminal-preferences.c:514
+#: ../terminal/terminal-preferences.c:515
+#: ../terminal/terminal-preferences.c:516
 msgid "Switch to Tab 2"
 msgstr "Sekme 2'ye Geç"
 
-#: ../terminal/terminal-preferences.c:524
-#: ../terminal/terminal-preferences.c:525
+#: ../terminal/terminal-preferences.c:526
+#: ../terminal/terminal-preferences.c:527
 msgid "Switch to Tab 3"
 msgstr "Sekme 3'e Geç"
 
-#: ../terminal/terminal-preferences.c:535
-#: ../terminal/terminal-preferences.c:536
+#: ../terminal/terminal-preferences.c:537
+#: ../terminal/terminal-preferences.c:538
 msgid "Switch to Tab 4"
 msgstr "Sekme 4'e Geç"
 
-#: ../terminal/terminal-preferences.c:546
-#: ../terminal/terminal-preferences.c:547
+#: ../terminal/terminal-preferences.c:548
+#: ../terminal/terminal-preferences.c:549
 msgid "Switch to Tab 5"
 msgstr "Sekme 5'e Geç"
 
-#: ../terminal/terminal-preferences.c:557
-#: ../terminal/terminal-preferences.c:558
+#: ../terminal/terminal-preferences.c:559
+#: ../terminal/terminal-preferences.c:560
 msgid "Switch to Tab 6"
 msgstr "Sekme 6'ya Geç"
 
-#: ../terminal/terminal-preferences.c:568
-#: ../terminal/terminal-preferences.c:569
+#: ../terminal/terminal-preferences.c:570
+#: ../terminal/terminal-preferences.c:571
 msgid "Switch to Tab 7"
 msgstr "Sekme 7'ye Geç"
 
-#: ../terminal/terminal-preferences.c:579
-#: ../terminal/terminal-preferences.c:580
+#: ../terminal/terminal-preferences.c:581
+#: ../terminal/terminal-preferences.c:582
 msgid "Switch to Tab 8"
 msgstr "Sekme 8'e Geç"
 
-#: ../terminal/terminal-preferences.c:590
-#: ../terminal/terminal-preferences.c:591
+#: ../terminal/terminal-preferences.c:592
+#: ../terminal/terminal-preferences.c:593
 msgid "Switch to Tab 9"
 msgstr "Sekme 9'a Geç"
 
-#: ../terminal/terminal-preferences.c:601
-#: ../terminal/terminal-preferences.c:602
+#: ../terminal/terminal-preferences.c:603
+#: ../terminal/terminal-preferences.c:604
 msgid "Contents"
 msgstr "İçerik"
 
-#: ../terminal/terminal-screen.c:432
+#: ../terminal/terminal-screen.c:459
+#, c-format
 msgid "Unable to determine your login shell."
 msgstr "Giriş kabuğunuzun belirlenmesi mümkün değil"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:960
+#: ../terminal/terminal-screen.c:1015
 msgid "Failed to execute child"
 msgstr "Alt komutu çalıştırırken hata oluştu"
 
-#: ../terminal/terminal-screen.c:1197
+#: ../terminal/terminal-screen.c:1251
 msgid "Untitled"
 msgstr "İsimsiz"
 
@@ -1041,15 +1082,15 @@ msgstr "Klavyenin kontrolü alınamadı"
 msgid "Another application has already acquired control over your keyboard."
 msgstr "Klavyenin kontrolü başka bir uygulama tarafından alınmış."
 
-#: ../terminal/terminal-tab-header.c:203
+#: ../terminal/terminal-tab-header.c:205
 msgid "Close this tab"
 msgstr "Bu sekmeyi kapat"
 
-#: ../terminal/terminal-tab-header.c:327 ../terminal/terminal-window.c:202
+#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
 msgid "_Detach Tab"
 msgstr "Sekmeyi Ayır"
 
-#: ../terminal/terminal-tab-header.c:332 ../terminal/terminal-window.c:203
+#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
 msgid "C_lose Tab"
 msgstr "Sekmeyi Kapat"
 
@@ -1057,23 +1098,23 @@ msgstr "Sekmeyi Kapat"
 msgid "Toolbar Editor"
 msgstr "Araç Çubuğu Düzenleyici"
 
-#: ../terminal/terminal-widget.c:299
+#: ../terminal/terminal-widget.c:301
 msgid "Copy Email Address"
 msgstr "E-posta Adresini Kopyala"
 
-#: ../terminal/terminal-widget.c:300
+#: ../terminal/terminal-widget.c:302
 msgid "Compose Email"
 msgstr "E-posta Yaz"
 
-#: ../terminal/terminal-widget.c:304
+#: ../terminal/terminal-widget.c:306
 msgid "Copy Link Address"
 msgstr "Bağlantı Adresini Kopyala"
 
-#: ../terminal/terminal-widget.c:305
+#: ../terminal/terminal-widget.c:307
 msgid "Open Link"
 msgstr "Bağlantıyı Aç"
 
-#: ../terminal/terminal-widget.c:459
+#: ../terminal/terminal-widget.c:462
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
@@ -1082,227 +1123,227 @@ msgstr ""
 "Seçilmiş metin veya düz yazıyı uçbirime düşüremiyor: Hatalı biçim (%d) veya "
 "uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:475
+#: ../terminal/terminal-widget.c:478
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "Mozilla URL'sini uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:501
+#: ../terminal/terminal-widget.c:504
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "URI listesini uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:546
+#: ../terminal/terminal-widget.c:549
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Hatalı renk verisi alındı: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:653
+#: ../terminal/terminal-widget.c:673
 #, fuzzy, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Belge tarayıcısının açılmasında hata oluştu"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:216
 msgid "_File"
 msgstr "Dosya"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:217
 msgid "Open _Tab"
 msgstr "Sekme Aç"
 
-#: ../terminal/terminal-window.c:200
+#: ../terminal/terminal-window.c:217
 msgid "Open a new terminal tab"
 msgstr "Yeni bir uçbirim sekmesi aç"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:218
 msgid "Open T_erminal"
 msgstr "Uçbirimi Aç"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal window"
 msgstr "Yeni bir uçbirim penceresi aç"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:219
 msgid "Open a new window for the current terminal tab"
 msgstr "Geçerli uçbirim sekmesi için yeni bir pencere aç"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:220
 msgid "Close the current terminal tab"
 msgstr "Geçerli uçbirim sekmesini kapat"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:221
 msgid "_Close Window"
 msgstr "Pen_cereyi Kapat"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:221
 msgid "Close the terminal window"
 msgstr "Uçbirim penceresini kapat"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:222
 msgid "_Edit"
 msgstr "Düzenle"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:223
 msgid "_Copy"
 msgstr "_Kopyala"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:223
 msgid "Copy to clipboard"
 msgstr "Panoya koypala"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:224
 msgid "_Paste"
 msgstr "Ya_pıştır"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:224
 msgid "Paste from clipboard"
 msgstr "Panodan yapıştır"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:225
 msgid "Paste _Selection"
 msgstr "Seçileni Yapıştır"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:225
 msgid "Paste from primary selection"
 msgstr "öncelikli seçimi yapıştır"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:226
 msgid "_Toolbars..."
 msgstr "_Araç çubukları..."
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:226
 msgid "Customize the toolbars"
 msgstr "Araç çubuklarını düzenle"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:227
 msgid "Pr_eferences..."
 msgstr "Özellikler"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:227
 msgid "Open the Terminal preferences dialog"
 msgstr "Uçbirim özellikler kutusunu aç"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:228
 msgid "_View"
 msgstr "Göster"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:229
 msgid "_Terminal"
 msgstr "Uçbirim"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:230
 msgid "_Set Title..."
 msgstr "Başlık Belirle..."
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:230
 msgid "Set a custom title for the current tab"
 msgstr "Geçerli sekme için özel başlığı belirleyin"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:231
 msgid "_Reset"
 msgstr "Sıfı_rla"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:232
 msgid "Reset and C_lear"
 msgstr "Sıfırla ve Temiz_le"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:233
 msgid "_Go"
 msgstr "_Git"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:234
 msgid "_Previous Tab"
 msgstr "Önceki Sekme"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:234
 msgid "Switch to previous tab"
 msgstr "Önceki sekmeye atla"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:235
 msgid "_Next Tab"
 msgstr "So_nraki Sekme"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:235
 msgid "Switch to next tab"
 msgstr "Sonraki sekmeye atla"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:236
 msgid "_Help"
 msgstr "Yardım"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:237
 msgid "_Contents"
 msgstr "İçerikler"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:237
 msgid "Display help contents"
 msgstr "Yardım içeriğini göster"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:238
 msgid "_Report a bug"
 msgstr "Hata _raporla"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:238
 msgid "Report a bug in Terminal"
 msgstr "Uçbirimde hata raporla"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:239
 msgid "_About"
 msgstr "H_akkında"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:239
 msgid "Display information about Terminal"
 msgstr "Uçbirim hakkında bilgileri göster"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:240
 msgid "_Input Methods"
 msgstr "Girdi Yöntemleri"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:245
 msgid "Show _Menubar"
 msgstr "Menü Çubuğunu Göster"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:245
 msgid "Show/hide the menubar"
 msgstr "Menü çubuğunu göster/gizle"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:246
 msgid "Show _Toolbars"
 msgstr "Araç Çubuğunu Göster"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the toolbars"
 msgstr "Araç çubuğunu göster/gizle"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:247
 msgid "Show Window _Borders"
 msgstr "Pencere Sınırlarını Göster"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the window decorations"
 msgstr "Pencere dekorasyonunu gizle/göster"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:248
 msgid "_Fullscreen"
 msgstr "Tam ekran"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:248
 msgid "Toggle fullscreen mode"
 msgstr "Tam ekran kipine geç"
 
-#: ../terminal/terminal-window.c:504
+#: ../terminal/terminal-window.c:534
 msgid "Warning"
 msgstr "Uyarı"
 
-#: ../terminal/terminal-window.c:515
+#: ../terminal/terminal-window.c:545
 msgid "Close all tabs"
 msgstr "Bütün sekmeleri kapat"
 
-#: ../terminal/terminal-window.c:534
+#: ../terminal/terminal-window.c:564
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -1312,23 +1353,23 @@ msgstr ""
 "Bu pencerenin kapatılmasıyla bütün\n"
 "sekmeleri de kapatılır."
 
-#: ../terminal/terminal-window.c:537
+#: ../terminal/terminal-window.c:567
 msgid "Close all tabs?"
 msgstr "Bütün sekmeler kapatılsın mı?"
 
-#: ../terminal/terminal-window.c:550
+#: ../terminal/terminal-window.c:580
 msgid "Do _not ask me again"
 msgstr "Bir daha sorma"
 
-#: ../terminal/terminal-window.c:1327
+#: ../terminal/terminal-window.c:1525
 msgid "Window Title|Set Title"
 msgstr "Pencere Başlığı|Başlık Belirle"
 
-#: ../terminal/terminal-window.c:1341
+#: ../terminal/terminal-window.c:1539
 msgid "<b>Title:</b>"
 msgstr "<b>Başlık:</b>"
 
-#: ../terminal/terminal-window.c:1355
+#: ../terminal/terminal-window.c:1553
 msgid "Enter the title for the current terminal tab"
 msgstr "Aktif uçbirim sekmesine başlık girin"
 
