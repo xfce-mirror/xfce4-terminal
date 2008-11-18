@@ -2,14 +2,14 @@
 # Copyright (c) 2003-2007 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
 # Benedikt Meurer <benny@xfce.org>, 2004-2007.
-# Fabian Nowak <timystery@arcor.de>, 2006, 2007.
+# Fabian Nowak <timystery@arcor.de>, 2006-2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-15 11:40+0100\n"
-"PO-Revision-Date: 2008-06-20 22:09+0100\n"
+"PO-Revision-Date: 2008-11-14 22:16+0100\n"
 "Last-Translator: Fabian Nowak <timystery@arcor.de>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
-"  --disable-server                    Nicht am Nachrichtenbus D-BUS anmelden"
+"  --disable-server                    Nicht am Nachrichtenbus D-Bus anmelden"
 
 #: ../terminal/main.c:52
 msgid ""
@@ -282,7 +282,7 @@ msgstr ""
 #: ../terminal/main.c:257
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "Fehler beim Registrieren des Terminal-Diensts: %s\n"
+msgstr "Fehler beim Registrieren des Terminal-Dienstes: %s\n"
 
 #: ../terminal/main.c:266
 #, c-format
@@ -292,7 +292,7 @@ msgstr "Terminal konnte nicht gestartet werden: %s\n"
 #: ../terminal/terminal-app.c:562
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Ungültige Geometrieangabe \"%s\"\n"
+msgstr "Ungültige Geometrieangabe »%s«\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
@@ -306,7 +306,7 @@ msgstr "Verbindung zum Nachrichtenbus D-Bus wurde abgebaut, beende...\n"
 #: ../terminal/terminal-dbus.c:206
 #, c-format
 msgid "Unable to register object %s"
-msgstr "Konnte das D-BUS-Objekt nicht registrieren: %s"
+msgstr "Konnte das D-Bus-Objekt nicht registrieren: %s"
 
 #: ../terminal/terminal-dialogs.c:77
 msgid "X Terminal Emulator"
@@ -329,7 +329,7 @@ msgstr "Konnte den Browser für die Dokumentation nicht öffnen"
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr ""
-"Die Option \"--sm-client-id\" erwartet als Parameter die Sitzungs-\n"
+"Die Option »--sm-client-id« erwartet als Parameter die Sitzungs-\n"
 "Identifikationsnummer."
 
 #: ../terminal/terminal-options.c:129
@@ -338,7 +338,7 @@ msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
-"Die·Option \"--execute/-x\" erwartet, dass die folgenden Befehlszeilen-\n"
+"Die Option »--execute/-x« erwartet, dass die folgenden Befehlszeilen-\n"
 "parameter den auszuführenden Befehl enthalten"
 
 #: ../terminal/terminal-options.c:158
@@ -347,7 +347,7 @@ msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
-"Die Option \"--command/-e\" erwartet als Parameter den auszuführenden Befehl"
+"Die Option »--command/-e« erwartet als Parameter den auszuführenden Befehl"
 
 #: ../terminal/terminal-options.c:187
 #, c-format
@@ -355,7 +355,7 @@ msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
-"Die Option \"--working-directory\" erwartet als Parameter den Pfad des\n"
+"Die Option »--working-directory« erwartet als Parameter den Pfad des\n"
 "Arbeitsverzeichnisses, welches für den auszuführenden Befehl benutzt\n"
 "werden soll"
 
@@ -363,7 +363,7 @@ msgstr ""
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
-"Die Option \"--title/-T\" erwartet als Parameter den Titel für den zuletzt\n"
+"Die Option »--title/-T« erwartet als Parameter den Titel für den zuletzt\n"
 "spezifizierten Terminal-Reiter"
 
 #: ../terminal/terminal-options.c:251
@@ -371,7 +371,7 @@ msgstr ""
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
-"Die Option \"--display\" erwartet als Parameter die Angabe eines Namens\n"
+"Die Option »--display« erwartet als Parameter die Angabe eines Namens\n"
 "für die X-Anzeige"
 
 #: ../terminal/terminal-options.c:278
@@ -380,13 +380,13 @@ msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
-"Die Option \"--geometry\" erwartet als Parameter eine Geometrie-Spezifikation"
+"Die Option »--geometry« erwartet als Parameter eine Geometrie-Spezifikation"
 
 #: ../terminal/terminal-options.c:305
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
-"Die Option \"--role\" erwartet als Parameter die Angabe einer Rolle\n"
+"Die Option »--role« erwartet als Parameter die Angabe einer Rolle\n"
 "für das Fenster"
 
 #: ../terminal/terminal-options.c:332
@@ -394,7 +394,7 @@ msgstr ""
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
-"Die Option \"--startup-id\" erwartet als Parameter die Angabe einer\n"
+"Die Option »--startup-id« erwartet als Parameter die Angabe einer\n"
 "Start-Identifikationsnummer"
 
 #: ../terminal/terminal-options.c:420
@@ -418,7 +418,7 @@ msgstr ""
 #: ../terminal/terminal-options.c:460
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr "Unbekannte Option \"%s\""
+msgstr "Unbekannte Option »%s«"
 
 #: ../terminal/terminal-preferences-dialog.c:140
 msgid "Terminal Preferences"
@@ -474,9 +474,9 @@ msgid ""
 "about differences between running it as interactive shell and running it as "
 "login shell."
 msgstr ""
-"Wenn Sie diesen Schalter aktivieren, wird Terminal versuchen Ihre Shell beim "
-"Öffnen neuer Terminals als Login-Shell zu starten. Konsultieren Sie die "
-"Dokumentation Ihrer Shell um Details über die Unterschiede zwischen dem "
+"Wenn Sie diesen Schalter aktivieren, wird Terminal versuchen, Ihre Shell "
+"beim Öffnen neuer Terminals als Login-Shell zu starten. Konsultieren Sie die "
+"Dokumentation Ihrer Shell, um Details über die Unterschiede zwischen dem "
 "Starten als interaktive Shell und dem Starten als Login-Shell zu erfahren."
 
 #: ../terminal/terminal-preferences-dialog.c:269
@@ -645,7 +645,7 @@ msgstr "Transparenz und Bildhintergründe abdunkeln:"
 
 #: ../terminal/terminal-preferences-dialog.c:515
 msgid "<small><i>None</i></small>"
-msgstr "<small><i>Keine</i></small>"
+msgstr "<small><i>Gar nicht</i></small>"
 
 #: ../terminal/terminal-preferences-dialog.c:526
 msgid "<small><i>Maximum</i></small>"
@@ -860,8 +860,8 @@ msgid ""
 "most systems. If you have problems with colors in some applications, try "
 "xterm-color here."
 msgstr ""
-"Diese Einstellungen gibt den Wert der $TERM Umgebungsvariable an, der "
-"gesetzt wird, wenn ein neuer Terminal Reiter oder ein neues Terminal Fenster "
+"Diese Einstellungen gibt den Wert der Umgebungsvariable »$TERM« an, der "
+"gesetzt wird, wenn ein neuer Terminal-Reiter oder ein neues Terminal-Fenster "
 "geöffnet wird. Der Standardwert sollte für die meisten Systeme passen. "
 "Sollten Sie Probleme mit Farben in einigen Anwendungen haben, versuchen Sie "
 "xterm-color."
@@ -1198,7 +1198,7 @@ msgstr "Den aktuellen Terminal-Reiter in neuem Fenster öffnen"
 
 #: ../terminal/terminal-window.c:220
 msgid "Close the current terminal tab"
-msgstr "Den aktuellen-Terminal Reiter schließen"
+msgstr "Den aktuellen Terminal-Reiter schließen"
 
 #: ../terminal/terminal-window.c:221
 msgid "_Close Window"
