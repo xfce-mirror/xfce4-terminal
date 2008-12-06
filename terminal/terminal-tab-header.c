@@ -300,7 +300,7 @@ terminal_tab_header_set_property (GObject      *object,
 
     case PROP_TITLE:
       title = g_value_get_string (value);
-      terminal_gtk_widget_set_tooltip (header->ebox, title);
+      terminal_gtk_widget_set_tooltip (header->ebox, "%s", title);
       gtk_label_set_text (GTK_LABEL (header->label), title);
       break;
 

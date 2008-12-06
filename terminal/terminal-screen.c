@@ -245,7 +245,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::context-menu", G_CALLBACK (terminal_screen_vte_get_context_menu), screen,
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
-                    "signal::contents-changed", G_CALLBACK (terminal_screen_vte_window_contents_changed), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
                     "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
@@ -314,6 +313,12 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_scrolling_on_keystroke (screen);
   terminal_screen_update_word_chars (screen);
   terminal_screen_timer_background (TERMINAL_SCREEN (screen));
+
+  /* Last, connect contents-changed to avoid a race with updates above */
+  g_object_connect (G_OBJECT (screen->terminal),
+                    "signal::contents-changed", G_CALLBACK (terminal_screen_vte_window_contents_changed), screen,
+                    NULL);
+
 }
 
 
@@ -700,7 +705,7 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
 {
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-blinks", &bval, NULL);
-  vte_terminal_set_cursor_blinks (VTE_TERMINAL (screen->terminal), bval);
+  vte_terminal_set_cursor_blink_mode (VTE_TERMINAL (screen->terminal), bval==TRUE?VTE_CURSOR_BLINK_ON:VTE_CURSOR_BLINK_OFF);
 }
 
 
@@ -1325,7 +1330,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
                 {
                   g_free (screen->working_directory);
                   screen->working_directory = g_get_current_dir ();
-                  chdir (cwd);
+                  if (chdir (cwd) == 0);
                 }
 
               g_free (cwd);
