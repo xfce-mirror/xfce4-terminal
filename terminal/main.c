@@ -63,7 +63,7 @@ usage (void)
   g_print ("%s\n", _("  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
                      "                                      man page), can be specified once per\n"
                      "                                      window to be opened"));
-  g_print ("%s\n", _("  --role=ROLE                         Set the role for the last-specified;\n"
+  g_print ("%s\n", _("  --role=ROLE                         Set the role for the last-specified\n"
                      "                                      window; applies to only one window;\n"
                      "                                      can be specified once for each window\n"
                      "                                      you create from the command line"));
