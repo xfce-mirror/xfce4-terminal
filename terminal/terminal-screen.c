@@ -705,7 +705,12 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
 {
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-blinks", &bval, NULL);
-  vte_terminal_set_cursor_blink_mode (VTE_TERMINAL (screen->terminal), bval==TRUE?VTE_CURSOR_BLINK_ON:VTE_CURSOR_BLINK_OFF);
+#if VTE_CHECK_VERSION (0, 17, 1)
+  vte_terminal_set_cursor_blink_mode (VTE_TERMINAL (screen->terminal), 
+                                      bval ? VTE_CURSOR_BLINK_ON : VTE_CURSOR_BLINK_OFF);
+#else
+  vte_terminal_set_cursor_blinks (VTE_TERMINAL (screen->terminal), bval);
+#endif
 }
 
 
