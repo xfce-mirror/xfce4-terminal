@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-15 11:40+0100\n"
-"PO-Revision-Date: 2008-12-06 15:13+0100\n"
+"PO-Revision-Date: 2009-02-11 17:36+0100\n"
 "Last-Translator: Leandro Regueiro <leandro DOT regueiro AT gmail DOT com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr ""
 #: ../terminal/main.c:57
 #, fuzzy
 msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "Executar nun _terminal"
+msgstr "Establecer o título do obxecto"
 
 #: ../terminal/main.c:58
 msgid ""
@@ -172,7 +172,7 @@ msgstr ""
 #: ../terminal/main.c:115
 #, fuzzy
 msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "use -l para listar os ficheiros"
+msgstr "Número de _procesadores que utilizar:"
 
 #: ../terminal/main.c:116
 msgid ""
@@ -215,12 +215,12 @@ msgstr "%s engadido a Terminal Server\n"
 #: ../terminal/terminal-app.c:562
 #, fuzzy, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Cadea non atopada."
+msgstr "(cadea UTF-8 non válida)"
 
 #: ../terminal/terminal-dbus.c:113
 #, fuzzy
 msgid "User id mismatch"
-msgstr "ID do usuario anónimo:"
+msgstr "Establecer o ID do obxecto"
 
 #: ../terminal/terminal-dbus.c:145
 #, fuzzy, c-format
@@ -230,7 +230,7 @@ msgstr "Iniciando o bus de mensaxes do sistema: "
 #: ../terminal/terminal-dbus.c:206
 #, fuzzy, c-format
 msgid "Unable to register object %s"
-msgstr "non foi posible rexistrar o ficheiro rpm"
+msgstr "Seleccione un <b>obxecto</b> para clonalo."
 
 #: ../terminal/terminal-dialogs.c:77
 msgid "X Terminal Emulator"
@@ -323,17 +323,17 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:206
 #, fuzzy
 msgid "_Initial title:"
-msgstr "lector de novas - @title"
+msgstr "Título e estado"
 
 #: ../terminal/terminal-preferences-dialog.c:221
 #, fuzzy
 msgid "_Dynamically-set title:"
-msgstr "%type: actualizado %title."
+msgstr "Establecer o título do obxecto"
 
 #: ../terminal/terminal-preferences-dialog.c:231
 #, fuzzy
 msgid "Replaces initial title"
-msgstr "%type: actualizado %title."
+msgstr "Establecer o título do obxecto"
 
 #: ../terminal/terminal-preferences-dialog.c:232
 msgid "Goes before initial title"
@@ -366,7 +366,7 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:278
 #, fuzzy
 msgid "<b>Scrolling</b>"
-msgstr "Desprazamento co Rato"
+msgstr "Desprazamento"
 
 #: ../terminal/terminal-preferences-dialog.c:293
 msgid "Scroll single _line using Shift-Up/-Down keys"
@@ -387,7 +387,7 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:314
 #, fuzzy
 msgid "Scroll on _keystroke"
-msgstr "Enviado por !a en @b."
+msgstr "Non hai nada no portarretallos."
 
 #: ../terminal/terminal-preferences-dialog.c:317
 msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
@@ -396,7 +396,7 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:323
 #, fuzzy
 msgid "_Scrollbar is:"
-msgstr "O contrasinal é"
+msgstr "É visible?"
 
 #: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
@@ -438,7 +438,7 @@ msgstr "<b>Tipo de letra</b>"
 #: ../terminal/terminal-preferences-dialog.c:396
 #, fuzzy
 msgid "Choose Terminal Font"
-msgstr "Diálogo de selección da tipografía"
+msgstr "Licenza Open Font"
 
 #: ../terminal/terminal-preferences-dialog.c:401
 msgid "Enable anti-aliasing for the terminal font"
@@ -451,10 +451,7 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:411
 #, fuzzy
 msgid "Allow bold text"
-msgstr ""
-"\n"
-"\n"
-"<header>text=Dano</header>"
+msgstr "Buscar obxectos de texto"
 
 #: ../terminal/terminal-preferences-dialog.c:414
 msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
@@ -465,8 +462,9 @@ msgid "<b>Background</b>"
 msgstr "<b>Fondo</b>"
 
 #: ../terminal/terminal-preferences-dialog.c:433
+#, fuzzy
 msgid "None (use solid color)"
-msgstr ""
+msgstr "Usar a cor clara das casiñas"
 
 #: ../terminal/terminal-preferences-dialog.c:434
 msgid "Background image"
@@ -485,12 +483,14 @@ msgid "_Style:"
 msgstr "E_stilo:"
 
 #: ../terminal/terminal-preferences-dialog.c:483
+#, fuzzy
 msgid "Tiled"
-msgstr ""
+msgstr "Crear un Mosaico de Clons..."
 
 #: ../terminal/terminal-preferences-dialog.c:484
+#, fuzzy
 msgid "Centered"
-msgstr ""
+msgstr "Centrado"
 
 #: ../terminal/terminal-preferences-dialog.c:485
 #, fuzzy
@@ -508,17 +508,17 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:515
 #, fuzzy
 msgid "<small><i>None</i></small>"
-msgstr "Non Compartir Nada"
+msgstr "|_Nada"
 
 #: ../terminal/terminal-preferences-dialog.c:526
 #, fuzzy
 msgid "<small><i>Maximum</i></small>"
-msgstr "Un Pequeno Favor"
+msgstr "Tamaño máximo:"
 
 #: ../terminal/terminal-preferences-dialog.c:534
 #, fuzzy
 msgid "<b>Opening New Windows</b>"
-msgstr "Restaurar fiestras ocultas"
+msgstr "Windows Metafiles (*.wmf)"
 
 #: ../terminal/terminal-preferences-dialog.c:543
 msgid "Display _menubar in new windows"
@@ -551,17 +551,17 @@ msgstr "Aparencia"
 #: ../terminal/terminal-preferences-dialog.c:592
 #, fuzzy
 msgid "<b>Foreground and Background</b>"
-msgstr "Cambiar as opcións do fondo"
+msgstr "Intercambiar cores de primeiro plano e fondo"
 
 #: ../terminal/terminal-preferences-dialog.c:604
 #, fuzzy
 msgid "_Text and cursor color:"
-msgstr "Escolla a cor da zona de texto"
+msgstr "_Configurar cor e opacidade..."
 
 #: ../terminal/terminal-preferences-dialog.c:619
 #, fuzzy
 msgid "Choose terminal text color"
-msgstr "Escolla a cor da zona de texto"
+msgstr "Escolla un perfil de cor ICC"
 
 #: ../terminal/terminal-preferences-dialog.c:627
 #: ../terminal/terminal-preferences-dialog.c:642
@@ -570,40 +570,41 @@ msgstr "Escolla a cor da zona de texto"
 #: ../terminal/terminal-preferences-dialog.c:810
 #, fuzzy
 msgid "Color Selector"
-msgstr "selector múltiple"
+msgstr "Selector de cor CMYK"
 
 #: ../terminal/terminal-preferences-dialog.c:628
 #: ../terminal/terminal-preferences-dialog.c:643
 #: ../terminal/terminal-preferences-dialog.c:672
 #: ../terminal/terminal-preferences-dialog.c:721
 #: ../terminal/terminal-preferences-dialog.c:811
+#, fuzzy
 msgid "Open a dialog to specify the color"
-msgstr ""
+msgstr "Abrir a ventá das cores de primerio plano e de fondo"
 
 #: ../terminal/terminal-preferences-dialog.c:634
 #, fuzzy
 msgid "Choose terminal cursor color"
-msgstr "Escolla a cor 1 da barra de progreso"
+msgstr "Escolla un perfil de cor ICC"
 
 #: ../terminal/terminal-preferences-dialog.c:650
 #, fuzzy
 msgid "_Background color:"
-msgstr "Cor de fondo:"
+msgstr "Cor de f_ondo:"
 
 #: ../terminal/terminal-preferences-dialog.c:662
 #, fuzzy
 msgid "Choose terminal background color"
-msgstr "Escolla a cor 1 da barra de progreso"
+msgstr "Engadir cor do fondo actual"
 
 #: ../terminal/terminal-preferences-dialog.c:682
 #, fuzzy
 msgid "<b>Text Selection</b>"
-msgstr "Opcións de selección"
+msgstr "_Texto a selección"
 
 #: ../terminal/terminal-preferences-dialog.c:693
 #, fuzzy
 msgid "Use _default color"
-msgstr "Usa-lo logotipo por defecto"
+msgstr "Usar unha cor arbitraria"
 
 #: ../terminal/terminal-preferences-dialog.c:696
 msgid "Use the default text selection background color"
@@ -612,7 +613,7 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:701
 #, fuzzy
 msgid "Use _custom color"
-msgstr "Usar imaxe personalizada"
+msgstr "Seleccionar _cor personalizada..."
 
 #: ../terminal/terminal-preferences-dialog.c:704
 msgid "Use a custom text selection background color"
@@ -634,21 +635,22 @@ msgstr ""
 #: ../terminal/terminal-preferences-dialog.c:763
 #, fuzzy, c-format
 msgid "Palette entry %d"
-msgstr "Artigo do blogue"
+msgstr "Editar entrada da paleta de cores"
 
 #: ../terminal/terminal-preferences-dialog.c:775
 #, fuzzy
 msgid "<b>Tab activity</b>"
-msgstr "Compatibilidade"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-preferences-dialog.c:787
+#, fuzzy
 msgid "T_ab activity color:"
-msgstr ""
+msgstr "Elixa o matiz da cor"
 
 #: ../terminal/terminal-preferences-dialog.c:802
 #, fuzzy
 msgid "Choose tab activity color"
-msgstr "Escolla a cor da zona de texto"
+msgstr "Escolla un perfil de cor ICC"
 
 #: ../terminal/terminal-preferences-dialog.c:824
 msgid "Colors"
@@ -657,12 +659,12 @@ msgstr "Cores"
 #: ../terminal/terminal-preferences-dialog.c:842
 #, fuzzy
 msgid "<b>Shortcut keys</b>"
-msgstr "%keys (@type)."
+msgstr "_Atribuír o atallo de novo"
 
 #: ../terminal/terminal-preferences-dialog.c:868
 #, fuzzy
 msgid "<b>Menubar access</b>"
-msgstr "acceder a comentarios"
+msgstr "Mostrar barra de _menú"
 
 #: ../terminal/terminal-preferences-dialog.c:877
 msgid "Disable all me_nu access keys (such as Alt+f)"
@@ -693,13 +695,13 @@ msgstr "A tecla de retroceso envía: ^H"
 #: ../terminal/terminal-preferences-dialog.c:958
 #, fuzzy
 msgid "Auto-detect"
-msgstr "Detección automática"
+msgstr "Encoller automaticamente"
 
 #: ../terminal/terminal-preferences-dialog.c:938
 #: ../terminal/terminal-preferences-dialog.c:959
 #, fuzzy
 msgid "ASCII DEL"
-msgstr "<-- Eliminar Usuario"
+msgstr "Texto ASCII"
 
 #: ../terminal/terminal-preferences-dialog.c:939
 #: ../terminal/terminal-preferences-dialog.c:960
@@ -711,38 +713,40 @@ msgstr "Unha Fuxida Agoniante"
 #: ../terminal/terminal-preferences-dialog.c:961
 #, fuzzy
 msgid "Control-H"
-msgstr "<control>Q"
+msgstr "Amosar os puntos de control"
 
 #: ../terminal/terminal-preferences-dialog.c:952
 #, fuzzy
 msgid "_Delete key generates:"
-msgstr "Tecla Alt dereita"
+msgstr "_Eliminar a Capa Actual"
 
 #: ../terminal/terminal-preferences-dialog.c:973
 #, fuzzy
 msgid "<tt>$TERM</tt> setting:"
-msgstr "Opcións predeterminadas para comentarios"
+msgstr "Elixa unha configuración da lista"
 
 #: ../terminal/terminal-preferences-dialog.c:981
 msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
 msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:997
+#, fuzzy
 msgid "_Reset compatibility options to defaults"
-msgstr ""
+msgstr "Restablecer tódolos parámetros ós valores predeterminados"
 
 #: ../terminal/terminal-preferences-dialog.c:1007
 #, fuzzy
 msgid "<b>Double click</b>"
-msgstr "Pulsación dupla"
+msgstr "Premer: seleccionar"
 
 #: ../terminal/terminal-preferences-dialog.c:1016
 msgid "Consider the following characters part of a word when double clicking:"
 msgstr ""
 
 #: ../terminal/terminal-preferences-dialog.c:1036
+#, fuzzy
 msgid "<b>Tab activity indicator</b>"
-msgstr ""
+msgstr "Ctrl+A, Tab, Shift+Tab:"
 
 #: ../terminal/terminal-preferences-dialog.c:1050
 msgid "Reset tab activity indicator after"
@@ -773,7 +777,7 @@ msgstr "Ficheiros de imaxe"
 #: ../terminal/terminal-preferences.c:307
 #, fuzzy
 msgid "Open Tab"
-msgstr "Abrir un arquivo"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-preferences.c:317
 #: ../terminal/terminal-preferences.c:318
@@ -784,13 +788,13 @@ msgstr "Abrir terminal"
 #: ../terminal/terminal-preferences.c:329
 #, fuzzy
 msgid "Detach Tab"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "_Desancorar separador"
 
 #: ../terminal/terminal-preferences.c:339
 #: ../terminal/terminal-preferences.c:340
 #, fuzzy
 msgid "Close Tab"
-msgstr "Pechar Ventá"
+msgstr "_Pechar separador"
 
 #: ../terminal/terminal-preferences.c:350
 #: ../terminal/terminal-preferences.c:351
@@ -841,85 +845,85 @@ msgstr "Pantalla completa"
 #: ../terminal/terminal-preferences.c:450
 #, fuzzy
 msgid "Set Title"
-msgstr "lector de novas - @title"
+msgstr "Establecer o título do obxecto"
 
 #: ../terminal/terminal-preferences.c:460
 #: ../terminal/terminal-preferences.c:461
 #, fuzzy
 msgid "Reset"
-msgstr "Reiniciar"
+msgstr "_Restablecer"
 
 #: ../terminal/terminal-preferences.c:471
 #: ../terminal/terminal-preferences.c:472
 #, fuzzy
 msgid "Reset and Clear"
-msgstr "Limpar as etiquetas da pantalla"
+msgstr "Restablecer a orde e a visibilidade da ferramenta"
 
 #: ../terminal/terminal-preferences.c:482
 #: ../terminal/terminal-preferences.c:483
 #, fuzzy
 msgid "Previous Tab"
-msgstr "Unidade Anterior"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-preferences.c:493
 #: ../terminal/terminal-preferences.c:494
 #, fuzzy
 msgid "Next Tab"
-msgstr "Próxima actualización"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-preferences.c:504
 #: ../terminal/terminal-preferences.c:505
 #, fuzzy
 msgid "Switch to Tab 1"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:515
 #: ../terminal/terminal-preferences.c:516
 #, fuzzy
 msgid "Switch to Tab 2"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:526
 #: ../terminal/terminal-preferences.c:527
 #, fuzzy
 msgid "Switch to Tab 3"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:537
 #: ../terminal/terminal-preferences.c:538
 #, fuzzy
 msgid "Switch to Tab 4"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:548
 #: ../terminal/terminal-preferences.c:549
 #, fuzzy
 msgid "Switch to Tab 5"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:559
 #: ../terminal/terminal-preferences.c:560
 #, fuzzy
 msgid "Switch to Tab 6"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:570
 #: ../terminal/terminal-preferences.c:571
 #, fuzzy
 msgid "Switch to Tab 7"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:581
 #: ../terminal/terminal-preferences.c:582
 #, fuzzy
 msgid "Switch to Tab 8"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:592
 #: ../terminal/terminal-preferences.c:593
 #, fuzzy
 msgid "Switch to Tab 9"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "Cambiar ao sentido das agullas do reloxo"
 
 #: ../terminal/terminal-preferences.c:603
 #: ../terminal/terminal-preferences.c:604
@@ -935,7 +939,7 @@ msgstr ""
 #: ../terminal/terminal-screen.c:1015
 #, fuzzy
 msgid "Failed to execute child"
-msgstr "Non se puido executa-lo ficheiro «%s»"
+msgstr "Fallo ó executar o proceso fillo (%s)"
 
 #: ../terminal/terminal-screen.c:1251
 msgid "Untitled"
@@ -969,22 +973,22 @@ msgstr "Acción"
 #: ../terminal/terminal-shortcut-editor.c:235
 #, fuzzy
 msgid "Shortcut key"
-msgstr "opcións de !key"
+msgstr "_Atribuír o atallo de novo"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 #, fuzzy
 msgid "Compose shortcut"
-msgstr "Icona de acceso rápido"
+msgstr "_Atribuír o atallo de novo"
 
 #: ../terminal/terminal-shortcut-editor.c:353
 #, fuzzy
 msgid "Compose shortcut for:"
-msgstr "Pór atallo para a instrución:"
+msgstr "Hint da _caixa de ferramentas:"
 
 #: ../terminal/terminal-shortcut-editor.c:375
 #, fuzzy
 msgid "Failed to acquire keyboard"
-msgstr "Fallou a adqusición da selección de administración"
+msgstr "\" fallou ó cargar debido a "
 
 #: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
@@ -993,44 +997,44 @@ msgstr ""
 #: ../terminal/terminal-tab-header.c:205
 #, fuzzy
 msgid "Close this tab"
-msgstr "Pechar esta xanela"
+msgstr "Configurar este separador"
 
 #: ../terminal/terminal-tab-header.c:342
 #: ../terminal/terminal-window.c:219
 #, fuzzy
 msgid "_Detach Tab"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "_Desancorar separador"
 
 #: ../terminal/terminal-tab-header.c:347
 #: ../terminal/terminal-window.c:220
 #, fuzzy
 msgid "C_lose Tab"
-msgstr "Editor de tablaturas de guitarra"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-toolbars-view.c:133
 #, fuzzy
 msgid "Toolbar Editor"
-msgstr "Saír do Editor"
+msgstr "Editor de _XML..."
 
 #: ../terminal/terminal-widget.c:301
 #, fuzzy
 msgid "Copy Email Address"
-msgstr "Admin email: enderezo de correo-e do administrador FTP."
+msgstr "Enviar por correo-e"
 
 #: ../terminal/terminal-widget.c:302
 #, fuzzy
 msgid "Compose Email"
-msgstr "Correo-e do administrador:"
+msgstr "Compor canles"
 
 #: ../terminal/terminal-widget.c:306
 #, fuzzy
 msgid "Copy Link Address"
-msgstr "O seu enderezo de correo-e"
+msgstr "<b>Ligazón</b> sen URI"
 
 #: ../terminal/terminal-widget.c:307
 #, fuzzy
 msgid "Open Link"
-msgstr "Cor de ligazón"
+msgstr "<b>Ligazón</b> a %s"
 
 #: ../terminal/terminal-widget.c:462
 #, c-format
@@ -1056,7 +1060,7 @@ msgstr ""
 #: ../terminal/terminal-widget.c:673
 #, fuzzy, c-format
 msgid "Failed to open the URL `%s'"
-msgstr "Fallo ó abrir o ficheiro"
+msgstr "Produciuse un erro ao abrir o ficheiro de GFlare '%s': %s"
 
 #: ../terminal/terminal-window.c:216
 msgid "_File"
@@ -1065,22 +1069,22 @@ msgstr "_Ficheiro"
 #: ../terminal/terminal-window.c:217
 #, fuzzy
 msgid "Open _Tab"
-msgstr "Abrir un arquivo"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-window.c:217
 #, fuzzy
 msgid "Open a new terminal tab"
-msgstr "Abrir nunha nova xanela"
+msgstr "Abrir imaxes como novas"
 
 #: ../terminal/terminal-window.c:218
 #, fuzzy
 msgid "Open T_erminal"
-msgstr "Abrir un arquivo"
+msgstr "Abrir _Recente"
 
 #: ../terminal/terminal-window.c:218
 #, fuzzy
 msgid "Open a new terminal window"
-msgstr "Abrir nunha nova xanela"
+msgstr "Abrir unha nova ventá co mesmo documento"
 
 #: ../terminal/terminal-window.c:219
 msgid "Open a new window for the current terminal tab"
@@ -1093,12 +1097,12 @@ msgstr ""
 #: ../terminal/terminal-window.c:221
 #, fuzzy
 msgid "_Close Window"
-msgstr "Pechar Ventá"
+msgstr "Pechar esta ventá"
 
 #: ../terminal/terminal-window.c:221
 #, fuzzy
 msgid "Close the terminal window"
-msgstr "Pechar esta xanela"
+msgstr "Pechar esta ventá"
 
 #: ../terminal/terminal-window.c:222
 msgid "_Edit"
@@ -1111,7 +1115,7 @@ msgstr "_Copiar"
 #: ../terminal/terminal-window.c:223
 #, fuzzy
 msgid "Copy to clipboard"
-msgstr "Copie sitios web ó seu ordenador"
+msgstr "Copia-la selección ó portarretallos"
 
 #: ../terminal/terminal-window.c:224
 msgid "_Paste"
@@ -1120,16 +1124,17 @@ msgstr "_Pegar"
 #: ../terminal/terminal-window.c:224
 #, fuzzy
 msgid "Paste from clipboard"
-msgstr "Recuperar dende o Disco"
+msgstr "Pegar o contido do portapapeis"
 
 #: ../terminal/terminal-window.c:225
 #, fuzzy
 msgid "Paste _Selection"
-msgstr "Opcións de selección"
+msgstr "Selección cancelada."
 
 #: ../terminal/terminal-window.c:225
+#, fuzzy
 msgid "Paste from primary selection"
-msgstr ""
+msgstr "Eliminar o efecto da selección"
 
 #: ../terminal/terminal-window.c:226
 msgid "_Toolbars..."
@@ -1147,7 +1152,7 @@ msgstr "Pr_eferencias..."
 #: ../terminal/terminal-window.c:227
 #, fuzzy
 msgid "Open the Terminal preferences dialog"
-msgstr "Abri-lo diálogo de renomeamento masivo"
+msgstr "Abrir a ventá de opcións de ferramenta"
 
 #: ../terminal/terminal-window.c:228
 msgid "_View"
@@ -1160,7 +1165,7 @@ msgstr "_Terminal"
 #: ../terminal/terminal-window.c:230
 #, fuzzy
 msgid "_Set Title..."
-msgstr "lector de novas - @title"
+msgstr "Establecer o título do obxecto"
 
 #: ../terminal/terminal-window.c:230
 msgid "Set a custom title for the current tab"
@@ -1169,12 +1174,12 @@ msgstr ""
 #: ../terminal/terminal-window.c:231
 #, fuzzy
 msgid "_Reset"
-msgstr "Reiniciar"
+msgstr "_Restablecer"
 
 #: ../terminal/terminal-window.c:232
 #, fuzzy
 msgid "Reset and C_lear"
-msgstr "Data e hora"
+msgstr "Restablecer a orde e a visibilidade da ferramenta"
 
 #: ../terminal/terminal-window.c:233
 #, fuzzy
@@ -1184,22 +1189,22 @@ msgstr "_Ir"
 #: ../terminal/terminal-window.c:234
 #, fuzzy
 msgid "_Previous Tab"
-msgstr "Unidade Anterior"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-window.c:234
 #, fuzzy
 msgid "Switch to previous tab"
-msgstr "Ir á páxina anterior"
+msgstr "Cambiar á capa anterior"
 
 #: ../terminal/terminal-window.c:235
 #, fuzzy
 msgid "_Next Tab"
-msgstr "Próxima actualización"
+msgstr "_Engadir separador"
 
 #: ../terminal/terminal-window.c:235
 #, fuzzy
 msgid "Switch to next tab"
-msgstr "Ir á páxina seguinte"
+msgstr "Cambiar á seguinte capa"
 
 #: ../terminal/terminal-window.c:236
 msgid "_Help"
@@ -1232,47 +1237,47 @@ msgstr "Mostrar información sobre Terminal"
 #: ../terminal/terminal-window.c:240
 #, fuzzy
 msgid "_Input Methods"
-msgstr "Formatos de entrada"
+msgstr "Entrada de EMF"
 
 #: ../terminal/terminal-window.c:245
 #, fuzzy
 msgid "Show _Menubar"
-msgstr "Mostrar descricións"
+msgstr "Mostrar barra de _menú"
 
 #: ../terminal/terminal-window.c:245
 #, fuzzy
 msgid "Show/hide the menubar"
-msgstr "Trocar escritorio mostrar/ocultar"
+msgstr "Amosar/Agochar os D_iálogos"
 
 #: ../terminal/terminal-window.c:246
 #, fuzzy
 msgid "Show _Toolbars"
-msgstr "Mostrar descricións"
+msgstr "Amosar/Agochar"
 
 #: ../terminal/terminal-window.c:246
 #, fuzzy
 msgid "Show/hide the toolbars"
-msgstr "Trocar escritorio mostrar/ocultar"
+msgstr "Amosar/Agochar os D_iálogos"
 
 #: ../terminal/terminal-window.c:247
 #, fuzzy
 msgid "Show Window _Borders"
-msgstr "Iniciando o xestor de xanelas"
+msgstr "Mostra a barra de menú desta ventá"
 
 #: ../terminal/terminal-window.c:247
 #, fuzzy
 msgid "Show/hide the window decorations"
-msgstr "Trocar escritorio mostrar/ocultar"
+msgstr "Mostra a barra de menú desta ventá"
 
 #: ../terminal/terminal-window.c:248
 #, fuzzy
 msgid "_Fullscreen"
-msgstr "B<-f, --fullscreen>"
+msgstr "_Pantalla Completa"
 
 #: ../terminal/terminal-window.c:248
 #, fuzzy
 msgid "Toggle fullscreen mode"
-msgstr "Activa ou desactiva o modo de xogo acelerado"
+msgstr "Activar ou desactivar a visualización en pantalla completa"
 
 #: ../terminal/terminal-window.c:534
 msgid "Warning"
@@ -1281,7 +1286,7 @@ msgstr "Advertencia"
 #: ../terminal/terminal-window.c:545
 #, fuzzy
 msgid "Close all tabs"
-msgstr "Pechar _tódalas xanelas"
+msgstr "Pechar todas as imaxes"
 
 #: ../terminal/terminal-window.c:564
 #, c-format
@@ -1293,7 +1298,7 @@ msgstr ""
 #: ../terminal/terminal-window.c:567
 #, fuzzy
 msgid "Close all tabs?"
-msgstr "Pechar _tódalas xanelas"
+msgstr "Pechar todas as imaxes"
 
 #: ../terminal/terminal-window.c:580
 #, fuzzy
@@ -1303,7 +1308,7 @@ msgstr "_Non preguntar de novo"
 #: ../terminal/terminal-window.c:1525
 #, fuzzy
 msgid "Window Title|Set Title"
-msgstr "Establecer as propiedades das ventás"
+msgstr "Establecer o título do obxecto"
 
 #: ../terminal/terminal-window.c:1539
 msgid "<b>Title:</b>"
