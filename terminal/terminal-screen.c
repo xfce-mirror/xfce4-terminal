@@ -447,7 +447,8 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                                    GError          **error)
 {
   struct passwd *pw;
-  const gchar   *shell_name;
+  const gchar   *shell_name = NULL;
+  const gchar   *shell_fullpath;
   gboolean       command_login_shell;
 
   if (screen->custom_command != NULL)
@@ -469,12 +470,25 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                     "command-login-shell", &command_login_shell,
                     NULL);
 
-      shell_name = strrchr (pw->pw_shell, '/');
+
+      if (pw->pw_shell == NULL || *(pw->pw_shell) == 0)
+        {
+          shell_fullpath = g_getenv ("SHELL");
+          if (shell_fullpath == NULL)
+            /* the very last fallback */
+            shell_fullpath = "/bin/sh";
+        }
+      else
+        shell_fullpath = pw->pw_shell;
+
+      if (shell_fullpath != NULL)
+	    shell_name = strrchr (shell_fullpath, '/');
+
       if (shell_name != NULL)
         ++shell_name;
       else
-        shell_name = pw->pw_shell;
-      *command = g_strdup (pw->pw_shell);
+        shell_name = shell_fullpath;
+      *command = g_strdup (shell_fullpath);
 
       *argv = g_new (gchar *, 2);
       if (command_login_shell)

@@ -1,3 +1,10 @@
+2009-03-01	Jannis Pohlmann <jannis@xfce.org>
+
+	* terminal/terminal-screen.c: Fall back to the SHELL environment
+	  variable or to /bin/sh if there's no login shell defined for the
+	  current user. This fixes bug #4970. Patch cooked up by Robby Workman
+	  and Enrico Tröger.
+
 2009-02-26	Jannis Pohlmann <jannis@xfce.org>
 
 	* == Released 0.2.10 == 
