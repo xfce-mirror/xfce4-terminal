@@ -1026,6 +1026,9 @@ terminal_window_page_removed (GtkNotebook    *notebook,
   /* get old window action */
   action = gtk_action_group_get_action (window->action_group, "set-title");
 
+  /* unset the go menu item */
+  g_object_set_data (G_OBJECT (child), I_("terminal-window-go-menu-item"), NULL);
+
   /* disconnect signals */
   g_signal_handlers_disconnect_by_func (G_OBJECT (child), terminal_window_get_context_menu, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (child), terminal_window_notify_title, window);
