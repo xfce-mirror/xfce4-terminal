@@ -205,9 +205,7 @@ struct _TerminalWindow
 
 
 static guint window_signals[LAST_SIGNAL];
-#if GTK_CHECK_VERSION (2,12,0)
 static gconstpointer window_notebook_group = "Terminal";
-#endif
 
 
 
@@ -397,11 +395,8 @@ terminal_window_init (TerminalWindow *window)
   exo_binding_new (G_OBJECT (window->preferences), "misc-tab-position", G_OBJECT (window->notebook), "tab-pos");
 
   /* set the notebook group id */
-#if GTK_CHECK_VERSION (2,12,0)
-  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), (gpointer) window_notebook_group);
-#else
-  gtk_notebook_set_group_id (GTK_NOTEBOOK (window->notebook), 1);
-#endif
+  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), 
+                          (gpointer) window_notebook_group);
 
   /* signals */
   g_signal_connect (G_OBJECT (window->notebook), "notify::page",
@@ -412,10 +407,8 @@ terminal_window_init (TerminalWindow *window)
                     G_CALLBACK (terminal_window_page_removed), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-added",
                     G_CALLBACK (terminal_window_page_added), window);
-#if GTK_CHECK_VERSION (2,12,0)
   g_signal_connect (G_OBJECT (window->notebook), "create-window",
                     G_CALLBACK (terminal_window_page_detach), window);
-#endif
 
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
   gtk_widget_show (window->notebook);

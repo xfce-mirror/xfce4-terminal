@@ -405,9 +405,7 @@ terminal_screen_set_property (GObject          *object,
 static void
 terminal_screen_realize (GtkWidget *widget)
 {
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
   GdkScreen *screen;
-#endif
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->realize) (widget);
 
@@ -415,11 +413,9 @@ terminal_screen_realize (GtkWidget *widget)
   if (!GTK_WIDGET_REALIZED (TERMINAL_SCREEN (widget)->terminal))
     gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
 
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
   /* connect to the "composited-changed" signal */
   screen = gtk_widget_get_screen (widget);
   g_signal_connect_swapped (G_OBJECT (screen), "composited-changed", G_CALLBACK (terminal_screen_update_background), widget);
-#endif
 }
 
 
@@ -427,13 +423,11 @@ terminal_screen_realize (GtkWidget *widget)
 static void
 terminal_screen_unrealize (GtkWidget *widget)
 {
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
   GdkScreen *screen;
 
   /* disconnect the "composited-changed" handler */
   screen = gtk_widget_get_screen (widget);
   g_signal_handlers_disconnect_by_func (G_OBJECT (screen), terminal_screen_update_background, widget);
-#endif
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->unrealize) (widget);
 }
@@ -728,12 +722,8 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
 {
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-blinks", &bval, NULL);
-#if VTE_CHECK_VERSION (0, 17, 1)
   vte_terminal_set_cursor_blink_mode (VTE_TERMINAL (screen->terminal), 
                                       bval ? VTE_CURSOR_BLINK_ON : VTE_CURSOR_BLINK_OFF);
-#else
-  vte_terminal_set_cursor_blinks (VTE_TERMINAL (screen->terminal), bval);
-#endif
 }
 
 
@@ -917,13 +907,8 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
     g_source_remove(screen->reset_activity_cb);
   }
 
-#if GLIB_CHECK_VERSION (2,14,0)
   screen->reset_activity_cb = g_timeout_add_seconds ((gint)timeout_seconds,
                      (GSourceFunc)terminal_screen_reset_activity, screen);
-#else
-  screen->reset_activity_cb = g_timeout_add ((gint)timeout_seconds * 1000,
-                     (GSourceFunc)terminal_screen_reset_activity, screen);
-#endif
 }
 
 static gboolean
@@ -947,9 +932,7 @@ terminal_screen_timer_background (gpointer user_data)
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
       vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
       vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
       vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
-#endif
     }
   else if (background_mode == TERMINAL_BACKGROUND_IMAGE)
     {
@@ -961,9 +944,8 @@ terminal_screen_timer_background (gpointer user_data)
                                           screen->terminal->allocation.width,
                                           screen->terminal->allocation.height);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
       vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
-#endif
+
       if (image != NULL)
         g_object_unref (G_OBJECT (image));
       g_object_unref (G_OBJECT (loader));
@@ -973,7 +955,6 @@ terminal_screen_timer_background (gpointer user_data)
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
 
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
       /* check if the X screen is composited */
       if (gdk_screen_is_composited (gtk_widget_get_screen (user_data)))
         {
@@ -983,13 +964,10 @@ terminal_screen_timer_background (gpointer user_data)
         }
       else
         {
-#endif
           vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
           vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
-#ifdef HAVE_VTE_TERMINAL_SET_OPACITY
           vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
         }
-#endif
     }
 
   GDK_THREADS_LEAVE ();

@@ -79,11 +79,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "copyright", "Copyright \302\251 2003-2007 Benedikt Meurer",
                          "license", XFCE_LICENSE_GPL,
                          "logo", logo,
-#if GTK_CHECK_VERSION(2,11,0)
                          "program-name", PACKAGE_NAME,
-#else
-                         "name", PACKAGE_NAME,
-#endif
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
                          "website", "http://www.xfce.org/projects/terminal/",

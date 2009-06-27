@@ -33,11 +33,6 @@ G_BEGIN_DECLS;
 #define TERMINAL_IS_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_WIDGET))
 #define TERMINAL_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
 
-/* VTE_CHECK_VERSION is available since VTE 0.17.1 */
-#ifndef VTE_CHECK_VERSION
-#define VTE_CHECK_VERSION(major,minor,micro) (0)
-#endif
-
 typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
