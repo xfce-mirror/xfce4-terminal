@@ -304,7 +304,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_NEW_TAB,
                                    g_param_spec_string ("accel-new-tab",
                                                         _("Open Tab"),
-                                                        _("Open Tab"),
+                                                        "AccelNewTab",
                                                         "<control><shift>t",
                                                         EXO_PARAM_READWRITE));
 
@@ -315,7 +315,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_NEW_WINDOW,
                                    g_param_spec_string ("accel-new-window",
                                                         _("Open Terminal"),
-                                                        _("Open Terminal"),
+                                                        "AccelNewWindow",
                                                         "<control><shift>n",
                                                         EXO_PARAM_READWRITE));
 
@@ -326,7 +326,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_DETACH_TAB,
                                    g_param_spec_string ("accel-detach-tab",
                                                         _("Detach Tab"),
-                                                        _("Detach Tab"),
+                                                        "AccelDetachTab",
                                                         "<control><shift>d",
                                                         EXO_PARAM_READWRITE));
 
@@ -337,7 +337,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_CLOSE_TAB,
                                    g_param_spec_string ("accel-close-tab",
                                                         _("Close Tab"),
-                                                        _("Close Tab"),
+                                                        "AccelCloseTab",
                                                         "<control><shift>w",
                                                         EXO_PARAM_READWRITE));
 
@@ -348,7 +348,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_CLOSE_WINDOW,
                                    g_param_spec_string ("accel-close-window",
                                                         _("Close Window"),
-                                                        _("Close Window"),
+                                                        "AccelCloseWindow",
                                                         "<control><shift>q",
                                                         EXO_PARAM_READWRITE));
 
@@ -359,7 +359,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_COPY,
                                    g_param_spec_string ("accel-copy",
                                                         _("Copy"),
-                                                        _("Copy"),
+                                                        "AccelCopy",
                                                         "<control><shift>c",
                                                         EXO_PARAM_READWRITE));
 
@@ -370,7 +370,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PASTE,
                                    g_param_spec_string ("accel-paste",
                                                         _("Paste"),
-                                                        _("Paste"),
+                                                        "AccelPaste",
                                                         "<control><shift>v",
                                                         EXO_PARAM_READWRITE));
 
@@ -381,7 +381,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PASTE_SELECTION,
                                    g_param_spec_string ("accel-paste-selection",
                                                         _("Paste Selection"),
-                                                        _("Paste Selection"),
+                                                        "AccelPasteSelection",
                                                         NULL,
                                                         EXO_PARAM_READWRITE));
 
@@ -392,7 +392,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PREFERENCES,
                                    g_param_spec_string ("accel-preferences",
                                                         _("Preferences"),
-                                                        _("Preferences"),
+                                                        "AccelPreferences",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -403,7 +403,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SHOW_MENUBAR,
                                    g_param_spec_string ("accel-show-menubar",
                                                         _("Show menubar"),
-                                                        _("Show menubar"),
+                                                        "AccelShowMenubar",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -414,7 +414,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SHOW_TOOLBARS,
                                    g_param_spec_string ("accel-show-toolbars",
                                                         _("Show toolbars"),
-                                                        _("Show toolbars"),
+                                                        "AccelShowToolbars",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -425,7 +425,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SHOW_BORDERS,
                                    g_param_spec_string ("accel-show-borders",
                                                         _("Show borders"),
-                                                        _("Show borders"),
+                                                        "AccelShowBorders",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -436,7 +436,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_FULLSCREEN,
                                    g_param_spec_string ("accel-fullscreen",
                                                         _("Fullscreen"),
-                                                        _("Fullscreen"),
+                                                        "AccelFullscreen",
                                                         "F11",
                                                         EXO_PARAM_READWRITE));
 
@@ -447,7 +447,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SET_TITLE,
                                    g_param_spec_string ("accel-set-title",
                                                         _("Set Title"),
-                                                        _("Set Title"),
+                                                        "AccelSetTitle",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -458,7 +458,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_RESET,
                                    g_param_spec_string ("accel-reset",
                                                         _("Reset"),
-                                                        _("Reset"),
+                                                        "AccelReset",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -469,7 +469,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_RESET_AND_CLEAR,
                                    g_param_spec_string ("accel-reset-and-clear",
                                                         _("Reset and Clear"),
-                                                        _("Reset and Clear"),
+                                                        "AccelResetAndClear",
                                                         _("Disabled"),
                                                         EXO_PARAM_READWRITE));
 
@@ -480,7 +480,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_PREV_TAB,
                                    g_param_spec_string ("accel-prev-tab",
                                                         _("Previous Tab"),
-                                                        _("Previous Tab"),
+                                                        "AccelPrevTab",
                                                         "<control>Page_Up",
                                                         EXO_PARAM_READWRITE));
 
@@ -491,7 +491,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_NEXT_TAB,
                                    g_param_spec_string ("accel-next-tab",
                                                         _("Next Tab"),
-                                                        _("Next Tab"),
+                                                        "AccelNextTab",
                                                         "<control>Page_Down",
                                                         EXO_PARAM_READWRITE));
 
@@ -502,7 +502,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB1,
                                    g_param_spec_string ("accel-switch-to-tab1",
                                                         _("Switch to Tab 1"),
-                                                        _("Switch to Tab 1"),
+                                                        "AccelSwitchToTab1",
                                                         "<Alt>1",
                                                         EXO_PARAM_READWRITE));
 
@@ -513,7 +513,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB2,
                                    g_param_spec_string ("accel-switch-to-tab2",
                                                         _("Switch to Tab 2"),
-                                                        _("Switch to Tab 2"),
+                                                        "AccelSwitchToTab2",
                                                         "<Alt>2",
                                                         EXO_PARAM_READWRITE));
 
@@ -524,7 +524,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB3,
                                    g_param_spec_string ("accel-switch-to-tab3",
                                                         _("Switch to Tab 3"),
-                                                        _("Switch to Tab 3"),
+                                                        "AccelSwitchToTab3",
                                                         "<Alt>3",
                                                         EXO_PARAM_READWRITE));
 
@@ -535,7 +535,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB4,
                                    g_param_spec_string ("accel-switch-to-tab4",
                                                         _("Switch to Tab 4"),
-                                                        _("Switch to Tab 4"),
+                                                        "AccelSwitchToTab4",
                                                         "<Alt>4",
                                                         EXO_PARAM_READWRITE));
 
@@ -546,7 +546,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB5,
                                    g_param_spec_string ("accel-switch-to-tab5",
                                                         _("Switch to Tab 5"),
-                                                        _("Switch to Tab 5"),
+                                                        "AccelSwitchToTab5",
                                                         "<Alt>5",
                                                         EXO_PARAM_READWRITE));
 
@@ -557,7 +557,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB6,
                                    g_param_spec_string ("accel-switch-to-tab6",
                                                         _("Switch to Tab 6"),
-                                                        _("Switch to Tab 6"),
+                                                        "AccelSwitchToTab6",
                                                         "<Alt>6",
                                                         EXO_PARAM_READWRITE));
 
@@ -568,7 +568,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB7,
                                    g_param_spec_string ("accel-switch-to-tab7",
                                                         _("Switch to Tab 7"),
-                                                        _("Switch to Tab 7"),
+                                                        "AccelSwitchToTab7",
                                                         "<Alt>7",
                                                         EXO_PARAM_READWRITE));
 
@@ -579,7 +579,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB8,
                                    g_param_spec_string ("accel-switch-to-tab8",
                                                         _("Switch to Tab 8"),
-                                                        _("Switch to Tab 8"),
+                                                        "AccelSwitchToTab8",
                                                         "<Alt>8",
                                                         EXO_PARAM_READWRITE));
 
@@ -590,7 +590,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_SWITCH_TO_TAB9,
                                    g_param_spec_string ("accel-switch-to-tab9",
                                                         _("Switch to Tab 9"),
-                                                        _("Switch to Tab 9"),
+                                                        "AccelSwitchToTab9",
                                                         "<Alt>9",
                                                         EXO_PARAM_READWRITE));
 
@@ -601,7 +601,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_ACCEL_CONTENTS,
                                    g_param_spec_string ("accel-contents",
                                                         _("Contents"),
-                                                        _("Contents"),
+                                                        "AccelContents",
                                                         "F1",
                                                         EXO_PARAM_READWRITE));
 
@@ -612,7 +612,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_BACKGROUND_MODE,
                                    g_param_spec_enum ("background-mode",
                                                       "background-mode",
-                                                      "background-mode",
+                                                      "BackgroundMode",
                                                       TERMINAL_TYPE_BACKGROUND,
                                                       TERMINAL_BACKGROUND_SOLID,
                                                       EXO_PARAM_READWRITE));
@@ -624,7 +624,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_BACKGROUND_IMAGE_FILE,
                                    g_param_spec_string ("background-image-file",
                                                         "background-image-file",
-                                                        "background-image-file",
+                                                        "BackgroundImageFile",
                                                         "",
                                                         EXO_PARAM_READWRITE));
 
@@ -635,7 +635,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_BACKGROUND_IMAGE_STYLE,
                                    g_param_spec_enum ("background-image-style",
                                                       "background-image-style",
-                                                      "background-image-style",
+                                                      "BackgroundImageStyle",
                                                       TERMINAL_TYPE_BACKGROUND_STYLE,
                                                       TERMINAL_BACKGROUND_STYLE_TILED,
                                                       EXO_PARAM_READWRITE));
@@ -652,7 +652,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_BACKGROUND_DARKNESS,
                                    g_param_spec_double ("background-darkness",
                                                         "background-darkness",
-                                                        "background-darkness",
+                                                        "BackgroundDarkness",
                                                         0.0, 1.0, 0.5,
                                                         EXO_PARAM_READWRITE));
 
@@ -663,7 +663,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_BINDING_BACKSPACE,
                                    g_param_spec_enum ("binding-backspace",
                                                       "binding-backspace",
-                                                      "binding-backspace",
+                                                      "BindingBackspace",
                                                       TERMINAL_TYPE_ERASE_BINDING,
                                                       TERMINAL_ERASE_BINDING_AUTO,
                                                       EXO_PARAM_READWRITE));
@@ -675,7 +675,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_BINDING_DELETE,
                                    g_param_spec_enum ("binding-delete",
                                                       "binding-delete",
-                                                      "binding-delete",
+                                                      "BindingDelete",
                                                       TERMINAL_TYPE_ERASE_BINDING,
                                                       TERMINAL_ERASE_BINDING_AUTO,
                                                       EXO_PARAM_READWRITE));
@@ -687,7 +687,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_FOREGROUND,
                                    g_param_spec_string ("color-foreground",
                                                         "color-foreground",
-                                                        "color-foreground",
+                                                        "ColorForeground",
                                                         "White",
                                                         EXO_PARAM_READWRITE));
 
@@ -698,7 +698,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_BACKGROUND,
                                    g_param_spec_string ("color-background",
                                                         "color-background",
-                                                        "color-background",
+                                                        "ColorBackground",
                                                         "Black",
                                                         EXO_PARAM_READWRITE));
 
@@ -709,7 +709,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_CURSOR,
                                    g_param_spec_string ("color-cursor",
                                                         "color-cursor",
-                                                        "color-cursor",
+                                                        "ColorCursor",
                                                         "Green",
                                                         EXO_PARAM_READWRITE));
 
@@ -720,7 +720,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_SELECTION,
                                    g_param_spec_string ("color-selection",
                                                         "color-selection",
-                                                        "color-selection",
+                                                        "ColorSelection",
                                                         "White",
                                                         EXO_PARAM_READWRITE));
 
@@ -731,7 +731,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_SELECTION_USE_DEFAULT,
                                    g_param_spec_boolean ("color-selection-use-default",
                                                          "color-selection-use-default",
-                                                         "color-selection-use-default",
+                                                         "ColorSelectionUseDefault",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -742,7 +742,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE1,
                                    g_param_spec_string ("color-palette1",
                                                         "color-palette1",
-                                                        "color-palette1",
+                                                        "ColorPalette1",
                                                         "#000000000000",
                                                         EXO_PARAM_READWRITE));
 
@@ -753,7 +753,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE2,
                                    g_param_spec_string ("color-palette2",
                                                         "color-palette2",
-                                                        "color-palette2",
+                                                        "ColorPalette2",
                                                         "#aaaa00000000",
                                                         EXO_PARAM_READWRITE));
 
@@ -764,7 +764,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE3,
                                    g_param_spec_string ("color-palette3",
                                                         "color-palette3",
-                                                        "color-palette3",
+                                                        "ColorPalette3",
                                                         "#0000aaaa0000",
                                                         EXO_PARAM_READWRITE));
 
@@ -775,7 +775,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE4,
                                    g_param_spec_string ("color-palette4",
                                                         "color-palette4",
-                                                        "color-palette4",
+                                                        "ColorPalette4",
                                                         "#aaaa55550000",
                                                         EXO_PARAM_READWRITE));
 
@@ -786,7 +786,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE5,
                                    g_param_spec_string ("color-palette5",
                                                         "color-palette5",
-                                                        "color-palette5",
+                                                        "ColorPalette5",
                                                         "#00000000aaaa",
                                                         EXO_PARAM_READWRITE));
 
@@ -797,7 +797,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE6,
                                    g_param_spec_string ("color-palette6",
                                                         "color-palette6",
-                                                        "color-palette6",
+                                                        "ColorPalette6",
                                                         "#aaaa0000aaaa",
                                                         EXO_PARAM_READWRITE));
 
@@ -808,7 +808,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE7,
                                    g_param_spec_string ("color-palette7",
                                                         "color-palette7",
-                                                        "color-palette7",
+                                                        "ColorPalette7",
                                                         "#0000aaaaaaaa",
                                                         EXO_PARAM_READWRITE));
 
@@ -819,7 +819,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE8,
                                    g_param_spec_string ("color-palette8",
                                                         "color-palette8",
-                                                        "color-palette8",
+                                                        "ColorPalette8",
                                                         "#aaaaaaaaaaaa",
                                                         EXO_PARAM_READWRITE));
 
@@ -830,7 +830,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE9,
                                    g_param_spec_string ("color-palette9",
                                                         "color-palette9",
-                                                        "color-palette9",
+                                                        "ColorPalette9",
                                                         "#555555555555",
                                                         EXO_PARAM_READWRITE));
 
@@ -841,7 +841,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE10,
                                    g_param_spec_string ("color-palette10",
                                                         "color-palette10",
-                                                        "color-palette10",
+                                                        "ColorPalette10",
                                                         "#ffff55555555",
                                                         EXO_PARAM_READWRITE));
 
@@ -852,7 +852,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE11,
                                    g_param_spec_string ("color-palette11",
                                                         "color-palette11",
-                                                        "color-palette11",
+                                                        "ColorPalette11",
                                                         "#5555ffff5555",
                                                         EXO_PARAM_READWRITE));
 
@@ -863,7 +863,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE12,
                                    g_param_spec_string ("color-palette12",
                                                         "color-palette12",
-                                                        "color-palette12",
+                                                        "ColorPalette12",
                                                         "#ffffffff5555",
                                                         EXO_PARAM_READWRITE));
 
@@ -874,7 +874,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE13,
                                    g_param_spec_string ("color-palette13",
                                                         "color-palette13",
-                                                        "color-palette13",
+                                                        "ColorPalette13",
                                                         "#55555555ffff",
                                                         EXO_PARAM_READWRITE));
 
@@ -885,7 +885,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE14,
                                    g_param_spec_string ("color-palette14",
                                                         "color-palette14",
-                                                        "color-palette14",
+                                                        "ColorPalette14",
                                                         "#ffff5555ffff",
                                                         EXO_PARAM_READWRITE));
 
@@ -896,7 +896,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE15,
                                    g_param_spec_string ("color-palette15",
                                                         "color-palette15",
-                                                        "color-palette15",
+                                                        "ColorPalette15",
                                                         "#5555ffffffff",
                                                         EXO_PARAM_READWRITE));
 
@@ -907,7 +907,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COLOR_PALETTE16,
                                    g_param_spec_string ("color-palette16",
                                                         "color-palette16",
-                                                        "color-palette16",
+                                                        "ColorPalette16",
                                                         "#ffffffffffff",
                                                         EXO_PARAM_READWRITE));
 
@@ -918,7 +918,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_TAB_ACTIVITY_COLOR,
                                    g_param_spec_string ("tab-activity-color",
                                                         "tab-activity-color",
-                                                        "tab-activity-color",
+                                                        "TabActivityColor",
                                                         "#afff00000000",
                                                         EXO_PARAM_READWRITE));
   /**
@@ -928,7 +928,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_TAB_ACTIVITY_TIMEOUT,
                                    g_param_spec_double ("tab-activity-timeout",
                                                         "tab-activity-timeout",
-                                                        "tab-activity-timeout",
+                                                        "TabActivityTimeout",
                                                         0.0, 30.0, 2.0,
                                                         EXO_PARAM_READWRITE));
 
@@ -939,7 +939,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COMMAND_UPDATE_RECORDS,
                                    g_param_spec_boolean ("command-update-records",
                                                          "command-update-records",
-                                                         "command-update-records",
+                                                         "CommandUpdateRecords",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -950,7 +950,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_COMMAND_LOGIN_SHELL,
                                    g_param_spec_boolean ("command-login-shell",
                                                          "command-login-shell",
-                                                         "command-login-shell",
+                                                         "CommandLoginShell",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -961,7 +961,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_FONT_ALLOW_BOLD,
                                    g_param_spec_boolean ("font-allow-bold",
                                                          "font-allow-bold",
-                                                         "font-allow-bold",
+                                                         "FontAllowBold",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -972,7 +972,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_FONT_ANTI_ALIAS,
                                    g_param_spec_boolean ("font-anti-alias",
                                                          "font-anti-alias",
-                                                         "font-anti-alias",
+                                                         "FontAntiAlias",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -983,7 +983,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_FONT_NAME,
                                    g_param_spec_string ("font-name",
                                                         "font-name",
-                                                        "font-name",
+                                                        "FontName",
                                                         "Monospace 12",
                                                         EXO_PARAM_READWRITE));
 
@@ -994,7 +994,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_ALWAYS_SHOW_TABS,
                                    g_param_spec_boolean ("misc-always-show-tabs",
                                                          "misc-always-show-tabs",
-                                                         "misc-always-show-tabs",
+                                                         "MiscAlwaysShowTabs",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1005,7 +1005,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_BELL,
                                    g_param_spec_boolean ("misc-bell",
                                                          "misc-bell",
-                                                         "misc-bell",
+                                                         "MiscBell",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1016,7 +1016,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_BORDERS_DEFAULT,
                                    g_param_spec_boolean ("misc-borders-default",
                                                          "misc-borders-default",
-                                                         "misc-borders-default",
+                                                         "MiscBordersDefault",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1027,7 +1027,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_CURSOR_BLINKS,
                                    g_param_spec_boolean ("misc-cursor-blinks",
                                                          "misc-cursor-blinks",
-                                                         "misc-cursor-blinks",
+                                                         "MiscCursorBlinks",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1038,7 +1038,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_DEFAULT_GEOMETRY,
                                    g_param_spec_string ("misc-default-geometry",
                                                         "misc-default-geometry",
-                                                        "misc-default-geometry",
+                                                        "MiscDefaultGeometry",
                                                         "80x24",
                                                         EXO_PARAM_READWRITE));
   /**
@@ -1048,7 +1048,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_INHERIT_GEOMETRY,
                                    g_param_spec_boolean ("misc-inherit-geometry",
                                                          "misc-inherit-geometry",
-                                                         "misc-inherit-geometry",
+                                                         "MiscInheritGeometry",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1059,7 +1059,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_MENUBAR_DEFAULT,
                                    g_param_spec_boolean ("misc-menubar-default",
                                                          "misc-menubar-default",
-                                                         "misc-menubar-default",
+                                                         "MiscMenubarDefault",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1070,7 +1070,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_MOUSE_AUTOHIDE,
                                    g_param_spec_boolean ("misc-mouse-autohide",
                                                          "misc-mouse-autohide",
-                                                         "misc-mouse-autohide",
+                                                         "MiscMouseAutohide",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1081,7 +1081,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_TOOLBARS_DEFAULT,
                                    g_param_spec_boolean ("misc-toolbars-default",
                                                          "misc-toolbars-default",
-                                                         "misc-toolbars-default",
+                                                         "MiscToolbarsDefault",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1092,7 +1092,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_CONFIRM_CLOSE,
                                    g_param_spec_boolean ("misc-confirm-close",
                                                          "misc-confirm-close",
-                                                         "misc-confirm-close",
+                                                         "MiscConfirmClose",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1103,7 +1103,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_CYCLE_TABS,
                                    g_param_spec_boolean ("misc-cycle-tabs",
                                                          "misc-cycle-tabs",
-                                                         "misc-cycle-tabs",
+                                                         "MiscCycleTabs",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1114,7 +1114,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_TAB_CLOSE_BUTTONS,
                                    g_param_spec_boolean ("misc-tab-close-buttons",
                                                          "misc-tab-close-buttons",
-                                                         "misc-tab-close-buttons",
+                                                         "MiscTabCloseButtons",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1125,7 +1125,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_TAB_POSITION,
                                    g_param_spec_enum ("misc-tab-position",
                                                       "misc-tab-position",
-                                                      "misc-tab-position",
+                                                      "MiscTabPosition",
                                                       GTK_TYPE_POSITION_TYPE,
                                                       GTK_POS_TOP,
                                                       EXO_PARAM_READWRITE));
@@ -1137,7 +1137,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_MISC_HIGHLIGHT_URLS,
                                    g_param_spec_boolean ("misc-highlight-urls",
                                                          "misc-highlight-urls",
-                                                         "misc-highlight-urls",
+                                                         "MiscHighlightUrls",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1148,7 +1148,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SCROLLING_BAR,
                                    g_param_spec_enum ("scrolling-bar",
                                                       "scrolling-bar",
-                                                      "scrolling-bar",
+                                                      "ScrollingBar",
                                                       TERMINAL_TYPE_SCROLLBAR,
                                                       TERMINAL_SCROLLBAR_RIGHT,
                                                       EXO_PARAM_READWRITE));
@@ -1160,7 +1160,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SCROLLING_LINES,
                                    g_param_spec_uint ("scrolling-lines",
                                                       "scrolling-lines",
-                                                      "scrolling-lines",
+                                                      "ScrollingLines",
                                                       0u, 1024u * 1024u, 1000u,
                                                       EXO_PARAM_READWRITE));
 
@@ -1171,7 +1171,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SCROLLING_ON_OUTPUT,
                                    g_param_spec_boolean ("scrolling-on-output",
                                                          "scrolling-on-output",
-                                                         "scrolling-on-output",
+                                                         "ScrollingOnOutput",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1182,7 +1182,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SCROLLING_ON_KEYSTROKE,
                                    g_param_spec_boolean ("scrolling-on-keystroke",
                                                          "scrolling-on-keystroke",
-                                                         "scrolling-on-keystroke",
+                                                         "ScrollingOnKeystroke",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1195,7 +1195,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SCROLLING_SINGLE_LINE,
                                    g_param_spec_boolean ("scrolling-single-line",
                                                          "scrolling-single-line",
-                                                         "scrolling-single-line",
+                                                         "ScrollingSingleLine",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1208,7 +1208,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SHORTCUTS_NO_MENUKEY,
                                    g_param_spec_boolean ("shortcuts-no-menukey",
                                                          "shortcuts-no-menukey",
-                                                         "shortcuts-no-menukey",
+                                                         "ShortcutsNoMenukey",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1219,7 +1219,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_SHORTCUTS_NO_MNEMONICS,
                                    g_param_spec_boolean ("shortcuts-no-mnemonics",
                                                          "shortcuts-no-mnemonics",
-                                                         "shortcuts-no-mnemonics",
+                                                         "ShortcutsNoMnemonics",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1230,7 +1230,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_TITLE_INITIAL,
                                    g_param_spec_string ("title-initial",
                                                         "title-initial",
-                                                        "title-initial",
+                                                        "TitleInitial",
                                                         _("Terminal"),
                                                         EXO_PARAM_READWRITE));
 
@@ -1241,7 +1241,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_TITLE_MODE,
                                    g_param_spec_enum ("title-mode",
                                                       "title-mode",
-                                                      "title-mode",
+                                                      "TitleMode",
                                                       TERMINAL_TYPE_TITLE,
                                                       TERMINAL_TITLE_APPEND,
                                                       EXO_PARAM_READWRITE));
@@ -1253,7 +1253,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_TERM,
                                    g_param_spec_string ("term",
                                                         "term",
-                                                        "term",
+                                                        "Term",
                                                         "xterm",
                                                         EXO_PARAM_READWRITE));
 
@@ -1264,7 +1264,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_VTE_WORKAROUND_TITLE_BUG,
                                    g_param_spec_boolean ("vte-workaround-title-bug",
                                                          "vte-workaround-title-bug",
-                                                         "vte-workaround-title-bug",
+                                                         "VteWorkaroundTitleBug",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
@@ -1275,7 +1275,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    PROP_WORD_CHARS,
                                    g_param_spec_string ("word-chars",
                                                         "word-chars",
-                                                        "word-chars",
+                                                        "WordChars",
                                                         "-A-Za-z0-9,./?%&#:_~",
                                                         EXO_PARAM_READWRITE));
 }
@@ -1403,6 +1403,7 @@ terminal_preferences_set_property (GObject      *object,
 
 
 
+#ifndef NDEBUG
 static gchar*
 property_name_to_option_name (const gchar *property_name)
 {
@@ -1432,6 +1433,7 @@ property_name_to_option_name (const gchar *property_name)
 
   return option;
 }
+#endif
 
 
 
@@ -1459,7 +1461,9 @@ terminal_preferences_load_idle (gpointer user_data)
   XfceRc              *rc;
   GValue               dst = { 0, };
   GValue               src = { 0, };
+#ifndef NDEBUG
   gchar               *option;
+#endif
   guint                nspecs;
   guint                n;
 
@@ -1481,10 +1485,19 @@ terminal_preferences_load_idle (gpointer user_data)
     {
       spec = specs[n];
 
+#ifndef NDEBUG
+      /* when debugging is enabled, check if the generated option name
+       * is equal to the nickname, to prevent typos */
       option = property_name_to_option_name (spec->name);
-      string = xfce_rc_read_entry (rc, option, NULL);
+      if (!exo_str_is_equal (option, g_param_spec_get_blurb (spec)))
+        {
+          g_message ("Blurb does not match option name %s", spec->name);
+          g_assert_not_reached ();
+        }
       g_free (option);
+#endif
 
+      string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (spec), NULL);
       if (G_UNLIKELY (string == NULL))
         continue;
 
@@ -1552,7 +1565,9 @@ terminal_preferences_store_idle (gpointer user_data)
   XfceRc              *rc;
   GValue               dst = { 0, };
   GValue               src = { 0, };
+#ifndef NDEBUG
   gchar               *option;
+#endif
   guint                nspecs;
   guint                n;
 
@@ -1586,14 +1601,18 @@ terminal_preferences_store_idle (gpointer user_data)
           g_value_unset (&src);
         }
 
+#ifndef NDEBUG
+      /* when debugging is enabled, check if the generated option name
+       * is equal to the blurp, to prevent typos */
       option = property_name_to_option_name (spec->name);
+      g_assert (exo_str_is_equal (option, g_param_spec_get_blurb (spec)));
+      g_free (option);
+#endif
 
       string = g_value_get_string (&dst);
 
       if (G_LIKELY (string != NULL))
-        xfce_rc_write_entry (rc, option, string);
-      
-      g_free (option);
+        xfce_rc_write_entry (rc, g_param_spec_get_blurb (spec), string);
 
       g_value_unset (&dst);
     }
