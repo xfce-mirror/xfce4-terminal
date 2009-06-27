@@ -326,7 +326,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
             pattern_type = regex_patterns[i].type;
             break;
           }
-      g_return_if_fail (pattern_type != PATTERN_TYPE_NONE);
+      _terminal_return_if_fail (pattern_type != PATTERN_TYPE_NONE);
 
       /* create menu items with appriorate labels */
       if (pattern_type == PATTERN_TYPE_EMAIL)
@@ -758,7 +758,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
         {
           /* get the pattern */
           pattern = &regex_patterns[i];
-          g_return_if_fail (widget->regex_tags[i] == -1);
+          _terminal_return_if_fail (widget->regex_tags[i] == -1);
 
           /* build the regex */
           error = NULL;
