@@ -178,7 +178,7 @@ if test x"$enable_debug" = x"full" -o x"$enable_debug" = x"yes"; then
   CFLAGS="$save_CFLAGS"
 
   dnl Check whether the compiler accepts the -fno-strict-aliasing
-  dnl switch, as certain packages - like Glib - still don't work
+  dnl switch, as certain packages - like Glib - still do not work
   dnl properly with newer compilers.
   save_CFLAGS="$CFLAGS"
   CFLAGS="$CFLAGS -fno-strict-aliasing"
