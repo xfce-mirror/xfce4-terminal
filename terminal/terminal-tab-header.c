@@ -200,7 +200,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
   button = gtk_button_new ();
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_container_set_border_width (GTK_CONTAINER (button), 0);
-  terminal_gtk_widget_set_tooltip (button, _("Close this tab"));
+  gtk_widget_set_tooltip_text (button, _("Close this tab"));
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (terminal_tab_header_close_tab), header);
   gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
   exo_binding_new (G_OBJECT (header->preferences), "misc-tab-close-buttons", G_OBJECT (button), "visible");
@@ -298,7 +298,7 @@ terminal_tab_header_set_property (GObject      *object,
 
     case PROP_TITLE:
       title = g_value_get_string (value);
-      terminal_gtk_widget_set_tooltip (header->ebox, "%s", title);
+      gtk_widget_set_tooltip_text (header->ebox, title);
       gtk_label_set_text (GTK_LABEL (header->label), title);
       break;
 

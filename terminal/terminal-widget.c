@@ -358,8 +358,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
     }
 
   /* take a reference on the menu */
-  g_object_ref (G_OBJECT (menu));
-  gtk_object_sink (GTK_OBJECT (menu));
+  g_object_ref_sink (G_OBJECT (menu));
 
   if (event_time == 0)
     event_time = gtk_get_current_event_time ();
