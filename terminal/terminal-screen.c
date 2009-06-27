@@ -36,6 +36,9 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
+#ifdef HAVE_TIME_H
+#include <time.h>
+#endif
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
@@ -145,6 +148,7 @@ struct _TerminalScreen
 
   gboolean             activity;
   guint                reset_activity_cb;
+  time_t               last_size_change;
 };
 
 
@@ -237,6 +241,7 @@ terminal_screen_init (TerminalScreen *screen)
 {
   screen->working_directory = g_get_current_dir ();
   screen->custom_title = g_strdup ("");
+  screen->last_size_change = 0;
 
   screen->terminal = terminal_widget_new ();
   g_object_connect (G_OBJECT (screen->terminal),
@@ -898,6 +903,8 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
   _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
+  if (time (NULL) - screen->last_size_change <= 1)
+    return;
   if (terminal_window_is_screen_active (screen))
     return;
 
@@ -975,6 +982,8 @@ terminal_screen_timer_background (gpointer user_data)
           vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
         }
     }
+
+  screen->last_size_change = time (NULL);
 
   GDK_THREADS_LEAVE ();
 
