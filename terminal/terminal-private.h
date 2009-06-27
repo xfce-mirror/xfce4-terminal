@@ -25,6 +25,10 @@
 
 G_BEGIN_DECLS;
 
+/* whether anti-alias is enabled in the application. this settings will
+ * be removed in vte 1.0 and there is no other way to set this. */
+#define TERMINAL_HAS_ANTI_ALIAS_SETTING (FALSE)
+
 /* support macros for debugging */
 #ifndef NDEBUG
 #define _terminal_assert(expr)                  g_assert (expr)

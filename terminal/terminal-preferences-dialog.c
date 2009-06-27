@@ -29,6 +29,7 @@
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
 #include <terminal/terminal-stock.h>
+#include <terminal/terminal-private.h>
 
 
 
@@ -390,6 +391,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
 
+#if TERMINAL_HAS_ANTI_ALIAS_SETTING
   button = gtk_check_button_new_with_mnemonic (_("Enable anti-aliasing for the terminal font"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "font-anti-alias", G_OBJECT (button), "active");
   terminal_gtk_widget_set_tooltip (button,
@@ -399,6 +401,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                      "the overall system load on slow systems."));
   gtk_box_pack_start (GTK_BOX (vbox), button, FALSE, TRUE, 0);
   gtk_widget_show (button);
+#endif
 
   button = gtk_check_button_new_with_mnemonic (_("Allow bold text"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "font-allow-bold", G_OBJECT (button), "active");

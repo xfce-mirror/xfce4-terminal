@@ -678,26 +678,35 @@ terminal_screen_update_colors (TerminalScreen *screen)
 static void
 terminal_screen_update_font (TerminalScreen *screen)
 {
+#if TERMINAL_HAS_ANTI_ALIAS_SETTING
   VteTerminalAntiAlias antialias;
-  gboolean             font_allow_bold;
   gboolean             font_anti_alias;
+#endif
+  gboolean             font_allow_bold;
   gchar               *font_name;
 
   g_object_get (G_OBJECT (screen->preferences),
                 "font-allow-bold", &font_allow_bold,
+#if TERMINAL_HAS_ANTI_ALIAS_SETTING
                 "font-anti-alias", &font_anti_alias,
+#endif
                 "font-name", &font_name,
                 NULL);
 
   if (G_LIKELY (font_name != NULL))
     {
+      vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
+
+#if TERMINAL_HAS_ANTI_ALIAS_SETTING
       antialias = font_anti_alias
                 ? VTE_ANTI_ALIAS_USE_DEFAULT
                 : VTE_ANTI_ALIAS_FORCE_DISABLE;
-
-      vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
       vte_terminal_set_font_from_string_full (VTE_TERMINAL (screen->terminal),
                                               font_name, antialias);
+#else
+      vte_terminal_set_font_from_string (VTE_TERMINAL (screen->terminal), font_name);
+#endif
+
       g_free (font_name);
     }
 }
