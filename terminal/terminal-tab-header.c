@@ -324,6 +324,7 @@ terminal_tab_header_button_press (GtkWidget              *ebox,
 {
   GtkWidget *image;
   GtkWidget *item;
+  gboolean   close_middle_click;
 
   if (event->type == GDK_2BUTTON_PRESS && event->button == 1)
     {
@@ -361,7 +362,9 @@ terminal_tab_header_button_press (GtkWidget              *ebox,
       /* close terminal tab on middle-click, to be compatible with
        * tabbed browsers and stuff like pidgin (bug #3380).
        */
-      g_signal_emit (G_OBJECT (header), header_signals[CLOSE_TAB], 0);
+      g_object_get (header->preferences, "misc-tab-close-middle-click", &close_middle_click, NULL);
+      if (close_middle_click)
+        terminal_tab_header_close_tab (NULL, header);
       return TRUE;
     }
 

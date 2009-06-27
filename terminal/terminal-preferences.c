@@ -117,6 +117,7 @@ enum
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
   PROP_MISC_TAB_CLOSE_BUTTONS,
+  PROP_MISC_TAB_CLOSE_MIDDLE_CLICK,
   PROP_MISC_TAB_POSITION,
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_SCROLLING_BAR,
@@ -1118,6 +1119,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_boolean ("misc-tab-close-buttons",
                                                          "misc-tab-close-buttons",
                                                          "MiscTabCloseButtons",
+                                                         TRUE,
+                                                         EXO_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-tab-close-middle-click:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_TAB_CLOSE_MIDDLE_CLICK,
+                                   g_param_spec_boolean ("misc-tab-close-middle-click",
+                                                         "misc-tab-close-middle-click",
+                                                         "MiscTabCloseMiddleClick",
                                                          TRUE,
                                                          EXO_PARAM_READWRITE));
 
