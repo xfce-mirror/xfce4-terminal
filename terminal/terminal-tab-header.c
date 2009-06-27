@@ -271,7 +271,7 @@ terminal_tab_header_set_property (GObject      *object,
   const gchar       *title;
   gboolean           act = FALSE;
   GdkColor           act_color;
-  
+
   switch (prop_id)
     {
     case PROP_TAB_POS:
@@ -390,7 +390,7 @@ terminal_tab_header_detach_tab (GtkWidget         *widget,
 
 /**
  * terminal_tab_header_new:
- * 
+ *
  * Allocates a new #TerminalTabHeader object.
  *
  * Return value : Pointer to the allocated #TerminalTabHeader object.

@@ -746,7 +746,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
       for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
         if (widget->regex_tags[i] != -1)
           {
-            vte_terminal_match_remove (VTE_TERMINAL (widget), 
+            vte_terminal_match_remove (VTE_TERMINAL (widget),
                                        widget->regex_tags[i]);
             widget->regex_tags[i] = -1;
           }

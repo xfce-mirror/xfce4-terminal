@@ -103,7 +103,7 @@ entity_info_query (const gchar *path, EntityInfo *info)
 
 
 static gboolean
-entity_info_equals (const EntityInfo *a, 
+entity_info_equals (const EntityInfo *a,
                     const EntityInfo *b)
 {
   return ((a->exists && b->exists) || (!a->exists && !b->exists))

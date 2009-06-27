@@ -64,7 +64,7 @@ terminal_options_parse (gint              argc,
   gint                i;
   gint                j;
   gint                n;
-  
+
   if (attrs_return != NULL)
     {
       win_attr = terminal_window_attr_new ();
@@ -188,7 +188,7 @@ terminal_options_parse (gint              argc,
                              "the working directory as its parameter"));
               goto failed;
             }
-          else 
+          else
             {
               s = argv[++n];
             }
@@ -349,7 +349,7 @@ terminal_options_parse (gint              argc,
         {
           if (win_attr != NULL)
             {
-              win_attr->menubar = (argv[n][2] == 's') 
+              win_attr->menubar = (argv[n][2] == 's')
                                 ? TERMINAL_VISIBILITY_SHOW
                                 : TERMINAL_VISIBILITY_HIDE;
             }
@@ -481,7 +481,7 @@ terminal_options_parse (gint              argc,
     }
   g_free (default_directory);
   g_free (default_display);
-  
+
   return TRUE;
 
 failed:

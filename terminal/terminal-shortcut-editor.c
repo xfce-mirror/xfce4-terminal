@@ -470,7 +470,7 @@ terminal_shortcut_editor_notify (TerminalPreferences    *preferences,
   model = gtk_tree_view_get_model (GTK_TREE_VIEW (editor));
   if (gtk_tree_model_get_iter_first (model, &parent))
     {
-      do 
+      do
         {
           if (gtk_tree_model_iter_children (model, &child, &parent))
             {
@@ -488,7 +488,7 @@ terminal_shortcut_editor_notify (TerminalPreferences    *preferences,
         }
       while (gtk_tree_model_iter_next (model, &parent));
     }
-  
+
   g_free (accel);
 }
 

@@ -192,7 +192,7 @@ struct _TerminalWindow
 
   GtkActionGroup      *action_group;
   GtkUIManager        *ui_manager;
-  
+
   GtkWidget           *menubar;
   GtkWidget           *toolbars;
   GtkWidget           *notebook;
@@ -212,8 +212,8 @@ static gconstpointer window_notebook_group = "Terminal";
 static const GtkActionEntry action_entries[] =
 {
   { "file-menu", NULL, N_ ("_File"), NULL, NULL, NULL, },
-  { "new-tab", TERMINAL_STOCK_NEWTAB, N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), }, 
-  { "new-window", TERMINAL_STOCK_NEWWINDOW, N_ ("Open T_erminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), }, 
+  { "new-tab", TERMINAL_STOCK_NEWTAB, N_ ("Open _Tab"), NULL, N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), },
+  { "new-window", TERMINAL_STOCK_NEWWINDOW, N_ ("Open T_erminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), },
   { "detach-tab", NULL, N_ ("_Detach Tab"), NULL, N_ ("Open a new window for the current terminal tab"), G_CALLBACK (terminal_window_action_detach_tab), },
   { "close-tab", TERMINAL_STOCK_CLOSETAB, N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
   { "close-window", TERMINAL_STOCK_CLOSEWINDOW, N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
@@ -332,7 +332,7 @@ terminal_window_init (TerminalWindow *window)
   window->ui_manager = gtk_ui_manager_new ();
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
   gtk_ui_manager_add_ui_from_string (window->ui_manager, terminal_window_ui, terminal_window_ui_length, NULL);
-  
+
 
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
@@ -395,7 +395,7 @@ terminal_window_init (TerminalWindow *window)
   exo_binding_new (G_OBJECT (window->preferences), "misc-tab-position", G_OBJECT (window->notebook), "tab-pos");
 
   /* set the notebook group id */
-  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), 
+  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook),
                           (gpointer) window_notebook_group);
 
   /* signals */
@@ -1149,7 +1149,7 @@ terminal_window_page_detach (GtkNotebook    *notebook,
       /* release our reference */
       g_object_unref (G_OBJECT (screen));
     }
-    
+
   return NULL;
 }
 
@@ -1354,7 +1354,7 @@ terminal_window_action_prefs (GtkAction      *action,
                               TerminalWindow *window)
 {
   /* check if we already have a preferences dialog instance */
-  if (G_UNLIKELY (window->preferences_dialog != NULL)) 
+  if (G_UNLIKELY (window->preferences_dialog != NULL))
     {
       /* move to the current screen and make transient for this window */
       gtk_window_set_screen (GTK_WINDOW (window->preferences_dialog), gtk_widget_get_screen (GTK_WIDGET (window)));
@@ -1636,7 +1636,7 @@ terminal_window_new (gboolean           fullscreen,
   TerminalWindow *window;
   GtkAction      *action;
   gboolean        setting;
-  
+
   window = g_object_new (TERMINAL_TYPE_WINDOW, NULL);
 
   /* setup full screen */
@@ -1762,13 +1762,13 @@ terminal_window_get_active (TerminalWindow *window)
  *
  * Return value: TRUE if @screen is active.
  **/
-gboolean 
+gboolean
 terminal_window_is_screen_active (TerminalScreen *screen)
 {
   TerminalWindow *window = NULL;
   GtkNotebook    *notebook;
   gint            page_num;
-  
+
   window = g_object_get_data (G_OBJECT (screen), I_("terminal-window"));
   _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
   notebook = GTK_NOTEBOOK (window->notebook);

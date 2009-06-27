@@ -182,7 +182,7 @@ terminal_toolbars_model_get_default (void)
     {
       g_object_ref (G_OBJECT (model));
     }
-  
+
   return model;
 }
 

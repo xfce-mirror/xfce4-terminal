@@ -106,7 +106,7 @@ static void
 terminal_app_class_init (TerminalAppClass *klass)
 {
   GObjectClass *gobject_class;
-  
+
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_app_finalize;
 }
@@ -171,7 +171,7 @@ terminal_app_update_accels (TerminalApp *app)
   const gchar *accel;
   gboolean     shortcuts_no_menukey;
 
-  g_object_get (G_OBJECT (app->preferences), 
+  g_object_get (G_OBJECT (app->preferences),
                 "shortcuts-no-menukey", &shortcuts_no_menukey,
                 NULL);
 
@@ -261,7 +261,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
 {
   GtkWidget *window;
   GdkScreen *screen;
-  
+
   _terminal_return_if_fail (TERMINAL_IS_WINDOW (existing));
   _terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
   _terminal_return_if_fail (TERMINAL_IS_APP (app));

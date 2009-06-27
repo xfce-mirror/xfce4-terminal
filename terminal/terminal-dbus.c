@@ -84,7 +84,7 @@ handle_message (DBusConnection *connection,
    * or something like that.
    */
 
-  if (dbus_message_is_method_call (message, 
+  if (dbus_message_is_method_call (message,
                                    TERMINAL_DBUS_INTERFACE,
                                    TERMINAL_DBUS_METHOD_LAUNCH))
     {
@@ -248,7 +248,7 @@ terminal_dbus_invoke_launch (gint     argc,
       dbus_error_free (&derror);
       return FALSE;
     }
-  
+
   /* generate the message */
   message = dbus_message_new_method_call (TERMINAL_DBUS_SERVICE,
                                           TERMINAL_DBUS_PATH,

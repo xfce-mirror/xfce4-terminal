@@ -260,7 +260,7 @@ main (int argc, char **argv)
         }
     }
 #endif /* !HAVE_DBUS */
- 
+
   if (!terminal_app_process (app, nargv, nargc, &error))
     {
       g_printerr (_("Unable to launch terminal: %s\n"), error->message);

@@ -257,7 +257,7 @@ terminal_image_loader_center (TerminalImageLoader *loader,
   x0 = MIN ((width - source_width) / 2, dx);
   y0 = MIN ((height - source_height) / 2, dy);
 
-  gdk_pixbuf_composite (loader->pixbuf, target, dx, dy, 
+  gdk_pixbuf_composite (loader->pixbuf, target, dx, dy,
                         MIN (width, source_width),
                         MIN (height, source_height),
                         x0, y0, 1.0, 1.0,
@@ -373,22 +373,22 @@ terminal_image_loader_saturate (TerminalImageLoader *loader,
         {
           red[i] = CLAMP ((loader->darkness * (loader->bgcolor.red >> 8))
                         + ((1.0 - loader->darkness) * i), 0, 255);
-		      green[i] = CLAMP ((loader->darkness * (loader->bgcolor.green >> 8))
+          green[i] = CLAMP ((loader->darkness * (loader->bgcolor.green >> 8))
                         + ((1.0 - loader->darkness) * i), 0, 255);
-		      blue[i] = CLAMP ((loader->darkness * (loader->bgcolor.blue >> 8))
+          blue[i] = CLAMP ((loader->darkness * (loader->bgcolor.blue >> 8))
                         + ((1.0 - loader->darkness) * i), 0, 255);
-        } 
+        }
     }
 
   stride = gdk_pixbuf_get_rowstride (pixbuf);
-	width = gdk_pixbuf_get_width (pixbuf);
-	height = gdk_pixbuf_get_height (pixbuf);
-	channels = gdk_pixbuf_get_n_channels (pixbuf);
+  width = gdk_pixbuf_get_width (pixbuf);
+  height = gdk_pixbuf_get_height (pixbuf);
+  channels = gdk_pixbuf_get_n_channels (pixbuf);
 
-	for (y = 0; y < height; ++y)
+  for (y = 0; y < height; ++y)
     {
-  		pixels = gdk_pixbuf_get_pixels (pixbuf) + y * stride;
-		
+      pixels = gdk_pixbuf_get_pixels (pixbuf) + y * stride;
+
       for (x = 0; x < width * channels; ++x)
         {
           switch (x % channels)

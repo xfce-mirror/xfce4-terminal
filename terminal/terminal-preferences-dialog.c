@@ -171,7 +171,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), dialog->notebook, TRUE, TRUE, 0);
   gtk_widget_show (dialog->notebook);
 
-  
+
   /*
      General
    */
@@ -187,7 +187,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Title</b>"), "use-markup", TRUE, NULL);
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
-  
+
   table = gtk_table_new (2, 2, FALSE);
   gtk_table_set_row_spacings (GTK_TABLE (table), 6);
   gtk_table_set_col_spacings (GTK_TABLE (table), 12);
@@ -226,7 +226,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   hbox = gtk_hbox_new (FALSE, 0);
   gtk_table_attach (GTK_TABLE (table), hbox, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
   gtk_widget_show (hbox);
-  
+
   combo = gtk_combo_box_new_text ();
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Replaces initial title"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Goes before initial title"));
@@ -524,7 +524,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   label = g_object_new (GTK_TYPE_LABEL, "label", _("<b>Opening New Windows</b>"), "use-markup", TRUE, NULL);
   gtk_frame_set_label_widget (GTK_FRAME (frame), label);
   gtk_widget_show (label);
-  
+
   vbox = gtk_vbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 12);
   gtk_container_add (GTK_CONTAINER (frame), vbox);
@@ -961,7 +961,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   entry = gtk_entry_new ();
   gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "term", G_OBJECT (entry), "text");
-  gtk_widget_set_tooltip_text (entry, 
+  gtk_widget_set_tooltip_text (entry,
                                _("This specifies the value the $TERM environment variable is set "
                                  "to, when a new terminal tab or terminal window is opened. The default "
                                  "should be ok for most systems. If you have problems with colors in "
@@ -1177,7 +1177,7 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
   if (G_LIKELY (spec != NULL))
     {
       g_value_init (&value, spec->value_type);
-      g_param_value_set_default (spec, &value); 
+      g_param_value_set_default (spec, &value);
       g_object_set_property (G_OBJECT (dialog->preferences), "binding-backspace", &value);
       g_value_unset (&value);
     }
@@ -1187,7 +1187,7 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
   if (G_LIKELY (spec != NULL))
     {
       g_value_init (&value, spec->value_type);
-      g_param_value_set_default (spec, &value); 
+      g_param_value_set_default (spec, &value);
       g_object_set_property (G_OBJECT (dialog->preferences), "binding-delete", &value);
       g_value_unset (&value);
     }
@@ -1197,7 +1197,7 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
   if (G_LIKELY (spec != NULL))
     {
       g_value_init (&value, spec->value_type);
-      g_param_value_set_default (spec, &value); 
+      g_param_value_set_default (spec, &value);
       g_object_set_property (G_OBJECT (dialog->preferences), "term", &value);
       g_value_unset (&value);
     }
@@ -1215,7 +1215,7 @@ GtkWidget*
 terminal_preferences_dialog_new (GtkWindow *parent)
 {
   GtkWidget *dialog;
-  
+
   dialog = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
   if (parent != NULL)
     gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);

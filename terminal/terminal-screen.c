@@ -142,7 +142,7 @@ struct _TerminalScreen
 
   guint                background_timer_id;
   guint                launch_idle_id;
-  
+
   gboolean             activity;
   guint                reset_activity_cb;
 };
@@ -476,7 +476,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
         shell_fullpath = pw->pw_shell;
 
       if (shell_fullpath != NULL)
-	    shell_name = strrchr (shell_fullpath, '/');
+        shell_name = strrchr (shell_fullpath, '/');
 
       if (shell_name != NULL)
         ++shell_name;
@@ -722,7 +722,7 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
 {
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-blinks", &bval, NULL);
-  vte_terminal_set_cursor_blink_mode (VTE_TERMINAL (screen->terminal), 
+  vte_terminal_set_cursor_blink_mode (VTE_TERMINAL (screen->terminal),
                                       bval ? VTE_CURSOR_BLINK_ON : VTE_CURSOR_BLINK_OFF);
 }
 
@@ -877,6 +877,8 @@ terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
   g_object_notify (G_OBJECT (screen), "title");
 }
 
+
+
 static gboolean terminal_screen_reset_activity(TerminalScreen *screen)
 {
   screen->activity = FALSE;
@@ -884,6 +886,8 @@ static gboolean terminal_screen_reset_activity(TerminalScreen *screen)
   g_object_notify (G_OBJECT (screen), "activity");
   return FALSE;
 }
+
+
 
 static void
 terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
@@ -910,6 +914,8 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
   screen->reset_activity_cb = g_timeout_add_seconds ((gint)timeout_seconds,
                      (GSourceFunc)terminal_screen_reset_activity, screen);
 }
+
+
 
 static gboolean
 terminal_screen_timer_background (gpointer user_data)
@@ -1026,7 +1032,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
       terminal_dialogs_show_error (GTK_WIDGET (screen), error, _("Failed to execute child"));
       g_error_free (error);
     }
-  else 
+  else
     {
       g_object_get (G_OBJECT (screen->preferences),
                     "command-update-records", &update,
