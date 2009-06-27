@@ -914,17 +914,20 @@ terminal_window_notebook_visibility (TerminalWindow *window)
   /* change the visibility if the new status differs */
   if (((npages > 1) != tabs_shown) || (always_show_tabs && !tabs_shown))
     {
-      /* get active screen */
-      active = terminal_window_get_active (window);
-
-      /* get screen grid size */
-      terminal_screen_get_size (active, &grid_width, &grid_height);
-
       /* show or hide the tabs */
-      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), !tabs_shown);
+      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), 
+                                 always_show_tabs | !tabs_shown);
 
       /* don't focus the notebook */
       GTK_WIDGET_UNSET_FLAGS (window->notebook, GTK_CAN_FOCUS);
+
+      /* get active screen */
+      active = terminal_window_get_active (window);
+      if (G_UNLIKELY (active == NULL))
+        return;
+
+      /* get screen grid size */
+      terminal_screen_get_size (active, &grid_width, &grid_height);
 
       /* resize the window */
       terminal_screen_force_resize_window (active, GTK_WINDOW (window), grid_width, grid_height);
