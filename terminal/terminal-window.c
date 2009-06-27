@@ -908,7 +908,7 @@ terminal_window_notebook_visibility (TerminalWindow *window)
   if (((npages > 1) != tabs_shown) || (always_show_tabs && !tabs_shown))
     {
       /* show or hide the tabs */
-      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), 
+      gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook),
                                  always_show_tabs | !tabs_shown);
 
       /* don't focus the notebook */

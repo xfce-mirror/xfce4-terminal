@@ -756,9 +756,12 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
       /* set all our patterns */
       for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
         {
+          /* continue if already set */
+          if (G_UNLIKELY (widget->regex_tags[i] != -1))
+            continue;
+
           /* get the pattern */
           pattern = &regex_patterns[i];
-          _terminal_return_if_fail (widget->regex_tags[i] == -1);
 
           /* build the regex */
           error = NULL;

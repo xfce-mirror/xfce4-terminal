@@ -30,7 +30,6 @@ Terminal_headers =							\
 	terminal-dialogs.h						\
 	terminal-gtk-extensions.h					\
 	terminal-image-loader.h						\
-	terminal-monitor.h						\
 	terminal-options.h						\
 	terminal-preferences.h						\
 	terminal-preferences-dialog.h					\
@@ -54,7 +53,6 @@ Terminal_SOURCES =							\
 	terminal-dialogs.c						\
 	terminal-gtk-extensions.c					\
 	terminal-image-loader.c						\
-	terminal-monitor.c						\
 	terminal-options.c						\
 	terminal-preferences.c						\
 	terminal-preferences-dialog.c					\
@@ -71,6 +69,7 @@ Terminal_CFLAGS =							\
 	$(DBUS_CFLAGS)							\
 	$(EXO_CFLAGS)							\
 	$(GTK_CFLAGS)							\
+	$(GIO_CFLAGS)							\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
 	$(LIBX11_CFLAGS)						\
 	$(VTE_CFLAGS)							\
@@ -81,6 +80,7 @@ Terminal_LDFLAGS =							\
 	$(DBUS_LIBS)							\
 	$(EXO_LIBS)							\
 	$(GTK_LIBS)							\
+	$(GIO_LIBS)							\
 	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
 	$(LIBX11_LDFLAGS)						\
 	$(LIBX11_LIBS)							\
