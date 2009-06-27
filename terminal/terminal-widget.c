@@ -37,6 +37,7 @@
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-private.h>
 
 
 
