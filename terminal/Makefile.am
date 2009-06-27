@@ -164,7 +164,8 @@ stamp-terminal-marshal.h: terminal-marshal.list Makefile
 	&& echo timestamp > $(@F)
 
 terminal-marshal.c: terminal-marshal.list Makefile
-	( cd $(srcdir) && glib-genmarshal \
+	echo "#include <terminal/terminal-marshal.h>" > xgen-tmc \
+	&& ( cd $(srcdir) && glib-genmarshal \
 		--prefix=_terminal_marshal \
 		--body terminal-marshal.list ) >> xgen-tmc \
 	&& cp xgen-tmc terminal-marshal.c \
