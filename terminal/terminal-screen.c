@@ -153,7 +153,7 @@ static guint screen_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_HBOX);
+G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_HBOX)
 
 
 
@@ -506,37 +506,37 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
 static gchar**
 terminal_screen_get_child_environment (TerminalScreen *screen)
 {
-  extern gchar **environ;
   GtkWidget     *toplevel;
   gchar         *display_name;
   gchar        **result;
   gchar        **p;
   gchar         *term;
   guint          n;
+  gchar        **env;
+  const gchar   *value;
 
-  /* count env vars that are set */
-  for (p = environ; *p != NULL; ++p);
+  /* get all the environ variables */
+  env = g_listenv ();
 
-  n = p - environ;
+  n = g_strv_length (env);
   result = g_new (gchar *, n + 1 + 4);
 
   for (n = 0, p = environ; *p != NULL; ++p)
     {
-      if ((strncmp (*p, "COLUMNS=", 8) == 0)
-          || (strncmp (*p, "LINES=", 6) == 0)
-          || (strncmp (*p, "WINDOWID=", 9) == 0)
-          || (strncmp (*p, "TERM=", 5) == 0)
-          || (strncmp (*p, "GNOME_DESKTOP_ICON=", 19) == 0)
-          || (strncmp (*p, "COLORTERM=", 10) == 0)
-          || (strncmp (*p, "DISPLAY=", 8) == 0))
-        {
-          /* nothing: do not copy */
-        }
-      else
-        {
-          result[n] = g_strdup (*p);
-          ++n;
-        }
+      /* do not copy the following variables */
+      if (strcmp (*p, "COLUMNS") == 0
+          || strcmp (*p, "LINES") == 0
+          || strcmp (*p, "WINDOWID") == 0
+          || strcmp (*p, "TERM") == 0
+          || strcmp (*p, "GNOME_DESKTOP_ICON") == 0
+          || strcmp (*p, "COLORTERM") == 0
+          || strcmp (*p, "DISPLAY") == 0)
+        continue;
+
+      /* copy the variable */
+      value = g_getenv (*p);
+      if (G_LIKELY (value != NULL))
+        result[n++] = g_strconcat (*p, "=", value, NULL);
     }
 
   result[n++] = g_strdup ("COLORTERM=Terminal");
@@ -1349,7 +1349,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
                 {
                   g_free (screen->working_directory);
                   screen->working_directory = g_get_current_dir ();
-                  if (chdir (cwd) == 0);
+                  if (chdir (cwd) == 0) {};
                 }
 
               g_free (cwd);
