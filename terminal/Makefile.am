@@ -90,7 +90,7 @@ Terminal_LDFLAGS =							\
 # install symlink to 'terminal'
 install-data-local:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
-	-( cd $(DESTDIR)$(bindir) ; ln -sf Terminal terminal )
+	-( cd $(DESTDIR)$(bindir) ; test -x terminal || ln -sf Terminal terminal )
 
 if HAVE_DBUS
 Terminal_CFLAGS +=							\
