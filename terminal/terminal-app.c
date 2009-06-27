@@ -46,8 +46,6 @@
 
 
 
-static void               terminal_app_class_init               (TerminalAppClass   *klass);
-static void               terminal_app_init                     (TerminalApp        *app);
 static void               terminal_app_finalize                 (GObject            *object);
 static void               terminal_app_update_accels            (TerminalApp        *app);
 static GtkWidget           *terminal_app_create_window          (TerminalApp        *app,
@@ -100,7 +98,7 @@ terminal_error_quark (void)
 
 
 
-G_DEFINE_TYPE (TerminalApp, terminal_app, G_TYPE_OBJECT);
+G_DEFINE_TYPE (TerminalApp, terminal_app, G_TYPE_OBJECT)
 
 
 

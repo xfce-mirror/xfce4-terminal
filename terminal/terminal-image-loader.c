@@ -29,8 +29,6 @@
 
 
 
-static void       terminal_image_loader_class_init        (TerminalImageLoaderClass *klass);
-static void       terminal_image_loader_init              (TerminalImageLoader      *loader);
 static void       terminal_image_loader_finalize          (GObject                  *object);
 static void       terminal_image_loader_check             (TerminalImageLoader      *loader);
 static void       terminal_image_loader_pixbuf_destroyed  (gpointer                  data,
@@ -56,7 +54,7 @@ static void       terminal_image_loader_saturate          (TerminalImageLoader  
 
 
 
-G_DEFINE_TYPE (TerminalImageLoader, terminal_image_loader, G_TYPE_OBJECT);
+G_DEFINE_TYPE (TerminalImageLoader, terminal_image_loader, G_TYPE_OBJECT)
 
 
 

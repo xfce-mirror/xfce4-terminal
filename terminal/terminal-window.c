@@ -206,7 +206,7 @@ struct _TerminalWindow
 
 static guint window_signals[LAST_SIGNAL];
 #if GTK_CHECK_VERSION (2,12,0)
-static gpointer window_notebook_group = "Terminal";
+static gconstpointer window_notebook_group = "Terminal";
 #endif
 
 
@@ -250,7 +250,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
 
 
 
-G_DEFINE_TYPE (TerminalWindow, terminal_window, GTK_TYPE_WINDOW);
+G_DEFINE_TYPE (TerminalWindow, terminal_window, GTK_TYPE_WINDOW)
 
 
 
@@ -398,7 +398,7 @@ terminal_window_init (TerminalWindow *window)
 
   /* set the notebook group id */
 #if GTK_CHECK_VERSION (2,12,0)
-  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), window_notebook_group);
+  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook), (gpointer) window_notebook_group);
 #else
   gtk_notebook_set_group_id (GTK_NOTEBOOK (window->notebook), 1);
 #endif
@@ -1069,7 +1069,7 @@ terminal_window_page_drag_data_received (GtkWidget        *widget,
                                          gint              y,
                                          GtkSelectionData *selection_data,
                                          guint             info,
-                                         guint             time,
+                                         guint32           drag_time,
                                          TerminalWindow *window)
 {
   GtkWidget  *source_widget;
@@ -1119,7 +1119,7 @@ terminal_window_page_drag_data_received (GtkWidget        *widget,
       g_object_unref (G_OBJECT (*screen));
 
       /* finish the drag */
-      gtk_drag_finish (context, TRUE, TRUE, time);
+      gtk_drag_finish (context, TRUE, TRUE, drag_time);
     }
 }
 

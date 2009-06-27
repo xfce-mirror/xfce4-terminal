@@ -43,8 +43,6 @@ enum
 
 
 
-static void terminal_preferences_dialog_class_init   (TerminalPreferencesDialogClass *klass);
-static void terminal_preferences_dialog_init         (TerminalPreferencesDialog      *dialog);
 static void terminal_preferences_dialog_finalize     (GObject                        *object);
 static void terminal_preferences_dialog_response     (TerminalPreferencesDialog      *dialog,
                                                       gint                            response);
@@ -55,7 +53,7 @@ static void terminal_preferences_dialog_reset_compat (GtkWidget                 
 
 
 
-G_DEFINE_TYPE (TerminalPreferencesDialog, terminal_preferences_dialog, GTK_TYPE_DIALOG);
+G_DEFINE_TYPE (TerminalPreferencesDialog, terminal_preferences_dialog, GTK_TYPE_DIALOG)
 
 
 
@@ -123,7 +121,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   AtkObject         *object;
   GSList            *group;
   gchar             *name;
-  gint               index;
+  gint               idx;
   gint               n;
 
   dialog->preferences = terminal_preferences_get ();
@@ -177,7 +175,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
    */
   box = gtk_vbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (box), 12);
-  index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
+  idx = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -233,9 +231,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Goes after initial title"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Isn't displayed"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "title-mode", G_OBJECT (combo), "active");
-#if !GTK_CHECK_VERSION(2,9,0)
-  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
-#endif
   gtk_box_pack_start (GTK_BOX (hbox), combo, FALSE, TRUE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
@@ -330,9 +325,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("On the left side"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("On the right side"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "scrolling-bar", G_OBJECT (combo), "active");
-#if !GTK_CHECK_VERSION(2,9,0)
-  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
-#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
@@ -367,7 +359,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("General"),
-                      INDEX_COLUMN, index,
+                      INDEX_COLUMN, idx,
                       -1);
   g_object_unref (G_OBJECT (icon));
 
@@ -377,7 +369,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
    */
   box = gtk_vbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (box), 12);
-  index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
+  idx = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -434,9 +426,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Background image"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Transparent background"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-mode", G_OBJECT (combo), "active");
-#if !GTK_CHECK_VERSION(2,9,0)
-  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
-#endif
   gtk_box_pack_start (GTK_BOX (vbox), combo, FALSE, TRUE, 0);
   gtk_widget_show (combo);
 
@@ -485,9 +474,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Scaled"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Stretched"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "background-image-style", G_OBJECT (combo), "active");
-#if !GTK_CHECK_VERSION(2,9,0)
-  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
-#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2, GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
@@ -572,7 +558,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Appearance"),
-                      INDEX_COLUMN, index,
+                      INDEX_COLUMN, idx,
                       -1);
   g_object_unref (icon);
 
@@ -582,7 +568,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
    */
   box = gtk_vbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (box), 12);
-  index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
+  idx = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -691,7 +677,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (table);
 
   button = gtk_radio_button_new_with_mnemonic (NULL, _("Use _default color"));
-  g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (g_object_notify), "active");
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "color-selection-use-default", G_OBJECT (button), "active");
   terminal_gtk_widget_set_tooltip (button, _("Use the default text selection background color"));
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 0, 1, GTK_FILL, GTK_FILL, 0, 0);
@@ -699,7 +684,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (button);
 
   button = gtk_radio_button_new_with_mnemonic (group, _("Use _custom color"));
-  g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (g_object_notify), "active");
   exo_mutual_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-selection-use-default", G_OBJECT (button), "active");
   terminal_gtk_widget_set_tooltip (button, _("Use a custom text selection background color"));
   gtk_table_attach (GTK_TABLE (table), button, 0, 1, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
@@ -822,7 +806,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Colors"),
-                      INDEX_COLUMN, index,
+                      INDEX_COLUMN, idx,
                       -1);
   g_object_unref (G_OBJECT (icon));
 
@@ -832,7 +816,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
    */
   box = gtk_vbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (box), 12);
-  index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
+  idx = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -892,7 +876,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Shortcuts"),
-                      INDEX_COLUMN, index,
+                      INDEX_COLUMN, idx,
                       -1);
   g_object_unref (icon);
 
@@ -902,7 +886,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
    */
   box = gtk_vbox_new (FALSE, 12);
   gtk_container_set_border_width (GTK_CONTAINER (box), 12);
-  index = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
+  idx = gtk_notebook_append_page (GTK_NOTEBOOK (dialog->notebook), box, NULL);
   gtk_widget_show (box);
 
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -939,9 +923,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "binding-backspace", G_OBJECT (combo), "active");
-#if !GTK_CHECK_VERSION(2,9,0)
-  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
-#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 1, 2, GTK_FILL, GTK_FILL, 0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
@@ -960,9 +941,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Escape sequence"));
   gtk_combo_box_append_text (GTK_COMBO_BOX (combo), _("Control-H"));
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), "binding-delete", G_OBJECT (combo), "active");
-#if !GTK_CHECK_VERSION(2,9,0)
-  g_signal_connect (G_OBJECT (combo), "changed", G_CALLBACK (g_object_notify), "active");
-#endif
   gtk_table_attach (GTK_TABLE (table), combo, 1, 2, 2, 3, GTK_FILL, GTK_FILL, 0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
   gtk_widget_show (combo);
@@ -1076,7 +1054,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_list_store_set (store, &iter,
                       PIXBUF_COLUMN, icon,
                       TEXT_COLUMN, _("Advanced"),
-                      INDEX_COLUMN, index,
+                      INDEX_COLUMN, idx,
                       -1);
   g_object_unref (icon);
 

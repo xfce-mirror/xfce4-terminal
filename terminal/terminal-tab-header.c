@@ -49,8 +49,6 @@ enum
 
 
 
-static void     terminal_tab_header_class_init    (TerminalTabHeaderClass *klass);
-static void     terminal_tab_header_init          (TerminalTabHeader      *header);
 static void     terminal_tab_header_finalize      (GObject                *object);
 static void     terminal_tab_header_get_property  (GObject                *object,
                                                    guint                   prop_id,
@@ -86,7 +84,7 @@ static guint header_signals[LAST_SIGNAL];
 
 
 
-G_DEFINE_TYPE (TerminalTabHeader, terminal_tab_header, GTK_TYPE_HBOX);
+G_DEFINE_TYPE (TerminalTabHeader, terminal_tab_header, GTK_TYPE_HBOX)
 
 
 

@@ -29,8 +29,6 @@
 
 
 
-static void terminal_accel_map_class_init   (TerminalAccelMapClass  *klass);
-static void terminal_accel_map_init         (TerminalAccelMap       *map);
 static void terminal_accel_map_finalize     (GObject                *object);
 static void terminal_accel_map_notify       (TerminalPreferences    *preferences,
                                              GParamSpec             *pspec,
@@ -46,7 +44,7 @@ struct _TerminalAccelMap
 
 
 
-G_DEFINE_TYPE (TerminalAccelMap, terminal_accel_map, G_TYPE_OBJECT);
+G_DEFINE_TYPE (TerminalAccelMap, terminal_accel_map, G_TYPE_OBJECT)
 
 
 

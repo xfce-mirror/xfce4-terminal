@@ -37,7 +37,6 @@
 
 
 
-static void     terminal_monitor_class_init   (TerminalMonitorClass *klass);
 static void     terminal_monitor_finalize     (GObject              *object);
 static gboolean terminal_monitor_idle         (gpointer              user_data);
 static void     terminal_monitor_idle_destroy (gpointer              user_data);
@@ -74,7 +73,7 @@ struct _TerminalMonitor
 
 
 
-static GObjectClass *terminal_monitor_parent_class;
+G_DEFINE_TYPE (TerminalMonitor, terminal_monitor, G_TYPE_OBJECT)
 
 
 
@@ -116,37 +115,6 @@ entity_info_equals (const EntityInfo *a,
 
 
 
-GType
-terminal_monitor_get_type (void)
-{
-  static GType type = 0;
-
-  if (G_UNLIKELY (type == 0))
-    {
-      static const GTypeInfo info =
-      {
-        sizeof (TerminalMonitorClass),
-        NULL,
-        NULL,
-        (GClassInitFunc) terminal_monitor_class_init,
-        NULL,
-        NULL,
-        sizeof (TerminalMonitor),
-        0,
-        NULL,
-        NULL
-      };
-
-      type = g_type_register_static (G_TYPE_OBJECT,
-                                     "TerminalMonitor",
-                                     &info, 0);
-    }
-
-  return type;
-}
-
-
-
 static void
 terminal_monitor_class_init (TerminalMonitorClass *klass)
 {
@@ -156,6 +124,13 @@ terminal_monitor_class_init (TerminalMonitorClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_monitor_finalize;
+}
+
+
+
+static void
+terminal_monitor_init (TerminalMonitor *monitor)
+{
 }
 
 

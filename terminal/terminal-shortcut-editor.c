@@ -53,8 +53,6 @@ enum
 
 
 
-static void     terminal_shortcut_editor_class_init   (TerminalShortcutEditorClass  *klass);
-static void     terminal_shortcut_editor_init         (TerminalShortcutEditor       *editor);
 static void     terminal_shortcut_editor_finalize     (GObject                      *object);
 static void     terminal_shortcut_editor_activate     (TerminalShortcutEditor       *editor,
                                                        GtkTreePath                  *path,
@@ -70,8 +68,8 @@ static void     terminal_shortcut_editor_notify       (TerminalPreferences      
 
 typedef struct
 {
-  gchar *title;
-  gchar *accels[32];
+  const gchar *title;
+  const gchar *accels[32];
 } ToplevelMenu;
 
 
@@ -154,7 +152,7 @@ static const ToplevelMenu toplevel_menus[] =
 
 
 
-G_DEFINE_TYPE (TerminalShortcutEditor, terminal_shortcut_editor, GTK_TYPE_TREE_VIEW);
+G_DEFINE_TYPE (TerminalShortcutEditor, terminal_shortcut_editor, GTK_TYPE_TREE_VIEW)
 
 
 
@@ -179,7 +177,7 @@ terminal_shortcut_editor_init (TerminalShortcutEditor *editor)
   GtkTreeIter         parent;
   GtkTreeIter         child;
   GParamSpec         *pspec;
-  gchar              *signal;
+  gchar              *notify_signal;
   gchar              *accel;
   gint                n;
 
@@ -198,10 +196,10 @@ terminal_shortcut_editor_init (TerminalShortcutEditor *editor)
         {
           pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (editor->preferences), menu->accels[n]);
 
-          signal = g_strconcat ("notify::", menu->accels[n], NULL);
-          g_signal_connect (G_OBJECT (editor->preferences), signal,
+          notify_signal = g_strconcat ("notify::", menu->accels[n], NULL);
+          g_signal_connect (G_OBJECT (editor->preferences), notify_signal,
                             G_CALLBACK (terminal_shortcut_editor_notify), editor);
-          g_free (signal);
+          g_free (notify_signal);
 
           g_object_get (G_OBJECT (editor->preferences), pspec->name, &accel, NULL);
 

@@ -30,8 +30,6 @@
 
 
 
-static void     terminal_toolbars_model_class_init    (TerminalToolbarsModelClass *klass);
-static void     terminal_toolbars_model_init          (TerminalToolbarsModel      *model);
 static void     terminal_toolbars_model_finalize      (GObject                    *object);
 static void     terminal_toolbars_model_queue_sync    (TerminalToolbarsModel      *model);
 static gboolean terminal_toolbars_model_sync          (TerminalToolbarsModel      *model);
@@ -62,7 +60,7 @@ static const gchar *actions[] =
 
 
 
-G_DEFINE_TYPE (TerminalToolbarsModel, terminal_toolbars_model, EXO_TYPE_TOOLBARS_MODEL);
+G_DEFINE_TYPE (TerminalToolbarsModel, terminal_toolbars_model, EXO_TYPE_TOOLBARS_MODEL)
 
 
 

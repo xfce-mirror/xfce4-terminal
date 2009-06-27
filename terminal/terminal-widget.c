@@ -77,8 +77,6 @@ enum
 
 
 
-static void     terminal_widget_class_init            (TerminalWidgetClass  *klass);
-static void     terminal_widget_init                  (TerminalWidget       *widget);
 static void     terminal_widget_finalize              (GObject              *object);
 static gboolean terminal_widget_button_press_event    (GtkWidget            *widget,
                                                        GdkEventButton       *event);
@@ -125,20 +123,20 @@ static guint widget_signals[LAST_SIGNAL];
 
 static const GtkTargetEntry targets[] =
 {
-  { "text/uri-list", 0, TARGET_URI_LIST },
-  { "text/x-moz-url", 0, TARGET_MOZ_URL },
-  { "UTF8_STRING", 0, TARGET_UTF8_STRING },
-  { "TEXT", 0, TARGET_TEXT },
-  { "COMPOUND_TEXT", 0, TARGET_COMPOUND_TEXT },
-  { "STRING", 0, TARGET_STRING },
-  { "text/plain", 0, TARGET_TEXT_PLAIN },
-  { "application/x-color", 0, TARGET_APPLICATION_X_COLOR },
-  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
+  { (gchar *) "text/uri-list", 0, TARGET_URI_LIST },
+  { (gchar *) "text/x-moz-url", 0, TARGET_MOZ_URL },
+  { (gchar *) "UTF8_STRING", 0, TARGET_UTF8_STRING },
+  { (gchar *) "TEXT", 0, TARGET_TEXT },
+  { (gchar *) "COMPOUND_TEXT", 0, TARGET_COMPOUND_TEXT },
+  { (gchar *) "STRING", 0, TARGET_STRING },
+  { (gchar *) "text/plain", 0, TARGET_TEXT_PLAIN },
+  { (gchar *) "application/x-color", 0, TARGET_APPLICATION_X_COLOR },
+  { (gchar *) "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
 };
 
 
 
-G_DEFINE_TYPE (TerminalWidget, terminal_widget, VTE_TYPE_TERMINAL);
+G_DEFINE_TYPE (TerminalWidget, terminal_widget, VTE_TYPE_TERMINAL)
 
 
 
@@ -259,7 +257,7 @@ terminal_widget_context_menu_open (TerminalWidget *widget,
 static void
 terminal_widget_context_menu (TerminalWidget *widget,
                               gint            button,
-                              gint            time,
+                              guint32         event_time,
                               gint            x,
                               gint            y)
 {
@@ -327,8 +325,8 @@ terminal_widget_context_menu (TerminalWidget *widget,
   g_object_ref (G_OBJECT (menu));
   gtk_object_sink (GTK_OBJECT (menu));
 
-  if (time < 0)
-    time = gtk_get_current_event_time ();
+  if (event_time < 0)
+    event_time = gtk_get_current_event_time ();
 
   loop = g_main_loop_new (NULL, FALSE);
 
@@ -340,7 +338,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
 
   /* run our custom main loop */
   gtk_grab_add (menu);
-  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, time);
+  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, event_time);
   g_main_loop_run (loop);
   g_main_loop_unref (loop);
   gtk_grab_remove (menu);
@@ -428,7 +426,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
                                     gint              y,
                                     GtkSelectionData *selection_data,
                                     guint             info,
-                                    guint             time)
+                                    guint32           drag_time)
 {
   const guint16 *ucs;
   GdkColor       color;
@@ -574,7 +572,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       if (G_LIKELY (screen))
         {
           g_signal_emit_by_name (G_OBJECT (screen), "drag-data-received", context,
-                                 x, y, selection_data, info, time);
+                                 x, y, selection_data, info, drag_time);
         }
       break;
 
@@ -584,7 +582,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
     }
 
   if (info != TARGET_GTK_NOTEBOOK_TAB)
-    gtk_drag_finish (context, TRUE, FALSE, time);
+    gtk_drag_finish (context, TRUE, FALSE, drag_time);
 }
 
 

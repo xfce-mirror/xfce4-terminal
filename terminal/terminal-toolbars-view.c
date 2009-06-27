@@ -29,15 +29,13 @@
 
 
 
-static void terminal_toolbars_view_class_init (TerminalToolbarsViewClass *klass);
-static void terminal_toolbars_view_init       (TerminalToolbarsView      *toolbar);
 static void terminal_toolbars_view_finalize   (GObject                   *object);
 static void terminal_toolbars_view_edit_done  (ExoToolbarsEditorDialog   *dialog,
                                                TerminalToolbarsView      *toolbar);
 
 
 
-G_DEFINE_TYPE (TerminalToolbarsView, terminal_toolbars_view, EXO_TYPE_TOOLBARS_VIEW);
+G_DEFINE_TYPE (TerminalToolbarsView, terminal_toolbars_view, EXO_TYPE_TOOLBARS_VIEW)
 
 
 

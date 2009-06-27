@@ -258,7 +258,7 @@ transform_string_to_enum (const GValue *src,
 
 
 
-G_DEFINE_TYPE (TerminalPreferences, terminal_preferences, G_TYPE_OBJECT);
+G_DEFINE_TYPE (TerminalPreferences, terminal_preferences, G_TYPE_OBJECT)
 
 
 
