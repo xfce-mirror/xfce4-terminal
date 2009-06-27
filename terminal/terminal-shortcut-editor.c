@@ -317,6 +317,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   gchar        *title;
   gchar        *text;
   gint          response;
+  GtkWidget    *button;
 
   if (gtk_tree_path_get_depth (path) <= 1)
     return;
@@ -332,10 +333,15 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   dialog = gtk_dialog_new_with_buttons (_("Compose shortcut"),
                                         GTK_WINDOW (toplevel),
                                         GTK_DIALOG_DESTROY_WITH_PARENT
-                                        | GTK_DIALOG_MODAL,
-                                        GTK_STOCK_CLEAR, TERMINAL_RESPONSE_CLEAR,
-                                        GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
-                                        NULL);
+                                        | GTK_DIALOG_MODAL, NULL);
+
+  button = gtk_button_new_with_mnemonic (_("Clea_r"));
+  image = gtk_image_new_from_stock (GTK_STOCK_CLEAR, GTK_ICON_SIZE_BUTTON);
+  gtk_button_set_image (GTK_BUTTON (button), image);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, TERMINAL_RESPONSE_CLEAR);
+  gtk_widget_show (button);
+
+  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
   hbox = gtk_hbox_new (FALSE, 10);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 10);
@@ -408,6 +414,7 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
   guint           modifiers;
   gchar          *accelerator;
   gchar          *property;
+  gint            response_id;
 
   if (is_modifier (event->hardware_keycode))
     return TRUE;
@@ -443,11 +450,23 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
   modifiers = modifiers & gtk_accelerator_get_default_mod_mask ();
 
   accelerator = gtk_accelerator_name (keyval, modifiers);
-  property = g_object_get_data (G_OBJECT (dialog), "property-name");
-  g_object_set (G_OBJECT (editor->preferences), property, accelerator, NULL);
+  if (exo_str_is_equal (accelerator, "<Alt>c"))
+    {
+      response_id = GTK_RESPONSE_CANCEL;
+    }
+  else if (exo_str_is_equal (accelerator, "<Alt>r"))
+    {
+      response_id = TERMINAL_RESPONSE_CLEAR;
+    }
+  else
+    {
+      response_id = GTK_RESPONSE_OK;
+      property = g_object_get_data (G_OBJECT (dialog), "property-name");
+      g_object_set (G_OBJECT (editor->preferences), property, accelerator, NULL);
+    }
   g_free (accelerator);
 
-  gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  gtk_dialog_response (GTK_DIALOG (dialog), response_id);
 
   return TRUE;
 }
