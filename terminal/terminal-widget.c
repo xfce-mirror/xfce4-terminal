@@ -40,19 +40,17 @@
 
 
 
-#define USERCHARS       "-A-Za-z0-9"
-#define PASSCHARS       "-A-Za-z0-9,?;.:/!%$^*&~\"#'"
-#define HOSTCHARS       "-A-Za-z0-9"
-#define USER            "[" USERCHARS "]+(:["PASSCHARS "]+)?"
-#define MATCH_BROWSER1  "((file|https?|ftps?)://(" USER "@)?)[" HOSTCHARS ".]+(:[0-9]+)?" \
-                        "(/[-A-Za-z0-9_$.+!*(),;:@&=?/~#%]*[^]'.}>) \t\r\n,\\\"])?"
-#define MATCH_BROWSER2  "(www|ftp)[" HOSTCHARS "]*\\.[" HOSTCHARS ".]+(:[0-9]+)?" \
-                        "(/[-A-Za-z0-9_$.+!*(),;:@&=?/~#%]*[^]'.}>) \t\r\n,\\\"])?"
-#if !defined(__GLIBC__)
-#define MATCH_MAILER    "(mailto:)?[a-z0-9][a-z0-9.-]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+"
-#else
-#define MATCH_MAILER    "\\<(mailto:)?[a-z0-9][a-z0-9.-]*@[a-z0-9][a-z0-9-]*(\\.[a-z0-9][a-z0-9-]*)+\\>"
-#endif
+#define USERCHARS       "-[:alnum:]"
+#define USERCHARS_CLASS "[" USERCHARS "]"
+#define PASSCHARS_CLASS "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]"
+#define HOSTCHARS_CLASS "[-[:alnum:]]"
+#define HOST            HOSTCHARS_CLASS "+(\\." HOSTCHARS_CLASS "+)*"
+#define PORT            "(?:\\:[[:digit:]]{1,5})?"
+#define PATHCHARS_CLASS "[-[:alnum:]\\Q_$.+!*,;@&=?/~#%\\E]"
+#define PATHTERM_CLASS  "[^\\Q]'.}>) \t\r\n,\"\\E]"
+#define SCHEME          "(?:news:|telnet:|nntp:|file:\\/|https?:|ftps?:|webcal:)"
+#define USERPASS        USERCHARS_CLASS "+(?:" PASSCHARS_CLASS "+)?"
+#define URLPATH         "(?:(/"PATHCHARS_CLASS"+(?:[(]"PATHCHARS_CLASS"*[)])*"PATHCHARS_CLASS"*)*"PATHTERM_CLASS")?"
 
 
 
@@ -73,6 +71,29 @@ enum
   TARGET_MOZ_URL,
   TARGET_APPLICATION_X_COLOR,
   TARGET_GTK_NOTEBOOK_TAB,
+};
+
+enum
+{
+  PATTERN_TYPE_NONE,
+  PATTERN_TYPE_FULL_HTTP,
+  PATTERN_TYPE_HTTP,
+  PATTERN_TYPE_EMAIL
+};
+
+typedef struct
+{
+  const gchar *pattern;
+  gint         type;
+}
+TerminalRegexPattern;
+
+static const TerminalRegexPattern regex_patterns[] =
+{
+  { SCHEME "//(?:" USERPASS "\\@)?" HOST PORT URLPATH, PATTERN_TYPE_FULL_HTTP },
+  { "(?:www|ftp)" HOSTCHARS_CLASS "*\\." HOST PORT URLPATH, PATTERN_TYPE_HTTP },
+  { "(?:mailto:)?" USERCHARS_CLASS "[" USERCHARS ".]*\\@" HOSTCHARS_CLASS "+\\." HOST, PATTERN_TYPE_EMAIL },
+  { "news:[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", PATTERN_TYPE_FULL_HTTP }
 };
 
 
@@ -110,9 +131,7 @@ struct _TerminalWidget
 
   /*< private >*/
   TerminalPreferences *preferences;
-  gint                 tag_browser1;
-  gint                 tag_browser2;
-  gint                 tag_mailer;
+  gint                *regex_tags;
 };
 
 
@@ -172,9 +191,12 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 static void
 terminal_widget_init (TerminalWidget *widget)
 {
-  widget->tag_browser1 = -1;
-  widget->tag_browser2 = -1;
-  widget->tag_mailer   = -1;
+  guint i;
+
+  /* initialize regex tag ids */
+  widget->regex_tags = g_new (gint, G_N_ELEMENTS (regex_patterns));
+  for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
+    widget->regex_tags[i] = -1;
 
   /* query preferences connection */
   widget->preferences = terminal_preferences_get ();
@@ -201,6 +223,9 @@ static void
 terminal_widget_finalize (GObject *object)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
+
+  /* free tag ids */
+  g_free (widget->regex_tags);
 
   /* disconnect the misc-highlight-urls watch */
   g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_highlight_urls), widget);
@@ -269,8 +294,9 @@ terminal_widget_context_menu (TerminalWidget *widget,
   GtkWidget   *item_separator = NULL;
   GList       *children;
   gchar       *match;
-  guint        id;
+  guint        id, i;
   gint         tag;
+  gint         pattern_type = PATTERN_TYPE_NONE;
 
   g_signal_emit (G_OBJECT (widget), widget_signals[GET_CONTEXT_MENU], 0, &menu);
   if (G_UNLIKELY (menu == NULL))
@@ -293,8 +319,17 @@ terminal_widget_context_menu (TerminalWidget *widget,
         item_separator = NULL;
       g_list_free (children);
 
+      /* lookup the pattern type */
+      for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
+        if (widget->regex_tags[i] == tag)
+          {
+            pattern_type = regex_patterns[i].type;
+            break;
+          }
+      g_return_if_fail (pattern_type != PATTERN_TYPE_NONE);
+
       /* create menu items with appriorate labels */
-      if (tag == widget->tag_mailer)
+      if (pattern_type == PATTERN_TYPE_EMAIL)
         {
           item_copy = gtk_menu_item_new_with_label (_("Copy Email Address"));
           item_open = gtk_menu_item_new_with_label (_("Compose Email"));
@@ -325,7 +360,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
   g_object_ref (G_OBJECT (menu));
   gtk_object_sink (GTK_OBJECT (menu));
 
-  if (event_time < 0)
+  if (event_time == 0)
     event_time = gtk_get_current_event_time ();
 
   loop = g_main_loop_new (NULL, FALSE);
@@ -641,38 +676,54 @@ terminal_widget_open_uri (TerminalWidget *widget,
 {
   GError *error = NULL;
   gchar  *uri;
+  guint   i;
 
-  /* parse the URI from the link */
-  if (tag == widget->tag_browser1)
+  for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
     {
-      uri = g_strdup (link);
-    }
-  else if (tag == widget->tag_browser2)
-    {
-      uri = g_strconcat ("http://", link, NULL);
-    }
-  else if (tag == widget->tag_mailer)
-    {
-      if (strncmp (link, "mailto:", 7) == 0)
-        uri = g_strdup (link);
-      else
-        uri = g_strconcat ("mailto:", link, NULL);
-    }
-  else
-    {
-      g_warning ("Invalid tag specified while trying to open an URI.");
+      /* lookup the tag in our tags */
+      if (widget->regex_tags[i] != tag)
+        continue;
+
+      /* handle the pattern type */
+      switch (regex_patterns[i].type)
+        {
+          case PATTERN_TYPE_FULL_HTTP:
+            uri = g_strdup (link);
+            break;
+
+          case PATTERN_TYPE_HTTP:
+            uri = g_strconcat ("http://", link, NULL);
+            break;
+
+          case PATTERN_TYPE_EMAIL:
+            if (strncmp (link, "mailto:", 7) == 0)
+              uri = g_strdup (link);
+            else
+              uri = g_strconcat ("mailto:", link, NULL);
+            break;
+
+          default:
+            goto invalid_tag;
+        }
+
+      /* try to open the URI with the responsible application */
+      if (!exo_url_show_on_screen (uri, NULL,
+          gtk_widget_get_screen (GTK_WIDGET (widget)), &error))
+        {
+          /* tell the user that we were unable to open the responsible application */
+          terminal_dialogs_show_error (widget, error, _("Failed to open the URL `%s'"), uri);
+          g_error_free (error);
+        }
+
+      g_free (uri);
+
+      /* done */
       return;
     }
 
-  /* try to open the URI with the responsible application */
-  if (!exo_url_show_on_screen (uri, NULL, gtk_widget_get_screen (GTK_WIDGET (widget)), &error))
-    {
-      /* tell the user that we were unable to open the responsible application */
-      terminal_dialogs_show_error (widget, error, _("Failed to open the URL `%s'"), uri);
-      g_error_free (error);
-    }
+invalid_tag:
 
-  g_free (uri);
+  g_warning ("Invalid tag specified while trying to open link \"%s\".", link);
 }
 
 
@@ -680,56 +731,55 @@ terminal_widget_open_uri (TerminalWidget *widget,
 static void
 terminal_widget_update_highlight_urls (TerminalWidget *widget)
 {
-  gboolean highlight_urls;
+  guint                       i;
+  gboolean                    highlight_urls;
+  GRegex                     *regex;
+  const TerminalRegexPattern *pattern;
+  GError                     *error;
 
-  g_object_get (G_OBJECT (widget->preferences), "misc-highlight-urls", &highlight_urls, NULL);
+  g_object_get (G_OBJECT (widget->preferences),
+                "misc-highlight-urls", &highlight_urls, NULL);
+
   if (!highlight_urls)
     {
-      if (widget->tag_browser1 >= 0)
-        {
-          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_browser1);
-          widget->tag_browser1 = -1;
-        }
-
-      if (widget->tag_browser2 >= 0)
-        {
-          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_browser2);
-          widget->tag_browser2 = -1;
-        }
-
-      if (widget->tag_mailer >= 0)
-        {
-          vte_terminal_match_remove (VTE_TERMINAL (widget), widget->tag_mailer);
-          widget->tag_mailer = -1;
-        }
+      /* remove all our regex tags */
+      for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
+        if (widget->regex_tags[i] != -1)
+          {
+            vte_terminal_match_remove (VTE_TERMINAL (widget), 
+                                       widget->regex_tags[i]);
+            widget->regex_tags[i] = -1;
+          }
     }
   else
     {
-      if (widget->tag_browser1 < 0)
+      /* set all our patterns */
+      for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
         {
-          widget->tag_browser1 = vte_terminal_match_add (VTE_TERMINAL (widget),
-                                                         MATCH_BROWSER1);
-          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
-                                              widget->tag_browser1,
-                                              GDK_HAND2);
-        }
+          /* get the pattern */
+          pattern = &regex_patterns[i];
+          g_return_if_fail (widget->regex_tags[i] == -1);
 
-      if (widget->tag_browser2 < 0)
-        {
-          widget->tag_browser2 = vte_terminal_match_add (VTE_TERMINAL (widget),
-                                                         MATCH_BROWSER2);
-          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
-                                              widget->tag_browser2,
-                                              GDK_HAND2);
-        }
+          /* build the regex */
+          error = NULL;
+          regex = g_regex_new (pattern->pattern,
+                               G_REGEX_CASELESS | G_REGEX_OPTIMIZE,
+                               0, &error);
+          if (G_UNLIKELY (error != NULL))
+            {
+              g_critical ("Failed to parse regular expression pattern %d: %s",
+                          i, error->message);
+              g_error_free (error);
+              continue;
+            }
 
-      if (widget->tag_mailer < 0)
-        {
-          widget->tag_mailer = vte_terminal_match_add (VTE_TERMINAL (widget),
-                                                       MATCH_MAILER);
+          /* set the new regular expression */
+          widget->regex_tags[i] = vte_terminal_match_add_gregex (VTE_TERMINAL (widget),
+                                                                 regex, 0);
           vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
-                                              widget->tag_mailer,
-                                              GDK_HAND2);
+                                              widget->regex_tags[i], GDK_HAND2);
+          /* release the regex owned by vte now */
+          g_regex_unref (regex);
         }
     }
 }
