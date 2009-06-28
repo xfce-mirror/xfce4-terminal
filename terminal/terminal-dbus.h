@@ -24,7 +24,7 @@
 
 #include <terminal/terminal-app.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 gboolean  terminal_dbus_register_service  (TerminalApp  *app,
                                            GError      **error);
@@ -32,6 +32,6 @@ gboolean  terminal_dbus_invoke_launch     (gint          argc,
                                            gchar       **argv,
                                            GError      **error);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_DBUS_H__ */

@@ -23,7 +23,7 @@
 
 #include <glib-object.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 /* whether anti-alias is enabled in the application. this settings will
  * be removed in vte 1.0 and there is no other way to set this. */
@@ -68,6 +68,6 @@ G_BEGIN_DECLS;
 #define g_value_get_object(v)   (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_PRIVATE_H__ */

@@ -22,7 +22,7 @@
 #ifndef __TERMINAL_STOCK_H__
 #define __TERMINAL_STOCK_H__
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_STOCK_CLOSETAB     "terminal-closetab"
 #define TERMINAL_STOCK_CLOSEWINDOW  "terminal-closewindow"
@@ -42,6 +42,6 @@ G_BEGIN_DECLS;
 
 void terminal_stock_init (void);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_STOCK_H__ */

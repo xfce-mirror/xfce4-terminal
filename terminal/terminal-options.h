@@ -24,7 +24,7 @@
 
 #include <glib.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 typedef struct _TerminalOptions    TerminalOptions;
 typedef struct _TerminalTabAttr    TerminalTabAttr;
@@ -80,6 +80,6 @@ void                terminal_tab_attr_free    (TerminalTabAttr     *attr);
 TerminalWindowAttr *terminal_window_attr_new  (void);
 void                terminal_window_attr_free (TerminalWindowAttr  *attr);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_OPTIONS_H__ */

@@ -24,7 +24,7 @@
 
 #include <exo/exo.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_TOOLBARS_VIEW             (terminal_toolbars_view_get_type ())
 #define TERMINAL_TOOLBARS_VIEW(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_TOOLBARS_VIEW, TerminalToolbarsView))
@@ -54,6 +54,6 @@ GtkWidget *terminal_toolbars_view_new       (GtkUIManager         *ui_manager);
 
 void       terminal_toolbars_view_edit      (TerminalToolbarsView *toolbar);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_TOOLBAR_H__ */

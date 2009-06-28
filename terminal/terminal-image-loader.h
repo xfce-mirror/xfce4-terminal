@@ -24,7 +24,7 @@
 
 #include <terminal/terminal-preferences.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_IMAGE_LOADER            (terminal_image_loader_get_type ())
 #define TERMINAL_IMAGE_LOADER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_IMAGE_LOADER, TerminalImageLoader))
@@ -64,6 +64,6 @@ GdkPixbuf           *terminal_image_loader_load (TerminalImageLoader *loader,
                                                  gint                 width,
                                                  gint                 height);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_IMAGE_LOADER_H__ */

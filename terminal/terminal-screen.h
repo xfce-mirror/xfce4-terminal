@@ -24,7 +24,7 @@
 
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_SCREEN            (terminal_screen_get_type ())
 #define TERMINAL_SCREEN(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_SCREEN, TerminalScreen))
@@ -85,6 +85,6 @@ void       terminal_screen_im_append_menuitems        (TerminalScreen *screen,
 
 GList     *terminal_screen_get_restart_command        (TerminalScreen *screen);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_SCREEN_H__ */

@@ -24,7 +24,7 @@
 
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_SHORTCUT_EDITOR             (terminal_shortcut_editor_get_type ())
 #define TERMINAL_SHORTCUT_EDITOR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_SHORTCUT_EDITOR, TerminalShortcutEditor))
@@ -45,6 +45,6 @@ GType      terminal_shortcut_editor_get_type  (void) G_GNUC_CONST;
 
 GtkWidget *terminal_shortcut_editor_new       (void);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_SHORTCUT_EDITOR_H__ */

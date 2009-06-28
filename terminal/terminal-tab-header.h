@@ -24,7 +24,7 @@
 
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_TAB_HEADER            (terminal_tab_header_get_type ())
 #define TERMINAL_TAB_HEADER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_TAB_HEADER, TerminalTabHeader))
@@ -55,6 +55,6 @@ GType      terminal_tab_header_get_type (void) G_GNUC_CONST;
 
 GtkWidget *terminal_tab_header_new      (void);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_TAB_HEADER_H__ */

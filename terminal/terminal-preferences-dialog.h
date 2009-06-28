@@ -27,7 +27,7 @@
 
 #include <terminal/terminal-preferences.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_PREFERENCES_DIALOG            (terminal_preferences_dialog_get_type ())
 #define TERMINAL_PREFERENCES_DIALOG(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES_DIALOG, TerminalPreferencesDialog))
@@ -56,6 +56,6 @@ GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
 
 GtkWidget *terminal_preferences_dialog_new      (GtkWindow *parent);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_PREFERENCES_DIALOG_H__ */

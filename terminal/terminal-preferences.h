@@ -24,7 +24,7 @@
 
 #include <exo/exo.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_PREFERENCES             (terminal_preferences_get_type ())
 #define TERMINAL_PREFERENCES(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_PREFERENCES, TerminalPreferences))
@@ -88,6 +88,6 @@ void                 query_color                    (TerminalPreferences *prefer
                                                      GdkColor            *color_return);
 
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_PREFERENCES_H__ */

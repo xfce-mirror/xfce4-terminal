@@ -22,7 +22,7 @@
 
 #include <gtk/gtk.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 void terminal_dialogs_show_about (GtkWindow    *parent) G_GNUC_INTERNAL;
 
@@ -35,6 +35,6 @@ void terminal_dialogs_show_help  (gpointer      parent,
                                   const gchar  *page,
                                   const gchar  *offset) G_GNUC_INTERNAL;
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_DIALOGS_H__ */

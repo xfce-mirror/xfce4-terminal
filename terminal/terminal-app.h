@@ -26,7 +26,7 @@
 
 #include <terminal/terminal-options.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_ERROR (terminal_error_quark ())
 GQuark terminal_error_quark (void) G_GNUC_CONST;
@@ -62,6 +62,6 @@ gboolean     terminal_app_process             (TerminalApp        *app,
 void         terminal_app_open_window         (TerminalApp        *app,
                                                TerminalWindowAttr *attr);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_APP_H__ */

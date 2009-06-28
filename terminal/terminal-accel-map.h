@@ -24,7 +24,7 @@
 
 #include <glib-object.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_ACCEL_MAP             (terminal_accel_map_get_type ())
 #define TERMINAL_ACCEL_MAP(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_ACCEL_MAP, TerminalAccelMap))
@@ -45,6 +45,6 @@ GType             terminal_accel_map_get_type (void) G_GNUC_CONST;
 
 TerminalAccelMap *terminal_accel_map_new      (void);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_ACCEL_MAP_H__ */

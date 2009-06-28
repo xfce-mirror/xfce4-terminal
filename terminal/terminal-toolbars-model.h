@@ -27,7 +27,7 @@
 
 #include <exo/exo.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_TOOLBARS_MODEL            (terminal_toolbars_model_get_type ())
 #define TERMINAL_TOOLBARS_MODEL(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_TOOLBARS_MODEL, TerminalToolbarsModel))
@@ -57,6 +57,6 @@ GType             terminal_toolbars_model_get_type    (void) G_GNUC_CONST;
 
 ExoToolbarsModel *terminal_toolbars_model_get_default (void);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_TOOLBARS_MODEL_H__ */

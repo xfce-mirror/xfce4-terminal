@@ -25,7 +25,7 @@
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-options.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_WINDOW            (terminal_window_get_type ())
 #define TERMINAL_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WINDOW, TerminalWindow))
@@ -73,6 +73,6 @@ GList          *terminal_window_get_restart_command  (TerminalWindow     *window
 
 gboolean        terminal_window_is_screen_active     (TerminalScreen     *screen);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_WINDOW_H__ */

@@ -24,7 +24,7 @@
 
 #include <vte/vte.h>
 
-G_BEGIN_DECLS;
+G_BEGIN_DECLS
 
 #define TERMINAL_TYPE_WIDGET            (terminal_widget_get_type ())
 #define TERMINAL_WIDGET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), TERMINAL_TYPE_WIDGET, TerminalWidget))
@@ -39,6 +39,6 @@ typedef struct _TerminalWidgetClass TerminalWidgetClass;
 GType      terminal_widget_get_type (void) G_GNUC_CONST;
 GtkWidget *terminal_widget_new      (void);
 
-G_END_DECLS;
+G_END_DECLS
 
 #endif /* !__TERMINAL_WIDGET_H__ */
