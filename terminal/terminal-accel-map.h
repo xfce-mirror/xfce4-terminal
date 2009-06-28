@@ -41,9 +41,11 @@ struct _TerminalAccelMapClass
   GObjectClass  __parent__;
 };
 
-GType             terminal_accel_map_get_type (void) G_GNUC_CONST;
+GType             terminal_accel_map_get_type      (void) G_GNUC_CONST;
 
-TerminalAccelMap *terminal_accel_map_new      (void);
+TerminalAccelMap *terminal_accel_map_new           (void);
+
+void              terminal_accel_map_start_monitor (TerminalAccelMap *map);
 
 G_END_DECLS
 

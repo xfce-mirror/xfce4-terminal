@@ -30,6 +30,7 @@
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-shortcut-editor.h>
 #include <terminal/terminal-stock.h>
+#include <terminal/terminal-private.h>
 
 #if defined(GDK_WINDOWING_WIN32)
 #include <gdk/gdkwin32.h>
@@ -203,18 +204,13 @@ terminal_shortcut_editor_init (TerminalShortcutEditor *editor)
 
           g_object_get (G_OBJECT (editor->preferences), pspec->name, &accel, NULL);
 
-          if (accel == NULL)
-            accel = g_strdup (_("Disabled"));
-
           gtk_tree_store_append (store, &child, &parent);
           gtk_tree_store_set (store, &child,
                               COLUMN_TITLE, g_param_spec_get_nick (pspec),
-                              COLUMN_ACCEL, accel,
+                              COLUMN_ACCEL, IS_STRING (accel) ? accel : _("Disabled"),
                               COLUMN_PROPERTY, pspec->name,
                               -1);
-
-          if (accel != NULL)
-            g_free (accel);
+          g_free (accel);
         }
     }
 
@@ -393,7 +389,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
 
   response = gtk_dialog_run (GTK_DIALOG (dialog));
   if (response == TERMINAL_RESPONSE_CLEAR)
-    g_object_set (G_OBJECT (editor->preferences), property, _("Disabled"), NULL);
+    g_object_set (G_OBJECT (editor->preferences), property, "", NULL);
 
   gdk_keyboard_ungrab (GDK_CURRENT_TIME);
 
@@ -483,6 +479,7 @@ terminal_shortcut_editor_notify (TerminalPreferences    *preferences,
   GtkTreeIter   child;
   gchar        *property;
   gchar        *accel;
+  gboolean      found = FALSE;
 
   g_object_get (G_OBJECT (preferences), pspec->name, &accel, NULL);
 
@@ -499,13 +496,17 @@ terminal_shortcut_editor_notify (TerminalPreferences    *preferences,
                                       COLUMN_PROPERTY, &property,
                                       -1);
                   if (exo_str_is_equal (property, pspec->name))
-                    gtk_tree_store_set (GTK_TREE_STORE (model), &child, COLUMN_ACCEL, accel, -1);
+                    {
+                      gtk_tree_store_set (GTK_TREE_STORE (model), &child,
+                          COLUMN_ACCEL, IS_STRING (accel) ? accel : _("Disabled"), -1);
+                      found = TRUE;
+                    }
                   g_free (property);
                 }
-              while (gtk_tree_model_iter_next (model, &child));
+              while (!found && gtk_tree_model_iter_next (model, &child));
             }
         }
-      while (gtk_tree_model_iter_next (model, &parent));
+      while (!found && gtk_tree_model_iter_next (model, &parent));
     }
 
   g_free (accel);

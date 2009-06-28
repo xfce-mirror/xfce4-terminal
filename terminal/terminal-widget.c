@@ -483,7 +483,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       text = (gchar *) gtk_selection_data_get_text (selection_data);
       if (G_LIKELY (text != NULL))
         {
-          if (G_LIKELY (*text != '\0'))
+          if (G_LIKELY (IS_STRING (text)))
             vte_terminal_feed_child (VTE_TERMINAL (widget), text, strlen (text));
           g_free (text);
         }

@@ -33,6 +33,8 @@ G_BEGIN_DECLS
 #define TERMINAL_HAS_ANTI_ALIAS_SETTING (TRUE)
 #endif
 
+#define IS_STRING(string) (string != NULL && *string != '\0')
+
 /* support macros for debugging */
 #ifndef NDEBUG
 #define _terminal_assert(expr)                  g_assert (expr)

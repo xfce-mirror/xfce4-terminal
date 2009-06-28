@@ -65,8 +65,7 @@ terminal_accel_map_init (TerminalAccelMap *map)
   GParamSpec **specs;
   GParamSpec  *spec;
   gchar       *signal_name;
-  guint        nspecs;
-  guint        n;
+  guint        nspecs, n;
 
   map->preferences = terminal_preferences_get ();
 
@@ -114,24 +113,64 @@ terminal_accel_map_notify (TerminalPreferences *preferences,
 
   _terminal_return_if_fail (g_str_has_prefix (pspec->name, "accel-"));
 
-  accelerator_path = g_strconcat ("<Actions>/terminal-window/", pspec->name + 6, NULL);
-
   g_object_get (G_OBJECT (preferences), pspec->name, &accelerator, NULL);
-  if (G_LIKELY (accelerator != NULL))
+
+  accelerator_path = g_strconcat ("<Actions>/terminal-window/", pspec->name + 6, NULL);
+  if (G_UNLIKELY (IS_STRING (accelerator)))
     {
       gtk_accelerator_parse (accelerator, &accelerator_key, &accelerator_mods);
       gtk_accel_map_change_entry (accelerator_path,
                                   accelerator_key,
                                   accelerator_mods,
                                   TRUE);
-      g_free (accelerator);
     }
   else
     {
       gtk_accel_map_change_entry (accelerator_path, 0, 0, TRUE);
     }
-
   g_free (accelerator_path);
+  g_free (accelerator);
+}
+
+
+
+static void
+terminal_accel_map_changed (GtkAccelMap      *object,
+                            gchar            *accel_path,
+                            guint             accel_key,
+                            GdkModifierType   accel_mods,
+                            TerminalAccelMap *map)
+{
+  gchar        *property, *name;
+  GParamSpec **specs;
+  guint         nspecs, n;
+
+  _terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
+  _terminal_return_if_fail (GTK_IS_ACCEL_MAP (object));
+
+  /* only accept window property names */
+  if (!g_str_has_prefix (accel_path, "<Actions>/terminal-window/"))
+    return;
+
+  /* create the property name */
+  property = g_strconcat ("accel-", accel_path + 26, NULL);
+
+  /* check if the property exists in the preferences object */
+  specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (map->preferences), &nspecs);
+  for (n = 0; n < nspecs; ++n)
+    {
+      if (exo_str_is_equal (specs[n]->name, property))
+        {
+          /* store the new accelerator */
+          name = gtk_accelerator_name (accel_key, accel_mods);
+          g_object_set (G_OBJECT (map->preferences), property, name, NULL);
+          g_free (name);
+
+          break;
+        }
+    }
+  g_free (property);
+  g_free (specs);
 }
 
 
@@ -145,4 +184,18 @@ TerminalAccelMap*
 terminal_accel_map_new (void)
 {
   return g_object_new (TERMINAL_TYPE_ACCEL_MAP, NULL);
+}
+
+
+
+void
+terminal_accel_map_start_monitor (TerminalAccelMap *map)
+{
+  GtkAccelMap *gtkmap;
+
+  _terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
+
+  /* monitor the accel map for changes */
+  gtkmap = gtk_accel_map_get ();
+  g_signal_connect (G_OBJECT (gtkmap), "changed", G_CALLBACK (terminal_accel_map_changed), map);
 }

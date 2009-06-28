@@ -48,7 +48,7 @@
 
 static void               terminal_app_finalize                 (GObject            *object);
 static void               terminal_app_update_accels            (TerminalApp        *app);
-static GtkWidget           *terminal_app_create_window          (TerminalApp        *app,
+static GtkWidget         *terminal_app_create_window            (TerminalApp        *app,
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
                                                                  TerminalVisibility  borders,
@@ -482,6 +482,8 @@ terminal_app_process (TerminalApp  *app,
 
   g_list_foreach (attrs, (GFunc) terminal_window_attr_free, NULL);
   g_list_free (attrs);
+
+  terminal_accel_map_start_monitor (app->accel_map);
 
   return TRUE;
 }

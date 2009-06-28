@@ -1239,7 +1239,7 @@ terminal_screen_get_title (TerminalScreen *screen)
 
   _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
-  if (G_UNLIKELY (*screen->custom_title != '\0'))
+  if (IS_STRING (screen->custom_title))
     return g_strdup (screen->custom_title);
 
   g_object_get (G_OBJECT (screen->preferences),

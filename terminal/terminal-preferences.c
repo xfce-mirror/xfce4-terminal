@@ -395,7 +395,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-preferences",
                                                         _("Preferences"),
                                                         "AccelPreferences",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -406,7 +406,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-menubar",
                                                         _("Show menubar"),
                                                         "AccelShowMenubar",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -417,7 +417,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-toolbars",
                                                         _("Show toolbars"),
                                                         "AccelShowToolbars",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -428,7 +428,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-show-borders",
                                                         _("Show borders"),
                                                         "AccelShowBorders",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -450,7 +450,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-set-title",
                                                         _("Set Title"),
                                                         "AccelSetTitle",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -461,7 +461,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-reset",
                                                         _("Reset"),
                                                         "AccelReset",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -472,7 +472,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-reset-and-clear",
                                                         _("Reset and Clear"),
                                                         "AccelResetAndClear",
-                                                        _("Disabled"),
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**

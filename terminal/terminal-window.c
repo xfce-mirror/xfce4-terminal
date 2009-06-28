@@ -365,7 +365,6 @@ terminal_window_init (TerminalWindow *window)
         }
     }
 
-
   /* setup mnemonics */
   g_object_get (G_OBJECT (window->preferences), "shortcuts-no-mnemonics", &bval, NULL);
   if (G_UNLIKELY (bval))
