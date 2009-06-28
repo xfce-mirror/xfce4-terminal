@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2006-10-23 01:56+0530\n"
 "Last-Translator: yangka <yanang_ka@hotmail.com>\n"
 "Language-Team: dzongkha <pgeyleg@dit.gov.bt>\n"
@@ -97,8 +97,9 @@ msgstr ""
 "                                      ཚར་རེ་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -262,8 +263,8 @@ msgstr ""
 "  --default-working-directory=DIRNAME སྔོན་སྒྲིག་ཊར་མི་ནཱལ་ཚུ་ལཱ་འབད་མི\n"
 "                                      སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "ཊར་མི་ནཱལ།"
 
@@ -302,7 +303,7 @@ msgstr "ཊར་མི་ནཱལ་ཞབས་ཏོག་ཐོ་བཀོ
 msgid "Unable to launch terminal: %s\n"
 msgstr "ཊར་མི་ནཱལ་གསར་བཙུགས་འབད་མི་ཚུགསཔ: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ནུས་མེད་ཐིག་རྩིས་ཡིག་རྒྱུན། \"%s\"\n"
@@ -325,12 +326,12 @@ msgstr "དངོས་པོ་ཐོ་བཀོད་འབད་མི་ཚ
 msgid "X Terminal Emulator"
 msgstr "ཨེགསི་ཊར་མི་ནཱལ་ནུས་འཕེལ།"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr "སྐད་བསྒྱུར་པ-ངོ་བསྟོད་ཚུ།"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "ཡིག་ཐོག་བཀོད་པ་བརའུ་ཟར་ཁ་ཕྱེ་ནི་ལུ་འཐུས་ཤོར་འབྱུང་ཡོདཔ།"
 
@@ -421,158 +422,613 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "མ་ཤེས་པའི་གདམ་ཁ \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "ཊར་མི་ནཱལ་དགའ་གདམ་ཚུ།"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "ཡིག་སྣོད་ཚུ་ཆ་མཉམ།"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>མགོ་མིང་།</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "གཟུགས་བརྙན་ཡིག་སྣོད་ཚུ།"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr ""
-"ཊར་མི་ནཱལ་འདི་ནང་བརྡ་བསྐུལ་གཡོག་བཀོལ་མི་ཡང་ཅིན་ནུས་ཅན་ཐོགས་ལས་མགོ་མིང་གསརཔ་ཅིག་གཞི་སྒྲིག་འབད་"
-"བཏུབ་ཨིན།"
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "མཆོང་ལྡེ་ཁ་ཕྱེ།"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་:(_I)"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "ཊར་མི་ནཱལ་ཁ་ཕྱེ།"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "ནུས་ཅན་ཐོག་ལས་-གཞི་སྒྲིག་མགོ་མིང་:(_D)"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "མཆོང་ལྡེ་ཁ་འཕྱེལ།"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་ཚབ་བཙུགསཔ་ཨིན།"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "མཆོང་ལྡེ་ཁ་བསྡམས།"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་གི་ཧེ་མ་འགྱོཝ་ཨིན།"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "ཝིནཌོ་ཁ་བསྡམས།"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་གི་ཤེལ་ལས་འགྱོཝ་ཨིན།"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "འདྲ་བཤུས་འབད།"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "བཀྲམ་བཏོན་མ་འབད་བས།"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "སྦྱར།"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>བརྡ་བཀོད</b>"
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "སེལ་འཐུ་སྦྱར།"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "ནང་བསྐྱོད་ཤལ་སྦེ་བརྡ་བསྐུལ་གཡོག་བཀོལ།(_R)"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"ཁྱོད་ཀྱིས་ཊར་མི་ནཱལ་ཚུ་གསརཔ་ཁ་ཕྱེཝ་ད་ཁྱོད་རའི་ཤལ་ནང་བསྐྱོད་ཤལ་སྦེ་གཡོག་བཀོལ་ནི་ལུ་ཊར་མི་ནཱལ་ཤིགས་ལྡན་"
-"ལུ་གདམ་འདི་སེལ་འཐུ་འབད། འདིའི་ཕན་ཚུན་འབྲེལ་ལྡན་ཤལ་དང་ནང་བསྐྱོད་ཤལ་སྦེ་གཡོག་བཀོལ་ཐངས་བར་རྒྱས་པ་"
-"སྐོར་ལས་ཁྱོད་རའི་ཤལ་གྱི་ཡིག་ཐོག་བཀོད་ཡོད་མི་འདི་བལྟ།"
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "བརྡ་བསྐུལ་འི་གཞི་བཙུགས་འབད་ཡོདཔ་ད་ཡུ་ཊི་ཨེམ་པི/ཌབ་ལུ་ཊི་ཨེམ་པི་དྲན་ཐོ་ཚུ་དུས་མཐུན་བཟོ།(_U)"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>བཤུད་སྒྲིལ་འབད་དོ</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "ཨའུཊི་པུཊི་གུ་བཤུད་སྒྲིལ།(_r)"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"ནམ་རང་འབད་རུང་ཊར་མི་ནཱལ་ནང་ན་བརྡ་བསྐུལ་ཚུ་གིས་གཡོག་བཀོལ་མི་གིས་ཨའུཊི་པུཌི་གསརཔ་འདི་་བཟོ་བཏོན་"
-"འབདཝ་ད་ཊར་མི་ནཱལ་འདི་རང་བཞིན་གྱིས་མར་བཤུད་སྒྲིལ་འབད་ཡི་ག་མ་འབད་དེ་གདམ་ཁ་འདི་གིས་ཚད་འཛིནམ་ཨིན།"
-
-#: ../terminal/terminal-preferences-dialog.c:314
-#, fuzzy
-msgid "Scroll on _keystroke"
-msgstr "ཀི་སིཊོཀ་གུ་བཤུད་སྒྲིལ།(_s)"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"ཁྱོད་ལུ་བརྡ་བསྐུལ་ནུས་སྤེལ་འདི་ལུ་ཊར་མི་ནཱལ་ཝིནཌོ་འདི་མར་སྒྲིལ་ལུ་ལྡེ་སྒྲོམ་གུ་ལྡེ་མིག་གང་རུང་ཨེབ་གཏང་འབད་ནི་"
-"ལུ་ལྕོགས་ཅན་བཟོཝ་ཨིན།"
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "བཤུད་ཕྲ་འདི:(_S)"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "དགའ་གདམ་ཚུ།"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "ལྕོགས་མིན་བཟོ་ཡོདཔ།"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "གཡོན་ཕྱོགས་གུ།"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "དཀར་ཆག་ཕྲ་རིང་སྟོན།"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "གཡས་ཕྱོགས་གུ།"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན།"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "རྒྱབ་སྒྲིལ:(_o)"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "མཐའ་མཚམས་ཚུ་སྟོན།"
 
-#: ../terminal/terminal-preferences-dialog.c:353
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "གསལ་གཞི་གངམ།"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "མགོ་མིང་གཞི་སྒྲིག་འབད།"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "སླར་སྒྲིག"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "སླར་སྒྲིག་དང་བསལ།"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "ཧེ་མམ་གྱི་མཆོང་ལྡེ།"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "ཤེལ་མམ་གྱི་མཆོང་ལྡེ།"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "མཆོང་ལྡེ་ ༡ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "མཆོང་ལྡེ་ ༢ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "མཆོང་ལྡེ་ ༣ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "མཆོང་ལྡེ་ ༤ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "མཆོང་ལྡེ་ ༥ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "མཆོང་ལྡེ་ ༦ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "མཆོང་ལྡེ་ ༧ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "མཆོང་ལྡེ་ ༨ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "མཆོང་ལྡེ་ ༩ ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "ནང་དོན་ཚུ།"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "ཁྱོད་ཀྱི་ནང་བསྐྱོད་ཤལ་གཏན་འབེབས་བཟོ་མ་ཚུགསཔ།"
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "ཆ་ག་ལག་ལེན་འཐབ་ནི་ལུ་འཐུས་ཤོར་་བྱུང་ཡོདཔ།"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "མགོ་མིང་མ་བཏགསཔ།"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "ཡིག་སྣོད།"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "ཞུན་དག་འབད་ནི།"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "མཐོང་སྣང་།"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "འགྱོ།"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "གྲོགས་རམ།"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "བྱ་བ།"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "མགྱོགས་ཐབས་ལྡེ་མིག"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "མགྱོགས་ཐབས་བརྩམ་ནི།"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
+msgstr ""
+
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "དོན་ལུ་མགྱོགས་ཐབས་བརྩམ་ནི:"
+
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "ལྡེ་སྒྲོམ་འཐོབ་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
+
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "གློག་རིམ་གཞན་ཅིག་ཧེ་མ་ལས་ཁྱོད་རའི་ལྡེ་སྒྲོམ་གྱི་ལྟག་ལས་ཚད་འཛིན་འཐོབ་ནུག"
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "མཆོང་ལྡེ་འདི་ཁ་བསྡམས།"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "མཆོང་ལྡེ་ཁ་ཕྱེལ།(_D)"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "མཆོང་ལྡེ་ཁ་བསྡམས།(_l)"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "ལག་ཆས་ཕྲ་རིང་ཞུན་དག་པ།"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "གློག་འཕྲིན་ཁ་བྱང་འདྲ་བཤུས་འབད།"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "གློག་འཕྲིན་བརྩམ་ནི།"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "འབྲེལ་ལམ་ཁ་བྱང་འདྲ་བཤུས་འབད།"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "འབྲེལ་ལམ་ཁ་ཕྱེ།"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
 msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "ཁྱོད་ཀྱིས་བཤུད་སྒྲིལ་འདི་ལག་ལེན་འཐབ་དེ་རྒྱབ་སྒྲིལ་འབད་བའི་གྱལ་ཚུ་གི་ཨང་འདི་གསལ་བཀོད་འབདཝ་ཨིན།"
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"ཊར་མི་ནཱལ་ལུ་ཚིག་ཡིག་དབྱེ་བ་/ཉག་ཀྱང་གི་སེལ་འཐུ་བཀོག་བཞག་ལུ་མི་ཚུགས་པས: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་"
+"ན་རིང་ཚད (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "ཡོངས་ཁྱབ།"
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"ཊར་མི་ནཱལ་གུ་ཡུ་ཨར་ཨེལ་མོ་ཛིནལ་ལ་བཀོག་བཞག་ལུ་མི་ཚུགས་པས: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་ན་རིང་ཚད (%"
+"d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>ཡིག་གཟུགས</b>"
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"ཊར་མི་ནཱལ་གུ་ཡུ་ཨར་ཨེལ་བཀོག་བཞག་ལུ་མི་ཚུགས་པས: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་ན་རིང་ཚད (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "གནད་སྡུད་ཚོས་གཞི་ནུས་མེན་འཐོབ་ཡོདཔ: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་ན་རིང་ཚད (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, fuzzy, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "ཡིག་ཐོག་བཀོད་པ་བརའུ་ཟར་ཁ་ཕྱེ་ནི་ལུ་འཐུས་ཤོར་འབྱུང་ཡོདཔ།"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "ཡིག་སྣོད།(_F)"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "མཆོང་ལྡེ་ཁ་ཕྱེ།(_T)"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "ཊར་མི་ནཱལ་མཆོང་ལྡེ་གསརཔ་ཅིག་ཁ་ཕྱེ།"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "ཊར་མི་ནཱལ་ཁ་ཕྱེ།(_e)"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "ཊར་མི་ནཱལ་ཝིནཌོ་གསརཔ་ཅིག་ཁ་ཕྱེ།"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "ད་ལྟོའི་ཊར་མི་ནཱལ་མཆོང་ལྡེ་དོན་ལུ་ཝིནཌོ་གསརཔ་ཅིག་ཁ་ཕྱེ།"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "ད་ལྟོའི་ཊར་མི་ནཱལ་མཆོང་ལྡེ་འདི་ཁ་བསྡམས།"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "ཝིནཌོ་ཁ་བསྡམས།(_C)"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "ཊར་མི་ནཱལ་ཝིནཌོ་འདི་ཁ་བསྡམས།"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "ཞུན་དག(_E)"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "འདྲ་བཤུས་འབད།(_C)"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "འཛིན་པང་ལུ་འདྲ་བཤུས་འབད།"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "སྦྱར།(_P)"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "འཛིན་པང་ལས་སྦྱར།"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "སེལ་འཐུ་སྦྱར།(_S)"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "གཞི་རིམ་སེལ་འཐུ་ལས་སྦྱར།"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ...(_T)"
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "ལག་ཆས་ཕྲ་རིང་འདི་ཚུ་སྲོལ་སྒྲིག་བཟོ།"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "དགའ་གདམ་ཚུ...(_e)"
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "ཊར་མི་ནཱལ་དགའ་གདམ་ཌའི་ལོག་འདི་ཚུ་ཁ་ཕྱེ།"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "མཐོང་སྣང་།(_V)"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "ཊར་མི་ནཱལ།(_T)"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "མགོ་མིང་གཞི་སྒྲིག་འབད།...(_S)"
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "ད་ལྟོའི་མཆོང་ལྡེའི་དོན་ལུ་སྲོལ་སྒྲིག་མགོ་མིང་ཅིག་གཞི་སྒྲིག་འབད།"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "སླར་སྒྲིག(_R)"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "སླར་སྒྲིག་དང་བསལ།(_l)"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "འགྱོ།(_G)"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "ཧེ་མམ་གྱི་མཆོང་ལྡེ།(_P)"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "ཧེ་མམ་གྱི་མཆོང་ལྡེ་ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "ཤུལ་མམ་གྱི་མཆོང་ལྡེ།(_N)"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "ཤུལ་མམ་གྱི་མཆོང་ལྡེ་ལུ་སོར་བསྒྱུར།"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "གྲོགས་རམ།(_H)"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "ནང་དོན་ཚུ།(_C)"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "གྲོགས་རམ་ནང་དོན་ཚུ་བཀྲམ་བཏོན་འབད།"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "རྐྱེན་ཅིག་སྙན་ཞུ།(_R)"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "ཊར་མི་ནཱལ་ནང་རྐྱེན་ཅིག་སྙན་ཞུ།"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "སྐོར་ལས།(_A)"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "ཊར་མི་ནལ་སྐོར་ལས་བརྡ་དོན་བཀྲམ་བཏོན་འབད།"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "ཨིན་པུཊི་ཐབས་ལམ་ཚུ།(_I)"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "དཀར་ཆག་ཕྲ་རིང་སྟོན།(_M)"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "དཀར་ཆག་ཕྲ་རིང་འདི་སྟོན་/གསང་བཞག"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན།(_T)"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན་/གསང་བཞག"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "ཝིནཌོ་མཐའ་མཚམས་ཚུ་སྟོན།(_B)"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "ཝིནཌོ་མཛེས་བཀོད་ཚུ་སྟོན/གསང་བཞག"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "གསལ་གཞི་གངམ།(_F)"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "གསལ་གཞི་ཐབས་ལམ་སོར་སྟོན།"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "ཉེན་བརྡ།"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "མཆོང་ལྡེ་ཚུ་ཆ་མཉམ་ཁ་བསྡམས།"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"ཝིནཌོ་འདི་ལུ་ %d མཆོང་ལྡེ་ཚུ་ཁ་ཕྱེ་ཡོད། ཝིནཌོ་\n"
+"འདི་ཁ་བསྡམས་ད་འདིའི་མཆོང་ལྡེ་ཚུ་ཡང་ཁ་བསྡམས་འོང་།"
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "མཆོང་ལྡེ་ཚུ་ཆ་མཉམ་ཁ་བསྡམས་ནི?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "ང་ལུ་ལོག་མ་འདྲི།(_n)"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "ཝིནཌོ་མགོ་མིང་|མགོ་མིང་གཞི་སྒྲིག་འབད།"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>མགོ་མིང་:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "ད་ལྟོའི་ཊར་མི་ནཱལ་མཆོང་ལྡེ་འདིའི་དོན་ལུ་མགོ་མིང་འདི་བཙུགས།"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "ཊར་མི་ནཱལ་ནུས་འཕྲུལ།"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$དོན་ཚིག</tt> སྒྲིག་སྟངས:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ཨེ་ཨེསི་སི་ཨའི་ཨའི་ཌི་ཨི་ཨེལ།"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "ཡར་འཕར་ཅན།"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "ཚིག་ཡིག་རྒྱགས་པ་འབད་བཅུག"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "རང་བཞིན་-སྐྱོན་འཛིན།"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "རྒྱབ་གཞི་གཟུགས་བརྙན།"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "རྒྱབ་གཞི་གཟུགས་བརྙན།"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "དབུས་སྒྲིག"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "ཊར་མི་ནཱལ་ཡིག་གཟུགས་གདམ།"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "ཊར་མི་ནཱལ་རྒྱབ་གཞི་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "ཊར་མི་ནཱལ་འོད་རྟགས་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "ཚོས་གཞི་སེལ་འཐུ་འབད་མི།"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>བརྡ་བཀོད</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>མཐུན་འགྱུར</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "གཉིས་ལྡན་ཨེབ་གཏང་འབད་བའི་སྐབས་མིང་ཚིག་གི་འོག་གི་ཡིག་འབྲུ་ཡན་ལག་ཚུ་ཆ་འཇོག་འབད:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "ཚད་འཛིན་-ཨེཆ།"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "དཀར་ཆག་འཛུལ་སྤྱོད་འབད་ནི་ལྡེ་མིག་ཚུ་ཆ་མཉམ་ལྕོགས་མིན་བཟོ(གདམ་་ལྡེ་+ཨེཕ་བཟུམ)(_n)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "དཀར་ཆག་མགྱོགས་ཐབས་ལྡེ་མིག་(སྔོན་སྒྲིག་གི་ཨེཕ་༡༠)ལྕོགས་མིན་བཟོ།(_e)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "ཝིནཌོ་གསརཔ་ཚུ་གི་མཐའ་འཁོར་་མཐའ་མཚམས་ཚུ་བཀྲམ་བཏོན་འབད།(_b)"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "ཝིནཌོ་གསརཔ་ཚུ་ནང་དཀར་ཆག་ཕྲ་རིང་བཀྲམ་བཏོན་འབད།(_m)"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "ཝིནཌོ་གསརཔ་ཚུ་ནང་་ལག་ཆས་ཕྲ་རིང་ཚུ་བཀྲམ་བཏོན་འབད།(_t)"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>/ཨེབ་གཏང་གཉིས་ལྡན།</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "ཊར་མི་ནཱལ་ཡིག་གཟུགས་དོན་ལུ་ཨེན་ཊི་ཨེ་ལའིསིང་ལྕོགས་ཅན་བཟོ།"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -584,11 +1040,7 @@ msgstr ""
 "འབད་ནི་ལཱ་ཤུགས་མགྱོགས་ཐབས་ངལ་རངས་ཏོག་ཏོ་འབདཝ་དང་་རིམ་ལུགས་ལྷོད་ཆ་ཚུ་གུ་རིམ་ལུགས་མངོན་འགན་ལྗིད་"
 "རྫོགསཔ་སྦེ་མར་ཕབ་འབདཝ་ཨིན།"
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "ཚིག་ཡིག་རྒྱགས་པ་འབད་བཅུག"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -596,87 +1048,25 @@ msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོ་ཚུ་ལུ་ཚིག་ཡིག་རྒྱགས་པ་ལག་ལེན་འཐབ་ནི་ནང་ན་གློག་རིམ་ཚུ་གཡོག་བཀོལ་བཅུག་ནི་གདམ་ཁ་འདི་"
 "ལྕོགས་ཅན་བཟོ།"
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>རྒྱབ་གཞི</b>"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "ཅི་མེད (ཚོས་གཞི་རགས་པ་ལག་ལེན་འཐབ)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "རྒྱབ་གཞི་གཟུགས་བརྙན།"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "རྒྱབ་གཞི་དྭངས་གསལ།"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "ཡིག་སྣོད:(_F)"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "བཟོ་རྣམ:(_S)"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "ཊའིལ་ཡོདཔ།"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "དབུས་སྒྲིག"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "ཚད་འཇལ་ཡོདཔ།"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "བསྣར་ཡོདཔ།"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "དྭངས་གསལ་ཡང་ན་གཟུགས་བརྙན་རྒྱབ་གཞི་ནག་གྲིབ།:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>ཅི་མེད</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>མང་མཐའ</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>ཝིན་ཌོ་གསརཔ་ཁ་ཕྱེ་དོ</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "ཝིནཌོ་གསརཔ་ཚུ་ནང་དཀར་ཆག་ཕྲ་རིང་བཀྲམ་བཏོན་འབད།(_m)"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོསི་གསརཔ་གསར་བསྐྲུན་འབད་ཡོད་མི་ནངདཀར་ཆག་ཕྲ་རིང་སྟོན་ལུ་གདམ་ཁ་འདི་ལྕོགས་ཅན་བཟོ།"
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "ཝིནཌོ་གསརཔ་ཚུ་ནང་་ལག་ཆས་ཕྲ་རིང་ཚུ་བཀྲམ་བཏོན་འབད།(_t)"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོསི་གསརཔ་གསར་བསྐྲུན་འབད་མི་ནང་ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན་ནི་གདམ་ཁ་འདི་ལྕོགས་ཅན་བཟོ།"
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "ཝིནཌོ་གསརཔ་ཚུ་གི་མཐའ་འཁོར་་མཐའ་མཚམས་ཚུ་བཀྲམ་བཏོན་འབད།(_b)"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -684,173 +1074,264 @@ msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོསི་གསརཔ་གསར་བསྐྲུན་འབད་མི་མཐའ་འཁོར་ཝིནཌོ་མཛེས་བཀོད་སྟོན་ནི་ལུ་གདམ་ཁ་འདི་ལྕོགས་ཅན་"
 "བཟོ།"
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "འབྱུང་སྣང་།"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"ཁྱོད་ལུ་བརྡ་བསྐུལ་ནུས་སྤེལ་འདི་ལུ་ཊར་མི་ནཱལ་ཝིནཌོ་འདི་མར་སྒྲིལ་ལུ་ལྡེ་སྒྲོམ་གུ་ལྡེ་མིག་གང་རུང་ཨེབ་གཏང་འབད་ནི་"
+"ལུ་ལྕོགས་ཅན་བཟོཝ་ཨིན།"
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>གདོང་གཞི་དང་རྒྱབ་གཞི</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "འབྱུང་རིམ་ཐར།"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "ཚིག་ཡིག་དང་འོད་རྟགས་ཚོས་གཞི:(_T)"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "ཡོངས་ཁྱབ།"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "ཚོས་གཞི་སེལ་འཐུ་འབད་མི།"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་གི་ཤེལ་ལས་འགྱོཝ་ཨིན།"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་གི་ཧེ་མ་འགྱོཝ་ཨིན།"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "བཀྲམ་བཏོན་མ་འབད་བས།"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>དཀར་ཆད་ཕྲ་རིང་འཛུལ་སྤྱོད་འབད་ནི།</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "ཅི་མེད (ཚོས་གཞི་རགས་པ་ལག་ལེན་འཐབ)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "གཡོན་ཕྱོགས་གུ།"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "གཡས་ཕྱོགས་གུ།"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "ཚོས་གཞི་གསལ་བཀོད་འབད་ནི་ལུ་ཌའི་ལོག་ཅིག་ཁ་ཕྱེ།"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "ཊར་མི་ནཱལ་འོད་རྟགས་ཚོས་གཞི་གདམ།"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>ཝིན་ཌོ་གསརཔ་ཁ་ཕྱེ་དོ</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "རྒྱབ་གཞི་ཚོས་གཞི:(_B)"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "ཊར་མི་ནཱལ་རྒྱབ་གཞི་ཚོས་གཞི་གདམ།"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>ཚིག་ཡིག་སེལ་འཐུ་</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "སྔོན་སྒྲིག་ཚོས་གཞི་ལག་ལེན་འཐབ།(_d)"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "སྔོན་སྒྲིག་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་འདི་ལག་ལེན་འཐབ།"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "སྲོལ་སྒྲིག་ཚོས་གཞི་ལག་ལེན་འཐབ།(_c)"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "སྲོལ་སྒྲིག་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་ཅིག་ལག་ལེན་འཐབ།"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་གདམ།"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>པེལེཊི</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "པེལེཊི་ཐོ་བཀོད %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་ཚབ་བཙུགསཔ་ཨིན།"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "ཚད་འཇལ་ཡོདཔ།"
+
+#: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Scroll on _keystroke"
+msgstr "ཀི་སིཊོཀ་གུ་བཤུད་སྒྲིལ།(_s)"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "ཨའུཊི་པུཊི་གུ་བཤུད་སྒྲིལ།(_r)"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr ""
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "རྒྱབ་སྒྲིལ:(_o)"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>བཤུད་སྒྲིལ་འབད་དོ</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "རྒྱབ་གཞི་གཟུགས་བརྙན་ཡིག་སྣོད་སེལ་འཐུ་འབད།"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"ཁྱོད་ཀྱིས་ཊར་མི་ནཱལ་ཚུ་གསརཔ་ཁ་ཕྱེཝ་ད་ཁྱོད་རའི་ཤལ་ནང་བསྐྱོད་ཤལ་སྦེ་གཡོག་བཀོལ་ནི་ལུ་ཊར་མི་ནཱལ་ཤིགས་ལྡན་"
+"ལུ་གདམ་འདི་སེལ་འཐུ་འབད། འདིའི་ཕན་ཚུན་འབྲེལ་ལྡན་ཤལ་དང་ནང་བསྐྱོད་ཤལ་སྦེ་གཡོག་བཀོལ་ཐངས་བར་རྒྱས་པ་"
+"སྐོར་ལས་ཁྱོད་རའི་ཤལ་གྱི་ཡིག་ཐོག་བཀོད་ཡོད་མི་འདི་བལྟ།"
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "མགྱོགས་ཐབས་ལྡེ་མིག"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "ཁྱོད་ཀྱིས་བཤུད་སྒྲིལ་འདི་ལག་ལེན་འཐབ་དེ་རྒྱབ་སྒྲིལ་འབད་བའི་གྱལ་ཚུ་གི་ཨང་འདི་གསལ་བཀོད་འབདཝ་ཨིན།"
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "བཟོ་རྣམ:(_S)"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "བསྣར་ཡོདཔ།"
+
+#: ../Terminal.glade.h:79
+msgid "Tab Activity Indicator"
+msgstr ""
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "ཊར་མི་ནཱལ་དགའ་གདམ་ཚུ།"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "ཊར་མི་ནཱལ་འཇུག་སྤྱོད་ཚུ་ནང་པེལེཊི་ཚོས་གཞི་འདི་འཐོབ་ཚུགསཔ་ཨིན།:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "པེལེཊི་ཐོ་བཀོད %d"
-
-#: ../terminal/terminal-preferences-dialog.c:775
+#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "<b>Tab activity</b>"
-msgstr "<b>མཐུན་འགྱུར</b>"
+msgid "Text Selection"
+msgstr "<b>ཚིག་ཡིག་སེལ་འཐུ་</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../Terminal.glade.h:84
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "ཚོས་གཞི་ཚུ།"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>མགྱོགས་ཐབས་ལྡེ་མིག་ཚུ།</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>དཀར་ཆད་ཕྲ་རིང་འཛུལ་སྤྱོད་འབད་ནི།</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "དཀར་ཆག་འཛུལ་སྤྱོད་འབད་ནི་ལྡེ་མིག་ཚུ་ཆ་མཉམ་ལྕོགས་མིན་བཟོ(གདམ་་ལྡེ་+ཨེཕ་བཟུམ)(_n)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "དཀར་ཆག་མགྱོགས་ཐབས་ལྡེ་མིག་(སྔོན་སྒྲིག་གི་ཨེཕ་༡༠)ལྕོགས་མིན་བཟོ།(_e)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "མགྱོགས་ཐབས་ཚུ།"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>མཐུན་འགྱུར</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "གདམ་ག་དེ་ཚུ་གིས་གློག་རིམ་ཚུ་བདེན་མེད་སྦེ་སྤྱོད་ལམ་རྐྱེན་འབྱུང་འོང་། ཁོང་ཆ་ཁྱབ་ན་ལུ་ཁྱོད་ངེས་ཅན་གློག་རིམ་"
 "ཚུའི་མཐའ་འཁོར་ལུ་ལཱ་འབད་བཅུགཔ་དང་བཀོལ་སྤྱོད་རིམ་ལུགས་ཚུ་ཊར་མི་ནཱལ་སྤྱོད་ལམ་སོ་སོ་རེ་བ་ཡོག་མི་ཚུ་འབད་"
 "བཅུགཔ་ཨིན།"
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "རྒྱབ་བཤུད་ལྡེ་མིག་བཟོ་བཏོན་འབདཝ་ཨིན།:(_B)"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"ནམ་རང་འབད་རུང་ཊར་མི་ནཱལ་ནང་ན་བརྡ་བསྐུལ་ཚུ་གིས་གཡོག་བཀོལ་མི་གིས་ཨའུཊི་པུཌི་གསརཔ་འདི་་བཟོ་བཏོན་"
+"འབདཝ་ད་ཊར་མི་ནཱལ་འདི་རང་བཞིན་གྱིས་མར་བཤུད་སྒྲིལ་འབད་ཡི་ག་མ་འབད་དེ་གདམ་ཁ་འདི་གིས་ཚད་འཛིནམ་ཨིན།"
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "རང་བཞིན་-སྐྱོན་འཛིན།"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ཨེ་ཨེསི་སི་ཨའི་ཨའི་ཌི་ཨི་ཨེལ།"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "འབྱུང་རིམ་ཐར།"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "ཚད་འཛིན་-ཨེཆ།"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "ལྡེ་མིག་བཟོ་བཏོན་ཚུ་བཏོན་གཏང་:(_D)"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "<tt>$དོན་ཚིག</tt> སྒྲིག་སྟངས:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -862,539 +1343,143 @@ msgstr ""
 "དགོས། ཁྱོད་ལུ་གློག་རིམ་ཚུ་ག་ལོ་ནང་ཚོས་གཞི་ཚུ་དང་གཅིག་ཁར་དཀའ་ངལ་ཡོད་པ་ཅིན་  ཨེགསི་ཊྲིམ་ཚོས་གཞི་་ན་"
 "ལུ་འབད་བརྩོན་བསྐྱེད།"
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+msgid "Title"
+msgstr "མགོ་མིང་།"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "ཊའིལ་ཡོདཔ།"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "རྒྱབ་གཞི་དྭངས་གསལ།"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "རྒྱབ་གཞི་དྭངས་གསལ།"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "སྔོན་སྒྲིག་ཚོས་གཞི་ལག་ལེན་འཐབ།(_d)"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "སྲོལ་སྒྲིག་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་ཅིག་ལག་ལེན་འཐབ།"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "སྲོལ་སྒྲིག་ཚོས་གཞི་ལག་ལེན་འཐབ།(_c)"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "སྔོན་སྒྲིག་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་འདི་ལག་ལེན་འཐབ།"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "འབྱུང་སྣང་།"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "རྒྱབ་གཞི་ཚོས་གཞི:(_B)"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "རྒྱབ་བཤུད་ལྡེ་མིག་བཟོ་བཏོན་འབདཝ་ཨིན།:(_B)"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "ཚོས་གཞི་ཚུ།"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "ལྡེ་མིག་བཟོ་བཏོན་ཚུ་བཏོན་གཏང་:(_D)"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "ནུས་ཅན་ཐོག་ལས་-གཞི་སྒྲིག་མགོ་མིང་:(_D)"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "ཡིག་སྣོད:(_F)"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "ཡོངས་ཁྱབ།"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་:(_I)"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "མཐུན་འགྱུར་གདམ་ཁ་ཚུ་སྔོན་སྒྲིག་ཚུ་ལུ་སླར་སྒྲིག་འབད།(_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>/ཨེབ་གཏང་གཉིས་ལྡན།</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "ནང་བསྐྱོད་ཤལ་སྦེ་བརྡ་བསྐུལ་གཡོག་བཀོལ།(_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "གཉིས་ལྡན་ཨེབ་གཏང་འབད་བའི་སྐབས་མིང་ཚིག་གི་འོག་གི་ཡིག་འབྲུ་ཡན་ལག་ཚུ་ཆ་འཇོག་འབད:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "བཤུད་ཕྲ་འདི:(_S)"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr ""
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "མགྱོགས་ཐབས་ཚུ།"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr ""
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "ཚིག་ཡིག་དང་འོད་རྟགས་ཚོས་གཞི:(_T)"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "བརྡ་བསྐུལ་འི་གཞི་བཙུགས་འབད་ཡོདཔ་ད་ཡུ་ཊི་ཨེམ་པི/ཌབ་ལུ་ཊི་ཨེམ་པི་དྲན་ཐོ་ཚུ་དུས་མཐུན་བཟོ།(_U)"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "ཡར་འཕར་ཅན།"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>མགོ་མིང་།</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "རྒྱབ་གཞི་གཟུགས་བརྙན་ཡིག་སྣོད་སེལ་འཐུ་འབད།"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "ཊར་མི་ནཱལ་འདི་ནང་བརྡ་བསྐུལ་གཡོག་བཀོལ་མི་ཡང་ཅིན་ནུས་ཅན་ཐོགས་ལས་མགོ་མིང་གསརཔ་ཅིག་གཞི་སྒྲིག་འབད་"
+#~ "བཏུབ་ཨིན།"
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "ཡིག་སྣོད་ཚུ་ཆ་མཉམ།"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>ཡིག་གཟུགས</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "གཟུགས་བརྙན་ཡིག་སྣོད་ཚུ།"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>རྒྱབ་གཞི</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "མཆོང་ལྡེ་ཁ་ཕྱེ།"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "དྭངས་གསལ་ཡང་ན་གཟུགས་བརྙན་རྒྱབ་གཞི་ནག་གྲིབ།:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "ཊར་མི་ནཱལ་ཁ་ཕྱེ།"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>ཅི་མེད</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "མཆོང་ལྡེ་ཁ་འཕྱེལ།"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>མང་མཐའ</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "མཆོང་ལྡེ་ཁ་བསྡམས།"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>གདོང་གཞི་དང་རྒྱབ་གཞི</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "ཝིནཌོ་ཁ་བསྡམས།"
+#, fuzzy
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>མཐུན་འགྱུར</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "འདྲ་བཤུས་འབད།"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "སྦྱར།"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "སེལ་འཐུ་སྦྱར།"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "དགའ་གདམ་ཚུ།"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "དཀར་ཆག་ཕྲ་རིང་སྟོན།"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན།"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "མཐའ་མཚམས་ཚུ་སྟོན།"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "གསལ་གཞི་གངམ།"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "མགོ་མིང་གཞི་སྒྲིག་འབད།"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "སླར་སྒྲིག"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "སླར་སྒྲིག་དང་བསལ།"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "ཧེ་མམ་གྱི་མཆོང་ལྡེ།"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "ཤེལ་མམ་གྱི་མཆོང་ལྡེ།"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "མཆོང་ལྡེ་ ༡ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "མཆོང་ལྡེ་ ༢ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "མཆོང་ལྡེ་ ༣ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "མཆོང་ལྡེ་ ༤ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "མཆོང་ལྡེ་ ༥ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "མཆོང་ལྡེ་ ༦ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "མཆོང་ལྡེ་ ༧ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "མཆོང་ལྡེ་ ༨ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "མཆོང་ལྡེ་ ༩ ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "ནང་དོན་ཚུ།"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "ཁྱོད་ཀྱི་ནང་བསྐྱོད་ཤལ་གཏན་འབེབས་བཟོ་མ་ཚུགསཔ།"
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "ཆ་ག་ལག་ལེན་འཐབ་ནི་ལུ་འཐུས་ཤོར་་བྱུང་ཡོདཔ།"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "མགོ་མིང་མ་བཏགསཔ།"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "ཡིག་སྣོད།"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "ཞུན་དག་འབད་ནི།"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "མཐོང་སྣང་།"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "འགྱོ།"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "གྲོགས་རམ།"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "བྱ་བ།"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "མགྱོགས་ཐབས་ལྡེ་མིག"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "མགྱོགས་ཐབས་བརྩམ་ནི།"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "དོན་ལུ་མགྱོགས་ཐབས་བརྩམ་ནི:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "ལྡེ་སྒྲོམ་འཐོབ་ནི་ལུ་འཐུས་ཤོར་བྱུང་ཡོདཔ།"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "གློག་རིམ་གཞན་ཅིག་ཧེ་མ་ལས་ཁྱོད་རའི་ལྡེ་སྒྲོམ་གྱི་ལྟག་ལས་ཚད་འཛིན་འཐོབ་ནུག"
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "མཆོང་ལྡེ་འདི་ཁ་བསྡམས།"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "མཆོང་ལྡེ་ཁ་ཕྱེལ།(_D)"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "མཆོང་ལྡེ་ཁ་བསྡམས།(_l)"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "ལག་ཆས་ཕྲ་རིང་ཞུན་དག་པ།"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "གློག་འཕྲིན་ཁ་བྱང་འདྲ་བཤུས་འབད།"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "གློག་འཕྲིན་བརྩམ་ནི།"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "འབྲེལ་ལམ་ཁ་བྱང་འདྲ་བཤུས་འབད།"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "འབྲེལ་ལམ་ཁ་ཕྱེ།"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"ཊར་མི་ནཱལ་ལུ་ཚིག་ཡིག་དབྱེ་བ་/ཉག་ཀྱང་གི་སེལ་འཐུ་བཀོག་བཞག་ལུ་མི་ཚུགས་པས: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་"
-"ན་རིང་ཚད (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"ཊར་མི་ནཱལ་གུ་ཡུ་ཨར་ཨེལ་མོ་ཛིནལ་ལ་བཀོག་བཞག་ལུ་མི་ཚུགས་པས: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་ན་རིང་ཚད (%"
-"d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"ཊར་མི་ནཱལ་གུ་ཡུ་ཨར་ཨེལ་བཀོག་བཞག་ལུ་མི་ཚུགས་པས: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་ན་རིང་ཚད (%d)\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "གནད་སྡུད་ཚོས་གཞི་ནུས་མེན་འཐོབ་ཡོདཔ: རྩ་སྒྲིག་འཛོལ་བ་ (%d) ཡང་ན་རིང་ཚད (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, fuzzy, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "ཡིག་ཐོག་བཀོད་པ་བརའུ་ཟར་ཁ་ཕྱེ་ནི་ལུ་འཐུས་ཤོར་འབྱུང་ཡོདཔ།"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "ཡིག་སྣོད།(_F)"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "མཆོང་ལྡེ་ཁ་ཕྱེ།(_T)"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "ཊར་མི་ནཱལ་མཆོང་ལྡེ་གསརཔ་ཅིག་ཁ་ཕྱེ།"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "ཊར་མི་ནཱལ་ཁ་ཕྱེ།(_e)"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "ཊར་མི་ནཱལ་ཝིནཌོ་གསརཔ་ཅིག་ཁ་ཕྱེ།"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "ད་ལྟོའི་ཊར་མི་ནཱལ་མཆོང་ལྡེ་དོན་ལུ་ཝིནཌོ་གསརཔ་ཅིག་ཁ་ཕྱེ།"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "ད་ལྟོའི་ཊར་མི་ནཱལ་མཆོང་ལྡེ་འདི་ཁ་བསྡམས།"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "ཝིནཌོ་ཁ་བསྡམས།(_C)"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "ཊར་མི་ནཱལ་ཝིནཌོ་འདི་ཁ་བསྡམས།"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "ཞུན་དག(_E)"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "འདྲ་བཤུས་འབད།(_C)"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "འཛིན་པང་ལུ་འདྲ་བཤུས་འབད།"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "སྦྱར།(_P)"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "འཛིན་པང་ལས་སྦྱར།"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "སེལ་འཐུ་སྦྱར།(_S)"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "གཞི་རིམ་སེལ་འཐུ་ལས་སྦྱར།"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ...(_T)"
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "ལག་ཆས་ཕྲ་རིང་འདི་ཚུ་སྲོལ་སྒྲིག་བཟོ།"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "དགའ་གདམ་ཚུ...(_e)"
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "ཊར་མི་ནཱལ་དགའ་གདམ་ཌའི་ལོག་འདི་ཚུ་ཁ་ཕྱེ།"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "མཐོང་སྣང་།(_V)"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "ཊར་མི་ནཱལ།(_T)"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "མགོ་མིང་གཞི་སྒྲིག་འབད།...(_S)"
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "ད་ལྟོའི་མཆོང་ལྡེའི་དོན་ལུ་སྲོལ་སྒྲིག་མགོ་མིང་ཅིག་གཞི་སྒྲིག་འབད།"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "སླར་སྒྲིག(_R)"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "སླར་སྒྲིག་དང་བསལ།(_l)"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "འགྱོ།(_G)"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "ཧེ་མམ་གྱི་མཆོང་ལྡེ།(_P)"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "ཧེ་མམ་གྱི་མཆོང་ལྡེ་ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "ཤུལ་མམ་གྱི་མཆོང་ལྡེ།(_N)"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "ཤུལ་མམ་གྱི་མཆོང་ལྡེ་ལུ་སོར་བསྒྱུར།"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "གྲོགས་རམ།(_H)"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "ནང་དོན་ཚུ།(_C)"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "གྲོགས་རམ་ནང་དོན་ཚུ་བཀྲམ་བཏོན་འབད།"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "རྐྱེན་ཅིག་སྙན་ཞུ།(_R)"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "ཊར་མི་ནཱལ་ནང་རྐྱེན་ཅིག་སྙན་ཞུ།"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "སྐོར་ལས།(_A)"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "ཊར་མི་ནལ་སྐོར་ལས་བརྡ་དོན་བཀྲམ་བཏོན་འབད།"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "ཨིན་པུཊི་ཐབས་ལམ་ཚུ།(_I)"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "དཀར་ཆག་ཕྲ་རིང་སྟོན།(_M)"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "དཀར་ཆག་ཕྲ་རིང་འདི་སྟོན་/གསང་བཞག"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན།(_T)"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན་/གསང་བཞག"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "ཝིནཌོ་མཐའ་མཚམས་ཚུ་སྟོན།(_B)"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "ཝིནཌོ་མཛེས་བཀོད་ཚུ་སྟོན/གསང་བཞག"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "གསལ་གཞི་གངམ།(_F)"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "གསལ་གཞི་ཐབས་ལམ་སོར་སྟོན།"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "ཉེན་བརྡ།"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "མཆོང་ལྡེ་ཚུ་ཆ་མཉམ་ཁ་བསྡམས།"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"ཝིནཌོ་འདི་ལུ་ %d མཆོང་ལྡེ་ཚུ་ཁ་ཕྱེ་ཡོད། ཝིནཌོ་\n"
-"འདི་ཁ་བསྡམས་ད་འདིའི་མཆོང་ལྡེ་ཚུ་ཡང་ཁ་བསྡམས་འོང་།"
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "མཆོང་ལྡེ་ཚུ་ཆ་མཉམ་ཁ་བསྡམས་ནི?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "ང་ལུ་ལོག་མ་འདྲི།(_n)"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "ཝིནཌོ་མགོ་མིང་|མགོ་མིང་གཞི་སྒྲིག་འབད།"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>མགོ་མིང་:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "ད་ལྟོའི་ཊར་མི་ནཱལ་མཆོང་ལྡེ་འདིའི་དོན་ལུ་མགོ་མིང་འདི་བཙུགས།"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "ཊར་མི་ནཱལ་ནུས་འཕྲུལ།"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>མགྱོགས་ཐབས་ལྡེ་མིག་ཚུ།</b>"
 
 #~ msgid "Web Browser"
 #~ msgstr "ཝེབ་བརའུ་ཟར།"
@@ -1549,9 +1634,6 @@ msgstr "ཊར་མི་ནཱལ་ནུས་འཕྲུལ།"
 
 #~ msgid "Custom title"
 #~ msgstr "སྲོལ་སྒྲིག་མགོ་མིང་།"
-
-#~ msgid "Title"
-#~ msgstr "མགོ་མིང་།"
 
 #~ msgid "Tab position"
 #~ msgstr "མཆོང་ལྡེ་གནས་ས།"

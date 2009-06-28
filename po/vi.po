@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2006-04-26 22:39+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <vi_VN@googlegroups.com>\n"
@@ -94,8 +94,9 @@ msgstr ""
 "                                      cửa sổ mở ra"
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -235,8 +236,8 @@ msgstr ""
 "  --default-working-directory=DIRNAME Đặt thư mục làm việc mặc định của\n"
 "                                      terminal"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -275,7 +276,7 @@ msgstr "Không đăng ký được dịch vụ terminal: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "Không chạy được terminal: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Chuỗi kích thước sai \"%s\"\n"
@@ -298,12 +299,12 @@ msgstr "Không đăng ký được vật thể %s"
 msgid "X Terminal Emulator"
 msgstr "Trình giả lập Terminal cho X"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr "người dịch"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr ""
 
@@ -384,156 +385,615 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Tùy chọn không rõ \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Tùy chỉnh Terminal"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "Tất cả Tập tin"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Tiêu đề</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Tập tin Hình ảnh"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr "Câu lệnh chạy bên trong terminal có thể đặt một tiêu đề mới."
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Mở Thẻ tab"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "_Tiêu đề gốc:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Mở Terminal"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "Tiêu đề đặt độn_g:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Gỡ thẻ tab"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Thay thế tiêu đề gốc"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Đóng thẻ Tab"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Đi trước tiêu đề gốc"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Đóng cửa sổ"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "Đi sau tiêu đề gốc"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Sao chép"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "Không được hiển thị"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Dán"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Câu lệnh</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "_Chạy câu lệnh như shell đăng nhập"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Chọn tùy chọn này để bắt buộc Terminal chạy shell như một shell đăng nhập "
-"khi mở các terminal mới. Hãy xem tài liệu đi kèm với shell để biết chi tiết "
-"về các chế độ chạy khác nhau của shell (hội thoại và đăng nhập)."
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Cập nhật các bản ghi utmp/wtmp khi chạy câu lệnh"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Kéo cuộn</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "_Cuộn khi in kết quả"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Tùy chọn này điều chỉnh để terminal sẽ cuộn xuống tự động khi có kết quả mới "
-"tạo ra bởi các câu lệnh chạy bên trong terminal."
-
-#: ../terminal/terminal-preferences-dialog.c:314
+#: ../terminal/terminal-preferences.c:385
 #, fuzzy
-msgid "Scroll on _keystroke"
-msgstr "Cuộn khi nhấn _phím"
+msgid "Paste Selection"
+msgstr "<b>Bôi đen</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Cho phép người dùng nhấn bất kỳ phím nào để cuộn cửa sổ terminal xuống tới "
-"dấu nhắc câu lệnh."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "_Thanh cuộn:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "Tùy thích"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "Tắt bỏ"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "Nằm bên trái"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Hiện thanh trình đơn"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "Nằm bên phải"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Hiện thanh công cụ"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "_Cuộn ngược:"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Hiện đường biên"
 
-#: ../terminal/terminal-preferences-dialog.c:353
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Đầy màn hình"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Đặt tiêu đề"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Đặt lại"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Đặt lại và Xóa"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Thẻ tab trước"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Thẻ tab tiếp"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Chuyển tới thẻ tab 1"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Chuyển tới thẻ tab 2"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Chuyển tới thẻ tab 3"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Chuyển tới thẻ tab 4"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Chuyển tới thẻ tab 5"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Chuyển tới thẻ tab 6"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Chuyển tới thẻ tab 7"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Chuyển tới thẻ tab 8"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Chuyển tới thẻ tab 9"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Nội dung"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Không nhận ra shell đăng nhập của người dùng."
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Thực hiện tiến trình con không thành công"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Chưa đặt tiêu đề"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "Tập tin"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Soạn thảo"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "Xem"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Đi tới"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Hành động"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Phím tắt"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Chọn phím tắt"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
+msgstr ""
+
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Chọn phím tắt cho:"
+
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Lấy bàn phím không thành công"
+
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Một ứng dụng khác đã lấy quyền điều khiển bàn phím."
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Đóng thẻ tab này"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "_Gỡ thẻ tab"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "Đóng thẻ Ta_b"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Trình sửa Thanh công cụ"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Sao chép địa chỉ Email"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "Soạn Thư"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "Sao chép địa chỉ liên kết"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Mở Liên kết"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
 msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Chỉ ra số dòng người dùng có thể cuộn ngược lại bằng thanh cuộn."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Không thể lấy được lựa chọn dạng văn bản/thường tới terminal: Định dạng (%d) "
+"hoặc chiều dài (%d) sai\n"
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "Chung"
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Không thể lấy được URL của Mozilla trên terminal: Định dạng (%d) hoặc chiều "
+"dài (%d) sai\n"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Phông</b>"
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Không thể lấy được danh sách URI trên terminal: Định dạng (%d) hoặc chiều "
+"dài (%d) sai\n"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "Nhận được dữ liệu màu sai: Định dạng (%d) hoặc chiều dài (%d) sai\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr ""
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_Tập tin"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "_Mở thẻ Tab"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Mở một thẻ tab mới"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "Mở T_erminal"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Mở một cửa sổ terminal mới"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Mở một cửa sổ mới cho thẻ tab hiện thời"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "Đóng thẻ tab hiện thời"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "Đóng _Cửa sổ"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Đóng cửa sổ terminal"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "_Soạn thảo"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "Sao _chép"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Sao chép tới bảng ghi tạm"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Dán"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Dán từ bảng ghi tạm"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr ""
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr ""
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "T_hanh công cụ..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Tùy chỉnh thanh công cụ"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "_Tùy chỉnh..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Mở hộp thoại tuỳ chỉnh của Terminal"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_Xem"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "Ter_minal"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "Đặt tiê_u đề..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Đặt tiêu đề theo ý muốn cho thẻ tab hiện thời"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "Đặ_t lại"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "Đặt lại và _Xóa"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "Đ_i tới"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "_Thẻ Tab trước"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Chuyển tới thẻ tab trước"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "T_hẻ tab tiếp"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Chuyển tới thẻ tab tiếp theo"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "Trợ _giúp"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Nội dung"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Hiển thị nội dung trợ giúp"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "_Báo cáo lỗi bug"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Báo cáo một lỗi bug trong Terminal"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "_Giới thiệu"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Hiển thị thông tin về Terminal"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "_Phương pháp nhập"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "Hiển thị thanh trình đơ_n"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "Hiện/ẩn thanh trình đơn"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Hiện thanh _công cụ"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Hiện/ẩn thanh công cụ"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "Hiện đường biên cửa _sổ"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Hiện/ẩn trang trí cửa sổ"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "Đầy _màn hình"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Bật tắt chế độ đầy màn hình"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Cảnh báo"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Đóng mọi thẻ tab"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Cửa sổ này có %d thẻ tab đang mở. Đóng\n"
+"cửa sổ sẽ đóng hết các thẻ tab của nó."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Đóng mọi thẻ tab?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "Đừng _hỏi lại nữa"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Đặt tiêu đề"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Tiêu đề:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Nhập tiêu đề cho thẻ tab hiện thời của terminal"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Trình giả lập Terminal"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "Thiết lập <tt>$TERM</tt>:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Nâng cao"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "Cho phép văn bản chữ đậm"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Tự động nhận ra"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Ảnh nền"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Ảnh nền"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Giữa"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "Chọn Phông chữ Terminal"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "Chọn màu văn bản của terminal"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Chọn màu nền của terminal"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Chọn màu con trỏ của terminal"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Chọn màu văn bản của terminal"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Chọn màu nền cho văn bản bôi đen"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Trình chọn Màu"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Câu lệnh</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Sự tương thích"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Coi như các ký tự sau là một phần của từ khi nhấn đúp:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Tắt bỏ mọi phím nóng để mở trì_nh đơn (ví dụ Alt+t)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Tắt bỏ phím nóng của trình đơn (F10 theo mặc định)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "Hiển thị đường _biên quanh cửa sổ mới"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "Hiển thị _thanh trình đơn trong cửa số mới"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "Hiển thị thanh _công cụ trong cửa sổ mới"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Nhấn đúp</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Làm mịn phông chữ của terminal"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -544,11 +1004,7 @@ msgstr ""
 "văn bản trong các cửa sổ terminal. Tắt tùy chọn này có thể tăng tốc độ làm "
 "việc của terminal và giảm tải hệ thống trên các máy chậm."
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "Cho phép văn bản chữ đậm"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -556,258 +1012,287 @@ msgstr ""
 "Bật tùy chọn này để cho phép các ứng dụng chạy bên trong cửa sổ terminal "
 "dùng chữ đậm."
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Nền sau</b>"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "Không (dùng màu duy nhất)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "Ảnh nền"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Nền trong suốt"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_Tập tin:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "_Kiểu dáng:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "Dạng lát"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "Giữa"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Dạng vảy"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Kéo căng"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Độ đặc của nền trong suốt hay hình ảnh nền:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Không</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Lớn nhất</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Mở Các cửa sổ Mới</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "Hiển thị _thanh trình đơn trong cửa số mới"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Bật tùy chọn này để hiển thị thanh trình đơn trong cửa sổ mới tạo ra."
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "Hiển thị thanh _công cụ trong cửa sổ mới"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr "Bật tùy chọn này để hiển thị thanh công cụ trong cửa sổ mới tạo ra."
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "Hiển thị đường _biên quanh cửa sổ mới"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr ""
 "Bật tùy chọn này để hiển thị trang trí quanh cửa sổ terminal mới tạo ra."
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Vẻ ngoài"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Cho phép người dùng nhấn bất kỳ phím nào để cuộn cửa sổ terminal xuống tới "
+"dấu nhắc câu lệnh."
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Nền sau và Văn bản</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Chuỗi thoát"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "_Màu con trỏ và văn bản:"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Chọn màu văn bản của terminal"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "Chung"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Trình chọn Màu"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "Đi sau tiêu đề gốc"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Đi trước tiêu đề gốc"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "Không được hiển thị"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Mở Trình đơn</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "Không (dùng màu duy nhất)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "Nằm bên trái"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "Nằm bên phải"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "Mở một hộp thoại để chọn màu"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Chọn màu con trỏ của terminal"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Mở Các cửa sổ Mới</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "Màu _nền:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Chọn màu nền của terminal"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Bôi đen</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "Dùng màu _mặc định"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "Dùng màu nền mặc định cho văn bản bôi đen"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "Dùng màu tự _chọn"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Dùng màu nền tự chọn cho văn bản bôi đen"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Chọn màu nền cho văn bản bôi đen"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>Bảng màu</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "Mục 1 của bảng màu"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Thay thế tiêu đề gốc"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Chọn màu văn bản của terminal"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Dạng vảy"
+
+#: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Scroll on _keystroke"
+msgstr "Cuộn khi nhấn _phím"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "_Cuộn khi in kết quả"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr ""
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "_Cuộn ngược:"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Kéo cuộn</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Chọn tập tin ảnh nền"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Chọn tùy chọn này để bắt buộc Terminal chạy shell như một shell đăng nhập "
+"khi mở các terminal mới. Hãy xem tài liệu đi kèm với shell để biết chi tiết "
+"về các chế độ chạy khác nhau của shell (hội thoại và đăng nhập)."
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Phím tắt"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Chỉ ra số dòng người dùng có thể cuộn ngược lại bằng thanh cuộn."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "_Kiểu dáng:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Kéo căng"
+
+#: ../Terminal.glade.h:79
+msgid "Tab Activity Indicator"
+msgstr ""
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "Chọn màu văn bản của terminal"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Tùy chỉnh Terminal"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Ứng dụng terminal có các bảng màu sau:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, fuzzy, c-format
-msgid "Palette entry %d"
-msgstr "Mục 1 của bảng màu"
-
-#: ../terminal/terminal-preferences-dialog.c:775
+#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "<b>Tab activity</b>"
-msgstr "<b>Sự tương thích"
+msgid "Text Selection"
+msgstr "<b>Bôi đen</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../Terminal.glade.h:84
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "Chọn màu văn bản của terminal"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Màu sắc"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Phím tắt</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Mở Trình đơn</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Tắt bỏ mọi phím nóng để mở trì_nh đơn (ví dụ Alt+t)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Tắt bỏ phím nóng của trình đơn (F10 theo mặc định)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Phím tắt"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Sự tương thích"
-
-#: ../terminal/terminal-preferences-dialog.c:923
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "Các tùy chọn này có thể khiến một số ứng dụng làm việc không đúng. Chúng có "
 "ở đây chỉ để cho phép người dùng làm việc với các ứng dụng và hệ điều hành "
 "cần các tính năng khác của terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "Phím _Backspace tạo ra:"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Tùy chọn này điều chỉnh để terminal sẽ cuộn xuống tự động khi có kết quả mới "
+"tạo ra bởi các câu lệnh chạy bên trong terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Tự động nhận ra"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Chuỗi thoát"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "Phím _Delete tạo ra:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "Thiết lập <tt>$TERM</tt>:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -818,541 +1303,141 @@ msgstr ""
 "trị mặc định làm việc tốt cho phần lớn hệ thống. Nếu có vấn đề với màu sắc "
 "trong một vài ứng dụng, thì hãy thử xterm-color ở đây."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Dạng lát"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Nền trong suốt"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Nền trong suốt"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "Dùng màu _mặc định"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Dùng màu nền tự chọn cho văn bản bôi đen"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "Dùng màu tự _chọn"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "Dùng màu nền mặc định cho văn bản bôi đen"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Vẻ ngoài"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "Màu _nền:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "Phím _Backspace tạo ra:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Màu sắc"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "Phím _Delete tạo ra:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "Tiêu đề đặt độn_g:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_Tập tin:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "Chung"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "_Tiêu đề gốc:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "Đặt lại các tùy chọn tương thích thành giá t_rị mặc định"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Nhấn đúp</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "_Chạy câu lệnh như shell đăng nhập"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "Coi như các ký tự sau là một phần của từ khi nhấn đúp:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "_Thanh cuộn:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr ""
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Phím tắt"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr ""
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "_Màu con trỏ và văn bản:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Cập nhật các bản ghi utmp/wtmp khi chạy câu lệnh"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Nâng cao"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Tiêu đề</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Chọn tập tin ảnh nền"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr "Câu lệnh chạy bên trong terminal có thể đặt một tiêu đề mới."
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "Tất cả Tập tin"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Phông</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Tập tin Hình ảnh"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Nền sau</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Mở Thẻ tab"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Độ đặc của nền trong suốt hay hình ảnh nền:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Mở Terminal"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>Không</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Gỡ thẻ tab"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Lớn nhất</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Đóng thẻ Tab"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Nền sau và Văn bản</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Đóng cửa sổ"
-
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Sao chép"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Dán"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
 #, fuzzy
-msgid "Paste Selection"
-msgstr "<b>Bôi đen</b>"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Tùy thích"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Hiện thanh trình đơn"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Hiện thanh công cụ"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Hiện đường biên"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Đầy màn hình"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Đặt tiêu đề"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Đặt lại"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Đặt lại và Xóa"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Thẻ tab trước"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Thẻ tab tiếp"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Chuyển tới thẻ tab 1"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Chuyển tới thẻ tab 2"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Chuyển tới thẻ tab 3"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Chuyển tới thẻ tab 4"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Chuyển tới thẻ tab 5"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Chuyển tới thẻ tab 6"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Chuyển tới thẻ tab 7"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Chuyển tới thẻ tab 8"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Chuyển tới thẻ tab 9"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Nội dung"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Không nhận ra shell đăng nhập của người dùng."
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "Thực hiện tiến trình con không thành công"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "Chưa đặt tiêu đề"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "Tập tin"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Soạn thảo"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "Xem"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Đi tới"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Trợ giúp"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Hành động"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Phím tắt"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Chọn phím tắt"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Chọn phím tắt cho:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Lấy bàn phím không thành công"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Một ứng dụng khác đã lấy quyền điều khiển bàn phím."
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Đóng thẻ tab này"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "_Gỡ thẻ tab"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "Đóng thẻ Ta_b"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Trình sửa Thanh công cụ"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Sao chép địa chỉ Email"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "Soạn Thư"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "Sao chép địa chỉ liên kết"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Mở Liên kết"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Không thể lấy được lựa chọn dạng văn bản/thường tới terminal: Định dạng (%d) "
-"hoặc chiều dài (%d) sai\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Không thể lấy được URL của Mozilla trên terminal: Định dạng (%d) hoặc chiều "
-"dài (%d) sai\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Không thể lấy được danh sách URI trên terminal: Định dạng (%d) hoặc chiều "
-"dài (%d) sai\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Nhận được dữ liệu màu sai: Định dạng (%d) hoặc chiều dài (%d) sai\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr ""
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_Tập tin"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "_Mở thẻ Tab"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Mở một thẻ tab mới"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "Mở T_erminal"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Mở một cửa sổ terminal mới"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Mở một cửa sổ mới cho thẻ tab hiện thời"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "Đóng thẻ tab hiện thời"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "Đóng _Cửa sổ"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Đóng cửa sổ terminal"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "_Soạn thảo"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "Sao _chép"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Sao chép tới bảng ghi tạm"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Dán"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Dán từ bảng ghi tạm"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr ""
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr ""
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "T_hanh công cụ..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Tùy chỉnh thanh công cụ"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "_Tùy chỉnh..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Mở hộp thoại tuỳ chỉnh của Terminal"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_Xem"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "Ter_minal"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "Đặt tiê_u đề..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Đặt tiêu đề theo ý muốn cho thẻ tab hiện thời"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "Đặ_t lại"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "Đặt lại và _Xóa"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "Đ_i tới"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "_Thẻ Tab trước"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Chuyển tới thẻ tab trước"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "T_hẻ tab tiếp"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Chuyển tới thẻ tab tiếp theo"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "Trợ _giúp"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Nội dung"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Hiển thị nội dung trợ giúp"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "_Báo cáo lỗi bug"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Báo cáo một lỗi bug trong Terminal"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "_Giới thiệu"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Hiển thị thông tin về Terminal"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "_Phương pháp nhập"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "Hiển thị thanh trình đơ_n"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "Hiện/ẩn thanh trình đơn"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Hiện thanh _công cụ"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Hiện/ẩn thanh công cụ"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "Hiện đường biên cửa _sổ"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Hiện/ẩn trang trí cửa sổ"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "Đầy _màn hình"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Bật tắt chế độ đầy màn hình"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Cảnh báo"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Đóng mọi thẻ tab"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Cửa sổ này có %d thẻ tab đang mở. Đóng\n"
-"cửa sổ sẽ đóng hết các thẻ tab của nó."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Đóng mọi thẻ tab?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "Đừng _hỏi lại nữa"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "Đặt tiêu đề"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>Tiêu đề:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "Nhập tiêu đề cho thẻ tab hiện thời của terminal"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Trình giả lập Terminal"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Sự tương thích"
+
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Phím tắt</b>"
 
 #~ msgid "Web Browser"
 #~ msgstr "Trình duyệt Mạng"
@@ -1505,9 +1590,6 @@ msgstr "Trình giả lập Terminal"
 
 #~ msgid "Custom title"
 #~ msgstr "Sửa tiêu đề"
-
-#~ msgid "Title"
-#~ msgstr "Tiêu đề"
 
 #~ msgid "Tab position"
 #~ msgstr "Vị trí thẻ tab"

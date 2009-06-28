@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2008-12-09 10:35+0100\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <Librezale@librezale.org>\n"
-"Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Pootle 1.1.0\n"
 
@@ -95,8 +95,9 @@ msgstr ""
 "                                      bakoitzeko bat ezarri daiteke"
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -252,8 +253,8 @@ msgstr ""
 "direktorioa\n"
 "                                      ezartzen du"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminala"
 
@@ -292,7 +293,7 @@ msgstr "Ezin da terminal zerbitzua erregistratu: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "Ezin da terminala abiarazi: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "\"%s\" geometria-kate baliogabea\n"
@@ -315,12 +316,12 @@ msgstr "Ezin da objetua erregistratu: %s"
 msgid "X Terminal Emulator"
 msgstr "X Terminal Emuladorea"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr "Itzultzaile kredituak"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "Dokumentazio nabigatzailea irekitzerakoan huts egin du"
 
@@ -414,159 +415,615 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Aukera ezezaguna \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Terminal Hobespenak"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "Fitxategi denak"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Titulua</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Irudi Fitxategiak"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr ""
-"Terminalean exekutatzen ari den komandoak dinamikoki alda dezake titulua."
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Ireki Fitxa"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "has_ierako titulua:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Ireki Terminala"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "_Dinamikoki ezarritako titulua:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Desuztartu fitxa"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Hasierako titulua ordezten du"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Itxi fitxa"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Hasierako tituluaren aurretik erakutsi"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Itxi leihoa"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "Hasierako tituluaren ondoren erakutsi"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Kopiatu"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "Ez da bistaratzen"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Itsatsi"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Komandoa</b>"
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "Hautapena Itsatsi"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "_Exekutatu Komando saio shell batetan bezala"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Aukera hau hautatu terminak berriak irekitzean terminalari shell-ak saio "
-"shell bezala abiaraztea behartzeko. Zure shell-aren dokumentazioa begiratu "
-"shell interaktibo eta saio shell baten arteko ezberdintasunak jakiteko."
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Utmp/wtmp erregistroa eguneratu komando bat abiaraztean"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Korritzea</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Korritu _lerro soil bat Shift-gora/Shif-behera erabiltzean"
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Aukera hau gaitu gora/behera gezi teklak Shift-ekin batera gora/behera "
-"sakatzean lerro bat korritu ahal izateko."
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "Ko_rritu irteera berrietan"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Aukera honek terminal barnean abiarazitako komandoak irteera berrias "
-"sortzerakoanterminalaren korritze automatikoa kudeatzen du."
-
-#: ../terminal/terminal-preferences-dialog.c:314
-msgid "Scroll on _keystroke"
-msgstr "Korritu tekla _sakatzean"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Aukera honekin edozein tekla zanpatzean terminal leihoa azken lerrorarte "
-"korrituko da."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "_Korritze-barraren kokalekua:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "Hobespenak"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "Ezgaitua"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "Ezkerrean"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Menu-barra bistarazi"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "Eskuinean"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Tresna-barrak bistarazi"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "_Atzera korritu:"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Ertzak bistarazi"
 
-#: ../terminal/terminal-preferences-dialog.c:353
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Pantaila osoa"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Titulua ezarri"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Berrezarri"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Berrezarri eta garbitu"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Aurreko Fitxa"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Hurrengo Fitxa"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Aldatu 1. fitxara"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Aldatu 2. fitxara"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Aldatu 3. fitxara"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Aldatu 4. fitxara"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Aldatu 5. fitxara"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Aldatu 6. fitxara"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Aldatu 7. fitxara"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Aldatu 8. fitxara"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Aldatu 9. fitxara"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Edukia"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Ezin da zure saio shell-a atzeman."
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Huts egin du semea abiaraztean"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Izengabea"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "Fitxategia"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Editatu"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "Ikusi"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Joan"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Laguntza"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Ekintza"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Lasterbidea tekla"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Konposatu laster-tekla"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
 msgstr ""
-"Korritze-barra erabiliaz atzera egin dezakezun lerro kopurua ezartzen du."
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "Orokorra"
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Konposatu laster-tekla honentzat:"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Letra-tipoa</b>"
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Huts teklatu kontrol eskuratzerakoan"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Beste aplikazio batek zure teklatuaren kontrola du dagoeneko."
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Itxi fitxa hau"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "_Desuztartu fitxa"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "I_txi fitxa"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Tresna-barra  editorea"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Kopiatu ePosta Helbidea"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "ePosta sortu"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "lotura-helbidea kopiatu"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Lotura Ireki"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Ezinda testu/lau motako hautapena terminalean jaregin. Okerrek formatu (%d) "
+"edo luzera (%d)\n"
+
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Ezin da Mozilla URL-a treminalean jaregin. Okerreko formatua (%d) edo luzera "
+"(%d)\n"
+
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Ezin da URI zerrenda terminalean jaregin. Okerreko formatua (%d) edo luzera "
+"(%d)\n"
+
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Kolore datu baliogabea jaso da. Okerreko formatua (%d) edo luzera (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Huts `%s' URLa irekitzaean"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_Fitxategia"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "Fi_txa Ireki"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Terminal fitxa berri bat ireki"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "T_erminala Ireki"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Terminal leho berri bat ireki"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Uneko Terminal fitxarenzat leiho berri bat ireki"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "DAuden terminal fitxa guztiak itxi"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "_Itxi leihoa"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Terminal leihoa itxi"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "_Editatu"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "_Kopiatu"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Kopiatu arbelean"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Itsatsi"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Arbeletik itsasi"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "_Hautapena Itsatsi"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "Oinarrziko hautapenetik itsatsi"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "_Tresna-barrak..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Pertsonalizatu tresna-barrak"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "Hob_espenak..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Terminal hobespen leihoa ireki"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_Ikusi"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "_Terminala"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "_Ezarri titulua..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Ezarri titulu pertsonalizatua fitxa honentzat"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "Berre_zarri"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "Berrezarri eta ga_rbitu"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "_Joan"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "_Aurreko fitxa"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Aldatu aurreko fitxara"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "_Hurrengo fitxa"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Aldatu hurrengo fitxara"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Edukia"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Laguntza edukiak bistarazi"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "Programa-errore baten be_rri eman"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Terminalaren programa-errore baten berri eman"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "Honi _buruz"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Teminalari buruzko informazioa bistarazi"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "_Sarrera-metodoak"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "_menu-barra bistarazi"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "menu-barra bistarazi/gorde"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Tresna-barrak bistarazi"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Tresna-barrak bistarazi/gorde"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "Leiho ertzak bistarazi"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Leiho dekorazioa bistarazi/ezkutatu"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "_Pantaila osoa"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Txandakatu pantaila oso modua"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Abisua"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Fitxa guztiak itxi"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Leihoa %d fitxa ditu irekirik. Leihoa ixtean\n"
+"fitxa guztiak itxiko dira."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Fitxa guztiak Itxi?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "Ez galdetu _niri berriz"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Titulua Ezarri"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Titulua:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Uneko Terminal fixtaren titulua idatzi"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Terminal Emuladorea"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> ezarpena:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Aurreratua"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "Onartu testu lodia"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Auto-atzeman"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Atzeko planoko irudia"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Atzeko planoko irudia"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Erdian"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "Hautatu terminal letra-tipoa"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "Hautatu fitxa aktibitate kolorea"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Aukeratu terminalaren atzeko planoko kolorea"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Hautatu terminalaren kurtsore kolorea"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Aukeratu terminalaren testuaren kolorea"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Erabili terminal testu hautapen atzeko planoko kolorea"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Kolore-hautatzailea"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Komandoa</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Bateragarritasuna</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr ""
+"hurrengo karaktereak hitz baten zati bezala artu klik bikoitza egitean:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Ktrl-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Ezgaitu me_nu laster-tekla guztiak (Alt+f bezalakoak)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Ezgaitu menuaren _laster-tekla (lehenespenez F10)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "_Ertzak bistarazi leiho berrien inguruan"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "_Menubarra bistarazi leiho berrietan"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "_tresna-barrak bistarazi leiho berrietan"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Klik bikoitza</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Gaitu anti-aliasing terminal letra-tipoarentzat"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -577,11 +1034,7 @@ msgstr ""
 "nahi baduzu. Aukera hau ezgaitzeak terminalak azkarrago funtziona dezan eta "
 "sistema geldoetan sistema lana beheratzea egingo du."
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "Onartu testu lodia"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -589,89 +1042,29 @@ msgstr ""
 "Gaitu aukera hau terminal barneko aplikazioek testu lodia erabiltzea "
 "onartzeko."
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Atzeko planoa</b>"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Aukera hau gaitu gora/behera gezi teklak Shift-ekin batera gora/behera "
+"sakatzean lerro bat korritu ahal izateko."
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "Bat ere ez (kolore bat erabili)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "Atzeko planoko irudia"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Atzeko plano gardena"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_Fitxategia:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "E_stiloa:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "Mosaikoan"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "Erdian"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Eskala"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Txikiturik"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Itzal gardena edo irudi atzeko planoa:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Bat ere ez</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Gehienezkoa</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Leiho Berriak Irekitzen</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "_Menubarra bistarazi leiho berrietan"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "Aukera hau gaitu hemendik aurrera sortutako terminaletan menu-barra "
 "bistaratzeko."
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "_tresna-barrak bistarazi leiho berrietan"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "Aukera hau gaitu hemendik aurrera sortutako terminaletan tresna-barrak "
 "bistaratzeko."
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "_Ertzak bistarazi leiho berrien inguruan"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -679,171 +1072,265 @@ msgstr ""
 "Aukera hau gaitu hemendik aurrera sortutako terminaletan leiho dekorazioak "
 "bistaratzeko."
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Itxura"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Aukera honekin edozein tekla zanpatzean terminal leihoa azken lerrorarte "
+"korrituko da."
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Aurreko planoa eta atzeko planoa</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Ihes sekuentzia"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "_Testua eta kurtsore kolorea:"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Aukeratu terminalaren testuaren kolorea"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "Orokorra"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Kolore-hautatzailea"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "Hasierako tituluaren ondoren erakutsi"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Hasierako tituluaren aurretik erakutsi"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "Ez da bistaratzen"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Menu-barra atzipena</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "Bat ere ez (kolore bat erabili)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "Ezkerrean"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "Eskuinean"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "Ireki elkarrizketa-koadroa kolorea zehazteko"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Hautatu terminalaren kurtsore kolorea"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Leiho Berriak Irekitzen</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "Atzeko pla_noaren kolorea:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Aukeratu terminalaren atzeko planoko kolorea"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Testua Hautapena</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "lehenetsiriko _kolorea erabili"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "lehenetsiriko atzeko plano hautapen kolorea erabili"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "_pertsonalizatua kolorea erabili"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Erabili lehenetsiriko testu hautapen atzeko planoko kolorea"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Erabili terminal testu hautapen atzeko planoko kolorea"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>Paleta</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "%d paleta sarrera"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Hasierako titulua ordezten du"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Berrabiarazi fitxa aktibitate adierazlea: "
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Eskala"
+
+#: ../Terminal.glade.h:68
+msgid "Scroll on _keystroke"
+msgstr "Korritu tekla _sakatzean"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "Ko_rritu irteera berrietan"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Korritu _lerro soil bat Shift-gora/Shif-behera erabiltzean"
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "_Atzera korritu:"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Korritzea</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Hautatu atzeko planoko irudi fitxategia"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Aukera hau hautatu terminak berriak irekitzean terminalari shell-ak saio "
+"shell bezala abiaraztea behartzeko. Zure shell-aren dokumentazioa begiratu "
+"shell interaktibo eta saio shell baten arteko ezberdintasunak jakiteko."
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Lasterbidea tekla"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Korritze-barra erabiliaz atzera egin dezakezun lerro kopurua ezartzen du."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "E_stiloa:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Txikiturik"
+
+#: ../Terminal.glade.h:79
+#, fuzzy
+msgid "Tab Activity Indicator"
+msgstr "<b>Fitxa aktibitate adierazlea</b>"
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "T_abuladore aktibitate kolorea:"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Terminal Hobespenak"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminala aplikazioek kolore paleta hau dute erabilgarri:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "%d paleta sarrera"
+#: ../Terminal.glade.h:83
+#, fuzzy
+msgid "Text Selection"
+msgstr "<b>Testua Hautapena</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:775
-msgid "<b>Tab activity</b>"
-msgstr "<b>Fitxa aktibitatea</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr "T_abuladore aktibitate kolorea:"
-
-#: ../terminal/terminal-preferences-dialog.c:802
-msgid "Choose tab activity color"
-msgstr "Hautatu fitxa aktibitate kolorea"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Koloreak"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Lasterbidea teklak</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Menu-barra atzipena</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Ezgaitu me_nu laster-tekla guztiak (Alt+f bezalakoak)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Ezgaitu menuaren _laster-tekla (lehenespenez F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Lasterbideak"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Bateragarritasuna</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
+#: ../Terminal.glade.h:84
+#, fuzzy
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "Aukera hauek zenbait aplikazio oker kudeatzea eragin dezake. Beste terminal "
 "ingurune bat espero duten zenbait aplikazioa eta sistema eragilerekin "
 "erabiltzeko soilik daude hemen."
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "_Atzera-tekla sakatutakoan:"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Aukera honek terminal barnean abiarazitako komandoak irteera berrias "
+"sortzerakoanterminalaren korritze automatikoa kudeatzen du."
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Auto-atzeman"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Ihes sekuentzia"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Ktrl-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "_Ezabatu tekla sakatutakoan:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "<tt>$TERM</tt> ezarpena:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -855,539 +1342,139 @@ msgstr ""
 "sistema gehienentzat. Zenbait apllikazioetan kolore arazorak izan ezkero, "
 "hemen xterm-color erabiliaz saiatu."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+#, fuzzy
+msgid "Title"
+msgstr "Mosaikoan"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Mosaikoan"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Atzeko plano gardena"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Atzeko plano gardena"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "lehenetsiriko _kolorea erabili"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Erabili lehenetsiriko testu hautapen atzeko planoko kolorea"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "_pertsonalizatua kolorea erabili"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "lehenetsiriko atzeko plano hautapen kolorea erabili"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Itxura"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "Atzeko pla_noaren kolorea:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "_Atzera-tekla sakatutakoan:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Koloreak"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "_Ezabatu tekla sakatutakoan:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "_Dinamikoki ezarritako titulua:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_Fitxategia:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "Orokorra"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "has_ierako titulua:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "_Berrezarri bateragarritasun aukera lehenetsiak"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Klik bikoitza</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "_Exekutatu Komando saio shell batetan bezala"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr ""
-"hurrengo karaktereak hitz baten zati bezala artu klik bikoitza egitean:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "_Korritze-barraren kokalekua:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr "<b>Fitxa aktibitate adierazlea</b>"
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Lasterbideak"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr "Berrabiarazi fitxa aktibitate adierazlea: "
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "_Testua eta kurtsore kolorea:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Utmp/wtmp erregistroa eguneratu komando bat abiaraztean"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr "segundu"
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Aurreratua"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Titulua</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Hautatu atzeko planoko irudi fitxategia"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "Terminalean exekutatzen ari den komandoak dinamikoki alda dezake titulua."
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "Fitxategi denak"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Letra-tipoa</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Irudi Fitxategiak"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Atzeko planoa</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Ireki Fitxa"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Itzal gardena edo irudi atzeko planoa:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Ireki Terminala"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>Bat ere ez</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Desuztartu fitxa"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Gehienezkoa</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Itxi fitxa"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Aurreko planoa eta atzeko planoa</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Itxi leihoa"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Fitxa aktibitatea</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Kopiatu"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Itsatsi"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "Hautapena Itsatsi"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Hobespenak"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Menu-barra bistarazi"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Tresna-barrak bistarazi"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Ertzak bistarazi"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Pantaila osoa"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Titulua ezarri"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Berrezarri"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Berrezarri eta garbitu"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Aurreko Fitxa"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Hurrengo Fitxa"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Aldatu 1. fitxara"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Aldatu 2. fitxara"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Aldatu 3. fitxara"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Aldatu 4. fitxara"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Aldatu 5. fitxara"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Aldatu 6. fitxara"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Aldatu 7. fitxara"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Aldatu 8. fitxara"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Aldatu 9. fitxara"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Edukia"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Ezin da zure saio shell-a atzeman."
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "Huts egin du semea abiaraztean"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "Izengabea"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "Fitxategia"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Editatu"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "Ikusi"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Joan"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Laguntza"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Ekintza"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Lasterbidea tekla"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Konposatu laster-tekla"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Konposatu laster-tekla honentzat:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Huts teklatu kontrol eskuratzerakoan"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Beste aplikazio batek zure teklatuaren kontrola du dagoeneko."
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Itxi fitxa hau"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "_Desuztartu fitxa"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "I_txi fitxa"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Tresna-barra  editorea"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Kopiatu ePosta Helbidea"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "ePosta sortu"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "lotura-helbidea kopiatu"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Lotura Ireki"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Ezinda testu/lau motako hautapena terminalean jaregin. Okerrek formatu (%d) "
-"edo luzera (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Ezin da Mozilla URL-a treminalean jaregin. Okerreko formatua (%d) edo luzera "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Ezin da URI zerrenda terminalean jaregin. Okerreko formatua (%d) edo luzera "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Kolore datu baliogabea jaso da. Okerreko formatua (%d) edo luzera (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Huts `%s' URLa irekitzaean"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_Fitxategia"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "Fi_txa Ireki"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Terminal fitxa berri bat ireki"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "T_erminala Ireki"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Terminal leho berri bat ireki"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Uneko Terminal fitxarenzat leiho berri bat ireki"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "DAuden terminal fitxa guztiak itxi"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "_Itxi leihoa"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Terminal leihoa itxi"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "_Editatu"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "_Kopiatu"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Kopiatu arbelean"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Itsatsi"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Arbeletik itsasi"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "_Hautapena Itsatsi"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "Oinarrziko hautapenetik itsatsi"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "_Tresna-barrak..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Pertsonalizatu tresna-barrak"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "Hob_espenak..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Terminal hobespen leihoa ireki"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_Ikusi"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "_Terminala"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "_Ezarri titulua..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Ezarri titulu pertsonalizatua fitxa honentzat"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "Berre_zarri"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "Berrezarri eta ga_rbitu"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "_Joan"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "_Aurreko fitxa"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Aldatu aurreko fitxara"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "_Hurrengo fitxa"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Aldatu hurrengo fitxara"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Edukia"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Laguntza edukiak bistarazi"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "Programa-errore baten be_rri eman"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Terminalaren programa-errore baten berri eman"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "Honi _buruz"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Teminalari buruzko informazioa bistarazi"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "_Sarrera-metodoak"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "_menu-barra bistarazi"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "menu-barra bistarazi/gorde"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Tresna-barrak bistarazi"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Tresna-barrak bistarazi/gorde"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "Leiho ertzak bistarazi"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Leiho dekorazioa bistarazi/ezkutatu"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "_Pantaila osoa"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Txandakatu pantaila oso modua"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Abisua"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Fitxa guztiak itxi"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Leihoa %d fitxa ditu irekirik. Leihoa ixtean\n"
-"fitxa guztiak itxiko dira."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Fitxa guztiak Itxi?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "Ez galdetu _niri berriz"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "Titulua Ezarri"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>Titulua:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "Uneko Terminal fixtaren titulua idatzi"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Terminal Emuladorea"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Lasterbidea teklak</b>"

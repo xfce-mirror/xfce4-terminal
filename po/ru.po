@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2006-04-20 18:56+0600\n"
 "Last-Translator: Sergey Fedoseev <fedoseev.sergey@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -98,8 +98,9 @@ msgstr ""
 "                                      каждого открываемого окна"
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -262,8 +263,8 @@ msgstr ""
 "  --default-working-directory=КАТАЛОГ Установить для терминалов рабочий\n"
 "каталог по умолчанию"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -303,7 +304,7 @@ msgstr "Невозможно запустить службу терминала:
 msgid "Unable to launch terminal: %s\n"
 msgstr "Невозможно запустить терминал: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Неверная строка с размерами: \"%s\"\n"
@@ -326,7 +327,7 @@ msgstr "Невозможно зарегистрировать объект %s"
 msgid "X Terminal Emulator"
 msgstr "Эмулятор терминала для X"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr ""
 "Anthony Ivanoff <a-i@bk.ru>\n"
@@ -334,7 +335,7 @@ msgstr ""
 "Sergey Fedoseev <fedoseev.sergey@gmail.com>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "Не удалось открыть браузер для просмотра документации"
 
@@ -428,54 +429,842 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Неизвестный параметр \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Настройки Терминала"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "Все файлы"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Заголовок</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Файлы изображений"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr "Программа, запущенная в терминале, может изменять заголовок."
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Открыть вкладку"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "_Начальный заголовок:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Открыть терминал"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Отделить вкладку"
+
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Закрыть вкладку"
+
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Закрыть окно"
+
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Копировать"
+
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Вставить"
+
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "Вставить выделенное"
+
+#: ../terminal/terminal-preferences.c:396
+msgid "Preferences"
+msgstr "Настройки"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
+msgid "Disabled"
+msgstr "Отключена"
+
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Показать строку меню"
+
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Показать панели инструментов"
+
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Показать границы"
+
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Полноэкранный режим"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Изменить заголовок"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Сбросить"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Сбросить и очистить"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Предыдущая вкладка"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Следующая вкладка"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Переключиться на вкладку 1"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Переключиться на вкладку 2"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Переключиться на вкладку 3"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Переключиться на вкладку 4"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Переключиться на вкладку 5"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Переключиться на вкладку 6"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Переключиться на вкладку 7"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Переключиться на вкладку 8"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Переключиться на вкладку 9"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Содержание"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Невозможно определить оболочку входа в систему."
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Ошибка выполнения дочернего процесса"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Без названия"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "Файл"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Правка"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "Вид"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Переход"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Помощь"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Действие"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Горячая клавиша"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Выбрать комбинацию клавиш"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
 msgstr ""
-"_Установленный сторонней\n"
-"программой заголовок:"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Заменяет изначальный"
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Выбрать комбинацию клавиш для:"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Вставляется перед начальным заголовком"
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Ошибка захвата клавиатуры"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Другое приложение получило контроль над клавиатурой."
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Закрыть эту вкладку"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "_Отделить вкладку"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "_Закрыть вкладку"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Редактор панели инструментов"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Копировать адрес электронной почты"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "Написать письмо"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "Копировать интернет-адрес"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Открыть ссылку"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Невозможно выполнить перетаскивание текста в терминал: неверный формат (%d) "
+"или длина (%d)\n"
+
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Невозможно выполнить перетаскивание интернет-адреса в терминал: неверный "
+"формат (%d) или длина (%d)\n"
+
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Невозможно выполнить перетаскивание URI: неверный формат (%d) или длина (%"
+"d)\n"
+
+# c-format
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Получены недопустимые данные о цвете: неверный формат (%d) или длина (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, fuzzy, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Не удалось открыть браузер для просмотра документации"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_Файл"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "Открыть _вкладку"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Открыть новую вкладку терминала"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "Открыть _терминал"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Открыть новое окно терминала"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Открыть новое окно для текущей вкладки"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "Закрыть текущую вкладку"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "Закр_ыть окно"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Закрыть окно терминала"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "_Правка"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "_Копировать"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Скопировать в буфер обмена"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Вставить"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Вставить из буфера обмена"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "В_ставить выделенное"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "Вставить из выделения"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "Панели _инструментов..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Настроить панели инструментов"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "П_араметры..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Открыть окно настроек Терминала"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_Вид"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "_Терминал"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "_Изменить заголовок..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Установить заголовок текущей вкладки"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "_Сбросить"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "Сбросить и _очистить"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "П_ереход"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "_Предыдущая вкладка"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Переключиться на предыдущую вкладку"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "_Следующая вкладка"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Переключиться на следующую вкладку"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "_Справка"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Содержание"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Отобразить содержание справки"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "Сообщить об о_шибке"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Сообщить об ошибке в Терминале"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "_О программе"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Показать информацию о Терминале"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "_Методы ввода"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "Показать _строку меню"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "Показать/скрыть строку меню"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Показать панели _инструментов"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Показать/скрыть панели инструментов"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "Показать _границы окна"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Показать/скрыть границы окна"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "_Полноэкранный режим"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Включить/выключить полноэкранный режим"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Предупреждение"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Закрыть все вкладки"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"В этом окне открыто %d вкладок. Если\n"
+"вы закроете окно, будут закрыты все вкладки."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Закрыть все вкладки?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "_Больше не спрашивать"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Заголовок окна|Задать заголовок"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Заголовок:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Введите заголовок для текущей вкладки"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Эмулятор терминала"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "Переменная <tt>$TERM</tt>:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Дополнительно"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "Разрешить полужирный текст"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Автоматическое обнаружение"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Изображение"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Изображение"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "По центру"
+
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Выбор шрифта"
+
+#: ../Terminal.glade.h:10
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "Выберите цвет текста в терминале"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Выберите цвет фона терминала"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Выберите цвет курсора"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Выберите цвет текста в терминале"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Выберите цвет фона выделения текста"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Выбор цвета"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Команда</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Совместимость</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Считать следующие символы частью слова при двойном щелчке:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Отключить _все клавиши доступа к меню (например, Alt+f)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Отключить клавишу _показа меню (по умолчанию F10)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "Показывать _границу вокруг новых окон"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "Показывать _меню в новых окнах"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "Показывать _панель инструментов в новых окнах"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Двойной щелчок</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Включить сглаживание"
+
+#: ../Terminal.glade.h:29
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Включите этот параметр, если хотите использовать сглаживание для отображения "
+"текста в окнах терминала. При отключении этого параметра вы можете заметить "
+"заметное увеличение скорости вывода текста и уменьшить загрузку системы."
+
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Включите этот параметр, чтобы позволить приложениям, запущенным в терминале, "
+"выводить текст полужирным шрифтом."
+
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "Включить показ строки меню в открываемых окнах терминала."
+
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Включить показ панели инструментов в открываемых окнах терминала."
+
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "Включить показ границ и заголовка у открываемых окон."
+
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Если параметр включен, нажатие любой клавиши на клавиатуре приведёт к "
+"прокрутке содержимого окна до приглашения."
+
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Escape-последовательность"
+
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
+
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "Общие"
+
+#: ../Terminal.glade.h:39
 msgid "Goes after initial title"
 msgstr "Вставляется после начального заголовка"
 
-#: ../terminal/terminal-preferences-dialog.c:234
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Вставляется перед начальным заголовком"
+
+#: ../Terminal.glade.h:41
 msgid "Isn't displayed"
 msgstr "Не отображается"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Команда</b>"
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Доступ к меню</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "_Запускать команду в login shell"
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "Нет (заливка цветом)"
 
-#: ../terminal/terminal-preferences-dialog.c:262
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "Слева"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "Справа"
+
+#: ../Terminal.glade.h:46
+msgid "Open a dialog to specify the color"
+msgstr "Открывает диалог для выбора цвета"
+
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Новые окна</b>"
+
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
+msgstr "<b>Палитра</b>"
+
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "Элемент палитры %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Заменяет изначальный"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Выберите цвет текста в терминале"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Масштабировать"
+
+#: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Scroll on _keystroke"
+msgstr "Прокручивать при _нажатии клавиши"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "Прокручивать по мере _вывода"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr ""
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "_Буфер:"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Прокрутка</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Выберите файл фонового изображения"
+
+#: ../Terminal.glade.h:74
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -488,29 +1277,62 @@ msgstr ""
 "между запуском в интерактивном режиме и режиме начального командного "
 "интерпретатора."
 
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Обновлять записи utmp/wtmp при запуске команды"
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Горячая клавиша"
 
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Прокрутка</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:296
+#: ../Terminal.glade.h:76
 msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Количество строк, которые вы сможете просмотреть, прокручивая содержимое "
+"окна."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "_Стиль:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Растянуть"
+
+#: ../Terminal.glade.h:79
+msgid "Tab Activity Indicator"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "Прокручивать по мере _вывода"
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "Выберите цвет текста в терминале"
 
-#: ../terminal/terminal-preferences-dialog.c:308
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Настройки Терминала"
+
+#: ../Terminal.glade.h:82
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Для приложений, запускаемых в терминале, доступны следующие цвета:"
+
+#: ../Terminal.glade.h:83
+#, fuzzy
+msgid "Text Selection"
+msgstr "<b>Выделение текста</b>"
+
+#: ../Terminal.glade.h:84
+#, fuzzy
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Эти параметры могут привести к некорректной работе некоторых приложений и "
+"предназначены только для того, чтобы обойти ограничения различных программ и "
+"операционных систем, ожидающих иной работы терминала."
+
+#: ../Terminal.glade.h:88
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -518,345 +1340,7 @@ msgstr ""
 "Этот параметр определяет, будет ли окно терминала прокручиваться "
 "автоматически по мере вывода информации запущенными программами."
 
-#: ../terminal/terminal-preferences-dialog.c:314
-#, fuzzy
-msgid "Scroll on _keystroke"
-msgstr "Прокручивать при _нажатии клавиши"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Если параметр включен, нажатие любой клавиши на клавиатуре приведёт к "
-"прокрутке содержимого окна до приглашения."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "_Полоса прокрутки:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
-#: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
-msgid "Disabled"
-msgstr "Отключена"
-
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "Слева"
-
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "Справа"
-
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "_Буфер:"
-
-#: ../terminal/terminal-preferences-dialog.c:353
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Количество строк, которые вы сможете просмотреть, прокручивая содержимое "
-"окна."
-
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "Общие"
-
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Шрифт</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:396
-msgid "Choose Terminal Font"
-msgstr "Выбор шрифта"
-
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
-msgstr "Включить сглаживание"
-
-#: ../terminal/terminal-preferences-dialog.c:404
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Включите этот параметр, если хотите использовать сглаживание для отображения "
-"текста в окнах терминала. При отключении этого параметра вы можете заметить "
-"заметное увеличение скорости вывода текста и уменьшить загрузку системы."
-
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "Разрешить полужирный текст"
-
-#: ../terminal/terminal-preferences-dialog.c:414
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Включите этот параметр, чтобы позволить приложениям, запущенным в терминале, "
-"выводить текст полужирным шрифтом."
-
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Фоновая картинка</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "Нет (заливка цветом)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "Изображение"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Прозрачное окно"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_Файл:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "_Стиль:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "Черепицей"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "По центру"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Масштабировать"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Растянуть"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Степень прозрачности:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Полностью прозрачный</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Полностью непрозрачный</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Новые окна</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "Показывать _меню в новых окнах"
-
-#: ../terminal/terminal-preferences-dialog.c:546
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "Включить показ строки меню в открываемых окнах терминала."
-
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "Показывать _панель инструментов в новых окнах"
-
-#: ../terminal/terminal-preferences-dialog.c:554
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Включить показ панели инструментов в открываемых окнах терминала."
-
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "Показывать _границу вокруг новых окон"
-
-#: ../terminal/terminal-preferences-dialog.c:562
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "Включить показ границ и заголовка у открываемых окон."
-
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Внешний вид"
-
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Текст и фон</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "Цвет _текста и курсора:"
-
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Выберите цвет текста в терминале"
-
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Выбор цвета"
-
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
-msgid "Open a dialog to specify the color"
-msgstr "Открывает диалог для выбора цвета"
-
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Выберите цвет курсора"
-
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "Цвет _фона:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Выберите цвет фона терминала"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Выделение текста</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "Цвет по _умолчанию"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "Использовать цвет фона по умолчанию для выделения текста"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "Использовать _другой цвет"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Использовать другой цвет фона для выделения текста"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Выберите цвет фона выделения текста"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
-msgstr "<b>Палитра</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:741
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Для приложений, запускаемых в терминале, доступны следующие цвета:"
-
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "Элемент палитры %d"
-
-#: ../terminal/terminal-preferences-dialog.c:775
-#, fuzzy
-msgid "<b>Tab activity</b>"
-msgstr "<b>Совместимость</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:802
-#, fuzzy
-msgid "Choose tab activity color"
-msgstr "Выберите цвет текста в терминале"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Цвета"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Комбинации клавиш</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Доступ к меню</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Отключить _все клавиши доступа к меню (например, Alt+f)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Отключить клавишу _показа меню (по умолчанию F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Горячие клавиши"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Совместимость</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
-msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
-msgstr ""
-"Эти параметры могут привести к некорректной работе некоторых приложений и "
-"предназначены только для того, чтобы обойти ограничения различных программ и "
-"операционных систем, ожидающих иной работы терминала."
-
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "Нажатие клавиши _Backspace вызывает:"
-
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Автоматическое обнаружение"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Escape-последовательность"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "Клавиша _Delete вызывает:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "Переменная <tt>$TERM</tt>:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -868,542 +1352,143 @@ msgstr ""
 "должно подойти для большинства систем. Если вы испытываете проблемы с "
 "цветами в каких-либо приложениях, попробуйте ввести здесь \"xterm-color\"."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+msgid "Title"
+msgstr "Заголовок"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Черепицей"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Прозрачное окно"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Прозрачное окно"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "Цвет по _умолчанию"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Использовать другой цвет фона для выделения текста"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "Использовать _другой цвет"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "Использовать цвет фона по умолчанию для выделения текста"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Внешний вид"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "Цвет _фона:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "Нажатие клавиши _Backspace вызывает:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Цвета"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "Клавиша _Delete вызывает:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr ""
+"_Установленный сторонней\n"
+"программой заголовок:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_Файл:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "Общие"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "_Начальный заголовок:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "_Сбросить параметры совместимости в значения по умолчанию"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Двойной щелчок</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "_Запускать команду в login shell"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "Считать следующие символы частью слова при двойном щелчке:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "_Полоса прокрутки:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr ""
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Горячие клавиши"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr ""
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "Цвет _текста и курсора:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Обновлять записи utmp/wtmp при запуске команды"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Дополнительно"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Заголовок</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Выберите файл фонового изображения"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr "Программа, запущенная в терминале, может изменять заголовок."
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "Все файлы"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Шрифт</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Файлы изображений"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Фоновая картинка</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Открыть вкладку"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Степень прозрачности:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Открыть терминал"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>Полностью прозрачный</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Отделить вкладку"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Полностью непрозрачный</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Закрыть вкладку"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Текст и фон</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Закрыть окно"
+#, fuzzy
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Совместимость</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Копировать"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Вставить"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "Вставить выделенное"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Настройки"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Показать строку меню"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Показать панели инструментов"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Показать границы"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Полноэкранный режим"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Изменить заголовок"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Сбросить"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Сбросить и очистить"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Предыдущая вкладка"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Следующая вкладка"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Переключиться на вкладку 1"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Переключиться на вкладку 2"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Переключиться на вкладку 3"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Переключиться на вкладку 4"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Переключиться на вкладку 5"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Переключиться на вкладку 6"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Переключиться на вкладку 7"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Переключиться на вкладку 8"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Переключиться на вкладку 9"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Содержание"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Невозможно определить оболочку входа в систему."
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "Ошибка выполнения дочернего процесса"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "Без названия"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "Файл"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Правка"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "Вид"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Переход"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Помощь"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Действие"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Горячая клавиша"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Выбрать комбинацию клавиш"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Выбрать комбинацию клавиш для:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Ошибка захвата клавиатуры"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Другое приложение получило контроль над клавиатурой."
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Закрыть эту вкладку"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "_Отделить вкладку"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "_Закрыть вкладку"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Редактор панели инструментов"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Копировать адрес электронной почты"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "Написать письмо"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "Копировать интернет-адрес"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Открыть ссылку"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Невозможно выполнить перетаскивание текста в терминал: неверный формат (%d) "
-"или длина (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Невозможно выполнить перетаскивание интернет-адреса в терминал: неверный "
-"формат (%d) или длина (%d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Невозможно выполнить перетаскивание URI: неверный формат (%d) или длина (%"
-"d)\n"
-
-# c-format
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Получены недопустимые данные о цвете: неверный формат (%d) или длина (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, fuzzy, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Не удалось открыть браузер для просмотра документации"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_Файл"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "Открыть _вкладку"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Открыть новую вкладку терминала"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "Открыть _терминал"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Открыть новое окно терминала"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Открыть новое окно для текущей вкладки"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "Закрыть текущую вкладку"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "Закр_ыть окно"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Закрыть окно терминала"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "_Правка"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "_Копировать"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Скопировать в буфер обмена"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Вставить"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Вставить из буфера обмена"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "В_ставить выделенное"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "Вставить из выделения"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "Панели _инструментов..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Настроить панели инструментов"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "П_араметры..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Открыть окно настроек Терминала"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_Вид"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "_Терминал"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "_Изменить заголовок..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Установить заголовок текущей вкладки"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "_Сбросить"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "Сбросить и _очистить"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "П_ереход"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "_Предыдущая вкладка"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Переключиться на предыдущую вкладку"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "_Следующая вкладка"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Переключиться на следующую вкладку"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "_Справка"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Содержание"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Отобразить содержание справки"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "Сообщить об о_шибке"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Сообщить об ошибке в Терминале"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "_О программе"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Показать информацию о Терминале"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "_Методы ввода"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "Показать _строку меню"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "Показать/скрыть строку меню"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Показать панели _инструментов"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Показать/скрыть панели инструментов"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "Показать _границы окна"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Показать/скрыть границы окна"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "_Полноэкранный режим"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Включить/выключить полноэкранный режим"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Предупреждение"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Закрыть все вкладки"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"В этом окне открыто %d вкладок. Если\n"
-"вы закроете окно, будут закрыты все вкладки."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Закрыть все вкладки?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "_Больше не спрашивать"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "Заголовок окна|Задать заголовок"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>Заголовок:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "Введите заголовок для текущей вкладки"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Эмулятор терминала"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Комбинации клавиш</b>"
 
 #~ msgid "Web Browser"
 #~ msgstr "Веб-браузер"
@@ -1555,9 +1640,6 @@ msgstr "Эмулятор терминала"
 
 #~ msgid "Custom title"
 #~ msgstr "Свой заголовок"
-
-#~ msgid "Title"
-#~ msgstr "Заголовок"
 
 #~ msgid "Tab position"
 #~ msgstr "Положение вкладок"

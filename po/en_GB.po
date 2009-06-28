@@ -3,19 +3,19 @@
 # This file is distributed under the same license as the Terminal package.
 # Dwayne Bailey <dwayne@translate.org.za>, 2005.
 # Dwayne Bailey <dwayne@translate.org.za>, 2007.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2009-01-27 12:44+1100\n"
 "Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
 "Language-Team: English/GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../terminal/main.c:45
 msgid "Usage: Terminal [OPTION...]"
@@ -92,8 +92,9 @@ msgstr ""
 "                                      window to be opened"
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -241,8 +242,8 @@ msgstr ""
 "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 "                                      directory"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -281,7 +282,7 @@ msgstr "Unable to register terminal service: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "Unable to launch terminal: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Invalid geometry string \"%s\"\n"
@@ -304,14 +305,14 @@ msgstr "Unable to register object %s"
 msgid "X Terminal Emulator"
 msgstr "X Terminal Emulator"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr ""
 "Dwayne Bailey <dwayne@translate.org.za>, 2005.Jeff Bailes "
 "<thepizzaking@gmail.com>, 2007."
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "Failed to open the documentation browser"
 
@@ -405,436 +406,918 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Unknown option \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Terminal Preferences"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "All Files"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Title</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Image Files"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr ""
-"The command running inside the terminal may dynamically set a new title."
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Open Tab"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "_Initial title:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Open Terminal"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "_Dynamically-set title:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Detach Tab"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Replaces initial title"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Close Tab"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Goes before initial title"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Close Window"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "Goes after initial title"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Copy"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "Isn't displayed"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Paste"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Command</b>"
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "Paste Selection"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "_Run command as login shell"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Update utmp/wtmp records when command is launched"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Scrolling</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Scroll single _line using Shift-Up/-Down keys"
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "Sc_roll on output"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-
-#: ../terminal/terminal-preferences-dialog.c:314
-msgid "Scroll on _keystroke"
-msgstr "Scroll on _keystroke"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "_Scrollbar is:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "Preferences"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "Disabled"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "On the left side"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Show menubar"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "On the right side"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Show toolbars"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "Scr_ollback:"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Show borders"
 
-#: ../terminal/terminal-preferences-dialog.c:353
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Fullscreen"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Set Title"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Reset"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Reset and Clear"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Previous Tab"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Next Tab"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Switch to Tab 1"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Switch to Tab 2"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Switch to Tab 3"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Switch to Tab 4"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Switch to Tab 5"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Switch to Tab 6"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Switch to Tab 7"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Switch to Tab 8"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Switch to Tab 9"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Contents"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Unable to determine your login shell."
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Failed to execute child"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Untitled"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "File"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Edit"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "View"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Go"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Help"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Action"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Shortcut key"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Compose shortcut"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
 msgstr ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "General"
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Compose shortcut for:"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Font</b>"
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Failed to acquire keyboard"
 
-#: ../terminal/terminal-preferences-dialog.c:396
-msgid "Choose Terminal Font"
-msgstr "Choose Terminal Font"
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Another application has already acquired control over your keyboard."
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
-msgstr "Enable anti-aliasing for the terminal font"
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Close this tab"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "_Detach Tab"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "C_lose Tab"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Toolbar Editor"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Copy E-mail Address"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "Compose E-mail"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "Copy Link Address"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Open Link"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
 msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
 msgstr ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "Received invalid colour data: Wrong format (%d) or length (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Failed to open the URL `%s'"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_File"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "Open _Tab"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Open a new terminal tab"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "Open T_erminal"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Open a new terminal window"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Open a new window for the current terminal tab"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "Close the current terminal tab"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "_Close Window"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Close the terminal window"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "_Edit"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "_Copy"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Copy to clipboard"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Paste"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Paste from clipboard"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "Paste _Selection"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "Paste from primary selection"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "_Toolbars..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Customise the toolbars"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "Pr_eferences..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Open the Terminal preferences dialogue"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_View"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "_Terminal"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "_Set Title..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Set a custom title for the current tab"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "_Reset"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "Reset and C_lear"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "_Go"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "_Previous Tab"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Switch to previous tab"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "_Next Tab"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Switch to next tab"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "_Help"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Contents"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Display help contents"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "_Report a bug"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Report a bug in Terminal"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "_About"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Display information about Terminal"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "_Input Methods"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "Show _Menubar"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "Show/hide the menubar"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Show _Toolbars"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Show/hide the toolbars"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "Show Window _Borders"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Show/hide the window decorations"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "_Fullscreen"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Toggle fullscreen mode"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Warning"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Close all tabs"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Close all tabs?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "Do _not ask me again"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Set Title"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Title:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Enter the title for the current terminal tab"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Terminal Emulator"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> setting:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Advanced"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
 msgstr "Allow bold text"
 
-#: ../terminal/terminal-preferences-dialog.c:414
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Auto-detect"
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Background</b>"
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Background image"
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "None (use solid colour)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
+#: ../Terminal.glade.h:7
 msgid "Background image"
 msgstr "Background image"
 
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Transparent background"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_File:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "_Style:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "Tiled"
-
-#: ../terminal/terminal-preferences-dialog.c:484
+#: ../Terminal.glade.h:8
 msgid "Centered"
 msgstr "Centred"
 
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Scaled"
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Choose Terminal Font"
 
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Stretched"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Shade transparent or image background:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>None</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Maximum</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Opening New Windows</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "Display _menubar in new windows"
-
-#: ../terminal/terminal-preferences-dialog.c:546
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Enable this option to show the menubar in newly created terminal windows."
-
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "Display _toolbars in new windows"
-
-#: ../terminal/terminal-preferences-dialog.c:554
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Enable this option to show the toolbars in newly created terminal windows."
-
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "Display _borders around new windows"
-
-#: ../terminal/terminal-preferences-dialog.c:562
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Appearance"
-
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Foreground and Background</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "_Text and cursor colour:"
-
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Choose terminal text colour"
-
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Colour Selector"
-
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
-msgid "Open a dialog to specify the color"
-msgstr "Open a dialogue to specify the colour"
-
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Choose terminal cursor colour"
-
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "_Background colour:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Choose terminal background colour"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Text Selection</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "Use _default colour"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "Use the default text selection background colour"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "Use _custom colour"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Use a custom text selection background colour"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Choose terminal text selection background colour"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
-msgstr "<b>Palette</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:741
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminal applications have this colour palette available to them:"
-
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "Palette entry %d"
-
-#: ../terminal/terminal-preferences-dialog.c:775
-msgid "<b>Tab activity</b>"
-msgstr "<b>Tab activity</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr "T_ab activity colour:"
-
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../Terminal.glade.h:10
 msgid "Choose tab activity color"
 msgstr "Choose tab activity colour"
 
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Colours"
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Choose terminal background colour"
 
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Shortcut keys</b>"
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Choose terminal cursor colour"
 
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Menubar access</b>"
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Choose terminal text colour"
 
-#: ../terminal/terminal-preferences-dialog.c:877
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Choose terminal text selection background colour"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Colour Selector"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Command</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Compatibility</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Consider the following characters part of a word when double clicking:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Disable all me_nu access keys (such as Alt+f)"
 
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
 msgstr "Disable m_enu shortcut key (F10 by default)"
 
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Shortcuts"
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "Display _borders around new windows"
 
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Compatibility</b>"
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "Display _menubar in new windows"
 
-#: ../terminal/terminal-preferences-dialog.c:923
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "Display _toolbars in new windows"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Double click</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Enable anti-aliasing for the terminal font"
+
+#: ../Terminal.glade.h:29
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Enable this option to show the menubar in newly created terminal windows."
+
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Enable this option to show the toolbars in newly created terminal windows."
+
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Escape sequence"
+
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
+
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "General"
+
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "Goes after initial title"
+
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Goes before initial title"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "Isn't displayed"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Menubar access</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "None (use solid colour)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "On the left side"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "On the right side"
+
+#: ../Terminal.glade.h:46
+msgid "Open a dialog to specify the color"
+msgstr "Open a dialogue to specify the colour"
+
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Opening New Windows</b>"
+
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
+msgstr "<b>Palette</b>"
+
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "Palette entry %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Replaces initial title"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Reset tab activity indicator after"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Scaled"
+
+#: ../Terminal.glade.h:68
+msgid "Scroll on _keystroke"
+msgstr "Scroll on _keystroke"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "Sc_roll on output"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Scroll single _line using Shift-Up/-Down keys"
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "Scr_ollback:"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Scrolling</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Select background image file"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Shortcut key"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "_Style:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Stretched"
+
+#: ../Terminal.glade.h:79
+#, fuzzy
+msgid "Tab Activity Indicator"
+msgstr "<b>Tab activity indicator</b>"
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "T_ab activity colour:"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Terminal Preferences"
+
+#: ../Terminal.glade.h:82
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Terminal applications have this colour palette available to them:"
+
+#: ../Terminal.glade.h:83
+#, fuzzy
+msgid "Text Selection"
+msgstr "<b>Text Selection</b>"
+
+#: ../Terminal.glade.h:84
+#, fuzzy
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "These options may cause some applications to behave incorrectly. They are "
 "only here to allow you to work around certain applications and operating "
 "systems that expect different terminal behaviour."
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "_Backspace key generates:"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Auto-detect"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Escape sequence"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "_Delete key generates:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "<tt>$TERM</tt> setting:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -846,538 +1329,141 @@ msgstr ""
 "most systems. If you have problems with colours in some applications, try "
 "xterm-color here."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+msgid "Title"
+msgstr "Title"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Tiled"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Transparent background"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Transparent background"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "Use _default colour"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Use a custom text selection background colour"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "Use _custom colour"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "Use the default text selection background colour"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Appearance"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "_Background colour:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "_Backspace key generates:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Colours"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "_Delete key generates:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "_Dynamically-set title:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_File:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "General"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "_Initial title:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "_Reset compatibility options to defaults"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Double click</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "_Run command as login shell"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "Consider the following characters part of a word when double clicking:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "_Scrollbar is:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr "<b>Tab activity indicator</b>"
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Shortcuts"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr "Reset tab activity indicator after"
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "_Text and cursor colour:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Update utmp/wtmp records when command is launched"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr "seconds"
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Advanced"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Title</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Select background image file"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "The command running inside the terminal may dynamically set a new title."
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "All Files"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Font</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Image Files"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Background</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Open Tab"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Shade transparent or image background:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Open Terminal"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>None</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Detach Tab"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Maximum</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Close Tab"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Foreground and Background</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Close Window"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Tab activity</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Copy"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Paste"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "Paste Selection"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Preferences"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Show menubar"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Show toolbars"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Show borders"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Fullscreen"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Set Title"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Reset"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Reset and Clear"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Previous Tab"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Next Tab"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Switch to Tab 1"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Switch to Tab 2"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Switch to Tab 3"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Switch to Tab 4"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Switch to Tab 5"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Switch to Tab 6"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Switch to Tab 7"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Switch to Tab 8"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Switch to Tab 9"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Contents"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Unable to determine your login shell."
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "Failed to execute child"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "Untitled"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "File"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Edit"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "View"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Go"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Help"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Action"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Shortcut key"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Compose shortcut"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Compose shortcut for:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Failed to acquire keyboard"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Another application has already acquired control over your keyboard."
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Close this tab"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "_Detach Tab"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "C_lose Tab"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Toolbar Editor"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Copy E-mail Address"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "Compose E-mail"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "Copy Link Address"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Open Link"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Received invalid colour data: Wrong format (%d) or length (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Failed to open the URL `%s'"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_File"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "Open _Tab"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Open a new terminal tab"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "Open T_erminal"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Open a new terminal window"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Open a new window for the current terminal tab"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "Close the current terminal tab"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "_Close Window"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Close the terminal window"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "_Edit"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "_Copy"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Copy to clipboard"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Paste"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Paste from clipboard"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "Paste _Selection"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "Paste from primary selection"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "_Toolbars..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Customise the toolbars"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "Pr_eferences..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Open the Terminal preferences dialogue"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_View"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "_Terminal"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "_Set Title..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Set a custom title for the current tab"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "_Reset"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "Reset and C_lear"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "_Go"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "_Previous Tab"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Switch to previous tab"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "_Next Tab"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Switch to next tab"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "_Help"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Contents"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Display help contents"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "_Report a bug"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Report a bug in Terminal"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "_About"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Display information about Terminal"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "_Input Methods"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "Show _Menubar"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "Show/hide the menubar"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Show _Toolbars"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Show/hide the toolbars"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "Show Window _Borders"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Show/hide the window decorations"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "_Fullscreen"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Toggle fullscreen mode"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Warning"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Close all tabs"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Close all tabs?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "Do _not ask me again"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "Set Title"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>Title:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "Enter the title for the current terminal tab"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Terminal Emulator"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Shortcut keys</b>"
 
 #~ msgid "Web Browser"
 #~ msgstr "Web Browser"
@@ -1531,9 +1617,6 @@ msgstr "Terminal Emulator"
 
 #~ msgid "Custom title"
 #~ msgstr "Custom title"
-
-#~ msgid "Title"
-#~ msgstr "Title"
 
 #~ msgid "Tab position"
 #~ msgstr "Tab position"

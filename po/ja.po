@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-24 16:45+0900\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2009-01-20 16:23+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -243,8 +243,8 @@ msgstr ""
 "  --default-working-directory=DIRNAME ターミナルの標準の作業フォルダを指定\n"
 "                                      します"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -283,7 +283,7 @@ msgstr "ターミナルサービスを登録できません: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "ターミナルを起動できません: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ジオメトリ文字列 \"%s\" は不適切です。\n"
@@ -306,7 +306,7 @@ msgstr "オブジェクト %s を登録できません。"
 msgid "X Terminal Emulator"
 msgstr "X ターミナルエミュレータ"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr ""
 "Daichi Kawahata <daichi@xfce.org>\n"
@@ -314,7 +314,7 @@ msgstr ""
 "Nobuhiro Iwamatsu <iwamatsu@nigauri.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "ドキュメントブラウザを開けませんでした"
 
@@ -414,160 +414,613 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "\"%s\" は不明なオプションです"
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "ターミナルの設定"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "全てのファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>タイトル</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "画像ファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr ""
-"ターミナルで実行するコマンドが、新しいタイトルを自動的に付ける場合がありま"
-"す。"
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "タブを開く"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "最初のタイトル(_I):"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "ターミナルを開く"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "自動的に付くタイトル(_D):"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "タブを切り離す"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "最初のタイトルを置き換える"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "タブを閉じる"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "最初のタイトルの前に置く"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "ウィンドウを閉じる"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "最初のタイトルの後に置く"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "コピー"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "表示しない"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "貼り付け"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>コマンド</b>"
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "選択領域を貼り付け"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "ログインシェルとしてコマンドを実行する(_R)"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"新しいターミナルを開く際に、シェルを強制的にログインシェルとして実行させる場"
-"合は、このオプションを選択してください。シェルがインタラクティブシェルとして"
-"実行される場合と、ログインシェルとして実行される場合の違いに関する詳細は、"
-"シェルのドキュメントを御覧ください。"
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "コマンドが実行される時に utmp/wtmp の記録を更新する(_U)"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>スクロール</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Shift+↑/+↓ キーを使用して1行ずつスクロールする(_L)"
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"このオプションを有効にすると、Shift キーを押しながら↑/↓キーを押すことによって"
-"1行ずつスクロールできるようになります。"
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "出力でスクロールさせる(_R)"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"ターミナル内で実行するコマンドによって新しい出力が表示された時、いつでも自動"
-"的に下へスクロールするかどうかを選択します。"
-
-#: ../terminal/terminal-preferences-dialog.c:314
-msgid "Scroll on _keystroke"
-msgstr "キー入力でスクロールさせる(_K)"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンドウ"
-"をコマンドプロンプトまでスクロールします。"
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "スクロールバー(_S):"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "設定"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "表示しない"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "左側に表示する"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "メニューバーを表示"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "右側に表示する"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "ツールバーを表示"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "スクロールバック(_O):"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "ウィンドウ枠を表示"
 
-#: ../terminal/terminal-preferences-dialog.c:353
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "全画面表示"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "タイトルを付ける"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "リセット"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "リセットして消去"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "前のタブ"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "次のタブ"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "タブ1 に切り替える"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "タブ2 に切り替える"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "タブ3 に切り替える"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "タブ4 に切り替える"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "タブ5 に切り替える"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "タブ6 に切り替える"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "タブ7 に切り替える"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "タブ8 に切り替える"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "タブ9 に切り替える"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "目次"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "あなたのログインシェルを特定できません。"
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "子プロセスの実行に失敗しました。"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "無題"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "ファイル"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "編集"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "表示"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "移動"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "ヘルプ"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "アクション"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "ショートカットキー"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "ショートカットの編集"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
+msgstr ""
+
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "このショートカットキーを編集:"
+
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "キーボードの取得に失敗しました"
+
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "すでに他のアプリケーションがキーボードの制御を取得しています。"
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "このタブを閉じる"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "タブを切り離す(_D)"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "タブを閉じる(_L)"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "ツールバーエディタ"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "メールアドレスをコピー"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "メールの作成"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "リンクのアドレスをコピー"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "リンクを開く"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
 msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "スクロールバーを使用してスクロールバックできる行数を指定してください。"
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
+"式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "一般"
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%"
+"d) です\n"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>フォント</b>"
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) で"
+"す\n"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "不正な色データを受け取りました: 不正な形式 (%d) か長さ (%d) です\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "URL '%s' をブラウザで開けませんでした"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "ファイル(_F)"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "タブを開く(_T)"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "新しいタブをこのターミナルで開きます"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "ターミナルを開く(_E)"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "新しいターミナルウィンドウを開きます"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "現在のターミナルタブを新しいウィンドウで開きます"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "現在のターミナルタブを閉じます"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "ウィンドウを閉じる(_C)"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "このターミナルウィンドウを閉じます"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "編集(_E)"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "クリップボードへコピーします"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "貼り付け(_P)"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "クリップボードから貼り付けます"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "選択領域を貼り付け(_S)"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "主選択領域から貼り付けます"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "ツールバー(_T)..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "ツールバーをカスタマイズします"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "設定(_E)..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Terminal の設定ダイアログを開きます"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "表示(_V)"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "ターミナル(_T)"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "タイトルを付ける(_S)..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "現在のタブに指定したタイトルを付けます"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "リセット(_R)"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "リセットしてクリア(_L)"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "移動(_G)"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "前のタブ(_P)"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "前のタブに切り替えます"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "次のタブ(_N)"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "次のタブに切り替えます"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "目次(_C)"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "ヘルプの目次を表示します"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "バグを報告(_R)"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Terminal のバグを報告します"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "このプログラムについて(_A)"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Terminal に関する情報を表示します"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "文字の入力方式(_I)"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "メニューバー(_M)"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "メニューバーの表示/非表示を切り替えます"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "ツールバー(_T)"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "ツールバーの表示/非表示を切り替えます"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "ウィンドウ枠(_B)"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "ウィンドウの装飾枠の表示/非表示を切り替えます"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "全画面表示(_F)"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "全画面モードの切り替えを行います"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "警告"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "全てのタブを閉じる"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"このウィンドウで %d 個のタブが開いています。\n"
+"ウィンドウを閉じると全てのタブも閉じられます。"
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "全てのタブを閉じますか?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "次回から確認しない(_N)"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "タイトルを付けてください"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>タイトル:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "現在のターミナルタブのタイトルを入力してください"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "ターミナルエミュレータ"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> の設定:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "上級者"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "太字の使用を許可する"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "自動検出"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "画像を使用する"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "画像を使用する"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "中央揃え"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "ターミナルフォントを選択してください"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "動作中タブの色を選択してください"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "ターミナルの背景色を選択してください"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "ターミナルのカーソル色を選択してください"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "ターミナルの文字色を選択してください"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "ターミナルでの選択領域の背景色を選択してください"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "色の選択"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>コマンド</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>互換性</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "ダブルクリックした時に以下の文字を単語の一部とします:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "メニューへのアクセスキーを全て無効にする(_N) (例えば Alt+f)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "メニューへのショートカットキーを無効にする(_E) (標準では F10)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "ウィンドウ枠を表示する(_B)"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "メニューバーを表示する(_M)"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "ツールバーを表示する(_T)"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>ダブルクリック</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "アンチエイリアスを有効にする"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -579,11 +1032,7 @@ msgstr ""
 "能を劇的に向上させ、低速なシステムにおいてシステム全般の負荷を下げることがで"
 "きるかもしれません。"
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "太字の使用を許可する"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -591,89 +1040,29 @@ msgstr ""
 "ターミナルウィンドウ内で実行するアプリケーションに太字を使用させてもよいな"
 "ら、このオプションを有効にしてください。"
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>背景</b>"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"このオプションを有効にすると、Shift キーを押しながら↑/↓キーを押すことによって"
+"1行ずつスクロールできるようになります。"
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "指定無し (単色を使用する)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "画像を使用する"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "透明にする"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "ファイル(_F):"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "スタイル(_S):"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "タイル状"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "中央揃え"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "拡大縮小"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "伸長あり"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "背景画像のシェードまたは背景の不透明度:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>無し</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>最大</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>新しいウィンドウを開く場合</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "メニューバーを表示する(_M)"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "このオプションを有効にすると、新しく作成されるターミナルウィンドウでメニュー"
 "バーが表示されます。"
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "ツールバーを表示する(_T)"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "このオプションを有効にすると、新しく作成されるターミナルウィンドウでツール"
 "バーが表示されます。"
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "ウィンドウ枠を表示する(_B)"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -681,171 +1070,265 @@ msgstr ""
 "このオプションを有効にすると、新しく作成されるターミナルウィンドウのウィンド"
 "ウ枠が表示されます。"
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "外観"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンドウ"
+"をコマンドプロンプトまでスクロールします。"
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>文字と背景</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "エスケープシーケンス"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "文字とカーソルの色(_T):"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "ターミナルの文字色を選択してください"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "一般"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "色の選択"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "最初のタイトルの後に置く"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "最初のタイトルの前に置く"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "表示しない"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>メニューバーのアクセス</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "指定無し (単色を使用する)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "左側に表示する"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "右側に表示する"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "色を指定するダイアログを開きます"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "ターミナルのカーソル色を選択してください"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>新しいウィンドウを開く場合</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "背景色(_B):"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "ターミナルの背景色を選択してください"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>テキストの選択領域</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "デフォルトの色を使用する(_D)"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "テキスト選択領域の背景色にデフォルトの色を使用します。"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "指定色を使用する(_C)"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "テキスト選択領域の背景色に指定色を使用します。"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "ターミナルでの選択領域の背景色を選択してください"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>パレット</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "パレットエントリ %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "最初のタイトルを置き換える"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "動作中タブ表示を"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "拡大縮小"
+
+#: ../Terminal.glade.h:68
+msgid "Scroll on _keystroke"
+msgstr "キー入力でスクロールさせる(_K)"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "出力でスクロールさせる(_R)"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Shift+↑/+↓ キーを使用して1行ずつスクロールする(_L)"
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "スクロールバック(_O):"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>スクロール</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "背景画像ファイルを選択してください"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"新しいターミナルを開く際に、シェルを強制的にログインシェルとして実行させる場"
+"合は、このオプションを選択してください。シェルがインタラクティブシェルとして"
+"実行される場合と、ログインシェルとして実行される場合の違いに関する詳細は、"
+"シェルのドキュメントを御覧ください。"
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "ショートカットキー"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "スクロールバーを使用してスクロールバックできる行数を指定してください。"
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "スタイル(_S):"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "伸長あり"
+
+#: ../Terminal.glade.h:79
+#, fuzzy
+msgid "Tab Activity Indicator"
+msgstr "<b>動作中タブの表示</b>"
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "動作中タブの色(_A):"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "ターミナルの設定"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminal アプリケーションが利用できる色のパレット:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "パレットエントリ %d"
+#: ../Terminal.glade.h:83
+#, fuzzy
+msgid "Text Selection"
+msgstr "<b>テキストの選択領域</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:775
-msgid "<b>Tab activity</b>"
-msgstr "<b>動作中タブ</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr "動作中タブの色(_A):"
-
-#: ../terminal/terminal-preferences-dialog.c:802
-msgid "Choose tab activity color"
-msgstr "動作中タブの色を選択してください"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "配色"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>ショートカットキー</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>メニューバーのアクセス</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "メニューへのアクセスキーを全て無効にする(_N) (例えば Alt+f)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "メニューへのショートカットキーを無効にする(_E) (標準では F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "ショートカット"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>互換性</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
+#: ../Terminal.glade.h:84
+#, fuzzy
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "これらのオプションによって、いくつかのアプリケーションが正常に動作しなくなる"
 "かもしれません。これらのオプションは、あらかじめ他の端末での動作を前提とする"
 "アプリケーションや OS の問題を解決させるために存在します。"
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "バックスペースキーの生成(_B):"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"ターミナル内で実行するコマンドによって新しい出力が表示された時、いつでも自動"
+"的に下へスクロールするかどうかを選択します。"
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "自動検出"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "エスケープシーケンス"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "デリートキーの生成(_D):"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "<tt>$TERM</tt> の設定:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -856,537 +1339,140 @@ msgstr ""
 "す。一部のアプリケーションで色の表示に問題があるなら、ここに xterm-color を指"
 "定してみてください。"
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+#, fuzzy
+msgid "Title"
+msgstr "タイル状"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "タイル状"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "透明にする"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "透明にする"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "デフォルトの色を使用する(_D)"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "テキスト選択領域の背景色に指定色を使用します。"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "指定色を使用する(_C)"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "テキスト選択領域の背景色にデフォルトの色を使用します。"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "外観"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "背景色(_B):"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "バックスペースキーの生成(_B):"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "配色"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "デリートキーの生成(_D):"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "自動的に付くタイトル(_D):"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "ファイル(_F):"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "一般"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "最初のタイトル(_I):"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "互換オプションをデフォルトにリセットする(_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>ダブルクリック</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "ログインシェルとしてコマンドを実行する(_R)"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "ダブルクリックした時に以下の文字を単語の一部とします:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "スクロールバー(_S):"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr "<b>動作中タブの表示</b>"
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "ショートカット"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr "動作中タブ表示を"
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "文字とカーソルの色(_T):"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "コマンドが実行される時に utmp/wtmp の記録を更新する(_U)"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr "秒後にリセットする"
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "上級者"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>タイトル</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "背景画像ファイルを選択してください"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "ターミナルで実行するコマンドが、新しいタイトルを自動的に付ける場合がありま"
+#~ "す。"
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "全てのファイル"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>フォント</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "画像ファイル"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>背景</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "タブを開く"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "背景画像のシェードまたは背景の不透明度:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "ターミナルを開く"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>無し</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "タブを切り離す"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>最大</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "タブを閉じる"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>文字と背景</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "ウィンドウを閉じる"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>動作中タブ</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "コピー"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "貼り付け"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "選択領域を貼り付け"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "設定"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "メニューバーを表示"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "ツールバーを表示"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "ウィンドウ枠を表示"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "全画面表示"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "タイトルを付ける"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "リセット"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "リセットして消去"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "前のタブ"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "次のタブ"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "タブ1 に切り替える"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "タブ2 に切り替える"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "タブ3 に切り替える"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "タブ4 に切り替える"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "タブ5 に切り替える"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "タブ6 に切り替える"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "タブ7 に切り替える"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "タブ8 に切り替える"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "タブ9 に切り替える"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "目次"
-
-#: ../terminal/terminal-screen.c:464
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "あなたのログインシェルを特定できません。"
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1025
-msgid "Failed to execute child"
-msgstr "子プロセスの実行に失敗しました。"
-
-#: ../terminal/terminal-screen.c:1261
-msgid "Untitled"
-msgstr "無題"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "ファイル"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "編集"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "表示"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "移動"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "ヘルプ"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "アクション"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "ショートカットキー"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "ショートカットの編集"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "このショートカットキーを編集:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "キーボードの取得に失敗しました"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "すでに他のアプリケーションがキーボードの制御を取得しています。"
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "このタブを閉じる"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "タブを切り離す(_D)"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "タブを閉じる(_L)"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "ツールバーエディタ"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "メールアドレスをコピー"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "メールの作成"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "リンクのアドレスをコピー"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "リンクを開く"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
-"式 (%d) か長さ (%d) です\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%"
-"d) です\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) で"
-"す\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "不正な色データを受け取りました: 不正な形式 (%d) か長さ (%d) です\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "URL '%s' をブラウザで開けませんでした"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "ファイル(_F)"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "タブを開く(_T)"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "新しいタブをこのターミナルで開きます"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "ターミナルを開く(_E)"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "新しいターミナルウィンドウを開きます"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "現在のターミナルタブを新しいウィンドウで開きます"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "現在のターミナルタブを閉じます"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "ウィンドウを閉じる(_C)"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "このターミナルウィンドウを閉じます"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "編集(_E)"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "コピー(_C)"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "クリップボードへコピーします"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "貼り付け(_P)"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "クリップボードから貼り付けます"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "選択領域を貼り付け(_S)"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "主選択領域から貼り付けます"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "ツールバー(_T)..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "ツールバーをカスタマイズします"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "設定(_E)..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Terminal の設定ダイアログを開きます"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "表示(_V)"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "ターミナル(_T)"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "タイトルを付ける(_S)..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "現在のタブに指定したタイトルを付けます"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "リセット(_R)"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "リセットしてクリア(_L)"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "移動(_G)"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "前のタブ(_P)"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "前のタブに切り替えます"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "次のタブ(_N)"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "次のタブに切り替えます"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "ヘルプ(_H)"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "目次(_C)"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "ヘルプの目次を表示します"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "バグを報告(_R)"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Terminal のバグを報告します"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "このプログラムについて(_A)"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Terminal に関する情報を表示します"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "文字の入力方式(_I)"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "メニューバー(_M)"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "メニューバーの表示/非表示を切り替えます"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "ツールバー(_T)"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "ツールバーの表示/非表示を切り替えます"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "ウィンドウ枠(_B)"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "ウィンドウの装飾枠の表示/非表示を切り替えます"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "全画面表示(_F)"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "全画面モードの切り替えを行います"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "警告"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "全てのタブを閉じる"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"このウィンドウで %d 個のタブが開いています。\n"
-"ウィンドウを閉じると全てのタブも閉じられます。"
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "全てのタブを閉じますか?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "次回から確認しない(_N)"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "タイトルを付けてください"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>タイトル:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "現在のターミナルタブのタイトルを入力してください"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "ターミナルエミュレータ"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>ショートカットキー</b>"

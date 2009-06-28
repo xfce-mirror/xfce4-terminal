@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2006-09-14 12:14+0200\n"
 "Last-Translator: Jarbas Araujo Jr. <jarbasaraujojr@yahoo.com.br>\n"
 "Language-Team: Debian-l10n-esperanto <debian-l10n-esperanto@lists.debian."
@@ -94,8 +94,9 @@ msgstr ""
 "                                      manlibrojn), unu po aktiva fenestro"
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -252,8 +253,8 @@ msgstr ""
 "  --default-working-directory=DOSIERUJO Difinas la defaŭltan terminalan\n"
 "                                        labordosierujon"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminalo"
 
@@ -292,7 +293,7 @@ msgstr "Ne eblas registri servicon de terminalo: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "Ne eblas lanĉi terminalon: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Nevalida geometria ĉeno \"%s\"\n"
@@ -315,7 +316,7 @@ msgstr "Ne eblas registri objekton %s"
 msgid "X Terminal Emulator"
 msgstr "X-Terminala Imitilo"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr ""
 "Antono Vasiljev <antono.vasiljev@gmail.com>\n"
@@ -323,7 +324,7 @@ msgstr ""
 "Sylvain Vedrenne <gnu_sylvain@xfce.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "Ne elblas malfermi dokumentar-krozilon"
 
@@ -407,156 +408,614 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Nekonata opcio \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Agordoj de Terminalo"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "Ĉiuj Dosieroj"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Titolo</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Bildaj Dosieroj"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr "La rulanta komando en la terminalo eblas dumrule difini novan titolon"
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Malfermu Langeton"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "Prat_itolo:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Malfermu Terminalon"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "_Dumruldifina titolo:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Separu Langeton"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Anstataŭas la pratitolon"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Fermu Langeton"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Aperas antaŭ la pratitolo"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Fermu Fenestron"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "Aperas post la pratitolo"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Kopiu"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "Ne estas montrata"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Algluu"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Komando</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "_Lanĉu komandon kiel ŝelsaluto"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Elektu ĉi opcion por obligi la Terminalon lanĉi vian ŝelon kiel salutŝelo "
-"kiam vi malfermas terminalojn. Vidu vian ŝelmanlibron por detaloj pri "
-"ladiferencoj inter dialoga ŝelo kaj saluta ŝelo "
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "A_ktualigas utmp/wtmp datumojn kiam komando startiĝas"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Rulumanta</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "Rulu_mu ĉeelire "
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Ĉi opcio difinas ĉu la terminalo suben-rulumos aŭtomatekiam novajn "
-"elirdatumojn generacias la komando rulanta en la terminalo "
-
-#: ../terminal/terminal-preferences-dialog.c:314
+#: ../terminal/terminal-preferences.c:385
 #, fuzzy
-msgid "Scroll on _keystroke"
-msgstr "Suben-ruluma_s po klavopremo"
+msgid "Paste Selection"
+msgstr "<b>Tekstomarko</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Ebligas vin premi ajnan klavon por suben-rulumi la terminalofenestron ĝisla "
-"komandoinvito."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "Ru_lumstrio sidas:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "Preferaĵoj"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "Neebligita"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "Maldekstre"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Malkaŝu menuostrion"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "Dekstre"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Malkaŝu ilarstrion"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "Ma_lantaŭrulumo"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Malkaŝu bordojn"
 
-#: ../terminal/terminal-preferences-dialog.c:353
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Tutekrana"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Difinu titolo"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Reŝarĝu"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Reŝarĝu kaj Purigu"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Antaŭa Langeto"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Proksima Langeto"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Aliru Langeton 1"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Aliru Langeton 2"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Aliru Langeton 3"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Aliru langeton 4"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Aliru langeton 5"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Aliru langeton 6"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Aliru langeton 7"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Aliru langeton 8"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Aliru langeton 9"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Enhavo"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Neebla trovi vian salutŝelon"
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Fiaskrulis filon"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Sentitola"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "Dosiero"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Modifi"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "Vidu"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Iru"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Helpo"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Ago"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Rapidigilo"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Kreu rapidigilon"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
+msgstr ""
+
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Kreu rapidigilon por:"
+
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Fiaskis akiranta klavaron"
+
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Alia aplikaĵo jam kontrolas vian klavaron."
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Fermu ĉi Langeton"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "_Separu Langeton"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "_Fermu Langeton"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Ilarstria Editoro"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Kopiu Retpoŝtadreson"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "Kreu Retpoŝt-Mesaĝon"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "Kopiu Ligilon"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Malfermu Ligilon"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
 msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Difinas la nombron da linioj malantaŭen rulumeblaj per la rulumstrio."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Fiaskis alglui kopiaĵon de la tipo teksto/glata en la terminalon: Misaranĝo "
+"(%d) aŭ longeco (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "Ĝenerala"
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Fiaskis alglui Mozillaan TTT-adreson en la terminalon: Misaranĝo (%d) aŭ "
+"longeco (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Literfonto</b>"
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Fiaskis alglui URI-an liston enterminalon: Misaranĝo (%d) aŭ longeco (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "Ricevis nevalidan kolordatumon: Misaranĝo (%d) aŭ longeco (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, fuzzy, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Ne elblas malfermi dokumentar-krozilon"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_Dosiero"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "Malfermu _Langeton"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Malfermu novan terminalolangeton"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "Malfermu T_erminalon"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Malfermu novan terminalofenestron"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Malfermu novan fenestron por ĉi terminalolangeton"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "Malfermu ĉi terminalolangeton"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "_Fermu Fenestron"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Malfermu la terminalofenestron"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "_Modifu"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "_Kopiu"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Alkopiu la poŝon"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Algluu"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Algluu el la poŝo"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr ""
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr ""
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "Ilars_trio..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Agordu la ilastrion"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "Pr_eferoj..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Malfermu la Terminalopreferan dialogujon "
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_Vidu"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "_Terminalo"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "_Difinu Titolo..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Difinu agordtitolon por ĉi langeto"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "_Reŝarĝu"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "Reŝarĝu kaj _Purigu"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "_Aliru"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "A_ntaŭan Langeton"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Aliru antaŭan langeton"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "_Proksiman langeton"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Aliru proksiman langeton"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "_Helpo"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Enhavo"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Montru helpenhavon"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "_Raportu programfuŝon"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Raportu programfuŝon en Terminalo"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "_Pri"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Montru informojn pri Terminalo"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "_Enirmetodoj"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "Malkaŝu _Menuostrion"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "Kaŝu/Malkaŝu la menuostrion"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Malkaŝu _Ilarstrion"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Kaŝu/Malkaŝu la ilarstrion"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "Malkaŝu Fenestro_bordojn"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Kaŝu/Malkaŝu la fenestrodekoraciojn"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "_Tutekrana"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Aktivigu tutekranan reĝimon"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Averto"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Fermu ĉiujn langetojn"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Ĉi fenestro havas %d malfermitajn langetojn. Ĝin fermanta\n"
+"vi ankaŭ fermos ĉiujn langetojn."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Ĉu fermi ĉiujn langetojn?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "_Ne redemandu"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Fenestrotitolo|Difinu Titolon"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Titolo:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Eniru la titolon por ĉi terminalan lengeton"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Terminala Simulilo"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> konfiguro:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCIIa Viŝklavo"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Supera"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "Ebligas grasan tekston"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Aŭtodetektas"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Fonbildo"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Fonbildo"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Centrigita"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "Elektu Terminalan Literfonton"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "Elektu terminalan tekstokoloron"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Elektu Terminalofonkoloron"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Elektu la terminalan kursorkoloro"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Elektu terminalan tekstokoloron"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Elektu terminalan tekstomarkan fonkoloron"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Kolorelektilo"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Komando</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Kongrueco</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Taksu la sekvaj karakteroj kiel vortoparto dum duoblaklako:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Malebligu ĉiujn me_nuajn alirklavoj (kiel Alt+f)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Malebligu m_enuajn rapidklavoj (F10 defaŭlte)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "Montru _bordoj ĉirkaŭ novaj fenestroj"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "Montru _menuostrion en novaj fenestroj"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "Montru _ilarstrioj en la novaj fenestroj"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Duoblaklako</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Ebligas glatigon por la terminala literfonto"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -567,11 +1026,7 @@ msgstr ""
 "en terminalfenestro. Malebliganta ĉi opcion eblas forte rapidigila "
 "bildigorendimenton kaj fruigi la sistemstarto ĉe malrapidaj sistemoj"
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "Ebligas grasan tekston"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -579,87 +1034,25 @@ msgstr ""
 "Ebligu ĉi opcion por permesi aplikaĵojn rulantaj en la terminalfenestro uzi "
 "grasan tekston"
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Fono</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "Neniu (uzu solidan koloron)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "Fonbildo"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Travidebla fono"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_Dosiero:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "_Stilo:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "Centrigita"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Proporcia"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Streĉita"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Ombrigi la travideblan fonon aŭ la fonbildon"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Neniu</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Maksimuma</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Malfermanta Novajn fenestrojn</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "Montru _menuostrion en novaj fenestroj"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "Ebligu ĉi opcion por montri menuostrion ĉe ĵuskreitaj terminalfenestroj."
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "Montru _ilarstrioj en la novaj fenestroj"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "Ebligu ĉi opcion por montri ilarstrion en la novkreitaj terminalfenestroj."
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "Montru _bordoj ĉirkaŭ novaj fenestroj"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -667,173 +1060,264 @@ msgstr ""
 "Ebligu ĉi opcion por montri fenestrdekoraciojn ĉirkaŭ la novkreitaj "
 "terminalfenestroj."
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Ŝajnaspekto"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Ebligas vin premi ajnan klavon por suben-rulumi la terminalofenestron ĝisla "
+"komandoinvito."
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Fono kaj Malfono</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Reĝimklava sekvenco"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "_Koloro de teksto kaj kursoro:"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Elektu terminalan tekstokoloron"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "Ĝenerala"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Kolorelektilo"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "Aperas post la pratitolo"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Aperas antaŭ la pratitolo"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "Ne estas montrata"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Menuostria aliro</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "Neniu (uzu solidan koloron)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "Maldekstre"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "Dekstre"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "Malfermu dialogon por difini la koloron"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Elektu la terminalan kursorkoloro"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Malfermanta Novajn fenestrojn</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "_Fonkoloro:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Elektu Terminalofonkoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Tekstomarko</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "Uzu _defaŭltkoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "Uzu la defaŭltan tekstomarkan fonkoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "Uzu _agordkoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Uzu agordan tekstomarkan fonkoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Elektu terminalan tekstomarkan fonkoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>Koloraro</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "Kolorarelekto %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Anstataŭas la pratitolon"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Elektu terminalan tekstokoloron"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Proporcia"
+
+#: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Scroll on _keystroke"
+msgstr "Suben-ruluma_s po klavopremo"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "Rulu_mu ĉeelire "
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr ""
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "Ma_lantaŭrulumo"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Rulumanta</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Elektu fonbildan dosieron"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Elektu ĉi opcion por obligi la Terminalon lanĉi vian ŝelon kiel salutŝelo "
+"kiam vi malfermas terminalojn. Vidu vian ŝelmanlibron por detaloj pri "
+"ladiferencoj inter dialoga ŝelo kaj saluta ŝelo "
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Rapidigilo"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Difinas la nombron da linioj malantaŭen rulumeblaj per la rulumstrio."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "_Stilo:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Streĉita"
+
+#: ../Terminal.glade.h:79
+msgid "Tab Activity Indicator"
+msgstr ""
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "Elektu terminalan tekstokoloron"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Agordoj de Terminalo"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminalaj aplikaĵoj kiuj havas ĉi koloraron je dispono:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "Kolorarelekto %d"
-
-#: ../terminal/terminal-preferences-dialog.c:775
+#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "<b>Tab activity</b>"
-msgstr "<b>Kongrueco</b>"
+msgid "Text Selection"
+msgstr "<b>Tekstomarko</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../Terminal.glade.h:84
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "Elektu terminalan tekstokoloron"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Koloroj"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Rapidligaj klavoj</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Menuostria aliro</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Malebligu ĉiujn me_nuajn alirklavoj (kiel Alt+f)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Malebligu m_enuajn rapidklavoj (F10 defaŭlte)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Rapidligiloj"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Kongrueco</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "Ĉi tiuj opcioj eblas misfunkciig kelkajn aplikaĵojn. Ili estar ĉi tie nur "
 "por permesi vin labori pri kelkaj aplikaĵoj kaj sistemoj kiuj atendas iun "
 "alian terminalan rulmanjeron."
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "_Retropaŝoklavo generacias:"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Ĉi opcio difinas ĉu la terminalo suben-rulumos aŭtomatekiam novajn "
+"elirdatumojn generacias la komando rulanta en la terminalo "
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Aŭtodetektas"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCIIa Viŝklavo"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Reĝimklava sekvenco"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "_Viŝklavo generacias:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "<tt>$TERM</tt> konfiguro:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -845,540 +1329,142 @@ msgstr ""
 "sufiĉas por la plejparto de la sistemoj. Se vi trovas kolorproblemojn en "
 "kelkaj aplikaĵoj, provu xterm-color ĉi tie."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+msgid "Title"
+msgstr "Titolo"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Titolo"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Travidebla fono"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Travidebla fono"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "Uzu _defaŭltkoloron"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Uzu agordan tekstomarkan fonkoloron"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "Uzu _agordkoloron"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "Uzu la defaŭltan tekstomarkan fonkoloron"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Ŝajnaspekto"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "_Fonkoloro:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "_Retropaŝoklavo generacias:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Koloroj"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "_Viŝklavo generacias:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "_Dumruldifina titolo:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_Dosiero:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "Ĝenerala"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "Prat_itolo:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "_Reŝarĝu kongruopcioj al la defaulxtoj"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Duoblaklako</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "_Lanĉu komandon kiel ŝelsaluto"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "Taksu la sekvaj karakteroj kiel vortoparto dum duoblaklako:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "Ru_lumstrio sidas:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr ""
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Rapidligiloj"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr ""
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "_Koloro de teksto kaj kursoro:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "A_ktualigas utmp/wtmp datumojn kiam komando startiĝas"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Supera"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Titolo</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Elektu fonbildan dosieron"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "La rulanta komando en la terminalo eblas dumrule difini novan titolon"
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "Ĉiuj Dosieroj"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Literfonto</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Bildaj Dosieroj"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Fono</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Malfermu Langeton"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Ombrigi la travideblan fonon aŭ la fonbildon"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Malfermu Terminalon"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>Neniu</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Separu Langeton"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Maksimuma</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Fermu Langeton"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Fono kaj Malfono</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Fermu Fenestron"
-
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Kopiu"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Algluu"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
 #, fuzzy
-msgid "Paste Selection"
-msgstr "<b>Tekstomarko</b>"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Preferaĵoj"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Malkaŝu menuostrion"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Malkaŝu ilarstrion"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Malkaŝu bordojn"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Tutekrana"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Difinu titolo"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Reŝarĝu"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Reŝarĝu kaj Purigu"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Antaŭa Langeto"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Proksima Langeto"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Aliru Langeton 1"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Aliru Langeton 2"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Aliru Langeton 3"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Aliru langeton 4"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Aliru langeton 5"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Aliru langeton 6"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Aliru langeton 7"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Aliru langeton 8"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Aliru langeton 9"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Enhavo"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Neebla trovi vian salutŝelon"
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "Fiaskrulis filon"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "Sentitola"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "Dosiero"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Modifi"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "Vidu"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Iru"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Helpo"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Ago"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Rapidigilo"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Kreu rapidigilon"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Kreu rapidigilon por:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Fiaskis akiranta klavaron"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Alia aplikaĵo jam kontrolas vian klavaron."
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Fermu ĉi Langeton"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "_Separu Langeton"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "_Fermu Langeton"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Ilarstria Editoro"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Kopiu Retpoŝtadreson"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "Kreu Retpoŝt-Mesaĝon"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "Kopiu Ligilon"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Malfermu Ligilon"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Fiaskis alglui kopiaĵon de la tipo teksto/glata en la terminalon: Misaranĝo "
-"(%d) aŭ longeco (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Fiaskis alglui Mozillaan TTT-adreson en la terminalon: Misaranĝo (%d) aŭ "
-"longeco (%d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Fiaskis alglui URI-an liston enterminalon: Misaranĝo (%d) aŭ longeco (%d)\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Ricevis nevalidan kolordatumon: Misaranĝo (%d) aŭ longeco (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, fuzzy, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Ne elblas malfermi dokumentar-krozilon"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_Dosiero"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "Malfermu _Langeton"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Malfermu novan terminalolangeton"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "Malfermu T_erminalon"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Malfermu novan terminalofenestron"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Malfermu novan fenestron por ĉi terminalolangeton"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "Malfermu ĉi terminalolangeton"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "_Fermu Fenestron"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Malfermu la terminalofenestron"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "_Modifu"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "_Kopiu"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Alkopiu la poŝon"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Algluu"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Algluu el la poŝo"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr ""
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr ""
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "Ilars_trio..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Agordu la ilastrion"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "Pr_eferoj..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Malfermu la Terminalopreferan dialogujon "
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_Vidu"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "_Terminalo"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "_Difinu Titolo..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Difinu agordtitolon por ĉi langeto"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "_Reŝarĝu"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "Reŝarĝu kaj _Purigu"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "_Aliru"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "A_ntaŭan Langeton"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Aliru antaŭan langeton"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "_Proksiman langeton"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Aliru proksiman langeton"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "_Helpo"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Enhavo"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Montru helpenhavon"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "_Raportu programfuŝon"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Raportu programfuŝon en Terminalo"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "_Pri"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Montru informojn pri Terminalo"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "_Enirmetodoj"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "Malkaŝu _Menuostrion"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "Kaŝu/Malkaŝu la menuostrion"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Malkaŝu _Ilarstrion"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Kaŝu/Malkaŝu la ilarstrion"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "Malkaŝu Fenestro_bordojn"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Kaŝu/Malkaŝu la fenestrodekoraciojn"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "_Tutekrana"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Aktivigu tutekranan reĝimon"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Averto"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Fermu ĉiujn langetojn"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Ĉi fenestro havas %d malfermitajn langetojn. Ĝin fermanta\n"
-"vi ankaŭ fermos ĉiujn langetojn."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Ĉu fermi ĉiujn langetojn?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "_Ne redemandu"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "Fenestrotitolo|Difinu Titolon"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>Titolo:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "Eniru la titolon por ĉi terminalan lengeton"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Terminala Simulilo"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Kongrueco</b>"
+
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Rapidligaj klavoj</b>"
 
 #~ msgid "Web Browser"
 #~ msgstr "TTT Krozilo"
@@ -1530,9 +1616,6 @@ msgstr "Terminala Simulilo"
 
 #~ msgid "Custom title"
 #~ msgstr "Agordatitolo"
-
-#~ msgid "Title"
-#~ msgstr "Titolo"
 
 #~ msgid "Tab position"
 #~ msgstr "Langetopozicio"

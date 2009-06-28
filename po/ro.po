@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-23 00:26+0300\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2009-05-30 15:03+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -240,8 +240,8 @@ msgstr ""
 "  --default-working-directory=NUMEDIR Definiți directorul de lucru implicit\n"
 "                                      al terminalului"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -280,7 +280,7 @@ msgstr "Nu se poate înregistra serviciul terminal: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "Nu se poate lansa terminalul: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Date de geometrie invalide „%s”\n"
@@ -303,12 +303,12 @@ msgstr "Nu se poate înregistra obiectul %s"
 msgid "X Terminal Emulator"
 msgstr "Emulator de Terminal X"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr "Mișu Moldovan <dumol@xfce.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "Nu s-a putut deschide navigatorul documentației"
 
@@ -404,162 +404,615 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opțiune necunoscută „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Opțiuni Terminal"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "Toate fișierele"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Titlu</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Fișierele imagini"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr ""
-"Comanda executată în terminal poate modifica dinamic titlul terminalului."
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Deschide un tab"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "Titlu _inițial:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Deschide un terminal"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "Titlu modificat _dinamic:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Desprinde tabul"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Înlocuiește titlul inițial"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Închide tabul"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Apare înaintea titlului inițial"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Închide fereastra"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "Apare după titlul inițial"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Copiază"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "Nu este afișat"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Lipește"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Comandă</b>"
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "Lipește selecția"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "E_xecută comanda ca un shell de login"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Selectați această opțiune pentru a forța terminalul să execute shell-ul "
-"propriu ca un shell de login când se deschid terminale noi. Consultați "
-"documentația pentru detalii despre diferențele dintre executarea ca un shell "
-"interactiv și executarea ca login shell."
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Derulare</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Derulează câte o singură _linie cu Shift-Up/Shift-Down"
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Activați această opțiune pentru a derula câte o singură linie utilizând "
-"tastele săgeți sus/jos împreună cu tasta Shift."
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "De_rulează la ieșire"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Această opțiune precizează dacă terminalul va derula liniile automat de "
-"fiecare dată când se generează noi ieșiri de către comenzile executate în "
-"terminal."
-
-#: ../terminal/terminal-preferences-dialog.c:314
-msgid "Scroll on _keystroke"
-msgstr "Derulare la ta_stare"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Această opțiune vă permite să controlați din tastatură defilarea noilor "
-"ieșiri ale comenzilor executate în terminal."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "Bara de de_filare este:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "Opțiuni"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "Dezactivat(ă)"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "În stânga"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Arată bara de meniu"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "În dreapta"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Arată barele cu unelte"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "Defilare înap_oi:"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Arată marginile"
 
-#: ../terminal/terminal-preferences-dialog.c:353
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Pe tot ecranul"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Inițializare titlu"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Reinițializare"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Reinițializare și golire"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Tabul precedent"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Tabul următor"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Salt în tabul 1"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Salt în tabul 2"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Salt în tabul 3"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Salt în tabul 4"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Salt în tabul 5"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Salt în tabul 6"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Salt în tabul 7"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Salt în tabul 8"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Salt în tabul 9"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Conținut"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Nu se poate identifica shell-ul de login"
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Nu s-a putut executa comanda"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Fără titlu"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "Fișier"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Editare"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "Vizualizare"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Navigare"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Ajutor"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Acțiune"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Combinație de taste"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Alegere combinație de taste"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
 msgstr ""
-"Specifică numărul de linii pe care le puteți derula înapoi utilizând bare de "
-"defilare."
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "Generale"
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Precizați o combinație de taste pentru:"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Font</b>"
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Nu s-a putut obține acces la tastatură"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "O altă aplicație are deja controlul asupra tastaturii"
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Închide"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "_Desprinde tabul"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "În_chide tabul"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Editor bară cu unelte"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Copiază adresa de mail"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "Compunere mail"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "Copiază adresa legăturii"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Deschide adresa"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Nu se poate lipi selecția de tip text/plain în terminal: Format greșit (%d) "
+"ori lungime inadecvată (%d)\n"
+
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Nu se poate lipi URL-ul Mozilla în terminal: Format greșit (%d) ori lungime "
+"inadecvată (%d)\n"
+
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Nu se poate lipi lista URI în terminal: Format greșit (%d) ori lungime "
+"inadecvată (%d)\n"
+
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"S-au recepționat date invalide de culoare. Format greșit (%d) ori lungime "
+"inadecvată (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Nu s-a putut deschide URL-ul „%s”"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_Fișier"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "Deschide un _tab"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Deschide un nou tab de terminal"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "Deschide t_erminal"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Deschide o nouă fereastră de terminal"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Deschide o nouă fereastră pentru tabul curent de terminal"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "Închide tabul curent de terminal"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "În_chide fereastra"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Închide fereastra terminalului"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "_Editare"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "_Copiază"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Copiază în clipboard"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Lipește"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Lipește din clipboard"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "Lipește _selecția"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "Lipește din selecția primară"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "_Bare cu unelte..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Personalizați barele cu unelte"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "_Opțiuni..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Deschideți fereastra cu opțiunile Terminal"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_Vizualizare"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "_Terminal"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "_Inițializare titlu..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Definiți un nou titlu pentru tabul curent"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "_Reinițializare"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "Reinițializare și go_lire"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "_Navigare"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "Tabul a_nterior"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Comută în tabul anterior"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "Tabul ur_mător"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Comută în tabul următor"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Conținut"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Arată ajutorul conținutului"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "_Raportare de probleme"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Raportați o problemă Terminal"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "_Despre"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Arată detalii despre Terminal"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "Metode de _input"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "Arată bara de _meniu"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "Arată bara de meniu"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Arată barele cu unel_te"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Arată/ascunde barele cu unelte"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "Arată mar_ginile ferestrelor"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Arată/ascunde decorațiunile ferestrelor"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "_Pe tot ecranul"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Comutare stare „pe tot ecranul”"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Avertizare"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Închide toate taburile"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Această fereastră are %d taburi deschise. Închiderea\n"
+"acestei ferestre presupune închiderea tuturor taburilor sale."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Doriți să închideți toate taburile?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "_Nu mă mai întreba altă dată"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Alegeți un titlu"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Titlu:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Introduceți titlul pentru tabul curent de terminal"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Emulator de terminal"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "Opțiune <tt>$TERM</tt>:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Avansate"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "Permite text aldin"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Detectare automată"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Imagine fundal"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Imagine fundal"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Centrat"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "Alegeți fontul terminalului"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "Alegeți culoarea taburilor active"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Alegeți culoarea fundalului din terminal"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Alegeți culoarea cursorului din terminal"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Alegeți culoarea textului din terminal"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Alegeți culoarea de selectare a textului"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Selector culoare"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Comandă</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Compatibilitate</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Consideră următoarele caractere parte dintr-un cuvând la dublu-clic:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Dezactivează t_oate tastele de acces la meniu (precum Alt+f)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Dezactivează combinația de taste pentru m_eniu (implicit F10)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "Arată mar_gini în jurul ferestrelor noi"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "Arată bara de _meniu în ferestrele noi"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "Arată barele cu unel_te în ferestrele noi"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Dublu-clic</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Activează anti-alierea pentru fontul terminalului"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -571,11 +1024,7 @@ msgstr ""
 "crește impresionant viteza de afișare în terminal și va reduce simțitor "
 "încărcarea sistemului atunci când resursele sunt limitate."
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "Permite text aldin"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -583,89 +1032,29 @@ msgstr ""
 "Activați această opțiune pentru a permite aplicațiilor pornite în terminal "
 "să utilizeze text aldin (îngroșat)."
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Fundal</b>"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Activați această opțiune pentru a derula câte o singură linie utilizând "
+"tastele săgeți sus/jos împreună cu tasta Shift."
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "Nici unul (culoare unică)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "Imagine fundal"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Fundal transparent"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_Fișier:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "_Stil:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "Mozaic"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "Centrat"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Scalat"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Întins"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Transparența la imaginea de fundal:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Minimum</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Maximum</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Deschidere ferestre noi</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "Arată bara de _meniu în ferestrele noi"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "Activați această opțiune pentru a afișa bara de meniu în ferestrele de "
 "terminal nou create"
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "Arată barele cu unel_te în ferestrele noi"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "Activați această opțiune pentru a afișa barele cu unelte în ferestrele de "
 "terminal nou create"
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "Arată mar_gini în jurul ferestrelor noi"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -673,172 +1062,269 @@ msgstr ""
 "Activați această opțiune pentru a afișa decorațiunile ferestrelor în jurul "
 "ferestrelor de terminal nou create"
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Aspect"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Această opțiune vă permite să controlați din tastatură defilarea noilor "
+"ieșiri ale comenzilor executate în terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Text și fundal</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Secvență Escape"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "Culoare _text și cursor:"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Alegeți culoarea textului din terminal"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "Generale"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Selector culoare"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "Apare după titlul inițial"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Apare înaintea titlului inițial"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "Nu este afișat"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Acces bară de meniu</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "Nici unul (culoare unică)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "În stânga"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "În dreapta"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "Deschideți o fereastră pentru alegerea unei culori"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Alegeți culoarea cursorului din terminal"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Deschidere ferestre noi</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "Culoare _fundal:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Alegeți culoarea fundalului din terminal"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Selecție text</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "Utilizează culoarea _implicită"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "Utilizează culoarea de fundal implicită la selectarea textului"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "Utilizează o culoare _personalizată"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Utilizează o culoare de fundal personalizată la selectarea textului"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Alegeți culoarea de selectare a textului"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>Paletă</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "Intrare paletă %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Înlocuiește titlul inițial"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Reinițializează indicatorul de activitate după"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Scalat"
+
+#: ../Terminal.glade.h:68
+msgid "Scroll on _keystroke"
+msgstr "Derulare la ta_stare"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "De_rulează la ieșire"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Derulează câte o singură _linie cu Shift-Up/Shift-Down"
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "Defilare înap_oi:"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Derulare</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Selectați fișierul cu imaginea de fundal"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Selectați această opțiune pentru a forța terminalul să execute shell-ul "
+"propriu ca un shell de login când se deschid terminale noi. Consultați "
+"documentația pentru detalii despre diferențele dintre executarea ca un shell "
+"interactiv și executarea ca login shell."
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Combinație de taste"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Specifică numărul de linii pe care le puteți derula înapoi utilizând bare de "
+"defilare."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "_Stil:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Întins"
+
+#: ../Terminal.glade.h:79
+#, fuzzy
+msgid "Tab Activity Indicator"
+msgstr "<b>Indicator tab activ</b>"
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "Culoare ta_buri active:"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Opțiuni Terminal"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Aplicațiile terminal au următoarea paletă de culori disponibilă:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "Intrare paletă %d"
+#: ../Terminal.glade.h:83
+#, fuzzy
+msgid "Text Selection"
+msgstr "<b>Selecție text</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:775
-msgid "<b>Tab activity</b>"
-msgstr "<b>Taburi active</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr "Culoare ta_buri active:"
-
-#: ../terminal/terminal-preferences-dialog.c:802
-msgid "Choose tab activity color"
-msgstr "Alegeți culoarea taburilor active"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Culori"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Combinații de taste</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Acces bară de meniu</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Dezactivează t_oate tastele de acces la meniu (precum Alt+f)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "Dezactivează combinația de taste pentru m_eniu (implicit F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Combinații de taste"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Compatibilitate</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
+#: ../Terminal.glade.h:84
+#, fuzzy
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "Aceste opțiuni pot împiedica funcționarea corectă a anumitor aplicații. Ele "
 "sunt totuși disponibile aici pentru a vă permite soluții alternative pentru "
 "anumite aplicații și sisteme de operare ce presupun un comportament diferit "
 "din partea unei aplicații terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "Tasta _Backspace generează:"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Această opțiune precizează dacă terminalul va derula liniile automat de "
+"fiecare dată când se generează noi ieșiri de către comenzile executate în "
+"terminal."
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Detectare automată"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Secvență Escape"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "Tasta _Delete generează:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "Opțiune <tt>$TERM</tt>:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -850,539 +1336,139 @@ msgstr ""
 "trebui să fie OK pentru cele mai multe sisteme. Dacă aveți probleme cu "
 "culori în anumite aplicații, încercați valoarea „xterm-color” aici."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+#, fuzzy
+msgid "Title"
+msgstr "Mozaic"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Mozaic"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Fundal transparent"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Fundal transparent"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "Utilizează culoarea _implicită"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Utilizează o culoare de fundal personalizată la selectarea textului"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "Utilizează o culoare _personalizată"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "Utilizează culoarea de fundal implicită la selectarea textului"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Aspect"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "Culoare _fundal:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "Tasta _Backspace generează:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Culori"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "Tasta _Delete generează:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "Titlu modificat _dinamic:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_Fișier:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "Generale"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "Titlu _inițial:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "_Reinițializează opțiunile de compatibilitate la cele implicite"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Dublu-clic</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "E_xecută comanda ca un shell de login"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "Consideră următoarele caractere parte dintr-un cuvând la dublu-clic:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "Bara de de_filare este:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr "<b>Indicator tab activ</b>"
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Combinații de taste"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr "Reinițializează indicatorul de activitate după"
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "Culoare _text și cursor:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr "secunde"
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Avansate"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Titlu</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Selectați fișierul cu imaginea de fundal"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "Comanda executată în terminal poate modifica dinamic titlul terminalului."
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "Toate fișierele"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Font</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Fișierele imagini"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Fundal</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Deschide un tab"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Transparența la imaginea de fundal:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Deschide un terminal"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>Minimum</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Desprinde tabul"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Maximum</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Închide tabul"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Text și fundal</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Închide fereastra"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Taburi active</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Copiază"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Lipește"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "Lipește selecția"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Opțiuni"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Arată bara de meniu"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Arată barele cu unelte"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Arată marginile"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Pe tot ecranul"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Inițializare titlu"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Reinițializare"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Reinițializare și golire"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Tabul precedent"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Tabul următor"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Salt în tabul 1"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Salt în tabul 2"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Salt în tabul 3"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Salt în tabul 4"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Salt în tabul 5"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Salt în tabul 6"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Salt în tabul 7"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Salt în tabul 8"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Salt în tabul 9"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Conținut"
-
-#: ../terminal/terminal-screen.c:465
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Nu se poate identifica shell-ul de login"
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1039
-msgid "Failed to execute child"
-msgstr "Nu s-a putut executa comanda"
-
-#: ../terminal/terminal-screen.c:1275
-msgid "Untitled"
-msgstr "Fără titlu"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "Fișier"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Editare"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "Vizualizare"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Navigare"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Ajutor"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Acțiune"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Combinație de taste"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Alegere combinație de taste"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Precizați o combinație de taste pentru:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Nu s-a putut obține acces la tastatură"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "O altă aplicație are deja controlul asupra tastaturii"
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Închide"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "_Desprinde tabul"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "În_chide tabul"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Editor bară cu unelte"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Copiază adresa de mail"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "Compunere mail"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "Copiază adresa legăturii"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Deschide adresa"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Nu se poate lipi selecția de tip text/plain în terminal: Format greșit (%d) "
-"ori lungime inadecvată (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nu se poate lipi URL-ul Mozilla în terminal: Format greșit (%d) ori lungime "
-"inadecvată (%d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nu se poate lipi lista URI în terminal: Format greșit (%d) ori lungime "
-"inadecvată (%d)\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"S-au recepționat date invalide de culoare. Format greșit (%d) ori lungime "
-"inadecvată (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Nu s-a putut deschide URL-ul „%s”"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_Fișier"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "Deschide un _tab"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Deschide un nou tab de terminal"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "Deschide t_erminal"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Deschide o nouă fereastră de terminal"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Deschide o nouă fereastră pentru tabul curent de terminal"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "Închide tabul curent de terminal"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "În_chide fereastra"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Închide fereastra terminalului"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "_Editare"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "_Copiază"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Copiază în clipboard"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Lipește"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Lipește din clipboard"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "Lipește _selecția"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "Lipește din selecția primară"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "_Bare cu unelte..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Personalizați barele cu unelte"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "_Opțiuni..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Deschideți fereastra cu opțiunile Terminal"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_Vizualizare"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "_Terminal"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "_Inițializare titlu..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Definiți un nou titlu pentru tabul curent"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "_Reinițializare"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "Reinițializare și go_lire"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "_Navigare"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "Tabul a_nterior"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Comută în tabul anterior"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "Tabul ur_mător"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Comută în tabul următor"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "_Ajutor"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Conținut"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Arată ajutorul conținutului"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "_Raportare de probleme"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Raportați o problemă Terminal"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "_Despre"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Arată detalii despre Terminal"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "Metode de _input"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "Arată bara de _meniu"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "Arată bara de meniu"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Arată barele cu unel_te"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Arată/ascunde barele cu unelte"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "Arată mar_ginile ferestrelor"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Arată/ascunde decorațiunile ferestrelor"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "_Pe tot ecranul"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Comutare stare „pe tot ecranul”"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Avertizare"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Închide toate taburile"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Această fereastră are %d taburi deschise. Închiderea\n"
-"acestei ferestre presupune închiderea tuturor taburilor sale."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Doriți să închideți toate taburile?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "_Nu mă mai întreba altă dată"
-
-#: ../terminal/terminal-window.c:1528
-msgid "Window Title|Set Title"
-msgstr "Alegeți un titlu"
-
-#: ../terminal/terminal-window.c:1542
-msgid "<b>Title:</b>"
-msgstr "<b>Titlu:</b>"
-
-#: ../terminal/terminal-window.c:1556
-msgid "Enter the title for the current terminal tab"
-msgstr "Introduceți titlul pentru tabul curent de terminal"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Emulator de terminal"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Combinații de taste</b>"

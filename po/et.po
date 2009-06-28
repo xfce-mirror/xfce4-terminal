@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-15 11:40+0100\n"
+"POT-Creation-Date: 2009-06-28 14:27+0200\n"
 "PO-Revision-Date: 2008-10-01 07:10-0700\n"
 "Last-Translator: Kristjan Siimson <epost@ksiimson.se>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -92,8 +92,9 @@ msgstr ""
 "                                      aknale."
 
 #: ../terminal/main.c:66
+#, fuzzy
 msgid ""
-"  --role=ROLE                         Set the role for the last-specified;\n"
+"  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
@@ -239,8 +240,8 @@ msgstr ""
 "  --default-working-directory=KATALOOGINIMI Määrata terminalile vaikimisi\n"
 "                                      töökataloog"
 
-#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1234
-#: ../terminal/terminal-shortcut-editor.c:121 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:140 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -279,7 +280,7 @@ msgstr "Terminaliteenust ei saanud registreerida: %s\n"
 msgid "Unable to launch terminal: %s\n"
 msgstr "Terminali ei saanud käivitada: %s\n"
 
-#: ../terminal/terminal-app.c:562
+#: ../terminal/terminal-app.c:560
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Vigane geomeetria sõne „%s”\n"
@@ -302,12 +303,12 @@ msgstr "Ei saanud registreerida objekti „%s”"
 msgid "X Terminal Emulator"
 msgstr "X terminaliemulaator"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:83
 msgid "translator-credits"
 msgstr "Kristjan Siimson <epost@ksiimson.se> & tolge.pingviin.org"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:245
+#: ../terminal/terminal-dialogs.c:241
 msgid "Failed to open the documentation browser"
 msgstr "Dokumentatsioonibrauseri avamine ebaõnnestus"
 
@@ -392,156 +393,614 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Tundmatu valik „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:140
-msgid "Terminal Preferences"
-msgstr "Terminali eelistused"
+#: ../terminal/terminal-preferences-dialog.c:198
+msgid "All Files"
+msgstr "Kõik failid"
 
-#: ../terminal/terminal-preferences-dialog.c:187
-msgid "<b>Title</b>"
-msgstr "<b>Pealkiri</b>"
+#: ../terminal/terminal-preferences-dialog.c:204
+msgid "Image Files"
+msgstr "Pildifailid"
 
-#: ../terminal/terminal-preferences-dialog.c:200
-msgid ""
-"The command running inside the terminal may dynamically set a new title."
-msgstr "Terminalis töötav käsk võib dünaamiliselt uue pealkirja määrata."
+#: ../terminal/terminal-preferences.c:308
+msgid "Open Tab"
+msgstr "Avada kaart"
 
-#: ../terminal/terminal-preferences-dialog.c:206
-msgid "_Initial title:"
-msgstr "Es_ialgne pealkiri:"
+#: ../terminal/terminal-preferences.c:319
+msgid "Open Terminal"
+msgstr "Avada terminal"
 
-#: ../terminal/terminal-preferences-dialog.c:221
-msgid "_Dynamically-set title:"
-msgstr "_Dünaamiliselt määratud pealkiri:"
+#: ../terminal/terminal-preferences.c:330
+msgid "Detach Tab"
+msgstr "Lahutada kaart"
 
-#: ../terminal/terminal-preferences-dialog.c:231
-msgid "Replaces initial title"
-msgstr "Asendab esialgse pealkirja"
+#: ../terminal/terminal-preferences.c:341
+msgid "Close Tab"
+msgstr "Sulgeda kaart"
 
-#: ../terminal/terminal-preferences-dialog.c:232
-msgid "Goes before initial title"
-msgstr "Asub esialgse pealkirja ees"
+#: ../terminal/terminal-preferences.c:352
+msgid "Close Window"
+msgstr "Sulgeda aken"
 
-#: ../terminal/terminal-preferences-dialog.c:233
-msgid "Goes after initial title"
-msgstr "Asub pärast esialgset pealkirja"
+#: ../terminal/terminal-preferences.c:363
+msgid "Copy"
+msgstr "Kopeerida"
 
-#: ../terminal/terminal-preferences-dialog.c:234
-msgid "Isn't displayed"
-msgstr "Ei kuvata"
+#: ../terminal/terminal-preferences.c:374
+msgid "Paste"
+msgstr "Asetada"
 
-#: ../terminal/terminal-preferences-dialog.c:250
-msgid "<b>Command</b>"
-msgstr "<b>Käsk</b>"
+#: ../terminal/terminal-preferences.c:385
+msgid "Paste Selection"
+msgstr "Asetada märgistus"
 
-#: ../terminal/terminal-preferences-dialog.c:259
-msgid "_Run command as login shell"
-msgstr "_Käivitada käsk logimiskestana"
-
-#: ../terminal/terminal-preferences-dialog.c:262
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Märgistage see valik, et uute terminalide käivitamisel sundida Terminali "
-"käivitama kesta logimiskestana. Detailsed erinevused interaktiivse- ja "
-"logimiskesta vahel leiate kesta dokumentatsioonist"
-
-#: ../terminal/terminal-preferences-dialog.c:269
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Käs_u käivitamisel uuendada utmp/wtmp kirjeid"
-
-#: ../terminal/terminal-preferences-dialog.c:278
-msgid "<b>Scrolling</b>"
-msgstr "<b>Kerimine</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:293
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Kerida ridahaava_l kasutades shift+üles/alla klahve"
-
-#: ../terminal/terminal-preferences-dialog.c:296
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Lubage see valik, et võimaldada ridahaaval kerimist kasutades shift klahvi "
-"ja üles/alla nooleklahve."
-
-#: ../terminal/terminal-preferences-dialog.c:305
-msgid "Sc_roll on output"
-msgstr "Ke_rida väljundit"
-
-#: ../terminal/terminal-preferences-dialog.c:308
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Selle valikuga määratakse, kas terminal kerib alati automaatselt alla koos "
-"käsuväljundiga."
-
-#: ../terminal/terminal-preferences-dialog.c:314
-msgid "Scroll on _keystroke"
-msgstr "_Kerida klahvivajutusega"
-
-#: ../terminal/terminal-preferences-dialog.c:317
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Lubab mistahes klahvivajutusega kerida terminaliakent alla, käsuviipe juurde."
-
-#: ../terminal/terminal-preferences-dialog.c:323
-msgid "_Scrollbar is:"
-msgstr "Kerimi_sriba on:"
-
-#: ../terminal/terminal-preferences-dialog.c:329
 #: ../terminal/terminal-preferences.c:396
-#: ../terminal/terminal-preferences.c:407
-#: ../terminal/terminal-preferences.c:418
-#: ../terminal/terminal-preferences.c:429
-#: ../terminal/terminal-preferences.c:451
-#: ../terminal/terminal-preferences.c:462
-#: ../terminal/terminal-preferences.c:473
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:392
+msgid "Preferences"
+msgstr "Eelistused"
+
+#: ../terminal/terminal-preferences.c:398
+#: ../terminal/terminal-preferences.c:409
+#: ../terminal/terminal-preferences.c:420
+#: ../terminal/terminal-preferences.c:431
+#: ../terminal/terminal-preferences.c:453
+#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-shortcut-editor.c:207
+#: ../terminal/terminal-shortcut-editor.c:396 ../Terminal.glade.h:23
 msgid "Disabled"
 msgstr "Keelatud"
 
-#: ../terminal/terminal-preferences-dialog.c:330
-msgid "On the left side"
-msgstr "Vasakul pool"
+#: ../terminal/terminal-preferences.c:407
+msgid "Show menubar"
+msgstr "Näidata menüüriba"
 
-#: ../terminal/terminal-preferences-dialog.c:331
-msgid "On the right side"
-msgstr "Paremal pool"
+#: ../terminal/terminal-preferences.c:418
+msgid "Show toolbars"
+msgstr "Näidata tööriistaribasid"
 
-#: ../terminal/terminal-preferences-dialog.c:343
-msgid "Scr_ollback:"
-msgstr "_Tagasikerimine:"
+#: ../terminal/terminal-preferences.c:429
+msgid "Show borders"
+msgstr "Näidata raame"
 
-#: ../terminal/terminal-preferences-dialog.c:353
+#: ../terminal/terminal-preferences.c:440
+msgid "Fullscreen"
+msgstr "Üleekraanirežiim"
+
+#: ../terminal/terminal-preferences.c:451
+msgid "Set Title"
+msgstr "Määrata pealkiri"
+
+#: ../terminal/terminal-preferences.c:462
+msgid "Reset"
+msgstr "Lähtestada"
+
+#: ../terminal/terminal-preferences.c:473
+msgid "Reset and Clear"
+msgstr "Lähtestada ja puhastada"
+
+#: ../terminal/terminal-preferences.c:484
+msgid "Previous Tab"
+msgstr "Eelmine kaart"
+
+#: ../terminal/terminal-preferences.c:495
+msgid "Next Tab"
+msgstr "Järgmine kaart"
+
+#: ../terminal/terminal-preferences.c:506
+msgid "Switch to Tab 1"
+msgstr "Lülituda 1. kaardile"
+
+#: ../terminal/terminal-preferences.c:517
+msgid "Switch to Tab 2"
+msgstr "Lülituda 2. kaardile"
+
+#: ../terminal/terminal-preferences.c:528
+msgid "Switch to Tab 3"
+msgstr "Lülituda 3. kaardile"
+
+#: ../terminal/terminal-preferences.c:539
+msgid "Switch to Tab 4"
+msgstr "Lülituda 4. kaardile"
+
+#: ../terminal/terminal-preferences.c:550
+msgid "Switch to Tab 5"
+msgstr "Lülituda 5. kaardile"
+
+#: ../terminal/terminal-preferences.c:561
+msgid "Switch to Tab 6"
+msgstr "Lülituda 6. kaardile"
+
+#: ../terminal/terminal-preferences.c:572
+msgid "Switch to Tab 7"
+msgstr "Lülituda 7. kaardile"
+
+#: ../terminal/terminal-preferences.c:583
+msgid "Switch to Tab 8"
+msgstr "Lülituda 8. kaardile"
+
+#: ../terminal/terminal-preferences.c:594
+msgid "Switch to Tab 9"
+msgstr "Lülituda 9. kaardile"
+
+#: ../terminal/terminal-preferences.c:605
+msgid "Contents"
+msgstr "Sisukord"
+
+#: ../terminal/terminal-screen.c:464
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Sinu logimiskesta ei õnnestunud tuvastada."
+
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1041
+msgid "Failed to execute child"
+msgstr "Alama käivitamine ebaõnnestus"
+
+#: ../terminal/terminal-screen.c:1277
+msgid "Untitled"
+msgstr "Pealkirjastamata"
+
+#: ../terminal/terminal-shortcut-editor.c:88
+msgid "File"
+msgstr "Fail"
+
+#: ../terminal/terminal-shortcut-editor.c:99
+msgid "Edit"
+msgstr "Toimetada"
+
+#: ../terminal/terminal-shortcut-editor.c:109
+msgid "View"
+msgstr "Vaade"
+
+#: ../terminal/terminal-shortcut-editor.c:128
+msgid "Go"
+msgstr "Liikuda"
+
+#: ../terminal/terminal-shortcut-editor.c:145
+msgid "Help"
+msgstr "Abi"
+
+#: ../terminal/terminal-shortcut-editor.c:226
+msgid "Action"
+msgstr "Tegevus"
+
+#: ../terminal/terminal-shortcut-editor.c:233
+msgid "Shortcut key"
+msgstr "Kiirklahv"
+
+#: ../terminal/terminal-shortcut-editor.c:333
+msgid "Compose shortcut"
+msgstr "Koostada otsetee"
+
+#: ../terminal/terminal-shortcut-editor.c:338
+msgid "Clea_r"
+msgstr ""
+
+#: ../terminal/terminal-shortcut-editor.c:357
+msgid "Compose shortcut for:"
+msgstr "Koostada otsetee:"
+
+#: ../terminal/terminal-shortcut-editor.c:379
+msgid "Failed to acquire keyboard"
+msgstr "Klaviatuuri omandamine ebaõnnestus"
+
+#: ../terminal/terminal-shortcut-editor.c:381
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Mõni teine rakendus on juba saanud võimu sinu klaviatuuri üle."
+
+#: ../terminal/terminal-tab-header.c:202
+msgid "Close this tab"
+msgstr "Sulgeda see kaart"
+
+#: ../terminal/terminal-tab-header.c:340 ../terminal/terminal-window.c:217
+msgid "_Detach Tab"
+msgstr "Lahuta_da kaart"
+
+#: ../terminal/terminal-tab-header.c:345 ../terminal/terminal-window.c:218
+msgid "C_lose Tab"
+msgstr "Su_lgeda kaart"
+
+#: ../terminal/terminal-toolbars-view.c:131
+msgid "Toolbar Editor"
+msgstr "Tööriistariba toimetaja"
+
+#: ../terminal/terminal-widget.c:335
+msgid "Copy Email Address"
+msgstr "Kopeerida e-posti aadress"
+
+#: ../terminal/terminal-widget.c:336
+msgid "Compose Email"
+msgstr "Koostada e-kiri"
+
+#: ../terminal/terminal-widget.c:340
+msgid "Copy Link Address"
+msgstr "Kopeerida viida aadress"
+
+#: ../terminal/terminal-widget.c:341
+msgid "Open Link"
+msgstr "Avada viit"
+
+#: ../terminal/terminal-widget.c:495
+#, c-format
 msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Täpsustab mitu rida saab kerimisriba abil tagasi minna."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"text/plain liiki märgistuse asetamine terminali ebaõnnestus: Vale vorming (%"
+"d) või pikkus (%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:369
-msgid "General"
-msgstr "Üldine"
+#: ../terminal/terminal-widget.c:511
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Mozilla URL-i asetamine terminali ebaõnnestus: Vale vorming (%d) või pikkus "
+"(%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:387
-msgid "<b>Font</b>"
-msgstr "<b>Font</b>"
+#: ../terminal/terminal-widget.c:537
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"URI-de loendi asetamine terminali ebaõnnestus: Vale vorming (%d) või pikkus "
+"(%d)\n"
 
-#: ../terminal/terminal-preferences-dialog.c:396
+#: ../terminal/terminal-widget.c:582
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "Saadi valed värviandmed: Vale vorming (%d) või pikkus (%d)\n"
+
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:714
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "URL-i „%s” avamine ebaõnnestus"
+
+#: ../terminal/terminal-window.c:214
+msgid "_File"
+msgstr "_Fail"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open _Tab"
+msgstr "Avada kaar_t"
+
+#: ../terminal/terminal-window.c:215
+msgid "Open a new terminal tab"
+msgstr "Avada uus terminali kaart"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open T_erminal"
+msgstr "Avada t_erminal"
+
+#: ../terminal/terminal-window.c:216
+msgid "Open a new terminal window"
+msgstr "Avada uus terminali kaart"
+
+#: ../terminal/terminal-window.c:217
+msgid "Open a new window for the current terminal tab"
+msgstr "Avada käesolevale terminali kaardile uus aken"
+
+#: ../terminal/terminal-window.c:218
+msgid "Close the current terminal tab"
+msgstr "Sulgeda käesolev terminali kaart"
+
+#: ../terminal/terminal-window.c:219
+msgid "_Close Window"
+msgstr "_Sulgeda aken"
+
+#: ../terminal/terminal-window.c:219
+msgid "Close the terminal window"
+msgstr "Sulgeda terminali aken"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Edit"
+msgstr "Toim_etada"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Copy"
+msgstr "_Kopeerida"
+
+#: ../terminal/terminal-window.c:221
+msgid "Copy to clipboard"
+msgstr "Kopeerida lõikepuhvrisse"
+
+#: ../terminal/terminal-window.c:222
+msgid "_Paste"
+msgstr "_Asetada"
+
+#: ../terminal/terminal-window.c:222
+msgid "Paste from clipboard"
+msgstr "Asetada lõikepuhvrist"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste _Selection"
+msgstr "A_setada märgistus"
+
+#: ../terminal/terminal-window.c:223
+msgid "Paste from primary selection"
+msgstr "Asetada peamisest märgistusest"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Toolbars..."
+msgstr "_Tööriistaribad..."
+
+#: ../terminal/terminal-window.c:224
+msgid "Customize the toolbars"
+msgstr "Kohandada tööriistaribasid"
+
+#: ../terminal/terminal-window.c:225
+msgid "Pr_eferences..."
+msgstr "_Eelistused..."
+
+#: ../terminal/terminal-window.c:225
+msgid "Open the Terminal preferences dialog"
+msgstr "Avada Terminali eelistuste dialoog"
+
+#: ../terminal/terminal-window.c:226
+msgid "_View"
+msgstr "_Vaade"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Terminal"
+msgstr "_Terminal"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Set Title..."
+msgstr "_Määrata pealkiri..."
+
+#: ../terminal/terminal-window.c:228
+msgid "Set a custom title for the current tab"
+msgstr "Määrata käesolevale kaardile kohandatud pealkiri"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Reset"
+msgstr "_Lähtestada"
+
+#: ../terminal/terminal-window.c:230
+msgid "Reset and C_lear"
+msgstr "_Lähtestada ja puhastada"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Go"
+msgstr "_Liikuda"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Previous Tab"
+msgstr "_Eelmine kaart"
+
+#: ../terminal/terminal-window.c:232
+msgid "Switch to previous tab"
+msgstr "Lülituda eelmisele kaardile"
+
+#: ../terminal/terminal-window.c:233
+msgid "_Next Tab"
+msgstr "Järgmi_ne kaart"
+
+#: ../terminal/terminal-window.c:233
+msgid "Switch to next tab"
+msgstr "Lülituda järgmisele kaardile"
+
+#: ../terminal/terminal-window.c:234
+msgid "_Help"
+msgstr "_Abi"
+
+#: ../terminal/terminal-window.c:235
+msgid "_Contents"
+msgstr "_Sisukord"
+
+#: ../terminal/terminal-window.c:235
+msgid "Display help contents"
+msgstr "Näidata abi sisukorda"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Report a bug"
+msgstr "_Teavitada veast"
+
+#: ../terminal/terminal-window.c:236
+msgid "Report a bug in Terminal"
+msgstr "Teavitada Terminali veast"
+
+#: ../terminal/terminal-window.c:237
+msgid "_About"
+msgstr "Te_ave"
+
+#: ../terminal/terminal-window.c:237
+msgid "Display information about Terminal"
+msgstr "Näidata Terminali kohta teavet"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Input Methods"
+msgstr "S_isendmeetodid"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show _Menubar"
+msgstr "Näidata _menüüriba"
+
+#: ../terminal/terminal-window.c:243
+msgid "Show/hide the menubar"
+msgstr "Näidata/peita menüüriba"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show _Toolbars"
+msgstr "Näida_ta tööriistaribasid"
+
+#: ../terminal/terminal-window.c:244
+msgid "Show/hide the toolbars"
+msgstr "Näidata/peita tööriistaribasid"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show Window _Borders"
+msgstr "_Näidata akende raame"
+
+#: ../terminal/terminal-window.c:245
+msgid "Show/hide the window decorations"
+msgstr "Näidata/peita aknadekoratsioone"
+
+#: ../terminal/terminal-window.c:246
+msgid "_Fullscreen"
+msgstr "_Üleekraanirežiim"
+
+#: ../terminal/terminal-window.c:246
+msgid "Toggle fullscreen mode"
+msgstr "Lülitada üleekraanirežiim sisse-välja"
+
+#: ../terminal/terminal-window.c:527
+msgid "Warning"
+msgstr "Hoiatus"
+
+#: ../terminal/terminal-window.c:538
+msgid "Close all tabs"
+msgstr "Sulgeda kõik kaardid"
+
+#: ../terminal/terminal-window.c:557
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Selles aknas on %d avatud kaarti. Akna\n"
+" sulgemisel suletakse ka kõik kaardid."
+
+#: ../terminal/terminal-window.c:560
+msgid "Close all tabs?"
+msgstr "Sulgeda kõik kaardid?"
+
+#: ../terminal/terminal-window.c:573
+msgid "Do _not ask me again"
+msgstr "_Mitte uuesti küsida"
+
+#: ../terminal/terminal-window.c:1527
+msgid "Window Title|Set Title"
+msgstr "Window Title|Määrata pealkiri"
+
+#: ../terminal/terminal-window.c:1541
+msgid "<b>Title:</b>"
+msgstr "<b>Pealkiri:</b>"
+
+#: ../terminal/terminal-window.c:1555
+msgid "Enter the title for the current terminal tab"
+msgstr "Sisestage käesoleva terminalikaardi pealkiri"
+
+#: ../Terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Terminaliemulaator"
+
+#: ../Terminal.glade.h:1
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> seade:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "Täpsem"
+
+#: ../Terminal.glade.h:4
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "Lubada rasvane tekst"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Automaatne tuvastamine"
+
+#: ../Terminal.glade.h:6
+#, fuzzy
+msgid "Background"
+msgstr "Taustapilt"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Taustapilt"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Keskendatud"
+
+#: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
 msgstr "Valige Terminali font"
 
-#: ../terminal/terminal-preferences-dialog.c:401
-msgid "Enable anti-aliasing for the terminal font"
+#: ../Terminal.glade.h:10
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "Valige terminali tekstile värv"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Valige terminali taustavärv"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Valige terminali kursorile värv"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Valige terminali tekstile värv"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Valige terminali tekstimärgistuse taustavärv"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Värvi märgistaja"
+
+#: ../Terminal.glade.h:16
+#, fuzzy
+msgid "Command"
+msgstr "<b>Käsk</b>"
+
+#: ../Terminal.glade.h:17
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>Ühilduvus</b>"
+
+#: ../Terminal.glade.h:18
+#, fuzzy
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Topelklõpsamisel arvestada järgnevad tähemärgid sõnaosadeks:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Ctrl-H"
+
+#: ../Terminal.glade.h:21
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Keelata kõik me_nüüde juurdepääsuklahvid (nagu Alt+f)"
+
+#: ../Terminal.glade.h:22
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "K_eelata menüü kiirklahv (vaikimisi F10)"
+
+#: ../Terminal.glade.h:24
+msgid "Display _borders around new windows"
+msgstr "Näidata uute akende üm_ber raame"
+
+#: ../Terminal.glade.h:25
+msgid "Display _menubar in new windows"
+msgstr "Näidata uutes akendes _menüüriba"
+
+#: ../Terminal.glade.h:26
+msgid "Display _toolbars in new windows"
+msgstr "Näida_ta uutes akendes tööriistaribasid"
+
+#: ../Terminal.glade.h:27
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>Topeltklõps</b>"
+
+#: ../Terminal.glade.h:28
+#, fuzzy
+msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Lubada terminalifondi anti-alias"
 
-#: ../terminal/terminal-preferences-dialog.c:404
+#: ../Terminal.glade.h:29
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -552,11 +1011,7 @@ msgstr ""
 "Seda valikut välja lülitades on võimalik oluliselt parandada "
 "renderdamiskiirust ja vähendada aeglastes arvutites koormust."
 
-#: ../terminal/terminal-preferences-dialog.c:411
-msgid "Allow bold text"
-msgstr "Lubada rasvane tekst"
-
-#: ../terminal/terminal-preferences-dialog.c:414
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -564,87 +1019,27 @@ msgstr ""
 "Lubage see valik, et terminalis töötavad rakendused saaksid kasutada rasvast "
 "kirja."
 
-#: ../terminal/terminal-preferences-dialog.c:423
-msgid "<b>Background</b>"
-msgstr "<b>Taust</b>"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Lubage see valik, et võimaldada ridahaaval kerimist kasutades shift klahvi "
+"ja üles/alla nooleklahve."
 
-#: ../terminal/terminal-preferences-dialog.c:433
-msgid "None (use solid color)"
-msgstr "Puudub (kasutada ühtlast värvi)"
-
-#: ../terminal/terminal-preferences-dialog.c:434
-msgid "Background image"
-msgstr "Taustapilt"
-
-#: ../terminal/terminal-preferences-dialog.c:435
-msgid "Transparent background"
-msgstr "Läbipaistev taust"
-
-#: ../terminal/terminal-preferences-dialog.c:452
-msgid "_File:"
-msgstr "_Fail:"
-
-#: ../terminal/terminal-preferences-dialog.c:477
-msgid "_Style:"
-msgstr "_Stiil:"
-
-#: ../terminal/terminal-preferences-dialog.c:483
-msgid "Tiled"
-msgstr "Paanitud"
-
-#: ../terminal/terminal-preferences-dialog.c:484
-msgid "Centered"
-msgstr "Keskendatud"
-
-#: ../terminal/terminal-preferences-dialog.c:485
-msgid "Scaled"
-msgstr "Skaleeritud"
-
-#: ../terminal/terminal-preferences-dialog.c:486
-msgid "Stretched"
-msgstr "Venitatud"
-
-#: ../terminal/terminal-preferences-dialog.c:502
-msgid "Shade transparent or image background:"
-msgstr "Läbipaistev varjund või pilttaust:"
-
-#: ../terminal/terminal-preferences-dialog.c:515
-msgid "<small><i>None</i></small>"
-msgstr "<small><i>Puudub</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:526
-msgid "<small><i>Maximum</i></small>"
-msgstr "<small><i>Suurim</i></small>"
-
-#: ../terminal/terminal-preferences-dialog.c:534
-msgid "<b>Opening New Windows</b>"
-msgstr "<b>Uute akende avamine</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:543
-msgid "Display _menubar in new windows"
-msgstr "Näidata uutes akendes _menüüriba"
-
-#: ../terminal/terminal-preferences-dialog.c:546
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "Lubage see valik, et äsja loodud terminaliakendes näidataks menüüribasid."
 
-#: ../terminal/terminal-preferences-dialog.c:551
-msgid "Display _toolbars in new windows"
-msgstr "Näida_ta uutes akendes tööriistaribasid"
-
-#: ../terminal/terminal-preferences-dialog.c:554
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "Lubage see valik, et äsja loodud terminaliakendes näidataks tööriistaribasid."
 
-#: ../terminal/terminal-preferences-dialog.c:559
-msgid "Display _borders around new windows"
-msgstr "Näidata uute akende üm_ber raame"
-
-#: ../terminal/terminal-preferences-dialog.c:562
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -652,174 +1047,263 @@ msgstr ""
 "Lubage see valik, et äsja loodud terminaliakende ümber näidataks "
 "aknadekoratsioone."
 
-#: ../terminal/terminal-preferences-dialog.c:574
-msgid "Appearance"
-msgstr "Välimus"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Lubab mistahes klahvivajutusega kerida terminaliakent alla, käsuviipe juurde."
 
-#: ../terminal/terminal-preferences-dialog.c:592
-msgid "<b>Foreground and Background</b>"
-msgstr "<b>Esi- ja taustaplaan</b>"
+#: ../Terminal.glade.h:36
+msgid "Escape sequence"
+msgstr "Katkestamise järjend"
 
-#: ../terminal/terminal-preferences-dialog.c:604
-msgid "_Text and cursor color:"
-msgstr "_Teksti ja kursori värv:"
+#: ../Terminal.glade.h:37
+msgid "Font"
+msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:619
-msgid "Choose terminal text color"
-msgstr "Valige terminali tekstile värv"
+#: ../Terminal.glade.h:38
+msgid "General"
+msgstr "Üldine"
 
-#: ../terminal/terminal-preferences-dialog.c:627
-#: ../terminal/terminal-preferences-dialog.c:642
-#: ../terminal/terminal-preferences-dialog.c:671
-#: ../terminal/terminal-preferences-dialog.c:720
-#: ../terminal/terminal-preferences-dialog.c:810
-msgid "Color Selector"
-msgstr "Värvi märgistaja"
+#: ../Terminal.glade.h:39
+msgid "Goes after initial title"
+msgstr "Asub pärast esialgset pealkirja"
 
-#: ../terminal/terminal-preferences-dialog.c:628
-#: ../terminal/terminal-preferences-dialog.c:643
-#: ../terminal/terminal-preferences-dialog.c:672
-#: ../terminal/terminal-preferences-dialog.c:721
-#: ../terminal/terminal-preferences-dialog.c:811
+#: ../Terminal.glade.h:40
+msgid "Goes before initial title"
+msgstr "Asub esialgse pealkirja ees"
+
+#: ../Terminal.glade.h:41
+msgid "Isn't displayed"
+msgstr "Ei kuvata"
+
+#: ../Terminal.glade.h:42
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>Menüüriba juurdepääs</b>"
+
+#: ../Terminal.glade.h:43
+msgid "None (use solid color)"
+msgstr "Puudub (kasutada ühtlast värvi)"
+
+#: ../Terminal.glade.h:44
+msgid "On the left side"
+msgstr "Vasakul pool"
+
+#: ../Terminal.glade.h:45
+msgid "On the right side"
+msgstr "Paremal pool"
+
+#: ../Terminal.glade.h:46
 msgid "Open a dialog to specify the color"
 msgstr "Avada värvi täpsustamiseks dialoog"
 
-#: ../terminal/terminal-preferences-dialog.c:634
-msgid "Choose terminal cursor color"
-msgstr "Valige terminali kursorile värv"
+#: ../Terminal.glade.h:47
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>Uute akende avamine</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:650
-msgid "_Background color:"
-msgstr "_Taustavärv:"
-
-#: ../terminal/terminal-preferences-dialog.c:662
-msgid "Choose terminal background color"
-msgstr "Valige terminali taustavärv"
-
-#: ../terminal/terminal-preferences-dialog.c:682
-msgid "<b>Text Selection</b>"
-msgstr "<b>Märgistatud tekst</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:693
-msgid "Use _default color"
-msgstr "Kasuta_da vaikimisi värvi"
-
-#: ../terminal/terminal-preferences-dialog.c:696
-msgid "Use the default text selection background color"
-msgstr "Kasutada märgistatud teksti vaikimisi taustavärvi"
-
-#: ../terminal/terminal-preferences-dialog.c:701
-msgid "Use _custom color"
-msgstr "_Kasutada kohandatud värvi"
-
-#: ../terminal/terminal-preferences-dialog.c:704
-msgid "Use a custom text selection background color"
-msgstr "Kasutada märgistatud teksti kohandatud taustavärvi"
-
-#: ../terminal/terminal-preferences-dialog.c:712
-msgid "Choose terminal text selection background color"
-msgstr "Valige terminali tekstimärgistuse taustavärv"
-
-#: ../terminal/terminal-preferences-dialog.c:731
-msgid "<b>Palette</b>"
+#: ../Terminal.glade.h:48
+#, fuzzy
+msgid "Palette"
 msgstr "<b>Palett</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:741
+#: ../Terminal.glade.h:49
+#, fuzzy
+msgid "Palette entry 1"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:50
+#, fuzzy
+msgid "Palette entry 10"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:51
+#, fuzzy
+msgid "Palette entry 11"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:52
+#, fuzzy
+msgid "Palette entry 12"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:53
+#, fuzzy
+msgid "Palette entry 13"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:54
+#, fuzzy
+msgid "Palette entry 14"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:55
+#, fuzzy
+msgid "Palette entry 15"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:56
+#, fuzzy
+msgid "Palette entry 16"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:57
+#, fuzzy
+msgid "Palette entry 2"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:58
+#, fuzzy
+msgid "Palette entry 3"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:59
+#, fuzzy
+msgid "Palette entry 4"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:60
+#, fuzzy
+msgid "Palette entry 5"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:61
+#, fuzzy
+msgid "Palette entry 6"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:62
+#, fuzzy
+msgid "Palette entry 7"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:63
+#, fuzzy
+msgid "Palette entry 8"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:64
+#, fuzzy
+msgid "Palette entry 9"
+msgstr "Paleti kirje %d"
+
+#: ../Terminal.glade.h:65
+msgid "Replaces initial title"
+msgstr "Asendab esialgse pealkirja"
+
+#: ../Terminal.glade.h:66
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "Valige terminali tekstile värv"
+
+#: ../Terminal.glade.h:67
+msgid "Scaled"
+msgstr "Skaleeritud"
+
+#: ../Terminal.glade.h:68
+msgid "Scroll on _keystroke"
+msgstr "_Kerida klahvivajutusega"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "Ke_rida väljundit"
+
+#: ../Terminal.glade.h:70
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Kerida ridahaava_l kasutades shift+üles/alla klahve"
+
+#: ../Terminal.glade.h:71
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "_Tagasikerimine:"
+
+#: ../Terminal.glade.h:72
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>Kerimine</b>"
+
+#: ../Terminal.glade.h:73
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "Märgistage taustapildi fail"
+
+#: ../Terminal.glade.h:74
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Märgistage see valik, et uute terminalide käivitamisel sundida Terminali "
+"käivitama kesta logimiskestana. Detailsed erinevused interaktiivse- ja "
+"logimiskesta vahel leiate kesta dokumentatsioonist"
+
+#: ../Terminal.glade.h:75
+#, fuzzy
+msgid "Shortcut Keys"
+msgstr "Kiirklahv"
+
+#: ../Terminal.glade.h:76
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Täpsustab mitu rida saab kerimisriba abil tagasi minna."
+
+#: ../Terminal.glade.h:77
+#, fuzzy
+msgid "St_yle:"
+msgstr "_Stiil:"
+
+#: ../Terminal.glade.h:78
+msgid "Stretched"
+msgstr "Venitatud"
+
+#: ../Terminal.glade.h:79
+msgid "Tab Activity Indicator"
+msgstr ""
+
+#: ../Terminal.glade.h:80
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "Valige terminali tekstile värv"
+
+#: ../Terminal.glade.h:81
+msgid "Terminal Preferences"
+msgstr "Terminali eelistused"
+
+#: ../Terminal.glade.h:82
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminali rakendustele on saadaval see värvipalett:"
 
-#. setup a tooltip
-#: ../terminal/terminal-preferences-dialog.c:763
-#, c-format
-msgid "Palette entry %d"
-msgstr "Paleti kirje %d"
-
-#: ../terminal/terminal-preferences-dialog.c:775
+#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "<b>Tab activity</b>"
-msgstr "<b>Ühilduvus</b>"
+msgid "Text Selection"
+msgstr "<b>Märgistatud tekst</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:787
-msgid "T_ab activity color:"
-msgstr ""
-
-#: ../terminal/terminal-preferences-dialog.c:802
+#: ../Terminal.glade.h:84
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "Valige terminali tekstile värv"
-
-#: ../terminal/terminal-preferences-dialog.c:824
-msgid "Colors"
-msgstr "Värvid"
-
-#: ../terminal/terminal-preferences-dialog.c:842
-msgid "<b>Shortcut keys</b>"
-msgstr "<b>Kiirklahvid</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:868
-msgid "<b>Menubar access</b>"
-msgstr "<b>Menüüriba juurdepääs</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:877
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Keelata kõik me_nüüde juurdepääsuklahvid (nagu Alt+f)"
-
-#: ../terminal/terminal-preferences-dialog.c:882
-msgid "Disable m_enu shortcut key (F10 by default)"
-msgstr "K_eelata menüü kiirklahv (vaikimisi F10)"
-
-#: ../terminal/terminal-preferences-dialog.c:894
-msgid "Shortcuts"
-msgstr "Kiirklahvid"
-
-#: ../terminal/terminal-preferences-dialog.c:912
-msgid "<b>Compatibility</b>"
-msgstr "<b>Ühilduvus</b>"
-
-#: ../terminal/terminal-preferences-dialog.c:923
 msgid ""
-"These options may cause some applications to behave incorrectly. They are "
-"only here to allow you to work around certain applications and operating "
-"systems that expect different terminal behavior."
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
 msgstr ""
 "Antud valikud võivad mõningates rakendustes põhjustada vigast toimingut. "
 "Need on ainult selleks, et võimaldada teatud rakenduste ja "
 "operatsioonisüsteemide kasutamist, mis eeldavad teistmoodi toimivat "
 "terminali."
 
-#: ../terminal/terminal-preferences-dialog.c:931
-msgid "_Backspace key generates:"
-msgstr "Tagasivõtuklahv tekita_b:"
+#: ../Terminal.glade.h:88
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Selle valikuga määratakse, kas terminal kerib alati automaatselt alla koos "
+"käsuväljundiga."
 
-#: ../terminal/terminal-preferences-dialog.c:937
-#: ../terminal/terminal-preferences-dialog.c:958
-msgid "Auto-detect"
-msgstr "Automaatne tuvastamine"
-
-#: ../terminal/terminal-preferences-dialog.c:938
-#: ../terminal/terminal-preferences-dialog.c:959
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../terminal/terminal-preferences-dialog.c:939
-#: ../terminal/terminal-preferences-dialog.c:960
-msgid "Escape sequence"
-msgstr "Katkestamise järjend"
-
-#: ../terminal/terminal-preferences-dialog.c:940
-#: ../terminal/terminal-preferences-dialog.c:961
-msgid "Control-H"
-msgstr "Ctrl-H"
-
-#: ../terminal/terminal-preferences-dialog.c:952
-msgid "_Delete key generates:"
-msgstr "_Kustutamisklahv tekitab:"
-
-#: ../terminal/terminal-preferences-dialog.c:973
-msgid "<tt>$TERM</tt> setting:"
-msgstr "<tt>$TERM</tt> seade:"
-
-#: ../terminal/terminal-preferences-dialog.c:981
+#: ../Terminal.glade.h:89
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -831,537 +1315,139 @@ msgstr ""
 "süsteemidele. Kui mõningates rakendustes esineb probleeme, proovige siin "
 "xterm-color'it."
 
-#: ../terminal/terminal-preferences-dialog.c:997
-msgid "_Reset compatibility options to defaults"
+#: ../Terminal.glade.h:90
+#, fuzzy
+msgid "Title"
+msgstr "Paanitud"
+
+#: ../Terminal.glade.h:91
+#, fuzzy
+msgid "Titled"
+msgstr "Paanitud"
+
+#: ../Terminal.glade.h:92
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "Läbipaistev taust"
+
+#: ../Terminal.glade.h:93
+msgid "Transparent background"
+msgstr "Läbipaistev taust"
+
+#: ../Terminal.glade.h:94
+msgid "Use _default color"
+msgstr "Kasuta_da vaikimisi värvi"
+
+#: ../Terminal.glade.h:95
+msgid "Use a custom text selection background color"
+msgstr "Kasutada märgistatud teksti kohandatud taustavärvi"
+
+#: ../Terminal.glade.h:96
+#, fuzzy
+msgid "Use c_ustom color:"
+msgstr "_Kasutada kohandatud värvi"
+
+#: ../Terminal.glade.h:97
+msgid "Use the default text selection background color"
+msgstr "Kasutada märgistatud teksti vaikimisi taustavärvi"
+
+#: ../Terminal.glade.h:98
+#, fuzzy
+msgid "_Appearance"
+msgstr "Välimus"
+
+#: ../Terminal.glade.h:99
+msgid "_Background color:"
+msgstr "_Taustavärv:"
+
+#: ../Terminal.glade.h:100
+msgid "_Backspace key generates:"
+msgstr "Tagasivõtuklahv tekita_b:"
+
+#: ../Terminal.glade.h:101
+#, fuzzy
+msgid "_Colors"
+msgstr "Värvid"
+
+#: ../Terminal.glade.h:102
+msgid "_Delete key generates:"
+msgstr "_Kustutamisklahv tekitab:"
+
+#: ../Terminal.glade.h:103
+msgid "_Dynamically-set title:"
+msgstr "_Dünaamiliselt määratud pealkiri:"
+
+#: ../Terminal.glade.h:104
+msgid "_File:"
+msgstr "_Fail:"
+
+#: ../Terminal.glade.h:105
+#, fuzzy
+msgid "_General"
+msgstr "Üldine"
+
+#: ../Terminal.glade.h:106
+msgid "_Initial title:"
+msgstr "Es_ialgne pealkiri:"
+
+#: ../Terminal.glade.h:107
+#, fuzzy
+msgid "_Reset comparibility options to defaults"
 msgstr "_Lähtestada ühilduvusvalikud"
 
-#: ../terminal/terminal-preferences-dialog.c:1007
-msgid "<b>Double click</b>"
-msgstr "<b>Topeltklõps</b>"
+#: ../Terminal.glade.h:108
+msgid "_Run command as login shell"
+msgstr "_Käivitada käsk logimiskestana"
 
-#: ../terminal/terminal-preferences-dialog.c:1016
-msgid "Consider the following characters part of a word when double clicking:"
-msgstr "Topelklõpsamisel arvestada järgnevad tähemärgid sõnaosadeks:"
+#: ../Terminal.glade.h:109
+msgid "_Scrollbar is:"
+msgstr "Kerimi_sriba on:"
 
-#: ../terminal/terminal-preferences-dialog.c:1036
-msgid "<b>Tab activity indicator</b>"
-msgstr ""
+#: ../Terminal.glade.h:110
+#, fuzzy
+msgid "_Shortcuts"
+msgstr "Kiirklahvid"
 
-#: ../terminal/terminal-preferences-dialog.c:1050
-msgid "Reset tab activity indicator after"
-msgstr ""
+#: ../Terminal.glade.h:111
+msgid "_Text and cursor color:"
+msgstr "_Teksti ja kursori värv:"
 
-#: ../terminal/terminal-preferences-dialog.c:1065
+#: ../Terminal.glade.h:112
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "Käs_u käivitamisel uuendada utmp/wtmp kirjeid"
+
+#: ../Terminal.glade.h:113
 msgid "seconds"
 msgstr ""
 
-#: ../terminal/terminal-preferences-dialog.c:1078
-msgid "Advanced"
-msgstr "Täpsem"
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>Pealkiri</b>"
 
-#. allocate the file chooser window
-#: ../terminal/terminal-preferences-dialog.c:1137
-msgid "Select background image file"
-msgstr "Märgistage taustapildi fail"
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr "Terminalis töötav käsk võib dünaamiliselt uue pealkirja määrata."
 
-#: ../terminal/terminal-preferences-dialog.c:1150
-msgid "All Files"
-msgstr "Kõik failid"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>Font</b>"
 
-#: ../terminal/terminal-preferences-dialog.c:1156
-msgid "Image Files"
-msgstr "Pildifailid"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>Taust</b>"
 
-#: ../terminal/terminal-preferences.c:306
-#: ../terminal/terminal-preferences.c:307
-msgid "Open Tab"
-msgstr "Avada kaart"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "Läbipaistev varjund või pilttaust:"
 
-#: ../terminal/terminal-preferences.c:317
-#: ../terminal/terminal-preferences.c:318
-msgid "Open Terminal"
-msgstr "Avada terminal"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>Puudub</i></small>"
 
-#: ../terminal/terminal-preferences.c:328
-#: ../terminal/terminal-preferences.c:329
-msgid "Detach Tab"
-msgstr "Lahutada kaart"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>Suurim</i></small>"
 
-#: ../terminal/terminal-preferences.c:339
-#: ../terminal/terminal-preferences.c:340
-msgid "Close Tab"
-msgstr "Sulgeda kaart"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>Esi- ja taustaplaan</b>"
 
-#: ../terminal/terminal-preferences.c:350
-#: ../terminal/terminal-preferences.c:351
-msgid "Close Window"
-msgstr "Sulgeda aken"
+#, fuzzy
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>Ühilduvus</b>"
 
-#: ../terminal/terminal-preferences.c:361
-#: ../terminal/terminal-preferences.c:362
-msgid "Copy"
-msgstr "Kopeerida"
-
-#: ../terminal/terminal-preferences.c:372
-#: ../terminal/terminal-preferences.c:373
-msgid "Paste"
-msgstr "Asetada"
-
-#: ../terminal/terminal-preferences.c:383
-#: ../terminal/terminal-preferences.c:384
-msgid "Paste Selection"
-msgstr "Asetada märgistus"
-
-#: ../terminal/terminal-preferences.c:394
-#: ../terminal/terminal-preferences.c:395
-msgid "Preferences"
-msgstr "Eelistused"
-
-#: ../terminal/terminal-preferences.c:405
-#: ../terminal/terminal-preferences.c:406
-msgid "Show menubar"
-msgstr "Näidata menüüriba"
-
-#: ../terminal/terminal-preferences.c:416
-#: ../terminal/terminal-preferences.c:417
-msgid "Show toolbars"
-msgstr "Näidata tööriistaribasid"
-
-#: ../terminal/terminal-preferences.c:427
-#: ../terminal/terminal-preferences.c:428
-msgid "Show borders"
-msgstr "Näidata raame"
-
-#: ../terminal/terminal-preferences.c:438
-#: ../terminal/terminal-preferences.c:439
-msgid "Fullscreen"
-msgstr "Üleekraanirežiim"
-
-#: ../terminal/terminal-preferences.c:449
-#: ../terminal/terminal-preferences.c:450
-msgid "Set Title"
-msgstr "Määrata pealkiri"
-
-#: ../terminal/terminal-preferences.c:460
-#: ../terminal/terminal-preferences.c:461
-msgid "Reset"
-msgstr "Lähtestada"
-
-#: ../terminal/terminal-preferences.c:471
-#: ../terminal/terminal-preferences.c:472
-msgid "Reset and Clear"
-msgstr "Lähtestada ja puhastada"
-
-#: ../terminal/terminal-preferences.c:482
-#: ../terminal/terminal-preferences.c:483
-msgid "Previous Tab"
-msgstr "Eelmine kaart"
-
-#: ../terminal/terminal-preferences.c:493
-#: ../terminal/terminal-preferences.c:494
-msgid "Next Tab"
-msgstr "Järgmine kaart"
-
-#: ../terminal/terminal-preferences.c:504
-#: ../terminal/terminal-preferences.c:505
-msgid "Switch to Tab 1"
-msgstr "Lülituda 1. kaardile"
-
-#: ../terminal/terminal-preferences.c:515
-#: ../terminal/terminal-preferences.c:516
-msgid "Switch to Tab 2"
-msgstr "Lülituda 2. kaardile"
-
-#: ../terminal/terminal-preferences.c:526
-#: ../terminal/terminal-preferences.c:527
-msgid "Switch to Tab 3"
-msgstr "Lülituda 3. kaardile"
-
-#: ../terminal/terminal-preferences.c:537
-#: ../terminal/terminal-preferences.c:538
-msgid "Switch to Tab 4"
-msgstr "Lülituda 4. kaardile"
-
-#: ../terminal/terminal-preferences.c:548
-#: ../terminal/terminal-preferences.c:549
-msgid "Switch to Tab 5"
-msgstr "Lülituda 5. kaardile"
-
-#: ../terminal/terminal-preferences.c:559
-#: ../terminal/terminal-preferences.c:560
-msgid "Switch to Tab 6"
-msgstr "Lülituda 6. kaardile"
-
-#: ../terminal/terminal-preferences.c:570
-#: ../terminal/terminal-preferences.c:571
-msgid "Switch to Tab 7"
-msgstr "Lülituda 7. kaardile"
-
-#: ../terminal/terminal-preferences.c:581
-#: ../terminal/terminal-preferences.c:582
-msgid "Switch to Tab 8"
-msgstr "Lülituda 8. kaardile"
-
-#: ../terminal/terminal-preferences.c:592
-#: ../terminal/terminal-preferences.c:593
-msgid "Switch to Tab 9"
-msgstr "Lülituda 9. kaardile"
-
-#: ../terminal/terminal-preferences.c:603
-#: ../terminal/terminal-preferences.c:604
-msgid "Contents"
-msgstr "Sisukord"
-
-#: ../terminal/terminal-screen.c:459
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Sinu logimiskesta ei õnnestunud tuvastada."
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1015
-msgid "Failed to execute child"
-msgstr "Alama käivitamine ebaõnnestus"
-
-#: ../terminal/terminal-screen.c:1251
-msgid "Untitled"
-msgstr "Pealkirjastamata"
-
-#: ../terminal/terminal-shortcut-editor.c:90
-msgid "File"
-msgstr "Fail"
-
-#: ../terminal/terminal-shortcut-editor.c:101
-msgid "Edit"
-msgstr "Toimetada"
-
-#: ../terminal/terminal-shortcut-editor.c:111
-msgid "View"
-msgstr "Vaade"
-
-#: ../terminal/terminal-shortcut-editor.c:130
-msgid "Go"
-msgstr "Liikuda"
-
-#: ../terminal/terminal-shortcut-editor.c:147
-msgid "Help"
-msgstr "Abi"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Action"
-msgstr "Tegevus"
-
-#: ../terminal/terminal-shortcut-editor.c:235
-msgid "Shortcut key"
-msgstr "Kiirklahv"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Compose shortcut"
-msgstr "Koostada otsetee"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Koostada otsetee:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Klaviatuuri omandamine ebaõnnestus"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Mõni teine rakendus on juba saanud võimu sinu klaviatuuri üle."
-
-#: ../terminal/terminal-tab-header.c:205
-msgid "Close this tab"
-msgstr "Sulgeda see kaart"
-
-#: ../terminal/terminal-tab-header.c:342 ../terminal/terminal-window.c:219
-msgid "_Detach Tab"
-msgstr "Lahuta_da kaart"
-
-#: ../terminal/terminal-tab-header.c:347 ../terminal/terminal-window.c:220
-msgid "C_lose Tab"
-msgstr "Su_lgeda kaart"
-
-#: ../terminal/terminal-toolbars-view.c:133
-msgid "Toolbar Editor"
-msgstr "Tööriistariba toimetaja"
-
-#: ../terminal/terminal-widget.c:301
-msgid "Copy Email Address"
-msgstr "Kopeerida e-posti aadress"
-
-#: ../terminal/terminal-widget.c:302
-msgid "Compose Email"
-msgstr "Koostada e-kiri"
-
-#: ../terminal/terminal-widget.c:306
-msgid "Copy Link Address"
-msgstr "Kopeerida viida aadress"
-
-#: ../terminal/terminal-widget.c:307
-msgid "Open Link"
-msgstr "Avada viit"
-
-#: ../terminal/terminal-widget.c:462
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"text/plain liiki märgistuse asetamine terminali ebaõnnestus: Vale vorming (%"
-"d) või pikkus (%d)\n"
-
-#: ../terminal/terminal-widget.c:478
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Mozilla URL-i asetamine terminali ebaõnnestus: Vale vorming (%d) või pikkus "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:504
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"URI-de loendi asetamine terminali ebaõnnestus: Vale vorming (%d) või pikkus "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:549
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Saadi valed värviandmed: Vale vorming (%d) või pikkus (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:673
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "URL-i „%s” avamine ebaõnnestus"
-
-#: ../terminal/terminal-window.c:216
-msgid "_File"
-msgstr "_Fail"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open _Tab"
-msgstr "Avada kaar_t"
-
-#: ../terminal/terminal-window.c:217
-msgid "Open a new terminal tab"
-msgstr "Avada uus terminali kaart"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open T_erminal"
-msgstr "Avada t_erminal"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open a new terminal window"
-msgstr "Avada uus terminali kaart"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open a new window for the current terminal tab"
-msgstr "Avada käesolevale terminali kaardile uus aken"
-
-#: ../terminal/terminal-window.c:220
-msgid "Close the current terminal tab"
-msgstr "Sulgeda käesolev terminali kaart"
-
-#: ../terminal/terminal-window.c:221
-msgid "_Close Window"
-msgstr "_Sulgeda aken"
-
-#: ../terminal/terminal-window.c:221
-msgid "Close the terminal window"
-msgstr "Sulgeda terminali aken"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Edit"
-msgstr "Toim_etada"
-
-#: ../terminal/terminal-window.c:223
-msgid "_Copy"
-msgstr "_Kopeerida"
-
-#: ../terminal/terminal-window.c:223
-msgid "Copy to clipboard"
-msgstr "Kopeerida lõikepuhvrisse"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Paste"
-msgstr "_Asetada"
-
-#: ../terminal/terminal-window.c:224
-msgid "Paste from clipboard"
-msgstr "Asetada lõikepuhvrist"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste _Selection"
-msgstr "A_setada märgistus"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from primary selection"
-msgstr "Asetada peamisest märgistusest"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Toolbars..."
-msgstr "_Tööriistaribad..."
-
-#: ../terminal/terminal-window.c:226
-msgid "Customize the toolbars"
-msgstr "Kohandada tööriistaribasid"
-
-#: ../terminal/terminal-window.c:227
-msgid "Pr_eferences..."
-msgstr "_Eelistused..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Open the Terminal preferences dialog"
-msgstr "Avada Terminali eelistuste dialoog"
-
-#: ../terminal/terminal-window.c:228
-msgid "_View"
-msgstr "_Vaade"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Terminal"
-msgstr "_Terminal"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Set Title..."
-msgstr "_Määrata pealkiri..."
-
-#: ../terminal/terminal-window.c:230
-msgid "Set a custom title for the current tab"
-msgstr "Määrata käesolevale kaardile kohandatud pealkiri"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Reset"
-msgstr "_Lähtestada"
-
-#: ../terminal/terminal-window.c:232
-msgid "Reset and C_lear"
-msgstr "_Lähtestada ja puhastada"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Go"
-msgstr "_Liikuda"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Previous Tab"
-msgstr "_Eelmine kaart"
-
-#: ../terminal/terminal-window.c:234
-msgid "Switch to previous tab"
-msgstr "Lülituda eelmisele kaardile"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Next Tab"
-msgstr "Järgmi_ne kaart"
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to next tab"
-msgstr "Lülituda järgmisele kaardile"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Help"
-msgstr "_Abi"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Contents"
-msgstr "_Sisukord"
-
-#: ../terminal/terminal-window.c:237
-msgid "Display help contents"
-msgstr "Näidata abi sisukorda"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Report a bug"
-msgstr "_Teavitada veast"
-
-#: ../terminal/terminal-window.c:238
-msgid "Report a bug in Terminal"
-msgstr "Teavitada Terminali veast"
-
-#: ../terminal/terminal-window.c:239
-msgid "_About"
-msgstr "Te_ave"
-
-#: ../terminal/terminal-window.c:239
-msgid "Display information about Terminal"
-msgstr "Näidata Terminali kohta teavet"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Input Methods"
-msgstr "S_isendmeetodid"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show _Menubar"
-msgstr "Näidata _menüüriba"
-
-#: ../terminal/terminal-window.c:245
-msgid "Show/hide the menubar"
-msgstr "Näidata/peita menüüriba"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show _Toolbars"
-msgstr "Näida_ta tööriistaribasid"
-
-#: ../terminal/terminal-window.c:246
-msgid "Show/hide the toolbars"
-msgstr "Näidata/peita tööriistaribasid"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show Window _Borders"
-msgstr "_Näidata akende raame"
-
-#: ../terminal/terminal-window.c:247
-msgid "Show/hide the window decorations"
-msgstr "Näidata/peita aknadekoratsioone"
-
-#: ../terminal/terminal-window.c:248
-msgid "_Fullscreen"
-msgstr "_Üleekraanirežiim"
-
-#: ../terminal/terminal-window.c:248
-msgid "Toggle fullscreen mode"
-msgstr "Lülitada üleekraanirežiim sisse-välja"
-
-#: ../terminal/terminal-window.c:534
-msgid "Warning"
-msgstr "Hoiatus"
-
-#: ../terminal/terminal-window.c:545
-msgid "Close all tabs"
-msgstr "Sulgeda kõik kaardid"
-
-#: ../terminal/terminal-window.c:564
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Selles aknas on %d avatud kaarti. Akna\n"
-" sulgemisel suletakse ka kõik kaardid."
-
-#: ../terminal/terminal-window.c:567
-msgid "Close all tabs?"
-msgstr "Sulgeda kõik kaardid?"
-
-#: ../terminal/terminal-window.c:580
-msgid "Do _not ask me again"
-msgstr "_Mitte uuesti küsida"
-
-#: ../terminal/terminal-window.c:1525
-msgid "Window Title|Set Title"
-msgstr "Window Title|Määrata pealkiri"
-
-#: ../terminal/terminal-window.c:1539
-msgid "<b>Title:</b>"
-msgstr "<b>Pealkiri:</b>"
-
-#: ../terminal/terminal-window.c:1553
-msgid "Enter the title for the current terminal tab"
-msgstr "Sisestage käesoleva terminalikaardi pealkiri"
-
-#: ../Terminal.desktop.in.h:2
-msgid "Terminal Emulator"
-msgstr "Terminaliemulaator"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>Kiirklahvid</b>"
