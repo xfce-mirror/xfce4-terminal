@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <interface>
-  <requires lib="gtk+" version="2.16"/>
+  <requires lib="gtk+" version="2.14"/>
   <!-- interface-requires libxfce4ui 4.5 -->
   <!-- interface-naming-policy project-wide -->
   <object class="GtkListStore" id="liststore1">
@@ -798,6 +798,10 @@
                                 <property name="label" translatable="yes">_Text and cursor color:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">color-foreground</property>
+                                <accessibility>
+                                  <relation type="label-for" target="color-foreground"/>
+                                  <relation type="label-for" target="color-cursor"/>
+                                </accessibility>
                               </object>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -844,6 +848,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="title" translatable="yes">Choose tab activity color</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="tab-activity-color-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -867,6 +877,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="title" translatable="yes">Choose terminal background color</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-background-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                               </object>
@@ -894,6 +910,12 @@
                                         <property name="receives_default">True</property>
                                         <property name="title" translatable="yes">Choose terminal text color</property>
                                         <property name="color">#000000000000</property>
+                                        <child internal-child="accessible">
+                                          <object class="AtkObject" id="color-foreground-atkobject">
+                                            <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                            <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="position">0</property>
@@ -906,6 +928,12 @@
                                         <property name="receives_default">True</property>
                                         <property name="title" translatable="yes">Choose terminal cursor color</property>
                                         <property name="color">#000000000000</property>
+                                        <child internal-child="accessible">
+                                          <object class="AtkObject" id="color-cursor-atkobject">
+                                            <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                            <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                          </object>
+                                        </child>
                                       </object>
                                       <packing>
                                         <property name="position">1</property>
@@ -996,6 +1024,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="title" translatable="yes">Choose terminal text selection background color</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-selection-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1065,6 +1099,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 1</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette1-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                 </child>
                                 <child>
@@ -1074,6 +1114,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 2</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette2-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">1</property>
@@ -1087,6 +1133,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 12</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette12-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">3</property>
@@ -1102,6 +1154,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 9</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette9-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="top_attach">1</property>
@@ -1115,6 +1173,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 10</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette10-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">1</property>
@@ -1130,6 +1194,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 11</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette11-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1145,6 +1215,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 3</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette3-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">2</property>
@@ -1158,6 +1234,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 4</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette4-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">3</property>
@@ -1171,6 +1253,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 5</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette5-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">4</property>
@@ -1184,6 +1272,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 13</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette13-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">4</property>
@@ -1199,6 +1293,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 14</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette14-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">5</property>
@@ -1214,6 +1314,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 6</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette6-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">5</property>
@@ -1227,6 +1333,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 7</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette7-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">6</property>
@@ -1240,6 +1352,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 15</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette15-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">6</property>
@@ -1255,6 +1373,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 16</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette16-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">7</property>
@@ -1270,6 +1394,12 @@
                                     <property name="receives_default">True</property>
                                     <property name="tooltip_text" translatable="yes">Palette entry 8</property>
                                     <property name="color">#000000000000</property>
+                                    <child internal-child="accessible">
+                                      <object class="AtkObject" id="color-palette8-atkobject">
+                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                      </object>
+                                    </child>
                                   </object>
                                   <packing>
                                     <property name="left_attach">7</property>
@@ -1765,7 +1895,7 @@ when double clicking:</property>
             <property name="layout_style">end</property>
             <child>
               <object class="GtkButton" id="button-help">
-                <property name="label" translatable="yes">gtk-help</property>
+                <property name="label">gtk-help</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1780,7 +1910,7 @@ when double clicking:</property>
             </child>
             <child>
               <object class="GtkButton" id="button-close">
-                <property name="label" translatable="yes">gtk-close</property>
+                <property name="label">gtk-close</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -1845,8 +1975,8 @@ when double clicking:</property>
   </object>
   <object class="GtkSizeGroup" id="sizegroup1">
     <widgets>
-      <widget name="opacity-label"/>
       <widget name="style-label"/>
+      <widget name="opacity-label"/>
     </widgets>
   </object>
 </interface>

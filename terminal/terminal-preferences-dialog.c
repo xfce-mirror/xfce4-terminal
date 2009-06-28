@@ -25,7 +25,6 @@
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
-#include <terminal/terminal-gtk-extensions.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
 #include <terminal/terminal-stock.h>

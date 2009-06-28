@@ -23,7 +23,6 @@
 #include <config.h>
 #endif
 
-#include <terminal/terminal-gtk-extensions.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-stock.h>
 #include <terminal/terminal-tab-header.h>
