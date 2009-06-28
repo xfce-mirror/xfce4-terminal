@@ -385,7 +385,7 @@ terminal_window_init (TerminalWindow *window)
   /* allocate the notebook for the terminal screens */
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
                                    "homogeneous", TRUE,
-                                   "scrollable", TRUE,
+                                   "scrollable", FALSE,
                                    "show-border", FALSE,
                                    "show-tabs", bval,
                                    "tab-hborder", 0,
@@ -1693,8 +1693,8 @@ void
 terminal_window_add (TerminalWindow *window,
                      TerminalScreen *screen)
 {
-  GtkWidget      *header;
-  gint            page;
+  GtkWidget  *header;
+  gint        page;
 
   _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));

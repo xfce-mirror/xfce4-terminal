@@ -166,10 +166,6 @@ terminal_tab_header_class_init (TerminalTabHeaderClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
-
-  /* register custom icon size for the tab close buttons */
-  if (gtk_icon_size_from_name ("terminal-icon-size-tab") == GTK_ICON_SIZE_INVALID)
-    gtk_icon_size_register ("terminal-icon-size-tab", 14, 14);
 }
 
 
@@ -179,6 +175,7 @@ terminal_tab_header_init (TerminalTabHeader *header)
 {
   GtkWidget *button;
   GtkWidget *image;
+  GtkWidget *alignment;
 
   header->preferences = terminal_preferences_get ();
 
@@ -186,25 +183,29 @@ terminal_tab_header_init (TerminalTabHeader *header)
 
   gtk_widget_push_composite_child ();
 
-  header->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, NULL);
-  GTK_WIDGET_SET_FLAGS (header->ebox, GTK_NO_WINDOW);
+  header->ebox = g_object_new (GTK_TYPE_EVENT_BOX, "border-width", 2, "visible-window", FALSE, NULL);
   g_signal_connect (G_OBJECT (header->ebox), "button-press-event", G_CALLBACK (terminal_tab_header_button_press), header);
   gtk_box_pack_start (GTK_BOX (header), header->ebox, TRUE, TRUE, 0);
   gtk_widget_show (header->ebox);
 
-  header->label = g_object_new (GTK_TYPE_LABEL, "selectable", FALSE, "xalign", 0.0, NULL);
+  header->label = g_object_new (GTK_TYPE_LABEL, "xalign", 0.0, NULL);
   gtk_container_add (GTK_CONTAINER (header->ebox), header->label);
   gtk_widget_show (header->label);
 
+  alignment = gtk_alignment_new (0.50, 1.00, 0.00, 0.00);
+  gtk_box_pack_start (GTK_BOX (header), alignment, FALSE, FALSE, 0);
+  gtk_widget_show (alignment);
+
   button = gtk_button_new ();
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-  gtk_container_set_border_width (GTK_CONTAINER (button), 0);
+  GTK_WIDGET_UNSET_FLAGS (button, GTK_CAN_DEFAULT | GTK_CAN_FOCUS);
+  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
   g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (terminal_tab_header_close_tab), header);
-  gtk_box_pack_start (GTK_BOX (header), button, FALSE, FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (alignment), button);
   exo_binding_new (G_OBJECT (header->preferences), "misc-tab-close-buttons", G_OBJECT (button), "visible");
 
-  image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, gtk_icon_size_from_name ("terminal-icon-size-tab"));
+  image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), image);
   gtk_widget_show (image);
 
