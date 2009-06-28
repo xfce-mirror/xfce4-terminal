@@ -20,7 +20,7 @@
       <year>2007</year>
       <year>2008</year>
       <holder>os-cillation</holder>
-    </copyright><copyright><year>2005, 2006.</year><holder>Daichi Kawahata (daichi@xfce.org)</holder></copyright><copyright><year>2009.</year><holder>Masato Hashimoto (cabezon.hashimoto@gmail.com)</holder></copyright>
+    </copyright><copyright><year>2005, 2006.</year><holder>Daichi Kawahata (daichi@xfce.org)</holder></copyright><copyright><year>2009.</year><holder>Masato Hashimoto (hashimo@xfce.org)</holder></copyright>
 
     <legalnotice id="legalnotice">
       <para>フリーソフトウェア財団が公表する GNU フリー文書利用許諾契約書の第1.1版、あるいはそれ以降のいずれかの版の条件下において、この文書の複製、配布および/または変更が許可されます。変更出来ない箇所、表紙文および裏表紙文があってはいけません。この利用許諾契約書の全文は<ulink type="http" url="http://www.gnu.org/">フリーソフトウェア財団</ulink>から取得する事ができます。</para>
@@ -972,6 +972,7 @@ MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
 MiscTabCloseButtons=TRUE
+MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE</programlisting>
 
@@ -1042,6 +1043,17 @@ MiscHighlightUrls=TRUE</programlisting>
         </varlistentry>
 
         <varlistentry>
+          <term><varname>MiscTabCloseMiddleClick</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether @PACKAGE_NAME@ will close a terminal tab when
+              the user middle-clicks the tab title. Can be either <literal>TRUE</literal>
+              (the default) or <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term><varname>MiscTabPosition</varname></term>
           <listitem>
             <para>どこにタブヘッダを表示するかを指定します。これは <literal>GTK_POS_TOP</literal> (デフォルト)、<literal>GTK_POS_LEFT</literal>, <literal>GTK_POS_BOTTOM</literal> あるいは <literal>GTK_POS_RIGHT</literal> のいずれかになります。ここに <literal>GTK_POS_LEFT</literal> または <literal>GTK_POS_RIGHT</literal> を指定すると、タブヘッダは横ではなく縦に表示されます。<literal>GTK_POS_LEFT</literal> および <literal>GTK_POS_RIGHT</literal> に対しては <varname>MiscTabCloseButtons</varname> を無効にすることを推奨します。</para>
@@ -1100,7 +1112,7 @@ MiscHighlightUrls=TRUE</programlisting>
   <sect1 id="copyright">
     <title>@PACKAGE_NAME@ について</title>
 
-    <para>@PACKAGE_NAME@ は Benedikt Meurer (<email>benny@xfce.org</email>) が製作しました。より詳しいは <ulink url="http://www.os-cillation.com/" type="http">os-cillation のウェブサイト</ulink>を参照してください。</para>
+    <para>@PACKAGE_NAME@ は Benedikt Meurer (<email>benny@xfce.org</email>) が製作しました。より詳しい情報は <ulink url="http://www.os-cillation.com/" type="http">os-cillation のウェブサイト</ulink>を参照してください。</para>
 
     <para>Benedikt Meurer (<email>benny@xfce.org</email>) および Andrew Conkling (<email>andrewski@fr.st</email>) がこの文書を製作しました。最新版は <ulink type="http" url="http://terminal.os-cillation.com/">Terminal のウェブサイト</ulink>にあります。</para>
 
