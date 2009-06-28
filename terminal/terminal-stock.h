@@ -26,19 +26,12 @@ G_BEGIN_DECLS
 
 #define TERMINAL_STOCK_CLOSETAB     "terminal-closetab"
 #define TERMINAL_STOCK_CLOSEWINDOW  "terminal-closewindow"
-#define TERMINAL_STOCK_FULLSCREEN   "terminal-fullscreen"
-#define TERMINAL_STOCK_GENERAL      "terminal-general"
 #define TERMINAL_STOCK_NEWTAB       "terminal-newtab"
 #define TERMINAL_STOCK_NEWWINDOW    "terminal-newwindow"
 #define TERMINAL_STOCK_REPORTBUG    "terminal-reportbug"
 #define TERMINAL_STOCK_SHOWBORDERS  "terminal-showborders"
 #define TERMINAL_STOCK_SHOWMENU     "terminal-showmenu"
-
-#define TERMINAL_STOCK_ADVANCED     "terminal-advanced"
-#define TERMINAL_STOCK_APPEARANCE   "terminal-appearance"
-#define TERMINAL_STOCK_COLORS       "terminal-colors"
 #define TERMINAL_STOCK_COMPOSE      "terminal-compose"
-#define TERMINAL_STOCK_SHORTCUTS    "terminal-shortcuts"
 
 void terminal_stock_init (void);
 
