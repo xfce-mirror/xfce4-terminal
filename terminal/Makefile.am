@@ -73,6 +73,7 @@ Terminal_CFLAGS =							\
 	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
 	$(LIBX11_CFLAGS)						\
 	$(VTE_CFLAGS)							\
+	$(LIBXFCE4UI_CFLAGS)						\
 	$(PLATFORM_CFLAGS)
 
 Terminal_LDFLAGS =							\
@@ -85,6 +86,7 @@ Terminal_LDFLAGS =							\
 	$(LIBX11_LDFLAGS)						\
 	$(LIBX11_LIBS)							\
 	$(VTE_LIBS)							\
+	$(LIBXFCE4UI_LIBS)						\
 	$(TERMINAL_LIBS)
 
 # install symlink to 'terminal'

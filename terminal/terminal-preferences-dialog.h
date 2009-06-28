@@ -23,6 +23,7 @@
 #define __TERMINAL_PREFERENCES_DIALOG_H__
 
 #include <exo/exo.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-preferences.h>
 
@@ -40,17 +41,15 @@ typedef struct _TerminalPreferencesDialog      TerminalPreferencesDialog;
 
 struct _TerminalPreferencesDialogClass
 {
-  GtkDialogClass  __parent__;
+  GtkBuilderClass __parent__;
 };
 
 struct _TerminalPreferencesDialog
 {
-  GtkDialog            __parent__;
+  GtkBuilder           __parent__;
 
   TerminalPreferences *preferences;
-
-  GtkWidget           *icon_bar;
-  GtkWidget           *notebook;
+  guint                signal_id;
 };
 
 GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;

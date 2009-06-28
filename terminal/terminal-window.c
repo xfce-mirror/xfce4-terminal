@@ -1370,8 +1370,11 @@ terminal_window_action_prefs (GtkAction      *action,
     {
       /* allocate a new preferences dialog instance */
       window->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
-      g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog), (gpointer) &window->preferences_dialog);
-      gtk_widget_show (window->preferences_dialog);
+      if (G_LIKELY (window->preferences_dialog != NULL))
+        {
+          g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog), (gpointer) &window->preferences_dialog);
+          gtk_widget_show (window->preferences_dialog);
+        }
     }
 }
 

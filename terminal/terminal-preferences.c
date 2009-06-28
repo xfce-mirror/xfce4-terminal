@@ -627,7 +627,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("background-image-file",
                                                         "background-image-file",
                                                         "BackgroundImageFile",
-                                                        "",
+                                                        NULL,
                                                         EXO_PARAM_READWRITE));
 
   /**
