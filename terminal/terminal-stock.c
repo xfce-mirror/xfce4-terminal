@@ -65,6 +65,7 @@ static const TerminalStockIcon terminal_stock_icons[] =
 void
 terminal_stock_init (void)
 {
+  GtkIconTheme   *icon_theme;
   GtkIconFactory *icon_factory;
   GtkIconSource  *icon_source;
   GtkIconSet     *icon_set;
@@ -76,6 +77,9 @@ terminal_stock_init (void)
 
   /* we try to avoid allocating multiple icon sources */
   icon_source = gtk_icon_source_new ();
+
+  /* get default icon theme */
+  icon_theme = gtk_icon_theme_get_default ();
 
   /* register our stock icons */
   for (n = 0; n < G_N_ELEMENTS (terminal_stock_icons); ++n)
@@ -90,7 +94,9 @@ terminal_stock_init (void)
       gtk_icon_set_add_source (icon_set, icon_source);
 
       /* add an alternative stock name if there is one */
-      if (terminal_stock_icons[n].stock != NULL)
+      if (terminal_stock_icons[n].stock != NULL
+          && gtk_icon_theme_has_icon (icon_theme,
+                 terminal_stock_icons[n].stock))
         {
           gtk_icon_source_set_icon_name (icon_source,
               terminal_stock_icons[n].stock);
