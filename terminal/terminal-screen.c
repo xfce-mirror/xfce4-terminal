@@ -307,7 +307,6 @@ terminal_screen_init (TerminalScreen *screen)
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
   terminal_screen_update_binding_delete (screen);
-  terminal_screen_update_colors (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
@@ -320,9 +319,8 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_timer_background (TERMINAL_SCREEN (screen));
 
   /* Last, connect contents-changed to avoid a race with updates above */
-  g_object_connect (G_OBJECT (screen->terminal),
-                    "signal::contents-changed", G_CALLBACK (terminal_screen_vte_window_contents_changed), screen,
-                    NULL);
+  g_signal_connect (G_OBJECT (screen->terminal), "contents-changed",
+      G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
 
 }
 
@@ -606,7 +604,7 @@ terminal_screen_update_binding_backspace (TerminalScreen *screen)
       break;
 
     default:
-      g_assert_not_reached ();
+      _terminal_assert_not_reached ();
     }
 }
 
@@ -638,9 +636,11 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
       break;
 
     default:
-      g_assert_not_reached ();
+      _terminal_assert_not_reached ();
     }
 }
+
+
 
 static void
 terminal_screen_update_colors (TerminalScreen *screen)
@@ -657,8 +657,6 @@ terminal_screen_update_colors (TerminalScreen *screen)
   query_color (screen->preferences, "color-background", &bg);
   query_color (screen->preferences, "color-foreground", &fg);
   query_color (screen->preferences, "color-cursor", &cursor);
-  query_color (screen->preferences, "color-selection", &selection);
-  g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &selection_use_default, NULL);
 
   for (n = 0; n < 16; ++n)
     {
@@ -669,6 +667,10 @@ terminal_screen_update_colors (TerminalScreen *screen)
   vte_terminal_set_colors (VTE_TERMINAL (screen->terminal), &fg, &bg, palette, 16);
   vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), &bg);
   vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), &cursor);
+
+  g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &selection_use_default, NULL);
+  if (!selection_use_default)
+    query_color (screen->preferences, "color-selection", &selection);
   vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
 }
 
@@ -1296,7 +1298,7 @@ terminal_screen_get_title (TerminalScreen *screen)
       break;
 
     default:
-      g_assert_not_reached ();
+      _terminal_assert_not_reached ();
       title = NULL;
     }
 
@@ -1305,6 +1307,8 @@ terminal_screen_get_title (TerminalScreen *screen)
 
   return title;
 }
+
+
 
 /**
  * terminal_screen_get_working_directory:

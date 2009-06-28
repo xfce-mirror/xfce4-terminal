@@ -29,13 +29,14 @@ G_BEGIN_DECLS
 typedef struct _TerminalOptions    TerminalOptions;
 typedef struct _TerminalTabAttr    TerminalTabAttr;
 typedef struct _TerminalWindowAttr TerminalWindowAttr;
+typedef enum   _TerminalVisibility TerminalVisibility;
 
-typedef enum /*< enum,prefix=TERMINAL_VISIBILITY >*/
+enum _TerminalVisibility
 {
   TERMINAL_VISIBILITY_DEFAULT,
   TERMINAL_VISIBILITY_SHOW,
-  TERMINAL_VISIBILITY_HIDE,
-} TerminalVisibility;
+  TERMINAL_VISIBILITY_HIDE
+};
 
 struct _TerminalOptions
 {
@@ -67,11 +68,11 @@ struct _TerminalWindowAttr
   gboolean             maximize;
 };
 
-gboolean  terminal_options_parse    (gint                 argc,
-                                     gchar              **argv,
-                                     GList              **attrs_return,
-                                     TerminalOptions    **options_return,
-                                     GError             **error);
+gboolean           terminal_options_parse    (gint                 argc,
+                                              gchar              **argv,
+                                              GList              **attrs_return,
+                                              TerminalOptions    **options_return,
+                                              GError             **error);
 
 void                terminal_options_free     (TerminalOptions     *options);
 

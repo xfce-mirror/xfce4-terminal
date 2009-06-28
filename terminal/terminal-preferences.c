@@ -1358,9 +1358,16 @@ terminal_preferences_get_property (GObject    *object,
 
   src = preferences->values + prop_id;
   if (G_VALUE_HOLDS (src, pspec->value_type))
-    g_value_copy (src, value);
+    {
+      if (G_LIKELY (pspec->value_type == G_TYPE_STRING))
+        g_value_set_static_string (value, g_value_get_string (src));
+      else
+        g_value_copy (src, value);
+    }
   else
-    g_param_value_set_default (pspec, value);
+    {
+      g_param_value_set_default (pspec, value);
+    }
 }
 
 
@@ -1387,7 +1394,10 @@ terminal_preferences_set_property (GObject      *object,
     {
       g_value_copy (value, dst);
       g_object_notify (object, pspec->name);
-      terminal_preferences_schedule_store (preferences);
+
+      /* don't schedule a store if loading */
+      if (!preferences->loading_in_progress)
+        terminal_preferences_schedule_store (preferences);
     }
 }
 
@@ -1470,7 +1480,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
       if (!exo_str_is_equal (option, g_param_spec_get_blurb (spec)))
         {
           g_message ("Blurb does not match option name %s", spec->name);
-          g_assert_not_reached ();
+          _terminal_assert_not_reached ();
         }
       g_free (option);
 #endif
@@ -1578,7 +1588,7 @@ terminal_preferences_store_idle (gpointer user_data)
       /* when debugging is enabled, check if the generated option name
        * is equal to the blurp, to prevent typos */
       option = property_name_to_option_name (spec->name);
-      g_assert (exo_str_is_equal (option, g_param_spec_get_blurb (spec)));
+      _terminal_assert (exo_str_is_equal (option, g_param_spec_get_blurb (spec)));
       g_free (option);
 #endif
 

@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 #define TERMINAL_ERROR (terminal_error_quark ())
 GQuark terminal_error_quark (void) G_GNUC_CONST;
 
-typedef enum /*< enum,prefix=TERMINAL_ERROR >*/
+enum _TerminalError
 {
   /* problem with the runtime linker */
   TERMINAL_ERROR_LINKER_FAILURE,
@@ -39,7 +39,7 @@ typedef enum /*< enum,prefix=TERMINAL_ERROR >*/
   TERMINAL_ERROR_USER_MISMATCH,
   /* general failure */
   TERMINAL_ERROR_FAILED,
-} TerminalError;
+};
 
 
 #define TERMINAL_TYPE_APP         (terminal_app_get_type ())
@@ -49,6 +49,7 @@ typedef enum /*< enum,prefix=TERMINAL_ERROR >*/
 
 typedef struct _TerminalAppClass TerminalAppClass;
 typedef struct _TerminalApp      TerminalApp;
+typedef enum   _TerminalError    TerminalError;
 
 GType        terminal_app_get_type            (void) G_GNUC_CONST;
 

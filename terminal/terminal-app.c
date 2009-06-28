@@ -335,7 +335,7 @@ terminal_app_save_yourself (ExoXsessionClient *client,
 
   if (exo_xsession_client_get_restart_command (client, &oargv, NULL))
     {
-      g_assert (oargv[0] != NULL);
+      _terminal_assert (oargv[0] != NULL);
 
       argv[0] = oargv[0];
 

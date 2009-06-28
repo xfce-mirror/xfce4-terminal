@@ -82,8 +82,8 @@ terminal_image_loader_finalize (GObject *object)
 {
   TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
 
-  g_assert (loader->cache == NULL);
-  g_assert (loader->cache_invalid == NULL);
+  _terminal_assert (loader->cache == NULL);
+  _terminal_assert (loader->cache_invalid == NULL);
 
   g_object_unref (G_OBJECT (loader->preferences));
 
@@ -187,7 +187,7 @@ terminal_image_loader_pixbuf_destroyed (gpointer data,
   g_warning ("Pixbuf %p was freed from loader cache %p, "
              "this should not happend",
              pixbuf, loader);
-  g_assert_not_reached ();
+  _terminal_assert_not_reached ();
 #endif
 }
 
@@ -528,7 +528,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
       break;
 
     default:
-      g_assert_not_reached ();
+      _terminal_assert_not_reached ();
     }
 
   terminal_image_loader_saturate (loader, pixbuf);
