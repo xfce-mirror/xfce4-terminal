@@ -24,16 +24,16 @@
 
 G_BEGIN_DECLS;
 
-void terminal_dialogs_show_about (GtkWindow    *parent) G_GNUC_INTERNAL;
+void terminal_dialogs_show_about (GtkWindow    *parent);
 
 void terminal_dialogs_show_error (gpointer      parent,
                                   const GError *error,
                                   const gchar  *format,
-                                  ...) G_GNUC_INTERNAL G_GNUC_PRINTF (3, 4);
+                                  ...) G_GNUC_PRINTF (3, 4);
 
 void terminal_dialogs_show_help  (gpointer      parent,
                                   const gchar  *page,
-                                  const gchar  *offset) G_GNUC_INTERNAL;
+                                  const gchar  *offset);
 
 G_END_DECLS;
 
