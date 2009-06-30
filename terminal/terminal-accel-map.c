@@ -141,9 +141,7 @@ terminal_accel_map_changed (GtkAccelMap      *object,
                             GdkModifierType   accel_mods,
                             TerminalAccelMap *map)
 {
-  gchar        *property, *name;
-  GParamSpec **specs;
-  guint         nspecs, n;
+  gchar *property, *name;
 
   _terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
   _terminal_return_if_fail (GTK_IS_ACCEL_MAP (object));
@@ -154,23 +152,14 @@ terminal_accel_map_changed (GtkAccelMap      *object,
 
   /* create the property name */
   property = g_strconcat ("accel-", accel_path + 26, NULL);
-
-  /* check if the property exists in the preferences object */
-  specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (map->preferences), &nspecs);
-  for (n = 0; n < nspecs; ++n)
+  if (g_object_class_find_property (G_OBJECT_GET_CLASS (map->preferences), property) != NULL)
     {
-      if (exo_str_is_equal (specs[n]->name, property))
-        {
-          /* store the new accelerator */
-          name = gtk_accelerator_name (accel_key, accel_mods);
-          g_object_set (G_OBJECT (map->preferences), property, name, NULL);
-          g_free (name);
-
-          break;
-        }
+      /* store the new accelerator */
+      name = gtk_accelerator_name (accel_key, accel_mods);
+      g_object_set (G_OBJECT (map->preferences), property, name, NULL);
+      g_free (name);
     }
   g_free (property);
-  g_free (specs);
 }
 
 
