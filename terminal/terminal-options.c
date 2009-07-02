@@ -98,6 +98,34 @@ terminal_option_cmp (const gchar   *long_name,
 
 
 
+static gboolean
+terminal_option_show_hide_cmp (const gchar         *long_name,
+                               gint                 argc,
+                               gchar              **argv,
+                               gint                *argv_offset,
+                               TerminalVisibility  *return_visibility)
+{
+  gchar *arg = argv[*argv_offset];
+
+  terminal_return_val_if_fail (long_name != NULL, FALSE);
+  terminal_return_val_if_fail (return_visibility != NULL, FALSE);
+
+  if ((strncmp (arg, "--show-", 7) == 0 || strncmp (arg, "--hide-", 7) == 0)
+      && strcmp (arg + 7, long_name) == 0)
+    {
+      if (*(arg + 2) == 's')
+        *return_visibility = TERMINAL_VISIBILITY_SHOW;
+      else
+        *return_visibility = TERMINAL_VISIBILITY_HIDE;
+
+      return TRUE;
+    }
+
+  return FALSE;
+}
+
+
+
 static void
 terminal_tab_attr_free (TerminalTabAttr *attr)
 {
@@ -135,6 +163,7 @@ terminal_options_parse (gint              argc,
   gchar              *s;
   GSList             *tp, *wp;
   gint                n;
+  TerminalVisibility  visible;
 
   if (attrs_return != NULL)
     {
@@ -311,15 +340,10 @@ terminal_options_parse (gint              argc,
               win_attr->startup_id = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("show-menubar", 0, argc, argv, &n, NULL))
+      else if (terminal_option_show_hide_cmp ("menubar", argc, argv, &n, &visible))
         {
           if (win_attr != NULL)
-            win_attr->menubar = TERMINAL_VISIBILITY_SHOW;
-        }
-      else if (terminal_option_cmp ("hide-menubar", 0, argc, argv, &n, NULL))
-        {
-          if (win_attr != NULL)
-            win_attr->menubar = TERMINAL_VISIBILITY_HIDE;
+            win_attr->menubar = visible;
         }
       else if (terminal_option_cmp ("fullscreen", 0, argc, argv, &n, NULL))
         {
@@ -331,25 +355,15 @@ terminal_options_parse (gint              argc,
           if (win_attr != NULL)
             win_attr->maximize = TRUE;
         }
-      else if (terminal_option_cmp ("show-borders", 0, argc, argv, &n, NULL))
+      else if (terminal_option_show_hide_cmp ("borders", argc, argv, &n, &visible))
         {
           if (win_attr != NULL)
-            win_attr->borders = TERMINAL_VISIBILITY_SHOW;
+            win_attr->borders = visible;
         }
-      else if (terminal_option_cmp ("hide-borders", 0, argc, argv, &n, NULL))
+      else if (terminal_option_show_hide_cmp ("toolbars", argc, argv, &n, &visible))
         {
           if (win_attr != NULL)
-            win_attr->borders = TERMINAL_VISIBILITY_HIDE;
-        }
-      else if (terminal_option_cmp ("show-toolbars", 0, argc, argv, &n, NULL))
-        {
-          if (win_attr != NULL)
-            win_attr->toolbars = TERMINAL_VISIBILITY_SHOW;
-        }
-      else if (terminal_option_cmp ("hide-toolbars", 0, argc, argv, &n, NULL))
-        {
-          if (win_attr != NULL)
-            win_attr->toolbars = TERMINAL_VISIBILITY_HIDE;
+            win_attr->toolbars = visible;
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
