@@ -1717,7 +1717,9 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
       if (G_LIKELY (preferences->monitor != NULL))
         {
           /* connect signal */
-          g_debug ("Monitoring \"%s\" for changes.", filename);
+#ifndef NDEBUG
+          g_message ("Monitoring \"%s\" for changes.", filename);
+#endif
           g_signal_connect (G_OBJECT (preferences->monitor), "changed",
                             G_CALLBACK (terminal_preferences_monitor_changed),
                             preferences);
