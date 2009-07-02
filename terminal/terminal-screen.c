@@ -916,7 +916,7 @@ static void
 terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
                                              TerminalScreen *screen)
 {
-  gdouble  timeout;
+  guint    timeout;
   GdkColor color;
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
@@ -925,13 +925,14 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
 
   /* leave if we should not start an update */
-  if (GTK_WIDGET_STATE (screen->tab_label) != GTK_STATE_ACTIVE
+  if (screen->tab_label == NULL
+      || GTK_WIDGET_STATE (screen->tab_label) != GTK_STATE_ACTIVE
       || time (NULL) - screen->last_size_change <= 1)
     return;
 
   /* get the reset time, leave if this feature is disabled */
   g_object_get (G_OBJECT (screen->preferences), "tab-activity-timeout", &timeout, NULL);
-  if (timeout < 1.00)
+  if (timeout < 1)
     return;
 
   /* set label color */
@@ -944,7 +945,7 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
 
   /* start new timeout to unset the activity */
   screen->activity_timeout_id =
-      g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, (gint) timeout,
+      g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, timeout,
                                   terminal_screen_reset_activity_timeout,
                                   screen, terminal_screen_reset_activity_destroyed);
 }

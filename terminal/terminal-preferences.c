@@ -928,11 +928,11 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_TAB_ACTIVITY_TIMEOUT,
-                                   g_param_spec_double ("tab-activity-timeout",
-                                                        "tab-activity-timeout",
-                                                        "TabActivityTimeout",
-                                                        0.00, 30.00, 2.00,
-                                                        EXO_PARAM_READWRITE));
+                                   g_param_spec_uint ("tab-activity-timeout",
+                                                      "tab-activity-timeout",
+                                                      "TabActivityTimeout",
+                                                      0, 30, 2,
+                                                      EXO_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:command-update-records:
