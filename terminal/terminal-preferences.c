@@ -931,7 +931,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_double ("tab-activity-timeout",
                                                         "tab-activity-timeout",
                                                         "TabActivityTimeout",
-                                                        0.0, 30.0, 2.0,
+                                                        0.00, 30.00, 2.00,
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -1642,8 +1642,7 @@ terminal_preferences_monitor_changed (GFileMonitor        *monitor,
   _terminal_return_if_fail (G_IS_FILE (file));
 
   /* xfce rc rewrites the file, so skip other events */
-  if (preferences->loading_in_progress
-      || event_type != G_FILE_MONITOR_EVENT_CREATED)
+  if (G_UNLIKELY (preferences->loading_in_progress))
     return;
 
   /* get the last modified timestamp from the file */
@@ -1658,7 +1657,12 @@ terminal_preferences_monitor_changed (GFileMonitor        *monitor,
 
   /* reload the preferences if the new mtime is newer */
   if (G_UNLIKELY (mtime > preferences->last_mtime))
-    terminal_preferences_load (preferences);
+    {
+      terminal_preferences_load (preferences);
+
+      /* set new mtime */
+      preferences->last_mtime = mtime;
+    }
 }
 
 

@@ -41,6 +41,8 @@
     <menu action="go-menu">
       <menuitem action="prev-tab" />
       <menuitem action="next-tab" />
+      <separator />
+      <placeholder name="placeholder-tab-items" />
     </menu>
     <menu action="help-menu">
       <menuitem action="contents" />
@@ -62,6 +64,14 @@
     <menuitem action="preferences" />
     <separator />
     <menuitem action="input-methods" />
+  </popup>
+
+  <!-- The right click tab menu -->
+  <popup name="tab-menu">
+    <menuitem action="detach-tab" />
+    <menuitem action="set-title" />
+    <separator />
+    <menuitem action="close-tab" />
   </popup>
 </ui>
 

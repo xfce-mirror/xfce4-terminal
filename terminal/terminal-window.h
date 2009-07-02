@@ -71,8 +71,6 @@ void            terminal_window_set_startup_id       (TerminalWindow     *window
 
 GList          *terminal_window_get_restart_command  (TerminalWindow     *window);
 
-gboolean        terminal_window_is_screen_active     (TerminalScreen     *screen);
-
 G_END_DECLS
 
 #endif /* !__TERMINAL_WINDOW_H__ */

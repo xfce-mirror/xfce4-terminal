@@ -54,36 +54,40 @@ void         terminal_screen_set_size                     (TerminalScreen *scree
                                                            gint            width_chars,
                                                            gint            height_chars);
 
-void       terminal_screen_force_resize_window          (TerminalScreen *screen,
-                                                         GtkWindow      *window,
-                                                         gint            force_columns,
-                                                         gint            force_rows);
-void       terminal_screen_set_window_geometry_hints    (TerminalScreen *screen,
-                                                         GtkWindow      *window);
+void         terminal_screen_force_resize_window          (TerminalScreen *screen,
+                                                           GtkWindow      *window,
+                                                           gint            force_columns,
+                                                           gint            force_rows);
 
-gchar       *terminal_screen_get_title                  (TerminalScreen *screen);
+gchar       *terminal_screen_get_title                    (TerminalScreen *screen);
 
-const gchar *terminal_screen_get_working_directory      (TerminalScreen *screen);
-void         terminal_screen_set_working_directory      (TerminalScreen *screen,
-                                                         const gchar    *directory);
+const gchar *terminal_screen_get_working_directory        (TerminalScreen *screen);
+void         terminal_screen_set_working_directory        (TerminalScreen *screen,
+                                                           const gchar    *directory);
 
-gboolean     terminal_screen_get_hold                   (TerminalScreen *screen);
-void         terminal_screen_set_hold                   (TerminalScreen *screen,
-                                                         gboolean        hold);
+gboolean     terminal_screen_get_hold                     (TerminalScreen *screen);
+void         terminal_screen_set_hold                     (TerminalScreen *screen,
+                                                           gboolean        hold);
 
-gboolean   terminal_screen_has_selection              (TerminalScreen *screen);
+gboolean     terminal_screen_has_selection                (TerminalScreen *screen);
 
-void       terminal_screen_copy_clipboard             (TerminalScreen *screen);
-void       terminal_screen_paste_clipboard            (TerminalScreen *screen);
-void       terminal_screen_paste_primary              (TerminalScreen *screen);
+void         terminal_screen_copy_clipboard               (TerminalScreen *screen);
+void         terminal_screen_paste_clipboard              (TerminalScreen *screen);
+void         terminal_screen_paste_primary                (TerminalScreen *screen);
 
-void       terminal_screen_reset                      (TerminalScreen *screen,
-                                                       gboolean        clear);
+void         terminal_screen_reset                        (TerminalScreen *screen,
+                                                           gboolean        clear);
 
-void       terminal_screen_im_append_menuitems        (TerminalScreen *screen,
-                                                       GtkMenuShell   *menushell);
+void         terminal_screen_im_append_menuitems          (TerminalScreen *screen,
+                                                           GtkMenuShell   *menushell);
 
-GList     *terminal_screen_get_restart_command        (TerminalScreen *screen);
+GList       *terminal_screen_get_restart_command          (TerminalScreen *screen);
+
+void         terminal_screen_reset_activity               (TerminalScreen *screen);
+
+GtkWidget   *terminal_screen_get_tab_label                (TerminalScreen *screen);
+
+void         terminal_screen_focus                        (TerminalScreen *screen);
 
 G_END_DECLS
 

@@ -33,6 +33,19 @@ G_BEGIN_DECLS
 #define TERMINAL_IS_WIDGET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), TERMINAL_TYPE_WIDGET))
 #define TERMINAL_WIDGET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WIDGET, TerminalWidgetClass))
 
+enum
+{
+  TARGET_URI_LIST,
+  TARGET_UTF8_STRING,
+  TARGET_TEXT,
+  TARGET_COMPOUND_TEXT,
+  TARGET_STRING,
+  TARGET_TEXT_PLAIN,
+  TARGET_MOZ_URL,
+  TARGET_APPLICATION_X_COLOR,
+  TARGET_GTK_NOTEBOOK_TAB
+};
+
 typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
