@@ -521,6 +521,8 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
         result[n++] = g_strconcat (*p, "=", value, NULL);
     }
 
+  g_strfreev (env);
+
   result[n++] = g_strdup ("COLORTERM=Terminal");
 
   g_object_get (G_OBJECT (screen->preferences), "term", &term, NULL);
