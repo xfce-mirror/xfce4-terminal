@@ -111,7 +111,7 @@ terminal_accel_map_notify (TerminalPreferences *preferences,
   guint           accelerator_key;
   gchar          *accelerator;
 
-  _terminal_return_if_fail (g_str_has_prefix (pspec->name, "accel-"));
+  terminal_return_if_fail (g_str_has_prefix (pspec->name, "accel-"));
 
   g_object_get (G_OBJECT (preferences), pspec->name, &accelerator, NULL);
 
@@ -143,8 +143,8 @@ terminal_accel_map_changed (GtkAccelMap      *object,
 {
   gchar *property, *name;
 
-  _terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
-  _terminal_return_if_fail (GTK_IS_ACCEL_MAP (object));
+  terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
+  terminal_return_if_fail (GTK_IS_ACCEL_MAP (object));
 
   /* only accept window property names */
   if (!g_str_has_prefix (accel_path, "<Actions>/terminal-window/"))
@@ -182,7 +182,7 @@ terminal_accel_map_start_monitor (TerminalAccelMap *map)
 {
   GtkAccelMap *gtkmap;
 
-  _terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
+  terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
 
   /* monitor the accel map for changes */
   gtkmap = gtk_accel_map_get ();

@@ -96,7 +96,7 @@ terminal_toolbars_view_edit_done (ExoToolbarsEditorDialog *dialog,
 GtkWidget*
 terminal_toolbars_view_new (GtkUIManager *ui_manager)
 {
-  _terminal_return_val_if_fail (GTK_IS_UI_MANAGER (ui_manager), NULL);
+  terminal_return_val_if_fail (GTK_IS_UI_MANAGER (ui_manager), NULL);
 
   return g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW,
                        "ui-manager", ui_manager,
@@ -116,7 +116,7 @@ terminal_toolbars_view_edit (TerminalToolbarsView *toolbar)
   GtkUIManager      *ui_manager;
   GtkWidget         *toplevel;
 
-  _terminal_return_if_fail (TERMINAL_IS_TOOLBARS_VIEW (toolbar));
+  terminal_return_if_fail (TERMINAL_IS_TOOLBARS_VIEW (toolbar));
 
   exo_toolbars_view_set_editing (EXO_TOOLBARS_VIEW (toolbar), TRUE);
 

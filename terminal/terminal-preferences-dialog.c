@@ -65,7 +65,7 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 
 #define BIND_PROPERTIES(name, property) \
   { object = gtk_builder_get_object (GTK_BUILDER (dialog), name); \
-  _terminal_return_if_fail (G_IS_OBJECT (object)); \
+  terminal_return_if_fail (G_IS_OBJECT (object)); \
   exo_mutual_binding_new (G_OBJECT (dialog->preferences), name, \
                           G_OBJECT (object), property); }
 
@@ -122,7 +122,7 @@ error:
 
   /* connect response to dialog */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "dialog");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_weak_ref (G_OBJECT (object), (GWeakNotify) g_object_unref, dialog);
   g_signal_connect (G_OBJECT (object), "response",
       G_CALLBACK (terminal_preferences_dialog_response), dialog);
@@ -153,40 +153,40 @@ error:
 
   /* reset comparibility button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-compatibility");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_reset_compat), dialog);
 
   /* add shortcuts editor */
   editor = terminal_shortcut_editor_new ();
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "editor-container");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   gtk_container_add (GTK_CONTAINER (object), editor);
   gtk_widget_show (editor);
 
   /* inverted action between cursor color selections */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-selection-use-default",
                                  G_OBJECT (object), "active");
 
   /* sensitivity for custom selection color */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection");
-  _terminal_return_if_fail (G_IS_OBJECT (object2));
+  terminal_return_if_fail (G_IS_OBJECT (object2));
   exo_binding_new (G_OBJECT (object), "active", G_OBJECT (object2), "sensitive");
 
   /* background widgets visibility */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "background-mode");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   g_signal_connect (G_OBJECT (object), "changed",
       G_CALLBACK (terminal_preferences_dialog_background_mode), dialog);
   terminal_preferences_dialog_background_mode (GTK_WIDGET (object), dialog);
 
   /* background image file */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "background-image-file");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   dialog->signal_id = g_signal_connect (G_OBJECT (dialog->preferences),
       "notify::background-image-file", G_CALLBACK (terminal_preferences_dialog_background_notify), object);
   terminal_preferences_dialog_background_notify (G_OBJECT (dialog->preferences), NULL, object);
@@ -278,17 +278,17 @@ terminal_preferences_dialog_background_mode (GtkWidget                 *combobox
   GObject *object;
   gint     active;
 
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  _terminal_return_if_fail (GTK_IS_COMBO_BOX (combobox));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  terminal_return_if_fail (GTK_IS_COMBO_BOX (combobox));
 
   active = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
 
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-file");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_set (G_OBJECT (object), "visible", active == 1, NULL);
 
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-opacity");
-  _terminal_return_if_fail (G_IS_OBJECT (object));
+  terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_set (G_OBJECT (object), "visible", active > 0, NULL);
 }
 
@@ -301,8 +301,8 @@ terminal_preferences_dialog_background_notify (GObject    *object,
 {
   gchar *button_file, *prop_file;
 
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES (object));
-  _terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (object));
+  terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
   button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
   g_object_get (G_OBJECT (object), "background-image-file", &prop_file, NULL);
@@ -320,8 +320,8 @@ terminal_preferences_dialog_background_set (GtkFileChooserButton      *widget,
 {
   gchar *filename;
 
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  _terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
   filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
   g_object_set (G_OBJECT (dialog->preferences), filename, NULL);

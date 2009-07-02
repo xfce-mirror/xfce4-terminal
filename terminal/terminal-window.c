@@ -837,7 +837,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 
   /* get the new active page */
   active = TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num));
-  _terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
+  terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
 
   /* only update when really changed */
   if (G_LIKELY (window->active != active))
@@ -885,10 +885,10 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
   gint            npages;
   gint            width_chars, height_chars;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  _terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
-  _terminal_return_if_fail (window->notebook == GTK_WIDGET (notebook));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
+  terminal_return_if_fail (window->notebook == GTK_WIDGET (notebook));
 
   /* connect screen signals */
   g_signal_connect (G_OBJECT (screen), "get-context-menu",
@@ -937,8 +937,8 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   gint     npages;
   gboolean show_tabs = TRUE;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   /* unset the go menu item */
   g_object_set_qdata (G_OBJECT (child), gomenu_action_quark, NULL);
@@ -995,8 +995,8 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
   gint       page_num = 0;
   gboolean   close_middle_click;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
-  _terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
+  terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
 
   if (event->button == 1)
     {
@@ -1057,8 +1057,8 @@ terminal_window_notebook_button_release_event (GtkNotebook    *notebook,
                                                GdkEventButton *event,
                                                TerminalWindow *window)
 {
-  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
-  _terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
+  terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
 
   if (G_LIKELY (window->active != NULL))
     terminal_screen_focus (window->active);
@@ -1084,15 +1084,15 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
   gint        i, n_pages;
   gboolean    succeed = FALSE;
 
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (widget));
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (widget));
 
   /* check */
   if (G_LIKELY (info == TARGET_GTK_NOTEBOOK_TAB))
     {
       /* get the source notebook (other window) */
       notebook = gtk_drag_get_source_widget (context);
-      _terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
+      terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
 
       /* get the dragged screen */
       screen = (GtkWidget **) selection_data->data;
@@ -1164,9 +1164,9 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
 {
   TerminalScreen *screen;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (child), NULL);
-  _terminal_return_val_if_fail (notebook == GTK_NOTEBOOK (window->notebook), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (child), NULL);
+  terminal_return_val_if_fail (notebook == GTK_NOTEBOOK (window->notebook), NULL);
 
   /* only create new window when there are more then 2 tabs (bug #2686) */
   if (gtk_notebook_get_n_pages (notebook) >= 2)
@@ -1492,8 +1492,8 @@ terminal_window_action_goto_tab (GtkRadioAction *action,
 {
   gint page;
 
-  _terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
-  _terminal_return_if_fail (GTK_IS_RADIO_ACTION (action));
+  terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
+  terminal_return_if_fail (GTK_IS_RADIO_ACTION (action));
 
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
     {
@@ -1707,8 +1707,8 @@ terminal_window_add (TerminalWindow *window,
   GtkWidget  *label;
   gint        page;
 
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   /* create the tab label */
   label = terminal_screen_get_tab_label (screen);
@@ -1741,8 +1741,8 @@ void
 terminal_window_remove (TerminalWindow *window,
                         TerminalScreen *screen)
 {
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   gtk_widget_destroy (GTK_WIDGET (screen));
 }
@@ -1761,7 +1761,7 @@ terminal_window_remove (TerminalWindow *window,
 TerminalScreen *
 terminal_window_get_active (TerminalWindow *window)
 {
-  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
   return window->active;
 }
 
@@ -1776,8 +1776,8 @@ void
 terminal_window_set_startup_id (TerminalWindow     *window,
                                 const gchar        *startup_id)
 {
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  _terminal_return_if_fail (startup_id != NULL);
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (startup_id != NULL);
 
   g_free (window->startup_id);
   window->startup_id = g_strdup (startup_id);
@@ -1806,7 +1806,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
   gint         w;
   gint         h;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
 
   if (G_LIKELY (window->active != NULL))
     {

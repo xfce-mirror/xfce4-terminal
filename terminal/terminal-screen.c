@@ -589,7 +589,7 @@ terminal_screen_update_binding_backspace (TerminalScreen *screen)
       break;
 
     default:
-      _terminal_assert_not_reached ();
+      terminal_assert_not_reached ();
     }
 }
 
@@ -621,7 +621,7 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
       break;
 
     default:
-      _terminal_assert_not_reached ();
+      terminal_assert_not_reached ();
     }
 }
 
@@ -671,9 +671,9 @@ terminal_screen_update_font (TerminalScreen *screen)
   gboolean             font_allow_bold;
   gchar               *font_name;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
-  _terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
   g_object_get (G_OBJECT (screen->preferences),
                 "font-allow-bold", &font_allow_bold,
@@ -815,9 +815,9 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
 {
   gchar *word_chars;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
-  _terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
   g_object_get (G_OBJECT (screen->preferences), "word-chars", &word_chars, NULL);
   if (G_LIKELY (word_chars != NULL))
@@ -833,8 +833,8 @@ static void
 terminal_screen_vte_child_exited (VteTerminal    *terminal,
                                   TerminalScreen *screen)
 {
-  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_LIKELY (!screen->hold))
     gtk_widget_destroy (GTK_WIDGET (screen));
@@ -846,8 +846,8 @@ static void
 terminal_screen_vte_eof (VteTerminal    *terminal,
                          TerminalScreen *screen)
 {
-  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_LIKELY (!screen->hold))
     gtk_widget_destroy (GTK_WIDGET (screen));
@@ -870,8 +870,8 @@ static void
 terminal_screen_vte_selection_changed (VteTerminal    *terminal,
                                        TerminalScreen *screen)
 {
-  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   g_signal_emit (G_OBJECT (screen), screen_signals[SELECTION_CHANGED], 0);
 }
@@ -882,8 +882,8 @@ static void
 terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
                                           TerminalScreen *screen)
 {
-  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   terminal_screen_update_title (screen);
 }
@@ -919,10 +919,10 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
   gdouble  timeout;
   GdkColor color;
 
-  _terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (GTK_IS_LABEL (screen->tab_label));
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
+  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (GTK_IS_LABEL (screen->tab_label));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
 
   /* leave if we should not start an update */
   if (GTK_WIDGET_STATE (screen->tab_label) != GTK_STATE_ACTIVE
@@ -960,8 +960,8 @@ terminal_screen_timer_background (gpointer user_data)
   GdkPixbuf           *image;
   gdouble              background_darkness;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-  _terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
   GDK_THREADS_ENTER ();
 
@@ -1041,8 +1041,8 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
   gint        xpad;
   gint        ypad;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
   vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
 
@@ -1073,8 +1073,8 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
   GtkWidget          *box;
 #endif
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (screen->tab_label == NULL || GTK_IS_LABEL (screen->tab_label));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (screen->tab_label == NULL || GTK_IS_LABEL (screen->tab_label));
 
   if (G_UNLIKELY (screen->tab_label == NULL))
     return;
@@ -1102,7 +1102,7 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
 
 #if GTK_CHECK_VERSION (2, 16, 0)
   box = gtk_widget_get_parent (screen->tab_label);
-  _terminal_return_if_fail (GTK_IS_ORIENTABLE (box));
+  terminal_return_if_fail (GTK_IS_ORIENTABLE (box));
   gtk_orientable_set_orientation (GTK_ORIENTABLE (box),
     angle == 0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
 #endif
@@ -1138,7 +1138,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
   gchar  **argv;
   gchar  **env;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
 #ifdef G_ENABLE_DEBUG
   if (!GTK_WIDGET_REALIZED (screen))
@@ -1181,7 +1181,7 @@ void
 terminal_screen_set_custom_command (TerminalScreen *screen,
                                     gchar         **command)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_UNLIKELY (screen->custom_command != NULL))
     g_strfreev (screen->custom_command);
@@ -1203,7 +1203,7 @@ void
 terminal_screen_set_custom_title (TerminalScreen *screen,
                                   const gchar    *title)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (!exo_str_is_equal (screen->custom_title, title))
     {
@@ -1223,7 +1223,7 @@ terminal_screen_get_size (TerminalScreen *screen,
                           gint           *width_chars,
                           gint           *height_chars)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_LIKELY (screen != NULL))
     {
@@ -1241,7 +1241,7 @@ terminal_screen_set_size (TerminalScreen *screen,
                           gint            width_chars,
                           gint            height_chars)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   vte_terminal_set_size (VTE_TERMINAL (screen->terminal),
                          width_chars, height_chars);
@@ -1270,9 +1270,9 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   gint           xpad;
   gint           ypad;
 
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
-  _terminal_return_if_fail (GTK_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+  terminal_return_if_fail (GTK_IS_WINDOW (window));
 
   terminal_screen_set_window_geometry_hints (screen, window);
 
@@ -1326,7 +1326,7 @@ terminal_screen_get_title (TerminalScreen *screen)
   gchar        *title;
   gchar        *tmp;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (IS_STRING (screen->custom_title))
     return g_strdup (screen->custom_title);
@@ -1387,7 +1387,7 @@ terminal_screen_get_title (TerminalScreen *screen)
       break;
 
     default:
-      _terminal_assert_not_reached ();
+      terminal_assert_not_reached ();
       title = NULL;
     }
 
@@ -1415,7 +1415,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
   gchar *cwd;
   gint   length;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (screen->pid >= 0)
     {
@@ -1468,8 +1468,8 @@ void
 terminal_screen_set_working_directory (TerminalScreen *screen,
                                        const gchar    *directory)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (directory != NULL);
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (directory != NULL);
 
   g_free (screen->working_directory);
   screen->working_directory = g_strdup (directory);
@@ -1490,7 +1490,7 @@ terminal_screen_set_working_directory (TerminalScreen *screen,
 gboolean
 terminal_screen_get_hold (TerminalScreen *screen)
 {
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   return screen->hold;
 }
 
@@ -1508,7 +1508,7 @@ void
 terminal_screen_set_hold (TerminalScreen *screen,
                           gboolean        hold)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   screen->hold = hold;
 }
 
@@ -1526,7 +1526,7 @@ terminal_screen_set_hold (TerminalScreen *screen,
 gboolean
 terminal_screen_has_selection (TerminalScreen *screen)
 {
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   return vte_terminal_get_has_selection (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1541,7 +1541,7 @@ terminal_screen_has_selection (TerminalScreen *screen)
 void
 terminal_screen_copy_clipboard (TerminalScreen *screen)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_copy_clipboard (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1558,7 +1558,7 @@ terminal_screen_copy_clipboard (TerminalScreen *screen)
 void
 terminal_screen_paste_clipboard (TerminalScreen *screen)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1576,7 +1576,7 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 void
 terminal_screen_paste_primary (TerminalScreen *screen)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
 }
 
@@ -1593,7 +1593,7 @@ void
 terminal_screen_reset (TerminalScreen *screen,
                        gboolean        clear)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_reset (VTE_TERMINAL (screen->terminal), TRUE, clear);
 }
 
@@ -1612,8 +1612,8 @@ void
 terminal_screen_im_append_menuitems (TerminalScreen *screen,
                                      GtkMenuShell   *menushell)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  _terminal_return_if_fail (GTK_IS_MENU_SHELL (menushell));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (GTK_IS_MENU_SHELL (menushell));
 
   vte_terminal_im_append_menuitems (VTE_TERMINAL (screen->terminal), menushell);
 }
@@ -1632,7 +1632,7 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
   const gchar *directory;
   GList       *result = NULL;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (screen->custom_command != NULL)
     {
@@ -1664,7 +1664,7 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
 void
 terminal_screen_reset_activity (TerminalScreen *screen)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (screen->activity_timeout_id != 0)
     {
@@ -1681,7 +1681,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   GtkWidget  *hbox;
   GtkWidget  *button, *image;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   /* create the box */
   hbox = gtk_hbox_new (FALSE, 0);
@@ -1722,7 +1722,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 void
 terminal_screen_focus (TerminalScreen *screen)
 {
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   gtk_widget_grab_focus (GTK_WIDGET (screen->terminal));
 }

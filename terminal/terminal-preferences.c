@@ -1354,7 +1354,7 @@ terminal_preferences_get_property (GObject    *object,
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
   GValue              *src;
 
-  _terminal_return_if_fail (prop_id < N_PROPERTIES);
+  terminal_return_if_fail (prop_id < N_PROPERTIES);
 
   src = preferences->values + prop_id;
   if (G_VALUE_HOLDS (src, pspec->value_type))
@@ -1381,7 +1381,7 @@ terminal_preferences_set_property (GObject      *object,
   TerminalPreferences *preferences = TERMINAL_PREFERENCES (object);
   GValue              *dst;
 
-  _terminal_return_if_fail (prop_id < N_PROPERTIES);
+  terminal_return_if_fail (prop_id < N_PROPERTIES);
 
   dst = preferences->values + prop_id;
   if (!G_IS_VALUE (dst))
@@ -1480,7 +1480,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
       if (!exo_str_is_equal (option, g_param_spec_get_blurb (spec)))
         {
           g_message ("Blurb does not match option name %s", spec->name);
-          _terminal_assert_not_reached ();
+          terminal_assert_not_reached ();
         }
       g_free (option);
 #endif
@@ -1588,7 +1588,7 @@ terminal_preferences_store_idle (gpointer user_data)
       /* when debugging is enabled, check if the generated option name
        * is equal to the blurp, to prevent typos */
       option = property_name_to_option_name (spec->name);
-      _terminal_assert (exo_str_is_equal (option, g_param_spec_get_blurb (spec)));
+      terminal_assert (exo_str_is_equal (option, g_param_spec_get_blurb (spec)));
       g_free (option);
 #endif
 
@@ -1637,9 +1637,9 @@ terminal_preferences_monitor_changed (GFileMonitor        *monitor,
   GFileInfo *info;
   guint64    mtime = 0;
 
-  _terminal_return_if_fail (G_IS_FILE_MONITOR (monitor));
-  _terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
-  _terminal_return_if_fail (G_IS_FILE (file));
+  terminal_return_if_fail (G_IS_FILE_MONITOR (monitor));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
+  terminal_return_if_fail (G_IS_FILE (file));
 
   /* xfce rc rewrites the file, so skip other events */
   if (G_UNLIKELY (preferences->loading_in_progress))

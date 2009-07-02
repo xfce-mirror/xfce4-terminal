@@ -37,15 +37,15 @@ G_BEGIN_DECLS
 
 /* support macros for debugging */
 #ifndef NDEBUG
-#define _terminal_assert(expr)                  g_assert (expr)
-#define _terminal_assert_not_reached()          g_assert_not_reached ()
-#define _terminal_return_if_fail(expr)          g_return_if_fail (expr)
-#define _terminal_return_val_if_fail(expr, val) g_return_val_if_fail (expr, (val))
+#define terminal_assert(expr)                  g_assert (expr)
+#define terminal_assert_not_reached()          g_assert_not_reached ()
+#define terminal_return_if_fail(expr)          g_return_if_fail (expr)
+#define terminal_return_val_if_fail(expr, val) g_return_val_if_fail (expr, (val))
 #else
-#define _terminal_assert(expr)                  G_STMT_START{ (void)0; }G_STMT_END
-#define _terminal_assert_not_reached()          G_STMT_START{ (void)0; }G_STMT_END
-#define _terminal_return_if_fail(expr)          G_STMT_START{ (void)0; }G_STMT_END
-#define _terminal_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
+#define terminal_assert(expr)                  G_STMT_START{ (void)0; }G_STMT_END
+#define terminal_assert_not_reached()          G_STMT_START{ (void)0; }G_STMT_END
+#define terminal_return_if_fail(expr)          G_STMT_START{ (void)0; }G_STMT_END
+#define terminal_return_val_if_fail(expr, val) G_STMT_START{ (void)0; }G_STMT_END
 #endif
 
 /* avoid trivial g_value_get_*() function calls */

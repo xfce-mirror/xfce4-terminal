@@ -172,7 +172,7 @@ terminal_dbus_register_service (TerminalApp *app,
   DBusConnection *connection;
   DBusError       derror;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
+  terminal_return_val_if_fail (TERMINAL_IS_APP (app), FALSE);
 
   /* check if the application object is already registered */
   connection = g_object_get_data (G_OBJECT (app), "terminal-dbus-connection");
@@ -236,8 +236,8 @@ terminal_dbus_invoke_launch (gint     argc,
   DBusMessage    *result;
   DBusError       derror;
 
-  _terminal_return_val_if_fail (argc > 0, FALSE);
-  _terminal_return_val_if_fail (argv != NULL, FALSE);
+  terminal_return_val_if_fail (argc > 0, FALSE);
+  terminal_return_val_if_fail (argv != NULL, FALSE);
 
   dbus_error_init (&derror);
 

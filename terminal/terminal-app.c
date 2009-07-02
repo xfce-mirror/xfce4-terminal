@@ -262,9 +262,9 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   GtkWidget *window;
   GdkScreen *screen;
 
-  _terminal_return_if_fail (TERMINAL_IS_WINDOW (existing));
-  _terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
-  _terminal_return_if_fail (TERMINAL_IS_APP (app));
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (existing));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
+  terminal_return_if_fail (TERMINAL_IS_APP (app));
 
   window = terminal_app_create_window (app, FALSE,
                                        TERMINAL_VISIBILITY_DEFAULT,
@@ -299,7 +299,7 @@ static void
 terminal_app_window_destroyed (GtkWidget   *window,
                                TerminalApp *app)
 {
-  _terminal_return_if_fail (g_list_find (app->windows, window) != NULL);
+  terminal_return_if_fail (g_list_find (app->windows, window) != NULL);
 
   app->windows = g_list_remove (app->windows, window);
 
@@ -335,7 +335,7 @@ terminal_app_save_yourself (ExoXsessionClient *client,
 
   if (exo_xsession_client_get_restart_command (client, &oargv, NULL))
     {
-      _terminal_assert (oargv[0] != NULL);
+      terminal_assert (oargv[0] != NULL);
 
       argv[0] = oargv[0];
 
@@ -508,8 +508,8 @@ terminal_app_open_window (TerminalApp         *app,
   gchar           *geometry;
   GList           *lp;
 
-  _terminal_return_if_fail (TERMINAL_IS_APP (app));
-  _terminal_return_if_fail (attr != NULL);
+  terminal_return_if_fail (TERMINAL_IS_APP (app));
+  terminal_return_if_fail (attr != NULL);
 
   window = terminal_app_create_window (app,
                                        attr->fullscreen,

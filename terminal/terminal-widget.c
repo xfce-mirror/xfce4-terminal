@@ -314,7 +314,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
             pattern_type = regex_patterns[i].type;
             break;
           }
-      _terminal_return_if_fail (pattern_type != PATTERN_TYPE_NONE);
+      terminal_return_if_fail (pattern_type != PATTERN_TYPE_NONE);
 
       /* create menu items with appriorate labels */
       if (pattern_type == PATTERN_TYPE_EMAIL)

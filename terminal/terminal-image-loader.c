@@ -82,8 +82,8 @@ terminal_image_loader_finalize (GObject *object)
 {
   TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
 
-  _terminal_assert (loader->cache == NULL);
-  _terminal_assert (loader->cache_invalid == NULL);
+  terminal_assert (loader->cache == NULL);
+  terminal_assert (loader->cache_invalid == NULL);
 
   g_object_unref (G_OBJECT (loader->preferences));
 
@@ -106,7 +106,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   gchar                  *selected_color_spec;
   gchar                  *selected_path;
 
-  _terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
+  terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
   g_object_get (G_OBJECT (loader->preferences),
                 "background-darkness", &selected_darkness,
@@ -187,7 +187,7 @@ terminal_image_loader_pixbuf_destroyed (gpointer data,
   g_warning ("Pixbuf %p was freed from loader cache %p, "
              "this should not happend",
              pixbuf, loader);
-  _terminal_assert_not_reached ();
+  terminal_assert_not_reached ();
 #endif
 }
 
@@ -457,9 +457,9 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   GdkPixbuf *pixbuf;
   GList     *lp;
 
-  _terminal_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
-  _terminal_return_val_if_fail (width > 0, NULL);
-  _terminal_return_val_if_fail (height > 0, NULL);
+  terminal_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
+  terminal_return_val_if_fail (width > 0, NULL);
+  terminal_return_val_if_fail (height > 0, NULL);
 
   terminal_image_loader_check (loader);
 
@@ -528,7 +528,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
       break;
 
     default:
-      _terminal_assert_not_reached ();
+      terminal_assert_not_reached ();
     }
 
   terminal_image_loader_saturate (loader, pixbuf);
