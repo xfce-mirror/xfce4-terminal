@@ -96,6 +96,8 @@ static void            terminal_window_update_actions                (TerminalWi
 static void            terminal_window_update_mnemonics              (TerminalWindow         *window);
 static void            terminal_window_rebuild_gomenu                (TerminalWindow         *window);
 static gboolean        terminal_window_delete_event                  (TerminalWindow         *window);
+static void            terminal_window_state_event                   (TerminalWindow         *window,
+                                                                      GdkEventWindowState    *event);
 static void            terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
                                                                       GtkNotebookPage        *page,
                                                                       guint                   page_num,
@@ -408,6 +410,7 @@ terminal_window_init (TerminalWindow *window)
   g_object_connect (G_OBJECT (window),
                     "signal::delete-event", G_CALLBACK (terminal_window_delete_event), NULL,
                     "signal-after::style-set", G_CALLBACK (terminal_window_queue_reset_size), NULL,
+                    "signal::window-state-event", G_CALLBACK (terminal_window_state_event), NULL,
                     NULL);
 
   /* set a unique role on each window (for session management) */
@@ -823,6 +826,27 @@ terminal_window_delete_event (TerminalWindow *window)
                                           G_CALLBACK (terminal_window_notebook_page_removed), window);
 
   return !result;
+}
+
+
+
+static void
+terminal_window_state_event (TerminalWindow      *window,
+                             GdkEventWindowState *event)
+{
+  GtkAction *action;
+  gboolean   fullscreen;
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  /* update the fullscreen action if the fullscreen state changed by the wm */
+  if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0)
+    {
+      fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
+      action = gtk_action_group_get_action (window->action_group, "fullscreen");
+      if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != fullscreen)
+        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), fullscreen);
+    }
 }
 
 
