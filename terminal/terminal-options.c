@@ -181,7 +181,38 @@ terminal_options_parse (gint              argc,
       if (argv[n] == NULL || *argv[n] != '-')
         goto unknown_option;
 
-      if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
+      if (terminal_option_cmp ("default-display", 0, argc, argv, &n, &s))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--default-display\" requires specifying "
+                             "the default X display as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              g_free (default_display);
+              default_display = g_strdup (s);
+            }
+        }
+      else if (terminal_option_cmp ("default-working-directory", 0, argc, argv, &n, &s))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--default-working-directory\" requires "
+                             "specifying the default working directory as its "
+                             "parameter"));
+              goto failed;
+            }
+          else
+            {
+              g_free (default_directory);
+              default_directory = g_strdup (s);
+            }
+        }
+      else if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
         {
           if (options_return != NULL)
             (*options_return)->show_help = TRUE;
@@ -395,37 +426,6 @@ terminal_options_parse (gint              argc,
               win_attr = terminal_window_attr_new ();
               tab_attr = win_attr->tabs->data;
               *attrs_return = g_slist_append (*attrs_return, win_attr);
-            }
-        }
-      else if (terminal_option_cmp ("default-display", 0, argc, argv, &n, &s))
-        {
-          if (G_UNLIKELY (s == NULL))
-            {
-              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--default-display\" requires specifying "
-                             "the default X display as its parameter"));
-              goto failed;
-            }
-          else
-            {
-              g_free (default_display);
-              default_display = g_strdup (s);
-            }
-        }
-      else if (terminal_option_cmp ("default-working-directory", 0, argc, argv, &n, &s))
-        {
-          if (G_UNLIKELY (s == NULL))
-            {
-              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--default-working-directory\" requires "
-                             "specifying the default working directory as its "
-                             "parameter"));
-              goto failed;
-            }
-          else
-            {
-              g_free (default_directory);
-              default_directory = g_strdup (s);
             }
         }
       else
