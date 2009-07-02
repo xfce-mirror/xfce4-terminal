@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-28 14:27+0200\n"
+"POT-Creation-Date: 2009-07-02 23:06+0200\n"
 "PO-Revision-Date: 2009-06-29 21:28+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen>\n"
@@ -18,19 +18,22 @@ msgstr ""
 "X-Poedit-Language: Danish\n"
 "X-Poedit-Country: DENMARK\n"
 
-#: ../terminal/main.c:45
+#: ../terminal/main.c:46
 msgid "Usage: Terminal [OPTION...]"
 msgstr "Brug: Terminal [VALGMULIGHED...]"
 
-#: ../terminal/main.c:47
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Udskriv denne hjælpetekst og afslut"
-
 #: ../terminal/main.c:48
-msgid "  -v, --version                       Print version information and exit"
-msgstr "  -v, --version                       Udskriv versionsinformation og afslut"
+msgid "  -h, --help                          Print this help message and exit"
+msgstr ""
+"  -h, --help                          Udskriv denne hjælpetekst og afslut"
 
 #: ../terminal/main.c:49
+msgid ""
+"  -v, --version                       Print version information and exit"
+msgstr ""
+"  -v, --version                       Udskriv versionsinformation og afslut"
+
+#: ../terminal/main.c:50
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
@@ -38,7 +41,7 @@ msgstr ""
 "  --disable-server                    Registrér ikke hos\n"
 "                                      D-BUS-sessionsbeskedsystemet"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:53
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
@@ -46,7 +49,7 @@ msgstr ""
 "  -x, --execute                       Udfør resten af kommandolinjen\n"
 "                                      i terminalen"
 
-#: ../terminal/main.c:54
+#: ../terminal/main.c:55
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
@@ -54,15 +57,16 @@ msgstr ""
 "  -e, --command=STRENG                Udfør parameteren til denne\n"
 "                                      indstilling i terminalen"
 
-#: ../terminal/main.c:56
-msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
+#: ../terminal/main.c:57
+msgid ""
+"  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr "  --working-directory=MAPPENAVN       Angiv terminalens arbejdsmappe"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:58
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr "  -T, --title=TITEL                   Angiv teminalens titel"
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:59
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
@@ -70,43 +74,57 @@ msgstr ""
 "  -H, --hold                          Luk ikke fanebladet,\n"
 "                                      når underprocessen afslutter"
 
-#: ../terminal/main.c:61
+#: ../terminal/main.c:62
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
-"  --display=SKÆRM                     X skærm til brug for det sidste angivne\n"
+"  --display=SKÆRM                     X skærm til brug for det sidste "
+"angivne\n"
 "                                      vindue"
 
-#: ../terminal/main.c:63
+#: ../terminal/main.c:64
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
 "  --geometry=GEOMETRI                 X geometri specifikationer (se \"X\"\n"
-"                                      manualsiden), kan specificeres en gang per \n"
+"                                      manualsiden), kan specificeres en gang "
+"per \n"
 "                                      vindue, der skal åbnes"
 
-#: ../terminal/main.c:66
+#: ../terminal/main.c:67
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
-"  --role=ROLLE                        Indstil rollen for det sidst specificerede;\n"
+"  --role=ROLLE                        Indstil rollen for det sidst "
+"specificerede;\n"
 "                                      vindue;gælder kun for ét vindue;\n"
-"                                      kan specificeres en gang for hvert vindue\n"
+"                                      kan specificeres en gang for hvert "
+"vindue\n"
 "                                      du opretter fra kommandolinjen"
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:71
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
-msgstr "  --startup-id=STRENG                 Id til opstartsnotifikationsprotokollen"
+msgstr ""
+"  --startup-id=STRENG                 Id til opstartsnotifikationsprotokollen"
 
-#: ../terminal/main.c:72
+#: ../terminal/main.c:73
+#, fuzzy
+msgid ""
+"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+"                                      name or filename"
+msgstr ""
+"  -e, --command=STRENG                Udfør parameteren til denne\n"
+"                                      indstilling i terminalen"
+
+#: ../terminal/main.c:75
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
@@ -114,12 +132,15 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line."
 msgstr ""
-"  --fullscreen                        Angiver det sidst specificerede vindue i\n"
-"                                      fuldskærmsindstilling; gælder kun for et\n"
+"  --fullscreen                        Angiver det sidst specificerede vindue "
+"i\n"
+"                                      fuldskærmsindstilling; gælder kun for "
+"et\n"
 "                                      vindue; kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen."
+"                                      hvert vindue du opretter fra "
+"kommandolinjen."
 
-#: ../terminal/main.c:77
+#: ../terminal/main.c:80
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -128,11 +149,14 @@ msgid ""
 "                                      command line"
 msgstr ""
 "  --show-menubar                      Aktivér menulinjen for det sidst\n"
-"                                      specificerede vindue; gælder kun for det\n"
-"                                      ene vindue; kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen"
+"                                      specificerede vindue; gælder kun for "
+"det\n"
+"                                      ene vindue; kan specificeres en gang "
+"for\n"
+"                                      hvert vindue du opretter fra "
+"kommandolinjen"
 
-#: ../terminal/main.c:82
+#: ../terminal/main.c:85
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -141,11 +165,14 @@ msgid ""
 "                                      command line"
 msgstr ""
 "  --hide-menubar                      Deaktivér menulinjen for det sidst\n"
-"                                      specificerede vindue; gælder kun for det\n"
-"                                      ene vindue;kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen"
+"                                      specificerede vindue; gælder kun for "
+"det\n"
+"                                      ene vindue;kan specificeres en gang "
+"for\n"
+"                                      hvert vindue du opretter fra "
+"kommandolinjen"
 
-#: ../terminal/main.c:87
+#: ../terminal/main.c:90
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -154,11 +181,14 @@ msgid ""
 "                                      the command line"
 msgstr ""
 "  --show-borders                      Aktivér vinduesdekorationer for det\n"
-"                                      sidst specificerede vindue; gælder kun for\n"
-"                                      det ene vindue;kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen"
+"                                      sidst specificerede vindue; gælder kun "
+"for\n"
+"                                      det ene vindue;kan specificeres en "
+"gang for\n"
+"                                      hvert vindue du opretter fra "
+"kommandolinjen"
 
-#: ../terminal/main.c:92
+#: ../terminal/main.c:95
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -166,12 +196,16 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
-"  --hide-borders                      Deaktivér vinduesdekorationer for det sidst\n"
-"                                      specificerede vindue; gælder kun for det\n"
-"                                      ene vindue; kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen"
+"  --hide-borders                      Deaktivér vinduesdekorationer for det "
+"sidst\n"
+"                                      specificerede vindue; gælder kun for "
+"det\n"
+"                                      ene vindue; kan specificeres en gang "
+"for\n"
+"                                      hvert vindue du opretter fra "
+"kommandolinjen"
 
-#: ../terminal/main.c:97
+#: ../terminal/main.c:100
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -180,11 +214,14 @@ msgid ""
 "                                      command line"
 msgstr ""
 "  --show-toolbars                     Aktivér værktøjslinjer for det sidst\n"
-"                                      specificerede vindue; gælder kun for det\n"
-"                                      ene vindue; kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen"
+"                                      specificerede vindue; gælder kun for "
+"det\n"
+"                                      ene vindue; kan specificeres en gang "
+"for\n"
+"                                      hvert vindue du opretter fra "
+"kommandolinjen"
 
-#: ../terminal/main.c:102
+#: ../terminal/main.c:105
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -192,22 +229,27 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
-"  --hide-toolbars                     Deaktivér værktøjslinjer for det sidst\n"
-"                                      specificerede vindue; gælder kun for det\n"
-"                                      ene vindue; kan specificeres en gang for\n"
-"                                      hvert vindue du opretter fra kommandolinjen"
+"  --hide-toolbars                     Deaktivér værktøjslinjer for det "
+"sidst\n"
+"                                      specificerede vindue; gælder kun for "
+"det\n"
+"                                      ene vindue; kan specificeres en gang "
+"for\n"
+"                                      hvert vindue du opretter fra "
+"kommandolinjen"
 
-#: ../terminal/main.c:108
+#: ../terminal/main.c:111
 msgid ""
 "  --tab                               Open a new tab in the last-specified\n"
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
 "  --tab                               Åbn et nyt faneblad i det sidste\n"
-"                                      specificerede vindue; der kan specificeres\n"
+"                                      specificerede vindue; der kan "
+"specificeres\n"
 "                                      mere end en af disse parametre"
 
-#: ../terminal/main.c:111
+#: ../terminal/main.c:114
 msgid ""
 "  --window                            Open a new window containing one tab;\n"
 "                                      more than one of these options can be\n"
@@ -217,11 +259,12 @@ msgstr ""
 "                                      der kan specificeres mere end en af\n"
 "\t\t\t\t       disse parametre"
 
-#: ../terminal/main.c:115
+#: ../terminal/main.c:118
 msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=SKÆRM             standard X skærm som skal benyttes"
+msgstr ""
+"  --default-display=SKÆRM             standard X skærm som skal benyttes"
 
-#: ../terminal/main.c:116
+#: ../terminal/main.c:119
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 "                                      directory"
@@ -229,14 +272,12 @@ msgstr ""
 "  --default-working-directory=MAPPENAVN Angiv terminalens\n"
 "                                      standardarbejdsmappe"
 
-#: ../terminal/main.c:140
-#: ../terminal/terminal-preferences.c:1249
-#: ../terminal/terminal-shortcut-editor.c:119
-#: ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:143 ../terminal/terminal-preferences.c:1249
+#: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:162
+#: ../terminal/main.c:165
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -261,31 +302,31 @@ msgstr ""
 "\n"
 "Rapportér fejl til <%s>.\n"
 
-#: ../terminal/main.c:257
+#: ../terminal/main.c:260
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan ikke registrere terminalservice: %s\n"
 
-#: ../terminal/main.c:266
+#: ../terminal/main.c:269
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Kan ikke starte terminal: %s\n"
 
-#: ../terminal/terminal-app.c:560
+#: ../terminal/terminal-app.c:567
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ugyldig geometri-streng \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:113
+#: ../terminal/terminal-dbus.c:114
 msgid "User id mismatch"
 msgstr "Bruger-id passer ikke"
 
-#: ../terminal/terminal-dbus.c:145
+#: ../terminal/terminal-dbus.c:146
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS-beskedsystemet afbrudt, afslutter...\n"
 
-#: ../terminal/terminal-dbus.c:206
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Kan ikke registrere objekt %s"
@@ -307,71 +348,104 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "Kunne ikke åbne dokumentationsnavigatoren"
 
-#: ../terminal/terminal-options.c:107
+#: ../terminal/terminal-options.c:189
 #, c-format
-msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+msgid ""
+"Option \"--default-display\" requires specifying the default X display as "
+"its parameter"
+msgstr ""
+"Parameter \"--default-display\" kræver angivelser af standard X skærm som "
+"parameter"
+
+#: ../terminal/terminal-options.c:204
+#, c-format
+msgid ""
+"Option \"--default-working-directory\" requires specifying the default "
+"working directory as its parameter"
+msgstr ""
+"Parameter \"--default-working-directory\" kræver angivelse af standard "
+"aktuel arbejdsmappe som parameter"
+
+#: ../terminal/terminal-options.c:235
+#, c-format
+msgid ""
+"Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr "Parameter \"--sm-client-id\" kræver sessions id'et som parameter"
 
-#: ../terminal/terminal-options.c:129
+#: ../terminal/terminal-options.c:250
 #, c-format
-msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
-msgstr "Parameter \"--execute/-x\" kræver en kommando, som skal køres på resten af kommandolinjen"
+msgid ""
+"Option \"--execute/-x\" requires specifying the command to run on the rest "
+"of the command line"
+msgstr ""
+"Parameter \"--execute/-x\" kræver en kommando, som skal køres på resten af "
+"kommandolinjen"
 
-#: ../terminal/terminal-options.c:158
+#: ../terminal/terminal-options.c:267
 #, c-format
-msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
-msgstr "Parameter \"--command/-e\" kræver kommandoen, som skal køres som parameter"
+msgid ""
+"Option \"--command/-e\" requires specifying the command to run as its "
+"parameter"
+msgstr ""
+"Parameter \"--command/-e\" kræver kommandoen, som skal køres som parameter"
 
-#: ../terminal/terminal-options.c:187
+#: ../terminal/terminal-options.c:284
 #, c-format
-msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
-msgstr "Parameter \"--working-directory\" kræver aktuel arbejdsmappe som parameter"
+msgid ""
+"Option \"--working-directory\" requires specifying the working directory as "
+"its parameter"
+msgstr ""
+"Parameter \"--working-directory\" kræver aktuel arbejdsmappe som parameter"
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Parameter \"--title/-T\" kræver en titel som parameter"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:319
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgid ""
+"Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Parameter \"--display\" kræver angivelse af X skærm som parameter"
 
-#: ../terminal/terminal-options.c:278
+#: ../terminal/terminal-options.c:334
 #, c-format
-msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
-msgstr "Parameter \"--geometry\" kræver angivelse af vinduets geometri som parameter"
+msgid ""
+"Option \"--geometry\" requires specifying the window geometry as its "
+"parameter"
+msgstr ""
+"Parameter \"--geometry\" kræver angivelse af vinduets geometri som parameter"
 
-#: ../terminal/terminal-options.c:305
+#: ../terminal/terminal-options.c:349
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Parameter \"--role\" kræver angivelse af vinduets rolle som parameter"
 
-#: ../terminal/terminal-options.c:332
+#: ../terminal/terminal-options.c:364
 #, c-format
-msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr "Parameter \"--startup-id\" kræver angivelse af startup ID som parameter"
+msgid ""
+"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr ""
+"Parameter \"--startup-id\" kræver angivelse af startup ID som parameter"
 
-#: ../terminal/terminal-options.c:420
-#, c-format
-msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
-msgstr "Parameter \"--default-display\" kræver angivelser af standard X skærm som parameter"
+#: ../terminal/terminal-options.c:379
+#, fuzzy, c-format
+msgid ""
+"Option \"--icon/-I\" requires specifying an icon name or filename as its "
+"parameter"
+msgstr ""
+"Parameter \"--command/-e\" kræver kommandoen, som skal køres som parameter"
 
-#: ../terminal/terminal-options.c:444
-#, c-format
-msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
-msgstr "Parameter \"--default-working-directory\" kræver angivelse af standard aktuel arbejdsmappe som parameter"
-
-#: ../terminal/terminal-options.c:460
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Ukendt parameter \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:198
+#: ../terminal/terminal-preferences-dialog.c:209
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../terminal/terminal-preferences-dialog.c:204
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "Image Files"
 msgstr "Billedfiler"
 
@@ -410,19 +484,6 @@ msgstr "Indsæt markering"
 #: ../terminal/terminal-preferences.c:396
 msgid "Preferences"
 msgstr "Indstillinger"
-
-#: ../terminal/terminal-preferences.c:398
-#: ../terminal/terminal-preferences.c:409
-#: ../terminal/terminal-preferences.c:420
-#: ../terminal/terminal-preferences.c:431
-#: ../terminal/terminal-preferences.c:453
-#: ../terminal/terminal-preferences.c:464
-#: ../terminal/terminal-preferences.c:475
-#: ../terminal/terminal-shortcut-editor.c:207
-#: ../terminal/terminal-shortcut-editor.c:396
-#: ../Terminal.glade.h:23
-msgid "Disabled"
-msgstr "Deaktiveret"
 
 #: ../terminal/terminal-preferences.c:407
 msgid "Show menubar"
@@ -500,325 +561,337 @@ msgstr "Skift til faneblad 9"
 msgid "Contents"
 msgstr "Indhold"
 
-#: ../terminal/terminal-screen.c:464
+#: ../terminal/terminal-screen.c:447
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kunne ikke bestemme din logindskal."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1041
+#: ../terminal/terminal-screen.c:1154
 msgid "Failed to execute child"
 msgstr "Kunne ikke afvikle underprocess"
 
-#: ../terminal/terminal-screen.c:1277
+#: ../terminal/terminal-screen.c:1371
 msgid "Untitled"
 msgstr "Uden titel"
 
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "Filer"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "Redigèr"
-
-#: ../terminal/terminal-shortcut-editor.c:109
-msgid "View"
-msgstr "Vis"
-
-#: ../terminal/terminal-shortcut-editor.c:128
-msgid "Go"
-msgstr "Gå"
-
-#: ../terminal/terminal-shortcut-editor.c:145
-msgid "Help"
-msgstr "Hjælp"
-
-#: ../terminal/terminal-shortcut-editor.c:226
-msgid "Action"
-msgstr "Handling"
-
-#: ../terminal/terminal-shortcut-editor.c:233
-msgid "Shortcut key"
-msgstr "Genvejstast"
-
-#: ../terminal/terminal-shortcut-editor.c:333
-msgid "Compose shortcut"
-msgstr "Komponér genvej"
-
-#: ../terminal/terminal-shortcut-editor.c:338
-msgid "Clea_r"
-msgstr "R_yd"
-
-#: ../terminal/terminal-shortcut-editor.c:357
-msgid "Compose shortcut for:"
-msgstr "Komponér genvej for:"
-
-#: ../terminal/terminal-shortcut-editor.c:379
-msgid "Failed to acquire keyboard"
-msgstr "Kunne ikke få kontrol over tastaturet"
-
-#: ../terminal/terminal-shortcut-editor.c:381
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Et andet program har allerede fået kontrol over tastaturet."
-
-#: ../terminal/terminal-tab-header.c:202
+#: ../terminal/terminal-screen.c:1702
 msgid "Close this tab"
 msgstr "Luk dette faneblad"
 
-#: ../terminal/terminal-tab-header.c:340
-#: ../terminal/terminal-window.c:217
-msgid "_Detach Tab"
-msgstr "_Frigør faneblad"
+#: ../terminal/terminal-shortcut-editor.c:89
+msgid "File"
+msgstr "Filer"
 
-#: ../terminal/terminal-tab-header.c:345
-#: ../terminal/terminal-window.c:218
-msgid "C_lose Tab"
-msgstr "Lu_k faneblad"
+#: ../terminal/terminal-shortcut-editor.c:100
+msgid "Edit"
+msgstr "Redigèr"
+
+#: ../terminal/terminal-shortcut-editor.c:110
+msgid "View"
+msgstr "Vis"
+
+#: ../terminal/terminal-shortcut-editor.c:129
+msgid "Go"
+msgstr "Gå"
+
+#: ../terminal/terminal-shortcut-editor.c:146
+msgid "Help"
+msgstr "Hjælp"
+
+#: ../terminal/terminal-shortcut-editor.c:210
+#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:23
+msgid "Disabled"
+msgstr "Deaktiveret"
+
+#: ../terminal/terminal-shortcut-editor.c:222
+msgid "Action"
+msgstr "Handling"
+
+#: ../terminal/terminal-shortcut-editor.c:229
+msgid "Shortcut key"
+msgstr "Genvejstast"
+
+#: ../terminal/terminal-shortcut-editor.c:329
+msgid "Compose shortcut"
+msgstr "Komponér genvej"
+
+#: ../terminal/terminal-shortcut-editor.c:334
+msgid "Clea_r"
+msgstr "R_yd"
+
+#: ../terminal/terminal-shortcut-editor.c:353
+msgid "Compose shortcut for:"
+msgstr "Komponér genvej for:"
+
+#: ../terminal/terminal-shortcut-editor.c:375
+msgid "Failed to acquire keyboard"
+msgstr "Kunne ikke få kontrol over tastaturet"
+
+#: ../terminal/terminal-shortcut-editor.c:377
+msgid "Another application has already acquired control over your keyboard."
+msgstr "Et andet program har allerede fået kontrol over tastaturet."
 
 #: ../terminal/terminal-toolbars-view.c:131
 msgid "Toolbar Editor"
 msgstr "Værktøjslinjeeditor"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:322
 msgid "Copy Email Address"
 msgstr "Kopièr e-postadresse"
 
-#: ../terminal/terminal-widget.c:336
+#: ../terminal/terminal-widget.c:323
 msgid "Compose Email"
 msgstr "Skriv e-post"
 
-#: ../terminal/terminal-widget.c:340
+#: ../terminal/terminal-widget.c:327
 msgid "Copy Link Address"
 msgstr "Kopièr henvisningsadresse"
 
-#: ../terminal/terminal-widget.c:341
+#: ../terminal/terminal-widget.c:328
 msgid "Open Link"
 msgstr "Åbn henvisning"
 
-#: ../terminal/terminal-widget.c:495
+#: ../terminal/terminal-widget.c:482
 #, c-format
-msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Kan ikke indsætte valgte type tekst/simpel til terminalen: forkert format (%d) eller længde (%d)\n"
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Kan ikke indsætte valgte type tekst/simpel til terminalen: forkert format (%"
+"d) eller længde (%d)\n"
 
-#: ../terminal/terminal-widget.c:511
+#: ../terminal/terminal-widget.c:498
 #, c-format
-msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Kan ikke indsætte Mozilla URL på terminalen: Forkert format (%d) eller længde (%d)\n"
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Kan ikke indsætte Mozilla URL på terminalen: Forkert format (%d) eller "
+"længde (%d)\n"
 
-#: ../terminal/terminal-widget.c:537
+#: ../terminal/terminal-widget.c:524
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Kan ikke indsætte URI-liste på terminalen: Forkert format (%d) eller længde (%d)\n"
+msgstr ""
+"Kan ikke indsætte URI-liste på terminalen: Forkert format (%d) eller længde "
+"(%d)\n"
 
-#: ../terminal/terminal-widget.c:582
+#: ../terminal/terminal-widget.c:569
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Modtog ugyldig farvedata: Forkert format (%d) eller længde (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:714
+#: ../terminal/terminal-widget.c:701
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Kunne ikke åbne URL'en '%s'"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:222
 msgid "_File"
 msgstr "_Fil"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:223
 msgid "Open _Tab"
 msgstr "Åbn _faneblad"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:223
 msgid "Open a new terminal tab"
 msgstr "Åbn et nyt terminalfaneblad"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:224
 msgid "Open T_erminal"
 msgstr "Åbn t_erminal"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:224
 msgid "Open a new terminal window"
 msgstr "Åbn et nyt terminalvindue"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:225
+msgid "_Detach Tab"
+msgstr "_Frigør faneblad"
+
+#: ../terminal/terminal-window.c:225
 msgid "Open a new window for the current terminal tab"
 msgstr "Åbn et nyt vindue for det aktuelle terminalfaneblad"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:226
+msgid "C_lose Tab"
+msgstr "Lu_k faneblad"
+
+#: ../terminal/terminal-window.c:226
 msgid "Close the current terminal tab"
 msgstr "Luk aktuelle terminalfaneblad"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:227
 msgid "_Close Window"
 msgstr "_Luk vindue"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:227
 msgid "Close the terminal window"
 msgstr "Luk terminalvinduet"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:228
 msgid "_Edit"
 msgstr "_Redigèr"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:229
 msgid "_Copy"
 msgstr "_Kopièr"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:229
 msgid "Copy to clipboard"
 msgstr "Kopièr til klippebord"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:230
 msgid "_Paste"
 msgstr "I_ndsæt"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:230
 msgid "Paste from clipboard"
 msgstr "Indsæt fra klippebord"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:231
 msgid "Paste _Selection"
 msgstr "Indsæt _markering"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:231
 msgid "Paste from primary selection"
 msgstr "Indsæt fra primær markering"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:232
 msgid "_Toolbars..."
 msgstr "_Værktøjslinjer..."
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:232
 msgid "Customize the toolbars"
 msgstr "Tilpas værktøjslinjerne"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:233
 msgid "Pr_eferences..."
 msgstr "_Indstillinger..."
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:233
 msgid "Open the Terminal preferences dialog"
 msgstr "Åben terminalindstillingsvinduet"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:234
 msgid "_View"
 msgstr "_Vis"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:235
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:236
 msgid "_Set Title..."
 msgstr "_Angiv titel..."
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:236
 msgid "Set a custom title for the current tab"
 msgstr "Tilpas titlen for det aktuelle faneblad"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:237
 msgid "_Reset"
 msgstr "_Nulstil"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Nulstil og _ryd"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:239
 msgid "_Go"
 msgstr "_Gå"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:240
 msgid "_Previous Tab"
 msgstr "_Forrige faneblad"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:240
 msgid "Switch to previous tab"
 msgstr "Skift til forrige faneblad"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:241
 msgid "_Next Tab"
 msgstr "_Næste faneblad"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:241
 msgid "Switch to next tab"
 msgstr "Skift til næste faneblad"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:242
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:243
 msgid "_Contents"
 msgstr "_Indhold"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:243
 msgid "Display help contents"
 msgstr "Vis hjælpeindhold"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:244
 msgid "_Report a bug"
 msgstr "_Rapportér en fejl"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:244
 msgid "Report a bug in Terminal"
 msgstr "Rapportér en fejl i terminal"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:245
 msgid "_About"
 msgstr "_Om"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:245
 msgid "Display information about Terminal"
 msgstr "Vis informationer om terminal"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:246
 msgid "_Input Methods"
 msgstr "_Inddatametoder"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:251
 msgid "Show _Menubar"
 msgstr "Vis _menulinje"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the menubar"
 msgstr "Vis/skjul menulinje"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:252
 msgid "Show _Toolbars"
 msgstr "Vis _værktøjslinjer"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:252
 msgid "Show/hide the toolbars"
 msgstr "Vis/skjul værktøjslinjer"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:253
 msgid "Show Window _Borders"
 msgstr "Vis vindue_kanter"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:253
 msgid "Show/hide the window decorations"
 msgstr "Vis/skjul vinduesdekorationer"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:254
 msgid "_Fullscreen"
 msgstr "_Fuldskærm"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:254
 msgid "Toggle fullscreen mode"
 msgstr "Skift mellem fuldskærmstilstande"
 
-#: ../terminal/terminal-window.c:527
+#: ../terminal/terminal-window.c:522
 msgid "Warning"
 msgstr "Advarsel"
 
-#: ../terminal/terminal-window.c:538
+#: ../terminal/terminal-window.c:533
 msgid "Close all tabs"
 msgstr "Luk alle faneblade"
 
-#: ../terminal/terminal-window.c:557
+#: ../terminal/terminal-window.c:552
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -827,23 +900,23 @@ msgstr ""
 "Dette vindue har %d faneblade åbne. Hvis du\n"
 "lukker vinduet, lukker du også alle fanebladene."
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:555
 msgid "Close all tabs?"
 msgstr "Luk alle faneblade?"
 
-#: ../terminal/terminal-window.c:573
+#: ../terminal/terminal-window.c:568
 msgid "Do _not ask me again"
 msgstr "Spørg mig _ikke igen"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1565
 msgid "Window Title|Set Title"
 msgstr "Angiv titel"
 
-#: ../terminal/terminal-window.c:1541
+#: ../terminal/terminal-window.c:1579
 msgid "<b>Title:</b>"
 msgstr "<b>Titel:</b>"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1593
 msgid "Enter the title for the current terminal tab"
 msgstr "Indtast titlen for det nuværende terminalfaneblad"
 
@@ -960,32 +1033,61 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Akti_ver tekstudjævning for terminalskrifttypen"
 
 #: ../Terminal.glade.h:29
-msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
-msgstr "Aktivér denne indstilling hvis du vil have terminal til at udjævne kanterne på skrifttyperne i terminal-vinduer. Fravalg af dennekan øge genoptegnelseshastighed dramatisk og formindske globalt forbrug af resurser på langsomme systemer."
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Aktivér denne indstilling hvis du vil have terminal til at udjævne kanterne "
+"på skrifttyperne i terminal-vinduer. Fravalg af dennekan øge "
+"genoptegnelseshastighed dramatisk og formindske globalt forbrug af resurser "
+"på langsomme systemer."
 
 #: ../Terminal.glade.h:30
-msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
-msgstr "Aktivér denne indstilling for at tillade programmer der køres i terminalens vindue at bruge fed skrift."
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Aktivér denne indstilling for at tillade programmer der køres i terminalens "
+"vindue at bruge fed skrift."
 
 #: ../Terminal.glade.h:31
-msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
-msgstr "Aktivér denne indstilling for at rulle en enkelt linje ved at bruge op/ned piletasterne sammen med Shift-tasten."
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Aktivér denne indstilling for at rulle en enkelt linje ved at bruge op/ned "
+"piletasterne sammen med Shift-tasten."
 
 #: ../Terminal.glade.h:32
-msgid "Enable this option to show the menubar in newly created terminal windows."
-msgstr "Aktivér denne indstilling for at vise menulinjen i nye oprettede terminalvinduer."
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Aktivér denne indstilling for at vise menulinjen i nye oprettede "
+"terminalvinduer."
 
 #: ../Terminal.glade.h:33
-msgid "Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Aktivér denne indstilling for at vise værktøjslinjerne i nye terminalvinduer."
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Aktivér denne indstilling for at vise værktøjslinjerne i nye terminalvinduer."
 
 #: ../Terminal.glade.h:34
-msgid "Enable this option to show window decorations around newly created terminal windows."
-msgstr "Aktivér denne indstilling for at vise vinduesdekorationer rundt om nye terminalvinduer."
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Aktivér denne indstilling for at vise vinduesdekorationer rundt om nye "
+"terminalvinduer."
 
 #: ../Terminal.glade.h:35
-msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
-msgstr "Giver mulighed for at trykke en tast på tastaturet for at rulle ned i terminalvinduet til kommandolinjen."
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Giver mulighed for at trykke en tast på tastaturet for at rulle ned i "
+"terminalvinduet til kommandolinjen."
 
 #: ../Terminal.glade.h:36
 msgid "Escape sequence"
@@ -1140,16 +1242,26 @@ msgid "Select Background Image File"
 msgstr "Vælg baggrundsbillede"
 
 #: ../Terminal.glade.h:74
-msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
-msgstr "Vælg denne indstilling for at tvinge Terminal til at køre din kommandofortolker som en logindskal, når du åbner nye terminaler. Se dokumentationen til din kommandofortolker, for at se forskellene mellem kørsel som interaktiv kommandofortolker og logindskal."
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Vælg denne indstilling for at tvinge Terminal til at køre din "
+"kommandofortolker som en logindskal, når du åbner nye terminaler. Se "
+"dokumentationen til din kommandofortolker, for at se forskellene mellem "
+"kørsel som interaktiv kommandofortolker og logindskal."
 
 #: ../Terminal.glade.h:75
 msgid "Shortcut Keys"
 msgstr "Genvejstaster"
 
 #: ../Terminal.glade.h:76
-msgid "Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Specificerer antallet af linjer der kan rulles tilbage med rullebjælken."
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Specificerer antallet af linjer der kan rulles tilbage med rullebjælken."
 
 #: ../Terminal.glade.h:77
 msgid "St_yle:"
@@ -1192,12 +1304,24 @@ msgstr ""
 "og operativsystemer måske forventer."
 
 #: ../Terminal.glade.h:88
-msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
-msgstr "Denne indstilling kontrollerer om terminalen automatisk vil rulle ned, når der er ny uddata fra programmet, der afvikles i terminalen."
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Denne indstilling kontrollerer om terminalen automatisk vil rulle ned, når "
+"der er ny uddata fra programmet, der afvikles i terminalen."
 
 #: ../Terminal.glade.h:89
-msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
-msgstr "Dette angiver, hvad værdien af $TERM miljøvariablen er sat til, når et nyt terminalfaneblad eller et nyt terminalvindue åbnes. Standardindstillingen skulle være OK for de fleste systemer. Hvis du har problemer med farver i nogle programmer, kan du bruge værdien xterm-color her."
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Dette angiver, hvad værdien af $TERM miljøvariablen er sat til, når et nyt "
+"terminalfaneblad eller et nyt terminalvindue åbnes. Standardindstillingen "
+"skulle være OK for de fleste systemer. Hvis du har problemer med farver i "
+"nogle programmer, kan du bruge værdien xterm-color her."
 
 #: ../Terminal.glade.h:90
 msgid "Title"
@@ -1297,23 +1421,31 @@ msgstr "sekunder"
 
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Titel</b>"
+
 #~ msgid ""
 #~ "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "Kommandoen som køres i terminalen kan dynamisk angive en ny titel."
+
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Skrifttype</b>"
+
 #~ msgid "<b>Background</b>"
 #~ msgstr "<b>Baggrund</b>"
+
 #~ msgid "Shade transparent or image background:"
 #~ msgstr "Skyggegennemsigtighed eller baggrundsbillede:"
+
 #~ msgid "<small><i>None</i></small>"
 #~ msgstr "<small><i>Ingen</i></small>"
+
 #~ msgid "<small><i>Maximum</i></small>"
 #~ msgstr "<small><i>Maksimum</i></small>"
+
 #~ msgid "<b>Foreground and Background</b>"
 #~ msgstr "<b>Forgrund og baggrund</b>"
+
 #~ msgid "<b>Tab activity</b>"
 #~ msgstr "<b>Aktivitet for faneblad</b>"
+
 #~ msgid "<b>Shortcut keys</b>"
 #~ msgstr "<b>Genvejstaster</b>"
-
