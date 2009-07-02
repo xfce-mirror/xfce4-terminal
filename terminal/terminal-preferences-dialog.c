@@ -89,7 +89,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                     "misc-borders-default", "color-selection-use-default",
                                     "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                     "binding-backspace", "binding-delete",
-                                    "background-mode", "background-image-style" };
+                                    "background-mode", "background-image-style" 
+#if TERMINAL_HAS_ANTI_ALIAS_SETTING
+                                    , "font-anti-alias"
+#endif
+                                    };
   const gchar   *props_color[] =  { "color-foreground", "color-cursor",
                                     "color-background", "tab-activity-color",
                                     "color-selection" };
@@ -150,6 +154,13 @@ error:
   BIND_PROPERTIES ("scrolling-lines", "value");
   BIND_PROPERTIES ("tab-activity-timeout", "value");
   BIND_PROPERTIES ("background-darkness", "value");
+
+#if !TERMINAL_HAS_ANTI_ALIAS_SETTING
+  /* hide anti alias setting */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-anti-alias");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+#endif
 
   /* reset comparibility button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-compatibility");
