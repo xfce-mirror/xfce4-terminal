@@ -522,6 +522,14 @@ terminal_app_open_window (TerminalApp         *app,
   if (attr->startup_id != NULL)
     terminal_window_set_startup_id (TERMINAL_WINDOW (window), attr->startup_id);
 
+  if (attr->icon != NULL)
+    {
+      if (g_path_is_absolute (attr->icon))
+        gtk_window_set_icon_from_file (GTK_WINDOW (window), attr->icon, NULL);
+      else
+        gtk_window_set_icon_name (GTK_WINDOW (window), attr->icon);
+    }
+
   screen = terminal_app_find_screen (attr->display);
   if (G_LIKELY (screen != NULL))
     {

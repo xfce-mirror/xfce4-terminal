@@ -340,6 +340,21 @@ terminal_options_parse (gint              argc,
               win_attr->startup_id = g_strdup (s);
             }
         }
+      else if (terminal_option_cmp ("icon", 'I', argc, argv, &n, &s))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--icon/-I\" requires specifying "
+                             "an icon name or filename as its parameter"));
+              goto failed;
+            }
+          else if (win_attr != NULL)
+            {
+              g_free (win_attr->icon);
+              win_attr->icon = g_strdup (s);
+            }
+        }
       else if (terminal_option_show_hide_cmp ("menubar", argc, argv, &n, &visible))
         {
           if (win_attr != NULL)
@@ -516,5 +531,6 @@ terminal_window_attr_free (TerminalWindowAttr *attr)
   g_free (attr->geometry);
   g_free (attr->display);
   g_free (attr->role);
+  g_free (attr->icon);
   g_slice_free (TerminalWindowAttr, attr);
 }

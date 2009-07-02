@@ -1686,10 +1686,10 @@ terminal_window_new (gboolean           fullscreen,
 
   /* maximize */
   if (maximize)
-    gtk_window_maximize (&window->__parent__);
+    gtk_window_maximize (GTK_WINDOW (window));
 
   /* setup menubar visibility */
-  if (menubar == TERMINAL_VISIBILITY_DEFAULT)
+  if (G_LIKELY (menubar == TERMINAL_VISIBILITY_DEFAULT))
     g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &setting, NULL);
   else
     setting = (menubar == TERMINAL_VISIBILITY_SHOW);
@@ -1697,7 +1697,7 @@ terminal_window_new (gboolean           fullscreen,
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
 
   /* setup toolbars visibility */
-  if (toolbars == TERMINAL_VISIBILITY_DEFAULT)
+  if (G_LIKELY (toolbars == TERMINAL_VISIBILITY_DEFAULT))
     g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &setting, NULL);
   else
     setting = (toolbars == TERMINAL_VISIBILITY_SHOW);
@@ -1707,7 +1707,7 @@ terminal_window_new (gboolean           fullscreen,
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
 
   /* setup borders visibility */
-  if (borders == TERMINAL_VISIBILITY_DEFAULT)
+  if (G_LIKELY (borders == TERMINAL_VISIBILITY_DEFAULT))
     g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &setting, NULL);
   else
     setting = (borders == TERMINAL_VISIBILITY_SHOW);

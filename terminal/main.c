@@ -70,6 +70,8 @@ usage (void)
                      "                                      you create from the command line"));
   g_print ("%s\n", _("  --startup-id=STRING                 ID for the startup notification\n"
                      "                                      protocol"));
+  g_print ("%s\n", _("  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+                     "                                      name or filename"));
   g_print ("%s\n", _("  --fullscreen                        Set the last-specified window into\n"
                      "                                      fullscreen mode; applies to only one\n"
                      "                                      window; can be specified once for\n"
