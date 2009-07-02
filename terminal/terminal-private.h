@@ -33,7 +33,16 @@ G_BEGIN_DECLS
 #define TERMINAL_HAS_ANTI_ALIAS_SETTING (TRUE)
 #endif
 
+/* returns true if string contains text */
 #define IS_STRING(string) (string != NULL && *string != '\0')
+
+/* macro for some debugging */
+#define PRINT_TIME(desc) \
+  G_BEGIN_DECLS { \
+    GTimeVal __tv; \
+    g_get_current_time (&__tv); \
+    g_print ("%ld.%ld: %s\n", __tv.tv_sec, __tv.tv_usec, desc); \
+  } G_END_DECLS
 
 /* support macros for debugging */
 #ifndef NDEBUG
