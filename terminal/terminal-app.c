@@ -482,8 +482,6 @@ terminal_app_process (TerminalApp  *app,
   g_slist_foreach (attrs, (GFunc) terminal_window_attr_free, NULL);
   g_slist_free (attrs);
 
-  terminal_accel_map_start_monitor (app->accel_map);
-
   return TRUE;
 }
 

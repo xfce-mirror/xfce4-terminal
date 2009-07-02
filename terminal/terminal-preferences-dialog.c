@@ -89,7 +89,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                     "misc-borders-default", "color-selection-use-default",
                                     "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                     "binding-backspace", "binding-delete",
-                                    "background-mode", "background-image-style" 
+                                    "background-mode", "background-image-style"
 #if TERMINAL_HAS_ANTI_ALIAS_SETTING
                                     , "font-anti-alias"
 #endif

@@ -45,8 +45,6 @@ GType             terminal_accel_map_get_type      (void) G_GNUC_CONST;
 
 TerminalAccelMap *terminal_accel_map_new           (void);
 
-void              terminal_accel_map_start_monitor (TerminalAccelMap *map);
-
 G_END_DECLS
 
 #endif /* !__TERMINAL_ACCEL_MAP_H__ */

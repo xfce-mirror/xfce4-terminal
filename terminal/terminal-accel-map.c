@@ -29,10 +29,17 @@
 
 
 
-static void terminal_accel_map_finalize     (GObject                *object);
-static void terminal_accel_map_notify       (TerminalPreferences    *preferences,
-                                             GParamSpec             *pspec,
-                                             TerminalAccelMap       *map);
+static void     terminal_accel_map_finalize        (GObject             *object);
+static gboolean terminal_accel_map_connect_idle    (gpointer             user_data);
+static void     terminal_accel_map_connect_destroy (gpointer             user_data);
+static void     terminal_accel_map_notify          (TerminalPreferences *preferences,
+                                                    GParamSpec          *pspec,
+                                                    TerminalAccelMap    *map);
+static void     terminal_accel_map_changed         (GtkAccelMap         *object,
+                                                    gchar               *accel_path,
+                                                    guint                accel_key,
+                                                    GdkModifierType      accel_mods,
+                                                    TerminalAccelMap    *map);
 
 
 
@@ -40,6 +47,8 @@ struct _TerminalAccelMap
 {
   GObject              __parent__;
   TerminalPreferences *preferences;
+
+  guint                accels_connect_id;
 };
 
 
@@ -62,12 +71,45 @@ terminal_accel_map_class_init (TerminalAccelMapClass *klass)
 static void
 terminal_accel_map_init (TerminalAccelMap *map)
 {
-  GParamSpec **specs;
-  GParamSpec  *spec;
-  gchar       *signal_name;
-  guint        nspecs, n;
-
   map->preferences = terminal_preferences_get ();
+
+  /* schedule a accel map load, this is quite slow so don't do this
+   * during startup since we don't need it right away */
+  map->accels_connect_id = g_idle_add_full (G_PRIORITY_LOW,
+      terminal_accel_map_connect_idle, map,
+      terminal_accel_map_connect_destroy);
+}
+
+
+
+static void
+terminal_accel_map_finalize (GObject *object)
+{
+  TerminalAccelMap *map = TERMINAL_ACCEL_MAP (object);
+
+  if (G_UNLIKELY (map->accels_connect_id != 0))
+    g_source_remove (map->accels_connect_id);
+
+  g_signal_handlers_disconnect_by_func (G_OBJECT (map->preferences),
+      G_CALLBACK (terminal_accel_map_notify), map);
+  g_object_unref (G_OBJECT (map->preferences));
+
+  (*G_OBJECT_CLASS (terminal_accel_map_parent_class)->finalize) (object);
+}
+
+
+
+static gboolean
+terminal_accel_map_connect_idle (gpointer user_data)
+{
+  TerminalAccelMap  *map = TERMINAL_ACCEL_MAP (user_data);
+  GtkAccelMap       *gtkmap;
+  GParamSpec       **specs;
+  GParamSpec        *spec;
+  gchar             *signal_name;
+  guint              nspecs, n;
+
+  GDK_THREADS_ENTER ();
 
   specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (map->preferences), &nspecs);
   for (n = 0; n < nspecs; ++n)
@@ -84,19 +126,24 @@ terminal_accel_map_init (TerminalAccelMap *map)
       terminal_accel_map_notify (map->preferences, spec, map);
     }
   g_free (specs);
+
+  /* monitor the accelmap for changes, so we can store
+   * changed accelerators in the preferences */
+  gtkmap = gtk_accel_map_get ();
+  g_signal_connect (G_OBJECT (gtkmap), "changed",
+       G_CALLBACK (terminal_accel_map_changed), map);
+
+  GDK_THREADS_LEAVE ();
+
+  return FALSE;
 }
 
 
 
 static void
-terminal_accel_map_finalize (GObject *object)
+terminal_accel_map_connect_destroy (gpointer user_data)
 {
-  TerminalAccelMap *map = TERMINAL_ACCEL_MAP (object);
-
-  g_signal_handlers_disconnect_by_func (G_OBJECT (map->preferences), G_CALLBACK (terminal_accel_map_notify), map);
-  g_object_unref (G_OBJECT (map->preferences));
-
-  (*G_OBJECT_CLASS (terminal_accel_map_parent_class)->finalize) (object);
+  TERMINAL_ACCEL_MAP (user_data)->accels_connect_id = 0;
 }
 
 
@@ -173,18 +220,4 @@ TerminalAccelMap*
 terminal_accel_map_new (void)
 {
   return g_object_new (TERMINAL_TYPE_ACCEL_MAP, NULL);
-}
-
-
-
-void
-terminal_accel_map_start_monitor (TerminalAccelMap *map)
-{
-  GtkAccelMap *gtkmap;
-
-  terminal_return_if_fail (TERMINAL_IS_ACCEL_MAP (map));
-
-  /* monitor the accel map for changes */
-  gtkmap = gtk_accel_map_get ();
-  g_signal_connect (G_OBJECT (gtkmap), "changed", G_CALLBACK (terminal_accel_map_changed), map);
 }
