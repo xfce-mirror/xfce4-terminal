@@ -503,7 +503,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
   n = g_strv_length (env);
   result = g_new (gchar *, n + 1 + 4);
 
-  for (n = 0, p = environ; *p != NULL; ++p)
+  for (n = 0, p = env; *p != NULL; ++p)
     {
       /* do not copy the following variables */
       if (strcmp (*p, "COLUMNS") == 0
