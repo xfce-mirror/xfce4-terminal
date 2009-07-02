@@ -48,15 +48,15 @@ struct _TerminalOptions
 
 struct _TerminalTabAttr
 {
-  gchar  **command;
-  gchar   *directory;
-  gchar   *title;
-  gboolean hold;
+  gchar    **command;
+  gchar     *directory;
+  gchar     *title;
+  gboolean   hold;
 };
 
 struct _TerminalWindowAttr
 {
-  GList               *tabs;
+  GSList              *tabs;
   gchar               *display;
   gchar               *geometry;
   gchar               *role;
@@ -70,15 +70,14 @@ struct _TerminalWindowAttr
 
 gboolean           terminal_options_parse    (gint                 argc,
                                               gchar              **argv,
-                                              GList              **attrs_return,
+                                              GSList             **attrs_return,
                                               TerminalOptions    **options_return,
                                               GError             **error);
 
 void                terminal_options_free     (TerminalOptions     *options);
 
-void                terminal_tab_attr_free    (TerminalTabAttr     *attr);
-
 TerminalWindowAttr *terminal_window_attr_new  (void);
+
 void                terminal_window_attr_free (TerminalWindowAttr  *attr);
 
 G_END_DECLS

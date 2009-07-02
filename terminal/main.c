@@ -32,6 +32,7 @@
 
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-stock.h>
+#include <terminal/terminal-private.h>
 
 #ifdef HAVE_DBUS
 #include <terminal/terminal-dbus.h>

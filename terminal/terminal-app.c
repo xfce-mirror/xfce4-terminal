@@ -471,8 +471,7 @@ terminal_app_process (TerminalApp  *app,
                       gint          argc,
                       GError      **error)
 {
-  GList  *attrs;
-  GList  *lp;
+  GSList *attrs, *lp;
 
   if (!terminal_options_parse (argc, argv, &attrs, NULL, error))
     return FALSE;
@@ -480,8 +479,8 @@ terminal_app_process (TerminalApp  *app,
   for (lp = attrs; lp != NULL; lp = lp->next)
     terminal_app_open_window (app, lp->data);
 
-  g_list_foreach (attrs, (GFunc) terminal_window_attr_free, NULL);
-  g_list_free (attrs);
+  g_slist_foreach (attrs, (GFunc) terminal_window_attr_free, NULL);
+  g_slist_free (attrs);
 
   terminal_accel_map_start_monitor (app->accel_map);
 
@@ -506,7 +505,7 @@ terminal_app_open_window (TerminalApp         *app,
   GtkWidget       *terminal;
   GdkScreen       *screen;
   gchar           *geometry;
-  GList           *lp;
+  GSList          *lp;
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (attr != NULL);
