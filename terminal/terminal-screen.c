@@ -93,6 +93,7 @@ static void       terminal_screen_update_colors                 (TerminalScreen 
 static void       terminal_screen_update_font                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
+static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_bar          (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_lines        (TerminalScreen        *screen);
@@ -284,6 +285,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
                     "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_screen_update_misc_cursor_blinks), screen,
+                    "swapped-signal::notify::misc-cursor-shape", G_CALLBACK (terminal_screen_update_misc_cursor_shape), screen,
                     "swapped-signal::notify::misc-mouse-autohide", G_CALLBACK (terminal_screen_update_misc_mouse_autohide), screen,
                     "swapped-signal::notify::scrolling-bar", G_CALLBACK (terminal_screen_update_scrolling_bar), screen,
                     "swapped-signal::notify::scrolling-lines", G_CALLBACK (terminal_screen_update_scrolling_lines), screen,
@@ -301,6 +303,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
+  terminal_screen_update_misc_cursor_shape (screen);
   terminal_screen_update_misc_mouse_autohide (screen);
   terminal_screen_update_scrolling_bar (screen);
   terminal_screen_update_scrolling_lines (screen);
@@ -710,6 +713,37 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
                                       bval ? VTE_CURSOR_BLINK_ON : VTE_CURSOR_BLINK_OFF);
 }
 
+
+
+static void
+terminal_screen_update_misc_cursor_shape (TerminalScreen *screen)
+{
+#if VTE_CHECK_VERSION (0, 19, 1)
+  TerminalCursorShape    val;
+  VteTerminalCursorShape shape = VTE_CURSOR_SHAPE_BLOCK;
+
+  g_object_get (G_OBJECT (screen->preferences), "misc-cursor-shape", &val, NULL);
+
+  switch (val)
+    {
+      case TERMINAL_CURSOR_SHAPE_BLOCK:
+        break;
+
+      case TERMINAL_CURSOR_SHAPE_IBEAM:
+        shape = VTE_CURSOR_SHAPE_IBEAM;
+        break;
+
+      case TERMINAL_CURSOR_SHAPE_UNDERLINE:
+        shape = VTE_CURSOR_SHAPE_UNDERLINE;
+        break;
+
+      default:
+        terminal_assert_not_reached ();
+    }
+
+  vte_terminal_set_cursor_shape (VTE_TERMINAL (screen->terminal), shape);
+#endif
+}
 
 
 static void

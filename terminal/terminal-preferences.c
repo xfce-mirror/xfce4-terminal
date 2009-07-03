@@ -109,6 +109,7 @@ enum
   PROP_MISC_BELL,
   PROP_MISC_BORDERS_DEFAULT,
   PROP_MISC_CURSOR_BLINKS,
+  PROP_MISC_CURSOR_SHAPE,
   PROP_MISC_DEFAULT_GEOMETRY,
   PROP_MISC_INHERIT_GEOMETRY,
   PROP_MISC_MENUBAR_DEFAULT,
@@ -298,6 +299,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_TITLE, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_ERASE_BINDING))
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_ERASE_BINDING, transform_string_to_enum);
+  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_CURSOR_SHAPE))
+    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_CURSOR_SHAPE, transform_string_to_enum);
 
   /**
    * TerminalPreferences:accel-new-tab:
@@ -1034,6 +1037,18 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                          "MiscCursorBlinks",
                                                          FALSE,
                                                          EXO_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:misc-cursor-shape:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_MISC_CURSOR_SHAPE,
+                                   g_param_spec_enum ("misc-cursor-shape",
+                                                      "misc-cursor-shape",
+                                                      "MiscCursorShape",
+                                                      TERMINAL_TYPE_CURSOR_SHAPE,
+                                                      TERMINAL_CURSOR_SHAPE_BLOCK,
+                                                      EXO_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:misc-default-geometry:

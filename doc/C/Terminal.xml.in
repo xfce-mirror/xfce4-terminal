@@ -1314,6 +1314,7 @@ MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
@@ -1365,6 +1366,19 @@ MiscHighlightUrls=TRUE</programlisting>
             <para>
               Enable this option to display a cursor that blinks. Can be either <literal>TRUE</literal>
               or <literal>FALSE</literal> (the default).
+            </para>
+          </listitem>
+        </varlistentry>
+        
+        <varlistentry>
+          <term><varname>MiscCursorShape</varname></term>
+          <listitem>
+            <para>
+              Specifies the shape of the cursor in the terminal. This can be either
+              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default), 
+              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or 
+              <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
+              only available when you compile against VTE 0.19.1 or newer.
             </para>
           </listitem>
         </varlistentry>
