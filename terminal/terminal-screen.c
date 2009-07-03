@@ -1702,7 +1702,7 @@ GtkWidget *
 terminal_screen_get_tab_label (TerminalScreen *screen)
 {
   GtkWidget  *hbox;
-  GtkWidget  *button, *image;
+  GtkWidget  *button, *image, *align;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -1715,12 +1715,16 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   gtk_widget_show (screen->tab_label);
 
+  align = gtk_alignment_new (0.5f, 0.5f, 0.0f, 0.0f);
+  gtk_box_pack_start  (GTK_BOX (hbox), align, FALSE, FALSE, 0);
+  gtk_widget_show (align);
+
   button = gtk_button_new ();
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   GTK_WIDGET_UNSET_FLAGS (button, GTK_CAN_DEFAULT | GTK_CAN_FOCUS);
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
-  gtk_box_pack_start  (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (align), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
                             G_CALLBACK (gtk_widget_destroy), screen);
   exo_binding_new (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
