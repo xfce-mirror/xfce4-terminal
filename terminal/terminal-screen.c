@@ -565,34 +565,40 @@ terminal_screen_update_background (TerminalScreen *screen)
 
 
 
+static VteTerminalEraseBinding
+terminal_screen_binding_vte (TerminalEraseBinding binding)
+{
+  switch (binding)
+    {
+    case TERMINAL_ERASE_BINDING_AUTO:
+      return VTE_ERASE_AUTO;
+
+    case TERMINAL_ERASE_BINDING_ASCII_BACKSPACE:
+      return VTE_ERASE_ASCII_BACKSPACE;
+
+    case TERMINAL_ERASE_BINDING_ASCII_DELETE:
+      return VTE_ERASE_ASCII_DELETE;
+
+    case TERMINAL_ERASE_BINDING_DELETE_SEQUENCE:
+      return VTE_ERASE_DELETE_SEQUENCE;
+
+    default:
+      terminal_assert_not_reached ();
+    }
+
+  return VTE_ERASE_AUTO;
+}
+
+
+
 static void
 terminal_screen_update_binding_backspace (TerminalScreen *screen)
 {
   TerminalEraseBinding binding;
 
   g_object_get (G_OBJECT (screen->preferences), "binding-backspace", &binding, NULL);
-
-  switch (binding)
-    {
-    case TERMINAL_ERASE_BINDING_AUTO:
-      vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_AUTO);
-      break;
-
-    case TERMINAL_ERASE_BINDING_ASCII_BACKSPACE:
-      vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_ASCII_BACKSPACE);
-      break;
-
-    case TERMINAL_ERASE_BINDING_ASCII_DELETE:
-      vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_ASCII_DELETE);
-      break;
-
-    case TERMINAL_ERASE_BINDING_DELETE_SEQUENCE:
-      vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_DELETE_SEQUENCE);
-      break;
-
-    default:
-      terminal_assert_not_reached ();
-    }
+  vte_terminal_set_backspace_binding (VTE_TERMINAL (screen->terminal),
+      terminal_screen_binding_vte (binding));
 }
 
 
@@ -603,28 +609,8 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
   TerminalEraseBinding binding;
 
   g_object_get (G_OBJECT (screen->preferences), "binding-delete", &binding, NULL);
-
-  switch (binding)
-    {
-    case TERMINAL_ERASE_BINDING_AUTO:
-      vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_AUTO);
-      break;
-
-    case TERMINAL_ERASE_BINDING_ASCII_BACKSPACE:
-      vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_ASCII_BACKSPACE);
-      break;
-
-    case TERMINAL_ERASE_BINDING_ASCII_DELETE:
-      vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_ASCII_DELETE);
-      break;
-
-    case TERMINAL_ERASE_BINDING_DELETE_SEQUENCE:
-      vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal), VTE_ERASE_DELETE_SEQUENCE);
-      break;
-
-    default:
-      terminal_assert_not_reached ();
-    }
+  vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal),
+      terminal_screen_binding_vte (binding));
 }
 
 
