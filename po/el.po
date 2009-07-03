@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 23:06+0200\n"
+"POT-Creation-Date: 2009-07-03 17:32+0200\n"
 "PO-Revision-Date: 2009-02-21 14:25+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -18,21 +18,31 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../terminal/main.c:46
-msgid "Usage: Terminal [OPTION...]"
-msgstr "Χρήση: Terminal [ΟΡΙΣΜΑ...]"
+msgid "Usage:"
+msgstr ""
 
-#: ../terminal/main.c:48
+#: ../terminal/main.c:47
+msgid "OPTION"
+msgstr ""
+
+#: ../terminal/main.c:49
+#, fuzzy
+msgid "General Options"
+msgstr "Γενικές"
+
+#: ../terminal/main.c:50
 msgid "  -h, --help                          Print this help message and exit"
 msgstr ""
 "  -h, --help                          Εμφανίζει αυτό το κείμενο βοήθειας"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:51
+#, fuzzy
 msgid ""
-"  -v, --version                       Print version information and exit"
+"  -V, --version                       Print version information and exit"
 msgstr ""
 "  -v, --version                       Εμφανίζει τις πληροφορίες έκδοσης"
 
-#: ../terminal/main.c:50
+#: ../terminal/main.c:52
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
@@ -40,7 +50,51 @@ msgstr ""
 "  --disable-server                    Όχι σύνδεση με το δίαυλο μηνυμάτων\n"
 "                                      συστήματος D-BUS"
 
-#: ../terminal/main.c:53
+#: ../terminal/main.c:54
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr ""
+"  --default-display=DISPLAY           προκαθορισμένο X display προς χρήση"
+
+#: ../terminal/main.c:55
+msgid ""
+"  --default-working-directory=DIRNAME Set the default terminal's working\n"
+"                                      directory"
+msgstr ""
+"  --default-working-directory=DIRNAME Ορισμός του εξ ορισμού καταλόγου\n"
+"                                      εργασίας του τερματικού."
+
+#: ../terminal/main.c:58
+msgid "Window or Tab Separators"
+msgstr ""
+
+#: ../terminal/main.c:59
+msgid ""
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+"  --tab                               Ανοίγει μια νέα καρτέλα στο "
+"προσδιορισμένο\n"
+"                                      παράθυρο· μπορεί να δοθεί παραπάνω από "
+"μια\n"
+"                                      φορές."
+
+#: ../terminal/main.c:62
+msgid ""
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided"
+msgstr ""
+"  --window                            Ανοίγει ένα νέο παράθυρο με μια "
+"καρτέλα.\n"
+"                                      Μπορεί να δοθεί παραπάνω από μια φορές."
+
+#: ../terminal/main.c:66
+#, fuzzy
+msgid "Tab Options"
+msgstr "Θέση καρτέλας"
+
+#: ../terminal/main.c:67
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
@@ -48,7 +102,7 @@ msgstr ""
 "  -x, --execute                       Εκτέλεση του υπολοίπου της εντολής\n"
 "                                      μέσα στο τερματικό."
 
-#: ../terminal/main.c:55
+#: ../terminal/main.c:69
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
@@ -56,18 +110,18 @@ msgstr ""
 "  -e, --command=ΕΝΤΟΛΗ                Εκτελεί το όρισμα αυτής της επιλογής\n"
 "                                      μέσα στο τερματικό"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:71
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
 "  --working-directory=ΚΑΤΑΛΟΓΟΣ    Ορισμός του καταλόγου εργασίας του "
 "τερματικού."
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:72
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr "  -T, --title=TITLE                   Ορίζει τον τίτλο του τερματικού"
 
-#: ../terminal/main.c:59
+#: ../terminal/main.c:73
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
@@ -75,7 +129,12 @@ msgstr ""
 "  -H, --hold                          Να μην κλείσει η καρτέλλα αμέσως μετά\n"
 "                                      την έξοδο της θυγατρικής διεργασίας"
 
-#: ../terminal/main.c:62
+#: ../terminal/main.c:76
+#, fuzzy
+msgid "Window Options"
+msgstr "Άγνωστη επιλογή \"%s\""
+
+#: ../terminal/main.c:77
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
@@ -83,7 +142,7 @@ msgstr ""
 "  --display=DISPLAY                   Ποιο X display να χρησιμοποιηθεί για\n"
 "                                      το προσδιορισμένο παράθυρο"
 
-#: ../terminal/main.c:64
+#: ../terminal/main.c:79
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
@@ -94,7 +153,7 @@ msgstr ""
 "ορισθεί\n"
 "                                      μια φορά ανά παράθυρο που ανοίγεται."
 
-#: ../terminal/main.c:67
+#: ../terminal/main.c:82
 #, fuzzy
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
@@ -111,7 +170,7 @@ msgstr ""
 "δημιουργείται\n"
 "                                      από τη γραμμή εντολών."
 
-#: ../terminal/main.c:71
+#: ../terminal/main.c:86
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
@@ -119,7 +178,7 @@ msgstr ""
 "  --startup-id=ΑΝΑΓΩΡΙΣΤΙΚΟ           Αναγνωριστικό για το πρωτόκολλο\n"
 "                                      ειδοποίησης εκκίνησης"
 
-#: ../terminal/main.c:73
+#: ../terminal/main.c:88
 #, fuzzy
 msgid ""
 "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
@@ -128,13 +187,14 @@ msgstr ""
 "  -e, --command=ΕΝΤΟΛΗ                Εκτελεί το όρισμα αυτής της επιλογής\n"
 "                                      μέσα στο τερματικό"
 
-#: ../terminal/main.c:75
+#: ../terminal/main.c:90
+#, fuzzy
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line."
+"                                      command line"
 msgstr ""
 "  --fullscreen                        Ορισμός του ρόλου για το τελευταίο\n"
 "                                      καθορισμένο παράθυρο, εφαρμόζεται "
@@ -145,7 +205,7 @@ msgstr ""
 "δημιουργείται\n"
 "                                      από τη γραμμή εντολών."
 
-#: ../terminal/main.c:80
+#: ../terminal/main.c:95
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -160,7 +220,7 @@ msgstr ""
 "                                      για κάθε παράθυρο που δημιουργείτε\n"
 "                                      από τη γραμμή εντολών"
 
-#: ../terminal/main.c:85
+#: ../terminal/main.c:100
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -175,7 +235,7 @@ msgstr ""
 "                                      για κάθε παράθυρο που δημιουργείτε\n"
 "                                      από τη γραμμή εντολών"
 
-#: ../terminal/main.c:90
+#: ../terminal/main.c:105
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -190,7 +250,7 @@ msgstr ""
 "                                      για κάθε παράθυρο που δημιουργείτε\n"
 "                                      από τη γραμμή εντολών"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:110
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -205,7 +265,7 @@ msgstr ""
 "                                      για κάθε παράθυρο που δημιουργείτε\n"
 "                                      από τη γραμμή εντολών"
 
-#: ../terminal/main.c:100
+#: ../terminal/main.c:115
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -221,7 +281,7 @@ msgstr ""
 "                                      για κάθε παράθυρο που δημιουργείτε\n"
 "                                      από τη γραμμή εντολών"
 
-#: ../terminal/main.c:105
+#: ../terminal/main.c:120
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -237,47 +297,12 @@ msgstr ""
 "                                      για κάθε παράθυρο που δημιουργείτε\n"
 "                                      από τη γραμμή εντολών"
 
-#: ../terminal/main.c:111
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Ανοίγει μια νέα καρτέλα στο "
-"προσδιορισμένο\n"
-"                                      παράθυρο· μπορεί να δοθεί παραπάνω από "
-"μια\n"
-"                                      φορές."
-
-#: ../terminal/main.c:114
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Ανοίγει ένα νέο παράθυρο με μια "
-"καρτέλα.\n"
-"                                      Μπορεί να δοθεί παραπάνω από μια φορές."
-
-#: ../terminal/main.c:118
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=DISPLAY           προκαθορισμένο X display προς χρήση"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAME Ορισμός του εξ ορισμού καταλόγου\n"
-"                                      εργασίας του τερματικού."
-
-#: ../terminal/main.c:143 ../terminal/terminal-preferences.c:1249
+#: ../terminal/main.c:147 ../terminal/terminal-preferences.c:1249
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Τερματικό"
 
-#: ../terminal/main.c:165
+#: ../terminal/main.c:169
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -302,12 +327,12 @@ msgstr ""
 "\n"
 "Παρακαλώ αναφέρετε σφάλματα στο <%s>.\n"
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:264
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσίας τερματικού: %s\n"
 
-#: ../terminal/main.c:269
+#: ../terminal/main.c:273
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Δεν ήταν δυνατή η εκκίνηση του τερματικού: %s\n"
@@ -575,15 +600,15 @@ msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου σας."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1154
+#: ../terminal/terminal-screen.c:1140
 msgid "Failed to execute child"
 msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
 
-#: ../terminal/terminal-screen.c:1371
+#: ../terminal/terminal-screen.c:1357
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: ../terminal/terminal-screen.c:1702
+#: ../terminal/terminal-screen.c:1688
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
@@ -608,7 +633,7 @@ msgid "Help"
 msgstr "Βοήθεια"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:23
+#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Απενεργοποιημένο"
 
@@ -1012,37 +1037,42 @@ msgid "Control-H"
 msgstr "Control-H"
 
 #: ../Terminal.glade.h:21
+#, fuzzy
+msgid "Cu_rsor color:"
+msgstr "Χρώμα_ κειμένου και κέρσορα:"
+
+#: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Απενεργοποίηση πλήκτρων συντομεύσεων μενού (όπως το Alt+f)"
 
-#: ../Terminal.glade.h:22
+#: ../Terminal.glade.h:23
 #, fuzzy
 msgid "Disable m_enu shortcut keys (F10 by default)"
 msgstr "Απενεργοποίηση του  πλήκτρου συντόμευσης με_νού (προεπιλογή F10 )"
 
-#: ../Terminal.glade.h:24
+#: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
 msgstr "Εμφάνιση _περιγραμμάτων στα νέα παράθυρα"
 
-#: ../Terminal.glade.h:25
+#: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
 msgstr "Εμφάνιση _μπάρας μενού στα νέα παράθυρα"
 
-#: ../Terminal.glade.h:26
+#: ../Terminal.glade.h:27
 msgid "Display _toolbars in new windows"
 msgstr "Εμφάνιση _εργαλειοθήκης στα νέα παράθυρα"
 
-#: ../Terminal.glade.h:27
+#: ../Terminal.glade.h:28
 #, fuzzy
 msgid "Double Click"
 msgstr "<b>Διπλό κλικ</b>"
 
-#: ../Terminal.glade.h:28
+#: ../Terminal.glade.h:29
 #, fuzzy
 msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Ενεργοποίηση εξομάλυνσης για τη γραμματοσειρά του τερματικού"
 
-#: ../Terminal.glade.h:29
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -1054,7 +1084,7 @@ msgstr ""
 "επιλογής μπορεί να επιταχύνει το τερματικό θεαματικά και να μειώσει τον "
 "γενικό φόρτο σε πιο αργά συστήματα."
 
-#: ../Terminal.glade.h:30
+#: ../Terminal.glade.h:31
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -1062,27 +1092,27 @@ msgstr ""
 "Ενεργοποιήστε αυτή την επιλογή για να επιτρέψετε τις εφαρμογές που "
 "εκτελούνται μέσα στο τερματικό να χρησιμοποιήσουν έντονο κείμενο."
 
-#: ../Terminal.glade.h:31
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
 
-#: ../Terminal.glade.h:32
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "Ενεργοποιείστε αυτή την επιλογή για να εμφανίζεται η μπάρα μενού στα νέα "
 "παράθυρα τερματικού."
 
-#: ../Terminal.glade.h:33
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται οι εργαλειοθήκες στα νέα "
 "παράθυρα τερματικού."
 
-#: ../Terminal.glade.h:34
+#: ../Terminal.glade.h:35
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -1090,7 +1120,7 @@ msgstr ""
 "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται περιγράμματα παραθύρου "
 "στα νέα παράθυρα τερματικού."
 
-#: ../Terminal.glade.h:35
+#: ../Terminal.glade.h:36
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
@@ -1098,183 +1128,183 @@ msgstr ""
 "Σας επιτρέπει να κυλίσετε στη γραμμή εντολών πατώντας οποιοδήποτε πλήκτρο "
 "στο πληκτρολόγιο."
 
-#: ../Terminal.glade.h:36
+#: ../Terminal.glade.h:37
 msgid "Escape sequence"
 msgstr "Ακολουθία διαφυγής"
 
-#: ../Terminal.glade.h:37
+#: ../Terminal.glade.h:38
 msgid "Font"
 msgstr ""
 
-#: ../Terminal.glade.h:38
+#: ../Terminal.glade.h:39
 msgid "General"
 msgstr "Γενικές"
 
-#: ../Terminal.glade.h:39
+#: ../Terminal.glade.h:40
 msgid "Goes after initial title"
 msgstr "Πηγαίνει μετά τον αρχικό τίτλο"
 
-#: ../Terminal.glade.h:40
+#: ../Terminal.glade.h:41
 msgid "Goes before initial title"
 msgstr "Πηγαίνει πριν τον αρχικό τίτλο"
 
-#: ../Terminal.glade.h:41
+#: ../Terminal.glade.h:42
 msgid "Isn't displayed"
 msgstr "Δεν προβάλλεται"
 
-#: ../Terminal.glade.h:42
+#: ../Terminal.glade.h:43
 #, fuzzy
 msgid "Menubar Access"
 msgstr "<b>Πρόσβαση στην εργαλειοθήκη μενού</b>"
 
-#: ../Terminal.glade.h:43
+#: ../Terminal.glade.h:44
 msgid "None (use solid color)"
 msgstr "Κανένα (χρήση στερεού χρώματος)"
 
-#: ../Terminal.glade.h:44
+#: ../Terminal.glade.h:45
 msgid "On the left side"
 msgstr "Στην αριστερή πλευρά"
 
-#: ../Terminal.glade.h:45
+#: ../Terminal.glade.h:46
 msgid "On the right side"
 msgstr "Στη δεξιά πλευρά"
 
-#: ../Terminal.glade.h:46
+#: ../Terminal.glade.h:47
 msgid "Open a dialog to specify the color"
 msgstr "Άνοιγμα ενός διαλόγου για τον καθορισμό του χρώματος"
 
-#: ../Terminal.glade.h:47
+#: ../Terminal.glade.h:48
 #, fuzzy
 msgid "Opening New Windows"
 msgstr "<b>Άνοιγμα νέων παραθύρων</b>"
 
-#: ../Terminal.glade.h:48
+#: ../Terminal.glade.h:49
 #, fuzzy
 msgid "Palette"
 msgstr "<b>Παλέτα</b>"
 
-#: ../Terminal.glade.h:49
+#: ../Terminal.glade.h:50
 #, fuzzy
 msgid "Palette entry 1"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:50
+#: ../Terminal.glade.h:51
 #, fuzzy
 msgid "Palette entry 10"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:51
+#: ../Terminal.glade.h:52
 #, fuzzy
 msgid "Palette entry 11"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:52
+#: ../Terminal.glade.h:53
 #, fuzzy
 msgid "Palette entry 12"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:53
+#: ../Terminal.glade.h:54
 #, fuzzy
 msgid "Palette entry 13"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:54
+#: ../Terminal.glade.h:55
 #, fuzzy
 msgid "Palette entry 14"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:55
+#: ../Terminal.glade.h:56
 #, fuzzy
 msgid "Palette entry 15"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:56
+#: ../Terminal.glade.h:57
 #, fuzzy
 msgid "Palette entry 16"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:57
+#: ../Terminal.glade.h:58
 #, fuzzy
 msgid "Palette entry 2"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:58
+#: ../Terminal.glade.h:59
 #, fuzzy
 msgid "Palette entry 3"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:59
+#: ../Terminal.glade.h:60
 #, fuzzy
 msgid "Palette entry 4"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:60
+#: ../Terminal.glade.h:61
 #, fuzzy
 msgid "Palette entry 5"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:61
+#: ../Terminal.glade.h:62
 #, fuzzy
 msgid "Palette entry 6"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:62
+#: ../Terminal.glade.h:63
 #, fuzzy
 msgid "Palette entry 7"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:63
+#: ../Terminal.glade.h:64
 #, fuzzy
 msgid "Palette entry 8"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:64
+#: ../Terminal.glade.h:65
 #, fuzzy
 msgid "Palette entry 9"
 msgstr "Καταχώρηση παλέτας %d"
 
-#: ../Terminal.glade.h:65
+#: ../Terminal.glade.h:66
 msgid "Replaces initial title"
 msgstr "Αντικαθιστά τον αρχικό τίτλο"
 
-#: ../Terminal.glade.h:66
+#: ../Terminal.glade.h:67
 #, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "Επαναφορά της ένδειξης δραστηριότητας καρτέλας έπειτα από"
 
-#: ../Terminal.glade.h:67
+#: ../Terminal.glade.h:68
 msgid "Scaled"
 msgstr "Σε κλίμακα"
 
-#: ../Terminal.glade.h:68
+#: ../Terminal.glade.h:69
 msgid "Scroll on _keystroke"
 msgstr "Κύλιση στο _πάτημα πλήκτρου"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "Κ_ύλιση στο αποτέλεσμα εντολών"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr ""
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "_Κύλιση πίσω:"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scrolling"
 msgstr "<b>Κύλιση</b>"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "Επιλέξτε αρχείο εικόνας παρασκηνίου"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1286,50 +1316,50 @@ msgstr ""
 "του κελύφους σας για τη διαφορά μεταξύ της εκτέλεσης του ως τυπικό κέλυφος "
 "και ως κελύφους εισόδου."
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 #, fuzzy
 msgid "Shortcut Keys"
 msgstr "Πλήκτρο συντόμευσης"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Καθορίζει τις γραμμές που μπορείτε να ανατρέξετε πίσω με τη μπάρα κύλισης."
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 #, fuzzy
 msgid "St_yle:"
 msgstr "_Στυλ:"
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Stretched"
 msgstr "Τεντωμένο"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "<b>Ένδειξη δραστηριότητας καρτελών</b>"
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "Χρώμα δραστηριότητας καρ_τέλας"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Terminal Preferences"
 msgstr "Προτιμήσεις τερματικού"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Οι εφαρμογές τερματικού έχουν αυτή την παλέτα χρωμάτων διαθέσιμη:"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Text Selection"
 msgstr "<b>Επιλογή κειμένου</b>"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1342,7 +1372,7 @@ msgstr ""
 "εφαρμογές και λειτουργικά συστήματα που αναμένουν διαφορετική συμπεριφορά "
 "τερματικού."
 
-#: ../Terminal.glade.h:88
+#: ../Terminal.glade.h:89
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1351,7 +1381,7 @@ msgstr ""
 "αυτόματα όταν παράγεται νέο κείμενο από τις εντολές που τρέχουν μέσα στο "
 "τερματικό."
 
-#: ../Terminal.glade.h:89
+#: ../Terminal.glade.h:90
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1359,111 +1389,115 @@ msgid ""
 "xterm-color here."
 msgstr ""
 
-#: ../Terminal.glade.h:90
+#: ../Terminal.glade.h:91
 msgid "Title"
 msgstr "Τίτλος"
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 #, fuzzy
 msgid "Titled"
 msgstr "Πλακίδιο"
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "Διαφανές παρασκήνιο"
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Transparent background"
 msgstr "Διαφανές παρασκήνιο"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Use _default color"
 msgstr "Χρήση _προκαθορισμένου χρώματος"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Use a custom text selection background color"
 msgstr ""
 "Χρήση του προσαρμοσμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "Χρήση π_ροσαρμοσμένου χρώματος"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use the default text selection background color"
 msgstr ""
 "Χρήση του προκαθορισμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 #, fuzzy
 msgid "_Appearance"
 msgstr "Εμφάνιση"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "_Background color:"
 msgstr "Χρώμα _παρασκηνίου:"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "_Backspace key generates:"
 msgstr "_Το πλήκτρο Backspace προκαλεί:"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 #, fuzzy
 msgid "_Colors"
 msgstr "Χρώματα"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Delete key generates:"
 msgstr "_Το πλήκτρο Delete προκαλεί:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Dynamically-set title:"
 msgstr "_Δυναμικός καθορισμός τίτλου:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_File:"
 msgstr "_Αρχείο:"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 #, fuzzy
 msgid "_General"
 msgstr "Γενικές"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Initial title:"
 msgstr "Αρχικός _τίτλος:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 #, fuzzy
 msgid "_Reset comparibility options to defaults"
 msgstr "_Επαναφορά επιλογών συμβατότητας στις προεπιλεγμένες"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_Run command as login shell"
 msgstr "_Εκτέλεση εντολής ως κέλυφος εισόδου"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Scrollbar is:"
 msgstr "_Η μπάρα κύλισης είναι:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Shortcuts"
 msgstr "Συντομεύσεις"
 
-#: ../Terminal.glade.h:111
-msgid "_Text and cursor color:"
+#: ../Terminal.glade.h:112
+#, fuzzy
+msgid "_Text color:"
 msgstr "Χρώμα_ κειμένου και κέρσορα:"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτελεστεί η εντολή "
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "seconds"
 msgstr "δευτερόλεπτα"
+
+#~ msgid "Usage: Terminal [OPTION...]"
+#~ msgstr "Χρήση: Terminal [ΟΡΙΣΜΑ...]"
 
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Τίτλος</b>"
@@ -1651,9 +1685,6 @@ msgstr "δευτερόλεπτα"
 
 #~ msgid "Custom title"
 #~ msgstr "Προσαρμοσμένος τίτλος"
-
-#~ msgid "Tab position"
-#~ msgstr "Θέση καρτέλας"
 
 #~ msgid "Tab title"
 #~ msgstr "Τίτλος καρτέλας"

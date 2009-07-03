@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 23:06+0200\n"
+"POT-Creation-Date: 2009-07-03 17:32+0200\n"
 "PO-Revision-Date: 2008-12-22 21:44+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -17,21 +17,31 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: ../terminal/main.c:46
-msgid "Usage: Terminal [OPTION...]"
-msgstr "Použití: Terminal [VOLBA...]"
+msgid "Usage:"
+msgstr ""
 
-#: ../terminal/main.c:48
+#: ../terminal/main.c:47
+msgid "OPTION"
+msgstr ""
+
+#: ../terminal/main.c:49
+#, fuzzy
+msgid "General Options"
+msgstr "Obecné"
+
+#: ../terminal/main.c:50
 msgid "  -h, --help                          Print this help message and exit"
 msgstr ""
 "  -h, --help                          Zobrazí tuto nápovědu a ukončí se"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:51
+#, fuzzy
 msgid ""
-"  -v, --version                       Print version information and exit"
+"  -V, --version                       Print version information and exit"
 msgstr ""
 "  -v, --version                       Zobrazí informace o verzi a ukončí se"
 
-#: ../terminal/main.c:50
+#: ../terminal/main.c:52
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
@@ -39,7 +49,49 @@ msgstr ""
 "  --disable-server                    Nezaregistruje se k relaci sběrnice D-"
 "BUS"
 
-#: ../terminal/main.c:53
+#: ../terminal/main.c:54
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr "  --default-display=DISPLEJ           Výchozí displej X pro použití"
+
+#: ../terminal/main.c:55
+msgid ""
+"  --default-working-directory=DIRNAME Set the default terminal's working\n"
+"                                      directory"
+msgstr ""
+"  --default-working-directory=NÁZEVADRESÁŘE\n"
+"                                      Nastaví výchozí pracovní adresář\n"
+"                                      terminálu"
+
+#: ../terminal/main.c:58
+msgid "Window or Tab Separators"
+msgstr ""
+
+#: ../terminal/main.c:59
+msgid ""
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+"  --tab                               Otevře novou kartu v posledně zadaném\n"
+"                                      okně; lze zadat více těchto voleb"
+
+#: ../terminal/main.c:62
+msgid ""
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided"
+msgstr ""
+"  --window                            Otevřít nové okno obsahující jednu\n"
+"                                      kartu; lze zadat více než jednu "
+"takovou\n"
+"                                      volbu"
+
+#: ../terminal/main.c:66
+#, fuzzy
+msgid "Tab Options"
+msgstr "Umístění karty"
+
+#: ../terminal/main.c:67
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
@@ -47,7 +99,7 @@ msgstr ""
 "  -x, --execute                       Spustí zbytek příkazové řádky v "
 "terminálu"
 
-#: ../terminal/main.c:55
+#: ../terminal/main.c:69
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
@@ -55,17 +107,17 @@ msgstr ""
 "  -e, --command=ŘETĚZEC               Spustí argument k této volbě uvnitř\n"
 "                                      terminálu"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:71
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
 "  --working-directory=NÁZEV_ADRESÁŘE  Nastaví pracovní adresář terminálu"
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:72
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr "  -T, --title=TITULEK                 Nastaví titulek terminálu"
 
-#: ../terminal/main.c:59
+#: ../terminal/main.c:73
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
@@ -73,7 +125,12 @@ msgstr ""
 "  -H, --hold                          Nezavře kartu ihned po ukončení\n"
 "                                      potomka"
 
-#: ../terminal/main.c:62
+#: ../terminal/main.c:76
+#, fuzzy
+msgid "Window Options"
+msgstr "Neznámá volba \"%s\""
+
+#: ../terminal/main.c:77
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
@@ -81,7 +138,7 @@ msgstr ""
 "  --display=DISPLEJ                   Displej X serveru pro poslední\n"
 "                                      zadané okno"
 
-#: ../terminal/main.c:64
+#: ../terminal/main.c:79
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
@@ -93,7 +150,7 @@ msgstr ""
 "na\n"
 "                                      otevřené okno"
 
-#: ../terminal/main.c:67
+#: ../terminal/main.c:82
 #, fuzzy
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
@@ -106,7 +163,7 @@ msgstr ""
 "                                      může být zadáno jednou pro každé\n"
 "                                      okno spuštěné z příkazové řádky"
 
-#: ../terminal/main.c:71
+#: ../terminal/main.c:86
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
@@ -115,7 +172,7 @@ msgstr ""
 "při\n"
 "                                      spuštění"
 
-#: ../terminal/main.c:73
+#: ../terminal/main.c:88
 #, fuzzy
 msgid ""
 "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
@@ -124,13 +181,14 @@ msgstr ""
 "  -e, --command=ŘETĚZEC               Spustí argument k této volbě uvnitř\n"
 "                                      terminálu"
 
-#: ../terminal/main.c:75
+#: ../terminal/main.c:90
+#, fuzzy
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line."
+"                                      command line"
 msgstr ""
 "  --fullscreen                        Přepne poslední zadané okno do režimu "
 "celé\n"
@@ -139,7 +197,7 @@ msgstr ""
 "                                      může být zadáno jednou pro každé\n"
 "                                      okno spuštěné z příkazové řádky"
 
-#: ../terminal/main.c:80
+#: ../terminal/main.c:95
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -153,7 +211,7 @@ msgstr ""
 "                                      může být zadáno jednou pro každé\n"
 "                                      okno spuštěné z příkazové řádky"
 
-#: ../terminal/main.c:85
+#: ../terminal/main.c:100
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -167,7 +225,7 @@ msgstr ""
 "                                      může být zadáno jednou pro každé\n"
 "                                      okno spuštěné z příkazové řádky"
 
-#: ../terminal/main.c:90
+#: ../terminal/main.c:105
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -181,7 +239,7 @@ msgstr ""
 "                                      může být zadáno jednou pro každé\n"
 "                                      okno spuštěné z příkazové řádky"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:110
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -195,7 +253,7 @@ msgstr ""
 "                                      může být zadáno jednou pro každé\n"
 "                                      okno spuštěné z příkazové řádky"
 
-#: ../terminal/main.c:100
+#: ../terminal/main.c:115
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -208,7 +266,7 @@ msgstr ""
 "                                      okno; může být zadáno jednou pro\n"
 "                                      každé okno vytvořené z příkazové řádky"
 
-#: ../terminal/main.c:105
+#: ../terminal/main.c:120
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -221,45 +279,12 @@ msgstr ""
 "                                      okno; může být zadáno jednou pro\n"
 "                                      každé okno vytvořené z příkazové řádky"
 
-#: ../terminal/main.c:111
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Otevře novou kartu v posledně zadaném\n"
-"                                      okně; lze zadat více těchto voleb"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Otevřít nové okno obsahující jednu\n"
-"                                      kartu; lze zadat více než jednu "
-"takovou\n"
-"                                      volbu"
-
-#: ../terminal/main.c:118
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=DISPLEJ           Výchozí displej X pro použití"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=NÁZEVADRESÁŘE\n"
-"                                      Nastaví výchozí pracovní adresář\n"
-"                                      terminálu"
-
-#: ../terminal/main.c:143 ../terminal/terminal-preferences.c:1249
+#: ../terminal/main.c:147 ../terminal/terminal-preferences.c:1249
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:165
+#: ../terminal/main.c:169
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -284,12 +309,12 @@ msgstr ""
 "\n"
 "Prosíme, abyste chyby hlásili na <%s>.\n"
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:264
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nelze registrovat službu terminálu: %s\n"
 
-#: ../terminal/main.c:269
+#: ../terminal/main.c:273
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Nelze spustit teminál: %s\n"
@@ -551,15 +576,15 @@ msgid "Unable to determine your login shell."
 msgstr "Nelze zjistit vaše uživatelské jméno."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1154
+#: ../terminal/terminal-screen.c:1140
 msgid "Failed to execute child"
 msgstr "Spuštění procesu potomka se nezdařilo"
 
-#: ../terminal/terminal-screen.c:1371
+#: ../terminal/terminal-screen.c:1357
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: ../terminal/terminal-screen.c:1702
+#: ../terminal/terminal-screen.c:1688
 msgid "Close this tab"
 msgstr "Zavřít tuto kartu"
 
@@ -584,7 +609,7 @@ msgid "Help"
 msgstr "Nápověda"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:23
+#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Zakázáno"
 
@@ -995,37 +1020,42 @@ msgid "Control-H"
 msgstr "Control-H"
 
 #: ../Terminal.glade.h:21
+#, fuzzy
+msgid "Cu_rsor color:"
+msgstr "Barvy _textu a kurzoru:"
+
+#: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Zakázat všechny klávesy pro přístup k _nabídce"
 
-#: ../Terminal.glade.h:22
+#: ../Terminal.glade.h:23
 #, fuzzy
 msgid "Disable m_enu shortcut keys (F10 by default)"
 msgstr "Zakázat klávesu pro _přístup k nabídce (výchozí F10)"
 
-#: ../Terminal.glade.h:24
+#: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
 msgstr "Zobr_azovat okraje kolem nových oken"
 
-#: ../Terminal.glade.h:25
+#: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
 msgstr "Zo_brazovat hlavní nabídku v nových oknech"
 
-#: ../Terminal.glade.h:26
+#: ../Terminal.glade.h:27
 msgid "Display _toolbars in new windows"
 msgstr "Zobrazovat _panely nástrojů v nových oknech"
 
-#: ../Terminal.glade.h:27
+#: ../Terminal.glade.h:28
 #, fuzzy
 msgid "Double Click"
 msgstr "<b>Dvojité kliknutí</b>"
 
-#: ../Terminal.glade.h:28
+#: ../Terminal.glade.h:29
 #, fuzzy
 msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Povolit vyhlazování pro písmo terminálu"
 
-#: ../Terminal.glade.h:29
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -1036,7 +1066,7 @@ msgstr ""
 "Terminal. Zakázáním této volby můžete výrazně urychlit vykreslování obsahu "
 "okna terminálu a snížit celkové zatížení na pomalejších systémech."
 
-#: ../Terminal.glade.h:30
+#: ../Terminal.glade.h:31
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -1044,7 +1074,7 @@ msgstr ""
 "Povolte tuto volbu, abyste umožnili aplikacím spuštěným v oknech terminálu "
 "používat tučné písmo."
 
-#: ../Terminal.glade.h:31
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
@@ -1052,20 +1082,20 @@ msgstr ""
 "Povolením této volby umožníte posunování o jeden řádek šipkami nahoru a dolů "
 "společně s klávesou Shift."
 
-#: ../Terminal.glade.h:32
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "Povolte tuto možnost pro zobrazení hlavního menu v nově vytvořených oknech "
 "terminálu."
 
-#: ../Terminal.glade.h:33
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "Povolte tuto volbu pro zobrazování panelů nástrojů v nově vytvořených oknech."
 
-#: ../Terminal.glade.h:34
+#: ../Terminal.glade.h:35
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -1073,190 +1103,190 @@ msgstr ""
 "Povolte tuto volbu pro zobrazování dekorací oken kolem nově vytvořených oken "
 "terminálu."
 
-#: ../Terminal.glade.h:35
+#: ../Terminal.glade.h:36
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
 "Způsobí posunutí obsahu terminálu dolů při stisknutí libovolné klávesy."
 
-#: ../Terminal.glade.h:36
+#: ../Terminal.glade.h:37
 msgid "Escape sequence"
 msgstr "Escape sekvence"
 
-#: ../Terminal.glade.h:37
+#: ../Terminal.glade.h:38
 msgid "Font"
 msgstr ""
 
-#: ../Terminal.glade.h:38
+#: ../Terminal.glade.h:39
 msgid "General"
 msgstr "Obecné"
 
-#: ../Terminal.glade.h:39
+#: ../Terminal.glade.h:40
 msgid "Goes after initial title"
 msgstr "Bude umístěn za původní titulek"
 
-#: ../Terminal.glade.h:40
+#: ../Terminal.glade.h:41
 msgid "Goes before initial title"
 msgstr "Bude umístěn před původní titulek"
 
-#: ../Terminal.glade.h:41
+#: ../Terminal.glade.h:42
 msgid "Isn't displayed"
 msgstr "Nebude zobrazen"
 
-#: ../Terminal.glade.h:42
+#: ../Terminal.glade.h:43
 #, fuzzy
 msgid "Menubar Access"
 msgstr "<b>Přístup k nabídce</b>"
 
-#: ../Terminal.glade.h:43
+#: ../Terminal.glade.h:44
 msgid "None (use solid color)"
 msgstr "Žádné (použít barevnou výplň)"
 
-#: ../Terminal.glade.h:44
+#: ../Terminal.glade.h:45
 msgid "On the left side"
 msgstr "Nalevo"
 
-#: ../Terminal.glade.h:45
+#: ../Terminal.glade.h:46
 msgid "On the right side"
 msgstr "Napravo"
 
-#: ../Terminal.glade.h:46
+#: ../Terminal.glade.h:47
 msgid "Open a dialog to specify the color"
 msgstr "Otevře dialog výběru barvy"
 
-#: ../Terminal.glade.h:47
+#: ../Terminal.glade.h:48
 #, fuzzy
 msgid "Opening New Windows"
 msgstr "<b>Otevření nových oken</b>"
 
-#: ../Terminal.glade.h:48
+#: ../Terminal.glade.h:49
 #, fuzzy
 msgid "Palette"
 msgstr "<b>Paleta</b>"
 
-#: ../Terminal.glade.h:49
+#: ../Terminal.glade.h:50
 #, fuzzy
 msgid "Palette entry 1"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:50
+#: ../Terminal.glade.h:51
 #, fuzzy
 msgid "Palette entry 10"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:51
+#: ../Terminal.glade.h:52
 #, fuzzy
 msgid "Palette entry 11"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:52
+#: ../Terminal.glade.h:53
 #, fuzzy
 msgid "Palette entry 12"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:53
+#: ../Terminal.glade.h:54
 #, fuzzy
 msgid "Palette entry 13"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:54
+#: ../Terminal.glade.h:55
 #, fuzzy
 msgid "Palette entry 14"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:55
+#: ../Terminal.glade.h:56
 #, fuzzy
 msgid "Palette entry 15"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:56
+#: ../Terminal.glade.h:57
 #, fuzzy
 msgid "Palette entry 16"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:57
+#: ../Terminal.glade.h:58
 #, fuzzy
 msgid "Palette entry 2"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:58
+#: ../Terminal.glade.h:59
 #, fuzzy
 msgid "Palette entry 3"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:59
+#: ../Terminal.glade.h:60
 #, fuzzy
 msgid "Palette entry 4"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:60
+#: ../Terminal.glade.h:61
 #, fuzzy
 msgid "Palette entry 5"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:61
+#: ../Terminal.glade.h:62
 #, fuzzy
 msgid "Palette entry 6"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:62
+#: ../Terminal.glade.h:63
 #, fuzzy
 msgid "Palette entry 7"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:63
+#: ../Terminal.glade.h:64
 #, fuzzy
 msgid "Palette entry 8"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:64
+#: ../Terminal.glade.h:65
 #, fuzzy
 msgid "Palette entry 9"
 msgstr "Položka palety %d"
 
-#: ../Terminal.glade.h:65
+#: ../Terminal.glade.h:66
 msgid "Replaces initial title"
 msgstr "Nahradí výchozí titulek"
 
-#: ../Terminal.glade.h:66
+#: ../Terminal.glade.h:67
 #, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "Zrušit indikaci aktivity karty po"
 
-#: ../Terminal.glade.h:67
+#: ../Terminal.glade.h:68
 msgid "Scaled"
 msgstr "Přizpůsobený"
 
-#: ../Terminal.glade.h:68
+#: ../Terminal.glade.h:69
 msgid "Scroll on _keystroke"
 msgstr "Posunovat při _stisku klávesy"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "Posunovat při _výstupu"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "_Posunovat o jeden řádek pomocí kláves Šipka nahoru a Šipka dolů"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "_Paměť řádků:"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scrolling"
 msgstr "<b>Posun</b>"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "Vybrat soubor s obrázkem pozadí"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1268,50 +1298,50 @@ msgstr ""
 "spuštěním jako interaktivní shell a login shell nahlédněte do dokumentace "
 "shellu."
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 #, fuzzy
 msgid "Shortcut Keys"
 msgstr "Zkratková klávesa"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Specifikuje počet řádků, o kolik se můžete vrátit zpět při posuvu nahoru."
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 #, fuzzy
 msgid "St_yle:"
 msgstr "_Styl:"
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Stretched"
 msgstr "Roztažený"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "<b>Indikátor aktivity karty</b>"
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "B_arva při aktivitě karty:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Terminal Preferences"
 msgstr "Nastavení aplikace Terminal"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Aplikace terminálu mají k dispozici tuto paletu barev:"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Text Selection"
 msgstr "<b>Výběr textu</b>"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1323,7 +1353,7 @@ msgstr ""
 "Jsou tu pouze proto, abyste mohli obejít to, že některé aplikace a operační "
 "systémy očekávají jiné chování terminálu."
 
-#: ../Terminal.glade.h:88
+#: ../Terminal.glade.h:89
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1331,7 +1361,7 @@ msgstr ""
 "Tato volba určuje, zda bude obsah terminálu automaticky posunován při "
 "generování výstupu programu spuštěného v terminálu."
 
-#: ../Terminal.glade.h:89
+#: ../Terminal.glade.h:90
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1343,109 +1373,113 @@ msgstr ""
 "vyhovovat pro většinu systémů. Pokud máte potíže s barvami v některých "
 "aplikacích, zkuste hodnotu xterm-color."
 
-#: ../Terminal.glade.h:90
+#: ../Terminal.glade.h:91
 msgid "Title"
 msgstr "Titulek"
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 #, fuzzy
 msgid "Titled"
 msgstr "Dlážděný"
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "Průhledné pozadí"
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Transparent background"
 msgstr "Průhledné pozadí"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Use _default color"
 msgstr "Použít _výchozí barvu"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Use a custom text selection background color"
 msgstr "Použít vlastní barvu pro pozadí vybraného textu"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "Zv_olit vlastní barvu"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use the default text selection background color"
 msgstr "Použít výchozí barvu pozadí vybraného textu"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 #, fuzzy
 msgid "_Appearance"
 msgstr "Vzhled"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "_Background color:"
 msgstr "Barva _pozadí:"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "_Backspace key generates:"
 msgstr "Klávesa _Backspace generuje:"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 #, fuzzy
 msgid "_Colors"
 msgstr "Barvy"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Delete key generates:"
 msgstr "Klávesa _Delete generuje:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Dynamically-set title:"
 msgstr "_Dynamicky nastavitelný titulek:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_File:"
 msgstr "_Soubor:"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 #, fuzzy
 msgid "_General"
 msgstr "Obecné"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Initial title:"
 msgstr "Výchozí t_itulek"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 #, fuzzy
 msgid "_Reset comparibility options to defaults"
 msgstr "Obnovit výchozí nastavení pro _kompatibilitu"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_Run command as login shell"
 msgstr "_Spustit příkaz jako přihlašovací shell"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Scrollbar is:"
 msgstr "Z_obrazení posuvníku:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Shortcuts"
 msgstr "Zkratky"
 
-#: ../Terminal.glade.h:111
-msgid "_Text and cursor color:"
+#: ../Terminal.glade.h:112
+#, fuzzy
+msgid "_Text color:"
 msgstr "Barvy _textu a kurzoru:"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Aktualizovat záznamy utmp/wtmp při spuštění příkazu"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "seconds"
 msgstr "sekundách"
+
+#~ msgid "Usage: Terminal [OPTION...]"
+#~ msgstr "Použití: Terminal [VOLBA...]"
 
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Titulek</b>"
@@ -1631,9 +1665,6 @@ msgstr "sekundách"
 
 #~ msgid "Custom title"
 #~ msgstr "Vlastní titulek"
-
-#~ msgid "Tab position"
-#~ msgstr "Umístění karty"
 
 #~ msgid "Tab title"
 #~ msgstr "Titulek karty"

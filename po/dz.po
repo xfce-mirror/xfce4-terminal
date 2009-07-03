@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 23:06+0200\n"
+"POT-Creation-Date: 2009-07-03 17:32+0200\n"
 "PO-Revision-Date: 2006-10-23 01:56+0530\n"
 "Last-Translator: yangka <yanang_ka@hotmail.com>\n"
 "Language-Team: dzongkha <pgeyleg@dit.gov.bt>\n"
@@ -20,21 +20,31 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../terminal/main.c:46
-msgid "Usage: Terminal [OPTION...]"
-msgstr "བདེ་སྤྱོད་: ཊར་མི་ནཱལ [གདམ་ཁ...]"
+msgid "Usage:"
+msgstr ""
 
-#: ../terminal/main.c:48
+#: ../terminal/main.c:47
+msgid "OPTION"
+msgstr ""
+
+#: ../terminal/main.c:49
+#, fuzzy
+msgid "General Options"
+msgstr "ཡོངས་ཁྱབ།"
+
+#: ../terminal/main.c:50
 msgid "  -h, --help                          Print this help message and exit"
 msgstr ""
 "  -h, --help                          གྲོགས་རམ་འཕྲིན་དོན་འདི་དཔར་བསྐྲུན་འབད་ནི་དང་ཕྱིར་"
 "ཐོན།"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:51
+#, fuzzy
 msgid ""
-"  -v, --version                       Print version information and exit"
+"  -V, --version                       Print version information and exit"
 msgstr "  -v, --version                       དཔར་བསྐྲུན་ཐོན་རིམ་བརྡ་དོན་དང་ཕྱིར་་ཐོན།"
 
-#: ../terminal/main.c:50
+#: ../terminal/main.c:52
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
@@ -42,7 +52,50 @@ msgstr ""
 "  --disable-server                    ཌི-བི་ཡུ་ཨེསི་དང་གཅིག་ཁར་\n"
 "                                      ལཱ་ཡུན་འཕྲིན་དོན་བརྡ་རྟགས་འགྲུལ་ལམ་ཐོ་འགོད་མ་འབད།"
 
-#: ../terminal/main.c:53
+#: ../terminal/main.c:54
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr ""
+"  --default-display=DISPLAY           ལག་ལེན་འཐབ་ནི་ལུ་སྔོན་སྒྲིག་ཨེགསི་བཀྲམ་བཏོན་འབད།"
+
+#: ../terminal/main.c:55
+#, fuzzy
+msgid ""
+"  --default-working-directory=DIRNAME Set the default terminal's working\n"
+"                                      directory"
+msgstr ""
+"  --default-working-directory=DIRNAME སྔོན་སྒྲིག་ཊར་མི་ནཱལ་ཚུ་ལཱ་འབད་མི\n"
+"                                      སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
+
+#: ../terminal/main.c:58
+msgid "Window or Tab Separators"
+msgstr ""
+
+#: ../terminal/main.c:59
+msgid ""
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+"  --tab                               མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདི་ནང་\n"
+"                                      མཆོང་ལྡེ་གསརཔ་ཅིག་ཁ་ཕྱེ་སྦེ་གདམ་ཁ་དེ་ཚུ་ལས་\n"
+"                                      ཧེང་བཀེལ་བྱིནམ་ཨིན།"
+
+#: ../terminal/main.c:62
+msgid ""
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided"
+msgstr ""
+"  --window                            ཝིནཌོ་གསརཔ་ཅིག་ནང་ན་མཆོང་ལྡེ་གཅིག་ཡོད་མི་ཁ་ཕྱེ\n"
+"                                      གདམ་ཁ་དེ་ཚུ་གཅིག་ལས་མངམ་\n"
+"                                      བྱིནམ་ཨིན།"
+
+#: ../terminal/main.c:66
+#, fuzzy
+msgid "Tab Options"
+msgstr "མཆོང་ལྡེ་གནས་ས།"
+
+#: ../terminal/main.c:67
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
@@ -50,7 +103,7 @@ msgstr ""
 "  -x, --execute                       ཊར་མི་ནཱལ་འདིའི་ནང་་གི་གྱལ་བརྡ་བཀོད་འདི་\n"
 "                                      གི་ལྷག་ལུས་མི་འདི་ལག་ལེན་འཐབ།"
 
-#: ../terminal/main.c:55
+#: ../terminal/main.c:69
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
@@ -58,19 +111,19 @@ msgstr ""
 "  -e, --command=STRING                ཊར་མི་ནཱལ་འདིའི་ནང་གི་གདམ་ཁ་འདི་ལུ་\n"
 "                                      སྒྲུབ་རྟགས་འདི་ལག་ལེན་འཐབ།"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:71
 #, fuzzy
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
 "  --working-directory=DIRNAME         ཊར་མི་ནཱལ་ཚུ་གི་ལཱ་འབད་བའི་སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:72
 #, fuzzy
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr "  -T, --title=TITLE                   ཊར་མི་ནཱལ་ཚུ་གི་མགོ་མིང་འདི་གཞི་སྒྲིག་འབད།"
 
-#: ../terminal/main.c:59
+#: ../terminal/main.c:73
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
@@ -78,7 +131,12 @@ msgstr ""
 "  -H, --hold                          ལག་ཆས་འདི་གིས་ཕྱིར་ཐོན་བརྡ་བཀོད་འབད་བའི་སྐབས་\n"
 "                                      མཆོང་ལྡེ་འདི་དེ་འཕྲལ་ལས་རྩ་མེད་མ་གཏང་།"
 
-#: ../terminal/main.c:62
+#: ../terminal/main.c:76
+#, fuzzy
+msgid "Window Options"
+msgstr "མ་ཤེས་པའི་གདམ་ཁ \"%s\""
+
+#: ../terminal/main.c:77
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
@@ -86,7 +144,7 @@ msgstr ""
 "  --display=DISPLAY                   མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདིའི་དོན་ལུ་\n"
 "                                      ལག་ལེན་འཐབ་ནི་ལུ་ཨེགསི་བཀྲམ་བཏོན་འབད།"
 
-#: ../terminal/main.c:64
+#: ../terminal/main.c:79
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
@@ -96,7 +154,7 @@ msgstr ""
 "                                      མཱན་ཤོག་ལེབ) འདི་ཁ་ཕྱེ་ནི་ཨིན་མི་ཝིནཌོ་\n"
 "                                      ཚར་རེ་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:67
+#: ../terminal/main.c:82
 #, fuzzy
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
@@ -111,7 +169,7 @@ msgstr ""
 "ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
 "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:71
+#: ../terminal/main.c:86
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
@@ -119,7 +177,7 @@ msgstr ""
 "  --startup-id=STRING                 གནད་སྤེལ་ལམ་ལུགས་བརྡ་བསྐུལ་འགོ་བཙུགས་དོན་ལུ་\n"
 "                                      ཨའི་ཌི།"
 
-#: ../terminal/main.c:73
+#: ../terminal/main.c:88
 #, fuzzy
 msgid ""
 "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
@@ -128,13 +186,14 @@ msgstr ""
 "  -e, --command=STRING                ཊར་མི་ནཱལ་འདིའི་ནང་གི་གདམ་ཁ་འདི་ལུ་\n"
 "                                      སྒྲུབ་རྟགས་འདི་ལག་ལེན་འཐབ།"
 
-#: ../terminal/main.c:75
+#: ../terminal/main.c:90
+#, fuzzy
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line."
+"                                      command line"
 msgstr ""
 "  --fullscreen                        མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་འདི་གསལ་གཞི་གངམ་"
 "ཐབས་ལམ་ནང་གཞི་སྒྲིག་འབད་མི་\n"
@@ -143,7 +202,7 @@ msgstr ""
 "                                      འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
 "                                      ཚར་གཅིག་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:80
+#: ../terminal/main.c:95
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -158,7 +217,7 @@ msgstr ""
 "                                    ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་རྐྱངམ་ཅིག\n"
 "                                   གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:85
+#: ../terminal/main.c:100
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -173,7 +232,7 @@ msgstr ""
 "                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
 "                                     གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:90
+#: ../terminal/main.c:105
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -189,7 +248,7 @@ msgstr ""
 "                                      གསར་བསྐྲུན་འབད་མི་ཝིནཌོ་དོན་ལུ་ཚར་གཅིག\n"
 "                                     གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:110
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -206,7 +265,7 @@ msgstr ""
 "                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་\n"
 "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:100
+#: ../terminal/main.c:115
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -222,7 +281,7 @@ msgstr ""
 "                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་གསལ་\n"
 "                                      བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:105
+#: ../terminal/main.c:120
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -238,46 +297,12 @@ msgstr ""
 "                                      འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་\n"
 "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:111
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདི་ནང་\n"
-"                                      མཆོང་ལྡེ་གསརཔ་ཅིག་ཁ་ཕྱེ་སྦེ་གདམ་ཁ་དེ་ཚུ་ལས་\n"
-"                                      ཧེང་བཀེལ་བྱིནམ་ཨིན།"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            ཝིནཌོ་གསརཔ་ཅིག་ནང་ན་མཆོང་ལྡེ་གཅིག་ཡོད་མི་ཁ་ཕྱེ\n"
-"                                      གདམ་ཁ་དེ་ཚུ་གཅིག་ལས་མངམ་\n"
-"                                      བྱིནམ་ཨིན།"
-
-#: ../terminal/main.c:118
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=DISPLAY           ལག་ལེན་འཐབ་ནི་ལུ་སྔོན་སྒྲིག་ཨེགསི་བཀྲམ་བཏོན་འབད།"
-
-#: ../terminal/main.c:119
-#, fuzzy
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAME སྔོན་སྒྲིག་ཊར་མི་ནཱལ་ཚུ་ལཱ་འབད་མི\n"
-"                                      སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
-
-#: ../terminal/main.c:143 ../terminal/terminal-preferences.c:1249
+#: ../terminal/main.c:147 ../terminal/terminal-preferences.c:1249
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "ཊར་མི་ནཱལ།"
 
-#: ../terminal/main.c:165
+#: ../terminal/main.c:169
 #, fuzzy, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -302,12 +327,12 @@ msgstr ""
 "\n"
 "Please report bugs to <%s>.\n"
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:264
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ཊར་མི་ནཱལ་ཞབས་ཏོག་ཐོ་བཀོད་འབད་མི་ཚུགསཔ: %s\n"
 
-#: ../terminal/main.c:269
+#: ../terminal/main.c:273
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "ཊར་མི་ནཱལ་གསར་བཙུགས་འབད་མི་ཚུགསཔ: %s\n"
@@ -565,15 +590,15 @@ msgid "Unable to determine your login shell."
 msgstr "ཁྱོད་ཀྱི་ནང་བསྐྱོད་ཤལ་གཏན་འབེབས་བཟོ་མ་ཚུགསཔ།"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1154
+#: ../terminal/terminal-screen.c:1140
 msgid "Failed to execute child"
 msgstr "ཆ་ག་ལག་ལེན་འཐབ་ནི་ལུ་འཐུས་ཤོར་་བྱུང་ཡོདཔ།"
 
-#: ../terminal/terminal-screen.c:1371
+#: ../terminal/terminal-screen.c:1357
 msgid "Untitled"
 msgstr "མགོ་མིང་མ་བཏགསཔ།"
 
-#: ../terminal/terminal-screen.c:1702
+#: ../terminal/terminal-screen.c:1688
 msgid "Close this tab"
 msgstr "མཆོང་ལྡེ་འདི་ཁ་བསྡམས།"
 
@@ -598,7 +623,7 @@ msgid "Help"
 msgstr "གྲོགས་རམ།"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:23
+#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "ལྕོགས་མིན་བཟོ་ཡོདཔ།"
 
@@ -1008,37 +1033,42 @@ msgid "Control-H"
 msgstr "ཚད་འཛིན་-ཨེཆ།"
 
 #: ../Terminal.glade.h:21
+#, fuzzy
+msgid "Cu_rsor color:"
+msgstr "ཚིག་ཡིག་དང་འོད་རྟགས་ཚོས་གཞི:(_T)"
+
+#: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "དཀར་ཆག་འཛུལ་སྤྱོད་འབད་ནི་ལྡེ་མིག་ཚུ་ཆ་མཉམ་ལྕོགས་མིན་བཟོ(གདམ་་ལྡེ་+ཨེཕ་བཟུམ)(_n)"
 
-#: ../Terminal.glade.h:22
+#: ../Terminal.glade.h:23
 #, fuzzy
 msgid "Disable m_enu shortcut keys (F10 by default)"
 msgstr "དཀར་ཆག་མགྱོགས་ཐབས་ལྡེ་མིག་(སྔོན་སྒྲིག་གི་ཨེཕ་༡༠)ལྕོགས་མིན་བཟོ།(_e)"
 
-#: ../Terminal.glade.h:24
+#: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
 msgstr "ཝིནཌོ་གསརཔ་ཚུ་གི་མཐའ་འཁོར་་མཐའ་མཚམས་ཚུ་བཀྲམ་བཏོན་འབད།(_b)"
 
-#: ../Terminal.glade.h:25
+#: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
 msgstr "ཝིནཌོ་གསརཔ་ཚུ་ནང་དཀར་ཆག་ཕྲ་རིང་བཀྲམ་བཏོན་འབད།(_m)"
 
-#: ../Terminal.glade.h:26
+#: ../Terminal.glade.h:27
 msgid "Display _toolbars in new windows"
 msgstr "ཝིནཌོ་གསརཔ་ཚུ་ནང་་ལག་ཆས་ཕྲ་རིང་ཚུ་བཀྲམ་བཏོན་འབད།(_t)"
 
-#: ../Terminal.glade.h:27
+#: ../Terminal.glade.h:28
 #, fuzzy
 msgid "Double Click"
 msgstr "<b>/ཨེབ་གཏང་གཉིས་ལྡན།</b>"
 
-#: ../Terminal.glade.h:28
+#: ../Terminal.glade.h:29
 #, fuzzy
 msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "ཊར་མི་ནཱལ་ཡིག་གཟུགས་དོན་ལུ་ཨེན་ཊི་ཨེ་ལའིསིང་ལྕོགས་ཅན་བཟོ།"
 
-#: ../Terminal.glade.h:29
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -1050,7 +1080,7 @@ msgstr ""
 "འབད་ནི་ལཱ་ཤུགས་མགྱོགས་ཐབས་ངལ་རངས་ཏོག་ཏོ་འབདཝ་དང་་རིམ་ལུགས་ལྷོད་ཆ་ཚུ་གུ་རིམ་ལུགས་མངོན་འགན་ལྗིད་"
 "རྫོགསཔ་སྦེ་མར་ཕབ་འབདཝ་ཨིན།"
 
-#: ../Terminal.glade.h:30
+#: ../Terminal.glade.h:31
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
@@ -1058,25 +1088,25 @@ msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོ་ཚུ་ལུ་ཚིག་ཡིག་རྒྱགས་པ་ལག་ལེན་འཐབ་ནི་ནང་ན་གློག་རིམ་ཚུ་གཡོག་བཀོལ་བཅུག་ནི་གདམ་ཁ་འདི་"
 "ལྕོགས་ཅན་བཟོ།"
 
-#: ../Terminal.glade.h:31
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
 
-#: ../Terminal.glade.h:32
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོསི་གསརཔ་གསར་བསྐྲུན་འབད་ཡོད་མི་ནངདཀར་ཆག་ཕྲ་རིང་སྟོན་ལུ་གདམ་ཁ་འདི་ལྕོགས་ཅན་བཟོ།"
 
-#: ../Terminal.glade.h:33
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོསི་གསརཔ་གསར་བསྐྲུན་འབད་མི་ནང་ལག་ཆས་ཕྲ་རིང་ཚུ་སྟོན་ནི་གདམ་ཁ་འདི་ལྕོགས་ཅན་བཟོ།"
 
-#: ../Terminal.glade.h:34
+#: ../Terminal.glade.h:35
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
@@ -1084,7 +1114,7 @@ msgstr ""
 "ཊར་མི་ནཱལ་ཝིནཌོསི་གསརཔ་གསར་བསྐྲུན་འབད་མི་མཐའ་འཁོར་ཝིནཌོ་མཛེས་བཀོད་སྟོན་ནི་ལུ་གདམ་ཁ་འདི་ལྕོགས་ཅན་"
 "བཟོ།"
 
-#: ../Terminal.glade.h:35
+#: ../Terminal.glade.h:36
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
@@ -1092,184 +1122,184 @@ msgstr ""
 "ཁྱོད་ལུ་བརྡ་བསྐུལ་ནུས་སྤེལ་འདི་ལུ་ཊར་མི་ནཱལ་ཝིནཌོ་འདི་མར་སྒྲིལ་ལུ་ལྡེ་སྒྲོམ་གུ་ལྡེ་མིག་གང་རུང་ཨེབ་གཏང་འབད་ནི་"
 "ལུ་ལྕོགས་ཅན་བཟོཝ་ཨིན།"
 
-#: ../Terminal.glade.h:36
+#: ../Terminal.glade.h:37
 msgid "Escape sequence"
 msgstr "འབྱུང་རིམ་ཐར།"
 
-#: ../Terminal.glade.h:37
+#: ../Terminal.glade.h:38
 msgid "Font"
 msgstr ""
 
-#: ../Terminal.glade.h:38
+#: ../Terminal.glade.h:39
 msgid "General"
 msgstr "ཡོངས་ཁྱབ།"
 
-#: ../Terminal.glade.h:39
+#: ../Terminal.glade.h:40
 msgid "Goes after initial title"
 msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་གི་ཤེལ་ལས་འགྱོཝ་ཨིན།"
 
-#: ../Terminal.glade.h:40
+#: ../Terminal.glade.h:41
 msgid "Goes before initial title"
 msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་གི་ཧེ་མ་འགྱོཝ་ཨིན།"
 
-#: ../Terminal.glade.h:41
+#: ../Terminal.glade.h:42
 msgid "Isn't displayed"
 msgstr "བཀྲམ་བཏོན་མ་འབད་བས།"
 
-#: ../Terminal.glade.h:42
+#: ../Terminal.glade.h:43
 #, fuzzy
 msgid "Menubar Access"
 msgstr "<b>དཀར་ཆད་ཕྲ་རིང་འཛུལ་སྤྱོད་འབད་ནི།</b>"
 
-#: ../Terminal.glade.h:43
+#: ../Terminal.glade.h:44
 msgid "None (use solid color)"
 msgstr "ཅི་མེད (ཚོས་གཞི་རགས་པ་ལག་ལེན་འཐབ)"
 
-#: ../Terminal.glade.h:44
+#: ../Terminal.glade.h:45
 msgid "On the left side"
 msgstr "གཡོན་ཕྱོགས་གུ།"
 
-#: ../Terminal.glade.h:45
+#: ../Terminal.glade.h:46
 msgid "On the right side"
 msgstr "གཡས་ཕྱོགས་གུ།"
 
-#: ../Terminal.glade.h:46
+#: ../Terminal.glade.h:47
 msgid "Open a dialog to specify the color"
 msgstr "ཚོས་གཞི་གསལ་བཀོད་འབད་ནི་ལུ་ཌའི་ལོག་ཅིག་ཁ་ཕྱེ།"
 
-#: ../Terminal.glade.h:47
+#: ../Terminal.glade.h:48
 #, fuzzy
 msgid "Opening New Windows"
 msgstr "<b>ཝིན་ཌོ་གསརཔ་ཁ་ཕྱེ་དོ</b>"
 
-#: ../Terminal.glade.h:48
+#: ../Terminal.glade.h:49
 #, fuzzy
 msgid "Palette"
 msgstr "<b>པེལེཊི</b>"
 
-#: ../Terminal.glade.h:49
+#: ../Terminal.glade.h:50
 #, fuzzy
 msgid "Palette entry 1"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:50
+#: ../Terminal.glade.h:51
 #, fuzzy
 msgid "Palette entry 10"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:51
+#: ../Terminal.glade.h:52
 #, fuzzy
 msgid "Palette entry 11"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:52
+#: ../Terminal.glade.h:53
 #, fuzzy
 msgid "Palette entry 12"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:53
+#: ../Terminal.glade.h:54
 #, fuzzy
 msgid "Palette entry 13"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:54
+#: ../Terminal.glade.h:55
 #, fuzzy
 msgid "Palette entry 14"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:55
+#: ../Terminal.glade.h:56
 #, fuzzy
 msgid "Palette entry 15"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:56
+#: ../Terminal.glade.h:57
 #, fuzzy
 msgid "Palette entry 16"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:57
+#: ../Terminal.glade.h:58
 #, fuzzy
 msgid "Palette entry 2"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:58
+#: ../Terminal.glade.h:59
 #, fuzzy
 msgid "Palette entry 3"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:59
+#: ../Terminal.glade.h:60
 #, fuzzy
 msgid "Palette entry 4"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:60
+#: ../Terminal.glade.h:61
 #, fuzzy
 msgid "Palette entry 5"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:61
+#: ../Terminal.glade.h:62
 #, fuzzy
 msgid "Palette entry 6"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:62
+#: ../Terminal.glade.h:63
 #, fuzzy
 msgid "Palette entry 7"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:63
+#: ../Terminal.glade.h:64
 #, fuzzy
 msgid "Palette entry 8"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:64
+#: ../Terminal.glade.h:65
 #, fuzzy
 msgid "Palette entry 9"
 msgstr "པེལེཊི་ཐོ་བཀོད %d"
 
-#: ../Terminal.glade.h:65
+#: ../Terminal.glade.h:66
 msgid "Replaces initial title"
 msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་ཚབ་བཙུགསཔ་ཨིན།"
 
-#: ../Terminal.glade.h:66
+#: ../Terminal.glade.h:67
 #, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
 
-#: ../Terminal.glade.h:67
+#: ../Terminal.glade.h:68
 msgid "Scaled"
 msgstr "ཚད་འཇལ་ཡོདཔ།"
 
-#: ../Terminal.glade.h:68
+#: ../Terminal.glade.h:69
 #, fuzzy
 msgid "Scroll on _keystroke"
 msgstr "ཀི་སིཊོཀ་གུ་བཤུད་སྒྲིལ།(_s)"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "ཨའུཊི་པུཊི་གུ་བཤུད་སྒྲིལ།(_r)"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr ""
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "རྒྱབ་སྒྲིལ:(_o)"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scrolling"
 msgstr "<b>བཤུད་སྒྲིལ་འབད་དོ</b>"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "རྒྱབ་གཞི་གཟུགས་བརྙན་ཡིག་སྣོད་སེལ་འཐུ་འབད།"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1280,48 +1310,48 @@ msgstr ""
 "ལུ་གདམ་འདི་སེལ་འཐུ་འབད། འདིའི་ཕན་ཚུན་འབྲེལ་ལྡན་ཤལ་དང་ནང་བསྐྱོད་ཤལ་སྦེ་གཡོག་བཀོལ་ཐངས་བར་རྒྱས་པ་"
 "སྐོར་ལས་ཁྱོད་རའི་ཤལ་གྱི་ཡིག་ཐོག་བཀོད་ཡོད་མི་འདི་བལྟ།"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 #, fuzzy
 msgid "Shortcut Keys"
 msgstr "མགྱོགས་ཐབས་ལྡེ་མིག"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "ཁྱོད་ཀྱིས་བཤུད་སྒྲིལ་འདི་ལག་ལེན་འཐབ་དེ་རྒྱབ་སྒྲིལ་འབད་བའི་གྱལ་ཚུ་གི་ཨང་འདི་གསལ་བཀོད་འབདཝ་ཨིན།"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 #, fuzzy
 msgid "St_yle:"
 msgstr "བཟོ་རྣམ:(_S)"
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Stretched"
 msgstr "བསྣར་ཡོདཔ།"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid "Tab Activity Indicator"
 msgstr ""
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "ཊར་མི་ནཱལ་ཚིག་ཡིག་ཚོས་གཞི་གདམ།"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Terminal Preferences"
 msgstr "ཊར་མི་ནཱལ་དགའ་གདམ་ཚུ།"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Terminal applications have this color palette available to them:"
 msgstr "ཊར་མི་ནཱལ་འཇུག་སྤྱོད་ཚུ་ནང་པེལེཊི་ཚོས་གཞི་འདི་འཐོབ་ཚུགསཔ་ཨིན།:"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Text Selection"
 msgstr "<b>ཚིག་ཡིག་སེལ་འཐུ་</b>"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1333,7 +1363,7 @@ msgstr ""
 "ཚུའི་མཐའ་འཁོར་ལུ་ལཱ་འབད་བཅུགཔ་དང་བཀོལ་སྤྱོད་རིམ་ལུགས་ཚུ་ཊར་མི་ནཱལ་སྤྱོད་ལམ་སོ་སོ་རེ་བ་ཡོག་མི་ཚུ་འབད་"
 "བཅུགཔ་ཨིན།"
 
-#: ../Terminal.glade.h:88
+#: ../Terminal.glade.h:89
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1341,7 +1371,7 @@ msgstr ""
 "ནམ་རང་འབད་རུང་ཊར་མི་ནཱལ་ནང་ན་བརྡ་བསྐུལ་ཚུ་གིས་གཡོག་བཀོལ་མི་གིས་ཨའུཊི་པུཌི་གསརཔ་འདི་་བཟོ་བཏོན་"
 "འབདཝ་ད་ཊར་མི་ནཱལ་འདི་རང་བཞིན་གྱིས་མར་བཤུད་སྒྲིལ་འབད་ཡི་ག་མ་འབད་དེ་གདམ་ཁ་འདི་གིས་ཚད་འཛིནམ་ཨིན།"
 
-#: ../Terminal.glade.h:89
+#: ../Terminal.glade.h:90
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1353,109 +1383,113 @@ msgstr ""
 "དགོས། ཁྱོད་ལུ་གློག་རིམ་ཚུ་ག་ལོ་ནང་ཚོས་གཞི་ཚུ་དང་གཅིག་ཁར་དཀའ་ངལ་ཡོད་པ་ཅིན་  ཨེགསི་ཊྲིམ་ཚོས་གཞི་་ན་"
 "ལུ་འབད་བརྩོན་བསྐྱེད།"
 
-#: ../Terminal.glade.h:90
+#: ../Terminal.glade.h:91
 msgid "Title"
 msgstr "མགོ་མིང་།"
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 #, fuzzy
 msgid "Titled"
 msgstr "ཊའིལ་ཡོདཔ།"
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "རྒྱབ་གཞི་དྭངས་གསལ།"
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Transparent background"
 msgstr "རྒྱབ་གཞི་དྭངས་གསལ།"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Use _default color"
 msgstr "སྔོན་སྒྲིག་ཚོས་གཞི་ལག་ལེན་འཐབ།(_d)"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Use a custom text selection background color"
 msgstr "སྲོལ་སྒྲིག་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་ཅིག་ལག་ལེན་འཐབ།"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "སྲོལ་སྒྲིག་ཚོས་གཞི་ལག་ལེན་འཐབ།(_c)"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use the default text selection background color"
 msgstr "སྔོན་སྒྲིག་ཚིག་ཡིག་སེལ་འཐུ་རྒྱབ་གཞི་ཚོས་གཞི་འདི་ལག་ལེན་འཐབ།"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 #, fuzzy
 msgid "_Appearance"
 msgstr "འབྱུང་སྣང་།"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "_Background color:"
 msgstr "རྒྱབ་གཞི་ཚོས་གཞི:(_B)"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "_Backspace key generates:"
 msgstr "རྒྱབ་བཤུད་ལྡེ་མིག་བཟོ་བཏོན་འབདཝ་ཨིན།:(_B)"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 #, fuzzy
 msgid "_Colors"
 msgstr "ཚོས་གཞི་ཚུ།"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Delete key generates:"
 msgstr "ལྡེ་མིག་བཟོ་བཏོན་ཚུ་བཏོན་གཏང་:(_D)"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Dynamically-set title:"
 msgstr "ནུས་ཅན་ཐོག་ལས་-གཞི་སྒྲིག་མགོ་མིང་:(_D)"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_File:"
 msgstr "ཡིག་སྣོད:(_F)"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 #, fuzzy
 msgid "_General"
 msgstr "ཡོངས་ཁྱབ།"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Initial title:"
 msgstr "མིང་རྟགས་བསྡུས་པའི་མགོ་མིང་:(_I)"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 #, fuzzy
 msgid "_Reset comparibility options to defaults"
 msgstr "མཐུན་འགྱུར་གདམ་ཁ་ཚུ་སྔོན་སྒྲིག་ཚུ་ལུ་སླར་སྒྲིག་འབད།(_R)"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_Run command as login shell"
 msgstr "ནང་བསྐྱོད་ཤལ་སྦེ་བརྡ་བསྐུལ་གཡོག་བཀོལ།(_R)"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Scrollbar is:"
 msgstr "བཤུད་ཕྲ་འདི:(_S)"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Shortcuts"
 msgstr "མགྱོགས་ཐབས་ཚུ།"
 
-#: ../Terminal.glade.h:111
-msgid "_Text and cursor color:"
+#: ../Terminal.glade.h:112
+#, fuzzy
+msgid "_Text color:"
 msgstr "ཚིག་ཡིག་དང་འོད་རྟགས་ཚོས་གཞི:(_T)"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "བརྡ་བསྐུལ་འི་གཞི་བཙུགས་འབད་ཡོདཔ་ད་ཡུ་ཊི་ཨེམ་པི/ཌབ་ལུ་ཊི་ཨེམ་པི་དྲན་ཐོ་ཚུ་དུས་མཐུན་བཟོ།(_U)"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "seconds"
 msgstr ""
+
+#~ msgid "Usage: Terminal [OPTION...]"
+#~ msgstr "བདེ་སྤྱོད་: ཊར་མི་ནཱལ [གདམ་ཁ...]"
 
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>མགོ་མིང་།</b>"
@@ -1644,9 +1678,6 @@ msgstr ""
 
 #~ msgid "Custom title"
 #~ msgstr "སྲོལ་སྒྲིག་མགོ་མིང་།"
-
-#~ msgid "Tab position"
-#~ msgstr "མཆོང་ལྡེ་གནས་ས།"
 
 #~ msgid "Tab title"
 #~ msgstr "མཆོང་ལྡེ་མགོ་མིང་།"

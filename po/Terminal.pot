@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 23:06+0200\n"
+"POT-Creation-Date: 2009-07-03 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,109 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../terminal/main.c:46
-msgid "Usage: Terminal [OPTION...]"
+msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:48
-msgid "  -h, --help                          Print this help message and exit"
+#: ../terminal/main.c:47
+msgid "OPTION"
 msgstr ""
 
 #: ../terminal/main.c:49
-msgid ""
-"  -v, --version                       Print version information and exit"
+msgid "General Options"
 msgstr ""
 
 #: ../terminal/main.c:50
+msgid "  -h, --help                          Print this help message and exit"
+msgstr ""
+
+#: ../terminal/main.c:51
+msgid ""
+"  -V, --version                       Print version information and exit"
+msgstr ""
+
+#: ../terminal/main.c:52
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
 
-#: ../terminal/main.c:53
+#: ../terminal/main.c:54
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr ""
+
+#: ../terminal/main.c:55
+msgid ""
+"  --default-working-directory=DIRNAME Set the default terminal's working\n"
+"                                      directory"
+msgstr ""
+
+#: ../terminal/main.c:58
+msgid "Window or Tab Separators"
+msgstr ""
+
+#: ../terminal/main.c:59
+msgid ""
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+
+#: ../terminal/main.c:62
+msgid ""
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided"
+msgstr ""
+
+#: ../terminal/main.c:66
+msgid "Tab Options"
+msgstr ""
+
+#: ../terminal/main.c:67
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
 msgstr ""
 
-#: ../terminal/main.c:55
+#: ../terminal/main.c:69
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:71
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:72
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr ""
 
-#: ../terminal/main.c:59
+#: ../terminal/main.c:73
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
 
-#: ../terminal/main.c:62
+#: ../terminal/main.c:76
+msgid "Window Options"
+msgstr ""
+
+#: ../terminal/main.c:77
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
 
-#: ../terminal/main.c:64
+#: ../terminal/main.c:79
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
 
-#: ../terminal/main.c:67
+#: ../terminal/main.c:82
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
@@ -83,28 +127,28 @@ msgid ""
 "                                      you create from the command line"
 msgstr ""
 
-#: ../terminal/main.c:71
+#: ../terminal/main.c:86
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
 
-#: ../terminal/main.c:73
+#: ../terminal/main.c:88
 msgid ""
 "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 "                                      name or filename"
 msgstr ""
 
-#: ../terminal/main.c:75
+#: ../terminal/main.c:90
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line."
+"                                      command line"
 msgstr ""
 
-#: ../terminal/main.c:80
+#: ../terminal/main.c:95
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -113,7 +157,7 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: ../terminal/main.c:85
+#: ../terminal/main.c:100
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -122,7 +166,7 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: ../terminal/main.c:90
+#: ../terminal/main.c:105
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -131,7 +175,7 @@ msgid ""
 "                                      the command line"
 msgstr ""
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:110
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -140,7 +184,7 @@ msgid ""
 "                                      the command line"
 msgstr ""
 
-#: ../terminal/main.c:100
+#: ../terminal/main.c:115
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -149,7 +193,7 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: ../terminal/main.c:105
+#: ../terminal/main.c:120
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -158,36 +202,12 @@ msgid ""
 "                                      command line"
 msgstr ""
 
-#: ../terminal/main.c:111
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-
-#: ../terminal/main.c:114
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-
-#: ../terminal/main.c:118
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-
-#: ../terminal/main.c:119
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-
-#: ../terminal/main.c:143 ../terminal/terminal-preferences.c:1249
+#: ../terminal/main.c:147 ../terminal/terminal-preferences.c:1249
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr ""
 
-#: ../terminal/main.c:165
+#: ../terminal/main.c:169
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -202,12 +222,12 @@ msgid ""
 "Please report bugs to <%s>.\n"
 msgstr ""
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:264
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr ""
 
-#: ../terminal/main.c:269
+#: ../terminal/main.c:273
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr ""
@@ -452,15 +472,15 @@ msgid "Unable to determine your login shell."
 msgstr ""
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1154
+#: ../terminal/terminal-screen.c:1140
 msgid "Failed to execute child"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1371
+#: ../terminal/terminal-screen.c:1357
 msgid "Untitled"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1702
+#: ../terminal/terminal-screen.c:1688
 msgid "Close this tab"
 msgstr ""
 
@@ -485,7 +505,7 @@ msgid "Help"
 msgstr ""
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:23
+#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr ""
 
@@ -880,34 +900,38 @@ msgid "Control-H"
 msgstr ""
 
 #: ../Terminal.glade.h:21
-msgid "Disable all me_nu access keys (such as Alt+f)"
+msgid "Cu_rsor color:"
 msgstr ""
 
 #: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr ""
+
+#: ../Terminal.glade.h:23
 msgid "Disable m_enu shortcut keys (F10 by default)"
 msgstr ""
 
-#: ../Terminal.glade.h:24
+#: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
 msgstr ""
 
-#: ../Terminal.glade.h:25
+#: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
 msgstr ""
 
-#: ../Terminal.glade.h:26
+#: ../Terminal.glade.h:27
 msgid "Display _toolbars in new windows"
 msgstr ""
 
-#: ../Terminal.glade.h:27
+#: ../Terminal.glade.h:28
 msgid "Double Click"
 msgstr ""
 
-#: ../Terminal.glade.h:28
+#: ../Terminal.glade.h:29
 msgid "Enab_le anti-aliasing for the terminal font"
 msgstr ""
 
-#: ../Terminal.glade.h:29
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -915,193 +939,193 @@ msgid ""
 "systems."
 msgstr ""
 
-#: ../Terminal.glade.h:30
+#: ../Terminal.glade.h:31
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
 
-#: ../Terminal.glade.h:31
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
 
-#: ../Terminal.glade.h:32
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr ""
 
-#: ../Terminal.glade.h:33
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr ""
 
-#: ../Terminal.glade.h:34
+#: ../Terminal.glade.h:35
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr ""
 
-#: ../Terminal.glade.h:35
+#: ../Terminal.glade.h:36
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr ""
 
-#: ../Terminal.glade.h:36
+#: ../Terminal.glade.h:37
 msgid "Escape sequence"
 msgstr ""
 
-#: ../Terminal.glade.h:37
+#: ../Terminal.glade.h:38
 msgid "Font"
 msgstr ""
 
-#: ../Terminal.glade.h:38
+#: ../Terminal.glade.h:39
 msgid "General"
 msgstr ""
 
-#: ../Terminal.glade.h:39
+#: ../Terminal.glade.h:40
 msgid "Goes after initial title"
 msgstr ""
 
-#: ../Terminal.glade.h:40
+#: ../Terminal.glade.h:41
 msgid "Goes before initial title"
 msgstr ""
 
-#: ../Terminal.glade.h:41
+#: ../Terminal.glade.h:42
 msgid "Isn't displayed"
 msgstr ""
 
-#: ../Terminal.glade.h:42
+#: ../Terminal.glade.h:43
 msgid "Menubar Access"
 msgstr ""
 
-#: ../Terminal.glade.h:43
+#: ../Terminal.glade.h:44
 msgid "None (use solid color)"
 msgstr ""
 
-#: ../Terminal.glade.h:44
+#: ../Terminal.glade.h:45
 msgid "On the left side"
 msgstr ""
 
-#: ../Terminal.glade.h:45
+#: ../Terminal.glade.h:46
 msgid "On the right side"
 msgstr ""
 
-#: ../Terminal.glade.h:46
+#: ../Terminal.glade.h:47
 msgid "Open a dialog to specify the color"
 msgstr ""
 
-#: ../Terminal.glade.h:47
+#: ../Terminal.glade.h:48
 msgid "Opening New Windows"
 msgstr ""
 
-#: ../Terminal.glade.h:48
+#: ../Terminal.glade.h:49
 msgid "Palette"
 msgstr ""
 
-#: ../Terminal.glade.h:49
+#: ../Terminal.glade.h:50
 msgid "Palette entry 1"
 msgstr ""
 
-#: ../Terminal.glade.h:50
+#: ../Terminal.glade.h:51
 msgid "Palette entry 10"
 msgstr ""
 
-#: ../Terminal.glade.h:51
+#: ../Terminal.glade.h:52
 msgid "Palette entry 11"
 msgstr ""
 
-#: ../Terminal.glade.h:52
+#: ../Terminal.glade.h:53
 msgid "Palette entry 12"
 msgstr ""
 
-#: ../Terminal.glade.h:53
+#: ../Terminal.glade.h:54
 msgid "Palette entry 13"
 msgstr ""
 
-#: ../Terminal.glade.h:54
+#: ../Terminal.glade.h:55
 msgid "Palette entry 14"
 msgstr ""
 
-#: ../Terminal.glade.h:55
+#: ../Terminal.glade.h:56
 msgid "Palette entry 15"
 msgstr ""
 
-#: ../Terminal.glade.h:56
+#: ../Terminal.glade.h:57
 msgid "Palette entry 16"
 msgstr ""
 
-#: ../Terminal.glade.h:57
+#: ../Terminal.glade.h:58
 msgid "Palette entry 2"
 msgstr ""
 
-#: ../Terminal.glade.h:58
+#: ../Terminal.glade.h:59
 msgid "Palette entry 3"
 msgstr ""
 
-#: ../Terminal.glade.h:59
+#: ../Terminal.glade.h:60
 msgid "Palette entry 4"
 msgstr ""
 
-#: ../Terminal.glade.h:60
+#: ../Terminal.glade.h:61
 msgid "Palette entry 5"
 msgstr ""
 
-#: ../Terminal.glade.h:61
+#: ../Terminal.glade.h:62
 msgid "Palette entry 6"
 msgstr ""
 
-#: ../Terminal.glade.h:62
+#: ../Terminal.glade.h:63
 msgid "Palette entry 7"
 msgstr ""
 
-#: ../Terminal.glade.h:63
+#: ../Terminal.glade.h:64
 msgid "Palette entry 8"
 msgstr ""
 
-#: ../Terminal.glade.h:64
+#: ../Terminal.glade.h:65
 msgid "Palette entry 9"
 msgstr ""
 
-#: ../Terminal.glade.h:65
+#: ../Terminal.glade.h:66
 msgid "Replaces initial title"
 msgstr ""
 
-#: ../Terminal.glade.h:66
+#: ../Terminal.glade.h:67
 msgid "Reset tab activity _indicator after"
 msgstr ""
 
-#: ../Terminal.glade.h:67
+#: ../Terminal.glade.h:68
 msgid "Scaled"
 msgstr ""
 
-#: ../Terminal.glade.h:68
+#: ../Terminal.glade.h:69
 msgid "Scroll on _keystroke"
 msgstr ""
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scroll on ou_tput"
 msgstr ""
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr ""
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll_back:"
 msgstr ""
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 msgid "Scrolling"
 msgstr ""
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Select Background Image File"
 msgstr ""
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1109,44 +1133,44 @@ msgid ""
 "login shell."
 msgstr ""
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 msgid "Shortcut Keys"
 msgstr ""
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid "St_yle:"
 msgstr ""
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Stretched"
 msgstr ""
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid "Tab Activity Indicator"
 msgstr ""
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 msgid "Tab activit_y color:"
 msgstr ""
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Terminal Preferences"
 msgstr ""
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Terminal applications have this color palette available to them:"
 msgstr ""
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 msgid "Text Selection"
 msgstr ""
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1154,13 +1178,13 @@ msgid ""
 "different terminal behavior."
 msgstr ""
 
-#: ../Terminal.glade.h:88
+#: ../Terminal.glade.h:89
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
 msgstr ""
 
-#: ../Terminal.glade.h:89
+#: ../Terminal.glade.h:90
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1168,98 +1192,98 @@ msgid ""
 "xterm-color here."
 msgstr ""
 
-#: ../Terminal.glade.h:90
+#: ../Terminal.glade.h:91
 msgid "Title"
 msgstr ""
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid "Titled"
 msgstr ""
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid "Transpare_ncy:"
 msgstr ""
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Transparent background"
 msgstr ""
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Use _default color"
 msgstr ""
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Use a custom text selection background color"
 msgstr ""
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Use c_ustom color:"
 msgstr ""
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use the default text selection background color"
 msgstr ""
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "_Appearance"
 msgstr ""
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "_Background color:"
 msgstr ""
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "_Backspace key generates:"
 msgstr ""
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 msgid "_Colors"
 msgstr ""
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Delete key generates:"
 msgstr ""
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Dynamically-set title:"
 msgstr ""
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_File:"
 msgstr ""
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_General"
 msgstr ""
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Initial title:"
 msgstr ""
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_Reset comparibility options to defaults"
 msgstr ""
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_Run command as login shell"
 msgstr ""
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Scrollbar is:"
 msgstr ""
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 msgid "_Shortcuts"
 msgstr ""
 
-#: ../Terminal.glade.h:111
-msgid "_Text and cursor color:"
-msgstr ""
-
 #: ../Terminal.glade.h:112
-msgid "_Update utmp/wtmp records when command is launched"
+msgid "_Text color:"
 msgstr ""
 
 #: ../Terminal.glade.h:113
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr ""
+
+#: ../Terminal.glade.h:114
 msgid "seconds"
 msgstr ""

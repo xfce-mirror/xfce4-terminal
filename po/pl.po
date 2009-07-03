@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-02 23:06+0200\n"
+"POT-Creation-Date: 2009-07-03 17:32+0200\n"
 "PO-Revision-Date: 2009-03-25 12:17+0100\n"
 "Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
 "Language-Team: Polish\n"
@@ -19,25 +19,74 @@ msgstr ""
 "100<10 || n%100>=20)) ? 1 : 2));\n"
 
 #: ../terminal/main.c:46
-msgid "Usage: Terminal [OPTION...]"
-msgstr "Użycie: Terminal [OPCJA...]"
+msgid "Usage:"
+msgstr ""
 
-#: ../terminal/main.c:48
+#: ../terminal/main.c:47
+msgid "OPTION"
+msgstr ""
+
+#: ../terminal/main.c:49
+#, fuzzy
+msgid "General Options"
+msgstr "Ogólne"
+
+#: ../terminal/main.c:50
 msgid "  -h, --help                          Print this help message and exit"
 msgstr "  -h, --help\t\t\tWypisuje ten komunikat i kończy program"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:51
+#, fuzzy
 msgid ""
-"  -v, --version                       Print version information and exit"
+"  -V, --version                       Print version information and exit"
 msgstr "  -v, --version\t\t\tWypisuje informacje o wersji i kończy program"
 
-#: ../terminal/main.c:50
+#: ../terminal/main.c:52
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr "  --disable-server\t\tNie rejestruje się z szyną komunikatów D-BUS"
 
-#: ../terminal/main.c:53
+#: ../terminal/main.c:54
+msgid "  --default-display=DISPLAY           default X display to use"
+msgstr "  --default-display=DISPLAY\tOkreśla domyślnie używany ekran X"
+
+#: ../terminal/main.c:55
+msgid ""
+"  --default-working-directory=DIRNAME Set the default terminal's working\n"
+"                                      directory"
+msgstr ""
+"  --default-working-directory=DIRNAME\n"
+"\t\t\t\tOkreśla domyślny katalog roboczy programu"
+
+#: ../terminal/main.c:58
+msgid "Window or Tab Separators"
+msgstr ""
+
+#: ../terminal/main.c:59
+msgid ""
+"  --tab                               Open a new tab in the last-specified\n"
+"                                      window; more than one of these\n"
+"                                      options can be provided"
+msgstr ""
+"  --tab\t\t\t\tOtwiera nową kartę w ostatnim określonym oknie.\n"
+"\t\t\t\tMożna użyć wielokrotnie."
+
+#: ../terminal/main.c:62
+msgid ""
+"  --window                            Open a new window containing one tab;\n"
+"                                      more than one of these options can be\n"
+"                                      provided"
+msgstr ""
+"  --window\t\t\tOtwiera nowe okno, zawierające jedną kartę.\n"
+"\t\t\t\tMożna użyć wielokrotnie."
+
+#: ../terminal/main.c:66
+#, fuzzy
+msgid "Tab Options"
+msgstr "Pozycja zakładki"
+
+#: ../terminal/main.c:67
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
@@ -45,23 +94,23 @@ msgstr ""
 "  -x, --execute\t\t\tWykonuje polecenie wewnątrz terminala\n"
 "\t\t\t\tpodane w dalszej części wiersza poleceń"
 
-#: ../terminal/main.c:55
+#: ../terminal/main.c:69
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
 "  -e, --command=STRING\t\tWykonuje parametr tej opcji wewnątrz terminala"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:71
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr "  --working-directory=DIRNAME\tUstawia katalog roboczy terminala"
 
-#: ../terminal/main.c:58
+#: ../terminal/main.c:72
 msgid "  -T, --title=TITLE                   Set the terminal's title"
 msgstr "  -T, --title=TITLE\t\tUstawia tytuł okna terminala"
 
-#: ../terminal/main.c:59
+#: ../terminal/main.c:73
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
@@ -69,7 +118,12 @@ msgstr ""
 "  -H, --hold\t\t\tNie niszczy karty, nawet gdy proces potomny\n"
 "\t\t\t\tzostanie zakończony"
 
-#: ../terminal/main.c:62
+#: ../terminal/main.c:76
+#, fuzzy
+msgid "Window Options"
+msgstr "Nieznana opcja „%s”"
+
+#: ../terminal/main.c:77
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
@@ -77,7 +131,7 @@ msgstr ""
 "  --display=DISPLAY\t\tOkreśla ekran X do użycia przez ostatnie\n"
 "\t\t\t\tokreślone okno"
 
-#: ../terminal/main.c:64
+#: ../terminal/main.c:79
 msgid ""
 "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 "                                      man page), can be specified once per\n"
@@ -87,7 +141,7 @@ msgstr ""
 "\t\t\t\tna stronach podręcznika „X”). Można użyć\n"
 "\t\t\t\tjednokrotnie dla każdego otwieranego okna."
 
-#: ../terminal/main.c:67
+#: ../terminal/main.c:82
 #, fuzzy
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
@@ -100,7 +154,7 @@ msgstr ""
 "\t\t\t\tjednokrotnie dla każdego okna wywoływanego\n"
 "\t\t\t\tz wiersza poleceń."
 
-#: ../terminal/main.c:71
+#: ../terminal/main.c:86
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
@@ -108,7 +162,7 @@ msgstr ""
 "  --startup-id=STRING\t\tOkreśla ID protokołu powiadamiania przy\n"
 "\t\t\t\turuchamianiu"
 
-#: ../terminal/main.c:73
+#: ../terminal/main.c:88
 #, fuzzy
 msgid ""
 "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
@@ -116,20 +170,21 @@ msgid ""
 msgstr ""
 "  -e, --command=STRING\t\tWykonuje parametr tej opcji wewnątrz terminala"
 
-#: ../terminal/main.c:75
+#: ../terminal/main.c:90
+#, fuzzy
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
 "                                      window; can be specified once for\n"
 "                                      each window you create from the\n"
-"                                      command line."
+"                                      command line"
 msgstr ""
 "  --fullscreen\t\t\tUstawia ostatnio określone okno w tryb pełno-\n"
 "\t\t\t\tekranowy. Odnosi się tylko do jednego okna.\n"
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:80
+#: ../terminal/main.c:95
 msgid ""
 "  --show-menubar                      Turn on the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -142,7 +197,7 @@ msgstr ""
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:85
+#: ../terminal/main.c:100
 msgid ""
 "  --hide-menubar                      Turn off the menubar for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -155,7 +210,7 @@ msgstr ""
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:90
+#: ../terminal/main.c:105
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -168,7 +223,7 @@ msgstr ""
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:110
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -181,7 +236,7 @@ msgstr ""
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:100
+#: ../terminal/main.c:115
 msgid ""
 "  --show-toolbars                     Turn on the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -194,7 +249,7 @@ msgstr ""
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:105
+#: ../terminal/main.c:120
 msgid ""
 "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 "                                      specified window; applies to only one\n"
@@ -207,42 +262,12 @@ msgstr ""
 "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
 "\t\t\t\twywoływanego z wiersza poleceń."
 
-#: ../terminal/main.c:111
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab\t\t\t\tOtwiera nową kartę w ostatnim określonym oknie.\n"
-"\t\t\t\tMożna użyć wielokrotnie."
-
-#: ../terminal/main.c:114
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window\t\t\tOtwiera nowe okno, zawierające jedną kartę.\n"
-"\t\t\t\tMożna użyć wielokrotnie."
-
-#: ../terminal/main.c:118
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=DISPLAY\tOkreśla domyślnie używany ekran X"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAME\n"
-"\t\t\t\tOkreśla domyślny katalog roboczy programu"
-
-#: ../terminal/main.c:143 ../terminal/terminal-preferences.c:1249
+#: ../terminal/main.c:147 ../terminal/terminal-preferences.c:1249
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:165
+#: ../terminal/main.c:169
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -267,12 +292,12 @@ msgstr ""
 "\n"
 "Błędy proszę zgłaszać do <%s>.\n"
 
-#: ../terminal/main.c:260
+#: ../terminal/main.c:264
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nie udało się zarejestrować usługi terminala: %s.\n"
 
-#: ../terminal/main.c:269
+#: ../terminal/main.c:273
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Nie udało się uruchomić terminala: %s.\n"
@@ -534,15 +559,15 @@ msgid "Unable to determine your login shell."
 msgstr "Nie udało się określić powłoki logowania."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1154
+#: ../terminal/terminal-screen.c:1140
 msgid "Failed to execute child"
 msgstr "Nie udało się wywołać procesu potomnego."
 
-#: ../terminal/terminal-screen.c:1371
+#: ../terminal/terminal-screen.c:1357
 msgid "Untitled"
 msgstr "Bez tytułu"
 
-#: ../terminal/terminal-screen.c:1702
+#: ../terminal/terminal-screen.c:1688
 msgid "Close this tab"
 msgstr "Zamyka kartę"
 
@@ -567,7 +592,7 @@ msgid "Help"
 msgstr "Pomoc"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:23
+#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Wyłączony"
 
@@ -979,37 +1004,42 @@ msgid "Control-H"
 msgstr "Control-H"
 
 #: ../Terminal.glade.h:21
+#, fuzzy
+msgid "Cu_rsor color:"
+msgstr "Kolor _tekstu i kursora:"
+
+#: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Wyłączenie skrótów _menu (np. Alt+f)"
 
-#: ../Terminal.glade.h:22
+#: ../Terminal.glade.h:23
 #, fuzzy
 msgid "Disable m_enu shortcut keys (F10 by default)"
 msgstr "Wyłączenie klawisza przywołania m_enu (domyślnie F10)"
 
-#: ../Terminal.glade.h:24
+#: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
 msgstr "_Obramowanie okna"
 
-#: ../Terminal.glade.h:25
+#: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
 msgstr "Pasek _menu"
 
-#: ../Terminal.glade.h:26
+#: ../Terminal.glade.h:27
 msgid "Display _toolbars in new windows"
 msgstr "Paski _narzędziowe"
 
-#: ../Terminal.glade.h:27
+#: ../Terminal.glade.h:28
 #, fuzzy
 msgid "Double Click"
 msgstr "<b>Podwójne kliknięcie</b>"
 
-#: ../Terminal.glade.h:28
+#: ../Terminal.glade.h:29
 #, fuzzy
 msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Antyaliasing"
 
-#: ../Terminal.glade.h:29
+#: ../Terminal.glade.h:30
 msgid ""
 "Enable this option if you want Terminal to use anti-aliasing when rendering "
 "text in terminal windows. Disabling this option can impressively speed up "
@@ -1020,13 +1050,13 @@ msgstr ""
 "Wyłączenie tej opcji może znacząco przyspieszyć działanie terminala i "
 "zmniejszyć obciążenie systemu na mało wydajnych komputerach."
 
-#: ../Terminal.glade.h:30
+#: ../Terminal.glade.h:31
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr "Umożliwia programom używanie pogrubionego tekstu w oknach terminala"
 
-#: ../Terminal.glade.h:31
+#: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
@@ -1034,205 +1064,205 @@ msgstr ""
 "Umożliwia przewijanie o jeden wiersz za pomocą klawiszy góra/dół z "
 "wciśniętym klawiszem Shift"
 
-#: ../Terminal.glade.h:32
+#: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Wyświetla pasek menu w nowo otwartych oknach"
 
-#: ../Terminal.glade.h:33
+#: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
 msgstr "Wyświetla paski narzędziowe w nowo otwartych oknach"
 
-#: ../Terminal.glade.h:34
+#: ../Terminal.glade.h:35
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Wyświetla dekoracje wokół nowo otwartych okien"
 
-#: ../Terminal.glade.h:35
+#: ../Terminal.glade.h:36
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr "Umożliwia przewinięcie terminala do wiersza poleceń dowolnym klawiszem"
 
-#: ../Terminal.glade.h:36
+#: ../Terminal.glade.h:37
 msgid "Escape sequence"
 msgstr "Sekwencja sterująca"
 
-#: ../Terminal.glade.h:37
+#: ../Terminal.glade.h:38
 msgid "Font"
 msgstr ""
 
-#: ../Terminal.glade.h:38
+#: ../Terminal.glade.h:39
 msgid "General"
 msgstr "Ogólne"
 
-#: ../Terminal.glade.h:39
+#: ../Terminal.glade.h:40
 msgid "Goes after initial title"
 msgstr "Wyświetlanie za początkowym tytułem"
 
-#: ../Terminal.glade.h:40
+#: ../Terminal.glade.h:41
 msgid "Goes before initial title"
 msgstr "Wyświetlanie przed początkowym tytułem"
 
-#: ../Terminal.glade.h:41
+#: ../Terminal.glade.h:42
 msgid "Isn't displayed"
 msgstr "Brak"
 
-#: ../Terminal.glade.h:42
+#: ../Terminal.glade.h:43
 #, fuzzy
 msgid "Menubar Access"
 msgstr "<b>Dostęp do głównego menu</b>"
 
-#: ../Terminal.glade.h:43
+#: ../Terminal.glade.h:44
 msgid "None (use solid color)"
 msgstr "Brak (jednolity kolor)"
 
-#: ../Terminal.glade.h:44
+#: ../Terminal.glade.h:45
 msgid "On the left side"
 msgstr "Po lewej stronie"
 
-#: ../Terminal.glade.h:45
+#: ../Terminal.glade.h:46
 msgid "On the right side"
 msgstr "Po prawej stronie"
 
-#: ../Terminal.glade.h:46
+#: ../Terminal.glade.h:47
 msgid "Open a dialog to specify the color"
 msgstr "Otwórz okno dialogowe, aby wybrać kolor"
 
-#: ../Terminal.glade.h:47
+#: ../Terminal.glade.h:48
 #, fuzzy
 msgid "Opening New Windows"
 msgstr "<b>Otwieranie nowych okien</b>"
 
-#: ../Terminal.glade.h:48
+#: ../Terminal.glade.h:49
 #, fuzzy
 msgid "Palette"
 msgstr "<b>Paleta</b>"
 
-#: ../Terminal.glade.h:49
+#: ../Terminal.glade.h:50
 #, fuzzy
 msgid "Palette entry 1"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:50
+#: ../Terminal.glade.h:51
 #, fuzzy
 msgid "Palette entry 10"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:51
+#: ../Terminal.glade.h:52
 #, fuzzy
 msgid "Palette entry 11"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:52
+#: ../Terminal.glade.h:53
 #, fuzzy
 msgid "Palette entry 12"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:53
+#: ../Terminal.glade.h:54
 #, fuzzy
 msgid "Palette entry 13"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:54
+#: ../Terminal.glade.h:55
 #, fuzzy
 msgid "Palette entry 14"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:55
+#: ../Terminal.glade.h:56
 #, fuzzy
 msgid "Palette entry 15"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:56
+#: ../Terminal.glade.h:57
 #, fuzzy
 msgid "Palette entry 16"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:57
+#: ../Terminal.glade.h:58
 #, fuzzy
 msgid "Palette entry 2"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:58
+#: ../Terminal.glade.h:59
 #, fuzzy
 msgid "Palette entry 3"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:59
+#: ../Terminal.glade.h:60
 #, fuzzy
 msgid "Palette entry 4"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:60
+#: ../Terminal.glade.h:61
 #, fuzzy
 msgid "Palette entry 5"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:61
+#: ../Terminal.glade.h:62
 #, fuzzy
 msgid "Palette entry 6"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:62
+#: ../Terminal.glade.h:63
 #, fuzzy
 msgid "Palette entry 7"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:63
+#: ../Terminal.glade.h:64
 #, fuzzy
 msgid "Palette entry 8"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:64
+#: ../Terminal.glade.h:65
 #, fuzzy
 msgid "Palette entry 9"
 msgstr "%d. kolor palety"
 
-#: ../Terminal.glade.h:65
+#: ../Terminal.glade.h:66
 msgid "Replaces initial title"
 msgstr "Zastępowanie początkowego tytułu"
 
-#: ../Terminal.glade.h:66
+#: ../Terminal.glade.h:67
 #, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "Resetowanie po upływie"
 
-#: ../Terminal.glade.h:67
+#: ../Terminal.glade.h:68
 msgid "Scaled"
 msgstr "Przeskalowany"
 
-#: ../Terminal.glade.h:68
+#: ../Terminal.glade.h:69
 msgid "Scroll on _keystroke"
 msgstr "Przewijanie po _naciśnięciu klawisza"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "Przewijanie po w_ypisania znaku"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Przewijanie o jeden _wiersz przy użyciu klawiszy Shift i góra/dół"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "_Ilość przewijanych wierszy:"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scrolling"
 msgstr "<b>Przewijanie</b>"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "Wybór pliku"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1243,53 +1273,53 @@ msgstr ""
 "pomiędzy działaniem powłoki interaktywnej i startowej można znaleźć w "
 "dokumentacji powłoki."
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 #, fuzzy
 msgid "Shortcut Keys"
 msgstr "Klawisz skrótu"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Określa liczbę wierszy o jakie można przewinąć terminal, używając paska "
 "przewijania"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 #, fuzzy
 msgid "St_yle:"
 msgstr "_Styl:"
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Stretched"
 msgstr "Rozciągnięty"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "<b>Wskazanie aktywności kart</b>"
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "Kolor wskazania a_ktywności kart:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Terminal Preferences"
 msgstr "Preferencje programu"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Terminal applications have this color palette available to them:"
 msgstr ""
 "Następująca paleta kolorów jest dostępna dla programów uruchamianych w "
 "terminalu:"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Text Selection"
 msgstr "<b>Zaznaczanie tekstu</b>"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1302,7 +1332,7 @@ msgstr ""
 "programami i systemami operacyjnymi, które oczekują nieco innego zachowania "
 "terminala."
 
-#: ../Terminal.glade.h:88
+#: ../Terminal.glade.h:89
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1310,7 +1340,7 @@ msgstr ""
 "Umożliwia przewinięcie terminala do wiersza poleceń w przypadku, gdy "
 "działające poleceniu terminala wypisze na wyjście"
 
-#: ../Terminal.glade.h:89
+#: ../Terminal.glade.h:90
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1322,109 +1352,113 @@ msgstr ""
 "systemów. Jeśli występują problemy z kolorami w niektórych programach, "
 "proszę spróbować użyć xterm-color."
 
-#: ../Terminal.glade.h:90
+#: ../Terminal.glade.h:91
 msgid "Title"
 msgstr "Tytuł"
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 #, fuzzy
 msgid "Titled"
 msgstr "Kafelki"
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "Przezroczyste tło"
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Transparent background"
 msgstr "Przezroczyste tło"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Use _default color"
 msgstr "_Domyślny kolor"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Use a custom text selection background color"
 msgstr "Używa innego koloru tła zaznaczanego tekstu"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "_Własny kolor"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use the default text selection background color"
 msgstr "Używa domyślnego koloru tła zaznaczanego tekstu"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 #, fuzzy
 msgid "_Appearance"
 msgstr "Wygląd"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "_Background color:"
 msgstr "Kolor tł_a:"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "_Backspace key generates:"
 msgstr "Klawisz _Backspace generuje:"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 #, fuzzy
 msgid "_Colors"
 msgstr "Kolory"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Delete key generates:"
 msgstr "Klawisz _Delete generuje:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Dynamically-set title:"
 msgstr "_Dynamicznie ustawiony tytuł:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_File:"
 msgstr "_Plik:"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 #, fuzzy
 msgid "_General"
 msgstr "Ogólne"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Initial title:"
 msgstr "_Początkowy tytuł:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 #, fuzzy
 msgid "_Reset comparibility options to defaults"
 msgstr "Przywróć _domyślne"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_Run command as login shell"
 msgstr "_Uruchamianie w roli powłoki startowej"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Scrollbar is:"
 msgstr "P_asek przewijania:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Shortcuts"
 msgstr "Skróty klawiszowe"
 
-#: ../Terminal.glade.h:111
-msgid "_Text and cursor color:"
+#: ../Terminal.glade.h:112
+#, fuzzy
+msgid "_Text color:"
 msgstr "Kolor _tekstu i kursora:"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Uaktualnianie wpisów utmp/wtmp podczas uruchamiania polecenia"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "seconds"
 msgstr "sekund"
+
+#~ msgid "Usage: Terminal [OPTION...]"
+#~ msgstr "Użycie: Terminal [OPCJA...]"
 
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Tytuł</b>"
@@ -1611,9 +1645,6 @@ msgstr "sekund"
 
 #~ msgid "Custom title"
 #~ msgstr "Inny tytuł"
-
-#~ msgid "Tab position"
-#~ msgstr "Pozycja zakładki"
 
 #~ msgid "Tab title"
 #~ msgstr "Tytuł zakładki"
