@@ -335,7 +335,7 @@ terminal_preferences_dialog_background_set (GtkFileChooserButton      *widget,
   terminal_return_if_fail (GTK_IS_FILE_CHOOSER_BUTTON (widget));
 
   filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
-  g_object_set (G_OBJECT (dialog->preferences), filename, NULL);
+  g_object_set (G_OBJECT (dialog->preferences), "background-image-file", filename, NULL);
   g_free (filename);
 }
 
