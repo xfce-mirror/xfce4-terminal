@@ -43,13 +43,27 @@
 static void
 usage (void)
 {
-  g_print ("%s\n", _("Usage: Terminal [OPTION...]"));
+  g_print ("%s\n", _("Usage:"));
+  g_print ("  %s [%s...]\n", PACKAGE_NAME, _("OPTION"));
   g_print ("\n");
+  g_print ("%s:\n", _("General Options"));
   g_print ("%s\n", _("  -h, --help                          Print this help message and exit"));
-  g_print ("%s\n", _("  -v, --version                       Print version information and exit"));
+  g_print ("%s\n", _("  -V, --version                       Print version information and exit"));
   g_print ("%s\n", _("  --disable-server                    Do not register with the D-BUS\n"
                      "                                      session message bus"));
+  g_print ("%s\n", _("  --default-display=DISPLAY           default X display to use"));
+  g_print ("%s\n", _("  --default-working-directory=DIRNAME Set the default terminal's working\n"
+                     "                                      directory"));
   g_print ("\n");
+  g_print ("%s:\n", _("Window or Tab Separators"));
+  g_print ("%s\n", _("  --tab                               Open a new tab in the last-specified\n"
+                     "                                      window; more than one of these\n"
+                     "                                      options can be provided"));
+  g_print ("%s\n", _("  --window                            Open a new window containing one tab;\n"
+                     "                                      more than one of these options can be\n"
+                     "                                      provided"));
+  g_print ("\n");
+  g_print ("%s:\n", _("Tab Options"));
   g_print ("%s\n", _("  -x, --execute                       Execute the remainder of the command\n"
                      "                                      line inside the terminal"));
   g_print ("%s\n", _("  -e, --command=STRING                Execute the argument to this option\n"
@@ -59,6 +73,7 @@ usage (void)
   g_print ("%s\n", _("  -H, --hold                          Do not immediately destroy the tab\n"
                      "                                      when the child command exits"));
   g_print ("\n");
+  g_print ("%s:\n", _("Window Options"));
   g_print ("%s\n", _("  --display=DISPLAY                   X display to use for the last-\n"
                      "                                      specified window"));
   g_print ("%s\n", _("  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
@@ -76,7 +91,7 @@ usage (void)
                      "                                      fullscreen mode; applies to only one\n"
                      "                                      window; can be specified once for\n"
                      "                                      each window you create from the\n"
-                     "                                      command line."));
+                     "                                      command line"));
   g_print ("%s\n", _("  --show-menubar                      Turn on the menubar for the last-\n"
                      "                                      specified window; applies to only one\n"
                      "                                      window; can be specified once for\n"
@@ -107,17 +122,6 @@ usage (void)
                      "                                      window; can be specified once for\n"
                      "                                      each window you create from the\n"
                      "                                      command line"));
-  g_print ("\n");
-  g_print ("%s\n", _("  --tab                               Open a new tab in the last-specified\n"
-                     "                                      window; more than one of these\n"
-                     "                                      options can be provided"));
-  g_print ("%s\n", _("  --window                            Open a new window containing one tab;\n"
-                     "                                      more than one of these options can be\n"
-                     "                                      provided"));
-  g_print ("\n");
-  g_print ("%s\n", _("  --default-display=DISPLAY           default X display to use"));
-  g_print ("%s\n", _("  --default-working-directory=DIRNAME Set the default terminal's working\n"
-                     "                                      directory"));
   g_print ("\n");
 }
 
