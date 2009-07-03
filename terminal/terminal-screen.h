@@ -81,7 +81,7 @@ void         terminal_screen_reset                        (TerminalScreen *scree
 void         terminal_screen_im_append_menuitems          (TerminalScreen *screen,
                                                            GtkMenuShell   *menushell);
 
-GList       *terminal_screen_get_restart_command          (TerminalScreen *screen);
+GSList      *terminal_screen_get_restart_command          (TerminalScreen *screen);
 
 void         terminal_screen_reset_activity               (TerminalScreen *screen);
 

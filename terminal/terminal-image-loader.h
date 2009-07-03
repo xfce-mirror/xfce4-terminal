@@ -48,8 +48,8 @@ struct _TerminalImageLoader
 
   /* the cached image data */
   gchar                   *path;
-  GList                   *cache;
-  GList                   *cache_invalid;
+  GSList                  *cache;
+  GSList                  *cache_invalid;
   gdouble                  darkness;
   GdkColor                 bgcolor;
   GdkPixbuf               *pixbuf;

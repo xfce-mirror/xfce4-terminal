@@ -82,7 +82,7 @@ struct _TerminalApp
   TerminalAccelMap    *accel_map;
   ExoXsessionClient   *session_client;
   gchar               *initial_menu_bar_accel;
-  GList               *windows;
+  GSList              *windows;
 };
 
 
@@ -137,7 +137,7 @@ static void
 terminal_app_finalize (GObject *object)
 {
   TerminalApp *app = TERMINAL_APP (object);
-  GList       *lp;
+  GSList      *lp;
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
@@ -145,7 +145,7 @@ terminal_app_finalize (GObject *object)
       g_signal_handlers_disconnect_by_func (G_OBJECT (lp->data), G_CALLBACK (terminal_app_new_window), app);
       gtk_widget_destroy (GTK_WIDGET (lp->data));
     }
-  g_list_free (app->windows);
+  g_slist_free (app->windows);
 
   g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences),
                                         G_CALLBACK (terminal_app_update_accels),
@@ -204,7 +204,7 @@ terminal_app_create_window (TerminalApp       *app,
                     G_CALLBACK (terminal_app_new_window), app);
   g_signal_connect (G_OBJECT (window), "new-window-with-screen",
                     G_CALLBACK (terminal_app_new_window_with_terminal), app);
-  app->windows = g_list_append (app->windows, window);
+  app->windows = g_slist_append (app->windows, window);
 
   return window;
 }
@@ -299,9 +299,9 @@ static void
 terminal_app_window_destroyed (GtkWidget   *window,
                                TerminalApp *app)
 {
-  terminal_return_if_fail (g_list_find (app->windows, window) != NULL);
+  terminal_return_if_fail (g_slist_find (app->windows, window) != NULL);
 
-  app->windows = g_list_remove (app->windows, window);
+  app->windows = g_slist_remove (app->windows, window);
 
   if (G_UNLIKELY (app->windows == NULL))
     gtk_main_quit ();
@@ -313,21 +313,21 @@ static void
 terminal_app_save_yourself (ExoXsessionClient *client,
                             TerminalApp       *app)
 {
-  GList               *result = NULL;
-  GList               *lp;
-  gchar              **oargv;
-  gchar              **argv;
-  gint                 argc;
-  gint                 n;
+  GSList  *result = NULL;
+  GSList  *lp;
+  gchar  **oargv;
+  gchar  **argv;
+  gint     argc;
+  gint     n;
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
       if (lp != app->windows)
-        result = g_list_append (result, g_strdup ("--window"));
-      result = g_list_concat (result, terminal_window_get_restart_command (lp->data));
+        result = g_slist_append (result, g_strdup ("--window"));
+      result = g_slist_concat (result, terminal_window_get_restart_command (lp->data));
     }
 
-  argc = g_list_length (result) + 1;
+  argc = g_slist_length (result) + 1;
   argv = g_new (gchar*, argc + 1);
   for (lp = result, n = 1; n < argc; lp = lp->next, ++n)
     argv[n] = lp->data;
@@ -350,7 +350,7 @@ terminal_app_save_yourself (ExoXsessionClient *client,
 
   exo_xsession_client_set_restart_command (client, argv, argc);
 
-  g_list_free (result);
+  g_slist_free (result);
   g_strfreev (argv);
 }
 

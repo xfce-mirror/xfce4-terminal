@@ -230,7 +230,7 @@ static void
 terminal_screen_init (TerminalScreen *screen)
 {
   screen->working_directory = g_get_current_dir ();
-  screen->custom_title = g_strdup ("");
+  screen->custom_title = NULL;
   screen->last_size_change = 0;
   screen->activity_timeout_id = 0;
 
@@ -1317,7 +1317,7 @@ terminal_screen_get_title (TerminalScreen *screen)
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
-  if (IS_STRING (screen->custom_title))
+  if (G_UNLIKELY (screen->custom_title != NULL))
     return g_strdup (screen->custom_title);
 
   g_object_get (G_OBJECT (screen->preferences),
@@ -1613,37 +1613,37 @@ terminal_screen_im_append_menuitems (TerminalScreen *screen,
  * terminal_screen_get_restart_command:
  * @screen  : A #TerminalScreen.
  *
- * Return value:
+ * Return value: Command to restore @screen, arguments are in reversed order.
  **/
-GList*
+GSList*
 terminal_screen_get_restart_command (TerminalScreen *screen)
 {
   const gchar *directory;
-  GList       *result = NULL;
+  GSList      *result = NULL;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (screen->custom_command != NULL)
     {
-      result = g_list_append (result, g_strdup ("-e"));
-      result = g_list_append (result, g_strjoinv (" ", screen->custom_command));
+      result = g_slist_prepend (result, g_strdup ("-e"));
+      result = g_slist_prepend (result, g_strjoinv (" ", screen->custom_command));
     }
 
   if (screen->custom_title != NULL)
     {
-      result = g_list_append (result, g_strdup ("--title"));
-      result = g_list_append (result, g_strdup (screen->custom_title));
+      result = g_slist_prepend (result, g_strdup ("--title"));
+      result = g_slist_prepend (result, g_strdup (screen->custom_title));
     }
 
   directory = terminal_screen_get_working_directory (screen);
   if (G_LIKELY (directory != NULL))
     {
-      result = g_list_append (result, g_strdup ("--working-directory"));
-      result = g_list_append (result, g_strdup (directory));
+      result = g_slist_prepend (result, g_strdup ("--working-directory"));
+      result = g_slist_prepend (result, g_strdup (directory));
     }
 
   if (G_UNLIKELY (screen->hold))
-    result = g_list_append (result, g_strdup ("--hold"));
+    result = g_slist_prepend (result, g_strdup ("--hold"));
 
   return result;
 }

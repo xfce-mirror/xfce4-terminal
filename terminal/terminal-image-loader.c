@@ -149,8 +149,8 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   if (invalidate)
     {
-      loader->cache_invalid = g_list_concat (loader->cache_invalid,
-                                             loader->cache);
+      loader->cache_invalid = g_slist_concat (loader->cache_invalid,
+                                              loader->cache);
       loader->cache = NULL;
     }
 
@@ -165,12 +165,12 @@ terminal_image_loader_pixbuf_destroyed (gpointer data,
                                         GObject *pixbuf)
 {
   TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (data);
-  GList               *lp;
+  GSList              *lp;
 
   for (lp = loader->cache; lp != NULL; lp = lp->next)
     if (lp->data == pixbuf)
       {
-        loader->cache = g_list_delete_link (loader->cache, lp);
+        loader->cache = g_slist_delete_link (loader->cache, lp);
         g_object_unref (G_OBJECT (loader));
         return;
       }
@@ -178,7 +178,7 @@ terminal_image_loader_pixbuf_destroyed (gpointer data,
   for (lp = loader->cache_invalid; lp != NULL; lp = lp->next)
     if (lp->data == pixbuf)
       {
-        loader->cache_invalid = g_list_delete_link (loader->cache_invalid, lp);
+        loader->cache_invalid = g_slist_delete_link (loader->cache_invalid, lp);
         g_object_unref (G_OBJECT (loader));
         return;
       }
@@ -455,7 +455,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
                             gint                 height)
 {
   GdkPixbuf *pixbuf;
-  GList     *lp;
+  GSList    *lp;
 
   terminal_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
   terminal_return_val_if_fail (width > 0, NULL);
@@ -533,7 +533,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
 
   terminal_image_loader_saturate (loader, pixbuf);
 
-  loader->cache = g_list_append (loader->cache, pixbuf);
+  loader->cache = g_slist_append (loader->cache, pixbuf);
   g_object_weak_ref (G_OBJECT (pixbuf), terminal_image_loader_pixbuf_destroyed, loader);
   g_object_ref (G_OBJECT (loader));
 

@@ -69,7 +69,7 @@ TerminalScreen *terminal_window_get_active           (TerminalWindow     *window
 void            terminal_window_set_startup_id       (TerminalWindow     *window,
                                                       const gchar        *startup_id);
 
-GList          *terminal_window_get_restart_command  (TerminalWindow     *window);
+GSList         *terminal_window_get_restart_command  (TerminalWindow     *window);
 
 G_END_DECLS
 

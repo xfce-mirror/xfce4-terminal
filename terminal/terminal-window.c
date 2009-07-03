@@ -1818,15 +1818,14 @@ terminal_window_set_startup_id (TerminalWindow     *window,
  *               and settings. The strings and the list itself
  *               need to be freed afterwards.
  **/
-GList*
+GSList*
 terminal_window_get_restart_command (TerminalWindow *window)
 {
   const gchar *role;
   GtkAction   *action;
   GdkScreen   *gscreen;
-  GList       *children;
-  GList       *result = NULL;
-  GList       *lp;
+  GList       *children, *lp;
+  GSList      *result = NULL;
   gint         w;
   gint         h;
 
@@ -1835,51 +1834,51 @@ terminal_window_get_restart_command (TerminalWindow *window)
   if (G_LIKELY (window->active != NULL))
     {
       terminal_screen_get_size (window->active, &w, &h);
-      result = g_list_append (result, g_strdup_printf ("--geometry=%dx%d", w, h));
+      result = g_slist_prepend (result, g_strdup_printf ("--geometry=%dx%d", w, h));
     }
 
   gscreen = gtk_window_get_screen (GTK_WINDOW (window));
   if (G_LIKELY (gscreen != NULL))
     {
-      result = g_list_append (result, g_strdup ("--display"));
-      result = g_list_append (result, gdk_screen_make_display_name (gscreen));
+      result = g_slist_prepend (result, g_strdup ("--display"));
+      result = g_slist_prepend (result, gdk_screen_make_display_name (gscreen));
     }
 
   role = gtk_window_get_role (GTK_WINDOW (window));
   if (G_LIKELY (role != NULL))
-    result = g_list_append (result, g_strdup_printf ("--role=%s", role));
+    result = g_slist_prepend (result, g_strdup_printf ("--role=%s", role));
 
   action = gtk_action_group_get_action (window->action_group, "fullscreen");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-    result = g_list_append (result, g_strdup ("--fullscreen"));
+    result = g_slist_prepend (result, g_strdup ("--fullscreen"));
 
   action = gtk_action_group_get_action (window->action_group, "show-menubar");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-    result = g_list_append (result, g_strdup ("--show-menubar"));
+    result = g_slist_prepend (result, g_strdup ("--show-menubar"));
   else
-    result = g_list_append (result, g_strdup ("--hide-menubar"));
+    result = g_slist_prepend (result, g_strdup ("--hide-menubar"));
 
   action = gtk_action_group_get_action (window->action_group, "show-borders");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-    result = g_list_append (result, g_strdup ("--show-borders"));
+    result = g_slist_prepend (result, g_strdup ("--show-borders"));
   else
-    result = g_list_append (result, g_strdup ("--hide-borders"));
+    result = g_slist_prepend (result, g_strdup ("--hide-borders"));
 
   action = gtk_action_group_get_action (window->action_group, "show-toolbars");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-    result = g_list_append (result, g_strdup ("--show-toolbars"));
+    result = g_slist_prepend (result, g_strdup ("--show-toolbars"));
   else
-    result = g_list_append (result, g_strdup ("--hide-toolbars"));
+    result = g_slist_prepend (result, g_strdup ("--hide-toolbars"));
 
   /* set restart commands of the tabs */
   children = gtk_container_get_children (GTK_CONTAINER (window->notebook));
   for (lp = children; lp != NULL; lp = lp->next)
     {
       if (lp != children)
-        result = g_list_append (result, g_strdup ("--tab"));
-      result = g_list_concat (result, terminal_screen_get_restart_command (lp->data));
+        result = g_slist_prepend (result, g_strdup ("--tab"));
+      result = g_slist_concat (terminal_screen_get_restart_command (lp->data), result);
     }
   g_list_free (children);
 
-  return result;
+  return g_slist_reverse (result);
 }
