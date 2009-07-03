@@ -156,7 +156,7 @@ main (int argc, char **argv)
     {
       g_printerr ("%s\n", error->message);
       g_error_free (error);
-      usage ();
+
       return EXIT_FAILURE;
     }
 
