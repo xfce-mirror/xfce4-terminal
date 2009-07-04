@@ -1703,6 +1703,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 {
   GtkWidget  *hbox;
   GtkWidget  *button, *image, *align;
+  GtkRcStyle *style;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -1715,7 +1716,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   gtk_widget_show (screen->tab_label);
 
-  align = gtk_alignment_new (0.5f, 0.5f, 0.0f, 0.0f);
+  align = gtk_alignment_new (0.5f, 1.0f, 0.0f, 0.0f);
   gtk_box_pack_start  (GTK_BOX (hbox), align, FALSE, FALSE, 0);
   gtk_widget_show (align);
 
@@ -1729,6 +1730,12 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
                             G_CALLBACK (gtk_widget_destroy), screen);
   exo_binding_new (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
                    G_OBJECT (button), "visible");
+
+  /* make button a bit smaller */
+  style = gtk_rc_style_new ();
+  style->xthickness = style->ythickness = 0;
+  gtk_widget_modify_style (button, style);
+  g_object_unref (G_OBJECT (style));
 
   /* button image */
   image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
