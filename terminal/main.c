@@ -92,6 +92,10 @@ usage (void)
                      "                                      window; can be specified once for\n"
                      "                                      each window you create from the\n"
                      "                                      command line"));
+  g_print ("%s\n", _("  --maximize                          Maximize the last-specified window;\n"
+                     "                                      applies to only one window; can be\n"
+                     "                                      specified once for each window you\n"
+                     "                                      create from the command line"));
   g_print ("%s\n", _("  --show-menubar                      Turn on the menubar for the last-\n"
                      "                                      specified window; applies to only one\n"
                      "                                      window; can be specified once for\n"
