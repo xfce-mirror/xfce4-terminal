@@ -977,11 +977,12 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
 static gboolean
 terminal_screen_timer_background (gpointer user_data)
 {
+  TerminalScreen      *screen = TERMINAL_SCREEN (user_data);
   TerminalImageLoader *loader;
   TerminalBackground   background_mode;
-  TerminalScreen      *screen = TERMINAL_SCREEN (user_data);
   GdkPixbuf           *image;
   gdouble              background_darkness;
+  gboolean             transparent = FALSE;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
@@ -990,48 +991,48 @@ terminal_screen_timer_background (gpointer user_data)
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
-  if (background_mode == TERMINAL_BACKGROUND_SOLID)
-    {
-      vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
-      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-      vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
-      vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
-    }
-  else if (background_mode == TERMINAL_BACKGROUND_IMAGE)
-    {
-      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-      vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
 
+  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
+    {
       loader = terminal_image_loader_get ();
       image = terminal_image_loader_load (loader,
                                           screen->terminal->allocation.width,
                                           screen->terminal->allocation.height);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-      vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
 
-      if (image != NULL)
+      if (G_LIKELY (image != NULL))
         g_object_unref (G_OBJECT (image));
       g_object_unref (G_OBJECT (loader));
     }
   else
     {
-      g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
+    }
 
-      /* check if the X screen is composited */
-      if (gdk_screen_is_composited (gtk_widget_get_screen (user_data)))
+  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE
+      || background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
+    {
+      g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
+
+      if (gtk_widget_is_composited (GTK_WIDGET (screen)))
         {
+          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xffff * background_darkness);
           vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), FALSE);
-          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), (guint16) (0xFFFFu * background_darkness));
         }
       else
         {
           vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
-          vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), TRUE);
-          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xFFFF);
+          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xffff);
+          transparent = TRUE;
         }
     }
+  else
+    {
+      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
+      vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xffff);
+    }
+
+  vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), transparent);
 
   screen->last_size_change = time (NULL);
 

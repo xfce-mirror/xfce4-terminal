@@ -84,6 +84,7 @@ enum
 static void            terminal_window_dispose                       (GObject                *object);
 static void            terminal_window_finalize                      (GObject                *object);
 static void            terminal_window_show                          (GtkWidget              *widget);
+static void            terminal_window_realize                       (GtkWidget              *widget);
 static gboolean        terminal_window_confirm_close                 (TerminalWindow         *window);
 static void            terminal_window_queue_reset_size              (TerminalWindow         *window);
 static gboolean        terminal_window_reset_size                    (gpointer                user_data);
@@ -207,6 +208,9 @@ struct _TerminalWindow
   TerminalScreen      *active;
 
   guint                reset_size_idle_id;
+
+  /* whether this window has an rgba colormap */
+  guint                is_composited : 1;
 };
 
 
@@ -272,6 +276,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->show = terminal_window_show;
+  gtkwidget_class->realize = terminal_window_realize;
 
   /**
    * TerminalWindow::new-window
@@ -491,6 +496,34 @@ terminal_window_show (GtkWidget *widget)
       sn_display_unref (sn_display);
     }
 #endif
+}
+
+
+
+static void
+terminal_window_realize (GtkWidget *widget)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (widget);
+  GdkScreen      *screen;
+  GdkColormap    *colormap;
+
+  /* unset rgba */
+  window->is_composited = FALSE;
+
+  /* try to set the rgba colormap so vte can use real transparency */
+  screen = gtk_widget_get_screen (widget);
+  if (gdk_screen_is_composited (screen))
+    {
+      colormap = gdk_screen_get_rgba_colormap (screen);
+      if (G_LIKELY (colormap != NULL))
+        window->is_composited = TRUE;
+      else
+        colormap = gdk_screen_get_default_colormap (screen);
+
+      gtk_widget_set_colormap (widget, colormap);
+    }
+
+  (*GTK_WIDGET_CLASS (terminal_window_parent_class)->realize) (widget);
 }
 
 
