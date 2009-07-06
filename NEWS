@@ -1,3 +1,32 @@
+0.x.xx
+======
+- Change minimum dependency of VTE to 0.17.1 and GTK+ to 2.14 and
+  add a new dependency libxfce4ui for titled dialogs.
+- Use environ variables provided by GLib for better compatibility.
+- Use new VTE api.
+- Don't set contents change on window resize (bug #5443).
+- Fix segfault in special tab configuration (bug #3809).
+- Monitor config files using GIO to avoid polling for file
+  changes (bug #3567).
+- Check for case problems when creating the symlink (bug #4431).
+- Add hidden option to disable middle-click tab close (bug #4403).
+- Property handle the button accelerators in the compose
+  dialog (bug #5288).
+- Convert the preferences dialog into GtkBuilder (bug #2399,
+  bug #2875, and bug #5496).
+- Use stock icons and remove unused icons (bug #5495).
+- Allow editing of shortcuts from the menu (bug #4246).
+- Make the tab close button smaller.
+- Fix compilation problems on Solaris (bug #4581).
+- Update fullscreen action if changed by the wm (bug #5155).
+- Add commandline option to set the window icon (bug #5480).
+- Refactor the usage help so it's easier to understand. Also add
+  the --maximize option.
+- Allow '-character in links (bug #4465).
+- Add hidden option for the cursor shape (bug #4602).
+- Fix compiler warnings, code cleanups and improvements.
+
+
 0.2.12
 ======
 - Property destroy the go menu item when a terminal screen is closed
