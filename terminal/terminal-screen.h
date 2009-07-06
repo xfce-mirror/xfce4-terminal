@@ -54,6 +54,9 @@ void         terminal_screen_set_size                     (TerminalScreen *scree
                                                            gint            width_chars,
                                                            gint            height_chars);
 
+void         terminal_screen_set_window_geometry_hints    (TerminalScreen *screen,
+                                                           GtkWindow      *window);
+
 void         terminal_screen_force_resize_window          (TerminalScreen *screen,
                                                            GtkWindow      *window,
                                                            gint            force_columns,

@@ -115,8 +115,6 @@ static void       terminal_screen_vte_window_contents_changed   (VteTerminal    
                                                                  TerminalScreen        *screen);
 static gboolean   terminal_screen_timer_background              (gpointer               user_data);
 static void       terminal_screen_timer_background_destroy      (gpointer               user_data);
-static void       terminal_screen_set_window_geometry_hints     (TerminalScreen        *screen,
-                                                                 GtkWindow             *window);
 static void       terminal_screen_update_label_orientation      (TerminalScreen        *screen);
 
 
@@ -124,10 +122,6 @@ static void       terminal_screen_update_label_orientation      (TerminalScreen 
 struct _TerminalScreenClass
 {
   GtkHBoxClass __parent__;
-
-  /* signals */
-  GtkWidget*  (*get_context_menu)  (TerminalScreen        *screen);
-  void        (*selection_changed) (TerminalScreen        *screen);
 };
 
 struct _TerminalScreen
@@ -207,8 +201,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
     g_signal_new (I_("get-context-menu"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalScreenClass, get_context_menu),
-                  NULL, NULL,
+                  0, NULL, NULL,
                   _terminal_marshal_OBJECT__VOID,
                   GTK_TYPE_MENU, 0);
 
@@ -219,8 +212,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
     g_signal_new (I_("selection-changed"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalScreenClass, selection_changed),
-                  NULL, NULL,
+                  0, NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 }
@@ -1051,42 +1043,6 @@ terminal_screen_timer_background_destroy (gpointer user_data)
 
 
 
-/**
- * terminal_screen_set_window_geometry_hints:
- *
- * I don't like this way, but its required to work-around a Gtk+
- * bug (maybe also caused by a Vte bug, not sure).
- **/
-static void
-terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
-                                           GtkWindow      *window)
-{
-  GdkGeometry hints;
-  gint        xpad;
-  gint        ypad;
-
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
-
-  vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
-
-  hints.base_width = xpad;
-  hints.base_height = ypad;
-  hints.width_inc = VTE_TERMINAL (screen->terminal)->char_width;
-  hints.height_inc = VTE_TERMINAL (screen->terminal)->char_height;
-  hints.min_width = hints.base_width + hints.width_inc * 4;
-  hints.min_height = hints.base_height + hints.height_inc * 2;
-
-  gtk_window_set_geometry_hints (GTK_WINDOW (window),
-                                 screen->terminal,
-                                 &hints,
-                                 GDK_HINT_RESIZE_INC
-                                 | GDK_HINT_MIN_SIZE
-                                 | GDK_HINT_BASE_SIZE);
-}
-
-
-
 static void
 terminal_screen_update_label_orientation (TerminalScreen *screen)
 {
@@ -1251,6 +1207,9 @@ terminal_screen_get_size (TerminalScreen *screen,
 
   if (G_LIKELY (screen != NULL))
     {
+      if (!GTK_WIDGET_REALIZED (screen->terminal))
+        gtk_widget_realize (screen->terminal);
+
       *width_chars = VTE_TERMINAL (screen->terminal)->column_count;
       *height_chars = VTE_TERMINAL (screen->terminal)->row_count;
     }
@@ -1269,6 +1228,44 @@ terminal_screen_set_size (TerminalScreen *screen,
 
   vte_terminal_set_size (VTE_TERMINAL (screen->terminal),
                          width_chars, height_chars);
+}
+
+
+
+/**
+ * terminal_screen_set_window_geometry_hints:
+ *
+ * I don't like this way, but its required to work-around a Gtk+
+ * bug (maybe also caused by a Vte bug, not sure).
+ **/
+void
+terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
+                                           GtkWindow      *window)
+{
+  GdkGeometry hints;
+  gint        xpad;
+  gint        ypad;
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+  terminal_return_if_fail (GTK_WIDGET_REALIZED (screen));
+  terminal_return_if_fail (GTK_WIDGET_REALIZED (window));
+
+  vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
+
+  hints.base_width = xpad;
+  hints.base_height = ypad;
+  hints.width_inc = VTE_TERMINAL (screen->terminal)->char_width;
+  hints.height_inc = VTE_TERMINAL (screen->terminal)->char_height;
+  hints.min_width = hints.base_width + hints.width_inc * 4;
+  hints.min_height = hints.base_height + hints.height_inc * 2;
+
+  gtk_window_set_geometry_hints (GTK_WINDOW (window),
+                                 screen->terminal,
+                                 &hints,
+                                 GDK_HINT_RESIZE_INC
+                                 | GDK_HINT_MIN_SIZE
+                                 | GDK_HINT_BASE_SIZE);
 }
 
 
@@ -1710,6 +1707,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 
   /* create the box */
   hbox = gtk_hbox_new (FALSE, 0);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 3);
   gtk_widget_show (hbox);
 
   screen->tab_label = gtk_label_new (NULL);

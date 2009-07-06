@@ -168,8 +168,7 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
     g_signal_new (I_("context-menu"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (TerminalWidgetClass, get_context_menu),
-                  NULL, NULL,
+                  0, NULL, NULL,
                   _terminal_marshal_OBJECT__VOID,
                   GTK_TYPE_MENU, 0);
 }

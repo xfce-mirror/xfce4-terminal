@@ -532,31 +532,26 @@ terminal_app_open_window (TerminalApp         *app,
 
       terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_SCREEN (terminal));
 
-      /* if this was the first tab, we set the geometry string now
-       * and show the window. This is required to work around a hang
-       * in Gdk, which I failed to figure the cause til now.
-       */
-      if (lp == attr->tabs)
-        {
-          /* determine the window geometry */
-          if (G_LIKELY (attr->geometry == NULL))
-            g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
-          else
-            geometry = g_strdup (attr->geometry);
-
-          /* try to apply the geometry to the window */
-          if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
-            g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
-
-          /* cleanup */
-          g_free (geometry);
-
-          /* show the window */
-          gtk_widget_show (window);
-        }
-
       terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
     }
+
+  /* set the window geometry, this can only be set after one of the tabs
+   * has been added, because vte is the geometry widget, so atleast one
+   * call should have been made to terminal_screen_set_window_geometry_hints */
+  if (G_LIKELY (attr->geometry == NULL))
+    g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
+  else
+    geometry = g_strdup (attr->geometry);
+
+  /* try to apply the geometry to the window */
+  if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
+    g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
+
+  /* cleanup */
+  g_free (geometry);
+
+  /* show the window */
+  gtk_widget_show (window);
 
   /* register with session manager on first display
    * opened by Terminal. This is to ensure that we
@@ -572,7 +567,3 @@ terminal_app_open_window (TerminalApp         *app,
                         G_CALLBACK (terminal_app_save_yourself), app);
     }
 }
-
-
-
-
