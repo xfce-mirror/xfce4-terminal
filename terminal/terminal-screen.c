@@ -577,6 +577,13 @@ terminal_screen_binding_vte (TerminalEraseBinding binding)
     case TERMINAL_ERASE_BINDING_DELETE_SEQUENCE:
       return VTE_ERASE_DELETE_SEQUENCE;
 
+    case TERMINAL_ERASE_BINDING_ERASE_TTY:
+#if VTE_CHECK_VERSION (0, 20, 4)
+      return VTE_ERASE_TTY;
+#else
+      return VTE_ERASE_ASCII_BACKSPACE;
+#endif
+
     default:
       terminal_assert_not_reached ();
     }
