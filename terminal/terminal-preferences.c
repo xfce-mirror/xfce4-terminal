@@ -1707,7 +1707,6 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
                                       const gchar         *filename)
 {
   gchar     *path = NULL;
-  GVfs      *vfs;
   GError    *error = NULL;
   GFileInfo *info;
 
@@ -1722,8 +1721,7 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
       terminal_preferences_monitor_disconnect (preferences);
 
       /* create new local file */
-      vfs = g_vfs_get_local ();
-      preferences->file = g_vfs_get_file_for_path (vfs, filename);
+      preferences->file = g_file_new_for_path (filename);
 
       /* monitor the file */
       preferences->monitor = g_file_monitor_file (preferences->file,
