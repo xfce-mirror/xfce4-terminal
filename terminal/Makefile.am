@@ -1,88 +1,96 @@
 # $Id$
 
-INCLUDES =								\
-	-DBINDIR=\"$(bindir)\"						\
-	-DDATADIR=\"$(datadir)\"					\
-	-DEXO_DISABLE_DEPRECATED					\
-	-DG_LOG_DOMAIN=\"Terminal\"					\
-	-DLIBEXECDIR=\"$(libexecdir)\"					\
-	-DPACKAGE_LOCALE_DIR=\"$(localedir)\"				\
-	-DSN_API_NOT_YET_FROZEN						\
-	-I$(top_srcdir)							\
+INCLUDES = \
+	-DBINDIR=\"$(bindir)\" \
+	-DDATADIR=\"$(datadir)\" \
+	-DEXO_DISABLE_DEPRECATED\
+	-DG_LOG_DOMAIN=\"Terminal\" \
+	-DLIBEXECDIR=\"$(libexecdir)\" \
+	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
+	-DSN_API_NOT_YET_FROZEN \
+	-I$(top_srcdir) \
 	$(PLATFORM_CPPFLAGS)
 
-bin_PROGRAMS = 								\
+bin_PROGRAMS = \
 	Terminal
 
-Terminal_built_sources =						\
-	terminal-enum-types.c						\
-	terminal-enum-types.h						\
-	terminal-marshal.c						\
+Terminal_built_sources = \
+	terminal-enum-types.c \
+	terminal-enum-types.h \
+	terminal-marshal.c \
 	terminal-marshal.h
 
-Terminal_dbus_sources =							\
-	terminal-dbus.c							\
+Terminal_dbus_sources = \
+	terminal-dbus.c \
 	terminal-dbus.h
 
-Terminal_headers =							\
-	terminal-accel-map.h						\
-	terminal-app.h							\
-	terminal-dialogs.h						\
-	terminal-image-loader.h						\
-	terminal-options.h						\
-	terminal-preferences.h						\
-	terminal-preferences-dialog.h					\
-	terminal-private.h						\
-	terminal-screen.h						\
-	terminal-shortcut-editor.h					\
-	terminal-stock.h						\
-	terminal-toolbars-model.h					\
-	terminal-toolbars-view.h					\
-	terminal-widget.h						\
-	terminal-window.h						\
+Terminal_headers = \
+	terminal-accel-map.h \
+	terminal-app.h \
+	terminal-dialogs.h \
+	terminal-image-loader.h \
+	terminal-options.h \
+	terminal-preferences.h \
+	terminal-preferences-dialog.h \
+	terminal-private.h \
+	terminal-screen.h \
+	terminal-shortcut-editor.h \
+	terminal-stock.h \
+	terminal-toolbars-model.h \
+	terminal-toolbars-view.h \
+	terminal-widget.h \
+	terminal-window.h \
 	terminal-window-ui.h
 
-Terminal_SOURCES =							\
-	$(Terminal_built_sources)					\
-	$(Terminal_headers)						\
-	main.c								\
-	terminal-accel-map.c						\
-	terminal-app.c							\
-	terminal-dialogs.c						\
-	terminal-image-loader.c						\
-	terminal-options.c						\
-	terminal-preferences.c						\
-	terminal-preferences-dialog.c					\
-	terminal-screen.c						\
-	terminal-shortcut-editor.c					\
-	terminal-stock.c						\
-	terminal-toolbars-model.c					\
-	terminal-toolbars-view.c					\
-	terminal-widget.c						\
+Terminal_tmp_sources = \
+	xfce-heading.c \
+	xfce-heading.h \
+	xfce-titled-dialog.c \
+	xfce-titled-dialog.h
+
+Terminal_SOURCES = \
+	$(Terminal_built_sources) \
+	$(Terminal_headers) \
+	$(Terminal_tmp_sources) \
+	main.c \
+	terminal-accel-map.c \
+	terminal-app.c \
+	terminal-dialogs.c \
+	terminal-image-loader.c \
+	terminal-options.c \
+	terminal-preferences.c \
+	terminal-preferences-dialog.c \
+	terminal-screen.c \
+	terminal-shortcut-editor.c \
+	terminal-stock.c \
+	terminal-toolbars-model.c \
+	terminal-toolbars-view.c \
+	terminal-widget.c \
 	terminal-window.c
 
-Terminal_CFLAGS =							\
-	$(DBUS_CFLAGS)							\
-	$(EXO_CFLAGS)							\
-	$(GTK_CFLAGS)							\
-	$(GIO_CFLAGS)							\
-	$(LIBSTARTUP_NOTIFICATION_CFLAGS)				\
-	$(LIBX11_CFLAGS)						\
-	$(VTE_CFLAGS)							\
-	$(LIBXFCE4UI_CFLAGS)						\
+Terminal_CFLAGS = \
+	$(DBUS_CFLAGS) \
+	$(EXO_CFLAGS) \
+	$(GTK_CFLAGS) \
+	$(GIO_CFLAGS) \
+	$(LIBSTARTUP_NOTIFICATION_CFLAGS) \
+	$(LIBX11_CFLAGS)\
+	$(VTE_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
-Terminal_LDFLAGS =							\
-	-no-undefined							\
-	$(DBUS_LIBS)							\
-	$(EXO_LIBS)							\
-	$(GTK_LIBS)							\
-	$(GIO_LIBS)							\
-	$(LIBSTARTUP_NOTIFICATION_LIBS)					\
-	$(LIBX11_LDFLAGS)						\
-	$(LIBX11_LIBS)							\
-	$(VTE_LIBS)							\
-	$(LIBXFCE4UI_LIBS)						\
+Terminal_LDFLAGS = \
+	-no-undefined \
+	$(PLATFORM_LDFLAGS)
+
+Terminal_LDADD = \
+	$(DBUS_LIBS) \
+	$(EXO_LIBS) \
+	$(GTK_LIBS) \
+	$(GIO_LIBS) \
+	$(LIBSTARTUP_NOTIFICATION_LIBS) \
+	$(LIBX11_LDFLAGS) \
+	$(LIBX11_LIBS) \
+	$(VTE_LIBS) \
 	$(TERMINAL_LIBS)
 
 # install symlink to 'terminal'
@@ -91,10 +99,10 @@ install-data-local:
 	-( cd $(DESTDIR)$(bindir) ; test -x terminal || ln -sf Terminal terminal )
 
 if HAVE_DBUS
-Terminal_CFLAGS +=							\
+Terminal_CFLAGS += \
 	-DDBUS_API_SUBJECT_TO_CHANGE
 
-Terminal_SOURCES +=							\
+Terminal_SOURCES += \
 	$(Terminal_dbus_sources)
 endif
 
@@ -109,20 +117,20 @@ endif
 ## files as part of the dist tarball.
 ##
 if MAINTAINER_MODE
-CLEANFILES =								\
-	xgen-tetc							\
-	xgen-teth							\
-	xgen-tmc							\
+CLEANFILES = \
+	xgen-tetc \
+	xgen-teth \
+	xgen-tmc \
 	xgen-tmh
 
-DISTCLEANFILES =							\
-	stamp-terminal-enum-types.h					\
-	stamp-terminal-marshal.h					\
-	terminal-window-ui.h						\
+DISTCLEANFILES = \
+	stamp-terminal-enum-types.h \
+	stamp-terminal-marshal.h \
+	terminal-window-ui.h \
 	$(Terminal_built_sources)
 
-BUILT_SOURCES =								\
-	terminal-window-ui.h						\
+BUILT_SOURCES = \
+	terminal-window-ui.h \
 	$(Terminal_built_sources)
 
 terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
@@ -132,22 +140,22 @@ terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
 stamp-terminal-enum-types.h: terminal-preferences.h Makefile
 	( cd $(srcdir) && glib-mkenums \
-		--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <exo/exo.h>\nG_BEGIN_DECLS\n" \
-		--fprod "/* enumerations from \"@filename@\" */\n" \
-		--vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-		--ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \
-		terminal-preferences.h ) >> xgen-teth \
+--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <exo/exo.h>\nG_BEGIN_DECLS\n" \
+--fprod "/* enumerations from \"@filename@\" */\n" \
+--vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+--ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \
+terminal-preferences.h ) >> xgen-teth \
 	&& (cmp -s xgen-teth terminal-enum-types.h || cp xgen-teth terminal-enum-types.h ) \
 	&& rm -f xgen-teth \
 	&& echo timestamp > $(@F)
 terminal-enum-types.c: terminal-preferences.h Makefile
 	( cd $(srcdir) && glib-mkenums \
-		--fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \
-		--fprod "\n/* enumerations from \"@filename@\" */" \
-		--vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {"\
-		--vprod "\t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
-		--vtail "\t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
-		terminal-preferences.h ) >> xgen-tetc \
+--fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \
+--fprod " \n/* enumerations from \"@filename@\" */" \
+--vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {" \
+--vprod " \t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+--vtail " \t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
+terminal-preferences.h ) >> xgen-tetc \
 	&& cp xgen-tetc terminal-enum-types.c \
 	&& rm -f xgen-tetc
 
@@ -155,8 +163,8 @@ terminal-marshal.h: stamp-terminal-marshal.h
 	@true
 stamp-terminal-marshal.h: terminal-marshal.list Makefile
 	( cd $(srcdir) && glib-genmarshal \
-		--prefix=_terminal_marshal \
-		--header terminal-marshal.list ) >> xgen-tmh \
+--prefix=_terminal_marshal \
+--header terminal-marshal.list ) >> xgen-tmh \
 	&& ( cmp -s xgen-tmh terminal-marshal.h || cp xgen-tmh terminal-marshal.h ) \
 	&& rm -f xgen-tmh \
 	&& echo timestamp > $(@F)
@@ -164,8 +172,8 @@ stamp-terminal-marshal.h: terminal-marshal.list Makefile
 terminal-marshal.c: terminal-marshal.list Makefile
 	echo "#include <terminal/terminal-marshal.h>" > xgen-tmc \
 	&& ( cd $(srcdir) && glib-genmarshal \
-		--prefix=_terminal_marshal \
-		--body terminal-marshal.list ) >> xgen-tmc \
+--prefix=_terminal_marshal \
+--body terminal-marshal.list ) >> xgen-tmc \
 	&& cp xgen-tmc terminal-marshal.c \
 	&& rm -f xgen-tmc
 endif
@@ -174,9 +182,9 @@ endif
 clean-local:
 	rm -f *.core core core.*
 
-EXTRA_DIST =								\
-	terminal-config.h.in						\
-	terminal-marshal.list						\
+EXTRA_DIST =\
+	terminal-config.h.in \
+	terminal-marshal.list \
 	terminal-window-ui.xml
 
 # vi:set ts=8 sw=8 noet ai nocindent:

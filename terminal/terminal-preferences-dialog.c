@@ -29,6 +29,7 @@
 #include <terminal/terminal-shortcut-editor.h>
 #include <terminal/terminal-stock.h>
 #include <terminal/terminal-private.h>
+#include <terminal/xfce-titled-dialog.h>
 
 
 
