@@ -130,15 +130,15 @@ static guint widget_signals[LAST_SIGNAL];
 
 static const GtkTargetEntry targets[] =
 {
-  { (gchar *) "text/uri-list", 0, TARGET_URI_LIST },
-  { (gchar *) "text/x-moz-url", 0, TARGET_MOZ_URL },
-  { (gchar *) "UTF8_STRING", 0, TARGET_UTF8_STRING },
-  { (gchar *) "TEXT", 0, TARGET_TEXT },
-  { (gchar *) "COMPOUND_TEXT", 0, TARGET_COMPOUND_TEXT },
-  { (gchar *) "STRING", 0, TARGET_STRING },
-  { (gchar *) "text/plain", 0, TARGET_TEXT_PLAIN },
-  { (gchar *) "application/x-color", 0, TARGET_APPLICATION_X_COLOR },
-  { (gchar *) "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
+  { "text/uri-list", 0, TARGET_URI_LIST },
+  { "text/x-moz-url", 0, TARGET_MOZ_URL },
+  { "UTF8_STRING", 0, TARGET_UTF8_STRING },
+  { "TEXT", 0, TARGET_TEXT },
+  { "COMPOUND_TEXT", 0, TARGET_COMPOUND_TEXT },
+  { "STRING", 0, TARGET_STRING },
+  { "text/plain", 0, TARGET_TEXT_PLAIN },
+  { "application/x-color", 0, TARGET_APPLICATION_X_COLOR },
+  { "GTK_NOTEBOOK_TAB", GTK_TARGET_SAME_APP, TARGET_GTK_NOTEBOOK_TAB },
 };
 
 
