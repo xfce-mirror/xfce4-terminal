@@ -47,6 +47,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
   static const gchar *authors[] =
   {
     "Benedikt Meurer <benny@xfce.org>",
+    "Nick Schermer <nick@xfce.org>".
     NULL,
   };
 
