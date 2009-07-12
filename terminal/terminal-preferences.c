@@ -1295,7 +1295,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_boolean ("vte-workaround-title-bug",
                                                          "vte-workaround-title-bug",
                                                          "VteWorkaroundTitleBug",
-                                                         TRUE,
+                                                         FALSE,
                                                          EXO_PARAM_READWRITE));
 
   /**

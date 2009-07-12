@@ -815,17 +815,24 @@ terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen)
 static void
 terminal_screen_update_title (TerminalScreen *screen)
 {
-  gchar *title;
+  const gchar *title;
 
   g_object_notify (G_OBJECT (screen), "title");
 
   if (G_LIKELY (screen->tab_label != NULL))
     {
       /* update tab label */
-      title = terminal_screen_get_title (screen);
+      if (IS_STRING (screen->custom_title))
+        title = screen->custom_title;
+      else
+        {
+          title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+          if (G_UNLIKELY (title == NULL))
+            title = _("Untitled");
+        }
+
       gtk_label_set_text (GTK_LABEL (screen->tab_label), title);
       gtk_widget_set_tooltip_text (GTK_WIDGET (screen->tab_label), title);
-      g_free (title);
     }
 }
 
@@ -1355,7 +1362,7 @@ terminal_screen_get_title (TerminalScreen *screen)
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
-  if (G_UNLIKELY (screen->custom_title != NULL))
+  if (IS_STRING (screen->custom_title))
     return g_strdup (screen->custom_title);
 
   g_object_get (G_OBJECT (screen->preferences),
