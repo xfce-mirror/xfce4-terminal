@@ -1085,13 +1085,12 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
 
   gtk_label_set_angle (GTK_LABEL (screen->tab_label), angle);
   gtk_label_set_ellipsize (GTK_LABEL (screen->tab_label), ellipsize);
-  gtk_widget_set_size_request (screen->tab_label, -1, 1);
 
 #if GTK_CHECK_VERSION (2, 16, 0)
   box = gtk_widget_get_parent (screen->tab_label);
   terminal_return_if_fail (GTK_IS_ORIENTABLE (box));
   gtk_orientable_set_orientation (GTK_ORIENTABLE (box),
-    angle == 0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
+    angle == 0.0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
 #endif
 }
 
@@ -1722,9 +1721,10 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   gtk_widget_show (screen->tab_label);
 
-  align = gtk_alignment_new (0.5f, 1.0f, 0.0f, 0.0f);
+  align = gtk_alignment_new (0.5f, 0.5f, 0.0f, 0.0f);
   gtk_box_pack_start  (GTK_BOX (hbox), align, FALSE, FALSE, 0);
-  gtk_widget_show (align);
+  exo_binding_new (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
+                   G_OBJECT (align), "visible");
 
   button = gtk_button_new ();
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
@@ -1734,8 +1734,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_container_add (GTK_CONTAINER (align), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
                             G_CALLBACK (gtk_widget_destroy), screen);
-  exo_binding_new (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
-                   G_OBJECT (button), "visible");
+  gtk_widget_show (button);
 
   /* make button a bit smaller */
   style = gtk_rc_style_new ();
