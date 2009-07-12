@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
     "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
-  <!ENTITY date "May 2008"> 
+  <!ENTITY date "May 2008">
   <!ENTITY version "@PACKAGE_VERSION@">
-  <!ENTITY application "@PACKAGE_NAME@"> 
+  <!ENTITY application "@PACKAGE_NAME@">
 ]>
 <article id="index" lang="en">
 
@@ -22,7 +22,7 @@
       <year>2008</year>
       <holder>os-cillation</holder>
     </copyright>
-    
+
     <copyright>
       <year>2009</year>
       <holder>Xfce Development Team</holder>
@@ -58,9 +58,8 @@
           <address><email>andrewski@fr.st</email></address>
         </affiliation>
       </author>
-    </authorgroup>
-    
-    <author>
+
+      <author>
         <firstname>Nick</firstname>
         <surname>Schermer</surname>
         <affiliation>
@@ -431,54 +430,54 @@
           <term>To select and copy text:</term>
           <listitem>
             <para>You can select text in any of the following ways:</para>
-            <itemizedlist> 
-              <listitem> 
+            <itemizedlist>
+              <listitem>
                 <para>To select a character at a time, click on the first character that you want to
                 select and drag the mouse to the last character that you want to select.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>To select a word at a time, double-click on the first word that you want to
                 select and drag the mouse to the last word that you want to select.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>To select a line at a time, triple-click on the first line that you want to
                 select and drag the mouse to the last line that you want to select.</para>
-              </listitem> 
-            </itemizedlist> 
+              </listitem>
+            </itemizedlist>
             <para>These actions select all text between the first and last items. For all text selections,
             &application; copies the selected text into the clipboard when you release the mouse button. To
             explicitly copy the selected text, choose <menuchoice><guimenu>Edit</guimenu>
             <guimenuitem>Copy</guimenuitem></menuchoice>.</para>
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
-          <term>To paste text into a terminal:</term> 
-          <listitem> 
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To paste text into a terminal:</term>
+          <listitem>
             <para>If you previously copied text to the clipboard, you can paste the text into a
             terminal by performing one of the following actions:</para>
-            <itemizedlist> 
-              <listitem> 
+            <itemizedlist>
+              <listitem>
                 <para>To paste text that you copied by selection only, middle-click at the
                 command prompt. If you do not have a middle mouse button, refer to the X
                 Server documentation for information about how to emulate the middle mouse button.
                 This is equivalent to using the <menuchoice><guimenuitem>Paste Selection</guimenuitem></menuchoice>
                 item from <menuchoice><guimenu>Edit</guimenu></menuchoice> menu.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>To paste text that you explicitly copied, choose <menuchoice><guimenu>Edit</guimenu>
                 <guimenuitem>Paste</guimenuitem></menuchoice>.</para>
-              </listitem> 
-            </itemizedlist> 
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
-          <term>To drag a file name into a terminal window:</term> 
-          <listitem> 
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To drag a file name into a terminal window:</term>
+          <listitem>
             <para>You can drag a file name to a terminal from another application such as a file manager or
             a web browser. The terminal displays the path and the full name of the URI.</para>
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term>To access a hyperlink:</term>
           <listitem>
             <para>
@@ -502,9 +501,9 @@
               </listitem>
             </orderedlist>
           </listitem>
-        </varlistentry> 
+        </varlistentry>
 
-        <varlistentry> 
+        <varlistentry>
           <term>To compose an email:</term>
           <listitem>
             <para>
@@ -527,7 +526,7 @@
               </listitem>
             </orderedlist>
           </listitem>
-        </varlistentry> 
+        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -916,13 +915,13 @@
                 <imageobject>
                   <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
                 </imageobject>
-                
+
                 <textobject>
                   <phrase>Compose shortcut</phrase>
                 </textobject>
               </mediaobject>
             </screenshot>
-            
+
             <para>To change a shortcut key for a menu item, double click the item in the list
             and press the key combination you want to set. To disable a shortcut for a specific
             menu item, double click the menu item in the list and click the button
@@ -1037,7 +1036,7 @@
             <para>Display version information and exit</para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry>
           <term><option>--disable-server</option></term>
           <listitem>
@@ -1247,7 +1246,7 @@
           <term><varname>${XDG_CONFIG_HOME}</varname></term>
           <listitem>
             <para>
-              The first base directory to look for configuration 
+              The first base directory to look for configuration
               files. By default this is set to <filename role="directory">~/.config/</filename>.
             </para>
           </listitem>
@@ -1384,14 +1383,14 @@ MiscHighlightUrls=TRUE</programlisting>
             </para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry>
           <term><varname>MiscCursorShape</varname></term>
           <listitem>
             <para>
               Specifies the shape of the cursor in the terminal. This can be either
-              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default), 
-              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or 
+              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default),
+              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or
               <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
               only available when you compile against VTE 0.19.1 or newer.
             </para>
@@ -1558,7 +1557,7 @@ MiscHighlightUrls=TRUE</programlisting>
     - especially the section labeled <emphasis>Coding Style</emphasis> - before you start hacking up the source.</para>
 
     <para>Else, if you have questions about the use or installation of this software, please ask on the
-    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink> 
+    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink>
     or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
     join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
   </sect1>
@@ -1586,14 +1585,14 @@ MiscHighlightUrls=TRUE</programlisting>
     </para>
 
     <para>
-      You should have received a copy of the GNU General Public License 
-      along with this program; if not, write to the Free Software 
-      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, 
+      You should have received a copy of the GNU General Public License
+      along with this program; if not, write to the Free Software
+      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
       USA.
     </para>
   </sect1>
 
 </article>
 <!--
-	vim:set ts=2 sw=2 et ai:
+  vim:set ts=2 sw=2 et ai:
 -->
