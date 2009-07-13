@@ -310,7 +310,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-new-tab",
                                                         _("Open Tab"),
                                                         "AccelNewTab",
-                                                        "<control><shift>t",
+                                                        "<Shift><Control>t",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -321,7 +321,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-new-window",
                                                         _("Open Terminal"),
                                                         "AccelNewWindow",
-                                                        "<control><shift>n",
+                                                        "<Shift><Control>n",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -332,7 +332,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-detach-tab",
                                                         _("Detach Tab"),
                                                         "AccelDetachTab",
-                                                        "<control><shift>d",
+                                                        "<Shift><Control>d",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -343,7 +343,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-close-tab",
                                                         _("Close Tab"),
                                                         "AccelCloseTab",
-                                                        "<control><shift>w",
+                                                        "<Shift><Control>w",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -354,7 +354,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-close-window",
                                                         _("Close Window"),
                                                         "AccelCloseWindow",
-                                                        "<control><shift>q",
+                                                        "<Shift><Control>q",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -365,7 +365,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-copy",
                                                         _("Copy"),
                                                         "AccelCopy",
-                                                        "<control><shift>c",
+                                                        "<Shift><Control>c",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -376,7 +376,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-paste",
                                                         _("Paste"),
                                                         "AccelPaste",
-                                                        "<control><shift>v",
+                                                        "<Shift><Control>v",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -486,7 +486,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-prev-tab",
                                                         _("Previous Tab"),
                                                         "AccelPrevTab",
-                                                        "<control>Page_Up",
+                                                        "<Control>Page_Up",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -497,7 +497,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("accel-next-tab",
                                                         _("Next Tab"),
                                                         "AccelNextTab",
-                                                        "<control>Page_Down",
+                                                        "<Control>Page_Down",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -693,7 +693,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("color-foreground",
                                                         "color-foreground",
                                                         "ColorForeground",
-                                                        "White",
+                                                        "#ffffffffffff",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -704,7 +704,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("color-background",
                                                         "color-background",
                                                         "ColorBackground",
-                                                        "Black",
+                                                        "#000000000000",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -715,7 +715,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("color-cursor",
                                                         "color-cursor",
                                                         "ColorCursor",
-                                                        "Green",
+                                                        "#0000ffff0000",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -726,7 +726,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                    g_param_spec_string ("color-selection",
                                                         "color-selection",
                                                         "ColorSelection",
-                                                        "White",
+                                                        "#ffffffffffff",
                                                         EXO_PARAM_READWRITE));
 
   /**
@@ -1335,8 +1335,8 @@ terminal_preferences_dispose (GObject *object)
   /* flush preferences */
   if (G_UNLIKELY (preferences->store_idle_id != 0))
     {
-      terminal_preferences_store_idle (preferences);
       g_source_remove (preferences->store_idle_id);
+      terminal_preferences_store_idle (preferences);
     }
 
   (*G_OBJECT_CLASS (terminal_preferences_parent_class)->dispose) (object);
@@ -1419,16 +1419,17 @@ terminal_preferences_set_property (GObject      *object,
 
 
 #ifndef NDEBUG
-static gchar*
-property_name_to_option_name (const gchar *property_name)
+static void
+terminal_preferences_check_blurb (GParamSpec *spec)
 {
-  const gchar *s;
+  const gchar *s, *name;
   gboolean     upper = TRUE;
-  gchar       *option;
-  gchar       *t;
+  gchar       *option, *t;
 
-  option = g_new (gchar, strlen (property_name) + 1);
-  for (s = property_name, t = option; *s != '\0'; ++s)
+  /* generate the option name */
+  name = g_param_spec_get_name (spec);
+  option = g_new (gchar, strlen (name) + 1);
+  for (s = name, t = option; *s != '\0'; ++s)
     {
       if (*s == '-')
         {
@@ -1446,7 +1447,12 @@ property_name_to_option_name (const gchar *property_name)
     }
   *t = '\0';
 
-  return option;
+  /* check if the generated option name is equal to the blurb */
+  if (!exo_str_is_equal (option, g_param_spec_get_blurb (spec)))
+    g_critical ("Blurb does not match option name %s", name);
+
+  /* cleanup */
+  g_free (option);
 }
 #endif
 
@@ -1456,15 +1462,12 @@ static void
 terminal_preferences_load (TerminalPreferences *preferences)
 {
   gchar        *filename;
-  const gchar  *string;
-  GParamSpec  **specs;
-  GParamSpec   *spec;
+  const gchar  *string, *name;
+  GParamSpec  **pspecs, *pspec;
   XfceRc       *rc;
   GValue        dst = { 0, };
   GValue        src = { 0, };
-#ifndef NDEBUG
-  gchar        *option;
-#endif
+  GValue       *value;
   guint         nspecs;
   guint         n;
 
@@ -1477,57 +1480,58 @@ terminal_preferences_load (TerminalPreferences *preferences)
       return;
     }
 
+  preferences->loading_in_progress = TRUE;
+
   g_object_freeze_notify (G_OBJECT (preferences));
 
   xfce_rc_set_group (rc, "Configuration");
 
-  preferences->loading_in_progress = TRUE;
+  g_value_init (&src, G_TYPE_STRING);
 
-  specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
+  pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
   for (n = 0; n < nspecs; ++n)
     {
-      spec = specs[n];
+      pspec = pspecs[n];
+      name = g_param_spec_get_name (pspec);
 
 #ifndef NDEBUG
-      /* when debugging is enabled, check if the generated option name
-       * is equal to the nickname, to prevent typos */
-      option = property_name_to_option_name (spec->name);
-      if (!exo_str_is_equal (option, g_param_spec_get_blurb (spec)))
-        {
-          g_message ("Blurb does not match option name %s", spec->name);
-          terminal_assert_not_reached ();
-        }
-      g_free (option);
+      terminal_preferences_check_blurb (pspec);
 #endif
 
-      string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (spec), NULL);
+      string = xfce_rc_read_entry (rc, g_param_spec_get_blurb (pspec), NULL);
       if (G_UNLIKELY (string == NULL))
-        continue;
-
-      g_value_init (&src, G_TYPE_STRING);
-      g_value_set_static_string (&src, string);
-
-      if (spec->value_type == G_TYPE_STRING)
         {
-          g_object_set_property (G_OBJECT (preferences), spec->name, &src);
-        }
-      else if (g_value_type_transformable (G_TYPE_STRING, spec->value_type))
-        {
-          g_value_init (&dst, spec->value_type);
-          if (g_value_transform (&src, &dst))
-            g_object_set_property (G_OBJECT (preferences), spec->name, &dst);
-          g_value_unset (&dst);
+          /* check if we need to reset to the default value */
+          value = preferences->values + (n + 1);
+          if (G_IS_VALUE (value))
+            {
+              g_value_unset (value);
+              g_object_notify (G_OBJECT (preferences), name);
+            }
         }
       else
         {
-          g_warning ("Unable to load property \"%s\"", spec->name);
+          g_value_set_static_string (&src, string);
+
+          if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
+            {
+              /* set the string property */
+              g_object_set_property (G_OBJECT (preferences), name, &src);
+            }
+          else
+            {
+              g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
+              if (G_LIKELY (g_value_transform (&src, &dst)))
+                g_object_set_property (G_OBJECT (preferences), name, &dst);
+              else
+                g_warning ("Unable to load property \"%s\"", name);
+              g_value_unset (&dst);
+            }
         }
-
-      g_value_unset (&src);
     }
-  g_free (specs);
+  g_free (pspecs);
 
-  preferences->loading_in_progress = FALSE;
+  g_value_unset (&src);
 
   xfce_rc_close (rc);
 
@@ -1535,6 +1539,8 @@ terminal_preferences_load (TerminalPreferences *preferences)
 
   /* startup file monitoring */
   terminal_preferences_monitor_connect (preferences, filename);
+
+  preferences->loading_in_progress = FALSE;
 
   g_free (filename);
 }
@@ -1546,8 +1552,45 @@ terminal_preferences_schedule_store (TerminalPreferences *preferences)
 {
   if (preferences->store_idle_id == 0 && !preferences->loading_in_progress)
     {
-      preferences->store_idle_id = g_idle_add_full (G_PRIORITY_LOW, terminal_preferences_store_idle,
-                                                    preferences, terminal_preferences_store_idle_destroy);
+      preferences->store_idle_id =
+          g_timeout_add_seconds_full (G_PRIORITY_LOW, 1, terminal_preferences_store_idle,
+                                      preferences, terminal_preferences_store_idle_destroy);
+    }
+}
+
+
+
+static void
+terminal_preferences_store_value (const GValue *value,
+                                  const gchar  *property,
+                                  XfceRc       *rc)
+{
+  GValue       dst = { 0, };
+  const gchar *string;
+
+  terminal_return_if_fail (G_IS_VALUE (value));
+
+  if (G_VALUE_HOLDS_STRING (value))
+    {
+      /* write */
+      string = g_value_get_string (value);
+      if (G_LIKELY (string != NULL))
+        xfce_rc_write_entry (rc, property, string);
+    }
+  else
+    {
+      /* transform the property to a string */
+      g_value_init (&dst, G_TYPE_STRING);
+      if (!g_value_transform (value, &dst))
+        terminal_assert_not_reached ();
+
+      /* write */
+      string = g_value_get_string (&dst);
+      if (G_LIKELY (string != NULL))
+        xfce_rc_write_entry (rc, property, string);
+
+      /* cleanup */
+      g_value_unset (&dst);
     }
 }
 
@@ -1556,19 +1599,19 @@ terminal_preferences_schedule_store (TerminalPreferences *preferences)
 static gboolean
 terminal_preferences_store_idle (gpointer user_data)
 {
-  TerminalPreferences *preferences = TERMINAL_PREFERENCES (user_data);
-  const gchar         *string;
-  GParamSpec         **specs;
-  GParamSpec          *spec;
-  XfceRc              *rc;
-  GValue               dst = { 0, };
-  GValue               src = { 0, };
-#ifndef NDEBUG
-  gchar               *option;
-#endif
-  guint                nspecs;
-  guint                n;
-  gchar               *filename;
+  TerminalPreferences  *preferences = TERMINAL_PREFERENCES (user_data);
+  const gchar          *blurb;
+  GParamSpec          **pspecs, *pspec;
+  XfceRc               *rc = NULL;
+  GValue               *value;
+  GValue                src = { 0, };
+  guint                 nspecs;
+  guint                 n;
+  gchar                *filename;
+
+  /* try again later if we're loading */
+  if (G_UNLIKELY (preferences->loading_in_progress))
+    return TRUE;
 
   filename = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, "Terminal/terminalrc", TRUE);
   if (G_UNLIKELY (filename == NULL))
@@ -1580,54 +1623,55 @@ terminal_preferences_store_idle (gpointer user_data)
 
   xfce_rc_set_group (rc, "Configuration");
 
-  specs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
+  pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
   for (n = 0; n < nspecs; ++n)
     {
-      spec = specs[n];
+      pspec = pspecs[n];
+      value = preferences->values + (n + 1);
+      blurb = g_param_spec_get_blurb (pspec);
 
-      g_value_init (&dst, G_TYPE_STRING);
-
-      if (spec->value_type == G_TYPE_STRING)
+      if (G_IS_VALUE (value) && !g_param_value_defaults (pspec, value))
         {
-          g_object_get_property (G_OBJECT (preferences), spec->name, &dst);
+          /* store the value non-default value */
+          terminal_preferences_store_value (value, blurb, rc);
+
+          continue;
+        }
+
+      if (g_str_has_prefix (blurb, "Misc"))
+        {
+          /* store the hidden-properties' default value */
+          g_value_init (&src, G_PARAM_SPEC_VALUE_TYPE (pspec));
+          g_param_value_set_default (pspec, &src);
+          terminal_preferences_store_value (&src, blurb, rc);
+          g_value_unset (&src);
         }
       else
         {
-          g_value_init (&src, spec->value_type);
-          g_object_get_property (G_OBJECT (preferences), spec->name, &src);
-          g_value_transform (&src, &dst);
-          g_value_unset (&src);
+          /* remove from the configuration */
+          xfce_rc_delete_entry (rc, blurb, FALSE);
         }
-
-#ifndef NDEBUG
-      /* when debugging is enabled, check if the generated option name
-       * is equal to the blurp, to prevent typos */
-      option = property_name_to_option_name (spec->name);
-      terminal_assert (exo_str_is_equal (option, g_param_spec_get_blurb (spec)));
-      g_free (option);
-#endif
-
-      string = g_value_get_string (&dst);
-
-      if (G_LIKELY (string != NULL))
-        xfce_rc_write_entry (rc, g_param_spec_get_blurb (spec), string);
-
-      g_value_unset (&dst);
     }
-  g_free (specs);
+  g_free (pspecs);
 
-  xfce_rc_close (rc);
+  /* check if verything has been written */
+  xfce_rc_flush (rc);
+  if (xfce_rc_is_dirty (rc))
+    goto error;
 
   /* check if we need to update the monitor */
   terminal_preferences_monitor_connect (preferences, filename);
 
-  g_free (filename);
-
-  return FALSE;
-
+  if (G_LIKELY (FALSE))
+    {
 error:
-  g_warning ("Unable to store terminal preferences to \"%s\".", filename);
+      g_warning ("Unable to store terminal preferences to \"%s\".", filename);
+    }
+
+  /* cleanup */
   g_free (filename);
+  if (G_LIKELY (rc != NULL))
+    xfce_rc_close (rc);
 
   return FALSE;
 }
@@ -1788,6 +1832,8 @@ terminal_preferences_get (void)
 
   return preferences;
 }
+
+
 
 void
 terminal_preferences_get_color (TerminalPreferences *preferences,
