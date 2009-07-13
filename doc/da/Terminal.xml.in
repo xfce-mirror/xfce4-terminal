@@ -22,6 +22,11 @@
       <holder>os-cillation</holder>
     </copyright>
 
+    <copyright>
+      <year>2009</year>
+      <holder>Xfce Development Team</holder>
+    </copyright>
+
     <legalnotice id="legalnotice">
       <para>Der gives hermed tilladelse til kopiere, distribuere og/eller ændre dette dokument under betingelserne i GNU Free Documentation License, version 1.1 eller enhver senere version udgivet af Free Software Foundation, med ingen ufravigelige dele; ingen forsidetekst, og ingen bagsidetekst. Hele licensteksten er til rådighed på <ulink type="http" url="http://www.gnu.org/">Free Software Foundation</ulink>.</para>
     </legalnotice>
@@ -43,6 +48,15 @@
         <surname>Conkling</surname>
         <affiliation>
           <address><email>andrewski@fr.st</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Nick</firstname>
+        <surname>Schermer</surname>
+        <affiliation>
+          <address><email>nick@xfce.org</email></address>
+          <jobtitle>Xfce Core Developer</jobtitle>
         </affiliation>
       </author>
     </authorgroup>
@@ -122,7 +136,8 @@
         <varlistentry>
           <term><varname>TERM</varname></term>
           <listitem>
-            <para>Indstillet til <literal>xterm</literal> eller <literal>xterm-color</literal>, du kan indstille værdien, fra indstillingsvinduet.</para>
+            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you
+            can configure the value from the preferences dialog.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -281,41 +296,41 @@
           <term>Sådan markerer og kopierer du tekst:</term>
           <listitem>
             <para> Du kan markere tekst, på en af følgende måder:</para>
-            <itemizedlist> 
-              <listitem> 
+            <itemizedlist>
+              <listitem>
                 <para>For at vælge ét tegn ad gangen, skal du klikke på den første du ønsker at markere og trække musen hen til det sidste tegn, du ønsker at markere.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>For at vælge ét ord ad gangen, skal du dobbeltklikke på det første ord, du ønsker at markere og trække musen hen til det sidste ord du ønsker at markere.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>For at vælge én sætning ad gangen, skal du klikke 3 gange på den første sætning du ønsker at markere og trække musen hen til den sidste sætning du, ønsker at markere.</para>
-              </listitem> 
-            </itemizedlist> 
+              </listitem>
+            </itemizedlist>
             <para>Disse handlinger vælger al tekst mellem det første og det sidste element. Gældende for alle tekstmarkeringer, vil @PACKAGE_NAME@ kopiere den markerede tekst til udklipsholderen, når du giver slip på museknappen. For at kopiere den markerede tekst øjeblikkeligt, vælg da <menuchoice><guimenu>Redigér</guimenu><guimenuitem>Kopiér</guimenuitem></menuchoice>.</para>
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
-          <term>Sådan indsætter du tekst ind i terminalen:</term> 
-          <listitem> 
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Sådan indsætter du tekst ind i terminalen:</term>
+          <listitem>
             <para>Hvis du tidligere har kopieret tekst til udklipsholderen, kan du indsætte teksten ind i terminalen ved at udføre en af følgende handlinger:</para>
-            <itemizedlist> 
-              <listitem> 
+            <itemizedlist>
+              <listitem>
                 <para>For at indsætte tekst du har kopieret kun ved markering, skal du klikke på den midterste museknap i kommandoprompten. Hvis du ikke har nogen midterste museknap, så læs dokumentationen til X-serveren, for at se hvordan man emulerer den midterste museknap. Dette svarer til at bruge  <menuchoice><guimenuitem>Indsæt markering</guimenuitem></menuchoice> elementet fra <menuchoice><guimenu>Redigér</guimenu></menuchoice>-menuen.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>For at indsætte tekst du netop har kopieret, vælg da <menuchoice><guimenu>Redigér</guimenu><guimenuitem>Indsæt</guimenuitem></menuchoice>.</para>
-              </listitem> 
-            </itemizedlist> 
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
-          <term>For at trække et filnavn ind i terminalvinduet:</term> 
-          <listitem> 
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>For at trække et filnavn ind i terminalvinduet:</term>
+          <listitem>
             <para>Du kan trække et filnavn til terminalen fra et andet program, så som en filhåndtering eller en netlæser. Terminalen viser URI'ens sti og fulde navn.</para>
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term>Sådan tilgår du en internethenvisning:</term>
           <listitem>
             <para>Sådan tilgår du en Uniform Resource Locator (URL), der er vist i terminalvinduet, skal følgende trin udføres:</para>
@@ -332,9 +347,9 @@
               </listitem>
             </orderedlist>
           </listitem>
-        </varlistentry> 
+        </varlistentry>
 
-        <varlistentry> 
+        <varlistentry>
           <term>Sådan opretter du en e-post:</term>
           <listitem>
             <para>For at oprette en e-post til en adresse der er vist i terminalvinduet, skal følgende skridt udføres:</para>
@@ -351,7 +366,7 @@
               </listitem>
             </orderedlist>
           </listitem>
-        </varlistentry> 
+        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -628,7 +643,8 @@
         <varlistentry>
           <term><guilabel>Palet</guilabel></term>
           <listitem>
-            <para>Terminalen tilbyder, til det program der kører inden i den, en palet med 16 farver. Du kan tilpasse disse farver ved at bruge de 16 farveknapper.</para>
+            <para>The terminal provides the application running inside with a palette of
+            16 colors. You can customize these colors using the 16 color buttons.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -660,13 +676,13 @@
                 <imageobject>
                   <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
                 </imageobject>
-                
+
                 <textobject>
                   <phrase>Opret genvej</phrase>
                 </textobject>
               </mediaobject>
             </screenshot>
-            
+
             <para>For at ændre en genvejstast til et menuelement, skal du dobbeltklikke på elementet i listen og trykke den tastekombination du vil indstille den til. For at slå en bestemt genvej fra, til et menuelement, skal du dobbeltklikke på menuelementet i listen og klikke på knappen <guilabel>Clear</guilabel>.</para>
           </listitem>
         </varlistentry>
@@ -718,7 +734,13 @@
         <varlistentry>
           <term><guilabel>$TERM-opsætning</guilabel></term>
           <listitem>
-            <para>Dette angiver den værdi miljøet <varname>$TERM</varname> er indstillet til, når et nyt terminalfaneblad eller terminalvindue er åbnet. Standarden burde være o.k. for de fleste systemer. Hvis du har problemer med farver i nogle programmer, eller hvis du synes at et bestemt program opfører sig mærkeligt, så prøv <userinput>xterm-color</userinput> her.</para>
+            <para>
+              This specifies the value the <varname>$TERM</varname> environment variable is set to, when
+              a new terminal tab or terminal window is opened. The default should be ok for most
+              systems. If you have problems with colors in some applications or if you think that a
+              certain application behaves oddly, try <userinput>xterm-color</userinput> here. If you have
+              problems with ncurses 5.6 or later you could also try <userinput>xfce</userinput>.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -759,7 +781,7 @@
             <para>Viser versionsinformation og afslutter</para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry>
           <term><option>-disable-server</option></term>
           <listitem>
@@ -854,7 +876,10 @@
         <varlistentry>
           <term><option>--hide-menubar</option></term>
           <listitem>
-            <para> Slå menulinjen til for det sidst specificerede vindue.. Det kan specificeres en gang for hvert vindue, du opretter fra kommandolinjen.</para>
+            <para>
+              Turn off the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
           </listitem>
         </varlistentry>
 
@@ -968,6 +993,7 @@ MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
@@ -1004,6 +1030,19 @@ MiscHighlightUrls=TRUE</programlisting>
           <term><varname>MiscCursorBlinks</varname></term>
           <listitem>
             <para>Slå dette tilvalg til for at vise en markør der blinker. Kan enten være <literal>TRUE</literal> eller <literal>FALSE</literal> (standard).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorShape</varname></term>
+          <listitem>
+            <para>
+              Specifies the shape of the cursor in the terminal. This can be either
+              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default),
+              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or
+              <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
+              only available when you compile against VTE 0.19.1 or newer.
+            </para>
           </listitem>
         </varlistentry>
 
@@ -1106,7 +1145,10 @@ MiscHighlightUrls=TRUE</programlisting>
 
     <para>I det tilfælde at du ønsker at anmode om en ny funktion, så gør det venligst klart hvorfor du anser det som en forbedring af programmet. Det er mere sandsynligt at en ny funktion bliver tilføjet, hvis du tilbyder nogle gode argumenter for den nye funktion. Chancerne for at den bliver tilføjet er endnu større, hvis du medsender en programrettelse med den anmodede funktion, integreret i programmet. Vær dog sikker på at du får læst filen <ulink type="http" url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink> - før du begynder at omskrive kildekoden.</para>
 
-    <para>Derudover hvis du har spørgsmål om brugen eller installation af dette programmel, så spørg venligst på <ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">os-cillation forum</ulink> eller indstil din IRC-client til <emphasis role="bold">irc.freenode.net</emphasis>, tilslut dig kanalen <emphasis role="bold">#xfce</emphasis> og spørg efter hjælp.</para>
+    <para>Else, if you have questions about the use or installation of this software, please ask on the
+    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink>
+    or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
+    join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
   </sect1>
 
   <sect1 id="copyright">
@@ -1123,5 +1165,5 @@ MiscHighlightUrls=TRUE</programlisting>
 
 </article>
 <!--
-	vim:set ts=2 sw=2 et ai:
+  vim:set ts=2 sw=2 et ai:
 -->

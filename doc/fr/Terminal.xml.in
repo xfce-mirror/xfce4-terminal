@@ -20,6 +20,11 @@
       <year>2007</year>
       <year>2008</year>
       <holder>os-cillation</holder>
+    </copyright>
+
+    <copyright>
+      <year>2009</year>
+      <holder>Xfce Development Team</holder>
     </copyright><copyright><year>2007.</year><holder>Maximilian Schleiss (maximilian@xfce.org)</holder></copyright><copyright><year>2007.</year><holder>Mike Massonnet (mmassonnet@gmail.org)</holder></copyright>
 
     <legalnotice id="legalnotice">
@@ -43,6 +48,15 @@
         <surname>Conkling</surname>
         <affiliation>
           <address><email>andrewski@fr.st</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Nick</firstname>
+        <surname>Schermer</surname>
+        <affiliation>
+          <address><email>nick@xfce.org</email></address>
+          <jobtitle>Xfce Core Developer</jobtitle>
         </affiliation>
       </author>
     </authorgroup>
@@ -122,7 +136,8 @@
         <varlistentry>
           <term><varname>TERM</varname></term>
           <listitem>
-            <para>Réglé sur <literal>xterm</literal> ou <literal>xterm-color</literal>, vous pouvez toujours configurer cette variable dans la fenêtre de configuration.</para>
+            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you
+            can configure the value from the preferences dialog.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -281,41 +296,41 @@
           <term>Sélectionner et copier du texte :</term>
           <listitem>
             <para>Vous pouvez sélectionner du texte de plusieurs manières :</para>
-            <itemizedlist> 
-              <listitem> 
+            <itemizedlist>
+              <listitem>
                 <para>Pour sélectionner un caractère à la fois, cliquez sur le premier caractère que vous voulez sélectionner et bougez la souris jusqu'au dernier caractère de votre sélection.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>Pour sélectionner un mot à la fois, double-cliquez sur le premier mot  que vous voulez sélectionner et bougez votre souris jusqu'au dernier mot de votre sélection.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>Pour sélectionner une ligne à la fois, triple-cliquez sur la première ligne que vous voulez sélectionner et bougez votre souris jusqu'à la dernière ligne de votre sélection.</para>
-              </listitem> 
-            </itemizedlist> 
+              </listitem>
+            </itemizedlist>
             <para>Toutes ces actions copient le texte entre le premier et dernier élément. Pour toutes les trois manières de sélectionner du texte, @PACKAGE_NAME@ copie le texte sélectionné dans son presse-papier lorsque vous relâchez le bouton de la souris. Pour explicitement copier la sélection dans le presse-papier, choisissez <menuchoice><guimenu>Éditer</guimenu><guimenuitem>Copier</guimenuitem></menuchoice> dans le menu principal ou <menuchoice><guimenuitem>Copier</guimenuitem></menuchoice> du menu contextuel.</para>
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
-          <term>Coller du texte dans une fenêtre de terminal :</term> 
-          <listitem> 
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Coller du texte dans une fenêtre de terminal :</term>
+          <listitem>
             <para>Si vous avez préalablement copié du texte dans le presse-papiers, vous pouvez le coller dans le terminal de plusieurs manières :</para>
-            <itemizedlist> 
-              <listitem> 
+            <itemizedlist>
+              <listitem>
                 <para>Pour coller du texte que vous avez copié en le sélectionnant, cliquez sur le bouton du milieu de la souris. Si vous n'avez pas de bouton du milieu, référez-vous à la documentation de votre serveur X pour plus d'informations à propos de l'émulation du bouton du milieu de la souris. Vous pouvez aussi choisir <menuchoice><guimenuitem>Coller la Sélection</guimenuitem></menuchoice> du menu <menuchoice><guimenu>Éditer</guimenu></menuchoice>.</para>
-              </listitem> 
-              <listitem> 
+              </listitem>
+              <listitem>
                 <para>Pour coller du texte que vous avez explicitement copié, choisissez <menuchoice><guimenu>Éditer</guimenu><guimenuitem>Coller</guimenuitem></menuchoice>.</para>
-              </listitem> 
-            </itemizedlist> 
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
-          <term>Glisser un nom de fichier dans une fenêtre de terminal :</term> 
-          <listitem> 
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Glisser un nom de fichier dans une fenêtre de terminal :</term>
+          <listitem>
             <para>Vous pouvez glisser le nom de fichier dans une fenêtre de terminal depuis une autre application comme un gestionnaire de fichiers. Le terminal affiche le chemin complet du fichier.</para>
-          </listitem> 
-        </varlistentry> 
-        <varlistentry> 
+          </listitem>
+        </varlistentry>
+        <varlistentry>
           <term>Pour suivre un lien internet :</term>
           <listitem>
             <para>Pour suivre un lien internet (URL) affiché dans une fenêtre de terminal, procédez comme suit :</para>
@@ -332,9 +347,9 @@
               </listitem>
             </orderedlist>
           </listitem>
-        </varlistentry> 
+        </varlistentry>
 
-        <varlistentry> 
+        <varlistentry>
           <term>Créer un nouveau message électronique :</term>
           <listitem>
             <para>Pour créer un message électronique à une adresse affichée dans la fenêtre de terminal, procédez comme suit :</para>
@@ -351,7 +366,7 @@
               </listitem>
             </orderedlist>
           </listitem>
-        </varlistentry> 
+        </varlistentry>
       </variablelist>
     </sect2>
 
@@ -628,7 +643,8 @@
         <varlistentry>
           <term><guilabel>Palette</guilabel></term>
           <listitem>
-            <para>Le terminal met à disposition une palette de 16 couleurs pour les applications. Ces couleurs peuvent être personnalisées avec leurs boutons respectifs.</para>
+            <para>The terminal provides the application running inside with a palette of
+            16 colors. You can customize these colors using the 16 color buttons.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -660,13 +676,13 @@
                 <imageobject>
                   <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
                 </imageobject>
-                
+
                 <textobject>
                   <phrase>Composer le raccourci</phrase>
                 </textobject>
               </mediaobject>
             </screenshot>
-            
+
             <para>Pour changer un raccourci clavier d'un élément du menu, double cliquez l'élément dans la liste et pressez la touche ou combinaison de touches que vous voulez lui attribuer. Pour annuler un raccourci, double cliquez sur l'élément dans la liste et cliquez sur le bouton <guilabel>Effacer</guilabel>.</para>
           </listitem>
         </varlistentry>
@@ -718,7 +734,13 @@
         <varlistentry>
           <term><guilabel>Paramètres de $TERM</guilabel></term>
           <listitem>
-            <para>Ceci définit la valeur de la variable d'environnement <varname>$TERM</varname> lorsqu'une nouvelle fenêtre de terminal est ouverte. La valeur par défaut devrait s'appliquer à la plupart des systèmes. Si rencontrez des problèmes avec les couleurs dans certaines applications ou si vous pensez qu'une application ne s'exécute pas comme il faudrait, changez la variable en <userinput>xterm-color</userinput>.</para>
+            <para>
+              This specifies the value the <varname>$TERM</varname> environment variable is set to, when
+              a new terminal tab or terminal window is opened. The default should be ok for most
+              systems. If you have problems with colors in some applications or if you think that a
+              certain application behaves oddly, try <userinput>xterm-color</userinput> here. If you have
+              problems with ncurses 5.6 or later you could also try <userinput>xfce</userinput>.
+            </para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -759,7 +781,7 @@
             <para>Affiche la version et quitte</para>
           </listitem>
         </varlistentry>
-        
+
         <varlistentry>
           <term><option>--disable-server</option></term>
           <listitem>
@@ -858,7 +880,10 @@
         <varlistentry>
           <term><option>--hide-menubar</option></term>
           <listitem>
-            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifiée pour chaque nouvelle fenêtre créée depuis la ligne de commande.</para>
+            <para>
+              Turn off the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
           </listitem>
         </varlistentry>
 
@@ -972,6 +997,7 @@ MiscAlwaysShowTabs=TRUE
 MiscBell=TRUE
 MiscConfirmClose=FALSE
 MiscCursorBlinks=TRUE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
 MiscCycleTabs=FALSE
 MiscInheritGeometry=TRUE
 MiscMouseAutohide=FALSE
@@ -1008,6 +1034,19 @@ MiscHighlightUrls=TRUE</programlisting>
           <term><varname>MiscCursorBlinks</varname></term>
           <listitem>
             <para>Activez cette option pour afficher un curseur clignotant. Peut être <literal>TRUE</literal> ou <literal>FALSE</literal> (par défaut).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorShape</varname></term>
+          <listitem>
+            <para>
+              Specifies the shape of the cursor in the terminal. This can be either
+              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default),
+              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or
+              <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
+              only available when you compile against VTE 0.19.1 or newer.
+            </para>
           </listitem>
         </varlistentry>
 
@@ -1116,7 +1155,10 @@ MiscHighlightUrls=TRUE</programlisting>
 
     <para>Au cas où vous aimeriez faire une requête pour une nouvelle fonctionnalité de l'application, faites savoir pourquoi vous la considérez être un ajout valable. Plus vos arguments seront percutants, plus la fonctionnalité aura des chances d'être ajoutée. Ces chances seront décuplées si vous fournissez un patch implémentant cette fonctionnalité, mais avant de commencer à modifier le code source, lisez attentivement le fichier <ulink url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink>, tout particulièrement la section intitulée <emphasis>Coding Style</emphasis>.</para>
 
-    <para>Sinon, si vous avez des questions au sujet de l'utilisation ou l'installation de ce logiciel, posez-les dans le <ulink url="http://www.os-cillation.de/cgi-bin/yabb/YaBB.cgi#terminal_cat">forum os-cillation</ulink> ou pointez votre client IRC sur le serveur <emphasis role="bold">irc.freenode.net</emphasis>, rejoignez le canal <emphasis role="bold">#xfce</emphasis>.</para>
+    <para>Else, if you have questions about the use or installation of this software, please ask on the
+    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink>
+    or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
+    join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
   </sect1>
 
   <sect1 id="copyright">
@@ -1133,5 +1175,5 @@ MiscHighlightUrls=TRUE</programlisting>
 
 </article>
 <!--
-	vim:set ts=2 sw=2 et ai:
+  vim:set ts=2 sw=2 et ai:
 -->
