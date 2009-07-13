@@ -1,10 +1,6 @@
 imagesdir = $(datadir)/doc/Terminal/ja/images
 images_DATA =								\
-	terminal-applications-dialog.png				\
-	terminal-applications-menu.png					\
-	terminal-choose-custom-webbrowser.png				\
 	terminal-compose-shortcut.png					\
-	terminal-edit-applications.png					\
 	terminal-edit-preferences.png					\
 	terminal-first-time.png						\
 	terminal-multiple-tabs.png					\
