@@ -629,14 +629,14 @@ terminal_screen_update_colors (TerminalScreen *screen)
   gchar    name[32];
   guint    n;
 
-  query_color (screen->preferences, "color-background", &bg);
-  query_color (screen->preferences, "color-foreground", &fg);
-  query_color (screen->preferences, "color-cursor", &cursor);
+  terminal_preferences_get_color (screen->preferences, "color-background", &bg);
+  terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
+  terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
 
   for (n = 0; n < 16; ++n)
     {
       g_snprintf (name, 32, "color-palette%u", n + 1);
-      query_color (screen->preferences, name, palette + n);
+      terminal_preferences_get_color (screen->preferences, name, palette + n);
     }
 
   vte_terminal_set_colors (VTE_TERMINAL (screen->terminal), &fg, &bg, palette, 16);
@@ -645,7 +645,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &selection_use_default, NULL);
   if (!selection_use_default)
-    query_color (screen->preferences, "color-selection", &selection);
+    terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
   vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
 }
 
@@ -964,7 +964,7 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
     return;
 
   /* set label color */
-  query_color (screen->preferences, "tab-activity-color", &color);
+  terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
   gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, &color);
 
   /* stop running reset timeout */
