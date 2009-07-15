@@ -24,7 +24,7 @@
 
     <copyright>
       <year>2009</year>
-      <holder>Xfce Development Team</holder>
+      <holder>L'équipe de développement de Xfce</holder>
     </copyright><copyright><year>2007.</year><holder>Maximilian Schleiss (maximilian@xfce.org)</holder></copyright><copyright><year>2007.</year><holder>Mike Massonnet (mmassonnet@gmail.org)</holder></copyright>
 
     <legalnotice id="legalnotice">
@@ -56,7 +56,7 @@
         <surname>Schermer</surname>
         <affiliation>
           <address><email>nick@xfce.org</email></address>
-          <jobtitle>Xfce Core Developer</jobtitle>
+          <jobtitle>Core Developer de Xfce</jobtitle>
         </affiliation>
       </author>
     </authorgroup>
@@ -70,33 +70,33 @@
     <sect2>
       <title>Qu'est-ce qu'un émulateur de terminal ?</title>
 
-      <para>Le système d'exploitation UNIX a été conçu au départ comme un système commandé uniquement au clavier à partir d'une ligne de commande. Le système X Window, Xfce et d'autres projets ont ajouté une interface graphique à la monotone ligne de commande UNIX, c'est cette interface graphique que vous utilisez en ce moment même. L'interface graphique X Window de UNIX ne signifie pas pour autant la mort de la ligne de commande. Elle est toujours très présente et se trouve être, bien souvent, le moyen le plus simple, rapide et efficace pour accomplir certaines tâches. En fait, les utilisateurs en force seraient bien perdus sans elle.</para>
+      <para>Le système d'exploitation UNIX a été conçu au départ comme un système basé sur le texteuniquement commandé au clavier à partir d'une ligne de commande. Le système X Window, Xfce et d'autres projets ont ajouté une interface graphique à la ligne de commande UNIX, c'est cette interface graphique que vous utilisez en ce moment même. L'interface graphique X Window de UNIX ne signifie pas pour autant la mort de la ligne de commande. Elle est toujours très présente et se trouve être, bien souvent, le moyen le plus simple, rapide et efficace pour accomplir certaines tâches. En fait, les utilisateurs intensifs seraient bien perdus sans elle.</para>
 
-      <para>@PACKAGE_NAME@ est ce que l'on appelle un émulateur de terminal X, tout simplement terminal ou shell. Il est l'équivalent de la ligne de commande de l'ordinateur mais dans une fenêtre de l'interface graphique. Les utilisateurs de Windows connaissent peut-être déjà la ligne de commande MS-DOS qui permet d'utiliser presque toutes les commandes du système d'exploitation DOS de Microsoft. La ligne de commande UNIX est beaucoup plus puissante et développée que celle du DOS.</para>
+      <para>@PACKAGE_NAME@ est ce que l'on appelle un émulateur de terminal X, souvent appelé terminal ou shell. Il est l'équivalent de la ligne de commande de l'ordinateur mais dans une fenêtre de l'interface graphique. Les utilisateurs de Windows connaissent peut-être déjà la ligne de commande MS-DOS qui permet d'utiliser presque toutes les commandes du système d'exploitation DOS de Microsoft. La ligne de commande UNIX est beaucoup plus puissante et facile à utiliser que celle du DOS.</para>
 
-      <para>@PACKAGE_NAME@ émule l'application <application>xterm</application> développée par le X Consortium. À son tour, l'application <application>xterm</application> émule le terminal DEC VT102 ainsi que les séquences d'échappement du DEC VT220. Une séquence d'échappement est une série de caractères commençant par <keycap>Esc</keycap>. @PACKAGE_NAME@ accepte et comprend toutes les formes de séquences d'échappement des terminaux VT102 et VT220, comme celles servant à positionner le curseur ou d'effacer l'écran.</para>
+      <para>@PACKAGE_NAME@ émule l'application <application>xterm</application> développée par le X Consortium. À son tour, l'application <application>xterm</application> émule le terminal DEC VT102 ainsi que les séquences d'échappement du DEC VT220. Une séquence d'échappement est une série de caractères commençant par <keycap>Esc</keycap>. @PACKAGE_NAME@ accepte et comprend toutes les formes de séquences d'échappement des terminaux VT102 et VT220, comme celles servant à positionner le curseur ou à effacer l'écran.</para>
     </sect2>
 
     <sect2>
       <title>Qu'est-ce qui rend @PACKAGE_NAME@ si spécial ?</title>
 
-      <para>Les fonctions avancées de @PACKAGE_NAME@ incluent une interface de configuration simple, la fonction d'onglets multiples à l'intérieur d'une seule et même fenêtre, la possibilité d'avoir une transparence du fond d'arrière plan et un mode compacte (dans lequel les décorations des fenêtres ainsi que la barre de menu sont cachés) aidant à gagner de la place sur le bureau.</para>
+      <para>Les fonctions avancées de @PACKAGE_NAME@ incluent une interface de configuration simple, des onglets permettant d'avoir plusieurs terminaux dans une seule et même fenêtre, la possibilité d'avoir un arrière-plan transparent et un mode compact (dans lequel les décorations des fenêtres ainsi que la barre de menu sont cachées) aidant à gagner de la place sur le bureau.</para>
 
       <para>Les fonctionnalités majeures suivantes sont disponibles :</para>
 
       <itemizedlist>
         <listitem>Multiples onglets par fenêtre</listitem>
-        <listitem>Barres d'outils configurables, à l'aide d'un éditeur de barres d'outils intégré.</listitem>
-        <listitem>L'abilité de configurer presque tous les aspects de @PACKAGE_NAME@ dans la fenêtre de dialogue des <guilabel>Préférences</guilabel> plus quelques <emphasis>Options cachées</emphasis></listitem>
+        <listitem>Barres d'outils personnalisables, à l'aide d'un éditeur de barres d'outils intégré.</listitem>
+        <listitem>Possibilité de configurer presque tous les aspects de @PACKAGE_NAME@ grâce à la fenêtre de <guilabel>Préférences</guilabel> ainsi qu'à quelques <emphasis>options cachées</emphasis></listitem>
         <listitem>Une bonne intégration avec l'<ulink url="http://xfce.org/">environnement de bureau Xfce</ulink> en particulier mais aussi avec bien d'autres bureaux Linux</listitem>
-        <listitem>Support de la gestion des sessions</listitem>
-        <listitem>Support de lecture multi-têtes (Multiscreen ou mode Xinérama)</listitem>
+        <listitem>Prise en charge de la gestion des sessions</listitem>
+        <listitem>Prise en charge d'écrans multiples (en mode multi-écran ou en mode Xinerama)</listitem>
         <listitem>Conformité aux standards (voir le site web <ulink url="http://freedesktop.org/">freedesktop.org</ulink>)</listitem>
         <listitem>Service de terminal basé sur <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> pour minimiser l'utilisation générale des ressources</listitem>
-        <listitem>Une maintenance accrue due à l'utilisation de <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink> et <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.</listitem>
+        <listitem>Une maintenance facilitée due à l'utilisation de <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink> et <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.</listitem>
       </itemizedlist>
 
-      <para>À part toutes ces particularités, @PACKAGE_NAME@ supporte toutes les fonctionnalités d'un émulateur de terminal moderne.</para>
+      <para>En plus de toutes ces fonctionnalités clés, @PACKAGE_NAME@ apporte toutes les fonctionnalités que l'on peut attendre d'un émulateur de terminal moderne.</para>
     </sect2>
   </sect1>
 
@@ -106,7 +106,7 @@
     <sect2>
       <title>Démarrer @PACKAGE_NAME@</title>
 
-      <para>La manière la plus simple de démarrer @PACKAGE_NAME@ est d'utiliser le menu d'applications de votre environnement de bureau. Pour Xfce, pointez la souris sur le bureau, d'un clic-droit faites apparaître le menu et choisissez <menuchoice><guimenu>Système</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
+      <para>La manière la plus simple de démarrer @PACKAGE_NAME@ est d'utiliser le menu d'applications de votre environnement de bureau. Pour Xfce, pointez la souris sur le bureau, d'un clic-droit faîtes apparaître le menu et choisissez <menuchoice><guimenu>Système</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
 
       <para>Vous pouvez aussi démarrer @PACKAGE_NAME@ depuis une ligne de commande ou avec le menu <guilabel>Exécuter</guilabel>. Appuyez sur les touches <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, entrez <userinput><command>Terminal</command></userinput> et cliquez sur le bouton <guibutton>Exécuter</guibutton>.</para>
     </sect2>
@@ -128,16 +128,15 @@
         </mediaobject>
       </screenshot>
 
-      <para>La fenêtre de terminal affiche une ligne de commande acceptant les commandes UNIX. La ligne de commande peut varier selon les différentes configurations de shell. Le curseur est positionné au début de la ligne. Lorsque vous entrez une commande et appuyez la touche <keycap>Entrée</keycap>, l'ordinateur exécute la commande. Par défaut, @PACKAGE_NAME@ utilisera le même shell de connexion que celui de l'utilisateur actuel (<filename>/bin/bash</filename> dans le cas d'une installation Linux).</para>
+      <para>La fenêtre de terminal affiche une ligne de commande où vous pouvez entrer des commandes UNIX. La ligne de commande peut varier selon les différentes configurations de shell. Le curseur est positionné au début de la ligne. Lorsque vous entrez une commande et appuyez la touche <keycap>Entrée</keycap>, l'ordinateur exécute la commande. Par défaut, @PACKAGE_NAME@ utilisera le même shell de connexion que celui de l'utilisateur actuel (<filename>/bin/bash</filename> dans le cas d'une installation Linux standard).</para>
 
-      <para>@PACKAGE_NAME@ définit l'environnement de variable suivant poue la commande dans la fenêtre de terminal :</para>
+      <para>@PACKAGE_NAME@ définit les variables d'environnement suivantes pour la commande lancée dans la fenêtre de terminal :</para>
 
       <variablelist>
         <varlistentry>
           <term><varname>TERM</varname></term>
           <listitem>
-            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you
-            can configure the value from the preferences dialog.</para>
+            <para>Réglé sur <literal>xterm</literal> ou <literal>xterm-color</literal>, vous pouvez configurer cette variable dans la fenêtre de préférences.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -162,7 +161,7 @@
     </sect2>
 
     <sect2>
-      <title>Travailler avec de multiples terminaux</title>
+      <title>Travailler avec plusieurs terminaux</title>
 
       <para>@PACKAGE_NAME@ possède une fonction d'onglets permettant d'ouvrir plusieurs terminaux dans une seule fenêtre. Chaque nouveau terminal s'ouvre dans un nouvel onglet. Cliquez sur l'onglet de votre choix pour en afficher le terminal. Chaque terminal dans la fenêtre est un sous-processus séparé, vous pouvez donc utiliser chaque terminal pour une fonction différente.</para>
 
@@ -195,7 +194,7 @@
         <varlistentry>
           <term>Pour ouvrir une nouvelle fenêtre de terminal :</term>
           <listitem>
-            <para>Choisissez <menuchoice><guimenu>Fichier</guimenu><guimenuitem>Ouvrir un terminal</guimenuitem></menuchoice> ou d'un clic-droit dans la fenêtre du terminal choisissez <menuchoice><guimenuitem>Ouvrir un terminal</guimenuitem></menuchoice> du menu contextuel.</para>
+            <para>Choisissez <menuchoice><guimenu>Fichier</guimenu><guimenuitem>Ouvrir un terminal</guimenuitem></menuchoice> ou d'un clic-droit dans la fenêtre du terminal choisissez <menuchoice><guimenuitem>Ouvrir un terminal</guimenuitem></menuchoice> dans le menu contextuel.</para>
             <para>Le nouveau terminal hérite du dossier de travail de son terminal parent.</para>
           </listitem>
         </varlistentry>
@@ -643,8 +642,7 @@
         <varlistentry>
           <term><guilabel>Palette</guilabel></term>
           <listitem>
-            <para>The terminal provides the application running inside with a palette of
-            16 colors. You can customize these colors using the 16 color buttons.</para>
+            <para>Le terminal met à disposition des applications lancées une palette de 16 couleurs. Ces couleurs peuvent être personnalisées avec leurs boutons respectifs.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -734,13 +732,7 @@
         <varlistentry>
           <term><guilabel>Paramètres de $TERM</guilabel></term>
           <listitem>
-            <para>
-              This specifies the value the <varname>$TERM</varname> environment variable is set to, when
-              a new terminal tab or terminal window is opened. The default should be ok for most
-              systems. If you have problems with colors in some applications or if you think that a
-              certain application behaves oddly, try <userinput>xterm-color</userinput> here. If you have
-              problems with ncurses 5.6 or later you could also try <userinput>xfce</userinput>.
-            </para>
+            <para>Ceci définit la valeur de la variable d'environnement <varname>$TERM</varname> lorsqu'une nouvelle fenêtre de terminal est ouverte. La valeur par défaut devrait convenir pour la plupart des systèmes. Si rencontrez des problèmes avec les couleurs dans certaines applications ou si vous pensez qu'une application se comporte bizarrement, changez la variable en <userinput>xterm-color</userinput>. Si vous avez des problèmes avec ncurses 5.6 ou plus, vous pouvez aussi essayer la valeur <userinput>xfce</userinput>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -862,28 +854,21 @@
         <varlistentry>
           <term><option>--maximize</option></term>
           <listitem>
-            <para>
-              Set the last-specified window into maximized mode;
-              applies to only one window; can be specified once
-              for each window you create from the command line.
-            </para>
+            <para>Passe la dernière fenêtre spécifiée en mode maximisé. S'applique uniquement à une fenêtre et peut être appliquée à chaque fenêtre que vous créez depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--show-menubar</option></term>
           <listitem>
-            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifiée pour chaque nouvelle fenêtre créée depuis la ligne de commande.</para>
+            <para>Affiche la barre de menu pour la dernière fenêtre. Peut être spécifiée pour chaque fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--hide-menubar</option></term>
           <listitem>
-            <para>
-              Turn off the menubar for the last-specified window. Can be specified once for each
-              window you create from the command line.
-            </para>
+            <para>Ne pas afficher la barre de menu pour la dernière fenêtre. Peut être spécifiée pour chaque fenêtre créée depuis la ligne de commande.</para>
           </listitem>
         </varlistentry>
 
@@ -1040,13 +1025,7 @@ MiscHighlightUrls=TRUE</programlisting>
         <varlistentry>
           <term><varname>MiscCursorShape</varname></term>
           <listitem>
-            <para>
-              Specifies the shape of the cursor in the terminal. This can be either
-              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default),
-              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or
-              <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
-              only available when you compile against VTE 0.19.1 or newer.
-            </para>
+            <para>Spécifie la forme du curseur dans le terminal. Peut être <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (valeur par défaut), <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> ou <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. Cette option n'est disponible qu'à partir de VTE 0.19.1.</para>
           </listitem>
         </varlistentry>
 
@@ -1088,11 +1067,7 @@ MiscHighlightUrls=TRUE</programlisting>
         <varlistentry>
           <term><varname>MiscTabCloseMiddleClick</varname></term>
           <listitem>
-            <para>
-              This setting controls whether @PACKAGE_NAME@ will close a terminal tab when
-              the user middle-clicks the tab title. Can be either <literal>TRUE</literal>
-              (the default) or <literal>FALSE</literal>.
-            </para>
+            <para>Ce paramètre décide si @PACKAGE_NAME@ si un clic milieu sur le titre d'un onglet ferme cet onglet. Peut être <literal>TRUE</literal> (par défaut) ou <literal>FALSE</literal>.</para>
           </listitem>
         </varlistentry>
 
@@ -1106,13 +1081,7 @@ MiscHighlightUrls=TRUE</programlisting>
         <varlistentry>
           <term><varname>MiscHighlightUrls</varname></term>
           <listitem>
-            <para>
-              This setting controls whether URLs - both hyperlinks and email addresses - will
-              be highlighted in the text displayed in a terminal window. If you change this
-              option to <literal>FALSE</literal>, URLs won't be highlighted anymore and you
-              will no longer be able to middle-click the URL to open it in the preferred
-              application.
-            </para>
+            <para>Cette option contrôle si les URLs (les hyperliens et les adresses email) seront mises en évidence dans le texte affiché par la fenêtre du terminal. Si vous changez cette option à <literal>FALSE</literal>, les URLs ne seront plus mises en évidence et vous ne pourrez plus utiliser le clic milieu pour les ouvrir dans l'application préferée.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1155,10 +1124,7 @@ MiscHighlightUrls=TRUE</programlisting>
 
     <para>Au cas où vous aimeriez faire une requête pour une nouvelle fonctionnalité de l'application, faites savoir pourquoi vous la considérez être un ajout valable. Plus vos arguments seront percutants, plus la fonctionnalité aura des chances d'être ajoutée. Ces chances seront décuplées si vous fournissez un patch implémentant cette fonctionnalité, mais avant de commencer à modifier le code source, lisez attentivement le fichier <ulink url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink>, tout particulièrement la section intitulée <emphasis>Coding Style</emphasis>.</para>
 
-    <para>Else, if you have questions about the use or installation of this software, please ask on the
-    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink>
-    or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
-    join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
+    <para>Sinon, si vous avez des questions au sujet de l'utilisation ou l'installation de ce logiciel, posez-les sur la <ulink url="http://www.xfce.org/community/lists">liste de diffusion des utilisateurs de Xfce</ulink> ou rejoignez <emphasis role="bold">irc.freenode.net</emphasis> à l'aide de votre client IRC, et rendez vous sur <emphasis role="bold">#xfce</emphasis>.</para>
   </sect1>
 
   <sect1 id="copyright">
