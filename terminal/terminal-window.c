@@ -1311,6 +1311,8 @@ terminal_window_notify_title (TerminalScreen *screen,
     }
 }
 
+
+
 static void
 terminal_window_action_new_tab (GtkAction       *action,
                                 TerminalWindow  *window)

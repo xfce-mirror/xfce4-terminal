@@ -131,7 +131,6 @@ enum
   PROP_TITLE_INITIAL,
   PROP_TITLE_MODE,
   PROP_TERM,
-  PROP_VTE_WORKAROUND_TITLE_BUG,
   PROP_WORD_CHARS,
   PROP_TAB_ACTIVITY_COLOR,
   PROP_TAB_ACTIVITY_TIMEOUT,
@@ -1286,17 +1285,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         "Term",
                                                         "xterm",
                                                         EXO_PARAM_READWRITE));
-
-  /**
-   * TerminalPreferences:vte-workaround-title-bug:
-   **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_VTE_WORKAROUND_TITLE_BUG,
-                                   g_param_spec_boolean ("vte-workaround-title-bug",
-                                                         "vte-workaround-title-bug",
-                                                         "VteWorkaroundTitleBug",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
 
   /**
    * TerminalPreferences:word-chars:

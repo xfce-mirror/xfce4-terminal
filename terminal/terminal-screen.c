@@ -181,7 +181,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         "custom-title",
                                                         "custom-title",
                                                         NULL,
-                                                        G_PARAM_READWRITE));
+                                                        EXO_PARAM_READWRITE));
 
   /**
    * TerminalScreen:title:
@@ -192,7 +192,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         "title",
                                                         "title",
                                                         NULL,
-                                                        G_PARAM_READABLE));
+                                                        EXO_PARAM_READABLE));
 
   /**
    * TerminalScreen::get-context-menu
@@ -344,15 +344,23 @@ terminal_screen_get_property (GObject          *object,
                               GParamSpec       *pspec)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
+  const gchar    *title = NULL;
 
   switch (prop_id)
     {
     case PROP_CUSTOM_TITLE:
-      g_value_set_string (value, screen->custom_title);
+      if (IS_STRING (screen->custom_title))
+        g_value_set_string (value, screen->custom_title);
+      else
+        g_value_set_static_string (value, "");
       break;
 
     case PROP_TITLE:
-      g_value_take_string (value, terminal_screen_get_title (screen));
+      if (G_UNLIKELY (screen->custom_title != NULL))
+        title = screen->custom_title;
+      else if (G_LIKELY (screen->terminal != NULL))
+        title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+      g_value_set_string (value, title != NULL ? title : _("Untitled"));
       break;
 
     default:
@@ -815,25 +823,7 @@ terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen)
 static void
 terminal_screen_update_title (TerminalScreen *screen)
 {
-  const gchar *title;
-
   g_object_notify (G_OBJECT (screen), "title");
-
-  if (G_LIKELY (screen->tab_label != NULL))
-    {
-      /* update tab label */
-      if (IS_STRING (screen->custom_title))
-        title = screen->custom_title;
-      else
-        {
-          title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
-          if (G_UNLIKELY (title == NULL))
-            title = _("Untitled");
-        }
-
-      gtk_label_set_text (GTK_LABEL (screen->tab_label), title);
-      gtk_widget_set_tooltip_text (GTK_WIDGET (screen->tab_label), title);
-    }
 }
 
 
@@ -1201,7 +1191,10 @@ terminal_screen_set_custom_title (TerminalScreen *screen,
   if (!exo_str_is_equal (screen->custom_title, title))
     {
       g_free (screen->custom_title);
-      screen->custom_title = g_strdup (title != NULL ? title : "");
+      if (IS_STRING (title))
+        screen->custom_title = g_strdup (title);
+      else
+        screen->custom_title = NULL;
       g_object_notify (G_OBJECT (screen), "custom-title");
       terminal_screen_update_title (screen);
     }
@@ -1352,66 +1345,42 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
 gchar*
 terminal_screen_get_title (TerminalScreen *screen)
 {
-  TerminalTitle mode;
-  const gchar  *vte_title;
-  gboolean      vte_workaround_title_bug;
-  gchar        *window_title;
-  gchar        *initial;
-  gchar        *title;
-  gchar        *tmp;
+  TerminalTitle  mode;
+  const gchar   *vte_title;
+  gchar         *initial;
+  gchar         *title;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
-  if (IS_STRING (screen->custom_title))
+  if (G_UNLIKELY (screen->custom_title != NULL))
     return g_strdup (screen->custom_title);
 
   g_object_get (G_OBJECT (screen->preferences),
                 "title-initial", &initial,
                 "title-mode", &mode,
-                "vte-workaround-title-bug", &vte_workaround_title_bug,
                 NULL);
 
   vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
-  window_title = g_strdup (vte_title);
-
-  /* work around VTE problem, see #10 for details */
-  if (window_title != NULL && vte_workaround_title_bug)
-    {
-      /* remove initial title from the end of the dynamic title */
-      tmp = g_strconcat (" - ", initial, NULL);
-      while (g_str_has_suffix (window_title, tmp))
-        window_title[strlen (window_title) - strlen (tmp)] = '\0';
-      g_free (tmp);
-
-      /* remove initial title from the end of the dynamic title */
-      tmp = g_strconcat (initial, " - ", NULL);
-      while (g_str_has_prefix (window_title, tmp))
-        {
-          g_memmove (window_title, window_title + strlen (tmp),
-                     strlen (window_title) + 1 - strlen (tmp));
-        }
-      g_free (tmp);
-    }
 
   switch (mode)
     {
     case TERMINAL_TITLE_REPLACE:
-      if (window_title != NULL)
-        title = g_strdup (window_title);
+      if (G_LIKELY (vte_title != NULL))
+        title = g_strdup (vte_title);
       else
         title = g_strdup (_("Untitled"));
       break;
 
     case TERMINAL_TITLE_PREPEND:
-      if (window_title != NULL)
-        title = g_strconcat (window_title, " - ", initial, NULL);
+      if (G_LIKELY (vte_title != NULL))
+        title = g_strconcat (vte_title, " - ", initial, NULL);
       else
         title = g_strdup (initial);
       break;
 
     case TERMINAL_TITLE_APPEND:
-      if (window_title != NULL)
-        title = g_strconcat (initial, " - ", window_title, NULL);
+      if (G_LIKELY (vte_title != NULL))
+        title = g_strconcat (initial, " - ", vte_title, NULL);
       else
         title = g_strdup (initial);
       break;
@@ -1425,7 +1394,6 @@ terminal_screen_get_title (TerminalScreen *screen)
       title = NULL;
     }
 
-  g_free (window_title);
   g_free (initial);
 
   return title;
@@ -1726,6 +1694,9 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   screen->tab_label = gtk_label_new (NULL);
   gtk_misc_set_padding (GTK_MISC (screen->tab_label), 2, 0);
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
+  exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (screen->tab_label), "label");
+  exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (screen->tab_label), "tooltip-text");
+  gtk_widget_set_has_tooltip (screen->tab_label, TRUE);
   gtk_widget_show (screen->tab_label);
 
   align = gtk_alignment_new (0.5f, 0.5f, 0.0f, 0.0f);
@@ -1756,9 +1727,6 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 
   /* update orientation */
   terminal_screen_update_label_orientation (screen);
-
-  /* force a title update */
-  terminal_screen_update_title (screen);
 
   return hbox;
 }
