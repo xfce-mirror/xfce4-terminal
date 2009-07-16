@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2007-09-24 11:46+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyun.choi@debianusers.org>\n"
 "Language-Team: Korean <translation-team-ko@lists.sourceforge.net>\n"
@@ -338,16 +338,16 @@ msgstr "D-BUS 메시지 버스의 연결이 끊어졌습니다, 마칩니다...\
 msgid "Unable to register object %s"
 msgstr "object %s을(를) 등록하는데 실패했습니다"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X 터미널 에뮬레이터"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "옮긴이"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "브라우져를 열지 못 했습니다."
 
@@ -437,11 +437,11 @@ msgstr "옵션 \"--command/-e\"은 파라미터로 실행할 명령을 명시해
 msgid "Unknown option \"%s\""
 msgstr "모르는 옵션 \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "모든 파일"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "그림 파일"
 
@@ -562,16 +562,16 @@ msgstr "차례"
 msgid "Unable to determine your login shell."
 msgstr "로긴 셸을 정할 수 없음."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "자식 프로세스 생성 실패"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "무제"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "자식 프로세스 생성 실패"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "이 탭 닫기"
 
@@ -902,11 +902,12 @@ msgstr "다시 묻지 마십시오(_n)"
 msgid "Window Title|Set Title"
 msgstr "창 제목|제목 설정"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>타이틀:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "타이틀"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "현재 터미널 탭의 타이틀을 입력하세요"
 
@@ -1449,6 +1450,9 @@ msgstr "명령어를 실행할 때 utmp/wtmp를 기록(_U)"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>타이틀:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "사용법: Terminal [옵션...]"

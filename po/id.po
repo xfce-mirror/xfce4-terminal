@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-12-21 21:10+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -373,16 +373,16 @@ msgstr "Bus pesan D-BUS terputus, keluar...\n"
 msgid "Unable to register object %s"
 msgstr "Tidak dapat mendaftarkan objek %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulator Terminal X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Andhika Padmawan <andhika.padmawan@gmail.com>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Gagal ketika membuka peramban dokumentasi"
 
@@ -486,11 +486,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opsi \"%s\" tidak dikenal"
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Semua Berkas"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Berkas Gambar"
 
@@ -611,16 +611,16 @@ msgstr "Isi"
 msgid "Unable to determine your login shell."
 msgstr "Tidak dapat menentukan shell login anda."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Gagal untuk mengeksekusi anak"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Tanpa judul"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Gagal untuk mengeksekusi anak"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Tutup tab ini"
 
@@ -958,11 +958,12 @@ msgstr "Ja_ngan tanya saya lagi"
 msgid "Window Title|Set Title"
 msgstr "Judul Jendela|Tentukan Judul"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Judul:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Terubin"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Masukkan judul untuk tab terminal ini"
 
@@ -1524,6 +1525,9 @@ msgstr "_Mutakhirkan catatan utmp/wtmp ketika perintah dijalankan"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "detik"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Judul:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Penggunaan: Terminal [OPSI...]"

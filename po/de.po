@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 21:42+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-07-06 22:10+0200\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -357,11 +357,11 @@ msgstr "Verbindung zum Nachrichtenbus D-Bus wurde getrennt, beende...\n"
 msgid "Unable to register object %s"
 msgstr "Konnte das D-Bus-Objekt nicht registrieren: %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X Terminal-Emulator"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Benedikt Meurer <benny@xfce.org>\n"
@@ -370,7 +370,7 @@ msgstr ""
 "and some more"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Konnte den Browser für die Dokumentation nicht öffnen"
 
@@ -478,11 +478,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Unbekannte Option »%s«"
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Alle Dateien"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Bilddateien"
 
@@ -603,16 +603,16 @@ msgstr "Inhalt"
 msgid "Unable to determine your login shell."
 msgstr "Konnte Login-Shell nicht ermitteln."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Konnte Kindprozess nicht ausführen"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Unbenannt"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Konnte Kindprozess nicht ausführen"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Reiter schließen"
 
@@ -947,11 +947,12 @@ msgstr "In Zukunft _nicht mehr nachfragen"
 msgid "Window Title|Set Title"
 msgstr "Titel festlegen"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titel:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Titel"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Geben Sie den Titel für den aktuellen Terminalreiter ein"
 
@@ -1462,6 +1463,9 @@ msgstr "utmp/_wtmp-Aufzeichnungen aktualisieren"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "Sekunden"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titel:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Aufruf: Terminal [OPTIONEN...]"

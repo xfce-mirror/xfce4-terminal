@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-10-01 07:10-0700\n"
 "Last-Translator: Kristjan Siimson <epost@ksiimson.se>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -345,16 +345,16 @@ msgstr "D-BUS sõnumisiini ühendus katkestatud, väljutakse...\n"
 msgid "Unable to register object %s"
 msgstr "Ei saanud registreerida objekti „%s”"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X terminaliemulaator"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Kristjan Siimson <epost@ksiimson.se> & tolge.pingviin.org"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Dokumentatsioonibrauseri avamine ebaõnnestus"
 
@@ -446,11 +446,11 @@ msgstr "Valik  „--command/-e” vajab parameetrina käivitatavat käsku"
 msgid "Unknown option \"%s\""
 msgstr "Tundmatu valik „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Kõik failid"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Pildifailid"
 
@@ -571,16 +571,16 @@ msgstr "Sisukord"
 msgid "Unable to determine your login shell."
 msgstr "Sinu logimiskesta ei õnnestunud tuvastada."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Alama käivitamine ebaõnnestus"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Pealkirjastamata"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Alama käivitamine ebaõnnestus"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Sulgeda see kaart"
 
@@ -917,11 +917,12 @@ msgstr "_Mitte uuesti küsida"
 msgid "Window Title|Set Title"
 msgstr "Window Title|Määrata pealkiri"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Pealkiri:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Paanitud"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Sisestage käesoleva terminalikaardi pealkiri"
 
@@ -1476,6 +1477,9 @@ msgstr "Käs_u käivitamisel uuendada utmp/wtmp kirjeid"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Pealkiri:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Kasutamine: Terminal [VALIK...]"

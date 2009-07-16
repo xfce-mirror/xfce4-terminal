@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2006-04-20 18:56+0600\n"
 "Last-Translator: Sergey Fedoseev <fedoseev.sergey@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -373,11 +373,11 @@ msgstr "Произошло отсоединение от D-BUS, выход из 
 msgid "Unable to register object %s"
 msgstr "Невозможно зарегистрировать объект %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Эмулятор терминала для X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Anthony Ivanoff <a-i@bk.ru>\n"
@@ -385,7 +385,7 @@ msgstr ""
 "Sergey Fedoseev <fedoseev.sergey@gmail.com>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Не удалось открыть браузер для просмотра документации"
 
@@ -488,11 +488,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Неизвестный параметр \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Все файлы"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Файлы изображений"
 
@@ -613,16 +613,16 @@ msgstr "Содержание"
 msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Ошибка выполнения дочернего процесса"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Без названия"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Ошибка выполнения дочернего процесса"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
@@ -961,11 +961,12 @@ msgstr "_Больше не спрашивать"
 msgid "Window Title|Set Title"
 msgstr "Заголовок окна|Задать заголовок"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Заголовок:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Заголовок"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Введите заголовок для текущей вкладки"
 
@@ -1520,6 +1521,9 @@ msgstr "_Обновлять записи utmp/wtmp при запуске ком�
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Заголовок:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Использование: Terminal [ПАРАМЕТРЫ...]"

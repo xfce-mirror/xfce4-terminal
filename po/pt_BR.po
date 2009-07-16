@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-01-15 09:01-0500\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -371,11 +371,11 @@ msgstr "\"bus\" de mensagem D-BUS desconectado, saindo...\n"
 msgid "Unable to register object %s"
 msgstr "Não foi possível registrar o objeto %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulador de Terminal do X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Adriano Winter Bess (awbess@gmail.com)\n"
@@ -383,7 +383,7 @@ msgstr ""
 "Fábio Nogueira (deb-user-ba@ubuntu.com)"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Falhou ao abrir o navegador de documentação"
 
@@ -489,11 +489,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opção desconhecida \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Todos os arquivos"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Arquivos de imagens"
 
@@ -614,16 +614,16 @@ msgstr "Conteúdo"
 msgid "Unable to determine your login shell."
 msgstr "Não foi possível determinar seu shell de login."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Falha na execução do filho"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Sem título"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Falha na execução do filho"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Fechar esta aba"
 
@@ -961,11 +961,12 @@ msgstr "Não me pergunte _novamente"
 msgid "Window Title|Set Title"
 msgstr "Ajustar Título"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Título:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Título"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Entre com o título para a aba de terminal atual"
 
@@ -1529,6 +1530,9 @@ msgstr "_Atualiza registros utmp/wtmp quando o comando é lançado"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "segundos"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Título:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Uso: Terminal [OPÇÃO...]"

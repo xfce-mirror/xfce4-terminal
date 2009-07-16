@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-12-22 21:44+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -351,16 +351,16 @@ msgstr "Sběrnice D-BUS byla odpojena, ukončování...\n"
 msgid "Unable to register object %s"
 msgstr "Nelze registrovat objekt %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulátor terminálu X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "translator-credits"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Nepodařilo se otevřít prohlížeč dokumentace"
 
@@ -463,11 +463,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Neznámá volba \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Všechny soubory"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Obrázky"
 
@@ -588,16 +588,16 @@ msgstr "Obsah"
 msgid "Unable to determine your login shell."
 msgstr "Nelze zjistit vaše uživatelské jméno."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Spuštění procesu potomka se nezdařilo"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Spuštění procesu potomka se nezdařilo"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Zavřít tuto kartu"
 
@@ -935,11 +935,12 @@ msgstr "Příště se již _nedotazovat"
 msgid "Window Title|Set Title"
 msgstr "Nastavit titulek"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titulek</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Titulek"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Vložte název pro aktuální kartu terminálu"
 
@@ -1495,6 +1496,9 @@ msgstr "_Aktualizovat záznamy utmp/wtmp při spuštění příkazu"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "sekundách"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titulek</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Použití: Terminal [VOLBA...]"

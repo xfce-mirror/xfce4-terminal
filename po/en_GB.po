@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-01-27 12:44+1100\n"
 "Last-Translator: Jeff Bailes <thepizzaking@gmail.com>\n"
 "Language-Team: English/GB\n"
@@ -348,18 +348,18 @@ msgstr "D-BUS message bus disconnected, exiting...\n"
 msgid "Unable to register object %s"
 msgstr "Unable to register object %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X Terminal Emulator"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Dwayne Bailey <dwayne@translate.org.za>, 2005.Jeff Bailes "
 "<thepizzaking@gmail.com>, 2007."
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Failed to open the documentation browser"
 
@@ -462,11 +462,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Unknown option \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "All Files"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Image Files"
 
@@ -587,16 +587,16 @@ msgstr "Contents"
 msgid "Unable to determine your login shell."
 msgstr "Unable to determine your login shell."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Failed to execute child"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Untitled"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Failed to execute child"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Close this tab"
 
@@ -931,11 +931,12 @@ msgstr "Do _not ask me again"
 msgid "Window Title|Set Title"
 msgstr "Set Title"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Title:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Title"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Enter the title for the current terminal tab"
 
@@ -1492,6 +1493,9 @@ msgstr "_Update utmp/wtmp records when command is launched"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "seconds"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Title:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Usage: Terminal [OPTION...]"

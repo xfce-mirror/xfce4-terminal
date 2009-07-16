@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-12-09 22:06+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -367,11 +367,11 @@ msgstr "D-BUS-meddelandebussen kopplades från, avslutar...\n"
 msgid "Unable to register object %s"
 msgstr "Kunde inte registrera objektet %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Terminalemulator för X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -381,7 +381,7 @@ msgstr ""
 "tp-sv@listor.tp-sv.se"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Misslyckades med att öppna dokumentationsvisaren"
 
@@ -481,11 +481,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Okänd flagga \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Alla filer"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Bildfiler"
 
@@ -606,16 +606,16 @@ msgstr "Innehåll"
 msgid "Unable to determine your login shell."
 msgstr "Kunde inte fastställa ditt inloggningsskal."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Misslyckades att köra barnprocess"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Misslyckades att köra barnprocess"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
@@ -953,11 +953,12 @@ msgstr "Fråga mig _inte igen"
 msgid "Window Title|Set Title"
 msgstr "Ange titel"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titel:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Titel"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Ange titeln för den aktuella terminalfliken"
 
@@ -1500,6 +1501,9 @@ msgstr "_Uppdatera utmp/wtmp-poster när kommando körs"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "sekunder"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titel:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Användning: Terminal [FLAGGA...]"

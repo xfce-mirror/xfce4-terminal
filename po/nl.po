@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-07-04 15:18-0000\n"
 "Last-Translator: Vincent Tunru <projects@vinnl.nl>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
@@ -345,16 +345,16 @@ msgstr ""
 msgid "Unable to register object %s"
 msgstr "Kan object niet registreren: %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X Terminalprogramma"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Stephan Arts <stephan@xfce.org>Jasper Huijsmans <jasper@xfce.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "De documentatie browser kan niet worden gestart"
 
@@ -442,11 +442,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Onbekende optie \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Alle Bestanden"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "_Afbeeldingsbestanden"
 
@@ -567,16 +567,16 @@ msgstr "Inhoud"
 msgid "Unable to determine your login shell."
 msgstr "Kon login shell niet bepalen."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Kon commando niet uitvoeren"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Zonder titel"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Kon commando niet uitvoeren"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Tabblad sluiten"
 
@@ -915,11 +915,12 @@ msgstr "Niet _nogmaals vragen"
 msgid "Window Title|Set Title"
 msgstr "Titel instellen"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titel:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Titel"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Geef titel voor het huidige tabblad"
 
@@ -1441,6 +1442,9 @@ msgstr "utmp/wtmp records _vernieuwen wanneer opdracht wordt uitgevoerd"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "seconden"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titel:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Gebruik: Terminal [OPTIE...]"

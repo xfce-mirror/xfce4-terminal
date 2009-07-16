@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2005-09-16 20:11+0900\n"
 "Last-Translator: Vittorio Palmisano <redclay@email.it>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -391,17 +391,17 @@ msgstr "bus dei messaggi D-BUS disconnesso, uscita...\n"
 msgid "Unable to register object %s"
 msgstr "Impossibile registrare l'oggetto %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulatore di Terminale per X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 #, fuzzy
 msgid "translator-credits"
 msgstr "Traduttore (%s)"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr ""
 
@@ -510,11 +510,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opzione sconosciuta \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Tutti i file"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "File di immagine"
 
@@ -637,16 +637,16 @@ msgstr "Contenuti"
 msgid "Unable to determine your login shell."
 msgstr "Non è possibile determinare la vostra shell di login"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Esecuzione del processo figlio fallita"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Esecuzione del processo figlio fallita"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Chiudi questa scheda"
 
@@ -981,11 +981,12 @@ msgstr "_Non richiedere nuovamente"
 msgid "Window Title|Set Title"
 msgstr ""
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titolo:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Titolo"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Inserire il titolo per la scheda del terminale corrente"
 
@@ -1560,6 +1561,9 @@ msgstr "_Aggiorna i record di utmp/wtmp quando viene lanciato il comando"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titolo:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Uso: Terminal [OPZIONI...]"

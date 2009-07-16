@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2006-09-14 12:14+0200\n"
 "Last-Translator: Jarbas Araujo Jr. <jarbasaraujojr@yahoo.com.br>\n"
 "Language-Team: Debian-l10n-esperanto <debian-l10n-esperanto@lists.debian."
@@ -360,11 +360,11 @@ msgstr "D-BUS-o mesaĝobuso malkonektata, eliranta...\n"
 msgid "Unable to register object %s"
 msgstr "Ne eblas registri objekton %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X-Terminala Imitilo"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Antono Vasiljev <antono.vasiljev@gmail.com>\n"
@@ -372,7 +372,7 @@ msgstr ""
 "Sylvain Vedrenne <gnu_sylvain@xfce.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Ne elblas malfermi dokumentar-krozilon"
 
@@ -463,11 +463,11 @@ msgstr "Opcio \"--command/-e\" necesas komandon lanĉendan kiel parametro "
 msgid "Unknown option \"%s\""
 msgstr "Nekonata opcio \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Ĉiuj Dosieroj"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Bildaj Dosieroj"
 
@@ -589,16 +589,16 @@ msgstr "Enhavo"
 msgid "Unable to determine your login shell."
 msgstr "Neebla trovi vian salutŝelon"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Fiaskrulis filon"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Sentitola"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Fiaskrulis filon"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Fermu ĉi Langeton"
 
@@ -934,11 +934,12 @@ msgstr "_Ne redemandu"
 msgid "Window Title|Set Title"
 msgstr "Fenestrotitolo|Difinu Titolon"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titolo:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Titolo"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Eniru la titolon por ĉi terminalan lengeton"
 
@@ -1491,6 +1492,9 @@ msgstr "A_ktualigas utmp/wtmp datumojn kiam komando startiĝas"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titolo:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Uzado: Terminal [OPCIO...]"

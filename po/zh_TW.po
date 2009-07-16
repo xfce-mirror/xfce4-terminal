@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2006-06-12 21:28+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -285,16 +285,16 @@ msgstr "D-BUS 訊息服務匯流排中斷連結，離開中...\n"
 msgid "Unable to register object %s"
 msgstr "無法登錄物件 %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X 終端機模擬器"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "翻譯者榮譽榜"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "無法開啟文件瀏覽器"
 
@@ -380,11 +380,11 @@ msgstr "選項 \"--command/-e\" 需要指定命令作為其參數"
 msgid "Unknown option \"%s\""
 msgstr "未知的選項 \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "所有檔案"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "圖像檔案"
 
@@ -506,16 +506,16 @@ msgstr "內容"
 msgid "Unable to determine your login shell."
 msgstr "無法決定您登入的 shell"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "無法執行子程序"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "無標題"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "無法執行子程序"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "關閉此分頁"
 
@@ -846,11 +846,12 @@ msgstr "不要再問我(_n)"
 msgid "Window Title|Set Title"
 msgstr "視窗標題|設定標題"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>標題：</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "標題"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "請輸入目前終端機分頁的標題"
 
@@ -1392,6 +1393,9 @@ msgstr "當命令執行時更新 utmp/wtmp 紀錄"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>標題：</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "使用: Terminal [選項...]"

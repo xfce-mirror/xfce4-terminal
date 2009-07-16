@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-07-18 21:41+0200\n"
 "Last-Translator: Mohamed Magdy <mohamedmk@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -279,18 +279,18 @@ msgstr "لقد انقطع اتصال رسالة D-BUS، جارِ الخروج...
 msgid "Unable to register object %s"
 msgstr "تعذذر تسجيل الكائن %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "محاكي طرفية X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "فريق عرب آيز للترجمة http://www.arabeyes.org :\n"
 "خالد حسني\t<khaledhosny@eglug.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "تعذّر فتح متصفح الوثائق"
 
@@ -377,11 +377,11 @@ msgstr "يحتاج الخيار \"--execute/-x\" لتحديد الأمر الذ�
 msgid "Unknown option \"%s\""
 msgstr "خيار مجهول \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "كل الملفات"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "ملفات صور"
 
@@ -502,16 +502,16 @@ msgstr "المحتويات"
 msgid "Unable to determine your login shell."
 msgstr "تعذّر تحديد صدفك ولوجك."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "فشل تنفيذ الإبن"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "بدون عنوان"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "فشل تنفيذ الإبن"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "اغلق هذا اللسان"
 
@@ -840,11 +840,12 @@ msgstr "لا _تسألني ثانية"
 msgid "Window Title|Set Title"
 msgstr ""
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>العنوان:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "العنوان"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr ""
 
@@ -1386,6 +1387,9 @@ msgstr "_حدِّث سجلّات utmp/wtmp عند إطلاق أمر"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>العنوان:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "الإستخدام: Terminal [OPTION...]"

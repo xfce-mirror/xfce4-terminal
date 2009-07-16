@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-02-21 14:25+0200\n"
 "Last-Translator: Stavros Giannouris <stavrosg@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -373,16 +373,16 @@ msgstr "Ο δίαυλος μηνυμάτων D-BUS αποσυνδέθηκε, έ�
 msgid "Unable to register object %s"
 msgstr "Δεν ήταν δυνατή η εγγραφή του αντικειμένου %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Προσομοίωση τερματικού X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Σταύρος Γιαννούρης <stavrosg@serverhive.com>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Το άνοιγμα του αναγνώστη τεκμηρίωσης απέτυχε"
 
@@ -491,11 +491,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Άγνωστη επιλογή \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Όλα τα αρχεία"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Αρχεία εικόνων"
 
@@ -616,16 +616,16 @@ msgstr "Περιεχόμενα"
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου σας."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
@@ -956,11 +956,12 @@ msgstr "Να _μην ξαναγίνει η ερώτηση"
 msgid "Window Title|Set Title"
 msgstr "Ορισμός τίτλου"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Τίτλος:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Τίτλος"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Εισάγετε τον τίτλο για την τρέχουσα καρτέλα"
 
@@ -1517,6 +1518,9 @@ msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτε�
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "δευτερόλεπτα"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Τίτλος:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Χρήση: Terminal [ΟΡΙΣΜΑ...]"

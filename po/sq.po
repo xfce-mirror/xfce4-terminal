@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-11-04 22:24+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
@@ -351,16 +351,16 @@ msgstr "Bus mesazhesh D-BUS i shkëputur, po dilet...\n"
 msgid "Unable to register object %s"
 msgstr "I pazoti të regjistrojë objektin %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulues Terminali X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "kredite përkthyesish"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Dështoi në hapjen e shfletuesit të dokumentacionit"
 
@@ -464,11 +464,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Mundësi e panjohur \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Tërë Kartelat"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Kartela Pamje"
 
@@ -589,16 +589,16 @@ msgstr "Përmbajtje"
 msgid "Unable to determine your login shell."
 msgstr "I pazoti të përcaktojë shell tuajin për hyrje."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Dështoi në përmbushjen e pjellës"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Dështoi në përmbushjen e pjellës"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Mbylle këtë skedë"
 
@@ -936,11 +936,12 @@ msgstr "Mos _më pyet sërish"
 msgid "Window Title|Set Title"
 msgstr "Titull Dritareje|Titull Grupi"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titull</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Tjegullëzuar"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Jepni titullin për skedën e çastit të terminalit"
 
@@ -1501,6 +1502,9 @@ msgstr "_Përditëso regjistrime utmp/wtmp kur niset urdhri"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titull</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Përdorim: Terminal [MUNDËSI...]"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-04-29 20:44+0200\n"
 "Last-Translator: Dotan Kamber <kamberd@yahoo.com>\n"
 "Language-Team: Hebrew\n"
@@ -349,16 +349,16 @@ msgstr "ערוץ ההודעות של D-BUS מנותק, יוצא...\n"
 msgid "Unable to register object %s"
 msgstr "אין אפשרות לרשום אובייקט %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "מדמה מסוף X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "תודות למתרגם (%s)"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "אין אפשרות לפתוח את מציג התיעוד"
 
@@ -461,11 +461,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Unknown option \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "כל הקבצים"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "קבצי תמונות"
 
@@ -586,16 +586,16 @@ msgstr "תוכן"
 msgid "Unable to determine your login shell."
 msgstr "אין אפשרות לקבוע את מעטפת הכניסה שלך"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "אין אפשרות להריץ תהליך-בן"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "ללא שם"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "אין אפשרות להריץ תהליך-בן"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "סגור כרטיסייה זו"
 
@@ -929,11 +929,12 @@ msgstr "_אל תשאל שנית"
 msgid "Window Title|Set Title"
 msgstr "כותרת חלון|בחירת כותרת"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>כותרת:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "כותרת"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "הזן כותרת עבור כרטיסיית המסוף הנוכחית"
 
@@ -1480,6 +1481,9 @@ msgstr "_עדכן את רישומי utmp/wtmp כאשר פקודה נשלחת"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>כותרת:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Usage: Terminal [OPTION...]"

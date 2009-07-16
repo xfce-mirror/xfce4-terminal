@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-05-01 19:11+0300\n"
 "Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <rprieditis@gmail.com>\n"
@@ -365,16 +365,16 @@ msgstr "D-BUS ziņa, maģistrāle atvienota, izeju...\n"
 msgid "Unable to register object %s"
 msgstr "Neizdevās piereģistrēt objektu %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X Termināļā emulators"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Tulkotāji"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Neizdevās atvērt dokumentu pārlūku"
 
@@ -472,11 +472,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Nezināma opcija \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Visi faili"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Attēlu faili"
 
@@ -597,16 +597,16 @@ msgstr "Saturs"
 msgid "Unable to determine your login shell."
 msgstr "Neizdevās izpildīt, Jūsu, pieteikšanās čaulu."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Neizdevas izpildīt bērnu"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Bez virsraksta"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Neizdevas izpildīt bērnu"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Aizvērt šo cilni"
 
@@ -943,11 +943,12 @@ msgstr "Nejautāt ma_n vairāk"
 msgid "Window Title|Set Title"
 msgstr "Uzstādīt virsrakstu"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Virsraksts:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Sakrauti"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Ievadiet jauno virsrakstu esošajam termināļa cilnim"
 
@@ -1498,6 +1499,9 @@ msgstr "Atja_unināt utmp/wtmp ierakstus, kad tiek palaista komanda"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "sekundes"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Virsraksts:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Lietojums: Terminal [OPCIJAS...]"

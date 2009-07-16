@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-05-30 15:03+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -346,16 +346,16 @@ msgstr "Deconectare de la magistrala D-BUS, ieșire...\n"
 msgid "Unable to register object %s"
 msgstr "Nu se poate înregistra obiectul %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulator de Terminal X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Mișu Moldovan <dumol@xfce.org>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Nu s-a putut deschide navigatorul documentației"
 
@@ -460,11 +460,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opțiune necunoscută „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Fișierele imagini"
 
@@ -585,16 +585,16 @@ msgstr "Conținut"
 msgid "Unable to determine your login shell."
 msgstr "Nu se poate identifica shell-ul de login"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Nu s-a putut executa comanda"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Fără titlu"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Nu s-a putut executa comanda"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Închide"
 
@@ -933,11 +933,12 @@ msgstr "_Nu mă mai întreba altă dată"
 msgid "Window Title|Set Title"
 msgstr "Alegeți un titlu"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Titlu:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Mozaic"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduceți titlul pentru tabul curent de terminal"
 
@@ -1500,6 +1501,9 @@ msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "secunde"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Titlu:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Utilizare: Terminal [OPȚIUNI...]"

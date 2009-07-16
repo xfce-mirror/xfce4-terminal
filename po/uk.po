@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2008-06-30 18:50+0300\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
@@ -359,16 +359,16 @@ msgstr "Шина повідомлень D-BUS вимкнена, завершен
 msgid "Unable to register object %s"
 msgstr "Не вдається зареєструвати об'єкт %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "X-імітатор терміналу"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr "Максим Дзюманенко <dziumanenko@gmail.com>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Не вдається відкрити програму перегляду документації"
 
@@ -469,11 +469,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Невідомий параметр \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Усі файли"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Файли зображення"
 
@@ -594,16 +594,16 @@ msgstr "Зміст"
 msgid "Unable to determine your login shell."
 msgstr "Не вдається визначити оболонку входу  у систему."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Помилка виконання дочірнього процес"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Без назви"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Помилка виконання дочірнього процес"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Закрити вкладку"
 
@@ -942,11 +942,12 @@ msgstr "_Не питати знову"
 msgid "Window Title|Set Title"
 msgstr "Встановити заголовок вікна"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Заголовок:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Плиткою"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Введіть заголовок поточної вкладки"
 
@@ -1501,6 +1502,9 @@ msgstr "_Оновлювати журнали utmp/wtmp під час запус�
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "секунд"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Заголовок:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Використання: Terminal [ПАРАМЕТР...]"

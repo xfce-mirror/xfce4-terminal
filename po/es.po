@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-06 20:52+0200\n"
+"POT-Creation-Date: 2009-07-16 20:02+0200\n"
 "PO-Revision-Date: 2009-03-19 12:49+0100\n"
 "Last-Translator: Abel Martín <abel.martin.ruiz@gmail.com>\n"
 "Language-Team: Spanish/ES <xfce-i18n@xfce.org>\n"
@@ -387,18 +387,18 @@ msgstr "Bus de mensajes D-BUS desconectado. Finalizando...\n"
 msgid "Unable to register object %s"
 msgstr "Imposible registrar objeto %s"
 
-#: ../terminal/terminal-dialogs.c:77
+#: ../terminal/terminal-dialogs.c:78
 msgid "X Terminal Emulator"
 msgstr "Emulador de terminal para X"
 
-#: ../terminal/terminal-dialogs.c:83
+#: ../terminal/terminal-dialogs.c:84
 msgid "translator-credits"
 msgstr ""
 "Jaime Buffery <nestu@lunar-linux.org>\n"
 "Abel Martín <abel.martin.ruiz@gmail.com>"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:241
+#: ../terminal/terminal-dialogs.c:242
 msgid "Failed to open the documentation browser"
 msgstr "Fallo al abrir el visor de documentación"
 
@@ -508,11 +508,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opción desconocida \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:209
+#: ../terminal/terminal-preferences-dialog.c:210
 msgid "All Files"
 msgstr "Todos los archivos"
 
-#: ../terminal/terminal-preferences-dialog.c:215
+#: ../terminal/terminal-preferences-dialog.c:216
 msgid "Image Files"
 msgstr "Archivos de imagen"
 
@@ -633,16 +633,16 @@ msgstr "Contenidos"
 msgid "Unable to determine your login shell."
 msgstr "Imposible determinar la shell de entrada al sistema"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1138
-msgid "Failed to execute child"
-msgstr "Falló al ejecutar hijo"
-
-#: ../terminal/terminal-screen.c:1396
+#: ../terminal/terminal-screen.c:831 ../terminal/terminal-screen.c:1402
 msgid "Untitled"
 msgstr "Sin título"
 
-#: ../terminal/terminal-screen.c:1733
+#. tell the user that we were unable to execute the command
+#: ../terminal/terminal-screen.c:1144
+msgid "Failed to execute child"
+msgstr "Falló al ejecutar hijo"
+
+#: ../terminal/terminal-screen.c:1740
 msgid "Close this tab"
 msgstr "Cerrar esta pestaña"
 
@@ -981,11 +981,12 @@ msgstr "_No preguntar de nuevo"
 msgid "Window Title|Set Title"
 msgstr "Establecer título"
 
-#: ../terminal/terminal-window.c:1626
-msgid "<b>Title:</b>"
-msgstr "<b>Título:</b>"
+#: ../terminal/terminal-window.c:1625
+#, fuzzy
+msgid "Title:"
+msgstr "Título"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduzca el título para la pestaña actual del terminal"
 
@@ -1550,6 +1551,9 @@ msgstr "_Actualizar registros de utmp/wtmp cuando se ejecuta un comando"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "segundos"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>Título:</b>"
 
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Uso: Terminal [OPCIÓN...]"
