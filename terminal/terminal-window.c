@@ -1256,7 +1256,7 @@ terminal_window_notify_title (TerminalScreen *screen,
   if (screen == window->active)
     {
       title = terminal_screen_get_title (window->active);
-      //gtk_window_set_title (GTK_WINDOW (window), title);
+      gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
     }
 }
@@ -1666,8 +1666,7 @@ GtkWidget*
 terminal_window_new (gboolean           fullscreen,
                      TerminalVisibility menubar,
                      TerminalVisibility borders,
-                     TerminalVisibility toolbars,
-                     gboolean           maximize)
+                     TerminalVisibility toolbars)
 {
   TerminalWindow *window;
   GtkAction      *action;
@@ -1679,10 +1678,6 @@ terminal_window_new (gboolean           fullscreen,
   action = gtk_action_group_get_action (window->action_group, "fullscreen");
   if (fullscreen && gtk_action_is_sensitive (action))
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
-
-  /* maximize */
-  if (maximize)
-    gtk_window_maximize (GTK_WINDOW (window));
 
   /* setup menubar visibility */
   if (G_LIKELY (menubar == TERMINAL_VISIBILITY_DEFAULT))
@@ -1783,24 +1778,6 @@ terminal_window_get_active (TerminalWindow *window)
 {
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
   return window->active;
-}
-
-
-
-/**
- * terminal_window_set_startup_id:
- * @window
- * @startup_id
- **/
-void
-terminal_window_set_startup_id (TerminalWindow *window,
-                                const gchar    *startup_id)
-{
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  terminal_return_if_fail (startup_id != NULL);
-
-  if (IS_STRING (startup_id))
-    gtk_window_set_startup_id (GTK_WINDOW (window), startup_id);
 }
 
 

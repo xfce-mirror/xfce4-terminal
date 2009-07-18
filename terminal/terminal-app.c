@@ -52,8 +52,7 @@ static GtkWidget         *terminal_app_create_window            (TerminalApp    
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
                                                                  TerminalVisibility  borders,
-                                                                 TerminalVisibility  toolbars,
-                                                                 gboolean            maximize);
+                                                                 TerminalVisibility  toolbars);
 static void               terminal_app_new_window               (TerminalWindow     *window,
                                                                  const gchar        *working_directory,
                                                                  TerminalApp        *app);
@@ -192,12 +191,11 @@ terminal_app_create_window (TerminalApp       *app,
                             gboolean           fullscreen,
                             TerminalVisibility menubar,
                             TerminalVisibility borders,
-                            TerminalVisibility toolbars,
-                            gboolean           maximize)
+                            TerminalVisibility toolbars)
 {
   GtkWidget *window;
 
-  window = terminal_window_new (fullscreen, menubar, borders, toolbars, maximize);
+  window = terminal_window_new (fullscreen, menubar, borders, toolbars);
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (terminal_app_window_destroyed), app);
   g_signal_connect (G_OBJECT (window), "new-window",
@@ -269,8 +267,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   window = terminal_app_create_window (app, FALSE,
                                        TERMINAL_VISIBILITY_DEFAULT,
                                        TERMINAL_VISIBILITY_DEFAULT,
-                                       TERMINAL_VISIBILITY_DEFAULT,
-                                       FALSE);
+                                       TERMINAL_VISIBILITY_DEFAULT);
 
   /* set new window position */
   if (x > -1 && y > -1)
@@ -494,13 +491,14 @@ terminal_app_open_window (TerminalApp         *app,
                                        attr->fullscreen,
                                        attr->menubar,
                                        attr->borders,
-                                       attr->toolbars,
-                                       attr->maximize);
+                                       attr->toolbars);
 
   if (attr->role != NULL)
     gtk_window_set_role (GTK_WINDOW (window), attr->role);
   if (attr->startup_id != NULL)
-    terminal_window_set_startup_id (TERMINAL_WINDOW (window), attr->startup_id);
+    gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);
+  if (attr->maximize)
+    gtk_window_maximize (GTK_WINDOW (window));
 
   if (attr->icon != NULL)
     {

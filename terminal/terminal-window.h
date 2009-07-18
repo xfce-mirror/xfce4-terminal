@@ -47,8 +47,7 @@ GType           terminal_window_get_type             (void) G_GNUC_CONST;
 GtkWidget      *terminal_window_new                  (gboolean            fullscreen,
                                                       TerminalVisibility  menubar,
                                                       TerminalVisibility  borders,
-                                                      TerminalVisibility  toolbars,
-                                                      gboolean            maximize);
+                                                      TerminalVisibility  toolbars);
 
 void            terminal_window_add                  (TerminalWindow     *window,
                                                       TerminalScreen     *screen);
@@ -57,9 +56,6 @@ void            terminal_window_remove               (TerminalWindow     *window
                                                       TerminalScreen     *screen);
 
 TerminalScreen *terminal_window_get_active           (TerminalWindow     *window);
-
-void            terminal_window_set_startup_id       (TerminalWindow     *window,
-                                                      const gchar        *startup_id);
 
 GSList         *terminal_window_get_restart_command  (TerminalWindow     *window);
 
