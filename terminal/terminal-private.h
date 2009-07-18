@@ -34,7 +34,7 @@ G_BEGIN_DECLS
 #endif
 
 /* returns true if string contains text */
-#define IS_STRING(string) (string != NULL && *string != '\0')
+#define IS_STRING(string) ((string) != NULL && *(string) != '\0')
 
 /* macro for some debugging */
 #define PRINT_TIME(desc) \
