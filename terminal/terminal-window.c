@@ -1053,7 +1053,9 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
 #define EVENT_IN_ALLOCATION(event,widget) \
   ((widget)->allocation.x <= (event)->x \
-  && (widget)->allocation.x + (widget)->allocation.width >= (event)->x)
+  && (widget)->allocation.x + (widget)->allocation.width >= (event)->x \
+  && (widget)->allocation.y <= (event)->y \
+  && (widget)->allocation.y + (widget)->allocation.height >= (event)->y)
 
 
 

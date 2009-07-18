@@ -241,6 +241,7 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->scrollbar = gtk_vscrollbar_new (VTE_TERMINAL (screen->terminal)->adjustment);
   gtk_box_pack_start (GTK_BOX (screen), screen->scrollbar, FALSE, FALSE, 0);
+  g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (exo_noop_true), NULL);
   gtk_widget_show (screen->scrollbar);
 
   screen->preferences = terminal_preferences_get ();
@@ -1071,13 +1072,18 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
       ellipsize = PANGO_ELLIPSIZE_END;
 
       gtk_misc_set_alignment (GTK_MISC (screen->tab_label), 0.00, 0.50);
+
+      /* reset size request, ellipsize works now */
+      gtk_widget_set_size_request (screen->tab_label, -1, -1);
     }
   else
     {
       angle = position == GTK_POS_LEFT ? 90.0 : 270.0;
       ellipsize = PANGO_ELLIPSIZE_NONE;
-
       gtk_misc_set_alignment (GTK_MISC (screen->tab_label), 0.50, 0.00);
+
+      /* set a minimum height of 30px, because ellipsize does not work */
+      gtk_widget_set_size_request (screen->tab_label, -1, 30);
     }
 
   gtk_label_set_angle (GTK_LABEL (screen->tab_label), angle);
