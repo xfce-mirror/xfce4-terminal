@@ -242,9 +242,6 @@ main (int argc, char **argv)
     }
 #endif /* !HAVE_DBUS */
 
-  /* disable automatic startup notification completion */
-  gtk_window_set_auto_startup_notification (FALSE);
-
   /* initialize Gtk+ */
   gtk_init (&argc, &argv);
 

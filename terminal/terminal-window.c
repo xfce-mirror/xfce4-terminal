@@ -39,6 +39,9 @@
 
 #include <exo/exo.h>
 #include <gdk/gdkkeysyms.h>
+#if defined(GDK_WINDOWING_X11)
+#include <gdk/gdkx.h>
+#endif
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
