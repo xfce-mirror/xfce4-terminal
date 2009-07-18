@@ -85,14 +85,6 @@ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.14.0])
 XDT_CHECK_PACKAGE([VTE], [vte], [0.17.1])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.16.0])
 
-dnl *************************************************
-dnl *** Optional support for startup notification ***
-dnl *************************************************
-XDT_CHECK_OPTIONAL_PACKAGE([LIBSTARTUP_NOTIFICATION],
-                           [libstartup-notification-1.0],
-                           [0.4], [startup-notification],
-                           [startup notification library])
-
 dnl **********************************
 dnl *** Optional support for D-BUS ***
 dnl **********************************

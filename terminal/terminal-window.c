@@ -38,15 +38,7 @@
 #endif
 
 #include <exo/exo.h>
-
 #include <gdk/gdkkeysyms.h>
-#if defined(GDK_WINDOWING_X11)
-#include <gdk/gdkx.h>
-#endif
-
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION
-#include <libsn/sn-launchee.h>
-#endif
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
@@ -83,7 +75,6 @@ enum
 
 static void            terminal_window_dispose                       (GObject                *object);
 static void            terminal_window_finalize                      (GObject                *object);
-static void            terminal_window_show                          (GtkWidget              *widget);
 static void            terminal_window_realize                       (GtkWidget              *widget);
 static gboolean        terminal_window_delete_event                  (GtkWidget              *widget,
                                                                       GdkEventAny            *event);
@@ -194,8 +185,6 @@ struct _TerminalWindow
 {
   GtkWindow            __parent__;
 
-  gchar               *startup_id;
-
   TerminalPreferences *preferences;
   GtkWidget           *preferences_dialog;
 
@@ -275,7 +264,6 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gobject_class->finalize = terminal_window_finalize;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
-  gtkwidget_class->show = terminal_window_show;
   gtkwidget_class->realize = terminal_window_realize;
   gtkwidget_class->window_state_event = terminal_window_state_event;
   gtkwidget_class->delete_event = terminal_window_delete_event;
@@ -456,50 +444,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->ui_manager));
 
-  g_free (window->startup_id);
-
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
-}
-
-
-
-static void
-terminal_window_show (GtkWidget *widget)
-{
-#if defined(GDK_WINDOWING_X11) && defined(HAVE_LIBSTARTUP_NOTIFICATION)
-  SnLauncheeContext *sn_context = NULL;
-  TerminalWindow    *window = TERMINAL_WINDOW (widget);
-  GdkScreen         *screen;
-  SnDisplay         *sn_display = NULL;
-
-  if (!GTK_WIDGET_REALIZED (widget))
-    gtk_widget_realize (widget);
-
-  if (window->startup_id != NULL)
-    {
-      screen = gtk_window_get_screen (GTK_WINDOW (window));
-
-      sn_display = sn_display_new (GDK_SCREEN_XDISPLAY (screen),
-                                   (SnDisplayErrorTrapPush) gdk_error_trap_push,
-                                   (SnDisplayErrorTrapPop) gdk_error_trap_pop);
-
-      sn_context = sn_launchee_context_new (sn_display,
-                                            gdk_screen_get_number (screen),
-                                            window->startup_id);
-      sn_launchee_context_setup_window (sn_context, GDK_WINDOW_XWINDOW (widget->window));
-    }
-#endif
-
-  (*GTK_WIDGET_CLASS (terminal_window_parent_class)->show) (widget);
-
-#if defined(GDK_WINDOWING_X11) && defined(HAVE_LIBSTARTUP_NOTIFICATION)
-  if (G_LIKELY (sn_context != NULL))
-    {
-      sn_launchee_context_complete (sn_context);
-      sn_launchee_context_unref (sn_context);
-      sn_display_unref (sn_display);
-    }
-#endif
 }
 
 
@@ -1308,7 +1253,7 @@ terminal_window_notify_title (TerminalScreen *screen,
   if (screen == window->active)
     {
       title = terminal_screen_get_title (window->active);
-      gtk_window_set_title (GTK_WINDOW (window), title);
+      //gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
     }
 }
@@ -1845,14 +1790,14 @@ terminal_window_get_active (TerminalWindow *window)
  * @startup_id
  **/
 void
-terminal_window_set_startup_id (TerminalWindow     *window,
-                                const gchar        *startup_id)
+terminal_window_set_startup_id (TerminalWindow *window,
+                                const gchar    *startup_id)
 {
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (startup_id != NULL);
 
-  g_free (window->startup_id);
-  window->startup_id = g_strdup (startup_id);
+  if (IS_STRING (startup_id))
+    gtk_window_set_startup_id (GTK_WINDOW (window), startup_id);
 }
 
 
