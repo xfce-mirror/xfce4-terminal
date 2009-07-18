@@ -202,7 +202,7 @@ terminal_app_create_window (TerminalApp       *app,
                     G_CALLBACK (terminal_app_new_window), app);
   g_signal_connect (G_OBJECT (window), "new-window-with-screen",
                     G_CALLBACK (terminal_app_new_window_with_terminal), app);
-  app->windows = g_slist_append (app->windows, window);
+  app->windows = g_slist_prepend (app->windows, window);
 
   return window;
 }
