@@ -43,8 +43,6 @@ struct _TerminalShortcutEditorClass
 
 GType      terminal_shortcut_editor_get_type  (void) G_GNUC_CONST;
 
-GtkWidget *terminal_shortcut_editor_new       (void);
-
 G_END_DECLS
 
 #endif /* !__TERMINAL_SHORTCUT_EDITOR_H__ */

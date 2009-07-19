@@ -170,7 +170,7 @@ error:
       G_CALLBACK (terminal_preferences_dialog_reset_compat), dialog);
 
   /* add shortcuts editor */
-  editor = terminal_shortcut_editor_new ();
+  editor = g_object_new (TERMINAL_TYPE_SHORTCUT_EDITOR, NULL);
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "editor-container");
   terminal_return_if_fail (G_IS_OBJECT (object));
   gtk_container_add (GTK_CONTAINER (object), editor);

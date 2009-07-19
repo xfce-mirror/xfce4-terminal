@@ -127,7 +127,7 @@ terminal_app_init (TerminalApp *app)
   terminal_app_update_accels (app);
 
   /* connect the accel map */
-  app->accel_map = terminal_accel_map_new ();
+  app->accel_map = g_object_new (TERMINAL_TYPE_ACCEL_MAP, NULL);
 }
 
 
@@ -423,19 +423,6 @@ terminal_app_find_screen (const gchar *display_name)
 
 
 /**
- * terminal_app_new:
- *
- * Return value :
- **/
-TerminalApp*
-terminal_app_new (void)
-{
-  return g_object_new (TERMINAL_TYPE_APP, NULL);
-}
-
-
-
-/**
  * terminal_app_process:
  * @app
  * @argv
@@ -517,7 +504,7 @@ terminal_app_open_window (TerminalApp         *app,
 
   for (lp = attr->tabs; lp != NULL; lp = lp->next)
     {
-      terminal = terminal_screen_new ();
+      terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
       tab_attr = lp->data;
       if (tab_attr->command != NULL)

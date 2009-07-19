@@ -53,8 +53,6 @@ typedef enum   _TerminalError    TerminalError;
 
 GType        terminal_app_get_type            (void) G_GNUC_CONST;
 
-TerminalApp *terminal_app_new                 (void);
-
 gboolean     terminal_app_process             (TerminalApp        *app,
                                                gchar             **argv,
                                                gint                argc,

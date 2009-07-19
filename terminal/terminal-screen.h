@@ -38,8 +38,6 @@ typedef struct _TerminalScreen      TerminalScreen;
 
 GType        terminal_screen_get_type                     (void) G_GNUC_CONST;
 
-GtkWidget   *terminal_screen_new                          (void);
-
 void         terminal_screen_launch_child                 (TerminalScreen *screen);
 
 void         terminal_screen_set_custom_command           (TerminalScreen *screen,

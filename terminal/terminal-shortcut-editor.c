@@ -511,18 +511,3 @@ terminal_shortcut_editor_notify (TerminalPreferences    *preferences,
 
   g_free (accel);
 }
-
-
-
-/**
- * terminal_shortcut_editor_new:
- *
- * Return value :
- **/
-GtkWidget*
-terminal_shortcut_editor_new (void)
-{
-  return g_object_new (TERMINAL_TYPE_SHORTCUT_EDITOR, NULL);
-}
-
-

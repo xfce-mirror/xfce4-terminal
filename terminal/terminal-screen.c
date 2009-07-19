@@ -223,11 +223,8 @@ static void
 terminal_screen_init (TerminalScreen *screen)
 {
   screen->working_directory = g_get_current_dir ();
-  screen->custom_title = NULL;
-  screen->last_size_change = 0;
-  screen->activity_timeout_id = 0;
 
-  screen->terminal = terminal_widget_new ();
+  screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_object_connect (G_OBJECT (screen->terminal),
                     "signal::child-exited", G_CALLBACK (terminal_screen_vte_child_exited), screen,
                     "signal::eof", G_CALLBACK (terminal_screen_vte_eof), screen,
@@ -1095,19 +1092,6 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
   gtk_orientable_set_orientation (GTK_ORIENTABLE (box),
     angle == 0.0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
 #endif
-}
-
-
-
-/**
- * terminal_screen_new:
- *
- * Return value :
- **/
-GtkWidget*
-terminal_screen_new (void)
-{
-  return g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 }
 
 

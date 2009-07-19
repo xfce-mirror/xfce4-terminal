@@ -772,16 +772,3 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
         }
     }
 }
-
-
-
-/**
- * terminal_widget_new:
- *
- * Return value:
- **/
-GtkWidget*
-terminal_widget_new (void)
-{
-  return g_object_new (TERMINAL_TYPE_WIDGET, NULL);
-}

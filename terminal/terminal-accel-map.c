@@ -208,16 +208,3 @@ terminal_accel_map_changed (GtkAccelMap      *object,
     }
   g_free (property);
 }
-
-
-
-/**
- * terminal_accel_map_new:
- *
- * Return value :
- **/
-TerminalAccelMap*
-terminal_accel_map_new (void)
-{
-  return g_object_new (TERMINAL_TYPE_ACCEL_MAP, NULL);
-}

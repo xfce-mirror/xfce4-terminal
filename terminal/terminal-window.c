@@ -314,7 +314,6 @@ terminal_window_init (TerminalWindow *window)
   GtkRcStyle     *style;
 
   window->preferences = terminal_preferences_get ();
-  window->active = NULL;
 
   /* The Terminal size needs correction when the font name or the scrollbar
    * visibility is changed.
@@ -1270,7 +1269,7 @@ terminal_window_action_new_tab (GtkAction       *action,
   const gchar *directory;
   GtkWidget   *terminal;
 
-  terminal = terminal_screen_new ();
+  terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
   if (G_LIKELY (window->active != NULL))
     {
@@ -1423,6 +1422,8 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
 {
   GtkAction *action_edit;
   GtkWidget *vbox;
+  
+  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
 
   action_edit = gtk_action_group_get_action (window->action_group,
                                              "edit-toolbars");
@@ -1433,7 +1434,8 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
         {
           vbox = gtk_bin_get_child (GTK_BIN (window));
 
-          window->toolbars = terminal_toolbars_view_new (window->ui_manager);
+          window->toolbars = g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW,
+                                           "ui-manager", window->ui_manager, NULL);
           gtk_box_pack_start (GTK_BOX (vbox), window->toolbars, FALSE, FALSE, 0);
           gtk_box_reorder_child (GTK_BOX (vbox), window->toolbars, 1);
           gtk_widget_show (window->toolbars);

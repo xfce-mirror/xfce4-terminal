@@ -88,24 +88,6 @@ terminal_toolbars_view_edit_done (ExoToolbarsEditorDialog *dialog,
 
 
 /**
- * terminal_toolbars_view_new:
- * @ui_manager    : The #GtkUIManager to use for this toolbar.
- *
- * Return value   : A new #TerminalToolbarsView.
- **/
-GtkWidget*
-terminal_toolbars_view_new (GtkUIManager *ui_manager)
-{
-  terminal_return_val_if_fail (GTK_IS_UI_MANAGER (ui_manager), NULL);
-
-  return g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW,
-                       "ui-manager", ui_manager,
-                       NULL);
-}
-
-
-
-/**
  * terminal_toolbars_view_edit:
  * @toolbar : A #TerminalToolbarsView.
  **/

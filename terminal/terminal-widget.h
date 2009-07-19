@@ -50,7 +50,6 @@ typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
 GType      terminal_widget_get_type (void) G_GNUC_CONST;
-GtkWidget *terminal_widget_new      (void);
 
 G_END_DECLS
 

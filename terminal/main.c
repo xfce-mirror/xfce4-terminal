@@ -255,7 +255,7 @@ main (int argc, char **argv)
   /* set default window icon */
   gtk_window_set_default_icon_name ("Terminal");
 
-  app = terminal_app_new ();
+  app = g_object_new (TERMINAL_TYPE_APP, NULL);
 
 #ifdef HAVE_DBUS
   if (!options->disable_server)
