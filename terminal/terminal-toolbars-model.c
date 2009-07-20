@@ -30,10 +30,10 @@
 
 
 
-static void     terminal_toolbars_model_finalize      (GObject                    *object);
-static void     terminal_toolbars_model_queue_sync    (TerminalToolbarsModel      *model);
-static gboolean terminal_toolbars_model_sync          (TerminalToolbarsModel      *model);
-static void     terminal_toolbars_model_sync_destroy  (TerminalToolbarsModel      *model);
+static void     terminal_toolbars_model_finalize      (GObject               *object);
+static void     terminal_toolbars_model_queue_sync    (TerminalToolbarsModel *model);
+static gboolean terminal_toolbars_model_sync          (gpointer               user_data);
+static void     terminal_toolbars_model_sync_destroy  (gpointer               user_data);
 
 
 
@@ -131,19 +131,18 @@ terminal_toolbars_model_queue_sync (TerminalToolbarsModel *model)
 {
   if (G_LIKELY (model->sync_id == 0))
     {
-      model->sync_id = g_timeout_add_full (G_PRIORITY_LOW, 1000,
-                                           (GSourceFunc) terminal_toolbars_model_sync,
-                                           model,
-                                           (GDestroyNotify) terminal_toolbars_model_sync_destroy);
+      model->sync_id = g_timeout_add_seconds_full (G_PRIORITY_LOW, 1, terminal_toolbars_model_sync,
+                                                   model, terminal_toolbars_model_sync_destroy);
     }
 }
 
 
 
 static gboolean
-terminal_toolbars_model_sync (TerminalToolbarsModel *model)
+terminal_toolbars_model_sync (gpointer user_data)
 {
-  gchar *file;
+  TerminalToolbarsModel *model = TERMINAL_TOOLBARS_MODEL (user_data);
+  gchar                 *file;
 
   file = xfce_resource_save_location (XFCE_RESOURCE_DATA, "Terminal/Terminal-toolbars.ui", TRUE);
   exo_toolbars_model_save_to_file (EXO_TOOLBARS_MODEL (model), file, NULL);
@@ -155,9 +154,9 @@ terminal_toolbars_model_sync (TerminalToolbarsModel *model)
 
 
 static void
-terminal_toolbars_model_sync_destroy (TerminalToolbarsModel *model)
+terminal_toolbars_model_sync_destroy (gpointer user_data)
 {
-  model->sync_id = 0;
+  TERMINAL_TOOLBARS_MODEL (user_data)->sync_id = 0;
 }
 
 
@@ -175,8 +174,7 @@ terminal_toolbars_model_get_default (void)
   if (G_UNLIKELY (model == NULL))
     {
       model = g_object_new (TERMINAL_TYPE_TOOLBARS_MODEL, NULL);
-      g_object_add_weak_pointer (G_OBJECT (model),
-                                 (gpointer) &model);
+      g_object_add_weak_pointer (G_OBJECT (model), (gpointer) &model);
     }
   else
     {

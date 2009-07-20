@@ -244,7 +244,7 @@ static const GtkActionEntry action_entries[] =
 
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
-  { "show-menubar", TERMINAL_STOCK_SHOWMENU, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), TRUE, },
+  { "show-menubar", TERMINAL_STOCK_SHOWMENU, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
   { "show-toolbars", NULL, N_ ("Show _Toolbars"), NULL, N_ ("Show/hide the toolbars"), G_CALLBACK (terminal_window_action_show_toolbars), FALSE, },
   { "show-borders", TERMINAL_STOCK_SHOWBORDERS, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
   { "fullscreen", GTK_STOCK_FULLSCREEN, N_ ("_Fullscreen"), NULL, N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
@@ -341,20 +341,12 @@ terminal_window_init (TerminalWindow *window)
   gtk_ui_manager_insert_action_group (window->ui_manager, window->action_group, 0);
   gtk_ui_manager_add_ui_from_string (window->ui_manager, terminal_window_ui, terminal_window_ui_length, NULL);
 
-
   accel_group = gtk_ui_manager_get_accel_group (window->ui_manager);
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
   vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
   gtk_widget_show (vbox);
-
-  window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
-  if (G_LIKELY (window->menubar != NULL))
-    {
-      gtk_box_pack_start (GTK_BOX (vbox), window->menubar, FALSE, FALSE, 0);
-      gtk_widget_show (window->menubar);
-    }
 
   /* get some preferences */
   g_object_get (G_OBJECT (window->preferences),
@@ -1212,7 +1204,7 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
 
 
 
-static GtkWidget*
+static GtkWidget *
 terminal_window_get_context_menu (TerminalScreen  *screen,
                                   TerminalWindow  *window)
 {
@@ -1403,13 +1395,26 @@ static void
 terminal_window_action_show_menubar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
-  if (G_UNLIKELY (window->menubar == NULL))
-    return;
+  GtkWidget *vbox;
+
+  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
 
   if (gtk_toggle_action_get_active (action))
-    gtk_widget_show (window->menubar);
-  else
-    gtk_widget_hide (window->menubar);
+    {
+      if (G_LIKELY (window->menubar == NULL))
+        {
+          vbox = gtk_bin_get_child (GTK_BIN (window));
+          window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
+          gtk_box_pack_start (GTK_BOX (vbox), window->menubar, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (vbox), window->menubar, 0);
+        }
+
+      gtk_widget_show (window->menubar);
+    }
+  else if (window->menubar != NULL)
+    {
+      gtk_widget_hide (window->menubar);
+    }
 
   terminal_window_set_size (window);
 }
@@ -1422,37 +1427,33 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
 {
   GtkAction *action_edit;
   GtkWidget *vbox;
-  
-  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
 
-  action_edit = gtk_action_group_get_action (window->action_group,
-                                             "edit-toolbars");
+  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
+  terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->action_group));
 
   if (gtk_toggle_action_get_active (action))
     {
       if (window->toolbars == NULL)
         {
+          /* this is a bug in exo, fixed in revision 30359 */
+          gtk_ui_manager_ensure_update (window->ui_manager);
+
           vbox = gtk_bin_get_child (GTK_BIN (window));
-
-          window->toolbars = g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW,
-                                           "ui-manager", window->ui_manager, NULL);
+          window->toolbars = g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW, "ui-manager", window->ui_manager, NULL);
           gtk_box_pack_start (GTK_BOX (vbox), window->toolbars, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (vbox), window->toolbars, 1);
-          gtk_widget_show (window->toolbars);
-
-          g_object_add_weak_pointer (G_OBJECT (window->toolbars),
-                                     (gpointer) &window->toolbars);
+          gtk_box_reorder_child (GTK_BOX (vbox), window->toolbars, window->menubar != NULL ? 1 : 0);
         }
 
-      gtk_action_set_sensitive (action_edit, TRUE);
+      gtk_widget_show (window->toolbars);
     }
-  else
+  else if (window->toolbars != NULL)
     {
-      if (window->toolbars != NULL)
-        gtk_widget_destroy (window->toolbars);
-
-      gtk_action_set_sensitive (action_edit, FALSE);
+      gtk_widget_destroy (window->toolbars);
+      window->toolbars = NULL;
     }
+
+  action_edit = gtk_action_group_get_action (window->action_group, "edit-toolbars");
+  gtk_action_set_sensitive (action_edit, window->toolbars != NULL);
 
   terminal_window_set_size (window);
 }
