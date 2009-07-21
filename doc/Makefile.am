@@ -1,13 +1,13 @@
-SUBDIRS =							\
-	C								\
-	da								\
-	fr								\
+SUBDIRS = \
+	C \
+	da \
+	fr \
 	ja
 
-cssdir = $(datadir)/doc/Terminal
-css_DATA =							\
+cssdir = $(docdir)
+css_DATA = \
 	terminal.css
 
-EXTRA_DIST = 						\
-	$(css_DATA)					\
+EXTRA_DIST = \
+	$(css_DATA) \
 	terminal.xsl

@@ -1,7 +1,7 @@
-SUBDIRS =								\
+SUBDIRS = \
 	images
 
-TARGET_DIR = $(datadir)/doc/Terminal/C
+TARGET_DIR = $(docdir)/C
 STYLESHEET = ../terminal.xsl
 DOCUMENT = Terminal.xml
 
@@ -35,15 +35,15 @@ maintainer-clean-local: clean
 	(cd $(srcdir) && rm -rf html)
 
 install-data-local:
-	installfiles=`echo $(srcdir)/html/*`;				\
-	if test "$$installfiles" = '$(srcdir)/html/*'; then		\
-		echo "--- Nothing to install";				\
-	else								\
-		$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR);		\
-		for file in $$installfiles; do				\
-			echo "--- Installing "$$file;			\
-			$(INSTALL_DATA) $$file $(DESTDIR)$(TARGET_DIR);	\
-		done;							\
+	installfiles=`echo $(srcdir)/html/*`; \
+	if test "$$installfiles" = '$(srcdir)/html/*'; then \
+		echo "--- Nothing to install"; \
+	else \
+		$(mkinstalldirs) $(DESTDIR)$(TARGET_DIR); \
+		for file in $$installfiles; do \
+			echo "--- Installing "$$file; \
+			$(INSTALL_DATA) $$file $(DESTDIR)$(TARGET_DIR); \
+		done; \
 	fi
 
 uninstall-local:

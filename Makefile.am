@@ -19,7 +19,7 @@ libexec_SCRIPTS =							\
 
 TerminalHelp: TerminalHelp.in Makefile
 	rm -f TerminalHelp.gen TerminalHelp
-	sed -e "s,\@datadir\@,$(datadir),g" 				\
+	sed -e "s,\@docdir\@,$(docdir),g" 				\
 		< $(srcdir)/TerminalHelp.in				\
 		> TerminalHelp.gen
 	mv TerminalHelp.gen TerminalHelp
