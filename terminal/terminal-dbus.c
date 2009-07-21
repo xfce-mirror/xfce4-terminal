@@ -192,6 +192,7 @@ terminal_dbus_register_service (TerminalApp *app,
 
   /* register DBus connection with GLib main loop */
   dbus_connection_setup_with_g_main (connection, NULL);
+  dbus_connection_set_exit_on_disconnect (connection, FALSE);
 
   if (dbus_bus_request_name (connection, TERMINAL_DBUS_SERVICE, 0, &derror) < 0)
     {
