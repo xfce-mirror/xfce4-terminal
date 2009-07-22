@@ -761,9 +761,8 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
     {
       /* remove merge id */
       gtk_ui_manager_remove_ui (window->ui_manager, window->gomenu_merge_id);
-      window->gomenu_merge_id = 0;
 
-      /* drop all the previous actions from the action group */
+      /* drop all the old accels from the action group */
       for (n = 1; n < 100 /* arbitrary */; n++)
         {
           g_snprintf (name, sizeof (name), "accel-switch-to-tab%d", n);
@@ -775,13 +774,11 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
         }
     }
 
-  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-
   /* create a new merge id */
-  if (G_LIKELY (npages > 0))
-    window->gomenu_merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
+  window->gomenu_merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
 
   /* walk the tabs */
+  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   for (n = 0; n < npages; n++)
     {
       page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n);
