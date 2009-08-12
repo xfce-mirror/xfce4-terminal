@@ -767,10 +767,9 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
         {
           g_snprintf (name, sizeof (name), "accel-switch-to-tab%d", n);
           action = gtk_action_group_get_action (window->action_group, name);
-          if (G_LIKELY (action != NULL))
-            gtk_action_group_remove_action (window->action_group, action);
-          else
+          if (G_UNLIKELY (action == NULL))
             break;
+          gtk_action_group_remove_action (window->action_group, action);
         }
     }
 
