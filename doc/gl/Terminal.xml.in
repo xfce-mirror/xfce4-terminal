@@ -1,0 +1,1550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "May 2008">
+<!ENTITY version "@PACKAGE_VERSION@">
+<!ENTITY application "@PACKAGE_NAME@">
+]>
+<article id="index" lang="gl">
+
+  <!-- Header -->
+  <articleinfo>
+    <title>Emulador de terminal</title>
+
+    <pubdate>&date;</pubdate>
+
+    <copyright>
+      <year>2003</year>
+      <year>2004</year>
+      <year>2005</year>
+      <year>2006</year>
+      <year>2007</year>
+      <year>2008</year>
+      <holder>os-cillation</holder>
+    </copyright>
+
+    <copyright>
+      <year>2009</year>
+      <holder>Xfce Development Team</holder>
+    </copyright><copyright><year>2009.</year><holder>Leandro Regueiro (leandro.regueiro@gmail.com)</holder></copyright>
+
+    <legalnotice id="legalnotice">
+      <para>
+        Permission is granted to copy, distribute and/or modify this document
+        under the terms of the GNU Free Documentation License, Version 1.1 or
+        any later version published by the Free Software Foundation; with no
+        Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+        Texts. The complete license text is available from the <ulink type="http" url="http://www.gnu.org/">Free Software Foundation</ulink>.
+      </para>
+    </legalnotice>
+
+    <authorgroup>
+      <author>
+        <firstname>Benedikt</firstname>
+        <surname>Meurer</surname>
+        <affiliation>
+          <address><email>benny@xfce.org</email></address>
+          <orgname>os-cillation</orgname>
+          <orgdiv>Desenvolvemento do sistema</orgdiv>
+          <jobtitle>Desenvolvedor de software</jobtitle>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Andrew</firstname>
+        <surname>Conkling</surname>
+        <affiliation>
+          <address><email>andrewski@fr.st</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Nick</firstname>
+        <surname>Schermer</surname>
+        <affiliation>
+          <address><email>nick@xfce.org</email></address>
+          <jobtitle>Xfce Core Developer</jobtitle>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+    <releaseinfo>Este manual describe a versión @PACKAGE_VERSION@ de @PACKAGE_NAME@.</releaseinfo>
+  </articleinfo>
+
+  <sect1 id="intro">
+    <title>Introdución a @PACKAGE_NAME@</title>
+
+    <sect2>
+      <title>Que é un emulador de terminal?</title>
+
+      <para>
+        The UNIX operating system was originally designed as a text-only
+        system, controlled by commands entered with a keyboard. This is known
+        as a command-line interface (CLI). The X Window System, Xfce, and other
+        projects have since added a graphical user interface to UNIX, that's
+        what you are actually using now. But the addition of a graphical user
+        interface doesn't mean that the CLI is dead. The CLI is still around
+        and is frequently the easiest, fastest, and most powerful way to perform
+        a certain task. In fact, power users would be lost without the CLI.
+      </para>
+
+      <para>
+        @PACKAGE_NAME@ is what is known as an X terminal emulator, often referred
+        to as terminal or shell. It provides an equivalent to the old-fashioned
+        text screen on your desktop, but one which can easily share the screen
+        with other graphical applications. Windows users may already be familiar
+        with the MS-DOS Prompt utility, which has the analogous function of
+        offering a DOS command-line under Windows, though one should note that
+        the UNIX CLI offer far more power and ease of use than does DOS.
+      </para>
+
+      <para>
+        @PACKAGE_NAME@ emulates the <application>xterm</application> application
+        developed by the X Consortium. In turn, the <application>xterm</application>
+        application emulates the DEC VT102 terminal and also supports the DEC VT220
+        escape sequences. An escape sequence is a series of characters that start
+        with the <keycap>Esc</keycap> character. @PACKAGE_NAME@ accepts all of the escape
+        sequences that the VT102 and VT220 terminals use for functions such as to
+        position the cursor and to clear the screen.
+      </para>
+    </sect2>
+
+    <sect2>
+      <title>Que fai especial a @PACKAGE_NAME@?</title>
+
+      <para>@PACKAGE_NAME@'s advanced features include a simple configuration interface, the
+      ability to use multiple tabs with terminals within a single window, the possibility
+      to have a pseudo-transparent terminal background, and a compact mode (where both the
+      menubar and the window decorations are hidden) that helps you to save space on your
+      desktop.</para>
+
+      <para>Están dispoñibles as seguintes funcionalidades clave:</para>
+
+      <itemizedlist>
+        <listitem>
+          Multiple tabs per window
+        </listitem>
+        <listitem>Barras de ferramentas personalizables, que se poden cambiar usando un editor gráfico de barras de ferramentas integrado</listitem>
+        <listitem>
+          Ability to configure nearly every aspect of @PACKAGE_NAME@ in the <guilabel>Preferencias</guilabel> dialog plus a
+          bunch of so called <emphasis>opcións ocultas</emphasis>
+        </listitem>
+        <listitem>Boa integración con <ulink url="http://xfce.org/">Ambiente de escritorio Xfce</ulink> en particular, pero tamén con calquera outro escritorio para Linux</listitem>
+        <listitem>Soporte de xestión de sesións</listitem>
+        <listitem>
+          Real multihead support (both MultiScreen and Xinerama mode)
+        </listitem>
+        <listitem>Cumprimento de estándares (consulte o sitio web <ulink url="http://freedesktop.org/">freedesktop.org</ulink>)</listitem>
+        <listitem>
+          <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the overall resource usage
+        </listitem>
+        <listitem>
+          High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink>
+          and <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.
+        </listitem>
+      </itemizedlist>
+
+      <para>Ademais destas funcionalidades clave, @PACKAGE_NAME@ ten tódalas funcionalidades que se agardan dun emulador de terminal moderno.</para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="getting-started">
+    <title>Getting started</title>
+
+    <sect2>
+      <title>Iniciar @PACKAGE_NAME@</title>
+
+      <para>
+        The easiest way to start @PACKAGE_NAME@ is to use the applications menu of your desktop;
+        for Xfce, point your mouse cursor to the desktop, press the right mouse button
+        and choose <menuchoice><guimenu>System</guimenu>
+        <guimenuitem>Terminal</guimenuitem></menuchoice>.
+      </para>
+
+      <para>
+        You can also start @PACKAGE_NAME@ from a command line or from the <guilabel>Application
+        launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap>
+        <keycap>F2</keycap></keycombo>, type
+        <userinput><command>Terminal</command></userinput> and click the button
+        <guibutton>Run</guibutton>.
+      </para>
+    </sect2>
+
+    <sect2>
+      <title>Cando inicia @PACKAGE_NAME@ por primeira vez</title>
+
+      <para>Cando inicia @PACKAGE_NAME@ por primeira vez, a aplicación abre unha ventá de terminal cas opcións predeterminadas.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-first-time.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Exemplo dunha ventá predeterminada de terminal</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>
+        The terminal window displays a command prompt where you can type UNIX
+        commands. The command prompt may vary depending on the configuration of
+        your shell. The cursor is positioned at the command prompt. When you type a
+        UNIX command and press <keycap>Return</keycap>, the computer
+        executes the command. By default, @PACKAGE_NAME@ will use the login shell of the user
+        who starts the application (<filename>/bin/bash</filename> in case of a
+        default Linux installation).
+      </para>
+
+      <para>
+        @PACKAGE_NAME@ sets the following environment variables for the command
+        running inside the terminal window:
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>TERM</varname></term>
+          <listitem>
+            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you
+            can configure the value from the preferences dialog.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>COLORTERM</varname></term>
+          <listitem>
+            <para>Set to <literal>Terminal</literal> by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>DISPLAY</varname></term>
+          <listitem>
+            <para>Set to the X11 display of the terminal by default.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>WINDOWID</varname></term>
+          <listitem>
+            <para>Set to the X11 window identifier of the terminal by default.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Traballar con varias terminais</title>
+
+      <para>
+        @PACKAGE_NAME@ provides a tab feature that enables you to open several terminals
+        within a single window. Each terminal is opened in a separate tab. Click on the
+        appropriate tab to display the terminal in the window. Each tabbed terminal in
+        a window is separate sub-process, so you can use each terminal for a different
+        task.
+      </para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-multiple-tabs.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Exemplo dunha ventá de terminal con lapelas</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Consulte <xref linkend="usage"/> para obter información sobre como abrir unha nova terminal con lapelas.</para>
+
+      <para>
+        You can close a terminal tab by clicking on the close button in the terminal
+        tab header or by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Close
+        Tab</guimenuitem></menuchoice> from the menubar.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="usage">
+    <title>Uso</title>
+
+    <sect2>
+      <title>Abrir e pechar terminais</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>Para abrir unha nova ventá de terminal:</term>
+          <listitem>
+            <para>Seleccione <menuchoice><guimenu>Ficheiro</guimenu><guimenuitem>Abrir Terminal</guimenuitem></menuchoice> (ou prema co botón dereito na ventá de terminal e seleccione <menuchoice><guimenuitem>Abrir Terminal</guimenuitem></menuchoice>).</para>
+            <para>A nova terminal herda o directorio de traballo da súa terminal nai.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Para pechar unha ventá de terminal:</term>
+          <listitem>
+            <para>Seleccione <menuchoice><guimenu>Ficheiro</guimenu><guimenuitem>Pechar ventá</guimenuitem></menuchoice>.</para>
+            <para>This action closes the terminal and terminates any subprocesses that
+            you opened from the terminal. If you close the last terminal window, the
+            @PACKAGE_NAME@ application exits.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Para engadir unha nova terminal con lapelas a unha ventá:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open
+            Tab</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Open Tab</guimenuitem></menuchoice>).</para>
+            <para>The new terminal inherits the working directory from the
+            previously active terminal.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Modificar unha ventá de terminal</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>Para agochar a barra de menú:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>).</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Mostrar unha barra de menú oculta:</term>
+          <listitem>
+            <para>Right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>
+            from the popup menu.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Mostrar ou ocultar as barras de ferramentas:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Personalizar as barras de ferramentas:</term>
+          <listitem>
+            <para>Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Mostrar ou ocultar as decoracións das ventás:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window Borders</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Pasar a pantalla completa unha ventá da terminal</term>
+          <listitem>
+            <para>Seleccione <menuchoice><guimenu>View</guimenu><guimenuitem>Pantalla completa</guimenuitem></menuchoice> na barra de menú (ou prema co botón dereito na ventá da terminal e seleccione <menuchoice><guimenuitem>Pantalla completa</guimenuitem></menuchoice>).</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Para cambiar a aparencia da ventá da terminal:</term>
+          <listitem>
+            <para>See <xref linkend="preferences"/> for information about the options that you choose in
+            the <guilabel>Terminal Preferences</guilabel> dialog to change the appearance and behaviour
+            of the terminal windows. For example, you can change the background color or the location of
+            the scrollbar.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="usage_to-work-with-contents-of-terminal-windows">
+      <title>To work with the contents of terminal windows</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>To scroll through previous commands and output:</term>
+          <listitem>
+            <para>Realice unha das seguintes accións:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>
+                  Use the scrollbar, which is usually displayed on the right side
+                  of each terminal window.
+                </para>
+              </listitem>
+              <listitem>
+                <para>Press the <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>,
+                <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo>,
+                <keycombo><keycap>Shift</keycap><keycap>Up</keycap></keycombo>,
+                <keycombo><keycap>Shift</keycap><keycap>Down</keycap></keycombo>,
+                <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, or
+                <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> keys.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  Use the middle wheel button on your mouse if applicable
+                </para>
+              </listitem>
+            </itemizedlist>
+            <para>
+              @PACKAGE_NAME@ mimics the FreeBSD console when <keycap>Scroll Lock</keycap> is pressed. When scroll lock is
+              active, ordinary input and output from the shell is suspended and you can scroll through
+              the history with <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> and
+              <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> or using the optional
+              scrollbar. Press <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> to activate
+              the scroll lock and <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> to disable
+              it afterwards.
+            </para>
+
+            <para>
+              The number of lines that you can scroll back in the terminal window is
+              determined by the <guilabel>Scrollback</guilabel> setting in the <guilabel>General</guilabel>
+              section of the <guilabel>Terminal Preferences</guilabel> dialog.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Seleccionar e copiar texto:</term>
+          <listitem>
+            <para>Pode seleccionar texto de calquera das seguintes formas:</para>
+            <itemizedlist>
+              <listitem>
+                <para>Para seleccionar un carácter de cada vez, prema no primeiro carácter que desexa seleccionar e arrastre o rato ata o último carácter que desexa seleccionar.</para>
+              </listitem>
+              <listitem>
+                <para>Para seleccionar unha palabra de cada vez, faga dobre clic na primeira palabra que desexa seleccionar e arrastre o rato ata a última palabra que desexa seleccionar.</para>
+              </listitem>
+              <listitem>
+                <para>To select a line at a time, triple-click on the first line that you want to
+                select and drag the mouse to the last line that you want to select.</para>
+              </listitem>
+            </itemizedlist>
+            <para>These actions select all text between the first and last items. For all text selections,
+            @PACKAGE_NAME@ copies the selected text into the clipboard when you release the mouse button. To
+            explicitly copy the selected text, choose <menuchoice><guimenu>Edit</guimenu>
+            <guimenuitem>Copy</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Pegar texto nunha terminal:</term>
+          <listitem>
+            <para>If you previously copied text to the clipboard, you can paste the text into a
+            terminal by performing one of the following actions:</para>
+            <itemizedlist>
+              <listitem>
+                <para>To paste text that you copied by selection only, middle-click at the
+                command prompt. If you do not have a middle mouse button, refer to the X
+                Server documentation for information about how to emulate the middle mouse button.
+                This is equivalent to using the <menuchoice><guimenuitem>Paste Selection</guimenuitem></menuchoice>
+                item from <menuchoice><guimenu>Edit</guimenu></menuchoice> menu.</para>
+              </listitem>
+              <listitem>
+                <para>To paste text that you explicitly copied, choose <menuchoice><guimenu>Edit</guimenu>
+                <guimenuitem>Paste</guimenuitem></menuchoice>.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Para arrastrar un nome de ficheiro a unha ventá de terminal:</term>
+          <listitem>
+            <para>Pode arrastrar un nome de ficheiro a unha terminal dende outra aplicación coma un xestor de ficheiros ou un navegador web. A terminal mostrará a ruta e o nome completo do URI.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To access a hyperlink:</term>
+          <listitem>
+            <para>
+              To access a Uniform Resource Locator (URL) that is displayed in a terminal window,
+              perform the following steps:
+            </para>
+
+            <orderedlist>
+              <listitem>
+                <para>Mover o rato sobre o URL ata que aparece subliñado.</para>
+              </listitem>
+              <listitem>
+                <para>Premer co botón dereito no URL para abrir o menú contextual.</para>
+              </listitem>
+              <listitem>
+                <para>Seleccione <guimenuitem>Abrir ligazón</guimenuitem> no menú contextual para iniciar o seu Navegador Web preferido e mostrar o ficheiro situado no URL.</para>
+              </listitem>
+            </orderedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Escribir unha mensaxe de correo electrónico:</term>
+          <listitem>
+            <para>Para escribirlle unha mensaxe a un enderezo de correo-e que se mostra na ventá da terminal, realice o seguinte:</para>
+
+            <orderedlist>
+              <listitem>
+                <para>Mova o rato por riba do enderezo de correo-e ata que o enderezo apareza subraiado.</para>
+              </listitem>
+              <listitem>
+                <para>Prema co botón dereito no enderezo de correo-e para abrir o menú contextual.</para>
+              </listitem>
+              <listitem>
+                <para>
+                  Choose <guimenuitem>Compose Email</guimenuitem> from the context menu
+                  to compose an email in your preferred Mail Reader.
+                </para>
+              </listitem>
+            </orderedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="set-title">
+      <title>Cambiar o título da terminal</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-set-title.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Definir o título do diálogo</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Para cambiarlle o título á terminal que se mostra actualmente, faga o seguinte:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Choose <menuchoice><guimenu>Terminal</guimenu>
+          <guimenuitem>Set Title...</guimenuitem></menuchoice> or double-click the the terminal
+          tab header.</para>
+        </listitem>
+        <listitem>
+          <para>Introduza o novo título na caixa de texto <guilabel>Título</guilabel>. @PACKAGE_NAME@ aplicará o cambio inmediatamente.</para>
+        </listitem>
+        <listitem>
+          <para>Prema no botón <guilabel>Pechar</guilabel> ou prema a tecla <keycap>Intro</keycap> para pechar o diálogo <guilabel>Definir o título</guilabel>.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>To reset the terminal title to its default behavior, perform the same three steps
+      as described above, but enter an empty title.</para>
+    </sect2>
+
+    <sect2>
+      <title>Recuperar a terminal</title>
+
+      <para>This section provides some advice if you have problems with terminals.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Restaurar o estado da terminal:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Reset</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>To reset the terminal and clear the terminal screen:</term>
+          <listitem>
+            <para>Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Reset and Clear</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        You can also use the shell commands <userinput><command>reset</command></userinput> and
+        <userinput><command>clear</command></userinput> to recover your terminal.
+      </para>
+    </sect2>
+
+    <sect2 id="customize-toolbars">
+      <title>Personalizar as barras de ferramentas</title>
+
+      <para>As already mentioned, @PACKAGE_NAME@ includes support for customizable toolbars. The toolbars
+      are disabled by default, you will have to explicitly enable it. Choose
+      <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice> from
+      the menubar to display the toolbars in the current window. If you want to permanently use
+      the toolbars, see <xref linkend="preferences-appearance"/>.</para>
+
+      <para>Once the toolbars are shown, choose <menuchoice><guimenu>Edit</guimenu>
+      <guimenuitem>Toolbars...</guimenuitem></menuchoice> from the menubar or right-click one of
+      the toolbars and choose <menuchoice><guimenuitem>Customize Toolbar...</guimenuitem></menuchoice> from
+      the context menu. This opens the <guilabel>Toolbar Editor</guilabel> window, which allows you
+      to customize the toolbars in the current terminal window.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-toolbars.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Personalizar as barras de ferramentas</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Just drag an item from the <guilabel>Toolbar Editor</guilabel> window and drop
+      it on a toolbar to add that item to the specific toolbar or drag an item from a toolbar
+      to the <guilabel>Toolbar Editor</guilabel> to remove it from the toolbar. You can add
+      additional toolbars by clicking the button <guibutton>Add a new toolbar</guibutton>
+      and remove toolbars by right-clicking the toolbar and selecting
+      <menuchoice><guimenuitem>Remove Toolbar</guimenuitem></menuchoice> from the context
+      menu. You can also choose a different style for a toolbar from the context menu.</para>
+    </sect2>
+
+    <sect2 id="luit">
+      <title>Cambiar de codificación</title>
+
+      <para>@PACKAGE_NAME@ itself does not (yet) include builtin support for switching encodings
+      on the fly in a terminal session. But since @PACKAGE_NAME@ implements an UTF-8 mode, you
+      can use the <ulink url="http://www.pps.jussieu.fr/~jch/software/luit/">Luit
+      application</ulink> to switch between different character encodings within a terminal
+      session.</para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="preferences">
+    <title>Preferencias</title>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-edit-preferences.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Preferencias</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>To configure @PACKAGE_NAME@, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Preferences...</guimenuitem>
+    </menuchoice> or right-click the terminal area of the window and choose
+    <menuchoice><guimenuitem>Preferences...</guimenuitem></menuchoice>. This will bring up the <guilabel>Terminal
+    Preferences</guilabel> dialog, which allows you to adjust @PACKAGE_NAME@'s behaviour to your needs.</para>
+
+    <sect2 id="preferences-general">
+      <title>Xeral</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-general.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Preferencias xerais</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Título inicial</guilabel></term>
+          <listitem>
+            <para>Use this text box to specify the initial title of terminals.
+            New terminals will have the initial title.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Definir o título dinamicamente</guilabel></term>
+          <listitem>
+            <para>Use this drop-down list to specify how to handle dynamically-set
+            titles, that is, terminal titles set by the commands that run in the
+            terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Run command as login shell</guilabel></term>
+          <listitem>
+            <para>Select this option to force @PACKAGE_NAME@ to run your shell as a
+            login shell when you open new terminals. See the documentation of your
+            shell for details about differences between running it as interactive
+            shell and running it as login shell.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Update utmp/wtmp records when command is launched</guilabel></term>
+          <listitem>
+            <para>Select this option to insert a new entry in the utmp and wtmp records
+            when a new terminal is opened.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scroll on output</guilabel></term>
+          <listitem>
+            <para>Select this option to enable you to scroll the output on the terminal
+            while the terminal continues to display more output from a command.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scroll on keystroke</guilabel></term>
+          <listitem>
+            <para>Select this option to enable you to press any key on the keyboard to
+            scroll down the terminal window to the command prompt. This action only
+            applies if you scrolled up the terminal window and you want to return
+            to the command prompt.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>A barra de desprazamento é</guilabel></term>
+          <listitem>
+            <para>Use this drop-down list to specify the position of the scrollbar in
+            terminal windows.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Scrollback</guilabel></term>
+          <listitem>
+            <para>Use this spin box to specify the number of lines that you can scroll
+            back using the scrollbar or the mouse wheel. For example, if you specify
+            1000 you can scroll back the last 1000 lines displayed in the terminal.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="preferences-appearance">
+      <title>Aparencia</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-appearance.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Preferencias de aparencia</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Tipo de letra</guilabel></term>
+          <listitem>
+            <para>
+              Click on the button to select the font type and font size you want to
+              use for the terminal.
+            </para>
+
+            <para>
+              Use the option <guilabel>Enable anti-aliasing for the terminal font</guilabel>
+              to control whether you want @PACKAGE_NAME@ to use anti-aliasing when rendering text in
+              the terminals. Disabling this option can impressively speed up terminal rendering
+              performance and reduce the overall system load on slow systems.
+            </para>
+
+            <para>
+              The option <guilabel>Allow bold text</guilabel> controls whether Terminal
+              allows the application running inside to use bold text or not. If disabled,
+              all text will appear in the selected font, else certain text will appear in
+              bold face.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Fondo</guilabel></term>
+          <listitem>
+            <para>Select a background for the terminal window. The options are as follows:</para>
+
+            <itemizedlist>
+              <listitem>
+                <guilabel>None (use solid color)</guilabel>
+                <para>Select this option to use the background color that is specified
+                in the <guilabel>Colors</guilabel> section as the background color for
+                the terminal.</para>
+              </listitem>
+              <listitem>
+                <guilabel>Imaxe de fondo</guilabel>
+                <para>Select this option to use an image file as the background for the
+                terminal. Use the <guilabel>Image file</guilabel> entry box to
+                specify the location and name of the image file. Alternatively, click on
+                the button besides the entry box to search for and select the image
+                file.</para>
+                <para>Use the <guilabel>Style</guilabel> option to control the appearance
+                of the background image. @PACKAGE_NAME@ supports tiling, centering, scaling and
+                stretching background images.</para>
+              </listitem>
+              <listitem>
+                <guilabel>Fondo transparente</guilabel>
+                <para>Select this option to use a transparent background for the terminal.</para>
+              </listitem>
+            </itemizedlist>
+
+            <para>If you have selected <guilabel>Background image</guilabel> or <guilabel>Transparent
+            background</guilabel>, you can use the slider <guilabel>Shade transparent or image
+            background</guilabel> to shade or dim the background of the terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Display menubar in new windows</guilabel></term>
+          <listitem>
+            <para>Seleccione esta opción para mostrar por defecto a barra de menú nas novas ventás de terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Display toolbars in new windows</guilabel></term>
+          <listitem>
+            <para>Seleccione esta opción para mostrar por defecto barras de ferramentas nas novas ventás de terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Mostrar bordos arredor das novas ventás</guilabel></term>
+          <listitem>
+            <para>Seleccione esta opción para mostrar por defecto as decoracións das ventás nas novas ventás de terminal.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Cores</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-colors.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Preferencias de cor</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Foreground and Background</guilabel></term>
+          <listitem>
+            <para>The two buttons labelled with <guilabel>Text and cursor color</guilabel> allow
+            to select the color @PACKAGE_NAME@ uses to draw normal text and the color for the text
+            cursor. An application running inside the terminal can also request a different color
+            chosen from the palette below to draw text.</para>
+
+            <para>Click on the <guilabel>Background color</guilabel> button to choose the
+            default background for terminal windows. This color is also used in background
+            tinting when <guilabel>Transparent background</guilabel> or <guilabel>Background
+            image</guilabel> is selected.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Selección de texto</guilabel></term>
+          <listitem>
+            <para>Seleccione a cor de fondo a usar ao seleccionar texto nunha ventá de terminal. Tamén pode especificar unha cor predeterminada ou fixar a cor predeterminada.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Paleta</guilabel></term>
+          <listitem>
+            <para>The terminal provides the application running inside with a palette of
+            16 colors. You can customize these colors using the 16 color buttons.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Atallos</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-shortcuts.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Preferencias de atallos</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Teclas de atallo</guilabel></term>
+          <listitem>
+            <para>The <guilabel>Shortcut keys</guilabel> section of the dialog lists the
+            shortcut keys that are defined for each menu item. The shortcut keys enable
+            you to use the keyboard to choose a menu item rather than use the mouse. A
+            shortcut key can be any non-modifier key or any combination of a non-modifier
+            key and several modifier keys, where modifier keys are <keycap>Alt</keycap>,
+            <keycap>Ctrl</keycap> and the like.</para>
+
+            <screenshot>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
+                </imageobject>
+
+                <textobject>
+                  <phrase>Compose shortcut</phrase>
+                </textobject>
+              </mediaobject>
+            </screenshot>
+
+            <para>To change a shortcut key for a menu item, double click the item in the list
+            and press the key combination you want to set. To disable a shortcut for a specific
+            menu item, double click the menu item in the list and click the button
+            <guilabel>Clear</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>Disable all menu access keys (such as Alt+f)</guilabel></term>
+          <listitem>
+            <para>Select this option to disable the access keys that are defined to
+            enable you to use keyboard instead of the mouse to select a menu item.
+            Each access key is identified by an underlined letter on a menu or dialog
+            option. In some cases, you must press the <keycap>Alt</keycap> key in
+            combination with the access key to perform the action.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>Disable menu shortcut key (F10 by default)</guilabel></term>
+          <listitem>
+            <para>Select this option to disable the shortcut key that is defined to
+            enable you to access the @PACKAGE_NAME@ menus. The default shortcut key to access
+            the menus is <keycap>F10</keycap>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Avanzado</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Preferencias avanzadas</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>A tecla de retroceso xera</guilabel></term>
+          <listitem>
+            <para>Use the drop-down list to select the function that you want the
+            <keycap>Backspace</keycap> key to perform.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>A tecla suprimir xera</guilabel></term>
+          <listitem>
+            <para>Use the drop-down list to select the function that you want the
+            <keycap>Delete</keycap> key to perform.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Opción $TERM</guilabel></term>
+          <listitem>
+            <para>
+              This specifies the value the <varname>$TERM</varname> environment variable is set to, when
+              a new terminal tab or terminal window is opened. The default should be ok for most
+              systems. If you have problems with colors in some applications or if you think that a
+              certain application behaves oddly, try <userinput>xterm-color</userinput> here. If you have
+              problems with ncurses 5.6 or later you could also try <userinput>xfce</userinput>.
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Reset compatibility options to defaults</guilabel></term>
+          <listitem>
+            <para>Click this button to reset the options on the <guilabel>Compatibility</guilabel>
+            tabbed section to its defaults settings.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Dobre clic</guilabel></term>
+          <listitem>
+            <para>Use this text box to specify characters or groups of characters that @PACKAGE_NAME@
+            considers to be words when you select text by word.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+
+  <sect1 id="advanced">
+    <title>Temas avanzados</title>
+    <sect2 id="command-line-options">
+      <title>Opcións de liña de comandos</title>
+
+      <para>
+        When @PACKAGE_NAME@ is started from the command line or from a panel launcher, several options
+        can be specified to modify its behavior.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--help</option></term>
+          <listitem>
+            <para>List the various command line options supported by @PACKAGE_NAME@ and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--version</option></term>
+          <listitem>
+            <para>Mostrar a información da versión e saír</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--disable-server</option></term>
+          <listitem>
+            <para>
+              Do not register with the D-BUS session message bus
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--execute</option> <parameter>...</parameter></term>
+          <listitem>
+            <para>Execute the remainder of the command line inside the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--command</option> <parameter>comando</parameter></term>
+          <listitem>
+            <para>Executar <parameter>comando</parameter> na terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--working-directory</option> <parameter>directorio</parameter></term>
+          <listitem>
+            <para>Set <parameter>directory</parameter> as the working directory for the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--title</option> <parameter>título</parameter></term>
+          <listitem>
+            <para>Set <parameter>title</parameter> as the initial window title for the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hold</option></term>
+          <listitem>
+            <para>Causes the terminal to be kept around after the child command has terminated</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--display</option> <parameter>display</parameter></term>
+          <listitem>
+            <para>Open terminal window on the X screen specified by <parameter>display</parameter>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--geometry</option> <parameter>xeometría</parameter></term>
+          <listitem>
+            <para>
+              Sets the geometry of the last-specified window to <parameter>geometry</parameter>. Read
+              <userinput><command>man</command> <option>X</option></userinput> for more information on how
+              to specify window geometries.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--role</option> <parameter>rol</parameter></term>
+          <listitem>
+            <para>
+              Sets the window role of the last-specified window to <parameter>role</parameter>. Applies
+              to only one window and can be specified once for each window you create from the command
+              line. It is mostly used for session management inside @PACKAGE_NAME@.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--startup-id</option> <parameter>identificador</parameter></term>
+          <listitem>
+            <para>
+              Specifies the startup notification id for the last-specified window. Used internally
+              to forward the startup notification id when using the D-BUS service.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--fullscreen</option></term>
+          <listitem>
+            <para>
+              Set the last-specified window into fullscreen mode;
+              applies to only one window; can be specified once
+              for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--maximize</option></term>
+          <listitem>
+            <para>
+              Set the last-specified window into maximized mode;
+              applies to only one window; can be specified once
+              for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-menubar</option></term>
+          <listitem>
+            <para>
+              Turn on the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-menubar</option></term>
+          <listitem>
+            <para>
+              Turn off the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-borders</option></term>
+          <listitem>
+            <para>
+              Turn on the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-borders</option></term>
+          <listitem>
+            <para>
+              Turn off the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-toolbars</option></term>
+          <listitem>
+            <para>
+              Turn on the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-toolbars</option></term>
+          <listitem>
+            <para>
+              Turn off the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--tab</option></term>
+          <listitem>
+            <para>
+              Open a new tab in the last-specified window. More than one of these options can be provided.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--window</option></term>
+          <listitem>
+            <para>
+              Open a new window containing one tab. More than one of these options can be provided.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>
+        For example, say you want to open a new terminal window with two tabs in it, where the first
+        tab should run <command>mutt</command> and the second tab should run <command>mc</command>,
+        and the window should have 80 columns and 40 rows, then you would use the following command
+        to start Terminal:
+      </para>
+
+      <screen>Terminal --geometry 80x40 --command mutt --tab --command mc</screen>
+
+    </sect2>
+
+    <sect2 id="files-and-env-vars">
+      <title>Ficheiros e variables do contorno</title>
+
+      <para>
+        Terminal uses the Basedir Specification as defined on <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> to locate its data and configuration files. This means
+        that file locations will be specified as a path relative to the directories described in
+        the specification.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_HOME}</varname></term>
+          <listitem>
+            <para>
+              The first base directory to look for configuration
+              files. By default this is set to <filename role="directory">~/.config/</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_DIRS}</varname></term>
+          <listitem>
+            <para>
+              A colon separated list of base directories that contain configuration
+              data. By default the application will look in <filename role="directory">${sysconfdir}/xdg/</filename>. The value of
+              <varname>${sysconfdir}</varname> depends on how the program was
+              build and will often be <filename role="directory">/etc/</filename>
+              for binary packages.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_HOME}</varname></term>
+          <listitem>
+            <para>
+              The root for all user-specific data files. By default this
+              is set to <filename role="directory">~/.local/share/</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_DIRS}</varname></term>
+          <listitem>
+            <para>
+              A set of preference ordered base directories relative to which
+              data files should be searched in addition to the
+              <varname>${XDG_DATA_HOME}</varname> base directory. The directories
+              should be separated with a colon.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_CONFIG_DIRS}/Terminal/terminalrc</filename></term>
+          <listitem>
+            <para>
+              This is the location of the configuration file that includes the
+              preferences which control the look and feel of @PACKAGE_NAME@.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
+          <listitem>
+            <para>
+              This file includes the user interface definition for the toolbars. If
+              you customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@
+              will store the new toolbars layout in the file
+              <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="hidden-options">
+      <title>Opcións ocultas</title>
+
+      <para>
+        @PACKAGE_NAME@ offers a few hidden options to allow powerusers to control various advanced settings and
+        to reduce the number of options in the user interface. To set any of these options, you will have
+        to open the file <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> in your favorite
+        text editor and edit the section <varname>[Configuration]</varname>; simply create the file if
+        it does not already exist. For example, your <filename>terminalrc</filename> could look like
+      </para>
+
+      <programlisting>
+[Configuration]
+MiscAlwaysShowTabs=TRUE
+MiscBell=TRUE
+MiscConfirmClose=FALSE
+MiscCursorBlinks=TRUE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
+MiscCycleTabs=FALSE
+MiscInheritGeometry=TRUE
+MiscMouseAutohide=FALSE
+MiscTabCloseButtons=TRUE
+MiscTabCloseMiddleClick=TRUE
+MiscTabPosition=GTK_POS_TOP
+MiscHighlightUrls=TRUE</programlisting>
+
+      <para>
+        plus all the options that are controlled through the preferences dialog.
+      </para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>MiscAlwaysShowTabs</varname></term>
+          <listitem>
+            <para>
+              If <literal>TRUE</literal> the tab headers will always be displayed even if only a single
+              terminal tab is open. This option is useful if you do not want the terminal window to
+              resize when you open a second tab. It is disabled by default.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscBell</varname></term>
+          <listitem>
+            <para>
+              Enables (<varname>MiscBell=TRUE</varname>) or disables (<varname>MiscBell=FALSE</varname>)
+              the audible terminal bell. It is disabled by default.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscConfirmClose</varname></term>
+          <listitem>
+            <para>
+              Controls whether @PACKAGE_NAME@ popups a confirmation dialog when the user tries to close
+              a terminal window with multiple tabs in it. Can be either <literal>TRUE</literal>
+              (the default) or <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorBlinks</varname></term>
+          <listitem>
+            <para>
+              Enable this option to display a cursor that blinks. Can be either <literal>TRUE</literal>
+              or <literal>FALSE</literal> (the default).
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorShape</varname></term>
+          <listitem>
+            <para>
+              Specifies the shape of the cursor in the terminal. This can be either
+              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default),
+              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or
+              <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
+              only available when you compile against VTE 0.19.1 or newer.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCycleTabs</varname></term>
+          <listitem>
+            <para>
+              This option controls whether you can circulate through terminal tabs. That is, whether
+              you are able to go from the last tab to the first tab using the <guimenuitem>Next
+              Tab</guimenuitem> button from the <guimenu>Go</guimenu> menu (or the associated keyboard
+              shortcut), and from the first tab to the last tab using the <guimenuitem>Previous
+              Tab</guimenuitem> button from the <guimenu>Go</guimenu> menu. The option can be either
+              <literal>TRUE</literal> (the default) or <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscDefaultGeometry</varname></term>
+          <listitem>
+            <para>
+              The default geometry for new Terminal windows if no <option>--geometry</option>
+              option is specified on the command line (defaults to <literal>80x24</literal>).
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscInheritGeometry</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether new windows will inherit the geometry (width
+              and height of the active tab) from its parent window (the window from which
+              the new window was opened). Can be either <literal>TRUE</literal> or
+              <literal>FALSE</literal> (the default).
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscMouseAutohide</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether @PACKAGE_NAME@ will hide the mouse cursor
+              while you are typing in a terminal window. Can be either
+              <literal>TRUE</literal> or <literal>FALSE</literal> (the default).
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabCloseButtons</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether @PACKAGE_NAME@ provides a close button with the
+              terminal tab title. Can be either <literal>TRUE</literal> (the default) or
+              <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabCloseMiddleClick</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether @PACKAGE_NAME@ will close a terminal tab when
+              the user middle-clicks the tab title. Can be either <literal>TRUE</literal>
+              (the default) or <literal>FALSE</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabPosition</varname></term>
+          <listitem>
+            <para>
+              Specifies the position where the tab headers should be displayed. This can
+              be either <literal>GTK_POS_TOP</literal> (the default), <literal>GTK_POS_LEFT</literal>,
+              <literal>GTK_POS_BOTTOM</literal> or <literal>GTK_POS_RIGHT</literal>. If you
+              specify <literal>GTK_POS_LEFT</literal> or <literal>GTK_POS_RIGHT</literal>
+              here, the tab header texts will be displayed vertically instead of horizontally.
+              It is highly recommended to disable <varname>MiscTabCloseButtons</varname> for
+              <literal>GTK_POS_LEFT</literal> and <literal>GTK_POS_RIGHT</literal>.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscHighlightUrls</varname></term>
+          <listitem>
+            <para>
+              This setting controls whether URLs - both hyperlinks and email addresses - will
+              be highlighted in the text displayed in a terminal window. If you change this
+              option to <literal>FALSE</literal>, URLs won't be highlighted anymore and you
+              will no longer be able to middle-click the URL to open it in the preferred
+              application.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+  <sect1 id="faq">
+    <title>Preguntas máis frecuentes (FAQ)</title>
+
+    <para>The intent of this section is to collect the quite numerous frequently asked
+    question that relate to working with @PACKAGE_NAME@, or even terminal emulators in general. If
+    you know of a question that's missing from this page, please <ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">file a request</ulink>.</para>
+
+    <sect3>
+      <title>@PACKAGE_NAME@ complains about <literal>Unable to start terminal server: Unable to connect
+        to D-BUS message daemon</literal>, what can I do?</title>
+
+      <para>@PACKAGE_NAME@ tries to reduce the number of running instances by establishing a D-BUS service
+      that handles all terminal windows. The message above tells you that @PACKAGE_NAME@ wasn't able to
+      connect to the D-BUS session message daemon and register a service. This is just a warning,
+      you can use the terminal without the D-BUS service feature as well.</para>
+
+      <para>To start the D-BUS session message daemon when you login to your X session, either
+      modify your xinitrc file and change the line <literal>xfce4-session</literal> to
+      <literal>dbus-launch xfce4-session</literal> or use <literal>dbus-launch startxfce4</literal>
+      to start Xfce instead. If you don't use Xfce, please look at the documentation of your
+      desktop environment on how to enable the D-BUS session daemon.</para>
+    </sect3>
+
+    <sect3>
+      <title>As teclas <keycap>Inicio</keycap> e <keycap>Fin</keycap> non funcionan en @PACKAGE_NAME@, que pasou?</title>
+
+      <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
+      the terminal widget used by @PACKAGE_NAME@. A patch for vte that fixes the problem is available <ulink url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
+      with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
+    </sect3>
+  </sect1>
+
+  <sect1 id="support">
+    <title>Soporte</title>
+
+    <para>To report a bug or to make a suggestion regarding this application or this
+    manual, use the bug tracking system at <ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">http://bugzilla.xfce.org/</ulink>.
+    Remember that useful bug reports are ones that get bugs fixed, so a useful bug report
+    has two qualities:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Reproducible.</emphasis> If the developer cannot see the bug himself
+        to prove that it exists, he will most probably not be able to fix it at all. Every detail you
+        can provide helps.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Specific.</emphasis> The quicker the developer can isolate the problem
+        to a specific area, the more likely he will expediently fix it.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>In case you want to request a new feature, please make clear why you consider it a worth
+    addition for the application. It is more likely that a new feature gets added if you provide
+    good arguments for the feature. It will increase the chance of addition even more if you
+    provide a patch that implements the requested feature, but make sure that you read the file
+    <ulink url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink>
+    - especially the section labeled <emphasis>Coding Style</emphasis> - before you start hacking up the source.</para>
+
+    <para>Else, if you have questions about the use or installation of this software, please ask on the
+    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink>
+    or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
+    join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
+  </sect1>
+
+  <sect1 id="copyright">
+    <title>Acerca de @PACKAGE_NAME@</title>
+
+    <para>@PACKAGE_NAME@ foi escrito por Benedikt Meurer (<email>benny@xfce.org</email>). Visite o <ulink url="http://www.os-cillation.com/" type="http">sitio web os-cillation</ulink> para obter máis información.</para>
+
+    <para>Esta documentación foi escrita por Benedikt Meurer (<email>benny@xfce.org</email>) e Andrew Conkling (<email>andrewski@fr.st</email>). A última versión deste documento sempre está dispoñible no <ulink type="http" url="http://terminal.os-cillation.com/">sitio web de Terminal</ulink>.</para>
+
+    <para>
+      This software is distributed under the terms of the GNU General Public License
+      as published by the Free Software Foundation; either version 2 of the License, or
+      (at your option) any later version.
+    </para>
+
+    <para>
+      You should have received a copy of the GNU General Public License
+      along with this program; if not, write to the Free Software
+      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+      USA.
+    </para>
+  </sect1>
+
+</article>
+<!--
+  vim:set ts=2 sw=2 et ai:
+-->
