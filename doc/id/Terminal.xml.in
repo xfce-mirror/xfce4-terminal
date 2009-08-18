@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY date "May 2008">
+<!ENTITY version "@PACKAGE_VERSION@">
+<!ENTITY application "@PACKAGE_NAME@">
+]>
+<article id="index" lang="id">
+
+  <!-- Header -->
+  <articleinfo>
+    <title>Emulator Terminal</title>
+
+    <pubdate>&date;</pubdate>
+
+    <copyright>
+      <year>2003</year>
+      <year>2004</year>
+      <year>2005</year>
+      <year>2006</year>
+      <year>2007</year>
+      <year>2008</year>
+      <holder>os-cillation</holder>
+    </copyright>
+
+    <copyright>
+      <year>2009</year>
+      <holder>Tim Pengembang Xfce</holder>
+    </copyright><copyright><year>2009</year><holder>Andhika Padmawan (andhika.padmawan@gmail.com)</holder></copyright>
+
+    <legalnotice id="legalnotice">
+      <para>Izin diberikan untuk menyalin, mendistribusikan dan/atau memodifikasi dokumen ini di bawah perjanjian Lisensi Dokumentasi Bebas GNU, versi 1.1 atau versi apapun setelahnya yang dipublikasikan oleh Free Software Foundation; tanpa Bagian Invarian, tanpa Teks Sampul-Depan, dan tanpa Teks Sampul-Belakang. Teks lisensi selengkapnya tersedia dari <ulink type="http" url="http://www.gnu.org/">Free Software Foundation</ulink>.</para>
+    </legalnotice>
+
+    <authorgroup>
+      <author>
+        <firstname>Benedikt</firstname>
+        <surname>Meurer</surname>
+        <affiliation>
+          <address><email>benny@xfce.org</email></address>
+          <orgname>os-cillation</orgname>
+          <orgdiv>Pengembangan sistem</orgdiv>
+          <jobtitle>Pengembang peranti lunak</jobtitle>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Andrew</firstname>
+        <surname>Conkling</surname>
+        <affiliation>
+          <address><email>andrewski@fr.st</email></address>
+        </affiliation>
+      </author>
+
+      <author>
+        <firstname>Nick</firstname>
+        <surname>Schermer</surname>
+        <affiliation>
+          <address><email>nick@xfce.org</email></address>
+          <jobtitle>Pengembang Inti Xfce</jobtitle>
+        </affiliation>
+      </author>
+    </authorgroup>
+
+    <releaseinfo>Manual ini menjelaskan versi @PACKAGE_VERSION@ dari @PACKAGE_NAME@.</releaseinfo>
+  </articleinfo>
+
+  <sect1 id="intro">
+    <title>Pengantar untuk @PACKAGE_NAME@</title>
+
+    <sect2>
+      <title>Apakah emulator terminal itu?</title>
+
+      <para>Sistem operasi UNIX awalnya didesain sebagai sistem berbasis teks, yang dikendalikan oleh perintah yang dimasukkan melalui papan ketik. Hal ini dikenal sebagai antarmuka baris perintah (CLI). X Window System, Xfce, dan proyek lainnya telah menambahkan antarmuka pengguna grafis ke UNIX, dan itulah yang sedang anda gunakan sekarang. Tapi penambahan antarmuka pengguna grafis tidak berarti bahwa CLI telah mati. CLI tetap hadir dan sering menjadi cara termudah, tercepat, dan paling handal untuk melakukan tugas tertentu. Malah pengguna lama akan merasa kehilangan tanpa adanya CLI.</para>
+
+      <para>@PACKAGE_NAME@ adalah apa yang dikenal sebagai emulator terminal X, sering disebut sebagai terminal atau shell. Terminal menyediakan pengganti untuk layar teks bergaya lama di desktop anda, namun dapat dengan mudah berbagi layar dengan aplikasi grafis lainnya. Pengguna Windows mungkin telah familier dengan utilitas MS-DOS, yang memiliki fungsi analog dalam menawarkan baris perintah DOS di dalam Windows, meskipun perlu diingat bahwa CLI UNIX menawarkan kemampuan yang lebih besar dan kemudahan yang lebih dalam hal penggunaan dibanding DOS.</para>
+
+      <para>@PACKAGE_NAME@ mengemulasi aplikasi <application>xterm</application> yang dikembangkan oleh X Consortium. Sebaliknya, aplikasi <application>xterm</application> mengemulasikan terminal DEC VT102 dan juga mendukung sekuensi keluar DEC VT220. Sekuensi keluar adalah rangkaian karakter yang dimulai dengan karakter <keycap>Esc</keycap>. @PACKAGE_NAME@ menerima semua sekuensi keluar yang terminal VT102 dan VT220 gunakan untuk fungsi-fungsi seperti meletakkan kursor dan untuk membersihkan layar.</para>
+    </sect2>
+
+    <sect2>
+      <title>Apa yang membuat @PACKAGE_NAME@ spesial?</title>
+
+      <para>Fitur canggih @PACKAGE_NAME@ meliputi antarmuka konfigurasi yang sederhana, kemampuan untuk menggunakan banyak tab terminal di dalam satu jendela, kemungkinan untuk memiliki latar belakang transparan, dan mode sederhana (baik batang menu maupun dekorasi jendela disembunyikan) yang membantu anda menghemat ruang di dekstop anda.</para>
+
+      <para>Fitur kunci berikut telah tersedia:</para>
+
+      <itemizedlist>
+        <listitem>Banyak tab per jendela</listitem>
+        <listitem>Batang alat yang dapat disesuaikan, yang dapat diubah menggunakan penyunting batang alat grafis yang terintegrasi</listitem>
+        <listitem>Kemampuan untuk mengatur hampir seluruh aspek dari @PACKAGE_NAME@ dalam dialog <guilabel>Pengaturan</guilabel> ditambah banyak kelebihan dari <emphasis>opsi tersembunyi</emphasis></listitem>
+        <listitem>Integrasi yang baik khususnya dengan <ulink url="http://xfce.org/">Lingkungan desktop Xfce</ulink>, tapi juga dengan tiap desktop Linux lainnya</listitem>
+        <listitem>Dukungan manajemen sesi</listitem>
+        <listitem>Dukungan multi tajuk nyata (baik dalam mode MultiScreen dan Xinerama)</listitem>
+        <listitem>Sesuai standar (lihat situs web <ulink url="http://freedesktop.org/">freedesktop.org</ulink>)</listitem>
+        <listitem><ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> berbasis fasilitas layanan terminal untuk meminimalkan penggunaan sumber daya secara keseluruhan</listitem>
+        <listitem>Pengelolaan yang sangat baik dengan memaksimalkan penggunaan <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink> dan <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.</listitem>
+      </itemizedlist>
+
+      <para>Selain fitur-fitur kunci ini, @PACKAGE_NAME@ mendukung semua fitur yang anda harapkan dari sebuah emulator terminal modern.</para>
+    </sect2>
+  </sect1>
+
+  <sect1 id="getting-started">
+    <title>Untuk memulai</title>
+
+    <sect2>
+      <title>Memulai @PACKAGE_NAME@</title>
+
+      <para>Cara termudah untuk menjalankan @PACKAGE_NAME@ adalah dengan menggunakan menu aplikasi dari desktop anda; untuk Xfce, arahkan kursor tetikus ke desktop, klik tombol tetikus kanan lalu pilih <menuchoice><guimenu>Sistem</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
+
+      <para>Anda juga dapat memulai @PACKAGE_NAME@ dari baris perintah atau dari <guilabel>Peluncur aplikasi</guilabel>. Cukup tekan <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, tekan <userinput><command>Terminal</command></userinput> dan klik tombol <guibutton>Jalankan</guibutton>.</para>
+    </sect2>
+
+    <sect2>
+      <title>Ketika anda pertama kali menjalankan @PACKAGE_NAME@</title>
+
+      <para>Ketika anda menjalankan @PACKAGE_NAME@ untuk pertama kalinya, aplikasi membuka jendela terminal dengan pengaturan standar.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-first-time.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Contoh jendela terminal standar</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Jendela terminal menampilkan prompt perintah tempat anda mengetik perintah UNIX. Prompt perintah dapat berbeda tergantung konfigurasi shell anda. Kursor diletakkan di prompt perintah. Ketika anda mengetikkan perintah lalu menekan <keycap>Return</keycap>, maka komputer akan mengeksekusi perintah. Standarnya, @PACKAGE_NAME@ akan menggunakan shell log masuk dari pengguna yang menjalankan aplikasi (<filename>/bin/bash</filename> bila dalam instalasi Linux standar).</para>
+
+      <para>@PACKAGE_NAME@ mengatur variabel lingkungan berikut untuk perintah yang berjalan di dalam jendela terminal:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>TERM</varname></term>
+          <listitem>
+            <para>Atur ke <literal>xterm</literal> atau <literal>xterm-color</literal>, anda dapat mengatur nilai dari dialog pengaturan.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>COLORTERM</varname></term>
+          <listitem>
+            <para>Atur ke <literal>Terminal</literal> sebagai standar.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>DISPLAY</varname></term>
+          <listitem>
+            <para>Atur ke tampilan X11 dari terminal sebagai standar.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><varname>WINDOWID</varname></term>
+          <listitem>
+            <para>Atur ke pengenal jendela X11 dari terminal sebagai standar.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Bekerja dengan banyak terminal</title>
+
+      <para>@PACKAGE_NAME@ menyediakan fitur tab yang memungkinkan anda untuk membuka beberapa terminal di dalam sebuah jendela tunggal. Tiap terminal dibuka dalam tab yang terpisah. Klik pada tab yang sesuai untuk menampilkan terminal di dalam jendela. Tiap terminal yang di-tab dalam jendela adalah subproses yang terpisah, sehingga anda dapat menggunakan tiap terminal untuk tugas yang berbeda.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-multiple-tabs.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Contoh jendela terminal dengan banyak tab</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Lihat <xref linkend="usage"/> untuk informasi tentang bagaimana cara membuka terminal yang baru di-tab.</para>
+
+      <para>Anda dapat menutup tab terminal dengan klik pada tombol tutup di tajuk tab terminal atau dengan memilih <menuchoice><guimenu>Berkas</guimenu><guimenuitem>Tutup Tab</guimenuitem></menuchoice> dari batang menu.</para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="usage">
+    <title>Penggunaan</title>
+
+    <sect2>
+      <title>Untuk membuka dan menutup terminal</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>Untuk membuka jendela terminal baru:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Berkas</guimenu><guimenuitem>Buka Terminal</guimenuitem></menuchoice> (atau klik kanan jendela terminal lalu pilih <menuchoice><guimenuitem>Buka Terminal</guimenuitem></menuchoice>).</para>
+            <para>Terminal yang baru mewarisi direktori kerja dari terminal induknya.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Untuk menutup jendela terminal:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Berkas</guimenu><guimenuitem>Tutup Jendela</guimenuitem></menuchoice>.</para>
+            <para>Aksi ini menutup terminal dan mematikan subproses apapun yang anda buka dari terminal. Jika anda menutup jendela terminal terakhir, aplikasi@PACKAGE_NAME@ akan keluar.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Untuk menambah jendela di-tab baru ke sebuah jendela:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Berkas</guimenu><guimenuitem>Buka Tab</guimenuitem></menuchoice> (atau klik kanan jendela terminal dan pilih <menuchoice><guimenuitem>Buka Tab</guimenuitem></menuchoice>).</para>
+            <para>Terminal baru mewarisi direktori kerja dari terminal yang aktif sebelumnya.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Untuk mengubah jendela terminal</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>Untuk menyembunyikan batang menu:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Tampilan</guimenu><guimenuitem>Tampilkan Batang Menu</guimenuitem></menuchoice> (atau klik kanan jendela terminal dan pilih <menuchoice><guimenuitem>Tampilkan Batang Menu</guimenuitem></menuchoice>).</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menampilkan batang menu yang tersembunyi:</term>
+          <listitem>
+            <para>Klik kanan jendela terminal dan pilih <menuchoice><guimenuitem>Tampilkan Batang Menu</guimenuitem></menuchoice> dari menu popup.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menampilkan atau menyembunyikan batang alat:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Tampilan</guimenu><guimenuitem>Tampilkan Batang Alat</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menyesuaikan batang alat:</term>
+          <listitem>
+            <para>Pastikan untuk menampilkan batang alat dahulu; lalu pilih <menuchoice><guimenu>Sunting</guimenu><guimenuitem>Batang alat...</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menampilkan atau menyembunyikan dekorasi jendela:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Tampilan</guimenu><guimenuitem>Tampilkan Batas Jendela</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menempatkan jendela terminal dalam layar penuh</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Tampilan</guimenu><guimenuitem>Layar penuh</guimenuitem></menuchoice> dari batang menu (atau klik kanan jendela terminal dan pilih <menuchoice><guimenuitem>Layar penuh</guimenuitem></menuchoice>).</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk mengubah tampilan dari jendela terminal:</term>
+          <listitem>
+            <para>Lihat <xref linkend="preferences"/> untuk informasi tentang opsi yang anda pilih pada dialog <guilabel>Pengaturan Terminal</guilabel> untuk mengubah tampilan dan perilaku jendela terminal. Misalnya, anda dapat mengubah warna latar belakang atau lokasi batang gulung.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="usage_to-work-with-contents-of-terminal-windows">
+      <title>Untuk bekerja dengan isi dari jendela terminal</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>Untuk menggulung ke perintah dan keluaran sebelumnya:</term>
+          <listitem>
+            <para>Lakukan salah satu dari cara berikut:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Gunakan batang gulung, yang biasanya ditampilkan pada sisi kanan dari tiap jendela terminal.</para>
+              </listitem>
+              <listitem>
+                <para>Tekan tombol <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, atau <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo>.</para>
+              </listitem>
+              <listitem>
+                <para>Gunakan tombol roda tengah di tetikus anda jika dapat digunakan</para>
+              </listitem>
+            </itemizedlist>
+            <para>@PACKAGE_NAME@ meniru konsol FreeBSD jika <keycap>Scroll Lock</keycap> ditekan. Jika scroll lock aktif, masukan dan keluaran biasa dari shell dihentikan dan anda dapat menelusuri riwayat dengan menggunakan <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> dan <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> atau menggunakan batang gulung opsional. Tekan <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> untuk mengaktifkan scroll lock dan <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> untuk menonaktifkan setelahnya.</para>
+
+            <para>Jumlah baris yang dapat anda gulung balik dalam jendela terminal ditentukan oleh pengaturan <guilabel>Gulung balik</guilabel> di bagian <guilabel>Umum</guilabel> dari dialog <guilabel>Pengaturan Terminal</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk memilih dan menyalin teks:</term>
+          <listitem>
+            <para>Anda dapat memilih teks dengan berbagai cara berikut:</para>
+            <itemizedlist>
+              <listitem>
+                <para>Untuk memilih karakter, klik pada karakter pertama yang ingin anda pilih lalu tarik tetikus ke karakter terakhir yang ingin anda pilih.</para>
+              </listitem>
+              <listitem>
+                <para>Untuk memilih kata, klik ganda pada kata pertama yang ingin anda pilih lalu tarik tetikus ke kata terakhir yang ingin anda pilih.</para>
+              </listitem>
+              <listitem>
+                <para>Untuk memilih baris, klik tiga kali pada baris pertama yang ingin anda pilih lalu tarik tetikus ke baris terakhir yang ingin anda pilih.</para>
+              </listitem>
+            </itemizedlist>
+            <para>Cara ini memilih semua teks di antara item pertama dan terakhir. Untuk pemilihan semua teks, @PACKAGE_NAME@ menyalin teks terpilih ke dalam papan klip ketika anda melepas tombol tetikus. Untuk menyalin teks terpilih secara eksplisit, pilih <menuchoice><guimenu>Suntingitem&gt;.</guimenu></menuchoice></para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk merekatkan teks ke dalam terminal:</term>
+          <listitem>
+            <para>Jika anda sebelumnya menyalin teks ke papan klip, anda dapat merekatkan teks ke dalam terminal dengan melakukan salah satu cara berikut:</para>
+            <itemizedlist>
+              <listitem>
+                <para>Untuk merekatkan teks yang telah anda salin dengan hanya pemilihan, klik tengah pada prompt perintah. Jika anda tidak memiliki tombol tengah tetikus, silakan merujuk ke dokumentasi X Server untuk informasi tentang bagaimana cara mengemulasi tombol tengah tetikus. Ini ekuivalen dengan menggunakan item <menuchoice><guimenuitem>Seleksi Rekat</guimenuitem></menuchoice> dari menu <menuchoice><guimenu>Sunting</guimenu></menuchoice>.</para>
+              </listitem>
+              <listitem>
+                <para>Untuk merekatkan teks yang telah anda salin, pilih <menuchoice><guimenu>Sunting</guimenu><guimenuitem>Rekat</guimenuitem></menuchoice>.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menarik nama berkas ke dalam jendela terminal:</term>
+          <listitem>
+            <para>Anda dapat menarik nama berkas ke terminal dari aplikasi lain seperti manajer berkas atau peramban web. Terminal menampilkan alamat dan nama penuh URI.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk mengakses hipertaut:</term>
+          <listitem>
+            <para>Untuk mengakses Uniform Resource Locator (URL) yang ditampilkan dalam jendela terminal, lakukan langkah berikut:</para>
+
+            <orderedlist>
+              <listitem>
+                <para>Pindahkan tetikus ke URL sampai URL digarisbawahi.</para>
+              </listitem>
+              <listitem>
+                <para>Klik kanan pada URL untuk membuka menu konteks.</para>
+              </listitem>
+              <listitem>
+                <para>Pilih <guimenuitem>Buka Tautan</guimenuitem> dari menu konteks untuk menjalankan Peramban Web pilihan anda dan menampilkan berkas yang tersimpan di URL.</para>
+              </listitem>
+            </orderedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>Untuk menulis email:</term>
+          <listitem>
+            <para>Untuk menulis email ke alamat yang ditampilkan dalam jendela terminal, lakukan langkah berikut:</para>
+
+            <orderedlist>
+              <listitem>
+                <para>Pindahkan tetikus ke alamat email sampai alamat email digarisbawahi.</para>
+              </listitem>
+              <listitem>
+                <para>Klik kanan pada alamat email untuk membuka menu konteks.</para>
+              </listitem>
+              <listitem>
+                <para>Pilih <guimenuitem>Tulis Email</guimenuitem> dari menu konteks untuk menulis email dalam Pembaca Surat pilihan anda.</para>
+              </listitem>
+            </orderedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="set-title">
+      <title>Untuk mengubah judul terminal</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-set-title.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Atur dialog judul</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Untuk mengubah judul yang saat ini ditampilkan di terminal, lakukan tiga langkah berikut:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Pilih <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Tentukan Judul...</guimenuitem></menuchoice> atau klik ganda pada tajuk tab terminal.</para>
+        </listitem>
+        <listitem>
+          <para>Ketik judul baru pada kotak teks <guilabel>Judul</guilabel>. @PACKAGE_NAME@ segera menerapkan perubahan.</para>
+        </listitem>
+        <listitem>
+          <para>Klik tombol <guilabel>Tutup</guilabel> atau tekan kunci <keycap>Return</keycap> untuk menutup dialog <guilabel>Tentukan Judul</guilabel>.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>Untuk mengembalikan judul terminal ke perilaku standarnya, lakukan tiga langkah yang sama seperti dijelaskan di atas, tapi kosongkan judul.</para>
+    </sect2>
+
+    <sect2>
+      <title>Untuk mengembalikan terminal anda.</title>
+
+      <para>Bagian ini memberikan beberapa tips jika anda memiliki masalah dengan terminal.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>Untuk menata ulang kondisi terminal:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Tata Ulang</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Untuk menata ulang terminal dan membersihkan layar terminal:</term>
+          <listitem>
+            <para>Pilih <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Tata Ulang dan hapus</guimenuitem></menuchoice>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>Anda juga dapat menggunakan perintah shell <userinput><command>tata ulang</command></userinput> dan <userinput><command>hapus</command></userinput> untuk mengembalikan terminal anda.</para>
+    </sect2>
+
+    <sect2 id="customize-toolbars">
+      <title>Untuk menyesuaikan batang alat</title>
+
+      <para>Seperti telah disebutkan sebelumnya, @PACKAGE_NAME@ menyertakan dukungan untuk penyesuaian batang alat. Batang alat dinonaktifkan secara standar, anda harus mengaktifkannya secara eksplisit. Pilih <menuchoice><guimenu>Tampilan</guimenu><guimenuitem>Tampilkan Batang Alat</guimenuitem></menuchoice> dari batang menu untuk menampilkan batang alat di jendela saat ini. Jika anda ingin menggunakan batang alat secara permanen, lihat <xref linkend="preferences-appearance"/>.</para>
+
+      <para>Ketika batang alat ditampilkan, pilih <menuchoice><guimenu>Sunting</guimenu><guimenuitem>Batang alat...</guimenuitem></menuchoice> dari batang menu atau klik kanan salah satu batang alat lalu pilih <menuchoice><guimenuitem>Suaikan Batang Alat...</guimenuitem></menuchoice> dari menu konteks. Ini membuka jendela <guilabel>Penyunting Batang Alat</guilabel>, yang memungkinkan anda untuk menyesuaikan alat di jendela terminal saat ini.</para>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-toolbars.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Menyesuaikan batang alat</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <para>Cukup tarik item dari jendela <guilabel>Penyunting Batang Alat</guilabel> lalu taruh di dalam batang alat untuk menambah item ke batang alat tertentu atau tarik item dari batang alat ke <guilabel>Penyunting Batang Alat</guilabel> untuk menghapus item dari batang alat. Anda dapat menambah batang alat tambahan dengan klik tombol <guibutton>Tambah batang alat baru</guibutton> dan untuk menghapus batang alat dengan klik kanan pada batang alat lalu pilih <menuchoice><guimenuitem>Hapus Batang Alat</guimenuitem></menuchoice> dari menu konteks. Anda dapat juga memilih gaya yang berbeda untuk batang alat dari konteks menu.</para>
+    </sect2>
+
+    <sect2 id="luit">
+      <title>Untuk berpindah diantara penyandian yang berbeda</title>
+
+      <para>@PACKAGE_NAME@ sendiri belum menyertakan dukungan tertanam untuk bertukar penyandian langsung dalam sesi terminal. Tapi karena @PACKAGE_NAME@ mengimplementasikan mode UTF-8, anda dapat menggunakan <ulink url="http://www.pps.jussieu.fr/~jch/software/luit/">aplikasi Luit</ulink> untuk berpindah antar penyandian karakter yang berbeda di dalam sesi terminal.</para>
+    </sect2>
+
+  </sect1>
+
+  <sect1 id="preferences">
+    <title>Pengaturan</title>
+
+    <screenshot>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="images/terminal-edit-preferences.png" format="PNG"/>
+        </imageobject>
+
+        <textobject>
+          <phrase>Pengaturan</phrase>
+        </textobject>
+      </mediaobject>
+    </screenshot>
+
+    <para>Untuk mengatur @PACKAGE_NAME@, pilih <menuchoice><guimenu>Sunting</guimenu><guimenuitem>Pengaturan...</guimenuitem></menuchoice> atau klik kanan area terminal jendela lalu pilih <menuchoice><guimenuitem>Preferences...</guimenuitem></menuchoice>. Ini akan memunculkan dialog <guilabel>Pengaturan Terminal</guilabel>, yang memungkinkan anda untuk menyesuaikan perilaku @PACKAGE_NAME@ agar sesuai dengan kebutuhan anda.</para>
+
+    <sect2 id="preferences-general">
+      <title>Umum</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-general.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Pengaturan umum</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Judul utama</guilabel></term>
+          <listitem>
+            <para>Gunakan kotak teks ini untuk menentukan judul utama dari terminal. Terminal baru akan menggunakan judul utama.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Judul yang ditentukan secara dinamis</guilabel></term>
+          <listitem>
+            <para>Gunakan senarai muncul ke bawah untuk menentukan bagaimana cara menangani judul yang ditentukan secara dinamis, yaitu, judul terminal yang diatur oleh perintah yang dijalankan di terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Jalankan perintah sebagai shell log masuk</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk memaksa @PACKAGE_NAME@ untuk menjalankan shell anda sebagai shell log masuk ketika anda membuka terminal baru. Lihat dokumentasi shell anda untuk detail tentang perbedaan antara menjalankan shell sebagai shell interaktif dan menjalankan shell sebagai shell log masuk.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Mutakhirkan catatan utmp/wtmp ketika perintah dijalankan</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk memasukkan entri baru di catatan utmp dan wtmp ketika terminal baru dibuka.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Gulung pada keluaran</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini yang memungkinkan anda untuk menggulung keluaran di terminal ketika terminal melanjutkan untuk menampilkan keluaran lagi dari perintah.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Gulung pada stroke kunci</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini yang memungkinkan anda untuk menekan kunci apapun di papan ketik untuk menggulung ke bawah jendela terminal ke prompt perintah. Cara ini hanya berlaku jika anda menggulung jendela terminal dan anda ingin kembali ke prompt perintah.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Batang alat adalah</guilabel></term>
+          <listitem>
+            <para>Gunakan senarai muncul ke bawah untuk menentukan posisi batang gulung di jendela terminal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Gulung balik</guilabel></term>
+          <listitem>
+            <para>Gunakan kotak putar ini untuk menentukan jumlah baris yang ingin anda gulung balik menggunakan batang gulung atau roda tetikus. Misalnya, jika anda menentukan 1000 maka anda dapat menggulung balik ke 1000 baris terakhir yang ditampilkan dalam terminal.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="preferences-appearance">
+      <title>Tampilan</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-appearance.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Pengaturan tampilan</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Fonta</guilabel></term>
+          <listitem>
+            <para>Klik pada tombol untuk memilih jenis fonta dan ukuran fonta yang ingin anda gunakan untuk terminal.</para>
+
+            <para>Gnakan opsi <guilabel>Aktifkan anti-alias untuk fonta terminal</guilabel> untuk mengatur apakah anda ingin agar @PACKAGE_NAME@ untuk memakai anti-alias ketika render teks di terminal. Menonaktifkan opsi ini dapat meningkatkan performa render terminal secara signifikan dan mengurangi beban keseluruhan sistem pada sistem yang lebih lambat.</para>
+
+            <para>Opsi <guilabel>Izinkan teks tebal</guilabel> menentukan apakah Terminal mengizinkan aplikasi yang berjalan di dalamnya untuk menggunakan teks tebal atau tidak. Jika dinonaktifkan, semua teks akan tampak dalam fonta terpilih, dan bila sebaliknya teks tertentu akan tampak dalam wujud tebal.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Latar belakang</guilabel></term>
+          <listitem>
+            <para>Pilih latar belakan untuk jendela terminal. Opsinya adalah sebagai berikut:</para>
+
+            <itemizedlist>
+              <listitem>
+                <guilabel>Tidak ada (gunakan warna solid)</guilabel>
+                <para>Pilih opsi ini untuk menggunakan warna latar belakang yang ditentukan dalam bagian <guilabel>Warna</guilabel> sebagai warna latar belakang untuk terminal.</para>
+              </listitem>
+              <listitem>
+                <guilabel>Gambar latar belakang</guilabel>
+                <para>Gunakan opsi ini untuk menggunakan berkas gambar sebagai latar belakang untuk terminal. Gunakan kotak entri <guilabel>Berkas gambar</guilabel> untuk menentukan lokasi dan nama berkas gambar. Sebagai alternatif, klik tombol di samping kotak entri untuk menelusuri dan memilih berkas gambar.</para>
+                <para>Gunakan opsi <guilabel>Gaya</guilabel> untuk mengatur tampilan gambar latar belakang. @PACKAGE_NAME@ mendukung pengubinan, pengetengahan, penyekalaan dan perentangan gambar latar belakang.</para>
+              </listitem>
+              <listitem>
+                <guilabel>Latar belakang transparan</guilabel>
+                <para>Pilih opsi ini untuk menggunakan latar belakang transparan untuk terminal anda.</para>
+              </listitem>
+            </itemizedlist>
+
+            <para>Jika anda telah memilih <guilabel>Gambar latar belakang</guilabel> atau <guilabel>Latar belakang transparan</guilabel>, anda dapat menggunakan penggeser <guilabel>Bayangan transparan atau gambar latar belakang</guilabel> agar latar belakang terminal tampak berbayang atau samar.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Tampilkan batang menu di jendela baru</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk menampilkan batang menu pada jendela terminal baru sebagai standarnya.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Tampilkan batang alat di jendela baru</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk menampilkan batang alat pada jendela terminal baru sebagai standarnya.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Tampilkan batas di sekeliling jendela baru</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk menampilkan dekorasi jendela pada jendela terminal baru sebagai standarnya.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Warna</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-colors.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Pengaturan warna</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Latar Depan dan Belakang</guilabel></term>
+          <listitem>
+            <para>Dua tombol yang dilabeli dengan <guilabel>Warna teks dan kursor memungkinkan untuk memilih warna yang @PACKAGE_NAME@ gunakan untuk menggambar teks normal dan warna untuk kursor teks. Aplikasi yang berjalan di dalam terminal dapat juga meminta warna yang dipilih berbeda dari palet di bawah ke teks gambar.</guilabel></para>
+
+            <para>Klik pada tombol <guilabel>Warna latar belakang</guilabel> untuk memilih latar belakang standar untuk jendela terminal. Warna ini juga digunakan dalam pewarnaan latar belakang ketika <guilabel>Latar belakang transparan</guilabel> atau <guilabel>Gambar latar belakang</guilabel> dipilih.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Seleksi Teks</guilabel></term>
+          <listitem>
+            <para>Pilih warna latar belakang yang akan digunakan ketika memilih teks di jendela terminal. Anda dapat menentukan warna yang sesuai atau tetap pada warna standar.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Palet</guilabel></term>
+          <listitem>
+            <para>Terminal menyediakan aplikasi yang berjalan di dalamnya sebuah palet yang terdiri dari 16 warna. Anda dapat menyesuaikan warna-warna ini dengan menggunakan tombol 16 warna.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Jalan pintas</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-shortcuts.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Pengaturan jalan pintas</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Tombol pintas</guilabel></term>
+          <listitem>
+            <para>Bagian <guilabel>Tombol pintas</guilabel> dari dialog menampilkan tombol pintas yang didefinisikan untuk tiap item menu. Tombol pintas memudahkan anda untuk menggunakan papan ketik ketika memilih item menu ketimbang menggunakan tetikus. Tombol pintas dapat berupa tombol non-modifikasi atau kombinasi apapun dari tombol non-modifikasi dan beberapa tombol modifikasi, dimana tombol modifikasi adalah <keycap>Alt</keycap>, <keycap>Ctrl</keycap> dan sejenisnya.</para>
+
+            <screenshot>
+              <mediaobject>
+                <imageobject>
+                  <imagedata fileref="images/terminal-compose-shortcut.png" format="PNG"/>
+                </imageobject>
+
+                <textobject>
+                  <phrase>Tulis jalan pintas</phrase>
+                </textobject>
+              </mediaobject>
+            </screenshot>
+
+            <para>Untuk mengubah tombol pintas untuk item menu, klik ganda item di senarai lalu tekan kombinasi tombol yang ingin anda gunakan. Untuk menonaktifkan jalan pintas untuk item menu tertentu, klik ganda item menu di senarai lalu klik tombol <guilabel>Hapus</guilabel>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>Nonaktifkan semua tombol akses menu (seperti Alt+f)</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk menonaktifkan tombol akses yang ditentukan untuk memudahkan anda untuk menggunakan papan ketik ketimbang tetikus ketika memilih item menu. Tiap tombol akses diidentifikasi dengan huruf yang digarisbawahi pada menu atau opsi dialog. Dalam beberapa kasus, anda harus menekan tombol <keycap>Alt</keycap> disertai kombinasi dengan tombol akses untuk melakukan aksi.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><guilabel>Nonaktifkan tombol pintas menu (F10 sebagai standar)</guilabel></term>
+          <listitem>
+            <para>Pilih opsi ini untuk menonaktifkan tombol pintas yang ditentukan untuk memudahkan anda ketika mengakses menu @PACKAGE_NAME@. Tombol pintas standar untuk mengakses menu adalah <keycap>F10</keycap>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Tingkat lanjut</title>
+
+      <screenshot>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="images/terminal-preferences-advanced.png" format="PNG"/>
+          </imageobject>
+
+          <textobject>
+            <phrase>Pengaturan tingkat lanjut</phrase>
+          </textobject>
+        </mediaobject>
+      </screenshot>
+
+      <variablelist>
+        <varlistentry>
+          <term><guilabel>Bangkitkan tombol spasi mundur</guilabel></term>
+          <listitem>
+            <para>Gunakan senarai muncul ke bawah untuk memilih fungsi yang anda ingin tombol <keycap>Backspace</keycap> lakukan.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Bangkitkan tombol hapus</guilabel></term>
+          <listitem>
+            <para>Gunakan senarai muncul ke bawah untuk memilih fungsi yang anda ingi tombol <keycap>Hapus</keycap> lakukan.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Pengaturan $TERM</guilabel></term>
+          <listitem>
+            <para>Ini menentukan tempat diaturnya nilai variabel lingkungan <varname>$TERM</varname>, ketika tab terminal atau jendela terminal baru dibuka. Standarnya sudah ok untuk kebanyakan sistem. Jika anda mempunyai masalah dengan warna pada beberapa aplikasi atau jika anda pikir bahwa aplikasi tertentu berperilaku aneh, coba <userinput>xterm-color</userinput> di sini. Jika anda mempunyai masalah dengan ncurses 5.6 atau versi setelahnya anda dapat juga mencoba <userinput>xfce</userinput>.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Tata ulang opsi kompatibilitas ke standar</guilabel></term>
+          <listitem>
+            <para>Klik tombol ini untuk mengatur ulang opsi pada bagian <guilabel>Kompatibilitas</guilabel> yang di tab untuk kembali ke pengaturan standarnya.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><guilabel>Klik ganda</guilabel></term>
+          <listitem>
+            <para>Gunakan kotak teks ini untuk menentukan karakter atau grup karakter yang @PACKAGE_NAME@ anggap sebagai kata ketika anda memilih teks sebagai kata.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+
+  <sect1 id="advanced">
+    <title>Topik tingkat lanjut</title>
+    <sect2 id="command-line-options">
+      <title>Opsi Baris Perintah</title>
+
+      <para>Ketika @PACKAGE_NAME@ dijalankan dari baris perintah atau dari peluncur panel, beberapa opsi dapat ditentukan untuk memodifikasi perilakunya.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><option>--help</option></term>
+          <listitem>
+            <para>Tampilkan berbagai opsi baris perintah yang didukung oleh @PACKAGE_NAME@ lalu keluar</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--version</option></term>
+          <listitem>
+            <para>Tampilkan informasi versi dan keluar</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--disable-server</option></term>
+          <listitem>
+            <para>Jangan daftarkan dengan bus pesan sesi D-BUS</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--execute</option> <parameter>...</parameter></term>
+          <listitem>
+            <para>Eksekusi pengingat baris perintah di dalam terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--command</option> <parameter>perintah</parameter></term>
+          <listitem>
+            <para>Eksekusi <parameter>perintah</parameter> di dalam terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--working-directory</option> <parameter>direktori</parameter></term>
+          <listitem>
+            <para>Atur <parameter>direktori</parameter> sebagai direktori kerja untuk terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--title</option> <parameter>judul</parameter></term>
+          <listitem>
+            <para>Atur <parameter>judul</parameter> sebagai judul jendela utama untuk terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hold</option></term>
+          <listitem>
+            <para>Menyebabkan terminal tetap terbuka ketika perintah anak telah dimatikan</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--display</option> <parameter>tampilan</parameter></term>
+          <listitem>
+            <para>Buka jendela terminal pada layar X yang ditentukan oleh <parameter>tampilan</parameter>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--geometry</option> <parameter>geometri</parameter></term>
+          <listitem>
+            <para>Atur geometri dari jendela yang ditentukan terakhir ke <parameter>geometri</parameter>. Baca <userinput><command>man</command> <option>X</option></userinput> untuk informasi lebih lanjut tentang bagaimana menentukan geometri jendela.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--role</option> <parameter>peran</parameter></term>
+          <listitem>
+            <para>Atur peran jendela dari jendela yang ditentukan terakhir ke <parameter>peran</parameter>. Berlaku hanya untuk satu jendela dan dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah. Hal ini seringkali digunakan untuk manajemen sesi di dalam @PACKAGE_NAME@.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--startup-id</option> <parameter>id</parameter></term>
+          <listitem>
+            <para>Tentukan id notifikasi hidupkan untuk jendela yang ditentukan terakhir. Gunakan secara internal untuk meneruskan id notifikasi hidupkan ketika menggunakan layanan D-BUS.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--fullscreen</option></term>
+          <listitem>
+            <para>Atur jendela yang ditentukan terakhir ke dalam mode layar penuh; berlaku hanya untuk satu jendela; dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--maximize</option></term>
+          <listitem>
+            <para>Atur jendela yang ditentukan terakhir ke dalam mode dimaksimalkan; berlaku hanya untuk satu jendela; dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-menubar</option></term>
+          <listitem>
+            <para>Nyalakan batang menu untuk jendela yang ditentukan terakhir. Dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-menubar</option></term>
+          <listitem>
+            <para>Matikan batang menu untuk jendela yang ditentukan terakhir. Dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-borders</option></term>
+          <listitem>
+            <para>Nyalakan dekorasi jendela untuk jendela yang ditentukan terakhir. Berlaku hanya untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-borders</option></term>
+          <listitem>
+            <para>Matikan dekorasi jendela untuk jendela yang ditentukan terakhir. Berlaku hanya untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--show-toolbars</option></term>
+          <listitem>
+            <para>Nyalakan batang alat untuk jendela yang ditentukan terakhir. Berlaku hanya untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--hide-toolbars</option></term>
+          <listitem>
+            <para>Matikan batang alat untuk jendela yang ditentukan terakhir. Berlaku hanya untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--tab</option></term>
+          <listitem>
+            <para>Buka tab baru di jendela yang ditentukan terakhir. Lebih dari satu opsi seperti ini dapat diberikan.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><option>--window</option></term>
+          <listitem>
+            <para>Buka jendela baru yang berisi satu tab. Lebih dari satu opsi seperti ini dapat diberikan.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>Misalnya, katakanlah anda ingin membuka jendela terminal baru dengan dua tab di dalamnya, dimana tab pertama akan menjalankan <command>mutt</command> dan tab kedua akan menjalankan <command>mc</command>, dan jendela akan memiliki 80 kolom dan 40 baris, maka anda perlu menggunakan perintah berikut ketika menjalankan Terminal:</para>
+
+      <screen>Terminal --geometry 80x40 --command mutt --tab --command mc</screen>
+
+    </sect2>
+
+    <sect2 id="files-and-env-vars">
+      <title>Variabel Berkas dan Lingkungan</title>
+
+      <para>Terminal menggunakan Spesifikasi Basedir seperti dijelaskan dalam <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> untuk mencari berkas data dan konfigurasinya. Ini berarti bahwa lokasi berkas dapat ditentukan sebagai alamat yang relatif terhadap direktori yang dijelaskan dalam spesifikasi.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_HOME}</varname></term>
+          <listitem>
+            <para>Direktori awal pertama untuk mencari berkas konfigurasi. Standarnya ini diatur ke <filename role="directory">~/.config/</filename>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_CONFIG_DIRS}</varname></term>
+          <listitem>
+            <para>Tanda titik dua memisahkan senarai direktori dasar yang berisi data konfigurasi. Standarnya aplikasi akan mencari di <filename role="directory">${sysconfdir}/xdg/</filename>. Nilai <varname>${sysconfdir}</varname> tergantung pada bagaimana program dibangun dan akan sering menjadi <filename role="directory">/etc/</filename> untuk paket biner.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_HOME}</varname></term>
+          <listitem>
+            <para>Akar untuk semua berkas data khusus pengguna. Pada keadaan standar diatur ke <filename role="directory">~/.local/share/</filename>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>${XDG_DATA_DIRS}</varname></term>
+          <listitem>
+            <para>Seperangkat pengaturan yang diurutkan secara relatif terhadap direktori dasar sebagai tempat berkas data akan dicari sebagai tambahan untuk direktori dasar <varname>${XDG_DATA_HOME}</varname>. Direktori-direktori harus dipisahkan oleh tanda titik dua.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_CONFIG_DIRS}/Terminal/terminalrc</filename></term>
+          <listitem>
+            <para>Ini adalah lokasi berkas konfigurasi yang termasuk pengaturan yang mengontrol tampilan dan rasa @PACKAGE_NAME@.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
+          <listitem>
+            <para>Berkas ini menyertakan definisi antarmuka penggna untuk batang alat. Jika anda menyesuaikan batang alat dengan memakai penyunting batang alat grafis, @PACKAGE_NAME@ akan menyimpan tata letak batang alat baru di berkas <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2 id="hidden-options">
+      <title>Opsi tersembunyi</title>
+
+      <para>@PACKAGE_NAME@ menawarkan beberapa opsi tersembunyi yang memungkinkan pengguna untuk mengontrol beragam pengaturan mahir dan mengurangi jumlah opsi di antarmuka pengguna. Untuk mengatur opsi ini, anda harus membuka berkas <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> di penyunting berkas favorit anda dan sunting bagian <varname>[Configuration]</varname>; cukup buat berkas tersebut bila belum ada. Misalnya, berkas <filename>terminalrc</filename> dapat berisi</para>
+
+      <programlisting>
+[Configuration]
+MiscAlwaysShowTabs=TRUE
+MiscBell=TRUE
+MiscConfirmClose=FALSE
+MiscCursorBlinks=TRUE
+MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
+MiscCycleTabs=FALSE
+MiscInheritGeometry=TRUE
+MiscMouseAutohide=FALSE
+MiscTabCloseButtons=TRUE
+MiscTabCloseMiddleClick=TRUE
+MiscTabPosition=GTK_POS_TOP
+MiscHighlightUrls=TRUE</programlisting>
+
+      <para>ditambah semua opsi yang dikendalikan melalui dialog pengaturan.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>MiscAlwaysShowTabs</varname></term>
+          <listitem>
+            <para>Jika <literal>TRUE</literal> tajuk tab akan selalu ditampilkan bahkan jika hanya satu tab terminal yang terbuka. Opsi ini berguna jika anda tidak ingin jendela terminal berubah ukuran ketika anda membuka tab kedua. Hal ini dinonaktifkan pada standarnya.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscBell</varname></term>
+          <listitem>
+            <para>Aktifkan (<varname>MiscBell=TRUE</varname>) atau nonaktifkan (<varname>MiscBell=FALSE</varname>) bel terminal bersuara. Hal ini dinonaktifkan pada standarnya.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscConfirmClose</varname></term>
+          <listitem>
+            <para>Mengontrol apakah @PACKAGE_NAME@ memunculkan dialog konfirmasi ketika pengguna mencoba untuk menutup jendela terminal dengan banyak tab di dalamnya. Dapat diatur <literal>TRUE</literal> (standarnya) atau <literal>FALSE</literal>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorBlinks</varname></term>
+          <listitem>
+            <para>Aktifkan opsi ini untuk menampilkan kursor yang berkedip. Dapat diatur <literal>TRUE</literal> atau <literal>FALSE</literal> (standarnya).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCursorShape</varname></term>
+          <listitem>
+            <para>Tentukan bentuk kursor di terminal. Ini dapat berupa <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (standarnya), <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> atau <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. Opsi ini hanya tersedia jika anda mengompilasinya pada VTE 0.19.1 atau versi lebih baru.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscCycleTabs</varname></term>
+          <listitem>
+            <para>Opsi ini mengontrol apakah anda dapat bersirkulasi antar tab terminal. Yaitu, apabila anda dapat berpindah dari tab terakhir ke tab pertama menggunakan tombol <guimenuitem>Tab Berikutnya</guimenuitem> dari menu <guimenu>Go</guimenu> (atau jalan pintas papan ketik yang ditentukan), dan dari tab pertama ke tab terakhir dengan menggunakan tombol <guimenuitem>Tab Sebelumnya</guimenuitem> dari menu <guimenu>Ke</guimenu>. Opsi ini dapat diatur <literal>TRUE</literal> (standarnya) atau <literal>FALSE</literal>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscDefaultGeometry</varname></term>
+          <listitem>
+            <para>Geometri standar untuk jendela Terminal baru jika tidak ada opsi <option>--geometry</option> yang ditentukan di baris perintah (standarnya <literal>80x24</literal>).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscInheritGeometry</varname></term>
+          <listitem>
+            <para>Pengaturan ini mengontrol apakah jendela baru akan mewarisi geometri (lebar dan tinggi tab yang aktif) dari jendela induknya (jendela dari jendela baru dibuka). Dapat diatur <literal>TRUE</literal> atau <literal>FALSE</literal> (standarnya).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscMouseAutohide</varname></term>
+          <listitem>
+            <para>Pengaturan ini mengontrol apakah @PACKAGE_NAME@ akan menyembunyikan kursor tetikus ketika anda mengetik di dalam jendela terminal. Dapat diatur <literal>TRUE</literal> atau <literal>FALSE</literal> (standarnya).</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabCloseButtons</varname></term>
+          <listitem>
+            <para>Pengaturan ini mengontrol apakah @PACKAGE_NAME@ menyediakan tombol tutup dengan judul tab terminal. Dapat diatur <literal>TRUE</literal> (standarnya) atau <literal>FALSE</literal>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabCloseMiddleClick</varname></term>
+          <listitem>
+            <para>Pengaturan ini mengontrol apakah @PACKAGE_NAME@ akan menutup tab terminal jika pengguna menekan klik tengah pada judul tab. Dapat diatur <literal>TRUE</literal> (standarnya) atau <literal>FALSE.</literal></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscTabPosition</varname></term>
+          <listitem>
+            <para>Tentukan posisi dimana tajuk tab harus ditampilkan. Ini dapat diatur <literal>GTK_POS_TOP</literal> (standarnya), <literal>GTK_POS_LEFT</literal>, <literal>GTK_POS_BOTTOM</literal> atau <literal>GTK_POS_RIGHT</literal>. Jika anda menentukan <literal>GTK_POS_LEFT</literal> atau <literal>GTK_POS_RIGHT</literal> di sini, teks tajuk tab akan ditampilkan secara vertikal dan bukan secara horizontal. Sangat disarankan untuk menonaktifkan <varname>MiscTabCloseButtons</varname> untuk <literal>GTK_POS_LEFT</literal> and <literal>GTK_POS_RIGHT</literal>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><varname>MiscHighlightUrls</varname></term>
+          <listitem>
+            <para>Pengaturan ini mengontrol apakah URL - baik hipertaut dan alamat email - akan disorot dalam teks yang ditampilkan di jendela terminal. Jika anda mengubah opsi ini menjadi <literal>FALSE</literal>, URL tidak akan disorot lagi dan anda tidak akan dapat lagi klik tengah URL untuk membukanya dalam aplikasi kesukaan.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+  </sect1>
+
+  <sect1 id="faq">
+    <title>Pertanyaan acapkali diajukan</title>
+
+    <para>Tujuan dari bagian ini adalah untuk mengumpulkan banyak pertanyaan acapkali ditanyakan yang berhubungan dengan bagaimana cara bekerja dengan @PACKAGE_NAME@, atau bahkan emulator terminal pada umumnya. Jika anda mengetahui ada pertanyaan yang hilang dari halaman ini, silakan <ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">ajukan pertanyaan</ulink>.</para>
+
+    <sect3>
+      <title>@PACKAGE_NAME@ komplain tentang <literal>Tak dapat memulai server terminal: Tak dapat menyambung ke jurik pesan D-BUS</literal>, apa yang harus saya lakukan?</title>
+
+      <para>@PACKAGE_NAME@ mencoba untuk mengurangi jumlah instansi berjalan dengan membangun layanan D-BUS yang menangani semua jendela terminal. Pesan di atas memberitahu anda bahwa @PACKAGE_NAME@ tak dapat menyambung ke jurik pesan sesi D-BUS dan mendaftarkan layanan. Ini hanya peringatan, anda dapat menggunakan terminal tanpa fitur layanan D-BUS.</para>
+
+      <para>Untuk memulai jurik pesan sesi D-BUS ketika anda log masuk ke sesi X anda, anda dapat mengubah berkas xinitrc dan mengubah baris <literal>xfce4-session</literal> menjadi <literal>dbus-launch xfce4-session</literal> atau gunakan <literal>dbus-launch startxfce4</literal> untuk memulai Xfce. Jika anda tidak menggunakan Xfce, silakan lihat dokumentasi lingkungan desktop anda tentang bagaimana mengaktifkan jurik sesi D-BUS.</para>
+    </sect3>
+
+    <sect3>
+      <title>Tombol <keycap>Home</keycap> dan <keycap>End</keycap> tidak bekerja di @PACKAGE_NAME@, apa yang salah?</title>
+
+      <para>Masalah ini sebenarnya adalah kutu di <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>, widget terminal yang digunakan oleh @PACKAGE_NAME@. Patch untuk vte yang memperbaiki masalah ini tersedia <ulink url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">di sini</ulink> (patch ini dibuat dengan vte versi 0.11.11, dan mungkin tidak bekerja pada versi lainnya). Terima kasih untuk Auke Kok untuk patch ini.</para>
+    </sect3>
+  </sect1>
+
+  <sect1 id="support">
+    <title>Dukungan</title>
+
+    <para>Untuk melaporkan kutu atau membuat saran tentang aplikasi atau manual ini, gunakan sistem pelacakan kutu di <ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">http://bugzilla.xfce.org/</ulink>. Perlu diingat bahwa pelaporan kutu yang berguna adalah yang akan memperbaiki kutu, jadi pelaporan kutu yang berguna memiliki dua syarat:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para><emphasis role="bold">Dapat dibuat kembali.</emphasis> Jika pengembang tidak dapat melihat langsung kutu untuk membuktikan bahwa kutu itu ada, maka hampir dapat dipastikan ia tidak dapat memperbaikinya sama sekali. Tiap detail yang anda berikan akan membantu.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis role="bold">Spesifik.</emphasis> Makin cepat pengembang dapat mengisolasi masalah ke area spesifik, makin besar kemungkinan ia akan memperbaikinya.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>Dalam kasus dimana anda ingin meminta fitur baru, tolong buat secara jelas kenapa anda menganggap hal itu merupakan tambahan yang berharga untuk aplikasi. Makin besar kemungkinan fitur baru ditambahkan ke aplikasi jika anda memberikan argumen yang bagus untuk fitur tersebut. Akan pula meningkatkan peluang penambahan tersebut jika anda menyediakan patch yang mengimplementasikan fitur yang diminta, tapi pastikan anda telah membaca berkas <ulink url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink> - terutama bagian yang berjudul <emphasis>Gaya Penyandian</emphasis> - sebelum anda mulai hacking program.</para>
+
+    <para>Atau, jika anda memiliki pertanyaan tentang bagaimana cara penggunaan atau instalasi peranti lunak ini, silakan tanyakan di <ulink url="http://www.xfce.org/community/lists">milis pengguna Xfce</ulink> atau arahkan klien IRC anda ke <emphasis role="bold">irc.freenode.net</emphasis>, gabung ke kanal <emphasis role="bold">#xfce</emphasis> dan mintalah bantuan.</para>
+  </sect1>
+
+  <sect1 id="copyright">
+    <title>Tentang @PACKAGE_NAME@</title>
+
+    <para>@PACKAGE_NAME@ ditulis oleh Benedikt Meurer (<email>benny@xfce.org</email>). Kunjungi <ulink url="http://www.os-cillation.com/" type="http">os-cillation website</ulink> untuk informasi lebih lanjut.</para>
+
+    <para>Dokumentasi ini ditulis oleh Benedikt Meurer (<email>benny@xfce.org</email>) dan Andrew Conkling (<email>andrewski@fr.st</email>). Versi paling baru dari dokumen ini selalu tersedia dari <ulink type="http" url="http://terminal.os-cillation.com/">situs web Terminal</ulink>.</para>
+
+    <para>Program ini didistribusikan di bawah perjanjian Lisensi Publik Umum GNU seperti yang dipublikasikan oleh Free Software Foundation; baik versi 2 dari Lisensi, atau (sesuai pilihan anda) versi manapun setelahnya.</para>
+
+    <para>Anda seharusnya menerima salinan dari Lisensi Publik Umum GNU bersama dengan program ini; jika tidak, kirim surat ke Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.</para>
+  </sect1>
+
+</article>
+<!--
+  vim:set ts=2 sw=2 et ai:
+-->
