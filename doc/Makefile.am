@@ -3,6 +3,7 @@ SUBDIRS = \
 	da \
 	fr \
 	gl \
+	id \
 	ja
 
 cssdir = $(docdir)
