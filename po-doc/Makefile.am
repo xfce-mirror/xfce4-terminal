@@ -63,14 +63,14 @@ $(PACKAGE).pot: $(docdir)/C/$(PACKAGE).xml.in
 
 update-po: Makefile $(PACKAGE).pot
 	@echo "*** Updating PO ***"
-	langs=`sed -e '/^#/d' $(srcdir)/LINGUAS`; \
+	langs=`cd "$(srcdir)/" 2>/dev/null && ls *.po 2>/dev/null | awk 'BEGIN { FS="."; ORS=" " } { print $$1 }'`; \
 	for lang in $$langs; do \
 		$(XML2PO) -u $$lang.po $(docdir)/C/$(PACKAGE).xml.in; \
 	done
 
 update-xml: Makefile $(PACKAGE).pot
 	@echo "*** Updating XML ***"
-	langs=`sed -e '/^#/d' $(srcdir)/LINGUAS`; \
+	langs=`cd "$(srcdir)/" 2>/dev/null && ls *.po 2>/dev/null | awk 'BEGIN { FS="."; ORS=" " } { print $$1 }'`; \
 	for lang in $$langs; do \
 		if test -n $(docdir)/$$lang; then \
 			mkdir -p $(docdir)/$$lang; \
