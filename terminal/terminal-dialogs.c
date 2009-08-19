@@ -75,7 +75,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
   gtk_show_about_dialog (parent,
                          "authors", authors,
                          "artists", artists,
-                         "comments", _("X Terminal Emulator"),
+                         "comments", _("Xfce Terminal Emulator"),
                          "documenters", documenters,
                          "copyright", "Copyright \302\251 2003-2007 Benedikt Meurer",
                          "license", XFCE_LICENSE_GPL,
@@ -83,7 +83,8 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "program-name", PACKAGE_NAME,
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
-                         "website", "http://www.xfce.org/projects/terminal/",
+                         "website", "http://goodies.xfce.org/projects/applications/terminal",
+                         "website-label", _("Visit Terminal website"),
                          NULL);
 
   /* release the about logo (if any) */
