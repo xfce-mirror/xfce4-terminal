@@ -14,14 +14,14 @@ m4_define([terminal_version_minor], [4])
 m4_define([terminal_version_micro], [0])
 m4_define([terminal_version_nano], [])
 m4_define([terminal_version_build], [@REVISION@])
-m4_define([terminal_version_tag], [svn])
+m4_define([terminal_version_tag], [git])
 m4_define([terminal_version_dbus], [3])
-m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()ifelse(terminal_version_nano(), [], [], [.terminal_version_nano()])ifelse(terminal_version_tag(), [svn], [terminal_version_tag()-terminal_version_build()], [terminal_version_tag()])])
+m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()ifelse(terminal_version_nano(), [], [], [.terminal_version_nano()])ifelse(terminal_version_tag(), [git], [terminal_version_tag()-terminal_version_build()], [terminal_version_tag()])])
 
 dnl *******************************************
-dnl *** Debugging support for SVN snapshots ***
+dnl *** Debugging support for GIT snapshots ***
 dnl *******************************************
-m4_define([terminal_debug_default], [ifelse(terminal_version_tag(), [svn], [yes], [minimum])])
+m4_define([terminal_debug_default], [ifelse(terminal_version_tag(), [git], [yes], [minimum])])
 
 dnl ***************************
 dnl *** Initialize autoconf ***
@@ -40,6 +40,7 @@ dnl ***************************
 AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
 AM_CONFIG_HEADER([config.h])
 AM_MAINTAINER_MODE()
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 dnl ***********************************
 dnl *** Subst D-BUS service version ***
