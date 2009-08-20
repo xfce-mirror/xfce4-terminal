@@ -343,6 +343,8 @@ terminal_screen_get_property (GObject          *object,
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
   const gchar    *title = NULL;
+  TerminalTitle   mode;
+  gchar          *initial = NULL;
 
   switch (prop_id)
     {
@@ -355,10 +357,26 @@ terminal_screen_get_property (GObject          *object,
 
     case PROP_TITLE:
       if (G_UNLIKELY (screen->custom_title != NULL))
-        title = screen->custom_title;
+        {
+          title = screen->custom_title;
+        }
       else if (G_LIKELY (screen->terminal != NULL))
-        title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+        {
+          g_object_get (G_OBJECT (screen->preferences), "title-mode", &mode, NULL);
+          if (G_UNLIKELY (mode == TERMINAL_TITLE_HIDE))
+            {
+              /* show the initial title if the dynamic title is set to hidden */
+              g_object_get (G_OBJECT (screen->preferences), "title-initial", &initial, NULL);
+              title = initial;
+            }
+          else
+            {
+              /* show the vte title */
+              title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+            }
+        }
       g_value_set_string (value, title != NULL ? title : _("Untitled"));
+      g_free (initial);
       break;
 
     default:
