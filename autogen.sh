@@ -20,6 +20,15 @@ EOF
   exit 1
 }
 
+# Build changelog
+if test -d .git; then
+  git log --pretty=short --shortstat 2> /dev/null > ChangeLog.tmp \
+  && mv ChangeLog.tmp ChangeLog
+fi
+if test ! -f ChangeLog; then
+  echo "A git checkout and 'git log' is required to generate this file." > ChangeLog
+fi
+
 exec xdt-autogen "$@"
 
 # vi:set ts=2 sw=2 et ai:
