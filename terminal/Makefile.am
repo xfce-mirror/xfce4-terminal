@@ -132,12 +132,12 @@ BUILT_SOURCES = \
 	$(Terminal_built_sources)
 
 terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
-	exo-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
+	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
 stamp-terminal-enum-types.h: terminal-preferences.h Makefile
-	( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN)  ( cd $(srcdir) && glib-mkenums \
 --fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <exo/exo.h>\nG_BEGIN_DECLS\n" \
 --fprod "/* enumerations from \"@filename@\" */\n" \
 --vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
@@ -147,7 +147,7 @@ terminal-preferences.h ) >> xgen-teth \
 	&& rm -f xgen-teth \
 	&& echo timestamp > $(@F)
 terminal-enum-types.c: terminal-preferences.h Makefile
-	( cd $(srcdir) && glib-mkenums \
+	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
 --fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \
 --fprod " \n/* enumerations from \"@filename@\" */" \
 --vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {" \
@@ -160,7 +160,7 @@ terminal-preferences.h ) >> xgen-tetc \
 terminal-marshal.h: stamp-terminal-marshal.h
 	@true
 stamp-terminal-marshal.h: terminal-marshal.list Makefile
-	( cd $(srcdir) && glib-genmarshal \
+	$(AM_V_GEN) ( cd $(srcdir) && glib-genmarshal \
 --prefix=_terminal_marshal \
 --header terminal-marshal.list ) >> xgen-tmh \
 	&& ( cmp -s xgen-tmh terminal-marshal.h || cp xgen-tmh terminal-marshal.h ) \
@@ -168,7 +168,7 @@ stamp-terminal-marshal.h: terminal-marshal.list Makefile
 	&& echo timestamp > $(@F)
 
 terminal-marshal.c: terminal-marshal.list Makefile
-	echo "#include <terminal/terminal-marshal.h>" > xgen-tmc \
+	$(AM_V_GEN) echo "#include <terminal/terminal-marshal.h>" > xgen-tmc \
 	&& ( cd $(srcdir) && glib-genmarshal \
 --prefix=_terminal_marshal \
 --body terminal-marshal.list ) >> xgen-tmc \
