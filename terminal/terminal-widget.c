@@ -660,9 +660,10 @@ terminal_widget_open_uri (TerminalWidget *widget,
                           const gchar    *link,
                           gint            tag)
 {
-  GError *error = NULL;
-  gchar  *uri;
-  guint   i;
+  GError    *error = NULL;
+  gchar     *uri;
+  guint      i;
+  GdkScreen *screen;
 
   for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
     {
@@ -693,8 +694,12 @@ terminal_widget_open_uri (TerminalWidget *widget,
         }
 
       /* try to open the URI with the responsible application */
-      if (!exo_url_show_on_screen (uri, NULL,
-          gtk_widget_get_screen (GTK_WIDGET (widget)), &error))
+      screen = gtk_widget_get_screen (GTK_WIDGET (widget));
+#if EXO_CHECK_VERSION (0, 5, 0)
+      if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error))
+#else
+      if (!exo_url_show_on_screen (uri, NULL, screen, &error))
+#endif
         {
           /* tell the user that we were unable to open the responsible application */
           terminal_dialogs_show_error (widget, error, _("Failed to open the URL `%s'"), uri);
