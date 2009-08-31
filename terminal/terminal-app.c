@@ -48,6 +48,7 @@
 
 static void               terminal_app_finalize                 (GObject            *object);
 static void               terminal_app_update_accels            (TerminalApp        *app);
+static void               terminal_app_update_mnemonics         (TerminalApp        *app);
 static GtkWidget         *terminal_app_create_window            (TerminalApp        *app,
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
@@ -118,6 +119,8 @@ terminal_app_init (TerminalApp *app)
   app->preferences = terminal_preferences_get ();
   g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-menukey",
                             G_CALLBACK (terminal_app_update_accels), app);
+  g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-mnemonics",
+                            G_CALLBACK (terminal_app_update_mnemonics), app);
 
   /* remember the original menu bar accel */
   g_object_get (G_OBJECT (gtk_settings_get_default ()),
@@ -125,6 +128,7 @@ terminal_app_init (TerminalApp *app)
                 NULL);
 
   terminal_app_update_accels (app);
+  terminal_app_update_mnemonics (app);
 
   /* connect the accel map */
   app->accel_map = g_object_new (TERMINAL_TYPE_ACCEL_MAP, NULL);
@@ -146,9 +150,8 @@ terminal_app_finalize (GObject *object)
     }
   g_slist_free (app->windows);
 
-  g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences),
-                                        G_CALLBACK (terminal_app_update_accels),
-                                        app);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_accels), app);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_mnemonics), app);
   g_object_unref (G_OBJECT (app->preferences));
 
   if (app->initial_menu_bar_accel != NULL)
@@ -182,6 +185,21 @@ terminal_app_update_accels (TerminalApp *app)
   gtk_settings_set_string_property (gtk_settings_get_default (),
                                     "gtk-menu-bar-accel", accel,
                                     "Terminal");
+}
+
+
+
+static void
+terminal_app_update_mnemonics (TerminalApp *app)
+{
+  gboolean no_mnemonics;
+
+  g_object_get (G_OBJECT (app->preferences),
+                "shortcuts-no-mnemonics", &no_mnemonics,
+                NULL);
+  g_object_set (G_OBJECT (gtk_settings_get_default ()),
+                "gtk-enable-mnemonics", !no_mnemonics,
+                NULL);
 }
 
 

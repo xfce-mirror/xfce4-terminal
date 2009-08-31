@@ -92,7 +92,6 @@ static void            terminal_window_set_size_force_grid           (TerminalWi
                                                                       gint                    force_grid_width,
                                                                       gint                    force_grid_height);
 static void            terminal_window_update_actions                (TerminalWindow         *window);
-static void            terminal_window_update_mnemonics              (TerminalWindow         *window);
 static void            terminal_window_rebuild_gomenu                (TerminalWindow         *window);
 static void            terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
                                                                       GtkNotebookPage        *page,
@@ -309,7 +308,7 @@ terminal_window_init (TerminalWindow *window)
   GtkAccelGroup  *accel_group;
   GtkAction      *action;
   GtkWidget      *vbox;
-  gboolean        no_mnemonics, always_show_tabs;
+  gboolean        always_show_tabs;
   gchar          *role;
   GtkRcStyle     *style;
 
@@ -322,8 +321,6 @@ terminal_window_init (TerminalWindow *window)
                             G_CALLBACK (terminal_window_set_size), window);
   g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::scrolling-bar",
                             G_CALLBACK (terminal_window_set_size), window);
-  g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::shortcuts-no-mnemonics",
-                            G_CALLBACK (terminal_window_update_mnemonics), window);
 
   window->action_group = gtk_action_group_new ("terminal-window");
   gtk_action_group_set_translation_domain (window->action_group,
@@ -348,15 +345,6 @@ terminal_window_init (TerminalWindow *window)
   gtk_container_add (GTK_CONTAINER (window), vbox);
   gtk_widget_show (vbox);
 
-  /* get some preferences */
-  g_object_get (G_OBJECT (window->preferences),
-                "shortcuts-no-mnemonics", &no_mnemonics,
-                "misc-always-show-tabs", &always_show_tabs, NULL);
-
-  /* setup mnemonics */
-  if (G_UNLIKELY (no_mnemonics))
-    terminal_window_update_mnemonics (window);
-
 #if defined(GDK_WINDOWING_X11)
   /* setup fullscreen mode */
   if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
@@ -367,6 +355,7 @@ terminal_window_init (TerminalWindow *window)
 #endif
 
   /* allocate the notebook for the terminal screens */
+  g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
                                    "homogeneous", TRUE,
                                    "scrollable", TRUE,
@@ -706,44 +695,6 @@ terminal_window_update_actions (TerminalWindow *window)
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
     }
 }
-
-
-
-static void
-terminal_window_update_mnemonics (TerminalWindow *window)
-{
-  gboolean disable;
-  GSList  *wp;
-  GList   *actions;
-  GList   *ap;
-  gchar   *label;
-  gchar   *tmp;
-
-  g_object_get (G_OBJECT (window->preferences),
-                "shortcuts-no-mnemonics", &disable,
-                NULL);
-
-  actions = gtk_action_group_list_actions (window->action_group);
-  for (ap = actions; ap != NULL; ap = ap->next)
-    for (wp = gtk_action_get_proxies (ap->data); wp != NULL; wp = wp->next)
-      if (G_TYPE_CHECK_INSTANCE_TYPE (wp->data, GTK_TYPE_MENU_ITEM))
-        {
-          g_object_get (G_OBJECT (ap->data), "label", &label, NULL);
-          if (disable)
-            {
-              tmp = exo_str_elide_underscores (label);
-              g_free (label);
-              label = tmp;
-            }
-
-          g_object_set (G_OBJECT (GTK_BIN (wp->data)->child),
-                        "label", label, NULL);
-
-          g_free (label);
-        }
-  g_list_free (actions);
-}
-
 
 
 static void
