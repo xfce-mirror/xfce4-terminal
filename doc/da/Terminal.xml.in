@@ -24,7 +24,7 @@
 
     <copyright>
       <year>2009</year>
-      <holder>Xfce Development Team</holder>
+      <holder>Udviklingsholdet bag Xfce</holder>
     </copyright>
 
     <legalnotice id="legalnotice">
@@ -56,7 +56,7 @@
         <surname>Schermer</surname>
         <affiliation>
           <address><email>nick@xfce.org</email></address>
-          <jobtitle>Xfce Core Developer</jobtitle>
+          <jobtitle>Kerneudvikler af Xfce</jobtitle>
         </affiliation>
       </author>
     </authorgroup>
@@ -108,7 +108,7 @@
 
       <para>Det nemmeste måde at starte @PACKAGE_NAME@ på, er ved at bruge programmenuen på dit skrivebord; i Xfce, flyt din musemarkør ud på skrivebordet, tryk på højremusetasten og vælg <menuchoice><guimenu>System</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>.</para>
 
-      <para>Du kan også starte @PACKAGE_NAME@ fra en kommandolinje eller fra <guilabel>Programstarteren</guilabel>. Tryk blot på <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, indtast <userinput><command>Terminal&gt;</command></userinput> og tryk på knappen <guibutton>Kørs&gt;.</guibutton></para>
+      <para>Du kan også starte @PACKAGE_NAME@ fra en kommandolinje eller fra <guilabel>Programstarteren</guilabel>. Tryk blot på <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, indtast <userinput><command>Terminal&gt;</command></userinput> og tryk på knappen <guibutton>Kør</guibutton>.</para>
     </sect2>
 
     <sect2>
@@ -136,8 +136,7 @@
         <varlistentry>
           <term><varname>TERM</varname></term>
           <listitem>
-            <para>Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you
-            can configure the value from the preferences dialog.</para>
+            <para>Indstil til <literal>xterm</literal> eller <literal>xterm-color</literal>. Du kan indstille værdien fra indstillingsvinduet.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -295,7 +294,7 @@
         <varlistentry>
           <term>Sådan markerer og kopierer du tekst:</term>
           <listitem>
-            <para> Du kan markere tekst, på en af følgende måder:</para>
+            <para>Du kan markere tekst, på en af følgende måder:</para>
             <itemizedlist>
               <listitem>
                 <para>For at vælge ét tegn ad gangen, skal du klikke på den første du ønsker at markere og trække musen hen til det sidste tegn, du ønsker at markere.</para>
@@ -643,8 +642,7 @@
         <varlistentry>
           <term><guilabel>Palet</guilabel></term>
           <listitem>
-            <para>The terminal provides the application running inside with a palette of
-            16 colors. You can customize these colors using the 16 color buttons.</para>
+            <para>Terminalen tilbyder, til det program der kører inden i den, en palet med 16 farver. Du kan tilpasse disse farver ved at bruge de 16 farveknapper.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -734,13 +732,7 @@
         <varlistentry>
           <term><guilabel>$TERM-opsætning</guilabel></term>
           <listitem>
-            <para>
-              This specifies the value the <varname>$TERM</varname> environment variable is set to, when
-              a new terminal tab or terminal window is opened. The default should be ok for most
-              systems. If you have problems with colors in some applications or if you think that a
-              certain application behaves oddly, try <userinput>xterm-color</userinput> here. If you have
-              problems with ncurses 5.6 or later you could also try <userinput>xfce</userinput>.
-            </para>
+            <para>Dette angiver den værdi miljøet <varname>$TERM</varname> er indstillet til, når et nyt terminalfaneblad eller terminalvindue er åbnet. Standarden burde være o.k. for de fleste systemer. Hvis du har problemer med farver i nogle programmer, eller hvis du synes at et bestemt program opfører sig mærkeligt, så prøv <userinput>xterm-color</userinput> her. Hvis du har problemer med ncurses 5.6 eller senere kan du også afprøve <userinput>xfce</userinput>.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -783,7 +775,7 @@
         </varlistentry>
 
         <varlistentry>
-          <term><option>-disable-server</option></term>
+          <term><option>--disable-server</option></term>
           <listitem>
             <para>Registrér ikke med D-BUS-sessionsbeskedbussen</para>
           </listitem>
@@ -869,17 +861,14 @@
         <varlistentry>
           <term><option>--show-menubar</option></term>
           <listitem>
-            <para> Slå menulinjen til for det sidst specificerede vindue.. Det kan specificeres en gang for hvert vindue, du opretter fra kommandolinjen.</para>
+            <para>Slå menulinjen til for det sidst specificerede vindue.. Det kan specificeres en gang for hvert vindue, du opretter fra kommandolinjen.</para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
           <term><option>--hide-menubar</option></term>
           <listitem>
-            <para>
-              Turn off the menubar for the last-specified window. Can be specified once for each
-              window you create from the command line.
-            </para>
+            <para>Slå menulinjen til for det sidst angivne vindue.. Det kan angives én gang for hvert vindue, du opretter fra kommandolinjen.</para>
           </listitem>
         </varlistentry>
 
@@ -989,18 +978,16 @@
 
       <programlisting>
 [Configuration]
-MiscAlwaysShowTabs=TRUE
-MiscBell=TRUE
-MiscConfirmClose=FALSE
-MiscCursorBlinks=TRUE
-MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK
-MiscCycleTabs=FALSE
-MiscInheritGeometry=TRUE
-MiscMouseAutohide=FALSE
-MiscTabCloseButtons=TRUE
-MiscTabCloseMiddleClick=TRUE
+MiscAlwaysShowTabs=SAND
+MiscBell=SAND
+MiscConfirmClose=FALSK
+MiscCursorBlinks=SAND
+MiscCycleTabs=FALSK
+MiscInheritGeometry=SAND
+MiscMouseAutohide=FALSK
+MiscTabCloseButtons=SAND
 MiscTabPosition=GTK_POS_TOP
-MiscHighlightUrls=TRUE</programlisting>
+MiscHighlightUrls=SAND</programlisting>
 
       <para>plus alle de tilvalg der er styret gennem indstillingsvinduet.</para>
 
@@ -1036,13 +1023,7 @@ MiscHighlightUrls=TRUE</programlisting>
         <varlistentry>
           <term><varname>MiscCursorShape</varname></term>
           <listitem>
-            <para>
-              Specifies the shape of the cursor in the terminal. This can be either
-              <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default),
-              <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or
-              <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is
-              only available when you compile against VTE 0.19.1 or newer.
-            </para>
+            <para>Angiver formen af markøren i terminalenl. Denne kan enten være <literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (standarden), <literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> eller <literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. Denne indstilling er kun tilgængelig når du kompilerer med VTE 0.19.1 eller nyere.</para>
           </listitem>
         </varlistentry>
 
@@ -1084,11 +1065,7 @@ MiscHighlightUrls=TRUE</programlisting>
         <varlistentry>
           <term><varname>MiscTabCloseMiddleClick</varname></term>
           <listitem>
-            <para>
-              This setting controls whether @PACKAGE_NAME@ will close a terminal tab when
-              the user middle-clicks the tab title. Can be either <literal>TRUE</literal>
-              (the default) or <literal>FALSE</literal>.
-            </para>
+            <para>Denne indstilling styrer hvorvidt @PACKAGE_NAME@ vil lukke et faneblad når brugeren midterklikker på fanebladets titel. Kan enten være <literal>SAND</literal> (standard) eller <literal>FALSK</literal>.</para>
           </listitem>
         </varlistentry>
 
@@ -1145,10 +1122,7 @@ MiscHighlightUrls=TRUE</programlisting>
 
     <para>I det tilfælde at du ønsker at anmode om en ny funktion, så gør det venligst klart hvorfor du anser det som en forbedring af programmet. Det er mere sandsynligt at en ny funktion bliver tilføjet, hvis du tilbyder nogle gode argumenter for den nye funktion. Chancerne for at den bliver tilføjet er endnu større, hvis du medsender en programrettelse med den anmodede funktion, integreret i programmet. Vær dog sikker på at du får læst filen <ulink type="http" url="http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING">HACKING</ulink> - før du begynder at omskrive kildekoden.</para>
 
-    <para>Else, if you have questions about the use or installation of this software, please ask on the
-    <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink>
-    or point your IRC client to <emphasis role="bold">irc.freenode.net</emphasis>,
-    join the channel <emphasis role="bold">#xfce</emphasis> and ask for help.</para>
+    <para>Derudover hvis du har spørgsmål om brugen eller installation af dette programmel, så spørg venligst på <ulink url="http://www.xfce.org/community/lists">Xfce users mailing list </ulink> eller indstil din IRC-client til <emphasis role="bold">irc.freenode.net</emphasis>, tilslut dig kanalen <emphasis role="bold">#xfce</emphasis> og spørg efter hjælp.</para>
   </sect1>
 
   <sect1 id="copyright">
