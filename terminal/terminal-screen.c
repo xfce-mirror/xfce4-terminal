@@ -994,7 +994,8 @@ terminal_screen_timer_background (gpointer user_data)
   TerminalBackground   background_mode;
   GdkPixbuf           *image;
   gdouble              background_darkness;
-  gboolean             transparent = FALSE;
+  gdouble              saturation = 1.0;
+  guint16              opacity = 0xffff;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
@@ -1002,7 +1003,6 @@ terminal_screen_timer_background (gpointer user_data)
   GDK_THREADS_ENTER ();
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
-
 
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
     {
@@ -1026,25 +1026,15 @@ terminal_screen_timer_background (gpointer user_data)
     {
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
 
-      if (gtk_widget_is_composited (GTK_WIDGET (screen)))
-        {
-          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xffff * background_darkness);
-          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-        }
-      else
-        {
-          vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0 - background_darkness);
-          vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xffff);
-          transparent = TRUE;
-        }
-    }
-  else
-    {
-      vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), 1.0);
-      vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), 0xffff);
+      saturation = 1.0 - background_darkness;
+      opacity = 0xffff * background_darkness;
     }
 
-  vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal), transparent);
+  vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
+  vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), opacity);
+  vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
+                                           background_mode == TERMINAL_BACKGROUND_TRANSPARENT
+                                           && !gtk_widget_is_composited (GTK_WIDGET (screen)));
 
   screen->last_size_change = time (NULL);
 
