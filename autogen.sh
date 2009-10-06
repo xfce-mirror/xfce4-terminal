@@ -7,7 +7,7 @@
 #                 and Brian Tarricone <brian@tarricone.org>.
 #
 
-export XDT_AUTOGEN_REQUIRED_VERSION="4.7.0"
+export XDT_AUTOGEN_REQUIRED_VERSION="4.7.2"
 
 (type xdt-autogen) >/dev/null 2>&1 || {
   cat >&2 <<EOF
