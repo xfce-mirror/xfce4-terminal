@@ -46,7 +46,6 @@ typedef struct
 static const TerminalStockIcon terminal_stock_icons[] =
 {
   { TERMINAL_STOCK_CLOSETAB,    "tab-close" },
-  { TERMINAL_STOCK_CLOSEWINDOW, "window-close" },
   { TERMINAL_STOCK_NEWTAB,      "tab-new" },
   { TERMINAL_STOCK_NEWWINDOW,   "window-new" },
   { TERMINAL_STOCK_REPORTBUG,   NULL },

@@ -25,7 +25,6 @@
 G_BEGIN_DECLS
 
 #define TERMINAL_STOCK_CLOSETAB     "terminal-closetab"
-#define TERMINAL_STOCK_CLOSEWINDOW  "terminal-closewindow"
 #define TERMINAL_STOCK_NEWTAB       "terminal-newtab"
 #define TERMINAL_STOCK_NEWWINDOW    "terminal-newwindow"
 #define TERMINAL_STOCK_REPORTBUG    "terminal-reportbug"

@@ -219,7 +219,7 @@ static const GtkActionEntry action_entries[] =
   { "new-window", TERMINAL_STOCK_NEWWINDOW, N_ ("Open T_erminal"), "<control><shift>N", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), },
   { "detach-tab", NULL, N_ ("_Detach Tab"), NULL, N_ ("Open a new window for the current terminal tab"), G_CALLBACK (terminal_window_action_detach_tab), },
   { "close-tab", TERMINAL_STOCK_CLOSETAB, N_ ("C_lose Tab"), NULL, N_ ("Close the current terminal tab"), G_CALLBACK (terminal_window_action_close_tab), },
-  { "close-window", TERMINAL_STOCK_CLOSEWINDOW, N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
+  { "close-window", GTK_STOCK_QUIT, N_ ("_Close Window"), NULL, N_ ("Close the terminal window"), G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
   { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
   { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
