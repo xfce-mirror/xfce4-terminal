@@ -223,17 +223,19 @@ main (int argc, char **argv)
         }
       else
         {
-#ifdef DEBUG
-          g_warning ("Unable to invoke remote terminal: %s",
-                     error->message);
-#endif
-
           /* handle "User mismatch" special */
           if (error->domain == TERMINAL_ERROR
               && error->code == TERMINAL_ERROR_USER_MISMATCH)
             {
               /* don't try to establish another service here */
               options->disable_server = TRUE;
+#ifdef G_ENABLE_DEBUG
+              g_debug ("User mismatch when invoking remote terminal: %s", error->message);
+            }
+          else
+            {
+              g_debug ("No running instance found: %s", error->message);
+#endif /* !DEBUG */
             }
 
           g_error_free (error);
