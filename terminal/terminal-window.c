@@ -937,11 +937,11 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
 
 
-#define EVENT_IN_ALLOCATION(event,widget) \
-  ((widget)->allocation.x <= (event)->x \
-  && (widget)->allocation.x + (widget)->allocation.width >= (event)->x \
-  && (widget)->allocation.y <= (event)->y \
-  && (widget)->allocation.y + (widget)->allocation.height >= (event)->y)
+#define EVENT_IN_ALLOCATION(event_x,event_y,widget) \
+  ((event_x) >= (widget)->allocation.x  \
+  && (event_x) <= (widget)->allocation.x + (widget)->allocation.width \
+  && (event_y) >= (widget)->allocation.y \
+  && (event_y) <= (widget)->allocation.y + (widget)->allocation.height)
 
 
 
@@ -953,9 +953,14 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
   GtkWidget *page, *label, *menu;
   gint       page_num = 0;
   gboolean   close_middle_click;
+  gint       x, y;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
   terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
+
+  gdk_window_get_position (event->window, &x, &y);
+  x += event->x;
+  y += event->y;
 
   if (event->button == 1)
     {
@@ -963,7 +968,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
         {
           /* check if the user double-clicked on the label */
           label = gtk_notebook_get_tab_label (notebook, GTK_WIDGET (window->active));
-          if (EVENT_IN_ALLOCATION (event, label))
+          if (EVENT_IN_ALLOCATION (x, y, label))
             {
               terminal_window_action_set_title (NULL, window);
               return TRUE;
@@ -976,7 +981,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
       while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
         {
           label = gtk_notebook_get_tab_label (notebook, page);
-          if (EVENT_IN_ALLOCATION (event, label))
+          if (EVENT_IN_ALLOCATION (x, y, label))
             break;
           page_num++;
         }
