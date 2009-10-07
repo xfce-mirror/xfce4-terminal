@@ -85,6 +85,8 @@ static gboolean   terminal_screen_get_child_command             (TerminalScreen 
                                                                  gchar                **command,
                                                                  gchar               ***argv,
                                                                  GError               **error);
+static gchar     *terminal_screen_parse_title                   (TerminalScreen        *screen,
+                                                                 const gchar           *title);
 static gchar    **terminal_screen_get_child_environment         (TerminalScreen        *screen);
 static void       terminal_screen_update_background             (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
@@ -345,11 +347,12 @@ terminal_screen_get_property (GObject          *object,
   const gchar    *title = NULL;
   TerminalTitle   mode;
   gchar          *initial = NULL;
+  gchar          *custom_title;
 
   switch (prop_id)
     {
     case PROP_CUSTOM_TITLE:
-      if (IS_STRING (screen->custom_title))
+      if (screen->custom_title != NULL)
         g_value_set_string (value, screen->custom_title);
       else
         g_value_set_static_string (value, "");
@@ -358,9 +361,10 @@ terminal_screen_get_property (GObject          *object,
     case PROP_TITLE:
       if (G_UNLIKELY (screen->custom_title != NULL))
         {
-          title = screen->custom_title;
+          custom_title = terminal_screen_parse_title (screen, screen->custom_title);
+          g_value_take_string (value, custom_title);
         }
-      else if (G_LIKELY (screen->terminal != NULL))
+      else
         {
           g_object_get (G_OBJECT (screen->preferences), "title-mode", &mode, NULL);
           if (G_UNLIKELY (mode == TERMINAL_TITLE_HIDE))
@@ -369,14 +373,17 @@ terminal_screen_get_property (GObject          *object,
               g_object_get (G_OBJECT (screen->preferences), "title-initial", &initial, NULL);
               title = initial;
             }
-          else
+          else if (G_LIKELY (screen->terminal != NULL))
             {
-              /* show the vte title */
               title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
             }
+
+          /* TRANSLATORS: title for the tab/window used when all other
+           * possible titles were empty strings */
+          g_value_set_string (value, title != NULL ? title : _("Untitled"));
+
+          g_free (initial);
         }
-      g_value_set_string (value, title != NULL ? title : _("Untitled"));
-      g_free (initial);
       break;
 
     default:
@@ -500,6 +507,87 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
     }
 
   return TRUE;
+}
+
+
+
+static gchar *
+terminal_screen_parse_title (TerminalScreen *screen,
+                             const gchar    *title)
+{
+  GString     *string;
+  const gchar *remainder;
+  const gchar *percent;
+  const gchar *directory = NULL;
+  gchar       *base_name;
+  const gchar *vte_title;
+
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+
+  if (G_UNLIKELY (title == NULL))
+    return g_strdup ("");
+
+  string = g_string_new (NULL);
+  remainder = title;
+
+  /* walk from % character to % character */
+  for (;;)
+    {
+      /* look out for the next % character */
+      percent = strchr (remainder, '%');
+      if (percent == NULL)
+        {
+          /* we parsed the whole string */
+          g_string_append (string, remainder);
+          break;
+        }
+
+      /* append the characters in between */
+      g_string_append_len (string, remainder, percent - remainder);
+      remainder = percent + 1;
+
+      /* handle the "%" character */
+      switch (*remainder)
+        {
+        case 'd':
+        case 'D':
+          if (directory == NULL)
+            directory = terminal_screen_get_working_directory (screen);
+
+          if (G_LIKELY (directory != NULL))
+            {
+              if (*remainder == 'D')
+                {
+                  /* long directory name */
+                  g_string_append (string, directory);
+                }
+              else
+                {
+                  /* short directory name */
+                  base_name = g_path_get_basename (directory);
+                  g_string_append (string, base_name);
+                  g_free (base_name);
+                }
+            }
+          break;
+
+        case 'w':
+          /* window title from vte */
+          vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+          if (G_UNLIKELY (vte_title == NULL))
+            vte_title = _("Untitled");
+          g_string_append (string, vte_title);
+          break;
+
+        default:
+          g_string_append_c (string, '%');
+          continue;
+        }
+
+      remainder++;
+    }
+
+  return g_string_free (string, FALSE);
 }
 
 
@@ -1345,26 +1433,29 @@ terminal_screen_get_title (TerminalScreen *screen)
 {
   TerminalTitle  mode;
   const gchar   *vte_title;
-  gchar         *initial;
+  gchar         *initial, *tmp;
   gchar         *title;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   if (G_UNLIKELY (screen->custom_title != NULL))
-    return g_strdup (screen->custom_title);
-
-  g_object_get (G_OBJECT (screen->preferences),
-                "title-initial", &initial,
-                "title-mode", &mode,
-                NULL);
+    return terminal_screen_parse_title (screen, screen->custom_title);
 
   vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+  g_object_get (G_OBJECT (screen->preferences),
+                "title-mode", &mode,
+                "title-initial", &tmp,
+                NULL);
+  initial = terminal_screen_parse_title (screen, tmp);
+  g_free (tmp);
 
   switch (mode)
     {
     case TERMINAL_TITLE_REPLACE:
       if (G_LIKELY (vte_title != NULL))
         title = g_strdup (vte_title);
+      else if (initial != NULL)
+        return initial;
       else
         title = g_strdup (_("Untitled"));
       break;
@@ -1373,18 +1464,18 @@ terminal_screen_get_title (TerminalScreen *screen)
       if (G_LIKELY (vte_title != NULL))
         title = g_strconcat (vte_title, " - ", initial, NULL);
       else
-        title = g_strdup (initial);
+        return initial;
       break;
 
     case TERMINAL_TITLE_APPEND:
       if (G_LIKELY (vte_title != NULL))
         title = g_strconcat (initial, " - ", vte_title, NULL);
       else
-        title = g_strdup (initial);
+        return initial;
       break;
 
     case TERMINAL_TITLE_HIDE:
-      title = g_strdup (initial);
+      return initial;
       break;
 
     default:
@@ -1693,7 +1784,8 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_misc_set_padding (GTK_MISC (screen->tab_label), 2, 0);
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (screen->tab_label), "label");
-  exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (screen->tab_label), "tooltip-text");
+  exo_binding_new (G_OBJECT (screen->tab_label), "label",
+                   G_OBJECT (screen->tab_label), "tooltip-text");
   gtk_widget_set_has_tooltip (screen->tab_label, TRUE);
   gtk_widget_show (screen->tab_label);
 
