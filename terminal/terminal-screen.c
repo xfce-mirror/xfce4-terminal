@@ -1710,7 +1710,8 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_container_add (GTK_CONTAINER (align), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
                             G_CALLBACK (gtk_widget_destroy), screen);
-  gtk_widget_show (button);
+  exo_binding_new (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
+                   G_OBJECT (button), "visible");
 
   /* make button a bit smaller */
   style = gtk_rc_style_new ();
