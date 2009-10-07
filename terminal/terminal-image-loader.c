@@ -183,10 +183,9 @@ terminal_image_loader_pixbuf_destroyed (gpointer data,
         return;
       }
 
-#ifdef DEBUG
+#ifndef NDEBUG
   g_warning ("Pixbuf %p was freed from loader cache %p, "
-             "this should not happend",
-             pixbuf, loader);
+             "this should not happend", pixbuf, loader);
   terminal_assert_not_reached ();
 #endif
 }
@@ -466,23 +465,11 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   if (G_UNLIKELY (loader->pixbuf == NULL || width <= 1 || height <= 1))
     return NULL;
 
-#ifdef DEBUG
-  g_print ("Image Loader memory status:\n"
-           "~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n"
-           " Images in valid cache:\n");
-  for (lp = loader->cache; lp != NULL; lp = lp->next)
-    {
-      g_print ("  %p with refcount of %d\n", lp->data,
-               G_OBJECT (lp->data)->ref_count);
-    }
-
-  g_print ("\n Images in invalid cache:\n");
-  for (lp = loader->cache_invalid; lp != NULL; lp = lp->next)
-    {
-      g_print ("  %p with refcount of %d\n", lp->data,
-               G_OBJECT (lp->data)->ref_count);
-    }
-  g_print ("\n");
+#ifndef NDEBUG
+  g_debug ("Image Loader Memory Status: %d images in valid "
+           "cache, %d in invalid cache",
+           g_slist_length (loader->cache),
+           g_slist_length (loader->cache_invalid));
 #endif
 
   /* check for a cached version */

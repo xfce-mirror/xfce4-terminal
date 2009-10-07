@@ -153,7 +153,7 @@ main (int argc, char **argv)
   /* required because we don't call gtk_init() prior to usage() */
   gtk_set_locale ();
 
-#ifdef G_ENABLE_DEBUG
+#ifndef NDEBUG
   /* Do NOT remove this line for now, If something doesn't work,
    * fix your code instead!
    */
@@ -229,13 +229,13 @@ main (int argc, char **argv)
             {
               /* don't try to establish another service here */
               options->disable_server = TRUE;
-#ifdef G_ENABLE_DEBUG
+#ifndef NDEBUG
               g_debug ("User mismatch when invoking remote terminal: %s", error->message);
             }
           else
             {
               g_debug ("No running instance found: %s", error->message);
-#endif /* !DEBUG */
+#endif
             }
 
           g_error_free (error);

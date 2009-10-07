@@ -1121,7 +1121,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-#ifdef G_ENABLE_DEBUG
+#ifndef NDEBUG
   if (!GTK_WIDGET_REALIZED (screen))
     g_error ("Tried to launch command in a TerminalScreen that is not realized");
 #endif

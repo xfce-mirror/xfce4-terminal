@@ -1437,7 +1437,7 @@ terminal_preferences_check_blurb (GParamSpec *spec)
 
   /* check if the generated option name is equal to the blurb */
   if (!exo_str_is_equal (option, g_param_spec_get_blurb (spec)))
-    g_critical ("Blurb does not match option name %s", name);
+    g_error ("The blurb of property \"%s\" does not match option name", name);
 
   /* cleanup */
   g_free (option);
@@ -1763,7 +1763,7 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
         {
           /* connect signal */
 #ifndef NDEBUG
-          g_message ("Monitoring \"%s\" for changes.", filename);
+          g_debug ("Monitoring \"%s\" for changes.", filename);
 #endif
           g_signal_connect (G_OBJECT (preferences->monitor), "changed",
                             G_CALLBACK (terminal_preferences_monitor_changed),
@@ -1772,7 +1772,7 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
       else
         {
           g_critical ("Failed to setup monitoring for file \"%s\": %s",
-                       filename, error->message);
+                      filename, error->message);
           g_error_free (error);
         }
     }
