@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2009-08-14 12:43+0100\n"
 "Last-Translator: gianluca foddis <gianluca.foddis@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -332,12 +332,12 @@ msgstr ""
 "\n"
 "Per favore, segnalare i problemi a <%s>.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Impossibile registrare il servizio terminale: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Impossibile lanciare il terminale: %s\n"
@@ -484,11 +484,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opzione \"%s\" sconosciuta"
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Tutti i file"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "File di immagine"
 
@@ -604,21 +604,24 @@ msgstr "Vai alla scheda 9"
 msgid "Contents"
 msgstr "Contenuti"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossibile individuare la shell di login"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "Esecuzione del processo figlio fallita"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "Chiudi questa scheda"
 
@@ -643,7 +646,7 @@ msgid "Help"
 msgstr "Aiuto"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "Disabilitato"
 
@@ -952,15 +955,15 @@ msgstr "Chiudere tutte le schede?"
 msgid "Do _not ask me again"
 msgstr "_Non chiedere nuovamente"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "Imposta titolo"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 msgid "Title:"
 msgstr "Titolo:"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "Inserire il titolo per la scheda corrente"
 
@@ -968,511 +971,405 @@ msgstr "Inserire il titolo per la scheda corrente"
 msgid "Terminal Emulator"
 msgstr "Emulatore di Terminale"
 
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "impostazion_e $TERM:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "A_vanzate"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "Consenti t_esto in grassetto"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Autorilevamento"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Sfondo"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Immagine di sfondo"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Centrata"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Scegli il carattere per il Terminale"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Imposta il colore di attività della scheda"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Imposta il colore di sfondo del terminale"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Imposta il colore del cursore del terminale"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Imposta il colore del testo del terminale"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Imposta il colore di sfondo della selezione testo del terminale"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Selettore dei colori"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "Comando"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "Compatibilità"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
-"Considerare i seguenti caratteri come parti di una _parola\n"
-"quando viene effettuato il doppio click:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "Colore del cu_rsore"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr ""
-"Disabilita tutte le combinazioni di tasti per l'accesso al me_nu (es. Alt+f)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Disabilita tutti tasti scorciatoia di m_enu (predefinito: F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Mostra i _bordi intorno alle nuove finestre"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Mostra la barra dei _menu nelle nuove finestre"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Mostra le barre degli s_trumenti nelle nuove finestre"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Doppio click"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Abi_lita l'anti aliasing per i caratteri del terminale"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Abilitare questa opzione se si desidera che il Terminale usi l'anti-aliasing "
-"per il testo nelle finestre del terminale. Disabiltare questa opzione "
-"potrebbe migliorare molto le prestazioni di resa del terminale e ridurre il "
-"carico di sistema complessivo su sistemi lenti."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Abilitare questa opzione per consentire l'utilizzo del testo in grassetto "
-"alle applicazioni in esecuzione all'interno delle finestre di terminale"
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Abilitare questa opzione per consentire lo scorrimento a singola linea "
-"tramite i tasti freccia su/giù in combinazione col tasto Shift."
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Abilitare questa opzione per mostrare la barra dei menu nelle nuove finestre "
-"di terminale create."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Abilitare questa opzione per mostrare le barre degli strumenti nelle nuove "
-"finestre di terminale create."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Abilitare questa opzione per mostrare le decorazioni delle finestre nel "
-"nuovo terminale creato."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Permette di effettuare lo scorrimento della finestra del terminale fino al "
-"prompt dei comandi tramite la pressione di qualunque tasto"
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Cancella TTY"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Sequenza di escape"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Carattere"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Generale"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Inserito dopo il titolo iniziale"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Inserito prima del titolo iniziale"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Non viene mostrato"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Accesso alla barra dei menu"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Nessuno (usa un colore)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Sul lato sinistro"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Sul lato destro"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Apre una finestra di dialogo per la scelta del colore"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Apertura nuove finestre"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Tavola colori"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "Elemento tavola colori 1"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "Elemento tavola colori 10"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "Elemento tavola colori 11"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "Elemento tavola colori 12"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "Elemento tavola colori 13"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "Elemento tavola colori 14"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "Elemento tavola colori 15"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "Elemento tavola colori 16"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "Elemento tavola colori 2"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "Elemento tavola colori 3"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "Elemento tavola colori 4"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "Elemento tavola colori 5"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "Elemento tavola colori 6"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "Elemento tavola colori 7"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "Elemento tavola colori 8"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "Elemento tavola colori 9"
-
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Sostituisce il titolo iniziale"
-
-#: ../Terminal.glade.h:68
-msgid "Reset tab activity _indicator after"
-msgstr "Reimposta l'in_dicatore di attività della scheda dopo"
-
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "Scalata"
-
-#: ../Terminal.glade.h:70
-msgid "Scr_ollbar is:"
-msgstr "La barra di sc_orrimento è:"
-
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "Scorri alla _pressione di un tasto"
-
-#: ../Terminal.glade.h:72
-msgid "Scroll on ou_tput"
-msgstr "Scorri in presenza di ou_tput"
-
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Scorri una singola _linea tramite i tasti Shift-Su/Giù"
-
-#: ../Terminal.glade.h:74
-msgid "Scroll_back:"
-msgstr "Sco_rrimento:"
-
-#: ../Terminal.glade.h:75
-msgid "Scrolling"
-msgstr "Scorrimento"
-
-#: ../Terminal.glade.h:76
-msgid "Select Background Image File"
-msgstr "Selezionare il file d'immagine dello sfondo"
-
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Selezionare questa opzione per forzare il Terminale a lanciare la shell come "
-"shell di login quando vengono aperti nuovi terminali. Consultare la "
-"documentazione delle vostre shell per ulteriori dettagli riguardo alle "
-"differenze tra lanciarla come shell interattiva oppure shell di login."
-
-#: ../Terminal.glade.h:78
-msgid "Shortcut Keys"
-msgstr "Tasti Scorciatoia"
-
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Specifica il numero di linee di cui è possibile fare lo scorrimento "
-"all'indietro usando la barra di scorrimento"
-
-#: ../Terminal.glade.h:80
-msgid "St_yle:"
-msgstr "Sti_le:"
-
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "Stirata"
-
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr "Indicatore di attività della scheda"
-
-#: ../Terminal.glade.h:83
-msgid "Tab activit_y color:"
-msgstr "Colore di a_ttività della scheda:"
-
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "Impostazioni del Terminale"
-
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr ""
-"Le applicazioni nel terminale hanno a disposizione questa tavola di colori:"
-
-#: ../Terminal.glade.h:86
-msgid "Text Selection"
-msgstr "Selezione testo"
-
-#: ../Terminal.glade.h:87
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"Queste opzioni potrebbero causare un comportamento non corretto in alcune "
-"applicazioni. Sono qui disponibili solo per permettere di aggirare certe "
-"applicazioni o sistemi operativi che si aspettano un comportamento diverso "
-"del terminale."
-
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Questa opzione controlla se il terminale deve gestire lo scorrimento "
-"automatico qualora del nuovo output venga generato dai comandi in esecuzione "
-"all'interno del terminale."
-
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Specifica il valore a cui la variabile d'ambiente $TERM viene impostata "
-"quando una nuova scheda o finestra del terminale viene aperta. Il valore "
-"predefinito dovrebbe andare bene per la maggior parte dei sistemi. Se si "
-"riscontrano problemi con i colori in certe applicazioni, provare a impostare "
-"xterm-color qui."
-
-#: ../Terminal.glade.h:93
-msgid "Tiled"
-msgstr "Affiancata"
-
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "Titolo"
-
-#: ../Terminal.glade.h:95
-msgid "Transpare_ncy:"
-msgstr "Traspare_nza:"
-
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "Sfondo trasparente"
-
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "Utilizza il colore pre_definito"
-
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "Utilizza un colore di sfondo personalizzato per la selezione testo"
-
-#: ../Terminal.glade.h:99
-msgid "Use c_ustom color:"
-msgstr "_Utilizza un colore personalizzato:"
-
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "Utilizza un colore di sfondo predefinito per la selezione testo"
-
-#: ../Terminal.glade.h:101
-msgid "_Appearance"
-msgstr "_Aspetto"
-
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "Colore dello s_fondo:"
-
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "Il tasto _backspace genera:"
-
-#: ../Terminal.glade.h:104
-msgid "_Colors"
-msgstr "C_olori"
-
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "Il tasto c_ancella genera:"
-
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "Titolo impostato _dinamicamente:"
-
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_File:"
-
-#: ../Terminal.glade.h:108
-msgid "_General"
-msgstr "_Generale"
-
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "Titolo i_niziale:"
-
-#: ../Terminal.glade.h:110
-msgid "_Reset compatibility options to defaults"
-msgstr "_Reimposta le opzioni di compatibilità ai valori predefiniti"
-
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "_Esegui il comando come shell di login"
-
-#: ../Terminal.glade.h:112
-msgid "_Shortcuts"
-msgstr "_Scorciatoie"
-
-#: ../Terminal.glade.h:113
-msgid "_Text color:"
-msgstr "Co_lore del testo"
-
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Aggiorna i record di utmp/wtmp quando viene lanciato il comando"
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr "secondi"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "impostazion_e $TERM:"
+
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
+
+#~ msgid "Ad_vanced"
+#~ msgstr "A_vanzate"
+
+#~ msgid "Allow bold te_xt"
+#~ msgstr "Consenti t_esto in grassetto"
+
+#~ msgid "Auto-detect"
+#~ msgstr "Autorilevamento"
+
+#~ msgid "Background"
+#~ msgstr "Sfondo"
+
+#~ msgid "Background image"
+#~ msgstr "Immagine di sfondo"
+
+#~ msgid "Centered"
+#~ msgstr "Centrata"
+
+#~ msgid "Choose Terminal Font"
+#~ msgstr "Scegli il carattere per il Terminale"
+
+#~ msgid "Choose tab activity color"
+#~ msgstr "Imposta il colore di attività della scheda"
+
+#~ msgid "Choose terminal background color"
+#~ msgstr "Imposta il colore di sfondo del terminale"
+
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "Imposta il colore del cursore del terminale"
+
+#~ msgid "Choose terminal text color"
+#~ msgstr "Imposta il colore del testo del terminale"
+
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "Imposta il colore di sfondo della selezione testo del terminale"
+
+#~ msgid "Color Selector"
+#~ msgstr "Selettore dei colori"
+
+#~ msgid "Command"
+#~ msgstr "Comando"
+
+#~ msgid "Compatibility"
+#~ msgstr "Compatibilità"
+
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr ""
+#~ "Considerare i seguenti caratteri come parti di una _parola\n"
+#~ "quando viene effettuato il doppio click:"
+
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
+
+#~ msgid "Cu_rsor color:"
+#~ msgstr "Colore del cu_rsore"
+
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr ""
+#~ "Disabilita tutte le combinazioni di tasti per l'accesso al me_nu (es. Alt"
+#~ "+f)"
+
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "Disabilita tutti tasti scorciatoia di m_enu (predefinito: F10)"
+
+#~ msgid "Display _borders around new windows"
+#~ msgstr "Mostra i _bordi intorno alle nuove finestre"
+
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "Mostra la barra dei _menu nelle nuove finestre"
+
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "Mostra le barre degli s_trumenti nelle nuove finestre"
+
+#~ msgid "Double Click"
+#~ msgstr "Doppio click"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Abi_lita l'anti aliasing per i caratteri del terminale"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Abilitare questa opzione se si desidera che il Terminale usi l'anti-"
+#~ "aliasing per il testo nelle finestre del terminale. Disabiltare questa "
+#~ "opzione potrebbe migliorare molto le prestazioni di resa del terminale e "
+#~ "ridurre il carico di sistema complessivo su sistemi lenti."
+
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "Abilitare questa opzione per consentire l'utilizzo del testo in grassetto "
+#~ "alle applicazioni in esecuzione all'interno delle finestre di terminale"
+
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "Abilitare questa opzione per consentire lo scorrimento a singola linea "
+#~ "tramite i tasti freccia su/giù in combinazione col tasto Shift."
+
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr ""
+#~ "Abilitare questa opzione per mostrare la barra dei menu nelle nuove "
+#~ "finestre di terminale create."
+
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr ""
+#~ "Abilitare questa opzione per mostrare le barre degli strumenti nelle "
+#~ "nuove finestre di terminale create."
+
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "Abilitare questa opzione per mostrare le decorazioni delle finestre nel "
+#~ "nuovo terminale creato."
+
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "Permette di effettuare lo scorrimento della finestra del terminale fino "
+#~ "al prompt dei comandi tramite la pressione di qualunque tasto"
+
+#~ msgid "Erase TTY"
+#~ msgstr "Cancella TTY"
+
+#~ msgid "Escape sequence"
+#~ msgstr "Sequenza di escape"
+
+#~ msgid "Font"
+#~ msgstr "Carattere"
+
+#~ msgid "General"
+#~ msgstr "Generale"
+
+#~ msgid "Goes after initial title"
+#~ msgstr "Inserito dopo il titolo iniziale"
+
+#~ msgid "Goes before initial title"
+#~ msgstr "Inserito prima del titolo iniziale"
+
+#~ msgid "Isn't displayed"
+#~ msgstr "Non viene mostrato"
+
+#~ msgid "Menubar Access"
+#~ msgstr "Accesso alla barra dei menu"
+
+#~ msgid "None (use solid color)"
+#~ msgstr "Nessuno (usa un colore)"
+
+#~ msgid "On the left side"
+#~ msgstr "Sul lato sinistro"
+
+#~ msgid "On the right side"
+#~ msgstr "Sul lato destro"
+
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "Apre una finestra di dialogo per la scelta del colore"
+
+#~ msgid "Opening New Windows"
+#~ msgstr "Apertura nuove finestre"
+
+#~ msgid "Palette"
+#~ msgstr "Tavola colori"
+
+#~ msgid "Palette entry 1"
+#~ msgstr "Elemento tavola colori 1"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "Elemento tavola colori 10"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "Elemento tavola colori 11"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "Elemento tavola colori 12"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "Elemento tavola colori 13"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "Elemento tavola colori 14"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "Elemento tavola colori 15"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "Elemento tavola colori 16"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "Elemento tavola colori 2"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "Elemento tavola colori 3"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "Elemento tavola colori 4"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "Elemento tavola colori 5"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "Elemento tavola colori 6"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "Elemento tavola colori 7"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "Elemento tavola colori 8"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "Elemento tavola colori 9"
+
+#~ msgid "Replaces initial title"
+#~ msgstr "Sostituisce il titolo iniziale"
+
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "Reimposta l'in_dicatore di attività della scheda dopo"
+
+#~ msgid "Scaled"
+#~ msgstr "Scalata"
+
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "La barra di sc_orrimento è:"
+
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "Scorri alla _pressione di un tasto"
+
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "Scorri in presenza di ou_tput"
+
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "Scorri una singola _linea tramite i tasti Shift-Su/Giù"
+
+#~ msgid "Scroll_back:"
+#~ msgstr "Sco_rrimento:"
+
+#~ msgid "Scrolling"
+#~ msgstr "Scorrimento"
+
+#~ msgid "Select Background Image File"
+#~ msgstr "Selezionare il file d'immagine dello sfondo"
+
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "Selezionare questa opzione per forzare il Terminale a lanciare la shell "
+#~ "come shell di login quando vengono aperti nuovi terminali. Consultare la "
+#~ "documentazione delle vostre shell per ulteriori dettagli riguardo alle "
+#~ "differenze tra lanciarla come shell interattiva oppure shell di login."
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Tasti Scorciatoia"
+
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr ""
+#~ "Specifica il numero di linee di cui è possibile fare lo scorrimento "
+#~ "all'indietro usando la barra di scorrimento"
+
+#~ msgid "St_yle:"
+#~ msgstr "Sti_le:"
+
+#~ msgid "Stretched"
+#~ msgstr "Stirata"
+
+#~ msgid "Tab Activity Indicator"
+#~ msgstr "Indicatore di attività della scheda"
+
+#~ msgid "Tab activit_y color:"
+#~ msgstr "Colore di a_ttività della scheda:"
+
+#~ msgid "Terminal Preferences"
+#~ msgstr "Impostazioni del Terminale"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr ""
+#~ "Le applicazioni nel terminale hanno a disposizione questa tavola di "
+#~ "colori:"
+
+#~ msgid "Text Selection"
+#~ msgstr "Selezione testo"
+
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "Queste opzioni potrebbero causare un comportamento non corretto in alcune "
+#~ "applicazioni. Sono qui disponibili solo per permettere di aggirare certe "
+#~ "applicazioni o sistemi operativi che si aspettano un comportamento "
+#~ "diverso del terminale."
+
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "Questa opzione controlla se il terminale deve gestire lo scorrimento "
+#~ "automatico qualora del nuovo output venga generato dai comandi in "
+#~ "esecuzione all'interno del terminale."
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Specifica il valore a cui la variabile d'ambiente $TERM viene impostata "
+#~ "quando una nuova scheda o finestra del terminale viene aperta. Il valore "
+#~ "predefinito dovrebbe andare bene per la maggior parte dei sistemi. Se si "
+#~ "riscontrano problemi con i colori in certe applicazioni, provare a "
+#~ "impostare xterm-color qui."
+
+#~ msgid "Tiled"
+#~ msgstr "Affiancata"
+
+#~ msgid "Title"
+#~ msgstr "Titolo"
+
+#~ msgid "Transpare_ncy:"
+#~ msgstr "Traspare_nza:"
+
+#~ msgid "Transparent background"
+#~ msgstr "Sfondo trasparente"
+
+#~ msgid "Use _default color"
+#~ msgstr "Utilizza il colore pre_definito"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Utilizza un colore di sfondo personalizzato per la selezione testo"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "_Utilizza un colore personalizzato:"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Utilizza un colore di sfondo predefinito per la selezione testo"
+
+#~ msgid "_Appearance"
+#~ msgstr "_Aspetto"
+
+#~ msgid "_Background color:"
+#~ msgstr "Colore dello s_fondo:"
+
+#~ msgid "_Backspace key generates:"
+#~ msgstr "Il tasto _backspace genera:"
+
+#~ msgid "_Colors"
+#~ msgstr "C_olori"
+
+#~ msgid "_Delete key generates:"
+#~ msgstr "Il tasto c_ancella genera:"
+
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "Titolo impostato _dinamicamente:"
+
+#~ msgid "_File:"
+#~ msgstr "_File:"
+
+#~ msgid "_General"
+#~ msgstr "_Generale"
+
+#~ msgid "_Initial title:"
+#~ msgstr "Titolo i_niziale:"
+
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "_Reimposta le opzioni di compatibilità ai valori predefiniti"
+
+#~ msgid "_Run command as login shell"
+#~ msgstr "_Esegui il comando come shell di login"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Scorciatoie"
+
+#~ msgid "_Text color:"
+#~ msgstr "Co_lore del testo"
+
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "_Aggiorna i record di utmp/wtmp quando viene lanciato il comando"
+
+#~ msgid "seconds"
+#~ msgstr "secondi"

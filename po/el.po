@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2009-07-25 21:25+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -338,12 +338,12 @@ msgstr ""
 "\n"
 "Παρακαλώ αναφέρετε σφάλματα στο <%s>.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσίας τερματικού: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Δεν ήταν δυνατή η εκκίνηση του τερματικού: %s\n"
@@ -489,11 +489,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Άγνωστη επιλογή \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Όλα τα αρχεία"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Αρχεία εικόνων"
 
@@ -609,21 +609,24 @@ msgstr "Μετάβαση στην Καρτέλα 9"
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου σας."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
@@ -648,7 +651,7 @@ msgid "Help"
 msgstr "Βοήθεια"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "Απενεργοποιημένο"
 
@@ -956,15 +959,15 @@ msgstr "Κλείσιμο όλων των καρτελών;"
 msgid "Do _not ask me again"
 msgstr "Να _μην ξαναγίνει η ερώτηση"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "Ορισμός τίτλου"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 msgid "Title:"
 msgstr "Τίτλος:"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "Εισάγετε τον τίτλο για την τρέχουσα καρτέλα"
 
@@ -972,513 +975,406 @@ msgstr "Εισάγετε τον τίτλο για την τρέχουσα καρ
 msgid "Terminal Emulator"
 msgstr "Προσομοίωση τερματικού"
 
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "Ρύθμιση $TERM:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "Για προχ_ωρημένους"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "Να επιτρέπεται το έντονο κείμενο"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Αυτόματη αναγνώριση"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Παρασκηνίο"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Εικόνα παρασκηνίου"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Κεντραρισμένο"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Επιλογή γραμματοσειράς τερματικού"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Επιλογή χρώματος δραστηριότητας καρτέλας"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Επιλογή χρώματος παρασκηνίου τερματικού"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Επιλογή χρώματος δρομέα τερματικού"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Επιλογή χρώματος κειμένου τερματικού"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Επιλέξτε χρώμα παρασκηνίου για την επιλογή κειμένου"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Επιλογέας χρώματος"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "Εντολή"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "Συμβατότητα"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
-"Θεωρείστε τους ακόλουθους χαρακτήρες τμήμα μίας λέξης\n"
-"κατά το διπλό κλικ:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "Χρώμα κέ_ρσορα:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Απενεργοποίηση πλήκτρων συντομεύσεων μενού (όπως το Alt+f)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Απενεργοποίηση των πλήκτρων συντόμευσης του μενού (προεπιλογή F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Εμφάνιση _περιγραμμάτων στα νέα παράθυρα"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Εμφάνιση _μπάρας μενού στα νέα παράθυρα"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Εμφάνιση _εργαλειοθήκης στα νέα παράθυρα"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Διπλό κλικ"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Ενερ_γοποίηση εξομάλυνσης για τη γραμματοσειρά του τερματικού"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή αν θέλετε να χρησιμοποιηθεί εξομάλυνση κατά "
-"την απεικόνιση κειμένου στα παράθυρα του τερματικού. Η απενεργοποίηση της "
-"επιλογής μπορεί να επιταχύνει το τερματικό θεαματικά και να μειώσει τον "
-"γενικό φόρτο σε πιο αργά συστήματα."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να επιτρέψετε τις εφαρμογές που "
-"εκτελούνται μέσα στο τερματικό να χρησιμοποιήσουν έντονο κείμενο."
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Η ενεργοποίηση αυτής της επιλογής θα επιστρέψει την κύλιση ανά μία γραμμή "
-"χρησιμοποιώντας τα πλήκτρα βέλους επάνω/κάτω σε συνδυασμό με το πλήκτρο "
-"shift."
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Ενεργοποιείστε αυτή την επιλογή για να εμφανίζεται η μπάρα μενού στα νέα "
-"παράθυρα τερματικού."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται οι εργαλειοθήκες στα νέα "
-"παράθυρα τερματικού."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται περιγράμματα παραθύρου "
-"στα νέα παράθυρα τερματικού."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Σας επιτρέπει να κυλίσετε στη γραμμή εντολών πατώντας οποιοδήποτε πλήκτρο "
-"στο πληκτρολόγιο."
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Καθαρισμός ΤΤΥ"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Ακολουθία διαφυγής"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Γραμματοσειρά"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Γενικές"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Πηγαίνει μετά τον αρχικό τίτλο"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Πηγαίνει πριν τον αρχικό τίτλο"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Δεν προβάλλεται"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Πρόσβαση στην εργαλειοθήκη μενού"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Κανένα (χρήση στερεού χρώματος)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Στην αριστερή πλευρά"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Στη δεξιά πλευρά"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Άνοιγμα ενός διαλόγου για τον καθορισμό του χρώματος"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Άνοιγμα νέων παραθύρων"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Παλέτα"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "Καταχώρηση παλέτας 1"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "Καταχώρηση παλέτας 10"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "Καταχώρηση παλέτας 11"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "Καταχώρηση παλέτας 12"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "Καταχώρηση παλέτας 13"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "Καταχώρηση παλέτας 14"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "Καταχώρηση παλέτας 15"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "Καταχώρηση παλέτας 16"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "Καταχώρηση παλέτας 2"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "Καταχώρηση παλέτας 3"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "Καταχώρηση παλέτας 4"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "Καταχώρηση παλέτας 5"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "Καταχώρηση παλέτας 6"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "Καταχώρηση παλέτας 7"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "Καταχώρηση παλέτας 8"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "Καταχώρηση παλέτας 9"
-
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Αντικαθιστά τον αρχικό τίτλο"
-
-#: ../Terminal.glade.h:68
-msgid "Reset tab activity _indicator after"
-msgstr "Επαναφορά της ένδειξης δραστηριότητας καρτέλας έπειτα από"
-
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "Σε κλίμακα"
-
-#: ../Terminal.glade.h:70
-msgid "Scr_ollbar is:"
-msgstr "Η μπάρα κ_ύλισης είναι:"
-
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "Κύλιση στο _πάτημα πλήκτρου"
-
-#: ../Terminal.glade.h:72
-msgid "Scroll on ou_tput"
-msgstr "Κύλιση στην έξοδο των εντολών"
-
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Κύλιση ανά μία γραμμή χρησιμοποιώντας τα shift-επάνω/κάτω πλήκτρα"
-
-#: ../Terminal.glade.h:74
-msgid "Scroll_back:"
-msgstr "Κύλιση προς τα _πίσω:"
-
-#: ../Terminal.glade.h:75
-msgid "Scrolling"
-msgstr "Κύλιση"
-
-#: ../Terminal.glade.h:76
-msgid "Select Background Image File"
-msgstr "Επιλέξτε το αρχείο εικόνας του παρασκηνίου"
-
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Επιλέξτε αυτό για να αναγκάσετε το Τερματικό να εκτελεί το κέλυφός σας ως "
-"κέλυφος εισόδου όταν ανοίγετε νέα τερματικά. Συμβουλευτείτε την τεκμηρίωση "
-"του κελύφους σας για τη διαφορά μεταξύ της εκτέλεσης του ως τυπικό κέλυφος "
-"και ως κελύφους εισόδου."
-
-#: ../Terminal.glade.h:78
-msgid "Shortcut Keys"
-msgstr "Πλήκτρα συντομεύσεων"
-
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Καθορίζει τις γραμμές που μπορείτε να ανατρέξετε πίσω με τη μπάρα κύλισης."
-
-#: ../Terminal.glade.h:80
-msgid "St_yle:"
-msgstr "Στ_υλ:"
-
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "Τεντωμένο"
-
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr "Ένδειξη δραστηριότητας καρτελών"
-
-#: ../Terminal.glade.h:83
-msgid "Tab activit_y color:"
-msgstr "Χρώμα δραστηριότητας καρ_τέλας:"
-
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "Προτιμήσεις τερματικού"
-
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Οι εφαρμογές τερματικού έχουν αυτή την παλέτα χρωμάτων διαθέσιμη:"
-
-#: ../Terminal.glade.h:86
-msgid "Text Selection"
-msgstr "Επιλογή κειμένου"
-
-#: ../Terminal.glade.h:87
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"Αυτές οι επιλογές μπορεί να προκαλέσουν λανθασμένη συμπεριφορά\n"
-"σε μερικές εφαρμογές. Υπάρχουν εδώ μόνο για να σας επιτρέψουν να\n"
-"εργαστείτε με συγκεκριμένες εφαρμογές και λειτουργικά συστήματα\n"
-"που αναμένουν διαφορετική συμπεριφορά τερματικού."
-
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Αυτή η επιλογή ελέγχει το κατά πόσο το τερματικό θα κυλάει στο τέλος "
-"αυτόματα όταν παράγεται νέο κείμενο από τις εντολές που τρέχουν μέσα στο "
-"τερματικό."
-
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Αυτό καθορίζει σε τι τιμή θα τεθεί η μεταβλητή περιβάλλοντος $TERM, όταν μία "
-"νέα καρτέλα τερματικού ή παράθυρο τερματικού ανοίγει. Η προκαθορισμένη τιμή "
-"θα πρέπει να είναι εντάξει στα περισσότερα συστήματα. Εάν έχετε προβλήματα "
-"με μερικές εφαρμογές, χρησιμοποιήστε το xterm-color εδώ."
-
-#: ../Terminal.glade.h:93
-msgid "Tiled"
-msgstr "Πλακίδιο"
-
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "Τίτλος"
-
-#: ../Terminal.glade.h:95
-msgid "Transpare_ncy:"
-msgstr "Διαφά_νεια:"
-
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "Διαφανές παρασκήνιο"
-
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "Χρήση _προκαθορισμένου χρώματος"
-
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr ""
-"Χρήση του προσαρμοσμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
-
-#: ../Terminal.glade.h:99
-msgid "Use c_ustom color:"
-msgstr "Χρήση πρ_οσαρμοσμένου χρώματος:"
-
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr ""
-"Χρήση του προκαθορισμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
-
-#: ../Terminal.glade.h:101
-msgid "_Appearance"
-msgstr "_Εμφάνιση"
-
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "Χρώμα _παρασκηνίου:"
-
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "_Το πλήκτρο Backspace προκαλεί:"
-
-#: ../Terminal.glade.h:104
-msgid "_Colors"
-msgstr "_Χρώματα"
-
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "_Το πλήκτρο Delete προκαλεί:"
-
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "_Δυναμικός καθορισμός τίτλου:"
-
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_Αρχείο:"
-
-#: ../Terminal.glade.h:108
-msgid "_General"
-msgstr "_Γενικές"
-
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "Αρχικός _τίτλος:"
-
-#: ../Terminal.glade.h:110
-msgid "_Reset compatibility options to defaults"
-msgstr "_Επαναφορά επιλογών συμβατότητας στις προεπιλεγμένες"
-
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "_Εκτέλεση εντολής ως κέλυφος εισόδου"
-
-#: ../Terminal.glade.h:112
-msgid "_Shortcuts"
-msgstr "_Συντομεύσεις"
-
-#: ../Terminal.glade.h:113
-msgid "_Text color:"
-msgstr "Χρώμα _κειμένου:"
-
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτελεστεί η εντολή "
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr "δευτερόλεπτα"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "Ρύθμιση $TERM:"
+
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
+
+#~ msgid "Ad_vanced"
+#~ msgstr "Για προχ_ωρημένους"
+
+#~ msgid "Allow bold te_xt"
+#~ msgstr "Να επιτρέπεται το έντονο κείμενο"
+
+#~ msgid "Auto-detect"
+#~ msgstr "Αυτόματη αναγνώριση"
+
+#~ msgid "Background"
+#~ msgstr "Παρασκηνίο"
+
+#~ msgid "Background image"
+#~ msgstr "Εικόνα παρασκηνίου"
+
+#~ msgid "Centered"
+#~ msgstr "Κεντραρισμένο"
+
+#~ msgid "Choose Terminal Font"
+#~ msgstr "Επιλογή γραμματοσειράς τερματικού"
+
+#~ msgid "Choose tab activity color"
+#~ msgstr "Επιλογή χρώματος δραστηριότητας καρτέλας"
+
+#~ msgid "Choose terminal background color"
+#~ msgstr "Επιλογή χρώματος παρασκηνίου τερματικού"
+
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "Επιλογή χρώματος δρομέα τερματικού"
+
+#~ msgid "Choose terminal text color"
+#~ msgstr "Επιλογή χρώματος κειμένου τερματικού"
+
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "Επιλέξτε χρώμα παρασκηνίου για την επιλογή κειμένου"
+
+#~ msgid "Color Selector"
+#~ msgstr "Επιλογέας χρώματος"
+
+#~ msgid "Command"
+#~ msgstr "Εντολή"
+
+#~ msgid "Compatibility"
+#~ msgstr "Συμβατότητα"
+
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr ""
+#~ "Θεωρείστε τους ακόλουθους χαρακτήρες τμήμα μίας λέξης\n"
+#~ "κατά το διπλό κλικ:"
+
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
+
+#~ msgid "Cu_rsor color:"
+#~ msgstr "Χρώμα κέ_ρσορα:"
+
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "Απενεργοποίηση πλήκτρων συντομεύσεων μενού (όπως το Alt+f)"
+
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "Απενεργοποίηση των πλήκτρων συντόμευσης του μενού (προεπιλογή F10)"
+
+#~ msgid "Display _borders around new windows"
+#~ msgstr "Εμφάνιση _περιγραμμάτων στα νέα παράθυρα"
+
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "Εμφάνιση _μπάρας μενού στα νέα παράθυρα"
+
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "Εμφάνιση _εργαλειοθήκης στα νέα παράθυρα"
+
+#~ msgid "Double Click"
+#~ msgstr "Διπλό κλικ"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Ενερ_γοποίηση εξομάλυνσης για τη γραμματοσειρά του τερματικού"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Ενεργοποιήστε αυτή την επιλογή αν θέλετε να χρησιμοποιηθεί εξομάλυνση "
+#~ "κατά την απεικόνιση κειμένου στα παράθυρα του τερματικού. Η "
+#~ "απενεργοποίηση της επιλογής μπορεί να επιταχύνει το τερματικό θεαματικά "
+#~ "και να μειώσει τον γενικό φόρτο σε πιο αργά συστήματα."
+
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "Ενεργοποιήστε αυτή την επιλογή για να επιτρέψετε τις εφαρμογές που "
+#~ "εκτελούνται μέσα στο τερματικό να χρησιμοποιήσουν έντονο κείμενο."
+
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "Η ενεργοποίηση αυτής της επιλογής θα επιστρέψει την κύλιση ανά μία γραμμή "
+#~ "χρησιμοποιώντας τα πλήκτρα βέλους επάνω/κάτω σε συνδυασμό με το πλήκτρο "
+#~ "shift."
+
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr ""
+#~ "Ενεργοποιείστε αυτή την επιλογή για να εμφανίζεται η μπάρα μενού στα νέα "
+#~ "παράθυρα τερματικού."
+
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr ""
+#~ "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται οι εργαλειοθήκες στα "
+#~ "νέα παράθυρα τερματικού."
+
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται περιγράμματα παραθύρου "
+#~ "στα νέα παράθυρα τερματικού."
+
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "Σας επιτρέπει να κυλίσετε στη γραμμή εντολών πατώντας οποιοδήποτε πλήκτρο "
+#~ "στο πληκτρολόγιο."
+
+#~ msgid "Erase TTY"
+#~ msgstr "Καθαρισμός ΤΤΥ"
+
+#~ msgid "Escape sequence"
+#~ msgstr "Ακολουθία διαφυγής"
+
+#~ msgid "Font"
+#~ msgstr "Γραμματοσειρά"
+
+#~ msgid "General"
+#~ msgstr "Γενικές"
+
+#~ msgid "Goes after initial title"
+#~ msgstr "Πηγαίνει μετά τον αρχικό τίτλο"
+
+#~ msgid "Goes before initial title"
+#~ msgstr "Πηγαίνει πριν τον αρχικό τίτλο"
+
+#~ msgid "Isn't displayed"
+#~ msgstr "Δεν προβάλλεται"
+
+#~ msgid "Menubar Access"
+#~ msgstr "Πρόσβαση στην εργαλειοθήκη μενού"
+
+#~ msgid "None (use solid color)"
+#~ msgstr "Κανένα (χρήση στερεού χρώματος)"
+
+#~ msgid "On the left side"
+#~ msgstr "Στην αριστερή πλευρά"
+
+#~ msgid "On the right side"
+#~ msgstr "Στη δεξιά πλευρά"
+
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "Άνοιγμα ενός διαλόγου για τον καθορισμό του χρώματος"
+
+#~ msgid "Opening New Windows"
+#~ msgstr "Άνοιγμα νέων παραθύρων"
+
+#~ msgid "Palette"
+#~ msgstr "Παλέτα"
+
+#~ msgid "Palette entry 1"
+#~ msgstr "Καταχώρηση παλέτας 1"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "Καταχώρηση παλέτας 10"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "Καταχώρηση παλέτας 11"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "Καταχώρηση παλέτας 12"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "Καταχώρηση παλέτας 13"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "Καταχώρηση παλέτας 14"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "Καταχώρηση παλέτας 15"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "Καταχώρηση παλέτας 16"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "Καταχώρηση παλέτας 2"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "Καταχώρηση παλέτας 3"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "Καταχώρηση παλέτας 4"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "Καταχώρηση παλέτας 5"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "Καταχώρηση παλέτας 6"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "Καταχώρηση παλέτας 7"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "Καταχώρηση παλέτας 8"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "Καταχώρηση παλέτας 9"
+
+#~ msgid "Replaces initial title"
+#~ msgstr "Αντικαθιστά τον αρχικό τίτλο"
+
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "Επαναφορά της ένδειξης δραστηριότητας καρτέλας έπειτα από"
+
+#~ msgid "Scaled"
+#~ msgstr "Σε κλίμακα"
+
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "Η μπάρα κ_ύλισης είναι:"
+
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "Κύλιση στο _πάτημα πλήκτρου"
+
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "Κύλιση στην έξοδο των εντολών"
+
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "Κύλιση ανά μία γραμμή χρησιμοποιώντας τα shift-επάνω/κάτω πλήκτρα"
+
+#~ msgid "Scroll_back:"
+#~ msgstr "Κύλιση προς τα _πίσω:"
+
+#~ msgid "Scrolling"
+#~ msgstr "Κύλιση"
+
+#~ msgid "Select Background Image File"
+#~ msgstr "Επιλέξτε το αρχείο εικόνας του παρασκηνίου"
+
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "Επιλέξτε αυτό για να αναγκάσετε το Τερματικό να εκτελεί το κέλυφός σας ως "
+#~ "κέλυφος εισόδου όταν ανοίγετε νέα τερματικά. Συμβουλευτείτε την "
+#~ "τεκμηρίωση του κελύφους σας για τη διαφορά μεταξύ της εκτέλεσης του ως "
+#~ "τυπικό κέλυφος και ως κελύφους εισόδου."
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Πλήκτρα συντομεύσεων"
+
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr ""
+#~ "Καθορίζει τις γραμμές που μπορείτε να ανατρέξετε πίσω με τη μπάρα κύλισης."
+
+#~ msgid "St_yle:"
+#~ msgstr "Στ_υλ:"
+
+#~ msgid "Stretched"
+#~ msgstr "Τεντωμένο"
+
+#~ msgid "Tab Activity Indicator"
+#~ msgstr "Ένδειξη δραστηριότητας καρτελών"
+
+#~ msgid "Tab activit_y color:"
+#~ msgstr "Χρώμα δραστηριότητας καρ_τέλας:"
+
+#~ msgid "Terminal Preferences"
+#~ msgstr "Προτιμήσεις τερματικού"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Οι εφαρμογές τερματικού έχουν αυτή την παλέτα χρωμάτων διαθέσιμη:"
+
+#~ msgid "Text Selection"
+#~ msgstr "Επιλογή κειμένου"
+
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "Αυτές οι επιλογές μπορεί να προκαλέσουν λανθασμένη συμπεριφορά\n"
+#~ "σε μερικές εφαρμογές. Υπάρχουν εδώ μόνο για να σας επιτρέψουν να\n"
+#~ "εργαστείτε με συγκεκριμένες εφαρμογές και λειτουργικά συστήματα\n"
+#~ "που αναμένουν διαφορετική συμπεριφορά τερματικού."
+
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "Αυτή η επιλογή ελέγχει το κατά πόσο το τερματικό θα κυλάει στο τέλος "
+#~ "αυτόματα όταν παράγεται νέο κείμενο από τις εντολές που τρέχουν μέσα στο "
+#~ "τερματικό."
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Αυτό καθορίζει σε τι τιμή θα τεθεί η μεταβλητή περιβάλλοντος $TERM, όταν "
+#~ "μία νέα καρτέλα τερματικού ή παράθυρο τερματικού ανοίγει. Η "
+#~ "προκαθορισμένη τιμή θα πρέπει να είναι εντάξει στα περισσότερα συστήματα. "
+#~ "Εάν έχετε προβλήματα με μερικές εφαρμογές, χρησιμοποιήστε το xterm-color "
+#~ "εδώ."
+
+#~ msgid "Tiled"
+#~ msgstr "Πλακίδιο"
+
+#~ msgid "Title"
+#~ msgstr "Τίτλος"
+
+#~ msgid "Transpare_ncy:"
+#~ msgstr "Διαφά_νεια:"
+
+#~ msgid "Transparent background"
+#~ msgstr "Διαφανές παρασκήνιο"
+
+#~ msgid "Use _default color"
+#~ msgstr "Χρήση _προκαθορισμένου χρώματος"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr ""
+#~ "Χρήση του προσαρμοσμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "Χρήση πρ_οσαρμοσμένου χρώματος:"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr ""
+#~ "Χρήση του προκαθορισμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
+
+#~ msgid "_Appearance"
+#~ msgstr "_Εμφάνιση"
+
+#~ msgid "_Background color:"
+#~ msgstr "Χρώμα _παρασκηνίου:"
+
+#~ msgid "_Backspace key generates:"
+#~ msgstr "_Το πλήκτρο Backspace προκαλεί:"
+
+#~ msgid "_Colors"
+#~ msgstr "_Χρώματα"
+
+#~ msgid "_Delete key generates:"
+#~ msgstr "_Το πλήκτρο Delete προκαλεί:"
+
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "_Δυναμικός καθορισμός τίτλου:"
+
+#~ msgid "_File:"
+#~ msgstr "_Αρχείο:"
+
+#~ msgid "_General"
+#~ msgstr "_Γενικές"
+
+#~ msgid "_Initial title:"
+#~ msgstr "Αρχικός _τίτλος:"
+
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "_Επαναφορά επιλογών συμβατότητας στις προεπιλεγμένες"
+
+#~ msgid "_Run command as login shell"
+#~ msgstr "_Εκτέλεση εντολής ως κέλυφος εισόδου"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Συντομεύσεις"
+
+#~ msgid "_Text color:"
+#~ msgstr "Χρώμα _κειμένου:"
+
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτελεστεί η εντολή "
+
+#~ msgid "seconds"
+#~ msgstr "δευτερόλεπτα"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Τίτλος:</b>"

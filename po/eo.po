@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2006-09-14 12:14+0200\n"
 "Last-Translator: Jarbas Araujo Jr. <jarbasaraujojr@yahoo.com.br>\n"
 "Language-Team: Debian-l10n-esperanto <debian-l10n-esperanto@lists.debian."
@@ -331,12 +331,12 @@ msgstr ""
 "\n"
 "Erarojn, bonvolu raporti al <%s>.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ne eblas registri servicon de terminalo: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Ne eblas lanĉi terminalon: %s\n"
@@ -467,11 +467,11 @@ msgstr "Opcio \"--command/-e\" necesas komandon lanĉendan kiel parametro "
 msgid "Unknown option \"%s\""
 msgstr "Nekonata opcio \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Ĉiuj Dosieroj"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Bildaj Dosieroj"
 
@@ -588,21 +588,24 @@ msgstr "Aliru langeton 9"
 msgid "Contents"
 msgstr "Enhavo"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "Sentitola"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Neebla trovi vian salutŝelon"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "Fiaskrulis filon"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "Fermu ĉi Langeton"
 
@@ -627,7 +630,7 @@ msgid "Help"
 msgstr "Helpo"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "Neebligita"
 
@@ -934,16 +937,16 @@ msgstr "Ĉu fermi ĉiujn langetojn?"
 msgid "Do _not ask me again"
 msgstr "_Ne redemandu"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "Fenestrotitolo|Difinu Titolon"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 #, fuzzy
 msgid "Title:"
 msgstr "Titolo"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "Eniru la titolon por ĉi terminalan lengeton"
 
@@ -951,551 +954,425 @@ msgstr "Eniru la titolon por ĉi terminalan lengeton"
 msgid "Terminal Emulator"
 msgstr "Terminala Simulilo"
 
-#: ../Terminal.glade.h:1
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> konfiguro:"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "<tt>$TERM</tt> konfiguro:"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCIIa Viŝklavo"
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCIIa Viŝklavo"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "Supera"
+#~ msgid "Ad_vanced"
+#~ msgstr "Supera"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "Ebligas grasan tekston"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "Ebligas grasan tekston"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Aŭtodetektas"
+#~ msgid "Auto-detect"
+#~ msgstr "Aŭtodetektas"
 
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "Fonbildo"
+#~ msgid "Background"
+#~ msgstr "Fonbildo"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Fonbildo"
+#~ msgid "Background image"
+#~ msgstr "Fonbildo"
 
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Centrigita"
+#~ msgid "Centered"
+#~ msgstr "Centrigita"
 
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Elektu Terminalan Literfonton"
+#~ msgid "Choose Terminal Font"
+#~ msgstr "Elektu Terminalan Literfonton"
 
-#: ../Terminal.glade.h:10
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "Elektu terminalan tekstokoloron"
+#~ msgid "Choose tab activity color"
+#~ msgstr "Elektu terminalan tekstokoloron"
 
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Elektu Terminalofonkoloron"
+#~ msgid "Choose terminal background color"
+#~ msgstr "Elektu Terminalofonkoloron"
 
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Elektu la terminalan kursorkoloro"
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "Elektu la terminalan kursorkoloro"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Elektu terminalan tekstokoloron"
+#~ msgid "Choose terminal text color"
+#~ msgstr "Elektu terminalan tekstokoloron"
 
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Elektu terminalan tekstomarkan fonkoloron"
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "Elektu terminalan tekstomarkan fonkoloron"
 
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Kolorelektilo"
+#~ msgid "Color Selector"
+#~ msgstr "Kolorelektilo"
 
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>Komando</b>"
+#~ msgid "Command"
+#~ msgstr "<b>Komando</b>"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>Kongrueco</b>"
+#~ msgid "Compatibility"
+#~ msgstr "<b>Kongrueco</b>"
 
-#: ../Terminal.glade.h:18
 #, fuzzy
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "Taksu la sekvaj karakteroj kiel vortoparto dum duoblaklako:"
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr "Taksu la sekvaj karakteroj kiel vortoparto dum duoblaklako:"
 
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
 
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "_Koloro de teksto kaj kursoro:"
+#~ msgid "Cu_rsor color:"
+#~ msgstr "_Koloro de teksto kaj kursoro:"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Malebligu ĉiujn me_nuajn alirklavoj (kiel Alt+f)"
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "Malebligu ĉiujn me_nuajn alirklavoj (kiel Alt+f)"
 
-#: ../Terminal.glade.h:23
 #, fuzzy
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Malebligu m_enuajn rapidklavoj (F10 defaŭlte)"
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "Malebligu m_enuajn rapidklavoj (F10 defaŭlte)"
 
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Montru _bordoj ĉirkaŭ novaj fenestroj"
+#~ msgid "Display _borders around new windows"
+#~ msgstr "Montru _bordoj ĉirkaŭ novaj fenestroj"
 
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Montru _menuostrion en novaj fenestroj"
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "Montru _menuostrion en novaj fenestroj"
 
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Montru _ilarstrioj en la novaj fenestroj"
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "Montru _ilarstrioj en la novaj fenestroj"
 
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>Duoblaklako</b>"
+#~ msgid "Double Click"
+#~ msgstr "<b>Duoblaklako</b>"
 
-#: ../Terminal.glade.h:29
 #, fuzzy
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Ebligas glatigon por la terminala literfonto"
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Ebligas glatigon por la terminala literfonto"
 
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Ebligu ĉi opcion se vi volas ke Terminalo uzu glatigon kiam bildigastekston "
-"en terminalfenestro. Malebliganta ĉi opcion eblas forte rapidigila "
-"bildigorendimenton kaj fruigi la sistemstarto ĉe malrapidaj sistemoj"
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Ebligu ĉi opcion se vi volas ke Terminalo uzu glatigon kiam "
+#~ "bildigastekston en terminalfenestro. Malebliganta ĉi opcion eblas forte "
+#~ "rapidigila bildigorendimenton kaj fruigi la sistemstarto ĉe malrapidaj "
+#~ "sistemoj"
 
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Ebligu ĉi opcion por permesi aplikaĵojn rulantaj en la terminalfenestro uzi "
-"grasan tekston"
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "Ebligu ĉi opcion por permesi aplikaĵojn rulantaj en la terminalfenestro "
+#~ "uzi grasan tekston"
 
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr ""
+#~ "Ebligu ĉi opcion por montri menuostrion ĉe ĵuskreitaj terminalfenestroj."
 
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Ebligu ĉi opcion por montri menuostrion ĉe ĵuskreitaj terminalfenestroj."
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr ""
+#~ "Ebligu ĉi opcion por montri ilarstrion en la novkreitaj terminalfenestroj."
 
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Ebligu ĉi opcion por montri ilarstrion en la novkreitaj terminalfenestroj."
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "Ebligu ĉi opcion por montri fenestrdekoraciojn ĉirkaŭ la novkreitaj "
+#~ "terminalfenestroj."
 
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Ebligu ĉi opcion por montri fenestrdekoraciojn ĉirkaŭ la novkreitaj "
-"terminalfenestroj."
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "Ebligas vin premi ajnan klavon por suben-rulumi la terminalofenestron "
+#~ "ĝisla komandoinvito."
 
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Ebligas vin premi ajnan klavon por suben-rulumi la terminalofenestron ĝisla "
-"komandoinvito."
+#~ msgid "Escape sequence"
+#~ msgstr "Reĝimklava sekvenco"
 
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
+#~ msgid "General"
+#~ msgstr "Ĝenerala"
 
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Reĝimklava sekvenco"
+#~ msgid "Goes after initial title"
+#~ msgstr "Aperas post la pratitolo"
 
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
+#~ msgid "Goes before initial title"
+#~ msgstr "Aperas antaŭ la pratitolo"
 
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Ĝenerala"
+#~ msgid "Isn't displayed"
+#~ msgstr "Ne estas montrata"
 
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Aperas post la pratitolo"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Aperas antaŭ la pratitolo"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Ne estas montrata"
-
-#: ../Terminal.glade.h:44
 #, fuzzy
-msgid "Menubar Access"
-msgstr "<b>Menuostria aliro</b>"
+#~ msgid "Menubar Access"
+#~ msgstr "<b>Menuostria aliro</b>"
 
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Neniu (uzu solidan koloron)"
+#~ msgid "None (use solid color)"
+#~ msgstr "Neniu (uzu solidan koloron)"
 
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Maldekstre"
+#~ msgid "On the left side"
+#~ msgstr "Maldekstre"
 
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Dekstre"
+#~ msgid "On the right side"
+#~ msgstr "Dekstre"
 
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Malfermu dialogon por difini la koloron"
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "Malfermu dialogon por difini la koloron"
 
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>Malfermanta Novajn fenestrojn</b>"
+#~ msgid "Opening New Windows"
+#~ msgstr "<b>Malfermanta Novajn fenestrojn</b>"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "<b>Koloraro</b>"
+#~ msgid "Palette"
+#~ msgstr "<b>Koloraro</b>"
 
-#: ../Terminal.glade.h:51
 #, fuzzy
-msgid "Palette entry 1"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 1"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:52
 #, fuzzy
-msgid "Palette entry 10"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 10"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:53
 #, fuzzy
-msgid "Palette entry 11"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 11"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:54
 #, fuzzy
-msgid "Palette entry 12"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 12"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:55
 #, fuzzy
-msgid "Palette entry 13"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 13"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:56
 #, fuzzy
-msgid "Palette entry 14"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 14"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:57
 #, fuzzy
-msgid "Palette entry 15"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 15"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:58
 #, fuzzy
-msgid "Palette entry 16"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 16"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:59
 #, fuzzy
-msgid "Palette entry 2"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 2"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:60
 #, fuzzy
-msgid "Palette entry 3"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 3"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:61
 #, fuzzy
-msgid "Palette entry 4"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 4"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:62
 #, fuzzy
-msgid "Palette entry 5"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 5"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:63
 #, fuzzy
-msgid "Palette entry 6"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 6"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:64
 #, fuzzy
-msgid "Palette entry 7"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 7"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:65
 #, fuzzy
-msgid "Palette entry 8"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 8"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:66
 #, fuzzy
-msgid "Palette entry 9"
-msgstr "Kolorarelekto %d"
+#~ msgid "Palette entry 9"
+#~ msgstr "Kolorarelekto %d"
 
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Anstataŭas la pratitolon"
+#~ msgid "Replaces initial title"
+#~ msgstr "Anstataŭas la pratitolon"
 
-#: ../Terminal.glade.h:68
 #, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "Elektu terminalan tekstokoloron"
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "Elektu terminalan tekstokoloron"
 
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "Proporcia"
+#~ msgid "Scaled"
+#~ msgstr "Proporcia"
 
-#: ../Terminal.glade.h:70
 #, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "Ru_lumstrio sidas:"
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "Ru_lumstrio sidas:"
 
-#: ../Terminal.glade.h:71
 #, fuzzy
-msgid "Scroll on _keystroke"
-msgstr "Suben-ruluma_s po klavopremo"
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "Suben-ruluma_s po klavopremo"
 
-#: ../Terminal.glade.h:72
 #, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "Rulu_mu ĉeelire "
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "Rulu_mu ĉeelire "
 
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../Terminal.glade.h:74
 #, fuzzy
-msgid "Scroll_back:"
-msgstr "Ma_lantaŭrulumo"
+#~ msgid "Scroll_back:"
+#~ msgstr "Ma_lantaŭrulumo"
 
-#: ../Terminal.glade.h:75
 #, fuzzy
-msgid "Scrolling"
-msgstr "<b>Rulumanta</b>"
+#~ msgid "Scrolling"
+#~ msgstr "<b>Rulumanta</b>"
 
-#: ../Terminal.glade.h:76
 #, fuzzy
-msgid "Select Background Image File"
-msgstr "Elektu fonbildan dosieron"
+#~ msgid "Select Background Image File"
+#~ msgstr "Elektu fonbildan dosieron"
 
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Elektu ĉi opcion por obligi la Terminalon lanĉi vian ŝelon kiel salutŝelo "
-"kiam vi malfermas terminalojn. Vidu vian ŝelmanlibron por detaloj pri "
-"ladiferencoj inter dialoga ŝelo kaj saluta ŝelo "
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "Elektu ĉi opcion por obligi la Terminalon lanĉi vian ŝelon kiel salutŝelo "
+#~ "kiam vi malfermas terminalojn. Vidu vian ŝelmanlibron por detaloj pri "
+#~ "ladiferencoj inter dialoga ŝelo kaj saluta ŝelo "
 
-#: ../Terminal.glade.h:78
 #, fuzzy
-msgid "Shortcut Keys"
-msgstr "Rapidigilo"
+#~ msgid "Shortcut Keys"
+#~ msgstr "Rapidigilo"
 
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Difinas la nombron da linioj malantaŭen rulumeblaj per la rulumstrio."
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr ""
+#~ "Difinas la nombron da linioj malantaŭen rulumeblaj per la rulumstrio."
 
-#: ../Terminal.glade.h:80
 #, fuzzy
-msgid "St_yle:"
-msgstr "_Stilo:"
+#~ msgid "St_yle:"
+#~ msgstr "_Stilo:"
 
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "Streĉita"
+#~ msgid "Stretched"
+#~ msgstr "Streĉita"
 
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr ""
-
-#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "Tab activit_y color:"
-msgstr "Elektu terminalan tekstokoloron"
+#~ msgid "Tab activit_y color:"
+#~ msgstr "Elektu terminalan tekstokoloron"
 
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "Agordoj de Terminalo"
+#~ msgid "Terminal Preferences"
+#~ msgstr "Agordoj de Terminalo"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminalaj aplikaĵoj kiuj havas ĉi koloraron je dispono:"
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Terminalaj aplikaĵoj kiuj havas ĉi koloraron je dispono:"
 
-#: ../Terminal.glade.h:86
 #, fuzzy
-msgid "Text Selection"
-msgstr "<b>Tekstomarko</b>"
+#~ msgid "Text Selection"
+#~ msgstr "<b>Tekstomarko</b>"
 
-#: ../Terminal.glade.h:87
 #, fuzzy
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"Ĉi tiuj opcioj eblas misfunkciig kelkajn aplikaĵojn. Ili estar ĉi tie nur "
-"por permesi vin labori pri kelkaj aplikaĵoj kaj sistemoj kiuj atendas iun "
-"alian terminalan rulmanjeron."
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "Ĉi tiuj opcioj eblas misfunkciig kelkajn aplikaĵojn. Ili estar ĉi tie nur "
+#~ "por permesi vin labori pri kelkaj aplikaĵoj kaj sistemoj kiuj atendas iun "
+#~ "alian terminalan rulmanjeron."
 
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Ĉi opcio difinas ĉu la terminalo suben-rulumos aŭtomatekiam novajn "
-"elirdatumojn generacias la komando rulanta en la terminalo "
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "Ĉi opcio difinas ĉu la terminalo suben-rulumos aŭtomatekiam novajn "
+#~ "elirdatumojn generacias la komando rulanta en la terminalo "
 
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Ĉi tiu specifas la valoron prenatas de la medivariablo $TERM kiam "
-"alialangeto aŭ terminalfenestro malfermiĝas. La defaŭltvaloro plejeble "
-"sufiĉas por la plejparto de la sistemoj. Se vi trovas kolorproblemojn en "
-"kelkaj aplikaĵoj, provu xterm-color ĉi tie."
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Ĉi tiu specifas la valoron prenatas de la medivariablo $TERM kiam "
+#~ "alialangeto aŭ terminalfenestro malfermiĝas. La defaŭltvaloro plejeble "
+#~ "sufiĉas por la plejparto de la sistemoj. Se vi trovas kolorproblemojn en "
+#~ "kelkaj aplikaĵoj, provu xterm-color ĉi tie."
 
-#: ../Terminal.glade.h:93
 #, fuzzy
-msgid "Tiled"
-msgstr "Titolo"
+#~ msgid "Tiled"
+#~ msgstr "Titolo"
 
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "Titolo"
+#~ msgid "Title"
+#~ msgstr "Titolo"
 
-#: ../Terminal.glade.h:95
 #, fuzzy
-msgid "Transpare_ncy:"
-msgstr "Travidebla fono"
+#~ msgid "Transpare_ncy:"
+#~ msgstr "Travidebla fono"
 
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "Travidebla fono"
+#~ msgid "Transparent background"
+#~ msgstr "Travidebla fono"
 
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "Uzu _defaŭltkoloron"
+#~ msgid "Use _default color"
+#~ msgstr "Uzu _defaŭltkoloron"
 
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "Uzu agordan tekstomarkan fonkoloron"
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Uzu agordan tekstomarkan fonkoloron"
 
-#: ../Terminal.glade.h:99
 #, fuzzy
-msgid "Use c_ustom color:"
-msgstr "Uzu _agordkoloron"
+#~ msgid "Use c_ustom color:"
+#~ msgstr "Uzu _agordkoloron"
 
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "Uzu la defaŭltan tekstomarkan fonkoloron"
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Uzu la defaŭltan tekstomarkan fonkoloron"
 
-#: ../Terminal.glade.h:101
 #, fuzzy
-msgid "_Appearance"
-msgstr "Ŝajnaspekto"
+#~ msgid "_Appearance"
+#~ msgstr "Ŝajnaspekto"
 
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "_Fonkoloro:"
+#~ msgid "_Background color:"
+#~ msgstr "_Fonkoloro:"
 
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "_Retropaŝoklavo generacias:"
+#~ msgid "_Backspace key generates:"
+#~ msgstr "_Retropaŝoklavo generacias:"
 
-#: ../Terminal.glade.h:104
 #, fuzzy
-msgid "_Colors"
-msgstr "Koloroj"
+#~ msgid "_Colors"
+#~ msgstr "Koloroj"
 
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "_Viŝklavo generacias:"
+#~ msgid "_Delete key generates:"
+#~ msgstr "_Viŝklavo generacias:"
 
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "_Dumruldifina titolo:"
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "_Dumruldifina titolo:"
 
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_Dosiero:"
+#~ msgid "_File:"
+#~ msgstr "_Dosiero:"
 
-#: ../Terminal.glade.h:108
 #, fuzzy
-msgid "_General"
-msgstr "Ĝenerala"
+#~ msgid "_General"
+#~ msgstr "Ĝenerala"
 
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "Prat_itolo:"
+#~ msgid "_Initial title:"
+#~ msgstr "Prat_itolo:"
 
-#: ../Terminal.glade.h:110
 #, fuzzy
-msgid "_Reset compatibility options to defaults"
-msgstr "_Reŝarĝu kongruopcioj al la defaulxtoj"
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "_Reŝarĝu kongruopcioj al la defaulxtoj"
 
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "_Lanĉu komandon kiel ŝelsaluto"
+#~ msgid "_Run command as login shell"
+#~ msgstr "_Lanĉu komandon kiel ŝelsaluto"
 
-#: ../Terminal.glade.h:112
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "Rapidligiloj"
+#~ msgid "_Shortcuts"
+#~ msgstr "Rapidligiloj"
 
-#: ../Terminal.glade.h:113
 #, fuzzy
-msgid "_Text color:"
-msgstr "_Koloro de teksto kaj kursoro:"
+#~ msgid "_Text color:"
+#~ msgstr "_Koloro de teksto kaj kursoro:"
 
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "A_ktualigas utmp/wtmp datumojn kiam komando startiĝas"
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr ""
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "A_ktualigas utmp/wtmp datumojn kiam komando startiĝas"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titolo:</b>"

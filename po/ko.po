@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2007-09-24 11:46+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyun.choi@debianusers.org>\n"
 "Language-Team: Korean <translation-team-ko@lists.sourceforge.net>\n"
@@ -309,12 +309,12 @@ msgstr ""
 "\n"
 "버그는 <%s>에게 연락해 주십시오.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "터미널 서비스를 등록하는데 실패했습니다: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "터미널을 실행하는데 실패했습니다: %s\n"
@@ -441,11 +441,11 @@ msgstr "옵션 \"--command/-e\"은 파라미터로 실행할 명령을 명시해
 msgid "Unknown option \"%s\""
 msgstr "모르는 옵션 \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "모든 파일"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "그림 파일"
 
@@ -561,21 +561,24 @@ msgstr "탭 9로 이동"
 msgid "Contents"
 msgstr "차례"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "무제"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "로긴 셸을 정할 수 없음."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "자식 프로세스 생성 실패"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "이 탭 닫기"
 
@@ -600,7 +603,7 @@ msgid "Help"
 msgstr "도움말"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "끄기"
 
@@ -902,16 +905,16 @@ msgstr "모든 탭을 닫을까요?"
 msgid "Do _not ask me again"
 msgstr "다시 묻지 마십시오(_n)"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "창 제목|제목 설정"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 #, fuzzy
 msgid "Title:"
 msgstr "타이틀"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "현재 터미널 탭의 타이틀을 입력하세요"
 
@@ -919,541 +922,421 @@ msgstr "현재 터미널 탭의 타이틀을 입력하세요"
 msgid "Terminal Emulator"
 msgstr "터미널 에뮬레이터"
 
-#: ../Terminal.glade.h:1
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> 설정:"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "<tt>$TERM</tt> 설정:"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "아스키 DEL"
+#~ msgid "ASCII DEL"
+#~ msgstr "아스키 DEL"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "고급"
+#~ msgid "Ad_vanced"
+#~ msgstr "고급"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "굵은 글씨 허용"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "굵은 글씨 허용"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "자동 탐지"
+#~ msgid "Auto-detect"
+#~ msgstr "자동 탐지"
 
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "배경 그림"
+#~ msgid "Background"
+#~ msgstr "배경 그림"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "배경 그림"
+#~ msgid "Background image"
+#~ msgstr "배경 그림"
 
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "중앙 배치"
+#~ msgid "Centered"
+#~ msgstr "중앙 배치"
 
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "터미널 글꼴 선택"
+#~ msgid "Choose Terminal Font"
+#~ msgstr "터미널 글꼴 선택"
 
-#: ../Terminal.glade.h:10
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "터미널 글자색을 선택하세요"
+#~ msgid "Choose tab activity color"
+#~ msgstr "터미널 글자색을 선택하세요"
 
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "터미널 바탕색을 선택하세요"
+#~ msgid "Choose terminal background color"
+#~ msgstr "터미널 바탕색을 선택하세요"
 
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "터미널 커서색을 선택하세요"
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "터미널 커서색을 선택하세요"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "터미널 글자색을 선택하세요"
+#~ msgid "Choose terminal text color"
+#~ msgstr "터미널 글자색을 선택하세요"
 
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "터미널 글자 선택영역의 바탕색을 선택하세요"
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "터미널 글자 선택영역의 바탕색을 선택하세요"
 
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "색 선택"
+#~ msgid "Color Selector"
+#~ msgstr "색 선택"
 
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>명령어</b>"
+#~ msgid "Command"
+#~ msgstr "<b>명령어</b>"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>호환성</b>"
+#~ msgid "Compatibility"
+#~ msgstr "<b>호환성</b>"
 
-#: ../Terminal.glade.h:18
 #, fuzzy
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "더블 클릭시 다음 문자를 한 단어로 여김:"
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr "더블 클릭시 다음 문자를 한 단어로 여김:"
 
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
 
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "글자색 및 커서색(_T):"
+#~ msgid "Cu_rsor color:"
+#~ msgstr "글자색 및 커서색(_T):"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "모든 메뉴 키 (예: Alt+f)를 비활성화(_n)"
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "모든 메뉴 키 (예: Alt+f)를 비활성화(_n)"
 
-#: ../Terminal.glade.h:23
 #, fuzzy
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "메뉴 단축키 (기본 값 F10)을 비활성화(_e)"
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "메뉴 단축키 (기본 값 F10)을 비활성화(_e)"
 
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "새 창에 테두리 보이기(_b)"
+#~ msgid "Display _borders around new windows"
+#~ msgstr "새 창에 테두리 보이기(_b)"
 
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "새 창에 메뉴바 보이기(_m)"
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "새 창에 메뉴바 보이기(_m)"
 
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "새 창에 툴바 보이기(_t)"
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "새 창에 툴바 보이기(_t)"
 
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>더블 클릭</b>"
+#~ msgid "Double Click"
+#~ msgstr "<b>더블 클릭</b>"
 
-#: ../Terminal.glade.h:29
 #, fuzzy
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "터미널 글꼴의 안티-앨리어싱 설정"
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "터미널 글꼴의 안티-앨리어싱 설정"
 
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"터미널 창에서 글자를 표현할 때 안티-앨리어싱을 사용하려면 이 옵션을 켜주세"
-"요. 느린 시스템에서는 이 옵션을 해제해서 터미널 렌더링 성능을 매우 향상시킬 "
-"수 있습니다."
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "터미널 창에서 글자를 표현할 때 안티-앨리어싱을 사용하려면 이 옵션을 켜주세"
+#~ "요. 느린 시스템에서는 이 옵션을 해제해서 터미널 렌더링 성능을 매우 향상시"
+#~ "킬 수 있습니다."
 
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr "터미널 창에서 굵은 글씨를 사용하려면 이 옵션을 켜세요."
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr "터미널 창에서 굵은 글씨를 사용하려면 이 옵션을 켜세요."
 
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"쉬프트 키와 위/아래 방향키로 한 줄씩 스크롤하시고 싶으면 이 항목을 선택하십시"
-"오."
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "쉬프트 키와 위/아래 방향키로 한 줄씩 스크롤하시고 싶으면 이 항목을 선택하"
+#~ "십시오."
 
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "새로 만든 터미널 창에 메뉴바를 보이는 옵션입니다."
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr "새로 만든 터미널 창에 메뉴바를 보이는 옵션입니다."
 
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "새로 만든 터미널 창에 툴바를 보이는 옵션입니다."
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr "새로 만든 터미널 창에 툴바를 보이는 옵션입니다."
 
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "새로 만든 창 주위에 창 테두리를 표시하는 옵션입니다."
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr "새로 만든 창 주위에 창 테두리를 표시하는 옵션입니다."
 
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr "키보드의 키를 누르면 스크롤을 아래로 옮기도록 설정하는 옵션입니다."
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr "키보드의 키를 누르면 스크롤을 아래로 옮기도록 설정하는 옵션입니다."
 
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
+#~ msgid "Escape sequence"
+#~ msgstr "이스케이프 키"
 
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "이스케이프 키"
+#~ msgid "General"
+#~ msgstr "일반"
 
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
+#~ msgid "Goes after initial title"
+#~ msgstr "초기 타이틀 뒤에 추가합니다"
 
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "일반"
+#~ msgid "Goes before initial title"
+#~ msgstr "초기 타이틀 앞에 추가합니다"
 
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "초기 타이틀 뒤에 추가합니다"
+#~ msgid "Isn't displayed"
+#~ msgstr "표시하지 않습니다"
 
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "초기 타이틀 앞에 추가합니다"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "표시하지 않습니다"
-
-#: ../Terminal.glade.h:44
 #, fuzzy
-msgid "Menubar Access"
-msgstr "메뉴바 접근"
+#~ msgid "Menubar Access"
+#~ msgstr "메뉴바 접근"
 
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "없음 (단일 색상)"
+#~ msgid "None (use solid color)"
+#~ msgstr "없음 (단일 색상)"
 
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "왼쪽"
+#~ msgid "On the left side"
+#~ msgstr "왼쪽"
 
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "오른쪽"
+#~ msgid "On the right side"
+#~ msgstr "오른쪽"
 
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "색을 고르는 다이얼로그를 엽니다"
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "색을 고르는 다이얼로그를 엽니다"
 
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>새 창 열기</b>"
+#~ msgid "Opening New Windows"
+#~ msgstr "<b>새 창 열기</b>"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "<b>팔레트</b>"
+#~ msgid "Palette"
+#~ msgstr "<b>팔레트</b>"
 
-#: ../Terminal.glade.h:51
 #, fuzzy
-msgid "Palette entry 1"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 1"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:52
 #, fuzzy
-msgid "Palette entry 10"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 10"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:53
 #, fuzzy
-msgid "Palette entry 11"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 11"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:54
 #, fuzzy
-msgid "Palette entry 12"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 12"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:55
 #, fuzzy
-msgid "Palette entry 13"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 13"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:56
 #, fuzzy
-msgid "Palette entry 14"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 14"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:57
 #, fuzzy
-msgid "Palette entry 15"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 15"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:58
 #, fuzzy
-msgid "Palette entry 16"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 16"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:59
 #, fuzzy
-msgid "Palette entry 2"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 2"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:60
 #, fuzzy
-msgid "Palette entry 3"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 3"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:61
 #, fuzzy
-msgid "Palette entry 4"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 4"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:62
 #, fuzzy
-msgid "Palette entry 5"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 5"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:63
 #, fuzzy
-msgid "Palette entry 6"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 6"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:64
 #, fuzzy
-msgid "Palette entry 7"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 7"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:65
 #, fuzzy
-msgid "Palette entry 8"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 8"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:66
 #, fuzzy
-msgid "Palette entry 9"
-msgstr "팔레트 목록 %d"
+#~ msgid "Palette entry 9"
+#~ msgstr "팔레트 목록 %d"
 
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "초기 타이틀을 바꿉니다"
+#~ msgid "Replaces initial title"
+#~ msgstr "초기 타이틀을 바꿉니다"
 
-#: ../Terminal.glade.h:68
 #, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "터미널 글자색을 선택하세요"
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "터미널 글자색을 선택하세요"
 
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "비례 배치"
+#~ msgid "Scaled"
+#~ msgstr "비례 배치"
 
-#: ../Terminal.glade.h:70
 #, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "스크롤 바(_S):"
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "스크롤 바(_S):"
 
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "키 입력이 있으면 스크롤(_k)"
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "키 입력이 있으면 스크롤(_k)"
 
-#: ../Terminal.glade.h:72
 #, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "출력이 있으면 스크롤(_r)"
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "출력이 있으면 스크롤(_r)"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "쉬프트 업/다운 키로 한 줄씩 스크롤(_l)"
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "쉬프트 업/다운 키로 한 줄씩 스크롤(_l)"
 
-#: ../Terminal.glade.h:74
 #, fuzzy
-msgid "Scroll_back:"
-msgstr "이전 스크롤(_o):"
+#~ msgid "Scroll_back:"
+#~ msgstr "이전 스크롤(_o):"
 
-#: ../Terminal.glade.h:75
 #, fuzzy
-msgid "Scrolling"
-msgstr "<b>스크롤</b>"
+#~ msgid "Scrolling"
+#~ msgstr "<b>스크롤</b>"
 
-#: ../Terminal.glade.h:76
 #, fuzzy
-msgid "Select Background Image File"
-msgstr "배경 그림 파일을 선택하세요"
+#~ msgid "Select Background Image File"
+#~ msgstr "배경 그림 파일을 선택하세요"
 
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"새로운 터미널을 열 때 로긴 셸로 셸을 시작하는 옵션입니다. 인터렉티브 셸과 로"
-"긴 셸의 차이점은 셸의 문서를 참고하세요."
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "새로운 터미널을 열 때 로긴 셸로 셸을 시작하는 옵션입니다. 인터렉티브 셸과 "
+#~ "로긴 셸의 차이점은 셸의 문서를 참고하세요."
 
-#: ../Terminal.glade.h:78
 #, fuzzy
-msgid "Shortcut Keys"
-msgstr "단축키"
+#~ msgid "Shortcut Keys"
+#~ msgstr "단축키"
 
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "스크롤 바로 볼 수 있는 줄 수를 지정합니다."
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr "스크롤 바로 볼 수 있는 줄 수를 지정합니다."
 
-#: ../Terminal.glade.h:80
 #, fuzzy
-msgid "St_yle:"
-msgstr "스타일(_S):"
+#~ msgid "St_yle:"
+#~ msgstr "스타일(_S):"
 
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "늘여 배치"
+#~ msgid "Stretched"
+#~ msgstr "늘여 배치"
 
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr ""
-
-#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "Tab activit_y color:"
-msgstr "터미널 글자색을 선택하세요"
+#~ msgid "Tab activit_y color:"
+#~ msgstr "터미널 글자색을 선택하세요"
 
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "터미널 기본 설정"
+#~ msgid "Terminal Preferences"
+#~ msgstr "터미널 기본 설정"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "터미털 프로그램에서 사용할 수 있는 팔레트는 다음과 같습니다:"
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "터미털 프로그램에서 사용할 수 있는 팔레트는 다음과 같습니다:"
 
-#: ../Terminal.glade.h:86
 #, fuzzy
-msgid "Text Selection"
-msgstr "<b>글자 선택영역</b>"
+#~ msgid "Text Selection"
+#~ msgstr "<b>글자 선택영역</b>"
 
-#: ../Terminal.glade.h:87
 #, fuzzy
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"이 옵션으로 몇몇 프로그램이 오동작할 수 있습니다. 특이한 터미널 동작을 원하"
-"는 프로그램과 운영 체제에서 사용하세요."
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "이 옵션으로 몇몇 프로그램이 오동작할 수 있습니다. 특이한 터미널 동작을 원"
+#~ "하는 프로그램과 운영 체제에서 사용하세요."
 
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"터미널에서 실행중인 명령어가 새로운 출력을 내면 자동으로 스크롤을 맨 아래로 "
-"옮기도록 설정하는 옵션입니다."
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "터미널에서 실행중인 명령어가 새로운 출력을 내면 자동으로 스크롤을 맨 아래"
+#~ "로 옮기도록 설정하는 옵션입니다."
 
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"새 터미널 탭이나 새 창이 열릴 때 $TERM 환경 변수에 들어가는 값을 지정합니다."
-"대부분의 시스템에서 기본값으로 잘 동작할 것입니다. 몇몇 프로그램에서 색이 이"
-"상하게 표현되면 xterm-color라고 적어보십시오."
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "새 터미널 탭이나 새 창이 열릴 때 $TERM 환경 변수에 들어가는 값을 지정합니"
+#~ "다.대부분의 시스템에서 기본값으로 잘 동작할 것입니다. 몇몇 프로그램에서 색"
+#~ "이 이상하게 표현되면 xterm-color라고 적어보십시오."
 
-#: ../Terminal.glade.h:93
 #, fuzzy
-msgid "Tiled"
-msgstr "타일 배치"
+#~ msgid "Tiled"
+#~ msgstr "타일 배치"
 
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "타이틀"
+#~ msgid "Title"
+#~ msgstr "타이틀"
 
-#: ../Terminal.glade.h:95
 #, fuzzy
-msgid "Transpare_ncy:"
-msgstr "투명한 배경"
+#~ msgid "Transpare_ncy:"
+#~ msgstr "투명한 배경"
 
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "투명한 배경"
+#~ msgid "Transparent background"
+#~ msgstr "투명한 배경"
 
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "기본색 사용(_d)"
+#~ msgid "Use _default color"
+#~ msgstr "기본색 사용(_d)"
 
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "사용자 지정 글자 선택영역 바탕색을 사용합니다"
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "사용자 지정 글자 선택영역 바탕색을 사용합니다"
 
-#: ../Terminal.glade.h:99
 #, fuzzy
-msgid "Use c_ustom color:"
-msgstr "사용자 지정색 사용(_c)"
+#~ msgid "Use c_ustom color:"
+#~ msgstr "사용자 지정색 사용(_c)"
 
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "기본 글자 선택영역 바탕색을 사용합니다"
+#~ msgid "Use the default text selection background color"
+#~ msgstr "기본 글자 선택영역 바탕색을 사용합니다"
 
-#: ../Terminal.glade.h:101
 #, fuzzy
-msgid "_Appearance"
-msgstr "외관"
+#~ msgid "_Appearance"
+#~ msgstr "외관"
 
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "바탕색(_B):"
+#~ msgid "_Background color:"
+#~ msgstr "바탕색(_B):"
 
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "백 스페이스 키(_B):"
+#~ msgid "_Backspace key generates:"
+#~ msgstr "백 스페이스 키(_B):"
 
-#: ../Terminal.glade.h:104
 #, fuzzy
-msgid "_Colors"
-msgstr "색"
+#~ msgid "_Colors"
+#~ msgstr "색"
 
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "딜리트 키(_D):"
+#~ msgid "_Delete key generates:"
+#~ msgstr "딜리트 키(_D):"
 
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "동적 설정 타이틀(_D):"
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "동적 설정 타이틀(_D):"
 
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "파일(_F):"
+#~ msgid "_File:"
+#~ msgstr "파일(_F):"
 
-#: ../Terminal.glade.h:108
 #, fuzzy
-msgid "_General"
-msgstr "일반"
+#~ msgid "_General"
+#~ msgstr "일반"
 
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "초기 타이틀(_I):"
+#~ msgid "_Initial title:"
+#~ msgstr "초기 타이틀(_I):"
 
-#: ../Terminal.glade.h:110
 #, fuzzy
-msgid "_Reset compatibility options to defaults"
-msgstr "호환성 옵션을 기본값으로 리셋(_R)"
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "호환성 옵션을 기본값으로 리셋(_R)"
 
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "로긴 셸로 명령어 실행(_R)"
+#~ msgid "_Run command as login shell"
+#~ msgstr "로긴 셸로 명령어 실행(_R)"
 
-#: ../Terminal.glade.h:112
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "단축키"
+#~ msgid "_Shortcuts"
+#~ msgstr "단축키"
 
-#: ../Terminal.glade.h:113
 #, fuzzy
-msgid "_Text color:"
-msgstr "글자색 및 커서색(_T):"
+#~ msgid "_Text color:"
+#~ msgstr "글자색 및 커서색(_T):"
 
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "명령어를 실행할 때 utmp/wtmp를 기록(_U)"
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr ""
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "명령어를 실행할 때 utmp/wtmp를 기록(_U)"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>타이틀:</b>"

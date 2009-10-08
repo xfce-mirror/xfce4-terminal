@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2009-05-01 19:11+0300\n"
 "Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <rprieditis@gmail.com>\n"
@@ -336,12 +336,12 @@ msgstr ""
 "\n"
 "Lūdzu, par kļūdām ziņot <%s>.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Neizdevās piereģistrēt termināļa servisu: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Nevarēju palaist termināli: %s\n"
@@ -476,11 +476,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Nezināma opcija \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Visi faili"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Attēlu faili"
 
@@ -596,21 +596,24 @@ msgstr "Pārslēgties uz cilni 9"
 msgid "Contents"
 msgstr "Saturs"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "Bez virsraksta"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Neizdevās izpildīt, Jūsu, pieteikšanās čaulu."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "Neizdevas izpildīt bērnu"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "Aizvērt šo cilni"
 
@@ -635,7 +638,7 @@ msgid "Help"
 msgstr "Palīdzība"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "Izslēgt"
 
@@ -943,16 +946,16 @@ msgstr "Aizvērt visus cilņus?"
 msgid "Do _not ask me again"
 msgstr "Nejautāt ma_n vairāk"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "Uzstādīt virsrakstu"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 #, fuzzy
 msgid "Title:"
 msgstr "Sakrauti"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "Ievadiet jauno virsrakstu esošajam termināļa cilnim"
 
@@ -960,549 +963,439 @@ msgstr "Ievadiet jauno virsrakstu esošajam termināļa cilnim"
 msgid "Terminal Emulator"
 msgstr "Termināļa emulators"
 
-#: ../Terminal.glade.h:1
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> uzstādījums:"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "<tt>$TERM</tt> uzstādījums:"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "Paplašinātie"
+#~ msgid "Ad_vanced"
+#~ msgstr "Paplašinātie"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "Atļaut treknrakstu tekstā"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "Atļaut treknrakstu tekstā"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Auto-noteikt"
+#~ msgid "Auto-detect"
+#~ msgstr "Auto-noteikt"
 
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "Fona attēls"
+#~ msgid "Background"
+#~ msgstr "Fona attēls"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Fona attēls"
+#~ msgid "Background image"
+#~ msgstr "Fona attēls"
 
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Centrēts"
+#~ msgid "Centered"
+#~ msgstr "Centrēts"
 
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Norādiet Termināļa fontu"
+#~ msgid "Choose Terminal Font"
+#~ msgstr "Norādiet Termināļa fontu"
 
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Izvēlaties cilnes aktivitātes krāsu"
+#~ msgid "Choose tab activity color"
+#~ msgstr "Izvēlaties cilnes aktivitātes krāsu"
 
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Izvēlaties termināļa fona krāsu"
+#~ msgid "Choose terminal background color"
+#~ msgstr "Izvēlaties termināļa fona krāsu"
 
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Norādiet termināļa kursora krāsu"
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "Norādiet termināļa kursora krāsu"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Izvēlēties termināļa teksta krāsu"
+#~ msgid "Choose terminal text color"
+#~ msgstr "Izvēlēties termināļa teksta krāsu"
 
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Izvēlaties termināļa teksta iekrāsošanas fona krāsu"
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "Izvēlaties termināļa teksta iekrāsošanas fona krāsu"
 
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Krāsu atlasītājs"
+#~ msgid "Color Selector"
+#~ msgstr "Krāsu atlasītājs"
 
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>Komanda</b>"
+#~ msgid "Command"
+#~ msgstr "<b>Komanda</b>"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>Saderība</b>"
+#~ msgid "Compatibility"
+#~ msgstr "<b>Saderība</b>"
 
-#: ../Terminal.glade.h:18
 #, fuzzy
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "Ņemt vērā sekojošas rakstzīmes, kā daļu no vārda, pie dubultklikšķa:"
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr ""
+#~ "Ņemt vērā sekojošas rakstzīmes, kā daļu no vārda, pie dubultklikšķa:"
 
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
 
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "_Teksta un kursora krāsa:"
+#~ msgid "Cu_rsor color:"
+#~ msgstr "_Teksta un kursora krāsa:"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Izslēgt visus izvēl_nes pieejas taustiņus (piemērām, Alt+f)"
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "Izslēgt visus izvēl_nes pieejas taustiņus (piemērām, Alt+f)"
 
-#: ../Terminal.glade.h:23
 #, fuzzy
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Izslēgt izvēln_es īsceļa taustiņu (F10 noklusētais) "
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "Izslēgt izvēln_es īsceļa taustiņu (F10 noklusētais) "
 
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Attēlot ro_bežas ap jaunajiem logiem"
+#~ msgid "Display _borders around new windows"
+#~ msgstr "Attēlot ro_bežas ap jaunajiem logiem"
 
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Rādīt _izvēlnes joslu jaunajos logos"
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "Rādīt _izvēlnes joslu jaunajos logos"
 
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Rādīt _rīkjoslu jaunajos logos"
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "Rādīt _rīkjoslu jaunajos logos"
 
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>Dubultklikšķis</b>"
+#~ msgid "Double Click"
+#~ msgstr "<b>Dubultklikšķis</b>"
 
-#: ../Terminal.glade.h:29
 #, fuzzy
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Ieslēgt kropļojumnovērsi termināļa fontam"
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Ieslēgt kropļojumnovērsi termināļa fontam"
 
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Ieslēgt šo opciju, ja vēlaties, lai Terminālis izmanto kropļojumnovērsi, kad "
-"renderē tekstu termināļa logos. Izslēgt šo opciju ir iespējams krietni "
-"paaugstināt termināļa renderēšanas ātrumu un samazināt vispārēju sistēmas "
-"noslodzi lēnākās sistēmās."
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Ieslēgt šo opciju, ja vēlaties, lai Terminālis izmanto kropļojumnovērsi, "
+#~ "kad renderē tekstu termināļa logos. Izslēgt šo opciju ir iespējams "
+#~ "krietni paaugstināt termināļa renderēšanas ātrumu un samazināt vispārēju "
+#~ "sistēmas noslodzi lēnākās sistēmās."
 
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Šī opcija ļauj lietotnēm, kuras skrien iekš termināļa loga, izmantot "
-"treknrakstu tekstā."
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "Šī opcija ļauj lietotnēm, kuras skrien iekš termināļa loga, izmantot "
+#~ "treknrakstu tekstā."
 
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Ieslēgt šo opciju, lai varētu ritināt tikai vienu rindu, izmantojot uz augšu "
-"un leju taustiņus kopā ar Shift taustiņu."
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "Ieslēgt šo opciju, lai varētu ritināt tikai vienu rindu, izmantojot uz "
+#~ "augšu un leju taustiņus kopā ar Shift taustiņu."
 
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "Šī opcija rāda izvēlnes joslu jaunizveidotajos termināļa logos."
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr "Šī opcija rāda izvēlnes joslu jaunizveidotajos termināļa logos."
 
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Šī opcija rāda rīkjoslu jaunizveidotajos termināļa logos."
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr "Šī opcija rāda rīkjoslu jaunizveidotajos termināļa logos."
 
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "Šī opcija rāda logu dekorācijas ap jaunizveidotajiem termināļu logiem."
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "Šī opcija rāda logu dekorācijas ap jaunizveidotajiem termināļu logiem."
 
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Ļauj jums ar jebkuru taustiņu termināļa logā noritināties uz komandu uzvedni."
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "Ļauj jums ar jebkuru taustiņu termināļa logā noritināties uz komandu "
+#~ "uzvedni."
 
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
+#~ msgid "Escape sequence"
+#~ msgstr "Escape sekvence"
 
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Escape sekvence"
+#~ msgid "General"
+#~ msgstr "Vispārēji"
 
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
+#~ msgid "Goes after initial title"
+#~ msgstr "Iet pēc sākotnējā virsraksta"
 
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Vispārēji"
+#~ msgid "Goes before initial title"
+#~ msgstr "Iet pirms sākotnējā virsraksta"
 
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Iet pēc sākotnējā virsraksta"
+#~ msgid "Isn't displayed"
+#~ msgstr "Netiek rādīts"
 
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Iet pirms sākotnējā virsraksta"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Netiek rādīts"
-
-#: ../Terminal.glade.h:44
 #, fuzzy
-msgid "Menubar Access"
-msgstr "<b>Izvēlnes joslas pieeja</b>"
+#~ msgid "Menubar Access"
+#~ msgstr "<b>Izvēlnes joslas pieeja</b>"
 
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Nekas (izmantot tīrtoņa krāsu)"
+#~ msgid "None (use solid color)"
+#~ msgstr "Nekas (izmantot tīrtoņa krāsu)"
 
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Kreisajā pusē"
+#~ msgid "On the left side"
+#~ msgstr "Kreisajā pusē"
 
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Labajā pusē"
+#~ msgid "On the right side"
+#~ msgstr "Labajā pusē"
 
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Atvērt dialoglogu krāsu izvēlei"
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "Atvērt dialoglogu krāsu izvēlei"
 
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>Atverot jaunus logus</b>"
+#~ msgid "Opening New Windows"
+#~ msgstr "<b>Atverot jaunus logus</b>"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "<b>Palete</b>"
+#~ msgid "Palette"
+#~ msgstr "<b>Palete</b>"
 
-#: ../Terminal.glade.h:51
 #, fuzzy
-msgid "Palette entry 1"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 1"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:52
 #, fuzzy
-msgid "Palette entry 10"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 10"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:53
 #, fuzzy
-msgid "Palette entry 11"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 11"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:54
 #, fuzzy
-msgid "Palette entry 12"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 12"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:55
 #, fuzzy
-msgid "Palette entry 13"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 13"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:56
 #, fuzzy
-msgid "Palette entry 14"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 14"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:57
 #, fuzzy
-msgid "Palette entry 15"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 15"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:58
 #, fuzzy
-msgid "Palette entry 16"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 16"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:59
 #, fuzzy
-msgid "Palette entry 2"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 2"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:60
 #, fuzzy
-msgid "Palette entry 3"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 3"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:61
 #, fuzzy
-msgid "Palette entry 4"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 4"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:62
 #, fuzzy
-msgid "Palette entry 5"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 5"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:63
 #, fuzzy
-msgid "Palette entry 6"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 6"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:64
 #, fuzzy
-msgid "Palette entry 7"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 7"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:65
 #, fuzzy
-msgid "Palette entry 8"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 8"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:66
 #, fuzzy
-msgid "Palette entry 9"
-msgstr "Paletes ieraksts %d"
+#~ msgid "Palette entry 9"
+#~ msgstr "Paletes ieraksts %d"
 
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Aizvietot sākotnējo virsrakstu"
+#~ msgid "Replaces initial title"
+#~ msgstr "Aizvietot sākotnējo virsrakstu"
 
-#: ../Terminal.glade.h:68
 #, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "Atiestatīt cilnes aktivitātes indikātoru pēc"
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "Atiestatīt cilnes aktivitātes indikātoru pēc"
 
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "Skalēts"
+#~ msgid "Scaled"
+#~ msgstr "Skalēts"
 
-#: ../Terminal.glade.h:70
 #, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "_Ritjoslas:"
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "_Ritjoslas:"
 
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "Ritināt uz _taustiņsitienu"
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "Ritināt uz _taustiņsitienu"
 
-#: ../Terminal.glade.h:72
 #, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "Ri_tināt izvadu"
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "Ri_tināt izvadu"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Ritināt vienu _rindu izmantojot Shift-Uz augšu/-Uz leju taustiņus"
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "Ritināt vienu _rindu izmantojot Shift-Uz augšu/-Uz leju taustiņus"
 
-#: ../Terminal.glade.h:74
 #, fuzzy
-msgid "Scroll_back:"
-msgstr "At_pakaļrite:"
+#~ msgid "Scroll_back:"
+#~ msgstr "At_pakaļrite:"
 
-#: ../Terminal.glade.h:75
 #, fuzzy
-msgid "Scrolling"
-msgstr "<b>Ritināšana</b>"
+#~ msgid "Scrolling"
+#~ msgstr "<b>Ritināšana</b>"
 
-#: ../Terminal.glade.h:76
 #, fuzzy
-msgid "Select Background Image File"
-msgstr "Norādiet fona attēlu"
+#~ msgid "Select Background Image File"
+#~ msgstr "Norādiet fona attēlu"
 
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Norādiet šo opciju, lai uzspiestu Terminālim palaist čaulu, kā pieteikšanās "
-"čaulu, kad tiek atvērts jauns terminālis. Apskatiet savas čaulas "
-"dokumentāciju, lai uzinātu atšķirību starp interaktīvās čaulas izpildi un "
-"pieteikšanās čaulas izpildi."
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "Norādiet šo opciju, lai uzspiestu Terminālim palaist čaulu, kā "
+#~ "pieteikšanās čaulu, kad tiek atvērts jauns terminālis. Apskatiet savas "
+#~ "čaulas dokumentāciju, lai uzinātu atšķirību starp interaktīvās čaulas "
+#~ "izpildi un pieteikšanās čaulas izpildi."
 
-#: ../Terminal.glade.h:78
 #, fuzzy
-msgid "Shortcut Keys"
-msgstr "Īsceļa taustiņš"
+#~ msgid "Shortcut Keys"
+#~ msgstr "Īsceļa taustiņš"
 
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Norādiet ritināšanas rindu skaitu izmantojot ritjoslu."
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr "Norādiet ritināšanas rindu skaitu izmantojot ritjoslu."
 
-#: ../Terminal.glade.h:80
 #, fuzzy
-msgid "St_yle:"
-msgstr "_Stils:"
+#~ msgid "St_yle:"
+#~ msgstr "_Stils:"
 
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "Izstiepts"
+#~ msgid "Stretched"
+#~ msgstr "Izstiepts"
 
-#: ../Terminal.glade.h:82
 #, fuzzy
-msgid "Tab Activity Indicator"
-msgstr "<b>Cilnes aktivitātes indikātors</b>"
+#~ msgid "Tab Activity Indicator"
+#~ msgstr "<b>Cilnes aktivitātes indikātors</b>"
 
-#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "Tab activit_y color:"
-msgstr "_Cilnes aktivitātes krāsa:"
+#~ msgid "Tab activit_y color:"
+#~ msgstr "_Cilnes aktivitātes krāsa:"
 
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "Termināļa uzstādījumi"
+#~ msgid "Terminal Preferences"
+#~ msgstr "Termināļa uzstādījumi"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Termināļa lietotnei ir pieejamas šādas krāsu paletes:"
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Termināļa lietotnei ir pieejamas šādas krāsu paletes:"
 
-#: ../Terminal.glade.h:86
 #, fuzzy
-msgid "Text Selection"
-msgstr "<b>Teksta Iekrāsošana</b>"
+#~ msgid "Text Selection"
+#~ msgstr "<b>Teksta Iekrāsošana</b>"
 
-#: ../Terminal.glade.h:87
 #, fuzzy
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"Šīs opcijas var likt dažām lietotnēm uzvesties nepareizi. Opcijas ir "
-"paredzētas, lai ļautu strādāt noteiktām lietotnēm un operētājsistēmām, kurām "
-"termināļa uzvedība atšķiras."
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "Šīs opcijas var likt dažām lietotnēm uzvesties nepareizi. Opcijas ir "
+#~ "paredzētas, lai ļautu strādāt noteiktām lietotnēm un operētājsistēmām, "
+#~ "kurām termināļa uzvedība atšķiras."
 
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Šī opcija nosaka vai terminālis automātiski ritinās uz leju rindiņas, kad "
-"jaunu izvadu ģenerē skrejoša komanda terminālī."
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "Šī opcija nosaka vai terminālis automātiski ritinās uz leju rindiņas, kad "
+#~ "jaunu izvadu ģenerē skrejoša komanda terminālī."
 
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Norāda $TERM vides mainīgā vērtību, kad jauns termināļa cilnis vai termināļa "
-"logs tiek atvērts. Noklusētai vērtībai jāder uz lielāko daļu sistēmu. Ja ir "
-"problēmas ar krāsām dažās lietotnēs, pamēģiniet xterm-color."
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Norāda $TERM vides mainīgā vērtību, kad jauns termināļa cilnis vai "
+#~ "termināļa logs tiek atvērts. Noklusētai vērtībai jāder uz lielāko daļu "
+#~ "sistēmu. Ja ir problēmas ar krāsām dažās lietotnēs, pamēģiniet xterm-"
+#~ "color."
 
-#: ../Terminal.glade.h:93
 #, fuzzy
-msgid "Tiled"
-msgstr "Sakrauti"
+#~ msgid "Tiled"
+#~ msgstr "Sakrauti"
 
-#: ../Terminal.glade.h:94
 #, fuzzy
-msgid "Title"
-msgstr "Sakrauti"
+#~ msgid "Title"
+#~ msgstr "Sakrauti"
 
-#: ../Terminal.glade.h:95
 #, fuzzy
-msgid "Transpare_ncy:"
-msgstr "Caurspīdīgs fons"
+#~ msgid "Transpare_ncy:"
+#~ msgstr "Caurspīdīgs fons"
 
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "Caurspīdīgs fons"
+#~ msgid "Transparent background"
+#~ msgstr "Caurspīdīgs fons"
 
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "Iz_mantot noklusēto krāsu"
+#~ msgid "Use _default color"
+#~ msgstr "Iz_mantot noklusēto krāsu"
 
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "Izmantot pielāgotu teksta iekrāsošanas fona krāsu"
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Izmantot pielāgotu teksta iekrāsošanas fona krāsu"
 
-#: ../Terminal.glade.h:99
 #, fuzzy
-msgid "Use c_ustom color:"
-msgstr "Izmantot pielāgotu _krāsu"
+#~ msgid "Use c_ustom color:"
+#~ msgstr "Izmantot pielāgotu _krāsu"
 
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "Izmantot noklusēto teksta iekrāsošanas fona krāsu"
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Izmantot noklusēto teksta iekrāsošanas fona krāsu"
 
-#: ../Terminal.glade.h:101
 #, fuzzy
-msgid "_Appearance"
-msgstr "Izskats"
+#~ msgid "_Appearance"
+#~ msgstr "Izskats"
 
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "_Fona krāsa:"
+#~ msgid "_Background color:"
+#~ msgstr "_Fona krāsa:"
 
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "_Atpakaļatkāpes atslēgas ģenerāts:"
+#~ msgid "_Backspace key generates:"
+#~ msgstr "_Atpakaļatkāpes atslēgas ģenerāts:"
 
-#: ../Terminal.glade.h:104
 #, fuzzy
-msgid "_Colors"
-msgstr "Krāsas"
+#~ msgid "_Colors"
+#~ msgstr "Krāsas"
 
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "_Dzēst atslēgu ģenerātus:"
+#~ msgid "_Delete key generates:"
+#~ msgstr "_Dzēst atslēgu ģenerātus:"
 
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "_Dinamiski-uzstādītais virsraksts:"
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "_Dinamiski-uzstādītais virsraksts:"
 
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_Fails:"
+#~ msgid "_File:"
+#~ msgstr "_Fails:"
 
-#: ../Terminal.glade.h:108
 #, fuzzy
-msgid "_General"
-msgstr "Vispārēji"
+#~ msgid "_General"
+#~ msgstr "Vispārēji"
 
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "_Sākotnējais virsraksts:"
+#~ msgid "_Initial title:"
+#~ msgstr "_Sākotnējais virsraksts:"
 
-#: ../Terminal.glade.h:110
 #, fuzzy
-msgid "_Reset compatibility options to defaults"
-msgstr "_Atiestatīt saderības opcijas uz noklusētajām"
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "_Atiestatīt saderības opcijas uz noklusētajām"
 
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "_Izpildīt komandu, kā pieteikšanās čaulu"
+#~ msgid "_Run command as login shell"
+#~ msgstr "_Izpildīt komandu, kā pieteikšanās čaulu"
 
-#: ../Terminal.glade.h:112
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "Īsceļi"
+#~ msgid "_Shortcuts"
+#~ msgstr "Īsceļi"
 
-#: ../Terminal.glade.h:113
 #, fuzzy
-msgid "_Text color:"
-msgstr "_Teksta un kursora krāsa:"
+#~ msgid "_Text color:"
+#~ msgstr "_Teksta un kursora krāsa:"
 
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Atja_unināt utmp/wtmp ierakstus, kad tiek palaista komanda"
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "Atja_unināt utmp/wtmp ierakstus, kad tiek palaista komanda"
 
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr "sekundes"
+#~ msgid "seconds"
+#~ msgstr "sekundes"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Virsraksts:</b>"

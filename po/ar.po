@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2008-07-18 21:41+0200\n"
 "Last-Translator: Mohamed Magdy <mohamedmk@gmail.com>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -250,12 +250,12 @@ msgstr ""
 "\n"
 "فضلا أرسل تقارير العلل إلى <%s>.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "تعذّر تسجيل خدمة الطرفية: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "تعذّر تشغيل الطرفية: %s\n"
@@ -381,11 +381,11 @@ msgstr "يحتاج الخيار \"--execute/-x\" لتحديد الأمر الذ�
 msgid "Unknown option \"%s\""
 msgstr "خيار مجهول \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "كل الملفات"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "ملفات صور"
 
@@ -501,21 +501,24 @@ msgstr "تحول للسان 9"
 msgid "Contents"
 msgstr "المحتويات"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "بدون عنوان"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "تعذّر تحديد صدفك ولوجك."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "فشل تنفيذ الإبن"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "اغلق هذا اللسان"
 
@@ -540,7 +543,7 @@ msgid "Help"
 msgstr "مساعدة"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "مُعطّل"
 
@@ -840,16 +843,16 @@ msgstr "إغلاق جميع الألسنة؟"
 msgid "Do _not ask me again"
 msgstr "لا _تسألني ثانية"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr ""
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 #, fuzzy
 msgid "Title:"
 msgstr "العنوان"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr ""
 
@@ -857,540 +860,400 @@ msgstr ""
 msgid "Terminal Emulator"
 msgstr "محاكي طرفية"
 
-#: ../Terminal.glade.h:1
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "اعدادات <tt>$TERM</tt>:"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "اعدادات <tt>$TERM</tt>:"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "متقدم"
+#~ msgid "Ad_vanced"
+#~ msgstr "متقدم"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "اسمح بالخط الثخين"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "اسمح بالخط الثخين"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "تعرف تلقائي"
+#~ msgid "Auto-detect"
+#~ msgstr "تعرف تلقائي"
 
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "صورة خلفية"
+#~ msgid "Background"
+#~ msgstr "صورة خلفية"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "صورة خلفية"
+#~ msgid "Background image"
+#~ msgstr "صورة خلفية"
 
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "مركزي"
+#~ msgid "Centered"
+#~ msgstr "مركزي"
 
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "اختر خط الطرفية"
+#~ msgid "Choose Terminal Font"
+#~ msgstr "اختر خط الطرفية"
 
-#: ../Terminal.glade.h:10
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "اختر لون نص الطرفية"
+#~ msgid "Choose tab activity color"
+#~ msgstr "اختر لون نص الطرفية"
 
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "اختر لون خلفية الطرفية"
+#~ msgid "Choose terminal background color"
+#~ msgstr "اختر لون خلفية الطرفية"
 
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "اختر لون مؤشر الطرفية"
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "اختر لون مؤشر الطرفية"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "اختر لون نص الطرفية"
+#~ msgid "Choose terminal text color"
+#~ msgstr "اختر لون نص الطرفية"
 
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "اختر لون خلفية نص الطرفية المنتقى"
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "اختر لون خلفية نص الطرفية المنتقى"
 
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "منتقي الألوان"
+#~ msgid "Color Selector"
+#~ msgstr "منتقي الألوان"
 
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>أمر</b>"
+#~ msgid "Command"
+#~ msgstr "<b>أمر</b>"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>التوافقية</b>"
+#~ msgid "Compatibility"
+#~ msgstr "<b>التوافقية</b>"
 
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
 
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "لون ال_نص والمؤشر:"
+#~ msgid "Cu_rsor color:"
+#~ msgstr "لون ال_نص والمؤشر:"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "عطِّل كل مفاتيح الوصول لشريط القوائم (مثل Alt+f)"
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "عطِّل كل مفاتيح الوصول لشريط القوائم (مثل Alt+f)"
 
-#: ../Terminal.glade.h:23
 #, fuzzy
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "عطِّل مفتاح اختصار القائمة (F10 افتراضا)"
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "عطِّل مفتاح اختصار القائمة (F10 افتراضا)"
 
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "اعرض _حواف حول النوافذ الجديدة"
+#~ msgid "Display _borders around new windows"
+#~ msgstr "اعرض _حواف حول النوافذ الجديدة"
 
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "اعرض شريط _قوائم في النوافذ الجديدة"
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "اعرض شريط _قوائم في النوافذ الجديدة"
 
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "اعرض شريط أ_دوات في النوافذ الجديدة"
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "اعرض شريط أ_دوات في النوافذ الجديدة"
 
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>نقر مزدوج</b>"
+#~ msgid "Double Click"
+#~ msgstr "<b>نقر مزدوج</b>"
 
-#: ../Terminal.glade.h:29
 #, fuzzy
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "فعِّل تنعيم الحواف لخط الطرفية"
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "فعِّل تنعيم الحواف لخط الطرفية"
 
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"فعِّل هذا الخيار ذا أردت ان تستخدم الطرفية تنعيم الحواف عند عرض النص في نافذة "
-"الطرفية. تعطيل هذا الخيار قد يُسرِّع الأداء بشكل كبير ويقلل حِمْل النظام في "
-"الأنظمة البطيئة."
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "فعِّل هذا الخيار ذا أردت ان تستخدم الطرفية تنعيم الحواف عند عرض النص في "
+#~ "نافذة الطرفية. تعطيل هذا الخيار قد يُسرِّع الأداء بشكل كبير ويقلل حِمْل النظام "
+#~ "في الأنظمة البطيئة."
 
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"فعِّل هذا الخيار لتسمح للتطبيقات التي تعمل داخل الطرفية باستخدام خط ثخين."
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "فعِّل هذا الخيار لتسمح للتطبيقات التي تعمل داخل الطرفية باستخدام خط ثخين."
 
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr "فعِّل هذا الخيار لتعرض شريط قوائم في النوافذ المنشأة حديثا."
 
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "فعِّل هذا الخيار لتعرض شريط قوائم في النوافذ المنشأة حديثا."
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr "فعِّل هذا الخيار لتعرض شريط أدوات في النوافذ المنشأة حديثا."
 
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "فعِّل هذا الخيار لتعرض شريط أدوات في النوافذ المنشأة حديثا."
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr "فعِّل هذا الخيار لتعرض زخرفة النوافذ حول النوافذ المنشأة حديثا."
 
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "فعِّل هذا الخيار لتعرض زخرفة النوافذ حول النوافذ المنشأة حديثا."
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "يمكنك من ضغط أي زر على لوحة المفاتيح لتلف نافذة الطرفية لأسفل حتى سطر "
+#~ "الأوامر."
 
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"يمكنك من ضغط أي زر على لوحة المفاتيح لتلف نافذة الطرفية لأسفل حتى سطر "
-"الأوامر."
+#~ msgid "Escape sequence"
+#~ msgstr "Escape sequence"
 
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
+#~ msgid "General"
+#~ msgstr "عام"
 
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Escape sequence"
+#~ msgid "Goes after initial title"
+#~ msgstr "يأتي بعد العنوان الأولي"
 
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
+#~ msgid "Goes before initial title"
+#~ msgstr "يأتي قبل العنوان الأولي"
 
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "عام"
+#~ msgid "Isn't displayed"
+#~ msgstr "لا يُعرض"
 
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "يأتي بعد العنوان الأولي"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "يأتي قبل العنوان الأولي"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "لا يُعرض"
-
-#: ../Terminal.glade.h:44
 #, fuzzy
-msgid "Menubar Access"
-msgstr "<b>الوصول لشريط القوائم</b>"
+#~ msgid "Menubar Access"
+#~ msgstr "<b>الوصول لشريط القوائم</b>"
 
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "بلا (استعمل لون ثابت)"
+#~ msgid "None (use solid color)"
+#~ msgstr "بلا (استعمل لون ثابت)"
 
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "على الجانب الأيسر"
+#~ msgid "On the left side"
+#~ msgstr "على الجانب الأيسر"
 
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "على الجانب الأيمن"
+#~ msgid "On the right side"
+#~ msgstr "على الجانب الأيمن"
 
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "افتح حوار لتحديد لون"
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "افتح حوار لتحديد لون"
 
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>افتح نافذة جديدة</b>"
+#~ msgid "Opening New Windows"
+#~ msgstr "<b>افتح نافذة جديدة</b>"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "<b>لوحة ألوان</b>"
+#~ msgid "Palette"
+#~ msgstr "<b>لوحة ألوان</b>"
 
-#: ../Terminal.glade.h:51
 #, fuzzy
-msgid "Palette entry 1"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 1"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:52
 #, fuzzy
-msgid "Palette entry 10"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 10"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:53
 #, fuzzy
-msgid "Palette entry 11"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 11"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:54
 #, fuzzy
-msgid "Palette entry 12"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 12"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:55
 #, fuzzy
-msgid "Palette entry 13"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 13"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:56
 #, fuzzy
-msgid "Palette entry 14"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 14"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:57
 #, fuzzy
-msgid "Palette entry 15"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 15"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:58
 #, fuzzy
-msgid "Palette entry 16"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 16"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:59
 #, fuzzy
-msgid "Palette entry 2"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 2"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:60
 #, fuzzy
-msgid "Palette entry 3"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 3"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:61
 #, fuzzy
-msgid "Palette entry 4"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 4"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:62
 #, fuzzy
-msgid "Palette entry 5"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 5"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:63
 #, fuzzy
-msgid "Palette entry 6"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 6"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:64
 #, fuzzy
-msgid "Palette entry 7"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 7"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:65
 #, fuzzy
-msgid "Palette entry 8"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 8"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:66
 #, fuzzy
-msgid "Palette entry 9"
-msgstr "عنصر لوحة الألوان %d"
+#~ msgid "Palette entry 9"
+#~ msgstr "عنصر لوحة الألوان %d"
 
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "يستبدل العنوان الأولي"
+#~ msgid "Replaces initial title"
+#~ msgstr "يستبدل العنوان الأولي"
 
-#: ../Terminal.glade.h:68
 #, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "اختر لون نص الطرفية"
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "اختر لون نص الطرفية"
 
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "محجّم"
+#~ msgid "Scaled"
+#~ msgstr "محجّم"
 
-#: ../Terminal.glade.h:70
 #, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "_شريط التمرير:"
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "_شريط التمرير:"
 
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "لف عند _ضغطة مفتاح"
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "لف عند _ضغطة مفتاح"
 
-#: ../Terminal.glade.h:72
 #, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "_لُف مع الخرْج"
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "_لُف مع الخرْج"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../Terminal.glade.h:74
 #, fuzzy
-msgid "Scroll_back:"
-msgstr "اللف لل_خلف:"
+#~ msgid "Scroll_back:"
+#~ msgstr "اللف لل_خلف:"
 
-#: ../Terminal.glade.h:75
 #, fuzzy
-msgid "Scrolling"
-msgstr "<b>اللف</b>"
+#~ msgid "Scrolling"
+#~ msgstr "<b>اللف</b>"
 
-#: ../Terminal.glade.h:76
 #, fuzzy
-msgid "Select Background Image File"
-msgstr "انتقِ نلف صورة الخلفيّة"
+#~ msgid "Select Background Image File"
+#~ msgstr "انتقِ نلف صورة الخلفيّة"
 
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"انتقِ هذا الخيار لتجبر طرفيتك على تشغيل الصدفة كصدفة ولوج عندما تفتح طرفيات "
-"جديدة. راجع وثائق صدفتك لتحصل على تفاصيل أكثر حول الفرق بين تشغيلها كصدفة "
-"تفاعلية أو صدفة ولوج."
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "انتقِ هذا الخيار لتجبر طرفيتك على تشغيل الصدفة كصدفة ولوج عندما تفتح "
+#~ "طرفيات جديدة. راجع وثائق صدفتك لتحصل على تفاصيل أكثر حول الفرق بين "
+#~ "تشغيلها كصدفة تفاعلية أو صدفة ولوج."
 
-#: ../Terminal.glade.h:78
 #, fuzzy
-msgid "Shortcut Keys"
-msgstr "مفتاح اختصار"
+#~ msgid "Shortcut Keys"
+#~ msgstr "مفتاح اختصار"
 
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "يحدد عدد السطور التي يمكن أتلفها للخلف باستخدام شريط التمرير."
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr "يحدد عدد السطور التي يمكن أتلفها للخلف باستخدام شريط التمرير."
 
-#: ../Terminal.glade.h:80
 #, fuzzy
-msgid "St_yle:"
-msgstr "أ_سلوب:"
+#~ msgid "St_yle:"
+#~ msgstr "أ_سلوب:"
 
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "مُمدد"
+#~ msgid "Stretched"
+#~ msgstr "مُمدد"
 
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr ""
-
-#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "Tab activit_y color:"
-msgstr "اختر لون نص الطرفية"
+#~ msgid "Tab activit_y color:"
+#~ msgstr "اختر لون نص الطرفية"
 
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "تفضيلات الطرفية"
+#~ msgid "Terminal Preferences"
+#~ msgstr "تفضيلات الطرفية"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "تتوفر لوحة الألوان هذه لتطبيقات الطرفية:"
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "تتوفر لوحة الألوان هذه لتطبيقات الطرفية:"
 
-#: ../Terminal.glade.h:86
 #, fuzzy
-msgid "Text Selection"
-msgstr "<b>انتقاء النص</b>"
+#~ msgid "Text Selection"
+#~ msgstr "<b>انتقاء النص</b>"
 
-#: ../Terminal.glade.h:87
 #, fuzzy
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"قد ي{دي هذا الخيار إلى سلوك بعض البرامج سلوكا خاطئا. لقد وُضع هنا فقط ليسمح "
-"لك بالإلتفاف حول بعض التطبيقات أو أنظمة التشغيل التي تتوقع سلوكا مختلفا من "
-"الطرفية."
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "قد ي{دي هذا الخيار إلى سلوك بعض البرامج سلوكا خاطئا. لقد وُضع هنا فقط "
+#~ "ليسمح لك بالإلتفاف حول بعض التطبيقات أو أنظمة التشغيل التي تتوقع سلوكا "
+#~ "مختلفا من الطرفية."
 
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"يتحكم هذا الخيار فيما إذا كانت الطرفية ستلف لأسفل آليا عندما ينشأ خرج جديد "
-"من الأوامر التي تعمل داخل الطرفية."
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "يتحكم هذا الخيار فيما إذا كانت الطرفية ستلف لأسفل آليا عندما ينشأ خرج "
+#~ "جديد من الأوامر التي تعمل داخل الطرفية."
 
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-
-#: ../Terminal.glade.h:93
 #, fuzzy
-msgid "Tiled"
-msgstr "مبلّط"
+#~ msgid "Tiled"
+#~ msgstr "مبلّط"
 
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "العنوان"
+#~ msgid "Title"
+#~ msgstr "العنوان"
 
-#: ../Terminal.glade.h:95
 #, fuzzy
-msgid "Transpare_ncy:"
-msgstr "خلفية شفافة"
+#~ msgid "Transpare_ncy:"
+#~ msgstr "خلفية شفافة"
 
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "خلفية شفافة"
+#~ msgid "Transparent background"
+#~ msgstr "خلفية شفافة"
 
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "استخدم اللون الإ_فتراضي"
+#~ msgid "Use _default color"
+#~ msgstr "استخدم اللون الإ_فتراضي"
 
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "اختر لون خلفية نص الطرفية المنتقى المخصص"
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "اختر لون خلفية نص الطرفية المنتقى المخصص"
 
-#: ../Terminal.glade.h:99
 #, fuzzy
-msgid "Use c_ustom color:"
-msgstr "استخدم لون _مخصص"
+#~ msgid "Use c_ustom color:"
+#~ msgstr "استخدم لون _مخصص"
 
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "اختر لون خلفية النص المنتقى الإفتراضي"
+#~ msgid "Use the default text selection background color"
+#~ msgstr "اختر لون خلفية النص المنتقى الإفتراضي"
 
-#: ../Terminal.glade.h:101
 #, fuzzy
-msgid "_Appearance"
-msgstr "المظهر"
+#~ msgid "_Appearance"
+#~ msgstr "المظهر"
 
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "لون ال_خلفية:"
+#~ msgid "_Background color:"
+#~ msgstr "لون ال_خلفية:"
 
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "مفتاح _Backspace يولِّد:"
+#~ msgid "_Backspace key generates:"
+#~ msgstr "مفتاح _Backspace يولِّد:"
 
-#: ../Terminal.glade.h:104
 #, fuzzy
-msgid "_Colors"
-msgstr "ألوان"
+#~ msgid "_Colors"
+#~ msgstr "ألوان"
 
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "مفتاح ال_حذف يولد:"
+#~ msgid "_Delete key generates:"
+#~ msgstr "مفتاح ال_حذف يولد:"
 
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "العنوان المحدد _ديناميكيا:"
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "العنوان المحدد _ديناميكيا:"
 
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_ملف:"
+#~ msgid "_File:"
+#~ msgstr "_ملف:"
 
-#: ../Terminal.glade.h:108
 #, fuzzy
-msgid "_General"
-msgstr "عام"
+#~ msgid "_General"
+#~ msgstr "عام"
 
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "العنوان الأ_ولي:"
+#~ msgid "_Initial title:"
+#~ msgstr "العنوان الأ_ولي:"
 
-#: ../Terminal.glade.h:110
 #, fuzzy
-msgid "_Reset compatibility options to defaults"
-msgstr "أ_عد ضبط خيارات التوافقية للإفتراضي"
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "أ_عد ضبط خيارات التوافقية للإفتراضي"
 
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "_شغِّل أمر كصدفة ولوج"
+#~ msgid "_Run command as login shell"
+#~ msgstr "_شغِّل أمر كصدفة ولوج"
 
-#: ../Terminal.glade.h:112
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "اختصارات"
+#~ msgid "_Shortcuts"
+#~ msgstr "اختصارات"
 
-#: ../Terminal.glade.h:113
 #, fuzzy
-msgid "_Text color:"
-msgstr "لون ال_نص والمؤشر:"
+#~ msgid "_Text color:"
+#~ msgstr "لون ال_نص والمؤشر:"
 
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_حدِّث سجلّات utmp/wtmp عند إطلاق أمر"
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr ""
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "_حدِّث سجلّات utmp/wtmp عند إطلاق أمر"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>العنوان:</b>"

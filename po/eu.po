@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2009-09-21 23:07+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-eu@debian.lists.org>\n"
@@ -324,12 +324,12 @@ msgstr ""
 "\n"
 "Mesedez arazoen berri <%s>-en eman.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ezin da terminal zerbitzua erregistratu: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Ezin da terminala abiarazi: %s\n"
@@ -469,11 +469,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Aukera ezezaguna \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Fitxategi denak"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Irudi Fitxategiak"
 
@@ -589,21 +589,24 @@ msgstr "Aldatu 9. fitxara"
 msgid "Contents"
 msgstr "Edukia"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "Izengabea"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ezin da zure saio shell-a atzeman."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "Huts egin du semea abiaraztean"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "Itxi fitxa hau"
 
@@ -628,7 +631,7 @@ msgid "Help"
 msgstr "Laguntza"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "Desgaiturik"
 
@@ -937,15 +940,15 @@ msgstr "Fitxa guztiak Itxi?"
 msgid "Do _not ask me again"
 msgstr "Ez galdetu _niri berriz"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "Titulua Ezarri"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 msgid "Title:"
 msgstr "Titulua:"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "Uneko terminal fitxaren titulua idatzi"
 
@@ -953,504 +956,397 @@ msgstr "Uneko terminal fitxaren titulua idatzi"
 msgid "Terminal Emulator"
 msgstr "Terminal emuladorea"
 
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> _ezarpenak:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "Au_rreratua"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "Onartu te_stu lodia"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Auto-atzeman"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Atzeko planoa"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Atzeko planoko irudia"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Erdian"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Hautatu terminal letra-tipoa"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Hautatu fitxa aktibitate kolorea"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Aukeratu terminalaren atzeko planoko kolorea"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Hautatu terminalaren kurtsore kolorea"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Aukeratu terminalaren testuaren kolorea"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Erabili terminal testu hautapen atzeko planoko kolorea"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Kolore-hautatzailea"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "Komandoa"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "Bateragarritasuna"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
-"hurrengo karaktereak _hitz baten zati bezala hartu\n"
-" klik bikoitza egitean:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Ktrl-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "Ku_rtsore kolorea:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Ezgaitu me_nu laster-tekla guztiak (Alt+f bezalakoak)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Ezgaitu menuaren _laster-tekla (lehenespenez F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "_Ertzak bistarazi leiho berrien inguruan"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "_Menubarra bistarazi leiho berrietan"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "_tresna-barrak bistarazi leiho berrietan"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Klik bikoitza"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Gaitu anti-aliasing terminal letra-tipoarentzat"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Gaitu aukera hau terminalak testua errenderizatzean anti-aliasing erabiltzea "
-"nahi baduzu. Aukera hau ezgaitzeak terminalak azkarrago funtziona dezan eta "
-"sistema geldoetan sistema lana beheratzea egingo du."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Gaitu aukera hau terminal barneko aplikazioek testu lodia erabiltzea "
-"onartzeko."
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Aukera hau gaitu gora/behera gezi teklak Shift-ekin batera gora/behera "
-"sakatzean lerro bat korritu ahal izateko."
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Aukera hau gaitu hemendik aurrera sortutako terminaletan menu-barra "
-"bistaratzeko."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Aukera hau gaitu hemendik aurrera sortutako terminaletan tresna-barrak "
-"bistaratzeko."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Aukera hau gaitu hemendik aurrera sortutako terminaletan leiho dekorazioak "
-"bistaratzeko."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Aukera honekin edozein tekla zanpatzean terminal leihoa azken lerrorarte "
-"korrituko da."
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Garbitu TTY"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Ihes sekuentzia"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Letra-tipoa"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Orokorra"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Hasierako tituluaren ondoren erakutsi"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Hasierako tituluaren aurretik erakutsi"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Ez da bistaratzen"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Menu-barra atzipena"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Bat ere ez (kolore bat erabili)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Ezkerrean"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Eskuinean"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Ireki elkarrizketa-koadroa kolorea zehazteko"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Leiho berriak irekitzen"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Paleta"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "1 paleta sarrera"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "10 paleta sarrera"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "11 paleta sarrera"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "12 paleta sarrera"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "13 paleta sarrera"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "14 paleta sarrera"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "15 paleta sarrera"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "16 paleta sarrera"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "2 paleta sarrera"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "3 paleta sarrera"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "4 paleta sarrera"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "5 paleta sarrera"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "6 paleta sarrera"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "7 paleta sarrera"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "8 paleta sarrera"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "9 paleta sarrera"
-
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Hasierako titulua ordezten du"
-
-#: ../Terminal.glade.h:68
-msgid "Reset tab activity _indicator after"
-msgstr "Berrabiarazi fitxa aktibitate ad_ierazlea"
-
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "Eskalaturik"
-
-#: ../Terminal.glade.h:70
-msgid "Scr_ollbar is:"
-msgstr "_Korritze-barra:"
-
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "Korritu tekla _sakatzean"
-
-#: ../Terminal.glade.h:72
-msgid "Scroll on ou_tput"
-msgstr "Ko_rritu irteera berrietan"
-
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Korritu _lerro soil bat Shift-gora/Shif-behera erabiltzean"
-
-#: ../Terminal.glade.h:74
-msgid "Scroll_back:"
-msgstr "_Atzera korritu:"
-
-#: ../Terminal.glade.h:75
-msgid "Scrolling"
-msgstr "Korritzea"
-
-#: ../Terminal.glade.h:76
-msgid "Select Background Image File"
-msgstr "Hautatu atzeko planoko irudi fitxategia"
-
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Aukera hau hautatu terminal berriak irekitzean terminalari shell-ak saio "
-"shell bezala abiaraztea behartzeko. Zure shell-aren dokumentazioa begiratu "
-"shell interaktibo eta saio shell baten arteko ezberdintasunak jakiteko."
-
-#: ../Terminal.glade.h:78
-msgid "Shortcut Keys"
-msgstr "Lasterbidea teklak"
-
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Korritze-barra erabiliaz atzera egin dezakezun lerro kopurua ezartzen du."
-
-#: ../Terminal.glade.h:80
-msgid "St_yle:"
-msgstr "Est_iloa:"
-
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "Txikiturik"
-
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr "Fitxa aktibitate adierazlea"
-
-#: ../Terminal.glade.h:83
-msgid "Tab activit_y color:"
-msgstr "T_abuladore aktibitate kolorea:"
-
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "Terminal Hobespenak"
-
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminala aplikazioek kolore paleta hau dute erabilgarri:"
-
-#: ../Terminal.glade.h:86
-msgid "Text Selection"
-msgstr "Testu hautapena"
-
-#: ../Terminal.glade.h:87
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"Aukera hauek zenbait aplikazio oker kudeatzea eragin\n"
-"dezake. Beste terminal ingurune bat espero duten zenbait\n"
-"aplikazioa eta sistema eragilerekin erabiltzeko soilik daude\n"
-"hemen."
-
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Aukera honek terminal barnean abiarazitako komandoak irteera berriak "
-"sortzerakoan terminalaren korritze automatikoa kudeatzen du."
-
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Honek leiho terminal fitxa edo leiho berri bat irekitzean erabiliko den "
-"$TERM ingurune aldagaia ezartzen du. Lehenetsia egokia izan beharko luke "
-"sistema gehienentzat. Zenbait aplikazioetan kolore arazoak izan ezkero, "
-"hemen xterm-color erabiliaz saiatu."
-
-#: ../Terminal.glade.h:93
-msgid "Tiled"
-msgstr "Mosaikoan"
-
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "Titulua"
-
-#: ../Terminal.glade.h:95
-msgid "Transpare_ncy:"
-msgstr "Garde_ntasuna:"
-
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "Atzeko planoaren gardentasuna"
-
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "lehenetsiriko _kolorea erabili"
-
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "Erabili lehenetsiriko testu hautapen atzeko planoko kolorea"
-
-#: ../Terminal.glade.h:99
-msgid "Use c_ustom color:"
-msgstr "_pertsonalizatua kolorea erabili"
-
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "lehenetsiriko atzeko plano hautapen kolorea erabili"
-
-#: ../Terminal.glade.h:101
-msgid "_Appearance"
-msgstr "_Itxura"
-
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "Atzeko pla_noaren kolorea:"
-
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "_Atzera-tekla sakatutakoan:"
-
-#: ../Terminal.glade.h:104
-msgid "_Colors"
-msgstr "_Koloreak"
-
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "_Ezabatu tekla sakatutakoan:"
-
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "_Dinamikoki ezarritako titulua:"
-
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_Fitxategia:"
-
-#: ../Terminal.glade.h:108
-msgid "_General"
-msgstr "_Orokorra"
-
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "has_ierako titulua:"
-
-#: ../Terminal.glade.h:110
-msgid "_Reset compatibility options to defaults"
-msgstr "_Berrezarri bateragarritasun aukera lehenetsiak"
-
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "_Exekutatu komando saio shell batean bezala"
-
-#: ../Terminal.glade.h:112
-msgid "_Shortcuts"
-msgstr "_Lasterbideak"
-
-#: ../Terminal.glade.h:113
-msgid "_Text color:"
-msgstr "_Testu kolorea:"
-
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Utmp/wtmp erregistroa eguneratu komando bat abiaraztean"
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr "segundo"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "<tt>$TERM</tt> _ezarpenak:"
+
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
+
+#~ msgid "Ad_vanced"
+#~ msgstr "Au_rreratua"
+
+#~ msgid "Allow bold te_xt"
+#~ msgstr "Onartu te_stu lodia"
+
+#~ msgid "Auto-detect"
+#~ msgstr "Auto-atzeman"
+
+#~ msgid "Background"
+#~ msgstr "Atzeko planoa"
+
+#~ msgid "Background image"
+#~ msgstr "Atzeko planoko irudia"
+
+#~ msgid "Centered"
+#~ msgstr "Erdian"
+
+#~ msgid "Choose Terminal Font"
+#~ msgstr "Hautatu terminal letra-tipoa"
+
+#~ msgid "Choose tab activity color"
+#~ msgstr "Hautatu fitxa aktibitate kolorea"
+
+#~ msgid "Choose terminal background color"
+#~ msgstr "Aukeratu terminalaren atzeko planoko kolorea"
+
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "Hautatu terminalaren kurtsore kolorea"
+
+#~ msgid "Choose terminal text color"
+#~ msgstr "Aukeratu terminalaren testuaren kolorea"
+
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "Erabili terminal testu hautapen atzeko planoko kolorea"
+
+#~ msgid "Color Selector"
+#~ msgstr "Kolore-hautatzailea"
+
+#~ msgid "Command"
+#~ msgstr "Komandoa"
+
+#~ msgid "Compatibility"
+#~ msgstr "Bateragarritasuna"
+
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr ""
+#~ "hurrengo karaktereak _hitz baten zati bezala hartu\n"
+#~ " klik bikoitza egitean:"
+
+#~ msgid "Control-H"
+#~ msgstr "Ktrl-H"
+
+#~ msgid "Cu_rsor color:"
+#~ msgstr "Ku_rtsore kolorea:"
+
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "Ezgaitu me_nu laster-tekla guztiak (Alt+f bezalakoak)"
+
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "Ezgaitu menuaren _laster-tekla (lehenespenez F10)"
+
+#~ msgid "Display _borders around new windows"
+#~ msgstr "_Ertzak bistarazi leiho berrien inguruan"
+
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "_Menubarra bistarazi leiho berrietan"
+
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "_tresna-barrak bistarazi leiho berrietan"
+
+#~ msgid "Double Click"
+#~ msgstr "Klik bikoitza"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Gaitu anti-aliasing terminal letra-tipoarentzat"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Gaitu aukera hau terminalak testua errenderizatzean anti-aliasing "
+#~ "erabiltzea nahi baduzu. Aukera hau ezgaitzeak terminalak azkarrago "
+#~ "funtziona dezan eta sistema geldoetan sistema lana beheratzea egingo du."
+
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "Gaitu aukera hau terminal barneko aplikazioek testu lodia erabiltzea "
+#~ "onartzeko."
+
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "Aukera hau gaitu gora/behera gezi teklak Shift-ekin batera gora/behera "
+#~ "sakatzean lerro bat korritu ahal izateko."
+
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr ""
+#~ "Aukera hau gaitu hemendik aurrera sortutako terminaletan menu-barra "
+#~ "bistaratzeko."
+
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr ""
+#~ "Aukera hau gaitu hemendik aurrera sortutako terminaletan tresna-barrak "
+#~ "bistaratzeko."
+
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "Aukera hau gaitu hemendik aurrera sortutako terminaletan leiho "
+#~ "dekorazioak bistaratzeko."
+
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "Aukera honekin edozein tekla zanpatzean terminal leihoa azken lerrorarte "
+#~ "korrituko da."
+
+#~ msgid "Erase TTY"
+#~ msgstr "Garbitu TTY"
+
+#~ msgid "Escape sequence"
+#~ msgstr "Ihes sekuentzia"
+
+#~ msgid "Font"
+#~ msgstr "Letra-tipoa"
+
+#~ msgid "General"
+#~ msgstr "Orokorra"
+
+#~ msgid "Goes after initial title"
+#~ msgstr "Hasierako tituluaren ondoren erakutsi"
+
+#~ msgid "Goes before initial title"
+#~ msgstr "Hasierako tituluaren aurretik erakutsi"
+
+#~ msgid "Isn't displayed"
+#~ msgstr "Ez da bistaratzen"
+
+#~ msgid "Menubar Access"
+#~ msgstr "Menu-barra atzipena"
+
+#~ msgid "None (use solid color)"
+#~ msgstr "Bat ere ez (kolore bat erabili)"
+
+#~ msgid "On the left side"
+#~ msgstr "Ezkerrean"
+
+#~ msgid "On the right side"
+#~ msgstr "Eskuinean"
+
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "Ireki elkarrizketa-koadroa kolorea zehazteko"
+
+#~ msgid "Opening New Windows"
+#~ msgstr "Leiho berriak irekitzen"
+
+#~ msgid "Palette"
+#~ msgstr "Paleta"
+
+#~ msgid "Palette entry 1"
+#~ msgstr "1 paleta sarrera"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "10 paleta sarrera"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "11 paleta sarrera"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "12 paleta sarrera"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "13 paleta sarrera"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "14 paleta sarrera"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "15 paleta sarrera"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "16 paleta sarrera"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "2 paleta sarrera"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "3 paleta sarrera"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "4 paleta sarrera"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "5 paleta sarrera"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "6 paleta sarrera"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "7 paleta sarrera"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "8 paleta sarrera"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "9 paleta sarrera"
+
+#~ msgid "Replaces initial title"
+#~ msgstr "Hasierako titulua ordezten du"
+
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "Berrabiarazi fitxa aktibitate ad_ierazlea"
+
+#~ msgid "Scaled"
+#~ msgstr "Eskalaturik"
+
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "_Korritze-barra:"
+
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "Korritu tekla _sakatzean"
+
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "Ko_rritu irteera berrietan"
+
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "Korritu _lerro soil bat Shift-gora/Shif-behera erabiltzean"
+
+#~ msgid "Scroll_back:"
+#~ msgstr "_Atzera korritu:"
+
+#~ msgid "Scrolling"
+#~ msgstr "Korritzea"
+
+#~ msgid "Select Background Image File"
+#~ msgstr "Hautatu atzeko planoko irudi fitxategia"
+
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "Aukera hau hautatu terminal berriak irekitzean terminalari shell-ak saio "
+#~ "shell bezala abiaraztea behartzeko. Zure shell-aren dokumentazioa "
+#~ "begiratu shell interaktibo eta saio shell baten arteko ezberdintasunak "
+#~ "jakiteko."
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Lasterbidea teklak"
+
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr ""
+#~ "Korritze-barra erabiliaz atzera egin dezakezun lerro kopurua ezartzen du."
+
+#~ msgid "St_yle:"
+#~ msgstr "Est_iloa:"
+
+#~ msgid "Stretched"
+#~ msgstr "Txikiturik"
+
+#~ msgid "Tab Activity Indicator"
+#~ msgstr "Fitxa aktibitate adierazlea"
+
+#~ msgid "Tab activit_y color:"
+#~ msgstr "T_abuladore aktibitate kolorea:"
+
+#~ msgid "Terminal Preferences"
+#~ msgstr "Terminal Hobespenak"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Terminala aplikazioek kolore paleta hau dute erabilgarri:"
+
+#~ msgid "Text Selection"
+#~ msgstr "Testu hautapena"
+
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "Aukera hauek zenbait aplikazio oker kudeatzea eragin\n"
+#~ "dezake. Beste terminal ingurune bat espero duten zenbait\n"
+#~ "aplikazioa eta sistema eragilerekin erabiltzeko soilik daude\n"
+#~ "hemen."
+
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "Aukera honek terminal barnean abiarazitako komandoak irteera berriak "
+#~ "sortzerakoan terminalaren korritze automatikoa kudeatzen du."
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Honek leiho terminal fitxa edo leiho berri bat irekitzean erabiliko den "
+#~ "$TERM ingurune aldagaia ezartzen du. Lehenetsia egokia izan beharko luke "
+#~ "sistema gehienentzat. Zenbait aplikazioetan kolore arazoak izan ezkero, "
+#~ "hemen xterm-color erabiliaz saiatu."
+
+#~ msgid "Tiled"
+#~ msgstr "Mosaikoan"
+
+#~ msgid "Title"
+#~ msgstr "Titulua"
+
+#~ msgid "Transpare_ncy:"
+#~ msgstr "Garde_ntasuna:"
+
+#~ msgid "Transparent background"
+#~ msgstr "Atzeko planoaren gardentasuna"
+
+#~ msgid "Use _default color"
+#~ msgstr "lehenetsiriko _kolorea erabili"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Erabili lehenetsiriko testu hautapen atzeko planoko kolorea"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "_pertsonalizatua kolorea erabili"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "lehenetsiriko atzeko plano hautapen kolorea erabili"
+
+#~ msgid "_Appearance"
+#~ msgstr "_Itxura"
+
+#~ msgid "_Background color:"
+#~ msgstr "Atzeko pla_noaren kolorea:"
+
+#~ msgid "_Backspace key generates:"
+#~ msgstr "_Atzera-tekla sakatutakoan:"
+
+#~ msgid "_Colors"
+#~ msgstr "_Koloreak"
+
+#~ msgid "_Delete key generates:"
+#~ msgstr "_Ezabatu tekla sakatutakoan:"
+
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "_Dinamikoki ezarritako titulua:"
+
+#~ msgid "_File:"
+#~ msgstr "_Fitxategia:"
+
+#~ msgid "_General"
+#~ msgstr "_Orokorra"
+
+#~ msgid "_Initial title:"
+#~ msgstr "has_ierako titulua:"
+
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "_Berrezarri bateragarritasun aukera lehenetsiak"
+
+#~ msgid "_Run command as login shell"
+#~ msgstr "_Exekutatu komando saio shell batean bezala"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Lasterbideak"
+
+#~ msgid "_Text color:"
+#~ msgstr "_Testu kolorea:"
+
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "_Utmp/wtmp erregistroa eguneratu komando bat abiaraztean"
+
+#~ msgid "seconds"
+#~ msgstr "segundo"

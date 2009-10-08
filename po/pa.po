@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2006-12-22 07:53+0530\n"
 "Last-Translator: A S Alam <apbrar@gmail.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -235,12 +235,12 @@ msgid ""
 "Please report bugs to <%s>.\n"
 msgstr ""
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ਟਰਮੀਨਲ ਸੇਵਾ ਰਜਿਸਟਰ ਕਰਨ ਲਈ ਅਸਫ਼ਲ: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "ਟਰਮੀਨਲ ਚਾਲੂ ਕਰਨ ਲਈ ਅਸਫ਼ਲ: %s\n"
@@ -365,11 +365,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "ਅਣਜਾਣ ਚੋਣ \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "ਸਭ ਫਾਇਲਾਂ"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
@@ -485,21 +485,24 @@ msgstr "9 ਟੈਬ ਉੱਤੇ ਜਾਓ"
 msgid "Contents"
 msgstr "ਭਾਗ"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "ਬਿਨਾਂ-ਟਾਇਟਲ"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "ਤੁਹਾਡੀ ਲਾਗਇਨ ਸ਼ੈਲ ਪਤਾ ਲਗਾਉਣ ਲਈ ਫੇਲ੍ਹ।"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "ਚਲਾਇਡ ਚਲਾਉਣ ਲਈ ਫੇਲ੍ਹ"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "ਇਹ ਟੈਬ ਬੰਦ ਕਰੋ"
 
@@ -524,7 +527,7 @@ msgid "Help"
 msgstr "ਸਹਾਇਤਾ"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "ਬੰਦ ਕੀਤਾ"
 
@@ -826,16 +829,16 @@ msgstr "ਕੀ ਸਭ ਟੈਬਾਂ ਬੰਦ ਕਰਨੀਆਂ ਹਨ?"
 msgid "Do _not ask me again"
 msgstr "ਮੈਨੂੰ ਮੁੜ ਨਾ ਪੁੱਛੋ(_n)"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "ਟਾਇਟਲ ਦਿਓ"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 #, fuzzy
 msgid "Title:"
 msgstr "ਟਾਇਟਲ"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr ""
 
@@ -843,503 +846,194 @@ msgstr ""
 msgid "Terminal Emulator"
 msgstr "ਟਰਮੀਨਲ ਈਮੂਲੇਟਰ"
 
-#: ../Terminal.glade.h:1
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> ਸੈਟਿੰਗ:"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "<tt>$TERM</tt> ਸੈਟਿੰਗ:"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "ਤਕਨੀਕੀ"
+#~ msgid "Ad_vanced"
+#~ msgstr "ਤਕਨੀਕੀ"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "ਬੋਲਡ ਟੈਕਸਟ ਮਨਜ਼ੂਰ"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "ਬੋਲਡ ਟੈਕਸਟ ਮਨਜ਼ੂਰ"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "ਆਟੋ-ਡਿਟੈਕਟ"
+#~ msgid "Auto-detect"
+#~ msgstr "ਆਟੋ-ਡਿਟੈਕਟ"
 
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+#~ msgid "Background"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+#~ msgid "Background image"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
 
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "ਸੈਂਟਰਡ"
+#~ msgid "Centered"
+#~ msgstr "ਸੈਂਟਰਡ"
 
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "ਟਰਮੀਨਲ ਫੋਂਟ ਚੁਣੋ"
+#~ msgid "Choose Terminal Font"
+#~ msgstr "ਟਰਮੀਨਲ ਫੋਂਟ ਚੁਣੋ"
 
-#: ../Terminal.glade.h:10
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Choose tab activity color"
+#~ msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
 
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr ""
+#~ msgid "Choose terminal text color"
+#~ msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
 
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr ""
+#~ msgid "Color Selector"
+#~ msgstr "ਰੰਗ ਸਲੈਕਟਰ"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr ""
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "ਰੰਗ ਸਲੈਕਟਰ"
-
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>ਕਮਾਂਡ</b>"
+#~ msgid "Command"
+#~ msgstr "<b>ਕਮਾਂਡ</b>"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>ਕੰਪੈਟੇਬਿਲਟੀ</b>"
+#~ msgid "Compatibility"
+#~ msgstr "<b>ਕੰਪੈਟੇਬਿਲਟੀ</b>"
 
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
 
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
+#~ msgid "Cu_rsor color:"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr ""
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "ਮੁੱਖ ਵਿੰਡੋ ਵਿੱਚ ਮੇਨੂ-ਬਾਰ ਵੇਖਾਓ(_m)"
 
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr ""
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "ਨਵੀਂ ਵਿੰਡੋਂ ਵਿੱਚ ਟੂਲ-ਬਾਰ ਵੇਖੋ(_t)"
 
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr ""
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "ਮੁੱਖ ਵਿੰਡੋ ਵਿੱਚ ਮੇਨੂ-ਬਾਰ ਵੇਖਾਓ(_m)"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "ਨਵੀਂ ਵਿੰਡੋਂ ਵਿੱਚ ਟੂਲ-ਬਾਰ ਵੇਖੋ(_t)"
-
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>ਦੋ ਵਾਰ ਕਲਿੱਕ</b>"
+#~ msgid "Double Click"
+#~ msgstr "<b>ਦੋ ਵਾਰ ਕਲਿੱਕ</b>"
 
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr ""
+#~ msgid "General"
+#~ msgstr "ਸਧਾਰਨ"
 
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
+#~ msgid "Goes after initial title"
+#~ msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਬਾਦ ਜਾਓ"
 
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
+#~ msgid "Goes before initial title"
+#~ msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਪਹਿਲਾਂ ਜਾਓ"
 
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
+#~ msgid "Isn't displayed"
+#~ msgstr "ਨਹੀਂ ਵੇਖਾਇਆ ਜਾਏਗਾ"
 
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
+#~ msgid "None (use solid color)"
+#~ msgstr "ਕੋਈ ਨਹੀਂ (ਇੱਕ ਰੰਗ ਵਰਤੋਂ)"
 
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
+#~ msgid "On the left side"
+#~ msgstr "ਖੱਬੇ ਪਾਸੇ"
 
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
+#~ msgid "On the right side"
+#~ msgstr "ਸੱਜੇ ਪਾਸੇ"
 
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr ""
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "ਸਧਾਰਨ"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਬਾਦ ਜਾਓ"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਪਹਿਲਾਂ ਜਾਓ"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "ਨਹੀਂ ਵੇਖਾਇਆ ਜਾਏਗਾ"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr ""
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "ਕੋਈ ਨਹੀਂ (ਇੱਕ ਰੰਗ ਵਰਤੋਂ)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "ਖੱਬੇ ਪਾਸੇ"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "ਸੱਜੇ ਪਾਸੇ"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr ""
-
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>ਨਵੀਂ ਵਿੰਡੋ ਖੋਲ੍ਹੀ ਜਾ ਰਹੀ ਹੈ</b>"
+#~ msgid "Opening New Windows"
+#~ msgstr "<b>ਨਵੀਂ ਵਿੰਡੋ ਖੋਲ੍ਹੀ ਜਾ ਰਹੀ ਹੈ</b>"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "ਚੇਪੋ"
+#~ msgid "Palette"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr ""
+#~ msgid "Replaces initial title"
+#~ msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ ਬਦਲੋ"
 
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr ""
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr ""
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr ""
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr ""
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr ""
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr ""
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr ""
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr ""
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr ""
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr ""
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr ""
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr ""
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr ""
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr ""
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr ""
-
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ ਬਦਲੋ"
-
-#: ../Terminal.glade.h:68
 #, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
 
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "ਸਕੇਲਡ"
+#~ msgid "Scaled"
+#~ msgstr "ਸਕੇਲਡ"
 
-#: ../Terminal.glade.h:70
 #, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
 
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr ""
-
-#: ../Terminal.glade.h:72
 #, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "ਆਉਟਪੁੱਟ ਉੱਤੇ ਸਕਰੋਲ(_r)"
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "ਆਉਟਪੁੱਟ ਉੱਤੇ ਸਕਰੋਲ(_r)"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../Terminal.glade.h:74
 #, fuzzy
-msgid "Scroll_back:"
-msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
+#~ msgid "Scroll_back:"
+#~ msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
 
-#: ../Terminal.glade.h:75
 #, fuzzy
-msgid "Scrolling"
-msgstr "<b>ਸਕਰੋਲਿੰਗ</b>"
+#~ msgid "Scrolling"
+#~ msgstr "<b>ਸਕਰੋਲਿੰਗ</b>"
 
-#: ../Terminal.glade.h:76
 #, fuzzy
-msgid "Select Background Image File"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ ਫਾਇਲ ਚੁਣੋ"
+#~ msgid "Select Background Image File"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ ਫਾਇਲ ਚੁਣੋ"
 
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-
-#: ../Terminal.glade.h:78
 #, fuzzy
-msgid "Shortcut Keys"
-msgstr "ਸ਼ਾਰਟਕੱਟ"
+#~ msgid "Shortcut Keys"
+#~ msgstr "ਸ਼ਾਰਟਕੱਟ"
 
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-
-#: ../Terminal.glade.h:80
 #, fuzzy
-msgid "St_yle:"
-msgstr "ਸ਼ੈਲੀ(_S):"
+#~ msgid "St_yle:"
+#~ msgstr "ਸ਼ੈਲੀ(_S):"
 
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "ਸੱਟਰੇਚਡ"
+#~ msgid "Stretched"
+#~ msgstr "ਸੱਟਰੇਚਡ"
 
-#: ../Terminal.glade.h:82
-msgid "Tab Activity Indicator"
-msgstr ""
-
-#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "Tab activit_y color:"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Tab activit_y color:"
+#~ msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
 
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "ਟਰਮੀਨਲ ਪਸੰਦ"
+#~ msgid "Terminal Preferences"
+#~ msgstr "ਟਰਮੀਨਲ ਪਸੰਦ"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr ""
-
-#: ../Terminal.glade.h:86
 #, fuzzy
-msgid "Text Selection"
-msgstr "ਚੋਣ ਚੇਪੋ"
+#~ msgid "Text Selection"
+#~ msgstr "ਚੋਣ ਚੇਪੋ"
 
-#: ../Terminal.glade.h:87
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-
-#: ../Terminal.glade.h:93
 #, fuzzy
-msgid "Tiled"
-msgstr "ਟਾਇਟਡ"
+#~ msgid "Tiled"
+#~ msgstr "ਟਾਇਟਡ"
 
-#: ../Terminal.glade.h:94
-msgid "Title"
-msgstr "ਟਾਇਟਲ"
+#~ msgid "Title"
+#~ msgstr "ਟਾਇਟਲ"
 
-#: ../Terminal.glade.h:95
 #, fuzzy
-msgid "Transpare_ncy:"
-msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
+#~ msgid "Transpare_ncy:"
+#~ msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
 
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
+#~ msgid "Transparent background"
+#~ msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
 
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr ""
-
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr ""
-
-#: ../Terminal.glade.h:99
-msgid "Use c_ustom color:"
-msgstr ""
-
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr ""
-
-#: ../Terminal.glade.h:101
 #, fuzzy
-msgid "_Appearance"
-msgstr "ਦਿੱਖ"
+#~ msgid "_Appearance"
+#~ msgstr "ਦਿੱਖ"
 
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
+#~ msgid "_Background color:"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
 
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr ""
-
-#: ../Terminal.glade.h:104
 #, fuzzy
-msgid "_Colors"
-msgstr "ਰੰਗ"
+#~ msgid "_Colors"
+#~ msgstr "ਰੰਗ"
 
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr ""
+#~ msgid "_File:"
+#~ msgstr "ਫਾਇਲ(_F):"
 
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr ""
-
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "ਫਾਇਲ(_F):"
-
-#: ../Terminal.glade.h:108
 #, fuzzy
-msgid "_General"
-msgstr "ਸਧਾਰਨ"
+#~ msgid "_General"
+#~ msgstr "ਸਧਾਰਨ"
 
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ(_I):"
+#~ msgid "_Initial title:"
+#~ msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ(_I):"
 
-#: ../Terminal.glade.h:110
-msgid "_Reset compatibility options to defaults"
-msgstr ""
+#~ msgid "_Run command as login shell"
+#~ msgstr "ਕਮਾਂਡ ਲਾਗਇਨ ਸ਼ੈੱਲ ਵਾਂਗ ਚਲਾਓ(_R)"
 
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "ਕਮਾਂਡ ਲਾਗਇਨ ਸ਼ੈੱਲ ਵਾਂਗ ਚਲਾਓ(_R)"
-
-#: ../Terminal.glade.h:112
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "ਸ਼ਾਰਟਕੱਟ"
-
-#: ../Terminal.glade.h:113
-msgid "_Text color:"
-msgstr ""
-
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr ""
-
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr ""
+#~ msgid "_Shortcuts"
+#~ msgstr "ਸ਼ਾਰਟਕੱਟ"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>ਟਾਇਟਲ:</b>"

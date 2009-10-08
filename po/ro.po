@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-01 21:47+0200\n"
+"POT-Creation-Date: 2009-10-08 11:54+0200\n"
 "PO-Revision-Date: 2009-05-30 15:03+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -317,12 +317,12 @@ msgstr ""
 "\n"
 "Raportați problemele la <%s>.\n"
 
-#: ../terminal/main.c:265
+#: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nu se poate înregistra serviciul terminal: %s\n"
 
-#: ../terminal/main.c:274
+#: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
 msgstr "Nu se poate lansa terminalul: %s\n"
@@ -464,11 +464,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opțiune necunoscută „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:210
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../terminal/terminal-preferences-dialog.c:216
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Fișierele imagini"
 
@@ -584,21 +584,24 @@ msgstr "Salt în tabul 9"
 msgid "Contents"
 msgstr "Conținut"
 
-#: ../terminal/terminal-screen.c:378 ../terminal/terminal-screen.c:1379
+#. TRANSLATORS: title for the tab/window used when all other
+#. * possible titles were empty strings
+#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
+#: ../terminal/terminal-screen.c:1460
 msgid "Untitled"
 msgstr "Fără titlu"
 
-#: ../terminal/terminal-screen.c:466
+#: ../terminal/terminal-screen.c:473
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nu se poate identifica shell-ul de login"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1142
+#: ../terminal/terminal-screen.c:1220
 msgid "Failed to execute child"
 msgstr "Nu s-a putut executa comanda"
 
-#: ../terminal/terminal-screen.c:1719
+#: ../terminal/terminal-screen.c:1801
 msgid "Close this tab"
 msgstr "Închide"
 
@@ -623,7 +626,7 @@ msgid "Help"
 msgstr "Ajutor"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:501
 msgid "Disabled"
 msgstr "Dezactivat(ă)"
 
@@ -933,16 +936,16 @@ msgstr "Doriți să închideți toate taburile?"
 msgid "Do _not ask me again"
 msgstr "_Nu mă mai întreba altă dată"
 
-#: ../terminal/terminal-window.c:1514
+#: ../terminal/terminal-window.c:1519
 msgid "Window Title|Set Title"
 msgstr "Alegeți un titlu"
 
-#: ../terminal/terminal-window.c:1527
+#: ../terminal/terminal-window.c:1532
 #, fuzzy
 msgid "Title:"
 msgstr "Mozaic"
 
-#: ../terminal/terminal-window.c:1539
+#: ../terminal/terminal-window.c:1544
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduceți titlul pentru tabul curent de terminal"
 
@@ -950,561 +953,449 @@ msgstr "Introduceți titlul pentru tabul curent de terminal"
 msgid "Terminal Emulator"
 msgstr "Emulator de terminal"
 
-#: ../Terminal.glade.h:1
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "Opțiune <tt>$TERM</tt>:"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "Opțiune <tt>$TERM</tt>:"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "Avansate"
+#~ msgid "Ad_vanced"
+#~ msgstr "Avansate"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "Permite text aldin"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "Permite text aldin"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Detectare automată"
+#~ msgid "Auto-detect"
+#~ msgstr "Detectare automată"
 
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "Imagine fundal"
+#~ msgid "Background"
+#~ msgstr "Imagine fundal"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Imagine fundal"
+#~ msgid "Background image"
+#~ msgstr "Imagine fundal"
 
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Centrat"
+#~ msgid "Centered"
+#~ msgstr "Centrat"
 
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Alegeți fontul terminalului"
+#~ msgid "Choose Terminal Font"
+#~ msgstr "Alegeți fontul terminalului"
 
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Alegeți culoarea taburilor active"
+#~ msgid "Choose tab activity color"
+#~ msgstr "Alegeți culoarea taburilor active"
 
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Alegeți culoarea fundalului din terminal"
+#~ msgid "Choose terminal background color"
+#~ msgstr "Alegeți culoarea fundalului din terminal"
 
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Alegeți culoarea cursorului din terminal"
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "Alegeți culoarea cursorului din terminal"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Alegeți culoarea textului din terminal"
+#~ msgid "Choose terminal text color"
+#~ msgstr "Alegeți culoarea textului din terminal"
 
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Alegeți culoarea de selectare a textului"
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "Alegeți culoarea de selectare a textului"
 
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Selector culoare"
+#~ msgid "Color Selector"
+#~ msgstr "Selector culoare"
 
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>Comandă</b>"
+#~ msgid "Command"
+#~ msgstr "<b>Comandă</b>"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>Compatibilitate</b>"
+#~ msgid "Compatibility"
+#~ msgstr "<b>Compatibilitate</b>"
 
-#: ../Terminal.glade.h:18
 #, fuzzy
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "Consideră următoarele caractere parte dintr-un cuvând la dublu-clic:"
+#~ msgid ""
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr ""
+#~ "Consideră următoarele caractere parte dintr-un cuvând la dublu-clic:"
 
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
 
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "Culoare _text și cursor:"
+#~ msgid "Cu_rsor color:"
+#~ msgstr "Culoare _text și cursor:"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Dezactivează t_oate tastele de acces la meniu (precum Alt+f)"
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "Dezactivează t_oate tastele de acces la meniu (precum Alt+f)"
 
-#: ../Terminal.glade.h:23
 #, fuzzy
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Dezactivează combinația de taste pentru m_eniu (implicit F10)"
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "Dezactivează combinația de taste pentru m_eniu (implicit F10)"
 
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Arată mar_gini în jurul ferestrelor noi"
+#~ msgid "Display _borders around new windows"
+#~ msgstr "Arată mar_gini în jurul ferestrelor noi"
 
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Arată bara de _meniu în ferestrele noi"
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "Arată bara de _meniu în ferestrele noi"
 
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Arată barele cu unel_te în ferestrele noi"
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "Arată barele cu unel_te în ferestrele noi"
 
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>Dublu-clic</b>"
+#~ msgid "Double Click"
+#~ msgstr "<b>Dublu-clic</b>"
 
-#: ../Terminal.glade.h:29
 #, fuzzy
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Activează anti-alierea pentru fontul terminalului"
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Activează anti-alierea pentru fontul terminalului"
 
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Activați această opțiune dacă doriți ca terminalul să utilizeze anti-aliere "
-"la afișarea textului în linie de comandă. Dezactivarea acestei opțiuni va "
-"crește impresionant viteza de afișare în terminal și va reduce simțitor "
-"încărcarea sistemului atunci când resursele sunt limitate."
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Activați această opțiune dacă doriți ca terminalul să utilizeze anti-"
+#~ "aliere la afișarea textului în linie de comandă. Dezactivarea acestei "
+#~ "opțiuni va crește impresionant viteza de afișare în terminal și va reduce "
+#~ "simțitor încărcarea sistemului atunci când resursele sunt limitate."
 
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Activați această opțiune pentru a permite aplicațiilor pornite în terminal "
-"să utilizeze text aldin (îngroșat)."
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "Activați această opțiune pentru a permite aplicațiilor pornite în "
+#~ "terminal să utilizeze text aldin (îngroșat)."
 
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Activați această opțiune pentru a derula câte o singură linie utilizând "
-"tastele săgeți sus/jos împreună cu tasta Shift."
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "Activați această opțiune pentru a derula câte o singură linie utilizând "
+#~ "tastele săgeți sus/jos împreună cu tasta Shift."
 
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Activați această opțiune pentru a afișa bara de meniu în ferestrele de "
-"terminal nou create"
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr ""
+#~ "Activați această opțiune pentru a afișa bara de meniu în ferestrele de "
+#~ "terminal nou create"
 
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Activați această opțiune pentru a afișa barele cu unelte în ferestrele de "
-"terminal nou create"
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr ""
+#~ "Activați această opțiune pentru a afișa barele cu unelte în ferestrele de "
+#~ "terminal nou create"
 
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Activați această opțiune pentru a afișa decorațiunile ferestrelor în jurul "
-"ferestrelor de terminal nou create"
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "Activați această opțiune pentru a afișa decorațiunile ferestrelor în "
+#~ "jurul ferestrelor de terminal nou create"
 
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Această opțiune vă permite să controlați din tastatură defilarea noilor "
-"ieșiri ale comenzilor executate în terminal."
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "Această opțiune vă permite să controlați din tastatură defilarea noilor "
+#~ "ieșiri ale comenzilor executate în terminal."
 
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
+#~ msgid "Escape sequence"
+#~ msgstr "Secvență Escape"
 
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Secvență Escape"
+#~ msgid "General"
+#~ msgstr "Generale"
 
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
+#~ msgid "Goes after initial title"
+#~ msgstr "Apare după titlul inițial"
 
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Generale"
+#~ msgid "Goes before initial title"
+#~ msgstr "Apare înaintea titlului inițial"
 
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Apare după titlul inițial"
+#~ msgid "Isn't displayed"
+#~ msgstr "Nu este afișat"
 
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Apare înaintea titlului inițial"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Nu este afișat"
-
-#: ../Terminal.glade.h:44
 #, fuzzy
-msgid "Menubar Access"
-msgstr "<b>Acces bară de meniu</b>"
+#~ msgid "Menubar Access"
+#~ msgstr "<b>Acces bară de meniu</b>"
 
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Nici unul (culoare unică)"
+#~ msgid "None (use solid color)"
+#~ msgstr "Nici unul (culoare unică)"
 
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "În stânga"
+#~ msgid "On the left side"
+#~ msgstr "În stânga"
 
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "În dreapta"
+#~ msgid "On the right side"
+#~ msgstr "În dreapta"
 
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Deschideți o fereastră pentru alegerea unei culori"
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "Deschideți o fereastră pentru alegerea unei culori"
 
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>Deschidere ferestre noi</b>"
+#~ msgid "Opening New Windows"
+#~ msgstr "<b>Deschidere ferestre noi</b>"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "<b>Paletă</b>"
+#~ msgid "Palette"
+#~ msgstr "<b>Paletă</b>"
 
-#: ../Terminal.glade.h:51
 #, fuzzy
-msgid "Palette entry 1"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 1"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:52
 #, fuzzy
-msgid "Palette entry 10"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 10"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:53
 #, fuzzy
-msgid "Palette entry 11"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 11"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:54
 #, fuzzy
-msgid "Palette entry 12"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 12"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:55
 #, fuzzy
-msgid "Palette entry 13"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 13"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:56
 #, fuzzy
-msgid "Palette entry 14"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 14"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:57
 #, fuzzy
-msgid "Palette entry 15"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 15"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:58
 #, fuzzy
-msgid "Palette entry 16"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 16"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:59
 #, fuzzy
-msgid "Palette entry 2"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 2"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:60
 #, fuzzy
-msgid "Palette entry 3"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 3"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:61
 #, fuzzy
-msgid "Palette entry 4"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 4"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:62
 #, fuzzy
-msgid "Palette entry 5"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 5"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:63
 #, fuzzy
-msgid "Palette entry 6"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 6"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:64
 #, fuzzy
-msgid "Palette entry 7"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 7"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:65
 #, fuzzy
-msgid "Palette entry 8"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 8"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:66
 #, fuzzy
-msgid "Palette entry 9"
-msgstr "Intrare paletă %d"
+#~ msgid "Palette entry 9"
+#~ msgstr "Intrare paletă %d"
 
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Înlocuiește titlul inițial"
+#~ msgid "Replaces initial title"
+#~ msgstr "Înlocuiește titlul inițial"
 
-#: ../Terminal.glade.h:68
 #, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "Reinițializează indicatorul de activitate după"
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "Reinițializează indicatorul de activitate după"
 
-#: ../Terminal.glade.h:69
-msgid "Scaled"
-msgstr "Scalat"
+#~ msgid "Scaled"
+#~ msgstr "Scalat"
 
-#: ../Terminal.glade.h:70
 #, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "Bara de de_filare este:"
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "Bara de de_filare este:"
 
-#: ../Terminal.glade.h:71
-msgid "Scroll on _keystroke"
-msgstr "Derulare la ta_stare"
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "Derulare la ta_stare"
 
-#: ../Terminal.glade.h:72
 #, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "De_rulează la ieșire"
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "De_rulează la ieșire"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Derulează câte o singură _linie cu Shift-Up/Shift-Down"
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "Derulează câte o singură _linie cu Shift-Up/Shift-Down"
 
-#: ../Terminal.glade.h:74
 #, fuzzy
-msgid "Scroll_back:"
-msgstr "Defilare înap_oi:"
+#~ msgid "Scroll_back:"
+#~ msgstr "Defilare înap_oi:"
 
-#: ../Terminal.glade.h:75
 #, fuzzy
-msgid "Scrolling"
-msgstr "<b>Derulare</b>"
+#~ msgid "Scrolling"
+#~ msgstr "<b>Derulare</b>"
 
-#: ../Terminal.glade.h:76
 #, fuzzy
-msgid "Select Background Image File"
-msgstr "Selectați fișierul cu imaginea de fundal"
+#~ msgid "Select Background Image File"
+#~ msgstr "Selectați fișierul cu imaginea de fundal"
 
-#: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Selectați această opțiune pentru a forța terminalul să execute shell-ul "
-"propriu ca un shell de login când se deschid terminale noi. Consultați "
-"documentația pentru detalii despre diferențele dintre executarea ca un shell "
-"interactiv și executarea ca login shell."
+#~ msgid ""
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "Selectați această opțiune pentru a forța terminalul să execute shell-ul "
+#~ "propriu ca un shell de login când se deschid terminale noi. Consultați "
+#~ "documentația pentru detalii despre diferențele dintre executarea ca un "
+#~ "shell interactiv și executarea ca login shell."
 
-#: ../Terminal.glade.h:78
 #, fuzzy
-msgid "Shortcut Keys"
-msgstr "Combinație de taste"
+#~ msgid "Shortcut Keys"
+#~ msgstr "Combinație de taste"
 
-#: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Specifică numărul de linii pe care le puteți derula înapoi utilizând bare de "
-"defilare."
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr ""
+#~ "Specifică numărul de linii pe care le puteți derula înapoi utilizând bare "
+#~ "de defilare."
 
-#: ../Terminal.glade.h:80
 #, fuzzy
-msgid "St_yle:"
-msgstr "_Stil:"
+#~ msgid "St_yle:"
+#~ msgstr "_Stil:"
 
-#: ../Terminal.glade.h:81
-msgid "Stretched"
-msgstr "Întins"
+#~ msgid "Stretched"
+#~ msgstr "Întins"
 
-#: ../Terminal.glade.h:82
 #, fuzzy
-msgid "Tab Activity Indicator"
-msgstr "<b>Indicator tab activ</b>"
+#~ msgid "Tab Activity Indicator"
+#~ msgstr "<b>Indicator tab activ</b>"
 
-#: ../Terminal.glade.h:83
 #, fuzzy
-msgid "Tab activit_y color:"
-msgstr "Culoare ta_buri active:"
+#~ msgid "Tab activit_y color:"
+#~ msgstr "Culoare ta_buri active:"
 
-#: ../Terminal.glade.h:84
-msgid "Terminal Preferences"
-msgstr "Opțiuni Terminal"
+#~ msgid "Terminal Preferences"
+#~ msgstr "Opțiuni Terminal"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Aplicațiile terminal au următoarea paletă de culori disponibilă:"
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Aplicațiile terminal au următoarea paletă de culori disponibilă:"
 
-#: ../Terminal.glade.h:86
 #, fuzzy
-msgid "Text Selection"
-msgstr "<b>Selecție text</b>"
+#~ msgid "Text Selection"
+#~ msgstr "<b>Selecție text</b>"
 
-#: ../Terminal.glade.h:87
 #, fuzzy
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-"Aceste opțiuni pot împiedica funcționarea corectă a anumitor aplicații. Ele "
-"sunt totuși disponibile aici pentru a vă permite soluții alternative pentru "
-"anumite aplicații și sisteme de operare ce presupun un comportament diferit "
-"din partea unei aplicații terminal."
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "Aceste opțiuni pot împiedica funcționarea corectă a anumitor aplicații. "
+#~ "Ele sunt totuși disponibile aici pentru a vă permite soluții alternative "
+#~ "pentru anumite aplicații și sisteme de operare ce presupun un "
+#~ "comportament diferit din partea unei aplicații terminal."
 
-#: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Această opțiune precizează dacă terminalul va derula liniile automat de "
-"fiecare dată când se generează noi ieșiri de către comenzile executate în "
-"terminal."
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
+#~ "terminal."
+#~ msgstr ""
+#~ "Această opțiune precizează dacă terminalul va derula liniile automat de "
+#~ "fiecare dată când se generează noi ieșiri de către comenzile executate în "
+#~ "terminal."
 
-#: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Această opțiune specifică valoarea variabilei de mediu $TERM la deschiderea "
-"unui nou tab sau a unei noi ferestre de terminal. Valoarea implicită ar "
-"trebui să fie OK pentru cele mai multe sisteme. Dacă aveți probleme cu "
-"culori în anumite aplicații, încercați valoarea „xterm-color” aici."
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Această opțiune specifică valoarea variabilei de mediu $TERM la "
+#~ "deschiderea unui nou tab sau a unei noi ferestre de terminal. Valoarea "
+#~ "implicită ar trebui să fie OK pentru cele mai multe sisteme. Dacă aveți "
+#~ "probleme cu culori în anumite aplicații, încercați valoarea „xterm-color” "
+#~ "aici."
 
-#: ../Terminal.glade.h:93
 #, fuzzy
-msgid "Tiled"
-msgstr "Mozaic"
+#~ msgid "Tiled"
+#~ msgstr "Mozaic"
 
-#: ../Terminal.glade.h:94
 #, fuzzy
-msgid "Title"
-msgstr "Mozaic"
+#~ msgid "Title"
+#~ msgstr "Mozaic"
 
-#: ../Terminal.glade.h:95
 #, fuzzy
-msgid "Transpare_ncy:"
-msgstr "Fundal transparent"
+#~ msgid "Transpare_ncy:"
+#~ msgstr "Fundal transparent"
 
-#: ../Terminal.glade.h:96
-msgid "Transparent background"
-msgstr "Fundal transparent"
+#~ msgid "Transparent background"
+#~ msgstr "Fundal transparent"
 
-#: ../Terminal.glade.h:97
-msgid "Use _default color"
-msgstr "Utilizează culoarea _implicită"
+#~ msgid "Use _default color"
+#~ msgstr "Utilizează culoarea _implicită"
 
-#: ../Terminal.glade.h:98
-msgid "Use a custom text selection background color"
-msgstr "Utilizează o culoare de fundal personalizată la selectarea textului"
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Utilizează o culoare de fundal personalizată la selectarea textului"
 
-#: ../Terminal.glade.h:99
 #, fuzzy
-msgid "Use c_ustom color:"
-msgstr "Utilizează o culoare _personalizată"
+#~ msgid "Use c_ustom color:"
+#~ msgstr "Utilizează o culoare _personalizată"
 
-#: ../Terminal.glade.h:100
-msgid "Use the default text selection background color"
-msgstr "Utilizează culoarea de fundal implicită la selectarea textului"
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Utilizează culoarea de fundal implicită la selectarea textului"
 
-#: ../Terminal.glade.h:101
 #, fuzzy
-msgid "_Appearance"
-msgstr "Aspect"
+#~ msgid "_Appearance"
+#~ msgstr "Aspect"
 
-#: ../Terminal.glade.h:102
-msgid "_Background color:"
-msgstr "Culoare _fundal:"
+#~ msgid "_Background color:"
+#~ msgstr "Culoare _fundal:"
 
-#: ../Terminal.glade.h:103
-msgid "_Backspace key generates:"
-msgstr "Tasta _Backspace generează:"
+#~ msgid "_Backspace key generates:"
+#~ msgstr "Tasta _Backspace generează:"
 
-#: ../Terminal.glade.h:104
 #, fuzzy
-msgid "_Colors"
-msgstr "Culori"
+#~ msgid "_Colors"
+#~ msgstr "Culori"
 
-#: ../Terminal.glade.h:105
-msgid "_Delete key generates:"
-msgstr "Tasta _Delete generează:"
+#~ msgid "_Delete key generates:"
+#~ msgstr "Tasta _Delete generează:"
 
-#: ../Terminal.glade.h:106
-msgid "_Dynamically-set title:"
-msgstr "Titlu modificat _dinamic:"
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "Titlu modificat _dinamic:"
 
-#: ../Terminal.glade.h:107
-msgid "_File:"
-msgstr "_Fișier:"
+#~ msgid "_File:"
+#~ msgstr "_Fișier:"
 
-#: ../Terminal.glade.h:108
 #, fuzzy
-msgid "_General"
-msgstr "Generale"
+#~ msgid "_General"
+#~ msgstr "Generale"
 
-#: ../Terminal.glade.h:109
-msgid "_Initial title:"
-msgstr "Titlu _inițial:"
+#~ msgid "_Initial title:"
+#~ msgstr "Titlu _inițial:"
 
-#: ../Terminal.glade.h:110
 #, fuzzy
-msgid "_Reset compatibility options to defaults"
-msgstr "_Reinițializează opțiunile de compatibilitate la cele implicite"
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "_Reinițializează opțiunile de compatibilitate la cele implicite"
 
-#: ../Terminal.glade.h:111
-msgid "_Run command as login shell"
-msgstr "E_xecută comanda ca un shell de login"
+#~ msgid "_Run command as login shell"
+#~ msgstr "E_xecută comanda ca un shell de login"
 
-#: ../Terminal.glade.h:112
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "Combinații de taste"
+#~ msgid "_Shortcuts"
+#~ msgstr "Combinații de taste"
 
-#: ../Terminal.glade.h:113
 #, fuzzy
-msgid "_Text color:"
-msgstr "Culoare _text și cursor:"
+#~ msgid "_Text color:"
+#~ msgstr "Culoare _text și cursor:"
 
-#: ../Terminal.glade.h:114
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
 
-#: ../Terminal.glade.h:115
-msgid "seconds"
-msgstr "secunde"
+#~ msgid "seconds"
+#~ msgstr "secunde"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titlu:</b>"
