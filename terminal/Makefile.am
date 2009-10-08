@@ -92,7 +92,7 @@ Terminal_LDADD = \
 	$(TERMINAL_LIBS)
 
 # install symlink to 'terminal'
-install-data-local:
+install-exec-hook:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 	-( cd $(DESTDIR)$(bindir) ; test -x terminal || ln -sf Terminal terminal )
 
