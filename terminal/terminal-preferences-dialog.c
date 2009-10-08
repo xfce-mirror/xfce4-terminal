@@ -110,9 +110,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   if (xfce_titled_dialog_get_type () == 0)
     return;
 
-  /* lookup the glade file */
+  /* lookup the ui file */
   xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
-  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.glade");
+  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.ui");
   xfce_resource_pop_path (XFCE_RESOURCE_DATA);
 
   if (G_UNLIKELY (file == NULL))
@@ -125,7 +125,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   if (gtk_builder_add_from_file (GTK_BUILDER (dialog), file, &error) == 0)
     {
 error:
-      g_critical ("Failed to load glade file: %s.", error->message);
+      g_critical ("Failed to load ui file: %s.", error->message);
       g_error_free (error);
       return;
     }
