@@ -101,6 +101,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->preferences = terminal_preferences_get ();
 
+  /* make sure the correct translation domain is set, since other programs
+   * could reset it, like for example the XFCE_LICENSE_GPL in terminal-dialogs.c,
+   * see http://bugzilla.xfce.org/show_bug.cgi?id=5842 */
+  xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
   /* hack to initialize the XfceTitledDialog class */
   if (xfce_titled_dialog_get_type () == 0)
     return;
