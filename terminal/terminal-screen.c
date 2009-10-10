@@ -134,13 +134,15 @@ struct _TerminalScreen
   GtkWidget           *scrollbar;
   GtkWidget           *tab_label;
 
+  guint                session_id;
+
   GPid                 pid;
   gchar               *working_directory;
 
   gchar              **custom_command;
   gchar               *custom_title;
 
-  gboolean             hold;
+  guint                hold : 1;
 
   guint                background_timer_id;
   guint                launch_idle_id;
@@ -152,6 +154,7 @@ struct _TerminalScreen
 
 
 static guint screen_signals[LAST_SIGNAL];
+static guint screen_last_session_id = 0;
 
 
 
@@ -225,6 +228,7 @@ static void
 terminal_screen_init (TerminalScreen *screen)
 {
   screen->working_directory = g_get_current_dir ();
+  screen->session_id = ++screen_last_session_id;
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_object_connect (G_OBJECT (screen->terminal),
@@ -549,6 +553,10 @@ terminal_screen_parse_title (TerminalScreen *screen,
       /* handle the "%" character */
       switch (*remainder)
         {
+        case '#':
+          g_string_append_printf (string, "%u", screen->session_id);
+          break;
+
         case 'd':
         case 'D':
           if (directory == NULL)
