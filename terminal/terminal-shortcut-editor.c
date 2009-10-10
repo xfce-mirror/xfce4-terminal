@@ -445,6 +445,11 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
   modifiers = event->state & (~consumed_modifiers | GDK_MODIFIER_MASK);
   modifiers = modifiers & gtk_accelerator_get_default_mod_mask ();
 
+  /* check if the accelerator will be actually be handed by gtk in the
+   *  interface, see http://bugzilla.xfce.org/show_bug.cgi?id=3524 */
+  if (!gtk_accelerator_valid (keyval, modifiers))
+    return TRUE;
+
   accelerator = gtk_accelerator_name (keyval, modifiers);
   if (exo_str_is_equal (accelerator, "<Alt>c"))
     {
