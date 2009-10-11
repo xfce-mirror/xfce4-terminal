@@ -1,14 +1,16 @@
+# $Id$
+#
 # Japanese translations for Terminal package.
-# Copyright (C) 2003-2006 os-cillation e.K.
+# Copyright (C) 2003-2007 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
-# Daichi Kawahata <daichi@xfce.org>, 2005-2006.
+# Daichi Kawahata <daichi@xfce.org>, 2005-2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.8\n"
+"Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-08 11:54+0200\n"
-"PO-Revision-Date: 2009-10-03 14:09+0900\n"
+"POT-Creation-Date: 2009-10-11 21:17+0900\n"
+"PO-Revision-Date: 2009-08-29 18:12+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "MIME-Version: 1.0\n"
@@ -16,47 +18,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../terminal/main.c:46
-#, fuzzy
 msgid "Usage:"
-msgstr "使用法"
+msgstr "使用法:"
 
 #: ../terminal/main.c:47
 msgid "OPTION"
-msgstr ""
+msgstr "オプション"
 
 #: ../terminal/main.c:49
-#, fuzzy
 msgid "General Options"
-msgstr "一般設定"
+msgstr "一般オプション"
 
 #: ../terminal/main.c:50
 msgid "  -h, --help                          Print this help message and exit"
-msgstr ""
+msgstr "  -h, --help                          このヘルプを表示して終了する"
 
 #: ../terminal/main.c:51
 msgid ""
 "  -V, --version                       Print version information and exit"
-msgstr ""
+msgstr "  -V, --version                       バージョン情報を表示して終了する"
 
 #: ../terminal/main.c:52
 msgid ""
 "  --disable-server                    Do not register with the D-BUS\n"
 "                                      session message bus"
 msgstr ""
+"  --disable-server                    D-BUS セッションメッセージバスに\n"
+"                                      登録しない"
 
 #: ../terminal/main.c:54
 msgid "  --default-display=DISPLAY           default X display to use"
 msgstr ""
+"  --default-display=DISPLAY           使用する標準の X ディスプレイを指定\n"
+"                                      する"
 
 #: ../terminal/main.c:55
 msgid ""
 "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 "                                      directory"
 msgstr ""
+"  --default-working-directory=DIRNAME ターミナルの標準の作業フォルダを指定\n"
+"                                      する"
 
 #: ../terminal/main.c:58
 msgid "Window or Tab Separators"
-msgstr ""
+msgstr "ウィンドウまたはタブセパレータ"
 
 #: ../terminal/main.c:59
 msgid ""
@@ -64,6 +70,9 @@ msgid ""
 "                                      window; more than one of these\n"
 "                                      options can be provided"
 msgstr ""
+"  --tab                               最後に指定したウィンドウで新しいタブ\n"
+"                                      を開く; 他のオプションと同時に指定でき"
+"る"
 
 #: ../terminal/main.c:62
 msgid ""
@@ -71,49 +80,58 @@ msgid ""
 "                                      more than one of these options can be\n"
 "                                      provided"
 msgstr ""
+"  --window                            一つのタブを含む新しいウィンドウを\n"
+"                                      開く; 他のオプションと同時に指定できる"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
-msgstr ""
+msgstr "タブオプション"
 
 #: ../terminal/main.c:67
-#, fuzzy
 msgid ""
 "  -x, --execute                       Execute the remainder of the command\n"
 "                                      line inside the terminal"
-msgstr "続くコマンドラインをターミナル内で実行します"
+msgstr ""
+"  -x, --execute                       残りのコマンドラインをターミナル内で\n"
+"                                      実行する"
 
 #: ../terminal/main.c:69
 msgid ""
 "  -e, --command=STRING                Execute the argument to this option\n"
 "                                      inside the terminal"
 msgstr ""
+"  -e, --command=STRING                このオプションの引数をターミナル内で\n"
+"                                      実行する"
 
 #: ../terminal/main.c:71
 msgid ""
 "  --working-directory=DIRNAME         Set the terminal's working directory"
 msgstr ""
+"  --working-directory=DIRNAME         ターミナルの作業フォルダを指定する"
 
 #: ../terminal/main.c:72
 msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr ""
+msgstr "  -T, --title=TITLE                   ターミナルのタイトルを付ける"
 
 #: ../terminal/main.c:73
 msgid ""
 "  -H, --hold                          Do not immediately destroy the tab\n"
 "                                      when the child command exits"
 msgstr ""
+"  -H, --hold                          子コマンドが終了してもすぐに\n"
+"                                      タブを破棄しない"
 
 #: ../terminal/main.c:76
-#, fuzzy
 msgid "Window Options"
-msgstr "隠しオプション"
+msgstr "ウィンドウオプション"
 
 #: ../terminal/main.c:77
 msgid ""
 "  --display=DISPLAY                   X display to use for the last-\n"
 "                                      specified window"
 msgstr ""
+"  --display=DISPLAY                   最後に指定したウィンドウに使用する\n"
+"                                      X ディスプレイを指定する"
 
 #: ../terminal/main.c:79
 msgid ""
@@ -121,33 +139,41 @@ msgid ""
 "                                      man page), can be specified once per\n"
 "                                      window to be opened"
 msgstr ""
+"  --geometry=GEOMETRY                 X のジオメトリを指定する (\"X\" の "
+"man\n"
+"                                      ページを参照)。開くウィンドウ毎に指定\n"
+"                                      できる"
 
 #: ../terminal/main.c:82
-#, fuzzy
 msgid ""
 "  --role=ROLE                         Set the role for the last-specified\n"
 "                                      window; applies to only one window;\n"
 "                                      can be specified once for each window\n"
 "                                      you create from the command line"
 msgstr ""
-"最後に指定したウィンドウでツールバーを表示します。一つのウィンドウのみに適用"
-"されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指"
-"定できます。"
+"  --role=ROLE                         最後に指定したウィンドウにロールを\n"
+"                                      セットする; 一つのウィンドウのみに\n"
+"                                      適用される; コマンドラインから作成す"
+"る\n"
+"                                      各々のウィンドウに対して一度指定できる"
 
 #: ../terminal/main.c:86
 msgid ""
 "  --startup-id=STRING                 ID for the startup notification\n"
 "                                      protocol"
 msgstr ""
+"  --startup-id=STRING                 起動通知プロトコルの ID を指定する"
 
 #: ../terminal/main.c:88
 msgid ""
 "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 "                                      name or filename"
 msgstr ""
+"  -I, --icon=ICON                     ターミナルのアイコンのアイコン名また"
+"は\n"
+"                                      ファイル名を設定する"
 
 #: ../terminal/main.c:90
-#, fuzzy
 msgid ""
 "  --fullscreen                        Set the last-specified window into\n"
 "                                      fullscreen mode; applies to only one\n"
@@ -155,9 +181,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
-"最後に指定したウィンドウを全画面モードにします。一つのウィンドウのみに適用さ"
-"れます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指定"
-"できます。"
+"  --fullscreen                        最後に指定したウィンドウを全画面\n"
+"                                      モードにセットする; 一つのウィン\n"
+"                                      ドウのみに適用される; コマンドライン\n"
+"                                      から作成する各々のウィンドウに対して\n"
+"                                      一度指定できる"
 
 #: ../terminal/main.c:95
 msgid ""
@@ -166,6 +194,12 @@ msgid ""
 "                                      specified once for each window you\n"
 "                                      create from the command line"
 msgstr ""
+"  --maximize                          最後に指定されたウィンドウを最大化す"
+"る;\n"
+"                                      一つのウィンドウのみに適用される;\n"
+"                                      コマンドラインから作成する各々のウィン"
+"ドウ\n"
+"                                      に対して一度指定できる"
 
 #: ../terminal/main.c:99
 msgid ""
@@ -175,6 +209,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-menubar                      最後に指定したウィンドウでメニュー\n"
+"                                      バーを表示する; 一つのウィンドウ\n"
+"                                      のみに適用される; コマンドラインから\n"
+"                                      作成する各々のウィンドウに対して\n"
+"                                      一度指定できる"
 
 #: ../terminal/main.c:104
 msgid ""
@@ -184,9 +223,13 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-menubar                      最後に指定したウィンドウでメニュー\n"
+"                                      バーを表示しない; 一つのウィンドウ\n"
+"                                      のみに適用される; コマンドラインから\n"
+"                                      作成する各々のウィンドウに対して一度\n"
+"                                      指定できる"
 
 #: ../terminal/main.c:109
-#, fuzzy
 msgid ""
 "  --show-borders                      Turn on the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -194,12 +237,13 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
-"最後に指定したウィンドウでウィンドウの枠を表示します。一つのウィンドウのみに"
-"適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ず"
-"つ指定できます。"
+"  --show-borders                      最後に指定したウィンドウでウィンドウ\n"
+"                                      の枠を表示する; 一つのウィンドウ\n"
+"                                      のみに適用される; コマンドラインから\n"
+"                                      作成する各々のウィンドウに対して一度\n"
+"                                      指定できる"
 
 #: ../terminal/main.c:114
-#, fuzzy
 msgid ""
 "  --hide-borders                      Turn off the window decorations for\n"
 "                                      the last-specified window; applies\n"
@@ -207,9 +251,11 @@ msgid ""
 "                                      once for each window you create from\n"
 "                                      the command line"
 msgstr ""
-"最後に指定したウィンドウでウィンドウの枠を非表示にします。一つのウィンドウの"
-"みに適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一"
-"度ずつ指定できます。"
+"  --hide-borders                      最後に指定したウィンドウでウィンドウ\n"
+"                                      の枠を表示しない; 一つのウィンドウ\n"
+"                                      のみに適用される; コマンドラインから\n"
+"                                      作成する各々のウィンドウに対して一度\n"
+"                                      指定できる"
 
 #: ../terminal/main.c:119
 msgid ""
@@ -219,6 +265,11 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --show-toolbars                     最後に指定したウィンドウでツールバー\n"
+"                                      を表示する; 一つのウィンドウのみに\n"
+"                                      適用される; コマンドラインから作成す"
+"る\n"
+"                                      各々のウィンドウに対して一度指定できる"
 
 #: ../terminal/main.c:124
 msgid ""
@@ -228,12 +279,16 @@ msgid ""
 "                                      each window you create from the\n"
 "                                      command line"
 msgstr ""
+"  --hide-toolbars                     最後に指定したウィンドウでツールバー\n"
+"                                      を表示しない; 一つのウィンドウのみ\n"
+"                                      に適用される; コマンドラインから作成\n"
+"                                      する各々のウィンドウに対して一度指定\n"
+"                                      できる"
 
 #: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
-#, fuzzy
 msgid "Terminal"
-msgstr "ターミナルエミュレータ"
+msgstr "Terminal"
 
 #: ../terminal/main.c:173
 #, c-format
@@ -249,55 +304,65 @@ msgid ""
 "\n"
 "Please report bugs to <%s>.\n"
 msgstr ""
+"%s (Xfce %s)\n"
+"\n"
+"Copyright (c) %s\n"
+"        os-cillation e.K. All rights reserved.\n"
+"\n"
+"Benedikt Meurer <benny@xfce.org> が作成しました。\n"
+"\n"
+"Gtk+-%d.%d.%d でビルド、Gtk+-%d.%d.%d で実行しています。\n"
+"\n"
+"バグの報告は <%s> にお願いします。\n"
 
 #: ../terminal/main.c:267
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr ""
+msgstr "ターミナルサービスを登録できません: %s\n"
 
 #: ../terminal/main.c:276
 #, c-format
 msgid "Unable to launch terminal: %s\n"
-msgstr ""
+msgstr "ターミナルを起動できません: %s\n"
 
 #: ../terminal/terminal-app.c:551
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr ""
+msgstr "ジオメトリ文字列 \"%s\" は不適切です。\n"
 
 #: ../terminal/terminal-dbus.c:114
 msgid "User id mismatch"
-msgstr ""
+msgstr "ユーザ ID が一致しません。"
 
 #: ../terminal/terminal-dbus.c:146
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
+msgstr "D-BUS メッセージバスの接続が切れました。終了します...\n"
 
 #: ../terminal/terminal-dbus.c:208
 #, c-format
 msgid "Unable to register object %s"
-msgstr ""
+msgstr "オブジェクト %s を登録できません。"
 
 #: ../terminal/terminal-dialogs.c:87
-#, fuzzy
 msgid "Xfce Terminal Emulator"
-msgstr "ターミナルエミュレータ"
+msgstr "Xfce ターミナルエミュレータ"
 
 #: ../terminal/terminal-dialogs.c:93
 msgid "translator-credits"
 msgstr ""
-"Daichi Kawahata <daichi@xfce.org>, 2005, 2006.\n"
-"Masato Hashimoto <hashimo@xfce.org>, 2009."
+"Daichi Kawahata <daichi@xfce.org>\n"
+"Masato Hashimoto <hashimo@xfce.org>\n"
+"Nobuhiro Iwamatsu <iwamatsu@nigauri.org>"
 
 #: ../terminal/terminal-dialogs.c:96
 msgid "Visit Terminal website"
-msgstr ""
+msgstr "Terminal のウェブサイトへ"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:252
 msgid "Failed to open the documentation browser"
-msgstr ""
+msgstr "ドキュメントブラウザを開けませんでした"
 
 #: ../terminal/terminal-options.c:189
 #, c-format
@@ -305,6 +370,8 @@ msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
+"オプション \"--default-display\" にはパラメータとして標準の X ディスプレイを"
+"指定する必要があります"
 
 #: ../terminal/terminal-options.c:204
 #, c-format
@@ -312,12 +379,16 @@ msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
+"オプション \"--default-working-directory\" にはパラメータとしてデフォルトの作"
+"業フォルダを指定する必要があります"
 
 #: ../terminal/terminal-options.c:235
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 msgstr ""
+"オプション \"--sm-client-id\" にはパラメータとしてセッション ID を指定する必"
+"要があります"
 
 #: ../terminal/terminal-options.c:250
 #, c-format
@@ -325,6 +396,8 @@ msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
+"オプション \"--execute/-x\" にはこの後に実行するコマンドを指定する必要があり"
+"ます"
 
 #: ../terminal/terminal-options.c:267
 #, c-format
@@ -332,6 +405,8 @@ msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
+"オプション \"--command/-e\" にはパラメータとして実行するコマンドを指定する必"
+"要があります"
 
 #: ../terminal/terminal-options.c:284
 #, c-format
@@ -339,17 +414,22 @@ msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
+"オプション \"--working-directory\" にはパラメータとして作業フォルダを指定する"
+"必要があります"
 
 #: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
+"オプション \"--title\" にはパラメータとしてタイトルを指定する必要があります"
 
 #: ../terminal/terminal-options.c:319
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
+"オプション \"--display\" にはパラメータとして X ディスプレイを指定する必要が"
+"あります"
 
 #: ../terminal/terminal-options.c:334
 #, c-format
@@ -357,17 +437,23 @@ msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
+"オプション \"--geometry\" にはパラメータとしてウィンドウ位置を指定する必要が"
+"あります"
 
 #: ../terminal/terminal-options.c:349
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
+"オプション \"--role\" にはパラメータとしてウィンドウロールを指定する必要があ"
+"ります"
 
 #: ../terminal/terminal-options.c:364
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
+"オプション \"--startup-id\" にはパラメータとして起動 ID を指定する必要があり"
+"ます"
 
 #: ../terminal/terminal-options.c:379
 #, c-format
@@ -375,239 +461,227 @@ msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr ""
+"オプション \"--icon/-I\" にはパラメータとしてアイコン名またはファイル名を指定"
+"する必要があります"
 
 #: ../terminal/terminal-options.c:435
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr ""
+msgstr "\"%s\" は不明なオプションです"
 
 #: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
-msgstr ""
+msgstr "全てのファイル"
 
 #: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
-msgstr ""
+msgstr "画像ファイル"
 
 #: ../terminal/terminal-preferences.c:310
 msgid "Open Tab"
-msgstr ""
+msgstr "タブを開く"
 
 #: ../terminal/terminal-preferences.c:321
-#, fuzzy
 msgid "Open Terminal"
-msgstr "一般"
+msgstr "ターミナルを開く"
 
 #: ../terminal/terminal-preferences.c:332
 msgid "Detach Tab"
-msgstr ""
+msgstr "タブを切り離す"
 
 #: ../terminal/terminal-preferences.c:343
 msgid "Close Tab"
-msgstr ""
+msgstr "タブを閉じる"
 
 #: ../terminal/terminal-preferences.c:354
 msgid "Close Window"
-msgstr ""
+msgstr "ウィンドウを閉じる"
 
 #: ../terminal/terminal-preferences.c:365
 msgid "Copy"
-msgstr ""
+msgstr "コピー"
 
 #: ../terminal/terminal-preferences.c:376
-#, fuzzy
 msgid "Paste"
-msgstr "パレット"
+msgstr "貼り付け"
 
 #: ../terminal/terminal-preferences.c:387
-#, fuzzy
 msgid "Paste Selection"
-msgstr "テキストの選択領域"
+msgstr "選択領域を貼り付け"
 
 #: ../terminal/terminal-preferences.c:398
 msgid "Preferences"
-msgstr "環境設定"
+msgstr "設定"
 
 #: ../terminal/terminal-preferences.c:409
-#, fuzzy
 msgid "Show menubar"
-msgstr "--show-menubar"
+msgstr "メニューバーを表示"
 
 #: ../terminal/terminal-preferences.c:420
-#, fuzzy
 msgid "Show toolbars"
-msgstr "--show-toolbars"
+msgstr "ツールバーを表示"
 
 #: ../terminal/terminal-preferences.c:431
-#, fuzzy
 msgid "Show borders"
-msgstr "--show-borders"
+msgstr "ウィンドウ枠を表示"
 
 #: ../terminal/terminal-preferences.c:442
-#, fuzzy
 msgid "Fullscreen"
-msgstr "--fullscreen"
+msgstr "全画面表示"
 
 #: ../terminal/terminal-preferences.c:453
-#, fuzzy
 msgid "Set Title"
-msgstr "タイトル"
+msgstr "タイトルを付ける"
 
 #: ../terminal/terminal-preferences.c:464
 msgid "Reset"
-msgstr ""
+msgstr "リセット"
 
 #: ../terminal/terminal-preferences.c:475
 msgid "Reset and Clear"
-msgstr ""
+msgstr "リセットして消去"
 
 #: ../terminal/terminal-preferences.c:486
 msgid "Previous Tab"
-msgstr ""
+msgstr "前のタブ"
 
 #: ../terminal/terminal-preferences.c:497
 msgid "Next Tab"
-msgstr ""
+msgstr "次のタブ"
 
 #: ../terminal/terminal-preferences.c:508
 msgid "Switch to Tab 1"
-msgstr ""
+msgstr "タブ1 に切り替える"
 
 #: ../terminal/terminal-preferences.c:519
 msgid "Switch to Tab 2"
-msgstr ""
+msgstr "タブ2 に切り替える"
 
 #: ../terminal/terminal-preferences.c:530
 msgid "Switch to Tab 3"
-msgstr ""
+msgstr "タブ3 に切り替える"
 
 #: ../terminal/terminal-preferences.c:541
 msgid "Switch to Tab 4"
-msgstr ""
+msgstr "タブ4 に切り替える"
 
 #: ../terminal/terminal-preferences.c:552
 msgid "Switch to Tab 5"
-msgstr ""
+msgstr "タブ5 に切り替える"
 
 #: ../terminal/terminal-preferences.c:563
 msgid "Switch to Tab 6"
-msgstr ""
+msgstr "タブ6 に切り替える"
 
 #: ../terminal/terminal-preferences.c:574
 msgid "Switch to Tab 7"
-msgstr ""
+msgstr "タブ7 に切り替える"
 
 #: ../terminal/terminal-preferences.c:585
 msgid "Switch to Tab 8"
-msgstr ""
+msgstr "タブ8 に切り替える"
 
 #: ../terminal/terminal-preferences.c:596
 msgid "Switch to Tab 9"
-msgstr ""
+msgstr "タブ9 に切り替える"
 
 #: ../terminal/terminal-preferences.c:607
 msgid "Contents"
-msgstr ""
+msgstr "目次"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
-#: ../terminal/terminal-screen.c:1460
-#, fuzzy
+#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
+#: ../terminal/terminal-screen.c:1468
 msgid "Untitled"
-msgstr "タイトル"
+msgstr "無題"
 
-#: ../terminal/terminal-screen.c:473
+#: ../terminal/terminal-screen.c:477
 #, c-format
 msgid "Unable to determine your login shell."
-msgstr ""
+msgstr "あなたのログインシェルを特定できません。"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1220
+#: ../terminal/terminal-screen.c:1228
 msgid "Failed to execute child"
-msgstr ""
+msgstr "子プロセスの実行に失敗しました。"
 
-#: ../terminal/terminal-screen.c:1801
+#: ../terminal/terminal-screen.c:1809
 msgid "Close this tab"
-msgstr ""
+msgstr "このタブを閉じる"
 
 #: ../terminal/terminal-shortcut-editor.c:89
-#, fuzzy
 msgid "File"
-msgstr "タイトル"
+msgstr "ファイル"
 
 #: ../terminal/terminal-shortcut-editor.c:100
 msgid "Edit"
-msgstr ""
+msgstr "編集"
 
 #: ../terminal/terminal-shortcut-editor.c:110
 msgid "View"
-msgstr ""
+msgstr "表示"
 
 #: ../terminal/terminal-shortcut-editor.c:129
 msgid "Go"
-msgstr ""
+msgstr "移動"
 
 #: ../terminal/terminal-shortcut-editor.c:146
-#, fuzzy
 msgid "Help"
-msgstr "--help"
+msgstr "ヘルプ"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501
+#: ../terminal/terminal-shortcut-editor.c:506
 msgid "Disabled"
-msgstr ""
+msgstr "無効"
 
 #: ../terminal/terminal-shortcut-editor.c:222
 msgid "Action"
-msgstr ""
+msgstr "アクション"
 
 #: ../terminal/terminal-shortcut-editor.c:229
-#, fuzzy
 msgid "Shortcut key"
 msgstr "ショートカットキー"
 
 #: ../terminal/terminal-shortcut-editor.c:329
 msgid "Compose shortcut"
-msgstr "ショートカットを編集"
+msgstr "ショートカットの編集"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 msgid "Clea_r"
-msgstr ""
+msgstr "クリア(_R)"
 
 #: ../terminal/terminal-shortcut-editor.c:353
-#, fuzzy
 msgid "Compose shortcut for:"
-msgstr "ショートカットを編集"
+msgstr "このショートカットキーを編集:"
 
 #: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
-msgstr ""
+msgstr "キーボードの取得に失敗しました"
 
 #: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
-msgstr ""
+msgstr "すでに他のアプリケーションがキーボードの制御を取得しています。"
 
 #: ../terminal/terminal-toolbars-view.c:113
 msgid "Toolbar Editor"
-msgstr ""
+msgstr "ツールバーエディタ"
 
 #: ../terminal/terminal-widget.c:321
 msgid "Copy Email Address"
-msgstr ""
+msgstr "メールアドレスをコピー"
 
 #: ../terminal/terminal-widget.c:322
-#, fuzzy
 msgid "Compose Email"
-msgstr "メールを作成する:"
+msgstr "メールの作成"
 
 #: ../terminal/terminal-widget.c:326
 msgid "Copy Link Address"
-msgstr ""
+msgstr "リンクのアドレスをコピー"
 
 #: ../terminal/terminal-widget.c:327
 msgid "Open Link"
-msgstr ""
+msgstr "リンクを開く"
 
 #: ../terminal/terminal-widget.c:481
 #, c-format
@@ -615,2345 +689,701 @@ msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
+"MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
+"式 (%d) か長さ (%d) です\n"
 
 #: ../terminal/terminal-widget.c:497
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%"
+"d) です\n"
 
 #: ../terminal/terminal-widget.c:523
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
+"ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) で"
+"す\n"
 
 #: ../terminal/terminal-widget.c:568
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
+msgstr "不正な色データを受け取りました: 不正な形式 (%d) か長さ (%d) です\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:705
 #, c-format
 msgid "Failed to open the URL `%s'"
-msgstr ""
+msgstr "URL '%s' をブラウザで開けませんでした"
 
-#: ../terminal/terminal-window.c:217
-#, fuzzy
+#: ../terminal/terminal-window.c:222
 msgid "_File"
-msgstr "タイトル"
-
-#: ../terminal/terminal-window.c:218
-msgid "Open _Tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:218
-#, fuzzy
-msgid "Open a new terminal tab"
-msgstr "新しいターミナルウィンドウを開く:"
-
-#: ../terminal/terminal-window.c:219
-msgid "Open T_erminal"
-msgstr ""
-
-#: ../terminal/terminal-window.c:219
-#, fuzzy
-msgid "Open a new terminal window"
-msgstr "新しいターミナルウィンドウを開く:"
-
-#: ../terminal/terminal-window.c:220
-msgid "_Detach Tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:220
-msgid "Open a new window for the current terminal tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:221
-msgid "C_lose Tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:221
-#, fuzzy
-msgid "Close the current terminal tab"
-msgstr "ターミナルに文字を貼り付ける:"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Close Window"
-msgstr ""
-
-#: ../terminal/terminal-window.c:222
-#, fuzzy
-msgid "Close the terminal window"
-msgstr "ターミナルウィンドウを閉じる:"
+msgstr "ファイル(_F)"
 
 #: ../terminal/terminal-window.c:223
+msgid "Open _Tab"
+msgstr "タブを開く(_T)"
+
+#: ../terminal/terminal-window.c:223
+msgid "Open a new terminal tab"
+msgstr "新しいタブをこのターミナルで開きます"
+
+#: ../terminal/terminal-window.c:224
+msgid "Open T_erminal"
+msgstr "ターミナルを開く(_E)"
+
+#: ../terminal/terminal-window.c:224
+msgid "Open a new terminal window"
+msgstr "新しいターミナルウィンドウを開きます"
+
+#: ../terminal/terminal-window.c:225
+msgid "_Detach Tab"
+msgstr "タブを切り離す(_D)"
+
+#: ../terminal/terminal-window.c:225
+msgid "Open a new window for the current terminal tab"
+msgstr "現在のターミナルタブを新しいウィンドウで開きます"
+
+#: ../terminal/terminal-window.c:226
+msgid "C_lose Tab"
+msgstr "タブを閉じる(_L)"
+
+#: ../terminal/terminal-window.c:226
+msgid "Close the current terminal tab"
+msgstr "現在のターミナルタブを閉じます"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Close Window"
+msgstr "ウィンドウを閉じる(_C)"
+
+#: ../terminal/terminal-window.c:227
+msgid "Close the terminal window"
+msgstr "このターミナルウィンドウを閉じます"
+
+#: ../terminal/terminal-window.c:228
 msgid "_Edit"
-msgstr ""
-
-#: ../terminal/terminal-window.c:224
-msgid "_Copy"
-msgstr ""
-
-#: ../terminal/terminal-window.c:224
-msgid "Copy to clipboard"
-msgstr ""
-
-#: ../terminal/terminal-window.c:225
-#, fuzzy
-msgid "_Paste"
-msgstr "パレット"
-
-#: ../terminal/terminal-window.c:225
-msgid "Paste from clipboard"
-msgstr ""
-
-#: ../terminal/terminal-window.c:226
-#, fuzzy
-msgid "Paste _Selection"
-msgstr "テキストの選択領域"
-
-#: ../terminal/terminal-window.c:226
-msgid "Paste from primary selection"
-msgstr ""
-
-#: ../terminal/terminal-window.c:227
-msgid "_Toolbars..."
-msgstr ""
-
-#: ../terminal/terminal-window.c:227
-#, fuzzy
-msgid "Customize the toolbars"
-msgstr "ツールバーのカスタマイズ"
-
-#: ../terminal/terminal-window.c:228
-#, fuzzy
-msgid "Pr_eferences..."
-msgstr "環境設定"
-
-#: ../terminal/terminal-window.c:228
-#, fuzzy
-msgid "Open the Terminal preferences dialog"
-msgstr "一般設定"
+msgstr "編集(_E)"
 
 #: ../terminal/terminal-window.c:229
-msgid "_View"
-msgstr ""
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: ../terminal/terminal-window.c:229
+msgid "Copy to clipboard"
+msgstr "クリップボードへコピーします"
 
 #: ../terminal/terminal-window.c:230
-#, fuzzy
-msgid "_Terminal"
-msgstr "ターミナルエミュレータ"
+msgid "_Paste"
+msgstr "貼り付け(_P)"
+
+#: ../terminal/terminal-window.c:230
+msgid "Paste from clipboard"
+msgstr "クリップボードから貼り付けます"
 
 #: ../terminal/terminal-window.c:231
-msgid "_Set Title..."
-msgstr ""
+msgid "Paste _Selection"
+msgstr "選択領域を貼り付け(_S)"
 
 #: ../terminal/terminal-window.c:231
-msgid "Set a custom title for the current tab"
-msgstr ""
+msgid "Paste from primary selection"
+msgstr "主選択領域から貼り付けます"
 
 #: ../terminal/terminal-window.c:232
-msgid "_Reset"
-msgstr ""
+msgid "_Toolbars..."
+msgstr "ツールバー(_T)..."
+
+#: ../terminal/terminal-window.c:232
+msgid "Customize the toolbars"
+msgstr "ツールバーをカスタマイズします"
 
 #: ../terminal/terminal-window.c:233
-msgid "Reset and C_lear"
-msgstr ""
+msgid "Pr_eferences..."
+msgstr "設定(_E)..."
+
+#: ../terminal/terminal-window.c:233
+msgid "Open the Terminal preferences dialog"
+msgstr "Terminal の設定ダイアログを開きます"
 
 #: ../terminal/terminal-window.c:234
-msgid "_Go"
-msgstr ""
+msgid "_View"
+msgstr "表示(_V)"
 
 #: ../terminal/terminal-window.c:235
-msgid "_Previous Tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:235
-msgid "Switch to previous tab"
-msgstr ""
+msgid "_Terminal"
+msgstr "ターミナル(_T)"
 
 #: ../terminal/terminal-window.c:236
-msgid "_Next Tab"
-msgstr ""
+msgid "_Set Title..."
+msgstr "タイトルを付ける(_S)..."
 
 #: ../terminal/terminal-window.c:236
-msgid "Switch to next tab"
-msgstr ""
+msgid "Set a custom title for the current tab"
+msgstr "現在のタブに指定したタイトルを付けます"
 
 #: ../terminal/terminal-window.c:237
-msgid "_Help"
-msgstr ""
+msgid "_Reset"
+msgstr "リセット(_R)"
 
 #: ../terminal/terminal-window.c:238
-msgid "_Contents"
-msgstr ""
-
-#: ../terminal/terminal-window.c:238
-msgid "Display help contents"
-msgstr ""
+msgid "Reset and C_lear"
+msgstr "リセットしてクリア(_L)"
 
 #: ../terminal/terminal-window.c:239
-msgid "_Report a bug"
-msgstr ""
-
-#: ../terminal/terminal-window.c:239
-msgid "Report a bug in Terminal"
-msgstr ""
+msgid "_Go"
+msgstr "移動(_G)"
 
 #: ../terminal/terminal-window.c:240
-msgid "_About"
-msgstr ""
+msgid "_Previous Tab"
+msgstr "前のタブ(_P)"
 
 #: ../terminal/terminal-window.c:240
-#, fuzzy
-msgid "Display information about Terminal"
-msgstr "バージョン情報を表示して終了します"
+msgid "Switch to previous tab"
+msgstr "前のタブに切り替えます"
 
 #: ../terminal/terminal-window.c:241
+msgid "_Next Tab"
+msgstr "次のタブ(_N)"
+
+#: ../terminal/terminal-window.c:241
+msgid "Switch to next tab"
+msgstr "次のタブに切り替えます"
+
+#: ../terminal/terminal-window.c:242
+msgid "_Help"
+msgstr "ヘルプ(_H)"
+
+#: ../terminal/terminal-window.c:243
+msgid "_Contents"
+msgstr "目次(_C)"
+
+#: ../terminal/terminal-window.c:243
+msgid "Display help contents"
+msgstr "ヘルプの目次を表示します"
+
+#: ../terminal/terminal-window.c:244
+msgid "_Report a bug"
+msgstr "バグを報告(_R)"
+
+#: ../terminal/terminal-window.c:244
+msgid "Report a bug in Terminal"
+msgstr "Terminal のバグを報告します"
+
+#: ../terminal/terminal-window.c:245
+msgid "_About"
+msgstr "このプログラムについて(_A)"
+
+#: ../terminal/terminal-window.c:245
+msgid "Display information about Terminal"
+msgstr "Terminal に関する情報を表示します"
+
+#: ../terminal/terminal-window.c:246
 msgid "_Input Methods"
-msgstr ""
+msgstr "文字の入力方式(_I)"
 
-#: ../terminal/terminal-window.c:246
-#, fuzzy
+#: ../terminal/terminal-window.c:251
 msgid "Show _Menubar"
-msgstr "--show-menubar"
+msgstr "メニューバー(_M)"
 
-#: ../terminal/terminal-window.c:246
-#, fuzzy
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the menubar"
-msgstr "メニューバーを隠す:"
+msgstr "メニューバーの表示/非表示を切り替えます"
 
-#: ../terminal/terminal-window.c:247
-#, fuzzy
+#: ../terminal/terminal-window.c:252
 msgid "Show _Toolbars"
-msgstr "--show-toolbars"
+msgstr "ツールバー(_T)"
 
-#: ../terminal/terminal-window.c:247
-#, fuzzy
+#: ../terminal/terminal-window.c:252
 msgid "Show/hide the toolbars"
-msgstr "ツールバーを隠す、または表示する:"
+msgstr "ツールバーの表示/非表示を切り替えます"
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:253
 msgid "Show Window _Borders"
-msgstr ""
+msgstr "ウィンドウ枠(_B)"
 
-#: ../terminal/terminal-window.c:248
-#, fuzzy
+#: ../terminal/terminal-window.c:253
 msgid "Show/hide the window decorations"
-msgstr "ウィンドウの枠を隠す、または表示する:"
+msgstr "ウィンドウの装飾枠の表示/非表示を切り替えます"
 
-#: ../terminal/terminal-window.c:249
-#, fuzzy
+#: ../terminal/terminal-window.c:254
 msgid "_Fullscreen"
-msgstr "--fullscreen"
+msgstr "全画面表示(_F)"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:254
 msgid "Toggle fullscreen mode"
-msgstr ""
+msgstr "全画面モードの切り替えを行います"
 
-#: ../terminal/terminal-window.c:554
+#: ../terminal/terminal-window.c:561
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
-#: ../terminal/terminal-window.c:565
+#: ../terminal/terminal-window.c:572
 msgid "Close all tabs"
-msgstr ""
+msgstr "全てのタブを閉じる"
 
-#: ../terminal/terminal-window.c:584
+#: ../terminal/terminal-window.c:591
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
+"このウィンドウで %d 個のタブが開いています。\n"
+"ウィンドウを閉じると全てのタブも閉じられます。"
 
-#: ../terminal/terminal-window.c:587
+#: ../terminal/terminal-window.c:594
 msgid "Close all tabs?"
-msgstr ""
+msgstr "全てのタブを閉じますか?"
 
-#: ../terminal/terminal-window.c:600
+#: ../terminal/terminal-window.c:607
 msgid "Do _not ask me again"
-msgstr ""
+msgstr "次回から確認しない(_N)"
 
-#: ../terminal/terminal-window.c:1519
+#: ../terminal/terminal-window.c:1556
 msgid "Window Title|Set Title"
-msgstr ""
+msgstr "タイトルを付けてください"
 
-#: ../terminal/terminal-window.c:1532
-#, fuzzy
+#: ../terminal/terminal-window.c:1569
 msgid "Title:"
-msgstr "タイトル"
+msgstr "タイトル:"
 
-#: ../terminal/terminal-window.c:1544
-#, fuzzy
+#: ../terminal/terminal-window.c:1581
 msgid "Enter the title for the current terminal tab"
-msgstr "ターミナルの状態をリセットする:"
+msgstr "現在のターミナルタブのタイトルを入力してください"
 
 #: ../Terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "ターミナルエミュレータ"
 
-#~ msgid ""
-#~ "@@image: 'images/terminal-first-time.png'; "
-#~ "md5=c28f799b526627f477f05517df57486d"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-first-time.png'; "
-#~ "md5=c28f799b526627f477f05517df57486d"
+#~ msgid "$TERM s_etting:"
+#~ msgstr "$TERM の設定(_E):"
 
-#~ msgid ""
-#~ "@@image: 'images/terminal-multiple-tabs.png'; "
-#~ "md5=50bde64cde013ee5be96056c5ba139d9"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-multiple-tabs.png'; "
-#~ "md5=50bde64cde013ee5be96056c5ba139d9"
+#~ msgid "ASCII DEL"
+#~ msgstr "ASCII DEL"
 
-#~ msgid ""
-#~ "@@image: 'images/terminal-set-title.png'; "
-#~ "md5=1d2ab181828f8ed4b328a99df0a3b444"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-set-title.png'; "
-#~ "md5=1d2ab181828f8ed4b328a99df0a3b444"
+#~ msgid "Ad_vanced"
+#~ msgstr "上級者(_V)"
 
-#~ msgid ""
-#~ "@@image: 'images/terminal-toolbars.png'; "
-#~ "md5=f4b348a0b8799e71648979449b2a4a07"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-toolbars.png'; "
-#~ "md5=f4b348a0b8799e71648979449b2a4a07"
+#~ msgid "Allow bold te_xt"
+#~ msgstr "太字の使用を許可する(_X)"
 
-#~ msgid ""
-#~ "@@image: 'images/terminal-edit-preferences.png'; "
-#~ "md5=0eabb35f7c1aaaba6047386074e463fd"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-edit-preferences.png'; "
-#~ "md5=0eabb35f7c1aaaba6047386074e463fd"
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-preferences-general.png'; "
-#~ "md5=423f22e67374de38d133451076c6f982"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-preferences-general.png'; "
-#~ "md5=423f22e67374de38d133451076c6f982"
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-preferences-appearance.png'; "
-#~ "md5=60ea6321b41f48b5b5f9f6f8b884607a"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-preferences-appearance.png'; "
-#~ "md5=60ea6321b41f48b5b5f9f6f8b884607a"
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-preferences-colors.png'; "
-#~ "md5=6e3b585067aa4918b7038567a986d923"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-preferences-colors.png'; "
-#~ "md5=6e3b585067aa4918b7038567a986d923"
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-preferences-shortcuts.png'; "
-#~ "md5=9d15559bf32d3af2ff53c602afd0c233"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-preferences-shortcuts.png'; "
-#~ "md5=9d15559bf32d3af2ff53c602afd0c233"
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-compose-shortcut.png'; "
-#~ "md5=fd25cef8be8ca59470582d44c9e1b8ae"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-compose-shortcut.png'; "
-#~ "md5=fd25cef8be8ca59470582d44c9e1b8ae"
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-preferences-advanced.png'; "
-#~ "md5=8349b999025e9cebd3385772dacadfc6"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-preferences-advanced.png'; "
-#~ "md5=8349b999025e9cebd3385772dacadfc6"
-
-#~ msgid "2003"
-#~ msgstr "2003"
-
-#~ msgid "2004"
-#~ msgstr "2004"
-
-#~ msgid "2005"
-#~ msgstr "2005"
-
-#~ msgid "2006"
-#~ msgstr "2006"
-
-#~ msgid "2007"
-#~ msgstr "2007"
-
-#~ msgid "2008"
-#~ msgstr "2008"
-
-#~ msgid "os-cillation"
-#~ msgstr "os-cillation"
-
-#~ msgid "2009"
-#~ msgstr "2009"
-
-#~ msgid "Xfce Development Team"
-#~ msgstr "Xfce Development Team"
-
-#~ msgid ""
-#~ "Permission is granted to copy, distribute and/or modify this document "
-#~ "under the terms of the GNU Free Documentation License, Version 1.1 or any "
-#~ "later version published by the Free Software Foundation; with no "
-#~ "Invariant Sections, with no Front-Cover Texts, and with no Back-Cover "
-#~ "Texts. The complete license text is available from the <ulink type=\"http"
-#~ "\" url=\"http://www.gnu.org/\">Free Software Foundation</ulink>."
-#~ msgstr ""
-#~ "フリーソフトウェア財団が公表する GNU フリー文書利用許諾契約書の第1.1版、あ"
-#~ "るいはそれ以降のいずれかの版の条件下において、この文書の複製、配布および/"
-#~ "または変更が許可されます。変更出来ない箇所、表紙文および裏表紙文があっては"
-#~ "いけません。この利用許諾契約書の全文は<ulink type=\"http\" url=\"http://"
-#~ "www.gnu.org/\">フリーソフトウェア財団</ulink>から取得する事ができます。"
-
-#~ msgid "Benedikt"
-#~ msgstr "Benedikt"
-
-#~ msgid "Meurer"
-#~ msgstr "Meurer"
-
-#~ msgid "benny@xfce.org"
-#~ msgstr "benny@xfce.org"
-
-#~ msgid "System development"
-#~ msgstr "System development"
-
-#~ msgid "Software developer"
-#~ msgstr "Software developer"
-
-#~ msgid "Andrew"
-#~ msgstr "Andrew"
-
-#~ msgid "Conkling"
-#~ msgstr "Conkling"
-
-#~ msgid "andrewski@fr.st"
-#~ msgstr "andrewski@fr.st"
-
-#~ msgid "Nick"
-#~ msgstr "Nick"
-
-#~ msgid "Schermer"
-#~ msgstr "Schermer"
-
-#~ msgid "nick@xfce.org"
-#~ msgstr "nick@xfce.org"
-
-#~ msgid "Xfce Core Developer"
-#~ msgstr "Xfce Core Developer"
-
-#~ msgid "This manual describes version @PACKAGE_VERSION@ of @PACKAGE_NAME@."
-#~ msgstr ""
-#~ "この説明書は @PACKAGE_NAME@ のバージョン @PACKAGE_VERSION@ について書かれ"
-#~ "ています。"
-
-#~ msgid "Introduction to @PACKAGE_NAME@"
-#~ msgstr "@PACKAGE_NAME@ 入門"
-
-#~ msgid "What is a terminal emulator?"
-#~ msgstr "ターミナルエミュレータって何ですか?"
-
-#~ msgid ""
-#~ "The UNIX operating system was originally designed as a text-only system, "
-#~ "controlled by commands entered with a keyboard. This is known as a "
-#~ "command-line interface (CLI). The X Window System, Xfce, and other "
-#~ "projects have since added a graphical user interface to UNIX, that's what "
-#~ "you are actually using now. But the addition of a graphical user "
-#~ "interface doesn't mean that the CLI is dead. The CLI is still around and "
-#~ "is frequently the easiest, fastest, and most powerful way to perform a "
-#~ "certain task. In fact, power users would be lost without the CLI."
-#~ msgstr ""
-#~ "元来 UNIX オペレーティングシステムは文字専用のシステムとして設計され、キー"
-#~ "ボードで入力するコマンドによって制御されていました。これはコマンドラインイ"
-#~ "ンターフェイス (CLI) として知られています。X ウィンドウシステム、Xfce およ"
-#~ "び他のプロジェクトは以降 UNIX にグラフィカルユーザインターフェイス (GUI) "
-#~ "を追加していきました。あなたが今実際に使用しているのは正にこれです。GUI が"
-#~ "備わったと言っても CLI が無用の長物になるわけではありません。辺りを見回せ"
-#~ "ば CLI は未だに存在していて、それが最も容易、最速、かつ強力な手段になるこ"
-#~ "とが少なからずあります。実際のところパワーユーザは CLI 無しではやっていけ"
-#~ "ないでしょう。"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ is what is known as an X terminal emulator, often referred "
-#~ "to as terminal or shell. It provides an equivalent to the old-fashioned "
-#~ "text screen on your desktop, but one which can easily share the screen "
-#~ "with other graphical applications. Windows users may already be familiar "
-#~ "with the MS-DOS Prompt utility, which has the analogous function of "
-#~ "offering a DOS command-line under Windows, though one should note that "
-#~ "the UNIX CLI offer far more power and ease of use than does DOS."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ は X ターミナルエミュレータとして知られるものの一つで、ター"
-#~ "ミナルあるいはシェルと呼ばれることが多いようです。あなたのデスクトップにや"
-#~ "もすると大昔の文字スクリーンを思わせるようなものを持ち込んできますが、他の"
-#~ "グラフィカルなアプリケーションと画面上に共存することに何の問題もありませ"
-#~ "ん。Windows ユーザには MS-DOS プロンプトというユーティリティ (Windows 環境"
-#~ "下において DOS コマンドラインでの作業を可能にする類似機能) に詳しい方がい"
-#~ "るかもしれませんが UNIX の CLI は能力的に遥かに勝っていて使いやすいという"
-#~ "事をぜひとも知って頂きたいと思います。"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ emulates the <application>xterm</application> application "
-#~ "developed by the X Consortium. In turn, the <application>xterm</"
-#~ "application> application emulates the DEC VT102 terminal and also "
-#~ "supports the DEC VT220 escape sequences. An escape sequence is a series "
-#~ "of characters that start with the <keycap>Esc</keycap> character. "
-#~ "@PACKAGE_NAME@ accepts all of the escape sequences that the VT102 and "
-#~ "VT220 terminals use for functions such as to position the cursor and to "
-#~ "clear the screen."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ は X コンソーシアムが開発したアプリケーション "
-#~ "<application>xterm</application> の動作をエミュレートします。ではその "
-#~ "<application>xterm</application> はと言うと、これは DEC の VT102 ターミナ"
-#~ "ルをエミュレートしていて、DEC VT220 エスケープシーケンスも同様にサポートし"
-#~ "ます。エスケープシーケンスとは、文字 <keycap>Esc</keycap> で始まる一連なり"
-#~ "の文字列のことです。VT102 や VT220 ターミナルがカーソルの位置を定めたり画"
-#~ "面をクリアするような機能に使用する、これらエスケープシーケンスのすべてを "
-#~ "@PACKAGE_NAME@ は受け付けます。"
-
-#~ msgid "What makes @PACKAGE_NAME@ special?"
-#~ msgstr "@PACKAGE_NAME@ の何が特別なんですか?"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@'s advanced features include a simple configuration "
-#~ "interface, the ability to use multiple tabs with terminals within a "
-#~ "single window, the possibility to have a pseudo-transparent terminal "
-#~ "background, and a compact mode (where both the menubar and the window "
-#~ "decorations are hidden) that helps you to save space on your desktop."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ の先進的な機能に、シンプルな設定インターフェイス、単一ター"
-#~ "ミナルウィンドウ内での複数タブの使用、背景の疑似透過、デスクトップでのス"
-#~ "ペース節約に役立つコンパクトモード (メニューバーとウィンドウ枠の非表示) が"
-#~ "挙げられます。"
-
-#~ msgid "The following key features are available:"
-#~ msgstr "主な機能は以下のとおりです:"
-
-#~ msgid "Multiple tabs per window"
-#~ msgstr "ウィンドウごとに複数タブが使用できます。"
-
-#~ msgid ""
-#~ "Customizable toolbars, which can be changed using an integrated graphical "
-#~ "toolbar editor"
-#~ msgstr ""
-#~ "カスタマイズ可能なツールバー。統合されたグラフィカルなツールバーエディタを"
-#~ "使用して変更できます。"
-
-#~ msgid ""
-#~ "Ability to configure nearly every aspect of @PACKAGE_NAME@ in the "
-#~ "<placeholder-1/> dialog plus a bunch of so called <placeholder-2/>"
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ のほぼすべての箇所が <placeholder-1/> で設定でき、それに加"
-#~ "えていわゆる <placeholder-2/> もあります。"
-
-#~ msgid "Xfce desktop environment"
-#~ msgstr "Xfce デスクトップ環境"
-
-#~ msgid ""
-#~ "Good integration with the <placeholder-1/> in particular, but also with "
-#~ "every other Linux desktop"
-#~ msgstr ""
-#~ "特に <placeholder-1/> とよく調和しますが、その他のどの Linux デスクトップ"
-#~ "とも調和します。"
-
-#~ msgid "Session management support"
-#~ msgstr "セッション管理をサポートしています。"
-
-#~ msgid "Real multihead support (both MultiScreen and Xinerama mode)"
-#~ msgstr ""
-#~ "マルチヘッド (マルチスクリーンおよび Xinerama モードの両方) をサポートして"
-#~ "います。"
-
-#~ msgid "freedesktop.org"
-#~ msgstr "freedesktop.org"
-
-#~ msgid "Standards compliance (see the <placeholder-1/> website)"
-#~ msgstr ""
-#~ "標準規格に準拠しています (ウェブサイト <placeholder-1/> をご覧ください)。"
-
-#~ msgid "D-BUS"
-#~ msgstr "D-BUS"
-
-#~ msgid ""
-#~ "<placeholder-1/> based terminal service facility to minimize the overall "
-#~ "resource usage"
-#~ msgstr ""
-#~ "全体にわたるリソースの利用を最小に抑えるために <placeholder-1/> を基にした"
-#~ "ターミナルサービス機能が備わっています。"
-
-#~ msgid "GTK+"
-#~ msgstr "GTK+"
-
-#~ msgid "GObject"
-#~ msgstr "GObject"
-
-#~ msgid ""
-#~ "High degree of maintainability by making best use of <placeholder-1/> and "
-#~ "<placeholder-2/>."
-#~ msgstr ""
-#~ "<placeholder-1/> および <placeholder-2/> を最大限に活用し、格段に保守しや"
-#~ "すくなっています。"
-
-#~ msgid ""
-#~ "Besides these key features, @PACKAGE_NAME@ supports all features you "
-#~ "would expect from a modern terminal emulator."
-#~ msgstr ""
-#~ "これらの特色に加えて、@PACKAGE_NAME@ は昨今のターミナルエミュレータに望ま"
-#~ "れるすべての機能をサポートしています。"
-
-#~ msgid "Getting started"
-#~ msgstr "始めてみましょう"
-
-#~ msgid "Starting @PACKAGE_NAME@"
-#~ msgstr "@PACKAGE_NAME@ の起動"
-
-#~ msgid ""
-#~ "The easiest way to start @PACKAGE_NAME@ is to use the applications menu "
-#~ "of your desktop; for Xfce, point your mouse cursor to the desktop, press "
-#~ "the right mouse button and choose <menuchoice><guimenu>System</"
-#~ "guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ を起動する最も簡単な方法は、デスクトップのアプリケーション"
-#~ "メニューを使用することです。Xfce では、マウスカーソルをデスクトップに移動"
-#~ "してマウスの右ボタンを押します。そこで<menuchoice><guimenu>「アプリケー"
-#~ "ション」</guimenu><guimenuitem>「システム」</guimenuitem><guimenuitem>"
-#~ "「Terminal」</guimenuitem></menuchoice> を選択してください。"
-
-#~ msgid ""
-#~ "You can also start @PACKAGE_NAME@ from a command line or from the "
-#~ "<guilabel>Application launcher</guilabel>. Just hit "
-#~ "<keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, type "
-#~ "<userinput><command>Terminal</command></userinput> and click the button "
-#~ "<guibutton>Run</guibutton>."
-#~ msgstr ""
-#~ "コマンドラインまたは<guilabel>アプリケーションランチャ</guilabel>から "
-#~ "Terminal を起動することもできます。<keycombo><keycap>Alt</"
-#~ "keycap><keycap>F2</keycap></keycombo> を押し、"
-#~ "<userinput><command>Terminal</command></userinput> と入力してください。"
-#~ "<guibutton>「実行」</guibutton> ボタンをクリックすると @PACKAGE_NAME@ が起"
-#~ "動します。"
-
-#~ msgid "When you first start @PACKAGE_NAME@"
-#~ msgstr "@PACKAGE_NAME@ を初めて起動したとき"
-
-#~ msgid ""
-#~ "When you start @PACKAGE_NAME@ for the first time, the application opens a "
-#~ "terminal window with default settings."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ を初めて起動すると、一つのターミナルウィンドウがデフォルト"
-#~ "の設定で開かれます。"
-
-#~ msgid "Example of a default terminal window"
-#~ msgstr "デフォルトターミナルウィンドウの例"
-
-#~ msgid ""
-#~ "The terminal window displays a command prompt where you can type UNIX "
-#~ "commands. The command prompt may vary depending on the configuration of "
-#~ "your shell. The cursor is positioned at the command prompt. When you type "
-#~ "a UNIX command and press <keycap>Return</keycap>, the computer executes "
-#~ "the command. By default, @PACKAGE_NAME@ will use the login shell of the "
-#~ "user who starts the application (<filename>/bin/bash</filename> in case "
-#~ "of a default Linux installation)."
-#~ msgstr ""
-#~ "このターミナルウィンドウはコマンドプロンプトを表示していて、ここに UNIX コ"
-#~ "マンドを入力することができます。このコマンドプロンプトはシェルの設定によっ"
-#~ "て変わります。カーソルはコマンドプロンプトのある場所に位置しています。"
-#~ "UNIX コマンドを入力して <keycap>リターン</keycap> を押すと、そのコマンドが"
-#~ "コンピュータによって実行されます。標準では、@PACKAGE_NAME@ はこのアプリ"
-#~ "ケーションを起動したユーザのログインシェルを使用します (もし普通に Linux "
-#~ "をインストールしたのなら、<filename>/bin/bash</filename> になります)。"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ sets the following environment variables for the command "
-#~ "running inside the terminal window:"
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ はウィンドウ内で実行するコマンドのために以下の環境変数を設"
-#~ "定します:"
-
-#~ msgid "TERM"
-#~ msgstr "TERM"
-
-#~ msgid ""
-#~ "Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you "
-#~ "can configure the value from the preferences dialog."
-#~ msgstr ""
-#~ "<literal>xterm</literal> か <literal>xterm-color</literal> を設定します。"
-#~ "設定ダイアログからこの値を変更することができます。"
-
-#~ msgid "COLORTERM"
-#~ msgstr "COLORTERM"
-
-#~ msgid "Set to <literal>Terminal</literal> by default."
-#~ msgstr "デフォルトでは <literal>Terminal</literal> になっています。"
-
-#~ msgid "DISPLAY"
-#~ msgstr "DISPLAY"
-
-#~ msgid "Set to the X11 display of the terminal by default."
-#~ msgstr "デフォルトではターミナルの X11 ディスプレイになっています。"
-
-#~ msgid "WINDOWID"
-#~ msgstr "WINDOWID"
-
-#~ msgid "Set to the X11 window identifier of the terminal by default."
-#~ msgstr "デフォルトではターミナルの X11 ウィンドウ識別子になっています。"
-
-#~ msgid "Working with multiple terminals"
-#~ msgstr "複数のターミナルでの作業"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ provides a tab feature that enables you to open several "
-#~ "terminals within a single window. Each terminal is opened in a separate "
-#~ "tab. Click on the appropriate tab to display the terminal in the window. "
-#~ "Each tabbed terminal in a window is separate sub-process, so you can use "
-#~ "each terminal for a different task."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ には一つのウィンドウの中に複数のターミナルを開けるタブ機能"
-#~ "があります。それぞれのターミナルは別々のタブに開かれます。ウィンドウで表示"
-#~ "したいターミナルのタブをクリックしてください。これらタブ化されたターミナル"
-#~ "は別個のサブプロセスですので、異なる用途に利用できます。"
-
-#~ msgid "Example of a terminal window with tabs"
-#~ msgstr "複数のタブがあるターミナルウィンドウの例"
-
-#~ msgid ""
-#~ "See <xref linkend=\"usage\"/> for information about how to open a new "
-#~ "tabbed terminal."
-#~ msgstr ""
-#~ "新しいタブターミナルの開き方についての情報は <xref linkend=\"usage\"/> を"
-#~ "参照してください。"
-
-#~ msgid ""
-#~ "You can close a terminal tab by clicking on the close button in the "
-#~ "terminal tab header or by choosing <menuchoice><guimenu>File</"
-#~ "guimenu><guimenuitem>Close Tab</guimenuitem></menuchoice> from the "
-#~ "menubar."
-#~ msgstr ""
-#~ "ターミナルタブの右上にある「×」ボタンをクリックするか、またはメニューバー"
-#~ "から <menuchoice><guimenu>「ファイル」</guimenu><guimenuitem>「タブを閉じ"
-#~ "る」</guimenuitem></menuchoice> でタブを閉じることができます。"
-
-#~ msgid "To open and close terminals"
-#~ msgstr "ターミナルを開いたり閉じたりするには"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Terminal</"
-#~ "guimenuitem></menuchoice> (or right-click the terminal window and choose "
-#~ "<menuchoice><guimenuitem>Open Terminal</guimenuitem></menuchoice>)."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「ファイル」</guimenu><guimenuitem>「ターミナルを開"
-#~ "く」</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリック"
-#~ "して<menuchoice><guimenuitem>「ターミナルを開く」</guimenuitem></"
-#~ "menuchoice>) を選びます。"
-
-#~ msgid ""
-#~ "The new terminal inherits the working directory from its parent terminal."
-#~ msgstr ""
-#~ "新しいターミナルは、作業フォルダをその親ターミナルから引き継ぎます。"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Close Window</"
-#~ "guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「ファイル」</guimenu><guimenuitem>「ウィンドウを閉じ"
-#~ "る」</guimenuitem></menuchoice> を選びます。"
-
-#~ msgid ""
-#~ "This action closes the terminal and terminates any subprocesses that you "
-#~ "opened from the terminal. If you close the last terminal window, the "
-#~ "@PACKAGE_NAME@ application exits."
-#~ msgstr ""
-#~ "これはターミナルと、その中で開かれているサブプロセスすべてを強制終了させま"
-#~ "す。最後のターミナルを閉じると @PACKAGE_NAME@ アプリケーションが終了しま"
-#~ "す。"
-
-#~ msgid "To add a new tabbed terminal to a window:"
-#~ msgstr "ウィンドウに新しいタブターミナルを追加する:"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Tab</"
-#~ "guimenuitem></menuchoice> (or right-click the terminal window and choose "
-#~ "<menuchoice><guimenuitem>Open Tab</guimenuitem></menuchoice>)."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「ファイル」</guimenu><guimenuitem>「タブを開く」</"
-#~ "guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックして"
-#~ "<menuchoice><guimenuitem>「タブを開く」</guimenuitem></menuchoice>) を選び"
-#~ "ます。"
-
-#~ msgid ""
-#~ "The new terminal inherits the working directory from the previously "
-#~ "active terminal."
-#~ msgstr ""
-#~ "新しいターミナルは前の有効ターミナルから作業フォルダを引き継ぎます。"
-
-#~ msgid "To modify a terminal window"
-#~ msgstr "ターミナルウィンドウを変更するには"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</"
-#~ "guimenuitem></menuchoice> (or right-click the terminal window and choose "
-#~ "<menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>)."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「メニューバー」</"
-#~ "guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックして"
-#~ "<menuchoice><guimenuitem>「メニューバー」</guimenuitem></menuchoice>) を選"
-#~ "びます。"
-
-#~ msgid "To show a hidden menubar:"
-#~ msgstr "隠したメニューバーを表示する:"
-
-#~ msgid ""
-#~ "Right-click the terminal window and choose <menuchoice><guimenuitem>Show "
-#~ "Menubar</guimenuitem></menuchoice> from the popup menu."
-#~ msgstr ""
-#~ "ターミナルウィンドウを右クリックして、ポップアップメニューから"
-#~ "<menuchoice><guimenuitem>「メニューバー」</guimenuitem></menuchoice>を選び"
-#~ "ます。"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</"
-#~ "guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「ツールバー」</"
-#~ "guimenuitem></menuchoice> を選びます。"
-
-#~ msgid "To customize the toolbars:"
-#~ msgstr "ツールバーをカスタマイズする:"
-
-#~ msgid ""
-#~ "Be sure to show the toolbars first; then choose "
-#~ "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Toolbars...</"
-#~ "guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "最初に、ツールバーが表示されていることを確認して下さい。次に "
-#~ "<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「ツールバー...」</"
-#~ "guimenuitem></menuchoice>を選びます。"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window "
-#~ "Borders</guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「ウィンドウ枠」</"
-#~ "guimenuitem></menuchoice> を選びます。"
-
-#~ msgid "To put a terminal window into fullscreen"
-#~ msgstr "ターミナルを全画面モードにする"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Fullscreen</"
-#~ "guimenuitem></menuchoice> from the menubar (or right-click the terminal "
-#~ "window and choose <menuchoice><guimenuitem>Fullscreen</guimenuitem></"
-#~ "menuchoice>)."
-#~ msgstr ""
-#~ "メニューバーから<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「全画"
-#~ "面表示」</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右ク"
-#~ "リックして<menuchoice><guimenuitem>「全画面表示」</guimenuitem>) を選んで"
-#~ "ください。"
-
-#~ msgid "To change the appearance of the terminal window:"
-#~ msgstr "ターミナルウィンドウの外観を変える:"
-
-#~ msgid ""
-#~ "See <xref linkend=\"preferences\"/> for information about the options "
-#~ "that you choose in the <guilabel>Terminal Preferences</guilabel> dialog "
-#~ "to change the appearance and behaviour of the terminal windows. For "
-#~ "example, you can change the background color or the location of the "
-#~ "scrollbar."
-#~ msgstr ""
-#~ "ターミナルウィンドウの外観や振る舞いを変更するには <guilabel>ターミナルの"
-#~ "設定</guilabel> ダイアログを使用します。ここにあるオプションについての詳し"
-#~ "い情報は <xref linkend=\"preferences\"/> をご覧ください。例えば、背景色や"
-#~ "スクロールバーの位置を変えることができます。"
-
-#~ msgid "To work with the contents of terminal windows"
-#~ msgstr "ターミナルウィンドウの表示内容を利用するには"
-
-#~ msgid "To scroll through previous commands and output:"
-#~ msgstr "前のコマンドや出力をスクロールする:"
-
-#~ msgid "Perform one of the following actions:"
-#~ msgstr "以下のいずれか一つを実行します:"
-
-#~ msgid ""
-#~ "Use the scrollbar, which is usually displayed on the right side of each "
-#~ "terminal window."
-#~ msgstr ""
-#~ "スクロールバーを使います。通常はターミナルウィンドウの右側に表示されていま"
-#~ "す。"
-
-#~ msgid ""
-#~ "Press the <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></"
-#~ "keycombo>, <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></"
-#~ "keycombo>, <keycombo><keycap>Shift</keycap><keycap>Up</keycap></"
-#~ "keycombo>, <keycombo><keycap>Shift</keycap><keycap>Down</keycap></"
-#~ "keycombo>, <keycombo><keycap>Shift</keycap><keycap>Home</keycap></"
-#~ "keycombo>, or <keycombo><keycap>Shift</keycap><keycap>End</keycap></"
-#~ "keycombo> keys."
-#~ msgstr ""
-#~ "キー <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></"
-#~ "keycombo>、 <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></"
-#~ "keycombo>、 <keycombo><keycap>Shift</keycap><keycap>Up</keycap></"
-#~ "keycombo>、<keycombo><keycap>Shift</keycap><keycap>Down</keycap></"
-#~ "keycombo>、 <keycombo><keycap>Shift</keycap><keycap>Home</keycap></"
-#~ "keycombo> あるいは <keycombo><keycap>Shift</keycap><keycap>End</keycap></"
-#~ "keycombo> を押します。"
-
-#~ msgid "Use the middle wheel button on your mouse if applicable"
-#~ msgstr "マウスのスクロールホイールを使用します。"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ mimics the FreeBSD console when <keycap>Scroll Lock</"
-#~ "keycap> is pressed. When scroll lock is active, ordinary input and output "
-#~ "from the shell is suspended and you can scroll through the history with "
-#~ "<keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> and "
-#~ "<keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> or "
-#~ "using the optional scrollbar. Press <keycombo><keycap>Ctrl</"
-#~ "keycap><keycap>S</keycap></keycombo> to activate the scroll lock and "
-#~ "<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> to disable "
-#~ "it afterwards."
-#~ msgstr ""
-#~ "<keycap>Scroll Lock</keycap> が押されると @PACKAGE_NAME@ は FreeBSD コン"
-#~ "ソールを真似るようになります。このスクロールロックが有効になっている間は、"
-#~ "シェルからの通常の入出力は休止状態になり、<keycombo><keycap>Shift</"
-#~ "keycap><keycap>Page Up</keycap></keycombo> および "
-#~ "<keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> ある"
-#~ "いはターミナルのスクロールバーを通してコマンドやログ等の履歴をたどることが"
-#~ "できます。スクロールロックを有効にするには <keycombo><keycap>Ctrl</"
-#~ "keycap><keycap>S</keycap></keycombo> を、無効にするにはその後で "
-#~ "<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> を押してくだ"
-#~ "さい。"
-
-#~ msgid ""
-#~ "The number of lines that you can scroll back in the terminal window is "
-#~ "determined by the <guilabel>Scrollback</guilabel> setting in the "
-#~ "<guilabel>General</guilabel> section of the <guilabel>Terminal "
-#~ "Preferences</guilabel> dialog."
-#~ msgstr ""
-#~ "ターミナルウィンドウでスクロールして戻せる行数は、<guilabel>ターミナルの設"
-#~ "定</guilabel> ダイアログの <guilabel>一般</guilabel> にある <guilabel>スク"
-#~ "ロールバック</guilabel> の設定によって決まります。"
-
-#~ msgid "To select and copy text:"
-#~ msgstr "文字列を選択したりコピーしたりする:"
-
-#~ msgid "You can select text in any of the following ways:"
-#~ msgstr "以下のどの方法でも文字を選択できます:"
-
-#~ msgid ""
-#~ "To select a character at a time, click on the first character that you "
-#~ "want to select and drag the mouse to the last character that you want to "
-#~ "select."
-#~ msgstr ""
-#~ "ある文字を一度に選択する場合は、最初の文字をクリックして、選択したい最後の"
-#~ "文字までマウスをドラッグします。"
-
-#~ msgid ""
-#~ "To select a word at a time, double-click on the first word that you want "
-#~ "to select and drag the mouse to the last word that you want to select."
-#~ msgstr ""
-#~ "ある単語を一度に選択する場合は、最初の単語をダブルクリックして、選択したい"
-#~ "最後の単語までマウスをドラッグしてください。"
-
-#~ msgid ""
-#~ "To select a line at a time, triple-click on the first line that you want "
-#~ "to select and drag the mouse to the last line that you want to select."
-#~ msgstr ""
-#~ "ある行を一度に選択する場合は、最初の行をトリプルクリックして、選択したい最"
-#~ "後の行までマウスをドラッグしてください。"
-
-#~ msgid ""
-#~ "These actions select all text between the first and last items. For all "
-#~ "text selections, @PACKAGE_NAME@ copies the selected text into the "
-#~ "clipboard when you release the mouse button. To explicitly copy the "
-#~ "selected text, choose <menuchoice><guimenu>Edit</"
-#~ "guimenu><guimenuitem>Copy</guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "これらの動作で最初と最後のアイテム間にあるすべての文字列が選択されます。選"
-#~ "択されたすべての文字列は、マウスボタンを離した段階で @PACKAGE_NAME@ によっ"
-#~ "てクリップボードにコピーされます。選択テキストを明示的にコピーするのであれ"
-#~ "ば、<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「コピー」</"
-#~ "guimenuitem></menuchoice>を選んでください。"
-
-#~ msgid ""
-#~ "If you previously copied text to the clipboard, you can paste the text "
-#~ "into a terminal by performing one of the following actions:"
-#~ msgstr ""
-#~ "文字列をクリップボードへコピーしていれば、以下のいずれか一つを実行すると"
-#~ "ターミナルにその文字列を貼り付けることができます:"
-
-#~ msgid ""
-#~ "To paste text that you copied by selection only, middle-click at the "
-#~ "command prompt. If you do not have a middle mouse button, refer to the X "
-#~ "Server documentation for information about how to emulate the middle "
-#~ "mouse button. This is equivalent to using the "
-#~ "<menuchoice><guimenuitem>Paste Selection</guimenuitem></menuchoice> item "
-#~ "from <menuchoice><guimenu>Edit</guimenu></menuchoice> menu."
-#~ msgstr ""
-#~ "選択してコピーしたテキストを貼り付けるだけでしたら、コマンドプロンプトの所"
-#~ "で中央クリックしてください。マウスが 3 ボタン式でない場合は、X サーバ文書"
-#~ "の、マウスの中央ボタンのエミュレート方法に関する情報を参考にしてください。"
-#~ "これは<menuchoice><guimenu>「編集」</guimenu></menuchoice> メニューの "
-#~ "<menuchoice><guimenuitem>「選択領域を貼り付け」</guimenuitem></"
-#~ "menuchoice> と同じ動きをします。"
-
-#~ msgid ""
-#~ "To paste text that you explicitly copied, choose "
-#~ "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Paste</guimenuitem></"
-#~ "menuchoice>."
-#~ msgstr ""
-#~ "明示的にコピーした文字列を貼り付けるには、<menuchoice><guimenu>「編集」</"
-#~ "guimenu><guimenuitem>「貼り付け」</guimenuitem></menuchoice>を選びます。"
-
-#~ msgid "To drag a file name into a terminal window:"
-#~ msgstr "ターミナルウィンドウにファイル名をドラッグする:"
-
-#~ msgid ""
-#~ "You can drag a file name to a terminal from another application such as a "
-#~ "file manager or a web browser. The terminal displays the path and the "
-#~ "full name of the URI."
-#~ msgstr ""
-#~ "ファイルマネージャやウェブブラウザのようなアプリケーションから、ターミナル"
-#~ "にファイル名をドラッグすることができます。すると、パスや URI の完全名が表"
-#~ "示されます。"
-
-#~ msgid "To access a hyperlink:"
-#~ msgstr "ハイパーリンクにアクセスする:"
-
-#~ msgid ""
-#~ "To access a Uniform Resource Locator (URL) that is displayed in a "
-#~ "terminal window, perform the following steps:"
-#~ msgstr ""
-#~ "ターミナルウィンドウに表示されている Uniform Resource Locator (URL) にアク"
-#~ "セスするには以下の手順を行います:"
-
-#~ msgid "Move the mouse over the URL until the URL is underlined."
-#~ msgstr "下線が付くところまでその URL 上にマウスポインタを移動します。"
-
-#~ msgid "Right-click on the URL to open the context menu."
-#~ msgstr "右クリックするとコンテキストメニューが表示されます。"
-
-#~ msgid ""
-#~ "Choose <guimenuitem>Open Link</guimenuitem> from the context menu to "
-#~ "start your preferred Web Browser and display the file located at the URL."
-#~ msgstr ""
-#~ "コンテキストメニューから <guimenuitem>「リンクを開く」</guimenuitem> を選"
-#~ "ぶと、お気に入りのウェブブラウザが起動してその URL にあるファイルを表示し"
-#~ "ます。"
-
-#~ msgid ""
-#~ "To compose an email to an address that is displayed in a terminal window, "
-#~ "perform the following steps:"
-#~ msgstr ""
-#~ "ターミナルウィンドウに表示されているアドレスへ送信するメールを作成するに"
-#~ "は、以下の手順を行います:"
-
-#~ msgid ""
-#~ "Move the mouse over the email address until the email address is "
-#~ "underlined."
-#~ msgstr ""
-#~ "下線が付くところまでそのメールアドレス上にマウスポインタを移動します。"
-
-#~ msgid "Right-click on the email address to open the context menu."
-#~ msgstr "右クリックするとコンテキストメニューが表示されます。"
-
-#~ msgid ""
-#~ "Choose <guimenuitem>Compose Email</guimenuitem> from the context menu to "
-#~ "compose an email in your preferred Mail Reader."
-#~ msgstr ""
-#~ "コンテキストメニューからから <guimenuitem>「メールの作成」</guimenuitem> "
-#~ "を選ぶと、お気に入りのメーラーでメールを編集できます。"
-
-#~ msgid "To change the terminal title"
-#~ msgstr "ターミナルのタイトルを変えるには"
-
-#~ msgid "Set title dialog"
-#~ msgstr "ダイアログ「タイトルを付けてください」"
-
-#~ msgid ""
-#~ "To change the title of the currently displayed terminal, perform the "
-#~ "following three steps:"
-#~ msgstr ""
-#~ "現在ターミナルが表示しているタイトルを変更するには、以下の手順を行います:"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Set Title...</"
-#~ "guimenuitem></menuchoice> or double-click the the terminal tab header."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「ターミナル」</guimenu><guimenuitem>「タイトルを付け"
-#~ "る...」</guimenuitem></menuchoice> あるいはターミナルのタブ上でダブルク"
-#~ "リックします。"
-
-#~ msgid ""
-#~ "Type the new title in the <guilabel>Title</guilabel> text box. "
-#~ "@PACKAGE_NAME@ applies the change immediately."
-#~ msgstr ""
-#~ "テキストボックスが表示されますので、<guilabel>タイトル</guilabel>の所に新"
-#~ "しいタイトルを入力します。@PACKAGE_NAME@ は直ちに変更を適用します。"
-
-#~ msgid ""
-#~ "Click the button <guilabel>Close</guilabel> or press the <keycap>Return</"
-#~ "keycap> key to close the <guilabel>Set Title</guilabel> dialog."
-#~ msgstr ""
-#~ "ダイアログ <guilabel>タイトルを付けてください</guilabel> を閉じるには "
-#~ "<guilabel>「閉じる」</guilabel>ボタンをクリックするか、<keycap>Return</"
-#~ "keycap> キーを押します。"
-
-#~ msgid ""
-#~ "To reset the terminal title to its default behavior, perform the same "
-#~ "three steps as described above, but enter an empty title."
-#~ msgstr ""
-#~ "ターミナルのタイトルをデフォルト値にリセットするには、上記の三つの手順を"
-#~ "行った上で、タイトルを空欄のまま入力します。"
-
-#~ msgid "To recover your terminal"
-#~ msgstr "ターミナルを復元するには"
-
-#~ msgid ""
-#~ "This section provides some advice if you have problems with terminals."
-#~ msgstr ""
-#~ "この節ではターミナルで起こる問題に対するいくつかのアドバイスを載せます。"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Reset</"
-#~ "guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「ターミナル」</guimenu><guimenuitem>「リセット」</"
-#~ "guimenuitem></menuchoice> を選びます。"
-
-#~ msgid "To reset the terminal and clear the terminal screen:"
-#~ msgstr "ターミナルをリセットして画面をクリアする:"
-
-#~ msgid ""
-#~ "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Reset and "
-#~ "Clear</guimenuitem></menuchoice>."
-#~ msgstr ""
-#~ "<menuchoice><guimenu>「ターミナル」</guimenu><guimenuitem>「リセットしてク"
-#~ "リア」</guimenuitem></menuchoice> を選びます。"
-
-#~ msgid ""
-#~ "You can also use the shell commands <userinput><command>reset</command></"
-#~ "userinput> and <userinput><command>clear</command></userinput> to recover "
-#~ "your terminal."
-#~ msgstr ""
-#~ "ターミナルを元の状態に戻すには、シェルコマンド <userinput><command>reset</"
-#~ "command></userinput> および <userinput><command>clear</command></"
-#~ "userinput> を使うこともできます。"
-
-#~ msgid "To customize the toolbars"
-#~ msgstr "ツールバーをカスタマイズするには"
-
-#~ msgid ""
-#~ "As already mentioned, @PACKAGE_NAME@ includes support for customizable "
-#~ "toolbars. The toolbars are disabled by default, you will have to "
-#~ "explicitly enable it. Choose <menuchoice><guimenu>View</"
-#~ "guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice> from the "
-#~ "menubar to display the toolbars in the current window. If you want to "
-#~ "permanently use the toolbars, see <xref linkend=\"preferences-appearance"
-#~ "\"/>."
-#~ msgstr ""
-#~ "前述のように、@PACKAGE_NAME@ はカスタマイズ可能なツールバーをサポートして"
-#~ "います。デフォルトでは表示されませんので、明示的に表示させる必要がありま"
-#~ "す。現在のウィンドウでツールバーを表示するには、メニューバーから "
-#~ "<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「ツールバー」</"
-#~ "guimenuitem></menuchoice> を選択します。ツールバーを常時表示したい場合は、"
-#~ "<xref linkend=\"preferences-appearance\"/> を参照してください。"
-
-#~ msgid ""
-#~ "Once the toolbars are shown, choose <menuchoice><guimenu>Edit</"
-#~ "guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice> from the "
-#~ "menubar or right-click one of the toolbars and choose "
-#~ "<menuchoice><guimenuitem>Customize Toolbar...</guimenuitem></menuchoice> "
-#~ "from the context menu. This opens the <guilabel>Toolbar Editor</guilabel> "
-#~ "window, which allows you to customize the toolbars in the current "
-#~ "terminal window."
-#~ msgstr ""
-#~ "ツールバーが表示されていれば、メニューバーから <menuchoice><guimenu>「編"
-#~ "集」</guimenu><guimenuitem>「ツールバー...」</guimenuitem></menuchoice> を"
-#~ "選ぶか、ツールバー上で右クリックしてコンテキストメニューから "
-#~ "<menuchoice><guimenuitem>「ツールバーのカスタマイズ...」</guimenuitem></"
-#~ "menuchoice> を選んでください。<guilabel>ツールバーエディタ</guilabel> が開"
-#~ "かれ、現在のターミナルウィンドウのツールバーをカスタマイズできるようになり"
-#~ "ます。"
-
-#~ msgid ""
-#~ "Just drag an item from the <guilabel>Toolbar Editor</guilabel> window and "
-#~ "drop it on a toolbar to add that item to the specific toolbar or drag an "
-#~ "item from a toolbar to the <guilabel>Toolbar Editor</guilabel> to remove "
-#~ "it from the toolbar. You can add additional toolbars by clicking the "
-#~ "button <guibutton>Add a new toolbar</guibutton> and remove toolbars by "
-#~ "right-clicking the toolbar and selecting <menuchoice><guimenuitem>Remove "
-#~ "Toolbar</guimenuitem></menuchoice> from the context menu. You can also "
-#~ "choose a different style for a toolbar from the context menu."
-#~ msgstr ""
-#~ "アイテムを追加するには <guilabel>ツールバーエディタ</guilabel> ウィンドウ"
-#~ "からツールバーの任意の場所にそのアイテムをドラッグします。ツールバーからア"
-#~ "イテムを削除するにはツールバーのアイテムを <guilabel>ツールバーエディタ</"
-#~ "guilabel> にドラッグします。<guibutton>「新しいツールバーを追加」</"
-#~ "guibutton> ボタンをクリックするとツールバーを追加でき、ツールバー上で右ク"
-#~ "リックし、コンテキストメニューから <menuchoice><guimenuitem>「ツールバーを"
-#~ "削除」</guimenuitem></menuchoice>を選択すると削除できます。コンテキストメ"
-#~ "ニューからいろいろなスタイルのツールバーを選ぶことも可能です。"
-
-#~ msgid "To switch between different encodings"
-#~ msgstr "別のエンコーディングに切り換えるには"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ itself does not (yet) include builtin support for "
-#~ "switching encodings on the fly in a terminal session. But since "
-#~ "@PACKAGE_NAME@ implements an UTF-8 mode, you can use the <ulink url="
-#~ "\"http://www.pps.jussieu.fr/~jch/software/luit/\">Luit application</"
-#~ "ulink> to switch between different character encodings within a terminal "
-#~ "session."
-#~ msgstr ""
-#~ "ターミナルセッション中でのエンコーディングの即時切り換えはまだ "
-#~ "@PACKAGE_NAME@ に組み込まれていません。しかしながら UTF-8 モードを実装して"
-#~ "いますので、別の文字エンコーディングの切り換えに <ulink url=\"http://www."
-#~ "pps.jussieu.fr/~jch/software/luit/\">Luit アプリケーション</ulink> を使う"
-#~ "ことができます。"
-
-#~ msgid ""
-#~ "To configure @PACKAGE_NAME@, choose <menuchoice><guimenu>Edit</"
-#~ "guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice> or right-"
-#~ "click the terminal area of the window and choose "
-#~ "<menuchoice><guimenuitem>Preferences...</guimenuitem></menuchoice>. This "
-#~ "will bring up the <guilabel>Terminal Preferences</guilabel> dialog, which "
-#~ "allows you to adjust @PACKAGE_NAME@'s behaviour to your needs."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ を設定するには、<menuchoice><guimenu>「編集」</"
-#~ "guimenu><guimenuitem>「設定...」</guimenuitem></menuchoice> を選択するか"
-#~ "ウィンドウのターミナル部分を右クリックして <menuchoice><guimenuitem>「設"
-#~ "定...」</guimenuitem></menuchoice> を選択します。これにより <guilabel>ター"
-#~ "ミナルの設定</guilabel> ダイアログが現れ、@PACKAGE_NAME@ の振る舞いを調節"
-#~ "できます。"
-
-#~ msgid "Initial title"
-#~ msgstr "最初のタイトル"
-
-#~ msgid ""
-#~ "Use this text box to specify the initial title of terminals. New "
-#~ "terminals will have the initial title."
-#~ msgstr ""
-#~ "ターミナルの最初のタイトルは、このテキストボックスを使って指定します。新し"
-#~ "いターミナルには最初のタイトルが付けられます。"
-
-#~ msgid "Dynamically-set title"
-#~ msgstr "自動的に付くタイトル"
-
-#~ msgid ""
-#~ "Use this drop-down list to specify how to handle dynamically-set titles, "
-#~ "that is, terminal titles set by the commands that run in the terminal."
-#~ msgstr ""
-#~ "ターミナルで実行するコマンドがターミナルにタイトルを付けることがありますの"
-#~ "で、そのような自動的に付くタイトルの扱い方をこのドロップダウンリストで指定"
-#~ "してください。"
-
-#~ msgid "Run command as login shell"
-#~ msgstr "ログインシェルとしてコマンドを実行する"
-
-#~ msgid ""
-#~ "Select this option to force @PACKAGE_NAME@ to run your shell as a login "
-#~ "shell when you open new terminals. See the documentation of your shell "
-#~ "for details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "新しいターミナルを開く時、@PACKAGE_NAME@ にシェルをログインシェルとして強"
-#~ "制実行させたい場合は、このオプションを選択してください。インタラクティブ"
-#~ "シェルとして実行する場合とログインシェルとして実行する場合の違いについて"
-#~ "は、使用するシェルの文書を参照してください。"
-
-#~ msgid "Update utmp/wtmp records when command is launched"
-#~ msgstr "コマンドが実行される時に utmp/wtmp の記録を更新する"
-
-#~ msgid ""
-#~ "Select this option to insert a new entry in the utmp and wtmp records "
-#~ "when a new terminal is opened."
-#~ msgstr ""
-#~ "新しいターミナルが開かれる時、utmp と wtmp の記録に新規エントリを挿入する"
-#~ "場合はこのオプションを選択します。"
-
-#~ msgid "Scroll on output"
-#~ msgstr "出力でスクロールさせる"
-
-#~ msgid ""
-#~ "Select this option to enable you to scroll the output on the terminal "
-#~ "while the terminal continues to display more output from a command."
-#~ msgstr ""
-#~ "ターミナルがコマンドからの多くの出力を表示し続けている間、その出力のスク"
-#~ "ロールを行いたいときはこのオプションを選択してください。"
-
-#~ msgid "Scroll on keystroke"
-#~ msgstr "キー入力でスクロールさせる"
-
-#~ msgid ""
-#~ "Select this option to enable you to press any key on the keyboard to "
-#~ "scroll down the terminal window to the command prompt. This action only "
-#~ "applies if you scrolled up the terminal window and you want to return to "
-#~ "the command prompt."
-#~ msgstr ""
-#~ "何かキーを押すことによって、ターミナルウィンドウをコマンドプロンプトまでス"
-#~ "クロールさせたいときはこのオプションを選択してください。これはターミナル"
-#~ "ウィンドウが上にスクロールされていたときに、コマンドプロンプトまで帰らせた"
-#~ "い場合のみに適用される動作です。"
-
-#~ msgid "Scrollbar is"
-#~ msgstr "スクロールバー"
-
-#~ msgid ""
-#~ "Use this drop-down list to specify the position of the scrollbar in "
-#~ "terminal windows."
-#~ msgstr ""
-#~ "ターミナルウィンドウに表示されるスクロールバーの位置の指定をこのドロップダ"
-#~ "ウンリストで行えます。"
-
-#~ msgid "Scrollback"
-#~ msgstr "スクロールバック"
-
-#~ msgid ""
-#~ "Use this spin box to specify the number of lines that you can scroll back "
-#~ "using the scrollbar or the mouse wheel. For example, if you specify 1000 "
-#~ "you can scroll back the last 1000 lines displayed in the terminal."
-#~ msgstr ""
-#~ "このスピンボックスにスクロールバーやマウスホイールを使用しながらスクロール"
-#~ "バックできる行数を指定します。例えばここに 1000 と指定すると、ターミナルに"
-#~ "表示された最新の 1000 行をスクロールバックすることができます。"
-
-#~ msgid "Appearance"
-#~ msgstr "外観"
-
-#~ msgid "Appearance preferences"
-#~ msgstr "外観の設定"
-
-#~ msgid "Font"
-#~ msgstr "フォント"
-
-#~ msgid ""
-#~ "Click on the button to select the font type and font size you want to use "
-#~ "for the terminal."
-#~ msgstr ""
-#~ "ターミナルで使用したいフォントの種類やサイズを選択するには、このボタンをク"
-#~ "リックします。"
-
-#~ msgid ""
-#~ "Use the option <guilabel>Enable anti-aliasing for the terminal font</"
-#~ "guilabel> to control whether you want @PACKAGE_NAME@ to use anti-aliasing "
-#~ "when rendering text in the terminals. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "ターミナルでテキストが描画される時、@PACKAGE_NAME@ にアンチエイリアス処理"
-#~ "を行わせるかどうかを決めるには、<guilabel>「ターミナルフォントのアンチエイ"
-#~ "リアスを有効にする」</guilabel> オプションを使います。このオプションを無効"
-#~ "にすると、ターミナルの描画性能が目に見えて向上する上に、処理速度が遅いシス"
-#~ "テムでのシステム全般の負荷を減らす可能性があります。"
-
-#~ msgid ""
-#~ "The option <guilabel>Allow bold text</guilabel> controls whether Terminal "
-#~ "allows the application running inside to use bold text or not. If "
-#~ "disabled, all text will appear in the selected font, else certain text "
-#~ "will appear in bold face."
-#~ msgstr ""
-#~ "<guilabel>「太字の使用を許可する」</guilabel> オプションで、ターミナル内で"
-#~ "実行するアプリケーションに太字を使わせるかどうかを管理します。無効にした場"
-#~ "合、すべてのテキストは選択されたフォントで描画されます。有効にした場合は、"
-#~ "一定のテキストが太字で描画されます。"
+#~ msgid "Auto-detect"
+#~ msgstr "自動検出"
 
 #~ msgid "Background"
 #~ msgstr "背景"
 
+#~ msgid "Background image"
+#~ msgstr "画像を使用する"
+
+#~ msgid "Centered"
+#~ msgstr "中央揃え"
+
+#~ msgid "Choose Terminal Font"
+#~ msgstr "ターミナルフォントを選択してください"
+
+#~ msgid "Choose tab activity color"
+#~ msgstr "動作中タブの色を選択してください"
+
+#~ msgid "Choose terminal background color"
+#~ msgstr "ターミナルの背景色を選択してください"
+
+#~ msgid "Choose terminal cursor color"
+#~ msgstr "ターミナルのカーソル色を選択してください"
+
+#~ msgid "Choose terminal text color"
+#~ msgstr "ターミナルの文字色を選択してください"
+
+#~ msgid "Choose terminal text selection background color"
+#~ msgstr "ターミナルでの選択領域の背景色を選択してください"
+
+#~ msgid "Color Selector"
+#~ msgstr "色の選択"
+
+#~ msgid "Command"
+#~ msgstr "コマンド"
+
+#~ msgid "Compatibility"
+#~ msgstr "互換性"
+
 #~ msgid ""
-#~ "Select a background for the terminal window. The options are as follows:"
-#~ msgstr "ターミナルウィンドウの背景を選択します。以下がそのオプションです:"
+#~ "Consider the following characters part of a _word\n"
+#~ "when double clicking:"
+#~ msgstr "ダブルクリックした時に以下の文字を単語の一部とする(_W):"
+
+#~ msgid "Control-H"
+#~ msgstr "Control-H"
+
+#~ msgid "Cu_rsor color:"
+#~ msgstr "カーソルの色(_R):"
+
+#~ msgid "Disable all me_nu access keys (such as Alt+f)"
+#~ msgstr "メニューへのアクセスキー (例えば Alt+f) を全て無効にする(_N)"
+
+#~ msgid "Disable m_enu shortcut keys (F10 by default)"
+#~ msgstr "メニューショートカットキー (デフォルトは F10) を無効にする(_E)"
+
+#~ msgid "Display _borders around new windows"
+#~ msgstr "ウィンドウ枠を表示する(_B)"
+
+#~ msgid "Display _menubar in new windows"
+#~ msgstr "メニューバーを表示する(_M)"
+
+#~ msgid "Display _toolbars in new windows"
+#~ msgstr "ツールバーを表示する(_T)"
+
+#~ msgid "Double Click"
+#~ msgstr "ダブルクリック"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "ターミナルフォントのアンチエイリアスを有効にする(_L)"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "ターミナルウィンドウで表示する文字にアンチエイリアスをかける場合はこのオプ"
+#~ "ションを有効にしてください。このオプションを無効にすると、ターミナルの描画"
+#~ "性能を劇的に向上させ、低速なシステムにおいてシステム全般の負荷を下げること"
+#~ "ができるかもしれません。"
+
+#~ msgid ""
+#~ "Enable this option to allow applications running inside the terminal "
+#~ "windows to use bold text."
+#~ msgstr ""
+#~ "ターミナルウィンドウ内で実行するアプリケーションに太字を使用させてもよいな"
+#~ "ら、このオプションを有効にしてください。"
+
+#~ msgid ""
+#~ "Enable this option to be able to scroll by a single line using the up/"
+#~ "down arrow keys together with the Shift key."
+#~ msgstr ""
+#~ "このオプションを有効にすると、Shift キーを押しながら↑/↓キーを押すことに"
+#~ "よって1行ずつスクロールできるようになります。"
+
+#~ msgid ""
+#~ "Enable this option to show the menubar in newly created terminal windows."
+#~ msgstr ""
+#~ "このオプションを有効にすると、新しく作成されるターミナルウィンドウでメ"
+#~ "ニューバーが表示されます。"
+
+#~ msgid ""
+#~ "Enable this option to show the toolbars in newly created terminal windows."
+#~ msgstr ""
+#~ "このオプションを有効にすると、新しく作成されるターミナルウィンドウでツール"
+#~ "バーが表示されます。"
+
+#~ msgid ""
+#~ "Enable this option to show window decorations around newly created "
+#~ "terminal windows."
+#~ msgstr ""
+#~ "このオプションを有効にすると、新しく作成されるターミナルウィンドウのウィン"
+#~ "ドウ枠が表示されます。"
+
+#~ msgid ""
+#~ "Enables you to press any key on the keyboard to scroll down the terminal "
+#~ "window to the command prompt."
+#~ msgstr ""
+#~ "有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンド"
+#~ "ウをコマンドプロンプトまでスクロールします。"
+
+#~ msgid "Erase TTY"
+#~ msgstr "TTY Erase"
+
+#~ msgid "Escape sequence"
+#~ msgstr "エスケープシーケンス"
+
+#~ msgid "Font"
+#~ msgstr "フォント"
+
+#~ msgid "General"
+#~ msgstr "一般"
+
+#~ msgid "Goes after initial title"
+#~ msgstr "最初のタイトルの後に置く"
+
+#~ msgid "Goes before initial title"
+#~ msgstr "最初のタイトルの前に置く"
+
+#~ msgid "Isn't displayed"
+#~ msgstr "表示しない"
+
+#~ msgid "Menubar Access"
+#~ msgstr "メニューバーへのアクセス"
 
 #~ msgid "None (use solid color)"
 #~ msgstr "指定無し (単色を使用する)"
 
+#~ msgid "On the left side"
+#~ msgstr "左側に表示する"
+
+#~ msgid "On the right side"
+#~ msgstr "右側に表示する"
+
+#~ msgid "Open a dialog to specify the color"
+#~ msgstr "色を指定するダイアログを開きます"
+
+#~ msgid "Opening New Windows"
+#~ msgstr "新しいウィンドウを開く場合"
+
+#~ msgid "Palette"
+#~ msgstr "パレット"
+
+#~ msgid "Palette entry 1"
+#~ msgstr "パレットエントリ 1"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "パレットエントリ 10"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "パレットエントリ 11"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "パレットエントリ 12"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "パレットエントリ 13"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "パレットエントリ 14"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "パレットエントリ 15"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "パレットエントリ 16"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "パレットエントリ 2"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "パレットエントリ 3"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "パレットエントリ 4"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "パレットエントリ 5"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "パレットエントリ 6"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "パレットエントリ 7"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "パレットエントリ 8"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "パレットエントリ 9"
+
+#~ msgid "Replaces initial title"
+#~ msgstr "最初のタイトルを置き換える"
+
+#~ msgid "Reset tab activity _indicator after"
+#~ msgstr "動作中タブ表示をリセットするまでの秒数(_I):"
+
+#~ msgid "Scaled"
+#~ msgstr "拡大縮小"
+
+#~ msgid "Scr_ollbar is:"
+#~ msgstr "スクロールバー(_O):"
+
+#~ msgid "Scroll on _keystroke"
+#~ msgstr "キー入力でスクロールさせる(_K)"
+
+#~ msgid "Scroll on ou_tput"
+#~ msgstr "出力でスクロールさせる(_T)"
+
+#~ msgid "Scroll single _line using Shift-Up/-Down keys"
+#~ msgstr "Shift+↑/+↓ キーを使用して1行ずつスクロールする(_L)"
+
+#~ msgid "Scroll_back:"
+#~ msgstr "スクロールバック(_B):"
+
+#~ msgid "Scrolling"
+#~ msgstr "スクロール"
+
+#~ msgid "Select Background Image File"
+#~ msgstr "背景画像ファイルを選択してください"
+
 #~ msgid ""
-#~ "Select this option to use the background color that is specified in the "
-#~ "<guilabel>Colors</guilabel> section as the background color for the "
+#~ "Select this option to force Terminal to run your shell as a login shell "
+#~ "when you open new terminals. See the documentation of your shell for "
+#~ "details about differences between running it as interactive shell and "
+#~ "running it as login shell."
+#~ msgstr ""
+#~ "新しいターミナルを開く際に、シェルを強制的にログインシェルとして実行させる"
+#~ "場合は、このオプションを選択してください。シェルがインタラクティブシェルと"
+#~ "して実行される場合と、ログインシェルとして実行される場合の違いに関する詳細"
+#~ "は、シェルのドキュメントを御覧ください。"
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "ショートカットキー"
+
+#~ msgid ""
+#~ "Specifies the number of lines that you can scroll back using the "
+#~ "scrollbar."
+#~ msgstr ""
+#~ "スクロールバーを使用してスクロールバックできる行数を指定してください。"
+
+#~ msgid "St_yle:"
+#~ msgstr "スタイル(_Y):"
+
+#~ msgid "Stretched"
+#~ msgstr "伸長あり"
+
+#~ msgid "Tab Activity Indicator"
+#~ msgstr "動作中タブの表示"
+
+#~ msgid "Tab activit_y color:"
+#~ msgstr "動作中タブの色(_Y):"
+
+#~ msgid "Terminal Preferences"
+#~ msgstr "ターミナルの設定"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Terminal アプリケーションが利用できる色のパレット:"
+
+#~ msgid "Text Selection"
+#~ msgstr "テキストの選択領域"
+
+# These line breaks are compromise of VL P Gothic, IPA P Gothic and (especially) UmePlus P Gothic, 10pt each.
+#~ msgid ""
+#~ "These options may cause some applications to behave\n"
+#~ "incorrectly. They are only here to allow you to work around\n"
+#~ "certain applications and operating systems that expect\n"
+#~ "different terminal behavior."
+#~ msgstr ""
+#~ "これらのオプションによって、いくつかのアプリケーションが正常\n"
+#~ "に動作しなくなるかもしれません。これらのオプションは、他の\n"
+#~ "端末での動作を前提とする一部のアプリケーションや OS での\n"
+#~ "問題を解決するために存在します。"
+
+#~ msgid ""
+#~ "This option controls whether the terminal will scroll down automatically "
+#~ "whenever new output is generated by the commands running inside the "
 #~ "terminal."
 #~ msgstr ""
-#~ "ターミナルの背景色として、<guilabel>配色</guilabel>で指定される背景色を使"
-#~ "用する場合、このオプションを選択してください。"
-
-#~ msgid "Background image"
-#~ msgstr "画像を使用する"
+#~ "ターミナル内で実行するコマンドによって新しい出力が表示された時、いつでも自"
+#~ "動的に下へスクロールするかどうかを選択します。"
 
 #~ msgid ""
-#~ "Select this option to use an image file as the background for the "
-#~ "terminal. Use the <guilabel>Image file</guilabel> entry box to specify "
-#~ "the location and name of the image file. Alternatively, click on the "
-#~ "button besides the entry box to search for and select the image file."
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
 #~ msgstr ""
-#~ "ターミナルの背景に画像を使用する場合はこのオプションを選択してください。画"
-#~ "像の場所や名前を <guilabel>「ファイル」</guilabel> エントリーボックスで設"
-#~ "定します。"
+#~ "新しいタブやウィンドウが開かれる時に設定される環境変数 $TERM の値を指定し"
+#~ "ます。一部のアプリケーションで色の表示に問題があるなら、ここに xterm-"
+#~ "color を指定してみてください。"
 
-#~ msgid ""
-#~ "Use the <guilabel>Style</guilabel> option to control the appearance of "
-#~ "the background image. @PACKAGE_NAME@ supports tiling, centering, scaling "
-#~ "and stretching background images."
-#~ msgstr ""
-#~ "<guilabel>「スタイル」</guilabel> オプションを使用して背景画像の表示方法を"
-#~ "指定します。@PACKAGE_NAME@ は背景画像の、タイル状、中央揃え、拡大縮小、お"
-#~ "よび伸長表示をサポートします。"
+#~ msgid "Tiled"
+#~ msgstr "タイル状"
+
+#~ msgid "Title"
+#~ msgstr "タイトル"
+
+#~ msgid "Transpare_ncy:"
+#~ msgstr "透明度(_N):"
 
 #~ msgid "Transparent background"
 #~ msgstr "透明にする"
 
-#~ msgid "Select this option to use a transparent background for the terminal."
-#~ msgstr ""
-#~ "ターミナルの背景を (擬似的に) 透明にする場合はこのオプションを選択します。"
+#~ msgid "Use _default color"
+#~ msgstr "デフォルトの色を使用する(_D)"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "テキスト選択領域の背景色に指定色を使用します。"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "指定色を使用する(_U):"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "テキスト選択領域の背景色にデフォルトの色を使用します。"
+
+#~ msgid "_Appearance"
+#~ msgstr "外観(_A)"
+
+#~ msgid "_Background color:"
+#~ msgstr "背景色(_B):"
+
+#~ msgid "_Backspace key generates:"
+#~ msgstr "Backspace キーの生成(_B):"
+
+#~ msgid "_Colors"
+#~ msgstr "配色(_C)"
+
+#~ msgid "_Delete key generates:"
+#~ msgstr "Delete キーの生成(_D):"
+
+#~ msgid "_Dynamically-set title:"
+#~ msgstr "自動的に付くタイトル(_D):"
+
+#~ msgid "_File:"
+#~ msgstr "ファイル(_F):"
+
+#~ msgid "_General"
+#~ msgstr "一般(_G)"
+
+#~ msgid "_Initial title:"
+#~ msgstr "最初のタイトル(_I):"
+
+#~ msgid "_Reset compatibility options to defaults"
+#~ msgstr "互換オプションをデフォルトにリセットする(_R)"
+
+#~ msgid "_Run command as login shell"
+#~ msgstr "ログインシェルとしてコマンドを実行する(_R)"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "ショートカット(_S)"
+
+#~ msgid "_Text color:"
+#~ msgstr "文字の色(_T):"
+
+#~ msgid "_Update utmp/wtmp records when command is launched"
+#~ msgstr "コマンドが実行される時に utmp/wtmp の記録を更新する(_U)"
+
+#~ msgid "seconds"
+#~ msgstr "秒"
+
+#~ msgid "<b>Title:</b>"
+#~ msgstr "<b>タイトル:</b>"
+
+#~ msgid "Usage: Terminal [OPTION...]"
+#~ msgstr "使用法: Terminal [オプション...]"
+
+#~ msgid "<b>Title</b>"
+#~ msgstr "<b>タイトル</b>"
 
 #~ msgid ""
-#~ "If you have selected <guilabel>Background image</guilabel> or "
-#~ "<guilabel>Transparent background</guilabel>, you can use the slider "
-#~ "<guilabel>Shade transparent or image background</guilabel> to shade or "
-#~ "dim the background of the terminal."
+#~ "The command running inside the terminal may dynamically set a new title."
 #~ msgstr ""
-#~ "<guilabel>「画像を使用する」</guilabel> または <guilabel>「透明にする」</"
-#~ "guilabel> を選択している場合、<guilabel>「透明度」</guilabel> スライダを利"
-#~ "用してターミナルの背景画像の明るさや透明度が調整できます。"
-
-#~ msgid "Display menubar in new windows"
-#~ msgstr "メニューバーを表示する"
-
-#~ msgid ""
-#~ "Select this option to show the menubar on new terminal windows by default."
-#~ msgstr ""
-#~ "新しいターミナルウィンドウにデフォルトでメニューバーを表示する場合、このオ"
-#~ "プションを選択します。"
-
-#~ msgid "Display toolbars in new windows"
-#~ msgstr "ツールバーを表示する"
-
-#~ msgid ""
-#~ "Select this option to show toolbars on new terminal windows by default."
-#~ msgstr ""
-#~ "新しいターミナルウィンドウにデフォルトでツールバーを表示する場合、このオプ"
-#~ "ションを選択します。"
-
-#~ msgid "Display borders around new windows"
-#~ msgstr "ウィンドウ枠を表示する"
-
-#~ msgid ""
-#~ "Select this option to show window decorations on new terminal windows by "
-#~ "default."
-#~ msgstr ""
-#~ "新しいターミナルウィンドウにデフォルトでウィンドウ枠を表示する場合、このオ"
-#~ "プションを選択します。"
-
-#~ msgid "Colors"
-#~ msgstr "配色"
-
-#~ msgid "Color preferences"
-#~ msgstr "配色の設定"
-
-#~ msgid "Foreground and Background"
-#~ msgstr "文字色と背景色"
-
-#~ msgid ""
-#~ "The two buttons labelled with <guilabel>Text and cursor color</guilabel> "
-#~ "allow to select the color @PACKAGE_NAME@ uses to draw normal text and the "
-#~ "color for the text cursor. An application running inside the terminal can "
-#~ "also request a different color chosen from the palette below to draw text."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ が通常の文字とカーソルを描画するのに使う色は <guilabel>文字"
-#~ "の色</guilabel> および <guilabel>カーソルの色</guilabel> のボタンで設定し"
-#~ "ます。ターミナル内で実行するアプリケーションが利用する色を、その下にあるパ"
-#~ "レットから別の色に変更することもできます。"
-
-#~ msgid ""
-#~ "Click on the <guilabel>Background color</guilabel> button to choose the "
-#~ "default background for terminal windows. This color is also used in "
-#~ "background tinting when <guilabel>Transparent background</guilabel> or "
-#~ "<guilabel>Background image</guilabel> is selected."
-#~ msgstr ""
-#~ "ターミナルウィンドウのデフォルトの背景色を選択するには <guilabel>「背景"
-#~ "色」</guilabel> ボタンをクリックします。この色は背景に <guilabel>「透明に"
-#~ "する」</guilabel> あるいは <guilabel>「画像を使用する」</guilabel> が選択"
-#~ "されている時の配合色としても用いられます。"
-
-#~ msgid ""
-#~ "Select the background color to use when selecting text in a terminal "
-#~ "window. You can either specify a custom color or stick to the default "
-#~ "color."
-#~ msgstr ""
-#~ "ターミナルウィンドウでテキストを選択する時に使用する背景色を選択します。色"
-#~ "を指定することもできますし、そのままデフォルトで決められているものを使用す"
-#~ "ることもできます。"
-
-#~ msgid ""
-#~ "The terminal provides the application running inside with a palette of 16 "
-#~ "colors. You can customize these colors using the 16 color buttons."
-#~ msgstr ""
-#~ "ターミナル内では 16 色のパレットを使ってアプリケーションを動作させることが"
-#~ "できます。この 16 色のボタンをクリックすると、それぞれの色を変更できます。"
-
-#~ msgid "Shortcuts"
-#~ msgstr "ショートカット"
-
-#~ msgid "Shortcut preferences"
-#~ msgstr "ショートカットの設定"
-
-#~ msgid ""
-#~ "The <guilabel>Shortcut keys</guilabel> section of the dialog lists the "
-#~ "shortcut keys that are defined for each menu item. The shortcut keys "
-#~ "enable you to use the keyboard to choose a menu item rather than use the "
-#~ "mouse. A shortcut key can be any non-modifier key or any combination of a "
-#~ "non-modifier key and several modifier keys, where modifier keys are "
-#~ "<keycap>Alt</keycap>, <keycap>Ctrl</keycap> and the like."
-#~ msgstr ""
-#~ "ダイアログの<guilabel>ショートカットキー</guilabel> セクションには各メ"
-#~ "ニューアイテムに対して定義されているショートカットキーのリストがあります。"
-#~ "これらのショートカットキーを使用することで、マウスを利用することなくメ"
-#~ "ニューアイテムを選択できます。ショートカットキーには、非修飾キーのいずれ"
-#~ "か、またはいくつかの修飾キーと非修飾キーの組み合わせたものが指定できます。"
-#~ "修飾キーには <keycap>Alt</keycap>、<keycap>Ctrl</keycap> などがあります。"
-
-#~ msgid ""
-#~ "To change a shortcut key for a menu item, double click the item in the "
-#~ "list and press the key combination you want to set. To disable a shortcut "
-#~ "for a specific menu item, double click the menu item in the list and "
-#~ "click the button <guilabel>Clear</guilabel>."
-#~ msgstr ""
-#~ "メニューアイテムのショートカットキーを変更するには、リストのアイテムをダブ"
-#~ "ルクリックして設定したいキーの組み合せを押してください。メニューアイテムの"
-#~ "ショートカットキーを無効にするには、リスト中のアイテムをダブルクリックし"
-#~ "て <guilabel>「クリア」</guilabel> ボタンをクリックしてください。"
-
-#~ msgid "Disable all menu access keys (such as Alt+f)"
-#~ msgstr "メニューへのアクセスキー (例えば Alt+f) を全て無効にする"
-
-#~ msgid ""
-#~ "Select this option to disable the access keys that are defined to enable "
-#~ "you to use keyboard instead of the mouse to select a menu item. Each "
-#~ "access key is identified by an underlined letter on a menu or dialog "
-#~ "option. In some cases, you must press the <keycap>Alt</keycap> key in "
-#~ "combination with the access key to perform the action."
-#~ msgstr ""
-#~ "アクセスキーを無効にする場合はこのオプションを選択してください。アクセス"
-#~ "キーとは、メニューアイテムの選択に際してマウスの代わりにキーボードで行える"
-#~ "よう定義されているものです。具体的には、メニューやダイアログオプションに、"
-#~ "括弧で括られた下線付きのアルファベット文字で表示されています。いくつかの"
-#~ "ケースでは、所与の動作を行うために、このアクセスキーを <keycap>Alt</"
-#~ "keycap> キーと組み合わせて押す必要があります。"
-
-#~ msgid "Disable menu shortcut key (F10 by default)"
-#~ msgstr "メニューショートカットキー (デフォルトは F10) を無効にする"
-
-#~ msgid ""
-#~ "Select this option to disable the shortcut key that is defined to enable "
-#~ "you to access the @PACKAGE_NAME@ menus. The default shortcut key to "
-#~ "access the menus is <keycap>F10</keycap>."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ のメニューへアクセスできるよう定義されているショートカット"
-#~ "キーを無効にするには、このオプションを選択してください。デフォルトショート"
-#~ "カットキーは <keycap>F10</keycap> になっています。"
-
-#~ msgid "Advanced"
-#~ msgstr "上級者"
-
-#~ msgid "Advanced preferences"
-#~ msgstr "高度な設定"
-
-#~ msgid "Backspace key generates"
-#~ msgstr "Backspace キーの生成"
-
-#~ msgid ""
-#~ "Use the drop-down list to select the function that you want the "
-#~ "<keycap>Backspace</keycap> key to perform."
-#~ msgstr ""
-#~ "実行させたい <keycap>Backspace</keycap> キーの機能を選択するにはこのドロッ"
-#~ "プダウンリストを使用します。"
-
-#~ msgid "Delete key generates"
-#~ msgstr "Delete キーの生成"
-
-#~ msgid ""
-#~ "Use the drop-down list to select the function that you want the "
-#~ "<keycap>Delete</keycap> key to perform."
-#~ msgstr ""
-#~ "実行させたい <keycap>Delete</keycap> キーの機能を選択するにはこのドロップ"
-#~ "ダウンリストを使用します。"
-
-#~ msgid "$TERM setting"
-#~ msgstr "$TERM の設定"
-
-#~ msgid ""
-#~ "This specifies the value the <varname>$TERM</varname> environment "
-#~ "variable is set to, when a new terminal tab or terminal window is opened. "
-#~ "The default should be ok for most systems. If you have problems with "
-#~ "colors in some applications or if you think that a certain application "
-#~ "behaves oddly, try <userinput>xterm-color</userinput> here. If you have "
-#~ "problems with ncurses 5.6 or later you could also try <userinput>xfce</"
-#~ "userinput>."
-#~ msgstr ""
-#~ "新しいターミナルタブまたはターミナルウィンドウが開かれる時に、環境変数 "
-#~ "<varname>$TERM</varname> にセットされる値を指定します。ほとんどのシステム"
-#~ "はこのデフォルト値で大丈夫なはずです。一部アプリケーションで色に関する問題"
-#~ "が発生したり、特定のアプリケーションがおかしな挙動をしている場合、ここに "
-#~ "<userinput>xterm-color</userinput> をセットしてみてください。ncurses 5.6 "
-#~ "以降を使用していて問題がある場合は、<userinput>xfce</userinput> を指定して"
-#~ "みてください。"
-
-#~ msgid "Reset compatibility options to defaults"
-#~ msgstr "互換オプションをデフォルトにリセットする"
-
-#~ msgid ""
-#~ "Click this button to reset the options on the <guilabel>Compatibility</"
-#~ "guilabel> tabbed section to its defaults settings."
-#~ msgstr ""
-#~ "<guilabel>互換性</guilabel> に関する各オプションを、それぞれのデフォルト値"
-#~ "にリセットする場合は、このボタンをクリックしてください。"
-
-#~ msgid "Double click"
-#~ msgstr "ダブルクリック"
-
-#~ msgid ""
-#~ "Use this text box to specify characters or groups of characters that "
-#~ "@PACKAGE_NAME@ considers to be words when you select text by word."
-#~ msgstr ""
-#~ "テキストを単語単位で選択する時に @PACKAGE_NAME@ が単語の一部として見なす文"
-#~ "字や文字のグループの指定には、このテキストボックスを使用します。"
-
-#~ msgid "Advanced topics"
-#~ msgstr "上級者向けの話題"
-
-#~ msgid "Command line Options"
-#~ msgstr "コマンドラインオプション"
-
-#~ msgid ""
-#~ "When @PACKAGE_NAME@ is started from the command line or from a panel "
-#~ "launcher, several options can be specified to modify its behavior."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ をコマンドラインまたはパネルランチャから起動する場合、その"
-#~ "振る舞いを変えるためのいくつかのオプションが指定できます。"
-
-#~ msgid ""
-#~ "List the various command line options supported by @PACKAGE_NAME@ and exit"
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ がサポートする様々なコマンドラインオプションをリストして終"
-#~ "了します"
-
-#~ msgid "--version"
-#~ msgstr "--version"
-
-#~ msgid "--disable-server"
-#~ msgstr "--disable-server"
-
-#~ msgid "Do not register with the D-BUS session message bus"
-#~ msgstr "D-BUS セッションのメッセージバスに登録しません"
-
-#~ msgid "--execute"
-#~ msgstr "--execute"
-
-#~ msgid "..."
-#~ msgstr "..."
-
-#~ msgid "--command"
-#~ msgstr "--command"
-
-#~ msgid "command"
-#~ msgstr "コマンド"
-
-#~ msgid "Execute <parameter>command</parameter> inside the terminal"
-#~ msgstr "ターミナル内で<parameter>コマンド</parameter>を実行します"
-
-#~ msgid "--working-directory"
-#~ msgstr "--working-directory"
-
-#~ msgid "directory"
-#~ msgstr "フォルダ"
-
-#~ msgid ""
-#~ "Set <parameter>directory</parameter> as the working directory for the "
-#~ "terminal"
-#~ msgstr ""
-#~ "ターミナルの作業フォルダにする<parameter>フォルダ</parameter>を指定します"
-
-#~ msgid "--title"
-#~ msgstr "--title"
-
-#~ msgid ""
-#~ "Set <parameter>title</parameter> as the initial window title for the "
-#~ "terminal"
-#~ msgstr ""
-#~ "ターミナルの最初のウィンドウのタイトルとして<parameter>タイトル</"
-#~ "parameter>を付けます"
-
-#~ msgid "--hold"
-#~ msgstr "--hold"
-
-#~ msgid ""
-#~ "Causes the terminal to be kept around after the child command has "
-#~ "terminated"
-#~ msgstr "子コマンドが終了してもターミナルをそのままにしておきます"
-
-#~ msgid "--display"
-#~ msgstr "--display"
-
-#~ msgid "display"
-#~ msgstr "ディスプレイ"
-
-#~ msgid ""
-#~ "Open terminal window on the X screen specified by <parameter>display</"
-#~ "parameter>."
-#~ msgstr ""
-#~ "<parameter>ディスプレイ</parameter>に指定された X スクリーンでターミナルを"
-#~ "開きます。"
-
-#~ msgid "--geometry"
-#~ msgstr "--geometry"
-
-#~ msgid "geometry"
-#~ msgstr "ジオメトリ"
-
-#~ msgid ""
-#~ "Sets the geometry of the last-specified window to <parameter>geometry</"
-#~ "parameter>. Read <userinput><command>man</command> <option>X</option></"
-#~ "userinput> for more information on how to specify window geometries."
-#~ msgstr ""
-#~ "最後に指定されたウィンドウのジオメトリを<parameter>ジオメトリ</parameter>"
-#~ "に指定します。ジオメトリの指定方法についての詳しい情報は "
-#~ "<userinput><command>man</command> <option>X</option></userinput> をご覧下"
-#~ "さい。"
-
-#~ msgid "--role"
-#~ msgstr "--role"
-
-#~ msgid "role"
-#~ msgstr "ロール"
-
-#~ msgid ""
-#~ "Sets the window role of the last-specified window to <parameter>role</"
-#~ "parameter>. Applies to only one window and can be specified once for each "
-#~ "window you create from the command line. It is mostly used for session "
-#~ "management inside @PACKAGE_NAME@."
-#~ msgstr ""
-#~ "最後に指定されたウィンドウのウィンドウロールを<parameter>ロール</"
-#~ "parameter>に指定します。一つのウィンドウのみに適用され、コマンドラインから"
-#~ "立ち上げるそれぞれのウィンドウに対して一度ずつ指定できます。大半は "
-#~ "@PACKAGE_NAME@ 内でのセッション管理に使用されます。"
-
-#~ msgid "--startup-id"
-#~ msgstr "--startup-id"
-
-#~ msgid "id"
-#~ msgstr "ID"
-
-#~ msgid ""
-#~ "Specifies the startup notification id for the last-specified window. Used "
-#~ "internally to forward the startup notification id when using the D-BUS "
-#~ "service."
-#~ msgstr ""
-#~ "最後に指定されたウィンドウに起動通知 ID を指定します。D-BUS サービスを使用"
-#~ "している時はこの起動通知 ID を転送するために内部で利用されます。"
-
-#~ msgid "--maximize"
-#~ msgstr "--maximize"
-
-#~ msgid ""
-#~ "Set the last-specified window into maximized mode; applies to only one "
-#~ "window; can be specified once for each window you create from the command "
-#~ "line."
-#~ msgstr ""
-#~ "最後に指定したウィンドウを最大化します。一つのウィンドウのみに適用されま"
-#~ "す。コマンドラインから起動するそれぞれのウィンドウに対して一度ずつ指定でき"
-#~ "ます。"
-
-#~ msgid ""
-#~ "Turn on the menubar for the last-specified window. Can be specified once "
-#~ "for each window you create from the command line."
-#~ msgstr ""
-#~ "最後に指定したウィンドウでメニューバーを表示します。一つのウィンドウのみに"
-#~ "適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
-#~ "ずつ指定できます。"
-
-#~ msgid "--hide-menubar"
-#~ msgstr "--hide-menubar"
-
-#~ msgid ""
-#~ "Turn off the menubar for the last-specified window. Can be specified once "
-#~ "for each window you create from the command line."
-#~ msgstr ""
-#~ "最後に指定したウィンドウでメニューバーを非表示にします。一つのウィンドウの"
-#~ "みに適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して"
-#~ "一度ずつ指定できます。"
-
-#~ msgid "--hide-borders"
-#~ msgstr "--hide-borders"
-
-#~ msgid "--hide-toolbars"
-#~ msgstr "--hide-toolbars"
-
-#~ msgid ""
-#~ "Turn off the toolbars for the last-specified window. Applies to only one "
-#~ "window. Can be specified once for each window you create from the command "
-#~ "line."
-#~ msgstr ""
-#~ "最後に指定されたウィンドウのツールバーを非表示にします。一つのウィンドウの"
-#~ "みに適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して"
-#~ "一度ずつ指定できます。"
-
-#~ msgid "--tab"
-#~ msgstr "--tab"
-
-#~ msgid ""
-#~ "Open a new tab in the last-specified window. More than one of these "
-#~ "options can be provided."
-#~ msgstr ""
-#~ "最後に指定されたウィンドウで新しい一つのタブを開きます。このオプションは他"
-#~ "と一緒に使用できます。"
-
-#~ msgid "--window"
-#~ msgstr "--window"
-
-#~ msgid ""
-#~ "Open a new window containing one tab. More than one of these options can "
-#~ "be provided."
-#~ msgstr ""
-#~ "一つのタブを含む一つのウィンドウを開きます。このオプションは他と一緒に使用"
-#~ "できます。"
-
-#~ msgid ""
-#~ "For example, say you want to open a new terminal window with two tabs in "
-#~ "it, where the first tab should run <command>mutt</command> and the second "
-#~ "tab should run <command>mc</command>, and the window should have 80 "
-#~ "columns and 40 rows, then you would use the following command to start "
-#~ "Terminal:"
-#~ msgstr ""
-#~ "例えば二つのタブがある新しいターミナルウィンドウを開きたいとしましょう、最"
-#~ "初のタブでは <command>mutt</command> を次のタブでは <command>mc</command> "
-#~ "を実行させて、ウィンドウのサイズは横幅 80、高さ 40 にするとします。その場"
-#~ "合は、以下のコマンドで Terminal を起動させます:"
-
-#~ msgid "Terminal --geometry 80x40 --command mutt --tab --command mc"
-#~ msgstr "Terminal --geometry 80x40 --command mutt --tab --command mc"
-
-#~ msgid "Files and Environment Variables"
-#~ msgstr "ファイルおよび環境変数"
-
-#~ msgid ""
-#~ "Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
-#~ "freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its "
-#~ "data and configuration files. This means that file locations will be "
-#~ "specified as a path relative to the directories described in the "
-#~ "specification."
-#~ msgstr ""
-#~ "Terminal はそのデータおよび設定ファイルの場所を探す際に、<ulink url="
-#~ "\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> で策定さ"
-#~ "れている基本フォルダの仕様 (Basedir Specification) に従います。従って、各"
-#~ "ファイルの位置は、この仕様に記述されているフォルダの相対パスとして指定され"
-#~ "ます。"
-
-#~ msgid "${XDG_CONFIG_HOME}"
-#~ msgstr "${XDG_CONFIG_HOME}"
-
-#~ msgid ""
-#~ "The first base directory to look for configuration files. By default this "
-#~ "is set to <filename role=\"directory\">~/.config/</filename>."
-#~ msgstr ""
-#~ "設定ファイルを見に行く最初の基本フォルダです。デフォルトでは <filename "
-#~ "role=\"directory\">~/.config/</filename> になっています。"
-
-#~ msgid "${XDG_CONFIG_DIRS}"
-#~ msgstr "${XDG_CONFIG_DIRS}"
-
-#~ msgid ""
-#~ "A colon separated list of base directories that contain configuration "
-#~ "data. By default the application will look in <filename role=\"directory"
-#~ "\">${sysconfdir}/xdg/</filename>. The value of <varname>${sysconfdir}</"
-#~ "varname> depends on how the program was build and will often be <filename "
-#~ "role=\"directory\">/etc/</filename> for binary packages."
-#~ msgstr ""
-#~ "設定データを含む基本フォルダのリストで、各フォルダはコロンで区切られていま"
-#~ "す。デフォルトではアプリケーションは <filename role=\"directory\">"
-#~ "${sysconfdir}/xdg/</filename> を参照します。<varname>${sysconfdir}</"
-#~ "varname> の値はプログラムがどのようにビルドされたかによって変わります。バ"
-#~ "イナリ配布されるパッケージでは <filename role=\"directory\">/etc/</"
-#~ "filename> になることが多いようです。"
-
-#~ msgid "${XDG_DATA_HOME}"
-#~ msgstr "${XDG_DATA_HOME}"
-
-#~ msgid ""
-#~ "The root for all user-specific data files. By default this is set to "
-#~ "<filename role=\"directory\">~/.local/share/</filename>."
-#~ msgstr ""
-#~ "ユーザー個別のデータファイルすべてのルートフォルダです。デフォルトでは "
-#~ "<filename role=\"directory\">~/.local/share/</filename> になっています。"
-
-#~ msgid "${XDG_DATA_DIRS}"
-#~ msgstr "${XDG_DATA_DIRS}"
-
-#~ msgid ""
-#~ "A set of preference ordered base directories relative to which data files "
-#~ "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
-#~ "base directory. The directories should be separated with a colon."
-#~ msgstr ""
-#~ "基本フォルダ <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを"
-#~ "探す基本フォルダを並べていきます。フォルダはコロンで区切る必要があります。"
-
-#~ msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-#~ msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-
-#~ msgid ""
-#~ "This is the location of the configuration file that includes the "
-#~ "preferences which control the look and feel of @PACKAGE_NAME@."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ の見た目を管理する環境設定が含まれる設定ファイルの場所で"
+#~ "ターミナルで実行するコマンドが、新しいタイトルを自動的に付ける場合がありま"
 #~ "す。"
 
-#~ msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-#~ msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+#~ msgid "<b>Font</b>"
+#~ msgstr "<b>フォント</b>"
 
-#~ msgid ""
-#~ "This file includes the user interface definition for the toolbars. If you "
-#~ "customize the toolbars using the graphical toolbars editor, "
-#~ "@PACKAGE_NAME@ will store the new toolbars layout in the file <filename>"
-#~ "${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>."
-#~ msgstr ""
-#~ "このファイルにはツールバーのインターフェイス定義が記述されています。ツール"
-#~ "バーエディタを使用してツールバーをカスタマイズした場合、@PACKAGE_NAME@ は"
-#~ "ファイル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</"
-#~ "filename> に新しいツールバーのレイアウト情報を保存します。"
+#~ msgid "<b>Background</b>"
+#~ msgstr "<b>背景</b>"
 
-#~ msgid "Hidden options"
-#~ msgstr "隠しオプション"
+#~ msgid "Shade transparent or image background:"
+#~ msgstr "背景画像のシェードまたは背景の不透明度:"
 
-#~ msgid ""
-#~ "@PACKAGE_NAME@ offers a few hidden options to allow powerusers to control "
-#~ "various advanced settings and to reduce the number of options in the user "
-#~ "interface. To set any of these options, you will have to open the file "
-#~ "<filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> in your "
-#~ "favorite text editor and edit the section <varname>[Configuration]</"
-#~ "varname>; simply create the file if it does not already exist. For "
-#~ "example, your <filename>terminalrc</filename> could look like"
-#~ msgstr ""
-#~ "パワーユーザが高度な設定を行えるようにしたり、ユーザインターフェイスのオプ"
-#~ "ション数を減らすために、@PACKAGE_NAME@ には少しですが隠しオプションがあり"
-#~ "ます。これらのオプションの設定は、テキストエディタでファイル <filename>"
-#~ "${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> を開いて <varname>"
-#~ "[Configuration]</varname> 以下の箇所を編集する必要があります (もし存在しな"
-#~ "ければ作成してください)。例えば、<filename>terminalrc</filename> は以下よ"
-#~ "うになっています。"
+#~ msgid "<small><i>None</i></small>"
+#~ msgstr "<small><i>無し</i></small>"
 
-#~ msgid ""
-#~ "\n"
-#~ "[Configuration]\n"
-#~ "MiscAlwaysShowTabs=TRUE\n"
-#~ "MiscBell=TRUE\n"
-#~ "MiscConfirmClose=FALSE\n"
-#~ "MiscCursorBlinks=TRUE\n"
-#~ "MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK\n"
-#~ "MiscCycleTabs=FALSE\n"
-#~ "MiscInheritGeometry=TRUE\n"
-#~ "MiscMouseAutohide=FALSE\n"
-#~ "MiscTabCloseButtons=TRUE\n"
-#~ "MiscTabCloseMiddleClick=TRUE\n"
-#~ "MiscTabPosition=GTK_POS_TOP\n"
-#~ "MiscHighlightUrls=TRUE"
-#~ msgstr ""
-#~ "\n"
-#~ "[Configuration]\n"
-#~ "MiscAlwaysShowTabs=TRUE\n"
-#~ "MiscBell=TRUE\n"
-#~ "MiscConfirmClose=FALSE\n"
-#~ "MiscCursorBlinks=TRUE\n"
-#~ "MiscCursorShape=TERMINAL_CURSOR_SHAPE_BLOCK\n"
-#~ "MiscCycleTabs=FALSE\n"
-#~ "MiscInheritGeometry=TRUE\n"
-#~ "MiscMouseAutohide=FALSE\n"
-#~ "MiscTabCloseButtons=TRUE\n"
-#~ "MiscTabCloseMiddleClick=TRUE\n"
-#~ "MiscTabPosition=GTK_POS_TOP\n"
-#~ "MiscHighlightUrls=TRUE"
+#~ msgid "<small><i>Maximum</i></small>"
+#~ msgstr "<small><i>最大</i></small>"
 
-#~ msgid ""
-#~ "plus all the options that are controlled through the preferences dialog."
-#~ msgstr "これに設定ダイアログで設定されたオプションが加わります。"
+#~ msgid "<b>Foreground and Background</b>"
+#~ msgstr "<b>文字と背景</b>"
 
-#~ msgid "MiscAlwaysShowTabs"
-#~ msgstr "MiscAlwaysShowTabs"
+#~ msgid "<b>Tab activity</b>"
+#~ msgstr "<b>動作中タブ</b>"
 
-#~ msgid ""
-#~ "If <literal>TRUE</literal> the tab headers will always be displayed even "
-#~ "if only a single terminal tab is open. This option is useful if you do "
-#~ "not want the terminal window to resize when you open a second tab. It is "
-#~ "disabled by default."
-#~ msgstr ""
-#~ "<literal>TRUE</literal> にすると、ターミナルタブが一つだけ開いている場合で"
-#~ "も、常にタブヘッダが表示されます。二つ目のタブを開いた時にターミナルウィン"
-#~ "ドウの大きさをいちいち変更したくない場合にこのオプションが役立ちます。デ"
-#~ "フォルトは <literal>FALSE</literal> になります。"
-
-#~ msgid "MiscBell"
-#~ msgstr "MiscBell"
-
-#~ msgid ""
-#~ "Enables (<varname>MiscBell=TRUE</varname>) or disables "
-#~ "(<varname>MiscBell=FALSE</varname>) the audible terminal bell. It is "
-#~ "disabled by default."
-#~ msgstr ""
-#~ "ターミナルのベルを鳴らす (<varname>MiscBell=TRUE</varname>) か鳴らさない "
-#~ "(<varname>MiscBell=FALSE</varname>) かを設定します。デフォルトは "
-#~ "<literal>FALSE</literal> になります。"
-
-#~ msgid "MiscConfirmClose"
-#~ msgstr "MiscConfirmClose"
-
-#~ msgid ""
-#~ "Controls whether @PACKAGE_NAME@ popups a confirmation dialog when the "
-#~ "user tries to close a terminal window with multiple tabs in it. Can be "
-#~ "either <literal>TRUE</literal> (the default) or <literal>FALSE</literal>."
-#~ msgstr ""
-#~ "複数のタブがあるターミナルウィンドウを閉じようとした時に @PACKAGE_NAME@ が"
-#~ "確認ダイアログを出すかどうかを設定します。<literal>TRUE</literal> を指定す"
-#~ "ると確認ダイアログを表示し、<literal>FALSE</literal> で表示しません。デ"
-#~ "フォルトは <literal>TRUE</literal> になります。"
-
-#~ msgid "MiscCursorBlinks"
-#~ msgstr "MiscCursorBlinks"
-
-#~ msgid ""
-#~ "Enable this option to display a cursor that blinks. Can be either "
-#~ "<literal>TRUE</literal> or <literal>FALSE</literal> (the default)."
-#~ msgstr ""
-#~ "<literal>TRUE</literal> にするとカーソルが点滅します。<literal>FALSE</"
-#~ "literal> にすると点滅しません。デフォルトは <literal>FALSE</literal> にな"
-#~ "ります。"
-
-#~ msgid "MiscCursorShape"
-#~ msgstr "MiscCursorShape"
-
-#~ msgid ""
-#~ "Specifies the shape of the cursor in the terminal. This can be either "
-#~ "<literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default), "
-#~ "<literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> or "
-#~ "<literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is only "
-#~ "available when you compile against VTE 0.19.1 or newer."
-#~ msgstr ""
-#~ "ターミナル上でのカーソルの形状を設定します。"
-#~ "<literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (デフォルト)、"
-#~ "<literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal>、または "
-#~ "<literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal> が指定できます。このオ"
-#~ "プションは VTE 0.19.1 以降でコンパイルした場合のみ有効になります。"
-
-#~ msgid "MiscCycleTabs"
-#~ msgstr "MiscCycleTabs"
-
-#~ msgid ""
-#~ "This option controls whether you can circulate through terminal tabs. "
-#~ "That is, whether you are able to go from the last tab to the first tab "
-#~ "using the <guimenuitem>Next Tab</guimenuitem> button from the "
-#~ "<guimenu>Go</guimenu> menu (or the associated keyboard shortcut), and "
-#~ "from the first tab to the last tab using the <guimenuitem>Previous Tab</"
-#~ "guimenuitem> button from the <guimenu>Go</guimenu> menu. The option can "
-#~ "be either <literal>TRUE</literal> (the default) or <literal>FALSE</"
-#~ "literal>."
-#~ msgstr ""
-#~ "ターミナルタブの切り換えを循環するかどうかを設定します。<literal>TRUE</"
-#~ "literal> を指定するとメニュー <guimenu>「移動」</guimenu> (またはそれに割"
-#~ "り当てられているキーボードショートカット) から <guimenuitem>「次のタブ」</"
-#~ "guimenuitem> ボタンを使用して、右端のタブから左端のタブに移動したり、同じ"
-#~ "く <guimenu>「移動」</guimenu> メニューから <guimenuitem>「前のタブ」</"
-#~ "guimenuitem> を使って左端から右端へ移れるようになります。このオプションは "
-#~ "<literal>TRUE</literal> (デフォルト) あるいは <literal>FALSE</literal> の"
-#~ "どちらかになります。"
-
-#~ msgid "MiscDefaultGeometry"
-#~ msgstr "MiscDefaultGeometry"
-
-#~ msgid ""
-#~ "The default geometry for new Terminal windows if no <option>--geometry</"
-#~ "option> option is specified on the command line (defaults to "
-#~ "<literal>80x24</literal>)."
-#~ msgstr ""
-#~ "コマンドラインで <option>--geometry</option> が指定されていない場合、新し"
-#~ "い Terminal ウィンドウを開く時にこのジオメトリ (アクティブタブの行数と桁"
-#~ "数。デフォルトは <literal>80x24</literal>) が使用されます。"
-
-#~ msgid "MiscInheritGeometry"
-#~ msgstr "MiscInheritGeometry"
-
-#~ msgid ""
-#~ "This setting controls whether new windows will inherit the geometry "
-#~ "(width and height of the active tab) from its parent window (the window "
-#~ "from which the new window was opened). Can be either <literal>TRUE</"
-#~ "literal> or <literal>FALSE</literal> (the default)."
-#~ msgstr ""
-#~ "新しいウィンドウがその親ウィンドウのジオメトリを引き継ぐかどうかを設定しま"
-#~ "す。<literal>TRUE</literal> を指定すると引き継ぎ、<literal>FALSE</"
-#~ "literal> で引き継ぎません。デフォルトは <literal>FALSE</literal> になりま"
-#~ "す。"
-
-#~ msgid "MiscMouseAutohide"
-#~ msgstr "MiscMouseAutohide"
-
-#~ msgid ""
-#~ "This setting controls whether @PACKAGE_NAME@ will hide the mouse cursor "
-#~ "while you are typing in a terminal window. Can be either <literal>TRUE</"
-#~ "literal> or <literal>FALSE</literal> (the default)."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ が、ターミナルウィンドウでキー入力中にマウスポインタを非表"
-#~ "示にするかどうかを設定します。<literal>TRUE</literal> を指定すると非表示に"
-#~ "なり、<literal>FALSE</literal> で表示したままになります。デフォルトは "
-#~ "<literal>FALSE</literal> です。"
-
-#~ msgid "MiscTabCloseButtons"
-#~ msgstr "MiscTabCloseButtons"
-
-#~ msgid ""
-#~ "This setting controls whether @PACKAGE_NAME@ provides a close button with "
-#~ "the terminal tab title. Can be either <literal>TRUE</literal> (the "
-#~ "default) or <literal>FALSE</literal>."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ が、ターミナルタブのタイトルに「閉じる」ボタンも表示するか"
-#~ "どうかを設定します。<literal>TRUE</literal> を指定すると表示し、"
-#~ "<literal>FALSE</literal> で表示しません。デフォルトは <literal>TRUE</"
-#~ "literal> になります。"
-
-#~ msgid "MiscTabCloseMiddleClick"
-#~ msgstr "MiscTabCloseMiddleClick"
-
-#~ msgid ""
-#~ "This setting controls whether @PACKAGE_NAME@ will close a terminal tab "
-#~ "when the user middle-clicks the tab title. Can be either <literal>TRUE</"
-#~ "literal> (the default) or <literal>FALSE</literal>."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ が、タブタイトル上で中央クリックした時にターミナルタブを閉"
-#~ "じるかどうかを設定します。<literal>TRUE</literal> を指定すると閉じ、"
-#~ "<literal>FALSE</literal> で閉じません。デフォルトは <literal>TRUE</"
-#~ "literal> になります。"
-
-#~ msgid "MiscTabPosition"
-#~ msgstr "MiscTabPosition"
-
-#~ msgid ""
-#~ "Specifies the position where the tab headers should be displayed. This "
-#~ "can be either <literal>GTK_POS_TOP</literal> (the default), "
-#~ "<literal>GTK_POS_LEFT</literal>, <literal>GTK_POS_BOTTOM</literal> or "
-#~ "<literal>GTK_POS_RIGHT</literal>. If you specify <literal>GTK_POS_LEFT</"
-#~ "literal> or <literal>GTK_POS_RIGHT</literal> here, the tab header texts "
-#~ "will be displayed vertically instead of horizontally. It is highly "
-#~ "recommended to disable <varname>MiscTabCloseButtons</varname> for "
-#~ "<literal>GTK_POS_LEFT</literal> and <literal>GTK_POS_RIGHT</literal>."
-#~ msgstr ""
-#~ "どこにタブヘッダを表示するかを指定します。これは <literal>GTK_POS_TOP</"
-#~ "literal> (上部、デフォルト)、<literal>GTK_POS_LEFT</literal> (左側)、"
-#~ "<literal>GTK_POS_BOTTOM</literal> (下部) あるいは <literal>GTK_POS_RIGHT</"
-#~ "literal> (右側) のいずれかになります。<literal>GTK_POS_LEFT</literal> また"
-#~ "は <literal>GTK_POS_RIGHT</literal> を指定すると、タブヘッダは縦に表示され"
-#~ "ます。<literal>GTK_POS_LEFT</literal> または <literal>GTK_POS_RIGHT</"
-#~ "literal> 指定時には <varname>MiscTabCloseButtons</varname> を "
-#~ "<literal>FALSE</literal> にすることをおすすめします。"
-
-#~ msgid "MiscHighlightUrls"
-#~ msgstr "MiscHighlightUrls"
-
-#~ msgid ""
-#~ "This setting controls whether URLs - both hyperlinks and email addresses "
-#~ "- will be highlighted in the text displayed in a terminal window. If you "
-#~ "change this option to <literal>FALSE</literal>, URLs won't be highlighted "
-#~ "anymore and you will no longer be able to middle-click the URL to open it "
-#~ "in the preferred application."
-#~ msgstr ""
-#~ "ターミナルウィンドウ内で URL — ハイパーリンクおよび E-mail アドレス ― 文字"
-#~ "列の高輝度表示を制御します。このオプションを <literal>FALSE</literal> に指"
-#~ "定すると、URL は高輝度表示されず、URL を中央クリックしたときにお気に入りの"
-#~ "アプリケーションが呼び出されることはありません。"
-
-#~ msgid "Frequently asked questions"
-#~ msgstr "よく聞かれる質問"
-
-#~ msgid ""
-#~ "The intent of this section is to collect the quite numerous frequently "
-#~ "asked question that relate to working with @PACKAGE_NAME@, or even "
-#~ "terminal emulators in general. If you know of a question that's missing "
-#~ "from this page, please <ulink url=\"http://bugzilla.xfce.org/enter_bug."
-#~ "cgi?product=Terminal&amp;format=guided\">file a request</ulink>."
-#~ msgstr ""
-#~ "この章では @PACKAGE_NAME@ を (あるいはターミナルエミュレータ全般に関する事"
-#~ "であっても) 利用するにあたって、よく尋ねられる質問に対して回答しています。"
-#~ "このページにない質問がある場合は、<ulink url=\"http://bugzilla.xfce.org/"
-#~ "enter_bug.cgi?product=Terminal&amp;format=guided\">要望</ulink>を出して下"
-#~ "さい。"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ complains about <literal>Unable to start terminal server: "
-#~ "Unable to connect to D-BUS message daemon</literal>, what can I do?"
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ が <literal>ターミナルサーバを起動できません: D-BUS メッ"
-#~ "セージデーモンと接続できません</literal> 言ってきます。何をすればよいです"
-#~ "か?"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ tries to reduce the number of running instances by "
-#~ "establishing a D-BUS service that handles all terminal windows. The "
-#~ "message above tells you that @PACKAGE_NAME@ wasn't able to connect to the "
-#~ "D-BUS session message daemon and register a service. This is just a "
-#~ "warning, you can use the terminal without the D-BUS service feature as "
-#~ "well."
-#~ msgstr ""
-#~ "すべてのターミナルウィンドウを取り扱う D-BUS サービスを立ち上げる事によっ"
-#~ "て、@PACKAGE_NAME@ は実行インスタンスの数を減らすよう試みます。上のメッ"
-#~ "セージは @PACKAGE_NAME@ が D-BUS セッションメッセージのデーモンと接続でき"
-#~ "すに、サービスを登録できなかった事を伝えています。これは単なる警告メッセー"
-#~ "ジですので、D-BUS のサービス機能が無くても普通にターミナルを使用することが"
-#~ "できます。"
-
-#~ msgid ""
-#~ "To start the D-BUS session message daemon when you login to your X "
-#~ "session, either modify your xinitrc file and change the line "
-#~ "<literal>xfce4-session</literal> to <literal>dbus-launch xfce4-session</"
-#~ "literal> or use <literal>dbus-launch startxfce4</literal> to start Xfce "
-#~ "instead. If you don't use Xfce, please look at the documentation of your "
-#~ "desktop environment on how to enable the D-BUS session daemon."
-#~ msgstr ""
-#~ "X セッションにログインする時に D-BUS セッションメッセージのデーモンを起動"
-#~ "するには、xinitrc ファイルを編集して <literal>xfce4-session</literal> と"
-#~ "なっている行を <literal>dbus-launch xfce4-session</literal> に変更するか、"
-#~ "代わりに Xfce の起動に <literal>dbus-launch startxfce4</literal> を使用す"
-#~ "るかのどちらかを行ってください。Xfce を使用していないのでしたら、D-BUS "
-#~ "セッションデーモンを有効にする方法に関して、あなたのデスクトップ環境の文書"
-#~ "をご覧になってください。"
-
-#~ msgid ""
-#~ "<keycap>Home</keycap> and <keycap>End</keycap> keys don't work in "
-#~ "@PACKAGE_NAME@, what's wrong?"
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ で <keycap>Home</keycap> および <keycap>End</keycap> キーが"
-#~ "使えません。何が悪いんですか?"
-
-#~ msgid ""
-#~ "This problem is actually a bug in <ulink url=\"http://developer.gnome.org/"
-#~ "arch/gnome/widgets/vte.html\">vte</ulink>, the terminal widget used by "
-#~ "@PACKAGE_NAME@. A patch for vte that fixes the problem is available "
-#~ "<ulink url=\"http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap."
-#~ "patch\">here</ulink> (this patch was created with version 0.11.11 of vte, "
-#~ "it may not work with other versions). Thanks to Auke Kok for this patch."
-#~ msgstr ""
-#~ "この問題は、実際のところ @PACKAGE_NAME@ が使用するターミナルウィジェット "
-#~ "<ulink url=\"http://developer.gnome.org/arch/gnome/widgets/vte.html"
-#~ "\">vte</ulink> のバグです。問題を解決するパッチは <ulink url=\"http://"
-#~ "lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch\">ここ</ulink> に"
-#~ "あります (このパッチは vte のバージョン 0.11.11 に対して作成されたので、他"
-#~ "のバージョンではうまくいかないかもしれません)。パッチを作成した Auke Kok "
-#~ "氏に感謝します。"
-
-#~ msgid "Support"
-#~ msgstr "サポート"
-
-#~ msgid ""
-#~ "To report a bug or to make a suggestion regarding this application or "
-#~ "this manual, use the bug tracking system at <ulink url=\"http://bugzilla."
-#~ "xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided\">http://"
-#~ "bugzilla.xfce.org/</ulink>. Remember that useful bug reports are ones "
-#~ "that get bugs fixed, so a useful bug report has two qualities:"
-#~ msgstr ""
-#~ "このアプリケーションあるいは説明書に関するバグを報告したり、何か提案をする"
-#~ "場合は <ulink url=\"http://bugzilla.xfce.org/enter_bug.cgi?"
-#~ "product=Terminal&amp;format=guided\">http://bugzilla.xfce.org/</ulink> の"
-#~ "バグ追跡システムをご利用ください。意味のあるバグ報告こそがバグを修正するの"
-#~ "だ、という事を忘れないでください。ではどういったものが該当するかというと、"
-#~ "これには二つの特質があります:"
-
-#~ msgid ""
-#~ "<emphasis role=\"bold\">Reproducible.</emphasis> If the developer cannot "
-#~ "see the bug himself to prove that it exists, he will most probably not be "
-#~ "able to fix it at all. Every detail you can provide helps."
-#~ msgstr ""
-#~ "<emphasis role=\"bold\">再現可能であること。</emphasis> 開発者自身がバグの"
-#~ "存在を確認することができない場合は、それを修正するのはほぼ不可能に近くなり"
-#~ "ます。どんな細かいことでも役立ちますので、詳細を余さず伝えてください。"
-
-#~ msgid ""
-#~ "<emphasis role=\"bold\">Specific.</emphasis> The quicker the developer "
-#~ "can isolate the problem to a specific area, the more likely he will "
-#~ "expediently fix it."
-#~ msgstr ""
-#~ "<emphasis role=\"bold\">具体的であること。</emphasis> 開発者が問題を特定の"
-#~ "箇所により早く絞れる程、その修正措置を取りやすくなります。"
-
-#~ msgid ""
-#~ "In case you want to request a new feature, please make clear why you "
-#~ "consider it a worth addition for the application. It is more likely that "
-#~ "a new feature gets added if you provide good arguments for the feature. "
-#~ "It will increase the chance of addition even more if you provide a patch "
-#~ "that implements the requested feature, but make sure that you read the "
-#~ "file <ulink url=\"http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING"
-#~ "\">HACKING</ulink> - especially the section labeled <emphasis>Coding "
-#~ "Style</emphasis> - before you start hacking up the source."
-#~ msgstr ""
-#~ "新機能の追加を要望する場合、なぜそれがアプリケーションにとって有意義だと考"
-#~ "えるのか明らかにして下さるようお願いします。その機能について納得のいく議論"
-#~ "を行えるのでしたら、追加される可能性は高くなります。要求する機能を実装した"
-#~ "パッチを提供して下さるなら更に高くなりますが、事前にファイル <ulink url="
-#~ "\"http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING\">HACKING</ulink> を"
-#~ "忘れずに読んでください。特に <emphasis>Coding Style</emphasis> と題されて"
-#~ "いる箇所に目を通すようにしてください。"
-
-#~ msgid ""
-#~ "Else, if you have questions about the use or installation of this "
-#~ "software, please ask on the <ulink url=\"http://www.xfce.org/community/"
-#~ "lists\">Xfce users mailing list </ulink> or point your IRC client to "
-#~ "<emphasis role=\"bold\">irc.freenode.net</emphasis>, join the channel "
-#~ "<emphasis role=\"bold\">#xfce</emphasis> and ask for help."
-#~ msgstr ""
-#~ "その他に、このソフトウェアの使い方やインストールに関する質問がある場合は "
-#~ "<ulink url=\"http://www.xfce.org/community/lists\">Xfce メーリングリスト</"
-#~ "ulink> で質問するか、IRC クライアントで <emphasis role=\"bold\">irc."
-#~ "freenode.net</emphasis> のチャンネル <emphasis role=\"bold\">#xfce</"
-#~ "emphasis> に参加した上で手助けを求めてみて下さい。"
-
-#~ msgid "About @PACKAGE_NAME@"
-#~ msgstr "@PACKAGE_NAME@ について"
-
-#~ msgid ""
-#~ "@PACKAGE_NAME@ was written by Benedikt Meurer (<email>benny@xfce.org</"
-#~ "email>). Visit the <ulink url=\"http://www.os-cillation.com/\" type=\"http"
-#~ "\">os-cillation website</ulink> for more information."
-#~ msgstr ""
-#~ "@PACKAGE_NAME@ は Benedikt Meurer (<email>benny@xfce.org</email>) が製作し"
-#~ "ました。より詳しい情報は <ulink url=\"http://www.os-cillation.com/\" type="
-#~ "\"http\">os-cillation のウェブサイト</ulink>を参照してください。"
-
-#~ msgid ""
-#~ "This documentation was written by Benedikt Meurer (<email>benny@xfce.org</"
-#~ "email>) and Andrew Conkling (<email>andrewski@fr.st</email>). The latest "
-#~ "version of this document is always available from the <ulink type=\"http"
-#~ "\" url=\"http://terminal.os-cillation.com/\">Terminal website</ulink>."
-#~ msgstr ""
-#~ "Benedikt Meurer (<email>benny@xfce.org</email>) および Andrew Conkling "
-#~ "(<email>andrewski@fr.st</email>) がこの文書を製作しました。最新版は "
-#~ "<ulink type=\"http\" url=\"http://terminal.os-cillation.com/\">Terminal の"
-#~ "ウェブサイト</ulink>にあります。"
-
-#~ msgid ""
-#~ "This software is distributed under the terms of the GNU General Public "
-#~ "License as published by the Free Software Foundation; either version 2 of "
-#~ "the License, or (at your option) any later version."
-#~ msgstr ""
-#~ "このソフトウェアはフリーソフトウェア財団が公表する GNU 一般公衆利用許諾契"
-#~ "約書の条件下に配布されています。第2版あるいは、あなたが選ぶそれ以降の版の"
-#~ "いずれかが適用されます。"
-
-#~ msgid ""
-#~ "You should have received a copy of the GNU General Public License along "
-#~ "with this program; if not, write to the Free Software Foundation, Inc., "
-#~ "59 Temple Place - Suite 330, Boston, MA 02111-1307, USA."
-#~ msgstr ""
-#~ "このプログラムには、GNU 一般公衆利用許諾契約書のコピーが附属するはずです"
-#~ "が、もし無いのであればフリーソフトウェア財団に連絡してください。59 Temple "
-#~ "Place - Suite 330, Boston, MA 02111-1307, USA."
-
-#~ msgid ""
-#~ "@@image: 'images/terminal-set-title.png'; "
-#~ "md5=c4c8a1d7014a4f37b27b0f6fd1274f71"
-#~ msgstr ""
-#~ "@@image: 'images/terminal-set-title.png'; "
-#~ "md5=c4c8a1d7014a4f37b27b0f6fd1274f71"
+#~ msgid "<b>Shortcut keys</b>"
+#~ msgstr "<b>ショートカットキー</b>"
