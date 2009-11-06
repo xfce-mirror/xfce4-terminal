@@ -1460,13 +1460,12 @@ terminal_preferences_load (TerminalPreferences *preferences)
   guint         n;
 
   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, "Terminal/terminalrc");
+  if (G_UNLIKELY (filename == NULL))
+    return;
+
   rc = xfce_rc_simple_open (filename, TRUE);
   if (G_UNLIKELY (rc == NULL))
-    {
-      g_warning ("Unable to load terminal preferences.");
-      g_free (filename);
-      return;
-    }
+    goto connect_monitor;
 
   preferences->loading_in_progress = TRUE;
 
@@ -1525,6 +1524,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
 
   g_object_thaw_notify (G_OBJECT (preferences));
 
+connect_monitor:
   /* startup file monitoring */
   terminal_preferences_monitor_connect (preferences, filename);
 
