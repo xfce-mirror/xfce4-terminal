@@ -73,6 +73,7 @@ dnl *** Check for i18n support ***
 dnl ******************************
 XDT_I18N([@LINGUAS@])
 
+
 dnl ********************************
 dnl *** Check for X11 (optional) ***
 dnl ********************************
@@ -105,20 +106,22 @@ fi
 dnl ***************************************************
 dnl *** Check if we need to build the documentation ***
 dnl ***************************************************
-AC_ARG_ENABLE([build-doc], [AC_HELP_STRING([--enable-build-doc], 
-              [Build documentation [default=no]])],, [enable_build_doc=no])
-if test x"$enable_build_doc" = x"yes"; then
+AC_ARG_ENABLE([gen-doc], [AC_HELP_STRING([--enable-gen-doc], 
+              [Generate HTML documentation [default=no]])],, [enable_gen_doc=no])
+if test x"$enable_gen_doc" = x"yes"; then
     AC_PATH_PROG([XSLTPROC], [xsltproc], [no])
     if test x"$XSLTPROC" = x"no"; then
-        enable_build_doc=no
+        enable_gen_doc=no
     fi
     
     AC_PATH_PROG([XML2PO], [xml2po], [no])
     if test x"$XML2PO" = x"no"; then
-        enable_build_doc=no
+        enable_gen_doc=no
     fi
 fi
-AM_CONDITIONAL([BUILD_DOCUMENTATION], [test x"$enable_build_doc" = x"yes"])
+AM_CONDITIONAL([GENERATE_DOCUMENTATION], [test x"$enable_gen_doc" = x"yes"])
+DOC_LINGUAS="@LINGUAS@"
+AC_SUBST([DOC_LINGUAS])
 
 dnl ***********************************
 dnl *** Check for debugging support ***
@@ -155,7 +158,6 @@ icons/24x24/Makefile
 icons/48x48/Makefile
 icons/scalable/Makefile
 po/Makefile.in
-po-doc/Makefile
 terminal/Makefile
 terminal/terminal-config.h
 ])
@@ -167,10 +169,10 @@ echo
 echo "Build Configuration:"
 echo
 if test x"$DBUS_FOUND" = x"yes"; then
-echo "* D-Bus support:        yes"
+echo "* D-Bus support:           yes"
 else
-echo "* D-Bus support:        no"
+echo "* D-Bus support:           no"
 fi
-echo "* Debug support:        $enable_debug"
-echo "* Build documentation:  $enable_build_doc"
+echo "* Debug support:           $enable_debug"
+echo "* Generate documentation:  $enable_gen_doc"
 echo

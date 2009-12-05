@@ -2,7 +2,6 @@ SUBDIRS = \
 	doc \
 	icons \
 	po \
-	po-doc \
 	terminal
 
 distclean-local:
@@ -62,6 +61,6 @@ DISTCLEANFILES = \
 	$(desktop_DATA)
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-build-doc
+	--enable-gen-doc
 
 # vi:set ts=8 sw=8 noet ai nocindent:

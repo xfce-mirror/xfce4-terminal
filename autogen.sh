@@ -7,8 +7,6 @@
 #                 and Brian Tarricone <brian@tarricone.org>.
 #
 
-export XDT_AUTOGEN_REQUIRED_VERSION="4.7.2"
-
 (type xdt-autogen) >/dev/null 2>&1 || {
   cat >&2 <<EOF
 autogen.sh: You don't seem to have the Xfce development tools (at least
@@ -20,6 +18,6 @@ EOF
   exit 1
 }
 
-exec xdt-autogen "$@"
+XDT_AUTOGEN_REQUIRED_VERSION="4.7.2" exec xdt-autogen "$@"
 
 # vi:set ts=2 sw=2 et ai:

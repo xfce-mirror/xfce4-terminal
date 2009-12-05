@@ -3,7 +3,6 @@ SUBDIRS = \
 
 STYLESHEET = $(PACKAGE).xsl
 DOCUMENT = $(PACKAGE).xml
-DOC_LINGUAS = ca da fr gl id it ja zh_CN
 
 # install the html files to the destdir
 install-data-local:
@@ -20,25 +19,43 @@ install-data-local:
 				echo "--- Creating symlink to C images for $$lang"; \
 				ln -sf $(DESTDIR)$(docdir)/C/images $(DESTDIR)$(docdir)/$$lang/images; \
 			fi \
-		else \
-			echo "--- Nothing to install for language $$lang"; \
 		fi \
 	done;
 
-# remove the html files from the destdir
+# remove installed files from the destdir
 uninstall-local:
-	rm -rf $(DESTDIR)$(docdir)
+	for lang in C $(DOC_LINGUAS); do \
+		dest=$(DESTDIR)$(docdir)/$$lang; \
+		if test -d $$dest; then \
+			if test -L $$dest/images; then \
+				rm -rf $$dest; \
+			else \
+				rm -f $$dest/*.html; \
+			fi \
+		fi \
+	done
 
-if BUILD_DOCUMENTATION
+if GENERATE_DOCUMENTATION
+
+# regenerate po(t) files
+update-po:
+	rm -f $(srcdir)/po/$(GETTEXT_PACKAGE).pot; \
+	$(XML2PO) -o $(srcdir)/po/$(GETTEXT_PACKAGE).pot $(srcdir)/$(DOCUMENT); \
+	for lang in $(DOC_LINGUAS); do \
+		pofile=$(srcdir)/po/$$lang.po; \
+		if test -f $$pofile; then \
+			$(XML2PO) -u $(srcdir)/po/$$lang.po $(srcdir)/$(DOCUMENT); \
+		fi \
+	done
 
 # build the (translated) html help files
 html-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(STYLESHEET)
+	chmod -R u+w $(srcdir); \
 	if test -d $(srcdir)/html; then \
 		rm -rf $(srcdir)/html; \
 	fi; \
-	chmod -R u+w $(srcdir); \
 	for lang in C $(DOC_LINGUAS); do \
-		pofile=$(top_srcdir)/po-doc/$$lang.po; \
+		pofile=$(srcdir)/po/$$lang.po; \
 		if test x"$$lang" = x"C" -o -f $$pofile; then \
 			echo "*** Building $$lang HTML ***"; \
 			if test x"$$lang" = x"C"; then \
@@ -52,11 +69,9 @@ html-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(STYLESHEET)
 				-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
 				-i xgen-doc; \
 			$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(STYLESHEET) xgen-doc; \
+			chmod -R u+w $(srcdir)/html/$$lang; \
 			rm -f xgen-doc; \
 			echo; \
-		else \
-			echo "Error: No po file was found for the $$lang documentation"; \
-			false; \
 		fi \
 	done; \
 	touch html-build.stamp
@@ -67,15 +82,14 @@ else
 
 html-build.stamp:
 	if test ! -d $(srcdir)/html; then \
-		@echo "No HTML documentation found. If you want the $(PACKAGE_NAME)"; \
-		@echo "documentation, recompile with --enable-build-doc, this"; \
-		@echo "This requires both the xml2po and xsltproc executables"; \
-	fi; \
-	touch html-build.stamp
+		echo "No HTML documentation found. If you want the $(PACKAGE_NAME)"; \
+		echo "documentation, recompile with --enable-gen-doc, this"; \
+		echo "This requires both the xml2po and xsltproc executables"; \
+	fi
 
 dist-check-doc:
-	@echo "*** You need to compile with --enable-build-doc in order to make dist"
-	@echo "*** This requires both the xml2po and xsltproc executables"
+	echo "*** You need to compile with --enable-gen-doc in order to make dist"
+	echo "*** This requires both the xml2po and xsltproc executables"
 	@false
 
 endif
@@ -84,12 +98,16 @@ endif
 # a message if no html files were found in the tarball
 all: html-build.stamp
 
-# include the html files in the dist
+# include the html and po files in the dist
 dist-hook: dist-check-doc html-build.stamp
 	for lang in C $(DOC_LINGUAS); do \
-		mkdir -p $(distdir)/html/$$lang; \
-		cp $(srcdir)/html/$$lang/* $(distdir)/html/$$lang/; \
-	done;
+		if test -d $(srcdir)/html/$$lang; then \
+			mkdir -p $(distdir)/html/$$lang; \
+			cp $(srcdir)/html/$$lang/* $(distdir)/html/$$lang/; \
+		fi; \
+		mkdir -p $(distdir)/po; \
+		cp $(srcdir)/po/*.po $(distdir)/po/; \
+	done
 
 # css file
 cssdir = $(docdir)
