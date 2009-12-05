@@ -1,4 +1,7 @@
-imagesdir = $(docdir)/da/images
+SUBDIRS = \
+	ja
+
+imagesdir = $(docdir)/C/images
 images_DATA = \
 	terminal-compose-shortcut.png \
 	terminal-edit-preferences.png \
