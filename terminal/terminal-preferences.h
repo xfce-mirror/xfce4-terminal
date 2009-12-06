@@ -91,7 +91,7 @@ GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
 
 TerminalPreferences *terminal_preferences_get       (void);
 
-void                 terminal_preferences_get_color (TerminalPreferences *preferences,
+gboolean             terminal_preferences_get_color (TerminalPreferences *preferences,
                                                      const gchar         *property,
                                                      GdkColor            *color_return);
 

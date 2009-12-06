@@ -751,28 +751,34 @@ terminal_screen_update_colors (TerminalScreen *screen)
   GdkColor fg;
   GdkColor cursor;
   GdkColor selection;
-  gboolean selection_use_default;
+  gboolean use_default;
   gchar    name[32];
   guint    n;
+  gboolean has_bg;
+  gboolean has_fg;
+  gboolean has_cursor;
 
-  terminal_preferences_get_color (screen->preferences, "color-background", &bg);
-  terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
-  terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
+  has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
+  has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
+  has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
 
   for (n = 0; n < 16; ++n)
     {
-      g_snprintf (name, 32, "color-palette%u", n + 1);
+      g_snprintf (name, sizeof (name), "color-palette%u", n + 1);
       terminal_preferences_get_color (screen->preferences, name, palette + n);
     }
 
-  vte_terminal_set_colors (VTE_TERMINAL (screen->terminal), &fg, &bg, palette, 16);
-  vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), &bg);
-  vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), &cursor);
+  vte_terminal_set_colors (VTE_TERMINAL (screen->terminal),
+                           has_fg ? &fg : NULL,
+                           has_bg ? &bg : NULL,
+                           palette, 16);
+  vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
+  vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
 
-  g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &selection_use_default, NULL);
-  if (!selection_use_default)
-    terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
-  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
+  g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &use_default, NULL);
+  if (!use_default)
+    use_default = !terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
+  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), use_default ? NULL : &selection);
 }
 
 

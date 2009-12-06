@@ -1823,16 +1823,20 @@ terminal_preferences_get (void)
 
 
 
-void
+gboolean
 terminal_preferences_get_color (TerminalPreferences *preferences,
                                 const gchar         *property,
                                 GdkColor            *color_return)
 {
-  gchar *spec;
+  gchar    *spec;
+  gboolean  succeed = FALSE;
 
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
+  terminal_return_val_if_fail (TERMINAL_IS_PREFERENCES (preferences), FALSE);
 
   g_object_get (G_OBJECT (preferences), property, &spec, NULL);
-  gdk_color_parse (spec, color_return);
+  if (G_LIKELY (spec != NULL))
+    succeed = gdk_color_parse (spec, color_return);
   g_free (spec);
+
+  return succeed;
 }
