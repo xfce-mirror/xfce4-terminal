@@ -1113,6 +1113,7 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
 {
   guint    timeout;
   GdkColor color;
+  gboolean has_fg;
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1131,8 +1132,8 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
     return;
 
   /* set label color */
-  terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
-  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, &color);
+  has_fg = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
+  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, has_fg ? &color : NULL);
 
   /* stop running reset timeout */
   if (screen->activity_timeout_id != 0)
