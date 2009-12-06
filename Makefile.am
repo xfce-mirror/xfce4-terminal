@@ -58,6 +58,7 @@ EXTRA_DIST = \
 	intltool-merge.in \
 	intltool-update.in \
 	$(desktop_in_files) \
+	$(xml_in_files) \
 	$(man_MANS) \
 	$(ui_DATA)
 
@@ -67,7 +68,8 @@ DISTCLEANFILES = \
 	intltool-extract \
 	intltool-merge \
 	intltool-update \
-	$(desktop_DATA)
+	$(desktop_DATA) \
+	$(xml_DATA)
 
 DISTCHECK_CONFIGURE_FLAGS = \
 	--enable-gen-doc
