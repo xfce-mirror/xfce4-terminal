@@ -50,24 +50,26 @@ update-po:
 
 # build the (translated) html help files
 html-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(STYLESHEET)
-	chmod -R u+w $(srcdir); \
+	@chmod -R u+w $(srcdir); \
 	if test -d $(srcdir)/html; then \
 		rm -rf $(srcdir)/html; \
 	fi; \
+	echo; \
 	for lang in C $(DOC_LINGUAS); do \
 		pofile=$(srcdir)/po/$$lang.po; \
 		if test x"$$lang" = x"C" -o -f $$pofile; then \
-			echo "*** Building $$lang HTML ***"; \
+			echo "*** Generating $$lang HTML documentation"; \
 			if test x"$$lang" = x"C"; then \
 				cp $(srcdir)/$(DOCUMENT) xgen-doc; \
 			else \
-				echo "--- Translating XML into $$lang"; \
+				echo "Building the translated DocBook XML file"; \
 				$(XML2PO) -e -l $$lang -p $$pofile $(srcdir)/$(DOCUMENT) > xgen-doc; \
 				rm -f .xml2po.mo; \
 			fi; \
 			sed -e "s,\@PACKAGE_NAME\@,$(PACKAGE_NAME),g" \
 				-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
 				-i xgen-doc; \
+			echo "Creating the HTML pages"; \
 			$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(STYLESHEET) xgen-doc; \
 			chmod -R u+w $(srcdir)/html/$$lang; \
 			rm -f xgen-doc; \
@@ -81,15 +83,17 @@ dist-check-doc: all
 else
 
 html-build.stamp:
-	if test ! -d $(srcdir)/html; then \
-		echo "No HTML documentation found. If you want the $(PACKAGE_NAME)"; \
-		echo "documentation, recompile with --enable-gen-doc, this"; \
-		echo "This requires both the xml2po and xsltproc executables"; \
+	@if test ! -d $(srcdir)/html; then \
+		echo; \
+		echo "*** No generated HTML documentation found. If you want to"; \
+		echo "*** generate the (translated) documentation, run configure"; \
+		echo "*** with --enable-gen-doc."; \
+		echo; \
 	fi
 
 dist-check-doc:
-	echo "*** You need to compile with --enable-gen-doc in order to make dist"
-	echo "*** This requires both the xml2po and xsltproc executables"
+	@echo "*** You need to compile with --enable-gen-doc in order to make dist"
+	@echo "*** This requires both the xml2po and xsltproc executables"
 	@false
 
 endif
