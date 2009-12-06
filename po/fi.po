@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-08 11:54+0200\n"
+"POT-Creation-Date: 2009-12-06 13:43+0100\n"
 "PO-Revision-Date: 2008-10-31 12:45+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -342,7 +342,7 @@ msgstr "D-BUS-viestiyhteys katkaistu, poistutaan...\n"
 msgid "Unable to register object %s"
 msgstr "Ei voi rekisteröidä oliota %s"
 
-#: ../terminal/terminal-dialogs.c:87
+#: ../terminal/terminal-dialogs.c:87 ../Terminal-default-apps.xml.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Pääte-emulaattori Xfce-ympäristöön"
 
@@ -572,22 +572,22 @@ msgstr "Sisältö"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:383 ../terminal/terminal-screen.c:578
-#: ../terminal/terminal-screen.c:1460
+#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
+#: ../terminal/terminal-screen.c:1468
 msgid "Untitled"
 msgstr "Nimetön"
 
-#: ../terminal/terminal-screen.c:473
+#: ../terminal/terminal-screen.c:477
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1220
+#: ../terminal/terminal-screen.c:1228
 msgid "Failed to execute child"
 msgstr "Lapsiprosessin suorittaminen ei onnistu"
 
-#: ../terminal/terminal-screen.c:1801
+#: ../terminal/terminal-screen.c:1809
 msgid "Close this tab"
 msgstr "Sulje tämä välilehti"
 
@@ -612,7 +612,7 @@ msgid "Help"
 msgstr "Ohje"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:501
+#: ../terminal/terminal-shortcut-editor.c:506
 msgid "Disabled"
 msgstr "Pois käytöstä"
 
@@ -699,211 +699,211 @@ msgstr "Saatu värimääritys ei kelpaa: Väärä muoto (%d) tai pituus (%d)\n"
 msgid "Failed to open the URL `%s'"
 msgstr "URL:in \"%s\" avaaminen epäonnistui"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:222
 msgid "_File"
 msgstr "_Tiedosto"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:223
 msgid "Open _Tab"
 msgstr "Avaa v_älilehti"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:223
 msgid "Open a new terminal tab"
 msgstr "Avaa uusi päätteen välilehti"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:224
 msgid "Open T_erminal"
 msgstr "Avaa _pääte"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:224
 msgid "Open a new terminal window"
 msgstr "Avaa uusi pääteikkuna"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:225
 msgid "_Detach Tab"
 msgstr "_Irrota välilehti"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:225
 msgid "Open a new window for the current terminal tab"
 msgstr "Avaa uusi pääteikkuna nykyiselle välilehdelle"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:226
 msgid "C_lose Tab"
 msgstr "S_ulje välilehti"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:226
 msgid "Close the current terminal tab"
 msgstr "Sulje nykyinen päätteen välilehti"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:227
 msgid "_Close Window"
 msgstr "_Sulje ikkuna"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:227
 msgid "Close the terminal window"
 msgstr "Sulje pääteikkuna"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:228
 msgid "_Edit"
 msgstr "_Muokkaa"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:229
 msgid "_Copy"
 msgstr "_Kopioi"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:229
 msgid "Copy to clipboard"
 msgstr "Kopioi leikepöydälle"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:230
 msgid "_Paste"
 msgstr "_Liitä"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:230
 msgid "Paste from clipboard"
 msgstr "Liitä leikepöydältä"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:231
 msgid "Paste _Selection"
 msgstr "Liitä _valinta"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:231
 msgid "Paste from primary selection"
 msgstr "Liitä ensisijaisesta valinnasta"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:232
 msgid "_Toolbars..."
 msgstr "_Työkalupalkit..."
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:232
 msgid "Customize the toolbars"
 msgstr "Mukauta työkalupalkkeja"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:233
 msgid "Pr_eferences..."
 msgstr "_Asetukset..."
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:233
 msgid "Open the Terminal preferences dialog"
 msgstr "Avaa Päätteen asetusikkuna"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:234
 msgid "_View"
 msgstr "_Näytä"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:235
 msgid "_Terminal"
 msgstr "_Pääte"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:236
 msgid "_Set Title..."
 msgstr "_Aseta otsake..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:236
 msgid "Set a custom title for the current tab"
 msgstr "Aseta nykyiselle välilehdelle mukautettu otsake"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:237
 msgid "_Reset"
 msgstr "_Palauta"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Palauta ja _tyhjennä"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:239
 msgid "_Go"
 msgstr "_Siirry"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:240
 msgid "_Previous Tab"
 msgstr "_Edellinen välilehti"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:240
 msgid "Switch to previous tab"
 msgstr "Siirry edelliselle välilehdelle"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:241
 msgid "_Next Tab"
 msgstr "_Seuraava välilehti"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:241
 msgid "Switch to next tab"
 msgstr "Siirry seuraavalle välilehdelle"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:242
 msgid "_Help"
 msgstr "_Ohje"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:243
 msgid "_Contents"
 msgstr "_Sisältö"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:243
 msgid "Display help contents"
 msgstr "Näytä ohjeen sisältö"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:244
 msgid "_Report a bug"
 msgstr "Tee _vikailmoitus"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:244
 msgid "Report a bug in Terminal"
 msgstr "Ilmoita Terminal-päätesovelluksen viasta"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:245
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:245
 msgid "Display information about Terminal"
 msgstr "Näytä tietoja Terminal-päätesovelluksesta"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:246
 msgid "_Input Methods"
 msgstr "_Tiedonsyöttötavat"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:251
 msgid "Show _Menubar"
 msgstr "Näytä _valikkopalkki"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the menubar"
 msgstr "Näytä/piilota valikkopalkki"
 
-#: ../terminal/terminal-window.c:247
+#: ../terminal/terminal-window.c:252
 msgid "Show _Toolbars"
 msgstr "Näytä _työkalupalkit"
 
-#: ../terminal/terminal-window.c:247
+#: ../terminal/terminal-window.c:252
 msgid "Show/hide the toolbars"
 msgstr "Näytä/piilota työkalupalkit"
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:253
 msgid "Show Window _Borders"
 msgstr "Näytä ikkunoiden _reunat"
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:253
 msgid "Show/hide the window decorations"
 msgstr "Näytä/piilota ikkunoiden reunukset"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:254
 msgid "_Fullscreen"
 msgstr "Täy_sruutu"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:254
 msgid "Toggle fullscreen mode"
 msgstr "Vaihda täysruututilaan ja takaisin"
 
-#: ../terminal/terminal-window.c:554
+#: ../terminal/terminal-window.c:561
 msgid "Warning"
 msgstr "Varoitus"
 
-#: ../terminal/terminal-window.c:565
+#: ../terminal/terminal-window.c:572
 msgid "Close all tabs"
 msgstr "Sulje kaikki välilehdet"
 
-#: ../terminal/terminal-window.c:584
+#: ../terminal/terminal-window.c:591
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -912,24 +912,24 @@ msgstr ""
 "Ikkunassa on avoinna %d välilehteä.\n"
 "Ne kaikki sulkeutuvat ikkunan sulkeutuessa."
 
-#: ../terminal/terminal-window.c:587
+#: ../terminal/terminal-window.c:594
 msgid "Close all tabs?"
 msgstr "Suljetaanko kaikki välilehdet?"
 
-#: ../terminal/terminal-window.c:600
+#: ../terminal/terminal-window.c:607
 msgid "Do _not ask me again"
 msgstr "_Älä kysy uudelleen"
 
-#: ../terminal/terminal-window.c:1519
+#: ../terminal/terminal-window.c:1556
 msgid "Window Title|Set Title"
 msgstr "Aseta otsake"
 
-#: ../terminal/terminal-window.c:1532
+#: ../terminal/terminal-window.c:1569
 #, fuzzy
 msgid "Title:"
 msgstr "Otsake"
 
-#: ../terminal/terminal-window.c:1544
+#: ../terminal/terminal-window.c:1581
 msgid "Enter the title for the current terminal tab"
 msgstr "Syötä otsake nykyiselle päätteen välilehdelle"
 
