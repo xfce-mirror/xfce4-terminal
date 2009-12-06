@@ -73,7 +73,6 @@ dnl *** Check for i18n support ***
 dnl ******************************
 XDT_I18N([@LINGUAS@])
 
-
 dnl ********************************
 dnl *** Check for X11 (optional) ***
 dnl ********************************
@@ -120,8 +119,6 @@ if test x"$enable_gen_doc" = x"yes"; then
     fi
 fi
 AM_CONDITIONAL([GENERATE_DOCUMENTATION], [test x"$enable_gen_doc" = x"yes"])
-DOC_LINGUAS="@LINGUAS@"
-AC_SUBST([DOC_LINGUAS])
 
 dnl ***********************************
 dnl *** Check for debugging support ***
@@ -152,6 +149,7 @@ Terminal.spec
 doc/Makefile
 doc/images/Makefile
 doc/images/ja/Makefile
+doc/po/Makefile
 icons/Makefile
 icons/16x16/Makefile
 icons/24x24/Makefile

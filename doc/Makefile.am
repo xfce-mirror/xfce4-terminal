@@ -1,12 +1,15 @@
 SUBDIRS = \
-	images
+	images \
+	po
 
 STYLESHEET = $(PACKAGE).xsl
 DOCUMENT = $(PACKAGE).xml
+LINGUAS = $(shell cd $(srcdir)/po && echo `/bin/ls *.po | sed 's,[.]po,,g'`)
+ALL_LINGUAS = C $(LINGUAS)
 
 # install the html files to the destdir
 install-data-local:
-	for lang in C $(DOC_LINGUAS); do \
+	for lang in $(ALL_LINGUAS); do \
 		if test -d $(srcdir)/html/$$lang; then \
 			dest=$(DESTDIR)$(docdir)/$$lang; \
 			$(mkinstalldirs) $$dest; \
@@ -24,7 +27,7 @@ install-data-local:
 
 # remove installed files from the destdir
 uninstall-local:
-	for lang in C $(DOC_LINGUAS); do \
+	for lang in $(ALL_LINGUAS); do \
 		dest=$(DESTDIR)$(docdir)/$$lang; \
 		if test -d $$dest; then \
 			if test -L $$dest/images; then \
@@ -41,11 +44,9 @@ if GENERATE_DOCUMENTATION
 update-po:
 	rm -f $(srcdir)/po/$(GETTEXT_PACKAGE).pot; \
 	$(XML2PO) -o $(srcdir)/po/$(GETTEXT_PACKAGE).pot $(srcdir)/$(DOCUMENT); \
-	for lang in $(DOC_LINGUAS); do \
+	for lang in $(LINGUAS); do \
 		pofile=$(srcdir)/po/$$lang.po; \
-		if test -f $$pofile; then \
-			$(XML2PO) -u $(srcdir)/po/$$lang.po $(srcdir)/$(DOCUMENT); \
-		fi \
+		$(XML2PO) -u $(srcdir)/po/$$lang.po $(srcdir)/$(DOCUMENT); \
 	done
 
 # build the (translated) html help files
@@ -55,26 +56,24 @@ html-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(STYLESHEET)
 		rm -rf $(srcdir)/html; \
 	fi; \
 	echo; \
-	for lang in C $(DOC_LINGUAS); do \
+	for lang in $(ALL_LINGUAS); do \
 		pofile=$(srcdir)/po/$$lang.po; \
-		if test x"$$lang" = x"C" -o -f $$pofile; then \
-			echo "*** Generating $$lang HTML documentation"; \
-			if test x"$$lang" = x"C"; then \
-				cp $(srcdir)/$(DOCUMENT) xgen-doc; \
-			else \
-				echo "Building the translated DocBook XML file"; \
-				$(XML2PO) -e -l $$lang -p $$pofile $(srcdir)/$(DOCUMENT) > xgen-doc; \
-				rm -f .xml2po.mo; \
-			fi; \
-			sed -e "s,\@PACKAGE_NAME\@,$(PACKAGE_NAME),g" \
-				-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
-				-i xgen-doc; \
-			echo "Creating the HTML pages"; \
-			$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(STYLESHEET) xgen-doc; \
-			chmod -R u+w $(srcdir)/html/$$lang; \
-			rm -f xgen-doc; \
-			echo; \
-		fi \
+		echo "*** Generating $$lang HTML documentation"; \
+		if test x"$$lang" = x"C"; then \
+			cp $(srcdir)/$(DOCUMENT) xgen-doc; \
+		else \
+			echo "Building the translated DocBook XML file"; \
+			$(XML2PO) -e -l $$lang -p $$pofile $(srcdir)/$(DOCUMENT) > xgen-doc; \
+			rm -f .xml2po.mo; \
+		fi; \
+		sed -e "s,\@PACKAGE_NAME\@,$(PACKAGE_NAME),g" \
+			-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
+			-i xgen-doc; \
+		echo "Creating the HTML pages"; \
+		$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(STYLESHEET) xgen-doc; \
+		chmod -R u+w $(srcdir)/html/$$lang; \
+		rm -f xgen-doc; \
+		echo; \
 	done; \
 	touch html-build.stamp
 
@@ -102,15 +101,13 @@ endif
 # a message if no html files were found in the tarball
 all: html-build.stamp
 
-# include the html and po files in the dist
+# include the html files in the dist
 dist-hook: dist-check-doc html-build.stamp
-	for lang in C $(DOC_LINGUAS); do \
+	for lang in $(ALL_LINGUAS); do \
 		if test -d $(srcdir)/html/$$lang; then \
 			mkdir -p $(distdir)/html/$$lang; \
 			cp $(srcdir)/html/$$lang/* $(distdir)/html/$$lang/; \
 		fi; \
-		mkdir -p $(distdir)/po; \
-		cp $(srcdir)/po/*.po $(distdir)/po/; \
 	done
 
 # css file
@@ -121,7 +118,8 @@ css_DATA = \
 EXTRA_DIST = \
 	$(css_DATA) \
 	$(STYLESHEET) \
-	$(DOCUMENT)
+	$(DOCUMENT) \
+	README
 
 CLEANFILES = \
 	xgen-doc \
