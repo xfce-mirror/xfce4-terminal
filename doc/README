@@ -1,0 +1,68 @@
+Terminal Documentation
+======================
+
+A bit of information about how to handle the documentation in Terminal
+for both maintainers and translators.
+
+
+Building Documentation
+----------------------
+
+If you download a release of Terminal, you don't need to build the
+documentation, because the (translated) HTML pages are already
+included in the tarball.
+However, if you make a clone from GIT or you add your own translation
+and you want to see the result; you have to generate the documentation
+during the build. This can be done by following the steps below:
+
+  * Make sure you have the xfce-dev-tools, gnome-doc-utils (for xml2po)
+    and libxslt (for xsltproc) packages installed.
+  * Create a GIT clone; "git clone git://git.xfce.org/apps/terminal".
+  * Run "./autogen.sh --enable-gen-doc" and make sure the build
+    configuration shows "Generate documentation: yes".
+  * Run "make" and "make DESDIR=/some/prefix install".
+
+
+Updating the po(t) files
+------------------------
+
+Normally this is only needed when the Terminal.xml file is edited, but
+in case you wonder:
+
+  * ./autogen.sh --enable-gen-doc
+  * cd doc && make update-po.
+
+
+Adding New Translations
+-----------------------
+
+New translations can easily be added by translating the doc/po/Terminal.pot
+file in Transifex [https://translations.xfce.org]. Before you submit your
+translated po file, make sure it passes the build process without errors
+and warnings. See more information about this in the "Building
+Documentation" section above.
+After running "make", check for the errors and warnings of your translation
+(below the "*** Building $lang HTML ***" line) and try to fix them. Please
+do this before submitting in Transifex to avoid build problems for other
+people.
+
+
+Add Images In Your Locale
+-------------------------
+
+You might have noticed your new translated documentation still uses the
+English screenshots. These can the "translated" too by following the
+steps below:
+
+  * Make sure you use the same theme as the default images.
+    - Clearlooks default Gtk theme (from gtk-engines package).
+    - Tango icons.
+    - Default-4.6 Xfwm4 theme.
+    - Bitstream Vera Sans Roman font.
+  * Create the screenshots, for example by using The GIMP and give them
+    the same filenames are the English ones.
+  * Put those in a tarball and create a bug in the Xfce bug tracker
+    [http://bugzilla.xfce.org] under the Terminal product and
+    Documentation component with the tarball attached.
+  * One of the developers will manually add the images to the GIT
+    repository, so be patient.

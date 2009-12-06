@@ -2,7 +2,6 @@ SUBDIRS = \
 	doc \
 	icons \
 	po \
-	po-doc \
 	terminal
 
 distclean-local:
@@ -71,7 +70,6 @@ DISTCLEANFILES = \
 	$(desktop_DATA)
 
 DISTCHECK_CONFIGURE_FLAGS = \
-	--enable-xml2po \
-	--enable-xsltproc
+	--enable-gen-doc
 
 # vi:set ts=8 sw=8 noet ai nocindent:
