@@ -36,6 +36,13 @@ desktop_in_files = Terminal.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
+xml_in_files = Terminal-default-apps.xml.in
+if DEFAULT_APPS_DEFINITION
+xmldir = $(DEFAULTAPPS_DIR)
+xml_DATA = $(xml_in_files:.xml.in=.xml)
+endif
+@INTLTOOL_XML_RULE@
+
 man_MANS = Terminal.1
 
 uidir = $(datadir)/Terminal

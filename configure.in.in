@@ -126,6 +126,20 @@ if test x"$enable_xml2po" = x"yes"; then
 fi
 AM_CONDITIONAL([ENABLE_XML2PO], [test x"$enable_xml2po" = x"yes"])
 
+dnl ****************************************
+dnl *** Register in Gnome Control Center ***
+dnl ****************************************
+AC_MSG_CHECKING([Whether to install GNOME control-center default application definition])
+if $PKG_CONFIG --variable=keysdir gnome-default-applications >/dev/null ; then
+     AC_MSG_RESULT([yes])
+     DEFAULTAPPS_DIR="`$PKG_CONFIG --variable=defappsdir gnome-default-applications`"
+     AC_SUBST(DEFAULTAPPS_DIR)
+else
+     AC_MSG_RESULT([no])
+     DEFAULTAPPS_DIR="/usr/share/test"
+fi
+AM_CONDITIONAL([DEFAULT_APPS_DEFINITION],[test -n "$DEFAULTAPPS_DIR"])
+
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
