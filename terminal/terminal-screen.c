@@ -757,21 +757,32 @@ terminal_screen_update_colors (TerminalScreen *screen)
   gboolean has_bg;
   gboolean has_fg;
   gboolean has_cursor;
+  gboolean has_pallette;
 
   has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
   has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
   has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
 
-  for (n = 0; n < 16; ++n)
+  for (n = 0, has_pallette = TRUE; has_pallette && n < 16; ++n)
     {
       g_snprintf (name, sizeof (name), "color-palette%u", n + 1);
-      terminal_preferences_get_color (screen->preferences, name, palette + n);
+      has_pallette = terminal_preferences_get_color (screen->preferences, name, palette + n);
     }
 
-  vte_terminal_set_colors (VTE_TERMINAL (screen->terminal),
-                           has_fg ? &fg : NULL,
-                           has_bg ? &bg : NULL,
-                           palette, 16);
+  if (G_LIKELY (has_pallette))
+    {
+      vte_terminal_set_colors (VTE_TERMINAL (screen->terminal),
+                               has_fg ? &fg : NULL,
+                               has_bg ? &bg : NULL,
+                               palette, 16);
+    }
+  else
+    {
+      vte_terminal_set_default_colors (VTE_TERMINAL (screen->terminal));
+      g_warning ("One of the terminal colors (color-palette%u) was not parsed "
+                 "successfully. The default palette has been applied.", n);
+    }
+
   vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
   vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
 
