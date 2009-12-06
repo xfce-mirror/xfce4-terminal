@@ -47,6 +47,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-window.h>
 
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -112,6 +113,10 @@ static GtkWidget *terminal_screen_vte_get_context_menu          (TerminalWidget 
 static void       terminal_screen_vte_selection_changed         (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_window_title_changed      (VteTerminal           *terminal,
+                                                                 TerminalScreen        *screen);
+static void       terminal_screen_vte_resize_window             (VteTerminal           *terminal,
+                                                                 guint                  width,
+                                                                 guint                  height,
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_window_contents_changed   (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
@@ -237,6 +242,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::context-menu", G_CALLBACK (terminal_screen_vte_get_context_menu), screen,
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
+                    "signal::resize-window", G_CALLBACK (terminal_screen_vte_resize_window), screen,
                     "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
                     "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
@@ -379,7 +385,7 @@ terminal_screen_get_property (GObject          *object,
             }
           else if (G_LIKELY (screen->terminal != NULL))
             {
-              title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+              title = VTE_TERMINAL (screen->terminal)->window_title;
             }
 
           /* TRANSLATORS: title for the tab/window used when all other
@@ -581,7 +587,7 @@ terminal_screen_parse_title (TerminalScreen *screen,
 
         case 'w':
           /* window title from vte */
-          vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+          vte_title = VTE_TERMINAL (screen->terminal)->window_title;
           if (G_UNLIKELY (vte_title == NULL))
             vte_title = _("Untitled");
           g_string_append (string, vte_title);
@@ -1020,6 +1026,48 @@ terminal_screen_vte_window_title_changed (VteTerminal    *terminal,
 
 
 
+static void
+terminal_screen_vte_resize_window (VteTerminal    *terminal,
+                                   guint           width,
+                                   guint           height,
+                                   TerminalScreen *screen)
+{
+  GtkWidget *toplevel;
+  gint       xpad;
+  gint       ypad;
+  gint       grid_width;
+  gint       grid_height;
+
+  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  /* don't do anything if the window is already fullscreen/maximized */
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  if (!GTK_WIDGET_REALIZED (toplevel)
+      || (gdk_window_get_state (toplevel->window)
+          & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) != 0)
+    return;
+
+  /* we have to calculate the grid size, because the signal
+   * returns a size in pixels */
+  vte_terminal_get_padding (terminal, &xpad, &ypad);
+  grid_width = (width - xpad) / terminal->char_width;
+  grid_height = (height - ypad) / terminal->char_height;
+
+  /* leave if there is nothing to resize */
+  if (terminal->column_count == grid_width
+      && terminal->row_count == grid_height)
+    return;
+
+  /* set the terminal size and resize the window if it is active */
+  vte_terminal_set_size (terminal, grid_width, grid_height);
+  if (screen == terminal_window_get_active (TERMINAL_WINDOW (toplevel)))
+    terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel),
+                                         grid_width, grid_height);
+}
+
+
+
 static gboolean
 terminal_screen_reset_activity_timeout (gpointer user_data)
 {
@@ -1355,7 +1403,7 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 
   hints.base_width = xpad;
   hints.base_height = ypad;
-  hints.width_inc = VTE_TERMINAL (screen->terminal)->char_width;
+  hints.width_inc = VTE_TERMINAL (screen->terminal)->char_width ;
   hints.height_inc = VTE_TERMINAL (screen->terminal)->char_height;
   hints.min_width = hints.base_width + hints.width_inc * 4;
   hints.min_height = hints.base_height + hints.height_inc * 2;
@@ -1414,7 +1462,6 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
     rows = force_rows;
 
   vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
-
   width += xpad + VTE_TERMINAL (screen->terminal)->char_width * columns;
   height += ypad + VTE_TERMINAL (screen->terminal)->char_height * rows;
 
@@ -1449,7 +1496,7 @@ terminal_screen_get_title (TerminalScreen *screen)
   if (G_UNLIKELY (screen->custom_title != NULL))
     return terminal_screen_parse_title (screen, screen->custom_title);
 
-  vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
+  vte_title = VTE_TERMINAL (screen->terminal)->window_title;
   g_object_get (G_OBJECT (screen->preferences),
                 "title-mode", &mode,
                 "title-initial", &tmp,
