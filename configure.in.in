@@ -129,16 +129,24 @@ AM_CONDITIONAL([ENABLE_XML2PO], [test x"$enable_xml2po" = x"yes"])
 dnl ****************************************
 dnl *** Register in Gnome Control Center ***
 dnl ****************************************
-AC_MSG_CHECKING([Whether to install GNOME control-center default application definition])
-if $PKG_CONFIG --variable=keysdir gnome-default-applications >/dev/null ; then
-     AC_MSG_RESULT([yes])
-     DEFAULTAPPS_DIR="`$PKG_CONFIG --variable=defappsdir gnome-default-applications`"
-     AC_SUBST(DEFAULTAPPS_DIR)
+AC_ARG_WITH([gnome-default-appsdir],
+            [AC_HELP_STRING([--with-gnome-default-appsdir=PATH],
+                            [Specify where to install the Gnome default applications file (default=autodetect)])],
+            [gnome_default_appsdir="$withval"])
+AC_MSG_CHECKING([for Gnome default applications dir])
+if test x"$gnome_default_appsdir" = x""; then
+  GNOME_DEFAULT_APPSDIR="`$PKG_CONFIG --variable=defappsdir gnome-default-applications`"
+  if test -n "$GNOME_DEFAULT_APPSDIR"; then
+    AC_MSG_RESULT([Using path supplied by gnome-control-center])
+  else
+    AC_MSG_RESULT([Using prefix of terminal])
+  fi
 else
-     AC_MSG_RESULT([no])
-     DEFAULTAPPS_DIR="/usr/share/test"
+  GNOME_DEFAULT_APPSDIR="$gnome_default_appsdir"
+  AC_MSG_RESULT([Using path supplied by user])
 fi
-AM_CONDITIONAL([DEFAULT_APPS_DEFINITION],[test -n "$DEFAULTAPPS_DIR"])
+AM_CONDITIONAL([HAVE_GNOME_DEFAULT_APPSDIR], [test -n "$GNOME_DEFAULT_APPSDIR"])
+AC_SUBST([GNOME_DEFAULT_APPSDIR])
 
 dnl ***********************************
 dnl *** Check for debugging support ***

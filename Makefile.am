@@ -36,11 +36,13 @@ desktop_in_files = Terminal.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
-xml_in_files = Terminal-default-apps.xml.in
-if DEFAULT_APPS_DEFINITION
-xmldir = $(DEFAULTAPPS_DIR)
-xml_DATA = $(xml_in_files:.xml.in=.xml)
+if HAVE_GNOME_DEFAULT_APPSDIR
+xmldir = $(GNOME_DEFAULT_APPSDIR)
+else
+xmldir = $(datadir)/gnome-control-center/default-apps
 endif
+xml_in_files = Terminal-default-apps.xml.in
+xml_DATA = $(xml_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
 man_MANS = Terminal.1
