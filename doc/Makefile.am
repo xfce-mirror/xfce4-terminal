@@ -38,6 +38,10 @@ uninstall-local:
 		fi \
 	done
 
+# remove generate html from the srcdir
+clean-local:
+	rm -rf $(srcdir)/html
+
 if GENERATE_DOCUMENTATION
 
 # regenerate po(t) files
