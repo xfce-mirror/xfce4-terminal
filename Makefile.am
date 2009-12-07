@@ -49,7 +49,7 @@ man_MANS = Terminal.1
 uidir = $(datadir)/Terminal
 ui_DATA = \
 	Terminal-toolbars.ui \
-	Terminal.ui
+	Terminal.glade
 
 EXTRA_DIST = \
 	HACKING \

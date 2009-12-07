@@ -112,7 +112,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* lookup the ui file */
   xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
-  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.ui");
+  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "Terminal/Terminal.glade");
   xfce_resource_pop_path (XFCE_RESOURCE_DATA);
 
   if (G_UNLIKELY (file == NULL))
