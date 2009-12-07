@@ -81,6 +81,11 @@ dist-check-doc: all
 
 else
 
+update-po:
+	@echo "*** You need to compile with --enable-gen-doc in order to update-po"
+	@echo "*** This requires both the xml2po and xsltproc executables"
+	@false
+
 html-build.stamp:
 	@if test ! -d $(srcdir)/html; then \
 		echo; \
