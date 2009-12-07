@@ -123,15 +123,13 @@ handle_message (DBusConnection *connection,
           reply = dbus_message_new_error (message,
                                           TERMINAL_DBUS_ERROR_GENERAL,
                                           error->message);
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
         }
       else
         {
           reply = dbus_message_new_method_return (message);
-          dbus_connection_send (connection, reply, NULL);
         }
 
+      dbus_connection_send (connection, reply, NULL);
       dbus_free_string_array (argv);
       dbus_message_unref (reply);
     }
