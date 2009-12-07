@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2009-08-25 21:28+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -598,22 +598,22 @@ msgstr "Isi"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "Tanpa judul"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Tidak dapat menentukan shell login anda."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "Gagal untuk mengeksekusi anak"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "Tutup tab ini"
 
@@ -638,7 +638,7 @@ msgid "Help"
 msgstr "Bantuan"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Nonaktifkan"
 
@@ -963,404 +963,510 @@ msgstr "Masukkan judul untuk tab terminal ini"
 msgid "Terminal Emulator"
 msgstr "Emulator Terminal"
 
-#~ msgid "$TERM s_etting:"
-#~ msgstr "P_engaturan $TERM:"
-
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
-
-#~ msgid "Ad_vanced"
-#~ msgstr "Ma_hir"
-
-#~ msgid "Allow bold te_xt"
-#~ msgstr "Izinkan te_ks tebal"
-
-#~ msgid "Auto-detect"
-#~ msgstr "Deteksi-otomatis"
-
-#~ msgid "Background"
-#~ msgstr "Latar belakang"
-
-#~ msgid "Background image"
-#~ msgstr "Gambar latar belakang"
-
-#~ msgid "Centered"
-#~ msgstr "Terpusat"
-
-#~ msgid "Choose Terminal Font"
-#~ msgstr "Pilih Fonta Terminal"
-
-#~ msgid "Choose tab activity color"
-#~ msgstr "Pilih warna aktivitas tab"
-
-#~ msgid "Choose terminal background color"
-#~ msgstr "Pilih warna latar belakang terminal"
-
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "Pilih warna kursor terminal"
-
-#~ msgid "Choose terminal text color"
-#~ msgstr "Pilih warna teks terminal"
-
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "Pilih warna latar belakang seleksi teks terminal"
-
-#~ msgid "Color Selector"
-#~ msgstr "Pemilih Warna"
-
-#~ msgid "Command"
-#~ msgstr "Perintah"
-
-#~ msgid "Compatibility"
-#~ msgstr "Kompatibilitas"
-
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr ""
-#~ "Pertimbangkan karakter berikut sebagai bagian _dari\n"
-#~ "kata ketika klik ganda:"
-
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
-
-#~ msgid "Cu_rsor color:"
-#~ msgstr "Wa_rna kursor:"
-
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "Nonaktifkan semua tombol akses me_nu (seperti Alt+f)"
-
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "Nonaktifkan tombol jalan pintas m_enu (F10 sebagai standar)"
-
-#~ msgid "Display _borders around new windows"
-#~ msgstr "Tampilkan _batas di sekeliling jendela baru"
-
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "Tampilkan batang _menu di jendela baru"
-
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "Tampilkan ba_tang alat di jendela baru"
-
-#~ msgid "Double Click"
-#~ msgstr "Klik Ganda"
-
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "Akti_fkan anti-alias untuk fonta terminal"
-
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "Aktifkan opsi ini jika anda ingin Terminal untuk menggunakan anti-alias "
-#~ "sewaktu render teks dalam jendela terminal. Menonaktifkan opsi ini dapat "
-#~ "meningkatkan kecepatan render terminal secara signifikan dan mengurangi "
-#~ "beban sistem secara keseluruhan pada sistem yang lebih lambat."
-
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr ""
-#~ "Aktifkan opsi ini agar aplikasi yang berjalan dalam jendela terminal "
-#~ "menggunakan teks tebal."
-
-#~ msgid ""
-#~ "Enable this option to be able to scroll by a single line using the up/"
-#~ "down arrow keys together with the Shift key."
-#~ msgstr ""
-#~ "Aktifkan opsi ini agar dapat menggulung satu baris menggunakan tombol "
-#~ "anak panah atas/bawah disertai dengan tombol Shift."
-
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr ""
-#~ "Aktifkan opsi ini untuk menunjukkan batang menu di jendela terminal yang "
-#~ "baru dibuat."
-
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr ""
-#~ "Aktifkan opsi ini untuk menunjukkan batang alat di jendela terminal yang "
-#~ "baru dibuat."
-
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr ""
-#~ "Aktifkan opsi ini untuk menunjukkan dekorasi jendela di sekeliling "
-#~ "jendela terminal yang baru dibuat."
-
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr ""
-#~ "Memungkinkan anda untuk menekan tombol apa saja pada papan ketika untuk "
-#~ "menggulung ke bawah ke siap ketik perintah pada jendela terminal."
-
-#~ msgid "Erase TTY"
-#~ msgstr "Hapus TTY"
-
-#~ msgid "Escape sequence"
-#~ msgstr "Sekuensi keluar"
-
-#~ msgid "Font"
-#~ msgstr "Fonta"
-
-#~ msgid "General"
-#~ msgstr "Umum"
-
-#~ msgid "Goes after initial title"
-#~ msgstr "Pergi ke setelah judul utama"
-
-#~ msgid "Goes before initial title"
-#~ msgstr "Pergi ke sebelum judul utama"
-
-#~ msgid "Isn't displayed"
-#~ msgstr "Tidak ditampilkan"
-
-#~ msgid "Menubar Access"
-#~ msgstr "Akses Batang Menu"
-
-#~ msgid "None (use solid color)"
-#~ msgstr "Tidak ada (gunakan warna solid)"
-
-#~ msgid "On the left side"
-#~ msgstr "Di sisi kiri"
-
-#~ msgid "On the right side"
-#~ msgstr "Di sisi kanan"
-
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "Buka dialog untuk menentukan warna"
-
-#~ msgid "Opening New Windows"
-#~ msgstr "Membuka Jendela Baru"
-
-#~ msgid "Palette"
-#~ msgstr "Palette"
-
-#~ msgid "Palette entry 1"
-#~ msgstr "Entri pallete 1"
-
-#~ msgid "Palette entry 10"
-#~ msgstr "Entri pallete 10"
-
-#~ msgid "Palette entry 11"
-#~ msgstr "Entri pallete 11"
-
-#~ msgid "Palette entry 12"
-#~ msgstr "Entri pallete 12"
-
-#~ msgid "Palette entry 13"
-#~ msgstr "Entri pallete 13"
-
-#~ msgid "Palette entry 14"
-#~ msgstr "Entri pallete 14"
-
-#~ msgid "Palette entry 15"
-#~ msgstr "Entri pallete 15"
-
-#~ msgid "Palette entry 16"
-#~ msgstr "Entri pallete 16"
-
-#~ msgid "Palette entry 2"
-#~ msgstr "Entri pallete 2"
-
-#~ msgid "Palette entry 3"
-#~ msgstr "Entri pallete 3"
-
-#~ msgid "Palette entry 4"
-#~ msgstr "Entri pallete 4"
-
-#~ msgid "Palette entry 5"
-#~ msgstr "Entri pallete 5"
-
-#~ msgid "Palette entry 6"
-#~ msgstr "Entri pallete 6"
-
-#~ msgid "Palette entry 7"
-#~ msgstr "Entri pallete 7"
-
-#~ msgid "Palette entry 8"
-#~ msgstr "Entri pallete 8"
-
-#~ msgid "Palette entry 9"
-#~ msgstr "Entri pallete 9"
-
-#~ msgid "Replaces initial title"
-#~ msgstr "Gantikan judul utama"
-
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "Atur ulang _indikator aktivitas tab setelah"
-
-#~ msgid "Scaled"
-#~ msgstr "Terskala"
-
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "Batang g_ulung adalah:"
-
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "Gulung pada stroke _kunci"
-
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "Gu_lung pada keluaran"
-
-#~ msgid "Scroll single _line using Shift-Up/-Down keys"
-#~ msgstr "_Gulung satu baris menggunakan tombol Shift-Up/-Down"
-
-#~ msgid "Scroll_back:"
-#~ msgstr "Gulung _balik:"
-
-#~ msgid "Scrolling"
-#~ msgstr "Menggulung"
-
-#~ msgid "Select Background Image File"
-#~ msgstr "Pilih Berkas Gambar Latar Belakang"
-
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "Pilih opsi ini untuk memaksa Terminal agar menjalankan shell anda sebagai "
-#~ "shell log masuk ketika anda membuka terminal baru. Lihat dokumentasi "
-#~ "shell anda untuk detail seputar perbedaan antara menjalankan shell "
-#~ "sebagai shell interaktif dan menjalankan shell sebagai shell log masuk."
-
-#~ msgid "Shortcut Keys"
-#~ msgstr "Tombol Jalan Pintas"
-
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr ""
-#~ "Tentukan jumlah baris yang dapat anda gulung balik menggunakan batang "
-#~ "gulung."
-
-#~ msgid "St_yle:"
-#~ msgstr "Ga_ya:"
-
-#~ msgid "Stretched"
-#~ msgstr "Tertarik"
-
-#~ msgid "Tab Activity Indicator"
-#~ msgstr "Indikator Aktivitas Tab"
-
-#~ msgid "Tab activit_y color:"
-#~ msgstr "Warna akti_vitas tab:"
-
-#~ msgid "Terminal Preferences"
-#~ msgstr "Pengaturan Terminal"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr ""
-#~ "Aplikasi terminal memiliki palet warna yang tersedia sebagai berikut:"
-
-#~ msgid "Text Selection"
-#~ msgstr "Seleksi Teks"
-
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "Opsi ini dapat menyebabkan beberapa aplikasi berperilaku\n"
-#~ "tidak seperti seharusnya. Opsi ini dibuat agar anda dapat bekerja\n"
-#~ "pada beberapa aplikasi dan sistem operasi tertentu yang mengharapkan\n"
-#~ "perilaku terminal yang berbeda."
-
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr ""
-#~ "Opsi ini mengendalikan apakah terminal akan menggulung ke bawah secara "
-#~ "otomatis tiap kali keluaran baru dibangkitkan oleh perintah yang berjalan "
-#~ "di dalam terminal."
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "Ini menerapkan nilai variabel lingkungan $TERM yang ditetapkan ketika tab "
-#~ "terminal baru atau jendela terminal dibuka. Standar yang ada cocok bagi "
-#~ "kebanyakan sistem. Jika anda mengalami masalah dengan warna pada beberapa "
-#~ "aplikasi, gunakan xterm-color disini."
-
-#~ msgid "Tiled"
-#~ msgstr "Ubin"
-
-#~ msgid "Title"
-#~ msgstr "Judul"
-
-#~ msgid "Transpare_ncy:"
-#~ msgstr "Transpara_nsi:"
-
-#~ msgid "Transparent background"
-#~ msgstr "Latar belakang transparan"
-
-#~ msgid "Use _default color"
-#~ msgstr "Gunakan warna stan_dar"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Gunakan warna latar belakang seleksi teks suai"
-
-#~ msgid "Use c_ustom color:"
-#~ msgstr "Gunakan warna _suai:"
-
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Gunakan warna latar belakang seleksi teks standar"
-
-#~ msgid "_Appearance"
-#~ msgstr "_Tampilan"
-
-#~ msgid "_Background color:"
-#~ msgstr "Warna Latar _Belakang:"
-
-#~ msgid "_Backspace key generates:"
-#~ msgstr "_Bangkitkan tombol spasi mundur:"
-
-#~ msgid "_Colors"
-#~ msgstr "_Warna"
-
-#~ msgid "_Delete key generates:"
-#~ msgstr "_Bangkitkan tombol hapus:"
-
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "Judul yang ditentukan secara _dinamis:"
-
-#~ msgid "_File:"
-#~ msgstr "_Berkas:"
-
-#~ msgid "_General"
-#~ msgstr "_Umum"
-
-#~ msgid "_Initial title:"
-#~ msgstr "_Judul utama:"
-
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "_Atur ulang opsi kompatibilitas ke standar"
-
-#~ msgid "_Run command as login shell"
-#~ msgstr "Ja_lankan perintah sebagai shell log masuk"
-
-#~ msgid "_Shortcuts"
-#~ msgstr "_Jalan Pintas"
-
-#~ msgid "_Text color:"
-#~ msgstr "_Warna teks:"
-
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "_Mutakhirkan catatan utmp/wtmp ketika perintah dijalankan"
-
-#~ msgid "seconds"
-#~ msgstr "detik"
+#: ../Terminal.glade.h:1
+msgid "$TERM s_etting:"
+msgstr "P_engaturan $TERM:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+msgid "Ad_vanced"
+msgstr "Ma_hir"
+
+#: ../Terminal.glade.h:4
+msgid "Allow bold te_xt"
+msgstr "Izinkan te_ks tebal"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Deteksi-otomatis"
+
+#: ../Terminal.glade.h:6
+msgid "Background"
+msgstr "Latar belakang"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Gambar latar belakang"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Terpusat"
+
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Pilih Fonta Terminal"
+
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "Pilih warna aktivitas tab"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Pilih warna latar belakang terminal"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Pilih warna kursor terminal"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Pilih warna teks terminal"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Pilih warna latar belakang seleksi teks terminal"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Pemilih Warna"
+
+#: ../Terminal.glade.h:16
+msgid "Command"
+msgstr "Perintah"
+
+#: ../Terminal.glade.h:17
+msgid "Compatibility"
+msgstr "Kompatibilitas"
+
+#: ../Terminal.glade.h:18
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr ""
+"Pertimbangkan karakter berikut sebagai bagian _dari\n"
+"kata ketika klik ganda:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Cu_rsor color:"
+msgstr "Wa_rna kursor:"
+
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Nonaktifkan semua tombol akses me_nu (seperti Alt+f)"
+
+#: ../Terminal.glade.h:23
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Nonaktifkan tombol jalan pintas m_enu (F10 sebagai standar)"
+
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "Tampilkan _batas di sekeliling jendela baru"
+
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "Tampilkan batang _menu di jendela baru"
+
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "Tampilkan ba_tang alat di jendela baru"
+
+#: ../Terminal.glade.h:28
+msgid "Double Click"
+msgstr "Klik Ganda"
+
+#: ../Terminal.glade.h:29
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Akti_fkan anti-alias untuk fonta terminal"
+
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Aktifkan opsi ini jika anda ingin Terminal untuk menggunakan anti-alias "
+"sewaktu render teks dalam jendela terminal. Menonaktifkan opsi ini dapat "
+"meningkatkan kecepatan render terminal secara signifikan dan mengurangi "
+"beban sistem secara keseluruhan pada sistem yang lebih lambat."
+
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Aktifkan opsi ini agar aplikasi yang berjalan dalam jendela terminal "
+"menggunakan teks tebal."
+
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Aktifkan opsi ini agar dapat menggulung satu baris menggunakan tombol anak "
+"panah atas/bawah disertai dengan tombol Shift."
+
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Aktifkan opsi ini untuk menunjukkan batang menu di jendela terminal yang "
+"baru dibuat."
+
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Aktifkan opsi ini untuk menunjukkan batang alat di jendela terminal yang "
+"baru dibuat."
+
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Aktifkan opsi ini untuk menunjukkan dekorasi jendela di sekeliling jendela "
+"terminal yang baru dibuat."
+
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Memungkinkan anda untuk menekan tombol apa saja pada papan ketika untuk "
+"menggulung ke bawah ke siap ketik perintah pada jendela terminal."
+
+#: ../Terminal.glade.h:37
+msgid "Erase TTY"
+msgstr "Hapus TTY"
+
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "Sekuensi keluar"
+
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr "Fonta"
+
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "Umum"
+
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "Pergi ke setelah judul utama"
+
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "Pergi ke sebelum judul utama"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "Tidak ditampilkan"
+
+#: ../Terminal.glade.h:44
+msgid "Menubar Access"
+msgstr "Akses Batang Menu"
+
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "Tidak ada (gunakan warna solid)"
+
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "Di sisi kiri"
+
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "Di sisi kanan"
+
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "Buka dialog untuk menentukan warna"
+
+#: ../Terminal.glade.h:49
+msgid "Opening New Windows"
+msgstr "Membuka Jendela Baru"
+
+#: ../Terminal.glade.h:50
+msgid "Palette"
+msgstr "Palette"
+
+#: ../Terminal.glade.h:51
+msgid "Palette entry 1"
+msgstr "Entri pallete 1"
+
+#: ../Terminal.glade.h:52
+msgid "Palette entry 10"
+msgstr "Entri pallete 10"
+
+#: ../Terminal.glade.h:53
+msgid "Palette entry 11"
+msgstr "Entri pallete 11"
+
+#: ../Terminal.glade.h:54
+msgid "Palette entry 12"
+msgstr "Entri pallete 12"
+
+#: ../Terminal.glade.h:55
+msgid "Palette entry 13"
+msgstr "Entri pallete 13"
+
+#: ../Terminal.glade.h:56
+msgid "Palette entry 14"
+msgstr "Entri pallete 14"
+
+#: ../Terminal.glade.h:57
+msgid "Palette entry 15"
+msgstr "Entri pallete 15"
+
+#: ../Terminal.glade.h:58
+msgid "Palette entry 16"
+msgstr "Entri pallete 16"
+
+#: ../Terminal.glade.h:59
+msgid "Palette entry 2"
+msgstr "Entri pallete 2"
+
+#: ../Terminal.glade.h:60
+msgid "Palette entry 3"
+msgstr "Entri pallete 3"
+
+#: ../Terminal.glade.h:61
+msgid "Palette entry 4"
+msgstr "Entri pallete 4"
+
+#: ../Terminal.glade.h:62
+msgid "Palette entry 5"
+msgstr "Entri pallete 5"
+
+#: ../Terminal.glade.h:63
+msgid "Palette entry 6"
+msgstr "Entri pallete 6"
+
+#: ../Terminal.glade.h:64
+msgid "Palette entry 7"
+msgstr "Entri pallete 7"
+
+#: ../Terminal.glade.h:65
+msgid "Palette entry 8"
+msgstr "Entri pallete 8"
+
+#: ../Terminal.glade.h:66
+msgid "Palette entry 9"
+msgstr "Entri pallete 9"
+
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "Gantikan judul utama"
+
+#: ../Terminal.glade.h:68
+msgid "Reset tab activity _indicator after"
+msgstr "Atur ulang _indikator aktivitas tab setelah"
+
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "Terskala"
+
+#: ../Terminal.glade.h:70
+msgid "Scr_ollbar is:"
+msgstr "Batang g_ulung adalah:"
+
+#: ../Terminal.glade.h:71
+msgid "Scroll on _keystroke"
+msgstr "Gulung pada stroke _kunci"
+
+#: ../Terminal.glade.h:72
+msgid "Scroll on ou_tput"
+msgstr "Gu_lung pada keluaran"
+
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "_Gulung satu baris menggunakan tombol Shift-Up/-Down"
+
+#: ../Terminal.glade.h:74
+msgid "Scroll_back:"
+msgstr "Gulung _balik:"
+
+#: ../Terminal.glade.h:75
+msgid "Scrolling"
+msgstr "Menggulung"
+
+#: ../Terminal.glade.h:76
+msgid "Select Background Image File"
+msgstr "Pilih Berkas Gambar Latar Belakang"
+
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Pilih opsi ini untuk memaksa Terminal agar menjalankan shell anda sebagai "
+"shell log masuk ketika anda membuka terminal baru. Lihat dokumentasi shell "
+"anda untuk detail seputar perbedaan antara menjalankan shell sebagai shell "
+"interaktif dan menjalankan shell sebagai shell log masuk."
+
+#: ../Terminal.glade.h:78
+msgid "Shortcut Keys"
+msgstr "Tombol Jalan Pintas"
+
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Tentukan jumlah baris yang dapat anda gulung balik menggunakan batang gulung."
+
+#: ../Terminal.glade.h:80
+msgid "St_yle:"
+msgstr "Ga_ya:"
+
+#: ../Terminal.glade.h:81
+msgid "Stretched"
+msgstr "Tertarik"
+
+#: ../Terminal.glade.h:82
+msgid "Tab Activity Indicator"
+msgstr "Indikator Aktivitas Tab"
+
+#: ../Terminal.glade.h:83
+msgid "Tab activit_y color:"
+msgstr "Warna akti_vitas tab:"
+
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "Pengaturan Terminal"
+
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Aplikasi terminal memiliki palet warna yang tersedia sebagai berikut:"
+
+#: ../Terminal.glade.h:86
+msgid "Text Selection"
+msgstr "Seleksi Teks"
+
+#: ../Terminal.glade.h:87
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Opsi ini dapat menyebabkan beberapa aplikasi berperilaku\n"
+"tidak seperti seharusnya. Opsi ini dibuat agar anda dapat bekerja\n"
+"pada beberapa aplikasi dan sistem operasi tertentu yang mengharapkan\n"
+"perilaku terminal yang berbeda."
+
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Opsi ini mengendalikan apakah terminal akan menggulung ke bawah secara "
+"otomatis tiap kali keluaran baru dibangkitkan oleh perintah yang berjalan di "
+"dalam terminal."
+
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Ini menerapkan nilai variabel lingkungan $TERM yang ditetapkan ketika tab "
+"terminal baru atau jendela terminal dibuka. Standar yang ada cocok bagi "
+"kebanyakan sistem. Jika anda mengalami masalah dengan warna pada beberapa "
+"aplikasi, gunakan xterm-color disini."
+
+#: ../Terminal.glade.h:93
+msgid "Tiled"
+msgstr "Ubin"
+
+#: ../Terminal.glade.h:94
+msgid "Title"
+msgstr "Judul"
+
+#: ../Terminal.glade.h:95
+msgid "Transpare_ncy:"
+msgstr "Transpara_nsi:"
+
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "Latar belakang transparan"
+
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "Gunakan warna stan_dar"
+
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "Gunakan warna latar belakang seleksi teks suai"
+
+#: ../Terminal.glade.h:99
+msgid "Use c_ustom color:"
+msgstr "Gunakan warna _suai:"
+
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "Gunakan warna latar belakang seleksi teks standar"
+
+#: ../Terminal.glade.h:101
+msgid "_Appearance"
+msgstr "_Tampilan"
+
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "Warna Latar _Belakang:"
+
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "_Bangkitkan tombol spasi mundur:"
+
+#: ../Terminal.glade.h:104
+msgid "_Colors"
+msgstr "_Warna"
+
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "_Bangkitkan tombol hapus:"
+
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "Judul yang ditentukan secara _dinamis:"
+
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "_Berkas:"
+
+#: ../Terminal.glade.h:108
+msgid "_General"
+msgstr "_Umum"
+
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "_Judul utama:"
+
+#: ../Terminal.glade.h:110
+msgid "_Reset compatibility options to defaults"
+msgstr "_Atur ulang opsi kompatibilitas ke standar"
+
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "Ja_lankan perintah sebagai shell log masuk"
+
+#: ../Terminal.glade.h:112
+msgid "_Shortcuts"
+msgstr "_Jalan Pintas"
+
+#: ../Terminal.glade.h:113
+msgid "_Text color:"
+msgstr "_Warna teks:"
+
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Mutakhirkan catatan utmp/wtmp ketika perintah dijalankan"
+
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr "detik"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Judul:</b>"

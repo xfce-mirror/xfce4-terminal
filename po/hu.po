@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2009-07-07 11:55+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at gnome dot hu>\n"
@@ -590,22 +590,22 @@ msgstr "Tartalom"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "Névtelen"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nem határozható meg a bejelentkezési parancsértelmező."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "A gyermeg végrehajtása meghiúsult"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "Ezen lap bezárása"
 
@@ -630,7 +630,7 @@ msgid "Help"
 msgstr "Súgó"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Tiltva"
 
@@ -952,393 +952,500 @@ msgstr "Adja meg az aktuális terminállap címét"
 msgid "Terminal Emulator"
 msgstr "Terminálemulátor"
 
-#~ msgid "$TERM s_etting:"
-#~ msgstr "$TERM b_eállítás:"
-
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
-
-#~ msgid "Ad_vanced"
-#~ msgstr "Spe_ciális"
-
-#~ msgid "Allow bold te_xt"
-#~ msgstr "_Félkövér szöveg engedélyezése"
-
-#~ msgid "Auto-detect"
-#~ msgstr "Automatikus felismerés"
-
-#~ msgid "Background"
-#~ msgstr "Háttér"
-
-#~ msgid "Background image"
-#~ msgstr "Háttérkép"
-
-#~ msgid "Centered"
-#~ msgstr "Középre helyezett"
-
-#~ msgid "Choose Terminal Font"
-#~ msgstr "Válasszon terminál-betűkészletet"
-
-#~ msgid "Choose tab activity color"
-#~ msgstr "Válassza ki a lapaktivitás színét"
-
-#~ msgid "Choose terminal background color"
-#~ msgstr "Válassza ki a terminál háttérszínét"
-
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "Válassza ki a terminál kurzorszínét"
-
-#~ msgid "Choose terminal text color"
-#~ msgstr "Válassza ki a terminál szövegszínét"
-
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "Válassza ki a terminál szövegkijelölésének háttérszínét"
-
-#~ msgid "Color Selector"
-#~ msgstr "Színválasztó"
-
-#~ msgid "Command"
-#~ msgstr "Parancs"
-
-#~ msgid "Compatibility"
-#~ msgstr "Kompatibilitás"
-
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr ""
-#~ "A kö_vetkező karaktereket vegye a szó részének\n"
-#~ "dupla kattintáskor:"
-
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
-
-#~ msgid "Cu_rsor color:"
-#~ msgstr "K_urzor színe:"
-
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "_Minden hívóbetű letiltása a menühöz (például: Alt+f)"
-
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "Me_nü gyorsbillentyűinek letiltása (alapértelmezésben F10)"
-
-#~ msgid "Display _borders around new windows"
-#~ msgstr "Új ablakok s_zegélyének megjelenítése"
-
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "Menüs_or megjelenítése új ablakokban"
-
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "_Eszköztárak megjelenítése új ablakokban"
-
-#~ msgid "Double Click"
-#~ msgstr "Dupla kattintás"
-
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "Él_simítás engedélyezése a terminál betűkészletén"
-
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "A Terminál használjon-e élsimítást a szöveg megjelenítéséhez a "
-#~ "terminálablakokban. Ezen beállítás kikapcsolása jelentősen gyorsíthatja a "
-#~ "terminál megjelenítési teljesítményét és csökkentheti az általános "
-#~ "rendszerterhelést lassú gépeken."
-
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr ""
-#~ "A terminálablakon belül futó alkalmazások használhatnak félkövér betűket."
-
-#~ msgid ""
-#~ "Enable this option to be able to scroll by a single line using the up/"
-#~ "down arrow keys together with the Shift key."
-#~ msgstr ""
-#~ "A Shift+fel/le nyilakat egyszerre lenyomva soronként lehessen görgetni."
-
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr "A menüsor megjelenítése újonnan létrehozott terminálablakokban."
-
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr "Eszköztárak megjelenítése újonnan létrehozott terminálablakokban."
-
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr ""
-#~ "Ablakdíszítések megjelenítése újonnan létrehozott terminálablakok körül."
-
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr ""
-#~ "Lehetővé teszi a legörgetést a terminálablakban a parancssorig bármely "
-#~ "billentyű lenyomásával."
-
-#~ msgid "Erase TTY"
-#~ msgstr "Terminál törlése"
-
-#~ msgid "Escape sequence"
-#~ msgstr "Escape sorozat"
-
-#~ msgid "Font"
-#~ msgstr "Betűkészlet"
-
-#~ msgid "General"
-#~ msgstr "Általános"
-
-#~ msgid "Goes after initial title"
-#~ msgstr "Az eredeti cím mögé kerül"
-
-#~ msgid "Goes before initial title"
-#~ msgstr "Az eredeti cím elé kerül"
-
-#~ msgid "Isn't displayed"
-#~ msgstr "Nem jelenik meg"
-
-#~ msgid "Menubar Access"
-#~ msgstr "Menüsáv elérése"
-
-#~ msgid "None (use solid color)"
-#~ msgstr "Nincs (homogén szín)"
-
-#~ msgid "On the left side"
-#~ msgstr "Bal oldalon"
-
-#~ msgid "On the right side"
-#~ msgstr "Jobb oldalon"
-
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "Párbeszédablak megnyitása a szín megadásához"
-
-#~ msgid "Opening New Windows"
-#~ msgstr "Új ablakok megnyitása"
-
-#~ msgid "Palette"
-#~ msgstr "Paletta"
-
-#~ msgid "Palette entry 1"
-#~ msgstr "1. palettabejegyzés"
-
-#~ msgid "Palette entry 10"
-#~ msgstr "10. palettabejegyzés"
-
-#~ msgid "Palette entry 11"
-#~ msgstr "11. palettabejegyzés"
-
-#~ msgid "Palette entry 12"
-#~ msgstr "12. palettabejegyzés"
-
-#~ msgid "Palette entry 13"
-#~ msgstr "13. palettabejegyzés"
-
-#~ msgid "Palette entry 14"
-#~ msgstr "14. palettabejegyzés"
-
-#~ msgid "Palette entry 15"
-#~ msgstr "15. palettabejegyzés"
-
-#~ msgid "Palette entry 16"
-#~ msgstr "16. palettabejegyzés"
-
-#~ msgid "Palette entry 2"
-#~ msgstr "2. palettabejegyzés"
-
-#~ msgid "Palette entry 3"
-#~ msgstr "3. palettabejegyzés"
-
-#~ msgid "Palette entry 4"
-#~ msgstr "4. palettabejegyzés"
-
-#~ msgid "Palette entry 5"
-#~ msgstr "5. palettabejegyzés"
-
-#~ msgid "Palette entry 6"
-#~ msgstr "6. palettabejegyzés"
-
-#~ msgid "Palette entry 7"
-#~ msgstr "7. palettabejegyzés"
-
-#~ msgid "Palette entry 8"
-#~ msgstr "8. palettabejegyzés"
-
-#~ msgid "Palette entry 9"
-#~ msgstr "9. palettabejegyzés"
-
-#~ msgid "Replaces initial title"
-#~ msgstr "Lecseréli az eredeti címet"
-
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "Lapa_ktivitás jelzőjének kikapcsolása"
-
-#~ msgid "Scaled"
-#~ msgstr "Kifeszített"
-
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "A gö_rdítősáv:"
-
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "_Billentyűleütésre gördül"
-
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "Új _kimenethez gördül"
-
-#~ msgid "Scroll single _line using Shift-Up/-Down keys"
-#~ msgstr "Görgetés _egy sorral a Shift+fel/le billentyűkkel"
-
-#~ msgid "Scroll_back:"
-#~ msgstr "_Visszagördítés:"
-
-#~ msgid "Scrolling"
-#~ msgstr "Gördülés"
-
-#~ msgid "Select Background Image File"
-#~ msgstr "Válasszon háttérképfájlt"
-
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "A Terminál a parancsértelmezőt bejelentkezési parancsértelmezőként "
-#~ "futtassa új terminál nyitásakor. A parancsértelmező interaktív és "
-#~ "bejelentkezési módban futtatása közti különbségekkel kapcsolatban nézze "
-#~ "meg a parancsértelmező kézikönyvét."
-
-#~ msgid "Shortcut Keys"
-#~ msgstr "Gyorsbillentyűk"
-
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr "Megadja a sorok számát, amennyit a görgetősávval visszagörgethet."
-
-#~ msgid "St_yle:"
-#~ msgstr "Stíl_us:"
-
-#~ msgid "Stretched"
-#~ msgstr "Kifeszített"
-
-#~ msgid "Tab Activity Indicator"
-#~ msgstr "Lapaktivitás jelzője"
-
-#~ msgid "Tab activit_y color:"
-#~ msgstr "_Lapaktivitás színe:"
-
-#~ msgid "Terminal Preferences"
-#~ msgstr "Terminál beállításai"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr "A terminálalkalmazások számára ez a színpaletta érhető el:"
-
-#~ msgid "Text Selection"
-#~ msgstr "Szövegkijelölés"
-
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "Ezek a beállítások néhány program helytelen működését eredményezhetik.\n"
-#~ "Csak azért vannak itt, hogy biztosítsák a terminál bizonyos programokkal\n"
-#~ "és operációs rendszerekkel való együttműködését, amelyek más igényeket\n"
-#~ "támasztanak a terminállal szemben."
-
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr ""
-#~ "A terminál legördüljön-e automatikusan, amikor a terminálban futó "
-#~ "parancsok új kimenetet állítanak elő."
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "A $TERM környezeti változó értékének megadása új terminállap vagy -ablak "
-#~ "nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes "
-#~ "alkalmazások színeivel probléma van, próbálja megadni az xterm-color "
-#~ "értéket."
-
-#~ msgid "Tiled"
-#~ msgstr "Mozaik"
-
-#~ msgid "Title"
-#~ msgstr "Cím"
-
-#~ msgid "Transpare_ncy:"
-#~ msgstr "Á_tlátszóság:"
-
-#~ msgid "Transparent background"
-#~ msgstr "Átlátszó háttér"
-
-#~ msgid "Use _default color"
-#~ msgstr "_Alapértelmezett szín használata"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Egyéni háttérszín használata a kijelölt szöveghez"
-
-#~ msgid "Use c_ustom color:"
-#~ msgstr "_Egyéni szín használata:"
-
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Alapértelmezett háttérszín használata a kijelölt szöveghez"
-
-#~ msgid "_Appearance"
-#~ msgstr "_Megjelenés"
-
-#~ msgid "_Background color:"
-#~ msgstr "_Háttérszín:"
-
-#~ msgid "_Backspace key generates:"
-#~ msgstr "A Ba_ckspace billentyű ezt generálja:"
-
-#~ msgid "_Colors"
-#~ msgstr "_Színek"
-
-#~ msgid "_Delete key generates:"
-#~ msgstr "A _Delete billentyű ezt generálja:"
-
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "_Dinamikusan beállított cím:"
-
-#~ msgid "_File:"
-#~ msgstr "_Fájl:"
-
-#~ msgid "_General"
-#~ msgstr "Á_ltalános"
-
-#~ msgid "_Initial title:"
-#~ msgstr "_Kiindulási cím:"
-
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
-
-#~ msgid "_Run command as login shell"
-#~ msgstr "_Parancs futtatása bejelentkezési parancsértelmezőként"
-
-#~ msgid "_Shortcuts"
-#~ msgstr "_Gyorsbillentyűk"
-
-#~ msgid "_Text color:"
-#~ msgstr "_Szövegszín:"
-
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "Parancs indításakor az _utmp/wtmp rekordok frissítése"
-
-#~ msgid "seconds"
-#~ msgstr "másodperc"
+#: ../Terminal.glade.h:1
+msgid "$TERM s_etting:"
+msgstr "$TERM b_eállítás:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+msgid "Ad_vanced"
+msgstr "Spe_ciális"
+
+#: ../Terminal.glade.h:4
+msgid "Allow bold te_xt"
+msgstr "_Félkövér szöveg engedélyezése"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Automatikus felismerés"
+
+#: ../Terminal.glade.h:6
+msgid "Background"
+msgstr "Háttér"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Háttérkép"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Középre helyezett"
+
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Válasszon terminál-betűkészletet"
+
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "Válassza ki a lapaktivitás színét"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Válassza ki a terminál háttérszínét"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Válassza ki a terminál kurzorszínét"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Válassza ki a terminál szövegszínét"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Válassza ki a terminál szövegkijelölésének háttérszínét"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Színválasztó"
+
+#: ../Terminal.glade.h:16
+msgid "Command"
+msgstr "Parancs"
+
+#: ../Terminal.glade.h:17
+msgid "Compatibility"
+msgstr "Kompatibilitás"
+
+#: ../Terminal.glade.h:18
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr ""
+"A kö_vetkező karaktereket vegye a szó részének\n"
+"dupla kattintáskor:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Cu_rsor color:"
+msgstr "K_urzor színe:"
+
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "_Minden hívóbetű letiltása a menühöz (például: Alt+f)"
+
+#: ../Terminal.glade.h:23
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Me_nü gyorsbillentyűinek letiltása (alapértelmezésben F10)"
+
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "Új ablakok s_zegélyének megjelenítése"
+
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "Menüs_or megjelenítése új ablakokban"
+
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "_Eszköztárak megjelenítése új ablakokban"
+
+#: ../Terminal.glade.h:28
+msgid "Double Click"
+msgstr "Dupla kattintás"
+
+#: ../Terminal.glade.h:29
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Él_simítás engedélyezése a terminál betűkészletén"
+
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"A Terminál használjon-e élsimítást a szöveg megjelenítéséhez a "
+"terminálablakokban. Ezen beállítás kikapcsolása jelentősen gyorsíthatja a "
+"terminál megjelenítési teljesítményét és csökkentheti az általános "
+"rendszerterhelést lassú gépeken."
+
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"A terminálablakon belül futó alkalmazások használhatnak félkövér betűket."
+
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"A Shift+fel/le nyilakat egyszerre lenyomva soronként lehessen görgetni."
+
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "A menüsor megjelenítése újonnan létrehozott terminálablakokban."
+
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Eszköztárak megjelenítése újonnan létrehozott terminálablakokban."
+
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Ablakdíszítések megjelenítése újonnan létrehozott terminálablakok körül."
+
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Lehetővé teszi a legörgetést a terminálablakban a parancssorig bármely "
+"billentyű lenyomásával."
+
+#: ../Terminal.glade.h:37
+msgid "Erase TTY"
+msgstr "Terminál törlése"
+
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "Escape sorozat"
+
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr "Betűkészlet"
+
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "Általános"
+
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "Az eredeti cím mögé kerül"
+
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "Az eredeti cím elé kerül"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "Nem jelenik meg"
+
+#: ../Terminal.glade.h:44
+msgid "Menubar Access"
+msgstr "Menüsáv elérése"
+
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "Nincs (homogén szín)"
+
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "Bal oldalon"
+
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "Jobb oldalon"
+
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "Párbeszédablak megnyitása a szín megadásához"
+
+#: ../Terminal.glade.h:49
+msgid "Opening New Windows"
+msgstr "Új ablakok megnyitása"
+
+#: ../Terminal.glade.h:50
+msgid "Palette"
+msgstr "Paletta"
+
+#: ../Terminal.glade.h:51
+msgid "Palette entry 1"
+msgstr "1. palettabejegyzés"
+
+#: ../Terminal.glade.h:52
+msgid "Palette entry 10"
+msgstr "10. palettabejegyzés"
+
+#: ../Terminal.glade.h:53
+msgid "Palette entry 11"
+msgstr "11. palettabejegyzés"
+
+#: ../Terminal.glade.h:54
+msgid "Palette entry 12"
+msgstr "12. palettabejegyzés"
+
+#: ../Terminal.glade.h:55
+msgid "Palette entry 13"
+msgstr "13. palettabejegyzés"
+
+#: ../Terminal.glade.h:56
+msgid "Palette entry 14"
+msgstr "14. palettabejegyzés"
+
+#: ../Terminal.glade.h:57
+msgid "Palette entry 15"
+msgstr "15. palettabejegyzés"
+
+#: ../Terminal.glade.h:58
+msgid "Palette entry 16"
+msgstr "16. palettabejegyzés"
+
+#: ../Terminal.glade.h:59
+msgid "Palette entry 2"
+msgstr "2. palettabejegyzés"
+
+#: ../Terminal.glade.h:60
+msgid "Palette entry 3"
+msgstr "3. palettabejegyzés"
+
+#: ../Terminal.glade.h:61
+msgid "Palette entry 4"
+msgstr "4. palettabejegyzés"
+
+#: ../Terminal.glade.h:62
+msgid "Palette entry 5"
+msgstr "5. palettabejegyzés"
+
+#: ../Terminal.glade.h:63
+msgid "Palette entry 6"
+msgstr "6. palettabejegyzés"
+
+#: ../Terminal.glade.h:64
+msgid "Palette entry 7"
+msgstr "7. palettabejegyzés"
+
+#: ../Terminal.glade.h:65
+msgid "Palette entry 8"
+msgstr "8. palettabejegyzés"
+
+#: ../Terminal.glade.h:66
+msgid "Palette entry 9"
+msgstr "9. palettabejegyzés"
+
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "Lecseréli az eredeti címet"
+
+#: ../Terminal.glade.h:68
+msgid "Reset tab activity _indicator after"
+msgstr "Lapa_ktivitás jelzőjének kikapcsolása"
+
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "Kifeszített"
+
+#: ../Terminal.glade.h:70
+msgid "Scr_ollbar is:"
+msgstr "A gö_rdítősáv:"
+
+#: ../Terminal.glade.h:71
+msgid "Scroll on _keystroke"
+msgstr "_Billentyűleütésre gördül"
+
+#: ../Terminal.glade.h:72
+msgid "Scroll on ou_tput"
+msgstr "Új _kimenethez gördül"
+
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Görgetés _egy sorral a Shift+fel/le billentyűkkel"
+
+#: ../Terminal.glade.h:74
+msgid "Scroll_back:"
+msgstr "_Visszagördítés:"
+
+#: ../Terminal.glade.h:75
+msgid "Scrolling"
+msgstr "Gördülés"
+
+#: ../Terminal.glade.h:76
+msgid "Select Background Image File"
+msgstr "Válasszon háttérképfájlt"
+
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"A Terminál a parancsértelmezőt bejelentkezési parancsértelmezőként futtassa "
+"új terminál nyitásakor. A parancsértelmező interaktív és bejelentkezési "
+"módban futtatása közti különbségekkel kapcsolatban nézze meg a "
+"parancsértelmező kézikönyvét."
+
+#: ../Terminal.glade.h:78
+msgid "Shortcut Keys"
+msgstr "Gyorsbillentyűk"
+
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Megadja a sorok számát, amennyit a görgetősávval visszagörgethet."
+
+#: ../Terminal.glade.h:80
+msgid "St_yle:"
+msgstr "Stíl_us:"
+
+#: ../Terminal.glade.h:81
+msgid "Stretched"
+msgstr "Kifeszített"
+
+#: ../Terminal.glade.h:82
+msgid "Tab Activity Indicator"
+msgstr "Lapaktivitás jelzője"
+
+#: ../Terminal.glade.h:83
+msgid "Tab activit_y color:"
+msgstr "_Lapaktivitás színe:"
+
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "Terminál beállításai"
+
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "A terminálalkalmazások számára ez a színpaletta érhető el:"
+
+#: ../Terminal.glade.h:86
+msgid "Text Selection"
+msgstr "Szövegkijelölés"
+
+#: ../Terminal.glade.h:87
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Ezek a beállítások néhány program helytelen működését eredményezhetik.\n"
+"Csak azért vannak itt, hogy biztosítsák a terminál bizonyos programokkal\n"
+"és operációs rendszerekkel való együttműködését, amelyek más igényeket\n"
+"támasztanak a terminállal szemben."
+
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"A terminál legördüljön-e automatikusan, amikor a terminálban futó parancsok "
+"új kimenetet állítanak elő."
+
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"A $TERM környezeti változó értékének megadása új terminállap vagy -ablak "
+"nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes "
+"alkalmazások színeivel probléma van, próbálja megadni az xterm-color értéket."
+
+#: ../Terminal.glade.h:93
+msgid "Tiled"
+msgstr "Mozaik"
+
+#: ../Terminal.glade.h:94
+msgid "Title"
+msgstr "Cím"
+
+#: ../Terminal.glade.h:95
+msgid "Transpare_ncy:"
+msgstr "Á_tlátszóság:"
+
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "Átlátszó háttér"
+
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "_Alapértelmezett szín használata"
+
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "Egyéni háttérszín használata a kijelölt szöveghez"
+
+#: ../Terminal.glade.h:99
+msgid "Use c_ustom color:"
+msgstr "_Egyéni szín használata:"
+
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "Alapértelmezett háttérszín használata a kijelölt szöveghez"
+
+#: ../Terminal.glade.h:101
+msgid "_Appearance"
+msgstr "_Megjelenés"
+
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "_Háttérszín:"
+
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "A Ba_ckspace billentyű ezt generálja:"
+
+#: ../Terminal.glade.h:104
+msgid "_Colors"
+msgstr "_Színek"
+
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "A _Delete billentyű ezt generálja:"
+
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "_Dinamikusan beállított cím:"
+
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "_Fájl:"
+
+#: ../Terminal.glade.h:108
+msgid "_General"
+msgstr "Á_ltalános"
+
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "_Kiindulási cím:"
+
+#: ../Terminal.glade.h:110
+msgid "_Reset compatibility options to defaults"
+msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
+
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "_Parancs futtatása bejelentkezési parancsértelmezőként"
+
+#: ../Terminal.glade.h:112
+msgid "_Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: ../Terminal.glade.h:113
+msgid "_Text color:"
+msgstr "_Szövegszín:"
+
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "Parancs indításakor az _utmp/wtmp rekordok frissítése"
+
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr "másodperc"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Cím:</b>"

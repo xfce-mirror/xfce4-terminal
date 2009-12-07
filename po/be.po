@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2008-11-18 01:02+0200\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -573,22 +573,22 @@ msgstr "Зьмест"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "Бяз назвы"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Немагчыма вызначыць вашую абалонку"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "Немагчыма запусьціць нашчадка"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "Закрыць гэтую ўкладку"
 
@@ -613,7 +613,7 @@ msgid "Help"
 msgstr "Даведка"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "выключаны"
 
@@ -938,440 +938,554 @@ msgstr "Увядзіце назву для бягучай укладкі тэр�
 msgid "Terminal Emulator"
 msgstr "Эмулятар тэрмінала"
 
+#: ../Terminal.glade.h:1
 #, fuzzy
-#~ msgid "$TERM s_etting:"
-#~ msgstr "Значэньне <tt>$TERM</tt>:"
+msgid "$TERM s_etting:"
+msgstr "Значэньне <tt>$TERM</tt>:"
 
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
 
+#: ../Terminal.glade.h:3
 #, fuzzy
-#~ msgid "Ad_vanced"
-#~ msgstr "Пашыраныя"
+msgid "Ad_vanced"
+msgstr "Пашыраныя"
 
+#: ../Terminal.glade.h:4
 #, fuzzy
-#~ msgid "Allow bold te_xt"
-#~ msgstr "Дазволіць тлусты тэкст"
+msgid "Allow bold te_xt"
+msgstr "Дазволіць тлусты тэкст"
 
-#~ msgid "Auto-detect"
-#~ msgstr "Аўта-вызначэньне"
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Аўта-вызначэньне"
 
+#: ../Terminal.glade.h:6
 #, fuzzy
-#~ msgid "Background"
-#~ msgstr "Відарыс для тла"
+msgid "Background"
+msgstr "Відарыс для тла"
 
-#~ msgid "Background image"
-#~ msgstr "Відарыс для тла"
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Відарыс для тла"
 
-#~ msgid "Centered"
-#~ msgstr "ў цэнтры"
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "ў цэнтры"
 
-#~ msgid "Choose Terminal Font"
-#~ msgstr "Выбар шрыфту Тэрмінала"
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Выбар шрыфту Тэрмінала"
 
-#~ msgid "Choose tab activity color"
-#~ msgstr "Вылучыце колер актыўнасьці ўкладкі"
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "Вылучыце колер актыўнасьці ўкладкі"
 
-#~ msgid "Choose terminal background color"
-#~ msgstr "Вылучыце колер тла тэрмінала"
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Вылучыце колер тла тэрмінала"
 
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "Вылучыце колер курсора"
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Вылучыце колер курсора"
 
-#~ msgid "Choose terminal text color"
-#~ msgstr "Вылучыце колер тэксту тэрмінала"
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Вылучыце колер тэксту тэрмінала"
 
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "Абярыце колер тла для вылучанага тэксту"
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Абярыце колер тла для вылучанага тэксту"
 
-#~ msgid "Color Selector"
-#~ msgstr "Вылучэньне колеру"
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Вылучэньне колеру"
 
+#: ../Terminal.glade.h:16
 #, fuzzy
-#~ msgid "Command"
-#~ msgstr "<b>Загад</b>"
+msgid "Command"
+msgstr "<b>Загад</b>"
 
+#: ../Terminal.glade.h:17
 #, fuzzy
-#~ msgid "Compatibility"
-#~ msgstr "<b>Сумяшчальнасьць</b>"
+msgid "Compatibility"
+msgstr "<b>Сумяшчальнасьць</b>"
 
+#: ../Terminal.glade.h:18
 #, fuzzy
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr ""
-#~ "Наступныя сымбалі зьяўляюцца часткамі словаў (будуць вылучаны двайной "
-#~ "пстрычкай):"
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr ""
+"Наступныя сымбалі зьяўляюцца часткамі словаў (будуць вылучаны двайной "
+"пстрычкай):"
 
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
 
+#: ../Terminal.glade.h:21
 #, fuzzy
-#~ msgid "Cu_rsor color:"
-#~ msgstr "Колер _тэкста і курсора"
+msgid "Cu_rsor color:"
+msgstr "Колер _тэкста і курсора"
 
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "Адклчыць у_се клявішы доступу да мэню"
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Адклчыць у_се клявішы доступу да мэню"
 
+#: ../Terminal.glade.h:23
 #, fuzzy
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "Адключыць клявішу _мэню (звычайна, F10)"
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Адключыць клявішу _мэню (звычайна, F10)"
 
-#~ msgid "Display _borders around new windows"
-#~ msgstr "Адлюстроўваць мя_жу вако новых вокнаў"
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "Адлюстроўваць мя_жу вако новых вокнаў"
 
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "Адлюстроўваць _мэню ў новых вокнах"
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "Адлюстроўваць _мэню ў новых вокнах"
 
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "Адлюстроўваць _панэль сродкаў у новых вокнах"
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "Адлюстроўваць _панэль сродкаў у новых вокнах"
 
+#: ../Terminal.glade.h:28
 #, fuzzy
-#~ msgid "Double Click"
-#~ msgstr "<b>Падвоеная пстрычка</b>"
+msgid "Double Click"
+msgstr "<b>Падвоеная пстрычка</b>"
 
+#: ../Terminal.glade.h:29
 #, fuzzy
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "Уключыць згладжваньне"
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Уключыць згладжваньне"
 
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "Уключыце гэта, калі вы жадаеце, каб Тэрмінал выкарыстоўваў згладжаны "
-#~ "тэкст. Калі вы адключыце гэтую опцыю, гэта павялічыць хуткасьць вываду і "
-#~ "паменшыць загрузку ЦП на слабых сыстэмах."
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Уключыце гэта, калі вы жадаеце, каб Тэрмінал выкарыстоўваў згладжаны тэкст. "
+"Калі вы адключыце гэтую опцыю, гэта павялічыць хуткасьць вываду і паменшыць "
+"загрузку ЦП на слабых сыстэмах."
 
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr ""
-#~ "Калі гэтая опцыя ўключана, дастасаваньні ўнутры тэрмінала могуць "
-#~ "выкарыстоўваць тлусты тэкст."
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Калі гэтая опцыя ўключана, дастасаваньні ўнутры тэрмінала могуць "
+"выкарыстоўваць тлусты тэкст."
 
-#~ msgid ""
-#~ "Enable this option to be able to scroll by a single line using the up/"
-#~ "down arrow keys together with the Shift key."
-#~ msgstr ""
-#~ "Уключыце гэтую опцыю, каб мець магчымасьць пракручваць адзін радок з "
-#~ "дапамогай стрэлак і клявішы Shift."
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Уключыце гэтую опцыю, каб мець магчымасьць пракручваць адзін радок з "
+"дапамогай стрэлак і клявішы Shift."
 
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr ""
-#~ "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець радок мэню."
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець радок мэню."
 
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr ""
-#~ "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець панэль "
-#~ "інструмэнтаў."
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець панэль "
+"інструмэнтаў."
 
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець рамку."
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець рамку."
 
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr ""
-#~ "Уключае магчымасьць пракруткі тэрміналу ўніз, да зьяўленьня загаднага "
-#~ "радка, у адказ на націск любой клявішы."
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Уключае магчымасьць пракруткі тэрміналу ўніз, да зьяўленьня загаднага радка, "
+"у адказ на націск любой клявішы."
 
-#~ msgid "Escape sequence"
-#~ msgstr "Escape-пасьлядоўнасьць"
+#: ../Terminal.glade.h:37
+msgid "Erase TTY"
+msgstr ""
 
-#~ msgid "General"
-#~ msgstr "Агульныя"
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "Escape-пасьлядоўнасьць"
 
-#~ msgid "Goes after initial title"
-#~ msgstr "ідзе пасьля пачатковага"
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr ""
 
-#~ msgid "Goes before initial title"
-#~ msgstr "ідзе перад пачатковым"
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "Агульныя"
 
-#~ msgid "Isn't displayed"
-#~ msgstr "не адлюстроўваецца"
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "ідзе пасьля пачатковага"
 
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "ідзе перад пачатковым"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "не адлюстроўваецца"
+
+#: ../Terminal.glade.h:44
 #, fuzzy
-#~ msgid "Menubar Access"
-#~ msgstr "<b>Доступ да мэню</b>"
+msgid "Menubar Access"
+msgstr "<b>Доступ да мэню</b>"
 
-#~ msgid "None (use solid color)"
-#~ msgstr "Няма (выкарыстоўваць суцэльны колер)"
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "Няма (выкарыстоўваць суцэльны колер)"
 
-#~ msgid "On the left side"
-#~ msgstr "зь левага боку"
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "зь левага боку"
 
-#~ msgid "On the right side"
-#~ msgstr "з правага боку"
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "з правага боку"
 
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "Адкрывае дыялёг вылучэньня колеру"
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "Адкрывае дыялёг вылучэньня колеру"
 
+#: ../Terminal.glade.h:49
 #, fuzzy
-#~ msgid "Opening New Windows"
-#~ msgstr "<b>Новыя вокны</b>"
+msgid "Opening New Windows"
+msgstr "<b>Новыя вокны</b>"
 
+#: ../Terminal.glade.h:50
 #, fuzzy
-#~ msgid "Palette"
-#~ msgstr "<b>Палітра</b>"
+msgid "Palette"
+msgstr "<b>Палітра</b>"
 
+#: ../Terminal.glade.h:51
 #, fuzzy
-#~ msgid "Palette entry 1"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 1"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:52
 #, fuzzy
-#~ msgid "Palette entry 10"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 10"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:53
 #, fuzzy
-#~ msgid "Palette entry 11"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 11"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:54
 #, fuzzy
-#~ msgid "Palette entry 12"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 12"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:55
 #, fuzzy
-#~ msgid "Palette entry 13"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 13"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:56
 #, fuzzy
-#~ msgid "Palette entry 14"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 14"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:57
 #, fuzzy
-#~ msgid "Palette entry 15"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 15"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:58
 #, fuzzy
-#~ msgid "Palette entry 16"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 16"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:59
 #, fuzzy
-#~ msgid "Palette entry 2"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 2"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:60
 #, fuzzy
-#~ msgid "Palette entry 3"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 3"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:61
 #, fuzzy
-#~ msgid "Palette entry 4"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 4"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:62
 #, fuzzy
-#~ msgid "Palette entry 5"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 5"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:63
 #, fuzzy
-#~ msgid "Palette entry 6"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 6"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:64
 #, fuzzy
-#~ msgid "Palette entry 7"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 7"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:65
 #, fuzzy
-#~ msgid "Palette entry 8"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 8"
+msgstr "Элемэнт палітры %d"
 
+#: ../Terminal.glade.h:66
 #, fuzzy
-#~ msgid "Palette entry 9"
-#~ msgstr "Элемэнт палітры %d"
+msgid "Palette entry 9"
+msgstr "Элемэнт палітры %d"
 
-#~ msgid "Replaces initial title"
-#~ msgstr "замяняе пачатковы"
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "замяняе пачатковы"
 
+#: ../Terminal.glade.h:68
 #, fuzzy
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "Скінуць індыкатар актыўнасьці ўкладкі пасьля"
+msgid "Reset tab activity _indicator after"
+msgstr "Скінуць індыкатар актыўнасьці ўкладкі пасьля"
 
-#~ msgid "Scaled"
-#~ msgstr "маштабавана"
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "маштабавана"
 
+#: ../Terminal.glade.h:70
 #, fuzzy
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "Па_ласа пракруткі:"
+msgid "Scr_ollbar is:"
+msgstr "Па_ласа пракруткі:"
 
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "Пракручваць пры нац_ісках клявіш"
+#: ../Terminal.glade.h:71
+msgid "Scroll on _keystroke"
+msgstr "Пракручваць пры нац_ісках клявіш"
 
+#: ../Terminal.glade.h:72
 #, fuzzy
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "Прак_ручваць на вывадзе"
+msgid "Scroll on ou_tput"
+msgstr "Прак_ручваць на вывадзе"
 
-#~ msgid "Scroll single _line using Shift-Up/-Down keys"
-#~ msgstr "Пракручваць адзін _радок з дапамогай клявіш Shift-Up/-Down"
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Пракручваць адзін _радок з дапамогай клявіш Shift-Up/-Down"
 
+#: ../Terminal.glade.h:74
 #, fuzzy
-#~ msgid "Scroll_back:"
-#~ msgstr "Пра_крутка:"
+msgid "Scroll_back:"
+msgstr "Пра_крутка:"
 
+#: ../Terminal.glade.h:75
 #, fuzzy
-#~ msgid "Scrolling"
-#~ msgstr "<b>Пракрутка</b>"
+msgid "Scrolling"
+msgstr "<b>Пракрутка</b>"
 
+#: ../Terminal.glade.h:76
 #, fuzzy
-#~ msgid "Select Background Image File"
-#~ msgstr "Вылучыце відарыс для тла"
+msgid "Select Background Image File"
+msgstr "Вылучыце відарыс для тла"
 
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "Уключыце гэтую опцыю, каб прымусіць Тэрмінал выконваць вашую абалонку, як "
-#~ "абалонку ўваходу, калі вы адкрываеце новы тэрмінал. Глядзіце дакумэнтацыю "
-#~ "на вашу абалонку, каб даведацц пра розьніцу паміж інтэрактыўнай абалонкай "
-#~ "і абалонкай уваходу."
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Уключыце гэтую опцыю, каб прымусіць Тэрмінал выконваць вашую абалонку, як "
+"абалонку ўваходу, калі вы адкрываеце новы тэрмінал. Глядзіце дакумэнтацыю на "
+"вашу абалонку, каб даведацц пра розьніцу паміж інтэрактыўнай абалонкай і "
+"абалонкай уваходу."
 
+#: ../Terminal.glade.h:78
 #, fuzzy
-#~ msgid "Shortcut Keys"
-#~ msgstr "Камбінацыя клявіш"
+msgid "Shortcut Keys"
+msgstr "Камбінацыя клявіш"
 
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr "Задае колькасьць радкоў, на якія вы можаце пракруціць тэрмінал."
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Задае колькасьць радкоў, на якія вы можаце пракруціць тэрмінал."
 
+#: ../Terminal.glade.h:80
 #, fuzzy
-#~ msgid "St_yle:"
-#~ msgstr "_Стыль:"
+msgid "St_yle:"
+msgstr "_Стыль:"
 
-#~ msgid "Stretched"
-#~ msgstr "расьцягнута"
+#: ../Terminal.glade.h:81
+msgid "Stretched"
+msgstr "расьцягнута"
 
+#: ../Terminal.glade.h:82
 #, fuzzy
-#~ msgid "Tab Activity Indicator"
-#~ msgstr "<b>Індыкатар актыўнасьці ўкладкі</b>"
+msgid "Tab Activity Indicator"
+msgstr "<b>Індыкатар актыўнасьці ўкладкі</b>"
 
+#: ../Terminal.glade.h:83
 #, fuzzy
-#~ msgid "Tab activit_y color:"
-#~ msgstr "Колер актыўнасьці ў_кладкі:"
+msgid "Tab activit_y color:"
+msgstr "Колер актыўнасьці ў_кладкі:"
 
-#~ msgid "Terminal Preferences"
-#~ msgstr "Перавагі Тэрмінала"
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "Перавагі Тэрмінала"
 
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr "Тэрмінальныя дастасаваньні маюць у наяўансьці наступную палітру:"
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Тэрмінальныя дастасаваньні маюць у наяўансьці наступную палітру:"
 
+#: ../Terminal.glade.h:86
 #, fuzzy
-#~ msgid "Text Selection"
-#~ msgstr "<b>Вылучэньне тэксту</b>"
+msgid "Text Selection"
+msgstr "<b>Вылучэньне тэксту</b>"
 
+#: ../Terminal.glade.h:87
 #, fuzzy
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "Гэтыя опцыі могуць выклікаць ня правільныя паводзіны некаторых "
-#~ "дастасаваньняў. Яны прадстаўлены толькі для таго, каб вы маглі абыйсьці "
-#~ "пэўныя паводзіны ў асобных дастасаваньнях і апэрацыйных сыстэмах."
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Гэтыя опцыі могуць выклікаць ня правільныя паводзіны некаторых "
+"дастасаваньняў. Яны прадстаўлены толькі для таго, каб вы маглі абыйсьці "
+"пэўныя паводзіны ў асобных дастасаваньнях і апэрацыйных сыстэмах."
 
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr ""
-#~ "Гэтая опцыя кантралю, ці будзе тэрмінал аўтаматычна пракручвацца ўніх, "
-#~ "калі ў яго будуць выводзіцца новыя даныя."
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Гэтая опцыя кантралю, ці будзе тэрмінал аўтаматычна пракручвацца ўніх, калі "
+"ў яго будуць выводзіцца новыя даныя."
 
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "Гэта опцыя задае значэньне пераменнай асяродзьня $TERM для новых укладак "
-#~ "і вокнаў тэрмінала. Прадвызначанае значэньне мусіць падыходзіць для "
-#~ "большасьці сыстэмаў. Калі вы маеце праблемы з колерамі ў асобных "
-#~ "дастасаваньнях, паспрабуйце задаць тут значэньне xterm-color."
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Гэта опцыя задае значэньне пераменнай асяродзьня $TERM для новых укладак і "
+"вокнаў тэрмінала. Прадвызначанае значэньне мусіць падыходзіць для большасьці "
+"сыстэмаў. Калі вы маеце праблемы з колерамі ў асобных дастасаваньнях, "
+"паспрабуйце задаць тут значэньне xterm-color."
 
+#: ../Terminal.glade.h:93
 #, fuzzy
-#~ msgid "Tiled"
-#~ msgstr "пліткамі"
+msgid "Tiled"
+msgstr "пліткамі"
 
-#~ msgid "Title"
-#~ msgstr "Загаловак"
+#: ../Terminal.glade.h:94
+msgid "Title"
+msgstr "Загаловак"
 
+#: ../Terminal.glade.h:95
 #, fuzzy
-#~ msgid "Transpare_ncy:"
-#~ msgstr "Празрыстае тло"
+msgid "Transpare_ncy:"
+msgstr "Празрыстае тло"
 
-#~ msgid "Transparent background"
-#~ msgstr "Празрыстае тло"
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "Празрыстае тло"
 
-#~ msgid "Use _default color"
-#~ msgstr "Выкарыстоўваць _прадвызначаны колер"
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "Выкарыстоўваць _прадвызначаны колер"
 
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Выкарыстоўваць адмысловы колер для тла вылучанага тэксту"
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "Выкарыстоўваць адмысловы колер для тла вылучанага тэксту"
 
+#: ../Terminal.glade.h:99
 #, fuzzy
-#~ msgid "Use c_ustom color:"
-#~ msgstr "Выкарыстоўваць ад_мысловы колер"
+msgid "Use c_ustom color:"
+msgstr "Выкарыстоўваць ад_мысловы колер"
 
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Выкарыстоўваць прадвызначаны колер для тла вылучанага тэксту"
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "Выкарыстоўваць прадвызначаны колер для тла вылучанага тэксту"
 
+#: ../Terminal.glade.h:101
 #, fuzzy
-#~ msgid "_Appearance"
-#~ msgstr "Выгляд"
+msgid "_Appearance"
+msgstr "Выгляд"
 
-#~ msgid "_Background color:"
-#~ msgstr "Колер т_ла:"
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "Колер т_ла:"
 
-#~ msgid "_Backspace key generates:"
-#~ msgstr "Клявіша _Backspace выдае:"
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "Клявіша _Backspace выдае:"
 
+#: ../Terminal.glade.h:104
 #, fuzzy
-#~ msgid "_Colors"
-#~ msgstr "Колеры"
+msgid "_Colors"
+msgstr "Колеры"
 
-#~ msgid "_Delete key generates:"
-#~ msgstr "Клявіша _Delete выдае:"
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "Клявіша _Delete выдае:"
 
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "Д_ынамічны загаловак:"
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "Д_ынамічны загаловак:"
 
-#~ msgid "_File:"
-#~ msgstr "_Файл:"
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "_Файл:"
 
+#: ../Terminal.glade.h:108
 #, fuzzy
-#~ msgid "_General"
-#~ msgstr "Агульныя"
+msgid "_General"
+msgstr "Агульныя"
 
-#~ msgid "_Initial title:"
-#~ msgstr "Пачатковы за_галовак"
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "Пачатковы за_галовак"
 
+#: ../Terminal.glade.h:110
 #, fuzzy
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "Ск_інуць сумяшчальнасьць да прадвызначаных значэньняў"
+msgid "_Reset compatibility options to defaults"
+msgstr "Ск_інуць сумяшчальнасьць да прадвызначаных значэньняў"
 
-#~ msgid "_Run command as login shell"
-#~ msgstr "Вык_онваць загад як абалонку ўваходу"
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "Вык_онваць загад як абалонку ўваходу"
 
+#: ../Terminal.glade.h:112
 #, fuzzy
-#~ msgid "_Shortcuts"
-#~ msgstr "Камбінацыі"
+msgid "_Shortcuts"
+msgstr "Камбінацыі"
 
+#: ../Terminal.glade.h:113
 #, fuzzy
-#~ msgid "_Text color:"
-#~ msgstr "Колер _тэкста і курсора"
+msgid "_Text color:"
+msgstr "Колер _тэкста і курсора"
 
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "Абнаўляць запісы utmp/wtmp, калі запускаюцца на выкананьне загады"
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "Абнаўляць запісы utmp/wtmp, калі запускаюцца на выкананьне загады"
 
-#~ msgid "seconds"
-#~ msgstr "сэкунд"
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr "сэкунд"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Назва:</b>"

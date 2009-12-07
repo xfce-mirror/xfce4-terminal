@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2009-10-21 13:48+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
@@ -528,22 +528,22 @@ msgstr "內容"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "无标题"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "无法确定您的 Login Shell。"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "执行子程序失败"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "关闭此标签"
 
@@ -568,7 +568,7 @@ msgid "Help"
 msgstr "帮助"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "禁用"
 
@@ -886,377 +886,485 @@ msgstr "请输入当前终端标签的标题"
 msgid "Terminal Emulator"
 msgstr "终端模拟器"
 
-#~ msgid "$TERM s_etting:"
-#~ msgstr "$TERM 设置(_E):"
+#: ../Terminal.glade.h:1
+msgid "$TERM s_etting:"
+msgstr "$TERM 设置(_E):"
 
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
 
-#~ msgid "Ad_vanced"
-#~ msgstr "高级(_V)"
+#: ../Terminal.glade.h:3
+msgid "Ad_vanced"
+msgstr "高级(_V)"
 
-#~ msgid "Allow bold te_xt"
-#~ msgstr "允许粗体字(_X)"
+#: ../Terminal.glade.h:4
+msgid "Allow bold te_xt"
+msgstr "允许粗体字(_X)"
 
-#~ msgid "Auto-detect"
-#~ msgstr "自动检测"
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "自动检测"
 
-#~ msgid "Background"
-#~ msgstr "背景"
+#: ../Terminal.glade.h:6
+msgid "Background"
+msgstr "背景"
 
-#~ msgid "Background image"
-#~ msgstr "背景图片"
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "背景图片"
 
-#~ msgid "Centered"
-#~ msgstr "居中"
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "居中"
 
-#~ msgid "Choose Terminal Font"
-#~ msgstr "选择终端字体"
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "选择终端字体"
 
-#~ msgid "Choose tab activity color"
-#~ msgstr "选择标签颜色"
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "选择标签颜色"
 
-#~ msgid "Choose terminal background color"
-#~ msgstr "选择终端背景颜色"
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "选择终端背景颜色"
 
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "选择终端光标颜色"
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "选择终端光标颜色"
 
-#~ msgid "Choose terminal text color"
-#~ msgstr "选择终端文本颜色"
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "选择终端文本颜色"
 
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "选择被选定的文本的背景颜色"
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "选择被选定的文本的背景颜色"
 
-#~ msgid "Color Selector"
-#~ msgstr "颜色选择器"
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "颜色选择器"
 
-#~ msgid "Command"
-#~ msgstr "命令"
+#: ../Terminal.glade.h:16
+msgid "Command"
+msgstr "命令"
 
-#~ msgid "Compatibility"
-#~ msgstr "兼容性"
+#: ../Terminal.glade.h:17
+msgid "Compatibility"
+msgstr "兼容性"
 
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr "双击时将下面的字符视为一个词的一部分(_W):"
+#: ../Terminal.glade.h:18
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "双击时将下面的字符视为一个词的一部分(_W):"
 
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
 
-#~ msgid "Cu_rsor color:"
-#~ msgstr "文本和光标的颜色(_R):"
+#: ../Terminal.glade.h:21
+msgid "Cu_rsor color:"
+msgstr "文本和光标的颜色(_R):"
 
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "禁用所有菜单控制键(如: Alt+f)(_N)"
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "禁用所有菜单控制键(如: Alt+f)(_N)"
 
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "禁用菜单快捷键(预设为 F10)(_E)"
+#: ../Terminal.glade.h:23
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "禁用菜单快捷键(预设为 F10)(_E)"
 
-#~ msgid "Display _borders around new windows"
-#~ msgstr "显示新建窗口的边框(_B)"
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "显示新建窗口的边框(_B)"
 
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "在新窗口中显示菜单栏(_M)"
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "在新窗口中显示菜单栏(_M)"
 
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "在新窗口中显示工具栏(_T)"
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "在新窗口中显示工具栏(_T)"
 
-#~ msgid "Double Click"
-#~ msgstr "双击"
+#: ../Terminal.glade.h:28
+msgid "Double Click"
+msgstr "双击"
 
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "允许为字体使用反锯齿效果(_L)"
+#: ../Terminal.glade.h:29
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "允许为字体使用反锯齿效果(_L)"
 
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "启用此选项允许终端为字符启用抗锯齿效果。禁用此项可以让性能较差的系统在绘制"
-#~ "的响应速度和系统的资源利用两个方面得到显著提升。"
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"启用此选项允许终端为字符启用抗锯齿效果。禁用此项可以让性能较差的系统在绘制的"
+"响应速度和系统的资源利用两个方面得到显著提升。"
 
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr "启用此选项允许运行在终端窗口内的应用程序使用粗体字。"
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr "启用此选项允许运行在终端窗口内的应用程序使用粗体字。"
 
-#~ msgid ""
-#~ "Enable this option to be able to scroll by a single line using the up/"
-#~ "down arrow keys together with the Shift key."
-#~ msgstr "启用此选项允许上/下方向键与 Shift 键配合控制单行滚动。"
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr "启用此选项允许上/下方向键与 Shift 键配合控制单行滚动。"
 
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr "启用此选项将在新建的终端窗口中显示菜单栏"
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "启用此选项将在新建的终端窗口中显示菜单栏"
 
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr "启用此选项将在新建的终端窗口中显示工具栏"
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "启用此选项将在新建的终端窗口中显示工具栏"
 
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr "启用此选项将为新建的终端窗口显示窗口装饰"
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "启用此选项将为新建的终端窗口显示窗口装饰"
 
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr "允许您能够按下任意键将终端窗口向下滚动到命令行提示符"
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr "允许您能够按下任意键将终端窗口向下滚动到命令行提示符"
 
+#: ../Terminal.glade.h:37
 #, fuzzy
-#~ msgid "Erase TTY"
-#~ msgstr "清除 TTY"
-
-#~ msgid "Escape sequence"
-#~ msgstr "转义序列"
-
-#~ msgid "Font"
-#~ msgstr "字体"
-
-#~ msgid "General"
-#~ msgstr "常规"
-
-#~ msgid "Goes after initial title"
-#~ msgstr "在初始标题之后显示"
-
-#~ msgid "Goes before initial title"
-#~ msgstr "在初始标题之前显示"
-
-#~ msgid "Isn't displayed"
-#~ msgstr "不显示"
-
-#~ msgid "Menubar Access"
-#~ msgstr "菜单栏控制"
-
-#~ msgid "None (use solid color)"
-#~ msgstr "无 (使用固定颜色)"
-
-#~ msgid "On the left side"
-#~ msgstr "居左"
-
-#~ msgid "On the right side"
-#~ msgstr "居右"
-
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "打开对话框来指定颜色"
-
-#~ msgid "Opening New Windows"
-#~ msgstr "正在打开新窗口"
-
-#~ msgid "Palette"
-#~ msgstr "调色器"
-
-#~ msgid "Palette entry 1"
-#~ msgstr "调色格 1"
-
-#~ msgid "Palette entry 10"
-#~ msgstr "调色格 10"
-
-#~ msgid "Palette entry 11"
-#~ msgstr "调色格 11"
-
-#~ msgid "Palette entry 12"
-#~ msgstr "调色格 12"
-
-#~ msgid "Palette entry 13"
-#~ msgstr "调色格 13"
-
-#~ msgid "Palette entry 14"
-#~ msgstr "调色格 14"
-
-#~ msgid "Palette entry 15"
-#~ msgstr "调色格 15"
-
-#~ msgid "Palette entry 16"
-#~ msgstr "调色格 16"
-
-#~ msgid "Palette entry 2"
-#~ msgstr "调色格 2"
-
-#~ msgid "Palette entry 3"
-#~ msgstr "调色格 3"
-
-#~ msgid "Palette entry 4"
-#~ msgstr "调色格 4"
-
-#~ msgid "Palette entry 5"
-#~ msgstr "调色格 5"
-
-#~ msgid "Palette entry 6"
-#~ msgstr "调色格 6"
-
-#~ msgid "Palette entry 7"
-#~ msgstr "调色格 7"
-
-#~ msgid "Palette entry 8"
-#~ msgstr "调色格 8"
-
-#~ msgid "Palette entry 9"
-#~ msgstr "调色格 9"
-
-#~ msgid "Replaces initial title"
-#~ msgstr "替换初始标题"
-
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "在以下时长后重设标签提示符(_I): "
-
-#~ msgid "Scaled"
-#~ msgstr "并排"
-
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "滚动条(_S):"
-
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "击键时滚动(_K)"
-
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "输出时滚动(_T)"
-
-#~ msgid "Scroll single _line using Shift-Up/-Down keys"
-#~ msgstr "使用 Shift + 上/下方向键 进行单行滚动(_L)"
-
-#~ msgid "Scroll_back:"
-#~ msgstr "向上滚动(_B):"
-
-#~ msgid "Scrolling"
-#~ msgstr "正在滚动"
-
-#~ msgid "Select Background Image File"
-#~ msgstr "选择背景图片"
-
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "选择此项能够强制终端在您打开新的窗口时将您的 Shell 作为 Login Shell。请参"
-#~ "考您所用 Shell 的文档以了解 Interactive Shell 和 Login Shell 的区别。"
-
-#~ msgid "Shortcut Keys"
-#~ msgstr "快捷键"
-
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr "设置使用滚动条进行向上滚动的最大行数"
-
-#~ msgid "St_yle:"
-#~ msgstr "风格(_Y):"
-
-#~ msgid "Stretched"
-#~ msgstr "拉伸"
-
-#~ msgid "Tab Activity Indicator"
-#~ msgstr "标签提示符"
-
-#~ msgid "Tab activit_y color:"
-#~ msgstr "活动标签颜色(_Y)："
-
-#~ msgid "Terminal Preferences"
-#~ msgstr "终端首选项"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr "终端程序可用的调色器:"
-
-#~ msgid "Text Selection"
-#~ msgstr "文本选择"
-
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "这些选项可能造成部分程序产生不正常的行为。仅用于允许您在一些应用程序\n"
-#~ "和操作系统中作调整，以获得不同的终端行为。"
-
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr "此选项控制当终端中运行的命令产生输出时终端是否自动进行滚动。"
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "此项指定新建终端窗口或标签时环境变量 $TERM 的值。默认值适合绝大多数系统。"
-#~ "如果您在使用某些程序时遇到颜色方面的问题，尝试将其指定为 xterm-color。"
-
-#~ msgid "Tiled"
-#~ msgstr "平铺"
-
-#~ msgid "Title"
-#~ msgstr "标题"
-
-#~ msgid "Transpare_ncy:"
-#~ msgstr "透明度(_N):"
-
-#~ msgid "Transparent background"
-#~ msgstr "透明背景"
-
-#~ msgid "Use _default color"
-#~ msgstr "使用默认颜色(_D)"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "自定义被选定的文本的背景颜色"
-
-#~ msgid "Use c_ustom color:"
-#~ msgstr "使用自定义颜色(_U):"
-
-#~ msgid "Use the default text selection background color"
-#~ msgstr "使用被选定的文本的默认背景颜色"
-
-#~ msgid "_Appearance"
-#~ msgstr "外观(_A)"
-
-#~ msgid "_Background color:"
-#~ msgstr "背景颜色(_B):"
-
-#~ msgid "_Backspace key generates:"
-#~ msgstr "按 Backspace 键产生(_B):"
-
-#~ msgid "_Colors"
-#~ msgstr "颜色(_C)"
-
-#~ msgid "_Delete key generates:"
-#~ msgstr "按 Detele 键产生(_D):"
-
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "动态标题(_D):"
-
-#~ msgid "_File:"
-#~ msgstr "文件(_F):"
-
-#~ msgid "_General"
-#~ msgstr "常规(_G)"
-
-#~ msgid "_Initial title:"
-#~ msgstr "初始标题(_I):"
-
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "重置兼容性选项(_R)"
-
-#~ msgid "_Run command as login shell"
-#~ msgstr "使用 Login Shell 运行命令(_R)"
-
-#~ msgid "_Shortcuts"
-#~ msgstr "快捷键(_S)"
-
-#~ msgid "_Text color:"
-#~ msgstr "文本颜色(_T): "
-
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "当命令执行后更新 utmp/wtmp 记录(_U)"
-
-#~ msgid "seconds"
-#~ msgstr "秒"
+msgid "Erase TTY"
+msgstr "清除 TTY"
+
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "转义序列"
+
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr "字体"
+
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "常规"
+
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "在初始标题之后显示"
+
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "在初始标题之前显示"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "不显示"
+
+#: ../Terminal.glade.h:44
+msgid "Menubar Access"
+msgstr "菜单栏控制"
+
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "无 (使用固定颜色)"
+
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "居左"
+
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "居右"
+
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "打开对话框来指定颜色"
+
+#: ../Terminal.glade.h:49
+msgid "Opening New Windows"
+msgstr "正在打开新窗口"
+
+#: ../Terminal.glade.h:50
+msgid "Palette"
+msgstr "调色器"
+
+#: ../Terminal.glade.h:51
+msgid "Palette entry 1"
+msgstr "调色格 1"
+
+#: ../Terminal.glade.h:52
+msgid "Palette entry 10"
+msgstr "调色格 10"
+
+#: ../Terminal.glade.h:53
+msgid "Palette entry 11"
+msgstr "调色格 11"
+
+#: ../Terminal.glade.h:54
+msgid "Palette entry 12"
+msgstr "调色格 12"
+
+#: ../Terminal.glade.h:55
+msgid "Palette entry 13"
+msgstr "调色格 13"
+
+#: ../Terminal.glade.h:56
+msgid "Palette entry 14"
+msgstr "调色格 14"
+
+#: ../Terminal.glade.h:57
+msgid "Palette entry 15"
+msgstr "调色格 15"
+
+#: ../Terminal.glade.h:58
+msgid "Palette entry 16"
+msgstr "调色格 16"
+
+#: ../Terminal.glade.h:59
+msgid "Palette entry 2"
+msgstr "调色格 2"
+
+#: ../Terminal.glade.h:60
+msgid "Palette entry 3"
+msgstr "调色格 3"
+
+#: ../Terminal.glade.h:61
+msgid "Palette entry 4"
+msgstr "调色格 4"
+
+#: ../Terminal.glade.h:62
+msgid "Palette entry 5"
+msgstr "调色格 5"
+
+#: ../Terminal.glade.h:63
+msgid "Palette entry 6"
+msgstr "调色格 6"
+
+#: ../Terminal.glade.h:64
+msgid "Palette entry 7"
+msgstr "调色格 7"
+
+#: ../Terminal.glade.h:65
+msgid "Palette entry 8"
+msgstr "调色格 8"
+
+#: ../Terminal.glade.h:66
+msgid "Palette entry 9"
+msgstr "调色格 9"
+
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "替换初始标题"
+
+#: ../Terminal.glade.h:68
+msgid "Reset tab activity _indicator after"
+msgstr "在以下时长后重设标签提示符(_I): "
+
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "并排"
+
+#: ../Terminal.glade.h:70
+msgid "Scr_ollbar is:"
+msgstr "滚动条(_S):"
+
+#: ../Terminal.glade.h:71
+msgid "Scroll on _keystroke"
+msgstr "击键时滚动(_K)"
+
+#: ../Terminal.glade.h:72
+msgid "Scroll on ou_tput"
+msgstr "输出时滚动(_T)"
+
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "使用 Shift + 上/下方向键 进行单行滚动(_L)"
+
+#: ../Terminal.glade.h:74
+msgid "Scroll_back:"
+msgstr "向上滚动(_B):"
+
+#: ../Terminal.glade.h:75
+msgid "Scrolling"
+msgstr "正在滚动"
+
+#: ../Terminal.glade.h:76
+msgid "Select Background Image File"
+msgstr "选择背景图片"
+
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"选择此项能够强制终端在您打开新的窗口时将您的 Shell 作为 Login Shell。请参考您"
+"所用 Shell 的文档以了解 Interactive Shell 和 Login Shell 的区别。"
+
+#: ../Terminal.glade.h:78
+msgid "Shortcut Keys"
+msgstr "快捷键"
+
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "设置使用滚动条进行向上滚动的最大行数"
+
+#: ../Terminal.glade.h:80
+msgid "St_yle:"
+msgstr "风格(_Y):"
+
+#: ../Terminal.glade.h:81
+msgid "Stretched"
+msgstr "拉伸"
+
+#: ../Terminal.glade.h:82
+msgid "Tab Activity Indicator"
+msgstr "标签提示符"
+
+#: ../Terminal.glade.h:83
+msgid "Tab activit_y color:"
+msgstr "活动标签颜色(_Y)："
+
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "终端首选项"
+
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "终端程序可用的调色器:"
+
+#: ../Terminal.glade.h:86
+msgid "Text Selection"
+msgstr "文本选择"
+
+#: ../Terminal.glade.h:87
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"这些选项可能造成部分程序产生不正常的行为。仅用于允许您在一些应用程序\n"
+"和操作系统中作调整，以获得不同的终端行为。"
+
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr "此选项控制当终端中运行的命令产生输出时终端是否自动进行滚动。"
+
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"此项指定新建终端窗口或标签时环境变量 $TERM 的值。默认值适合绝大多数系统。如果"
+"您在使用某些程序时遇到颜色方面的问题，尝试将其指定为 xterm-color。"
+
+#: ../Terminal.glade.h:93
+msgid "Tiled"
+msgstr "平铺"
+
+#: ../Terminal.glade.h:94
+msgid "Title"
+msgstr "标题"
+
+#: ../Terminal.glade.h:95
+msgid "Transpare_ncy:"
+msgstr "透明度(_N):"
+
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "透明背景"
+
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "使用默认颜色(_D)"
+
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "自定义被选定的文本的背景颜色"
+
+#: ../Terminal.glade.h:99
+msgid "Use c_ustom color:"
+msgstr "使用自定义颜色(_U):"
+
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "使用被选定的文本的默认背景颜色"
+
+#: ../Terminal.glade.h:101
+msgid "_Appearance"
+msgstr "外观(_A)"
+
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "背景颜色(_B):"
+
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "按 Backspace 键产生(_B):"
+
+#: ../Terminal.glade.h:104
+msgid "_Colors"
+msgstr "颜色(_C)"
+
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "按 Detele 键产生(_D):"
+
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "动态标题(_D):"
+
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "文件(_F):"
+
+#: ../Terminal.glade.h:108
+msgid "_General"
+msgstr "常规(_G)"
+
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "初始标题(_I):"
+
+#: ../Terminal.glade.h:110
+msgid "_Reset compatibility options to defaults"
+msgstr "重置兼容性选项(_R)"
+
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "使用 Login Shell 运行命令(_R)"
+
+#: ../Terminal.glade.h:112
+msgid "_Shortcuts"
+msgstr "快捷键(_S)"
+
+#: ../Terminal.glade.h:113
+msgid "_Text color:"
+msgstr "文本颜色(_T): "
+
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "当命令执行后更新 utmp/wtmp 记录(_U)"
+
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr "秒"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>标题:</b>"

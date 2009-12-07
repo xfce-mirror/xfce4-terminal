@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2006-04-26 22:39+0400\n"
 "Last-Translator: Phan Vĩnh Thịnh <teppi@vnlinux.org>\n"
 "Language-Team: Vietnamese <vi_VN@googlegroups.com>\n"
@@ -566,22 +566,22 @@ msgstr "Nội dung"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "Chưa đặt tiêu đề"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Không nhận ra shell đăng nhập của người dùng."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "Thực hiện tiến trình con không thành công"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "Đóng thẻ tab này"
 
@@ -606,7 +606,7 @@ msgid "Help"
 msgstr "Trợ giúp"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Tắt bỏ"
 
@@ -931,420 +931,548 @@ msgstr "Nhập tiêu đề cho thẻ tab hiện thời của terminal"
 msgid "Terminal Emulator"
 msgstr "Trình giả lập Terminal"
 
+#: ../Terminal.glade.h:1
 #, fuzzy
-#~ msgid "$TERM s_etting:"
-#~ msgstr "Thiết lập <tt>$TERM</tt>:"
+msgid "$TERM s_etting:"
+msgstr "Thiết lập <tt>$TERM</tt>:"
 
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
 
+#: ../Terminal.glade.h:3
 #, fuzzy
-#~ msgid "Ad_vanced"
-#~ msgstr "Nâng cao"
+msgid "Ad_vanced"
+msgstr "Nâng cao"
 
+#: ../Terminal.glade.h:4
 #, fuzzy
-#~ msgid "Allow bold te_xt"
-#~ msgstr "Cho phép văn bản chữ đậm"
+msgid "Allow bold te_xt"
+msgstr "Cho phép văn bản chữ đậm"
 
-#~ msgid "Auto-detect"
-#~ msgstr "Tự động nhận ra"
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Tự động nhận ra"
 
+#: ../Terminal.glade.h:6
 #, fuzzy
-#~ msgid "Background"
-#~ msgstr "Ảnh nền"
+msgid "Background"
+msgstr "Ảnh nền"
 
-#~ msgid "Background image"
-#~ msgstr "Ảnh nền"
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Ảnh nền"
 
-#~ msgid "Centered"
-#~ msgstr "Giữa"
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Giữa"
 
-#~ msgid "Choose Terminal Font"
-#~ msgstr "Chọn Phông chữ Terminal"
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Chọn Phông chữ Terminal"
 
+#: ../Terminal.glade.h:10
 #, fuzzy
-#~ msgid "Choose tab activity color"
-#~ msgstr "Chọn màu văn bản của terminal"
+msgid "Choose tab activity color"
+msgstr "Chọn màu văn bản của terminal"
 
-#~ msgid "Choose terminal background color"
-#~ msgstr "Chọn màu nền của terminal"
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Chọn màu nền của terminal"
 
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "Chọn màu con trỏ của terminal"
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Chọn màu con trỏ của terminal"
 
-#~ msgid "Choose terminal text color"
-#~ msgstr "Chọn màu văn bản của terminal"
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Chọn màu văn bản của terminal"
 
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "Chọn màu nền cho văn bản bôi đen"
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Chọn màu nền cho văn bản bôi đen"
 
-#~ msgid "Color Selector"
-#~ msgstr "Trình chọn Màu"
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Trình chọn Màu"
 
+#: ../Terminal.glade.h:16
 #, fuzzy
-#~ msgid "Command"
-#~ msgstr "<b>Câu lệnh</b>"
+msgid "Command"
+msgstr "<b>Câu lệnh</b>"
 
+#: ../Terminal.glade.h:17
 #, fuzzy
-#~ msgid "Compatibility"
-#~ msgstr "<b>Sự tương thích"
+msgid "Compatibility"
+msgstr "<b>Sự tương thích"
 
+#: ../Terminal.glade.h:18
 #, fuzzy
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr "Coi như các ký tự sau là một phần của từ khi nhấn đúp:"
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Coi như các ký tự sau là một phần của từ khi nhấn đúp:"
 
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
 
+#: ../Terminal.glade.h:21
 #, fuzzy
-#~ msgid "Cu_rsor color:"
-#~ msgstr "_Màu con trỏ và văn bản:"
+msgid "Cu_rsor color:"
+msgstr "_Màu con trỏ và văn bản:"
 
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "Tắt bỏ mọi phím nóng để mở trì_nh đơn (ví dụ Alt+t)"
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Tắt bỏ mọi phím nóng để mở trì_nh đơn (ví dụ Alt+t)"
 
+#: ../Terminal.glade.h:23
 #, fuzzy
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "Tắt bỏ phím nóng của trình đơn (F10 theo mặc định)"
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Tắt bỏ phím nóng của trình đơn (F10 theo mặc định)"
 
-#~ msgid "Display _borders around new windows"
-#~ msgstr "Hiển thị đường _biên quanh cửa sổ mới"
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "Hiển thị đường _biên quanh cửa sổ mới"
 
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "Hiển thị _thanh trình đơn trong cửa số mới"
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "Hiển thị _thanh trình đơn trong cửa số mới"
 
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "Hiển thị thanh _công cụ trong cửa sổ mới"
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "Hiển thị thanh _công cụ trong cửa sổ mới"
 
+#: ../Terminal.glade.h:28
 #, fuzzy
-#~ msgid "Double Click"
-#~ msgstr "<b>Nhấn đúp</b>"
+msgid "Double Click"
+msgstr "<b>Nhấn đúp</b>"
 
+#: ../Terminal.glade.h:29
 #, fuzzy
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "Làm mịn phông chữ của terminal"
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Làm mịn phông chữ của terminal"
 
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "Bật tùy chọn này nếu muốn Terminal dùng sự làm mịn phông chữ khi hiển thị "
-#~ "văn bản trong các cửa sổ terminal. Tắt tùy chọn này có thể tăng tốc độ "
-#~ "làm việc của terminal và giảm tải hệ thống trên các máy chậm."
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Bật tùy chọn này nếu muốn Terminal dùng sự làm mịn phông chữ khi hiển thị "
+"văn bản trong các cửa sổ terminal. Tắt tùy chọn này có thể tăng tốc độ làm "
+"việc của terminal và giảm tải hệ thống trên các máy chậm."
 
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr ""
-#~ "Bật tùy chọn này để cho phép các ứng dụng chạy bên trong cửa sổ terminal "
-#~ "dùng chữ đậm."
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Bật tùy chọn này để cho phép các ứng dụng chạy bên trong cửa sổ terminal "
+"dùng chữ đậm."
 
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr ""
-#~ "Bật tùy chọn này để hiển thị thanh trình đơn trong cửa sổ mới tạo ra."
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
 
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr "Bật tùy chọn này để hiển thị thanh công cụ trong cửa sổ mới tạo ra."
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "Bật tùy chọn này để hiển thị thanh trình đơn trong cửa sổ mới tạo ra."
 
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr ""
-#~ "Bật tùy chọn này để hiển thị trang trí quanh cửa sổ terminal mới tạo ra."
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Bật tùy chọn này để hiển thị thanh công cụ trong cửa sổ mới tạo ra."
 
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr ""
-#~ "Cho phép người dùng nhấn bất kỳ phím nào để cuộn cửa sổ terminal xuống "
-#~ "tới dấu nhắc câu lệnh."
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Bật tùy chọn này để hiển thị trang trí quanh cửa sổ terminal mới tạo ra."
 
-#~ msgid "Escape sequence"
-#~ msgstr "Chuỗi thoát"
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Cho phép người dùng nhấn bất kỳ phím nào để cuộn cửa sổ terminal xuống tới "
+"dấu nhắc câu lệnh."
 
-#~ msgid "General"
-#~ msgstr "Chung"
+#: ../Terminal.glade.h:37
+msgid "Erase TTY"
+msgstr ""
 
-#~ msgid "Goes after initial title"
-#~ msgstr "Đi sau tiêu đề gốc"
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "Chuỗi thoát"
 
-#~ msgid "Goes before initial title"
-#~ msgstr "Đi trước tiêu đề gốc"
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr ""
 
-#~ msgid "Isn't displayed"
-#~ msgstr "Không được hiển thị"
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "Chung"
 
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "Đi sau tiêu đề gốc"
+
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "Đi trước tiêu đề gốc"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "Không được hiển thị"
+
+#: ../Terminal.glade.h:44
 #, fuzzy
-#~ msgid "Menubar Access"
-#~ msgstr "<b>Mở Trình đơn</b>"
+msgid "Menubar Access"
+msgstr "<b>Mở Trình đơn</b>"
 
-#~ msgid "None (use solid color)"
-#~ msgstr "Không (dùng màu duy nhất)"
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "Không (dùng màu duy nhất)"
 
-#~ msgid "On the left side"
-#~ msgstr "Nằm bên trái"
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "Nằm bên trái"
 
-#~ msgid "On the right side"
-#~ msgstr "Nằm bên phải"
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "Nằm bên phải"
 
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "Mở một hộp thoại để chọn màu"
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "Mở một hộp thoại để chọn màu"
 
+#: ../Terminal.glade.h:49
 #, fuzzy
-#~ msgid "Opening New Windows"
-#~ msgstr "<b>Mở Các cửa sổ Mới</b>"
+msgid "Opening New Windows"
+msgstr "<b>Mở Các cửa sổ Mới</b>"
 
+#: ../Terminal.glade.h:50
 #, fuzzy
-#~ msgid "Palette"
-#~ msgstr "<b>Bảng màu</b>"
+msgid "Palette"
+msgstr "<b>Bảng màu</b>"
 
+#: ../Terminal.glade.h:51
 #, fuzzy
-#~ msgid "Palette entry 1"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 1"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:52
 #, fuzzy
-#~ msgid "Palette entry 10"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 10"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:53
 #, fuzzy
-#~ msgid "Palette entry 11"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 11"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:54
 #, fuzzy
-#~ msgid "Palette entry 12"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 12"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:55
 #, fuzzy
-#~ msgid "Palette entry 13"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 13"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:56
 #, fuzzy
-#~ msgid "Palette entry 14"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 14"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:57
 #, fuzzy
-#~ msgid "Palette entry 15"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 15"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:58
 #, fuzzy
-#~ msgid "Palette entry 16"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 16"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:59
 #, fuzzy
-#~ msgid "Palette entry 2"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 2"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:60
 #, fuzzy
-#~ msgid "Palette entry 3"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 3"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:61
 #, fuzzy
-#~ msgid "Palette entry 4"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 4"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:62
 #, fuzzy
-#~ msgid "Palette entry 5"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 5"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:63
 #, fuzzy
-#~ msgid "Palette entry 6"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 6"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:64
 #, fuzzy
-#~ msgid "Palette entry 7"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 7"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:65
 #, fuzzy
-#~ msgid "Palette entry 8"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 8"
+msgstr "Mục 1 của bảng màu"
 
+#: ../Terminal.glade.h:66
 #, fuzzy
-#~ msgid "Palette entry 9"
-#~ msgstr "Mục 1 của bảng màu"
+msgid "Palette entry 9"
+msgstr "Mục 1 của bảng màu"
 
-#~ msgid "Replaces initial title"
-#~ msgstr "Thay thế tiêu đề gốc"
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "Thay thế tiêu đề gốc"
 
+#: ../Terminal.glade.h:68
 #, fuzzy
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "Chọn màu văn bản của terminal"
+msgid "Reset tab activity _indicator after"
+msgstr "Chọn màu văn bản của terminal"
 
-#~ msgid "Scaled"
-#~ msgstr "Dạng vảy"
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "Dạng vảy"
 
+#: ../Terminal.glade.h:70
 #, fuzzy
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "_Thanh cuộn:"
+msgid "Scr_ollbar is:"
+msgstr "_Thanh cuộn:"
 
+#: ../Terminal.glade.h:71
 #, fuzzy
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "Cuộn khi nhấn _phím"
+msgid "Scroll on _keystroke"
+msgstr "Cuộn khi nhấn _phím"
 
+#: ../Terminal.glade.h:72
 #, fuzzy
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "_Cuộn khi in kết quả"
+msgid "Scroll on ou_tput"
+msgstr "_Cuộn khi in kết quả"
 
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr ""
+
+#: ../Terminal.glade.h:74
 #, fuzzy
-#~ msgid "Scroll_back:"
-#~ msgstr "_Cuộn ngược:"
+msgid "Scroll_back:"
+msgstr "_Cuộn ngược:"
 
+#: ../Terminal.glade.h:75
 #, fuzzy
-#~ msgid "Scrolling"
-#~ msgstr "<b>Kéo cuộn</b>"
+msgid "Scrolling"
+msgstr "<b>Kéo cuộn</b>"
 
+#: ../Terminal.glade.h:76
 #, fuzzy
-#~ msgid "Select Background Image File"
-#~ msgstr "Chọn tập tin ảnh nền"
+msgid "Select Background Image File"
+msgstr "Chọn tập tin ảnh nền"
 
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "Chọn tùy chọn này để bắt buộc Terminal chạy shell như một shell đăng nhập "
-#~ "khi mở các terminal mới. Hãy xem tài liệu đi kèm với shell để biết chi "
-#~ "tiết về các chế độ chạy khác nhau của shell (hội thoại và đăng nhập)."
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Chọn tùy chọn này để bắt buộc Terminal chạy shell như một shell đăng nhập "
+"khi mở các terminal mới. Hãy xem tài liệu đi kèm với shell để biết chi tiết "
+"về các chế độ chạy khác nhau của shell (hội thoại và đăng nhập)."
 
+#: ../Terminal.glade.h:78
 #, fuzzy
-#~ msgid "Shortcut Keys"
-#~ msgstr "Phím tắt"
+msgid "Shortcut Keys"
+msgstr "Phím tắt"
 
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr "Chỉ ra số dòng người dùng có thể cuộn ngược lại bằng thanh cuộn."
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Chỉ ra số dòng người dùng có thể cuộn ngược lại bằng thanh cuộn."
 
+#: ../Terminal.glade.h:80
 #, fuzzy
-#~ msgid "St_yle:"
-#~ msgstr "_Kiểu dáng:"
+msgid "St_yle:"
+msgstr "_Kiểu dáng:"
 
-#~ msgid "Stretched"
-#~ msgstr "Kéo căng"
+#: ../Terminal.glade.h:81
+msgid "Stretched"
+msgstr "Kéo căng"
 
+#: ../Terminal.glade.h:82
 #, fuzzy
-#~ msgid "Tab activit_y color:"
-#~ msgstr "Chọn màu văn bản của terminal"
+msgid "Tab Activity Indicator"
+msgstr "Chọn màu văn bản của terminal"
 
-#~ msgid "Terminal Preferences"
-#~ msgstr "Tùy chỉnh Terminal"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr "Ứng dụng terminal có các bảng màu sau:"
-
+#: ../Terminal.glade.h:83
 #, fuzzy
-#~ msgid "Text Selection"
-#~ msgstr "<b>Bôi đen</b>"
+msgid "Tab activit_y color:"
+msgstr "Chọn màu văn bản của terminal"
 
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "Tùy chỉnh Terminal"
+
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Ứng dụng terminal có các bảng màu sau:"
+
+#: ../Terminal.glade.h:86
 #, fuzzy
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "Các tùy chọn này có thể khiến một số ứng dụng làm việc không đúng. Chúng "
-#~ "có ở đây chỉ để cho phép người dùng làm việc với các ứng dụng và hệ điều "
-#~ "hành cần các tính năng khác của terminal."
+msgid "Text Selection"
+msgstr "<b>Bôi đen</b>"
 
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr ""
-#~ "Tùy chọn này điều chỉnh để terminal sẽ cuộn xuống tự động khi có kết quả "
-#~ "mới tạo ra bởi các câu lệnh chạy bên trong terminal."
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "Chỉ ra giá trị cần đặt của biến $TERM khi mở một cửa sổ hay thẻ tab mới. "
-#~ "Giá trị mặc định làm việc tốt cho phần lớn hệ thống. Nếu có vấn đề với "
-#~ "màu sắc trong một vài ứng dụng, thì hãy thử xterm-color ở đây."
-
+#: ../Terminal.glade.h:87
 #, fuzzy
-#~ msgid "Tiled"
-#~ msgstr "Dạng lát"
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Các tùy chọn này có thể khiến một số ứng dụng làm việc không đúng. Chúng có "
+"ở đây chỉ để cho phép người dùng làm việc với các ứng dụng và hệ điều hành "
+"cần các tính năng khác của terminal."
 
-#~ msgid "Title"
-#~ msgstr "Tiêu đề"
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Tùy chọn này điều chỉnh để terminal sẽ cuộn xuống tự động khi có kết quả mới "
+"tạo ra bởi các câu lệnh chạy bên trong terminal."
 
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Chỉ ra giá trị cần đặt của biến $TERM khi mở một cửa sổ hay thẻ tab mới. Giá "
+"trị mặc định làm việc tốt cho phần lớn hệ thống. Nếu có vấn đề với màu sắc "
+"trong một vài ứng dụng, thì hãy thử xterm-color ở đây."
+
+#: ../Terminal.glade.h:93
 #, fuzzy
-#~ msgid "Transpare_ncy:"
-#~ msgstr "Nền trong suốt"
+msgid "Tiled"
+msgstr "Dạng lát"
 
-#~ msgid "Transparent background"
-#~ msgstr "Nền trong suốt"
+#: ../Terminal.glade.h:94
+msgid "Title"
+msgstr "Tiêu đề"
 
-#~ msgid "Use _default color"
-#~ msgstr "Dùng màu _mặc định"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Dùng màu nền tự chọn cho văn bản bôi đen"
-
+#: ../Terminal.glade.h:95
 #, fuzzy
-#~ msgid "Use c_ustom color:"
-#~ msgstr "Dùng màu tự _chọn"
+msgid "Transpare_ncy:"
+msgstr "Nền trong suốt"
 
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Dùng màu nền mặc định cho văn bản bôi đen"
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "Nền trong suốt"
 
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "Dùng màu _mặc định"
+
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "Dùng màu nền tự chọn cho văn bản bôi đen"
+
+#: ../Terminal.glade.h:99
 #, fuzzy
-#~ msgid "_Appearance"
-#~ msgstr "Vẻ ngoài"
+msgid "Use c_ustom color:"
+msgstr "Dùng màu tự _chọn"
 
-#~ msgid "_Background color:"
-#~ msgstr "Màu _nền:"
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "Dùng màu nền mặc định cho văn bản bôi đen"
 
-#~ msgid "_Backspace key generates:"
-#~ msgstr "Phím _Backspace tạo ra:"
-
+#: ../Terminal.glade.h:101
 #, fuzzy
-#~ msgid "_Colors"
-#~ msgstr "Màu sắc"
+msgid "_Appearance"
+msgstr "Vẻ ngoài"
 
-#~ msgid "_Delete key generates:"
-#~ msgstr "Phím _Delete tạo ra:"
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "Màu _nền:"
 
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "Tiêu đề đặt độn_g:"
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "Phím _Backspace tạo ra:"
 
-#~ msgid "_File:"
-#~ msgstr "_Tập tin:"
-
+#: ../Terminal.glade.h:104
 #, fuzzy
-#~ msgid "_General"
-#~ msgstr "Chung"
+msgid "_Colors"
+msgstr "Màu sắc"
 
-#~ msgid "_Initial title:"
-#~ msgstr "_Tiêu đề gốc:"
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "Phím _Delete tạo ra:"
 
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "Tiêu đề đặt độn_g:"
+
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "_Tập tin:"
+
+#: ../Terminal.glade.h:108
 #, fuzzy
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "Đặt lại các tùy chọn tương thích thành giá t_rị mặc định"
+msgid "_General"
+msgstr "Chung"
 
-#~ msgid "_Run command as login shell"
-#~ msgstr "_Chạy câu lệnh như shell đăng nhập"
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "_Tiêu đề gốc:"
 
+#: ../Terminal.glade.h:110
 #, fuzzy
-#~ msgid "_Shortcuts"
-#~ msgstr "Phím tắt"
+msgid "_Reset compatibility options to defaults"
+msgstr "Đặt lại các tùy chọn tương thích thành giá t_rị mặc định"
 
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "_Chạy câu lệnh như shell đăng nhập"
+
+#: ../Terminal.glade.h:112
 #, fuzzy
-#~ msgid "_Text color:"
-#~ msgstr "_Màu con trỏ và văn bản:"
+msgid "_Shortcuts"
+msgstr "Phím tắt"
 
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "_Cập nhật các bản ghi utmp/wtmp khi chạy câu lệnh"
+#: ../Terminal.glade.h:113
+#, fuzzy
+msgid "_Text color:"
+msgstr "_Màu con trỏ và văn bản:"
+
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Cập nhật các bản ghi utmp/wtmp khi chạy câu lệnh"
+
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr ""
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Tiêu đề:</b>"

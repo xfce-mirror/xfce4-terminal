@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2008-11-04 22:24+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
@@ -590,22 +590,22 @@ msgstr "Përmbajtje"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "I pazoti të përcaktojë shell tuajin për hyrje."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "Dështoi në përmbushjen e pjellës"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "Mbylle këtë skedë"
 
@@ -630,7 +630,7 @@ msgid "Help"
 msgstr "Ndihmë"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Çaktivizuar"
 
@@ -956,442 +956,560 @@ msgstr "Jepni titullin për skedën e çastit të terminalit"
 msgid "Terminal Emulator"
 msgstr "Emulues Terminali"
 
+#: ../Terminal.glade.h:1
 #, fuzzy
-#~ msgid "$TERM s_etting:"
-#~ msgstr "Rregullim <tt>$TERM</tt>-i:"
+msgid "$TERM s_etting:"
+msgstr "Rregullim <tt>$TERM</tt>-i:"
 
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
 
+#: ../Terminal.glade.h:3
 #, fuzzy
-#~ msgid "Ad_vanced"
-#~ msgstr "Të mëtejshme"
+msgid "Ad_vanced"
+msgstr "Të mëtejshme"
 
+#: ../Terminal.glade.h:4
 #, fuzzy
-#~ msgid "Allow bold te_xt"
-#~ msgstr "Lejo tekst me të trasha"
+msgid "Allow bold te_xt"
+msgstr "Lejo tekst me të trasha"
 
-#~ msgid "Auto-detect"
-#~ msgstr "Vetëzbulo"
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Vetëzbulo"
 
+#: ../Terminal.glade.h:6
 #, fuzzy
-#~ msgid "Background"
-#~ msgstr "Pamje sfond"
+msgid "Background"
+msgstr "Pamje sfond"
 
-#~ msgid "Background image"
-#~ msgstr "Pamje sfond"
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Pamje sfond"
 
-#~ msgid "Centered"
-#~ msgstr "Qendërzuar"
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Qendërzuar"
 
-#~ msgid "Choose Terminal Font"
-#~ msgstr "Zgjidhni Gërma Terminali"
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Zgjidhni Gërma Terminali"
 
+#: ../Terminal.glade.h:10
 #, fuzzy
-#~ msgid "Choose tab activity color"
-#~ msgstr "Zgjidhni ngjyrë teskti për terminalin"
+msgid "Choose tab activity color"
+msgstr "Zgjidhni ngjyrë teskti për terminalin"
 
-#~ msgid "Choose terminal background color"
-#~ msgstr "Zgjidhni ngjyrë sfondi terminali"
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Zgjidhni ngjyrë sfondi terminali"
 
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "Zgjidhni ngjyrë kursori terminali"
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Zgjidhni ngjyrë kursori terminali"
 
-#~ msgid "Choose terminal text color"
-#~ msgstr "Zgjidhni ngjyrë teskti për terminalin"
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Zgjidhni ngjyrë teskti për terminalin"
 
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "Zgjidhni ngjyrë sfondi përzgjedhjeje teksti për terminalin"
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Zgjidhni ngjyrë sfondi përzgjedhjeje teksti për terminalin"
 
-#~ msgid "Color Selector"
-#~ msgstr "Përzgjedhës Ngjyrash"
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Përzgjedhës Ngjyrash"
 
+#: ../Terminal.glade.h:16
 #, fuzzy
-#~ msgid "Command"
-#~ msgstr "<b>Urdhër</b>"
+msgid "Command"
+msgstr "<b>Urdhër</b>"
 
+#: ../Terminal.glade.h:17
 #, fuzzy
-#~ msgid "Compatibility"
-#~ msgstr "<b>Përputhshmëri</b>"
+msgid "Compatibility"
+msgstr "<b>Përputhshmëri</b>"
 
+#: ../Terminal.glade.h:18
 #, fuzzy
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr "Quaji shenjat vijuese si pjesë fjalësh kur dyklikohet:"
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Quaji shenjat vijuese si pjesë fjalësh kur dyklikohet:"
 
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
 
+#: ../Terminal.glade.h:21
 #, fuzzy
-#~ msgid "Cu_rsor color:"
-#~ msgstr "Ngjyrë _teksti dhe kursori:"
+msgid "Cu_rsor color:"
+msgstr "Ngjyrë _teksti dhe kursori:"
 
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "Çaktivizo tërë tastet e hyrjes në me_nu (si p.sh. Alt+f)"
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Çaktivizo tërë tastet e hyrjes në me_nu (si p.sh. Alt+f)"
 
+#: ../Terminal.glade.h:23
 #, fuzzy
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "Çaktivizo tast shkurtoreje me_nuje (F10 si parazgjedhje)"
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Çaktivizo tast shkurtoreje me_nuje (F10 si parazgjedhje)"
 
-#~ msgid "Display _borders around new windows"
-#~ msgstr "Shfaq anë rreth dritaresh të reja "
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "Shfaq anë rreth dritaresh të reja "
 
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "Shfaq shtyllë menush në dritare të reja"
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "Shfaq shtyllë menush në dritare të reja"
 
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "Shfaq _panele në dritare të reja"
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "Shfaq _panele në dritare të reja"
 
+#: ../Terminal.glade.h:28
 #, fuzzy
-#~ msgid "Double Click"
-#~ msgstr "<b>Dyklikim</b>"
+msgid "Double Click"
+msgstr "<b>Dyklikim</b>"
 
+#: ../Terminal.glade.h:29
 #, fuzzy
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "Aktivizoni anti-aliasing për gërma terminali"
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Aktivizoni anti-aliasing për gërma terminali"
 
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "Aktivizojeni këtë mundësi nëse doni që  Terminali të përdorë anti-"
-#~ "aliasing kur vizatohet tekst në dritare terminali. Çaktivizimi i kësaj "
-#~ "mundësi mund të rrisë dukshëm shpejtësinë e terminalit në vizatim dhe ulë "
-#~ "ngarkesën e përgjithshme të sistemit në sisteme të ngadaltë."
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Aktivizojeni këtë mundësi nëse doni që  Terminali të përdorë anti-aliasing "
+"kur vizatohet tekst në dritare terminali. Çaktivizimi i kësaj mundësi mund "
+"të rrisë dukshëm shpejtësinë e terminalit në vizatim dhe ulë ngarkesën e "
+"përgjithshme të sistemit në sisteme të ngadaltë."
 
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr ""
-#~ "Aktivizojeni këtë mundësi për të lejuar zbatime që xhirojnë brenda "
-#~ "dritaresh terminali të përdorin tekst me gërma të trasha."
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Aktivizojeni këtë mundësi për të lejuar zbatime që xhirojnë brenda dritaresh "
+"terminali të përdorin tekst me gërma të trasha."
 
-#~ msgid ""
-#~ "Enable this option to be able to scroll by a single line using the up/"
-#~ "down arrow keys together with the Shift key."
-#~ msgstr ""
-#~ "Aktivizojeni këtë mundësi për të mundur të rrëshqisni lart e poshtë me "
-#~ "një vijë përmes përdorjes së shigjetave up/down bashkë me tastin Shift."
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Aktivizojeni këtë mundësi për të mundur të rrëshqisni lart e poshtë me një "
+"vijë përmes përdorjes së shigjetave up/down bashkë me tastin Shift."
 
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr ""
-#~ "Aktivizojeni këtë mundësi për të shfaqur shtyllën e menuve në dritare "
-#~ "terminali të krijuara rishtazi."
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Aktivizojeni këtë mundësi për të shfaqur shtyllën e menuve në dritare "
+"terminali të krijuara rishtazi."
 
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr ""
-#~ "Aktivizojeni këtë mundësi për të shfaqur panele në dritare terminali të "
-#~ "krijuara rishtazi."
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Aktivizojeni këtë mundësi për të shfaqur panele në dritare terminali të "
+"krijuara rishtazi."
 
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr ""
-#~ "Aktivizojeni këtë mundësi për të shfaqur zbukurime dritaresh përreth "
-#~ "dritaresh terminali të krijuara rishtazi."
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Aktivizojeni këtë mundësi për të shfaqur zbukurime dritaresh përreth "
+"dritaresh terminali të krijuara rishtazi."
 
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr ""
-#~ "Ju bën të mundur shtypjen e çfarëdo tasti të tastierës për rrëshqitje "
-#~ "poshtë brenda dritares së terminalit kur pritet dhënie urdhri."
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Ju bën të mundur shtypjen e çfarëdo tasti të tastierës për rrëshqitje poshtë "
+"brenda dritares së terminalit kur pritet dhënie urdhri."
 
-#~ msgid "Escape sequence"
-#~ msgstr "Sekuencë Ikjeje"
+#: ../Terminal.glade.h:37
+msgid "Erase TTY"
+msgstr ""
 
-#~ msgid "General"
-#~ msgstr "Të përgjithshme"
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "Sekuencë Ikjeje"
 
-#~ msgid "Goes after initial title"
-#~ msgstr "Hyn paa titullit fillestar"
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr ""
 
-#~ msgid "Goes before initial title"
-#~ msgstr "Hyn para titullit fillestar"
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "Të përgjithshme"
 
-#~ msgid "Isn't displayed"
-#~ msgstr "S'paraqitet"
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "Hyn paa titullit fillestar"
 
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "Hyn para titullit fillestar"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "S'paraqitet"
+
+#: ../Terminal.glade.h:44
 #, fuzzy
-#~ msgid "Menubar Access"
-#~ msgstr "<b>Hyrje në shtyllë menush</b>"
+msgid "Menubar Access"
+msgstr "<b>Hyrje në shtyllë menush</b>"
 
-#~ msgid "None (use solid color)"
-#~ msgstr "Asnjë (përdor ngjyrë të plotë)"
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "Asnjë (përdor ngjyrë të plotë)"
 
-#~ msgid "On the left side"
-#~ msgstr "Në anën e majtë"
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "Në anën e majtë"
 
-#~ msgid "On the right side"
-#~ msgstr "Në anën e djathtë"
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "Në anën e djathtë"
 
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "Hap dialog për caktimin e ngjyrës"
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "Hap dialog për caktimin e ngjyrës"
 
+#: ../Terminal.glade.h:49
 #, fuzzy
-#~ msgid "Opening New Windows"
-#~ msgstr "<b>Po Hapet Dritare e Re</b>"
+msgid "Opening New Windows"
+msgstr "<b>Po Hapet Dritare e Re</b>"
 
+#: ../Terminal.glade.h:50
 #, fuzzy
-#~ msgid "Palette"
-#~ msgstr "<b>Paletë</b>"
+msgid "Palette"
+msgstr "<b>Paletë</b>"
 
+#: ../Terminal.glade.h:51
 #, fuzzy
-#~ msgid "Palette entry 1"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 1"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:52
 #, fuzzy
-#~ msgid "Palette entry 10"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 10"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:53
 #, fuzzy
-#~ msgid "Palette entry 11"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 11"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:54
 #, fuzzy
-#~ msgid "Palette entry 12"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 12"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:55
 #, fuzzy
-#~ msgid "Palette entry 13"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 13"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:56
 #, fuzzy
-#~ msgid "Palette entry 14"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 14"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:57
 #, fuzzy
-#~ msgid "Palette entry 15"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 15"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:58
 #, fuzzy
-#~ msgid "Palette entry 16"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 16"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:59
 #, fuzzy
-#~ msgid "Palette entry 2"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 2"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:60
 #, fuzzy
-#~ msgid "Palette entry 3"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 3"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:61
 #, fuzzy
-#~ msgid "Palette entry 4"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 4"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:62
 #, fuzzy
-#~ msgid "Palette entry 5"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 5"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:63
 #, fuzzy
-#~ msgid "Palette entry 6"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 6"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:64
 #, fuzzy
-#~ msgid "Palette entry 7"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 7"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:65
 #, fuzzy
-#~ msgid "Palette entry 8"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 8"
+msgstr "Zë palete %d"
 
+#: ../Terminal.glade.h:66
 #, fuzzy
-#~ msgid "Palette entry 9"
-#~ msgstr "Zë palete %d"
+msgid "Palette entry 9"
+msgstr "Zë palete %d"
 
-#~ msgid "Replaces initial title"
-#~ msgstr "Zëvendëson titullin fillestar"
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "Zëvendëson titullin fillestar"
 
+#: ../Terminal.glade.h:68
 #, fuzzy
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "Zgjidhni ngjyrë teskti për terminalin"
+msgid "Reset tab activity _indicator after"
+msgstr "Zgjidhni ngjyrë teskti për terminalin"
 
-#~ msgid "Scaled"
-#~ msgstr "Shkallëzuar"
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "Shkallëzuar"
 
+#: ../Terminal.glade.h:70
 #, fuzzy
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "_Shtyllë rrështije është:"
+msgid "Scr_ollbar is:"
+msgstr "_Shtyllë rrështije është:"
 
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "Rrëshqit kur sh_typet një tast "
+#: ../Terminal.glade.h:71
+msgid "Scroll on _keystroke"
+msgstr "Rrëshqit kur sh_typet një tast "
 
+#: ../Terminal.glade.h:72
 #, fuzzy
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "Rrëshqit kur ka shumë përfundim"
+msgid "Scroll on ou_tput"
+msgstr "Rrëshqit kur ka shumë përfundim"
 
-#~ msgid "Scroll single _line using Shift-Up/-Down keys"
-#~ msgstr "Rrëshqit me një _vijë duke përdorur tastet Shift-Up/-Down"
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Rrëshqit me një _vijë duke përdorur tastet Shift-Up/-Down"
 
+#: ../Terminal.glade.h:74
 #, fuzzy
-#~ msgid "Scroll_back:"
-#~ msgstr "_Rrëshqitje:"
+msgid "Scroll_back:"
+msgstr "_Rrëshqitje:"
 
+#: ../Terminal.glade.h:75
 #, fuzzy
-#~ msgid "Scrolling"
-#~ msgstr "<b>Rrëshqitje</b>"
+msgid "Scrolling"
+msgstr "<b>Rrëshqitje</b>"
 
+#: ../Terminal.glade.h:76
 #, fuzzy
-#~ msgid "Select Background Image File"
-#~ msgstr "Përzgjidhni kartelë pamjeje sfondi"
+msgid "Select Background Image File"
+msgstr "Përzgjidhni kartelë pamjeje sfondi"
 
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "Përzgjidhni këtë mundësi për ta detyruar Terminalin të xhirojë shellin "
-#~ "tuaj si shell hyrjesh kur hapni terminale të rinj. Shihni dokumentacionin "
-#~ "e shellit tuaj për të dhëna rreth dallimeve midis xhirimit të tij si "
-#~ "shell ndërveprues dhe xhirimit të tij si shell hyrjesh."
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Përzgjidhni këtë mundësi për ta detyruar Terminalin të xhirojë shellin tuaj "
+"si shell hyrjesh kur hapni terminale të rinj. Shihni dokumentacionin e "
+"shellit tuaj për të dhëna rreth dallimeve midis xhirimit të tij si shell "
+"ndërveprues dhe xhirimit të tij si shell hyrjesh."
 
+#: ../Terminal.glade.h:78
 #, fuzzy
-#~ msgid "Shortcut Keys"
-#~ msgstr "Tast Shkurtoreje"
+msgid "Shortcut Keys"
+msgstr "Tast Shkurtoreje"
 
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr ""
-#~ "Përcakton numrin e rreshtave që mund të rrëshqisni kur përdoret "
-#~ "rrëshqitje."
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Përcakton numrin e rreshtave që mund të rrëshqisni kur përdoret rrëshqitje."
 
+#: ../Terminal.glade.h:80
 #, fuzzy
-#~ msgid "St_yle:"
-#~ msgstr "_Stil:"
+msgid "St_yle:"
+msgstr "_Stil:"
 
+#: ../Terminal.glade.h:81
 #, fuzzy
-#~ msgid "Stretched"
-#~ msgstr "Tendosur"
+msgid "Stretched"
+msgstr "Tendosur"
 
+#: ../Terminal.glade.h:82
 #, fuzzy
-#~ msgid "Tab activit_y color:"
-#~ msgstr "Zgjidhni ngjyrë teskti për terminalin"
+msgid "Tab Activity Indicator"
+msgstr "Zgjidhni ngjyrë teskti për terminalin"
 
-#~ msgid "Terminal Preferences"
-#~ msgstr "Parapëlqime Terminali"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr ""
-#~ "Zbatimet e terminalit kanë këtë paletë ngjyrash të passhme për veten:"
-
+#: ../Terminal.glade.h:83
 #, fuzzy
-#~ msgid "Text Selection"
-#~ msgstr "<b>Përzgjedhje Teksti</b>"
+msgid "Tab activit_y color:"
+msgstr "Zgjidhni ngjyrë teskti për terminalin"
 
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "Parapëlqime Terminali"
+
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Zbatimet e terminalit kanë këtë paletë ngjyrash të passhme për veten:"
+
+#: ../Terminal.glade.h:86
 #, fuzzy
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "Këto mundësi mund të bëjnë që disa zbatime të mos sillen siç pritet. "
-#~ "Jepen këtu vetëm për t'ju lejuar të përpiqeni të gjeni një zgjidhje për "
-#~ "disa zbatime dhe sisteme operativë që presin tjetër sjellje nga terminali."
+msgid "Text Selection"
+msgstr "<b>Përzgjedhje Teksti</b>"
 
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr ""
-#~ "Kjo mundësi kontrollon rrëshqitjen vetvetiu ose jo brenda terminalit sa "
-#~ "herë që prodhohen përfundime të reja nga urdhra që xhirojnë brenda "
-#~ "termialit."
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "Kjo tregon vlerën që i është dhënë ndryshores së mjedisit $TERM, kur "
-#~ "hapet një skedë ose dritare e re. Prazgejdhja do të duhej të ishte ok për "
-#~ "shumicën e sistemeve. Nëse keni probleme me ngjyrat në disa nga zbatimet, "
-#~ "provoni këtu xterm-color."
-
+#: ../Terminal.glade.h:87
 #, fuzzy
-#~ msgid "Tiled"
-#~ msgstr "Tjegullëzuar"
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Këto mundësi mund të bëjnë që disa zbatime të mos sillen siç pritet. Jepen "
+"këtu vetëm për t'ju lejuar të përpiqeni të gjeni një zgjidhje për disa "
+"zbatime dhe sisteme operativë që presin tjetër sjellje nga terminali."
 
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Kjo mundësi kontrollon rrëshqitjen vetvetiu ose jo brenda terminalit sa herë "
+"që prodhohen përfundime të reja nga urdhra që xhirojnë brenda termialit."
+
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Kjo tregon vlerën që i është dhënë ndryshores së mjedisit $TERM, kur hapet "
+"një skedë ose dritare e re. Prazgejdhja do të duhej të ishte ok për shumicën "
+"e sistemeve. Nëse keni probleme me ngjyrat në disa nga zbatimet, provoni "
+"këtu xterm-color."
+
+#: ../Terminal.glade.h:93
 #, fuzzy
-#~ msgid "Title"
-#~ msgstr "Tjegullëzuar"
+msgid "Tiled"
+msgstr "Tjegullëzuar"
 
+#: ../Terminal.glade.h:94
 #, fuzzy
-#~ msgid "Transpare_ncy:"
-#~ msgstr "Sfond i tejdukshëm"
+msgid "Title"
+msgstr "Tjegullëzuar"
 
-#~ msgid "Transparent background"
-#~ msgstr "Sfond i tejdukshëm"
-
-#~ msgid "Use _default color"
-#~ msgstr "Përdor ngjyrë _parazgjedhje"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Përdor ngjyrë vetjake për sfond përzgjedhjeje teksti"
-
+#: ../Terminal.glade.h:95
 #, fuzzy
-#~ msgid "Use c_ustom color:"
-#~ msgstr "Përdor ngjyrë vetiake "
+msgid "Transpare_ncy:"
+msgstr "Sfond i tejdukshëm"
 
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Përdor ngjyrë parazgjedhje për sfond përzgjedhjeje teksti"
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "Sfond i tejdukshëm"
 
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "Përdor ngjyrë _parazgjedhje"
+
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "Përdor ngjyrë vetjake për sfond përzgjedhjeje teksti"
+
+#: ../Terminal.glade.h:99
 #, fuzzy
-#~ msgid "_Appearance"
-#~ msgstr "Dukje"
+msgid "Use c_ustom color:"
+msgstr "Përdor ngjyrë vetiake "
 
-#~ msgid "_Background color:"
-#~ msgstr "Ngjyrë _sfondi:"
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "Përdor ngjyrë parazgjedhje për sfond përzgjedhjeje teksti"
 
-#~ msgid "_Backspace key generates:"
-#~ msgstr "Tasti _Backspace prodhon:"
-
+#: ../Terminal.glade.h:101
 #, fuzzy
-#~ msgid "_Colors"
-#~ msgstr "Ngjyra"
+msgid "_Appearance"
+msgstr "Dukje"
 
-#~ msgid "_Delete key generates:"
-#~ msgstr "tasti _Delete prodhon:"
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "Ngjyrë _sfondi:"
 
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "Cakto titull në mënyrë _dinamike:"
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "Tasti _Backspace prodhon:"
 
-#~ msgid "_File:"
-#~ msgstr "_Kartelë:"
-
+#: ../Terminal.glade.h:104
 #, fuzzy
-#~ msgid "_General"
-#~ msgstr "Të përgjithshme"
+msgid "_Colors"
+msgstr "Ngjyra"
 
-#~ msgid "_Initial title:"
-#~ msgstr "Titull _fillestar:"
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "tasti _Delete prodhon:"
 
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "Cakto titull në mënyrë _dinamike:"
+
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "_Kartelë:"
+
+#: ../Terminal.glade.h:108
 #, fuzzy
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "_Rikthe mundësi përputhshmërie te vlerat e tyre parazgjedhje"
+msgid "_General"
+msgstr "Të përgjithshme"
 
-#~ msgid "_Run command as login shell"
-#~ msgstr "_Xhiro urdhës si shell hyrjesh"
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "Titull _fillestar:"
 
+#: ../Terminal.glade.h:110
 #, fuzzy
-#~ msgid "_Shortcuts"
-#~ msgstr "Shkurtore"
+msgid "_Reset compatibility options to defaults"
+msgstr "_Rikthe mundësi përputhshmërie te vlerat e tyre parazgjedhje"
 
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "_Xhiro urdhës si shell hyrjesh"
+
+#: ../Terminal.glade.h:112
 #, fuzzy
-#~ msgid "_Text color:"
-#~ msgstr "Ngjyrë _teksti dhe kursori:"
+msgid "_Shortcuts"
+msgstr "Shkurtore"
 
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "_Përditëso regjistrime utmp/wtmp kur niset urdhri"
+#: ../Terminal.glade.h:113
+#, fuzzy
+msgid "_Text color:"
+msgstr "Ngjyrë _teksti dhe kursori:"
+
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Përditëso regjistrime utmp/wtmp kur niset urdhri"
+
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr ""
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titull</b>"

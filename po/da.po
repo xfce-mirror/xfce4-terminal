@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.99.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-06 13:43+0100\n"
+"POT-Creation-Date: 2009-12-07 11:48+0100\n"
 "PO-Revision-Date: 2009-08-19 22:56+0100\n"
 "Last-Translator: Per Kongstad <p_kongstad@op.pl>\n"
 "Language-Team: Danish <dansk@dansk-gruppen>\n"
@@ -598,22 +598,22 @@ msgstr "Indhold"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:387 ../terminal/terminal-screen.c:586
-#: ../terminal/terminal-screen.c:1468
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:592
+#: ../terminal/terminal-screen.c:1533
 msgid "Untitled"
 msgstr "Uden titel"
 
-#: ../terminal/terminal-screen.c:477
+#: ../terminal/terminal-screen.c:483
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kunne ikke bestemme din logindskal."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1228
+#: ../terminal/terminal-screen.c:1294
 msgid "Failed to execute child"
 msgstr "Kunne ikke afvikle underprocess"
 
-#: ../terminal/terminal-screen.c:1809
+#: ../terminal/terminal-screen.c:1874
 msgid "Close this tab"
 msgstr "Luk dette faneblad"
 
@@ -638,7 +638,7 @@ msgid "Help"
 msgstr "Hjælp"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Deaktiveret"
 
@@ -962,402 +962,508 @@ msgstr "Indtast titlen for det nuværende terminalfaneblad"
 msgid "Terminal Emulator"
 msgstr "Terminal Emulator"
 
-#~ msgid "$TERM s_etting:"
-#~ msgstr "_Indstilling af $TERM:"
-
-#~ msgid "ASCII DEL"
-#~ msgstr "ASCII DEL"
-
-#~ msgid "Ad_vanced"
-#~ msgstr "A_vanceret"
-
-#~ msgid "Allow bold te_xt"
-#~ msgstr "Tillad fed s_krift"
-
-#~ msgid "Auto-detect"
-#~ msgstr "Autodetektér"
-
-#~ msgid "Background"
-#~ msgstr "Baggrund"
-
-#~ msgid "Background image"
-#~ msgstr "Baggrundsbillede"
-
-#~ msgid "Centered"
-#~ msgstr "Centreret"
-
-#~ msgid "Choose Terminal Font"
-#~ msgstr "Vælg terminalskrifttype"
-
-#~ msgid "Choose tab activity color"
-#~ msgstr "Vælg aktivitetsfarve for faneblad"
-
-#~ msgid "Choose terminal background color"
-#~ msgstr "Vælg terminalbaggrundsfarve"
-
-#~ msgid "Choose terminal cursor color"
-#~ msgstr "Vælg terminalmarkørfarve"
-
-#~ msgid "Choose terminal text color"
-#~ msgstr "Vælg terminaltekstfarve"
-
-#~ msgid "Choose terminal text selection background color"
-#~ msgstr "Vælg terminaltekst selektion baggrundsfarve"
-
-#~ msgid "Color Selector"
-#~ msgstr "Farvevælger"
-
-#~ msgid "Command"
-#~ msgstr "Kommando"
-
-#~ msgid "Compatibility"
-#~ msgstr "Kompabilitet"
-
-#~ msgid ""
-#~ "Consider the following characters part of a _word\n"
-#~ "when double clicking:"
-#~ msgstr ""
-#~ "Overvej følgende bogstavers del af et _ord\n"
-#~ "ved dobbelklik:"
-
-#~ msgid "Control-H"
-#~ msgstr "Control-H"
-
-#~ msgid "Cu_rsor color:"
-#~ msgstr "Mar_kørfarve:"
-
-#~ msgid "Disable all me_nu access keys (such as Alt+f)"
-#~ msgstr "Deaktivér alle me_nuaktiveringstaster (såsom Alt-f)"
-
-#~ msgid "Disable m_enu shortcut keys (F10 by default)"
-#~ msgstr "Deaktivér m_enugenvejstasten (F10 som standard)"
-
-#~ msgid "Display _borders around new windows"
-#~ msgstr "Vis _rammer rundt om nye vinduer"
-
-#~ msgid "Display _menubar in new windows"
-#~ msgstr "Vis _menulinjen i nye vinduer"
-
-#~ msgid "Display _toolbars in new windows"
-#~ msgstr "Vis _værktøjslinjer i nye vinduer"
-
-#~ msgid "Double Click"
-#~ msgstr "Dobbeltklik"
-
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "Akti_ver tekstudjævning for terminalskrifttypen"
-
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "Aktivér denne indstilling hvis du vil have terminal til at udjævne "
-#~ "kanterne på skrifttyperne i terminal-vinduer. Fravalg af denne kan øge "
-#~ "genoptegnelseshastighed dramatisk og formindske globalt forbrug af "
-#~ "resurser på langsomme systemer."
-
-#~ msgid ""
-#~ "Enable this option to allow applications running inside the terminal "
-#~ "windows to use bold text."
-#~ msgstr ""
-#~ "Aktivér denne indstilling for at tillade programmer der køres i "
-#~ "terminalens vindue at bruge fed skrift."
-
-#~ msgid ""
-#~ "Enable this option to be able to scroll by a single line using the up/"
-#~ "down arrow keys together with the Shift key."
-#~ msgstr ""
-#~ "Aktivér denne indstilling for at rulle en enkelt linje ved at bruge op/"
-#~ "ned piletasterne sammen med Shift-tasten."
-
-#~ msgid ""
-#~ "Enable this option to show the menubar in newly created terminal windows."
-#~ msgstr ""
-#~ "Aktivér denne indstilling for at vise menulinjen i nye oprettede "
-#~ "terminalvinduer."
-
-#~ msgid ""
-#~ "Enable this option to show the toolbars in newly created terminal windows."
-#~ msgstr ""
-#~ "Aktivér denne indstilling for at vise værktøjslinjerne i nye "
-#~ "terminalvinduer."
-
-#~ msgid ""
-#~ "Enable this option to show window decorations around newly created "
-#~ "terminal windows."
-#~ msgstr ""
-#~ "Aktivér denne indstilling for at vise vinduesdekorationer rundt om nye "
-#~ "terminalvinduer."
-
-#~ msgid ""
-#~ "Enables you to press any key on the keyboard to scroll down the terminal "
-#~ "window to the command prompt."
-#~ msgstr ""
-#~ "Giver mulighed for at trykke en tast på tastaturet for at rulle ned i "
-#~ "terminalvinduet til kommandolinjen."
-
-#~ msgid "Erase TTY"
-#~ msgstr "Slet TTY"
-
-#~ msgid "Escape sequence"
-#~ msgstr "Escapesekvenser"
-
-#~ msgid "Font"
-#~ msgstr "Skrifttype"
-
-#~ msgid "General"
-#~ msgstr "Generelt"
-
-#~ msgid "Goes after initial title"
-#~ msgstr "Kommer efter opstarttitel"
-
-#~ msgid "Goes before initial title"
-#~ msgstr "Kommer før opstarttitel"
-
-#~ msgid "Isn't displayed"
-#~ msgstr "Vises ikke"
-
-#~ msgid "Menubar Access"
-#~ msgstr "Menulinjeadgang"
-
-#~ msgid "None (use solid color)"
-#~ msgstr "Ingen (brug ensfarvet)"
-
-#~ msgid "On the left side"
-#~ msgstr "På venstre side"
-
-#~ msgid "On the right side"
-#~ msgstr "På højre side"
-
-#~ msgid "Open a dialog to specify the color"
-#~ msgstr "Åbn en dialog for at indstille farven"
-
-#~ msgid "Opening New Windows"
-#~ msgstr "Åbner nye vinduer"
-
-#~ msgid "Palette"
-#~ msgstr "Palet"
-
-#~ msgid "Palette entry 1"
-#~ msgstr "Paletværdi 1"
-
-#~ msgid "Palette entry 10"
-#~ msgstr "Paletværdi 10"
-
-#~ msgid "Palette entry 11"
-#~ msgstr "Paletværdi 11"
-
-#~ msgid "Palette entry 12"
-#~ msgstr "Paletværdi 12"
-
-#~ msgid "Palette entry 13"
-#~ msgstr "Paletværdi 13"
-
-#~ msgid "Palette entry 14"
-#~ msgstr "Paletværdi 14"
-
-#~ msgid "Palette entry 15"
-#~ msgstr "Paletværdi 15"
-
-#~ msgid "Palette entry 16"
-#~ msgstr "Paletværdi 16"
-
-#~ msgid "Palette entry 2"
-#~ msgstr "Paletværdi 2"
-
-#~ msgid "Palette entry 3"
-#~ msgstr "Paletværdi 3"
-
-#~ msgid "Palette entry 4"
-#~ msgstr "Paletværdi 4"
-
-#~ msgid "Palette entry 5"
-#~ msgstr "Paletværdi 5"
-
-#~ msgid "Palette entry 6"
-#~ msgstr "Paletværdi 6"
-
-#~ msgid "Palette entry 7"
-#~ msgstr "Paletværdi 7"
-
-#~ msgid "Palette entry 8"
-#~ msgstr "Paletværdi 8"
-
-#~ msgid "Palette entry 9"
-#~ msgstr "Paletværdi 9"
-
-#~ msgid "Replaces initial title"
-#~ msgstr "Erstatter opstarttitel"
-
-#~ msgid "Reset tab activity _indicator after"
-#~ msgstr "Nulstil aktivitets_indikator for faneblad efter"
-
-#~ msgid "Scaled"
-#~ msgstr "Skaleret"
-
-#~ msgid "Scr_ollbar is:"
-#~ msgstr "_Rullebjælken er:"
-
-#~ msgid "Scroll on _keystroke"
-#~ msgstr "Rul på _tastetryk"
-
-#~ msgid "Scroll on ou_tput"
-#~ msgstr "Rul ved _uddata"
-
-#~ msgid "Scroll single _line using Shift-Up/-Down keys"
-#~ msgstr "Rul en enkelt _linje med Shift-op/nedpiletasterne"
-
-#~ msgid "Scroll_back:"
-#~ msgstr "Rul _tilbage:"
-
-#~ msgid "Scrolling"
-#~ msgstr "Rulning"
-
-#~ msgid "Select Background Image File"
-#~ msgstr "Vælg baggrundsbillede"
-
-#~ msgid ""
-#~ "Select this option to force Terminal to run your shell as a login shell "
-#~ "when you open new terminals. See the documentation of your shell for "
-#~ "details about differences between running it as interactive shell and "
-#~ "running it as login shell."
-#~ msgstr ""
-#~ "Vælg denne indstilling for at tvinge Terminal til at køre din "
-#~ "kommandofortolker som en logindskal, når du åbner nye terminaler. Se "
-#~ "dokumentationen til din kommandofortolker, for at se forskellene mellem "
-#~ "kørsel som interaktiv kommandofortolker og logindskal."
-
-#~ msgid "Shortcut Keys"
-#~ msgstr "Genvejstaster"
-
-#~ msgid ""
-#~ "Specifies the number of lines that you can scroll back using the "
-#~ "scrollbar."
-#~ msgstr ""
-#~ "Specificerer antallet af linjer der kan rulles tilbage med rullebjælken."
-
-#~ msgid "St_yle:"
-#~ msgstr "_Stil:"
-
-#~ msgid "Stretched"
-#~ msgstr "Udstrakt"
-
-#~ msgid "Tab Activity Indicator"
-#~ msgstr "Aktivitetsindikator for faneblad"
-
-#~ msgid "Tab activit_y color:"
-#~ msgstr "Aktivitetsfarve for f_aneblad:"
-
-#~ msgid "Terminal Preferences"
-#~ msgstr "Terminalindstillinger"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr "Terminalprogrammer har adgang til denne farve-palette:"
-
-#~ msgid "Text Selection"
-#~ msgstr "Tekstmarkering"
-
-#~ msgid ""
-#~ "These options may cause some applications to behave\n"
-#~ "incorrectly. They are only here to allow you to work around\n"
-#~ "certain applications and operating systems that expect\n"
-#~ "different terminal behavior."
-#~ msgstr ""
-#~ "Disse indstillinger kan få visse programmer til at opføre\n"
-#~ "sig forkert. De er kun her for at give dig mulighed for at\n"
-#~ "arbejde med indstillinger, som forskellige programmer\n"
-#~ "og operativsystemer måske forventer."
-
-#~ msgid ""
-#~ "This option controls whether the terminal will scroll down automatically "
-#~ "whenever new output is generated by the commands running inside the "
-#~ "terminal."
-#~ msgstr ""
-#~ "Denne indstilling kontrollerer om terminalen automatisk vil rulle ned, "
-#~ "når der er ny uddata fra programmet, der afvikles i terminalen."
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "Dette angiver, hvad værdien af $TERM miljøvariablen er sat til, når et "
-#~ "nyt terminalfaneblad eller et nyt terminalvindue åbnes. "
-#~ "Standardindstillingen skulle være OK for de fleste systemer. Hvis du har "
-#~ "problemer med farver i nogle programmer, kan du bruge værdien xterm-color "
-#~ "her."
-
-#~ msgid "Tiled"
-#~ msgstr "Fliselagt"
-
-#~ msgid "Title"
-#~ msgstr "Titel"
-
-#~ msgid "Transpare_ncy:"
-#~ msgstr "Gennemsig_tighed:"
-
-#~ msgid "Transparent background"
-#~ msgstr "Gennemsigtig baggrund"
-
-#~ msgid "Use _default color"
-#~ msgstr "Brug _standardfarve"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Brug en brugerdefineret tekstvalg-baggrundsfarve"
-
-#~ msgid "Use c_ustom color:"
-#~ msgstr "Brug _tilpasset farve:"
-
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Brug standard tekstvalg-baggrundsfarve"
-
-#~ msgid "_Appearance"
-#~ msgstr "_Udseende"
-
-#~ msgid "_Background color:"
-#~ msgstr "_Baggrundsfarve:"
-
-#~ msgid "_Backspace key generates:"
-#~ msgstr "_Tilbagetasten generer:"
-
-#~ msgid "_Colors"
-#~ msgstr "_Farver"
-
-#~ msgid "_Delete key generates:"
-#~ msgstr "_Delete-tasten generer:"
-
-#~ msgid "_Dynamically-set title:"
-#~ msgstr "Indstil _dynamisk titel:"
-
-#~ msgid "_File:"
-#~ msgstr "_Fil:"
-
-#~ msgid "_General"
-#~ msgstr "_Generelt"
-
-#~ msgid "_Initial title:"
-#~ msgstr "_Opstarttitel:"
-
-#~ msgid "_Reset compatibility options to defaults"
-#~ msgstr "_Nulstil kompatibilitetsindstillinger til standardindstillinger"
-
-#~ msgid "_Run command as login shell"
-#~ msgstr "_Kør kommando som logindskal"
-
-#~ msgid "_Shortcuts"
-#~ msgstr "_Genveje"
-
-#~ msgid "_Text color:"
-#~ msgstr "_Tekstfarve:"
-
-#~ msgid "_Update utmp/wtmp records when command is launched"
-#~ msgstr "_Opdatér utmp/wtmp posterne når en kommando bliver startet"
-
-#~ msgid "seconds"
-#~ msgstr "sekunder"
+#: ../Terminal.glade.h:1
+msgid "$TERM s_etting:"
+msgstr "_Indstilling af $TERM:"
+
+#: ../Terminal.glade.h:2
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../Terminal.glade.h:3
+msgid "Ad_vanced"
+msgstr "A_vanceret"
+
+#: ../Terminal.glade.h:4
+msgid "Allow bold te_xt"
+msgstr "Tillad fed s_krift"
+
+#: ../Terminal.glade.h:5
+msgid "Auto-detect"
+msgstr "Autodetektér"
+
+#: ../Terminal.glade.h:6
+msgid "Background"
+msgstr "Baggrund"
+
+#: ../Terminal.glade.h:7
+msgid "Background image"
+msgstr "Baggrundsbillede"
+
+#: ../Terminal.glade.h:8
+msgid "Centered"
+msgstr "Centreret"
+
+#: ../Terminal.glade.h:9
+msgid "Choose Terminal Font"
+msgstr "Vælg terminalskrifttype"
+
+#: ../Terminal.glade.h:10
+msgid "Choose tab activity color"
+msgstr "Vælg aktivitetsfarve for faneblad"
+
+#: ../Terminal.glade.h:11
+msgid "Choose terminal background color"
+msgstr "Vælg terminalbaggrundsfarve"
+
+#: ../Terminal.glade.h:12
+msgid "Choose terminal cursor color"
+msgstr "Vælg terminalmarkørfarve"
+
+#: ../Terminal.glade.h:13
+msgid "Choose terminal text color"
+msgstr "Vælg terminaltekstfarve"
+
+#: ../Terminal.glade.h:14
+msgid "Choose terminal text selection background color"
+msgstr "Vælg terminaltekst selektion baggrundsfarve"
+
+#: ../Terminal.glade.h:15
+msgid "Color Selector"
+msgstr "Farvevælger"
+
+#: ../Terminal.glade.h:16
+msgid "Command"
+msgstr "Kommando"
+
+#: ../Terminal.glade.h:17
+msgid "Compatibility"
+msgstr "Kompabilitet"
+
+#: ../Terminal.glade.h:18
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr ""
+"Overvej følgende bogstavers del af et _ord\n"
+"ved dobbelklik:"
+
+#: ../Terminal.glade.h:20
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../Terminal.glade.h:21
+msgid "Cu_rsor color:"
+msgstr "Mar_kørfarve:"
+
+#: ../Terminal.glade.h:22
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Deaktivér alle me_nuaktiveringstaster (såsom Alt-f)"
+
+#: ../Terminal.glade.h:23
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Deaktivér m_enugenvejstasten (F10 som standard)"
+
+#: ../Terminal.glade.h:25
+msgid "Display _borders around new windows"
+msgstr "Vis _rammer rundt om nye vinduer"
+
+#: ../Terminal.glade.h:26
+msgid "Display _menubar in new windows"
+msgstr "Vis _menulinjen i nye vinduer"
+
+#: ../Terminal.glade.h:27
+msgid "Display _toolbars in new windows"
+msgstr "Vis _værktøjslinjer i nye vinduer"
+
+#: ../Terminal.glade.h:28
+msgid "Double Click"
+msgstr "Dobbeltklik"
+
+#: ../Terminal.glade.h:29
+msgid "Enab_le anti-aliasing for the terminal font"
+msgstr "Akti_ver tekstudjævning for terminalskrifttypen"
+
+#: ../Terminal.glade.h:30
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Aktivér denne indstilling hvis du vil have terminal til at udjævne kanterne "
+"på skrifttyperne i terminal-vinduer. Fravalg af denne kan øge "
+"genoptegnelseshastighed dramatisk og formindske globalt forbrug af resurser "
+"på langsomme systemer."
+
+#: ../Terminal.glade.h:31
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Aktivér denne indstilling for at tillade programmer der køres i terminalens "
+"vindue at bruge fed skrift."
+
+#: ../Terminal.glade.h:32
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Aktivér denne indstilling for at rulle en enkelt linje ved at bruge op/ned "
+"piletasterne sammen med Shift-tasten."
+
+#: ../Terminal.glade.h:33
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Aktivér denne indstilling for at vise menulinjen i nye oprettede "
+"terminalvinduer."
+
+#: ../Terminal.glade.h:34
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Aktivér denne indstilling for at vise værktøjslinjerne i nye terminalvinduer."
+
+#: ../Terminal.glade.h:35
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Aktivér denne indstilling for at vise vinduesdekorationer rundt om nye "
+"terminalvinduer."
+
+#: ../Terminal.glade.h:36
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Giver mulighed for at trykke en tast på tastaturet for at rulle ned i "
+"terminalvinduet til kommandolinjen."
+
+#: ../Terminal.glade.h:37
+msgid "Erase TTY"
+msgstr "Slet TTY"
+
+#: ../Terminal.glade.h:38
+msgid "Escape sequence"
+msgstr "Escapesekvenser"
+
+#: ../Terminal.glade.h:39
+msgid "Font"
+msgstr "Skrifttype"
+
+#: ../Terminal.glade.h:40
+msgid "General"
+msgstr "Generelt"
+
+#: ../Terminal.glade.h:41
+msgid "Goes after initial title"
+msgstr "Kommer efter opstarttitel"
+
+#: ../Terminal.glade.h:42
+msgid "Goes before initial title"
+msgstr "Kommer før opstarttitel"
+
+#: ../Terminal.glade.h:43
+msgid "Isn't displayed"
+msgstr "Vises ikke"
+
+#: ../Terminal.glade.h:44
+msgid "Menubar Access"
+msgstr "Menulinjeadgang"
+
+#: ../Terminal.glade.h:45
+msgid "None (use solid color)"
+msgstr "Ingen (brug ensfarvet)"
+
+#: ../Terminal.glade.h:46
+msgid "On the left side"
+msgstr "På venstre side"
+
+#: ../Terminal.glade.h:47
+msgid "On the right side"
+msgstr "På højre side"
+
+#: ../Terminal.glade.h:48
+msgid "Open a dialog to specify the color"
+msgstr "Åbn en dialog for at indstille farven"
+
+#: ../Terminal.glade.h:49
+msgid "Opening New Windows"
+msgstr "Åbner nye vinduer"
+
+#: ../Terminal.glade.h:50
+msgid "Palette"
+msgstr "Palet"
+
+#: ../Terminal.glade.h:51
+msgid "Palette entry 1"
+msgstr "Paletværdi 1"
+
+#: ../Terminal.glade.h:52
+msgid "Palette entry 10"
+msgstr "Paletværdi 10"
+
+#: ../Terminal.glade.h:53
+msgid "Palette entry 11"
+msgstr "Paletværdi 11"
+
+#: ../Terminal.glade.h:54
+msgid "Palette entry 12"
+msgstr "Paletværdi 12"
+
+#: ../Terminal.glade.h:55
+msgid "Palette entry 13"
+msgstr "Paletværdi 13"
+
+#: ../Terminal.glade.h:56
+msgid "Palette entry 14"
+msgstr "Paletværdi 14"
+
+#: ../Terminal.glade.h:57
+msgid "Palette entry 15"
+msgstr "Paletværdi 15"
+
+#: ../Terminal.glade.h:58
+msgid "Palette entry 16"
+msgstr "Paletværdi 16"
+
+#: ../Terminal.glade.h:59
+msgid "Palette entry 2"
+msgstr "Paletværdi 2"
+
+#: ../Terminal.glade.h:60
+msgid "Palette entry 3"
+msgstr "Paletværdi 3"
+
+#: ../Terminal.glade.h:61
+msgid "Palette entry 4"
+msgstr "Paletværdi 4"
+
+#: ../Terminal.glade.h:62
+msgid "Palette entry 5"
+msgstr "Paletværdi 5"
+
+#: ../Terminal.glade.h:63
+msgid "Palette entry 6"
+msgstr "Paletværdi 6"
+
+#: ../Terminal.glade.h:64
+msgid "Palette entry 7"
+msgstr "Paletværdi 7"
+
+#: ../Terminal.glade.h:65
+msgid "Palette entry 8"
+msgstr "Paletværdi 8"
+
+#: ../Terminal.glade.h:66
+msgid "Palette entry 9"
+msgstr "Paletværdi 9"
+
+#: ../Terminal.glade.h:67
+msgid "Replaces initial title"
+msgstr "Erstatter opstarttitel"
+
+#: ../Terminal.glade.h:68
+msgid "Reset tab activity _indicator after"
+msgstr "Nulstil aktivitets_indikator for faneblad efter"
+
+#: ../Terminal.glade.h:69
+msgid "Scaled"
+msgstr "Skaleret"
+
+#: ../Terminal.glade.h:70
+msgid "Scr_ollbar is:"
+msgstr "_Rullebjælken er:"
+
+#: ../Terminal.glade.h:71
+msgid "Scroll on _keystroke"
+msgstr "Rul på _tastetryk"
+
+#: ../Terminal.glade.h:72
+msgid "Scroll on ou_tput"
+msgstr "Rul ved _uddata"
+
+#: ../Terminal.glade.h:73
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Rul en enkelt _linje med Shift-op/nedpiletasterne"
+
+#: ../Terminal.glade.h:74
+msgid "Scroll_back:"
+msgstr "Rul _tilbage:"
+
+#: ../Terminal.glade.h:75
+msgid "Scrolling"
+msgstr "Rulning"
+
+#: ../Terminal.glade.h:76
+msgid "Select Background Image File"
+msgstr "Vælg baggrundsbillede"
+
+#: ../Terminal.glade.h:77
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Vælg denne indstilling for at tvinge Terminal til at køre din "
+"kommandofortolker som en logindskal, når du åbner nye terminaler. Se "
+"dokumentationen til din kommandofortolker, for at se forskellene mellem "
+"kørsel som interaktiv kommandofortolker og logindskal."
+
+#: ../Terminal.glade.h:78
+msgid "Shortcut Keys"
+msgstr "Genvejstaster"
+
+#: ../Terminal.glade.h:79
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Specificerer antallet af linjer der kan rulles tilbage med rullebjælken."
+
+#: ../Terminal.glade.h:80
+msgid "St_yle:"
+msgstr "_Stil:"
+
+#: ../Terminal.glade.h:81
+msgid "Stretched"
+msgstr "Udstrakt"
+
+#: ../Terminal.glade.h:82
+msgid "Tab Activity Indicator"
+msgstr "Aktivitetsindikator for faneblad"
+
+#: ../Terminal.glade.h:83
+msgid "Tab activit_y color:"
+msgstr "Aktivitetsfarve for f_aneblad:"
+
+#: ../Terminal.glade.h:84
+msgid "Terminal Preferences"
+msgstr "Terminalindstillinger"
+
+#: ../Terminal.glade.h:85
+msgid "Terminal applications have this color palette available to them:"
+msgstr "Terminalprogrammer har adgang til denne farve-palette:"
+
+#: ../Terminal.glade.h:86
+msgid "Text Selection"
+msgstr "Tekstmarkering"
+
+#: ../Terminal.glade.h:87
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Disse indstillinger kan få visse programmer til at opføre\n"
+"sig forkert. De er kun her for at give dig mulighed for at\n"
+"arbejde med indstillinger, som forskellige programmer\n"
+"og operativsystemer måske forventer."
+
+#: ../Terminal.glade.h:91
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Denne indstilling kontrollerer om terminalen automatisk vil rulle ned, når "
+"der er ny uddata fra programmet, der afvikles i terminalen."
+
+#: ../Terminal.glade.h:92
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Dette angiver, hvad værdien af $TERM miljøvariablen er sat til, når et nyt "
+"terminalfaneblad eller et nyt terminalvindue åbnes. Standardindstillingen "
+"skulle være OK for de fleste systemer. Hvis du har problemer med farver i "
+"nogle programmer, kan du bruge værdien xterm-color her."
+
+#: ../Terminal.glade.h:93
+msgid "Tiled"
+msgstr "Fliselagt"
+
+#: ../Terminal.glade.h:94
+msgid "Title"
+msgstr "Titel"
+
+#: ../Terminal.glade.h:95
+msgid "Transpare_ncy:"
+msgstr "Gennemsig_tighed:"
+
+#: ../Terminal.glade.h:96
+msgid "Transparent background"
+msgstr "Gennemsigtig baggrund"
+
+#: ../Terminal.glade.h:97
+msgid "Use _default color"
+msgstr "Brug _standardfarve"
+
+#: ../Terminal.glade.h:98
+msgid "Use a custom text selection background color"
+msgstr "Brug en brugerdefineret tekstvalg-baggrundsfarve"
+
+#: ../Terminal.glade.h:99
+msgid "Use c_ustom color:"
+msgstr "Brug _tilpasset farve:"
+
+#: ../Terminal.glade.h:100
+msgid "Use the default text selection background color"
+msgstr "Brug standard tekstvalg-baggrundsfarve"
+
+#: ../Terminal.glade.h:101
+msgid "_Appearance"
+msgstr "_Udseende"
+
+#: ../Terminal.glade.h:102
+msgid "_Background color:"
+msgstr "_Baggrundsfarve:"
+
+#: ../Terminal.glade.h:103
+msgid "_Backspace key generates:"
+msgstr "_Tilbagetasten generer:"
+
+#: ../Terminal.glade.h:104
+msgid "_Colors"
+msgstr "_Farver"
+
+#: ../Terminal.glade.h:105
+msgid "_Delete key generates:"
+msgstr "_Delete-tasten generer:"
+
+#: ../Terminal.glade.h:106
+msgid "_Dynamically-set title:"
+msgstr "Indstil _dynamisk titel:"
+
+#: ../Terminal.glade.h:107
+msgid "_File:"
+msgstr "_Fil:"
+
+#: ../Terminal.glade.h:108
+msgid "_General"
+msgstr "_Generelt"
+
+#: ../Terminal.glade.h:109
+msgid "_Initial title:"
+msgstr "_Opstarttitel:"
+
+#: ../Terminal.glade.h:110
+msgid "_Reset compatibility options to defaults"
+msgstr "_Nulstil kompatibilitetsindstillinger til standardindstillinger"
+
+#: ../Terminal.glade.h:111
+msgid "_Run command as login shell"
+msgstr "_Kør kommando som logindskal"
+
+#: ../Terminal.glade.h:112
+msgid "_Shortcuts"
+msgstr "_Genveje"
+
+#: ../Terminal.glade.h:113
+msgid "_Text color:"
+msgstr "_Tekstfarve:"
+
+#: ../Terminal.glade.h:114
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Opdatér utmp/wtmp posterne når en kommando bliver startet"
+
+#: ../Terminal.glade.h:115
+msgid "seconds"
+msgstr "sekunder"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titel:</b>"
