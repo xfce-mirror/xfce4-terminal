@@ -80,9 +80,9 @@ handle_message (DBusConnection *connection,
    * error can be TERMINAL_DBUS_ERROR_USER if the user ids
    * doesn't match, where the caller is expected to spawn
    * a new terminal of its own and do _NOT_ establish a
-   * D-BUS service, or TERMINAL_DBUS_ERROR_GENERAL, which
-   * indicates a general problem, e.g. invalid parameters
-   * or something like that.
+   * D-BUS service, a TERMINAL_DBUS_ERROR_OPTIONS when
+   * parsing the options failed or TERMINAL_DBUS_ERROR_GENERAL,
+   * which  indicates a general problem.
    */
 
   if (dbus_message_is_method_call (message,
@@ -100,29 +100,19 @@ handle_message (DBusConnection *connection,
           reply = dbus_message_new_error (message,
                                           TERMINAL_DBUS_ERROR_GENERAL,
                                           derror.message);
-          dbus_connection_send (connection, reply, NULL);
-          dbus_message_unref (reply);
-          dbus_error_free (&derror);
-          return DBUS_HANDLER_RESULT_HANDLED;
         }
-
-      /* check user id */
-      if (user_id != getuid ())
+      else if (user_id != getuid ())
         {
           reply = dbus_message_new_error (message,
                                           TERMINAL_DBUS_ERROR_USER,
                                           _("User id mismatch"));
-          dbus_connection_send (connection, reply, NULL);
-          dbus_free_string_array (argv);
-          dbus_message_unref (reply);
-          return DBUS_HANDLER_RESULT_HANDLED;
         }
-
-      if (!terminal_app_process (app, argv, argc, &error))
+      else if (!terminal_app_process (app, argv, argc, &error))
         {
           reply = dbus_message_new_error (message,
-                                          TERMINAL_DBUS_ERROR_GENERAL,
+                                          TERMINAL_DBUS_ERROR_OPTIONS,
                                           error->message);
+          g_error_free (error);
         }
       else
         {
@@ -234,6 +224,8 @@ terminal_dbus_invoke_launch (gint     argc,
   DBusMessage    *message;
   DBusMessage    *result;
   DBusError       derror;
+  gint            code;
+  gboolean        retval = TRUE;
 
   terminal_return_val_if_fail (argc > 0, FALSE);
   terminal_return_val_if_fail (argv != NULL, FALSE);
@@ -272,34 +264,34 @@ terminal_dbus_invoke_launch (gint     argc,
   result = dbus_connection_send_with_reply_and_block (connection, message, 2000, &derror);
   dbus_message_unref (message);
 
+  /* when we reply with an error, the error is put in the derror
+   * and the result is %NULL */
   if (result == NULL)
     {
-      dbus_set_g_error (error, &derror);
+set_error:
+      if (dbus_error_has_name (&derror, TERMINAL_DBUS_ERROR_USER))
+        code = TERMINAL_ERROR_USER_MISMATCH;
+      else if (dbus_error_has_name (&derror, TERMINAL_DBUS_ERROR_OPTIONS))
+        code = TERMINAL_ERROR_OPTIONS;
+      else
+        code = TERMINAL_ERROR_FAILED;
+
+      g_set_error (error, TERMINAL_ERROR, code, "%s", derror.message);
       dbus_error_free (&derror);
+
       return FALSE;
     }
 
-  if (dbus_message_is_error (result, TERMINAL_DBUS_ERROR_USER))
-    {
-      dbus_set_error_from_message (&derror, result);
-      g_set_error (error, TERMINAL_ERROR, TERMINAL_ERROR_USER_MISMATCH,
-                   "%s", derror.message);
-      dbus_message_unref (result);
-      dbus_error_free (&derror);
-      return FALSE;
-    }
-
+  /* handle other types of errors */
   if (dbus_message_get_type (result) == DBUS_MESSAGE_TYPE_ERROR)
     {
       dbus_set_error_from_message (&derror, result);
-      g_set_error (error, TERMINAL_ERROR, TERMINAL_ERROR_FAILED,
-                   "%s", derror.message);
       dbus_message_unref (result);
-      dbus_error_free (&derror);
-      return FALSE;
+      goto set_error;
     }
 
   dbus_message_unref (result);
-  return TRUE;
+
+  return retval;
 }
 
