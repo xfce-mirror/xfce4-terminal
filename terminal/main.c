@@ -134,7 +134,9 @@ usage (void)
 int
 main (int argc, char **argv)
 {
-  TerminalOptions *options;
+  gboolean         show_help = FALSE;
+  gboolean         show_version = FALSE;
+  gboolean         disable_server = FALSE;
   GdkModifierType  modifiers;
   TerminalApp     *app;
   const gchar     *startup_id;
@@ -160,15 +162,10 @@ main (int argc, char **argv)
   g_log_set_always_fatal (G_LOG_LEVEL_CRITICAL | G_LOG_LEVEL_WARNING);
 #endif
 
-  if (!terminal_options_parse (argc, argv, NULL, &options, &error))
-    {
-      g_printerr ("%s\n", error->message);
-      g_error_free (error);
+  /* parse some options we need in main, not the windows attrs */
+  terminal_options_parse (argc, argv, &show_help, &show_version, &disable_server);
 
-      return EXIT_FAILURE;
-    }
-
-  if (G_UNLIKELY (options->show_version))
+  if (G_UNLIKELY (show_version))
     {
       g_print (_("%s (Xfce %s)\n\n"
                  "Copyright (c) %s\n"
@@ -183,7 +180,7 @@ main (int argc, char **argv)
                  PACKAGE_BUGREPORT);
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options->show_help))
+  else if (G_UNLIKELY (show_help))
     {
       usage ();
       return EXIT_SUCCESS;
@@ -214,7 +211,7 @@ main (int argc, char **argv)
   nargv[nargc] = NULL;
 
 #ifdef HAVE_DBUS
-  if (!options->disable_server)
+  if (!disable_server)
     {
       /* try to connect to an existing Terminal service */
       if (terminal_dbus_invoke_launch (nargc, nargv, &error))
@@ -223,23 +220,33 @@ main (int argc, char **argv)
         }
       else
         {
-          /* handle "User mismatch" special */
           if (error->domain == TERMINAL_ERROR
               && error->code == TERMINAL_ERROR_USER_MISMATCH)
             {
               /* don't try to establish another service here */
-              options->disable_server = TRUE;
+              disable_server = TRUE;
 #ifndef NDEBUG
               g_debug ("User mismatch when invoking remote terminal: %s", error->message);
-            }
-          else
-            {
-              g_debug ("No running instance found: %s", error->message);
 #endif
             }
+          else if (error->domain == TERMINAL_ERROR
+                   && error->code == TERMINAL_ERROR_OPTIONS)
+            {
+              /* options were not parsed succesfully, don't try that again below */
+              g_printerr ("%s\n", error->message);
+              g_error_free (error);
+              g_strfreev (nargv);
+              return EXIT_FAILURE;
+            }
+#ifndef NDEBUG
+          else
+            {
+              g_debug ("D-Bus reply error: %s (%s: %d)", error->message,
+                       g_quark_to_string (error->domain), error->code);
+            }
+#endif
 
-          g_error_free (error);
-          error = NULL;
+          g_clear_error (&error);
         }
     }
 #endif /* !HAVE_DBUS */
@@ -260,26 +267,25 @@ main (int argc, char **argv)
   app = g_object_new (TERMINAL_TYPE_APP, NULL);
 
 #ifdef HAVE_DBUS
-  if (!options->disable_server)
+  if (!disable_server)
     {
       if (!terminal_dbus_register_service (app, &error))
         {
           g_printerr (_("Unable to register terminal service: %s\n"), error->message);
-          g_error_free (error);
-          error = NULL;
+          g_clear_error (&error);
         }
     }
 #endif /* !HAVE_DBUS */
 
   if (!terminal_app_process (app, nargv, nargc, &error))
     {
-      g_printerr (_("Unable to launch terminal: %s\n"), error->message);
+      /* parsing one of the arguments failed */
+      g_printerr ("%s\n", error->message);
       g_error_free (error);
+      g_object_unref (G_OBJECT (app));
+      g_strfreev (nargv);
       return EXIT_FAILURE;
     }
-
-  /* free parsed options */
-  terminal_options_free (options);
 
   /* free temporary arguments */
   g_strfreev (nargv);

@@ -26,7 +26,6 @@
 
 G_BEGIN_DECLS
 
-typedef struct _TerminalOptions    TerminalOptions;
 typedef struct _TerminalTabAttr    TerminalTabAttr;
 typedef struct _TerminalWindowAttr TerminalWindowAttr;
 typedef enum   _TerminalVisibility TerminalVisibility;
@@ -36,14 +35,6 @@ enum _TerminalVisibility
   TERMINAL_VISIBILITY_DEFAULT,
   TERMINAL_VISIBILITY_SHOW,
   TERMINAL_VISIBILITY_HIDE
-};
-
-struct _TerminalOptions
-{
-  gchar    *session_id;
-  gboolean  show_help;
-  gboolean  show_version;
-  gboolean  disable_server;
 };
 
 struct _TerminalTabAttr
@@ -69,17 +60,19 @@ struct _TerminalWindowAttr
   gboolean             maximize;
 };
 
-gboolean           terminal_options_parse    (gint                 argc,
-                                              gchar              **argv,
-                                              GSList             **attrs_return,
-                                              TerminalOptions    **options_return,
-                                              GError             **error);
+void                terminal_options_parse     (gint                 argc,
+                                                gchar              **argv,
+                                                gboolean            *show_help,
+                                                gboolean            *show_version,
+                                                gboolean            *disable_server);
 
-void                terminal_options_free     (TerminalOptions     *options);
+GSList             *terminal_window_attr_parse (gint                 argc,
+                                                gchar              **argv,
+                                                GError             **error);
 
-TerminalWindowAttr *terminal_window_attr_new  (void);
+TerminalWindowAttr *terminal_window_attr_new   (void);
 
-void                terminal_window_attr_free (TerminalWindowAttr  *attr);
+void                terminal_window_attr_free  (TerminalWindowAttr  *attr);
 
 G_END_DECLS
 

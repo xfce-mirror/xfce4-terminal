@@ -457,13 +457,16 @@ terminal_app_process (TerminalApp  *app,
 {
   GSList *attrs, *lp;
 
-  if (!terminal_options_parse (argc, argv, &attrs, NULL, error))
+  attrs = terminal_window_attr_parse (argc, argv, error);
+  if (G_UNLIKELY (attrs == NULL))
     return FALSE;
 
   for (lp = attrs; lp != NULL; lp = lp->next)
-    terminal_app_open_window (app, lp->data);
+    {
+      terminal_app_open_window (app, lp->data);
+      terminal_window_attr_free (lp->data);
+    }
 
-  g_slist_foreach (attrs, (GFunc) terminal_window_attr_free, NULL);
   g_slist_free (attrs);
 
   return TRUE;

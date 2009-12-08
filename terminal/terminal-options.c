@@ -139,47 +139,65 @@ terminal_tab_attr_free (TerminalTabAttr *attr)
 
 
 
+void
+terminal_options_parse (gint       argc,
+                        gchar    **argv,
+                        gboolean  *show_help,
+                        gboolean  *show_version,
+                        gboolean  *disable_server)
+{
+  gint n;
+
+  for (n = 1; n < argc; ++n)
+    {
+      /* all arguments should atleast start with a dash */
+      if (argv[n] == NULL || *argv[n] != '-')
+        continue;
+
+      if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
+        *show_help = TRUE;
+      else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL))
+        *show_version = TRUE;
+      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL))
+        *disable_server = TRUE;
+    }
+}
+
+
+
 /**
- * terminal_options_parse:
+ * terminal_window_attr_parse:
  * @argc            :
  * @argv            :
- * @attrs_return    :
- * @options_return  :
  * @error           :
  *
- * Return value: %TRUE on success.
+ * Return value: %NULL on failure.
  **/
-gboolean
-terminal_options_parse (gint              argc,
-                        gchar           **argv,
-                        GSList          **attrs_return,
-                        TerminalOptions **options_return,
-                        GError          **error)
+GSList *
+terminal_window_attr_parse (gint              argc,
+                            gchar           **argv,
+                            GError          **error)
 {
-  TerminalWindowAttr *win_attr = NULL;
-  TerminalTabAttr    *tab_attr = NULL;
+  TerminalWindowAttr *win_attr;
+  TerminalTabAttr    *tab_attr;
   gchar              *default_directory = NULL;
   gchar              *default_display = NULL;
   gchar              *s;
   GSList             *tp, *wp;
+  GSList             *attrs;
   gint                n;
   TerminalVisibility  visible;
 
-  if (attrs_return != NULL)
-    {
-      win_attr = terminal_window_attr_new ();
-      tab_attr = win_attr->tabs->data;
-      *attrs_return = g_slist_prepend (NULL, win_attr);
-    }
-
-  if (options_return != NULL)
-    *options_return = g_slice_new0 (TerminalOptions);
+  win_attr = terminal_window_attr_new ();
+  tab_attr = win_attr->tabs->data;
+  attrs = g_slist_prepend (NULL, win_attr);
 
   for (n = 1; n < argc; ++n)
     {
       /* all arguments should atleast start with a dash */
       if (argv[n] == NULL || *argv[n] != '-')
         goto unknown_option;
+
 
       if (terminal_option_cmp ("default-display", 0, argc, argv, &n, &s))
         {
@@ -212,36 +230,6 @@ terminal_options_parse (gint              argc,
               default_directory = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
-        {
-          if (options_return != NULL)
-            (*options_return)->show_help = TRUE;
-        }
-      else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL))
-        {
-          if (options_return != NULL)
-            (*options_return)->show_version = TRUE;
-        }
-      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL))
-        {
-          if (options_return != NULL)
-            (*options_return)->disable_server = TRUE;
-        }
-      else if (terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, &s))
-        {
-          if (G_UNLIKELY (s == NULL))
-            {
-              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--sm-client-id\" requires specifying "
-                             "the session id as its parameter"));
-              goto failed;
-            }
-          else if (options_return != NULL)
-            {
-              g_free ((*options_return)->session_id);
-              (*options_return)->session_id = g_strdup (s);
-            }
-        }
       else if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL))
         {
           if (++n >= argc)
@@ -251,7 +239,7 @@ terminal_options_parse (gint              argc,
                              "to run on the rest of the command line"));
               goto failed;
             }
-          else if (tab_attr != NULL)
+          else
             {
               g_strfreev (tab_attr->command);
               tab_attr->command = g_strdupv (argv + n);
@@ -268,7 +256,7 @@ terminal_options_parse (gint              argc,
                              "the command to run as its parameter"));
               goto failed;
             }
-          else if (tab_attr != NULL)
+          else
             {
               g_strfreev (tab_attr->command);
               tab_attr->command = NULL;
@@ -285,7 +273,7 @@ terminal_options_parse (gint              argc,
                              "the working directory as its parameter"));
               goto failed;
             }
-          else if (tab_attr != NULL)
+          else
             {
               g_free (tab_attr->directory);
               tab_attr->directory = g_strdup (s);
@@ -300,7 +288,7 @@ terminal_options_parse (gint              argc,
                              "the title as its parameter"));
               goto failed;
             }
-          else if (tab_attr != NULL)
+          else
             {
               g_free (tab_attr->title);
               tab_attr->title = g_strdup (s);
@@ -308,8 +296,7 @@ terminal_options_parse (gint              argc,
         }
       else if (terminal_option_cmp ("hold", 'H', argc, argv, &n, NULL))
         {
-          if (tab_attr != NULL)
-            tab_attr->hold = TRUE;
+          tab_attr->hold = TRUE;
         }
       else if (terminal_option_cmp ("display", 0, argc, argv, &n, &s))
         {
@@ -320,7 +307,7 @@ terminal_options_parse (gint              argc,
                              "the X display as its parameters"));
               goto failed;
             }
-          else if (win_attr != NULL)
+          else
             {
               g_free (win_attr->display);
               win_attr->display = g_strdup (s);
@@ -335,7 +322,7 @@ terminal_options_parse (gint              argc,
                              "the window geometry as its parameter"));
               goto failed;
             }
-          else if (win_attr != NULL)
+          else
             {
               g_free (win_attr->geometry);
               win_attr->geometry = g_strdup (s);
@@ -350,7 +337,7 @@ terminal_options_parse (gint              argc,
                              "the window role as its parameter"));
               goto failed;
             }
-          else if (win_attr != NULL)
+          else
             {
               g_free (win_attr->role);
               win_attr->role = g_strdup (s);
@@ -365,7 +352,7 @@ terminal_options_parse (gint              argc,
                              "the startup id as its parameter"));
               goto failed;
             }
-          else if (win_attr != NULL)
+          else
             {
               g_free (win_attr->startup_id);
               win_attr->startup_id = g_strdup (s);
@@ -380,7 +367,7 @@ terminal_options_parse (gint              argc,
                              "an icon name or filename as its parameter"));
               goto failed;
             }
-          else if (win_attr != NULL)
+          else
             {
               g_free (win_attr->icon);
               win_attr->icon = g_strdup (s);
@@ -388,45 +375,41 @@ terminal_options_parse (gint              argc,
         }
       else if (terminal_option_show_hide_cmp ("menubar", argc, argv, &n, &visible))
         {
-          if (win_attr != NULL)
-            win_attr->menubar = visible;
+          win_attr->menubar = visible;
         }
       else if (terminal_option_cmp ("fullscreen", 0, argc, argv, &n, NULL))
         {
-          if (win_attr != NULL)
-            win_attr->fullscreen = TRUE;
+          win_attr->fullscreen = TRUE;
         }
       else if (terminal_option_cmp ("maximize", 0, argc, argv, &n, NULL))
         {
-          if (win_attr != NULL)
-            win_attr->maximize = TRUE;
+          win_attr->maximize = TRUE;
         }
       else if (terminal_option_show_hide_cmp ("borders", argc, argv, &n, &visible))
         {
-          if (win_attr != NULL)
-            win_attr->borders = visible;
+          win_attr->borders = visible;
         }
       else if (terminal_option_show_hide_cmp ("toolbars", argc, argv, &n, &visible))
         {
-          if (win_attr != NULL)
-            win_attr->toolbars = visible;
+          win_attr->toolbars = visible;
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
-          if (win_attr != NULL)
-            {
-              tab_attr = g_slice_new0 (TerminalTabAttr);
-              win_attr->tabs = g_slist_append (win_attr->tabs, tab_attr);
-            }
+          tab_attr = g_slice_new0 (TerminalTabAttr);
+          win_attr->tabs = g_slist_append (win_attr->tabs, tab_attr);
         }
       else if (terminal_option_cmp ("window", 0, argc, argv, &n, NULL))
         {
-          if (attrs_return != NULL)
-            {
-              win_attr = terminal_window_attr_new ();
-              tab_attr = win_attr->tabs->data;
-              *attrs_return = g_slist_append (*attrs_return, win_attr);
-            }
+          win_attr = terminal_window_attr_new ();
+          tab_attr = win_attr->tabs->data;
+          attrs = g_slist_append (attrs, win_attr);
+        }
+      else if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL)
+               || terminal_option_cmp ("version", 'V', argc, argv, &n, NULL)
+               || terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
+               || terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, NULL))
+        {
+          /* options we can ignore */
         }
       else
         {
@@ -438,10 +421,9 @@ unknown_option:
     }
 
   /* substitute default working directory and default display if any */
-  if (attrs_return != NULL
-      && (default_display != NULL || default_directory != NULL))
+  if (default_display != NULL || default_directory != NULL)
     {
-      for (wp = *attrs_return; wp != NULL; wp = wp->next)
+      for (wp = attrs; wp != NULL; wp = wp->next)
         {
           win_attr = wp->data;
           for (tp = win_attr->tabs; tp != NULL; tp = tp->next)
@@ -458,38 +440,18 @@ unknown_option:
   g_free (default_directory);
   g_free (default_display);
 
-  return TRUE;
+  return attrs;
 
 failed:
-  if (options_return != NULL)
-    {
-      terminal_options_free (*options_return);
-      *options_return = NULL;
-    }
-  if (attrs_return != NULL)
-    {
-      for (wp = *attrs_return; wp != NULL; wp = wp->next)
-        terminal_window_attr_free (wp->data);
-      g_slist_free (*attrs_return);
-    }
+
+  for (wp = attrs; wp != NULL; wp = wp->next)
+    terminal_window_attr_free (wp->data);
+  g_slist_free (attrs);
+
   g_free (default_directory);
   g_free (default_display);
 
-  return FALSE;
-}
-
-
-
-/**
- **/
-void
-terminal_options_free (TerminalOptions *options)
-{
-  if (G_LIKELY (options != NULL))
-    {
-      g_free (options->session_id);
-      g_slice_free (TerminalOptions, options);
-    }
+  return NULL;
 }
 
 
