@@ -198,7 +198,6 @@ terminal_window_attr_parse (gint              argc,
       if (argv[n] == NULL || *argv[n] != '-')
         goto unknown_option;
 
-
       if (terminal_option_cmp ("default-display", 0, argc, argv, &n, &s))
         {
           if (G_UNLIKELY (s == NULL))
@@ -407,7 +406,9 @@ terminal_window_attr_parse (gint              argc,
       else if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL)
                || terminal_option_cmp ("version", 'V', argc, argv, &n, NULL)
                || terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
-               || terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, NULL))
+               || terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, NULL)
+               || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL)
+               || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL))
         {
           /* options we can ignore */
         }
