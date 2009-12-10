@@ -40,97 +40,6 @@
 
 
 
-static void
-usage (void)
-{
-  g_print ("%s\n", _("Usage:"));
-  g_print ("  %s [%s...]\n", PACKAGE_NAME, _("OPTION"));
-  g_print ("\n");
-  g_print ("%s:\n", _("General Options"));
-  g_print ("%s\n", _("  -h, --help                          Print this help message and exit"));
-  g_print ("%s\n", _("  -V, --version                       Print version information and exit"));
-  g_print ("%s\n", _("  --disable-server                    Do not register with the D-BUS\n"
-                     "                                      session message bus"));
-  g_print ("%s\n", _("  --default-display=DISPLAY           default X display to use"));
-  g_print ("%s\n", _("  --default-working-directory=DIRNAME Set the default terminal's working\n"
-                     "                                      directory"));
-  g_print ("\n");
-  g_print ("%s:\n", _("Window or Tab Separators"));
-  g_print ("%s\n", _("  --tab                               Open a new tab in the last-specified\n"
-                     "                                      window; more than one of these\n"
-                     "                                      options can be provided"));
-  g_print ("%s\n", _("  --window                            Open a new window containing one tab;\n"
-                     "                                      more than one of these options can be\n"
-                     "                                      provided"));
-  g_print ("\n");
-  g_print ("%s:\n", _("Tab Options"));
-  g_print ("%s\n", _("  -x, --execute                       Execute the remainder of the command\n"
-                     "                                      line inside the terminal"));
-  g_print ("%s\n", _("  -e, --command=STRING                Execute the argument to this option\n"
-                     "                                      inside the terminal"));
-  g_print ("%s\n", _("  --working-directory=DIRNAME         Set the terminal's working directory"));
-  g_print ("%s\n", _("  -T, --title=TITLE                   Set the terminal's title"));
-  g_print ("%s\n", _("  -H, --hold                          Do not immediately destroy the tab\n"
-                     "                                      when the child command exits"));
-  g_print ("\n");
-  g_print ("%s:\n", _("Window Options"));
-  g_print ("%s\n", _("  --display=DISPLAY                   X display to use for the last-\n"
-                     "                                      specified window"));
-  g_print ("%s\n", _("  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-                     "                                      man page), can be specified once per\n"
-                     "                                      window to be opened"));
-  g_print ("%s\n", _("  --role=ROLE                         Set the role for the last-specified\n"
-                     "                                      window; applies to only one window;\n"
-                     "                                      can be specified once for each window\n"
-                     "                                      you create from the command line"));
-  g_print ("%s\n", _("  --startup-id=STRING                 ID for the startup notification\n"
-                     "                                      protocol"));
-  g_print ("%s\n", _("  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-                     "                                      name or filename"));
-  g_print ("%s\n", _("  --fullscreen                        Set the last-specified window into\n"
-                     "                                      fullscreen mode; applies to only one\n"
-                     "                                      window; can be specified once for\n"
-                     "                                      each window you create from the\n"
-                     "                                      command line"));
-  g_print ("%s\n", _("  --maximize                          Maximize the last-specified window;\n"
-                     "                                      applies to only one window; can be\n"
-                     "                                      specified once for each window you\n"
-                     "                                      create from the command line"));
-  g_print ("%s\n", _("  --show-menubar                      Turn on the menubar for the last-\n"
-                     "                                      specified window; applies to only one\n"
-                     "                                      window; can be specified once for\n"
-                     "                                      each window you create from the\n"
-                     "                                      command line"));
-  g_print ("%s\n", _("  --hide-menubar                      Turn off the menubar for the last-\n"
-                     "                                      specified window; applies to only one\n"
-                     "                                      window; can be specified once for\n"
-                     "                                      each window you create from the\n"
-                     "                                      command line"));
-  g_print ("%s\n", _("  --show-borders                      Turn on the window decorations for\n"
-                     "                                      the last-specified window; applies\n"
-                     "                                      to only one window; can be specified\n"
-                     "                                      once for each window you create from\n"
-                     "                                      the command line"));
-  g_print ("%s\n", _("  --hide-borders                      Turn off the window decorations for\n"
-                     "                                      the last-specified window; applies\n"
-                     "                                      to only one window; can be specified\n"
-                     "                                      once for each window you create from\n"
-                     "                                      the command line"));
-  g_print ("%s\n", _("  --show-toolbars                     Turn on the toolbars for the last-\n"
-                     "                                      specified window; applies to only one\n"
-                     "                                      window; can be specified once for\n"
-                     "                                      each window you create from the\n"
-                     "                                      command line"));
-  g_print ("%s\n", _("  --hide-toolbars                     Turn off the toolbars for the last-\n"
-                     "                                      specified window; applies to only one\n"
-                     "                                      window; can be specified once for\n"
-                     "                                      each window you create from the\n"
-                     "                                      command line"));
-  g_print ("\n");
-}
-
-
-
 int
 main (int argc, char **argv)
 {
@@ -182,8 +91,13 @@ main (int argc, char **argv)
     }
   else if (G_UNLIKELY (show_help))
     {
-      usage ();
-      return EXIT_SUCCESS;
+      if (!g_spawn_command_line_sync ("man "PACKAGE_STRING, NULL, NULL, &n, NULL))
+        {
+          g_print (_("For help on the command line options view the %s "
+                     "manual page or HTML documentation."), PACKAGE_STRING);
+        }
+
+      return n;
     }
 
   /* create a copy of the standard arguments with our additional stuff */
