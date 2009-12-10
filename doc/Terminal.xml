@@ -45,9 +45,6 @@
         <surname>Meurer</surname>
         <affiliation>
           <address><email>benny@xfce.org</email></address>
-          <orgname>os-cillation</orgname>
-          <orgdiv>System development</orgdiv>
-          <jobtitle>Software developer</jobtitle>
         </affiliation>
       </author>
 
@@ -64,7 +61,6 @@
         <surname>Schermer</surname>
         <affiliation>
           <address><email>nick@xfce.org</email></address>
-          <jobtitle>Xfce Core Developer</jobtitle>
         </affiliation>
       </author>
     </authorgroup>
@@ -125,33 +121,51 @@
 
       <itemizedlist>
         <listitem>
-          Multiple tabs per window
+          <para>
+            Multiple tabs per window
+          </para>
         </listitem>
         <listitem>
-          Customizable toolbars, which can be changed using an integrated graphical toolbar editor
+          <para>
+            Customizable toolbars, which can be changed using an integrated graphical toolbar editor
+          </para>
         </listitem>
         <listitem>
-          Ability to configure nearly every aspect of &application; in the <guilabel>Preferences</guilabel> dialog plus a
-          bunch of so called <emphasis>hidden options</emphasis>
+          <para>
+            Ability to configure nearly every aspect of &application; in the <guilabel>Preferences</guilabel> dialog plus a
+            bunch of so called <emphasis>hidden options</emphasis>
+          </para>
         </listitem>
         <listitem>
-          Good integration with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink> in particular, but also with every other Linux desktop
+          <para>
+            Good integration with the <ulink url="http://xfce.org/">Xfce desktop environment</ulink> in particular, but also with every other Linux desktop
+          </para>
         </listitem>
         <listitem>
-          Session management support
+          <para>
+            Session management support
+          </para>
         </listitem>
         <listitem>
-          Real multihead support (both MultiScreen and Xinerama mode)
+          <para>
+            Real multihead support (both MultiScreen and Xinerama mode)
+          </para>
         </listitem>
         <listitem>
-          Standards compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
+          <para>
+            Standards compliance (see the <ulink url="http://freedesktop.org/">freedesktop.org</ulink> website)
+          </para>
         </listitem>
         <listitem>
-          <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the overall resource usage
+          <para>
+            <ulink url="http://dbus.freedesktop.org/">D-BUS</ulink> based terminal service facility to minimize the overall resource usage
+          </para>
         </listitem>
         <listitem>
-          High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink>
-          and <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.
+          <para>
+            High degree of maintainability by making best use of <ulink url="http://developer.gnome.org/doc/API/2.0/gtk/">GTK+</ulink>
+            and <ulink url="http://developer.gnome.org/doc/API/2.0/gobject/">GObject</ulink>.
+          </para>
         </listitem>
       </itemizedlist>
 
@@ -806,29 +820,35 @@
           <listitem>
             <para>Select a background for the terminal window. The options are as follows:</para>
 
-            <itemizedlist>
-              <listitem>
-                <guilabel>None (use solid color)</guilabel>
-                <para>Select this option to use the background color that is specified
-                in the <guilabel>Colors</guilabel> section as the background color for
-                the terminal.</para>
-              </listitem>
-              <listitem>
-                <guilabel>Background image</guilabel>
-                <para>Select this option to use an image file as the background for the
-                terminal. Use the <guilabel>Image file</guilabel> entry box to
-                specify the location and name of the image file. Alternatively, click on
-                the button besides the entry box to search for and select the image
-                file.</para>
-                <para>Use the <guilabel>Style</guilabel> option to control the appearance
-                of the background image. &application; supports tiling, centering, scaling and
-                stretching background images.</para>
-              </listitem>
-              <listitem>
-                <guilabel>Transparent background</guilabel>
-                <para>Select this option to use a transparent background for the terminal.</para>
-              </listitem>
-            </itemizedlist>
+            <variablelist>
+              <varlistentry>
+                <term><guilabel>None (use solid color)</guilabel></term>
+                <listitem>
+                  <para>Select this option to use the background color that is specified
+                  in the <guilabel>Colors</guilabel> section as the background color for
+                  the terminal.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term><guilabel>Background image</guilabel></term>
+                <listitem>
+                  <para>Select this option to use an image file as the background for the
+                  terminal. Use the <guilabel>Image file</guilabel> entry box to
+                  specify the location and name of the image file. Alternatively, click on
+                  the button besides the entry box to search for and select the image
+                  file.</para>
+                  <para>Use the <guilabel>Style</guilabel> option to control the appearance
+                  of the background image. &application; supports tiling, centering, scaling and
+                  stretching background images.</para>
+                </listitem>
+              </varlistentry>
+              <varlistentry>
+                <term><guilabel>Transparent background</guilabel></term>
+                <listitem>
+                  <para>Select this option to use a transparent background for the terminal.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
             <para>If you have selected <guilabel>Background image</guilabel> or <guilabel>Transparent
             background</guilabel>, you can use the slider <guilabel>Shade transparent or image
@@ -1030,227 +1050,15 @@
     </sect2>
   </sect1>
 
+  <sect1 id="command-line">
+    <title>Command line options</title>
+    <xi:include href="Terminal-options.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                xpointer="xpointer(//sect1[@id='options']/title/following-sibling::*)"/>
+  </sect1>
 
   <sect1 id="advanced">
     <title>Advanced topics</title>
-    <sect2 id="command-line-options">
-      <title>Command line Options</title>
-
-      <para>
-        When &application; is started from the command line or from a panel launcher, several options
-        can be specified to modify its behavior.
-      </para>
-
-      <variablelist>
-        <varlistentry>
-          <term><option>--help</option></term>
-          <listitem>
-            <para>List the various command line options supported by &application; and exit</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--version</option></term>
-          <listitem>
-            <para>Display version information and exit</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--disable-server</option></term>
-          <listitem>
-            <para>
-              Do not register with the D-BUS session message bus
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--execute</option> <parameter>...</parameter></term>
-          <listitem>
-            <para>Execute the remainder of the command line inside the terminal</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--command</option> <parameter>command</parameter></term>
-          <listitem>
-            <para>Execute <parameter>command</parameter> inside the terminal</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--working-directory</option> <parameter>directory</parameter></term>
-          <listitem>
-            <para>Set <parameter>directory</parameter> as the working directory for the terminal</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--title</option> <parameter>title</parameter></term>
-          <listitem>
-            <para>Set <parameter>title</parameter> as the initial window title for the terminal</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--hold</option></term>
-          <listitem>
-            <para>Causes the terminal to be kept around after the child command has terminated</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--display</option> <parameter>display</parameter></term>
-          <listitem>
-            <para>Open terminal window on the X screen specified by <parameter>display</parameter>.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--geometry</option> <parameter>geometry</parameter></term>
-          <listitem>
-            <para>
-              Sets the geometry of the last-specified window to <parameter>geometry</parameter>. Read
-              <userinput><command>man</command> <option>X</option></userinput> for more information on how
-              to specify window geometries.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--role</option> <parameter>role</parameter></term>
-          <listitem>
-            <para>
-              Sets the window role of the last-specified window to <parameter>role</parameter>. Applies
-              to only one window and can be specified once for each window you create from the command
-              line. It is mostly used for session management inside &application;.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--startup-id</option> <parameter>id</parameter></term>
-          <listitem>
-            <para>
-              Specifies the startup notification id for the last-specified window. Used internally
-              to forward the startup notification id when using the D-BUS service.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--fullscreen</option></term>
-          <listitem>
-            <para>
-              Set the last-specified window into fullscreen mode;
-              applies to only one window; can be specified once
-              for each window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--maximize</option></term>
-          <listitem>
-            <para>
-              Set the last-specified window into maximized mode;
-              applies to only one window; can be specified once
-              for each window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--show-menubar</option></term>
-          <listitem>
-            <para>
-              Turn on the menubar for the last-specified window. Can be specified once for each
-              window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--hide-menubar</option></term>
-          <listitem>
-            <para>
-              Turn off the menubar for the last-specified window. Can be specified once for each
-              window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--show-borders</option></term>
-          <listitem>
-            <para>
-              Turn on the window decorations for the last-specified window. Applies to only
-              one window. Can be specified once for each window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--hide-borders</option></term>
-          <listitem>
-            <para>
-              Turn off the window decorations for the last-specified window. Applies to only
-              one window. Can be specified once for each window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--show-toolbars</option></term>
-          <listitem>
-            <para>
-              Turn on the toolbars for the last-specified window. Applies to only one window. Can
-              be specified once for each window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--hide-toolbars</option></term>
-          <listitem>
-            <para>
-              Turn off the toolbars for the last-specified window. Applies to only one window. Can
-              be specified once for each window you create from the command line.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--tab</option></term>
-          <listitem>
-            <para>
-              Open a new tab in the last-specified window. More than one of these options can be provided.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><option>--window</option></term>
-          <listitem>
-            <para>
-              Open a new window containing one tab. More than one of these options can be provided.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>
-        For example, say you want to open a new terminal window with two tabs in it, where the first
-        tab should run <command>mutt</command> and the second tab should run <command>mc</command>,
-        and the window should have 80 columns and 40 rows, then you would use the following command
-        to start Terminal:
-      </para>
-
-      <screen>Terminal --geometry 80x40 --command mutt --tab --command mc</screen>
-
-    </sect2>
-
     <sect2 id="files-and-env-vars">
       <title>Files and Environment Variables</title>
 
@@ -1523,7 +1331,7 @@ MiscHighlightUrls=TRUE</programlisting>
     question that relate to working with &application;, or even terminal emulators in general. If
     you know of a question that's missing from this page, please <ulink url="http://bugzilla.xfce.org/enter_bug.cgi?product=Terminal&amp;format=guided">file a request</ulink>.</para>
 
-    <sect3>
+    <sect2>
       <title>&application; complains about <literal>Unable to start terminal server: Unable to connect
         to D-BUS message daemon</literal>, what can I do?</title>
 
@@ -1537,15 +1345,15 @@ MiscHighlightUrls=TRUE</programlisting>
       <literal>dbus-launch xfce4-session</literal> or use <literal>dbus-launch startxfce4</literal>
       to start Xfce instead. If you don't use Xfce, please look at the documentation of your
       desktop environment on how to enable the D-BUS session daemon.</para>
-    </sect3>
+    </sect2>
 
-    <sect3>
+    <sect2>
       <title><keycap>Home</keycap> and <keycap>End</keycap> keys don't work in &application;, what's wrong?</title>
 
       <para>This problem is actually a bug in <ulink url="http://developer.gnome.org/arch/gnome/widgets/vte.html">vte</ulink>,
       the terminal widget used by &application;. A patch for vte that fixes the problem is available <ulink url="http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch">here</ulink> (this patch was created
       with version 0.11.11 of vte, it may not work with other versions). Thanks to Auke Kok for this patch.</para>
-    </sect3>
+    </sect2>
   </sect1>
 
   <sect1 id="support">
