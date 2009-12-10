@@ -1062,80 +1062,13 @@
     <sect2 id="files-and-env-vars">
       <title>Files and Environment Variables</title>
 
-      <para>
-        Terminal uses the Basedir Specification as defined on <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> to locate its data and configuration files. This means
-        that file locations will be specified as a path relative to the directories described in
-        the specification.
-      </para>
+      <xi:include href="Terminal-options.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                xpointer="xpointer(//sect1[@id='environment']/title/following-sibling::*)"/>
 
-      <variablelist>
-        <varlistentry>
-          <term><varname>${XDG_CONFIG_HOME}</varname></term>
-          <listitem>
-            <para>
-              The first base directory to look for configuration
-              files. By default this is set to <filename role="directory">~/.config/</filename>.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><varname>${XDG_CONFIG_DIRS}</varname></term>
-          <listitem>
-            <para>
-              A colon separated list of base directories that contain configuration
-              data. By default the application will look in <filename role="directory">${sysconfdir}/xdg/</filename>. The value of
-              <varname>${sysconfdir}</varname> depends on how the program was
-              build and will often be <filename role="directory">/etc/</filename>
-              for binary packages.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><varname>${XDG_DATA_HOME}</varname></term>
-          <listitem>
-            <para>
-              The root for all user-specific data files. By default this
-              is set to <filename role="directory">~/.local/share/</filename>.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><varname>${XDG_DATA_DIRS}</varname></term>
-          <listitem>
-            <para>
-              A set of preference ordered base directories relative to which
-              data files should be searched in addition to the
-              <varname>${XDG_DATA_HOME}</varname> base directory. The directories
-              should be separated with a colon.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><filename>${XDG_CONFIG_DIRS}/Terminal/terminalrc</filename></term>
-          <listitem>
-            <para>
-              This is the location of the configuration file that includes the
-              preferences which control the look and feel of &application;.
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
-          <listitem>
-            <para>
-              This file includes the user interface definition for the toolbars. If
-              you customize the toolbars using the graphical toolbars editor, &application;
-              will store the new toolbars layout in the file
-              <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>.
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+      <xi:include href="Terminal-options.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude"
+                xpointer="xpointer(//sect1[@id='files']/title/following-sibling::*)"/>
     </sect2>
 
     <sect2 id="hidden-options">
