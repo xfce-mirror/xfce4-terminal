@@ -91,10 +91,10 @@ main (int argc, char **argv)
     }
   else if (G_UNLIKELY (show_help))
     {
-      if (!g_spawn_command_line_sync ("man "PACKAGE_STRING, NULL, NULL, &n, NULL))
+      if (!g_spawn_command_line_sync ("man "PACKAGE_NAME, NULL, NULL, &n, NULL))
         {
           g_print (_("For help on the command line options view the %s "
-                     "manual page or HTML documentation."), PACKAGE_STRING);
+                     "manual page or HTML documentation."), PACKAGE_NAME);
         }
 
       return n;
