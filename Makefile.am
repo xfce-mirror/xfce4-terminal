@@ -44,8 +44,6 @@ xml_in_files = Terminal-default-apps.xml.in
 xml_DATA = $(xml_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
-man_MANS = Terminal.1
-
 uidir = $(datadir)/Terminal
 ui_DATA = \
 	Terminal-toolbars.ui \
@@ -59,7 +57,6 @@ EXTRA_DIST = \
 	intltool-update.in \
 	$(desktop_in_files) \
 	$(xml_in_files) \
-	$(man_MANS) \
 	$(ui_DATA)
 
 DISTCLEANFILES = \
