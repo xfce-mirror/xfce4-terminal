@@ -1,5 +1,5 @@
 
-PO_FILES=$(shell echo `/bin/ls *.po`)
+PO_FILES=$(shell cd $(srcdir) && echo `/bin/ls *.po`)
 EXTRA_DIST = \
 	$(PO_FILES) \
 	$(GETTEXT_PACKAGE).pot
