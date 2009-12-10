@@ -1,3 +1,26 @@
+0.4.3
+=====
+- Make right/middle-click on tabs work when on all tab orientations
+  and when they are not packed as the first widget.
+- Token substitution in the initial title (%#, %d, %D and %w are
+  currently supported. See documentation for more information.
+- Install symlink in install-exec-hook hook (bug #5835).
+- Don't accept accelerators that are not accepted by Gtk (bug #3524).
+- Catch keybindings from previous and next tab when cycling is
+  disabled (bug #3715).
+- Build HTML documentation during make when compiling with
+  --enable-gen-doc and ship the HTML pages in the tarball.
+  See doc/README for more information.
+- Integrate in Gnome's default applications (bug #6020).
+- Handle window-resize requests (bug #6007).
+- Improve handling of invalid colors in the rc file.
+- Split option parsing in 2 stages to speed things up a bit and some
+  related improvement in the D-Bus code.
+- Don't show a warning when no config is found.
+- Only build ChangeLog in dist.
+- Translation updates (ja, lv, ca, ast, zh_CN, it, gl,
+
+
 0.4.2
 =====
 - Fix broken background image when compositing is disabled (bug #5645).
@@ -343,7 +366,7 @@
 
 0.1.7
 =====
-- New icons for the preferences dialog by Francois Le 
+- New icons for the preferences dialog by Francois Le
   Clainche <fleclainche@wanadoo.fr>, available as PNG and
   scalable images.
 - Online documentation updated. All of Terminal is now documented.
