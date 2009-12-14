@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
-"POT-Creation-Date: 2009-12-08 00:19+0900\n"
+"POT-Creation-Date: 2009-12-14 16:05+0100\n"
 "PO-Revision-Date: 2009-12-08 00:18+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -14,9 +14,642 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: Terminal.1.xml:14(contrib) Terminal.1.xml:22(contrib)
+#, fuzzy
+msgid "Developer"
+msgstr "Xfce Core Developer"
+
+#: Terminal.1.xml:15(firstname) Terminal.xml:63(firstname)
+msgid "Nick"
+msgstr "Nick"
+
+#: Terminal.1.xml:16(surname) Terminal.xml:64(surname)
+msgid "Schermer"
+msgstr "Schermer"
+
+#: Terminal.1.xml:18(email) Terminal.xml:66(email)
+msgid "nick@xfce.org"
+msgstr "nick@xfce.org"
+
+#: Terminal.1.xml:23(firstname) Terminal.xml:44(firstname)
+msgid "Benedikt"
+msgstr "Benedikt"
+
+#: Terminal.1.xml:24(surname) Terminal.xml:45(surname)
+msgid "Meurer"
+msgstr "Meurer"
+
+#: Terminal.1.xml:26(jobtitle) Terminal.xml:47(jobtitle)
+msgid "Software developer"
+msgstr "Software developer"
+
+#: Terminal.1.xml:27(orgname) Terminal.xml:23(holder) Terminal.xml:48(orgname)
+msgid "os-cillation"
+msgstr "os-cillation"
+
+#: Terminal.1.xml:28(orgdiv) Terminal.xml:49(orgdiv)
+msgid "System development"
+msgstr "System development"
+
+#: Terminal.1.xml:29(email) Terminal.xml:50(email)
+msgid "benny@xfce.org"
+msgstr "benny@xfce.org"
+
+#: Terminal.1.xml:37(manvolnum)
+msgid "1"
+msgstr ""
+
+#: Terminal.1.xml:38(refmiscinfo)
+msgid "0.4.2git-fa00dd5"
+msgstr ""
+
+#: Terminal.1.xml:39(refmiscinfo)
+msgid "Xfce"
+msgstr ""
+
+#: Terminal.1.xml:44(refpurpose)
+#, fuzzy
+msgid "A Terminal emulator for X"
+msgstr "ターミナルエミュレータ"
+
+#: Terminal.1.xml:48(title)
+msgid "Synopsis"
+msgstr ""
+
+#: Terminal.1.xml:50(command)
+#, fuzzy
+msgid "Terminal"
+msgstr "ターミナルエミュレータ"
+
+#: Terminal.1.xml:51(arg)
+msgid "OPTION"
+msgstr ""
+
+#: Terminal.1.xml:56(title)
+#, fuzzy
+msgid "Description"
+msgstr "os-cillation"
+
+#: Terminal.1.xml:57(para) Terminal.xml:93(para)
+msgid ""
+"@PACKAGE_NAME@ is what is known as an X terminal emulator, often referred to "
+"as terminal or shell. It provides an equivalent to the old-fashioned text "
+"screen on your desktop, but one which can easily share the screen with other "
+"graphical applications. Windows users may already be familiar with the MS-"
+"DOS Prompt utility, which has the analogous function of offering a DOS "
+"command-line under Windows, though one should note that the UNIX CLI offer "
+"far more power and ease of use than does DOS."
+msgstr ""
+"@PACKAGE_NAME@ は X ターミナルエミュレータとして知られるものの一つで、ターミ"
+"ナルあるいはシェルと呼ばれることが多いようです。あなたのデスクトップにやもす"
+"ると大昔の文字スクリーンを思わせるようなものを持ち込んできますが、他のグラ"
+"フィカルなアプリケーションと画面上に共存することに何の問題もありません。"
+"Windows ユーザには MS-DOS プロンプトというユーティリティ (Windows 環境下にお"
+"いて DOS コマンドラインでの作業を可能にする類似機能) に詳しい方がいるかもしれ"
+"ませんが UNIX の CLI は能力的に遥かに勝っていて使いやすいという事をぜひとも"
+"知って頂きたいと思います。"
+
+#: Terminal.1.xml:67(para) Terminal.xml:103(para)
+msgid ""
+"@PACKAGE_NAME@ emulates the <application>xterm</application> application "
+"developed by the X Consortium. In turn, the <application>xterm</application> "
+"application emulates the DEC VT102 terminal and also supports the DEC VT220 "
+"escape sequences. An escape sequence is a series of characters that start "
+"with the <keycap>Esc</keycap> character. @PACKAGE_NAME@ accepts all of the "
+"escape sequences that the VT102 and VT220 terminals use for functions such "
+"as to position the cursor and to clear the screen."
+msgstr ""
+"@PACKAGE_NAME@ は X コンソーシアムが開発したアプリケーション "
+"<application>xterm</application> の動作をエミュレートします。ではその "
+"<application>xterm</application> はと言うと、これは DEC の VT102 ターミナルを"
+"エミュレートしていて、DEC VT220 エスケープシーケンスも同様にサポートします。"
+"エスケープシーケンスとは、文字 <keycap>Esc</keycap> で始まる一連なりの文字列"
+"のことです。VT102 や VT220 ターミナルがカーソルの位置を定めたり画面をクリアす"
+"るような機能に使用する、これらエスケープシーケンスのすべてを @PACKAGE_NAME@ "
+"は受け付けます。"
+
+#: Terminal.1.xml:79(title)
+msgid "Options"
+msgstr ""
+
+#: Terminal.1.xml:82(title)
+msgid "Option Summary"
+msgstr ""
+
+#: Terminal.1.xml:83(para)
+msgid ""
+"Here is a summary of all the options, grouped by type. Explanations are in "
+"the following sections."
+msgstr ""
+
+#: Terminal.1.xml:89(link) Terminal.1.xml:144(title)
+#, fuzzy
+msgid "General Options"
+msgstr "一般設定"
+
+#: Terminal.1.xml:91(para)
+msgid ""
+"<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
+"version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
+"linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
+"general-default-working-directory\"/>"
+msgstr ""
+
+#: Terminal.1.xml:101(link) Terminal.1.xml:194(title)
+msgid "Window or Tab Separators"
+msgstr ""
+
+#: Terminal.1.xml:103(para)
+msgid ""
+"<xref linkend=\"options-separators-tab\"/>; <xref linkend=\"options-"
+"separators-window\"/>"
+msgstr ""
+
+#: Terminal.1.xml:110(link) Terminal.1.xml:217(title)
+msgid "Tab Options"
+msgstr ""
+
+#: Terminal.1.xml:112(para)
+msgid ""
+"<xref linkend=\"options-tab-execute\"/>; <xref linkend=\"options-tab-command"
+"\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend="
+"\"options-tab-title\"/>; <xref linkend=\"options-tab-hold\"/>"
+msgstr ""
+
+#: Terminal.1.xml:122(link) Terminal.1.xml:267(title)
+#, fuzzy
+msgid "Window Options"
+msgstr "隠しオプション"
+
+#: Terminal.1.xml:124(para)
+msgid ""
+"<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
+"geometry\"/>; <xref linkend=\"options-window-role\"/>; <xref linkend="
+"\"options-window-startup-id\"/>; <xref linkend=\"options-window-icon\"/>; "
+"<xref linkend=\"options-window-fullscreen\"/>; <xref linkend=\"options-"
+"window-maximize\"/>; <xref linkend=\"options-window-show-menubar\"/>, <xref "
+"linkend=\"options-window-hide-menubar\"/>; <xref linkend=\"options-window-"
+"show-borders\"/>, <xref linkend=\"options-window-hide-borders\"/>; <xref "
+"linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-"
+"hide-toolbars\"/>"
+msgstr ""
+
+#: Terminal.1.xml:147(term)
+msgid "<option>-h</option>, <option>--help</option>"
+msgstr ""
+
+#: Terminal.1.xml:151(para)
+msgid ""
+"List the various command line options supported by @PACKAGE_NAME@ and exit"
+msgstr ""
+"@PACKAGE_NAME@ がサポートする様々なコマンドラインオプションをリストして終了し"
+"ます"
+
+#: Terminal.1.xml:156(term)
+msgid "<option>-V</option>, <option>--version</option>"
+msgstr ""
+
+#: Terminal.1.xml:160(para)
+msgid "Display version information and exit"
+msgstr "バージョン情報を表示して終了します"
+
+#: Terminal.1.xml:166(option)
+msgid "--disable-server"
+msgstr "--disable-server"
+
+#: Terminal.1.xml:169(para)
+msgid "Do not register with the D-BUS session message bus"
+msgstr "D-BUS セッションのメッセージバスに登録しません"
+
+#: Terminal.1.xml:175(replaceable) Terminal.1.xml:271(replaceable)
+msgid "display"
+msgstr "ディスプレイ"
+
+#: Terminal.1.xml:175(option)
+msgid "--default-display=<placeholder-1/>"
+msgstr ""
+
+#: Terminal.1.xml:178(para)
+msgid "Default X display to use."
+msgstr ""
+
+#: Terminal.1.xml:184(replaceable) Terminal.1.xml:239(replaceable)
+msgid "directory"
+msgstr "フォルダ"
+
+#: Terminal.1.xml:184(option)
+#, fuzzy
+msgid "--default-working-directory=<placeholder-1/>"
+msgstr "--working-directory"
+
+#: Terminal.1.xml:187(para)
+#, fuzzy
+msgid ""
+"Set <parameter>directory</parameter> as the default working directory for "
+"the terminal"
+msgstr ""
+"ターミナルの作業フォルダにする<parameter>フォルダ</parameter>を指定します"
+
+#: Terminal.1.xml:198(option)
+msgid "--tab"
+msgstr "--tab"
+
+#: Terminal.1.xml:201(para)
+#, fuzzy
+msgid ""
+"Open a new tab in the last-specified window; more than one of these options "
+"can be provided."
+msgstr ""
+"最後に指定されたウィンドウで新しい一つのタブを開きます。このオプションは他と"
+"一緒に使用できます。"
+
+#: Terminal.1.xml:207(option)
+msgid "--window"
+msgstr "--window"
+
+#: Terminal.1.xml:210(para)
+#, fuzzy
+msgid ""
+"Open a new window containing one tab; more than one of these options can be "
+"provided."
+msgstr ""
+"一つのタブを含む一つのウィンドウを開きます。このオプションは他と一緒に使用で"
+"きます。"
+
+#: Terminal.1.xml:220(term)
+msgid "<option>-x</option>, <option>--execute</option>"
+msgstr ""
+
+#: Terminal.1.xml:224(para)
+msgid "Execute the remainder of the command line inside the terminal"
+msgstr "続くコマンドラインをターミナル内で実行します"
+
+#: Terminal.1.xml:229(term)
+msgid ""
+"<option>-e</option>, <option>--command=<replaceable>command</replaceable></"
+"option>"
+msgstr ""
+
+#: Terminal.1.xml:233(para)
+msgid "Execute <parameter>command</parameter> inside the terminal"
+msgstr "ターミナル内で<parameter>コマンド</parameter>を実行します"
+
+#: Terminal.1.xml:239(option)
+#, fuzzy
+msgid "--working-directory=<placeholder-1/>"
+msgstr "--working-directory"
+
+#: Terminal.1.xml:242(para)
+msgid ""
+"Set <parameter>directory</parameter> as the working directory for the "
+"terminal"
+msgstr ""
+"ターミナルの作業フォルダにする<parameter>フォルダ</parameter>を指定します"
+
+#: Terminal.1.xml:247(term)
+msgid ""
+"<option>-T</option>, <option>--title=<replaceable>title</replaceable></"
+"option>"
+msgstr ""
+
+#: Terminal.1.xml:251(para)
+msgid ""
+"Set <parameter>title</parameter> as the initial window title for the terminal"
+msgstr ""
+"ターミナルの最初のウィンドウのタイトルとして<parameter>タイトル</parameter>を"
+"付けます"
+
+#: Terminal.1.xml:256(term)
+msgid "<option>-H</option>, <option>--hold</option>"
+msgstr ""
+
+#: Terminal.1.xml:260(para)
+msgid ""
+"Causes the terminal to be kept around after the child command has terminated"
+msgstr "子コマンドが終了してもターミナルをそのままにしておきます"
+
+#: Terminal.1.xml:271(option)
+msgid "--display=<placeholder-1/>"
+msgstr ""
+
+#: Terminal.1.xml:274(para)
+msgid "X display to use for the last- specified window."
+msgstr ""
+
+#: Terminal.1.xml:280(replaceable)
+msgid "geometry"
+msgstr "ジオメトリ"
+
+#: Terminal.1.xml:280(option)
+msgid "--geometry=<placeholder-1/>"
+msgstr ""
+
+#: Terminal.1.xml:283(para)
+#, fuzzy
+msgid ""
+"Sets the geometry of the last-specified window to <parameter>geometry</"
+"parameter>. Read <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
+"manvolnum></citerefentry> for more information on how to specify window "
+"geometries."
+msgstr ""
+"最後に指定されたウィンドウのジオメトリを<parameter>ジオメトリ</parameter>に指"
+"定します。ジオメトリの指定方法についての詳しい情報は "
+"<userinput><command>man</command> <option>X</option></userinput> をご覧下さ"
+"い。"
+
+#: Terminal.1.xml:293(replaceable)
+msgid "role"
+msgstr "ロール"
+
+#: Terminal.1.xml:293(option)
+msgid "--role=<placeholder-1/>"
+msgstr ""
+
+#: Terminal.1.xml:296(para)
+#, fuzzy
+msgid ""
+"Sets the window role of the last-specified window to <parameter>role</"
+"parameter>. Applies to only one window and can be specified once for each "
+"window you create from the command line. It is mostly used for session "
+"management inside @PACKAGE_NAME@"
+msgstr ""
+"最後に指定されたウィンドウのウィンドウロールを<parameter>ロール</parameter>に"
+"指定します。一つのウィンドウのみに適用され、コマンドラインから立ち上げるそれ"
+"ぞれのウィンドウに対して一度ずつ指定できます。大半は @PACKAGE_NAME@ 内での"
+"セッション管理に使用されます。"
+
+#: Terminal.1.xml:306(replaceable)
+msgid "string"
+msgstr ""
+
+#: Terminal.1.xml:306(option)
+msgid "--startup-id=<placeholder-1/>"
+msgstr ""
+
+#: Terminal.1.xml:309(para)
+msgid ""
+"Specifies the startup notification id for the last-specified window. Used "
+"internally to forward the startup notification id when using the D-BUS "
+"service."
+msgstr ""
+"最後に指定されたウィンドウに起動通知 ID を指定します。D-BUS サービスを使用し"
+"ている時はこの起動通知 ID を転送するために内部で利用されます。"
+
+#: Terminal.1.xml:318(replaceable)
+msgid "icon"
+msgstr ""
+
+#: Terminal.1.xml:318(option)
+msgid "-I, --icon=<placeholder-1/>"
+msgstr ""
+
+#: Terminal.1.xml:321(para)
+msgid "Set the terminal's icon as an icon name or filename."
+msgstr ""
+
+#: Terminal.1.xml:329(option)
+msgid "--fullscreen"
+msgstr "--fullscreen"
+
+#: Terminal.1.xml:332(para)
+msgid ""
+"Set the last-specified window into fullscreen mode; applies to only one "
+"window; can be specified once for each window you create from the command "
+"line."
+msgstr ""
+"最後に指定したウィンドウを全画面モードにします。一つのウィンドウのみに適用さ"
+"れます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指定"
+"できます。"
+
+#: Terminal.1.xml:341(option)
+msgid "--maximize"
+msgstr "--maximize"
+
+#: Terminal.1.xml:344(para)
+msgid ""
+"Set the last-specified window into maximized mode; applies to only one "
+"window; can be specified once for each window you create from the command "
+"line."
+msgstr ""
+"最後に指定したウィンドウを最大化します。一つのウィンドウのみに適用されます。"
+"コマンドラインから起動するそれぞれのウィンドウに対して一度ずつ指定できます。"
+
+#: Terminal.1.xml:353(option)
+msgid "--show-menubar"
+msgstr "--show-menubar"
+
+#: Terminal.1.xml:356(para)
+msgid ""
+"Turn on the menubar for the last-specified window. Can be specified once for "
+"each window you create from the command line."
+msgstr ""
+"最後に指定したウィンドウでメニューバーを表示します。一つのウィンドウのみに適"
+"用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ"
+"指定できます。"
+
+#: Terminal.1.xml:365(option)
+msgid "--hide-menubar"
+msgstr "--hide-menubar"
+
+#: Terminal.1.xml:368(para)
+msgid ""
+"Turn off the menubar for the last-specified window. Can be specified once "
+"for each window you create from the command line."
+msgstr ""
+"最後に指定したウィンドウでメニューバーを非表示にします。一つのウィンドウのみ"
+"に適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
+"ずつ指定できます。"
+
+#: Terminal.1.xml:377(option)
+msgid "--show-borders"
+msgstr "--show-borders"
+
+#: Terminal.1.xml:380(para)
+msgid ""
+"Turn on the window decorations for the last-specified window. Applies to "
+"only one window. Can be specified once for each window you create from the "
+"command line."
+msgstr ""
+"最後に指定したウィンドウでウィンドウの枠を表示します。一つのウィンドウのみに"
+"適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ず"
+"つ指定できます。"
+
+#: Terminal.1.xml:389(option)
+msgid "--hide-borders"
+msgstr "--hide-borders"
+
+#: Terminal.1.xml:392(para)
+msgid ""
+"Turn off the window decorations for the last-specified window. Applies to "
+"only one window. Can be specified once for each window you create from the "
+"command line."
+msgstr ""
+"最後に指定したウィンドウでウィンドウの枠を非表示にします。一つのウィンドウの"
+"みに適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一"
+"度ずつ指定できます。"
+
+#: Terminal.1.xml:401(option)
+msgid "--show-toolbars"
+msgstr "--show-toolbars"
+
+#: Terminal.1.xml:404(para)
+msgid ""
+"Turn on the toolbars for the last-specified window. Applies to only one "
+"window. Can be specified once for each window you create from the command "
+"line."
+msgstr ""
+"最後に指定したウィンドウでツールバーを表示します。一つのウィンドウのみに適用"
+"されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指"
+"定できます。"
+
+#: Terminal.1.xml:413(option)
+msgid "--hide-toolbars"
+msgstr "--hide-toolbars"
+
+#: Terminal.1.xml:416(para)
+msgid ""
+"Turn off the toolbars for the last-specified window. Applies to only one "
+"window. Can be specified once for each window you create from the command "
+"line."
+msgstr ""
+"最後に指定されたウィンドウのツールバーを非表示にします。一つのウィンドウのみ"
+"に適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
+"ずつ指定できます。"
+
+#: Terminal.1.xml:427(title)
+msgid "Examples"
+msgstr ""
+
+#: Terminal.1.xml:430(term)
+#, fuzzy
+msgid "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
+msgstr "Terminal --geometry 80x40 --command mutt --tab --command mc"
+
+#: Terminal.1.xml:432(para)
+msgid ""
+"Opens a new new terminal window with a geometry of 80 columns and 40 rows "
+"and two tabs in it, where the first tab runs <command>mutt</command> and the "
+"second tab runs <command>mc</command>."
+msgstr ""
+
+#: Terminal.1.xml:443(title)
+msgid "Environment"
+msgstr ""
+
+#: Terminal.1.xml:445(para)
+msgid ""
+"Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
+"freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data "
+"and configuration files. This means that file locations will be specified as "
+"a path relative to the directories described in the specification."
+msgstr ""
+"Terminal はそのデータおよび設定ファイルの場所を探す際に、<ulink url=\"http://"
+"freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> で策定されている基本"
+"フォルダの仕様 (Basedir Specification) に従います。従って、各ファイルの位置"
+"は、この仕様に記述されているフォルダの相対パスとして指定されます。"
+
+#: Terminal.1.xml:454(varname)
+msgid "${XDG_CONFIG_HOME}"
+msgstr "${XDG_CONFIG_HOME}"
+
+#: Terminal.1.xml:456(para)
+msgid ""
+"The first base directory to look for configuration files. By default this is "
+"set to <filename role=\"directory\">~/.config/</filename>."
+msgstr ""
+"設定ファイルを見に行く最初の基本フォルダです。デフォルトでは <filename role="
+"\"directory\">~/.config/</filename> になっています。"
+
+#: Terminal.1.xml:464(varname)
+msgid "${XDG_CONFIG_DIRS}"
+msgstr "${XDG_CONFIG_DIRS}"
+
+#: Terminal.1.xml:466(para)
+msgid ""
+"A colon separated list of base directories that contain configuration data. "
+"By default the application will look in <filename role=\"directory\">"
+"${sysconfdir}/xdg/</filename>. The value of <varname>${sysconfdir}</varname> "
+"depends on how the program was build and will often be <filename role="
+"\"directory\">/etc/</filename> for binary packages."
+msgstr ""
+"設定データを含む基本フォルダのリストで、各フォルダはコロンで区切られていま"
+"す。デフォルトではアプリケーションは <filename role=\"directory\">"
+"${sysconfdir}/xdg/</filename> を参照します。<varname>${sysconfdir}</varname> "
+"の値はプログラムがどのようにビルドされたかによって変わります。バイナリ配布さ"
+"れるパッケージでは <filename role=\"directory\">/etc/</filename> になることが"
+"多いようです。"
+
+#: Terminal.1.xml:477(varname)
+msgid "${XDG_DATA_HOME}"
+msgstr "${XDG_DATA_HOME}"
+
+#: Terminal.1.xml:479(para)
+msgid ""
+"The root for all user-specific data files. By default this is set to "
+"<filename role=\"directory\">~/.local/share/</filename>."
+msgstr ""
+"ユーザー個別のデータファイルすべてのルートフォルダです。デフォルトでは "
+"<filename role=\"directory\">~/.local/share/</filename> になっています。"
+
+#: Terminal.1.xml:487(varname)
+msgid "${XDG_DATA_DIRS}"
+msgstr "${XDG_DATA_DIRS}"
+
+#: Terminal.1.xml:489(para)
+msgid ""
+"A set of preference ordered base directories relative to which data files "
+"should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
+"base directory. The directories should be separated with a colon."
+msgstr ""
+"基本フォルダ <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを探す"
+"基本フォルダを並べていきます。フォルダはコロンで区切る必要があります。"
+
+#: Terminal.1.xml:501(title)
+#, fuzzy
+msgid "Files"
+msgstr "タイトル"
+
+#: Terminal.1.xml:505(filename)
+msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
+msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
+
+#: Terminal.1.xml:507(para)
+msgid ""
+"This is the location of the configuration file that includes the preferences "
+"which control the look and feel of @PACKAGE_NAME@."
+msgstr ""
+"@PACKAGE_NAME@ の見た目を管理する環境設定が含まれる設定ファイルの場所です。"
+
+#: Terminal.1.xml:515(filename)
+msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+
+#: Terminal.1.xml:517(para)
+msgid ""
+"This file includes the user interface definition for the toolbars. If you "
+"customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@ "
+"will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
+"Terminal/Terminal-toolbars.ui</filename>."
+msgstr ""
+"このファイルにはツールバーのインターフェイス定義が記述されています。ツール"
+"バーエディタを使用してツールバーをカスタマイズした場合、@PACKAGE_NAME@ はファ"
+"イル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename> に新"
+"しいツールバーのレイアウト情報を保存します。"
+
+#: Terminal.1.xml:529(title)
+msgid "See also"
+msgstr ""
+
+#: Terminal.1.xml:530(para)
+msgid ""
+"<citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></"
+"citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
+"manvolnum></citerefentry>"
+msgstr ""
+
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:196(None)
+#: Terminal.xml:213(None)
 msgid ""
 "@@image: 'images/terminal-first-time.png'; "
 "md5=c28f799b526627f477f05517df57486d"
@@ -26,7 +659,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:263(None)
+#: Terminal.xml:280(None)
 msgid ""
 "@@image: 'images/terminal-multiple-tabs.png'; "
 "md5=50bde64cde013ee5be96056c5ba139d9"
@@ -36,7 +669,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:539(None)
+#: Terminal.xml:556(None)
 msgid ""
 "@@image: 'images/terminal-set-title.png'; "
 "md5=1d2ab181828f8ed4b328a99df0a3b444"
@@ -46,7 +679,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:632(None)
+#: Terminal.xml:649(None)
 msgid ""
 "@@image: 'images/terminal-toolbars.png'; md5=f4b348a0b8799e71648979449b2a4a07"
 msgstr ""
@@ -54,7 +687,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:668(None)
+#: Terminal.xml:685(None)
 msgid ""
 "@@image: 'images/terminal-edit-preferences.png'; "
 "md5=0eabb35f7c1aaaba6047386074e463fd"
@@ -64,7 +697,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:688(None)
+#: Terminal.xml:705(None)
 msgid ""
 "@@image: 'images/terminal-preferences-general.png'; "
 "md5=423f22e67374de38d133451076c6f982"
@@ -74,7 +707,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:771(None)
+#: Terminal.xml:788(None)
 msgid ""
 "@@image: 'images/terminal-preferences-appearance.png'; "
 "md5=60ea6321b41f48b5b5f9f6f8b884607a"
@@ -84,28 +717,28 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:865(None)
+#: Terminal.xml:888(None)
 msgid ""
 "@@image: 'images/terminal-preferences-colors.png'; "
 "md5=6e3b585067aa4918b7038567a986d923"
 msgstr ""
 "@@image: 'images/terminal-preferences-colors.png'; "
 "md5=6e3b585067aa4918b7038567a986d923"
-
-#. When image changes, this message will be marked fuzzy or untranslated for you.
-#. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:912(None)
-msgid ""
-"@@image: 'images/terminal-preferences-shortcuts.png'; "
-"md5=9d15559bf32d3af2ff53c602afd0c233"
-msgstr ""
-"@@image: 'images/terminal-preferences-shortcuts.png'; "
-"md5=9d15559bf32d3af2ff53c602afd0c233"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: Terminal.xml:935(None)
 msgid ""
+"@@image: 'images/terminal-preferences-shortcuts.png'; "
+"md5=9d15559bf32d3af2ff53c602afd0c233"
+msgstr ""
+"@@image: 'images/terminal-preferences-shortcuts.png'; "
+"md5=9d15559bf32d3af2ff53c602afd0c233"
+
+#. When image changes, this message will be marked fuzzy or untranslated for you.
+#. It doesn't matter what you translate it to: it's not used at all.
+#: Terminal.xml:958(None)
+msgid ""
 "@@image: 'images/terminal-compose-shortcut.png'; "
 "md5=fd25cef8be8ca59470582d44c9e1b8ae"
 msgstr ""
@@ -114,7 +747,7 @@ msgstr ""
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
-#: Terminal.xml:979(None)
+#: Terminal.xml:1002(None)
 msgid ""
 "@@image: 'images/terminal-preferences-advanced.png'; "
 "md5=8349b999025e9cebd3385772dacadfc6"
@@ -150,10 +783,6 @@ msgstr "2007"
 msgid "2008"
 msgstr "2008"
 
-#: Terminal.xml:23(holder) Terminal.xml:48(orgname)
-msgid "os-cillation"
-msgstr "os-cillation"
-
 #: Terminal.xml:27(year)
 msgid "2009"
 msgstr "2009"
@@ -177,26 +806,6 @@ msgstr ""
 "ん。この利用許諾契約書の全文は<ulink type=\"http\" url=\"http://www.gnu.org/"
 "\">フリーソフトウェア財団</ulink>から取得する事ができます。"
 
-#: Terminal.xml:44(firstname)
-msgid "Benedikt"
-msgstr "Benedikt"
-
-#: Terminal.xml:45(surname)
-msgid "Meurer"
-msgstr "Meurer"
-
-#: Terminal.xml:47(email)
-msgid "benny@xfce.org"
-msgstr "benny@xfce.org"
-
-#: Terminal.xml:49(orgdiv)
-msgid "System development"
-msgstr "System development"
-
-#: Terminal.xml:50(jobtitle)
-msgid "Software developer"
-msgstr "Software developer"
-
 #: Terminal.xml:55(firstname)
 msgid "Andrew"
 msgstr "Andrew"
@@ -209,37 +818,21 @@ msgstr "Conkling"
 msgid "andrewski@fr.st"
 msgstr "andrewski@fr.st"
 
-#: Terminal.xml:63(firstname)
-msgid "Nick"
-msgstr "Nick"
-
-#: Terminal.xml:64(surname)
-msgid "Schermer"
-msgstr "Schermer"
-
-#: Terminal.xml:66(email)
-msgid "nick@xfce.org"
-msgstr "nick@xfce.org"
-
-#: Terminal.xml:67(jobtitle)
-msgid "Xfce Core Developer"
-msgstr "Xfce Core Developer"
-
-#: Terminal.xml:72(releaseinfo)
+#: Terminal.xml:71(releaseinfo)
 msgid "This manual describes version @PACKAGE_VERSION@ of @PACKAGE_NAME@."
 msgstr ""
 "この説明書は @PACKAGE_NAME@ のバージョン @PACKAGE_VERSION@ について書かれてい"
 "ます。"
 
-#: Terminal.xml:78(title)
+#: Terminal.xml:77(title)
 msgid "Introduction to @PACKAGE_NAME@"
 msgstr "@PACKAGE_NAME@ 入門"
 
-#: Terminal.xml:81(title)
+#: Terminal.xml:80(title)
 msgid "What is a terminal emulator?"
 msgstr "ターミナルエミュレータって何ですか?"
 
-#: Terminal.xml:83(para)
+#: Terminal.xml:82(para)
 msgid ""
 "The UNIX operating system was originally designed as a text-only system, "
 "controlled by commands entered with a keyboard. This is known as a command-"
@@ -259,49 +852,11 @@ msgstr ""
 "に存在していて、それが最も容易、最速、かつ強力な手段になることが少なからずあ"
 "ります。実際のところパワーユーザは CLI 無しではやっていけないでしょう。"
 
-#: Terminal.xml:94(para)
-msgid ""
-"@PACKAGE_NAME@ is what is known as an X terminal emulator, often referred to "
-"as terminal or shell. It provides an equivalent to the old-fashioned text "
-"screen on your desktop, but one which can easily share the screen with other "
-"graphical applications. Windows users may already be familiar with the MS-"
-"DOS Prompt utility, which has the analogous function of offering a DOS "
-"command-line under Windows, though one should note that the UNIX CLI offer "
-"far more power and ease of use than does DOS."
-msgstr ""
-"@PACKAGE_NAME@ は X ターミナルエミュレータとして知られるものの一つで、ターミ"
-"ナルあるいはシェルと呼ばれることが多いようです。あなたのデスクトップにやもす"
-"ると大昔の文字スクリーンを思わせるようなものを持ち込んできますが、他のグラ"
-"フィカルなアプリケーションと画面上に共存することに何の問題もありません。"
-"Windows ユーザには MS-DOS プロンプトというユーティリティ (Windows 環境下にお"
-"いて DOS コマンドラインでの作業を可能にする類似機能) に詳しい方がいるかもしれ"
-"ませんが UNIX の CLI は能力的に遥かに勝っていて使いやすいという事をぜひとも"
-"知って頂きたいと思います。"
-
-#: Terminal.xml:104(para)
-msgid ""
-"@PACKAGE_NAME@ emulates the <application>xterm</application> application "
-"developed by the X Consortium. In turn, the <application>xterm</application> "
-"application emulates the DEC VT102 terminal and also supports the DEC VT220 "
-"escape sequences. An escape sequence is a series of characters that start "
-"with the <keycap>Esc</keycap> character. @PACKAGE_NAME@ accepts all of the "
-"escape sequences that the VT102 and VT220 terminals use for functions such "
-"as to position the cursor and to clear the screen."
-msgstr ""
-"@PACKAGE_NAME@ は X コンソーシアムが開発したアプリケーション "
-"<application>xterm</application> の動作をエミュレートします。ではその "
-"<application>xterm</application> はと言うと、これは DEC の VT102 ターミナルを"
-"エミュレートしていて、DEC VT220 エスケープシーケンスも同様にサポートします。"
-"エスケープシーケンスとは、文字 <keycap>Esc</keycap> で始まる一連なりの文字列"
-"のことです。VT102 や VT220 ターミナルがカーソルの位置を定めたり画面をクリアす"
-"るような機能に使用する、これらエスケープシーケンスのすべてを @PACKAGE_NAME@ "
-"は受け付けます。"
-
-#: Terminal.xml:116(title)
+#: Terminal.xml:115(title)
 msgid "What makes @PACKAGE_NAME@ special?"
 msgstr "@PACKAGE_NAME@ の何が特別なんですか?"
 
-#: Terminal.xml:118(para)
+#: Terminal.xml:117(para)
 msgid ""
 "@PACKAGE_NAME@'s advanced features include a simple configuration interface, "
 "the ability to use multiple tabs with terminals within a single window, the "
@@ -314,15 +869,15 @@ msgstr ""
 "約に役立つコンパクトモード (メニューバーとウィンドウ枠の非表示) が挙げられま"
 "す。"
 
-#: Terminal.xml:124(para)
+#: Terminal.xml:123(para)
 msgid "The following key features are available:"
 msgstr "主な機能は以下のとおりです:"
 
-#: Terminal.xml:127(listitem)
+#: Terminal.xml:127(para)
 msgid "Multiple tabs per window"
 msgstr "ウィンドウごとに複数タブが使用できます。"
 
-#: Terminal.xml:130(listitem)
+#: Terminal.xml:132(para)
 msgid ""
 "Customizable toolbars, which can be changed using an integrated graphical "
 "toolbar editor"
@@ -330,82 +885,60 @@ msgstr ""
 "カスタマイズ可能なツールバー。統合されたグラフィカルなツールバーエディタを使"
 "用して変更できます。"
 
-#: Terminal.xml:134(guilabel) Terminal.xml:663(title) Terminal.xml:672(phrase)
-msgid "Preferences"
-msgstr "環境設定"
-
-#: Terminal.xml:135(emphasis)
-msgid "hidden options"
-msgstr "隠しオプション"
-
-#: Terminal.xml:133(listitem)
+#: Terminal.xml:137(para)
+#, fuzzy
 msgid ""
 "Ability to configure nearly every aspect of @PACKAGE_NAME@ in the "
-"<placeholder-1/> dialog plus a bunch of so called <placeholder-2/>"
+"<guilabel>Preferences</guilabel> dialog plus a bunch of so called "
+"<emphasis>hidden options</emphasis>"
 msgstr ""
 "@PACKAGE_NAME@ のほぼすべての箇所が <placeholder-1/> で設定でき、それに加えて"
 "いわゆる <placeholder-2/> もあります。"
 
-#: Terminal.xml:138(ulink)
-msgid "Xfce desktop environment"
-msgstr "Xfce デスクトップ環境"
-
-#: Terminal.xml:137(listitem)
+#: Terminal.xml:143(para)
+#, fuzzy
 msgid ""
-"Good integration with the <placeholder-1/> in particular, but also with "
-"every other Linux desktop"
+"Good integration with the <ulink url=\"http://xfce.org/\">Xfce desktop "
+"environment</ulink> in particular, but also with every other Linux desktop"
 msgstr ""
 "特に <placeholder-1/> とよく調和しますが、その他のどの Linux デスクトップとも"
 "調和します。"
 
-#: Terminal.xml:140(listitem)
+#: Terminal.xml:148(para)
 msgid "Session management support"
 msgstr "セッション管理をサポートしています。"
 
-#: Terminal.xml:143(listitem)
+#: Terminal.xml:153(para)
 msgid "Real multihead support (both MultiScreen and Xinerama mode)"
 msgstr ""
 "マルチヘッド (マルチスクリーンおよび Xinerama モードの両方) をサポートしてい"
 "ます。"
 
-#: Terminal.xml:147(ulink)
-msgid "freedesktop.org"
-msgstr "freedesktop.org"
-
-#: Terminal.xml:146(listitem)
-msgid "Standards compliance (see the <placeholder-1/> website)"
+#: Terminal.xml:158(para)
+#, fuzzy
+msgid ""
+"Standards compliance (see the <ulink url=\"http://freedesktop.org/"
+"\">freedesktop.org</ulink> website)"
 msgstr ""
 "標準規格に準拠しています (ウェブサイト <placeholder-1/> をご覧ください)。"
 
-#: Terminal.xml:150(ulink)
-msgid "D-BUS"
-msgstr "D-BUS"
-
-#: Terminal.xml:149(listitem)
+#: Terminal.xml:163(para)
+#, fuzzy
 msgid ""
-"<placeholder-1/> based terminal service facility to minimize the overall "
-"resource usage"
+"<ulink url=\"http://dbus.freedesktop.org/\">D-BUS</ulink> based terminal "
+"service facility to minimize the overall resource usage"
 msgstr ""
 "全体にわたるリソースの利用を最小に抑えるために <placeholder-1/> を基にした"
 "ターミナルサービス機能が備わっています。"
 
-#: Terminal.xml:153(ulink)
-msgid "GTK+"
-msgstr "GTK+"
-
-#: Terminal.xml:154(ulink)
-msgid "GObject"
-msgstr "GObject"
-
-#: Terminal.xml:152(listitem)
+#: Terminal.xml:168(para)
 msgid ""
-"High degree of maintainability by making best use of <placeholder-1/> and "
-"<placeholder-2/>."
+"High degree of maintainability by making best use of <ulink url=\"http://"
+"developer.gnome.org/doc/API/2.0/gtk/\">GTK+</ulink> and <ulink url=\"http://"
+"developer.gnome.org/doc/API/2.0/gobject/\">GObject</ulink>."
 msgstr ""
-"<placeholder-1/> および <placeholder-2/> を最大限に活用し、格段に保守しやすく"
-"なっています。"
 
-#: Terminal.xml:158(para)
+#: Terminal.xml:175(para)
 msgid ""
 "Besides these key features, @PACKAGE_NAME@ supports all features you would "
 "expect from a modern terminal emulator."
@@ -413,15 +946,15 @@ msgstr ""
 "これらの特色に加えて、@PACKAGE_NAME@ は昨今のターミナルエミュレータに望まれる"
 "すべての機能をサポートしています。"
 
-#: Terminal.xml:164(title)
+#: Terminal.xml:181(title)
 msgid "Getting started"
 msgstr "始めてみましょう"
 
-#: Terminal.xml:167(title)
+#: Terminal.xml:184(title)
 msgid "Starting @PACKAGE_NAME@"
 msgstr "@PACKAGE_NAME@ の起動"
 
-#: Terminal.xml:169(para)
+#: Terminal.xml:186(para)
 msgid ""
 "The easiest way to start @PACKAGE_NAME@ is to use the applications menu of "
 "your desktop; for Xfce, point your mouse cursor to the desktop, press the "
@@ -434,7 +967,7 @@ msgstr ""
 "guimenu><guimenuitem>「システム」</guimenuitem><guimenuitem>「Terminal」</"
 "guimenuitem></menuchoice> を選択してください。"
 
-#: Terminal.xml:176(para)
+#: Terminal.xml:193(para)
 msgid ""
 "You can also start @PACKAGE_NAME@ from a command line or from the "
 "<guilabel>Application launcher</guilabel>. Just hit <keycombo><keycap>Alt</"
@@ -447,11 +980,11 @@ msgstr ""
 "userinput> と入力してください。<guibutton>「実行」</guibutton> ボタンをクリッ"
 "クすると @PACKAGE_NAME@ が起動します。"
 
-#: Terminal.xml:186(title)
+#: Terminal.xml:203(title)
 msgid "When you first start @PACKAGE_NAME@"
 msgstr "@PACKAGE_NAME@ を初めて起動したとき"
 
-#: Terminal.xml:188(para)
+#: Terminal.xml:205(para)
 msgid ""
 "When you start @PACKAGE_NAME@ for the first time, the application opens a "
 "terminal window with default settings."
@@ -459,11 +992,11 @@ msgstr ""
 "@PACKAGE_NAME@ を初めて起動すると、一つのターミナルウィンドウがデフォルトの設"
 "定で開かれます。"
 
-#: Terminal.xml:200(phrase)
+#: Terminal.xml:217(phrase)
 msgid "Example of a default terminal window"
 msgstr "デフォルトターミナルウィンドウの例"
 
-#: Terminal.xml:205(para)
+#: Terminal.xml:222(para)
 msgid ""
 "The terminal window displays a command prompt where you can type UNIX "
 "commands. The command prompt may vary depending on the configuration of your "
@@ -481,7 +1014,7 @@ msgstr ""
 "ユーザのログインシェルを使用します (もし普通に Linux をインストールしたのな"
 "ら、<filename>/bin/bash</filename> になります)。"
 
-#: Terminal.xml:215(para)
+#: Terminal.xml:232(para)
 msgid ""
 "@PACKAGE_NAME@ sets the following environment variables for the command "
 "running inside the terminal window:"
@@ -489,11 +1022,11 @@ msgstr ""
 "@PACKAGE_NAME@ はウィンドウ内で実行するコマンドのために以下の環境変数を設定し"
 "ます:"
 
-#: Terminal.xml:222(varname)
+#: Terminal.xml:239(varname)
 msgid "TERM"
 msgstr "TERM"
 
-#: Terminal.xml:224(para)
+#: Terminal.xml:241(para)
 msgid ""
 "Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you can "
 "configure the value from the preferences dialog."
@@ -501,35 +1034,35 @@ msgstr ""
 "<literal>xterm</literal> か <literal>xterm-color</literal> を設定します。設定"
 "ダイアログからこの値を変更することができます。"
 
-#: Terminal.xml:229(varname)
+#: Terminal.xml:246(varname)
 msgid "COLORTERM"
 msgstr "COLORTERM"
 
-#: Terminal.xml:231(para)
+#: Terminal.xml:248(para)
 msgid "Set to <literal>Terminal</literal> by default."
 msgstr "デフォルトでは <literal>Terminal</literal> になっています。"
 
-#: Terminal.xml:235(varname)
+#: Terminal.xml:252(varname)
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
-#: Terminal.xml:237(para)
+#: Terminal.xml:254(para)
 msgid "Set to the X11 display of the terminal by default."
 msgstr "デフォルトではターミナルの X11 ディスプレイになっています。"
 
-#: Terminal.xml:241(varname)
+#: Terminal.xml:258(varname)
 msgid "WINDOWID"
 msgstr "WINDOWID"
 
-#: Terminal.xml:243(para)
+#: Terminal.xml:260(para)
 msgid "Set to the X11 window identifier of the terminal by default."
 msgstr "デフォルトではターミナルの X11 ウィンドウ識別子になっています。"
 
-#: Terminal.xml:250(title)
+#: Terminal.xml:267(title)
 msgid "Working with multiple terminals"
 msgstr "複数のターミナルでの作業"
 
-#: Terminal.xml:252(para)
+#: Terminal.xml:269(para)
 msgid ""
 "@PACKAGE_NAME@ provides a tab feature that enables you to open several "
 "terminals within a single window. Each terminal is opened in a separate tab. "
@@ -542,11 +1075,11 @@ msgstr ""
 "ターミナルのタブをクリックしてください。これらタブ化されたターミナルは別個の"
 "サブプロセスですので、異なる用途に利用できます。"
 
-#: Terminal.xml:267(phrase)
+#: Terminal.xml:284(phrase)
 msgid "Example of a terminal window with tabs"
 msgstr "複数のタブがあるターミナルウィンドウの例"
 
-#: Terminal.xml:272(para)
+#: Terminal.xml:289(para)
 msgid ""
 "See <xref linkend=\"usage\"/> for information about how to open a new tabbed "
 "terminal."
@@ -554,7 +1087,7 @@ msgstr ""
 "新しいタブターミナルの開き方についての情報は <xref linkend=\"usage\"/> を参照"
 "してください。"
 
-#: Terminal.xml:277(para)
+#: Terminal.xml:294(para)
 msgid ""
 "You can close a terminal tab by clicking on the close button in the terminal "
 "tab header or by choosing <menuchoice><guimenu>File</"
@@ -564,19 +1097,19 @@ msgstr ""
 "ら <menuchoice><guimenu>「ファイル」</guimenu><guimenuitem>「タブを閉じる」</"
 "guimenuitem></menuchoice> でタブを閉じることができます。"
 
-#: Terminal.xml:287(title)
+#: Terminal.xml:304(title)
 msgid "Usage"
 msgstr "使用法"
 
-#: Terminal.xml:290(title)
+#: Terminal.xml:307(title)
 msgid "To open and close terminals"
 msgstr "ターミナルを開いたり閉じたりするには"
 
-#: Terminal.xml:294(term)
+#: Terminal.xml:311(term)
 msgid "To open a new terminal window:"
 msgstr "新しいターミナルウィンドウを開く:"
 
-#: Terminal.xml:296(para)
+#: Terminal.xml:313(para)
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Terminal</"
 "guimenuitem></menuchoice> (or right-click the terminal window and choose "
@@ -587,16 +1120,16 @@ msgstr ""
 "<menuchoice><guimenuitem>「ターミナルを開く」</guimenuitem></menuchoice>) を"
 "選びます。"
 
-#: Terminal.xml:298(para)
+#: Terminal.xml:315(para)
 msgid ""
 "The new terminal inherits the working directory from its parent terminal."
 msgstr "新しいターミナルは、作業フォルダをその親ターミナルから引き継ぎます。"
 
-#: Terminal.xml:304(term)
+#: Terminal.xml:321(term)
 msgid "To close a terminal window:"
 msgstr "ターミナルウィンドウを閉じる:"
 
-#: Terminal.xml:306(para)
+#: Terminal.xml:323(para)
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Close Window</"
 "guimenuitem></menuchoice>."
@@ -604,7 +1137,7 @@ msgstr ""
 "<menuchoice><guimenu>「ファイル」</guimenu><guimenuitem>「ウィンドウを閉じ"
 "る」</guimenuitem></menuchoice> を選びます。"
 
-#: Terminal.xml:308(para)
+#: Terminal.xml:325(para)
 msgid ""
 "This action closes the terminal and terminates any subprocesses that you "
 "opened from the terminal. If you close the last terminal window, the "
@@ -613,11 +1146,11 @@ msgstr ""
 "これはターミナルと、その中で開かれているサブプロセスすべてを強制終了させま"
 "す。最後のターミナルを閉じると @PACKAGE_NAME@ アプリケーションが終了します。"
 
-#: Terminal.xml:315(term)
+#: Terminal.xml:332(term)
 msgid "To add a new tabbed terminal to a window:"
 msgstr "ウィンドウに新しいタブターミナルを追加する:"
 
-#: Terminal.xml:317(para)
+#: Terminal.xml:334(para)
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Tab</"
 "guimenuitem></menuchoice> (or right-click the terminal window and choose "
@@ -628,21 +1161,21 @@ msgstr ""
 "<menuchoice><guimenuitem>「タブを開く」</guimenuitem></menuchoice>) を選びま"
 "す。"
 
-#: Terminal.xml:319(para)
+#: Terminal.xml:336(para)
 msgid ""
 "The new terminal inherits the working directory from the previously active "
 "terminal."
 msgstr "新しいターミナルは前の有効ターミナルから作業フォルダを引き継ぎます。"
 
-#: Terminal.xml:327(title)
+#: Terminal.xml:344(title)
 msgid "To modify a terminal window"
 msgstr "ターミナルウィンドウを変更するには"
 
-#: Terminal.xml:331(term)
+#: Terminal.xml:348(term)
 msgid "To hide the menubar:"
 msgstr "メニューバーを隠す:"
 
-#: Terminal.xml:333(para)
+#: Terminal.xml:350(para)
 msgid ""
 "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</"
 "guimenuitem></menuchoice> (or right-click the terminal window and choose "
@@ -653,11 +1186,11 @@ msgstr ""
 "<menuchoice><guimenuitem>「メニューバー」</guimenuitem></menuchoice>) を選び"
 "ます。"
 
-#: Terminal.xml:337(term)
+#: Terminal.xml:354(term)
 msgid "To show a hidden menubar:"
 msgstr "隠したメニューバーを表示する:"
 
-#: Terminal.xml:339(para)
+#: Terminal.xml:356(para)
 msgid ""
 "Right-click the terminal window and choose <menuchoice><guimenuitem>Show "
 "Menubar</guimenuitem></menuchoice> from the popup menu."
@@ -666,11 +1199,11 @@ msgstr ""
 "<menuchoice><guimenuitem>「メニューバー」</guimenuitem></menuchoice>を選びま"
 "す。"
 
-#: Terminal.xml:344(term)
+#: Terminal.xml:361(term)
 msgid "To show or hide the toolbars:"
 msgstr "ツールバーを隠す、または表示する:"
 
-#: Terminal.xml:346(para)
+#: Terminal.xml:363(para)
 msgid ""
 "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</"
 "guimenuitem></menuchoice>."
@@ -678,11 +1211,11 @@ msgstr ""
 "<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「ツールバー」</"
 "guimenuitem></menuchoice> を選びます。"
 
-#: Terminal.xml:350(term)
+#: Terminal.xml:367(term)
 msgid "To customize the toolbars:"
 msgstr "ツールバーをカスタマイズする:"
 
-#: Terminal.xml:352(para)
+#: Terminal.xml:369(para)
 msgid ""
 "Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</"
 "guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice>."
@@ -691,11 +1224,11 @@ msgstr ""
 "<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「ツールバー...」</"
 "guimenuitem></menuchoice>を選びます。"
 
-#: Terminal.xml:356(term)
+#: Terminal.xml:373(term)
 msgid "To show or hide the window decorations:"
 msgstr "ウィンドウの枠を隠す、または表示する:"
 
-#: Terminal.xml:358(para)
+#: Terminal.xml:375(para)
 msgid ""
 "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window Borders</"
 "guimenuitem></menuchoice>."
@@ -703,11 +1236,11 @@ msgstr ""
 "<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「ウィンドウ枠」</"
 "guimenuitem></menuchoice> を選びます。"
 
-#: Terminal.xml:362(term)
+#: Terminal.xml:379(term)
 msgid "To put a terminal window into fullscreen"
 msgstr "ターミナルを全画面モードにする"
 
-#: Terminal.xml:364(para)
+#: Terminal.xml:381(para)
 msgid ""
 "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Fullscreen</"
 "guimenuitem></menuchoice> from the menubar (or right-click the terminal "
@@ -716,13 +1249,14 @@ msgid ""
 msgstr ""
 "メニューバーから<menuchoice><guimenu>「表示」</guimenu><guimenuitem>「全画面"
 "表示」</guimenuitem></menuchoice> (あるいはターミナルウィンドウを右クリックし"
-"て<menuchoice><guimenuitem>「全画面表示」</guimenuitem></menuchoice>) を選んでください。"
+"て<menuchoice><guimenuitem>「全画面表示」</guimenuitem></menuchoice>) を選ん"
+"でください。"
 
-#: Terminal.xml:369(term)
+#: Terminal.xml:386(term)
 msgid "To change the appearance of the terminal window:"
 msgstr "ターミナルウィンドウの外観を変える:"
 
-#: Terminal.xml:371(para)
+#: Terminal.xml:388(para)
 msgid ""
 "See <xref linkend=\"preferences\"/> for information about the options that "
 "you choose in the <guilabel>Terminal Preferences</guilabel> dialog to change "
@@ -734,19 +1268,19 @@ msgstr ""
 "は <xref linkend=\"preferences\"/> をご覧ください。例えば、背景色やスクロール"
 "バーの位置を変えることができます。"
 
-#: Terminal.xml:381(title)
+#: Terminal.xml:398(title)
 msgid "To work with the contents of terminal windows"
 msgstr "ターミナルウィンドウの表示内容を利用するには"
 
-#: Terminal.xml:385(term)
+#: Terminal.xml:402(term)
 msgid "To scroll through previous commands and output:"
 msgstr "前のコマンドや出力をスクロールする:"
 
-#: Terminal.xml:387(para)
+#: Terminal.xml:404(para)
 msgid "Perform one of the following actions:"
 msgstr "以下のいずれか一つを実行します:"
 
-#: Terminal.xml:393(para)
+#: Terminal.xml:410(para)
 msgid ""
 "Use the scrollbar, which is usually displayed on the right side of each "
 "terminal window."
@@ -754,7 +1288,7 @@ msgstr ""
 "スクロールバーを使います。通常はターミナルウィンドウの右側に表示されていま"
 "す。"
 
-#: Terminal.xml:399(para)
+#: Terminal.xml:416(para)
 msgid ""
 "Press the <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></"
 "keycombo>, <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></"
@@ -770,11 +1304,11 @@ msgstr ""
 "<keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo> あるいは "
 "<keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> を押します。"
 
-#: Terminal.xml:407(para)
+#: Terminal.xml:424(para)
 msgid "Use the middle wheel button on your mouse if applicable"
 msgstr "マウスのスクロールホイールを使用します。"
 
-#: Terminal.xml:412(para)
+#: Terminal.xml:429(para)
 msgid ""
 "@PACKAGE_NAME@ mimics the FreeBSD console when <keycap>Scroll Lock</keycap> "
 "is pressed. When scroll lock is active, ordinary input and output from the "
@@ -796,7 +1330,7 @@ msgstr ""
 "を、無効にするにはその後で <keycombo><keycap>Ctrl</keycap><keycap>Q</"
 "keycap></keycombo> を押してください。"
 
-#: Terminal.xml:422(para)
+#: Terminal.xml:439(para)
 msgid ""
 "The number of lines that you can scroll back in the terminal window is "
 "determined by the <guilabel>Scrollback</guilabel> setting in the "
@@ -807,15 +1341,15 @@ msgstr ""
 "</guilabel> ダイアログの <guilabel>一般</guilabel> にある <guilabel>スクロー"
 "ルバック</guilabel> の設定によって決まります。"
 
-#: Terminal.xml:430(term)
+#: Terminal.xml:447(term)
 msgid "To select and copy text:"
 msgstr "文字列を選択したりコピーしたりする:"
 
-#: Terminal.xml:432(para)
+#: Terminal.xml:449(para)
 msgid "You can select text in any of the following ways:"
 msgstr "以下のどの方法でも文字を選択できます:"
 
-#: Terminal.xml:435(para)
+#: Terminal.xml:452(para)
 msgid ""
 "To select a character at a time, click on the first character that you want "
 "to select and drag the mouse to the last character that you want to select."
@@ -823,7 +1357,7 @@ msgstr ""
 "ある文字を一度に選択する場合は、最初の文字をクリックして、選択したい最後の文"
 "字までマウスをドラッグします。"
 
-#: Terminal.xml:439(para)
+#: Terminal.xml:456(para)
 msgid ""
 "To select a word at a time, double-click on the first word that you want to "
 "select and drag the mouse to the last word that you want to select."
@@ -831,7 +1365,7 @@ msgstr ""
 "ある単語を一度に選択する場合は、最初の単語をダブルクリックして、選択したい最"
 "後の単語までマウスをドラッグしてください。"
 
-#: Terminal.xml:443(para)
+#: Terminal.xml:460(para)
 msgid ""
 "To select a line at a time, triple-click on the first line that you want to "
 "select and drag the mouse to the last line that you want to select."
@@ -839,7 +1373,7 @@ msgstr ""
 "ある行を一度に選択する場合は、最初の行をトリプルクリックして、選択したい最後"
 "の行までマウスをドラッグしてください。"
 
-#: Terminal.xml:447(para)
+#: Terminal.xml:464(para)
 msgid ""
 "These actions select all text between the first and last items. For all text "
 "selections, @PACKAGE_NAME@ copies the selected text into the clipboard when "
@@ -853,11 +1387,11 @@ msgstr ""
 "<menuchoice><guimenu>「編集」</guimenu><guimenuitem>「コピー」</"
 "guimenuitem></menuchoice>を選んでください。"
 
-#: Terminal.xml:454(term)
+#: Terminal.xml:471(term)
 msgid "To paste text into a terminal:"
 msgstr "ターミナルに文字を貼り付ける:"
 
-#: Terminal.xml:456(para)
+#: Terminal.xml:473(para)
 msgid ""
 "If you previously copied text to the clipboard, you can paste the text into "
 "a terminal by performing one of the following actions:"
@@ -865,7 +1399,7 @@ msgstr ""
 "文字列をクリップボードへコピーしていれば、以下のいずれか一つを実行するとター"
 "ミナルにその文字列を貼り付けることができます:"
 
-#: Terminal.xml:460(para)
+#: Terminal.xml:477(para)
 msgid ""
 "To paste text that you copied by selection only, middle-click at the command "
 "prompt. If you do not have a middle mouse button, refer to the X Server "
@@ -881,7 +1415,7 @@ msgstr ""
 "<menuchoice><guimenuitem>「選択領域を貼り付け」</guimenuitem></menuchoice> と"
 "同じ動きをします。"
 
-#: Terminal.xml:467(para)
+#: Terminal.xml:484(para)
 msgid ""
 "To paste text that you explicitly copied, choose <menuchoice><guimenu>Edit</"
 "guimenu><guimenuitem>Paste</guimenuitem></menuchoice>."
@@ -889,11 +1423,11 @@ msgstr ""
 "明示的にコピーした文字列を貼り付けるには、<menuchoice><guimenu>「編集」</"
 "guimenu><guimenuitem>「貼り付け」</guimenuitem></menuchoice>を選びます。"
 
-#: Terminal.xml:474(term)
+#: Terminal.xml:491(term)
 msgid "To drag a file name into a terminal window:"
 msgstr "ターミナルウィンドウにファイル名をドラッグする:"
 
-#: Terminal.xml:476(para)
+#: Terminal.xml:493(para)
 msgid ""
 "You can drag a file name to a terminal from another application such as a "
 "file manager or a web browser. The terminal displays the path and the full "
@@ -903,11 +1437,11 @@ msgstr ""
 "ファイル名をドラッグすることができます。すると、パスや URI の完全名が表示され"
 "ます。"
 
-#: Terminal.xml:481(term)
+#: Terminal.xml:498(term)
 msgid "To access a hyperlink:"
 msgstr "ハイパーリンクにアクセスする:"
 
-#: Terminal.xml:483(para)
+#: Terminal.xml:500(para)
 msgid ""
 "To access a Uniform Resource Locator (URL) that is displayed in a terminal "
 "window, perform the following steps:"
@@ -915,15 +1449,15 @@ msgstr ""
 "ターミナルウィンドウに表示されている Uniform Resource Locator (URL) にアクセ"
 "スするには以下の手順を行います:"
 
-#: Terminal.xml:490(para)
+#: Terminal.xml:507(para)
 msgid "Move the mouse over the URL until the URL is underlined."
 msgstr "下線が付くところまでその URL 上にマウスポインタを移動します。"
 
-#: Terminal.xml:493(para)
+#: Terminal.xml:510(para)
 msgid "Right-click on the URL to open the context menu."
 msgstr "右クリックするとコンテキストメニューが表示されます。"
 
-#: Terminal.xml:496(para)
+#: Terminal.xml:513(para)
 msgid ""
 "Choose <guimenuitem>Open Link</guimenuitem> from the context menu to start "
 "your preferred Web Browser and display the file located at the URL."
@@ -931,11 +1465,11 @@ msgstr ""
 "コンテキストメニューから <guimenuitem>「リンクを開く」</guimenuitem> を選ぶ"
 "と、お気に入りのウェブブラウザが起動してその URL にあるファイルを表示します。"
 
-#: Terminal.xml:507(term)
+#: Terminal.xml:524(term)
 msgid "To compose an email:"
 msgstr "メールを作成する:"
 
-#: Terminal.xml:509(para)
+#: Terminal.xml:526(para)
 msgid ""
 "To compose an email to an address that is displayed in a terminal window, "
 "perform the following steps:"
@@ -943,16 +1477,16 @@ msgstr ""
 "ターミナルウィンドウに表示されているアドレスへ送信するメールを作成するには、"
 "以下の手順を行います:"
 
-#: Terminal.xml:516(para)
+#: Terminal.xml:533(para)
 msgid ""
 "Move the mouse over the email address until the email address is underlined."
 msgstr "下線が付くところまでそのメールアドレス上にマウスポインタを移動します。"
 
-#: Terminal.xml:519(para)
+#: Terminal.xml:536(para)
 msgid "Right-click on the email address to open the context menu."
 msgstr "右クリックするとコンテキストメニューが表示されます。"
 
-#: Terminal.xml:522(para)
+#: Terminal.xml:539(para)
 msgid ""
 "Choose <guimenuitem>Compose Email</guimenuitem> from the context menu to "
 "compose an email in your preferred Mail Reader."
@@ -960,22 +1494,22 @@ msgstr ""
 "コンテキストメニューからから <guimenuitem>「メールの作成」</guimenuitem> を選"
 "ぶと、お気に入りのメーラーでメールを編集できます。"
 
-#: Terminal.xml:534(title)
+#: Terminal.xml:551(title)
 msgid "To change the terminal title"
 msgstr "ターミナルのタイトルを変えるには"
 
-#: Terminal.xml:543(phrase)
+#: Terminal.xml:560(phrase)
 msgid "Set title dialog"
 msgstr "ダイアログ「タイトルを付けてください」"
 
-#: Terminal.xml:548(para)
+#: Terminal.xml:565(para)
 msgid ""
 "To change the title of the currently displayed terminal, perform the "
 "following three steps:"
 msgstr ""
 "現在ターミナルが表示しているタイトルを変更するには、以下の手順を行います:"
 
-#: Terminal.xml:553(para)
+#: Terminal.xml:570(para)
 msgid ""
 "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Set Title...</"
 "guimenuitem></menuchoice> or double-click the the terminal tab header."
@@ -984,7 +1518,7 @@ msgstr ""
 "る...」</guimenuitem></menuchoice> あるいはターミナルのタブ上でダブルクリック"
 "します。"
 
-#: Terminal.xml:558(para)
+#: Terminal.xml:575(para)
 msgid ""
 "Type the new title in the <guilabel>Title</guilabel> text box. "
 "@PACKAGE_NAME@ applies the change immediately."
@@ -992,7 +1526,7 @@ msgstr ""
 "テキストボックスが表示されますので、<guilabel>タイトル</guilabel>の所に新しい"
 "タイトルを入力します。@PACKAGE_NAME@ は直ちに変更を適用します。"
 
-#: Terminal.xml:562(para)
+#: Terminal.xml:579(para)
 msgid ""
 "Click the button <guilabel>Close</guilabel> or press the <keycap>Return</"
 "keycap> key to close the <guilabel>Set Title</guilabel> dialog."
@@ -1001,7 +1535,7 @@ msgstr ""
 "<guilabel>「閉じる」</guilabel>ボタンをクリックするか、<keycap>Return</"
 "keycap> キーを押します。"
 
-#: Terminal.xml:567(para)
+#: Terminal.xml:584(para)
 msgid ""
 "To reset the terminal title to its default behavior, perform the same three "
 "steps as described above, but enter an empty title."
@@ -1009,40 +1543,40 @@ msgstr ""
 "ターミナルのタイトルをデフォルト値にリセットするには、上記の三つの手順を行っ"
 "た上で、タイトルを空欄のまま入力します。"
 
-#: Terminal.xml:570(para)
+#: Terminal.xml:587(para)
 msgid "@PACKAGE_NAME@ will substitute these tokens:"
 msgstr "@PACKAGE_NAME@ は以下のトークンを置き換えます:"
 
-#: Terminal.xml:574(para)
+#: Terminal.xml:591(para)
 msgid "%d : name of the current directory (short)."
 msgstr "%d : 現在のディレクトリ名 (短縮)"
 
-#: Terminal.xml:577(para)
+#: Terminal.xml:594(para)
 msgid "%D : current directory (long)."
 msgstr "%D : 現在のディレクトリ (フルパス)"
 
-#: Terminal.xml:580(para)
+#: Terminal.xml:597(para)
 msgid "%w : window title set by shell."
 msgstr "%w : シェルで設定されたウィンドウタイトル"
 
-#: Terminal.xml:583(para)
+#: Terminal.xml:600(para)
 msgid "%# : the session id."
 msgstr "%# : セッション ID"
 
-#: Terminal.xml:589(title)
+#: Terminal.xml:606(title)
 msgid "To recover your terminal"
 msgstr "ターミナルを復元するには"
 
-#: Terminal.xml:591(para)
+#: Terminal.xml:608(para)
 msgid "This section provides some advice if you have problems with terminals."
 msgstr ""
 "この節ではターミナルで起こる問題に対するいくつかのアドバイスを載せます。"
 
-#: Terminal.xml:595(term)
+#: Terminal.xml:612(term)
 msgid "To reset the state of the terminal:"
 msgstr "ターミナルの状態をリセットする:"
 
-#: Terminal.xml:597(para)
+#: Terminal.xml:614(para)
 msgid ""
 "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Reset</"
 "guimenuitem></menuchoice>."
@@ -1050,11 +1584,11 @@ msgstr ""
 "<menuchoice><guimenu>「ターミナル」</guimenu><guimenuitem>「リセット」</"
 "guimenuitem></menuchoice> を選びます。"
 
-#: Terminal.xml:601(term)
+#: Terminal.xml:618(term)
 msgid "To reset the terminal and clear the terminal screen:"
 msgstr "ターミナルをリセットして画面をクリアする:"
 
-#: Terminal.xml:603(para)
+#: Terminal.xml:620(para)
 msgid ""
 "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Reset and Clear</"
 "guimenuitem></menuchoice>."
@@ -1062,7 +1596,7 @@ msgstr ""
 "<menuchoice><guimenu>「ターミナル」</guimenu><guimenuitem>「リセットしてクリ"
 "ア」</guimenuitem></menuchoice> を選びます。"
 
-#: Terminal.xml:608(para)
+#: Terminal.xml:625(para)
 msgid ""
 "You can also use the shell commands <userinput><command>reset</command></"
 "userinput> and <userinput><command>clear</command></userinput> to recover "
@@ -1072,11 +1606,11 @@ msgstr ""
 "command></userinput> および <userinput><command>clear</command></userinput> "
 "を使うこともできます。"
 
-#: Terminal.xml:615(title)
+#: Terminal.xml:632(title)
 msgid "To customize the toolbars"
 msgstr "ツールバーをカスタマイズするには"
 
-#: Terminal.xml:617(para)
+#: Terminal.xml:634(para)
 msgid ""
 "As already mentioned, @PACKAGE_NAME@ includes support for customizable "
 "toolbars. The toolbars are disabled by default, you will have to explicitly "
@@ -1092,7 +1626,7 @@ msgstr ""
 "guimenuitem></menuchoice> を選択します。ツールバーを常時表示したい場合は、"
 "<xref linkend=\"preferences-appearance\"/> を参照してください。"
 
-#: Terminal.xml:623(para)
+#: Terminal.xml:640(para)
 msgid ""
 "Once the toolbars are shown, choose <menuchoice><guimenu>Edit</"
 "guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice> from the menubar "
@@ -1110,11 +1644,11 @@ msgstr ""
 "れ、現在のターミナルウィンドウのツールバーをカスタマイズできるようになりま"
 "す。"
 
-#: Terminal.xml:636(phrase)
+#: Terminal.xml:653(phrase)
 msgid "Customizing the toolbars"
 msgstr "ツールバーのカスタマイズ"
 
-#: Terminal.xml:641(para)
+#: Terminal.xml:658(para)
 msgid ""
 "Just drag an item from the <guilabel>Toolbar Editor</guilabel> window and "
 "drop it on a toolbar to add that item to the specific toolbar or drag an "
@@ -1134,11 +1668,11 @@ msgstr ""
 "menuchoice>を選択すると削除できます。コンテキストメニューからいろいろなスタイ"
 "ルのツールバーを選ぶことも可能です。"
 
-#: Terminal.xml:651(title)
+#: Terminal.xml:668(title)
 msgid "To switch between different encodings"
 msgstr "別のエンコーディングに切り換えるには"
 
-#: Terminal.xml:653(para)
+#: Terminal.xml:670(para)
 msgid ""
 "@PACKAGE_NAME@ itself does not (yet) include builtin support for switching "
 "encodings on the fly in a terminal session. But since @PACKAGE_NAME@ "
@@ -1152,7 +1686,11 @@ msgstr ""
 "jussieu.fr/~jch/software/luit/\">Luit アプリケーション</ulink> を使うことがで"
 "きます。"
 
-#: Terminal.xml:677(para)
+#: Terminal.xml:680(title) Terminal.xml:689(phrase)
+msgid "Preferences"
+msgstr "環境設定"
+
+#: Terminal.xml:694(para)
 msgid ""
 "To configure @PACKAGE_NAME@, choose <menuchoice><guimenu>Edit</"
 "guimenu><guimenuitem>Preferences...</guimenuitem></menuchoice> or right-"
@@ -1167,19 +1705,19 @@ msgstr ""
 "guimenuitem></menuchoice> を選択します。これにより <guilabel>ターミナルの設定"
 "</guilabel> ダイアログが現れ、@PACKAGE_NAME@ の振る舞いを調節できます。"
 
-#: Terminal.xml:683(title)
+#: Terminal.xml:700(title)
 msgid "General"
 msgstr "一般"
 
-#: Terminal.xml:692(phrase)
+#: Terminal.xml:709(phrase)
 msgid "General preferences"
 msgstr "一般設定"
 
-#: Terminal.xml:699(guilabel)
+#: Terminal.xml:716(guilabel)
 msgid "Initial title"
 msgstr "最初のタイトル"
 
-#: Terminal.xml:701(para)
+#: Terminal.xml:718(para)
 msgid ""
 "Use this text box to specify the initial title of terminals. New terminals "
 "will have the initial title."
@@ -1187,7 +1725,7 @@ msgstr ""
 "ターミナルの最初のタイトルは、このテキストボックスを使って指定します。新しい"
 "ターミナルには最初のタイトルが付けられます。"
 
-#: Terminal.xml:703(para)
+#: Terminal.xml:720(para)
 msgid ""
 "The initial title can also substitute some tokens, see <xref linkend=\"set-"
 "title\"/> for more information."
@@ -1195,11 +1733,11 @@ msgstr ""
 "最初のタイトルはいくつかのトークンで置き換えることができます。詳しくは <xref "
 "linkend=\"set-title\"/> を参照してください。"
 
-#: Terminal.xml:708(guilabel)
+#: Terminal.xml:725(guilabel)
 msgid "Dynamically-set title"
 msgstr "自動的に付くタイトル"
 
-#: Terminal.xml:710(para)
+#: Terminal.xml:727(para)
 msgid ""
 "Use this drop-down list to specify how to handle dynamically-set titles, "
 "that is, terminal titles set by the commands that run in the terminal."
@@ -1208,11 +1746,11 @@ msgstr ""
 "で、そのような自動的に付くタイトルの扱い方をこのドロップダウンリストで指定し"
 "てください。"
 
-#: Terminal.xml:716(guilabel)
+#: Terminal.xml:733(guilabel)
 msgid "Run command as login shell"
 msgstr "ログインシェルとしてコマンドを実行する"
 
-#: Terminal.xml:718(para)
+#: Terminal.xml:735(para)
 msgid ""
 "Select this option to force @PACKAGE_NAME@ to run your shell as a login "
 "shell when you open new terminals. See the documentation of your shell for "
@@ -1224,11 +1762,11 @@ msgstr ""
 "して実行する場合とログインシェルとして実行する場合の違いについては、使用する"
 "シェルの文書を参照してください。"
 
-#: Terminal.xml:725(guilabel)
+#: Terminal.xml:742(guilabel)
 msgid "Update utmp/wtmp records when command is launched"
 msgstr "コマンドが実行される時に utmp/wtmp の記録を更新する"
 
-#: Terminal.xml:727(para)
+#: Terminal.xml:744(para)
 msgid ""
 "Select this option to insert a new entry in the utmp and wtmp records when a "
 "new terminal is opened."
@@ -1236,11 +1774,11 @@ msgstr ""
 "新しいターミナルが開かれる時、utmp と wtmp の記録に新規エントリを挿入する場合"
 "はこのオプションを選択します。"
 
-#: Terminal.xml:732(guilabel)
+#: Terminal.xml:749(guilabel)
 msgid "Scroll on output"
 msgstr "出力でスクロールさせる"
 
-#: Terminal.xml:734(para)
+#: Terminal.xml:751(para)
 msgid ""
 "Select this option to enable you to scroll the output on the terminal while "
 "the terminal continues to display more output from a command."
@@ -1248,11 +1786,11 @@ msgstr ""
 "ターミナルがコマンドからの多くの出力を表示し続けている間、その出力のスクロー"
 "ルを行いたいときはこのオプションを選択してください。"
 
-#: Terminal.xml:739(guilabel)
+#: Terminal.xml:756(guilabel)
 msgid "Scroll on keystroke"
 msgstr "キー入力でスクロールさせる"
 
-#: Terminal.xml:741(para)
+#: Terminal.xml:758(para)
 msgid ""
 "Select this option to enable you to press any key on the keyboard to scroll "
 "down the terminal window to the command prompt. This action only applies if "
@@ -1264,11 +1802,11 @@ msgstr ""
 "ドウが上にスクロールされていたときに、コマンドプロンプトまで帰らせたい場合の"
 "みに適用される動作です。"
 
-#: Terminal.xml:748(guilabel)
+#: Terminal.xml:765(guilabel)
 msgid "Scrollbar is"
 msgstr "スクロールバー"
 
-#: Terminal.xml:750(para)
+#: Terminal.xml:767(para)
 msgid ""
 "Use this drop-down list to specify the position of the scrollbar in terminal "
 "windows."
@@ -1276,11 +1814,11 @@ msgstr ""
 "ターミナルウィンドウに表示されるスクロールバーの位置の指定をこのドロップダウ"
 "ンリストで行えます。"
 
-#: Terminal.xml:755(guilabel)
+#: Terminal.xml:772(guilabel)
 msgid "Scrollback"
 msgstr "スクロールバック"
 
-#: Terminal.xml:757(para)
+#: Terminal.xml:774(para)
 msgid ""
 "Use this spin box to specify the number of lines that you can scroll back "
 "using the scrollbar or the mouse wheel. For example, if you specify 1000 you "
@@ -1290,19 +1828,19 @@ msgstr ""
 "バックできる行数を指定します。例えばここに 1000 と指定すると、ターミナルに表"
 "示された最新の 1000 行をスクロールバックすることができます。"
 
-#: Terminal.xml:766(title)
+#: Terminal.xml:783(title)
 msgid "Appearance"
 msgstr "外観"
 
-#: Terminal.xml:775(phrase)
+#: Terminal.xml:792(phrase)
 msgid "Appearance preferences"
 msgstr "外観の設定"
 
-#: Terminal.xml:782(guilabel)
+#: Terminal.xml:799(guilabel)
 msgid "Font"
 msgstr "フォント"
 
-#: Terminal.xml:784(para)
+#: Terminal.xml:801(para)
 msgid ""
 "Click on the button to select the font type and font size you want to use "
 "for the terminal."
@@ -1310,7 +1848,7 @@ msgstr ""
 "ターミナルで使用したいフォントの種類やサイズを選択するには、このボタンをク"
 "リックします。"
 
-#: Terminal.xml:789(para)
+#: Terminal.xml:806(para)
 msgid ""
 "Use the option <guilabel>Enable anti-aliasing for the terminal font</"
 "guilabel> to control whether you want @PACKAGE_NAME@ to use anti-aliasing "
@@ -1324,7 +1862,7 @@ msgstr ""
 "と、ターミナルの描画性能が目に見えて向上する上に、処理速度が遅いシステムでの"
 "システム全般の負荷を減らす可能性があります。"
 
-#: Terminal.xml:796(para)
+#: Terminal.xml:813(para)
 msgid ""
 "The option <guilabel>Allow bold text</guilabel> controls whether Terminal "
 "allows the application running inside to use bold text or not. If disabled, "
@@ -1336,20 +1874,20 @@ msgstr ""
 "すべてのテキストは選択されたフォントで描画されます。有効にした場合は、一定の"
 "テキストが太字で描画されます。"
 
-#: Terminal.xml:805(guilabel)
+#: Terminal.xml:822(guilabel)
 msgid "Background"
 msgstr "背景"
 
-#: Terminal.xml:807(para)
+#: Terminal.xml:824(para)
 msgid ""
 "Select a background for the terminal window. The options are as follows:"
 msgstr "ターミナルウィンドウの背景を選択します。以下がそのオプションです:"
 
-#: Terminal.xml:811(guilabel)
+#: Terminal.xml:828(guilabel)
 msgid "None (use solid color)"
 msgstr "指定無し (単色を使用する)"
 
-#: Terminal.xml:812(para)
+#: Terminal.xml:830(para)
 msgid ""
 "Select this option to use the background color that is specified in the "
 "<guilabel>Colors</guilabel> section as the background color for the terminal."
@@ -1357,11 +1895,11 @@ msgstr ""
 "ターミナルの背景色として、<guilabel>配色</guilabel>で指定される背景色を使用す"
 "る場合、このオプションを選択してください。"
 
-#: Terminal.xml:817(guilabel)
+#: Terminal.xml:836(guilabel)
 msgid "Background image"
 msgstr "画像を使用する"
 
-#: Terminal.xml:818(para)
+#: Terminal.xml:838(para)
 msgid ""
 "Select this option to use an image file as the background for the terminal. "
 "Use the <guilabel>Image file</guilabel> entry box to specify the location "
@@ -1372,7 +1910,7 @@ msgstr ""
 "の場所や名前を <guilabel>「ファイル」</guilabel> エントリーボックスで設定しま"
 "す。"
 
-#: Terminal.xml:823(para)
+#: Terminal.xml:843(para)
 msgid ""
 "Use the <guilabel>Style</guilabel> option to control the appearance of the "
 "background image. @PACKAGE_NAME@ supports tiling, centering, scaling and "
@@ -1382,16 +1920,16 @@ msgstr ""
 "定します。@PACKAGE_NAME@ は背景画像の、タイル状、中央揃え、拡大縮小、および伸"
 "長表示をサポートします。"
 
-#: Terminal.xml:828(guilabel)
+#: Terminal.xml:849(guilabel)
 msgid "Transparent background"
 msgstr "透明にする"
 
-#: Terminal.xml:829(para)
+#: Terminal.xml:851(para)
 msgid "Select this option to use a transparent background for the terminal."
 msgstr ""
 "ターミナルの背景を (擬似的に) 透明にする場合はこのオプションを選択します。"
 
-#: Terminal.xml:833(para)
+#: Terminal.xml:856(para)
 msgid ""
 "If you have selected <guilabel>Background image</guilabel> or "
 "<guilabel>Transparent background</guilabel>, you can use the slider "
@@ -1402,32 +1940,32 @@ msgstr ""
 "guilabel> を選択している場合、<guilabel>「透明度」</guilabel> スライダを利用"
 "してターミナルの背景画像の明るさや透明度が調整できます。"
 
-#: Terminal.xml:839(guilabel)
+#: Terminal.xml:862(guilabel)
 msgid "Display menubar in new windows"
 msgstr "メニューバーを表示する"
 
-#: Terminal.xml:841(para)
+#: Terminal.xml:864(para)
 msgid ""
 "Select this option to show the menubar on new terminal windows by default."
 msgstr ""
 "新しいターミナルウィンドウにデフォルトでメニューバーを表示する場合、このオプ"
 "ションを選択します。"
 
-#: Terminal.xml:845(guilabel)
+#: Terminal.xml:868(guilabel)
 msgid "Display toolbars in new windows"
 msgstr "ツールバーを表示する"
 
-#: Terminal.xml:847(para)
+#: Terminal.xml:870(para)
 msgid "Select this option to show toolbars on new terminal windows by default."
 msgstr ""
 "新しいターミナルウィンドウにデフォルトでツールバーを表示する場合、このオプ"
 "ションを選択します。"
 
-#: Terminal.xml:851(guilabel)
+#: Terminal.xml:874(guilabel)
 msgid "Display borders around new windows"
 msgstr "ウィンドウ枠を表示する"
 
-#: Terminal.xml:853(para)
+#: Terminal.xml:876(para)
 msgid ""
 "Select this option to show window decorations on new terminal windows by "
 "default."
@@ -1435,19 +1973,19 @@ msgstr ""
 "新しいターミナルウィンドウにデフォルトでウィンドウ枠を表示する場合、このオプ"
 "ションを選択します。"
 
-#: Terminal.xml:860(title)
+#: Terminal.xml:883(title)
 msgid "Colors"
 msgstr "配色"
 
-#: Terminal.xml:869(phrase)
+#: Terminal.xml:892(phrase)
 msgid "Color preferences"
 msgstr "配色の設定"
 
-#: Terminal.xml:876(guilabel)
+#: Terminal.xml:899(guilabel)
 msgid "Foreground and Background"
 msgstr "文字色と背景色"
 
-#: Terminal.xml:878(para)
+#: Terminal.xml:901(para)
 msgid ""
 "The two buttons labelled with <guilabel>Text and cursor color</guilabel> "
 "allow to select the color @PACKAGE_NAME@ uses to draw normal text and the "
@@ -1459,7 +1997,7 @@ msgstr ""
 "ターミナル内で実行するアプリケーションが利用する色を、その下にあるパレットか"
 "ら別の色に変更することもできます。"
 
-#: Terminal.xml:883(para)
+#: Terminal.xml:906(para)
 msgid ""
 "Click on the <guilabel>Background color</guilabel> button to choose the "
 "default background for terminal windows. This color is also used in "
@@ -1471,11 +2009,11 @@ msgstr ""
 "guilabel> あるいは <guilabel>「画像を使用する」</guilabel> が選択されている時"
 "の配合色としても用いられます。"
 
-#: Terminal.xml:890(guilabel)
+#: Terminal.xml:913(guilabel)
 msgid "Text Selection"
 msgstr "テキストの選択領域"
 
-#: Terminal.xml:892(para)
+#: Terminal.xml:915(para)
 msgid ""
 "Select the background color to use when selecting text in a terminal window. "
 "You can either specify a custom color or stick to the default color."
@@ -1484,11 +2022,11 @@ msgstr ""
 "指定することもできますし、そのままデフォルトで決められているものを使用するこ"
 "ともできます。"
 
-#: Terminal.xml:897(guilabel)
+#: Terminal.xml:920(guilabel)
 msgid "Palette"
 msgstr "パレット"
 
-#: Terminal.xml:899(para)
+#: Terminal.xml:922(para)
 msgid ""
 "The terminal provides the application running inside with a palette of 16 "
 "colors. You can customize these colors using the 16 color buttons."
@@ -1496,19 +2034,19 @@ msgstr ""
 "ターミナル内では 16 色のパレットを使ってアプリケーションを動作させることがで"
 "きます。この 16 色のボタンをクリックすると、それぞれの色を変更できます。"
 
-#: Terminal.xml:907(title)
+#: Terminal.xml:930(title)
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: Terminal.xml:916(phrase)
+#: Terminal.xml:939(phrase)
 msgid "Shortcut preferences"
 msgstr "ショートカットの設定"
 
-#: Terminal.xml:923(guilabel)
+#: Terminal.xml:946(guilabel)
 msgid "Shortcut keys"
 msgstr "ショートカットキー"
 
-#: Terminal.xml:925(para)
+#: Terminal.xml:948(para)
 msgid ""
 "The <guilabel>Shortcut keys</guilabel> section of the dialog lists the "
 "shortcut keys that are defined for each menu item. The shortcut keys enable "
@@ -1524,11 +2062,11 @@ msgstr ""
 "の修飾キーと非修飾キーの組み合わせたものが指定できます。修飾キーには "
 "<keycap>Alt</keycap>、<keycap>Ctrl</keycap> などがあります。"
 
-#: Terminal.xml:939(phrase)
+#: Terminal.xml:962(phrase)
 msgid "Compose shortcut"
 msgstr "ショートカットを編集"
 
-#: Terminal.xml:944(para)
+#: Terminal.xml:967(para)
 msgid ""
 "To change a shortcut key for a menu item, double click the item in the list "
 "and press the key combination you want to set. To disable a shortcut for a "
@@ -1540,11 +2078,11 @@ msgstr ""
 "ショートカットキーを無効にするには、リスト中のアイテムをダブルクリックして "
 "<guilabel>「クリア」</guilabel> ボタンをクリックしてください。"
 
-#: Terminal.xml:952(guilabel)
+#: Terminal.xml:975(guilabel)
 msgid "Disable all menu access keys (such as Alt+f)"
 msgstr "メニューへのアクセスキー (例えば Alt+f) を全て無効にする"
 
-#: Terminal.xml:954(para)
+#: Terminal.xml:977(para)
 msgid ""
 "Select this option to disable the access keys that are defined to enable you "
 "to use keyboard instead of the mouse to select a menu item. Each access key "
@@ -1559,11 +2097,11 @@ msgstr ""
 "所与の動作を行うために、このアクセスキーを <keycap>Alt</keycap> キーと組み合"
 "わせて押す必要があります。"
 
-#: Terminal.xml:963(guilabel)
+#: Terminal.xml:986(guilabel)
 msgid "Disable menu shortcut key (F10 by default)"
 msgstr "メニューショートカットキー (デフォルトは F10) を無効にする"
 
-#: Terminal.xml:965(para)
+#: Terminal.xml:988(para)
 msgid ""
 "Select this option to disable the shortcut key that is defined to enable you "
 "to access the @PACKAGE_NAME@ menus. The default shortcut key to access the "
@@ -1573,19 +2111,19 @@ msgstr ""
 "を無効にするには、このオプションを選択してください。デフォルトショートカット"
 "キーは <keycap>F10</keycap> になっています。"
 
-#: Terminal.xml:974(title)
+#: Terminal.xml:997(title)
 msgid "Advanced"
 msgstr "上級者"
 
-#: Terminal.xml:983(phrase)
+#: Terminal.xml:1006(phrase)
 msgid "Advanced preferences"
 msgstr "高度な設定"
 
-#: Terminal.xml:990(guilabel)
+#: Terminal.xml:1013(guilabel)
 msgid "Backspace key generates"
 msgstr "Backspace キーの生成"
 
-#: Terminal.xml:992(para)
+#: Terminal.xml:1015(para)
 msgid ""
 "Use the drop-down list to select the function that you want the "
 "<keycap>Backspace</keycap> key to perform."
@@ -1593,11 +2131,11 @@ msgstr ""
 "実行させたい <keycap>Backspace</keycap> キーの機能を選択するにはこのドロップ"
 "ダウンリストを使用します。"
 
-#: Terminal.xml:997(guilabel)
+#: Terminal.xml:1020(guilabel)
 msgid "Delete key generates"
 msgstr "Delete キーの生成"
 
-#: Terminal.xml:999(para)
+#: Terminal.xml:1022(para)
 msgid ""
 "Use the drop-down list to select the function that you want the "
 "<keycap>Delete</keycap> key to perform."
@@ -1605,11 +2143,11 @@ msgstr ""
 "実行させたい <keycap>Delete</keycap> キーの機能を選択するにはこのドロップダウ"
 "ンリストを使用します。"
 
-#: Terminal.xml:1004(guilabel)
+#: Terminal.xml:1027(guilabel)
 msgid "$TERM setting"
 msgstr "$TERM の設定"
 
-#: Terminal.xml:1006(para)
+#: Terminal.xml:1029(para)
 msgid ""
 "This specifies the value the <varname>$TERM</varname> environment variable "
 "is set to, when a new terminal tab or terminal window is opened. The default "
@@ -1626,11 +2164,11 @@ msgstr ""
 "を使用していて問題がある場合は、<userinput>xfce</userinput> を指定してみてく"
 "ださい。"
 
-#: Terminal.xml:1016(guilabel)
+#: Terminal.xml:1039(guilabel)
 msgid "Reset compatibility options to defaults"
 msgstr "互換オプションをデフォルトにリセットする"
 
-#: Terminal.xml:1018(para)
+#: Terminal.xml:1041(para)
 msgid ""
 "Click this button to reset the options on the <guilabel>Compatibility</"
 "guilabel> tabbed section to its defaults settings."
@@ -1638,11 +2176,11 @@ msgstr ""
 "<guilabel>互換性</guilabel> に関する各オプションを、それぞれのデフォルト値に"
 "リセットする場合は、このボタンをクリックしてください。"
 
-#: Terminal.xml:1023(guilabel)
+#: Terminal.xml:1046(guilabel)
 msgid "Double click"
 msgstr "ダブルクリック"
 
-#: Terminal.xml:1025(para)
+#: Terminal.xml:1048(para)
 msgid ""
 "Use this text box to specify characters or groups of characters that "
 "@PACKAGE_NAME@ considers to be words when you select text by word."
@@ -1650,438 +2188,24 @@ msgstr ""
 "テキストを単語単位で選択する時に @PACKAGE_NAME@ が単語の一部として見なす文字"
 "や文字のグループの指定には、このテキストボックスを使用します。"
 
-#: Terminal.xml:1035(title)
+#: Terminal.xml:1057(title)
+#, fuzzy
+msgid "Command line options"
+msgstr "コマンドラインオプション"
+
+#: Terminal.xml:1064(title)
 msgid "Advanced topics"
 msgstr "上級者向けの話題"
 
-#: Terminal.xml:1037(title)
-msgid "Command line Options"
-msgstr "コマンドラインオプション"
-
-#: Terminal.xml:1039(para)
-msgid ""
-"When @PACKAGE_NAME@ is started from the command line or from a panel "
-"launcher, several options can be specified to modify its behavior."
-msgstr ""
-"@PACKAGE_NAME@ をコマンドラインまたはパネルランチャから起動する場合、その振る"
-"舞いを変えるためのいくつかのオプションが指定できます。"
-
-#: Terminal.xml:1046(option)
-msgid "--help"
-msgstr "--help"
-
-#: Terminal.xml:1048(para)
-msgid ""
-"List the various command line options supported by @PACKAGE_NAME@ and exit"
-msgstr ""
-"@PACKAGE_NAME@ がサポートする様々なコマンドラインオプションをリストして終了し"
-"ます"
-
-#: Terminal.xml:1053(option)
-msgid "--version"
-msgstr "--version"
-
-#: Terminal.xml:1055(para)
-msgid "Display version information and exit"
-msgstr "バージョン情報を表示して終了します"
-
-#: Terminal.xml:1060(option)
-msgid "--disable-server"
-msgstr "--disable-server"
-
-#: Terminal.xml:1062(para)
-msgid "Do not register with the D-BUS session message bus"
-msgstr "D-BUS セッションのメッセージバスに登録しません"
-
-#: Terminal.xml:1069(option)
-msgid "--execute"
-msgstr "--execute"
-
-#: Terminal.xml:1069(parameter)
-msgid "..."
-msgstr "..."
-
-#: Terminal.xml:1071(para)
-msgid "Execute the remainder of the command line inside the terminal"
-msgstr "続くコマンドラインをターミナル内で実行します"
-
-#: Terminal.xml:1076(option)
-msgid "--command"
-msgstr "--command"
-
-#: Terminal.xml:1076(parameter)
-msgid "command"
-msgstr "コマンド"
-
-#: Terminal.xml:1078(para)
-msgid "Execute <parameter>command</parameter> inside the terminal"
-msgstr "ターミナル内で<parameter>コマンド</parameter>を実行します"
-
-#: Terminal.xml:1083(option)
-msgid "--working-directory"
-msgstr "--working-directory"
-
-#: Terminal.xml:1083(parameter)
-msgid "directory"
-msgstr "フォルダ"
-
-#: Terminal.xml:1085(para)
-msgid ""
-"Set <parameter>directory</parameter> as the working directory for the "
-"terminal"
-msgstr ""
-"ターミナルの作業フォルダにする<parameter>フォルダ</parameter>を指定します"
-
-#: Terminal.xml:1090(option)
-msgid "--title"
-msgstr "--title"
-
-#: Terminal.xml:1090(parameter)
-msgid "title"
-msgstr "タイトル"
-
-#: Terminal.xml:1092(para)
-msgid ""
-"Set <parameter>title</parameter> as the initial window title for the terminal"
-msgstr ""
-"ターミナルの最初のウィンドウのタイトルとして<parameter>タイトル</parameter>を"
-"付けます"
-
-#: Terminal.xml:1097(option)
-msgid "--hold"
-msgstr "--hold"
-
-#: Terminal.xml:1099(para)
-msgid ""
-"Causes the terminal to be kept around after the child command has terminated"
-msgstr "子コマンドが終了してもターミナルをそのままにしておきます"
-
-#: Terminal.xml:1104(option)
-msgid "--display"
-msgstr "--display"
-
-#: Terminal.xml:1104(parameter)
-msgid "display"
-msgstr "ディスプレイ"
-
-#: Terminal.xml:1106(para)
-msgid ""
-"Open terminal window on the X screen specified by <parameter>display</"
-"parameter>."
-msgstr ""
-"<parameter>ディスプレイ</parameter>に指定された X スクリーンでターミナルを開"
-"きます。"
-
-#: Terminal.xml:1111(option)
-msgid "--geometry"
-msgstr "--geometry"
-
-#: Terminal.xml:1111(parameter)
-msgid "geometry"
-msgstr "ジオメトリ"
-
-#: Terminal.xml:1113(para)
-msgid ""
-"Sets the geometry of the last-specified window to <parameter>geometry</"
-"parameter>. Read <userinput><command>man</command> <option>X</option></"
-"userinput> for more information on how to specify window geometries."
-msgstr ""
-"最後に指定されたウィンドウのジオメトリを<parameter>ジオメトリ</parameter>に指"
-"定します。ジオメトリの指定方法についての詳しい情報は "
-"<userinput><command>man</command> <option>X</option></userinput> をご覧下さ"
-"い。"
-
-#: Terminal.xml:1122(option)
-msgid "--role"
-msgstr "--role"
-
-#: Terminal.xml:1122(parameter)
-msgid "role"
-msgstr "ロール"
-
-#: Terminal.xml:1124(para)
-msgid ""
-"Sets the window role of the last-specified window to <parameter>role</"
-"parameter>. Applies to only one window and can be specified once for each "
-"window you create from the command line. It is mostly used for session "
-"management inside @PACKAGE_NAME@."
-msgstr ""
-"最後に指定されたウィンドウのウィンドウロールを<parameter>ロール</parameter>に"
-"指定します。一つのウィンドウのみに適用され、コマンドラインから立ち上げるそれ"
-"ぞれのウィンドウに対して一度ずつ指定できます。大半は @PACKAGE_NAME@ 内での"
-"セッション管理に使用されます。"
-
-#: Terminal.xml:1133(option)
-msgid "--startup-id"
-msgstr "--startup-id"
-
-#: Terminal.xml:1133(parameter)
-msgid "id"
-msgstr "ID"
-
-#: Terminal.xml:1135(para)
-msgid ""
-"Specifies the startup notification id for the last-specified window. Used "
-"internally to forward the startup notification id when using the D-BUS "
-"service."
-msgstr ""
-"最後に指定されたウィンドウに起動通知 ID を指定します。D-BUS サービスを使用し"
-"ている時はこの起動通知 ID を転送するために内部で利用されます。"
-
-#: Terminal.xml:1143(option)
-msgid "--fullscreen"
-msgstr "--fullscreen"
-
-#: Terminal.xml:1145(para)
-msgid ""
-"Set the last-specified window into fullscreen mode; applies to only one "
-"window; can be specified once for each window you create from the command "
-"line."
-msgstr ""
-"最後に指定したウィンドウを全画面モードにします。一つのウィンドウのみに適用さ"
-"れます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指定"
-"できます。"
-
-#: Terminal.xml:1154(option)
-msgid "--maximize"
-msgstr "--maximize"
-
-#: Terminal.xml:1156(para)
-msgid ""
-"Set the last-specified window into maximized mode; applies to only one "
-"window; can be specified once for each window you create from the command "
-"line."
-msgstr ""
-"最後に指定したウィンドウを最大化します。一つのウィンドウのみに適用されます。"
-"コマンドラインから起動するそれぞれのウィンドウに対して一度ずつ指定できます。"
-
-#: Terminal.xml:1165(option)
-msgid "--show-menubar"
-msgstr "--show-menubar"
-
-#: Terminal.xml:1167(para)
-msgid ""
-"Turn on the menubar for the last-specified window. Can be specified once for "
-"each window you create from the command line."
-msgstr ""
-"最後に指定したウィンドウでメニューバーを表示します。一つのウィンドウのみに適"
-"用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ"
-"指定できます。"
-
-#: Terminal.xml:1175(option)
-msgid "--hide-menubar"
-msgstr "--hide-menubar"
-
-#: Terminal.xml:1177(para)
-msgid ""
-"Turn off the menubar for the last-specified window. Can be specified once "
-"for each window you create from the command line."
-msgstr ""
-"最後に指定したウィンドウでメニューバーを非表示にします。一つのウィンドウのみ"
-"に適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
-"ずつ指定できます。"
-
-#: Terminal.xml:1185(option)
-msgid "--show-borders"
-msgstr "--show-borders"
-
-#: Terminal.xml:1187(para)
-msgid ""
-"Turn on the window decorations for the last-specified window. Applies to "
-"only one window. Can be specified once for each window you create from the "
-"command line."
-msgstr ""
-"最後に指定したウィンドウでウィンドウの枠を表示します。一つのウィンドウのみに"
-"適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ず"
-"つ指定できます。"
-
-#: Terminal.xml:1195(option)
-msgid "--hide-borders"
-msgstr "--hide-borders"
-
-#: Terminal.xml:1197(para)
-msgid ""
-"Turn off the window decorations for the last-specified window. Applies to "
-"only one window. Can be specified once for each window you create from the "
-"command line."
-msgstr ""
-"最後に指定したウィンドウでウィンドウの枠を非表示にします。一つのウィンドウの"
-"みに適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一"
-"度ずつ指定できます。"
-
-#: Terminal.xml:1205(option)
-msgid "--show-toolbars"
-msgstr "--show-toolbars"
-
-#: Terminal.xml:1207(para)
-msgid ""
-"Turn on the toolbars for the last-specified window. Applies to only one "
-"window. Can be specified once for each window you create from the command "
-"line."
-msgstr ""
-"最後に指定したウィンドウでツールバーを表示します。一つのウィンドウのみに適用"
-"されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指"
-"定できます。"
-
-#: Terminal.xml:1215(option)
-msgid "--hide-toolbars"
-msgstr "--hide-toolbars"
-
-#: Terminal.xml:1217(para)
-msgid ""
-"Turn off the toolbars for the last-specified window. Applies to only one "
-"window. Can be specified once for each window you create from the command "
-"line."
-msgstr ""
-"最後に指定されたウィンドウのツールバーを非表示にします。一つのウィンドウのみ"
-"に適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
-"ずつ指定できます。"
-
-#: Terminal.xml:1225(option)
-msgid "--tab"
-msgstr "--tab"
-
-#: Terminal.xml:1227(para)
-msgid ""
-"Open a new tab in the last-specified window. More than one of these options "
-"can be provided."
-msgstr ""
-"最後に指定されたウィンドウで新しい一つのタブを開きます。このオプションは他と"
-"一緒に使用できます。"
-
-#: Terminal.xml:1234(option)
-msgid "--window"
-msgstr "--window"
-
-#: Terminal.xml:1236(para)
-msgid ""
-"Open a new window containing one tab. More than one of these options can be "
-"provided."
-msgstr ""
-"一つのタブを含む一つのウィンドウを開きます。このオプションは他と一緒に使用で"
-"きます。"
-
-#: Terminal.xml:1243(para)
-msgid ""
-"For example, say you want to open a new terminal window with two tabs in it, "
-"where the first tab should run <command>mutt</command> and the second tab "
-"should run <command>mc</command>, and the window should have 80 columns and "
-"40 rows, then you would use the following command to start Terminal:"
-msgstr ""
-"例えば二つのタブがある新しいターミナルウィンドウを開きたいとしましょう、最初"
-"のタブでは <command>mutt</command> を次のタブでは <command>mc</command> を実"
-"行させて、ウィンドウのサイズは横幅 80、高さ 40 にするとします。その場合は、以"
-"下のコマンドで Terminal を起動させます:"
-
-#: Terminal.xml:1250(screen)
-#, no-wrap
-msgid "Terminal --geometry 80x40 --command mutt --tab --command mc"
-msgstr "Terminal --geometry 80x40 --command mutt --tab --command mc"
-
-#: Terminal.xml:1255(title)
+#: Terminal.xml:1066(title)
 msgid "Files and Environment Variables"
 msgstr "ファイルおよび環境変数"
 
-#: Terminal.xml:1257(para)
-msgid ""
-"Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
-"freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data "
-"and configuration files. This means that file locations will be specified as "
-"a path relative to the directories described in the specification."
-msgstr ""
-"Terminal はそのデータおよび設定ファイルの場所を探す際に、<ulink url=\"http://"
-"freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> で策定されている基本"
-"フォルダの仕様 (Basedir Specification) に従います。従って、各ファイルの位置"
-"は、この仕様に記述されているフォルダの相対パスとして指定されます。"
-
-#: Terminal.xml:1265(varname)
-msgid "${XDG_CONFIG_HOME}"
-msgstr "${XDG_CONFIG_HOME}"
-
-#: Terminal.xml:1267(para)
-msgid ""
-"The first base directory to look for configuration files. By default this is "
-"set to <filename role=\"directory\">~/.config/</filename>."
-msgstr ""
-"設定ファイルを見に行く最初の基本フォルダです。デフォルトでは <filename role="
-"\"directory\">~/.config/</filename> になっています。"
-
-#: Terminal.xml:1275(varname)
-msgid "${XDG_CONFIG_DIRS}"
-msgstr "${XDG_CONFIG_DIRS}"
-
-#: Terminal.xml:1277(para)
-msgid ""
-"A colon separated list of base directories that contain configuration data. "
-"By default the application will look in <filename role=\"directory\">"
-"${sysconfdir}/xdg/</filename>. The value of <varname>${sysconfdir}</varname> "
-"depends on how the program was build and will often be <filename role="
-"\"directory\">/etc/</filename> for binary packages."
-msgstr ""
-"設定データを含む基本フォルダのリストで、各フォルダはコロンで区切られていま"
-"す。デフォルトではアプリケーションは <filename role=\"directory\">"
-"${sysconfdir}/xdg/</filename> を参照します。<varname>${sysconfdir}</varname> "
-"の値はプログラムがどのようにビルドされたかによって変わります。バイナリ配布さ"
-"れるパッケージでは <filename role=\"directory\">/etc/</filename> になることが"
-"多いようです。"
-
-#: Terminal.xml:1288(varname)
-msgid "${XDG_DATA_HOME}"
-msgstr "${XDG_DATA_HOME}"
-
-#: Terminal.xml:1290(para)
-msgid ""
-"The root for all user-specific data files. By default this is set to "
-"<filename role=\"directory\">~/.local/share/</filename>."
-msgstr ""
-"ユーザー個別のデータファイルすべてのルートフォルダです。デフォルトでは "
-"<filename role=\"directory\">~/.local/share/</filename> になっています。"
-
-#: Terminal.xml:1298(varname)
-msgid "${XDG_DATA_DIRS}"
-msgstr "${XDG_DATA_DIRS}"
-
-#: Terminal.xml:1300(para)
-msgid ""
-"A set of preference ordered base directories relative to which data files "
-"should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
-"base directory. The directories should be separated with a colon."
-msgstr ""
-"基本フォルダ <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを探す"
-"基本フォルダを並べていきます。フォルダはコロンで区切る必要があります。"
-
-#: Terminal.xml:1310(filename)
-msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-
-#: Terminal.xml:1312(para)
-msgid ""
-"This is the location of the configuration file that includes the preferences "
-"which control the look and feel of @PACKAGE_NAME@."
-msgstr ""
-"@PACKAGE_NAME@ の見た目を管理する環境設定が含まれる設定ファイルの場所です。"
-
-#: Terminal.xml:1320(filename)
-msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-
-#: Terminal.xml:1322(para)
-msgid ""
-"This file includes the user interface definition for the toolbars. If you "
-"customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@ "
-"will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
-"Terminal/Terminal-toolbars.ui</filename>."
-msgstr ""
-"このファイルにはツールバーのインターフェイス定義が記述されています。ツール"
-"バーエディタを使用してツールバーをカスタマイズした場合、@PACKAGE_NAME@ はファ"
-"イル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename> に新"
-"しいツールバーのレイアウト情報を保存します。"
-
-#: Terminal.xml:1334(title)
+#: Terminal.xml:1078(title)
 msgid "Hidden options"
 msgstr "隠しオプション"
 
-#: Terminal.xml:1336(para)
+#: Terminal.xml:1080(para)
 msgid ""
 "@PACKAGE_NAME@ offers a few hidden options to allow powerusers to control "
 "various advanced settings and to reduce the number of options in the user "
@@ -2099,7 +2223,7 @@ msgstr ""
 "れば作成してください)。例えば、<filename>terminalrc</filename> は以下ように"
 "なっています。"
 
-#: Terminal.xml:1344(programlisting)
+#: Terminal.xml:1088(programlisting)
 #, no-wrap
 msgid ""
 "\n"
@@ -2132,16 +2256,16 @@ msgstr ""
 "MiscTabPosition=GTK_POS_TOP\n"
 "MiscHighlightUrls=TRUE"
 
-#: Terminal.xml:1359(para)
+#: Terminal.xml:1103(para)
 msgid ""
 "plus all the options that are controlled through the preferences dialog."
 msgstr "これに設定ダイアログで設定されたオプションが加わります。"
 
-#: Terminal.xml:1365(varname)
+#: Terminal.xml:1109(varname)
 msgid "MiscAlwaysShowTabs"
 msgstr "MiscAlwaysShowTabs"
 
-#: Terminal.xml:1367(para)
+#: Terminal.xml:1111(para)
 msgid ""
 "If <literal>TRUE</literal> the tab headers will always be displayed even if "
 "only a single terminal tab is open. This option is useful if you do not want "
@@ -2153,11 +2277,11 @@ msgstr ""
 "ウの大きさをいちいち変更したくない場合にこのオプションが役立ちます。デフォル"
 "トは <literal>FALSE</literal> になります。"
 
-#: Terminal.xml:1376(varname)
+#: Terminal.xml:1120(varname)
 msgid "MiscBell"
 msgstr "MiscBell"
 
-#: Terminal.xml:1378(para)
+#: Terminal.xml:1122(para)
 msgid ""
 "Enables (<varname>MiscBell=TRUE</varname>) or disables "
 "(<varname>MiscBell=FALSE</varname>) the audible terminal bell. It is "
@@ -2167,11 +2291,11 @@ msgstr ""
 "(<varname>MiscBell=FALSE</varname>) かを設定します。デフォルトは "
 "<literal>FALSE</literal> になります。"
 
-#: Terminal.xml:1386(varname)
+#: Terminal.xml:1130(varname)
 msgid "MiscConfirmClose"
 msgstr "MiscConfirmClose"
 
-#: Terminal.xml:1388(para)
+#: Terminal.xml:1132(para)
 msgid ""
 "Controls whether @PACKAGE_NAME@ popups a confirmation dialog when the user "
 "tries to close a terminal window with multiple tabs in it. Can be either "
@@ -2182,11 +2306,11 @@ msgstr ""
 "確認ダイアログを表示し、<literal>FALSE</literal> で表示しません。デフォルト"
 "は <literal>TRUE</literal> になります。"
 
-#: Terminal.xml:1397(varname)
+#: Terminal.xml:1141(varname)
 msgid "MiscCursorBlinks"
 msgstr "MiscCursorBlinks"
 
-#: Terminal.xml:1399(para)
+#: Terminal.xml:1143(para)
 msgid ""
 "Enable this option to display a cursor that blinks. Can be either "
 "<literal>TRUE</literal> or <literal>FALSE</literal> (the default)."
@@ -2195,11 +2319,11 @@ msgstr ""
 "literal> にすると点滅しません。デフォルトは <literal>FALSE</literal> になりま"
 "す。"
 
-#: Terminal.xml:1407(varname)
+#: Terminal.xml:1151(varname)
 msgid "MiscCursorShape"
 msgstr "MiscCursorShape"
 
-#: Terminal.xml:1409(para)
+#: Terminal.xml:1153(para)
 msgid ""
 "Specifies the shape of the cursor in the terminal. This can be either "
 "<literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal> (the default), "
@@ -2213,11 +2337,11 @@ msgstr ""
 "<literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal> が指定できます。このオプ"
 "ションは VTE 0.19.1 以降でコンパイルした場合のみ有効になります。"
 
-#: Terminal.xml:1420(varname)
+#: Terminal.xml:1164(varname)
 msgid "MiscCycleTabs"
 msgstr "MiscCycleTabs"
 
-#: Terminal.xml:1422(para)
+#: Terminal.xml:1166(para)
 msgid ""
 "This option controls whether you can circulate through terminal tabs. That "
 "is, whether you are able to go from the last tab to the first tab using the "
@@ -2236,25 +2360,26 @@ msgstr ""
 "<literal>TRUE</literal> (デフォルト) あるいは <literal>FALSE</literal> のどち"
 "らかになります。"
 
-#: Terminal.xml:1434(varname)
+#: Terminal.xml:1178(varname)
 msgid "MiscDefaultGeometry"
 msgstr "MiscDefaultGeometry"
 
-#: Terminal.xml:1436(para)
+#: Terminal.xml:1180(para)
+#, fuzzy
 msgid ""
-"The default geometry for new Terminal windows if no <option>--geometry</"
-"option> option is specified on the command line (defaults to <literal>80x24</"
-"literal>)."
+"The default geometry for new Terminal windows if no <xref linkend=\"options-"
+"window-geometry\"/> option is specified on the command line (defaults to "
+"<literal>80x24</literal>)."
 msgstr ""
 "コマンドラインで <option>--geometry</option> が指定されていない場合、新しい "
 "Terminal ウィンドウを開く時にこのジオメトリ (アクティブタブの行数と桁数。デ"
 "フォルトは <literal>80x24</literal>) が使用されます。"
 
-#: Terminal.xml:1444(varname)
+#: Terminal.xml:1188(varname)
 msgid "MiscInheritGeometry"
 msgstr "MiscInheritGeometry"
 
-#: Terminal.xml:1446(para)
+#: Terminal.xml:1190(para)
 msgid ""
 "This setting controls whether new windows will inherit the geometry (width "
 "and height of the active tab) from its parent window (the window from which "
@@ -2265,11 +2390,11 @@ msgstr ""
 "す。<literal>TRUE</literal> を指定すると引き継ぎ、<literal>FALSE</literal> で"
 "引き継ぎません。デフォルトは <literal>FALSE</literal> になります。"
 
-#: Terminal.xml:1456(varname)
+#: Terminal.xml:1200(varname)
 msgid "MiscMouseAutohide"
 msgstr "MiscMouseAutohide"
 
-#: Terminal.xml:1458(para)
+#: Terminal.xml:1202(para)
 msgid ""
 "This setting controls whether @PACKAGE_NAME@ will hide the mouse cursor "
 "while you are typing in a terminal window. Can be either <literal>TRUE</"
@@ -2280,11 +2405,11 @@ msgstr ""
 "<literal>FALSE</literal> で表示したままになります。デフォルトは "
 "<literal>FALSE</literal> です。"
 
-#: Terminal.xml:1467(varname)
+#: Terminal.xml:1211(varname)
 msgid "MiscTabCloseButtons"
 msgstr "MiscTabCloseButtons"
 
-#: Terminal.xml:1469(para)
+#: Terminal.xml:1213(para)
 msgid ""
 "This setting controls whether @PACKAGE_NAME@ provides a close button with "
 "the terminal tab title. Can be either <literal>TRUE</literal> (the default) "
@@ -2294,11 +2419,11 @@ msgstr ""
 "かを設定します。<literal>TRUE</literal> を指定すると表示し、<literal>FALSE</"
 "literal> で表示しません。デフォルトは <literal>TRUE</literal> になります。"
 
-#: Terminal.xml:1478(varname)
+#: Terminal.xml:1222(varname)
 msgid "MiscTabCloseMiddleClick"
 msgstr "MiscTabCloseMiddleClick"
 
-#: Terminal.xml:1480(para)
+#: Terminal.xml:1224(para)
 msgid ""
 "This setting controls whether @PACKAGE_NAME@ will close a terminal tab when "
 "the user middle-clicks the tab title. Can be either <literal>TRUE</literal> "
@@ -2309,11 +2434,11 @@ msgstr ""
 "<literal>FALSE</literal> で閉じません。デフォルトは <literal>TRUE</literal> "
 "になります。"
 
-#: Terminal.xml:1489(varname)
+#: Terminal.xml:1233(varname)
 msgid "MiscTabPosition"
 msgstr "MiscTabPosition"
 
-#: Terminal.xml:1491(para)
+#: Terminal.xml:1235(para)
 msgid ""
 "Specifies the position where the tab headers should be displayed. This can "
 "be either <literal>GTK_POS_TOP</literal> (the default), "
@@ -2333,11 +2458,11 @@ msgstr ""
 "時には <varname>MiscTabCloseButtons</varname> を <literal>FALSE</literal> に"
 "することをおすすめします。"
 
-#: Terminal.xml:1504(varname)
+#: Terminal.xml:1248(varname)
 msgid "MiscHighlightUrls"
 msgstr "MiscHighlightUrls"
 
-#: Terminal.xml:1506(para)
+#: Terminal.xml:1250(para)
 msgid ""
 "This setting controls whether URLs - both hyperlinks and email addresses - "
 "will be highlighted in the text displayed in a terminal window. If you "
@@ -2350,11 +2475,11 @@ msgstr ""
 "ると、URL は高輝度表示されず、URL を中央クリックしたときにお気に入りのアプリ"
 "ケーションが呼び出されることはありません。"
 
-#: Terminal.xml:1520(title)
+#: Terminal.xml:1264(title)
 msgid "Frequently asked questions"
 msgstr "よく聞かれる質問"
 
-#: Terminal.xml:1522(para)
+#: Terminal.xml:1266(para)
 msgid ""
 "The intent of this section is to collect the quite numerous frequently asked "
 "question that relate to working with @PACKAGE_NAME@, or even terminal "
@@ -2368,7 +2493,7 @@ msgstr ""
 "enter_bug.cgi?product=Terminal&amp;format=guided\">要望</ulink>を出して下さ"
 "い。"
 
-#: Terminal.xml:1527(title)
+#: Terminal.xml:1271(title)
 msgid ""
 "@PACKAGE_NAME@ complains about <literal>Unable to start terminal server: "
 "Unable to connect to D-BUS message daemon</literal>, what can I do?"
@@ -2376,7 +2501,7 @@ msgstr ""
 "@PACKAGE_NAME@ が <literal>ターミナルサーバを起動できません: D-BUS メッセージ"
 "デーモンと接続できません</literal> 言ってきます。何をすればよいですか?"
 
-#: Terminal.xml:1530(para)
+#: Terminal.xml:1274(para)
 msgid ""
 "@PACKAGE_NAME@ tries to reduce the number of running instances by "
 "establishing a D-BUS service that handles all terminal windows. The message "
@@ -2390,7 +2515,7 @@ msgstr ""
 "スを登録できなかった事を伝えています。これは単なる警告メッセージですので、D-"
 "BUS のサービス機能が無くても普通にターミナルを使用することができます。"
 
-#: Terminal.xml:1535(para)
+#: Terminal.xml:1279(para)
 msgid ""
 "To start the D-BUS session message daemon when you login to your X session, "
 "either modify your xinitrc file and change the line <literal>xfce4-session</"
@@ -2407,7 +2532,7 @@ msgstr ""
 "を有効にする方法に関して、あなたのデスクトップ環境の文書をご覧になってくださ"
 "い。"
 
-#: Terminal.xml:1543(title)
+#: Terminal.xml:1287(title)
 msgid ""
 "<keycap>Home</keycap> and <keycap>End</keycap> keys don't work in "
 "@PACKAGE_NAME@, what's wrong?"
@@ -2415,7 +2540,7 @@ msgstr ""
 "@PACKAGE_NAME@ で <keycap>Home</keycap> および <keycap>End</keycap> キーが使"
 "えません。何が悪いんですか?"
 
-#: Terminal.xml:1545(para)
+#: Terminal.xml:1289(para)
 msgid ""
 "This problem is actually a bug in <ulink url=\"http://developer.gnome.org/"
 "arch/gnome/widgets/vte.html\">vte</ulink>, the terminal widget used by "
@@ -2431,11 +2556,11 @@ msgstr ""
 "パッチは vte のバージョン 0.11.11 に対して作成されたので、他のバージョンでは"
 "うまくいかないかもしれません)。パッチを作成した Auke Kok 氏に感謝します。"
 
-#: Terminal.xml:1552(title)
+#: Terminal.xml:1296(title)
 msgid "Support"
 msgstr "サポート"
 
-#: Terminal.xml:1554(para)
+#: Terminal.xml:1298(para)
 msgid ""
 "To report a bug or to make a suggestion regarding this application or this "
 "manual, use the bug tracking system at <ulink url=\"http://bugzilla.xfce.org/"
@@ -2450,7 +2575,7 @@ msgstr ""
 "いう事を忘れないでください。ではどういったものが該当するかというと、これには"
 "二つの特質があります:"
 
-#: Terminal.xml:1561(para)
+#: Terminal.xml:1305(para)
 msgid ""
 "<emphasis role=\"bold\">Reproducible.</emphasis> If the developer cannot see "
 "the bug himself to prove that it exists, he will most probably not be able "
@@ -2460,7 +2585,7 @@ msgstr ""
 "在を確認することができない場合は、それを修正するのはほぼ不可能に近くなりま"
 "す。どんな細かいことでも役立ちますので、詳細を余さず伝えてください。"
 
-#: Terminal.xml:1566(para)
+#: Terminal.xml:1310(para)
 msgid ""
 "<emphasis role=\"bold\">Specific.</emphasis> The quicker the developer can "
 "isolate the problem to a specific area, the more likely he will expediently "
@@ -2469,7 +2594,7 @@ msgstr ""
 "<emphasis role=\"bold\">具体的であること。</emphasis> 開発者が問題を特定の箇"
 "所により早く絞れる程、その修正措置を取りやすくなります。"
 
-#: Terminal.xml:1571(para)
+#: Terminal.xml:1315(para)
 msgid ""
 "In case you want to request a new feature, please make clear why you "
 "consider it a worth addition for the application. It is more likely that a "
@@ -2488,7 +2613,7 @@ msgstr ""
 "でください。特に <emphasis>Coding Style</emphasis> と題されている箇所に目を通"
 "すようにしてください。"
 
-#: Terminal.xml:1578(para)
+#: Terminal.xml:1322(para)
 msgid ""
 "Else, if you have questions about the use or installation of this software, "
 "please ask on the <ulink url=\"http://www.xfce.org/community/lists\">Xfce "
@@ -2502,11 +2627,11 @@ msgstr ""
 "net</emphasis> のチャンネル <emphasis role=\"bold\">#xfce</emphasis> に参加し"
 "た上で手助けを求めてみて下さい。"
 
-#: Terminal.xml:1585(title)
+#: Terminal.xml:1329(title)
 msgid "About @PACKAGE_NAME@"
 msgstr "@PACKAGE_NAME@ について"
 
-#: Terminal.xml:1587(para)
+#: Terminal.xml:1331(para)
 msgid ""
 "@PACKAGE_NAME@ was written by Benedikt Meurer (<email>benny@xfce.org</"
 "email>). Visit the <ulink url=\"http://www.os-cillation.com/\" type=\"http"
@@ -2516,7 +2641,7 @@ msgstr ""
 "した。より詳しい情報は <ulink url=\"http://www.os-cillation.com/\" type="
 "\"http\">os-cillation のウェブサイト</ulink>を参照してください。"
 
-#: Terminal.xml:1593(para)
+#: Terminal.xml:1337(para)
 msgid ""
 "This documentation was written by Benedikt Meurer (<email>benny@xfce.org</"
 "email>) and Andrew Conkling (<email>andrewski@fr.st</email>). The latest "
@@ -2528,7 +2653,7 @@ msgstr ""
 "type=\"http\" url=\"http://terminal.os-cillation.com/\">Terminal のウェブサイ"
 "ト</ulink>にあります。"
 
-#: Terminal.xml:1600(para)
+#: Terminal.xml:1344(para)
 msgid ""
 "This software is distributed under the terms of the GNU General Public "
 "License as published by the Free Software Foundation; either version 2 of "
@@ -2538,7 +2663,7 @@ msgstr ""
 "の条件下に配布されています。第2版あるいは、あなたが選ぶそれ以降の版のいずれか"
 "が適用されます。"
 
-#: Terminal.xml:1606(para)
+#: Terminal.xml:1350(para)
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -2554,6 +2679,93 @@ msgid "translator-credits"
 msgstr ""
 "Daichi Kawahata <daichi@xfce.org>, 2005, 2006.\n"
 "Masato Hashimoto <hashimo@xfce.org>, 2009. "
+
+#~ msgid "Xfce desktop environment"
+#~ msgstr "Xfce デスクトップ環境"
+
+#~ msgid "freedesktop.org"
+#~ msgstr "freedesktop.org"
+
+#~ msgid "D-BUS"
+#~ msgstr "D-BUS"
+
+#~ msgid "GTK+"
+#~ msgstr "GTK+"
+
+#~ msgid "GObject"
+#~ msgstr "GObject"
+
+#~ msgid ""
+#~ "High degree of maintainability by making best use of <placeholder-1/> and "
+#~ "<placeholder-2/>."
+#~ msgstr ""
+#~ "<placeholder-1/> および <placeholder-2/> を最大限に活用し、格段に保守しや"
+#~ "すくなっています。"
+
+#~ msgid ""
+#~ "When @PACKAGE_NAME@ is started from the command line or from a panel "
+#~ "launcher, several options can be specified to modify its behavior."
+#~ msgstr ""
+#~ "@PACKAGE_NAME@ をコマンドラインまたはパネルランチャから起動する場合、その"
+#~ "振る舞いを変えるためのいくつかのオプションが指定できます。"
+
+#~ msgid "--help"
+#~ msgstr "--help"
+
+#~ msgid "--version"
+#~ msgstr "--version"
+
+#~ msgid "--execute"
+#~ msgstr "--execute"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "--command"
+#~ msgstr "--command"
+
+#~ msgid "command"
+#~ msgstr "コマンド"
+
+#~ msgid "--title"
+#~ msgstr "--title"
+
+#~ msgid "--hold"
+#~ msgstr "--hold"
+
+#~ msgid "--display"
+#~ msgstr "--display"
+
+#~ msgid ""
+#~ "Open terminal window on the X screen specified by <parameter>display</"
+#~ "parameter>."
+#~ msgstr ""
+#~ "<parameter>ディスプレイ</parameter>に指定された X スクリーンでターミナルを"
+#~ "開きます。"
+
+#~ msgid "--geometry"
+#~ msgstr "--geometry"
+
+#~ msgid "--role"
+#~ msgstr "--role"
+
+#~ msgid "--startup-id"
+#~ msgstr "--startup-id"
+
+#~ msgid "id"
+#~ msgstr "ID"
+
+#~ msgid ""
+#~ "For example, say you want to open a new terminal window with two tabs in "
+#~ "it, where the first tab should run <command>mutt</command> and the second "
+#~ "tab should run <command>mc</command>, and the window should have 80 "
+#~ "columns and 40 rows, then you would use the following command to start "
+#~ "Terminal:"
+#~ msgstr ""
+#~ "例えば二つのタブがある新しいターミナルウィンドウを開きたいとしましょう、最"
+#~ "初のタブでは <command>mutt</command> を次のタブでは <command>mc</command> "
+#~ "を実行させて、ウィンドウのサイズは横幅 80、高さ 40 にするとします。その場"
+#~ "合は、以下のコマンドで Terminal を起動させます:"
 
 #~ msgid ""
 #~ "@@image: 'images/terminal-set-title.png'; "
