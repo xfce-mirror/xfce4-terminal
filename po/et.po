@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2008-10-01 07:10-0700\n"
 "Last-Translator: Kristjan Siimson <epost@ksiimson.se>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -17,281 +17,90 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Narro 0.9.2 on http://tolge.pingviin.org\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "Üldine"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Trükkida see abiteade ja väljuda"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
+msgid "display"
+msgstr "Ei kuvata"
+
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  -v, --version                       Trükkida versiooniteave ja väljuda"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
-msgstr ""
-"  --disable-server                    Mitte registreerida D-BUS\n"
-"                                      seansisõnumite edastajaga"
-
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=EKRAAN           vaikimisi kasutatav „X”-i ekraan"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=KATALOOGINIMI Määrata terminalile vaikimisi\n"
-"                                      töökataloog"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Viimati täpsustatud aknas avada uus\n"
-"                                      kaart; seda valikut saab\n"
-"                                      kasutada mitu korda"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Avada uus aken koos ühe kaardiga;\n"
-"                                      seda valikut saab kasutada mitu\n"
-"                                      korda"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr ""
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Ülejäänud käsk käivitatakse\n"
-"                                      terminalis"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>Käsk</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=SÕNE                  Selle valiku argument käivitatakse\n"
-"                                      terminalis"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Paanitud"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr "  --working-directory=KAUSTANIMI      Määrata terminalile töökataloog"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=PEALKIRI                Määrata terminalile pealkiri"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Kaarti ei hävitata kohe, kui\n"
-"                                      alamkäsk väljub"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "Tundmatu valik „%s”"
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=EKRAAN                    Viimasena täpsustatud akna jaoks\n"
-"                                      kasutatav X-i ekraan."
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMEETRIA               X-i geomeetria täpsustus (vt. X-i\n"
-"                                      käsiraamatut), võimalik korra\n"
-"                                      täpsustada igale avatavale\n"
-"                                      aknale."
 
-#: ../terminal/main.c:82
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  -role=ROLL                          Määrata roll viimati täpsustatud\n"
-"                                      aknale; kehtib ainult ühes aknas;\n"
-"                                      võimalik korra täpsustada igale\n"
-"                                      käsurealt loodavale aknale"
+msgid "string"
+msgstr "Hoiatus"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=SÕNE                   TUNNUS käivitusteatise\n"
-"                                      protokollile"
-
-#: ../terminal/main.c:88
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=SÕNE                  Selle valiku argument käivitatakse\n"
-"                                      terminalis"
+msgid "icon"
+msgstr "Tegevus"
 
-#: ../terminal/main.c:90
-#, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --fullscreen                        Viimati täpsustatud aken määrata\n"
-"                                      üleekraanirežiimi; mõjub\n"
-"                                      korraga ainult ühele aknale;\n"
-"                                      võimalik korra määrata igale\n"
-"                                      käsurealt loodavale aknale."
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  -role=ROLL                          Määrata roll viimati täpsustatud\n"
-"                                      aknale; kehtib ainult ühes aknas;\n"
-"                                      võimalik korra täpsustada igale\n"
-"                                      käsurealt loodavale aknale"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Viimati täpsustatud aknas lülitada\n"
-"                                      menüüriba sisse; kehtib ainult ühes\n"
-"                                      aknas; võimalik korra\n"
-"                                      täpsustada igale käsurealt loodavale\n"
-"                                      aknale"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Viimati täpsustatud aknas lülitada\n"
-"                                      menüüriba välja; kehtib ainult\n"
-"                                      ühes aknas; võimalik korra\n"
-"                                      täpsustada igale käsurealt\n"
-"                                      loodavale aknale"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Viimati täpsustatud aknas lülitada\n"
-"                                      aknadekoratsioonid sisse; kehtib\n"
-"                                      ainult ühes aknas; võimalik korra\n"
-"                                      täpsustada igale käsurealt\n"
-"                                      loodavale aknale"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Viimati täpsustatud aknas lülitada\n"
-"                                      aknadekoratsioonid välja; kehtib\n"
-"                                      ainult ühes aknas; võimalik korra\n"
-"                                      täpsustada igale käsurealt\n"
-"                                      loodavale aknale"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Viimati täpsustatud aknas lülitada\n"
-"                                      tööriistariba sisse; kehtib ainult\n"
-"                                      ühes aknas; võimalik korra määrata\n"
-"                                      igale käsurealt loodavale aknale"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Viimati täpsustatud aknas lülitada\n"
-"                                      tööriistariba välja; kehtib ainult\n"
-"                                      ühes aknas; võimalik korra määrata\n"
-"                                      igale käsurealt loodavale aknale"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -316,31 +125,26 @@ msgstr ""
 "\n"
 "Palun teavitage vigadest <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Terminaliteenust ei saanud registreerida: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Terminali ei saanud käivitada: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Vigane geomeetria sõne „%s”\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Kasutajatunnus ei kattu"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS sõnumisiini ühendus katkestatud, väljutakse...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Ei saanud registreerida objekti „%s”"
@@ -362,7 +166,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "Dokumentatsioonibrauseri avamine ebaõnnestus"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -371,7 +175,7 @@ msgstr ""
 "Valik „--default-display” vajab parameetrina määratletud vaikimisi X-i "
 "ekraani"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -380,13 +184,7 @@ msgstr ""
 "Valik „--default-working-directory” vajab parameetrina määratletud vaikimisi "
 "töökataloogi"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr "Valik „--sm-client-id” vajab parameetrina session-id määratlemist"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -394,14 +192,14 @@ msgid ""
 msgstr ""
 "Valik „--execute/-x” vajab ülejäänud käsureal käivitamiseks määratletud käsku"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Valik  „--command/-e” vajab parameetrina käivitatavat käsku"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -409,43 +207,43 @@ msgid ""
 msgstr ""
 "Valik „--working-directory” vajab parameetrina määratletud töökataloogi"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Valik Option „--title/-T” vajab parameetrina määratletud pealkirja"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Valik „--display” vajab parameetritena määratud X ekraani"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Valik „--geometry” vajab parameetrina määratletud aknageomeetriat"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Valik „--role” vajab parameetrina määratletud aknarolli"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Valik „--startup-id” vajab parameetrina määratud käivitustunnust"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Valik  „--command/-e” vajab parameetrina käivitatavat käsku"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Tundmatu valik „%s”"
@@ -514,7 +312,7 @@ msgstr "Üleekraanirežiim"
 msgid "Set Title"
 msgstr "Määrata pealkiri"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Lähtestada"
 
@@ -810,6 +608,11 @@ msgstr "_Lähtestada"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "_Lähtestada ja puhastada"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Lähtestada ja puhastada"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1485,6 +1288,262 @@ msgstr "Käs_u käivitamisel uuendada utmp/wtmp kirjeid"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Trükkida see abiteade ja väljuda"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -v, --version                       Trükkida versiooniteave ja väljuda"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Mitte registreerida D-BUS\n"
+#~ "                                      seansisõnumite edastajaga"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=EKRAAN           vaikimisi kasutatav „X”-i ekraan"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=KATALOOGINIMI Määrata terminalile "
+#~ "vaikimisi\n"
+#~ "                                      töökataloog"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Viimati täpsustatud aknas avada "
+#~ "uus\n"
+#~ "                                      kaart; seda valikut saab\n"
+#~ "                                      kasutada mitu korda"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Avada uus aken koos ühe kaardiga;\n"
+#~ "                                      seda valikut saab kasutada mitu\n"
+#~ "                                      korda"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Ülejäänud käsk käivitatakse\n"
+#~ "                                      terminalis"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=SÕNE                  Selle valiku argument käivitatakse\n"
+#~ "                                      terminalis"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=KAUSTANIMI      Määrata terminalile töökataloog"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=PEALKIRI                Määrata terminalile pealkiri"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Kaarti ei hävitata kohe, kui\n"
+#~ "                                      alamkäsk väljub"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=EKRAAN                    Viimasena täpsustatud akna jaoks\n"
+#~ "                                      kasutatav X-i ekraan."
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMEETRIA               X-i geomeetria täpsustus (vt. X-i\n"
+#~ "                                      käsiraamatut), võimalik korra\n"
+#~ "                                      täpsustada igale avatavale\n"
+#~ "                                      aknale."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  -role=ROLL                          Määrata roll viimati täpsustatud\n"
+#~ "                                      aknale; kehtib ainult ühes aknas;\n"
+#~ "                                      võimalik korra täpsustada igale\n"
+#~ "                                      käsurealt loodavale aknale"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=SÕNE                   TUNNUS käivitusteatise\n"
+#~ "                                      protokollile"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=SÕNE                  Selle valiku argument käivitatakse\n"
+#~ "                                      terminalis"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Viimati täpsustatud aken määrata\n"
+#~ "                                      üleekraanirežiimi; mõjub\n"
+#~ "                                      korraga ainult ühele aknale;\n"
+#~ "                                      võimalik korra määrata igale\n"
+#~ "                                      käsurealt loodavale aknale."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  -role=ROLL                          Määrata roll viimati täpsustatud\n"
+#~ "                                      aknale; kehtib ainult ühes aknas;\n"
+#~ "                                      võimalik korra täpsustada igale\n"
+#~ "                                      käsurealt loodavale aknale"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Viimati täpsustatud aknas lülitada\n"
+#~ "                                      menüüriba sisse; kehtib ainult "
+#~ "ühes\n"
+#~ "                                      aknas; võimalik korra\n"
+#~ "                                      täpsustada igale käsurealt "
+#~ "loodavale\n"
+#~ "                                      aknale"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Viimati täpsustatud aknas lülitada\n"
+#~ "                                      menüüriba välja; kehtib ainult\n"
+#~ "                                      ühes aknas; võimalik korra\n"
+#~ "                                      täpsustada igale käsurealt\n"
+#~ "                                      loodavale aknale"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Viimati täpsustatud aknas lülitada\n"
+#~ "                                      aknadekoratsioonid sisse; kehtib\n"
+#~ "                                      ainult ühes aknas; võimalik korra\n"
+#~ "                                      täpsustada igale käsurealt\n"
+#~ "                                      loodavale aknale"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Viimati täpsustatud aknas lülitada\n"
+#~ "                                      aknadekoratsioonid välja; kehtib\n"
+#~ "                                      ainult ühes aknas; võimalik korra\n"
+#~ "                                      täpsustada igale käsurealt\n"
+#~ "                                      loodavale aknale"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Viimati täpsustatud aknas lülitada\n"
+#~ "                                      tööriistariba sisse; kehtib ainult\n"
+#~ "                                      ühes aknas; võimalik korra määrata\n"
+#~ "                                      igale käsurealt loodavale aknale"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Viimati täpsustatud aknas lülitada\n"
+#~ "                                      tööriistariba välja; kehtib ainult\n"
+#~ "                                      ühes aknas; võimalik korra määrata\n"
+#~ "                                      igale käsurealt loodavale aknale"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Terminali ei saanud käivitada: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr "Valik „--sm-client-id” vajab parameetrina session-id määratlemist"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Pealkiri:</b>"

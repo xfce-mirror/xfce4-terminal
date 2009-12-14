@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2007-09-24 11:46+0900\n"
 "Last-Translator: ByungHyun Choi<byunghyun.choi@debianusers.org>\n"
 "Language-Team: Korean <translation-team-ko@lists.sourceforge.net>\n"
@@ -15,276 +15,91 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "일반"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          이 도움말을 출력하고 끝냅니다"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr "  -v, --version                       버전 정보를 출력하고 끝냅니다"
+msgid "display"
+msgstr "표시하지 않습니다"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    D-BUS, 세션 메시지 버스에 등록하지\n"
-"                                      않습니다"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=DISPLAY           기본으로 사용할 X 디스플레이를 설정합니"
-"다"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAME 터미널의 기본 작업 디레토리를 설정\n"
-"                                      합니다"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               마지막으로 지정한 창에 새 탭을\n"
-"                                      엽니다; 이런 욥션은 여러 개 주어질\n"
-"                                      수 있습니다"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            하나의 탭이 있는 새 창을 엽니다; 이런\n"
-"                                      옵션은 여러 개 주어질 수 있습니다"
 
 #: ../terminal/main.c:66
 #, fuzzy
 msgid "Tab Options"
 msgstr "탭 닫기 단추"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       이후에 나오는 명령어를 터미널에서\n"
-"                                      실행합니다"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>명령어</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=STRING                이 옵션의 인자를 터미널에서 실행\n"
-"                                      합니다"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "타이틀"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=DIRNAME         터미널의 작업 디렉토리를 설정합니다"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITLE                   터미널의 타이틀을 설정합니다"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          명령어가 끝난 후 바로 탭을 닫지\n"
-"                                      않습니다"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "모르는 옵션 \"%s\""
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=DISPLAY                   마지막으로 지정한 창에서 사용할 X\n"
-"                                      디스플레이를 설정합니다"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMETRY                 창의 크기와 위치 (\"X\" 맨페이지를\n"
-"                                      참고하세요)를 지정합니다"
 
-#: ../terminal/main.c:82
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  --role=ROLE                         마지막으로 지정한 창에 대한 역할을\n"
-"                                      설정합니다; 하나의 창에만 적용됩니다;\n"
-"                                      명령행에서 새로 만든 창에 한번만\n"
-"                                      설정할 수 있습니다"
+msgid "string"
+msgstr "주의"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=STRING                 시작 알림 프로토콜에 사용할 ID를\n"
-"                                      지정합니다"
-
-#: ../terminal/main.c:88
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=STRING                이 옵션의 인자를 터미널에서 실행\n"
-"                                      합니다"
+msgid "icon"
+msgstr "동작"
 
-#: ../terminal/main.c:90
-#, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --fullscreen                        마지막으로 지정한 창을 전체 화면\n"
-"                                      모드로 설정합니다; 하나의 창에만\n"
-"                                      적용됩니다; 명령행에서 새로 만든 창에\n"
-"                                      한번만 설정할 수 있습니다"
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --role=ROLE                         마지막으로 지정한 창에 대한 역할을\n"
-"                                      설정합니다; 하나의 창에만 적용됩니다;\n"
-"                                      명령행에서 새로 만든 창에 한번만\n"
-"                                      설정할 수 있습니다"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      마지막으로 지정한 창의 메뉴바를\n"
-"                                      보이게 합니다; 하나의 창에만 적용\n"
-"                                      됩니다; 명령행에서 새로 만든 창에\n"
-"                                      한번만 설정할 수 있습니다"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      마지막으로 지정한 창의 메뉴바를\n"
-"                                      숨깁니다; 하나의 창에만 적용됩니다;\n"
-"                                      명령행에서 새로 만든 창에 한번만\n"
-"                                      설정할 수 있습니다"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-menubar                      마지막으로 지정한 창의 테두리를\n"
-"                                      보이게 합니다; 하나의 창에만 적용\n"
-"                                      됩니다; 명령행에서 새로 만든 창에\n"
-"                                      한번만 설정할 수 있습니다"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-menubar                      마지막으로 지정한 창의 테두리를\n"
-"                                      숨깁니다; 하나의 창에만 적용됩니다;\n"
-"                                      명령행에서 새로 만든 창에 한번만\n"
-"                                      설정할 수 있습니다"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      마지막으로 지정한 창의 툴바를\n"
-"                                      보이게 합니다; 하나의 창에만 적용\n"
-"                                      됩니다; 명령행에서 새로 만든 창에\n"
-"                                      한번만 설정할 수 있습니다"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      마지막으로 지정한 창의 툴바를\n"
-"                                      숨깁니다; 하나의 창에만 적용됩니다;\n"
-"                                      명령행에서 새로 만든 창에 한번만\n"
-"                                      설정할 수 있습니다"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "터미널"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -309,31 +124,26 @@ msgstr ""
 "\n"
 "버그는 <%s>에게 연락해 주십시오.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "터미널 서비스를 등록하는데 실패했습니다: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "터미널을 실행하는데 실패했습니다: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "\"%s\"은(는) 잘못된 크기 및 위치입니다\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "User id가 맞지 않습니다"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS 메시지 버스의 연결이 끊어졌습니다, 마칩니다...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "object %s을(를) 등록하는데 실패했습니다"
@@ -355,7 +165,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "브라우져를 열지 못 했습니다."
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -363,7 +173,7 @@ msgid ""
 msgstr ""
 "옵션 \"--default-display\"은 파라미터로 기본 X 디스플레이를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -372,27 +182,21 @@ msgstr ""
 "옵션 \"--default-working-directory\"은 파리미터로 기본 작업 디렉토리를 지정해"
 "야 합니다"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr "옵션 \"--sm-client-id\"은 세션 ID 파라미터가 필요합니다"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "옵션 \"--execute/-x\"은 명령행 뒤쪽에 실행할 명령을 적어야 합니다\""
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "옵션 \"--command/-e\"은 파라미터로 실행할 명령을 명시해야 합니다"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -400,43 +204,43 @@ msgid ""
 msgstr ""
 "옵션 \"--working-directory\"은 파라미터로 작업 디렉토리를 명시해야 합니다"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "옵션 \"--title/-T\"은 파라미터로 타이틀을 명시해야 합니다"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "옵션 \"--display\"은 파라미터로 X 디스플레이를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "옵션 \"--geometry\"은 파라미터로 창 크기 및 위치를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "옵션 \"--role\"은 파라미터로 창의 역할을 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "옵션 \"--startup-id\"은 파라미터로 시작 ID를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "옵션 \"--command/-e\"은 파라미터로 실행할 명령을 명시해야 합니다"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "모르는 옵션 \"%s\""
@@ -505,7 +309,7 @@ msgstr "전체 화면"
 msgid "Set Title"
 msgstr "타이틀 설정"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "리셋"
 
@@ -795,6 +599,11 @@ msgstr "리셋(_R)"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "리셋하고 비움(_l)"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "리셋하고 비움"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1458,6 +1267,256 @@ msgstr "명령어를 실행할 때 utmp/wtmp를 기록(_U)"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          이 도움말을 출력하고 끝냅니다"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr "  -v, --version                       버전 정보를 출력하고 끝냅니다"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    D-BUS, 세션 메시지 버스에 등록하지\n"
+#~ "                                      않습니다"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=DISPLAY           기본으로 사용할 X 디스플레이를 설정"
+#~ "합니다"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=DIRNAME 터미널의 기본 작업 디레토리를 설정\n"
+#~ "                                      합니다"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               마지막으로 지정한 창에 새 탭을\n"
+#~ "                                      엽니다; 이런 욥션은 여러 개 주어질\n"
+#~ "                                      수 있습니다"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            하나의 탭이 있는 새 창을 엽니다; 이"
+#~ "런\n"
+#~ "                                      옵션은 여러 개 주어질 수 있습니다"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       이후에 나오는 명령어를 터미널에서\n"
+#~ "                                      실행합니다"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=STRING                이 옵션의 인자를 터미널에서 실행\n"
+#~ "                                      합니다"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=DIRNAME         터미널의 작업 디렉토리를 설정합니다"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=TITLE                   터미널의 타이틀을 설정합니다"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          명령어가 끝난 후 바로 탭을 닫지\n"
+#~ "                                      않습니다"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=DISPLAY                   마지막으로 지정한 창에서 사용할 X\n"
+#~ "                                      디스플레이를 설정합니다"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRY                 창의 크기와 위치 (\"X\" 맨페이지를\n"
+#~ "                                      참고하세요)를 지정합니다"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLE                         마지막으로 지정한 창에 대한 역할을\n"
+#~ "                                      설정합니다; 하나의 창에만 적용됩니"
+#~ "다;\n"
+#~ "                                      명령행에서 새로 만든 창에 한번만\n"
+#~ "                                      설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=STRING                 시작 알림 프로토콜에 사용할 ID를\n"
+#~ "                                      지정합니다"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=STRING                이 옵션의 인자를 터미널에서 실행\n"
+#~ "                                      합니다"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        마지막으로 지정한 창을 전체 화면\n"
+#~ "                                      모드로 설정합니다; 하나의 창에만\n"
+#~ "                                      적용됩니다; 명령행에서 새로 만든 창"
+#~ "에\n"
+#~ "                                      한번만 설정할 수 있습니다"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLE                         마지막으로 지정한 창에 대한 역할을\n"
+#~ "                                      설정합니다; 하나의 창에만 적용됩니"
+#~ "다;\n"
+#~ "                                      명령행에서 새로 만든 창에 한번만\n"
+#~ "                                      설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      마지막으로 지정한 창의 메뉴바를\n"
+#~ "                                      보이게 합니다; 하나의 창에만 적용\n"
+#~ "                                      됩니다; 명령행에서 새로 만든 창에\n"
+#~ "                                      한번만 설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      마지막으로 지정한 창의 메뉴바를\n"
+#~ "                                      숨깁니다; 하나의 창에만 적용됩니"
+#~ "다;\n"
+#~ "                                      명령행에서 새로 만든 창에 한번만\n"
+#~ "                                      설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-menubar                      마지막으로 지정한 창의 테두리를\n"
+#~ "                                      보이게 합니다; 하나의 창에만 적용\n"
+#~ "                                      됩니다; 명령행에서 새로 만든 창에\n"
+#~ "                                      한번만 설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-menubar                      마지막으로 지정한 창의 테두리를\n"
+#~ "                                      숨깁니다; 하나의 창에만 적용됩니"
+#~ "다;\n"
+#~ "                                      명령행에서 새로 만든 창에 한번만\n"
+#~ "                                      설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      마지막으로 지정한 창의 툴바를\n"
+#~ "                                      보이게 합니다; 하나의 창에만 적용\n"
+#~ "                                      됩니다; 명령행에서 새로 만든 창에\n"
+#~ "                                      한번만 설정할 수 있습니다"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      마지막으로 지정한 창의 툴바를\n"
+#~ "                                      숨깁니다; 하나의 창에만 적용됩니"
+#~ "다;\n"
+#~ "                                      명령행에서 새로 만든 창에 한번만\n"
+#~ "                                      설정할 수 있습니다"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "터미널을 실행하는데 실패했습니다: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr "옵션 \"--sm-client-id\"은 세션 ID 파라미터가 필요합니다"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>타이틀:</b>"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2009-08-15 15:16-0800\n"
 "Last-Translator: Auke Kok <auke-jan.h.kok@intel.com>\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
@@ -17,282 +17,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Dutch\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr "Gebruik:"
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr "OPTIE"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 msgid "General Options"
 msgstr "Algemene instellingen"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
+#, fuzzy
+msgid "display"
+msgstr "Is niet weergegeven"
+
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  -h, --help                          Deze tekst weergeven en afsluiten"
 
-#: ../terminal/main.c:51
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr ""
-"  -V, --version                       Versie-informatie weergeven en "
-"afsluiten"
-
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
-msgstr ""
-"  --disable-server                    Niet aanmelden bij D-BUS\n"
-"                                      session message bus"
-
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=DISPLAY           standaard X display"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAAM De standaard werk-directory van\n"
-"                                      terminal instellen"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr "Venster- of tabbladscheidingen"
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Een nieuwe tab openen in laatst-\n"
-"                                      opgegeven venster; kan meer dan een\n"
-"                                      keer worden gebruikt"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Een nieuw venster met een tab openen;\n"
-"                                      kan meer dan een keer worden gebruikt"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr "Tabbladopties"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       De rest van de regel uitvoeren als\n"
-"                                      commando in de terminal"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "Commando"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=STRING                Het argument van deze optie uitvoeren\n"
-"                                      als commando in de terminal"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Titel"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr "  --working-directory=DIRNAAM         De werk-directory instellen"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr ""
-"  -T, --title=TITEL                   De titel van het terminalvenster "
-"instellen"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Tabblad niet direct sluiten wanneer\n"
-"                                      wanneer het commando eindigt."
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 msgid "Window Options"
 msgstr "Vensteropties"
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=DISPLAY                   X display voor laatst-\n"
-"                                      gegeven venster"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMETRY                 X geometry (zie \"X\" documentatie),\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
 
-#: ../terminal/main.c:82
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
+#. parameter of --startup-id
+#: ../terminal/main.c:87
+#, fuzzy
+msgid "string"
+msgstr "Waarschuwing"
+
+#. parameter of --icon
+#: ../terminal/main.c:89
+#, fuzzy
+msgid "icon"
+msgstr "Actie"
+
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --role=ROL                          Rol voor laastopgegeven venster;\n"
-"                                      geldt voor één venster;\n"
-"                                      kan één keer per te openen venster\n"
-"                                      opgegeven worden"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=STRING                 ID voor startup notification\n"
-"                                      protocol"
-
-#: ../terminal/main.c:88
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -I, --icon=PICTOGRAM                Gebruik het gegeven pictogram\n"
-"                                      als pictogram voor het terminalvenster"
-
-#: ../terminal/main.c:90
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --fullscreen                        Volledig scherm instellen voor\n"
-"                                      laatst opgegeven venster;\n"
-"                                      geldt voor één venster;\n"
-"                                      kan één keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:95
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --maximize                          Maximaliseer het laatst "
-"gespecifceerde\n"
-"                                      venster. Werkt alleen op een venster; "
-"kan\n"
-"                                      eenmaal gespecificeerd worden voor "
-"elk\n"
-"                                      venster dat je vanaf de commandoregel\n"
-"                                      aanmaakt."
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Menubalk weergeven voor\n"
-"                                      laatsopgegeven venster;\n"
-"                                      geldt voor een venster;\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Menubalk verbergen voor\n"
-"                                      laatsopgegeven venster;\n"
-"                                      geldt voor een venster;\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Vensterdecoraties tonen voor\n"
-"                                      laatsopgegeven venster;\n"
-"                                      geldt voor een venster;\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Vensterdecoraties verbergen voor\n"
-"                                      laatsopgegeven venster;\n"
-"                                      geldt voor een venster;\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Werkbalken weergeven voor\n"
-"                                      laatsopgegeven venster;\n"
-"                                      geldt voor een venster;\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Werkbalken verbergen voor\n"
-"                                      laatsopgegeven venster;\n"
-"                                      geldt voor een venster;\n"
-"                                      kan een keer per te openen venster\n"
-"                                      opgegeven worden"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -317,32 +123,27 @@ msgstr ""
 "\n"
 "Rapporteer fouten aan <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan terminal service niet registreren: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Kan terminal niet starten: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ongeldige geometrie \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Ongeldige gebruikers-id"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr ""
 "Verbinding met D-BUS message bus is verbroken, bezig met afsluiten...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Kan object niet registreren: %s"
@@ -364,14 +165,14 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "De documentatie browser kan niet worden gestart"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "De optie \"--default-display\" vereist een X display als argument"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -379,63 +180,57 @@ msgid ""
 msgstr ""
 "De option \"--default-working-directory\" vereist een directory als argument"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr "De optie \"--sm-client-id\" vereist een sessie-id als argument"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "De optie \"--execute/-x\" vereist een commandoregel als argument"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "De optie \"--command/-e\" vereist een commando als argument"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "De option \"--working-directory\" vereist de directory als argument"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "De optie \"--title/-T\" vereist de titel als argument"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "De optie \"--display\" vereist een X display als argument"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "De optie \"--geometry\" vereist de venstergeomety als argument"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "De optie \"--role\" vereist een venster-rol als argument"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "De optie \"--startup-id\" vereist een id als argument"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -443,7 +238,7 @@ msgid ""
 msgstr ""
 "De optie \"--icon/-I\" vereist een pictogramnaam of bestandsnaam als argument"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Onbekende optie \"%s\""
@@ -512,7 +307,7 @@ msgstr "Volledig scherm"
 msgid "Set Title"
 msgstr "Titel instellen"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Herinitialiseren"
 
@@ -808,6 +603,11 @@ msgstr "He_rinitialiseren"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Herinitia_liseren en wissen"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Herinitialiseren en wissen"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1426,6 +1226,266 @@ msgstr "utmp/wtmp records _vernieuwen wanneer opdracht wordt uitgevoerd"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "seconden"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Deze tekst weergeven en afsluiten"
+
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -V, --version                       Versie-informatie weergeven en "
+#~ "afsluiten"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Niet aanmelden bij D-BUS\n"
+#~ "                                      session message bus"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr "  --default-display=DISPLAY           standaard X display"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=DIRNAAM De standaard werk-directory van\n"
+#~ "                                      terminal instellen"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Een nieuwe tab openen in laatst-\n"
+#~ "                                      opgegeven venster; kan meer dan "
+#~ "een\n"
+#~ "                                      keer worden gebruikt"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Een nieuw venster met een tab "
+#~ "openen;\n"
+#~ "                                      kan meer dan een keer worden "
+#~ "gebruikt"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       De rest van de regel uitvoeren als\n"
+#~ "                                      commando in de terminal"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=STRING                Het argument van deze optie "
+#~ "uitvoeren\n"
+#~ "                                      als commando in de terminal"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=DIRNAAM         De werk-directory instellen"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr ""
+#~ "  -T, --title=TITEL                   De titel van het terminalvenster "
+#~ "instellen"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Tabblad niet direct sluiten "
+#~ "wanneer\n"
+#~ "                                      wanneer het commando eindigt."
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=DISPLAY                   X display voor laatst-\n"
+#~ "                                      gegeven venster"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRY                 X geometry (zie \"X\" "
+#~ "documentatie),\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROL                          Rol voor laastopgegeven venster;\n"
+#~ "                                      geldt voor één venster;\n"
+#~ "                                      kan één keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=STRING                 ID voor startup notification\n"
+#~ "                                      protocol"
+
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -I, --icon=PICTOGRAM                Gebruik het gegeven pictogram\n"
+#~ "                                      als pictogram voor het "
+#~ "terminalvenster"
+
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Volledig scherm instellen voor\n"
+#~ "                                      laatst opgegeven venster;\n"
+#~ "                                      geldt voor één venster;\n"
+#~ "                                      kan één keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --maximize                          Maximaliseer het laatst "
+#~ "gespecifceerde\n"
+#~ "                                      venster. Werkt alleen op een "
+#~ "venster; kan\n"
+#~ "                                      eenmaal gespecificeerd worden voor "
+#~ "elk\n"
+#~ "                                      venster dat je vanaf de "
+#~ "commandoregel\n"
+#~ "                                      aanmaakt."
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Menubalk weergeven voor\n"
+#~ "                                      laatsopgegeven venster;\n"
+#~ "                                      geldt voor een venster;\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Menubalk verbergen voor\n"
+#~ "                                      laatsopgegeven venster;\n"
+#~ "                                      geldt voor een venster;\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Vensterdecoraties tonen voor\n"
+#~ "                                      laatsopgegeven venster;\n"
+#~ "                                      geldt voor een venster;\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Vensterdecoraties verbergen voor\n"
+#~ "                                      laatsopgegeven venster;\n"
+#~ "                                      geldt voor een venster;\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Werkbalken weergeven voor\n"
+#~ "                                      laatsopgegeven venster;\n"
+#~ "                                      geldt voor een venster;\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Werkbalken verbergen voor\n"
+#~ "                                      laatsopgegeven venster;\n"
+#~ "                                      geldt voor een venster;\n"
+#~ "                                      kan een keer per te openen venster\n"
+#~ "                                      opgegeven worden"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Kan terminal niet starten: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr "De optie \"--sm-client-id\" vereist een sessie-id als argument"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titel:</b>"

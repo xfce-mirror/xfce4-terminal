@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2009-10-21 13:48+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese <xfce-i18n@xfce.org>\n"
@@ -18,237 +18,88 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr "用法:"
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr "选项"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 msgid "General Options"
 msgstr "常规选项"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          打印此帮助信息并退出"
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
+#, fuzzy
+msgid "display"
+msgstr "不显示"
 
-#: ../terminal/main.c:51
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr "  -V, --version                       打印版本信息并退出"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
+msgstr ""
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
-msgstr "  --disable-server                    不向 D-BUS 会话消息总线注册"
-
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=DISPLAY           默认使用的 X 显示"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr "  --default-working-directory=DIRNAME 设置终端的默认工作目录"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr "窗口或标签分隔符"
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               打开一个新标签；此选项可以多次使用"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            打开一个新窗口，此选项可以多次使用"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr "标签选项"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr "  -x, --execute                       在终端中运行此参数后面的剩余部分"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "命令"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr "  -e, --command=STRING                在终端中运行此参数指定的命令"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "标题"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr "  --working-directory=DIRNAME         设置终端工作目录"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITLE                   设置终端标题"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr "  -H, --hold                          当子命令退出时并不立即关闭标签"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 msgid "Window Options"
 msgstr "窗口选项"
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
-msgstr "  --display=DISPLAY                   选择使用的 X 显示"
-
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --geometry=GEOMETRY                 设置 X 几何属性 (参考 \"X\" 手册)，\n"
-"                                      可对每个要打开的窗口进行设置"
 
-#: ../terminal/main.c:82
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --role=ROLE                         为最后指定的终端窗口设置角色，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开\n"
-"                                      的窗口进行设置"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr "  --startup-id=STRING                 启动通知协议的 ID"
+#. parameter of --startup-id
+#: ../terminal/main.c:87
+#, fuzzy
+msgid "string"
+msgstr "警告"
 
-#: ../terminal/main.c:88
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr "  -I, --icon=ICON                     设置终端图标"
+#. parameter of --icon
+#: ../terminal/main.c:89
+#, fuzzy
+msgid "icon"
+msgstr "行为"
 
-#: ../terminal/main.c:90
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --fullscreen                        设置最后指定的终端窗口为全屏模式，\n"
-"                                      仅对一个窗口生效；可对每个从命令行\n"
-"                                      打开的窗口进行设置"
 
-#: ../terminal/main.c:95
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --maximize                          使最后指定的终端窗口最大化，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开\n"
-"                                      的窗口进行设置"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      显示最后指定的终端窗口的菜单栏，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开的\n"
-"                                      窗口进行设置"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      隐藏最后指定的终端窗口的菜单栏，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开的\n"
-"                                      窗口进行设置"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      显示最后指定的终端窗口的边框，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开\n"
-"                                      的窗口进行设置"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      隐藏最后指定的终端窗口的边框，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开\n"
-"                                      的窗口进行设置"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     显示最后指定的终端窗口的工具栏，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开的\n"
-"                                      窗口进行设置"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     隐藏最后指定的终端窗口的工具栏，仅对\n"
-"                                      一个窗口生效；可对每个从命令行打开的\n"
-"                                      窗口进行设置"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Xfce 终端"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -273,31 +124,26 @@ msgstr ""
 "\n"
 "请提交错误报告至 <%s>。\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "无法注册终端服务: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "无法启动终端: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "无效的几何属性字符串 \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "用户 ID 不匹配"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "与 D-BUS 消息服务器的连接已断开，正在退出...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "无法注册对象 %s"
@@ -324,84 +170,78 @@ msgstr "浏览 Terminal 网站"
 msgid "Failed to open the documentation browser"
 msgstr "打开文档浏览器失败"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "选项 \"--default-display\" 需要指定默认使用的 X 显示作为其参数"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "选项 \"--default-working-directory\" 需要指定默认的工作目录作为其参数"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr "选项 \"--sm-client-id\" 需要指定 session id 作为其参数"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "选项 \"--execute/-x\" 需要在后面指定所要运行的命令"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "选项 \"--command/-e\" 需要指定所要运行的命令作为其参数"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "选项 \"--working-directory\" 需要指定工作目录作为其参数"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "选项 \"--title/-T\" 需要指定标题作为其参数"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "选项 \"--display\" 需要指定 X 显示作为其参数"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "选项 \"--geometry\" 需要指定窗口大小及位置作为其参数"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "选项 \"--role\" 需要指定窗口识别码作为其参数"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "选项 \"--startup-id\" 需要指定启动 id 作为其参数"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "选项 \"--icon/-I\" 需要指定图标名称或文件名作为其参数"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "未知选项 \"%s\""
@@ -470,7 +310,7 @@ msgstr "全屏"
 msgid "Set Title"
 msgstr "设置标题"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "重置"
 
@@ -760,6 +600,11 @@ msgstr "重置(_R)"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "重置并清除(_L)"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "重置并清除"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1365,6 +1210,224 @@ msgstr "当命令执行后更新 utmp/wtmp 记录(_U)"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "秒"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          打印此帮助信息并退出"
+
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr "  -V, --version                       打印版本信息并退出"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr "  --disable-server                    不向 D-BUS 会话消息总线注册"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr "  --default-display=DISPLAY           默认使用的 X 显示"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr "  --default-working-directory=DIRNAME 设置终端的默认工作目录"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               打开一个新标签；此选项可以多次使用"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            打开一个新窗口，此选项可以多次使用"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       在终端中运行此参数后面的剩余部分"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr "  -e, --command=STRING                在终端中运行此参数指定的命令"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=DIRNAME         设置终端工作目录"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=TITLE                   设置终端标题"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          当子命令退出时并不立即关闭标签"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr "  --display=DISPLAY                   选择使用的 X 显示"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRY                 设置 X 几何属性 (参考 \"X\" 手"
+#~ "册)，\n"
+#~ "                                      可对每个要打开的窗口进行设置"
+
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLE                         为最后指定的终端窗口设置角色，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开\n"
+#~ "                                      的窗口进行设置"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr "  --startup-id=STRING                 启动通知协议的 ID"
+
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr "  -I, --icon=ICON                     设置终端图标"
+
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        设置最后指定的终端窗口为全屏模式，\n"
+#~ "                                      仅对一个窗口生效；可对每个从命令行\n"
+#~ "                                      打开的窗口进行设置"
+
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --maximize                          使最后指定的终端窗口最大化，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开\n"
+#~ "                                      的窗口进行设置"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      显示最后指定的终端窗口的菜单栏，仅"
+#~ "对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开"
+#~ "的\n"
+#~ "                                      窗口进行设置"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      隐藏最后指定的终端窗口的菜单栏，仅"
+#~ "对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开"
+#~ "的\n"
+#~ "                                      窗口进行设置"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      显示最后指定的终端窗口的边框，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开\n"
+#~ "                                      的窗口进行设置"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      隐藏最后指定的终端窗口的边框，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开\n"
+#~ "                                      的窗口进行设置"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     显示最后指定的终端窗口的工具栏，仅"
+#~ "对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开"
+#~ "的\n"
+#~ "                                      窗口进行设置"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     隐藏最后指定的终端窗口的工具栏，仅"
+#~ "对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开"
+#~ "的\n"
+#~ "                                      窗口进行设置"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "无法启动终端: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr "选项 \"--sm-client-id\" 需要指定 session id 作为其参数"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>标题:</b>"

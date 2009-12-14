@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2009-05-30 15:03+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -17,282 +17,90 @@ msgstr ""
 "Plural-Forms: nplurals=3;plural=(n==1?0:(n==0||((n%100)>0&&(n%100)<20))?"
 "1:2)\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "Generale"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Arată acest mesaj și ieși"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr "  -v, --version                       Arată versiunea curentă și ieși"
+msgid "display"
+msgstr "Nu este afișat"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    Nu face înregistrarea cu serverul\n"
-"                                      de mesaje de sesiune D-BUS"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=ECRAN             display X implicit de folosit"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=NUMEDIR Definiți directorul de lucru implicit\n"
-"                                      al terminalului"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Deschide un nou tab în ultima ferea-\n"
-"                                      stră specificată. Se poate preciza de\n"
-"                                      mai multe ori în aceeași comandă"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Deschide o nouă fereastră cu un tab.\n"
-"                                      Se poate preciza de mai multe ori în \n"
-"                                      aceeași comandă"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr ""
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Execută restul liniei de comandă în\n"
-"                                      cadrul terminalului"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>Comandă</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=STRING                Execută argumentul pentru această\n"
-"                                      opțiune în cadrul terminalului"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Mozaic"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr "  --working-directory=NUMEDIR         Schimbă directorul de lucru"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITLU                   Schimbă titlul terminalului"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Nu închide tabul când comanda \n"
-"                                      executată în el se termină"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "Opțiune necunoscută „%s”"
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=ECRAN                     Display X de utilizat pentru ultima\n"
-"                                      fereastră specificată"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMETRIE                Specificații de geometrie X (detalii\n"
-"                                      în pagina de manual „X”), se pot spe-\n"
-"                                      cifica o dată pentru fiecare fereastră"
 
-#: ../terminal/main.c:82
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  --role=ROL                          Definește rolul pentru ultima ferea-\n"
-"                                      stră specificată. Se aplică unei sin-\n"
-"                                      gure ferestre. Se poate specifica o\n"
-"                                      dată pentru fiecare fereastră creată\n"
-"                                      în linia de comandă"
-
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=STRING                 ID pentru protocolul de notificare\n"
-"                                      la pornire"
-
-#: ../terminal/main.c:88
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=STRING                Execută argumentul pentru această\n"
-"                                      opțiune în cadrul terminalului"
+msgid "string"
+msgstr "Avertizare"
 
-#: ../terminal/main.c:90
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --fullscreen                        Deschide ultima fereastră specificată\n"
-"                                      pe tot ecranul. Se aplică doar unei\n"
-"                                      ferestre. Se poate specifica o dată\n"
-"                                      pentru fiecare fereastră creată din\n"
-"                                      linia de comandă."
+msgid "icon"
+msgstr "Acțiune"
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --role=ROL                          Definește rolul pentru ultima ferea-\n"
-"                                      stră specificată. Se aplică unei sin-\n"
-"                                      gure ferestre. Se poate specifica o\n"
-"                                      dată pentru fiecare fereastră creată\n"
-"                                      în linia de comandă"
 
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Arată bara de meniu pentru ultima\n"
-"                                      fereastră specificată. Se aplică unei\n"
-"                                      singure ferestre. Se poate specifica\n"
-"                                      o dată pentru orice fereastră creată\n"
-"                                      din linia de comandă"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Dezactivează bara de meniu pentru\n"
-"                                      ultima fereastră specificată. Se\n"
-"                                      aplică doar unei ferestre. Se poate\n"
-"                                      specifica o dată pentru fiecare\n"
-"                                      fereastră creată din linia de comandă"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Arată decorațiile ferestrelor pentru\n"
-"                                      ultima fereastră specificată. Se\n"
-"                                      aplică doar unei ferestre. Se poate\n"
-"                                      specifica o dată pentru fiecare\n"
-"                                      fereastră creată din linia de comandă"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Dezactivează decorațiile ferestrelor\n"
-"                                      pentru ultima fereastră specificată.\n"
-"                                      Se aplică unei singure ferestre. Se\n"
-"                                      poate specifica o dată pentru fiecare\n"
-"                                      fereastră creată din linia de comandă"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Activează barele de unelte pentru\n"
-"                                      ultima fereastră specificată. Se\n"
-"                                      aplică doar unei ferestre. Se poate\n"
-"                                      specifica o dată pentru fiecare\n"
-"                                      fereastră creată din linia de comandă"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Dezactivează barele de unelte pentru\n"
-"                                      ultima fereastră specificată. Se\n"
-"                                      aplică doar unei ferestre. Se poate\n"
-"                                      specifica o dată pentru fiecare\n"
-"                                      fereastră creată din linia de comandă"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -317,31 +125,26 @@ msgstr ""
 "\n"
 "Raportați problemele la <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nu se poate înregistra serviciul terminal: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Nu se poate lansa terminalul: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Date de geometrie invalide „%s”\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Nepotrivire ID utilizator"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Deconectare de la magistrala D-BUS, ieșire...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Nu se poate înregistra obiectul %s"
@@ -363,7 +166,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "Nu s-a putut deschide navigatorul documentației"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -372,7 +175,7 @@ msgstr ""
 "Opțiunea „--default-display” necesită specificarea ca parametru a unui ecran "
 "X implicit"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -381,15 +184,7 @@ msgstr ""
 "Opțiunea „--default-working-directory” necesită specificarea ca parametru a "
 "unui director de lucru implicit"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"Opțiunea „--sm-client-id” necesită specificarea unui id de sesiune ca "
-"parametru"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -398,7 +193,7 @@ msgstr ""
 "Opțiunea „--execute/-x” necesită specificarea în restul liniei de comandă a "
 "unei comenzi de executat"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -407,7 +202,7 @@ msgstr ""
 "Opțiunea „--command/-e” necesită specificarea ca parametru a comenzii de "
 "executat"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -416,18 +211,18 @@ msgstr ""
 "Opțiunea „--working-directory” necesită specificarea ca parametru a unui "
 "director de lucru"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Opțiunea „--title/-T” necesită specificarea ca parametru a titlului"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Opțiunea „--display” necesită specificarea ca parametru a ecranului X"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -436,13 +231,13 @@ msgstr ""
 "Opțiunea „--geometry” necesită specificarea ca parametru a geometriei "
 "ferestrei"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "Opțiunea „--role” necesită specificarea ca parametru a rolului ferestrei"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
@@ -450,7 +245,7 @@ msgstr ""
 "Opțiunea „--startup-id” necesită specificarea ca parametru a unui id de "
 "pornire"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -459,7 +254,7 @@ msgstr ""
 "Opțiunea „--command/-e” necesită specificarea ca parametru a comenzii de "
 "executat"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Opțiune necunoscută „%s”"
@@ -528,7 +323,7 @@ msgstr "Pe tot ecranul"
 msgid "Set Title"
 msgstr "Inițializare titlu"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Reinițializare"
 
@@ -826,6 +621,11 @@ msgstr "_Reinițializare"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Reinițializare și go_lire"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Reinițializare și golire"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1508,6 +1308,299 @@ msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "secunde"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          Arată acest mesaj și ieși"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -v, --version                       Arată versiunea curentă și ieși"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Nu face înregistrarea cu serverul\n"
+#~ "                                      de mesaje de sesiune D-BUS"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr "  --default-display=ECRAN             display X implicit de folosit"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=NUMEDIR Definiți directorul de lucru "
+#~ "implicit\n"
+#~ "                                      al terminalului"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Deschide un nou tab în ultima "
+#~ "ferea-\n"
+#~ "                                      stră specificată. Se poate preciza "
+#~ "de\n"
+#~ "                                      mai multe ori în aceeași comandă"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Deschide o nouă fereastră cu un "
+#~ "tab.\n"
+#~ "                                      Se poate preciza de mai multe ori "
+#~ "în \n"
+#~ "                                      aceeași comandă"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Execută restul liniei de comandă "
+#~ "în\n"
+#~ "                                      cadrul terminalului"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=STRING                Execută argumentul pentru această\n"
+#~ "                                      opțiune în cadrul terminalului"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=NUMEDIR         Schimbă directorul de lucru"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=TITLU                   Schimbă titlul terminalului"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Nu închide tabul când comanda \n"
+#~ "                                      executată în el se termină"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=ECRAN                     Display X de utilizat pentru "
+#~ "ultima\n"
+#~ "                                      fereastră specificată"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRIE                Specificații de geometrie X "
+#~ "(detalii\n"
+#~ "                                      în pagina de manual „X”), se pot "
+#~ "spe-\n"
+#~ "                                      cifica o dată pentru fiecare "
+#~ "fereastră"
+
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROL                          Definește rolul pentru ultima "
+#~ "ferea-\n"
+#~ "                                      stră specificată. Se aplică unei "
+#~ "sin-\n"
+#~ "                                      gure ferestre. Se poate specifica "
+#~ "o\n"
+#~ "                                      dată pentru fiecare fereastră "
+#~ "creată\n"
+#~ "                                      în linia de comandă"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=STRING                 ID pentru protocolul de notificare\n"
+#~ "                                      la pornire"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=STRING                Execută argumentul pentru această\n"
+#~ "                                      opțiune în cadrul terminalului"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Deschide ultima fereastră "
+#~ "specificată\n"
+#~ "                                      pe tot ecranul. Se aplică doar "
+#~ "unei\n"
+#~ "                                      ferestre. Se poate specifica o "
+#~ "dată\n"
+#~ "                                      pentru fiecare fereastră creată "
+#~ "din\n"
+#~ "                                      linia de comandă."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --role=ROL                          Definește rolul pentru ultima "
+#~ "ferea-\n"
+#~ "                                      stră specificată. Se aplică unei "
+#~ "sin-\n"
+#~ "                                      gure ferestre. Se poate specifica "
+#~ "o\n"
+#~ "                                      dată pentru fiecare fereastră "
+#~ "creată\n"
+#~ "                                      în linia de comandă"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Arată bara de meniu pentru ultima\n"
+#~ "                                      fereastră specificată. Se aplică "
+#~ "unei\n"
+#~ "                                      singure ferestre. Se poate "
+#~ "specifica\n"
+#~ "                                      o dată pentru orice fereastră "
+#~ "creată\n"
+#~ "                                      din linia de comandă"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Dezactivează bara de meniu pentru\n"
+#~ "                                      ultima fereastră specificată. Se\n"
+#~ "                                      aplică doar unei ferestre. Se "
+#~ "poate\n"
+#~ "                                      specifica o dată pentru fiecare\n"
+#~ "                                      fereastră creată din linia de "
+#~ "comandă"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Arată decorațiile ferestrelor "
+#~ "pentru\n"
+#~ "                                      ultima fereastră specificată. Se\n"
+#~ "                                      aplică doar unei ferestre. Se "
+#~ "poate\n"
+#~ "                                      specifica o dată pentru fiecare\n"
+#~ "                                      fereastră creată din linia de "
+#~ "comandă"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Dezactivează decorațiile "
+#~ "ferestrelor\n"
+#~ "                                      pentru ultima fereastră "
+#~ "specificată.\n"
+#~ "                                      Se aplică unei singure ferestre. "
+#~ "Se\n"
+#~ "                                      poate specifica o dată pentru "
+#~ "fiecare\n"
+#~ "                                      fereastră creată din linia de "
+#~ "comandă"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Activează barele de unelte pentru\n"
+#~ "                                      ultima fereastră specificată. Se\n"
+#~ "                                      aplică doar unei ferestre. Se "
+#~ "poate\n"
+#~ "                                      specifica o dată pentru fiecare\n"
+#~ "                                      fereastră creată din linia de "
+#~ "comandă"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Dezactivează barele de unelte "
+#~ "pentru\n"
+#~ "                                      ultima fereastră specificată. Se\n"
+#~ "                                      aplică doar unei ferestre. Se "
+#~ "poate\n"
+#~ "                                      specifica o dată pentru fiecare\n"
+#~ "                                      fereastră creată din linia de "
+#~ "comandă"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Nu se poate lansa terminalul: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "Opțiunea „--sm-client-id” necesită specificarea unui id de sesiune ca "
+#~ "parametru"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titlu:</b>"

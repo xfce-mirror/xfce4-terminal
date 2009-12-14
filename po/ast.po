@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2009-09-02 12:55+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -11,307 +11,88 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr "Usu:"
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr "OPCIÓN"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 msgid "General Options"
 msgstr "Opciones Xenerales"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Amosar esta aida y colar"
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
+#, fuzzy
+msgid "display"
+msgstr "Nun s'amuesa"
 
-#: ../terminal/main.c:51
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr "  -v, --version                       Amosar la versión y colar"
-
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    Nun rexistrase nel bus de\n"
-"                                      mensaxes de sesión D-BUS"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr "  --default-display=DISPLAY           display X predetermináu"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIR     Afita'l direutoriu de trabayu por\n"
-"                                      defeutu del terminal"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr "Ventana o Separtadores de Tabulador"
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Abre una nueva llingüeta na cabera\n"
-"                                      ventana especificada; pueden usase\n"
-"                                      más d'una d'estes opciones"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Abre una ventana conteniendo una "
-"llingüeta;\n"
-"                                      Puede apurrise más d'una d'estes\n"
-"                                      opciones"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr "Opciones de Tabulador"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Executar lo que queda de la llinia de "
-"comandos\n"
-"                                      nel terminal"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>Comandu</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=CADENA                Executar l'argumentu d'esta opción\n"
-"                                      dientro del terminal"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Títulu"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=DIR             Afitar el direutoriu de trabayu del "
-"terminal"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITLE                   Afitar el títulu del terminal"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Nun afarar darréu la llingüeta\n"
-"                                      cuando'l comandu fíu termina"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 msgid "Window Options"
 msgstr "Opciones de Ventana"
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=DISPLAY                   Display X a usar pa la cabera\n"
-"                                      ventana especificada"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMETRY                 especificación de la xeometría X (ver "
-"la\n"
-"                                      páxina de manual de \"X\"), que "
-"puede \n"
-"                                      especificase una vegada por cada "
-"ventana pa\n"
-"                                      abrir"
 
-#: ../terminal/main.c:82
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
+#. parameter of --startup-id
+#: ../terminal/main.c:87
+#, fuzzy
+msgid "string"
+msgstr "Curiáu"
+
+#. parameter of --icon
+#: ../terminal/main.c:89
+#, fuzzy
+msgid "icon"
+msgstr "Aición"
+
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --role=ROL                          Afitar el rol pa la cabera ventana\n"
-"                                      especificada; aplícase solamente a "
-"una\n"
-"                                      ventana; puede especificase una "
-"vegada\n"
-"                                      por cada ventana que cria na llinia "
-"de\n"
-"                                      comandos"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=CADENA                 ID pal protocolu de\n"
-"                                      notificación d'arranque"
-
-#: ../terminal/main.c:88
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -I, --icon=ICON                     Afita l'iconu de terminal como un "
-"iconu\n"
-"                                      nome o nome de ficheru"
-
-#: ../terminal/main.c:90
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --fullscreen                        Alluga la cabera ventana especificada\n"
-"                                      a pantalla completa; aplícase namái a "
-"una\n"
-"                                      ventana; puede especificase una vegada "
-"por\n"
-"                                      cada ventana que cree dende la llinia "
-"de\n"
-"                                      comandos."
-
-#: ../terminal/main.c:95
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --maximize                          Maximizar la cabera ventana\n"
-"                                      especificada; aplícase namái a una\n"
-"                                      ventana; puede especificase una "
-"vegada\n"
-"                                      por cada ventana que cria na llinia "
-"de\n"
-"                                      comandos"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Amuesa la barra de menú pa la cabera\n"
-"                                      ventana especificada; aplícase a namái "
-"una\n"
-"                                      ventana; puede especificase una vegada "
-"por cada\n"
-"                                      ventana creada dende la llinia de "
-"comandos"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Tapez la barra de menú pa la cabera\n"
-"                                      ventana especificada; namái aplicable "
-"a una\n"
-"                                      ventana; puede especificase pa cada\n"
-"                                      ventana que cree dende la llinia de "
-"comandos"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Amuesa les decoraciones de ventana pa\n"
-"                                      la cabera ventana especificada; "
-"aplicable namái\n"
-"                                      a una ventana; puede especificase una "
-"vegada\n"
-"                                      pa cada ventana que cria dende la "
-"llinia\n"
-"                                      de comandos"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Tapez les decoraciones de la ventana "
-"pa\n"
-"                                      la cabera ventana especificada; "
-"aplicable\n"
-"                                      a solamente una ventana; puede "
-"especificase una\n"
-"                                      vegada por cada ventana que cree dende "
-"la llinia de\n"
-"                                      comandos"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Amuesa les barres de xeres pa la "
-"cabera ventana\n"
-"                                      especificada; aplicable a solamente "
-"una ventana;\n"
-"                                      puede especificase una vegada por cada "
-"ventana que\n"
-"                                      cree dende la llinia de comandos"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Tapez les barres de ferramientes pa\n"
-"                                      la cabera ventana especificada; "
-"aplicable a solamente\n"
-"                                      una ventana; puede especificase una "
-"vegada por cada\n"
-"                                      ventana que cree dende la llinia de "
-"comandos"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -336,31 +117,26 @@ msgstr ""
 "\n"
 "Por favor, envíe los informes de fallu a <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Imposible rexistrar el serviciu del terminal: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Imposible entamar terminal: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Cadena de xeometría non válida \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Nun concasa l'id d'usuariu"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Bus de mensaxes D-BUS desconectáu. Finando...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Imposible rexistrar oxetu %s"
@@ -382,7 +158,7 @@ msgstr "Visitar páxina de Terminal"
 msgid "Failed to open the documentation browser"
 msgstr "Fallu al abrir el visor de documentación"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -391,7 +167,7 @@ msgstr ""
 "La opción  \"--default-display\" requier que que s'especifique'l display X "
 "predetermináu como parámetru"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -400,15 +176,7 @@ msgstr ""
 "La opción \"--default-working-directory\" requierque s'especifique'l "
 "direutoriu de trabayu predetermináu como parámetru"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"La opción \"--sm-client-id\" requier que s'especifique l'identificador de "
-"sesión como'l so parámetru"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -417,7 +185,7 @@ msgstr ""
 "La opción \"--execute/-x\" requier que s'especifique'l comandu a executar "
 "nel restu de la llinia de comandos"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -426,7 +194,7 @@ msgstr ""
 "La opción \"--command/-e\" requier que s'especifique'l comandu a executar "
 "como'l so parámetru"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -435,14 +203,14 @@ msgstr ""
 "La opción \"--working-directory\" requier que s'especifique'l direutoriu de "
 "trabayu como'l so parámetru"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 "La opción \"--title/-T\" requier que s'especifique'l títulu como'l so "
 "parámetru"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
@@ -450,7 +218,7 @@ msgstr ""
 "La opción \"--display\" requier que s'especifique'l display X como ún de los "
 "sos parámetros"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -459,14 +227,14 @@ msgstr ""
 "La opción \"--geometry\" requier que s'especifique la xeometría de la "
 "ventana como'l so parámetru"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "La opción \"--role\" requier que s'especifique'l rol de la ventana como'l so "
 "parámetru"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
@@ -474,7 +242,7 @@ msgstr ""
 "La opción \"--startup-id\" requier que s'especifique l'ID d'arranque como'l "
 "so parámetru"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -483,7 +251,7 @@ msgstr ""
 "Opción \"--icon/-I\" requier especificar un nome d'iconu o nome de ficheru "
 "como parámetru"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Opción desconocida \"%s\""
@@ -552,7 +320,7 @@ msgstr "Pantalla completa"
 msgid "Set Title"
 msgstr "Afitar títulu"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Reaniciar"
 
@@ -850,6 +618,11 @@ msgstr "_Resetear"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Reaniciar y L_limpiar"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Reaniciar y desaniciar"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1481,6 +1254,291 @@ msgstr "_Anovar rexistros de utmp/wtmp cuando s'executa un comandu"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "segundos"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          Amosar esta aida y colar"
+
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr "  -v, --version                       Amosar la versión y colar"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Nun rexistrase nel bus de\n"
+#~ "                                      mensaxes de sesión D-BUS"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr "  --default-display=DISPLAY           display X predetermináu"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=DIR     Afita'l direutoriu de trabayu por\n"
+#~ "                                      defeutu del terminal"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Abre una nueva llingüeta na cabera\n"
+#~ "                                      ventana especificada; pueden usase\n"
+#~ "                                      más d'una d'estes opciones"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Abre una ventana conteniendo una "
+#~ "llingüeta;\n"
+#~ "                                      Puede apurrise más d'una d'estes\n"
+#~ "                                      opciones"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Executar lo que queda de la llinia "
+#~ "de comandos\n"
+#~ "                                      nel terminal"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=CADENA                Executar l'argumentu d'esta opción\n"
+#~ "                                      dientro del terminal"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=DIR             Afitar el direutoriu de trabayu del "
+#~ "terminal"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=TITLE                   Afitar el títulu del terminal"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Nun afarar darréu la llingüeta\n"
+#~ "                                      cuando'l comandu fíu termina"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=DISPLAY                   Display X a usar pa la cabera\n"
+#~ "                                      ventana especificada"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRY                 especificación de la xeometría X "
+#~ "(ver la\n"
+#~ "                                      páxina de manual de \"X\"), que "
+#~ "puede \n"
+#~ "                                      especificase una vegada por cada "
+#~ "ventana pa\n"
+#~ "                                      abrir"
+
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROL                          Afitar el rol pa la cabera ventana\n"
+#~ "                                      especificada; aplícase solamente a "
+#~ "una\n"
+#~ "                                      ventana; puede especificase una "
+#~ "vegada\n"
+#~ "                                      por cada ventana que cria na llinia "
+#~ "de\n"
+#~ "                                      comandos"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=CADENA                 ID pal protocolu de\n"
+#~ "                                      notificación d'arranque"
+
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -I, --icon=ICON                     Afita l'iconu de terminal como un "
+#~ "iconu\n"
+#~ "                                      nome o nome de ficheru"
+
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Alluga la cabera ventana "
+#~ "especificada\n"
+#~ "                                      a pantalla completa; aplícase namái "
+#~ "a una\n"
+#~ "                                      ventana; puede especificase una "
+#~ "vegada por\n"
+#~ "                                      cada ventana que cree dende la "
+#~ "llinia de\n"
+#~ "                                      comandos."
+
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --maximize                          Maximizar la cabera ventana\n"
+#~ "                                      especificada; aplícase namái a una\n"
+#~ "                                      ventana; puede especificase una "
+#~ "vegada\n"
+#~ "                                      por cada ventana que cria na llinia "
+#~ "de\n"
+#~ "                                      comandos"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Amuesa la barra de menú pa la "
+#~ "cabera\n"
+#~ "                                      ventana especificada; aplícase a "
+#~ "namái una\n"
+#~ "                                      ventana; puede especificase una "
+#~ "vegada por cada\n"
+#~ "                                      ventana creada dende la llinia de "
+#~ "comandos"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Tapez la barra de menú pa la "
+#~ "cabera\n"
+#~ "                                      ventana especificada; namái "
+#~ "aplicable a una\n"
+#~ "                                      ventana; puede especificase pa "
+#~ "cada\n"
+#~ "                                      ventana que cree dende la llinia de "
+#~ "comandos"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Amuesa les decoraciones de ventana "
+#~ "pa\n"
+#~ "                                      la cabera ventana especificada; "
+#~ "aplicable namái\n"
+#~ "                                      a una ventana; puede especificase "
+#~ "una vegada\n"
+#~ "                                      pa cada ventana que cria dende la "
+#~ "llinia\n"
+#~ "                                      de comandos"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Tapez les decoraciones de la "
+#~ "ventana pa\n"
+#~ "                                      la cabera ventana especificada; "
+#~ "aplicable\n"
+#~ "                                      a solamente una ventana; puede "
+#~ "especificase una\n"
+#~ "                                      vegada por cada ventana que cree "
+#~ "dende la llinia de\n"
+#~ "                                      comandos"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Amuesa les barres de xeres pa la "
+#~ "cabera ventana\n"
+#~ "                                      especificada; aplicable a solamente "
+#~ "una ventana;\n"
+#~ "                                      puede especificase una vegada por "
+#~ "cada ventana que\n"
+#~ "                                      cree dende la llinia de comandos"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Tapez les barres de ferramientes "
+#~ "pa\n"
+#~ "                                      la cabera ventana especificada; "
+#~ "aplicable a solamente\n"
+#~ "                                      una ventana; puede especificase una "
+#~ "vegada por cada\n"
+#~ "                                      ventana que cree dende la llinia de "
+#~ "comandos"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Imposible entamar terminal: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "La opción \"--sm-client-id\" requier que s'especifique l'identificador de "
+#~ "sesión como'l so parámetru"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Títulu:</b>"

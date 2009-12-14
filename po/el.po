@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2009-07-25 21:25+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -17,303 +17,88 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr "Χρήση:"
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr "ΕΠΙΛΟΓΗ"
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 msgid "General Options"
 msgstr "Γενικές επιλογές"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr ""
-"  -h, --help                          Εμφανίζει αυτό το κείμενο βοήθειας"
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
+#, fuzzy
+msgid "display"
+msgstr "Δεν προβάλλεται"
 
-#: ../terminal/main.c:51
-msgid ""
-"  -V, --version                       Print version information and exit"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  -V, --version                       Εμφανίζει τις πληροφορίες της έκδοσης "
-"και τερματίζει"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
-msgstr ""
-"  --disable-server                    Όχι σύνδεση με το δίαυλο μηνυμάτων\n"
-"                                      συστήματος D-BUS"
-
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=DISPLAY           προκαθορισμένο X display προς χρήση"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAME Ορισμός του εξ ορισμού καταλόγου\n"
-"                                      εργασίας του τερματικού."
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr "Διαχωριστές παραθύρων ή καρτελών"
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Ανοίγει μια νέα καρτέλα στο "
-"προσδιορισμένο\n"
-"                                      παράθυρο· μπορεί να δοθεί παραπάνω από "
-"μια\n"
-"                                      φορές."
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Ανοίγει ένα νέο παράθυρο με μια "
-"καρτέλα.\n"
-"                                      Μπορεί να δοθεί παραπάνω από μια φορές."
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr "Επιλογές καρτέλας"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Εκτέλεση του υπολοίπου της εντολής\n"
-"                                      μέσα στο τερματικό."
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "Εντολή"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=ΕΝΤΟΛΗ                Εκτελεί το όρισμα αυτής της επιλογής\n"
-"                                      μέσα στο τερματικό"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Τίτλος"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=ΚΑΤΑΛΟΓΟΣ    Ορισμός του καταλόγου εργασίας του "
-"τερματικού."
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITLE                   Ορίζει τον τίτλο του τερματικού"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Να μην κλείσει η καρτέλλα αμέσως μετά\n"
-"                                      την έξοδο της θυγατρικής διεργασίας"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 msgid "Window Options"
 msgstr "Επιλογές παραθύρου"
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=DISPLAY                   Ποιο X display να χρησιμοποιηθεί για\n"
-"                                      το προσδιορισμένο παράθυρο"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=ΓΕΩΜΕΤΡΙΑ                Ο καθορισμός γεωμετρίας Χ (βλ. σελίδα\n"
-"                                      τεκμηρίωσης man \"X\"), μπορεί να "
-"ορισθεί\n"
-"                                      μια φορά ανά παράθυρο που ανοίγεται."
 
-#: ../terminal/main.c:82
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
+#. parameter of --startup-id
+#: ../terminal/main.c:87
+#, fuzzy
+msgid "string"
+msgstr "Προειδοποίηση"
+
+#. parameter of --icon
+#: ../terminal/main.c:89
+#, fuzzy
+msgid "icon"
+msgstr "Δράση"
+
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --role=ΡΟΛΟΣ                        Ορισμός του ρόλου για το τελευταίο\n"
-"                                      καθορισμένο παράθυρο, εφαρμόζεται μόνο "
-"σε\n"
-"                                      ένα παράθυρο και μπορεί να καθοριστεί "
-"μια\n"
-"                                      φορά για κάθε παράθυρο που "
-"δημιουργείται\n"
-"                                      από τη γραμμή εντολών."
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=ΑΝΑΓΩΡΙΣΤΙΚΟ           Αναγνωριστικό για το πρωτόκολλο\n"
-"                                      ειδοποίησης εκκίνησης"
-
-#: ../terminal/main.c:88
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -I, --icon=ΕΙΚΟΝΙΔΙΟ                     Ορισμός του εικονιδίου του "
-"τερματικού\n"
-"                                                        ως εικονίδιο "
-"ονόματος ή ονόματος αρχείου"
-
-#: ../terminal/main.c:90
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --fullscreen                        Ορισμός του τελευταίου καθορισμένου "
-"παραθύρου σε\n"
-"                                       μεγιστοποίηση, εφαρμόζεται μόνο σε "
-"ένα παράθυρο\n"
-"                                       και μπορεί να καθοριστεί μία φορά για "
-"κάθε νέο παράθυρο\n"
-"                                       που δημιουργείται από την γραμμή "
-"εντολών."
-
-#: ../terminal/main.c:95
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --maximize                          Μεγιστοποιεί το τελευταίο καθορισμένο "
-"παράθυρο\n"
-"                                      εφαρμόζεται μόνο σε ένα νέο παράθυρο "
-"και μπορεί να\n"
-"                                      καθοριστεί μία φορά για κάθε παράθυρο "
-"που δημιουργείται\n"
-"                                      από την γραμμή εντολών"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Ενεργοποιεί τη μπάρα μενού για το\n"
-"                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-"                                      σε ένα παράθυρο· μπορεί να "
-"προσδιοριστεί\n"
-"                                      για κάθε παράθυρο που δημιουργείτε\n"
-"                                      από τη γραμμή εντολών"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Αποκρύπτει τη μπάρα μενού για το\n"
-"                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-"                                      σε ένα παράθυρο· μπορεί να "
-"προσδιοριστεί\n"
-"                                      για κάθε παράθυρο που δημιουργείτε\n"
-"                                      από τη γραμμή εντολών"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Ενεργοποιεί τα περιγράμματα για το\n"
-"                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-"                                      σε ένα παράθυρο· μπορεί να "
-"προσδιοριστεί\n"
-"                                      για κάθε παράθυρο που δημιουργείτε\n"
-"                                      από τη γραμμή εντολών"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Αποκρύπτει τα περιγράμματα για το\n"
-"                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-"                                      σε ένα παράθυρο· μπορεί να "
-"προσδιοριστεί\n"
-"                                      για κάθε παράθυρο που δημιουργείτε\n"
-"                                      από τη γραμμή εντολών"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Εμφανίζει τις γραμμές εργαλείων για "
-"το\n"
-"                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-"                                      σε ένα παράθυρο· μπορεί να "
-"προσδιοριστεί\n"
-"                                      για κάθε παράθυρο που δημιουργείτε\n"
-"                                      από τη γραμμή εντολών"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Αποκρύπτει τις γραμμές εργαλείων για "
-"το\n"
-"                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-"                                      σε ένα παράθυρο· μπορεί να "
-"προσδιοριστεί\n"
-"                                      για κάθε παράθυρο που δημιουργείτε\n"
-"                                      από τη γραμμή εντολών"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Τερματικό"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -338,31 +123,26 @@ msgstr ""
 "\n"
 "Παρακαλώ αναφέρετε σφάλματα στο <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσίας τερματικού: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Δεν ήταν δυνατή η εκκίνηση του τερματικού: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Μη έγκυρο αλφαριθμητικό γεωμετρίας \"%s\"\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Το αναγνωριστικό χρήστη δεν ταιριάζει"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Ο δίαυλος μηνυμάτων D-BUS αποσυνδέθηκε, έξοδος...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Δεν ήταν δυνατή η εγγραφή του αντικειμένου %s"
@@ -384,7 +164,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "Το άνοιγμα του αναγνώστη τεκμηρίωσης απέτυχε"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -393,7 +173,7 @@ msgstr ""
 "Η επιλογή \"--default-display\" απαιτεί τον προσδιορισμό του προκαθορισμένου "
 "X display ως παράμετρο"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -402,15 +182,7 @@ msgstr ""
 "Η επιλογή \"--default-working-directory\" απαιτεί τον προσδιορισμό του "
 "προκαθορισμένου καταλόγου στον οποίο θα ξεκινήσει ως παράμετρο"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"Η επιλογή \"--sm-client-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού "
-"συνεδρίας ως παράμετρο"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -419,7 +191,7 @@ msgstr ""
 "Η επιλογή \"--execute/-x\" απαιτεί τον προσδιορισμό της εντολής που θα "
 "εκτελεστεί στο υπόλοιπο της εντολής"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -428,7 +200,7 @@ msgstr ""
 "Η επιλογή \"--command/-e\" απαιτεί τον προσδιορισμό της εντολής που θα "
 "εκτελεστεί ως παράμετρο"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -437,21 +209,21 @@ msgstr ""
 "Η επιλογή \"--working-directory\" απαιτεί τον προσδιορισμό του καταλόγου "
 "στον οποίο θα ξεκινήσει ως παράμετρο"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 "Η εντολή \"--working-directory\" απαιτεί τον προσδιορισμό του τίτλου ως "
 "παράμετρο"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
 "Η Επιλογή \"--display\" απαιτεί τον προσδιορισμό του X display ως παράμετρο"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -460,14 +232,14 @@ msgstr ""
 "Η επιλογή \"--geometry\" απαιτεί τον προσδιορισμό της γεωμετρίας του "
 "παραθύρου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "Η επιλογή \"--role\" απαιτεί τον προσδιορισμό του ρόλου του παραθύρου ως "
 "παράμετρο"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
@@ -475,7 +247,7 @@ msgstr ""
 "Η επιλογή \"--startup-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού "
 "εκκίνησης ως παράμετρο"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -484,7 +256,7 @@ msgstr ""
 "Η επιλογή \"--icon/-I\" απαιτεί τον καθορισμό ενός ονόματος εικονιδίου ή "
 "όνομα αρχείου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Άγνωστη επιλογή \"%s\""
@@ -553,7 +325,7 @@ msgstr "Πλήρης οθόνη"
 msgid "Set Title"
 msgstr "Καθορισμός τίτλου"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Αρχικοποίηση"
 
@@ -849,6 +621,11 @@ msgstr "Επανα_φορά"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Επαναφορά και Καθαρι_σμός"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Αρχικοποίηση και Καθαρισμός"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1482,6 +1259,293 @@ msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτε�
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "δευτερόλεπτα"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Εμφανίζει αυτό το κείμενο βοήθειας"
+
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -V, --version                       Εμφανίζει τις πληροφορίες της "
+#~ "έκδοσης και τερματίζει"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Όχι σύνδεση με το δίαυλο μηνυμάτων\n"
+#~ "                                      συστήματος D-BUS"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=DISPLAY           προκαθορισμένο X display προς χρήση"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=DIRNAME Ορισμός του εξ ορισμού καταλόγου\n"
+#~ "                                      εργασίας του τερματικού."
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Ανοίγει μια νέα καρτέλα στο "
+#~ "προσδιορισμένο\n"
+#~ "                                      παράθυρο· μπορεί να δοθεί παραπάνω "
+#~ "από μια\n"
+#~ "                                      φορές."
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Ανοίγει ένα νέο παράθυρο με μια "
+#~ "καρτέλα.\n"
+#~ "                                      Μπορεί να δοθεί παραπάνω από μια "
+#~ "φορές."
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Εκτέλεση του υπολοίπου της εντολής\n"
+#~ "                                      μέσα στο τερματικό."
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=ΕΝΤΟΛΗ                Εκτελεί το όρισμα αυτής της "
+#~ "επιλογής\n"
+#~ "                                      μέσα στο τερματικό"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=ΚΑΤΑΛΟΓΟΣ    Ορισμός του καταλόγου εργασίας του "
+#~ "τερματικού."
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr ""
+#~ "  -T, --title=TITLE                   Ορίζει τον τίτλο του τερματικού"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Να μην κλείσει η καρτέλλα αμέσως "
+#~ "μετά\n"
+#~ "                                      την έξοδο της θυγατρικής διεργασίας"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=DISPLAY                   Ποιο X display να χρησιμοποιηθεί "
+#~ "για\n"
+#~ "                                      το προσδιορισμένο παράθυρο"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=ΓΕΩΜΕΤΡΙΑ                Ο καθορισμός γεωμετρίας Χ (βλ. "
+#~ "σελίδα\n"
+#~ "                                      τεκμηρίωσης man \"X\"), μπορεί να "
+#~ "ορισθεί\n"
+#~ "                                      μια φορά ανά παράθυρο που ανοίγεται."
+
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ΡΟΛΟΣ                        Ορισμός του ρόλου για το τελευταίο\n"
+#~ "                                      καθορισμένο παράθυρο, εφαρμόζεται "
+#~ "μόνο σε\n"
+#~ "                                      ένα παράθυρο και μπορεί να "
+#~ "καθοριστεί μια\n"
+#~ "                                      φορά για κάθε παράθυρο που "
+#~ "δημιουργείται\n"
+#~ "                                      από τη γραμμή εντολών."
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=ΑΝΑΓΩΡΙΣΤΙΚΟ           Αναγνωριστικό για το πρωτόκολλο\n"
+#~ "                                      ειδοποίησης εκκίνησης"
+
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -I, --icon=ΕΙΚΟΝΙΔΙΟ                     Ορισμός του εικονιδίου του "
+#~ "τερματικού\n"
+#~ "                                                        ως εικονίδιο "
+#~ "ονόματος ή ονόματος αρχείου"
+
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Ορισμός του τελευταίου καθορισμένου "
+#~ "παραθύρου σε\n"
+#~ "                                       μεγιστοποίηση, εφαρμόζεται μόνο σε "
+#~ "ένα παράθυρο\n"
+#~ "                                       και μπορεί να καθοριστεί μία φορά "
+#~ "για κάθε νέο παράθυρο\n"
+#~ "                                       που δημιουργείται από την γραμμή "
+#~ "εντολών."
+
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --maximize                          Μεγιστοποιεί το τελευταίο "
+#~ "καθορισμένο παράθυρο\n"
+#~ "                                      εφαρμόζεται μόνο σε ένα νέο "
+#~ "παράθυρο και μπορεί να\n"
+#~ "                                      καθοριστεί μία φορά για κάθε "
+#~ "παράθυρο που δημιουργείται\n"
+#~ "                                      από την γραμμή εντολών"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Ενεργοποιεί τη μπάρα μενού για το\n"
+#~ "                                      προσδιορισμένο παράθυρο· ενεργεί "
+#~ "μόνο\n"
+#~ "                                      σε ένα παράθυρο· μπορεί να "
+#~ "προσδιοριστεί\n"
+#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
+#~ "                                      από τη γραμμή εντολών"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Αποκρύπτει τη μπάρα μενού για το\n"
+#~ "                                      προσδιορισμένο παράθυρο· ενεργεί "
+#~ "μόνο\n"
+#~ "                                      σε ένα παράθυρο· μπορεί να "
+#~ "προσδιοριστεί\n"
+#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
+#~ "                                      από τη γραμμή εντολών"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Ενεργοποιεί τα περιγράμματα για το\n"
+#~ "                                      προσδιορισμένο παράθυρο· ενεργεί "
+#~ "μόνο\n"
+#~ "                                      σε ένα παράθυρο· μπορεί να "
+#~ "προσδιοριστεί\n"
+#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
+#~ "                                      από τη γραμμή εντολών"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Αποκρύπτει τα περιγράμματα για το\n"
+#~ "                                      προσδιορισμένο παράθυρο· ενεργεί "
+#~ "μόνο\n"
+#~ "                                      σε ένα παράθυρο· μπορεί να "
+#~ "προσδιοριστεί\n"
+#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
+#~ "                                      από τη γραμμή εντολών"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Εμφανίζει τις γραμμές εργαλείων για "
+#~ "το\n"
+#~ "                                      προσδιορισμένο παράθυρο· ενεργεί "
+#~ "μόνο\n"
+#~ "                                      σε ένα παράθυρο· μπορεί να "
+#~ "προσδιοριστεί\n"
+#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
+#~ "                                      από τη γραμμή εντολών"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Αποκρύπτει τις γραμμές εργαλείων "
+#~ "για το\n"
+#~ "                                      προσδιορισμένο παράθυρο· ενεργεί "
+#~ "μόνο\n"
+#~ "                                      σε ένα παράθυρο· μπορεί να "
+#~ "προσδιοριστεί\n"
+#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
+#~ "                                      από τη γραμμή εντολών"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Δεν ήταν δυνατή η εκκίνηση του τερματικού: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "Η επιλογή \"--sm-client-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού "
+#~ "συνεδρίας ως παράμετρο"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Τίτλος:</b>"

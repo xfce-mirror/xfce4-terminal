@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: thunar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2008-06-30 18:50+0300\n"
 "Last-Translator: Dmitry Nikitin <luckas_fb@mail.ru>\n"
 "Language-Team: Ukrainian <xfce4-dev@xfce.org>\n"
@@ -17,295 +17,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "Загальні"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr ""
-"  -h, --help                          Вивести довідку та завершити роботу"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr ""
-"  -v, --version                       Вивести інформацію про версію та вийти"
+msgid "display"
+msgstr "Не відображається"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    Не реєструватись у менеджері\n"
-"                                      сеансів на шині D-BUS"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=ДИСПЛЕЙ           типовий X-дисплей, що використовується"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=ІМ'Я ТЕКИ Встановити типову робочу теку   \n"
-"                                      терміналу"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Відкрити нову вкладку у останньому\n"
-"                                      вказаному вікні; застосовується лише "
-"до одного\n"
-"                                      вікна; можна вказувати один раз для\n"
-"                                      кожного вікна створеного з командного "
-"рядка."
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Відкрити нове вікно з однією "
-"вкладкою;\n"
-"                                      параметр можна вказувати один раз для"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr ""
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Виконати залишок командного рядка у\n"
-"                                      терміналі"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>Команда</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=РЯДОК                 Виконати аргумент цього параметра\n"
-"                                      у терміналі"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Плиткою"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=ІМ'Я ТЕКИ  Встановити робочу теку для терміналу     "
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=ЗАГОЛОВОК Встановити заголовок вікна терміналу  "
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Не знищувати вкладку, при завершенні\n"
-"                                      виконання дочірньої команди"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "Невідомий параметр \"%s\""
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=DISPLAY                   X-дисплей що використовується для\n"
-"                                      останнього вказаного вікна"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=ГЕОМЕТРІЯ                Параметри геометрії вікна X-Window \n"
-"                                      (див сторінку посібника \"X\"), можна\n"
-"                                      вказувати один раз для кожного вікна,\n"
-"                                      що відкриватиметься."
 
-#: ../terminal/main.c:82
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  --role=РОЛЬ                         Вказати роль для останнього вказаного\n"
-"                                      вікна; застосовується лише до одного\n"
-"                                      вікна; можна вказувати один раз для\n"
-"                                      кожного вікна створеного з командного "
-"рядка."
+msgid "string"
+msgstr "Попередження"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=РЯДОК                  ідентифікатор для протоколу\n"
-"                                      сповіщення про запуск"
-
-#: ../terminal/main.c:88
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=РЯДОК                 Виконати аргумент цього параметра\n"
-"                                      у терміналі"
+msgid "icon"
+msgstr "Дія"
 
-#: ../terminal/main.c:90
-#, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --fullscreen                        Вказати роль для останнього вказаного\n"
-"                                      вікна; застосовується лише до одного\n"
-"                                      вікна; можна вказувати один раз для\n"
-"                                      кожного вікна створеного з командного\n"
-"                                      рядка."
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --role=РОЛЬ                         Вказати роль для останнього вказаного\n"
-"                                      вікна; застосовується лише до одного\n"
-"                                      вікна; можна вказувати один раз для\n"
-"                                      кожного вікна створеного з командного "
-"рядка."
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Увімкнути панель меню для останнього\n"
-"                                      вказаного вікна; застосовується лише\n"
-"                                      до одного вікна; можна вказувати раз\n"
-"                                      для кожного вікна створеного з\n"
-"                                      командного рядка."
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Вимкнути панель меню для останнього\n"
-"                                      вказаного вікна; застосовується лише\n"
-"                                      до одного вікна; можна вказувати раз\n"
-"                                      для кожного вікна створеного з\n"
-"                                      командного рядка."
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Показати заголовок та межі вікна у\n"
-"                                      останньому вікні; застосовується лише\n"
-"                                      до одного вікна; можна вказувати раз\n"
-"                                      для кожного вікна створеного з\n"
-"                                      командного рядка."
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Сховати заголовок та межі вікна у\n"
-"                                      останньому вікні; застосовується лише\n"
-"                                      до одного вікна; можна вказувати раз\n"
-"                                      для кожного вікна створеного з "
-"командного рядка."
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Показати панелі інструментів "
-"останнього\n"
-"                                      вказаного вікна; застосовується лише "
-"до\n"
-"                                      одного вікна; можна вказувати раз для\n"
-"                                      кожного вікна створеного з командного "
-"рядка."
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Сховати панелі інструментів для "
-"останнього\n"
-"                                      вказаного вікна; застосовується лише "
-"до одного\n"
-"                                      вікна; можна вказувати один раз для\n"
-"                                      кожного вікна створеного з командного "
-"рядка."
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Термінал"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -330,31 +125,26 @@ msgstr ""
 "\n"
 "Звіт про помилки для  <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Не вдається зареєструвати службу терміналу: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Неможливо запустити термінал: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Неправильний рядок геометрії \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Невідповідний ідентифікатор користувача"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Шина повідомлень D-BUS вимкнена, завершення роботи...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Не вдається зареєструвати об'єкт %s"
@@ -376,7 +166,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "Не вдається відкрити програму перегляду документації"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -385,7 +175,7 @@ msgstr ""
 "Для параметра \"--default-display\" потрібно вказати аргумент з типовим X-"
 "дисплеєм"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -394,15 +184,7 @@ msgstr ""
 "Для параметра \"--default-working-directory\" потрібно вказати аргумент з "
 "типовим робочим каталогом"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"Для параметра \"--sm-client-id\" потрібно вказати аргумент з ідентифікатором "
-"сеансу"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -410,7 +192,7 @@ msgid ""
 msgstr ""
 "Для параметра \"--execute/-x\" потрібно вказати команду, яку слід виконати"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -418,7 +200,7 @@ msgid ""
 msgstr ""
 "Для параметра \"--execute/-x\" потрібно вказати команду, яку слід виконати"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -427,19 +209,19 @@ msgstr ""
 "Для параметра \"--working-directory\" потрібно вказати аргумент з робочим "
 "каталогом"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 "Для параметра \"--title/-T\" потрібно вказати аргумент із назвою заголовка"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Для параметра \"--display\" потрібно вказати аргумент з X-дисплеєм"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -447,12 +229,12 @@ msgid ""
 msgstr ""
 "Для параметра \"--geometry\" потрібно вказати аргумент з геометрією вікна"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Для параметра \"--role\" потрібно вказати аргумент з роллю вікна"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
@@ -460,7 +242,7 @@ msgstr ""
 "Для параметра \"--startup-id\" потрібно вказати аргумент з ідентифікатором "
 "запуску"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -468,7 +250,7 @@ msgid ""
 msgstr ""
 "Для параметра \"--execute/-x\" потрібно вказати команду, яку слід виконати"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Невідомий параметр \"%s\""
@@ -537,7 +319,7 @@ msgstr "На весь екран"
 msgid "Set Title"
 msgstr "Встановлення заголовка"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Скинути"
 
@@ -835,6 +617,11 @@ msgstr "Скин_ути"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Скинути та о_чистити"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Скинути та очистити"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1509,6 +1296,302 @@ msgstr "_Оновлювати журнали utmp/wtmp під час запус�
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "секунд"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Вивести довідку та завершити роботу"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -v, --version                       Вивести інформацію про версію та "
+#~ "вийти"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Не реєструватись у менеджері\n"
+#~ "                                      сеансів на шині D-BUS"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=ДИСПЛЕЙ           типовий X-дисплей, що "
+#~ "використовується"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=ІМ'Я ТЕКИ Встановити типову робочу теку   \n"
+#~ "                                      терміналу"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Відкрити нову вкладку у останньому\n"
+#~ "                                      вказаному вікні; застосовується "
+#~ "лише до одного\n"
+#~ "                                      вікна; можна вказувати один раз "
+#~ "для\n"
+#~ "                                      кожного вікна створеного з "
+#~ "командного рядка."
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Відкрити нове вікно з однією "
+#~ "вкладкою;\n"
+#~ "                                      параметр можна вказувати один раз "
+#~ "для"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Виконати залишок командного рядка "
+#~ "у\n"
+#~ "                                      терміналі"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=РЯДОК                 Виконати аргумент цього параметра\n"
+#~ "                                      у терміналі"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=ІМ'Я ТЕКИ  Встановити робочу теку для терміналу     "
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=ЗАГОЛОВОК Встановити заголовок вікна терміналу  "
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Не знищувати вкладку, при "
+#~ "завершенні\n"
+#~ "                                      виконання дочірньої команди"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=DISPLAY                   X-дисплей що використовується для\n"
+#~ "                                      останнього вказаного вікна"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=ГЕОМЕТРІЯ                Параметри геометрії вікна X-"
+#~ "Window \n"
+#~ "                                      (див сторінку посібника \"X\"), "
+#~ "можна\n"
+#~ "                                      вказувати один раз для кожного "
+#~ "вікна,\n"
+#~ "                                      що відкриватиметься."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=РОЛЬ                         Вказати роль для останнього "
+#~ "вказаного\n"
+#~ "                                      вікна; застосовується лише до "
+#~ "одного\n"
+#~ "                                      вікна; можна вказувати один раз "
+#~ "для\n"
+#~ "                                      кожного вікна створеного з "
+#~ "командного рядка."
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=РЯДОК                  ідентифікатор для протоколу\n"
+#~ "                                      сповіщення про запуск"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=РЯДОК                 Виконати аргумент цього параметра\n"
+#~ "                                      у терміналі"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Вказати роль для останнього "
+#~ "вказаного\n"
+#~ "                                      вікна; застосовується лише до "
+#~ "одного\n"
+#~ "                                      вікна; можна вказувати один раз "
+#~ "для\n"
+#~ "                                      кожного вікна створеного з "
+#~ "командного\n"
+#~ "                                      рядка."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --role=РОЛЬ                         Вказати роль для останнього "
+#~ "вказаного\n"
+#~ "                                      вікна; застосовується лише до "
+#~ "одного\n"
+#~ "                                      вікна; можна вказувати один раз "
+#~ "для\n"
+#~ "                                      кожного вікна створеного з "
+#~ "командного рядка."
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Увімкнути панель меню для "
+#~ "останнього\n"
+#~ "                                      вказаного вікна; застосовується "
+#~ "лише\n"
+#~ "                                      до одного вікна; можна вказувати "
+#~ "раз\n"
+#~ "                                      для кожного вікна створеного з\n"
+#~ "                                      командного рядка."
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Вимкнути панель меню для "
+#~ "останнього\n"
+#~ "                                      вказаного вікна; застосовується "
+#~ "лише\n"
+#~ "                                      до одного вікна; можна вказувати "
+#~ "раз\n"
+#~ "                                      для кожного вікна створеного з\n"
+#~ "                                      командного рядка."
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Показати заголовок та межі вікна у\n"
+#~ "                                      останньому вікні; застосовується "
+#~ "лише\n"
+#~ "                                      до одного вікна; можна вказувати "
+#~ "раз\n"
+#~ "                                      для кожного вікна створеного з\n"
+#~ "                                      командного рядка."
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Сховати заголовок та межі вікна у\n"
+#~ "                                      останньому вікні; застосовується "
+#~ "лише\n"
+#~ "                                      до одного вікна; можна вказувати "
+#~ "раз\n"
+#~ "                                      для кожного вікна створеного з "
+#~ "командного рядка."
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Показати панелі інструментів "
+#~ "останнього\n"
+#~ "                                      вказаного вікна; застосовується "
+#~ "лише до\n"
+#~ "                                      одного вікна; можна вказувати раз "
+#~ "для\n"
+#~ "                                      кожного вікна створеного з "
+#~ "командного рядка."
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Сховати панелі інструментів для "
+#~ "останнього\n"
+#~ "                                      вказаного вікна; застосовується "
+#~ "лише до одного\n"
+#~ "                                      вікна; можна вказувати один раз "
+#~ "для\n"
+#~ "                                      кожного вікна створеного з "
+#~ "командного рядка."
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Неможливо запустити термінал: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "Для параметра \"--sm-client-id\" потрібно вказати аргумент з "
+#~ "ідентифікатором сеансу"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Заголовок:</b>"

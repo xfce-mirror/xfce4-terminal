@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2006-10-23 01:56+0530\n"
 "Last-Translator: yangka <yanang_ka@hotmail.com>\n"
 "Language-Team: dzongkha <pgeyleg@dit.gov.bt>\n"
@@ -19,305 +19,91 @@ msgstr ""
 "X-Poedit-Country: bhutan\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "ཡོངས་ཁྱབ།"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr ""
-"  -h, --help                          གྲོགས་རམ་འཕྲིན་དོན་འདི་དཔར་བསྐྲུན་འབད་ནི་དང་ཕྱིར་"
-"ཐོན།"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr "  -v, --version                       དཔར་བསྐྲུན་ཐོན་རིམ་བརྡ་དོན་དང་ཕྱིར་་ཐོན།"
+msgid "display"
+msgstr "བཀྲམ་བཏོན་མ་འབད་བས།"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    ཌི-བི་ཡུ་ཨེསི་དང་གཅིག་ཁར་\n"
-"                                      ལཱ་ཡུན་འཕྲིན་དོན་བརྡ་རྟགས་འགྲུལ་ལམ་ཐོ་འགོད་མ་འབད།"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=DISPLAY           ལག་ལེན་འཐབ་ནི་ལུ་སྔོན་སྒྲིག་ཨེགསི་བཀྲམ་བཏོན་འབད།"
-
-#: ../terminal/main.c:55
-#, fuzzy
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=DIRNAME སྔོན་སྒྲིག་ཊར་མི་ནཱལ་ཚུ་ལཱ་འབད་མི\n"
-"                                      སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདི་ནང་\n"
-"                                      མཆོང་ལྡེ་གསརཔ་ཅིག་ཁ་ཕྱེ་སྦེ་གདམ་ཁ་དེ་ཚུ་ལས་\n"
-"                                      ཧེང་བཀེལ་བྱིནམ་ཨིན།"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            ཝིནཌོ་གསརཔ་ཅིག་ནང་ན་མཆོང་ལྡེ་གཅིག་ཡོད་མི་ཁ་ཕྱེ\n"
-"                                      གདམ་ཁ་དེ་ཚུ་གཅིག་ལས་མངམ་\n"
-"                                      བྱིནམ་ཨིན།"
 
 #: ../terminal/main.c:66
 #, fuzzy
 msgid "Tab Options"
 msgstr "མཆོང་ལྡེ་གནས་ས།"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       ཊར་མི་ནཱལ་འདིའི་ནང་་གི་གྱལ་བརྡ་བཀོད་འདི་\n"
-"                                      གི་ལྷག་ལུས་མི་འདི་ལག་ལེན་འཐབ།"
-
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=STRING                ཊར་མི་ནཱལ་འདིའི་ནང་གི་གདམ་ཁ་འདི་ལུ་\n"
-"                                      སྒྲུབ་རྟགས་འདི་ལག་ལེན་འཐབ།"
-
-#: ../terminal/main.c:71
+#. parameter of --command
+#: ../terminal/main.c:68
 #, fuzzy
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=DIRNAME         ཊར་མི་ནཱལ་ཚུ་གི་ལཱ་འབད་བའི་སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
+msgid "command"
+msgstr "<b>བརྡ་བཀོད</b>"
 
-#: ../terminal/main.c:72
+#. parameter of --title
+#: ../terminal/main.c:70
 #, fuzzy
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITLE                   ཊར་མི་ནཱལ་ཚུ་གི་མགོ་མིང་འདི་གཞི་སྒྲིག་འབད།"
+msgid "title"
+msgstr "མགོ་མིང་།"
 
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          ལག་ཆས་འདི་གིས་ཕྱིར་ཐོན་བརྡ་བཀོད་འབད་བའི་སྐབས་\n"
-"                                      མཆོང་ལྡེ་འདི་དེ་འཕྲལ་ལས་རྩ་མེད་མ་གཏང་།"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "མ་ཤེས་པའི་གདམ་ཁ \"%s\""
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=DISPLAY                   མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདིའི་དོན་ལུ་\n"
-"                                      ལག་ལེན་འཐབ་ནི་ལུ་ཨེགསི་བཀྲམ་བཏོན་འབད།"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMETRY                 ཨེགསི་ཐིག་རྩིས་གསལ་བཀོད་ (བལྟ་ཡང་ \"X\"\n"
-"                                      མཱན་ཤོག་ལེབ) འདི་ཁ་ཕྱེ་ནི་ཨིན་མི་ཝིནཌོ་\n"
-"                                      ཚར་རེ་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:82
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  --role=ROLE                         མཇུག་གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་དོན་ལུ་ལས་འགན་"
-"གཞི་སྒྲིག་འདི་གིས་\n"
-"                                      ཝིནཌོ་གཅིག་ལུ་རྐྱངམ་ཅིག་འཇུག་སྤྱོད་འབད་མི་\n"
-"                                      འདི་ཁྱོད་ཀྱིས་བརྡ་བཀོད་གྱལ་ནང་ལས་གསར་བསྐྲུན་འབད་མི་"
-"ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
-"                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+msgid "string"
+msgstr "ཉེན་བརྡ།"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-"  --startup-id=STRING                 གནད་སྤེལ་ལམ་ལུགས་བརྡ་བསྐུལ་འགོ་བཙུགས་དོན་ལུ་\n"
-"                                      ཨའི་ཌི།"
-
-#: ../terminal/main.c:88
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=STRING                ཊར་མི་ནཱལ་འདིའི་ནང་གི་གདམ་ཁ་འདི་ལུ་\n"
-"                                      སྒྲུབ་རྟགས་འདི་ལག་ལེན་འཐབ།"
+msgid "icon"
+msgstr "བྱ་བ།"
 
-#: ../terminal/main.c:90
-#, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --fullscreen                        མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་འདི་གསལ་གཞི་གངམ་"
-"ཐབས་ལམ་ནང་གཞི་སྒྲིག་འབད་མི་\n"
-"                                      འདི་ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་འབད་མི་\n"
-"                                      བརྡ་བསྐུལ་གྱལ་ལས་ཁྱོད་ཀྱིས་གསར་བསྐྲུན་\n"
-"                                      འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
-"                                      ཚར་གཅིག་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --role=ROLE                         མཇུག་གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་དོན་ལུ་ལས་འགན་"
-"གཞི་སྒྲིག་འདི་གིས་\n"
-"                                      ཝིནཌོ་གཅིག་ལུ་རྐྱངམ་ཅིག་འཇུག་སྤྱོད་འབད་མི་\n"
-"                                      འདི་ཁྱོད་ཀྱིས་བརྡ་བཀོད་གྱལ་ནང་ལས་གསར་བསྐྲུན་འབད་མི་"
-"ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
-"                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་དཀར་ཆག་གུ་སྐོར་"
-"ཐེངས་\n"
-"                                      འབད་མི་ཝིནཌོ་གཅིག་ལུ་རྐྱངམ་ཅིག་འཇུག་སྤྱོད་འབདཝ་ད་\n"
-"                                      ཁྱོད་ཀྱིས་གསར་བསྐྲུན་འབད་མི་བརྡ་བསྐུལ་གྱལ་འདི་ལས་\n"
-"                                    ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་རྐྱངམ་ཅིག\n"
-"                                   གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་དཀར་ཆག་ཕྲ་རིང་"
-"འདི་ཊརནི་ཨོཕ་\n"
-"                                      ཝིནདོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་འབདཝ་ད་\n"
-"                                      ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་འདི་ལས་གསར་བསྐྲུན་འབད་མི་\n"
-"                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
-"                                     གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་ཝིནཌོ་མཛེས་བཀོད་"
-"ཚུ་\n"
-"                                      གུ་ཊརནི་འབད ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་\n"
-"                                      འཇུག་སྤྱོད་འབདཝ་ད་ འདི་ཡང་ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་"
-"ལས\n"
-"                                      གསར་བསྐྲུན་འབད་མི་ཝིནཌོ་དོན་ལུ་ཚར་གཅིག\n"
-"                                     གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོདོན་ལུཝིནདོ་མཛེས་བཀོད་"
-"ཚུ\n"
-"                                      ཊརནི་ཨོཕ་ ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་འབདཝ་"
-"ད་\n"
-"                                      འདི་ཡང་་ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་ལས་གསར་བསྐྲུན་འབད་"
-"མི་\n"
-"                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་\n"
-"                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་ལག་ཆས་ཕྲ་རིང་"
-"ཚུ་གུ་\n"
-"                                      ཊརནི་ཨོན་འབད་ ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་"
-"འབདཝ་\n"
-"                                     ད་ ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་འདི་ལས་གསར་བསྐྲུན་འབད་མི\n"
-"                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་གསལ་\n"
-"                                      བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་ལག་ཆས་ཕྲ་རིང་"
-"ཚུ་\n"
-"                                      ཊརནི་ཨོཕ་འབད ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་"
-"འབདཝ་ད་\n"
-"                                      འདི་ཡང་ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་ལས་གསར་བསྐྲུན\n"
-"                                      འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་\n"
-"                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "ཊར་མི་ནཱལ།"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, fuzzy, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -342,31 +128,26 @@ msgstr ""
 "\n"
 "Please report bugs to <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ཊར་མི་ནཱལ་ཞབས་ཏོག་ཐོ་བཀོད་འབད་མི་ཚུགསཔ: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "ཊར་མི་ནཱལ་གསར་བཙུགས་འབད་མི་ཚུགསཔ: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ནུས་མེད་ཐིག་རྩིས་ཡིག་རྒྱུན། \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "ལག་ལེན་པ་གི་ཨའི་ཌི་མཐུན་སྒྲིག་མེདཔ།"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "ཌི-བསི་འཕྲིན་དོན་བརྡ་རྟགས་འགྲུལ་ལམ་མཐུད་ལམ་བཏོག་ཡོད་མི་ ཕྱིར་ཐོན་དོ...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "དངོས་པོ་ཐོ་བཀོད་འབད་མི་ཚུགསཔ %s"
@@ -388,7 +169,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "ཡིག་ཐོག་བཀོད་པ་བརའུ་ཟར་ཁ་ཕྱེ་ནི་ལུ་འཐུས་ཤོར་འབྱུང་ཡོདཔ།"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -397,7 +178,7 @@ msgstr ""
 "གདམ་ཁ་ \"--default-display\" ཚད་བཟུང་སྦེ་སྔོན་སྒྲིག་ཨེགསི་བཀྲམ་བཏོན་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་"
 "ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -406,15 +187,7 @@ msgstr ""
 "གདམ་ཁ \"--default-working-directory\" ཚཐ་བཟུང་སྦེ་སྔོན་སྒྲིག་ལཱ་འབད་མི་སྣོད་ཐོ་གསལ་བཀོད་"
 "འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"གདམ་ཁ་ \"--sm-client-id\" འདི་ཚད་བཟུང་སྦེ་ལཱ་ཡུན་ཨའི་ཌི་གསལ་བཀོད་འབད་བའི་བསྒང་དགོས་མཁོ་"
-"ཡོདཔ་ཨིན།"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -423,7 +196,7 @@ msgstr ""
 "གདམ་ཁ་ \"--execute/-x\" འདི་བརྡ་བསྐུལ་གྱལ་གྱི་ངལ་འཚོ་གུ་གཡོག་བསྐུལ་མི་བརྡ་བསྐུལ་འདི་གསལ་བཀོད་"
 "འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -431,7 +204,7 @@ msgid ""
 msgstr ""
 "གདམ་ཁ་ \"--command/-e\" ཚད་བཟུང་སྦེ་གཡོག་བཀོལ་མི་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -440,37 +213,37 @@ msgstr ""
 "གདམ་ཁ་ \"--working-directory\" ཚད་བཟུང་སྦེ་ལཱ་འབད་བའི་བསྒང་སྣོད་ཐོ་གསལ་བཀོད་འབད་མི་འདི་"
 "དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "གདམ་ཁ \"--title/-T\" ཚད་བཟུང་སྦེ་མགོ་མིང་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "གདམ་ཁ་ \"--display\" ཚད་བཟུང་སྦེ་ཨེགསི་བཀྲམ་བཏོན་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "གདམ་ཁ་ \"--geometry\" ཚད་བཟུང་སྦེ་ཝིནཌོ་ཐིག་རྩིས་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "གདམ་ཁ \"--role\" ཚད་བཟུང་སྦེ་ཝིནཌོ་ལས་འགན་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "གདམ་ཁ་ \"--startup-id\" ཚད་བཟུང་སྦེ་འགོ་བཙུགས་ཨའི་ཌི་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -478,7 +251,7 @@ msgid ""
 msgstr ""
 "གདམ་ཁ་ \"--command/-e\" ཚད་བཟུང་སྦེ་གཡོག་བཀོལ་མི་གསལ་བཀོད་འབད་མི་དགོས་མཁོ་ཡོདཔ་ཨིན།"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "མ་ཤེས་པའི་གདམ་ཁ \"%s\""
@@ -547,7 +320,7 @@ msgstr "གསལ་གཞི་གངམ།"
 msgid "Set Title"
 msgstr "མགོ་མིང་གཞི་སྒྲིག་འབད།"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "སླར་སྒྲིག"
 
@@ -842,6 +615,11 @@ msgstr "སླར་སྒྲིག(_R)"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "སླར་སྒྲིག་དང་བསལ།(_l)"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "སླར་སྒྲིག་དང་བསལ།"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1516,6 +1294,291 @@ msgstr "བརྡ་བསྐུལ་འི་གཞི་བཙུགས་འ
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          གྲོགས་རམ་འཕྲིན་དོན་འདི་དཔར་བསྐྲུན་འབད་ནི་དང་"
+#~ "ཕྱིར་ཐོན།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -v, --version                       དཔར་བསྐྲུན་ཐོན་རིམ་བརྡ་དོན་དང་ཕྱིར་་ཐོན།"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    ཌི-བི་ཡུ་ཨེསི་དང་གཅིག་ཁར་\n"
+#~ "                                      ལཱ་ཡུན་འཕྲིན་དོན་བརྡ་རྟགས་འགྲུལ་ལམ་ཐོ་འགོད་མ་"
+#~ "འབད།"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=DISPLAY           ལག་ལེན་འཐབ་ནི་ལུ་སྔོན་སྒྲིག་ཨེགསི་བཀྲམ་བཏོན་འབད།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=DIRNAME སྔོན་སྒྲིག་ཊར་མི་ནཱལ་ཚུ་ལཱ་འབད་མི\n"
+#~ "                                      སྣོད་ཐོ་འདི་གཞི་སྒྲིག་འབད།"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདི་ནང་\n"
+#~ "                                      མཆོང་ལྡེ་གསརཔ་ཅིག་ཁ་ཕྱེ་སྦེ་གདམ་ཁ་དེ་ཚུ་ལས་\n"
+#~ "                                      ཧེང་བཀེལ་བྱིནམ་ཨིན།"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            ཝིནཌོ་གསརཔ་ཅིག་ནང་ན་མཆོང་ལྡེ་གཅིག་ཡོད་མི་ཁ་"
+#~ "ཕྱེ\n"
+#~ "                                      གདམ་ཁ་དེ་ཚུ་གཅིག་ལས་མངམ་\n"
+#~ "                                      བྱིནམ་ཨིན།"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       ཊར་མི་ནཱལ་འདིའི་ནང་་གི་གྱལ་བརྡ་བཀོད་འདི་\n"
+#~ "                                      གི་ལྷག་ལུས་མི་འདི་ལག་ལེན་འཐབ།"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=STRING                ཊར་མི་ནཱལ་འདིའི་ནང་གི་གདམ་ཁ་འདི་ལུ་\n"
+#~ "                                      སྒྲུབ་རྟགས་འདི་ལག་ལེན་འཐབ།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=DIRNAME         ཊར་མི་ནཱལ་ཚུ་གི་ལཱ་འབད་བའི་སྣོད་ཐོ་འདི་གཞི་སྒྲིག་"
+#~ "འབད།"
+
+#, fuzzy
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr ""
+#~ "  -T, --title=TITLE                   ཊར་མི་ནཱལ་ཚུ་གི་མགོ་མིང་འདི་གཞི་སྒྲིག་འབད།"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          ལག་ཆས་འདི་གིས་ཕྱིར་ཐོན་བརྡ་བཀོད་འབད་བའི་"
+#~ "སྐབས་\n"
+#~ "                                      མཆོང་ལྡེ་འདི་དེ་འཕྲལ་ལས་རྩ་མེད་མ་གཏང་།"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=DISPLAY                   མཇུག་-གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་འདིའི་དོན་"
+#~ "ལུ་\n"
+#~ "                                      ལག་ལེན་འཐབ་ནི་ལུ་ཨེགསི་བཀྲམ་བཏོན་འབད།"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRY                 ཨེགསི་ཐིག་རྩིས་གསལ་བཀོད་ (བལྟ་ཡང་ \"X\"\n"
+#~ "                                      མཱན་ཤོག་ལེབ) འདི་ཁ་ཕྱེ་ནི་ཨིན་མི་ཝིནཌོ་\n"
+#~ "                                      ཚར་རེ་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLE                         མཇུག་གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་དོན་ལུ་ལས་"
+#~ "འགན་གཞི་སྒྲིག་འདི་གིས་\n"
+#~ "                                      ཝིནཌོ་གཅིག་ལུ་རྐྱངམ་ཅིག་འཇུག་སྤྱོད་འབད་མི་\n"
+#~ "                                      འདི་ཁྱོད་ཀྱིས་བརྡ་བཀོད་གྱལ་ནང་ལས་གསར་བསྐྲུན་"
+#~ "འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
+#~ "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=STRING                 གནད་སྤེལ་ལམ་ལུགས་བརྡ་བསྐུལ་འགོ་བཙུགས་དོན་ལུ་\n"
+#~ "                                      ཨའི་ཌི།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=STRING                ཊར་མི་ནཱལ་འདིའི་ནང་གི་གདམ་ཁ་འདི་ལུ་\n"
+#~ "                                      སྒྲུབ་རྟགས་འདི་ལག་ལེན་འཐབ།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་འདི་གསལ་གཞི་གངམ་"
+#~ "ཐབས་ལམ་ནང་གཞི་སྒྲིག་འབད་མི་\n"
+#~ "                                      འདི་ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་འབད་མི་\n"
+#~ "                                      བརྡ་བསྐུལ་གྱལ་ལས་ཁྱོད་ཀྱིས་གསར་བསྐྲུན་\n"
+#~ "                                      འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
+#~ "                                      ཚར་གཅིག་གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLE                         མཇུག་གསལ་བཀོད་འབད་ཡོད་མི་ཝིནཌོ་དོན་ལུ་ལས་"
+#~ "འགན་གཞི་སྒྲིག་འདི་གིས་\n"
+#~ "                                      ཝིནཌོ་གཅིག་ལུ་རྐྱངམ་ཅིག་འཇུག་སྤྱོད་འབད་མི་\n"
+#~ "                                      འདི་ཁྱོད་ཀྱིས་བརྡ་བཀོད་གྱལ་ནང་ལས་གསར་བསྐྲུན་"
+#~ "འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
+#~ "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་དཀར་ཆག་གུ་"
+#~ "སྐོར་ཐེངས་\n"
+#~ "                                      འབད་མི་ཝིནཌོ་གཅིག་ལུ་རྐྱངམ་ཅིག་འཇུག་སྤྱོད་འབདཝ་"
+#~ "ད་\n"
+#~ "                                      ཁྱོད་ཀྱིས་གསར་བསྐྲུན་འབད་མི་བརྡ་བསྐུལ་གྱལ་འདི་"
+#~ "ལས་\n"
+#~ "                                    ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་རྐྱངམ་ཅིག\n"
+#~ "                                   གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་དཀར་ཆག་ཕྲ་"
+#~ "རིང་འདི་ཊརནི་ཨོཕ་\n"
+#~ "                                      ཝིནདོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་འབདཝ་ད་\n"
+#~ "                                      ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་འདི་ལས་གསར་བསྐྲུན་འབད་"
+#~ "མི་\n"
+#~ "                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་\n"
+#~ "                                     གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་ཝིནཌོ་མཛེས་"
+#~ "བཀོད་ཚུ་\n"
+#~ "                                      གུ་ཊརནི་འབད ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་\n"
+#~ "                                      འཇུག་སྤྱོད་འབདཝ་ད་ འདི་ཡང་ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་"
+#~ "གྱལ་ལས\n"
+#~ "                                      གསར་བསྐྲུན་འབད་མི་ཝིནཌོ་དོན་ལུ་ཚར་གཅིག\n"
+#~ "                                     གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོདོན་ལུཝིནདོ་མཛེས་"
+#~ "བཀོད་ཚུ\n"
+#~ "                                      ཊརནི་ཨོཕ་ ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་"
+#~ "འབདཝ་ད་\n"
+#~ "                                      འདི་ཡང་་ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་ལས་གསར་བསྐྲུན་"
+#~ "འབད་མི་\n"
+#~ "                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་\n"
+#~ "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་ལག་ཆས་ཕྲ་"
+#~ "རིང་ཚུ་གུ་\n"
+#~ "                                      ཊརནི་ཨོན་འབད་ ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་"
+#~ "འབདཝ་\n"
+#~ "                                     ད་ ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་འདི་ལས་གསར་བསྐྲུན་འབད་"
+#~ "མི\n"
+#~ "                                      ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་གསལ་\n"
+#~ "                                      བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     མཇུག་གསལ་བཀོད་འབད་མི་ཝིནཌོ་དོན་ལུ་ལག་ཆས་ཕྲ་"
+#~ "རིང་ཚུ་\n"
+#~ "                                      ཊརནི་ཨོཕ་འབད ཝིནཌོ་གཅིག་རྐྱངམ་ཅིག་ལུ་འཇུག་སྤྱོད་"
+#~ "འབདཝ་ད་\n"
+#~ "                                      འདི་ཡང་ཁྱོད་ཀྱིས་བརྡ་བསྐུལ་གྱལ་ལས་གསར་བསྐྲུན\n"
+#~ "                                      འབད་མི་ཝིནཌོ་རེ་རེ་དོན་ལུ་ཚར་གཅིག་\n"
+#~ "                                      གསལ་བཀོད་འབད་བཏུབ་ཨིན།"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "ཊར་མི་ནཱལ་གསར་བཙུགས་འབད་མི་ཚུགསཔ: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "གདམ་ཁ་ \"--sm-client-id\" འདི་ཚད་བཟུང་སྦེ་ལཱ་ཡུན་ཨའི་ཌི་གསལ་བཀོད་འབད་བའི་བསྒང་དགོས་མཁོ་"
+#~ "ཡོདཔ་ཨིན།"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>མགོ་མིང་:</b>"

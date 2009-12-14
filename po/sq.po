@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2008-11-04 22:24+0200\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian <translation-team-sq@lists.sourceforge.net>\n"
@@ -14,290 +14,90 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "Të përgjithshme"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr "  -h, --help                          Shtyp këtë mesazh ndihme dhe dil"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr "  -v, --version                       Shtyp të dhëna versioni dhe dil"
+msgid "display"
+msgstr "S'paraqitet"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    Mos u regjistro me bus mesazhesh\n"
-"                                       sesioni D-BUS-in"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=EKRAN           ekran X parazgjedhje për t'u përdorur"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=EMËR DREJTORIE  cakton drejtori parazgjedhje\n"
-"                                      për terminale punues"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-"  --tab                               Hap skedë të re në dritaren\n"
-"                                      e treguar së fundi; mund të jepet\n"
-"                                      më shumë se një nga këto mundësi"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-"  --window                            Hap një dritare të re që përmban "
-"vetëm\n"
-"                                       një skedë; mund të jepet më shumë se\n"
-"                                       një nga këto mundësi"
 
 #: ../terminal/main.c:66
 msgid "Tab Options"
 msgstr ""
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Përmbush ç'mbetet prej rreshtit\n"
-"                                       të urdhrit brenda terminalit"
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>Urdhër</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=VARG                Përmbush argumentin për këtë\n"
-"                                      mundësi brenda terminalit"
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Tjegullëzuar"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr ""
-"  --working-directory=EMËR DREJTORIE         Caktoni drejtorinë e "
-"terminaleve punues"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITULL                   Caktoni titull terminalesh"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Mos asgjëso skedën menjëherë\n"
-"                                      pas daljes së urdhrit pjellë"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "Mundësi e panjohur \"%s\""
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-"  --display=EKRAN                   ekran X për përdorim për dritaren\n"
-"                                      e fundit të treguar"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GJEOMETRI                 Përcaktime gjeometrie për X-in "
-"(shihni\n"
-"                                                faqe man për \"X\"), mund të "
-"përcaktohet\n"
-"                                               një herë për çdo dritare që "
-"do të hapet"
 
-#: ../terminal/main.c:82
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  --role=ROL                         Caktoni rolin e dritares së treguar\n"
-"                                      së fundmi; zbatohet vetëm mbi një "
-"dritare;\n"
-"                                      mund të tregohet një herë për çdo "
-"dritare\n"
-"                                      që krijoni prej rreshti urdhrash"
+msgid "string"
+msgstr "Kujdes"
 
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr "  --startup-id=VARG                 ID për protokoll njoftimi nisjeje"
-
-#: ../terminal/main.c:88
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=VARG                Përmbush argumentin për këtë\n"
-"                                      mundësi brenda terminalit"
+msgid "icon"
+msgstr "Veprim"
 
-#: ../terminal/main.c:90
-#, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --fullscreen                     Cakton për dritaren e fundit të treguar\n"
-"                                      mënyrën tërë ekrani; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash."
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
-msgstr ""
-"  --role=ROL                         Caktoni rolin e dritares së treguar\n"
-"                                      së fundmi; zbatohet vetëm mbi një "
-"dritare;\n"
-"                                      mund të tregohet një herë për çdo "
-"dritare\n"
-"                                      që krijoni prej rreshti urdhrash"
-
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar               Shfaq shtyllë menuje për dritaren\n"
-"                                      e fundit të treguar; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar               Fsheh shtyllë menuje për dritaren\n"
-"                                      e fundit të treguar; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders               Shfaq zbukurime dritaresh për dritaren\n"
-"                                      e fundit të treguar; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                 Fsheh zbukurime dritaresh për dritaren\n"
-"                                      e fundit të treguar; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                          Shfaq panelet për dritaren\n"
-"                                      e fundit të treguar; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Fsheh panelet për dritaren\n"
-"                                      e fundit të treguar; zbatohet vetëm\n"
-"                                      mbi një dritare; mund të përcaktohet\n"
-"                                      një herë për çdo dritare që krijoni\n"
-"                                      prej rreshti urdhrash"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -322,31 +122,26 @@ msgstr ""
 "\n"
 "Ju lutem njoftoni të metat te <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "I pazoti të regjistrojë shërbim terminali: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "I pazoti të nisë terminalin: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Varg gjeometrie i pavlefshëm \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Mospërputhje id-je përdoruesi"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Bus mesazhesh D-BUS i shkëputur, po dilet...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "I pazoti të regjistrojë objektin %s"
@@ -368,7 +163,7 @@ msgstr ""
 msgid "Failed to open the documentation browser"
 msgstr "Dështoi në hapjen e shfletuesit të dokumentacionit"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -377,7 +172,7 @@ msgstr ""
 "Mundësia \"--default-display\" lyp tregimin e ekranit X parazgjedhje si "
 "parametër të vet"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -386,15 +181,7 @@ msgstr ""
 "Mundësia \"--command/-e\" lyp tregimin e drejtorisë parazgjedhje të punimit "
 "si parametër të vet"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"Mundësia \"--sm-client-id\" lyp tregimin e id-së së sesionit si parametër të "
-"vet"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -403,7 +190,7 @@ msgstr ""
 "Mundësia \"--execute/-x\" lyp tregimin e urdhërit për xhirim te pjesa e "
 "mbetur për rreshtin e urdhrit"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -412,7 +199,7 @@ msgstr ""
 "Mundësia \"--command/-e\" lyp tregimin e urdhërit për xhirim si parametër të "
 "vet"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -421,18 +208,18 @@ msgstr ""
 "Mundësia \"--working-directory\" lyp tregimin e drejtorisë së punimit si "
 "parametër të vet"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Mundësia \"--title/-T\" lyp tregimin e titullit si parametër të vet"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Mundësia \"--display\" lyp tregimin e ekranit X si parametër të vet"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -441,20 +228,20 @@ msgstr ""
 "Mundësia \"--geometry\" lyp tregimin e gjeometrisë së dritares si parametër "
 "të vet"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "Mundësia \"--role\" lyp tregimin e rolit të dritares si parametër të vet"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "Mundësia \"--startup-id\" lyp tregimin e id-së së nisjes si parametër të vet"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -463,7 +250,7 @@ msgstr ""
 "Mundësia \"--command/-e\" lyp tregimin e urdhërit për xhirim si parametër të "
 "vet"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Mundësi e panjohur \"%s\""
@@ -532,7 +319,7 @@ msgstr "Tërë ekrani"
 msgid "Set Title"
 msgstr "Caktoni Titull"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Ricakto"
 
@@ -829,6 +616,11 @@ msgstr "_Ricaktoni"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Ricakto dhe _Pastro"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Ricakto dhe Pastro"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1510,6 +1302,293 @@ msgstr "_Përditëso regjistrime utmp/wtmp kur niset urdhri"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr ""
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Shtyp këtë mesazh ndihme dhe dil"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -v, --version                       Shtyp të dhëna versioni dhe dil"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Mos u regjistro me bus mesazhesh\n"
+#~ "                                       sesioni D-BUS-in"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=EKRAN           ekran X parazgjedhje për t'u përdorur"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=EMËR DREJTORIE  cakton drejtori "
+#~ "parazgjedhje\n"
+#~ "                                      për terminale punues"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ "  --tab                               Hap skedë të re në dritaren\n"
+#~ "                                      e treguar së fundi; mund të jepet\n"
+#~ "                                      më shumë se një nga këto mundësi"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ "  --window                            Hap një dritare të re që përmban "
+#~ "vetëm\n"
+#~ "                                       një skedë; mund të jepet më shumë "
+#~ "se\n"
+#~ "                                       një nga këto mundësi"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Përmbush ç'mbetet prej rreshtit\n"
+#~ "                                       të urdhrit brenda terminalit"
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=VARG                Përmbush argumentin për këtë\n"
+#~ "                                      mundësi brenda terminalit"
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=EMËR DREJTORIE         Caktoni drejtorinë e "
+#~ "terminaleve punues"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=TITULL                   Caktoni titull terminalesh"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Mos asgjëso skedën menjëherë\n"
+#~ "                                      pas daljes së urdhrit pjellë"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ "  --display=EKRAN                   ekran X për përdorim për dritaren\n"
+#~ "                                      e fundit të treguar"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GJEOMETRI                 Përcaktime gjeometrie për X-in "
+#~ "(shihni\n"
+#~ "                                                faqe man për \"X\"), mund "
+#~ "të përcaktohet\n"
+#~ "                                               një herë për çdo dritare "
+#~ "që do të hapet"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROL                         Caktoni rolin e dritares së treguar\n"
+#~ "                                      së fundmi; zbatohet vetëm mbi një "
+#~ "dritare;\n"
+#~ "                                      mund të tregohet një herë për çdo "
+#~ "dritare\n"
+#~ "                                      që krijoni prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ "  --startup-id=VARG                 ID për protokoll njoftimi nisjeje"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=VARG                Përmbush argumentin për këtë\n"
+#~ "                                      mundësi brenda terminalit"
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                     Cakton për dritaren e fundit të "
+#~ "treguar\n"
+#~ "                                      mënyrën tërë ekrani; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --role=ROL                         Caktoni rolin e dritares së treguar\n"
+#~ "                                      së fundmi; zbatohet vetëm mbi një "
+#~ "dritare;\n"
+#~ "                                      mund të tregohet një herë për çdo "
+#~ "dritare\n"
+#~ "                                      që krijoni prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar               Shfaq shtyllë menuje për dritaren\n"
+#~ "                                      e fundit të treguar; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar               Fsheh shtyllë menuje për dritaren\n"
+#~ "                                      e fundit të treguar; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders               Shfaq zbukurime dritaresh për dritaren\n"
+#~ "                                      e fundit të treguar; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                 Fsheh zbukurime dritaresh për dritaren\n"
+#~ "                                      e fundit të treguar; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                          Shfaq panelet për dritaren\n"
+#~ "                                      e fundit të treguar; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Fsheh panelet për dritaren\n"
+#~ "                                      e fundit të treguar; zbatohet "
+#~ "vetëm\n"
+#~ "                                      mbi një dritare; mund të "
+#~ "përcaktohet\n"
+#~ "                                      një herë për çdo dritare që "
+#~ "krijoni\n"
+#~ "                                      prej rreshti urdhrash"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "I pazoti të nisë terminalin: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "Mundësia \"--sm-client-id\" lyp tregimin e id-së së sesionit si parametër "
+#~ "të vet"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titull</b>"

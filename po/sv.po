@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-07 11:48+0100\n"
+"POT-Creation-Date: 2009-12-14 16:03+0100\n"
 "PO-Revision-Date: 2008-12-09 22:06+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -17,303 +17,91 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../terminal/main.c:46
+#: ../terminal/main.c:48
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:48
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:49
+#: ../terminal/main.c:53
 #, fuzzy
 msgid "General Options"
 msgstr "Allmänt"
 
-#: ../terminal/main.c:50
-msgid "  -h, --help                          Print this help message and exit"
-msgstr ""
-"  -h, --help                          Skriv detta hjälpmeddelandet och "
-"avsluta"
-
-#: ../terminal/main.c:51
+#. parameter of --default-display
+#. parameter of --display
+#: ../terminal/main.c:55 ../terminal/main.c:81
 #, fuzzy
-msgid ""
-"  -V, --version                       Print version information and exit"
-msgstr ""
-"  -v, --version                       Skriv versionsinformationen och avsluta"
+msgid "display"
+msgstr "Visas inte"
 
-#: ../terminal/main.c:52
-msgid ""
-"  --disable-server                    Do not register with the D-BUS\n"
-"                                      session message bus"
+#. parameter of --default-working-directory
+#. parameter of --working-directory
+#: ../terminal/main.c:57 ../terminal/main.c:72
+msgid "directory"
 msgstr ""
-"  --disable-server                    Registrera inte mot D-BUS-sessions-\n"
-"                                      meddelandebussen"
 
-#: ../terminal/main.c:54
-msgid "  --default-display=DISPLAY           default X display to use"
-msgstr ""
-"  --default-display=DISPLAY          X-display att använda som standard"
-
-#: ../terminal/main.c:55
-msgid ""
-"  --default-working-directory=DIRNAME Set the default terminal's working\n"
-"                                      directory"
-msgstr ""
-"  --default-working-directory=KATNAMN Ange standardterminalens arbets-\n"
-"                                      katalog"
-
-#: ../terminal/main.c:58
+#: ../terminal/main.c:61
 msgid "Window or Tab Separators"
 msgstr ""
-
-#: ../terminal/main.c:59
-msgid ""
-"  --tab                               Open a new tab in the last-specified\n"
-"                                      window; more than one of these\n"
-"                                      options can be provided"
-msgstr ""
-" --tab                                Öppna en ny flik i det senaste "
-"angivna\n"
-"                                      fönstret; fler än en av dessa flaggor "
-"kan\n"
-"                                      anges"
-
-#: ../terminal/main.c:62
-msgid ""
-"  --window                            Open a new window containing one tab;\n"
-"                                      more than one of these options can be\n"
-"                                      provided"
-msgstr ""
-" --window                             Öppna ett nytt fönster som innehåller\n"
-"                                      en flik; fler än en av dessa flaggor\n"
-"                                      kan anges"
 
 #: ../terminal/main.c:66
 #, fuzzy
 msgid "Tab Options"
 msgstr "Flikposition"
 
-#: ../terminal/main.c:67
-msgid ""
-"  -x, --execute                       Execute the remainder of the command\n"
-"                                      line inside the terminal"
-msgstr ""
-"  -x, --execute                       Kör resten av kommandoraden inuti\n"
-"                                      terminalen."
+#. parameter of --command
+#: ../terminal/main.c:68
+#, fuzzy
+msgid "command"
+msgstr "<b>Kommando</b>"
 
-#: ../terminal/main.c:69
-msgid ""
-"  -e, --command=STRING                Execute the argument to this option\n"
-"                                      inside the terminal"
-msgstr ""
-"  -e, --command=STRÄNG                Kör argumentet till denna flagga\n"
-"                                      inuti terminalen."
+#. parameter of --title
+#: ../terminal/main.c:70
+#, fuzzy
+msgid "title"
+msgstr "Titel"
 
-#: ../terminal/main.c:71
-msgid ""
-"  --working-directory=DIRNAME         Set the terminal's working directory"
-msgstr "  --working-directory=KATNAMN         Ange terminalens arbetskatalog"
-
-#: ../terminal/main.c:72
-msgid "  -T, --title=TITLE                   Set the terminal's title"
-msgstr "  -T, --title=TITEL                   Ange terminalens titel"
-
-#: ../terminal/main.c:73
-msgid ""
-"  -H, --hold                          Do not immediately destroy the tab\n"
-"                                      when the child command exits"
-msgstr ""
-"  -H, --hold                          Stäng inte fliken när barnkommandot\n"
-"                                      avslutas"
-
-#: ../terminal/main.c:76
+#: ../terminal/main.c:79
 #, fuzzy
 msgid "Window Options"
 msgstr "Okänd flagga \"%s\""
 
-#: ../terminal/main.c:77
-msgid ""
-"  --display=DISPLAY                   X display to use for the last-\n"
-"                                      specified window"
+#. parameter of --geometry
+#: ../terminal/main.c:83
+msgid "geometry"
 msgstr ""
-" --display=DISPLAY                    X-display att använda för det\n"
-"                                      senaste angivna fönstret"
 
-#: ../terminal/main.c:79
-msgid ""
-"  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-"                                      man page), can be specified once per\n"
-"                                      window to be opened"
+#. parameter of --role
+#: ../terminal/main.c:85
+msgid "role"
 msgstr ""
-"  --geometry=GEOMETRI                 X-geometriinställning (se manualsidan\n"
-"                                      för \"X\"), kan anges en gång per "
-"fönster\n"
-"                                      som ska öppnas"
 
-#: ../terminal/main.c:82
-msgid ""
-"  --role=ROLE                         Set the role for the last-specified\n"
-"                                      window; applies to only one window;\n"
-"                                      can be specified once for each window\n"
-"                                      you create from the command line"
-msgstr ""
-"  --role=ROLL                         Ange rollen för det senaste angivna\n"
-"                                      fönstret; gäller endast för ett "
-"fönster; kan\n"
-"                                      anges en gång per fönster som du "
-"skapar\n"
-"                                      från kommandoraden"
-
-#: ../terminal/main.c:86
-msgid ""
-"  --startup-id=STRING                 ID for the startup notification\n"
-"                                      protocol"
-msgstr ""
-" --startup-id=STRÄNG                  ID för uppstartsnotifierings-\n"
-"                                      protokollet"
-
-#: ../terminal/main.c:88
+#. parameter of --startup-id
+#: ../terminal/main.c:87
 #, fuzzy
-msgid ""
-"  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-"                                      name or filename"
-msgstr ""
-"  -e, --command=STRÄNG                Kör argumentet till denna flagga\n"
-"                                      inuti terminalen."
+msgid "string"
+msgstr "Varning"
 
-#: ../terminal/main.c:90
+#. parameter of --icon
+#: ../terminal/main.c:89
 #, fuzzy
-msgid ""
-"  --fullscreen                        Set the last-specified window into\n"
-"                                      fullscreen mode; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --fullscreen                        Ställer in senaste angivna fönstret "
-"till att\n"
-"                                      köras i helskärmsläge; gäller endast "
-"för\n"
-"                                      ett fönster; kan anges en gång för "
-"varje\n"
-"                                      fönster som du skapar från "
-"kommandoraden."
+msgid "icon"
+msgstr "Åtgärd"
 
-#: ../terminal/main.c:95
-#, fuzzy
-msgid ""
-"  --maximize                          Maximize the last-specified window;\n"
-"                                      applies to only one window; can be\n"
-"                                      specified once for each window you\n"
-"                                      create from the command line"
+#: ../terminal/main.c:91
+#, c-format
+msgid "See the %s man page for full explanation of the options above."
 msgstr ""
-"  --role=ROLL                         Ange rollen för det senaste angivna\n"
-"                                      fönstret; gäller endast för ett "
-"fönster; kan\n"
-"                                      anges en gång per fönster som du "
-"skapar\n"
-"                                      från kommandoraden"
 
-#: ../terminal/main.c:99
-msgid ""
-"  --show-menubar                      Turn on the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-menubar                      Aktivera menyraden för det senaste\n"
-"                                      fönstret; gäller endast för ett "
-"fönster;\n"
-"                                      kan anges en gång för varje fönster "
-"som du\n"
-"                                      skapar från kommandoraden"
-
-#: ../terminal/main.c:104
-msgid ""
-"  --hide-menubar                      Turn off the menubar for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-menubar                      Inaktivera menyraden för det senaste\n"
-"                                      angivna fönstret; gäller endast för "
-"ett fönster;\n"
-"                                      kan anges en gång för varje fönster "
-"som du\n"
-"                                      skapar från kommandoraden"
-
-#: ../terminal/main.c:109
-msgid ""
-"  --show-borders                      Turn on the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --show-borders                      Aktivera fönsterdekorationerna för "
-"det\n"
-"                                      senaste angivna fönstret; gäller "
-"endast för ett\n"
-"                                      fönster; kan anges en gång för varje\n"
-"                                      fönster som du skapar från "
-"kommandoraden"
-
-#: ../terminal/main.c:114
-msgid ""
-"  --hide-borders                      Turn off the window decorations for\n"
-"                                      the last-specified window; applies\n"
-"                                      to only one window; can be specified\n"
-"                                      once for each window you create from\n"
-"                                      the command line"
-msgstr ""
-"  --hide-borders                      Inaktivera fönsterdekorationerna för "
-"det\n"
-"                                      senaste angivna fönstret; gäller "
-"endast för ett\n"
-"                                      fönster; kan anges en gång för varje\n"
-"                                      fönster som du skapar från "
-"kommandoraden"
-
-#: ../terminal/main.c:119
-msgid ""
-"  --show-toolbars                     Turn on the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --show-toolbars                     Aktivera verktygsraderna för det\n"
-"                                      senaste angivna fönstret; gäller "
-"endast för ett\n"
-"                                      fönster; kan anges en gång för varje\n"
-"                                      fönster som du skapar från "
-"kommandoraden"
-
-#: ../terminal/main.c:124
-msgid ""
-"  --hide-toolbars                     Turn off the toolbars for the last-\n"
-"                                      specified window; applies to only one\n"
-"                                      window; can be specified once for\n"
-"                                      each window you create from the\n"
-"                                      command line"
-msgstr ""
-"  --hide-toolbars                     Inaktivera verktygsraderna för det\n"
-"                                      senaste angivna fönstret; gäller "
-"endast för ett\n"
-"                                      fönster; kan anges en gång för varje\n"
-"                                      fönster som du skapar från "
-"kommandoraden"
-
-#: ../terminal/main.c:151 ../terminal/terminal-preferences.c:1263
+#: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:173
+#: ../terminal/main.c:135
 #, c-format
 msgid ""
 "%s (Xfce %s)\n"
@@ -338,31 +126,26 @@ msgstr ""
 "\n"
 "Rapportera fel till <%s>.\n"
 
-#: ../terminal/main.c:267
+#: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kunde inte registrera terminaltjänsten: %s\n"
 
-#: ../terminal/main.c:276
-#, c-format
-msgid "Unable to launch terminal: %s\n"
-msgstr "Kunde inte starta terminal: %s\n"
-
-#: ../terminal/terminal-app.c:551
+#: ../terminal/terminal-app.c:554
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ogiltig geometristräng: \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:114
+#: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
 msgstr "Användar-id stämmer inte"
 
-#: ../terminal/terminal-dbus.c:146
+#: ../terminal/terminal-dbus.c:134
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS-meddelandebussen kopplades från, avslutar...\n"
 
-#: ../terminal/terminal-dbus.c:208
+#: ../terminal/terminal-dbus.c:196
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Kunde inte registrera objektet %s"
@@ -390,7 +173,7 @@ msgstr "Statisk terminaltitel"
 msgid "Failed to open the documentation browser"
 msgstr "Misslyckades med att öppna dokumentationsvisaren"
 
-#: ../terminal/terminal-options.c:189
+#: ../terminal/terminal-options.c:206
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -398,7 +181,7 @@ msgid ""
 msgstr ""
 "Flaggan \"--default-display\" kräver att du anger en X-display som parameter"
 
-#: ../terminal/terminal-options.c:204
+#: ../terminal/terminal-options.c:221
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -407,14 +190,7 @@ msgstr ""
 "Flaggan \"--default-working-directory\" kräver att du anger "
 "standardarbetskatalogen som parameter"
 
-#: ../terminal/terminal-options.c:235
-#, c-format
-msgid ""
-"Option \"--sm-client-id\" requires specifying the session id as its parameter"
-msgstr ""
-"Flaggan \"--sm-client-id\" kräver att du anger ett sessionsid som parameter"
-
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:237
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -423,7 +199,7 @@ msgstr ""
 "Flaggan \"--execute/-x\" kräver att du anger ett kommando att köra på resten "
 "av kommandoraden"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:254
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -432,7 +208,7 @@ msgstr ""
 "Flaggan \"--command/-e/\" kräver att du anger ett kommando att köra som "
 "parameter"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -441,18 +217,18 @@ msgstr ""
 "Flaggan \"--working-directory\" kräver att du anger en arbetskatalog som "
 "parameter"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Flaggan \"--title/-T\" kräver att du anger en titel som parameter"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Flaggan \"--display\" kräver att du anger en X-display som parameter"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -460,19 +236,19 @@ msgid ""
 msgstr ""
 "Flaggan \"--geometry\" kräver att du anger en fönstergeometri som parameter"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Flaggan \"--role\" kräver att du anger en fönsterroll som parameter"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "Flaggan \"--startup-id\" kräver att du anger ett uppstarts-id som parameter"
 
-#: ../terminal/terminal-options.c:379
+#: ../terminal/terminal-options.c:365
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -481,7 +257,7 @@ msgstr ""
 "Flaggan \"--command/-e/\" kräver att du anger ett kommando att köra som "
 "parameter"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Okänd flagga \"%s\""
@@ -550,7 +326,7 @@ msgstr "Helskärm"
 msgid "Set Title"
 msgstr "Ange titel"
 
-#: ../terminal/terminal-preferences.c:464
+#: ../terminal/terminal-preferences.c:464 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Återställ"
 
@@ -846,6 +622,11 @@ msgstr "_Återställ"
 #: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Återställ och _töm"
+
+#: ../terminal/terminal-window.c:238
+#, fuzzy
+msgid "Reset and clear"
+msgstr "Återställ och töm"
 
 #: ../terminal/terminal-window.c:239
 msgid "_Go"
@@ -1509,6 +1290,292 @@ msgstr "_Uppdatera utmp/wtmp-poster när kommando körs"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "sekunder"
+
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Skriv detta hjälpmeddelandet och "
+#~ "avsluta"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -v, --version                       Skriv versionsinformationen och "
+#~ "avsluta"
+
+#~ msgid ""
+#~ "  --disable-server                    Do not register with the D-BUS\n"
+#~ "                                      session message bus"
+#~ msgstr ""
+#~ "  --disable-server                    Registrera inte mot D-BUS-"
+#~ "sessions-\n"
+#~ "                                      meddelandebussen"
+
+#~ msgid "  --default-display=DISPLAY           default X display to use"
+#~ msgstr ""
+#~ "  --default-display=DISPLAY          X-display att använda som standard"
+
+#~ msgid ""
+#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
+#~ "                                      directory"
+#~ msgstr ""
+#~ "  --default-working-directory=KATNAMN Ange standardterminalens arbets-\n"
+#~ "                                      katalog"
+
+#~ msgid ""
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
+#~ "                                      window; more than one of these\n"
+#~ "                                      options can be provided"
+#~ msgstr ""
+#~ " --tab                                Öppna en ny flik i det senaste "
+#~ "angivna\n"
+#~ "                                      fönstret; fler än en av dessa "
+#~ "flaggor kan\n"
+#~ "                                      anges"
+
+#~ msgid ""
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
+#~ "                                      provided"
+#~ msgstr ""
+#~ " --window                             Öppna ett nytt fönster som "
+#~ "innehåller\n"
+#~ "                                      en flik; fler än en av dessa "
+#~ "flaggor\n"
+#~ "                                      kan anges"
+
+#~ msgid ""
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
+#~ "                                      line inside the terminal"
+#~ msgstr ""
+#~ "  -x, --execute                       Kör resten av kommandoraden inuti\n"
+#~ "                                      terminalen."
+
+#~ msgid ""
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
+#~ "                                      inside the terminal"
+#~ msgstr ""
+#~ "  -e, --command=STRÄNG                Kör argumentet till denna flagga\n"
+#~ "                                      inuti terminalen."
+
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr ""
+#~ "  --working-directory=KATNAMN         Ange terminalens arbetskatalog"
+
+#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
+#~ msgstr "  -T, --title=TITEL                   Ange terminalens titel"
+
+#~ msgid ""
+#~ "  -H, --hold                          Do not immediately destroy the tab\n"
+#~ "                                      when the child command exits"
+#~ msgstr ""
+#~ "  -H, --hold                          Stäng inte fliken när "
+#~ "barnkommandot\n"
+#~ "                                      avslutas"
+
+#~ msgid ""
+#~ "  --display=DISPLAY                   X display to use for the last-\n"
+#~ "                                      specified window"
+#~ msgstr ""
+#~ " --display=DISPLAY                    X-display att använda för det\n"
+#~ "                                      senaste angivna fönstret"
+
+#~ msgid ""
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
+#~ "                                      window to be opened"
+#~ msgstr ""
+#~ "  --geometry=GEOMETRI                 X-geometriinställning (se "
+#~ "manualsidan\n"
+#~ "                                      för \"X\"), kan anges en gång per "
+#~ "fönster\n"
+#~ "                                      som ska öppnas"
+
+#~ msgid ""
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
+#~ "                                      you create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLL                         Ange rollen för det senaste "
+#~ "angivna\n"
+#~ "                                      fönstret; gäller endast för ett "
+#~ "fönster; kan\n"
+#~ "                                      anges en gång per fönster som du "
+#~ "skapar\n"
+#~ "                                      från kommandoraden"
+
+#~ msgid ""
+#~ "  --startup-id=STRING                 ID for the startup notification\n"
+#~ "                                      protocol"
+#~ msgstr ""
+#~ " --startup-id=STRÄNG                  ID för uppstartsnotifierings-\n"
+#~ "                                      protokollet"
+
+#, fuzzy
+#~ msgid ""
+#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
+#~ "                                      name or filename"
+#~ msgstr ""
+#~ "  -e, --command=STRÄNG                Kör argumentet till denna flagga\n"
+#~ "                                      inuti terminalen."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --fullscreen                        Set the last-specified window into\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --fullscreen                        Ställer in senaste angivna fönstret "
+#~ "till att\n"
+#~ "                                      köras i helskärmsläge; gäller "
+#~ "endast för\n"
+#~ "                                      ett fönster; kan anges en gång för "
+#~ "varje\n"
+#~ "                                      fönster som du skapar från "
+#~ "kommandoraden."
+
+#, fuzzy
+#~ msgid ""
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
+#~ "                                      applies to only one window; can be\n"
+#~ "                                      specified once for each window you\n"
+#~ "                                      create from the command line"
+#~ msgstr ""
+#~ "  --role=ROLL                         Ange rollen för det senaste "
+#~ "angivna\n"
+#~ "                                      fönstret; gäller endast för ett "
+#~ "fönster; kan\n"
+#~ "                                      anges en gång per fönster som du "
+#~ "skapar\n"
+#~ "                                      från kommandoraden"
+
+#~ msgid ""
+#~ "  --show-menubar                      Turn on the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-menubar                      Aktivera menyraden för det senaste\n"
+#~ "                                      fönstret; gäller endast för ett "
+#~ "fönster;\n"
+#~ "                                      kan anges en gång för varje fönster "
+#~ "som du\n"
+#~ "                                      skapar från kommandoraden"
+
+#~ msgid ""
+#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-menubar                      Inaktivera menyraden för det "
+#~ "senaste\n"
+#~ "                                      angivna fönstret; gäller endast för "
+#~ "ett fönster;\n"
+#~ "                                      kan anges en gång för varje fönster "
+#~ "som du\n"
+#~ "                                      skapar från kommandoraden"
+
+#~ msgid ""
+#~ "  --show-borders                      Turn on the window decorations for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --show-borders                      Aktivera fönsterdekorationerna för "
+#~ "det\n"
+#~ "                                      senaste angivna fönstret; gäller "
+#~ "endast för ett\n"
+#~ "                                      fönster; kan anges en gång för "
+#~ "varje\n"
+#~ "                                      fönster som du skapar från "
+#~ "kommandoraden"
+
+#~ msgid ""
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
+#~ "                                      the last-specified window; applies\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
+#~ "                                      the command line"
+#~ msgstr ""
+#~ "  --hide-borders                      Inaktivera fönsterdekorationerna "
+#~ "för det\n"
+#~ "                                      senaste angivna fönstret; gäller "
+#~ "endast för ett\n"
+#~ "                                      fönster; kan anges en gång för "
+#~ "varje\n"
+#~ "                                      fönster som du skapar från "
+#~ "kommandoraden"
+
+#~ msgid ""
+#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --show-toolbars                     Aktivera verktygsraderna för det\n"
+#~ "                                      senaste angivna fönstret; gäller "
+#~ "endast för ett\n"
+#~ "                                      fönster; kan anges en gång för "
+#~ "varje\n"
+#~ "                                      fönster som du skapar från "
+#~ "kommandoraden"
+
+#~ msgid ""
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
+#~ "                                      window; can be specified once for\n"
+#~ "                                      each window you create from the\n"
+#~ "                                      command line"
+#~ msgstr ""
+#~ "  --hide-toolbars                     Inaktivera verktygsraderna för det\n"
+#~ "                                      senaste angivna fönstret; gäller "
+#~ "endast för ett\n"
+#~ "                                      fönster; kan anges en gång för "
+#~ "varje\n"
+#~ "                                      fönster som du skapar från "
+#~ "kommandoraden"
+
+#~ msgid "Unable to launch terminal: %s\n"
+#~ msgstr "Kunde inte starta terminal: %s\n"
+
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
+#~ msgstr ""
+#~ "Flaggan \"--sm-client-id\" kräver att du anger ett sessionsid som "
+#~ "parameter"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titel:</b>"
