@@ -40,6 +40,43 @@
 
 
 
+static void
+usage (void)
+{
+  g_print ("%s\n"
+           "  %s [%s...]\n\n",
+           _("Usage:"), PACKAGE_NAME, _("OPTION"));
+
+  g_print ("%s:\n"
+           "  -h, --help; -V, --version; --disable-server;\n"
+           "  --default-display=%s; --default-working-directory=%s\n\n",
+           _("General Options"), _("display"), _("directory"));
+
+  g_print ("%s:\n"
+           "  --tab; --window\n\n",
+           _("Window or Tab Separators"));
+
+  g_print ("%s:\n"
+           "  -x, --execute; -e, --command=%s; -T, --title=%s;\n"
+           "  --working-directory=%s; -H, --hold\n\n",
+           _("Tab Options"), _("command"), _("title"), _("directory"));
+
+  g_print ("%s:\n"
+           "  --display=%s; --geometry=%s; --role=%s;\n"
+           "  --startup-id=%s; -I, --icon=%s; --fullscreen; --maximize;\n"
+           "  --show-menubar, --hide-menubar; --show-borders, --hide-borders;\n"
+           "  --show-toolbars, --hide-toolbars\n\n",
+           _("Window Options"), _("display"), _("geometry"), _("role"),
+           _("string"), _("icon"));
+
+  g_print (_("See for full explanation of the options the %s man page."),
+           PACKAGE_NAME);
+
+  g_print ("\n\n");
+}
+
+
+
 int
 main (int argc, char **argv)
 {
@@ -91,13 +128,8 @@ main (int argc, char **argv)
     }
   else if (G_UNLIKELY (show_help))
     {
-      if (!g_spawn_command_line_sync ("man "PACKAGE_NAME, NULL, NULL, &n, NULL))
-        {
-          g_print (_("For help on the command line options view the %s "
-                     "manual page or HTML documentation."), PACKAGE_NAME);
-        }
-
-      return n;
+      usage ();
+      return EXIT_SUCCESS;
     }
 
   /* create a copy of the standard arguments with our additional stuff */
