@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5/EN"
+    "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY date "December 2009">
+  <!ENTITY version "@PACKAGE_VERSION@">
+  <!ENTITY application "@PACKAGE_NAME@">
+]>
+
+<refentry id="terminal" lang="en">
+  <refentryinfo>
+    <productname>&application;</productname>
+    <authorgroup>
+      <author>
+        <contrib>Developer</contrib>
+        <firstname>Nick</firstname>
+        <surname>Schermer</surname>
+        <affiliation>
+          <address><email>nick@xfce.org</email></address>
+        </affiliation>
+      </author>
+      <author>
+        <contrib>Developer</contrib>
+        <firstname>Benedikt</firstname>
+        <surname>Meurer</surname>
+        <affiliation>
+          <jobtitle>Software developer</jobtitle>
+          <orgname>os-cillation</orgname>
+          <orgdiv>System development</orgdiv>
+          <address><email>benny@xfce.org</email></address>
+        </affiliation>
+      </author>
+    </authorgroup>
+  </refentryinfo>
+
+  <refmeta>
+    <refentrytitle>&application;</refentrytitle>
+    <manvolnum>1</manvolnum>
+    <refmiscinfo class="version">0.4.2git-fa00dd5</refmiscinfo>
+    <refmiscinfo class="manual">Xfce</refmiscinfo>
+  </refmeta>
+
+  <refnamediv>
+    <refname>&application;</refname>
+    <refpurpose>A Terminal emulator for X</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv id="synopsis">
+    <title>Synopsis</title>
+    <cmdsynopsis>
+      <command>Terminal</command>
+      <arg choice="opt" rep="repeat">--tab</arg>
+      <arg choice="opt" rep="repeat">--window</arg>
+    </cmdsynopsis>
+    <para>
+      Only the separating options are listed here; see below for the remainder.
+    </para>
+  </refsynopsisdiv>
+
+  <refsect1 id="description">
+    <title>Description</title>
+    <para>
+      &application; is what is known as an X terminal emulator, often referred
+      to as terminal or shell. It provides an equivalent to the old-fashioned
+      text screen on your desktop, but one which can easily share the screen
+      with other graphical applications. Windows users may already be familiar
+      with the MS-DOS Prompt utility, which has the analogous function of
+      offering a DOS command-line under Windows, though one should note that
+      the UNIX CLI offer far more power and ease of use than does DOS.
+    </para>
+
+    <para>
+      &application; emulates the <application>xterm</application> application
+      developed by the X Consortium. In turn, the <application>xterm</application>
+      application emulates the DEC VT102 terminal and also supports the DEC VT220
+      escape sequences. An escape sequence is a series of characters that start
+      with the <keycap>Esc</keycap> character. &application; accepts all of the escape
+      sequences that the VT102 and VT220 terminals use for functions such as to
+      position the cursor and to clear the screen.
+    </para>
+  </refsect1>
+
+  <refsect1 id="options">
+    <title>Options</title>
+
+    <refsect2 id="options-summary">
+      <title>Option Summary</title>
+      <para>
+        Here is a summary of all the options, grouped by type. Explanations are in
+        the following sections.
+      </para>
+      <variablelist>
+        <varlistentry>
+          <term><link linkend="options-general">General Options</link></term>
+          <listitem>
+            <para><xref linkend="options-general-help"/>;
+              <xref linkend="options-general-version"/>;
+              <xref linkend="options-general-disable-server"/>;
+              <xref linkend="options-general-default-display"/>;
+              <xref linkend="options-general-default-working-directory"/>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><link linkend="options-separators">Window or Tab Separators</link></term>
+          <listitem>
+            <para><xref linkend="options-separators-tab"/>;
+              <xref linkend="options-separators-window"/>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><link linkend="options-tab">Tab Options</link></term>
+          <listitem>
+            <para><xref linkend="options-tab-execute"/>;
+              <xref linkend="options-tab-command"/>;
+              <xref linkend="options-tab-working-directory"/>;
+              <xref linkend="options-tab-title"/>;
+              <xref linkend="options-tab-hold"/>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term><link linkend="options-window">Window Options</link></term>
+          <listitem>
+            <para><xref linkend="options-window-display"/>;
+              <xref linkend="options-window-geometry"/>;
+              <xref linkend="options-window-role"/>;
+              <xref linkend="options-window-startup-id"/>;
+              <xref linkend="options-window-icon"/>;
+              <xref linkend="options-window-fullscreen"/>;
+              <xref linkend="options-window-maximize"/>;
+              <xref linkend="options-window-show-menubar"/>,
+              <xref linkend="options-window-hide-menubar"/>;
+              <xref linkend="options-window-show-borders"/>,
+              <xref linkend="options-window-hide-borders"/>;
+              <xref linkend="options-window-show-toolbars"/>,
+              <xref linkend="options-window-hide-toolbars"/>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2 id="options-general">
+      <title>General Options</title>
+      <variablelist>
+        <varlistentry>
+          <term id="options-general-help">
+            <option>-h</option>, <option>--help</option>
+          </term>
+          <listitem>
+            <para>List the various command line options supported by &application; and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-general-version">
+            <option>-V</option>, <option>--version</option>
+          </term>
+          <listitem>
+            <para>Display version information and exit</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-general-disable-server">
+            <option>--disable-server</option>
+          </term>
+          <listitem>
+            <para>Do not register with the D-BUS session message bus</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-general-default-display">
+            <option>--default-display=<replaceable>display</replaceable></option>
+          </term>
+          <listitem>
+            <para>Default X display to use.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-general-default-working-directory">
+            <option>--default-working-directory=<replaceable>directory</replaceable></option>
+          </term>
+          <listitem>
+            <para>Set <parameter>directory</parameter> as the default working directory for the terminal</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2 id="options-separators">
+      <title>Window or Tab Separators</title>
+      <variablelist>
+        <varlistentry>
+          <term id="options-separators-tab">
+            <option>--tab</option>
+          </term>
+          <listitem>
+            <para>Open a new tab in the last-specified window; more than one of these options can be provided.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-separators-window">
+            <option>--window</option>
+          </term>
+          <listitem>
+            <para>Open a new window containing one tab; more than one of these options can be provided.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2 id="options-tab">
+      <title>Tab Options</title>
+      <variablelist>
+        <varlistentry>
+          <term id="options-tab-execute">
+            <option>-x</option>, <option>--execute</option>
+          </term>
+          <listitem>
+            <para>Execute the remainder of the command line inside the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-command">
+            <option>-e</option>, <option>--command=<replaceable>command</replaceable></option>
+          </term>
+          <listitem>
+            <para>Execute <parameter>command</parameter> inside the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-working-directory">
+            <option>--working-directory=<replaceable>directory</replaceable></option>
+          </term>
+          <listitem>
+            <para>Set <parameter>directory</parameter> as the working directory for the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-title">
+            <option>-T</option>, <option>--title=<replaceable>title</replaceable></option>
+          </term>
+          <listitem>
+            <para>Set <parameter>title</parameter> as the initial window title for the terminal</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-hold">
+            <option>-H</option>, <option>--hold</option>
+          </term>
+          <listitem>
+            <para>Causes the terminal to be kept around after the child command has terminated</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+
+    <refsect2 id="options-window">
+      <title>Window Options</title>
+      <variablelist>
+        <varlistentry>
+          <term id="options-window-display">
+            <option>--display=<replaceable>display</replaceable></option>
+          </term>
+          <listitem>
+            <para>X display to use for the last- specified window.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-geometry">
+            <option>--geometry=<replaceable>geometry</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Sets the geometry of the last-specified window to <parameter>geometry</parameter>. Read
+              <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry>
+              for more information on how to specify window geometries.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-role">
+            <option>--role=<replaceable>role</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Sets the window role of the last-specified window to <parameter>role</parameter>.
+              Applies to only one window and can be specified once for each window you create
+              from the command line. It is mostly used for session management inside &application;
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-startup-id">
+            <option>--startup-id=<replaceable>string</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Specifies the startup notification id for the last-specified window. Used
+              internally to forward the startup notification id when using the D-BUS service.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-icon">
+            <option>-I, --icon=<replaceable>icon</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set the terminal's icon as an icon name or filename.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-fullscreen">
+            <option>--fullscreen</option>
+          </term>
+          <listitem>
+            <para>
+              Set the last-specified window into fullscreen mode; applies to only one window;
+              can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-maximize">
+            <option>--maximize</option>
+          </term>
+          <listitem>
+            <para>
+              Set the last-specified window into maximized mode; applies to only one
+              window; can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-show-menubar">
+            <option>--show-menubar</option>
+          </term>
+          <listitem>
+            <para>
+              Turn on the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-hide-menubar">
+            <option>--hide-menubar</option>
+          </term>
+          <listitem>
+            <para>
+              Turn off the menubar for the last-specified window. Can be specified once for each
+              window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-show-borders">
+            <option>--show-borders</option>
+          </term>
+          <listitem>
+            <para>
+              Turn on the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-hide-borders">
+            <option>--hide-borders</option>
+          </term>
+          <listitem>
+            <para>
+              Turn off the window decorations for the last-specified window. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-show-toolbars">
+            <option>--show-toolbars</option>
+          </term>
+          <listitem>
+            <para>
+              Turn on the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-hide-toolbars">
+            <option>--hide-toolbars</option>
+          </term>
+          <listitem>
+            <para>
+              Turn off the toolbars for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsect2>
+  </refsect1>
+
+  <refsect1 id="examples">
+    <title>Examples</title>
+    <variablelist>
+      <varlistentry>
+        <term>&application; --geometry 80x40 --command mutt --tab --command mc</term>
+        <listitem>
+          <para>
+            Opens a new new terminal window with a geometry of 80 columns and 40 rows
+            and two tabs in it, where the first tab runs <command>mutt</command> and
+            the second tab runs <command>mc</command>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id="environment">
+    <title>Environment</title>
+
+    <para>
+      Terminal uses the Basedir Specification as defined on
+      <ulink url="http://freedesktop.org/" type="http">Freedesktop.org</ulink> to locate its
+      data and configuration files. This means that file locations will be specified as
+      a path relative to the directories described in the specification.
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><varname>${XDG_CONFIG_HOME}</varname></term>
+        <listitem>
+          <para>
+            The first base directory to look for configuration
+            files. By default this is set to <filename role="directory">~/.config/</filename>.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><varname>${XDG_CONFIG_DIRS}</varname></term>
+        <listitem>
+          <para>
+            A colon separated list of base directories that contain configuration
+            data. By default the application will look in <filename role="directory">${sysconfdir}/xdg/</filename>.
+            The value of <varname>${sysconfdir}</varname> depends on how the program was
+            build and will often be <filename role="directory">/etc/</filename>
+            for binary packages.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><varname>${XDG_DATA_HOME}</varname></term>
+        <listitem>
+          <para>
+            The root for all user-specific data files. By default this
+            is set to <filename role="directory">~/.local/share/</filename>.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><varname>${XDG_DATA_DIRS}</varname></term>
+        <listitem>
+          <para>
+            A set of preference ordered base directories relative to which
+            data files should be searched in addition to the
+            <varname>${XDG_DATA_HOME}</varname> base directory. The directories
+            should be separated with a colon.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id="files">
+    <title>Files</title>
+
+    <variablelist>
+      <varlistentry>
+        <term><filename>${XDG_CONFIG_DIRS}/Terminal/terminalrc</filename></term>
+        <listitem>
+          <para>
+            This is the location of the configuration file that includes the
+            preferences which control the look and feel of &application;.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui</filename></term>
+        <listitem>
+          <para>
+            This file includes the user interface definition for the toolbars. If
+            you customize the toolbars using the graphical toolbars editor, &application;
+            will store the new toolbars layout in the file
+            <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <refsect1 id="seealso">
+    <title>See also</title>
+    <para>
+      <citerefentry>
+        <refentrytitle>bash</refentrytitle>
+        <manvolnum>1</manvolnum>
+      </citerefentry>,
+      <citerefentry>
+        <refentrytitle>X</refentrytitle>
+        <manvolnum>7</manvolnum>
+      </citerefentry>
+    </para>
+  </refsect1>
+
+</refentry>

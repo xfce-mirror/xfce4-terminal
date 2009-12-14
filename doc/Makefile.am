@@ -2,8 +2,10 @@ SUBDIRS = \
 	images \
 	po
 
-STYLESHEET = $(PACKAGE).xsl
+HTML_STYLESHEET = $(PACKAGE)-html.xsl
+MAN_STYLESHEET = $(PACKAGE)-man.xsl
 DOCUMENT = $(PACKAGE).xml
+MANPAGE = $(PACKAGE).1.xml
 LINGUAS = $(shell cd $(srcdir)/po && echo `/bin/ls *.po | sed 's,[.]po,,g'`)
 ALL_LINGUAS = C $(LINGUAS)
 
@@ -22,6 +24,16 @@ install-data-local:
 				echo "--- Creating symlink to C images for $$lang"; \
 				ln -sf $(docdir)/C/images $(DESTDIR)$(docdir)/$$lang/images; \
 			fi \
+		fi; \
+		file=$(srcdir)/man/$$lang/$(PACKAGE).1; \
+		if test -f $$file ; then \
+			if test x"$$lang" = x"C"; then \
+				dest=$(DESTDIR)$(mandir)/man1; \
+			else \
+				dest=$(DESTDIR)$(mandir)/$$lang/man1; \
+			fi; \
+			$(mkinstalldirs) $$dest; \
+			$(INSTALL_DATA) $$file $$dest; \
 		fi \
 	done;
 
@@ -35,65 +47,84 @@ uninstall-local:
 			else \
 				rm -f $$dest/*.html; \
 			fi \
+		fi; \
+		if test x"$$lang" = x"C"; then \
+			dest=$(DESTDIR)$(mandir)/man1/$(PACKAGE).1; \
+		else \
+			dest=$(DESTDIR)$(mandir)/$$lang/man1/$(PACKAGE).1; \
+		fi; \
+		if test -f $$dest; then \
+			rm -f $$dest; \
 		fi \
 	done
 
 # remove generate html from the srcdir
 clean-local:
-	rm -rf $(srcdir)/html
+	rm -rf $(srcdir)/html $(srcdir)/man
 
 if GENERATE_DOCUMENTATION
 
 # regenerate po(t) files
 update-po:
 	rm -f $(srcdir)/po/$(GETTEXT_PACKAGE).pot; \
-	$(XML2PO) -o $(srcdir)/po/$(GETTEXT_PACKAGE).pot $(srcdir)/$(DOCUMENT); \
+	$(XML2PO) -o $(srcdir)/po/$(GETTEXT_PACKAGE).pot $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE); \
 	for lang in $(LINGUAS); do \
 		pofile=$(srcdir)/po/$$lang.po; \
-		$(XML2PO) -u $(srcdir)/po/$$lang.po $(srcdir)/$(DOCUMENT); \
+		$(XML2PO) -u $(srcdir)/po/$$lang.po $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE); \
 	done
 
-# build the (translated) html help files
-html-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(STYLESHEET)
+# build the translated help files
+doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STYLESHEET) $(srcdir)/$(MAN_STYLESHEET)
 	@chmod -R u+w $(srcdir); \
-	if test -d $(srcdir)/html; then \
-		rm -rf $(srcdir)/html; \
-	fi; \
+	rm -rf $(srcdir)/html $(srcdir)/man; \
+	echo; \
+	echo "*** Generating full XML file ***"; \
+	echo "Creating Terminal-options.xml"; \
+	sed -e "s,<refsect,<sect,g" \
+		-e "s,</refsect,</sect,g" $(srcdir)/$(MANPAGE) > Terminal-options.xml; \
+	echo "Creating single XML file for HTML manual"; \
+	$(XMLLINT) --nonet --xinclude --postvalid $(srcdir)/$(DOCUMENT) > xgen-xml; \
 	echo; \
 	for lang in $(ALL_LINGUAS); do \
 		pofile=$(srcdir)/po/$$lang.po; \
-		echo "*** Generating $$lang HTML documentation"; \
+		echo "*** Generating $$lang documentation"; \
 		if test x"$$lang" = x"C"; then \
-			cp $(srcdir)/$(DOCUMENT) xgen-doc; \
+			cp xgen-xml xgen-doc; \
+			cp $(srcdir)/$(MANPAGE) xgen-man; \
 		else \
-			echo "Building the translated DocBook XML file"; \
-			$(XML2PO) -e -l $$lang -p $$pofile $(srcdir)/$(DOCUMENT) > xgen-doc; \
+			echo "Building the translated DocBook XML files"; \
+			$(XML2PO) -e -l $$lang -p $$pofile xgen-xml > xgen-doc; \
+			$(XML2PO) -e -l $$lang -p $$pofile $(srcdir)/$(MANPAGE) > xgen-man; \
 			rm -f .xml2po.mo; \
 		fi; \
 		sed -e "s,\@PACKAGE_NAME\@,$(PACKAGE_NAME),g" \
 			-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
-			-i xgen-doc; \
+			-i xgen-doc xgen-man; \
+		echo "Validating DocBook XML files"; \
+		$(XMLLINT) --noout --valid xgen-doc xgen-man; \
 		echo "Creating the HTML pages"; \
-		$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(STYLESHEET) xgen-doc; \
-		chmod -R u+w $(srcdir)/html/$$lang; \
-		rm -f xgen-doc; \
+		$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(HTML_STYLESHEET) xgen-doc; \
+		echo "Creating the MAN page"; \
+		$(XSLTPROC) --nonet -o $(srcdir)/man/$$lang/ $(srcdir)/$(MAN_STYLESHEET) xgen-man; \
+		chmod -R u+w $(srcdir)/html/$$lang $(srcdir)/man/$$lang; \
+		rm -f xgen-doc xgen-man; \
 		echo; \
 	done; \
-	touch html-build.stamp
+	rm -f xgen-xml Terminal-options.xml; \
+	touch doc-build.stamp
 
 dist-check-doc: all
 
 else
 
 update-po:
-	@echo "*** You need to compile with --enable-gen-doc in order to update-po"
-	@echo "*** This requires both the xml2po and xsltproc executables"
+	@echo "*** You need to compile with --enable-gen-doc in order to make update-po"
 	@false
 
-html-build.stamp:
-	@if test ! -d $(srcdir)/html; then \
+doc-build.stamp:
+	@if test ! -d $(srcdir)/html -a ! -d $(srcdir)/man; then \
 		echo; \
-		echo "*** No generated HTML documentation found. If you want to"; \
+		echo "*** No generated documentation found. If you want to"; \
 		echo "*** generate the (translated) documentation, run configure"; \
 		echo "*** with --enable-gen-doc."; \
 		echo; \
@@ -101,21 +132,24 @@ html-build.stamp:
 
 dist-check-doc:
 	@echo "*** You need to compile with --enable-gen-doc in order to make dist"
-	@echo "*** This requires both the xml2po and xsltproc executables"
 	@false
 
 endif
 
 # always try to build (if compiling with --enable-build-doc) or print
 # a message if no html files were found in the tarball
-all: html-build.stamp
+all: doc-build.stamp
 
-# include the html files in the dist
-dist-hook: dist-check-doc html-build.stamp
+# include the html and man files in the dist
+dist-hook: dist-check-doc doc-build.stamp
 	for lang in $(ALL_LINGUAS); do \
 		if test -d $(srcdir)/html/$$lang; then \
 			mkdir -p $(distdir)/html/$$lang; \
 			cp $(srcdir)/html/$$lang/* $(distdir)/html/$$lang/; \
+		fi; \
+		if test -d $(srcdir)/man/$$lang; then \
+			mkdir -p $(distdir)/man/$$lang; \
+			cp $(srcdir)/man/$$lang/* $(distdir)/man/$$lang/; \
 		fi; \
 	done
 
@@ -126,10 +160,15 @@ css_DATA = \
 
 EXTRA_DIST = \
 	$(css_DATA) \
-	$(STYLESHEET) \
+	$(HTML_STYLESHEET) \
+	$(MAN_STYLESHEET) \
 	$(DOCUMENT) \
+	$(MANPAGE) \
 	README
 
 CLEANFILES = \
+	xgen-xml \
 	xgen-doc \
-	html-build.stamp
+	xgen-man \
+	Terminal-options.xml \
+	doc-build.stamp
