@@ -66,7 +66,6 @@ const gchar *terminal_screen_get_working_directory        (TerminalScreen *scree
 void         terminal_screen_set_working_directory        (TerminalScreen *screen,
                                                            const gchar    *directory);
 
-gboolean     terminal_screen_get_hold                     (TerminalScreen *screen);
 void         terminal_screen_set_hold                     (TerminalScreen *screen,
                                                            gboolean        hold);
 

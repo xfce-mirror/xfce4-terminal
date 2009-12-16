@@ -1642,25 +1642,6 @@ terminal_screen_set_working_directory (TerminalScreen *screen,
 
 
 /**
- * terminal_screen_get_hold:
- * @screen : A #TerminalScreen.
- *
- * Checks whether the terminal screen will be destroyed when
- * the child exits.
- *
- * Return value: %TRUE if @screen will be destroyed once
- *               it's child exits.
- **/
-gboolean
-terminal_screen_get_hold (TerminalScreen *screen)
-{
-  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-  return screen->hold;
-}
-
-
-
-/**
  * terminal_screen_set_hold:
  * @screen : A #TerminalScreen.
  * @hold   : %TRUE to keep @screen around when the child exits.

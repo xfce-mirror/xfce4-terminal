@@ -60,9 +60,6 @@ gboolean     terminal_app_process             (TerminalApp        *app,
                                                gint                argc,
                                                GError            **error);
 
-void         terminal_app_open_window         (TerminalApp        *app,
-                                               TerminalWindowAttr *attr);
-
 G_END_DECLS
 
 #endif /* !__TERMINAL_APP_H__ */

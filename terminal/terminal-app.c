@@ -67,6 +67,8 @@ static void               terminal_app_window_destroyed         (GtkWidget      
 static void               terminal_app_save_yourself            (ExoXsessionClient  *client,
                                                                  TerminalApp        *app);
 static GdkScreen         *terminal_app_find_screen              (const gchar        *display_name);
+static void               terminal_app_open_window              (TerminalApp        *app,
+                                                                 TerminalWindowAttr *attr);
 
 
 
@@ -440,48 +442,9 @@ terminal_app_find_screen (const gchar *display_name)
 
 
 
-/**
- * terminal_app_process:
- * @app
- * @argv
- * @argc
- * @error
- *
- * Return value:
- **/
-gboolean
-terminal_app_process (TerminalApp  *app,
-                      gchar       **argv,
-                      gint          argc,
-                      GError      **error)
-{
-  GSList *attrs, *lp;
-
-  attrs = terminal_window_attr_parse (argc, argv, error);
-  if (G_UNLIKELY (attrs == NULL))
-    return FALSE;
-
-  for (lp = attrs; lp != NULL; lp = lp->next)
-    {
-      terminal_app_open_window (app, lp->data);
-      terminal_window_attr_free (lp->data);
-    }
-
-  g_slist_free (attrs);
-
-  return TRUE;
-}
-
-
-
-/**
- * terminal_app_open_window:
- * @app   : A #TerminalApp object.
- * @attr  : The attributes for the new window.
- **/
-void
-terminal_app_open_window (TerminalApp         *app,
-                          TerminalWindowAttr  *attr)
+static void
+terminal_app_open_window (TerminalApp        *app,
+                          TerminalWindowAttr *attr)
 {
   TerminalTabAttr *tab_attr;
   GdkDisplay      *display;
@@ -572,4 +535,38 @@ terminal_app_open_window (TerminalApp         *app,
       g_signal_connect (G_OBJECT (app->session_client), "save-yourself",
                         G_CALLBACK (terminal_app_save_yourself), app);
     }
+}
+
+
+
+/**
+ * terminal_app_process:
+ * @app
+ * @argv
+ * @argc
+ * @error
+ *
+ * Return value:
+ **/
+gboolean
+terminal_app_process (TerminalApp  *app,
+                      gchar       **argv,
+                      gint          argc,
+                      GError      **error)
+{
+  GSList *attrs, *lp;
+
+  attrs = terminal_window_attr_parse (argc, argv, error);
+  if (G_UNLIKELY (attrs == NULL))
+    return FALSE;
+
+  for (lp = attrs; lp != NULL; lp = lp->next)
+    {
+      terminal_app_open_window (app, lp->data);
+      terminal_window_attr_free (lp->data);
+    }
+
+  g_slist_free (attrs);
+
+  return TRUE;
 }

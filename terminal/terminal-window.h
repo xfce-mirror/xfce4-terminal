@@ -52,9 +52,6 @@ GtkWidget      *terminal_window_new                  (gboolean            fullsc
 void            terminal_window_add                  (TerminalWindow     *window,
                                                       TerminalScreen     *screen);
 
-void            terminal_window_remove               (TerminalWindow     *window,
-                                                      TerminalScreen     *screen);
-
 TerminalScreen *terminal_window_get_active           (TerminalWindow     *window);
 
 GSList         *terminal_window_get_restart_command  (TerminalWindow     *window);

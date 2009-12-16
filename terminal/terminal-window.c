@@ -1740,23 +1740,6 @@ terminal_window_add (TerminalWindow *window,
 
 
 /**
- * terminal_window_remove:
- * @window  : A #TerminalWindow.
- * @screen  : A #TerminalScreen.
- **/
-void
-terminal_window_remove (TerminalWindow *window,
-                        TerminalScreen *screen)
-{
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-
-  gtk_widget_destroy (GTK_WIDGET (screen));
-}
-
-
-
-/**
  * terminal_window_get_active:
  * @window : a #TerminalWindow.
  *
