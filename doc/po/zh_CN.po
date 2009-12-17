@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal\n"
 "POT-Creation-Date: 2009-12-14 18:06+0100\n"
-"PO-Revision-Date: 2009-12-16 21:10+0800\n"
+"PO-Revision-Date: 2009-12-17 20:27+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -516,20 +516,25 @@ msgid ""
 "and configuration files. This means that file locations will be specified as "
 "a path relative to the directories described in the specification."
 msgstr ""
+"Terminal 使用 <ulink url=\"http://freedesktop.org/\" type=\"http\">"
+"Freedesktop.org</ulink> 定义的基本目录来存放它的数据和配置文件。这意味着文件"
+"位置将以定义中的目录的相对路径提供。"
 
 #: Terminal.1.xml:454(varname)
 msgid "${XDG_CONFIG_HOME}"
-msgstr ""
+msgstr "${XDG_CONFIG_HOME}"
 
 #: Terminal.1.xml:456(para)
 msgid ""
 "The first base directory to look for configuration files. By default this is "
 "set to <filename role=\"directory\">~/.config/</filename>."
 msgstr ""
+"第一个存放配置文件的基本目录。默认为 <filename role=\"directory\">~/.config/</"
+"filename>。"
 
 #: Terminal.1.xml:464(varname)
 msgid "${XDG_CONFIG_DIRS}"
-msgstr ""
+msgstr "${XDG_CONFIG_DIRS}"
 
 #: Terminal.1.xml:466(para)
 msgid ""
@@ -539,20 +544,26 @@ msgid ""
 "depends on how the program was build and will often be <filename role="
 "\"directory\">/etc/</filename> for binary packages."
 msgstr ""
+"以冒号分隔各个包含配置数据的目录的一个列表。默认情况下，应用程序会查找 "
+"<filename role=\"directory\">${sysconfdir}/xdg/</filename>。<varname>"
+"${sysconfdir}</varname> 的值取决于程序如何编译，对于二进制包，通常为 "
+"<filename role=\"directory\">/etc/</filename>。"
 
 #: Terminal.1.xml:477(varname)
 msgid "${XDG_DATA_HOME}"
-msgstr ""
+msgstr "${XDG_DATA_HOME}"
 
 #: Terminal.1.xml:479(para)
 msgid ""
 "The root for all user-specific data files. By default this is set to "
 "<filename role=\"directory\">~/.local/share/</filename>."
 msgstr ""
+"所有的属于用户个人的数据文件的根目录。默认情况下为 "
+"<filename role=\"directory\">~/.local/share/</filename>。"
 
 #: Terminal.1.xml:487(varname)
 msgid "${XDG_DATA_DIRS}"
-msgstr ""
+msgstr "${XDG_DATA_DIRS}"
 
 #: Terminal.1.xml:489(para)
 msgid ""
@@ -560,24 +571,27 @@ msgid ""
 "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
 "base directory. The directories should be separated with a colon."
 msgstr ""
+"以优先顺序排列的多个用以查找数据文件的目录，为 <varname>${XDG_DATA_HOME}</"
+"varname> 的相对路径。这些目录之间必须以冒号分隔。"
 
 #: Terminal.1.xml:501(title)
 msgid "Files"
-msgstr ""
+msgstr "文件"
 
 #: Terminal.1.xml:505(filename)
 msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-msgstr ""
+msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 
 #: Terminal.1.xml:507(para)
 msgid ""
 "This is the location of the configuration file that includes the preferences "
 "which control the look and feel of @PACKAGE_NAME@."
 msgstr ""
+"这是包含控制 @PACKAGE_NAME@ 感观的首选项的配置文件的位置。"
 
 #: Terminal.1.xml:515(filename)
 msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-msgstr ""
+msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
 
 #: Terminal.1.xml:517(para)
 msgid ""
@@ -586,10 +600,13 @@ msgid ""
 "will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
 "Terminal/Terminal-toolbars.ui</filename>."
 msgstr ""
+"此文件包含工具栏的用户界面定义。如果您使用图形化的工具栏编辑器自定义您的工具"
+"栏，@PACKAGE_NAME@ 将把新的工具栏布局保存在文件 <filename>${XDG_DATA_HOME}/"
+"Terminal/Terminal-toolbars.ui</filename> 之中。"
 
 #: Terminal.1.xml:529(title)
 msgid "See also"
-msgstr ""
+msgstr "参见"
 
 #: Terminal.1.xml:530(para)
 msgid ""
@@ -597,6 +614,9 @@ msgid ""
 "citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
 "manvolnum></citerefentry>"
 msgstr ""
+"<citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></"
+"citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
+"manvolnum></citerefentry>"
 
 #. When image changes, this message will be marked fuzzy or untranslated for you.
 #. It doesn't matter what you translate it to: it's not used at all.
@@ -825,6 +845,8 @@ msgid ""
 "<guilabel>Preferences</guilabel> dialog plus a bunch of so called "
 "<emphasis>hidden options</emphasis>"
 msgstr ""
+"通过 <guilabel>首选项</guilabel> 对话框和一组所谓的 <emphasis>隐藏选项</"
+"emphasis> 几乎可以配置 @PACKAGE_NAME@ 的每个方面"
 
 #: Terminal.xml:143(para)
 msgid ""
@@ -840,7 +862,7 @@ msgstr "会话管理支持"
 
 #: Terminal.xml:153(para)
 msgid "Real multihead support (both MultiScreen and Xinerama mode)"
-msgstr ""
+msgstr "真正的多头支持 (多屏幕模式和 Xinerama 模式)"
 
 #: Terminal.xml:158(para)
 msgid ""
@@ -863,6 +885,9 @@ msgid ""
 "developer.gnome.org/doc/API/2.0/gtk/\">GTK+</ulink> and <ulink url=\"http://"
 "developer.gnome.org/doc/API/2.0/gobject/\">GObject</ulink>."
 msgstr ""
+"通过很好地使用 <ulink url=\"http://developer.gnome.org/doc/API/2.0/gtk/\">"
+"GTK+</ulink> 和 <ulink url=\"http://developer.gnome.org/doc/API/2.0/gobject/\">"
+"GObject</ulink> 实现高度维护性。"
 
 #: Terminal.xml:175(para)
 msgid ""
@@ -887,6 +912,9 @@ msgid ""
 "right mouse button and choose <menuchoice><guimenu>System</"
 "guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>."
 msgstr ""
+"启动 @PACKAGE_NAME@ 最简单的方式是使用您桌面环境的应用程序菜单；在 Xfce 中，"
+"只需要在桌面单击鼠标右键，然后选择 <menuchoice><guimenu>系统</"
+"guimenu><guimenuitem>终端</guimenuitem></menuchoice>。"
 
 #: Terminal.xml:193(para)
 msgid ""
@@ -895,20 +923,25 @@ msgid ""
 "keycap><keycap>F2</keycap></keycombo>, type <userinput><command>Terminal</"
 "command></userinput> and click the button <guibutton>Run</guibutton>."
 msgstr ""
+"您同样可以通过命令行或者 <guilabel>应用程序启动器</guilabel> 来启动 "
+"@PACKAGE_NAME@。按下 <keycombo><keycap>Alt</keycap><keycap>F2</keycap></"
+"keycombo>，输入 <userinput><command>Terminal</command></userinput> "
+"并点击 <guibutton>运行</guibutton> 按钮。"
 
 #: Terminal.xml:203(title)
 msgid "When you first start @PACKAGE_NAME@"
-msgstr ""
+msgstr "第一次启动 @PACKAGE_NAME@"
 
 #: Terminal.xml:205(para)
 msgid ""
 "When you start @PACKAGE_NAME@ for the first time, the application opens a "
 "terminal window with default settings."
 msgstr ""
+"当您第一次启动 @PACKAGE_NAME@，本程序将打开一个默认配置的终端窗口。"
 
 #: Terminal.xml:217(phrase)
 msgid "Example of a default terminal window"
-msgstr ""
+msgstr "默认终端窗口的例子"
 
 #: Terminal.xml:222(para)
 msgid ""
@@ -926,44 +959,47 @@ msgid ""
 "@PACKAGE_NAME@ sets the following environment variables for the command "
 "running inside the terminal window:"
 msgstr ""
+"@PACKAGE_NAME@ 为在终端窗口中运行的命令设置如下环境变量:"
 
 #: Terminal.xml:239(varname)
 msgid "TERM"
-msgstr ""
+msgstr "TERM"
 
 #: Terminal.xml:241(para)
 msgid ""
 "Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you can "
 "configure the value from the preferences dialog."
 msgstr ""
+"设置为 <literal>xterm</literal> 或者 <literal>xterm-color</literal>，您可以在"
+"首选项对话框中配置这个值。"
 
 #: Terminal.xml:246(varname)
 msgid "COLORTERM"
-msgstr ""
+msgstr "COLORTERM"
 
 #: Terminal.xml:248(para)
 msgid "Set to <literal>Terminal</literal> by default."
-msgstr ""
+msgstr "默认设置为 <literal>Terminal</literal>。"
 
 #: Terminal.xml:252(varname)
 msgid "DISPLAY"
-msgstr ""
+msgstr "DISPLAY"
 
 #: Terminal.xml:254(para)
 msgid "Set to the X11 display of the terminal by default."
-msgstr ""
+msgstr "默认设置为终端所使用的 X11 显示。"
 
 #: Terminal.xml:258(varname)
 msgid "WINDOWID"
-msgstr ""
+msgstr "WINDOWID"
 
 #: Terminal.xml:260(para)
 msgid "Set to the X11 window identifier of the terminal by default."
-msgstr ""
+msgstr "默认设置为终端窗口的 X11 窗口标识符。"
 
 #: Terminal.xml:267(title)
 msgid "Working with multiple terminals"
-msgstr ""
+msgstr "使用多个终端工作"
 
 #: Terminal.xml:269(para)
 msgid ""
@@ -973,16 +1009,20 @@ msgid ""
 "tabbed terminal in a window is separate sub-process, so you can use each "
 "terminal for a different task."
 msgstr ""
+"@PACKAGE_NAME@ 提供标签特性，允许您在同一个窗口中打开多个终端。每个终端在一个"
+"独立的标签中打开。点击标签以在窗口中显示与该标签对应的终端。窗口每个标签中的"
+"终端为一个独立的子进程，因此您可以在各个终端中执行不同的任务。"
 
 #: Terminal.xml:284(phrase)
 msgid "Example of a terminal window with tabs"
-msgstr ""
+msgstr "带标签的终端窗口的例子"
 
 #: Terminal.xml:289(para)
 msgid ""
 "See <xref linkend=\"usage\"/> for information about how to open a new tabbed "
 "terminal."
 msgstr ""
+"查看 <xref linkend=\"usage\"/> 以获得如何在新标签中打开一个终端的信息。"
 
 #: Terminal.xml:294(para)
 msgid ""
@@ -990,18 +1030,20 @@ msgid ""
 "tab header or by choosing <menuchoice><guimenu>File</"
 "guimenu><guimenuitem>Close Tab</guimenuitem></menuchoice> from the menubar."
 msgstr ""
+"您可以点击标签上的关闭按钮或者选择菜单栏中的 <menuchoice><guimenu>文件</"
+"guimenu><guimenuitem>关闭标签</guimenuitem></menuchoice> 以关闭一个标签。"
 
 #: Terminal.xml:304(title)
 msgid "Usage"
-msgstr ""
+msgstr "用法"
 
 #: Terminal.xml:307(title)
 msgid "To open and close terminals"
-msgstr ""
+msgstr "打开或关闭终端"
 
 #: Terminal.xml:311(term)
 msgid "To open a new terminal window:"
-msgstr ""
+msgstr "打开一个新的终端窗口:"
 
 #: Terminal.xml:313(para)
 msgid ""
@@ -1009,21 +1051,27 @@ msgid ""
 "guimenuitem></menuchoice> (or right-click the terminal window and choose "
 "<menuchoice><guimenuitem>Open Terminal</guimenuitem></menuchoice>)."
 msgstr ""
+"选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>打开终端</"
+"guimenuitem></menuchoice> (或者右键单击终端窗口并选择 "
+"<menuchoice><guimenuitem>打开终端</guimenuitem></menuchoice>)。"
 
 #: Terminal.xml:315(para)
 msgid ""
 "The new terminal inherits the working directory from its parent terminal."
 msgstr ""
+"新打开的终端将继承其父终端的工作目录。"
 
 #: Terminal.xml:321(term)
 msgid "To close a terminal window:"
-msgstr ""
+msgstr "关闭一个终端窗口:"
 
 #: Terminal.xml:323(para)
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Close Window</"
 "guimenuitem></menuchoice>."
 msgstr ""
+"选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>关闭窗口</"
+"guimenuitem></menuchoice>。"
 
 #: Terminal.xml:325(para)
 msgid ""
@@ -2146,6 +2194,12 @@ msgid ""
 "ulink> - especially the section labeled <emphasis>Coding Style</emphasis> - "
 "before you start hacking up the source."
 msgstr ""
+"假如您希望 Terminal 添加新的功能特性，请清楚描述为什么您认为该功能或者特性"
+"值得添加进程序中。理由足够充分的话，该功能或者特性将更可能被添加进程序中。"
+"如果您能够直接提供该特性的补丁，添加进程序中的可能性将更高，但在您对源代码"
+"进行修改或者添加之前，请确保您先阅读以下文档 "
+"<ulink url=\"http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING\">HACKING</"
+"ulink>，尤其是其中 <emphasis>Coding Style</emphasis> 一节。"
 
 #: Terminal.xml:1322(para)
 msgid ""
@@ -2155,6 +2209,10 @@ msgid ""
 "\">irc.freenode.net</emphasis>, join the channel <emphasis role=\"bold"
 "\">#xfce</emphasis> and ask for help."
 msgstr ""
+"另外，如果您在安装或者使用本软件过程中有任何问题，请在 <ulink url=\"http://"
+"www.xfce.org/community/lists\">Xfce 用户邮件列表</ulink> 中提问，或者可以使用"
+"您的 IRC 客户端，加入 <emphasis role=\"bold\">irc,freenode.net</emphasis> 服务"
+"器上的 <emphasis role=\"bold\">#xfce</emphasis> 频道以获得帮助。"
 
 #: Terminal.xml:1329(title)
 msgid "About @PACKAGE_NAME@"
@@ -2188,7 +2246,7 @@ msgid ""
 "License as published by the Free Software Foundation; either version 2 of "
 "the License, or (at your option) any later version."
 msgstr ""
-"此软件在自由软件基金会发布的 GNU 通用公共许可协议的第二版或者(您可以选择)更新"
+"本软件在自由软件基金会发布的 GNU 通用公共许可协议的第二版或者(您可以选择)更新"
 "的版本的条款约束下发布。"
 
 #: Terminal.xml:1350(para)
@@ -2197,7 +2255,7 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
 "Place - Suite 330, Boston, MA 02111-1307, USA."
 msgstr ""
-"您应该能够随此软件获得一份 GNU 通用公共许可协议的副本；如果没有，请致信自由软"
+"您应该能够随本软件获得一份 GNU 通用公共许可协议的副本；如果没有，请致信自由软"
 "件基金会: Free Software Foundation, Inc., 59 Temple Place - Suite 330, "
 "Boston, MA 02111-1307, USA."
 
