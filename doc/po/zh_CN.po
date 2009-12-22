@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal\n"
 "POT-Creation-Date: 2009-12-14 18:06+0100\n"
-"PO-Revision-Date: 2009-12-18 21:19+0800\n"
+"PO-Revision-Date: 2009-12-22 20:00+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -347,11 +347,11 @@ msgstr ""
 
 #: Terminal.1.xml:293(replaceable)
 msgid "role"
-msgstr ""
+msgstr "角色"
 
 #: Terminal.1.xml:293(option)
 msgid "--role=<placeholder-1/>"
-msgstr ""
+msgstr "--role=<placeholder-1/>"
 
 #: Terminal.1.xml:296(para)
 msgid ""
@@ -360,14 +360,17 @@ msgid ""
 "window you create from the command line. It is mostly used for session "
 "management inside @PACKAGE_NAME@"
 msgstr ""
+"设置最后所指定的窗口的窗口角色为 <parameter>角色</parameter>。只对一个窗口"
+"生效且对每个您从命令行启动的窗口仅能指定一次该选项。该选项常用于在 "
+"@PACKAGE_NAME@ 中进行会话管理。"
 
 #: Terminal.1.xml:306(replaceable)
 msgid "string"
-msgstr ""
+msgstr "字符串"
 
 #: Terminal.1.xml:306(option)
 msgid "--startup-id=<placeholder-1/>"
-msgstr ""
+msgstr "--startup-id=<placeholder-1/>"
 
 #: Terminal.1.xml:309(para)
 msgid ""
@@ -375,6 +378,8 @@ msgid ""
 "internally to forward the startup notification id when using the D-BUS "
 "service."
 msgstr ""
+"设置最后所指定的窗口的启动提示标识符。用于使用 D-BUS 服务时在内部传送启动"
+"提示标识符。"
 
 #: Terminal.1.xml:318(replaceable)
 msgid "icon"
@@ -1196,6 +1201,9 @@ msgid ""
 "the appearance and behaviour of the terminal windows. For example, you can "
 "change the background color or the location of the scrollbar."
 msgstr ""
+"查看 <xref linkend=\"preferences\"/> 以获取您在 <guilabel>终端首选项</guilabel> "
+"对话框中所选择用以改变终端窗口的外观和行为的选项的更多信息。例如，您可以改变终端"
+"的背景色和滚动条的位置。"
 
 #: Terminal.xml:398(title)
 msgid "To work with the contents of terminal windows"
@@ -1256,6 +1264,8 @@ msgid ""
 "<guilabel>General</guilabel> section of the <guilabel>Terminal Preferences</"
 "guilabel> dialog."
 msgstr ""
+"终端窗口中能够回滚的行数在 <guilabel>终端首选项</guilabel> 对话框中的 <guilabel>"
+"常规</guilabel> 选项卡中的 <guilable>回滚</guilabel> 设置处指定。"
 
 #: Terminal.xml:447(term)
 msgid "To select and copy text:"
@@ -1270,20 +1280,24 @@ msgid ""
 "To select a character at a time, click on the first character that you want "
 "to select and drag the mouse to the last character that you want to select."
 msgstr ""
-"To select a character at a time, click on the first character that you want "
-"to select and drag the mouse to the last character that you want to select."
+"以字符为单位选中文本，单击您要选择的第一个字符，并拖拽鼠标到您所要选择的最后"
+"一个字符处以选定文本。"
 
 #: Terminal.xml:456(para)
 msgid ""
 "To select a word at a time, double-click on the first word that you want to "
 "select and drag the mouse to the last word that you want to select."
 msgstr ""
+"以词为单位选中文本，双击您所要选择的第一个词，并拖拽鼠标到您所要选择的最后一个"
+"词处以选定文本。"
 
 #: Terminal.xml:460(para)
 msgid ""
 "To select a line at a time, triple-click on the first line that you want to "
 "select and drag the mouse to the last line that you want to select."
 msgstr ""
+"以行为单位选中文本，在您所要选择的第一行处点击三次，并拖拽鼠标到您做要选择的"
+"最后一行处以选定文本。"
 
 #: Terminal.xml:464(para)
 msgid ""
@@ -1293,6 +1307,10 @@ msgid ""
 "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></"
 "menuchoice>."
 msgstr ""
+"这些操作都会选中第一个和最后一个项目之间的所有文本。对于所有选中的文本，"
+"在您松开鼠标按钮之后，@PACKAGE_NAME@ 将会复制该文本至剪贴板。要手动粘贴所选"
+"文本，请选择 <menuchoice><guimenu>编辑</guimenu><guimenuitem>复制</"
+"guimenuitem></menuchoice>。"
 
 #: Terminal.xml:471(term)
 msgid "To paste text into a terminal:"
@@ -1349,20 +1367,23 @@ msgid ""
 "To access a Uniform Resource Locator (URL) that is displayed in a terminal "
 "window, perform the following steps:"
 msgstr ""
+"要使用终端窗口中显示的 URL，请按以下步骤操作:"
 
 #: Terminal.xml:507(para)
 msgid "Move the mouse over the URL until the URL is underlined."
-msgstr ""
+msgstr "将鼠标移至该 URL 上方直至该 URL出现下划线。"
 
 #: Terminal.xml:510(para)
 msgid "Right-click on the URL to open the context menu."
-msgstr ""
+msgstr "右键点击该 URL，打开内容菜单。"
 
 #: Terminal.xml:513(para)
 msgid ""
 "Choose <guimenuitem>Open Link</guimenuitem> from the context menu to start "
 "your preferred Web Browser and display the file located at the URL."
 msgstr ""
+"从内容菜单中选择 <guimenuitem>打开链接</guimenuitem> 以使用您首选的网络浏览器"
+"打开该 URL。"
 
 #: Terminal.xml:524(term)
 msgid "To compose an email:"
@@ -1528,7 +1549,7 @@ msgstr ""
 
 #: Terminal.xml:653(phrase)
 msgid "Customizing the toolbars"
-msgstr ""
+msgstr "自定义工具栏"
 
 #: Terminal.xml:658(para)
 msgid ""
@@ -1544,7 +1565,7 @@ msgstr ""
 
 #: Terminal.xml:668(title)
 msgid "To switch between different encodings"
-msgstr ""
+msgstr "在不同的编码之间切换"
 
 #: Terminal.xml:670(para)
 msgid ""
@@ -1554,6 +1575,10 @@ msgid ""
 "jussieu.fr/~jch/software/luit/\">Luit application</ulink> to switch between "
 "different character encodings within a terminal session."
 msgstr ""
+"@PACKAGE_NAME@ 本身 (暂时) 并未提供在终端会话过程中进行编码切换的内置支持。"
+"但由于 @PACKAGE_NAME@ 实现了一个 UTF-8 模式，您可以使用 <ulink url=\"http://www.pps."
+"jussieu.fr/~jch/software/luit/\">Luit 应用程序</ulink> 来在终端会话过程中"
+"在不同的字符编码间进行切换。"
 
 #: Terminal.xml:680(title) Terminal.xml:689(phrase)
 msgid "Preferences"
@@ -1568,6 +1593,11 @@ msgid ""
 "will bring up the <guilabel>Terminal Preferences</guilabel> dialog, which "
 "allows you to adjust @PACKAGE_NAME@'s behaviour to your needs."
 msgstr ""
+"要配置 @PACKAGE_NAME@，请选择 <menuchoice><guimenu>编辑</"
+"guimenu><guimenuitem>首选项...</guimenuitem></menuchoice> 或者右键点击窗口中"
+"的终端区域并选择 <menuchoice><guimenuitem>首选项...</guimenuitem></"
+"menuchoice>。然后将会出现 <guilabel>终端首选项</guilabel> 对话框，此对话框"
+"允许您按您的需求来调整 @PACKAGE_NAME@ 的行为方式"
 
 #: Terminal.xml:700(title)
 msgid "General"
@@ -1605,10 +1635,12 @@ msgid ""
 "Use this drop-down list to specify how to handle dynamically-set titles, "
 "that is, terminal titles set by the commands that run in the terminal."
 msgstr ""
+"使用此下拉菜单来指定对动态标题的控制。即是，终端标题由终端中所运行的命令"
+"来设置。"
 
 #: Terminal.xml:733(guilabel)
 msgid "Run command as login shell"
-msgstr ""
+msgstr "作为 login shell 运行命令"
 
 #: Terminal.xml:735(para)
 msgid ""
@@ -1617,30 +1649,35 @@ msgid ""
 "details about differences between running it as interactive shell and "
 "running it as login shell."
 msgstr ""
+"选中此选项以强制 @PACKAGE_NAME@ 在您新打开终端时将您的 shell 作为 login shell "
+"运行。查看您使用的 shell 的文档以了解更多关于 interactive shell 与 login "
+"shell 的区别的详细信息。"
 
 #: Terminal.xml:742(guilabel)
 msgid "Update utmp/wtmp records when command is launched"
-msgstr ""
+msgstr "当程序启动时更新 utmp/wtmp 记录"
 
 #: Terminal.xml:744(para)
 msgid ""
 "Select this option to insert a new entry in the utmp and wtmp records when a "
 "new terminal is opened."
 msgstr ""
+"选中此选项以在新终端打开时在 utmp 和 wtmp 文件中添加一条新记录。"
 
 #: Terminal.xml:749(guilabel)
 msgid "Scroll on output"
-msgstr ""
+msgstr "输出时滚动"
 
 #: Terminal.xml:751(para)
 msgid ""
 "Select this option to enable you to scroll the output on the terminal while "
 "the terminal continues to display more output from a command."
 msgstr ""
+"选中此选项以允许您在终端输出内容时进行滚动。"
 
 #: Terminal.xml:756(guilabel)
 msgid "Scroll on keystroke"
-msgstr ""
+msgstr "使用按键滚动"
 
 #: Terminal.xml:758(para)
 msgid ""
@@ -1649,20 +1686,23 @@ msgid ""
 "you scrolled up the terminal window and you want to return to the command "
 "prompt."
 msgstr ""
+"选中该选项以启用当您按下键盘上的任意键时自动滚动终端窗口内容至命令提示符的"
+"功能。此项功能只在您将终端窗口内容向上滚动并且想回到命令提示符的时候有用。"
 
 #: Terminal.xml:765(guilabel)
 msgid "Scrollbar is"
-msgstr ""
+msgstr "滚动条位置"
 
 #: Terminal.xml:767(para)
 msgid ""
 "Use this drop-down list to specify the position of the scrollbar in terminal "
 "windows."
 msgstr ""
+"使用此下拉列表指定滚动条在终端窗口中的位置。"
 
 #: Terminal.xml:772(guilabel)
 msgid "Scrollback"
-msgstr ""
+msgstr "回滚"
 
 #: Terminal.xml:774(para)
 msgid ""
@@ -1670,6 +1710,8 @@ msgid ""
 "using the scrollbar or the mouse wheel. For example, if you specify 1000 you "
 "can scroll back the last 1000 lines displayed in the terminal."
 msgstr ""
+"使用此数字框指定您能够使用鼠标滚轮在终端中回滚的行数。例如，如果您指定此值为 "
+"1000 那么您最多可以回滚到终端中最后显示的 1000 行。"
 
 #: Terminal.xml:783(title)
 msgid "Appearance"
@@ -1698,6 +1740,9 @@ msgid ""
 "speed up terminal rendering performance and reduce the overall system load "
 "on slow systems."
 msgstr ""
+"使用 <guilabel>为终端字体启用抗锯齿效果</guilabel> 选项来控制 @PACKAGE_NAME@ "
+"是否在终端渲染文本时为字体启用抗锯齿效果。禁用此项可以让性能较差的系统在绘制的"
+"响应速度和系统的资源利用两个方面得到显著提升。"
 
 #: Terminal.xml:813(para)
 msgid ""
@@ -1706,6 +1751,9 @@ msgid ""
 "all text will appear in the selected font, else certain text will appear in "
 "bold face."
 msgstr ""
+"<guilabel>允许粗体显示</guilabel> 选项控制终端是否允许运行在其中的应用程序使用"
+"粗体显示。如果禁用此选项，所有的文本都将以所选字体显示，否则某些特定的文本将会"
+"以粗体显示。"
 
 #: Terminal.xml:822(guilabel)
 msgid "Background"
@@ -1740,6 +1788,9 @@ msgid ""
 "and name of the image file. Alternatively, click on the button besides the "
 "entry box to search for and select the image file."
 msgstr ""
+"选择此选项以在终端中使用图像文件作为背景。使用 <guilabel>图像文件</guilabel> "
+"文本框输入图像文件的位置和文件名。当然，您同样可以点击文本框旁边的按钮以浏览并"
+"选择图像文件。"
 
 #: Terminal.xml:843(para)
 msgid ""
@@ -1747,6 +1798,8 @@ msgid ""
 "background image. @PACKAGE_NAME@ supports tiling, centering, scaling and "
 "stretching background images."
 msgstr ""
+"使用 <guilabel>风格</guilabel> 选项来控制背景图像的显示效果。"
+"@PACKAGE_NAME@ 支持平铺、居中、缩放和延伸该背景图像。"
 
 #: Terminal.xml:849(guilabel)
 msgid "Transparent background"
@@ -1763,6 +1816,9 @@ msgid ""
 "<guilabel>Shade transparent or image background</guilabel> to shade or dim "
 "the background of the terminal."
 msgstr ""
+"如果您选择 <guilabel>背景图像</guilabel> 或者 <guilabel>透明背景</guilabel>，"
+"您可以使用 <guilabel>为透明背景或者背景图像使用阴影效果</guilabel> 这个滑动块来"
+"调节终端背景的阴影程度。"
 
 #: Terminal.xml:862(guilabel)
 msgid "Display menubar in new windows"
@@ -1812,6 +1868,9 @@ msgid ""
 "color for the text cursor. An application running inside the terminal can "
 "also request a different color chosen from the palette below to draw text."
 msgstr ""
+"<guilabel>文本和光标颜色</guilabel> 标签下的两个按钮用于选择颜色。"
+"@PACKAGE_NAME@ 使用所选的颜色来显示普通文本和文本光标。一个在终端中运行的"
+"应用程序同样可能需要从下面的调色板中获得一个其他颜色来显示文本。"
 
 #: Terminal.xml:906(para)
 msgid ""
@@ -1820,6 +1879,9 @@ msgid ""
 "background tinting when <guilabel>Transparent background</guilabel> or "
 "<guilabel>Background image</guilabel> is selected."
 msgstr ""
+"点击 <guilabel>背景颜色</guilabel> 按钮以选择终端窗口默认使用的背景颜色。"
+"该颜色同样在使用 <guilabel>透明背景</guilabel> 或者 <guilabel>背景图像</"
+"guilabel> 时用以背景着色。"
 
 #: Terminal.xml:913(guilabel)
 msgid "Text Selection"
@@ -1830,6 +1892,7 @@ msgid ""
 "Select the background color to use when selecting text in a terminal window. "
 "You can either specify a custom color or stick to the default color."
 msgstr ""
+"选择在终端窗口中选中文本时的背景颜色。您可以指定一个颜色或者使用默认的颜色。"
 
 #: Terminal.xml:920(guilabel)
 msgid "Palette"
@@ -1840,6 +1903,7 @@ msgid ""
 "The terminal provides the application running inside with a palette of 16 "
 "colors. You can customize these colors using the 16 color buttons."
 msgstr ""
+"终端提供了一个 16 色的调色器。您可以通过 16 个颜色按钮来自定义这些颜色。"
 
 #: Terminal.xml:930(title)
 msgid "Shortcuts"
@@ -1862,10 +1926,14 @@ msgid ""
 "modifier key and several modifier keys, where modifier keys are <keycap>Alt</"
 "keycap>, <keycap>Ctrl</keycap> and the like."
 msgstr ""
+"对话框中的 <guilabel>快捷键</guilabel> 一节列出了每个菜单项目的快捷键。这些"
+"快捷键允许您使用键盘替代鼠标来选择菜单项。一个快捷键可以是任意非修饰键或者"
+"任意一个非修饰键与一个或者几个修饰键的组合，修饰键指的是 <keycap>Alt</"
+"keycap>、<keycap>Ctrl</keycap> 等按键。"
 
 #: Terminal.xml:962(phrase)
 msgid "Compose shortcut"
-msgstr ""
+msgstr "组合快捷键"
 
 #: Terminal.xml:967(para)
 msgid ""
@@ -1874,6 +1942,8 @@ msgid ""
 "specific menu item, double click the menu item in the list and click the "
 "button <guilabel>Clear</guilabel>."
 msgstr ""
+"要修改菜单项的快捷键，在列表中双击该项目，然后按下您要设置的组合键。要禁用某个"
+"菜单项目的快捷键，在列表中双击该项目并点击 <guilabel>清除</guilabel> 按钮。"
 
 #: Terminal.xml:975(guilabel)
 msgid "Disable all menu access keys (such as Alt+f)"
@@ -1887,6 +1957,9 @@ msgid ""
 "cases, you must press the <keycap>Alt</keycap> key in combination with the "
 "access key to perform the action."
 msgstr ""
+"选中此选项以禁用使用键盘快捷键替代鼠标来选择一个菜单项的功能。在菜单或者对话框"
+"的选项中，快捷键以加下划线的字母标注。有时您必须同时按下 <keycap>Alt</keycap> "
+"键和该快捷键来进行操作。"
 
 #: Terminal.xml:986(guilabel)
 msgid "Disable menu shortcut key (F10 by default)"
@@ -1898,6 +1971,8 @@ msgid ""
 "to access the @PACKAGE_NAME@ menus. The default shortcut key to access the "
 "menus is <keycap>F10</keycap>."
 msgstr ""
+"选中该选项以禁止使用 @PACKAGE_NAME@ 菜单的快捷键。默认用以使用菜单的快捷键是 "
+"<keycap>F10</keycap>。"
 
 #: Terminal.xml:997(title)
 msgid "Advanced"
@@ -1909,23 +1984,27 @@ msgstr "高级首选项"
 
 #: Terminal.xml:1013(guilabel)
 msgid "Backspace key generates"
-msgstr ""
+msgstr "Backspace 键产生"
 
 #: Terminal.xml:1015(para)
 msgid ""
 "Use the drop-down list to select the function that you want the "
 "<keycap>Backspace</keycap> key to perform."
 msgstr ""
+"使用下拉菜单选择您需要的按下 <keycap>Backspace</keycap> 键时执行的"
+"功能。"
 
 #: Terminal.xml:1020(guilabel)
 msgid "Delete key generates"
-msgstr ""
+msgstr "Delete 键产生"
 
 #: Terminal.xml:1022(para)
 msgid ""
 "Use the drop-down list to select the function that you want the "
 "<keycap>Delete</keycap> key to perform."
 msgstr ""
+"使用下拉菜单选择您需要的按下 <keycap>Delete</keycap> 键时执行的"
+"功能。"
 
 #: Terminal.xml:1027(guilabel)
 msgid "$TERM setting"
@@ -1940,26 +2019,34 @@ msgid ""
 "<userinput>xterm-color</userinput> here. If you have problems with ncurses "
 "5.6 or later you could also try <userinput>xfce</userinput>."
 msgstr ""
+"此选项设置当一个新终端标签或者终端窗口打开时，<varname>$TERM</varname> 这个"
+"环境变量的值。使用默认值在大多数系统上都应该能够正常工作。如果您在某些应用"
+"程序中有颜色问题或者您认为某个程序的行为不正常，尝试将此选项指定为 "
+"<userinput>xterm-color</userinput>。如果和 ncurses 的 5.6 或者更高版本有冲突"
+"时，您可以尝试将此选项指定为 <userinput>xfce</userinput>。"
 
 #: Terminal.xml:1039(guilabel)
 msgid "Reset compatibility options to defaults"
-msgstr ""
+msgstr "重置兼容性选项至默认值"
 
 #: Terminal.xml:1041(para)
 msgid ""
 "Click this button to reset the options on the <guilabel>Compatibility</"
 "guilabel> tabbed section to its defaults settings."
 msgstr ""
+"点击此按钮以重置 <guilabel>兼容性</guilabel> 标签下的所有选项至其默认值。"
 
 #: Terminal.xml:1046(guilabel)
 msgid "Double click"
-msgstr ""
+msgstr "双击"
 
 #: Terminal.xml:1048(para)
 msgid ""
 "Use this text box to specify characters or groups of characters that "
 "@PACKAGE_NAME@ considers to be words when you select text by word."
 msgstr ""
+"使用文本框指定在您以词为单位选中文本时，@PACKAGE_NAME@ 会将其认为是词"
+"的字符或者字符串。"
 
 #: Terminal.xml:1057(title)
 msgid "Command line options"
@@ -1987,6 +2074,11 @@ msgid ""
 "create the file if it does not already exist. For example, your "
 "<filename>terminalrc</filename> could look like"
 msgstr ""
+"@PACKAGE_NAME@ 提供一系列的隐藏选项，既允许有经验的用户控制程序中的很多高级设置，"
+"也减少了用户界面中选项的数量。要设置这些隐藏选项，您需要使用您的文本编辑器打开"
+"文件 <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> 并且编辑其中的"
+" <varname>[Configuration]</varname> 一段；如果该文件不存在，则请创建它。例如，您"
+"的 <filename>terminalrc</filename> 会看起来像"
 
 #: Terminal.xml:1088(programlisting)
 #, no-wrap
@@ -2025,6 +2117,7 @@ msgstr ""
 msgid ""
 "plus all the options that are controlled through the preferences dialog."
 msgstr ""
+"加上可以通过首选项对话框控制的所有选项。"
 
 #: Terminal.xml:1109(varname)
 msgid "MiscAlwaysShowTabs"
@@ -2037,6 +2130,9 @@ msgid ""
 "the terminal window to resize when you open a second tab. It is disabled by "
 "default."
 msgstr ""
+"如果此项设置为 <literal>TRUE</literal>，标签栏即使在当前窗口中只有一个标签时"
+"也会显示。该选项在您不希望打开新的标签时终端窗口会改变其大小时非常有用。选项"
+"值默认为禁用。"
 
 #: Terminal.xml:1120(varname)
 msgid "MiscBell"
@@ -2048,6 +2144,8 @@ msgid ""
 "(<varname>MiscBell=FALSE</varname>) the audible terminal bell. It is "
 "disabled by default."
 msgstr ""
+"启用 (<varname>MiscBell=TRUE</varname>) 或者禁用 (<varname>MiscBell=FALSE</"
+"varname>) 终端响铃。默认值为禁用。"
 
 #: Terminal.xml:1130(varname)
 msgid "MiscConfirmClose"
@@ -2059,6 +2157,8 @@ msgid ""
 "tries to close a terminal window with multiple tabs in it. Can be either "
 "<literal>TRUE</literal> (the default) or <literal>FALSE</literal>."
 msgstr ""
+"此选项设置 @PACKAGE_NAME@ 是否在用户尝试关闭包含多个标签的窗口时弹出确认对话"
+"框。选项值可以为 <literal>TRUE</literal>(默认值) 或者 <literal>FALSE</literal>。"
 
 #: Terminal.xml:1141(varname)
 msgid "MiscCursorBlinks"
@@ -2069,6 +2169,8 @@ msgid ""
 "Enable this option to display a cursor that blinks. Can be either "
 "<literal>TRUE</literal> or <literal>FALSE</literal> (the default)."
 msgstr ""
+"启用该选项以显示闪烁光标。选项值可以为 <literal>TRUE</literal> 或者 <literal>"
+"FALSE</literal>(默认值)。"
 
 #: Terminal.xml:1151(varname)
 msgid "MiscCursorShape"
@@ -2082,6 +2184,11 @@ msgid ""
 "<literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>. This option is only "
 "available when you compile against VTE 0.19.1 or newer."
 msgstr ""
+"此选项指定终端中的光标形状。选项值可以为 "
+"<literal>TERMINAL_CURSOR_SHAPE_BLOCK</literal>(默认值)、"
+"<literal>TERMINAL_CURSOR_SHAPE_IBEAM</literal> 或者 "
+"<literal>TERMINAL_CURSOR_SHAPE_UNDERLINE</literal>。该选项只在基于 VTE "
+"0.19.1 或者更新的版本编译时有效。"
 
 #: Terminal.xml:1164(varname)
 msgid "MiscCycleTabs"
@@ -2097,6 +2204,11 @@ msgid ""
 "<guimenu>Go</guimenu> menu. The option can be either <literal>TRUE</literal> "
 "(the default) or <literal>FALSE</literal>."
 msgstr ""
+"此选项控制是否允许循环切换终端标签。即是否允许您通过 <guimenu>转到</guimenu> "
+"菜单中的 <guimenuitem>下一个标签</guimenuitem> 按钮 (或者绑定键盘快捷键) 来从"
+"最后一个标签切换至第一个标签，和通过 <guimenu>转到</guimenu> 菜单中的 "
+"<guimenuitem>上一个标签</guimenuitem> 按钮来从第一个标签切换至最后一个标签。"
+"选项值可以为 <literal>TRUE</literal>(默认值) 或者 <literal>FALSE</literal>。"
 
 #: Terminal.xml:1178(varname)
 msgid "MiscDefaultGeometry"
@@ -2108,6 +2220,8 @@ msgid ""
 "window-geometry\"/> option is specified on the command line (defaults to "
 "<literal>80x24</literal>)."
 msgstr ""
+"如果未从命令行中指定 <xref linkend=\"options-window-geometry\"/> 选项时默认"
+"新打开的终端窗口默认的几何属性 (默认值为 <literal>80x24</literal>)。"
 
 #: Terminal.xml:1188(varname)
 msgid "MiscInheritGeometry"
@@ -2120,6 +2234,9 @@ msgid ""
 "the new window was opened). Can be either <literal>TRUE</literal> or "
 "<literal>FALSE</literal> (the default)."
 msgstr ""
+"此项设置控制新窗口是否继承其父窗口 (用以打开新窗口的终端窗口) 的几何属性 (活动"
+"标签的高度和宽度)。选项值可以为 <literal>TRUE</literal> 或者 <literal>FALSE</"
+"literal>(默认值)。"
 
 #: Terminal.xml:1200(varname)
 msgid "MiscMouseAutohide"
@@ -2131,6 +2248,8 @@ msgid ""
 "while you are typing in a terminal window. Can be either <literal>TRUE</"
 "literal> or <literal>FALSE</literal> (the default)."
 msgstr ""
+"此项设置控制 @PACKAGE_NAME@ 是否在您在终端窗口中进行输入时隐藏鼠标光标。"
+"选项值可以为 <literal>TRUE</literal> 或者 <literal>FALSE</literal>(默认值)。"
 
 #: Terminal.xml:1211(varname)
 msgid "MiscTabCloseButtons"
@@ -2142,6 +2261,8 @@ msgid ""
 "the terminal tab title. Can be either <literal>TRUE</literal> (the default) "
 "or <literal>FALSE</literal>."
 msgstr ""
+"此项设置控制 @PACKAGE_NAME@ 是否在标签上显示关闭按钮。选项值可以为 "
+"<literal>TRUE</literal>(默认值) 或者 <literal>FALSE</literal>。"
 
 #: Terminal.xml:1222(varname)
 msgid "MiscTabCloseMiddleClick"
@@ -2153,6 +2274,8 @@ msgid ""
 "the user middle-clicks the tab title. Can be either <literal>TRUE</literal> "
 "(the default) or <literal>FALSE</literal>."
 msgstr ""
+"此项设置控制 @PACKAGE_NAME@ 是否在您中键点击标签时关闭该标签。选项值可以为 "
+"<literal>TRUE</literal>(默认值) 或者 <literal>FALSE</literal>。"
 
 #: Terminal.xml:1233(varname)
 msgid "MiscTabPosition"
@@ -2169,6 +2292,12 @@ msgid ""
 "disable <varname>MiscTabCloseButtons</varname> for <literal>GTK_POS_LEFT</"
 "literal> and <literal>GTK_POS_RIGHT</literal>."
 msgstr ""
+"指定标签栏在窗口中的位置。此选项值可以为 <literal>GTK_POS_TOP</literal>(默认值)、"
+"<literal>GTK_POS_LEFT</literal>、<literal>GTK_POS_BOTTOM</literal> 或者 "
+"<literal>GTK_POS_RIGHT</literal>。如果您在此指定 <literal>GTK_POS_LEFT</"
+"literal> 或者 <literal>GTK_POS_RIGHT</literal>，标签栏的文本将是竖直显示而非常见的"
+"水平排列。因此当您使用 <literal>GTK_POS_LEFT</literal> 或者 <literal>GTK_POS_RIGHT</"
+"literal> 时，强烈推荐您禁用 <varname>MiscTabCloseButtons</varname>。"
 
 #: Terminal.xml:1248(varname)
 msgid "MiscHighlightUrls"
@@ -2182,6 +2311,9 @@ msgid ""
 "anymore and you will no longer be able to middle-click the URL to open it in "
 "the preferred application."
 msgstr ""
+"这项设置控制在终端窗口中的 URL(包括超链接和电子邮件地址) 是否高亮显示。如果您"
+"将此项改为 <literal>FALSE</literal>，终端中的 URL 将不会高亮显示，与此同时，"
+"您也无法使用中键点击该 URL 以在您首选的应用程序中打开该 URL 的功能。"
 
 #: Terminal.xml:1264(title)
 msgid "Frequently asked questions"
@@ -2195,12 +2327,18 @@ msgid ""
 "page, please <ulink url=\"http://bugzilla.xfce.org/enter_bug.cgi?"
 "product=Terminal&amp;format=guided\">file a request</ulink>."
 msgstr ""
+"本节的目的是说明 @PACKAGE_NAME@ 或者甚至是许多终端模拟器在使用中常出现的问题。"
+"如果您认为还有哪些常见问题在本节中遗漏了，请 "
+"<ulink url=\"http://bugzilla.xfce.org/enter_bug.cgi?"
+"product=Terminal&amp;format=guided\">提出您的建议</ulink>。"
 
 #: Terminal.xml:1271(title)
 msgid ""
 "@PACKAGE_NAME@ complains about <literal>Unable to start terminal server: "
 "Unable to connect to D-BUS message daemon</literal>, what can I do?"
 msgstr ""
+"@PACKAGE_NAME@ 报告 <literal>无法启动终端服务: 无法连接至 D-BUS 信息守护"
+"进程</literal>，怎么办？"
 
 #: Terminal.xml:1274(para)
 msgid ""
@@ -2210,6 +2348,9 @@ msgid ""
 "session message daemon and register a service. This is just a warning, you "
 "can use the terminal without the D-BUS service feature as well."
 msgstr ""
+"@PACKAGE_NAME@ 通过与 D-BUS 服务建立连接来管理所有的终端窗口以尝试减少运行"
+"实例的数量。上面的信息告诉您 @PACKAGE_NAME@ 无法连接至 D-BUS 会话管理守护进程"
+"以注册一个服务。这仅是一个警告，不使用 D-BUS 服务功能，您仍然可以正常使用终端。"
 
 #: Terminal.xml:1279(para)
 msgid ""
@@ -2220,12 +2361,19 @@ msgid ""
 "don't use Xfce, please look at the documentation of your desktop environment "
 "on how to enable the D-BUS session daemon."
 msgstr ""
+"要在登录到您的 X 会话时启动 D-BUS 会话信息守护进程，可以通过以下两种方式: "
+"修改您的 xinitrc 文件，将 <literal>xfce4-session</literal> 这一行改为 "
+"<literal>dbus-launch xfce4-session</literal>；或者直接使用 "
+"<literal>dbus-launch startxfce4</literal> 来启动 Xfce。如果您并不使用 Xfce，则"
+"请参考您所使用的桌面环境的文档以了解如何在该桌面环境中启动 D-BUS 会话守护进程。"
 
 #: Terminal.xml:1287(title)
 msgid ""
 "<keycap>Home</keycap> and <keycap>End</keycap> keys don't work in "
 "@PACKAGE_NAME@, what's wrong?"
 msgstr ""
+"为什么 <keycap>Home</keycap> 和 <keycap>End</keycap> 键在 @PACKAGE_NAME@ 中无法"
+"正常工作？"
 
 #: Terminal.xml:1289(para)
 msgid ""
@@ -2236,10 +2384,16 @@ msgid ""
 "ulink> (this patch was created with version 0.11.11 of vte, it may not work "
 "with other versions). Thanks to Auke Kok for this patch."
 msgstr ""
+"该问题其实是由 <ulink url=\"http://developer.gnome.org/"
+"arch/gnome/widgets/vte.html\">vte</ulink>，这个 @PACKAGE_NAME@ 所使用的终端控件"
+"的 bug 引起的。一个给 vte 的补丁可以从 <ulink "
+"url=\"http://lunar-linux.org/lunar/patches/vte-0.11.11-termcap.patch\">这里</"
+"ulink>获得 (这个补丁是在 vte 的 0.11.11 版本的基础上生成的，在其他版本的 vte 上"
+"可能无法生效)。感谢补丁作者 Auke Kok。"
 
 #: Terminal.xml:1296(title)
 msgid "Support"
-msgstr ""
+msgstr "支持"
 
 #: Terminal.xml:1298(para)
 msgid ""
@@ -2249,6 +2403,10 @@ msgid ""
 "</ulink>. Remember that useful bug reports are ones that get bugs fixed, so "
 "a useful bug report has two qualities:"
 msgstr ""
+"报告错误或者对本程序或本文档提供建议，请使用位于 <ulink url=\"http://bugzilla.xfce.org/"
+"enter_bug.cgi?product=Terminal&amp;format=guided\">http://bugzilla.xfce.org/"
+"</ulink> 上的 bug 追踪系统。请注意，有效的错误报告应该能够很好地帮助解决问题，"
+"因此，一个有效的错误报告应该具备如下两个特点:"
 
 #: Terminal.xml:1305(para)
 msgid ""
@@ -2256,6 +2414,9 @@ msgid ""
 "the bug himself to prove that it exists, he will most probably not be able "
 "to fix it at all. Every detail you can provide helps."
 msgstr ""
+"<emphasis role=\"bold\">可重现的。</emphasis> 如果开发者自己无法体验该错误以证明"
+"其确实存在，他很可能完全无法去解决该问题。您所能够提供的每个细节信息都将会有所"
+"帮助。"
 
 #: Terminal.xml:1310(para)
 msgid ""
@@ -2263,6 +2424,8 @@ msgid ""
 "isolate the problem to a specific area, the more likely he will expediently "
 "fix it."
 msgstr ""
+"<emphasis role=\"bold\">明确的。</emphasis> 开发者能够越快地确定问题的所在，"
+"问题就可能被越快地解决。"
 
 #: Terminal.xml:1315(para)
 msgid ""
@@ -2346,23 +2509,3 @@ msgid "translator-credits"
 msgstr ""
 "Hunt Xu <huntxu@live.cn>, 2009."
 
-#~ msgid "Xfce desktop environment"
-#~ msgstr "Xfce 桌面环境"
-
-#~ msgid "freedesktop.org"
-#~ msgstr "freedesktop.org"
-
-#~ msgid "D-BUS"
-#~ msgstr "D-BUS"
-
-#~ msgid "GTK+"
-#~ msgstr "GTK+"
-
-#~ msgid "GObject"
-#~ msgstr "GObject"
-
-#~ msgid ""
-#~ "High degree of maintainability by making best use of <placeholder-1/> and "
-#~ "<placeholder-2/>."
-#~ msgstr ""
-#~ "通过很好地使用 <placeholder-1/> 和 <placeholder-2/> 实现高度维护性。"
