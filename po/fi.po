@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.10\n"
+"Project-Id-Version: Terminal 0.4.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-14 16:03+0100\n"
-"PO-Revision-Date: 2008-10-31 12:45+0200\n"
+"POT-Creation-Date: 2010-01-26 18:00+0100\n"
+"PO-Revision-Date: 2010-01-26 21:26+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,82 +17,74 @@ msgstr ""
 
 #: ../terminal/main.c:48
 msgid "Usage:"
-msgstr ""
+msgstr "Käyttö:"
 
 #: ../terminal/main.c:48
 msgid "OPTION"
-msgstr ""
+msgstr "VALITSIN"
 
 #: ../terminal/main.c:53
-#, fuzzy
 msgid "General Options"
-msgstr "Yleiset"
+msgstr "Yleiset valitsimet"
 
 #. parameter of --default-display
 #. parameter of --display
 #: ../terminal/main.c:55 ../terminal/main.c:81
-#, fuzzy
 msgid "display"
-msgstr "Ei näytetä"
+msgstr "näyttö"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
 #: ../terminal/main.c:57 ../terminal/main.c:72
 msgid "directory"
-msgstr ""
+msgstr "kansio"
 
 #: ../terminal/main.c:61
 msgid "Window or Tab Separators"
-msgstr ""
+msgstr "Ikkunan tai välilehden erottimet"
 
 #: ../terminal/main.c:66
-#, fuzzy
 msgid "Tab Options"
-msgstr "Välilehden sijainti"
+msgstr "Välilehtiasetukset"
 
 #. parameter of --command
 #: ../terminal/main.c:68
-#, fuzzy
 msgid "command"
-msgstr "<b>Komento</b>"
+msgstr "komento"
 
 #. parameter of --title
 #: ../terminal/main.c:70
-#, fuzzy
 msgid "title"
-msgstr "Otsake"
+msgstr "otsake"
 
 #: ../terminal/main.c:79
-#, fuzzy
 msgid "Window Options"
-msgstr "Tuntematon valitsin \"%s\""
+msgstr "Ikkunan asetukset"
 
 #. parameter of --geometry
 #: ../terminal/main.c:83
 msgid "geometry"
-msgstr ""
+msgstr "mitat"
 
 #. parameter of --role
 #: ../terminal/main.c:85
 msgid "role"
-msgstr ""
+msgstr "rooli"
 
 #. parameter of --startup-id
 #: ../terminal/main.c:87
-#, fuzzy
 msgid "string"
-msgstr "Varoitus"
+msgstr "merkkijono"
 
 #. parameter of --icon
 #: ../terminal/main.c:89
-#, fuzzy
 msgid "icon"
-msgstr "Toiminto"
+msgstr "kuvake"
 
 #: ../terminal/main.c:91
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr ""
+msgstr "Ylläolevien valitsinten selitykset saat komennolla \"man %s\"."
 
 #: ../terminal/main.c:118 ../terminal/terminal-preferences.c:1263
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.h:1
@@ -127,12 +119,12 @@ msgstr ""
 #: ../terminal/main.c:239
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "Päätepalvelua ei voi rekisteröidä: %s\n"
+msgstr "Ei voi rekisteröidä päätepalvelua: %s\n"
 
-#: ../terminal/terminal-app.c:554
+#: ../terminal/terminal-app.c:517
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Epäkelpo geometriamääritys \"%s\"\n"
+msgstr "Epäkelpo mittamääritys \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:108
 msgid "User id mismatch"
@@ -150,7 +142,7 @@ msgstr "Ei voi rekisteröidä oliota %s"
 
 #: ../terminal/terminal-dialogs.c:87 ../Terminal-default-apps.xml.in.h:1
 msgid "Xfce Terminal Emulator"
-msgstr "Pääte-emulaattori Xfce-ympäristöön"
+msgstr "Pääteohjelma Xfce-ympäristöön"
 
 #: ../terminal/terminal-dialogs.c:93
 msgid "translator-credits"
@@ -158,7 +150,7 @@ msgstr "Jari Rahkonen <jari.rahkonen@pp1.inet.fi>"
 
 #: ../terminal/terminal-dialogs.c:96
 msgid "Visit Terminal website"
-msgstr ""
+msgstr "Käy sovelluksen verkkosivuilla"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:252
@@ -171,7 +163,7 @@ msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
-"\"--default-display\"  -valitsin tarvitsee parametrikseen X:n oletusnäytön"
+"Valitsin \"--default-display\" tarvitsee parametrikseen X:n oletusnäytön"
 
 #: ../terminal/terminal-options.c:221
 #, c-format
@@ -179,7 +171,7 @@ msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
-"\"--default-working-directory\"  -valitsin tarvitsee parametrikseen "
+"Valitsin \"--default-working-directory\" tarvitsee parametrikseen "
 "oletustyökansion"
 
 #: ../terminal/terminal-options.c:237
@@ -188,7 +180,7 @@ msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
-"\"--execute/-x\" -valitsin vaatii, että komentorivin loppuosa määrittää "
+"Valitsin \"--execute/-x\" edellyttää, että komentorivin loppuosa määrittää "
 "suoritettavan komennon"
 
 #: ../terminal/terminal-options.c:254
@@ -197,52 +189,53 @@ msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
-"\"--command/-e\"  -valitsin tarvitsee parametrikseen suoritettavan komennon"
+"Valitsin \"--command/-e\" tarvitsee parametrikseen suoritettavan komennon"
 
 #: ../terminal/terminal-options.c:271
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
-msgstr "\"--working-directory\"  -valitsin tarvitsee parametrikseen työkansion"
+msgstr "Valitsin \"--working-directory\" tarvitsee parametrikseen työkansion"
 
 #: ../terminal/terminal-options.c:286
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr "\"--title/-T\"  -valitsin tarvitsee parametrikseen otsakkeen"
+msgstr "Valitsin \"--title/-T\" tarvitsee parametrikseen otsakkeen"
 
 #: ../terminal/terminal-options.c:305
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "\"--display\"  -valitsin tarvitsee parametreikseen X:n näytön"
+msgstr "Valitstin \"--display\" tarvitsee parametreikseen X:n näytön"
 
 #: ../terminal/terminal-options.c:320
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr "\"--geometry\" -valitsin tarvitsee parametrikseen ikkunan geometrian"
+msgstr "Valitsin \"--geometry\" tarvitsee parametrikseen ikkunan mitat"
 
 #: ../terminal/terminal-options.c:335
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr "\"--role\" -valitsin tarvitsee parametrikseen ikkunan roolin"
+msgstr "Valitsin \"--role\" tarvitsee parametrikseen ikkunan roolin"
 
 #: ../terminal/terminal-options.c:350
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
-"\"--startup-id\" -valitsin tarvitsee parametrikseen käynnistystunnisteen"
+"Valitsin \"--startup-id\" tarvitsee parametrikseen käynnistystunnisteen"
 
 #: ../terminal/terminal-options.c:365
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr ""
-"\"--command/-e\"  -valitsin tarvitsee parametrikseen suoritettavan komennon"
+"Valitsin \"--icon/-I\" tarvitsee parametrikseen kuvakkeen tai tiedoston "
+"nimen"
 
 #: ../terminal/terminal-options.c:419
 #, c-format
@@ -386,7 +379,7 @@ msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
 msgid "Failed to execute child"
 msgstr "Lapsiprosessin suorittaminen ei onnistu"
 
-#: ../terminal/terminal-screen.c:1874
+#: ../terminal/terminal-screen.c:1855
 msgid "Close this tab"
 msgstr "Sulje tämä välilehti"
 
@@ -429,7 +422,7 @@ msgstr "Aseta pikanäppäimet"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 msgid "Clea_r"
-msgstr ""
+msgstr "Ty_hjennä"
 
 #: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
@@ -611,7 +604,6 @@ msgid "Reset and C_lear"
 msgstr "Palauta ja _tyhjennä"
 
 #: ../terminal/terminal-window.c:238
-#, fuzzy
 msgid "Reset and clear"
 msgstr "Palauta ja tyhjennä"
 
@@ -729,9 +721,8 @@ msgid "Window Title|Set Title"
 msgstr "Aseta otsake"
 
 #: ../terminal/terminal-window.c:1569
-#, fuzzy
 msgid "Title:"
-msgstr "Otsake"
+msgstr "Otsake:"
 
 #: ../terminal/terminal-window.c:1581
 msgid "Enter the title for the current terminal tab"
@@ -742,32 +733,28 @@ msgid "Terminal Emulator"
 msgstr "Pääte-emulaattori"
 
 #: ../Terminal.glade.h:1
-#, fuzzy
 msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> -muuttuja:"
+msgstr "$TERM -_muuttuja:"
 
 #: ../Terminal.glade.h:2
 msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
 #: ../Terminal.glade.h:3
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Lisäasetukset"
+msgstr "_Lisäasetukset"
 
 #: ../Terminal.glade.h:4
-#, fuzzy
 msgid "Allow bold te_xt"
-msgstr "Näytä paksunnettu teksti"
+msgstr "Näytä pa_ksunnettu teksti"
 
 #: ../Terminal.glade.h:5
 msgid "Auto-detect"
 msgstr "Tunnista automaattisesti"
 
 #: ../Terminal.glade.h:6
-#, fuzzy
 msgid "Background"
-msgstr "Taustakuva"
+msgstr "Tausta"
 
 #: ../Terminal.glade.h:7
 msgid "Background image"
@@ -806,39 +793,35 @@ msgid "Color Selector"
 msgstr "Värivalitsin"
 
 #: ../Terminal.glade.h:16
-#, fuzzy
 msgid "Command"
-msgstr "<b>Komento</b>"
+msgstr "Komento"
 
 #: ../Terminal.glade.h:17
-#, fuzzy
 msgid "Compatibility"
-msgstr "<b>Yhteensopivuus</b>"
+msgstr "Yhteensopivuus"
 
 #: ../Terminal.glade.h:18
-#, fuzzy
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
-msgstr "Oleta seuraavien merkkien olevan sanan osia kaksoisnapsautettaessa:"
+msgstr ""
+"Laske seuraavat merkit sanan _osiksi kaksoisnapsauttaessa:"
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
 msgstr "Ctrl-H"
 
 #: ../Terminal.glade.h:21
-#, fuzzy
 msgid "Cu_rsor color:"
-msgstr "_Tekstin ja kohdistimen väri:"
+msgstr "Koh_distimen väri:"
 
 #: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Poista kaikki valikko_näppäimet käytöstä (kuten Alt+T)"
 
 #: ../Terminal.glade.h:23
-#, fuzzy
 msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Poista valikon _pikanäppäin käytöstä (oletuksena F10)"
+msgstr "Poista valikon _pikanäppäimet käytöstä (oletuksena F10)"
 
 #: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
@@ -853,14 +836,12 @@ msgid "Display _toolbars in new windows"
 msgstr "Näytä _työkalupalkit uusissa ikkunoissa"
 
 #: ../Terminal.glade.h:28
-#, fuzzy
 msgid "Double Click"
-msgstr "<b>Kaksoisnapsautus</b>"
+msgstr "Kaksoisnapsautus"
 
 #: ../Terminal.glade.h:29
-#, fuzzy
 msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Tasoita päätteen kirjasinten reunoja"
+msgstr "T_asoita päätteen kirjasimen reunoja"
 
 #: ../Terminal.glade.h:30
 msgid ""
@@ -869,44 +850,42 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
-"Tämän ollessa valittuna Pääte tasoittaa merkkien reunat piirtäessään tekstiä "
-"pääteikkunoihin. Valinnan poistaminen voi huomattavasti lisätä päätteen "
-"piirtonopeutta ja vähentää järjestelmän kokonaiskuormaa hitaissa "
-"järjestelmissä."
+"Tasoittaa merkkien reunoja, kun pääteikkunoihin piirretään tekstiä. "
+"Valinnan poistaminen voi huomattavasti lisätä päätteen piirtonopeutta ja "
+"vähentää järjestelmän kokonaiskuormaa hitaissa järjestelmissä."
 
 #: ../Terminal.glade.h:31
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
 msgstr ""
-"Tämä valinta sallii pääteikkunoissa suoritettavien sovellusten käyttää "
-"paksunnettua tekstiä."
+"Sallii pääteikkunoissa suoritettavien sovellusten käyttää paksunnettua "
+"tekstiä."
 
 #: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
-"Valitse tämä, jos haluat voida vierittää päätettä rivi kerrallaan ylös/alas -"
-"nuolinäppäimillä vaihtonäppäimen ollessa painettuna."
+"Päätettä voi vierittää rivi kerrallaan ylös/alas -nuolinäppäimillä "
+"vaihtonäppäimen ollessa painettuna."
 
 #: ../Terminal.glade.h:33
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
-msgstr "Tämän ollessa valittuna uusissa pääteikkunoissa on valikkopalkki."
+msgstr "Uusissa pääteikkunoissa on valikkopalkki."
 
 #: ../Terminal.glade.h:34
 msgid ""
 "Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Tämän ollessa valittuna uusissa pääteikkunoissa on työkalupalkit."
+msgstr "Uusissa pääteikkunoissa on työkalupalkit."
 
 #: ../Terminal.glade.h:35
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr ""
-"Tämän ollessa valittuna uusien pääteikkunoiden ympärillä näytetään "
-"ikkunoiden reunukset."
+"Uusien pääteikkunoiden ympärillä näytetään ikkunoiden reunukset."
 
 #: ../Terminal.glade.h:36
 msgid ""
@@ -918,7 +897,7 @@ msgstr ""
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
-msgstr ""
+msgstr "Tyhjennä TTY"
 
 #: ../Terminal.glade.h:38
 msgid "Escape sequence"
@@ -926,7 +905,7 @@ msgstr "Escape-merkkisarja"
 
 #: ../Terminal.glade.h:39
 msgid "Font"
-msgstr ""
+msgstr "Kirjasin"
 
 #: ../Terminal.glade.h:40
 msgid "General"
@@ -934,20 +913,19 @@ msgstr "Yleiset"
 
 #: ../Terminal.glade.h:41
 msgid "Goes after initial title"
-msgstr "Aloitusotsakkeen jälkeen"
+msgstr "Ensiotsakkeen jälkeen"
 
 #: ../Terminal.glade.h:42
 msgid "Goes before initial title"
-msgstr "Aloitusotsakkeen edessä"
+msgstr "Ensiotsakkeen edessä"
 
 #: ../Terminal.glade.h:43
 msgid "Isn't displayed"
 msgstr "Ei näytetä"
 
 #: ../Terminal.glade.h:44
-#, fuzzy
 msgid "Menubar Access"
-msgstr "<b>Pääsy valikkopalkkiin</b>"
+msgstr "Pääsy valikkopalkkiin"
 
 #: ../Terminal.glade.h:45
 msgid "None (use solid color)"
@@ -963,113 +941,93 @@ msgstr "Oikeassa reunassa"
 
 #: ../Terminal.glade.h:48
 msgid "Open a dialog to specify the color"
-msgstr "Avaa dialogi värin valitsemiseksi"
+msgstr "Avaa värin valintaikkuna"
 
 #: ../Terminal.glade.h:49
-#, fuzzy
 msgid "Opening New Windows"
-msgstr "<b>Uusien ikkunoiden avaaminen</b>"
+msgstr "Uusien ikkunoiden avaaminen"
 
 #: ../Terminal.glade.h:50
-#, fuzzy
 msgid "Palette"
-msgstr "<b>Paletti</b>"
+msgstr "Paletti"
 
 #: ../Terminal.glade.h:51
-#, fuzzy
 msgid "Palette entry 1"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 1"
 
 #: ../Terminal.glade.h:52
-#, fuzzy
 msgid "Palette entry 10"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 10"
 
 #: ../Terminal.glade.h:53
-#, fuzzy
 msgid "Palette entry 11"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 11"
 
 #: ../Terminal.glade.h:54
-#, fuzzy
 msgid "Palette entry 12"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 12"
 
 #: ../Terminal.glade.h:55
-#, fuzzy
 msgid "Palette entry 13"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 13"
 
 #: ../Terminal.glade.h:56
-#, fuzzy
 msgid "Palette entry 14"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 14"
 
 #: ../Terminal.glade.h:57
-#, fuzzy
 msgid "Palette entry 15"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 15"
 
 #: ../Terminal.glade.h:58
-#, fuzzy
 msgid "Palette entry 16"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 16"
 
 #: ../Terminal.glade.h:59
-#, fuzzy
 msgid "Palette entry 2"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 2"
 
 #: ../Terminal.glade.h:60
-#, fuzzy
 msgid "Palette entry 3"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 3"
 
 #: ../Terminal.glade.h:61
-#, fuzzy
 msgid "Palette entry 4"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 4"
 
 #: ../Terminal.glade.h:62
-#, fuzzy
 msgid "Palette entry 5"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 5"
 
 #: ../Terminal.glade.h:63
-#, fuzzy
 msgid "Palette entry 6"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 6"
 
 #: ../Terminal.glade.h:64
-#, fuzzy
 msgid "Palette entry 7"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 7"
 
 #: ../Terminal.glade.h:65
-#, fuzzy
 msgid "Palette entry 8"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 8"
 
 #: ../Terminal.glade.h:66
-#, fuzzy
 msgid "Palette entry 9"
-msgstr "Paletin väri %d"
+msgstr "Paletin väri 9"
 
 #: ../Terminal.glade.h:67
 msgid "Replaces initial title"
-msgstr "Korvaa aloitusotsakkeen"
+msgstr "Korvaa ensiotsakkeen"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Reset tab activity _indicator after"
-msgstr "Välilehden toimintailmaisimen palautusviive"
+msgstr "Välileh_den toimintailmaisimen palautusviive"
 
 #: ../Terminal.glade.h:69
 msgid "Scaled"
 msgstr "Skaalattu"
 
 #: ../Terminal.glade.h:70
-#, fuzzy
 msgid "Scr_ollbar is:"
 msgstr "_Vierityspalkki on:"
 
@@ -1078,26 +1036,22 @@ msgid "Scroll on _keystroke"
 msgstr "_Näppäily vierittää"
 
 #: ../Terminal.glade.h:72
-#, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "_Tulostus vierittää"
 
 #: ../Terminal.glade.h:73
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Vieritä _rivin verran näppäimillä Vaihto+Ylös/Alas"
+msgstr "Vieritä _rivi kerrallaan näppäimillä Vaihto+Ylös/Alas"
 
 #: ../Terminal.glade.h:74
-#, fuzzy
 msgid "Scroll_back:"
 msgstr "Vieritysp_uskuri:"
 
 #: ../Terminal.glade.h:75
-#, fuzzy
 msgid "Scrolling"
-msgstr "<b>Vieritys</b>"
+msgstr "Vieritys"
 
 #: ../Terminal.glade.h:76
-#, fuzzy
 msgid "Select Background Image File"
 msgstr "Valitse taustakuvatiedosto"
 
@@ -1109,12 +1063,11 @@ msgid ""
 "login shell."
 msgstr ""
 "Tämän ollessa valittuna Pääte suorittaa komentotulkkisi ylimmän tason "
-"komentotulkkina avatessasi uusia päätteitä. Lisätietoja interaktiivisten ja "
+"komentotulkkeina avatessasi uusia päätteitä. Lisätietoja interaktiivisten ja "
 "ylimmän tason komentotulkkien toiminnan eroista löydät komentotulkkisi "
 "dokumentaatiosta."
 
 #: ../Terminal.glade.h:78
-#, fuzzy
 msgid "Shortcut Keys"
 msgstr "Pikanäppäimet"
 
@@ -1126,7 +1079,6 @@ msgstr ""
 "avulla."
 
 #: ../Terminal.glade.h:80
-#, fuzzy
 msgid "St_yle:"
 msgstr "T_yyli:"
 
@@ -1135,12 +1087,10 @@ msgid "Stretched"
 msgstr "Venytetty"
 
 #: ../Terminal.glade.h:82
-#, fuzzy
 msgid "Tab Activity Indicator"
-msgstr "<b>Välilehden toimintailmaisin</b>"
+msgstr "Välilehden toimintailmaisin"
 
 #: ../Terminal.glade.h:83
-#, fuzzy
 msgid "Tab activit_y color:"
 msgstr "_Välilehden toimintaväri:"
 
@@ -1153,29 +1103,28 @@ msgid "Terminal applications have this color palette available to them:"
 msgstr "Päätesovelluksilla on käytössään tämä väripaletti:"
 
 #: ../Terminal.glade.h:86
-#, fuzzy
 msgid "Text Selection"
-msgstr "<b>Tekstin valinta</b>"
+msgstr "Tekstin valinta"
 
 #: ../Terminal.glade.h:87
-#, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr ""
-"Nämä valinnat voivat estää joitain sovelluksia toimimasta oikein. Ne ovat "
-"tässä ainoastaan siksi, että voisit käyttää eräitä sovelluksia ja "
-"käyttöjärjestelmiä, jotka odottavat päätteen käyttäytyvän eri tavalla."
+"Nämä valinnat voivat estää joitain sovelluksia toimimasta\n"
+"oikein. Ne ovat tässä ainoastaan siksi, että voisit käyttää\n"
+"eräitä sovelluksia ja käyttöjärjestelmiä, jotka edellyttävät\n"
+"päätteen käyttäytyvän eri tavalla."
 
 #: ../Terminal.glade.h:91
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
 msgstr ""
-"Tämä valinta määrittää, vierittääkö päätteessä suoritettavien komentojen "
-"tuottama tulostus päätettä automaattisesti."
+"Määrittää, vierittääkö päätteessä suoritettavien komentojen tuottama "
+"tulostus päätettä automaattisesti."
 
 #: ../Terminal.glade.h:92
 msgid ""
@@ -1184,13 +1133,12 @@ msgid ""
 "most systems. If you have problems with colors in some applications, try "
 "xterm-color here."
 msgstr ""
-"Tämä määrittää, mikä arvo $TERM-ympäristömuuttujalle on annettu, kun uusi "
-"päätteen välilehti tai pääteikkuna avataan. Oletuksen pitäisi toimia "
+"Määrittää, mikä arvo $TERM-ympäristömuuttujalle määritetään avattaessa "
+"uusia päätteen välilehtiä tai pääteikkunoita. Oletuksen pitäisi toimia "
 "useimmissa järjestelmissä. Jos sinulla on ongelmia värien kanssa joissain "
 "sovelluksissa, kokeile tähän arvoa xterm-color."
 
 #: ../Terminal.glade.h:93
-#, fuzzy
 msgid "Tiled"
 msgstr "Vierekkäin"
 
@@ -1199,9 +1147,8 @@ msgid "Title"
 msgstr "Otsake"
 
 #: ../Terminal.glade.h:95
-#, fuzzy
 msgid "Transpare_ncy:"
-msgstr "Läpinäkyvä tausta"
+msgstr "Läpi_näkyvyys:"
 
 #: ../Terminal.glade.h:96
 msgid "Transparent background"
@@ -1209,25 +1156,23 @@ msgstr "Läpinäkyvä tausta"
 
 #: ../Terminal.glade.h:97
 msgid "Use _default color"
-msgstr "Käytä _oletusvärejä"
+msgstr "Käytä _oletusväriä"
 
 #: ../Terminal.glade.h:98
 msgid "Use a custom text selection background color"
 msgstr "Käytä mukautettua tekstivalinnan taustaväriä"
 
 #: ../Terminal.glade.h:99
-#, fuzzy
 msgid "Use c_ustom color:"
-msgstr "Käytä _mukautettua väriä"
+msgstr "_Mukautettu väri:"
 
 #: ../Terminal.glade.h:100
 msgid "Use the default text selection background color"
 msgstr "Käytä oletusarvoista tekstivalinnan taustaväriä"
 
 #: ../Terminal.glade.h:101
-#, fuzzy
 msgid "_Appearance"
-msgstr "Ulkoasu"
+msgstr "_Ulkoasu"
 
 #: ../Terminal.glade.h:102
 msgid "_Background color:"
@@ -1238,9 +1183,8 @@ msgid "_Backspace key generates:"
 msgstr "_Peruutusnäppäin tuottaa:"
 
 #: ../Terminal.glade.h:104
-#, fuzzy
 msgid "_Colors"
-msgstr "Värit"
+msgstr "Vä_rit"
 
 #: ../Terminal.glade.h:105
 msgid "_Delete key generates:"
@@ -1248,37 +1192,33 @@ msgstr "_Delete-näppäin tuottaa:"
 
 #: ../Terminal.glade.h:106
 msgid "_Dynamically-set title:"
-msgstr "_Dynaamisesti asetettu otsake:"
+msgstr "Dy_naamisesti asetettu otsake:"
 
 #: ../Terminal.glade.h:107
 msgid "_File:"
-msgstr "Tie_dosto:"
+msgstr "_Tiedosto:"
 
 #: ../Terminal.glade.h:108
-#, fuzzy
 msgid "_General"
-msgstr "Yleiset"
+msgstr "_Yleiset"
 
 #: ../Terminal.glade.h:109
 msgid "_Initial title:"
-msgstr "Otsake _aluksi:"
+msgstr "_Otsake aluksi:"
 
 #: ../Terminal.glade.h:110
-#, fuzzy
 msgid "_Reset compatibility options to defaults"
-msgstr "P_alauta yhteensopivuusasetusten oletusarvot"
+msgstr "Palauta y_hteensopivuusasetusten oletusarvot"
 
 #: ../Terminal.glade.h:111
 msgid "_Run command as login shell"
 msgstr "Suorita komento _ylimmän tason komentotulkkina"
 
 #: ../Terminal.glade.h:112
-#, fuzzy
 msgid "_Shortcuts"
-msgstr "Pikanäppäimet"
+msgstr "Pi_kanäppäimet"
 
 #: ../Terminal.glade.h:113
-#, fuzzy
 msgid "_Text color:"
 msgstr "_Tekstin ja kohdistimen väri:"
 
@@ -1289,464 +1229,3 @@ msgstr "_Päivitä utmp/wtmp -tietueet, kun komento käynnistetään"
 #: ../Terminal.glade.h:115
 msgid "seconds"
 msgstr "sekuntia"
-
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
-#~ msgstr "  -h, --help                          Tulosta tämä ohje ja poistu"
-
-#, fuzzy
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -v, --version                       Tulosta versiotiedot ja poistu"
-
-#~ msgid ""
-#~ "  --disable-server                    Do not register with the D-BUS\n"
-#~ "                                      session message bus"
-#~ msgstr ""
-#~ "  --disable-server                    Älä rekisteröidy D-BUS-"
-#~ "viestiväylän\n"
-#~ "                                      yhteyteen"
-
-#~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr ""
-#~ "  --default-display=NÄYTTÖ            oletuksena käytettävä X:n näyttö"
-
-#~ msgid ""
-#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
-#~ "                                      directory"
-#~ msgstr ""
-#~ "  --default-working-directory=KANSIO  Aseta oletuspäätteen työkansio"
-
-#~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
-#~ "                                      window; more than one of these\n"
-#~ "                                      options can be provided"
-#~ msgstr ""
-#~ "  --tab                               Avaa välilehti viimeksi "
-#~ "määritettyyn\n"
-#~ "                                      ikkunaan. Näitä valitsimia voi "
-#~ "olla\n"
-#~ "                                      enemmän kuin yksi"
-
-#~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
-#~ "                                      provided"
-#~ msgstr ""
-#~ "  --window                            Avaa uusi ikkuna, jossa on yksi\n"
-#~ "                                      välilehti; Näitä valitsimia voi "
-#~ "olla\n"
-#~ "                                      enemmän kuin yksi"
-
-#~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
-#~ "                                      line inside the terminal"
-#~ msgstr ""
-#~ "  -x, --execute                       Suorita komentorivin loppuosa\n"
-#~ "                                      päätteessä"
-
-#~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
-#~ "                                      inside the terminal"
-#~ msgstr ""
-#~ "  -e, --command=MERKKIJONO            Suorita tämän valitsimen "
-#~ "argumentti\n"
-#~ "                                      päätteessä"
-
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr "  --working-directory=KANSIO          Aseta päätteen työkansio"
-
-#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr "  -T, --title=OTSAKE                  Aseta pääteikkunan otsake"
-
-#~ msgid ""
-#~ "  -H, --hold                          Do not immediately destroy the tab\n"
-#~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold                          Älä tuhoa välilehteä "
-#~ "automaattisesti\n"
-#~ "                                      sen lapsikomennon poistuessa"
-
-#~ msgid ""
-#~ "  --display=DISPLAY                   X display to use for the last-\n"
-#~ "                                      specified window"
-#~ msgstr ""
-#~ "  --display=NÄYTTÖ                    X:n näyttö, jota viimeksi valittu\n"
-#~ "                                      ikkuna käyttää"
-
-#~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
-#~ "                                      window to be opened"
-#~ msgstr ""
-#~ "  --geometry=GEOMETRIA                X:n geometriamääritys (katso\n"
-#~ "                                      \"man X\"), voi määrittää kerran\n"
-#~ "                                      avattavaa ikkunaa kohden"
-
-#, fuzzy
-#~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
-#~ "                                      you create from the command line"
-#~ msgstr ""
-#~ "  --role=ROOLI                        Aseta rooli viimeksi määritetylle\n"
-#~ "                                      ikkunalle; koskee vain yhtä "
-#~ "ikkunaa;\n"
-#~ "                                      voi määrittää kerran jokaiselle\n"
-#~ "                                      komentoriviltä luodulle ikkunalle"
-
-#~ msgid ""
-#~ "  --startup-id=STRING                 ID for the startup notification\n"
-#~ "                                      protocol"
-#~ msgstr ""
-#~ "  --startup-id=MERKKIJONO             Tunniste käynnistyksen huomautus-\n"
-#~ "                                      protokollaa varten"
-
-#, fuzzy
-#~ msgid ""
-#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-#~ "                                      name or filename"
-#~ msgstr ""
-#~ "  -e, --command=MERKKIJONO            Suorita tämän valitsimen "
-#~ "argumentti\n"
-#~ "                                      päätteessä"
-
-#, fuzzy
-#~ msgid ""
-#~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --fullscreen                        Aseta viimeksi määritetty ikkuna\n"
-#~ "                                      täysruututilaan; koskee ainoastaan\n"
-#~ "                                      yhtä ikkunaa; voi määrittää kerran\n"
-#~ "                                      jokaista komentoriviltä luotua\n"
-#~ "                                      ikkunaa kohden"
-
-#, fuzzy
-#~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
-#~ "                                      applies to only one window; can be\n"
-#~ "                                      specified once for each window you\n"
-#~ "                                      create from the command line"
-#~ msgstr ""
-#~ "  --role=ROOLI                        Aseta rooli viimeksi määritetylle\n"
-#~ "                                      ikkunalle; koskee vain yhtä "
-#~ "ikkunaa;\n"
-#~ "                                      voi määrittää kerran jokaiselle\n"
-#~ "                                      komentoriviltä luodulle ikkunalle"
-
-#~ msgid ""
-#~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-menubar                      Asettaa valikkopalkin näkyviin\n"
-#~ "                                      viimeksi määritetyssä ikkunassa;\n"
-#~ "                                      koskee ainoastaan yhtä ikkunaa;\n"
-#~ "                                      voi määrittää kerran jokaista\n"
-#~ "                                      komentoriviltä luotua ikkunaa kohden"
-
-#~ msgid ""
-#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-menubar                      Piilottaa valikkopalkin näkyvistä\n"
-#~ "                                      viimeksi määritetyssä ikkunassa;\n"
-#~ "                                      koskee ainoastaan yhtä ikkunaa;\n"
-#~ "                                      voi määrittää kerran jokaista\n"
-#~ "                                      komentoriviltä luotua ikkunaa kohden"
-
-#~ msgid ""
-#~ "  --show-borders                      Turn on the window decorations for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --show-borders                      Asettaa viimeksi määritetyn "
-#~ "ikkunan\n"
-#~ "                                      reunukset näkyviin; koskee "
-#~ "ainoastaan\n"
-#~ "                                      yhtä ikkunaa; voi määrittää kerran\n"
-#~ "                                      jokaista komentoriviltä luotua\n"
-#~ "                                      ikkunaa kohden"
-
-#~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --hide-borders                      Piilottaa viimeksi määritetyn "
-#~ "ikkunan\n"
-#~ "                                      reunukset; koskee ainoastaan yhtä\n"
-#~ "                                      ikkunaa; voi määrittää kerran\n"
-#~ "                                      jokaista komentoriviltä luotua\n"
-#~ "                                      ikkunaa kohden"
-
-#~ msgid ""
-#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-toolbars                     Asettaa viimeksi määritetyn "
-#~ "ikkunan\n"
-#~ "                                      työkalupalkin näkyviin; koskee\n"
-#~ "                                      ainoastaan yhtä ikkunaa;\n"
-#~ "                                      voi määrittää kerran jokaista\n"
-#~ "                                      komentoriviltä luotua ikkunaa kohden"
-
-#~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-toolbars                     Piilottaa viimeksi määritetyn "
-#~ "ikkunan\n"
-#~ "                                      työkalupalkin; koskee ainoastaan "
-#~ "yhtä\n"
-#~ "                                      ikkunaa; voi määrittää kerran\n"
-#~ "                                      jokaista komentoriviltä luotua\n"
-#~ "                                      ikkunaa kohden"
-
-#~ msgid "Unable to launch terminal: %s\n"
-#~ msgstr "Päätettä ei voi käynnistää: %s\n"
-
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
-#~ msgstr ""
-#~ "\"--sm-client-id\" -valitsin tarvitsee parametrikseen istunnon tunnisteen"
-
-#~ msgid "<b>Title:</b>"
-#~ msgstr "<b>Otsake:</b>"
-
-#~ msgid "Usage: Terminal [OPTION...]"
-#~ msgstr "Käyttö: Terminal [VALITSIN...]"
-
-#~ msgid "<b>Title</b>"
-#~ msgstr "<b>Otsake</b>"
-
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
-#~ msgstr ""
-#~ "Päätteessä suoritettava komento voi asettaa dynaamisesti uuden otsakkeen."
-
-#~ msgid "<b>Font</b>"
-#~ msgstr "<b>Kirjasin</b>"
-
-#~ msgid "<b>Background</b>"
-#~ msgstr "<b>Tausta</b>"
-
-#~ msgid "Shade transparent or image background:"
-#~ msgstr "Varjosta läpinäkyvää tai kuvataustaa:"
-
-#~ msgid "<small><i>None</i></small>"
-#~ msgstr "<small><i>Ei yhtään</i></small>"
-
-#~ msgid "<small><i>Maximum</i></small>"
-#~ msgstr "<small><i>Täysin</i></small>"
-
-#~ msgid "<b>Foreground and Background</b>"
-#~ msgstr "<b>Etuala ja tausta</b>"
-
-#~ msgid "<b>Tab activity</b>"
-#~ msgstr "<b>Välilehden toiminta</b>"
-
-#~ msgid "<b>Shortcut keys</b>"
-#~ msgstr "<b>Pikanäppäimet</b>"
-
-#~ msgid "Web Browser"
-#~ msgstr "Web-selain"
-
-#~ msgid "Mail Reader"
-#~ msgstr "Sähköpostiohjelma"
-
-#~ msgid ""
-#~ "Choose your preferred Web Browser. The preferred\n"
-#~ "Web Browser opens when you right-click on a URL\n"
-#~ "and select Open Link from the context menu."
-#~ msgstr ""
-#~ "Valitse haluamasi web-selain. Sitä käytetään\n"
-#~ "napsauttaessasi oikeanpuoleista painiketta URL:n\n"
-#~ "päällä ja valitessasi tilannevalikosta Avaa linkki."
-
-#~ msgid ""
-#~ "Choose your preferred Mail Reader. The preferred\n"
-#~ "Mail Reader opens when you right-click on an email\n"
-#~ "address and select Compose Email from the context\n"
-#~ "menu."
-#~ msgstr ""
-#~ "Valitse haluamasi sähköpostiohjelma. Se avataan\n"
-#~ "napsauttaessasi oikeanpuoleista painiketta\n"
-#~ "sähköpostiosoitteen päällä ja valitessasi Kirjoita\n"
-#~ "sähköpostia."
-
-#~ msgid ""
-#~ "Click here to change the selected application or to disable this feature."
-#~ msgstr ""
-#~ "Napsauta tätä vaihtaaksesi valitun sovelluksen tai poistaaksesi "
-#~ "ominaisuuden käytöstä."
-
-#~ msgid "Select application"
-#~ msgstr "Valitse sovellus"
-
-#~ msgid "Choose a custom Web Browser"
-#~ msgstr "Valitse mukautettu web-selain"
-
-#~ msgid "Choose a custom Mail Reader"
-#~ msgstr "Valitse mukautettu sähköpostiohjelma"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Web Browser in Terminal:"
-#~ msgstr ""
-#~ "Määritä sovellus, jota pääte käyttää\n"
-#~ "web-selaimena:"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Mail Reader in Terminal:"
-#~ msgstr ""
-#~ "Määritä sovellus, jota pääte käyttää\n"
-#~ "sähköpostiohjelmana:"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Selaa..."
-
-#~ msgid "Disable this feature"
-#~ msgstr "Poista ominaisuus käytöstä"
-
-#~ msgid "Other..."
-#~ msgstr "Joku muu..."
-
-#~ msgid "No application selected"
-#~ msgstr "Ei sovellusta valittu"
-
-#~ msgid "Preferred Applications"
-#~ msgstr "Halutut sovellukset"
-
-#~ msgid "Applications"
-#~ msgstr "Sovellukset"
-
-#~ msgid "_Applications..."
-#~ msgstr "S_ovellukset"
-
-#~ msgid "Customize your preferred applications"
-#~ msgstr "Mukauta haluttuja sovelluksia."
-
-#~ msgid ""
-#~ "You did not choose your preferred Web\n"
-#~ "Browser yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "Et valinnut vielä haluamaasi\n"
-#~ "Web-selainta. Haluatko valita\n"
-#~ "haluamasi sovellukset nyt?"
-
-#~ msgid ""
-#~ "You did not choose your preferred Mail\n"
-#~ "Reader yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "Et valinnut vielä haluamaasi\n"
-#~ "sähköpostiohjelmaa. Haluatko\n"
-#~ "valita haluamasi sovellukset nyt?"
-
-#~ msgid "Balsa"
-#~ msgstr "Balsa"
-
-#~ msgid "Epiphany Web Browser"
-#~ msgstr "Epiphany web-selain"
-
-#~ msgid "Novell Evolution"
-#~ msgstr "Novell Evolution"
-
-#~ msgid "Default Web Browser (Xfce)"
-#~ msgstr "Oletusarvoinen web-selain (Xfce)"
-
-#~ msgid "Default Mail Reader (Xfce)"
-#~ msgstr "Oletusarvoinen sähköpostiohjelma (Xfce)"
-
-#~ msgid "Mozilla Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Galeon Web Browser"
-#~ msgstr "Galeon web-selain"
-
-#~ msgid "KMail"
-#~ msgstr "KMail"
-
-#~ msgid "Konqueror"
-#~ msgstr "Konqueror"
-
-#~ msgid "Lynx"
-#~ msgstr "Lynx"
-
-#~ msgid "Mozilla Browser"
-#~ msgstr "Mozillan selain"
-
-#~ msgid "Mozilla Mail"
-#~ msgstr "Mozillan sähköposti"
-
-#~ msgid "Mutt"
-#~ msgstr "Mutt"
-
-#~ msgid "Opera Browser"
-#~ msgstr "Operan selain"
-
-#~ msgid "Opera Mail"
-#~ msgstr "Operan sähköposti"
-
-#~ msgid "Debian Sensible Browser"
-#~ msgstr "Debianin sensible-browser"
-
-#~ msgid "Sylpheed Claws"
-#~ msgstr "Sylpheed Claws"
-
-#~ msgid "Mozilla Thunderbird"
-#~ msgstr "Mozilla Thunderbird"
-
-#~ msgid "Custom title"
-#~ msgstr "Mukautettu otsake"
-
-#~ msgid "Tab title"
-#~ msgstr "Välilehden otsake"
