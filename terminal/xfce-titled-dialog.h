@@ -1,4 +1,3 @@
-/* $Id: xfce-titled-dialog.h 26543 2008-01-05 21:19:49Z nick $ */
 /*-
  * Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>.
  *

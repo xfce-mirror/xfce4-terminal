@@ -1,5 +1,3 @@
-# $Id$
-
 appsdir = $(datadir)/icons/hicolor/48x48/apps
 apps_DATA =								\
 	Terminal.png

@@ -1,4 +1,3 @@
-/* $Id: xfce-heading.h 29017 2008-12-13 11:21:37Z nick $ */
 /*-
  * Copyright (c) 2006 Benedikt Meurer <benny@xfce.org>.
  *

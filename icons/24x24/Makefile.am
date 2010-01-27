@@ -1,5 +1,3 @@
-# $Id$
-
 iconsdir = $(datadir)/icons/hicolor/24x24/stock/navigation
 icons_DATA =								\
 	stock_terminal-closetab.png					\

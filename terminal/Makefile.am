@@ -1,5 +1,3 @@
-# $Id$
-
 INCLUDES = \
 	-DBINDIR=\"$(bindir)\" \
 	-DDATADIR=\"$(datadir)\" \
