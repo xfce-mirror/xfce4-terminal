@@ -139,7 +139,7 @@ main (int argc, char **argv)
                  "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
                  "Please report bugs to <%s>.\n"),
                  PACKAGE_STRING, xfce_version_string (),
-                 "2003-2007",
+                 "2003-2010",
                  GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                  gtk_major_version, gtk_minor_version, gtk_micro_version,
                  PACKAGE_BUGREPORT);
