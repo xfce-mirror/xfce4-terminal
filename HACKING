@@ -8,29 +8,28 @@ hosted and maintained by the Xfce Project.
 Patches
 =======
 
-Please submit patches to the os-cillation bug tracking system or to the
-people listed in the AUTHORS file. Your patch should be in unified diff
-format (the -u option to GNU diff).
+Please submit patches to the Xfce bug tracking system. Your patch
+should be in unified diff format (the -u option to GNU diff).
 
 Please and send a patch against a recent version of this package. Patches
-against the Subversion trunk branch are most preferable. You can always
-access the trunk branch from 
+against the GIT master branch are most preferable. You can always
+access the master branch from
 
-  http://svn.xfce.org/listing.php?repname=xfce4&path=%2Fterminal%2F#/terminal/
+  http://git.xfce.org/apps/terminal/
 
-or using an installed Subversion client
+or clone the repository with GIT
 
-  svn co http://svn.xfce.org/svn/xfce/terminal/trunk/
+  git clone git://git.xfce.org/apps/terminal
 
 
 Feature requests
 ================
 
 Please file feature requests to the Xfce bug tracking system
-(http://bugzilla.xfce.org, product Terminal) with a Severity of
-enhancement. Make sure that your feature request wasn't reported
-already before; requesting a feature several times won't increase
-the chance that it gets added.
+(http://bugzilla.xfce.org, classification Apps, product Terminal)
+with a Severity of enhancement. Make sure that your feature request
+wasn't reported already before; requesting a feature several times
+won't increase the chance that it gets added.
 
 
 Coding Style
@@ -48,25 +47,13 @@ Coding Style
 Release process
 ===============
 
-  1) Check out a fresh copy from Subversion
-  2) Increment the version number in configure.ac
-  3) Update NEWS, README and ChangeLog, and don't forget to add an entry
-     ("Released x.y.z") to ChangeLog, so people can see which changes
-     were before and after a given release. Make sure that NEWS has the
-     correct version number!
-  4) Update doc/*/Terminal.xml. Also update the figures in doc/*/images
-     if the UI has changed.
-  5) Run make update-po in po/ and update po/de.po (don't forget the header)!
-  6) Unset terminal_version_tag in configure.ac and reset it after the
-     release is done.
-  7) Verify that make dist works.
-  8) "svn commit" the changes.
-  9) Create a simple tag for the release,
-       "svn copy https://os-cillation.de:8080/repos/terminal/trunk \
-          https://os-cillation.de:8080/repos/terminal/tags/release-X.Y.Z"
-     where X.Y.Z is the version number.
- 10) upload the tarball to os-cillation ftp
- 11) Run /etc/os-scripts/update-docs-from-svn.sh on os-cillation webserver.
- 12) Update freshmeat entry.
- 13) Add new version to bugzilla product at http://bugzilla.xfce.org (Brian)
- 14) Update gnomefiles.org entry.
+  1) Check out a fresh copy from GIT.
+  2) Increment the version number in configure.ac.in and unset
+     terminal_version_tag.
+  3) Update NEWS.
+  4) Commit the changes and create an annotated tag.
+  5) Run make dist-check to create the tarball.
+  6) Reset terminal_version_tag in configure.ac.in.
+  7) Push the changes (inclusing new tag).
+  8) Add new version to bugzilla product at http://bugzilla.xfce.org
+  9) Release on releases.xfce.org.
