@@ -60,6 +60,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
   {
     "Benedikt Meurer <benny@xfce.org>",
     "Andrew Conkling <andrewski@fr.st>",
+    "Nick Schermer <nick@xfce.org>",
     NULL,
   };
 
@@ -85,7 +86,8 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "artists", artists,
                          "comments", _("Xfce Terminal Emulator"),
                          "documenters", documenters,
-                         "copyright", "Copyright \302\251 2003-2010 Benedikt Meurer",
+                         "copyright", "Copyright \302\251 2003-2008 Benedikt Meurer\n"
+                                      "Copyright \302\251 2007-2010 Nick Schermer",
                          "license", XFCE_LICENSE_GPL,
                          "logo", logo,
                          "program-name", PACKAGE_NAME,
