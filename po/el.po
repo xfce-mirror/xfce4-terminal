@@ -3,19 +3,22 @@
 # This file is distributed under the same license as the Terminal package.
 # Stavros Giannouris <stavrosg@serverhive.com>, 2005-2006, 2009
 # Stathis Kamperis <ekamperi@auth.gr>, 2006.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.10\n"
+"Project-Id-Version: Terminal git version\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-29 12:00+0100\n"
-"PO-Revision-Date: 2009-07-25 21:25+0200\n"
+"PO-Revision-Date: 2010-01-29 14:09+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Language: Greek\n"
+"X-Poedit-Country: GREECE\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 #: ../terminal/main.c:47
 msgid "Usage:"
@@ -31,14 +34,15 @@ msgstr "Γενικές επιλογές"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:54 ../terminal/main.c:80
-#, fuzzy
+#: ../terminal/main.c:54
+#: ../terminal/main.c:80
 msgid "display"
-msgstr "Δεν προβάλλεται"
+msgstr "προβολή"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:56 ../terminal/main.c:71
+#: ../terminal/main.c:56
+#: ../terminal/main.c:71
 msgid "directory"
 msgstr "κατάλογος"
 
@@ -52,15 +56,13 @@ msgstr "Επιλογές καρτέλας"
 
 #. parameter of --command
 #: ../terminal/main.c:67
-#, fuzzy
 msgid "command"
-msgstr "Εντολή"
+msgstr "εντολή"
 
 #. parameter of --title
 #: ../terminal/main.c:69
-#, fuzzy
 msgid "title"
-msgstr "Τίτλος"
+msgstr "τίτλος"
 
 #: ../terminal/main.c:78
 msgid "Window Options"
@@ -78,23 +80,23 @@ msgstr "ρόλος"
 
 #. parameter of --startup-id
 #: ../terminal/main.c:86
-#, fuzzy
 msgid "string"
-msgstr "Προειδοποίηση"
+msgstr "αλφαρηθμιτικό"
 
 #. parameter of --icon
 #: ../terminal/main.c:88
-#, fuzzy
 msgid "icon"
-msgstr "Δράση"
+msgstr "πλακίδιο"
 
 #: ../terminal/main.c:90
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr ""
+msgstr "Δείτε την %s σελίδα του manual για λεπτομερή εξήγηση όλων των επιλογών παραπάνω."
 
-#: ../terminal/main.c:117 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:117
+#: ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119
+#: ../Terminal.desktop.in.h:1
 msgid "Terminal"
 msgstr "Τερματικό"
 
@@ -147,7 +149,8 @@ msgstr "Ο δίαυλος μηνυμάτων D-BUS αποσυνδέθηκε, έ�
 msgid "Unable to register object %s"
 msgstr "Δεν ήταν δυνατή η εγγραφή του αντικειμένου %s"
 
-#: ../terminal/terminal-dialogs.c:87 ../Terminal-default-apps.xml.in.h:1
+#: ../terminal/terminal-dialogs.c:87
+#: ../Terminal-default-apps.xml.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Προσομοίωση τερματικού Xfce"
 
@@ -157,7 +160,7 @@ msgstr "Σταύρος Γιαννούρης <stavrosg@serverhive.com>"
 
 #: ../terminal/terminal-dialogs.c:97
 msgid "Visit Terminal website"
-msgstr ""
+msgstr "Επισκεφτείτε την ιστοσελίδα του terminal"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:253
@@ -288,7 +291,8 @@ msgstr "Πλήρης οθόνη"
 msgid "Set Title"
 msgstr "Καθορισμός τίτλου"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463
+#: ../terminal/terminal-window.c:236
 msgid "Reset"
 msgstr "Αρχικοποίηση"
 
@@ -346,7 +350,8 @@ msgstr "Περιεχόμενα"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
+#: ../terminal/terminal-screen.c:392
+#: ../terminal/terminal-screen.c:591
 #: ../terminal/terminal-screen.c:1532
 msgid "Untitled"
 msgstr "Ανώνυμο"
@@ -386,7 +391,8 @@ msgid "Help"
 msgstr "Βοήθεια"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505
+#: ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Απενεργοποιημένο"
 
@@ -577,9 +583,8 @@ msgid "Reset and C_lear"
 msgstr "Επαναφορά και Καθαρι_σμός"
 
 #: ../terminal/terminal-window.c:237
-#, fuzzy
 msgid "Reset and clear"
-msgstr "Αρχικοποίηση και Καθαρισμός"
+msgstr "Εκκαθάριση και επαναφορά"
 
 #: ../terminal/terminal-window.c:238
 msgid "_Go"
@@ -1158,408 +1163,3 @@ msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτε�
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
-#~ msgid "  -h, --help                          Print this help message and exit"
-#~ msgstr "  -h, --help                          Εμφανίζει αυτό το κείμενο βοήθειας"
-
-#~ msgid "  -V, --version                       Print version information and exit"
-#~ msgstr "  -V, --version                       Εμφανίζει τις πληροφορίες της έκδοσης και τερματίζει"
-
-#~ msgid ""
-#~ "  --disable-server                    Do not register with the D-BUS\n"
-#~ "                                      session message bus"
-#~ msgstr ""
-#~ "  --disable-server                    Όχι σύνδεση με το δίαυλο μηνυμάτων\n"
-#~ "                                      συστήματος D-BUS"
-
-#~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr "  --default-display=DISPLAY           προκαθορισμένο X display προς χρήση"
-
-#~ msgid ""
-#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
-#~ "                                      directory"
-#~ msgstr ""
-#~ "  --default-working-directory=DIRNAME Ορισμός του εξ ορισμού καταλόγου\n"
-#~ "                                      εργασίας του τερματικού."
-
-#~ msgid ""
-#~ "  --tab                               Open a new tab in the last-specified\n"
-#~ "                                      window; more than one of these\n"
-#~ "                                      options can be provided"
-#~ msgstr ""
-#~ "  --tab                               Ανοίγει μια νέα καρτέλα στο προσδιορισμένο\n"
-#~ "                                      παράθυρο· μπορεί να δοθεί παραπάνω από μια\n"
-#~ "                                      φορές."
-
-#~ msgid ""
-#~ "  --window                            Open a new window containing one tab;\n"
-#~ "                                      more than one of these options can be\n"
-#~ "                                      provided"
-#~ msgstr ""
-#~ "  --window                            Ανοίγει ένα νέο παράθυρο με μια καρτέλα.\n"
-#~ "                                      Μπορεί να δοθεί παραπάνω από μια φορές."
-
-#~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the command\n"
-#~ "                                      line inside the terminal"
-#~ msgstr ""
-#~ "  -x, --execute                       Εκτέλεση του υπολοίπου της εντολής\n"
-#~ "                                      μέσα στο τερματικό."
-
-#~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this option\n"
-#~ "                                      inside the terminal"
-#~ msgstr ""
-#~ "  -e, --command=ΕΝΤΟΛΗ                Εκτελεί το όρισμα αυτής της επιλογής\n"
-#~ "                                      μέσα στο τερματικό"
-
-#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr "  --working-directory=ΚΑΤΑΛΟΓΟΣ    Ορισμός του καταλόγου εργασίας του τερματικού."
-
-#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr "  -T, --title=TITLE                   Ορίζει τον τίτλο του τερματικού"
-
-#~ msgid ""
-#~ "  -H, --hold                          Do not immediately destroy the tab\n"
-#~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold                          Να μην κλείσει η καρτέλλα αμέσως μετά\n"
-#~ "                                      την έξοδο της θυγατρικής διεργασίας"
-
-#~ msgid ""
-#~ "  --display=DISPLAY                   X display to use for the last-\n"
-#~ "                                      specified window"
-#~ msgstr ""
-#~ "  --display=DISPLAY                   Ποιο X display να χρησιμοποιηθεί για\n"
-#~ "                                      το προσδιορισμένο παράθυρο"
-
-#~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-#~ "                                      man page), can be specified once per\n"
-#~ "                                      window to be opened"
-#~ msgstr ""
-#~ "  --geometry=ΓΕΩΜΕΤΡΙΑ                Ο καθορισμός γεωμετρίας Χ (βλ. σελίδα\n"
-#~ "                                      τεκμηρίωσης man \"X\"), μπορεί να ορισθεί\n"
-#~ "                                      μια φορά ανά παράθυρο που ανοίγεται."
-
-#~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-specified\n"
-#~ "                                      window; applies to only one window;\n"
-#~ "                                      can be specified once for each window\n"
-#~ "                                      you create from the command line"
-#~ msgstr ""
-#~ "  --role=ΡΟΛΟΣ                        Ορισμός του ρόλου για το τελευταίο\n"
-#~ "                                      καθορισμένο παράθυρο, εφαρμόζεται μόνο σε\n"
-#~ "                                      ένα παράθυρο και μπορεί να καθοριστεί μια\n"
-#~ "                                      φορά για κάθε παράθυρο που δημιουργείται\n"
-#~ "                                      από τη γραμμή εντολών."
-
-#~ msgid ""
-#~ "  --startup-id=STRING                 ID for the startup notification\n"
-#~ "                                      protocol"
-#~ msgstr ""
-#~ "  --startup-id=ΑΝΑΓΩΡΙΣΤΙΚΟ           Αναγνωριστικό για το πρωτόκολλο\n"
-#~ "                                      ειδοποίησης εκκίνησης"
-
-#~ msgid ""
-#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-#~ "                                      name or filename"
-#~ msgstr ""
-#~ "  -I, --icon=ΕΙΚΟΝΙΔΙΟ                     Ορισμός του εικονιδίου του τερματικού\n"
-#~ "                                                        ως εικονίδιο ονόματος ή ονόματος αρχείου"
-
-#~ msgid ""
-#~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --fullscreen                        Ορισμός του τελευταίου καθορισμένου παραθύρου σε\n"
-#~ "                                       μεγιστοποίηση, εφαρμόζεται μόνο σε ένα παράθυρο\n"
-#~ "                                       και μπορεί να καθοριστεί μία φορά για κάθε νέο παράθυρο\n"
-#~ "                                       που δημιουργείται από την γραμμή εντολών."
-
-#~ msgid ""
-#~ "  --maximize                          Maximize the last-specified window;\n"
-#~ "                                      applies to only one window; can be\n"
-#~ "                                      specified once for each window you\n"
-#~ "                                      create from the command line"
-#~ msgstr ""
-#~ "  --maximize                          Μεγιστοποιεί το τελευταίο καθορισμένο παράθυρο\n"
-#~ "                                      εφαρμόζεται μόνο σε ένα νέο παράθυρο και μπορεί να\n"
-#~ "                                      καθοριστεί μία φορά για κάθε παράθυρο που δημιουργείται\n"
-#~ "                                      από την γραμμή εντολών"
-
-#~ msgid ""
-#~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-menubar                      Ενεργοποιεί τη μπάρα μενού για το\n"
-#~ "                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-#~ "                                      σε ένα παράθυρο· μπορεί να προσδιοριστεί\n"
-#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
-#~ "                                      από τη γραμμή εντολών"
-
-#~ msgid ""
-#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-menubar                      Αποκρύπτει τη μπάρα μενού για το\n"
-#~ "                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-#~ "                                      σε ένα παράθυρο· μπορεί να προσδιοριστεί\n"
-#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
-#~ "                                      από τη γραμμή εντολών"
-
-#~ msgid ""
-#~ "  --show-borders                      Turn on the window decorations for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be specified\n"
-#~ "                                      once for each window you create from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --show-borders                      Ενεργοποιεί τα περιγράμματα για το\n"
-#~ "                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-#~ "                                      σε ένα παράθυρο· μπορεί να προσδιοριστεί\n"
-#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
-#~ "                                      από τη γραμμή εντολών"
-
-#~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be specified\n"
-#~ "                                      once for each window you create from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --hide-borders                      Αποκρύπτει τα περιγράμματα για το\n"
-#~ "                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-#~ "                                      σε ένα παράθυρο· μπορεί να προσδιοριστεί\n"
-#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
-#~ "                                      από τη γραμμή εντολών"
-
-#~ msgid ""
-#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-toolbars                     Εμφανίζει τις γραμμές εργαλείων για το\n"
-#~ "                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-#~ "                                      σε ένα παράθυρο· μπορεί να προσδιοριστεί\n"
-#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
-#~ "                                      από τη γραμμή εντολών"
-
-#~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
-#~ "                                      specified window; applies to only one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-toolbars                     Αποκρύπτει τις γραμμές εργαλείων για το\n"
-#~ "                                      προσδιορισμένο παράθυρο· ενεργεί μόνο\n"
-#~ "                                      σε ένα παράθυρο· μπορεί να προσδιοριστεί\n"
-#~ "                                      για κάθε παράθυρο που δημιουργείτε\n"
-#~ "                                      από τη γραμμή εντολών"
-
-#~ msgid "Unable to launch terminal: %s\n"
-#~ msgstr "Δεν ήταν δυνατή η εκκίνηση του τερματικού: %s\n"
-
-#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
-#~ msgstr "Η επιλογή \"--sm-client-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού συνεδρίας ως παράμετρο"
-
-#~ msgid "<b>Title:</b>"
-#~ msgstr "<b>Τίτλος:</b>"
-
-#~ msgid "Usage: Terminal [OPTION...]"
-#~ msgstr "Χρήση: Terminal [ΟΡΙΣΜΑ...]"
-
-#~ msgid "<b>Title</b>"
-#~ msgstr "<b>Τίτλος</b>"
-
-#~ msgid "The command running inside the terminal may dynamically set a new title."
-#~ msgstr "Η εντολή που εκτελείται μέσα στο τερματικό μπορεί να ορίσει δυναμικά ένα νέο τίτλο."
-
-#~ msgid "<b>Font</b>"
-#~ msgstr "<b>Γραμματοσειρά</b>"
-
-#~ msgid "<b>Background</b>"
-#~ msgstr "<b>Παρασκήνιο</b>"
-
-#~ msgid "Shade transparent or image background:"
-#~ msgstr "Σκίαση διαφάνειας ή εικόνας παρασκηνίου:"
-
-#~ msgid "<small><i>None</i></small>"
-#~ msgstr "<small><i>Κανένα</i></small>"
-
-#~ msgid "<small><i>Maximum</i></small>"
-#~ msgstr "<small><i>Μέγιστο</i></small>"
-
-#~ msgid "<b>Foreground and Background</b>"
-#~ msgstr "<b>Προσκήνιο και Παρασκήνιο</b>"
-
-#~ msgid "<b>Tab activity</b>"
-#~ msgstr "<b>Δραστηριότητα καρτελών</b>"
-
-#~ msgid "<b>Shortcut keys</b>"
-#~ msgstr "<b>Πλήκτρα συντόμευσης</b>"
-
-#~ msgid "Web Browser"
-#~ msgstr "Περιηγητής ιστοσελίδων"
-
-#~ msgid "Mail Reader"
-#~ msgstr "Εφαρμογή αλληλογραφίας"
-
-#~ msgid ""
-#~ "Choose your preferred Web Browser. The preferred\n"
-#~ "Web Browser opens when you right-click on a URL\n"
-#~ "and select Open Link from the context menu."
-#~ msgstr ""
-#~ "Επιλέξτε τον προτιμώμενο περιηγητή Ιστού. Ο προτιμώμενος\n"
-#~ "Περιηγητής ιστού ανοίγει όταν επιλέξετε Άνοιγμα δεσμού με\n"
-#~ "δεξί κλικ σε ένα URL."
-
-#~ msgid ""
-#~ "Choose your preferred Mail Reader. The preferred\n"
-#~ "Mail Reader opens when you right-click on an email\n"
-#~ "address and select Compose Email from the context\n"
-#~ "menu."
-#~ msgstr ""
-#~ "Επιλέξτε τον προτιμώμενο αναγνώστη αλληλογραφίας.\n"
-#~ "Ο προτιμώμενος αναγνώστης αλληλογραφίας ανοίγει\n"
-#~ "όταν επιλέξετε Σύνθεση μηνύματος με δεξί κλικ σε μια\n"
-#~ "διεύθυνση ηλεκτρονικής αλληλογραφίας."
-
-#~ msgid "Click here to change the selected application or to disable this feature."
-#~ msgstr "Πατήστε εδώ για να αλλάξετε την επιλεγμένη εφαρμογή ή να απενεργοποιήσετε αυτή τη λειτουργία"
-
-#~ msgid "Select application"
-#~ msgstr "Επιλογή μιας εφαρμογής"
-
-#~ msgid "Choose a custom Web Browser"
-#~ msgstr "Επιλογή προσαρμοσμένου περιηγητή"
-
-#~ msgid "Choose a custom Mail Reader"
-#~ msgstr "Χρήση προσαρμοσμένου αναγνώστη αλληλογραφίας"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Web Browser in Terminal:"
-#~ msgstr ""
-#~ "Προσδιορίστε την εφαρμογή που θα χρησιμοποιείτε\n"
-#~ "ως περιηγητή ιστού στο τερματικό:"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Mail Reader in Terminal:"
-#~ msgstr ""
-#~ "Προσδιορίστε την εφαρμογή που θα χρησιμοποιείτε\n"
-#~ "ως αναγνώστη αλληλογραφίας στο τερματικό:"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Περιήγηση..."
-
-#~ msgid "Disable this feature"
-#~ msgstr "Απενεργοποίηση αυτής της λειτουργίας"
-
-#~ msgid "Other..."
-#~ msgstr "Άλλο..."
-
-#~ msgid "No application selected"
-#~ msgstr "Δεν επιλέχθηκαν εφαρμογές"
-
-#~ msgid "Preferred Applications"
-#~ msgstr "Προτιμώμενες εφαρμογές"
-
-#~ msgid "Applications"
-#~ msgstr "Εφαρμογές"
-
-#~ msgid "_Applications..."
-#~ msgstr "_Εφαρμογές..."
-
-#~ msgid "Customize your preferred applications"
-#~ msgstr "Προσαρμογή των προτιμώμενων εφαρμογών"
-
-#~ msgid ""
-#~ "You did not choose your preferred Web\n"
-#~ "Browser yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "Δεν έχετε επιλέξει τον προτιμώμενο σας περιηγητή\n"
-#~ "ιστού ακόμα. Θέλετε να ορίσετε τις προτιμώμενες σας\n"
-#~ "εφαρμογές τώρα;"
-
-#~ msgid ""
-#~ "You did not choose your preferred Mail\n"
-#~ "Reader yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "Δεν έχετε επιλέξει τον προτιμώμενο σας αναγνώστη\n"
-#~ "αλληλογραφίας ακόμα. Θέλετε να ορίσετε τις\n"
-#~ "προτιμώμενες σας εφαρμογές τώρα;"
-
-#~ msgid "Balsa"
-#~ msgstr "Balsa"
-
-#~ msgid "Epiphany Web Browser"
-#~ msgstr "Περιηγητής διαδικτύου Epiphany"
-
-#~ msgid "Novell Evolution"
-#~ msgstr "Novell Evolution"
-
-#~ msgid "Default Web Browser (Xfce)"
-#~ msgstr "Εξορισμού περιηγητής διαδικτύου (Xfce)"
-
-#~ msgid "Default Mail Reader (Xfce)"
-#~ msgstr "Εξορισμού αναγνώστης αλληλογραφίας (Xfce)"
-
-#~ msgid "Mozilla Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Galeon Web Browser"
-#~ msgstr "Περιηγητής διαδικτύου Galeon"
-
-#~ msgid "KMail"
-#~ msgstr "KMail"
-
-#~ msgid "Konqueror"
-#~ msgstr "Konqueror"
-
-#~ msgid "Lynx"
-#~ msgstr "Περιηγητής κειμένου Lynx"
-
-#~ msgid "Mozilla Browser"
-#~ msgstr "Περιηγητής διαδικτύου Mozilla"
-
-#~ msgid "Mozilla Mail"
-#~ msgstr "Αναγνώστης αλληλογραφίας Mozilla"
-
-#~ msgid "Mutt"
-#~ msgstr "Mutt"
-
-#~ msgid "Opera Browser"
-#~ msgstr "Περιηγητής ιστοσελίδων Opera"
-
-#~ msgid "Opera Mail"
-#~ msgstr "Αναγνώστης αλληλογραφίας Opera"
-
-#~ msgid "Debian Sensible Browser"
-#~ msgstr "Περιηγητής Sensible του Debian"
-
-#~ msgid "Sylpheed Claws"
-#~ msgstr "Sylpheed Claws"
-
-#~ msgid "Mozilla Thunderbird"
-#~ msgstr "Mozilla Thunderbird"
-
-#~ msgid "Custom title"
-#~ msgstr "Προσαρμοσμένος τίτλος"
-
-#~ msgid "Tab title"
-#~ msgstr "Τίτλος καρτέλας"
