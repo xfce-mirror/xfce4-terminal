@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2009-12-14 18:06+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Javier Sánchez <donoban@gmail.com>\n"
+"Last-Translator: Diego Augusto Molina <diegoaugustomolina@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -188,7 +188,7 @@ msgstr "--default-display=<placeholder-1/>"
 
 #: Terminal.1.xml:178(para)
 msgid "Default X display to use."
-msgstr ""
+msgstr "Pantalla X a usar por defecto"
 
 #: Terminal.1.xml:184(replaceable)
 #: Terminal.1.xml:239(replaceable)
@@ -201,7 +201,7 @@ msgstr "--default-working-directory=<placeholder-1/>"
 
 #: Terminal.1.xml:187(para)
 msgid "Set <parameter>directory</parameter> as the default working directory for the terminal"
-msgstr "Configura el <parameter>directory</parameter> como el directorio de trabajo por defecto para la terminal"
+msgstr "Establece <parameter>directorio</parameter> como el directorio de trabajo por defecto para la terminal"
 
 #: Terminal.1.xml:198(option)
 msgid "--tab"
@@ -241,7 +241,7 @@ msgstr "--working-directory=<placeholder-1/>"
 
 #: Terminal.1.xml:242(para)
 msgid "Set <parameter>directory</parameter> as the working directory for the terminal"
-msgstr "Configura <parameter>directory</parameter> como el directorio de trabajo por defecto para la terminal"
+msgstr "Establece <parameter>directorio</parameter> como el directorio de trabajo por defecto para la terminal"
 
 #: Terminal.1.xml:247(term)
 msgid "<option>-T</option>, <option>--title=<replaceable>title</replaceable></option>"
@@ -249,7 +249,7 @@ msgstr "<option>-T</option>, <option>--title=<replaceable>título</replaceable><
 
 #: Terminal.1.xml:251(para)
 msgid "Set <parameter>title</parameter> as the initial window title for the terminal"
-msgstr "Configura el <parameter>título</parameter> como el título de ventana inicial para la terminal"
+msgstr "Establece <parameter>título</parameter> como el título de ventana inicial para la terminal"
 
 #: Terminal.1.xml:256(term)
 msgid "<option>-H</option>, <option>--hold</option>"
@@ -265,7 +265,7 @@ msgstr "--display=<placeholder-1/>"
 
 #: Terminal.1.xml:274(para)
 msgid "X display to use for the last- specified window."
-msgstr ""
+msgstr "Pantalla X a usar para la última ventana especificada"
 
 #: Terminal.1.xml:280(replaceable)
 msgid "geometry"
@@ -277,7 +277,7 @@ msgstr "--geometry=<placeholder-1/>"
 
 #: Terminal.1.xml:283(para)
 msgid "Sets the geometry of the last-specified window to <parameter>geometry</parameter>. Read <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry> for more information on how to specify window geometries."
-msgstr "Configura la geometría de la última ventana especificada a <parameter>geometry</parameter>. Consulte <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry> para obtener más información sobre cómo especificar geometrías de las ventanas."
+msgstr "Establece <parameter>geometría</parameter> como la geometría de la última ventana especificada. Consulte <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry> para obtener más información sobre cómo especificar geometrías de las ventanas."
 
 #: Terminal.1.xml:293(replaceable)
 msgid "role"
@@ -289,7 +289,7 @@ msgstr "--role=<placeholder-1/>"
 
 #: Terminal.1.xml:296(para)
 msgid "Sets the window role of the last-specified window to <parameter>role</parameter>. Applies to only one window and can be specified once for each window you create from the command line. It is mostly used for session management inside @PACKAGE_NAME@"
-msgstr "Configura el rol de la última ventana especificada a <parameter>role</parameter>. Se aplica sólo a una ventana y puede ser especificado una vez por cada ventana que cree desde la línea de comandos. Ésto es usado generalmente por el administrador de sesiones dentro de @PACKAGE_NAME@"
+msgstr "Establece <parameter>rol</parameter> como el rol de la última ventana especificada. Se aplica sólo a una ventana y puede ser especificado una vez por cada ventana que cree desde la línea de comandos. Ésto es usado generalmente por el administrador de sesiones dentro de @PACKAGE_NAME@"
 
 #: Terminal.1.xml:306(replaceable)
 msgid "string"
@@ -393,11 +393,11 @@ msgstr "Abre una nueva ventana de terminal con geometría de 80 columnas y 40 fi
 
 #: Terminal.1.xml:443(title)
 msgid "Environment"
-msgstr ""
+msgstr "Entorno"
 
 #: Terminal.1.xml:445(para)
 msgid "Terminal uses the Basedir Specification as defined on <ulink url=\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data and configuration files. This means that file locations will be specified as a path relative to the directories described in the specification."
-msgstr ""
+msgstr "Terminal usa la \"Basedir Specification\" (Especificación de directorio base) tal como es definida en <ulink url=\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> para encontrar sus datos y archivos de configuración. Esto significa que las direcciones de archivo serán especificadas como un camino relativo a los directorios descritos en la especificación."
 
 #: Terminal.1.xml:454(varname)
 msgid "${XDG_CONFIG_HOME}"
@@ -405,7 +405,7 @@ msgstr "${XDG_CONFIG_HOME}"
 
 #: Terminal.1.xml:456(para)
 msgid "The first base directory to look for configuration files. By default this is set to <filename role=\"directory\">~/.config/</filename>."
-msgstr ""
+msgstr "El primer directorio base en el cual buscar archivos de configuración. Por defecto es <filename role=\"directory\">~/.config/</filename>."
 
 #: Terminal.1.xml:464(varname)
 msgid "${XDG_CONFIG_DIRS}"
@@ -413,7 +413,7 @@ msgstr "${XDG_CONFIG_DIRS}"
 
 #: Terminal.1.xml:466(para)
 msgid "A colon separated list of base directories that contain configuration data. By default the application will look in <filename role=\"directory\">${sysconfdir}/xdg/</filename>. The value of <varname>${sysconfdir}</varname> depends on how the program was build and will often be <filename role=\"directory\">/etc/</filename> for binary packages."
-msgstr ""
+msgstr "Una lista separada por dos puntos (\":\") de directorios base que contienen datos de configuración. Por defecto la aplicación buscará en <filename role=\"directory\">${sysconfdir}/xdg/</filename>. El valor de <varname>${sysconfdir}</varname> depende en cómo fue construido el programa y a menudo será <filename role=\"directory\">/etc/</filename> para paquetes binarios."
 
 #: Terminal.1.xml:477(varname)
 msgid "${XDG_DATA_HOME}"
@@ -421,15 +421,16 @@ msgstr "${XDG_DATA_HOME}"
 
 #: Terminal.1.xml:479(para)
 msgid "The root for all user-specific data files. By default this is set to <filename role=\"directory\">~/.local/share/</filename>."
-msgstr ""
+msgstr "La raíz para todos los archivos de datos específicos de cada usuario. Por defecto es <filename role=\"directory\">~/.local/share/</filename>."
 
 #: Terminal.1.xml:487(varname)
 msgid "${XDG_DATA_DIRS}"
 msgstr "${XDG_DATA_DIRS}"
 
 #: Terminal.1.xml:489(para)
+#, fuzzy
 msgid "A set of preference ordered base directories relative to which data files should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> base directory. The directories should be separated with a colon."
-msgstr ""
+msgstr "Un conjunto de directorios base ordenados según preferencia relativos a qué archivos de datos deberían ser buscados además del directorio base <varname>${XDG_DATA_HOME}</varname>. Los directorios deberían estar separados con dos puntos (\":\")."
 
 #: Terminal.1.xml:501(title)
 msgid "Files"
@@ -440,8 +441,9 @@ msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 
 #: Terminal.1.xml:507(para)
+#, fuzzy
 msgid "This is the location of the configuration file that includes the preferences which control the look and feel of @PACKAGE_NAME@."
-msgstr ""
+msgstr "Esta es la ubicación del archivo de configuración que incluye las preferencias que controlan la apariencia de @PACKAGE_NAME@."
 
 #: Terminal.1.xml:515(filename)
 msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
@@ -449,7 +451,7 @@ msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
 
 #: Terminal.1.xml:517(para)
 msgid "This file includes the user interface definition for the toolbars. If you customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@ will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>."
-msgstr ""
+msgstr "Este archivo incluye la definición de interfaz de usuario para las barras de herramientas. Si personaliza las barras de herramientas usando el editor gráfico de barras de herramientas, @PACKAGE_NAME@ guardará el nuevo diseño en el archivo <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>."
 
 #: Terminal.1.xml:529(title)
 msgid "See also"
@@ -527,7 +529,7 @@ msgstr "@@image: 'images/terminal-preferences-advanced.png'; md5=8349b999025e9ce
 
 #: Terminal.xml:12(title)
 msgid "Terminal Emulator"
-msgstr ""
+msgstr "Emulador Terminal"
 
 #: Terminal.xml:17(year)
 msgid "2003"
@@ -562,8 +564,9 @@ msgid "Xfce Development Team"
 msgstr "Equipo de desarrollo de Xfce"
 
 #: Terminal.xml:32(para)
+#, fuzzy
 msgid "Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.1 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts. The complete license text is available from the <ulink type=\"http\" url=\"http://www.gnu.org/\">Free Software Foundation</ulink>."
-msgstr ""
+msgstr "Se concede permiso para copiar, distribuir y/o modificar este documento bajo los términos de la licencia GNU Free Documentation License, Versión 1.1 o cualquier otra versión posterior publicada por la Free Software Foundation, sin secciones invariantes, textos de portada ni textos de contraportada. El texto completo de la licencia está disponible en <ulink type=\"http\" url=\"http://www.gnu.org/\">Free Software Foundation</ulink>."
 
 #: Terminal.xml:55(firstname)
 msgid "Andrew"
@@ -579,19 +582,19 @@ msgstr "andrewski@fr.st"
 
 #: Terminal.xml:71(releaseinfo)
 msgid "This manual describes version @PACKAGE_VERSION@ of @PACKAGE_NAME@."
-msgstr ""
+msgstr "Este manual describe la versión @PACKAGE_VERSION@ de @PACKAGE_NAME@."
 
 #: Terminal.xml:77(title)
 msgid "Introduction to @PACKAGE_NAME@"
-msgstr ""
+msgstr "Introducción a @PACKAGE_NAME@"
 
 #: Terminal.xml:80(title)
 msgid "What is a terminal emulator?"
-msgstr ""
+msgstr "¿Qué es un emulador de terminal?"
 
 #: Terminal.xml:82(para)
 msgid "The UNIX operating system was originally designed as a text-only system, controlled by commands entered with a keyboard. This is known as a command-line interface (CLI). The X Window System, Xfce, and other projects have since added a graphical user interface to UNIX, that's what you are actually using now. But the addition of a graphical user interface doesn't mean that the CLI is dead. The CLI is still around and is frequently the easiest, fastest, and most powerful way to perform a certain task. In fact, power users would be lost without the CLI."
-msgstr ""
+msgstr "El sistema operativo UNIX fue diseñado originalmente como un sistema de sólo texto, controlado por comandos ingresados con un teclado. Esto es conocido como una interfaz de línea de comandos (o CLI, por sus siglas en inglés). El X Window System (Sistema de Ventanas X), Xfce, y otros proyectos han agregado desde entonces una interfaz de usuario gráfica a UNIX, que es lo que realmente usted está usando ahora. Pero la adición de una interfaz gráfica de usuario no significa que la CLI no existe: ésta todavía está en funcionamiento y es a menudo la forma más fácil, rápida y poderosa de realizar una determinada tarea. De hecho, los usuarios más avanzados estarían perdidos sin ella."
 
 #: Terminal.xml:115(title)
 msgid "What makes @PACKAGE_NAME@ special?"
@@ -602,384 +605,392 @@ msgid "@PACKAGE_NAME@'s advanced features include a simple configuration interfa
 msgstr "Las funcionalidades avanzadas de @PACKAGE_NAME@ incluyen una interfaz simple de configuración, la habilidad de usar múltiples pestañas con terminales dentro de una sola ventana, la posibilidad de tener un el fondo en una terminal pseudo-transparente y un modo compacto (donde la barra del menú y las decoraciones de las ventanas están ocultas) que ayuda a salvar espacio en su escritorio."
 
 #: Terminal.xml:123(para)
+#, fuzzy
 msgid "The following key features are available:"
-msgstr ""
+msgstr "Las siguientes funciones clave están disponibles:"
 
 #: Terminal.xml:127(para)
 msgid "Multiple tabs per window"
-msgstr ""
+msgstr "Múltiples pestañas por ventana"
 
 #: Terminal.xml:132(para)
 msgid "Customizable toolbars, which can be changed using an integrated graphical toolbar editor"
-msgstr ""
+msgstr "Barras de herramientas personalizables, que pueden cambiarse usando un editor gráfico de barras de herramientas integrado."
 
 #: Terminal.xml:137(para)
 msgid "Ability to configure nearly every aspect of @PACKAGE_NAME@ in the <guilabel>Preferences</guilabel> dialog plus a bunch of so called <emphasis>hidden options</emphasis>"
-msgstr ""
+msgstr "Capacidad para configurar casi cualquier aspecto de @PACKAGE_NAME@ en el diálogo <guilabel>Preferencias</guilabel>, además de muchos de las llamadas <emphasis>opciones ocultas</emphasis>"
 
 #: Terminal.xml:143(para)
 msgid "Good integration with the <ulink url=\"http://xfce.org/\">Xfce desktop environment</ulink> in particular, but also with every other Linux desktop"
-msgstr ""
+msgstr "Buena integración con el <ulink url=\"http://xfce.org/\">Entorno de escritorio Xfce</ulink> en particular, pero también con cualquier otro escritorio de Linux"
 
 #: Terminal.xml:148(para)
 msgid "Session management support"
-msgstr ""
+msgstr "Soporte para administración de sesión"
 
 #: Terminal.xml:153(para)
+#, fuzzy
 msgid "Real multihead support (both MultiScreen and Xinerama mode)"
-msgstr ""
+msgstr "Soporte real para multi-cabeza (modos MultiScreen y Xinerama)"
 
 #: Terminal.xml:158(para)
 msgid "Standards compliance (see the <ulink url=\"http://freedesktop.org/\">freedesktop.org</ulink> website)"
-msgstr ""
+msgstr "Cumplimiento de las normas (ver el sitio <ulink url=\"http://freedesktop.org/\">freedesktop.org</ulink>)"
 
 #: Terminal.xml:163(para)
+#, fuzzy
 msgid "<ulink url=\"http://dbus.freedesktop.org/\">D-BUS</ulink> based terminal service facility to minimize the overall resource usage"
-msgstr ""
+msgstr "Servicio de terminal basado en <ulink url=\"http://dbus.freedesktop.org/\">D-BUS</ulink> para minimizar el uso general de recursos"
 
 #: Terminal.xml:168(para)
 msgid "High degree of maintainability by making best use of <ulink url=\"http://developer.gnome.org/doc/API/2.0/gtk/\">GTK+</ulink> and <ulink url=\"http://developer.gnome.org/doc/API/2.0/gobject/\">GObject</ulink>."
-msgstr ""
+msgstr "Alto grado de mantenimiento al hacer el mejor uso de <ulink url=\"http://developer.gnome.org/doc/API/2.0/gtk/\">GTK+</ulink> y <ulink url=\"http://developer.gnome.org/doc/API/2.0/gobject/\">GObject</ulink>."
 
 #: Terminal.xml:175(para)
+#, fuzzy
 msgid "Besides these key features, @PACKAGE_NAME@ supports all features you would expect from a modern terminal emulator."
-msgstr ""
+msgstr "Además de estas características clave, @PACKAGE_NAME@ soporta todas las características que usted esperaría de un emulador de terminal moderno"
 
 #: Terminal.xml:181(title)
 msgid "Getting started"
-msgstr ""
+msgstr "Cómo empezar"
 
 #: Terminal.xml:184(title)
 msgid "Starting @PACKAGE_NAME@"
-msgstr ""
+msgstr "Iniciando @PACKAGE_NAME@"
 
 #: Terminal.xml:186(para)
 msgid "The easiest way to start @PACKAGE_NAME@ is to use the applications menu of your desktop; for Xfce, point your mouse cursor to the desktop, press the right mouse button and choose <menuchoice><guimenu>System</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "La forma más fácil de iniciar @PACKAGE_NAME@ es usando el menú de aplicaciones de su escritorio. Para Xfce, posicione el cursor del ratón en el escritorio, presione el botón derecho del ratón y elija <menuchoice><guimenu>Sistema</guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>."
 
 #: Terminal.xml:193(para)
 msgid "You can also start @PACKAGE_NAME@ from a command line or from the <guilabel>Application launcher</guilabel>. Just hit <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, type <userinput><command>Terminal</command></userinput> and click the button <guibutton>Run</guibutton>."
-msgstr ""
+msgstr "También puede iniciar @PACKAGE_NAME@ desde línea de comandos o desde el <guilabel>Lanzador de aplicaciones</guilabel>. Sólo presione <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>, escriba <userinput><command>Terminal</command></userinput> y haga clic en el botón <guibutton>Ejecutar</guibutton>."
 
 #: Terminal.xml:203(title)
+#, fuzzy
 msgid "When you first start @PACKAGE_NAME@"
-msgstr ""
+msgstr "Cuando inicie por primera vez @PACKAGE_NAME@"
 
 #: Terminal.xml:205(para)
 msgid "When you start @PACKAGE_NAME@ for the first time, the application opens a terminal window with default settings."
-msgstr ""
+msgstr "Cuando inicia @PACKAGE_NAME@ por primera vez, la aplicación abre una ventana de terminal con opciones por defecto."
 
 #: Terminal.xml:217(phrase)
 msgid "Example of a default terminal window"
-msgstr ""
+msgstr "Ejemplo de una ventana de terminal por defecto"
 
 #: Terminal.xml:222(para)
 msgid "The terminal window displays a command prompt where you can type UNIX commands. The command prompt may vary depending on the configuration of your shell. The cursor is positioned at the command prompt. When you type a UNIX command and press <keycap>Return</keycap>, the computer executes the command. By default, @PACKAGE_NAME@ will use the login shell of the user who starts the application (<filename>/bin/bash</filename> in case of a default Linux installation)."
-msgstr ""
+msgstr "La ventana de terminal muestra un diálogo en el que usted puede introducir comandos de UNIX. El prompt puede variar según la configuración de su shell. El cursor se posiciona en el prompt. Cuando tipea un comando de UNIX y presione <keycap>Enter</keycap>, la computadora ejecuta el comando. Por defecto, @PACKAGE_NAME@ usará el shell de login del usuario que inicia la aplicación (<filename>/bin/bash</filename> en una instalación Linux por defecto)."
 
 #: Terminal.xml:232(para)
 msgid "@PACKAGE_NAME@ sets the following environment variables for the command running inside the terminal window:"
-msgstr ""
+msgstr "@PACKAGE_NAME@ define las siguientes variables de entorno para el comando ejecutado en la ventana de terminal:"
 
 #: Terminal.xml:239(varname)
 msgid "TERM"
-msgstr ""
+msgstr "TERM"
 
 #: Terminal.xml:241(para)
 msgid "Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you can configure the value from the preferences dialog."
-msgstr ""
+msgstr "Establecer en <literal>xterm</literal> o <literal>xterm-color</literal>. Puede configurar el valor desde el diálogo de preferencias."
 
 #: Terminal.xml:246(varname)
 msgid "COLORTERM"
-msgstr ""
+msgstr "COLORTERM"
 
 #: Terminal.xml:248(para)
 msgid "Set to <literal>Terminal</literal> by default."
-msgstr ""
+msgstr "Establecer en <literal>Terminal</literal> por defecto."
 
 #: Terminal.xml:252(varname)
 msgid "DISPLAY"
-msgstr ""
+msgstr "DISPLAY"
 
 #: Terminal.xml:254(para)
+#, fuzzy
 msgid "Set to the X11 display of the terminal by default."
-msgstr ""
+msgstr "Establecer en la pantalla X11 de la terminal por defecto"
 
 #: Terminal.xml:258(varname)
 msgid "WINDOWID"
-msgstr ""
+msgstr "WINDOWID"
 
 #: Terminal.xml:260(para)
+#, fuzzy
 msgid "Set to the X11 window identifier of the terminal by default."
-msgstr ""
+msgstr "Establecer en el identificador de la pantalla X11 de la terminal por defecto."
 
 #: Terminal.xml:267(title)
 msgid "Working with multiple terminals"
-msgstr ""
+msgstr "Trabajando con múltiples terminales"
 
 #: Terminal.xml:269(para)
 msgid "@PACKAGE_NAME@ provides a tab feature that enables you to open several terminals within a single window. Each terminal is opened in a separate tab. Click on the appropriate tab to display the terminal in the window. Each tabbed terminal in a window is separate sub-process, so you can use each terminal for a different task."
-msgstr ""
+msgstr "@PACKAGE_NAME@ provee una funcionalidad de pestañas que le permite abrir varias terminales en una misma ventana. Cada terminal se abre en una pestaña diferente. Haga click en la pestaña apropiada para mostrar la terminal en la ventana. Cada terminal en pestaña de una ventana es un subproceso separado, por lo que puede usar cada terminal para una tarea distinta."
 
 #: Terminal.xml:284(phrase)
 msgid "Example of a terminal window with tabs"
-msgstr ""
+msgstr "Ejemplo de una ventana de terminal con pestañas"
 
 #: Terminal.xml:289(para)
 msgid "See <xref linkend=\"usage\"/> for information about how to open a new tabbed terminal."
-msgstr ""
+msgstr "Vea <xref linkend=\"usage\"/> para información acerca de cómo abrir una nueva terminal en pestaña."
 
 #: Terminal.xml:294(para)
 msgid "You can close a terminal tab by clicking on the close button in the terminal tab header or by choosing <menuchoice><guimenu>File</guimenu><guimenuitem>Close Tab</guimenuitem></menuchoice> from the menubar."
-msgstr ""
+msgstr "Puede cerrar una pestaña de terminal al hacer clic en el botón de cerrar en la cabecera de la pestaña de terminal, o al seleccionar <menuchoice><guimenu>Archivo</guimenu><guimenuitem>Cerrar pestaña</guimenuitem></menuchoice> en la barra de menú."
 
 #: Terminal.xml:304(title)
 msgid "Usage"
-msgstr ""
+msgstr "Modo de uso"
 
 #: Terminal.xml:307(title)
 msgid "To open and close terminals"
-msgstr ""
+msgstr "Para abrir y cerrar terminales"
 
 #: Terminal.xml:311(term)
 msgid "To open a new terminal window:"
-msgstr ""
+msgstr "Para abrir una nueva ventana de terminal:"
 
 #: Terminal.xml:313(para)
 msgid "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Terminal</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Open Terminal</guimenuitem></menuchoice>)."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Archivo</guimenu><guimenuitem>Abrir terminal</guimenuitem></menuchoice> (o clic derecho en la ventana de terminal y seleccione <menuchoice><guimenuitem>Abrir terminal</guimenuitem></menuchoice>)."
 
 #: Terminal.xml:315(para)
 msgid "The new terminal inherits the working directory from its parent terminal."
-msgstr ""
+msgstr "La nueva terminal hereda el directorio de trabajo de su terminal padre."
 
 #: Terminal.xml:321(term)
 msgid "To close a terminal window:"
-msgstr ""
+msgstr "Para cerrar una ventana de terminal:"
 
 #: Terminal.xml:323(para)
 msgid "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Close Window</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Archivo</guimenu><guimenuitem>Cerrar ventana</guimenuitem></menuchoice>."
 
 #: Terminal.xml:325(para)
 msgid "This action closes the terminal and terminates any subprocesses that you opened from the terminal. If you close the last terminal window, the @PACKAGE_NAME@ application exits."
-msgstr ""
+msgstr "Esta acción cierra la terminal y cualquier subproceso que haya abierto desde ella. Si cierra la última ventana de terminal, la aplicación @PACKAGE_NAME@ finaliza."
 
 #: Terminal.xml:332(term)
 msgid "To add a new tabbed terminal to a window:"
-msgstr ""
+msgstr "Para agregar una nueva terminal en pestaña a una ventana:"
 
 #: Terminal.xml:334(para)
 msgid "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Open Tab</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Open Tab</guimenuitem></menuchoice>)."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Archivo</guimenu><guimenuitem>Abrir pestaña</guimenuitem></menuchoice> (o haga clic derecho en la ventana de terminal y seleccione <menuchoice><guimenuitem>Abrir pestaña</guimenuitem></menuchoice>)."
 
 #: Terminal.xml:336(para)
 msgid "The new terminal inherits the working directory from the previously active terminal."
-msgstr ""
+msgstr "La nueva terminal hereda el directorio de trabajo de la terminal previamente activa."
 
 #: Terminal.xml:344(title)
 msgid "To modify a terminal window"
-msgstr ""
+msgstr "Para modificar una ventana de terminal"
 
 #: Terminal.xml:348(term)
 msgid "To hide the menubar:"
-msgstr ""
+msgstr "Para ocultar la barra de menús:"
 
 #: Terminal.xml:350(para)
 msgid "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Menubar</guimenuitem></menuchoice> (or right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>)."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Ver</guimenu><guimenuitem>Mostrar barra de menús</guimenuitem></menuchoice> (o haga clic derecho en la ventana de terminal y seleccione <menuchoice><guimenuitem>Mostrar barra de menús</guimenuitem></menuchoice>)."
 
 #: Terminal.xml:354(term)
 msgid "To show a hidden menubar:"
-msgstr ""
+msgstr "Para mostrar una barra de menús oculta:"
 
 #: Terminal.xml:356(para)
 msgid "Right-click the terminal window and choose <menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice> from the popup menu."
-msgstr ""
+msgstr "Haga clic derecho en la ventana de terminal y seleccione <menuchoice><guimenuitem>Mostrar barra de menús</guimenuitem></menuchoice> en el menú emergente."
 
 #: Terminal.xml:361(term)
 msgid "To show or hide the toolbars:"
-msgstr ""
+msgstr "Para mostrar u ocultar las barras de herramientas:"
 
 #: Terminal.xml:363(para)
 msgid "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Ver</guimenu><guimenuitem>Mostrar barras de herramientas</guimenuitem></menuchoice>."
 
 #: Terminal.xml:367(term)
 msgid "To customize the toolbars:"
-msgstr ""
+msgstr "Para personalizar las barras de herramientas:"
 
 #: Terminal.xml:369(para)
 msgid "Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Primero asegúrese de que las barras de herramientas no estén ocultas. Luego seleccione <menuchoice><guimenu>Editar</guimenu><guimenuitem>Barras de herramientas...</guimenuitem></menuchoice>."
 
 #: Terminal.xml:373(term)
 msgid "To show or hide the window decorations:"
-msgstr ""
+msgstr "Para mostrar u ocultar las decoraciones de ventana:"
 
 #: Terminal.xml:375(para)
 msgid "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window Borders</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Ver/guimenu><guimenuitem>Mostrar bordes de ventana</guimenuitem></menuchoice>."
 
 #: Terminal.xml:379(term)
 msgid "To put a terminal window into fullscreen"
-msgstr ""
+msgstr "Para poner la ventana de terminal en modo pantalla completa"
 
 #: Terminal.xml:381(para)
 msgid "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Fullscreen</guimenuitem></menuchoice> from the menubar (or right-click the terminal window and choose <menuchoice><guimenuitem>Fullscreen</guimenuitem></menuchoice>)."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Ver</guimenu><guimenuitem>Pantalla completa</guimenuitem></menuchoice> en la barra de menús (o haga clic derecho en la ventana de terminal y seleccione <menuchoice><guimenuitem>Pantalla completa</guimenuitem></menuchoice>)."
 
 #: Terminal.xml:386(term)
 msgid "To change the appearance of the terminal window:"
-msgstr ""
+msgstr "Para cambiar la apariencia de la ventana de terminal:"
 
 #: Terminal.xml:388(para)
 msgid "See <xref linkend=\"preferences\"/> for information about the options that you choose in the <guilabel>Terminal Preferences</guilabel> dialog to change the appearance and behaviour of the terminal windows. For example, you can change the background color or the location of the scrollbar."
-msgstr ""
+msgstr "Vea <xref linkend=\"preferences\"/> para más información acerca de opciones que puede elegir en el diálogo <guilabel>Preferencias de terminal</guilabel> para cambiar la apariencia y comportamiento de las ventanas de terminal. Por ejemplo, puede cambiar el color de fondo o la ubicación del la barra de desplazamiento."
 
 #: Terminal.xml:398(title)
 msgid "To work with the contents of terminal windows"
-msgstr ""
+msgstr "Para trabajar con el contenido de ventanas de terminal"
 
 #: Terminal.xml:402(term)
+#, fuzzy
 msgid "To scroll through previous commands and output:"
-msgstr ""
+msgstr "Para desplazarse entre comandos y las salidas previas:"
 
 #: Terminal.xml:404(para)
 msgid "Perform one of the following actions:"
-msgstr ""
+msgstr "Realizar una de las siguientes acciones:"
 
 #: Terminal.xml:410(para)
 msgid "Use the scrollbar, which is usually displayed on the right side of each terminal window."
-msgstr ""
+msgstr "Use la barra de desplazamiento, que generalmente se muestra en el lado derecho de cada ventana de terminal."
 
 #: Terminal.xml:416(para)
 msgid "Press the <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, or <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> keys."
-msgstr ""
+msgstr "Presione las teclas <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Up</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Down</keycap></keycombo>, <keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, o <keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo>."
 
 #: Terminal.xml:424(para)
 msgid "Use the middle wheel button on your mouse if applicable"
-msgstr ""
+msgstr "Use la rueda del ratón si está disponible"
 
 #: Terminal.xml:429(para)
 msgid "@PACKAGE_NAME@ mimics the FreeBSD console when <keycap>Scroll Lock</keycap> is pressed. When scroll lock is active, ordinary input and output from the shell is suspended and you can scroll through the history with <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> and <keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> or using the optional scrollbar. Press <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> to activate the scroll lock and <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> to disable it afterwards."
-msgstr ""
+msgstr "@PACKAGE_NAME@ imita la consola de FreeBSD cuando se presiona <keycap>Bloquear desplazamiento</keycap>. Cuando bloquear desplazamiento está activado, el ingreso y salida ordinarios del shell se suspenden y usted puede desplazarse en el historial con <keycombo><keycap>Shift</keycap><keycap>Av Pág</keycap></keycombo> y <keycombo><keycap>Shift</keycap><keycap>Re Pág</keycap></keycombo> o usando opcionalmente la barra de desplazamiento. Presione <keycombo><keycap>Ctrl</keycap><keycap>S</keycap></keycombo> para activar el bloqueo de desplazamiento y <keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> para desactivarlo después."
 
 #: Terminal.xml:439(para)
 msgid "The number of lines that you can scroll back in the terminal window is determined by the <guilabel>Scrollback</guilabel> setting in the <guilabel>General</guilabel> section of the <guilabel>Terminal Preferences</guilabel> dialog."
-msgstr ""
+msgstr "El número de líneas entre las que puede desplazarse en una ventana de terminal es determinada por la opción <guilabel>Desplazamiento</guilabel> en la sección <guilabel>General</guilabel> del diálogo <guilabel>Preferencias de terminal</guilabel>."
 
 #: Terminal.xml:447(term)
 msgid "To select and copy text:"
-msgstr ""
+msgstr "Para seleccionar y copiar texto:"
 
 #: Terminal.xml:449(para)
 msgid "You can select text in any of the following ways:"
-msgstr ""
+msgstr "Puede seleccionar texto de cualquiera de las siguientes formas:"
 
 #: Terminal.xml:452(para)
 msgid "To select a character at a time, click on the first character that you want to select and drag the mouse to the last character that you want to select."
-msgstr ""
+msgstr "Para seleccionar un carácter po vez, haga clic en el primer carácter que quiera seleccionar y arrastre el ratón hasta el último carácter que quiera seleccionar."
 
 #: Terminal.xml:456(para)
 msgid "To select a word at a time, double-click on the first word that you want to select and drag the mouse to the last word that you want to select."
-msgstr ""
+msgstr "Para seleccionar una palabra por vez, haga doble clic en la primera palabra que quiera seleccionar y arrastre el ratón hasta la última palabra que quiera seleccionar."
 
 #: Terminal.xml:460(para)
 msgid "To select a line at a time, triple-click on the first line that you want to select and drag the mouse to the last line that you want to select."
-msgstr ""
+msgstr "Para seleccionar una línea por vez, haga triple clic en la primera línea que quiera seleccionar y arrastre el ratón hasta la última línea que quiera seleccionar."
 
 #: Terminal.xml:464(para)
 msgid "These actions select all text between the first and last items. For all text selections, @PACKAGE_NAME@ copies the selected text into the clipboard when you release the mouse button. To explicitly copy the selected text, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Estas acciones seleccionan todo el texto entre los primeros y últimos elementos. Para todas las selecciones de texto, @PACKAGE_NAME@ copia el texto seleccionado al portapapeles cuando uste suelta el botón del ratón. Para copiar explícitamente el texto seleccionado, seleccione <menuchoice><guimenu>Editar</guimenu><guimenuitem>."
 
 #: Terminal.xml:471(term)
 msgid "To paste text into a terminal:"
-msgstr ""
+msgstr "Para pegar texto en una terminal:"
 
 #: Terminal.xml:473(para)
 msgid "If you previously copied text to the clipboard, you can paste the text into a terminal by performing one of the following actions:"
-msgstr ""
+msgstr "Si previamente copió texto al portapapeles, puede pegarlo en una terminal de las siguientes formas:"
 
 #: Terminal.xml:477(para)
 msgid "To paste text that you copied by selection only, middle-click at the command prompt. If you do not have a middle mouse button, refer to the X Server documentation for information about how to emulate the middle mouse button. This is equivalent to using the <menuchoice><guimenuitem>Paste Selection</guimenuitem></menuchoice> item from <menuchoice><guimenu>Edit</guimenu></menuchoice> menu."
-msgstr ""
+msgstr "Para pegar texto que copió al seleccionar solamente use el clic del medio en el prompt. Si su ratón no tiene un botón de clic del medio, vea la documentación del Servidor X para obtener información acerca de cómo emular el botón de clic del medio del ratón. Esto es lo mismo que seleccionar <menuchoice><guimenuitem>Pegar selección</guimenuitem></menuchoice> en el menú <menuchoice><guimenu>Editar</guimenu></menuchoice>."
 
 #: Terminal.xml:484(para)
 msgid "To paste text that you explicitly copied, choose <menuchoice><guimenu>Edit</guimenu><guimenuitem>Paste</guimenuitem></menuchoice>."
-msgstr ""
+msgstr "Para pegar texto que copió explícitamente, seleccione <menuchoice><guimenu>Editar</guimenu><guimenuitem>Pegar</guimenuitem></menuchoice>."
 
 #: Terminal.xml:491(term)
 msgid "To drag a file name into a terminal window:"
-msgstr ""
+msgstr "Para arrastrar un nombre de archivo en una ventana de terminal:"
 
 #: Terminal.xml:493(para)
 msgid "You can drag a file name to a terminal from another application such as a file manager or a web browser. The terminal displays the path and the full name of the URI."
-msgstr ""
+msgstr "Puede arrastrar un nombre de archivo a una terminal desde otra aplicación como un administrador de archivo o un navegador web. La terminal mostrará el camino y nombre completo del URI."
 
 #: Terminal.xml:498(term)
 msgid "To access a hyperlink:"
-msgstr ""
+msgstr "Para acceder a un hipervínculo:"
 
 #: Terminal.xml:500(para)
 msgid "To access a Uniform Resource Locator (URL) that is displayed in a terminal window, perform the following steps:"
-msgstr ""
+msgstr "Para acceder a un URL que se muestra en una ventana de terminal siga los siguientes pasos:"
 
 #: Terminal.xml:507(para)
 msgid "Move the mouse over the URL until the URL is underlined."
-msgstr ""
+msgstr "Mueva el ratón sobre el URL hasta que éste se subraye."
 
 #: Terminal.xml:510(para)
 msgid "Right-click on the URL to open the context menu."
-msgstr ""
+msgstr "Haga clic en el URL para abrir el menú contextual."
 
 #: Terminal.xml:513(para)
 msgid "Choose <guimenuitem>Open Link</guimenuitem> from the context menu to start your preferred Web Browser and display the file located at the URL."
-msgstr ""
+msgstr "Seleccione <guimenuitem>Abrir vínculo</guimenuitem> en el menú contextual para iniciar su navegador web preferido y mostrar el archivo al que el URL hace referencia."
 
 #: Terminal.xml:524(term)
 msgid "To compose an email:"
-msgstr ""
+msgstr "Para redactar un correo electrónico:"
 
 #: Terminal.xml:526(para)
 msgid "To compose an email to an address that is displayed in a terminal window, perform the following steps:"
-msgstr ""
+msgstr "Para redactar un correo electrónico a una dirección que se muestra en una ventana de terminal siga estas instrucciones:"
 
 #: Terminal.xml:533(para)
 msgid "Move the mouse over the email address until the email address is underlined."
-msgstr ""
+msgstr "Mueva el ratón sobre la dirección de mail hasta que ésta se subraye."
 
 #: Terminal.xml:536(para)
 msgid "Right-click on the email address to open the context menu."
-msgstr ""
+msgstr "Haga clic derecho en la dirección de correo electrónico para abrir el menú contextual."
 
 #: Terminal.xml:539(para)
 msgid "Choose <guimenuitem>Compose Email</guimenuitem> from the context menu to compose an email in your preferred Mail Reader."
-msgstr ""
+msgstr "Seleccione <guimenuitem>Redactar correo electrónico</guimenuitem> en el menú contextual para redactar un correo electrónico en su cliente de correo preferido."
 
 #: Terminal.xml:551(title)
 msgid "To change the terminal title"
-msgstr ""
+msgstr "Para cambiar el título de la terminal"
 
 #: Terminal.xml:560(phrase)
 msgid "Set title dialog"
-msgstr ""
+msgstr "Establecer el título del diálogo"
 
 #: Terminal.xml:565(para)
 msgid "To change the title of the currently displayed terminal, perform the following three steps:"
-msgstr ""
+msgstr "Para cambiar el título de la terminal mostrada actualmente siga estos pasos:"
 
 #: Terminal.xml:570(para)
 msgid "Choose <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Set Title...</guimenuitem></menuchoice> or double-click the the terminal tab header."
-msgstr ""
+msgstr "Seleccione <menuchoice><guimenu>Terminal</guimenu><guimenuitem>Establecer título...</guimenuitem></menuchoice> o haga doble clic en la cabecera de la pestaña de la terminal."
 
 #: Terminal.xml:575(para)
 msgid "Type the new title in the <guilabel>Title</guilabel> text box. @PACKAGE_NAME@ applies the change immediately."
-msgstr ""
+msgstr "Escriba el nuevo título en la caja de texto <guilabel>Título</guilabel>. @PACKAGE_NAME@ aplica los cambios inmediatamente."
 
 #: Terminal.xml:579(para)
 msgid "Click the button <guilabel>Close</guilabel> or press the <keycap>Return</keycap> key to close the <guilabel>Set Title</guilabel> dialog."
-msgstr ""
+msgstr "Haga clic en el botón <guilabel>Cerrar</guilabel> o presione e"
 
 #: Terminal.xml:584(para)
 msgid "To reset the terminal title to its default behavior, perform the same three steps as described above, but enter an empty title."
@@ -1547,7 +1558,7 @@ msgstr "<emphasis role=\"bold\">Reproducible.</emphasis> Si el desarrollador no 
 
 #: Terminal.xml:1310(para)
 msgid "<emphasis role=\"bold\">Specific.</emphasis> The quicker the developer can isolate the problem to a specific area, the more likely he will expediently fix it."
-msgstr "<emphasis role=\"bold\">Específico.</emphasis> The quicker the developer can isolate the problem to a specific area, the more likely he will expediently fix it."
+msgstr "<emphasis role=\"bold\">Específico.</emphasis> Cuanto más rápido pueda aislar el problema el desarrollador a un área específica, más probable es que pueda solucionarlo en forma oportuna."
 
 #: Terminal.xml:1315(para)
 msgid "In case you want to request a new feature, please make clear why you consider it a worth addition for the application. It is more likely that a new feature gets added if you provide good arguments for the feature. It will increase the chance of addition even more if you provide a patch that implements the requested feature, but make sure that you read the file <ulink url=\"http://svn.xfce.org/svn/xfce/terminal/trunk/HACKING\">HACKING</ulink> - especially the section labeled <emphasis>Coding Style</emphasis> - before you start hacking up the source."
@@ -1567,7 +1578,7 @@ msgstr "@PACKAGE_NAME@ fue escrito por Benedikt Meurer (<email>benny@xfce.org</e
 
 #: Terminal.xml:1337(para)
 msgid "This documentation was written by Benedikt Meurer (<email>benny@xfce.org</email>) and Andrew Conkling (<email>andrewski@fr.st</email>). The latest version of this document is always available from the <ulink type=\"http\" url=\"http://terminal.os-cillation.com/\">Terminal website</ulink>."
-msgstr "Esta documentación fue escrita por Benedikt Meurer (<email>benny@xfce.org</email>) y Andrew Conkling (<email>andrewski@fr.st</email>). La última versión de este documento está siempre disponible en el <ulink type=\"http\" url=\"http://terminal.os-cillation.com/\">Terminal website</ulink>."
+msgstr "Esta documentación fue escrita por Benedikt Meurer (<email>benny@xfce.org</email>) y Andrew Conkling (<email>andrewski@fr.st</email>). La última versión de este documento está siempre disponible en el <ulink type=\"http\" url=\"http://terminal.os-cillation.com/\">sitio web de Terminal</ulink>."
 
 #: Terminal.xml:1344(para)
 msgid "This software is distributed under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
@@ -1580,5 +1591,5 @@ msgstr "Usted debería haber recibido una copia de la Licencia Pública General 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: Terminal.xml:0(None)
 msgid "translator-credits"
-msgstr "Javier Sánchez <donoban@gmail.com>"
+msgstr "Javier Sánchez <donoban@gmail.com>, Diego Molina <diegoaugustomolina@gmail.com>"
 
