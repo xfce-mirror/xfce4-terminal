@@ -90,7 +90,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
                                       "Copyright \302\251 2007-2010 Nick Schermer",
                          "license", XFCE_LICENSE_GPL,
                          "logo", logo,
-                         "program-name", PACKAGE_NAME,
+                         "program-name", TERMINAL_NAME,
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
                          "website", "http://goodies.xfce.org/projects/applications/terminal",

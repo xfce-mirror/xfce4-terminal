@@ -44,7 +44,7 @@ usage (void)
 {
   g_print ("%s\n"
            "  %s [%s...]\n\n",
-           _("Usage:"), PACKAGE_NAME, _("OPTION"));
+           _("Usage:"), TERMINAL_NAME, _("OPTION"));
 
   g_print ("%s:\n"
            "  -h, --help; -V, --version; --disable-server;\n"
@@ -88,7 +88,7 @@ usage (void)
            _("icon"));
 
   g_print (_("See the %s man page for full explanation of the options above."),
-           PACKAGE_NAME);
+           TERMINAL_NAME);
 
   g_print ("\n\n");
 }
@@ -114,7 +114,7 @@ main (int argc, char **argv)
   signal (SIGPIPE, SIG_IGN);
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-  g_set_application_name (_("Terminal"));
+  g_set_application_name (TERMINAL_NAME);
 
   /* required because we don't call gtk_init() prior to usage() */
   gtk_set_locale ();
@@ -137,7 +137,8 @@ main (int argc, char **argv)
                  "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
                  "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
                  "Please report bugs to <%s>.\n"),
-                 PACKAGE_STRING, xfce_version_string (),
+                 TERMINAL_NAME " " PACKAGE_VERSION,
+                 xfce_version_string (),
                  "2003-2010",
                  GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                  gtk_major_version, gtk_minor_version, gtk_micro_version,

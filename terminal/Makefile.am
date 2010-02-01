@@ -6,6 +6,7 @@ INCLUDES = \
 	-DLIBEXECDIR=\"$(libexecdir)\" \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
 	-DSN_API_NOT_YET_FROZEN \
+	-DTERMINAL_NAME=\"`echo $(PACKAGE_NAME) | sed '$(program_transform_name)'`\" \
 	-I$(top_srcdir) \
 	$(PLATFORM_CPPFLAGS)
 
