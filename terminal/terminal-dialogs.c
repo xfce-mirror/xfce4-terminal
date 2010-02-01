@@ -226,7 +226,7 @@ terminal_dialogs_show_help (gpointer     parent,
     screen = gtk_widget_get_screen (GTK_WIDGET (parent));
 
   /* generate the command for the documentation browser */
-  command = g_strdup (LIBEXECDIR "/TerminalHelp");
+  command = g_strdup (LIBEXECDIR G_DIR_SEPARATOR_S TERMINAL_NAME "Help");
 
   /* check if a page is given */
   if (G_UNLIKELY (page != NULL))

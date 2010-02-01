@@ -18,14 +18,14 @@ install-data-local:
 			installfiles=`echo $(srcdir)/html/$$lang/*`; \
 			for file in $$installfiles; do \
 				echo "--- Installing "$$file; \
-				$(INSTALL_DATA) $$file $$dest; \
+				$(INSTALL_DATA) $$file $$dest/; \
 			done; \
 			if test x"$$lang" != x"C" -a ! -d $(srcdir)/images/$$lang; then \
 				echo "--- Creating symlink to C images for $$lang"; \
-				ln -sf $(docdir)/C/images $(DESTDIR)$(docdir)/$$lang/images; \
+				ln -sf $(docdir)/C/images $$dest/images; \
 			fi \
 		fi; \
-		file=$(srcdir)/man/$$lang/$(PACKAGE).1; \
+		file=$(srcdir)/man/$$lang/*.1; \
 		if test -f $$file ; then \
 			if test x"$$lang" = x"C"; then \
 				dest=$(DESTDIR)$(mandir)/man1; \
@@ -53,6 +53,7 @@ uninstall-local:
 		else \
 			dest=$(DESTDIR)$(mandir)/$$lang/man1/$(PACKAGE).1; \
 		fi; \
+		dest=`echo $$dest | sed '$(program_transform_name)'`; \
 		if test -f $$dest; then \
 			rm -f $$dest; \
 		fi \
@@ -99,6 +100,7 @@ doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STY
 		fi; \
 		sed -e "s,\@PACKAGE_NAME\@,$(PACKAGE_NAME),g" \
 			-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
+			-e '$(program_transform_name)' \
 			-i xgen-doc xgen-man; \
 		echo "Validating DocBook XML files"; \
 		$(XMLLINT) --noout --valid xgen-doc xgen-man; \
