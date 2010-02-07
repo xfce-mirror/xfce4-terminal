@@ -91,7 +91,7 @@ Terminal_LDADD = \
 # install symlink to 'terminal'
 install-exec-hook:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
-	-( cd $(DESTDIR)$(bindir) ; test -x terminal || ln -sf Terminal terminal )
+	-( cd $(DESTDIR)$(bindir) ; test -x terminal || test -x Terminal && ln -sf Terminal terminal )
 
 if HAVE_DBUS
 Terminal_CFLAGS += \
