@@ -44,6 +44,9 @@ usage (void)
 {
   gchar *name = g_get_prgname ();
 
+  /* set locale for the translations below */
+  gtk_set_locale ();
+
   g_print ("%s\n"
            "  %s [%s...]\n\n",
            _("Usage:"), name, _("OPTION"));
@@ -121,9 +124,6 @@ main (int argc, char **argv)
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Terminal"));
 
-  /* required because we don't call gtk_init() prior to usage() */
-  gtk_set_locale ();
-
 #ifndef NDEBUG
   /* Do NOT remove this line for now, If something doesn't work,
    * fix your code instead!
@@ -136,6 +136,9 @@ main (int argc, char **argv)
 
   if (G_UNLIKELY (show_version))
     {
+      /* set locale for the translations below */
+      gtk_set_locale ();
+
       name = g_get_prgname ();
       g_print (_("%s %s (Xfce %s)\n\n"
                  "Copyright (c) %s\n"
