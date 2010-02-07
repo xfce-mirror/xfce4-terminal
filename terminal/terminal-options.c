@@ -145,7 +145,12 @@ terminal_options_parse (gint       argc,
                         gboolean  *show_version,
                         gboolean  *disable_server)
 {
-  gint n;
+  gint   n;
+  gchar *prgname;
+
+  prgname = g_path_get_basename (*argv);
+  g_set_prgname (prgname);
+  g_free (prgname);
 
   for (n = 1; n < argc; ++n)
     {

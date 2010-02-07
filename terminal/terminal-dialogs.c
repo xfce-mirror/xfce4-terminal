@@ -65,6 +65,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
   };
 
   GdkPixbuf *logo;
+  gchar     *name;
 
   /* try to load the about logo */
   logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 168, 168, NULL);
@@ -81,6 +82,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
 #endif
 
   /* open the about dialog */
+  name = g_get_prgname ();
   gtk_show_about_dialog (parent,
                          "authors", authors,
                          "artists", artists,
@@ -90,7 +92,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
                                       "Copyright \302\251 2007-2010 Nick Schermer",
                          "license", XFCE_LICENSE_GPL,
                          "logo", logo,
-                         "program-name", TERMINAL_NAME,
+                         "program-name", name,
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
                          "website", "http://goodies.xfce.org/projects/applications/terminal",
@@ -100,6 +102,8 @@ terminal_dialogs_show_about (GtkWindow *parent)
   /* release the about logo (if any) */
   if (G_LIKELY (logo != NULL))
     g_object_unref (G_OBJECT (logo));
+
+  g_free (name);
 }
 
 
@@ -226,7 +230,7 @@ terminal_dialogs_show_help (gpointer     parent,
     screen = gtk_widget_get_screen (GTK_WIDGET (parent));
 
   /* generate the command for the documentation browser */
-  command = g_strdup (LIBEXECDIR G_DIR_SEPARATOR_S TERMINAL_NAME "Help");
+  command = g_strdup (LIBEXECDIR G_DIR_SEPARATOR_S "TerminalHelp");
 
   /* check if a page is given */
   if (G_UNLIKELY (page != NULL))

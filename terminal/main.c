@@ -42,9 +42,11 @@
 static void
 usage (void)
 {
+  gchar *name = g_get_prgname ();
+
   g_print ("%s\n"
            "  %s [%s...]\n\n",
-           _("Usage:"), TERMINAL_NAME, _("OPTION"));
+           _("Usage:"), name, _("OPTION"));
 
   g_print ("%s:\n"
            "  -h, --help; -V, --version; --disable-server;\n"
@@ -88,9 +90,11 @@ usage (void)
            _("icon"));
 
   g_print (_("See the %s man page for full explanation of the options above."),
-           TERMINAL_NAME);
+           name);
 
   g_print ("\n\n");
+
+  g_free (name);
 }
 
 
@@ -109,12 +113,13 @@ main (int argc, char **argv)
   gchar          **nargv;
   gint             nargc;
   gint             n;
+  gchar           *name;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-  g_set_application_name (TERMINAL_NAME);
+  g_set_application_name (_("Terminal"));
 
   /* required because we don't call gtk_init() prior to usage() */
   gtk_set_locale ();
@@ -131,18 +136,20 @@ main (int argc, char **argv)
 
   if (G_UNLIKELY (show_version))
     {
-      g_print (_("%s (Xfce %s)\n\n"
+      name = g_get_prgname ();
+      g_print (_("%s %s (Xfce %s)\n\n"
                  "Copyright (c) %s\n"
                  "        os-cillation e.K. All rights reserved.\n\n"
                  "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
                  "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
                  "Please report bugs to <%s>.\n"),
-                 TERMINAL_NAME " " PACKAGE_VERSION,
+                 name, PACKAGE_VERSION,
                  xfce_version_string (),
                  "2003-2010",
                  GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                  gtk_major_version, gtk_minor_version, gtk_micro_version,
                  PACKAGE_BUGREPORT);
+      g_free (name);
       return EXIT_SUCCESS;
     }
   else if (G_UNLIKELY (show_help))
