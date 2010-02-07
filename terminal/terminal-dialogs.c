@@ -23,6 +23,9 @@
 #ifdef HAVE_STDARG_H
 #include <stdarg.h>
 #endif
+#ifdef HAVE_LOCALE_H
+#include <locale.h>
+#endif
 
 #include <exo/exo.h>
 
@@ -218,8 +221,10 @@ terminal_dialogs_show_help (gpointer     parent,
 {
   GdkScreen *screen;
   GError    *error = NULL;
-  gchar     *command;
-  gchar     *tmp;
+  gchar     *filename;
+  gchar     *locale;
+  gboolean   exists;
+  gchar     *uri;
 
   /* determine the screen on which to launch the help */
   if (G_UNLIKELY (parent == NULL))
@@ -229,37 +234,47 @@ terminal_dialogs_show_help (gpointer     parent,
   else
     screen = gtk_widget_get_screen (GTK_WIDGET (parent));
 
-  /* generate the command for the documentation browser */
-  command = g_strdup (LIBEXECDIR G_DIR_SEPARATOR_S "TerminalHelp");
+  /* use index page */
+  if (page == NULL)
+    page = "index.html";
 
-  /* check if a page is given */
-  if (G_UNLIKELY (page != NULL))
+  /* get the locale of the user */
+  locale = g_strdup (setlocale (LC_MESSAGES, NULL));
+  if (G_LIKELY (locale != NULL))
+    locale = g_strdelimit (locale, "._", '\0');
+  else
+    locale = g_strdup ("C");
+
+  /* check if the help page exists on the system */
+  filename = g_build_filename (HELPDIR, locale, page, NULL);
+  exists = g_file_test (filename, G_FILE_TEST_EXISTS);
+  if (!exists && strcmp (locale, "C") != 0)
     {
-      /* append page as second parameter */
-      tmp = g_strconcat (command, " ", page, NULL);
-      g_free (command);
-      command = tmp;
-
-      /* check if an offset is given */
-      if (G_UNLIKELY (offset != NULL))
-        {
-          /* append offset as third parameter */
-          tmp = g_strconcat (command, " ", offset, NULL);
-          g_free (command);
-          command = tmp;
-        }
+      g_free (filename);
+      filename = g_build_filename (HELPDIR, "C", page, NULL);
+      exists = g_file_test (filename, G_FILE_TEST_EXISTS);
     }
 
+  /* build the full uri, fallback to online docs if nothing was found */
+  if (G_LIKELY (exists))
+    uri = g_strconcat ("file://", filename, "#", offset, NULL);
+  else
+    uri = g_strconcat ("http://foo-projects.org/~nick/docs/terminal/?lang=",
+                       locale, "&page=", page, "&offset=", offset, NULL);
+
+  g_free (filename);
+  g_free (locale);
+
   /* try to run the documentation browser */
-  if (!gdk_spawn_command_line_on_screen (screen, command, &error))
+  if (!exo_execute_preferred_application_on_screen ("WebBrowser", uri, NULL,
+                                                    NULL, screen, &error))
     {
       /* display an error message to the user */
       terminal_dialogs_show_error (parent, error, _("Failed to open the documentation browser"));
       g_error_free (error);
     }
 
-  /* cleanup */
-  g_free (command);
+  g_free (uri);
 }
 
 

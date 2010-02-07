@@ -1,9 +1,8 @@
 INCLUDES = \
-	-DBINDIR=\"$(bindir)\" \
 	-DDATADIR=\"$(datadir)\" \
+	-DHELPDIR=\"$(docdir)\" \
 	-DEXO_DISABLE_DEPRECATED\
 	-DG_LOG_DOMAIN=\"Terminal\" \
-	-DLIBEXECDIR=\"$(libexecdir)\" \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
 	-DSN_API_NOT_YET_FROZEN \
 	-I$(top_srcdir) \

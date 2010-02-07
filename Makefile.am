@@ -11,16 +11,6 @@ rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	@rm -f $(PACKAGE)-$(VERSION).tar.gz
 
-libexec_SCRIPTS = \
-	TerminalHelp
-
-TerminalHelp: TerminalHelp.in Makefile
-	rm -f TerminalHelp.gen TerminalHelp
-	sed -e "s,\@docdir\@,$(docdir),g" \
-		< $(srcdir)/TerminalHelp.in \
-		> TerminalHelp.gen
-	mv TerminalHelp.gen TerminalHelp
-
 .PHONY: ChangeLog
 
 ChangeLog: Makefile
@@ -51,7 +41,6 @@ ui_DATA = \
 
 EXTRA_DIST = \
 	HACKING \
-	TerminalHelp.in \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \
@@ -61,7 +50,6 @@ EXTRA_DIST = \
 
 DISTCLEANFILES = \
 	Terminal.spec \
-	TerminalHelp \
 	intltool-extract \
 	intltool-merge \
 	intltool-update \
