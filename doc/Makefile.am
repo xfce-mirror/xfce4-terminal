@@ -25,7 +25,7 @@ install-data-local:
 				ln -sf $(docdir)/C/images $$dest/images; \
 			fi \
 		fi; \
-		file=$(srcdir)/man/$$lang/*.1; \
+		file=$(srcdir)/man/$$lang/$(PACKAGE_NAME).1; \
 		if test -f $$file ; then \
 			if test x"$$lang" = x"C"; then \
 				dest=$(DESTDIR)$(mandir)/man1; \
@@ -33,6 +33,7 @@ install-data-local:
 				dest=$(DESTDIR)$(mandir)/$$lang/man1; \
 			fi; \
 			$(mkinstalldirs) $$dest; \
+			dest=`echo $$dest/$(PACKAGE).1 | sed '$(program_transform_name)'`; \
 			$(INSTALL_DATA) $$file $$dest; \
 		fi \
 	done;
@@ -100,14 +101,13 @@ doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STY
 		fi; \
 		sed -e "s,\@PACKAGE_NAME\@,$(PACKAGE_NAME),g" \
 			-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
-			-e '$(program_transform_name)' \
 			-i xgen-doc xgen-man; \
 		echo "Validating DocBook XML files"; \
 		$(XMLLINT) --noout --valid xgen-doc xgen-man; \
 		echo "Creating the HTML pages"; \
 		$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(HTML_STYLESHEET) xgen-doc; \
 		echo "Creating the MAN page"; \
-		$(XSLTPROC) --nonet -o $(srcdir)/man/$$lang/ $(srcdir)/$(MAN_STYLESHEET) xgen-man; \
+		$(XSLTPROC) --nonet -o $(srcdir)/man/$$lang/$(PACKAGE_NAME).1 $(srcdir)/$(MAN_STYLESHEET) xgen-man; \
 		chmod -R u+w $(srcdir)/html/$$lang $(srcdir)/man/$$lang; \
 		rm -f xgen-doc xgen-man; \
 		echo; \
