@@ -67,10 +67,15 @@ terminal_dialogs_show_about (GtkWindow *parent)
     NULL,
   };
 
-  GdkPixbuf *logo;
+  GdkPixbuf    *logo = NULL;
+  GtkIconTheme *theme;
 
   /* try to load the about logo */
-  logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 168, 168, NULL);
+  theme = gtk_icon_theme_get_default ();
+  if (gtk_icon_theme_has_icon (theme, "utilities-terminal"))
+    logo = gtk_icon_theme_load_icon (theme, "utilities-terminal", 128, GTK_ICON_LOOKUP_FORCE_SVG, NULL);
+  if (logo == NULL)
+    logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 128, 128, NULL);
 
   /* set dialog hook on gtk versions older then 2.18 */
 #if !GTK_CHECK_VERSION (2, 18, 0)

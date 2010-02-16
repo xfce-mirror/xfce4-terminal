@@ -117,6 +117,7 @@ main (int argc, char **argv)
   gint             nargc;
   gint             n;
   gchar           *name;
+  gboolean         has_util_icon;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
@@ -234,10 +235,10 @@ main (int argc, char **argv)
   gtk_accelerator_set_default_mod_mask (modifiers | GDK_MOD4_MASK);
 
   /* register our stock icons */
-  terminal_stock_init ();
+  has_util_icon = terminal_stock_init ();
 
   /* set default window icon */
-  gtk_window_set_default_icon_name ("Terminal");
+  gtk_window_set_default_icon_name (has_util_icon ? "utilities-terminal" : "Terminal");
 
   app = g_object_new (TERMINAL_TYPE_APP, NULL);
 
