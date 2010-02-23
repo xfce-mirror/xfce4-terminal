@@ -202,10 +202,43 @@ terminal_dialogs_show_error (gpointer      parent,
 
 
 
+static gboolean
+terminal_dialogs_show_help_ask_online (GtkWindow *parent)
+{
+  GtkWidget *dialog;
+  GtkWidget *button;
+  GtkWidget *image;
+  gint       response_id;
+
+  dialog = gtk_message_dialog_new (parent, GTK_DIALOG_DESTROY_WITH_PARENT,
+                                   GTK_MESSAGE_QUESTION, GTK_BUTTONS_CANCEL,
+                                   _("The %s user manual is not installed on your computer"),
+                                   g_get_application_name ());
+  gtk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+      _("You can read the user manual online. This manual may however "
+        "not exactly match your %s version."), g_get_application_name ());
+  gtk_window_set_title (GTK_WINDOW (dialog), _("User manual is missing"));
+
+  button = gtk_button_new_with_mnemonic (_("_Read Online"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_ACCEPT);
+  gtk_widget_show (button);
+
+  image = gtk_image_new_from_icon_name ("web-browser", GTK_ICON_SIZE_BUTTON);
+  gtk_button_set_image (GTK_BUTTON (button), image);
+  gtk_widget_show (image);
+
+  response_id = gtk_dialog_run (GTK_DIALOG (dialog));
+
+  gtk_widget_destroy (dialog);
+
+  return (response_id == GTK_RESPONSE_ACCEPT);
+}
+
+
+
 /**
  * terminal_dialogs_show_help:
- * @parent : a #GtkWidget on which the user manual should be shown, or a #GdkScreen
- *           if no #GtkWidget is known. May also be %NULL, in which case the default
+ * @parent : a #GtkWindow.
  *           #GdkScreen will be used.
  * @page   : the name of the page of the user manual to display or %NULL to display
  *           the overview page.
@@ -216,24 +249,17 @@ terminal_dialogs_show_error (gpointer      parent,
  * of the HTML file to display. @offset may refer to a anchor in the @page.
  **/
 void
-terminal_dialogs_show_help (gpointer     parent,
+terminal_dialogs_show_help (GtkWindow   *parent,
                             const gchar *page,
                             const gchar *offset)
 {
-  GdkScreen *screen;
-  GError    *error = NULL;
-  gchar     *filename;
-  gchar     *locale;
-  gboolean   exists;
-  gchar     *uri;
+  GError   *error = NULL;
+  gchar    *filename;
+  gchar    *locale;
+  gboolean  exists;
+  gchar    *uri = NULL;
 
-  /* determine the screen on which to launch the help */
-  if (G_UNLIKELY (parent == NULL))
-    screen = gdk_screen_get_default ();
-  else if (GDK_IS_SCREEN (parent))
-    screen = GDK_SCREEN (parent);
-  else
-    screen = gtk_widget_get_screen (GTK_WIDGET (parent));
+  terminal_return_if_fail (GTK_IS_WINDOW (parent));
 
   /* use index page */
   if (page == NULL)
@@ -259,7 +285,7 @@ terminal_dialogs_show_help (gpointer     parent,
   /* build the full uri, fallback to online docs if nothing was found */
   if (G_LIKELY (exists))
     uri = g_strconcat ("file://", filename, "#", offset, NULL);
-  else
+  else if (terminal_dialogs_show_help_ask_online (parent))
     uri = g_strconcat ("http://foo-projects.org/~nick/docs/terminal/?lang=",
                        locale, "&page=", page, "&offset=", offset, NULL);
 
@@ -267,8 +293,10 @@ terminal_dialogs_show_help (gpointer     parent,
   g_free (locale);
 
   /* try to run the documentation browser */
-  if (!exo_execute_preferred_application_on_screen ("WebBrowser", uri, NULL,
-                                                    NULL, screen, &error))
+  if (uri != NULL
+      && !exo_execute_preferred_application_on_screen ("WebBrowser", uri, NULL,
+                                                       NULL, gtk_window_get_screen (parent),
+                                                       &error))
     {
       /* display an error message to the user */
       terminal_dialogs_show_error (parent, error, _("Failed to open the documentation browser"));

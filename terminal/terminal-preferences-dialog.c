@@ -252,7 +252,7 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
   if (G_UNLIKELY (response == 1))
     {
       /* open the "Preferences" section of the user manual */
-      terminal_dialogs_show_help (widget, "preferences.html", NULL);
+      terminal_dialogs_show_help (GTK_WINDOW (widget), "preferences.html", NULL);
     }
   else
     {

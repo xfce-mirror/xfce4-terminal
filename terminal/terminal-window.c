@@ -1527,7 +1527,7 @@ title_dialog_response (GtkWidget *dialog,
   if (response == GTK_RESPONSE_HELP)
     {
       /* open the "Set Title" paragraph in the "Usage" section */
-      terminal_dialogs_show_help (GTK_WIDGET (dialog), "usage.html", "set-title");
+      terminal_dialogs_show_help (GTK_WINDOW (dialog), "usage.html", "set-title");
     }
   else
     {
@@ -1619,7 +1619,7 @@ terminal_window_action_report_bug (GtkAction       *action,
                                    TerminalWindow  *window)
 {
   /* open the "Support" section of the user manual */
-  terminal_dialogs_show_help (GTK_WIDGET (window), "support.html", NULL);
+  terminal_dialogs_show_help (GTK_WINDOW (window), "support.html", NULL);
 }
 
 
@@ -1629,7 +1629,7 @@ terminal_window_action_contents (GtkAction       *action,
                                  TerminalWindow  *window)
 {
   /* open the Terminal user manual */
-  terminal_dialogs_show_help (GTK_WIDGET (window), NULL, NULL);
+  terminal_dialogs_show_help (GTK_WINDOW (window), NULL, NULL);
 }
 
 

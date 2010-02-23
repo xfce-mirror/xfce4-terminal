@@ -30,7 +30,7 @@ void terminal_dialogs_show_error (gpointer      parent,
                                   const gchar  *format,
                                   ...) G_GNUC_PRINTF (3, 4);
 
-void terminal_dialogs_show_help  (gpointer      parent,
+void terminal_dialogs_show_help  (GtkWindow    *parent,
                                   const gchar  *page,
                                   const gchar  *offset);
 
