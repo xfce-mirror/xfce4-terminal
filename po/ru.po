@@ -1,7 +1,7 @@
 # Russian translations for Terminal package.
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
-#
+# 
 # Anthony Ivanoff <a-i@bk.ru>, 2005.
 # Andrey Fedoseev <andrey.fedoseev@gmail.com>, 2006.
 # Styopa Semenukha <semenukha@gmail.com>, 2009.
@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-28 12:00+0100\n"
+"POT-Creation-Date: 2010-03-09 18:00+0100\n"
 "PO-Revision-Date: 2010-03-02 18:14+0300\n"
 "Last-Translator: Dima Smirnov <arch@cnc-parts.info>\n"
 "Language-Team: \n"
@@ -19,91 +19,87 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Lokalize 1.0\n"
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:52
 msgid "Usage:"
 msgstr "Использование:"
 
-#: ../terminal/main.c:47
+#: ../terminal/main.c:52
 msgid "OPTION"
 msgstr "ПАРАМЕТР"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:57
 msgid "General Options"
 msgstr "Общие параметры"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:54
-#: ../terminal/main.c:80
+#: ../terminal/main.c:59 ../terminal/main.c:85
 msgid "display"
 msgstr "Показать"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:56
-#: ../terminal/main.c:71
+#: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
 msgstr "каталог"
 
-#: ../terminal/main.c:60
+#: ../terminal/main.c:65
 msgid "Window or Tab Separators"
 msgstr "Окна и вкладки"
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:70
 msgid "Tab Options"
 msgstr "Параметры вкладок"
 
 #. parameter of --command
-#: ../terminal/main.c:67
+#: ../terminal/main.c:72
 msgid "command"
 msgstr "Команда"
 
 #. parameter of --title
-#: ../terminal/main.c:69
+#: ../terminal/main.c:74
 msgid "title"
 msgstr "Заголовок"
 
-#: ../terminal/main.c:78
+#: ../terminal/main.c:83
 msgid "Window Options"
 msgstr "Параметры окна"
 
 #. parameter of --geometry
-#: ../terminal/main.c:82
+#: ../terminal/main.c:87
 msgid "geometry"
 msgstr "геометрия"
 
 #. parameter of --role
-#: ../terminal/main.c:84
+#: ../terminal/main.c:89
 msgid "role"
 msgstr "роль"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:86
+#: ../terminal/main.c:91
 msgid "string"
 msgstr "строка"
 
 #. parameter of --icon
-#: ../terminal/main.c:88
+#: ../terminal/main.c:93
 msgid "icon"
 msgstr "значок"
 
-#: ../terminal/main.c:90
+#: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Смотрите страницу помощи %s для полного описания опции"
 
-#: ../terminal/main.c:117
-#: ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119
-#: ../Terminal.desktop.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Терминал"
 
 # c-format
-#: ../terminal/main.c:134
-#, c-format
+#: ../terminal/main.c:144
+#, fuzzy, c-format
 msgid ""
-"%s (Xfce %s)\n"
+"%s %s (Xfce %s)\n"
 "\n"
 "Copyright (c) %s\n"
 "        os-cillation e.K. All rights reserved.\n"
@@ -125,7 +121,7 @@ msgstr ""
 "\n"
 "Сообщайте об ошибках по адресу: <%s>.\n"
 
-#: ../terminal/main.c:238
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Невозможно запустить службу терминала: %s\n"
@@ -149,12 +145,11 @@ msgstr "Произошло отсоединение от D-BUS, выход из 
 msgid "Unable to register object %s"
 msgstr "Невозможно зарегистрировать объект %s"
 
-#: ../terminal/terminal-dialogs.c:87
-#: ../Terminal-default-apps.xml.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Эмулятор терминала для Xfce"
 
-#: ../terminal/terminal-dialogs.c:94
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr ""
 "Anthony Ivanoff <a-i@bk.ru>\n"
@@ -162,80 +157,98 @@ msgstr ""
 "Sergey Fedoseev <fedoseev.sergey@gmail.com>\n"
 "Styopa Semenukha <semenukha@gmail.com>"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr "Посетить сайт программы Терминал"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr "Руководство пользователя отсутствует"
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr "Читать онлайн"
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:253
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Не удалось открыть браузер для просмотра документации"
 
-#: ../terminal/terminal-options.c:205
+#: ../terminal/terminal-options.c:210
 #, c-format
 msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
 msgstr "Для параметра \"--default-display\" в качестве значения требуется указать экран X по умолчанию"
 
-#: ../terminal/terminal-options.c:220
+#: ../terminal/terminal-options.c:225
 #, c-format
 msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
 msgstr "Для параметра \"--default-working-directory\" в качестве значения требуется указать рабочий каталог по умолчанию"
 
-#: ../terminal/terminal-options.c:236
+#: ../terminal/terminal-options.c:241
 #, c-format
 msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
 msgstr "Для параметра \"--execute/-x\" требуется указать команду, которую следует выполнить"
 
-#: ../terminal/terminal-options.c:253
+#: ../terminal/terminal-options.c:258
 #, c-format
 msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
 msgstr "Для параметра \"--command/-e\" требуется указать команду, которую следует выполнить"
 
-#: ../terminal/terminal-options.c:270
+#: ../terminal/terminal-options.c:275
 #, c-format
 msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
 msgstr "Для параметра \"--working-directory\" требуется указать рабочий каталог"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:290
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Для параметра \"--title/-T\" в качестве значения требуется указать заголовок"
 
-#: ../terminal/terminal-options.c:304
+#: ../terminal/terminal-options.c:309
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Для параметра \"--display\" в качестве значения требуется указать X-экран"
 
-#: ../terminal/terminal-options.c:319
+#: ../terminal/terminal-options.c:324
 #, c-format
 msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
 msgstr "Для параметра \"--geometry\" в качестве значения требуется указать размеры окна"
 
-#: ../terminal/terminal-options.c:334
+#: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Для параметра \"--role\" в качестве значения требуется указать роль окна"
 
-#: ../terminal/terminal-options.c:349
+#: ../terminal/terminal-options.c:354
 #, c-format
 msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Для параметра \"--startup-id\" требуется указать идентификатор запуска"
 
-#: ../terminal/terminal-options.c:364
+#: ../terminal/terminal-options.c:369
 #, c-format
 msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
 msgstr "Для параметра \"--icon/-I\" требуется указать название значка или путь к файлу"
 
-#: ../terminal/terminal-options.c:418
+#: ../terminal/terminal-options.c:423
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Неизвестный параметр \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Все файлы"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Файлы изображений"
 
@@ -295,8 +308,7 @@ msgstr "Полноэкранный режим"
 msgid "Set Title"
 msgstr "Изменить заголовок"
 
-#: ../terminal/terminal-preferences.c:463
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -354,8 +366,7 @@ msgstr "Содержание"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392
-#: ../terminal/terminal-screen.c:591
+#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
 #: ../terminal/terminal-screen.c:1532
 msgid "Untitled"
 msgstr "Без названия"
@@ -395,8 +406,7 @@ msgid "Help"
 msgstr "Помощь"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505
-#: ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Отключена"
 
@@ -712,7 +722,7 @@ msgstr "Заголовок:"
 msgid "Enter the title for the current terminal tab"
 msgstr "Введите заголовок для текущей вкладки"
 
-#: ../Terminal.desktop.in.h:2
+#: ../Terminal.desktop.in.in.h:2
 msgid "Terminal Emulator"
 msgstr "Эмулятор терминала"
 
@@ -1166,22 +1176,27 @@ msgstr "секунд"
 
 #~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          Вывести эту подсказку и выйти"
+
 #~ msgid "  -V, --version                       Print version information and exit"
 #~ msgstr "  -v, --version                       Вывести сведения о версии и выйти"
+
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
 #~ "                                      session message bus"
 #~ msgstr ""
 #~ "  --disable-server                    Не  регистрироваться в  системе  сообщений\n"
 #~ "                                      D-BUS"
+
 #~ msgid "  --default-display=DISPLAY           default X display to use"
 #~ msgstr "  --default-display=ЭКРАН            Экран X-сервера по умолчанию"
+
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
 #~ msgstr ""
 #~ "  --default-working-directory=КАТАЛОГ Установить для терминалов рабочий\n"
 #~ "каталог по умолчанию"
+
 #~ msgid ""
 #~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
@@ -1190,6 +1205,7 @@ msgstr "секунд"
 #~ "  --tab                               Открыть    новую   вкладку   в   последнем\n"
 #~ "                                      указанном   окне;  этот   параметр   можно\n"
 #~ "                                      указать несколько раз"
+
 #~ msgid ""
 #~ "  --window                            Open a new window containing one tab;\n"
 #~ "                                      more than one of these options can be\n"
@@ -1198,34 +1214,41 @@ msgstr "секунд"
 #~ "  --window                            Открыть   новое  окно  с  одной  вкладкой;\n"
 #~ "                                      этот  параметр  можно  указать   несколько\n"
 #~ "                                      раз"
+
 #~ msgid ""
 #~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Выполнить   оставшуюся   часть   командной\n"
 #~ "                                      строки в терминале"
+
 #~ msgid ""
 #~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
 #~ "  -e, --command=STRING                Выполнить   аргумент   этого  параметра  в\n"
 #~ "                                      терминале"
+
 #~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr "  --working-directory=КАТАЛОГ         Выбрать текущий каталог терминала"
+
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=ЗАГОЛОВОК               Установить заголовок окна терминала"
+
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
 #~ "  -H, --hold                          Не   уничтожать    вкладку   сразу   после\n"
 #~ "                                      завершения команды"
+
 #~ msgid ""
 #~ "  --display=DISPLAY                   X display to use for the last-\n"
 #~ "                                      specified window"
 #~ msgstr ""
 #~ "  --display=DISPLAY                   Экран X-сервера для последнего  указанного\n"
 #~ "                                      окна"
+
 #~ msgid ""
 #~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
 #~ "                                      man page), can be specified once per\n"
@@ -1234,6 +1257,7 @@ msgstr "секунд"
 #~ "  --geometry=РАЗМЕРЫ                  Указать  X-размеры для  открываемого  окна\n"
 #~ "                                      (см.  man X),  указывается   единожды  для\n"
 #~ "                                      каждого открываемого окна"
+
 #~ msgid ""
 #~ "  --role=ROLE                         Set the role for the last-specified\n"
 #~ "                                      window; applies to only one window;\n"
@@ -1244,16 +1268,19 @@ msgstr "секунд"
 #~ "                                      применяется только к одному окну;\n"
 #~ "                                      указывается     единожды    для    каждого\n"
 #~ "                                      создаваемого окна"
+
 #~ msgid ""
 #~ "  --startup-id=STRING                 ID for the startup notification\n"
 #~ "                                      protocol"
 #~ msgstr "  --startup-id=СТРОКА                 Идентификатор уведомления о запуске"
+
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
 #~ msgstr ""
 #~ "  -I, --icon=ICON                     Задать значок для терминала в форме\n"
 #~ "                                      названия значка или имени файла"
+
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
 #~ "                                      fullscreen mode; applies to only one\n"
@@ -1265,6 +1292,7 @@ msgstr "секунд"
 #~ "                                      полноэкранный   режим; можно  указывать по\n"
 #~ "                                      одному разу для каждого окна, создаваемого\n"
 #~ "                                      из командной строки."
+
 #~ msgid ""
 #~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
@@ -1275,6 +1303,7 @@ msgstr "секунд"
 #~ "                                      применимо только к одному окну; можно\n"
 #~ "                                      указывать для каждого окна, создаваемого\n"
 #~ "                                      из командной строки"
+
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1285,6 +1314,7 @@ msgstr "секунд"
 #~ "  --show-menubar                      Показать меню в последнем  указанном окне;\n"
 #~ "                                      можно указывать по одному разу для каждого\n"
 #~ "                                      окна, создаваемого из командной строки"
+
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1295,6 +1325,7 @@ msgstr "секунд"
 #~ "  --hide-menubar                      Скрыть  меню в последнем  указанном  окне;\n"
 #~ "                                      можно указывать по одному разу для каждого\n"
 #~ "                                      окна, создаваемого из командной строки"
+
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
@@ -1306,6 +1337,7 @@ msgstr "секунд"
 #~ "                                      последнем  указанном окне; можно указывать\n"
 #~ "                                      по   одному  разу   для   каждого    окна,\n"
 #~ "                                      создаваемого из командной строки"
+
 #~ msgid ""
 #~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
@@ -1317,6 +1349,7 @@ msgstr "секунд"
 #~ "                                      последнем  указанном окне; можно указывать\n"
 #~ "                                      по   одному    разу  для    каждого  окна,\n"
 #~ "                                      создаваемого из командной строки"
+
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1328,6 +1361,7 @@ msgstr "секунд"
 #~ "                                      открытом  окне; можно  указывать по одному\n"
 #~ "                                      разу  для  каждого  окна,  создаваемого из\n"
 #~ "                                      командной строки"
+
 #~ msgid ""
 #~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1339,38 +1373,55 @@ msgstr "секунд"
 #~ "                                      открытом  окне; можно  указывать по одному\n"
 #~ "                                      разу  для каждого  окна,  создаваемого  из\n"
 #~ "                                      командной строки"
+
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Невозможно запустить терминал: %s\n"
+
 #~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 #~ msgstr "Для параметра \"--sm-client-id\" требуется указать идентификатор сеанса"
+
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Заголовок:</b>"
+
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Использование: Terminal [ПАРАМЕТРЫ...]"
+
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Заголовок</b>"
+
 #~ msgid "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "Программа, запущенная в терминале, может изменять заголовок."
+
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Шрифт</b>"
+
 #~ msgid "<b>Background</b>"
 #~ msgstr "<b>Фоновая картинка</b>"
+
 #~ msgid "Shade transparent or image background:"
 #~ msgstr "Степень прозрачности:"
+
 #~ msgid "<small><i>None</i></small>"
 #~ msgstr "<small><i>Полностью прозрачный</i></small>"
+
 #~ msgid "<small><i>Maximum</i></small>"
 #~ msgstr "<small><i>Полностью непрозрачный</i></small>"
+
 #~ msgid "<b>Foreground and Background</b>"
 #~ msgstr "<b>Текст и фон</b>"
+
 #~ msgid "<b>Tab activity</b>"
 #~ msgstr "<b>Совместимость</b>"
+
 #~ msgid "<b>Shortcut keys</b>"
 #~ msgstr "<b>Комбинации клавиш</b>"
+
 #~ msgid "Web Browser"
 #~ msgstr "Веб-браузер"
+
 #~ msgid "Mail Reader"
 #~ msgstr "Почтовая программа"
+
 #~ msgid ""
 #~ "Choose your preferred Web Browser. The preferred\n"
 #~ "Web Browser opens when you right-click on a URL\n"
@@ -1379,6 +1430,7 @@ msgstr "секунд"
 #~ "Выберите используемый вами веб-браузер. Его\n"
 #~ "можно будет запустить, щёлкнув правой кнопкой \n"
 #~ "на интернет-адресе и выбрав \"Открыть ссылку\"."
+
 #~ msgid ""
 #~ "Choose your preferred Mail Reader. The preferred\n"
 #~ "Mail Reader opens when you right-click on an email\n"
@@ -1388,42 +1440,57 @@ msgstr "секунд"
 #~ "Выберите используемую вами почтовую программу. Её\n"
 #~ "можно будет запустить, щёлкнув правой кнопкой на\n"
 #~ "адресе электронной почты и выбрав \"Написать письмо\"."
+
 #~ msgid "Click here to change the selected application or to disable this feature."
 #~ msgstr "Щёлкните здесь, чтобы изменить выбранное приложение или отключить эту функцию."
+
 #~ msgid "Select application"
 #~ msgstr "Выбор приложения"
+
 #~ msgid "Choose a custom Web Browser"
 #~ msgstr "Выбор веб-браузера"
+
 #~ msgid "Choose a custom Mail Reader"
 #~ msgstr "Выбор почтовой программы"
+
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Web Browser in Terminal:"
 #~ msgstr ""
 #~ "Выберите приложение, которое будет использоваться\n"
 #~ "в Терминале в качестве веб-браузера:"
+
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Mail Reader in Terminal:"
 #~ msgstr ""
 #~ "Выберите приложение, которое будет использоваться\n"
 #~ "в Терминале в качестве почтовой программы:"
+
 #~ msgid "_Browse..."
 #~ msgstr "_Обзор..."
+
 #~ msgid "Disable this feature"
 #~ msgstr "Отключить эту функцию"
+
 #~ msgid "Other..."
 #~ msgstr "Другая..."
+
 #~ msgid "No application selected"
 #~ msgstr "Приложение не выбрано"
+
 #~ msgid "Preferred Applications"
 #~ msgstr "Предпочитаемые программы"
+
 #~ msgid "Applications"
 #~ msgstr "Приложения"
+
 #~ msgid "_Applications..."
 #~ msgstr "_Приложения..."
+
 #~ msgid "Customize your preferred applications"
 #~ msgstr "Выбор предпочитаемых приложений"
+
 #~ msgid ""
 #~ "You did not choose your preferred Web\n"
 #~ "Browser yet. Do you want to setup your\n"
@@ -1431,6 +1498,7 @@ msgstr "секунд"
 #~ msgstr ""
 #~ "Вы ещё не выбрали веб-браузер.\n"
 #~ "Хотите выбрать его сейчас?"
+
 #~ msgid ""
 #~ "You did not choose your preferred Mail\n"
 #~ "Reader yet. Do you want to setup your\n"
@@ -1438,44 +1506,63 @@ msgstr "секунд"
 #~ msgstr ""
 #~ "Вы ещё не выбрали почтовую программу. \n"
 #~ "Хотите выбрать её сейчас?"
+
 #~ msgid "Balsa"
 #~ msgstr "Balsa"
+
 #~ msgid "Epiphany Web Browser"
 #~ msgstr "Веб-браузер Epiphany"
+
 #~ msgid "Novell Evolution"
 #~ msgstr "Novell Evolution"
+
 #~ msgid "Default Web Browser (Xfce)"
 #~ msgstr "Веб-браузер по умолчанию (Xfce)"
+
 #~ msgid "Default Mail Reader (Xfce)"
 #~ msgstr "Почтовая программа по умолчанию (Xfce)"
+
 #~ msgid "Mozilla Firefox"
 #~ msgstr "Mozilla Firefox"
+
 #~ msgid "Galeon Web Browser"
 #~ msgstr "Веб-браузер Галеон"
+
 #~ msgid "KMail"
 #~ msgstr "KMail"
+
 #~ msgid "Konqueror"
 #~ msgstr "Konqueror"
+
 #~ msgid "Lynx"
 #~ msgstr "Lynx"
+
 #~ msgid "Mozilla Browser"
 #~ msgstr "Браузер Mozilla"
+
 #~ msgid "Mozilla Mail"
 #~ msgstr "Почта Mozilla"
+
 #~ msgid "Mutt"
 #~ msgstr "Mutt"
+
 #~ msgid "Opera Browser"
 #~ msgstr "Браузер Opera"
+
 #~ msgid "Opera Mail"
 #~ msgstr "Почта Opera"
+
 #~ msgid "Debian Sensible Browser"
 #~ msgstr "Debian Sensible Browser"
+
 #~ msgid "Sylpheed Claws"
 #~ msgstr "Sylpheed Claws"
+
 #~ msgid "Mozilla Thunderbird"
 #~ msgstr "Mozilla Thunderbird"
+
 #~ msgid "Custom title"
 #~ msgstr "Свой заголовок"
+
 #~ msgid "Tab title"
 #~ msgstr "Заголовок вкладки"
-
