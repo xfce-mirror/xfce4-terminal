@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
-"PO-Revision-Date: 2009-12-29 00:28+0100\n"
+"POT-Creation-Date: 2010-03-15 18:00+0100\n"
+"PO-Revision-Date: 2010-03-15 20:45+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -30,13 +30,15 @@ msgstr "Obecné"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:59
+#: ../terminal/main.c:85
 msgid "display"
 msgstr "displej"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:61
+#: ../terminal/main.c:76
 msgid "directory"
 msgstr "adresář"
 
@@ -85,16 +87,16 @@ msgstr "ikona"
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr ""
-"Kompletní dokumentaci k volbám uvedeným výše, naleznete v manuálové stránce "
-"aplikace %s."
+msgstr "Kompletní dokumentaci k volbám uvedeným výše, naleznete v manuálové stránce aplikace %s."
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126
+#: ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119
+#: ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -119,7 +121,7 @@ msgstr ""
 "\n"
 "Prosíme, abyste chyby hlásili na <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nelze registrovat službu terminálu: %s\n"
@@ -143,67 +145,66 @@ msgstr "Sběrnice D-BUS byla odpojena, ukončování...\n"
 msgid "Unable to register object %s"
 msgstr "Nelze registrovat objekt %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95
+#: ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulátor terminálu Xfce"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr "Navštívit webovou stránku aplikace Terminal"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr "Uživatelská příručka %s není na tomto počítači nainstalována"
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr "Je možné číst pouze uživatelskou příručku ve verzi online. Tato příručka se nemusí přesně shodovat s nainstalovanou verzí %s."
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr "Uživatelská příručka"
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr "Číst _online"
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Nepodařilo se otevřít prohlížeč dokumentace"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"Volba \"--default-display\" vyžaduje zadání výchozího X displeje jako jeho "
-"parametru"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "Volba \"--default-display\" vyžaduje zadání výchozího X displeje jako jeho parametru"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"Volba \"--default-working-directory\" vyžaduje zadání výchozího pracovního "
-"adresáře jako jeho parametru"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "Volba \"--default-working-directory\" vyžaduje zadání výchozího pracovního adresáře jako jeho parametru"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"Volba \"--execute/-x\" vyžaduje zadání příkazu ke spuštění na zbytku "
-"příkazové řádky"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "Volba \"--execute/-x\" vyžaduje zadání příkazu ke spuštění na zbytku příkazové řádky"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"Volba \"--command/-e\" vyžaduje zadání příkazu ke spuštění jako jeho "
-"parametru"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "Volba \"--command/-e\" vyžaduje zadání příkazu ke spuštění jako jeho parametru"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"Volba \"--working-directory\" vyžaduje zadání pracovního adresáře jako "
-"parametru"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "Volba \"--working-directory\" vyžaduje zadání pracovního adresáře jako parametru"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
@@ -212,17 +213,13 @@ msgstr "Volba \"--title/-T\" vyžaduje zadání titulku jako parametru"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Volba \"--display\" vyžaduje zadání X displeje jako jeho parametru"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
-"Volba \"--geometry\" vyžaduje zadání geometrie okna jako jeho parametru"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "Volba \"--geometry\" vyžaduje zadání geometrie okna jako jeho parametru"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
@@ -231,31 +228,24 @@ msgstr "Volba \"--role\" vyžaduje zadání úlohy okna jako jeho parametru"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"Volba \"--startup-id\" vyžaduje zadání spouštěcího identifikátoru (id) jako "
-"parametru"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "Volba \"--startup-id\" vyžaduje zadání spouštěcího identifikátoru (id) jako parametru"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"Volba \"--icon/-I\" vyžaduje zadání názvu ikony nebo názvu souboru jako jeho "
-"parametru"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "Volba \"--icon/-I\" vyžaduje zadání názvu ikony nebo názvu souboru jako jeho parametru"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Neznámá volba \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:215
 msgid "All Files"
 msgstr "Všechny soubory"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:221
 msgid "Image Files"
 msgstr "Obrázky"
 
@@ -315,7 +305,8 @@ msgstr "Celá obrazovka"
 msgid "Set Title"
 msgstr "Nastavit titulek"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463
+#: ../terminal/terminal-window.c:236
 msgid "Reset"
 msgstr "Inicializovat"
 
@@ -373,7 +364,8 @@ msgstr "Obsah"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
+#: ../terminal/terminal-screen.c:392
+#: ../terminal/terminal-screen.c:591
 #: ../terminal/terminal-screen.c:1532
 msgid "Untitled"
 msgstr "Bez názvu"
@@ -413,7 +405,8 @@ msgid "Help"
 msgstr "Nápověda"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505
+#: ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Zakázáno"
 
@@ -467,33 +460,23 @@ msgstr "Otevřít odkaz"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Nelze předat vybraný text typu text/plain na terminál. Nesprávný formát (%d) "
-"nebo délka (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Nelze předat vybraný text typu text/plain na terminál. Nesprávný formát (%d) nebo délka (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nelze předat adresu Mozilla URL na teminál: Nesprávný formát (%d) nebo délka "
-"(%d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Nelze předat adresu Mozilla URL na teminál: Nesprávný formát (%d) nebo délka (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nelze předat seznam adres URI terminálu. Nesprávný formát (%d) nebo délka (%"
-"d)\n"
+msgstr "Nelze předat seznam adres URI terminálu. Nesprávný formát (%d) nebo délka (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Přijata neplatná data o barvách: Nesprávný formát (%d) nebo délka (%d)\n"
+msgstr "Přijata neplatná data o barvách: Nesprávný formát (%d) nebo délka (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:704
@@ -855,59 +838,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Povolit _vyhlazování písma terminálu"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Povolte tuto volbu, chcete-li vyhlazovat písmo v oknech terminálu aplikace "
-"Terminal. Zakázáním této volby můžete výrazně urychlit vykreslování obsahu "
-"okna terminálu a snížit celkové zatížení na pomalejších systémech."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Povolte tuto volbu, chcete-li vyhlazovat písmo v oknech terminálu aplikace Terminal. Zakázáním této volby můžete výrazně urychlit vykreslování obsahu okna terminálu a snížit celkové zatížení na pomalejších systémech."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Povolte tuto volbu, abyste umožnili aplikacím spuštěným v oknech terminálu "
-"používat tučné písmo."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Povolte tuto volbu, abyste umožnili aplikacím spuštěným v oknech terminálu používat tučné písmo."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Povolením této volby umožníte posunování o jeden řádek šipkami nahoru a dolů "
-"společně s klávesou Shift."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "Povolením této volby umožníte posunování o jeden řádek šipkami nahoru a dolů společně s klávesou Shift."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Povolte tuto možnost pro zobrazení hlavního menu v nově vytvořených oknech "
-"terminálu."
+msgid "Enable this option to show the menubar in newly created terminal windows."
+msgstr "Povolte tuto možnost pro zobrazení hlavního menu v nově vytvořených oknech terminálu."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Povolte tuto volbu pro zobrazování panelů nástrojů v nově vytvořených oknech."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Povolte tuto volbu pro zobrazování panelů nástrojů v nově vytvořených oknech."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Povolte tuto volbu pro zobrazování dekorací oken kolem nově vytvořených oken "
-"terminálu."
+msgid "Enable this option to show window decorations around newly created terminal windows."
+msgstr "Povolte tuto volbu pro zobrazování dekorací oken kolem nově vytvořených oken terminálu."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Způsobí posunutí obsahu terminálu dolů při stisknutí libovolné klávesy."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Způsobí posunutí obsahu terminálu dolů při stisknutí libovolné klávesy."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1070,26 +1026,16 @@ msgid "Select Background Image File"
 msgstr "Výběr souboru s obrázkem pozadí"
 
 #: ../Terminal.glade.h:77
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Vybráním této volby donutíte aplikaci Terminal, aby zobrazovala přihlašovací "
-"rozhraní při otevření nových terminálů. Pro více informací o rozdílu mezi "
-"spuštěním jako interaktivní shell a login shell nahlédněte do dokumentace "
-"shellu."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Vybráním této volby donutíte aplikaci Terminal, aby zobrazovala přihlašovací rozhraní při otevření nových terminálů. Pro více informací o rozdílu mezi spuštěním jako interaktivní shell a login shell nahlédněte do dokumentace shellu."
 
 #: ../Terminal.glade.h:78
 msgid "Shortcut Keys"
 msgstr "Zkratkové klávesy"
 
 #: ../Terminal.glade.h:79
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Specifikuje počet řádků, o kolik se můžete vrátit zpět při posuvu nahoru."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Specifikuje počet řádků, o kolik se můžete vrátit zpět při posuvu nahoru."
 
 #: ../Terminal.glade.h:80
 msgid "St_yle:"
@@ -1132,24 +1078,12 @@ msgstr ""
 "a operačních systémů."
 
 #: ../Terminal.glade.h:91
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Tato volba určuje, zda bude obsah terminálu automaticky posunován při "
-"generování výstupu programu spuštěného v terminálu."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Tato volba určuje, zda bude obsah terminálu automaticky posunován při generování výstupu programu spuštěného v terminálu."
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Toto upřesňuje hodnotu na kterou je nastavena proměnná prostředí $TEMP, po "
-"otevření nového panelu nebo okna terminálu. Výchozí nastavení by mělo "
-"vyhovovat pro většinu systémů. Pokud máte potíže s barvami v některých "
-"aplikacích, zkuste hodnotu xterm-color."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Toto upřesňuje hodnotu na kterou je nastavena proměnná prostředí $TEMP, po otevření nového panelu nebo okna terminálu. Výchozí nastavení by mělo vyhovovat pro většinu systémů. Pokud máte potíže s barvami v některých aplikacích, zkuste hodnotu xterm-color."
 
 #: ../Terminal.glade.h:93
 msgid "Tiled"
@@ -1247,23 +1181,19 @@ msgstr "sekundách"
 #~ "  -h, --help                          Print this help message and exit"
 #~ msgstr ""
 #~ "  -h, --help                          Zobrazí tuto nápovědu a ukončí se"
-
 #~ msgid ""
 #~ "  -V, --version                       Print version information and exit"
 #~ msgstr ""
 #~ "  -V, --version                       Zobrazí informace o verzi a ukončí "
 #~ "se"
-
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
 #~ "                                      session message bus"
 #~ msgstr ""
 #~ "  --disable-server                    Nezaregistruje se k relaci sběrnice "
 #~ "D-BUS"
-
 #~ msgid "  --default-display=DISPLAY           default X display to use"
 #~ msgstr "  --default-display=DISPLEJ           Výchozí displej X pro použití"
-
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
@@ -1271,7 +1201,6 @@ msgstr "sekundách"
 #~ "  --default-working-directory=NÁZEVADRESÁŘE\n"
 #~ "                                      Nastaví výchozí pracovní adresář\n"
 #~ "                                      terminálu"
-
 #~ msgid ""
 #~ "  --tab                               Open a new tab in the last-"
 #~ "specified\n"
@@ -1281,7 +1210,6 @@ msgstr "sekundách"
 #~ "  --tab                               Otevře novou kartu v posledně "
 #~ "zadaném\n"
 #~ "                                      okně; lze zadat více těchto voleb"
-
 #~ msgid ""
 #~ "  --window                            Open a new window containing one "
 #~ "tab;\n"
@@ -1293,7 +1221,6 @@ msgstr "sekundách"
 #~ "                                      kartu; lze zadat více než jednu "
 #~ "takovou\n"
 #~ "                                      volbu"
-
 #~ msgid ""
 #~ "  -x, --execute                       Execute the remainder of the "
 #~ "command\n"
@@ -1301,7 +1228,6 @@ msgstr "sekundách"
 #~ msgstr ""
 #~ "  -x, --execute                       Spustí zbytek příkazové řádky v "
 #~ "terminálu"
-
 #~ msgid ""
 #~ "  -e, --command=STRING                Execute the argument to this "
 #~ "option\n"
@@ -1310,29 +1236,24 @@ msgstr "sekundách"
 #~ "  -e, --command=ŘETĚZEC               Spustí argument k této volbě "
 #~ "uvnitř\n"
 #~ "                                      terminálu"
-
 #~ msgid ""
 #~ "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr ""
 #~ "  --working-directory=NÁZEV_ADRESÁŘE  Nastaví pracovní adresář terminálu"
-
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=TITULEK                 Nastaví titulek terminálu"
-
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
 #~ "  -H, --hold                          Nezavře kartu ihned po ukončení\n"
 #~ "                                      potomka"
-
 #~ msgid ""
 #~ "  --display=DISPLAY                   X display to use for the last-\n"
 #~ "                                      specified window"
 #~ msgstr ""
 #~ "  --display=DISPLEJ                   Displej X serveru pro poslední\n"
 #~ "                                      zadané okno"
-
 #~ msgid ""
 #~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
 #~ "\"\n"
@@ -1345,7 +1266,6 @@ msgstr "sekundách"
 #~ "                                      stránka \"X\"), může být zadána "
 #~ "jedna na\n"
 #~ "                                      otevřené okno"
-
 #~ msgid ""
 #~ "  --role=ROLE                         Set the role for the last-"
 #~ "specified\n"
@@ -1360,7 +1280,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
-
 #~ msgid ""
 #~ "  --startup-id=STRING                 ID for the startup notification\n"
 #~ "                                      protocol"
@@ -1368,7 +1287,6 @@ msgstr "sekundách"
 #~ "  --startup-id=ŘETĚZEC                Identifikátor pro protokol oznámení "
 #~ "při\n"
 #~ "                                      spuštění"
-
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
@@ -1377,7 +1295,6 @@ msgstr "sekundách"
 #~ "ikony\n"
 #~ "                                             nebo název souboru name or "
 #~ "filename"
-
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
 #~ "                                      fullscreen mode; applies to only "
@@ -1392,7 +1309,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
-
 #~ msgid ""
 #~ "  --maximize                          Maximize the last-specified "
 #~ "window;\n"
@@ -1406,7 +1322,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      lze použít pro každé zadané okno\n"
 #~ "                                      vytvořené z příkazového řádku"
-
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
 #~ "                                      specified window; applies to only "
@@ -1421,7 +1336,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
-
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
 #~ "                                      specified window; applies to only "
@@ -1436,7 +1350,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
-
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
@@ -1452,7 +1365,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
-
 #~ msgid ""
 #~ "  --hide-borders                      Turn off the window decorations "
 #~ "for\n"
@@ -1469,7 +1381,6 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
-
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
 #~ "                                      specified window; applies to only "
@@ -1485,7 +1396,6 @@ msgstr "sekundách"
 #~ "                                      okno; může být zadáno jednou pro\n"
 #~ "                                      každé okno vytvořené z příkazové "
 #~ "řádky"
-
 #~ msgid ""
 #~ "  --hide-toolbars                     Turn off the toolbars for the "
 #~ "last-\n"
@@ -1502,60 +1412,43 @@ msgstr "sekundách"
 #~ "                                      okno; může být zadáno jednou pro\n"
 #~ "                                      každé okno vytvořené z příkazové "
 #~ "řádky"
-
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Nelze spustit teminál: %s\n"
-
 #~ msgid ""
 #~ "Option \"--sm-client-id\" requires specifying the session id as its "
 #~ "parameter"
 #~ msgstr ""
 #~ "Volba \"--sm-client-id\" vyžaduje zadání identifikátoru relace (id) jako "
 #~ "parametru"
-
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titulek</b>"
-
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Použití: Terminal [VOLBA...]"
-
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Titulek</b>"
-
 #~ msgid ""
 #~ "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "Příkaz spuštěný v terminálu může dynamicky nastavovat titulek."
-
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Písmo</b>"
-
 #~ msgid "<b>Background</b>"
 #~ msgstr "<b>Pozadí</b>"
-
 #~ msgid "Shade transparent or image background:"
 #~ msgstr "Stínované průsvitné pozadí nebo pozadí s obrázkem:"
-
 #~ msgid "<small><i>None</i></small>"
 #~ msgstr "<small><i>Žádný</i></small>"
-
 #~ msgid "<small><i>Maximum</i></small>"
 #~ msgstr "<small><i>Maximální</i></small>"
-
 #~ msgid "<b>Foreground and Background</b>"
 #~ msgstr "<b>Popředí a pozadí</b>"
-
 #~ msgid "<b>Tab activity</b>"
 #~ msgstr "<b>Aktivita karty</b>"
-
 #~ msgid "<b>Shortcut keys</b>"
 #~ msgstr "<b>Klávesové zkratky</b>"
-
 #~ msgid "Web Browser"
 #~ msgstr "Webový prohlížeč"
-
 #~ msgid "Mail Reader"
 #~ msgstr "Poštovní klient"
-
 #~ msgid ""
 #~ "Choose your preferred Web Browser. The preferred\n"
 #~ "Web Browser opens when you right-click on a URL\n"
@@ -1565,7 +1458,6 @@ msgstr "sekundách"
 #~ "prohlížeč se otevře po kliknutí pravým tlačítkem na\n"
 #~ "odkaz URL a vybrání volby Otevřít odkaz z kontextové\n"
 #~ "nabídky."
-
 #~ msgid ""
 #~ "Choose your preferred Mail Reader. The preferred\n"
 #~ "Mail Reader opens when you right-click on an email\n"
@@ -1576,59 +1468,44 @@ msgstr "sekundách"
 #~ "klient se otevře po kliknutí pravým tlačítkem na e-mailovou\n"
 #~ "adresu a vybrání volby Napsat e-mail z kontextové\n"
 #~ "nabídky."
-
 #~ msgid ""
 #~ "Click here to change the selected application or to disable this feature."
 #~ msgstr ""
 #~ "Klikněte sem pro změnu vybrané aplikace nebo zakázání této vlastnosti."
-
 #~ msgid "Select application"
 #~ msgstr "Vyberte aplikaci"
-
 #~ msgid "Choose a custom Web Browser"
 #~ msgstr "Zvolit vlastní webový prohlížeč"
-
 #~ msgid "Choose a custom Mail Reader"
 #~ msgstr "Zvolit vlastní e-mailový klient"
-
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Web Browser in Terminal:"
 #~ msgstr ""
 #~ "Zadejte aplikaci, kterou chcete používat jako\n"
 #~ "webový prohlížeč v aplikaci Terminal:"
-
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Mail Reader in Terminal:"
 #~ msgstr ""
 #~ "Zadejte aplikaci, kterou chcete používat jako\n"
 #~ "e-mailový klient v aplikaci Terminal:"
-
 #~ msgid "_Browse..."
 #~ msgstr "_Procházet..."
-
 #~ msgid "Disable this feature"
 #~ msgstr "Zakázat tuto vlastnost"
-
 #~ msgid "Other..."
 #~ msgstr "Jiné..."
-
 #~ msgid "No application selected"
 #~ msgstr "Nebyla vybrána žádná aplikace"
-
 #~ msgid "Preferred Applications"
 #~ msgstr "Upřednostňované aplikace"
-
 #~ msgid "Applications"
 #~ msgstr "Aplikace"
-
 #~ msgid "_Applications..."
 #~ msgstr "_Aplikace..."
-
 #~ msgid "Customize your preferred applications"
 #~ msgstr "Upravit nastavení upřednostňovaných aplikací"
-
 #~ msgid ""
 #~ "You did not choose your preferred Web\n"
 #~ "Browser yet. Do you want to setup your\n"
@@ -1637,7 +1514,6 @@ msgstr "sekundách"
 #~ "Dosud jste si nevybrali upřednostňovaný\n"
 #~ "webový prohlížeč. Chcete nyní nastavit\n"
 #~ "Vaše upřednostňované aplikace?"
-
 #~ msgid ""
 #~ "You did not choose your preferred Mail\n"
 #~ "Reader yet. Do you want to setup your\n"
@@ -1646,63 +1522,44 @@ msgstr "sekundách"
 #~ "Dosud jste si nevybrali upřednostňovaného\n"
 #~ "poštovního klienta. Chcete nyní nastavit\n"
 #~ "Vaše upřednostňované aplikace?"
-
 #~ msgid "Balsa"
 #~ msgstr "Balsa"
-
 #~ msgid "Epiphany Web Browser"
 #~ msgstr "Epiphany Web Browser"
-
 #~ msgid "Novell Evolution"
 #~ msgstr "Novell Evolution"
-
 #~ msgid "Default Web Browser (Xfce)"
 #~ msgstr "Výchozí webový prohlížeč (Xfce)"
-
 #~ msgid "Default Mail Reader (Xfce)"
 #~ msgstr "Výchozí klient pro elektronickou poštu (Xfce)"
-
 #~ msgid "Mozilla Firefox"
 #~ msgstr "Mozilla Firefox"
-
 #~ msgid "Galeon Web Browser"
 #~ msgstr "Galeon Web Browser"
-
 #~ msgid "KMail"
 #~ msgstr "KMail"
-
 #~ msgid "Konqueror"
 #~ msgstr "Konqueror"
-
 #~ msgid "Lynx"
 #~ msgstr "Lynx"
-
 #~ msgid "Mozilla Browser"
 #~ msgstr "Mozilla Browser"
-
 #~ msgid "Mozilla Mail"
 #~ msgstr "Mozilla Mail"
-
 #~ msgid "Mutt"
 #~ msgstr "Mutt"
-
 #~ msgid "Opera Browser"
 #~ msgstr "Opera Browser"
-
 #~ msgid "Opera Mail"
 #~ msgstr "Opera Mail"
-
 #~ msgid "Debian Sensible Browser"
 #~ msgstr "Rozumný prohlížeč Debianu"
-
 #~ msgid "Sylpheed Claws"
 #~ msgstr "Sylpheed Claws"
-
 #~ msgid "Mozilla Thunderbird"
 #~ msgstr "Mozilla Thunderbird"
-
 #~ msgid "Custom title"
 #~ msgstr "Vlastní titulek"
-
 #~ msgid "Tab title"
 #~ msgstr "Titulek karty"
+
