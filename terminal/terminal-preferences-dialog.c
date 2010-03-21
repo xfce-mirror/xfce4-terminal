@@ -64,24 +64,28 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 
 
 #define BIND_PROPERTIES(name, property) \
-  { object = gtk_builder_get_object (GTK_BUILDER (dialog), name); \
+  G_STMT_START { \
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), name); \
   terminal_return_if_fail (G_IS_OBJECT (object)); \
-  exo_mutual_binding_new (G_OBJECT (dialog->preferences), name, \
-                          G_OBJECT (object), property); }
+  binding = exo_mutual_binding_new (G_OBJECT (dialog->preferences), name, \
+                                    G_OBJECT (object), property); \
+  dialog->bindings = g_slist_prepend (dialog->bindings, binding); \
+  } G_STMT_END
 
 
 
 static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
-  GError        *error = NULL;
-  guint          i;
-  GObject       *object, *object2;
-  GtkWidget     *editor;
-  gchar          palette_name[16];
-  GtkFileFilter *filter;
-  gchar         *file;
-  const gchar   *props_active[] = { "title-mode", "command-login-shell",
+  GError           *error = NULL;
+  guint             i;
+  GObject          *object, *object2;
+  GtkWidget        *editor;
+  gchar             palette_name[16];
+  GtkFileFilter    *filter;
+  gchar            *file;
+  ExoMutualBinding *binding;
+  const gchar      *props_active[] = { "title-mode", "command-login-shell",
                                     "command-update-records", "scrolling-single-line",
                                     "scrolling-on-output", "scrolling-on-keystroke",
                                     "scrolling-bar", "font-allow-bold",
@@ -94,9 +98,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                     , "font-anti-alias"
 #endif
                                     };
-  const gchar   *props_color[] =  { "color-foreground", "color-cursor",
-                                    "color-background", "tab-activity-color",
-                                    "color-selection" };
+  const gchar      *props_color[] =  { "color-foreground", "color-cursor",
+                                       "color-background", "tab-activity-color",
+                                       "color-selection" };
 
   dialog->preferences = terminal_preferences_get ();
 
@@ -248,6 +252,8 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
                                       gint                       response,
                                       TerminalPreferencesDialog *dialog)
 {
+  GSList *li;
+
   /* check if we should open the user manual */
   if (G_UNLIKELY (response == 1))
     {
@@ -256,6 +262,11 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
     }
   else
     {
+      /* disconnect all the bindings */
+      for (li = dialog->bindings; li != NULL; li = li->next)
+        exo_mutual_binding_unbind (li->data);
+      g_slist_free (dialog->bindings);
+
       /* close the preferences dialog */
       gtk_widget_destroy (widget);
     }

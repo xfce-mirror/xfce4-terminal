@@ -48,6 +48,7 @@ struct _TerminalPreferencesDialog
 
   TerminalPreferences *preferences;
   guint                signal_id;
+  GSList              *bindings;
 };
 
 GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
