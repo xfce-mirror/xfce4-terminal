@@ -38,6 +38,8 @@ static void terminal_preferences_dialog_response          (GtkWidget            
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_reset_compat      (GtkWidget                 *button,
                                                            TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_reset_word_chars  (GtkWidget                 *button,
+                                                           TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_background_mode   (GtkWidget                 *combobox,
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_background_notify (GObject                   *object,
@@ -178,6 +180,12 @@ error:
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_reset_compat), dialog);
 
+  /* reset word-chars button */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-word-chars");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (G_OBJECT (object), "clicked",
+      G_CALLBACK (terminal_preferences_dialog_reset_word_chars), dialog);
+
   /* add shortcuts editor */
   editor = g_object_new (TERMINAL_TYPE_SHORTCUT_EDITOR, NULL);
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "editor-container");
@@ -294,6 +302,25 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
           g_object_set_property (G_OBJECT (dialog->preferences), properties[i], &value);
           g_value_unset (&value);
         }
+    }
+}
+
+
+
+static void
+terminal_preferences_dialog_reset_word_chars (GtkWidget                 *button,
+                                              TerminalPreferencesDialog *dialog)
+{
+  GParamSpec  *spec;
+  GValue       value = { 0, };
+
+  spec = g_object_class_find_property (G_OBJECT_GET_CLASS (dialog->preferences), "word-chars");
+  if (G_LIKELY (spec != NULL))
+    {
+      g_value_init (&value, spec->value_type);
+      g_param_value_set_default (spec, &value);
+      g_object_set_property (G_OBJECT (dialog->preferences), "word-chars", &value);
+      g_value_unset (&value);
     }
 }
 
