@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2009-05-30 15:03+0300\n"
 "Last-Translator: Mișu Moldovan <dumol@xfce.org>\n"
 "Language-Team: Romanian <xfce-i18n@xfce.org>\n"
@@ -95,12 +95,12 @@ msgstr "Acțiune"
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -125,7 +125,7 @@ msgstr ""
 "\n"
 "Raportați problemele la <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nu se poate înregistra serviciul terminal: %s\n"
@@ -149,20 +149,40 @@ msgstr "Deconectare de la magistrala D-BUS, ieșire...\n"
 msgid "Unable to register object %s"
 msgstr "Nu se poate înregistra obiectul %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulator de Terminal Xfce"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "Mișu Moldovan <dumol@xfce.org>"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr ""
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Nu s-a putut deschide navigatorul documentației"
 
@@ -259,11 +279,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opțiune necunoscută „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "Toate fișierele"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "Fișierele imagini"
 
@@ -1077,47 +1097,52 @@ msgstr "Înlocuiește titlul inițial"
 
 #: ../Terminal.glade.h:68
 #, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr "_Reinițializează opțiunile de compatibilitate la cele implicite"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "Reinițializează indicatorul de activitate după"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Scalat"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 #, fuzzy
 msgid "Scr_ollbar is:"
 msgstr "Bara de de_filare este:"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "Derulare la ta_stare"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "De_rulează la ieșire"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Derulează câte o singură _linie cu Shift-Up/Shift-Down"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "Defilare înap_oi:"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 #, fuzzy
 msgid "Scrolling"
 msgstr "<b>Derulare</b>"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "Selectați fișierul cu imaginea de fundal"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1129,51 +1154,51 @@ msgstr ""
 "documentația pentru detalii despre diferențele dintre executarea ca un shell "
 "interactiv și executarea ca login shell."
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 #, fuzzy
 msgid "Shortcut Keys"
 msgstr "Combinație de taste"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Specifică numărul de linii pe care le puteți derula înapoi utilizând bare de "
 "defilare."
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 #, fuzzy
 msgid "St_yle:"
 msgstr "_Stil:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "Întins"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "<b>Indicator tab activ</b>"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "Culoare ta_buri active:"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Opțiuni Terminal"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Aplicațiile terminal au următoarea paletă de culori disponibilă:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 #, fuzzy
 msgid "Text Selection"
 msgstr "<b>Selecție text</b>"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1186,7 +1211,7 @@ msgstr ""
 "anumite aplicații și sisteme de operare ce presupun un comportament diferit "
 "din partea unei aplicații terminal."
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1195,7 +1220,7 @@ msgstr ""
 "fiecare dată când se generează noi ieșiri de către comenzile executate în "
 "terminal."
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1207,105 +1232,105 @@ msgstr ""
 "trebui să fie OK pentru cele mai multe sisteme. Dacă aveți probleme cu "
 "culori în anumite aplicații, încercați valoarea „xterm-color” aici."
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 #, fuzzy
 msgid "Tiled"
 msgstr "Mozaic"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 #, fuzzy
 msgid "Title"
 msgstr "Mozaic"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "Fundal transparent"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "Fundal transparent"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "Utilizează culoarea _implicită"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Utilizează o culoare de fundal personalizată la selectarea textului"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "Utilizează o culoare _personalizată"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Utilizează culoarea de fundal implicită la selectarea textului"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 #, fuzzy
 msgid "_Appearance"
 msgstr "Aspect"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "Culoare _fundal:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "Tasta _Backspace generează:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 #, fuzzy
 msgid "_Colors"
 msgstr "Culori"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "Tasta _Delete generează:"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "Titlu modificat _dinamic:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Fișier:"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 #, fuzzy
 msgid "_General"
 msgstr "Generale"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "Titlu _inițial:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Reset compatibility options to defaults"
 msgstr "_Reinițializează opțiunile de compatibilitate la cele implicite"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "E_xecută comanda ca un shell de login"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 #, fuzzy
 msgid "_Shortcuts"
 msgstr "Combinații de taste"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 #, fuzzy
 msgid "_Text color:"
 msgstr "Culoare _text și cursor:"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "Act_ualizează înregistrările utmp/wtmp la lansarea comenzii"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "secunde"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2010-02-05 15:49+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
@@ -88,12 +88,12 @@ msgstr "ikon"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "A fenti kapcsolók teljes magyarázatáért lásd a %s kézikönyvoldalt."
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminál"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -118,7 +118,7 @@ msgstr ""
 "\n"
 "A hibákat itt jelentse: <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "A terminálszolgáltatás nem regisztrálható: %s\n"
@@ -142,20 +142,40 @@ msgstr "A D-Bus üzenetbusz leválasztva, kilépés…\n"
 msgid "Unable to register object %s"
 msgstr "Az objektum (%s) nem regisztrálható"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce terminálemulátor"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "Kelemen Gábor <kelemeng@gnome.hu>"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr "A Terminál weboldalának felkeresése"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "A dokumentációböngésző megnyitása meghiúsult"
 
@@ -254,11 +274,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Ismeretlen kapcsoló: „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "Képfájlok"
 
@@ -1030,42 +1050,47 @@ msgid "Replaces initial title"
 msgstr "Lecseréli az eredeti címet"
 
 #: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
+
+#: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
 msgstr "Lapa_ktivitás jelzőjének kikapcsolása"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Kifeszített"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
 msgstr "A gö_rdítősáv:"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "_Billentyűleütésre gördül"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 msgid "Scroll on ou_tput"
 msgstr "Új _kimenethez gördül"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Görgetés _egy sorral a Shift+fel/le billentyűkkel"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid "Scroll_back:"
 msgstr "_Visszagördítés:"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 msgid "Scrolling"
 msgstr "Gördülés"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid "Select Background Image File"
 msgstr "Válasszon háttérképfájlt"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1077,44 +1102,44 @@ msgstr ""
 "módban futtatása közti különbségekkel kapcsolatban nézze meg a "
 "parancsértelmező kézikönyvét."
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Gyorsbillentyűk"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Megadja a sorok számát, amennyit a görgetősávval visszagörgethet."
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 msgid "St_yle:"
 msgstr "Stíl_us:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "Kifeszített"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
 msgstr "Lapaktivitás jelzője"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 msgid "Tab activit_y color:"
 msgstr "_Lapaktivitás színe:"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Terminál beállításai"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "A terminálalkalmazások számára ez a színpaletta érhető el:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 msgid "Text Selection"
 msgstr "Szövegkijelölés"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1126,7 +1151,7 @@ msgstr ""
 "és operációs rendszerekkel való együttműködését, amelyek más igényeket\n"
 "támasztanak a terminállal szemben."
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1134,7 +1159,7 @@ msgstr ""
 "A terminál legördüljön-e automatikusan, amikor a terminálban futó parancsok "
 "új kimenetet állítanak elő."
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1145,94 +1170,94 @@ msgstr ""
 "nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes "
 "alkalmazások színeivel probléma van, próbálja megadni az xterm-color értéket."
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Tiled"
 msgstr "Mozaik"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "Cím"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Transpare_ncy:"
 msgstr "Á_tlátszóság:"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "Átlátszó háttér"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "_Alapértelmezett szín használata"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Egyéni háttérszín használata a kijelölt szöveghez"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
 msgstr "_Egyéni szín használata:"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Alapértelmezett háttérszín használata a kijelölt szöveghez"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 msgid "_Appearance"
 msgstr "_Megjelenés"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "_Háttérszín:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "A Ba_ckspace billentyű ezt generálja:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_Colors"
 msgstr "_Színek"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "A _Delete billentyű ezt generálja:"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "_Dinamikusan beállított cím:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Fájl:"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_General"
 msgstr "Á_ltalános"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "_Kiindulási cím:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 msgid "_Reset compatibility options to defaults"
 msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "_Parancs futtatása bejelentkezési parancsértelmezőként"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "_Text color:"
 msgstr "_Szövegszín:"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "Parancs indításakor az _utmp/wtmp rekordok frissítése"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "másodperc"

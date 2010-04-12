@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2006-06-12 21:28+0800\n"
 "Last-Translator: Hydonsingore Cia <hydonsingore@educities.edu.tw>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -94,12 +94,12 @@ msgstr "行為"
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "終端機"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, fuzzy, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -124,7 +124,7 @@ msgstr ""
 " \n"
 "請將錯誤報告至 <%s> 。\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "無法登錄終端機服務: %s\n"
@@ -149,20 +149,40 @@ msgstr "D-BUS 訊息服務匯流排中斷連結，離開中...\n"
 msgid "Unable to register object %s"
 msgstr "無法登錄物件 %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce 終端機模擬器"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "翻譯者榮譽榜"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr ""
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "無法開啟文件瀏覽器"
 
@@ -242,11 +262,11 @@ msgstr "選項 \"--command/-e\" 需要指定命令作為其參數"
 msgid "Unknown option \"%s\""
 msgstr "未知的選項 \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "所有檔案"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "圖像檔案"
 
@@ -1040,48 +1060,53 @@ msgstr "取代初始標題"
 
 #: ../Terminal.glade.h:68
 #, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr "將相容性選項重設回預設值(_R)"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "選擇終端機文字顏色"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "並排"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 #, fuzzy
 msgid "Scr_ollbar is:"
 msgstr "捲動軸在(_S):"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 #, fuzzy
 msgid "Scroll on _keystroke"
 msgstr "捲動至鍵擊處(_s)"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "捲動至輸出處(_r)"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr ""
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "向回捲動(_o):"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 #, fuzzy
 msgid "Scrolling"
 msgstr "<b>捲動</b>"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "選擇背景圖像檔"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1092,49 +1117,49 @@ msgstr ""
 "詳情請見您的shell的文件，以得知以interactive shell和login shell方式運作的差"
 "異。"
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 #, fuzzy
 msgid "Shortcut Keys"
 msgstr "快捷鍵"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "指定您可以用捲動軸向回捲動的行數"
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 #, fuzzy
 msgid "St_yle:"
 msgstr "風格(_S):"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "延伸"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "選擇終端機文字顏色"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "選擇終端機文字顏色"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Terminal 偏好設定"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminal 應用程式有這個可用的調色盤:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 #, fuzzy
 msgid "Text Selection"
 msgstr "<b>文字選取</b>"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1145,7 +1170,7 @@ msgstr ""
 "這些選項可能導致某些應用程式的不正常。它們只是讓您處理某些特定的應用程式和作"
 "業系統中對終端機行為有著不同預期這件事。"
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1153,7 +1178,7 @@ msgstr ""
 "這個選項控制終端機是否自動捲動到最底下。(不論新的輸出是否是由終端機機內執行的"
 "指令所產生)"
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1164,104 +1189,104 @@ msgstr ""
 "絕大多數的系統。如果您在某些應用程式遇到顏色方面的問題，試試在這裡指定xterm-"
 "color"
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 #, fuzzy
 msgid "Tiled"
 msgstr "平鋪"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "標題"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "透明背景"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "透明背景"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "使用預設顏色"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "使用自訂文字選取背景顏色"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "使用自訂顏色(_C)"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "使用預設文字選取背景顏色"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 #, fuzzy
 msgid "_Appearance"
 msgstr "外觀"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "背景顏色(_B)"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "Backspace 鍵產生(_B)"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 #, fuzzy
 msgid "_Colors"
 msgstr "顏色"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "Detelet 鍵產生(_D):"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "動態標題(_D):"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "檔案(_F):"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 #, fuzzy
 msgid "_General"
 msgstr "一般"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "初始標題(_I):"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Reset compatibility options to defaults"
 msgstr "將相容性選項重設回預設值(_R)"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "如同在 login shell 般執行命令"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 #, fuzzy
 msgid "_Shortcuts"
 msgstr "快捷鍵"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 #, fuzzy
 msgid "_Text color:"
 msgstr "文字與游標顏色"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "當命令執行時更新 utmp/wtmp 紀錄"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr ""
 

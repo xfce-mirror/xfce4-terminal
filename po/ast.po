@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2009-09-02 12:55+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
@@ -87,12 +87,12 @@ msgstr "Aición"
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -117,7 +117,7 @@ msgstr ""
 "\n"
 "Por favor, envíe los informes de fallu a <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Imposible rexistrar el serviciu del terminal: %s\n"
@@ -141,20 +141,40 @@ msgstr "Bus de mensaxes D-BUS desconectáu. Finando...\n"
 msgid "Unable to register object %s"
 msgstr "Imposible rexistrar oxetu %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulador de terminal pa Xfce"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "Arcipiescu <xandru.martino@gmail.com>"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr "Visitar páxina de Terminal"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Fallu al abrir el visor de documentación"
 
@@ -256,11 +276,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opción desconocida \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "Tolos ficheros"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "Ficheros d'imaxe"
 
@@ -1043,42 +1063,48 @@ msgid "Replaces initial title"
 msgstr "Sustitúi al títulu inicial"
 
 #: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr ""
+"_Restablecer les opciones de compatibilidá a los valores predeterminaos"
+
+#: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
 msgstr "Restablecer l'indicador de xera de llingüeta dempués de"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Escaláu"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
 msgstr "La barra de de_splazamientu ta:"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "Desplazar al _calcar una tecla"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 msgid "Scroll on ou_tput"
 msgstr "De_splazamientu a la salida"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Desplazar una sola _llinia usando les tecles Mays-Arriba/-Abaxo"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid "Scroll_back:"
 msgstr "_Desplazamientu haza atrás"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 msgid "Scrolling"
 msgstr "Desplazamientu"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid "Select Background Image File"
 msgstr "Escueyi ficheru d'imaxe de fondu"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1090,46 +1116,46 @@ msgstr ""
 "documentación de'l to shell pa detalles sobro les diferencies ente executalu "
 "como una shell interactiva y como una shell d'aniciu de sesión."
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Atayu de tecláu"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Especifica'l númberu de llinies que puede desplazase haza atrás usando la "
 "barra de desplazamientu."
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 msgid "St_yle:"
 msgstr "Est_ilu:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "Estiráu"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
 msgstr "Indicador de xera de llingüeta"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 msgid "Tab activit_y color:"
 msgstr "Color de _xera de llingüeta:"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Preferencies del terminal"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Les aplicaciones de terminal tienen esta paleta de colores disponible:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 msgid "Text Selection"
 msgstr "Testu escoyíu"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1141,7 +1167,7 @@ msgstr ""
 "trabayar con delles aplicaciones y sistemes operativos\n"
 "qu'esperen un comportamientu distintu del terminal."
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1150,7 +1176,7 @@ msgstr ""
 "automáticamente cuando se xenere una nueva salida polos comandos que se tean "
 "executando dientro del terminal."
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1162,96 +1188,96 @@ msgstr ""
 "na mayoría de los sistemes. Si tienes problemes colos colores en dalgunes "
 "aplicaciones, prueba a poner xterm-color equí"
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Tiled"
 msgstr "Mosaicu"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "Títulu"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Transpare_ncy:"
 msgstr "Trespare_ncia:"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "Fondu tresparente"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "Usar color _predetermináu"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Usar un color de fondu personalizáu pal testu escoyíu"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
 msgstr "Usar _color personalizáu"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Usar el color predetermináu pal fondu del testu escoyíu"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 msgid "_Appearance"
 msgstr "_Apariencia"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "Color de _fondu:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "La tecla _desaniciar xenera:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_Colors"
 msgstr "_Colores"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "La _tecla suprimir xenera:"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "Títulu afitáu _dinámicamente"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Ficheru:"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_General"
 msgstr "Xeneral"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "Títulu _inicial:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 msgid "_Reset compatibility options to defaults"
 msgstr ""
 "_Restablecer les opciones de compatibilidá a los valores predeterminaos"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "_Executar comandu como shell d'aniciu de sesión"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Shortcuts"
 msgstr "Atayos de tecláu"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "_Text color:"
 msgstr "Color de _testu y cursor:"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Anovar rexistros de utmp/wtmp cuando s'executa un comandu"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "segundos"
 

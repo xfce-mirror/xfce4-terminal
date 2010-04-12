@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2009-12-16 18:17+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -90,12 +90,12 @@ msgstr "ikon"
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -120,7 +120,7 @@ msgstr ""
 "\n"
 "Rapportera fel till <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kunde inte registrera terminaltjänsten: %s\n"
@@ -144,11 +144,11 @@ msgstr "D-BUS-meddelandebussen kopplades från, avslutar...\n"
 msgid "Unable to register object %s"
 msgstr "Kunde inte registrera objektet %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Terminalemulator för Xfce"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>\n"
@@ -157,13 +157,33 @@ msgstr ""
 "Skicka synpunkter på översättningen till\n"
 "tp-sv@listor.tp-sv.se"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 #, fuzzy
 msgid "Visit Terminal website"
 msgstr "Statisk terminaltitel"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Misslyckades med att öppna dokumentationsvisaren"
 
@@ -256,11 +276,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Okänd flagga \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "Alla filer"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "Bildfiler"
 
@@ -1047,46 +1067,51 @@ msgstr "Ersätter initial titel"
 
 #: ../Terminal.glade.h:68
 #, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr "_Återställ kompatibilitetsalternativ till standardvärden"
+
+#: ../Terminal.glade.h:69
+#, fuzzy
 msgid "Reset tab activity _indicator after"
 msgstr "Nollställ flikaktivitetsindikator efter"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Skalad"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 #, fuzzy
 msgid "Scr_ollbar is:"
 msgstr "_Rullningslisten är:"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "Rulla vid _tangenttryckning"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 #, fuzzy
 msgid "Scroll on ou_tput"
 msgstr "Rulla vid utdata"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Rulla en _rad med tangenterna Skift-Upp/-Ned"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 #, fuzzy
 msgid "Scroll_back:"
 msgstr "Till_bakarullning:"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 msgid "Scrolling"
 msgstr "Rullning"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 #, fuzzy
 msgid "Select Background Image File"
 msgstr "Välj bildfil för bakgrund"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1098,46 +1123,46 @@ msgstr ""
 "ditt skal för detaljer angående skillnaderna mellan att köra det som ett "
 "interaktivt skal och att köra det som ett inloggningsskal."
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Genvägstangenter"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Anger det antal rader du kan rulla tillbaka med rullningslisten."
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 msgid "St_yle:"
 msgstr "St_il:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "Utsträckt"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "<b>Flikaktivitetsindikator</b>"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "Färg för f_likaktivitet:"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Inställningar för Terminal"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Terminalprogram har denna färgpalett tillgänglig:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 msgid "Text Selection"
 msgstr "Textmarkering"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1149,7 +1174,7 @@ msgstr ""
 "endast här för att låta dig kunna använda speciella program och "
 "operativsystem som förväntar sig ett annat terminalbeteende."
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1157,7 +1182,7 @@ msgstr ""
 "Det här alternativet kontrollerar huruvida terminalen rullar ned automatiskt "
 "när utdata genereras av de kommandon som körs inne i terminalen."
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1169,98 +1194,98 @@ msgstr ""
 "system. Om du har problem med färgerna i något program, prova värdet xterm-"
 "color. "
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Tiled"
 msgstr "Sida vid sida"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "Titel"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 #, fuzzy
 msgid "Transpare_ncy:"
 msgstr "Genomskinlig bakgrund"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "Genomskinlig bakgrund"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "Använd _standardfärg"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Använd en anpassad bakgrundsfärg för textmarkering"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 #, fuzzy
 msgid "Use c_ustom color:"
 msgstr "Använd a_npassad färg"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Använd standardbakgrundsfärg för textmarkering"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 msgid "_Appearance"
 msgstr "_Utseende"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "_Bakgrundsfärg:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "_Backstegstangenten genererar:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_Colors"
 msgstr "_Färger"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "_Delete-tangenten genererar:"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "_Dynamiskt angiven titel:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Fil:"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_General"
 msgstr "_Allmänt"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "_Initial titel:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 #, fuzzy
 msgid "_Reset compatibility options to defaults"
 msgstr "_Återställ kompatibilitetsalternativ till standardvärden"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "_Kör kommando som inloggningsskal"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Shortcuts"
 msgstr "_Genvägar"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "_Text color:"
 msgstr "_Textfärg:"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Uppdatera utmp/wtmp-poster när kommando körs"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "sekunder"
 

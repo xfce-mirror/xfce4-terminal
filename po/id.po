@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2009-08-25 21:28+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -86,12 +86,12 @@ msgstr "ikon"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Lihat halaman man %s untuk penjelasan lengkap tentang opsi di atas."
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -116,7 +116,7 @@ msgstr ""
 "\n"
 "Silakan laporkan kutu ke <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Tidak dapat mendaftarkan layanan terminal: %s\n"
@@ -140,20 +140,40 @@ msgstr "Bus pesan D-BUS terputus, keluar...\n"
 msgid "Unable to register object %s"
 msgstr "Tidak dapat mendaftarkan objek %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulator Terminal Xfce"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "Andhika Padmawan <andhika.padmawan@gmail.com>, 2009."
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr "Kunjungi situs web Terminal"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Gagal ketika membuka peramban dokumentasi"
 
@@ -249,11 +269,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Opsi \"%s\" tidak dikenal"
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "Semua Berkas"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "Berkas Gambar"
 
@@ -1035,42 +1055,47 @@ msgid "Replaces initial title"
 msgstr "Gantikan judul utama"
 
 #: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr "_Atur ulang opsi kompatibilitas ke standar"
+
+#: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
 msgstr "Atur ulang _indikator aktivitas tab setelah"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Terskala"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
 msgstr "Batang g_ulung adalah:"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "Gulung pada stroke _kunci"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 msgid "Scroll on ou_tput"
 msgstr "Gu_lung pada keluaran"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "_Gulung satu baris menggunakan tombol Shift-Up/-Down"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid "Scroll_back:"
 msgstr "Gulung _balik:"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 msgid "Scrolling"
 msgstr "Menggulung"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid "Select Background Image File"
 msgstr "Pilih Berkas Gambar Latar Belakang"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1082,45 +1107,45 @@ msgstr ""
 "anda untuk detail seputar perbedaan antara menjalankan shell sebagai shell "
 "interaktif dan menjalankan shell sebagai shell log masuk."
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Tombol Jalan Pintas"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Tentukan jumlah baris yang dapat anda gulung balik menggunakan batang gulung."
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 msgid "St_yle:"
 msgstr "Ga_ya:"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "Tertarik"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
 msgstr "Indikator Aktivitas Tab"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 msgid "Tab activit_y color:"
 msgstr "Warna akti_vitas tab:"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Pengaturan Terminal"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Aplikasi terminal memiliki palet warna yang tersedia sebagai berikut:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 msgid "Text Selection"
 msgstr "Seleksi Teks"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1132,7 +1157,7 @@ msgstr ""
 "pada beberapa aplikasi dan sistem operasi tertentu yang mengharapkan\n"
 "perilaku terminal yang berbeda."
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1141,7 +1166,7 @@ msgstr ""
 "otomatis tiap kali keluaran baru dibangkitkan oleh perintah yang berjalan di "
 "dalam terminal."
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1153,95 +1178,95 @@ msgstr ""
 "kebanyakan sistem. Jika anda mengalami masalah dengan warna pada beberapa "
 "aplikasi, gunakan xterm-color disini."
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Tiled"
 msgstr "Ubin"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "Judul"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Transpare_ncy:"
 msgstr "Transpara_nsi:"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "Latar belakang transparan"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "Gunakan warna stan_dar"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Gunakan warna latar belakang seleksi teks suai"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
 msgstr "Gunakan warna _suai:"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Gunakan warna latar belakang seleksi teks standar"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 msgid "_Appearance"
 msgstr "_Tampilan"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "Warna Latar _Belakang:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "_Bangkitkan tombol spasi mundur:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_Colors"
 msgstr "_Warna"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "_Bangkitkan tombol hapus:"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "Judul yang ditentukan secara _dinamis:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Berkas:"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_General"
 msgstr "_Umum"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "_Judul utama:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 msgid "_Reset compatibility options to defaults"
 msgstr "_Atur ulang opsi kompatibilitas ke standar"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "Ja_lankan perintah sebagai shell log masuk"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Shortcuts"
 msgstr "_Jalan Pintas"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "_Text color:"
 msgstr "_Warna teks:"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Mutakhirkan catatan utmp/wtmp ketika perintah dijalankan"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "detik"
 

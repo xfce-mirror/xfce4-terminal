@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-07 19:21+0100\n"
+"POT-Creation-Date: 2010-04-12 19:57+0200\n"
 "PO-Revision-Date: 2010-01-29 15:01+0100\n"
 "Last-Translator: Robert Hartl <hartl.robert@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -88,12 +88,12 @@ msgstr ""
 "Kompletnú dokumentáciu k voľbám uvedeným vyššie, nájdete v manuálovej "
 "stránke aplikácie %s."
 
-#: ../terminal/main.c:125 ../terminal/terminal-preferences.c:1262
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminál"
 
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 #, c-format
 msgid ""
 "%s %s (Xfce %s)\n"
@@ -118,7 +118,7 @@ msgstr ""
 "\n"
 "Chyby oznamujte na <%s>.\n"
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:250
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nejde registrovať službu terminálu: %s\n"
@@ -142,20 +142,40 @@ msgstr "Zbernica D-BUS bola odpojená, ukončujem...\n"
 msgid "Unable to register object %s"
 msgstr "Nejde registrovať objekt %s"
 
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce Terminál Emulátor"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr "Štefan Miklošovič <miklosovic@gmail.com>"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
 msgstr "Navštíviť webovú stránku aplikácie Terminal"
 
+#: ../terminal/terminal-dialogs.c:215
+#, c-format
+msgid "The %s user manual is not installed on your computer"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:218
+#, c-format
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:220
+msgid "User manual is missing"
+msgstr ""
+
+#: ../terminal/terminal-dialogs.c:222
+msgid "_Read Online"
+msgstr ""
+
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:269
+#: ../terminal/terminal-dialogs.c:302
 msgid "Failed to open the documentation browser"
 msgstr "Nepodarilo sa otvoriť prehliadač dokumentácie"
 
@@ -250,11 +270,11 @@ msgstr ""
 msgid "Unknown option \"%s\""
 msgstr "Neznáma predvoľba \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:214
+#: ../terminal/terminal-preferences-dialog.c:227
 msgid "All Files"
 msgstr "Všetky súbory"
 
-#: ../terminal/terminal-preferences-dialog.c:220
+#: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
 msgstr "Obrázkové súbory"
 
@@ -1033,42 +1053,47 @@ msgid "Replaces initial title"
 msgstr "Nahradí počiatočný titulok"
 
 #: ../Terminal.glade.h:68
+#, fuzzy
+msgid "Rese_t double click options to defaults"
+msgstr "Obnoviť predvolené hodnoty pre _kompatibilitu"
+
+#: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
 msgstr "Zrušiť _indikáciu aktivity karty po"
 
-#: ../Terminal.glade.h:69
+#: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Prispôsobený"
 
-#: ../Terminal.glade.h:70
+#: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
 msgstr "Po_suvník je:"
 
-#: ../Terminal.glade.h:71
+#: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "Posúvať pri _stlačení klávesy"
 
-#: ../Terminal.glade.h:72
+#: ../Terminal.glade.h:73
 msgid "Scroll on ou_tput"
 msgstr "Posúvať pri _výstupe"
 
-#: ../Terminal.glade.h:73
+#: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Posúvať o jeden riadok pomocou kláves Šípka hore a Šípka dolu"
 
-#: ../Terminal.glade.h:74
+#: ../Terminal.glade.h:75
 msgid "Scroll_back:"
 msgstr "_Pamäť riadkov:"
 
-#: ../Terminal.glade.h:75
+#: ../Terminal.glade.h:76
 msgid "Scrolling"
 msgstr "Posun"
 
-#: ../Terminal.glade.h:76
+#: ../Terminal.glade.h:77
 msgid "Select Background Image File"
 msgstr "Výber súboru s obrázkom pozadia"
 
-#: ../Terminal.glade.h:77
+#: ../Terminal.glade.h:78
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1080,44 +1105,44 @@ msgstr ""
 "pre viac informácii o rozdiele v spustení interaktívneho shellu a spustením "
 "ako prihlasovacieho shellu."
 
-#: ../Terminal.glade.h:78
+#: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Klávesové skratky"
 
-#: ../Terminal.glade.h:79
+#: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Špecifikuje počet riadkov, o koľko sa môžete vrátiť pri posuve nahor."
 
-#: ../Terminal.glade.h:80
+#: ../Terminal.glade.h:81
 msgid "St_yle:"
 msgstr "Š_týl:u"
 
-#: ../Terminal.glade.h:81
+#: ../Terminal.glade.h:82
 msgid "Stretched"
 msgstr "Roztiahnutý"
 
-#: ../Terminal.glade.h:82
+#: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
 msgstr "Indikátor aktivity karty"
 
-#: ../Terminal.glade.h:83
+#: ../Terminal.glade.h:84
 msgid "Tab activit_y color:"
 msgstr "F_arba pri aktivite karty:"
 
-#: ../Terminal.glade.h:84
+#: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
 msgstr "Predvoľby Terminálu"
 
-#: ../Terminal.glade.h:85
+#: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
 msgstr "Tieto farby budú dostupné terminálovým aplikáciam:"
 
-#: ../Terminal.glade.h:86
+#: ../Terminal.glade.h:87
 msgid "Text Selection"
 msgstr "Výber textu"
 
-#: ../Terminal.glade.h:87
+#: ../Terminal.glade.h:88
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1129,7 +1154,7 @@ msgstr ""
 "neočakávateľného správania terminálu pri niktorých\n"
 "aplikáciach a operačných systémoch."
 
-#: ../Terminal.glade.h:91
+#: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
@@ -1137,7 +1162,7 @@ msgstr ""
 "Táto voľba určuje, či sa bude obsah terminálu automaticky posúvať pri "
 "generovaní výstupu programu bežiaceho v termináli."
 
-#: ../Terminal.glade.h:92
+#: ../Terminal.glade.h:93
 msgid ""
 "This specifies the value the $TERM environment variable is set to, when a "
 "new terminal tab or terminal window is opened. The default should be ok for "
@@ -1149,95 +1174,95 @@ msgstr ""
 "v poriadku pre väčšinu systémov. Ak máte problémy s farbami v "
 "niektorýchaplikáciách, skúste použiť xterm-color."
 
-#: ../Terminal.glade.h:93
+#: ../Terminal.glade.h:94
 msgid "Tiled"
 msgstr "Dláždený"
 
-#: ../Terminal.glade.h:94
+#: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "Titulok"
 
-#: ../Terminal.glade.h:95
+#: ../Terminal.glade.h:96
 msgid "Transpare_ncy:"
 msgstr "Prie_hľadnosť:"
 
-#: ../Terminal.glade.h:96
+#: ../Terminal.glade.h:97
 msgid "Transparent background"
 msgstr "Priehľadné pozadie"
 
-#: ../Terminal.glade.h:97
+#: ../Terminal.glade.h:98
 msgid "Use _default color"
 msgstr "Použiť _predvolenú farbu"
 
-#: ../Terminal.glade.h:98
+#: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Použiť vlastnú farbu pre pozadie vybraného textu"
 
-#: ../Terminal.glade.h:99
+#: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
 msgstr "Použiť _vlastnú farbu"
 
-#: ../Terminal.glade.h:100
+#: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Použiť východziu farbu pozadia vybraného textu"
 
-#: ../Terminal.glade.h:101
+#: ../Terminal.glade.h:102
 msgid "_Appearance"
 msgstr "_Vzhľad"
 
-#: ../Terminal.glade.h:102
+#: ../Terminal.glade.h:103
 msgid "_Background color:"
 msgstr "Farba _pozadia:"
 
-#: ../Terminal.glade.h:103
+#: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "Klávesa _Backspace generuje:"
 
-#: ../Terminal.glade.h:104
+#: ../Terminal.glade.h:105
 msgid "_Colors"
 msgstr "_Farby"
 
-#: ../Terminal.glade.h:105
+#: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
 msgstr "Klávesa _Delete generuje:"
 
-#: ../Terminal.glade.h:106
+#: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
 msgstr "_Dynamicky nastaviť titulok:"
 
-#: ../Terminal.glade.h:107
+#: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Súbor:"
 
-#: ../Terminal.glade.h:108
+#: ../Terminal.glade.h:109
 msgid "_General"
 msgstr "_Všeobecné"
 
-#: ../Terminal.glade.h:109
+#: ../Terminal.glade.h:110
 msgid "_Initial title:"
 msgstr "Počiatočný _titulok:"
 
-#: ../Terminal.glade.h:110
+#: ../Terminal.glade.h:111
 msgid "_Reset compatibility options to defaults"
 msgstr "Obnoviť predvolené hodnoty pre _kompatibilitu"
 
-#: ../Terminal.glade.h:111
+#: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
 msgstr "_Spustiť príkaz v prihlasovacom shelli"
 
-#: ../Terminal.glade.h:112
+#: ../Terminal.glade.h:113
 msgid "_Shortcuts"
 msgstr "_Klávesové skratky"
 
-#: ../Terminal.glade.h:113
+#: ../Terminal.glade.h:114
 msgid "_Text color:"
 msgstr "Farba _textu:"
 
-#: ../Terminal.glade.h:114
+#: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "_Aktualizovať záznamy utmp/wtmp pri spustení príkazu"
 
-#: ../Terminal.glade.h:115
+#: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "sekundách"
 
