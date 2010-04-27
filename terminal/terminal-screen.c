@@ -1053,6 +1053,9 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   gint       ypad;
   gint       grid_width;
   gint       grid_height;
+#if VTE_CHECK_VERSION (0, 24, 0)
+  GtkBorder *border = NULL;
+#endif
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1066,7 +1069,13 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
 
   /* we have to calculate the grid size, because the signal
    * returns a size in pixels */
+#if VTE_CHECK_VERSION (0, 24, 0)
+  gtk_widget_style_get (GTK_WIDGET (terminal), "inner-border", &border, NULL);
+  xpad = border->left + border->right;
+  ypad = border->top + border->bottom;
+#else
   vte_terminal_get_padding (terminal, &xpad, &ypad);
+#endif
   grid_width = (width - xpad) / terminal->char_width;
   grid_height = (height - ypad) / terminal->char_height;
 
@@ -1407,16 +1416,25 @@ void
 terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
                                            GtkWindow      *window)
 {
-  GdkGeometry hints;
-  gint        xpad;
-  gint        ypad;
+  GdkGeometry  hints;
+  gint         xpad;
+  gint         ypad;
+#if VTE_CHECK_VERSION (0, 24, 0)
+  GtkBorder   *border = NULL;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
   terminal_return_if_fail (GTK_WIDGET_REALIZED (screen));
   terminal_return_if_fail (GTK_WIDGET_REALIZED (window));
 
+#if VTE_CHECK_VERSION (0, 24, 0)
+  gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
+  xpad = border->left + border->right;
+  ypad = border->top + border->bottom;
+#else
   vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
+#endif
 
   hints.base_width = xpad;
   hints.base_height = ypad;
@@ -1455,6 +1473,9 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   gint           rows;
   gint           xpad;
   gint           ypad;
+#if VTE_CHECK_VERSION (0, 24, 0)
+  GtkBorder     *border = NULL;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -1478,7 +1499,14 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   else
     rows = force_rows;
 
+#if VTE_CHECK_VERSION (0, 24, 0)
+  gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
+  xpad = border->left + border->right;
+  ypad = border->top + border->bottom;
+#else
   vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
+#endif
+
   width += xpad + VTE_TERMINAL (screen->terminal)->char_width * columns;
   height += ypad + VTE_TERMINAL (screen->terminal)->char_height * rows;
 
