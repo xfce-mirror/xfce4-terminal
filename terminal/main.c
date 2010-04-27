@@ -197,12 +197,16 @@ main (int argc, char **argv)
       else
         {
           if (error->domain == TERMINAL_ERROR
-              && error->code == TERMINAL_ERROR_USER_MISMATCH)
+              && (error->code == TERMINAL_ERROR_USER_MISMATCH
+                  || error->code == TERMINAL_ERROR_DISPLAY_MISMATCH))
             {
               /* don't try to establish another service here */
               disable_server = TRUE;
+
 #ifndef NDEBUG
-              g_debug ("User mismatch when invoking remote terminal: %s", error->message);
+              g_debug ("%s mismatch when invoking remote terminal: %s",
+                       error->code == TERMINAL_ERROR_USER_MISMATCH ? "User" : "Display",
+                       error->message);
 #endif
             }
           else if (error->domain == TERMINAL_ERROR

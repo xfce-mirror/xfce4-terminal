@@ -61,6 +61,7 @@ handle_message (DBusConnection *connection,
   dbus_int64_t user_id;
   gchar      **argv;
   gint         argc;
+  gchar       *display_name;
 
   /* The D-BUS interface currently looks like this:
    *
@@ -69,6 +70,10 @@ handle_message (DBusConnection *connection,
    *
    *  - UserId:int64
    *    This is the real user id of the calling process.
+   *
+   *  - DisplayName:string
+   *    Name of the display the service is running on, this to prevent
+   *    craching terminals if a display is disconnected.
    *
    *  - Arguments:string array
    *    The argument array as passed to main(), with some
@@ -93,6 +98,7 @@ handle_message (DBusConnection *connection,
       /* query the list of arguments to this call */
       if (!dbus_message_get_args (message, &derror,
                                   DBUS_TYPE_INT64, &user_id,
+                                  DBUS_TYPE_STRING, &display_name,
                                   DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &argv, &argc,
                                   DBUS_TYPE_INVALID))
         {
@@ -105,6 +111,12 @@ handle_message (DBusConnection *connection,
           reply = dbus_message_new_error (message,
                                           TERMINAL_DBUS_ERROR_USER,
                                           _("User id mismatch"));
+        }
+      else if (!exo_str_is_equal (display_name, g_getenv ("DISPLAY")))
+        {
+          reply = dbus_message_new_error (message,
+                                          TERMINAL_DBUS_ERROR_DISPLAY,
+                                          _("Display mismatch"));
         }
       else if (!terminal_app_process (app, argv, argc, &error))
         {
@@ -225,6 +237,7 @@ terminal_dbus_invoke_launch (gint     argc,
   DBusError       derror;
   gint            code;
   gboolean        retval = TRUE;
+  const gchar    *display_name;
 
   terminal_return_val_if_fail (argc > 0, FALSE);
   terminal_return_val_if_fail (argv != NULL, FALSE);
@@ -249,12 +262,18 @@ terminal_dbus_invoke_launch (gint     argc,
 
   uid = getuid ();
 
+  display_name = g_getenv ("DISPLAY");
+  if (G_UNLIKELY (display_name == NULL))
+    display_name = "";
+
   dbus_message_append_args (message,
 #ifdef DBUS_USE_NEW_API
                             DBUS_TYPE_INT64, &uid,
+                            DBUS_TYPE_STRING, &display_name,
                             DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, &argv, argc,
 #else
                             DBUS_TYPE_INT64, uid,
+                            DBUS_TYPE_STRING, display_name,
                             DBUS_TYPE_ARRAY, DBUS_TYPE_STRING, argv, argc,
 #endif
                             DBUS_TYPE_INVALID);
@@ -270,6 +289,8 @@ terminal_dbus_invoke_launch (gint     argc,
 set_error:
       if (dbus_error_has_name (&derror, TERMINAL_DBUS_ERROR_USER))
         code = TERMINAL_ERROR_USER_MISMATCH;
+      if (dbus_error_has_name (&derror, TERMINAL_DBUS_ERROR_DISPLAY))
+        code = TERMINAL_ERROR_DISPLAY_MISMATCH;
       else if (dbus_error_has_name (&derror, TERMINAL_DBUS_ERROR_OPTIONS))
         code = TERMINAL_ERROR_OPTIONS;
       else

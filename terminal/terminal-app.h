@@ -36,6 +36,8 @@ enum _TerminalError
   TERMINAL_ERROR_LINKER_FAILURE,
   /* different user id in service */
   TERMINAL_ERROR_USER_MISMATCH,
+  /* different display in service */
+  TERMINAL_ERROR_DISPLAY_MISMATCH,
   /* parsing the options failed */
   TERMINAL_ERROR_OPTIONS,
   /* general failure */
