@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.4.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-13 10:00+0000\n"
-"PO-Revision-Date: 2010-04-13 14:50+0200\n"
+"POT-Creation-Date: 2010-04-28 10:00+0000\n"
+"PO-Revision-Date: 2010-04-28 14:05+0200\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -116,7 +116,7 @@ msgstr ""
 "\n"
 "Ilmoita viat osoitteeseen <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ei voi rekisteröidä päätepalvelua: %s\n"
@@ -126,16 +126,20 @@ msgstr "Ei voi rekisteröidä päätepalvelua: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Epäkelpo mittamääritys \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Käyttäjätunnus ei täsmää"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "Näyttö ei täsmää"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS-viestiyhteys katkaistu, poistutaan...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Ei voi rekisteröidä oliota %s"
@@ -386,7 +390,7 @@ msgstr "Sisältö"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Nimetön"
 
@@ -396,11 +400,11 @@ msgid "Unable to determine your login shell."
 msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "Lapsiprosessin suorittaminen ei onnistu"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Sulje tämä välilehti"
 
