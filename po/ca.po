@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-16 10:00+0000\n"
+"POT-Creation-Date: 2010-04-29 10:00+0000\n"
 "PO-Revision-Date: 2009-12-14 17:01+0100\n"
 "Last-Translator: Harald Servat <redcrash@gmail.com>\n"
 "Language-Team: Catalan\n"
@@ -123,7 +123,7 @@ msgstr ""
 "\n"
 "Envieu els errors a <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "No es por registrar el servei de terminal: %s\n"
@@ -134,16 +134,21 @@ msgid "Invalid geometry string \"%s\"\n"
 msgstr "Cadena de geometria invàlida «%s»\n"
 
 # mismatch = desajustat ?
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "L'identificador d'usuari no coincideix"
 
-#: ../terminal/terminal-dbus.c:133
+# mismatch = desajustat ?
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "La pantalla no coincideix"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Bus de missatges D-BUS desconnectat, sortint…\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "No es por registrar l'objecte %s"
@@ -369,7 +374,7 @@ msgstr "Continguts"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Sense títol"
 
@@ -379,11 +384,11 @@ msgid "Unable to determine your login shell."
 msgstr "No s'ha pogut determinar el vostre intèrpret d'ordres d'entrada."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "No s'ha pogut executar el fill"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Tanca aquesta pestanya"
 
