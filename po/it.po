@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
-"PO-Revision-Date: 2010-03-03 16:01+0100\n"
-"Last-Translator: Gianluca Foddis <gianluca.foddis@gmail.com>\n"
+"POT-Creation-Date: 2010-04-30 16:00+0000\n"
+"PO-Revision-Date: 2010-05-01 21:02+0100\n"
+"Last-Translator: gianluca foddis <gianluca.foddis@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -122,7 +122,7 @@ msgstr ""
 "\n"
 "Per favore, segnalare i problemi a <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Impossibile registrare il servizio terminale: %s\n"
@@ -132,16 +132,20 @@ msgstr "Impossibile registrare il servizio terminale: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Stringa della geometria non valida \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Mancata corrispondenza dell'id utente"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "Mancata corrispondenza dello schermo"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "bus dei messaggi D-BUS disconnesso, uscita...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Impossibile registrare l'oggetto %s"
@@ -405,7 +409,7 @@ msgstr "Contenuti"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Senza titolo"
 
@@ -415,11 +419,11 @@ msgid "Unable to determine your login shell."
 msgstr "Impossibile individuare la shell di login"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "Esecuzione del processo figlio fallita"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Chiudi questa scheda"
 
@@ -847,7 +851,7 @@ msgid ""
 "when double clicking:"
 msgstr ""
 "Considerare i seguenti caratteri come parti di una _parola\n"
-"quando viene effettuato il doppio click:"
+"quando viene effettuato il doppio clic:"
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
@@ -880,7 +884,7 @@ msgstr "Mostra le barre degli s_trumenti nelle nuove finestre"
 
 #: ../Terminal.glade.h:28
 msgid "Double Click"
-msgstr "Doppio click"
+msgstr "Doppio clic"
 
 #: ../Terminal.glade.h:29
 msgid "Enab_le anti-aliasing for the terminal font"
@@ -1068,10 +1072,10 @@ msgstr "Elemento tavola colori 9"
 msgid "Replaces initial title"
 msgstr "Sostituisce il titolo iniziale"
 
+# verificato acceleratore
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Reimposta le opzioni di compatibilità ai valori predefiniti"
+msgstr "_Reimposta le opzioni del doppio clic ai valori predefiniti"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
