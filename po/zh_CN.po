@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-18 04:00+0000\n"
+"POT-Creation-Date: 2010-05-03 22:00+0000\n"
 "PO-Revision-Date: 2010-04-18 16:39+0800\n"
 "Last-Translator: Hunt Xu <huntxu@live.cn>\n"
 "Language-Team: Chinese simplified <xfce-i18n@xfce.org>\n"
@@ -118,7 +118,7 @@ msgstr ""
 "\n"
 "请提交错误报告至 <%s>。\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "无法注册终端服务: %s\n"
@@ -128,16 +128,20 @@ msgstr "无法注册终端服务: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "无效的几何属性字符串 \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "用户 ID 不匹配"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "显示不匹配"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "与 D-BUS 消息服务器的连接已断开，正在退出...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "无法注册对象 %s"
@@ -166,11 +170,8 @@ msgstr "%s 用户手册并未在您的计算机上安装"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
-"您可以在线阅读用户手册。本手册适用版本可能不会与您所使用的 %s 版本完全一致。"
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr "您可以在线阅读用户手册。本手册适用版本可能不会与您所使用的 %s 版本完全一致。"
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
@@ -187,37 +188,27 @@ msgstr "打开文档浏览器失败"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
 msgstr "选项 \"--default-display\" 需要指定默认使用的 X 显示作为其参数"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
 msgstr "选项 \"--default-working-directory\" 需要指定默认的工作目录作为其参数"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
 msgstr "选项 \"--execute/-x\" 需要在后面指定所要运行的命令"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
 msgstr "选项 \"--command/-e\" 需要指定所要运行的命令作为其参数"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
 msgstr "选项 \"--working-directory\" 需要指定工作目录作为其参数"
 
 #: ../terminal/terminal-options.c:290
@@ -227,15 +218,12 @@ msgstr "选项 \"--title/-T\" 需要指定标题作为其参数"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "选项 \"--display\" 需要指定 X 显示作为其参数"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
 msgstr "选项 \"--geometry\" 需要指定窗口大小及位置作为其参数"
 
 #: ../terminal/terminal-options.c:339
@@ -245,15 +233,12 @@ msgstr "选项 \"--role\" 需要指定窗口识别码作为其参数"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "选项 \"--startup-id\" 需要指定启动 id 作为其参数"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
 msgstr "选项 \"--icon/-I\" 需要指定图标名称或文件名作为其参数"
 
 #: ../terminal/terminal-options.c:423
@@ -384,7 +369,7 @@ msgstr "內容"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "无标题"
 
@@ -394,11 +379,11 @@ msgid "Unable to determine your login shell."
 msgstr "无法确定您的 Login Shell。"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "执行子程序失败"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "关闭此标签"
 
@@ -477,15 +462,12 @@ msgstr "打开链接"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
 msgstr "无法将所选择的类型 text/plain 置入终端中: 错误的格式(%d) 或长度 (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "无法将 Mozilla URL 置入终端中: 错误的格式(%d) 或长度 (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
@@ -856,47 +838,31 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "允许为字体使用反锯齿效果(_L)"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"启用此选项允许终端为字符启用抗锯齿效果。禁用此项可以让性能较差的系统在绘制的"
-"响应速度和系统的资源利用两个方面得到显著提升。"
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "启用此选项允许终端为字符启用抗锯齿效果。禁用此项可以让性能较差的系统在绘制的响应速度和系统的资源利用两个方面得到显著提升。"
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
 msgstr "启用此选项允许运行在终端窗口内的应用程序使用粗体字。"
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
 msgstr "启用此选项允许上/下方向键与 Shift 键配合控制单行滚动。"
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
+msgid "Enable this option to show the menubar in newly created terminal windows."
 msgstr "启用此选项将在新建的终端窗口中显示菜单栏"
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
 msgstr "启用此选项将在新建的终端窗口中显示工具栏"
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
+msgid "Enable this option to show window decorations around newly created terminal windows."
 msgstr "启用此选项将为新建的终端窗口显示窗口装饰"
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
 msgstr "允许您能够按下任意键将终端窗口向下滚动到命令行提示符"
 
 #: ../Terminal.glade.h:37
@@ -1064,22 +1030,15 @@ msgid "Select Background Image File"
 msgstr "选择背景图片"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"选择此项能够强制终端在您打开新的窗口时将您的 Shell 作为 Login Shell。请参考您"
-"所用 Shell 的文档以了解 Interactive Shell 和 Login Shell 的区别。"
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "选择此项能够强制终端在您打开新的窗口时将您的 Shell 作为 Login Shell。请参考您所用 Shell 的文档以了解 Interactive Shell 和 Login Shell 的区别。"
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "快捷键"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "设置使用滚动条进行向上滚动的最大行数"
 
 #: ../Terminal.glade.h:81
@@ -1121,20 +1080,12 @@ msgstr ""
 "和操作系统中作调整，以获得不同的终端行为。"
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
 msgstr "此选项控制当终端中运行的命令产生输出时终端是否自动进行滚动。"
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"此项指定新建终端窗口或标签时环境变量 $TERM 的值。默认值适合绝大多数系统。如果"
-"您在使用某些程序时遇到颜色方面的问题，尝试将其指定为 xterm-color。"
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "此项指定新建终端窗口或标签时环境变量 $TERM 的值。默认值适合绝大多数系统。如果您在使用某些程序时遇到颜色方面的问题，尝试将其指定为 xterm-color。"
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1228,12 +1179,10 @@ msgstr "当命令执行后更新 utmp/wtmp 记录(_U)"
 msgid "seconds"
 msgstr "秒"
 
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
+#~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          打印此帮助信息并退出"
 
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
+#~ msgid "  -V, --version                       Print version information and exit"
 #~ msgstr "  -V, --version                       打印版本信息并退出"
 
 #~ msgid ""
@@ -1250,37 +1199,28 @@ msgstr "秒"
 #~ msgstr "  --default-working-directory=DIRNAME 设置终端的默认工作目录"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
+#~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
-#~ msgstr ""
-#~ "  --tab                               打开一个新标签；此选项可以多次使用"
+#~ msgstr "  --tab                               打开一个新标签；此选项可以多次使用"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
+#~ "  --window                            Open a new window containing one tab;\n"
+#~ "                                      more than one of these options can be\n"
 #~ "                                      provided"
-#~ msgstr ""
-#~ "  --window                            打开一个新窗口，此选项可以多次使用"
+#~ msgstr "  --window                            打开一个新窗口，此选项可以多次使用"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
+#~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
-#~ msgstr ""
-#~ "  -x, --execute                       在终端中运行此参数后面的剩余部分"
+#~ msgstr "  -x, --execute                       在终端中运行此参数后面的剩余部分"
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
+#~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr "  -e, --command=STRING                在终端中运行此参数指定的命令"
 
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr "  --working-directory=DIRNAME         设置终端工作目录"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
@@ -1289,8 +1229,7 @@ msgstr "秒"
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold                          当子命令退出时并不立即关闭标签"
+#~ msgstr "  -H, --hold                          当子命令退出时并不立即关闭标签"
 
 #~ msgid ""
 #~ "  --display=DISPLAY                   X display to use for the last-\n"
@@ -1298,23 +1237,17 @@ msgstr "秒"
 #~ msgstr "  --display=DISPLAY                   选择使用的 X 显示"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+#~ "                                      man page), can be specified once per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
-#~ "  --geometry=GEOMETRY                 设置 X 几何属性 (参考 \"X\" 手"
-#~ "册)，\n"
+#~ "  --geometry=GEOMETRY                 设置 X 几何属性 (参考 \"X\" 手册)，\n"
 #~ "                                      可对每个要打开的窗口进行设置"
 
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
+#~ "  --role=ROLE                         Set the role for the last-specified\n"
+#~ "                                      window; applies to only one window;\n"
+#~ "                                      can be specified once for each window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
 #~ "  --role=ROLE                         为最后指定的终端窗口设置角色，仅对\n"
@@ -1333,8 +1266,7 @@ msgstr "秒"
 
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
+#~ "                                      fullscreen mode; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1344,8 +1276,7 @@ msgstr "秒"
 #~ "                                      打开的窗口进行设置"
 
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
+#~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
@@ -1356,39 +1287,31 @@ msgstr "秒"
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --show-menubar                      显示最后指定的终端窗口的菜单栏，仅"
-#~ "对\n"
-#~ "                                      一个窗口生效；可对每个从命令行打开"
-#~ "的\n"
+#~ "  --show-menubar                      显示最后指定的终端窗口的菜单栏，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开的\n"
 #~ "                                      窗口进行设置"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --hide-menubar                      隐藏最后指定的终端窗口的菜单栏，仅"
-#~ "对\n"
-#~ "                                      一个窗口生效；可对每个从命令行打开"
-#~ "的\n"
+#~ "  --hide-menubar                      隐藏最后指定的终端窗口的菜单栏，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开的\n"
 #~ "                                      窗口进行设置"
 
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --show-borders                      显示最后指定的终端窗口的边框，仅对\n"
@@ -1396,13 +1319,10 @@ msgstr "秒"
 #~ "                                      的窗口进行设置"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
+#~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --hide-borders                      隐藏最后指定的终端窗口的边框，仅对\n"
@@ -1411,39 +1331,30 @@ msgstr "秒"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --show-toolbars                     显示最后指定的终端窗口的工具栏，仅"
-#~ "对\n"
-#~ "                                      一个窗口生效；可对每个从命令行打开"
-#~ "的\n"
+#~ "  --show-toolbars                     显示最后指定的终端窗口的工具栏，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开的\n"
 #~ "                                      窗口进行设置"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --hide-toolbars                     隐藏最后指定的终端窗口的工具栏，仅"
-#~ "对\n"
-#~ "                                      一个窗口生效；可对每个从命令行打开"
-#~ "的\n"
+#~ "  --hide-toolbars                     隐藏最后指定的终端窗口的工具栏，仅对\n"
+#~ "                                      一个窗口生效；可对每个从命令行打开的\n"
 #~ "                                      窗口进行设置"
 
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "无法启动终端: %s\n"
 
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
+#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 #~ msgstr "选项 \"--sm-client-id\" 需要指定 session id 作为其参数"
 
 #~ msgid "<b>Title:</b>"
@@ -1455,8 +1366,7 @@ msgstr "秒"
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>标题</b>"
 
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgid "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "终端内执行的命令可能会动态地设置新的标题。"
 
 #~ msgid "<b>Font</b>"
