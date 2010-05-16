@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-27 04:00+0000\n"
+"POT-Creation-Date: 2010-05-16 04:00+0000\n"
 "PO-Revision-Date: 2010-03-02 18:14+0300\n"
 "Last-Translator: Dima Smirnov <arch@cnc-parts.info>\n"
 "Language-Team: \n"
@@ -121,7 +121,7 @@ msgstr ""
 "\n"
 "Сообщайте об ошибках по адресу: <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Невозможно запустить службу терминала: %s\n"
@@ -131,16 +131,21 @@ msgstr "Невозможно запустить службу терминала:
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Неверная строка с размерами: \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Несовпадение идентификатора пользователя"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+#, fuzzy
+msgid "Display mismatch"
+msgstr "Показать несовпадение"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Произошло отсоединение от D-BUS, выход из программы...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Невозможно зарегистрировать объект %s"
@@ -367,7 +372,7 @@ msgstr "Содержание"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Без названия"
 
@@ -377,11 +382,11 @@ msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "Ошибка выполнения дочернего процесса"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
