@@ -1,22 +1,21 @@
 # Latvian translations for Terminal package.
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
-#
+# 
 # Rihards Prieditis <RPrieditis@inbox.lv>, 2007.
 # Rihards Prieditis <rprieditis@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2010-05-20 10:00+0000\n"
 "PO-Revision-Date: 2010-03-25 21:39+0100\n"
 "Last-Translator: Rihards Priedītis <rprieditis@gmail.com>\n"
 "Language-Team: Latvian <translation-team-lv@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
-"2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 "X-Poedit-Language: Latvian\n"
 "X-Poedit-Country: Latvia\n"
 "X-Generator: Lokalize 1.0\n"
@@ -122,7 +121,7 @@ msgstr ""
 "\n"
 "Lūdzu, par kļūdām ziņot <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Neizdevās piereģistrēt termināļa servisu: %s\n"
@@ -132,16 +131,20 @@ msgstr "Neizdevās piereģistrēt termināļa servisu: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Nederīga ģeometrijas virkne \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Lietotāju id nesakritība"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "Attēlošanas nesakritība"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS ziņa, maģistrāle atvienota, notiek iziešana...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Neizdevās piereģistrēt objektu %s"
@@ -165,12 +168,8 @@ msgstr "%s lietotāja rokasgrāmata nav instalēta uz jūsu datora"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
-"Jūs varat lasīt lietotāja rokasgrāmatu tiešsaistē. Bet tiešsaistes "
-"rokasgrāmata var nesakrist ar jūsu %s versiju."
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr "Jūs varat lasīt lietotāja rokasgrāmatu tiešsaistē. Bet tiešsaistes rokasgrāmata var nesakrist ar jūsu %s versiju."
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
@@ -187,47 +186,28 @@ msgstr "Neizdevās atvērt dokumentu pārlūku"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"Opcijai \"--default-display\" nepieciešamas noklusētais X displejs, kā "
-"parametrs"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "Opcijai \"--default-display\" nepieciešamas noklusētais X displejs, kā parametrs"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"Opcijai \"--default-working-directory\" nepieciešams norādīt noklusēto darba "
-"direktoriju, kā parametru"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "Opcijai \"--default-working-directory\" nepieciešams norādīt noklusēto darba direktoriju, kā parametru"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"Opcijai \"--execute/-x\" nepieciešams norādīt izpildāmo komandu, kuru "
-"izpildīt uz atlikušās komandu rindas"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "Opcijai \"--execute/-x\" nepieciešams norādīt izpildāmo komandu, kuru izpildīt uz atlikušās komandu rindas"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"Opcijai \"--command/-e\" nepieciešams norādīt izpildāmu komandu, kā parametru"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "Opcijai \"--command/-e\" nepieciešams norādīt izpildāmu komandu, kā parametru"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"Opcijai \"--working-directory\" nepieciešams norādīt darba direktoriju, kā "
-"parametru"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "Opcijai \"--working-directory\" nepieciešams norādīt darba direktoriju, kā parametru"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
@@ -236,17 +216,13 @@ msgstr "Opcijai \"--title/-T\" nepieciešams norādīt virsrakstu, kā parametru
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Opcijai \"--display\" nepieciešams norādīt X displeju, kā parametru"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
-"Opcijai \"--geometry\" nepieciešams norādīt loga ģeometriju, kā parametru"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "Opcijai \"--geometry\" nepieciešams norādīt loga ģeometriju, kā parametru"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
@@ -255,18 +231,13 @@ msgstr "Opcijai \"--role\" nepieciešams norādīt loga lomu, kā parametru"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Opcijai \"--startup-id\" nepieciešams sāknēšnas id, kā parametrs"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"Opcijai \"--icon/-I\" nepieciešamas norādīt ikonas nosaukumu vai faila "
-"nosaukumu, kā parametru"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "Opcijai \"--icon/-I\" nepieciešamas norādīt ikonas nosaukumu vai faila nosaukumu, kā parametru"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -396,7 +367,7 @@ msgstr "Saturs"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Bez virsraksta"
 
@@ -406,11 +377,11 @@ msgid "Unable to determine your login shell."
 msgstr "Neizdevās izpildīt, Jūsu, pieteikšanās čaulu."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "Neizdevas izpildīt bērnu"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Aizvērt šo cilni"
 
@@ -489,27 +460,18 @@ msgstr "Atvērt saiti"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Nevarēju nomest tipa text/plain atlasi terminālī: Nepareizs formāts (%d) vai "
-"garums (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Nevarēju nomest tipa text/plain atlasi terminālī: Nepareizs formāts (%d) vai garums (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nevarēju nomest Mozilla URL terminālī: Nepareizs formāts (%d) vai garums (%"
-"d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Nevarēju nomest Mozilla URL terminālī: Nepareizs formāts (%d) vai garums (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nevarēju nomest URI saraksti terminālī: Nepareizs formāts (%d) vai garums (%"
-"d)\n"
+msgstr "Nevarēju nomest URI saraksti terminālī: Nepareizs formāts (%d) vai garums (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
@@ -876,55 +838,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Ieslē_gt kropļojumnovērsi termināļa fontam"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Ieslēgt šo opciju, ja vēlaties, lai Terminālis izmanto kropļojumnovērsi, kad "
-"renderē tekstu termināļa logos. Izslēgt šo opciju ir iespējams krietni "
-"paaugstināt termināļa renderēšanas ātrumu un samazināt vispārēju sistēmas "
-"noslodzi lēnākās sistēmās."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Ieslēgt šo opciju, ja vēlaties, lai Terminālis izmanto kropļojumnovērsi, kad renderē tekstu termināļa logos. Izslēgt šo opciju ir iespējams krietni paaugstināt termināļa renderēšanas ātrumu un samazināt vispārēju sistēmas noslodzi lēnākās sistēmās."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Šī opcija ļauj lietotnēm, kuras skrien iekš termināļa loga, izmantot "
-"treknrakstu tekstā."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Šī opcija ļauj lietotnēm, kuras skrien iekš termināļa loga, izmantot treknrakstu tekstā."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Ieslēgt šo opciju, lai varētu ritināt tikai vienu rindu, izmantojot uz augšu "
-"un leju taustiņus kopā ar Shift taustiņu."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "Ieslēgt šo opciju, lai varētu ritināt tikai vienu rindu, izmantojot uz augšu un leju taustiņus kopā ar Shift taustiņu."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
+msgid "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Šī opcija rāda izvēlnes joslu jaunizveidotajos termināļa logos."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
 msgstr "Šī opcija rāda rīkjoslu jaunizveidotajos termināļa logos."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
+msgid "Enable this option to show window decorations around newly created terminal windows."
 msgstr "Šī opcija rāda logu dekorācijas ap jaunizveidotajiem termināļu logiem."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Ļauj jums ar jebkuru taustiņu termināļa logā noritināties uz komandu uzvedni."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Ļauj jums ar jebkuru taustiņu termināļa logā noritināties uz komandu uzvedni."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1051,9 +990,8 @@ msgid "Replaces initial title"
 msgstr "Aizvietot sākotnējo virsrakstu"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Atiestatīt saderības opcijas uz noklusētajām"
+msgstr "_Atiestatīt dubultklikšķa opcijas uz noklusētajām"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
@@ -1092,24 +1030,15 @@ msgid "Select Background Image File"
 msgstr "Norādiet fona attēla failu"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Norādiet šo opciju, lai uzspiestu Terminālim palaist čaulu, kā pieteikšanās "
-"čaulu, kad tiek atvērts jauns terminālis. Apskatiet savas čaulas "
-"dokumentāciju, lai uzinātu atšķirību starp interaktīvās čaulas izpildi un "
-"pieteikšanās čaulas izpildi."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Norādiet šo opciju, lai uzspiestu Terminālim palaist čaulu, kā pieteikšanās čaulu, kad tiek atvērts jauns terminālis. Apskatiet savas čaulas dokumentāciju, lai uzinātu atšķirību starp interaktīvās čaulas izpildi un pieteikšanās čaulas izpildi."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Īsceļa taustiņi"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Norādiet ritināšanas rindu skaitu izmantojot ritjoslu."
 
 #: ../Terminal.glade.h:81
@@ -1153,23 +1082,12 @@ msgstr ""
 " "
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Šī opcija nosaka vai terminālis automātiski ritinās uz leju rindiņas, kad "
-"jaunu izvadu ģenerē skrejoša komanda terminālī."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Šī opcija nosaka vai terminālis automātiski ritinās uz leju rindiņas, kad jaunu izvadu ģenerē skrejoša komanda terminālī."
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Norāda $TERM vides mainīgā vērtību, kad jauns termināļa cilnis vai termināļa "
-"logs tiek atvērts. Noklusētai vērtībai jāder uz lielāko daļu sistēmu. Ja ir "
-"problēmas ar krāsām dažās lietotnēs, pamēģiniet xterm-color."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Norāda $TERM vides mainīgā vērtību, kad jauns termināļa cilnis vai termināļa logs tiek atvērts. Noklusētai vērtībai jāder uz lielāko daļu sistēmu. Ja ir problēmas ar krāsām dažās lietotnēs, pamēģiniet xterm-color."
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1263,16 +1181,11 @@ msgstr "Atja_unināt utmp/wtmp ierakstus, kad tiek palaista komanda"
 msgid "seconds"
 msgstr "sekundes"
 
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
-#~ msgstr ""
-#~ "  -h, --help                          Izdrukā šo palīdzības ziņu un iziet"
+#~ msgid "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          Izdrukā šo palīdzības ziņu un iziet"
 
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -v, --version                       Izdrukā versijas informāciju un "
-#~ "iziet"
+#~ msgid "  -V, --version                       Print version information and exit"
+#~ msgstr "  -v, --version                       Izdrukā versijas informāciju un iziet"
 
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
@@ -1282,8 +1195,7 @@ msgstr "sekundes"
 #~ "                                      ziņu kopni"
 
 #~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr ""
-#~ "  --default-display=DISPLEJS         izmantojamais noklusētais X displejs"
+#~ msgstr "  --default-display=DISPLEJS         izmantojamais noklusētais X displejs"
 
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
@@ -1293,49 +1205,39 @@ msgstr "sekundes"
 #~ "                                      direktoriju"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
+#~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
 #~ msgstr ""
-#~ "  --tab                               Atver jaunu cilni, pēdējā "
-#~ "norādītajā\n"
-#~ "                                      logā; vairāk, kā viena opcija var "
-#~ "tikt\n"
+#~ "  --tab                               Atver jaunu cilni, pēdējā norādītajā\n"
+#~ "                                      logā; vairāk, kā viena opcija var tikt\n"
 #~ "                                      norādīta"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
+#~ "  --window                            Open a new window containing one tab;\n"
+#~ "                                      more than one of these options can be\n"
 #~ "                                      provided"
 #~ msgstr ""
-#~ "  --window                            Atvērt jaunu logu, kurš satur vienu "
-#~ "cilni;\n"
+#~ "  --window                            Atvērt jaunu logu, kurš satur vienu cilni;\n"
 #~ "                                      var tikt norādīta vairāk kā viena\n"
 #~ "                                      opcija"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
+#~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Izpildīt komandas līnijas atlikumu\n"
 #~ "                                      terminālī"
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
+#~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
 #~ "  -e, --command=VIRKNE                Izpildīt argumentu, opcijai\n"
 #~ "                                      terminālī"
 
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr ""
-#~ "  --working-directory=DIRVĀRDS       Uzstādīt termināļa darba direktoriju"
+#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=DIRVĀRDS       Uzstādīt termināļa darba direktoriju"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=VIRSRAKSTS         Uzstāda termināļa virsrakstu"
@@ -1355,34 +1257,24 @@ msgstr "sekundes"
 #~ "                                      pēdējam norādītajam logam"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+#~ "                                      man page), can be specified once per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
-#~ "  --geometry=ĢEOMETRIJA                 X ģeometrija specifikācija "
-#~ "(informācija\n"
-#~ "                                       \"X\" man lapā), var tikt "
-#~ "uzstādīta pie logu\n"
+#~ "  --geometry=ĢEOMETRIJA                 X ģeometrija specifikācija (informācija\n"
+#~ "                                       \"X\" man lapā), var tikt uzstādīta pie logu\n"
 #~ "                                      atvēršanas"
 
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
+#~ "  --role=ROLE                         Set the role for the last-specified\n"
+#~ "                                      window; applies to only one window;\n"
+#~ "                                      can be specified once for each window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
 #~ "  --role=LOMA                         Uzstāda lomu pēdējam norādītajam\n"
-#~ "                                      logam; attiecas tikai uz vienu "
-#~ "logu;\n"
-#~ "                                      var tikt norādīts vienu reizi, "
-#~ "katram jaunam\n"
-#~ "                                      logam, kuru izveido no komandu "
-#~ "līnijas"
+#~ "                                      logam; attiecas tikai uz vienu logu;\n"
+#~ "                                      var tikt norādīts vienu reizi, katram jaunam\n"
+#~ "                                      logam, kuru izveido no komandu līnijas"
 
 #~ msgid ""
 #~ "  --startup-id=STRING                 ID for the startup notification\n"
@@ -1395,148 +1287,115 @@ msgstr "sekundes"
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
 #~ msgstr ""
-#~ "  -I, --icon=IKONA                     Uzstādit termināļa ikonu kā ikonas "
-#~ "nosaukumu\n"
+#~ "  -I, --icon=IKONA                     Uzstādit termināļa ikonu kā ikonas nosaukumu\n"
 #~ "                                      vai faila nosaukumu"
 
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
+#~ "                                      fullscreen mode; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --fullscreen                         Uzstāda pilnekrāna režīmu pēdējam\n"
-#~ "                                      norādītajam logam; attiecas tikai "
-#~ "uz vienu\n"
-#~ "                                      logu; var tikt norādīts vienu "
-#~ "reizi, katram\n"
-#~ "                                      jaunam logam, kuru izveido no "
-#~ "komandu līnijas"
+#~ "                                      norādītajam logam; attiecas tikai uz vienu\n"
+#~ "                                      logu; var tikt norādīts vienu reizi, katram\n"
+#~ "                                      jaunam logam, kuru izveido no komandu līnijas"
 
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
+#~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
 #~ msgstr ""
 #~ "  --maximize                          Maksimizē pēdējo norādīto logu;\n"
-#~ "                                      attiecas tikai uz vienu logu; var "
-#~ "tikt\n"
-#~ "                                      norādit vienu reizi katram logam, "
-#~ "kuru\n"
+#~ "                                      attiecas tikai uz vienu logu; var tikt\n"
+#~ "                                      norādit vienu reizi katram logam, kuru\n"
 #~ "                                      jūs izveidojat no komandlīnijas"
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --show-menubar                      Ieslēdz izvēlnes joslu pēdejam\n"
 #~ "                                      norādītajam logam; attiecas\n"
-#~ "                                      tikai uz pirmo logu; var tikt "
-#~ "norādīts\n"
-#~ "                                      vienu reizi katram logam, ko "
-#~ "izveido\n"
+#~ "                                      tikai uz pirmo logu; var tikt norādīts\n"
+#~ "                                      vienu reizi katram logam, ko izveido\n"
 #~ "                                      no komandu rindas"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --hide-menubar                      Izslēdz izvēlnes joslu pēdejam\n"
 #~ "                                      norādītajam logam; attiecas\n"
-#~ "                                      tikai uz pirmo logu; var tikt "
-#~ "norādīts\n"
-#~ "                                      vienu reizi katram logam, ko "
-#~ "izveido\n"
+#~ "                                      tikai uz pirmo logu; var tikt norādīts\n"
+#~ "                                      vienu reizi katram logam, ko izveido\n"
 #~ "                                      no komandu rindas"
 
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --show-borders                      Ieslēdz robežas pēdejam\n"
 #~ "                                      norādītajam logam; attiecas\n"
-#~ "                                      tikai uz pirmo logu; var tikt "
-#~ "norādīts\n"
-#~ "                                      vienu reizi katram logam, ko "
-#~ "izveido\n"
+#~ "                                      tikai uz pirmo logu; var tikt norādīts\n"
+#~ "                                      vienu reizi katram logam, ko izveido\n"
 #~ "                                      no komandu rindas"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
+#~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --hide-borders                      Izslēdz robežas pēdejam\n"
 #~ "                                      norādītajam logam; attiecas\n"
-#~ "                                      tikai uz pirmo logu; var tikt "
-#~ "norādīts\n"
-#~ "                                      vienu reizi katram logam, ko "
-#~ "izveido\n"
+#~ "                                      tikai uz pirmo logu; var tikt norādīts\n"
+#~ "                                      vienu reizi katram logam, ko izveido\n"
 #~ "                                      no komandu rindas"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --show-toolbars                     Ieslēdz rīkjolsu pēdejam\n"
 #~ "                                      norādītajam logam; attiecas\n"
-#~ "                                      tikai uz pirmo logu; var tikt "
-#~ "norādīts\n"
-#~ "                                      vienu reizi katram logam, ko "
-#~ "izveido\n"
+#~ "                                      tikai uz pirmo logu; var tikt norādīts\n"
+#~ "                                      vienu reizi katram logam, ko izveido\n"
 #~ "                                      no komandu rindas"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --hide-toolbars                     Izslēdz rīkjolsu pēdejam\n"
 #~ "                                      norādītajam logam; attiecas\n"
-#~ "                                      tikai uz pirmo logu; var tikt "
-#~ "norādīts\n"
-#~ "                                      vienu reizi katram logam, ko "
-#~ "izveido\n"
+#~ "                                      tikai uz pirmo logu; var tikt norādīts\n"
+#~ "                                      vienu reizi katram logam, ko izveido\n"
 #~ "                                      no komandu rindas"
 
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Nevarēju palaist termināli: %s\n"
 
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
-#~ msgstr ""
-#~ "Opcijai \"--sm-client-id\" nepieciešams norādīt sesijas id, kā parametru"
+#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+#~ msgstr "Opcijai \"--sm-client-id\" nepieciešams norādīt sesijas id, kā parametru"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Virsraksts:</b>"
@@ -1547,8 +1406,7 @@ msgstr "sekundes"
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Virsraksts</b>"
 
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgid "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "Terminālī skrejošā komanda var dinamiski uzstādīt jaunu virsrakstu"
 
 #~ msgid "<b>Font</b>"
