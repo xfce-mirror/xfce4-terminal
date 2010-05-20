@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2010-05-20 10:00+0000\n"
 "PO-Revision-Date: 2010-02-05 15:49+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../terminal/main.c:52
 msgid "Usage:"
@@ -118,7 +118,7 @@ msgstr ""
 "\n"
 "A hibákat itt jelentse: <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "A terminálszolgáltatás nem regisztrálható: %s\n"
@@ -128,16 +128,20 @@ msgstr "A terminálszolgáltatás nem regisztrálható: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Érvénytelen geometria-karakterlánc: „%s”\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "A felhasználói azonosító eltér"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "A kijelző eltér"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "A D-Bus üzenetbusz leválasztva, kilépés…\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Az objektum (%s) nem regisztrálható"
@@ -157,22 +161,20 @@ msgstr "A Terminál weboldalának felkeresése"
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
 msgid "The %s user manual is not installed on your computer"
-msgstr ""
+msgstr "A(z) %s felhasználói kézikönyv nincs a számítógépre telepítve"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr "A felhasználói kézikönyvet elolvashatja az interneten. Ez azonban nem feltétlenül az Ön által használt %s verziót írja le."
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
-msgstr ""
+msgstr "A felhasználói kézikönyv hiányzik"
 
 #: ../terminal/terminal-dialogs.c:222
 msgid "_Read Online"
-msgstr ""
+msgstr "_Elolvasom az interneten"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:302
@@ -181,93 +183,58 @@ msgstr "A dokumentációböngésző megnyitása meghiúsult"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"A „--default-display” kapcsoló megköveteli az alapértelmezett X kijelző "
-"megadását paraméterként"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "A „--default-display” kapcsoló megköveteli az alapértelmezett X kijelző megadását paraméterként"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"A „--default-working-directory” kapcsoló megköveteli az alapértelmezett "
-"munkakönyvtár megadását paraméterként"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "A „--default-working-directory” kapcsoló megköveteli az alapértelmezett munkakönyvtár megadását paraméterként"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"Az „--execute/-x” kapcsoló megköveteli a futtatandó parancs megadását a "
-"parancssor további részében"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "Az „--execute/-x” kapcsoló megköveteli a futtatandó parancs megadását a parancssor további részében"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"A „--command/-e” kapcsoló megköveteli a futtatandó parancs megadását a "
-"parancssor további részében"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "A „--command/-e” kapcsoló megköveteli a futtatandó parancs megadását a parancssor további részében"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"A „--working-directory” kapcsoló megköveteli a munkakönyvtár megadását "
-"paraméterként"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "A „--working-directory” kapcsoló megköveteli a munkakönyvtár megadását paraméterként"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr ""
-"A „--title/-T” kapcsoló megköveteli az ablak címének megadását paraméterként"
+msgstr "A „--title/-T” kapcsoló megköveteli az ablak címének megadását paraméterként"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
-msgstr ""
-"A „--display” kapcsoló megköveteli az X kijelző megadását paraméterként"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgstr "A „--display” kapcsoló megköveteli az X kijelző megadását paraméterként"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
-"A „--geometry” kapcsoló megköveteli az ablak geometriájának megadását "
-"paraméterként"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "A „--geometry” kapcsoló megköveteli az ablak geometriájának megadását paraméterként"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr ""
-"A „--role” kapcsoló megköveteli az ablak szerepének megadását paraméterként"
+msgstr "A „--role” kapcsoló megköveteli az ablak szerepének megadását paraméterként"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"A „--startup-id” kapcsoló megköveteli az indítási azonosító megadását "
-"paraméterként"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "A „--startup-id” kapcsoló megköveteli az indítási azonosító megadását paraméterként"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"Az „--icon/-I” kapcsoló megköveteli egy ikonnév vagy fájlnév megadását "
-"paraméterként"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "Az „--icon/-I” kapcsoló megköveteli egy ikonnév vagy fájlnév megadását paraméterként"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -397,7 +364,7 @@ msgstr "Tartalom"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Névtelen"
 
@@ -407,11 +374,11 @@ msgid "Unable to determine your login shell."
 msgstr "Nem határozható meg a bejelentkezési parancsértelmező."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "A gyermeg végrehajtása meghiúsult"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Ezen lap bezárása"
 
@@ -490,25 +457,18 @@ msgstr "Hivatkozás megnyitása"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Nem dobható a text/plain típusú kiválasztás a terminálba: rossz formátum (%"
-"d) vagy hossz (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Nem dobható a text/plain típusú kiválasztás a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nem dobható a Mozilla URL a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Nem dobható a Mozilla URL a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nem dobható az URI-lista a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
+msgstr "Nem dobható az URI-lista a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
@@ -875,55 +835,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Él_simítás engedélyezése a terminál betűkészletén"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"A Terminál használjon-e élsimítást a szöveg megjelenítéséhez a "
-"terminálablakokban. Ezen beállítás kikapcsolása jelentősen gyorsíthatja a "
-"terminál megjelenítési teljesítményét és csökkentheti az általános "
-"rendszerterhelést lassú gépeken."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "A Terminál használjon-e élsimítást a szöveg megjelenítéséhez a terminálablakokban. Ezen beállítás kikapcsolása jelentősen gyorsíthatja a terminál megjelenítési teljesítményét és csökkentheti az általános rendszerterhelést lassú gépeken."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"A terminálablakon belül futó alkalmazások használhatnak félkövér betűket."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "A terminálablakon belül futó alkalmazások használhatnak félkövér betűket."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"A Shift+fel/le nyilakat egyszerre lenyomva soronként lehessen görgetni."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "A Shift+fel/le nyilakat egyszerre lenyomva soronként lehessen görgetni."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
+msgid "Enable this option to show the menubar in newly created terminal windows."
 msgstr "A menüsor megjelenítése újonnan létrehozott terminálablakokban."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
 msgstr "Eszköztárak megjelenítése újonnan létrehozott terminálablakokban."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Ablakdíszítések megjelenítése újonnan létrehozott terminálablakok körül."
+msgid "Enable this option to show window decorations around newly created terminal windows."
+msgstr "Ablakdíszítések megjelenítése újonnan létrehozott terminálablakok körül."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Lehetővé teszi a legörgetést a terminálablakban a parancssorig bármely "
-"billentyű lenyomásával."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Lehetővé teszi a legörgetést a terminálablakban a parancssorig bármely billentyű lenyomásával."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1050,9 +987,8 @@ msgid "Replaces initial title"
 msgstr "Lecseréli az eredeti címet"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
+msgstr "_Dupla kattintás beállításainak alapértelmezettre állítása"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
@@ -1091,24 +1027,15 @@ msgid "Select Background Image File"
 msgstr "Válasszon háttérképfájlt"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"A Terminál a parancsértelmezőt bejelentkezési parancsértelmezőként futtassa "
-"új terminál nyitásakor. A parancsértelmező interaktív és bejelentkezési "
-"módban futtatása közti különbségekkel kapcsolatban nézze meg a "
-"parancsértelmező kézikönyvét."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "A Terminál a parancsértelmezőt bejelentkezési parancsértelmezőként futtassa új terminál nyitásakor. A parancsértelmező interaktív és bejelentkezési módban futtatása közti különbségekkel kapcsolatban nézze meg a parancsértelmező kézikönyvét."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Gyorsbillentyűk"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Megadja a sorok számát, amennyit a görgetősávval visszagörgethet."
 
 #: ../Terminal.glade.h:81
@@ -1152,23 +1079,12 @@ msgstr ""
 "támasztanak a terminállal szemben."
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"A terminál legördüljön-e automatikusan, amikor a terminálban futó parancsok "
-"új kimenetet állítanak elő."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "A terminál legördüljön-e automatikusan, amikor a terminálban futó parancsok új kimenetet állítanak elő."
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"A $TERM környezeti változó értékének megadása új terminállap vagy -ablak "
-"nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes "
-"alkalmazások színeivel probléma van, próbálja megadni az xterm-color értéket."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "A $TERM környezeti változó értékének megadása új terminállap vagy -ablak nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes alkalmazások színeivel probléma van, próbálja megadni az xterm-color értéket."
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
