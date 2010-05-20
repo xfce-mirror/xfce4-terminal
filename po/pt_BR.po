@@ -5,12 +5,12 @@
 # Adriano Winter Bess <awbess@gmail.com>, 2006.
 # Fábio Nogueira <deb-user-ba@ubuntu.com>, 2008.
 # Og Maciel <ogmaciel@gnome.org>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2010-05-20 16:00+0000\n"
 "PO-Revision-Date: 2009-01-15 09:01-0500\n"
 "Last-Translator: Og Maciel <ogmaciel@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldp-br@bazar2.conectiva.com.br>\n"
@@ -87,8 +87,7 @@ msgstr "ícone"
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr ""
-"Veja a página man do %s para uma explicação detalhada das opções acima."
+msgstr "Veja a página man do %s para uma explicação detalhada das opções acima."
 
 #: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
@@ -120,7 +119,7 @@ msgstr ""
 "\n"
 "Por favor, relate problemas para <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Não foi possível registrar o serviço de terminal: %s\n"
@@ -130,16 +129,20 @@ msgstr "Não foi possível registrar o serviço de terminal: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "String de geometria inválida \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Erro de identificação do usuário"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "Erro de exibição"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "\"bus\" de mensagem D-BUS desconectado, saindo...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Não foi possível registrar o objeto %s"
@@ -162,22 +165,20 @@ msgstr "Visite o website do Terminal"
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
 msgid "The %s user manual is not installed on your computer"
-msgstr ""
+msgstr "O manual do usuário %s não está instalado no seu computador"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr "Você pode ler o manual do usuário online. Porém, este manual pode não combinar com a versão do seu %s"
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
-msgstr ""
+msgstr "O manual do usuário está faltando"
 
 #: ../terminal/terminal-dialogs.c:222
 msgid "_Read Online"
-msgstr ""
+msgstr "_Ler online"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:302
@@ -186,48 +187,28 @@ msgstr "Falhou ao abrir o navegador de documentação"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"A opção \"--default-display\" requer especificar a tela padrão do X como seu "
-"parâmetro"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "A opção \"--default-display\" requer especificar a tela padrão do X como seu parâmetro"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"A opção \"--default-working-directory\" requer especificar o diretório de "
-"trabalho padrão como seu parâmetro"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "A opção \"--default-working-directory\" requer especificar o diretório de trabalho padrão como seu parâmetro"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"A opção \"--execute/-x\" requer especificar o comando para executar no resto "
-"da linha de comando"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "A opção \"--execute/-x\" requer especificar o comando para executar no resto da linha de comando"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"A opção \"--command/-e\" requer especificar o comando a executar como seu "
-"parâmetro"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "A opção \"--command/-e\" requer especificar o comando a executar como seu parâmetro"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"A opção \"--working-directory\" requer especificar o diretório de trabalho "
-"como seu parâmetro"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "A opção \"--working-directory\" requer especificar o diretório de trabalho como seu parâmetro"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
@@ -236,42 +217,28 @@ msgstr "A opção \"--title/-T\" requer especificar o título como seu parâmetr
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
-msgstr ""
-"A opção \"--display\" requer especificar a tela do X como seu parâmetro"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgstr "A opção \"--display\" requer especificar a tela do X como seu parâmetro"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
-"A opção \"--geometry\" requer especificar a geometria de janela como seu "
-"parâmetro"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "A opção \"--geometry\" requer especificar a geometria de janela como seu parâmetro"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr ""
-"A opção \"--role\" requer especificar a regra de janela como seu parâmetro"
+msgstr "A opção \"--role\" requer especificar a regra de janela como seu parâmetro"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"A opção \"--startup-id\" requer especificar a identificação de iniciação "
-"como seu parâmetro"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "A opção \"--startup-id\" requer especificar a identificação de iniciação como seu parâmetro"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"A opção \"--icon/-I\" requer especificar um nome de ícone ou nome de arquivo "
-"como seu parâmetro"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "A opção \"--icon/-I\" requer especificar um nome de ícone ou nome de arquivo como seu parâmetro"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -401,7 +368,7 @@ msgstr "Conteúdo"
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
 #: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:1560
 msgid "Untitled"
 msgstr "Sem título"
 
@@ -411,11 +378,11 @@ msgid "Unable to determine your login shell."
 msgstr "Não foi possível determinar seu shell de login."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1302
 msgid "Failed to execute child"
 msgstr "Falha na execução do filho"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1882
 msgid "Close this tab"
 msgstr "Fechar esta aba"
 
@@ -494,33 +461,23 @@ msgstr "Abrir link"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Não foi possível largar a seleção de tipo text/plain para o terminal: "
-"Formato (%d) ou comprimento (%d) errado\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Não foi possível largar a seleção de tipo text/plain para o terminal: Formato (%d) ou comprimento (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Não foi possível largar o URL de Mozilla no terminal: Formato (%d) ou "
-"comprimento (%d) errado\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Não foi possível largar o URL de Mozilla no terminal: Formato (%d) ou comprimento (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Não foi possível largar a lista de URI no terminal: Formato (%d) ou "
-"comprimento (%d) errado\n"
+msgstr "Não foi possível largar a lista de URI no terminal: Formato (%d) ou comprimento (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Dado de cor inválido recebido: Formato (%d) ou comprimento (%d) errado\n"
+msgstr "Dado de cor inválido recebido: Formato (%d) ou comprimento (%d) errado\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:704
@@ -882,62 +839,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Habilitar anti-aliasing para a fonte do terminal"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Habilite esta opção se você quiser que o Terminal use anti-aliasing quando "
-"renderizar texto nas janelas do terminal. Desabilitando esta opção pode "
-"acelerar a performance de renderização do terminal impressivamente e reduzir "
-"a carga do sistema geral em sistemas lentos."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Habilite esta opção se você quiser que o Terminal use anti-aliasing quando renderizar texto nas janelas do terminal. Desabilitando esta opção pode acelerar a performance de renderização do terminal impressivamente e reduzir a carga do sistema geral em sistemas lentos."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Habilite esta opção para permitir que as aplicações sendo executadas dentro "
-"das janelas do terminal usem texto em negrito."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Habilite esta opção para permitir que as aplicações sendo executadas dentro das janelas do terminal usem texto em negrito."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Habilite esta opção para poder rolar uma linha simples usando as setas pra "
-"cima/baixo juntamente com a tecla Shift."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "Habilite esta opção para poder rolar uma linha simples usando as setas pra cima/baixo juntamente com a tecla Shift."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Habilite esta opção para mostrar a barra de menu em novas janelas de "
-"terminal criadas."
+msgid "Enable this option to show the menubar in newly created terminal windows."
+msgstr "Habilite esta opção para mostrar a barra de menu em novas janelas de terminal criadas."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Habilite esta opção para mostrar as barras de tarefa em novas janelas de "
-"terminal criadas."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Habilite esta opção para mostrar as barras de tarefa em novas janelas de terminal criadas."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Habilite esta opção para mostrar decorações de janela ao redor de novas "
-"janelas de terminal criadas."
+msgid "Enable this option to show window decorations around newly created terminal windows."
+msgstr "Habilite esta opção para mostrar decorações de janela ao redor de novas janelas de terminal criadas."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Permite a você pressionar qualquer tecla no teclado para rolar para baixo a "
-"janela do terminal até o prompt de comando."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Permite a você pressionar qualquer tecla no teclado para rolar para baixo a janela do terminal até o prompt de comando."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1064,9 +991,8 @@ msgid "Replaces initial title"
 msgstr "Substitui o título inicial"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Restaurar as opções de compatibilidade para os padrões"
+msgstr "Res_taurar as opções para cliques duplos para os padrões"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
@@ -1105,27 +1031,16 @@ msgid "Select Background Image File"
 msgstr "Selecionar arquivo de imagem de fundo"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Selecione esta opção para forçar o Terminal a executar o seu shell como "
-"shell de login quando você abre novos terminais. Veja a documentação do seu "
-"shell para detalhes sobre as diferenças entre executá-lo como shell "
-"interativo e executá-lo como shell de login."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Selecione esta opção para forçar o Terminal a executar o seu shell como shell de login quando você abre novos terminais. Veja a documentação do seu shell para detalhes sobre as diferenças entre executá-lo como shell interativo e executá-lo como shell de login."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Tecla de atalho"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Especifica o número de linhas que você pode rolar para trás usando a barra "
-"de rolagem."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Especifica o número de linhas que você pode rolar para trás usando a barra de rolagem."
 
 #: ../Terminal.glade.h:81
 msgid "St_yle:"
@@ -1163,30 +1078,16 @@ msgid ""
 "different terminal behavior."
 msgstr ""
 "Estas opções podem causar alguns aplicativos a se comportarem\n"
-"de maneira incorreta. Elas apenas estão aqui para lhe permitir circundar "
-"certos aplicativos e sistemas\n"
+"de maneira incorreta. Elas apenas estão aqui para lhe permitir circundar certos aplicativos e sistemas\n"
 "operacionais que esperam comportamento de terminal diferente."
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Esta opção controla se o terminal irá rolar para baixo automaticamente "
-"sempre que nova saída for gerada pelos comandos sendo executados dentro do "
-"terminal."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Esta opção controla se o terminal irá rolar para baixo automaticamente sempre que nova saída for gerada pelos comandos sendo executados dentro do terminal."
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Isto especifica o valor que a variável de ambiente $TERM é configurada, "
-"quando uma nova aba de terminal é aberta. O padrão deve ser bom para a "
-"maioria dos sistemas. Se você tiver problemas com cores em algumas "
-"aplicações, tente xterm-color aqui."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Isto especifica o valor que a variável de ambiente $TERM é configurada, quando uma nova aba de terminal é aberta. O padrão deve ser bom para a maioria dos sistemas. Se você tiver problemas com cores em algumas aplicações, tente xterm-color aqui."
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1280,15 +1181,11 @@ msgstr "_Atualiza registros utmp/wtmp quando o comando é lançado"
 msgid "seconds"
 msgstr "segundos"
 
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
-#~ msgstr ""
-#~ "  -h, --help                          Mostra esta mensagem de ajuda e sai"
+#~ msgid "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          Mostra esta mensagem de ajuda e sai"
 
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -v, --version                       Mostra a informação de versão e sai"
+#~ msgid "  -V, --version                       Print version information and exit"
+#~ msgstr "  -v, --version                       Mostra a informação de versão e sai"
 
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
@@ -1304,13 +1201,11 @@ msgstr "segundos"
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
 #~ msgstr ""
-#~ "  --default-working-directory=NOMEDODIRETÓRIO Configura o diretório "
-#~ "padrão\n"
+#~ "  --default-working-directory=NOMEDODIRETÓRIO Configura o diretório padrão\n"
 #~ "                                      de trabalho do terminal"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
+#~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
 #~ msgstr ""
@@ -1319,44 +1214,33 @@ msgstr "segundos"
 #~ "                                      opções podem ser fornecidas"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
+#~ "  --window                            Open a new window containing one tab;\n"
+#~ "                                      more than one of these options can be\n"
 #~ "                                      provided"
 #~ msgstr ""
-#~ "  --window                            Abre uma nova janela contendo uma "
-#~ "aba;\n"
-#~ "                                      mais de uma dessas opções podem "
-#~ "ser\n"
+#~ "  --window                            Abre uma nova janela contendo uma aba;\n"
+#~ "                                      mais de uma dessas opções podem ser\n"
 #~ "                                      fornecidas"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
+#~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Execute o restante da linha de\n"
 #~ "                                      comando dentro do terminal"
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
+#~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
-#~ "  -e, --command=STRING                Execute o argumento para esta "
-#~ "opção\n"
+#~ "  -e, --command=STRING                Execute o argumento para esta opção\n"
 #~ "                                      dentro do terminal"
 
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr ""
-#~ "  --working-directory=NOMEDODIRETÓRIO         Configura o diretório de "
-#~ "trabalho do terminal"
+#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=NOMEDODIRETÓRIO         Configura o diretório de trabalho do terminal"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr ""
-#~ "  -T, --title=TÍTULO                  Configura o título do terminal"
+#~ msgstr "  -T, --title=TÍTULO                  Configura o título do terminal"
 
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
@@ -1373,34 +1257,25 @@ msgstr "segundos"
 #~ "                                      janela especificada"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+#~ "                                      man page), can be specified once per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
 #~ "  --geometry=GEOMETRIA                Especificação de geometria do X\n"
-#~ "                                      (veja a página do manual do \"X"
-#~ "\"),\n"
+#~ "                                      (veja a página do manual do \"X\"),\n"
 #~ "                                      pode ser especificada uma vez para\n"
 #~ "                                      cada janela a ser aberta"
 
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
+#~ "  --role=ROLE                         Set the role for the last-specified\n"
+#~ "                                      window; applies to only one window;\n"
+#~ "                                      can be specified once for each window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
 #~ "  --role=REGRA                        Configura a regra para a última\n"
-#~ "                                      janela especificada; é aplicada "
-#~ "apenas\n"
-#~ "                                      à uma janela; pode ser "
-#~ "especificada\n"
-#~ "                                     uma vez para cada janela que você "
-#~ "criar\n"
+#~ "                                      janela especificada; é aplicada apenas\n"
+#~ "                                      à uma janela; pode ser especificada\n"
+#~ "                                     uma vez para cada janela que você criar\n"
 #~ "                                     a partir da linha de comando"
 
 #~ msgid ""
@@ -1414,14 +1289,12 @@ msgstr "segundos"
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
 #~ msgstr ""
-#~ "  -e, --command=STRING                Execute o argumento para esta "
-#~ "opção\n"
+#~ "  -e, --command=STRING                Execute o argumento para esta opção\n"
 #~ "                                      dentro do terminal"
 
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
+#~ "                                      fullscreen mode; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1430,95 +1303,71 @@ msgstr "segundos"
 #~ "                                      especificada para modo tela cheia;\n"
 #~ "                                      é aplicado apenas à uma janela;\n"
 #~ "                                      pode ser especificado uma vez para\n"
-#~ "                                      cada janela que você criar a "
-#~ "partir\n"
+#~ "                                      cada janela que você criar a partir\n"
 #~ "                                      da linha de comando."
 
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
+#~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
 #~ msgstr ""
 #~ "  --role=REGRA                        Configura a regra para a última\n"
-#~ "                                      janela especificada; é aplicada "
-#~ "apenas\n"
-#~ "                                      à uma janela; pode ser "
-#~ "especificada\n"
-#~ "                                     uma vez para cada janela que você "
-#~ "criar\n"
+#~ "                                      janela especificada; é aplicada apenas\n"
+#~ "                                      à uma janela; pode ser especificada\n"
+#~ "                                     uma vez para cada janela que você criar\n"
 #~ "                                     a partir da linha de comando"
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --show-menubar                      Liga a barra de menu para a última\n"
-#~ "                                      janela especificada; é aplicado "
-#~ "apenas\n"
+#~ "                                      janela especificada; é aplicado apenas\n"
 #~ "                                      à uma janela; pode ser\n"
-#~ "                                      especificado uma vez para cada "
-#~ "janela\n"
-#~ "                                      que você criar a partir da linha "
-#~ "de\n"
+#~ "                                      especificado uma vez para cada janela\n"
+#~ "                                      que você criar a partir da linha de\n"
 #~ "                                      comando"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --hide-menubar                      Desliga a barra de menu para a "
-#~ "última\n"
-#~ "                                      janela especificada; é aplicado "
-#~ "apenas\n"
+#~ "  --hide-menubar                      Desliga a barra de menu para a última\n"
+#~ "                                      janela especificada; é aplicado apenas\n"
 #~ "                                      à uma janela; pode ser\n"
-#~ "                                      especificado uma vez para cada "
-#~ "janela\n"
-#~ "                                      que você criar a partir da linha "
-#~ "de\n"
+#~ "                                      especificado uma vez para cada janela\n"
+#~ "                                      que você criar a partir da linha de\n"
 #~ "                                      comando"
 
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
-#~ "  --show-borders                      Liga as decorações de janela para "
-#~ "a\n"
-#~ "                                      última janela especificada; é "
-#~ "aplicado\n"
+#~ "  --show-borders                      Liga as decorações de janela para a\n"
+#~ "                                      última janela especificada; é aplicado\n"
 #~ "                                      apenas à uma janela; pode ser\n"
-#~ "                                      especificado uma vez para cada "
-#~ "janela\n"
-#~ "                                      que você criar a partir da linha "
-#~ "de\n"
+#~ "                                      especificado uma vez para cada janela\n"
+#~ "                                      que você criar a partir da linha de\n"
 #~ "                                      comando"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
+#~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
-#~ "  --hide-borders                      Desliga as decorações de janela "
-#~ "para\n"
+#~ "  --hide-borders                      Desliga as decorações de janela para\n"
 #~ "                                      a última janela especificada; é\n"
 #~ "                                      aplicado apenas à uma janela; pode\n"
 #~ "                                      ser especificado uma vez para cada\n"
@@ -1527,52 +1376,37 @@ msgstr "segundos"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --show-toolbars                     Liga as barras de ferramentas para "
-#~ "a\n"
-#~ "                                      última janela especificada; é "
-#~ "aplicado\n"
+#~ "  --show-toolbars                     Liga as barras de ferramentas para a\n"
+#~ "                                      última janela especificada; é aplicado\n"
 #~ "                                      apenas à uma janela; pode ser\n"
-#~ "                                      especificado uma vez para cada "
-#~ "janela\n"
-#~ "                                      que você criar a partir da linha "
-#~ "de\n"
+#~ "                                      especificado uma vez para cada janela\n"
+#~ "                                      que você criar a partir da linha de\n"
 #~ "                                      comando"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --hide-toolbars                     Desliga as barras de ferramentas "
-#~ "para\n"
+#~ "  --hide-toolbars                     Desliga as barras de ferramentas para\n"
 #~ "                                      a última janela especificada; é\n"
-#~ "                                      aplicado apenas à uma janela; pode "
-#~ "ser\n"
-#~ "                                      especificado uma vez para cada "
-#~ "janela\n"
-#~ "                                      que você criar a partir da linha "
-#~ "de\n"
+#~ "                                      aplicado apenas à uma janela; pode ser\n"
+#~ "                                      especificado uma vez para cada janela\n"
+#~ "                                      que você criar a partir da linha de\n"
 #~ "                                      comando"
 
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Não foi possível lançar o terminal: %s\n"
 
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
-#~ msgstr ""
-#~ "A opção \"--sm-client-id\" requer especificar a identificação da sessão "
-#~ "como seu parâmetro"
+#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+#~ msgstr "A opção \"--sm-client-id\" requer especificar a identificação da sessão como seu parâmetro"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Título:</b>"
@@ -1583,11 +1417,8 @@ msgstr "segundos"
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Título</b>"
 
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
-#~ msgstr ""
-#~ "O comando que está executando dentro do terminal pode dinamicamente "
-#~ "configurar um novo título."
+#~ msgid "The command running inside the terminal may dynamically set a new title."
+#~ msgstr "O comando que está executando dentro do terminal pode dinamicamente configurar um novo título."
 
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Fonte</b>"
@@ -1640,11 +1471,8 @@ msgstr "segundos"
 #~ "botão direito em um endereço de email e seleciona\n"
 #~ "Escrever Email no menu de contexto"
 
-#~ msgid ""
-#~ "Click here to change the selected application or to disable this feature."
-#~ msgstr ""
-#~ "Clique aqui para mudar a aplicação selecionada ou para desabilitar esta "
-#~ "opção."
+#~ msgid "Click here to change the selected application or to disable this feature."
+#~ msgstr "Clique aqui para mudar a aplicação selecionada ou para desabilitar esta opção."
 
 #~ msgid "Select application"
 #~ msgstr "Selecione aplicação"
