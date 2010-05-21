@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
-"PO-Revision-Date: 2010-02-18 15:35+0100\n"
+"POT-Creation-Date: 2010-05-21 16:00+0000\n"
+"PO-Revision-Date: 2010-05-21 19:52+0200\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr "Allgemeine Einstellungen"
 #: ../terminal/main.c:59 ../terminal/main.c:85
 #, fuzzy
 msgid "display"
-msgstr "Nicht anzeigen"
+msgstr "Anzeige"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
@@ -87,12 +87,13 @@ msgstr "Warnung"
 #: ../terminal/main.c:93
 #, fuzzy
 msgid "icon"
-msgstr "Aktion"
+msgstr "Symbol"
 
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr "Lesen Sie die »%s man page« für eine vollständige Erklärung des Obigen."
+msgstr ""
+"Lesen Sie die »%s man page« für eine vollständige Erklärung des Obigen."
 
 #: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
@@ -124,7 +125,7 @@ msgstr ""
 "\n"
 "Bitte melden Sie Probleme unter <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Fehler beim Registrieren des Terminaldienstes: %s\n"
@@ -134,16 +135,21 @@ msgstr "Fehler beim Registrieren des Terminaldienstes: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ungültige Geometrieangabe »%s«\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Benutzer-Identifikationsnummern stimmen nicht überein"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+#, fuzzy
+msgid "Display mismatch"
+msgstr "Benutzer-Identifikationsnummern stimmen nicht überein"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Verbindung zum Nachrichtenbus D-Bus wurde getrennt, beende...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Konnte das D-Bus-Objekt nicht registrieren: %s"
@@ -158,17 +164,17 @@ msgstr ""
 "Benedikt Meurer <benny@xfce.org>\n"
 "Fabian Nowak <timystery@arcor.de>\n"
 "Enrico Tröger <enrico@xfce.org>\n"
+"Paul Seyfert <pseyfert@xfce.org>\n"
 "and some more"
 
 #: ../terminal/terminal-dialogs.c:105
-#, fuzzy
 msgid "Visit Terminal website"
 msgstr "Terminal Webseite besuchen"
 
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
 msgid "The %s user manual is not installed on your computer"
-msgstr ""
+msgstr "Das %s Nutzerhandbuch ist nicht installiert"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
@@ -408,22 +414,22 @@ msgstr "Inhalt"
 
 #. TRANSLATORS: title for the tab/window used when all other
 #. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:623
+#: ../terminal/terminal-screen.c:1592
 msgid "Untitled"
 msgstr "Unbenannt"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:523
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Konnte Login-Shell nicht ermitteln."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1334
 msgid "Failed to execute child"
 msgstr "Konnte Kindprozess nicht ausführen"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1914
 msgid "Close this tab"
 msgstr "Reiter schließen"
 
@@ -766,7 +772,7 @@ msgstr "Titel festlegen"
 #: ../terminal/terminal-window.c:1568
 #, fuzzy
 msgid "Title:"
-msgstr "Titel"
+msgstr "Titel:"
 
 #: ../terminal/terminal-window.c:1580
 msgid "Enter the title for the current terminal tab"
@@ -1068,9 +1074,8 @@ msgid "Replaces initial title"
 msgstr "Den Titel ersetzen"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Kompatibilitätseinstellungen auf Vorgaben zurücksetzen"
+msgstr "_Doppelklickeinstellungen auf Vorgaben zurücksetzen"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
@@ -1385,7 +1390,8 @@ msgstr "Sekunden"
 #~ "                                      window to be opened"
 #~ msgstr ""
 #~ "  --geometry=GEOMETRIE                X-Geometriespezifikation (siehe \n"
-#~ "                                      Handbuch zu »X«), kann für jedes zu\n"
+#~ "                                      Handbuch zu »X«), kann für jedes "
+#~ "zu\n"
 #~ "                                      öffnende Fenster angegeben werden"
 
 #~ msgid ""
