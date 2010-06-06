@@ -356,7 +356,8 @@ terminal_screen_get_property (GObject          *object,
   TerminalScreen *screen = TERMINAL_SCREEN (object);
   const gchar    *title = NULL;
   TerminalTitle   mode;
-  gchar          *initial = NULL;
+  gchar          *initial;
+  gchar          *parsed_title = NULL;
   gchar          *custom_title;
 
   switch (prop_id)
@@ -381,7 +382,9 @@ terminal_screen_get_property (GObject          *object,
             {
               /* show the initial title if the dynamic title is set to hidden */
               g_object_get (G_OBJECT (screen->preferences), "title-initial", &initial, NULL);
-              title = initial;
+              parsed_title = terminal_screen_parse_title (screen, initial);
+              title = parsed_title;
+              g_free (initial);
             }
           else if (G_LIKELY (screen->terminal != NULL))
             {
@@ -390,9 +393,12 @@ terminal_screen_get_property (GObject          *object,
 
           /* TRANSLATORS: title for the tab/window used when all other
            * possible titles were empty strings */
-          g_value_set_string (value, title != NULL ? title : _("Untitled"));
+          if (title == NULL || *title == '\0')
+            title = _("Untitled");
 
-          g_free (initial);
+          g_value_set_string (value, title);
+
+          g_free (parsed_title);
         }
       break;
 
