@@ -74,6 +74,8 @@ void         terminal_screen_copy_clipboard               (TerminalScreen *scree
 void         terminal_screen_paste_clipboard              (TerminalScreen *screen);
 void         terminal_screen_paste_primary                (TerminalScreen *screen);
 
+void         terminal_screen_select_all                   (TerminalScreen *screen);
+
 void         terminal_screen_reset                        (TerminalScreen *screen,
                                                            gboolean        clear);
 

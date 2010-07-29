@@ -1876,6 +1876,21 @@ terminal_screen_paste_primary (TerminalScreen *screen)
 
 
 /**
+ * terminal_screen_select_all:
+ * @screen : A #TerminalScreen.
+ *
+ * Selects all text in the terminal.
+ **/
+void
+terminal_screen_select_all (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_select_all (VTE_TERMINAL (screen->terminal));
+}
+
+
+
+/**
  * terminal_screen_reset:
  * @screen  : A #TerminalScreen.
  * @clear   : %TRUE to also clear the terminal screen.

@@ -50,6 +50,7 @@ enum
   PROP_ACCEL_COPY,
   PROP_ACCEL_PASTE,
   PROP_ACCEL_PASTE_SELECTION,
+  PROP_ACCEL_SELECT_ALL,
   PROP_ACCEL_PREFERENCES,
   PROP_ACCEL_SHOW_MENUBAR,
   PROP_ACCEL_SHOW_TOOLBARS,
@@ -386,6 +387,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                                                         _("Paste Selection"),
                                                         "AccelPasteSelection",
                                                         NULL,
+                                                        EXO_PARAM_READWRITE));
+
+  /**
+   * TerminalPreferences:accel-select-all:
+   **/
+  g_object_class_install_property (gobject_class,
+                                   PROP_ACCEL_SELECT_ALL,
+                                   g_param_spec_string ("accel-select-all",
+                                                        _("Select All"),
+                                                        "AccelSelectAll",
+                                                        "<Shift><Control>a",
                                                         EXO_PARAM_READWRITE));
 
   /**

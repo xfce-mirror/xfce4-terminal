@@ -153,6 +153,8 @@ static void            terminal_window_action_paste                  (GtkAction 
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_paste_selection        (GtkAction              *action,
                                                                       TerminalWindow         *window);
+static void            terminal_window_action_select_all             (GtkAction              *action,
+                                                                      TerminalWindow         *window);
 static void            terminal_window_action_edit_toolbars          (GtkAction              *action,
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_prefs                  (GtkAction              *action,
@@ -224,6 +226,7 @@ static const GtkActionEntry action_entries[] =
     { "copy", GTK_STOCK_COPY, N_ ("_Copy"), NULL, N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
     { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
     { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, N_ ("Paste from primary selection"), G_CALLBACK (terminal_window_action_paste_selection), },
+    { "select-all", GTK_STOCK_SELECT_ALL, N_ ("Select _All"), NULL, N_ ("Select all text in the terminal"), G_CALLBACK (terminal_window_action_select_all), },
     { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
     { "preferences", GTK_STOCK_PREFERENCES, N_ ("Pr_eferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
@@ -1313,6 +1316,16 @@ terminal_window_action_paste_selection (GtkAction      *action,
 {
   if (G_LIKELY (window->active != NULL))
     terminal_screen_paste_primary (window->active);
+}
+
+
+
+static void
+terminal_window_action_select_all (GtkAction      *action,
+                                   TerminalWindow *window)
+{
+  if (G_LIKELY (window->active != NULL))
+    terminal_screen_select_all (window->active);
 }
 
 

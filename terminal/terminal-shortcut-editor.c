@@ -101,6 +101,7 @@ static const ToplevelMenu toplevel_menus[] =
       "accel-copy",
       "accel-paste",
       "accel-paste-selection",
+      "accel-select-all",
       "accel-preferences",
       NULL,
     },
