@@ -1219,7 +1219,6 @@ terminal_screen_timer_background (gpointer user_data)
                                           screen->terminal->allocation.width,
                                           screen->terminal->allocation.height);
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-
       if (G_LIKELY (image != NULL))
         g_object_unref (G_OBJECT (image));
       g_object_unref (G_OBJECT (loader));

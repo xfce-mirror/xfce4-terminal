@@ -52,6 +52,27 @@ static void       terminal_image_loader_saturate          (TerminalImageLoader  
                                                            GdkPixbuf                *pixbuf);
 
 
+struct _TerminalImageLoaderClass
+{
+  GObjectClass  __parent__;
+};
+
+struct _TerminalImageLoader
+{
+  GObject                  __parent__;
+  TerminalPreferences     *preferences;
+
+  /* the cached image data */
+  gchar                   *path;
+  GSList                  *cache;
+  GSList                  *cache_invalid;
+  gdouble                  darkness;
+  GdkColor                 bgcolor;
+  GdkPixbuf               *pixbuf;
+  TerminalBackgroundStyle  style;
+};
+
+
 
 G_DEFINE_TYPE (TerminalImageLoader, terminal_image_loader, G_TYPE_OBJECT)
 
@@ -116,8 +137,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   if (!exo_str_is_equal (selected_path, loader->path))
     {
-      if (G_LIKELY (loader->path != NULL))
-        g_free (loader->path);
+      g_free (loader->path);
       loader->path = g_strdup (selected_path);
 
       if (GDK_IS_PIXBUF (loader->pixbuf))
@@ -478,15 +498,13 @@ terminal_image_loader_load (TerminalImageLoader *loader,
       if (gdk_pixbuf_get_height (pixbuf) == height
           && gdk_pixbuf_get_width (pixbuf) == width)
         {
-          g_object_ref (G_OBJECT (pixbuf));
-          return pixbuf;
+          return g_object_ref (G_OBJECT (pixbuf));
         }
       else if (gdk_pixbuf_get_height (pixbuf) >= height
             && gdk_pixbuf_get_width (pixbuf) >= width
             && loader->style == TERMINAL_BACKGROUND_STYLE_TILED)
         {
-          g_object_ref (G_OBJECT (pixbuf));
-          return pixbuf;
+          return g_object_ref (G_OBJECT (pixbuf));
         }
     }
 
@@ -519,9 +537,9 @@ terminal_image_loader_load (TerminalImageLoader *loader,
 
   terminal_image_loader_saturate (loader, pixbuf);
 
-  loader->cache = g_slist_append (loader->cache, pixbuf);
-  g_object_weak_ref (G_OBJECT (pixbuf), terminal_image_loader_pixbuf_destroyed, loader);
-  g_object_ref (G_OBJECT (loader));
+  loader->cache = g_slist_prepend (loader->cache, pixbuf);
+  g_object_weak_ref (G_OBJECT (pixbuf), terminal_image_loader_pixbuf_destroyed,
+                     g_object_ref (G_OBJECT (loader)));
 
   return pixbuf;
 }

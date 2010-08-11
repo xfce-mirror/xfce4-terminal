@@ -35,26 +35,6 @@ G_BEGIN_DECLS
 typedef struct _TerminalImageLoaderClass TerminalImageLoaderClass;
 typedef struct _TerminalImageLoader      TerminalImageLoader;
 
-struct _TerminalImageLoaderClass
-{
-  GObjectClass  __parent__;
-};
-
-struct _TerminalImageLoader
-{
-  GObject                  __parent__;
-  TerminalPreferences     *preferences;
-
-  /* the cached image data */
-  gchar                   *path;
-  GSList                  *cache;
-  GSList                  *cache_invalid;
-  gdouble                  darkness;
-  GdkColor                 bgcolor;
-  GdkPixbuf               *pixbuf;
-  TerminalBackgroundStyle  style;
-};
-
 GType                terminal_image_loader_get_type   (void) G_GNUC_CONST;
 
 TerminalImageLoader *terminal_image_loader_get        (void);
