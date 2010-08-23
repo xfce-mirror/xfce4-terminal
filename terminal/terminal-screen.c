@@ -1469,6 +1469,7 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
   gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
   xpad = border->left + border->right;
   ypad = border->top + border->bottom;
+  gtk_border_free (border);
 #else
   vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
 #endif
