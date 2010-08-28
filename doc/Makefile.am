@@ -103,7 +103,7 @@ doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STY
 			-e "s,\@PACKAGE_VERSION\@,$(PACKAGE_VERSION),g" \
 			-i xgen-doc xgen-man; \
 		echo "Validating DocBook XML files"; \
-		$(XMLLINT) --noout --valid xgen-doc xgen-man; \
+		$(XMLLINT) --noout --valid xgen-doc xgen-man || exit 1; \
 		echo "Creating the HTML pages"; \
 		$(XSLTPROC) --nonet -o $(srcdir)/html/$$lang/ $(srcdir)/$(HTML_STYLESHEET) xgen-doc; \
 		echo "Creating the MAN page"; \
