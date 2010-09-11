@@ -83,7 +83,7 @@ doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STY
 	echo "*** Generating full XML file ***"; \
 	echo "Creating Terminal-options.xml"; \
 	sed -e "s,<refsect,<sect,g" \
-		-e "s,</refsect,</sect,g" $(srcdir)/$(MANPAGE) > Terminal-options.xml; \
+		-e "s,</refsect,</sect,g" $(srcdir)/$(MANPAGE) > $(srcdir)/Terminal-options.xml; \
 	echo "Creating single XML file for HTML manual"; \
 	$(XMLLINT) --nonet --xinclude --postvalid $(srcdir)/$(DOCUMENT) > xgen-xml; \
 	echo; \
@@ -112,7 +112,7 @@ doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STY
 		rm -f xgen-doc xgen-man; \
 		echo; \
 	done; \
-	rm -f xgen-xml Terminal-options.xml; \
+	rm -f xgen-xml $(srcdir)/Terminal-options.xml; \
 	touch doc-build.stamp
 
 dist-check-doc: all
