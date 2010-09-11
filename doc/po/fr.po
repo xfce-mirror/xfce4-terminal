@@ -227,7 +227,7 @@ msgstr "Détermine le <parameter>répertoire</parameter> de travail du terminal"
 
 #: Terminal.1.xml247(term)
 msgid "<option>-T</option>, <option>--title=<replaceable>title</replaceable></option>"
-msgstr ""
+msgstr "<option>-T</option>, <option>--title=<replaceable>titre</replaceable></option>"
 
 #: Terminal.1.xml251(para)
 msgid "Set <parameter>title</parameter> as the initial window title for the terminal"
@@ -235,7 +235,7 @@ msgstr "Définit le <parameter>titre</parameter> du terminal"
 
 #: Terminal.1.xml256(term)
 msgid "<option>-H</option>, <option>--hold</option>"
-msgstr ""
+msgstr "<option>-H</option>, <option>--hold</option>"
 
 #: Terminal.1.xml260(para)
 msgid "Causes the terminal to be kept around after the child command has terminated"
@@ -243,11 +243,12 @@ msgstr "Ne ferme pas le terminal lorsque la commande exécutée se termine"
 
 #: Terminal.1.xml271(option)
 msgid "--display=<placeholder-1/>"
-msgstr ""
+msgstr "--display=<placeholder-1/>"
 
 #: Terminal.1.xml274(para)
+#, fuzzy
 msgid "X display to use for the last- specified window."
-msgstr ""
+msgstr "Affichage X à utiliser pour la dernière fenêtre."
 
 #: Terminal.1.xml280(replaceable)
 msgid "geometry"
@@ -255,12 +256,11 @@ msgstr "géométrie"
 
 #: Terminal.1.xml280(option)
 msgid "--geometry=<placeholder-1/>"
-msgstr ""
+msgstr "--geometry=<placeholder-1/>"
 
 #: Terminal.1.xml283(para)
-#, fuzzy
 msgid "Sets the geometry of the last-specified window to <parameter>geometry</parameter>. Read <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry> for more information on how to specify window geometries."
-msgstr "Spécifie la géométrie de la dernière fenêtre à <parameter>géométrie</parameter>. Consultez <userinput><command>man</command> <option>X</option></userinput> pour plus d'informations sur la manière de spécifier les géométries d'une fenêtre."
+msgstr "Définis la géométrie de la dernière fenêtre à <parameter>géométrie</parameter>. Consultez <citerefentry><refentrytitle>W</refentrytitle><manvolnum>7</manvolnum></citerefentry> pour plus d'informations sur la manière de spécifier les géométries d'une fenêtre."
 
 #: Terminal.1.xml293(replaceable)
 msgid "role"
@@ -268,7 +268,7 @@ msgstr "rôle"
 
 #: Terminal.1.xml293(option)
 msgid "--role=<placeholder-1/>"
-msgstr ""
+msgstr "--role=<placeholder-1/>"
 
 #: Terminal.1.xml296(para)
 #, fuzzy
@@ -277,11 +277,11 @@ msgstr "Spécifie le rôle de la dernière fenêtre à <parameter>rôle</paramet
 
 #: Terminal.1.xml306(replaceable)
 msgid "string"
-msgstr ""
+msgstr "chaîne de caractère"
 
 #: Terminal.1.xml306(option)
 msgid "--startup-id=<placeholder-1/>"
-msgstr ""
+msgstr "--startup-id=<placeholder-1/>"
 
 #: Terminal.1.xml309(para)
 msgid "Specifies the startup notification id for the last-specified window. Used internally to forward the startup notification id when using the D-BUS service."
@@ -289,15 +289,15 @@ msgstr "Spécifie l'ID de notification de démarrage pour la dernière fenêtre.
 
 #: Terminal.1.xml318(replaceable)
 msgid "icon"
-msgstr ""
+msgstr "icône"
 
 #: Terminal.1.xml318(option)
 msgid "-I, --icon=<placeholder-1/>"
-msgstr ""
+msgstr "-I, --icon=<placeholder-1/>"
 
 #: Terminal.1.xml321(para)
 msgid "Set the terminal's icon as an icon name or filename."
-msgstr ""
+msgstr "Définis l'icône du terminak comme le nom d'une icône ou d'un fichier."
 
 #: Terminal.1.xml329(option)
 msgid "--fullscreen"
@@ -365,20 +365,19 @@ msgstr "Cache la barre d'outils pour la dernière fenêtre. S'applique seulement
 
 #: Terminal.1.xml427(title)
 msgid "Examples"
-msgstr ""
+msgstr "Exemples"
 
 #: Terminal.1.xml430(term)
-#, fuzzy
 msgid "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
-msgstr "Terminal --geometry 80x40 --command mutt --tab --command mc"
+msgstr "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
 
 #: Terminal.1.xml432(para)
 msgid "Opens a new terminal window with a geometry of 80 columns and 40 rows and two tabs in it, where the first tab runs <command>mutt</command> and the second tab runs <command>mc</command>."
-msgstr ""
+msgstr "Ouvre une nouvelle fenêtre d'un terminal disposant d'une géométrie de 80 colonnes et 40 lignes et contenant deux onglets, le premier onglet démarrant <command>mutt</command> et le second onglet démarrant <command>mc</command>."
 
 #: Terminal.1.xml443(title)
 msgid "Environment"
-msgstr ""
+msgstr "Environnement"
 
 #: Terminal.1.xml445(para)
 msgid "Terminal uses the Basedir Specification as defined on <ulink url=\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data and configuration files. This means that file locations will be specified as a path relative to the directories described in the specification."
@@ -417,9 +416,8 @@ msgid "A set of preference ordered base directories relative to which data files
 msgstr "Une liste de répertoires de base triée par ordre de préférence dans lesquels des fichiers seront recherchés en plus du répertoire de base <varname>${XDG_DATA_HOME}</varname>. Ces répertoires doivent être séparés par des deux-points."
 
 #: Terminal.1.xml501(title)
-#, fuzzy
 msgid "Files"
-msgstr "titre"
+msgstr "Fichiers"
 
 #: Terminal.1.xml505(filename)
 msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
@@ -439,51 +437,46 @@ msgstr "Ce fichier inclut les définitions de l'interface utilisateur pour les b
 
 #: Terminal.1.xml529(title)
 msgid "See also"
-msgstr ""
+msgstr "Voir aussi"
 
 #: Terminal.1.xml530(para)
 msgid "<citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry>"
-msgstr ""
+msgstr "<citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry>"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: Terminal.xml213(None)
-#, fuzzy
 msgid "@@image: 'images/terminal-first-time.png'; md5=c28f799b526627f477f05517df57486d"
-msgstr "@@image: 'images/terminal-first-time.png'; md5=323dd6f97e08ed6ea9b222f78c33a149"
+msgstr "@@image: 'images/terminal-first-time.png'; md5=c28f799b526627f477f05517df57486d"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: Terminal.xml280(None)
-#, fuzzy
 msgid "@@image: 'images/terminal-multiple-tabs.png'; md5=50bde64cde013ee5be96056c5ba139d9"
-msgstr "@@image: 'images/terminal-multiple-tabs.png'; md5=714e854f117d4cb5dd7f24040c9ff54d"
+msgstr "@@image: 'images/terminal-multiple-tabs.png'; md5=50bde64cde013ee5be96056c5ba139d9"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: Terminal.xml556(None)
-#, fuzzy
 msgid "@@image: 'images/terminal-set-title.png'; md5=1d2ab181828f8ed4b328a99df0a3b444"
-msgstr "@@image: 'images/terminal-set-title.png'; md5=5c0a46b1cdf99bf642cbc08f8e9dd4c7"
+msgstr "@@image: 'images/terminal-set-title.png'; md5=1d2ab181828f8ed4b328a99df0a3b444"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: Terminal.xml649(None)
-#, fuzzy
 msgid "@@image: 'images/terminal-toolbars.png'; md5=f4b348a0b8799e71648979449b2a4a07"
-msgstr "@@image: 'images/terminal-toolbars.png'; md5=7218cff9a2729b93c234f56be3c3d996"
+msgstr "@@image: 'images/terminal-toolbars.png'; md5=f4b348a0b8799e71648979449b2a4a07"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
 #. It doesn't matter what you translate it to: it's not used at all.
 #: Terminal.xml685(None)
-#, fuzzy
 msgid "@@image: 'images/terminal-edit-preferences.png'; md5=0eabb35f7c1aaaba6047386074e463fd"
-msgstr "@@image: 'images/terminal-edit-preferences.png'; md5=f8665e8ce85250b44789ba08fb1ccc9f"
+msgstr "@@image: 'images/terminal-edit-preferences.png'; md5=0eabb35f7c1aaaba6047386074e463fd"
 
 #. When image changes, this message will be marked fuzzy or untranslated for
 #. you.
