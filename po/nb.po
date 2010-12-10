@@ -1,13 +1,13 @@
 # Norwegian Bokmal translations for PACKAGE package.
 # Copyright (C) 2007 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Terje Uriansrud <terje@uriansrud.net>, 2009.
+# Terje Uriansrud <terje@uriansrud.net>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2010-12-10 17:01+0000\n"
 "PO-Revision-Date: 2007-05-12 17:43+0200\n"
 "Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
@@ -31,15 +31,14 @@ msgstr "Generelle innstillinger"
 #. parameter of --default-display
 #. parameter of --display
 #: ../terminal/main.c:59 ../terminal/main.c:85
-#, fuzzy
 msgid "display"
-msgstr "Vises ikke"
+msgstr "skjerm"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
 #: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
-msgstr ""
+msgstr "mappe"
 
 #: ../terminal/main.c:65
 msgid "Window or Tab Separators"
@@ -51,15 +50,13 @@ msgstr "Faneinnstillinger"
 
 #. parameter of --command
 #: ../terminal/main.c:72
-#, fuzzy
 msgid "command"
-msgstr "Kommando"
+msgstr "commando"
 
 #. parameter of --title
 #: ../terminal/main.c:74
-#, fuzzy
 msgid "title"
-msgstr "Tittel"
+msgstr "tittel"
 
 #: ../terminal/main.c:83
 msgid "Window Options"
@@ -77,15 +74,13 @@ msgstr ""
 
 #. parameter of --startup-id
 #: ../terminal/main.c:91
-#, fuzzy
 msgid "string"
-msgstr "Advarsel"
+msgstr "streng"
 
 #. parameter of --icon
 #: ../terminal/main.c:93
-#, fuzzy
 msgid "icon"
-msgstr "Aksjon"
+msgstr "ikon"
 
 #: ../terminal/main.c:95
 #, c-format
@@ -122,7 +117,7 @@ msgstr ""
 "\n"
 "Rapporter programfeil til <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Klarte ikke registerer terminaltjeneste: %s\n"
@@ -132,16 +127,20 @@ msgstr "Klarte ikke registerer terminaltjeneste: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ugyldig geomtriangivelse «%s»\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Brukerid stemmer ikke"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "Skjerm "
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS meldingsbuss frakoblet, avslutter ...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Klarte ikke å registerer objekt %s"
@@ -189,7 +188,8 @@ msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
-"Valget «--default-display» krever at du angir standard X-display som argument."
+"Valget «--default-display» krever at du angir standard X-display som "
+"argument."
 
 #: ../terminal/terminal-options.c:225
 #, c-format
@@ -197,8 +197,8 @@ msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
-"Valget «--default-working-directory» krever at du angir standard arbeidsmappe "
-"som argument"
+"Valget «--default-working-directory» krever at du angir standard "
+"arbeidsmappe som argument"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
@@ -388,24 +388,22 @@ msgstr "Bytt til fane 9"
 msgid "Contents"
 msgstr "Innhold"
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
+#: ../terminal/terminal-screen.c:1598
 msgid "Untitled"
 msgstr "Uten tittel"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:529
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Klarte ikke bestemme innloggingsskallet ditt."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1339
 msgid "Failed to execute child"
 msgstr "Klarte ikke kjøre underprosess"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1920
 msgid "Close this tab"
 msgstr "Lukke denne fanen"
 
@@ -630,7 +628,6 @@ msgid "Reset and C_lear"
 msgstr "_Tøm og nullstill"
 
 #: ../terminal/terminal-window.c:237
-#, fuzzy
 msgid "Reset and clear"
 msgstr "Tøm og nullstill"
 
@@ -1048,9 +1045,8 @@ msgid "Replaces initial title"
 msgstr "Erstatter initiell tittel"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Tilbakestill samspillvalg til standardverdier"
+msgstr "_Tilbakestill dobbeltklikkvalg til standardverdier"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
@@ -1259,251 +1255,3 @@ msgstr "_Oppdater utmp/wtmp oppføring når kommandoen startes"
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "sekunder"
-
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
-#~ msgstr ""
-#~ "  -h, --help                          Skriv ut denne meldingen og avslutt"
-
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -V, --version                       Skriv ut versjonsinformasjon og "
-#~ "avslutt"
-
-#~ msgid ""
-#~ "  --disable-server                    Do not register with the D-BUS\n"
-#~ "                                      session message bus"
-#~ msgstr ""
-#~ "  --disable-server                    Ikke registerer/bruk D-BUS\n"
-#~ "                                      øktmeldingsbuss"
-
-#~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr ""
-#~ "  --default-display=DISPLAY           standard X skjerm som skal brukes"
-
-#~ msgid ""
-#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
-#~ "                                      directory"
-#~ msgstr ""
-#~ "  --default-working-directory=MAPPENAVN Sett teminalens standard "
-#~ "arbeidsmappe"
-
-#~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
-#~ "                                      window; more than one of these\n"
-#~ "                                      options can be provided"
-#~ msgstr ""
-#~ "  --tab                               Lag ny fane i sist angitte vindu\n"
-#~ "                                      det tillates flere av disse\n"
-#~ "                                      samtidig"
-
-#~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
-#~ "                                      provided"
-#~ msgstr ""
-#~ "  --window                            Lag nytt vindu med en fane;\n"
-#~ "                                      det tillates flere av disse\n"
-#~ "                                      samtidig"
-
-#~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
-#~ "                                      line inside the terminal"
-#~ msgstr ""
-#~ "  -x, --execute                       Kjør resten av kommando-\n"
-#~ "                                      linjen inne i terminalen"
-
-#~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
-#~ "                                      inside the terminal"
-#~ msgstr ""
-#~ "  -e, --command=STRING                Kjør argumentet til denne "
-#~ "oppsjonen\n"
-#~ "                                      inne i terminalen"
-
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr ""
-#~ "  --working-directory=DIRNAME         Sett terminalens arbeidskatalog"
-
-#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr "  -T, --title=TITTEL                   Sett terminalens tittel"
-
-#~ msgid ""
-#~ "  -H, --hold                          Do not immediately destroy the tab\n"
-#~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold                          Ikke fjern faner øyeblikkelig\n"
-#~ "                                      når underprosessen avsluttes"
-
-#~ msgid ""
-#~ "  --display=DISPLAY                   X display to use for the last-\n"
-#~ "                                      specified window"
-#~ msgstr ""
-#~ "  --display=DISPLAY                   X skjerm som skal brukes for det "
-#~ "sist\n"
-#~ "                                      spesifiserte vinduet"
-
-#~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
-#~ "                                      window to be opened"
-#~ msgstr ""
-#~ "  --geometry=GEOMETRI                 X geometri angivelse (se «X»\n"
-#~ "                                      manualside), kan angis en gang\n"
-#~ "                                      per vindu som åpnes"
-
-#~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
-#~ "                                      you create from the command line"
-#~ msgstr ""
-#~ "  --role=ROLLE                        Sett rollen for sist angitte\n"
-#~ "                                      vindu. Gjelder bare ett vindu,\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --startup-id=STRING                 ID for the startup notification\n"
-#~ "                                      protocol"
-#~ msgstr ""
-#~ "  --startup-id=STRENG                 ID for oppstartsvarsel\n"
-#~ "                                      protokoll"
-
-#~ msgid ""
-#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-#~ "                                      name or filename"
-#~ msgstr ""
-#~ "  -I, --icon=IKON                     Sett terminalens ikon fra ikonnav\n"
-#~ "                                      eller filnavn.nne oppsjonen"
-
-#~ msgid ""
-#~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --fullscreen                        Sett sist angitte vindu til\n"
-#~ "                                      fullskjermmodus; gjelder bare ett\n"
-#~ "                                      vindu; kan angis en gang for\n"
-#~ "                                      hvert vindu du starter fra\n"
-#~ "                                      kommnadolinjen."
-
-#~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
-#~ "                                      applies to only one window; can be\n"
-#~ "                                      specified once for each window you\n"
-#~ "                                      create from the command line"
-#~ msgstr ""
-#~ "  --maximize                          Maksimer sist angitte\n"
-#~ "                                      vindu. Gjelder bare ett vindu,\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-menubar                      Skru på menylinjen for sist "
-#~ "angitte\n"
-#~ "                                      vindu; gjelder bare ett vindu;\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-menubar                      Skru av menylinjen for sist "
-#~ "angitte\n"
-#~ "                                      vindu; gjelder bare ett vindu;\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --show-borders                      Turn on the window decorations for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --show-borders                      Vis kantlinjer for sist angitte\n"
-#~ "                                      vindu; gjelder bare ett vindu;\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --hide-borders                      Skjul kantlinjer for sist angitte\n"
-#~ "                                      vindu; gjelder bare ett vindu;\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-toolbars                     Vis verktøylinjer for sist angitte\n"
-#~ "                                      vindu; gjelder bare ett vindu;\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-toolbars                     Skjul verktøylinjer for sist "
-#~ "angitte\n"
-#~ "                                      vindu; gjelder bare ett vindu;\n"
-#~ "                                      kan angis en gang for hvert vindu\n"
-#~ "                                      du starter fra kommandolinjen"
-
-#~ msgid "Unable to launch terminal: %s\n"
-#~ msgstr "Klarte ikke å starte terminal: %s\n"
-
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
-#~ msgstr "Valget «--sm-client-id» krever at du angir økt-id som argument"
