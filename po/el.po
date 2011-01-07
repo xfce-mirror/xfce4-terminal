@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the Terminal package.
 # Stavros Giannouris <stavrosg@serverhive.com>, 2005-2006, 2009
 # Stathis Kamperis <ekamperi@auth.gr>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal git version\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2011-01-07 05:01+0000\n"
 "PO-Revision-Date: 2010-01-29 14:09+0200\n"
 "Last-Translator: Evaggelos Balaskas <ebalaskas@ebalaskas.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Language: Greek\n"
-"X-Poedit-Country: GREECE\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Country: GREECE\n"
 
 #: ../terminal/main.c:52
 msgid "Usage:"
@@ -89,9 +89,7 @@ msgstr "πλακίδιο"
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr ""
-"Δείτε την %s σελίδα του manual για λεπτομερή εξήγηση όλων των επιλογών "
-"παραπάνω."
+msgstr "Δείτε την %s σελίδα του manual για λεπτομερή εξήγηση όλων των επιλογών παραπάνω."
 
 #: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
@@ -123,7 +121,7 @@ msgstr ""
 "\n"
 "Παρακαλώ αναφέρετε σφάλματα στο <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσίας τερματικού: %s\n"
@@ -133,16 +131,20 @@ msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσ
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Μη έγκυρο αλφαριθμητικό γεωμετρίας \"%s\"\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Το αναγνωριστικό χρήστη δεν ταιριάζει"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+msgid "Display mismatch"
+msgstr "Εμφάνιση αναντιστοιχίας"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Ο δίαυλος μηνυμάτων D-BUS αποσυνδέθηκε, έξοδος...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Δεν ήταν δυνατή η εγγραφή του αντικειμένου %s"
@@ -162,22 +164,20 @@ msgstr "Επισκεφτείτε την ιστοσελίδα του terminal"
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
 msgid "The %s user manual is not installed on your computer"
-msgstr ""
+msgstr "Το εγχειρίδιο χρήσης %s δεν είναι εγκατεστημένο στον υπολογιστή σας"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
+msgstr "Μπορείτε να διαβάσετε το εγχειρίδιο χρήσης διαδικτυακά. Το εγχειρίδιο αυτό μπορεί ωστόσο να μην ανταποκρίνεται ακριβώς την έκδοση σας %s."
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
-msgstr ""
+msgstr "Λείπει το εγχειρίδιο χρήσης"
 
 #: ../terminal/terminal-dialogs.c:222
 msgid "_Read Online"
-msgstr ""
+msgstr "_Διάβασμα διαδικτυακά"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:302
@@ -186,95 +186,58 @@ msgstr "Το άνοιγμα του αναγνώστη τεκμηρίωσης α�
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"Η επιλογή \"--default-display\" απαιτεί τον προσδιορισμό του προκαθορισμένου "
-"X display ως παράμετρο"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "Η επιλογή \"--default-display\" απαιτεί τον προσδιορισμό του προκαθορισμένου X display ως παράμετρο"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"Η επιλογή \"--default-working-directory\" απαιτεί τον προσδιορισμό του "
-"προκαθορισμένου καταλόγου στον οποίο θα ξεκινήσει ως παράμετρο"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "Η επιλογή \"--default-working-directory\" απαιτεί τον προσδιορισμό του προκαθορισμένου καταλόγου στον οποίο θα ξεκινήσει ως παράμετρο"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"Η επιλογή \"--execute/-x\" απαιτεί τον προσδιορισμό της εντολής που θα "
-"εκτελεστεί στο υπόλοιπο της εντολής"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "Η επιλογή \"--execute/-x\" απαιτεί τον προσδιορισμό της εντολής που θα εκτελεστεί στο υπόλοιπο της εντολής"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"Η επιλογή \"--command/-e\" απαιτεί τον προσδιορισμό της εντολής που θα "
-"εκτελεστεί ως παράμετρο"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "Η επιλογή \"--command/-e\" απαιτεί τον προσδιορισμό της εντολής που θα εκτελεστεί ως παράμετρο"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"Η επιλογή \"--working-directory\" απαιτεί τον προσδιορισμό του καταλόγου "
-"στον οποίο θα ξεκινήσει ως παράμετρο"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "Η επιλογή \"--working-directory\" απαιτεί τον προσδιορισμό του καταλόγου στον οποίο θα ξεκινήσει ως παράμετρο"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr ""
-"Η εντολή \"--working-directory\" απαιτεί τον προσδιορισμό του τίτλου ως "
-"παράμετρο"
+msgstr "Η εντολή \"--working-directory\" απαιτεί τον προσδιορισμό του τίτλου ως παράμετρο"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
-msgstr ""
-"Η Επιλογή \"--display\" απαιτεί τον προσδιορισμό του X display ως παράμετρο"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgstr "Η Επιλογή \"--display\" απαιτεί τον προσδιορισμό του X display ως παράμετρο"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
-"Η επιλογή \"--geometry\" απαιτεί τον προσδιορισμό της γεωμετρίας του "
-"παραθύρου ως παράμετρο"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "Η επιλογή \"--geometry\" απαιτεί τον προσδιορισμό της γεωμετρίας του παραθύρου ως παράμετρο"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr ""
-"Η επιλογή \"--role\" απαιτεί τον προσδιορισμό του ρόλου του παραθύρου ως "
-"παράμετρο"
+msgstr "Η επιλογή \"--role\" απαιτεί τον προσδιορισμό του ρόλου του παραθύρου ως παράμετρο"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"Η επιλογή \"--startup-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού "
-"εκκίνησης ως παράμετρο"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "Η επιλογή \"--startup-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού εκκίνησης ως παράμετρο"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"Η επιλογή \"--icon/-I\" απαιτεί τον καθορισμό ενός ονόματος εικονιδίου ή "
-"όνομα αρχείου ως παράμετρο"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "Η επιλογή \"--icon/-I\" απαιτεί τον καθορισμό ενός ονόματος εικονιδίου ή όνομα αρχείου ως παράμετρο"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -401,24 +364,22 @@ msgstr "Μετάβαση στην Καρτέλα 9"
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
+#: ../terminal/terminal-screen.c:1598
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:529
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου σας."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1339
 msgid "Failed to execute child"
 msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1920
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
@@ -497,27 +458,18 @@ msgstr "Άνοιγμα συνδέσμου"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Αδυναμία επικόλλησης της επιλογής απλού/κειμένου στο τερματικό: Εσφαλμένος "
-"τύπος (%d) ή μέγεθος (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Αδυναμία επικόλλησης της επιλογής απλού/κειμένου στο τερματικό: Εσφαλμένος τύπος (%d) ή μέγεθος (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Αδυναμία επικόλλησης του Mozilla URL στο τερματικό: Εσφαλμένος τύπος (%d) ή "
-"μέγεθος (%d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Αδυναμία επικόλλησης του Mozilla URL στο τερματικό: Εσφαλμένος τύπος (%d) ή μέγεθος (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Αδυναμία επικόλλησης λίστας URI στο τερματικό: Εσφαλμένος τύπος (%d) ή "
-"μέγεθος (%d)\n"
+msgstr "Αδυναμία επικόλλησης λίστας URI στο τερματικό: Εσφαλμένος τύπος (%d) ή μέγεθος (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
@@ -884,63 +836,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Ενερ_γοποίηση εξομάλυνσης για τη γραμματοσειρά του τερματικού"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή αν θέλετε να χρησιμοποιηθεί εξομάλυνση κατά "
-"την απεικόνιση κειμένου στα παράθυρα του τερματικού. Η απενεργοποίηση της "
-"επιλογής μπορεί να επιταχύνει το τερματικό θεαματικά και να μειώσει τον "
-"γενικό φόρτο σε πιο αργά συστήματα."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Ενεργοποιήστε αυτή την επιλογή αν θέλετε να χρησιμοποιηθεί εξομάλυνση κατά την απεικόνιση κειμένου στα παράθυρα του τερματικού. Η απενεργοποίηση της επιλογής μπορεί να επιταχύνει το τερματικό θεαματικά και να μειώσει τον γενικό φόρτο σε πιο αργά συστήματα."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να επιτρέψετε τις εφαρμογές που "
-"εκτελούνται μέσα στο τερματικό να χρησιμοποιήσουν έντονο κείμενο."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Ενεργοποιήστε αυτή την επιλογή για να επιτρέψετε τις εφαρμογές που εκτελούνται μέσα στο τερματικό να χρησιμοποιήσουν έντονο κείμενο."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Η ενεργοποίηση αυτής της επιλογής θα επιστρέψει την κύλιση ανά μία γραμμή "
-"χρησιμοποιώντας τα πλήκτρα βέλους επάνω/κάτω σε συνδυασμό με το πλήκτρο "
-"shift."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "Η ενεργοποίηση αυτής της επιλογής θα επιστρέψει την κύλιση ανά μία γραμμή χρησιμοποιώντας τα πλήκτρα βέλους επάνω/κάτω σε συνδυασμό με το πλήκτρο shift."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Ενεργοποιείστε αυτή την επιλογή για να εμφανίζεται η μπάρα μενού στα νέα "
-"παράθυρα τερματικού."
+msgid "Enable this option to show the menubar in newly created terminal windows."
+msgstr "Ενεργοποιείστε αυτή την επιλογή για να εμφανίζεται η μπάρα μενού στα νέα παράθυρα τερματικού."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται οι εργαλειοθήκες στα νέα "
-"παράθυρα τερματικού."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται οι εργαλειοθήκες στα νέα παράθυρα τερματικού."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται περιγράμματα παραθύρου "
-"στα νέα παράθυρα τερματικού."
+msgid "Enable this option to show window decorations around newly created terminal windows."
+msgstr "Ενεργοποιήστε αυτή την επιλογή για να εμφανίζονται περιγράμματα παραθύρου στα νέα παράθυρα τερματικού."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Σας επιτρέπει να κυλίσετε στη γραμμή εντολών πατώντας οποιοδήποτε πλήκτρο "
-"στο πληκτρολόγιο."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Σας επιτρέπει να κυλίσετε στη γραμμή εντολών πατώντας οποιοδήποτε πλήκτρο στο πληκτρολόγιο."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1067,9 +988,8 @@ msgid "Replaces initial title"
 msgstr "Αντικαθιστά τον αρχικό τίτλο"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
-msgstr "_Επαναφορά επιλογών συμβατότητας στις προεπιλεγμένες"
+msgstr "_Επαναφορά επιλογών διπλού κλικ στις προεπιλεγμένες"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
@@ -1108,26 +1028,16 @@ msgid "Select Background Image File"
 msgstr "Επιλέξτε το αρχείο εικόνας του παρασκηνίου"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Επιλέξτε αυτό για να αναγκάσετε το Τερματικό να εκτελεί το κέλυφός σας ως "
-"κέλυφος εισόδου όταν ανοίγετε νέα τερματικά. Συμβουλευτείτε την τεκμηρίωση "
-"του κελύφους σας για τη διαφορά μεταξύ της εκτέλεσης του ως τυπικό κέλυφος "
-"και ως κελύφους εισόδου."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Επιλέξτε αυτό για να αναγκάσετε το Τερματικό να εκτελεί το κέλυφός σας ως κέλυφος εισόδου όταν ανοίγετε νέα τερματικά. Συμβουλευτείτε την τεκμηρίωση του κελύφους σας για τη διαφορά μεταξύ της εκτέλεσης του ως τυπικό κέλυφος και ως κελύφους εισόδου."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Πλήκτρα συντομεύσεων"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Καθορίζει τις γραμμές που μπορείτε να ανατρέξετε πίσω με τη μπάρα κύλισης."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Καθορίζει τις γραμμές που μπορείτε να ανατρέξετε πίσω με τη μπάρα κύλισης."
 
 #: ../Terminal.glade.h:81
 msgid "St_yle:"
@@ -1170,25 +1080,12 @@ msgstr ""
 "που αναμένουν διαφορετική συμπεριφορά τερματικού."
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Αυτή η επιλογή ελέγχει το κατά πόσο το τερματικό θα κυλάει στο τέλος "
-"αυτόματα όταν παράγεται νέο κείμενο από τις εντολές που τρέχουν μέσα στο "
-"τερματικό."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Αυτή η επιλογή ελέγχει το κατά πόσο το τερματικό θα κυλάει στο τέλος αυτόματα όταν παράγεται νέο κείμενο από τις εντολές που τρέχουν μέσα στο τερματικό."
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Αυτό καθορίζει σε τι τιμή θα τεθεί η μεταβλητή περιβάλλοντος $TERM, όταν μία "
-"νέα καρτέλα τερματικού ή παράθυρο τερματικού ανοίγει. Η προκαθορισμένη τιμή "
-"θα πρέπει να είναι εντάξει στα περισσότερα συστήματα. Εάν έχετε προβλήματα "
-"με μερικές εφαρμογές, χρησιμοποιήστε το xterm-color εδώ."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Αυτό καθορίζει σε τι τιμή θα τεθεί η μεταβλητή περιβάλλοντος $TERM, όταν μία νέα καρτέλα τερματικού ή παράθυρο τερματικού ανοίγει. Η προκαθορισμένη τιμή θα πρέπει να είναι εντάξει στα περισσότερα συστήματα. Εάν έχετε προβλήματα με μερικές εφαρμογές, χρησιμοποιήστε το xterm-color εδώ."
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1212,8 +1109,7 @@ msgstr "Χρήση _προκαθορισμένου χρώματος"
 
 #: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
-msgstr ""
-"Χρήση του προσαρμοσμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
+msgstr "Χρήση του προσαρμοσμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
 
 #: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
@@ -1221,8 +1117,7 @@ msgstr "Χρήση πρ_οσαρμοσμένου χρώματος:"
 
 #: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
-msgstr ""
-"Χρήση του προκαθορισμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
+msgstr "Χρήση του προκαθορισμένου χρώματος παρασκηνίου για το επιλεγμένο κείμενο"
 
 #: ../Terminal.glade.h:102
 msgid "_Appearance"
