@@ -1218,7 +1218,7 @@ terminal_screen_timer_background (gpointer user_data)
   gdouble              background_darkness;
   gdouble              saturation = 1.0;
   guint16              opacity = 0xffff;
-g_message ("update bg");
+
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
