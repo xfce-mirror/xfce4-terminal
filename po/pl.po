@@ -2,32 +2,31 @@
 # Copyright (C) 2003-2006 Benedikt Meurer
 # This file is distributed under the same license as the Terminal package.
 # Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
-# Piotr Sokół <piotr.sokol@10g.pl>, 2009.
+# Piotr Sokół <psokol@jabster.pl>, 2009, 2011.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal 0.2.8.3\n"
+"Project-Id-Version: terminal 0.4.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
-"PO-Revision-Date: 2009-03-25 12:17+0100\n"
-"Last-Translator: Piotr Sokół <piotr.sokol@10g.pl>\n"
-"Language-Team: Polish\n"
+"POT-Creation-Date: 2011-01-30 11:01+0000\n"
+"PO-Revision-Date: 2011-01-30 15:15+0100\n"
+"Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
+"Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n%"
-"100<10 || n%100>=20)) ? 1 : 2));\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
+"%100<10 || n%100>=20)) ? 1 : 2));\n"
 
 #: ../terminal/main.c:52
 msgid "Usage:"
-msgstr ""
+msgstr "Użycie:"
 
 #: ../terminal/main.c:52
 msgid "OPTION"
-msgstr ""
+msgstr "OPCJA"
 
 #: ../terminal/main.c:57
-#, fuzzy
 msgid "General Options"
 msgstr "Ogólne"
 
@@ -42,22 +41,20 @@ msgstr "Brak"
 #. parameter of --working-directory
 #: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
-msgstr ""
+msgstr "KATALOG"
 
 #: ../terminal/main.c:65
 msgid "Window or Tab Separators"
 msgstr ""
 
 #: ../terminal/main.c:70
-#, fuzzy
 msgid "Tab Options"
-msgstr "Pozycja zakładki"
+msgstr "Opcje kart"
 
 #. parameter of --command
 #: ../terminal/main.c:72
-#, fuzzy
 msgid "command"
-msgstr "<b>Polecenie</b>"
+msgstr "POLECENIE"
 
 #. parameter of --title
 #: ../terminal/main.c:74
@@ -66,9 +63,8 @@ msgid "title"
 msgstr "Tytuł"
 
 #: ../terminal/main.c:83
-#, fuzzy
 msgid "Window Options"
-msgstr "Nieznana opcja „%s”"
+msgstr "Opcje okien"
 
 #. parameter of --geometry
 #: ../terminal/main.c:87
@@ -90,7 +86,7 @@ msgstr "Ostrzeżenie"
 #: ../terminal/main.c:93
 #, fuzzy
 msgid "icon"
-msgstr "Akcja"
+msgstr "IKONA"
 
 #: ../terminal/main.c:95
 #, c-format
@@ -119,15 +115,16 @@ msgstr ""
 "%s %s (Xfce %s)\n"
 "\n"
 "Copyright (c) %s\n"
-"        os-cillation e.K. Wszelkie prawa zastrzeżone.\n"
+"        os-cillation e.K. Wszelkie prawa zastrzeżone.\n"
 "\n"
-"Napisano przez Benedikta Meurera <benny@xfce.org>.\n"
+"Autor: Benedikt Meurer <benny@xfce.org>.\n"
 "\n"
-"Zbudowany z Gtk+-%d.%d.%d, używam Gtk+-%d.%d.%d.\n"
+"Skompilowano przy użyciu Gtk+-%d.%d.%d, uruchomiono przy użyciu Gtk+-%d.%d."
+"%d.\n"
 "\n"
-"Błędy proszę zgłaszać do <%s>.\n"
+"Proszę zgłaszać błędy na adres <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:254
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nie udało się zarejestrować usługi terminala: %s.\n"
@@ -135,18 +132,23 @@ msgstr "Nie udało się zarejestrować usługi terminala: %s.\n"
 #: ../terminal/terminal-app.c:516
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Niepoprawna geometria „%s”.\n"
+msgstr "Nieprawidłowa geometria „%s”.\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Niezgodny identyfikator użytkownika."
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+#, fuzzy
+msgid "Display mismatch"
+msgstr "Niezgodny identyfikator użytkownika."
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Szyna wymiany informacji D-BUS rozłączyła się, kończenie...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Nie udało się zarejestrować obiektu %s."
@@ -158,12 +160,12 @@ msgstr "Emulator terminala X dla środowiska Xfce"
 #: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
 msgstr ""
-"Szymon Kałasz <szymon_maestro@gazeta.pl>\n"
-"Piotr Sokół <piotr.sokol@10g.pl>"
+"Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.\n"
+"Piotr Sokół <psokol@jabster.pl>, 2009, 2011."
 
 #: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
-msgstr ""
+msgstr "Strona główna"
 
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
@@ -176,14 +178,16 @@ msgid ""
 "You can read the user manual online. This manual may however not exactly "
 "match your %s version."
 msgstr ""
+"Można użyć podręcznika umieszczonego w sieci, lecz jego zawartość może "
+"dotyczyć wersji programu innej niż zainstalowana %s."
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
-msgstr ""
+msgstr "Brak podręcznika użytkownika programu"
 
 #: ../terminal/terminal-dialogs.c:222
 msgid "_Read Online"
-msgstr ""
+msgstr "_Przejdź na stronę podręcznika"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:302
@@ -397,26 +401,24 @@ msgstr "Przejdź do karty 9"
 
 #: ../terminal/terminal-preferences.c:606
 msgid "Contents"
-msgstr "Zawartość"
+msgstr "Spis treści"
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
+#: ../terminal/terminal-screen.c:1598
 msgid "Untitled"
 msgstr "Bez tytułu"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:529
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nie udało się określić powłoki logowania."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1339
 msgid "Failed to execute child"
 msgstr "Nie udało się wywołać procesu potomnego."
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:1920
 msgid "Close this tab"
 msgstr "Zamyka kartę"
 
@@ -447,11 +449,11 @@ msgstr "Wyłączony"
 
 #: ../terminal/terminal-shortcut-editor.c:221
 msgid "Action"
-msgstr "Akcja"
+msgstr "Czynność"
 
 #: ../terminal/terminal-shortcut-editor.c:228
 msgid "Shortcut key"
-msgstr "Klawisz skrótu"
+msgstr "Skrót"
 
 #: ../terminal/terminal-shortcut-editor.c:328
 msgid "Compose shortcut"
@@ -459,7 +461,7 @@ msgstr "Tworzenie skrótu"
 
 #: ../terminal/terminal-shortcut-editor.c:333
 msgid "Clea_r"
-msgstr ""
+msgstr "Wy_czyść"
 
 #: ../terminal/terminal-shortcut-editor.c:352
 msgid "Compose shortcut for:"
@@ -563,7 +565,7 @@ msgstr "Zamknij k_artę"
 
 #: ../terminal/terminal-window.c:225
 msgid "Close the current terminal tab"
-msgstr "Zamyka bieżącą kartę terminala"
+msgstr "Zamyka bieżącą kartę"
 
 #: ../terminal/terminal-window.c:226
 msgid "_Close Window"
@@ -571,7 +573,7 @@ msgstr "_Zamknij "
 
 #: ../terminal/terminal-window.c:226
 msgid "Close the terminal window"
-msgstr "Zamyka okno terminala"
+msgstr "Zamyka okno programu"
 
 #: ../terminal/terminal-window.c:227
 msgid "_Edit"
@@ -615,7 +617,7 @@ msgstr "P_referencje..."
 
 #: ../terminal/terminal-window.c:232
 msgid "Open the Terminal preferences dialog"
-msgstr "Otwiera okno preferencji terminala"
+msgstr "Wyświetla okno preferencji programu"
 
 #: ../terminal/terminal-window.c:233
 msgid "_View"
@@ -760,9 +762,8 @@ msgid "Window Title|Set Title"
 msgstr "Ustawianie tytułu"
 
 #: ../terminal/terminal-window.c:1568
-#, fuzzy
 msgid "Title:"
-msgstr "Tytuł"
+msgstr "Tytuł:"
 
 #: ../terminal/terminal-window.c:1580
 msgid "Enter the title for the current terminal tab"
@@ -782,9 +783,8 @@ msgid "ASCII DEL"
 msgstr "ASCII DEL"
 
 #: ../Terminal.glade.h:3
-#, fuzzy
 msgid "Ad_vanced"
-msgstr "Zaawansowane"
+msgstr "_Zaawansowane"
 
 #: ../Terminal.glade.h:4
 #, fuzzy
@@ -796,13 +796,12 @@ msgid "Auto-detect"
 msgstr "Automatyczne wykrywanie"
 
 #: ../Terminal.glade.h:6
-#, fuzzy
 msgid "Background"
-msgstr "Obraz tła"
+msgstr "Tło"
 
 #: ../Terminal.glade.h:7
 msgid "Background image"
-msgstr "Obraz tła"
+msgstr "Obraz"
 
 #: ../Terminal.glade.h:8
 msgid "Centered"
@@ -837,14 +836,12 @@ msgid "Color Selector"
 msgstr "Wybór kolorów"
 
 #: ../Terminal.glade.h:16
-#, fuzzy
 msgid "Command"
-msgstr "<b>Polecenie</b>"
+msgstr "Polecenie"
 
 #: ../Terminal.glade.h:17
-#, fuzzy
 msgid "Compatibility"
-msgstr "<b>Kompatybilność</b>"
+msgstr "Kompatybilność"
 
 #: ../Terminal.glade.h:18
 #, fuzzy
@@ -859,18 +856,16 @@ msgid "Control-H"
 msgstr "Control-H"
 
 #: ../Terminal.glade.h:21
-#, fuzzy
 msgid "Cu_rsor color:"
-msgstr "Kolor _tekstu i kursora:"
+msgstr "_Kursor:"
 
 #: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Wyłączenie skrótów _menu (np. Alt+f)"
 
 #: ../Terminal.glade.h:23
-#, fuzzy
 msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Wyłączenie klawisza przywołania m_enu (domyślnie F10)"
+msgstr "Wyłączenie klawisza wyświetlania m_enu (domyślnie F10)"
 
 #: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
@@ -885,14 +880,12 @@ msgid "Display _toolbars in new windows"
 msgstr "Paski _narzędziowe"
 
 #: ../Terminal.glade.h:28
-#, fuzzy
 msgid "Double Click"
-msgstr "<b>Podwójne kliknięcie</b>"
+msgstr "Dwukrotne kliknięcie"
 
 #: ../Terminal.glade.h:29
-#, fuzzy
 msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Antyaliasing"
+msgstr "_Antyaliasing"
 
 #: ../Terminal.glade.h:30
 msgid ""
@@ -951,7 +944,7 @@ msgstr "Sekwencja sterująca"
 
 #: ../Terminal.glade.h:39
 msgid "Font"
-msgstr ""
+msgstr "Czcionka"
 
 #: ../Terminal.glade.h:40
 msgid "General"
@@ -970,9 +963,8 @@ msgid "Isn't displayed"
 msgstr "Brak"
 
 #: ../Terminal.glade.h:44
-#, fuzzy
 msgid "Menubar Access"
-msgstr "<b>Dostęp do głównego menu</b>"
+msgstr "Menu poleceń"
 
 #: ../Terminal.glade.h:45
 msgid "None (use solid color)"
@@ -991,19 +983,16 @@ msgid "Open a dialog to specify the color"
 msgstr "Otwórz okno dialogowe, aby wybrać kolor"
 
 #: ../Terminal.glade.h:49
-#, fuzzy
 msgid "Opening New Windows"
-msgstr "<b>Otwieranie nowych okien</b>"
+msgstr "Nowe okna"
 
 #: ../Terminal.glade.h:50
-#, fuzzy
 msgid "Palette"
-msgstr "<b>Paleta</b>"
+msgstr "Paleta"
 
 #: ../Terminal.glade.h:51
-#, fuzzy
 msgid "Palette entry 1"
-msgstr "%d. kolor palety"
+msgstr "1. kolor palety"
 
 #: ../Terminal.glade.h:52
 #, fuzzy
@@ -1085,49 +1074,42 @@ msgid "Replaces initial title"
 msgstr "Zastępowanie początkowego tytułu"
 
 #: ../Terminal.glade.h:68
-#, fuzzy
 msgid "Rese_t double click options to defaults"
 msgstr "Przywróć _domyślne"
 
 #: ../Terminal.glade.h:69
-#, fuzzy
 msgid "Reset tab activity _indicator after"
-msgstr "Resetowanie po upływie"
+msgstr "_Resetowanie po upływie"
 
 #: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Przeskalowany"
 
 #: ../Terminal.glade.h:71
-#, fuzzy
 msgid "Scr_ollbar is:"
-msgstr "P_asek przewijania:"
+msgstr "Położenie p_aska przewijania:"
 
 #: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
 msgstr "Przewijanie po _naciśnięciu klawisza"
 
 #: ../Terminal.glade.h:73
-#, fuzzy
 msgid "Scroll on ou_tput"
-msgstr "Przewijanie po w_ypisania znaku"
+msgstr "Przewijanie po w_ypisaniu na wyjście "
 
 #: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Przewijanie o jeden _wiersz przy użyciu klawiszy Shift i góra/dół"
 
 #: ../Terminal.glade.h:75
-#, fuzzy
 msgid "Scroll_back:"
-msgstr "_Ilość przewijanych wierszy:"
+msgstr "Ilość przewijanych _wierszy:"
 
 #: ../Terminal.glade.h:76
-#, fuzzy
 msgid "Scrolling"
-msgstr "<b>Przewijanie</b>"
+msgstr "Przewijanie"
 
 #: ../Terminal.glade.h:77
-#, fuzzy
 msgid "Select Background Image File"
 msgstr "Wybór pliku"
 
@@ -1143,9 +1125,8 @@ msgstr ""
 "dokumentacji powłoki."
 
 #: ../Terminal.glade.h:79
-#, fuzzy
 msgid "Shortcut Keys"
-msgstr "Klawisz skrótu"
+msgstr "Skróty klawiszowe"
 
 #: ../Terminal.glade.h:80
 msgid ""
@@ -1155,7 +1136,6 @@ msgstr ""
 "przewijania"
 
 #: ../Terminal.glade.h:81
-#, fuzzy
 msgid "St_yle:"
 msgstr "_Styl:"
 
@@ -1164,32 +1144,26 @@ msgid "Stretched"
 msgstr "Rozciągnięty"
 
 #: ../Terminal.glade.h:83
-#, fuzzy
 msgid "Tab Activity Indicator"
-msgstr "<b>Wskazanie aktywności kart</b>"
+msgstr "Wskaźnik aktywności kart"
 
 #: ../Terminal.glade.h:84
-#, fuzzy
 msgid "Tab activit_y color:"
-msgstr "Kolor wskazania a_ktywności kart:"
+msgstr "Wskaźnik a_ktywności kart:"
 
 #: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
-msgstr "Preferencje programu"
+msgstr "Preferencje"
 
 #: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
-msgstr ""
-"Następująca paleta kolorów jest dostępna dla programów uruchamianych w "
-"terminalu:"
+msgstr "Paleta kolorów dostępna dla programów uruchamianych w terminalu:"
 
 #: ../Terminal.glade.h:87
-#, fuzzy
 msgid "Text Selection"
-msgstr "<b>Zaznaczanie tekstu</b>"
+msgstr "Zaznaczenie tekstu"
 
 #: ../Terminal.glade.h:88
-#, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1197,7 +1171,7 @@ msgid ""
 "different terminal behavior."
 msgstr ""
 "Poniższe opcje mogą powodować nieprawidłowe działanie niektórych programów. "
-"Zostały one udostępnione tutaj tylko po to, aby umożliwić pracę z pewnymi "
+"Zostały one udostępnione  tylko po to, aby umożliwić pracę z pewnymi "
 "programami i systemami operacyjnymi, które oczekują nieco innego zachowania "
 "terminala."
 
@@ -1222,57 +1196,52 @@ msgstr ""
 "proszę spróbować użyć xterm-color."
 
 #: ../Terminal.glade.h:94
-#, fuzzy
 msgid "Tiled"
-msgstr "Kafelki"
+msgstr "Sąsiadująco"
 
 #: ../Terminal.glade.h:95
 msgid "Title"
 msgstr "Tytuł"
 
 #: ../Terminal.glade.h:96
-#, fuzzy
 msgid "Transpare_ncy:"
-msgstr "Przezroczyste tło"
+msgstr "Nieprzezroczystość:"
 
 #: ../Terminal.glade.h:97
 msgid "Transparent background"
-msgstr "Przezroczyste tło"
+msgstr "Przezroczyste"
 
 #: ../Terminal.glade.h:98
 msgid "Use _default color"
-msgstr "_Domyślny kolor"
+msgstr "_Domyślny"
 
 #: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
 msgstr "Używa innego koloru tła zaznaczanego tekstu"
 
 #: ../Terminal.glade.h:100
-#, fuzzy
 msgid "Use c_ustom color:"
-msgstr "_Własny kolor"
+msgstr "_Własny:"
 
 #: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
 msgstr "Używa domyślnego koloru tła zaznaczanego tekstu"
 
 #: ../Terminal.glade.h:102
-#, fuzzy
 msgid "_Appearance"
-msgstr "Wygląd"
+msgstr "_Wygląd"
 
 #: ../Terminal.glade.h:103
 msgid "_Background color:"
-msgstr "Kolor tł_a:"
+msgstr "Tł_o:"
 
 #: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
 msgstr "Klawisz _Backspace generuje:"
 
 #: ../Terminal.glade.h:105
-#, fuzzy
 msgid "_Colors"
-msgstr "Kolory"
+msgstr "_Kolory"
 
 #: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
@@ -1280,23 +1249,21 @@ msgstr "Klawisz _Delete generuje:"
 
 #: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
-msgstr "_Dynamicznie ustawiony tytuł:"
+msgstr "_Dynamiczny:"
 
 #: ../Terminal.glade.h:108
 msgid "_File:"
 msgstr "_Plik:"
 
 #: ../Terminal.glade.h:109
-#, fuzzy
 msgid "_General"
-msgstr "Ogólne"
+msgstr "_Ogólne"
 
 #: ../Terminal.glade.h:110
 msgid "_Initial title:"
-msgstr "_Początkowy tytuł:"
+msgstr "_Początkowy:"
 
 #: ../Terminal.glade.h:111
-#, fuzzy
 msgid "_Reset compatibility options to defaults"
 msgstr "Przywróć _domyślne"
 
@@ -1305,14 +1272,12 @@ msgid "_Run command as login shell"
 msgstr "_Uruchamianie w roli powłoki startowej"
 
 #: ../Terminal.glade.h:113
-#, fuzzy
 msgid "_Shortcuts"
-msgstr "Skróty klawiszowe"
+msgstr "_Klawiatura"
 
 #: ../Terminal.glade.h:114
-#, fuzzy
 msgid "_Text color:"
-msgstr "Kolor _tekstu i kursora:"
+msgstr "_Tekst:"
 
 #: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
