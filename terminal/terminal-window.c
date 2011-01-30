@@ -1520,8 +1520,9 @@ terminal_window_action_goto_tab (GtkRadioAction *action,
 
 
 static void
-title_dialog_response (GtkWidget *dialog,
-                       gint       response)
+title_dialog_response (GtkWidget         *dialog,
+                       gint              response,
+                       ExoMutualBinding *title_binding)
 {
   /* check if we should open the user manual */
   if (response == GTK_RESPONSE_HELP)
@@ -1532,8 +1533,17 @@ title_dialog_response (GtkWidget *dialog,
   else
     {
       /* close the dialog */
+      exo_mutual_binding_unbind (title_binding);
       gtk_widget_destroy (dialog);
     }
+}
+
+
+
+static void
+title_dialog_quit (GtkWidget *dialog)
+{
+  gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 }
 
 
@@ -1542,13 +1552,14 @@ static void
 terminal_window_action_set_title (GtkAction      *action,
                                   TerminalWindow *window)
 {
-  AtkRelationSet *relations;
-  AtkRelation    *relation;
-  AtkObject      *object;
-  GtkWidget      *dialog;
-  GtkWidget      *box;
-  GtkWidget      *label;
-  GtkWidget      *entry;
+  AtkRelationSet   *relations;
+  AtkRelation      *relation;
+  AtkObject        *object;
+  GtkWidget        *dialog;
+  GtkWidget        *box;
+  GtkWidget        *label;
+  GtkWidget        *entry;
+  ExoMutualBinding *title_binding;
 
   if (G_LIKELY (window->active != NULL))
     {
@@ -1572,7 +1583,7 @@ terminal_window_action_set_title (GtkAction      *action,
       entry = gtk_entry_new ();
       gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
       g_signal_connect_swapped (G_OBJECT (entry), "activate",
-                                G_CALLBACK (gtk_widget_destroy), dialog);
+                                G_CALLBACK (title_dialog_quit), dialog);
       gtk_widget_show (entry);
 
       /* set Atk description and label relation for the entry */
@@ -1583,10 +1594,11 @@ terminal_window_action_set_title (GtkAction      *action,
       atk_relation_set_add (relations, relation);
       g_object_unref (G_OBJECT (relation));
 
-      exo_mutual_binding_new (G_OBJECT (window->active), "custom-title", G_OBJECT (entry), "text");
+      title_binding = exo_mutual_binding_new (G_OBJECT (window->active), "custom-title",
+                                              G_OBJECT (entry), "text");
 
       g_signal_connect (G_OBJECT (dialog), "response",
-                        G_CALLBACK (title_dialog_response), NULL);
+                        G_CALLBACK (title_dialog_response), title_binding);
 
       gtk_widget_show (dialog);
     }
