@@ -229,21 +229,21 @@ terminal_widget_context_menu_copy (TerminalWidget *widget,
                                    GtkWidget      *item)
 {
   GtkClipboard *clipboard;
-  const gchar  *link;
+  const gchar  *wlink;
   GdkDisplay   *display;
 
-  link = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
-  if (G_LIKELY (link != NULL))
+  wlink = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
+  if (G_LIKELY (wlink != NULL))
     {
       display = gtk_widget_get_display (GTK_WIDGET (widget));
 
       /* copy the URI to "CLIPBOARD" */
       clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
-      gtk_clipboard_set_text (clipboard, link, -1);
+      gtk_clipboard_set_text (clipboard, wlink, -1);
 
       /* copy the URI to "PRIMARY" */
       clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_PRIMARY);
-      gtk_clipboard_set_text (clipboard, link, -1);
+      gtk_clipboard_set_text (clipboard, wlink, -1);
     }
 }
 
@@ -253,14 +253,14 @@ static void
 terminal_widget_context_menu_open (TerminalWidget *widget,
                                    GtkWidget      *item)
 {
-  const gchar *link;
+  const gchar *wlink;
   gint        *tag;
 
-  link = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
+  wlink = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
   tag  = g_object_get_data (G_OBJECT (item), "terminal-widget-tag");
 
-  if (G_LIKELY (link != NULL && tag != NULL))
-    terminal_widget_open_uri (widget, link, *tag);
+  if (G_LIKELY (wlink != NULL && tag != NULL))
+    terminal_widget_open_uri (widget, wlink, *tag);
 }
 
 
@@ -656,7 +656,7 @@ terminal_widget_key_press_event (GtkWidget    *widget,
 
 static void
 terminal_widget_open_uri (TerminalWidget *widget,
-                          const gchar    *link,
+                          const gchar    *wlink,
                           gint            tag)
 {
   GError    *error = NULL;
@@ -674,18 +674,18 @@ terminal_widget_open_uri (TerminalWidget *widget,
       switch (regex_patterns[i].type)
         {
           case PATTERN_TYPE_FULL_HTTP:
-            uri = g_strdup (link);
+            uri = g_strdup (wlink);
             break;
 
           case PATTERN_TYPE_HTTP:
-            uri = g_strconcat ("http://", link, NULL);
+            uri = g_strconcat ("http://", wlink, NULL);
             break;
 
           case PATTERN_TYPE_EMAIL:
-            if (strncmp (link, "mailto:", 7) == 0)
-              uri = g_strdup (link);
+            if (strncmp (wlink, "mailto:", 7) == 0)
+              uri = g_strdup (wlink);
             else
-              uri = g_strconcat ("mailto:", link, NULL);
+              uri = g_strconcat ("mailto:", wlink, NULL);
             break;
 
           default:
@@ -713,7 +713,7 @@ terminal_widget_open_uri (TerminalWidget *widget,
 
 invalid_tag:
 
-  g_warning ("Invalid tag specified while trying to open link \"%s\".", link);
+  g_warning ("Invalid tag specified while trying to open link \"%s\".", wlink);
 }
 
 
