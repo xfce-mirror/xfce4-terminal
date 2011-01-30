@@ -1320,11 +1320,16 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
 void
 terminal_screen_launch_child (TerminalScreen *screen)
 {
-  gboolean update;
-  GError  *error = NULL;
-  gchar   *command;
-  gchar  **argv;
-  gchar  **env;
+  gboolean      update;
+  GError       *error = NULL;
+  gchar        *command;
+  gchar       **argv;
+  gchar       **env;
+#if VTE_CHECK_VERSION (0, 26, 0)
+  gchar       **argv2;
+  guint         i;
+  GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1344,13 +1349,38 @@ terminal_screen_launch_child (TerminalScreen *screen)
       g_object_get (G_OBJECT (screen->preferences),
                     "command-update-records", &update,
                     NULL);
-
       env = terminal_screen_get_child_environment (screen);
 
+#if VTE_CHECK_VERSION (0, 26, 0)
+      argv2 = g_new0 (gchar *, g_strv_length (argv) + 2);
+      argv2[0] = command;
+
+      if (argv != NULL)
+        {
+          for (i = 0; argv[i] != NULL; i++)
+            argv2[i + 1] = argv[i];
+
+          spawn_flags |= G_SPAWN_FILE_AND_ARGV_ZERO;
+        }
+
+      if (!vte_terminal_fork_command_full (VTE_TERMINAL (screen->terminal),
+                                           update ? VTE_PTY_DEFAULT : VTE_PTY_NO_LASTLOG | VTE_PTY_NO_UTMP | VTE_PTY_NO_WTMP,
+                                           screen->working_directory, argv2, env, 
+                                           spawn_flags,
+                                           NULL, NULL,
+                                           &screen->pid, &error))
+        {
+          terminal_dialogs_show_error (GTK_WIDGET (screen), error, _("Failed to execute child"));
+          g_error_free (error);
+        }
+
+      g_free (argv2);
+#else
       screen->pid = vte_terminal_fork_command (VTE_TERMINAL (screen->terminal),
                                                command, argv, env,
                                                screen->working_directory,
                                                update, update, update);
+#endif
 
       g_strfreev (argv);
       g_strfreev (env);
