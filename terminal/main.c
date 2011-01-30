@@ -149,7 +149,7 @@ main (int argc, char **argv)
                  "Please report bugs to <%s>.\n"),
                  name, PACKAGE_VERSION,
                  xfce_version_string (),
-                 "2003-2010",
+                 "2003-2011",
                  GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
                  gtk_major_version, gtk_minor_version, gtk_micro_version,
                  PACKAGE_BUGREPORT);

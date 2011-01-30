@@ -95,7 +95,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "comments", _("Xfce Terminal Emulator"),
                          "documenters", documenters,
                          "copyright", "Copyright \302\251 2003-2008 Benedikt Meurer\n"
-                                      "Copyright \302\251 2007-2010 Nick Schermer",
+                                      "Copyright \302\251 2007-2011 Nick Schermer",
                          "license", XFCE_LICENSE_GPL,
                          "logo", logo,
                          "program-name", g_get_application_name (),
