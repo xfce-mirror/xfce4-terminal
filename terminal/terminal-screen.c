@@ -90,6 +90,7 @@ static gchar     *terminal_screen_parse_title                   (TerminalScreen 
                                                                  const gchar           *title);
 static gchar    **terminal_screen_get_child_environment         (TerminalScreen        *screen);
 static void       terminal_screen_update_background             (TerminalScreen        *screen);
+static void       terminal_screen_update_background_fast        (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
@@ -140,6 +141,8 @@ struct _TerminalScreen
   GtkWidget           *tab_label;
 
   guint                session_id;
+
+  guint                background_signal_id;
 
   GPid                 pid;
   gchar               *working_directory;
@@ -243,7 +246,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
                     "signal::resize-window", G_CALLBACK (terminal_screen_vte_resize_window), screen,
-                    "swapped-signal::size-allocate", G_CALLBACK (terminal_screen_timer_background), screen,
                     "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
   gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
@@ -707,6 +709,18 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
   result[n] = NULL;
 
   return result;
+}
+
+
+
+static void
+terminal_screen_update_background_fast (TerminalScreen *screen)
+{
+  if (G_UNLIKELY (screen->background_timer_id == 0))
+    {
+      screen->background_timer_id = g_idle_add_full (G_PRIORITY_LOW, terminal_screen_timer_background,
+                                                     screen, terminal_screen_timer_background_destroy);
+    }
 }
 
 
@@ -1204,7 +1218,7 @@ terminal_screen_timer_background (gpointer user_data)
   gdouble              background_darkness;
   gdouble              saturation = 1.0;
   guint16              opacity = 0xffff;
-
+g_message ("update bg");
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
@@ -1222,9 +1236,25 @@ terminal_screen_timer_background (gpointer user_data)
       if (G_LIKELY (image != NULL))
         g_object_unref (G_OBJECT (image));
       g_object_unref (G_OBJECT (loader));
+
+      /* refresh background on size changes */
+      if (screen->background_signal_id == 0)
+        {
+          screen->background_signal_id =
+             g_signal_connect_swapped (G_OBJECT (screen->terminal), "size-allocate",
+                                       G_CALLBACK (terminal_screen_update_background_fast), screen);
+        }
     }
   else
     {
+      /* stop updating on size changes */
+      if (screen->background_signal_id != 0)
+        {
+          g_signal_handler_disconnect (G_OBJECT (screen->terminal), screen->background_signal_id);
+          screen->background_signal_id = 0;
+        }
+
+      /* WARNING: the causes a resize too! */
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
     }
 
@@ -1365,7 +1395,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
 
       if (!vte_terminal_fork_command_full (VTE_TERMINAL (screen->terminal),
                                            update ? VTE_PTY_DEFAULT : VTE_PTY_NO_LASTLOG | VTE_PTY_NO_UTMP | VTE_PTY_NO_WTMP,
-                                           screen->working_directory, argv2, env, 
+                                           screen->working_directory, argv2, env,
                                            spawn_flags,
                                            NULL, NULL,
                                            &screen->pid, &error))
