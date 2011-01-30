@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: terminal 0.4.5\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-30 11:01+0000\n"
-"PO-Revision-Date: 2011-01-30 15:15+0100\n"
+"PO-Revision-Date: 2011-01-30 20:03+0100\n"
 "Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
 "Language-Team: Polish <>\n"
 "MIME-Version: 1.0\n"
@@ -28,14 +28,13 @@ msgstr "OPCJA"
 
 #: ../terminal/main.c:57
 msgid "General Options"
-msgstr "Ogólne"
+msgstr "Ogólne opcje"
 
 #. parameter of --default-display
 #. parameter of --display
 #: ../terminal/main.c:59 ../terminal/main.c:85
-#, fuzzy
 msgid "display"
-msgstr "Brak"
+msgstr "EKRAN"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
@@ -45,7 +44,7 @@ msgstr "KATALOG"
 
 #: ../terminal/main.c:65
 msgid "Window or Tab Separators"
-msgstr ""
+msgstr "Separatory okien lub kart"
 
 #: ../terminal/main.c:70
 msgid "Tab Options"
@@ -58,9 +57,8 @@ msgstr "POLECENIE"
 
 #. parameter of --title
 #: ../terminal/main.c:74
-#, fuzzy
 msgid "title"
-msgstr "Tytuł"
+msgstr "TYTUŁ"
 
 #: ../terminal/main.c:83
 msgid "Window Options"
@@ -69,29 +67,28 @@ msgstr "Opcje okien"
 #. parameter of --geometry
 #: ../terminal/main.c:87
 msgid "geometry"
-msgstr ""
+msgstr "GEOMETRIA"
 
 #. parameter of --role
 #: ../terminal/main.c:89
 msgid "role"
-msgstr ""
+msgstr "ROLA"
 
 #. parameter of --startup-id
 #: ../terminal/main.c:91
-#, fuzzy
 msgid "string"
-msgstr "Ostrzeżenie"
+msgstr "CIĄG"
 
 #. parameter of --icon
 #: ../terminal/main.c:93
-#, fuzzy
 msgid "icon"
-msgstr "IKONA"
+msgstr "PLIK"
 
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
+"Dokładny opis opcji programu %s znajduje się w podręczniku użytkownika."
 
 #: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
@@ -139,9 +136,8 @@ msgid "User id mismatch"
 msgstr "Niezgodny identyfikator użytkownika."
 
 #: ../terminal/terminal-dbus.c:119
-#, fuzzy
 msgid "Display mismatch"
-msgstr "Niezgodny identyfikator użytkownika."
+msgstr "Niezgodny ekran"
 
 #: ../terminal/terminal-dbus.c:145
 #, c-format
@@ -155,7 +151,7 @@ msgstr "Nie udało się zarejestrować obiektu %s."
 
 #: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
-msgstr "Emulator terminala X dla środowiska Xfce"
+msgstr "Emuluje działanie terminala X w środowisku Xfce"
 
 #: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
@@ -170,7 +166,7 @@ msgstr "Strona główna"
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
 msgid "The %s user manual is not installed on your computer"
-msgstr ""
+msgstr "Nie zainstalowano podręcznika użytkownika programu %s."
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
@@ -200,7 +196,7 @@ msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
-"Opcja „--default-display” wymaga wprowadzenia domyślnego ekranu X jako "
+"Opcja „--default-display” wymaga określenia domyślnego ekranu X jako jej "
 "parametru."
 
 #: ../terminal/terminal-options.c:225
@@ -209,8 +205,8 @@ msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
-"Opcja „--default-working-directory” wymaga wprowadzenia domyślnego katalogu "
-"roboczego jako parametru."
+"Opcja „--default-working-directory” wymaga określenia domyślnego katalogu "
+"roboczego jako jej parametru."
 
 #: ../terminal/terminal-options.c:241
 #, c-format
@@ -218,8 +214,8 @@ msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
-"Opcja „--execute/-x” wymaga wprowadzenia polecenia do uruchomienia w dalszej "
-"części wiersza poleceń."
+"Opcja „--execute/-x” wymaga określenia polecenia do uruchomienia jako jej "
+"parametru."
 
 #: ../terminal/terminal-options.c:258
 #, c-format
@@ -227,7 +223,7 @@ msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
-"Opcja „--command/-e” wymaga wprowadzenia polecenia do uruchomienia jako "
+"Opcja „--command/-e” wymaga określenia polecenia do uruchomienia jako jej "
 "parametru."
 
 #: ../terminal/terminal-options.c:275
@@ -236,47 +232,47 @@ msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
-"Opcja „--working-directory” wymaga wprowadzenia katalogu roboczego jako "
+"Opcja „--working-directory” wymaga określenia katalogu roboczego jako jej "
 "parametru."
 
 #: ../terminal/terminal-options.c:290
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr "Opcja „--title/-T” wymaga wprowadzenia tytułu okna jako parametru."
+msgstr "Opcja „--title/-T” wymaga określenia tytułu okna jako jej parametru."
 
 #: ../terminal/terminal-options.c:309
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "Opcja „--display” wymaga wprowadzenia ekranu X jako parametru."
+msgstr "Opcja „--display” wymaga określenia ekranu X jako jej parametru."
 
 #: ../terminal/terminal-options.c:324
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr "Opcja „--geometry” wymaga wprowadzenia geometrii jako parametru."
+msgstr ""
+"Opcja „--geometry” wymaga określenia geometrii okna jako jej parametru."
 
 #: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr "Opcja „--role” wymaga wprowadzenia roli okna jako parametru."
+msgstr "Opcja „--role” wymaga określenia roli okna jako jej parametru."
 
 #: ../terminal/terminal-options.c:354
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
-"Opcja „--startup-id” wymaga wprowadzenia ID uruchamiania jako parametru."
+"Opcja „--startup-id” wymaga określenia identyfikatora uruchamiania jako jej "
+"parametru."
 
 #: ../terminal/terminal-options.c:369
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
-msgstr ""
-"Opcja „--command/-e” wymaga wprowadzenia polecenia do uruchomienia jako "
-"parametru."
+msgstr "Opcja „--icon/-l” wymaga określenia pliku ikony jako jej parametru."
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -477,7 +473,7 @@ msgstr "Inny program przejął kontrolę nad klawiaturą."
 
 #: ../terminal/terminal-toolbars-view.c:112
 msgid "Toolbar Editor"
-msgstr "Konfiguracja paska narzędziowego"
+msgstr "Modyfikowanie paska narzędziowego"
 
 #: ../terminal/terminal-widget.c:320
 msgid "Copy Email Address"
@@ -509,8 +505,8 @@ msgstr ""
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"Nie udało się przeciągnąć adresu URL Mozilli do terminala: nieprawidłowy "
-"format (%d) lub długość (%d).\n"
+"Nie udało się przeciągnąć adresu URL programu Mozilla do terminala: "
+"nieprawidłowy format (%d) lub długość (%d).\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
@@ -585,7 +581,7 @@ msgstr "S_kopiuj"
 
 #: ../terminal/terminal-window.c:228
 msgid "Copy to clipboard"
-msgstr "Przygotowuje zaznaczony tekst do wklejenia za pomocą polecenia „Wklej”"
+msgstr "Kopiuje zaznaczony tekst do schowka"
 
 #: ../terminal/terminal-window.c:229
 msgid "_Paste"
@@ -593,7 +589,7 @@ msgstr "Wk_lej"
 
 #: ../terminal/terminal-window.c:229
 msgid "Paste from clipboard"
-msgstr "Wkleja tekst wybrany wcześniej poleceniem „Wytnij” lub „Skopiuj”"
+msgstr "Wkleja wcześniej skopiowany tekst ze schowka"
 
 #: ../terminal/terminal-window.c:230
 msgid "Paste _Selection"
@@ -617,7 +613,7 @@ msgstr "P_referencje..."
 
 #: ../terminal/terminal-window.c:232
 msgid "Open the Terminal preferences dialog"
-msgstr "Wyświetla okno preferencji programu"
+msgstr "Otwiera okno preferencji programu"
 
 #: ../terminal/terminal-window.c:233
 msgid "_View"
@@ -637,16 +633,15 @@ msgstr "Ustaw własny tytuł dla bieżącej karty"
 
 #: ../terminal/terminal-window.c:236
 msgid "_Reset"
-msgstr "_Zresetuj"
+msgstr "_Wyzeruj stan"
 
 #: ../terminal/terminal-window.c:237
 msgid "Reset and C_lear"
-msgstr "Zresetuj i wy_czyść"
+msgstr "Wyzeruj stan i wy_czyść"
 
 #: ../terminal/terminal-window.c:237
-#, fuzzy
 msgid "Reset and clear"
-msgstr "Zresetuj i wyczyść"
+msgstr "Przywraca pierwotny stan terminala i czyści jego bufor"
 
 #: ../terminal/terminal-window.c:238
 msgid "_Go"
@@ -771,25 +766,23 @@ msgstr "Proszę wprowadzić tytuł bieżącej karty terminala."
 
 #: ../Terminal.desktop.in.in.h:2
 msgid "Terminal Emulator"
-msgstr "Emulator terminala"
+msgstr "Emuluje działanie terminala X"
 
 #: ../Terminal.glade.h:1
-#, fuzzy
 msgid "$TERM s_etting:"
-msgstr "Ustawienie <tt>$TERM</tt>:"
+msgstr "_Zmienna $TERM:"
 
 #: ../Terminal.glade.h:2
 msgid "ASCII DEL"
-msgstr "ASCII DEL"
+msgstr "Znak DEL kodu ASCII"
 
 #: ../Terminal.glade.h:3
 msgid "Ad_vanced"
 msgstr "_Zaawansowane"
 
 #: ../Terminal.glade.h:4
-#, fuzzy
 msgid "Allow bold te_xt"
-msgstr "Możliwość pogrubiania tekstu"
+msgstr "Możliwość wypisywania tekstu p_ogrubioną czcionką"
 
 #: ../Terminal.glade.h:5
 msgid "Auto-detect"
@@ -805,7 +798,7 @@ msgstr "Obraz"
 
 #: ../Terminal.glade.h:8
 msgid "Centered"
-msgstr "Wyśrodkowany"
+msgstr "Wyśrodkowanie"
 
 #: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
@@ -844,16 +837,14 @@ msgid "Compatibility"
 msgstr "Kompatybilność"
 
 #: ../Terminal.glade.h:18
-#, fuzzy
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
-msgstr ""
-"Poniższe znaki będą traktowane jako część słowa przy podwójnym kliknięciu:"
+msgstr "Zestaw znaków rozpoznawanych jako _słowo podczas zaznaczania:"
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
-msgstr "Control-H"
+msgstr "CTRL+H"
 
 #: ../Terminal.glade.h:21
 msgid "Cu_rsor color:"
@@ -909,8 +900,8 @@ msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr ""
-"Umożliwia przewijanie o jeden wiersz za pomocą klawiszy góra/dół z "
-"wciśniętym klawiszem Shift"
+"Przewija o jeden wiersz za pomocą klawiszy góra/dół z wciśniętym klawiszem "
+"Shift"
 
 #: ../Terminal.glade.h:33
 msgid ""
@@ -932,11 +923,11 @@ msgstr "Wyświetla dekoracje wokół nowo otwartych okien"
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
-msgstr "Umożliwia przewinięcie terminala do wiersza poleceń dowolnym klawiszem"
+msgstr "Przewija terminal do wiersza poleceń przy użyciu dowolnego klawisza"
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
-msgstr ""
+msgstr "Specjalny znak wymazania"
 
 #: ../Terminal.glade.h:38
 msgid "Escape sequence"
@@ -952,11 +943,11 @@ msgstr "Ogólne"
 
 #: ../Terminal.glade.h:41
 msgid "Goes after initial title"
-msgstr "Wyświetlanie za początkowym tytułem"
+msgstr "Za początkowym tytułem"
 
 #: ../Terminal.glade.h:42
 msgid "Goes before initial title"
-msgstr "Wyświetlanie przed początkowym tytułem"
+msgstr "Przed początkowym tytułem"
 
 #: ../Terminal.glade.h:43
 msgid "Isn't displayed"
@@ -995,79 +986,64 @@ msgid "Palette entry 1"
 msgstr "1. kolor palety"
 
 #: ../Terminal.glade.h:52
-#, fuzzy
 msgid "Palette entry 10"
-msgstr "%d. kolor palety"
+msgstr "10. kolor palety"
 
 #: ../Terminal.glade.h:53
-#, fuzzy
 msgid "Palette entry 11"
-msgstr "%d. kolor palety"
+msgstr "11. kolor palety"
 
 #: ../Terminal.glade.h:54
-#, fuzzy
 msgid "Palette entry 12"
-msgstr "%d. kolor palety"
+msgstr "12. kolor palety"
 
 #: ../Terminal.glade.h:55
-#, fuzzy
 msgid "Palette entry 13"
-msgstr "%d. kolor palety"
+msgstr "13. kolor palety"
 
 #: ../Terminal.glade.h:56
-#, fuzzy
 msgid "Palette entry 14"
-msgstr "%d. kolor palety"
+msgstr "14. kolor palety"
 
 #: ../Terminal.glade.h:57
-#, fuzzy
 msgid "Palette entry 15"
-msgstr "%d. kolor palety"
+msgstr "15. kolor palety"
 
 #: ../Terminal.glade.h:58
-#, fuzzy
 msgid "Palette entry 16"
-msgstr "%d. kolor palety"
+msgstr "16. kolor palety"
 
 #: ../Terminal.glade.h:59
-#, fuzzy
 msgid "Palette entry 2"
-msgstr "%d. kolor palety"
+msgstr "2. kolor palety"
 
 #: ../Terminal.glade.h:60
-#, fuzzy
 msgid "Palette entry 3"
-msgstr "%d. kolor palety"
+msgstr "3. kolor palety"
 
 #: ../Terminal.glade.h:61
-#, fuzzy
 msgid "Palette entry 4"
-msgstr "%d. kolor palety"
+msgstr "4. kolor palety"
 
 #: ../Terminal.glade.h:62
-#, fuzzy
 msgid "Palette entry 5"
-msgstr "%d. kolor palety"
+msgstr "5. kolor palety"
 
 #: ../Terminal.glade.h:63
-#, fuzzy
 msgid "Palette entry 6"
-msgstr "%d. kolor palety"
+msgstr "6. kolor palety"
 
 #: ../Terminal.glade.h:64
-#, fuzzy
 msgid "Palette entry 7"
-msgstr "%d. kolor palety"
+msgstr "7. kolor palety"
 
 #: ../Terminal.glade.h:65
-#, fuzzy
 msgid "Palette entry 8"
-msgstr "%d. kolor palety"
+msgstr "8. kolor palety"
 
 #: ../Terminal.glade.h:66
-#, fuzzy
 msgid "Palette entry 9"
-msgstr "%d. kolor palety"
+msgstr "9. kolor palety"
 
 #: ../Terminal.glade.h:67
 msgid "Replaces initial title"
@@ -1079,11 +1055,11 @@ msgstr "Przywróć _domyślne"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
-msgstr "_Resetowanie po upływie"
+msgstr "_Ukrywanie po upływie"
 
 #: ../Terminal.glade.h:70
 msgid "Scaled"
-msgstr "Przeskalowany"
+msgstr "Przeskalowanie"
 
 #: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
@@ -1141,7 +1117,7 @@ msgstr "_Styl:"
 
 #: ../Terminal.glade.h:82
 msgid "Stretched"
-msgstr "Rozciągnięty"
+msgstr "Rozciągnięcie"
 
 #: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
@@ -1237,7 +1213,7 @@ msgstr "Tł_o:"
 
 #: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
-msgstr "Klawisz _Backspace generuje:"
+msgstr "Działanie klawisza _Backspace:"
 
 #: ../Terminal.glade.h:105
 msgid "_Colors"
@@ -1245,7 +1221,7 @@ msgstr "_Kolory"
 
 #: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
-msgstr "Klawisz _Delete generuje:"
+msgstr "Działanie klawisza _Delete:"
 
 #: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
