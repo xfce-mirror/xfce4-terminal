@@ -77,7 +77,6 @@ enum
 
 static void            terminal_window_dispose                       (GObject                *object);
 static void            terminal_window_finalize                      (GObject                *object);
-static void            terminal_window_realize                       (GtkWidget              *widget);
 static gboolean        terminal_window_delete_event                  (GtkWidget              *widget,
                                                                       GdkEventAny            *event);
 static gboolean        terminal_window_state_event                   (GtkWidget              *widget,
@@ -203,9 +202,6 @@ struct _TerminalWindow
   GtkWidget           *notebook;
 
   TerminalScreen      *active;
-
-  /* whether this window has an rgba colormap */
-  guint                is_composited : 1;
 };
 
 
@@ -270,7 +266,6 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gobject_class->finalize = terminal_window_finalize;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
-  gtkwidget_class->realize = terminal_window_realize;
   gtkwidget_class->window_state_event = terminal_window_state_event;
   gtkwidget_class->delete_event = terminal_window_delete_event;
   gtkwidget_class->style_set = terminal_window_style_set;
@@ -315,8 +310,16 @@ terminal_window_init (TerminalWindow *window)
   gboolean        always_show_tabs;
   gchar          *role;
   GtkRcStyle     *style;
+  GdkScreen      *screen;
+  GdkColormap    *colormap;
 
   window->preferences = terminal_preferences_get ();
+
+  /* try to set the rgba colormap so vte can use real transparency */
+  screen = gtk_window_get_screen (GTK_WINDOW (window));
+  colormap = gdk_screen_get_rgba_colormap (screen);
+  if (colormap != NULL)
+    gtk_widget_set_colormap (GTK_WIDGET (window), colormap);
 
   /* The Terminal size needs correction when the font name or the scrollbar
    * visibility is changed.
@@ -434,34 +437,6 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->ui_manager));
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
-}
-
-
-
-static void
-terminal_window_realize (GtkWidget *widget)
-{
-  TerminalWindow *window = TERMINAL_WINDOW (widget);
-  GdkScreen      *screen;
-  GdkColormap    *colormap;
-
-  /* unset rgba */
-  window->is_composited = FALSE;
-
-  /* try to set the rgba colormap so vte can use real transparency */
-  screen = gtk_widget_get_screen (widget);
-  if (gdk_screen_is_composited (screen))
-    {
-      colormap = gdk_screen_get_rgba_colormap (screen);
-      if (G_LIKELY (colormap != NULL))
-        window->is_composited = TRUE;
-      else
-        colormap = gdk_screen_get_default_colormap (screen);
-
-      gtk_widget_set_colormap (widget, colormap);
-    }
-
-  (*GTK_WIDGET_CLASS (terminal_window_parent_class)->realize) (widget);
 }
 
 
