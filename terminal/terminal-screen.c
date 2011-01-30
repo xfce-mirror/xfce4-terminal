@@ -142,7 +142,7 @@ struct _TerminalScreen
 
   guint                session_id;
 
-  guint                background_signal_id;
+  gulong               background_signal_id;
 
   GPid                 pid;
   gchar               *working_directory;
