@@ -141,19 +141,14 @@ main (int argc, char **argv)
       gtk_set_locale ();
 
       name = g_get_prgname ();
-      g_print (_("%s %s (Xfce %s)\n\n"
-                 "Copyright (c) %s\n"
-                 "        os-cillation e.K. All rights reserved.\n\n"
-                 "Written by Benedikt Meurer <benny@xfce.org>.\n\n"
-                 "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n\n"
-                 "Please report bugs to <%s>.\n"),
-                 name, PACKAGE_VERSION,
-                 xfce_version_string (),
-                 "2003-2011",
-                 GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
-                 gtk_major_version, gtk_minor_version, gtk_micro_version,
-                 PACKAGE_BUGREPORT);
+      g_print ("%s %s (Xfce %s)\n\n", name, PACKAGE_VERSION, xfce_version_string ());
       g_free (name);
+      g_print ("%s\n", "Copyright (c) 2003-2011");
+      g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
+      g_print ("%s\n", _("Written by Benedikt Meurer <benny@xfce.org>"));
+      g_print ("%s\n\n", _("and Nick Schermer <nick@xfce.org>."));
+      g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
+      g_print ("\n");
       return EXIT_SUCCESS;
     }
   else if (G_UNLIKELY (show_help))
