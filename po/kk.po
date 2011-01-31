@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-23 05:01+0000\n"
+"POT-Creation-Date: 2011-01-30 23:01+0000\n"
 "PO-Revision-Date: 2010-11-23 15:41+0600\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -30,15 +30,13 @@ msgstr "Жалпы опциялар"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59
-#: ../terminal/main.c:85
+#: ../terminal/main.c:59 ../terminal/main.c:85
 msgid "display"
 msgstr "көрсету"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61
-#: ../terminal/main.c:76
+#: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
 msgstr "бума"
 
@@ -89,39 +87,29 @@ msgstr "таңбаша"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Төмендегі опциялардың толық анықтамасы үшін %s man парағын оқыңыз."
 
-#: ../terminal/main.c:126
-#: ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119
-#: ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Терминал"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Барлық құқықтары қорғалған.\n"
-"\n"
-"Benedikt Meurer <benny@xfce.org> жасаған.\n"
-"\n"
-"Gtk+-%d.%d.%d нұсқасымен жиналған, қазір Gtk+-%d.%d.%d орындалуда.\n"
-"\n"
-"Ақаулықтар жөнінде хабарласыңыз: <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr "Xfce өндіру тобы. Барлық құқықтары қорғалған."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Жазғандар: Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "және Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Ақаулықтар жөнінде хабарлаңыз: <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Терминал қызметін тіркеу мүмкін емес: %s\n"
@@ -149,8 +137,7 @@ msgstr "D-BUS хабарлама қызметімен байланыс үзіл�
 msgid "Unable to register object %s"
 msgstr "%s объектісін тіркеу мүмкін емес"
 
-#: ../terminal/terminal-dialogs.c:95
-#: ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce терминал эмуляторы"
 
@@ -309,8 +296,7 @@ msgstr "Толық экранға"
 msgid "Set Title"
 msgstr "Атауын орнату"
 
-#: ../terminal/terminal-preferences.c:463
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Тастау"
 
@@ -366,23 +352,22 @@ msgstr "9-шы бетке ауысу"
 msgid "Contents"
 msgstr "Құрамасы"
 
-#: ../terminal/terminal-screen.c:397
-#: ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1665
 msgid "Untitled"
 msgstr "Атаусыз"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Тіркелгіңіздің командалық қоршауын анықтау мүмкін емес."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1374 ../terminal/terminal-screen.c:1403
 msgid "Failed to execute child"
 msgstr "Ұрпақ үрдісін жөнелту қатемен аяқталды"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:1987
 msgid "Close this tab"
 msgstr "Бұл бетті жабу"
 
@@ -407,8 +392,7 @@ msgid "Help"
 msgstr "Көмек"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505
-#: ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Сөндірулі"
 
@@ -486,215 +470,215 @@ msgstr "Қате түс туралы ақпараты алынды:  Қате п
 msgid "Failed to open the URL `%s'"
 msgstr "`%s' URL-ын ашу мүмкін емес"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Файл"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "_Бетті ашу"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Жаңа терминал бетін ашады"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Т_ерминалды ашу"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Жаңа терминал терезесін ашады"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "Бетті бө_ліп жіберу"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Ағыдмағы терминал бетін жаңа терезеде ашады"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "Бетті _жабу"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Ағымдағы терминал бетін жабады"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "Те_резені жабу"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Терминал терезесін жабады"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "Түз_ету"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Көшіру"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Алмасу буферіне көшіру"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "Кірі_стіру"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Алмасу буферінен кірістіру"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "_Ерекшеленгенді кірістіру"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Біріншілік ерекшеленгеннен кірістіру"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "_Панельдер..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Панельдерді баптау"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "Б_аптаулар..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Терминал баптаулар терезесін ашу"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "Тү_рі"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "Тер_минал"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "А_тауын орнату..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Ағымдағы бет үшін атауды орнату"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "_Тастау"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Тастау мен та_зарту"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Тастау мен тазарту"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "Ө_ту"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "А_лдыңғы бет"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Алдыңғы бетке өту"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "_Келесі бет"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Келесі бетке өту"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Көмек"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "Құра_масы"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Көмек ақпарат құрамасын көрсету"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "Ақаулық жөнінде хаба_рлау"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Терминалдағы ақаулық жөнінде хабарлау"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "Осы турал_ы"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Терминал туралы ақпаратты көрсету"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "Ен_гізу тәсілдері"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "_Мәзірді көрсету"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Мәзірді көрсету/жасыру"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "_Панельдерді көрсету"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Панельдерді көрсету/жасыру"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "_Терезе қоршауын көрсету"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Терезе қоршауын көрсету/жасыру"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "Т_олық экранға"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Толық экран режиміне өту/одан шығу"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Ескерту"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Барлық беттерді жабу"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -703,23 +687,23 @@ msgstr ""
 "Бұл терезеде %d ашық бет бар. Терезені жабу\n"
 "кезінде ондағы барлық беттері де жабылады."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Барлық беттерді жабу керек пе?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "Келесіде ме_ні осы туралы сұрамау"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Атауды орнату"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Атауы:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Ағымдағы терминал беті үшін атауды енгізіңіз"
 
@@ -1184,14 +1168,33 @@ msgid "seconds"
 msgstr "секунд"
 
 #~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
 #~ msgstr ""
-#~ "  -h, --help                          Осы ақпаратты шығару және шығу"
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Барлық құқықтары қорғалған.\n"
+#~ "\n"
+#~ "Benedikt Meurer <benny@xfce.org> жасаған.\n"
+#~ "\n"
+#~ "Gtk+-%d.%d.%d нұсқасымен жиналған, қазір Gtk+-%d.%d.%d орындалуда.\n"
+#~ "\n"
+#~ "Ақаулықтар жөнінде хабарласыңыз: <%s>.\n"
 
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -V, --version                       Нұсқа ақпаратын шығару және шығу"
+#~ msgid "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          Осы ақпаратты шығару және шығу"
+
+#~ msgid "  -V, --version                       Print version information and exit"
+#~ msgstr "  -V, --version                       Нұсқа ақпаратын шығару және шығу"
 
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
@@ -1206,51 +1209,40 @@ msgstr "секунд"
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
-#~ msgstr ""
-#~ "  --default-working-directory=DIRNAME Терминалдың жұмыс бумасын орнату"
+#~ msgstr "  --default-working-directory=DIRNAME Терминалдың жұмыс бумасын орнату"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
+#~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
 #~ msgstr ""
-#~ "  --tab                               Бетті соңғы көрсетілген терезеде "
-#~ "ашу;\n"
-#~ "                                      осы опциялардың бірнешеуін "
-#~ "көрсетуге болады"
+#~ "  --tab                               Бетті соңғы көрсетілген терезеде ашу;\n"
+#~ "                                      осы опциялардың бірнешеуін көрсетуге болады"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
+#~ "  --window                            Open a new window containing one tab;\n"
+#~ "                                      more than one of these options can be\n"
 #~ "                                      provided"
 #~ msgstr ""
 #~ "  --window                            Бір беті бар жаңа терезені ашу;\n"
-#~ "                                      осы опциялардың бірнешеуін "
-#~ "көрсетуге болады"
+#~ "                                      осы опциялардың бірнешеуін көрсетуге болады"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
+#~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Командалық жолдың қалған бөлігін\n"
 #~ "                                      терминалда орындау"
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
+#~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
 #~ "  -e, --command=STRING                Осы опцияға терминал ішінде\n"
 #~ "                                      аргументті орындайды"
 
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr ""
-#~ "  --working-directory=DIRNAME         Терминалдың жұмыс бумасын орнату"
+#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=DIRNAME         Терминалдың жұмыс бумасын орнату"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=TITLE                   Терминалдың атауын орнату"
@@ -1258,9 +1250,7 @@ msgstr "секунд"
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold                          Ішіндегі үрдісі біткен кезде бетті "
-#~ "жаппау"
+#~ msgstr "  -H, --hold                          Ішіндегі үрдісі біткен кезде бетті жаппау"
 
 #~ msgid ""
 #~ "  --display=DISPLAY                   X display to use for the last-\n"
@@ -1270,24 +1260,18 @@ msgstr "секунд"
 #~ "                                      қолданылатын X экраны"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+#~ "                                      man page), can be specified once per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
 #~ "  --geometry=GEOMETRY                 X өлшемдері (\"X\"\n"
-#~ "                                      man парағын қараpage), әр терезе "
-#~ "үішн бер рет\n"
+#~ "                                      man парағын қараpage), әр терезе үішн бер рет\n"
 #~ "                                      көрсетуге болады"
 
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
+#~ "  --role=ROLE                         Set the role for the last-specified\n"
+#~ "                                      window; applies to only one window;\n"
+#~ "                                      can be specified once for each window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
 #~ "  --role=ROLE                         Соңғы терезе ролін орнатады\n"
@@ -1299,9 +1283,7 @@ msgstr "секунд"
 #~ msgid ""
 #~ "  --startup-id=STRING                 ID for the startup notification\n"
 #~ "                                      protocol"
-#~ msgstr ""
-#~ "  --startup-id=STRING                 орындалу туралы хабарлау хаттамасы "
-#~ "ID-і"
+#~ msgstr "  --startup-id=STRING                 орындалу туралы хабарлау хаттамасы ID-і"
 
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
@@ -1312,22 +1294,19 @@ msgstr "секунд"
 
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
+#~ "                                      fullscreen mode; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --fullscreen                        Соңғы терезені толық экран\n"
-#~ "                                      режимін апарады; бір ғана терезе "
-#~ "үшін\n"
+#~ "                                      режимін апарады; бір ғана терезе үшін\n"
 #~ "                                      іске асады; әр командалық жолдан\n"
 #~ "                                      жасалған терезе үшін бір рет қана\n"
 #~ "                                      көрсетуге болады"
 
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
+#~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
@@ -1340,8 +1319,7 @@ msgstr "секунд"
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1354,8 +1332,7 @@ msgstr "секунд"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1369,10 +1346,8 @@ msgstr "секунд"
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --show-borders                     Соңғы терезе үшін терезе қоршауын\n"
@@ -1382,13 +1357,10 @@ msgstr "секунд"
 #~ "                                      көрсетуге болады"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
+#~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --hide-borders                      Соңғы терезе үшін терезе қоршауын\n"
@@ -1399,8 +1371,7 @@ msgstr "секунд"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1412,10 +1383,8 @@ msgstr "секунд"
 #~ "                                      көрсетуге болады"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1429,12 +1398,8 @@ msgstr "секунд"
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Терминалды жөнелту мүмкін емес: %s\n"
 
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
-#~ msgstr ""
-#~ "Option \"--sm-client-id\" опциясы сессия id-ін параметр ретінде берілуін "
-#~ "сұрайды"
+#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+#~ msgstr "Option \"--sm-client-id\" опциясы сессия id-ін параметр ретінде берілуін сұрайды"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Атау:</b>"
