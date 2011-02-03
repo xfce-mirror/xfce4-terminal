@@ -2,20 +2,20 @@
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-01 17:01+0000\n"
+"POT-Creation-Date: 2011-02-03 11:01+0000\n"
 "PO-Revision-Date: 2010-12-01 19:20-0000\n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Country: PORTUGAL\n"
 "X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: PORTUGAL\n"
 
 #: ../terminal/main.c:52
 msgid "Usage:"
@@ -31,15 +31,13 @@ msgstr "Opções gerais"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59
-#: ../terminal/main.c:85
+#: ../terminal/main.c:59 ../terminal/main.c:85
 msgid "display"
 msgstr "exibir"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61
-#: ../terminal/main.c:76
+#: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
 msgstr "directório"
 
@@ -90,39 +88,29 @@ msgstr "ícone"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Veja o manual do %s para uma explicação completa sobre as opções indicadas."
 
-#: ../terminal/main.c:126
-#: ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119
-#: ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Todos os direitos reservados.\n"
-"\n"
-"Escrito por Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Compilado com Gtk+-%d.%d.%d, executado com Gtk+-%d.%d.%d.\n"
-"\n"
-"Por favor, relate problemas para <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr "A equipa de desenvolvimento do Xfce. Todos os direitos reservados."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Desenvolvido por Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "e Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Por favor, reporte os erros em <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Incapaz de registar o serviço de terminal: %s\n"
@@ -150,8 +138,7 @@ msgstr "Bus de mensagem D-BUS desligado, a sair...\n"
 msgid "Unable to register object %s"
 msgstr "Incapaz de registar o objecto %s"
 
-#: ../terminal/terminal-dialogs.c:95
-#: ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulador de terminal Xfce"
 
@@ -310,8 +297,7 @@ msgstr "Ecrã completo"
 msgid "Set Title"
 msgstr "Definir título"
 
-#: ../terminal/terminal-preferences.c:463
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Repor"
 
@@ -367,23 +353,22 @@ msgstr "Trocar para o separador 9"
 msgid "Contents"
 msgstr "Conteúdo"
 
-#: ../terminal/terminal-screen.c:397
-#: ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1665
 msgid "Untitled"
 msgstr "Sem título"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Incapaz de determinar a \"shell\" de \"login\""
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1374 ../terminal/terminal-screen.c:1403
 msgid "Failed to execute child"
 msgstr "Falha ao executar dependente"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:1987
 msgid "Close this tab"
 msgstr "Fechar este separador"
 
@@ -408,8 +393,7 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505
-#: ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Inactivo"
 
@@ -487,215 +471,215 @@ msgstr "Recebidos dados de cor inválidos: formato (%d) ou extensão (%d) errado
 msgid "Failed to open the URL `%s'"
 msgstr "Falha ao abrir a URL \"%s\""
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Ficheiro"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "Abrir _separador"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Abrir novo separador de terminal"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Abrir t_erminal"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Abrir nova janela de terminal"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "_Destacar separador"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Abrir nova janela no actual separador de terminal"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "F_echar separador"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Fechar o separador actual do terminal"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "Fe_char janela"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Fechar a janela de terminal"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Copiar para a área de transferência"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "Co_lar"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Colar da área de transferência"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "Colar _selecção"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Colar da selecção primária"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "Barra de _ferramentas..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Personalizar barra de ferramentas"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "Pr_eferências..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Abrir preferências do Terminal"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Ver"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "_Definir título..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Definir título personalizado para o separador actual"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "_Repor"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Repor e _limpar"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Repor e limpar"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Ir"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "Separador a_nterior"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Trocar para o separador anterior"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "Separador segui_nte"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Trocar para o separador seguinte"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Conteúdo"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Mostrar conteúdo de ajuda"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "_Reporte um erro"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Reporte um erro no Terminal"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "_Sobre"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Mostrar informação sobre o Terminal"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "Métodos de _introdução"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "Mostrar barra de _menu"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Mostrar/ocultar barra de menu"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "Mostrar barra de _ferramentas"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Mostrar/ocultar barra de ferramentas"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "Mostrar contornos da jane_la"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Mostrar/ocultar decorações de janela"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Ecrã completo"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Alternar para ecrã completo"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Aviso"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Fechar todos os separadores"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -704,23 +688,23 @@ msgstr ""
 "Esta janela tem %d separadores abertos. Ao fechar\n"
 "esta janela irá fechar também todos os separadores."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Fechar todos os separadores?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "Não perguntar _novamente"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Definir título"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Título:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduza o título para o actual separador de terminal"
 
@@ -1184,3 +1168,25 @@ msgstr "Actualiza_r registos utmp/wtmp ao lançar o comando"
 msgid "seconds"
 msgstr "segundos"
 
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Todos os direitos reservados.\n"
+#~ "\n"
+#~ "Escrito por Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Compilado com Gtk+-%d.%d.%d, executado com Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Por favor, relate problemas para <%s>.\n"
