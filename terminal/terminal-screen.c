@@ -1123,8 +1123,16 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
    * returns a size in pixels */
 #if VTE_CHECK_VERSION (0, 24, 0)
   gtk_widget_style_get (GTK_WIDGET (terminal), "inner-border", &border, NULL);
-  xpad = border->left + border->right;
-  ypad = border->top + border->bottom;
+  if (border != NULL)
+    {
+      xpad = border->left + border->right;
+      ypad = border->top + border->bottom;
+      gtk_border_free (border);
+    }
+  else
+    {
+      xpad = ypad = 0;
+    }
 #else
   vte_terminal_get_padding (terminal, &xpad, &ypad);
 #endif
@@ -1606,8 +1614,16 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
 
 #if VTE_CHECK_VERSION (0, 24, 0)
   gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
-  xpad = border->left + border->right;
-  ypad = border->top + border->bottom;
+  if (border != NULL)
+    {
+      xpad = border->left + border->right;
+      ypad = border->top + border->bottom;
+      gtk_border_free (border);
+    }
+  else
+    {
+      xpad = ypad = 0;
+    }
 #else
   vte_terminal_get_padding (VTE_TERMINAL (screen->terminal), &xpad, &ypad);
 #endif
