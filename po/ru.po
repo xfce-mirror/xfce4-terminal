@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-22 10:01+0000\n"
+"POT-Creation-Date: 2011-02-15 05:01+0000\n"
 "PO-Revision-Date: 2010-03-02 18:14+0300\n"
 "Last-Translator: Dima Smirnov <arch@cnc-parts.info>\n"
 "Language-Team: \n"
@@ -95,33 +95,27 @@ msgstr "Смотрите страницу помощи %s для полного 
 msgid "Terminal"
 msgstr "Терминал"
 
-# c-format
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Авторское право (c) %s\n"
-"        os-cillation e.K. Все права защищены.\n"
-"\n"
-"Автор: Бенедикт Мёйрер <benny@xfce.org>.\n"
-"\n"
-"Собрано с Gtk+-%d.%d.%d, запущено с Gtk+-%d.%d.%d.\n"
-"\n"
-"Сообщайте об ошибках по адресу: <%s>.\n"
+#: ../terminal/main.c:147
+#, fuzzy
+msgid "The Xfce development team. All rights reserved."
+msgstr "Команда разработчиков Xfce. Все права защищены."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+#, fuzzy
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Разработано Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+#, fuzzy
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "и Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Сообщить об ошибке: <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Невозможно запустить службу терминала: %s\n"
@@ -312,7 +306,7 @@ msgstr "Полноэкранный режим"
 msgid "Set Title"
 msgstr "Изменить заголовок"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Сбросить"
 
@@ -368,24 +362,22 @@ msgstr "Переключиться на вкладку 9"
 msgid "Contents"
 msgstr "Содержание"
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:393 ../terminal/terminal-screen.c:623
-#: ../terminal/terminal-screen.c:1592
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Без названия"
 
-#: ../terminal/terminal-screen.c:523
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1334
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Ошибка выполнения дочернего процесса"
 
-#: ../terminal/terminal-screen.c:1914
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
@@ -489,215 +481,215 @@ msgstr "Получены неверные данные о цвете: невер
 msgid "Failed to open the URL `%s'"
 msgstr "Не удалось открыть адрес \"%s\""
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Файл"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "Открыть _вкладку"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Открыть новую вкладку терминала"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Открыть _терминал"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Открыть новое окно терминала"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "_Отделить вкладку"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Открыть новое окно для текущей вкладки"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "_Закрыть вкладку"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Закрыть текущую вкладку"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "Закр_ыть окно"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Закрыть окно терминала"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "_Правка"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Копировать"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Копировать в буфер обмена"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "_Вставить"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Вставить из буфера обмена"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "В_ставить выделенное"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Вставить из выделения"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "Панели _инструментов..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Настроить панели инструментов"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "П_араметры..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Открыть окно настроек Терминала"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Вид"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Терминал"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "_Изменить заголовок..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Установить заголовок текущей вкладки"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "_Сбросить"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Сбросить и _очистить"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Сбросить и очистить"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "П_ереход"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "_Предыдущая вкладка"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Переключиться на предыдущую вкладку"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "_Следующая вкладка"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Переключиться на следующую вкладку"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Справка"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Содержание"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Отобразить содержание справки"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "Сообщить об о_шибке"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Сообщить об ошибке в Терминале"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "_О программе"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Показать информацию о Терминале"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "_Методы ввода"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "Показать _строку меню"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Показать/скрыть строку меню"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "Показать панели _инструментов"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Показать/скрыть панели инструментов"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "Показать _границы окна"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Показать/скрыть границы окна"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Полноэкранный режим"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Включить/выключить полноэкранный режим"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Закрыть все вкладки"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -706,23 +698,23 @@ msgstr ""
 "В этом окне открыто %d вкладок. Если\n"
 "вы закроете окно, будут закрыты все вкладки."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Закрыть все вкладки?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "_Больше не спрашивать"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Заголовок окна|Задать заголовок"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Заголовок:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Введите заголовок для текущей вкладки"
 
@@ -1181,6 +1173,29 @@ msgstr "_Обновлять записи utmp/wtmp при запуске ком�
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "секунд"
+
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Авторское право (c) %s\n"
+#~ "        os-cillation e.K. Все права защищены.\n"
+#~ "\n"
+#~ "Автор: Бенедикт Мёйрер <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Собрано с Gtk+-%d.%d.%d, запущено с Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Сообщайте об ошибках по адресу: <%s>.\n"
 
 #~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          Вывести эту подсказку и выйти"
