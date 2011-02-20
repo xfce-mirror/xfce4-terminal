@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-22 10:00+0000\n"
+"POT-Creation-Date: 2011-02-20 11:01+0000\n"
 "PO-Revision-Date: 2010-05-21 19:52+0200\n"
 "Last-Translator: Enrico Tröger <enrico@xfce.org>\n"
 "Language-Team: German <xfce-i18n-de@xfce.org>\n"
@@ -94,32 +94,25 @@ msgstr "Lesen Sie die »%s man page« für eine vollständige Erklärung des Obi
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Alle Rechte vorbehalten.\n"
-"\n"
-"Entwickelt von Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Erstellt mit Gtk+-%d.%d.%d, läuft mit Gtk+-%d.%d.%d.\n"
-"\n"
-"Bitte melden Sie Probleme unter <%s>.\n"
+#: ../terminal/main.c:147
+#, fuzzy
+msgid "The Xfce development team. All rights reserved."
+msgstr "Das Xfce-Entwicklungsteam. Alle Rechte vorbehalten."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Geschrieben von Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "und Nick Schermer <nick@xfce.org>"
+
+#: ../terminal/main.c:150
+#, c-format, fuzzy
+msgid "Please report bugs to <%s>."
+msgstr "Bitte melden Sie Fehler an <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Fehler beim Registrieren des Terminaldienstes: %s\n"
@@ -326,7 +319,7 @@ msgstr "Vollbild"
 msgid "Set Title"
 msgstr "Titel festlegen"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Zurücksetzen"
 
@@ -382,22 +375,22 @@ msgstr "Zu Reiter 9 wechseln"
 msgid "Contents"
 msgstr "Inhalt"
 
-#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1597
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Unbenannt"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Konnte Login-Shell nicht ermitteln."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Konnte Kindprozess nicht ausführen"
 
-#: ../terminal/terminal-screen.c:1919
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
 msgstr "Reiter schließen"
 
@@ -500,215 +493,215 @@ msgstr "Ungültige Farbdaten erhalten: Falsches Format (%d) oder Länge (%d)\n"
 msgid "Failed to open the URL `%s'"
 msgstr "Die URL »%s« konnte nicht geöffnet werden"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Datei"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "_Reiter öffnen"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Einen neuen Terminalreiter öffnen"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "F_enster öffnen"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Ein neues Terminalfenster öffnen"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "Reiter _abtrennen"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Den aktuellen Terminalreiter in neuem Fenster öffnen"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "Reiter sch_ließen"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Den aktuellen Terminalreiter schließen"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "Fenster _schließen"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Das Terminalfenster schließen"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "_Bearbeiten"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Kopieren"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "In die Zwischenablage kopieren"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "Ei_nfügen"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Aus der Zwischenablage einfügen"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "Textauswahl ein_fügen"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Den ausgewählten Text einfügen"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "_Werzeugleisten..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Werkzeugleisten einrichten"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "_Einstellungen..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Die Terminaleinstellungen bearbeiten"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Ansicht"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "_Titel festlegen..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Einen benutzerdefinierten Titel für den aktuellen Reiter einstellen"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "_Zurücksetzen"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Zurücksetzen und _leeren"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Zurücksetzen und leeren"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Gehe zu"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "_Vorheriger Reiter"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Zum vorherigen Reiter wechseln"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "_Nächster Reiter"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Zum nächsten Reiter wechseln"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Inhalt"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Die Benutzerdokumentation anzeigen"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "_Fehler melden"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Einen Fehler in Terminal melden"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "_Über"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Informationen über Terminal anzeigen"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "_Eingabemethoden"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "_Menüleiste anzeigen"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Die Menüleiste anzeigen oder verbergen"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "_Werkzeugleisten anzeigen"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Die Werkzeugleisten anzeigen oder verbergen"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "_Fensterdekoration anzeigen"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Die Fensterdekoration anzeigen oder verbergen"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Vollbild"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Den Vollbildmodus betreten oder verlassen"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Warnung"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Alle Reiter schließen"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -718,23 +711,23 @@ msgstr ""
 "Sie das Fenster jetzt schließen, werden auch\n"
 "alle Reiter darin geschlossen."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Alle Reiter schließen?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "In Zukunft _nicht mehr nachfragen"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Titel festlegen"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Geben Sie den Titel für den aktuellen Terminalreiter ein"
 
@@ -1196,6 +1189,29 @@ msgstr "utmp/_wtmp-Aufzeichnungen aktualisieren"
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "Sekunden"
+
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Alle Rechte vorbehalten.\n"
+#~ "\n"
+#~ "Entwickelt von Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Erstellt mit Gtk+-%d.%d.%d, läuft mit Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Bitte melden Sie Probleme unter <%s>.\n"
 
 #~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          Diese Hilfe anzeigen"
