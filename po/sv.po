@@ -3,12 +3,12 @@
 # This file is distributed under the same license as Terminal.
 # Jens Hagerman <godhet@gmail.com>, 2006.
 # Daniel Nylander <po@danielnylander.se>, 2008.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2011-02-28 05:01+0000\n"
 "PO-Revision-Date: 2009-12-16 18:17+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -95,32 +95,26 @@ msgstr ""
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
 msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Alla rättigheter reserverade.\n"
-"\n"
-"Skrivet av Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Byggt med Gtk+-%d.%d.%d, kör med Gtk+-%d.%d.%d.\n"
-"\n"
-"Rapportera fel till <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Skrivet av Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "och Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+"Rapportera fel till <%s>.\r\n"
+"Skicka synpunkter på översättningen till <tp-sv@listor.tp-sv.se>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kunde inte registrera terminaltjänsten: %s\n"
@@ -130,16 +124,21 @@ msgstr "Kunde inte registrera terminaltjänsten: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ogiltig geometristräng: \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Användar-id stämmer inte"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+#, fuzzy
+msgid "Display mismatch"
+msgstr "Användar-id stämmer inte"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "D-BUS-meddelandebussen kopplades från, avslutar...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Kunde inte registrera objektet %s"
@@ -158,9 +157,8 @@ msgstr ""
 "tp-sv@listor.tp-sv.se"
 
 #: ../terminal/terminal-dialogs.c:105
-#, fuzzy
 msgid "Visit Terminal website"
-msgstr "Statisk terminaltitel"
+msgstr "Besök Terminals webbplats"
 
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
@@ -169,18 +167,16 @@ msgstr ""
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
 msgstr ""
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
-msgstr ""
+msgstr "Användarhandboken saknas"
 
 #: ../terminal/terminal-dialogs.c:222
 msgid "_Read Online"
-msgstr ""
+msgstr "Läs på _nätet"
 
 #. display an error message to the user
 #: ../terminal/terminal-dialogs.c:302
@@ -189,47 +185,28 @@ msgstr "Misslyckades med att öppna dokumentationsvisaren"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"Flaggan \"--default-display\" kräver att du anger en X-display som parameter"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "Flaggan \"--default-display\" kräver att du anger en X-display som parameter"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"Flaggan \"--default-working-directory\" kräver att du anger "
-"standardarbetskatalogen som parameter"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "Flaggan \"--default-working-directory\" kräver att du anger standardarbetskatalogen som parameter"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"Flaggan \"--execute/-x\" kräver att du anger ett kommando att köra på resten "
-"av kommandoraden"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "Flaggan \"--execute/-x\" kräver att du anger ett kommando att köra på resten av kommandoraden"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"Flaggan \"--command/-e/\" kräver att du anger ett kommando att köra som "
-"parameter"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "Flaggan \"--command/-e/\" kräver att du anger ett kommando att köra som parameter"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"Flaggan \"--working-directory\" kräver att du anger en arbetskatalog som "
-"parameter"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "Flaggan \"--working-directory\" kräver att du anger en arbetskatalog som parameter"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
@@ -238,17 +215,13 @@ msgstr "Flaggan \"--title/-T\" kräver att du anger en titel som parameter"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Flaggan \"--display\" kräver att du anger en X-display som parameter"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
-msgstr ""
-"Flaggan \"--geometry\" kräver att du anger en fönstergeometri som parameter"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgstr "Flaggan \"--geometry\" kräver att du anger en fönstergeometri som parameter"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
@@ -257,19 +230,13 @@ msgstr "Flaggan \"--role\" kräver att du anger en fönsterroll som parameter"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"Flaggan \"--startup-id\" kräver att du anger ett uppstarts-id som parameter"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "Flaggan \"--startup-id\" kräver att du anger ett uppstarts-id som parameter"
 
 #: ../terminal/terminal-options.c:369
 #, fuzzy, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"Flaggan \"--command/-e/\" kräver att du anger ett kommando att köra som "
-"parameter"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "Flaggan \"--command/-e/\" kräver att du anger ett kommando att köra som parameter"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -340,7 +307,7 @@ msgstr "Helskärm"
 msgid "Set Title"
 msgstr "Ange titel"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Återställ"
 
@@ -396,24 +363,22 @@ msgstr "Växla till flik 9"
 msgid "Contents"
 msgstr "Innehåll"
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kunde inte fastställa ditt inloggningsskal."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Misslyckades att köra barnprocess"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
@@ -456,7 +421,7 @@ msgstr "Ändra genväg"
 
 #: ../terminal/terminal-shortcut-editor.c:333
 msgid "Clea_r"
-msgstr ""
+msgstr "Tö_m"
 
 #: ../terminal/terminal-shortcut-editor.c:352
 msgid "Compose shortcut for:"
@@ -492,27 +457,18 @@ msgstr "Öppna länk"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Kunde inte släppa markering av typen text/plain i terminal: Felaktigt format "
-"(%d) eller längd (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Kunde inte släppa markering av typen text/plain i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Kunde inte släppa Mozilla-URL i terminalen: Felaktigt format (%d) eller "
-"längd (%d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Kunde inte släppa Mozilla-URL i terminalen: Felaktigt format (%d) eller längd (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Kunde inte släppa URI-lista i terminalen: Felaktigt format (%d) eller längd "
-"(%d)\n"
+msgstr "Kunde inte släppa URI-lista i terminalen: Felaktigt format (%d) eller längd (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
@@ -525,215 +481,215 @@ msgstr "Tog emot felaktigt färgdata: Felaktigt format (%d) eller längd (%d)\n"
 msgid "Failed to open the URL `%s'"
 msgstr "Misslyckades med att öppna URL:en \"%s\""
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Arkiv"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "Öppna _flik"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Öppna en ny terminalflik"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Öppna T_erminal"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Öppna ett nytt terminalfönster"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "_Frigör flik"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Öppna ett nytt fönster för den aktuella terminalfliken"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "S_täng flik"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Stäng den aktuella terminalfliken"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "_Stäng fönster"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Stäng terminalfönstret"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "R_edigera"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Kopiera till urklipp"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "Klistra _in"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Klistra in från urklipp"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "Klistra in _markering"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Klistra in från primär markering"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "_Verktygsrader..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Anpassa verktygsraderna"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "Inställninga_r..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Öppna inställningsdialogen för Terminal"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Visa"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "A_nge titel..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Ange en anpassad titel för den aktuella fliken"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "_Återställ"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Återställ och _töm"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Återställ och töm"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Gå"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "_Föregående flik"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Växla till föregående flik"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "_Nästa flik"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Växla till nästa flik"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Visa hjälpinnehåll"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "_Rapportera ett fel"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Rapportera ett fel i Terminal"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "_Om"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Visa information om Terminal"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "_Inmatningsmetoder"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "Visa _menyrad"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Visa/dölj menyraden"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "Visa _verktygsraderna"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Visa/dölj verktygsraderna"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "Visa fönster_kanter"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Visa/dölj fönsterdekorationer"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Helskärm"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Växla helskärmsläge"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Varning"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Stäng alla flikar"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -743,23 +699,23 @@ msgstr ""
 "Om du stänger detta fönstret så stängs\n"
 "även alla dess flikar."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Stäng alla flikar?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Ange titel"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Ange titeln för den aktuella terminalfliken"
 
@@ -847,9 +803,8 @@ msgid "Control-H"
 msgstr "Control-H"
 
 #: ../Terminal.glade.h:21
-#, fuzzy
 msgid "Cu_rsor color:"
-msgstr "Markörfärg"
+msgstr "Mar_körfärg:"
 
 #: ../Terminal.glade.h:22
 msgid "Disable all me_nu access keys (such as Alt+f)"
@@ -882,61 +837,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Använd kantutjämning för terminalens typsnitt"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Aktivera det här alternativet om du vill att kantutjämning ska användas för "
-"att rita ut text i terminalfönster. Genom att inaktivera detta alternativ "
-"kan utritningen snabbas upp vilket minskar belastningen på långsamma datorer."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Aktivera det här alternativet om du vill att kantutjämning ska användas för att rita ut text i terminalfönster. Genom att inaktivera detta alternativ kan utritningen snabbas upp vilket minskar belastningen på långsamma datorer."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Aktivera detta för att tillåta program som körs i terminalfönster att "
-"använda fet text."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Aktivera detta för att tillåta program som körs i terminalfönster att använda fet text."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Aktivera detta alternativ för att kunna rulla en enda rad med upp/ned-"
-"piltangenterna tillsammans med Skift-tangenten."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "Aktivera detta alternativ för att kunna rulla en enda rad med upp/ned-piltangenterna tillsammans med Skift-tangenten."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Aktivera detta alternativ för att visa menyraden i nyligen skapade "
-"terminalfönster."
+msgid "Enable this option to show the menubar in newly created terminal windows."
+msgstr "Aktivera detta alternativ för att visa menyraden i nyligen skapade terminalfönster."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Aktivera detta alternativ för att visa verktygsrader i nyligen skapade "
-"terminalfönster."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Aktivera detta alternativ för att visa verktygsrader i nyligen skapade terminalfönster."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Aktivera detta alternativ för att visa fönsterdekorationer runt nyligen "
-"skapade terminalfönster."
+msgid "Enable this option to show window decorations around newly created terminal windows."
+msgstr "Aktivera detta alternativ för att visa fönsterdekorationer runt nyligen skapade terminalfönster."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Låter dig trycka på en tangent på tangentbordet för att rulla nedåt i "
-"terminalfönstret till kommandoprompten."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Låter dig trycka på en tangent på tangentbordet för att rulla nedåt i terminalfönstret till kommandoprompten."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -967,9 +893,8 @@ msgid "Isn't displayed"
 msgstr "Visas inte"
 
 #: ../Terminal.glade.h:44
-#, fuzzy
 msgid "Menubar Access"
-msgstr "<b>Menyradsåtkomst</b>"
+msgstr "Menyradsåtkomst"
 
 #: ../Terminal.glade.h:45
 msgid "None (use solid color)"
@@ -988,9 +913,8 @@ msgid "Open a dialog to specify the color"
 msgstr "Öppna en dialogruta för att välja färg"
 
 #: ../Terminal.glade.h:49
-#, fuzzy
 msgid "Opening New Windows"
-msgstr "<b>Öppning av nya fönster</b>"
+msgstr "Öppning av nya fönster"
 
 #: ../Terminal.glade.h:50
 msgid "Palette"
@@ -1071,16 +995,14 @@ msgid "Rese_t double click options to defaults"
 msgstr "_Återställ kompatibilitetsalternativ till standardvärden"
 
 #: ../Terminal.glade.h:69
-#, fuzzy
 msgid "Reset tab activity _indicator after"
-msgstr "Nollställ flikaktivitetsindikator efter"
+msgstr "Nollställ flikaktivitets_indikator efter"
 
 #: ../Terminal.glade.h:70
 msgid "Scaled"
 msgstr "Skalad"
 
 #: ../Terminal.glade.h:71
-#, fuzzy
 msgid "Scr_ollbar is:"
 msgstr "_Rullningslisten är:"
 
@@ -1089,16 +1011,14 @@ msgid "Scroll on _keystroke"
 msgstr "Rulla vid _tangenttryckning"
 
 #: ../Terminal.glade.h:73
-#, fuzzy
 msgid "Scroll on ou_tput"
-msgstr "Rulla vid utdata"
+msgstr "Rulla vid _utdata"
 
 #: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Rulla en _rad med tangenterna Skift-Upp/-Ned"
 
 #: ../Terminal.glade.h:75
-#, fuzzy
 msgid "Scroll_back:"
 msgstr "Till_bakarullning:"
 
@@ -1107,29 +1027,19 @@ msgid "Scrolling"
 msgstr "Rullning"
 
 #: ../Terminal.glade.h:77
-#, fuzzy
 msgid "Select Background Image File"
 msgstr "Välj bildfil för bakgrund"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Välj det här alternativet för att tvinga Terminal att köra ditt skal som ett "
-"inloggningsskal när du öppnar nya terminalfönster. Se dokumentationen för "
-"ditt skal för detaljer angående skillnaderna mellan att köra det som ett "
-"interaktivt skal och att köra det som ett inloggningsskal."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Välj det här alternativet för att tvinga Terminal att köra ditt skal som ett inloggningsskal när du öppnar nya terminalfönster. Se dokumentationen för ditt skal för detaljer angående skillnaderna mellan att köra det som ett interaktivt skal och att köra det som ett inloggningsskal."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Genvägstangenter"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Anger det antal rader du kan rulla tillbaka med rullningslisten."
 
 #: ../Terminal.glade.h:81
@@ -1163,36 +1073,23 @@ msgid "Text Selection"
 msgstr "Textmarkering"
 
 #: ../Terminal.glade.h:88
-#, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr ""
-"Dessa alternativ kan få vissa program att inte uppträda som de ska. De finns "
-"endast här för att låta dig kunna använda speciella program och "
-"operativsystem som förväntar sig ett annat terminalbeteende."
+"Dessa alternativ kan få vissa program att inte uppträda som de ska.\n"
+"De finns endast här för att låta dig kunna använda speciella program och operativ-\n"
+"system som förväntar sig ett annat terminalbeteende."
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Det här alternativet kontrollerar huruvida terminalen rullar ned automatiskt "
-"när utdata genereras av de kommandon som körs inne i terminalen."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Det här alternativet kontrollerar huruvida terminalen rullar ned automatiskt när utdata genereras av de kommandon som körs inne i terminalen."
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Detta anger värdet för miljövariabeln $TERM, när en ny terminalflik eller "
-"ett nytt terminalfönster öppnas. Standardvärdet bör fungera på de flesta "
-"system. Om du har problem med färgerna i något program, prova värdet xterm-"
-"color. "
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Detta anger värdet för miljövariabeln $TERM, när en ny terminalflik eller ett nytt terminalfönster öppnas. Standardvärdet bör fungera på de flesta system. Om du har problem med färgerna i något program, prova värdet xterm-color. "
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1203,9 +1100,8 @@ msgid "Title"
 msgstr "Titel"
 
 #: ../Terminal.glade.h:96
-#, fuzzy
 msgid "Transpare_ncy:"
-msgstr "Genomskinlig bakgrund"
+msgstr "Genomskin_lighet:"
 
 #: ../Terminal.glade.h:97
 msgid "Transparent background"
@@ -1220,9 +1116,8 @@ msgid "Use a custom text selection background color"
 msgstr "Använd en anpassad bakgrundsfärg för textmarkering"
 
 #: ../Terminal.glade.h:100
-#, fuzzy
 msgid "Use c_ustom color:"
-msgstr "Använd a_npassad färg"
+msgstr "Använd a_npassad färg:"
 
 #: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
@@ -1265,7 +1160,6 @@ msgid "_Initial title:"
 msgstr "_Initial titel:"
 
 #: ../Terminal.glade.h:111
-#, fuzzy
 msgid "_Reset compatibility options to defaults"
 msgstr "_Återställ kompatibilitetsalternativ till standardvärden"
 
@@ -1290,29 +1184,43 @@ msgid "seconds"
 msgstr "sekunder"
 
 #~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
 #~ msgstr ""
-#~ "  -h, --help                          Skriv detta hjälpmeddelandet och "
-#~ "avsluta"
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Alla rättigheter reserverade.\n"
+#~ "\n"
+#~ "Skrivet av Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Byggt med Gtk+-%d.%d.%d, kör med Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Rapportera fel till <%s>.\n"
 
-#, fuzzy
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -v, --version                       Skriv versionsinformationen och "
-#~ "avsluta"
+#~ msgid "  -h, --help                          Print this help message and exit"
+#~ msgstr "  -h, --help                          Skriv detta hjälpmeddelandet och avsluta"
+
+#~ msgid "  -V, --version                       Print version information and exit"
+#~ msgstr "  -v, --version                       Skriv versionsinformationen och avsluta"
 
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
 #~ "                                      session message bus"
 #~ msgstr ""
-#~ "  --disable-server                    Registrera inte mot D-BUS-"
-#~ "sessions-\n"
+#~ "  --disable-server                    Registrera inte mot D-BUS-sessions-\n"
 #~ "                                      meddelandebussen"
 
 #~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr ""
-#~ "  --default-display=DISPLAY          X-display att använda som standard"
+#~ msgstr "  --default-display=DISPLAY          X-display att använda som standard"
 
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
@@ -1322,50 +1230,39 @@ msgstr "sekunder"
 #~ "                                      katalog"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
+#~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
 #~ msgstr ""
-#~ " --tab                                Öppna en ny flik i det senaste "
-#~ "angivna\n"
-#~ "                                      fönstret; fler än en av dessa "
-#~ "flaggor kan\n"
+#~ " --tab                                Öppna en ny flik i det senaste angivna\n"
+#~ "                                      fönstret; fler än en av dessa flaggor kan\n"
 #~ "                                      anges"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
+#~ "  --window                            Open a new window containing one tab;\n"
+#~ "                                      more than one of these options can be\n"
 #~ "                                      provided"
 #~ msgstr ""
-#~ " --window                             Öppna ett nytt fönster som "
-#~ "innehåller\n"
-#~ "                                      en flik; fler än en av dessa "
-#~ "flaggor\n"
+#~ " --window                             Öppna ett nytt fönster som innehåller\n"
+#~ "                                      en flik; fler än en av dessa flaggor\n"
 #~ "                                      kan anges"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
+#~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Kör resten av kommandoraden inuti\n"
 #~ "                                      terminalen."
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
+#~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
 #~ "  -e, --command=STRÄNG                Kör argumentet till denna flagga\n"
 #~ "                                      inuti terminalen."
 
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr ""
-#~ "  --working-directory=KATNAMN         Ange terminalens arbetskatalog"
+#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgstr "  --working-directory=KATNAMN         Ange terminalens arbetskatalog"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=TITEL                   Ange terminalens titel"
@@ -1374,8 +1271,7 @@ msgstr "sekunder"
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
-#~ "  -H, --hold                          Stäng inte fliken när "
-#~ "barnkommandot\n"
+#~ "  -H, --hold                          Stäng inte fliken när barnkommandot\n"
 #~ "                                      avslutas"
 
 #~ msgid ""
@@ -1386,33 +1282,23 @@ msgstr "sekunder"
 #~ "                                      senaste angivna fönstret"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+#~ "                                      man page), can be specified once per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
-#~ "  --geometry=GEOMETRI                 X-geometriinställning (se "
-#~ "manualsidan\n"
-#~ "                                      för \"X\"), kan anges en gång per "
-#~ "fönster\n"
+#~ "  --geometry=GEOMETRI                 X-geometriinställning (se manualsidan\n"
+#~ "                                      för \"X\"), kan anges en gång per fönster\n"
 #~ "                                      som ska öppnas"
 
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
+#~ "  --role=ROLE                         Set the role for the last-specified\n"
+#~ "                                      window; applies to only one window;\n"
+#~ "                                      can be specified once for each window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
-#~ "  --role=ROLL                         Ange rollen för det senaste "
-#~ "angivna\n"
-#~ "                                      fönstret; gäller endast för ett "
-#~ "fönster; kan\n"
-#~ "                                      anges en gång per fönster som du "
-#~ "skapar\n"
+#~ "  --role=ROLL                         Ange rollen för det senaste angivna\n"
+#~ "                                      fönstret; gäller endast för ett fönster; kan\n"
+#~ "                                      anges en gång per fönster som du skapar\n"
 #~ "                                      från kommandoraden"
 
 #~ msgid ""
@@ -1422,7 +1308,6 @@ msgstr "sekunder"
 #~ " --startup-id=STRÄNG                  ID för uppstartsnotifierings-\n"
 #~ "                                      protokollet"
 
-#, fuzzy
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
@@ -1430,150 +1315,106 @@ msgstr "sekunder"
 #~ "  -e, --command=STRÄNG                Kör argumentet till denna flagga\n"
 #~ "                                      inuti terminalen."
 
-#, fuzzy
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
+#~ "                                      fullscreen mode; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --fullscreen                        Ställer in senaste angivna fönstret "
-#~ "till att\n"
-#~ "                                      köras i helskärmsläge; gäller "
-#~ "endast för\n"
-#~ "                                      ett fönster; kan anges en gång för "
-#~ "varje\n"
-#~ "                                      fönster som du skapar från "
-#~ "kommandoraden."
+#~ "  --fullscreen                        Ställer in senaste angivna fönstret till att\n"
+#~ "                                      köras i helskärmsläge; gäller endast för\n"
+#~ "                                      ett fönster; kan anges en gång för varje\n"
+#~ "                                      fönster som du skapar från kommandoraden."
 
-#, fuzzy
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
+#~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
 #~ msgstr ""
-#~ "  --role=ROLL                         Ange rollen för det senaste "
-#~ "angivna\n"
-#~ "                                      fönstret; gäller endast för ett "
-#~ "fönster; kan\n"
-#~ "                                      anges en gång per fönster som du "
-#~ "skapar\n"
+#~ "  --role=ROLL                         Ange rollen för det senaste angivna\n"
+#~ "                                      fönstret; gäller endast för ett fönster; kan\n"
+#~ "                                      anges en gång per fönster som du skapar\n"
 #~ "                                      från kommandoraden"
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --show-menubar                      Aktivera menyraden för det senaste\n"
-#~ "                                      fönstret; gäller endast för ett "
-#~ "fönster;\n"
-#~ "                                      kan anges en gång för varje fönster "
-#~ "som du\n"
+#~ "                                      fönstret; gäller endast för ett fönster;\n"
+#~ "                                      kan anges en gång för varje fönster som du\n"
 #~ "                                      skapar från kommandoraden"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --hide-menubar                      Inaktivera menyraden för det "
-#~ "senaste\n"
-#~ "                                      angivna fönstret; gäller endast för "
-#~ "ett fönster;\n"
-#~ "                                      kan anges en gång för varje fönster "
-#~ "som du\n"
+#~ "  --hide-menubar                      Inaktivera menyraden för det senaste\n"
+#~ "                                      angivna fönstret; gäller endast för ett fönster;\n"
+#~ "                                      kan anges en gång för varje fönster som du\n"
 #~ "                                      skapar från kommandoraden"
 
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
-#~ "  --show-borders                      Aktivera fönsterdekorationerna för "
-#~ "det\n"
-#~ "                                      senaste angivna fönstret; gäller "
-#~ "endast för ett\n"
-#~ "                                      fönster; kan anges en gång för "
-#~ "varje\n"
-#~ "                                      fönster som du skapar från "
-#~ "kommandoraden"
+#~ "  --show-borders                      Aktivera fönsterdekorationerna för det\n"
+#~ "                                      senaste angivna fönstret; gäller endast för ett\n"
+#~ "                                      fönster; kan anges en gång för varje\n"
+#~ "                                      fönster som du skapar från kommandoraden"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
+#~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
-#~ "  --hide-borders                      Inaktivera fönsterdekorationerna "
-#~ "för det\n"
-#~ "                                      senaste angivna fönstret; gäller "
-#~ "endast för ett\n"
-#~ "                                      fönster; kan anges en gång för "
-#~ "varje\n"
-#~ "                                      fönster som du skapar från "
-#~ "kommandoraden"
+#~ "  --hide-borders                      Inaktivera fönsterdekorationerna för det\n"
+#~ "                                      senaste angivna fönstret; gäller endast för ett\n"
+#~ "                                      fönster; kan anges en gång för varje\n"
+#~ "                                      fönster som du skapar från kommandoraden"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --show-toolbars                     Aktivera verktygsraderna för det\n"
-#~ "                                      senaste angivna fönstret; gäller "
-#~ "endast för ett\n"
-#~ "                                      fönster; kan anges en gång för "
-#~ "varje\n"
-#~ "                                      fönster som du skapar från "
-#~ "kommandoraden"
+#~ "                                      senaste angivna fönstret; gäller endast för ett\n"
+#~ "                                      fönster; kan anges en gång för varje\n"
+#~ "                                      fönster som du skapar från kommandoraden"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --hide-toolbars                     Inaktivera verktygsraderna för det\n"
-#~ "                                      senaste angivna fönstret; gäller "
-#~ "endast för ett\n"
-#~ "                                      fönster; kan anges en gång för "
-#~ "varje\n"
-#~ "                                      fönster som du skapar från "
-#~ "kommandoraden"
+#~ "                                      senaste angivna fönstret; gäller endast för ett\n"
+#~ "                                      fönster; kan anges en gång för varje\n"
+#~ "                                      fönster som du skapar från kommandoraden"
 
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Kunde inte starta terminal: %s\n"
 
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
-#~ msgstr ""
-#~ "Flaggan \"--sm-client-id\" kräver att du anger ett sessionsid som "
-#~ "parameter"
+#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+#~ msgstr "Flaggan \"--sm-client-id\" kräver att du anger ett sessionsid som parameter"
 
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titel:</b>"
@@ -1584,8 +1425,7 @@ msgstr "sekunder"
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Titel</b>"
 
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgid "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "Kommandot som körs i terminalen kan dynamiskt ange en ny titel."
 
 #~ msgid "Sc_roll on output"
@@ -1646,11 +1486,8 @@ msgstr "sekunder"
 #~ "e-postklienten öppnas när du högerklickar på en\n"
 #~ "e-postadress och väljer Skriv e-post i menyn."
 
-#~ msgid ""
-#~ "Click here to change the selected application or to disable this feature."
-#~ msgstr ""
-#~ "Klicka här för att ändra förvalt program eller för att avaktivera "
-#~ "funktionen."
+#~ msgid "Click here to change the selected application or to disable this feature."
+#~ msgstr "Klicka här för att ändra förvalt program eller för att avaktivera funktionen."
 
 #~ msgid "Select application"
 #~ msgstr "Välj program"
@@ -1724,11 +1561,9 @@ msgstr "sekunder"
 #~ msgid "Novell Evolution"
 #~ msgstr "Novell Evolution"
 
-#, fuzzy
 #~ msgid "Default Web Browser (Xfce)"
 #~ msgstr "Galeon Webbläsare"
 
-#, fuzzy
 #~ msgid "Default Mail Reader (Xfce)"
 #~ msgstr "Välj en fördefinierad e-postklient"
 
