@@ -112,7 +112,7 @@ doc-build.stamp: $(srcdir)/$(DOCUMENT) $(srcdir)/$(MANPAGE) $(srcdir)/$(HTML_STY
 		rm -f xgen-doc xgen-man; \
 		echo; \
 	done; \
-	rm -f xgen-xml $(srcdir)/Terminal-options.xml; \
+	rm -f xgen-* $(srcdir)/Terminal-options.xml; \
 	touch doc-build.stamp
 
 dist-check-doc: all
