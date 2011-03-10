@@ -3,12 +3,12 @@
 # This file is distributed under the same license as the Terminal package.
 # Stavros Giannouris <stavrosg@serverhive.com>, 2005-2006, 2009
 # Stathis Kamperis <ekamperi@auth.gr>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal git version\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-07 05:01+0000\n"
+"POT-Creation-Date: 2011-03-10 11:01+0000\n"
 "PO-Revision-Date: 2011-01-07 19:06+0200\n"
 "Last-Translator: Spiros Georgaras <sng@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -34,15 +34,13 @@ msgstr "Γενικές επιλογές"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59
-#: ../terminal/main.c:85
+#: ../terminal/main.c:59 ../terminal/main.c:85
 msgid "display"
 msgstr "προβολή"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61
-#: ../terminal/main.c:76
+#: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
 msgstr "κατάλογος"
 
@@ -93,39 +91,30 @@ msgstr "πλακίδιο"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Δείτε την %s σελίδα του manual για λεπτομερή εξήγηση όλων των επιλογών παραπάνω."
 
-#: ../terminal/main.c:126
-#: ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119
-#: ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Τερματικό"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Γράφτηκε από τον Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Χτίστηκε με το Gtk+-%d.%d.%d, τρέχει με το Gtk+-%d.%d.%d.\n"
-"\n"
-"Παρακαλώ αναφέρετε σφάλματα στο <%s>.\n"
+#: ../terminal/main.c:147
+#, fuzzy
+msgid "The Xfce development team. All rights reserved."
+msgstr "Η ομάδα ανάπτυξης του Xfce. Όλα τα δικαιώματα διατηρούνται."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Γράφτηκε από τον Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "και τον Nick Schermer <nick@xfce.org> ."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Αναφέρετε τα προβλήματα στο <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσίας τερματικού: %s\n"
@@ -153,8 +142,7 @@ msgstr "Ο δίαυλος μηνυμάτων D-BUS αποσυνδέθηκε, έ�
 msgid "Unable to register object %s"
 msgstr "Δεν ήταν δυνατή η εγγραφή του αντικειμένου %s"
 
-#: ../terminal/terminal-dialogs.c:95
-#: ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Προσομοίωση τερματικού Xfce"
 
@@ -313,8 +301,7 @@ msgstr "Πλήρης οθόνη"
 msgid "Set Title"
 msgstr "Καθορισμός τίτλου"
 
-#: ../terminal/terminal-preferences.c:463
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Αρχικοποίηση"
 
@@ -370,23 +357,22 @@ msgstr "Μετάβαση στην Καρτέλα 9"
 msgid "Contents"
 msgstr "Περιεχόμενα"
 
-#: ../terminal/terminal-screen.c:397
-#: ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου σας."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
@@ -411,8 +397,7 @@ msgid "Help"
 msgstr "Βοήθεια"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505
-#: ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Απενεργοποιημένο"
 
@@ -490,215 +475,215 @@ msgstr "Λήφθηκαν μη έγκυρα χρώματα: Εσφαλμένη μ
 msgid "Failed to open the URL `%s'"
 msgstr "Το άνοιγμα του URL \"%s\" απέτυχε."
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Αρχείο"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "Άνοιγμα _καρτέλας"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Άνοιγμα νέας καρτέλας τερματικού"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Άνοιγμα _τερματικού"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Άνοιγμα ενός νέου παραθύρου τερματικού"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "Από_σπαση καρτέλας"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Ανοίγει νέο παράθυρο με την τρέχουσα καρτέλα"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "Κ_λείσιμο καρτέλας"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Κλείνει την τρέχουσα καρτέλα"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "_Κλείσιμο παραθύρου"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Κλείσιμο παραθύρου τερματικού"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "Α_ντιγραφή"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Αντιγραφή στο πρόχειρο"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "_Επικόλληση"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Επικόλληση από το πρόχειρο"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "Επικόλληση _επιλογής"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Επικόλληση από την κύρια επιλογή"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "_Εργαλειοθήκες..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Προσαρμογή εργαλειοθηκών"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "_Προτιμήσεις..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Άνοιγμα του διαλόγου προτιμήσεων του τερματικού"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Προβολή"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Τερματικό"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "_Ορισμός τίτλου..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Εισάγετε τον τίτλο για την τρέχουσα καρτέλα"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "Επανα_φορά"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Επαναφορά και Καθαρι_σμός"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Εκκαθάριση και επαναφορά"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Μετάβαση"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "_Προηγούμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Μετάβαση στην προηγούμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "Επόμε_νη καρτέλα"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Μετάβαση στην επόμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Περιεχόμενα"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Προβολή περιεχομένων βοήθειας"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "Αποστολή α_ναφοράς σφάλματος"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Αναφορά σφαλμάτων στο τερματικό"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "_Περί"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Εμφάνιση πληροφοριών σχετικά με το Terminal"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "Μέθοδοι ε_ισαγωγής"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "Εμφάνιση _μπάρας μενού"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Εμφάνιση/απόκρυψη μπάρας μενού"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "Εμφάνιση _εργαλειοθηκών"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Εμφάνιση/Απόκρυψη εργαλειοθηκών"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "Εμφάνιση Πε_ριγραμμάτων παραθύρου"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Εμφάνιση/απόκρυψη των περιγραμμάτων παραθύρου"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Πλήρης Οθόνη"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Εναλλαγή λειτουργίας πλήρους οθόνης"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Κλείσιμο όλων των καρτελών"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -707,23 +692,23 @@ msgstr ""
 "Αυτό το παράθυρο έχει %d ανοιχτές καρτέλες\n"
 "Εάν το κλείσετε, θα κλείσουν όλες οι καρτέλες."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Κλείσιμο όλων των καρτελών;"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "Να _μην ξαναγίνει η ερώτηση"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Ορισμός τίτλου"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Τίτλος:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Εισάγετε τον τίτλο για την τρέχουσα καρτέλα"
 
@@ -1081,11 +1066,7 @@ msgid ""
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
-msgstr ""
-"Αυτές οι επιλογές μπορεί να προκαλέσουν λανθασμένη συμπεριφορά\n"
-"σε μερικές εφαρμογές. Υπάρχουν εδώ μόνο για να σας επιτρέψουν να\n"
-"εργαστείτε με συγκεκριμένες εφαρμογές και λειτουργικά συστήματα\n"
-"που αναμένουν διαφορετική συμπεριφορά τερματικού."
+msgstr "Αυτές οι επιλογές μπορεί να προκαλέσουν λανθασμένη συμπεριφορά σε μερικές εφαρμογές. Υπάρχουν εδώ μόνο για να σας επιτρέψουν να εργαστείτε με συγκεκριμένες εφαρμογές και λειτουργικά συστήματα που αναμένουν διαφορετική συμπεριφορά τερματικού."
 
 #: ../Terminal.glade.h:92
 msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
@@ -1187,3 +1168,25 @@ msgstr "Εν_ημέρωση των εγγραφών utmp/wtmp όταν εκτε�
 msgid "seconds"
 msgstr "δευτερόλεπτα"
 
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Γράφτηκε από τον Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Χτίστηκε με το Gtk+-%d.%d.%d, τρέχει με το Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Παρακαλώ αναφέρετε σφάλματα στο <%s>.\n"
