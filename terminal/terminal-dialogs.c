@@ -284,10 +284,14 @@ terminal_dialogs_show_help (GtkWindow   *parent,
 
   /* build the full uri, fallback to online docs if nothing was found */
   if (G_LIKELY (exists))
-    uri = g_strconcat ("file://", filename, "#", offset, NULL);
+    {
+      uri = g_strconcat ("file://", filename, "#", offset, NULL);
+    }
   else if (terminal_dialogs_show_help_ask_online (parent))
-    uri = g_strconcat ("http://foo-projects.org/~nick/docs/terminal/?lang=",
-                       locale, "&page=", page, "&offset=", offset, NULL);
+    {
+      uri = g_strconcat ("http://docs.xfce.org/help.php?package=terminal&lang=",
+                         locale, "&page=", page, "&anchor=", offset, NULL);
+    }
 
   g_free (filename);
   g_free (locale);
