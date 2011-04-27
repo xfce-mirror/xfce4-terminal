@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-18 05:01+0000\n"
+"POT-Creation-Date: 2011-04-27 16:01+0000\n"
 "PO-Revision-Date: 2010-01-29 12:50+0100\n"
 "Last-Translator: Piarres Beobide <pi+debian@beobide.net>\n"
 "Language-Team: Basque <debian-l10n-basque@lists.debian.org>\n"
@@ -96,32 +96,24 @@ msgstr "Ikusi %s manual orrialdea beheko aukerei buruzko argibide gehiagorentzat
 msgid "Terminal"
 msgstr "Terminala"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Benedikt Meurer-ek <benny@xfce.org> idatzia.\n"
-"\n"
-"Gtk+-%d.%d.%d-rekin eraikia, Gtk+-%d.%d.%d-rekin abiarazia.\n"
-"\n"
-"Mesedez arazoen berri <%s>-en eman.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr "Xfce garapen taldea. Eskubide guztiak erreserbaturik."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "eta Nick Schermer <nick@xfce.org> -ek idatzia."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Programa-erroreen berri <%s>-en eman, mesedez."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ezin da terminal zerbitzua erregistratu: %s\n"
@@ -180,7 +172,7 @@ msgid "_Read Online"
 msgstr "I_rakurri sarean"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
+#: ../terminal/terminal-dialogs.c:306
 msgid "Failed to open the documentation browser"
 msgstr "Dokumentazio nabigatzailea irekitzerakoan huts egin du"
 
@@ -308,7 +300,7 @@ msgstr "Pantaila-osoa"
 msgid "Set Title"
 msgstr "Ezarri titulua"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Berrezarri"
 
@@ -364,22 +356,22 @@ msgstr "Aldatu 9. fitxara"
 msgid "Contents"
 msgstr "Edukia"
 
-#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Izengabea"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ezin da zure saio shell-a atzeman."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Huts egin du semea abiaraztean"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
 msgstr "Itxi fitxa hau"
 
@@ -482,215 +474,215 @@ msgstr "Kolore datu baliogabea jaso da. Okerreko formatua (%d) edo luzera (%d)\n
 msgid "Failed to open the URL `%s'"
 msgstr "Huts `%s' URLa irekitzean"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Fitxategia"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "Ireki Fi_txa"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Terminal fitxa berri bat ireki"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Ireki t_erminala"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Terminal leiho berri bat ireki"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "_Desuztartu fitxa"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Uneko Terminal fitxarentzat leiho berri bat ireki"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "I_txi fitxa"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Dauden terminal fitxa guztiak itxi"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "_Itxi leihoa"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Itxi terminal leihoa"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "_Editatu"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Kopiatu"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Kopiatu arbelean"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "_Itsatsi"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Arbeletik itsatsi"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "_Hautapena Itsatsi"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Oinarrizko hautapenetik itsatsi"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "_Tresna-barrak..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Pertsonalizatu tresna-barrak"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "Hob_espenak..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Ireki terminal hobespen leihoa"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Ikusi"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Terminala"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "_Ezarri titulua..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Ezarri titulu pertsonalizatua fitxa honentzat"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "Berre_zarri"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Berrezarri eta ga_rbitu"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Berrezarri eta garbitu"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Joan"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "_Aurreko fitxa"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Aldatu aurreko fitxara"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "_Hurrengo fitxa"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Aldatu hurrengo fitxara"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Edukia"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Laguntza edukiak bistarazi"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "Programa-errore baten be_rri eman"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Terminalaren programa-errore baten berri eman"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "Honi _buruz"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Terminalari buruzko informazioa bistarazi"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "_Sarrera-metodoak"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "Ikusi _menu-barra"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Bistarazi/gorde menu-barra"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "Tresna-barrak bistarazi"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Bistarazi/gorde tresna-barrak"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "Ikusi leiho ertzak"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Leiho dekorazioa bistarazi/ezkutatu"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Pantaila osoa"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Txandakatu pantaila oso modua"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Kontuz!"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Fitxa guztiak itxi"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -699,23 +691,23 @@ msgstr ""
 "Leihoa %d fitxa ditu irekirik. Leihoa ixtean\n"
 "fitxa guztiak itxiko dira."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Fitxa guztiak Itxi?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "Ez galdetu _niri berriz"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1541
 msgid "Window Title|Set Title"
 msgstr "Ezarri titulua"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1554
 msgid "Title:"
 msgstr "Titulua:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1566
 msgid "Enter the title for the current terminal tab"
 msgstr "Idatzi uneko terminal fitxaren titulua"
 
@@ -1178,6 +1170,29 @@ msgstr "_Utmp/wtmp erregistroa eguneratu komando bat abiaraztean"
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "segundo"
+
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Benedikt Meurer-ek <benny@xfce.org> idatzia.\n"
+#~ "\n"
+#~ "Gtk+-%d.%d.%d-rekin eraikia, Gtk+-%d.%d.%d-rekin abiarazia.\n"
+#~ "\n"
+#~ "Mesedez arazoen berri <%s>-en eman.\n"
 
 #~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          Laguntza mezu hau bistarazi eta irten"
