@@ -22,7 +22,7 @@ install-data-local:
 			done; \
 			if test x"$$lang" != x"C" -a ! -d $(srcdir)/images/$$lang; then \
 				echo "--- Creating symlink to C images for $$lang"; \
-				ln -sf $(docdir)/C/images $$dest/images; \
+				ln -sf ../C/images $$dest/images; \
 			fi \
 		fi; \
 		file=$(srcdir)/man/$$lang/$(PACKAGE_NAME).1; \
