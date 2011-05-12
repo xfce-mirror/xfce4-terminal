@@ -748,6 +748,7 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
 
       /* create action */
       radio_action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
+      gtk_action_set_sensitive (GTK_ACTION (radio_action), npages > 1);
       exo_binding_new (G_OBJECT (page), "title", G_OBJECT (radio_action), "label");
       gtk_radio_action_set_group (radio_action, group);
       group = gtk_radio_action_get_group (radio_action);
