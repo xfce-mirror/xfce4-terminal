@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-05 04:00+0000\n"
+"POT-Creation-Date: 2011-05-23 16:01+0000\n"
 "PO-Revision-Date: 2009-08-15 15:16-0800\n"
-"Last-Translator: Auke Kok <auke-jan.h.kok@intel.com>\n"
+"Last-Translator: Pjotr\n"
 "Language-Team: os-cillation <info@os-cillation.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,7 +27,7 @@ msgstr "OPTIE"
 
 #: ../terminal/main.c:57
 msgid "General Options"
-msgstr "Algemene  instellingen"
+msgstr "Algemene Opties"
 
 #. parameter of --default-display
 #. parameter of --display
@@ -52,7 +52,7 @@ msgstr "Tabbladopties"
 #. parameter of --command
 #: ../terminal/main.c:72
 msgid "command"
-msgstr "commando"
+msgstr "opdracht"
 
 #. parameter of --title
 #: ../terminal/main.c:74
@@ -76,70 +76,64 @@ msgstr "rol"
 #. parameter of --startup-id
 #: ../terminal/main.c:91
 msgid "string"
-msgstr "string"
+msgstr "tekstsnoer"
 
 #. parameter of --icon
 #: ../terminal/main.c:93
 msgid "icon"
-msgstr "icoon"
+msgstr "pictogram"
 
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr "Bekijk de %s man page voor de volledige uitleg van de opties hierboven."
+msgstr ""
+"Bekijk de %s man-pagina voor volledige uitleg van de bovenstaande opties."
 
 #: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
 #: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Alle rechten voorbehouden.\n"
-"\n"
-"Geschreven door Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Gebouwd met Gtk+-%d.%d.%d, draait met Gtk+-%d.%d.%d.\n"
-"\n"
-"Rapporteer fouten aan <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Geschreven door Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "en Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Gelieve fouten te melden aan <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
-msgstr "Kan terminal service niet registreren: %s\n"
+msgstr "Kan terminaldienst niet registreren: %s\n"
 
 #: ../terminal/terminal-app.c:516
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Ongeldige geometrie \"%s\"\n"
+msgstr "Ongeldig geometrie-tekstsnoer \"%s\"\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
-msgstr "Ongeldige gebruikers-id"
+msgstr "Gebruikers-id komt niet overeen"
 
 #: ../terminal/terminal-dbus.c:119
 msgid "Display mismatch"
-msgstr "Ongeldig display"
+msgstr "Scherm komt niet overeen"
 
 #: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "Verbinding met D-BUS message bus is verbroken, bezig met afsluiten...\n"
+msgstr ""
+"Verbinding met D-BUS message bus is verbroken, bezig met afsluiten...\n"
 
 #: ../terminal/terminal-dbus.c:207
 #, c-format
@@ -152,89 +146,122 @@ msgstr "Xfce Terminalprogramma"
 
 #: ../terminal/terminal-dialogs.c:102
 msgid "translator-credits"
-msgstr "Stephan Arts <stephan@xfce.org>Jasper Huijsmans <jasper@xfce.org>"
+msgstr "Stephan Arts <stephan@xfce.org>Jasper Huijsmans <jasper@xfce.org>Pjotr"
 
 #: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
-msgstr "Bezoek de Terminal website"
+msgstr "Bezoek de Terminal-website"
 
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
 msgid "The %s user manual is not installed on your computer"
-msgstr "De %s gebruikershandleiding is niet geïnstalleerd op deze computer"
+msgstr "De %s gebruikershandleiding is niet geïnstalleerd op uw computer"
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid "You can read the user manual online. This manual may however not exactly match your %s version."
-msgstr "Je kan de handleiding online lezen. Deze handleiding zou wat kunnen afwijken van deze %s versie."
+msgid ""
+"You can read the user manual online. This manual may however not exactly "
+"match your %s version."
+msgstr ""
+"U kunt de gebruikershandleiding lezen op het internet. Deze handleiding "
+"zou wat kunnen afwijken van deze %s versie."
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
-msgstr "Gebruikershandleiding niet gevonden"
+msgstr "Gebruikershandleiding ontbreekt"
 
 #: ../terminal/terminal-dialogs.c:222
 msgid "_Read Online"
-msgstr "_Lees Online"
+msgstr "_Lees op het internet"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
+#: ../terminal/terminal-dialogs.c:306
 msgid "Failed to open the documentation browser"
-msgstr "De documentatie browser kan niet worden gestart"
+msgstr "De documentatieverkenner kan niet worden gestart"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
-msgstr "De optie \"--default-display\" vereist een X display als argument"
+msgid ""
+"Option \"--default-display\" requires specifying the default X display as "
+"its parameter"
+msgstr "De optie \"--default-display\" vereist dat het standaard-X-scherm "
+"als zijn parameter wordt gespecificeerd"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
-msgstr "De option \"--default-working-directory\" vereist een directory als argument"
+msgid ""
+"Option \"--default-working-directory\" requires specifying the default "
+"working directory as its parameter"
+msgstr ""
+"De option \"--default-working-directory\" vereist dat het standaard-werkmap "
+"als zijn parameter wordt gespecificeerd"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
-msgstr "De optie \"--execute/-x\" vereist een commandoregel als argument"
+msgid ""
+"Option \"--execute/-x\" requires specifying the command to run on the rest "
+"of the command line"
+msgstr "De optie \"--execute/-x\" vereist dat u de opdracht specificeert "
+"die op de rest van de opdrachtregel moet draaien"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
-msgstr "De optie \"--command/-e\" vereist een commando als argument"
+msgid ""
+"Option \"--command/-e\" requires specifying the command to run as its "
+"parameter"
+msgstr "De optie \"--command/-e\" vereist dat u de opdracht specificeert "
+"die als zijn parameter moet draaien"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
-msgstr "De option \"--working-directory\" vereist de directory als argument"
+msgid ""
+"Option \"--working-directory\" requires specifying the working directory as "
+"its parameter"
+msgstr "De option \"--working-directory\" vereist dat u de werkmap "
+"specificeert als zijn parameter"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr "De optie \"--title/-T\" vereist de titel als argument"
+msgstr "De optie \"--title/-T\" vereist dat u de titel specificeert als zijn parameter"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "De optie \"--display\" vereist een X display als argument"
+msgid ""
+"Option \"--display\" requires specifying the X display as its parameters"
+msgstr ""
+"De optie \"--display\" vereist dat u het X-scherm specificeert als zijn parameter"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
-msgstr "De optie \"--geometry\" vereist de venstergeomety als argument"
+msgid ""
+"Option \"--geometry\" requires specifying the window geometry as its "
+"parameter"
+msgstr ""
+"De optie \"--geometry\" vereist dat u de venstergeometrie specificeert "
+"als zijn parameter"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr "De optie \"--role\" vereist een venster-rol als argument"
+msgstr "De optie \"--role\" vereist dat u de rol van het venster specificeert "
+"als zijn parameter"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr "De optie \"--startup-id\" vereist een id als argument"
+msgid ""
+"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgstr "De optie \"--startup-id\" vereist dat u het opstart-ID specificeert "
+"als zijn parameter"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
-msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
-msgstr "De optie \"--icon/-I\" vereist een pictogramnaam of bestandsnaam als argument"
+msgid ""
+"Option \"--icon/-I\" requires specifying an icon name or filename as its "
+"parameter"
+msgstr ""
+"De optie \"--icon/-I\" vereist dat u een pictogramnaam of bestandsnaam "
+"specificeert als zijn parameter"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -247,27 +274,27 @@ msgstr "Alle Bestanden"
 
 #: ../terminal/terminal-preferences-dialog.c:233
 msgid "Image Files"
-msgstr "_Afbeeldingsbestanden"
+msgstr "Afbeeldingbestanden"
 
 #: ../terminal/terminal-preferences.c:309
 msgid "Open Tab"
-msgstr "Nieuw tabblad"
+msgstr "Tabblad Openen"
 
 #: ../terminal/terminal-preferences.c:320
 msgid "Open Terminal"
-msgstr "Terminal openen"
+msgstr "Terminal Openen"
 
 #: ../terminal/terminal-preferences.c:331
 msgid "Detach Tab"
-msgstr "Tabblad _losmaken"
+msgstr "Tabblad Losmaken"
 
 #: ../terminal/terminal-preferences.c:342
 msgid "Close Tab"
-msgstr "Tabblad sluiten"
+msgstr "Tabblad Sluiten"
 
 #: ../terminal/terminal-preferences.c:353
 msgid "Close Window"
-msgstr "Venster sluiten"
+msgstr "Venster Sluiten"
 
 #: ../terminal/terminal-preferences.c:364
 msgid "Copy"
@@ -295,7 +322,7 @@ msgstr "Werkbalken tonen"
 
 #: ../terminal/terminal-preferences.c:430
 msgid "Show borders"
-msgstr "Vensterdecoraties tonen"
+msgstr "Randen tonen"
 
 #: ../terminal/terminal-preferences.c:441
 msgid "Fullscreen"
@@ -305,80 +332,80 @@ msgstr "Volledig scherm"
 msgid "Set Title"
 msgstr "Titel instellen"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Herinitialiseren"
 
 #: ../terminal/terminal-preferences.c:474
 msgid "Reset and Clear"
-msgstr "Herinitialiseren en wissen"
+msgstr "Herinitialiseren en Wissen"
 
 #: ../terminal/terminal-preferences.c:485
 msgid "Previous Tab"
-msgstr "Vorige tabblad"
+msgstr "Vorige Tabblad"
 
 #: ../terminal/terminal-preferences.c:496
 msgid "Next Tab"
-msgstr "Volgende tabblad"
+msgstr "Volgende Tabblad"
 
 #: ../terminal/terminal-preferences.c:507
 msgid "Switch to Tab 1"
-msgstr "Wisselen naar Tab 1"
+msgstr "Wisselen naar Tabblad 1"
 
 #: ../terminal/terminal-preferences.c:518
 msgid "Switch to Tab 2"
-msgstr "Wisselen naar Tab 2"
+msgstr "Wisselen naar Tabblad 2"
 
 #: ../terminal/terminal-preferences.c:529
 msgid "Switch to Tab 3"
-msgstr "Wisselen naar Tab 3"
+msgstr "Wisselen naar Tabblad 3"
 
 #: ../terminal/terminal-preferences.c:540
 msgid "Switch to Tab 4"
-msgstr "Wisselen naar Tab 4"
+msgstr "Wisselen naar Tabblad 4"
 
 #: ../terminal/terminal-preferences.c:551
 msgid "Switch to Tab 5"
-msgstr "Wisselen naar Tab 5"
+msgstr "Wisselen naar Tabblad 5"
 
 #: ../terminal/terminal-preferences.c:562
 msgid "Switch to Tab 6"
-msgstr "Wisselen naar Tab 6"
+msgstr "Wisselen naar Tabblad 6"
 
 #: ../terminal/terminal-preferences.c:573
 msgid "Switch to Tab 7"
-msgstr "Wisselen naar Tab 7"
+msgstr "Wisselen naar Tabblad 7"
 
 #: ../terminal/terminal-preferences.c:584
 msgid "Switch to Tab 8"
-msgstr "Wisselen naar Tab 8"
+msgstr "Wisselen naar Tabblad 8"
 
 #: ../terminal/terminal-preferences.c:595
 msgid "Switch to Tab 9"
-msgstr "Wisselen naar Tab 9"
+msgstr "Wisselen naar Tabblad 9"
 
 #: ../terminal/terminal-preferences.c:606
 msgid "Contents"
 msgstr "Inhoud"
 
-#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Zonder titel"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kon login shell niet bepalen."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
-msgstr "Kon commando niet uitvoeren"
+msgstr "Kon afgeleid proces niet uitvoeren"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
-msgstr "Tabblad sluiten"
+msgstr "Dit tabblad sluiten"
 
 #: ../terminal/terminal-shortcut-editor.c:88
 msgid "File"
@@ -427,27 +454,27 @@ msgstr "Sneltoets instellen voor:"
 
 #: ../terminal/terminal-shortcut-editor.c:374
 msgid "Failed to acquire keyboard"
-msgstr "Kon de controle over het toetsenbord niet verkrijgen"
+msgstr "Kon toetsenbord niet verkrijgen"
 
 #: ../terminal/terminal-shortcut-editor.c:376
 msgid "Another application has already acquired control over your keyboard."
-msgstr "Een andere toepassing bezit al de controle over het toetsenbord"
+msgstr "Een andere toepassing bezit al de controle over het toetsenbord."
 
 #: ../terminal/terminal-toolbars-view.c:112
 msgid "Toolbar Editor"
-msgstr "Werkbalk aanpassen"
+msgstr "Werkbalk-bewerker"
 
 #: ../terminal/terminal-widget.c:320
 msgid "Copy Email Address"
-msgstr "Emailadres kopiëren"
+msgstr "Emailadres Kopiëren"
 
 #: ../terminal/terminal-widget.c:321
 msgid "Compose Email"
-msgstr "Email opstellen"
+msgstr "Email Opstellen"
 
 #: ../terminal/terminal-widget.c:325
 msgid "Copy Link Address"
-msgstr "Adres koppeling kopiëren"
+msgstr "Adres van Koppeling Kopiëren"
 
 #: ../terminal/terminal-widget.c:326
 msgid "Open Link"
@@ -455,270 +482,279 @@ msgstr "Koppeling openen"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Kon selectie met type text/plain niet naar terminal slepen: Verkeerd formaat (%d) of verkeerde lengte (%d)\n"
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Kon selectie met type 'platte tekst' niet naar terminal slepen: Verkeerde "
+"opmaak (%d) of lengte (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Kon Mozilla URL niet naar terminal slepen: Verkeerd formaat (%d) of verkeerde lengte (%d)\n"
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Kon Mozilla URL niet naar terminal slepen: Verkeerde opmaak (%d) of "
+"lengte (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Kon URI lijst niet naar terminal slepen: Verkeerd formaat (%d) of verkeerde lengte (%d)\n"
+msgstr ""
+"Kon URI lijst niet naar terminal slepen: Verkeerde opmaak (%d) of "
+"lengte (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Ongeldige kleur informatie: Verkeerd formaat (%d) of lengte (%d)\n"
+msgstr "Ongeldige kleur-informatie ontvangen: Verkeerde opmaak (%d) of lengte (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:704
 #, c-format
 msgid "Failed to open the URL `%s'"
-msgstr "Kan de URL `%s' niet openen"
+msgstr "Kon de URL `%s' niet openen"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Bestand"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
-msgstr "Nieuw _tabblad"
+msgstr "Nieuw _Tabblad"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
-msgstr "Terminal-tabblad openen"
+msgstr "Een nieuw terminal-tabblad openen"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
-msgstr "T_erminal openen"
+msgstr "T_erminal Openen"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
-msgstr "Nieuw Terminal venster openen"
+msgstr "Nieuw Terminalvenster openen"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "Tabblad _losmaken"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
-msgstr "Open een nieuw venster voor het huidige tabblad"
+msgstr "Open een nieuw venster voor het huidige terminal-tabblad"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "Tabblad s_luiten"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
-msgstr "Huidig tabblad sluiten"
+msgstr "Huidige terminal-tabblad sluiten"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
-msgstr "Venster _sluiten"
+msgstr "Venster _Sluiten"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
-msgstr "Venster sluiten"
+msgstr "Terminalvenster sluiten"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Kopiëren"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Naar klembord kopiëren"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "_Plakken"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Plakken vanuit klembord"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "_Selectie plakken"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
-msgstr "Plakken van primaire selectie"
+msgstr "Plakken vanuit primaire selectie"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "_Werkbalken..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Werkbalken aanpassen"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "_Voorkeuren..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
-msgstr "Terminal voorkeuren instellen"
+msgstr "Open de dialoog voor Terminalvoorkeuren"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Beeld"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "Titel in_stellen..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
-msgstr "Title voor huidig tabblad instellen"
+msgstr "Aangepaste titel voor huidig tabblad instellen"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "He_rinitialiseren"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Herinitia_liseren en wissen"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Herinitialiseren en wissen"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Ga naar"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
-msgstr "_Vorige tabblad"
+msgstr "_Vorige Tabblad"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Naar voorgaand tabblad wisselen"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
-msgstr "Volge_nde tabblad"
+msgstr "Volge_nde Tabblad"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Naar volgend tabblad wisselen"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "_Hulp"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Inhoud"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
-msgstr "Helptekst weergeven"
+msgstr "Hulptekst weergeven"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
-msgstr "Een bug _rapporteren"
+msgstr "Een fout _rapporteren"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
-msgstr "Een bug _rapporteren in Terminal"
+msgstr "Een fout _rapporteren in Terminal"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
-msgstr "In_fo"
+msgstr "_Over"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Informatie over Terminal weergeven"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "_Invoermethoden"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "_Menubalk tonen"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Menubalk tonen/verbergen"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "_Werkbalken tonen"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
-msgstr "Werkenbalken tonen/verbergen"
+msgstr "Werkbalken tonen/verbergen"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
-msgstr "Vensterdecoraties t_onen"
+msgstr "Vensterranden t_onen"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Vensterdecoraties tonen/verbergen"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Volledig scherm"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Wisselen tussen normale weergave en volledig scherm"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Alle tabbladen sluiten"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
 "this window will also close all its tabs."
 msgstr ""
 "Dit venster heeft %d tabbladen open. Als u dit\n"
-"venster sluit, sluiten alle tabbladen."
+"venster sluit, sluiten ook alle tabbladen."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Alle tabbladen sluiten?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "Niet _nogmaals vragen"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1542
 msgid "Window Title|Set Title"
-msgstr "Titel instellen"
+msgstr "Venstertitel|Titel instellen"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1555
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1567
 msgid "Enter the title for the current terminal tab"
-msgstr "Geef titel voor het huidige tabblad"
+msgstr "Geef titel voor het huidige terminaltabblad"
 
 #: ../Terminal.desktop.in.in.h:2
 msgid "Terminal Emulator"
-msgstr "Terminal-emulatieprogramma"
+msgstr "Terminal-emulator"
 
 #: ../Terminal.glade.h:1
 msgid "$TERM s_etting:"
@@ -742,7 +778,7 @@ msgstr "Automatisch detecteren"
 
 #: ../Terminal.glade.h:6
 msgid "Background"
-msgstr "Achtergrondafbeelding"
+msgstr "Achtergrond"
 
 #: ../Terminal.glade.h:7
 msgid "Background image"
@@ -754,15 +790,15 @@ msgstr "Gecentreerd"
 
 #: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
-msgstr "Kiet lettertype voor terminal"
+msgstr "Kies Lettertype voor Terminal"
 
 #: ../Terminal.glade.h:10
 msgid "Choose tab activity color"
-msgstr "Kies een kleur voor activiteit in een tabblad"
+msgstr "Kies een kleur voor activiteit van tabblad"
 
 #: ../Terminal.glade.h:11
 msgid "Choose terminal background color"
-msgstr "Achtergrondkleur voor terminal"
+msgstr "Kies achtergrondkleur voor terminal"
 
 #: ../Terminal.glade.h:12
 msgid "Choose terminal cursor color"
@@ -770,11 +806,11 @@ msgstr "Kies een kleur voor de cursor in de terminal"
 
 #: ../Terminal.glade.h:13
 msgid "Choose terminal text color"
-msgstr "Kiet lettertype voor terminal"
+msgstr "Kies de kleur van het lettertype voor de terminal"
 
 #: ../Terminal.glade.h:14
 msgid "Choose terminal text selection background color"
-msgstr "Kies de achtergrondkleur voor geselecteerde tekst"
+msgstr "Kies de achtergrondkleur voor geselecteerde terminaltekst"
 
 #: ../Terminal.glade.h:15
 msgid "Color Selector"
@@ -782,7 +818,7 @@ msgstr "Kleurenkiezer"
 
 #: ../Terminal.glade.h:16
 msgid "Command"
-msgstr "Commando"
+msgstr "Opdracht"
 
 #: ../Terminal.glade.h:17
 msgid "Compatibility"
@@ -793,8 +829,8 @@ msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr ""
-"Beschouw de volgende karakters als onderdeel van een woord\n"
-" bij dubbelklikken:"
+"Beschouw de volgende tekens als onderdeel van een _woord\n"
+"bij dubbelklikken:"
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
@@ -810,11 +846,11 @@ msgstr "Alle menu-sneltoetsen (zoals Alt+f) uitschakelen"
 
 #: ../Terminal.glade.h:23
 msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "M_enu-sneltoets uitschakelen (standaard F10)"
+msgstr "M_enu-sneltoetsen uitschakelen (standaard F10)"
 
 #: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
-msgstr "Vensterdecoraties weergeven voor nieuwe vensters"
+msgstr "Randen weergeven rond nieuwe vensters"
 
 #: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
@@ -830,35 +866,60 @@ msgstr "Dubbelklikken"
 
 #: ../Terminal.glade.h:29
 msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Anti-aliasing voor terminallettertype _aanzetten"
+msgstr "Anti-aliasing voor terminal-lettertype _aanzetten"
 
 #: ../Terminal.glade.h:30
-msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
-msgstr "Het uitschakelen van anti-aliasing kan de terminal zeer sterk versnellen en de systeembelasting verlagen bij langzamere systemen."
+msgid ""
+"Enable this option if you want Terminal to use anti-aliasing when rendering "
+"text in terminal windows. Disabling this option can impressively speed up "
+"terminal rendering performance and reduce the overall system load on slow "
+"systems."
+msgstr ""
+"Het uitschakelen van anti-aliasing kan de terminal zeer sterk versnellen en "
+"de systeembelasting verlagen bij langzamere systemen. Inschakelen is dus "
+"meestal een slecht idee."
 
 #: ../Terminal.glade.h:31
-msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
-msgstr "Selecteer om programma's in de terminal toe te staan een vet lettertype te gebruiken."
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Selecteer deze optie om terminaltoepassingen toe te staan om vetgedrukte tekst te "
+"gebruiken."
 
 #: ../Terminal.glade.h:32
-msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
-msgstr "Activeer deze optie om door individuele regels te kunnen scrollen met gebruik van de pijltjestoetsen omhoog/omlaag en de Shift-toets."
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Activeer deze optie om per enkele regel te kunnen bladeren met gebruik "
+"van de pijltjestoetsen omhoog/omlaag samen met de Shift-toets."
 
 #: ../Terminal.glade.h:33
-msgid "Enable this option to show the menubar in newly created terminal windows."
-msgstr "Selecteer om menubalk te tonen bij nieuwe terminalvensters."
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Selecteer om de menubalk te tonen in nieuwe terminalvensters."
 
 #: ../Terminal.glade.h:34
-msgid "Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Selecteer om werkbalken te tonen bij nieuwe terminalvensters."
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Selecteer om de werkbalken te tonen in nieuwe terminalvensters."
 
 #: ../Terminal.glade.h:35
-msgid "Enable this option to show window decorations around newly created terminal windows."
-msgstr "Selecteer om vensterdecoraties te tonen bij nieuwe terminalvensters."
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "Selecteer om vensterdecoraties te tonen rond nieuwe terminalvensters."
 
 #: ../Terminal.glade.h:36
-msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
-msgstr "Als deze optie is ingeschakeld zal iedere toetsaanslag de terminal laten scrollen naar de commandoregel."
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Als deze optie is ingeschakeld zal iedere toetsenbordtoets de terminal laten "
+"bladeren naar de opdrachtregel."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -866,7 +927,7 @@ msgstr "Wis TTY"
 
 #: ../Terminal.glade.h:38
 msgid "Escape sequence"
-msgstr "Stuurcode"
+msgstr "Ontsnappings-sequentie"
 
 #: ../Terminal.glade.h:39
 msgid "Font"
@@ -886,11 +947,11 @@ msgstr "Gaat voor begintitel"
 
 #: ../Terminal.glade.h:43
 msgid "Isn't displayed"
-msgstr "Is niet weergegeven"
+msgstr "Wordt niet weergegeven"
 
 #: ../Terminal.glade.h:44
 msgid "Menubar Access"
-msgstr "Toegang menubalk"
+msgstr "Toegang tot Menubalk"
 
 #: ../Terminal.glade.h:45
 msgid "None (use solid color)"
@@ -906,15 +967,15 @@ msgstr "Aan de rechterkant"
 
 #: ../Terminal.glade.h:48
 msgid "Open a dialog to specify the color"
-msgstr "Open een dialoggvenster om een kleur te kiezen"
+msgstr "Open een dialoogvenster om de kleur op te geven"
 
 #: ../Terminal.glade.h:49
 msgid "Opening New Windows"
-msgstr "Nieuwe vensters openen"
+msgstr "Nieuwe Vensters openen"
 
 #: ../Terminal.glade.h:50
 msgid "Palette"
-msgstr "Kleurenpalet"
+msgstr "Palet"
 
 #: ../Terminal.glade.h:51
 msgid "Palette entry 1"
@@ -986,11 +1047,11 @@ msgstr "Vervangt begintitel"
 
 #: ../Terminal.glade.h:68
 msgid "Rese_t double click options to defaults"
-msgstr "Bubbelklikopties _terugzetten naar standaardinstellingen"
+msgstr "Dubbelklikopties _terugzetten naar standaardinstellingen"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
-msgstr "Activiteitsindicator voor tabbladen opnieuw instellen na"
+msgstr "Indicator voor tabblad-activiteit opnieuw instellen na"
 
 #: ../Terminal.glade.h:70
 msgid "Scaled"
@@ -998,43 +1059,52 @@ msgstr "Geschaald"
 
 #: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
-msgstr "Sch_uifbalk is:"
+msgstr "_Bladerbalk is:"
 
 #: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
-msgstr "Scrollen bij _toetsaanslag"
+msgstr "Bladeren bij _toetsaanslag"
 
 #: ../Terminal.glade.h:73
 msgid "Scroll on ou_tput"
-msgstr "Scrollen bij ui_tvoer"
+msgstr "Bladeren bij ui_tvoer"
 
 #: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Individuele _regel scrollen met Shift+Omhoog/Omlaag"
+msgstr "Enkele _regel bladeren met Shift+Omhoog/+Omlaag-toetsen"
 
 #: ../Terminal.glade.h:75
 msgid "Scroll_back:"
-msgstr "Terugschuiven:"
+msgstr "Terug_bladeren:"
 
 #: ../Terminal.glade.h:76
 msgid "Scrolling"
-msgstr "Schuiven"
+msgstr "Aan het bladeren"
 
 #: ../Terminal.glade.h:77
 msgid "Select Background Image File"
 msgstr "Achtergrondafbeelding kiezen"
 
 #: ../Terminal.glade.h:78
-msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
-msgstr "Start de shell in Terminal als loginshell voor nieuwe terminals. Raadpleeg voor het verschil tussen een een interactieve en een loginshell de documentatie voor uw shell."
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Start de shell in Terminal als loginshell voor nieuwe terminals. Raadpleeg "
+"voor het verschil tussen een een interactieve en een loginshell de "
+"documentatie voor uw shell."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
 msgstr "Sneltoetsen"
 
 #: ../Terminal.glade.h:80
-msgid "Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Maximum aantal regels om te scrollen"
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+"Specificeert het aantal regels dat u terug kunt bladeren met de bladerbalk."
 
 #: ../Terminal.glade.h:81
 msgid "St_yle:"
@@ -1046,19 +1116,19 @@ msgstr "Uitgerekt"
 
 #: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
-msgstr "Activiteitsindicator voor tabbladen"
+msgstr "Indicator voor Tabblad-activiteit"
 
 #: ../Terminal.glade.h:84
 msgid "Tab activit_y color:"
-msgstr "Kleur voor _activiteit in tabbladen:"
+msgstr "Kleur voor tabblad-activiteit:"
 
 #: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
-msgstr "Terminal voorkeuren"
+msgstr "Terminalvoorkeuren"
 
 #: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminalprogramma's hebben dit palet tot hun beschikking"
+msgstr "Terminaltoepassingen hebben dit kleurenpalet tot hun beschikking:"
 
 #: ../Terminal.glade.h:87
 msgid "Text Selection"
@@ -1072,17 +1142,29 @@ msgid ""
 "different terminal behavior."
 msgstr ""
 "Door deze opties kunnen sommige toepassingen zich\n"
-"incorrect gedragen. Ze zijn er zodat u om sommige\n"
+"incorrect gedragen. Ze zijn er alleen zodat u om sommige\n"
 "toepassingen en besturingssystemen die een ander\n"
 "terminalgedrag verwachten, heen kunt werken."
 
 #: ../Terminal.glade.h:92
-msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
-msgstr "Deze optie betreft of het terminalvenster automatisch omlaag scrollt als nieuwe output gegenereerd wordt door de uitgevoerde commando's"
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Deze optie bepaalt of het terminalvenster automatisch omlaag bladert als "
+"nieuwe uitvoer gegenereerd wordt door de lopende terminalopdrachten."
 
 #: ../Terminal.glade.h:93
-msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
-msgstr "Dit geeft de waarde voor de $TERM omgevingsvariabele. De standaardwaarde zou moeten voldoen voor de meeste systemen. Als u problemen ondervindt met kleuren kunt u xterm-color proberen."
+msgid ""
+"This specifies the value the $TERM environment variable is set to, when a "
+"new terminal tab or terminal window is opened. The default should be ok for "
+"most systems. If you have problems with colors in some applications, try "
+"xterm-color here."
+msgstr ""
+"Dit geeft de waarde voor de $TERM omgevingsvariabele bij het openen van "
+"een nieuw terminalvenster of -tabblad. De standaardwaarde zou "
+"moeten voldoen voor de meeste systemen. Als u problemen ondervindt met "
+"kleuren in sommige toepassingen, kunt u hier xterm-color proberen."
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1110,7 +1192,7 @@ msgstr "Aangepaste achtergrondkleur voor geselecteerde tekst gebruiken"
 
 #: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
-msgstr "Aangepaste kleur:"
+msgstr "Aangepaste kleur gebruiken:"
 
 #: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
@@ -1118,7 +1200,7 @@ msgstr "Standaard-achtergrondkleur voor geselecteerde tekst gebruiken"
 
 #: ../Terminal.glade.h:102
 msgid "_Appearance"
-msgstr "_Weergave"
+msgstr "_Uiterlijk"
 
 #: ../Terminal.glade.h:103
 msgid "_Background color:"
@@ -1154,7 +1236,7 @@ msgstr "Begin_titel:"
 
 #: ../Terminal.glade.h:111
 msgid "_Reset compatibility options to defaults"
-msgstr "Vergelijkingsopties te_rugzetten naar standaardinstellingen"
+msgstr "Verenigbaarheid-opties te_rugzetten naar standaardinstellingen"
 
 #: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
@@ -1176,11 +1258,39 @@ msgstr "utmp/wtmp records _vernieuwen wanneer opdracht wordt uitgevoerd"
 msgid "seconds"
 msgstr "seconden"
 
-#~ msgid "  -h, --help                          Print this help message and exit"
-#~ msgstr "  -h, --help                          Deze tekst weergeven en afsluiten"
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Alle rechten voorbehouden.\n"
+#~ "\n"
+#~ "Geschreven door Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Gebouwd met Gtk+-%d.%d.%d, draait met Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Rapporteer fouten aan <%s>.\n"
 
-#~ msgid "  -V, --version                       Print version information and exit"
-#~ msgstr "  -V, --version                       Versie-informatie weergeven en afsluiten"
+#~ msgid ""
+#~ "  -h, --help                          Print this help message and exit"
+#~ msgstr ""
+#~ "  -h, --help                          Deze tekst afdrukken en afsluiten"
+
+#~ msgid ""
+#~ "  -V, --version                       Print version information and exit"
+#~ msgstr ""
+#~ "  -V, --version                       Versie-informatie afdrukken en "
+#~ "afsluiten"
 
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
@@ -1196,73 +1306,92 @@ msgstr "seconden"
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
 #~ msgstr ""
-#~ "  --default-working-directory=DIRNAAM De standaard werk-directory van\n"
+#~ "  --default-working-directory=DIRNAAM De standaard-werkmap van de\n"
 #~ "                                      terminal instellen"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-specified\n"
+#~ "  --tab                               Open a new tab in the last-"
+#~ "specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
 #~ msgstr ""
-#~ "  --tab                               Een nieuwe tab openen in laatst-\n"
-#~ "                                      opgegeven venster; kan meer dan een\n"
-#~ "                                      keer worden gebruikt"
+#~ "  --tab                               Een nieuw tabblad openen in laatst"
+#~ "opgegeven\n"
+#~ "                                      venster; in meer dan een van deze opties\n"
+#~ "                                      kan worden voorzien"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one tab;\n"
-#~ "                                      more than one of these options can be\n"
+#~ "  --window                            Open a new window containing one "
+#~ "tab;\n"
+#~ "                                      more than one of these options can "
+#~ "be\n"
 #~ "                                      provided"
 #~ msgstr ""
-#~ "  --window                            Een nieuw venster met een tab openen;\n"
-#~ "                                      kan meer dan een keer worden gebruikt"
+#~ "  --window                            Een nieuw venster met een tab "
+#~ "openen;\n"
+#~ "                                      kan meer dan een keer worden "
+#~ "gebruikt"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the command\n"
+#~ "  -x, --execute                       Execute the remainder of the "
+#~ "command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       De rest van de regel uitvoeren als\n"
-#~ "                                      commando in de terminal"
+#~ "                                      opdracht in de terminal"
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this option\n"
+#~ "  -e, --command=STRING                Execute the argument to this "
+#~ "option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
-#~ "  -e, --command=STRING                Het argument van deze optie uitvoeren\n"
-#~ "                                      als commando in de terminal"
+#~ "  -e, --command=STRING                Het argument van deze optie "
+#~ "uitvoeren\n"
+#~ "                                      als opdracht in de terminal uitvoeren"
 
-#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgid ""
+#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr "  --working-directory=DIRNAAM         De werk-directory instellen"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr "  -T, --title=TITEL                   De titel van het terminalvenster instellen"
+#~ msgstr ""
+#~ "  -T, --title=TITEL                   De titel van het terminalvenster "
+#~ "instellen"
 
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
-#~ "  -H, --hold                          Tabblad niet direct sluiten wanneer\n"
-#~ "                                      wanneer het commando eindigt."
+#~ "  -H, --hold                          Tabblad niet direct sluiten "
+#~ "wanneer\n"
+#~ "                                      wanneer de afgeleide opdracht eindigt."
 
 #~ msgid ""
 #~ "  --display=DISPLAY                   X display to use for the last-\n"
 #~ "                                      specified window"
 #~ msgstr ""
-#~ "  --display=DISPLAY                   X display voor laatst-\n"
-#~ "                                      gegeven venster"
+#~ "  --display=DISPLAY                   X-scherm voor laatst-\n"
+#~ "                                      opgegeven venster"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
-#~ "                                      man page), can be specified once per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
+#~ "\"\n"
+#~ "                                      man page), can be specified once "
+#~ "per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
-#~ "  --geometry=GEOMETRY                 X geometry (zie \"X\" documentatie),\n"
+#~ "  --geometry=GEOMETRY                 X geometry (zie \"X\" "
+#~ "documentatie),\n"
 #~ "                                      kan een keer per te openen venster\n"
 #~ "                                      opgegeven worden"
 
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-specified\n"
-#~ "                                      window; applies to only one window;\n"
-#~ "                                      can be specified once for each window\n"
+#~ "  --role=ROLE                         Set the role for the last-"
+#~ "specified\n"
+#~ "                                      window; applies to only one "
+#~ "window;\n"
+#~ "                                      can be specified once for each "
+#~ "window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
 #~ "  --role=ROL                          Rol voor laastopgegeven venster;\n"
@@ -1281,12 +1410,13 @@ msgstr "seconden"
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
 #~ msgstr ""
-#~ "  -I, --icon=PICTOGRAM                Gebruik het gegeven pictogram\n"
-#~ "                                      als pictogram voor het terminalvenster"
+#~ "  -I, --icon=PICTOGRAM                Stel het terminalpictogram in als\n"
+#~ "                                      een pictogramnaam of bestandnaam"
 
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only one\n"
+#~ "                                      fullscreen mode; applies to only "
+#~ "one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1298,20 +1428,26 @@ msgstr "seconden"
 #~ "                                      opgegeven worden"
 
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified window;\n"
+#~ "  --maximize                          Maximize the last-specified "
+#~ "window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
 #~ msgstr ""
-#~ "  --maximize                          Maximaliseer het laatst gespecifceerde\n"
-#~ "                                      venster. Werkt alleen op een venster; kan\n"
-#~ "                                      eenmaal gespecificeerd worden voor elk\n"
-#~ "                                      venster dat je vanaf de commandoregel\n"
+#~ "  --maximize                          Maximaliseer het laatst "
+#~ "gespecifceerde\n"
+#~ "                                      venster. Werkt alleen op een "
+#~ "venster; kan\n"
+#~ "                                      eenmaal gespecificeerd worden voor "
+#~ "elk\n"
+#~ "                                      venster dat je vanaf de "
+#~ "commandoregel\n"
 #~ "                                      aanmaakt."
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only one\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1324,7 +1460,8 @@ msgstr "seconden"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only one\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1338,8 +1475,10 @@ msgstr "seconden"
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be specified\n"
-#~ "                                      once for each window you create from\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --show-borders                      Vensterdecoraties tonen voor\n"
@@ -1349,10 +1488,13 @@ msgstr "seconden"
 #~ "                                      opgegeven worden"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations for\n"
+#~ "  --hide-borders                      Turn off the window decorations "
+#~ "for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be specified\n"
-#~ "                                      once for each window you create from\n"
+#~ "                                      to only one window; can be "
+#~ "specified\n"
+#~ "                                      once for each window you create "
+#~ "from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --hide-borders                      Vensterdecoraties verbergen voor\n"
@@ -1363,7 +1505,8 @@ msgstr "seconden"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only one\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1375,8 +1518,10 @@ msgstr "seconden"
 #~ "                                      opgegeven worden"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
-#~ "                                      specified window; applies to only one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the "
+#~ "last-\n"
+#~ "                                      specified window; applies to only "
+#~ "one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1390,7 +1535,9 @@ msgstr "seconden"
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Kan terminal niet starten: %s\n"
 
-#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
+#~ msgid ""
+#~ "Option \"--sm-client-id\" requires specifying the session id as its "
+#~ "parameter"
 #~ msgstr "De optie \"--sm-client-id\" vereist een sessie-id als argument"
 
 #~ msgid "<b>Title:</b>"
@@ -1402,8 +1549,11 @@ msgstr "seconden"
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Titel:</b>"
 
-#~ msgid "The command running inside the terminal may dynamically set a new title."
-#~ msgstr "De opdracht uitgevoerd in de terminal kan dynamisch een nieuwe titel instellen."
+#~ msgid ""
+#~ "The command running inside the terminal may dynamically set a new title."
+#~ msgstr ""
+#~ "De opdracht uitgevoerd in de terminal kan dynamisch een nieuwe titel "
+#~ "instellen."
 
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Lettertype</b>"
@@ -1441,8 +1591,8 @@ msgstr "seconden"
 #~ "and select Open Link from the context menu."
 #~ msgstr ""
 #~ "Webbrowser instellen. De browser zal worden gestart als u\n"
-#~ "met de rechter muisknop op een URL klikt en vervolgens\n"
-#~ "Koppeling openen kiest in het menu."
+#~ "met de rechtermuisknop op een URL klikt en vervolgens\n"
+#~ "Koppeling openen kiest in het contekstmenu."
 
 #~ msgid ""
 #~ "Choose your preferred Mail Reader. The preferred\n"
@@ -1451,26 +1601,29 @@ msgstr "seconden"
 #~ "menu."
 #~ msgstr ""
 #~ "Mailprogramma instellen. Het mailprogramma zal worden\n"
-#~ "gestart als u een met de rechter muisknop op een\n"
-#~ "e-mail adres klikt en vervolgens E-mail versturen\n"
-#~ "kiest in het menu."
+#~ "gestart als u met de rechtermuisknop op een\n"
+#~ "e-mail-adres klikt en vervolgens E-mail versturen\n"
+#~ "kiest in het contekstmenu."
 
-#~ msgid "Click here to change the selected application or to disable this feature."
-#~ msgstr "Hier klikken om het geselecteerde programma aan te passen of om deze functie uit te schakelen"
+#~ msgid ""
+#~ "Click here to change the selected application or to disable this feature."
+#~ msgstr ""
+#~ "Hier klikken om de geselecteerde toepassing te veranderen of om deze "
+#~ "functie uit te schakelen"
 
 #~ msgid "Select application"
-#~ msgstr "Programma selecteren"
+#~ msgstr "Toepassing selecteren"
 
 #~ msgid "Choose a custom Web Browser"
-#~ msgstr "Webbrowser kiezen"
+#~ msgstr "Aangepaste Webbrowser kiezen"
 
 #~ msgid "Choose a custom Mail Reader"
-#~ msgstr "Mailprogramma kiezen"
+#~ msgstr "Aangepast Mailprogramma kiezen"
 
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Web Browser in Terminal:"
-#~ msgstr "Webrowser voor Terminal:"
+#~ msgstr "Webbrowser voor Terminal:"
 
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
@@ -1487,35 +1640,35 @@ msgstr "seconden"
 #~ msgstr "Aangepast..."
 
 #~ msgid "No application selected"
-#~ msgstr "Geen programma geselecteerd"
+#~ msgstr "Geen toepassing geselecteerd"
 
 #~ msgid "Preferred Applications"
-#~ msgstr "Programmas"
+#~ msgstr "Voorkeurstoepassingen"
 
 #~ msgid "Applications"
-#~ msgstr "Programma's"
+#~ msgstr "Toepassingen"
 
 #~ msgid "_Applications..."
-#~ msgstr "_Programmas..."
+#~ msgstr "_Toepassingen..."
 
 #~ msgid "Customize your preferred applications"
-#~ msgstr "Programmas aanpassen"
+#~ msgstr "Uw voorkeurstoepassingen aanpassen"
 
 #~ msgid ""
 #~ "You did not choose your preferred Web\n"
 #~ "Browser yet. Do you want to setup your\n"
 #~ "preferred applications now?"
 #~ msgstr ""
-#~ "U heeft nog geen webbrowser ingesteld.\n"
-#~ "Wilt u dit nu instellen?"
+#~ "U heeft nog geen voorkeurswebbrowser ingesteld.\n"
+#~ "Wilt u nu uw voorkeurstoepassingen instellen?"
 
 #~ msgid ""
 #~ "You did not choose your preferred Mail\n"
 #~ "Reader yet. Do you want to setup your\n"
 #~ "preferred applications now?"
 #~ msgstr ""
-#~ "U heeft nog geen mailprogramma ingesteld\n"
-#~ "Wilt u dit nu instellen?"
+#~ "U heeft nog geen voorkeurs-mailprogramma ingesteld.\n"
+#~ "Wilt u nu uw voorkeurstoepassingen instellen?"
 
 #~ msgid "Balsa"
 #~ msgstr "Balsa"
@@ -1575,4 +1728,4 @@ msgstr "seconden"
 #~ msgstr "Aangepaste titel"
 
 #~ msgid "Tab title"
-#~ msgstr "Tab titel"
+#~ msgstr "Tabbladtitel"
