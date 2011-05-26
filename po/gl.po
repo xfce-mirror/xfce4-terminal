@@ -1,17 +1,17 @@
 # Galician translation of terminal
 # Copyright (C) 2006, 2008, 2009, 2010 Leandro Regueiro
 # This file is distributed under the same license as the xfce package.
-#
+# 
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2006, 2008, 2009, 2010.
-#
+# 
 # Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
 # colaborar connosco, podes atopar máis información en <http://trasno.net>
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-21 16:00+0000\n"
+"POT-Creation-Date: 2011-05-26 10:01+0000\n"
 "PO-Revision-Date: 2010-10-20 09:57+0100\n"
 "Last-Translator: Leandro Regueiro <leandro.regueiro@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -34,15 +34,13 @@ msgstr "Opcións xerais"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59
-#: ../terminal/main.c:85
+#: ../terminal/main.c:59 ../terminal/main.c:85
 msgid "display"
 msgstr "pantalla"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61
-#: ../terminal/main.c:76
+#: ../terminal/main.c:61 ../terminal/main.c:76
 msgid "directory"
 msgstr "directorio"
 
@@ -93,39 +91,29 @@ msgstr "icona"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Consulte a páxina man de %s para obter unha explicación completa das opcións de enriba."
 
-#: ../terminal/main.c:126
-#: ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119
-#: ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
+#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Todos os dereitos reservados.\n"
-"\n"
-"Escrito por Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Compilado con Gtk+-%d.%d.%d, executando con Gtk+-%d.%d.%d.\n"
-"\n"
-"Comuníquelle os erros a <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr "O equipo de desenvolvemento de Xfce. Todos os dereitos reservados."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Escrito por Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "e Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Comunique os erros a <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Non foi posible rexistrar o servizo de terminal: %s\n"
@@ -153,8 +141,7 @@ msgstr "Bus de mensaxes D-BUS desconectado, saíndo...\n"
 msgid "Unable to register object %s"
 msgstr "Non foi posible rexistrar o obxecto %s"
 
-#: ../terminal/terminal-dialogs.c:95
-#: ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulador de terminal de Xfce"
 
@@ -188,7 +175,7 @@ msgid "_Read Online"
 msgstr "_Ler en liña"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
+#: ../terminal/terminal-dialogs.c:306
 msgid "Failed to open the documentation browser"
 msgstr "Produciuse un erro ao abrir o navegador da documentación"
 
@@ -316,8 +303,7 @@ msgstr "Pantalla completa"
 msgid "Set Title"
 msgstr "Definir o título"
 
-#: ../terminal/terminal-preferences.c:463
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
 msgid "Reset"
 msgstr "Restablecer"
 
@@ -373,23 +359,22 @@ msgstr "Cambiar á lapela 9"
 msgid "Contents"
 msgstr "Contido"
 
-#: ../terminal/terminal-screen.c:397
-#: ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Sen nome"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Non foi posible determinar o shell de inicio de sesión."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1340
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Produciuse un erro ao executar o proceso fillo"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:2003
 msgid "Close this tab"
 msgstr "Pechar esta lapela"
 
@@ -414,8 +399,7 @@ msgid "Help"
 msgstr "Axuda"
 
 #: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505
-#: ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Desactivado"
 
@@ -493,215 +477,215 @@ msgstr "Recibíronse datos de cor incorrectos: Formato incorrecto (%d) ou lonxit
 msgid "Failed to open the URL `%s'"
 msgstr "Produciuse un erro ao abrir o URL '%s'"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:217
 msgid "_File"
 msgstr "_Ficheiro"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open _Tab"
 msgstr "Abrir unha _lapela"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:218
 msgid "Open a new terminal tab"
 msgstr "Abrir unha nova lapela de terminal"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open T_erminal"
 msgstr "Abrir t_erminal"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal window"
 msgstr "Abrir unha nova xanela de terminal"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "_Detach Tab"
 msgstr "_Desprender a lapela"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:220
 msgid "Open a new window for the current terminal tab"
 msgstr "Abrir unha nova xanela para a lapela de terminal actual"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "C_lose Tab"
 msgstr "P_echar a lapela"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:221
 msgid "Close the current terminal tab"
 msgstr "Pechar a lapela actual da terminal"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "_Close Window"
 msgstr "_Pechar a xanela"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:222
 msgid "Close the terminal window"
 msgstr "Pechar a xanela de terminal"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:223
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:224
 msgid "Copy to clipboard"
 msgstr "Copiar ao portarretallos"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "_Paste"
 msgstr "_Pegar"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:225
 msgid "Paste from clipboard"
 msgstr "Pegar dende o portarretallos"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste _Selection"
 msgstr "Pegar a _selección"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:226
 msgid "Paste from primary selection"
 msgstr "Pegar dende a selección primaria"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "_Toolbars..."
 msgstr "Barras de ferramen_tas..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:227
 msgid "Customize the toolbars"
 msgstr "Personalizar as barras de ferramentas"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Pr_eferences..."
 msgstr "Pr_eferencias..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:228
 msgid "Open the Terminal preferences dialog"
 msgstr "Abre o diálogo de preferencias de Terminal"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:229
 msgid "_View"
 msgstr "_Ver"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:230
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "_Set Title..."
 msgstr "_Definir o título..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:231
 msgid "Set a custom title for the current tab"
 msgstr "Definir un título personalizado para a lapela actual"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:232
 msgid "_Reset"
 msgstr "_Restablecer"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and C_lear"
 msgstr "Restaurar e _limpar"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 msgid "Reset and clear"
 msgstr "Restablecer e limpar"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
 msgid "_Go"
 msgstr "_Ir"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "_Previous Tab"
 msgstr "Lapela _anterior"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:235
 msgid "Switch to previous tab"
 msgstr "Cambiar á lapela anterior"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "_Next Tab"
 msgstr "_Seguinte lapela"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:236
 msgid "Switch to next tab"
 msgstr "Cambiar á seguinte lapela"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:237
 msgid "_Help"
 msgstr "A_xuda"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "_Contents"
 msgstr "_Contido"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:238
 msgid "Display help contents"
 msgstr "Mostrar o contido da axuda"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "_Report a bug"
 msgstr "Comunicar un e_rro"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:239
 msgid "Report a bug in Terminal"
 msgstr "Comunicar un erro de Terminal"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "_About"
 msgstr "_Acerca de"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:240
 msgid "Display information about Terminal"
 msgstr "Mostrar información sobre Terminal"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:241
 msgid "_Input Methods"
 msgstr "Métodos de _entrada"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show _Menubar"
 msgstr "Mostrar a barra de _menú"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:246
 msgid "Show/hide the menubar"
 msgstr "Mostrar/ocultar a barra de menú"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show _Toolbars"
 msgstr "Mostrar as _barras de ferramentas"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the toolbars"
 msgstr "Mostrar/ocultar as barras de ferramentas"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show Window _Borders"
 msgstr "Mostrar os _bordos da xanela"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the window decorations"
 msgstr "Mostrar/ocultar a decoración das xanelas"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "_Fullscreen"
 msgstr "_Pantalla completa"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:249
 msgid "Toggle fullscreen mode"
 msgstr "Cambiar a modo pantalla completa"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:535
 msgid "Warning"
 msgstr "Advertencia"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:546
 msgid "Close all tabs"
 msgstr "Pechar todas as lapelas"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:565
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -711,23 +695,23 @@ msgstr ""
 "pecha esta xanela tamén pechará todas\n"
 "as lapelas."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:568
 msgid "Close all tabs?"
 msgstr "Desexa pechar todas as lapelas?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:581
 msgid "Do _not ask me again"
 msgstr "_Non preguntar de novo"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1542
 msgid "Window Title|Set Title"
 msgstr "Definir o título"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1555
 msgid "Title:"
 msgstr "Título:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1567
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduza o título da lapela de terminal actual"
 
@@ -1192,16 +1176,42 @@ msgstr "_Actualizar os rexistros utmp/wtmp cando se inicia a orde"
 msgid "seconds"
 msgstr "segundos"
 
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Todos os dereitos reservados.\n"
+#~ "\n"
+#~ "Escrito por Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Compilado con Gtk+-%d.%d.%d, executando con Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Comuníquelle os erros a <%s>.\n"
+
 #~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          Mostra esta mensaxe de axuda e sae"
+
 #~ msgid "  -V, --version                       Print version information and exit"
 #~ msgstr "  -V, --version                       Mostra información da versión e sae"
+
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
 #~ msgstr ""
 #~ "  --default-working-directory=NOME_DIR Definie o directorio de traballo\n"
 #~ "                                       predeterminado do terminal"
+
 #~ msgid ""
 #~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
@@ -1210,6 +1220,7 @@ msgstr "segundos"
 #~ "  --tab                               Abrir unha nova lapela na última xanela\n"
 #~ "                                      especificada; pódese proporcionar máis\n"
 #~ "                                      dunha destas opcións"
+
 #~ msgid ""
 #~ "  --window                            Open a new window containing one tab;\n"
 #~ "                                      more than one of these options can be\n"
@@ -1218,42 +1229,50 @@ msgstr "segundos"
 #~ "  --window                            Abrir unha nova xanela cunha soa\n"
 #~ "                                      lapela; pódese proporcionar máis dunha\n"
 #~ "                                      destas opcións"
+
 #~ msgid ""
 #~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Executa o resto da liña de comandos na\n"
 #~ "                                      terminal"
+
 #~ msgid ""
 #~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
 #~ "  -e, --command=CADEA                 Executa na terminal o argumento\n"
 #~ "                                      desta opción"
+
 #~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr ""
 #~ "  --working-directory=NOME_DIR        Define o directorio de traballo do\n"
 #~ "                                      terminal"
+
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=TITULO                 Definir o título da terminal"
+
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
 #~ "  -H, --hold                          Non destruír a lapela inmediatamente\n"
 #~ "                                      cando o comando fillo remata"
+
 #~ msgid ""
 #~ "  --startup-id=STRING                 ID for the startup notification\n"
 #~ "                                      protocol"
 #~ msgstr ""
 #~ "  --startup-id=CADEA                  ID para o protocolo de notificación\n"
 #~ "                                      de inicio"
+
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
 #~ msgstr ""
 #~ "  -I, --icon=ICONA                    Define a icona da terminal como\n"
 #~ "                                      un nome de icona ou un nome de ficheiro"
+
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
 #~ "                                      fullscreen mode; applies to only one\n"
@@ -1266,6 +1285,7 @@ msgstr "segundos"
 #~ "                                      a unha fiestra; pode especificarse unha\n"
 #~ "                                      vez por cada fiestra que se crea dende\n"
 #~ "                                      a liña de comandos"
+
 #~ msgid ""
 #~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
@@ -1276,6 +1296,7 @@ msgstr "segundos"
 #~ "                                      só se aplica a unha fiestra; pode\n"
 #~ "                                      especificarse unha vez por cada fiestra\n"
 #~ "                                      que se crea dende a liña de comandos"
+
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1288,6 +1309,7 @@ msgstr "segundos"
 #~ "                                      unha fiestra; pode especificarse unha vez\n"
 #~ "                                      por cada fiestra que se crea dende a\n"
 #~ "                                      liña de comandos"
+
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1300,6 +1322,7 @@ msgstr "segundos"
 #~ "                                      a unha fiestra; pode especificarse unha\n"
 #~ "                                      vez por cada fiestra que se crea dende\n"
 #~ "                                      a liña de comandos"
+
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
@@ -1312,6 +1335,7 @@ msgstr "segundos"
 #~ "                                      aplica a unha fiestra; pode especificarse\n"
 #~ "                                      unha vez por cada fiestra que se crea\n"
 #~ "                                      dende a liña de comandos"
+
 #~ msgid ""
 #~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
@@ -1324,6 +1348,7 @@ msgstr "segundos"
 #~ "                                      aplica a unha fiestra; pode especificarse\n"
 #~ "                                      unha vez por cada fiestra que se crea\n"
 #~ "                                      dende a liña de comandos"
+
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1336,6 +1361,7 @@ msgstr "segundos"
 #~ "                                      aplica a unha fiestra; pode especificarse\n"
 #~ "                                      unha vez por cada fiestra que se crea\n"
 #~ "                                      dende a liña de comandos"
+
 #~ msgid ""
 #~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
 #~ "                                      specified window; applies to only one\n"
@@ -1348,32 +1374,45 @@ msgstr "segundos"
 #~ "                                      aplica a unha fiestra; pode especificarse\n"
 #~ "                                      unha vez por cada fiestra que se crea\n"
 #~ "                                      dende a liña de comandos"
+
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Non foi posible iniciar a terminal: %s\n"
+
 #~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 #~ msgstr "A opción \"--sm-client-id\" require que se especifique o id de sesión como parámetro"
+
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Título:</b>"
+
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Uso: Terminal [OPCIÓN...]"
+
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Título</b>"
+
 #~ msgid "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "O comando que se execute na terminal pode definir dinámicamente un novo título."
+
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Tipo de letra</b>"
+
 #~ msgid "<b>Background</b>"
 #~ msgstr "<b>Fondo</b>"
+
 #~ msgid "Shade transparent or image background:"
 #~ msgstr "Sombra transparente ou imaxe de fondo:"
+
 #~ msgid "<small><i>None</i></small>"
 #~ msgstr "<small><i>Ningún</i></small>"
+
 #~ msgid "<small><i>Maximum</i></small>"
 #~ msgstr "<small><i>Máximo</i></small>"
+
 #~ msgid "<b>Foreground and Background</b>"
 #~ msgstr "<b>Primeiro plano e fondo</b>"
+
 #~ msgid "<b>Tab activity</b>"
 #~ msgstr "<b>Actividade das lapelas</b>"
+
 #~ msgid "<b>Shortcut keys</b>"
 #~ msgstr "<b>Atallos de teclado</b>"
-
