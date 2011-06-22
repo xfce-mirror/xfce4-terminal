@@ -2,12 +2,12 @@
 # Copyright (C) 2003-2007 Benedikt Meurer <benny@xfce.org>
 # This file is distributed under the same license as the Terminal package.
 # Alexander Nyakhaychyk <nyakhaychyk@gmail.com>, 2006.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2011-06-22 16:01+0000\n"
 "PO-Revision-Date: 2008-11-18 01:02+0200\n"
 "Last-Translator: Alexander Nyakhaychyk <nyakhaychyk@gmail.com>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -24,9 +24,8 @@ msgid "OPTION"
 msgstr ""
 
 #: ../terminal/main.c:57
-#, fuzzy
 msgid "General Options"
-msgstr "Агульныя"
+msgstr "Агульныя наладкі"
 
 #. parameter of --default-display
 #. parameter of --display
@@ -94,37 +93,29 @@ msgstr "Дзеяньне"
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1274
+#: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Тэрмінал"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
 msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Аўтарскія правы (c) %s\n"
-"        os-cillation e.K. Усе правы абаронены.\n"
-"\n"
-"Стваральнік Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Пабудавана з Gtk+-%d.%d.%d, працуе з Gtk+-%d.%d.%d.\n"
-"\n"
-"Калі ласка, паведамляйце пра памылка ні <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr ""
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr ""
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Немагчыма зарэгістраваць тэрмінал: %s\n"
@@ -134,16 +125,21 @@ msgstr "Немагчыма зарэгістраваць тэрмінал: %s\n"
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Нерэчаісны радок геамэтрыі \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
 msgstr "Несупадзеньне ідэнтыфікатара карыстальніка"
 
-#: ../terminal/terminal-dbus.c:133
+#: ../terminal/terminal-dbus.c:119
+#, fuzzy
+msgid "Display mismatch"
+msgstr "Несупадзеньне ідэнтыфікатара карыстальніка"
+
+#: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
 msgstr "Шына D-BUS выключана; завяршэньне працы...\n"
 
-#: ../terminal/terminal-dbus.c:195
+#: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Немагчыма зарэгістраваць аб'ект %s"
@@ -167,9 +163,7 @@ msgstr ""
 
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
+msgid "You can read the user manual online. This manual may however not exactly match your %s version."
 msgstr ""
 
 #: ../terminal/terminal-dialogs.c:220
@@ -181,52 +175,34 @@ msgid "_Read Online"
 msgstr ""
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
+#: ../terminal/terminal-dialogs.c:306
 msgid "Failed to open the documentation browser"
 msgstr "Немагчыма адкрыць гартач дакумэнтацыі"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
-msgid ""
-"Option \"--default-display\" requires specifying the default X display as "
-"its parameter"
-msgstr ""
-"Опцыя \"--default-display\" патрабуе ў якасьці парамэтра прадвызначаны "
-"дысплэй Х"
+msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
+msgstr "Опцыя \"--default-display\" патрабуе ў якасьці парамэтра прадвызначаны дысплэй Х"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
-msgid ""
-"Option \"--default-working-directory\" requires specifying the default "
-"working directory as its parameter"
-msgstr ""
-"Опцыя \"--default-working-directory\" патрабуе ў якасьці парамэтра "
-"прадвызначаную працоўную тэчку"
+msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
+msgstr "Опцыя \"--default-working-directory\" патрабуе ў якасьці парамэтра прадвызначаную працоўную тэчку"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
-msgid ""
-"Option \"--execute/-x\" requires specifying the command to run on the rest "
-"of the command line"
-msgstr ""
-"Опцыя \"--execute/-x\" патрабуе ў якасьці парамэтра загад для выкананьня ў "
-"канцы загаднага радка"
+msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
+msgstr "Опцыя \"--execute/-x\" патрабуе ў якасьці парамэтра загад для выкананьня ў канцы загаднага радка"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
-msgid ""
-"Option \"--command/-e\" requires specifying the command to run as its "
-"parameter"
-msgstr ""
-"Опцыя \"--command/-e\" патрабуе ў якасьці парамэтра загад для выкананьня"
+msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
+msgstr "Опцыя \"--command/-e\" патрабуе ў якасьці парамэтра загад для выкананьня"
 
 #: ../terminal/terminal-options.c:275
 #, c-format
-msgid ""
-"Option \"--working-directory\" requires specifying the working directory as "
-"its parameter"
-msgstr ""
-"Опцыя \"--working-directory\" патрабуе ў якасьці парамэтра працоўную тэчку"
+msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
+msgstr "Опцыя \"--working-directory\" патрабуе ў якасьці парамэтра працоўную тэчку"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
@@ -235,15 +211,12 @@ msgstr "Опцыя \"--title/-T\" патрабуе ў якасьці парам�
 
 #: ../terminal/terminal-options.c:309
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Опцыя \"--display\" патрабуе ў якасьці парамэтра дысплэй Х"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
-msgid ""
-"Option \"--geometry\" requires specifying the window geometry as its "
-"parameter"
+msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
 msgstr "Опцыя \"--geometry\" патрабуе ў якасьці парамэтра геамэтрыю вакна"
 
 #: ../terminal/terminal-options.c:339
@@ -253,17 +226,13 @@ msgstr "Опцыя \"--role\" патрабуе ў якасьці парамэт�
 
 #: ../terminal/terminal-options.c:354
 #, c-format
-msgid ""
-"Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Опцыя \"--startup-id\" патрабуе ў якасьці парамэтра id запуску"
 
 #: ../terminal/terminal-options.c:369
 #, fuzzy, c-format
-msgid ""
-"Option \"--icon/-I\" requires specifying an icon name or filename as its "
-"parameter"
-msgstr ""
-"Опцыя \"--command/-e\" патрабуе ў якасьці парамэтра загад для выкананьня"
+msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
+msgstr "Опцыя \"--command/-e\" патрабуе ў якасьці парамэтра загад для выкананьня"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -278,136 +247,138 @@ msgstr "Усе файлы"
 msgid "Image Files"
 msgstr "Відарысы"
 
-#: ../terminal/terminal-preferences.c:309
+#: ../terminal/terminal-preferences.c:310
 msgid "Open Tab"
 msgstr "Адкрыць укладку"
 
-#: ../terminal/terminal-preferences.c:320
+#: ../terminal/terminal-preferences.c:321
 msgid "Open Terminal"
 msgstr "Адкрыць тэрмінал"
 
-#: ../terminal/terminal-preferences.c:331
+#: ../terminal/terminal-preferences.c:332
 msgid "Detach Tab"
 msgstr "Адчапіць укладку"
 
-#: ../terminal/terminal-preferences.c:342
+#: ../terminal/terminal-preferences.c:343
 msgid "Close Tab"
 msgstr "Закрыць укладку"
 
-#: ../terminal/terminal-preferences.c:353
+#: ../terminal/terminal-preferences.c:354
 msgid "Close Window"
 msgstr "Закрыць вакно"
 
-#: ../terminal/terminal-preferences.c:364
+#: ../terminal/terminal-preferences.c:365
 msgid "Copy"
 msgstr "Скапіяваць"
 
-#: ../terminal/terminal-preferences.c:375
+#: ../terminal/terminal-preferences.c:376
 msgid "Paste"
 msgstr "Уставіць"
 
-#: ../terminal/terminal-preferences.c:386
+#: ../terminal/terminal-preferences.c:387
 msgid "Paste Selection"
 msgstr "Уставіць вылучанае"
 
-#: ../terminal/terminal-preferences.c:397
+#: ../terminal/terminal-preferences.c:398
+msgid "Select All"
+msgstr ""
+
+#: ../terminal/terminal-preferences.c:409
 msgid "Preferences"
 msgstr "Перавагі"
 
-#: ../terminal/terminal-preferences.c:408
+#: ../terminal/terminal-preferences.c:420
 msgid "Show menubar"
 msgstr "Паказць мэню"
 
-#: ../terminal/terminal-preferences.c:419
+#: ../terminal/terminal-preferences.c:431
 msgid "Show toolbars"
 msgstr "Паказаць панэлі сродкаў"
 
-#: ../terminal/terminal-preferences.c:430
+#: ../terminal/terminal-preferences.c:442
 msgid "Show borders"
 msgstr "Паказць межы"
 
-#: ../terminal/terminal-preferences.c:441
+#: ../terminal/terminal-preferences.c:453
 msgid "Fullscreen"
 msgstr "На ўвесь экран"
 
-#: ../terminal/terminal-preferences.c:452
+#: ../terminal/terminal-preferences.c:464
 msgid "Set Title"
 msgstr "Наставіць загаловак"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:235
 msgid "Reset"
 msgstr "Скінуць"
 
-#: ../terminal/terminal-preferences.c:474
+#: ../terminal/terminal-preferences.c:486
 msgid "Reset and Clear"
 msgstr "Скінуць і ачысьціць"
 
-#: ../terminal/terminal-preferences.c:485
+#: ../terminal/terminal-preferences.c:497
 msgid "Previous Tab"
 msgstr "Папярэдняя ўкладка"
 
-#: ../terminal/terminal-preferences.c:496
+#: ../terminal/terminal-preferences.c:508
 msgid "Next Tab"
 msgstr "Наступная ўкладка"
 
-#: ../terminal/terminal-preferences.c:507
+#: ../terminal/terminal-preferences.c:519
 msgid "Switch to Tab 1"
 msgstr "Укладка №1"
 
-#: ../terminal/terminal-preferences.c:518
+#: ../terminal/terminal-preferences.c:530
 msgid "Switch to Tab 2"
 msgstr "Укладка №2"
 
-#: ../terminal/terminal-preferences.c:529
+#: ../terminal/terminal-preferences.c:541
 msgid "Switch to Tab 3"
 msgstr "Укладка №3"
 
-#: ../terminal/terminal-preferences.c:540
+#: ../terminal/terminal-preferences.c:552
 msgid "Switch to Tab 4"
 msgstr "Укладка №4"
 
-#: ../terminal/terminal-preferences.c:551
+#: ../terminal/terminal-preferences.c:563
 msgid "Switch to Tab 5"
 msgstr "Укладка №5"
 
-#: ../terminal/terminal-preferences.c:562
+#: ../terminal/terminal-preferences.c:574
 msgid "Switch to Tab 6"
 msgstr "Укладка №6"
 
-#: ../terminal/terminal-preferences.c:573
+#: ../terminal/terminal-preferences.c:585
 msgid "Switch to Tab 7"
 msgstr "Укладка №7"
 
-#: ../terminal/terminal-preferences.c:584
+#: ../terminal/terminal-preferences.c:596
 msgid "Switch to Tab 8"
 msgstr "Укладка №8"
 
-#: ../terminal/terminal-preferences.c:595
+#: ../terminal/terminal-preferences.c:607
 msgid "Switch to Tab 9"
 msgstr "Укладка №9"
 
-#: ../terminal/terminal-preferences.c:606
+#: ../terminal/terminal-preferences.c:618
 msgid "Contents"
 msgstr "Зьмест"
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Бяз назвы"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Немагчыма вызначыць вашую абалонку"
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Немагчыма запусьціць нашчадка"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:2018
 msgid "Close this tab"
 msgstr "Закрыць гэтую ўкладку"
 
@@ -419,48 +390,48 @@ msgstr "Файл"
 msgid "Edit"
 msgstr "Рэдагаваньне"
 
-#: ../terminal/terminal-shortcut-editor.c:109
+#: ../terminal/terminal-shortcut-editor.c:110
 msgid "View"
 msgstr "Выгляд"
 
-#: ../terminal/terminal-shortcut-editor.c:128
+#: ../terminal/terminal-shortcut-editor.c:129
 msgid "Go"
 msgstr "Пераход"
 
-#: ../terminal/terminal-shortcut-editor.c:145
+#: ../terminal/terminal-shortcut-editor.c:146
 msgid "Help"
 msgstr "Даведка"
 
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:210
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "выключаны"
 
-#: ../terminal/terminal-shortcut-editor.c:221
+#: ../terminal/terminal-shortcut-editor.c:222
 msgid "Action"
 msgstr "Дзеяньне"
 
-#: ../terminal/terminal-shortcut-editor.c:228
+#: ../terminal/terminal-shortcut-editor.c:229
 msgid "Shortcut key"
 msgstr "Камбінацыя клявіш"
 
-#: ../terminal/terminal-shortcut-editor.c:328
+#: ../terminal/terminal-shortcut-editor.c:329
 msgid "Compose shortcut"
 msgstr "Задаць камбінацыю"
 
-#: ../terminal/terminal-shortcut-editor.c:333
+#: ../terminal/terminal-shortcut-editor.c:334
 msgid "Clea_r"
 msgstr ""
 
-#: ../terminal/terminal-shortcut-editor.c:352
+#: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
 msgstr "Задаць камбінацыю для:"
 
-#: ../terminal/terminal-shortcut-editor.c:374
+#: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
 msgstr "Немагчыма захапіць клявіятуру"
 
-#: ../terminal/terminal-shortcut-editor.c:376
+#: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
 msgstr "Іншае дастасаваньне захапіла кантроль над клявіятурай."
 
@@ -486,32 +457,23 @@ msgstr "Адкрыць спасылку"
 
 #: ../terminal/terminal-widget.c:480
 #, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Немагчыма кінуць вылучаны просты тэкс (text/plain) у тэрмінал: памылковы "
-"фармат (%d) ці даўжыня (%d)\n"
+msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Немагчыма кінуць вылучаны просты тэкс (text/plain) у тэрмінал: памылковы фармат (%d) ці даўжыня (%d)\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Немагчыма кінуць URL у тэрмінал: памылковы фармат (%d) ці даўжыня (%d)\n"
+msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr "Немагчыма кінуць URL у тэрмінал: памылковы фармат (%d) ці даўжыня (%d)\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Немагчыма кінуць сьпіс URI у тэрмінал: памылковы фармат (%d) ці даўжыня (%"
-"d)\n"
+msgstr "Немагчыма кінуць сьпіс URI у тэрмінал: памылковы фармат (%d) ці даўжыня (%d)\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Атрыманы нерэчаісныя даныя колеру: памылковы фармат (%d) ці даўжыня (%d)\n"
+msgstr "Атрыманы нерэчаісныя даныя колеру: памылковы фармат (%d) ці даўжыня (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:704
@@ -519,216 +481,224 @@ msgstr ""
 msgid "Failed to open the URL `%s'"
 msgstr "Немагчыма адкрыць URL \"%s\""
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:219
 msgid "_File"
 msgstr "_Файл"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:220
 msgid "Open _Tab"
 msgstr "Адкрыць ук_ладку"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:220
 msgid "Open a new terminal tab"
 msgstr "Адкрыць новую ўкладу тэрмінала"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:221
 msgid "Open T_erminal"
 msgstr "Адкрыць _Тэрмінал"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:221
 msgid "Open a new terminal window"
 msgstr "Стварыць новае вакно тэрмінала"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:222
 msgid "_Detach Tab"
 msgstr "Ад_чапіць укладку"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:222
 msgid "Open a new window for the current terminal tab"
 msgstr "Стварыць новае вакно для бягучай укладкі тэрмінала"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:223
 msgid "C_lose Tab"
 msgstr "За_крыць укладу"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:223
 msgid "Close the current terminal tab"
 msgstr "Закрыць бягучую ўкладу"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:224
 msgid "_Close Window"
 msgstr "За_чыніць вакно"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:224
 msgid "Close the terminal window"
 msgstr "Зачыніць вакно тэрмінала"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:225
 msgid "_Edit"
 msgstr "_Рэдагаваньне"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:226
 msgid "_Copy"
 msgstr "_Скапіяваць"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:226
 msgid "Copy to clipboard"
 msgstr "Скапіяваць у буфэр абмену"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:227
 msgid "_Paste"
 msgstr "_Уставіць"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:227
 msgid "Paste from clipboard"
 msgstr "Уставіць з буфэру абмену"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:228
 msgid "Paste _Selection"
 msgstr "Уставіць _вылучанае"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:228
 msgid "Paste from primary selection"
 msgstr "Уставіць раней вылучаны тэкст"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:229
+msgid "Select _All"
+msgstr ""
+
+#: ../terminal/terminal-window.c:229
+msgid "Select all text in the terminal"
+msgstr ""
+
+#: ../terminal/terminal-window.c:230
 msgid "_Toolbars..."
 msgstr "_Панэлі сродкаў..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Customize the toolbars"
 msgstr "Наладка панэляў"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Pr_eferences..."
 msgstr "Пера_вагі..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Open the Terminal preferences dialog"
 msgstr "Адкрыць дыялёг пераваг Тэрмінала"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:232
 msgid "_View"
 msgstr "_Выгляд"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:233
 msgid "_Terminal"
 msgstr "_Тэрмінал"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:234
 msgid "_Set Title..."
 msgstr "Задаць _назву..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:234
 msgid "Set a custom title for the current tab"
 msgstr "Задаць адмысловую назву для бягучай укладкі"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:235
 msgid "_Reset"
 msgstr "Ск_інуць "
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:236
 msgid "Reset and C_lear"
 msgstr "Скінуць і а_чысьціць"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:236
 #, fuzzy
 msgid "Reset and clear"
 msgstr "Скінуць і ачысьціць"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:237
 msgid "_Go"
 msgstr "_Пераход"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:238
 msgid "_Previous Tab"
 msgstr "_Папярэдняя ўкладка"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:238
 msgid "Switch to previous tab"
 msgstr "Пераключыцца на папярэднюю ўкладку"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:239
 msgid "_Next Tab"
 msgstr "_Наступная ўкладка"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:239
 msgid "Switch to next tab"
 msgstr "Пераключыцца на наступную ўкладку"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:240
 msgid "_Help"
 msgstr "_Даведка"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:241
 msgid "_Contents"
 msgstr "_Зьмест"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:241
 msgid "Display help contents"
 msgstr "Адлюстраваць зьмест даведкі"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:242
 msgid "_Report a bug"
 msgstr "Па_ведаміць пра памылку"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:242
 msgid "Report a bug in Terminal"
 msgstr "Паведаміць пра памылку ў Тэрмінале"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:243
 msgid "_About"
 msgstr "_Пра праграму"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:243
 msgid "Display information about Terminal"
 msgstr "Паказаць зьвесткі пра Тэрмінал"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:244
 msgid "_Input Methods"
 msgstr "Мэтады _ўводу"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:249
 msgid "Show _Menubar"
 msgstr "Паказваць _мэню"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:249
 msgid "Show/hide the menubar"
 msgstr "Паказаць/схаваць радок мэню"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:250
 msgid "Show _Toolbars"
 msgstr "Паказаць панэль _сродкаў"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:250
 msgid "Show/hide the toolbars"
 msgstr "Паказаць/схаваць панэль сродкаў"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:251
 msgid "Show Window _Borders"
 msgstr "Паказваць мя_жу вакна"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the window decorations"
 msgstr "Паказаць/схаваць дэкарацыі вакна"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:252
 msgid "_Fullscreen"
 msgstr "Поўна_экранны рэжым"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:252
 msgid "Toggle fullscreen mode"
 msgstr "Пераключыць поўна_экранны рэжым"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:538
 msgid "Warning"
 msgstr "Увага"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:549
 msgid "Close all tabs"
 msgstr "Закрыцьцё ўсіх укладак"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:568
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -737,11 +707,11 @@ msgstr ""
 "Гэтае вакно мае %d адкрытых укладак.\n"
 "Калі вы зачыніце яго, зачыніце іх усе."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:571
 msgid "Close all tabs?"
 msgstr "Закрыць усе ўкладкі?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:584
 msgid "Do _not ask me again"
 msgstr "Больш н_е пытацца"
 
@@ -841,9 +811,7 @@ msgstr "<b>Сумяшчальнасьць</b>"
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
-msgstr ""
-"Наступныя сымбалі зьяўляюцца часткамі словаў (будуць вылучаны двайной "
-"пстрычкай):"
+msgstr "Наступныя сымбалі зьяўляюцца часткамі словаў (будуць вылучаны двайной пстрычкай):"
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
@@ -886,58 +854,32 @@ msgid "Enab_le anti-aliasing for the terminal font"
 msgstr "Уключыць згладжваньне"
 
 #: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Уключыце гэта, калі вы жадаеце, каб Тэрмінал выкарыстоўваў згладжаны тэкст. "
-"Калі вы адключыце гэтую опцыю, гэта павялічыць хуткасьць вываду і паменшыць "
-"загрузку ЦП на слабых сыстэмах."
+msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
+msgstr "Уключыце гэта, калі вы жадаеце, каб Тэрмінал выкарыстоўваў згладжаны тэкст. Калі вы адключыце гэтую опцыю, гэта павялічыць хуткасьць вываду і паменшыць загрузку ЦП на слабых сыстэмах."
 
 #: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Калі гэтая опцыя ўключана, дастасаваньні ўнутры тэрмінала могуць "
-"выкарыстоўваць тлусты тэкст."
+msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
+msgstr "Калі гэтая опцыя ўключана, дастасаваньні ўнутры тэрмінала могуць выкарыстоўваць тлусты тэкст."
 
 #: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Уключыце гэтую опцыю, каб мець магчымасьць пракручваць адзін радок з "
-"дапамогай стрэлак і клявішы Shift."
+msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
+msgstr "Уключыце гэтую опцыю, каб мець магчымасьць пракручваць адзін радок з дапамогай стрэлак і клявішы Shift."
 
 #: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець радок мэню."
+msgid "Enable this option to show the menubar in newly created terminal windows."
+msgstr "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець радок мэню."
 
 #: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець панэль "
-"інструмэнтаў."
+msgid "Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець панэль інструмэнтаў."
 
 #: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
+msgid "Enable this option to show window decorations around newly created terminal windows."
 msgstr "Калі гэтая опцыя ўключана, новыя вокны тэрмінала будуць мець рамку."
 
 #: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Уключае магчымасьць пракруткі тэрміналу ўніз, да зьяўленьня загаднага радка, "
-"у адказ на націск любой клявішы."
+msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
+msgstr "Уключае магчымасьць пракруткі тэрміналу ўніз, да зьяўленьня загаднага радка, у адказ на націск любой клявішы."
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1130,16 +1072,8 @@ msgid "Select Background Image File"
 msgstr "Вылучыце відарыс для тла"
 
 #: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Уключыце гэтую опцыю, каб прымусіць Тэрмінал выконваць вашую абалонку, як "
-"абалонку ўваходу, калі вы адкрываеце новы тэрмінал. Глядзіце дакумэнтацыю на "
-"вашу абалонку, каб даведацц пра розьніцу паміж інтэрактыўнай абалонкай і "
-"абалонкай уваходу."
+msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
+msgstr "Уключыце гэтую опцыю, каб прымусіць Тэрмінал выконваць вашую абалонку, як абалонку ўваходу, калі вы адкрываеце новы тэрмінал. Глядзіце дакумэнтацыю на вашу абалонку, каб даведацц пра розьніцу паміж інтэрактыўнай абалонкай і абалонкай уваходу."
 
 #: ../Terminal.glade.h:79
 #, fuzzy
@@ -1147,8 +1081,7 @@ msgid "Shortcut Keys"
 msgstr "Камбінацыя клявіш"
 
 #: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
+msgid "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Задае колькасьць радкоў, на якія вы можаце пракруціць тэрмінал."
 
 #: ../Terminal.glade.h:81
@@ -1190,30 +1123,15 @@ msgid ""
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
-msgstr ""
-"Гэтыя опцыі могуць выклікаць ня правільныя паводзіны некаторых "
-"дастасаваньняў. Яны прадстаўлены толькі для таго, каб вы маглі абыйсьці "
-"пэўныя паводзіны ў асобных дастасаваньнях і апэрацыйных сыстэмах."
+msgstr "Гэтыя опцыі могуць выклікаць ня правільныя паводзіны некаторых дастасаваньняў. Яны прадстаўлены толькі для таго, каб вы маглі абыйсьці пэўныя паводзіны ў асобных дастасаваньнях і апэрацыйных сыстэмах."
 
 #: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Гэтая опцыя кантралю, ці будзе тэрмінал аўтаматычна пракручвацца ўніх, калі "
-"ў яго будуць выводзіцца новыя даныя."
+msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
+msgstr "Гэтая опцыя кантралю, ці будзе тэрмінал аўтаматычна пракручвацца ўніх, калі ў яго будуць выводзіцца новыя даныя."
 
 #: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Гэта опцыя задае значэньне пераменнай асяродзьня $TERM для новых укладак і "
-"вокнаў тэрмінала. Прадвызначанае значэньне мусіць падыходзіць для большасьці "
-"сыстэмаў. Калі вы маеце праблемы з колерамі ў асобных дастасаваньнях, "
-"паспрабуйце задаць тут значэньне xterm-color."
+msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
+msgstr "Гэта опцыя задае значэньне пераменнай асяродзьня $TERM для новых укладак і вокнаў тэрмінала. Прадвызначанае значэньне мусіць падыходзіць для большасьці сыстэмаў. Калі вы маеце праблемы з колерамі ў асобных дастасаваньнях, паспрабуйце задаць тут значэньне xterm-color."
 
 #: ../Terminal.glade.h:94
 #, fuzzy
@@ -1317,19 +1235,38 @@ msgid "seconds"
 msgstr "сэкунд"
 
 #~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Аўтарскія правы (c) %s\n"
+#~ "        os-cillation e.K. Усе правы абаронены.\n"
+#~ "\n"
+#~ "Стваральнік Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Пабудавана з Gtk+-%d.%d.%d, працуе з Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Калі ласка, паведамляйце пра памылка ні <%s>.\n"
+
+#~ msgid "  -h, --help                          Print this help message and exit"
 #~ msgstr "  -h, --help                          Друкуе гэтую даведу"
 
-#, fuzzy
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
+#~ msgid "  -V, --version                       Print version information and exit"
 #~ msgstr "  -v, --version                       Друкуе зьвесткі пра вэрсію"
 
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
 #~ "                                      session message bus"
-#~ msgstr ""
-#~ "  --disable-server                    Не рэгістравацца ў службе D-BUS"
+#~ msgstr "  --disable-server                    Не рэгістравацца ў службе D-BUS"
 
 #~ msgid "  --default-display=DISPLAY           default X display to use"
 #~ msgstr "  --default-display=ДЫСПЛЭЙ           прадвызначаны дысплэй X"
@@ -1342,46 +1279,38 @@ msgstr "сэкунд"
 #~ "                                          дырэкторыю для Тэрмінала"
 
 #~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
+#~ "  --tab                               Open a new tab in the last-specified\n"
 #~ "                                      window; more than one of these\n"
 #~ "                                      options can be provided"
 #~ msgstr ""
-#~ "  --tab                               Адкрыць новую ўкладку ў апошнім "
-#~ "вакне;\n"
+#~ "  --tab                               Адкрыць новую ўкладку ў апошнім вакне;\n"
 #~ "                                      гэтую опцыю можна задаць больш чым\n"
 #~ "                                      адзін раз"
 
 #~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
+#~ "  --window                            Open a new window containing one tab;\n"
+#~ "                                      more than one of these options can be\n"
 #~ "                                      provided"
 #~ msgstr ""
-#~ "  --window                            Адкрыць новае вакно з адной "
-#~ "укладкай;\n"
+#~ "  --window                            Адкрыць новае вакно з адной укладкай;\n"
 #~ "                                      гэтую опцыю можна задаць больш чым\n"
 #~ "                                      адзін раз"
 
 #~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
+#~ "  -x, --execute                       Execute the remainder of the command\n"
 #~ "                                      line inside the terminal"
 #~ msgstr ""
 #~ "  -x, --execute                       Выканаць астатнюю частку загаднага\n"
 #~ "                                      радка ўнутры тэрмінала"
 
 #~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
+#~ "  -e, --command=STRING                Execute the argument to this option\n"
 #~ "                                      inside the terminal"
 #~ msgstr ""
 #~ "  -e, --command=РАДОК                 Выканаць парамэтры гэтай опцыі\n"
 #~ "                                      ўнутры тэрмінала"
 
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
+#~ msgid "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr "  --working-directory=ДЫРЭКТОРЫЯ      Задае працоўную дырэкторыю"
 
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
@@ -1391,8 +1320,7 @@ msgstr "сэкунд"
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
-#~ "  -H, --hold                          Не зьнішчаць укладку, адразу "
-#~ "пасьля\n"
+#~ "  -H, --hold                          Не зьнішчаць укладку, адразу пасьля\n"
 #~ "                                      завяршэньня працы нашчадка"
 
 #~ msgid ""
@@ -1401,32 +1329,23 @@ msgstr "сэкунд"
 #~ msgstr "  --display=DISPLAY                   Дысплэй X для выкарыстаньня"
 
 #~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
+#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X\"\n"
+#~ "                                      man page), can be specified once per\n"
 #~ "                                      window to be opened"
 #~ msgstr ""
 #~ "  --geometry=ГЕАМЭТРЫЯ                Спэцыфікацыя геамэтрыі X (гл.\n"
-#~ "                                      man-старонку  \"X\"), можна "
-#~ "задаваць для\n"
+#~ "                                      man-старонку  \"X\"), можна задаваць для\n"
 #~ "                                      кожнага асобнага вакна"
 
-#, fuzzy
 #~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
+#~ "  --role=ROLE                         Set the role for the last-specified\n"
+#~ "                                      window; applies to only one window;\n"
+#~ "                                      can be specified once for each window\n"
 #~ "                                      you create from the command line"
 #~ msgstr ""
-#~ "  --role=ROLE                         Задае ролю вакна; ужываецца толькі "
-#~ "да\n"
+#~ "  --role=ROLE                         Задае ролю вакна; ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
@@ -1436,7 +1355,6 @@ msgstr "сэкунд"
 #~ "  --startup-id=STRING                 ID для пратакола інфармаваньня\n"
 #~ "                                      пра запуск"
 
-#, fuzzy
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
@@ -1444,107 +1362,85 @@ msgstr "сэкунд"
 #~ "  -e, --command=РАДОК                 Выканаць парамэтры гэтай опцыі\n"
 #~ "                                      ўнутры тэрмінала"
 
-#, fuzzy
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
+#~ "                                      fullscreen mode; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --fullscreen                        Пераключае апошняе заданае вакно ў\n"
-#~ "                                      поўнаэкранны рэжым; ужываецца "
-#~ "толькі да\n"
+#~ "                                      поўнаэкранны рэжым; ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
-#, fuzzy
 #~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
+#~ "  --maximize                          Maximize the last-specified window;\n"
 #~ "                                      applies to only one window; can be\n"
 #~ "                                      specified once for each window you\n"
 #~ "                                      create from the command line"
 #~ msgstr ""
-#~ "  --role=ROLE                         Задае ролю вакна; ужываецца толькі "
-#~ "да\n"
+#~ "  --role=ROLE                         Задае ролю вакна; ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
 #~ "  --show-menubar                      Уключае радок мэню для апошняга\n"
-#~ "                                      заданага вакна; ужываецца толькі "
-#~ "да\n"
+#~ "                                      заданага вакна; ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
 #~ msgstr ""
-#~ "  --hide-menubar                      Выключае мэню для апошняга "
-#~ "заданага\n"
+#~ "  --hide-menubar                      Выключае мэню для апошняга заданага\n"
 #~ "                                      вакна; ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --show-borders                      Уключае ўпрыгожваньні вакна\n"
 #~ "                                      ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
+#~ "  --hide-borders                      Turn off the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
+#~ "                                      to only one window; can be specified\n"
+#~ "                                      once for each window you create from\n"
 #~ "                                      the command line"
 #~ msgstr ""
 #~ "  --hide-borders                      Адключае ўпрыгожваньні вакна\n"
 #~ "                                      ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1552,15 +1448,12 @@ msgstr "сэкунд"
 #~ "  --show-toolbars                     Уключае панэлі інструмэнтаў\n"
 #~ "                                      ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
+#~ "  --hide-toolbars                     Turn off the toolbars for the last-\n"
+#~ "                                      specified window; applies to only one\n"
 #~ "                                      window; can be specified once for\n"
 #~ "                                      each window you create from the\n"
 #~ "                                      command line"
@@ -1568,16 +1461,13 @@ msgstr "сэкунд"
 #~ "  --hide-toolbars                     Адключае панэлі інструмэнтаў\n"
 #~ "                                      ужываецца толькі да\n"
 #~ "                                      аднаго вакна; можна задаваць для\n"
-#~ "                                      кожнага вакна, якое вы ствараеце "
-#~ "праз\n"
+#~ "                                      кожнага вакна, якое вы ствараеце праз\n"
 #~ "                                      загадны радок"
 
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Немагчыма запусьціць тэрмінал: %s\n"
 
-#~ msgid ""
-#~ "Option \"--sm-client-id\" requires specifying the session id as its "
-#~ "parameter"
+#~ msgid "Option \"--sm-client-id\" requires specifying the session id as its parameter"
 #~ msgstr "Опцыя \"--sm-client-id\" патрабуе ў якасьці парамэтра id сэанса"
 
 #~ msgid "<b>Title:</b>"
@@ -1589,11 +1479,8 @@ msgstr "сэкунд"
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Загаловак</b>"
 
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
-#~ msgstr ""
-#~ "Загад, які выконваецца ў тэрмінале, можа дынамічна выстаўляць новы "
-#~ "загаловак."
+#~ msgid "The command running inside the terminal may dynamically set a new title."
+#~ msgstr "Загад, які выконваецца ў тэрмінале, можа дынамічна выстаўляць новы загаловак."
 
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Шрыфт</b>"
@@ -1646,11 +1533,8 @@ msgstr "сэкунд"
 #~ "пстрыкніце правай кнопкай мышы на электронны адрас\n"
 #~ "і вылучыце ў кантэкстным мэню Напсаць ліст."
 
-#~ msgid ""
-#~ "Click here to change the selected application or to disable this feature."
-#~ msgstr ""
-#~ "Пстрыкніце сюды, каб зьмяніць вылучанае дастасаваньне, альбо адключыць "
-#~ "гэтую магчымасьць."
+#~ msgid "Click here to change the selected application or to disable this feature."
+#~ msgstr "Пстрыкніце сюды, каб зьмяніць вылучанае дастасаваньне, альбо адключыць гэтую магчымасьць."
 
 #~ msgid "Select application"
 #~ msgstr "Вылучэньне дастасаваньня"
