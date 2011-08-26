@@ -231,11 +231,19 @@ terminal_widget_context_menu_copy (TerminalWidget *widget,
   GtkClipboard *clipboard;
   const gchar  *wlink;
   GdkDisplay   *display;
+  gchar        *modified_wlink = NULL;
 
   wlink = g_object_get_data (G_OBJECT (item), "terminal-widget-link");
   if (G_LIKELY (wlink != NULL))
     {
       display = gtk_widget_get_display (GTK_WIDGET (widget));
+
+      /* strip mailto from links, bug #7909 */
+      if (g_str_has_prefix (wlink, "mailto:"))
+        {
+          modified_wlink = g_strdup (wlink + 7);
+          wlink = modified_wlink;
+        }
 
       /* copy the URI to "CLIPBOARD" */
       clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
@@ -244,6 +252,8 @@ terminal_widget_context_menu_copy (TerminalWidget *widget,
       /* copy the URI to "PRIMARY" */
       clipboard = gtk_clipboard_get_for_display (display, GDK_SELECTION_PRIMARY);
       gtk_clipboard_set_text (clipboard, wlink, -1);
+
+      g_free (modified_wlink);
     }
 }
 
