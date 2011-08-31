@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-11 05:01+0000\n"
+"POT-Creation-Date: 2011-08-31 22:01+0000\n"
 "PO-Revision-Date: 2010-06-11 23:18+0200\n"
 "Last-Translator: Ivica Kolić <ikoli@yahoo.com>\n"
 "Language-Team: Croatian <>\n"
@@ -87,37 +87,34 @@ msgstr "ikona"
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Vidi  %s man stranicu za puno objašnjenje gornjih opcija."
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1274
+#: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Sva prava pridržana.\n"
-"\n"
-"Napisao Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Prijavite probleme <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr " Xfce razvojni tim. Sva prava pridržana."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr ""
+"Napisao Benedikt Meurer\r\n"
+"<benny@xfce.org>\r\n"
+"\r\n"
+"\r\n"
+"<benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "i Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "MOlim,prijavite probleme na <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ne mogu registrirati terminalni servis: %s\n"
@@ -176,7 +173,7 @@ msgid "_Read Online"
 msgstr "_Čitaj online"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
+#: ../terminal/terminal-dialogs.c:306
 msgid "Failed to open the documentation browser"
 msgstr "Neuspjelo otvaranje preglednika dokumentacije"
 
@@ -248,134 +245,138 @@ msgstr "Sve datoteke"
 msgid "Image Files"
 msgstr "Datoteke slika"
 
-#: ../terminal/terminal-preferences.c:309
+#: ../terminal/terminal-preferences.c:310
 msgid "Open Tab"
 msgstr "Otvori karticu"
 
-#: ../terminal/terminal-preferences.c:320
+#: ../terminal/terminal-preferences.c:321
 msgid "Open Terminal"
 msgstr "Otvori terminal"
 
-#: ../terminal/terminal-preferences.c:331
+#: ../terminal/terminal-preferences.c:332
 msgid "Detach Tab"
 msgstr ""
 
-#: ../terminal/terminal-preferences.c:342
+#: ../terminal/terminal-preferences.c:343
 msgid "Close Tab"
 msgstr "Zatvori karticu"
 
-#: ../terminal/terminal-preferences.c:353
+#: ../terminal/terminal-preferences.c:354
 msgid "Close Window"
 msgstr "Zatvori prozor"
 
-#: ../terminal/terminal-preferences.c:364
+#: ../terminal/terminal-preferences.c:365
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: ../terminal/terminal-preferences.c:375
+#: ../terminal/terminal-preferences.c:376
 msgid "Paste"
 msgstr "Zalijepi"
 
-#: ../terminal/terminal-preferences.c:386
+#: ../terminal/terminal-preferences.c:387
 msgid "Paste Selection"
 msgstr "Zalijepi odabir"
 
-#: ../terminal/terminal-preferences.c:397
+#: ../terminal/terminal-preferences.c:398
+msgid "Select All"
+msgstr "Odaberi sve"
+
+#: ../terminal/terminal-preferences.c:409
 msgid "Preferences"
 msgstr "Osobiosti"
 
-#: ../terminal/terminal-preferences.c:408
+#: ../terminal/terminal-preferences.c:420
 msgid "Show menubar"
 msgstr "Pokaži traku izbornika"
 
-#: ../terminal/terminal-preferences.c:419
+#: ../terminal/terminal-preferences.c:431
 msgid "Show toolbars"
 msgstr "Pokaži alatnu traku"
 
-#: ../terminal/terminal-preferences.c:430
+#: ../terminal/terminal-preferences.c:442
 msgid "Show borders"
 msgstr "Pokaži rubove"
 
-#: ../terminal/terminal-preferences.c:441
+#: ../terminal/terminal-preferences.c:453
 msgid "Fullscreen"
 msgstr "Puni zaslon"
 
-#: ../terminal/terminal-preferences.c:452
+#: ../terminal/terminal-preferences.c:464
 msgid "Set Title"
 msgstr "Postavi naslov"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:235
 msgid "Reset"
 msgstr "Resetiraj"
 
-#: ../terminal/terminal-preferences.c:474
+#: ../terminal/terminal-preferences.c:486
 msgid "Reset and Clear"
 msgstr "Resetiraj i očisti"
 
-#: ../terminal/terminal-preferences.c:485
+#: ../terminal/terminal-preferences.c:497
 msgid "Previous Tab"
 msgstr "Prethodna kartica"
 
-#: ../terminal/terminal-preferences.c:496
+#: ../terminal/terminal-preferences.c:508
 msgid "Next Tab"
 msgstr "Slijedeća kartica"
 
-#: ../terminal/terminal-preferences.c:507
+#: ../terminal/terminal-preferences.c:519
 msgid "Switch to Tab 1"
 msgstr "Prebaci na karticu 1"
 
-#: ../terminal/terminal-preferences.c:518
+#: ../terminal/terminal-preferences.c:530
 msgid "Switch to Tab 2"
 msgstr "Prebaci na karticu 2"
 
-#: ../terminal/terminal-preferences.c:529
+#: ../terminal/terminal-preferences.c:541
 msgid "Switch to Tab 3"
 msgstr "Prebaci na karticu 3"
 
-#: ../terminal/terminal-preferences.c:540
+#: ../terminal/terminal-preferences.c:552
 msgid "Switch to Tab 4"
 msgstr "Prebaci na karticu 4"
 
-#: ../terminal/terminal-preferences.c:551
+#: ../terminal/terminal-preferences.c:563
 msgid "Switch to Tab 5"
 msgstr "Prebaci na karticu 5"
 
-#: ../terminal/terminal-preferences.c:562
+#: ../terminal/terminal-preferences.c:574
 msgid "Switch to Tab 6"
 msgstr "Prebaci na karticu 6"
 
-#: ../terminal/terminal-preferences.c:573
+#: ../terminal/terminal-preferences.c:585
 msgid "Switch to Tab 7"
 msgstr "Prebaci na karticu 7"
 
-#: ../terminal/terminal-preferences.c:584
+#: ../terminal/terminal-preferences.c:596
 msgid "Switch to Tab 8"
 msgstr "Prebaci na karticu 8"
 
-#: ../terminal/terminal-preferences.c:595
+#: ../terminal/terminal-preferences.c:607
 msgid "Switch to Tab 9"
 msgstr "Prebaci na karticu 9"
 
-#: ../terminal/terminal-preferences.c:606
+#: ../terminal/terminal-preferences.c:618
 msgid "Contents"
 msgstr "Sadržaj"
 
-#: ../terminal/terminal-screen.c:397 ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Nenaslovljeno"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr ""
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:2018
 msgid "Close this tab"
 msgstr "Zatvori ovu karticu"
 
@@ -387,48 +388,48 @@ msgstr "Datoteka"
 msgid "Edit"
 msgstr "Uredi"
 
-#: ../terminal/terminal-shortcut-editor.c:109
+#: ../terminal/terminal-shortcut-editor.c:110
 msgid "View"
 msgstr "Pogled"
 
-#: ../terminal/terminal-shortcut-editor.c:128
+#: ../terminal/terminal-shortcut-editor.c:129
 msgid "Go"
 msgstr "Idi"
 
-#: ../terminal/terminal-shortcut-editor.c:145
+#: ../terminal/terminal-shortcut-editor.c:146
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:210
+#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Onemogućeno"
 
-#: ../terminal/terminal-shortcut-editor.c:221
+#: ../terminal/terminal-shortcut-editor.c:222
 msgid "Action"
 msgstr "Akcija"
 
-#: ../terminal/terminal-shortcut-editor.c:228
+#: ../terminal/terminal-shortcut-editor.c:229
 msgid "Shortcut key"
 msgstr "Tipka prečaca"
 
-#: ../terminal/terminal-shortcut-editor.c:328
+#: ../terminal/terminal-shortcut-editor.c:329
 msgid "Compose shortcut"
 msgstr "Napravi prečac"
 
-#: ../terminal/terminal-shortcut-editor.c:333
+#: ../terminal/terminal-shortcut-editor.c:334
 msgid "Clea_r"
 msgstr "Očist_i"
 
-#: ../terminal/terminal-shortcut-editor.c:352
+#: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
 msgstr "Napravi prečac za:"
 
-#: ../terminal/terminal-shortcut-editor.c:374
+#: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
 msgstr "Neuspjeh u  zadobivanju tipkovnice"
 
-#: ../terminal/terminal-shortcut-editor.c:376
+#: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
 msgstr "Drugi program je već zadobio kontrolu nad vašom tipkovnicom"
 
@@ -436,257 +437,265 @@ msgstr "Drugi program je već zadobio kontrolu nad vašom tipkovnicom"
 msgid "Toolbar Editor"
 msgstr "Uređivač alatne trake"
 
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:330
 msgid "Copy Email Address"
 msgstr "Kopiraj email- adresu"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:331
 msgid "Compose Email"
 msgstr " Napiši email"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:335
 msgid "Copy Link Address"
 msgstr "Kopiraj adresu poveznice"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:336
 msgid "Open Link"
 msgstr "Otvori poveznicu"
 
-#: ../terminal/terminal-widget.c:480
+#: ../terminal/terminal-widget.c:490
 #, c-format
 msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:496
+#: ../terminal/terminal-widget.c:506
 #, c-format
 msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nije moguće spustiti Mozilla URL u terminal: pogrešan format (%d) ili dužina(%d)\n"
 
-#: ../terminal/terminal-widget.c:522
+#: ../terminal/terminal-widget.c:532
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nije moguće spustiti URI listu u terminal: pogrešan format (%d)  ili dužina (%d)\n"
 
-#: ../terminal/terminal-widget.c:567
+#: ../terminal/terminal-widget.c:577
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Primljeni pogrešni podaci o boji:Pogrešan format (%d) ili dužina  (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:714
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Nisam uspio otvoriti URL `%s'"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:219
 msgid "_File"
 msgstr "_Datoteka"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:220
 msgid "Open _Tab"
 msgstr "Otvori _karticu"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:220
 msgid "Open a new terminal tab"
 msgstr "Otvori novu terminalnu karticu"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:221
 msgid "Open T_erminal"
 msgstr "Otvori T_erminal"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:221
 msgid "Open a new terminal window"
 msgstr "Otvori novi terminalni prozor"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:222
 msgid "_Detach Tab"
 msgstr ""
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:222
 msgid "Open a new window for the current terminal tab"
 msgstr "Otvori novi prozor za trenutnu karticu terminala"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:223
 msgid "C_lose Tab"
 msgstr "Z_atvori karticu"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:223
 msgid "Close the current terminal tab"
 msgstr "Zatvori trenutnu terminalni karticu"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:224
 msgid "_Close Window"
 msgstr "_Zatvori prozor"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:224
 msgid "Close the terminal window"
 msgstr "Zatvori terminalni prozor"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:225
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:226
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:226
 msgid "Copy to clipboard"
 msgstr ""
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:227
 msgid "_Paste"
 msgstr "_Zalijepi"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:227
 msgid "Paste from clipboard"
 msgstr ""
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:228
 msgid "Paste _Selection"
 msgstr "Zalijepi _Odabir"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:228
 msgid "Paste from primary selection"
 msgstr "Zalijepi iz prvog odabira"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:229
+msgid "Select _All"
+msgstr "Odaberi _sve"
+
+#: ../terminal/terminal-window.c:229
+msgid "Select all text in the terminal"
+msgstr "Odaberi sav tekst u terminalu"
+
+#: ../terminal/terminal-window.c:230
 msgid "_Toolbars..."
 msgstr "_Alatne trake"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Customize the toolbars"
 msgstr "Prilagodi alatne trake"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Pr_eferences..."
 msgstr "Os_obitosti"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Open the Terminal preferences dialog"
 msgstr "Otvori dijalog stavki terminala"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:232
 msgid "_View"
 msgstr "_Pogled"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:233
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:234
 msgid "_Set Title..."
 msgstr "_Postavi naslov"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:234
 msgid "Set a custom title for the current tab"
 msgstr "Postavi prilagođeni naslov za trenutnu stranicu"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:235
 msgid "_Reset"
 msgstr "_Resetiraj"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:236
 msgid "Reset and C_lear"
 msgstr "Resetiraj i o_čisti"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:236
 msgid "Reset and clear"
 msgstr "Resetiraj i očisti"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:237
 msgid "_Go"
 msgstr "_Idi"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:238
 msgid "_Previous Tab"
 msgstr "_Prethodna kartica"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:238
 msgid "Switch to previous tab"
 msgstr "Prebaci na prethodnu karticu"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:239
 msgid "_Next Tab"
 msgstr "_Slijedeća kartica"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:239
 msgid "Switch to next tab"
 msgstr "Prebaci na slijedeću karticu"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:240
 msgid "_Help"
 msgstr "_Pomoć"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:241
 msgid "_Contents"
 msgstr "_Sadržaj"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:241
 msgid "Display help contents"
 msgstr "Prikaži sadržaj pomoći"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:242
 msgid "_Report a bug"
 msgstr "_Prijavi problem"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:242
 msgid "Report a bug in Terminal"
 msgstr "Prijavi problem u Terminalu"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:243
 msgid "_About"
 msgstr "_O programu"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:243
 msgid "Display information about Terminal"
 msgstr "Prikaži informacije o Terminalu"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:244
 msgid "_Input Methods"
 msgstr "_Ulazne metode"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:249
 msgid "Show _Menubar"
 msgstr "Pokaži _Traku izbornika"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:249
 msgid "Show/hide the menubar"
 msgstr "Pokaži/sakrij traku izbornika"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:250
 msgid "Show _Toolbars"
 msgstr "Pokaži _Alatne trake"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:250
 msgid "Show/hide the toolbars"
 msgstr "Pokaži/sakrij alatne trake"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:251
 msgid "Show Window _Borders"
 msgstr "Pokaži Rubove _prozora"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the window decorations"
 msgstr "Pokaži/sakrij ukrašavanje prozora"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:252
 msgid "_Fullscreen"
 msgstr "_Puni zaslon"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:252
 msgid "Toggle fullscreen mode"
 msgstr ""
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:538
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:549
 msgid "Close all tabs"
 msgstr "Zatvori sve kartice"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:568
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -695,11 +704,11 @@ msgstr ""
 "Ovaj prozor ima %d otvorenih kartica.Zatvaranje\n"
 "ovog prozora zatvoriti će sve kartice."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:571
 msgid "Close all tabs?"
 msgstr "Zatvoriti sve kartice?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:584
 msgid "Do _not ask me again"
 msgstr "Ne_pitaj me ponovo"
 
@@ -725,7 +734,7 @@ msgstr ""
 
 #: ../Terminal.glade.h:2
 msgid "ASCII DEL"
-msgstr ""
+msgstr "ASCII DEL"
 
 #: ../Terminal.glade.h:3
 msgid "Ad_vanced"
@@ -1170,3 +1179,26 @@ msgstr ""
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "sekunde"
+
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Sva prava pridržana.\n"
+#~ "\n"
+#~ "Napisao Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Prijavite probleme <%s>.\n"
