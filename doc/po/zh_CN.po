@@ -1,11 +1,13 @@
 # Hunt Xu <huntxu@live.cn>, 2009.
+# Chipong Luo <chipong_l@yahoo.com>, 2011.
 msgid ""
 msgstr ""
-"Project-Id-Version: Terminal\n"
+"Project-Id-Version: Terminal.docs\n"
 "POT-Creation-Date: 2010-01-29 11:29+0100\n"
 "PO-Revision-Date: 2009-12-23 11:25+0800\n"
-"Last-Translator: Hunt Xu <huntxu@live.cn>\n"
+"Last-Translator: Chipong Luo <chipong_l@yahoo.com>\n"
 "Language-Team: Chinese (simplified) <xfce-i18n@xfce.org>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -68,7 +70,7 @@ msgstr "摘要"
 
 #: Terminal.1.xml:50(command)
 msgid "Terminal"
-msgstr "Terminal"
+msgstr "终端"
 
 #: Terminal.1.xml:51(arg)
 msgid "OPTION"
@@ -88,11 +90,11 @@ msgid ""
 "command-line under Windows, though one should note that the UNIX CLI offer "
 "far more power and ease of use than does DOS."
 msgstr ""
-"@PACKAGE_NAME@ 是一个 X 终端模拟器，常被称作终端或者 shell。它在您桌面上提供"
-"了一个类似于旧风格的文本界面，但可以方便地和其他图形程序共享屏幕。Windows 操"
-"作系统的用户可能已经比较熟悉 MS-DOS 提示符这个在 Windows 桌面环境中提供类似"
-"于 DOS 命令行功能的工具，当然，您必须注意到 UNIX CLI 比 DOS 提供更为强大的功"
-"能和更方便的使用方式。"
+"@PACKAGE_NAME@ 即众所周知的 X 终端模拟器，常被称作终端或 shell。"
+"它在您桌面上提供了一个老式的文本界面等价物，但可以方便地与其它图形应用"
+"程序共享屏幕。Windows 用户可能已熟悉 MS-DOS 提示符这个在 Windows "
+"下提供类似 DOS 命令行功能的工具，然而您必须注意到 UNIX CLI 比 DOS "
+"提供更为强大的功能和更方便的使用方式。"
 
 #: Terminal.1.xml:67(para) Terminal.xml:103(para)
 msgid ""
@@ -105,10 +107,10 @@ msgid ""
 "as to position the cursor and to clear the screen."
 msgstr ""
 "@PACKAGE_NAME@ 模拟 X 组织开发的 <application>xterm</application> 应用程序。"
-"<application>xterm</application> 这个应用程序则是模拟 DEC VT102 终端，还支持 "
-"DEC VT220 的转义序列。一个转义序列是以 <keycap>Esc</keycap> 字符开始的一系列"
-"字符。@PACKAGE_NAME@ 接受所有 VT102 和 VT220 终端用以实现例如控制光标位置和清"
-"除屏幕等功能的转义序列。"
+"按顺序，<application>xterm</application> 应用程序模拟 DEC VT102 终端且也支持 "
+"DEC VT220 转义序列。转义序列是以 <keycap>Esc</keycap> 字符开始的一组字符。"
+"@PACKAGE_NAME@ 接受所有 VT102 和 VT220 终端用以定位光标"
+"和清除屏幕等功能的转义序列。"
 
 #: Terminal.1.xml:79(title)
 msgid "Options"
@@ -116,17 +118,17 @@ msgstr "选项"
 
 #: Terminal.1.xml:82(title)
 msgid "Option Summary"
-msgstr "选项介绍"
+msgstr "选项摘要"
 
 #: Terminal.1.xml:83(para)
 msgid ""
 "Here is a summary of all the options, grouped by type. Explanations are in "
 "the following sections."
-msgstr "下面是一份按类别分组的所有选项的摘要。后续章节将进行具体解释。"
+msgstr "这是按类型分组的所有选项的摘要。具体解释在后续章节。"
 
 #: Terminal.1.xml:89(link) Terminal.1.xml:144(title)
 msgid "General Options"
-msgstr "常规选项"
+msgstr "一般选项"
 
 #: Terminal.1.xml:91(para)
 msgid ""
@@ -194,16 +196,16 @@ msgstr ""
 
 #: Terminal.1.xml:147(term)
 msgid "<option>-h</option>, <option>--help</option>"
-msgstr "<option>-h</option>, <option>--help</option>"
+msgstr "<option>-h</option>，<option>--help</option>"
 
 #: Terminal.1.xml:151(para)
 msgid ""
 "List the various command line options supported by @PACKAGE_NAME@ and exit"
-msgstr "列出 @PACKAGE_NAME@ 支持的命令行选项并退出"
+msgstr "列出 @PACKAGE_NAME@ 支持的各种命令行选项并退出"
 
 #: Terminal.1.xml:156(term)
 msgid "<option>-V</option>, <option>--version</option>"
-msgstr "<option>-V</option>, <option>--version</option>"
+msgstr "<option>-V</option>，<option>--version</option>"
 
 #: Terminal.1.xml:160(para)
 msgid "Display version information and exit"
@@ -215,7 +217,7 @@ msgstr "--disable-server"
 
 #: Terminal.1.xml:169(para)
 msgid "Do not register with the D-BUS session message bus"
-msgstr "不向 D-BUS 会话消息通知机制注册"
+msgstr "不用 D-BUS 会话消息总线注册"
 
 #: Terminal.1.xml:175(replaceable) Terminal.1.xml:271(replaceable)
 msgid "display"
@@ -251,7 +253,7 @@ msgstr "--tab"
 msgid ""
 "Open a new tab in the last-specified window; more than one of these options "
 "can be provided."
-msgstr "在最后指定的窗口中打开一个新标签；可以使用多个该选项。"
+msgstr "在上次指定的窗口中打开新标签；可以使用多个该选项。"
 
 #: Terminal.1.xml:207(option)
 msgid "--window"
@@ -265,7 +267,7 @@ msgstr "打开一个包含单个标签的新窗口；可以使用多个该选项
 
 #: Terminal.1.xml:220(term)
 msgid "<option>-x</option>, <option>--execute</option>"
-msgstr "<option>-x</option>, <option>--execute</option>"
+msgstr "<option>-x</option>，<option>--execute</option>"
 
 #: Terminal.1.xml:224(para)
 msgid "Execute the remainder of the command line inside the terminal"
@@ -276,7 +278,7 @@ msgid ""
 "<option>-e</option>, <option>--command=<replaceable>command</replaceable></"
 "option>"
 msgstr ""
-"<option>-e</option>, <option>--command=<replaceable>命令</replaceable></"
+"<option>-e</option>，<option>--command=<replaceable>命令</replaceable></"
 "option>"
 
 #: Terminal.1.xml:233(para)
@@ -298,21 +300,21 @@ msgid ""
 "<option>-T</option>, <option>--title=<replaceable>title</replaceable></"
 "option>"
 msgstr ""
-"<option>-T</option>, <option>--title=<replaceable>标题</replaceable></option>"
+"<option>-T</option>，<option>--title=<replaceable>标题</replaceable></option>"
 
 #: Terminal.1.xml:251(para)
 msgid ""
 "Set <parameter>title</parameter> as the initial window title for the terminal"
-msgstr "设置 <parameter>标题</parameter> 为终端窗口的初始标题"
+msgstr "设置 <parameter>标题</parameter> 为终端的初始窗口标题"
 
 #: Terminal.1.xml:256(term)
 msgid "<option>-H</option>, <option>--hold</option>"
-msgstr "<option>-H</option>, <option>--hold</option>"
+msgstr "<option>-H</option>，<option>--hold</option>"
 
 #: Terminal.1.xml:260(para)
 msgid ""
 "Causes the terminal to be kept around after the child command has terminated"
-msgstr "使终端在子程序终止后保持原来状态 (不自动退出)"
+msgstr "使终端在子命令终止后继续工作"
 
 #: Terminal.1.xml:271(option)
 msgid "--display=<placeholder-1/>"
@@ -320,11 +322,11 @@ msgstr "--display=<placeholder-1/>"
 
 #: Terminal.1.xml:274(para)
 msgid "X display to use for the last- specified window."
-msgstr "最后所指定的窗口使用的 X 显示。"
+msgstr "用于上次指定的窗口的 X 显示。"
 
 #: Terminal.1.xml:280(replaceable)
 msgid "geometry"
-msgstr "几何属性"
+msgstr "几何"
 
 #: Terminal.1.xml:280(option)
 msgid "--geometry=<placeholder-1/>"
@@ -337,13 +339,13 @@ msgid ""
 "manvolnum></citerefentry> for more information on how to specify window "
 "geometries."
 msgstr ""
-"设置最后所指定的窗口的几何属性为 <parameter>几何属性</parameter>。查看 "
-"<citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></"
-"citerefentry> 以获取更多关于指定窗口几何属性的信息。"
+"设置上次指定的窗口的几何为 <parameter>几何</parameter>。阅读 "
+"<citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum>"
+"</citerefentry> 获取更多有关如何指定窗口的信息。"
 
 #: Terminal.1.xml:293(replaceable)
 msgid "role"
-msgstr "角色"
+msgstr "识别码"
 
 #: Terminal.1.xml:293(option)
 msgid "--role=<placeholder-1/>"
@@ -356,9 +358,9 @@ msgid ""
 "window you create from the command line. It is mostly used for session "
 "management inside @PACKAGE_NAME@"
 msgstr ""
-"设置最后所指定的窗口的窗口角色为 <parameter>角色</parameter>。只对一个窗口生"
-"效且对每个您从命令行启动的窗口仅能指定一次该选项。该选项常用于在 "
-"@PACKAGE_NAME@ 中进行会话管理。"
+"设置上次指定的窗口的窗口识别码为 <parameter>识别码</parameter>。只对一个窗口生效且"
+"对每个您从命令行创建的窗口只能指定一次。它大多用于在 @PACKAGE_NAME@ "
+"中进行会话管理。"
 
 #: Terminal.1.xml:306(replaceable)
 msgid "string"
@@ -374,8 +376,8 @@ msgid ""
 "internally to forward the startup notification id when using the D-BUS "
 "service."
 msgstr ""
-"设置最后所指定的窗口的启动提示标识符。用于使用 D-BUS 服务时在内部传送启动提示"
-"标识符。"
+"设置上次指定的窗口的启动通知标识符。用于使用 D-BUS 服务时在内部传送"
+"启动提示标识符。"
 
 #: Terminal.1.xml:318(replaceable)
 msgid "icon"
@@ -383,11 +385,11 @@ msgstr "图标"
 
 #: Terminal.1.xml:318(option)
 msgid "-I, --icon=<placeholder-1/>"
-msgstr "-I, --icon=<placeholder-1/>"
+msgstr "-I，--icon=<placeholder-1/>"
 
 #: Terminal.1.xml:321(para)
 msgid "Set the terminal's icon as an icon name or filename."
-msgstr "使用图标名称或者图标文件名设置终端图标"
+msgstr "设置终端的图标作为图标名称或文件名。"
 
 #: Terminal.1.xml:329(option)
 msgid "--fullscreen"
@@ -399,8 +401,8 @@ msgid ""
 "window; can be specified once for each window you create from the command "
 "line."
 msgstr ""
-"设置最后所指定的窗口使用全屏模式；只对一个窗口生效；对每个您从命令行启动的窗"
-"口仅能指定一次该选项。"
+"设置上次指定的窗口为全屏模式；只对一个窗口生效；对每个您从命令行创建的"
+"窗口只能指定一次。"
 
 #: Terminal.1.xml:341(option)
 msgid "--maximize"
@@ -412,8 +414,8 @@ msgid ""
 "window; can be specified once for each window you create from the command "
 "line."
 msgstr ""
-"设置最后所指定的窗口使用最大化模式；只对一个窗口生效；对每个您从命令行启动的"
-"窗口仅能指定一次该选项。"
+"设置上次指定的窗口为最大化模式；只对一个窗口生效；对每个您从命令行创建的"
+"窗口只能指定一次。"
 
 #: Terminal.1.xml:353(option)
 msgid "--show-menubar"
@@ -424,8 +426,7 @@ msgid ""
 "Turn on the menubar for the last-specified window. Can be specified once for "
 "each window you create from the command line."
 msgstr ""
-"设置最后所指定的窗口显示菜单栏。对每个您从命令行启动的窗口仅能指定一次该选"
-"项。"
+"设置上次指定的窗口显示菜单栏。对每个您从命令行创建的窗口只能指定一次。"
 
 #: Terminal.1.xml:365(option)
 msgid "--hide-menubar"
@@ -436,8 +437,7 @@ msgid ""
 "Turn off the menubar for the last-specified window. Can be specified once "
 "for each window you create from the command line."
 msgstr ""
-"设置最后所指定的窗口不显示菜单栏。对每个您从命令行启动的窗口仅能指定一次该选"
-"项。"
+"设置上次指定的窗口不显示菜单栏。对每个您从命令行创建的窗口只能指定一次。"
 
 #: Terminal.1.xml:377(option)
 msgid "--show-borders"
@@ -449,8 +449,8 @@ msgid ""
 "only one window. Can be specified once for each window you create from the "
 "command line."
 msgstr ""
-"设置最后所指定的窗口显示窗口装饰。只对一个窗口生效。对每个您从命令行启动的窗"
-"口仅能指定一次该选项。"
+"设置上次指定的窗口显示窗口修饰。只对一个窗口生效。对每个您从命令行创建"
+"的窗口只能指定一次。"
 
 #: Terminal.1.xml:389(option)
 msgid "--hide-borders"
@@ -462,8 +462,8 @@ msgid ""
 "only one window. Can be specified once for each window you create from the "
 "command line."
 msgstr ""
-"设置最后所指定的窗口不显示窗口装饰。只对一个窗口生效。对每个您从命令行启动的"
-"窗口仅能指定一次该选项。"
+"设置上次指定的窗口不显示窗口修饰。只对一个窗口生效。对每个您从命令行创建"
+"的窗口只能指定一次。"
 
 #: Terminal.1.xml:401(option)
 msgid "--show-toolbars"
@@ -475,8 +475,8 @@ msgid ""
 "window. Can be specified once for each window you create from the command "
 "line."
 msgstr ""
-"设置最后所指定的窗口显示工具栏。只对一个窗口生效。对每个您从命令行启动的窗口"
-"仅能指定一次该选项。"
+"设置上次指定的窗口显示工具栏。只对一个窗口生效。对每个您从命令行创建的"
+"窗口只能指定一次。"
 
 #: Terminal.1.xml:413(option)
 msgid "--hide-toolbars"
@@ -488,8 +488,8 @@ msgid ""
 "window. Can be specified once for each window you create from the command "
 "line."
 msgstr ""
-"设置最后所指定的窗口不显示工具栏。只对一个窗口生效。对每个您从命令行启动的窗"
-"口仅能指定一次该选项。"
+"设置上次指定的窗口不显示工具栏。只对一个窗口生效。对每个您从命令行创建的"
+"窗口只能指定一次。"
 
 #: Terminal.1.xml:427(title)
 msgid "Examples"
@@ -505,7 +505,7 @@ msgid ""
 "two tabs in it, where the first tab runs <command>mutt</command> and the "
 "second tab runs <command>mc</command>."
 msgstr ""
-"打开一个新的 80 行 40 列且有两个标签的终端窗口，第一个标签运行程序 "
+"打开一个 80 列 40 行几何且有两个标签的新终端窗口，第一个标签运行程序 "
 "<command>mutt</command>，第二个标签运行 <command>mc</command>。"
 
 #: Terminal.1.xml:443(title)
@@ -519,9 +519,9 @@ msgid ""
 "and configuration files. This means that file locations will be specified as "
 "a path relative to the directories described in the specification."
 msgstr ""
-"Terminal 使用 <ulink url=\"http://freedesktop.org/\" type=\"http"
-"\">Freedesktop.org</ulink> 定义的基本目录来存放它的数据和配置文件。这意味着文"
-"件位置将以定义中的目录的相对路径提供。"
+"终端使用 <ulink url=\"http://freedesktop.org/\" type=\"http\">Freedesktop.org"
+"</ulink> 中定义的基本目录规格来放置它的数据和配置文件。这意味着"
+"文件位置将以规格中描述的此目录的相对路径来指定。"
 
 #: Terminal.1.xml:454(varname)
 msgid "${XDG_CONFIG_HOME}"
@@ -532,8 +532,8 @@ msgid ""
 "The first base directory to look for configuration files. By default this is "
 "set to <filename role=\"directory\">~/.config/</filename>."
 msgstr ""
-"第一个存放配置文件的基本目录。默认为 <filename role=\"directory\">~/.config/"
-"</filename>。"
+"第一个基本目录去找配置文件。其默认设为 "
+"<filename role=\"directory\">~/.config/</filename>。"
 
 #: Terminal.1.xml:464(varname)
 msgid "${XDG_CONFIG_DIRS}"
@@ -547,10 +547,10 @@ msgid ""
 "depends on how the program was build and will often be <filename role="
 "\"directory\">/etc/</filename> for binary packages."
 msgstr ""
-"以冒号分隔各个包含配置数据的目录的一个列表。默认情况下，应用程序会查找 "
-"<filename role=\"directory\">${sysconfdir}/xdg/</filename>。<varname>"
-"${sysconfdir}</varname> 的值取决于程序如何编译，对于二进制包，通常为 "
-"<filename role=\"directory\">/etc/</filename>。"
+"以冒号分隔包含配置数据的基本目录列表。应用"
+"程序默认会在 <filename role=\"directory\">${sysconfdir}/xdg/</filename> 中查找。"
+"<varname>${sysconfdir}</varname> 值取决于程序如何编译且对于二进制"
+"软件包通常为 <filename role=\"directory\">/etc/</filename>。"
 
 #: Terminal.1.xml:477(varname)
 msgid "${XDG_DATA_HOME}"
@@ -561,8 +561,8 @@ msgid ""
 "The root for all user-specific data files. By default this is set to "
 "<filename role=\"directory\">~/.local/share/</filename>."
 msgstr ""
-"所有的属于用户个人的数据文件的根目录。默认情况下为 <filename role=\"directory"
-"\">~/.local/share/</filename>。"
+"用于用户个人数据文件的根目录。"
+"默认设置为 <filename role=\"directory\">~/.local/share/</filename>。"
 
 #: Terminal.1.xml:487(varname)
 msgid "${XDG_DATA_DIRS}"
@@ -574,8 +574,8 @@ msgid ""
 "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
 "base directory. The directories should be separated with a colon."
 msgstr ""
-"以优先顺序排列的多个用以查找数据文件的目录，为 <varname>${XDG_DATA_HOME}</"
-"varname> 的相对路径。这些目录之间必须以冒号分隔。"
+"一系列优先排列的除 <varname>${XDG_DATA_HOME}</varname> 基本目录之外与搜索数据"
+"文件有关的基本目录。这些目录之间应该以冒号分隔。"
 
 #: Terminal.1.xml:501(title)
 msgid "Files"
@@ -602,9 +602,9 @@ msgid ""
 "will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
 "Terminal/Terminal-toolbars.ui</filename>."
 msgstr ""
-"此文件包含工具栏的用户界面定义。如果您使用图形化的工具栏编辑器自定义您的工具"
-"栏，@PACKAGE_NAME@ 将把新的工具栏布局保存在文件 <filename>${XDG_DATA_HOME}/"
-"Terminal/Terminal-toolbars.ui</filename> 之中。"
+"此文件包含工具栏的用户界面定义。如果您使用图形化的工具栏编辑器自定义"
+"工具栏，@PACKAGE_NAME@ 将在 <filename>${XDG_DATA_HOME}/Terminal/Terminal-"
+"toolbars.ui</filename> 文件中储存新的工具栏布局。"
 
 #: Terminal.1.xml:529(title)
 msgid "See also"
@@ -773,10 +773,10 @@ msgid ""
 "complete license text is available from the <ulink type=\"http\" url="
 "\"http://www.gnu.org/\">Free Software Foundation</ulink>."
 msgstr ""
-"在自由软件基金会发布的 GNU 自由文档许可协议版本 1.1 或以后版本的条款约束下允"
-"许复制，分发和/或修改本文档，不要求保留特定内容、封面文本或者封底文本。许可协"
-"议全文可以通过以下链接找到: <ulink type=\"http\" url=\"http://www.gnu.org/\">"
-"自由软件基金会</ulink>。"
+"在自由软件基金会发布的 GNU 自由文档许可协议 1.1 版本或更高版本"
+"的条款约束下允许复制、分发和/或修改本文档；不要求保留特定内容、"
+"封面文本或者封底文本。完整的许可协议文本在以下：<ulink type=\"http\" url="
+"\"http://www.gnu.org/\">Free Software Foundation</ulink>。"
 
 #: Terminal.xml:55(firstname)
 msgid "Andrew"
@@ -792,7 +792,7 @@ msgstr "andrewski@fr.st"
 
 #: Terminal.xml:71(releaseinfo)
 msgid "This manual describes version @PACKAGE_VERSION@ of @PACKAGE_NAME@."
-msgstr "本手册介绍了版本为 @PACKAGE_VERSION@ 的 @PACAGE_NAME@。"
+msgstr "本手册介绍了 @PACKAGE_VERSION@ 版本的 @PACAGE_NAME@。"
 
 #: Terminal.xml:77(title)
 msgid "Introduction to @PACKAGE_NAME@"
@@ -813,15 +813,15 @@ msgid ""
 "fastest, and most powerful way to perform a certain task. In fact, power "
 "users would be lost without the CLI."
 msgstr ""
-"UNIX 操作系统最开始是作为一个纯文本的，仅使用键盘输入命令来控制的系统而设计"
-"的。这被称为 “命令行界面”(CLI)。X 窗口系统、Xfce 以及其他项目，即是您现在所使"
-"用的这些，是在图形化用户界面添加进 UNIX 系统后才出现的。但是，图形化用户界面"
-"的加入并不意味着 CLI 的消失。CLI 仍然被广泛使用，并且经常都是完成特定任务最简"
-"单、最快捷和最强大的方式。实际上，越有经验的用户可能越离不开 CLI。"
+"UNIX 操作系统最开始的设计是一个纯文本的、用键盘输入命令控制的系统。"
+"这就是众所周知的 “命令行界面”(CLI)。X 窗口系统、Xfce 以及其它项目"
+"给 UNIX 添加了一个图形化的、即您现在正在实际使用的用户界面。但图形化"
+"用户界面的加入并不意味着 CLI 的消亡。CLI 仍在并且经常是执行特定任务"
+"的最简单、最迅速和最强大的途径。实际上，没有 CLI 厉害用户应该会迷失。"
 
 #: Terminal.xml:115(title)
 msgid "What makes @PACKAGE_NAME@ special?"
-msgstr "什么让 @PACKAGE_NAME@ 与众不同？"
+msgstr "是什么让 @PACKAGE_NAME@ 与众不同？"
 
 #: Terminal.xml:117(para)
 msgid ""
@@ -831,13 +831,13 @@ msgid ""
 "mode (where both the menubar and the window decorations are hidden) that "
 "helps you to save space on your desktop."
 msgstr ""
-"@PACKAGE_NAME@ 的高级特性包括了一个简单的配置界面、单窗口多标签模式、可以使用"
-"假透明的终端背景和一个能够减小桌面空间占用的简洁模式 (在此模式中菜单栏和窗口"
-"装饰都将被隐藏)。"
+"@PACKAGE_NAME@ 的高级功能包括简单的配置界面、在单个窗口中用多标签"
+"使用终端的能力、假透明的终端背景可能性和一个帮助您在桌面上节约空间的"
+"紧凑模式(菜单栏和窗口修饰全都隐藏)。"
 
 #: Terminal.xml:123(para)
 msgid "The following key features are available:"
-msgstr "有下列的关键特性可用:"
+msgstr "有如下关键功能："
 
 #: Terminal.xml:127(para)
 msgid "Multiple tabs per window"
@@ -847,7 +847,7 @@ msgstr "单窗口多标签"
 msgid ""
 "Customizable toolbars, which can be changed using an integrated graphical "
 "toolbar editor"
-msgstr "可通过集成的图形化编辑器进行自定义调整的工具栏"
+msgstr "可定制的工具栏，能使用集成的图形化工具栏编辑器更改"
 
 #: Terminal.xml:137(para)
 msgid ""
@@ -855,16 +855,16 @@ msgid ""
 "<guilabel>Preferences</guilabel> dialog plus a bunch of so called "
 "<emphasis>hidden options</emphasis>"
 msgstr ""
-"通过 <guilabel>首选项</guilabel> 对话框和一组所谓的 <emphasis>隐藏选项</"
-"emphasis> 几乎可以配置 @PACKAGE_NAME@ 的每个方面"
+"在 <guilabel>首选项</guilabel> 对话框外加一组所谓的 "
+"<emphasis>隐藏选项</emphasis> 中配置 @PACKAGE_NAME@ 几乎每个方面的能力"
 
 #: Terminal.xml:143(para)
 msgid ""
 "Good integration with the <ulink url=\"http://xfce.org/\">Xfce desktop "
 "environment</ulink> in particular, but also with every other Linux desktop"
 msgstr ""
-"与 <ulink url=\"http://xfce.org/\">Xfce desktop environment</ulink> 配合使用"
-"尤其出色，与其他 Linux 桌面环境同样有很好的兼容性"
+"尤其是与 <ulink url=\"http://xfce.org/\">Xfce desktop environment</ulink>、"
+"包括其它任一 Linux 桌面的良好的整合。"
 
 #: Terminal.xml:148(para)
 msgid "Session management support"
@@ -872,23 +872,23 @@ msgstr "会话管理支持"
 
 #: Terminal.xml:153(para)
 msgid "Real multihead support (both MultiScreen and Xinerama mode)"
-msgstr "真正的多头支持 (多屏幕模式和 Xinerama 模式)"
+msgstr "真正的多头支持(多屏幕模式和 Xinerama 模式)"
 
 #: Terminal.xml:158(para)
 msgid ""
 "Standards compliance (see the <ulink url=\"http://freedesktop.org/"
 "\">freedesktop.org</ulink> website)"
 msgstr ""
-"符合标准 (查看 <ulink url=\"http://freedesktop.org/\">freedesktop.org</"
-"ulink> 网站)"
+"遵从标准(参看 <ulink url=\"http://freedesktop.org/"
+"\">freedesktop.org</ulink> 网站)"
 
 #: Terminal.xml:163(para)
 msgid ""
 "<ulink url=\"http://dbus.freedesktop.org/\">D-BUS</ulink> based terminal "
 "service facility to minimize the overall resource usage"
 msgstr ""
-"基于 <ulink url=\"http://dbus.freedesktop.org/\">D-BUS</ulink> 的终端服务以最"
-"小化资源占用"
+"基于 <ulink url=\"http://dbus.freedesktop.org/\">D-BUS</ulink> "
+"的终端服务工具以最小化全局资源占用"
 
 #: Terminal.xml:168(para)
 msgid ""
@@ -896,21 +896,21 @@ msgid ""
 "developer.gnome.org/doc/API/2.0/gtk/\">GTK+</ulink> and <ulink url=\"http://"
 "developer.gnome.org/doc/API/2.0/gobject/\">GObject</ulink>."
 msgstr ""
-"通过很好地使用 <ulink url=\"http://developer.gnome.org/doc/API/2.0/gtk/\">GTK"
-"+</ulink> 和 <ulink url=\"http://developer.gnome.org/doc/API/2.0/gobject/"
-"\">GObject</ulink> 实现高度维护性。"
+"最优化地使用 <ulink url=\"http://developer.gnome.org/doc/API/2.0/gtk/\">"
+"GTK+</ulink> 和 <ulink url=\"http://developer.gnome.org/doc/API/2.0/"
+"gobject/\">GObject</ulink> 实现高度的可维护性。"
 
 #: Terminal.xml:175(para)
 msgid ""
 "Besides these key features, @PACKAGE_NAME@ supports all features you would "
 "expect from a modern terminal emulator."
 msgstr ""
-"除了以上介绍的几个关键特性之外，@PACKAGE_NAME@ 同样拥有您理想中的主流终端模拟"
-"器所能提供的其他特性。"
+"除了这些关键功能，@PACKAGE_NAME@ 支持您期望的现代化终端模拟器所应"
+"具有的所有功能。"
 
 #: Terminal.xml:181(title)
 msgid "Getting started"
-msgstr "开始使用"
+msgstr "新手上路"
 
 #: Terminal.xml:184(title)
 msgid "Starting @PACKAGE_NAME@"
@@ -923,8 +923,8 @@ msgid ""
 "right mouse button and choose <menuchoice><guimenu>System</"
 "guimenu><guimenuitem>Terminal</guimenuitem></menuchoice>."
 msgstr ""
-"启动 @PACKAGE_NAME@ 最简单的方式是使用您桌面环境的应用程序菜单；在 Xfce 中，"
-"只需要在桌面单击鼠标右键，然后选择 <menuchoice><guimenu>系统</"
+"启动 @PACKAGE_NAME@ 最简单的方式是使用您桌面的应用程序菜单；"
+"在 Xfce 中，将鼠标指针指向桌面、按鼠标右边按钮并选择 <menuchoice><guimenu>系统</"
 "guimenu><guimenuitem>终端</guimenuitem></menuchoice>。"
 
 #: Terminal.xml:193(para)
@@ -934,24 +934,25 @@ msgid ""
 "keycap><keycap>F2</keycap></keycombo>, type <userinput><command>Terminal</"
 "command></userinput> and click the button <guibutton>Run</guibutton>."
 msgstr ""
-"您同样可以通过命令行或者 <guilabel>应用程序启动器</guilabel> 来启动 "
-"@PACKAGE_NAME@。按下 <keycombo><keycap>Alt</keycap><keycap>F2</keycap></"
-"keycombo>，输入 <userinput><command>Terminal</command></userinput> 并点击 "
+"您也可以从命令行或者 <guilabel>应用程序启动器</guilabel> 启动 @PACKAGE_NAME@。"
+"只需击下 <keycombo><keycap>Alt</keycap><keycap>F2</keycap></keycombo>，"
+"输入 <userinput><command>Terminal</command></userinput> 并点击 "
 "<guibutton>运行</guibutton> 按钮。"
 
 #: Terminal.xml:203(title)
 msgid "When you first start @PACKAGE_NAME@"
-msgstr "第一次启动 @PACKAGE_NAME@"
+msgstr "在第一次启动 @PACKAGE_NAME@ 时"
 
 #: Terminal.xml:205(para)
 msgid ""
 "When you start @PACKAGE_NAME@ for the first time, the application opens a "
 "terminal window with default settings."
-msgstr "当您第一次启动 @PACKAGE_NAME@，本程序将打开一个默认配置的终端窗口。"
+msgstr ""
+"当您第一次启动 @PACKAGE_NAME@ 时，此应用程序打开一个默认配置的终端窗口。"
 
 #: Terminal.xml:217(phrase)
 msgid "Example of a default terminal window"
-msgstr "默认终端窗口的例子"
+msgstr "默认终端窗口的示例"
 
 #: Terminal.xml:222(para)
 msgid ""
@@ -963,17 +964,16 @@ msgid ""
 "starts the application (<filename>/bin/bash</filename> in case of a default "
 "Linux installation)."
 msgstr ""
-"终端窗口将显示命令提示符供您输入 UNIX 命令。命令提示符可能因您 shell 的配置而"
-"异。光标将显示在命令提示符处。当您输入一个 UNIX 命令并且按下 <keycap>Return</"
-"keycap> 键时，计算机将运行该命令。默认情形下，@PACKAGE_NAME@ 将使用启动该程序"
-"的用户的 login shell (默认的 Linux 安装情况下通常为 <filename>/bin/bash</"
-"filename>)。"
+"终端窗口显示一个您可以输入 UNIX 命令的命令提示符。命令提示符可能非常"
+"取决于您的 shell 配置。光标将显示在命令提示符处。当您输入一个 UNIX "
+"命令并且按下 <keycap>Return</keycap> 键时，计算机执行此命令。@PACKAGE_NAME@ 默认使用"
+"启动此应用程序用户的登录 shell(默认 Linux 安装时为 <filename>/bin/bash</filename>)。"
 
 #: Terminal.xml:232(para)
 msgid ""
 "@PACKAGE_NAME@ sets the following environment variables for the command "
 "running inside the terminal window:"
-msgstr "@PACKAGE_NAME@ 为在终端窗口中运行的命令设置如下环境变量:"
+msgstr "@PACKAGE_NAME@ 为在终端窗口中运行的命令设置如下环境变量："
 
 #: Terminal.xml:239(varname)
 msgid "TERM"
@@ -984,8 +984,8 @@ msgid ""
 "Set to <literal>xterm</literal> or <literal>xterm-color</literal>, you can "
 "configure the value from the preferences dialog."
 msgstr ""
-"设置为 <literal>xterm</literal> 或者 <literal>xterm-color</literal>，您可以在"
-"首选项对话框中配置这个值。"
+"设置为 <literal>xterm</literal> 或者 <literal>xterm-color</literal>，您可以"
+"在首选项对话框中配置此值。"
 
 #: Terminal.xml:246(varname)
 msgid "COLORTERM"
@@ -1009,11 +1009,11 @@ msgstr "WINDOWID"
 
 #: Terminal.xml:260(para)
 msgid "Set to the X11 window identifier of the terminal by default."
-msgstr "默认设置为终端窗口的 X11 窗口标识符。"
+msgstr "默认设置为终端的 X11 窗口标识符。"
 
 #: Terminal.xml:267(title)
 msgid "Working with multiple terminals"
-msgstr "使用多个终端工作"
+msgstr "使用多终端工作"
 
 #: Terminal.xml:269(para)
 msgid ""
@@ -1023,20 +1023,20 @@ msgid ""
 "tabbed terminal in a window is separate sub-process, so you can use each "
 "terminal for a different task."
 msgstr ""
-"@PACKAGE_NAME@ 提供标签特性，允许您在同一个窗口中打开多个终端。每个终端在一个"
-"独立的标签中打开。点击标签以在窗口中显示与该标签对应的终端。窗口每个标签中的"
-"终端为一个独立的子进程，因此您可以在各个终端中执行不同的任务。"
+"@PACKAGE_NAME@ 提供标签功能让您在单个窗口中打开多个终端。每个终端在一个"
+"独立的标签中打开。点击应用程序标签在窗口中显示终端。窗口中每个标签"
+"中的终端为独立的子进程，因此您可以使用各个终端用于不同任务。"
 
 #: Terminal.xml:284(phrase)
 msgid "Example of a terminal window with tabs"
-msgstr "带标签的终端窗口的例子"
+msgstr "带标签的终端窗口的示例"
 
 #: Terminal.xml:289(para)
 msgid ""
 "See <xref linkend=\"usage\"/> for information about how to open a new tabbed "
 "terminal."
 msgstr ""
-"查看 <xref linkend=\"usage\"/> 以获得如何在新标签中打开一个终端的信息。"
+"参看 <xref linkend=“用法”/> 获取如何在新标签中打开终端的信息。"
 
 #: Terminal.xml:294(para)
 msgid ""
@@ -1044,8 +1044,8 @@ msgid ""
 "tab header or by choosing <menuchoice><guimenu>File</"
 "guimenu><guimenuitem>Close Tab</guimenuitem></menuchoice> from the menubar."
 msgstr ""
-"您可以点击标签上的关闭按钮或者选择菜单栏中的 <menuchoice><guimenu>文件</"
-"guimenu><guimenuitem>关闭标签</guimenuitem></menuchoice> 以关闭一个标签。"
+"您可以通过点击终端标签头上的关闭按钮或者选择菜单栏中的 <menuchoice><guimenu>文件</"
+"guimenu><guimenuitem>关闭标签</guimenuitem></menuchoice> 关闭终端标签。"
 
 #: Terminal.xml:304(title)
 msgid "Usage"
@@ -1053,11 +1053,11 @@ msgstr "用法"
 
 #: Terminal.xml:307(title)
 msgid "To open and close terminals"
-msgstr "打开或关闭终端"
+msgstr "打开并关闭终端"
 
 #: Terminal.xml:311(term)
 msgid "To open a new terminal window:"
-msgstr "打开一个新的终端窗口:"
+msgstr "打开一个新终端窗口："
 
 #: Terminal.xml:313(para)
 msgid ""
@@ -1066,25 +1066,25 @@ msgid ""
 "<menuchoice><guimenuitem>Open Terminal</guimenuitem></menuchoice>)."
 msgstr ""
 "选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>打开终端</guimenuitem></"
-"menuchoice> (或者右键单击终端窗口并选择 <menuchoice><guimenuitem>打开终端</"
-"guimenuitem></menuchoice>)。"
+"menuchoice>(或者右击终端窗口并"
+"选择 <menuchoice><guimenuitem>打开终端</guimenuitem></menuchoice>)。"
 
 #: Terminal.xml:315(para)
 msgid ""
 "The new terminal inherits the working directory from its parent terminal."
-msgstr "新打开的终端将继承其父终端的工作目录。"
+msgstr "新终端继承其父终端的工作目录。"
 
 #: Terminal.xml:321(term)
 msgid "To close a terminal window:"
-msgstr "关闭一个终端窗口:"
+msgstr "关闭终端窗口："
 
 #: Terminal.xml:323(para)
 msgid ""
 "Choose <menuchoice><guimenu>File</guimenu><guimenuitem>Close Window</"
 "guimenuitem></menuchoice>."
 msgstr ""
-"选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>关闭窗口</guimenuitem></"
-"menuchoice>。"
+"选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>关闭窗口</"
+"guimenuitem></menuchoice>"
 
 #: Terminal.xml:325(para)
 msgid ""
@@ -1092,12 +1092,12 @@ msgid ""
 "opened from the terminal. If you close the last terminal window, the "
 "@PACKAGE_NAME@ application exits."
 msgstr ""
-"此操作关闭终端窗口以及终止您在终端中打开的所有子进程。如果您关闭最后一个终端"
-"窗口，@PACKAGE_NAME@ 应用程序将退出。"
+"此动作关闭终端窗口并终止您在终端中打开的所有子进程。如果您关闭最后一个"
+"终端窗口，@PACKAGE_NAME@ 应用程序将退出。"
 
 #: Terminal.xml:332(term)
 msgid "To add a new tabbed terminal to a window:"
-msgstr "在窗口中添加一个新标签:"
+msgstr "给窗口添加一个新的终端标签："
 
 #: Terminal.xml:334(para)
 msgid ""
@@ -1105,23 +1105,23 @@ msgid ""
 "guimenuitem></menuchoice> (or right-click the terminal window and choose "
 "<menuchoice><guimenuitem>Open Tab</guimenuitem></menuchoice>)."
 msgstr ""
-"选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>打开标签</guimenuitem></"
-"menuchoice> (或者右键点击终端窗口并选择 <menuchoice><guimenuitem>打开标签</"
-"guimenuitem></menuchoice>)。"
+"选择 <menuchoice><guimenu>文件</guimenu><guimenuitem>打开标签</"
+"guimenuitem></menuchoice>(或者右击终端窗口并"
+"选择 <menuchoice><guimenuitem>打开标签</guimenuitem></menuchoice>)。"
 
 #: Terminal.xml:336(para)
 msgid ""
 "The new terminal inherits the working directory from the previously active "
 "terminal."
-msgstr "新打开的终端将继承最后一个活动终端的工作目录。"
+msgstr "新终端继承上一个活动终端的工作目录。"
 
 #: Terminal.xml:344(title)
 msgid "To modify a terminal window"
-msgstr "调整终端窗口"
+msgstr "修改终端窗口"
 
 #: Terminal.xml:348(term)
 msgid "To hide the menubar:"
-msgstr "隐藏菜单栏:"
+msgstr "隐藏菜单栏："
 
 #: Terminal.xml:350(para)
 msgid ""
@@ -1129,61 +1129,61 @@ msgid ""
 "guimenuitem></menuchoice> (or right-click the terminal window and choose "
 "<menuchoice><guimenuitem>Show Menubar</guimenuitem></menuchoice>)."
 msgstr ""
-"选择 <menuchoice><guimenu>查看</guimenu><guimenuitem>显示菜单栏</"
-"guimenuitem></menuchoice> (或者右键点击终端窗口并选择 "
-"<menuchoice><guimenuitem>显示菜单栏</guimenuitem></menuchoice>)。"
+"选择 <menuchoice><guimenu>视图</guimenu><guimenuitem>显示菜单栏</"
+"guimenuitem></menuchoice>(或者右击终端窗口并"
+"选择 <menuchoice><guimenuitem>显示菜单栏</guimenuitem></menuchoice>)。"
 
 #: Terminal.xml:354(term)
 msgid "To show a hidden menubar:"
-msgstr "重新显示已隐藏的菜单栏:"
+msgstr "显示已隐藏的菜单栏："
 
 #: Terminal.xml:356(para)
 msgid ""
 "Right-click the terminal window and choose <menuchoice><guimenuitem>Show "
 "Menubar</guimenuitem></menuchoice> from the popup menu."
 msgstr ""
-"右键点击终端窗口并从弹出的菜单中选择 <menuchoice><guimenuitem>显示菜单栏</"
-"guimenuitem></menuchoice>。"
+"右击终端窗口并从弹出的菜单中"
+"选择 <menuchoice><guimenuitem>显示菜单栏</guimenuitem></menuchoice>。"
 
 #: Terminal.xml:361(term)
 msgid "To show or hide the toolbars:"
-msgstr "显示或者隐藏工具栏:"
+msgstr "显示或隐藏工具栏："
 
 #: Terminal.xml:363(para)
 msgid ""
 "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Toolbars</"
 "guimenuitem></menuchoice>."
 msgstr ""
-"选择 <menuchoice><guimenu>查看</guimenu><guimenuitem>显示工具栏</"
-"guimenuitem></menuchoice>。"
+"选择 <menuchoice><guimenu>视图</guimenu><guimenuitem>显示工具栏</"
+"guimenuitem></menuchoice>"
 
 #: Terminal.xml:367(term)
 msgid "To customize the toolbars:"
-msgstr "自定义工具栏:"
+msgstr "自定义工具栏："
 
 #: Terminal.xml:369(para)
 msgid ""
 "Be sure to show the toolbars first; then choose <menuchoice><guimenu>Edit</"
 "guimenu><guimenuitem>Toolbars...</guimenuitem></menuchoice>."
 msgstr ""
-"首先确定工具栏已经显示；然后选择 <menuchoice><guimenu>编辑</"
+"一定要先显示工具栏；然后选择 <menuchoice><guimenu>编辑</"
 "guimenu><guimenuitem>工具栏...</guimenuitem></menuchoice>。"
 
 #: Terminal.xml:373(term)
 msgid "To show or hide the window decorations:"
-msgstr "显示或者隐藏窗口装饰:"
+msgstr "显示或隐藏窗口修饰："
 
 #: Terminal.xml:375(para)
 msgid ""
 "Choose <menuchoice><guimenu>View</guimenu><guimenuitem>Show Window Borders</"
 "guimenuitem></menuchoice>."
 msgstr ""
-"选择 <menuchoice><guimenu>查看</guimenu><guimenuitem>显示窗口边框</"
-"guimenuitem></menuchoice>。"
+"选择 <menuchoice><guimenu>视图</guimenu><guimenuitem>显示窗口边框</"
+"guimenuitem></menuchoice>"
 
 #: Terminal.xml:379(term)
 msgid "To put a terminal window into fullscreen"
-msgstr "全屏显示终端窗口:"
+msgstr "将终端窗口全屏显示："
 
 #: Terminal.xml:381(para)
 msgid ""
@@ -1192,13 +1192,13 @@ msgid ""
 "window and choose <menuchoice><guimenuitem>Fullscreen</guimenuitem></"
 "menuchoice>)."
 msgstr ""
-"在菜单栏中选择 <menuchoice><guimenu>查看</guimenu><guimenuitem>全屏</"
-"guimenuitem></menuchoice> (或者右键单击终端窗口并选择 "
+"从菜单栏中选择 <menuchoice><guimenu>视图</guimenu><guimenuitem>全屏</"
+"guimenuitem></menuchoice>(或者右击终端窗口并选择 "
 "<menuchoice><guimenuitem>全屏</guimenuitem></menuchoice>)。"
 
 #: Terminal.xml:386(term)
 msgid "To change the appearance of the terminal window:"
-msgstr "改变终端窗口的外观:"
+msgstr "更改终端窗口的外观："
 
 #: Terminal.xml:388(para)
 msgid ""
@@ -1207,9 +1207,9 @@ msgid ""
 "the appearance and behaviour of the terminal windows. For example, you can "
 "change the background color or the location of the scrollbar."
 msgstr ""
-"查看 <xref linkend=\"preferences\"/> 以获取您在 <guilabel>终端首选项</"
-"guilabel> 对话框中所选择用以改变终端窗口的外观和行为的选项的更多信息。例如，"
-"您可以改变终端的背景色和滚动条的位置。"
+"参看 <xref linkend=“首选项”/> 获取您在 <guilabel>终端首选项</guilabel> 对话框中"
+"选择用以更改终端窗口的外观和行为的选项的相关信息。"
+"比如，您可以更改终端的背景色和滚动条的位置。"
 
 #: Terminal.xml:398(title)
 msgid "To work with the contents of terminal windows"
@@ -1217,17 +1217,17 @@ msgstr "处理终端窗口中的内容"
 
 #: Terminal.xml:402(term)
 msgid "To scroll through previous commands and output:"
-msgstr "滚动查看之前的命令和命令输出:"
+msgstr "滚动过之前的命令和并输出："
 
 #: Terminal.xml:404(para)
 msgid "Perform one of the following actions:"
-msgstr "执行下列操作之一:"
+msgstr "执行以下某个动作："
 
 #: Terminal.xml:410(para)
 msgid ""
 "Use the scrollbar, which is usually displayed on the right side of each "
 "terminal window."
-msgstr "使用滚动条，通常显示在终端窗口的右边。"
+msgstr "使用通常显示在终端窗口右边的滚动条。"
 
 #: Terminal.xml:416(para)
 msgid ""
@@ -1238,16 +1238,16 @@ msgid ""
 "<keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo>, or "
 "<keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> keys."
 msgstr ""
-"使用按键 <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></"
+"按 <keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></"
 "keycombo>、<keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></"
 "keycombo>、<keycombo><keycap>Shift</keycap><keycap>Up</keycap></keycombo>、"
 "<keycombo><keycap>Shift</keycap><keycap>Down</keycap></keycombo>、"
 "<keycombo><keycap>Shift</keycap><keycap>Home</keycap></keycombo> 或者 "
-"<keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo>。"
+"<keycombo><keycap>Shift</keycap><keycap>End</keycap></keycombo> 键。"
 
 #: Terminal.xml:424(para)
 msgid "Use the middle wheel button on your mouse if applicable"
-msgstr "使用鼠标滚轮 (如果有的话)"
+msgstr "如果鼠标中间有滚轮按钮则使用它"
 
 #: Terminal.xml:429(para)
 msgid ""
@@ -1261,13 +1261,13 @@ msgid ""
 "<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> to disable it "
 "afterwards."
 msgstr ""
-"@PACKAGE_NAME@ 在 <keycap>Scroll Lock</keycap> 被按下时将模拟 FreeBSD 终端。"
-"当滚动锁定处于激活状态时，shell 中普通的输入和输出都会被停止，您可以使用 "
+"@PACKAGE_NAME@ 在按下 <keycap>Scroll Lock</keycap> 时模拟 FreeBSD 控制台。"
+"当滚动锁定激活时，shell 的普通输入输出都会停止并且您可以使用 "
 "<keycombo><keycap>Shift</keycap><keycap>Page Up</keycap></keycombo> 和 "
-"<keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> 或者使"
-"用可选的滚动条在终端历史记录中进行滚动。按下 <keycombo><keycap>Ctrl</"
-"keycap><keycap>S</keycap></keycombo> 激活滚动锁定，在之后您可以按下"
-"<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> 来取消锁定状态。"
+"<keycombo><keycap>Shift</keycap><keycap>Page Down</keycap></keycombo> 或者"
+"使用可选的滚动条在终端历史中滚动。按 <keycombo><keycap>Ctrl</"
+"keycap><keycap>S</keycap></keycombo> 激活滚动锁定，之后您可以按"
+"<keycombo><keycap>Ctrl</keycap><keycap>Q</keycap></keycombo> 禁用它。"
 
 #: Terminal.xml:439(para)
 msgid ""
@@ -1277,39 +1277,39 @@ msgid ""
 "guilabel> dialog."
 msgstr ""
 "终端窗口中能够回滚的行数在 <guilabel>终端首选项</guilabel> 对话框中的 "
-"<guilabel>常规</guilabel> 选项卡中的 <guilabel>回滚</guilabel> 设置处指定。"
+"<guilabel>一般</guilabel> 选项中的 <guilabel>回滚</guilabel> 设置处决定。"
 
 #: Terminal.xml:447(term)
 msgid "To select and copy text:"
-msgstr "选择并复制文本:"
+msgstr "选择并复制文本："
 
 #: Terminal.xml:449(para)
 msgid "You can select text in any of the following ways:"
-msgstr "您可以通过下列方式之一选择文本:"
+msgstr "您可以通过以下任一方式选择文本："
 
 #: Terminal.xml:452(para)
 msgid ""
 "To select a character at a time, click on the first character that you want "
 "to select and drag the mouse to the last character that you want to select."
 msgstr ""
-"以字符为单位选中文本，单击您要选择的第一个字符，并拖拽鼠标到您所要选择的最后"
-"一个字符处以选定文本。"
+"一次选择一个字符，点击您要选择的第一个字符并拖拽鼠标到您所要选择的最后"
+"一个字符处选择。"
 
 #: Terminal.xml:456(para)
 msgid ""
 "To select a word at a time, double-click on the first word that you want to "
 "select and drag the mouse to the last word that you want to select."
 msgstr ""
-"以词为单位选中文本，双击您所要选择的第一个词，并拖拽鼠标到您所要选择的最后一"
-"个词处以选定文本。"
+"一次选择一个字词，双击您要选择的第一个字词并拖拽鼠标到您所要选择的最后"
+"一个字词处选择。"
 
 #: Terminal.xml:460(para)
 msgid ""
 "To select a line at a time, triple-click on the first line that you want to "
 "select and drag the mouse to the last line that you want to select."
 msgstr ""
-"以行为单位选中文本，在您所要选择的第一行处点击三次，并拖拽鼠标到您做要选择的"
-"最后一行处以选定文本。"
+"一次选择一行，三次点击您要选择的第一行并拖拽鼠标到您所要选择的最后一行"
+"处选择。"
 
 #: Terminal.xml:464(para)
 msgid ""
@@ -1319,21 +1319,21 @@ msgid ""
 "<menuchoice><guimenu>Edit</guimenu><guimenuitem>Copy</guimenuitem></"
 "menuchoice>."
 msgstr ""
-"这些操作都会选中第一个和最后一个项目之间的所有文本。对于所有选中的文本，在您"
-"松开鼠标按钮之后，@PACKAGE_NAME@ 将会复制该文本至剪贴板。要手动粘贴所选文本，"
-"请选择 <menuchoice><guimenu>编辑</guimenu><guimenuitem>复制</guimenuitem></"
-"menuchoice>。"
+"这些动作都是选择第一个和最后一个项目之间的所有文本。对于所有选择的文本，"
+"在您松开鼠标按钮之后，@PACKAGE_NAME@ 会将选中的文本复制至剪贴板。要直白地"
+"粘贴选中的文本，选择 <menuchoice><guimenu>编辑</guimenu><guimenuitem>复制</"
+"guimenuitem></menuchoice>"
 
 #: Terminal.xml:471(term)
 msgid "To paste text into a terminal:"
-msgstr "粘贴文本至终端:"
+msgstr "粘贴文本至终端："
 
 #: Terminal.xml:473(para)
 msgid ""
 "If you previously copied text to the clipboard, you can paste the text into "
 "a terminal by performing one of the following actions:"
 msgstr ""
-"如果您之前将文本复制到剪贴板中，您可以执行下列操作之一以将该文本粘贴至终端中:"
+"如果您之前将文本复制在剪贴板中，您可以执行以下某个动作将此文本粘贴至终端："
 
 #: Terminal.xml:477(para)
 msgid ""
@@ -1344,10 +1344,10 @@ msgid ""
 "guimenuitem></menuchoice> item from <menuchoice><guimenu>Edit</guimenu></"
 "menuchoice> menu."
 msgstr ""
-"要粘贴您之前选中的文本，在命令提示符处点击鼠标中键。如果您的鼠标没有中键，请"
-"查看 X Server 文档中关于如何模拟鼠标中键的内容。这个动作等价于使用 "
+"在命令提示符处仅通过中击所选内容粘贴您复制的文本。如果您没有鼠标中键"
+"按钮，参考 X 服务器文档中有关如何模拟鼠标中键按钮的信息。此与使用 "
 "<menuchoice><guimenu>编辑</guimenu></menuchoice> 菜单中的 "
-"<menuchoice><guimenuitem>粘贴选中内容</guimenuitem></menuchoice> 选项。"
+"<menuchoice><guimenuitem>粘贴所选内容</guimenuitem></menuchoice> 项目等价。"
 
 #: Terminal.xml:484(para)
 msgid ""
@@ -1544,7 +1544,7 @@ msgid ""
 "<xref linkend=\"preferences-appearance\"/>."
 msgstr ""
 "如前所述，@PACKAGE_NAME@ 支持自定义工具栏。默认情况下，工具栏是禁用的，您需要"
-"手动启用工具栏。选择菜单中的 <menuchoice><guimenu>查看</guimenu><guimenuitem>"
+"手动启用工具栏。选择菜单中的 <menuchoice><guimenu>视图</guimenu><guimenuitem>"
 "显示工具栏</guimenuitem></menuchoice> 以在当前窗口中显示工具栏。如果您想总是"
 "显示工具栏，请参看 <xref linkend=\"preferences-appearance\"/>。"
 
@@ -1645,7 +1645,7 @@ msgid ""
 "The initial title can also substitute some tokens, see <xref linkend=\"set-"
 "title\"/> for more information."
 msgstr ""
-"初始标题同样会替换某些特定符号，查看 <xref linkend=\"set-title\"/> 以获得更多"
+"初始标题同样会替换某些特定符号，参看 <xref linkend=\"set-title\"/> 以获得更多"
 "信息。"
 
 #: Terminal.xml:725(guilabel)
@@ -1672,7 +1672,7 @@ msgid ""
 "running it as login shell."
 msgstr ""
 "选中此选项以强制 @PACKAGE_NAME@ 在您新打开终端时将您的 shell 作为 login "
-"shell 运行。查看您使用的 shell 的文档以了解更多关于 interactive shell 与 "
+"shell 运行。参看您使用的 shell 的文档以了解更多关于 interactive shell 与 "
 "login shell 的区别的详细信息。"
 
 #: Terminal.xml:742(guilabel)
@@ -2399,9 +2399,9 @@ msgid ""
 msgstr ""
 "该问题其实是由 <ulink url=\"http://developer.gnome.org/arch/gnome/widgets/"
 "vte.html\">vte</ulink>，这个 @PACKAGE_NAME@ 所使用的终端控件的 bug 引起的。一"
-"个给 vte 的补丁可以从 <ulink url=\"http://lunar-linux.org/lunar/patches/vte-"
-"0.11.11-termcap.patch\">这里</ulink>获得 (这个补丁是在 vte 的 0.11.11 版本的"
-"基础上生成的，在其他版本的 vte 上可能无法生效)。感谢补丁作者 Auke Kok。"
+"个给 vte 的补丁可以从 <ulink url=\"http://lunar-linux.org/lunar/patches/"
+"vte-0.11.11-termcap.patch\">这里</ulink>获得 (这个补丁是在 vte 的 0.11.11 版"
+"本的基础上生成的，在其他版本的 vte 上可能无法生效)。感谢补丁作者 Auke Kok。"
 
 #: Terminal.xml:1296(title)
 msgid "Support"
@@ -2450,9 +2450,9 @@ msgid ""
 "ulink> - especially the section labeled <emphasis>Coding Style</emphasis> - "
 "before you start hacking up the source."
 msgstr ""
-"如果您希望在本软件中添加新的功能特性，请清楚描述为什么您认为该功能或者特性值"
-"得添加进程序中。理由足够充分的话，该功能或者特性将更可能被添加进程序中。如果"
-"您能够直接提供该特性的补丁，添加进程序中的可能性将更高，但在您对源代码进行修"
+"如果您希望在本软件中添加新的功能，请清楚描述为什么您认为该功能或者功能值"
+"得添加进程序中。理由足够充分的话，该功能或者功能将更可能被添加进程序中。如果"
+"您能够直接提供该功能的补丁，添加进程序中的可能性将更高，但在您对源代码进行修"
 "改或者添加之前，请确保您先阅读以下文档 <ulink url=\"http://git.xfce.org/apps/"
 "terminal/tree/HACKING\">HACKING</ulink>，尤其是其中 <emphasis>Coding Style</"
 "emphasis> 一节。"
@@ -2481,7 +2481,7 @@ msgid ""
 "\">os-cillation website</ulink> for more information."
 msgstr ""
 "@PACKAGE_NAME@ 由 Benedikt Meurer (<email>benny@xfce.org</email>) 所编写。更"
-"多信息，请查看 <ulink url=\"http://www.os-cillation.com/\" type=\"http\">os-"
+"多信息，访问 <ulink url=\"http://www.os-cillation.com/\" type=\"http\">os-"
 "cillation 网站</ulink>。"
 
 #: Terminal.xml:1337(para)
@@ -2518,7 +2518,6 @@ msgstr ""
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: Terminal.xml:0(None)
 msgid "translator-credits"
-msgstr "Hunt Xu <huntxu@live.cn>, 2009."
-
-#~ msgid "0.4.2git-fa00dd5"
-#~ msgstr "0.4.2git-fa00dd5"
+msgstr ""
+"Hunt Xu <huntxu@live.cn>, 2009.\n"
+"Chipong Luo <chipong_l@yahoo.com>, 2011."
