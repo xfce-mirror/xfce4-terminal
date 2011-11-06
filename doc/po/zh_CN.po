@@ -817,7 +817,7 @@ msgstr ""
 "这就是众所周知的 “命令行界面”(CLI)。X 窗口系统、Xfce 以及其它项目"
 "给 UNIX 添加了一个图形化的、即您现在正在实际使用的用户界面。但图形化"
 "用户界面的加入并不意味着 CLI 的消亡。CLI 仍在并且经常是执行特定任务"
-"的最简单、最迅速和最强大的途径。实际上，没有 CLI 厉害用户应该会迷失。"
+"的最简单、最迅速和最强大的途径。实际上，没有 CLI 高手应该会迷失。"
 
 #: Terminal.xml:115(title)
 msgid "What makes @PACKAGE_NAME@ special?"
@@ -1714,7 +1714,7 @@ msgstr "滚动条位置"
 msgid ""
 "Use this drop-down list to specify the position of the scrollbar in terminal "
 "windows."
-msgstr "使用此下拉列表指定滚动条在终端窗口中的位置。"
+msgstr "使用此下拉菜单指定滚动条在终端窗口中的位置。"
 
 #: Terminal.xml:772(guilabel)
 msgid "Scrollback"
@@ -1952,12 +1952,12 @@ msgid ""
 "specific menu item, double click the menu item in the list and click the "
 "button <guilabel>Clear</guilabel>."
 msgstr ""
-"要修改菜单项的快捷键，在列表中双击该项目，然后按下您要设置的组合键。要禁用某"
-"个菜单项目的快捷键，在列表中双击该项目并点击 <guilabel>清除</guilabel> 按钮。"
+"要更改菜单项目的快捷键，在列表中双击此项目并按下您要设置的按键组合。"
+"要禁用特定菜单项目的快捷键，在列表中双击此项目并点击 <guilabel>清除</guilabel> 按钮。"
 
 #: Terminal.xml:975(guilabel)
 msgid "Disable all menu access keys (such as Alt+f)"
-msgstr "禁用所有菜单项目快捷键 (例如 Alt+f)"
+msgstr "禁用所有菜单访问键(比如 Alt+f)"
 
 #: Terminal.xml:977(para)
 msgid ""
@@ -1967,13 +1967,13 @@ msgid ""
 "cases, you must press the <keycap>Alt</keycap> key in combination with the "
 "access key to perform the action."
 msgstr ""
-"选中此选项以禁用使用键盘快捷键替代鼠标来选择一个菜单项的功能。在菜单或者对话"
-"框的选项中，快捷键以加下划线的字母标注。有时您必须同时按下 <keycap>Alt</"
-"keycap> 键和该快捷键来进行操作。"
+"选中此项禁用已定义的让您能使用键盘快捷键而不是鼠标来选择菜单项目的访问键。"
+"在菜单或者对话框选项每个访问键以带下划线的字母标出。某些情况下，您必须按 "
+"<keycap>Alt</keycap> 键与此访问键组合来执行动作。"
 
 #: Terminal.xml:986(guilabel)
 msgid "Disable menu shortcut key (F10 by default)"
-msgstr "禁用菜单快捷键 (默认为 F10)"
+msgstr "禁用菜单快捷键(默认为 F10)"
 
 #: Terminal.xml:988(para)
 msgid ""
@@ -1981,8 +1981,8 @@ msgid ""
 "to access the @PACKAGE_NAME@ menus. The default shortcut key to access the "
 "menus is <keycap>F10</keycap>."
 msgstr ""
-"选中该选项以禁止使用 @PACKAGE_NAME@ 菜单的快捷键。默认用以使用菜单的快捷键是 "
-"<keycap>F10</keycap>。"
+"选中此项禁已定义的用来访问 @PACKAGE_NAME@ 菜单的快捷键。访问菜单的默认"
+"快捷键是 <keycap>F10</keycap>。"
 
 #: Terminal.xml:997(title)
 msgid "Advanced"
@@ -1994,28 +1994,28 @@ msgstr "高级首选项"
 
 #: Terminal.xml:1013(guilabel)
 msgid "Backspace key generates"
-msgstr "Backspace 键产生"
+msgstr "Backspace 键生成"
 
 #: Terminal.xml:1015(para)
 msgid ""
 "Use the drop-down list to select the function that you want the "
 "<keycap>Backspace</keycap> key to perform."
 msgstr ""
-"使用下拉菜单选择您需要的按下 <keycap>Backspace</keycap> 键时执行的功能。"
+"使用此下拉菜单选择您要 <keycap>Backspace</keycap> 键执行的功能。"
 
 #: Terminal.xml:1020(guilabel)
 msgid "Delete key generates"
-msgstr "Delete 键产生"
+msgstr "Delete 键生成"
 
 #: Terminal.xml:1022(para)
 msgid ""
 "Use the drop-down list to select the function that you want the "
 "<keycap>Delete</keycap> key to perform."
-msgstr "使用下拉菜单选择您需要的按下 <keycap>Delete</keycap> 键时执行的功能。"
+msgstr "使用此下拉菜单选择您要 <keycap>Delete</keycap> 键执行的功能。"
 
 #: Terminal.xml:1027(guilabel)
 msgid "$TERM setting"
-msgstr "$TERM 变量设置"
+msgstr "$TERM 设置"
 
 #: Terminal.xml:1029(para)
 msgid ""
@@ -2026,11 +2026,10 @@ msgid ""
 "<userinput>xterm-color</userinput> here. If you have problems with ncurses "
 "5.6 or later you could also try <userinput>xfce</userinput>."
 msgstr ""
-"此选项设置当一个新终端标签或者终端窗口打开时，<varname>$TERM</varname> 这个环"
-"境变量的值。使用默认值在大多数系统上都应该能够正常工作。如果您在某些应用程序"
-"中有颜色问题或者您认为某个程序的行为不正常，尝试将此选项指定为 "
-"<userinput>xterm-color</userinput>。如果和 ncurses 的 5.6 或者更高版本有冲突"
-"时，您可以尝试将此选项指定为 <userinput>xfce</userinput>。"
+"此选项设置当一个新终端标签或者终端窗口打开时，<varname>$TERM</varname> 环境"
+"变量的值。默认值对大多数系统应该很好。如果您有一些应用程序颜色上"
+"的问题或您认为某个特定应用程序行为异常，在此试试 <userinput>xterm-color</userinput>。"
+"如果您有 ncurses 5.6 或更高版本上的问题也可试试 <userinput>xfce</userinput>。"
 
 #: Terminal.xml:1039(guilabel)
 msgid "Reset compatibility options to defaults"
@@ -2041,7 +2040,7 @@ msgid ""
 "Click this button to reset the options on the <guilabel>Compatibility</"
 "guilabel> tabbed section to its defaults settings."
 msgstr ""
-"点击此按钮以重置 <guilabel>兼容性</guilabel> 标签下的所有选项至其默认值。"
+"点击此按钮在 <guilabel>兼容性</guilabel> 标签下重置选项至其默认值。"
 
 #: Terminal.xml:1046(guilabel)
 msgid "Double click"
@@ -2052,8 +2051,8 @@ msgid ""
 "Use this text box to specify characters or groups of characters that "
 "@PACKAGE_NAME@ considers to be words when you select text by word."
 msgstr ""
-"使用文本框指定在您以词为单位选中文本时，@PACKAGE_NAME@ 会将其认为是词的字符或"
-"者字符串。"
+"使用此文本框指定在您按字词选择文本时 @PACKAGE_NAME@ 会将其作为字词的字符或"
+"字符串。"
 
 #: Terminal.xml:1057(title)
 msgid "Command line options"
@@ -2081,11 +2080,11 @@ msgid ""
 "create the file if it does not already exist. For example, your "
 "<filename>terminalrc</filename> could look like"
 msgstr ""
-"@PACKAGE_NAME@ 提供一系列的隐藏选项，既允许有经验的用户控制程序中的很多高级设"
-"置，也减少了用户界面中选项的数量。要设置这些隐藏选项，您需要使用您的文本编辑"
-"器打开文件 <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> 并且编"
-"辑其中的 <varname>[Configuration]</varname> 一段；如果该文件不存在，则请创建"
-"它。例如，您的 <filename>terminalrc</filename> 会看起来像"
+"@PACKAGE_NAME@ 提供一系列的隐藏选项让高手控制各种各样的高级设置并在"
+"用户界面中减少选项数量。要设置这些任何选项，您需要在您喜爱的文本"
+"编辑器中打开文件 <filename>${XDG_CONFIG_HOME}/Terminal/terminalrc</filename> "
+"并编辑 <varname>[Configuration]</varname> 段；如果此文件不存在仅先创建它。"
+"比如，您的 <filename>terminalrc</filename> 看起来会像"
 
 #: Terminal.xml:1088(programlisting)
 #, no-wrap
@@ -2123,7 +2122,7 @@ msgstr ""
 #: Terminal.xml:1103(para)
 msgid ""
 "plus all the options that are controlled through the preferences dialog."
-msgstr "加上可以通过首选项对话框控制的所有选项。"
+msgstr "加上通过首选项对话框控制的所有选项。"
 
 #: Terminal.xml:1109(varname)
 msgid "MiscAlwaysShowTabs"
