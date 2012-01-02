@@ -1,16 +1,17 @@
 # Czech translations for Terminal package.
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
-# Michal Várady <miko.vaji@gmail.com>, 2006-2008.
+# Michal Várady <miko.vaji@gmail.com>, 2006-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-12-06 17:01+0000\n"
-"PO-Revision-Date: 2010-12-06 22:14+0100\n"
+"POT-Creation-Date: 2012-01-01 20:03+0000\n"
+"PO-Revision-Date: 2012-01-02 02:32+0100\n"
 "Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,38 +91,30 @@ msgid "See the %s man page for full explanation of the options above."
 msgstr "Kompletní dokumentaci k volbám uvedeným výše, naleznete v manuálové stránce aplikace %s."
 
 #: ../terminal/main.c:126
-#: ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119
+#: ../terminal/terminal-preferences.c:1274
+#: ../terminal/terminal-shortcut-editor.c:120
 #: ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
-msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Všechna práva vyhrazena.\n"
-"\n"
-"Napsal Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Sestaveno s Gtk+-%d.%d.%d, spuštěno pod Gtk+-%d.%d.%d.\n"
-"\n"
-"Prosíme, abyste chyby hlásili na <%s>.\n"
+#: ../terminal/main.c:147
+msgid "The Xfce development team. All rights reserved."
+msgstr "Tým vývojářů prostředí Xfce. Všechna právy vyhrazena."
 
-#: ../terminal/main.c:254
+#: ../terminal/main.c:148
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr "Napsal Benedikt Meurer <benny@xfce.org>"
+
+#: ../terminal/main.c:149
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr "a Nick Schermer <nick@xfce.org>."
+
+#: ../terminal/main.c:150
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr "Hlášení o chybách posílejte na adresu <%s>."
+
+#: ../terminal/main.c:249
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nelze registrovat službu terminálu: %s\n"
@@ -181,7 +174,7 @@ msgid "_Read Online"
 msgstr "Číst _online"
 
 #. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
+#: ../terminal/terminal-dialogs.c:306
 msgid "Failed to open the documentation browser"
 msgstr "Nepodařilo se otevřít prohlížeč dokumentace"
 
@@ -253,136 +246,141 @@ msgstr "Všechny soubory"
 msgid "Image Files"
 msgstr "Obrázky"
 
-#: ../terminal/terminal-preferences.c:309
+#: ../terminal/terminal-preferences.c:310
 msgid "Open Tab"
 msgstr "Otevřít kartu"
 
-#: ../terminal/terminal-preferences.c:320
+#: ../terminal/terminal-preferences.c:321
 msgid "Open Terminal"
 msgstr "Otevřít terminál"
 
-#: ../terminal/terminal-preferences.c:331
+#: ../terminal/terminal-preferences.c:332
 msgid "Detach Tab"
 msgstr "Odpojit kartu"
 
-#: ../terminal/terminal-preferences.c:342
+#: ../terminal/terminal-preferences.c:343
 msgid "Close Tab"
 msgstr "Zavřít kartu"
 
-#: ../terminal/terminal-preferences.c:353
+#: ../terminal/terminal-preferences.c:354
 msgid "Close Window"
 msgstr "Zavřít okno"
 
-#: ../terminal/terminal-preferences.c:364
+#: ../terminal/terminal-preferences.c:365
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: ../terminal/terminal-preferences.c:375
+#: ../terminal/terminal-preferences.c:376
 msgid "Paste"
 msgstr "Vložit"
 
-#: ../terminal/terminal-preferences.c:386
+#: ../terminal/terminal-preferences.c:387
 msgid "Paste Selection"
 msgstr "Vložit výběr"
 
-#: ../terminal/terminal-preferences.c:397
+#: ../terminal/terminal-preferences.c:398
+msgid "Select All"
+msgstr "Vyybrat vše"
+
+#: ../terminal/terminal-preferences.c:409
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: ../terminal/terminal-preferences.c:408
+#: ../terminal/terminal-preferences.c:420
 msgid "Show menubar"
 msgstr "Zobrazit panel nabídky"
 
-#: ../terminal/terminal-preferences.c:419
+#: ../terminal/terminal-preferences.c:431
 msgid "Show toolbars"
 msgstr "Zobrazit panely nástrojů"
 
-#: ../terminal/terminal-preferences.c:430
+#: ../terminal/terminal-preferences.c:442
 msgid "Show borders"
 msgstr "Zobrazit okraje okna"
 
-#: ../terminal/terminal-preferences.c:441
+#: ../terminal/terminal-preferences.c:453
 msgid "Fullscreen"
 msgstr "Celá obrazovka"
 
-#: ../terminal/terminal-preferences.c:452
+#: ../terminal/terminal-preferences.c:464
 msgid "Set Title"
 msgstr "Nastavit titulek"
 
-#: ../terminal/terminal-preferences.c:463
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-window.c:235
 msgid "Reset"
 msgstr "Inicializovat"
 
-#: ../terminal/terminal-preferences.c:474
+#: ../terminal/terminal-preferences.c:486
 msgid "Reset and Clear"
 msgstr "Inicializovat a vymazat"
 
-#: ../terminal/terminal-preferences.c:485
+#: ../terminal/terminal-preferences.c:497
 msgid "Previous Tab"
 msgstr "Předchozí karta"
 
-#: ../terminal/terminal-preferences.c:496
+#: ../terminal/terminal-preferences.c:508
 msgid "Next Tab"
 msgstr "Následující karta"
 
-#: ../terminal/terminal-preferences.c:507
+#: ../terminal/terminal-preferences.c:519
 msgid "Switch to Tab 1"
 msgstr "Přepnout na kartu 1"
 
-#: ../terminal/terminal-preferences.c:518
+#: ../terminal/terminal-preferences.c:530
 msgid "Switch to Tab 2"
 msgstr "Přepnout na kartu 2"
 
-#: ../terminal/terminal-preferences.c:529
+#: ../terminal/terminal-preferences.c:541
 msgid "Switch to Tab 3"
 msgstr "Přepnout na kartu 3"
 
-#: ../terminal/terminal-preferences.c:540
+#: ../terminal/terminal-preferences.c:552
 msgid "Switch to Tab 4"
 msgstr "Přepnout na kartu 4"
 
-#: ../terminal/terminal-preferences.c:551
+#: ../terminal/terminal-preferences.c:563
 msgid "Switch to Tab 5"
 msgstr "Přepnout na kartu 5"
 
-#: ../terminal/terminal-preferences.c:562
+#: ../terminal/terminal-preferences.c:574
 msgid "Switch to Tab 6"
 msgstr "Přepnout na kartu 6"
 
-#: ../terminal/terminal-preferences.c:573
+#: ../terminal/terminal-preferences.c:585
 msgid "Switch to Tab 7"
 msgstr "Přepnout na kartu 7"
 
-#: ../terminal/terminal-preferences.c:584
+#: ../terminal/terminal-preferences.c:596
 msgid "Switch to Tab 8"
 msgstr "Přepnout na kartu 8"
 
-#: ../terminal/terminal-preferences.c:595
+#: ../terminal/terminal-preferences.c:607
 msgid "Switch to Tab 9"
 msgstr "Přepnout na kartu 9"
 
-#: ../terminal/terminal-preferences.c:606
+#: ../terminal/terminal-preferences.c:618
 msgid "Contents"
 msgstr "Obsah"
 
-#: ../terminal/terminal-screen.c:397
-#: ../terminal/terminal-screen.c:629
-#: ../terminal/terminal-screen.c:1598
+#: ../terminal/terminal-screen.c:399
+#: ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: ../terminal/terminal-screen.c:529
+#: ../terminal/terminal-screen.c:531
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nelze zjistit vaše uživatelské jméno."
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1339
+#: ../terminal/terminal-screen.c:1382
+#: ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Spuštění procesu potomka se nezdařilo"
 
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:2018
 msgid "Close this tab"
 msgstr "Zavřít tuto kartu"
 
@@ -394,49 +392,49 @@ msgstr "Soubor"
 msgid "Edit"
 msgstr "Upravit"
 
-#: ../terminal/terminal-shortcut-editor.c:109
+#: ../terminal/terminal-shortcut-editor.c:110
 msgid "View"
 msgstr "Zobrazit"
 
-#: ../terminal/terminal-shortcut-editor.c:128
+#: ../terminal/terminal-shortcut-editor.c:129
 msgid "Go"
 msgstr "Přejít"
 
-#: ../terminal/terminal-shortcut-editor.c:145
+#: ../terminal/terminal-shortcut-editor.c:146
 msgid "Help"
 msgstr "Nápověda"
 
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505
+#: ../terminal/terminal-shortcut-editor.c:210
+#: ../terminal/terminal-shortcut-editor.c:506
 #: ../Terminal.glade.h:24
 msgid "Disabled"
 msgstr "Zakázáno"
 
-#: ../terminal/terminal-shortcut-editor.c:221
+#: ../terminal/terminal-shortcut-editor.c:222
 msgid "Action"
 msgstr "Akce"
 
-#: ../terminal/terminal-shortcut-editor.c:228
+#: ../terminal/terminal-shortcut-editor.c:229
 msgid "Shortcut key"
 msgstr "Zkratková klávesa"
 
-#: ../terminal/terminal-shortcut-editor.c:328
+#: ../terminal/terminal-shortcut-editor.c:329
 msgid "Compose shortcut"
 msgstr "Zvolit zkratkovou klávesu"
 
-#: ../terminal/terminal-shortcut-editor.c:333
+#: ../terminal/terminal-shortcut-editor.c:334
 msgid "Clea_r"
 msgstr "Vy_mazat"
 
-#: ../terminal/terminal-shortcut-editor.c:352
+#: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
 msgstr "Zvolit zkratkovou klávesu pro:"
 
-#: ../terminal/terminal-shortcut-editor.c:374
+#: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
 msgstr "Získání klávesnice se nezdařilo"
 
-#: ../terminal/terminal-shortcut-editor.c:376
+#: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
 msgstr "Vaši klávesnici již ovládá jiná aplikace."
 
@@ -444,257 +442,265 @@ msgstr "Vaši klávesnici již ovládá jiná aplikace."
 msgid "Toolbar Editor"
 msgstr "Editor panelu nástrojů"
 
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:330
 msgid "Copy Email Address"
 msgstr "Kopírovat e-mailovou adresu"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:331
 msgid "Compose Email"
 msgstr "Napsat e-mail"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:335
 msgid "Copy Link Address"
 msgstr "Kopírovat adresu odkazu"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:336
 msgid "Open Link"
 msgstr "Otevřít odkaz"
 
-#: ../terminal/terminal-widget.c:480
+#: ../terminal/terminal-widget.c:490
 #, c-format
 msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nelze předat vybraný text typu text/plain na terminál. Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:496
+#: ../terminal/terminal-widget.c:506
 #, c-format
 msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nelze předat adresu Mozilla URL na teminál: Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:522
+#: ../terminal/terminal-widget.c:532
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nelze předat seznam adres URI terminálu. Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:567
+#: ../terminal/terminal-widget.c:577
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Přijata neplatná data o barvách: Nesprávný formát (%d) nebo délka (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:714
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Nepodařilo se otevřít adresu URL `%s'"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:219
 msgid "_File"
 msgstr "_Soubor"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:220
 msgid "Open _Tab"
 msgstr "Otevří_t kartu"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:220
 msgid "Open a new terminal tab"
 msgstr "Otevře novou kartu terminálu"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:221
 msgid "Open T_erminal"
 msgstr "Otevřít T_erminál"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:221
 msgid "Open a new terminal window"
 msgstr "Otevře nové okno terminálu"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:222
 msgid "_Detach Tab"
 msgstr "O_dpojit kartu"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:222
 msgid "Open a new window for the current terminal tab"
 msgstr "Otevře nové okno pro aktuální kartu terminálu"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:223
 msgid "C_lose Tab"
 msgstr "Zavřít kart_u"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:223
 msgid "Close the current terminal tab"
 msgstr "Zavřít aktuální kartu terminálu"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:224
 msgid "_Close Window"
 msgstr "_Zavřít okno"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:224
 msgid "Close the terminal window"
 msgstr "Zavřít okno terminálu"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:225
 msgid "_Edit"
 msgstr "Ú_pravy"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:226
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:226
 msgid "Copy to clipboard"
 msgstr "Zkopírovat do schránky."
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:227
 msgid "_Paste"
 msgstr "Vlož_it"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:227
 msgid "Paste from clipboard"
 msgstr "Vložit ze schránky"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:228
 msgid "Paste _Selection"
 msgstr "Vložit _výběr"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:228
 msgid "Paste from primary selection"
 msgstr "Vložit z primárního výběru"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:229
+msgid "Select _All"
+msgstr "_Vybrat vše"
+
+#: ../terminal/terminal-window.c:229
+msgid "Select all text in the terminal"
+msgstr "Vybrat celý text v terminálu"
+
+#: ../terminal/terminal-window.c:230
 msgid "_Toolbars..."
 msgstr "Panely nás_trojů..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Customize the toolbars"
 msgstr "Přizpůsobit panely nástrojů"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Pr_eferences..."
 msgstr "Na_stavení..."
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Open the Terminal preferences dialog"
 msgstr "Otevřít dialog nastavení aplikace Terminal"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:232
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:233
 msgid "_Terminal"
 msgstr "_Terminál"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:234
 msgid "_Set Title..."
 msgstr "_Nastavit titulek..."
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:234
 msgid "Set a custom title for the current tab"
 msgstr "Nastaví název pro aktuální kartu terminálu"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:235
 msgid "_Reset"
 msgstr "_Inicializovat"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:236
 msgid "Reset and C_lear"
 msgstr "Inicializovat a _vymazat"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:236
 msgid "Reset and clear"
 msgstr "Inicializovat a vymazat"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:237
 msgid "_Go"
 msgstr "Pře_jít"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:238
 msgid "_Previous Tab"
 msgstr "_Předchozí karta"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:238
 msgid "Switch to previous tab"
 msgstr "Přejde se na předchozí kartu"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:239
 msgid "_Next Tab"
 msgstr "_Následující karta"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:239
 msgid "Switch to next tab"
 msgstr "Přejde na následující kartu"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:240
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:241
 msgid "_Contents"
 msgstr "_Obsah"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:241
 msgid "Display help contents"
 msgstr "Zobrazit obsah nápovědy"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:242
 msgid "_Report a bug"
 msgstr "_Nahlásit chybu"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:242
 msgid "Report a bug in Terminal"
 msgstr "Nahlásit chybu aplikace Terminal"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:243
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:243
 msgid "Display information about Terminal"
 msgstr "Zobrazí informace o aplikaci Terminal"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:244
 msgid "_Input Methods"
 msgstr "Vstupní metod_y"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:249
 msgid "Show _Menubar"
 msgstr "Zo_brazovat panel s nabídkou"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:249
 msgid "Show/hide the menubar"
 msgstr "Skrýt/zobrazit panel nabídky"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:250
 msgid "Show _Toolbars"
 msgstr "Zobrazovat _panely nástrojů"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:250
 msgid "Show/hide the toolbars"
 msgstr "Zobrazit/Skrýt panely nástrojů"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:251
 msgid "Show Window _Borders"
 msgstr "Zo_brazit okraje okna"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the window decorations"
 msgstr "Zobrazit nebo skrýt dekorace oken"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:252
 msgid "_Fullscreen"
 msgstr "_Celá obrazovka"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:252
 msgid "Toggle fullscreen mode"
 msgstr "Přepnout do režimu celé obrazovky"
 
-#: ../terminal/terminal-window.c:560
+#: ../terminal/terminal-window.c:538
 msgid "Warning"
 msgstr "Varování"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:549
 msgid "Close all tabs"
 msgstr "Zavřít všechny karty"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:568
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -703,11 +709,11 @@ msgstr ""
 "V okně je otevřeno %d karet. Zavřením\n"
 "tohoto okna zavřete také všechny jeho karty."
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:571
 msgid "Close all tabs?"
 msgstr "Zavřít všechny karty?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:584
 msgid "Do _not ask me again"
 msgstr "Příště se již _nedotazovat"
 
@@ -1184,22 +1190,49 @@ msgid "seconds"
 msgstr "sekundách"
 
 #~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Všechna práva vyhrazena.\n"
+#~ "\n"
+#~ "Napsal Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Sestaveno s Gtk+-%d.%d.%d, spuštěno pod Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Prosíme, abyste chyby hlásili na <%s>.\n"
+
+#~ msgid ""
 #~ "  -h, --help                          Print this help message and exit"
 #~ msgstr ""
 #~ "  -h, --help                          Zobrazí tuto nápovědu a ukončí se"
+
 #~ msgid ""
 #~ "  -V, --version                       Print version information and exit"
 #~ msgstr ""
 #~ "  -V, --version                       Zobrazí informace o verzi a ukončí "
 #~ "se"
+
 #~ msgid ""
 #~ "  --disable-server                    Do not register with the D-BUS\n"
 #~ "                                      session message bus"
 #~ msgstr ""
 #~ "  --disable-server                    Nezaregistruje se k relaci sběrnice "
 #~ "D-BUS"
+
 #~ msgid "  --default-display=DISPLAY           default X display to use"
 #~ msgstr "  --default-display=DISPLEJ           Výchozí displej X pro použití"
+
 #~ msgid ""
 #~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
 #~ "                                      directory"
@@ -1207,6 +1240,7 @@ msgstr "sekundách"
 #~ "  --default-working-directory=NÁZEVADRESÁŘE\n"
 #~ "                                      Nastaví výchozí pracovní adresář\n"
 #~ "                                      terminálu"
+
 #~ msgid ""
 #~ "  --tab                               Open a new tab in the last-"
 #~ "specified\n"
@@ -1216,6 +1250,7 @@ msgstr "sekundách"
 #~ "  --tab                               Otevře novou kartu v posledně "
 #~ "zadaném\n"
 #~ "                                      okně; lze zadat více těchto voleb"
+
 #~ msgid ""
 #~ "  --window                            Open a new window containing one "
 #~ "tab;\n"
@@ -1227,6 +1262,7 @@ msgstr "sekundách"
 #~ "                                      kartu; lze zadat více než jednu "
 #~ "takovou\n"
 #~ "                                      volbu"
+
 #~ msgid ""
 #~ "  -x, --execute                       Execute the remainder of the "
 #~ "command\n"
@@ -1234,6 +1270,7 @@ msgstr "sekundách"
 #~ msgstr ""
 #~ "  -x, --execute                       Spustí zbytek příkazové řádky v "
 #~ "terminálu"
+
 #~ msgid ""
 #~ "  -e, --command=STRING                Execute the argument to this "
 #~ "option\n"
@@ -1242,24 +1279,29 @@ msgstr "sekundách"
 #~ "  -e, --command=ŘETĚZEC               Spustí argument k této volbě "
 #~ "uvnitř\n"
 #~ "                                      terminálu"
+
 #~ msgid ""
 #~ "  --working-directory=DIRNAME         Set the terminal's working directory"
 #~ msgstr ""
 #~ "  --working-directory=NÁZEV_ADRESÁŘE  Nastaví pracovní adresář terminálu"
+
 #~ msgid "  -T, --title=TITLE                   Set the terminal's title"
 #~ msgstr "  -T, --title=TITULEK                 Nastaví titulek terminálu"
+
 #~ msgid ""
 #~ "  -H, --hold                          Do not immediately destroy the tab\n"
 #~ "                                      when the child command exits"
 #~ msgstr ""
 #~ "  -H, --hold                          Nezavře kartu ihned po ukončení\n"
 #~ "                                      potomka"
+
 #~ msgid ""
 #~ "  --display=DISPLAY                   X display to use for the last-\n"
 #~ "                                      specified window"
 #~ msgstr ""
 #~ "  --display=DISPLEJ                   Displej X serveru pro poslední\n"
 #~ "                                      zadané okno"
+
 #~ msgid ""
 #~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
 #~ "\"\n"
@@ -1272,6 +1314,7 @@ msgstr "sekundách"
 #~ "                                      stránka \"X\"), může být zadána "
 #~ "jedna na\n"
 #~ "                                      otevřené okno"
+
 #~ msgid ""
 #~ "  --role=ROLE                         Set the role for the last-"
 #~ "specified\n"
@@ -1286,6 +1329,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
+
 #~ msgid ""
 #~ "  --startup-id=STRING                 ID for the startup notification\n"
 #~ "                                      protocol"
@@ -1293,6 +1337,7 @@ msgstr "sekundách"
 #~ "  --startup-id=ŘETĚZEC                Identifikátor pro protokol oznámení "
 #~ "při\n"
 #~ "                                      spuštění"
+
 #~ msgid ""
 #~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
 #~ "                                      name or filename"
@@ -1301,6 +1346,7 @@ msgstr "sekundách"
 #~ "ikony\n"
 #~ "                                             nebo název souboru name or "
 #~ "filename"
+
 #~ msgid ""
 #~ "  --fullscreen                        Set the last-specified window into\n"
 #~ "                                      fullscreen mode; applies to only "
@@ -1315,6 +1361,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
+
 #~ msgid ""
 #~ "  --maximize                          Maximize the last-specified "
 #~ "window;\n"
@@ -1328,6 +1375,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      lze použít pro každé zadané okno\n"
 #~ "                                      vytvořené z příkazového řádku"
+
 #~ msgid ""
 #~ "  --show-menubar                      Turn on the menubar for the last-\n"
 #~ "                                      specified window; applies to only "
@@ -1342,6 +1390,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
+
 #~ msgid ""
 #~ "  --hide-menubar                      Turn off the menubar for the last-\n"
 #~ "                                      specified window; applies to only "
@@ -1356,6 +1405,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
+
 #~ msgid ""
 #~ "  --show-borders                      Turn on the window decorations for\n"
 #~ "                                      the last-specified window; applies\n"
@@ -1371,6 +1421,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
+
 #~ msgid ""
 #~ "  --hide-borders                      Turn off the window decorations "
 #~ "for\n"
@@ -1387,6 +1438,7 @@ msgstr "sekundách"
 #~ "okno;\n"
 #~ "                                      může být zadáno jednou pro každé\n"
 #~ "                                      okno spuštěné z příkazové řádky"
+
 #~ msgid ""
 #~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
 #~ "                                      specified window; applies to only "
@@ -1402,6 +1454,7 @@ msgstr "sekundách"
 #~ "                                      okno; může být zadáno jednou pro\n"
 #~ "                                      každé okno vytvořené z příkazové "
 #~ "řádky"
+
 #~ msgid ""
 #~ "  --hide-toolbars                     Turn off the toolbars for the "
 #~ "last-\n"
@@ -1418,43 +1471,60 @@ msgstr "sekundách"
 #~ "                                      okno; může být zadáno jednou pro\n"
 #~ "                                      každé okno vytvořené z příkazové "
 #~ "řádky"
+
 #~ msgid "Unable to launch terminal: %s\n"
 #~ msgstr "Nelze spustit teminál: %s\n"
+
 #~ msgid ""
 #~ "Option \"--sm-client-id\" requires specifying the session id as its "
 #~ "parameter"
 #~ msgstr ""
 #~ "Volba \"--sm-client-id\" vyžaduje zadání identifikátoru relace (id) jako "
 #~ "parametru"
+
 #~ msgid "<b>Title:</b>"
 #~ msgstr "<b>Titulek</b>"
+
 #~ msgid "Usage: Terminal [OPTION...]"
 #~ msgstr "Použití: Terminal [VOLBA...]"
+
 #~ msgid "<b>Title</b>"
 #~ msgstr "<b>Titulek</b>"
+
 #~ msgid ""
 #~ "The command running inside the terminal may dynamically set a new title."
 #~ msgstr "Příkaz spuštěný v terminálu může dynamicky nastavovat titulek."
+
 #~ msgid "<b>Font</b>"
 #~ msgstr "<b>Písmo</b>"
+
 #~ msgid "<b>Background</b>"
 #~ msgstr "<b>Pozadí</b>"
+
 #~ msgid "Shade transparent or image background:"
 #~ msgstr "Stínované průsvitné pozadí nebo pozadí s obrázkem:"
+
 #~ msgid "<small><i>None</i></small>"
 #~ msgstr "<small><i>Žádný</i></small>"
+
 #~ msgid "<small><i>Maximum</i></small>"
 #~ msgstr "<small><i>Maximální</i></small>"
+
 #~ msgid "<b>Foreground and Background</b>"
 #~ msgstr "<b>Popředí a pozadí</b>"
+
 #~ msgid "<b>Tab activity</b>"
 #~ msgstr "<b>Aktivita karty</b>"
+
 #~ msgid "<b>Shortcut keys</b>"
 #~ msgstr "<b>Klávesové zkratky</b>"
+
 #~ msgid "Web Browser"
 #~ msgstr "Webový prohlížeč"
+
 #~ msgid "Mail Reader"
 #~ msgstr "Poštovní klient"
+
 #~ msgid ""
 #~ "Choose your preferred Web Browser. The preferred\n"
 #~ "Web Browser opens when you right-click on a URL\n"
@@ -1464,6 +1534,7 @@ msgstr "sekundách"
 #~ "prohlížeč se otevře po kliknutí pravým tlačítkem na\n"
 #~ "odkaz URL a vybrání volby Otevřít odkaz z kontextové\n"
 #~ "nabídky."
+
 #~ msgid ""
 #~ "Choose your preferred Mail Reader. The preferred\n"
 #~ "Mail Reader opens when you right-click on an email\n"
@@ -1474,44 +1545,59 @@ msgstr "sekundách"
 #~ "klient se otevře po kliknutí pravým tlačítkem na e-mailovou\n"
 #~ "adresu a vybrání volby Napsat e-mail z kontextové\n"
 #~ "nabídky."
+
 #~ msgid ""
 #~ "Click here to change the selected application or to disable this feature."
 #~ msgstr ""
 #~ "Klikněte sem pro změnu vybrané aplikace nebo zakázání této vlastnosti."
+
 #~ msgid "Select application"
 #~ msgstr "Vyberte aplikaci"
+
 #~ msgid "Choose a custom Web Browser"
 #~ msgstr "Zvolit vlastní webový prohlížeč"
+
 #~ msgid "Choose a custom Mail Reader"
 #~ msgstr "Zvolit vlastní e-mailový klient"
+
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Web Browser in Terminal:"
 #~ msgstr ""
 #~ "Zadejte aplikaci, kterou chcete používat jako\n"
 #~ "webový prohlížeč v aplikaci Terminal:"
+
 #~ msgid ""
 #~ "Specify the application you want to use as\n"
 #~ "Mail Reader in Terminal:"
 #~ msgstr ""
 #~ "Zadejte aplikaci, kterou chcete používat jako\n"
 #~ "e-mailový klient v aplikaci Terminal:"
+
 #~ msgid "_Browse..."
 #~ msgstr "_Procházet..."
+
 #~ msgid "Disable this feature"
 #~ msgstr "Zakázat tuto vlastnost"
+
 #~ msgid "Other..."
 #~ msgstr "Jiné..."
+
 #~ msgid "No application selected"
 #~ msgstr "Nebyla vybrána žádná aplikace"
+
 #~ msgid "Preferred Applications"
 #~ msgstr "Upřednostňované aplikace"
+
 #~ msgid "Applications"
 #~ msgstr "Aplikace"
+
 #~ msgid "_Applications..."
 #~ msgstr "_Aplikace..."
+
 #~ msgid "Customize your preferred applications"
 #~ msgstr "Upravit nastavení upřednostňovaných aplikací"
+
 #~ msgid ""
 #~ "You did not choose your preferred Web\n"
 #~ "Browser yet. Do you want to setup your\n"
@@ -1520,6 +1606,7 @@ msgstr "sekundách"
 #~ "Dosud jste si nevybrali upřednostňovaný\n"
 #~ "webový prohlížeč. Chcete nyní nastavit\n"
 #~ "Vaše upřednostňované aplikace?"
+
 #~ msgid ""
 #~ "You did not choose your preferred Mail\n"
 #~ "Reader yet. Do you want to setup your\n"
@@ -1528,44 +1615,63 @@ msgstr "sekundách"
 #~ "Dosud jste si nevybrali upřednostňovaného\n"
 #~ "poštovního klienta. Chcete nyní nastavit\n"
 #~ "Vaše upřednostňované aplikace?"
+
 #~ msgid "Balsa"
 #~ msgstr "Balsa"
+
 #~ msgid "Epiphany Web Browser"
 #~ msgstr "Epiphany Web Browser"
+
 #~ msgid "Novell Evolution"
 #~ msgstr "Novell Evolution"
+
 #~ msgid "Default Web Browser (Xfce)"
 #~ msgstr "Výchozí webový prohlížeč (Xfce)"
+
 #~ msgid "Default Mail Reader (Xfce)"
 #~ msgstr "Výchozí klient pro elektronickou poštu (Xfce)"
+
 #~ msgid "Mozilla Firefox"
 #~ msgstr "Mozilla Firefox"
+
 #~ msgid "Galeon Web Browser"
 #~ msgstr "Galeon Web Browser"
+
 #~ msgid "KMail"
 #~ msgstr "KMail"
+
 #~ msgid "Konqueror"
 #~ msgstr "Konqueror"
+
 #~ msgid "Lynx"
 #~ msgstr "Lynx"
+
 #~ msgid "Mozilla Browser"
 #~ msgstr "Mozilla Browser"
+
 #~ msgid "Mozilla Mail"
 #~ msgstr "Mozilla Mail"
+
 #~ msgid "Mutt"
 #~ msgstr "Mutt"
+
 #~ msgid "Opera Browser"
 #~ msgstr "Opera Browser"
+
 #~ msgid "Opera Mail"
 #~ msgstr "Opera Mail"
+
 #~ msgid "Debian Sensible Browser"
 #~ msgstr "Rozumný prohlížeč Debianu"
+
 #~ msgid "Sylpheed Claws"
 #~ msgstr "Sylpheed Claws"
+
 #~ msgid "Mozilla Thunderbird"
 #~ msgstr "Mozilla Thunderbird"
+
 #~ msgid "Custom title"
 #~ msgstr "Vlastní titulek"
+
 #~ msgid "Tab title"
 #~ msgstr "Titulek karty"
-
