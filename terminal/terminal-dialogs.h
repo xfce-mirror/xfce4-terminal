@@ -25,15 +25,6 @@ G_BEGIN_DECLS
 
 void terminal_dialogs_show_about (GtkWindow    *parent);
 
-void terminal_dialogs_show_error (gpointer      parent,
-                                  const GError *error,
-                                  const gchar  *format,
-                                  ...) G_GNUC_PRINTF (3, 4);
-
-void terminal_dialogs_show_help  (GtkWindow    *parent,
-                                  const gchar  *page,
-                                  const gchar  *offset);
-
 G_END_DECLS
 
 #endif /* !__TERMINAL_DIALOGS_H__ */

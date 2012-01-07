@@ -39,16 +39,9 @@ Terminal_headers = \
 	terminal-window.h \
 	terminal-window-ui.h
 
-Terminal_tmp_sources = \
-	xfce-heading.c \
-	xfce-heading.h \
-	xfce-titled-dialog.c \
-	xfce-titled-dialog.h
-
 Terminal_SOURCES = \
 	$(Terminal_built_sources) \
 	$(Terminal_headers) \
-	$(Terminal_tmp_sources) \
 	main.c \
 	terminal-accel-map.c \
 	terminal-app.c \
@@ -72,6 +65,7 @@ Terminal_CFLAGS = \
 	$(GIO_CFLAGS) \
 	$(LIBX11_CFLAGS)\
 	$(VTE_CFLAGS) \
+	$(LIBXFCE4UI_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 Terminal_LDFLAGS = \
@@ -86,6 +80,7 @@ Terminal_LDADD = \
 	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(VTE_LIBS) \
+	$(LIBXFCE4UI_LIBS) \
 	$(TERMINAL_LIBS)
 
 # install symlink to 'terminal'
@@ -135,22 +130,22 @@ terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
 stamp-terminal-enum-types.h: terminal-preferences.h Makefile
 	$(AM_V_GEN)  ( cd $(srcdir) && glib-mkenums \
---fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <exo/exo.h>\nG_BEGIN_DECLS\n" \
---fprod "/* enumerations from \"@filename@\" */\n" \
---vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
---ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \
-terminal-preferences.h ) >> xgen-teth \
+	--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <exo/exo.h>\nG_BEGIN_DECLS\n" \
+	--fprod "/* enumerations from \"@filename@\" */\n" \
+	--vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
+	--ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \
+	terminal-preferences.h ) >> xgen-teth \
 	&& (cmp -s xgen-teth terminal-enum-types.h || cp xgen-teth terminal-enum-types.h ) \
 	&& rm -f xgen-teth \
 	&& echo timestamp > $(@F)
 terminal-enum-types.c: terminal-preferences.h Makefile
 	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
---fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \
---fprod " \n/* enumerations from \"@filename@\" */" \
---vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {" \
---vprod " \t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
---vtail " \t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
-terminal-preferences.h ) >> xgen-tetc \
+	--fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \
+	--fprod " \n/* enumerations from \"@filename@\" */" \
+	--vhead "GType\n@enum_name@_get_type (void)\n{\n\tstatic GType type = 0;\n\tif (type == 0) {\n\tstatic const G@Type@Value values[] = {" \
+	--vprod " \t{ @VALUENAME@, \"@VALUENAME@\", \"@valuenick@\" }," \
+	--vtail " \t{ 0, NULL, NULL }\n\t};\n\ttype = g_@type@_register_static (\"@EnumName@\", values);\n  }\n\treturn type;\n}\n" \
+	terminal-preferences.h ) >> xgen-tetc \
 	&& cp xgen-tetc terminal-enum-types.c \
 	&& rm -f xgen-tetc
 
@@ -158,8 +153,8 @@ terminal-marshal.h: stamp-terminal-marshal.h
 	@true
 stamp-terminal-marshal.h: terminal-marshal.list Makefile
 	$(AM_V_GEN) ( cd $(srcdir) && glib-genmarshal \
---prefix=_terminal_marshal \
---header terminal-marshal.list ) >> xgen-tmh \
+	--prefix=_terminal_marshal \
+	--header terminal-marshal.list ) >> xgen-tmh \
 	&& ( cmp -s xgen-tmh terminal-marshal.h || cp xgen-tmh terminal-marshal.h ) \
 	&& rm -f xgen-tmh \
 	&& echo timestamp > $(@F)
@@ -167,8 +162,8 @@ stamp-terminal-marshal.h: terminal-marshal.list Makefile
 terminal-marshal.c: terminal-marshal.list Makefile
 	$(AM_V_GEN) echo "#include <terminal/terminal-marshal.h>" > xgen-tmc \
 	&& ( cd $(srcdir) && glib-genmarshal \
---prefix=_terminal_marshal \
---body terminal-marshal.list ) >> xgen-tmc \
+	--prefix=_terminal_marshal \
+	--body terminal-marshal.list ) >> xgen-tmc \
 	&& cp xgen-tmc terminal-marshal.c \
 	&& rm -f xgen-tmc
 endif

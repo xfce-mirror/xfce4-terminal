@@ -30,6 +30,7 @@
 #endif
 
 #include <gdk/gdkkeysyms.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
@@ -711,7 +712,8 @@ terminal_widget_open_uri (TerminalWidget *widget,
       if (!exo_execute_preferred_application_on_screen (category, uri, NULL, NULL, screen, &error))
         {
           /* tell the user that we were unable to open the responsible application */
-          terminal_dialogs_show_error (widget, error, _("Failed to open the URL `%s'"), uri);
+          xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget))),
+                                  error, _("Failed to open the URL `%s'"), uri);
           g_error_free (error);
         }
 

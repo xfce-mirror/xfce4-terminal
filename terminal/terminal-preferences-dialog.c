@@ -22,13 +22,14 @@
 #include <config.h>
 #endif
 
+#include <libxfce4ui/libxfce4ui.h>
+
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
 #include <terminal/terminal-stock.h>
 #include <terminal/terminal-private.h>
-#include <terminal/xfce-titled-dialog.h>
 
 
 
@@ -266,7 +267,8 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
   if (G_UNLIKELY (response == 1))
     {
       /* open the "Preferences" section of the user manual */
-      terminal_dialogs_show_help (GTK_WINDOW (widget), "preferences.html", NULL);
+      xfce_dialog_show_help (GTK_WINDOW (widget), "terminal",
+                             "preferences", NULL);
     }
   else
     {

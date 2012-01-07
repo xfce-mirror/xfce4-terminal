@@ -143,7 +143,7 @@ main (int argc, char **argv)
       name = g_get_prgname ();
       g_print ("%s %s (Xfce %s)\n\n", name, PACKAGE_VERSION, xfce_version_string ());
       g_free (name);
-      g_print ("%s\n", "Copyright (c) 2003-2011");
+      g_print ("%s\n", "Copyright (c) 2003-2012");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
       g_print ("%s\n", _("Written by Benedikt Meurer <benny@xfce.org>"));
       g_print ("%s\n\n", _("and Nick Schermer <nick@xfce.org>."));

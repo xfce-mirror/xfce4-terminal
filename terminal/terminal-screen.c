@@ -39,6 +39,8 @@
 #include <time.h>
 #endif
 
+#include <libxfce4ui/libxfce4ui.h>
+
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-image-loader.h>
@@ -1379,7 +1381,8 @@ terminal_screen_launch_child (TerminalScreen *screen)
   if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
       /* tell the user that we were unable to execute the command */
-      terminal_dialogs_show_error (GTK_WIDGET (screen), error, _("Failed to execute child"));
+      xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
+                              error, _("Failed to execute child"));
       g_error_free (error);
     }
   else
@@ -1408,7 +1411,8 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                            NULL, NULL,
                                            &screen->pid, &error))
         {
-          terminal_dialogs_show_error (GTK_WIDGET (screen), error, _("Failed to execute child"));
+          xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
+                                  error, _("Failed to execute child"));
           g_error_free (error);
         }
 

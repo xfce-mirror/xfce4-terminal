@@ -37,6 +37,8 @@
 #endif
 
 #include <exo/exo.h>
+#include <libxfce4ui/libxfce4ui.h>
+
 #include <gdk/gdkkeysyms.h>
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -1517,7 +1519,7 @@ title_dialog_response (GtkWidget         *dialog,
   if (response == GTK_RESPONSE_HELP)
     {
       /* open the "Set Title" paragraph in the "Usage" section */
-      terminal_dialogs_show_help (GTK_WINDOW (dialog), "usage.html", "set-title");
+      xfce_dialog_show_help (GTK_WINDOW (dialog), "terminal", "usage", NULL);
     }
   else
     {
@@ -1620,7 +1622,7 @@ terminal_window_action_report_bug (GtkAction       *action,
                                    TerminalWindow  *window)
 {
   /* open the "Support" section of the user manual */
-  terminal_dialogs_show_help (GTK_WINDOW (window), "support.html", NULL);
+  xfce_dialog_show_help (GTK_WINDOW (window), "terminal", "support", NULL);
 }
 
 
@@ -1630,7 +1632,7 @@ terminal_window_action_contents (GtkAction       *action,
                                  TerminalWindow  *window)
 {
   /* open the Terminal user manual */
-  terminal_dialogs_show_help (GTK_WINDOW (window), NULL, NULL);
+  xfce_dialog_show_help (GTK_WINDOW (window), "terminal", NULL, NULL);
 }
 
 
