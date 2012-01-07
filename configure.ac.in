@@ -176,10 +176,7 @@ AC_SUBST([PLATFORM_LDFLAGS])
 
 AC_OUTPUT([
 Makefile
-Terminal.spec
 doc/Makefile
-doc/images/Makefile
-doc/images/ja/Makefile
 doc/po/Makefile
 icons/Makefile
 icons/16x16/Makefile
@@ -204,10 +201,10 @@ echo "* D-Bus support:           no"
 fi
 echo "* Debug support:           $enable_debug"
 if test x"$enable_gen_doc" = x"yes"; then
-echo "* Documentation:           yes (generate)"
-elif test -d "${srcdir}/doc/html"; then
-echo "* Documentation:           yes (in tarball)"
+echo "* Man Pages:               yes (generate)"
+elif test -d "${srcdir}/doc/man"; then
+echo "* Man Pages:               yes (in tarball)"
 else
-echo "* Documentation:           no"
+echo "* Man Pages:               no"
 fi
 echo

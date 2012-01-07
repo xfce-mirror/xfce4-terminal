@@ -7,10 +7,6 @@ SUBDIRS = \
 distclean-local:
 	rm -rf *.cache *~
 
-rpm: dist
-	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
-	@rm -f $(PACKAGE)-$(VERSION).tar.gz
-
 .PHONY: ChangeLog
 
 ChangeLog: Makefile
@@ -19,6 +15,9 @@ ChangeLog: Makefile
 	|| (touch ChangeLog; echo 'Git directory not found: installing possibly empty changelog.' >&2)
 
 dist-hook: ChangeLog
+
+distuninstallcheck_listfiles = 						\ 
+	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
 
 package_exec=`echo $(PACKAGE) | sed '$(program_transform_name)'`
 
@@ -57,7 +56,6 @@ EXTRA_DIST = \
 	$(ui_DATA)
 
 DISTCLEANFILES = \
-	Terminal.spec \
 	intltool-extract \
 	intltool-merge \
 	intltool-update \
