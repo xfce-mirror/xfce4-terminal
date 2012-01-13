@@ -2,13 +2,13 @@
 # Copyright (C) 2003-2006 os-cillation e.K.
 # This file is distributed under the same license as the Terminal package.
 # Nuno Miguel <nunis@netcabo.pt>, 2007, 2008, 2009
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.4.3\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-06-20 16:01+0000\n"
-"PO-Revision-Date: 2011-02-09 13:46-0000\n"
+"PO-Revision-Date: 2012-01-13 13:09-0000\n"
 "Last-Translator: Sérgio Marques <smarquespt@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -31,15 +31,17 @@ msgstr "Opções gerais"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:59
+#: ../terminal/main.c:85
 msgid "display"
 msgstr "exibir"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:61
+#: ../terminal/main.c:76
 msgid "directory"
-msgstr "directório"
+msgstr "diretório"
 
 #: ../terminal/main.c:65
 msgid "Window or Tab Separators"
@@ -86,10 +88,12 @@ msgstr "ícone"
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr "Veja o manual do %s para uma explicação completa sobre as opções indicadas."
+msgstr "Consulte o manual do %s para uma explicação completa sobre as opções indicadas"
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1274
-#: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.in.h:1
+#: ../terminal/main.c:126
+#: ../terminal/terminal-preferences.c:1274
+#: ../terminal/terminal-shortcut-editor.c:120
+#: ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
 msgstr "Terminal"
 
@@ -131,14 +135,15 @@ msgstr "Exibir incompatibilidade"
 #: ../terminal/terminal-dbus.c:145
 #, c-format
 msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "Bus de mensagem D-BUS desligado, a sair...\n"
+msgstr "Canal de mensagem D-BUS desligado, a sair...\n"
 
 #: ../terminal/terminal-dbus.c:207
 #, c-format
 msgid "Unable to register object %s"
 msgstr "Incapaz de registar o objecto %s"
 
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:95
+#: ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulador de terminal Xfce"
 
@@ -148,7 +153,7 @@ msgstr "Nuno Miguel <nunis@netcabo.pt>"
 
 #: ../terminal/terminal-dialogs.c:105
 msgid "Visit Terminal website"
-msgstr "Visite o sítio web do Terminal"
+msgstr "Consulte o sítio web do Terminal"
 
 #: ../terminal/terminal-dialogs.c:215
 #, c-format
@@ -158,7 +163,7 @@ msgstr "O manual de utilizador do %s não está instalado"
 #: ../terminal/terminal-dialogs.c:218
 #, c-format
 msgid "You can read the user manual online. This manual may however not exactly match your %s version."
-msgstr "Pode ler o manual \"on-line\". No entanto, este manual pode não corresponder à sua versão do %s."
+msgstr "Pode ler o manual \"on-line\". No entanto, este manual pode não corresponder à sua versão do %s"
 
 #: ../terminal/terminal-dialogs.c:220
 msgid "User manual is missing"
@@ -176,57 +181,57 @@ msgstr "Falha ao abrir a documentação"
 #: ../terminal/terminal-options.c:210
 #, c-format
 msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
-msgstr "Opção \"--default-display\" requer que especifique como parâmetro o ecrã omisso do X"
+msgstr "Opção \"--default-display\" requer que especifique o ecrã omisso do X como parâmetro"
 
 #: ../terminal/terminal-options.c:225
 #, c-format
 msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
-msgstr "Opção \"--default-working-directory\" requer que especifique como parâmetro o directório de trabalho omisso"
+msgstr "Opção \"--default-working-directory\" requer que especifique o diretório de trabalho omisso como parâmetro"
 
 #: ../terminal/terminal-options.c:241
 #, c-format
 msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
-msgstr "Opção \"--execute/-x\" requer que especifique como parâmetro o resto da linha de comandos"
+msgstr "Opção \"--execute/-x\" requer que especifique o comando a executar no resto da linha de comandos"
 
 #: ../terminal/terminal-options.c:258
 #, c-format
 msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
-msgstr "Opção \"--command/-e\" requer que especifique como parâmetro o comando a executar"
+msgstr "Opção \"--command/-e\" requer que especifique o comando a executar como parâmetro "
 
 #: ../terminal/terminal-options.c:275
 #, c-format
 msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
-msgstr "Opção \"--working-directory\" requer que especifique como parâmetro o directório de trabalho"
+msgstr "Opção \"--working-directory\" requer que especifique o diretório de trabalho como parâmetro"
 
 #: ../terminal/terminal-options.c:290
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr "Opção \"--title/-T\" requer que especifique como parâmetro o título"
+msgstr "Opção \"--title/-T\" requer que especifique o título como parâmetro"
 
 #: ../terminal/terminal-options.c:309
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "Opção \"--display\" requer que especifique como parâmetro o  o ecrã do X"
+msgstr "Opção \"--display\" requer que especifique  o ecrã do X como parâmetro"
 
 #: ../terminal/terminal-options.c:324
 #, c-format
 msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
-msgstr "Opção \"--geometry\" requer que especifique como parâmetro a geometria da janela"
+msgstr "Opção \"--geometry\" requer que especifique a geometria da janela como parâmetro"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr "Opção \"--role\" requer que especifique como parâmetro a função da janela"
+msgstr "Opção \"--role\" requer que especifique a função da janela como parâmetro"
 
 #: ../terminal/terminal-options.c:354
 #, c-format
 msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr "Opção \"--startup-id\" requer que especifique como parâmetro o id de arranque"
+msgstr "Opção \"--startup-id\" requer que especifique a ID de arranque como parâmetro"
 
 #: ../terminal/terminal-options.c:369
 #, c-format
 msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
-msgstr "Opção \"--icon/-I\" requer que especifique como parâmetro o nome do ícone ou do ficheiro"
+msgstr "Opção \"--icon/-I\" requer que especifique o nome do ícone ou do ficheiro como parâmetro"
 
 #: ../terminal/terminal-options.c:423
 #, c-format
@@ -271,11 +276,11 @@ msgstr "Colar"
 
 #: ../terminal/terminal-preferences.c:387
 msgid "Paste Selection"
-msgstr "Colar selecção"
+msgstr "Colar seleção"
 
 #: ../terminal/terminal-preferences.c:398
 msgid "Select All"
-msgstr "Seleccionar tudo"
+msgstr "Selecionar tudo"
 
 #: ../terminal/terminal-preferences.c:409
 msgid "Preferences"
@@ -301,7 +306,8 @@ msgstr "Ecrã completo"
 msgid "Set Title"
 msgstr "Definir título"
 
-#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:235
+#: ../terminal/terminal-preferences.c:475
+#: ../terminal/terminal-window.c:235
 msgid "Reset"
 msgstr "Repor"
 
@@ -357,7 +363,8 @@ msgstr "Trocar para o separador 9"
 msgid "Contents"
 msgstr "Conteúdo"
 
-#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
+#: ../terminal/terminal-screen.c:399
+#: ../terminal/terminal-screen.c:631
 #: ../terminal/terminal-screen.c:1681
 msgid "Untitled"
 msgstr "Sem título"
@@ -368,7 +375,8 @@ msgid "Unable to determine your login shell."
 msgstr "Incapaz de determinar a \"shell\" de \"login\""
 
 #. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
+#: ../terminal/terminal-screen.c:1382
+#: ../terminal/terminal-screen.c:1411
 msgid "Failed to execute child"
 msgstr "Falha ao executar dependente"
 
@@ -397,13 +405,14 @@ msgid "Help"
 msgstr "Ajuda"
 
 #: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
+#: ../terminal/terminal-shortcut-editor.c:506
+#: ../Terminal.glade.h:24
 msgid "Disabled"
-msgstr "Inactivo"
+msgstr "Inativo"
 
 #: ../terminal/terminal-shortcut-editor.c:222
 msgid "Action"
-msgstr "Acção"
+msgstr "Ação"
 
 #: ../terminal/terminal-shortcut-editor.c:229
 msgid "Shortcut key"
@@ -427,7 +436,7 @@ msgstr "Falha ao obter teclado"
 
 #: ../terminal/terminal-shortcut-editor.c:377
 msgid "Another application has already acquired control over your keyboard."
-msgstr "Outra aplicação já adquiriu o controlo sobre o teclado."
+msgstr "Outra aplicação já adquiriu o controlo sobre o teclado"
 
 #: ../terminal/terminal-toolbars-view.c:112
 msgid "Toolbar Editor"
@@ -435,11 +444,11 @@ msgstr "Editor de barra de ferramentas"
 
 #: ../terminal/terminal-widget.c:320
 msgid "Copy Email Address"
-msgstr "Copiar endereço electrónico"
+msgstr "Copiar endereço eletrónico"
 
 #: ../terminal/terminal-widget.c:321
 msgid "Compose Email"
-msgstr "Escrever mensagem"
+msgstr "Escrever mensagem eletrónica"
 
 #: ../terminal/terminal-widget.c:325
 msgid "Copy Link Address"
@@ -452,28 +461,28 @@ msgstr "Abrir ligação"
 #: ../terminal/terminal-widget.c:480
 #, c-format
 msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Incapaz de largar a selecção do tipo texto/plano no terminal: formato (%d) ou extensão (%d) errada\n"
+msgstr "Incapaz de largar a seleção do tipo texto/plano no terminal: formato (%d) ou dimensão (%d) errada\n"
 
 #: ../terminal/terminal-widget.c:496
 #, c-format
 msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Incapaz de largar a URL Mozilla no terminal: formato (%d) ou extensão(%d) errada\n"
+msgstr "Incapaz de largar a URL Mozilla no terminal: formato (%d) ou dimensão(%d) errada\n"
 
 #: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Incapaz de largar a lista de URI no terminal: formato (%d) ou extensão (%d) errado\n"
+msgstr "Incapaz de largar a lista URI no terminal: formato (%d) ou dimensão (%d) errado\n"
 
 #: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Recebidos dados de cor inválidos: formato (%d) ou extensão (%d) errado\n"
+msgstr "Recebidos dados de cor inválidos: formato (%d) ou dimensão (%d) errado\n"
 
 #. tell the user that we were unable to open the responsible application
 #: ../terminal/terminal-widget.c:704
 #, c-format
 msgid "Failed to open the URL `%s'"
-msgstr "Falha ao abrir a URL \"%s\""
+msgstr "Falha ao abrir o URL \"%s\""
 
 #: ../terminal/terminal-window.c:219
 msgid "_File"
@@ -501,7 +510,7 @@ msgstr "_Destacar separador"
 
 #: ../terminal/terminal-window.c:222
 msgid "Open a new window for the current terminal tab"
-msgstr "Abrir nova janela no actual separador de terminal"
+msgstr "Abrir nova janela no atual separador de terminal"
 
 #: ../terminal/terminal-window.c:223
 msgid "C_lose Tab"
@@ -509,7 +518,7 @@ msgstr "Fec_har separador"
 
 #: ../terminal/terminal-window.c:223
 msgid "Close the current terminal tab"
-msgstr "Fechar o separador actual do terminal"
+msgstr "Fechar separador actual do terminal"
 
 #: ../terminal/terminal-window.c:224
 msgid "_Close Window"
@@ -541,23 +550,23 @@ msgstr "Colar da área de transferência"
 
 #: ../terminal/terminal-window.c:228
 msgid "Paste _Selection"
-msgstr "Colar _selecção"
+msgstr "Colar _seleção"
 
 #: ../terminal/terminal-window.c:228
 msgid "Paste from primary selection"
-msgstr "Colar da selecção primária"
+msgstr "Colar da seleção primária"
 
 #: ../terminal/terminal-window.c:229
 msgid "Select _All"
-msgstr "Seleccion_ar tudo"
+msgstr "Selecion_ar tudo"
 
 #: ../terminal/terminal-window.c:229
 msgid "Select all text in the terminal"
-msgstr "Seleccionar todo o texto do terminal"
+msgstr "Selecionar todo o texto do terminal"
 
 #: ../terminal/terminal-window.c:230
 msgid "_Toolbars..."
-msgstr "Barra de _ferramentas..."
+msgstr "Barra de ferramen_tas..."
 
 #: ../terminal/terminal-window.c:230
 msgid "Customize the toolbars"
@@ -585,7 +594,7 @@ msgstr "_Definir título..."
 
 #: ../terminal/terminal-window.c:234
 msgid "Set a custom title for the current tab"
-msgstr "Definir título personalizado para o separador actual"
+msgstr "Definir título personalizado para o separador atual"
 
 #: ../terminal/terminal-window.c:235
 msgid "_Reset"
@@ -621,7 +630,7 @@ msgstr "Trocar para o separador seguinte"
 
 #: ../terminal/terminal-window.c:240
 msgid "_Help"
-msgstr "_Ajuda"
+msgstr "Aj_uda"
 
 #: ../terminal/terminal-window.c:241
 msgid "_Contents"
@@ -645,7 +654,7 @@ msgstr "_Sobre"
 
 #: ../terminal/terminal-window.c:243
 msgid "Display information about Terminal"
-msgstr "Mostrar informação sobre o Terminal"
+msgstr "Exibir informações do Terminal"
 
 #: ../terminal/terminal-window.c:244
 msgid "_Input Methods"
@@ -661,7 +670,7 @@ msgstr "Mostrar/ocultar barra de menu"
 
 #: ../terminal/terminal-window.c:250
 msgid "Show _Toolbars"
-msgstr "Mostrar barra de _ferramentas"
+msgstr "Mostrar barra de ferramen_tas"
 
 #: ../terminal/terminal-window.c:250
 msgid "Show/hide the toolbars"
@@ -681,7 +690,7 @@ msgstr "_Ecrã completo"
 
 #: ../terminal/terminal-window.c:252
 msgid "Toggle fullscreen mode"
-msgstr "Alternar para ecrã completo"
+msgstr "Trocar para ecrã completo"
 
 #: ../terminal/terminal-window.c:538
 msgid "Warning"
@@ -698,7 +707,7 @@ msgid ""
 "this window will also close all its tabs."
 msgstr ""
 "Esta janela tem %d separadores abertos. Ao fechar\n"
-"esta janela irá fechar também todos os separadores."
+"a janela, fecha todos os separadores"
 
 #: ../terminal/terminal-window.c:571
 msgid "Close all tabs?"
@@ -718,7 +727,7 @@ msgstr "Título:"
 
 #: ../terminal/terminal-window.c:1580
 msgid "Enter the title for the current terminal tab"
-msgstr "Introduza o título para o actual separador de terminal"
+msgstr "Introduza o título para o atual separador de terminal"
 
 #: ../Terminal.desktop.in.in.h:2
 msgid "Terminal Emulator"
@@ -742,7 +751,7 @@ msgstr "Permitir te_xto em negrito"
 
 #: ../Terminal.glade.h:5
 msgid "Auto-detect"
-msgstr "Detecção automática"
+msgstr "Deteção automática"
 
 #: ../Terminal.glade.h:6
 msgid "Background"
@@ -762,7 +771,7 @@ msgstr "Escolha a letra do terminal"
 
 #: ../Terminal.glade.h:10
 msgid "Choose tab activity color"
-msgstr "Escolha a cor da actividade do separador"
+msgstr "Escolha a cor de atividade do separador"
 
 #: ../Terminal.glade.h:11
 msgid "Choose terminal background color"
@@ -778,11 +787,11 @@ msgstr "Escolha a cor do texto do terminal"
 
 #: ../Terminal.glade.h:14
 msgid "Choose terminal text selection background color"
-msgstr "Escolha a cor de fundo da selecção de texto do terminal"
+msgstr "Escolha a cor de fundo da seleção de texto do terminal"
 
 #: ../Terminal.glade.h:15
 msgid "Color Selector"
-msgstr "Selector de cor"
+msgstr "Seleção de cor"
 
 #: ../Terminal.glade.h:16
 msgid "Command"
@@ -798,7 +807,7 @@ msgid ""
 "when double clicking:"
 msgstr ""
 "Considerar os seguintes caracteres parte de u_ma\n"
-"palavra ao fazer duplo clique:"
+"palavra ao clicar duas vezes:"
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
@@ -818,15 +827,15 @@ msgstr "Desligar teclas de atalho de m_enu (F10 por omissão)"
 
 #: ../Terminal.glade.h:25
 msgid "Display _borders around new windows"
-msgstr "Mostrar contornos em redor das n_ovas janelas"
+msgstr "Exibir contornos em redor das n_ovas janelas"
 
 #: ../Terminal.glade.h:26
 msgid "Display _menubar in new windows"
-msgstr "Mostrar barra de _menu nas novas janelas"
+msgstr "Exibir barra de _menu nas novas janelas"
 
 #: ../Terminal.glade.h:27
 msgid "Display _toolbars in new windows"
-msgstr "Mostrar barra de ferramen_tas nas novas janelas"
+msgstr "Exibir barra de ferramen_tas nas novas janelas"
 
 #: ../Terminal.glade.h:28
 msgid "Double Click"
@@ -834,39 +843,39 @@ msgstr "Duplo clique"
 
 #: ../Terminal.glade.h:29
 msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "_Ligar suavização para as letras do terminal"
+msgstr "Ativar suavização para as _letras do terminal"
 
 #: ../Terminal.glade.h:30
 msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
-msgstr "Active esta opção se quiser que o Terminal suavize as letras ao processar o texto nas janelas do terminal. Se desactivar esta opção, pode aumentar o desempenho e reduzir a carga do sistema em computadores mais lentos."
+msgstr "Ative esta opção se quiser que o Terminal suavize as letras ao processar o texto nas janelas do terminal. Se desativar esta opção, pode aumentar o desempenho e reduzir a carga do sistema em computadores mais lentos"
 
 #: ../Terminal.glade.h:31
 msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
-msgstr "Active esta opção para permitir que as aplicações em execução no terminal utilizem texto em negrito."
+msgstr "Ative esta opção para permitir que as aplicações em execução no terminal utilizem texto em negrito"
 
 #: ../Terminal.glade.h:32
 msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
-msgstr "Active esta opção para conseguir deslocar uma única linha com as teclas cima/baixo em conjunto com a tecla Shift."
+msgstr "Ative esta opção para conseguir deslocar uma única linha com as teclas cima/baixo em conjunto com a tecla Shift"
 
 #: ../Terminal.glade.h:33
 msgid "Enable this option to show the menubar in newly created terminal windows."
-msgstr "Active esta opção para mostrar a barra de menu nas novas janelas do terminal."
+msgstr "Ative esta opção para mostrar a barra de menu nas novas janelas do terminal"
 
 #: ../Terminal.glade.h:34
 msgid "Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Active esta opção para mostrar a barra de ferramentas nas novas janelas do terminal."
+msgstr "Active esta opção para mostrar a barra de ferramentas nas novas janelas do terminal"
 
 #: ../Terminal.glade.h:35
 msgid "Enable this option to show window decorations around newly created terminal windows."
-msgstr "Active esta opção para mostrar as decorações da janela nas novas janelas do terminal."
+msgstr "Ative esta opção para mostrar as decorações da janela nas novas janelas do terminal"
 
 #: ../Terminal.glade.h:36
 msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
-msgstr "Permite que pressione qualquer tecla no teclado para deslocar a janela do terminal até à linha de comandos."
+msgstr "Permite que pressione qualquer tecla no teclado para deslocar a janela do terminal até à linha de comandos"
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
-msgstr "Apagar TTY"
+msgstr "Eliminar TTY"
 
 #: ../Terminal.glade.h:38
 msgid "Escape sequence"
@@ -914,7 +923,7 @@ msgstr "Abre uma janela para especificar a cor"
 
 #: ../Terminal.glade.h:49
 msgid "Opening New Windows"
-msgstr "Abrindo novas janelas"
+msgstr "Abrir novas janelas"
 
 #: ../Terminal.glade.h:50
 msgid "Palette"
@@ -922,15 +931,15 @@ msgstr "Paleta"
 
 #: ../Terminal.glade.h:51
 msgid "Palette entry 1"
-msgstr "Entrada da paleta 1"
+msgstr "Entrada de paleta 1"
 
 #: ../Terminal.glade.h:52
 msgid "Palette entry 10"
-msgstr "Entrada da paleta 10"
+msgstr "Entrada de paleta 10"
 
 #: ../Terminal.glade.h:53
 msgid "Palette entry 11"
-msgstr "Entrada da paleta 11"
+msgstr "Entrada de paleta 11"
 
 #: ../Terminal.glade.h:54
 msgid "Palette entry 12"
@@ -938,51 +947,51 @@ msgstr "Entrada da paleta 12"
 
 #: ../Terminal.glade.h:55
 msgid "Palette entry 13"
-msgstr "Entrada da paleta 13"
+msgstr "Entrada de paleta 13"
 
 #: ../Terminal.glade.h:56
 msgid "Palette entry 14"
-msgstr "Entrada da paleta 14"
+msgstr "Entrada de paleta 14"
 
 #: ../Terminal.glade.h:57
 msgid "Palette entry 15"
-msgstr "Entrada da paleta 15"
+msgstr "Entrada de paleta 15"
 
 #: ../Terminal.glade.h:58
 msgid "Palette entry 16"
-msgstr "Entrada da paleta 16"
+msgstr "Entrada de paleta 16"
 
 #: ../Terminal.glade.h:59
 msgid "Palette entry 2"
-msgstr "Entrada da paleta 2"
+msgstr "Entrada de paleta 2"
 
 #: ../Terminal.glade.h:60
 msgid "Palette entry 3"
-msgstr "Entrada da paleta 3"
+msgstr "Entrada de paleta 3"
 
 #: ../Terminal.glade.h:61
 msgid "Palette entry 4"
-msgstr "Entrada da paleta 4"
+msgstr "Entrada de paleta 4"
 
 #: ../Terminal.glade.h:62
 msgid "Palette entry 5"
-msgstr "Entrada da paleta 5"
+msgstr "Entrada de paleta 5"
 
 #: ../Terminal.glade.h:63
 msgid "Palette entry 6"
-msgstr "Entrada da paleta 6"
+msgstr "Entrada de paleta 6"
 
 #: ../Terminal.glade.h:64
 msgid "Palette entry 7"
-msgstr "Entrada da paleta 7"
+msgstr "Entrada de paleta 7"
 
 #: ../Terminal.glade.h:65
 msgid "Palette entry 8"
-msgstr "Entrada da paleta 8"
+msgstr "Entrada de paleta 8"
 
 #: ../Terminal.glade.h:66
 msgid "Palette entry 9"
-msgstr "Entrada da paleta 9"
+msgstr "Entrada de paleta 9"
 
 #: ../Terminal.glade.h:67
 msgid "Replaces initial title"
@@ -990,11 +999,11 @@ msgstr "Substitui o título inicial"
 
 #: ../Terminal.glade.h:68
 msgid "Rese_t double click options to defaults"
-msgstr "Repor o_pções de duplo clique para as omissões"
+msgstr "Repor o_pções de duplo clique originais"
 
 #: ../Terminal.glade.h:69
 msgid "Reset tab activity _indicator after"
-msgstr "Repor _indicador de actividade do separador após"
+msgstr "Repor _indicador de atividade do separador após"
 
 #: ../Terminal.glade.h:70
 msgid "Scaled"
@@ -1002,11 +1011,11 @@ msgstr "À escala"
 
 #: ../Terminal.glade.h:71
 msgid "Scr_ollbar is:"
-msgstr "Barra de desl_ocamento está:"
+msgstr "Barra de desl_ocamento:"
 
 #: ../Terminal.glade.h:72
 msgid "Scroll on _keystroke"
-msgstr "Deslocar com tecla pressio_nada"
+msgstr "Deslocar ao premir a te_cla"
 
 #: ../Terminal.glade.h:73
 msgid "Scroll on ou_tput"
@@ -1026,11 +1035,11 @@ msgstr "Deslocação"
 
 #: ../Terminal.glade.h:77
 msgid "Select Background Image File"
-msgstr "Seleccione a imagem de fundo"
+msgstr "Selecione a imagem de fundo"
 
 #: ../Terminal.glade.h:78
 msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
-msgstr "Seleccione esta opção para forçar o Terminal a executar a sua \"shell\" como \"shell\" de \"login\" ao abrir novos terminais. Veja a documentação da \"shell\" para detalhes sobre as diferenças entre a execução de uma \"shell\" interactiva e a \"shell\" de \"login\"."
+msgstr "Selecione esta opção para forçar o Terminal a executar a \"shell\" como \"shell\" de \"login\" ao abrir novos terminais. Consulte a documentação da \"shell\" para detalhes sobre as diferenças entre a execução de uma \"shell\" interativa e a \"shell\" de \"login\"."
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
@@ -1038,7 +1047,7 @@ msgstr "Teclas de atalho"
 
 #: ../Terminal.glade.h:80
 msgid "Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Indica o número de linhas que pode voltar trás usando a barra de deslocamento."
+msgstr "Indica o número de linhas que pode recuar ao utilizar a barra de deslocamento."
 
 #: ../Terminal.glade.h:81
 msgid "St_yle:"
@@ -1050,11 +1059,11 @@ msgstr "Esticado"
 
 #: ../Terminal.glade.h:83
 msgid "Tab Activity Indicator"
-msgstr "Indicador de actividade do separador"
+msgstr "Indicador de atividade do separador"
 
 #: ../Terminal.glade.h:84
 msgid "Tab activit_y color:"
-msgstr "Cor de actividade do _separador:"
+msgstr "Cor de atividade do _separador:"
 
 #: ../Terminal.glade.h:85
 msgid "Terminal Preferences"
@@ -1066,7 +1075,7 @@ msgstr "As aplicações de terminal têm esta paleta de cor disponível:"
 
 #: ../Terminal.glade.h:87
 msgid "Text Selection"
-msgstr "Selecção de texto"
+msgstr "Seleção de texto"
 
 #: ../Terminal.glade.h:88
 msgid ""
@@ -1075,18 +1084,18 @@ msgid ""
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr ""
-"Estas opções podem causar um comportamento incorrecto\n"
-"de algumas aplicações. Apenas estão aqui para lhe permitir\n"
+"Estas opções podem causar um comportamento incorreto\n"
+"de algumas aplicações. Apenas estão aqui para permitir\n"
 "contornar certas aplicações e sistemas operativos que têm uma\n"
 "diferente expectativa sobre o comportamento do terminal."
 
 #: ../Terminal.glade.h:92
 msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
-msgstr "Esta opção controla se o terminal se desloca para baixo automaticamente sempre que uma nova saída é gerada pelos comandos executados no terminal."
+msgstr "Esta opção controla se o terminal se desloca para baixo automaticamente sempre que uma nova saída é gerada pelos comandos executados no terminal"
 
 #: ../Terminal.glade.h:93
 msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
-msgstr "Isto especifica o valor que a variável de ambiente $TERM tem definido, ao abrir um novo separador/janela de terminal. A omissão deve servir para a maioria dos sistemas. Se tiver problemas com cores em algumas aplicações, tente xterm-color aqui."
+msgstr "Isto especifica o valor que a variável de ambiente $TERM tem definido, ao abrir um novo separador/janela de terminal. A omissão deve servir para a maioria dos sistemas. Se tiver problemas com cores em algumas aplicações, tente xterm-color aqui"
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1110,15 +1119,15 @@ msgstr "Utilizar a cor _omissa"
 
 #: ../Terminal.glade.h:99
 msgid "Use a custom text selection background color"
-msgstr "Utilizar uma cor personalizada para a selecção de texto"
+msgstr "Utilizar uma cor personalizada para a seleção de texto"
 
 #: ../Terminal.glade.h:100
 msgid "Use c_ustom color:"
-msgstr "Utilizar uma cor personali_zada:"
+msgstr "_Utilizar uma cor personalizada:"
 
 #: ../Terminal.glade.h:101
 msgid "Use the default text selection background color"
-msgstr "Utilizar a cor de fundo omissa para a selecção de texto"
+msgstr "Utilizar a cor de fundo omissa para a seleção de texto"
 
 #: ../Terminal.glade.h:102
 msgid "_Appearance"
@@ -1142,7 +1151,7 @@ msgstr "Tecla _Delete gera:"
 
 #: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
-msgstr "Título configurado _dinâmicamente:"
+msgstr "Título configurado _dinamicamente:"
 
 #: ../Terminal.glade.h:108
 msgid "_File:"
@@ -1158,7 +1167,7 @@ msgstr "Título _inicial:"
 
 #: ../Terminal.glade.h:111
 msgid "_Reset compatibility options to defaults"
-msgstr "_Repor as opções de compatibilidade para as omissões"
+msgstr "_Repor as opções de compatibilidade originais"
 
 #: ../Terminal.glade.h:112
 msgid "_Run command as login shell"
@@ -1174,8 +1183,9 @@ msgstr "Cor do _texto:"
 
 #: ../Terminal.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Actualiza_r registos utmp/wtmp ao lançar o comando"
+msgstr "Actualiza_r registos utmp/wtmp ao executar o comando"
 
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "segundos"
+
