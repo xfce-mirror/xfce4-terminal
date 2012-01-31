@@ -316,7 +316,7 @@ msgstr "<option>-x</option>, <option>--execute</option>"
 #: Terminal.1.xml224(para)
 #, fuzzy
 msgid "Execute the remainder of the command line inside the terminal"
-msgstr "Führt den Rest der Kommandozeile innerhalb des Terminals aus"
+msgstr "Führt die übergebene Zeichenfolge (einschließlich Leerzeichen) innerhalb des Terminals als Befehl aus. Parameter sind daher nicht möglich! "
 
 #: Terminal.1.xml229(term)
 #, fuzzy
@@ -479,10 +479,11 @@ msgid "--show-menubar"
 msgstr "--show-menubar"
 
 #: Terminal.1.xml356(para)
+#, fuzzy
 msgid ""
 "Turn on the menubar for the last-specified window. Can be specified once for "
 "each window you create from the command line."
-msgstr ""
+msgstr "Aktiviert die Menüleiste für das zuletzt genannte Fenster. Der Schalter kann für jedes von der Befehlszeile gestartete Fenster einzeln angegeben werden."
 
 #: Terminal.1.xml365(option)
 #, fuzzy
@@ -490,10 +491,11 @@ msgid "--hide-menubar"
 msgstr "--hide-menubar"
 
 #: Terminal.1.xml368(para)
+#, fuzzy
 msgid ""
 "Turn off the menubar for the last-specified window. Can be specified once "
 "for each window you create from the command line."
-msgstr ""
+msgstr "Deaktiviert die Menüleiste für das zuletzt genannte Fenster. Der Schalter kann für jedes von der Befehlszeile gestartete Fenster einzeln angegeben werden."
 
 #: Terminal.1.xml377(option)
 #, fuzzy
@@ -501,11 +503,12 @@ msgid "--show-borders"
 msgstr "--show-borders"
 
 #: Terminal.1.xml380(para)
+#, fuzzy
 msgid ""
 "Turn on the window decorations for the last-specified window. Applies to "
 "only one window. Can be specified once for each window you create from the "
 "command line."
-msgstr ""
+msgstr "Aktiviert die Fensterdekoration für das zuletzt genannte Fenster. Der Schalter hat nur auf ein Fenster Auswirkungen, kann aber für jedes von der Befehlszeile gestartete Fenster einzeln angegeben werden."
 
 #: Terminal.1.xml389(option)
 #, fuzzy
@@ -513,11 +516,12 @@ msgid "--hide-borders"
 msgstr "--hide-borders"
 
 #: Terminal.1.xml392(para)
+#, fuzzy
 msgid ""
 "Turn off the window decorations for the last-specified window. Applies to "
 "only one window. Can be specified once for each window you create from the "
 "command line."
-msgstr ""
+msgstr "Deaktiviert die Fensterdekoration für das zuletzt genannte Fenster. Der Schalter hat nur auf ein Fenster Auswirkungen, kann aber für jedes von der Befehlszeile gestartete Fenster einzeln angegeben werden."
 
 #: Terminal.1.xml401(option)
 #, fuzzy
@@ -525,11 +529,12 @@ msgid "--show-toolbars"
 msgstr "--show-toolbars"
 
 #: Terminal.1.xml404(para)
+#, fuzzy
 msgid ""
 "Turn on the toolbars for the last-specified window. Applies to only one "
 "window. Can be specified once for each window you create from the command "
 "line."
-msgstr ""
+msgstr "Aktiviert die Werkzeugleiste für das zuletzt genannte Fenster. Der Schalter kann für jedes von der Befehlszeile gestartete Fenster einzeln angegeben werden."
 
 #: Terminal.1.xml413(option)
 #, fuzzy
@@ -537,11 +542,12 @@ msgid "--hide-toolbars"
 msgstr "--hide-toolbars"
 
 #: Terminal.1.xml416(para)
+#, fuzzy
 msgid ""
 "Turn off the toolbars for the last-specified window. Applies to only one "
 "window. Can be specified once for each window you create from the command "
 "line."
-msgstr ""
+msgstr "Deaktiviert die Werkzeugleiste für das zuletzt genannte Fenster. Der Schalter kann für jedes von der Befehlszeile gestartete Fenster einzeln angegeben werden."
 
 #: Terminal.1.xml427(title)
 #, fuzzy
@@ -549,27 +555,31 @@ msgid "Examples"
 msgstr "Beispiele"
 
 #: Terminal.1.xml430(term)
+#, fuzzy
 msgid "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
-msgstr ""
+msgstr "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
 
 #: Terminal.1.xml432(para)
+#, fuzzy
 msgid ""
 "Opens a new terminal window with a geometry of 80 columns and 40 rows and "
 "two tabs in it, where the first tab runs <command>mutt</command> and the "
 "second tab runs <command>mc</command>."
-msgstr ""
+msgstr "Öffnet ein Terminal mit einer Geometrie von 80 Spalten und 40 Zeilen. Das terminal startet mit 2 Reitern, in dem ersten Reiter läuft <command>mutt</command> und in dem zweiten Reiter läuft <command>mc</command>."
 
 #: Terminal.1.xml443(title)
+#, fuzzy
 msgid "Environment"
-msgstr ""
+msgstr "Umgebungsvariablen"
 
 #: Terminal.1.xml445(para)
+#, fuzzy
 msgid ""
 "Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
 "freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data "
 "and configuration files. This means that file locations will be specified as "
 "a path relative to the directories described in the specification."
-msgstr ""
+msgstr "Terminal benutzt die Basisverzeichnisfestlegung, wie sie auf <ulink url=\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> definiert ist,um die Daten und Einstellungsdateien zu finden. Dies bedeutet, dass die eigentlichen Dateiablagen als relativer Pfad zu den Verzeichnissen dieser Festlegung beschrieben werden.\r\n"
 
 #: Terminal.1.xml454(varname)
 #, fuzzy
@@ -577,10 +587,11 @@ msgid "${XDG_CONFIG_HOME}"
 msgstr "${XDG_CONFIG_HOME}"
 
 #: Terminal.1.xml456(para)
+#, fuzzy
 msgid ""
 "The first base directory to look for configuration files. By default this is "
 "set to <filename role=\"directory\">~/.config/</filename>."
-msgstr ""
+msgstr "Das erste Basisverzeichnis, in dem nach den Einstellungsdateien gesucht wird. Standardmäßig zeigt die Variable auf <filename role=\"directory\">~/.config/</filename>."
 
 #: Terminal.1.xml464(varname)
 #, fuzzy
@@ -588,13 +599,14 @@ msgid "${XDG_CONFIG_DIRS}"
 msgstr "${XDG_CONFIG_DIRS}"
 
 #: Terminal.1.xml466(para)
+#, fuzzy
 msgid ""
 "A colon separated list of base directories that contain configuration data. "
 "By default the application will look in <filename role=\"directory\">"
 "${sysconfdir}/xdg/</filename>. The value of <varname>${sysconfdir}</varname> "
 "depends on how the program was build and will often be <filename role="
 "\"directory\">/etc/</filename> for binary packages."
-msgstr ""
+msgstr "Eine mit Doppelpunkten unterteilte Auflistung von Verzeichnissen mit Konfigurationsdateien. Standardmäßig werden diese in <filename role=\"directory\">${sysconfdir}/xdg/</filename> gesucht. Der Wert für <varname>${sysconfdir}</varname> hängt davon ab, wie das Programm erstellt wurde, für Binärpakete ist es oft <filename role=\"directory\">/etc/</filename>."
 
 #: Terminal.1.xml477(varname)
 #, fuzzy
@@ -602,10 +614,11 @@ msgid "${XDG_DATA_HOME}"
 msgstr "${XDG_DATA_HOME}"
 
 #: Terminal.1.xml479(para)
+#, fuzzy
 msgid ""
 "The root for all user-specific data files. By default this is set to "
 "<filename role=\"directory\">~/.local/share/</filename>."
-msgstr ""
+msgstr "Das Basisverzeichnis für alle benutzerspezifischen Dateien. Standardmäßig ist die Variable mit <filename role=\"directory\">~/.local/share/</filename> belegt."
 
 #: Terminal.1.xml487(varname)
 #, fuzzy
@@ -613,11 +626,12 @@ msgid "${XDG_DATA_DIRS}"
 msgstr "${XDG_DATA_DIRS}"
 
 #: Terminal.1.xml489(para)
+#, fuzzy
 msgid ""
 "A set of preference ordered base directories relative to which data files "
 "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
 "base directory. The directories should be separated with a colon."
-msgstr ""
+msgstr "Nach Priorität sortierte Basisverzeichnisse, in denen zusätzlich zu dem Basisverzeichnis <varname>${XDG_DATA_HOME}</varname> nach Dateien gesucht werden soll. Die eigentlichen Dateien liegen immer relativ zu diesen Verzeichnissen. Die Verzeichnisse müssen durch Doppelpunkte getrennt angegeben werden."
 
 #: Terminal.1.xml501(title)
 #, fuzzy
@@ -625,39 +639,48 @@ msgid "Files"
 msgstr "Dateien"
 
 #: Terminal.1.xml505(filename)
+#, fuzzy
 msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-msgstr ""
+msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 
 #: Terminal.1.xml507(para)
+#, fuzzy
 msgid ""
 "This is the location of the configuration file that includes the preferences "
 "which control the look and feel of @PACKAGE_NAME@."
-msgstr ""
+msgstr "In dieser Datei werden die Einstellungen gespeichert, welche das Aussehen und Verhalten von @PACKAGE_NAME@ bestimmen."
 
 #: Terminal.1.xml515(filename)
+#, fuzzy
 msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-msgstr ""
+msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
 
 #: Terminal.1.xml517(para)
+#, fuzzy
 msgid ""
 "This file includes the user interface definition for the toolbars. If you "
 "customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@ "
 "will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
 "Terminal/Terminal-toolbars.ui</filename>."
-msgstr ""
+msgstr "Diese Datei beinhaltet die benutzerdefinierte Werkzeugleisten. Wenn Sie die Werkzeugleisten mit dem eingebauten Editor verändern, werden die neuen Einstellungen von @PACKAGE_NAME@ in der Datei <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename> gespeichert."
 
 #: Terminal.1.xml529(title)
+#, fuzzy
 msgid "See also"
-msgstr ""
+msgstr "Siehe auch"
 
 #: Terminal.1.xml530(para)
+#, fuzzy
 msgid ""
 "<citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></"
 "citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
 "manvolnum></citerefentry>"
-msgstr ""
+msgstr "<citerefentry><refentrytitle>bash</refentrytitle><manvolnum>1</manvolnum></citerefentry>, <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry>"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: Terminal.1.xml0(None)
+#, fuzzy
 msgid "translator-credits"
 msgstr ""
+"Thomas Schütz <xfce@thschuetz.de>\n"
+"German translator"
