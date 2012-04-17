@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-08 10:01+0000\n"
+"POT-Creation-Date: 2012-04-17 14:06+0000\n"
 "PO-Revision-Date: 2011-09-08 12:16+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -121,7 +121,7 @@ msgstr "Kan terminaldienst niet registreren: %s\n"
 #: ../terminal/terminal-app.c:516
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "Ongeldig geometrie-tekstsnoer \"%s\"\n"
+msgstr "Ongeldig geometrie-tekstsnoer '%s'\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
@@ -142,47 +142,20 @@ msgstr ""
 msgid "Unable to register object %s"
 msgstr "Kan object %s niet registreren"
 
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce Terminalvenster"
 
-#: ../terminal/terminal-dialogs.c:102
+#: ../terminal/terminal-dialogs.c:97
 msgid "translator-credits"
 msgstr ""
 "Stephan Arts <stephan@xfce.org>\n"
 "Jasper Huijsmans <jasper@xfce.org>\n"
 "Pjotr"
 
-#: ../terminal/terminal-dialogs.c:105
+#: ../terminal/terminal-dialogs.c:100
 msgid "Visit Terminal website"
 msgstr "Bezoek de Terminal-website"
-
-#: ../terminal/terminal-dialogs.c:215
-#, c-format
-msgid "The %s user manual is not installed on your computer"
-msgstr "De %s gebruikershandleiding is niet geïnstalleerd op uw computer"
-
-#: ../terminal/terminal-dialogs.c:218
-#, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
-"U kunt de gebruikershandleiding lezen op het internet. Deze handleiding zou "
-"wat kunnen afwijken van deze %s versie."
-
-#: ../terminal/terminal-dialogs.c:220
-msgid "User manual is missing"
-msgstr "Gebruikershandleiding ontbreekt"
-
-#: ../terminal/terminal-dialogs.c:222
-msgid "_Read Online"
-msgstr "_Lees op het internet"
-
-#. display an error message to the user
-#: ../terminal/terminal-dialogs.c:306
-msgid "Failed to open the documentation browser"
-msgstr "De documentatieverkenner kon niet worden gestart"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
@@ -280,13 +253,13 @@ msgstr ""
 #: ../terminal/terminal-options.c:423
 #, c-format
 msgid "Unknown option \"%s\""
-msgstr "Onbekende optie \"%s\""
+msgstr "Onbekende optie '%s'"
 
-#: ../terminal/terminal-preferences-dialog.c:227
+#: ../terminal/terminal-preferences-dialog.c:228
 msgid "All Files"
 msgstr "Alle bestanden"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-preferences-dialog.c:234
 msgid "Image Files"
 msgstr "Afbeeldingbestanden"
 
@@ -350,7 +323,7 @@ msgstr "Volledig scherm"
 msgid "Set Title"
 msgstr "Titel instellen"
 
-#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:235
+#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:237
 msgid "Reset"
 msgstr "Terugzetten op standaard"
 
@@ -406,22 +379,21 @@ msgstr "Schakel naar tabblad 9"
 msgid "Contents"
 msgstr "Inhoud"
 
-#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
-#: ../terminal/terminal-screen.c:1681
+#: ../terminal/terminal-screen.c:401 ../terminal/terminal-screen.c:633
+#: ../terminal/terminal-screen.c:1685
 msgid "Untitled"
 msgstr "Zonder titel"
 
-#: ../terminal/terminal-screen.c:531
+#: ../terminal/terminal-screen.c:533
 #, c-format
 msgid "Unable to determine your login shell."
-msgstr "Kon uw aanmeldscherm niet bepalen."
+msgstr "Kan uw aanmeldscherm niet bepalen."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
+#: ../terminal/terminal-screen.c:1385 ../terminal/terminal-screen.c:1415
 msgid "Failed to execute child"
 msgstr "Kon afgeleid proces niet uitvoeren"
 
-#: ../terminal/terminal-screen.c:2018
+#: ../terminal/terminal-screen.c:2022
 msgid "Close this tab"
 msgstr "Dit tabblad sluiten"
 
@@ -480,25 +452,25 @@ msgstr "Een andere toepassing bezit al de controle over het toetsenbord."
 
 #: ../terminal/terminal-toolbars-view.c:112
 msgid "Toolbar Editor"
-msgstr "Werkbalk-bewerker"
+msgstr "Werkbalkbewerker"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:331
 msgid "Copy Email Address"
 msgstr "Emailadres kopiëren"
 
-#: ../terminal/terminal-widget.c:331
+#: ../terminal/terminal-widget.c:332
 msgid "Compose Email"
 msgstr "Email opstellen"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:336
 msgid "Copy Link Address"
 msgstr "Adres van koppeling kopiëren"
 
-#: ../terminal/terminal-widget.c:336
+#: ../terminal/terminal-widget.c:337
 msgid "Open Link"
 msgstr "Koppeling openen"
 
-#: ../terminal/terminal-widget.c:490
+#: ../terminal/terminal-widget.c:491
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
@@ -507,250 +479,249 @@ msgstr ""
 "Kon selectie met type 'platte tekst' niet naar terminal slepen: verkeerde "
 "opmaak (%d) of lengte (%d)\n"
 
-#: ../terminal/terminal-widget.c:506
+#: ../terminal/terminal-widget.c:507
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"Kon Mozilla URL niet naar terminal slepen: verkeerde opmaak (%d) of lengte (%"
-"d)\n"
+"Kon Mozilla URL niet naar terminal slepen: verkeerde opmaak (%d) of lengte "
+"(%d)\n"
 
-#: ../terminal/terminal-widget.c:532
+#: ../terminal/terminal-widget.c:533
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
-"Kon URI lijst niet naar terminal slepen: verkeerde opmaak (%d) of lengte (%"
-"d)\n"
+"Kon URI lijst niet naar terminal slepen: verkeerde opmaak (%d) of lengte "
+"(%d)\n"
 
-#: ../terminal/terminal-widget.c:577
+#: ../terminal/terminal-widget.c:578
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
 "Ongeldige kleurinformatie ontvangen: verkeerde opmaak (%d) of lengte (%d)\n"
 
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:714
+#: ../terminal/terminal-widget.c:716
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Kon de URL `%s' niet openen"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:221
 msgid "_File"
 msgstr "_Bestand"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:222
 msgid "Open _Tab"
 msgstr "Nieuw _tabblad"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:222
 msgid "Open a new terminal tab"
 msgstr "Een nieuw terminal-tabblad openen"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:223
 msgid "Open T_erminal"
 msgstr "T_erminal Openen"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:223
 msgid "Open a new terminal window"
 msgstr "Nieuw terminalvenster openen"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:224
 msgid "_Detach Tab"
 msgstr "Tabblad _losmaken"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:224
 msgid "Open a new window for the current terminal tab"
 msgstr "Open een nieuw venster voor het huidige terminal-tabblad"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:225
 msgid "C_lose Tab"
 msgstr "Tabblad s_luiten"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:225
 msgid "Close the current terminal tab"
 msgstr "Huidige terminal-tabblad sluiten"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:226
 msgid "_Close Window"
 msgstr "Venster _sluiten"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:226
 msgid "Close the terminal window"
 msgstr "Terminalvenster sluiten"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:227
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:228
 msgid "_Copy"
 msgstr "_Kopiëren"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:228
 msgid "Copy to clipboard"
 msgstr "Naar klembord kopiëren"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:229
 msgid "_Paste"
 msgstr "_Plakken"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:229
 msgid "Paste from clipboard"
 msgstr "Plakken vanuit klembord"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:230
 msgid "Paste _Selection"
 msgstr "_Selectie plakken"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:230
 msgid "Paste from primary selection"
 msgstr "Plakken vanuit primaire selectie"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:231
 msgid "Select _All"
 msgstr "Selecteer _alle"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:231
 msgid "Select all text in the terminal"
 msgstr "Selecteer alle tekst in de terminal"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:232
 msgid "_Toolbars..."
 msgstr "_Werkbalken..."
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:232
 msgid "Customize the toolbars"
 msgstr "Werkbalken aanpassen"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:233
 msgid "Pr_eferences..."
 msgstr "_Voorkeuren..."
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:233
 msgid "Open the Terminal preferences dialog"
 msgstr "Open de dialoog voor terminalvoorkeuren"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:234
 msgid "_View"
 msgstr "_Beeld"
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:235
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:236
 msgid "_Set Title..."
 msgstr "Titel in_stellen..."
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:236
 msgid "Set a custom title for the current tab"
 msgstr "Aangepaste titel voor huidig tabblad instellen"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:237
 msgid "_Reset"
 msgstr "Te_rugzetten op standaard"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:238
 msgid "Reset and C_lear"
 msgstr "Terugzetten op standaard en _wissen"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:238
 msgid "Reset and clear"
 msgstr "Terugzetten op standaard en wissen"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:239
 msgid "_Go"
 msgstr "_Ga naar"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:240
 msgid "_Previous Tab"
 msgstr "_Vorig tabblad"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:240
 msgid "Switch to previous tab"
 msgstr "Naar vorig tabblad schakelen"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:241
 msgid "_Next Tab"
 msgstr "Volge_nd tabblad"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:241
 msgid "Switch to next tab"
 msgstr "Naar volgende tabblad schakelen"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:242
 msgid "_Help"
 msgstr "_Hulp"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:243
 msgid "_Contents"
 msgstr "_Inhoud"
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:243
 msgid "Display help contents"
 msgstr "Hulptekst weergeven"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:244
 msgid "_Report a bug"
 msgstr "Een fout _melden"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:244
 msgid "Report a bug in Terminal"
-msgstr "Een fout in Terminal melden"
+msgstr "Een fout in Terminalvenster melden"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:245
 msgid "_About"
 msgstr "_Over"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:245
 msgid "Display information about Terminal"
-msgstr "Informatie over Terminal weergeven"
+msgstr "Informatie over Terminalvenster weergeven"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:246
 msgid "_Input Methods"
 msgstr "_Invoermethoden"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:251
 msgid "Show _Menubar"
 msgstr "_Menubalk tonen"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:251
 msgid "Show/hide the menubar"
 msgstr "Menubalk tonen/verbergen"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:252
 msgid "Show _Toolbars"
 msgstr "_Werkbalken tonen"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:252
 msgid "Show/hide the toolbars"
 msgstr "Werkbalken tonen/verbergen"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:253
 msgid "Show Window _Borders"
 msgstr "Vensterranden t_onen"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:253
 msgid "Show/hide the window decorations"
 msgstr "Vensterdecoraties tonen/verbergen"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:254
 msgid "_Fullscreen"
 msgstr "_Volledig scherm"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:254
 msgid "Toggle fullscreen mode"
 msgstr "Schakelen tussen normale weergave en volledig scherm"
 
-#: ../terminal/terminal-window.c:538
+#: ../terminal/terminal-window.c:540
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:551
 msgid "Close all tabs"
 msgstr "Alle tabbladen sluiten"
 
-#: ../terminal/terminal-window.c:568
+#: ../terminal/terminal-window.c:570
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -759,23 +730,23 @@ msgstr ""
 "Dit venster heeft %d tabbladen open. Als u dit\n"
 "venster sluit, sluiten ook alle tabbladen."
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:573
 msgid "Close all tabs?"
 msgstr "Alle tabbladen sluiten?"
 
-#: ../terminal/terminal-window.c:584
+#: ../terminal/terminal-window.c:586
 msgid "Do _not ask me again"
 msgstr "Niet _nogmaals vragen"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1557
 msgid "Window Title|Set Title"
 msgstr "Venstertitel|Titel instellen"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1570
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1582
 msgid "Enter the title for the current terminal tab"
 msgstr "Geef titel voor het huidige terminaltabblad"
 
@@ -817,7 +788,7 @@ msgstr "Gecentreerd"
 
 #: ../Terminal.glade.h:9
 msgid "Choose Terminal Font"
-msgstr "Kies lettertype voor Terminal"
+msgstr "Kies lettertype voor terminal"
 
 #: ../Terminal.glade.h:10
 msgid "Choose tab activity color"
@@ -1197,7 +1168,7 @@ msgstr ""
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
-msgstr "Naast elkaar"
+msgstr "Getegeld"
 
 #: ../Terminal.glade.h:95
 msgid "Title"
@@ -1286,6 +1257,25 @@ msgstr "utmp/wtmp records _vernieuwen wanneer opdracht wordt uitgevoerd"
 #: ../Terminal.glade.h:116
 msgid "seconds"
 msgstr "seconden"
+
+#~ msgid "The %s user manual is not installed on your computer"
+#~ msgstr "De %s gebruikershandleiding is niet geïnstalleerd op uw computer"
+
+#~ msgid ""
+#~ "You can read the user manual online. This manual may however not exactly "
+#~ "match your %s version."
+#~ msgstr ""
+#~ "U kunt de gebruikershandleiding lezen op het internet. Deze handleiding "
+#~ "zou wat kunnen afwijken van deze %s versie."
+
+#~ msgid "User manual is missing"
+#~ msgstr "Gebruikershandleiding ontbreekt"
+
+#~ msgid "_Read Online"
+#~ msgstr "_Lees op het internet"
+
+#~ msgid "Failed to open the documentation browser"
+#~ msgstr "De documentatieverkenner kon niet worden gestart"
 
 #~ msgid ""
 #~ "%s %s (Xfce %s)\n"
