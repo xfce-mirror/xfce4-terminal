@@ -4,19 +4,19 @@
 # the Xfce's terminal package.
 # Hunt Xu <huntxu@live.cn>, 2009.
 # Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
-"Report-Msgid-Bugs-To: <xfce-i18n@xfce.org>\n"
-"POT-Creation-Date: 2012-04-20 05:21+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-20 11:06+0000\n"
 "PO-Revision-Date: 2009-12-23 11:25+0800\n"
 "Last-Translator: Chipong Luo <chipong.luo@yahoo.com>\n"
 "Language-Team: Chinese (Simplified) <xfce-i18n-cn@xfce.org>\n"
-"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../terminal/main.c:52
@@ -68,7 +68,7 @@ msgstr "窗口选项"
 #. parameter of --geometry
 #: ../terminal/main.c:87
 msgid "geometry"
-msgstr "几何形状"
+msgstr "几何属性"
 
 #. parameter of --role
 #: ../terminal/main.c:89
@@ -120,7 +120,7 @@ msgstr "未能注册终端服务：%s\n"
 #: ../terminal/terminal-app.c:516
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "无效的几何形状字符串 “%s”\n"
+msgstr "无效的几何属性字符串 “%s”\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
@@ -205,7 +205,7 @@ msgstr "选项 “--display” 需要指定 X 显示作为其参数"
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr "选项 “--geometry” 需要指定窗口几何形状作为其参数"
+msgstr "选项 “--geometry” 需要指定窗口几何属性作为其参数"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
@@ -382,7 +382,7 @@ msgstr "编辑"
 
 #: ../terminal/terminal-shortcut-editor.c:110
 msgid "View"
-msgstr "视图"
+msgstr "查看"
 
 #: ../terminal/terminal-shortcut-editor.c:129
 msgid "Go"
@@ -407,7 +407,7 @@ msgstr "快捷键"
 
 #: ../terminal/terminal-shortcut-editor.c:329
 msgid "Compose shortcut"
-msgstr "组合快捷键"
+msgstr "编辑快捷键"
 
 #: ../terminal/terminal-shortcut-editor.c:334
 msgid "Clea_r"
@@ -415,7 +415,7 @@ msgstr "清除(_R)"
 
 #: ../terminal/terminal-shortcut-editor.c:353
 msgid "Compose shortcut for:"
-msgstr "组合快捷键为："
+msgstr "编辑快捷键为："
 
 #: ../terminal/terminal-shortcut-editor.c:375
 msgid "Failed to acquire keyboard"
@@ -450,23 +450,23 @@ msgstr "打开链接"
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
-msgstr "未能将类型 text/plain 选择区放入终端：错误的格式(%d)或长度(%d)\n"
+msgstr "未能将类型 text/plain 选择区放入终端：格式(%d)或长度(%d)错误\n"
 
 #: ../terminal/terminal-widget.c:507
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "未能将 Mozilla 地址放入终端：错误的格式(%d)或长度(%d)\n"
+msgstr "未能将 Mozilla 地址放入终端：格式(%d)或长度(%d)错误\n"
 
 #: ../terminal/terminal-widget.c:533
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "未能将 URI 列表放入终端：错误的格式(%d)或长度(%d)\n"
+msgstr "未能将 URI 列表放入终端：格式(%d)或长度(%d)错误\n"
 
 #: ../terminal/terminal-widget.c:578
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "收到了无效的颜色数据：错误的格式(%d)或长度(%d)\n"
+msgstr "收到了无效的颜色数据：格式(%d)或长度(%d)错误\n"
 
 #: ../terminal/terminal-widget.c:716
 #, c-format
@@ -571,7 +571,7 @@ msgstr "打开终端首选项对话框"
 
 #: ../terminal/terminal-window.c:234
 msgid "_View"
-msgstr "视图(_V)"
+msgstr "查看(_V)"
 
 #: ../terminal/terminal-window.c:235
 msgid "_Terminal"
@@ -800,7 +800,7 @@ msgstr ""
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
-msgstr "Control-H"
+msgstr "Ctrl-H"
 
 #: ../Terminal.glade.h:21
 msgid "Cu_rsor color:"
@@ -832,7 +832,7 @@ msgstr "双击"
 
 #: ../Terminal.glade.h:29
 msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "终端字体启用反锯齿(_L)"
+msgstr "终端字体启用抗锯齿(_L)"
 
 #: ../Terminal.glade.h:30
 msgid ""
@@ -848,13 +848,13 @@ msgstr ""
 msgid ""
 "Enable this option to allow applications running inside the terminal windows "
 "to use bold text."
-msgstr "启用此项让在终端窗口中运行的应用程序使用粗体。"
+msgstr "启用此项允许在终端窗口中运行的程序使用粗体。"
 
 #: ../Terminal.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
-msgstr "启用此项能通过上/下方向键和 Shift 键一起使用进行单行滚动。"
+msgstr "启用此项支持 Shift 和上/下方向键组和使用进行单行滚动。"
 
 #: ../Terminal.glade.h:33
 msgid ""
@@ -1028,7 +1028,7 @@ msgstr "输出时滚动(_T)"
 
 #: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "使用 Shift 与上/下键单行滚动"
+msgstr "使用 Shift+上/下方向键进行单行滚动"
 
 #: ../Terminal.glade.h:75
 msgid "Scroll_back:"
