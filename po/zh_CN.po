@@ -68,7 +68,7 @@ msgstr "窗口选项"
 #. parameter of --geometry
 #: ../terminal/main.c:87
 msgid "geometry"
-msgstr "几何形状"
+msgstr "几何属性"
 
 #. parameter of --role
 #: ../terminal/main.c:89
@@ -88,12 +88,12 @@ msgstr "图标"
 #: ../terminal/main.c:95
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr "参看 %s 手册页获取以上选项的完整解释。"
+msgstr "参看 %s 手册获取以上选项的完整解释。"
 
 #: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1274
 #: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.in.h:1
 msgid "Terminal"
-msgstr "终端"
+msgstr "Terminal 终端"
 
 #: ../terminal/main.c:147
 msgid "The Xfce development team. All rights reserved."
@@ -101,7 +101,7 @@ msgstr "Xfce 开发团队。保留所有权利。"
 
 #: ../terminal/main.c:148
 msgid "Written by Benedikt Meurer <benny@xfce.org>"
-msgstr "撰写者为 Benedikt Meurer <benny@xfce.org>"
+msgstr "撰写者为 Benedikt Meurer <benny@xfce.org> "
 
 #: ../terminal/main.c:149
 msgid "and Nick Schermer <nick@xfce.org>."
@@ -120,7 +120,7 @@ msgstr "未能注册终端服务：%s\n"
 #: ../terminal/terminal-app.c:516
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
-msgstr "无效的几何形状字符串 “%s”\n"
+msgstr "无效的几何属性字符串 “%s”\n"
 
 #: ../terminal/terminal-dbus.c:113
 msgid "User id mismatch"
@@ -148,11 +148,12 @@ msgstr "Xfce 终端模拟器"
 msgid "translator-credits"
 msgstr ""
 "Hunt Xu <huntxu@live.cn>, 2009.\n"
-"Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012."
+"Chipong Luo <chipong.luo@yahoo.com>, 2011, 2012.\n"
+"xiaohao <qinghao1@foxmail.com>, 2012."
 
 #: ../terminal/terminal-dialogs.c:100
 msgid "Visit Terminal website"
-msgstr "访问终端网站"
+msgstr "访问 Terminal 的网站"
 
 #: ../terminal/terminal-options.c:210
 #, c-format
@@ -205,7 +206,7 @@ msgstr "选项 “--display” 需要指定 X 显示作为其参数"
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr "选项 “--geometry” 需要指定窗口几何形状作为其参数"
+msgstr "选项 “--geometry” 需要指定窗口几何属性作为其参数"
 
 #: ../terminal/terminal-options.c:339
 #, c-format
@@ -268,7 +269,7 @@ msgstr "粘贴"
 
 #: ../terminal/terminal-preferences.c:387
 msgid "Paste Selection"
-msgstr "粘贴选择区"
+msgstr "粘贴所选内容"
 
 #: ../terminal/terminal-preferences.c:398
 msgid "Select All"
@@ -395,7 +396,7 @@ msgstr "帮助"
 #: ../terminal/terminal-shortcut-editor.c:210
 #: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
 msgid "Disabled"
-msgstr "禁用"
+msgstr "已禁用"
 
 #: ../terminal/terminal-shortcut-editor.c:222
 msgid "Action"
@@ -450,7 +451,7 @@ msgstr "打开链接"
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
-msgstr "未能将类型 text/plain 选择区放入终端：错误的格式(%d)或长度(%d)\n"
+msgstr "未能将类型 text/plain 所选内容放入终端：错误的格式(%d)或长度(%d)\n"
 
 #: ../terminal/terminal-widget.c:507
 #, c-format
@@ -539,7 +540,7 @@ msgstr "从剪贴板粘贴"
 
 #: ../terminal/terminal-window.c:230
 msgid "Paste _Selection"
-msgstr "粘贴选择区(_S)"
+msgstr "粘贴所选内容(_S)"
 
 #: ../terminal/terminal-window.c:230
 msgid "Paste from primary selection"
@@ -551,7 +552,7 @@ msgstr "全选(_A)"
 
 #: ../terminal/terminal-window.c:231
 msgid "Select all text in the terminal"
-msgstr "在终端中选择所有文字"
+msgstr "选择终端中的所有文字"
 
 #: ../terminal/terminal-window.c:232
 msgid "_Toolbars..."
@@ -635,7 +636,7 @@ msgstr "报告缺陷(_R)"
 
 #: ../terminal/terminal-window.c:244
 msgid "Report a bug in Terminal"
-msgstr "报告终端的缺陷"
+msgstr "报告 Terminal 的缺陷"
 
 #: ../terminal/terminal-window.c:245
 msgid "_About"
@@ -643,7 +644,7 @@ msgstr "关于(_A)"
 
 #: ../terminal/terminal-window.c:245
 msgid "Display information about Terminal"
-msgstr "显示终端的相关信息"
+msgstr "显示 Terminal 的相关信息"
 
 #: ../terminal/terminal-window.c:246
 msgid "_Input Methods"
@@ -704,7 +705,7 @@ msgstr "关闭所有标签？"
 
 #: ../terminal/terminal-window.c:586
 msgid "Do _not ask me again"
-msgstr "不要再问我(_N)"
+msgstr "不再询问(_N)"
 
 #: ../terminal/terminal-window.c:1557
 msgid "Window Title|Set Title"
@@ -736,7 +737,7 @@ msgstr "高级(_V)"
 
 #: ../Terminal.glade.h:4
 msgid "Allow bold te_xt"
-msgstr "允许粗体(_X)"
+msgstr "允许粗体字(_X)"
 
 #: ../Terminal.glade.h:5
 msgid "Auto-detect"
@@ -796,7 +797,7 @@ msgid ""
 "when double clicking:"
 msgstr ""
 "双击时认为以下字符为\n"
-"字词的一部分(_W)："
+"某个词语的一部分(_W)："
 
 #: ../Terminal.glade.h:20
 msgid "Control-H"
@@ -832,7 +833,7 @@ msgstr "双击"
 
 #: ../Terminal.glade.h:29
 msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "终端字体启用反锯齿(_L)"
+msgstr "终端字体启用抗锯齿(_L)"
 
 #: ../Terminal.glade.h:30
 msgid ""
@@ -841,7 +842,7 @@ msgid ""
 "terminal rendering performance and reduce the overall system load on slow "
 "systems."
 msgstr ""
-"如果您要终端在终端窗口中显示的字体使用反锯齿则启用此项。禁用此项可在慢系统上"
+"如果您要终端在其窗口中显示的字体使用抗锯齿则启用此项。禁用此项可在低配系统上"
 "显著加快终端的渲染性能并减少整个系统的负载。"
 
 #: ../Terminal.glade.h:31
@@ -876,7 +877,7 @@ msgstr "启用此项在新创建的终端窗口周围显示窗口修饰。"
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
-msgstr "能让您通过按键盘上任意键将终端窗口向下滚至命令提示符处。"
+msgstr "能让您通过按键盘上任意键将终端窗口向下滚动至命令提示符处。"
 
 #: ../Terminal.glade.h:37
 msgid "Erase TTY"
@@ -1028,11 +1029,11 @@ msgstr "输出时滚动(_T)"
 
 #: ../Terminal.glade.h:74
 msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "使用 Shift 与上/下键单行滚动"
+msgstr "使用 Shift 与上/下键进行单行滚动"
 
 #: ../Terminal.glade.h:75
 msgid "Scroll_back:"
-msgstr "回滚(_B)："
+msgstr "向上滚动(_B)："
 
 #: ../Terminal.glade.h:76
 msgid "Scrolling"
@@ -1049,8 +1050,8 @@ msgid ""
 "about differences between running it as interactive shell and running it as "
 "login shell."
 msgstr ""
-"选中此项强制终端在您打开新终端时将您的 shell 作为登录 shell 运行。参看您的作"
-"为交互 shell 运行和作为登录 shell 运行区别的相关文档获取详情。"
+"在您打开新终端时，选中此项强制将您的 shell 作为登录 shell 运行。参看作"
+"为交互 shell 运行和作为登录 shell 运行的相关文档了解它们更详细的区别。"
 
 #: ../Terminal.glade.h:79
 msgid "Shortcut Keys"
@@ -1059,7 +1060,7 @@ msgstr "快捷键"
 #: ../Terminal.glade.h:80
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "指定您可以使用滚动条回滚的行数"
+msgstr "指定您可以使用滚动条向上滚动的行数"
 
 #: ../Terminal.glade.h:81
 msgid "St_yle:"
@@ -1083,7 +1084,7 @@ msgstr "终端首选项"
 
 #: ../Terminal.glade.h:86
 msgid "Terminal applications have this color palette available to them:"
-msgstr "终端应用程序对它们有此颜色调色板："
+msgstr "终端应用程序有此颜色调色板："
 
 #: ../Terminal.glade.h:87
 msgid "Text Selection"
@@ -1096,15 +1097,15 @@ msgid ""
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr ""
-"这些选项可能让一些应用程序产生错误行为。\n"
-"仅在此让您在一些特定应用程序和操作系统中\n"
-"调整以期不同的终端行为。"
+"这些选项可能会让一些应用程序表现不正常。列在\n"
+"此处，仅供您调整以便适应期望不同终端行为的特\n"
+"定应用程序或操作系统。"
 
 #: ../Terminal.glade.h:92
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the terminal."
-msgstr "此选项控制每当终端中运行的命令产生新输出时终端是否自动向下滚动。"
+msgstr "此选项控制每当终端中运行的命令有新输出时终端是否自动向下滚动。"
 
 #: ../Terminal.glade.h:93
 msgid ""
@@ -1113,9 +1114,9 @@ msgid ""
 "most systems. If you have problems with colors in some applications, try "
 "xterm-color here."
 msgstr ""
-"此项指定在新终端窗口标签或终端窗口打开时 $TERM 环境变量要设置的值。默认值对大"
-"多数系统应该是不错的。如果您在一些应用程序中有颜色上的问题，在此尝试 xterm-"
-"color。"
+"在新终端标签或窗口打开时，此项指定 $TERM 环境变量要设定的值。"
+"默认值对大多数系统应该是不错的。如果您在一些应用程序中有颜色上"
+"的问题，在此尝试 xterm-color。"
 
 #: ../Terminal.glade.h:94
 msgid "Tiled"
@@ -1159,7 +1160,7 @@ msgstr "背景色(_B)："
 
 #: ../Terminal.glade.h:104
 msgid "_Backspace key generates:"
-msgstr "Backspace 键生成(_B)："
+msgstr "Backspace 键产生(_B)："
 
 #: ../Terminal.glade.h:105
 msgid "_Colors"
@@ -1167,7 +1168,7 @@ msgstr "颜色(_C)"
 
 #: ../Terminal.glade.h:106
 msgid "_Delete key generates:"
-msgstr "Delete 键生成(_D)："
+msgstr "Delete 键产生(_D)："
 
 #: ../Terminal.glade.h:107
 msgid "_Dynamically-set title:"
