@@ -168,7 +168,7 @@ main (int argc, char **argv)
   if (G_LIKELY (startup_id != NULL))
     {
       nargv[nargc++] = g_strdup_printf ("--startup-id=%s", startup_id);
-      xfce_putenv ("DESKTOP_STARTUP_ID=");
+      g_unsetenv ("DESKTOP_STARTUP_ID");
     }
 
   /* append default display if given */
