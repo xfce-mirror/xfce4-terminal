@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: uk\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\n"
 
 #: Terminal.1.xml14(contrib) Terminal.1.xml22(contrib)
 msgid "Developer"
@@ -89,7 +89,7 @@ msgid ""
 "DOS Prompt utility, which has the analogous function of offering a DOS "
 "command-line under Windows, though one should note that the UNIX CLI offer "
 "far more power and ease of use than does DOS."
-msgstr ""
+msgstr "@PACKAGE_NAME@ всі знають як емулятор терміналу для X, часто також говорять просто \"термінал\" або \"шелл\". Він такий самий як старомодний текстовий інтерфейс,  але також може ділити  екран з будь-якою графічною програмою. Користувачі WIndows можуть бути вже знайомі з командною стрічкою MS-DOS, яка має аналогічні функції, пропонуючи командну стрічку DOS для Windows, однак потрібно зазначити, що інтерфейс командної стрічки UNIX пропонує набагато більші можливості і простоту використання, ніж DOS.\""
 
 #: Terminal.1.xml67(para)
 msgid ""
@@ -100,7 +100,7 @@ msgid ""
 "with the <keycap>Esc</keycap> character. @PACKAGE_NAME@ accepts all of the "
 "escape sequences that the VT102 and VT220 terminals use for functions such "
 "as to position the cursor and to clear the screen."
-msgstr ""
+msgstr "@PACKAGE_NAME@ емулює програму <application>xterm</application>, розроблену через X Consortium. В свою чергу <application>xterm</application> емулює термінал DEC VT102 і також підтримує escape-комбінації клавіш терміналу DEC VT220. Escape-комбінації клавіш - це послідовність символів, що починаються з символа <keycap>Esc</keycap>. @PACKAGE_NAME@ розуміє всі комбінації, які використовуються терміналами VT102 та VT220 для таких функцій, як позиціювання курсора і очищення екрану."
 
 #: Terminal.1.xml79(title)
 msgid "Options"
@@ -128,7 +128,7 @@ msgid ""
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
 "linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
 "general-default-working-directory\"/>"
-msgstr ""
+msgstr "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref linkend=\"options-general-default-display\"/>; <xref linkend=\"options-general-default-working-directory\"/>"
 
 #: Terminal.1.xml101(link) Terminal.1.xml194(title)
 msgid "Window or Tab Separators"
@@ -149,7 +149,7 @@ msgid ""
 "<xref linkend=\"options-tab-execute\"/>; <xref linkend=\"options-tab-command"
 "\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend="
 "\"options-tab-title\"/>; <xref linkend=\"options-tab-hold\"/>"
-msgstr ""
+msgstr "<xref linkend=\"options-tab-execute\"/>; <xref linkend=\"options-tab-command\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend=\"options-tab-title\"/>; <xref linkend=\"options-tab-hold\"/>"
 
 #: Terminal.1.xml122(link) Terminal.1.xml267(title)
 msgid "Window Options"
@@ -166,7 +166,7 @@ msgid ""
 "show-borders\"/>, <xref linkend=\"options-window-hide-borders\"/>; <xref "
 "linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-"
 "hide-toolbars\"/>"
-msgstr ""
+msgstr "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-geometry\"/>; <xref linkend=\"options-window-role\"/>; <xref linkend=\"options-window-startup-id\"/>; <xref linkend=\"options-window-icon\"/>; <xref linkend=\"options-window-fullscreen\"/>; <xref linkend=\"options-window-maximize\"/>; <xref linkend=\"options-window-show-menubar\"/>, <xref linkend=\"options-window-hide-menubar\"/>; <xref linkend=\"options-window-show-borders\"/>, <xref linkend=\"options-window-hide-borders\"/>; <xref linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-hide-toolbars\"/>"
 
 #: Terminal.1.xml147(term)
 msgid "<option>-h</option>, <option>--help</option>"
@@ -297,11 +297,11 @@ msgstr "<option>-H</option>, <option>--hold</option>"
 #: Terminal.1.xml260(para)
 msgid ""
 "Causes the terminal to be kept around after the child command has terminated"
-msgstr ""
+msgstr "Не закривати вікно терміналу після закінчення дочірнього процесу"
 
 #: Terminal.1.xml271(option)
 msgid "--display=<placeholder-1/>"
-msgstr ""
+msgstr "--display=<placeholder-1/>"
 
 #: Terminal.1.xml274(para)
 msgid "X display to use for the last- specified window."
@@ -313,7 +313,7 @@ msgstr "геометрія"
 
 #: Terminal.1.xml280(option)
 msgid "--geometry=<placeholder-1/>"
-msgstr ""
+msgstr "--geometry=<placeholder-1/>"
 
 #: Terminal.1.xml283(para)
 msgid ""
@@ -321,7 +321,7 @@ msgid ""
 "parameter>. Read <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
 "manvolnum></citerefentry> for more information on how to specify window "
 "geometries."
-msgstr ""
+msgstr "Налаштувати розміри останнього вказаного вікна до <parameter>геометрії</parameter>. Прочитайте <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></citerefentry> для отримання більше інформації, як вказувати розміри вікон."
 
 #: Terminal.1.xml293(replaceable)
 msgid "role"
@@ -329,7 +329,7 @@ msgstr "роль"
 
 #: Terminal.1.xml293(option)
 msgid "--role=<placeholder-1/>"
-msgstr ""
+msgstr "--role=<placeholder-1/>"
 
 #: Terminal.1.xml296(para)
 msgid ""
