@@ -264,6 +264,10 @@ G_DEFINE_TYPE (TerminalPreferences, terminal_preferences, G_TYPE_OBJECT)
 
 
 
+static GParamSpec *preferences_props[N_PROPERTIES] = { NULL, };
+
+
+
 static void
 terminal_preferences_class_init (TerminalPreferencesClass *klass)
 {
@@ -304,356 +308,324 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   /**
    * TerminalPreferences:accel-new-tab:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_NEW_TAB,
-                                   g_param_spec_string ("accel-new-tab",
-                                                        _("Open Tab"),
-                                                        "AccelNewTab",
-                                                        "<Shift><Control>t",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_NEW_TAB] =
+      g_param_spec_string ("accel-new-tab",
+                           "Open Tab",
+                           "AccelNewTab",
+                           "<Shift><Control>t",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-new-window:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_NEW_WINDOW,
-                                   g_param_spec_string ("accel-new-window",
-                                                        _("Open Terminal"),
-                                                        "AccelNewWindow",
-                                                        "<Shift><Control>n",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_NEW_WINDOW] =
+      g_param_spec_string ("accel-new-window",
+                           "Open Terminal",
+                           "AccelNewWindow",
+                           "<Shift><Control>n",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-detach-tab:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_DETACH_TAB,
-                                   g_param_spec_string ("accel-detach-tab",
-                                                        _("Detach Tab"),
-                                                        "AccelDetachTab",
-                                                        "<Shift><Control>d",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_DETACH_TAB] =
+      g_param_spec_string ("accel-detach-tab",
+                           "Detach Tab",
+                           "AccelDetachTab",
+                           "<Shift><Control>d",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-close-tab:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_CLOSE_TAB,
-                                   g_param_spec_string ("accel-close-tab",
-                                                        _("Close Tab"),
-                                                        "AccelCloseTab",
-                                                        "<Shift><Control>w",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_CLOSE_TAB] =
+      g_param_spec_string ("accel-close-tab",
+                           "Close Tab",
+                           "AccelCloseTab",
+                           "<Shift><Control>w",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-close-window:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_CLOSE_WINDOW,
-                                   g_param_spec_string ("accel-close-window",
-                                                        _("Close Window"),
-                                                        "AccelCloseWindow",
-                                                        "<Shift><Control>q",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_CLOSE_WINDOW] =
+      g_param_spec_string ("accel-close-window",
+                           "Close Window",
+                           "AccelCloseWindow",
+                           "<Shift><Control>q",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-copy:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_COPY,
-                                   g_param_spec_string ("accel-copy",
-                                                        _("Copy"),
-                                                        "AccelCopy",
-                                                        "<Shift><Control>c",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_COPY] =
+      g_param_spec_string ("accel-copy",
+                           "Copy",
+                           "AccelCopy",
+                           "<Shift><Control>c",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-paste:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_PASTE,
-                                   g_param_spec_string ("accel-paste",
-                                                        _("Paste"),
-                                                        "AccelPaste",
-                                                        "<Shift><Control>v",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_PASTE] =
+      g_param_spec_string ("accel-paste",
+                           "Paste",
+                           "AccelPaste",
+                           "<Shift><Control>v",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-paste-selection:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_PASTE_SELECTION,
-                                   g_param_spec_string ("accel-paste-selection",
-                                                        _("Paste Selection"),
-                                                        "AccelPasteSelection",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_PASTE_SELECTION] =
+      g_param_spec_string ("accel-paste-selection",
+                           "Paste Selection",
+                           "AccelPasteSelection",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-select-all:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SELECT_ALL,
-                                   g_param_spec_string ("accel-select-all",
-                                                        _("Select All"),
-                                                        "AccelSelectAll",
-                                                        "<Shift><Control>a",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SELECT_ALL] =
+      g_param_spec_string ("accel-select-all",
+                           "Select All",
+                           "AccelSelectAll",
+                           "<Shift><Control>a",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-preferences:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_PREFERENCES,
-                                   g_param_spec_string ("accel-preferences",
-                                                        _("Preferences"),
-                                                        "AccelPreferences",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_PREFERENCES] =
+      g_param_spec_string ("accel-preferences",
+                           "Preferences",
+                           "AccelPreferences",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-show-menubar:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SHOW_MENUBAR,
-                                   g_param_spec_string ("accel-show-menubar",
-                                                        _("Show menubar"),
-                                                        "AccelShowMenubar",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SHOW_MENUBAR] =
+      g_param_spec_string ("accel-show-menubar",
+                           "Show menubar",
+                           "AccelShowMenubar",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-show-toolbars:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SHOW_TOOLBARS,
-                                   g_param_spec_string ("accel-show-toolbars",
-                                                        _("Show toolbars"),
-                                                        "AccelShowToolbars",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SHOW_TOOLBARS] =
+      g_param_spec_string ("accel-show-toolbars",
+                           "Show toolbars",
+                           "AccelShowToolbars",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-show-borders:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SHOW_BORDERS,
-                                   g_param_spec_string ("accel-show-borders",
-                                                        _("Show borders"),
-                                                        "AccelShowBorders",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SHOW_BORDERS] =
+      g_param_spec_string ("accel-show-borders",
+                           "Show borders",
+                           "AccelShowBorders",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-fullscreen:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_FULLSCREEN,
-                                   g_param_spec_string ("accel-fullscreen",
-                                                        _("Fullscreen"),
-                                                        "AccelFullscreen",
-                                                        "F11",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_FULLSCREEN] =
+      g_param_spec_string ("accel-fullscreen",
+                           "Fullscreen",
+                           "AccelFullscreen",
+                           "F11",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-set-title:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SET_TITLE,
-                                   g_param_spec_string ("accel-set-title",
-                                                        _("Set Title"),
-                                                        "AccelSetTitle",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SET_TITLE] =
+      g_param_spec_string ("accel-set-title",
+                           "Set Title",
+                           "AccelSetTitle",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-reset:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_RESET,
-                                   g_param_spec_string ("accel-reset",
-                                                        _("Reset"),
-                                                        "AccelReset",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_RESET] =
+      g_param_spec_string ("accel-reset",
+                           "Reset",
+                           "AccelReset",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-reset-and-clear:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_RESET_AND_CLEAR,
-                                   g_param_spec_string ("accel-reset-and-clear",
-                                                        _("Reset and Clear"),
-                                                        "AccelResetAndClear",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_RESET_AND_CLEAR] =
+      g_param_spec_string ("accel-reset-and-clear",
+                           "Reset and Clear",
+                           "AccelResetAndClear",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-prev-tab:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_PREV_TAB,
-                                   g_param_spec_string ("accel-prev-tab",
-                                                        _("Previous Tab"),
-                                                        "AccelPrevTab",
-                                                        "<Control>Page_Up",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_PREV_TAB] =
+      g_param_spec_string ("accel-prev-tab",
+                           "Previous Tab",
+                           "AccelPrevTab",
+                           "<Control>Page_Up",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-next-tab:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_NEXT_TAB,
-                                   g_param_spec_string ("accel-next-tab",
-                                                        _("Next Tab"),
-                                                        "AccelNextTab",
-                                                        "<Control>Page_Down",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_NEXT_TAB] =
+      g_param_spec_string ("accel-next-tab",
+                           "Next Tab",
+                           "AccelNextTab",
+                           "<Control>Page_Down",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab1:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB1,
-                                   g_param_spec_string ("accel-switch-to-tab1",
-                                                        _("Switch to Tab 1"),
-                                                        "AccelSwitchToTab1",
-                                                        "<Alt>1",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB1] =
+      g_param_spec_string ("accel-switch-to-tab1",
+                           "Switch to Tab 1",
+                           "AccelSwitchToTab1",
+                           "<Alt>1",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab2:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB2,
-                                   g_param_spec_string ("accel-switch-to-tab2",
-                                                        _("Switch to Tab 2"),
-                                                        "AccelSwitchToTab2",
-                                                        "<Alt>2",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB2] =
+      g_param_spec_string ("accel-switch-to-tab2",
+                           "Switch to Tab 2",
+                           "AccelSwitchToTab2",
+                           "<Alt>2",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab3:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB3,
-                                   g_param_spec_string ("accel-switch-to-tab3",
-                                                        _("Switch to Tab 3"),
-                                                        "AccelSwitchToTab3",
-                                                        "<Alt>3",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB3] =
+      g_param_spec_string ("accel-switch-to-tab3",
+                           "Switch to Tab 3",
+                           "AccelSwitchToTab3",
+                           "<Alt>3",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab4:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB4,
-                                   g_param_spec_string ("accel-switch-to-tab4",
-                                                        _("Switch to Tab 4"),
-                                                        "AccelSwitchToTab4",
-                                                        "<Alt>4",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB4] =
+      g_param_spec_string ("accel-switch-to-tab4",
+                           "Switch to Tab 4",
+                           "AccelSwitchToTab4",
+                           "<Alt>4",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab5:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB5,
-                                   g_param_spec_string ("accel-switch-to-tab5",
-                                                        _("Switch to Tab 5"),
-                                                        "AccelSwitchToTab5",
-                                                        "<Alt>5",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB5] =
+      g_param_spec_string ("accel-switch-to-tab5",
+                           "Switch to Tab 5",
+                           "AccelSwitchToTab5",
+                           "<Alt>5",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab6:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB6,
-                                   g_param_spec_string ("accel-switch-to-tab6",
-                                                        _("Switch to Tab 6"),
-                                                        "AccelSwitchToTab6",
-                                                        "<Alt>6",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB6] =
+      g_param_spec_string ("accel-switch-to-tab6",
+                           "Switch to Tab 6",
+                           "AccelSwitchToTab6",
+                           "<Alt>6",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab7:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB7,
-                                   g_param_spec_string ("accel-switch-to-tab7",
-                                                        _("Switch to Tab 7"),
-                                                        "AccelSwitchToTab7",
-                                                        "<Alt>7",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB7] =
+      g_param_spec_string ("accel-switch-to-tab7",
+                           "Switch to Tab 7",
+                           "AccelSwitchToTab7",
+                           "<Alt>7",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab8:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB8,
-                                   g_param_spec_string ("accel-switch-to-tab8",
-                                                        _("Switch to Tab 8"),
-                                                        "AccelSwitchToTab8",
-                                                        "<Alt>8",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB8] =
+      g_param_spec_string ("accel-switch-to-tab8",
+                           "Switch to Tab 8",
+                           "AccelSwitchToTab8",
+                           "<Alt>8",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-switch-to-tab9:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_SWITCH_TO_TAB9,
-                                   g_param_spec_string ("accel-switch-to-tab9",
-                                                        _("Switch to Tab 9"),
-                                                        "AccelSwitchToTab9",
-                                                        "<Alt>9",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_SWITCH_TO_TAB9] =
+      g_param_spec_string ("accel-switch-to-tab9",
+                           "Switch to Tab 9",
+                           "AccelSwitchToTab9",
+                           "<Alt>9",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:accel-contents:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_ACCEL_CONTENTS,
-                                   g_param_spec_string ("accel-contents",
-                                                        _("Contents"),
-                                                        "AccelContents",
-                                                        "F1",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_ACCEL_CONTENTS] =
+      g_param_spec_string ("accel-contents",
+                           "Contents",
+                           "AccelContents",
+                           "F1",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:background-mode:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_BACKGROUND_MODE,
-                                   g_param_spec_enum ("background-mode",
-                                                      "background-mode",
-                                                      "BackgroundMode",
-                                                      TERMINAL_TYPE_BACKGROUND,
-                                                      TERMINAL_BACKGROUND_SOLID,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_BACKGROUND_MODE] =
+      g_param_spec_enum ("background-mode",
+                         "background-mode",
+                         "BackgroundMode",
+                         TERMINAL_TYPE_BACKGROUND,
+                         TERMINAL_BACKGROUND_SOLID,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:background-image-file:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_BACKGROUND_IMAGE_FILE,
-                                   g_param_spec_string ("background-image-file",
-                                                        "background-image-file",
-                                                        "BackgroundImageFile",
-                                                        NULL,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_BACKGROUND_IMAGE_FILE] =
+      g_param_spec_string ("background-image-file",
+                           "background-image-file",
+                           "BackgroundImageFile",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:background-image-style:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_BACKGROUND_IMAGE_STYLE,
-                                   g_param_spec_enum ("background-image-style",
-                                                      "background-image-style",
-                                                      "BackgroundImageStyle",
-                                                      TERMINAL_TYPE_BACKGROUND_STYLE,
-                                                      TERMINAL_BACKGROUND_STYLE_TILED,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_BACKGROUND_IMAGE_STYLE] =
+      g_param_spec_enum ("background-image-style",
+                         "background-image-style",
+                         "BackgroundImageStyle",
+                         TERMINAL_TYPE_BACKGROUND_STYLE,
+                         TERMINAL_BACKGROUND_STYLE_TILED,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:background-darkness:
@@ -663,650 +635,597 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    * terminal will create a copy of the background image (or snapshot of the root window) and
    * modify its pixel values.
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_BACKGROUND_DARKNESS,
-                                   g_param_spec_double ("background-darkness",
-                                                        "background-darkness",
-                                                        "BackgroundDarkness",
-                                                        0.0, 1.0, 0.5,
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_BACKGROUND_DARKNESS] =
+      g_param_spec_double ("background-darkness",
+                           "background-darkness",
+                           "BackgroundDarkness",
+                           0.0, 1.0, 0.5,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:binding-backspace:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_BINDING_BACKSPACE,
-                                   g_param_spec_enum ("binding-backspace",
-                                                      "binding-backspace",
-                                                      "BindingBackspace",
-                                                      TERMINAL_TYPE_ERASE_BINDING,
-                                                      TERMINAL_ERASE_BINDING_AUTO,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_BINDING_BACKSPACE] =
+      g_param_spec_enum ("binding-backspace",
+                         "binding-backspace",
+                         "BindingBackspace",
+                         TERMINAL_TYPE_ERASE_BINDING,
+                         TERMINAL_ERASE_BINDING_AUTO,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:binding-delete:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_BINDING_DELETE,
-                                   g_param_spec_enum ("binding-delete",
-                                                      "binding-delete",
-                                                      "BindingDelete",
-                                                      TERMINAL_TYPE_ERASE_BINDING,
-                                                      TERMINAL_ERASE_BINDING_AUTO,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_BINDING_DELETE] =
+      g_param_spec_enum ("binding-delete",
+                         "binding-delete",
+                         "BindingDelete",
+                         TERMINAL_TYPE_ERASE_BINDING,
+                         TERMINAL_ERASE_BINDING_AUTO,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-foreground:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_FOREGROUND,
-                                   g_param_spec_string ("color-foreground",
-                                                        "color-foreground",
-                                                        "ColorForeground",
-                                                        "#ffffffffffff",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_FOREGROUND] =
+      g_param_spec_string ("color-foreground",
+                           "color-foreground",
+                           "ColorForeground",
+                           "#ffffffffffff",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-background:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_BACKGROUND,
-                                   g_param_spec_string ("color-background",
-                                                        "color-background",
-                                                        "ColorBackground",
-                                                        "#000000000000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_BACKGROUND] =
+      g_param_spec_string ("color-background",
+                           "color-background",
+                           "ColorBackground",
+                           "#000000000000",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-cursor:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_CURSOR,
-                                   g_param_spec_string ("color-cursor",
-                                                        "color-cursor",
-                                                        "ColorCursor",
-                                                        "#0000ffff0000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_CURSOR] =
+      g_param_spec_string ("color-cursor",
+                           "color-cursor",
+                           "ColorCursor",
+                           "#0000ffff0000",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-selection:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_SELECTION,
-                                   g_param_spec_string ("color-selection",
-                                                        "color-selection",
-                                                        "ColorSelection",
-                                                        "#ffffffffffff",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_SELECTION] =
+      g_param_spec_string ("color-selection",
+                           "color-selection",
+                           "ColorSelection",
+                           "#ffffffffffff",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-selection-use-default:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_SELECTION_USE_DEFAULT,
-                                   g_param_spec_boolean ("color-selection-use-default",
-                                                         "color-selection-use-default",
-                                                         "ColorSelectionUseDefault",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_SELECTION_USE_DEFAULT] =
+      g_param_spec_boolean ("color-selection-use-default",
+                            "color-selection-use-default",
+                            "ColorSelectionUseDefault",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette1:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE1,
-                                   g_param_spec_string ("color-palette1",
-                                                        "color-palette1",
-                                                        "ColorPalette1",
-                                                        "#000000000000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE1] =
+      g_param_spec_string ("color-palette1",
+                           "color-palette1",
+                           "ColorPalette1",
+                           "#000000000000",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette2:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE2,
-                                   g_param_spec_string ("color-palette2",
-                                                        "color-palette2",
-                                                        "ColorPalette2",
-                                                        "#aaaa00000000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE2] =
+      g_param_spec_string ("color-palette2",
+                           "color-palette2",
+                           "ColorPalette2",
+                           "#aaaa00000000",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette3:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE3,
-                                   g_param_spec_string ("color-palette3",
-                                                        "color-palette3",
-                                                        "ColorPalette3",
-                                                        "#0000aaaa0000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE3] =
+      g_param_spec_string ("color-palette3",
+                           "color-palette3",
+                           "ColorPalette3",
+                           "#0000aaaa0000",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette4:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE4,
-                                   g_param_spec_string ("color-palette4",
-                                                        "color-palette4",
-                                                        "ColorPalette4",
-                                                        "#aaaa55550000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE4] =
+      g_param_spec_string ("color-palette4",
+                           "color-palette4",
+                           "ColorPalette4",
+                           "#aaaa55550000",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette5:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE5,
-                                   g_param_spec_string ("color-palette5",
-                                                        "color-palette5",
-                                                        "ColorPalette5",
-                                                        "#00000000aaaa",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE5] =
+      g_param_spec_string ("color-palette5",
+                           "color-palette5",
+                           "ColorPalette5",
+                           "#00000000aaaa",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette6:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE6,
-                                   g_param_spec_string ("color-palette6",
-                                                        "color-palette6",
-                                                        "ColorPalette6",
-                                                        "#aaaa0000aaaa",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE6] =
+      g_param_spec_string ("color-palette6",
+                           "color-palette6",
+                           "ColorPalette6",
+                           "#aaaa0000aaaa",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette7:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE7,
-                                   g_param_spec_string ("color-palette7",
-                                                        "color-palette7",
-                                                        "ColorPalette7",
-                                                        "#0000aaaaaaaa",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE7] =
+      g_param_spec_string ("color-palette7",
+                           "color-palette7",
+                           "ColorPalette7",
+                           "#0000aaaaaaaa",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette8:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE8,
-                                   g_param_spec_string ("color-palette8",
-                                                        "color-palette8",
-                                                        "ColorPalette8",
-                                                        "#aaaaaaaaaaaa",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE8] =
+      g_param_spec_string ("color-palette8",
+                           "color-palette8",
+                           "ColorPalette8",
+                           "#aaaaaaaaaaaa",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette9:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE9,
-                                   g_param_spec_string ("color-palette9",
-                                                        "color-palette9",
-                                                        "ColorPalette9",
-                                                        "#555555555555",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE9] =
+      g_param_spec_string ("color-palette9",
+                           "color-palette9",
+                           "ColorPalette9",
+                           "#555555555555",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette10:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE10,
-                                   g_param_spec_string ("color-palette10",
-                                                        "color-palette10",
-                                                        "ColorPalette10",
-                                                        "#ffff55555555",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE10] =
+      g_param_spec_string ("color-palette10",
+                           "color-palette10",
+                           "ColorPalette10",
+                           "#ffff55555555",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette11:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE11,
-                                   g_param_spec_string ("color-palette11",
-                                                        "color-palette11",
-                                                        "ColorPalette11",
-                                                        "#5555ffff5555",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE11] =
+      g_param_spec_string ("color-palette11",
+                           "color-palette11",
+                           "ColorPalette11",
+                           "#5555ffff5555",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette12:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE12,
-                                   g_param_spec_string ("color-palette12",
-                                                        "color-palette12",
-                                                        "ColorPalette12",
-                                                        "#ffffffff5555",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE12] =
+      g_param_spec_string ("color-palette12",
+                           "color-palette12",
+                           "ColorPalette12",
+                           "#ffffffff5555",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette13:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE13,
-                                   g_param_spec_string ("color-palette13",
-                                                        "color-palette13",
-                                                        "ColorPalette13",
-                                                        "#55555555ffff",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE13] =
+      g_param_spec_string ("color-palette13",
+                           "color-palette13",
+                           "ColorPalette13",
+                           "#55555555ffff",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette14:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE14,
-                                   g_param_spec_string ("color-palette14",
-                                                        "color-palette14",
-                                                        "ColorPalette14",
-                                                        "#ffff5555ffff",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE14] =
+      g_param_spec_string ("color-palette14",
+                           "color-palette14",
+                           "ColorPalette14",
+                           "#ffff5555ffff",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette15:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE15,
-                                   g_param_spec_string ("color-palette15",
-                                                        "color-palette15",
-                                                        "ColorPalette15",
-                                                        "#5555ffffffff",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE15] =
+      g_param_spec_string ("color-palette15",
+                           "color-palette15",
+                           "ColorPalette15",
+                           "#5555ffffffff",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:color-palette16:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COLOR_PALETTE16,
-                                   g_param_spec_string ("color-palette16",
-                                                        "color-palette16",
-                                                        "ColorPalette16",
-                                                        "#ffffffffffff",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_COLOR_PALETTE16] =
+      g_param_spec_string ("color-palette16",
+                           "color-palette16",
+                           "ColorPalette16",
+                           "#ffffffffffff",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:tab-activity-color:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_TAB_ACTIVITY_COLOR,
-                                   g_param_spec_string ("tab-activity-color",
-                                                        "tab-activity-color",
-                                                        "TabActivityColor",
-                                                        "#afff00000000",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_TAB_ACTIVITY_COLOR] =
+      g_param_spec_string ("tab-activity-color",
+                           "tab-activity-color",
+                           "TabActivityColor",
+                           "#afff00000000",
+                           EXO_PARAM_READWRITE);
+
   /**
    * TerminalPreferences:tab-activity-timeout:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_TAB_ACTIVITY_TIMEOUT,
-                                   g_param_spec_uint ("tab-activity-timeout",
-                                                      "tab-activity-timeout",
-                                                      "TabActivityTimeout",
-                                                      0, 30, 2,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_TAB_ACTIVITY_TIMEOUT] =
+      g_param_spec_uint ("tab-activity-timeout",
+                         "tab-activity-timeout",
+                         "TabActivityTimeout",
+                         0, 30, 2,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:command-update-records:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COMMAND_UPDATE_RECORDS,
-                                   g_param_spec_boolean ("command-update-records",
-                                                         "command-update-records",
-                                                         "CommandUpdateRecords",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_COMMAND_UPDATE_RECORDS] =
+      g_param_spec_boolean ("command-update-records",
+                            "command-update-records",
+                            "CommandUpdateRecords",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:command-login-shell:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_COMMAND_LOGIN_SHELL,
-                                   g_param_spec_boolean ("command-login-shell",
-                                                         "command-login-shell",
-                                                         "CommandLoginShell",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_COMMAND_LOGIN_SHELL] =
+      g_param_spec_boolean ("command-login-shell",
+                            "command-login-shell",
+                            "CommandLoginShell",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:font-allow-bold:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_FONT_ALLOW_BOLD,
-                                   g_param_spec_boolean ("font-allow-bold",
-                                                         "font-allow-bold",
-                                                         "FontAllowBold",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_FONT_ALLOW_BOLD] =
+      g_param_spec_boolean ("font-allow-bold",
+                            "font-allow-bold",
+                            "FontAllowBold",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
 #if TERMINAL_HAS_ANTI_ALIAS_SETTING
   /**
    * TerminalPreferences:font-anti-alias:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_FONT_ANTI_ALIAS,
-                                   g_param_spec_boolean ("font-anti-alias",
-                                                         "font-anti-alias",
-                                                         "FontAntiAlias",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_FONT_ANTI_ALIAS] =
+      g_param_spec_boolean ("font-anti-alias",
+                            "font-anti-alias",
+                            "FontAntiAlias",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 #endif
 
   /**
    * TerminalPreferences:font-name:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_FONT_NAME,
-                                   g_param_spec_string ("font-name",
-                                                        "font-name",
-                                                        "FontName",
-                                                        "Monospace 12",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_FONT_NAME] =
+      g_param_spec_string ("font-name",
+                           "font-name",
+                           "FontName",
+                           "Monospace 12",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-always-show-tabs:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_ALWAYS_SHOW_TABS,
-                                   g_param_spec_boolean ("misc-always-show-tabs",
-                                                         "misc-always-show-tabs",
-                                                         "MiscAlwaysShowTabs",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_ALWAYS_SHOW_TABS] =
+      g_param_spec_boolean ("misc-always-show-tabs",
+                            "misc-always-show-tabs",
+                            "MiscAlwaysShowTabs",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-bell:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_BELL,
-                                   g_param_spec_boolean ("misc-bell",
-                                                         "misc-bell",
-                                                         "MiscBell",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_BELL] =
+      g_param_spec_boolean ("misc-bell",
+                            "misc-bell",
+                            "MiscBell",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-borders-default:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_BORDERS_DEFAULT,
-                                   g_param_spec_boolean ("misc-borders-default",
-                                                         "misc-borders-default",
-                                                         "MiscBordersDefault",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_BORDERS_DEFAULT] =
+      g_param_spec_boolean ("misc-borders-default",
+                            "misc-borders-default",
+                            "MiscBordersDefault",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-cursor-blinks:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_CURSOR_BLINKS,
-                                   g_param_spec_boolean ("misc-cursor-blinks",
-                                                         "misc-cursor-blinks",
-                                                         "MiscCursorBlinks",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_CURSOR_BLINKS] =
+      g_param_spec_boolean ("misc-cursor-blinks",
+                            "misc-cursor-blinks",
+                            "MiscCursorBlinks",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-cursor-shape:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_CURSOR_SHAPE,
-                                   g_param_spec_enum ("misc-cursor-shape",
-                                                      "misc-cursor-shape",
-                                                      "MiscCursorShape",
-                                                      TERMINAL_TYPE_CURSOR_SHAPE,
-                                                      TERMINAL_CURSOR_SHAPE_BLOCK,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_CURSOR_SHAPE] =
+      g_param_spec_enum ("misc-cursor-shape",
+                         "misc-cursor-shape",
+                         "MiscCursorShape",
+                         TERMINAL_TYPE_CURSOR_SHAPE,
+                         TERMINAL_CURSOR_SHAPE_BLOCK,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-default-geometry:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_DEFAULT_GEOMETRY,
-                                   g_param_spec_string ("misc-default-geometry",
-                                                        "misc-default-geometry",
-                                                        "MiscDefaultGeometry",
-                                                        "80x24",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_DEFAULT_GEOMETRY] =
+      g_param_spec_string ("misc-default-geometry",
+                           "misc-default-geometry",
+                           "MiscDefaultGeometry",
+                           "80x24",
+                           EXO_PARAM_READWRITE);
+
   /**
    * TerminalPreferences:misc-inherit-geometry:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_INHERIT_GEOMETRY,
-                                   g_param_spec_boolean ("misc-inherit-geometry",
-                                                         "misc-inherit-geometry",
-                                                         "MiscInheritGeometry",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_INHERIT_GEOMETRY] =
+      g_param_spec_boolean ("misc-inherit-geometry",
+                            "misc-inherit-geometry",
+                            "MiscInheritGeometry",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-menubar-default:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_MENUBAR_DEFAULT,
-                                   g_param_spec_boolean ("misc-menubar-default",
-                                                         "misc-menubar-default",
-                                                         "MiscMenubarDefault",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_MENUBAR_DEFAULT] =
+      g_param_spec_boolean ("misc-menubar-default",
+                            "misc-menubar-default",
+                            "MiscMenubarDefault",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-mouse-autohide:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_MOUSE_AUTOHIDE,
-                                   g_param_spec_boolean ("misc-mouse-autohide",
-                                                         "misc-mouse-autohide",
-                                                         "MiscMouseAutohide",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_MOUSE_AUTOHIDE] =
+      g_param_spec_boolean ("misc-mouse-autohide",
+                            "misc-mouse-autohide",
+                            "MiscMouseAutohide",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-toolbars-default:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_TOOLBARS_DEFAULT,
-                                   g_param_spec_boolean ("misc-toolbars-default",
-                                                         "misc-toolbars-default",
-                                                         "MiscToolbarsDefault",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_TOOLBARS_DEFAULT] =
+      g_param_spec_boolean ("misc-toolbars-default",
+                            "misc-toolbars-default",
+                            "MiscToolbarsDefault",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-confirm-close:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_CONFIRM_CLOSE,
-                                   g_param_spec_boolean ("misc-confirm-close",
-                                                         "misc-confirm-close",
-                                                         "MiscConfirmClose",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_CONFIRM_CLOSE] =
+      g_param_spec_boolean ("misc-confirm-close",
+                            "misc-confirm-close",
+                            "MiscConfirmClose",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-cycle-tabs:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_CYCLE_TABS,
-                                   g_param_spec_boolean ("misc-cycle-tabs",
-                                                         "misc-cycle-tabs",
-                                                         "MiscCycleTabs",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_CYCLE_TABS] =
+      g_param_spec_boolean ("misc-cycle-tabs",
+                            "misc-cycle-tabs",
+                            "MiscCycleTabs",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-tab-close-buttons:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_TAB_CLOSE_BUTTONS,
-                                   g_param_spec_boolean ("misc-tab-close-buttons",
-                                                         "misc-tab-close-buttons",
-                                                         "MiscTabCloseButtons",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_TAB_CLOSE_BUTTONS] =
+      g_param_spec_boolean ("misc-tab-close-buttons",
+                            "misc-tab-close-buttons",
+                            "MiscTabCloseButtons",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-tab-close-middle-click:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_TAB_CLOSE_MIDDLE_CLICK,
-                                   g_param_spec_boolean ("misc-tab-close-middle-click",
-                                                         "misc-tab-close-middle-click",
-                                                         "MiscTabCloseMiddleClick",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_TAB_CLOSE_MIDDLE_CLICK] =
+      g_param_spec_boolean ("misc-tab-close-middle-click",
+                            "misc-tab-close-middle-click",
+                            "MiscTabCloseMiddleClick",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-tab-position:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_TAB_POSITION,
-                                   g_param_spec_enum ("misc-tab-position",
-                                                      "misc-tab-position",
-                                                      "MiscTabPosition",
-                                                      GTK_TYPE_POSITION_TYPE,
-                                                      GTK_POS_TOP,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_TAB_POSITION] =
+      g_param_spec_enum ("misc-tab-position",
+                         "misc-tab-position",
+                         "MiscTabPosition",
+                         GTK_TYPE_POSITION_TYPE,
+                         GTK_POS_TOP,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:misc-highlight-urls:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_MISC_HIGHLIGHT_URLS,
-                                   g_param_spec_boolean ("misc-highlight-urls",
-                                                         "misc-highlight-urls",
-                                                         "MiscHighlightUrls",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_MISC_HIGHLIGHT_URLS] =
+      g_param_spec_boolean ("misc-highlight-urls",
+                            "misc-highlight-urls",
+                            "MiscHighlightUrls",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:scrolling-bar:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SCROLLING_BAR,
-                                   g_param_spec_enum ("scrolling-bar",
-                                                      "scrolling-bar",
-                                                      "ScrollingBar",
-                                                      TERMINAL_TYPE_SCROLLBAR,
-                                                      TERMINAL_SCROLLBAR_RIGHT,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_SCROLLING_BAR] =
+      g_param_spec_enum ("scrolling-bar",
+                         "scrolling-bar",
+                         "ScrollingBar",
+                         TERMINAL_TYPE_SCROLLBAR,
+                         TERMINAL_SCROLLBAR_RIGHT,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:scrolling-lines:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SCROLLING_LINES,
-                                   g_param_spec_uint ("scrolling-lines",
-                                                      "scrolling-lines",
-                                                      "ScrollingLines",
-                                                      0u, 1024u * 1024u, 1000u,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_SCROLLING_LINES] =
+      g_param_spec_uint ("scrolling-lines",
+                         "scrolling-lines",
+                         "ScrollingLines",
+                         0u, 1024u * 1024u, 1000u,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:scrolling-on-output:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SCROLLING_ON_OUTPUT,
-                                   g_param_spec_boolean ("scrolling-on-output",
-                                                         "scrolling-on-output",
-                                                         "ScrollingOnOutput",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_SCROLLING_ON_OUTPUT] =
+      g_param_spec_boolean ("scrolling-on-output",
+                            "scrolling-on-output",
+                            "ScrollingOnOutput",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:scrolling-on-keystroke:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SCROLLING_ON_KEYSTROKE,
-                                   g_param_spec_boolean ("scrolling-on-keystroke",
-                                                         "scrolling-on-keystroke",
-                                                         "ScrollingOnKeystroke",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_SCROLLING_ON_KEYSTROKE] =
+      g_param_spec_boolean ("scrolling-on-keystroke",
+                            "scrolling-on-keystroke",
+                            "ScrollingOnKeystroke",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:scrolling-single-line:
    *
    * Whether to enable scrolling single lines using Shift-Up/-Down.
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SCROLLING_SINGLE_LINE,
-                                   g_param_spec_boolean ("scrolling-single-line",
-                                                         "scrolling-single-line",
-                                                         "ScrollingSingleLine",
-                                                         TRUE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_SCROLLING_SINGLE_LINE] =
+      g_param_spec_boolean ("scrolling-single-line",
+                            "scrolling-single-line",
+                            "ScrollingSingleLine",
+                            TRUE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:shortcuts-no-menukey:
    *
    * Disable menu shortcut key (F10 by default).
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SHORTCUTS_NO_MENUKEY,
-                                   g_param_spec_boolean ("shortcuts-no-menukey",
-                                                         "shortcuts-no-menukey",
-                                                         "ShortcutsNoMenukey",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_SHORTCUTS_NO_MENUKEY] =
+      g_param_spec_boolean ("shortcuts-no-menukey",
+                            "shortcuts-no-menukey",
+                            "ShortcutsNoMenukey",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:shortcuts-no-mnemonics:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_SHORTCUTS_NO_MNEMONICS,
-                                   g_param_spec_boolean ("shortcuts-no-mnemonics",
-                                                         "shortcuts-no-mnemonics",
-                                                         "ShortcutsNoMnemonics",
-                                                         FALSE,
-                                                         EXO_PARAM_READWRITE));
+  preferences_props[PROP_SHORTCUTS_NO_MNEMONICS] =
+      g_param_spec_boolean ("shortcuts-no-mnemonics",
+                            "shortcuts-no-mnemonics",
+                            "ShortcutsNoMnemonics",
+                            FALSE,
+                            EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:title-initial:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_TITLE_INITIAL,
-                                   g_param_spec_string ("title-initial",
-                                                        "title-initial",
-                                                        "TitleInitial",
-                                                        _("Terminal"),
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_TITLE_INITIAL] =
+      g_param_spec_string ("title-initial",
+                           "title-initial",
+                           "TitleInitial",
+                           _("Terminal"),
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:title-mode:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_TITLE_MODE,
-                                   g_param_spec_enum ("title-mode",
-                                                      "title-mode",
-                                                      "TitleMode",
-                                                      TERMINAL_TYPE_TITLE,
-                                                      TERMINAL_TITLE_APPEND,
-                                                      EXO_PARAM_READWRITE));
+  preferences_props[PROP_TITLE_MODE] =
+      g_param_spec_enum ("title-mode",
+                         "title-mode",
+                         "TitleMode",
+                         TERMINAL_TYPE_TITLE,
+                         TERMINAL_TITLE_APPEND,
+                         EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:term:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_TERM,
-                                   g_param_spec_string ("term",
-                                                        "term",
-                                                        "Term",
-                                                        "xterm",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_TERM] =
+      g_param_spec_string ("term",
+                           "term",
+                           "Term",
+                           "xterm",
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:word-chars:
    **/
-  g_object_class_install_property (gobject_class,
-                                   PROP_WORD_CHARS,
-                                   g_param_spec_string ("word-chars",
-                                                        "word-chars",
-                                                        "WordChars",
-                                                        "-A-Za-z0-9,./?%&#:_~",
-                                                        EXO_PARAM_READWRITE));
+  preferences_props[PROP_WORD_CHARS] =
+      g_param_spec_string ("word-chars",
+                           "word-chars",
+                           "WordChars",
+                           "-A-Za-z0-9,./?%&#:_~",
+                           EXO_PARAM_READWRITE);
+
+  /* install all properties */
+  g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
 }
 
 
@@ -1396,6 +1315,7 @@ terminal_preferences_set_property (GObject      *object,
   GValue              *dst;
 
   terminal_return_if_fail (prop_id < N_PROPERTIES);
+  terminal_return_if_fail (preferences_props[prop_id] == pspec);
 
   dst = preferences->values + prop_id;
   if (!G_IS_VALUE (dst))
@@ -1407,11 +1327,16 @@ terminal_preferences_set_property (GObject      *object,
   if (g_param_values_cmp (pspec, value, dst) != 0)
     {
       g_value_copy (value, dst);
-      g_object_notify (object, pspec->name);
 
       /* don't schedule a store if loading */
       if (!preferences->loading_in_progress)
-        terminal_preferences_schedule_store (preferences);
+        {
+          /* notify */
+          g_object_notify_by_pspec (object, pspec);
+
+          /* store new value */
+          terminal_preferences_schedule_store (preferences);
+        }
     }
 }
 
@@ -1504,7 +1429,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
           if (G_IS_VALUE (value))
             {
               g_value_unset (value);
-              g_object_notify (G_OBJECT (preferences), name);
+              g_object_notify_by_pspec (G_OBJECT (preferences), pspec);
             }
         }
       else
