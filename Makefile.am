@@ -1,6 +1,5 @@
 SUBDIRS = \
 	doc \
-	icons \
 	po \
 	terminal
 

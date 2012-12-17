@@ -30,7 +30,6 @@
 #include <exo/exo.h>
 
 #include <terminal/terminal-app.h>
-#include <terminal/terminal-stock.h>
 #include <terminal/terminal-private.h>
 
 #ifdef HAVE_DBUS
@@ -117,7 +116,6 @@ main (int argc, char **argv)
   gint             nargc;
   gint             n;
   gchar           *name;
-  gboolean         has_util_icon;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
@@ -233,11 +231,8 @@ main (int argc, char **argv)
   modifiers = gtk_accelerator_get_default_mod_mask ();
   gtk_accelerator_set_default_mod_mask (modifiers | GDK_MOD4_MASK);
 
-  /* register our stock icons */
-  has_util_icon = terminal_stock_init ();
-
   /* set default window icon */
-  gtk_window_set_default_icon_name (has_util_icon ? "utilities-terminal" : "Terminal");
+  gtk_window_set_default_icon_name ("utilities-terminal");
 
   app = g_object_new (TERMINAL_TYPE_APP, NULL);
 

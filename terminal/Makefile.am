@@ -32,7 +32,6 @@ Terminal_headers = \
 	terminal-private.h \
 	terminal-screen.h \
 	terminal-shortcut-editor.h \
-	terminal-stock.h \
 	terminal-toolbars-model.h \
 	terminal-toolbars-view.h \
 	terminal-widget.h \
@@ -52,7 +51,6 @@ Terminal_SOURCES = \
 	terminal-preferences-dialog.c \
 	terminal-screen.c \
 	terminal-shortcut-editor.c \
-	terminal-stock.c \
 	terminal-toolbars-model.c \
 	terminal-toolbars-view.c \
 	terminal-widget.c \

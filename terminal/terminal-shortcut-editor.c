@@ -28,7 +28,6 @@
 
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-shortcut-editor.h>
-#include <terminal/terminal-stock.h>
 #include <terminal/terminal-private.h>
 
 #if defined(GDK_WINDOWING_WIN32)
@@ -344,7 +343,7 @@ terminal_shortcut_editor_activate (TerminalShortcutEditor *editor,
   gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
-  image = gtk_image_new_from_stock (TERMINAL_STOCK_COMPOSE, GTK_ICON_SIZE_DIALOG);
+  image = gtk_image_new_from_icon_name ("preferences-desktop-keyboard-shortcuts", GTK_ICON_SIZE_DIALOG);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, TRUE, 0);
   gtk_widget_show (image);
 
