@@ -1387,12 +1387,11 @@ terminal_preferences_load (TerminalPreferences *preferences)
 {
   gchar        *filename;
   const gchar  *string, *name;
-  GParamSpec  **pspecs, *pspec;
+  GParamSpec   *pspec;
   XfceRc       *rc;
   GValue        dst = { 0, };
   GValue        src = { 0, };
   GValue       *value;
-  guint         nspecs;
   guint         n;
 
   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, "Terminal/terminalrc");
@@ -1411,10 +1410,9 @@ terminal_preferences_load (TerminalPreferences *preferences)
 
   g_value_init (&src, G_TYPE_STRING);
 
-  pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
-  for (n = 0; n < nspecs; ++n)
+  for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
     {
-      pspec = pspecs[n];
+      pspec = preferences_props[n];
       name = g_param_spec_get_name (pspec);
 
 #ifndef NDEBUG
@@ -1425,7 +1423,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
       if (G_UNLIKELY (string == NULL))
         {
           /* check if we need to reset to the default value */
-          value = preferences->values + (n + 1);
+          value = preferences->values + n;
           if (G_IS_VALUE (value))
             {
               g_value_unset (value);
@@ -1452,7 +1450,6 @@ terminal_preferences_load (TerminalPreferences *preferences)
             }
         }
     }
-  g_free (pspecs);
 
   g_value_unset (&src);
 
