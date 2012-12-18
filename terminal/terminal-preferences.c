@@ -101,9 +101,6 @@ enum
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
   PROP_FONT_ALLOW_BOLD,
-#if TERMINAL_HAS_ANTI_ALIAS_SETTING
-  PROP_FONT_ANTI_ALIAS,
-#endif
   PROP_FONT_NAME,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_BELL,
@@ -923,18 +920,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "FontAllowBold",
                             TRUE,
                             EXO_PARAM_READWRITE);
-
-#if TERMINAL_HAS_ANTI_ALIAS_SETTING
-  /**
-   * TerminalPreferences:font-anti-alias:
-   **/
-  preferences_props[PROP_FONT_ANTI_ALIAS] =
-      g_param_spec_boolean ("font-anti-alias",
-                            "font-anti-alias",
-                            "FontAntiAlias",
-                            TRUE,
-                            EXO_PARAM_READWRITE);
-#endif
 
   /**
    * TerminalPreferences:font-name:

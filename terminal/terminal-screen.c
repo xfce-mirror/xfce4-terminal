@@ -287,7 +287,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::color-palette15", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette16", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::font-allow-bold", G_CALLBACK (terminal_screen_update_font), screen,
-                    "swapped-signal::notify::font-anti-alias", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
                     "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_screen_update_misc_cursor_blinks), screen,
@@ -850,10 +849,6 @@ terminal_screen_update_colors (TerminalScreen *screen)
 static void
 terminal_screen_update_font (TerminalScreen *screen)
 {
-#if TERMINAL_HAS_ANTI_ALIAS_SETTING
-  VteTerminalAntiAlias antialias;
-  gboolean             font_anti_alias;
-#endif
   gboolean             font_allow_bold;
   gchar               *font_name;
 
@@ -863,25 +858,13 @@ terminal_screen_update_font (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences),
                 "font-allow-bold", &font_allow_bold,
-#if TERMINAL_HAS_ANTI_ALIAS_SETTING
-                "font-anti-alias", &font_anti_alias,
-#endif
                 "font-name", &font_name,
                 NULL);
 
   if (G_LIKELY (font_name != NULL))
     {
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
-
-#if TERMINAL_HAS_ANTI_ALIAS_SETTING
-      antialias = font_anti_alias
-                ? VTE_ANTI_ALIAS_USE_DEFAULT
-                : VTE_ANTI_ALIAS_FORCE_DISABLE;
-      vte_terminal_set_font_from_string_full (VTE_TERMINAL (screen->terminal),
-                                              font_name, antialias);
-#else
       vte_terminal_set_font_from_string (VTE_TERMINAL (screen->terminal), font_name);
-#endif
 
       g_free (font_name);
     }
