@@ -77,12 +77,6 @@ terminal_dialogs_show_about (GtkWindow *parent)
   if (logo == NULL)
     logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 128, 128, NULL);
 
-  /* set dialog hook on gtk versions older then 2.18 */
-#if !GTK_CHECK_VERSION (2, 18, 0)
-  gtk_about_dialog_set_email_hook (exo_gtk_url_about_dialog_hook, NULL, NULL);
-  gtk_about_dialog_set_url_hook (exo_gtk_url_about_dialog_hook, NULL, NULL);
-#endif
-
   /* open the about dialog */
   gtk_show_about_dialog (parent,
                          "authors", authors,

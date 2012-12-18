@@ -104,12 +104,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->preferences = terminal_preferences_get ();
 
-#if !LIBXFCE4UTIL_CHECK_VERSION (4, 7, 2)
-  /* restore the default translation domain. this is broken by libxfce4util
-   * < 4.7.2, after calling XFCE_LICENSE_GPL. see bug #5842. */
-  xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-#endif
-
   /* hack to initialize the XfceTitledDialog class */
   if (xfce_titled_dialog_get_type () == 0)
     return;
