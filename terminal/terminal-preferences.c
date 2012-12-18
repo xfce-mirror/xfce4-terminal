@@ -1206,7 +1206,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("word-chars",
                            "word-chars",
                            "WordChars",
-                           "-A-Za-z0-9,./?%&#:_~",
+                           "-A-Za-z0-9,./?%&#:_=+@~",
                            EXO_PARAM_READWRITE);
 
   /* install all properties */
