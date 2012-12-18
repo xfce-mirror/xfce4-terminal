@@ -53,7 +53,6 @@ static const gchar *actions[] =
   "reset",
   "reset-and-clear",
   "contents",
-  "report-bug",
   "about",
 };
 
