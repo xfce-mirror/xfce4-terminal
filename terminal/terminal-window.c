@@ -51,6 +51,7 @@
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-toolbars-view.h>
+#include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-window-ui.h>
 #include <terminal/terminal-widget.h>
@@ -138,6 +139,9 @@ static GtkWidget      *terminal_window_get_context_menu              (TerminalSc
 static void            terminal_window_notify_title                  (TerminalScreen         *screen,
                                                                       GParamSpec             *pspec,
                                                                       TerminalWindow         *window);
+static void            terminal_window_action_set_encoding           (GtkAction              *action,
+                                                                      const gchar            *charset,
+                                                                      TerminalWindow         *window);
 static void            terminal_window_action_new_tab                (GtkAction              *action,
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_new_window             (GtkAction              *action,
@@ -203,6 +207,8 @@ struct _TerminalWindow
   GtkWidget           *menubar;
   GtkWidget           *toolbars;
   GtkWidget           *notebook;
+
+  GtkAction           *encoding_action;
 
   TerminalScreen      *active;
 };
@@ -413,6 +419,12 @@ terminal_window_init (TerminalWindow *window)
   role = g_strdup_printf ("Terminal-%p-%d-%d", window, (gint) getpid (), (gint) time (NULL));
   gtk_window_set_role (GTK_WINDOW (window), role);
   g_free (role);
+
+  /* create encoding action */
+  window->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
+  gtk_action_group_add_action (window->action_group, window->encoding_action);
+  g_signal_connect (G_OBJECT (window->encoding_action), "encoding-changed",
+      G_CALLBACK (terminal_window_action_set_encoding), window);
 }
 
 
@@ -439,6 +451,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->preferences));
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->ui_manager));
+  g_object_unref (G_OBJECT (window->encoding_action));
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -789,6 +802,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 {
   TerminalScreen *active;
   gboolean        was_null;
+  const gchar    *encoding;
 
   /* get the new active page */
   active = TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num));
@@ -812,6 +826,10 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 
       /* reset the activity counter */
       terminal_screen_reset_activity (active);
+
+      /* set charset for menu */
+      encoding = terminal_screen_get_encoding (window->active);
+      terminal_encoding_action_set_charset (window->encoding_action, encoding);
 
       /* set the new geometry widget */
       if (G_LIKELY (!was_null))
@@ -1217,6 +1235,26 @@ terminal_window_notify_title (TerminalScreen *screen,
       title = terminal_screen_get_title (window->active);
       gtk_window_set_title (GTK_WINDOW (window), title);
       g_free (title);
+    }
+}
+
+
+
+static void
+terminal_window_action_set_encoding (GtkAction      *action,
+                                     const gchar    *charset,
+                                     TerminalWindow *window)
+{
+  const gchar *new;
+
+  if (G_LIKELY (window->active != NULL))
+    {
+      /* set the charset */
+      terminal_screen_set_encoding (window->active, charset);
+
+      /* update menu */
+      new = terminal_screen_get_encoding (window->active);
+      terminal_encoding_action_set_charset (action, new);
     }
 }
 

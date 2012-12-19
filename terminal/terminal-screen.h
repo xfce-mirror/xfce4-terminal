@@ -90,6 +90,11 @@ GtkWidget   *terminal_screen_get_tab_label                (TerminalScreen *scree
 
 void         terminal_screen_focus                        (TerminalScreen *screen);
 
+const gchar *terminal_screen_get_encoding                 (TerminalScreen *screen);
+
+void         terminal_screen_set_encoding                 (TerminalScreen *screen,
+                                                           const gchar    *charset);
+
 G_END_DECLS
 
 #endif /* !__TERMINAL_SCREEN_H__ */

@@ -25,6 +25,7 @@ Terminal_headers = \
 	terminal-accel-map.h \
 	terminal-app.h \
 	terminal-dialogs.h \
+	terminal-encoding-action.h \
 	terminal-image-loader.h \
 	terminal-options.h \
 	terminal-preferences.h \
@@ -45,6 +46,7 @@ Terminal_SOURCES = \
 	terminal-accel-map.c \
 	terminal-app.c \
 	terminal-dialogs.c \
+	terminal-encoding-action.c \
 	terminal-image-loader.c \
 	terminal-options.c \
 	terminal-preferences.c \

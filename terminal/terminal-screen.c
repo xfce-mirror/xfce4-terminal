@@ -95,6 +95,7 @@ static void       terminal_screen_update_background             (TerminalScreen 
 static void       terminal_screen_update_background_fast        (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
+static void       terminal_screen_update_encoding               (TerminalScreen        *screen);
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
 static void       terminal_screen_update_font                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
@@ -305,6 +306,7 @@ terminal_screen_init (TerminalScreen *screen)
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
   terminal_screen_update_binding_delete (screen);
+  terminal_screen_update_encoding (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
@@ -787,6 +789,18 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
   g_object_get (G_OBJECT (screen->preferences), "binding-delete", &binding, NULL);
   vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal),
       terminal_screen_binding_vte (binding));
+}
+
+
+
+static void
+terminal_screen_update_encoding (TerminalScreen *screen)
+{
+  gchar *encoding;
+
+  g_object_get (G_OBJECT (screen->preferences), "encoding", &encoding, NULL);
+  vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), encoding);
+  g_free (encoding);
 }
 
 
@@ -1985,4 +1999,23 @@ terminal_screen_focus (TerminalScreen *screen)
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   gtk_widget_grab_focus (GTK_WIDGET (screen->terminal));
+}
+
+
+
+const gchar *
+terminal_screen_get_encoding (TerminalScreen *screen)
+{
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  return vte_terminal_get_encoding (VTE_TERMINAL (screen->terminal));
+}
+
+
+
+void
+terminal_screen_set_encoding (TerminalScreen *screen,
+                              const gchar    *charset)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset);
 }

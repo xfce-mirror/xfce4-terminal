@@ -28,6 +28,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-shortcut-editor.h>
+#include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-private.h>
 
 
@@ -46,6 +47,8 @@ static void terminal_preferences_dialog_background_notify (GObject              
                                                            GParamSpec                *pspec,
                                                            GObject                   *widget);
 static void terminal_preferences_dialog_background_set    (GtkFileChooserButton      *widget,
+                                                           TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_encoding_changed  (GtkComboBox               *combobox,
                                                            TerminalPreferencesDialog *dialog);
 
 
@@ -87,6 +90,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkFileFilter    *filter;
   gchar            *file;
   ExoMutualBinding *binding;
+  GtkTreeModel     *model;
+  gchar            *current;
+  GtkTreeIter       current_iter;
   const gchar      *props_active[] = { "title-mode", "command-login-shell",
                                        "command-update-records", "scrolling-single-line",
                                        "scrolling-on-output", "scrolling-on-keystroke",
@@ -219,6 +225,17 @@ error:
   gtk_file_filter_add_pixbuf_formats (filter);
   gtk_file_chooser_add_filter (GTK_FILE_CHOOSER (object), filter);
   gtk_file_chooser_set_filter (GTK_FILE_CHOOSER (object), filter);
+
+  /* encoding combo */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "encoding-combo");
+  g_object_get (dialog->preferences, "encoding", &current, NULL);
+  model = terminal_encoding_model_new (current, &current_iter);
+  gtk_combo_box_set_model (GTK_COMBO_BOX (object), model);
+  gtk_combo_box_set_active_iter (GTK_COMBO_BOX (object), &current_iter);
+  g_signal_connect (G_OBJECT (object), "changed",
+      G_CALLBACK (terminal_preferences_dialog_encoding_changed), dialog);
+  g_object_unref (G_OBJECT (model));
+  g_free (current);
 }
 
 
@@ -367,6 +384,39 @@ terminal_preferences_dialog_background_set (GtkFileChooserButton      *widget,
   filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
   g_object_set (G_OBJECT (dialog->preferences), "background-image-file", filename, NULL);
   g_free (filename);
+}
+
+
+
+static void
+terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobox,
+                                              TerminalPreferencesDialog *dialog)
+{
+  GtkTreeIter   iter;
+  gchar        *encoding;
+  GtkTreeModel *model;
+  gboolean      is_charset;
+  GtkTreeIter   child_iter;
+
+  if (gtk_combo_box_get_active_iter (combobox, &iter))
+    {
+      model = gtk_combo_box_get_model (combobox);
+      gtk_tree_model_get (model, &iter,
+                          ENCODING_COLUMN_IS_CHARSET, &is_charset,
+                          ENCODING_COLUMN_VALUE, &encoding, -1);
+
+      /* select the child if a menu header is clicked */
+      if (encoding == NULL && !is_charset)
+        {
+          if (gtk_tree_model_iter_children (model, &child_iter, &iter))
+            gtk_combo_box_set_active_iter (combobox, &child_iter);
+          return;
+        }
+
+      /* save new default */
+      g_object_set (dialog->preferences, "encoding", encoding, NULL);
+      g_free (encoding);
+    }
 }
 
 

@@ -100,6 +100,7 @@ enum
   PROP_COLOR_PALETTE16,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_ENCODING,
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_NAME,
   PROP_MISC_ALWAYS_SHOW_TABS,
@@ -910,6 +911,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "CommandLoginShell",
                             FALSE,
                             EXO_PARAM_READWRITE);
+
+  /**
+   * TerminalPreferences:encoding:
+   **/
+  preferences_props[PROP_ENCODING] =
+      g_param_spec_string ("encoding",
+                           "encodinge",
+                           "Encoding",
+                           NULL,
+                           EXO_PARAM_READWRITE);
 
   /**
    * TerminalPreferences:font-allow-bold:
