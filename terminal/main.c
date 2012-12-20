@@ -32,9 +32,7 @@
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-private.h>
 
-#ifdef HAVE_DBUS
-#include <terminal/terminal-dbus.h>
-#endif
+#include <terminal/terminal-gdbus.h>
 
 
 
@@ -116,6 +114,7 @@ main (int argc, char **argv)
   gint             nargc;
   gint             n;
   gchar           *name;
+  const gchar     *msg;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
@@ -179,19 +178,20 @@ main (int argc, char **argv)
     nargv[nargc++] = g_strdup (argv[n]);
   nargv[nargc] = NULL;
 
-#ifdef HAVE_DBUS
+  /* for GDBus */
+  g_type_init ();
+
   if (!disable_server)
     {
       /* try to connect to an existing Terminal service */
-      if (terminal_dbus_invoke_launch (nargc, nargv, &error))
+      if (terminal_gdbus_invoke_launch (nargc, nargv, &error))
         {
           return EXIT_SUCCESS;
         }
       else
         {
-          if (error->domain == TERMINAL_ERROR
-              && (error->code == TERMINAL_ERROR_USER_MISMATCH
-                  || error->code == TERMINAL_ERROR_DISPLAY_MISMATCH))
+          if (g_error_matches (error, TERMINAL_ERROR, TERMINAL_ERROR_USER_MISMATCH)
+              || g_error_matches (error, TERMINAL_ERROR, TERMINAL_ERROR_DISPLAY_MISMATCH))
             {
               /* don't try to establish another service here */
               disable_server = TRUE;
@@ -202,17 +202,23 @@ main (int argc, char **argv)
                        error->message);
 #endif
             }
-          else if (error->domain == TERMINAL_ERROR
-                   && error->code == TERMINAL_ERROR_OPTIONS)
+          else if (g_error_matches (error, TERMINAL_ERROR, TERMINAL_ERROR_OPTIONS))
             {
+              /* skip the GDBus prefix */
+              msg = strchr (error->message, ' ');
+              if (G_LIKELY (msg != NULL))
+                msg++;
+              else
+                msg = error->message;
+
               /* options were not parsed succesfully, don't try that again below */
-              g_printerr ("%s\n", error->message);
+              g_printerr ("%s: %s\n", g_get_prgname (), msg);
               g_error_free (error);
               g_strfreev (nargv);
               return EXIT_FAILURE;
             }
 #ifndef NDEBUG
-          else
+          else if (error != NULL)
             {
               g_debug ("D-Bus reply error: %s (%s: %d)", error->message,
                        g_quark_to_string (error->domain), error->code);
@@ -222,7 +228,6 @@ main (int argc, char **argv)
           g_clear_error (&error);
         }
     }
-#endif /* !HAVE_DBUS */
 
   /* initialize Gtk+ */
   gtk_init (&argc, &argv);
@@ -236,21 +241,19 @@ main (int argc, char **argv)
 
   app = g_object_new (TERMINAL_TYPE_APP, NULL);
 
-#ifdef HAVE_DBUS
   if (!disable_server)
     {
-      if (!terminal_dbus_register_service (app, &error))
+      if (!terminal_gdbus_register_service (app, &error))
         {
           g_printerr (_("Unable to register terminal service: %s\n"), error->message);
           g_clear_error (&error);
         }
     }
-#endif /* !HAVE_DBUS */
 
   if (!terminal_app_process (app, nargv, nargc, &error))
     {
       /* parsing one of the arguments failed */
-      g_printerr ("%s\n", error->message);
+      g_printerr ("%s: %s\n", g_get_prgname (), error->message);
       g_error_free (error);
       g_object_unref (G_OBJECT (app));
       g_strfreev (nargv);

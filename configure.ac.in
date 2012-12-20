@@ -66,7 +66,7 @@ AC_PROG_LIBTOOL()
 dnl **********************************
 dnl *** Check for standard headers ***
 dnl **********************************
-AC_CHECK_HEADERS([ctype.h errno.h limits.h pwd.h signal.h time.h])
+AC_CHECK_HEADERS([ctype.h errno.h limits.h pwd.h signal.h time.h unistd.h])
 
 dnl ******************************
 dnl *** Check for i18n support ***
@@ -86,21 +86,6 @@ XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.24.0])
 XDT_CHECK_PACKAGE([VTE], [vte], [0.28])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.26.0])
 XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.10.0])
-
-dnl **********************************
-dnl *** Optional support for D-BUS ***
-dnl **********************************
-XDT_CHECK_OPTIONAL_PACKAGE([DBUS], [dbus-glib-1], [0.22],
-                           [dbus], [D-BUS GLib bindings])
-if test x"$DBUS_FOUND" = x"yes"; then
-  AC_MSG_CHECKING([whether to use new D-BUS API])
-  if $PKG_CONFIG --atleast-version 0.31 dbus-1 >/dev/null 2>&1; then
-    AC_DEFINE([DBUS_USE_NEW_API], [1], [Define to use new D-BUS API])
-    AC_MSG_RESULT([yes])
-  else
-    AC_MSG_RESULT([no])
-  fi
-fi
 
 dnl ***************************************************
 dnl *** Check if we need to build the documentation ***

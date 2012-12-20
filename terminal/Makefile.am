@@ -1,11 +1,10 @@
 INCLUDES = \
+	-I$(top_srcdir) \
 	-DDATADIR=\"$(datadir)\" \
 	-DHELPDIR=\"$(docdir)\" \
 	-DEXO_DISABLE_DEPRECATED\
 	-DG_LOG_DOMAIN=\"Terminal\" \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
-	-DSN_API_NOT_YET_FROZEN \
-	-I$(top_srcdir) \
 	$(PLATFORM_CPPFLAGS)
 
 bin_PROGRAMS = \
@@ -17,15 +16,12 @@ Terminal_built_sources = \
 	terminal-marshal.c \
 	terminal-marshal.h
 
-Terminal_dbus_sources = \
-	terminal-dbus.c \
-	terminal-dbus.h
-
 Terminal_headers = \
 	terminal-accel-map.h \
 	terminal-app.h \
 	terminal-dialogs.h \
 	terminal-encoding-action.h \
+	terminal-gdbus.h \
 	terminal-image-loader.h \
 	terminal-options.h \
 	terminal-preferences.h \
@@ -47,6 +43,7 @@ Terminal_SOURCES = \
 	terminal-app.c \
 	terminal-dialogs.c \
 	terminal-encoding-action.c \
+	terminal-gdbus.c \
 	terminal-image-loader.c \
 	terminal-options.c \
 	terminal-preferences.c \
@@ -59,7 +56,6 @@ Terminal_SOURCES = \
 	terminal-window.c
 
 Terminal_CFLAGS = \
-	$(DBUS_CFLAGS) \
 	$(EXO_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
@@ -73,7 +69,6 @@ Terminal_LDFLAGS = \
 	$(PLATFORM_LDFLAGS)
 
 Terminal_LDADD = \
-	$(DBUS_LIBS) \
 	$(EXO_LIBS) \
 	$(GTK_LIBS) \
 	$(GIO_LIBS) \
@@ -87,14 +82,6 @@ Terminal_LDADD = \
 install-exec-hook:
 	$(mkinstalldirs) $(DESTDIR)$(bindir)
 	-( cd $(DESTDIR)$(bindir) ; test -x terminal || test -x Terminal && ln -sf Terminal terminal )
-
-if HAVE_DBUS
-Terminal_CFLAGS += \
-	-DDBUS_API_SUBJECT_TO_CHANGE
-
-Terminal_SOURCES += \
-	$(Terminal_dbus_sources)
-endif
 
 
 ##
