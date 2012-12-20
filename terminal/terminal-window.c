@@ -204,7 +204,7 @@ struct _TerminalWindow
 
 
 static guint         window_signals[LAST_SIGNAL];
-static gconstpointer window_notebook_group = "Terminal";
+static gconstpointer window_notebook_group = PACKAGE_NAME;
 static GQuark        gomenu_action_quark = 0;
 
 
