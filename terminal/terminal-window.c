@@ -50,22 +50,12 @@
 #include <terminal/terminal-preferences-dialog.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-marshal.h>
-#include <terminal/terminal-toolbars-view.h>
 #include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-window-ui.h>
 #include <terminal/terminal-widget.h>
 
 
-
-/* Property identifiers */
-enum
-{
-  PROP_0,
-  PROP_SHOW_MENUBAR,
-  PROP_SHOW_BORDERS,
-  PROP_SHOW_TOOLBARS
-};
 
 /* Signal identifiers */
 enum
@@ -160,8 +150,6 @@ static void            terminal_window_action_paste_selection        (GtkAction 
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_select_all             (GtkAction              *action,
                                                                       TerminalWindow         *window);
-static void            terminal_window_action_edit_toolbars          (GtkAction              *action,
-                                                                      TerminalWindow         *window);
 static void            terminal_window_action_prefs                  (GtkAction              *action,
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_show_menubar           (GtkToggleAction        *action,
@@ -234,7 +222,6 @@ static const GtkActionEntry action_entries[] =
     { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), NULL, N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
     { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, N_ ("Paste from primary selection"), G_CALLBACK (terminal_window_action_paste_selection), },
     { "select-all", GTK_STOCK_SELECT_ALL, N_ ("Select _All"), NULL, N_ ("Select all text in the terminal"), G_CALLBACK (terminal_window_action_select_all), },
-    { "edit-toolbars", NULL, N_ ("_Toolbars..."), NULL, N_ ("Customize the toolbars"), G_CALLBACK (terminal_window_action_edit_toolbars), },
     { "preferences", GTK_STOCK_PREFERENCES, N_ ("Pr_eferences..."), NULL, N_ ("Open the Terminal preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
   { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
@@ -1370,16 +1357,6 @@ terminal_window_action_select_all (GtkAction      *action,
 
 
 static void
-terminal_window_action_edit_toolbars (GtkAction       *action,
-                                      TerminalWindow  *window)
-{
-  if (G_LIKELY (window->toolbars != NULL))
-    terminal_toolbars_view_edit (TERMINAL_TOOLBARS_VIEW (window->toolbars));
-}
-
-
-
-static void
 terminal_window_action_prefs (GtkAction      *action,
                               TerminalWindow *window)
 {
@@ -1441,7 +1418,6 @@ static void
 terminal_window_action_show_toolbars (GtkToggleAction *action,
                                       TerminalWindow  *window)
 {
-  GtkAction *action_edit;
   GtkWidget *vbox;
 
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
@@ -1451,11 +1427,8 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
     {
       if (window->toolbars == NULL)
         {
-          /* this is a bug in exo, fixed in revision 30359 */
-          gtk_ui_manager_ensure_update (window->ui_manager);
-
           vbox = gtk_bin_get_child (GTK_BIN (window));
-          window->toolbars = g_object_new (TERMINAL_TYPE_TOOLBARS_VIEW, "ui-manager", window->ui_manager, NULL);
+          window->toolbars = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
           gtk_box_pack_start (GTK_BOX (vbox), window->toolbars, FALSE, FALSE, 0);
           gtk_box_reorder_child (GTK_BOX (vbox), window->toolbars, window->menubar != NULL ? 1 : 0);
         }
@@ -1467,9 +1440,6 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
       gtk_widget_destroy (window->toolbars);
       window->toolbars = NULL;
     }
-
-  action_edit = gtk_action_group_get_action (window->action_group, "edit-toolbars");
-  gtk_action_set_sensitive (action_edit, window->toolbars != NULL);
 
   terminal_window_set_size (window);
 }
@@ -1723,8 +1693,6 @@ terminal_window_new (gboolean           fullscreen,
     g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &setting, NULL);
   else
     setting = (toolbars == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "edit-toolbars");
-  gtk_action_set_sensitive (action, FALSE);
   action = gtk_action_group_get_action (window->action_group, "show-toolbars");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
 

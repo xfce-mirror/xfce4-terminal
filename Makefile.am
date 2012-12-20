@@ -34,7 +34,6 @@ xml_DATA = $(xml_in_files:.xml.in=.xml)
 
 uidir = $(datadir)/xfce4-terminal
 ui_DATA = \
-	Terminal-toolbars.ui \
 	xfce4-terminal.glade
 
 EXTRA_DIST = \

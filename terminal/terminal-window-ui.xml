@@ -3,79 +3,95 @@
     Copyright (c) 2004-2007 os-cillation
 
     Terminal User Interface description file, parsed by Terminal to create
-    the menu bar and the right click menu.
+    the interface.
   -->
 
   <!-- The main menu bar -->
   <menubar name="main-menu">
     <menu action="file-menu">
-      <menuitem action="new-tab" />
-      <menuitem action="new-window" />
-      <separator />
-      <menuitem action="detach-tab" />
-      <separator />
-      <menuitem action="close-tab" />
-      <menuitem action="close-window" />
+      <menuitem action="new-tab"/>
+      <menuitem action="new-window"/>
+      <separator/>
+      <menuitem action="detach-tab"/>
+      <separator/>
+      <menuitem action="close-tab"/>
+      <menuitem action="close-window"/>
     </menu>
     <menu action="edit-menu">
-      <menuitem action="copy" />
-      <menuitem action="paste" />
-      <menuitem action="paste-selection" />
-      <separator />
-      <menuitem action="select-all" />
-      <separator />
-      <menuitem action="edit-toolbars" />
-      <menuitem action="preferences" />
+      <menuitem action="copy"/>
+      <menuitem action="paste"/>
+      <menuitem action="paste-selection"/>
+      <separator/>
+      <menuitem action="select-all"/>
+      <separator/>
+      <menuitem action="preferences"/>
     </menu>
     <menu action="view-menu">
-      <menuitem action="show-menubar" />
-      <menuitem action="show-toolbars" />
-      <menuitem action="show-borders" />
-      <menuitem action="fullscreen" />
+      <menuitem action="show-menubar"/>
+      <menuitem action="show-toolbars"/>
+      <menuitem action="show-borders"/>
+      <menuitem action="fullscreen"/>
     </menu>
     <menu action="terminal-menu">
-      <menuitem action="set-title" />
-      <separator />
-      <menuitem action="set-encoding" />
-      <separator />
-      <menuitem action="reset" />
-      <menuitem action="reset-and-clear" />
+      <menuitem action="set-title"/>
+      <separator/>
+      <menuitem action="set-encoding"/>
+      <separator/>
+      <menuitem action="reset"/>
+      <menuitem action="reset-and-clear"/>
     </menu>
     <menu action="go-menu">
-      <menuitem action="prev-tab" />
-      <menuitem action="next-tab" />
-      <separator />
-      <placeholder name="placeholder-tab-items" />
+      <menuitem action="prev-tab"/>
+      <menuitem action="next-tab"/>
+      <separator/>
+      <placeholder name="placeholder-tab-items"/>
     </menu>
     <menu action="help-menu">
-      <menuitem action="contents" />
-      <menuitem action="report-bug" />
-      <menuitem action="about" />
+      <menuitem action="contents"/>
+      <menuitem action="report-bug"/>
+      <menuitem action="about"/>
     </menu>
   </menubar>
 
   <!-- The right click menu -->
   <popup name="popup-menu">
-    <menuitem action="new-window" />
-    <menuitem action="new-tab" />
-    <separator />
-    <menuitem action="copy" />
-    <menuitem action="paste" />
-    <separator />
-    <menuitem action="show-menubar" />
-    <menuitem action="fullscreen" />
-    <menuitem action="preferences" />
-    <separator />
-    <menuitem action="input-methods" />
+    <menuitem action="new-window"/>
+    <menuitem action="new-tab"/>
+    <separator/>
+    <menuitem action="copy"/>
+    <menuitem action="paste"/>
+    <separator/>
+    <menuitem action="show-menubar"/>
+    <menuitem action="fullscreen"/>
+    <menuitem action="preferences"/>
+    <separator/>
+    <menuitem action="input-methods"/>
   </popup>
 
   <!-- The right click tab menu -->
   <popup name="tab-menu">
-    <menuitem action="detach-tab" />
-    <menuitem action="set-title" />
-    <separator />
-    <menuitem action="close-tab" />
+    <menuitem action="detach-tab"/>
+    <menuitem action="set-title"/>
+    <separator/>
+    <menuitem action="close-tab"/>
   </popup>
+
+  <!-- The toolbar -->
+  <toolbar name="main-toolbar">
+    <toolitem action="new-tab"/>
+    <toolitem action="new-window"/>
+    <separator/>
+    <toolitem action="copy"/>
+    <toolitem action="paste"/>
+    <separator/>
+    <toolitem action="fullscreen"/>
+    <toolitem action="preferences"/>
+    <separator/>
+    <toolitem action="prev-tab"/>
+    <toolitem action="next-tab"/>
+    <separator/>
+    <toolitem action="contents"/>
+  </toolbar>
 </ui>
 
 <!--

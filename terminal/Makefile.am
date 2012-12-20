@@ -29,8 +29,6 @@ xfce4_terminal_headers = \
 	terminal-private.h \
 	terminal-screen.h \
 	terminal-shortcut-editor.h \
-	terminal-toolbars-model.h \
-	terminal-toolbars-view.h \
 	terminal-widget.h \
 	terminal-window.h \
 	terminal-window-ui.h
@@ -50,8 +48,6 @@ xfce4_terminal_SOURCES = \
 	terminal-preferences-dialog.c \
 	terminal-screen.c \
 	terminal-shortcut-editor.c \
-	terminal-toolbars-model.c \
-	terminal-toolbars-view.c \
 	terminal-widget.c \
 	terminal-window.c
 
