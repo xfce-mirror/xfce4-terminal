@@ -15,16 +15,8 @@ ChangeLog: Makefile
 
 dist-hook: ChangeLog
 
-distuninstallcheck_listfiles = 						\ 
-	find . -type f -print | grep -v ./share/icons/hicolor/icon-theme.cache
-
-package_exec=`echo $(PACKAGE) | sed '$(program_transform_name)'`
-
 desktopdir = $(datadir)/applications
-desktop_in_in_files = Terminal.desktop.in.in
-desktop_in_files = $(desktop_in_in_files:.desktop.in.in=.desktop.in)
-%.desktop.in: %.desktop.in.in
-	sed -e "s,\@PACKAGE_EXEC\@,$(package_exec),g" < $< > $@
+desktop_in_files = xfce4-terminal.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
@@ -33,24 +25,24 @@ xmldir = $(GNOME_DEFAULT_APPSDIR)
 else
 xmldir = $(datadir)/gnome-control-center/default-apps
 endif
-xml_in_in_files = Terminal-default-apps.xml.in.in
+xml_in_in_files = xfce4-terminal-default-apps.xml.in.in
 xml_in_files = $(xml_in_in_files:.xml.in.in=.xml.in)
 %.xml.in: %.xml.in.in
 	sed -e "s,\@PACKAGE_EXEC\@,$(package_exec),g" < $< > $@
 xml_DATA = $(xml_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
-uidir = $(datadir)/Terminal
+uidir = $(datadir)/xfce4-terminal
 ui_DATA = \
 	Terminal-toolbars.ui \
-	Terminal.glade
+	xfce4-terminal.glade
 
 EXTRA_DIST = \
 	HACKING \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \
-	$(desktop_in_in_files) \
+	$(desktop_in_files) \
 	$(xml_in_in_files) \
 	$(ui_DATA)
 
@@ -58,7 +50,6 @@ DISTCLEANFILES = \
 	intltool-extract \
 	intltool-merge \
 	intltool-update \
-	$(desktop_in_files) \
 	$(desktop_DATA) \
 	$(xml_in_files) \
 	$(xml_DATA)

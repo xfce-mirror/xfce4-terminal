@@ -120,7 +120,7 @@ main (int argc, char **argv)
   signal (SIGPIPE, SIG_IGN);
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
-  g_set_application_name (_("Terminal"));
+  g_set_application_name (_("Xfce Terminal"));
 
 #ifndef NDEBUG
   /* Do NOT remove this line for now, If something doesn't work,

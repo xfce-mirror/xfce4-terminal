@@ -3,20 +3,20 @@ INCLUDES = \
 	-DDATADIR=\"$(datadir)\" \
 	-DHELPDIR=\"$(docdir)\" \
 	-DEXO_DISABLE_DEPRECATED\
-	-DG_LOG_DOMAIN=\"Terminal\" \
+	-DG_LOG_DOMAIN=\"xfce4-terminal\" \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
 	$(PLATFORM_CPPFLAGS)
 
 bin_PROGRAMS = \
-	Terminal
+	xfce4-terminal
 
-Terminal_built_sources = \
+xfce4_terminal_built_sources = \
 	terminal-enum-types.c \
 	terminal-enum-types.h \
 	terminal-marshal.c \
 	terminal-marshal.h
 
-Terminal_headers = \
+xfce4_terminal_headers = \
 	terminal-accel-map.h \
 	terminal-app.h \
 	terminal-dialogs.h \
@@ -35,9 +35,9 @@ Terminal_headers = \
 	terminal-window.h \
 	terminal-window-ui.h
 
-Terminal_SOURCES = \
-	$(Terminal_built_sources) \
-	$(Terminal_headers) \
+xfce4_terminal_SOURCES = \
+	$(xfce4_terminal_built_sources) \
+	$(xfce4_terminal_headers) \
 	main.c \
 	terminal-accel-map.c \
 	terminal-app.c \
@@ -55,7 +55,7 @@ Terminal_SOURCES = \
 	terminal-widget.c \
 	terminal-window.c
 
-Terminal_CFLAGS = \
+xfce4_terminal_CFLAGS = \
 	$(EXO_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
@@ -64,11 +64,11 @@ Terminal_CFLAGS = \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
-Terminal_LDFLAGS = \
+xfce4_terminal_LDFLAGS = \
 	-no-undefined \
 	$(PLATFORM_LDFLAGS)
 
-Terminal_LDADD = \
+xfce4_terminal_LDADD = \
 	$(EXO_LIBS) \
 	$(GTK_LIBS) \
 	$(GIO_LIBS) \
@@ -78,10 +78,6 @@ Terminal_LDADD = \
 	$(LIBXFCE4UI_LIBS) \
 	$(TERMINAL_LIBS)
 
-# install symlink to 'terminal'
-install-exec-hook:
-	$(mkinstalldirs) $(DESTDIR)$(bindir)
-	-( cd $(DESTDIR)$(bindir) ; test -x terminal || test -x Terminal && ln -sf Terminal terminal )
 
 
 ##
@@ -108,7 +104,7 @@ DISTCLEANFILES = \
 
 BUILT_SOURCES = \
 	terminal-window-ui.h \
-	$(Terminal_built_sources)
+	$(xfce4_terminal_built_sources)
 
 terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
 	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
@@ -125,6 +121,7 @@ stamp-terminal-enum-types.h: terminal-preferences.h Makefile
 	&& (cmp -s xgen-teth terminal-enum-types.h || cp xgen-teth terminal-enum-types.h ) \
 	&& rm -f xgen-teth \
 	&& echo timestamp > $(@F)
+
 terminal-enum-types.c: terminal-preferences.h Makefile
 	$(AM_V_GEN) ( cd $(srcdir) && glib-mkenums \
 	--fhead "#ifdef HAVE_CONFIG_H\n#include <config.h>\n#endif\n#undef GTK_DISABLE_DEPRECATED\n#define GTK_ENABLE_BROKEN\n#include <terminal/terminal-enum-types.h>\n#include <terminal/terminal-app.h>\n#include <terminal/terminal-preferences.h>" \

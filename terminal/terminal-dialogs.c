@@ -27,7 +27,7 @@
 #include <locale.h>
 #endif
 
-#include <exo/exo.h>
+#include <libxfce4util/libxfce4util.h>
 
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-private.h>
@@ -67,16 +67,6 @@ terminal_dialogs_show_about (GtkWindow *parent)
     NULL,
   };
 
-  GdkPixbuf    *logo = NULL;
-  GtkIconTheme *theme;
-
-  /* try to load the about logo */
-  theme = gtk_icon_theme_get_default ();
-  if (gtk_icon_theme_has_icon (theme, "utilities-terminal"))
-    logo = gtk_icon_theme_load_icon (theme, "utilities-terminal", 128, GTK_ICON_LOOKUP_FORCE_SVG, NULL);
-  if (logo == NULL)
-    logo = gdk_pixbuf_new_from_file_at_size (DATADIR "/icons/hicolor/scalable/apps/Terminal.svg", 128, 128, NULL);
-
   /* open the about dialog */
   gtk_show_about_dialog (parent,
                          "authors", authors,
@@ -86,15 +76,11 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "copyright", "Copyright \302\251 2003-2008 Benedikt Meurer\n"
                                       "Copyright \302\251 2007-2012 Nick Schermer",
                          "license", XFCE_LICENSE_GPL,
-                         "logo", logo,
-                         "program-name", g_get_application_name (),
+                         "logo-icon-name", "utilities-terminal",
+                         "program-name", g_get_prgname (),
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
                          "website", "http://goodies.xfce.org/projects/applications/terminal",
                          "website-label", _("Visit Terminal website"),
                          NULL);
-
-  /* release the about logo (if any) */
-  if (G_LIKELY (logo != NULL))
-    g_object_unref (G_OBJECT (logo));
 }
