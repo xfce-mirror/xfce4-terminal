@@ -135,7 +135,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
                 "color-background", &selected_color_spec,
                 NULL);
 
-  if (!exo_str_is_equal (selected_path, loader->path))
+  if (g_strcmp0 (selected_path, loader->path) != 0)
     {
       g_free (loader->path);
       loader->path = g_strdup (selected_path);

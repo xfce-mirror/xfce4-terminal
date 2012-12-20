@@ -450,11 +450,11 @@ terminal_shortcut_editor_compose (GtkWidget              *dialog,
     return TRUE;
 
   accelerator = gtk_accelerator_name (keyval, modifiers);
-  if (exo_str_is_equal (accelerator, "<Alt>c"))
+  if (g_strcmp0 (accelerator, "<Alt>c") == 0)
     {
       response_id = GTK_RESPONSE_CANCEL;
     }
-  else if (exo_str_is_equal (accelerator, "<Alt>r"))
+  else if (g_strcmp0 (accelerator, "<Alt>r") == 0)
     {
       response_id = TERMINAL_RESPONSE_CLEAR;
     }
@@ -499,7 +499,7 @@ terminal_shortcut_editor_notify (TerminalPreferences    *preferences,
                   gtk_tree_model_get (model, &child,
                                       COLUMN_PROPERTY, &property,
                                       -1);
-                  if (exo_str_is_equal (property, pspec->name))
+                  if (g_strcmp0 (property, pspec->name) == 0)
                     {
                       gtk_tree_store_set (GTK_TREE_STORE (model), &child,
                           COLUMN_ACCEL, IS_STRING (accel) ? accel : _("Disabled"), -1);

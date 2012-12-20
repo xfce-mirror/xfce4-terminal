@@ -63,7 +63,7 @@ static void               terminal_app_new_window_with_terminal (TerminalWindow 
                                                                  TerminalApp        *app);
 static void               terminal_app_window_destroyed         (GtkWidget          *window,
                                                                  TerminalApp        *app);
-static void               terminal_app_save_yourself            (ExoXsessionClient  *client,
+static void               terminal_app_save_yourself            (XfceSMClient       *client,
                                                                  TerminalApp        *app);
 static GdkScreen         *terminal_app_find_screen              (const gchar        *display_name);
 static void               terminal_app_open_window              (TerminalApp        *app,
@@ -81,7 +81,7 @@ struct _TerminalApp
   GObject              __parent__;
   TerminalPreferences *preferences;
   TerminalAccelMap    *accel_map;
-  ExoXsessionClient   *session_client;
+  XfceSMClient        *session_client;
   gchar               *initial_menu_bar_accel;
   GSList              *windows;
 };
@@ -326,15 +326,15 @@ terminal_app_window_destroyed (GtkWidget   *window,
 
 
 static void
-terminal_app_save_yourself (ExoXsessionClient *client,
-                            TerminalApp       *app)
+terminal_app_save_yourself (XfceSMClient *client,
+                            TerminalApp  *app)
 {
-  GSList  *result = NULL;
-  GSList  *lp;
-  gchar  **oargv;
-  gchar  **argv;
-  gint     argc;
-  gint     n;
+  GSList               *result = NULL;
+  GSList               *lp;
+  const gchar * const  *oargv;
+  gchar               **argv;
+  gint                  argc;
+  gint                  n;
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
@@ -349,22 +349,19 @@ terminal_app_save_yourself (ExoXsessionClient *client,
     argv[n] = lp->data;
   argv[n] = NULL;
 
-  if (exo_xsession_client_get_restart_command (client, &oargv, NULL))
+  oargv = xfce_sm_client_get_restart_command (client);
+  if (oargv != NULL)
     {
       terminal_assert (oargv[0] != NULL);
 
-      argv[0] = oargv[0];
-
-      for (n = 1; oargv[n] != NULL; ++n)
-        g_free (oargv[n]);
-      g_free (oargv);
+      argv[0] = g_strdup (oargv[0]);
     }
   else
     {
-      argv[0] = g_strdup ("Terminal");
+      argv[0] = g_strdup (PACKAGE_NAME);
     }
 
-  exo_xsession_client_set_restart_command (client, argv, argc);
+  xfce_sm_client_set_restart_command (client, argv);
 
   g_slist_free (result);
   g_strfreev (argv);
@@ -446,8 +443,6 @@ terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
 {
   TerminalTabAttr *tab_attr;
-  GdkDisplay      *display;
-  GdkWindow       *leader;
   GtkWidget       *window;
   GtkWidget       *terminal;
   GdkScreen       *screen;
@@ -528,10 +523,8 @@ terminal_app_open_window (TerminalApp        *app,
    */
   if (G_UNLIKELY (app->session_client == NULL))
     {
-      display = gtk_widget_get_display (GTK_WIDGET (window));
-      leader = gdk_display_get_default_group (display);
-      app->session_client = exo_xsession_client_new_with_group (leader);
-      g_signal_connect (G_OBJECT (app->session_client), "save-yourself",
+      app->session_client = xfce_sm_client_get ();
+      g_signal_connect (G_OBJECT (app->session_client), "save-state",
                         G_CALLBACK (terminal_app_save_yourself), app);
     }
 }

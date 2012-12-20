@@ -72,8 +72,9 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
   G_STMT_START { \
   object = gtk_builder_get_object (GTK_BUILDER (dialog), name); \
   terminal_return_if_fail (G_IS_OBJECT (object)); \
-  binding = exo_mutual_binding_new (G_OBJECT (dialog->preferences), name, \
-                                    G_OBJECT (object), property); \
+  binding = g_object_bind_property (G_OBJECT (dialog->preferences), name, \
+                                    G_OBJECT (object), property, \
+                                    G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL); \
   dialog->bindings = g_slist_prepend (dialog->bindings, binding); \
   } G_STMT_END
 
@@ -89,7 +90,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gchar             palette_name[16];
   GtkFileFilter    *filter;
   gchar            *file;
-  ExoMutualBinding *binding;
+  GBinding         *binding;
   GtkTreeModel     *model;
   gchar            *current;
   GtkTreeIter       current_iter;
@@ -187,15 +188,18 @@ error:
   /* inverted action between cursor color selections */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");
   terminal_return_if_fail (G_IS_OBJECT (object));
-  exo_binding_new_with_negation (G_OBJECT (dialog->preferences), "color-selection-use-default",
-                                 G_OBJECT (object), "active");
+  g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-use-default",
+                          G_OBJECT (object), "active",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
 
   /* sensitivity for custom selection color */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");
   terminal_return_if_fail (G_IS_OBJECT (object));
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection");
   terminal_return_if_fail (G_IS_OBJECT (object2));
-  exo_binding_new (G_OBJECT (object), "active", G_OBJECT (object2), "sensitive");
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_SYNC_CREATE);
 
   /* background widgets visibility */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "background-mode");
@@ -275,7 +279,7 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
     {
       /* disconnect all the bindings */
       for (li = dialog->bindings; li != NULL; li = li->next)
-        exo_mutual_binding_unbind (li->data);
+        g_object_unref (G_OBJECT (li->data));
       g_slist_free (dialog->bindings);
 
       /* close the preferences dialog */
@@ -364,7 +368,7 @@ terminal_preferences_dialog_background_notify (GObject    *object,
 
   button_file = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (widget));
   g_object_get (G_OBJECT (object), "background-image-file", &prop_file, NULL);
-  if (!exo_str_is_equal (button_file, prop_file))
+  if (g_strcmp0 (button_file, prop_file) != 0)
     gtk_file_chooser_set_filename (GTK_FILE_CHOOSER (widget), prop_file);
   g_free (button_file);
   g_free (prop_file);

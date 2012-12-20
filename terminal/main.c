@@ -27,8 +27,6 @@
 #endif
 #include <stdlib.h>
 
-#include <exo/exo.h>
-
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-private.h>
 

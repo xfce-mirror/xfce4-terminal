@@ -674,7 +674,6 @@ terminal_widget_open_uri (TerminalWidget *widget,
   gchar       *uri;
   guint        i;
   GdkScreen   *screen;
-  const gchar *category = "WebBrowser";
 
   for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
     {
@@ -694,9 +693,6 @@ terminal_widget_open_uri (TerminalWidget *widget,
             break;
 
           case PATTERN_TYPE_EMAIL:
-            /* other category then WebBrowser */
-            category = "MailReader";
-
             if (strncmp (wlink, "mailto:", 7) == 0)
               uri = g_strdup (wlink);
             else
@@ -709,7 +705,7 @@ terminal_widget_open_uri (TerminalWidget *widget,
 
       /* try to open the URI with the responsible application */
       screen = gtk_widget_get_screen (GTK_WIDGET (widget));
-      if (!exo_execute_preferred_application_on_screen (category, uri, NULL, NULL, screen, &error))
+      if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error))
         {
           /* tell the user that we were unable to open the responsible application */
           xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget))),

@@ -70,6 +70,8 @@ G_BEGIN_DECLS
 #define g_value_get_object(v)   (((const GValue *) (v))->data[0].v_pointer)
 #endif
 
+#define I_(string) (g_intern_static_string ((string)))
+
 G_END_DECLS
 
 #endif /* !__TERMINAL_PRIVATE_H__ */

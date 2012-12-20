@@ -21,8 +21,6 @@
 #ifndef __TERMINAL_PREFERENCES_DIALOG_H__
 #define __TERMINAL_PREFERENCES_DIALOG_H__
 
-#include <exo/exo.h>
-
 #include <terminal/terminal-preferences.h>
 
 G_BEGIN_DECLS

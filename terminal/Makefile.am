@@ -2,7 +2,6 @@ INCLUDES = \
 	-I$(top_srcdir) \
 	-DDATADIR=\"$(datadir)\" \
 	-DHELPDIR=\"$(docdir)\" \
-	-DEXO_DISABLE_DEPRECATED\
 	-DG_LOG_DOMAIN=\"xfce4-terminal\" \
 	-DPACKAGE_LOCALE_DIR=\"$(localedir)\" \
 	$(PLATFORM_CPPFLAGS)
@@ -52,7 +51,6 @@ xfce4_terminal_SOURCES = \
 	terminal-window.c
 
 xfce4_terminal_CFLAGS = \
-	$(EXO_CFLAGS) \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
 	$(LIBX11_CFLAGS)\
@@ -65,7 +63,6 @@ xfce4_terminal_LDFLAGS = \
 	$(PLATFORM_LDFLAGS)
 
 xfce4_terminal_LDADD = \
-	$(EXO_LIBS) \
 	$(GTK_LIBS) \
 	$(GIO_LIBS) \
 	$(LIBX11_LDFLAGS) \
@@ -103,13 +100,13 @@ BUILT_SOURCES = \
 	$(xfce4_terminal_built_sources)
 
 terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
-	$(AM_V_GEN) exo-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
+	$(AM_V_GEN) xdt-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
 stamp-terminal-enum-types.h: terminal-preferences.h Makefile
 	$(AM_V_GEN)  ( cd $(srcdir) && glib-mkenums \
-	--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <exo/exo.h>\nG_BEGIN_DECLS\n" \
+	--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <gtk/gtk.h>\nG_BEGIN_DECLS\n" \
 	--fprod "/* enumerations from \"@filename@\" */\n" \
 	--vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
 	--ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \

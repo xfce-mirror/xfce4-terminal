@@ -152,7 +152,7 @@ terminal_encoding_action_class_init (TerminalEncodingActionClass *klass)
   encoding_action_quark = g_quark_from_static_string ("encoding-action-quark");
 
   encoding_action_signals[ENCODING_CHANGED] =
-    g_signal_new ("encoding-changed",
+    g_signal_new (I_("encoding-changed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,

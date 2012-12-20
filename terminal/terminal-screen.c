@@ -197,7 +197,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         "custom-title",
                                                         "custom-title",
                                                         NULL,
-                                                        EXO_PARAM_READWRITE));
+                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
    * TerminalScreen:title:
@@ -208,7 +208,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
                                                         "title",
                                                         "title",
                                                         NULL,
-                                                        EXO_PARAM_READABLE));
+                                                        G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
   /**
    * TerminalScreen::get-context-menu
@@ -255,7 +255,7 @@ terminal_screen_init (TerminalScreen *screen)
 
   screen->scrollbar = gtk_vscrollbar_new (VTE_TERMINAL (screen->terminal)->adjustment);
   gtk_box_pack_start (GTK_BOX (screen), screen->scrollbar, FALSE, FALSE, 0);
-  g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (exo_noop_true), NULL);
+  g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
   gtk_widget_show (screen->scrollbar);
 
   screen->preferences = terminal_preferences_get ();
@@ -1434,7 +1434,7 @@ terminal_screen_set_custom_title (TerminalScreen *screen,
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  if (!exo_str_is_equal (screen->custom_title, title))
+  if (g_strcmp0 (screen->custom_title, title) != 0)
     {
       g_free (screen->custom_title);
       if (IS_STRING (title))
@@ -1953,16 +1953,20 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   screen->tab_label = gtk_label_new (NULL);
   gtk_misc_set_padding (GTK_MISC (screen->tab_label), 2, 0);
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
-  exo_binding_new (G_OBJECT (screen), "title", G_OBJECT (screen->tab_label), "label");
-  exo_binding_new (G_OBJECT (screen->tab_label), "label",
-                   G_OBJECT (screen->tab_label), "tooltip-text");
+  g_object_bind_property (G_OBJECT (screen), "title",
+                          G_OBJECT (screen->tab_label), "label",
+                          G_BINDING_SYNC_CREATE);
+  g_object_bind_property (G_OBJECT (screen->tab_label), "label",
+                          G_OBJECT (screen->tab_label), "tooltip-text",
+                          G_BINDING_SYNC_CREATE);
   gtk_widget_set_has_tooltip (screen->tab_label, TRUE);
   gtk_widget_show (screen->tab_label);
 
   align = gtk_alignment_new (0.5f, 0.5f, 0.0f, 0.0f);
   gtk_box_pack_start  (GTK_BOX (hbox), align, FALSE, FALSE, 0);
-  exo_binding_new (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
-                   G_OBJECT (align), "visible");
+  g_object_bind_property (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
+                          G_OBJECT (align), "visible",
+                          G_BINDING_SYNC_CREATE);
 
   button = gtk_button_new ();
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);

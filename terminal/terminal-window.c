@@ -36,7 +36,6 @@
 #include <unistd.h>
 #endif
 
-#include <exo/exo.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <gdk/gdkkeysyms.h>
@@ -370,8 +369,9 @@ terminal_window_init (TerminalWindow *window)
                                    "tab-hborder", 0,
                                    "tab-vborder", 0,
                                    NULL);
-  exo_binding_new (G_OBJECT (window->preferences), "misc-tab-position",
-                   G_OBJECT (window->notebook), "tab-pos");
+  g_object_bind_property (G_OBJECT (window->preferences), "misc-tab-position",
+                          G_OBJECT (window->notebook), "tab-pos",
+                          G_BINDING_SYNC_CREATE);
 
   /* hide the ugly terminal border when tabs are shown */
   style = gtk_rc_style_new ();
@@ -753,7 +753,9 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
       /* create action */
       radio_action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
       gtk_action_set_sensitive (GTK_ACTION (radio_action), npages > 1);
-      exo_binding_new (G_OBJECT (page), "title", G_OBJECT (radio_action), "label");
+      g_object_bind_property (G_OBJECT (page), "title",
+                              G_OBJECT (radio_action), "label",
+                              G_BINDING_SYNC_CREATE);
       gtk_radio_action_set_group (radio_action, group);
       group = gtk_radio_action_get_group (radio_action);
       gtk_action_group_add_action (window->action_group, GTK_ACTION (radio_action));
@@ -1518,9 +1520,9 @@ terminal_window_action_goto_tab (GtkRadioAction *action,
 
 
 static void
-title_dialog_response (GtkWidget         *dialog,
-                       gint              response,
-                       ExoMutualBinding *title_binding)
+title_dialog_response (GtkWidget *dialog,
+                       gint       response,
+                       GBinding  *title_binding)
 {
   /* check if we should open the user manual */
   if (response == GTK_RESPONSE_HELP)
@@ -1531,7 +1533,7 @@ title_dialog_response (GtkWidget         *dialog,
   else
     {
       /* close the dialog */
-      exo_mutual_binding_unbind (title_binding);
+      g_object_unref (title_binding);
       gtk_widget_destroy (dialog);
     }
 }
@@ -1557,7 +1559,7 @@ terminal_window_action_set_title (GtkAction      *action,
   GtkWidget        *box;
   GtkWidget        *label;
   GtkWidget        *entry;
-  ExoMutualBinding *title_binding;
+  GBinding         *title_binding;
 
   if (G_LIKELY (window->active != NULL))
     {
@@ -1592,8 +1594,9 @@ terminal_window_action_set_title (GtkAction      *action,
       atk_relation_set_add (relations, relation);
       g_object_unref (G_OBJECT (relation));
 
-      title_binding = exo_mutual_binding_new (G_OBJECT (window->active), "custom-title",
-                                              G_OBJECT (entry), "text");
+      title_binding = g_object_bind_property (G_OBJECT (window->active), "custom-title",
+                                              G_OBJECT (entry), "text",
+                                              G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
       g_signal_connect (G_OBJECT (dialog), "response",
                         G_CALLBACK (title_dialog_response), title_binding);

@@ -21,7 +21,8 @@
 #ifndef __TERMINAL_PREFERENCES_H__
 #define __TERMINAL_PREFERENCES_H__
 
-#include <exo/exo.h>
+#include <gtk/gtk.h>
+#include <libxfce4ui/libxfce4ui.h>
 
 G_BEGIN_DECLS
 
