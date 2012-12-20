@@ -40,9 +40,9 @@ static const gchar terminal_gdbus_introspection_xml[] =
   "<node>"
     "<interface name='" TERMINAL_DBUS_INTERFACE "'>"
       "<method name='" TERMINAL_DBUS_METHOD_LAUNCH "'>"
-        "<arg type='x' name='uid' direction='in'/>"
-        "<arg type='s' name='display-name' direction='in'/>"
-        "<arg type='as' name='argv' direction='in'/>"
+        "<arg type='u' name='uid' direction='in'/>"
+        "<arg type='ay' name='display-name' direction='in'/>"
+        "<arg type='aay' name='argv' direction='in'/>"
       "</method>"
     "</interface>"
   "</node>";
@@ -60,8 +60,8 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
                             gpointer               user_data)
 {
   TerminalApp  *app = TERMINAL_APP (user_data);
-  gint64        uid = -1;
-  const gchar  *display_name = NULL;
+  guint32       uid = G_MAXUINT32;
+  gchar        *display_name = NULL;
   gchar       **argv = NULL;
   GError       *error = NULL;
 
@@ -72,7 +72,7 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
   if (g_strcmp0 (method_name, TERMINAL_DBUS_METHOD_LAUNCH) == 0)
     {
       /* get paramenters */
-      g_variant_get (parameters, "(xs^as)", &uid, &display_name, &argv);
+      g_variant_get (parameters, "(u^ay^aay)", &uid, &display_name, &argv);
 
       if (uid != getuid ())
         {
@@ -98,6 +98,9 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
           /* everything went fine */
           g_dbus_method_invocation_return_value (invocation, NULL);
         }
+
+      g_free (display_name);
+      g_strfreev (argv);
     }
   else
     {
@@ -193,7 +196,7 @@ terminal_gdbus_invoke_launch (gint     argc,
                                        TERMINAL_DBUS_PATH,
                                        TERMINAL_DBUS_INTERFACE,
                                        TERMINAL_DBUS_METHOD_LAUNCH,
-                                       g_variant_new ("(xs^as)",
+                                       g_variant_new ("(u^ay^aay)",
                                                       getuid (),
                                                       g_getenv ("DISPLAY"),
                                                       argv),
