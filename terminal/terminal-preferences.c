@@ -37,6 +37,8 @@
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-private.h>
 
+#define TERMINALRC     "xfce4/terminal/terminalrc"
+#define TERMINALRC_OLD "Terminal/terminalrc"
 
 
 enum
@@ -1390,9 +1392,14 @@ terminal_preferences_load (TerminalPreferences *preferences)
   GValue       *value;
   guint         n;
 
-  filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, "Terminal/terminalrc");
+  filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
   if (G_UNLIKELY (filename == NULL))
-    return;
+    {
+      /* old location of the Terminal days */
+      filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC_OLD);
+      if (G_UNLIKELY (filename == NULL))
+        return;
+    }
 
   rc = xfce_rc_simple_open (filename, TRUE);
   if (G_UNLIKELY (rc == NULL))
@@ -1530,7 +1537,7 @@ terminal_preferences_store_idle (gpointer user_data)
   if (G_UNLIKELY (preferences->loading_in_progress))
     return TRUE;
 
-  filename = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, "Terminal/terminalrc", TRUE);
+  filename = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, TERMINALRC, TRUE);
   if (G_UNLIKELY (filename == NULL))
     goto error;
 
