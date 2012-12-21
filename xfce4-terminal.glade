@@ -1762,103 +1762,6 @@
                 <property name="border_width">6</property>
                 <property name="spacing">6</property>
                 <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <object class="GtkFrame" id="frame11">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="label_xalign">0</property>
-                    <property name="shadow_type">none</property>
-                    <child>
-                      <object class="GtkAlignment" id="alignment14">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
-                        <child>
-                          <object class="GtkVBox" id="vbox12">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="border_width">6</property>
-                            <property name="spacing">6</property>
-                            <child>
-                              <object class="GtkCheckButton" id="shortcuts-no-mnemonics">
-                                <property name="label" translatable="yes">Disable all me_nu access keys (such as Alt+f)</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="shortcuts-no-menukey">
-                                <property name="label" translatable="yes">Disable m_enu shortcut keys (F10 by default)</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                      </object>
-                    </child>
-                    <child type="label">
-                      <object class="GtkLabel" id="label24">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">Menubar Access</property>
-                        <property name="use_markup">True</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-              <packing>
-                <property name="position">3</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="label21">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">_Shortcuts</property>
-                <property name="use_underline">True</property>
-              </object>
-              <packing>
-                <property name="position">3</property>
-                <property name="tab_fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkVBox" id="vbox13">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="border_width">6</property>
-                <property name="spacing">6</property>
-                <child>
                   <object class="GtkFrame" id="frame12">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
@@ -1988,8 +1891,8 @@
                               <object class="GtkEntry" id="term">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
-                                <property name="tooltip_text" translatable="yes">This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here.</property>
                                 <property name="invisible_char">•</property>
+                                <property name="invisible_char_set">True</property>
                                 <property name="primary_icon_activatable">False</property>
                                 <property name="secondary_icon_activatable">False</property>
                                 <property name="primary_icon_sensitive">True</property>
@@ -2039,6 +1942,29 @@ different terminal behavior.</property>
                     <property name="position">0</property>
                   </packing>
                 </child>
+              </object>
+              <packing>
+                <property name="position">3</property>
+              </packing>
+            </child>
+            <child type="tab">
+              <object class="GtkLabel" id="label21">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Com_patibility</property>
+                <property name="use_underline">True</property>
+              </object>
+              <packing>
+                <property name="position">3</property>
+                <property name="tab_fill">False</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkVBox" id="vbox13">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="border_width">6</property>
+                <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame13">
                     <property name="visible">True</property>
@@ -2077,6 +2003,7 @@ when double clicking:</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">•</property>
+                                <property name="invisible_char_set">True</property>
                                 <property name="primary_icon_activatable">False</property>
                                 <property name="secondary_icon_activatable">False</property>
                                 <property name="primary_icon_sensitive">True</property>
@@ -2131,7 +2058,7 @@ when double clicking:</property>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
-                    <property name="position">1</property>
+                    <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
@@ -2199,7 +2126,78 @@ when double clicking:</property>
                     </child>
                   </object>
                   <packing>
-                    <property name="expand">True</property>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkFrame" id="frame11">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label_xalign">0</property>
+                    <property name="shadow_type">none</property>
+                    <child>
+                      <object class="GtkAlignment" id="alignment14">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="left_padding">12</property>
+                        <child>
+                          <object class="GtkVBox" id="vbox12">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="border_width">6</property>
+                            <property name="spacing">6</property>
+                            <child>
+                              <object class="GtkCheckButton" id="shortcuts-no-mnemonics">
+                                <property name="label" translatable="yes">Disable all me_nu access keys (such as Alt+f)</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkCheckButton" id="shortcuts-no-menukey">
+                                <property name="label" translatable="yes">Disable m_enu shortcut keys (F10 by default)</property>
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                        </child>
+                      </object>
+                    </child>
+                    <child type="label">
+                      <object class="GtkLabel" id="label24">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="label" translatable="yes">Menubar Access</property>
+                        <property name="use_markup">True</property>
+                        <attributes>
+                          <attribute name="weight" value="bold"/>
+                        </attributes>
+                      </object>
+                    </child>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
                     <property name="fill">True</property>
                     <property name="position">2</property>
                   </packing>
