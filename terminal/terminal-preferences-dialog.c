@@ -36,6 +36,9 @@ static void terminal_preferences_dialog_finalize          (GObject              
 static void terminal_preferences_dialog_response          (GtkWidget                 *widget,
                                                            gint                       response,
                                                            TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_palette_changed   (GtkWidget                 *button,
+                                                           TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_palette_notify    (TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_reset_compat      (GtkWidget                 *button,
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_reset_word_chars  (GtkWidget                 *button,
@@ -49,6 +52,24 @@ static void terminal_preferences_dialog_background_set    (GtkFileChooserButton 
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_encoding_changed  (GtkComboBox               *combobox,
                                                            TerminalPreferencesDialog *dialog);
+
+
+
+struct _TerminalPreferencesDialogClass
+{
+  GtkBuilderClass __parent__;
+};
+
+struct _TerminalPreferencesDialog
+{
+  GtkBuilder           __parent__;
+
+  TerminalPreferences *preferences;
+  GSList              *bindings;
+
+  gulong               bg_image_signal_id;
+  gulong               palette_signal_id;
+};
 
 
 
@@ -101,7 +122,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
                                        "background-mode", "background-image-style"
-                                    };
+                                     };
   const gchar      *props_color[] =  { "color-foreground", "color-cursor",
                                        "color-background", "tab-activity-color",
                                        "color-selection"
@@ -152,8 +173,16 @@ error:
   for (i = 1; i <= 16; i++)
     {
       g_snprintf (palette_name, sizeof (palette_name), "color-palette%d", i);
-      BIND_PROPERTIES (palette_name, "color");
+      object = gtk_builder_get_object (GTK_BUILDER (dialog), palette_name);
+      terminal_return_if_fail (G_IS_OBJECT (object));
+      g_signal_connect (G_OBJECT (object), "color-set",
+          G_CALLBACK (terminal_preferences_dialog_palette_changed), dialog);
     }
+
+  /* watch color changes in property */
+  dialog->palette_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences),
+      "notify::color-palette", G_CALLBACK (terminal_preferences_dialog_palette_notify), dialog);
+  terminal_preferences_dialog_palette_notify (dialog);
 
   /* other properties */
   BIND_PROPERTIES ("font-name", "font-name");
@@ -202,7 +231,7 @@ error:
   /* background image file */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "background-image-file");
   terminal_return_if_fail (G_IS_OBJECT (object));
-  dialog->signal_id = g_signal_connect (G_OBJECT (dialog->preferences),
+  dialog->bg_image_signal_id = g_signal_connect (G_OBJECT (dialog->preferences),
       "notify::background-image-file", G_CALLBACK (terminal_preferences_dialog_background_notify), object);
   terminal_preferences_dialog_background_notify (G_OBJECT (dialog->preferences), NULL, object);
   g_signal_connect (G_OBJECT (object), "file-set",
@@ -240,9 +269,11 @@ terminal_preferences_dialog_finalize (GObject *object)
 {
   TerminalPreferencesDialog *dialog = TERMINAL_PREFERENCES_DIALOG (object);
 
-  /* disconnect signal */
-  if (G_LIKELY (dialog->signal_id != 0))
-    g_signal_handler_disconnect (dialog->preferences, dialog->signal_id);
+  /* disconnect signals */
+  if (G_LIKELY (dialog->bg_image_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
+  if (G_LIKELY (dialog->palette_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->palette_signal_id);
 
   /* release the preferences */
   g_object_unref (G_OBJECT (dialog->preferences));
@@ -275,6 +306,80 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
 
       /* close the preferences dialog */
       gtk_widget_destroy (widget);
+    }
+}
+
+
+
+static void
+terminal_preferences_dialog_palette_changed (GtkWidget                 *button,
+                                             TerminalPreferencesDialog *dialog)
+{
+  gchar     name[16];
+  guint     i;
+  GObject  *obj;
+  GdkColor  color;
+  gchar    *color_str;
+  GString  *array;
+
+  array = g_string_sized_new (225);
+
+  for (i = 1; i <= 16; i++)
+    {
+      /* get color value from button */
+      g_snprintf (name, sizeof (name), "color-palette%d", i);
+      obj = gtk_builder_get_object (GTK_BUILDER (dialog), name);
+      terminal_return_if_fail (GTK_IS_COLOR_BUTTON (obj));
+      gtk_color_button_get_color (GTK_COLOR_BUTTON (obj), &color);
+
+      /* append to string */
+      color_str = gdk_color_to_string (&color);
+      g_string_append (array, color_str);
+      g_free (color_str);
+
+      if (i != 16)
+        g_string_append_c (array, ';');
+    }
+
+  /* set property */
+  g_signal_handler_block (dialog->preferences, dialog->palette_signal_id);
+  g_object_set (dialog->preferences, "color-palette", array->str, NULL);
+  g_signal_handler_unblock (dialog->preferences, dialog->palette_signal_id);
+  g_string_free (array, TRUE);
+}
+
+
+
+static void
+terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
+{
+  gchar    *color_str;
+  gchar   **colors;
+  guint     i;
+  gchar     name[16];
+  GObject  *obj;
+  GdkColor  color;
+
+  g_object_get (dialog->preferences, "color-palette", &color_str, NULL);
+  if (G_LIKELY (color_str != NULL))
+    {
+      /* make array */
+      colors = g_strsplit (color_str, ";", 16);
+      g_free (color_str);
+
+      /* apply values to buttons */
+      if (colors != NULL)
+        for (i = 0; colors[i] != NULL; i++)
+          {
+            g_snprintf (name, sizeof (name), "color-palette%d", i + 1);
+            obj = gtk_builder_get_object (GTK_BUILDER (dialog), name);
+            terminal_return_if_fail (GTK_IS_COLOR_BUTTON (obj));
+
+            if (gdk_color_parse (colors[i], &color))
+              gtk_color_button_set_color (GTK_COLOR_BUTTON (obj), &color);
+          }
+
+      g_strfreev (colors);
     }
 }
 

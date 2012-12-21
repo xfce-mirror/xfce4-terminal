@@ -35,20 +35,6 @@ G_BEGIN_DECLS
 typedef struct _TerminalPreferencesDialogClass TerminalPreferencesDialogClass;
 typedef struct _TerminalPreferencesDialog      TerminalPreferencesDialog;
 
-struct _TerminalPreferencesDialogClass
-{
-  GtkBuilderClass __parent__;
-};
-
-struct _TerminalPreferencesDialog
-{
-  GtkBuilder           __parent__;
-
-  TerminalPreferences *preferences;
-  guint                signal_id;
-  GSList              *bindings;
-};
-
 GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
 
 GtkWidget *terminal_preferences_dialog_new      (GtkWindow *parent);

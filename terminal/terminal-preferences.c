@@ -55,22 +55,7 @@ enum
   PROP_COLOR_CURSOR,
   PROP_COLOR_SELECTION,
   PROP_COLOR_SELECTION_USE_DEFAULT,
-  PROP_COLOR_PALETTE1,
-  PROP_COLOR_PALETTE2,
-  PROP_COLOR_PALETTE3,
-  PROP_COLOR_PALETTE4,
-  PROP_COLOR_PALETTE5,
-  PROP_COLOR_PALETTE6,
-  PROP_COLOR_PALETTE7,
-  PROP_COLOR_PALETTE8,
-  PROP_COLOR_PALETTE9,
-  PROP_COLOR_PALETTE10,
-  PROP_COLOR_PALETTE11,
-  PROP_COLOR_PALETTE12,
-  PROP_COLOR_PALETTE13,
-  PROP_COLOR_PALETTE14,
-  PROP_COLOR_PALETTE15,
-  PROP_COLOR_PALETTE16,
+  PROP_COLOR_PALETTE,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
   PROP_ENCODING,
@@ -352,7 +337,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-foreground",
                            "color-foreground",
                            "ColorForeground",
-                           "#ffffffffffff",
+                           "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -362,7 +347,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-background",
                            "color-background",
                            "ColorBackground",
-                           "#000000000000",
+                           "#000000",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -372,7 +357,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-cursor",
                            "color-cursor",
                            "ColorCursor",
-                           "#0000ffff0000",
+                           "#00ff00",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -382,7 +367,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-selection",
                            "color-selection",
                            "ColorSelection",
-                           "#ffffffffffff",
+                           "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -396,163 +381,28 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:color-palette1:
+   * TerminalPreferences:color-palette:
    **/
-  preferences_props[PROP_COLOR_PALETTE1] =
-      g_param_spec_string ("color-palette1",
-                           "color-palette1",
-                           "ColorPalette1",
-                           "#000000000000",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette2:
-   **/
-  preferences_props[PROP_COLOR_PALETTE2] =
-      g_param_spec_string ("color-palette2",
-                           "color-palette2",
-                           "ColorPalette2",
-                           "#aaaa00000000",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette3:
-   **/
-  preferences_props[PROP_COLOR_PALETTE3] =
-      g_param_spec_string ("color-palette3",
-                           "color-palette3",
-                           "ColorPalette3",
-                           "#0000aaaa0000",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette4:
-   **/
-  preferences_props[PROP_COLOR_PALETTE4] =
-      g_param_spec_string ("color-palette4",
-                           "color-palette4",
-                           "ColorPalette4",
-                           "#aaaa55550000",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette5:
-   **/
-  preferences_props[PROP_COLOR_PALETTE5] =
-      g_param_spec_string ("color-palette5",
-                           "color-palette5",
-                           "ColorPalette5",
-                           "#00000000aaaa",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette6:
-   **/
-  preferences_props[PROP_COLOR_PALETTE6] =
-      g_param_spec_string ("color-palette6",
-                           "color-palette6",
-                           "ColorPalette6",
-                           "#aaaa0000aaaa",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette7:
-   **/
-  preferences_props[PROP_COLOR_PALETTE7] =
-      g_param_spec_string ("color-palette7",
-                           "color-palette7",
-                           "ColorPalette7",
-                           "#0000aaaaaaaa",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette8:
-   **/
-  preferences_props[PROP_COLOR_PALETTE8] =
-      g_param_spec_string ("color-palette8",
-                           "color-palette8",
-                           "ColorPalette8",
-                           "#aaaaaaaaaaaa",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette9:
-   **/
-  preferences_props[PROP_COLOR_PALETTE9] =
-      g_param_spec_string ("color-palette9",
-                           "color-palette9",
-                           "ColorPalette9",
-                           "#555555555555",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette10:
-   **/
-  preferences_props[PROP_COLOR_PALETTE10] =
-      g_param_spec_string ("color-palette10",
-                           "color-palette10",
-                           "ColorPalette10",
-                           "#ffff55555555",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette11:
-   **/
-  preferences_props[PROP_COLOR_PALETTE11] =
-      g_param_spec_string ("color-palette11",
-                           "color-palette11",
-                           "ColorPalette11",
-                           "#5555ffff5555",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette12:
-   **/
-  preferences_props[PROP_COLOR_PALETTE12] =
-      g_param_spec_string ("color-palette12",
-                           "color-palette12",
-                           "ColorPalette12",
-                           "#ffffffff5555",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette13:
-   **/
-  preferences_props[PROP_COLOR_PALETTE13] =
-      g_param_spec_string ("color-palette13",
-                           "color-palette13",
-                           "ColorPalette13",
-                           "#55555555ffff",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette14:
-   **/
-  preferences_props[PROP_COLOR_PALETTE14] =
-      g_param_spec_string ("color-palette14",
-                           "color-palette14",
-                           "ColorPalette14",
-                           "#ffff5555ffff",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette15:
-   **/
-  preferences_props[PROP_COLOR_PALETTE15] =
-      g_param_spec_string ("color-palette15",
-                           "color-palette15",
-                           "ColorPalette15",
-                           "#5555ffffffff",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:color-palette16:
-   **/
-  preferences_props[PROP_COLOR_PALETTE16] =
-      g_param_spec_string ("color-palette16",
-                           "color-palette16",
-                           "ColorPalette16",
-                           "#ffffffffffff",
+  preferences_props[PROP_COLOR_PALETTE] =
+      g_param_spec_string ("color-palette",
+                           "color-palette",
+                           "ColorPalette",
+                           "#000000;"
+                           "#aa0000;"
+                           "#00aa00;"
+                           "#aa5500;"
+                           "#0000aa;"
+                           "#aa00aa;"
+                           "#00aaaa;"
+                           "#aaaaaa;"
+                           "#555555;"
+                           "#ff5555;"
+                           "#55ff55;"
+                           "#ffff55;"
+                           "#5555ff;"
+                           "#ff55ff;"
+                           "#55ffff;"
+                           "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -562,7 +412,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("tab-activity-color",
                            "tab-activity-color",
                            "TabActivityColor",
-                           "#afff00000000",
+                           "#af0000",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -1072,12 +922,16 @@ terminal_preferences_load (TerminalPreferences *preferences)
   GValue        src = { 0, };
   GValue       *value;
   guint         n;
+  gboolean      migrate_colors = FALSE;
+  gchar         color_name[16];
+  GString      *array;
 
   filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC);
   if (G_UNLIKELY (filename == NULL))
     {
       /* old location of the Terminal days */
       filename = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALRC_OLD);
+      migrate_colors = TRUE;
       if (G_UNLIKELY (filename == NULL))
         return;
     }
@@ -1133,6 +987,25 @@ terminal_preferences_load (TerminalPreferences *preferences)
               g_value_unset (&dst);
             }
         }
+    }
+
+  /* migrate old terminal color properties into a single string */
+  if (G_UNLIKELY (migrate_colors))
+    {
+      /* concat all values */
+      array = g_string_sized_new (225);
+      for (n = 1; n <= 16; n++)
+        {
+          g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
+          string = xfce_rc_read_entry (rc, color_name, "#000000");
+          g_string_append (array, string);
+          if (n != 16)
+            g_string_append_c (array, ';');
+        }
+
+      /* set property */
+      g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
+      g_string_free (array, TRUE);
     }
 
   g_value_unset (&src);

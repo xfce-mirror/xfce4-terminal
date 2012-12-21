@@ -271,22 +271,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::color-cursor", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-selection", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-selection-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette1", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette2", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette3", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette4", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette5", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette6", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette7", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette8", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette9", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette10", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette11", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette12", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette13", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette14", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette15", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette16", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::color-palette", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::font-allow-bold", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
@@ -808,30 +793,44 @@ terminal_screen_update_encoding (TerminalScreen *screen)
 static void
 terminal_screen_update_colors (TerminalScreen *screen)
 {
-  GdkColor palette[16];
-  GdkColor bg;
-  GdkColor fg;
-  GdkColor cursor;
-  GdkColor selection;
-  gboolean use_default;
-  gchar    name[32];
-  guint    n;
-  gboolean has_bg;
-  gboolean has_fg;
-  gboolean has_cursor;
-  gboolean has_pallette;
+  GdkColor   palette[16];
+  GdkColor   bg;
+  GdkColor   fg;
+  GdkColor   cursor;
+  GdkColor   selection;
+  gboolean   use_default;
+  guint      n = 0;
+  gboolean   has_bg;
+  gboolean   has_fg;
+  gboolean   has_cursor;
+  gboolean   valid_palette = FALSE;
+  gchar     *palette_str;
+  gchar    **colors;
+
+  g_object_get (screen->preferences,
+                "color-palette", &palette_str,
+                "color-selection-use-default", &use_default,
+                NULL);
+
+  if (G_LIKELY (palette_str != NULL))
+    {
+      colors = g_strsplit (palette_str, ";", 16);
+      g_free (palette_str);
+
+      if (colors != NULL)
+        for (; colors[n] != NULL && n < 16; n++)
+          if (!gdk_color_parse (colors[n], palette + n))
+            break;
+
+      g_strfreev (colors);
+      valid_palette = (n == 16);
+    }
 
   has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
   has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
   has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
 
-  for (n = 0, has_pallette = TRUE; has_pallette && n < 16; ++n)
-    {
-      g_snprintf (name, sizeof (name), "color-palette%u", n + 1);
-      has_pallette = terminal_preferences_get_color (screen->preferences, name, palette + n);
-    }
-
-  if (G_LIKELY (has_pallette))
+  if (G_LIKELY (valid_palette))
     {
       vte_terminal_set_colors (VTE_TERMINAL (screen->terminal),
                                has_fg ? &fg : NULL,
@@ -841,14 +840,13 @@ terminal_screen_update_colors (TerminalScreen *screen)
   else
     {
       vte_terminal_set_default_colors (VTE_TERMINAL (screen->terminal));
-      g_warning ("One of the terminal colors (color-palette%u) was not parsed "
-                 "successfully. The default palette has been applied.", n);
+      g_warning ("One of the terminal colors was not parsed successfully. "
+                 "The default palette has been applied.");
     }
 
   vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
   vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
 
-  g_object_get (G_OBJECT (screen->preferences), "color-selection-use-default", &use_default, NULL);
   if (!use_default)
     use_default = !terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
   vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), use_default ? NULL : &selection);
