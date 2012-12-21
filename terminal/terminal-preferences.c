@@ -52,6 +52,7 @@ enum
   PROP_BINDING_DELETE,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
+  PROP_COLOR_BACKGROUND_VARY,
   PROP_COLOR_CURSOR,
   PROP_COLOR_SELECTION,
   PROP_COLOR_SELECTION_USE_DEFAULT,
@@ -349,6 +350,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "ColorBackground",
                            "#000000",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:color-background-vary:
+   **/
+  preferences_props[PROP_COLOR_BACKGROUND_VARY] =
+      g_param_spec_boolean ("color-background-vary",
+                            "color-background-vary",
+                            "ColorBackgroundVary",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:color-cursor:

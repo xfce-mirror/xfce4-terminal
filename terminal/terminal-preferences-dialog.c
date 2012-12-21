@@ -121,7 +121,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "misc-borders-default", "color-selection-use-default",
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
-                                       "background-mode", "background-image-style"
+                                       "background-mode", "background-image-style",
+                                       "color-background-vary"
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-cursor",
                                        "color-background", "tab-activity-color",

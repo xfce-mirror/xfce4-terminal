@@ -55,6 +55,12 @@
 #endif
 #include <glib/gstdio.h>
 
+/* gdkcolor to [0-1] range conversion */
+#define SCALE(i)   (i / 65535.)
+#define UNSCALE(d) ((guint16)(d * 65535 + 0.5))
+
+/* offset of saturation random value */
+#define SATURATION_WINDOW 0.20
 
 
 enum
@@ -69,6 +75,22 @@ enum
   GET_CONTEXT_MENU,
   SELECTION_CHANGED,
   LAST_SIGNAL
+};
+
+enum
+{
+  RGB_RED,
+  RGB_GREEN,
+  RGB_BLUE,
+  N_RGB
+};
+
+enum
+{
+  HSV_HUE,
+  HSV_SATURATION,
+  HSV_VALUE,
+  N_HSV
 };
 
 
@@ -249,7 +271,6 @@ terminal_screen_init (TerminalScreen *screen)
                     "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
                     "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
                     "signal::resize-window", G_CALLBACK (terminal_screen_vte_resize_window), screen,
-                    "swapped-signal::style-set", G_CALLBACK (terminal_screen_update_colors), screen,
                     NULL);
   gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
 
@@ -268,6 +289,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::binding-delete", G_CALLBACK (terminal_screen_update_binding_delete), screen,
                     "swapped-signal::notify::color-foreground", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-background", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::color-background-vary", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-cursor", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-selection", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-selection-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
@@ -302,7 +324,8 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_scrolling_on_output (screen);
   terminal_screen_update_scrolling_on_keystroke (screen);
   terminal_screen_update_word_chars (screen);
-  terminal_screen_timer_background (TERMINAL_SCREEN (screen));
+  terminal_screen_timer_background (screen);
+  terminal_screen_update_colors (screen);
 
   /* Last, connect contents-changed to avoid a race with updates above */
   g_signal_connect (G_OBJECT (screen->terminal), "contents-changed",
@@ -806,10 +829,15 @@ terminal_screen_update_colors (TerminalScreen *screen)
   gboolean   valid_palette = FALSE;
   gchar     *palette_str;
   gchar    **colors;
+  gboolean   vary_bg;
+  gdouble    hsv[N_HSV];
+  gdouble    rgb[N_RGB];
+  gdouble    sat_min, sat_max;
 
   g_object_get (screen->preferences,
                 "color-palette", &palette_str,
                 "color-selection-use-default", &use_default,
+                "color-background-vary", &vary_bg,
                 NULL);
 
   if (G_LIKELY (palette_str != NULL))
@@ -829,6 +857,44 @@ terminal_screen_update_colors (TerminalScreen *screen)
   has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
   has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
   has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
+
+  /* we pick a random hue value to keep readability */
+  if (vary_bg && has_bg)
+    {
+      gtk_rgb_to_hsv (SCALE (bg.red), SCALE (bg.green), SCALE (bg.blue),
+                      NULL, &hsv[HSV_SATURATION], &hsv[HSV_VALUE]);
+
+      /* pick random hue */
+      hsv[HSV_HUE] = g_random_double_range (0.00, 1.00);
+
+      /* saturation moving window, depending on the value */
+      if (hsv[HSV_SATURATION] <= SATURATION_WINDOW)
+        {
+          sat_min = 0.00;
+          sat_max = (2 * SATURATION_WINDOW);
+        }
+      else if (hsv[HSV_SATURATION] >= (1.00 - SATURATION_WINDOW))
+        {
+          sat_min = 1.00 - (2 * SATURATION_WINDOW);
+          sat_max = 1.00;
+        }
+      else
+        {
+          sat_min = hsv[HSV_SATURATION] - SATURATION_WINDOW;
+          sat_max = hsv[HSV_SATURATION] + SATURATION_WINDOW;
+        }
+
+      hsv[HSV_SATURATION] = g_random_double_range (sat_min, sat_max);
+
+      /* and back to a rgb color */
+      gtk_hsv_to_rgb (hsv[HSV_HUE], hsv[HSV_SATURATION], hsv[HSV_VALUE],
+                      &rgb[RGB_RED], &rgb[RGB_GREEN], &rgb[RGB_BLUE]);
+
+      /* set new gdk color */
+      bg.red = UNSCALE (rgb[RGB_RED]);
+      bg.green = UNSCALE (rgb[RGB_GREEN]);
+      bg.blue = UNSCALE (rgb[RGB_BLUE]);
+    }
 
   if (G_LIKELY (valid_palette))
     {
