@@ -184,6 +184,7 @@ terminal_gdbus_invoke_launch (gint     argc,
   GDBusConnection *connection;
   GError          *err = NULL;
   gboolean         result;
+  guint32          uid;
 
   terminal_return_val_if_fail (argc == (gint) g_strv_length (argv), FALSE);
 
@@ -191,13 +192,16 @@ terminal_gdbus_invoke_launch (gint     argc,
   if (G_UNLIKELY (connection == NULL))
     return FALSE;
 
+  /* store in an uin32 for gvariant */
+  uid = getuid ();
+
   reply = g_dbus_connection_call_sync (connection,
                                        TERMINAL_DBUS_SERVICE,
                                        TERMINAL_DBUS_PATH,
                                        TERMINAL_DBUS_INTERFACE,
                                        TERMINAL_DBUS_METHOD_LAUNCH,
                                        g_variant_new ("(u^ay^aay)",
-                                                      getuid (),
+                                                      uid,
                                                       g_getenv ("DISPLAY"),
                                                       argv),
                                        NULL,
