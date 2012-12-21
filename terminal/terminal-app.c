@@ -36,18 +36,20 @@
 #include <string.h>
 #endif
 
-#include <terminal/terminal-accel-map.h>
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-config.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
 
+#define TERMINALACCELMAP "xfce4/terminal/accels.scm"
+
 
 
 static void               terminal_app_finalize                 (GObject            *object);
 static void               terminal_app_update_accels            (TerminalApp        *app);
 static void               terminal_app_update_mnemonics         (TerminalApp        *app);
+static gboolean           terminal_app_load_accel_map           (gpointer            user_data);
 static GtkWidget         *terminal_app_create_window            (TerminalApp        *app,
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
@@ -80,10 +82,10 @@ struct _TerminalApp
 {
   GObject              __parent__;
   TerminalPreferences *preferences;
-  TerminalAccelMap    *accel_map;
   XfceSMClient        *session_client;
   gchar               *initial_menu_bar_accel;
   GSList              *windows;
+  guint                accelmap_id;
 };
 
 
@@ -130,9 +132,10 @@ terminal_app_init (TerminalApp *app)
 
   terminal_app_update_accels (app);
   terminal_app_update_mnemonics (app);
+  terminal_app_load_accel_map (app);
 
-  /* connect the accel map */
-  app->accel_map = g_object_new (TERMINAL_TYPE_ACCEL_MAP, NULL);
+  /* schedule accel map load */
+  app->accelmap_id = g_idle_add_full (G_PRIORITY_LOW, terminal_app_load_accel_map, app, NULL);
 }
 
 
@@ -142,6 +145,20 @@ terminal_app_finalize (GObject *object)
 {
   TerminalApp *app = TERMINAL_APP (object);
   GSList      *lp;
+  gchar       *path;
+
+  /* stop loading idle */
+  if (G_UNLIKELY (app->accelmap_id != 0))
+    g_source_remove (app->accelmap_id);
+
+  /* save the current accel map */
+  path = xfce_resource_save_location (XFCE_RESOURCE_CONFIG, TERMINALACCELMAP, TRUE);
+  if (G_LIKELY (path != NULL))
+    {
+      /* save the accel map */
+      gtk_accel_map_save (path);
+      g_free (path);
+    }
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
@@ -160,8 +177,6 @@ terminal_app_finalize (GObject *object)
 
   if (app->session_client != NULL)
     g_object_unref (G_OBJECT (app->session_client));
-
-  g_object_unref (G_OBJECT (app->accel_map));
 
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
@@ -185,7 +200,7 @@ terminal_app_update_accels (TerminalApp *app)
 
   gtk_settings_set_string_property (gtk_settings_get_default (),
                                     "gtk-menu-bar-accel", accel,
-                                    "Terminal");
+                                    g_get_prgname ());
 }
 
 
@@ -201,6 +216,27 @@ terminal_app_update_mnemonics (TerminalApp *app)
   g_object_set (G_OBJECT (gtk_settings_get_default ()),
                 "gtk-enable-mnemonics", !no_mnemonics,
                 NULL);
+}
+
+
+
+static gboolean
+terminal_app_load_accel_map (gpointer user_data)
+{
+  TerminalApp *app = TERMINAL_APP (user_data);
+  gchar       *path;
+
+  app->accelmap_id = 0;
+
+  path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, TERMINALACCELMAP);
+  if (G_LIKELY (path != NULL))
+    {
+      /* load the accel map */
+      gtk_accel_map_load (path);
+      g_free (path);
+    }
+
+  return FALSE;
 }
 
 

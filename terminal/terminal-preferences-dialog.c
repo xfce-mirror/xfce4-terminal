@@ -27,7 +27,6 @@
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences-dialog.h>
-#include <terminal/terminal-shortcut-editor.h>
 #include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-private.h>
 
@@ -86,7 +85,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GError           *error = NULL;
   guint             i;
   GObject          *object, *object2;
-  GtkWidget        *editor;
   gchar             palette_name[16];
   GtkFileFilter    *filter;
   gchar            *file;
@@ -177,13 +175,6 @@ error:
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_reset_word_chars), dialog);
-
-  /* add shortcuts editor */
-  editor = g_object_new (TERMINAL_TYPE_SHORTCUT_EDITOR, NULL);
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "editor-container");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  gtk_container_add (GTK_CONTAINER (object), editor);
-  gtk_widget_show (editor);
 
   /* inverted action between cursor color selections */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");

@@ -16,7 +16,6 @@ xfce4_terminal_built_sources = \
 	terminal-marshal.h
 
 xfce4_terminal_headers = \
-	terminal-accel-map.h \
 	terminal-app.h \
 	terminal-dialogs.h \
 	terminal-encoding-action.h \
@@ -27,7 +26,6 @@ xfce4_terminal_headers = \
 	terminal-preferences-dialog.h \
 	terminal-private.h \
 	terminal-screen.h \
-	terminal-shortcut-editor.h \
 	terminal-widget.h \
 	terminal-window.h \
 	terminal-window-ui.h
@@ -36,7 +34,6 @@ xfce4_terminal_SOURCES = \
 	$(xfce4_terminal_built_sources) \
 	$(xfce4_terminal_headers) \
 	main.c \
-	terminal-accel-map.c \
 	terminal-app.c \
 	terminal-dialogs.c \
 	terminal-encoding-action.c \
@@ -46,7 +43,6 @@ xfce4_terminal_SOURCES = \
 	terminal-preferences.c \
 	terminal-preferences-dialog.c \
 	terminal-screen.c \
-	terminal-shortcut-editor.c \
 	terminal-widget.c \
 	terminal-window.c
 
