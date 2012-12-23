@@ -90,7 +90,6 @@ struct _TerminalApp
   guint                accel_map_load_id;
   guint                accel_map_save_id;
   GtkAccelMap         *accel_map;
-
 };
 
 
@@ -201,7 +200,7 @@ terminal_app_update_accels (TerminalApp *app)
 
   gtk_settings_set_string_property (gtk_settings_get_default (),
                                     "gtk-menu-bar-accel", accel,
-                                    g_get_prgname ());
+                                    PACKAGE_NAME);
 }
 
 

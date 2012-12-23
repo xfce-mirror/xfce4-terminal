@@ -32,6 +32,8 @@
 
 #include <terminal/terminal-gdbus.h>
 
+
+
 static void
 colortable_sub (const gchar *bright,
                 guint        start)
@@ -68,6 +70,8 @@ colortable_sub (const gchar *bright,
     }
 }
 
+
+
 static void
 colortable (void)
 {
@@ -91,14 +95,12 @@ colortable (void)
 static void
 usage (void)
 {
-  gchar *name = g_get_prgname ();
-
   /* set locale for the translations below */
   gtk_set_locale ();
 
   g_print ("%s\n"
            "  %s [%s...]\n\n",
-           _("Usage:"), name, _("OPTION"));
+           _("Usage:"), PACKAGE_NAME, _("OPTION"));
 
   g_print ("%s:\n"
            "  -h, --help; -V, --version; --disable-server; --color-table;\n"
@@ -142,11 +144,9 @@ usage (void)
            _("icon"));
 
   g_print (_("See the %s man page for full explanation of the options above."),
-           name);
+           PACKAGE_NAME);
 
   g_print ("\n\n");
-
-  g_free (name);
 }
 
 
@@ -268,7 +268,7 @@ main (int argc, char **argv)
                 msg = error->message;
 
               /* options were not parsed succesfully, don't try that again below */
-              g_printerr ("%s: %s\n", g_get_prgname (), msg);
+              g_printerr ("%s: %s\n", PACKAGE_NAME, msg);
               g_error_free (error);
               g_strfreev (nargv);
               return EXIT_FAILURE;
@@ -309,7 +309,7 @@ main (int argc, char **argv)
   if (!terminal_app_process (app, nargv, nargc, &error))
     {
       /* parsing one of the arguments failed */
-      g_printerr ("%s: %s\n", g_get_prgname (), error->message);
+      g_printerr ("%s: %s\n", PACKAGE_NAME, error->message);
       g_error_free (error);
       g_object_unref (G_OBJECT (app));
       g_strfreev (nargv);

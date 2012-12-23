@@ -77,7 +77,7 @@ terminal_dialogs_show_about (GtkWindow *parent)
                                       "Copyright \302\251 2007-2012 Nick Schermer",
                          "license", XFCE_LICENSE_GPL,
                          "logo-icon-name", "utilities-terminal",
-                         "program-name", g_get_prgname (),
+                         "program-name", PACKAGE_NAME,
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
                          "website", "http://goodies.xfce.org/projects/applications/terminal",
