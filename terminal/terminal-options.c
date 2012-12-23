@@ -143,6 +143,7 @@ terminal_options_parse (gint       argc,
                         gchar    **argv,
                         gboolean  *show_help,
                         gboolean  *show_version,
+                        gboolean  *show_colors,
                         gboolean  *disable_server)
 {
   gint   n;
@@ -164,6 +165,8 @@ terminal_options_parse (gint       argc,
         *show_version = TRUE;
       else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL))
         *disable_server = TRUE;
+      else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL))
+        *show_colors = TRUE;
     }
 }
 

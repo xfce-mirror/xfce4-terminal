@@ -32,6 +32,60 @@
 
 #include <terminal/terminal-gdbus.h>
 
+static void
+colortable_sub (const gchar *bright,
+                guint        start)
+{
+  guint n;
+  guint fg;
+  guint bg;
+
+  for (n = start; n <= 37; n++)
+    {
+      if (n == 28)
+        fg = 0;
+      else if (n == 29)
+        fg = 1;
+      else
+        fg = n;
+
+      /* blank */
+      g_print (" %*s%2dm |",
+               2, bright, fg);
+
+      /* without background color */
+      g_print ("\e[%s%dm %*s%2dm ",
+               bright, fg, 2, bright, fg);
+
+      /* with background color */
+      for (bg = 40; bg <= 47; bg++)
+        {
+          g_print ("\e[%s%d;%dm %*s%2dm ",
+                   bright, fg, bg, 2, bright, fg);
+        }
+
+      g_print ("\e[0m\n");
+    }
+}
+
+static void
+colortable (void)
+{
+  guint bg;
+
+  /* header */
+  g_print ("%*s|%*s", 7, "", 7, "");
+  for (bg = 40; bg <= 47; bg++)
+    g_print ("   %dm ", bg);
+  g_print ("\n");
+
+  /* normal */
+  colortable_sub ("", 28);
+
+  /* bright */
+  colortable_sub ("1;", 30);
+}
+
 
 
 static void
@@ -47,7 +101,7 @@ usage (void)
            _("Usage:"), name, _("OPTION"));
 
   g_print ("%s:\n"
-           "  -h, --help; -V, --version; --disable-server;\n"
+           "  -h, --help; -V, --version; --disable-server; --color-table;\n"
            "  --default-display=%s; --default-working-directory=%s\n\n",
            _("General Options"),
            /* parameter of --default-display */
@@ -102,6 +156,7 @@ main (int argc, char **argv)
 {
   gboolean         show_help = FALSE;
   gboolean         show_version = FALSE;
+  gboolean         show_colors = FALSE;
   gboolean         disable_server = FALSE;
   GdkModifierType  modifiers;
   TerminalApp     *app;
@@ -111,7 +166,6 @@ main (int argc, char **argv)
   gchar          **nargv;
   gint             nargc;
   gint             n;
-  gchar           *name;
   const gchar     *msg;
 
   /* install required signal handlers */
@@ -128,22 +182,26 @@ main (int argc, char **argv)
 #endif
 
   /* parse some options we need in main, not the windows attrs */
-  terminal_options_parse (argc, argv, &show_help, &show_version, &disable_server);
+  terminal_options_parse (argc, argv, &show_help, &show_version, &show_colors, &disable_server);
 
   if (G_UNLIKELY (show_version))
     {
       /* set locale for the translations below */
       gtk_set_locale ();
 
-      name = g_get_prgname ();
-      g_print ("%s %s (Xfce %s)\n\n", name, PACKAGE_VERSION, xfce_version_string ());
-      g_free (name);
+      g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
       g_print ("%s\n", "Copyright (c) 2003-2012");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
       g_print ("%s\n", _("Written by Benedikt Meurer <benny@xfce.org>"));
       g_print ("%s\n\n", _("and Nick Schermer <nick@xfce.org>."));
       g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
       g_print ("\n");
+
+      return EXIT_SUCCESS;
+    }
+  else if (G_UNLIKELY (show_colors))
+    {
+      colortable ();
       return EXIT_SUCCESS;
     }
   else if (G_UNLIKELY (show_help))

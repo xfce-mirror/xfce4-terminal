@@ -63,6 +63,7 @@ void                terminal_options_parse     (gint                 argc,
                                                 gchar              **argv,
                                                 gboolean            *show_help,
                                                 gboolean            *show_version,
+                                                gboolean            *show_colors,
                                                 gboolean            *disable_server);
 
 GSList             *terminal_window_attr_parse (gint                 argc,
