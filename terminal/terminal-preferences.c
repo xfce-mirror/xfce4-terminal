@@ -423,7 +423,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("tab-activity-color",
                            "tab-activity-color",
                            "TabActivityColor",
-                           "#af0000",
+                           "#aa0000",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**

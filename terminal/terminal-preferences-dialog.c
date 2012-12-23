@@ -39,6 +39,7 @@ static void terminal_preferences_dialog_response          (GtkWidget            
 static void terminal_preferences_dialog_palette_changed   (GtkWidget                 *button,
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_palette_notify    (TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_presets_load      (TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_reset_compat      (GtkWidget                 *button,
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_reset_word_chars  (GtkWidget                 *button,
@@ -69,6 +70,14 @@ struct _TerminalPreferencesDialog
 
   gulong               bg_image_signal_id;
   gulong               palette_signal_id;
+};
+
+enum
+{
+  PRESET_COLUMN_TITLE,
+  PRESET_COLUMN_IS_SEPARATOR,
+  PRESET_COLUMN_PATH,
+  N_PRESET_COLUMNS
 };
 
 
@@ -184,6 +193,9 @@ error:
   dialog->palette_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences),
       "notify::color-palette", G_CALLBACK (terminal_preferences_dialog_palette_notify), dialog);
   terminal_preferences_dialog_palette_notify (dialog);
+
+  /* color presets */
+  terminal_preferences_dialog_presets_load (dialog);
 
   /* other properties */
   BIND_PROPERTIES ("font-name", "font-name");
@@ -365,12 +377,12 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
   if (G_LIKELY (color_str != NULL))
     {
       /* make array */
-      colors = g_strsplit (color_str, ";", 16);
+      colors = g_strsplit (color_str, ";", -1);
       g_free (color_str);
 
       /* apply values to buttons */
       if (colors != NULL)
-        for (i = 0; colors[i] != NULL; i++)
+        for (i = 0; colors[i] != NULL && i < 16; i++)
           {
             g_snprintf (name, sizeof (name), "color-palette%d", i + 1);
             obj = gtk_builder_get_object (GTK_BUILDER (dialog), name);
@@ -381,6 +393,173 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
           }
 
       g_strfreev (colors);
+    }
+}
+
+
+
+static gboolean
+terminal_preferences_dialog_presets_sepfunc (GtkTreeModel *model,
+                                             GtkTreeIter  *iter,
+                                             gpointer      user_data)
+{
+  gboolean is_separator;
+  gtk_tree_model_get (model, iter, PRESET_COLUMN_IS_SEPARATOR, &is_separator, -1);
+  return is_separator;
+}
+
+
+
+static void
+terminal_preferences_dialog_presets_changed (GtkComboBox               *combobox,
+                                             TerminalPreferencesDialog *dialog)
+{
+  GtkTreeModel *model;
+  GtkTreeIter   iter;
+  gchar        *path;
+  XfceRc       *rc;
+  guint         n;
+  const gchar  *blurb;
+  GObjectClass *gobject_class;
+  GParamSpec   *pspec;
+  const gchar  *str;
+  GValue        value = { 0, };
+  const gchar  *props[] = { "color-foreground", "color-background",
+                            "color-cursor", "color-selection",
+                            "color-palette", "tab-activity-color" };
+
+  if (!gtk_combo_box_get_active_iter (combobox, &iter))
+    return;
+
+  model = gtk_combo_box_get_model (combobox);
+  gtk_tree_model_get (model, &iter, PRESET_COLUMN_PATH, &path, -1);
+  if (path == NULL)
+    return;
+
+  /* load file */
+  rc = xfce_rc_simple_open (path, TRUE);
+  g_free (path);
+  if (G_UNLIKELY (rc == NULL))
+    return;
+
+  xfce_rc_set_group (rc, "Scheme");
+
+  gobject_class = G_OBJECT_GET_CLASS (dialog->preferences);
+  for (n = 0; n < G_N_ELEMENTS (props); n++)
+    {
+      /* lookup the property */
+      pspec = g_object_class_find_property (gobject_class, props[n]);
+      terminal_assert (pspec != NULL && G_IS_PARAM_SPEC_STRING (pspec));
+
+      /* read key from scheme */
+      blurb = g_param_spec_get_blurb (pspec);
+      str = xfce_rc_read_entry_untranslated (rc, blurb, NULL);
+
+      /* store value or use default */
+      g_value_init (&value, G_TYPE_STRING);
+      if (str != NULL)
+        g_value_set_static_string (&value, str);
+      else
+        g_param_value_set_default (pspec, &value);
+
+      /* set */
+      g_object_set_property (G_OBJECT (dialog->preferences), props[n], &value);
+      g_value_unset (&value);
+    }
+
+  xfce_rc_close (rc);
+}
+
+
+
+static void
+terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
+{
+  gchar   **presets;
+  guint     n;
+  GObject  *object;
+  guint     n_presets = 0;
+  XfceRc   *rc;
+  GtkListStore *store;
+  GtkTreeIter iter;
+  const gchar *title;
+  gchar *path;
+
+  /* load schemes */
+  presets = xfce_resource_match (XFCE_RESOURCE_DATA, "xfce4/terminal/colorschemes/*", TRUE);
+  if (G_LIKELY (presets != NULL))
+    {
+      /* create sorting store */
+      store = gtk_list_store_new (N_PRESET_COLUMNS, G_TYPE_STRING,
+                                  G_TYPE_BOOLEAN, G_TYPE_STRING);
+      gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+                                            PRESET_COLUMN_TITLE,
+                                            GTK_SORT_ASCENDING);
+
+      /* append files */
+      for (n = 0; presets[n] != NULL; n++)
+        {
+          /* open the scheme */
+          path = xfce_resource_lookup (XFCE_RESOURCE_DATA, presets[n]);
+          if (G_UNLIKELY (path == NULL))
+            continue;
+
+          rc = xfce_rc_simple_open (path, TRUE);
+          if (G_UNLIKELY (rc == NULL))
+            {
+              g_free (path);
+              continue;
+            }
+
+          xfce_rc_set_group (rc, "Scheme");
+
+          /* translated name */
+          title = xfce_rc_read_entry (rc, "Name", NULL);
+          if (G_LIKELY (title != NULL))
+            {
+              gtk_list_store_insert_with_values (store, NULL, n_presets++,
+                                                 PRESET_COLUMN_TITLE, title,
+                                                 PRESET_COLUMN_PATH, path,
+                                                 -1);
+            }
+
+          xfce_rc_close (rc);
+          g_free (path);
+        }
+
+      /* stop sorting */
+      gtk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store),
+                                            GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID,
+                                            GTK_SORT_ASCENDING);
+
+      /* default item + separator */
+      gtk_list_store_insert_with_values (store, &iter, 0,
+                                         PRESET_COLUMN_TITLE, _("Load Presets..."),
+                                         -1);
+      gtk_list_store_insert_with_values (store, NULL, 1,
+                                         PRESET_COLUMN_IS_SEPARATOR, TRUE,
+                                         -1);
+
+      /* set model */
+      object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-presets");
+      terminal_return_if_fail (GTK_IS_COMBO_BOX (object));
+      gtk_combo_box_set_model (GTK_COMBO_BOX (object), GTK_TREE_MODEL (store));
+      gtk_combo_box_set_active_iter  (GTK_COMBO_BOX (object), &iter);
+      gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (object),
+          terminal_preferences_dialog_presets_sepfunc, NULL, NULL);
+      g_signal_connect (G_OBJECT (object), "changed",
+          G_CALLBACK (terminal_preferences_dialog_presets_changed), dialog);
+      g_object_unref (store);
+    }
+
+  g_strfreev (presets);
+
+  if (n_presets == 0)
+    {
+      /* hide frame + combo */
+      object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-presets-frame");
+      terminal_return_if_fail (GTK_IS_WIDGET (object));
+      gtk_widget_hide (GTK_WIDGET (object));
     }
 }
 

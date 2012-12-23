@@ -842,13 +842,16 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   if (G_LIKELY (palette_str != NULL))
     {
-      colors = g_strsplit (palette_str, ";", 16);
+      colors = g_strsplit (palette_str, ";", -1);
       g_free (palette_str);
 
       if (colors != NULL)
         for (; colors[n] != NULL && n < 16; n++)
           if (!gdk_color_parse (colors[n], palette + n))
-            break;
+            {
+              g_warning ("Unable to parse color \"%s\".", colors[n]);
+              break;
+            }
 
       g_strfreev (colors);
       valid_palette = (n == 16);
