@@ -1,4 +1,5 @@
 SUBDIRS = \
+	colorschemes \
 	doc \
 	po \
 	terminal
