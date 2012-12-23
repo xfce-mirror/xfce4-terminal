@@ -34,10 +34,10 @@ typedef struct _TerminalEncodingAction      TerminalEncodingAction;
 #define TERMINAL_ENCODING_ACTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_ENCODING_ACTION, TerminalEncodingActionClass))
 
 GType         terminal_encoding_action_get_type    (void) G_GNUC_CONST;
-             
+
 GtkAction    *terminal_encoding_action_new         (const gchar *name,
                                                     const gchar *label) G_GNUC_MALLOC;
-             
+
 void          terminal_encoding_action_set_charset (GtkAction   *gtkaction,
                                                     const gchar *charset);
 

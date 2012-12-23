@@ -59,7 +59,7 @@ struct _TerminalEncodingActionClass
 struct _TerminalEncodingAction
 {
   GtkAction  __parent__;
-  
+
   gchar *current;
 };
 
@@ -142,7 +142,7 @@ terminal_encoding_action_class_init (TerminalEncodingActionClass *klass)
 {
   GtkActionClass *gtkaction_class;
   GObjectClass   *gobject_class;
-  
+
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_encoding_action_finalize;
 
@@ -208,15 +208,15 @@ terminal_encoding_action_activated (GtkWidget              *item,
                                     TerminalEncodingAction *encoding_action)
 {
   const gchar *charset;
-  
+
   terminal_return_if_fail (GTK_IS_CHECK_MENU_ITEM (item));
-  
+
   if (!gtk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (item)))
     return;
 
   /* menu charset or null to reset */
   charset = g_object_get_qdata (G_OBJECT (item), encoding_action_quark);
-  g_signal_emit (G_OBJECT (encoding_action), 
+  g_signal_emit (G_OBJECT (encoding_action),
                  encoding_action_signals[ENCODING_CHANGED], 0, charset);
 }
 
@@ -351,9 +351,9 @@ terminal_encoding_action_set_charset (GtkAction   *gtkaction,
                                       const gchar *charset)
 {
   TerminalEncodingAction *action = TERMINAL_ENCODING_ACTION (gtkaction);
-  
+
   terminal_return_if_fail (TERMINAL_IS_ENCODING_ACTION (action));
-  
+
   g_free (action->current);
   action->current = g_strdup (charset);
 }
@@ -376,7 +376,7 @@ terminal_encoding_model_new (const gchar *current,
   gboolean      found;
   GtkTreeIter   iter;
   gchar        *default_label;
-  
+
   store = gtk_tree_store_new (N_ENCODING_COLUMNS,
                               G_TYPE_STRING,
                               G_TYPE_BOOLEAN,
@@ -414,7 +414,7 @@ terminal_encoding_model_new (const gchar *current,
                                              ENCODING_COLUMN_TITLE, charset,
                                              ENCODING_COLUMN_VALUE, charset,
                                              -1);
-          
+
           if (!found && g_strcmp0 (charset, current) == 0)
             {
               *current_iter = iter;
