@@ -1008,14 +1008,18 @@ terminal_preferences_load (TerminalPreferences *preferences)
       for (n = 1; n <= 16; n++)
         {
           g_snprintf (color_name, sizeof (color_name), "ColorPalette%d", n);
-          string = xfce_rc_read_entry (rc, color_name, "#000000");
+          string = xfce_rc_read_entry (rc, color_name, NULL);
+          if (string == NULL)
+            break;
+
           g_string_append (array, string);
           if (n != 16)
             g_string_append_c (array, ';');
         }
 
-      /* set property */
-      g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
+      /* set property if 16 colors were found */
+      if (n >= 16)
+        g_object_set (G_OBJECT (preferences), "color-palette", array->str, NULL);
       g_string_free (array, TRUE);
     }
 
