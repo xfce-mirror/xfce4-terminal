@@ -67,7 +67,8 @@ xfce4_terminal_LDADD = \
 	$(LIBXFCE4UI_LIBS) \
 	$(TERMINAL_LIBS)
 
-
+uidir = $(datadir)/xfce4/terminal
+ui_DATA = terminal-preferences.glade
 
 ##
 ## Rules to auto-generate built sources
@@ -146,6 +147,7 @@ clean-local:
 	rm -f *.core core core.*
 
 EXTRA_DIST =\
+	$(ui_DATA) \
 	terminal-config.h.in \
 	terminal-marshal.list \
 	terminal-window-ui.xml

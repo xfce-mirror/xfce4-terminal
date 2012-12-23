@@ -33,18 +33,13 @@ xml_in_files = $(xml_in_in_files:.xml.in.in=.xml.in)
 xml_DATA = $(xml_in_files:.xml.in=.xml)
 @INTLTOOL_XML_RULE@
 
-uidir = $(datadir)/xfce4-terminal
-ui_DATA = \
-	xfce4-terminal.glade
-
 EXTRA_DIST = \
 	HACKING \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \
 	$(desktop_in_files) \
-	$(xml_in_in_files) \
-	$(ui_DATA)
+	$(xml_in_in_files)
 
 DISTCLEANFILES = \
 	intltool-extract \
