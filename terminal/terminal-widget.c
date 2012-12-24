@@ -119,7 +119,7 @@ struct _TerminalWidget
 
   /*< private >*/
   TerminalPreferences *preferences;
-  gint                *regex_tags;
+  gint                 regex_tags[G_N_ELEMENTS (regex_patterns)];
 };
 
 
@@ -178,15 +178,11 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 static void
 terminal_widget_init (TerminalWidget *widget)
 {
-  guint i;
-
-  /* initialize regex tag ids */
-  widget->regex_tags = g_new (gint, G_N_ELEMENTS (regex_patterns));
-  for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
-    widget->regex_tags[i] = -1;
-
   /* query preferences connection */
   widget->preferences = terminal_preferences_get ();
+
+  /* unset tags */
+  memset (widget->regex_tags, -1, sizeof (widget->regex_tags));
 
   /* setup Drag'n'Drop support */
   gtk_drag_dest_set (GTK_WIDGET (widget),
@@ -210,9 +206,6 @@ static void
 terminal_widget_finalize (GObject *object)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
-
-  /* free tag ids */
-  g_free (widget->regex_tags);
 
   /* disconnect the misc-highlight-urls watch */
   g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_highlight_urls), widget);
