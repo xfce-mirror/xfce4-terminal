@@ -923,6 +923,8 @@ terminal_screen_update_font (TerminalScreen *screen)
 {
   gboolean             font_allow_bold;
   gchar               *font_name;
+  glong                grid_w = 0, grid_h = 0;
+  GtkWidget           *toplevel;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -933,12 +935,21 @@ terminal_screen_update_font (TerminalScreen *screen)
                 "font-name", &font_name,
                 NULL);
 
+  if (gtk_widget_get_realized (GTK_WIDGET (screen)))
+    terminal_screen_get_size (screen, &grid_w, &grid_h);
+
   if (G_LIKELY (font_name != NULL))
     {
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
       vte_terminal_set_font_from_string (VTE_TERMINAL (screen->terminal), font_name);
-
       g_free (font_name);
+    }
+
+  /* update window geometry it required */
+  if (grid_w > 0 && grid_h > 0)
+    {
+      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+      terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
     }
 }
 
@@ -1019,9 +1030,14 @@ terminal_screen_update_misc_mouse_autohide (TerminalScreen *screen)
 static void
 terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 {
-  TerminalScrollbar scrollbar;
+  TerminalScrollbar  scrollbar;
+  glong              grid_w = 0, grid_h = 0;
+  GtkWidget         *toplevel;
 
   g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, NULL);
+
+  if (gtk_widget_get_realized (GTK_WIDGET (screen)))
+    terminal_screen_get_size (screen, &grid_w, &grid_h);
 
   switch (scrollbar)
     {
@@ -1038,6 +1054,13 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
       gtk_box_reorder_child (GTK_BOX (screen), screen->scrollbar, 1);
       gtk_widget_show (screen->scrollbar);
       break;
+    }
+
+  /* update window geometry it required */
+  if (grid_w > 0 && grid_h > 0)
+    {
+      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+      terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
     }
 }
 
@@ -1531,14 +1554,11 @@ terminal_screen_get_size (TerminalScreen *screen,
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  if (G_LIKELY (screen != NULL))
-    {
-      if (!GTK_WIDGET_REALIZED (screen->terminal))
-        gtk_widget_realize (screen->terminal);
+  if (width_chars)
+    *width_chars = vte_terminal_get_column_count (VTE_TERMINAL (screen->terminal));
 
-      *width_chars = VTE_TERMINAL (screen->terminal)->column_count;
-      *height_chars = VTE_TERMINAL (screen->terminal)->row_count;
-    }
+  if (height_chars)
+    *height_chars = vte_terminal_get_row_count (VTE_TERMINAL (screen->terminal));
 }
 
 

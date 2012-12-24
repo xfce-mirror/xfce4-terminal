@@ -75,7 +75,8 @@ static gboolean        terminal_window_state_event                   (GtkWidget 
 static void            terminal_window_style_set                     (GtkWidget              *widget,
                                                                       GtkStyle               *previous_style);
 static gboolean        terminal_window_confirm_close                 (TerminalWindow         *window);
-static void            terminal_window_set_size                      (TerminalWindow         *window);
+static void            terminal_window_size_push                     (TerminalWindow         *window);
+static gboolean        terminal_window_size_pop                      (gpointer                data);
 static void            terminal_window_set_size_force_grid           (TerminalWindow         *window,
                                                                       TerminalScreen         *screen,
                                                                       glong                   force_grid_width,
@@ -194,6 +195,10 @@ struct _TerminalWindow
   GtkWidget           *menubar;
   GtkWidget           *toolbars;
   GtkWidget           *notebook;
+
+  /* pushed size of screen */
+  glong                grid_width;
+  glong                grid_height;
 
   GtkAction           *encoding_action;
 
@@ -316,14 +321,6 @@ terminal_window_init (TerminalWindow *window)
   colormap = gdk_screen_get_rgba_colormap (screen);
   if (colormap != NULL)
     gtk_widget_set_colormap (GTK_WIDGET (window), colormap);
-
-  /* The Terminal size needs correction when the font name or the scrollbar
-   * visibility is changed.
-   */
-  g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::font-name",
-                            G_CALLBACK (terminal_window_set_size), window);
-  g_signal_connect_swapped (G_OBJECT (window->preferences), "notify::scrolling-bar",
-                            G_CALLBACK (terminal_window_set_size), window);
 
   window->action_group = gtk_action_group_new ("terminal-window");
   gtk_action_group_set_translation_domain (window->action_group,
@@ -503,11 +500,14 @@ terminal_window_style_set (GtkWidget *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
 
+  if (previous_style != NULL)
+    terminal_window_size_push (window);
+
   (*GTK_WIDGET_CLASS (terminal_window_parent_class)->style_set) (widget, previous_style);
 
-  /* schedule a resize if the theme changed */
-  if (G_UNLIKELY (previous_style != NULL))
-    terminal_window_set_size (window);
+  /* delay the pop until after size allocate */
+  if (previous_style != NULL)
+    g_idle_add (terminal_window_size_pop, window);
 }
 
 
@@ -605,17 +605,35 @@ terminal_window_confirm_close (TerminalWindow *window)
 
 
 static void
-terminal_window_set_size (TerminalWindow *window)
+terminal_window_size_push (TerminalWindow *window)
 {
-  glong grid_width, grid_height;
-
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
-  if (G_LIKELY (window->active != NULL))
+  if (window->active != NULL)
     {
-      terminal_screen_get_size (window->active, &grid_width, &grid_height);
-      terminal_window_set_size_force_grid (window, window->active, grid_width, grid_height);
+      terminal_screen_get_size (window->active,
+                                &window->grid_width,
+                                &window->grid_height);
     }
+}
+
+
+
+static gboolean
+terminal_window_size_pop (gpointer data)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (data);
+
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
+
+  if (window->active != NULL)
+    {
+      terminal_window_set_size_force_grid (window, window->active,
+                                           window->grid_width,
+                                           window->grid_height);
+    }
+
+  return FALSE;
 }
 
 
@@ -630,11 +648,11 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   /* required to get the char height/width right */
-  if (!GTK_WIDGET_REALIZED (GTK_WIDGET (screen)))
-    gtk_widget_realize (GTK_WIDGET (screen));
-
-  terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
-                                       force_grid_width, force_grid_height);
+  if (gtk_widget_get_realized (GTK_WIDGET (screen)))
+    {
+      terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
+                                           force_grid_width, force_grid_height);
+    }
 }
 
 
@@ -850,7 +868,6 @@ terminal_window_notebook_show_tabs (TerminalWindow *window)
   GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
   gboolean     show_tabs = TRUE;
   gint         npages;
-  glong        width_chars, height_chars;
 
   /* set the visibility of the tabs */
   npages = gtk_notebook_get_n_pages (notebook);
@@ -860,15 +877,14 @@ terminal_window_notebook_show_tabs (TerminalWindow *window)
 
   if (gtk_notebook_get_show_tabs (notebook) != show_tabs)
     {
-      /* get the screen size before we change the tabs */
-      terminal_screen_get_size (window->active, &width_chars, &height_chars);
+      /* store size */
+      terminal_window_size_push (window);
 
       /* show or hdie the tabs */
       gtk_notebook_set_show_tabs (notebook, show_tabs);
 
       /* update the window geometry */
-      terminal_window_set_size_force_grid (window, window->active,
-                                           width_chars, height_chars);
+      terminal_window_size_pop (window);
     }
 }
 
@@ -1397,6 +1413,8 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
 
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
 
+  terminal_window_size_push (window);
+
   if (gtk_toggle_action_get_active (action))
     {
       if (G_LIKELY (window->menubar == NULL))
@@ -1414,7 +1432,7 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
       gtk_widget_hide (window->menubar);
     }
 
-  terminal_window_set_size (window);
+  terminal_window_size_pop (window);
 }
 
 
@@ -1427,6 +1445,8 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
 
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
   terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->action_group));
+
+  terminal_window_size_push (window);
 
   if (gtk_toggle_action_get_active (action))
     {
@@ -1446,7 +1466,7 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
       window->toolbars = NULL;
     }
 
-  terminal_window_set_size (window);
+  terminal_window_size_pop (window);
 }
 
 
@@ -1741,6 +1761,7 @@ terminal_window_add (TerminalWindow *window,
   gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);
 
   /* show the terminal screen */
+  gtk_widget_realize (GTK_WIDGET (screen));
   gtk_widget_show (GTK_WIDGET (screen));
 
   /* switch to the new tab */
