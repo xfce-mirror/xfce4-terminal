@@ -121,6 +121,7 @@ static void       terminal_screen_update_encoding               (TerminalScreen 
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
 static void       terminal_screen_update_font                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
+static void       terminal_screen_update_term                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
@@ -297,6 +298,7 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::font-allow-bold", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
+                    "swapped-signal::notify::term", G_CALLBACK (terminal_screen_update_term), screen,
                     "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_screen_update_misc_cursor_blinks), screen,
                     "swapped-signal::notify::misc-cursor-shape", G_CALLBACK (terminal_screen_update_misc_cursor_shape), screen,
                     "swapped-signal::notify::misc-mouse-autohide", G_CALLBACK (terminal_screen_update_misc_mouse_autohide), screen,
@@ -316,6 +318,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_encoding (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
+  terminal_screen_update_term (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
   terminal_screen_update_misc_cursor_shape (screen);
   terminal_screen_update_misc_mouse_autohide (screen);
@@ -663,7 +666,6 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
   gchar         *display_name;
   gchar        **result;
   gchar        **p;
-  gchar         *term;
   guint          n;
   gchar        **env;
   const gchar   *value;
@@ -672,7 +674,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
   env = g_listenv ();
 
   n = g_strv_length (env);
-  result = g_new (gchar *, n + 1 + 4);
+  result = g_new (gchar *, n + 4);
 
   for (n = 0, p = env; *p != NULL; ++p)
     {
@@ -694,14 +696,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   g_strfreev (env);
 
-  result[n++] = g_strdup ("COLORTERM=Terminal");
-
-  g_object_get (G_OBJECT (screen->preferences), "term", &term, NULL);
-  if (G_LIKELY (term != NULL))
-    {
-      result[n++] = g_strdup_printf ("TERM=%s", term);
-      g_free (term);
-    }
+  result[n++] = g_strdup_printf ("COLORTERM=%s", PACKAGE_NAME);
 
   /* determine the toplevel widget */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
@@ -955,6 +950,18 @@ terminal_screen_update_misc_bell (TerminalScreen *screen)
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-bell", &bval, NULL);
   vte_terminal_set_audible_bell (VTE_TERMINAL (screen->terminal), bval);
+}
+
+
+
+static void
+terminal_screen_update_term (TerminalScreen *screen)
+{
+  gchar *term;
+  g_object_get (G_OBJECT (screen->preferences), "term", &term, NULL);
+  if (g_strcmp0 (term, vte_terminal_get_emulation (VTE_TERMINAL (screen->terminal))) != 0)
+    vte_terminal_set_emulation (VTE_TERMINAL (screen->terminal), term);
+  g_free (term);
 }
 
 
