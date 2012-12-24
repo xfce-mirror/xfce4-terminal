@@ -98,7 +98,7 @@ struct _TerminalPreferences
 {
   GObject __parent__;
 
-  GValue          *values;
+  GValue           values[N_PROPERTIES];
 
   GFile           *file;
   GFileMonitor    *monitor;
@@ -773,9 +773,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
 static void
 terminal_preferences_init (TerminalPreferences *preferences)
 {
-  /* initialize */
-  preferences->values = g_new0 (GValue, N_PROPERTIES);
-
   /* load settings */
   terminal_preferences_load (preferences);
 }
@@ -811,7 +808,6 @@ terminal_preferences_finalize (GObject *object)
   for (n = 1; n < N_PROPERTIES; ++n)
     if (G_IS_VALUE (preferences->values + n))
       g_value_unset (preferences->values + n);
-  g_free (preferences->values);
 
   (*G_OBJECT_CLASS (terminal_preferences_parent_class)->finalize) (object);
 }
