@@ -403,7 +403,7 @@ terminal_window_init (TerminalWindow *window)
   gtk_widget_show (window->notebook);
 
   /* set a unique role on each window (for session management) */
-  role = g_strdup_printf ("Terminal-%p-%d-%d", window, (gint) getpid (), (gint) time (NULL));
+  role = g_strdup_printf (PACKAGE_NAME "-%p-%d-%d", window, (gint) getpid (), (gint) time (NULL));
   gtk_window_set_role (GTK_WINDOW (window), role);
   g_free (role);
 
