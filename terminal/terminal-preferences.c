@@ -1241,22 +1241,22 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
                                       const gchar         *filename,
                                       gboolean             update_mtime)
 {
-  gchar     *path = NULL;
   GError    *error = NULL;
   GFileInfo *info;
+  GFile     *new_file;
 
-  /* get the path of the file we monitor right now */
-  if (preferences->file != NULL)
-    path = g_file_get_path (preferences->file);
+  /* get new file location */
+  new_file = g_file_new_for_path (filename);
 
   /* check if we need to start or update file monitoring */
-  if (g_strcmp0 (path, filename) != 0)
+  if (preferences->file == NULL
+      || !g_file_equal (new_file, preferences->file))
     {
       /* disconnect old monitor */
       terminal_preferences_monitor_disconnect (preferences);
 
       /* create new local file */
-      preferences->file = g_file_new_for_path (filename);
+      preferences->file = g_object_ref (new_file);
 
       /* monitor the file */
       preferences->monitor = g_file_monitor_file (preferences->file,
@@ -1280,6 +1280,8 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
         }
     }
 
+  g_object_unref (new_file);
+
   preferences->last_mtime = 0;
 
   /* store the last known mtime */
@@ -1295,9 +1297,6 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
           g_object_unref (G_OBJECT (info));
         }
     }
-
-  /* cleanup */
-  g_free (path);
 }
 
 
