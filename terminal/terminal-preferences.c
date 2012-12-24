@@ -131,7 +131,8 @@ static void     terminal_preferences_monitor_changed    (GFileMonitor        *mo
                                                          TerminalPreferences *preferences);
 static void     terminal_preferences_monitor_disconnect (TerminalPreferences *preferences);
 static void     terminal_preferences_monitor_connect    (TerminalPreferences *preferences,
-                                                         const gchar         *filename);
+                                                         const gchar         *filename,
+                                                         gboolean             update_mtime);
 
 
 
@@ -1027,7 +1028,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
 
 connect_monitor:
   /* startup file monitoring */
-  terminal_preferences_monitor_connect (preferences, filename);
+  terminal_preferences_monitor_connect (preferences, filename, FALSE);
 
   preferences->loading_in_progress = FALSE;
 
@@ -1149,7 +1150,7 @@ terminal_preferences_store_idle (gpointer user_data)
     goto error;
 
   /* check if we need to update the monitor */
-  terminal_preferences_monitor_connect (preferences, filename);
+  terminal_preferences_monitor_connect (preferences, filename, TRUE);
 
   if (G_LIKELY (FALSE))
     {
@@ -1237,7 +1238,8 @@ terminal_preferences_monitor_disconnect (TerminalPreferences *preferences)
 
 static void
 terminal_preferences_monitor_connect (TerminalPreferences *preferences,
-                                      const gchar         *filename)
+                                      const gchar         *filename,
+                                      gboolean             update_mtime)
 {
   gchar     *path = NULL;
   GError    *error = NULL;
@@ -1278,9 +1280,11 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
         }
     }
 
-  /* store the last known mtime */
   preferences->last_mtime = 0;
-  if (G_LIKELY (preferences->file != NULL))
+
+  /* store the last known mtime */
+  if (preferences->file != NULL
+      && update_mtime)
     {
       info = g_file_query_info (preferences->file, G_FILE_ATTRIBUTE_TIME_MODIFIED,
                                 G_FILE_QUERY_INFO_NONE, NULL, NULL);
