@@ -45,19 +45,19 @@ void         terminal_screen_set_custom_title             (TerminalScreen *scree
                                                            const gchar    *title);
 
 void         terminal_screen_get_size                     (TerminalScreen *screen,
-                                                           gint           *width_chars,
-                                                           gint           *height_chars);
+                                                           glong          *width_chars,
+                                                           glong          *height_chars);
 void         terminal_screen_set_size                     (TerminalScreen *screen,
-                                                           gint            width_chars,
-                                                           gint            height_chars);
+                                                           glong           width_chars,
+                                                           glong           height_chars);
 
 void         terminal_screen_set_window_geometry_hints    (TerminalScreen *screen,
                                                            GtkWindow      *window);
 
 void         terminal_screen_force_resize_window          (TerminalScreen *screen,
                                                            GtkWindow      *window,
-                                                           gint            force_columns,
-                                                           gint            force_rows);
+                                                           glong           force_columns,
+                                                           glong           force_rows);
 
 gchar       *terminal_screen_get_title                    (TerminalScreen *screen);
 

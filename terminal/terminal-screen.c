@@ -1170,8 +1170,8 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   GtkWidget *toplevel;
   gint       xpad = 0;
   gint       ypad = 0;
-  gint       grid_width;
-  gint       grid_height;
+  glong      grid_width;
+  glong      grid_height;
   GtkBorder *border = NULL;
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
@@ -1526,8 +1526,8 @@ terminal_screen_set_custom_title (TerminalScreen *screen,
  **/
 void
 terminal_screen_get_size (TerminalScreen *screen,
-                          gint           *width_chars,
-                          gint           *height_chars)
+                          glong          *width_chars,
+                          glong          *height_chars)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1547,8 +1547,8 @@ terminal_screen_get_size (TerminalScreen *screen,
  **/
 void
 terminal_screen_set_size (TerminalScreen *screen,
-                          gint            width_chars,
-                          gint            height_chars)
+                          glong           width_chars,
+                          glong           height_chars)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1612,15 +1612,15 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 void
 terminal_screen_force_resize_window (TerminalScreen *screen,
                                      GtkWindow      *window,
-                                     gint            force_columns,
-                                     gint            force_rows)
+                                     glong           force_columns,
+                                     glong           force_rows)
 {
   GtkRequisition terminal_requisition;
   GtkRequisition window_requisition;
   gint           width;
   gint           height;
-  gint           columns;
-  gint           rows;
+  glong          columns;
+  glong          rows;
   gint           xpad = 0;
   gint           ypad = 0;
   GtkBorder     *border = NULL;

@@ -78,8 +78,8 @@ static gboolean        terminal_window_confirm_close                 (TerminalWi
 static void            terminal_window_set_size                      (TerminalWindow         *window);
 static void            terminal_window_set_size_force_grid           (TerminalWindow         *window,
                                                                       TerminalScreen         *screen,
-                                                                      gint                    force_grid_width,
-                                                                      gint                    force_grid_height);
+                                                                      glong                   force_grid_width,
+                                                                      glong                   force_grid_height);
 static gboolean        terminal_window_accel_activate                (GtkAccelGroup          *accel_group,
                                                                       GObject                *acceleratable,
                                                                       guint                   accel_key,
@@ -607,7 +607,7 @@ terminal_window_confirm_close (TerminalWindow *window)
 static void
 terminal_window_set_size (TerminalWindow *window)
 {
-  gint grid_width, grid_height;
+  glong grid_width, grid_height;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
@@ -623,9 +623,12 @@ terminal_window_set_size (TerminalWindow *window)
 static void
 terminal_window_set_size_force_grid (TerminalWindow *window,
                                      TerminalScreen *screen,
-                                     gint            force_grid_width,
-                                     gint            force_grid_height)
+                                     glong           force_grid_width,
+                                     glong           force_grid_height)
 {
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
   /* required to get the char height/width right */
   if (!GTK_WIDGET_REALIZED (GTK_WIDGET (screen)))
     gtk_widget_realize (GTK_WIDGET (screen));
@@ -847,7 +850,7 @@ terminal_window_notebook_show_tabs (TerminalWindow *window)
   GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
   gboolean     show_tabs = TRUE;
   gint         npages;
-  gint         width_chars, height_chars;
+  glong        width_chars, height_chars;
 
   /* set the visibility of the tabs */
   npages = gtk_notebook_get_n_pages (notebook);
@@ -878,7 +881,7 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
                                      TerminalWindow *window)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (child);
-  gint            w, h;
+  glong           w, h;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -1784,15 +1787,15 @@ terminal_window_get_restart_command (TerminalWindow *window)
   GdkScreen   *gscreen;
   GList       *children, *lp;
   GSList      *result = NULL;
-  gint         w;
-  gint         h;
+  glong        w;
+  glong        h;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
 
   if (G_LIKELY (window->active != NULL))
     {
       terminal_screen_get_size (window->active, &w, &h);
-      result = g_slist_prepend (result, g_strdup_printf ("--geometry=%dx%d", w, h));
+      result = g_slist_prepend (result, g_strdup_printf ("--geometry=%ldx%ld", w, h));
     }
 
   gscreen = gtk_window_get_screen (GTK_WINDOW (window));

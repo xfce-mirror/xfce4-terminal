@@ -317,7 +317,7 @@ terminal_app_new_window (TerminalWindow *window,
   TerminalScreen     *terminal;
   GdkScreen          *screen;
   gboolean            inherit_geometry;
-  gint                w, h;
+  glong               w, h;
 
   screen = gtk_window_get_screen (GTK_WINDOW (window));
 
@@ -337,7 +337,7 @@ terminal_app_new_window (TerminalWindow *window,
           /* let the new window inherit the geometry from its parent */
           g_free (win_attr->geometry);
           terminal_screen_get_size (terminal, &w, &h);
-          win_attr->geometry = g_strdup_printf ("%dx%d", w, h);
+          win_attr->geometry = g_strdup_printf ("%ldx%ld", w, h);
         }
     }
 
