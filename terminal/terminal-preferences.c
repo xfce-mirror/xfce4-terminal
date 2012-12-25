@@ -56,6 +56,8 @@ enum
   PROP_COLOR_CURSOR,
   PROP_COLOR_SELECTION,
   PROP_COLOR_SELECTION_USE_DEFAULT,
+  PROP_COLOR_BOLD,
+  PROP_COLOR_BOLD_USE_DEFAULT,
   PROP_COLOR_PALETTE,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
@@ -389,6 +391,26 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("color-selection-use-default",
                             "color-selection-use-default",
                             "ColorSelectionUseDefault",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:color-bold:
+   **/
+  preferences_props[PROP_COLOR_BOLD] =
+      g_param_spec_string ("color-bold",
+                           "color-bold",
+                           "ColorBold",
+                           "#ffffff",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:color-bold-use-default:
+   **/
+  preferences_props[PROP_COLOR_BOLD_USE_DEFAULT] =
+      g_param_spec_boolean ("color-bold-use-default",
+                            "color-bold-use-default",
+                            "ColorBoldUseDefault",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

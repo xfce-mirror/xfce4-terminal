@@ -294,6 +294,8 @@ terminal_screen_init (TerminalScreen *screen)
                     "swapped-signal::notify::color-cursor", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-selection", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-selection-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::color-bold", G_CALLBACK (terminal_screen_update_colors), screen,
+                    "swapped-signal::notify::color-bold-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::color-palette", G_CALLBACK (terminal_screen_update_colors), screen,
                     "swapped-signal::notify::font-allow-bold", G_CALLBACK (terminal_screen_update_font), screen,
                     "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
@@ -816,7 +818,9 @@ terminal_screen_update_colors (TerminalScreen *screen)
   GdkColor   fg;
   GdkColor   cursor;
   GdkColor   selection;
-  gboolean   use_default;
+  GdkColor   bold;
+  gboolean   selection_use_default;
+  gboolean   bold_use_default;
   guint      n = 0;
   gboolean   has_bg;
   gboolean   has_fg;
@@ -831,7 +835,8 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   g_object_get (screen->preferences,
                 "color-palette", &palette_str,
-                "color-selection-use-default", &use_default,
+                "color-selection-use-default", &selection_use_default,
+                "color-bold-use-default", &bold_use_default,
                 "color-background-vary", &vary_bg,
                 NULL);
 
@@ -854,7 +859,6 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
   has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
-  has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
 
   /* we pick a random hue value to keep readability */
   if (vary_bg && has_bg)
@@ -909,11 +913,21 @@ terminal_screen_update_colors (TerminalScreen *screen)
     }
 
   vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
+
+  /* cursor color */
+  has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
   vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
 
-  if (!use_default)
-    use_default = !terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
-  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), use_default ? NULL : &selection);
+  /* selection color */
+  if (!selection_use_default)
+    selection_use_default = !terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
+  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
+
+  /* bold color */
+  if (!bold_use_default)
+    bold_use_default = !terminal_preferences_get_color (screen->preferences, "color-bold", &bold);
+  if (!bold_use_default || has_fg)
+    vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? &fg : &bold);
 }
 
 

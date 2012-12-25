@@ -127,7 +127,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "font-allow-bold",
                                        "misc-menubar-default", "misc-toolbars-default",
-                                       "misc-borders-default", "color-selection-use-default",
+                                       "misc-borders-default",
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
                                        "background-mode", "background-image-style",
@@ -135,7 +135,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-cursor",
                                        "color-background", "tab-activity-color",
-                                       "color-selection"
+                                       "color-selection", "color-bold"
                                      };
 
   dialog->preferences = terminal_preferences_get ();
@@ -218,18 +218,23 @@ error:
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_reset_word_chars), dialog);
 
-  /* inverted action between cursor color selections */
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");
+  /* inverted custom colors and set sensitivity */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-custom");
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-use-default",
                           G_OBJECT (object), "active",
-                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
-
-  /* sensitivity for custom selection color */
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-use-color");
-  terminal_return_if_fail (G_IS_OBJECT (object));
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection");
-  terminal_return_if_fail (G_IS_OBJECT (object2));
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_SYNC_CREATE);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-bold-custom");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold-use-default",
+                          G_OBJECT (object), "active",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-bold");
   g_object_bind_property (G_OBJECT (object), "active",
                           G_OBJECT (object2), "sensitive",
                           G_BINDING_SYNC_CREATE);
