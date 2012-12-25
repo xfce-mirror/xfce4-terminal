@@ -186,20 +186,15 @@ terminal_app_finalize (GObject *object)
 static void
 terminal_app_update_accels (TerminalApp *app)
 {
-  const gchar *accel;
-  gboolean     shortcuts_no_menukey;
+  gboolean no_menukey;
 
   g_object_get (G_OBJECT (app->preferences),
-                "shortcuts-no-menukey", &shortcuts_no_menukey,
+                "shortcuts-no-menukey", &no_menukey,
                 NULL);
 
-  if (shortcuts_no_menukey)
-    accel = "<Shift><Control><Mod1><Mod2><Mod3><Mod4><Mod5>F10";
-  else
-    accel = app->initial_menu_bar_accel;
-
   gtk_settings_set_string_property (gtk_settings_get_default (),
-                                    "gtk-menu-bar-accel", accel,
+                                    "gtk-menu-bar-accel",
+                                    no_menukey ? "" : app->initial_menu_bar_accel,
                                     PACKAGE_NAME);
 }
 
