@@ -914,6 +914,9 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
   g_signal_connect (G_OBJECT (screen), "drag-data-received",
       G_CALLBACK (terminal_window_notebook_drag_data_received), window);
 
+  /* release to the grid size applies */
+  gtk_widget_realize (GTK_WIDGET (screen));
+
   if (G_LIKELY (window->active != NULL))
     {
       /* match the size of the active screen */
