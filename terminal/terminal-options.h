@@ -41,7 +41,7 @@ struct _TerminalTabAttr
   gchar    **command;
   gchar     *directory;
   gchar     *title;
-  gboolean   hold;
+  guint      hold : 1;
 };
 
 struct _TerminalWindowAttr
@@ -52,11 +52,12 @@ struct _TerminalWindowAttr
   gchar               *role;
   gchar               *startup_id;
   gchar               *icon;
-  gboolean             fullscreen;
+  guint                fullscreen : 1;
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
   TerminalVisibility   toolbars;
-  gboolean             maximize;
+  guint                maximize : 1;
+  guint                reuse_last_window : 1;
 };
 
 void                terminal_options_parse     (gint                 argc,
@@ -68,6 +69,7 @@ void                terminal_options_parse     (gint                 argc,
 
 GSList             *terminal_window_attr_parse (gint                 argc,
                                                 gchar              **argv,
+                                                gboolean             can_reuse_tab,
                                                 GError             **error);
 
 TerminalWindowAttr *terminal_window_attr_new   (void);

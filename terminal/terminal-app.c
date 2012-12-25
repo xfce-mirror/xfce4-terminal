@@ -527,36 +527,48 @@ terminal_app_open_window (TerminalApp        *app,
   GdkScreen       *screen;
   gchar           *geometry;
   GSList          *lp;
+  gboolean         reuse_window = FALSE;
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (attr != NULL);
 
-  window = terminal_app_create_window (app,
-                                       attr->fullscreen,
-                                       attr->menubar,
-                                       attr->borders,
-                                       attr->toolbars);
-
-  if (attr->role != NULL)
-    gtk_window_set_role (GTK_WINDOW (window), attr->role);
-  if (attr->startup_id != NULL)
-    gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);
-  if (attr->maximize)
-    gtk_window_maximize (GTK_WINDOW (window));
-
-  if (attr->icon != NULL)
+  if (attr->reuse_last_window
+      && app->windows != NULL)
     {
-      if (g_path_is_absolute (attr->icon))
-        gtk_window_set_icon_from_file (GTK_WINDOW (window), attr->icon, NULL);
-      else
-        gtk_window_set_icon_name (GTK_WINDOW (window), attr->icon);
+      /* open the tabs in an existing window */
+      window = app->windows->data;
+      reuse_window = TRUE;
     }
-
-  screen = terminal_app_find_screen (attr->display);
-  if (G_LIKELY (screen != NULL))
+  else
     {
-      gtk_window_set_screen (GTK_WINDOW (window), screen);
-      g_object_unref (G_OBJECT (screen));
+      /* create new window */
+      window = terminal_app_create_window (app,
+                                           attr->fullscreen,
+                                           attr->menubar,
+                                           attr->borders,
+                                           attr->toolbars);
+
+      if (attr->role != NULL)
+        gtk_window_set_role (GTK_WINDOW (window), attr->role);
+      if (attr->startup_id != NULL)
+        gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);
+      if (attr->maximize)
+        gtk_window_maximize (GTK_WINDOW (window));
+
+      if (attr->icon != NULL)
+        {
+          if (g_path_is_absolute (attr->icon))
+            gtk_window_set_icon_from_file (GTK_WINDOW (window), attr->icon, NULL);
+          else
+            gtk_window_set_icon_name (GTK_WINDOW (window), attr->icon);
+        }
+
+      screen = terminal_app_find_screen (attr->display);
+      if (G_LIKELY (screen != NULL))
+        {
+          gtk_window_set_screen (GTK_WINDOW (window), screen);
+          g_object_unref (G_OBJECT (screen));
+        }
     }
 
   for (lp = attr->tabs; lp != NULL; lp = lp->next)
@@ -576,6 +588,10 @@ terminal_app_open_window (TerminalApp        *app,
 
       terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
     }
+
+  /* don't apply other attributes to teh window when reusing */
+  if (reuse_window)
+    return;
 
   /* set the window geometry, this can only be set after one of the tabs
    * has been added, because vte is the geometry widget, so atleast one
@@ -627,7 +643,7 @@ terminal_app_process (TerminalApp  *app,
 {
   GSList *attrs, *lp;
 
-  attrs = terminal_window_attr_parse (argc, argv, error);
+  attrs = terminal_window_attr_parse (argc, argv, app->windows != NULL, error);
   if (G_UNLIKELY (attrs == NULL))
     return FALSE;
 

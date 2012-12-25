@@ -183,6 +183,7 @@ terminal_options_parse (gint       argc,
 GSList *
 terminal_window_attr_parse (gint              argc,
                             gchar           **argv,
+                            gboolean          can_reuse_tab,
                             GError          **error)
 {
   TerminalWindowAttr *win_attr;
@@ -401,11 +402,24 @@ terminal_window_attr_parse (gint              argc,
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
-          tab_attr = g_slice_new0 (TerminalTabAttr);
-          win_attr->tabs = g_slist_append (win_attr->tabs, tab_attr);
+          if (n == 4 && can_reuse_tab)
+            {
+              /* tab is the first user option, reuse existing window */
+              win_attr->reuse_last_window = TRUE;
+            }
+          else
+            {
+              /* add new tab */
+              tab_attr = g_slice_new0 (TerminalTabAttr);
+              win_attr->tabs = g_slist_append (win_attr->tabs, tab_attr);
+            }
         }
       else if (terminal_option_cmp ("window", 0, argc, argv, &n, NULL))
         {
+          /* multiple windows, don't reuse */
+          win_attr->reuse_last_window = FALSE;
+
+          /* setup new window */
           win_attr = terminal_window_attr_new ();
           tab_attr = win_attr->tabs->data;
           attrs = g_slist_append (attrs, win_attr);
@@ -445,6 +459,7 @@ unknown_option:
             win_attr->display = g_strdup (default_display);
         }
     }
+
   g_free (default_directory);
   g_free (default_display);
 
