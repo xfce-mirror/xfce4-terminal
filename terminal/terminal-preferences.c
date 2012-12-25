@@ -1113,11 +1113,10 @@ terminal_preferences_store_idle (gpointer user_data)
 {
   TerminalPreferences  *preferences = TERMINAL_PREFERENCES (user_data);
   const gchar          *blurb;
-  GParamSpec          **pspecs, *pspec;
+  GParamSpec           *pspec;
   XfceRc               *rc = NULL;
   GValue               *value;
   GValue                src = { 0, };
-  guint                 nspecs;
   guint                 n;
   gchar                *filename;
 
@@ -1135,18 +1134,17 @@ terminal_preferences_store_idle (gpointer user_data)
 
   xfce_rc_set_group (rc, "Configuration");
 
-  pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (preferences), &nspecs);
-  for (n = 0; n < nspecs; ++n)
+  for (n = PROP_0 + 1; n < N_PROPERTIES; ++n)
     {
-      pspec = pspecs[n];
-      value = preferences->values + (n + 1);
+      pspec = preferences_props[n];
+      value = preferences->values + n;
       blurb = g_param_spec_get_blurb (pspec);
 
-      if (G_IS_VALUE (value) && !g_param_value_defaults (pspec, value))
+      if (G_IS_VALUE (value)
+          && !g_param_value_defaults (pspec, value))
         {
-          /* store the value non-default value */
+          /* always save non-default values */
           terminal_preferences_store_value (value, blurb, rc);
-
           continue;
         }
 
@@ -1164,7 +1162,6 @@ terminal_preferences_store_idle (gpointer user_data)
           xfce_rc_delete_entry (rc, blurb, FALSE);
         }
     }
-  g_free (pspecs);
 
   /* check if verything has been written */
   xfce_rc_flush (rc);
