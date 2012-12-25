@@ -158,7 +158,6 @@ main (int argc, char **argv)
   gboolean         show_version = FALSE;
   gboolean         show_colors = FALSE;
   gboolean         disable_server = FALSE;
-  GdkModifierType  modifiers;
   TerminalApp     *app;
   const gchar     *startup_id;
   const gchar     *display;
@@ -287,10 +286,6 @@ main (int argc, char **argv)
 
   /* initialize Gtk+ */
   gtk_init (&argc, &argv);
-
-  /* Make GtkAccelGroup accept Mod5 (Windows Key) as modifier */
-  modifiers = gtk_accelerator_get_default_mod_mask ();
-  gtk_accelerator_set_default_mod_mask (modifiers | GDK_MOD4_MASK);
 
   /* set default window icon */
   gtk_window_set_default_icon_name ("utilities-terminal");
