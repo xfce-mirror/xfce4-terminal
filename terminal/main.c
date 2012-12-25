@@ -174,7 +174,7 @@ main (int argc, char **argv)
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
   g_set_application_name (_("Xfce Terminal"));
 
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
   /* Do NOT remove this line for now, If something doesn't work,
    * fix your code instead!
    */
@@ -252,7 +252,7 @@ main (int argc, char **argv)
               /* don't try to establish another service here */
               disable_server = TRUE;
 
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
               g_debug ("%s mismatch when invoking remote terminal: %s",
                        error->code == TERMINAL_ERROR_USER_MISMATCH ? "User" : "Display",
                        error->message);
@@ -273,7 +273,7 @@ main (int argc, char **argv)
               g_strfreev (nargv);
               return EXIT_FAILURE;
             }
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
           else if (error != NULL)
             {
               g_debug ("D-Bus reply error: %s (%s: %d)", error->message,

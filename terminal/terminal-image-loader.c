@@ -202,7 +202,7 @@ terminal_image_loader_pixbuf_destroyed (gpointer data,
         return;
       }
 
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
   g_warning ("Pixbuf %p was freed from loader cache %p, "
              "this should not happend", pixbuf, loader);
   terminal_assert_not_reached ();
@@ -484,7 +484,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   if (G_UNLIKELY (loader->pixbuf == NULL || width <= 1 || height <= 1))
     return NULL;
 
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
   g_debug ("Image Loader Memory Status: %d images in valid "
            "cache, %d in invalid cache",
            g_slist_length (loader->cache),

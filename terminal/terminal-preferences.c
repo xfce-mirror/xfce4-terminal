@@ -879,7 +879,7 @@ terminal_preferences_set_property (GObject      *object,
 
 
 
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
 static void
 terminal_preferences_check_blurb (GParamSpec *spec)
 {
@@ -961,7 +961,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
       pspec = preferences_props[n];
       name = g_param_spec_get_name (pspec);
 
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
       terminal_preferences_check_blurb (pspec);
 #endif
 
@@ -1265,7 +1265,7 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
       if (G_LIKELY (preferences->monitor != NULL))
         {
           /* connect signal */
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
           g_debug ("Monitoring \"%s\" for changes.", filename);
 #endif
           g_signal_connect (G_OBJECT (preferences->monitor), "changed",

@@ -36,7 +36,7 @@ G_BEGIN_DECLS
   } G_END_DECLS
 
 /* support macros for debugging */
-#ifndef NDEBUG
+#ifdef G_ENABLE_DEBUG
 #define terminal_assert(expr)                  g_assert (expr)
 #define terminal_assert_not_reached()          g_assert_not_reached ()
 #define terminal_return_if_fail(expr)          g_return_if_fail (expr)
@@ -49,7 +49,7 @@ G_BEGIN_DECLS
 #endif
 
 /* avoid trivial g_value_get_*() function calls */
-#ifdef NDEBUG
+#ifdef G_ENABLE_DEBUG
 #define g_value_get_boolean(v)  (((const GValue *) (v))->data[0].v_int)
 #define g_value_get_char(v)     (((const GValue *) (v))->data[0].v_int)
 #define g_value_get_uchar(v)    (((const GValue *) (v))->data[0].v_uint)
