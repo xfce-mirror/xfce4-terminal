@@ -68,7 +68,7 @@ xfce4_terminal_LDADD = \
 	$(TERMINAL_LIBS)
 
 uidir = $(datadir)/xfce4/terminal
-ui_DATA = terminal-preferences.glade
+ui_DATA = terminal-preferences.ui
 
 ##
 ## Rules to auto-generate built sources
@@ -90,6 +90,7 @@ DISTCLEANFILES = \
 	stamp-terminal-enum-types.h \
 	stamp-terminal-marshal.h \
 	terminal-window-ui.h \
+	terminal-preferences.ui \
 	$(Terminal_built_sources)
 
 BUILT_SOURCES = \
@@ -98,6 +99,9 @@ BUILT_SOURCES = \
 
 terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
 	$(AM_V_GEN) xdt-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
+
+terminal-preferences.ui: $(srcdir)/terminal-preferences.glade Makefile
+	$(AM_V_GEN) $(XMLLINT) --nonet --noblanks $< > $@ || cat $< > $@
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
@@ -150,6 +154,7 @@ EXTRA_DIST =\
 	$(ui_DATA) \
 	terminal-config.h.in \
 	terminal-marshal.list \
-	terminal-window-ui.xml
+	terminal-window-ui.xml \
+	terminal-preferences.glade
 
 # vi:set ts=8 sw=8 noet ai nocindent:
