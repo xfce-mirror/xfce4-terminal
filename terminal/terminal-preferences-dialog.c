@@ -423,15 +423,14 @@ terminal_preferences_dialog_presets_changed (GtkComboBox               *combobox
   GtkTreeIter   iter;
   gchar        *path;
   XfceRc       *rc;
+  GParamSpec  **pspecs, *pspec;
+  guint         nspecs;
   guint         n;
   const gchar  *blurb;
-  GObjectClass *gobject_class;
-  GParamSpec   *pspec;
+  const gchar  *name;
   const gchar  *str;
-  GValue        value = { 0, };
-  const gchar  *props[] = { "color-foreground", "color-background",
-                            "color-cursor", "color-selection",
-                            "color-palette", "tab-activity-color" };
+  GValue        src = { 0, };
+  GValue        dst = { 0, };
 
   if (!gtk_combo_box_get_active_iter (combobox, &iter))
     return;
@@ -449,29 +448,55 @@ terminal_preferences_dialog_presets_changed (GtkComboBox               *combobox
 
   xfce_rc_set_group (rc, "Scheme");
 
-  gobject_class = G_OBJECT_GET_CLASS (dialog->preferences);
-  for (n = 0; n < G_N_ELEMENTS (props); n++)
-    {
-      /* lookup the property */
-      pspec = g_object_class_find_property (gobject_class, props[n]);
-      terminal_assert (pspec != NULL && G_IS_PARAM_SPEC_STRING (pspec));
+  g_value_init (&src, G_TYPE_STRING);
 
-      /* read key from scheme */
+  /* walk all properties and look for items in the scheme */
+  pspecs = g_object_class_list_properties (G_OBJECT_GET_CLASS (dialog->preferences), &nspecs);
+  for (n = 0; n < nspecs; ++n)
+    {
+      pspec = pspecs[n];
+
+      /* get color keys */
       blurb = g_param_spec_get_blurb (pspec);
+      if (strstr (blurb, "Color") == NULL)
+        continue;
+
+      /* read value */
+      name = g_param_spec_get_name (pspec);
       str = xfce_rc_read_entry_untranslated (rc, blurb, NULL);
 
-      /* store value or use default */
-      g_value_init (&value, G_TYPE_STRING);
-      if (str != NULL)
-        g_value_set_static_string (&value, str);
+      if (str == NULL || *str == '\0')
+        {
+          /* reset to the default value */
+          g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
+          g_param_value_set_default (pspec, &dst);
+          g_object_set_property (G_OBJECT (dialog->preferences), name, &dst);
+          g_value_unset (&dst);
+        }
       else
-        g_param_value_set_default (pspec, &value);
+        {
+          g_value_set_static_string (&src, str);
 
-      /* set */
-      g_object_set_property (G_OBJECT (dialog->preferences), props[n], &value);
-      g_value_unset (&value);
+          if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
+            {
+              /* set the string property */
+              g_object_set_property (G_OBJECT (dialog->preferences), name, &src);
+            }
+          else
+            {
+              /* transform value */
+              g_value_init (&dst, G_PARAM_SPEC_VALUE_TYPE (pspec));
+              if (G_LIKELY (g_value_transform (&src, &dst)))
+                g_object_set_property (G_OBJECT (dialog->preferences), name, &dst);
+              else
+                g_warning ("Unable to convert scheme property \"%s\"", name);
+              g_value_unset (&dst);
+            }
+        }
     }
 
+  g_free (pspecs);
+  g_value_unset (&src);
   xfce_rc_close (rc);
 }
 
