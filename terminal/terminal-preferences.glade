@@ -129,7 +129,7 @@
     </data>
   </object>
   <object class="GtkAdjustment" id="scrolling-line">
-    <property name="lower">48</property>
+    <property name="lower">1</property>
     <property name="upper">5242880</property>
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
@@ -1398,367 +1398,341 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox10">
+                          <object class="GtkTable" id="table4">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
-                            <property name="spacing">6</property>
+                            <property name="n_rows">2</property>
+                            <property name="n_columns">8</property>
+                            <property name="homogeneous">True</property>
                             <child>
-                              <object class="GtkLabel" id="label20">
+                              <object class="GtkColorButton" id="color-palette1">
+                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Terminal applications have this color palette available to them.</property>
-                                <property name="use_markup">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Black</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette1-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette2">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Red</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette2-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">0</property>
+                                <property name="left_attach">1</property>
+                                <property name="right_attach">2</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTable" id="table4">
+                              <object class="GtkColorButton" id="color-palette12">
+                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="n_rows">2</property>
-                                <property name="n_columns">8</property>
-                                <property name="homogeneous">True</property>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette1">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Black</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette1-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Yellow</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette12-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
                                   </object>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette2">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Red</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette2-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">1</property>
-                                    <property name="right_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette12">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Yellow</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette12-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">3</property>
-                                    <property name="right_attach">4</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette9">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Dark Gray</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette9-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette10">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Light Red</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette10-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">1</property>
-                                    <property name="right_attach">2</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette11">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Light Green</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette11-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">2</property>
-                                    <property name="right_attach">3</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette3">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Green</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette3-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">2</property>
-                                    <property name="right_attach">3</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette4">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Brown / Yellow</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette4-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">3</property>
-                                    <property name="right_attach">4</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette5">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Blue</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette5-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">4</property>
-                                    <property name="right_attach">5</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette13">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Light Blue</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette13-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">4</property>
-                                    <property name="right_attach">5</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette14">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Light Magenta</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette14-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">5</property>
-                                    <property name="right_attach">6</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette6">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Magenta</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette6-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">5</property>
-                                    <property name="right_attach">6</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette7">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Cyan</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette7-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">6</property>
-                                    <property name="right_attach">7</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette15">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Light Cyan</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette15-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">6</property>
-                                    <property name="right_attach">7</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette16">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">White</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette16-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">7</property>
-                                    <property name="right_attach">8</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkColorButton" id="color-palette8">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="tooltip_text" translatable="yes">Light Gray</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-palette8-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">7</property>
-                                    <property name="right_attach">8</property>
-                                  </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
-                                <property name="fill">True</property>
-                                <property name="position">1</property>
+                                <property name="left_attach">3</property>
+                                <property name="right_attach">4</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette9">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Dark Gray</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette9-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette10">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Light Red</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette10-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="right_attach">2</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette11">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Light Green</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette11-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">2</property>
+                                <property name="right_attach">3</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette3">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Green</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette3-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">2</property>
+                                <property name="right_attach">3</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette4">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Brown / Yellow</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette4-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">3</property>
+                                <property name="right_attach">4</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette5">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Blue</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette5-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">4</property>
+                                <property name="right_attach">5</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette13">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Light Blue</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette13-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">4</property>
+                                <property name="right_attach">5</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette14">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Light Magenta</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette14-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">5</property>
+                                <property name="right_attach">6</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette6">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Magenta</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette6-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">5</property>
+                                <property name="right_attach">6</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette7">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Cyan</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette7-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">6</property>
+                                <property name="right_attach">7</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette15">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Light Cyan</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette15-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">6</property>
+                                <property name="right_attach">7</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette16">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">White</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette16-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">7</property>
+                                <property name="right_attach">8</property>
+                                <property name="top_attach">1</property>
+                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkColorButton" id="color-palette8">
+                                <property name="use_action_appearance">False</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Light Gray</property>
+                                <property name="color">#000000000000</property>
+                                <child internal-child="accessible">
+                                  <object class="AtkObject" id="color-palette8-atkobject">
+                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                                  </object>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">7</property>
+                                <property name="right_attach">8</property>
                               </packing>
                             </child>
                           </object>
