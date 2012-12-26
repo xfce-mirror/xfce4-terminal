@@ -194,7 +194,9 @@ struct _TerminalWindow
 
   GtkActionGroup      *action_group;
   GtkUIManager        *ui_manager;
+
   guint                gomenu_merge_id;
+  GSList              *gomenu_actions;
 
   GtkWidget           *menubar;
   GtkWidget           *toolbar;
@@ -460,6 +462,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->ui_manager));
   g_object_unref (G_OBJECT (window->encoding_action));
+  g_slist_free (window->gomenu_actions);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -764,9 +767,8 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
   GtkWidget      *page;
   GSList         *group = NULL;
   GtkRadioAction *radio_action;
-  GtkAction      *action;
-  gchar           name[32];
-  gchar          *path;
+  gchar           name[100];
+  GSList         *lp;
 
   if (window->gomenu_merge_id != 0)
     {
@@ -774,18 +776,16 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
       gtk_ui_manager_remove_ui (window->ui_manager, window->gomenu_merge_id);
 
       /* drop all the old accels from the action group */
-      for (n = 1; n < 100 /* arbitrary */; n++)
-        {
-          g_snprintf (name, sizeof (name), "accel-switch-to-tab%d", n);
-          action = gtk_action_group_get_action (window->action_group, name);
-          if (G_UNLIKELY (action == NULL))
-            break;
-          gtk_action_group_remove_action (window->action_group, action);
-        }
+      for (lp = window->gomenu_actions; lp != NULL; lp = lp->next)
+        gtk_action_group_remove_action (window->action_group, GTK_ACTION (lp->data));
+
+      g_slist_free (window->gomenu_actions);
+      window->gomenu_actions = NULL;
     }
 
   /* create a new merge id */
   window->gomenu_merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
+  terminal_assert (window->gomenu_actions == NULL);
 
   /* walk the tabs */
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
@@ -793,7 +793,7 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
     {
       page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n);
 
-      g_snprintf (name, sizeof (name), "accel-switch-to-tab%d", n + 1);
+      g_snprintf (name, sizeof (name), "goto-tab-%d", n + 1);
 
       /* create action */
       radio_action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
@@ -806,23 +806,23 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
       gtk_action_group_add_action (window->action_group, GTK_ACTION (radio_action));
       g_signal_connect (G_OBJECT (radio_action), "activate",
           G_CALLBACK (terminal_window_action_goto_tab), window->notebook);
-
-      /* set an accelerator if the user definde one */
-      if (g_object_class_find_property (G_OBJECT_GET_CLASS (window->preferences), name) != NULL)
-        {
-          path = g_strconcat ("<Actions>/terminal-window/", name + 6, NULL);
-          gtk_action_set_accel_path (GTK_ACTION (radio_action), path);
-          g_free (path);
-        }
+      gtk_action_set_sensitive (GTK_ACTION (radio_action), TRUE);
 
       /* connect action to the page so we can active it when a tab is switched */
       g_object_set_qdata_full (G_OBJECT (page), gomenu_action_quark,
-                               radio_action, (GDestroyNotify) g_object_unref);
+                               radio_action, g_object_unref);
 
-      /* notify the ui about the new action */
+      /* add action in the menu */
       gtk_ui_manager_add_ui (window->ui_manager, window->gomenu_merge_id,
                              "/main-menu/go-menu/placeholder-tab-items",
                              name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+
+      /* set an accelerator path */
+      g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", n + 1);
+      gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
+
+      /* store */
+      window->gomenu_actions = g_slist_prepend (window->gomenu_actions, radio_action);
     }
 }
 
