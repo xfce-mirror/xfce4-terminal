@@ -38,7 +38,8 @@ typedef struct _TerminalWindow      TerminalWindow;
 
 GType           terminal_window_get_type             (void) G_GNUC_CONST;
 
-GtkWidget      *terminal_window_new                  (gboolean            fullscreen,
+GtkWidget      *terminal_window_new                  (const gchar        *role,
+                                                      gboolean            fullscreen,
                                                       TerminalVisibility  menubar,
                                                       TerminalVisibility  borders,
                                                       TerminalVisibility  toolbar);

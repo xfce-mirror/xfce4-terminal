@@ -329,7 +329,6 @@ terminal_window_init (TerminalWindow *window)
   GtkAction      *action;
   GtkWidget      *vbox;
   gboolean        always_show_tabs;
-  gchar          *role;
   GtkRcStyle     *style;
   GdkScreen      *screen;
   GdkColormap    *colormap;
@@ -418,11 +417,6 @@ terminal_window_init (TerminalWindow *window)
 
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
   gtk_widget_show (window->notebook);
-
-  /* set a unique role on each window (for session management) */
-  role = g_strdup_printf (PACKAGE_NAME "-%p-%d-%d", window, (gint) getpid (), (gint) time (NULL));
-  gtk_window_set_role (GTK_WINDOW (window), role);
-  g_free (role);
 
   /* create encoding action */
   window->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
@@ -1747,7 +1741,8 @@ terminal_window_action_about (GtkAction      *action,
  * Return value:
  **/
 GtkWidget*
-terminal_window_new (gboolean           fullscreen,
+terminal_window_new (const gchar       *role,
+                     gboolean           fullscreen,
                      TerminalVisibility menubar,
                      TerminalVisibility borders,
                      TerminalVisibility toolbar)
@@ -1758,7 +1753,7 @@ terminal_window_new (gboolean           fullscreen,
   gboolean        show_toolbar;
   gboolean        show_borders;
 
-  window = g_object_new (TERMINAL_TYPE_WINDOW, NULL);
+  window = g_object_new (TERMINAL_TYPE_WINDOW, "role", role, NULL);
 
   /* read default preferences */
   g_object_get (G_OBJECT (window->preferences),

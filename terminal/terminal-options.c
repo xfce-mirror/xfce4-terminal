@@ -349,6 +349,21 @@ terminal_window_attr_parse (gint              argc,
               win_attr->role = g_strdup (s);
             }
         }
+      else if (terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, &s))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--sm-client-id\" requires specifying "
+                             "the unique session id as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              g_free (win_attr->sm_client_id);
+              win_attr->sm_client_id = g_strdup (s);
+            }
+        }
       else if (terminal_option_cmp ("startup-id", 0, argc, argv, &n, &s))
         {
           if (G_UNLIKELY (s == NULL))
@@ -426,7 +441,6 @@ terminal_window_attr_parse (gint              argc,
       else if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL)
                || terminal_option_cmp ("version", 'V', argc, argv, &n, NULL)
                || terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
-               || terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, NULL)
                || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL)
                || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL))
         {
@@ -512,6 +526,7 @@ terminal_window_attr_free (TerminalWindowAttr *attr)
   g_slist_foreach (attr->tabs, (GFunc) terminal_tab_attr_free, NULL);
   g_slist_free (attr->tabs);
   g_free (attr->startup_id);
+  g_free (attr->sm_client_id);
   g_free (attr->geometry);
   g_free (attr->display);
   g_free (attr->role);

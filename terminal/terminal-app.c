@@ -52,6 +52,7 @@ static void               terminal_app_update_mnemonics         (TerminalApp    
 static gboolean           terminal_app_accel_map_load           (gpointer            user_data);
 static gboolean           terminal_app_accel_map_save           (gpointer            user_data);
 static GtkWidget         *terminal_app_create_window            (TerminalApp        *app,
+                                                                 const gchar        *role,
                                                                  gboolean            fullscreen,
                                                                  TerminalVisibility  menubar,
                                                                  TerminalVisibility  borders,
@@ -281,14 +282,29 @@ terminal_app_accel_map_load (gpointer user_data)
 
 static GtkWidget*
 terminal_app_create_window (TerminalApp       *app,
+                            const gchar       *role,
                             gboolean           fullscreen,
                             TerminalVisibility menubar,
                             TerminalVisibility borders,
                             TerminalVisibility toolbar)
 {
   GtkWidget *window;
+  gchar     *new_role = NULL;
+  GtkWindowGroup *group;
 
-  window = terminal_window_new (fullscreen, menubar, borders, toolbar);
+  if (role == NULL)
+    {
+      /* create a new window role */
+      new_role =  g_strdup_printf (PACKAGE_NAME "-%u-%d", (guint) time (NULL), g_random_int ());
+      role = new_role;
+    }
+
+  window = terminal_window_new (role, fullscreen, menubar, borders, toolbar);
+
+  group = gtk_window_group_new ();
+  gtk_window_group_add_window (group, GTK_WINDOW (window));
+  g_object_weak_ref (G_OBJECT (window), (GWeakNotify) g_object_unref, group);
+
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (terminal_app_window_destroyed), app);
   g_signal_connect (G_OBJECT (window), "new-window",
@@ -296,6 +312,8 @@ terminal_app_create_window (TerminalApp       *app,
   g_signal_connect (G_OBJECT (window), "new-window-with-screen",
                     G_CALLBACK (terminal_app_new_window_with_terminal), app);
   app->windows = g_slist_prepend (app->windows, window);
+
+  g_free (new_role);
 
   return window;
 }
@@ -357,7 +375,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
   terminal_return_if_fail (TERMINAL_IS_APP (app));
 
-  window = terminal_app_create_window (app, FALSE,
+  window = terminal_app_create_window (app, NULL, FALSE,
                                        TERMINAL_VISIBILITY_DEFAULT,
                                        TERMINAL_VISIBILITY_DEFAULT,
                                        TERMINAL_VISIBILITY_DEFAULT);
@@ -427,7 +445,6 @@ terminal_app_save_yourself (XfceSMClient *client,
   if (oargv != NULL)
     {
       terminal_assert (oargv[0] != NULL);
-
       argv[0] = g_strdup (oargv[0]);
     }
   else
@@ -516,7 +533,7 @@ static void
 terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
 {
-  TerminalTabAttr *tab_attr;
+  TerminalTabAttr *tab_attr = NULL;
   GtkWidget       *window;
   GtkWidget       *terminal;
   GdkScreen       *screen;
@@ -538,13 +555,12 @@ terminal_app_open_window (TerminalApp        *app,
     {
       /* create new window */
       window = terminal_app_create_window (app,
+                                           attr->role,
                                            attr->fullscreen,
                                            attr->menubar,
                                            attr->borders,
                                            attr->toolbar);
 
-      if (attr->role != NULL)
-        gtk_window_set_role (GTK_WINDOW (window), attr->role);
       if (attr->startup_id != NULL)
         gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);
       if (attr->maximize)
@@ -605,18 +621,6 @@ terminal_app_open_window (TerminalApp        *app,
 
   /* show the window */
   gtk_widget_show (window);
-
-  /* register with session manager on first display
-   * opened by Terminal. This is to ensure that we
-   * get restarted by only _one_ session manager (the
-   * one running on the first display).
-   */
-  if (G_UNLIKELY (app->session_client == NULL))
-    {
-      app->session_client = xfce_sm_client_get ();
-      g_signal_connect (G_OBJECT (app->session_client), "save-state",
-                        G_CALLBACK (terminal_app_save_yourself), app);
-    }
 }
 
 
@@ -636,7 +640,10 @@ terminal_app_process (TerminalApp  *app,
                       gint          argc,
                       GError      **error)
 {
-  GSList *attrs, *lp;
+  GSList             *attrs, *lp;
+  gchar              *sm_client_id = NULL;
+  TerminalWindowAttr *attr;
+  GError             *err = NULL;
 
   attrs = terminal_window_attr_parse (argc, argv, app->windows != NULL, error);
   if (G_UNLIKELY (attrs == NULL))
@@ -644,11 +651,40 @@ terminal_app_process (TerminalApp  *app,
 
   for (lp = attrs; lp != NULL; lp = lp->next)
     {
-      terminal_app_open_window (app, lp->data);
-      terminal_window_attr_free (lp->data);
+      attr = lp->data;
+
+      /* take first sm client id */
+      if (sm_client_id == NULL && attr->sm_client_id != NULL)
+        sm_client_id = g_strdup (attr->sm_client_id);
+
+      terminal_app_open_window (app, attr);
+      terminal_window_attr_free (attr);
+    }
+
+  if (G_LIKELY (app->session_client == NULL))
+    {
+      app->session_client = xfce_sm_client_get_full (XFCE_SM_CLIENT_RESTART_NORMAL,
+                                                     XFCE_SM_CLIENT_PRIORITY_DEFAULT,
+                                                     sm_client_id,
+                                                     xfce_get_homedir (),
+                                                     NULL,
+                                                     PACKAGE_NAME ".desktop");
+      if (xfce_sm_client_connect (app->session_client, &err))
+        {
+          g_signal_connect (G_OBJECT (app->session_client), "save-state",
+                            G_CALLBACK (terminal_app_save_yourself), app);
+          g_signal_connect (G_OBJECT (app->session_client), "quit",
+                            G_CALLBACK (gtk_main_quit), NULL);
+        }
+      else
+        {
+          g_printerr ("Failed to connect to session manager: %s\n", err->message);
+          g_error_free (err);
+        }
     }
 
   g_slist_free (attrs);
+  g_free (sm_client_id);
 
   return TRUE;
 }

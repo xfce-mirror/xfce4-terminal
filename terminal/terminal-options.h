@@ -51,6 +51,7 @@ struct _TerminalWindowAttr
   gchar               *geometry;
   gchar               *role;
   gchar               *startup_id;
+  gchar               *sm_client_id;
   gchar               *icon;
   guint                fullscreen : 1;
   TerminalVisibility   menubar;
