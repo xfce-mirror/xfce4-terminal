@@ -154,7 +154,7 @@ static void            terminal_window_action_prefs                  (GtkAction 
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_show_menubar           (GtkToggleAction        *action,
                                                                       TerminalWindow         *window);
-static void            terminal_window_action_show_toolbars          (GtkToggleAction        *action,
+static void            terminal_window_action_show_toolbar           (GtkToggleAction        *action,
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_show_borders           (GtkToggleAction        *action,
                                                                       TerminalWindow         *window);
@@ -197,7 +197,7 @@ struct _TerminalWindow
   guint                gomenu_merge_id;
 
   GtkWidget           *menubar;
-  GtkWidget           *toolbars;
+  GtkWidget           *toolbar;
   GtkWidget           *notebook;
 
   /* pushed size of screen */
@@ -207,6 +207,15 @@ struct _TerminalWindow
   GtkAction           *encoding_action;
 
   TerminalScreen      *active;
+
+  /* cached actions to avoid lookups */
+  GtkAction           *action_detah_tab;
+  GtkAction           *action_close_tab;
+  GtkAction           *action_prev_tab;
+  GtkAction           *action_next_tab;
+  GtkAction           *action_move_tab_left;
+  GtkAction           *action_move_tab_right;
+  GtkAction           *action_copy;
 };
 
 
@@ -251,7 +260,7 @@ static const GtkActionEntry action_entries[] =
 static const GtkToggleActionEntry toggle_action_entries[] =
 {
   { "show-menubar", NULL, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
-  { "show-toolbars", NULL, N_ ("Show _Toolbars"), NULL, N_ ("Show/hide the toolbars"), G_CALLBACK (terminal_window_action_show_toolbars), FALSE, },
+  { "show-toolbar", NULL, N_ ("Show _Toolbar"), NULL, N_ ("Show/hide the toolbar"), G_CALLBACK (terminal_window_action_show_toolbar), FALSE, },
   { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
   { "fullscreen", GTK_STOCK_FULLSCREEN, N_ ("_Fullscreen"), "F11", N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
 };
@@ -415,6 +424,15 @@ terminal_window_init (TerminalWindow *window)
   gtk_action_group_add_action (window->action_group, window->encoding_action);
   g_signal_connect (G_OBJECT (window->encoding_action), "encoding-changed",
       G_CALLBACK (terminal_window_action_set_encoding), window);
+
+  /* cache action pointers */
+  window->action_detah_tab = gtk_action_group_get_action (window->action_group, "detach-tab");
+  window->action_close_tab = gtk_action_group_get_action (window->action_group, "close-tab");
+  window->action_prev_tab = gtk_action_group_get_action (window->action_group, "prev-tab");
+  window->action_next_tab = gtk_action_group_get_action (window->action_group, "next-tab");
+  window->action_move_tab_left = gtk_action_group_get_action (window->action_group, "move-tab-left");
+  window->action_move_tab_right = gtk_action_group_get_action (window->action_group, "move-tab-right");
+  window->action_copy = gtk_action_group_get_action (window->action_group, "copy");
 }
 
 
@@ -704,14 +722,12 @@ terminal_window_update_actions (TerminalWindow *window)
 
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
-g_message (".");
+
   /* "Detach Tab" is only sensitive if we have atleast two pages */
-  action = gtk_action_group_get_action (window->action_group, "detach-tab");
-  gtk_action_set_sensitive (action, (n_pages > 1));
+  gtk_action_set_sensitive (window->action_detah_tab, (n_pages > 1));
 
   /* ... same for the "Close Tab" action */
-  action = gtk_action_group_get_action (window->action_group, "close-tab");
-  gtk_action_set_sensitive (action, (n_pages > 1));
+  gtk_action_set_sensitive (window->action_close_tab, (n_pages > 1));
 
   /* update the actions for the current terminal screen */
  if (G_LIKELY (window->active != NULL))
@@ -722,20 +738,16 @@ g_message (".");
                     "misc-cycle-tabs", &cycle_tabs,
                     NULL);
 
-      action = gtk_action_group_get_action (window->action_group, "prev-tab");
-      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 1) || (page_num > 0));
+      gtk_action_set_sensitive (window->action_prev_tab,
+                                (cycle_tabs && n_pages > 1) || (page_num > 0));
+      gtk_action_set_sensitive (window->action_next_tab,
+                                (cycle_tabs && n_pages > 1 ) || (page_num < n_pages - 1));
 
-      action = gtk_action_group_get_action (window->action_group, "next-tab");
-      gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 1 ) || (page_num < n_pages - 1));
+      gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
+      gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
-      action = gtk_action_group_get_action (window->action_group, "move-tab-left");
-      gtk_action_set_sensitive (action, n_pages > 1);
-
-      action = gtk_action_group_get_action (window->action_group, "move-tab-right");
-      gtk_action_set_sensitive (action, n_pages > 1);
-
-      action = gtk_action_group_get_action (window->action_group, "copy");
-      gtk_action_set_sensitive (action, terminal_screen_has_selection (window->active));
+      gtk_action_set_sensitive (window->action_copy,
+                                terminal_screen_has_selection (window->active));
 
       /* update the "Go" menu */
       action = g_object_get_qdata (G_OBJECT (window->active), gomenu_action_quark);
@@ -1453,8 +1465,8 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
 
 
 static void
-terminal_window_action_show_toolbars (GtkToggleAction *action,
-                                      TerminalWindow  *window)
+terminal_window_action_show_toolbar (GtkToggleAction *action,
+                                     TerminalWindow  *window)
 {
   GtkWidget *vbox;
 
@@ -1465,20 +1477,20 @@ terminal_window_action_show_toolbars (GtkToggleAction *action,
 
   if (gtk_toggle_action_get_active (action))
     {
-      if (window->toolbars == NULL)
+      if (window->toolbar == NULL)
         {
           vbox = gtk_bin_get_child (GTK_BIN (window));
-          window->toolbars = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
-          gtk_box_pack_start (GTK_BOX (vbox), window->toolbars, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (vbox), window->toolbars, window->menubar != NULL ? 1 : 0);
+          window->toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
+          gtk_box_pack_start (GTK_BOX (vbox), window->toolbar, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (vbox), window->toolbar, window->menubar != NULL ? 1 : 0);
         }
 
-      gtk_widget_show (window->toolbars);
+      gtk_widget_show (window->toolbar);
     }
-  else if (window->toolbars != NULL)
+  else if (window->toolbar != NULL)
     {
-      gtk_widget_destroy (window->toolbars);
-      window->toolbars = NULL;
+      gtk_widget_destroy (window->toolbar);
+      window->toolbar = NULL;
     }
 
   terminal_window_size_pop (window);
@@ -1736,7 +1748,7 @@ terminal_window_action_about (GtkAction      *action,
  * @fullscreen: Whether to set the window to fullscreen.
  * @menubar   : Visibility setting for the menubar.
  * @borders   : Visibility setting for the window borders.
- * @toolbars  : Visibility setting for the toolbars.
+ * @toolbar   : Visibility setting for the toolbar.
  *
  * Return value:
  **/
@@ -1744,13 +1756,22 @@ GtkWidget*
 terminal_window_new (gboolean           fullscreen,
                      TerminalVisibility menubar,
                      TerminalVisibility borders,
-                     TerminalVisibility toolbars)
+                     TerminalVisibility toolbar)
 {
   TerminalWindow *window;
   GtkAction      *action;
-  gboolean        setting;
+  gboolean        show_menubar;
+  gboolean        show_toolbar;
+  gboolean        show_borders;
 
   window = g_object_new (TERMINAL_TYPE_WINDOW, NULL);
+
+  /* read default preferences */
+  g_object_get (G_OBJECT (window->preferences),
+                "misc-menubar-default", &show_menubar,
+                "misc-toolbar-default", &show_toolbar,
+                "misc-borders-default", &show_borders,
+                NULL);
 
   /* setup full screen */
   action = gtk_action_group_get_action (window->action_group, "fullscreen");
@@ -1758,28 +1779,22 @@ terminal_window_new (gboolean           fullscreen,
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
   /* setup menubar visibility */
-  if (G_LIKELY (menubar == TERMINAL_VISIBILITY_DEFAULT))
-    g_object_get (G_OBJECT (window->preferences), "misc-menubar-default", &setting, NULL);
-  else
-    setting = (menubar == TERMINAL_VISIBILITY_SHOW);
+  if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
+    show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
   action = gtk_action_group_get_action (window->action_group, "show-menubar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
 
-  /* setup toolbars visibility */
-  if (G_LIKELY (toolbars == TERMINAL_VISIBILITY_DEFAULT))
-    g_object_get (G_OBJECT (window->preferences), "misc-toolbars-default", &setting, NULL);
-  else
-    setting = (toolbars == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "show-toolbars");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
+  /* setup toolbar visibility */
+  if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
+    show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
+  action = gtk_action_group_get_action (window->action_group, "show-toolbar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
 
   /* setup borders visibility */
-  if (G_LIKELY (borders == TERMINAL_VISIBILITY_DEFAULT))
-    g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &setting, NULL);
-  else
-    setting = (borders == TERMINAL_VISIBILITY_SHOW);
+  if (G_LIKELY (borders != TERMINAL_VISIBILITY_DEFAULT))
+    show_borders = (borders == TERMINAL_VISIBILITY_SHOW);
   action = gtk_action_group_get_action (window->action_group, "show-borders");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), setting);
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_borders);
 
   return GTK_WIDGET (window);
 }
@@ -1897,11 +1912,11 @@ terminal_window_get_restart_command (TerminalWindow *window)
   else
     result = g_slist_prepend (result, g_strdup ("--hide-borders"));
 
-  action = gtk_action_group_get_action (window->action_group, "show-toolbars");
+  action = gtk_action_group_get_action (window->action_group, "show-toolbar");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-    result = g_slist_prepend (result, g_strdup ("--show-toolbars"));
+    result = g_slist_prepend (result, g_strdup ("--show-toolbar"));
   else
-    result = g_slist_prepend (result, g_strdup ("--hide-toolbars"));
+    result = g_slist_prepend (result, g_strdup ("--hide-toolbar"));
 
   /* set restart commands of the tabs */
   children = gtk_container_get_children (GTK_CONTAINER (window->notebook));

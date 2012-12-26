@@ -73,7 +73,7 @@ enum
   PROP_MISC_INHERIT_GEOMETRY,
   PROP_MISC_MENUBAR_DEFAULT,
   PROP_MISC_MOUSE_AUTOHIDE,
-  PROP_MISC_TOOLBARS_DEFAULT,
+  PROP_MISC_TOOLBAR_DEFAULT,
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
   PROP_MISC_TAB_CLOSE_BUTTONS,
@@ -601,12 +601,12 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:misc-toolbars-default:
+   * TerminalPreferences:misc-toolbar-default:
    **/
-  preferences_props[PROP_MISC_TOOLBARS_DEFAULT] =
-      g_param_spec_boolean ("misc-toolbars-default",
-                            "misc-toolbars-default",
-                            "MiscToolbarsDefault",
+  preferences_props[PROP_MISC_TOOLBAR_DEFAULT] =
+      g_param_spec_boolean ("misc-toolbar-default",
+                            "misc-toolbar-default",
+                            "MiscToolbarDefault",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

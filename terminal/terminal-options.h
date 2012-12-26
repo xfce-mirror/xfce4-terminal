@@ -55,7 +55,7 @@ struct _TerminalWindowAttr
   guint                fullscreen : 1;
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
-  TerminalVisibility   toolbars;
+  TerminalVisibility   toolbar;
   guint                maximize : 1;
   guint                reuse_last_window : 1;
 };

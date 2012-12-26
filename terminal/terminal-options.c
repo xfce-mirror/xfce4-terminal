@@ -395,9 +395,9 @@ terminal_window_attr_parse (gint              argc,
         {
           win_attr->borders = visible;
         }
-      else if (terminal_option_show_hide_cmp ("toolbars", argc, argv, &n, &visible))
+      else if (terminal_option_show_hide_cmp ("toolbar", argc, argv, &n, &visible))
         {
-          win_attr->toolbars = visible;
+          win_attr->toolbar = visible;
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
@@ -490,7 +490,7 @@ terminal_window_attr_new (void)
   win_attr->fullscreen = FALSE;
   win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
-  win_attr->toolbars = TERMINAL_VISIBILITY_DEFAULT;
+  win_attr->toolbar = TERMINAL_VISIBILITY_DEFAULT;
 
   tab_attr = g_slice_new0 (TerminalTabAttr);
   win_attr->tabs = g_slist_prepend (NULL, tab_attr);

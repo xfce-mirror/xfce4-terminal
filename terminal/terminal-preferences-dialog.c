@@ -126,7 +126,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "command-update-records", "scrolling-single-line",
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "font-allow-bold",
-                                       "misc-menubar-default", "misc-toolbars-default",
+                                       "misc-menubar-default", "misc-toolbar-default",
                                        "misc-borders-default",
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
