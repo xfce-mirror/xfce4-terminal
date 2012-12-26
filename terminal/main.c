@@ -25,7 +25,12 @@
 #ifdef HAVE_SIGNAL_H
 #include <signal.h>
 #endif
+#ifdef HAVE_LOCALE_H
+#include <locale.h>
+#endif
+#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
+#endif
 
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-private.h>
@@ -171,6 +176,11 @@ main (int argc, char **argv)
   signal (SIGPIPE, SIG_IGN);
 
   xfce_textdomain (GETTEXT_PACKAGE, PACKAGE_LOCALE_DIR, "UTF-8");
+
+  /* initializes internationalization support */
+  if (setlocale (LC_ALL, "") == NULL)
+    g_warning ("Locale not supported by C library.");
+
   g_set_application_name (_("Xfce Terminal"));
 
 #ifdef G_ENABLE_DEBUG
@@ -185,9 +195,6 @@ main (int argc, char **argv)
 
   if (G_UNLIKELY (show_version))
     {
-      /* set locale for the translations below */
-      gtk_set_locale ();
-
       g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
       g_print ("%s\n", "Copyright (c) 2003-2012");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
