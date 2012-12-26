@@ -184,6 +184,11 @@ static void            terminal_window_action_about                  (GtkAction 
 
 
 
+struct _TerminalWindowClass
+{
+  GtkWindowClass __parent__;
+};
+
 struct _TerminalWindow
 {
   GtkWindow            __parent__;
@@ -746,6 +751,7 @@ terminal_window_update_actions (TerminalWindow *window)
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
     }
 }
+
 
 
 static void

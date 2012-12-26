@@ -36,11 +36,6 @@ G_BEGIN_DECLS
 typedef struct _TerminalWindowClass TerminalWindowClass;
 typedef struct _TerminalWindow      TerminalWindow;
 
-struct _TerminalWindowClass
-{
-  GtkWindowClass __parent__;
-};
-
 GType           terminal_window_get_type             (void) G_GNUC_CONST;
 
 GtkWidget      *terminal_window_new                  (gboolean            fullscreen,
