@@ -1,20 +1,17 @@
 
 
 presets_in_files = 							\
-	black-on-white.scheme.in					\
-	dark-pastels.scheme.in						\
-	green-on-black.scheme.in					\
-	solarized-dark.scheme.in					\
-	tango.scheme.in							\
-	white-on-black.scheme.in					\
-	xterm.scheme.in
+	black-on-white.theme.in						\
+	dark-pastels.theme.in						\
+	green-on-black.theme.in						\
+	solarized-dark.theme.in						\
+	tango.theme.in							\
+	white-on-black.theme.in						\
+	xterm.theme.in
 
 presetsdir = $(datadir)/xfce4/terminal/colorschemes
-presets_DATA = $(presets_in_files:.scheme.in=.scheme)
-
-%.scheme: %.scheme.in
-	$(AM_V_GEN) $(MKDIR_P) $(dir $@); LC_ALL=C $(INTLTOOL_MERGE) -d -u -c \
-	$(top_builddir)/po/.intltool-merge-cache $(top_srcdir)/po $< $@
+presets_DATA = $(presets_in_files:.theme.in=.theme)
+@INTLTOOL_THEME_RULE@
 
 EXTRA_DIST = $(presets_in_files)
 
