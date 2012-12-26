@@ -66,7 +66,6 @@ enum
 
 
 
-static void            terminal_window_dispose                       (GObject                *object);
 static void            terminal_window_finalize                      (GObject                *object);
 static gboolean        terminal_window_delete_event                  (GtkWidget              *widget,
                                                                       GdkEventAny            *event);
@@ -280,7 +279,6 @@ terminal_window_class_init (TerminalWindowClass *klass)
   GObjectClass   *gobject_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->dispose = terminal_window_dispose;
   gobject_class->finalize = terminal_window_finalize;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
@@ -435,20 +433,6 @@ terminal_window_init (TerminalWindow *window)
   window->action_move_tab_left = gtk_action_group_get_action (window->action_group, "move-tab-left");
   window->action_move_tab_right = gtk_action_group_get_action (window->action_group, "move-tab-right");
   window->action_copy = gtk_action_group_get_action (window->action_group, "copy");
-}
-
-
-
-static void
-terminal_window_dispose (GObject *object)
-{
-  TerminalWindow *window = TERMINAL_WINDOW (object);
-
-  g_signal_handlers_disconnect_matched (G_OBJECT (window->preferences),
-                                        G_SIGNAL_MATCH_DATA,
-                                        0, 0, NULL, NULL, window);
-
-  (*G_OBJECT_CLASS (terminal_window_parent_class)->dispose) (object);
 }
 
 
