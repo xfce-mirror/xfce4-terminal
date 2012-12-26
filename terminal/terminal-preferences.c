@@ -371,7 +371,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-cursor",
                            "color-cursor",
                            "ColorCursor",
-                           "#00ff00",
+                           "#00aa00",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
