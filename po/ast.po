@@ -3,182 +3,221 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2012-12-26 10:01+0100\n"
 "PO-Revision-Date: 2009-09-02 12:55+0100\n"
 "Last-Translator: astur <malditoastur@gmail.com>\n"
 "Language-Team: Asturian <alministradores@softastur.org>\n"
+"Language: ast\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "Usage:"
 msgstr "Usu:"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "OPTION"
 msgstr "OPCIÓN"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:113
 msgid "General Options"
 msgstr "Opciones Xenerales"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:115 ../terminal/main.c:141
 #, fuzzy
 msgid "display"
 msgstr "Nun s'amuesa"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:117 ../terminal/main.c:132
 msgid "directory"
 msgstr ""
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:121
 msgid "Window or Tab Separators"
 msgstr "Ventana o Separtadores de Tabulador"
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:126
 msgid "Tab Options"
 msgstr "Opciones de Tabulador"
 
 #. parameter of --command
-#: ../terminal/main.c:72
+#: ../terminal/main.c:128
 #, fuzzy
 msgid "command"
 msgstr "<b>Comandu</b>"
 
 #. parameter of --title
-#: ../terminal/main.c:74
+#: ../terminal/main.c:130
 #, fuzzy
 msgid "title"
 msgstr "Títulu"
 
-#: ../terminal/main.c:83
+#: ../terminal/main.c:139
 msgid "Window Options"
 msgstr "Opciones de Ventana"
 
 #. parameter of --geometry
-#: ../terminal/main.c:87
+#: ../terminal/main.c:143
 msgid "geometry"
 msgstr ""
 
 #. parameter of --role
-#: ../terminal/main.c:89
+#: ../terminal/main.c:145
 msgid "role"
 msgstr ""
 
 #. parameter of --startup-id
-#: ../terminal/main.c:91
+#: ../terminal/main.c:147
 #, fuzzy
 msgid "string"
 msgstr "Curiáu"
 
 #. parameter of --icon
-#: ../terminal/main.c:93
+#: ../terminal/main.c:149
 #, fuzzy
 msgid "icon"
 msgstr "Aición"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
-msgid "Terminal"
-msgstr "Terminal"
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
+#, fuzzy
+msgid "Xfce Terminal"
+msgstr "Abrir terminal"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
+#: ../terminal/main.c:200
+msgid "The Xfce development team. All rights reserved."
 msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. Tolos drechos reservaos.\n"
-"\n"
-"Escrito por Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Compiláu con Gtk+-%d.%d.%d, ejecutándose con Gtk+-%d.%d.%d.\n"
-"\n"
-"Por favor, envíe los informes de fallu a <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:201
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr ""
+
+#: ../terminal/main.c:202
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr ""
+
+#: ../terminal/main.c:203
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../terminal/main.c:306
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Imposible rexistrar el serviciu del terminal: %s\n"
 
-#: ../terminal/terminal-app.c:516
+#: ../terminal/terminal-app.c:601
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Cadena de xeometría non válida \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-gdbus.c:81
 msgid "User id mismatch"
 msgstr "Nun concasa l'id d'usuariu"
 
-#: ../terminal/terminal-dbus.c:133
-#, c-format
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "Bus de mensaxes D-BUS desconectáu. Finando...\n"
+#: ../terminal/terminal-gdbus.c:87
+#, fuzzy
+msgid "Display mismatch"
+msgstr "Nun concasa l'id d'usuariu"
 
-#: ../terminal/terminal-dbus.c:195
-#, c-format
-msgid "Unable to register object %s"
-msgstr "Imposible rexistrar oxetu %s"
-
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:74
+#: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Emulador de terminal pa Xfce"
 
-#: ../terminal/terminal-dialogs.c:102
+#: ../terminal/terminal-dialogs.c:81
 msgid "translator-credits"
 msgstr "Arcipiescu <xandru.martino@gmail.com>"
 
-#: ../terminal/terminal-dialogs.c:105
+#: ../terminal/terminal-dialogs.c:84
 msgid "Visit Terminal website"
 msgstr "Visitar páxina de Terminal"
 
-#: ../terminal/terminal-dialogs.c:215
+#: ../terminal/terminal-encoding-action.c:71
+msgid "Western European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:72
+msgid "Central European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:73
+msgid "Baltic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:74
+msgid "South-Eastern Europe"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:75
+msgid "Turkish"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:76
+msgid "Cyrillic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:77
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:78
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:79
+msgid "Korean"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:80
+msgid "Japanese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:81
+msgid "Greek"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:82
+msgid "Arabic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Hebrew"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Thai"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:85
+msgid "Vietnamese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Unicode"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Other"
+msgstr ""
+
+#. action to reset to the default
+#: ../terminal/terminal-encoding-action.c:255
+#: ../terminal/terminal-encoding-action.c:387
 #, c-format
-msgid "The %s user manual is not installed on your computer"
+msgid "Default (%s)"
 msgstr ""
 
-#: ../terminal/terminal-dialogs.c:218
-#, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
-
-#: ../terminal/terminal-dialogs.c:220
-msgid "User manual is missing"
-msgstr ""
-
-#: ../terminal/terminal-dialogs.c:222
-msgid "_Read Online"
-msgstr ""
-
-#. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
-msgid "Failed to open the documentation browser"
-msgstr "Fallu al abrir el visor de documentación"
-
-#: ../terminal/terminal-options.c:210
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -187,7 +226,7 @@ msgstr ""
 "La opción  \"--default-display\" requier que que s'especifique'l display X "
 "predetermináu como parámetru"
 
-#: ../terminal/terminal-options.c:225
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -196,7 +235,7 @@ msgstr ""
 "La opción \"--default-working-directory\" requierque s'especifique'l "
 "direutoriu de trabayu predetermináu como parámetru"
 
-#: ../terminal/terminal-options.c:241
+#: ../terminal/terminal-options.c:249
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -205,7 +244,7 @@ msgstr ""
 "La opción \"--execute/-x\" requier que s'especifique'l comandu a executar "
 "nel restu de la llinia de comandos"
 
-#: ../terminal/terminal-options.c:258
+#: ../terminal/terminal-options.c:266
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -214,7 +253,7 @@ msgstr ""
 "La opción \"--command/-e\" requier que s'especifique'l comandu a executar "
 "como'l so parámetru"
 
-#: ../terminal/terminal-options.c:275
+#: ../terminal/terminal-options.c:283
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -223,14 +262,14 @@ msgstr ""
 "La opción \"--working-directory\" requier que s'especifique'l direutoriu de "
 "trabayu como'l so parámetru"
 
-#: ../terminal/terminal-options.c:290
+#: ../terminal/terminal-options.c:298
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 "La opción \"--title/-T\" requier que s'especifique'l títulu como'l so "
 "parámetru"
 
-#: ../terminal/terminal-options.c:309
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
@@ -238,7 +277,7 @@ msgstr ""
 "La opción \"--display\" requier que s'especifique'l display X como ún de los "
 "sos parámetros"
 
-#: ../terminal/terminal-options.c:324
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -247,14 +286,14 @@ msgstr ""
 "La opción \"--geometry\" requier que s'especifique la xeometría de la "
 "ventana como'l so parámetru"
 
-#: ../terminal/terminal-options.c:339
+#: ../terminal/terminal-options.c:347
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "La opción \"--role\" requier que s'especifique'l rol de la ventana como'l so "
 "parámetru"
 
-#: ../terminal/terminal-options.c:354
+#: ../terminal/terminal-options.c:362
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
@@ -262,7 +301,7 @@ msgstr ""
 "La opción \"--startup-id\" requier que s'especifique l'ID d'arranque como'l "
 "so parámetru"
 
-#: ../terminal/terminal-options.c:369
+#: ../terminal/terminal-options.c:377
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -271,840 +310,120 @@ msgstr ""
 "Opción \"--icon/-I\" requier especificar un nome d'iconu o nome de ficheru "
 "como parámetru"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:444
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Opción desconocida \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:227
+#: ../terminal/terminal-preferences-dialog.c:260
 msgid "All Files"
 msgstr "Tolos ficheros"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-preferences-dialog.c:266
 msgid "Image Files"
 msgstr "Ficheros d'imaxe"
 
-#: ../terminal/terminal-preferences.c:309
-msgid "Open Tab"
-msgstr "Abrir llingüeta"
-
-#: ../terminal/terminal-preferences.c:320
-msgid "Open Terminal"
-msgstr "Abrir terminal"
-
-#: ../terminal/terminal-preferences.c:331
-msgid "Detach Tab"
-msgstr "Separtar llingüeta"
-
-#: ../terminal/terminal-preferences.c:342
-msgid "Close Tab"
-msgstr "Zarrar llingüeta"
-
-#: ../terminal/terminal-preferences.c:353
-msgid "Close Window"
-msgstr "Zarrar ventana"
-
-#: ../terminal/terminal-preferences.c:364
-msgid "Copy"
-msgstr "Copiar"
-
-#: ../terminal/terminal-preferences.c:375
-msgid "Paste"
-msgstr "Apegar"
-
-#: ../terminal/terminal-preferences.c:386
-msgid "Paste Selection"
-msgstr "Apegar Escoyeta"
-
-#: ../terminal/terminal-preferences.c:397
-msgid "Preferences"
-msgstr "Preferencies"
-
-#: ../terminal/terminal-preferences.c:408
-msgid "Show menubar"
-msgstr "Amosar barra del menú"
-
-#: ../terminal/terminal-preferences.c:419
-msgid "Show toolbars"
-msgstr "Amosar barras de ferramientes"
-
-#: ../terminal/terminal-preferences.c:430
-msgid "Show borders"
-msgstr "Amosar berbesos"
-
-#: ../terminal/terminal-preferences.c:441
-msgid "Fullscreen"
-msgstr "Pantalla completa"
-
-#: ../terminal/terminal-preferences.c:452
-msgid "Set Title"
-msgstr "Afitar títulu"
-
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
-msgid "Reset"
-msgstr "Reaniciar"
-
-#: ../terminal/terminal-preferences.c:474
-msgid "Reset and Clear"
-msgstr "Reaniciar y desaniciar"
-
-#: ../terminal/terminal-preferences.c:485
-msgid "Previous Tab"
-msgstr "Llingüeta anterior"
-
-#: ../terminal/terminal-preferences.c:496
-msgid "Next Tab"
-msgstr "Llingüeta siguiente"
-
-#: ../terminal/terminal-preferences.c:507
-msgid "Switch to Tab 1"
-msgstr "Camudar a llingüeta 1"
-
-#: ../terminal/terminal-preferences.c:518
-msgid "Switch to Tab 2"
-msgstr "Camudar a llingüeta 2"
-
-#: ../terminal/terminal-preferences.c:529
-msgid "Switch to Tab 3"
-msgstr "Camudar a llingüeta 3"
-
-#: ../terminal/terminal-preferences.c:540
-msgid "Switch to Tab 4"
-msgstr "Camudar a llingüeta 4"
-
-#: ../terminal/terminal-preferences.c:551
-msgid "Switch to Tab 5"
-msgstr "Camudar a llingüeta 5"
-
-#: ../terminal/terminal-preferences.c:562
-msgid "Switch to Tab 6"
-msgstr "Camudar a llingüeta 6"
-
-#: ../terminal/terminal-preferences.c:573
-msgid "Switch to Tab 7"
-msgstr "Camudar a llingüeta 7"
-
-#: ../terminal/terminal-preferences.c:584
-msgid "Switch to Tab 8"
-msgstr "Camudar a llingüeta 8"
-
-#: ../terminal/terminal-preferences.c:595
-msgid "Switch to Tab 9"
-msgstr "Camudar a llingüeta 9"
-
-#: ../terminal/terminal-preferences.c:606
-msgid "Contents"
-msgstr "Contenidos"
-
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
-msgid "Untitled"
-msgstr "Ensin títulu"
-
-#: ../terminal/terminal-screen.c:482
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Imposible determinar la shell d'entrada al sistema"
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
-msgid "Failed to execute child"
-msgstr "Falló al executar fíu"
-
-#: ../terminal/terminal-screen.c:1854
-msgid "Close this tab"
-msgstr "Zarrar esta llingüeta"
-
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "Ficheru"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "Editar"
-
-#: ../terminal/terminal-shortcut-editor.c:109
-msgid "View"
-msgstr "Ver"
-
-#: ../terminal/terminal-shortcut-editor.c:128
-msgid "Go"
-msgstr "Dir"
-
-#: ../terminal/terminal-shortcut-editor.c:145
-msgid "Help"
-msgstr "Aida"
-
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
-msgid "Disabled"
-msgstr "Desactiváu"
-
-#: ../terminal/terminal-shortcut-editor.c:221
-msgid "Action"
-msgstr "Aición"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Shortcut key"
-msgstr "Atayu de tecláu"
-
-#: ../terminal/terminal-shortcut-editor.c:328
-msgid "Compose shortcut"
-msgstr "Criar atayu de tecláu"
-
-#: ../terminal/terminal-shortcut-editor.c:333
-msgid "Clea_r"
-msgstr "Llimpia_r"
-
-#: ../terminal/terminal-shortcut-editor.c:352
-msgid "Compose shortcut for:"
-msgstr "Criar atayu de tecláu pa:"
-
-#: ../terminal/terminal-shortcut-editor.c:374
-msgid "Failed to acquire keyboard"
-msgstr "Fallu al capturar tecláu"
-
-#: ../terminal/terminal-shortcut-editor.c:376
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Otra aplicación yá tien el control sobro'l to tecláu."
-
-#: ../terminal/terminal-toolbars-view.c:112
-msgid "Toolbar Editor"
-msgstr "Editor de barra de ferramientes"
-
-#: ../terminal/terminal-widget.c:320
-msgid "Copy Email Address"
-msgstr "Copiar direición de corréu"
-
-#: ../terminal/terminal-widget.c:321
-msgid "Compose Email"
-msgstr "Escribir corréu electrónicu"
-
-#: ../terminal/terminal-widget.c:325
-msgid "Copy Link Address"
-msgstr "Copiar direición del enllaz"
-
-#: ../terminal/terminal-widget.c:326
-msgid "Open Link"
-msgstr "Abrir enllaz"
-
-#: ../terminal/terminal-widget.c:480
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
+#: ../terminal/terminal-preferences-dialog.c:567
+msgid "Load Presets..."
 msgstr ""
-"Imposible soltar la Escoyeta de testu planu nel terminal: formatu (%d) o "
-"llonxitú (%d) erróneos\n"
 
-#: ../terminal/terminal-widget.c:496
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Imposible soltar URL de Mozilla nel terminal: formatu (%d) o llonxitú (%d) "
-"erróneos\n"
-
-#: ../terminal/terminal-widget.c:522
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Imposible soltar una llista de URIs nel terminal: formatu (%d) o llonxitú (%"
-"d) erróneos\n"
-
-#: ../terminal/terminal-widget.c:567
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Recibiéronse datos de color non válidos: formatu (%d) o llonxitú (%d) "
-"erróneos\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:704
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Fallu al abrir la URL '%s'"
-
-#: ../terminal/terminal-window.c:221
-msgid "_File"
-msgstr "_Ficheru"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open _Tab"
-msgstr "Abrir _llingüeta"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open a new terminal tab"
-msgstr "Abrir una nueva llingüeta de terminal"
-
-#: ../terminal/terminal-window.c:223
-msgid "Open T_erminal"
-msgstr "Abrir t_erminal"
-
-#: ../terminal/terminal-window.c:223
-msgid "Open a new terminal window"
-msgstr "Abrir una nueva ventana de terminal"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Detach Tab"
-msgstr "_Separtar llingüeta"
-
-#: ../terminal/terminal-window.c:224
-msgid "Open a new window for the current terminal tab"
-msgstr "Abrir una nueva ventana pa la llingüeta actual del terminal"
-
-#: ../terminal/terminal-window.c:225
-msgid "C_lose Tab"
-msgstr "Zarrar _llingüeta"
-
-#: ../terminal/terminal-window.c:225
-msgid "Close the current terminal tab"
-msgstr "Zarrar la llingüeta actual de terminal"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Close Window"
-msgstr "_Zarrar ventana"
-
-#: ../terminal/terminal-window.c:226
-msgid "Close the terminal window"
-msgstr "Zarrar la ventana de terminal"
-
-#: ../terminal/terminal-window.c:227
-msgid "_Edit"
-msgstr "_Editar"
-
-#: ../terminal/terminal-window.c:228
-msgid "_Copy"
-msgstr "_Copiar"
-
-#: ../terminal/terminal-window.c:228
-msgid "Copy to clipboard"
-msgstr "Copiar al cartafueyu"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Paste"
-msgstr "_Apegar"
-
-#: ../terminal/terminal-window.c:229
-msgid "Paste from clipboard"
-msgstr "Apegar del cartafueyu"
-
-#: ../terminal/terminal-window.c:230
-msgid "Paste _Selection"
-msgstr "Apegar _Escoyeta"
-
-#: ../terminal/terminal-window.c:230
-msgid "Paste from primary selection"
-msgstr "Apegar de la Escoyeta primaria"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Toolbars..."
-msgstr "Barra de ferramien_tes..."
-
-#: ../terminal/terminal-window.c:231
-msgid "Customize the toolbars"
-msgstr "Personalizar les barres de ferramientes"
-
-#: ../terminal/terminal-window.c:232
-msgid "Pr_eferences..."
-msgstr "_Preferencies..."
-
-#: ../terminal/terminal-window.c:232
-msgid "Open the Terminal preferences dialog"
-msgstr "Abrir el diálogu de preferencies del terminal"
-
-#: ../terminal/terminal-window.c:233
-msgid "_View"
-msgstr "_Vista"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Terminal"
-msgstr "_Terminal"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Set Title..."
-msgstr "A_fitar títulu..."
-
-#: ../terminal/terminal-window.c:235
-msgid "Set a custom title for the current tab"
-msgstr "Afitar un títulu personalizáu pa la llingüeta actual"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Reset"
-msgstr "_Resetear"
-
-#: ../terminal/terminal-window.c:237
-msgid "Reset and C_lear"
-msgstr "Reaniciar y L_limpiar"
-
-#: ../terminal/terminal-window.c:237
-#, fuzzy
-msgid "Reset and clear"
-msgstr "Reaniciar y desaniciar"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Go"
-msgstr "_Dir"
-
-#: ../terminal/terminal-window.c:239
-msgid "_Previous Tab"
-msgstr "_Llingüeta anterior"
-
-#: ../terminal/terminal-window.c:239
-msgid "Switch to previous tab"
-msgstr "Saltar a la llingüeta anterior"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Next Tab"
-msgstr "Llingüeta siguie_nte"
-
-#: ../terminal/terminal-window.c:240
-msgid "Switch to next tab"
-msgstr "Saltar a la llingüeta siguiente"
-
-#: ../terminal/terminal-window.c:241
-msgid "_Help"
-msgstr "_Aida"
-
-#: ../terminal/terminal-window.c:242
-msgid "_Contents"
-msgstr "_Conteníos"
-
-#: ../terminal/terminal-window.c:242
-msgid "Display help contents"
-msgstr "Amosar los conteníos d'aida"
-
-#: ../terminal/terminal-window.c:243
-msgid "_Report a bug"
-msgstr "Unvia_r un informe de fallu"
-
-#: ../terminal/terminal-window.c:243
-msgid "Report a bug in Terminal"
-msgstr "Unviar un informe de fallu dende Terminal"
-
-#: ../terminal/terminal-window.c:244
-msgid "_About"
-msgstr "_Tocante a"
-
-#: ../terminal/terminal-window.c:244
-msgid "Display information about Terminal"
-msgstr "Amosar información sobro Terminal"
-
-#: ../terminal/terminal-window.c:245
-msgid "_Input Methods"
-msgstr "Métodos d'_Entrada"
-
-#: ../terminal/terminal-window.c:250
-msgid "Show _Menubar"
-msgstr "Amosar barra de _menú"
-
-#: ../terminal/terminal-window.c:250
-msgid "Show/hide the menubar"
-msgstr "Amosar/anubrir la barra de menú"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show _Toolbars"
-msgstr "Amosar barres de ferramien_tes"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show/hide the toolbars"
-msgstr "Amosar/anubrir les barres de ferramientes"
-
-#: ../terminal/terminal-window.c:252
-msgid "Show Window _Borders"
-msgstr "Amosar _berbesos de ventana"
-
-#: ../terminal/terminal-window.c:252
-msgid "Show/hide the window decorations"
-msgstr "Amosar/anubrir les decoraciones de ventana"
-
-#: ../terminal/terminal-window.c:253
-msgid "_Fullscreen"
-msgstr "_Pantalla completa"
-
-#: ../terminal/terminal-window.c:253
-msgid "Toggle fullscreen mode"
-msgstr "Conmutar mou de pantalla completa"
-
-#: ../terminal/terminal-window.c:560
-msgid "Warning"
-msgstr "Curiáu"
-
-#: ../terminal/terminal-window.c:571
-msgid "Close all tabs"
-msgstr "Zarrar toles llingüetes"
-
-#: ../terminal/terminal-window.c:590
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Esta ventana tien %d llingüetes abiertes. Zarrar\n"
-"esta ventana tamién zarrará toles tos llingüetes."
-
-#: ../terminal/terminal-window.c:593
-msgid "Close all tabs?"
-msgstr "¿Zarrar toles llingüetes?"
-
-#: ../terminal/terminal-window.c:606
-msgid "Do _not ask me again"
-msgstr "_Nun entrugar otra vuelta"
-
-#: ../terminal/terminal-window.c:1555
-msgid "Window Title|Set Title"
-msgstr "Afitar títulu"
-
-#: ../terminal/terminal-window.c:1568
-msgid "Title:"
-msgstr "Títulu:"
-
-#: ../terminal/terminal-window.c:1580
-msgid "Enter the title for the current terminal tab"
-msgstr "Pon el títulu pa la llingüeta actual del terminal"
-
-#: ../Terminal.desktop.in.in.h:2
-msgid "Terminal Emulator"
-msgstr "Emulador de terminal"
-
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "Valor d_e <tt>$TERM</tt>:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII SUPR"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "A_vanzáu"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "Permitir testu en negrina"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Autodeteutar"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Imaxe de Fondu"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Imaxe de fondu"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Centráu"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Escoyer la triba de lletra del terminal"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Escoyer el color de xera de llingüeta"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Escoyer un color de fondu pal terminal"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Escoyer el color de cursor del terminal"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Escoyer el color de testu del terminal"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Escoyer un color de fondu pa el testu seleccionáu del terminal"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Seleutor de color"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "<b>Comandu</b>"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "<b>Compatibilidá</b>"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
-"Considerar los siguientes carauteres parte d'una palabra al facer duble clic:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "Color cursor:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Deshabilitar toles tecles d'accesu al me_nú (como Alt+f)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Deshabilitar l'atayu de tecláu del m_enú (F10 por defeutu)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Amosar _berbesos alredor de nueves ventanes"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Amosar barra de _menú en nueves ventanes"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Amosar barra de ferramien_tes en nueves ventanes"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Duble Click"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Activar el dilíu pa les lletres del terminal"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Activa esta opción si quies que Terminal use l'efeutu de dilíu cuando amuese "
-"testu nes ventanes del terminal. Desactivar esta opción puede acelerar "
-"abondo'l rendimientu de la representación y amenorgar la carga total en "
-"sistemes lentos."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Activa esta opción pa permitir a les aplicaciones que se tán executando "
-"dientro de ventanes de terminal usen testu en negrina."
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Activa esta opción pa poder desplazate una sola llinia usando les tecles de "
-"direición arriba/abaxo xunto cola tecla de mayúscules."
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"Activa esta opción p'amosar la barra del menú nes nueves ventanes de "
-"terminal creaes."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-"Activa esta opción p'amosar les barres de ferramientes nes nueves ventanes "
-"de terminal creaes."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Activa esta opción p'amosar les decoraciones de ventana alredor de les "
-"nueves ventanes de terminal creaes."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Permítete calcar cualesquier tecla pa desplazar p'abaxo la ventana del "
-"terminal fasta la llinia de comandu"
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Desaniciar TTY"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Secuencia d'Escape"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Fonte"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Xeneral"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Dempués del títulu inicial"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Enantes del títulu inicial"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Nun s'amuesa"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Accesu de la barra de menú"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Dengún (usar color sólidu)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "A la esquierda"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "A la drecha"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Abrir un diálogu pa especificar el color"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Abriendo ventanes nueves"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Paleta"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "Entrada de paleta 1"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "Entrada de paleta 10"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "Entrada de paleta 11"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "Entrada de paleta 12"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "Entrada de paleta 13"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "Entrada de paleta 14"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "Entrada de paleta 15"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "Entrada de paleta 16"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "Entrada de paleta 2"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "Entrada de paleta 3"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "Entrada de paleta 4"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "Entrada de paleta 5"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "Entrada de paleta 6"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "Entrada de paleta 7"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "Entrada de paleta 8"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "Entrada de paleta 9"
-
-#: ../Terminal.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:1
 msgid "Replaces initial title"
 msgstr "Sustitúi al títulu inicial"
 
-#: ../Terminal.glade.h:68
-#, fuzzy
-msgid "Rese_t double click options to defaults"
-msgstr ""
-"_Restablecer les opciones de compatibilidá a los valores predeterminaos"
+#: ../terminal/terminal-preferences.glade.h:2
+msgid "Goes before initial title"
+msgstr "Enantes del títulu inicial"
 
-#: ../Terminal.glade.h:69
-msgid "Reset tab activity _indicator after"
-msgstr "Restablecer l'indicador de xera de llingüeta dempués de"
+#: ../terminal/terminal-preferences.glade.h:3
+msgid "Goes after initial title"
+msgstr "Dempués del títulu inicial"
 
-#: ../Terminal.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:4
+msgid "Isn't displayed"
+msgstr "Nun s'amuesa"
+
+#: ../terminal/terminal-preferences.glade.h:5
+msgid "Disabled"
+msgstr "Desactiváu"
+
+#: ../terminal/terminal-preferences.glade.h:6
+msgid "On the left side"
+msgstr "A la esquierda"
+
+#: ../terminal/terminal-preferences.glade.h:7
+msgid "On the right side"
+msgstr "A la drecha"
+
+#: ../terminal/terminal-preferences.glade.h:8
+msgid "None (use solid color)"
+msgstr "Dengún (usar color sólidu)"
+
+#: ../terminal/terminal-preferences.glade.h:9
+msgid "Background image"
+msgstr "Imaxe de fondu"
+
+#: ../terminal/terminal-preferences.glade.h:10
+msgid "Transparent background"
+msgstr "Fondu tresparente"
+
+#: ../terminal/terminal-preferences.glade.h:11
+msgid "Auto-detect"
+msgstr "Autodeteutar"
+
+#: ../terminal/terminal-preferences.glade.h:12
+msgid "ASCII DEL"
+msgstr "ASCII SUPR"
+
+#: ../terminal/terminal-preferences.glade.h:13
+msgid "Escape sequence"
+msgstr "Secuencia d'Escape"
+
+#: ../terminal/terminal-preferences.glade.h:14
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr "Desaniciar TTY"
+
+#: ../terminal/terminal-preferences.glade.h:16
+msgid "Tiled"
+msgstr "Mosaicu"
+
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "Centráu"
+
+#: ../terminal/terminal-preferences.glade.h:18
 msgid "Scaled"
 msgstr "Escaláu"
 
-#: ../Terminal.glade.h:71
-msgid "Scr_ollbar is:"
-msgstr "La barra de de_splazamientu ta:"
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "Estiráu"
 
-#: ../Terminal.glade.h:72
-msgid "Scroll on _keystroke"
-msgstr "Desplazar al _calcar una tecla"
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "Preferencies del terminal"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll on ou_tput"
-msgstr "De_splazamientu a la salida"
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "Títulu _inicial:"
 
-#: ../Terminal.glade.h:74
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Desplazar una sola _llinia usando les tecles Mays-Arriba/-Abaxo"
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "_Dynamically-set title:"
+msgstr "Títulu afitáu _dinámicamente"
 
-#: ../Terminal.glade.h:75
-msgid "Scroll_back:"
-msgstr "_Desplazamientu haza atrás"
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "Títulu"
 
-#: ../Terminal.glade.h:76
-msgid "Scrolling"
-msgstr "Desplazamientu"
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "_Executar comandu como shell d'aniciu de sesión"
 
-#: ../Terminal.glade.h:77
-msgid "Select Background Image File"
-msgstr "Escueyi ficheru d'imaxe de fondu"
-
-#: ../Terminal.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:25
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1116,46 +435,357 @@ msgstr ""
 "documentación de'l to shell pa detalles sobro les diferencies ente executalu "
 "como una shell interactiva y como una shell d'aniciu de sesión."
 
-#: ../Terminal.glade.h:79
-msgid "Shortcut Keys"
-msgstr "Atayu de tecláu"
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Anovar rexistros de utmp/wtmp cuando s'executa un comandu"
 
-#: ../Terminal.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "Command"
+msgstr "<b>Comandu</b>"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Desplazar una sola _llinia usando les tecles Mays-Arriba/-Abaxo"
+
+#: ../terminal/terminal-preferences.glade.h:29
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Activa esta opción pa poder desplazate una sola llinia usando les tecles de "
+"direición arriba/abaxo xunto cola tecla de mayúscules."
+
+#: ../terminal/terminal-preferences.glade.h:30
+msgid "Scroll on ou_tput"
+msgstr "De_splazamientu a la salida"
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Esta opción controla si'l terminal desplazará'l testu p'abaxo "
+"automáticamente cuando se xenere una nueva salida polos comandos que se tean "
+"executando dientro del terminal."
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid "Scroll on _keystroke"
+msgstr "Desplazar al _calcar una tecla"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Permítete calcar cualesquier tecla pa desplazar p'abaxo la ventana del "
+"terminal fasta la llinia de comandu"
+
+#: ../terminal/terminal-preferences.glade.h:34
+msgid "Scr_ollbar is:"
+msgstr "La barra de de_splazamientu ta:"
+
+#: ../terminal/terminal-preferences.glade.h:35
+msgid "Scroll_back:"
+msgstr "_Desplazamientu haza atrás"
+
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Especifica'l númberu de llinies que puede desplazase haza atrás usando la "
 "barra de desplazamientu."
 
-#: ../Terminal.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:37
+msgid "Scrolling"
+msgstr "Desplazamientu"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid "_General"
+msgstr "Xeneral"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "Choose Terminal Font"
+msgstr "Escoyer la triba de lletra del terminal"
+
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Allow bold te_xt"
+msgstr "Permitir testu en negrina"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Activa esta opción pa permitir a les aplicaciones que se tán executando "
+"dientro de ventanes de terminal usen testu en negrina."
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "Font"
+msgstr "Fonte"
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "_File:"
+msgstr "_Ficheru:"
+
+#: ../terminal/terminal-preferences.glade.h:44
 msgid "St_yle:"
 msgstr "Est_ilu:"
 
-#: ../Terminal.glade.h:82
-msgid "Stretched"
-msgstr "Estiráu"
+#: ../terminal/terminal-preferences.glade.h:45
+msgid "Select Background Image File"
+msgstr "Escueyi ficheru d'imaxe de fondu"
 
-#: ../Terminal.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:46
+msgid "Transpare_ncy:"
+msgstr "Trespare_ncia:"
+
+#: ../terminal/terminal-preferences.glade.h:47
+msgid "Background"
+msgstr "Imaxe de Fondu"
+
+#: ../terminal/terminal-preferences.glade.h:48
+msgid "Display _menubar in new windows"
+msgstr "Amosar barra de _menú en nueves ventanes"
+
+#: ../terminal/terminal-preferences.glade.h:49
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+"Activa esta opción p'amosar la barra del menú nes nueves ventanes de "
+"terminal creaes."
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "Display _toolbars in new windows"
+msgstr "Amosar barra de ferramien_tes en nueves ventanes"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Activa esta opción p'amosar les barres de ferramientes nes nueves ventanes "
+"de terminal creaes."
+
+#: ../terminal/terminal-preferences.glade.h:52
+msgid "Display _borders around new windows"
+msgstr "Amosar _berbesos alredor de nueves ventanes"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Activa esta opción p'amosar les decoraciones de ventana alredor de les "
+"nueves ventanes de terminal creaes."
+
+#: ../terminal/terminal-preferences.glade.h:54
+msgid "Opening New Windows"
+msgstr "Abriendo ventanes nueves"
+
+#: ../terminal/terminal-preferences.glade.h:55
+msgid "Reset tab activity _indicator after"
+msgstr "Restablecer l'indicador de xera de llingüeta dempués de"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "seconds"
+msgstr "segundos"
+
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "Tab Activity Indicator"
 msgstr "Indicador de xera de llingüeta"
 
-#: ../Terminal.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:58
+msgid "_Appearance"
+msgstr "_Apariencia"
+
+#: ../terminal/terminal-preferences.glade.h:59
+msgid "_Text color:"
+msgstr "Color de _testu y cursor:"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "_Background color:"
+msgstr "Color de _fondu:"
+
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "Tab activit_y color:"
 msgstr "Color de _xera de llingüeta:"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal Preferences"
-msgstr "Preferencies del terminal"
+#: ../terminal/terminal-preferences.glade.h:62
+msgid "Cu_rsor color:"
+msgstr "Color cursor:"
 
-#: ../Terminal.glade.h:86
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Les aplicaciones de terminal tienen esta paleta de colores disponible:"
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "_Vary the background color for each tab"
+msgstr ""
 
-#: ../Terminal.glade.h:87
-msgid "Text Selection"
+#: ../terminal/terminal-preferences.glade.h:64
+msgid ""
+"The random color is based on the selected background color, keeping the same "
+"brightness. "
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:65
+#, fuzzy
+msgid "Choose background color"
+msgstr "Escoyer un color de fondu pal terminal"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Color Selector"
+msgstr "Seleutor de color"
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Open a dialog to specify the color"
+msgstr "Abrir un diálogu pa especificar el color"
+
+#: ../terminal/terminal-preferences.glade.h:68
+#, fuzzy
+msgid "Choose text color"
+msgstr "Escoyer el color de testu del terminal"
+
+#: ../terminal/terminal-preferences.glade.h:69
+#, fuzzy
+msgid "Choose cursor color"
+msgstr "Escoyer el color de cursor del terminal"
+
+#: ../terminal/terminal-preferences.glade.h:70
+msgid "Choose tab activity color"
+msgstr "Escoyer el color de xera de llingüeta"
+
+#: ../terminal/terminal-preferences.glade.h:71
+msgid "General"
+msgstr "Xeneral"
+
+#: ../terminal/terminal-preferences.glade.h:72
+#, fuzzy
+msgid "Text _selection color:"
 msgstr "Testu escoyíu"
 
-#: ../Terminal.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:73
+msgid ""
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:74
+#, fuzzy
+msgid "Choose text selection background color"
+msgstr "Escoyer un color de fondu pa el testu seleccionáu del terminal"
+
+#: ../terminal/terminal-preferences.glade.h:75
+#, fuzzy
+msgid "B_old text color:"
+msgstr "Color de _testu y cursor:"
+
+#: ../terminal/terminal-preferences.glade.h:76
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:77
+#, fuzzy
+msgid "Choose bold font color"
+msgstr "Escoyer el color de xera de llingüeta"
+
+#: ../terminal/terminal-preferences.glade.h:78
+#, fuzzy
+msgid "Custom Colors"
+msgstr "Color cursor:"
+
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "Black"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:82
+msgid "Dark Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Light Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "Light Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Brown / Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Light Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Light Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Light Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "White"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Light Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:95
+msgid "Palette"
+msgstr "Paleta"
+
+#: ../terminal/terminal-preferences.glade.h:96
+#, fuzzy
+msgid "Presets"
+msgstr "Reaniciar"
+
+#: ../terminal/terminal-preferences.glade.h:97
+msgid "_Colors"
+msgstr "_Colores"
+
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "_Backspace key generates:"
+msgstr "La tecla _desaniciar xenera:"
+
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "_Delete key generates:"
+msgstr "La _tecla suprimir xenera:"
+
+#: ../terminal/terminal-preferences.glade.h:100
+msgid "$TERM s_etting:"
+msgstr "Valor d_e <tt>$TERM</tt>:"
+
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "_Reset compatibility options to defaults"
+msgstr ""
+"_Restablecer les opciones de compatibilidá a los valores predeterminaos"
+
+#: ../terminal/terminal-preferences.glade.h:102
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1167,119 +797,622 @@ msgstr ""
 "trabayar con delles aplicaciones y sistemes operativos\n"
 "qu'esperen un comportamientu distintu del terminal."
 
-#: ../Terminal.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:106
+msgid "Compatibility"
+msgstr "<b>Compatibilidá</b>"
+
+#: ../terminal/terminal-preferences.glade.h:107
+#, fuzzy
+msgid "Co_mpatibility"
+msgstr "<b>Compatibilidá</b>"
+
+#: ../terminal/terminal-preferences.glade.h:108
 msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
+"Consider the following characters part of a _word\n"
+"when double clicking:"
 msgstr ""
-"Esta opción controla si'l terminal desplazará'l testu p'abaxo "
-"automáticamente cuando se xenere una nueva salida polos comandos que se tean "
-"executando dientro del terminal."
+"Considerar los siguientes carauteres parte d'una palabra al facer duble clic:"
 
-#: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"Esto especifica qué valor tien la variable d'entornu $TERM, cuando una nueva "
-"llingüeta de terminal o terminal nuevu s'abre. El valor predetermináu valdrá "
-"na mayoría de los sistemes. Si tienes problemes colos colores en dalgunes "
-"aplicaciones, prueba a poner xterm-color equí"
-
-#: ../Terminal.glade.h:94
-msgid "Tiled"
-msgstr "Mosaicu"
-
-#: ../Terminal.glade.h:95
-msgid "Title"
-msgstr "Títulu"
-
-#: ../Terminal.glade.h:96
-msgid "Transpare_ncy:"
-msgstr "Trespare_ncia:"
-
-#: ../Terminal.glade.h:97
-msgid "Transparent background"
-msgstr "Fondu tresparente"
-
-#: ../Terminal.glade.h:98
-msgid "Use _default color"
-msgstr "Usar color _predetermináu"
-
-#: ../Terminal.glade.h:99
-msgid "Use a custom text selection background color"
-msgstr "Usar un color de fondu personalizáu pal testu escoyíu"
-
-#: ../Terminal.glade.h:100
-msgid "Use c_ustom color:"
-msgstr "Usar _color personalizáu"
-
-#: ../Terminal.glade.h:101
-msgid "Use the default text selection background color"
-msgstr "Usar el color predetermináu pal fondu del testu escoyíu"
-
-#: ../Terminal.glade.h:102
-msgid "_Appearance"
-msgstr "_Apariencia"
-
-#: ../Terminal.glade.h:103
-msgid "_Background color:"
-msgstr "Color de _fondu:"
-
-#: ../Terminal.glade.h:104
-msgid "_Backspace key generates:"
-msgstr "La tecla _desaniciar xenera:"
-
-#: ../Terminal.glade.h:105
-msgid "_Colors"
-msgstr "_Colores"
-
-#: ../Terminal.glade.h:106
-msgid "_Delete key generates:"
-msgstr "La _tecla suprimir xenera:"
-
-#: ../Terminal.glade.h:107
-msgid "_Dynamically-set title:"
-msgstr "Títulu afitáu _dinámicamente"
-
-#: ../Terminal.glade.h:108
-msgid "_File:"
-msgstr "_Ficheru:"
-
-#: ../Terminal.glade.h:109
-msgid "_General"
-msgstr "Xeneral"
-
-#: ../Terminal.glade.h:110
-msgid "_Initial title:"
-msgstr "Títulu _inicial:"
-
-#: ../Terminal.glade.h:111
-msgid "_Reset compatibility options to defaults"
+#: ../terminal/terminal-preferences.glade.h:110
+#, fuzzy
+msgid "Rese_t double click options to defaults"
 msgstr ""
 "_Restablecer les opciones de compatibilidá a los valores predeterminaos"
 
-#: ../Terminal.glade.h:112
-msgid "_Run command as login shell"
-msgstr "_Executar comandu como shell d'aniciu de sesión"
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Double Click"
+msgstr "Duble Click"
 
-#: ../Terminal.glade.h:113
-msgid "_Shortcuts"
-msgstr "Atayos de tecláu"
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Default character e_ncoding:"
+msgstr ""
 
-#: ../Terminal.glade.h:114
-msgid "_Text color:"
-msgstr "Color de _testu y cursor:"
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Encoding"
+msgstr ""
 
-#: ../Terminal.glade.h:115
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Anovar rexistros de utmp/wtmp cuando s'executa un comandu"
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Deshabilitar toles tecles d'accesu al me_nú (como Alt+f)"
 
-#: ../Terminal.glade.h:116
-msgid "seconds"
-msgstr "segundos"
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Deshabilitar l'atayu de tecláu del m_enú (F10 por defeutu)"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Menubar Access"
+msgstr "Accesu de la barra de menú"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Ad_vanced"
+msgstr "A_vanzáu"
+
+#: ../terminal/terminal-preferences.c:756
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
+#: ../terminal/terminal-screen.c:1742
+msgid "Untitled"
+msgstr "Ensin títulu"
+
+#: ../terminal/terminal-screen.c:547
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Imposible determinar la shell d'entrada al sistema"
+
+#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
+msgid "Failed to execute child"
+msgstr "Falló al executar fíu"
+
+#: ../terminal/terminal-screen.c:2083
+msgid "Close this tab"
+msgstr "Zarrar esta llingüeta"
+
+#: ../terminal/terminal-widget.c:324
+msgid "Copy Email Address"
+msgstr "Copiar direición de corréu"
+
+#: ../terminal/terminal-widget.c:325
+msgid "Compose Email"
+msgstr "Escribir corréu electrónicu"
+
+#: ../terminal/terminal-widget.c:329
+msgid "Copy Link Address"
+msgstr "Copiar direición del enllaz"
+
+#: ../terminal/terminal-widget.c:330
+msgid "Open Link"
+msgstr "Abrir enllaz"
+
+#: ../terminal/terminal-widget.c:484
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Imposible soltar la Escoyeta de testu planu nel terminal: formatu (%d) o "
+"llonxitú (%d) erróneos\n"
+
+#: ../terminal/terminal-widget.c:500
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Imposible soltar URL de Mozilla nel terminal: formatu (%d) o llonxitú (%d) "
+"erróneos\n"
+
+#: ../terminal/terminal-widget.c:526
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Imposible soltar una llista de URIs nel terminal: formatu (%d) o llonxitú "
+"(%d) erróneos\n"
+
+#: ../terminal/terminal-widget.c:571
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Recibiéronse datos de color non válidos: formatu (%d) o llonxitú (%d) "
+"erróneos\n"
+
+#: ../terminal/terminal-widget.c:705
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Fallu al abrir la URL '%s'"
+
+#: ../terminal/terminal-window.c:218
+msgid "_File"
+msgstr "_Ficheru"
+
+#: ../terminal/terminal-window.c:219
+msgid "Open _Tab"
+msgstr "Abrir _llingüeta"
+
+#: ../terminal/terminal-window.c:219
+msgid "Open a new terminal tab"
+msgstr "Abrir una nueva llingüeta de terminal"
+
+#: ../terminal/terminal-window.c:220
+msgid "Open T_erminal"
+msgstr "Abrir t_erminal"
+
+#: ../terminal/terminal-window.c:220
+msgid "Open a new terminal window"
+msgstr "Abrir una nueva ventana de terminal"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Detach Tab"
+msgstr "_Separtar llingüeta"
+
+#: ../terminal/terminal-window.c:222
+msgid "C_lose Tab"
+msgstr "Zarrar _llingüeta"
+
+#: ../terminal/terminal-window.c:223
+msgid "_Close Window"
+msgstr "_Zarrar ventana"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Edit"
+msgstr "_Editar"
+
+#: ../terminal/terminal-window.c:225
+msgid "_Copy"
+msgstr "_Copiar"
+
+#: ../terminal/terminal-window.c:225
+msgid "Copy to clipboard"
+msgstr "Copiar al cartafueyu"
+
+#: ../terminal/terminal-window.c:226
+msgid "_Paste"
+msgstr "_Apegar"
+
+#: ../terminal/terminal-window.c:226
+msgid "Paste from clipboard"
+msgstr "Apegar del cartafueyu"
+
+#: ../terminal/terminal-window.c:227
+msgid "Paste _Selection"
+msgstr "Apegar _Escoyeta"
+
+#: ../terminal/terminal-window.c:228
+msgid "Select _All"
+msgstr ""
+
+#: ../terminal/terminal-window.c:229
+msgid "Pr_eferences..."
+msgstr "_Preferencies..."
+
+#: ../terminal/terminal-window.c:229
+#, fuzzy
+msgid "Open the preferences dialog"
+msgstr "Abrir el diálogu de preferencies del terminal"
+
+#: ../terminal/terminal-window.c:230
+msgid "_View"
+msgstr "_Vista"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Terminal"
+msgstr "_Terminal"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Set Title..."
+msgstr "A_fitar títulu..."
+
+#: ../terminal/terminal-window.c:233
+#, fuzzy
+msgid "_Clear Scrollback"
+msgstr "_Desplazamientu haza atrás"
+
+#: ../terminal/terminal-window.c:234
+msgid "Clear Scrollback and _Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:235
+msgid "_Go"
+msgstr "_Dir"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Previous Tab"
+msgstr "_Llingüeta anterior"
+
+#: ../terminal/terminal-window.c:236
+msgid "Switch to previous tab"
+msgstr "Saltar a la llingüeta anterior"
+
+#: ../terminal/terminal-window.c:237
+msgid "_Next Tab"
+msgstr "Llingüeta siguie_nte"
+
+#: ../terminal/terminal-window.c:237
+msgid "Switch to next tab"
+msgstr "Saltar a la llingüeta siguiente"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Help"
+msgstr "_Aida"
+
+#: ../terminal/terminal-window.c:239
+msgid "_Contents"
+msgstr "_Conteníos"
+
+#: ../terminal/terminal-window.c:239
+msgid "Display help contents"
+msgstr "Amosar los conteníos d'aida"
+
+#: ../terminal/terminal-window.c:240
+msgid "_Report a bug"
+msgstr "Unvia_r un informe de fallu"
+
+#: ../terminal/terminal-window.c:241
+msgid "_About"
+msgstr "_Tocante a"
+
+#: ../terminal/terminal-window.c:242
+msgid "_Input Methods"
+msgstr "Métodos d'_Entrada"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show _Menubar"
+msgstr "Amosar barra de _menú"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show/hide the menubar"
+msgstr "Amosar/anubrir la barra de menú"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show _Toolbars"
+msgstr "Amosar barres de ferramien_tes"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show/hide the toolbars"
+msgstr "Amosar/anubrir les barres de ferramientes"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show Window _Borders"
+msgstr "Amosar _berbesos de ventana"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show/hide the window decorations"
+msgstr "Amosar/anubrir les decoraciones de ventana"
+
+#: ../terminal/terminal-window.c:250
+msgid "_Fullscreen"
+msgstr "_Pantalla completa"
+
+#: ../terminal/terminal-window.c:250
+msgid "Toggle fullscreen mode"
+msgstr "Conmutar mou de pantalla completa"
+
+#. create encoding action
+#: ../terminal/terminal-window.c:408
+msgid "Set _Encoding"
+msgstr ""
+
+#: ../terminal/terminal-window.c:539
+msgid "Warning"
+msgstr "Curiáu"
+
+#: ../terminal/terminal-window.c:550
+msgid "Close all tabs"
+msgstr "Zarrar toles llingüetes"
+
+#: ../terminal/terminal-window.c:569
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Esta ventana tien %d llingüetes abiertes. Zarrar\n"
+"esta ventana tamién zarrará toles tos llingüetes."
+
+#: ../terminal/terminal-window.c:572
+msgid "Close all tabs?"
+msgstr "¿Zarrar toles llingüetes?"
+
+#: ../terminal/terminal-window.c:585
+msgid "Do _not ask me again"
+msgstr "_Nun entrugar otra vuelta"
+
+#: ../terminal/terminal-window.c:1592
+msgid "Window Title|Set Title"
+msgstr "Afitar títulu"
+
+#: ../terminal/terminal-window.c:1605
+msgid "Title:"
+msgstr "Títulu:"
+
+#: ../terminal/terminal-window.c:1617
+msgid "Enter the title for the current terminal tab"
+msgstr "Pon el títulu pa la llingüeta actual del terminal"
+
+#: ../xfce4-terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Emulador de terminal"
+
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. Tolos drechos reservaos.\n"
+#~ "\n"
+#~ "Escrito por Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Compiláu con Gtk+-%d.%d.%d, ejecutándose con Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Por favor, envíe los informes de fallu a <%s>.\n"
+
+#~ msgid "D-BUS message bus disconnected, exiting...\n"
+#~ msgstr "Bus de mensaxes D-BUS desconectáu. Finando...\n"
+
+#~ msgid "Unable to register object %s"
+#~ msgstr "Imposible rexistrar oxetu %s"
+
+#~ msgid "Failed to open the documentation browser"
+#~ msgstr "Fallu al abrir el visor de documentación"
+
+#~ msgid "Open Tab"
+#~ msgstr "Abrir llingüeta"
+
+#~ msgid "Detach Tab"
+#~ msgstr "Separtar llingüeta"
+
+#~ msgid "Close Tab"
+#~ msgstr "Zarrar llingüeta"
+
+#~ msgid "Close Window"
+#~ msgstr "Zarrar ventana"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgid "Paste"
+#~ msgstr "Apegar"
+
+#~ msgid "Paste Selection"
+#~ msgstr "Apegar Escoyeta"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferencies"
+
+#~ msgid "Show menubar"
+#~ msgstr "Amosar barra del menú"
+
+#~ msgid "Show toolbars"
+#~ msgstr "Amosar barras de ferramientes"
+
+#~ msgid "Show borders"
+#~ msgstr "Amosar berbesos"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Pantalla completa"
+
+#~ msgid "Set Title"
+#~ msgstr "Afitar títulu"
+
+#~ msgid "Reset and Clear"
+#~ msgstr "Reaniciar y desaniciar"
+
+#~ msgid "Previous Tab"
+#~ msgstr "Llingüeta anterior"
+
+#~ msgid "Next Tab"
+#~ msgstr "Llingüeta siguiente"
+
+#~ msgid "Switch to Tab 1"
+#~ msgstr "Camudar a llingüeta 1"
+
+#~ msgid "Switch to Tab 2"
+#~ msgstr "Camudar a llingüeta 2"
+
+#~ msgid "Switch to Tab 3"
+#~ msgstr "Camudar a llingüeta 3"
+
+#~ msgid "Switch to Tab 4"
+#~ msgstr "Camudar a llingüeta 4"
+
+#~ msgid "Switch to Tab 5"
+#~ msgstr "Camudar a llingüeta 5"
+
+#~ msgid "Switch to Tab 6"
+#~ msgstr "Camudar a llingüeta 6"
+
+#~ msgid "Switch to Tab 7"
+#~ msgstr "Camudar a llingüeta 7"
+
+#~ msgid "Switch to Tab 8"
+#~ msgstr "Camudar a llingüeta 8"
+
+#~ msgid "Switch to Tab 9"
+#~ msgstr "Camudar a llingüeta 9"
+
+#~ msgid "Contents"
+#~ msgstr "Contenidos"
+
+#~ msgid "File"
+#~ msgstr "Ficheru"
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "View"
+#~ msgstr "Ver"
+
+#~ msgid "Go"
+#~ msgstr "Dir"
+
+#~ msgid "Help"
+#~ msgstr "Aida"
+
+#~ msgid "Action"
+#~ msgstr "Aición"
+
+#~ msgid "Shortcut key"
+#~ msgstr "Atayu de tecláu"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Criar atayu de tecláu"
+
+#~ msgid "Clea_r"
+#~ msgstr "Llimpia_r"
+
+#~ msgid "Compose shortcut for:"
+#~ msgstr "Criar atayu de tecláu pa:"
+
+#~ msgid "Failed to acquire keyboard"
+#~ msgstr "Fallu al capturar tecláu"
+
+#~ msgid "Another application has already acquired control over your keyboard."
+#~ msgstr "Otra aplicación yá tien el control sobro'l to tecláu."
+
+#~ msgid "Toolbar Editor"
+#~ msgstr "Editor de barra de ferramientes"
+
+#~ msgid "Open a new window for the current terminal tab"
+#~ msgstr "Abrir una nueva ventana pa la llingüeta actual del terminal"
+
+#~ msgid "Close the current terminal tab"
+#~ msgstr "Zarrar la llingüeta actual de terminal"
+
+#~ msgid "Close the terminal window"
+#~ msgstr "Zarrar la ventana de terminal"
+
+#~ msgid "Paste from primary selection"
+#~ msgstr "Apegar de la Escoyeta primaria"
+
+#~ msgid "_Toolbars..."
+#~ msgstr "Barra de ferramien_tes..."
+
+#~ msgid "Customize the toolbars"
+#~ msgstr "Personalizar les barres de ferramientes"
+
+#~ msgid "Set a custom title for the current tab"
+#~ msgstr "Afitar un títulu personalizáu pa la llingüeta actual"
+
+#~ msgid "_Reset"
+#~ msgstr "_Resetear"
+
+#~ msgid "Reset and C_lear"
+#~ msgstr "Reaniciar y L_limpiar"
+
+#, fuzzy
+#~ msgid "Reset and clear"
+#~ msgstr "Reaniciar y desaniciar"
+
+#~ msgid "Report a bug in Terminal"
+#~ msgstr "Unviar un informe de fallu dende Terminal"
+
+#~ msgid "Display information about Terminal"
+#~ msgstr "Amosar información sobro Terminal"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Activar el dilíu pa les lletres del terminal"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Activa esta opción si quies que Terminal use l'efeutu de dilíu cuando "
+#~ "amuese testu nes ventanes del terminal. Desactivar esta opción puede "
+#~ "acelerar abondo'l rendimientu de la representación y amenorgar la carga "
+#~ "total en sistemes lentos."
+
+#~ msgid "Palette entry 1"
+#~ msgstr "Entrada de paleta 1"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "Entrada de paleta 10"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "Entrada de paleta 11"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "Entrada de paleta 12"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "Entrada de paleta 13"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "Entrada de paleta 14"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "Entrada de paleta 15"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "Entrada de paleta 16"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "Entrada de paleta 2"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "Entrada de paleta 3"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "Entrada de paleta 4"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "Entrada de paleta 5"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "Entrada de paleta 6"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "Entrada de paleta 7"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "Entrada de paleta 8"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "Entrada de paleta 9"
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Atayu de tecláu"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr ""
+#~ "Les aplicaciones de terminal tienen esta paleta de colores disponible:"
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Esto especifica qué valor tien la variable d'entornu $TERM, cuando una "
+#~ "nueva llingüeta de terminal o terminal nuevu s'abre. El valor "
+#~ "predetermináu valdrá na mayoría de los sistemes. Si tienes problemes "
+#~ "colos colores en dalgunes aplicaciones, prueba a poner xterm-color equí"
+
+#~ msgid "Use _default color"
+#~ msgstr "Usar color _predetermináu"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Usar un color de fondu personalizáu pal testu escoyíu"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "Usar _color personalizáu"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Usar el color predetermináu pal fondu del testu escoyíu"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "Atayos de tecláu"
 
 #~ msgid ""
 #~ "  -h, --help                          Print this help message and exit"

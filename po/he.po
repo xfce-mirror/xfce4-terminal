@@ -9,186 +9,226 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2012-12-26 10:01+0100\n"
 "PO-Revision-Date: 2008-04-29 20:44+0200\n"
 "Last-Translator: Dotan Kamber <kamberd@yahoo.com>\n"
 "Language-Team: Hebrew\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:113
 #, fuzzy
 msgid "General Options"
 msgstr "כללי"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:115 ../terminal/main.c:141
 #, fuzzy
 msgid "display"
 msgstr "לא מוצגת"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:117 ../terminal/main.c:132
 msgid "directory"
 msgstr ""
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:121
 msgid "Window or Tab Separators"
 msgstr ""
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:126
 #, fuzzy
 msgid "Tab Options"
 msgstr "אפשרויות כרטיסיות"
 
 #. parameter of --command
-#: ../terminal/main.c:72
+#: ../terminal/main.c:128
 #, fuzzy
 msgid "command"
 msgstr "<b>פקודה</b>"
 
 #. parameter of --title
-#: ../terminal/main.c:74
+#: ../terminal/main.c:130
 #, fuzzy
 msgid "title"
 msgstr "כותרת"
 
-#: ../terminal/main.c:83
+#: ../terminal/main.c:139
 #, fuzzy
 msgid "Window Options"
 msgstr "Unknown option \"%s\""
 
 #. parameter of --geometry
-#: ../terminal/main.c:87
+#: ../terminal/main.c:143
 msgid "geometry"
 msgstr ""
 
 #. parameter of --role
-#: ../terminal/main.c:89
+#: ../terminal/main.c:145
 msgid "role"
 msgstr ""
 
 #. parameter of --startup-id
-#: ../terminal/main.c:91
+#: ../terminal/main.c:147
 #, fuzzy
 msgid "string"
 msgstr "אזהרה"
 
 #. parameter of --icon
-#: ../terminal/main.c:93
+#: ../terminal/main.c:149
 #, fuzzy
 msgid "icon"
 msgstr "פעולה"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
-msgid "Terminal"
-msgstr "מסוף"
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
+#, fuzzy
+msgid "Xfce Terminal"
+msgstr "פתח מסוף"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
+#: ../terminal/main.c:200
+msgid "The Xfce development team. All rights reserved."
 msgstr ""
-"%s %s (Xfce %s)\n"
-"\n"
-"זכויות יוצרים (c) %s \n"
-"          os-cillation e.K. All rights reserved.\n"
-"\n"
-"נכתב על ידי Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"נבנה עם Gtk+-%d.%d.%d, מופעל עם Gtk+-%d.%d.%d.\n"
-"\n"
-"דיווחי באגים נא לשלוח אל <%s>.\n"
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:201
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr ""
+
+#: ../terminal/main.c:202
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr ""
+
+#: ../terminal/main.c:203
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../terminal/main.c:306
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "אין אפשרות לרשום את שרות המסוף: %s\n"
 
-#: ../terminal/terminal-app.c:516
+#: ../terminal/terminal-app.c:601
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "מחרוזת גודל ומיקום לא שגויה \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-gdbus.c:81
 msgid "User id mismatch"
 msgstr "חוסר התאמה בזהות המשתמש"
 
-#: ../terminal/terminal-dbus.c:133
-#, c-format
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "ערוץ ההודעות של D-BUS מנותק, יוצא...\n"
+#: ../terminal/terminal-gdbus.c:87
+#, fuzzy
+msgid "Display mismatch"
+msgstr "חוסר התאמה בזהות המשתמש"
 
-#: ../terminal/terminal-dbus.c:195
-#, c-format
-msgid "Unable to register object %s"
-msgstr "אין אפשרות לרשום אובייקט %s"
-
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:74
+#: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "מדמה מסוף X"
 
-#: ../terminal/terminal-dialogs.c:102
+#: ../terminal/terminal-dialogs.c:81
 msgid "translator-credits"
 msgstr "תודות למתרגם (%s)"
 
-#: ../terminal/terminal-dialogs.c:105
+#: ../terminal/terminal-dialogs.c:84
 msgid "Visit Terminal website"
 msgstr ""
 
-#: ../terminal/terminal-dialogs.c:215
+#: ../terminal/terminal-encoding-action.c:71
+msgid "Western European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:72
+msgid "Central European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:73
+msgid "Baltic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:74
+msgid "South-Eastern Europe"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:75
+msgid "Turkish"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:76
+msgid "Cyrillic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:77
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:78
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:79
+msgid "Korean"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:80
+msgid "Japanese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:81
+msgid "Greek"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:82
+msgid "Arabic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Hebrew"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Thai"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:85
+msgid "Vietnamese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Unicode"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+#, fuzzy
+msgid "Other"
+msgstr "אחר..."
+
+#. action to reset to the default
+#: ../terminal/terminal-encoding-action.c:255
+#: ../terminal/terminal-encoding-action.c:387
 #, c-format
-msgid "The %s user manual is not installed on your computer"
+msgid "Default (%s)"
 msgstr ""
 
-#: ../terminal/terminal-dialogs.c:218
-#, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
-
-#: ../terminal/terminal-dialogs.c:220
-msgid "User manual is missing"
-msgstr ""
-
-#: ../terminal/terminal-dialogs.c:222
-msgid "_Read Online"
-msgstr ""
-
-#. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
-msgid "Failed to open the documentation browser"
-msgstr "אין אפשרות לפתוח את מציג התיעוד"
-
-#: ../terminal/terminal-options.c:210
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -197,7 +237,7 @@ msgstr ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 
-#: ../terminal/terminal-options.c:225
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -206,7 +246,7 @@ msgstr ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 
-#: ../terminal/terminal-options.c:241
+#: ../terminal/terminal-options.c:249
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -215,7 +255,7 @@ msgstr ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 
-#: ../terminal/terminal-options.c:258
+#: ../terminal/terminal-options.c:266
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -224,7 +264,7 @@ msgstr ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 
-#: ../terminal/terminal-options.c:275
+#: ../terminal/terminal-options.c:283
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -233,19 +273,19 @@ msgstr ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 
-#: ../terminal/terminal-options.c:290
+#: ../terminal/terminal-options.c:298
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Option \"--title/-T\" requires specifying the title as its parameter"
 
-#: ../terminal/terminal-options.c:309
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
 "Option \"--display\" requires specifying the X display as its parameters"
 
-#: ../terminal/terminal-options.c:324
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -254,19 +294,19 @@ msgstr ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 
-#: ../terminal/terminal-options.c:339
+#: ../terminal/terminal-options.c:347
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Option \"--role\" requires specifying the window role as its parameter"
 
-#: ../terminal/terminal-options.c:354
+#: ../terminal/terminal-options.c:362
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 
-#: ../terminal/terminal-options.c:369
+#: ../terminal/terminal-options.c:377
 #, fuzzy, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -275,862 +315,121 @@ msgstr ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:444
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Unknown option \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:227
+#: ../terminal/terminal-preferences-dialog.c:260
 msgid "All Files"
 msgstr "כל הקבצים"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-preferences-dialog.c:266
 msgid "Image Files"
 msgstr "קבצי תמונות"
 
-#: ../terminal/terminal-preferences.c:309
-msgid "Open Tab"
-msgstr "פתח כרטיסייה"
-
-#: ../terminal/terminal-preferences.c:320
-msgid "Open Terminal"
-msgstr "פתח מסוף"
-
-#: ../terminal/terminal-preferences.c:331
-msgid "Detach Tab"
-msgstr "נתק כרטיסיה"
-
-#: ../terminal/terminal-preferences.c:342
-msgid "Close Tab"
-msgstr "סגור כרטיסייה"
-
-#: ../terminal/terminal-preferences.c:353
-msgid "Close Window"
-msgstr "סגור חלון"
-
-#: ../terminal/terminal-preferences.c:364
-msgid "Copy"
-msgstr "העתק"
-
-#: ../terminal/terminal-preferences.c:375
-msgid "Paste"
-msgstr "הדבק"
-
-#: ../terminal/terminal-preferences.c:386
-msgid "Paste Selection"
-msgstr "הדבק בחירה"
-
-#: ../terminal/terminal-preferences.c:397
-msgid "Preferences"
-msgstr "העדפות"
-
-#: ../terminal/terminal-preferences.c:408
-msgid "Show menubar"
-msgstr "הצג סרגל תפריטים"
-
-#: ../terminal/terminal-preferences.c:419
-msgid "Show toolbars"
-msgstr "הצג סרגלי כלים"
-
-#: ../terminal/terminal-preferences.c:430
-msgid "Show borders"
-msgstr "הצג גבולות"
-
-#: ../terminal/terminal-preferences.c:441
-msgid "Fullscreen"
-msgstr "מסך מלא"
-
-#: ../terminal/terminal-preferences.c:452
-msgid "Set Title"
-msgstr "הגדר כותרת"
-
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
-msgid "Reset"
-msgstr "אפס"
-
-#: ../terminal/terminal-preferences.c:474
-msgid "Reset and Clear"
-msgstr "אפס ונקה"
-
-#: ../terminal/terminal-preferences.c:485
-msgid "Previous Tab"
-msgstr "כרטיסייה קודמת"
-
-#: ../terminal/terminal-preferences.c:496
-msgid "Next Tab"
-msgstr "כרטיסייה הבאה"
-
-#: ../terminal/terminal-preferences.c:507
-msgid "Switch to Tab 1"
-msgstr "דלג לכרטיסייה 1"
-
-#: ../terminal/terminal-preferences.c:518
-msgid "Switch to Tab 2"
-msgstr "דלג לכרטיסייה 2"
-
-#: ../terminal/terminal-preferences.c:529
-msgid "Switch to Tab 3"
-msgstr "דלג לכרטיסייה 3"
-
-#: ../terminal/terminal-preferences.c:540
-msgid "Switch to Tab 4"
-msgstr "דלג לכרטיסייה 4"
-
-#: ../terminal/terminal-preferences.c:551
-msgid "Switch to Tab 5"
-msgstr "דלג לכרטיסייה 5"
-
-#: ../terminal/terminal-preferences.c:562
-msgid "Switch to Tab 6"
-msgstr "דלג לכרטיסייה 6"
-
-#: ../terminal/terminal-preferences.c:573
-msgid "Switch to Tab 7"
-msgstr "דלג לכרטיסייה 7"
-
-#: ../terminal/terminal-preferences.c:584
-msgid "Switch to Tab 8"
-msgstr "דלג לכרטיסייה 8"
-
-#: ../terminal/terminal-preferences.c:595
-msgid "Switch to Tab 9"
-msgstr "דלג לכרטיסייה 9"
-
-#: ../terminal/terminal-preferences.c:606
-msgid "Contents"
-msgstr "תוכן"
-
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
-msgid "Untitled"
-msgstr "ללא שם"
-
-#: ../terminal/terminal-screen.c:482
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "אין אפשרות לקבוע את מעטפת הכניסה שלך"
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
-msgid "Failed to execute child"
-msgstr "אין אפשרות להריץ תהליך-בן"
-
-#: ../terminal/terminal-screen.c:1854
-msgid "Close this tab"
-msgstr "סגור כרטיסייה זו"
-
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "קובץ"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "עריכה"
-
-#: ../terminal/terminal-shortcut-editor.c:109
-msgid "View"
-msgstr "תצוגה"
-
-#: ../terminal/terminal-shortcut-editor.c:128
-msgid "Go"
-msgstr "עבור"
-
-#: ../terminal/terminal-shortcut-editor.c:145
-msgid "Help"
-msgstr "עזרה"
-
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
-msgid "Disabled"
-msgstr "מבוטל"
-
-#: ../terminal/terminal-shortcut-editor.c:221
-msgid "Action"
-msgstr "פעולה"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Shortcut key"
-msgstr "קיצורי מקשים"
-
-#: ../terminal/terminal-shortcut-editor.c:328
-msgid "Compose shortcut"
-msgstr "הרכב קיצור"
-
-#: ../terminal/terminal-shortcut-editor.c:333
-msgid "Clea_r"
+#: ../terminal/terminal-preferences-dialog.c:567
+msgid "Load Presets..."
 msgstr ""
 
-#: ../terminal/terminal-shortcut-editor.c:352
-msgid "Compose shortcut for:"
-msgstr "הרכב קיצור עבור:"
-
-#: ../terminal/terminal-shortcut-editor.c:374
-msgid "Failed to acquire keyboard"
-msgstr "כשל ברכישת המקלדת"
-
-#: ../terminal/terminal-shortcut-editor.c:376
-msgid "Another application has already acquired control over your keyboard."
-msgstr "יישום אחר כבר רכש שליטה על המקלדת."
-
-#: ../terminal/terminal-toolbars-view.c:112
-msgid "Toolbar Editor"
-msgstr "עורך סרגל הכלים"
-
-#: ../terminal/terminal-widget.c:320
-msgid "Copy Email Address"
-msgstr "העתק כתובת דוא\"ל"
-
-#: ../terminal/terminal-widget.c:321
-msgid "Compose Email"
-msgstr "חבר דוא\"ל"
-
-#: ../terminal/terminal-widget.c:325
-msgid "Copy Link Address"
-msgstr "העתק כתובת קישור"
-
-#: ../terminal/terminal-widget.c:326
-msgid "Open Link"
-msgstr "פתח קישור"
-
-#: ../terminal/terminal-widget.c:480
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"אין אפשרות להשליך בחירה של טקסט למסוף. תסדיר לא תקין (%d) או אורך (%d)\n"
-
-#: ../terminal/terminal-widget.c:496
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"אין אפשרות להשליך כתובת מוזילה על המסוף.  תסדיר לא תקין (%d) או אורך (%d)\n"
-
-#: ../terminal/terminal-widget.c:522
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"אין אפשרות להשליך רשימת כתובות על המסוף.  תסדיר לא תקין (%d) או אורך (%d)\n"
-
-#: ../terminal/terminal-widget.c:567
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "התקבל מידע שגוי אודות הצבע: תסדיר שגוי (%d) או אורך (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:704
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "אין אפשרות לפתוח את הכתובת '%s'"
-
-#: ../terminal/terminal-window.c:221
-msgid "_File"
-msgstr "_קובץ"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open _Tab"
-msgstr "_פתח כרטיסייה"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open a new terminal tab"
-msgstr "פתח כרטיסיית מסוף חדשה"
-
-#: ../terminal/terminal-window.c:223
-msgid "Open T_erminal"
-msgstr "פתח מ_סוף"
-
-#: ../terminal/terminal-window.c:223
-msgid "Open a new terminal window"
-msgstr "פתח חלון מסוף חדש"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Detach Tab"
-msgstr "נתק _כרטיסיה"
-
-#: ../terminal/terminal-window.c:224
-msgid "Open a new window for the current terminal tab"
-msgstr "פתח חלון חדש עבור כרטיסית המסוף הנוכחית"
-
-#: ../terminal/terminal-window.c:225
-msgid "C_lose Tab"
-msgstr "_סגור כרטיסייה"
-
-#: ../terminal/terminal-window.c:225
-msgid "Close the current terminal tab"
-msgstr "סגור את כרטיסיית המסוף הנוכחית"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Close Window"
-msgstr "סגור _חלון"
-
-#: ../terminal/terminal-window.c:226
-msgid "Close the terminal window"
-msgstr "סגור את חלון המסוף"
-
-#: ../terminal/terminal-window.c:227
-msgid "_Edit"
-msgstr "ע_רוך"
-
-#: ../terminal/terminal-window.c:228
-msgid "_Copy"
-msgstr "_העתק"
-
-#: ../terminal/terminal-window.c:228
-msgid "Copy to clipboard"
-msgstr "העתק ללוח העריכה"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Paste"
-msgstr "ה_דבק"
-
-#: ../terminal/terminal-window.c:229
-msgid "Paste from clipboard"
-msgstr "הדבק מלוח עריכה"
-
-#: ../terminal/terminal-window.c:230
-msgid "Paste _Selection"
-msgstr "הדבק _בחירה"
-
-#: ../terminal/terminal-window.c:230
-msgid "Paste from primary selection"
-msgstr "הדבק מבחירה ראשית"
-
-#: ../terminal/terminal-window.c:231
-msgid "_Toolbars..."
-msgstr "ס_רגלי כלים..."
-
-#: ../terminal/terminal-window.c:231
-msgid "Customize the toolbars"
-msgstr "התאם את סרגלי הכלים"
-
-#: ../terminal/terminal-window.c:232
-msgid "Pr_eferences..."
-msgstr "_העדפות"
-
-#: ../terminal/terminal-window.c:232
-msgid "Open the Terminal preferences dialog"
-msgstr "פתח את תיבת דו-שיח העדפות המסוף"
-
-#: ../terminal/terminal-window.c:233
-msgid "_View"
-msgstr "_תצוגה"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Terminal"
-msgstr "_מסוף"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Set Title..."
-msgstr "הגדר _כותרת"
-
-#: ../terminal/terminal-window.c:235
-msgid "Set a custom title for the current tab"
-msgstr "קבע כותרת מותאמת אישית לכרטיסיה הנוכחית"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Reset"
-msgstr "_אפס"
-
-#: ../terminal/terminal-window.c:237
-msgid "Reset and C_lear"
-msgstr "אפס ו_נקה"
-
-#: ../terminal/terminal-window.c:237
-#, fuzzy
-msgid "Reset and clear"
-msgstr "אפס ונקה"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Go"
-msgstr "ע_בור"
-
-#: ../terminal/terminal-window.c:239
-msgid "_Previous Tab"
-msgstr "כרטיסייה _קודמת"
-
-#: ../terminal/terminal-window.c:239
-msgid "Switch to previous tab"
-msgstr "דלג לכרטיסייה קודמת "
-
-#: ../terminal/terminal-window.c:240
-msgid "_Next Tab"
-msgstr "כרטיסייה _הבאה"
-
-#: ../terminal/terminal-window.c:240
-msgid "Switch to next tab"
-msgstr "דלג לכרטיסייה הבאה"
-
-#: ../terminal/terminal-window.c:241
-msgid "_Help"
-msgstr "_עזרה"
-
-#: ../terminal/terminal-window.c:242
-msgid "_Contents"
-msgstr "_תוכן"
-
-#: ../terminal/terminal-window.c:242
-msgid "Display help contents"
-msgstr "הצג את תוכן העזרה"
-
-#: ../terminal/terminal-window.c:243
-msgid "_Report a bug"
-msgstr "_דווח על באג"
-
-#: ../terminal/terminal-window.c:243
-msgid "Report a bug in Terminal"
-msgstr "דווח על באג ב- Terminal"
-
-#: ../terminal/terminal-window.c:244
-msgid "_About"
-msgstr "_אודות"
-
-#: ../terminal/terminal-window.c:244
-msgid "Display information about Terminal"
-msgstr "הצג מידע לגבי Terminal"
-
-#: ../terminal/terminal-window.c:245
-msgid "_Input Methods"
-msgstr "_שיטות קלט"
-
-#: ../terminal/terminal-window.c:250
-msgid "Show _Menubar"
-msgstr "הצג סרגל _תפריטים"
-
-#: ../terminal/terminal-window.c:250
-msgid "Show/hide the menubar"
-msgstr "הצג/הסתר סרגל תפריטים"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show _Toolbars"
-msgstr "הצג סרגלי _כלים"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show/hide the toolbars"
-msgstr "הצג/הסתר סרגלי כלים"
-
-#: ../terminal/terminal-window.c:252
-msgid "Show Window _Borders"
-msgstr "_הצג גבולות חלון"
-
-#: ../terminal/terminal-window.c:252
-msgid "Show/hide the window decorations"
-msgstr "הצג/הסתר עיטורי חלון"
-
-#: ../terminal/terminal-window.c:253
-msgid "_Fullscreen"
-msgstr "_מסך מלא"
-
-#: ../terminal/terminal-window.c:253
-msgid "Toggle fullscreen mode"
-msgstr "הפעל מצב מסך מלא"
-
-#: ../terminal/terminal-window.c:560
-msgid "Warning"
-msgstr "אזהרה"
-
-#: ../terminal/terminal-window.c:571
-msgid "Close all tabs"
-msgstr "סגור את כל הכרטיסיות"
-
-#: ../terminal/terminal-window.c:590
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"בחלון זה %dכרטיסיות פתוחות.\n"
-"סגירת החלון תביא לסגירת כל הכרטיסיות"
-
-#: ../terminal/terminal-window.c:593
-msgid "Close all tabs?"
-msgstr "לסגור את כל הכרטיסיות?"
-
-#: ../terminal/terminal-window.c:606
-msgid "Do _not ask me again"
-msgstr "_אל תשאל שנית"
-
-#: ../terminal/terminal-window.c:1555
-msgid "Window Title|Set Title"
-msgstr "כותרת חלון|בחירת כותרת"
-
-#: ../terminal/terminal-window.c:1568
-#, fuzzy
-msgid "Title:"
-msgstr "כותרת"
-
-#: ../terminal/terminal-window.c:1580
-msgid "Enter the title for the current terminal tab"
-msgstr "הזן כותרת עבור כרטיסיית המסוף הנוכחית"
-
-#: ../Terminal.desktop.in.in.h:2
-msgid "Terminal Emulator"
-msgstr "מדמה מסוף"
-
-#: ../Terminal.glade.h:1
-#, fuzzy
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> הגדרות:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../Terminal.glade.h:3
-#, fuzzy
-msgid "Ad_vanced"
-msgstr "מתקדם"
-
-#: ../Terminal.glade.h:4
-#, fuzzy
-msgid "Allow bold te_xt"
-msgstr "אפשר טקסט מעובה."
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "איתור אוטומטי"
-
-#: ../Terminal.glade.h:6
-#, fuzzy
-msgid "Background"
-msgstr "תמונת רקע"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "תמונת רקע"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "ממורכז"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "בחירת גופן המסוף"
-
-#: ../Terminal.glade.h:10
-#, fuzzy
-msgid "Choose tab activity color"
-msgstr "בחירת צבע הטקסט של המסוף"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "בחירת צבע רקע למסוף"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "בחירת צבע לסמן במסוף"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "בחירת צבע הטקסט של המסוף"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "בחירת צבע רקע לכתב נבחר במסוף"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "בוחר צבעים"
-
-#: ../Terminal.glade.h:16
-#, fuzzy
-msgid "Command"
-msgstr "<b>פקודה</b>"
-
-#: ../Terminal.glade.h:17
-#, fuzzy
-msgid "Compatibility"
-msgstr "<b>תאימות</b>"
-
-#: ../Terminal.glade.h:18
-#, fuzzy
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "החשב את התווים הבאים כחלק ממילה בעת לחיצה כפולה:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
-#, fuzzy
-msgid "Cu_rsor color:"
-msgstr "_צבע כתב וסמן:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "חסום גישה ל_תפריטים על ידי המקלדת (לדוגמה Alt+ק)"
-
-#: ../Terminal.glade.h:23
-#, fuzzy
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "חסום מקשי _קיצור דרך לתפריטים (ברירת המחדל F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "הצג _גבולות סביב חלונות חדשים"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "הצג סרגל _תפריטים בחלונות חדשים"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "הצג סרגלי _כלים בחלונות חדשים"
-
-#: ../Terminal.glade.h:28
-#, fuzzy
-msgid "Double Click"
-msgstr "<b>לחיצה כפולה</b>"
-
-#: ../Terminal.glade.h:29
-#, fuzzy
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "אפשר החלקת גופנים במסוף"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"התר אפשרות זו אם ברצונך שהמסוף ישתמש בהחלקת גופנים כאשר מוצג טקסטבחלונות "
-"המסוף. ביטול אפשרות זו יכול להאיץ את הצגת הכיתוב באופן משמעותיולהוריד את "
-"צריכת משאבי המערכת ככלל במערכות איטיות."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"התר אפשרות זו כדי לאפשר ליישומים הרצים בתוך חלונות המסוףלהשתמש בכיתוב מודגש"
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"התר אפשרות זו כדי שניתן יהיה לגלול שורה בודדת בעזרת מקשי  חץ-מעלה/חץ-מטה יחד "
-"עם מקש ה-Shift"
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "התר אפשרות זו כדי להציג סרגל תפריטים בחלונות מסוף חדשים."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "התר אפשרות זו כדי להציג סרגלי כלים בחלונות מסוף חדשים."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "התר אפשרות זו כדי להציג עיטורי חלון סביב חלונות מסוף חדשים."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"מאפשר לך ללחוץ על כל מקש במקלדת כדי לגלול מטה בחלון המסוף אל שורת הפקודה."
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "רצף Escape"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "כללי"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "אחרי הכותרת הראשונית"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "לפני הכותרת הראשונית"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "לא מוצגת"
-
-#: ../Terminal.glade.h:44
-#, fuzzy
-msgid "Menubar Access"
-msgstr "<b>גישה לתפריטים</b>"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "ללא (השתמש בצבע אחיד)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "בצד שמאל"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "בצד ימין"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "פתח תיבת דו-שיח להגדרת הצבע"
-
-#: ../Terminal.glade.h:49
-#, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>פתיחת חלון חדש</b>"
-
-#: ../Terminal.glade.h:50
-#, fuzzy
-msgid "Palette"
-msgstr "<b>לוח צבעים</b>"
-
-#: ../Terminal.glade.h:51
-#, fuzzy
-msgid "Palette entry 1"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:52
-#, fuzzy
-msgid "Palette entry 10"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:53
-#, fuzzy
-msgid "Palette entry 11"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:54
-#, fuzzy
-msgid "Palette entry 12"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:55
-#, fuzzy
-msgid "Palette entry 13"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:56
-#, fuzzy
-msgid "Palette entry 14"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:57
-#, fuzzy
-msgid "Palette entry 15"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:58
-#, fuzzy
-msgid "Palette entry 16"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:59
-#, fuzzy
-msgid "Palette entry 2"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:60
-#, fuzzy
-msgid "Palette entry 3"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:61
-#, fuzzy
-msgid "Palette entry 4"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:62
-#, fuzzy
-msgid "Palette entry 5"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:63
-#, fuzzy
-msgid "Palette entry 6"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:64
-#, fuzzy
-msgid "Palette entry 7"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:65
-#, fuzzy
-msgid "Palette entry 8"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:66
-#, fuzzy
-msgid "Palette entry 9"
-msgstr "צבע מס' %d"
-
-#: ../Terminal.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:1
 msgid "Replaces initial title"
 msgstr "מחליף את הכותרת הראשונית"
 
-#: ../Terminal.glade.h:68
-#, fuzzy
-msgid "Rese_t double click options to defaults"
-msgstr "ה_חזר אפשרויות תאימות למצב ברירת המחדל"
+#: ../terminal/terminal-preferences.glade.h:2
+msgid "Goes before initial title"
+msgstr "לפני הכותרת הראשונית"
 
-#: ../Terminal.glade.h:69
-#, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "בחירת צבע הטקסט של המסוף"
+#: ../terminal/terminal-preferences.glade.h:3
+msgid "Goes after initial title"
+msgstr "אחרי הכותרת הראשונית"
 
-#: ../Terminal.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:4
+msgid "Isn't displayed"
+msgstr "לא מוצגת"
+
+#: ../terminal/terminal-preferences.glade.h:5
+msgid "Disabled"
+msgstr "מבוטל"
+
+#: ../terminal/terminal-preferences.glade.h:6
+msgid "On the left side"
+msgstr "בצד שמאל"
+
+#: ../terminal/terminal-preferences.glade.h:7
+msgid "On the right side"
+msgstr "בצד ימין"
+
+#: ../terminal/terminal-preferences.glade.h:8
+msgid "None (use solid color)"
+msgstr "ללא (השתמש בצבע אחיד)"
+
+#: ../terminal/terminal-preferences.glade.h:9
+msgid "Background image"
+msgstr "תמונת רקע"
+
+#: ../terminal/terminal-preferences.glade.h:10
+msgid "Transparent background"
+msgstr "רקע שקוף"
+
+#: ../terminal/terminal-preferences.glade.h:11
+msgid "Auto-detect"
+msgstr "איתור אוטומטי"
+
+#: ../terminal/terminal-preferences.glade.h:12
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../terminal/terminal-preferences.glade.h:13
+msgid "Escape sequence"
+msgstr "רצף Escape"
+
+#: ../terminal/terminal-preferences.glade.h:14
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:16
+#, fuzzy
+msgid "Tiled"
+msgstr "פרוש"
+
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "ממורכז"
+
+#: ../terminal/terminal-preferences.glade.h:18
 msgid "Scaled"
 msgstr "מותאם לגבול"
 
-#: ../Terminal.glade.h:71
-#, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "סרגל ה_גלילה:"
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "מתוח"
 
-#: ../Terminal.glade.h:72
-msgid "Scroll on _keystroke"
-msgstr "גלול בלחיצת _מקש"
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "העדפות מסוף"
 
-#: ../Terminal.glade.h:73
-#, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "גלול ב_פלט"
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "כותרת _ראשונית:"
 
-#: ../Terminal.glade.h:74
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "גלול שורה_בודדת בעזרת מקשי Shift+Up/Down"
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "_Dynamically-set title:"
+msgstr "קבע כותרת באופן _דינמי:"
 
-#: ../Terminal.glade.h:75
-#, fuzzy
-msgid "Scroll_back:"
-msgstr "גלול _לאחור:"
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "כותרת"
 
-#: ../Terminal.glade.h:76
-#, fuzzy
-msgid "Scrolling"
-msgstr "<b>גלילה</b>"
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "_הרץ פקודה לפי מעטפת ההתחברות"
 
-#: ../Terminal.glade.h:77
-#, fuzzy
-msgid "Select Background Image File"
-msgstr "בחר קובץ תמונת רקע"
-
-#: ../Terminal.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:25
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1141,49 +440,368 @@ msgstr ""
 "פותח מסופים חדשים. ראה את תיעוד המעטפת שלך לפרטים הודות הבדלים בין הרצתה "
 "כמעטפת אינטראקטיבית ובין הרצתה כמעטפת הכניסה."
 
-#: ../Terminal.glade.h:79
-#, fuzzy
-msgid "Shortcut Keys"
-msgstr "קיצורי מקשים"
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_עדכן את רישומי utmp/wtmp כאשר פקודה נשלחת"
 
-#: ../Terminal.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:27
+#, fuzzy
+msgid "Command"
+msgstr "<b>פקודה</b>"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "גלול שורה_בודדת בעזרת מקשי Shift+Up/Down"
+
+#: ../terminal/terminal-preferences.glade.h:29
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"התר אפשרות זו כדי שניתן יהיה לגלול שורה בודדת בעזרת מקשי  חץ-מעלה/חץ-מטה יחד "
+"עם מקש ה-Shift"
+
+#: ../terminal/terminal-preferences.glade.h:30
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "גלול ב_פלט"
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"אפשרות זו קובעת האם המסוף יגלול מטה אוטומטיתכאשר פלט חדש נוצר על יד הפקודות "
+"הרצות בתוך מסוף"
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid "Scroll on _keystroke"
+msgstr "גלול בלחיצת _מקש"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"מאפשר לך ללחוץ על כל מקש במקלדת כדי לגלול מטה בחלון המסוף אל שורת הפקודה."
+
+#: ../terminal/terminal-preferences.glade.h:34
+#, fuzzy
+msgid "Scr_ollbar is:"
+msgstr "סרגל ה_גלילה:"
+
+#: ../terminal/terminal-preferences.glade.h:35
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "גלול _לאחור:"
+
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "מגדיר את מספר השורות שניתן לגלול לאחור בעזרת סרגל הגלילה."
 
-#: ../Terminal.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:37
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>גלילה</b>"
+
+#: ../terminal/terminal-preferences.glade.h:38
+#, fuzzy
+msgid "_General"
+msgstr "כללי"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "Choose Terminal Font"
+msgstr "בחירת גופן המסוף"
+
+#: ../terminal/terminal-preferences.glade.h:40
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "אפשר טקסט מעובה."
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"התר אפשרות זו כדי לאפשר ליישומים הרצים בתוך חלונות המסוףלהשתמש בכיתוב מודגש"
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "Font"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "_File:"
+msgstr "_קובץ"
+
+#: ../terminal/terminal-preferences.glade.h:44
 #, fuzzy
 msgid "St_yle:"
 msgstr "_סגנון:"
 
-#: ../Terminal.glade.h:82
-msgid "Stretched"
-msgstr "מתוח"
+#: ../terminal/terminal-preferences.glade.h:45
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "בחר קובץ תמונת רקע"
 
-#: ../Terminal.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:46
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "רקע שקוף"
+
+#: ../terminal/terminal-preferences.glade.h:47
+#, fuzzy
+msgid "Background"
+msgstr "תמונת רקע"
+
+#: ../terminal/terminal-preferences.glade.h:48
+msgid "Display _menubar in new windows"
+msgstr "הצג סרגל _תפריטים בחלונות חדשים"
+
+#: ../terminal/terminal-preferences.glade.h:49
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "התר אפשרות זו כדי להציג סרגל תפריטים בחלונות מסוף חדשים."
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "Display _toolbars in new windows"
+msgstr "הצג סרגלי _כלים בחלונות חדשים"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "התר אפשרות זו כדי להציג סרגלי כלים בחלונות מסוף חדשים."
+
+#: ../terminal/terminal-preferences.glade.h:52
+msgid "Display _borders around new windows"
+msgstr "הצג _גבולות סביב חלונות חדשים"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "התר אפשרות זו כדי להציג עיטורי חלון סביב חלונות מסוף חדשים."
+
+#: ../terminal/terminal-preferences.glade.h:54
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>פתיחת חלון חדש</b>"
+
+#: ../terminal/terminal-preferences.glade.h:55
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "בחירת צבע הטקסט של המסוף"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "seconds"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:57
 #, fuzzy
 msgid "Tab Activity Indicator"
 msgstr "בחירת צבע הטקסט של המסוף"
 
-#: ../Terminal.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:58
+#, fuzzy
+msgid "_Appearance"
+msgstr "מראה"
+
+#: ../terminal/terminal-preferences.glade.h:59
+#, fuzzy
+msgid "_Text color:"
+msgstr "_צבע כתב וסמן:"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "_Background color:"
+msgstr "צבע ה_רקע"
+
+#: ../terminal/terminal-preferences.glade.h:61
 #, fuzzy
 msgid "Tab activit_y color:"
 msgstr "בחירת צבע הטקסט של המסוף"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal Preferences"
-msgstr "העדפות מסוף"
-
-#: ../Terminal.glade.h:86
-msgid "Terminal applications have this color palette available to them:"
-msgstr "ליישומי המסוף יש את לוח הצבעים הבא אשר זמין עבורן:"
-
-#: ../Terminal.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:62
 #, fuzzy
-msgid "Text Selection"
+msgid "Cu_rsor color:"
+msgstr "_צבע כתב וסמן:"
+
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "_Vary the background color for each tab"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:64
+msgid ""
+"The random color is based on the selected background color, keeping the same "
+"brightness. "
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:65
+#, fuzzy
+msgid "Choose background color"
+msgstr "בחירת צבע רקע למסוף"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Color Selector"
+msgstr "בוחר צבעים"
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Open a dialog to specify the color"
+msgstr "פתח תיבת דו-שיח להגדרת הצבע"
+
+#: ../terminal/terminal-preferences.glade.h:68
+#, fuzzy
+msgid "Choose text color"
+msgstr "בחירת צבע הטקסט של המסוף"
+
+#: ../terminal/terminal-preferences.glade.h:69
+#, fuzzy
+msgid "Choose cursor color"
+msgstr "בחירת צבע לסמן במסוף"
+
+#: ../terminal/terminal-preferences.glade.h:70
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "בחירת צבע הטקסט של המסוף"
+
+#: ../terminal/terminal-preferences.glade.h:71
+msgid "General"
+msgstr "כללי"
+
+#: ../terminal/terminal-preferences.glade.h:72
+#, fuzzy
+msgid "Text _selection color:"
 msgstr "<b>בחירת כתב</b>"
 
-#: ../Terminal.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:73
+msgid ""
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:74
+#, fuzzy
+msgid "Choose text selection background color"
+msgstr "בחירת צבע רקע לכתב נבחר במסוף"
+
+#: ../terminal/terminal-preferences.glade.h:75
+#, fuzzy
+msgid "B_old text color:"
+msgstr "_צבע כתב וסמן:"
+
+#: ../terminal/terminal-preferences.glade.h:76
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:77
+#, fuzzy
+msgid "Choose bold font color"
+msgstr "בחירת צבע הטקסט של המסוף"
+
+#: ../terminal/terminal-preferences.glade.h:78
+#, fuzzy
+msgid "Custom Colors"
+msgstr "_צבע כתב וסמן:"
+
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "Black"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:82
+msgid "Dark Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Light Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "Light Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Brown / Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Light Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Light Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Light Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "White"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Light Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:95
+#, fuzzy
+msgid "Palette"
+msgstr "<b>לוח צבעים</b>"
+
+#: ../terminal/terminal-preferences.glade.h:96
+#, fuzzy
+msgid "Presets"
+msgstr "אפס"
+
+#: ../terminal/terminal-preferences.glade.h:97
+#, fuzzy
+msgid "_Colors"
+msgstr "צבעים"
+
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "_Backspace key generates:"
+msgstr "_פעולת מקש ה- Backspace"
+
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "_Delete key generates:"
+msgstr "_פעולת מקש ה- Delete"
+
+#: ../terminal/terminal-preferences.glade.h:100
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> הגדרות:"
+
+#: ../terminal/terminal-preferences.glade.h:101
+#, fuzzy
+msgid "_Reset compatibility options to defaults"
+msgstr "ה_חזר אפשרויות תאימות למצב ברירת המחדל"
+
+#: ../terminal/terminal-preferences.glade.h:102
 #, fuzzy
 msgid ""
 "These options may cause some applications to behave\n"
@@ -1195,125 +813,636 @@ msgstr ""
 "כאן רק כדי לאפשר עקיפת מכשולים ביישומים ובמערכות הפעלה שמצפות להתנהגות שונה "
 "מהמסוף."
 
-#: ../Terminal.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:106
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>תאימות</b>"
+
+#: ../terminal/terminal-preferences.glade.h:107
+#, fuzzy
+msgid "Co_mpatibility"
+msgstr "<b>תאימות</b>"
+
+#: ../terminal/terminal-preferences.glade.h:108
+#, fuzzy
 msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"אפשרות זו קובעת האם המסוף יגלול מטה אוטומטיתכאשר פלט חדש נוצר על יד הפקודות "
-"הרצות בתוך מסוף"
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "החשב את התווים הבאים כחלק ממילה בעת לחיצה כפולה:"
 
-#: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-"מגדיר את הערך אליו מכוון משתנה הסביבה $TERM, כאשר נפתחים כרטיסיית או חלון "
-"מסוף. ברירת המחדל אמורה לעבוד כראוי במרבית המערכות. אם נתקלת בבעיות עם "
-"הצבעים בישומים שונים, ניתן לנסות את xterm-color כאן."
-
-#: ../Terminal.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:110
 #, fuzzy
-msgid "Tiled"
-msgstr "פרוש"
-
-#: ../Terminal.glade.h:95
-msgid "Title"
-msgstr "כותרת"
-
-#: ../Terminal.glade.h:96
-#, fuzzy
-msgid "Transpare_ncy:"
-msgstr "רקע שקוף"
-
-#: ../Terminal.glade.h:97
-msgid "Transparent background"
-msgstr "רקע שקוף"
-
-#: ../Terminal.glade.h:98
-msgid "Use _default color"
-msgstr "השתמש בצבע _ברירת מחדל"
-
-#: ../Terminal.glade.h:99
-msgid "Use a custom text selection background color"
-msgstr "השתמש בצבע רקע מותאם אישית לכתב נבחר"
-
-#: ../Terminal.glade.h:100
-#, fuzzy
-msgid "Use c_ustom color:"
-msgstr "השתמש בצבע _מותאם אישית"
-
-#: ../Terminal.glade.h:101
-msgid "Use the default text selection background color"
-msgstr "השתמש בצבע ברירת המחדל לרקע כתב נבחר"
-
-#: ../Terminal.glade.h:102
-#, fuzzy
-msgid "_Appearance"
-msgstr "מראה"
-
-#: ../Terminal.glade.h:103
-msgid "_Background color:"
-msgstr "צבע ה_רקע"
-
-#: ../Terminal.glade.h:104
-msgid "_Backspace key generates:"
-msgstr "_פעולת מקש ה- Backspace"
-
-#: ../Terminal.glade.h:105
-#, fuzzy
-msgid "_Colors"
-msgstr "צבעים"
-
-#: ../Terminal.glade.h:106
-msgid "_Delete key generates:"
-msgstr "_פעולת מקש ה- Delete"
-
-#: ../Terminal.glade.h:107
-msgid "_Dynamically-set title:"
-msgstr "קבע כותרת באופן _דינמי:"
-
-#: ../Terminal.glade.h:108
-msgid "_File:"
-msgstr "_קובץ"
-
-#: ../Terminal.glade.h:109
-#, fuzzy
-msgid "_General"
-msgstr "כללי"
-
-#: ../Terminal.glade.h:110
-msgid "_Initial title:"
-msgstr "כותרת _ראשונית:"
-
-#: ../Terminal.glade.h:111
-#, fuzzy
-msgid "_Reset compatibility options to defaults"
+msgid "Rese_t double click options to defaults"
 msgstr "ה_חזר אפשרויות תאימות למצב ברירת המחדל"
 
-#: ../Terminal.glade.h:112
-msgid "_Run command as login shell"
-msgstr "_הרץ פקודה לפי מעטפת ההתחברות"
-
-#: ../Terminal.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:111
 #, fuzzy
-msgid "_Shortcuts"
-msgstr "קיצורים"
+msgid "Double Click"
+msgstr "<b>לחיצה כפולה</b>"
 
-#: ../Terminal.glade.h:114
-#, fuzzy
-msgid "_Text color:"
-msgstr "_צבע כתב וסמן:"
-
-#: ../Terminal.glade.h:115
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_עדכן את רישומי utmp/wtmp כאשר פקודה נשלחת"
-
-#: ../Terminal.glade.h:116
-msgid "seconds"
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Default character e_ncoding:"
 msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Encoding"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "חסום גישה ל_תפריטים על ידי המקלדת (לדוגמה Alt+ק)"
+
+#: ../terminal/terminal-preferences.glade.h:115
+#, fuzzy
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "חסום מקשי _קיצור דרך לתפריטים (ברירת המחדל F10)"
+
+#: ../terminal/terminal-preferences.glade.h:116
+#, fuzzy
+msgid "Menubar Access"
+msgstr "<b>גישה לתפריטים</b>"
+
+#: ../terminal/terminal-preferences.glade.h:117
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "מתקדם"
+
+#: ../terminal/terminal-preferences.c:756
+msgid "Terminal"
+msgstr "מסוף"
+
+#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
+#: ../terminal/terminal-screen.c:1742
+msgid "Untitled"
+msgstr "ללא שם"
+
+#: ../terminal/terminal-screen.c:547
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "אין אפשרות לקבוע את מעטפת הכניסה שלך"
+
+#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
+msgid "Failed to execute child"
+msgstr "אין אפשרות להריץ תהליך-בן"
+
+#: ../terminal/terminal-screen.c:2083
+msgid "Close this tab"
+msgstr "סגור כרטיסייה זו"
+
+#: ../terminal/terminal-widget.c:324
+msgid "Copy Email Address"
+msgstr "העתק כתובת דוא\"ל"
+
+#: ../terminal/terminal-widget.c:325
+msgid "Compose Email"
+msgstr "חבר דוא\"ל"
+
+#: ../terminal/terminal-widget.c:329
+msgid "Copy Link Address"
+msgstr "העתק כתובת קישור"
+
+#: ../terminal/terminal-widget.c:330
+msgid "Open Link"
+msgstr "פתח קישור"
+
+#: ../terminal/terminal-widget.c:484
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"אין אפשרות להשליך בחירה של טקסט למסוף. תסדיר לא תקין (%d) או אורך (%d)\n"
+
+#: ../terminal/terminal-widget.c:500
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"אין אפשרות להשליך כתובת מוזילה על המסוף.  תסדיר לא תקין (%d) או אורך (%d)\n"
+
+#: ../terminal/terminal-widget.c:526
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"אין אפשרות להשליך רשימת כתובות על המסוף.  תסדיר לא תקין (%d) או אורך (%d)\n"
+
+#: ../terminal/terminal-widget.c:571
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "התקבל מידע שגוי אודות הצבע: תסדיר שגוי (%d) או אורך (%d)\n"
+
+#: ../terminal/terminal-widget.c:705
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "אין אפשרות לפתוח את הכתובת '%s'"
+
+#: ../terminal/terminal-window.c:218
+msgid "_File"
+msgstr "_קובץ"
+
+#: ../terminal/terminal-window.c:219
+msgid "Open _Tab"
+msgstr "_פתח כרטיסייה"
+
+#: ../terminal/terminal-window.c:219
+msgid "Open a new terminal tab"
+msgstr "פתח כרטיסיית מסוף חדשה"
+
+#: ../terminal/terminal-window.c:220
+msgid "Open T_erminal"
+msgstr "פתח מ_סוף"
+
+#: ../terminal/terminal-window.c:220
+msgid "Open a new terminal window"
+msgstr "פתח חלון מסוף חדש"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Detach Tab"
+msgstr "נתק _כרטיסיה"
+
+#: ../terminal/terminal-window.c:222
+msgid "C_lose Tab"
+msgstr "_סגור כרטיסייה"
+
+#: ../terminal/terminal-window.c:223
+msgid "_Close Window"
+msgstr "סגור _חלון"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Edit"
+msgstr "ע_רוך"
+
+#: ../terminal/terminal-window.c:225
+msgid "_Copy"
+msgstr "_העתק"
+
+#: ../terminal/terminal-window.c:225
+msgid "Copy to clipboard"
+msgstr "העתק ללוח העריכה"
+
+#: ../terminal/terminal-window.c:226
+msgid "_Paste"
+msgstr "ה_דבק"
+
+#: ../terminal/terminal-window.c:226
+msgid "Paste from clipboard"
+msgstr "הדבק מלוח עריכה"
+
+#: ../terminal/terminal-window.c:227
+msgid "Paste _Selection"
+msgstr "הדבק _בחירה"
+
+#: ../terminal/terminal-window.c:228
+msgid "Select _All"
+msgstr ""
+
+#: ../terminal/terminal-window.c:229
+msgid "Pr_eferences..."
+msgstr "_העדפות"
+
+#: ../terminal/terminal-window.c:229
+#, fuzzy
+msgid "Open the preferences dialog"
+msgstr "פתח את תיבת דו-שיח העדפות המסוף"
+
+#: ../terminal/terminal-window.c:230
+msgid "_View"
+msgstr "_תצוגה"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Terminal"
+msgstr "_מסוף"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Set Title..."
+msgstr "הגדר _כותרת"
+
+#: ../terminal/terminal-window.c:233
+#, fuzzy
+msgid "_Clear Scrollback"
+msgstr "גלול _לאחור:"
+
+#: ../terminal/terminal-window.c:234
+msgid "Clear Scrollback and _Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:235
+msgid "_Go"
+msgstr "ע_בור"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Previous Tab"
+msgstr "כרטיסייה _קודמת"
+
+#: ../terminal/terminal-window.c:236
+msgid "Switch to previous tab"
+msgstr "דלג לכרטיסייה קודמת "
+
+#: ../terminal/terminal-window.c:237
+msgid "_Next Tab"
+msgstr "כרטיסייה _הבאה"
+
+#: ../terminal/terminal-window.c:237
+msgid "Switch to next tab"
+msgstr "דלג לכרטיסייה הבאה"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Help"
+msgstr "_עזרה"
+
+#: ../terminal/terminal-window.c:239
+msgid "_Contents"
+msgstr "_תוכן"
+
+#: ../terminal/terminal-window.c:239
+msgid "Display help contents"
+msgstr "הצג את תוכן העזרה"
+
+#: ../terminal/terminal-window.c:240
+msgid "_Report a bug"
+msgstr "_דווח על באג"
+
+#: ../terminal/terminal-window.c:241
+msgid "_About"
+msgstr "_אודות"
+
+#: ../terminal/terminal-window.c:242
+msgid "_Input Methods"
+msgstr "_שיטות קלט"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show _Menubar"
+msgstr "הצג סרגל _תפריטים"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show/hide the menubar"
+msgstr "הצג/הסתר סרגל תפריטים"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show _Toolbars"
+msgstr "הצג סרגלי _כלים"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show/hide the toolbars"
+msgstr "הצג/הסתר סרגלי כלים"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show Window _Borders"
+msgstr "_הצג גבולות חלון"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show/hide the window decorations"
+msgstr "הצג/הסתר עיטורי חלון"
+
+#: ../terminal/terminal-window.c:250
+msgid "_Fullscreen"
+msgstr "_מסך מלא"
+
+#: ../terminal/terminal-window.c:250
+msgid "Toggle fullscreen mode"
+msgstr "הפעל מצב מסך מלא"
+
+#. create encoding action
+#: ../terminal/terminal-window.c:408
+msgid "Set _Encoding"
+msgstr ""
+
+#: ../terminal/terminal-window.c:539
+msgid "Warning"
+msgstr "אזהרה"
+
+#: ../terminal/terminal-window.c:550
+msgid "Close all tabs"
+msgstr "סגור את כל הכרטיסיות"
+
+#: ../terminal/terminal-window.c:569
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"בחלון זה %dכרטיסיות פתוחות.\n"
+"סגירת החלון תביא לסגירת כל הכרטיסיות"
+
+#: ../terminal/terminal-window.c:572
+msgid "Close all tabs?"
+msgstr "לסגור את כל הכרטיסיות?"
+
+#: ../terminal/terminal-window.c:585
+msgid "Do _not ask me again"
+msgstr "_אל תשאל שנית"
+
+#: ../terminal/terminal-window.c:1592
+msgid "Window Title|Set Title"
+msgstr "כותרת חלון|בחירת כותרת"
+
+#: ../terminal/terminal-window.c:1605
+#, fuzzy
+msgid "Title:"
+msgstr "כותרת"
+
+#: ../terminal/terminal-window.c:1617
+msgid "Enter the title for the current terminal tab"
+msgstr "הזן כותרת עבור כרטיסיית המסוף הנוכחית"
+
+#: ../xfce4-terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "מדמה מסוף"
+
+#~ msgid ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "Copyright (c) %s\n"
+#~ "        os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "Please report bugs to <%s>.\n"
+#~ msgstr ""
+#~ "%s %s (Xfce %s)\n"
+#~ "\n"
+#~ "זכויות יוצרים (c) %s \n"
+#~ "          os-cillation e.K. All rights reserved.\n"
+#~ "\n"
+#~ "נכתב על ידי Benedikt Meurer <benny@xfce.org>.\n"
+#~ "\n"
+#~ "נבנה עם Gtk+-%d.%d.%d, מופעל עם Gtk+-%d.%d.%d.\n"
+#~ "\n"
+#~ "דיווחי באגים נא לשלוח אל <%s>.\n"
+
+#~ msgid "D-BUS message bus disconnected, exiting...\n"
+#~ msgstr "ערוץ ההודעות של D-BUS מנותק, יוצא...\n"
+
+#~ msgid "Unable to register object %s"
+#~ msgstr "אין אפשרות לרשום אובייקט %s"
+
+#~ msgid "Failed to open the documentation browser"
+#~ msgstr "אין אפשרות לפתוח את מציג התיעוד"
+
+#~ msgid "Open Tab"
+#~ msgstr "פתח כרטיסייה"
+
+#~ msgid "Detach Tab"
+#~ msgstr "נתק כרטיסיה"
+
+#~ msgid "Close Tab"
+#~ msgstr "סגור כרטיסייה"
+
+#~ msgid "Close Window"
+#~ msgstr "סגור חלון"
+
+#~ msgid "Copy"
+#~ msgstr "העתק"
+
+#~ msgid "Paste"
+#~ msgstr "הדבק"
+
+#~ msgid "Paste Selection"
+#~ msgstr "הדבק בחירה"
+
+#~ msgid "Preferences"
+#~ msgstr "העדפות"
+
+#~ msgid "Show menubar"
+#~ msgstr "הצג סרגל תפריטים"
+
+#~ msgid "Show toolbars"
+#~ msgstr "הצג סרגלי כלים"
+
+#~ msgid "Show borders"
+#~ msgstr "הצג גבולות"
+
+#~ msgid "Fullscreen"
+#~ msgstr "מסך מלא"
+
+#~ msgid "Set Title"
+#~ msgstr "הגדר כותרת"
+
+#~ msgid "Reset and Clear"
+#~ msgstr "אפס ונקה"
+
+#~ msgid "Previous Tab"
+#~ msgstr "כרטיסייה קודמת"
+
+#~ msgid "Next Tab"
+#~ msgstr "כרטיסייה הבאה"
+
+#~ msgid "Switch to Tab 1"
+#~ msgstr "דלג לכרטיסייה 1"
+
+#~ msgid "Switch to Tab 2"
+#~ msgstr "דלג לכרטיסייה 2"
+
+#~ msgid "Switch to Tab 3"
+#~ msgstr "דלג לכרטיסייה 3"
+
+#~ msgid "Switch to Tab 4"
+#~ msgstr "דלג לכרטיסייה 4"
+
+#~ msgid "Switch to Tab 5"
+#~ msgstr "דלג לכרטיסייה 5"
+
+#~ msgid "Switch to Tab 6"
+#~ msgstr "דלג לכרטיסייה 6"
+
+#~ msgid "Switch to Tab 7"
+#~ msgstr "דלג לכרטיסייה 7"
+
+#~ msgid "Switch to Tab 8"
+#~ msgstr "דלג לכרטיסייה 8"
+
+#~ msgid "Switch to Tab 9"
+#~ msgstr "דלג לכרטיסייה 9"
+
+#~ msgid "Contents"
+#~ msgstr "תוכן"
+
+#~ msgid "File"
+#~ msgstr "קובץ"
+
+#~ msgid "Edit"
+#~ msgstr "עריכה"
+
+#~ msgid "View"
+#~ msgstr "תצוגה"
+
+#~ msgid "Go"
+#~ msgstr "עבור"
+
+#~ msgid "Help"
+#~ msgstr "עזרה"
+
+#~ msgid "Action"
+#~ msgstr "פעולה"
+
+#~ msgid "Shortcut key"
+#~ msgstr "קיצורי מקשים"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "הרכב קיצור"
+
+#~ msgid "Compose shortcut for:"
+#~ msgstr "הרכב קיצור עבור:"
+
+#~ msgid "Failed to acquire keyboard"
+#~ msgstr "כשל ברכישת המקלדת"
+
+#~ msgid "Another application has already acquired control over your keyboard."
+#~ msgstr "יישום אחר כבר רכש שליטה על המקלדת."
+
+#~ msgid "Toolbar Editor"
+#~ msgstr "עורך סרגל הכלים"
+
+#~ msgid "Open a new window for the current terminal tab"
+#~ msgstr "פתח חלון חדש עבור כרטיסית המסוף הנוכחית"
+
+#~ msgid "Close the current terminal tab"
+#~ msgstr "סגור את כרטיסיית המסוף הנוכחית"
+
+#~ msgid "Close the terminal window"
+#~ msgstr "סגור את חלון המסוף"
+
+#~ msgid "Paste from primary selection"
+#~ msgstr "הדבק מבחירה ראשית"
+
+#~ msgid "_Toolbars..."
+#~ msgstr "ס_רגלי כלים..."
+
+#~ msgid "Customize the toolbars"
+#~ msgstr "התאם את סרגלי הכלים"
+
+#~ msgid "Set a custom title for the current tab"
+#~ msgstr "קבע כותרת מותאמת אישית לכרטיסיה הנוכחית"
+
+#~ msgid "_Reset"
+#~ msgstr "_אפס"
+
+#~ msgid "Reset and C_lear"
+#~ msgstr "אפס ו_נקה"
+
+#, fuzzy
+#~ msgid "Reset and clear"
+#~ msgstr "אפס ונקה"
+
+#~ msgid "Report a bug in Terminal"
+#~ msgstr "דווח על באג ב- Terminal"
+
+#~ msgid "Display information about Terminal"
+#~ msgstr "הצג מידע לגבי Terminal"
+
+#, fuzzy
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "אפשר החלקת גופנים במסוף"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "התר אפשרות זו אם ברצונך שהמסוף ישתמש בהחלקת גופנים כאשר מוצג טקסטבחלונות "
+#~ "המסוף. ביטול אפשרות זו יכול להאיץ את הצגת הכיתוב באופן משמעותיולהוריד את "
+#~ "צריכת משאבי המערכת ככלל במערכות איטיות."
+
+#, fuzzy
+#~ msgid "Palette entry 1"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 10"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 11"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 12"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 13"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 14"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 15"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 16"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 2"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 3"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 4"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 5"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 6"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 7"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 8"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Palette entry 9"
+#~ msgstr "צבע מס' %d"
+
+#, fuzzy
+#~ msgid "Shortcut Keys"
+#~ msgstr "קיצורי מקשים"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "ליישומי המסוף יש את לוח הצבעים הבא אשר זמין עבורן:"
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "מגדיר את הערך אליו מכוון משתנה הסביבה $TERM, כאשר נפתחים כרטיסיית או חלון "
+#~ "מסוף. ברירת המחדל אמורה לעבוד כראוי במרבית המערכות. אם נתקלת בבעיות עם "
+#~ "הצבעים בישומים שונים, ניתן לנסות את xterm-color כאן."
+
+#~ msgid "Use _default color"
+#~ msgstr "השתמש בצבע _ברירת מחדל"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "השתמש בצבע רקע מותאם אישית לכתב נבחר"
+
+#, fuzzy
+#~ msgid "Use c_ustom color:"
+#~ msgstr "השתמש בצבע _מותאם אישית"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "השתמש בצבע ברירת המחדל לרקע כתב נבחר"
+
+#, fuzzy
+#~ msgid "_Shortcuts"
+#~ msgstr "קיצורים"
 
 #~ msgid ""
 #~ "  -h, --help                          Print this help message and exit"
@@ -1689,9 +1818,6 @@ msgstr ""
 
 #~ msgid "Disable this feature"
 #~ msgstr "חסום אפשרות זו"
-
-#~ msgid "Other..."
-#~ msgstr "אחר..."
 
 #~ msgid "No application selected"
 #~ msgstr "לא נבחר יישום"

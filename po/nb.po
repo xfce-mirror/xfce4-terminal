@@ -2,683 +2,1079 @@
 # Copyright (C) 2007 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Terje Uriansrud <terje@uriansrud.net>, 2010.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-06 04:01+0000\n"
+"POT-Creation-Date: 2012-12-26 10:01+0100\n"
 "PO-Revision-Date: 2007-05-12 17:43+0200\n"
 "Last-Translator: Terje Uriansrud <terje@uriansrud.net>\n"
 "Language-Team: Norwegian Bokmal <i18n-nb@lister.ping.uio.no>\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "Usage:"
 msgstr "Bruk:"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "OPTION"
 msgstr "VALG"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:113
 msgid "General Options"
 msgstr "Generelle innstillinger"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:115 ../terminal/main.c:141
 msgid "display"
 msgstr "skjerm"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:117 ../terminal/main.c:132
 msgid "directory"
 msgstr "mappe"
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:121
 msgid "Window or Tab Separators"
 msgstr "Vindu eller fanedelere"
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:126
 msgid "Tab Options"
 msgstr "Faneinnstillinger"
 
 #. parameter of --command
-#: ../terminal/main.c:72
+#: ../terminal/main.c:128
 msgid "command"
 msgstr "commando"
 
 #. parameter of --title
-#: ../terminal/main.c:74
+#: ../terminal/main.c:130
 msgid "title"
 msgstr "tittel"
 
-#: ../terminal/main.c:83
+#: ../terminal/main.c:139
 msgid "Window Options"
 msgstr "Vindusinnstillinger"
 
 #. parameter of --geometry
-#: ../terminal/main.c:87
+#: ../terminal/main.c:143
 msgid "geometry"
 msgstr "geometri"
 
 #. parameter of --role
-#: ../terminal/main.c:89
+#: ../terminal/main.c:145
 msgid "role"
 msgstr "rolle"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:91
+#: ../terminal/main.c:147
 msgid "string"
 msgstr "streng"
 
 #. parameter of --icon
-#: ../terminal/main.c:93
+#: ../terminal/main.c:149
 msgid "icon"
 msgstr "ikon"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Se %s man side for fullstendig forklaring på opsjonene."
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
-msgid "Terminal"
-msgstr "Terminal"
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
+#, fuzzy
+msgid "Xfce Terminal"
+msgstr "Ny terminal"
 
-#: ../terminal/main.c:147
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce utviklingsteam. Alle rettigheter reservert."
 
-#: ../terminal/main.c:148
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>"
 msgstr "Skrevet av Benedikt Meurer <benny@xfce.org>"
 
-#: ../terminal/main.c:149
+#: ../terminal/main.c:202
 msgid "and Nick Schermer <nick@xfce.org>."
 msgstr "og Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:150
+#: ../terminal/main.c:203
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Vennligst rapporter feil til <%s>."
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:306
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Klarte ikke registerer terminaltjeneste: %s\n"
 
-#: ../terminal/terminal-app.c:516
+#: ../terminal/terminal-app.c:601
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ugyldig geomtriangivelse «%s»\n"
 
-#: ../terminal/terminal-dbus.c:113
+#: ../terminal/terminal-gdbus.c:81
 msgid "User id mismatch"
 msgstr "Brukerid stemmer ikke"
 
-#: ../terminal/terminal-dbus.c:119
+#: ../terminal/terminal-gdbus.c:87
 msgid "Display mismatch"
 msgstr "Skjerm "
 
-#: ../terminal/terminal-dbus.c:145
-#, c-format
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "D-BUS meldingsbuss frakoblet, avslutter ...\n"
-
-#: ../terminal/terminal-dbus.c:207
-#, c-format
-msgid "Unable to register object %s"
-msgstr "Klarte ikke å registerer objekt %s"
-
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:74
+#: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce Terminalemulator"
 
-#: ../terminal/terminal-dialogs.c:102
+#: ../terminal/terminal-dialogs.c:81
 msgid "translator-credits"
 msgstr "oversetterbidrag"
 
-#: ../terminal/terminal-dialogs.c:105
+#: ../terminal/terminal-dialogs.c:84
 msgid "Visit Terminal website"
 msgstr "Besøk Terminal nettside"
 
-#: ../terminal/terminal-dialogs.c:215
+#: ../terminal/terminal-encoding-action.c:71
+msgid "Western European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:72
+msgid "Central European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:73
+msgid "Baltic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:74
+msgid "South-Eastern Europe"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:75
+msgid "Turkish"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:76
+msgid "Cyrillic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:77
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:78
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:79
+msgid "Korean"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:80
+msgid "Japanese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:81
+msgid "Greek"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:82
+msgid "Arabic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Hebrew"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Thai"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:85
+msgid "Vietnamese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Unicode"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Other"
+msgstr ""
+
+#. action to reset to the default
+#: ../terminal/terminal-encoding-action.c:255
+#: ../terminal/terminal-encoding-action.c:387
 #, c-format
-msgid "The %s user manual is not installed on your computer"
-msgstr "Brukermanualen for %s er ikke installert på din maskin"
+msgid "Default (%s)"
+msgstr ""
 
-#: ../terminal/terminal-dialogs.c:218
+#: ../terminal/terminal-options.c:218
 #, c-format
-msgid "You can read the user manual online. This manual may however not exactly match your %s version."
-msgstr "Du kan lese brukermanualen på nettet. Nettversjonen av brukermanualen kan være skrevet for en annen versjon enn %s som du bruker."
+msgid ""
+"Option \"--default-display\" requires specifying the default X display as "
+"its parameter"
+msgstr ""
+"Valget «--default-display» krever at du angir standard X-display som "
+"argument."
 
-#: ../terminal/terminal-dialogs.c:220
-msgid "User manual is missing"
-msgstr "Brukermanual mangler"
-
-#: ../terminal/terminal-dialogs.c:222
-msgid "_Read Online"
-msgstr "_Les på nettet"
-
-#. display an error message to the user
-#: ../terminal/terminal-dialogs.c:306
-msgid "Failed to open the documentation browser"
-msgstr "Klarte ikke å åpne dokumentleseren"
-
-#: ../terminal/terminal-options.c:210
+#: ../terminal/terminal-options.c:233
 #, c-format
-msgid "Option \"--default-display\" requires specifying the default X display as its parameter"
-msgstr "Valget «--default-display» krever at du angir standard X-display som argument."
+msgid ""
+"Option \"--default-working-directory\" requires specifying the default "
+"working directory as its parameter"
+msgstr ""
+"Valget «--default-working-directory» krever at du angir standard "
+"arbeidsmappe som argument"
 
-#: ../terminal/terminal-options.c:225
+#: ../terminal/terminal-options.c:249
 #, c-format
-msgid "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
-msgstr "Valget «--default-working-directory» krever at du angir standard arbeidsmappe som argument"
+msgid ""
+"Option \"--execute/-x\" requires specifying the command to run on the rest "
+"of the command line"
+msgstr ""
+"Valget «--execute/-x» krever at du angir kommandoen som skal kjøres påresten "
+"av kommandolinjen"
 
-#: ../terminal/terminal-options.c:241
+#: ../terminal/terminal-options.c:266
 #, c-format
-msgid "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
-msgstr "Valget «--execute/-x» krever at du angir kommandoen som skal kjøres påresten av kommandolinjen"
+msgid ""
+"Option \"--command/-e\" requires specifying the command to run as its "
+"parameter"
+msgstr ""
+"Valget «--command/-e» krever at du angir kommandoen som skal kjøres som "
+"argument"
 
-#: ../terminal/terminal-options.c:258
+#: ../terminal/terminal-options.c:283
 #, c-format
-msgid "Option \"--command/-e\" requires specifying the command to run as its parameter"
-msgstr "Valget «--command/-e» krever at du angir kommandoen som skal kjøres som argument"
+msgid ""
+"Option \"--working-directory\" requires specifying the working directory as "
+"its parameter"
+msgstr ""
+"Valget «--working-directory» krever at du angir arbeidskatalogen som argument"
 
-#: ../terminal/terminal-options.c:275
-#, c-format
-msgid "Option \"--working-directory\" requires specifying the working directory as its parameter"
-msgstr "Valget «--working-directory» krever at du angir arbeidskatalogen som argument"
-
-#: ../terminal/terminal-options.c:290
+#: ../terminal/terminal-options.c:298
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Valget «--title/-T» krever at du angir tittel som argument"
 
-#: ../terminal/terminal-options.c:309
+#: ../terminal/terminal-options.c:317
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgid ""
+"Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Valget «--display» krever at du angir X-skjerm som argument"
 
-#: ../terminal/terminal-options.c:324
+#: ../terminal/terminal-options.c:332
 #, c-format
-msgid "Option \"--geometry\" requires specifying the window geometry as its parameter"
+msgid ""
+"Option \"--geometry\" requires specifying the window geometry as its "
+"parameter"
 msgstr "Valget «--geometry» krever at du angir vindusgeometrien som argument"
 
-#: ../terminal/terminal-options.c:339
+#: ../terminal/terminal-options.c:347
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Valget «--role» krever at du angir vindusrollen som argument"
 
-#: ../terminal/terminal-options.c:354
+#: ../terminal/terminal-options.c:362
 #, c-format
-msgid "Option \"--startup-id\" requires specifying the startup id as its parameter"
+msgid ""
+"Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Valget «--startup-id» krever at du angir oppstarttid som argument"
 
-#: ../terminal/terminal-options.c:369
+#: ../terminal/terminal-options.c:377
 #, c-format
-msgid "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
-msgstr "Valget «--icon/-I» krever at du angir et ikonnavn eller filnavnet til et ikon"
+msgid ""
+"Option \"--icon/-I\" requires specifying an icon name or filename as its "
+"parameter"
+msgstr ""
+"Valget «--icon/-I» krever at du angir et ikonnavn eller filnavnet til et ikon"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:444
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Ukjent valgt «%s»"
 
-#: ../terminal/terminal-preferences-dialog.c:227
+#: ../terminal/terminal-preferences-dialog.c:260
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-preferences-dialog.c:266
 msgid "Image Files"
 msgstr "Bildefiler"
 
-#: ../terminal/terminal-preferences.c:309
-msgid "Open Tab"
-msgstr "Ny fane"
+#: ../terminal/terminal-preferences-dialog.c:567
+msgid "Load Presets..."
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:320
-msgid "Open Terminal"
-msgstr "Ny terminal"
+#: ../terminal/terminal-preferences.glade.h:1
+msgid "Replaces initial title"
+msgstr "Erstatter initiell tittel"
 
-#: ../terminal/terminal-preferences.c:331
-msgid "Detach Tab"
-msgstr "Løsne fane"
+#: ../terminal/terminal-preferences.glade.h:2
+msgid "Goes before initial title"
+msgstr "Plasseres foran initiell tittel"
 
-#: ../terminal/terminal-preferences.c:342
-msgid "Close Tab"
-msgstr "Lukk fane"
+#: ../terminal/terminal-preferences.glade.h:3
+msgid "Goes after initial title"
+msgstr "Plasseres etter initiell tittel"
 
-#: ../terminal/terminal-preferences.c:353
-msgid "Close Window"
-msgstr "Lukk vindu"
+#: ../terminal/terminal-preferences.glade.h:4
+msgid "Isn't displayed"
+msgstr "Vises ikke"
 
-#: ../terminal/terminal-preferences.c:364
-msgid "Copy"
-msgstr "Kopier"
+#: ../terminal/terminal-preferences.glade.h:5
+msgid "Disabled"
+msgstr "Deaktivert"
 
-#: ../terminal/terminal-preferences.c:375
-msgid "Paste"
-msgstr "Lim inn"
+#: ../terminal/terminal-preferences.glade.h:6
+msgid "On the left side"
+msgstr "På venstre side"
 
-#: ../terminal/terminal-preferences.c:386
-msgid "Paste Selection"
-msgstr "Lim inn utvalg"
+#: ../terminal/terminal-preferences.glade.h:7
+msgid "On the right side"
+msgstr "På høyre side"
 
-#: ../terminal/terminal-preferences.c:397
-msgid "Preferences"
-msgstr "Innstillinger"
+#: ../terminal/terminal-preferences.glade.h:8
+msgid "None (use solid color)"
+msgstr "Ingen (bruk ensfarget)"
 
-#: ../terminal/terminal-preferences.c:408
-msgid "Show menubar"
-msgstr "Vis menylinje"
+#: ../terminal/terminal-preferences.glade.h:9
+msgid "Background image"
+msgstr "Bakgrunnsbilde"
 
-#: ../terminal/terminal-preferences.c:419
-msgid "Show toolbars"
-msgstr "Vis verktøylinjer"
+#: ../terminal/terminal-preferences.glade.h:10
+msgid "Transparent background"
+msgstr "Gjennomsiktig bakgrunn"
 
-#: ../terminal/terminal-preferences.c:430
-msgid "Show borders"
-msgstr "Vis kantlinje"
+#: ../terminal/terminal-preferences.glade.h:11
+msgid "Auto-detect"
+msgstr "Automatisk"
 
-#: ../terminal/terminal-preferences.c:441
-msgid "Fullscreen"
-msgstr "Fullskjerm"
+#: ../terminal/terminal-preferences.glade.h:12
+msgid "ASCII DEL"
+msgstr "Ascii DEL"
 
-#: ../terminal/terminal-preferences.c:452
-msgid "Set Title"
-msgstr "Sett tittel"
+#: ../terminal/terminal-preferences.glade.h:13
+msgid "Escape sequence"
+msgstr "Skiftesekvens"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:232
-msgid "Reset"
+#: ../terminal/terminal-preferences.glade.h:14
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr "Slett TTY"
+
+#: ../terminal/terminal-preferences.glade.h:16
+msgid "Tiled"
+msgstr "Flislagt"
+
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "Sentrert"
+
+#: ../terminal/terminal-preferences.glade.h:18
+msgid "Scaled"
+msgstr "Skalert"
+
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "Strukket"
+
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "Terminal innstillinger"
+
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "_Initiell tittel"
+
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "_Dynamically-set title:"
+msgstr "_Dynamisk satt tittel"
+
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "Tittel"
+
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "_Kjør kommando som innloggingsskall"
+
+#: ../terminal/terminal-preferences.glade.h:25
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+"Velg denne for å tvinge Terminal til å kjøre skallet ditt som et innlogging-"
+"skall når du åpner nye terminaler. Se dokumentasjonen til skallet for "
+"detaljer om forskjeller mellom å kjøre skallet interaktivt eller å kjøre som "
+"innloggingsskall."
+
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Oppdater utmp/wtmp oppføring når kommandoen startes"
+
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "Command"
+msgstr "Kommando"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Rull e_nkeltlinjer ved å bruke Skift-Opp/Ned taster"
+
+#: ../terminal/terminal-preferences.glade.h:29
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Aktiver denne for å kunne rulle en og en linje ved å bruke opp/ned-tastene "
+"sammen med Shift-tasten."
+
+#: ../terminal/terminal-preferences.glade.h:30
+msgid "Scroll on ou_tput"
+msgstr "_Rull ved utdata"
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Dette valget styrer om terminalen vil rulle automatisk nedover når ny tekst "
+"lages av kommandoene som kjøres inn i terminalen"
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid "Scroll on _keystroke"
+msgstr "Rull ved _tastetrykk"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Gjør deg i stand til å trykke en tast for å rulle nedover terminalvinduet "
+"helt til ledeteksten."
+
+#: ../terminal/terminal-preferences.glade.h:34
+msgid "Scr_ollbar is:"
+msgstr "Ru_llefelt er:"
+
+#: ../terminal/terminal-preferences.glade.h:35
+msgid "Scroll_back:"
+msgstr "Rull_efeltstørrelse:"
+
+#: ../terminal/terminal-preferences.glade.h:36
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Angir hvor mange linjer du kan rulle tilbake ved hjelp av rullefeltet."
+
+#: ../terminal/terminal-preferences.glade.h:37
+msgid "Scrolling"
+msgstr "Ruller"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid "_General"
+msgstr "_Generelt"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "Choose Terminal Font"
+msgstr "Velg terminal skrift"
+
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Allow bold te_xt"
+msgstr "Tillat fet te_kst"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Aktiver denne for å tillate programmer som kjører inn i terminalvinduet å "
+"bruke fet tekst."
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "Font"
+msgstr "Skrift"
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "_File:"
+msgstr "_Fil:"
+
+#: ../terminal/terminal-preferences.glade.h:44
+msgid "St_yle:"
+msgstr "_Stil:"
+
+#: ../terminal/terminal-preferences.glade.h:45
+msgid "Select Background Image File"
+msgstr "Velg bakgrunnsbildefil"
+
+#: ../terminal/terminal-preferences.glade.h:46
+msgid "Transpare_ncy:"
+msgstr "Gje_nnomsiktighet"
+
+#: ../terminal/terminal-preferences.glade.h:47
+msgid "Background"
+msgstr "Bakgrunn"
+
+#: ../terminal/terminal-preferences.glade.h:48
+msgid "Display _menubar in new windows"
+msgstr "Vis _menylinje i nye vinder"
+
+#: ../terminal/terminal-preferences.glade.h:49
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "Bruk denne for å vise menylinjen in nyopprettede terminalvinduer."
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "Display _toolbars in new windows"
+msgstr "Vis verk_tøylinjer i nye vinduer"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+"Aktiver denne for å vise verktøylinjer in nyopprettede terminalvinduer."
+
+#: ../terminal/terminal-preferences.glade.h:52
+msgid "Display _borders around new windows"
+msgstr "Vis k_antlinje rundt nye vinduer"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Aktiver denne for å vise vindusdekorasjoner rundt nyopprettede "
+"terminalvinduer"
+
+#: ../terminal/terminal-preferences.glade.h:54
+msgid "Opening New Windows"
+msgstr "Åpne nye vinduer"
+
+#: ../terminal/terminal-preferences.glade.h:55
+msgid "Reset tab activity _indicator after"
+msgstr "Resett f_exaneaktivitetsindikator etter"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "seconds"
+msgstr "sekunder"
+
+#: ../terminal/terminal-preferences.glade.h:57
+msgid "Tab Activity Indicator"
+msgstr "Faneaktivitetsindikator"
+
+#: ../terminal/terminal-preferences.glade.h:58
+msgid "_Appearance"
+msgstr "_Utseende"
+
+#: ../terminal/terminal-preferences.glade.h:59
+msgid "_Text color:"
+msgstr "_Tekstfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "_Background color:"
+msgstr "_Bakgrunnsfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:61
+msgid "Tab activit_y color:"
+msgstr "F_aneaktivitetsfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:62
+msgid "Cu_rsor color:"
+msgstr "Ma_rkørfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "_Vary the background color for each tab"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:64
+msgid ""
+"The random color is based on the selected background color, keeping the same "
+"brightness. "
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:65
+#, fuzzy
+msgid "Choose background color"
+msgstr "Velg terminal bakgrunnsfarge"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Color Selector"
+msgstr "Fargevelger"
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Open a dialog to specify the color"
+msgstr "Åpne bilde for å spesifiere farge"
+
+#: ../terminal/terminal-preferences.glade.h:68
+#, fuzzy
+msgid "Choose text color"
+msgstr "Velg terminal tekstfarge"
+
+#: ../terminal/terminal-preferences.glade.h:69
+#, fuzzy
+msgid "Choose cursor color"
+msgstr "Velg skrivemarkørfarge"
+
+#: ../terminal/terminal-preferences.glade.h:70
+msgid "Choose tab activity color"
+msgstr "Velg faneaktivitetsfarge"
+
+#: ../terminal/terminal-preferences.glade.h:71
+msgid "General"
+msgstr "Generelt"
+
+#: ../terminal/terminal-preferences.glade.h:72
+#, fuzzy
+msgid "Text _selection color:"
+msgstr "Markert tekst"
+
+#: ../terminal/terminal-preferences.glade.h:73
+msgid ""
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:74
+#, fuzzy
+msgid "Choose text selection background color"
+msgstr "Velg merket terminaltekst bakgrunnsfarge"
+
+#: ../terminal/terminal-preferences.glade.h:75
+#, fuzzy
+msgid "B_old text color:"
+msgstr "_Tekstfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:76
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:77
+#, fuzzy
+msgid "Choose bold font color"
+msgstr "Velg faneaktivitetsfarge"
+
+#: ../terminal/terminal-preferences.glade.h:78
+#, fuzzy
+msgid "Custom Colors"
+msgstr "Ma_rkørfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "Black"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:82
+msgid "Dark Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Light Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "Light Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Brown / Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Light Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Light Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Light Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "White"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Light Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:95
+msgid "Palette"
+msgstr "Palett"
+
+#: ../terminal/terminal-preferences.glade.h:96
+#, fuzzy
+msgid "Presets"
 msgstr "Nullstill"
 
-#: ../terminal/terminal-preferences.c:474
-msgid "Reset and Clear"
-msgstr "Tøm og nullstill"
+#: ../terminal/terminal-preferences.glade.h:97
+msgid "_Colors"
+msgstr "_Farger"
 
-#: ../terminal/terminal-preferences.c:485
-msgid "Previous Tab"
-msgstr "Forrige fane"
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "_Backspace key generates:"
+msgstr "_Rettetast genererer"
 
-#: ../terminal/terminal-preferences.c:496
-msgid "Next Tab"
-msgstr "Neste fane"
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "_Delete key generates:"
+msgstr "_Delete tast genererer"
 
-#: ../terminal/terminal-preferences.c:507
-msgid "Switch to Tab 1"
-msgstr "Bytt til fane 1"
+#: ../terminal/terminal-preferences.glade.h:100
+msgid "$TERM s_etting:"
+msgstr "$TERM _innstilling:"
 
-#: ../terminal/terminal-preferences.c:518
-msgid "Switch to Tab 2"
-msgstr "Bytt til fane 2"
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "_Reset compatibility options to defaults"
+msgstr "_Tilbakestill samspillvalg til standardverdier"
 
-#: ../terminal/terminal-preferences.c:529
-msgid "Switch to Tab 3"
-msgstr "Bytt til fane 3"
+#: ../terminal/terminal-preferences.glade.h:102
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
+"Disse innstillingene kan forårsake ukorrekt oppførsel hos noen programmer.De "
+"er her for å tillate deg å jobbe rundt oppførsel hos programmer og "
+"operativsystemer som forventer forskjellig terminalstøtte."
 
-#: ../terminal/terminal-preferences.c:540
-msgid "Switch to Tab 4"
-msgstr "Bytt til fane 4"
+#: ../terminal/terminal-preferences.glade.h:106
+msgid "Compatibility"
+msgstr "Samspill"
 
-#: ../terminal/terminal-preferences.c:551
-msgid "Switch to Tab 5"
-msgstr "Bytt til fane 5"
+#: ../terminal/terminal-preferences.glade.h:107
+#, fuzzy
+msgid "Co_mpatibility"
+msgstr "Samspill"
 
-#: ../terminal/terminal-preferences.c:562
-msgid "Switch to Tab 6"
-msgstr "Bytt til fane 6"
+#: ../terminal/terminal-preferences.glade.h:108
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Inkluder følgende karakterer som del av et _ord ved dobbeltklikk"
 
-#: ../terminal/terminal-preferences.c:573
-msgid "Switch to Tab 7"
-msgstr "Bytt til fane 7"
+#: ../terminal/terminal-preferences.glade.h:110
+msgid "Rese_t double click options to defaults"
+msgstr "_Tilbakestill dobbeltklikkvalg til standardverdier"
 
-#: ../terminal/terminal-preferences.c:584
-msgid "Switch to Tab 8"
-msgstr "Bytt til fane 8"
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Double Click"
+msgstr "Dobbeltklikk"
 
-#: ../terminal/terminal-preferences.c:595
-msgid "Switch to Tab 9"
-msgstr "Bytt til fane 9"
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Default character e_ncoding:"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:606
-msgid "Contents"
-msgstr "Innhold"
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Encoding"
+msgstr ""
 
-#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
-#: ../terminal/terminal-screen.c:1681
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Deaktiver alle me_nyhurtigtaster (som f.eks. Alt+F)"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Deaktiver m_enyhurtigtast (standardverdi F10)"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Menubar Access"
+msgstr "Menylinje tilgang"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Ad_vanced"
+msgstr "A_vansert"
+
+#: ../terminal/terminal-preferences.c:756
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
+#: ../terminal/terminal-screen.c:1742
 msgid "Untitled"
 msgstr "Uten tittel"
 
-#: ../terminal/terminal-screen.c:531
+#: ../terminal/terminal-screen.c:547
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Klarte ikke bestemme innloggingsskallet ditt."
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
+#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
 msgid "Failed to execute child"
 msgstr "Klarte ikke kjøre underprosess"
 
-#: ../terminal/terminal-screen.c:2003
+#: ../terminal/terminal-screen.c:2083
 msgid "Close this tab"
 msgstr "Lukke denne fanen"
 
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "Fil"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "Rediger"
-
-#: ../terminal/terminal-shortcut-editor.c:109
-msgid "View"
-msgstr "Vis"
-
-#: ../terminal/terminal-shortcut-editor.c:128
-msgid "Go"
-msgstr "Gå"
-
-#: ../terminal/terminal-shortcut-editor.c:145
-msgid "Help"
-msgstr "Hjelp"
-
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
-msgid "Disabled"
-msgstr "Deaktivert"
-
-#: ../terminal/terminal-shortcut-editor.c:221
-msgid "Action"
-msgstr "Aksjon"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Shortcut key"
-msgstr "Hurtigtast"
-
-#: ../terminal/terminal-shortcut-editor.c:328
-msgid "Compose shortcut"
-msgstr "Lag ny snarvei"
-
-#: ../terminal/terminal-shortcut-editor.c:333
-msgid "Clea_r"
-msgstr "N_ullstill"
-
-#: ../terminal/terminal-shortcut-editor.c:352
-msgid "Compose shortcut for:"
-msgstr "Lag ny snarvei for:"
-
-#: ../terminal/terminal-shortcut-editor.c:374
-msgid "Failed to acquire keyboard"
-msgstr "Klarte ikke ta kontroll over tastatus"
-
-#: ../terminal/terminal-shortcut-editor.c:376
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Et annet program har allerede tatt kontroll of tastaturet ditt."
-
-#: ../terminal/terminal-toolbars-view.c:112
-msgid "Toolbar Editor"
-msgstr "Verktøylinjeredigerer"
-
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:324
 msgid "Copy Email Address"
 msgstr "Kopier epostadresse"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:325
 msgid "Compose Email"
 msgstr "Skriv ny epost"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:329
 msgid "Copy Link Address"
 msgstr "Kopier lenkeadresse"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:330
 msgid "Open Link"
 msgstr "Åpne lenke"
 
-#: ../terminal/terminal-widget.c:480
+#: ../terminal/terminal-widget.c:484
 #, c-format
-msgid "Unable to drop selection of type text/plain to terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Klarte ikke slippe valgt element av typen text/plain i terminal: Feil format (%d) eller lengde (%d)\n"
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Klarte ikke slippe valgt element av typen text/plain i terminal: Feil format "
+"(%d) eller lengde (%d)\n"
 
-#: ../terminal/terminal-widget.c:496
+#: ../terminal/terminal-widget.c:500
 #, c-format
-msgid "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Klarte ikke slippe Mozilla Url på terminal: Feil format (%d) eller lengde (%d)\n"
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Klarte ikke slippe Mozilla Url på terminal: Feil format (%d) eller lengde "
+"(%d)\n"
 
-#: ../terminal/terminal-widget.c:522
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr "Klarte ikke slippe Uri liste på terminalen: Feil format (%d) eller lengde (%d)\n"
+msgstr ""
+"Klarte ikke slippe Uri liste på terminalen: Feil format (%d) eller lengde "
+"(%d)\n"
 
-#: ../terminal/terminal-widget.c:567
+#: ../terminal/terminal-widget.c:571
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Mottok ugyldige fargedata: Feil format (%d) eller lengde (%d)\n"
 
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:705
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Klarte ikke åpne Url `%s'n"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:218
 msgid "_File"
 msgstr "_Fil"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:219
 msgid "Open _Tab"
 msgstr "Ny _fane"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal tab"
 msgstr "Åpne ny terminalfane"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:220
 msgid "Open T_erminal"
 msgstr "Ny t_erminal"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:220
 msgid "Open a new terminal window"
 msgstr "Åpne nytt terminalvindu"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:221
 msgid "_Detach Tab"
 msgstr "Lø_sne fane"
 
-#: ../terminal/terminal-window.c:220
-msgid "Open a new window for the current terminal tab"
-msgstr "Åpne nytt vindu i gjeldende  terminalfane"
-
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:222
 msgid "C_lose Tab"
 msgstr "L_ukk fane"
 
-#: ../terminal/terminal-window.c:221
-msgid "Close the current terminal tab"
-msgstr "Lukk gjeldende terminalfane"
-
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:223
 msgid "_Close Window"
 msgstr "_Lukk vindu"
 
-#: ../terminal/terminal-window.c:222
-msgid "Close the terminal window"
-msgstr "Lukk terminalvindu"
-
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:224
 msgid "_Edit"
 msgstr "_Rediger"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:225
 msgid "_Copy"
 msgstr "Ko_pier"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:225
 msgid "Copy to clipboard"
 msgstr "Kopier til utklippstavlen"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:226
 msgid "_Paste"
 msgstr "_Lim inn"
 
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:226
 msgid "Paste from clipboard"
 msgstr "Lim inn fra utklippstavlen"
 
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:227
 msgid "Paste _Selection"
 msgstr "Lim inn merket _område"
 
-#: ../terminal/terminal-window.c:226
-msgid "Paste from primary selection"
-msgstr "Lim inn fra primærvalg"
-
-#: ../terminal/terminal-window.c:227
-msgid "_Toolbars..."
-msgstr "_Verktøylinjer ..."
-
-#: ../terminal/terminal-window.c:227
-msgid "Customize the toolbars"
-msgstr "Tilpass verktlylinjer"
-
 #: ../terminal/terminal-window.c:228
+msgid "Select _All"
+msgstr ""
+
+#: ../terminal/terminal-window.c:229
 msgid "Pr_eferences..."
 msgstr "_Innstillinger"
 
-#: ../terminal/terminal-window.c:228
-msgid "Open the Terminal preferences dialog"
+#: ../terminal/terminal-window.c:229
+#, fuzzy
+msgid "Open the preferences dialog"
 msgstr "Åpne Terminal innstillinger"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:230
 msgid "_View"
 msgstr "_Vis"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:231
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:232
 msgid "_Set Title..."
 msgstr "_Sett tittel ..."
 
-#: ../terminal/terminal-window.c:231
-msgid "Set a custom title for the current tab"
-msgstr "Sett tittel for gjeldende fane"
-
-#: ../terminal/terminal-window.c:232
-msgid "_Reset"
-msgstr "_Nullstill"
-
 #: ../terminal/terminal-window.c:233
-msgid "Reset and C_lear"
-msgstr "_Tøm og nullstill"
-
-#: ../terminal/terminal-window.c:233
-msgid "Reset and clear"
-msgstr "Tøm og nullstill"
+#, fuzzy
+msgid "_Clear Scrollback"
+msgstr "Rull_efeltstørrelse:"
 
 #: ../terminal/terminal-window.c:234
+msgid "Clear Scrollback and _Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:235
 msgid "_Go"
 msgstr "_Gå til"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:236
 msgid "_Previous Tab"
 msgstr "_Forrige fane"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:236
 msgid "Switch to previous tab"
 msgstr "Bytt til forrige  fane"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:237
 msgid "_Next Tab"
 msgstr "_Neste fane"
 
-#: ../terminal/terminal-window.c:236
+#: ../terminal/terminal-window.c:237
 msgid "Switch to next tab"
 msgstr "Bytt til neste fane"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:238
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:239
 msgid "_Contents"
 msgstr "_Innhold"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:239
 msgid "Display help contents"
 msgstr "Vis hjelpeinnhold"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:240
 msgid "_Report a bug"
 msgstr "_Rapporter en feil"
 
-#: ../terminal/terminal-window.c:239
-msgid "Report a bug in Terminal"
-msgstr "Rapporter en feil i Terminal"
-
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:241
 msgid "_About"
 msgstr "_Om"
 
-#: ../terminal/terminal-window.c:240
-msgid "Display information about Terminal"
-msgstr "Vis informasjon om Terminal"
-
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:242
 msgid "_Input Methods"
 msgstr "_Inndatametoder"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:247
 msgid "Show _Menubar"
 msgstr "Vis _menylinje"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the menubar"
 msgstr "Vis/skjul menylinjen"
 
-#: ../terminal/terminal-window.c:247
+#: ../terminal/terminal-window.c:248
 msgid "Show _Toolbars"
 msgstr "Vis _verktøylinjer"
 
-#: ../terminal/terminal-window.c:247
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the toolbars"
 msgstr "Vis/skjul verktøylinjer"
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:249
 msgid "Show Window _Borders"
 msgstr "Vis v_induskant"
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:249
 msgid "Show/hide the window decorations"
 msgstr "Vis/skjul vindusdekorasjoner"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:250
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:250
 msgid "Toggle fullscreen mode"
 msgstr "Slå av/på fullskjermmodus"
 
-#: ../terminal/terminal-window.c:535
+#. create encoding action
+#: ../terminal/terminal-window.c:408
+msgid "Set _Encoding"
+msgstr ""
+
+#: ../terminal/terminal-window.c:539
 msgid "Warning"
 msgstr "Advarsel"
 
-#: ../terminal/terminal-window.c:546
+#: ../terminal/terminal-window.c:550
 msgid "Close all tabs"
 msgstr "Lukk alle faner"
 
-#: ../terminal/terminal-window.c:565
+#: ../terminal/terminal-window.c:569
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -687,479 +1083,300 @@ msgstr ""
 "Dette vinduet har %d åpne faner. Ved å lukke\n"
 "dette vinduet vil alle fanene også lukkes."
 
-#: ../terminal/terminal-window.c:568
+#: ../terminal/terminal-window.c:572
 msgid "Close all tabs?"
 msgstr "Lukk alle faner?"
 
-#: ../terminal/terminal-window.c:581
+#: ../terminal/terminal-window.c:585
 msgid "Do _not ask me again"
 msgstr "_Ikke spør på nytt"
 
-#: ../terminal/terminal-window.c:1542
+#: ../terminal/terminal-window.c:1592
 msgid "Window Title|Set Title"
 msgstr "Sett tittel"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1605
 msgid "Title:"
 msgstr "Tittel:"
 
-#: ../terminal/terminal-window.c:1567
+#: ../terminal/terminal-window.c:1617
 msgid "Enter the title for the current terminal tab"
 msgstr "Skriv inn tittel for gjeldende terminalfane"
 
-#: ../Terminal.desktop.in.in.h:2
+#: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Teminalemulator"
 
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "$TERM _innstilling:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "Ascii DEL"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "A_vansert"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "Tillat fet te_kst"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Automatisk"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Bakgrunn"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Bakgrunnsbilde"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Sentrert"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Velg terminal skrift"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Velg faneaktivitetsfarge"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Velg terminal bakgrunnsfarge"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Velg skrivemarkørfarge"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Velg terminal tekstfarge"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Velg merket terminaltekst bakgrunnsfarge"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Fargevelger"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "Kommando"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "Samspill"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "Inkluder følgende karakterer som del av et _ord ved dobbeltklikk"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "Ma_rkørfarge:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Deaktiver alle me_nyhurtigtaster (som f.eks. Alt+F)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Deaktiver m_enyhurtigtast (standardverdi F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Vis k_antlinje rundt nye vinduer"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Vis _menylinje i nye vinder"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Vis verk_tøylinjer i nye vinduer"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Dobbeltklikk"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Aktivere kantutjevning for termina_lskriften"
-
-#: ../Terminal.glade.h:30
-msgid "Enable this option if you want Terminal to use anti-aliasing when rendering text in terminal windows. Disabling this option can impressively speed up terminal rendering performance and reduce the overall system load on slow systems."
-msgstr "Aktiver denne hvis du ønsker at Terminal skal bruke kantutjevning ved tegning av tekst i terminal vinduer. Ved å skru av denne funksjonen kan man øke ytelsen vesentlig på eldre/tregere systemer."
-
-#: ../Terminal.glade.h:31
-msgid "Enable this option to allow applications running inside the terminal windows to use bold text."
-msgstr "Aktiver denne for å tillate programmer som kjører inn i terminalvinduet å bruke fet tekst."
-
-#: ../Terminal.glade.h:32
-msgid "Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key."
-msgstr "Aktiver denne for å kunne rulle en og en linje ved å bruke opp/ned-tastene sammen med Shift-tasten."
-
-#: ../Terminal.glade.h:33
-msgid "Enable this option to show the menubar in newly created terminal windows."
-msgstr "Bruk denne for å vise menylinjen in nyopprettede terminalvinduer."
-
-#: ../Terminal.glade.h:34
-msgid "Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Aktiver denne for å vise verktøylinjer in nyopprettede terminalvinduer."
-
-#: ../Terminal.glade.h:35
-msgid "Enable this option to show window decorations around newly created terminal windows."
-msgstr "Aktiver denne for å vise vindusdekorasjoner rundt nyopprettede terminalvinduer"
-
-#: ../Terminal.glade.h:36
-msgid "Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt."
-msgstr "Gjør deg i stand til å trykke en tast for å rulle nedover terminalvinduet helt til ledeteksten."
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Slett TTY"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Skiftesekvens"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Skrift"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Generelt"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Plasseres etter initiell tittel"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Plasseres foran initiell tittel"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Vises ikke"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Menylinje tilgang"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Ingen (bruk ensfarget)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "På venstre side"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "På høyre side"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Åpne bilde for å spesifiere farge"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Åpne nye vinduer"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Palett"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "Palettelement 1"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "Palettelement 10"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "Palettelement 11"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "Palettelement 12"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "Palettelement 13"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "Palettelement 14"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "Palettelement 15"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "Palettelement 16"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "Palettelement 2"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "Palettelement 3"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "Palettelement 4"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "Palettelement 5"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "Palettelement 6"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "Palettelement 7"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "Palettelement 8"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "Palettelement 9"
-
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "Erstatter initiell tittel"
-
-#: ../Terminal.glade.h:68
-msgid "Rese_t double click options to defaults"
-msgstr "_Tilbakestill dobbeltklikkvalg til standardverdier"
-
-#: ../Terminal.glade.h:69
-msgid "Reset tab activity _indicator after"
-msgstr "Resett f_exaneaktivitetsindikator etter"
-
-#: ../Terminal.glade.h:70
-msgid "Scaled"
-msgstr "Skalert"
-
-#: ../Terminal.glade.h:71
-msgid "Scr_ollbar is:"
-msgstr "Ru_llefelt er:"
-
-#: ../Terminal.glade.h:72
-msgid "Scroll on _keystroke"
-msgstr "Rull ved _tastetrykk"
-
-#: ../Terminal.glade.h:73
-msgid "Scroll on ou_tput"
-msgstr "_Rull ved utdata"
-
-#: ../Terminal.glade.h:74
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Rull e_nkeltlinjer ved å bruke Skift-Opp/Ned taster"
-
-#: ../Terminal.glade.h:75
-msgid "Scroll_back:"
-msgstr "Rull_efeltstørrelse:"
-
-#: ../Terminal.glade.h:76
-msgid "Scrolling"
-msgstr "Ruller"
-
-#: ../Terminal.glade.h:77
-msgid "Select Background Image File"
-msgstr "Velg bakgrunnsbildefil"
-
-#: ../Terminal.glade.h:78
-msgid "Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell."
-msgstr "Velg denne for å tvinge Terminal til å kjøre skallet ditt som et innlogging-skall når du åpner nye terminaler. Se dokumentasjonen til skallet for detaljer om forskjeller mellom å kjøre skallet interaktivt eller å kjøre som innloggingsskall."
-
-#: ../Terminal.glade.h:79
-msgid "Shortcut Keys"
-msgstr "Hurtigtaster"
-
-#: ../Terminal.glade.h:80
-msgid "Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Angir hvor mange linjer du kan rulle tilbake ved hjelp av rullefeltet."
-
-#: ../Terminal.glade.h:81
-msgid "St_yle:"
-msgstr "_Stil:"
-
-#: ../Terminal.glade.h:82
-msgid "Stretched"
-msgstr "Strukket"
-
-#: ../Terminal.glade.h:83
-msgid "Tab Activity Indicator"
-msgstr "Faneaktivitetsindikator"
-
-#: ../Terminal.glade.h:84
-msgid "Tab activit_y color:"
-msgstr "F_aneaktivitetsfarge:"
-
-#: ../Terminal.glade.h:85
-msgid "Terminal Preferences"
-msgstr "Terminal innstillinger"
-
-#: ../Terminal.glade.h:86
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Terminalprogrammer har denne fargepaletten tilgjengelig:"
-
-#: ../Terminal.glade.h:87
-msgid "Text Selection"
-msgstr "Markert tekst"
-
-#: ../Terminal.glade.h:88
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr "Disse innstillingene kan forårsake ukorrekt oppførsel hos noen programmer.De er her for å tillate deg å jobbe rundt oppførsel hos programmer og operativsystemer som forventer forskjellig terminalstøtte."
-
-#: ../Terminal.glade.h:92
-msgid "This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal."
-msgstr "Dette valget styrer om terminalen vil rulle automatisk nedover når ny tekst lages av kommandoene som kjøres inn i terminalen"
-
-#: ../Terminal.glade.h:93
-msgid "This specifies the value the $TERM environment variable is set to, when a new terminal tab or terminal window is opened. The default should be ok for most systems. If you have problems with colors in some applications, try xterm-color here."
-msgstr "Denne spesifiserer verdien som $TERM miljøvariablen settes til når en ny fane eller nytt vindu åpnes. Standardverdiene burde være ok for de fleste systemer. Hvis du har problemer med farger i programmer, prøv xterm-color her."
-
-#: ../Terminal.glade.h:94
-msgid "Tiled"
-msgstr "Flislagt"
-
-#: ../Terminal.glade.h:95
-msgid "Title"
-msgstr "Tittel"
-
-#: ../Terminal.glade.h:96
-msgid "Transpare_ncy:"
-msgstr "Gje_nnomsiktighet"
-
-#: ../Terminal.glade.h:97
-msgid "Transparent background"
-msgstr "Gjennomsiktig bakgrunn"
-
-#: ../Terminal.glade.h:98
-msgid "Use _default color"
-msgstr "Bruk stan_dard farge"
-
-#: ../Terminal.glade.h:99
-msgid "Use a custom text selection background color"
-msgstr "Bruk tilpasset bakgrunnsfarge på merket tekst"
-
-#: ../Terminal.glade.h:100
-msgid "Use c_ustom color:"
-msgstr "Bruk s_elvvalgt farge"
-
-#: ../Terminal.glade.h:101
-msgid "Use the default text selection background color"
-msgstr "Bruk standard bakgrunnsfarge på merket tekst"
-
-#: ../Terminal.glade.h:102
-msgid "_Appearance"
-msgstr "_Utseende"
-
-#: ../Terminal.glade.h:103
-msgid "_Background color:"
-msgstr "_Bakgrunnsfarge:"
-
-#: ../Terminal.glade.h:104
-msgid "_Backspace key generates:"
-msgstr "_Rettetast genererer"
-
-#: ../Terminal.glade.h:105
-msgid "_Colors"
-msgstr "_Farger"
-
-#: ../Terminal.glade.h:106
-msgid "_Delete key generates:"
-msgstr "_Delete tast genererer"
-
-#: ../Terminal.glade.h:107
-msgid "_Dynamically-set title:"
-msgstr "_Dynamisk satt tittel"
-
-#: ../Terminal.glade.h:108
-msgid "_File:"
-msgstr "_Fil:"
-
-#: ../Terminal.glade.h:109
-msgid "_General"
-msgstr "_Generelt"
-
-#: ../Terminal.glade.h:110
-msgid "_Initial title:"
-msgstr "_Initiell tittel"
-
-#: ../Terminal.glade.h:111
-msgid "_Reset compatibility options to defaults"
-msgstr "_Tilbakestill samspillvalg til standardverdier"
-
-#: ../Terminal.glade.h:112
-msgid "_Run command as login shell"
-msgstr "_Kjør kommando som innloggingsskall"
-
-#: ../Terminal.glade.h:113
-msgid "_Shortcuts"
-msgstr "Hurtigta_ster"
-
-#: ../Terminal.glade.h:114
-msgid "_Text color:"
-msgstr "_Tekstfarge:"
-
-#: ../Terminal.glade.h:115
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Oppdater utmp/wtmp oppføring når kommandoen startes"
-
-#: ../Terminal.glade.h:116
-msgid "seconds"
-msgstr "sekunder"
+#~ msgid "D-BUS message bus disconnected, exiting...\n"
+#~ msgstr "D-BUS meldingsbuss frakoblet, avslutter ...\n"
+
+#~ msgid "Unable to register object %s"
+#~ msgstr "Klarte ikke å registerer objekt %s"
+
+#~ msgid "The %s user manual is not installed on your computer"
+#~ msgstr "Brukermanualen for %s er ikke installert på din maskin"
+
+#~ msgid ""
+#~ "You can read the user manual online. This manual may however not exactly "
+#~ "match your %s version."
+#~ msgstr ""
+#~ "Du kan lese brukermanualen på nettet. Nettversjonen av brukermanualen kan "
+#~ "være skrevet for en annen versjon enn %s som du bruker."
+
+#~ msgid "User manual is missing"
+#~ msgstr "Brukermanual mangler"
+
+#~ msgid "_Read Online"
+#~ msgstr "_Les på nettet"
+
+#~ msgid "Failed to open the documentation browser"
+#~ msgstr "Klarte ikke å åpne dokumentleseren"
+
+#~ msgid "Open Tab"
+#~ msgstr "Ny fane"
+
+#~ msgid "Detach Tab"
+#~ msgstr "Løsne fane"
+
+#~ msgid "Close Tab"
+#~ msgstr "Lukk fane"
+
+#~ msgid "Close Window"
+#~ msgstr "Lukk vindu"
+
+#~ msgid "Copy"
+#~ msgstr "Kopier"
+
+#~ msgid "Paste"
+#~ msgstr "Lim inn"
+
+#~ msgid "Paste Selection"
+#~ msgstr "Lim inn utvalg"
+
+#~ msgid "Preferences"
+#~ msgstr "Innstillinger"
+
+#~ msgid "Show menubar"
+#~ msgstr "Vis menylinje"
+
+#~ msgid "Show toolbars"
+#~ msgstr "Vis verktøylinjer"
+
+#~ msgid "Show borders"
+#~ msgstr "Vis kantlinje"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Fullskjerm"
+
+#~ msgid "Set Title"
+#~ msgstr "Sett tittel"
+
+#~ msgid "Reset and Clear"
+#~ msgstr "Tøm og nullstill"
+
+#~ msgid "Previous Tab"
+#~ msgstr "Forrige fane"
+
+#~ msgid "Next Tab"
+#~ msgstr "Neste fane"
+
+#~ msgid "Switch to Tab 1"
+#~ msgstr "Bytt til fane 1"
+
+#~ msgid "Switch to Tab 2"
+#~ msgstr "Bytt til fane 2"
+
+#~ msgid "Switch to Tab 3"
+#~ msgstr "Bytt til fane 3"
+
+#~ msgid "Switch to Tab 4"
+#~ msgstr "Bytt til fane 4"
+
+#~ msgid "Switch to Tab 5"
+#~ msgstr "Bytt til fane 5"
+
+#~ msgid "Switch to Tab 6"
+#~ msgstr "Bytt til fane 6"
+
+#~ msgid "Switch to Tab 7"
+#~ msgstr "Bytt til fane 7"
+
+#~ msgid "Switch to Tab 8"
+#~ msgstr "Bytt til fane 8"
+
+#~ msgid "Switch to Tab 9"
+#~ msgstr "Bytt til fane 9"
+
+#~ msgid "Contents"
+#~ msgstr "Innhold"
+
+#~ msgid "File"
+#~ msgstr "Fil"
+
+#~ msgid "Edit"
+#~ msgstr "Rediger"
+
+#~ msgid "View"
+#~ msgstr "Vis"
+
+#~ msgid "Go"
+#~ msgstr "Gå"
+
+#~ msgid "Help"
+#~ msgstr "Hjelp"
+
+#~ msgid "Action"
+#~ msgstr "Aksjon"
+
+#~ msgid "Shortcut key"
+#~ msgstr "Hurtigtast"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Lag ny snarvei"
+
+#~ msgid "Clea_r"
+#~ msgstr "N_ullstill"
+
+#~ msgid "Compose shortcut for:"
+#~ msgstr "Lag ny snarvei for:"
+
+#~ msgid "Failed to acquire keyboard"
+#~ msgstr "Klarte ikke ta kontroll over tastatus"
+
+#~ msgid "Another application has already acquired control over your keyboard."
+#~ msgstr "Et annet program har allerede tatt kontroll of tastaturet ditt."
+
+#~ msgid "Toolbar Editor"
+#~ msgstr "Verktøylinjeredigerer"
+
+#~ msgid "Open a new window for the current terminal tab"
+#~ msgstr "Åpne nytt vindu i gjeldende  terminalfane"
+
+#~ msgid "Close the current terminal tab"
+#~ msgstr "Lukk gjeldende terminalfane"
+
+#~ msgid "Close the terminal window"
+#~ msgstr "Lukk terminalvindu"
+
+#~ msgid "Paste from primary selection"
+#~ msgstr "Lim inn fra primærvalg"
+
+#~ msgid "_Toolbars..."
+#~ msgstr "_Verktøylinjer ..."
+
+#~ msgid "Customize the toolbars"
+#~ msgstr "Tilpass verktlylinjer"
+
+#~ msgid "Set a custom title for the current tab"
+#~ msgstr "Sett tittel for gjeldende fane"
+
+#~ msgid "_Reset"
+#~ msgstr "_Nullstill"
+
+#~ msgid "Reset and C_lear"
+#~ msgstr "_Tøm og nullstill"
+
+#~ msgid "Reset and clear"
+#~ msgstr "Tøm og nullstill"
+
+#~ msgid "Report a bug in Terminal"
+#~ msgstr "Rapporter en feil i Terminal"
+
+#~ msgid "Display information about Terminal"
+#~ msgstr "Vis informasjon om Terminal"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Aktivere kantutjevning for termina_lskriften"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Aktiver denne hvis du ønsker at Terminal skal bruke kantutjevning ved "
+#~ "tegning av tekst i terminal vinduer. Ved å skru av denne funksjonen kan "
+#~ "man øke ytelsen vesentlig på eldre/tregere systemer."
+
+#~ msgid "Palette entry 1"
+#~ msgstr "Palettelement 1"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "Palettelement 10"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "Palettelement 11"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "Palettelement 12"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "Palettelement 13"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "Palettelement 14"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "Palettelement 15"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "Palettelement 16"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "Palettelement 2"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "Palettelement 3"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "Palettelement 4"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "Palettelement 5"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "Palettelement 6"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "Palettelement 7"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "Palettelement 8"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "Palettelement 9"
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Hurtigtaster"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Terminalprogrammer har denne fargepaletten tilgjengelig:"
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Denne spesifiserer verdien som $TERM miljøvariablen settes til når en ny "
+#~ "fane eller nytt vindu åpnes. Standardverdiene burde være ok for de fleste "
+#~ "systemer. Hvis du har problemer med farger i programmer, prøv xterm-color "
+#~ "her."
+
+#~ msgid "Use _default color"
+#~ msgstr "Bruk stan_dard farge"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Bruk tilpasset bakgrunnsfarge på merket tekst"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "Bruk s_elvvalgt farge"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Bruk standard bakgrunnsfarge på merket tekst"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "Hurtigta_ster"
 
 #~ msgid ""
 #~ "%s %s (Xfce %s)\n"

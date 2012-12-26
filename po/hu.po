@@ -7,178 +7,217 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-04 23:00+0000\n"
+"POT-Creation-Date: 2012-12-26 10:01+0100\n"
 "PO-Revision-Date: 2010-02-05 15:49+0100\n"
 "Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
 "Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "Usage:"
 msgstr "Használat:"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "OPTION"
 msgstr "KAPCSOLÓ"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:113
 msgid "General Options"
 msgstr "Általános beállítások"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:115 ../terminal/main.c:141
 msgid "display"
 msgstr "kijelző"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:117 ../terminal/main.c:132
 msgid "directory"
 msgstr "könyvtár"
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:121
 msgid "Window or Tab Separators"
 msgstr "Ablak- vagy lapelválasztók"
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:126
 msgid "Tab Options"
 msgstr "Lapok kapcsolói"
 
 #. parameter of --command
-#: ../terminal/main.c:72
+#: ../terminal/main.c:128
 msgid "command"
 msgstr "parancs"
 
 #. parameter of --title
-#: ../terminal/main.c:74
+#: ../terminal/main.c:130
 msgid "title"
 msgstr "cím"
 
-#: ../terminal/main.c:83
+#: ../terminal/main.c:139
 msgid "Window Options"
 msgstr "Ablak kapcsolói"
 
 #. parameter of --geometry
-#: ../terminal/main.c:87
+#: ../terminal/main.c:143
 msgid "geometry"
 msgstr "geometria"
 
 #. parameter of --role
-#: ../terminal/main.c:89
+#: ../terminal/main.c:145
 msgid "role"
 msgstr "szerep"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:91
+#: ../terminal/main.c:147
 msgid "string"
 msgstr "karakterlánc"
 
 #. parameter of --icon
-#: ../terminal/main.c:93
+#: ../terminal/main.c:149
 msgid "icon"
 msgstr "ikon"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "A fenti kapcsolók teljes magyarázatáért lásd a %s kézikönyvoldalt."
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1274
-#: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.in.h:1
-msgid "Terminal"
-msgstr "Terminál"
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
+#, fuzzy
+msgid "Xfce Terminal"
+msgstr "Terminál megnyitása"
 
-#: ../terminal/main.c:147
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "Az Xfce fejlesztőcsapata. Minden jog fenntartva."
 
-#: ../terminal/main.c:148
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>"
 msgstr "Írta: Benedikt Meurer <benny@xfce.org>"
 
-#: ../terminal/main.c:149
+#: ../terminal/main.c:202
 msgid "and Nick Schermer <nick@xfce.org>."
 msgstr "és Nick Schermer <nick@xfce.org>."
 
-#: ../terminal/main.c:150
+#: ../terminal/main.c:203
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "A hibákat itt jelentheti be: <%s>."
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:306
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "A terminálszolgáltatás nem regisztrálható: %s\n"
 
-#: ../terminal/terminal-app.c:516
+#: ../terminal/terminal-app.c:601
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Érvénytelen geometria-karakterlánc: „%s”\n"
 
-#: ../terminal/terminal-dbus.c:113
+#: ../terminal/terminal-gdbus.c:81
 msgid "User id mismatch"
 msgstr "A felhasználói azonosító eltér"
 
-#: ../terminal/terminal-dbus.c:119
+#: ../terminal/terminal-gdbus.c:87
 msgid "Display mismatch"
 msgstr "A kijelző eltér"
 
-#: ../terminal/terminal-dbus.c:145
-#, c-format
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "A D-Bus üzenetbusz leválasztva, kilépés…\n"
-
-#: ../terminal/terminal-dbus.c:207
-#, c-format
-msgid "Unable to register object %s"
-msgstr "Az objektum (%s) nem regisztrálható"
-
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:74
+#: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce terminálemulátor"
 
-#: ../terminal/terminal-dialogs.c:102
+#: ../terminal/terminal-dialogs.c:81
 msgid "translator-credits"
 msgstr "Kelemen Gábor <kelemeng@gnome.hu>"
 
-#: ../terminal/terminal-dialogs.c:105
+#: ../terminal/terminal-dialogs.c:84
 msgid "Visit Terminal website"
 msgstr "A Terminál weboldalának felkeresése"
 
-#: ../terminal/terminal-dialogs.c:215
-#, c-format
-msgid "The %s user manual is not installed on your computer"
-msgstr "A(z) %s felhasználói kézikönyv nincs a számítógépre telepítve"
-
-#: ../terminal/terminal-dialogs.c:218
-#, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
+#: ../terminal/terminal-encoding-action.c:71
+msgid "Western European"
 msgstr ""
-"A felhasználói kézikönyvet elolvashatja az interneten. Ez azonban nem "
-"feltétlenül az Ön által használt %s verziót írja le."
 
-#: ../terminal/terminal-dialogs.c:220
-msgid "User manual is missing"
-msgstr "A felhasználói kézikönyv hiányzik"
+#: ../terminal/terminal-encoding-action.c:72
+msgid "Central European"
+msgstr ""
 
-#: ../terminal/terminal-dialogs.c:222
-msgid "_Read Online"
-msgstr "_Elolvasom az interneten"
+#: ../terminal/terminal-encoding-action.c:73
+msgid "Baltic"
+msgstr ""
 
-#. display an error message to the user
-#: ../terminal/terminal-dialogs.c:306
-msgid "Failed to open the documentation browser"
-msgstr "A dokumentációböngésző megnyitása meghiúsult"
+#: ../terminal/terminal-encoding-action.c:74
+msgid "South-Eastern Europe"
+msgstr ""
 
-#: ../terminal/terminal-options.c:210
+#: ../terminal/terminal-encoding-action.c:75
+msgid "Turkish"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:76
+msgid "Cyrillic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:77
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:78
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:79
+msgid "Korean"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:80
+msgid "Japanese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:81
+msgid "Greek"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:82
+msgid "Arabic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Hebrew"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Thai"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:85
+msgid "Vietnamese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Unicode"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Other"
+msgstr ""
+
+#. action to reset to the default
+#: ../terminal/terminal-encoding-action.c:255
+#: ../terminal/terminal-encoding-action.c:387
+#, c-format
+msgid "Default (%s)"
+msgstr ""
+
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -187,7 +226,7 @@ msgstr ""
 "A „--default-display” kapcsoló megköveteli az alapértelmezett X kijelző "
 "megadását paraméterként"
 
-#: ../terminal/terminal-options.c:225
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -196,7 +235,7 @@ msgstr ""
 "A „--default-working-directory” kapcsoló megköveteli az alapértelmezett "
 "munkakönyvtár megadását paraméterként"
 
-#: ../terminal/terminal-options.c:241
+#: ../terminal/terminal-options.c:249
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -205,7 +244,7 @@ msgstr ""
 "Az „--execute/-x” kapcsoló megköveteli a futtatandó parancs megadását a "
 "parancssor további részében"
 
-#: ../terminal/terminal-options.c:258
+#: ../terminal/terminal-options.c:266
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -214,7 +253,7 @@ msgstr ""
 "A „--command/-e” kapcsoló megköveteli a futtatandó parancs megadását a "
 "parancssor további részében"
 
-#: ../terminal/terminal-options.c:275
+#: ../terminal/terminal-options.c:283
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
@@ -223,20 +262,20 @@ msgstr ""
 "A „--working-directory” kapcsoló megköveteli a munkakönyvtár megadását "
 "paraméterként"
 
-#: ../terminal/terminal-options.c:290
+#: ../terminal/terminal-options.c:298
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 "A „--title/-T” kapcsoló megköveteli az ablak címének megadását paraméterként"
 
-#: ../terminal/terminal-options.c:309
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
 "A „--display” kapcsoló megköveteli az X kijelző megadását paraméterként"
 
-#: ../terminal/terminal-options.c:324
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
@@ -245,13 +284,13 @@ msgstr ""
 "A „--geometry” kapcsoló megköveteli az ablak geometriájának megadását "
 "paraméterként"
 
-#: ../terminal/terminal-options.c:339
+#: ../terminal/terminal-options.c:347
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 "A „--role” kapcsoló megköveteli az ablak szerepének megadását paraméterként"
 
-#: ../terminal/terminal-options.c:354
+#: ../terminal/terminal-options.c:362
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
@@ -259,7 +298,7 @@ msgstr ""
 "A „--startup-id” kapcsoló megköveteli az indítási azonosító megadását "
 "paraméterként"
 
-#: ../terminal/terminal-options.c:369
+#: ../terminal/terminal-options.c:377
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -268,837 +307,120 @@ msgstr ""
 "Az „--icon/-I” kapcsoló megköveteli egy ikonnév vagy fájlnév megadását "
 "paraméterként"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:444
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Ismeretlen kapcsoló: „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:227
+#: ../terminal/terminal-preferences-dialog.c:260
 msgid "All Files"
 msgstr "Minden fájl"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-preferences-dialog.c:266
 msgid "Image Files"
 msgstr "Képfájlok"
 
-#: ../terminal/terminal-preferences.c:310
-msgid "Open Tab"
-msgstr "Lap megnyitása"
-
-#: ../terminal/terminal-preferences.c:321
-msgid "Open Terminal"
-msgstr "Terminál megnyitása"
-
-#: ../terminal/terminal-preferences.c:332
-msgid "Detach Tab"
-msgstr "Lap leválasztása"
-
-#: ../terminal/terminal-preferences.c:343
-msgid "Close Tab"
-msgstr "Lap bezárása"
-
-#: ../terminal/terminal-preferences.c:354
-msgid "Close Window"
-msgstr "Ablak bezárása"
-
-#: ../terminal/terminal-preferences.c:365
-msgid "Copy"
-msgstr "Másolás"
-
-#: ../terminal/terminal-preferences.c:376
-msgid "Paste"
-msgstr "Beillesztés"
-
-#: ../terminal/terminal-preferences.c:387
-msgid "Paste Selection"
-msgstr "Kijelölés beillesztése"
-
-#: ../terminal/terminal-preferences.c:398
-msgid "Select All"
-msgstr "Összes kijelölése"
-
-#: ../terminal/terminal-preferences.c:409
-msgid "Preferences"
-msgstr "Beállítások"
-
-#: ../terminal/terminal-preferences.c:420
-msgid "Show menubar"
-msgstr "Menüsor megjelenítése"
-
-#: ../terminal/terminal-preferences.c:431
-msgid "Show toolbars"
-msgstr "Eszköztárak megjelenítése"
-
-#: ../terminal/terminal-preferences.c:442
-msgid "Show borders"
-msgstr "Szegélyek megjelenítése"
-
-#: ../terminal/terminal-preferences.c:453
-msgid "Fullscreen"
-msgstr "Teljes képernyő"
-
-#: ../terminal/terminal-preferences.c:464
-msgid "Set Title"
-msgstr "Cím beállítása"
-
-#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:235
-msgid "Reset"
-msgstr "Visszaállítás"
-
-#: ../terminal/terminal-preferences.c:486
-msgid "Reset and Clear"
-msgstr "Visszaállítás és törlés"
-
-#: ../terminal/terminal-preferences.c:497
-msgid "Previous Tab"
-msgstr "Előző lap"
-
-#: ../terminal/terminal-preferences.c:508
-msgid "Next Tab"
-msgstr "Következő lap"
-
-#: ../terminal/terminal-preferences.c:519
-msgid "Switch to Tab 1"
-msgstr "Váltás az 1. lapra"
-
-#: ../terminal/terminal-preferences.c:530
-msgid "Switch to Tab 2"
-msgstr "Váltás a 2. lapra"
-
-#: ../terminal/terminal-preferences.c:541
-msgid "Switch to Tab 3"
-msgstr "Váltás a 3. lapra"
-
-#: ../terminal/terminal-preferences.c:552
-msgid "Switch to Tab 4"
-msgstr "Váltás a 4. lapra"
-
-#: ../terminal/terminal-preferences.c:563
-msgid "Switch to Tab 5"
-msgstr "Váltás az 5. lapra"
-
-#: ../terminal/terminal-preferences.c:574
-msgid "Switch to Tab 6"
-msgstr "Váltás a 6. lapra"
-
-#: ../terminal/terminal-preferences.c:585
-msgid "Switch to Tab 7"
-msgstr "Váltás a 7. lapra"
-
-#: ../terminal/terminal-preferences.c:596
-msgid "Switch to Tab 8"
-msgstr "Váltás a 8. lapra"
-
-#: ../terminal/terminal-preferences.c:607
-msgid "Switch to Tab 9"
-msgstr "Váltás a 9. lapra"
-
-#: ../terminal/terminal-preferences.c:618
-msgid "Contents"
-msgstr "Tartalom"
-
-#: ../terminal/terminal-screen.c:399 ../terminal/terminal-screen.c:631
-#: ../terminal/terminal-screen.c:1681
-msgid "Untitled"
-msgstr "Névtelen"
-
-#: ../terminal/terminal-screen.c:531
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Nem határozható meg a bejelentkezési parancsértelmező."
-
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1382 ../terminal/terminal-screen.c:1411
-msgid "Failed to execute child"
-msgstr "A gyermeg végrehajtása meghiúsult"
-
-#: ../terminal/terminal-screen.c:2018
-msgid "Close this tab"
-msgstr "Ezen lap bezárása"
-
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "Fájl"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "Szerkesztés"
-
-#: ../terminal/terminal-shortcut-editor.c:110
-msgid "View"
-msgstr "Nézet"
-
-#: ../terminal/terminal-shortcut-editor.c:129
-msgid "Go"
-msgstr "Ugrás"
-
-#: ../terminal/terminal-shortcut-editor.c:146
-msgid "Help"
-msgstr "Súgó"
-
-#: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
-msgid "Disabled"
-msgstr "Tiltva"
-
-#: ../terminal/terminal-shortcut-editor.c:222
-msgid "Action"
-msgstr "Művelet"
-
-#: ../terminal/terminal-shortcut-editor.c:229
-msgid "Shortcut key"
-msgstr "Gyorsbillentyű"
-
-#: ../terminal/terminal-shortcut-editor.c:329
-msgid "Compose shortcut"
-msgstr "Gyorsbillentyű megadása"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Clea_r"
-msgstr "_Törlés"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Gyorsbillentyű ehhez:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "A billentyűzet megszerzése meghiúsult"
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Egy másik alkalmazás már megszerezte a billentyűzet irányítását."
-
-#: ../terminal/terminal-toolbars-view.c:112
-msgid "Toolbar Editor"
-msgstr "Eszköztárszerkesztő"
-
-#: ../terminal/terminal-widget.c:330
-msgid "Copy Email Address"
-msgstr "E-mail cím másolása"
-
-#: ../terminal/terminal-widget.c:331
-msgid "Compose Email"
-msgstr "E-mail írása"
-
-#: ../terminal/terminal-widget.c:335
-msgid "Copy Link Address"
-msgstr "Hivatkozás címének másolása"
-
-#: ../terminal/terminal-widget.c:336
-msgid "Open Link"
-msgstr "Hivatkozás megnyitása"
-
-#: ../terminal/terminal-widget.c:490
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
+#: ../terminal/terminal-preferences-dialog.c:567
+msgid "Load Presets..."
 msgstr ""
-"Nem dobható a text/plain típusú kiválasztás a terminálba: rossz formátum "
-"(%d) vagy hossz (%d)\n"
 
-#: ../terminal/terminal-widget.c:506
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nem dobható a Mozilla URL a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
-
-#: ../terminal/terminal-widget.c:532
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nem dobható az URI-lista a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
-
-#: ../terminal/terminal-widget.c:577
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Érvénytelen színadatok érkeztek: rossz formátum (%d) vagy hossz (%d)\n"
-
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:714
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Az URL („%s”) megnyitása meghiúsult"
-
-#: ../terminal/terminal-window.c:219
-msgid "_File"
-msgstr "_Fájl"
-
-#: ../terminal/terminal-window.c:220
-msgid "Open _Tab"
-msgstr "L_ap megnyitása"
-
-#: ../terminal/terminal-window.c:220
-msgid "Open a new terminal tab"
-msgstr "Új terminállap megnyitása"
-
-#: ../terminal/terminal-window.c:221
-msgid "Open T_erminal"
-msgstr "_Terminál megnyitása"
-
-#: ../terminal/terminal-window.c:221
-msgid "Open a new terminal window"
-msgstr "Új terminálablak megnyitása"
-
-#: ../terminal/terminal-window.c:222
-msgid "_Detach Tab"
-msgstr "_Lap leválasztása"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open a new window for the current terminal tab"
-msgstr "Új ablak nyitása az aktuális terminállaphoz"
-
-#: ../terminal/terminal-window.c:223
-msgid "C_lose Tab"
-msgstr "Lap _bezárása"
-
-#: ../terminal/terminal-window.c:223
-msgid "Close the current terminal tab"
-msgstr "Az aktuális terminállap bezárása"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Close Window"
-msgstr "Abla_k bezárása"
-
-#: ../terminal/terminal-window.c:224
-msgid "Close the terminal window"
-msgstr "A terminálablak bezárása"
-
-#: ../terminal/terminal-window.c:225
-msgid "_Edit"
-msgstr "S_zerkesztés"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Copy"
-msgstr "_Másolás"
-
-#: ../terminal/terminal-window.c:226
-msgid "Copy to clipboard"
-msgstr "Másolás vágólapra"
-
-#: ../terminal/terminal-window.c:227
-msgid "_Paste"
-msgstr "_Beillesztés"
-
-#: ../terminal/terminal-window.c:227
-msgid "Paste from clipboard"
-msgstr "Beillesztés vágólapról"
-
-#: ../terminal/terminal-window.c:228
-msgid "Paste _Selection"
-msgstr "_Kijelölés beillesztése"
-
-#: ../terminal/terminal-window.c:228
-msgid "Paste from primary selection"
-msgstr "Beillesztés az elsődleges kijelölésből"
-
-#: ../terminal/terminal-window.c:229
-msgid "Select _All"
-msgstr "Összes _kijelölése"
-
-#: ../terminal/terminal-window.c:229
-msgid "Select all text in the terminal"
-msgstr "Minden szöveg kijelölése a terminálban"
-
-#: ../terminal/terminal-window.c:230
-msgid "_Toolbars..."
-msgstr "_Eszköztárak…"
-
-#: ../terminal/terminal-window.c:230
-msgid "Customize the toolbars"
-msgstr "Eszköztárak személyre szabása"
-
-#: ../terminal/terminal-window.c:231
-msgid "Pr_eferences..."
-msgstr "_Beállítások…"
-
-#: ../terminal/terminal-window.c:231
-msgid "Open the Terminal preferences dialog"
-msgstr "A Terminál beállítások ablakának megnyitása"
-
-#: ../terminal/terminal-window.c:232
-msgid "_View"
-msgstr "_Nézet"
-
-#: ../terminal/terminal-window.c:233
-msgid "_Terminal"
-msgstr "_Terminál"
-
-#: ../terminal/terminal-window.c:234
-msgid "_Set Title..."
-msgstr "_Cím beállítása…"
-
-#: ../terminal/terminal-window.c:234
-msgid "Set a custom title for the current tab"
-msgstr "Egyedi cím beállítása az aktuális laphoz"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Reset"
-msgstr "_Visszaállítás"
-
-#: ../terminal/terminal-window.c:236
-msgid "Reset and C_lear"
-msgstr "Visszaállítás és _törlés"
-
-#: ../terminal/terminal-window.c:236
-msgid "Reset and clear"
-msgstr "Visszaállítás és törlés"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Go"
-msgstr "_Ugrás"
-
-#: ../terminal/terminal-window.c:238
-msgid "_Previous Tab"
-msgstr "_Előző lap"
-
-#: ../terminal/terminal-window.c:238
-msgid "Switch to previous tab"
-msgstr "Váltás az előző lapra"
-
-#: ../terminal/terminal-window.c:239
-msgid "_Next Tab"
-msgstr "_Következő lap"
-
-#: ../terminal/terminal-window.c:239
-msgid "Switch to next tab"
-msgstr "Váltás a következő lapra"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Help"
-msgstr "_Súgó"
-
-#: ../terminal/terminal-window.c:241
-msgid "_Contents"
-msgstr "_Tartalom"
-
-#: ../terminal/terminal-window.c:241
-msgid "Display help contents"
-msgstr "Súgótartalom megjelenítése"
-
-#: ../terminal/terminal-window.c:242
-msgid "_Report a bug"
-msgstr "_Hibajelentés"
-
-#: ../terminal/terminal-window.c:242
-msgid "Report a bug in Terminal"
-msgstr "A Terminál hibájának bejelentése"
-
-#: ../terminal/terminal-window.c:243
-msgid "_About"
-msgstr "_Névjegy"
-
-#: ../terminal/terminal-window.c:243
-msgid "Display information about Terminal"
-msgstr "Információk megjelenítése a Terminálról"
-
-#: ../terminal/terminal-window.c:244
-msgid "_Input Methods"
-msgstr "_Beviteli mód"
-
-#: ../terminal/terminal-window.c:249
-msgid "Show _Menubar"
-msgstr "_Menü megjelenítése"
-
-#: ../terminal/terminal-window.c:249
-msgid "Show/hide the menubar"
-msgstr "A menüsor megjelenítése/elrejtése"
-
-#: ../terminal/terminal-window.c:250
-msgid "Show _Toolbars"
-msgstr "_Eszköztárak megjelenítése"
-
-#: ../terminal/terminal-window.c:250
-msgid "Show/hide the toolbars"
-msgstr "Az eszköztárak megjelenítése/elrejtése"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show Window _Borders"
-msgstr "_Ablakszegélyek megjelenítése/elrejtése"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show/hide the window decorations"
-msgstr "Az ablakdekoráció megjelenítése/elrejtése"
-
-#: ../terminal/terminal-window.c:252
-msgid "_Fullscreen"
-msgstr "_Teljes képernyő"
-
-#: ../terminal/terminal-window.c:252
-msgid "Toggle fullscreen mode"
-msgstr "Teljes képernyős üzemmód"
-
-#: ../terminal/terminal-window.c:538
-msgid "Warning"
-msgstr "Figyelmeztetés"
-
-#: ../terminal/terminal-window.c:549
-msgid "Close all tabs"
-msgstr "Lapok bezárása"
-
-#: ../terminal/terminal-window.c:568
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Ebben az ablakban %d lap van nyitva. Az\n"
-"ablak bezárása az összes lapot is bezárja."
-
-#: ../terminal/terminal-window.c:571
-msgid "Close all tabs?"
-msgstr "Bezárja az összes lapot?"
-
-#: ../terminal/terminal-window.c:584
-msgid "Do _not ask me again"
-msgstr "_Ne kérdezze újra"
-
-#: ../terminal/terminal-window.c:1555
-msgid "Window Title|Set Title"
-msgstr "Cím beállítása"
-
-#: ../terminal/terminal-window.c:1568
-msgid "Title:"
-msgstr "Cím:"
-
-#: ../terminal/terminal-window.c:1580
-msgid "Enter the title for the current terminal tab"
-msgstr "Adja meg az aktuális terminállap címét"
-
-#: ../Terminal.desktop.in.in.h:2
-msgid "Terminal Emulator"
-msgstr "Terminálemulátor"
-
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "$TERM b_eállítás:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "Spe_ciális"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "_Félkövér szöveg engedélyezése"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Automatikus felismerés"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Háttér"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Háttérkép"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Középre helyezett"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Válasszon terminál-betűkészletet"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Válassza ki a lapaktivitás színét"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Válassza ki a terminál háttérszínét"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Válassza ki a terminál kurzorszínét"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Válassza ki a terminál szövegszínét"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Válassza ki a terminál szövegkijelölésének háttérszínét"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Színválasztó"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "Parancs"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "Kompatibilitás"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
-"A kö_vetkező karaktereket vegye a szó részének\n"
-"dupla kattintáskor:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "K_urzor színe:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "_Minden hívóbetű letiltása a menühöz (például: Alt+f)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Me_nü gyorsbillentyűinek letiltása (alapértelmezésben F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Új ablakok s_zegélyének megjelenítése"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Menüs_or megjelenítése új ablakokban"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "_Eszköztárak megjelenítése új ablakokban"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Dupla kattintás"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "Él_simítás engedélyezése a terminál betűkészletén"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"A Terminál használjon-e élsimítást a szöveg megjelenítéséhez a "
-"terminálablakokban. Ezen beállítás kikapcsolása jelentősen gyorsíthatja a "
-"terminál megjelenítési teljesítményét és csökkentheti az általános "
-"rendszerterhelést lassú gépeken."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"A terminálablakon belül futó alkalmazások használhatnak félkövér betűket."
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"A Shift+fel/le nyilakat egyszerre lenyomva soronként lehessen görgetni."
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "A menüsor megjelenítése újonnan létrehozott terminálablakokban."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Eszköztárak megjelenítése újonnan létrehozott terminálablakokban."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-"Ablakdíszítések megjelenítése újonnan létrehozott terminálablakok körül."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Lehetővé teszi a legörgetést a terminálablakban a parancssorig bármely "
-"billentyű lenyomásával."
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Terminál törlése"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Escape sorozat"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Betűkészlet"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Általános"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Az eredeti cím mögé kerül"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Az eredeti cím elé kerül"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Nem jelenik meg"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Menüsáv elérése"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Nincs (homogén szín)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Bal oldalon"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Jobb oldalon"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Párbeszédablak megnyitása a szín megadásához"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Új ablakok megnyitása"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Paletta"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "1. palettabejegyzés"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "10. palettabejegyzés"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "11. palettabejegyzés"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "12. palettabejegyzés"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "13. palettabejegyzés"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "14. palettabejegyzés"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "15. palettabejegyzés"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "16. palettabejegyzés"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "2. palettabejegyzés"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "3. palettabejegyzés"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "4. palettabejegyzés"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "5. palettabejegyzés"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "6. palettabejegyzés"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "7. palettabejegyzés"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "8. palettabejegyzés"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "9. palettabejegyzés"
-
-#: ../Terminal.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:1
 msgid "Replaces initial title"
 msgstr "Lecseréli az eredeti címet"
 
-#: ../Terminal.glade.h:68
-msgid "Rese_t double click options to defaults"
-msgstr "_Dupla kattintás beállításainak alapértelmezettre állítása"
+#: ../terminal/terminal-preferences.glade.h:2
+msgid "Goes before initial title"
+msgstr "Az eredeti cím elé kerül"
 
-#: ../Terminal.glade.h:69
-msgid "Reset tab activity _indicator after"
-msgstr "Lapa_ktivitás jelzőjének kikapcsolása"
+#: ../terminal/terminal-preferences.glade.h:3
+msgid "Goes after initial title"
+msgstr "Az eredeti cím mögé kerül"
 
-#: ../Terminal.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:4
+msgid "Isn't displayed"
+msgstr "Nem jelenik meg"
+
+#: ../terminal/terminal-preferences.glade.h:5
+msgid "Disabled"
+msgstr "Tiltva"
+
+#: ../terminal/terminal-preferences.glade.h:6
+msgid "On the left side"
+msgstr "Bal oldalon"
+
+#: ../terminal/terminal-preferences.glade.h:7
+msgid "On the right side"
+msgstr "Jobb oldalon"
+
+#: ../terminal/terminal-preferences.glade.h:8
+msgid "None (use solid color)"
+msgstr "Nincs (homogén szín)"
+
+#: ../terminal/terminal-preferences.glade.h:9
+msgid "Background image"
+msgstr "Háttérkép"
+
+#: ../terminal/terminal-preferences.glade.h:10
+msgid "Transparent background"
+msgstr "Átlátszó háttér"
+
+#: ../terminal/terminal-preferences.glade.h:11
+msgid "Auto-detect"
+msgstr "Automatikus felismerés"
+
+#: ../terminal/terminal-preferences.glade.h:12
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../terminal/terminal-preferences.glade.h:13
+msgid "Escape sequence"
+msgstr "Escape sorozat"
+
+#: ../terminal/terminal-preferences.glade.h:14
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr "Terminál törlése"
+
+#: ../terminal/terminal-preferences.glade.h:16
+msgid "Tiled"
+msgstr "Mozaik"
+
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "Középre helyezett"
+
+#: ../terminal/terminal-preferences.glade.h:18
 msgid "Scaled"
 msgstr "Kifeszített"
 
-#: ../Terminal.glade.h:71
-msgid "Scr_ollbar is:"
-msgstr "A gö_rdítősáv:"
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "Kifeszített"
 
-#: ../Terminal.glade.h:72
-msgid "Scroll on _keystroke"
-msgstr "_Billentyűleütésre gördül"
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "Terminál beállításai"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll on ou_tput"
-msgstr "Új _kimenethez gördül"
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "_Kiindulási cím:"
 
-#: ../Terminal.glade.h:74
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Görgetés _egy sorral a Shift+fel/le billentyűkkel"
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "_Dynamically-set title:"
+msgstr "_Dinamikusan beállított cím:"
 
-#: ../Terminal.glade.h:75
-msgid "Scroll_back:"
-msgstr "_Visszagördítés:"
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "Cím"
 
-#: ../Terminal.glade.h:76
-msgid "Scrolling"
-msgstr "Gördülés"
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "_Parancs futtatása bejelentkezési parancsértelmezőként"
 
-#: ../Terminal.glade.h:77
-msgid "Select Background Image File"
-msgstr "Válasszon háttérképfájlt"
-
-#: ../Terminal.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:25
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1110,44 +432,346 @@ msgstr ""
 "módban futtatása közti különbségekkel kapcsolatban nézze meg a "
 "parancsértelmező kézikönyvét."
 
-#: ../Terminal.glade.h:79
-msgid "Shortcut Keys"
-msgstr "Gyorsbillentyűk"
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "Parancs indításakor az _utmp/wtmp rekordok frissítése"
 
-#: ../Terminal.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "Command"
+msgstr "Parancs"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Görgetés _egy sorral a Shift+fel/le billentyűkkel"
+
+#: ../terminal/terminal-preferences.glade.h:29
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"A Shift+fel/le nyilakat egyszerre lenyomva soronként lehessen görgetni."
+
+#: ../terminal/terminal-preferences.glade.h:30
+msgid "Scroll on ou_tput"
+msgstr "Új _kimenethez gördül"
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"A terminál legördüljön-e automatikusan, amikor a terminálban futó parancsok "
+"új kimenetet állítanak elő."
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid "Scroll on _keystroke"
+msgstr "_Billentyűleütésre gördül"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Lehetővé teszi a legörgetést a terminálablakban a parancssorig bármely "
+"billentyű lenyomásával."
+
+#: ../terminal/terminal-preferences.glade.h:34
+msgid "Scr_ollbar is:"
+msgstr "A gö_rdítősáv:"
+
+#: ../terminal/terminal-preferences.glade.h:35
+msgid "Scroll_back:"
+msgstr "_Visszagördítés:"
+
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Megadja a sorok számát, amennyit a görgetősávval visszagörgethet."
 
-#: ../Terminal.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:37
+msgid "Scrolling"
+msgstr "Gördülés"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid "_General"
+msgstr "Á_ltalános"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "Choose Terminal Font"
+msgstr "Válasszon terminál-betűkészletet"
+
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Allow bold te_xt"
+msgstr "_Félkövér szöveg engedélyezése"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"A terminálablakon belül futó alkalmazások használhatnak félkövér betűket."
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "Font"
+msgstr "Betűkészlet"
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "_File:"
+msgstr "_Fájl:"
+
+#: ../terminal/terminal-preferences.glade.h:44
 msgid "St_yle:"
 msgstr "Stíl_us:"
 
-#: ../Terminal.glade.h:82
-msgid "Stretched"
-msgstr "Kifeszített"
+#: ../terminal/terminal-preferences.glade.h:45
+msgid "Select Background Image File"
+msgstr "Válasszon háttérképfájlt"
 
-#: ../Terminal.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:46
+msgid "Transpare_ncy:"
+msgstr "Á_tlátszóság:"
+
+#: ../terminal/terminal-preferences.glade.h:47
+msgid "Background"
+msgstr "Háttér"
+
+#: ../terminal/terminal-preferences.glade.h:48
+msgid "Display _menubar in new windows"
+msgstr "Menüs_or megjelenítése új ablakokban"
+
+#: ../terminal/terminal-preferences.glade.h:49
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "A menüsor megjelenítése újonnan létrehozott terminálablakokban."
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "Display _toolbars in new windows"
+msgstr "_Eszköztárak megjelenítése új ablakokban"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Eszköztárak megjelenítése újonnan létrehozott terminálablakokban."
+
+#: ../terminal/terminal-preferences.glade.h:52
+msgid "Display _borders around new windows"
+msgstr "Új ablakok s_zegélyének megjelenítése"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+"Ablakdíszítések megjelenítése újonnan létrehozott terminálablakok körül."
+
+#: ../terminal/terminal-preferences.glade.h:54
+msgid "Opening New Windows"
+msgstr "Új ablakok megnyitása"
+
+#: ../terminal/terminal-preferences.glade.h:55
+msgid "Reset tab activity _indicator after"
+msgstr "Lapa_ktivitás jelzőjének kikapcsolása"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "seconds"
+msgstr "másodperc"
+
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "Tab Activity Indicator"
 msgstr "Lapaktivitás jelzője"
 
-#: ../Terminal.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:58
+msgid "_Appearance"
+msgstr "_Megjelenés"
+
+#: ../terminal/terminal-preferences.glade.h:59
+msgid "_Text color:"
+msgstr "_Szövegszín:"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "_Background color:"
+msgstr "_Háttérszín:"
+
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "Tab activit_y color:"
 msgstr "_Lapaktivitás színe:"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal Preferences"
-msgstr "Terminál beállításai"
+#: ../terminal/terminal-preferences.glade.h:62
+msgid "Cu_rsor color:"
+msgstr "K_urzor színe:"
 
-#: ../Terminal.glade.h:86
-msgid "Terminal applications have this color palette available to them:"
-msgstr "A terminálalkalmazások számára ez a színpaletta érhető el:"
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "_Vary the background color for each tab"
+msgstr ""
 
-#: ../Terminal.glade.h:87
-msgid "Text Selection"
+#: ../terminal/terminal-preferences.glade.h:64
+msgid ""
+"The random color is based on the selected background color, keeping the same "
+"brightness. "
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:65
+#, fuzzy
+msgid "Choose background color"
+msgstr "Válassza ki a terminál háttérszínét"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Color Selector"
+msgstr "Színválasztó"
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Open a dialog to specify the color"
+msgstr "Párbeszédablak megnyitása a szín megadásához"
+
+#: ../terminal/terminal-preferences.glade.h:68
+#, fuzzy
+msgid "Choose text color"
+msgstr "Válassza ki a terminál szövegszínét"
+
+#: ../terminal/terminal-preferences.glade.h:69
+#, fuzzy
+msgid "Choose cursor color"
+msgstr "Válassza ki a terminál kurzorszínét"
+
+#: ../terminal/terminal-preferences.glade.h:70
+msgid "Choose tab activity color"
+msgstr "Válassza ki a lapaktivitás színét"
+
+#: ../terminal/terminal-preferences.glade.h:71
+msgid "General"
+msgstr "Általános"
+
+#: ../terminal/terminal-preferences.glade.h:72
+#, fuzzy
+msgid "Text _selection color:"
 msgstr "Szövegkijelölés"
 
-#: ../Terminal.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:73
+msgid ""
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:74
+#, fuzzy
+msgid "Choose text selection background color"
+msgstr "Válassza ki a terminál szövegkijelölésének háttérszínét"
+
+#: ../terminal/terminal-preferences.glade.h:75
+#, fuzzy
+msgid "B_old text color:"
+msgstr "_Szövegszín:"
+
+#: ../terminal/terminal-preferences.glade.h:76
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:77
+#, fuzzy
+msgid "Choose bold font color"
+msgstr "Válassza ki a lapaktivitás színét"
+
+#: ../terminal/terminal-preferences.glade.h:78
+#, fuzzy
+msgid "Custom Colors"
+msgstr "K_urzor színe:"
+
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "Black"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:82
+msgid "Dark Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Light Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "Light Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Brown / Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Light Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Light Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Light Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "White"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Light Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:95
+msgid "Palette"
+msgstr "Paletta"
+
+#: ../terminal/terminal-preferences.glade.h:96
+#, fuzzy
+msgid "Presets"
+msgstr "Visszaállítás"
+
+#: ../terminal/terminal-preferences.glade.h:97
+msgid "_Colors"
+msgstr "_Színek"
+
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "_Backspace key generates:"
+msgstr "A Ba_ckspace billentyű ezt generálja:"
+
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "_Delete key generates:"
+msgstr "A _Delete billentyű ezt generálja:"
+
+#: ../terminal/terminal-preferences.glade.h:100
+msgid "$TERM s_etting:"
+msgstr "$TERM b_eállítás:"
+
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "_Reset compatibility options to defaults"
+msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
+
+#: ../terminal/terminal-preferences.glade.h:102
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1159,116 +783,614 @@ msgstr ""
 "és operációs rendszerekkel való együttműködését, amelyek más igényeket\n"
 "támasztanak a terminállal szemben."
 
-#: ../Terminal.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:106
+msgid "Compatibility"
+msgstr "Kompatibilitás"
+
+#: ../terminal/terminal-preferences.glade.h:107
+#, fuzzy
+msgid "Co_mpatibility"
+msgstr "Kompatibilitás"
+
+#: ../terminal/terminal-preferences.glade.h:108
 msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
+"Consider the following characters part of a _word\n"
+"when double clicking:"
 msgstr ""
-"A terminál legördüljön-e automatikusan, amikor a terminálban futó parancsok "
-"új kimenetet állítanak elő."
+"A kö_vetkező karaktereket vegye a szó részének\n"
+"dupla kattintáskor:"
 
-#: ../Terminal.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:110
+msgid "Rese_t double click options to defaults"
+msgstr "_Dupla kattintás beállításainak alapértelmezettre állítása"
+
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Double Click"
+msgstr "Dupla kattintás"
+
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Default character e_ncoding:"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Encoding"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "_Minden hívóbetű letiltása a menühöz (például: Alt+f)"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Me_nü gyorsbillentyűinek letiltása (alapértelmezésben F10)"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Menubar Access"
+msgstr "Menüsáv elérése"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Ad_vanced"
+msgstr "Spe_ciális"
+
+#: ../terminal/terminal-preferences.c:756
+msgid "Terminal"
+msgstr "Terminál"
+
+#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
+#: ../terminal/terminal-screen.c:1742
+msgid "Untitled"
+msgstr "Névtelen"
+
+#: ../terminal/terminal-screen.c:547
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Nem határozható meg a bejelentkezési parancsértelmező."
+
+#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
+msgid "Failed to execute child"
+msgstr "A gyermeg végrehajtása meghiúsult"
+
+#: ../terminal/terminal-screen.c:2083
+msgid "Close this tab"
+msgstr "Ezen lap bezárása"
+
+#: ../terminal/terminal-widget.c:324
+msgid "Copy Email Address"
+msgstr "E-mail cím másolása"
+
+#: ../terminal/terminal-widget.c:325
+msgid "Compose Email"
+msgstr "E-mail írása"
+
+#: ../terminal/terminal-widget.c:329
+msgid "Copy Link Address"
+msgstr "Hivatkozás címének másolása"
+
+#: ../terminal/terminal-widget.c:330
+msgid "Open Link"
+msgstr "Hivatkozás megnyitása"
+
+#: ../terminal/terminal-widget.c:484
+#, c-format
 msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
 msgstr ""
-"A $TERM környezeti változó értékének megadása új terminállap vagy -ablak "
-"nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes "
-"alkalmazások színeivel probléma van, próbálja megadni az xterm-color értéket."
+"Nem dobható a text/plain típusú kiválasztás a terminálba: rossz formátum "
+"(%d) vagy hossz (%d)\n"
 
-#: ../Terminal.glade.h:94
-msgid "Tiled"
-msgstr "Mozaik"
+#: ../terminal/terminal-widget.c:500
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Nem dobható a Mozilla URL a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
 
-#: ../Terminal.glade.h:95
-msgid "Title"
-msgstr "Cím"
+#: ../terminal/terminal-widget.c:526
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Nem dobható az URI-lista a terminálba: rossz formátum (%d) vagy hossz (%d)\n"
 
-#: ../Terminal.glade.h:96
-msgid "Transpare_ncy:"
-msgstr "Á_tlátszóság:"
+#: ../terminal/terminal-widget.c:571
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "Érvénytelen színadatok érkeztek: rossz formátum (%d) vagy hossz (%d)\n"
 
-#: ../Terminal.glade.h:97
-msgid "Transparent background"
-msgstr "Átlátszó háttér"
+#: ../terminal/terminal-widget.c:705
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Az URL („%s”) megnyitása meghiúsult"
 
-#: ../Terminal.glade.h:98
-msgid "Use _default color"
-msgstr "_Alapértelmezett szín használata"
+#: ../terminal/terminal-window.c:218
+msgid "_File"
+msgstr "_Fájl"
 
-#: ../Terminal.glade.h:99
-msgid "Use a custom text selection background color"
-msgstr "Egyéni háttérszín használata a kijelölt szöveghez"
+#: ../terminal/terminal-window.c:219
+msgid "Open _Tab"
+msgstr "L_ap megnyitása"
 
-#: ../Terminal.glade.h:100
-msgid "Use c_ustom color:"
-msgstr "_Egyéni szín használata:"
+#: ../terminal/terminal-window.c:219
+msgid "Open a new terminal tab"
+msgstr "Új terminállap megnyitása"
 
-#: ../Terminal.glade.h:101
-msgid "Use the default text selection background color"
-msgstr "Alapértelmezett háttérszín használata a kijelölt szöveghez"
+#: ../terminal/terminal-window.c:220
+msgid "Open T_erminal"
+msgstr "_Terminál megnyitása"
 
-#: ../Terminal.glade.h:102
-msgid "_Appearance"
-msgstr "_Megjelenés"
+#: ../terminal/terminal-window.c:220
+msgid "Open a new terminal window"
+msgstr "Új terminálablak megnyitása"
 
-#: ../Terminal.glade.h:103
-msgid "_Background color:"
-msgstr "_Háttérszín:"
+#: ../terminal/terminal-window.c:221
+msgid "_Detach Tab"
+msgstr "_Lap leválasztása"
 
-#: ../Terminal.glade.h:104
-msgid "_Backspace key generates:"
-msgstr "A Ba_ckspace billentyű ezt generálja:"
+#: ../terminal/terminal-window.c:222
+msgid "C_lose Tab"
+msgstr "Lap _bezárása"
 
-#: ../Terminal.glade.h:105
-msgid "_Colors"
-msgstr "_Színek"
+#: ../terminal/terminal-window.c:223
+msgid "_Close Window"
+msgstr "Abla_k bezárása"
 
-#: ../Terminal.glade.h:106
-msgid "_Delete key generates:"
-msgstr "A _Delete billentyű ezt generálja:"
+#: ../terminal/terminal-window.c:224
+msgid "_Edit"
+msgstr "S_zerkesztés"
 
-#: ../Terminal.glade.h:107
-msgid "_Dynamically-set title:"
-msgstr "_Dinamikusan beállított cím:"
+#: ../terminal/terminal-window.c:225
+msgid "_Copy"
+msgstr "_Másolás"
 
-#: ../Terminal.glade.h:108
-msgid "_File:"
-msgstr "_Fájl:"
+#: ../terminal/terminal-window.c:225
+msgid "Copy to clipboard"
+msgstr "Másolás vágólapra"
 
-#: ../Terminal.glade.h:109
-msgid "_General"
-msgstr "Á_ltalános"
+#: ../terminal/terminal-window.c:226
+msgid "_Paste"
+msgstr "_Beillesztés"
 
-#: ../Terminal.glade.h:110
-msgid "_Initial title:"
-msgstr "_Kiindulási cím:"
+#: ../terminal/terminal-window.c:226
+msgid "Paste from clipboard"
+msgstr "Beillesztés vágólapról"
 
-#: ../Terminal.glade.h:111
-msgid "_Reset compatibility options to defaults"
-msgstr "_Kompatibilitási beállítások alapértelmezettre állítása"
+#: ../terminal/terminal-window.c:227
+msgid "Paste _Selection"
+msgstr "_Kijelölés beillesztése"
 
-#: ../Terminal.glade.h:112
-msgid "_Run command as login shell"
-msgstr "_Parancs futtatása bejelentkezési parancsértelmezőként"
+#: ../terminal/terminal-window.c:228
+msgid "Select _All"
+msgstr "Összes _kijelölése"
 
-#: ../Terminal.glade.h:113
-msgid "_Shortcuts"
-msgstr "_Gyorsbillentyűk"
+#: ../terminal/terminal-window.c:229
+msgid "Pr_eferences..."
+msgstr "_Beállítások…"
 
-#: ../Terminal.glade.h:114
-msgid "_Text color:"
-msgstr "_Szövegszín:"
+#: ../terminal/terminal-window.c:229
+#, fuzzy
+msgid "Open the preferences dialog"
+msgstr "A Terminál beállítások ablakának megnyitása"
 
-#: ../Terminal.glade.h:115
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "Parancs indításakor az _utmp/wtmp rekordok frissítése"
+#: ../terminal/terminal-window.c:230
+msgid "_View"
+msgstr "_Nézet"
 
-#: ../Terminal.glade.h:116
-msgid "seconds"
-msgstr "másodperc"
+#: ../terminal/terminal-window.c:231
+msgid "_Terminal"
+msgstr "_Terminál"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Set Title..."
+msgstr "_Cím beállítása…"
+
+#: ../terminal/terminal-window.c:233
+#, fuzzy
+msgid "_Clear Scrollback"
+msgstr "_Visszagördítés:"
+
+#: ../terminal/terminal-window.c:234
+msgid "Clear Scrollback and _Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:235
+msgid "_Go"
+msgstr "_Ugrás"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Previous Tab"
+msgstr "_Előző lap"
+
+#: ../terminal/terminal-window.c:236
+msgid "Switch to previous tab"
+msgstr "Váltás az előző lapra"
+
+#: ../terminal/terminal-window.c:237
+msgid "_Next Tab"
+msgstr "_Következő lap"
+
+#: ../terminal/terminal-window.c:237
+msgid "Switch to next tab"
+msgstr "Váltás a következő lapra"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Help"
+msgstr "_Súgó"
+
+#: ../terminal/terminal-window.c:239
+msgid "_Contents"
+msgstr "_Tartalom"
+
+#: ../terminal/terminal-window.c:239
+msgid "Display help contents"
+msgstr "Súgótartalom megjelenítése"
+
+#: ../terminal/terminal-window.c:240
+msgid "_Report a bug"
+msgstr "_Hibajelentés"
+
+#: ../terminal/terminal-window.c:241
+msgid "_About"
+msgstr "_Névjegy"
+
+#: ../terminal/terminal-window.c:242
+msgid "_Input Methods"
+msgstr "_Beviteli mód"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show _Menubar"
+msgstr "_Menü megjelenítése"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show/hide the menubar"
+msgstr "A menüsor megjelenítése/elrejtése"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show _Toolbars"
+msgstr "_Eszköztárak megjelenítése"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show/hide the toolbars"
+msgstr "Az eszköztárak megjelenítése/elrejtése"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show Window _Borders"
+msgstr "_Ablakszegélyek megjelenítése/elrejtése"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show/hide the window decorations"
+msgstr "Az ablakdekoráció megjelenítése/elrejtése"
+
+#: ../terminal/terminal-window.c:250
+msgid "_Fullscreen"
+msgstr "_Teljes képernyő"
+
+#: ../terminal/terminal-window.c:250
+msgid "Toggle fullscreen mode"
+msgstr "Teljes képernyős üzemmód"
+
+#. create encoding action
+#: ../terminal/terminal-window.c:408
+msgid "Set _Encoding"
+msgstr ""
+
+#: ../terminal/terminal-window.c:539
+msgid "Warning"
+msgstr "Figyelmeztetés"
+
+#: ../terminal/terminal-window.c:550
+msgid "Close all tabs"
+msgstr "Lapok bezárása"
+
+#: ../terminal/terminal-window.c:569
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Ebben az ablakban %d lap van nyitva. Az\n"
+"ablak bezárása az összes lapot is bezárja."
+
+#: ../terminal/terminal-window.c:572
+msgid "Close all tabs?"
+msgstr "Bezárja az összes lapot?"
+
+#: ../terminal/terminal-window.c:585
+msgid "Do _not ask me again"
+msgstr "_Ne kérdezze újra"
+
+#: ../terminal/terminal-window.c:1592
+msgid "Window Title|Set Title"
+msgstr "Cím beállítása"
+
+#: ../terminal/terminal-window.c:1605
+msgid "Title:"
+msgstr "Cím:"
+
+#: ../terminal/terminal-window.c:1617
+msgid "Enter the title for the current terminal tab"
+msgstr "Adja meg az aktuális terminállap címét"
+
+#: ../xfce4-terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Terminálemulátor"
+
+#~ msgid "D-BUS message bus disconnected, exiting...\n"
+#~ msgstr "A D-Bus üzenetbusz leválasztva, kilépés…\n"
+
+#~ msgid "Unable to register object %s"
+#~ msgstr "Az objektum (%s) nem regisztrálható"
+
+#~ msgid "The %s user manual is not installed on your computer"
+#~ msgstr "A(z) %s felhasználói kézikönyv nincs a számítógépre telepítve"
+
+#~ msgid ""
+#~ "You can read the user manual online. This manual may however not exactly "
+#~ "match your %s version."
+#~ msgstr ""
+#~ "A felhasználói kézikönyvet elolvashatja az interneten. Ez azonban nem "
+#~ "feltétlenül az Ön által használt %s verziót írja le."
+
+#~ msgid "User manual is missing"
+#~ msgstr "A felhasználói kézikönyv hiányzik"
+
+#~ msgid "_Read Online"
+#~ msgstr "_Elolvasom az interneten"
+
+#~ msgid "Failed to open the documentation browser"
+#~ msgstr "A dokumentációböngésző megnyitása meghiúsult"
+
+#~ msgid "Open Tab"
+#~ msgstr "Lap megnyitása"
+
+#~ msgid "Detach Tab"
+#~ msgstr "Lap leválasztása"
+
+#~ msgid "Close Tab"
+#~ msgstr "Lap bezárása"
+
+#~ msgid "Close Window"
+#~ msgstr "Ablak bezárása"
+
+#~ msgid "Copy"
+#~ msgstr "Másolás"
+
+#~ msgid "Paste"
+#~ msgstr "Beillesztés"
+
+#~ msgid "Paste Selection"
+#~ msgstr "Kijelölés beillesztése"
+
+#~ msgid "Select All"
+#~ msgstr "Összes kijelölése"
+
+#~ msgid "Preferences"
+#~ msgstr "Beállítások"
+
+#~ msgid "Show menubar"
+#~ msgstr "Menüsor megjelenítése"
+
+#~ msgid "Show toolbars"
+#~ msgstr "Eszköztárak megjelenítése"
+
+#~ msgid "Show borders"
+#~ msgstr "Szegélyek megjelenítése"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Teljes képernyő"
+
+#~ msgid "Set Title"
+#~ msgstr "Cím beállítása"
+
+#~ msgid "Reset and Clear"
+#~ msgstr "Visszaállítás és törlés"
+
+#~ msgid "Previous Tab"
+#~ msgstr "Előző lap"
+
+#~ msgid "Next Tab"
+#~ msgstr "Következő lap"
+
+#~ msgid "Switch to Tab 1"
+#~ msgstr "Váltás az 1. lapra"
+
+#~ msgid "Switch to Tab 2"
+#~ msgstr "Váltás a 2. lapra"
+
+#~ msgid "Switch to Tab 3"
+#~ msgstr "Váltás a 3. lapra"
+
+#~ msgid "Switch to Tab 4"
+#~ msgstr "Váltás a 4. lapra"
+
+#~ msgid "Switch to Tab 5"
+#~ msgstr "Váltás az 5. lapra"
+
+#~ msgid "Switch to Tab 6"
+#~ msgstr "Váltás a 6. lapra"
+
+#~ msgid "Switch to Tab 7"
+#~ msgstr "Váltás a 7. lapra"
+
+#~ msgid "Switch to Tab 8"
+#~ msgstr "Váltás a 8. lapra"
+
+#~ msgid "Switch to Tab 9"
+#~ msgstr "Váltás a 9. lapra"
+
+#~ msgid "Contents"
+#~ msgstr "Tartalom"
+
+#~ msgid "File"
+#~ msgstr "Fájl"
+
+#~ msgid "Edit"
+#~ msgstr "Szerkesztés"
+
+#~ msgid "View"
+#~ msgstr "Nézet"
+
+#~ msgid "Go"
+#~ msgstr "Ugrás"
+
+#~ msgid "Help"
+#~ msgstr "Súgó"
+
+#~ msgid "Action"
+#~ msgstr "Művelet"
+
+#~ msgid "Shortcut key"
+#~ msgstr "Gyorsbillentyű"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Gyorsbillentyű megadása"
+
+#~ msgid "Clea_r"
+#~ msgstr "_Törlés"
+
+#~ msgid "Compose shortcut for:"
+#~ msgstr "Gyorsbillentyű ehhez:"
+
+#~ msgid "Failed to acquire keyboard"
+#~ msgstr "A billentyűzet megszerzése meghiúsult"
+
+#~ msgid "Another application has already acquired control over your keyboard."
+#~ msgstr "Egy másik alkalmazás már megszerezte a billentyűzet irányítását."
+
+#~ msgid "Toolbar Editor"
+#~ msgstr "Eszköztárszerkesztő"
+
+#~ msgid "Open a new window for the current terminal tab"
+#~ msgstr "Új ablak nyitása az aktuális terminállaphoz"
+
+#~ msgid "Close the current terminal tab"
+#~ msgstr "Az aktuális terminállap bezárása"
+
+#~ msgid "Close the terminal window"
+#~ msgstr "A terminálablak bezárása"
+
+#~ msgid "Paste from primary selection"
+#~ msgstr "Beillesztés az elsődleges kijelölésből"
+
+#~ msgid "Select all text in the terminal"
+#~ msgstr "Minden szöveg kijelölése a terminálban"
+
+#~ msgid "_Toolbars..."
+#~ msgstr "_Eszköztárak…"
+
+#~ msgid "Customize the toolbars"
+#~ msgstr "Eszköztárak személyre szabása"
+
+#~ msgid "Set a custom title for the current tab"
+#~ msgstr "Egyedi cím beállítása az aktuális laphoz"
+
+#~ msgid "_Reset"
+#~ msgstr "_Visszaállítás"
+
+#~ msgid "Reset and C_lear"
+#~ msgstr "Visszaállítás és _törlés"
+
+#~ msgid "Reset and clear"
+#~ msgstr "Visszaállítás és törlés"
+
+#~ msgid "Report a bug in Terminal"
+#~ msgstr "A Terminál hibájának bejelentése"
+
+#~ msgid "Display information about Terminal"
+#~ msgstr "Információk megjelenítése a Terminálról"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "Él_simítás engedélyezése a terminál betűkészletén"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "A Terminál használjon-e élsimítást a szöveg megjelenítéséhez a "
+#~ "terminálablakokban. Ezen beállítás kikapcsolása jelentősen gyorsíthatja a "
+#~ "terminál megjelenítési teljesítményét és csökkentheti az általános "
+#~ "rendszerterhelést lassú gépeken."
+
+#~ msgid "Palette entry 1"
+#~ msgstr "1. palettabejegyzés"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "10. palettabejegyzés"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "11. palettabejegyzés"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "12. palettabejegyzés"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "13. palettabejegyzés"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "14. palettabejegyzés"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "15. palettabejegyzés"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "16. palettabejegyzés"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "2. palettabejegyzés"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "3. palettabejegyzés"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "4. palettabejegyzés"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "5. palettabejegyzés"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "6. palettabejegyzés"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "7. palettabejegyzés"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "8. palettabejegyzés"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "9. palettabejegyzés"
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Gyorsbillentyűk"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "A terminálalkalmazások számára ez a színpaletta érhető el:"
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "A $TERM környezeti változó értékének megadása új terminállap vagy -ablak "
+#~ "nyitásakor. Az alapértelmezett a legtöbb rendszerhez megfelelő. Ha egyes "
+#~ "alkalmazások színeivel probléma van, próbálja megadni az xterm-color "
+#~ "értéket."
+
+#~ msgid "Use _default color"
+#~ msgstr "_Alapértelmezett szín használata"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Egyéni háttérszín használata a kijelölt szöveghez"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "_Egyéni szín használata:"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Alapértelmezett háttérszín használata a kijelölt szöveghez"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Gyorsbillentyűk"
 
 #~ msgid ""
 #~ "%s %s (Xfce %s)\n"

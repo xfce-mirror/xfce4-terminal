@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-12 13:21+0000\n"
+"POT-Creation-Date: 2012-12-26 10:01+0100\n"
 "PO-Revision-Date: 2012-04-12 16:52+0300\n"
 "Last-Translator: Jari Rahkonen <jari.rahkonen@pp1.inet.fi>\n"
 "Language-Team: Finnish <translation-team-fi@lists.sourceforge.net>\n"
@@ -16,140 +16,206 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "Usage:"
 msgstr "Käyttö:"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "OPTION"
 msgstr "VALITSIN"
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:113
 msgid "General Options"
 msgstr "Yleiset valitsimet"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:115 ../terminal/main.c:141
 msgid "display"
 msgstr "näyttö"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:117 ../terminal/main.c:132
 msgid "directory"
 msgstr "kansio"
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:121
 msgid "Window or Tab Separators"
 msgstr "Ikkunan tai välilehden erottimet"
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:126
 msgid "Tab Options"
 msgstr "Välilehtiasetukset"
 
 #. parameter of --command
-#: ../terminal/main.c:72
+#: ../terminal/main.c:128
 msgid "command"
 msgstr "komento"
 
 #. parameter of --title
-#: ../terminal/main.c:74
+#: ../terminal/main.c:130
 msgid "title"
 msgstr "otsake"
 
-#: ../terminal/main.c:83
+#: ../terminal/main.c:139
 msgid "Window Options"
 msgstr "Ikkunan asetukset"
 
 #. parameter of --geometry
-#: ../terminal/main.c:87
+#: ../terminal/main.c:143
 msgid "geometry"
 msgstr "mitat"
 
 #. parameter of --role
-#: ../terminal/main.c:89
+#: ../terminal/main.c:145
 msgid "role"
 msgstr "rooli"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:91
+#: ../terminal/main.c:147
 msgid "string"
 msgstr "merkkijono"
 
 #. parameter of --icon
-#: ../terminal/main.c:93
+#: ../terminal/main.c:149
 msgid "icon"
 msgstr "kuvake"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Ylläolevien valitsinten selitykset saat komennolla \"man %s\"."
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1274
-#: ../terminal/terminal-shortcut-editor.c:120 ../Terminal.desktop.in.in.h:1
-msgid "Terminal"
-msgstr "Pääte"
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
+#, fuzzy
+msgid "Xfce Terminal"
+msgstr "Avaa pääte"
 
-#: ../terminal/main.c:147
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce:n kehitystiimi. Kaikki oikeudet pidätetään."
 
-#: ../terminal/main.c:148
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>"
 msgstr "Kirjoittajat: Benedikt Meurer <benny@xfce.org>"
 
-#: ../terminal/main.c:149
+#: ../terminal/main.c:202
 msgid "and Nick Schermer <nick@xfce.org>."
 msgstr "sekä Nick Schermer <nick@xfce.org>."
 
-#: ../terminal/main.c:150
+#: ../terminal/main.c:203
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Vikailmoitukset osoitteeseen <%s>."
 
-#: ../terminal/main.c:249
+#: ../terminal/main.c:306
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ei voi rekisteröidä päätepalvelua: %s\n"
 
-#: ../terminal/terminal-app.c:516
+#: ../terminal/terminal-app.c:601
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Epäkelpo mittamääritys \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:113
+#: ../terminal/terminal-gdbus.c:81
 msgid "User id mismatch"
 msgstr "Käyttäjätunnus ei täsmää"
 
-#: ../terminal/terminal-dbus.c:119
+#: ../terminal/terminal-gdbus.c:87
 msgid "Display mismatch"
 msgstr "Näyttö ei täsmää"
 
-#: ../terminal/terminal-dbus.c:145
-#, c-format
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr "D-BUS-viestiyhteys katkaistu, poistutaan...\n"
-
-#: ../terminal/terminal-dbus.c:207
-#, c-format
-msgid "Unable to register object %s"
-msgstr "Ei voi rekisteröidä oliota %s"
-
-#: ../terminal/terminal-dialogs.c:90 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:74
+#: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Pääteohjelma Xfce-ympäristöön"
 
-#: ../terminal/terminal-dialogs.c:97
+#: ../terminal/terminal-dialogs.c:81
 msgid "translator-credits"
 msgstr "Jari Rahkonen <jari.rahkonen@pp1.inet.fi>"
 
-#: ../terminal/terminal-dialogs.c:100
+#: ../terminal/terminal-dialogs.c:84
 msgid "Visit Terminal website"
 msgstr "Käy sovelluksen verkkosivuilla"
 
-#: ../terminal/terminal-options.c:210
+#: ../terminal/terminal-encoding-action.c:71
+msgid "Western European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:72
+msgid "Central European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:73
+msgid "Baltic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:74
+msgid "South-Eastern Europe"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:75
+msgid "Turkish"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:76
+msgid "Cyrillic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:77
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:78
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:79
+msgid "Korean"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:80
+msgid "Japanese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:81
+msgid "Greek"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:82
+msgid "Arabic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Hebrew"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Thai"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:85
+msgid "Vietnamese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Unicode"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Other"
+msgstr ""
+
+#. action to reset to the default
+#: ../terminal/terminal-encoding-action.c:255
+#: ../terminal/terminal-encoding-action.c:387
+#, c-format
+msgid "Default (%s)"
+msgstr ""
+
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
@@ -157,7 +223,7 @@ msgid ""
 msgstr ""
 "Valitsin \"--default-display\" tarvitsee parametrikseen X:n oletusnäytön"
 
-#: ../terminal/terminal-options.c:225
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
@@ -166,7 +232,7 @@ msgstr ""
 "Valitsin \"--default-working-directory\" tarvitsee parametrikseen "
 "oletustyökansion"
 
-#: ../terminal/terminal-options.c:241
+#: ../terminal/terminal-options.c:249
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
@@ -175,7 +241,7 @@ msgstr ""
 "Valitsin \"--execute/-x\" edellyttää, että komentorivin loppuosa määrittää "
 "suoritettavan komennon"
 
-#: ../terminal/terminal-options.c:258
+#: ../terminal/terminal-options.c:266
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
@@ -183,44 +249,44 @@ msgid ""
 msgstr ""
 "Valitsin \"--command/-e\" tarvitsee parametrikseen suoritettavan komennon"
 
-#: ../terminal/terminal-options.c:275
+#: ../terminal/terminal-options.c:283
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Valitsin \"--working-directory\" tarvitsee parametrikseen työkansion"
 
-#: ../terminal/terminal-options.c:290
+#: ../terminal/terminal-options.c:298
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Valitsin \"--title/-T\" tarvitsee parametrikseen otsakkeen"
 
-#: ../terminal/terminal-options.c:309
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Valitstin \"--display\" tarvitsee parametreikseen X:n näytön"
 
-#: ../terminal/terminal-options.c:324
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Valitsin \"--geometry\" tarvitsee parametrikseen ikkunan mitat"
 
-#: ../terminal/terminal-options.c:339
+#: ../terminal/terminal-options.c:347
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Valitsin \"--role\" tarvitsee parametrikseen ikkunan roolin"
 
-#: ../terminal/terminal-options.c:354
+#: ../terminal/terminal-options.c:362
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 "Valitsin \"--startup-id\" tarvitsee parametrikseen käynnistystunnisteen"
 
-#: ../terminal/terminal-options.c:369
+#: ../terminal/terminal-options.c:377
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
@@ -228,835 +294,120 @@ msgid ""
 msgstr ""
 "Valitsin \"--icon/-I\" tarvitsee parametrikseen kuvakkeen tai tiedoston nimen"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:444
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Tuntematon valitsin \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:228
+#: ../terminal/terminal-preferences-dialog.c:260
 msgid "All Files"
 msgstr "Kaikki tiedostot"
 
-#: ../terminal/terminal-preferences-dialog.c:234
+#: ../terminal/terminal-preferences-dialog.c:266
 msgid "Image Files"
 msgstr "Kuvatiedostot"
 
-#: ../terminal/terminal-preferences.c:310
-msgid "Open Tab"
-msgstr "Avaa välilehti"
-
-#: ../terminal/terminal-preferences.c:321
-msgid "Open Terminal"
-msgstr "Avaa pääte"
-
-#: ../terminal/terminal-preferences.c:332
-msgid "Detach Tab"
-msgstr "Irrota välilehti"
-
-#: ../terminal/terminal-preferences.c:343
-msgid "Close Tab"
-msgstr "Sulje välilehti"
-
-#: ../terminal/terminal-preferences.c:354
-msgid "Close Window"
-msgstr "Sulje ikkuna"
-
-#: ../terminal/terminal-preferences.c:365
-msgid "Copy"
-msgstr "Kopioi"
-
-#: ../terminal/terminal-preferences.c:376
-msgid "Paste"
-msgstr "Liitä"
-
-#: ../terminal/terminal-preferences.c:387
-msgid "Paste Selection"
-msgstr "Liitä valinta"
-
-#: ../terminal/terminal-preferences.c:398
-msgid "Select All"
-msgstr "Valitse kaikki"
-
-#: ../terminal/terminal-preferences.c:409
-msgid "Preferences"
-msgstr "Asetukset"
-
-#: ../terminal/terminal-preferences.c:420
-msgid "Show menubar"
-msgstr "Näytä valikkopalkki"
-
-#: ../terminal/terminal-preferences.c:431
-msgid "Show toolbars"
-msgstr "Näytä työkalupalkit"
-
-#: ../terminal/terminal-preferences.c:442
-msgid "Show borders"
-msgstr "Näytä reunukset"
-
-#: ../terminal/terminal-preferences.c:453
-msgid "Fullscreen"
-msgstr "Täysruutu"
-
-#: ../terminal/terminal-preferences.c:464
-msgid "Set Title"
-msgstr "Aseta otsake"
-
-#: ../terminal/terminal-preferences.c:475 ../terminal/terminal-window.c:237
-msgid "Reset"
-msgstr "Palauta"
-
-#: ../terminal/terminal-preferences.c:486
-msgid "Reset and Clear"
-msgstr "Palauta ja tyhjennä"
-
-#: ../terminal/terminal-preferences.c:497
-msgid "Previous Tab"
-msgstr "Edellinen välilehti"
-
-#: ../terminal/terminal-preferences.c:508
-msgid "Next Tab"
-msgstr "Seuraava välilehti"
-
-#: ../terminal/terminal-preferences.c:519
-msgid "Switch to Tab 1"
-msgstr "Siirry välilehteen 1"
-
-#: ../terminal/terminal-preferences.c:530
-msgid "Switch to Tab 2"
-msgstr "Siirry välilehteen 2"
-
-#: ../terminal/terminal-preferences.c:541
-msgid "Switch to Tab 3"
-msgstr "Siirry välilehteen 3"
-
-#: ../terminal/terminal-preferences.c:552
-msgid "Switch to Tab 4"
-msgstr "Siirry välilehteen 4"
-
-#: ../terminal/terminal-preferences.c:563
-msgid "Switch to Tab 5"
-msgstr "Siirry välilehteen 5"
-
-#: ../terminal/terminal-preferences.c:574
-msgid "Switch to Tab 6"
-msgstr "Siirry välilehteen 6"
-
-#: ../terminal/terminal-preferences.c:585
-msgid "Switch to Tab 7"
-msgstr "Siirry välilehteen 7"
-
-#: ../terminal/terminal-preferences.c:596
-msgid "Switch to Tab 8"
-msgstr "Siirry välilehteen 8"
-
-#: ../terminal/terminal-preferences.c:607
-msgid "Switch to Tab 9"
-msgstr "Siirry välilehteen 9"
-
-#: ../terminal/terminal-preferences.c:618
-msgid "Contents"
-msgstr "Sisältö"
-
-#: ../terminal/terminal-screen.c:401 ../terminal/terminal-screen.c:633
-#: ../terminal/terminal-screen.c:1685
-msgid "Untitled"
-msgstr "Nimetön"
-
-#: ../terminal/terminal-screen.c:533
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
-
-#: ../terminal/terminal-screen.c:1385 ../terminal/terminal-screen.c:1415
-msgid "Failed to execute child"
-msgstr "Lapsiprosessin suorittaminen ei onnistu"
-
-#: ../terminal/terminal-screen.c:2022
-msgid "Close this tab"
-msgstr "Sulje tämä välilehti"
-
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "Tiedosto"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "Muokkaa"
-
-#: ../terminal/terminal-shortcut-editor.c:110
-msgid "View"
-msgstr "Näytä"
-
-#: ../terminal/terminal-shortcut-editor.c:129
-msgid "Go"
-msgstr "Siirry"
-
-#: ../terminal/terminal-shortcut-editor.c:146
-msgid "Help"
-msgstr "Ohje"
-
-#: ../terminal/terminal-shortcut-editor.c:210
-#: ../terminal/terminal-shortcut-editor.c:506 ../Terminal.glade.h:24
-msgid "Disabled"
-msgstr "Pois käytöstä"
-
-#: ../terminal/terminal-shortcut-editor.c:222
-msgid "Action"
-msgstr "Toiminto"
-
-#: ../terminal/terminal-shortcut-editor.c:229
-msgid "Shortcut key"
-msgstr "Pikanäppäimet"
-
-#: ../terminal/terminal-shortcut-editor.c:329
-msgid "Compose shortcut"
-msgstr "Aseta pikanäppäimet"
-
-#: ../terminal/terminal-shortcut-editor.c:334
-msgid "Clea_r"
-msgstr "Ty_hjennä"
-
-#: ../terminal/terminal-shortcut-editor.c:353
-msgid "Compose shortcut for:"
-msgstr "Aseta pikanäppäimet kohteelle:"
-
-#: ../terminal/terminal-shortcut-editor.c:375
-msgid "Failed to acquire keyboard"
-msgstr "Näppäimistön haltuunotto ei onnistu."
-
-#: ../terminal/terminal-shortcut-editor.c:377
-msgid "Another application has already acquired control over your keyboard."
-msgstr "Toinen sovellus pitää jo näppäimistöäsi hallussaan."
-
-#: ../terminal/terminal-toolbars-view.c:112
-msgid "Toolbar Editor"
-msgstr "Työkalupalkkieditori"
-
-#: ../terminal/terminal-widget.c:331
-msgid "Copy Email Address"
-msgstr "Kopioi sähköpostiosoite"
-
-#: ../terminal/terminal-widget.c:332
-msgid "Compose Email"
-msgstr "Kirjoita sähköpostiviesti"
-
-#: ../terminal/terminal-widget.c:336
-msgid "Copy Link Address"
-msgstr "Kopioi linkin osoite"
-
-#: ../terminal/terminal-widget.c:337
-msgid "Open Link"
-msgstr "Avaa linkki"
-
-#: ../terminal/terminal-widget.c:491
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
+#: ../terminal/terminal-preferences-dialog.c:567
+msgid "Load Presets..."
 msgstr ""
-"text/plain -muotoisen valinnan pudottaminen päätteeseen ei onnistu: väärä "
-"muoto (%d) tai pituus (%d)\n"
 
-#: ../terminal/terminal-widget.c:507
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Mozillan URL:n pudottaminen päätteeseen ei onnistu: Väärä muoto (%d) tai "
-"pituus (%d)\n"
-
-#: ../terminal/terminal-widget.c:533
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"URI-listan pudottaminen päätteeseen ei onnistu: Väärä muoto (%d) tai pituus "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:578
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr "Saatu värimääritys ei kelpaa: Väärä muoto (%d) tai pituus (%d)\n"
-
-#: ../terminal/terminal-widget.c:716
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "URL:in \"%s\" avaaminen epäonnistui"
-
-#: ../terminal/terminal-window.c:221
-msgid "_File"
-msgstr "_Tiedosto"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open _Tab"
-msgstr "Avaa v_älilehti"
-
-#: ../terminal/terminal-window.c:222
-msgid "Open a new terminal tab"
-msgstr "Avaa uusi päätteen välilehti"
-
-#: ../terminal/terminal-window.c:223
-msgid "Open T_erminal"
-msgstr "Avaa _pääte"
-
-#: ../terminal/terminal-window.c:223
-msgid "Open a new terminal window"
-msgstr "Avaa uusi pääteikkuna"
-
-#: ../terminal/terminal-window.c:224
-msgid "_Detach Tab"
-msgstr "_Irrota välilehti"
-
-#: ../terminal/terminal-window.c:224
-msgid "Open a new window for the current terminal tab"
-msgstr "Avaa uusi pääteikkuna nykyiselle välilehdelle"
-
-#: ../terminal/terminal-window.c:225
-msgid "C_lose Tab"
-msgstr "S_ulje välilehti"
-
-#: ../terminal/terminal-window.c:225
-msgid "Close the current terminal tab"
-msgstr "Sulje nykyinen päätteen välilehti"
-
-#: ../terminal/terminal-window.c:226
-msgid "_Close Window"
-msgstr "_Sulje ikkuna"
-
-#: ../terminal/terminal-window.c:226
-msgid "Close the terminal window"
-msgstr "Sulje pääteikkuna"
-
-#: ../terminal/terminal-window.c:227
-msgid "_Edit"
-msgstr "_Muokkaa"
-
-#: ../terminal/terminal-window.c:228
-msgid "_Copy"
-msgstr "_Kopioi"
-
-#: ../terminal/terminal-window.c:228
-msgid "Copy to clipboard"
-msgstr "Kopioi leikepöydälle"
-
-#: ../terminal/terminal-window.c:229
-msgid "_Paste"
-msgstr "_Liitä"
-
-#: ../terminal/terminal-window.c:229
-msgid "Paste from clipboard"
-msgstr "Liitä leikepöydältä"
-
-#: ../terminal/terminal-window.c:230
-msgid "Paste _Selection"
-msgstr "Liitä _valinta"
-
-#: ../terminal/terminal-window.c:230
-msgid "Paste from primary selection"
-msgstr "Liitä ensisijaisesta valinnasta"
-
-#: ../terminal/terminal-window.c:231
-msgid "Select _All"
-msgstr "Valitse _kaikki"
-
-#: ../terminal/terminal-window.c:231
-msgid "Select all text in the terminal"
-msgstr "Valitse päätteen koko tekstisisältö"
-
-#: ../terminal/terminal-window.c:232
-msgid "_Toolbars..."
-msgstr "_Työkalupalkit..."
-
-#: ../terminal/terminal-window.c:232
-msgid "Customize the toolbars"
-msgstr "Mukauta työkalupalkkeja"
-
-#: ../terminal/terminal-window.c:233
-msgid "Pr_eferences..."
-msgstr "_Asetukset..."
-
-#: ../terminal/terminal-window.c:233
-msgid "Open the Terminal preferences dialog"
-msgstr "Avaa Päätteen asetusikkuna"
-
-#: ../terminal/terminal-window.c:234
-msgid "_View"
-msgstr "_Näytä"
-
-#: ../terminal/terminal-window.c:235
-msgid "_Terminal"
-msgstr "_Pääte"
-
-#: ../terminal/terminal-window.c:236
-msgid "_Set Title..."
-msgstr "_Aseta otsake..."
-
-#: ../terminal/terminal-window.c:236
-msgid "Set a custom title for the current tab"
-msgstr "Aseta nykyiselle välilehdelle mukautettu otsake"
-
-#: ../terminal/terminal-window.c:237
-msgid "_Reset"
-msgstr "_Palauta"
-
-#: ../terminal/terminal-window.c:238
-msgid "Reset and C_lear"
-msgstr "Palauta ja _tyhjennä"
-
-#: ../terminal/terminal-window.c:238
-msgid "Reset and clear"
-msgstr "Palauta ja tyhjennä"
-
-#: ../terminal/terminal-window.c:239
-msgid "_Go"
-msgstr "_Siirry"
-
-#: ../terminal/terminal-window.c:240
-msgid "_Previous Tab"
-msgstr "_Edellinen välilehti"
-
-#: ../terminal/terminal-window.c:240
-msgid "Switch to previous tab"
-msgstr "Siirry edelliselle välilehdelle"
-
-#: ../terminal/terminal-window.c:241
-msgid "_Next Tab"
-msgstr "_Seuraava välilehti"
-
-#: ../terminal/terminal-window.c:241
-msgid "Switch to next tab"
-msgstr "Siirry seuraavalle välilehdelle"
-
-#: ../terminal/terminal-window.c:242
-msgid "_Help"
-msgstr "_Ohje"
-
-#: ../terminal/terminal-window.c:243
-msgid "_Contents"
-msgstr "_Sisältö"
-
-#: ../terminal/terminal-window.c:243
-msgid "Display help contents"
-msgstr "Näytä ohjeen sisältö"
-
-#: ../terminal/terminal-window.c:244
-msgid "_Report a bug"
-msgstr "Tee _vikailmoitus"
-
-#: ../terminal/terminal-window.c:244
-msgid "Report a bug in Terminal"
-msgstr "Ilmoita Terminal-päätesovelluksen viasta"
-
-#: ../terminal/terminal-window.c:245
-msgid "_About"
-msgstr "_Tietoja"
-
-#: ../terminal/terminal-window.c:245
-msgid "Display information about Terminal"
-msgstr "Näytä tietoja Terminal-päätesovelluksesta"
-
-#: ../terminal/terminal-window.c:246
-msgid "_Input Methods"
-msgstr "_Tiedonsyöttötavat"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show _Menubar"
-msgstr "Näytä _valikkopalkki"
-
-#: ../terminal/terminal-window.c:251
-msgid "Show/hide the menubar"
-msgstr "Näytä/piilota valikkopalkki"
-
-#: ../terminal/terminal-window.c:252
-msgid "Show _Toolbars"
-msgstr "Näytä _työkalupalkit"
-
-#: ../terminal/terminal-window.c:252
-msgid "Show/hide the toolbars"
-msgstr "Näytä/piilota työkalupalkit"
-
-#: ../terminal/terminal-window.c:253
-msgid "Show Window _Borders"
-msgstr "Näytä ikkunoiden _reunat"
-
-#: ../terminal/terminal-window.c:253
-msgid "Show/hide the window decorations"
-msgstr "Näytä/piilota ikkunoiden reunukset"
-
-#: ../terminal/terminal-window.c:254
-msgid "_Fullscreen"
-msgstr "Täy_sruutu"
-
-#: ../terminal/terminal-window.c:254
-msgid "Toggle fullscreen mode"
-msgstr "Vaihda täysruututilaan ja takaisin"
-
-#: ../terminal/terminal-window.c:540
-msgid "Warning"
-msgstr "Varoitus"
-
-#: ../terminal/terminal-window.c:551
-msgid "Close all tabs"
-msgstr "Sulje kaikki välilehdet"
-
-#: ../terminal/terminal-window.c:570
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing\n"
-"this window will also close all its tabs."
-msgstr ""
-"Ikkunassa on avoinna %d välilehteä.\n"
-"Ne kaikki sulkeutuvat ikkunan sulkeutuessa."
-
-#: ../terminal/terminal-window.c:573
-msgid "Close all tabs?"
-msgstr "Suljetaanko kaikki välilehdet?"
-
-#: ../terminal/terminal-window.c:586
-msgid "Do _not ask me again"
-msgstr "_Älä kysy uudelleen"
-
-#: ../terminal/terminal-window.c:1557
-msgid "Window Title|Set Title"
-msgstr "Aseta otsake"
-
-#: ../terminal/terminal-window.c:1570
-msgid "Title:"
-msgstr "Otsake:"
-
-#: ../terminal/terminal-window.c:1582
-msgid "Enter the title for the current terminal tab"
-msgstr "Syötä otsake nykyiselle päätteen välilehdelle"
-
-#: ../Terminal.desktop.in.in.h:2
-msgid "Terminal Emulator"
-msgstr "Pääte-emulaattori"
-
-#: ../Terminal.glade.h:1
-msgid "$TERM s_etting:"
-msgstr "$TERM -_muuttuja:"
-
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
-
-#: ../Terminal.glade.h:3
-msgid "Ad_vanced"
-msgstr "_Lisäasetukset"
-
-#: ../Terminal.glade.h:4
-msgid "Allow bold te_xt"
-msgstr "Näytä pa_ksunnettu teksti"
-
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "Tunnista automaattisesti"
-
-#: ../Terminal.glade.h:6
-msgid "Background"
-msgstr "Tausta"
-
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "Taustakuva"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "Keskitetty"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "Valitse päätteen kirjasin"
-
-#: ../Terminal.glade.h:10
-msgid "Choose tab activity color"
-msgstr "Valitse välilehden toimintaa ilmaiseva väri"
-
-#: ../Terminal.glade.h:11
-msgid "Choose terminal background color"
-msgstr "Valitse päätteen taustaväri"
-
-#: ../Terminal.glade.h:12
-msgid "Choose terminal cursor color"
-msgstr "Valitse päätteen kohdistimen väri"
-
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "Valitse päätteen tekstin väri"
-
-#: ../Terminal.glade.h:14
-msgid "Choose terminal text selection background color"
-msgstr "Valitse päätteen tekstivalinnan taustaväri"
-
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "Värivalitsin"
-
-#: ../Terminal.glade.h:16
-msgid "Command"
-msgstr "Komento"
-
-#: ../Terminal.glade.h:17
-msgid "Compatibility"
-msgstr "Yhteensopivuus"
-
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "Laske seuraavat merkit sanan _osiksi kaksoisnapsauttaessa:"
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Ctrl-H"
-
-#: ../Terminal.glade.h:21
-msgid "Cu_rsor color:"
-msgstr "Koh_distimen väri:"
-
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Poista kaikki valikko_näppäimet käytöstä (kuten Alt+T)"
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Poista valikon _pikanäppäimet käytöstä (oletuksena F10)"
-
-#: ../Terminal.glade.h:25
-msgid "Display _borders around new windows"
-msgstr "Näytä _reunukset uusien ikkunoiden ympärillä"
-
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "Näytä _valikkopalkki uusissa ikkunoissa"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "Näytä _työkalupalkit uusissa ikkunoissa"
-
-#: ../Terminal.glade.h:28
-msgid "Double Click"
-msgstr "Kaksoisnapsautus"
-
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr "T_asoita päätteen kirjasimen reunoja"
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-"Tasoittaa merkkien reunoja, kun pääteikkunoihin piirretään tekstiä. Valinnan "
-"poistaminen voi huomattavasti lisätä päätteen piirtonopeutta ja vähentää "
-"järjestelmän kokonaiskuormaa hitaissa järjestelmissä."
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"Sallii pääteikkunoissa suoritettavien sovellusten käyttää paksunnettua "
-"tekstiä."
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-"Päätettä voi vierittää rivi kerrallaan ylös/alas -nuolinäppäimillä "
-"vaihtonäppäimen ollessa painettuna."
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr "Uusissa pääteikkunoissa on valikkopalkki."
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr "Uusissa pääteikkunoissa on työkalupalkit."
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr "Uusien pääteikkunoiden ympärillä näytetään ikkunoiden reunukset."
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Mahdollistaa pääteikkunan vierittämisen komentokehotteen luo painamalla mitä "
-"tahansa näppäimistön näppäintä."
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr "Tyhjennä TTY"
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr "Escape-merkkisarja"
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr "Kirjasin"
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "Yleiset"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "Ensiotsakkeen jälkeen"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "Ensiotsakkeen edessä"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "Ei näytetä"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr "Pääsy valikkopalkkiin"
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "Ei mitään (tasainen väri)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "Vasemmassa reunassa"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "Oikeassa reunassa"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr "Avaa värin valintaikkuna"
-
-#: ../Terminal.glade.h:49
-msgid "Opening New Windows"
-msgstr "Uusien ikkunoiden avaaminen"
-
-#: ../Terminal.glade.h:50
-msgid "Palette"
-msgstr "Paletti"
-
-#: ../Terminal.glade.h:51
-msgid "Palette entry 1"
-msgstr "Paletin väri 1"
-
-#: ../Terminal.glade.h:52
-msgid "Palette entry 10"
-msgstr "Paletin väri 10"
-
-#: ../Terminal.glade.h:53
-msgid "Palette entry 11"
-msgstr "Paletin väri 11"
-
-#: ../Terminal.glade.h:54
-msgid "Palette entry 12"
-msgstr "Paletin väri 12"
-
-#: ../Terminal.glade.h:55
-msgid "Palette entry 13"
-msgstr "Paletin väri 13"
-
-#: ../Terminal.glade.h:56
-msgid "Palette entry 14"
-msgstr "Paletin väri 14"
-
-#: ../Terminal.glade.h:57
-msgid "Palette entry 15"
-msgstr "Paletin väri 15"
-
-#: ../Terminal.glade.h:58
-msgid "Palette entry 16"
-msgstr "Paletin väri 16"
-
-#: ../Terminal.glade.h:59
-msgid "Palette entry 2"
-msgstr "Paletin väri 2"
-
-#: ../Terminal.glade.h:60
-msgid "Palette entry 3"
-msgstr "Paletin väri 3"
-
-#: ../Terminal.glade.h:61
-msgid "Palette entry 4"
-msgstr "Paletin väri 4"
-
-#: ../Terminal.glade.h:62
-msgid "Palette entry 5"
-msgstr "Paletin väri 5"
-
-#: ../Terminal.glade.h:63
-msgid "Palette entry 6"
-msgstr "Paletin väri 6"
-
-#: ../Terminal.glade.h:64
-msgid "Palette entry 7"
-msgstr "Paletin väri 7"
-
-#: ../Terminal.glade.h:65
-msgid "Palette entry 8"
-msgstr "Paletin väri 8"
-
-#: ../Terminal.glade.h:66
-msgid "Palette entry 9"
-msgstr "Paletin väri 9"
-
-#: ../Terminal.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:1
 msgid "Replaces initial title"
 msgstr "Korvaa ensiotsakkeen"
 
-#: ../Terminal.glade.h:68
-msgid "Rese_t double click options to defaults"
-msgstr "Palauta kaksoisnapsautusasetusten olet_usarvot"
+#: ../terminal/terminal-preferences.glade.h:2
+msgid "Goes before initial title"
+msgstr "Ensiotsakkeen edessä"
 
-#: ../Terminal.glade.h:69
-msgid "Reset tab activity _indicator after"
-msgstr "Välileh_den toimintailmaisimen palautusviive"
+#: ../terminal/terminal-preferences.glade.h:3
+msgid "Goes after initial title"
+msgstr "Ensiotsakkeen jälkeen"
 
-#: ../Terminal.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:4
+msgid "Isn't displayed"
+msgstr "Ei näytetä"
+
+#: ../terminal/terminal-preferences.glade.h:5
+msgid "Disabled"
+msgstr "Pois käytöstä"
+
+#: ../terminal/terminal-preferences.glade.h:6
+msgid "On the left side"
+msgstr "Vasemmassa reunassa"
+
+#: ../terminal/terminal-preferences.glade.h:7
+msgid "On the right side"
+msgstr "Oikeassa reunassa"
+
+#: ../terminal/terminal-preferences.glade.h:8
+msgid "None (use solid color)"
+msgstr "Ei mitään (tasainen väri)"
+
+#: ../terminal/terminal-preferences.glade.h:9
+msgid "Background image"
+msgstr "Taustakuva"
+
+#: ../terminal/terminal-preferences.glade.h:10
+msgid "Transparent background"
+msgstr "Läpinäkyvä tausta"
+
+#: ../terminal/terminal-preferences.glade.h:11
+msgid "Auto-detect"
+msgstr "Tunnista automaattisesti"
+
+#: ../terminal/terminal-preferences.glade.h:12
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../terminal/terminal-preferences.glade.h:13
+msgid "Escape sequence"
+msgstr "Escape-merkkisarja"
+
+#: ../terminal/terminal-preferences.glade.h:14
+msgid "Control-H"
+msgstr "Ctrl-H"
+
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr "Tyhjennä TTY"
+
+#: ../terminal/terminal-preferences.glade.h:16
+msgid "Tiled"
+msgstr "Vierekkäin"
+
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "Keskitetty"
+
+#: ../terminal/terminal-preferences.glade.h:18
 msgid "Scaled"
 msgstr "Skaalattu"
 
-#: ../Terminal.glade.h:71
-msgid "Scr_ollbar is:"
-msgstr "_Vierityspalkki on:"
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "Venytetty"
 
-#: ../Terminal.glade.h:72
-msgid "Scroll on _keystroke"
-msgstr "_Näppäily vierittää"
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "Päätteen asetukset"
 
-#: ../Terminal.glade.h:73
-msgid "Scroll on ou_tput"
-msgstr "_Tulostus vierittää"
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "_Otsake aluksi:"
 
-#: ../Terminal.glade.h:74
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Vieritä _rivi kerrallaan näppäimillä Vaihto+Ylös/Alas"
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "_Dynamically-set title:"
+msgstr "Dy_naamisesti asetettu otsake:"
 
-#: ../Terminal.glade.h:75
-msgid "Scroll_back:"
-msgstr "Vieritysp_uskuri:"
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "Otsake"
 
-#: ../Terminal.glade.h:76
-msgid "Scrolling"
-msgstr "Vieritys"
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "Suorita komento _ylimmän tason komentotulkkina"
 
-#: ../Terminal.glade.h:77
-msgid "Select Background Image File"
-msgstr "Valitse taustakuvatiedosto"
-
-#: ../Terminal.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:25
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when "
 "you open new terminals. See the documentation of your shell for details "
@@ -1068,46 +419,349 @@ msgstr ""
 "ylimmän tason komentotulkkien toiminnan eroista löydät komentotulkkisi "
 "dokumentaatiosta."
 
-#: ../Terminal.glade.h:79
-msgid "Shortcut Keys"
-msgstr "Pikanäppäimet"
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Päivitä utmp/wtmp -tietueet, kun komento käynnistetään"
 
-#: ../Terminal.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "Command"
+msgstr "Komento"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Vieritä _rivi kerrallaan näppäimillä Vaihto+Ylös/Alas"
+
+#: ../terminal/terminal-preferences.glade.h:29
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+"Päätettä voi vierittää rivi kerrallaan ylös/alas -nuolinäppäimillä "
+"vaihtonäppäimen ollessa painettuna."
+
+#: ../terminal/terminal-preferences.glade.h:30
+msgid "Scroll on ou_tput"
+msgstr "_Tulostus vierittää"
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+"Määrittää, vierittääkö päätteessä suoritettavien komentojen tuottama "
+"tulostus päätettä automaattisesti."
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid "Scroll on _keystroke"
+msgstr "_Näppäily vierittää"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+"Mahdollistaa pääteikkunan vierittämisen komentokehotteen luo painamalla mitä "
+"tahansa näppäimistön näppäintä."
+
+#: ../terminal/terminal-preferences.glade.h:34
+msgid "Scr_ollbar is:"
+msgstr "_Vierityspalkki on:"
+
+#: ../terminal/terminal-preferences.glade.h:35
+msgid "Scroll_back:"
+msgstr "Vieritysp_uskuri:"
+
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr ""
 "Määrittää, montako riviä päätettä voi vierittää taaksepäin vierityspalkin "
 "avulla."
 
-#: ../Terminal.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:37
+msgid "Scrolling"
+msgstr "Vieritys"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid "_General"
+msgstr "_Yleiset"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "Choose Terminal Font"
+msgstr "Valitse päätteen kirjasin"
+
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Allow bold te_xt"
+msgstr "Näytä pa_ksunnettu teksti"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+"Sallii pääteikkunoissa suoritettavien sovellusten käyttää paksunnettua "
+"tekstiä."
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "Font"
+msgstr "Kirjasin"
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "_File:"
+msgstr "_Tiedosto:"
+
+#: ../terminal/terminal-preferences.glade.h:44
 msgid "St_yle:"
 msgstr "T_yyli:"
 
-#: ../Terminal.glade.h:82
-msgid "Stretched"
-msgstr "Venytetty"
+#: ../terminal/terminal-preferences.glade.h:45
+msgid "Select Background Image File"
+msgstr "Valitse taustakuvatiedosto"
 
-#: ../Terminal.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:46
+msgid "Transpare_ncy:"
+msgstr "Läpi_näkyvyys:"
+
+#: ../terminal/terminal-preferences.glade.h:47
+msgid "Background"
+msgstr "Tausta"
+
+#: ../terminal/terminal-preferences.glade.h:48
+msgid "Display _menubar in new windows"
+msgstr "Näytä _valikkopalkki uusissa ikkunoissa"
+
+#: ../terminal/terminal-preferences.glade.h:49
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr "Uusissa pääteikkunoissa on valikkopalkki."
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "Display _toolbars in new windows"
+msgstr "Näytä _työkalupalkit uusissa ikkunoissa"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr "Uusissa pääteikkunoissa on työkalupalkit."
+
+#: ../terminal/terminal-preferences.glade.h:52
+msgid "Display _borders around new windows"
+msgstr "Näytä _reunukset uusien ikkunoiden ympärillä"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr "Uusien pääteikkunoiden ympärillä näytetään ikkunoiden reunukset."
+
+#: ../terminal/terminal-preferences.glade.h:54
+msgid "Opening New Windows"
+msgstr "Uusien ikkunoiden avaaminen"
+
+#: ../terminal/terminal-preferences.glade.h:55
+msgid "Reset tab activity _indicator after"
+msgstr "Välileh_den toimintailmaisimen palautusviive"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "seconds"
+msgstr "sekuntia"
+
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "Tab Activity Indicator"
 msgstr "Välilehden toimintailmaisin"
 
-#: ../Terminal.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:58
+msgid "_Appearance"
+msgstr "_Ulkoasu"
+
+#: ../terminal/terminal-preferences.glade.h:59
+msgid "_Text color:"
+msgstr "_Tekstin ja kohdistimen väri:"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "_Background color:"
+msgstr "T_austaväri:"
+
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "Tab activit_y color:"
 msgstr "_Välilehden toimintaväri:"
 
-#: ../Terminal.glade.h:85
-msgid "Terminal Preferences"
-msgstr "Päätteen asetukset"
+#: ../terminal/terminal-preferences.glade.h:62
+msgid "Cu_rsor color:"
+msgstr "Koh_distimen väri:"
 
-#: ../Terminal.glade.h:86
-msgid "Terminal applications have this color palette available to them:"
-msgstr "Päätesovelluksilla on käytössään tämä väripaletti:"
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "_Vary the background color for each tab"
+msgstr ""
 
-#: ../Terminal.glade.h:87
-msgid "Text Selection"
+#: ../terminal/terminal-preferences.glade.h:64
+msgid ""
+"The random color is based on the selected background color, keeping the same "
+"brightness. "
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:65
+#, fuzzy
+msgid "Choose background color"
+msgstr "Valitse päätteen taustaväri"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Color Selector"
+msgstr "Värivalitsin"
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Open a dialog to specify the color"
+msgstr "Avaa värin valintaikkuna"
+
+#: ../terminal/terminal-preferences.glade.h:68
+#, fuzzy
+msgid "Choose text color"
+msgstr "Valitse päätteen tekstin väri"
+
+#: ../terminal/terminal-preferences.glade.h:69
+#, fuzzy
+msgid "Choose cursor color"
+msgstr "Valitse päätteen kohdistimen väri"
+
+#: ../terminal/terminal-preferences.glade.h:70
+msgid "Choose tab activity color"
+msgstr "Valitse välilehden toimintaa ilmaiseva väri"
+
+#: ../terminal/terminal-preferences.glade.h:71
+msgid "General"
+msgstr "Yleiset"
+
+#: ../terminal/terminal-preferences.glade.h:72
+#, fuzzy
+msgid "Text _selection color:"
 msgstr "Tekstin valinta"
 
-#: ../Terminal.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:73
+msgid ""
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:74
+#, fuzzy
+msgid "Choose text selection background color"
+msgstr "Valitse päätteen tekstivalinnan taustaväri"
+
+#: ../terminal/terminal-preferences.glade.h:75
+#, fuzzy
+msgid "B_old text color:"
+msgstr "_Tekstin ja kohdistimen väri:"
+
+#: ../terminal/terminal-preferences.glade.h:76
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:77
+#, fuzzy
+msgid "Choose bold font color"
+msgstr "Valitse välilehden toimintaa ilmaiseva väri"
+
+#: ../terminal/terminal-preferences.glade.h:78
+#, fuzzy
+msgid "Custom Colors"
+msgstr "Koh_distimen väri:"
+
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "Black"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:82
+msgid "Dark Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Light Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "Light Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Brown / Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Light Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Light Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Light Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "White"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Light Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:95
+msgid "Palette"
+msgstr "Paletti"
+
+#: ../terminal/terminal-preferences.glade.h:96
+#, fuzzy
+msgid "Presets"
+msgstr "Palauta"
+
+#: ../terminal/terminal-preferences.glade.h:97
+msgid "_Colors"
+msgstr "Vä_rit"
+
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "_Backspace key generates:"
+msgstr "_Peruutusnäppäin tuottaa:"
+
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "_Delete key generates:"
+msgstr "_Delete-näppäin tuottaa:"
+
+#: ../terminal/terminal-preferences.glade.h:100
+msgid "$TERM s_etting:"
+msgstr "$TERM -_muuttuja:"
+
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "_Reset compatibility options to defaults"
+msgstr "Palauta y_hteensopivuusasetusten oletusarvot"
+
+#: ../terminal/terminal-preferences.glade.h:102
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1119,117 +773,594 @@ msgstr ""
 "eräitä sovelluksia ja käyttöjärjestelmiä, jotka edellyttävät\n"
 "päätteen käyttäytyvän eri tavalla."
 
-#: ../Terminal.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:106
+msgid "Compatibility"
+msgstr "Yhteensopivuus"
+
+#: ../terminal/terminal-preferences.glade.h:107
+#, fuzzy
+msgid "Co_mpatibility"
+msgstr "Yhteensopivuus"
+
+#: ../terminal/terminal-preferences.glade.h:108
 msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Määrittää, vierittääkö päätteessä suoritettavien komentojen tuottama "
-"tulostus päätettä automaattisesti."
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Laske seuraavat merkit sanan _osiksi kaksoisnapsauttaessa:"
 
-#: ../Terminal.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:110
+msgid "Rese_t double click options to defaults"
+msgstr "Palauta kaksoisnapsautusasetusten olet_usarvot"
+
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Double Click"
+msgstr "Kaksoisnapsautus"
+
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Default character e_ncoding:"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Encoding"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Poista kaikki valikko_näppäimet käytöstä (kuten Alt+T)"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Poista valikon _pikanäppäimet käytöstä (oletuksena F10)"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Menubar Access"
+msgstr "Pääsy valikkopalkkiin"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Ad_vanced"
+msgstr "_Lisäasetukset"
+
+#: ../terminal/terminal-preferences.c:756
+msgid "Terminal"
+msgstr "Pääte"
+
+#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
+#: ../terminal/terminal-screen.c:1742
+msgid "Untitled"
+msgstr "Nimetön"
+
+#: ../terminal/terminal-screen.c:547
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Ylimmän tason komentotulkkisi tunnistus ei onnistu."
+
+#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
+msgid "Failed to execute child"
+msgstr "Lapsiprosessin suorittaminen ei onnistu"
+
+#: ../terminal/terminal-screen.c:2083
+msgid "Close this tab"
+msgstr "Sulje tämä välilehti"
+
+#: ../terminal/terminal-widget.c:324
+msgid "Copy Email Address"
+msgstr "Kopioi sähköpostiosoite"
+
+#: ../terminal/terminal-widget.c:325
+msgid "Compose Email"
+msgstr "Kirjoita sähköpostiviesti"
+
+#: ../terminal/terminal-widget.c:329
+msgid "Copy Link Address"
+msgstr "Kopioi linkin osoite"
+
+#: ../terminal/terminal-widget.c:330
+msgid "Open Link"
+msgstr "Avaa linkki"
+
+#: ../terminal/terminal-widget.c:484
+#, c-format
 msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
 msgstr ""
-"Määrittää, mikä arvo $TERM-ympäristömuuttujalle määritetään avattaessa uusia "
-"päätteen välilehtiä tai pääteikkunoita. Oletuksen pitäisi toimia useimmissa "
-"järjestelmissä. Jos sinulla on ongelmia värien kanssa joissain "
-"sovelluksissa, kokeile tähän arvoa xterm-color."
+"text/plain -muotoisen valinnan pudottaminen päätteeseen ei onnistu: väärä "
+"muoto (%d) tai pituus (%d)\n"
 
-#: ../Terminal.glade.h:94
-msgid "Tiled"
-msgstr "Vierekkäin"
+#: ../terminal/terminal-widget.c:500
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Mozillan URL:n pudottaminen päätteeseen ei onnistu: Väärä muoto (%d) tai "
+"pituus (%d)\n"
 
-#: ../Terminal.glade.h:95
-msgid "Title"
-msgstr "Otsake"
+#: ../terminal/terminal-widget.c:526
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"URI-listan pudottaminen päätteeseen ei onnistu: Väärä muoto (%d) tai pituus "
+"(%d)\n"
 
-#: ../Terminal.glade.h:96
-msgid "Transpare_ncy:"
-msgstr "Läpi_näkyvyys:"
+#: ../terminal/terminal-widget.c:571
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr "Saatu värimääritys ei kelpaa: Väärä muoto (%d) tai pituus (%d)\n"
 
-#: ../Terminal.glade.h:97
-msgid "Transparent background"
-msgstr "Läpinäkyvä tausta"
+#: ../terminal/terminal-widget.c:705
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "URL:in \"%s\" avaaminen epäonnistui"
 
-#: ../Terminal.glade.h:98
-msgid "Use _default color"
-msgstr "Käytä _oletusväriä"
+#: ../terminal/terminal-window.c:218
+msgid "_File"
+msgstr "_Tiedosto"
 
-#: ../Terminal.glade.h:99
-msgid "Use a custom text selection background color"
-msgstr "Käytä mukautettua tekstivalinnan taustaväriä"
+#: ../terminal/terminal-window.c:219
+msgid "Open _Tab"
+msgstr "Avaa v_älilehti"
 
-#: ../Terminal.glade.h:100
-msgid "Use c_ustom color:"
-msgstr "_Mukautettu väri:"
+#: ../terminal/terminal-window.c:219
+msgid "Open a new terminal tab"
+msgstr "Avaa uusi päätteen välilehti"
 
-#: ../Terminal.glade.h:101
-msgid "Use the default text selection background color"
-msgstr "Käytä oletusarvoista tekstivalinnan taustaväriä"
+#: ../terminal/terminal-window.c:220
+msgid "Open T_erminal"
+msgstr "Avaa _pääte"
 
-#: ../Terminal.glade.h:102
-msgid "_Appearance"
-msgstr "_Ulkoasu"
+#: ../terminal/terminal-window.c:220
+msgid "Open a new terminal window"
+msgstr "Avaa uusi pääteikkuna"
 
-#: ../Terminal.glade.h:103
-msgid "_Background color:"
-msgstr "T_austaväri:"
+#: ../terminal/terminal-window.c:221
+msgid "_Detach Tab"
+msgstr "_Irrota välilehti"
 
-#: ../Terminal.glade.h:104
-msgid "_Backspace key generates:"
-msgstr "_Peruutusnäppäin tuottaa:"
+#: ../terminal/terminal-window.c:222
+msgid "C_lose Tab"
+msgstr "S_ulje välilehti"
 
-#: ../Terminal.glade.h:105
-msgid "_Colors"
-msgstr "Vä_rit"
+#: ../terminal/terminal-window.c:223
+msgid "_Close Window"
+msgstr "_Sulje ikkuna"
 
-#: ../Terminal.glade.h:106
-msgid "_Delete key generates:"
-msgstr "_Delete-näppäin tuottaa:"
+#: ../terminal/terminal-window.c:224
+msgid "_Edit"
+msgstr "_Muokkaa"
 
-#: ../Terminal.glade.h:107
-msgid "_Dynamically-set title:"
-msgstr "Dy_naamisesti asetettu otsake:"
+#: ../terminal/terminal-window.c:225
+msgid "_Copy"
+msgstr "_Kopioi"
 
-#: ../Terminal.glade.h:108
-msgid "_File:"
-msgstr "_Tiedosto:"
+#: ../terminal/terminal-window.c:225
+msgid "Copy to clipboard"
+msgstr "Kopioi leikepöydälle"
 
-#: ../Terminal.glade.h:109
-msgid "_General"
-msgstr "_Yleiset"
+#: ../terminal/terminal-window.c:226
+msgid "_Paste"
+msgstr "_Liitä"
 
-#: ../Terminal.glade.h:110
-msgid "_Initial title:"
-msgstr "_Otsake aluksi:"
+#: ../terminal/terminal-window.c:226
+msgid "Paste from clipboard"
+msgstr "Liitä leikepöydältä"
 
-#: ../Terminal.glade.h:111
-msgid "_Reset compatibility options to defaults"
-msgstr "Palauta y_hteensopivuusasetusten oletusarvot"
+#: ../terminal/terminal-window.c:227
+msgid "Paste _Selection"
+msgstr "Liitä _valinta"
 
-#: ../Terminal.glade.h:112
-msgid "_Run command as login shell"
-msgstr "Suorita komento _ylimmän tason komentotulkkina"
+#: ../terminal/terminal-window.c:228
+msgid "Select _All"
+msgstr "Valitse _kaikki"
 
-#: ../Terminal.glade.h:113
-msgid "_Shortcuts"
-msgstr "Pi_kanäppäimet"
+#: ../terminal/terminal-window.c:229
+msgid "Pr_eferences..."
+msgstr "_Asetukset..."
 
-#: ../Terminal.glade.h:114
-msgid "_Text color:"
-msgstr "_Tekstin ja kohdistimen väri:"
+#: ../terminal/terminal-window.c:229
+#, fuzzy
+msgid "Open the preferences dialog"
+msgstr "Avaa Päätteen asetusikkuna"
 
-#: ../Terminal.glade.h:115
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Päivitä utmp/wtmp -tietueet, kun komento käynnistetään"
+#: ../terminal/terminal-window.c:230
+msgid "_View"
+msgstr "_Näytä"
 
-#: ../Terminal.glade.h:116
-msgid "seconds"
-msgstr "sekuntia"
+#: ../terminal/terminal-window.c:231
+msgid "_Terminal"
+msgstr "_Pääte"
+
+#: ../terminal/terminal-window.c:232
+msgid "_Set Title..."
+msgstr "_Aseta otsake..."
+
+#: ../terminal/terminal-window.c:233
+#, fuzzy
+msgid "_Clear Scrollback"
+msgstr "Vieritysp_uskuri:"
+
+#: ../terminal/terminal-window.c:234
+msgid "Clear Scrollback and _Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:235
+msgid "_Go"
+msgstr "_Siirry"
+
+#: ../terminal/terminal-window.c:236
+msgid "_Previous Tab"
+msgstr "_Edellinen välilehti"
+
+#: ../terminal/terminal-window.c:236
+msgid "Switch to previous tab"
+msgstr "Siirry edelliselle välilehdelle"
+
+#: ../terminal/terminal-window.c:237
+msgid "_Next Tab"
+msgstr "_Seuraava välilehti"
+
+#: ../terminal/terminal-window.c:237
+msgid "Switch to next tab"
+msgstr "Siirry seuraavalle välilehdelle"
+
+#: ../terminal/terminal-window.c:238
+msgid "_Help"
+msgstr "_Ohje"
+
+#: ../terminal/terminal-window.c:239
+msgid "_Contents"
+msgstr "_Sisältö"
+
+#: ../terminal/terminal-window.c:239
+msgid "Display help contents"
+msgstr "Näytä ohjeen sisältö"
+
+#: ../terminal/terminal-window.c:240
+msgid "_Report a bug"
+msgstr "Tee _vikailmoitus"
+
+#: ../terminal/terminal-window.c:241
+msgid "_About"
+msgstr "_Tietoja"
+
+#: ../terminal/terminal-window.c:242
+msgid "_Input Methods"
+msgstr "_Tiedonsyöttötavat"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show _Menubar"
+msgstr "Näytä _valikkopalkki"
+
+#: ../terminal/terminal-window.c:247
+msgid "Show/hide the menubar"
+msgstr "Näytä/piilota valikkopalkki"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show _Toolbars"
+msgstr "Näytä _työkalupalkit"
+
+#: ../terminal/terminal-window.c:248
+msgid "Show/hide the toolbars"
+msgstr "Näytä/piilota työkalupalkit"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show Window _Borders"
+msgstr "Näytä ikkunoiden _reunat"
+
+#: ../terminal/terminal-window.c:249
+msgid "Show/hide the window decorations"
+msgstr "Näytä/piilota ikkunoiden reunukset"
+
+#: ../terminal/terminal-window.c:250
+msgid "_Fullscreen"
+msgstr "Täy_sruutu"
+
+#: ../terminal/terminal-window.c:250
+msgid "Toggle fullscreen mode"
+msgstr "Vaihda täysruututilaan ja takaisin"
+
+#. create encoding action
+#: ../terminal/terminal-window.c:408
+msgid "Set _Encoding"
+msgstr ""
+
+#: ../terminal/terminal-window.c:539
+msgid "Warning"
+msgstr "Varoitus"
+
+#: ../terminal/terminal-window.c:550
+msgid "Close all tabs"
+msgstr "Sulje kaikki välilehdet"
+
+#: ../terminal/terminal-window.c:569
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing\n"
+"this window will also close all its tabs."
+msgstr ""
+"Ikkunassa on avoinna %d välilehteä.\n"
+"Ne kaikki sulkeutuvat ikkunan sulkeutuessa."
+
+#: ../terminal/terminal-window.c:572
+msgid "Close all tabs?"
+msgstr "Suljetaanko kaikki välilehdet?"
+
+#: ../terminal/terminal-window.c:585
+msgid "Do _not ask me again"
+msgstr "_Älä kysy uudelleen"
+
+#: ../terminal/terminal-window.c:1592
+msgid "Window Title|Set Title"
+msgstr "Aseta otsake"
+
+#: ../terminal/terminal-window.c:1605
+msgid "Title:"
+msgstr "Otsake:"
+
+#: ../terminal/terminal-window.c:1617
+msgid "Enter the title for the current terminal tab"
+msgstr "Syötä otsake nykyiselle päätteen välilehdelle"
+
+#: ../xfce4-terminal.desktop.in.h:2
+msgid "Terminal Emulator"
+msgstr "Pääte-emulaattori"
+
+#~ msgid "D-BUS message bus disconnected, exiting...\n"
+#~ msgstr "D-BUS-viestiyhteys katkaistu, poistutaan...\n"
+
+#~ msgid "Unable to register object %s"
+#~ msgstr "Ei voi rekisteröidä oliota %s"
+
+#~ msgid "Open Tab"
+#~ msgstr "Avaa välilehti"
+
+#~ msgid "Detach Tab"
+#~ msgstr "Irrota välilehti"
+
+#~ msgid "Close Tab"
+#~ msgstr "Sulje välilehti"
+
+#~ msgid "Close Window"
+#~ msgstr "Sulje ikkuna"
+
+#~ msgid "Copy"
+#~ msgstr "Kopioi"
+
+#~ msgid "Paste"
+#~ msgstr "Liitä"
+
+#~ msgid "Paste Selection"
+#~ msgstr "Liitä valinta"
+
+#~ msgid "Select All"
+#~ msgstr "Valitse kaikki"
+
+#~ msgid "Preferences"
+#~ msgstr "Asetukset"
+
+#~ msgid "Show menubar"
+#~ msgstr "Näytä valikkopalkki"
+
+#~ msgid "Show toolbars"
+#~ msgstr "Näytä työkalupalkit"
+
+#~ msgid "Show borders"
+#~ msgstr "Näytä reunukset"
+
+#~ msgid "Fullscreen"
+#~ msgstr "Täysruutu"
+
+#~ msgid "Set Title"
+#~ msgstr "Aseta otsake"
+
+#~ msgid "Reset and Clear"
+#~ msgstr "Palauta ja tyhjennä"
+
+#~ msgid "Previous Tab"
+#~ msgstr "Edellinen välilehti"
+
+#~ msgid "Next Tab"
+#~ msgstr "Seuraava välilehti"
+
+#~ msgid "Switch to Tab 1"
+#~ msgstr "Siirry välilehteen 1"
+
+#~ msgid "Switch to Tab 2"
+#~ msgstr "Siirry välilehteen 2"
+
+#~ msgid "Switch to Tab 3"
+#~ msgstr "Siirry välilehteen 3"
+
+#~ msgid "Switch to Tab 4"
+#~ msgstr "Siirry välilehteen 4"
+
+#~ msgid "Switch to Tab 5"
+#~ msgstr "Siirry välilehteen 5"
+
+#~ msgid "Switch to Tab 6"
+#~ msgstr "Siirry välilehteen 6"
+
+#~ msgid "Switch to Tab 7"
+#~ msgstr "Siirry välilehteen 7"
+
+#~ msgid "Switch to Tab 8"
+#~ msgstr "Siirry välilehteen 8"
+
+#~ msgid "Switch to Tab 9"
+#~ msgstr "Siirry välilehteen 9"
+
+#~ msgid "Contents"
+#~ msgstr "Sisältö"
+
+#~ msgid "File"
+#~ msgstr "Tiedosto"
+
+#~ msgid "Edit"
+#~ msgstr "Muokkaa"
+
+#~ msgid "View"
+#~ msgstr "Näytä"
+
+#~ msgid "Go"
+#~ msgstr "Siirry"
+
+#~ msgid "Help"
+#~ msgstr "Ohje"
+
+#~ msgid "Action"
+#~ msgstr "Toiminto"
+
+#~ msgid "Shortcut key"
+#~ msgstr "Pikanäppäimet"
+
+#~ msgid "Compose shortcut"
+#~ msgstr "Aseta pikanäppäimet"
+
+#~ msgid "Clea_r"
+#~ msgstr "Ty_hjennä"
+
+#~ msgid "Compose shortcut for:"
+#~ msgstr "Aseta pikanäppäimet kohteelle:"
+
+#~ msgid "Failed to acquire keyboard"
+#~ msgstr "Näppäimistön haltuunotto ei onnistu."
+
+#~ msgid "Another application has already acquired control over your keyboard."
+#~ msgstr "Toinen sovellus pitää jo näppäimistöäsi hallussaan."
+
+#~ msgid "Toolbar Editor"
+#~ msgstr "Työkalupalkkieditori"
+
+#~ msgid "Open a new window for the current terminal tab"
+#~ msgstr "Avaa uusi pääteikkuna nykyiselle välilehdelle"
+
+#~ msgid "Close the current terminal tab"
+#~ msgstr "Sulje nykyinen päätteen välilehti"
+
+#~ msgid "Close the terminal window"
+#~ msgstr "Sulje pääteikkuna"
+
+#~ msgid "Paste from primary selection"
+#~ msgstr "Liitä ensisijaisesta valinnasta"
+
+#~ msgid "Select all text in the terminal"
+#~ msgstr "Valitse päätteen koko tekstisisältö"
+
+#~ msgid "_Toolbars..."
+#~ msgstr "_Työkalupalkit..."
+
+#~ msgid "Customize the toolbars"
+#~ msgstr "Mukauta työkalupalkkeja"
+
+#~ msgid "Set a custom title for the current tab"
+#~ msgstr "Aseta nykyiselle välilehdelle mukautettu otsake"
+
+#~ msgid "_Reset"
+#~ msgstr "_Palauta"
+
+#~ msgid "Reset and C_lear"
+#~ msgstr "Palauta ja _tyhjennä"
+
+#~ msgid "Reset and clear"
+#~ msgstr "Palauta ja tyhjennä"
+
+#~ msgid "Report a bug in Terminal"
+#~ msgstr "Ilmoita Terminal-päätesovelluksen viasta"
+
+#~ msgid "Display information about Terminal"
+#~ msgstr "Näytä tietoja Terminal-päätesovelluksesta"
+
+#~ msgid "Enab_le anti-aliasing for the terminal font"
+#~ msgstr "T_asoita päätteen kirjasimen reunoja"
+
+#~ msgid ""
+#~ "Enable this option if you want Terminal to use anti-aliasing when "
+#~ "rendering text in terminal windows. Disabling this option can "
+#~ "impressively speed up terminal rendering performance and reduce the "
+#~ "overall system load on slow systems."
+#~ msgstr ""
+#~ "Tasoittaa merkkien reunoja, kun pääteikkunoihin piirretään tekstiä. "
+#~ "Valinnan poistaminen voi huomattavasti lisätä päätteen piirtonopeutta ja "
+#~ "vähentää järjestelmän kokonaiskuormaa hitaissa järjestelmissä."
+
+#~ msgid "Palette entry 1"
+#~ msgstr "Paletin väri 1"
+
+#~ msgid "Palette entry 10"
+#~ msgstr "Paletin väri 10"
+
+#~ msgid "Palette entry 11"
+#~ msgstr "Paletin väri 11"
+
+#~ msgid "Palette entry 12"
+#~ msgstr "Paletin väri 12"
+
+#~ msgid "Palette entry 13"
+#~ msgstr "Paletin väri 13"
+
+#~ msgid "Palette entry 14"
+#~ msgstr "Paletin väri 14"
+
+#~ msgid "Palette entry 15"
+#~ msgstr "Paletin väri 15"
+
+#~ msgid "Palette entry 16"
+#~ msgstr "Paletin väri 16"
+
+#~ msgid "Palette entry 2"
+#~ msgstr "Paletin väri 2"
+
+#~ msgid "Palette entry 3"
+#~ msgstr "Paletin väri 3"
+
+#~ msgid "Palette entry 4"
+#~ msgstr "Paletin väri 4"
+
+#~ msgid "Palette entry 5"
+#~ msgstr "Paletin väri 5"
+
+#~ msgid "Palette entry 6"
+#~ msgstr "Paletin väri 6"
+
+#~ msgid "Palette entry 7"
+#~ msgstr "Paletin väri 7"
+
+#~ msgid "Palette entry 8"
+#~ msgstr "Paletin väri 8"
+
+#~ msgid "Palette entry 9"
+#~ msgstr "Paletin väri 9"
+
+#~ msgid "Shortcut Keys"
+#~ msgstr "Pikanäppäimet"
+
+#~ msgid "Terminal applications have this color palette available to them:"
+#~ msgstr "Päätesovelluksilla on käytössään tämä väripaletti:"
+
+#~ msgid ""
+#~ "This specifies the value the $TERM environment variable is set to, when a "
+#~ "new terminal tab or terminal window is opened. The default should be ok "
+#~ "for most systems. If you have problems with colors in some applications, "
+#~ "try xterm-color here."
+#~ msgstr ""
+#~ "Määrittää, mikä arvo $TERM-ympäristömuuttujalle määritetään avattaessa "
+#~ "uusia päätteen välilehtiä tai pääteikkunoita. Oletuksen pitäisi toimia "
+#~ "useimmissa järjestelmissä. Jos sinulla on ongelmia värien kanssa joissain "
+#~ "sovelluksissa, kokeile tähän arvoa xterm-color."
+
+#~ msgid "Use _default color"
+#~ msgstr "Käytä _oletusväriä"
+
+#~ msgid "Use a custom text selection background color"
+#~ msgstr "Käytä mukautettua tekstivalinnan taustaväriä"
+
+#~ msgid "Use c_ustom color:"
+#~ msgstr "_Mukautettu väri:"
+
+#~ msgid "Use the default text selection background color"
+#~ msgstr "Käytä oletusarvoista tekstivalinnan taustaväriä"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "Pi_kanäppäimet"
 
 #~ msgid "The %s user manual is not installed on your computer"
 #~ msgstr "%s-käyttöopasta ei ole asennettu koneellesi"

@@ -7,707 +7,1081 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-12 19:57+0200\n"
+"POT-Creation-Date: 2012-12-26 10:01+0100\n"
 "PO-Revision-Date: 2006-12-22 07:53+0530\n"
 "Last-Translator: A S Alam <apbrar@gmail.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
+"Language: pa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "Usage:"
 msgstr ""
 
-#: ../terminal/main.c:52
+#: ../terminal/main.c:108
 msgid "OPTION"
 msgstr ""
 
-#: ../terminal/main.c:57
+#: ../terminal/main.c:113
 #, fuzzy
 msgid "General Options"
 msgstr "ਸਧਾਰਨ"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:59 ../terminal/main.c:85
+#: ../terminal/main.c:115 ../terminal/main.c:141
 #, fuzzy
 msgid "display"
 msgstr "ਨਹੀਂ ਵੇਖਾਇਆ ਜਾਏਗਾ"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:61 ../terminal/main.c:76
+#: ../terminal/main.c:117 ../terminal/main.c:132
 msgid "directory"
 msgstr ""
 
-#: ../terminal/main.c:65
+#: ../terminal/main.c:121
 msgid "Window or Tab Separators"
 msgstr ""
 
-#: ../terminal/main.c:70
+#: ../terminal/main.c:126
 #, fuzzy
 msgid "Tab Options"
 msgstr "ਟੈਬ ਸਥਿਤੀ"
 
 #. parameter of --command
-#: ../terminal/main.c:72
+#: ../terminal/main.c:128
 #, fuzzy
 msgid "command"
 msgstr "<b>ਕਮਾਂਡ</b>"
 
 #. parameter of --title
-#: ../terminal/main.c:74
+#: ../terminal/main.c:130
 #, fuzzy
 msgid "title"
 msgstr "ਟਾਇਟਲ"
 
-#: ../terminal/main.c:83
+#: ../terminal/main.c:139
 #, fuzzy
 msgid "Window Options"
 msgstr "ਅਣਜਾਣ ਚੋਣ \"%s\""
 
 #. parameter of --geometry
-#: ../terminal/main.c:87
+#: ../terminal/main.c:143
 msgid "geometry"
 msgstr ""
 
 #. parameter of --role
-#: ../terminal/main.c:89
+#: ../terminal/main.c:145
 msgid "role"
 msgstr ""
 
 #. parameter of --startup-id
-#: ../terminal/main.c:91
+#: ../terminal/main.c:147
 #, fuzzy
 msgid "string"
 msgstr "ਚੇਤਾਵਨੀ"
 
 #. parameter of --icon
-#: ../terminal/main.c:93
+#: ../terminal/main.c:149
 #, fuzzy
 msgid "icon"
 msgstr "ਐਕਸ਼ਨ"
 
-#: ../terminal/main.c:95
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:126 ../terminal/terminal-preferences.c:1262
-#: ../terminal/terminal-shortcut-editor.c:119 ../Terminal.desktop.in.in.h:1
-msgid "Terminal"
-msgstr "ਟਰਮੀਨਲ"
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
+#, fuzzy
+msgid "Xfce Terminal"
+msgstr "ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ"
 
-#: ../terminal/main.c:144
-#, c-format
-msgid ""
-"%s %s (Xfce %s)\n"
-"\n"
-"Copyright (c) %s\n"
-"        os-cillation e.K. All rights reserved.\n"
-"\n"
-"Written by Benedikt Meurer <benny@xfce.org>.\n"
-"\n"
-"Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-"\n"
-"Please report bugs to <%s>.\n"
+#: ../terminal/main.c:200
+msgid "The Xfce development team. All rights reserved."
 msgstr ""
 
-#: ../terminal/main.c:250
+#: ../terminal/main.c:201
+msgid "Written by Benedikt Meurer <benny@xfce.org>"
+msgstr ""
+
+#: ../terminal/main.c:202
+msgid "and Nick Schermer <nick@xfce.org>."
+msgstr ""
+
+#: ../terminal/main.c:203
+#, c-format
+msgid "Please report bugs to <%s>."
+msgstr ""
+
+#: ../terminal/main.c:306
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ਟਰਮੀਨਲ ਸੇਵਾ ਰਜਿਸਟਰ ਕਰਨ ਲਈ ਅਸਫ਼ਲ: %s\n"
 
-#: ../terminal/terminal-app.c:516
+#: ../terminal/terminal-app.c:601
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ਗਲਤ ਜੁਮੈਟਰੀ ਲਾਇਨ \"%s\"\n"
 
-#: ../terminal/terminal-dbus.c:107
+#: ../terminal/terminal-gdbus.c:81
 msgid "User id mismatch"
 msgstr "ਯੂਜਰ id ਰਲਦਾ ਨਹੀਂ"
 
-#: ../terminal/terminal-dbus.c:133
-#, c-format
-msgid "D-BUS message bus disconnected, exiting...\n"
-msgstr ""
+#: ../terminal/terminal-gdbus.c:87
+#, fuzzy
+msgid "Display mismatch"
+msgstr "ਯੂਜਰ id ਰਲਦਾ ਨਹੀਂ"
 
-#: ../terminal/terminal-dbus.c:195
-#, c-format
-msgid "Unable to register object %s"
-msgstr "ਆਬਜੈਕਟ %s ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"
-
-#: ../terminal/terminal-dialogs.c:95 ../Terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-dialogs.c:74
+#: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce ਟਰਮੀਨਲ ਈਮੂਲੇਟਰ"
 
-#: ../terminal/terminal-dialogs.c:102
+#: ../terminal/terminal-dialogs.c:81
 msgid "translator-credits"
 msgstr ""
 "ਅਮਨਪਰੀਤ ਸਿੰਘ ਆਲਮ\n"
 "ਪੰਜਾਬੀ ਓਪਨ ਸੋਰਸ ਟੀਮ"
 
-#: ../terminal/terminal-dialogs.c:105
+#: ../terminal/terminal-dialogs.c:84
 msgid "Visit Terminal website"
 msgstr ""
 
-#: ../terminal/terminal-dialogs.c:215
+#: ../terminal/terminal-encoding-action.c:71
+msgid "Western European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:72
+msgid "Central European"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:73
+msgid "Baltic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:74
+msgid "South-Eastern Europe"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:75
+msgid "Turkish"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:76
+msgid "Cyrillic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:77
+msgid "Chinese Traditional"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:78
+msgid "Chinese Simplified"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:79
+msgid "Korean"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:80
+msgid "Japanese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:81
+msgid "Greek"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:82
+msgid "Arabic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Hebrew"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Thai"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:85
+msgid "Vietnamese"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Unicode"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+#, fuzzy
+msgid "Other"
+msgstr "ਹੋਰ..."
+
+#. action to reset to the default
+#: ../terminal/terminal-encoding-action.c:255
+#: ../terminal/terminal-encoding-action.c:387
 #, c-format
-msgid "The %s user manual is not installed on your computer"
+msgid "Default (%s)"
 msgstr ""
 
-#: ../terminal/terminal-dialogs.c:218
-#, c-format
-msgid ""
-"You can read the user manual online. This manual may however not exactly "
-"match your %s version."
-msgstr ""
-
-#: ../terminal/terminal-dialogs.c:220
-msgid "User manual is missing"
-msgstr ""
-
-#: ../terminal/terminal-dialogs.c:222
-msgid "_Read Online"
-msgstr ""
-
-#. display an error message to the user
-#: ../terminal/terminal-dialogs.c:302
-msgid "Failed to open the documentation browser"
-msgstr "ਡਾਕੂਮਿੰਟ ਬਰਾਊਜ਼ਰ ਖੋਲ੍ਹਣ ਲਈ ਫੇਲ੍ਹ"
-
-#: ../terminal/terminal-options.c:210
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:225
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:241
+#: ../terminal/terminal-options.c:249
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr ""
 
-#: ../terminal/terminal-options.c:258
+#: ../terminal/terminal-options.c:266
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:275
+#: ../terminal/terminal-options.c:283
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:290
+#: ../terminal/terminal-options.c:298
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:309
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--display\" requires specifying the X display as its parameters"
 msgstr ""
 
-#: ../terminal/terminal-options.c:324
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:339
+#: ../terminal/terminal-options.c:347
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:354
+#: ../terminal/terminal-options.c:362
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:369
+#: ../terminal/terminal-options.c:377
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:444
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "ਅਣਜਾਣ ਚੋਣ \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:227
+#: ../terminal/terminal-preferences-dialog.c:260
 msgid "All Files"
 msgstr "ਸਭ ਫਾਇਲਾਂ"
 
-#: ../terminal/terminal-preferences-dialog.c:233
+#: ../terminal/terminal-preferences-dialog.c:266
 msgid "Image Files"
 msgstr "ਚਿੱਤਰ ਫਾਇਲਾਂ"
 
-#: ../terminal/terminal-preferences.c:309
-msgid "Open Tab"
-msgstr "ਟੈਬ ਖੋਲ੍ਹੋ"
+#: ../terminal/terminal-preferences-dialog.c:567
+msgid "Load Presets..."
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:320
-msgid "Open Terminal"
-msgstr "ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ"
+#: ../terminal/terminal-preferences.glade.h:1
+msgid "Replaces initial title"
+msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ ਬਦਲੋ"
 
-#: ../terminal/terminal-preferences.c:331
-msgid "Detach Tab"
-msgstr "ਟੈਬ ਵੱਖ ਕਰੋ"
+#: ../terminal/terminal-preferences.glade.h:2
+msgid "Goes before initial title"
+msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਪਹਿਲਾਂ ਜਾਓ"
 
-#: ../terminal/terminal-preferences.c:342
-msgid "Close Tab"
-msgstr "ਟੈਬ ਬੰਦ ਕਰੋ"
+#: ../terminal/terminal-preferences.glade.h:3
+msgid "Goes after initial title"
+msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਬਾਦ ਜਾਓ"
 
-#: ../terminal/terminal-preferences.c:353
-msgid "Close Window"
-msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
+#: ../terminal/terminal-preferences.glade.h:4
+msgid "Isn't displayed"
+msgstr "ਨਹੀਂ ਵੇਖਾਇਆ ਜਾਏਗਾ"
 
-#: ../terminal/terminal-preferences.c:364
-msgid "Copy"
-msgstr "ਨਕਲ"
+#: ../terminal/terminal-preferences.glade.h:5
+msgid "Disabled"
+msgstr "ਬੰਦ ਕੀਤਾ"
 
-#: ../terminal/terminal-preferences.c:375
-msgid "Paste"
-msgstr "ਚੇਪੋ"
+#: ../terminal/terminal-preferences.glade.h:6
+msgid "On the left side"
+msgstr "ਖੱਬੇ ਪਾਸੇ"
 
-#: ../terminal/terminal-preferences.c:386
-msgid "Paste Selection"
+#: ../terminal/terminal-preferences.glade.h:7
+msgid "On the right side"
+msgstr "ਸੱਜੇ ਪਾਸੇ"
+
+#: ../terminal/terminal-preferences.glade.h:8
+msgid "None (use solid color)"
+msgstr "ਕੋਈ ਨਹੀਂ (ਇੱਕ ਰੰਗ ਵਰਤੋਂ)"
+
+#: ../terminal/terminal-preferences.glade.h:9
+msgid "Background image"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+
+#: ../terminal/terminal-preferences.glade.h:10
+msgid "Transparent background"
+msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
+
+#: ../terminal/terminal-preferences.glade.h:11
+msgid "Auto-detect"
+msgstr "ਆਟੋ-ਡਿਟੈਕਟ"
+
+#: ../terminal/terminal-preferences.glade.h:12
+msgid "ASCII DEL"
+msgstr "ASCII DEL"
+
+#: ../terminal/terminal-preferences.glade.h:13
+msgid "Escape sequence"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:14
+msgid "Control-H"
+msgstr "Control-H"
+
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:16
+#, fuzzy
+msgid "Tiled"
+msgstr "ਟਾਇਟਡ"
+
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "ਸੈਂਟਰਡ"
+
+#: ../terminal/terminal-preferences.glade.h:18
+msgid "Scaled"
+msgstr "ਸਕੇਲਡ"
+
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "ਸੱਟਰੇਚਡ"
+
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "ਟਰਮੀਨਲ ਪਸੰਦ"
+
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ(_I):"
+
+#: ../terminal/terminal-preferences.glade.h:22
+#, fuzzy
+msgid "_Dynamically-set title:"
+msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ(_I):"
+
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "ਟਾਇਟਲ"
+
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "ਕਮਾਂਡ ਲਾਗਇਨ ਸ਼ੈੱਲ ਵਾਂਗ ਚਲਾਓ(_R)"
+
+#: ../terminal/terminal-preferences.glade.h:25
+msgid ""
+"Select this option to force Terminal to run your shell as a login shell when "
+"you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:27
+#, fuzzy
+msgid "Command"
+msgstr "<b>ਕਮਾਂਡ</b>"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:29
+msgid ""
+"Enable this option to be able to scroll by a single line using the up/down "
+"arrow keys together with the Shift key."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:30
+#, fuzzy
+msgid "Scroll on ou_tput"
+msgstr "ਆਉਟਪੁੱਟ ਉੱਤੇ ਸਕਰੋਲ(_r)"
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the terminal."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:32
+#, fuzzy
+msgid "Scroll on _keystroke"
+msgstr "ਆਉਟਪੁੱਟ ਉੱਤੇ ਸਕਰੋਲ(_r)"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:34
+#, fuzzy
+msgid "Scr_ollbar is:"
+msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
+
+#: ../terminal/terminal-preferences.glade.h:35
+#, fuzzy
+msgid "Scroll_back:"
+msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
+
+#: ../terminal/terminal-preferences.glade.h:36
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:37
+#, fuzzy
+msgid "Scrolling"
+msgstr "<b>ਸਕਰੋਲਿੰਗ</b>"
+
+#: ../terminal/terminal-preferences.glade.h:38
+#, fuzzy
+msgid "_General"
+msgstr "ਸਧਾਰਨ"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "Choose Terminal Font"
+msgstr "ਟਰਮੀਨਲ ਫੋਂਟ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:40
+#, fuzzy
+msgid "Allow bold te_xt"
+msgstr "ਬੋਲਡ ਟੈਕਸਟ ਮਨਜ਼ੂਰ"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"Enable this option to allow applications running inside the terminal windows "
+"to use bold text."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "Font"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "_File:"
+msgstr "ਫਾਇਲ(_F):"
+
+#: ../terminal/terminal-preferences.glade.h:44
+#, fuzzy
+msgid "St_yle:"
+msgstr "ਸ਼ੈਲੀ(_S):"
+
+#: ../terminal/terminal-preferences.glade.h:45
+#, fuzzy
+msgid "Select Background Image File"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ ਫਾਇਲ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:46
+#, fuzzy
+msgid "Transpare_ncy:"
+msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
+
+#: ../terminal/terminal-preferences.glade.h:47
+#, fuzzy
+msgid "Background"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+
+#: ../terminal/terminal-preferences.glade.h:48
+msgid "Display _menubar in new windows"
+msgstr "ਮੁੱਖ ਵਿੰਡੋ ਵਿੱਚ ਮੇਨੂ-ਬਾਰ ਵੇਖਾਓ(_m)"
+
+#: ../terminal/terminal-preferences.glade.h:49
+msgid ""
+"Enable this option to show the menubar in newly created terminal windows."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "Display _toolbars in new windows"
+msgstr "ਨਵੀਂ ਵਿੰਡੋਂ ਵਿੱਚ ਟੂਲ-ਬਾਰ ਵੇਖੋ(_t)"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid ""
+"Enable this option to show the toolbars in newly created terminal windows."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:52
+#, fuzzy
+msgid "Display _borders around new windows"
+msgstr "ਨਵੀਂ ਵਿੰਡੋਂ ਵਿੱਚ ਟੂਲ-ਬਾਰ ਵੇਖੋ(_t)"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid ""
+"Enable this option to show window decorations around newly created terminal "
+"windows."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:54
+#, fuzzy
+msgid "Opening New Windows"
+msgstr "<b>ਨਵੀਂ ਵਿੰਡੋ ਖੋਲ੍ਹੀ ਜਾ ਰਹੀ ਹੈ</b>"
+
+#: ../terminal/terminal-preferences.glade.h:55
+#, fuzzy
+msgid "Reset tab activity _indicator after"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "seconds"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:57
+#, fuzzy
+msgid "Tab Activity Indicator"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:58
+#, fuzzy
+msgid "_Appearance"
+msgstr "ਦਿੱਖ"
+
+#: ../terminal/terminal-preferences.glade.h:59
+#, fuzzy
+msgid "_Text color:"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "_Background color:"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
+
+#: ../terminal/terminal-preferences.glade.h:61
+#, fuzzy
+msgid "Tab activit_y color:"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:62
+#, fuzzy
+msgid "Cu_rsor color:"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
+
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "_Vary the background color for each tab"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:64
+msgid ""
+"The random color is based on the selected background color, keeping the same "
+"brightness. "
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:65
+#, fuzzy
+msgid "Choose background color"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Color Selector"
+msgstr "ਰੰਗ ਸਲੈਕਟਰ"
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Open a dialog to specify the color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:68
+#, fuzzy
+msgid "Choose text color"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:69
+#, fuzzy
+msgid "Choose cursor color"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:70
+#, fuzzy
+msgid "Choose tab activity color"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+
+#: ../terminal/terminal-preferences.glade.h:71
+msgid "General"
+msgstr "ਸਧਾਰਨ"
+
+#: ../terminal/terminal-preferences.glade.h:72
+#, fuzzy
+msgid "Text _selection color:"
 msgstr "ਚੋਣ ਚੇਪੋ"
 
-#: ../terminal/terminal-preferences.c:397
-msgid "Preferences"
-msgstr "ਮੇਰੀ ਪਸੰਦ"
+#: ../terminal/terminal-preferences.glade.h:73
+msgid ""
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:408
-msgid "Show menubar"
-msgstr "ਮੇਨੂਬਾਰ ਵੇਖਾਓ"
+#: ../terminal/terminal-preferences.glade.h:74
+#, fuzzy
+msgid "Choose text selection background color"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
 
-#: ../terminal/terminal-preferences.c:419
-msgid "Show toolbars"
-msgstr "ਟੂਲਬਾਰ ਵੇਖਾਓ"
+#: ../terminal/terminal-preferences.glade.h:75
+#, fuzzy
+msgid "B_old text color:"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
 
-#: ../terminal/terminal-preferences.c:430
-msgid "Show borders"
-msgstr "ਬਾਰਡਰ ਵੇਖਾਓ"
+#: ../terminal/terminal-preferences.glade.h:76
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:441
-msgid "Fullscreen"
-msgstr "ਪੂਰੀ ਸਕਰੀਨ"
+#: ../terminal/terminal-preferences.glade.h:77
+#, fuzzy
+msgid "Choose bold font color"
+msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
 
-#: ../terminal/terminal-preferences.c:452
-msgid "Set Title"
-msgstr "ਟਾਇਟਲ ਦਿਓ"
+#: ../terminal/terminal-preferences.glade.h:78
+#, fuzzy
+msgid "Custom Colors"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
 
-#: ../terminal/terminal-preferences.c:463 ../terminal/terminal-window.c:236
-msgid "Reset"
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "Black"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:82
+msgid "Dark Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Light Red"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "Light Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Green"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Brown / Yellow"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Light Blue"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Light Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Magenta"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Light Cyan"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "White"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Light Gray"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:95
+#, fuzzy
+msgid "Palette"
+msgstr "ਚੇਪੋ"
+
+#: ../terminal/terminal-preferences.glade.h:96
+#, fuzzy
+msgid "Presets"
 msgstr "ਮੁੜ-ਸੈੱਟ"
 
-#: ../terminal/terminal-preferences.c:474
-msgid "Reset and Clear"
-msgstr "ਮੁੜ-ਸੈੱਟ ਅਤੇ ਸਾਫ਼ ਕਰੋ"
+#: ../terminal/terminal-preferences.glade.h:97
+#, fuzzy
+msgid "_Colors"
+msgstr "ਰੰਗ"
 
-#: ../terminal/terminal-preferences.c:485
-msgid "Previous Tab"
-msgstr "ਪਿੱਛੇ ਟੈਬ"
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "_Backspace key generates:"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:496
-msgid "Next Tab"
-msgstr "ਅੱਗੇ ਟੈਬ"
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "_Delete key generates:"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:507
-msgid "Switch to Tab 1"
-msgstr "1 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:100
+#, fuzzy
+msgid "$TERM s_etting:"
+msgstr "<tt>$TERM</tt> ਸੈਟਿੰਗ:"
 
-#: ../terminal/terminal-preferences.c:518
-msgid "Switch to Tab 2"
-msgstr "2 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "_Reset compatibility options to defaults"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:529
-msgid "Switch to Tab 3"
-msgstr "3 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:102
+msgid ""
+"These options may cause some applications to behave\n"
+"incorrectly. They are only here to allow you to work around\n"
+"certain applications and operating systems that expect\n"
+"different terminal behavior."
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:540
-msgid "Switch to Tab 4"
-msgstr "4 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:106
+#, fuzzy
+msgid "Compatibility"
+msgstr "<b>ਕੰਪੈਟੇਬਿਲਟੀ</b>"
 
-#: ../terminal/terminal-preferences.c:551
-msgid "Switch to Tab 5"
-msgstr "5 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:107
+#, fuzzy
+msgid "Co_mpatibility"
+msgstr "<b>ਕੰਪੈਟੇਬਿਲਟੀ</b>"
 
-#: ../terminal/terminal-preferences.c:562
-msgid "Switch to Tab 6"
-msgstr "6 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:108
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:573
-msgid "Switch to Tab 7"
-msgstr "7 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:110
+msgid "Rese_t double click options to defaults"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:584
-msgid "Switch to Tab 8"
-msgstr "8 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:111
+#, fuzzy
+msgid "Double Click"
+msgstr "<b>ਦੋ ਵਾਰ ਕਲਿੱਕ</b>"
 
-#: ../terminal/terminal-preferences.c:595
-msgid "Switch to Tab 9"
-msgstr "9 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Default character e_ncoding:"
+msgstr ""
 
-#: ../terminal/terminal-preferences.c:606
-msgid "Contents"
-msgstr "ਭਾਗ"
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Encoding"
+msgstr ""
 
-#. TRANSLATORS: title for the tab/window used when all other
-#. * possible titles were empty strings
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:591
-#: ../terminal/terminal-screen.c:1532
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Menubar Access"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:117
+#, fuzzy
+msgid "Ad_vanced"
+msgstr "ਤਕਨੀਕੀ"
+
+#: ../terminal/terminal-preferences.c:756
+msgid "Terminal"
+msgstr "ਟਰਮੀਨਲ"
+
+#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
+#: ../terminal/terminal-screen.c:1742
 msgid "Untitled"
 msgstr "ਬਿਨਾਂ-ਟਾਇਟਲ"
 
-#: ../terminal/terminal-screen.c:482
+#: ../terminal/terminal-screen.c:547
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "ਤੁਹਾਡੀ ਲਾਗਇਨ ਸ਼ੈਲ ਪਤਾ ਲਗਾਉਣ ਲਈ ਫੇਲ੍ਹ।"
 
-#. tell the user that we were unable to execute the command
-#: ../terminal/terminal-screen.c:1293
+#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
 msgid "Failed to execute child"
 msgstr "ਚਲਾਇਡ ਚਲਾਉਣ ਲਈ ਫੇਲ੍ਹ"
 
-#: ../terminal/terminal-screen.c:1854
+#: ../terminal/terminal-screen.c:2083
 msgid "Close this tab"
 msgstr "ਇਹ ਟੈਬ ਬੰਦ ਕਰੋ"
 
-#: ../terminal/terminal-shortcut-editor.c:88
-msgid "File"
-msgstr "ਫਾਇਲ"
-
-#: ../terminal/terminal-shortcut-editor.c:99
-msgid "Edit"
-msgstr "ਸੋਧ"
-
-#: ../terminal/terminal-shortcut-editor.c:109
-msgid "View"
-msgstr "ਵੇਖੋ"
-
-#: ../terminal/terminal-shortcut-editor.c:128
-msgid "Go"
-msgstr "ਜਾਓ"
-
-#: ../terminal/terminal-shortcut-editor.c:145
-msgid "Help"
-msgstr "ਸਹਾਇਤਾ"
-
-#: ../terminal/terminal-shortcut-editor.c:209
-#: ../terminal/terminal-shortcut-editor.c:505 ../Terminal.glade.h:24
-msgid "Disabled"
-msgstr "ਬੰਦ ਕੀਤਾ"
-
-#: ../terminal/terminal-shortcut-editor.c:221
-msgid "Action"
-msgstr "ਐਕਸ਼ਨ"
-
-#: ../terminal/terminal-shortcut-editor.c:228
-msgid "Shortcut key"
-msgstr ""
-
-#: ../terminal/terminal-shortcut-editor.c:328
-msgid "Compose shortcut"
-msgstr ""
-
-#: ../terminal/terminal-shortcut-editor.c:333
-msgid "Clea_r"
-msgstr ""
-
-#: ../terminal/terminal-shortcut-editor.c:352
-msgid "Compose shortcut for:"
-msgstr ""
-
-#: ../terminal/terminal-shortcut-editor.c:374
-msgid "Failed to acquire keyboard"
-msgstr ""
-
-#: ../terminal/terminal-shortcut-editor.c:376
-msgid "Another application has already acquired control over your keyboard."
-msgstr ""
-
-#: ../terminal/terminal-toolbars-view.c:112
-msgid "Toolbar Editor"
-msgstr "ਟੂਲਬਾਰ ਐਡੀਟਰ"
-
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:324
 msgid "Copy Email Address"
 msgstr "ਈ-ਮੇਲ ਐਡਰੈੱਸ ਨਕਲ ਕਰੋ"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:325
 msgid "Compose Email"
 msgstr "ਈ-ਮੇਲ ਲਿਖੋ"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:329
 msgid "Copy Link Address"
 msgstr "ਲਿੰਕ ਐਡਰੈੱਸ ਨਕਲ ਕਰੋ"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:330
 msgid "Open Link"
 msgstr "ਲਿੰਕ ਖੋਲ੍ਹੋ"
 
-#: ../terminal/terminal-widget.c:480
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:496
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:522
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#: ../terminal/terminal-widget.c:567
+#: ../terminal/terminal-widget.c:571
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
-#. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:705
 #, fuzzy, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "ਡਾਕੂਮਿੰਟ ਬਰਾਊਜ਼ਰ ਖੋਲ੍ਹਣ ਲਈ ਫੇਲ੍ਹ"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:218
 msgid "_File"
 msgstr "ਫਾਇਲ(_F)"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:219
 msgid "Open _Tab"
 msgstr "ਟੈਬ ਖੋਲ੍ਹੋ(_T)"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:219
 msgid "Open a new terminal tab"
 msgstr ""
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:220
 msgid "Open T_erminal"
 msgstr "ਟਰਮੀਨਲ ਖੋਲ੍ਹੋ(_e)"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:220
 msgid "Open a new terminal window"
 msgstr ""
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:221
 msgid "_Detach Tab"
 msgstr "ਟੈਬ ਵੱਖ ਕਰੋ(_D)"
 
-#: ../terminal/terminal-window.c:224
-msgid "Open a new window for the current terminal tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:225
+#: ../terminal/terminal-window.c:222
 msgid "C_lose Tab"
 msgstr "ਟੈਬ ਬੰਦ ਕਰੋ(_l)"
 
-#: ../terminal/terminal-window.c:225
-msgid "Close the current terminal tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:226
+#: ../terminal/terminal-window.c:223
 msgid "_Close Window"
 msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ(_C)"
 
-#: ../terminal/terminal-window.c:226
-msgid "Close the terminal window"
-msgstr "ਟਰਮੀਨਲ ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
-
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:224
 msgid "_Edit"
 msgstr "ਸੋਧ(_E)"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:225
 msgid "_Copy"
 msgstr "ਨਕਲ(_C)"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:225
 msgid "Copy to clipboard"
 msgstr ""
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:226
 msgid "_Paste"
 msgstr "ਚੇਪੋ(_P)"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:226
 msgid "Paste from clipboard"
 msgstr ""
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:227
 msgid "Paste _Selection"
 msgstr ""
 
-#: ../terminal/terminal-window.c:230
-msgid "Paste from primary selection"
+#: ../terminal/terminal-window.c:228
+msgid "Select _All"
 msgstr ""
 
-#: ../terminal/terminal-window.c:231
-msgid "_Toolbars..."
-msgstr "ਟੂਲ-ਬਾਰ(_T)..."
-
-#: ../terminal/terminal-window.c:231
-msgid "Customize the toolbars"
-msgstr ""
-
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:229
 msgid "Pr_eferences..."
 msgstr "ਮੇਰੀ ਪਸੰਦ(_e)..."
 
-#: ../terminal/terminal-window.c:232
-msgid "Open the Terminal preferences dialog"
+#: ../terminal/terminal-window.c:229
+msgid "Open the preferences dialog"
 msgstr ""
 
-#: ../terminal/terminal-window.c:233
+#: ../terminal/terminal-window.c:230
 msgid "_View"
 msgstr "ਵੇਖੋ(_V)"
 
-#: ../terminal/terminal-window.c:234
+#: ../terminal/terminal-window.c:231
 msgid "_Terminal"
 msgstr "ਟਰਮੀਨਲ(_T)"
 
-#: ../terminal/terminal-window.c:235
+#: ../terminal/terminal-window.c:232
 msgid "_Set Title..."
 msgstr "ਟਾਇਟਲ ਦਿਓ(_S)..."
 
-#: ../terminal/terminal-window.c:235
-msgid "Set a custom title for the current tab"
-msgstr ""
-
-#: ../terminal/terminal-window.c:236
-msgid "_Reset"
-msgstr "ਮੁੜ-ਸੈੱਟ(_R)"
-
-#: ../terminal/terminal-window.c:237
-msgid "Reset and C_lear"
-msgstr ""
-
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:233
 #, fuzzy
-msgid "Reset and clear"
-msgstr "ਮੁੜ-ਸੈੱਟ ਅਤੇ ਸਾਫ਼ ਕਰੋ"
+msgid "_Clear Scrollback"
+msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:234
+msgid "Clear Scrollback and _Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:235
 msgid "_Go"
 msgstr "ਜਾਓ(_G)"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:236
 msgid "_Previous Tab"
 msgstr "ਪਿੱਛੇ ਟੈਬ(_P)"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:236
 msgid "Switch to previous tab"
 msgstr ""
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:237
 msgid "_Next Tab"
 msgstr "ਅੱਗੇ ਟੈਬ(_N)"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:237
 msgid "Switch to next tab"
 msgstr ""
 
-#: ../terminal/terminal-window.c:241
+#: ../terminal/terminal-window.c:238
 msgid "_Help"
 msgstr "ਸਹਾਇਤਾ(_H)"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:239
 msgid "_Contents"
 msgstr "ਭਾਗ(_C)"
 
-#: ../terminal/terminal-window.c:242
+#: ../terminal/terminal-window.c:239
 msgid "Display help contents"
 msgstr ""
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:240
 msgid "_Report a bug"
 msgstr "ਇੱਕ ਬੱਗ ਰਿਪੋਰਟ(_R)"
 
-#: ../terminal/terminal-window.c:243
-msgid "Report a bug in Terminal"
-msgstr ""
-
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:241
 msgid "_About"
 msgstr "ਇਸ ਬਾਰੇ(_A)"
 
-#: ../terminal/terminal-window.c:244
-msgid "Display information about Terminal"
-msgstr "ਟਰਮੀਨਲ ਬਾਰੇ ਜਾਣਕਾਰੀ ਵੇਖਾਓ"
-
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:242
 msgid "_Input Methods"
 msgstr "ਇੰਪੁੱਟ ਢੰਗ ਵੇਖਾਓ(_I)"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:247
 msgid "Show _Menubar"
 msgstr "ਮੇਨੂ-ਬਾਰ ਵੇਖਾਓ(_M)"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:247
 msgid "Show/hide the menubar"
 msgstr ""
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:248
 msgid "Show _Toolbars"
 msgstr ""
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:248
 msgid "Show/hide the toolbars"
 msgstr ""
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:249
 msgid "Show Window _Borders"
 msgstr ""
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:249
 msgid "Show/hide the window decorations"
 msgstr ""
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:250
 msgid "_Fullscreen"
 msgstr "ਪੂਰੇ ਸਕਰੀਨ ਤੇ(_F)"
 
-#: ../terminal/terminal-window.c:253
+#: ../terminal/terminal-window.c:250
 msgid "Toggle fullscreen mode"
 msgstr "ਪੂਰੀ ਸਕਰੀਨ ਲਈ ਟਾਗਲ"
 
-#: ../terminal/terminal-window.c:560
+#. create encoding action
+#: ../terminal/terminal-window.c:408
+msgid "Set _Encoding"
+msgstr ""
+
+#: ../terminal/terminal-window.c:539
 msgid "Warning"
 msgstr "ਚੇਤਾਵਨੀ"
 
-#: ../terminal/terminal-window.c:571
+#: ../terminal/terminal-window.c:550
 msgid "Close all tabs"
 msgstr "ਸਭ ਟੈਬਾਂ ਬੰਦ ਕਰੋ"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:569
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing\n"
@@ -716,557 +1090,227 @@ msgstr ""
 "ਇਹ ਵਿੰਡੋਂ ਵਿੱਚ %d ਟੈਬਾਂ ਖੁੱਲੀਆਂ ਹਨ। ਇਹ ਵਿੰਡੋ\n"
 "ਬੰਦ ਕਰਨ ਨਾਲ ਸਭ ਟੈਬਾਂ ਵੀ ਬੰਦ ਹੋ ਜਾਣਗੀਆਂ।"
 
-#: ../terminal/terminal-window.c:593
+#: ../terminal/terminal-window.c:572
 msgid "Close all tabs?"
 msgstr "ਕੀ ਸਭ ਟੈਬਾਂ ਬੰਦ ਕਰਨੀਆਂ ਹਨ?"
 
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:585
 msgid "Do _not ask me again"
 msgstr "ਮੈਨੂੰ ਮੁੜ ਨਾ ਪੁੱਛੋ(_n)"
 
-#: ../terminal/terminal-window.c:1555
+#: ../terminal/terminal-window.c:1592
 msgid "Window Title|Set Title"
 msgstr "ਟਾਇਟਲ ਦਿਓ"
 
-#: ../terminal/terminal-window.c:1568
+#: ../terminal/terminal-window.c:1605
 #, fuzzy
 msgid "Title:"
 msgstr "ਟਾਇਟਲ"
 
-#: ../terminal/terminal-window.c:1580
+#: ../terminal/terminal-window.c:1617
 msgid "Enter the title for the current terminal tab"
 msgstr ""
 
-#: ../Terminal.desktop.in.in.h:2
+#: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "ਟਰਮੀਨਲ ਈਮੂਲੇਟਰ"
 
-#: ../Terminal.glade.h:1
+#~ msgid "Unable to register object %s"
+#~ msgstr "ਆਬਜੈਕਟ %s ਰਜਿਸਟਰ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ"
+
+#~ msgid "Failed to open the documentation browser"
+#~ msgstr "ਡਾਕੂਮਿੰਟ ਬਰਾਊਜ਼ਰ ਖੋਲ੍ਹਣ ਲਈ ਫੇਲ੍ਹ"
+
+#~ msgid "Open Tab"
+#~ msgstr "ਟੈਬ ਖੋਲ੍ਹੋ"
+
+#~ msgid "Detach Tab"
+#~ msgstr "ਟੈਬ ਵੱਖ ਕਰੋ"
+
+#~ msgid "Close Tab"
+#~ msgstr "ਟੈਬ ਬੰਦ ਕਰੋ"
+
+#~ msgid "Close Window"
+#~ msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
+
+#~ msgid "Copy"
+#~ msgstr "ਨਕਲ"
+
+#~ msgid "Paste"
+#~ msgstr "ਚੇਪੋ"
+
+#~ msgid "Paste Selection"
+#~ msgstr "ਚੋਣ ਚੇਪੋ"
+
+#~ msgid "Preferences"
+#~ msgstr "ਮੇਰੀ ਪਸੰਦ"
+
+#~ msgid "Show menubar"
+#~ msgstr "ਮੇਨੂਬਾਰ ਵੇਖਾਓ"
+
+#~ msgid "Show toolbars"
+#~ msgstr "ਟੂਲਬਾਰ ਵੇਖਾਓ"
+
+#~ msgid "Show borders"
+#~ msgstr "ਬਾਰਡਰ ਵੇਖਾਓ"
+
+#~ msgid "Fullscreen"
+#~ msgstr "ਪੂਰੀ ਸਕਰੀਨ"
+
+#~ msgid "Set Title"
+#~ msgstr "ਟਾਇਟਲ ਦਿਓ"
+
+#~ msgid "Reset and Clear"
+#~ msgstr "ਮੁੜ-ਸੈੱਟ ਅਤੇ ਸਾਫ਼ ਕਰੋ"
+
+#~ msgid "Previous Tab"
+#~ msgstr "ਪਿੱਛੇ ਟੈਬ"
+
+#~ msgid "Next Tab"
+#~ msgstr "ਅੱਗੇ ਟੈਬ"
+
+#~ msgid "Switch to Tab 1"
+#~ msgstr "1 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 2"
+#~ msgstr "2 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 3"
+#~ msgstr "3 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 4"
+#~ msgstr "4 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 5"
+#~ msgstr "5 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 6"
+#~ msgstr "6 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 7"
+#~ msgstr "7 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 8"
+#~ msgstr "8 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Switch to Tab 9"
+#~ msgstr "9 ਟੈਬ ਉੱਤੇ ਜਾਓ"
+
+#~ msgid "Contents"
+#~ msgstr "ਭਾਗ"
+
+#~ msgid "File"
+#~ msgstr "ਫਾਇਲ"
+
+#~ msgid "Edit"
+#~ msgstr "ਸੋਧ"
+
+#~ msgid "View"
+#~ msgstr "ਵੇਖੋ"
+
+#~ msgid "Go"
+#~ msgstr "ਜਾਓ"
+
+#~ msgid "Help"
+#~ msgstr "ਸਹਾਇਤਾ"
+
+#~ msgid "Action"
+#~ msgstr "ਐਕਸ਼ਨ"
+
+#~ msgid "Toolbar Editor"
+#~ msgstr "ਟੂਲਬਾਰ ਐਡੀਟਰ"
+
+#~ msgid "Close the terminal window"
+#~ msgstr "ਟਰਮੀਨਲ ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
+
+#~ msgid "_Toolbars..."
+#~ msgstr "ਟੂਲ-ਬਾਰ(_T)..."
+
+#~ msgid "_Reset"
+#~ msgstr "ਮੁੜ-ਸੈੱਟ(_R)"
+
 #, fuzzy
-msgid "$TERM s_etting:"
-msgstr "<tt>$TERM</tt> ਸੈਟਿੰਗ:"
+#~ msgid "Reset and clear"
+#~ msgstr "ਮੁੜ-ਸੈੱਟ ਅਤੇ ਸਾਫ਼ ਕਰੋ"
 
-#: ../Terminal.glade.h:2
-msgid "ASCII DEL"
-msgstr "ASCII DEL"
+#~ msgid "Display information about Terminal"
+#~ msgstr "ਟਰਮੀਨਲ ਬਾਰੇ ਜਾਣਕਾਰੀ ਵੇਖਾਓ"
 
-#: ../Terminal.glade.h:3
 #, fuzzy
-msgid "Ad_vanced"
-msgstr "ਤਕਨੀਕੀ"
+#~ msgid "Palette entry 1"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:4
 #, fuzzy
-msgid "Allow bold te_xt"
-msgstr "ਬੋਲਡ ਟੈਕਸਟ ਮਨਜ਼ੂਰ"
+#~ msgid "Palette entry 10"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:5
-msgid "Auto-detect"
-msgstr "ਆਟੋ-ਡਿਟੈਕਟ"
-
-#: ../Terminal.glade.h:6
 #, fuzzy
-msgid "Background"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
+#~ msgid "Palette entry 11"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:7
-msgid "Background image"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ"
-
-#: ../Terminal.glade.h:8
-msgid "Centered"
-msgstr "ਸੈਂਟਰਡ"
-
-#: ../Terminal.glade.h:9
-msgid "Choose Terminal Font"
-msgstr "ਟਰਮੀਨਲ ਫੋਂਟ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:10
 #, fuzzy
-msgid "Choose tab activity color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Palette entry 12"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:11
 #, fuzzy
-msgid "Choose terminal background color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Palette entry 13"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:12
 #, fuzzy
-msgid "Choose terminal cursor color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Palette entry 14"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:13
-msgid "Choose terminal text color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:14
 #, fuzzy
-msgid "Choose terminal text selection background color"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
+#~ msgid "Palette entry 15"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:15
-msgid "Color Selector"
-msgstr "ਰੰਗ ਸਲੈਕਟਰ"
-
-#: ../Terminal.glade.h:16
 #, fuzzy
-msgid "Command"
-msgstr "<b>ਕਮਾਂਡ</b>"
+#~ msgid "Palette entry 16"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:17
 #, fuzzy
-msgid "Compatibility"
-msgstr "<b>ਕੰਪੈਟੇਬਿਲਟੀ</b>"
+#~ msgid "Palette entry 2"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:18
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr ""
-
-#: ../Terminal.glade.h:20
-msgid "Control-H"
-msgstr "Control-H"
-
-#: ../Terminal.glade.h:21
 #, fuzzy
-msgid "Cu_rsor color:"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
+#~ msgid "Palette entry 3"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:22
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr ""
-
-#: ../Terminal.glade.h:23
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr ""
-
-#: ../Terminal.glade.h:25
 #, fuzzy
-msgid "Display _borders around new windows"
-msgstr "ਨਵੀਂ ਵਿੰਡੋਂ ਵਿੱਚ ਟੂਲ-ਬਾਰ ਵੇਖੋ(_t)"
+#~ msgid "Palette entry 4"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:26
-msgid "Display _menubar in new windows"
-msgstr "ਮੁੱਖ ਵਿੰਡੋ ਵਿੱਚ ਮੇਨੂ-ਬਾਰ ਵੇਖਾਓ(_m)"
-
-#: ../Terminal.glade.h:27
-msgid "Display _toolbars in new windows"
-msgstr "ਨਵੀਂ ਵਿੰਡੋਂ ਵਿੱਚ ਟੂਲ-ਬਾਰ ਵੇਖੋ(_t)"
-
-#: ../Terminal.glade.h:28
 #, fuzzy
-msgid "Double Click"
-msgstr "<b>ਦੋ ਵਾਰ ਕਲਿੱਕ</b>"
+#~ msgid "Palette entry 5"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:29
-msgid "Enab_le anti-aliasing for the terminal font"
-msgstr ""
-
-#: ../Terminal.glade.h:30
-msgid ""
-"Enable this option if you want Terminal to use anti-aliasing when rendering "
-"text in terminal windows. Disabling this option can impressively speed up "
-"terminal rendering performance and reduce the overall system load on slow "
-"systems."
-msgstr ""
-
-#: ../Terminal.glade.h:31
-msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-
-#: ../Terminal.glade.h:32
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr ""
-
-#: ../Terminal.glade.h:33
-msgid ""
-"Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-
-#: ../Terminal.glade.h:34
-msgid ""
-"Enable this option to show the toolbars in newly created terminal windows."
-msgstr ""
-
-#: ../Terminal.glade.h:35
-msgid ""
-"Enable this option to show window decorations around newly created terminal "
-"windows."
-msgstr ""
-
-#: ../Terminal.glade.h:36
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-
-#: ../Terminal.glade.h:37
-msgid "Erase TTY"
-msgstr ""
-
-#: ../Terminal.glade.h:38
-msgid "Escape sequence"
-msgstr ""
-
-#: ../Terminal.glade.h:39
-msgid "Font"
-msgstr ""
-
-#: ../Terminal.glade.h:40
-msgid "General"
-msgstr "ਸਧਾਰਨ"
-
-#: ../Terminal.glade.h:41
-msgid "Goes after initial title"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਬਾਦ ਜਾਓ"
-
-#: ../Terminal.glade.h:42
-msgid "Goes before initial title"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਈਟਲ ਤੋਂ ਪਹਿਲਾਂ ਜਾਓ"
-
-#: ../Terminal.glade.h:43
-msgid "Isn't displayed"
-msgstr "ਨਹੀਂ ਵੇਖਾਇਆ ਜਾਏਗਾ"
-
-#: ../Terminal.glade.h:44
-msgid "Menubar Access"
-msgstr ""
-
-#: ../Terminal.glade.h:45
-msgid "None (use solid color)"
-msgstr "ਕੋਈ ਨਹੀਂ (ਇੱਕ ਰੰਗ ਵਰਤੋਂ)"
-
-#: ../Terminal.glade.h:46
-msgid "On the left side"
-msgstr "ਖੱਬੇ ਪਾਸੇ"
-
-#: ../Terminal.glade.h:47
-msgid "On the right side"
-msgstr "ਸੱਜੇ ਪਾਸੇ"
-
-#: ../Terminal.glade.h:48
-msgid "Open a dialog to specify the color"
-msgstr ""
-
-#: ../Terminal.glade.h:49
 #, fuzzy
-msgid "Opening New Windows"
-msgstr "<b>ਨਵੀਂ ਵਿੰਡੋ ਖੋਲ੍ਹੀ ਜਾ ਰਹੀ ਹੈ</b>"
+#~ msgid "Palette entry 6"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:50
 #, fuzzy
-msgid "Palette"
-msgstr "ਚੇਪੋ"
+#~ msgid "Palette entry 7"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:51
 #, fuzzy
-msgid "Palette entry 1"
-msgstr "ਚੇਪੋ"
+#~ msgid "Palette entry 8"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:52
 #, fuzzy
-msgid "Palette entry 10"
-msgstr "ਚੇਪੋ"
+#~ msgid "Palette entry 9"
+#~ msgstr "ਚੇਪੋ"
 
-#: ../Terminal.glade.h:53
 #, fuzzy
-msgid "Palette entry 11"
-msgstr "ਚੇਪੋ"
+#~ msgid "Shortcut Keys"
+#~ msgstr "ਸ਼ਾਰਟਕੱਟ"
 
-#: ../Terminal.glade.h:54
 #, fuzzy
-msgid "Palette entry 12"
-msgstr "ਚੇਪੋ"
+#~ msgid "Use c_ustom color:"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
 
-#: ../Terminal.glade.h:55
 #, fuzzy
-msgid "Palette entry 13"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:56
-#, fuzzy
-msgid "Palette entry 14"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:57
-#, fuzzy
-msgid "Palette entry 15"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:58
-#, fuzzy
-msgid "Palette entry 16"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:59
-#, fuzzy
-msgid "Palette entry 2"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:60
-#, fuzzy
-msgid "Palette entry 3"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:61
-#, fuzzy
-msgid "Palette entry 4"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:62
-#, fuzzy
-msgid "Palette entry 5"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:63
-#, fuzzy
-msgid "Palette entry 6"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:64
-#, fuzzy
-msgid "Palette entry 7"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:65
-#, fuzzy
-msgid "Palette entry 8"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:66
-#, fuzzy
-msgid "Palette entry 9"
-msgstr "ਚੇਪੋ"
-
-#: ../Terminal.glade.h:67
-msgid "Replaces initial title"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ ਬਦਲੋ"
-
-#: ../Terminal.glade.h:68
-msgid "Rese_t double click options to defaults"
-msgstr ""
-
-#: ../Terminal.glade.h:69
-#, fuzzy
-msgid "Reset tab activity _indicator after"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:70
-msgid "Scaled"
-msgstr "ਸਕੇਲਡ"
-
-#: ../Terminal.glade.h:71
-#, fuzzy
-msgid "Scr_ollbar is:"
-msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
-
-#: ../Terminal.glade.h:72
-#, fuzzy
-msgid "Scroll on _keystroke"
-msgstr "ਆਉਟਪੁੱਟ ਉੱਤੇ ਸਕਰੋਲ(_r)"
-
-#: ../Terminal.glade.h:73
-#, fuzzy
-msgid "Scroll on ou_tput"
-msgstr "ਆਉਟਪੁੱਟ ਉੱਤੇ ਸਕਰੋਲ(_r)"
-
-#: ../Terminal.glade.h:74
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr ""
-
-#: ../Terminal.glade.h:75
-#, fuzzy
-msgid "Scroll_back:"
-msgstr "ਸਕਰੋਲ-ਬੈਕ(_o):"
-
-#: ../Terminal.glade.h:76
-#, fuzzy
-msgid "Scrolling"
-msgstr "<b>ਸਕਰੋਲਿੰਗ</b>"
-
-#: ../Terminal.glade.h:77
-#, fuzzy
-msgid "Select Background Image File"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਚਿੱਤਰ ਫਾਇਲ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:78
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-
-#: ../Terminal.glade.h:79
-#, fuzzy
-msgid "Shortcut Keys"
-msgstr "ਸ਼ਾਰਟਕੱਟ"
-
-#: ../Terminal.glade.h:80
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-
-#: ../Terminal.glade.h:81
-#, fuzzy
-msgid "St_yle:"
-msgstr "ਸ਼ੈਲੀ(_S):"
-
-#: ../Terminal.glade.h:82
-msgid "Stretched"
-msgstr "ਸੱਟਰੇਚਡ"
-
-#: ../Terminal.glade.h:83
-#, fuzzy
-msgid "Tab Activity Indicator"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:84
-#, fuzzy
-msgid "Tab activit_y color:"
-msgstr "ਟਰਮੀਨਲ ਟੈਕਸਟ ਰੰਗ ਚੁਣੋ"
-
-#: ../Terminal.glade.h:85
-msgid "Terminal Preferences"
-msgstr "ਟਰਮੀਨਲ ਪਸੰਦ"
-
-#: ../Terminal.glade.h:86
-msgid "Terminal applications have this color palette available to them:"
-msgstr ""
-
-#: ../Terminal.glade.h:87
-#, fuzzy
-msgid "Text Selection"
-msgstr "ਚੋਣ ਚੇਪੋ"
-
-#: ../Terminal.glade.h:88
-msgid ""
-"These options may cause some applications to behave\n"
-"incorrectly. They are only here to allow you to work around\n"
-"certain applications and operating systems that expect\n"
-"different terminal behavior."
-msgstr ""
-
-#: ../Terminal.glade.h:92
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-
-#: ../Terminal.glade.h:93
-msgid ""
-"This specifies the value the $TERM environment variable is set to, when a "
-"new terminal tab or terminal window is opened. The default should be ok for "
-"most systems. If you have problems with colors in some applications, try "
-"xterm-color here."
-msgstr ""
-
-#: ../Terminal.glade.h:94
-#, fuzzy
-msgid "Tiled"
-msgstr "ਟਾਇਟਡ"
-
-#: ../Terminal.glade.h:95
-msgid "Title"
-msgstr "ਟਾਇਟਲ"
-
-#: ../Terminal.glade.h:96
-#, fuzzy
-msgid "Transpare_ncy:"
-msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
-
-#: ../Terminal.glade.h:97
-msgid "Transparent background"
-msgstr "ਪਾਰਦਰਸ਼ੀ ਬੈਕਗਰਾਊਂਡ"
-
-#: ../Terminal.glade.h:98
-msgid "Use _default color"
-msgstr ""
-
-#: ../Terminal.glade.h:99
-msgid "Use a custom text selection background color"
-msgstr ""
-
-#: ../Terminal.glade.h:100
-#, fuzzy
-msgid "Use c_ustom color:"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
-
-#: ../Terminal.glade.h:101
-msgid "Use the default text selection background color"
-msgstr ""
-
-#: ../Terminal.glade.h:102
-#, fuzzy
-msgid "_Appearance"
-msgstr "ਦਿੱਖ"
-
-#: ../Terminal.glade.h:103
-msgid "_Background color:"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
-
-#: ../Terminal.glade.h:104
-msgid "_Backspace key generates:"
-msgstr ""
-
-#: ../Terminal.glade.h:105
-#, fuzzy
-msgid "_Colors"
-msgstr "ਰੰਗ"
-
-#: ../Terminal.glade.h:106
-msgid "_Delete key generates:"
-msgstr ""
-
-#: ../Terminal.glade.h:107
-#, fuzzy
-msgid "_Dynamically-set title:"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ(_I):"
-
-#: ../Terminal.glade.h:108
-msgid "_File:"
-msgstr "ਫਾਇਲ(_F):"
-
-#: ../Terminal.glade.h:109
-#, fuzzy
-msgid "_General"
-msgstr "ਸਧਾਰਨ"
-
-#: ../Terminal.glade.h:110
-msgid "_Initial title:"
-msgstr "ਸ਼ੁਰੂਆਤੀ ਟਾਇਟਲ(_I):"
-
-#: ../Terminal.glade.h:111
-msgid "_Reset compatibility options to defaults"
-msgstr ""
-
-#: ../Terminal.glade.h:112
-msgid "_Run command as login shell"
-msgstr "ਕਮਾਂਡ ਲਾਗਇਨ ਸ਼ੈੱਲ ਵਾਂਗ ਚਲਾਓ(_R)"
-
-#: ../Terminal.glade.h:113
-#, fuzzy
-msgid "_Shortcuts"
-msgstr "ਸ਼ਾਰਟਕੱਟ"
-
-#: ../Terminal.glade.h:114
-#, fuzzy
-msgid "_Text color:"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ(_B):"
-
-#: ../Terminal.glade.h:115
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr ""
-
-#: ../Terminal.glade.h:116
-msgid "seconds"
-msgstr ""
+#~ msgid "_Shortcuts"
+#~ msgstr "ਸ਼ਾਰਟਕੱਟ"
 
 #~ msgid ""
 #~ "  -h, --help                          Print this help message and exit"
@@ -1349,9 +1393,6 @@ msgstr ""
 
 #~ msgid "Disable this feature"
 #~ msgstr "ਇਹ ਫੀਚਰ ਬੰਦ ਕਰੋ"
-
-#~ msgid "Other..."
-#~ msgstr "ਹੋਰ..."
 
 #~ msgid "No application selected"
 #~ msgstr "ਕੋਈ ਐਪਲੀਕੇਸ਼ਨ ਨਹੀਂ ਚੁਣੀ"
