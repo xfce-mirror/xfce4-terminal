@@ -159,6 +159,10 @@ terminal_options_parse (gint       argc,
       if (argv[n] == NULL || *argv[n] != '-')
         continue;
 
+      /* everything after execute belongs to the command */
+      if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL))
+        break;
+
       if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
         *show_help = TRUE;
       else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL))
