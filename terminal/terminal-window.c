@@ -234,8 +234,8 @@ static const GtkActionEntry action_entries[] =
     { "new-tab", "tab-new", N_ ("Open _Tab"), "<control><shift>t", N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), },
     { "new-window", "window-new", N_ ("Open T_erminal"), "<control><shift>n", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), },
     { "detach-tab", NULL, N_ ("_Detach Tab"), "<control><shift>d", NULL, G_CALLBACK (terminal_window_action_detach_tab), },
-    { "close-tab", GTK_STOCK_CLOSE, N_ ("C_lose Tab"), "<control><shift>w", NULL, G_CALLBACK (terminal_window_action_close_tab), },
-    { "close-window", GTK_STOCK_QUIT, N_ ("_Close Window"), "<control><shift>q", NULL, G_CALLBACK (terminal_window_action_close_window), },
+    { "close-tab", GTK_STOCK_CLOSE, N_ ("Close T_ab"), "<control><shift>w", NULL, G_CALLBACK (terminal_window_action_close_tab), },
+    { "close-window", GTK_STOCK_QUIT, N_ ("Close _Window"), "<control><shift>q", NULL, G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
     { "copy", GTK_STOCK_COPY, N_ ("_Copy"), "<control><shift>c", N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
     { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), "<control><shift>v", N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
@@ -569,15 +569,16 @@ terminal_window_confirm_close (TerminalWindow *window)
                                         | GTK_DIALOG_MODAL,
                                         NULL);
 
-  button = gtk_dialog_add_button (GTK_DIALOG (dialog),
-                                  GTK_STOCK_CANCEL,
-                                  GTK_RESPONSE_CANCEL);
+  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
-  button = gtk_dialog_add_button (GTK_DIALOG (dialog),
-                                  _("Close all tabs"),
-                                  GTK_RESPONSE_YES);
-  gtk_widget_grab_default (button);
+  button = xfce_gtk_button_new_mixed (GTK_STOCK_CLOSE, _("Close T_ab"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
+  gtk_widget_show (button);
+
+  button = xfce_gtk_button_new_mixed (GTK_STOCK_QUIT, _("Close _Window"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
   gtk_widget_grab_focus (button);
+  gtk_widget_show (button);
 
   hbox = gtk_hbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
@@ -593,8 +594,8 @@ terminal_window_confirm_close (TerminalWindow *window)
   gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
   gtk_widget_show (vbox);
 
-  message = g_strdup_printf (_("This window has %d tabs open. Closing\nthis "
-                               "window will also close all its tabs."), n_tabs);
+  message = g_strdup_printf (_("This window has %d tabs open. Closing this window\n"
+                               "will also close all its tabs."), n_tabs);
   markup = g_strdup_printf ("<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
                             _("Close all tabs?"), message);
   g_free (message);
@@ -622,6 +623,11 @@ terminal_window_confirm_close (TerminalWindow *window)
                         "misc-confirm-close", FALSE,
                         NULL);
         }
+    }
+  else if (response == GTK_RESPONSE_CLOSE
+           && window->active != NULL)
+    {
+      gtk_widget_destroy (GTK_WIDGET (window->active));
     }
 
   gtk_widget_destroy (dialog);
