@@ -164,6 +164,10 @@ static void            terminal_window_action_prev_tab               (GtkAction 
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_next_tab               (GtkAction              *action,
                                                                       TerminalWindow         *window);
+static void            terminal_window_action_move_tab_left          (GtkAction              *action,
+                                                                      TerminalWindow         *window);
+static void            terminal_window_action_move_tab_right         (GtkAction              *action,
+                                                                      TerminalWindow         *window);
 static void            terminal_window_action_goto_tab               (GtkRadioAction         *action,
                                                                       GtkNotebook            *notebook);
 static void            terminal_window_action_set_title              (GtkAction              *action,
@@ -235,6 +239,8 @@ static const GtkActionEntry action_entries[] =
   { "go-menu", NULL, N_ ("_Go"), NULL, NULL, NULL, },
     { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), "<Control>Page_Up", N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
     { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), "<Control>Page_Down", N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
+    { "move-tab-left", NULL, N_ ("Move Tab _Left"), NULL, NULL, G_CALLBACK (terminal_window_action_move_tab_left), },
+    { "move-tab-right", NULL, N_ ("Move Tab _Right"), NULL, NULL, G_CALLBACK (terminal_window_action_move_tab_right), },
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
     { "contents", GTK_STOCK_HELP, N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
     { "report-bug", NULL, N_ ("_Report a bug"), NULL, NULL, G_CALLBACK (terminal_window_action_report_bug), },
@@ -698,7 +704,7 @@ terminal_window_update_actions (TerminalWindow *window)
 
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
-
+g_message (".");
   /* "Detach Tab" is only sensitive if we have atleast two pages */
   action = gtk_action_group_get_action (window->action_group, "detach-tab");
   gtk_action_set_sensitive (action, (n_pages > 1));
@@ -721,6 +727,12 @@ terminal_window_update_actions (TerminalWindow *window)
 
       action = gtk_action_group_get_action (window->action_group, "next-tab");
       gtk_action_set_sensitive (action, (cycle_tabs && n_pages > 1 ) || (page_num < n_pages - 1));
+
+      action = gtk_action_group_get_action (window->action_group, "move-tab-left");
+      gtk_action_set_sensitive (action, n_pages > 1);
+
+      action = gtk_action_group_get_action (window->action_group, "move-tab-right");
+      gtk_action_set_sensitive (action, n_pages > 1);
 
       action = gtk_action_group_get_action (window->action_group, "copy");
       gtk_action_set_sensitive (action, terminal_screen_has_selection (window->active));
@@ -1522,6 +1534,42 @@ terminal_window_action_next_tab (GtkAction       *action,
   n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook),
                                  (page_num + 1) % n_pages);
+}
+
+
+
+static void
+terminal_window_action_move_tab_left (GtkAction      *action,
+                                      TerminalWindow *window)
+{
+  gint       page_num;
+  gint       last_page;
+  GtkWidget *page;
+
+  page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
+  last_page = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)) - 1;
+  page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num);
+
+  gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook),
+                              page, page_num == 0 ? last_page : page_num - 1);
+}
+
+
+
+static void
+terminal_window_action_move_tab_right (GtkAction      *action,
+                                       TerminalWindow *window)
+{
+  gint       page_num;
+  gint       last_page;
+  GtkWidget *page;
+
+  page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
+  last_page = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook)) - 1;
+  page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), page_num);
+
+  gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook),
+                              page, page_num == last_page ? 0 : page_num + 1);
 }
 
 
