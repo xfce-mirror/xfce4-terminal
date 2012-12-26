@@ -100,9 +100,6 @@ colortable (void)
 static void
 usage (void)
 {
-  /* set locale for the translations below */
-  gtk_set_locale ();
-
   g_print ("%s\n"
            "  %s [%s...]\n\n",
            _("Usage:"), PACKAGE_NAME, _("OPTION"));
