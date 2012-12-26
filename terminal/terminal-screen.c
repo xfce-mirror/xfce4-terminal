@@ -2055,7 +2055,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 
   /* create the box */
   hbox = gtk_hbox_new (FALSE, 0);
-  gtk_container_set_border_width (GTK_CONTAINER (hbox), 3);
+  gtk_container_set_border_width (GTK_CONTAINER (hbox), 2);
   gtk_widget_show (hbox);
 
   screen->tab_label = gtk_label_new (NULL);
