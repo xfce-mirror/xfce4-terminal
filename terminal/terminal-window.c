@@ -681,19 +681,17 @@ terminal_window_accel_activate (GtkAccelGroup   *accel_group,
                                 GdkModifierType  accel_mods,
                                 TerminalWindow  *window)
 {
-  GtkAction   *action;
-  const gchar *names[] = { "prev-tab", "next-tab" };
+  GtkAction   *actions[] = { window->action_prev_tab, window->action_next_tab };
   guint        n;
   GtkAccelKey  key;
 
-  for (n = 0; n < G_N_ELEMENTS (names); n++)
+  for (n = 0; n < G_N_ELEMENTS (actions); n++)
     {
       /* pretend we handled the accelerator if the event matches one of
        * the insensitive actions, so we don't send weird key events to vte
        * see http://bugzilla.xfce.org/show_bug.cgi?id=3715 */
-      action = gtk_action_group_get_action (window->action_group, names[n]);
-      if (!gtk_action_is_sensitive (action)
-          && gtk_accel_map_lookup_entry (gtk_action_get_accel_path (action), &key)
+      if (!gtk_action_is_sensitive (actions[n])
+          && gtk_accel_map_lookup_entry (gtk_action_get_accel_path (actions[n]), &key)
           && key.accel_key == accel_key
           && key.accel_mods == accel_mods)
         return TRUE;
