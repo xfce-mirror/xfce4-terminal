@@ -87,7 +87,7 @@ static gboolean        terminal_window_accel_activate                (GtkAccelGr
                                                                       GdkModifierType         accel_mods,
                                                                       TerminalWindow         *window);
 static void            terminal_window_update_actions                (TerminalWindow         *window);
-static void            terminal_window_rebuild_gomenu                (TerminalWindow         *window);
+static void            terminal_window_rebuild_tabs_menu             (TerminalWindow         *window);
 static void            terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
                                                                       GtkNotebookPage        *page,
                                                                       guint                   page_num,
@@ -206,8 +206,8 @@ struct _TerminalWindow
   GtkActionGroup      *action_group;
   GtkUIManager        *ui_manager;
 
-  guint                gomenu_merge_id;
-  GSList              *gomenu_actions;
+  guint                tabs_menu_merge_id;
+  GSList              *tabs_menu_actions;
 
   GtkWidget           *menubar;
   GtkWidget           *toolbar;
@@ -239,7 +239,7 @@ struct _TerminalWindow
 
 static guint         window_signals[LAST_SIGNAL];
 static gconstpointer window_notebook_group = PACKAGE_NAME;
-static GQuark        gomenu_action_quark = 0;
+static GQuark        tabs_menu_action_quark = 0;
 
 
 
@@ -265,7 +265,7 @@ static const GtkActionEntry action_entries[] =
     { "search-prev", NULL, N_ ("Find Pre_vious"), NULL, NULL, G_CALLBACK (terminal_window_action_search_prev), },
     { "reset", NULL, N_ ("_Clear Scrollback"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
     { "reset-and-clear", NULL, N_ ("Clear Scrollback and _Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
-  { "go-menu", NULL, N_ ("_Go"), NULL, NULL, NULL, },
+  { "tabs-menu", NULL, N_ ("T_abs"), NULL, NULL, NULL, },
     { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), "<Control>Page_Up", N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
     { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), "<Control>Page_Down", N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
     { "move-tab-left", NULL, N_ ("Move Tab _Left"), NULL, NULL, G_CALLBACK (terminal_window_action_move_tab_left), },
@@ -331,7 +331,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
                   G_TYPE_INT, G_TYPE_INT);
 
   /* initialize quark */
-  gomenu_action_quark = g_quark_from_static_string ("gomenu-item");
+  tabs_menu_action_quark = g_quark_from_static_string ("tabs-menu-item");
 }
 
 
@@ -462,7 +462,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->ui_manager));
   g_object_unref (G_OBJECT (window->encoding_action));
 
-  g_slist_free (window->gomenu_actions);
+  g_slist_free (window->tabs_menu_actions);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -762,7 +762,7 @@ terminal_window_update_actions (TerminalWindow *window)
       gtk_action_set_sensitive (window->action_search_prev, can_search);
 
       /* update the "Go" menu */
-      action = g_object_get_qdata (G_OBJECT (window->active), gomenu_action_quark);
+      action = g_object_get_qdata (G_OBJECT (window->active), tabs_menu_action_quark);
       if (G_LIKELY (action != NULL))
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
     }
@@ -771,7 +771,7 @@ terminal_window_update_actions (TerminalWindow *window)
 
 
 static void
-terminal_window_rebuild_gomenu (TerminalWindow *window)
+terminal_window_rebuild_tabs_menu (TerminalWindow *window)
 {
   gint            npages, n;
   GtkWidget      *page;
@@ -780,22 +780,22 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
   gchar           name[100];
   GSList         *lp;
 
-  if (window->gomenu_merge_id != 0)
+  if (window->tabs_menu_merge_id != 0)
     {
       /* remove merge id */
-      gtk_ui_manager_remove_ui (window->ui_manager, window->gomenu_merge_id);
+      gtk_ui_manager_remove_ui (window->ui_manager, window->tabs_menu_merge_id);
 
       /* drop all the old accels from the action group */
-      for (lp = window->gomenu_actions; lp != NULL; lp = lp->next)
+      for (lp = window->tabs_menu_actions; lp != NULL; lp = lp->next)
         gtk_action_group_remove_action (window->action_group, GTK_ACTION (lp->data));
 
-      g_slist_free (window->gomenu_actions);
-      window->gomenu_actions = NULL;
+      g_slist_free (window->tabs_menu_actions);
+      window->tabs_menu_actions = NULL;
     }
 
   /* create a new merge id */
-  window->gomenu_merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
-  terminal_assert (window->gomenu_actions == NULL);
+  window->tabs_menu_merge_id = gtk_ui_manager_new_merge_id (window->ui_manager);
+  terminal_assert (window->tabs_menu_actions == NULL);
 
   /* walk the tabs */
   npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
@@ -819,12 +819,12 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
       gtk_action_set_sensitive (GTK_ACTION (radio_action), TRUE);
 
       /* connect action to the page so we can active it when a tab is switched */
-      g_object_set_qdata_full (G_OBJECT (page), gomenu_action_quark,
+      g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark,
                                radio_action, g_object_unref);
 
       /* add action in the menu */
-      gtk_ui_manager_add_ui (window->ui_manager, window->gomenu_merge_id,
-                             "/main-menu/go-menu/placeholder-tab-items",
+      gtk_ui_manager_add_ui (window->ui_manager, window->tabs_menu_merge_id,
+                             "/main-menu/tabs-menu/placeholder-tab-items",
                              name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
 
       /* set an accelerator path */
@@ -832,7 +832,7 @@ terminal_window_rebuild_gomenu (TerminalWindow *window)
       gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
 
       /* store */
-      window->gomenu_actions = g_slist_prepend (window->gomenu_actions, radio_action);
+      window->tabs_menu_actions = g_slist_prepend (window->tabs_menu_actions, radio_action);
     }
 }
 
@@ -891,7 +891,7 @@ terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
 {
 
   /* Regenerate the "Go" menu */
-  terminal_window_rebuild_gomenu (window);
+  terminal_window_rebuild_tabs_menu (window);
 }
 
 
@@ -968,7 +968,7 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
     }
 
   /* regenerate the "Go" menu */
-  terminal_window_rebuild_gomenu (window);
+  terminal_window_rebuild_tabs_menu (window);
 }
 
 
@@ -985,7 +985,7 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   /* unset the go menu item */
-  g_object_set_qdata (G_OBJECT (child), gomenu_action_quark, NULL);
+  g_object_set_qdata (G_OBJECT (child), tabs_menu_action_quark, NULL);
 
   /* disconnect signals */
   g_signal_handlers_disconnect_by_func (G_OBJECT (child),
@@ -1010,7 +1010,7 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
       terminal_window_notebook_show_tabs (window);
 
       /* regenerate the "Go" menu */
-      terminal_window_rebuild_gomenu (window);
+      terminal_window_rebuild_tabs_menu (window);
     }
 }
 
