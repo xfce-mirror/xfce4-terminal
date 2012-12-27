@@ -777,7 +777,7 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
   GtkWidget      *page;
   GSList         *group = NULL;
   GtkRadioAction *radio_action;
-  gchar           name[100];
+  gchar           name[50];
   GSList         *lp;
 
   if (window->tabs_menu_merge_id != 0)

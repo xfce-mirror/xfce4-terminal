@@ -36,6 +36,8 @@
 #include <string.h>
 #endif
 
+#include <gdk/gdkkeysyms.h>
+
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-config.h>
 #include <terminal/terminal-preferences.h>
@@ -259,6 +261,8 @@ terminal_app_accel_map_load (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
   gchar       *path;
+  gchar        name[50];
+  guint        i;
 
   app->accel_map_load_id = 0;
 
@@ -268,6 +272,15 @@ terminal_app_accel_map_load (gpointer user_data)
       /* load the accel map */
       gtk_accel_map_load (path);
       g_free (path);
+    }
+  else
+    {
+      /* create default Alt+N accelerators */
+      for (i = 1; i < 10; i++)
+        {
+          g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", i);
+          gtk_accel_map_change_entry (name, GDK_0 + i, GDK_MOD1_MASK, FALSE);
+        }
     }
 
   /* watch for changes */
