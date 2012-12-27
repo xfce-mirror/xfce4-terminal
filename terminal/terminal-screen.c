@@ -145,8 +145,8 @@ static void       terminal_screen_vte_resize_window             (VteTerminal    
                                                                  guint                  width,
                                                                  guint                  height,
                                                                  TerminalScreen        *screen);
-static void       terminal_screen_vte_window_contents_changed   (VteTerminal           *terminal,
-                                                                 TerminalScreen        *screen);
+static void       terminal_screen_vte_window_contents_changed   (TerminalScreen        *screen);
+static void       terminal_screen_vte_window_contents_resized   (TerminalScreen        *screen);
 static gboolean   terminal_screen_timer_background              (gpointer               user_data);
 static void       terminal_screen_timer_background_destroy      (gpointer               user_data);
 static void       terminal_screen_update_label_orientation      (TerminalScreen        *screen);
@@ -182,7 +182,7 @@ struct _TerminalScreen
   guint                launch_idle_id;
 
   guint                activity_timeout_id;
-  time_t               last_size_change;
+  time_t               activity_resize_time;
 };
 
 
@@ -333,8 +333,10 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_colors (screen);
 
   /* Last, connect contents-changed to avoid a race with updates above */
-  g_signal_connect (G_OBJECT (screen->terminal), "contents-changed",
+  g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
       G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
+  g_signal_connect_swapped (G_OBJECT (screen->terminal), "size-allocate",
+      G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
 
   /* show the terminal */
   gtk_widget_show (screen->terminal);
@@ -1271,14 +1273,12 @@ terminal_screen_reset_activity_destroyed (gpointer user_data)
 
 
 static void
-terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
-                                             TerminalScreen *screen)
+terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 {
   guint    timeout;
   GdkColor color;
   gboolean has_fg;
 
-  terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (GTK_IS_LABEL (screen->tab_label));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -1286,7 +1286,7 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
       || GTK_WIDGET_STATE (screen->tab_label) != GTK_STATE_ACTIVE
-      || time (NULL) - screen->last_size_change <= 1)
+      || time (NULL) - screen->activity_resize_time <= 1)
     return;
 
   /* get the reset time, leave if this feature is disabled */
@@ -1307,6 +1307,15 @@ terminal_screen_vte_window_contents_changed (VteTerminal    *terminal,
       g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, timeout,
                                   terminal_screen_reset_activity_timeout,
                                   screen, terminal_screen_reset_activity_destroyed);
+}
+
+
+
+static void
+terminal_screen_vte_window_contents_resized (TerminalScreen *screen)
+{
+  /* avoid a content changed when the window is resized */
+  screen->activity_resize_time = time (NULL);
 }
 
 
@@ -1375,8 +1384,6 @@ terminal_screen_timer_background (gpointer user_data)
   vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
                                            background_mode == TERMINAL_BACKGROUND_TRANSPARENT
                                            && !gtk_widget_is_composited (GTK_WIDGET (screen)));
-
-  screen->last_size_change = time (NULL);
 
   GDK_THREADS_LEAVE ();
 
