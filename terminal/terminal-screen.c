@@ -1283,10 +1283,30 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
 static gboolean
 terminal_screen_reset_activity_timeout (gpointer user_data)
 {
-  /* reset label color */
+  TerminalScreen *screen = TERMINAL_SCREEN (user_data);
+  GtkStyle       *style;
+  GdkColor        color;
+  GdkColor        active_color;
+
+  if (G_UNLIKELY (screen->tab_label == NULL))
+    return FALSE;
+
   GDK_THREADS_ENTER ();
-  gtk_widget_modify_fg (TERMINAL_SCREEN (user_data)->tab_label,
-                        GTK_STATE_ACTIVE, NULL);
+
+  /* unset */
+  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, NULL);
+
+  if (terminal_preferences_get_color (screen->preferences, "tab-activity-color", &active_color))
+    {
+      /* calculate color between fg and active color */
+      style = gtk_widget_get_style (screen->tab_label);
+      color.red = (active_color.red + style->fg[GTK_STATE_ACTIVE].red) / 2;
+      color.green = (active_color.green + style->fg[GTK_STATE_ACTIVE].green) / 2;
+      color.blue = (active_color.blue + style->fg[GTK_STATE_ACTIVE].blue) / 2;
+
+      gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, &color);
+    }
+
   GDK_THREADS_LEAVE ();
 
   return FALSE;
@@ -1307,7 +1327,7 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 {
   guint    timeout;
   GdkColor color;
-  gboolean has_fg;
+  gboolean has_color;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (GTK_IS_LABEL (screen->tab_label));
@@ -1325,8 +1345,8 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
     return;
 
   /* set label color */
-  has_fg = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
-  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, has_fg ? &color : NULL);
+  has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
+  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, has_color ? &color : NULL);
 
   /* stop running reset timeout */
   if (screen->activity_timeout_id != 0)
@@ -2073,10 +2093,10 @@ terminal_screen_reset_activity (TerminalScreen *screen)
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (screen->activity_timeout_id != 0)
-    {
-      g_source_remove (screen->activity_timeout_id);
-      terminal_screen_reset_activity_timeout (screen);
-    }
+    g_source_remove (screen->activity_timeout_id);
+
+  if (screen->tab_label != NULL)
+    gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, NULL);
 }
 
 
