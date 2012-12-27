@@ -1,3 +1,40 @@
+0.6.0
+=====
+- Rename the package from Terminal to xfce4-terminal.
+- Don't add mailto when copying to clipboard (bug #7909)
+- Add search dialog.
+- Fix activity handling when resizing the window.
+- Use mid color if activity expired (bug #9686).
+- Improve quit confirm dialog.
+- Add move tab left/right options (bug #5918).
+- Only show terminal in the system category (bug #8693).
+- Don't pre-parse options after -x (bug #9167).
+- Make tabs a fraction smaller.
+- Drop the special handling of the Super key.
+- Depend on libxfce4ui and use its API.
+- Use standard stock icons.
+- Depend on vte 0.28 and exo 0.10.
+- Drop anti-alias preference (deprecated in vte).
+- Add =+@ to the default word-chars.
+- Add encoding support.
+- Use GDBus for dbus communication.
+- Remove toolbar editor.
+- Remove the exo dependency.
+- Remove the custom accelerator code.
+- Bundle palette colors into a single string.
+- Add background color vary option.
+- Add option --color-table.
+- Add support for color presets.
+- Properly set termcap emulation.
+- Another attempt to fix the invalid sizing issues (bug #4728).
+- Use G_ENABLE_DEBUG to enable additional checks (bug #8552).
+- Allow setting the bold color (bug #5987).
+- Use xmllint to strip the glade file.
+- Rename reset option to "Reset Scrollback".
+- Allow re-using of last window with --tab.
+- Improve documentation of --role (bug #8246).
+
+
 0.4.8
 =====
 - Update online documentation location.

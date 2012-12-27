@@ -9,11 +9,11 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([terminal_version_major], [0])
-m4_define([terminal_version_minor], [4])
-m4_define([terminal_version_micro], [8])
+m4_define([terminal_version_minor], [6])
+m4_define([terminal_version_micro], [0])
 m4_define([terminal_version_nano], [])
 m4_define([terminal_version_build], [@REVISION@])
-m4_define([terminal_version_tag], [git])
+m4_define([terminal_version_tag], [])
 m4_define([terminal_version_dbus], [5])
 m4_define([terminal_version], [terminal_version_major().terminal_version_minor().terminal_version_micro()ifelse(terminal_version_nano(), [], [], [.terminal_version_nano()])ifelse(terminal_version_tag(), [git], [terminal_version_tag()-terminal_version_build()], [terminal_version_tag()])])
 
@@ -184,11 +184,6 @@ dnl ***************************
 echo
 echo "Build Configuration:"
 echo
-if test x"$DBUS_FOUND" = x"yes"; then
-echo "* D-Bus support:           yes"
-else
-echo "* D-Bus support:           no"
-fi
 echo "* Debug support:           $enable_debug"
 if test x"$enable_gen_doc" = x"yes"; then
 echo "* Man Pages:               yes (generate)"
