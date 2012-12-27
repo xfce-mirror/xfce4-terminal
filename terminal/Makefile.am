@@ -24,6 +24,7 @@ xfce4_terminal_headers = \
 	terminal-options.h \
 	terminal-preferences.h \
 	terminal-preferences-dialog.h \
+	terminal-search-dialog.h \
 	terminal-private.h \
 	terminal-screen.h \
 	terminal-widget.h \
@@ -42,6 +43,7 @@ xfce4_terminal_SOURCES = \
 	terminal-options.c \
 	terminal-preferences.c \
 	terminal-preferences-dialog.c \
+	terminal-search-dialog.c \
 	terminal-screen.c \
 	terminal-widget.c \
 	terminal-window.c

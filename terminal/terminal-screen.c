@@ -2188,3 +2188,42 @@ terminal_screen_set_encoding (TerminalScreen *screen,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset);
 }
+
+
+
+void
+terminal_screen_search_set_gregex (TerminalScreen *screen,
+                                   GRegex         *regex,
+                                   gboolean        wrap_around)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), regex);
+  vte_terminal_search_set_wrap_around (VTE_TERMINAL (screen->terminal), wrap_around);
+}
+
+
+
+gboolean
+terminal_screen_search_has_gregex (TerminalScreen *screen)
+{
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  return vte_terminal_search_get_gregex (VTE_TERMINAL (screen->terminal)) != NULL;
+}
+
+
+
+void
+terminal_screen_search_find_next (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_search_find_next (VTE_TERMINAL (screen->terminal));
+}
+
+
+
+void
+terminal_screen_search_find_previous (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_search_find_previous (VTE_TERMINAL (screen->terminal));
+}

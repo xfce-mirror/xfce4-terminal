@@ -47,6 +47,7 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
+#include <terminal/terminal-search-dialog.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-encoding-action.h>
@@ -171,6 +172,12 @@ static void            terminal_window_action_goto_tab               (GtkRadioAc
                                                                       GtkNotebook            *notebook);
 static void            terminal_window_action_set_title              (GtkAction              *action,
                                                                       TerminalWindow         *window);
+static void            terminal_window_action_search                 (GtkAction              *action,
+                                                                      TerminalWindow         *window);
+static void            terminal_window_action_search_next            (GtkAction              *action,
+                                                                      TerminalWindow         *window);
+static void            terminal_window_action_search_prev            (GtkAction              *action,
+                                                                      TerminalWindow         *window);
 static void            terminal_window_action_reset                  (GtkAction              *action,
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_reset_and_clear        (GtkAction              *action,
@@ -206,6 +213,8 @@ struct _TerminalWindow
   GtkWidget           *toolbar;
   GtkWidget           *notebook;
 
+  GtkWidget           *search_dialog;
+
   /* pushed size of screen */
   glong                grid_width;
   glong                grid_height;
@@ -222,6 +231,8 @@ struct _TerminalWindow
   GtkAction           *action_move_tab_left;
   GtkAction           *action_move_tab_right;
   GtkAction           *action_copy;
+  GtkAction           *action_search_next;
+  GtkAction           *action_search_prev;
 };
 
 
@@ -249,6 +260,9 @@ static const GtkActionEntry action_entries[] =
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
   { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
     { "set-title", NULL, N_ ("_Set Title..."), NULL, NULL, G_CALLBACK (terminal_window_action_set_title), },
+    { "search", GTK_STOCK_FIND, N_ ("_Find..."), "<control><shift>f", NULL, G_CALLBACK (terminal_window_action_search), },
+    { "search-next", NULL, N_ ("Find Ne_xt"), NULL, NULL, G_CALLBACK (terminal_window_action_search_next), },
+    { "search-prev", NULL, N_ ("Find Pre_vious"), NULL, NULL, G_CALLBACK (terminal_window_action_search_prev), },
     { "reset", NULL, N_ ("_Clear Scrollback"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
     { "reset-and-clear", NULL, N_ ("Clear Scrollback and _Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "go-menu", NULL, N_ ("_Go"), NULL, NULL, NULL, },
@@ -432,6 +446,8 @@ terminal_window_init (TerminalWindow *window)
   window->action_move_tab_left = gtk_action_group_get_action (window->action_group, "move-tab-left");
   window->action_move_tab_right = gtk_action_group_get_action (window->action_group, "move-tab-right");
   window->action_copy = gtk_action_group_get_action (window->action_group, "copy");
+  window->action_search_next = gtk_action_group_get_action (window->action_group, "search-next");
+  window->action_search_prev = gtk_action_group_get_action (window->action_group, "search-prev");
 }
 
 
@@ -445,6 +461,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->ui_manager));
   g_object_unref (G_OBJECT (window->encoding_action));
+
   g_slist_free (window->gomenu_actions);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
@@ -709,6 +726,7 @@ terminal_window_update_actions (TerminalWindow *window)
   gboolean        cycle_tabs;
   gint            page_num;
   gint            n_pages;
+  gboolean        can_search;
 
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
@@ -738,6 +756,10 @@ terminal_window_update_actions (TerminalWindow *window)
 
       gtk_action_set_sensitive (window->action_copy,
                                 terminal_screen_has_selection (window->active));
+
+      can_search = terminal_screen_search_has_gregex (window->active);
+      gtk_action_set_sensitive (window->action_search_next, can_search);
+      gtk_action_set_sensitive (window->action_search_prev, can_search);
 
       /* update the "Go" menu */
       action = g_object_get_qdata (G_OBJECT (window->active), gomenu_action_quark);
@@ -1677,6 +1699,94 @@ terminal_window_action_set_title (GtkAction      *action,
 
       gtk_widget_show (dialog);
     }
+}
+
+
+
+static void
+terminal_window_action_search_response (GtkWidget      *dialog,
+                                        gint            response_id,
+                                        TerminalWindow *window)
+{
+  GRegex   *regex;
+  GError   *error = NULL;
+  gboolean  wrap_around;
+  gboolean  can_search;
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+  terminal_return_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog));
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (window->active));
+  terminal_return_if_fail (window->search_dialog == dialog);
+
+  if (response_id == TERMINAL_RESPONSE_SEARCH_NEXT
+      || response_id == TERMINAL_RESPONSE_SEARCH_PREV)
+    {
+      regex = terminal_search_dialog_get_regex (TERMINAL_SEARCH_DIALOG (dialog), &error);
+      if (G_LIKELY (error == NULL))
+        {
+          wrap_around = terminal_search_dialog_get_wrap_around (TERMINAL_SEARCH_DIALOG (dialog));
+          terminal_screen_search_set_gregex (window->active, regex, wrap_around);
+          if (regex != NULL)
+            g_regex_unref (regex);
+
+          if (response_id == TERMINAL_RESPONSE_SEARCH_NEXT)
+            terminal_screen_search_find_next (window->active);
+          else
+            terminal_screen_search_find_previous (window->active);
+        }
+      else
+        {
+          xfce_dialog_show_error (GTK_WINDOW (dialog), error, _("Failed to create the regular expression"));
+          g_error_free (error);
+        }
+    }
+  else
+    {
+      /* hide dialog */
+      gtk_widget_hide (dialog);
+    }
+
+  /* update actions */
+  can_search = terminal_screen_search_has_gregex (window->active);
+  gtk_action_set_sensitive (window->action_search_next, can_search);
+  gtk_action_set_sensitive (window->action_search_prev, can_search);
+}
+
+
+
+static void
+terminal_window_action_search (GtkAction      *action,
+                               TerminalWindow *window)
+{
+  if (window->search_dialog == NULL)
+    {
+      window->search_dialog = terminal_search_dialog_new (GTK_WINDOW (window));
+      g_signal_connect (G_OBJECT (window->search_dialog), "response",
+          G_CALLBACK (terminal_window_action_search_response), window);
+      gtk_widget_show_all (window->search_dialog);
+    }
+
+  terminal_search_dialog_present (TERMINAL_SEARCH_DIALOG (window->search_dialog));
+}
+
+
+
+static void
+terminal_window_action_search_next (GtkAction      *action,
+                                    TerminalWindow *window)
+{
+  if (G_LIKELY (window->active != NULL))
+    terminal_screen_search_find_next (window->active);
+}
+
+
+
+static void
+terminal_window_action_search_prev (GtkAction      *action,
+                                    TerminalWindow *window)
+{
+  if (G_LIKELY (window->active != NULL))
+    terminal_screen_search_find_previous (window->active);
 }
 
 

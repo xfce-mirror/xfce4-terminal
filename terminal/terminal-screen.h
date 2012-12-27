@@ -95,6 +95,17 @@ const gchar *terminal_screen_get_encoding                 (TerminalScreen *scree
 void         terminal_screen_set_encoding                 (TerminalScreen *screen,
                                                            const gchar    *charset);
 
+void         terminal_screen_search_set_gregex            (TerminalScreen *screen,
+                                                           GRegex         *regex,
+                                                           gboolean        wrap_around);
+
+gboolean     terminal_screen_search_has_gregex            (TerminalScreen *screen);
+
+void         terminal_screen_search_find_next             (TerminalScreen *screen);
+
+void         terminal_screen_search_find_previous         (TerminalScreen *screen);
+
+
 G_END_DECLS
 
 #endif /* !__TERMINAL_SCREEN_H__ */
