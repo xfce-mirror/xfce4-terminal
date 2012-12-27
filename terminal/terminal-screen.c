@@ -106,6 +106,9 @@ static void       terminal_screen_set_property                  (GObject        
                                                                  GParamSpec            *pspec);
 static void       terminal_screen_realize                       (GtkWidget             *widget);
 static void       terminal_screen_unrealize                     (GtkWidget             *widget);
+static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
+                                                                 GParamSpec            *pspec,
+                                                                 TerminalScreen        *screen);
 static gboolean   terminal_screen_get_child_command             (TerminalScreen        *screen,
                                                                  gchar                **command,
                                                                  gchar               ***argv,
@@ -265,14 +268,18 @@ terminal_screen_init (TerminalScreen *screen)
   screen->session_id = ++screen_last_session_id;
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
-  g_object_connect (G_OBJECT (screen->terminal),
-                    "signal::child-exited", G_CALLBACK (terminal_screen_vte_child_exited), screen,
-                    "signal::eof", G_CALLBACK (terminal_screen_vte_eof), screen,
-                    "signal::context-menu", G_CALLBACK (terminal_screen_vte_get_context_menu), screen,
-                    "signal::selection-changed", G_CALLBACK (terminal_screen_vte_selection_changed), screen,
-                    "signal::window-title-changed", G_CALLBACK (terminal_screen_vte_window_title_changed), screen,
-                    "signal::resize-window", G_CALLBACK (terminal_screen_vte_resize_window), screen,
-                    NULL);
+  g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
+      G_CALLBACK (terminal_screen_vte_child_exited), screen);
+  g_signal_connect (G_OBJECT (screen->terminal), "eof",
+      G_CALLBACK (terminal_screen_vte_eof), screen);
+  g_signal_connect (G_OBJECT (screen->terminal), "context-menu",
+      G_CALLBACK (terminal_screen_vte_get_context_menu), screen);
+  g_signal_connect (G_OBJECT (screen->terminal), "selection-changed",
+      G_CALLBACK (terminal_screen_vte_selection_changed), screen);
+  g_signal_connect (G_OBJECT (screen->terminal), "window-title-changed",
+      G_CALLBACK (terminal_screen_vte_window_title_changed), screen);
+  g_signal_connect (G_OBJECT (screen->terminal), "resize-window",
+      G_CALLBACK (terminal_screen_vte_resize_window), screen);
   gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
 
   screen->scrollbar = gtk_vscrollbar_new (VTE_TERMINAL (screen->terminal)->adjustment);
@@ -280,39 +287,10 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
   gtk_widget_show (screen->scrollbar);
 
+  /* watch preferences changes */
   screen->preferences = terminal_preferences_get ();
-  g_object_connect (G_OBJECT (screen->preferences),
-                    "swapped-signal::notify::background-mode", G_CALLBACK (terminal_screen_update_background), screen,
-                    "swapped-signal::notify::background-image-file", G_CALLBACK (terminal_screen_update_background), screen,
-                    "swapped-signal::notify::background-image-style", G_CALLBACK (terminal_screen_update_background), screen,
-                    "swapped-signal::notify::background-darkness", G_CALLBACK (terminal_screen_update_background), screen,
-                    "swapped-signal::notify::binding-backspace", G_CALLBACK (terminal_screen_update_binding_backspace), screen,
-                    "swapped-signal::notify::binding-delete", G_CALLBACK (terminal_screen_update_binding_delete), screen,
-                    "swapped-signal::notify::color-foreground", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-background", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-background-vary", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-cursor", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-selection", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-selection-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-bold", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-bold-use-default", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::color-palette", G_CALLBACK (terminal_screen_update_colors), screen,
-                    "swapped-signal::notify::font-allow-bold", G_CALLBACK (terminal_screen_update_font), screen,
-                    "swapped-signal::notify::font-name", G_CALLBACK (terminal_screen_update_font), screen,
-                    "swapped-signal::notify::misc-bell", G_CALLBACK (terminal_screen_update_misc_bell), screen,
-                    "swapped-signal::notify::term", G_CALLBACK (terminal_screen_update_term), screen,
-                    "swapped-signal::notify::misc-cursor-blinks", G_CALLBACK (terminal_screen_update_misc_cursor_blinks), screen,
-                    "swapped-signal::notify::misc-cursor-shape", G_CALLBACK (terminal_screen_update_misc_cursor_shape), screen,
-                    "swapped-signal::notify::misc-mouse-autohide", G_CALLBACK (terminal_screen_update_misc_mouse_autohide), screen,
-                    "swapped-signal::notify::scrolling-bar", G_CALLBACK (terminal_screen_update_scrolling_bar), screen,
-                    "swapped-signal::notify::scrolling-lines", G_CALLBACK (terminal_screen_update_scrolling_lines), screen,
-                    "swapped-signal::notify::scrolling-on-output", G_CALLBACK (terminal_screen_update_scrolling_on_output), screen,
-                    "swapped-signal::notify::scrolling-on-keystroke", G_CALLBACK (terminal_screen_update_scrolling_on_keystroke), screen,
-                    "swapped-signal::notify::title-initial", G_CALLBACK (terminal_screen_update_title), screen,
-                    "swapped-signal::notify::title-mode", G_CALLBACK (terminal_screen_update_title), screen,
-                    "swapped-signal::notify::word-chars", G_CALLBACK (terminal_screen_update_word_chars), screen,
-                    "swapped-signal::notify::misc-tab-position", G_CALLBACK (terminal_screen_update_label_orientation), screen,
-                    NULL);
+  g_signal_connect (G_OBJECT (screen->preferences), "notify",
+      G_CALLBACK (terminal_screen_preferences_changed), screen);
 
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
@@ -332,7 +310,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_timer_background (screen);
   terminal_screen_update_colors (screen);
 
-  /* Last, connect contents-changed to avoid a race with updates above */
+  /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
       G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "size-allocate",
@@ -352,10 +330,9 @@ terminal_screen_finalize (GObject *object)
   if (G_UNLIKELY (screen->background_timer_id != 0))
     g_source_remove (screen->background_timer_id);
 
-  g_signal_handlers_disconnect_matched (G_OBJECT (screen->preferences),
-                                        G_SIGNAL_MATCH_DATA,
-                                        0, 0, NULL, NULL, screen);
-
+  /* detach from preferences */
+  g_signal_handlers_disconnect_by_func (screen->preferences,
+      G_CALLBACK (terminal_screen_preferences_changed), screen);
   g_object_unref (G_OBJECT (screen->preferences));
 
   g_strfreev (screen->custom_command);
@@ -480,6 +457,59 @@ terminal_screen_unrealize (GtkWidget *widget)
   g_signal_handlers_disconnect_by_func (G_OBJECT (screen), terminal_screen_update_background, widget);
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->unrealize) (widget);
+}
+
+
+
+static void
+terminal_screen_preferences_changed (TerminalPreferences *preferences,
+                                     GParamSpec          *pspec,
+                                     TerminalScreen      *screen)
+{
+  const gchar *name;
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
+  terminal_return_if_fail (screen->preferences == preferences);
+
+  /* get name */
+  name = g_param_spec_get_name (pspec);
+  terminal_assert (name != NULL);
+
+  if (strncmp ("background-", name, 11) == 0)
+    terminal_screen_update_background (screen);
+  else if (strcmp ("binding-backspace", name) == 0)
+    terminal_screen_update_binding_backspace (screen);
+  else if (strcmp ("binding-delete", name) == 0)
+    terminal_screen_update_binding_delete (screen);
+  else if (strncmp ("color-", name, 6) == 0)
+    terminal_screen_update_colors (screen);
+  else if (strncmp ("font-", name, 5) == 0)
+    terminal_screen_update_font (screen);
+  else if (strcmp ("misc-bell", name) == 0)
+    terminal_screen_update_misc_bell (screen);
+  else if (strcmp ("term", name) == 0)
+    terminal_screen_update_term (screen);
+  else if (strcmp ("misc-cursor-blinks", name) == 0)
+    terminal_screen_update_misc_cursor_blinks (screen);
+  else if (strcmp ("misc-cursor-shape", name) == 0)
+    terminal_screen_update_misc_cursor_shape (screen);
+  else if (strcmp ("misc-mouse-autohide", name) == 0)
+    terminal_screen_update_misc_mouse_autohide (screen);
+  else if (strcmp ("scrolling-bar", name) == 0)
+    terminal_screen_update_scrolling_bar (screen);
+  else if (strcmp ("scrolling-lines", name) == 0)
+    terminal_screen_update_scrolling_lines (screen);
+  else if (strcmp ("scrolling-on-output", name) == 0)
+    terminal_screen_update_scrolling_on_output (screen);
+  else if (strcmp ("scrolling-on-keystroke", name) == 0)
+    terminal_screen_update_scrolling_on_keystroke (screen);
+  else if (strncmp ("title-", name, 6) == 0)
+    terminal_screen_update_title (screen);
+  else if (strcmp ("word-chars", name) == 0)
+    terminal_screen_update_word_chars (screen);
+  else if (strcmp ("misc-tab-position", name) == 0)
+    terminal_screen_update_label_orientation (screen);
 }
 
 
