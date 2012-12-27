@@ -1806,7 +1806,10 @@ terminal_window_action_reset_and_clear (GtkAction       *action,
                                         TerminalWindow  *window)
 {
   if (G_LIKELY (window->active != NULL))
-    terminal_screen_reset (window->active, TRUE);
+    {
+      terminal_screen_reset (window->active, TRUE);
+      terminal_window_update_actions (window);
+    }
 }
 
 

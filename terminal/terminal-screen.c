@@ -2021,6 +2021,9 @@ terminal_screen_reset (TerminalScreen *screen,
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_reset (VTE_TERMINAL (screen->terminal), TRUE, clear);
+
+  if (clear)
+    vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), NULL);
 }
 
 
