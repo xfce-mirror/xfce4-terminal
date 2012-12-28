@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
-"POT-Creation-Date: 2012-12-28 13:57+0100\n"
-"PO-Revision-Date: 2009-12-19 21:39+0900\n"
+"POT-Creation-Date: 2012-12-28 23:24+0900\n"
+"PO-Revision-Date: 2012-12-28 23:21+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -60,7 +60,7 @@ msgstr "Xfce"
 
 #: xfce4-terminal.1.xml:44(refpurpose)
 msgid "A Terminal emulator for X"
-msgstr "X ターミナルエミュレータ"
+msgstr "X ターミナルエミュレーター"
 
 #: xfce4-terminal.1.xml:48(title)
 msgid "Synopsis"
@@ -88,13 +88,13 @@ msgid ""
 "command-line under Windows, though one should note that the UNIX CLI offer "
 "far more power and ease of use than does DOS."
 msgstr ""
-"@PACKAGE_NAME@ は X ターミナルエミュレータとして知られるものの一つで、ターミ"
-"ナルあるいはシェルと呼ばれることが多いようです。あなたのデスクトップにやもす"
-"ると大昔の文字スクリーンを思わせるようなものを持ち込んできますが、他のグラ"
+"@PACKAGE_NAME@ は X ターミナルエミュレーターとして知られるものの一つで、ター"
+"ミナルあるいはシェルと呼ばれることが多いようです。あなたのデスクトップにやも"
+"すると大昔の文字スクリーンを思わせるようなものを持ち込んできますが、他のグラ"
 "フィカルなアプリケーションと画面上に共存することに何の問題もありません。"
-"Windows ユーザには MS-DOS プロンプトというユーティリティ (Windows 環境下にお"
-"いて DOS コマンドラインでの作業を可能にする類似機能) に詳しい方がいるかもしれ"
-"ませんが UNIX の CLI は能力的に遥かに勝っていて使いやすいという事をぜひとも"
+"Windows ユーザーには MS-DOS プロンプトというユーティリティ (Windows 環境下に"
+"おいて DOS コマンドラインでの作業を可能にする類似機能) に詳しい方がいるかもし"
+"れませんが UNIX の CLI は能力的に遥かに勝っていて使いやすいという事をぜひとも"
 "知って頂きたいと思います。"
 
 #: xfce4-terminal.1.xml:67(para)
@@ -137,7 +137,6 @@ msgid "General Options"
 msgstr "一般オプション"
 
 #: xfce4-terminal.1.xml:91(para)
-#, fuzzy
 msgid ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
@@ -147,12 +146,13 @@ msgid ""
 msgstr ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
-"linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
-"general-default-working-directory\"/>"
+"linkend=\"options-general-color-table\"/>; <xref linkend=\"options-general-"
+"default-display\"/>; <xref linkend=\"options-general-default-working-"
+"directory\"/>"
 
 #: xfce4-terminal.1.xml:102(link) xfce4-terminal.1.xml:204(title)
 msgid "Window or Tab Separators"
-msgstr "ウィンドウまたはタブセパレータ"
+msgstr "ウィンドウまたはタブセパレーター"
 
 #: xfce4-terminal.1.xml:104(para)
 msgid ""
@@ -231,11 +231,11 @@ msgstr "D-BUS セッションのメッセージバスに登録しません。"
 
 #: xfce4-terminal.1.xml:176(option)
 msgid "--color-table"
-msgstr ""
+msgstr "--color-table"
 
 #: xfce4-terminal.1.xml:179(para)
 msgid "Echo the color codes"
-msgstr ""
+msgstr "色コードを返します。"
 
 #: xfce4-terminal.1.xml:185(replaceable) xfce4-terminal.1.xml:282(replaceable)
 msgid "display"
@@ -282,6 +282,8 @@ msgid ""
 "If you use this as the first option, without --window separators, the last "
 "window will be re-used."
 msgstr ""
+"これを最初のオプションとし、--window separators を指定しない場合、最後のウィ"
+"ンドウが再使用されます。"
 
 #: xfce4-terminal.1.xml:218(option)
 msgid "--window"
@@ -388,7 +390,6 @@ msgid "--role=<placeholder-1/>"
 msgstr "--role=<placeholder-1/>"
 
 #: xfce4-terminal.1.xml:307(para)
-#, fuzzy
 msgid ""
 "Sets the window role of the last-specified window to <parameter>role</"
 "parameter>. Applies to only one window and can be specified once for each "
@@ -397,8 +398,8 @@ msgid ""
 msgstr ""
 "最後に指定されたウィンドウのウィンドウロールを<parameter>ロール</parameter>に"
 "指定します。一つのウィンドウのみに適用され、コマンドラインから立ち上げるそれ"
-"ぞれのウィンドウに対して一度ずつ指定できます。大半は @PACKAGE_NAME@ 内での"
-"セッション管理に使用されます。"
+"ぞれのウィンドウに対して一度ずつ指定できます。<parameter>ロール</parameter>は"
+"ウィンドウに対する一意の識別子でセッションの復元時に使用されます。"
 
 #: xfce4-terminal.1.xml:318(replaceable)
 msgid "string"
@@ -569,8 +570,8 @@ msgid ""
 msgstr ""
 "Terminal はそのデータおよび設定ファイルの場所を探す際に、<ulink url=\"http://"
 "freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> で策定されている基本"
-"フォルダの仕様 (Basedir Specification) に従います。従って、各ファイルの位置"
-"は、この仕様に記述されているフォルダの相対パスとして指定されます。"
+"フォルダーの仕様 (Basedir Specification) に従います。従って、各ファイルの位置"
+"は、この仕様に記述されているフォルダーの相対パスとして指定されます。"
 
 #: xfce4-terminal.1.xml:466(varname)
 msgid "${XDG_CONFIG_HOME}"
@@ -581,8 +582,8 @@ msgid ""
 "The first base directory to look for configuration files. By default this is "
 "set to <filename role=\"directory\">~/.config/</filename>."
 msgstr ""
-"設定ファイルを見に行く最初の基本フォルダです。デフォルトでは <filename role="
-"\"directory\">~/.config/</filename> になっています。"
+"設定ファイルを見に行く最初の基本フォルダーです。デフォルトでは <filename "
+"role=\"directory\">~/.config/</filename> になっています。"
 
 #: xfce4-terminal.1.xml:476(varname)
 msgid "${XDG_CONFIG_DIRS}"
@@ -596,8 +597,8 @@ msgid ""
 "depends on how the program was build and will often be <filename role="
 "\"directory\">/etc/</filename> for binary packages."
 msgstr ""
-"設定データを含む基本フォルダのリストで、各フォルダはコロンで区切られていま"
-"す。デフォルトではアプリケーションは <filename role=\"directory\">"
+"設定データを含む基本フォルダーのリストで、各フォルダーはコロンで区切られてい"
+"ます。デフォルトではアプリケーションは <filename role=\"directory\">"
 "${sysconfdir}/xdg/</filename> を参照します。<varname>${sysconfdir}</varname> "
 "の値はプログラムがどのようにビルドされたかによって変わります。バイナリ配布さ"
 "れるパッケージでは <filename role=\"directory\">/etc/</filename> になることが"
@@ -612,7 +613,7 @@ msgid ""
 "The root for all user-specific data files. By default this is set to "
 "<filename role=\"directory\">~/.local/share/</filename>."
 msgstr ""
-"ユーザー個別のデータファイルすべてのルートフォルダです。デフォルトでは "
+"ユーザー個別のデータファイルすべてのルートフォルダーです。デフォルトでは "
 "<filename role=\"directory\">~/.local/share/</filename> になっています。"
 
 #: xfce4-terminal.1.xml:499(varname)
@@ -625,8 +626,8 @@ msgid ""
 "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
 "base directory. The directories should be separated with a colon."
 msgstr ""
-"基本フォルダ <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを探す"
-"基本フォルダを並べていきます。フォルダはコロンで区切る必要があります。"
+"基本フォルダー <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを探"
+"す基本フォルダーを並べていきます。フォルダーはコロンで区切る必要があります。"
 
 #: xfce4-terminal.1.xml:513(title)
 msgid "Files"
