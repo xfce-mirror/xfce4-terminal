@@ -1498,8 +1498,7 @@ terminal_window_action_show_toolbar (GtkToggleAction *action,
     }
   else if (window->toolbar != NULL)
     {
-      gtk_widget_destroy (window->toolbar);
-      window->toolbar = NULL;
+      gtk_widget_hide (window->toolbar);
     }
 
   terminal_window_size_pop (window);
