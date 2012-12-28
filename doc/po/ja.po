@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
-"POT-Creation-Date: 2012-01-07 18:25+0100\n"
+"POT-Creation-Date: 2012-12-28 13:57+0100\n"
 "PO-Revision-Date: 2009-12-19 21:39+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: xfce4-terminal.1.xml:14(contrib) Terminal.1.xml:22(contrib)
+#: xfce4-terminal.1.xml:14(contrib) xfce4-terminal.1.xml:22(contrib)
 msgid "Developer"
 msgstr "開発者"
 
-#: xfce4-terminal.1.xml:15(literal)
+#: xfce4-terminal.1.xml:15(firstname)
 msgid "Nick"
 msgstr "Nick"
 
@@ -132,27 +132,29 @@ msgstr ""
 "以下はすべてのオプションをタイプ別にまとめた一覧です。それぞれの説明は後述の"
 "セクションにあります。"
 
-#: xfce4-terminal.1.xml:89(link) Terminal.1.xml:144(title)
+#: xfce4-terminal.1.xml:89(link) xfce4-terminal.1.xml:145(title)
 msgid "General Options"
 msgstr "一般オプション"
 
 #: xfce4-terminal.1.xml:91(para)
+#, fuzzy
 msgid ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
-"linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
-"general-default-working-directory\"/>"
+"linkend=\"options-general-color-table\"/>; <xref linkend=\"options-general-"
+"default-display\"/>; <xref linkend=\"options-general-default-working-"
+"directory\"/>"
 msgstr ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
 "linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
 "general-default-working-directory\"/>"
 
-#: xfce4-terminal.1.xml:101(link) Terminal.1.xml:194(title)
+#: xfce4-terminal.1.xml:102(link) xfce4-terminal.1.xml:204(title)
 msgid "Window or Tab Separators"
 msgstr "ウィンドウまたはタブセパレータ"
 
-#: xfce4-terminal.1.xml:103(para)
+#: xfce4-terminal.1.xml:104(para)
 msgid ""
 "<xref linkend=\"options-separators-tab\"/>; <xref linkend=\"options-"
 "separators-window\"/>"
@@ -160,11 +162,11 @@ msgstr ""
 "<xref linkend=\"options-separators-tab\"/>; <xref linkend=\"options-"
 "separators-window\"/>"
 
-#: xfce4-terminal.1.xml:110(link) Terminal.1.xml:217(title)
+#: xfce4-terminal.1.xml:111(link) xfce4-terminal.1.xml:228(title)
 msgid "Tab Options"
 msgstr "タブオプション"
 
-#: xfce4-terminal.1.xml:112(para)
+#: xfce4-terminal.1.xml:113(para)
 msgid ""
 "<xref linkend=\"options-tab-execute\"/>; <xref linkend=\"options-tab-command"
 "\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend="
@@ -174,11 +176,11 @@ msgstr ""
 "\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend="
 "\"options-tab-title\"/>; <xref linkend=\"options-tab-hold\"/>"
 
-#: xfce4-terminal.1.xml:122(link) Terminal.1.xml:267(title)
+#: xfce4-terminal.1.xml:123(link) xfce4-terminal.1.xml:278(title)
 msgid "Window Options"
 msgstr "ウィンドウオプション"
 
-#: xfce4-terminal.1.xml:124(para)
+#: xfce4-terminal.1.xml:125(para)
 msgid ""
 "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
 "geometry\"/>; <xref linkend=\"options-window-role\"/>; <xref linkend="
@@ -200,54 +202,62 @@ msgstr ""
 "linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-"
 "hide-toolbars\"/>"
 
-#: xfce4-terminal.1.xml:147(term)
+#: xfce4-terminal.1.xml:148(term)
 msgid "<option>-h</option>, <option>--help</option>"
 msgstr "<option>-h</option>, <option>--help</option>"
 
-#: xfce4-terminal.1.xml:151(para)
+#: xfce4-terminal.1.xml:152(para)
 msgid ""
 "List the various command line options supported by @PACKAGE_NAME@ and exit"
 msgstr ""
 "@PACKAGE_NAME@ がサポートする様々なコマンドラインオプションをリストして終了し"
 "ます。"
 
-#: xfce4-terminal.1.xml:156(term)
+#: xfce4-terminal.1.xml:157(term)
 msgid "<option>-V</option>, <option>--version</option>"
 msgstr "<option>-V</option>, <option>--version</option>"
 
-#: xfce4-terminal.1.xml:160(para)
+#: xfce4-terminal.1.xml:161(para)
 msgid "Display version information and exit"
 msgstr "バージョン情報を表示して終了します。"
 
-#: xfce4-terminal.1.xml:166(option)
+#: xfce4-terminal.1.xml:167(option)
 msgid "--disable-server"
 msgstr "--disable-server"
 
-#: xfce4-terminal.1.xml:169(para)
+#: xfce4-terminal.1.xml:170(para)
 msgid "Do not register with the D-BUS session message bus"
 msgstr "D-BUS セッションのメッセージバスに登録しません。"
 
-#: xfce4-terminal.1.xml:175(replaceable) Terminal.1.xml:271(replaceable)
+#: xfce4-terminal.1.xml:176(option)
+msgid "--color-table"
+msgstr ""
+
+#: xfce4-terminal.1.xml:179(para)
+msgid "Echo the color codes"
+msgstr ""
+
+#: xfce4-terminal.1.xml:185(replaceable) xfce4-terminal.1.xml:282(replaceable)
 msgid "display"
 msgstr "ディスプレイ"
 
-#: xfce4-terminal.1.xml:175(option)
+#: xfce4-terminal.1.xml:185(option)
 msgid "--default-display=<placeholder-1/>"
 msgstr "--default-display=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:178(para)
+#: xfce4-terminal.1.xml:188(para)
 msgid "Default X display to use."
 msgstr "デフォルトで使用する X ディスプレイを指定します。"
 
-#: xfce4-terminal.1.xml:184(replaceable) Terminal.1.xml:239(replaceable)
+#: xfce4-terminal.1.xml:194(replaceable) xfce4-terminal.1.xml:250(replaceable)
 msgid "directory"
 msgstr "ディレクトリ"
 
-#: xfce4-terminal.1.xml:184(option)
+#: xfce4-terminal.1.xml:194(option)
 msgid "--default-working-directory=<placeholder-1/>"
 msgstr "--default-working-directory=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:187(para)
+#: xfce4-terminal.1.xml:197(para)
 msgid ""
 "Set <parameter>directory</parameter> as the default working directory for "
 "the terminal"
@@ -255,11 +265,11 @@ msgstr ""
 "ターミナルのデフォルト作業ディレクトリを<parameter>ディレクトリ</parameter>に"
 "指定します。"
 
-#: xfce4-terminal.1.xml:198(option)
+#: xfce4-terminal.1.xml:208(option)
 msgid "--tab"
 msgstr "--tab"
 
-#: xfce4-terminal.1.xml:201(para)
+#: xfce4-terminal.1.xml:211(para)
 msgid ""
 "Open a new tab in the last-specified window; more than one of these options "
 "can be provided."
@@ -267,11 +277,17 @@ msgstr ""
 "最後に指定されたウィンドウで新しい一つのタブを開きます。このオプションは他と"
 "一緒に使用できます。"
 
-#: xfce4-terminal.1.xml:207(option)
+#: xfce4-terminal.1.xml:212(para)
+msgid ""
+"If you use this as the first option, without --window separators, the last "
+"window will be re-used."
+msgstr ""
+
+#: xfce4-terminal.1.xml:218(option)
 msgid "--window"
 msgstr "--window"
 
-#: xfce4-terminal.1.xml:210(para)
+#: xfce4-terminal.1.xml:221(para)
 msgid ""
 "Open a new window containing one tab; more than one of these options can be "
 "provided."
@@ -279,15 +295,15 @@ msgstr ""
 "一つのタブを含む一つのウィンドウを開きます。このオプションは他と一緒に使用で"
 "きます。"
 
-#: xfce4-terminal.1.xml:220(term)
+#: xfce4-terminal.1.xml:231(term)
 msgid "<option>-x</option>, <option>--execute</option>"
 msgstr "<option>-x</option>, <option>--execute</option>"
 
-#: xfce4-terminal.1.xml:224(para)
+#: xfce4-terminal.1.xml:235(para)
 msgid "Execute the remainder of the command line inside the terminal"
 msgstr "続くコマンドラインをターミナル内で実行します。"
 
-#: xfce4-terminal.1.xml:229(term)
+#: xfce4-terminal.1.xml:240(term)
 msgid ""
 "<option>-e</option>, <option>--command=<replaceable>command</replaceable></"
 "option>"
@@ -295,15 +311,15 @@ msgstr ""
 "<option>-e</option>, <option>--command=<replaceable>コマンド</replaceable></"
 "option>"
 
-#: xfce4-terminal.1.xml:233(para)
+#: xfce4-terminal.1.xml:244(para)
 msgid "Execute <parameter>command</parameter> inside the terminal"
 msgstr "ターミナル内で<parameter>コマンド</parameter>を実行します。"
 
-#: xfce4-terminal.1.xml:239(option)
+#: xfce4-terminal.1.xml:250(option)
 msgid "--working-directory=<placeholder-1/>"
 msgstr "--working-directory=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:242(para)
+#: xfce4-terminal.1.xml:253(para)
 msgid ""
 "Set <parameter>directory</parameter> as the working directory for the "
 "terminal"
@@ -311,7 +327,7 @@ msgstr ""
 "ターミナルの作業ディレクトリにする<parameter>ディレクトリ</parameter>を指定し"
 "ます。"
 
-#: xfce4-terminal.1.xml:247(term)
+#: xfce4-terminal.1.xml:258(term)
 msgid ""
 "<option>-T</option>, <option>--title=<replaceable>title</replaceable></"
 "option>"
@@ -319,39 +335,39 @@ msgstr ""
 "<option>-T</option>, <option>--title=<replaceable>タイトル</replaceable></"
 "option>"
 
-#: xfce4-terminal.1.xml:251(para)
+#: xfce4-terminal.1.xml:262(para)
 msgid ""
 "Set <parameter>title</parameter> as the initial window title for the terminal"
 msgstr ""
 "ターミナルの最初のウィンドウのタイトルとして<parameter>タイトル</parameter>を"
 "付けます。"
 
-#: xfce4-terminal.1.xml:256(term)
+#: xfce4-terminal.1.xml:267(term)
 msgid "<option>-H</option>, <option>--hold</option>"
 msgstr "<option>-H</option>, <option>--hold</option>"
 
-#: xfce4-terminal.1.xml:260(para)
+#: xfce4-terminal.1.xml:271(para)
 msgid ""
 "Causes the terminal to be kept around after the child command has terminated"
 msgstr "子コマンドが終了してもターミナルをそのままにしておきます。"
 
-#: xfce4-terminal.1.xml:271(option)
+#: xfce4-terminal.1.xml:282(option)
 msgid "--display=<placeholder-1/>"
 msgstr "--display=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:274(para)
+#: xfce4-terminal.1.xml:285(para)
 msgid "X display to use for the last- specified window."
 msgstr "最後に指定されたウィンドウで使用する X ディスプレイを指定します。"
 
-#: xfce4-terminal.1.xml:280(replaceable)
+#: xfce4-terminal.1.xml:291(replaceable)
 msgid "geometry"
 msgstr "ジオメトリ"
 
-#: xfce4-terminal.1.xml:280(option)
+#: xfce4-terminal.1.xml:291(option)
 msgid "--geometry=<placeholder-1/>"
 msgstr "--geometry=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:283(para)
+#: xfce4-terminal.1.xml:294(para)
 msgid ""
 "Sets the geometry of the last-specified window to <parameter>geometry</"
 "parameter>. Read <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
@@ -363,35 +379,36 @@ msgstr ""
 "<citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</manvolnum></"
 "citerefentry> をご覧下さい。"
 
-#: xfce4-terminal.1.xml:293(replaceable)
+#: xfce4-terminal.1.xml:304(replaceable)
 msgid "role"
 msgstr "ロール"
 
-#: xfce4-terminal.1.xml:293(option)
+#: xfce4-terminal.1.xml:304(option)
 msgid "--role=<placeholder-1/>"
 msgstr "--role=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:296(para)
+#: xfce4-terminal.1.xml:307(para)
+#, fuzzy
 msgid ""
 "Sets the window role of the last-specified window to <parameter>role</"
 "parameter>. Applies to only one window and can be specified once for each "
-"window you create from the command line. It is mostly used for session "
-"management inside @PACKAGE_NAME@"
+"window you create from the command line. The <parameter>role</parameter> is "
+"a unique identifier for the window to be used when restoring a session."
 msgstr ""
 "最後に指定されたウィンドウのウィンドウロールを<parameter>ロール</parameter>に"
 "指定します。一つのウィンドウのみに適用され、コマンドラインから立ち上げるそれ"
 "ぞれのウィンドウに対して一度ずつ指定できます。大半は @PACKAGE_NAME@ 内での"
 "セッション管理に使用されます。"
 
-#: xfce4-terminal.1.xml:306(replaceable)
+#: xfce4-terminal.1.xml:318(replaceable)
 msgid "string"
 msgstr "文字列"
 
-#: xfce4-terminal.1.xml:306(option)
+#: xfce4-terminal.1.xml:318(option)
 msgid "--startup-id=<placeholder-1/>"
 msgstr "--startup-id=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:309(para)
+#: xfce4-terminal.1.xml:321(para)
 msgid ""
 "Specifies the startup notification id for the last-specified window. Used "
 "internally to forward the startup notification id when using the D-BUS "
@@ -400,23 +417,23 @@ msgstr ""
 "最後に指定されたウィンドウに起動通知 ID を指定します。D-BUS サービスを使用し"
 "ている時はこの起動通知 ID を転送するために内部で利用されます。"
 
-#: xfce4-terminal.1.xml:318(replaceable)
+#: xfce4-terminal.1.xml:330(replaceable)
 msgid "icon"
 msgstr "アイコン"
 
-#: xfce4-terminal.1.xml:318(option)
+#: xfce4-terminal.1.xml:330(option)
 msgid "-I, --icon=<placeholder-1/>"
 msgstr "-I, --icon=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:321(para)
+#: xfce4-terminal.1.xml:333(para)
 msgid "Set the terminal's icon as an icon name or filename."
 msgstr "Terminal のアイコンをアイコン名またはファイル名で指定します。"
 
-#: xfce4-terminal.1.xml:329(option)
+#: xfce4-terminal.1.xml:341(option)
 msgid "--fullscreen"
 msgstr "--fullscreen"
 
-#: xfce4-terminal.1.xml:332(para)
+#: xfce4-terminal.1.xml:344(para)
 msgid ""
 "Set the last-specified window into fullscreen mode; applies to only one "
 "window; can be specified once for each window you create from the command "
@@ -426,11 +443,11 @@ msgstr ""
 "れます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指定"
 "できます。"
 
-#: xfce4-terminal.1.xml:341(option)
+#: xfce4-terminal.1.xml:353(option)
 msgid "--maximize"
 msgstr "--maximize"
 
-#: xfce4-terminal.1.xml:344(para)
+#: xfce4-terminal.1.xml:356(para)
 msgid ""
 "Set the last-specified window into maximized mode; applies to only one "
 "window; can be specified once for each window you create from the command "
@@ -439,11 +456,11 @@ msgstr ""
 "最後に指定したウィンドウを最大化します。一つのウィンドウのみに適用されます。"
 "コマンドラインから起動するそれぞれのウィンドウに対して一度ずつ指定できます。"
 
-#: xfce4-terminal.1.xml:353(option)
+#: xfce4-terminal.1.xml:365(option)
 msgid "--show-menubar"
 msgstr "--show-menubar"
 
-#: xfce4-terminal.1.xml:356(para)
+#: xfce4-terminal.1.xml:368(para)
 msgid ""
 "Turn on the menubar for the last-specified window. Can be specified once for "
 "each window you create from the command line."
@@ -452,11 +469,11 @@ msgstr ""
 "用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ"
 "指定できます。"
 
-#: xfce4-terminal.1.xml:365(option)
+#: xfce4-terminal.1.xml:377(option)
 msgid "--hide-menubar"
 msgstr "--hide-menubar"
 
-#: xfce4-terminal.1.xml:368(para)
+#: xfce4-terminal.1.xml:380(para)
 msgid ""
 "Turn off the menubar for the last-specified window. Can be specified once "
 "for each window you create from the command line."
@@ -465,11 +482,11 @@ msgstr ""
 "に適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
 "ずつ指定できます。"
 
-#: xfce4-terminal.1.xml:377(option)
+#: xfce4-terminal.1.xml:389(option)
 msgid "--show-borders"
 msgstr "--show-borders"
 
-#: xfce4-terminal.1.xml:380(para)
+#: xfce4-terminal.1.xml:392(para)
 msgid ""
 "Turn on the window decorations for the last-specified window. Applies to "
 "only one window. Can be specified once for each window you create from the "
@@ -479,11 +496,11 @@ msgstr ""
 "適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ず"
 "つ指定できます。"
 
-#: xfce4-terminal.1.xml:389(option)
+#: xfce4-terminal.1.xml:401(option)
 msgid "--hide-borders"
 msgstr "--hide-borders"
 
-#: xfce4-terminal.1.xml:392(para)
+#: xfce4-terminal.1.xml:404(para)
 msgid ""
 "Turn off the window decorations for the last-specified window. Applies to "
 "only one window. Can be specified once for each window you create from the "
@@ -493,11 +510,11 @@ msgstr ""
 "みに適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一"
 "度ずつ指定できます。"
 
-#: xfce4-terminal.1.xml:401(option)
+#: xfce4-terminal.1.xml:413(option)
 msgid "--show-toolbars"
 msgstr "--show-toolbars"
 
-#: xfce4-terminal.1.xml:404(para)
+#: xfce4-terminal.1.xml:416(para)
 msgid ""
 "Turn on the toolbars for the last-specified window. Applies to only one "
 "window. Can be specified once for each window you create from the command "
@@ -507,11 +524,11 @@ msgstr ""
 "されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度ずつ指"
 "定できます。"
 
-#: xfce4-terminal.1.xml:413(option)
+#: xfce4-terminal.1.xml:425(option)
 msgid "--hide-toolbars"
 msgstr "--hide-toolbars"
 
-#: xfce4-terminal.1.xml:416(para)
+#: xfce4-terminal.1.xml:428(para)
 msgid ""
 "Turn off the toolbars for the last-specified window. Applies to only one "
 "window. Can be specified once for each window you create from the command "
@@ -521,15 +538,15 @@ msgstr ""
 "に適用されます。コマンドラインから立ち上げるそれぞれのウィンドウに対して一度"
 "ずつ指定できます。"
 
-#: xfce4-terminal.1.xml:427(title)
+#: xfce4-terminal.1.xml:439(title)
 msgid "Examples"
 msgstr "使用例"
 
-#: xfce4-terminal.1.xml:430(term)
+#: xfce4-terminal.1.xml:442(term)
 msgid "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
 msgstr "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
 
-#: xfce4-terminal.1.xml:432(para)
+#: xfce4-terminal.1.xml:444(para)
 msgid ""
 "Opens a new terminal window with a geometry of 80 columns and 40 rows and "
 "two tabs in it, where the first tab runs <command>mutt</command> and the "
@@ -539,11 +556,11 @@ msgstr ""
 "<command>mutt</command> を、2 つ目のタブで <command>mc</command> コマンドを実"
 "行します。"
 
-#: xfce4-terminal.1.xml:443(title)
+#: xfce4-terminal.1.xml:455(title)
 msgid "Environment"
 msgstr "環境変数"
 
-#: xfce4-terminal.1.xml:445(para)
+#: xfce4-terminal.1.xml:457(para)
 msgid ""
 "Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
 "freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data "
@@ -555,11 +572,11 @@ msgstr ""
 "フォルダの仕様 (Basedir Specification) に従います。従って、各ファイルの位置"
 "は、この仕様に記述されているフォルダの相対パスとして指定されます。"
 
-#: xfce4-terminal.1.xml:454(varname)
+#: xfce4-terminal.1.xml:466(varname)
 msgid "${XDG_CONFIG_HOME}"
 msgstr "${XDG_CONFIG_HOME}"
 
-#: xfce4-terminal.1.xml:456(para)
+#: xfce4-terminal.1.xml:468(para)
 msgid ""
 "The first base directory to look for configuration files. By default this is "
 "set to <filename role=\"directory\">~/.config/</filename>."
@@ -567,11 +584,11 @@ msgstr ""
 "設定ファイルを見に行く最初の基本フォルダです。デフォルトでは <filename role="
 "\"directory\">~/.config/</filename> になっています。"
 
-#: xfce4-terminal.1.xml:464(varname)
+#: xfce4-terminal.1.xml:476(varname)
 msgid "${XDG_CONFIG_DIRS}"
 msgstr "${XDG_CONFIG_DIRS}"
 
-#: xfce4-terminal.1.xml:466(para)
+#: xfce4-terminal.1.xml:478(para)
 msgid ""
 "A colon separated list of base directories that contain configuration data. "
 "By default the application will look in <filename role=\"directory\">"
@@ -586,11 +603,11 @@ msgstr ""
 "れるパッケージでは <filename role=\"directory\">/etc/</filename> になることが"
 "多いようです。"
 
-#: xfce4-terminal.1.xml:477(varname)
+#: xfce4-terminal.1.xml:489(varname)
 msgid "${XDG_DATA_HOME}"
 msgstr "${XDG_DATA_HOME}"
 
-#: xfce4-terminal.1.xml:479(para)
+#: xfce4-terminal.1.xml:491(para)
 msgid ""
 "The root for all user-specific data files. By default this is set to "
 "<filename role=\"directory\">~/.local/share/</filename>."
@@ -598,11 +615,11 @@ msgstr ""
 "ユーザー個別のデータファイルすべてのルートフォルダです。デフォルトでは "
 "<filename role=\"directory\">~/.local/share/</filename> になっています。"
 
-#: xfce4-terminal.1.xml:487(varname)
+#: xfce4-terminal.1.xml:499(varname)
 msgid "${XDG_DATA_DIRS}"
 msgstr "${XDG_DATA_DIRS}"
 
-#: xfce4-terminal.1.xml:489(para)
+#: xfce4-terminal.1.xml:501(para)
 msgid ""
 "A set of preference ordered base directories relative to which data files "
 "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
@@ -611,36 +628,20 @@ msgstr ""
 "基本フォルダ <varname>${XDG_DATA_HOME}</varname> に加えてデータファイルを探す"
 "基本フォルダを並べていきます。フォルダはコロンで区切る必要があります。"
 
-#: xfce4-terminal.1.xml:501(title)
+#: xfce4-terminal.1.xml:513(title)
 msgid "Files"
 msgstr "ファイル"
 
-#: xfce4-terminal.1.xml:505(filename)
+#: xfce4-terminal.1.xml:517(filename)
 msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 
-#: xfce4-terminal.1.xml:507(para)
+#: xfce4-terminal.1.xml:519(para)
 msgid ""
 "This is the location of the configuration file that includes the preferences "
 "which control the look and feel of @PACKAGE_NAME@."
 msgstr ""
 "@PACKAGE_NAME@ の見た目を管理する環境設定が含まれる設定ファイルの場所です。"
-
-#: xfce4-terminal.1.xml:515(filename)
-msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-
-#: xfce4-terminal.1.xml:517(para)
-msgid ""
-"This file includes the user interface definition for the toolbars. If you "
-"customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@ "
-"will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
-"Terminal/Terminal-toolbars.ui</filename>."
-msgstr ""
-"このファイルにはツールバーのインターフェイス定義が記述されています。ツール"
-"バーエディタを使用してツールバーをカスタマイズした場合、@PACKAGE_NAME@ はファ"
-"イル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename> に新"
-"しいツールバーのレイアウト情報を保存します。"
 
 #: xfce4-terminal.1.xml:529(title)
 msgid "See also"
@@ -662,3 +663,17 @@ msgid "translator-credits"
 msgstr ""
 "Daichi Kawahata <daichi@xfce.org>, 2005, 2006.\n"
 "Masato Hashimoto <hashimo@xfce.org>, 2009. "
+
+#~ msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+#~ msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+
+#~ msgid ""
+#~ "This file includes the user interface definition for the toolbars. If you "
+#~ "customize the toolbars using the graphical toolbars editor, "
+#~ "@PACKAGE_NAME@ will store the new toolbars layout in the file <filename>"
+#~ "${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>."
+#~ msgstr ""
+#~ "このファイルにはツールバーのインターフェイス定義が記述されています。ツール"
+#~ "バーエディタを使用してツールバーをカスタマイズした場合、@PACKAGE_NAME@ は"
+#~ "ファイル <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</"
+#~ "filename> に新しいツールバーのレイアウト情報を保存します。"

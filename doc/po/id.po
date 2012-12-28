@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: terminal 0.2.12\n"
-"POT-Creation-Date: 2012-01-07 18:25+0100\n"
+"POT-Creation-Date: 2012-12-28 13:57+0100\n"
 "PO-Revision-Date: 2010-01-28 09:21-0500\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -10,11 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: xfce4-terminal.1.xml:14(contrib) Terminal.1.xml:22(contrib)
+#: xfce4-terminal.1.xml:14(contrib) xfce4-terminal.1.xml:22(contrib)
 msgid "Developer"
 msgstr "Pengembang"
 
-#: xfce4-terminal.1.xml:15(literal)
+#: xfce4-terminal.1.xml:15(firstname)
 msgid "Nick"
 msgstr "Nick"
 
@@ -131,27 +131,29 @@ msgstr ""
 "Di sini adalah ringkasan untuk semua opsi, dikelompokkan berdasarkan tipe. "
 "Penjelasannya di bagian berikut."
 
-#: xfce4-terminal.1.xml:89(link) Terminal.1.xml:144(title)
+#: xfce4-terminal.1.xml:89(link) xfce4-terminal.1.xml:145(title)
 msgid "General Options"
 msgstr "Opsi umum"
 
 #: xfce4-terminal.1.xml:91(para)
+#, fuzzy
 msgid ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
-"linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
-"general-default-working-directory\"/>"
+"linkend=\"options-general-color-table\"/>; <xref linkend=\"options-general-"
+"default-display\"/>; <xref linkend=\"options-general-default-working-"
+"directory\"/>"
 msgstr ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
 "linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
 "general-default-working-directory\"/>"
 
-#: xfce4-terminal.1.xml:101(link) Terminal.1.xml:194(title)
+#: xfce4-terminal.1.xml:102(link) xfce4-terminal.1.xml:204(title)
 msgid "Window or Tab Separators"
 msgstr "Pemisah Jendela atau Tab"
 
-#: xfce4-terminal.1.xml:103(para)
+#: xfce4-terminal.1.xml:104(para)
 msgid ""
 "<xref linkend=\"options-separators-tab\"/>; <xref linkend=\"options-"
 "separators-window\"/>"
@@ -159,11 +161,11 @@ msgstr ""
 "<xref linkend=\"options-separators-tab\"/>; <xref linkend=\"options-"
 "separators-window\"/>"
 
-#: xfce4-terminal.1.xml:110(link) Terminal.1.xml:217(title)
+#: xfce4-terminal.1.xml:111(link) xfce4-terminal.1.xml:228(title)
 msgid "Tab Options"
 msgstr "Opsi Tab"
 
-#: xfce4-terminal.1.xml:112(para)
+#: xfce4-terminal.1.xml:113(para)
 msgid ""
 "<xref linkend=\"options-tab-execute\"/>; <xref linkend=\"options-tab-command"
 "\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend="
@@ -173,11 +175,11 @@ msgstr ""
 "\"/>; <xref linkend=\"options-tab-working-directory\"/>; <xref linkend="
 "\"options-tab-title\"/>; <xref linkend=\"options-tab-hold\"/>"
 
-#: xfce4-terminal.1.xml:122(link) Terminal.1.xml:267(title)
+#: xfce4-terminal.1.xml:123(link) xfce4-terminal.1.xml:278(title)
 msgid "Window Options"
 msgstr "Opsi Jendela"
 
-#: xfce4-terminal.1.xml:124(para)
+#: xfce4-terminal.1.xml:125(para)
 msgid ""
 "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
 "geometry\"/>; <xref linkend=\"options-window-role\"/>; <xref linkend="
@@ -199,54 +201,62 @@ msgstr ""
 "linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-"
 "hide-toolbars\"/>"
 
-#: xfce4-terminal.1.xml:147(term)
+#: xfce4-terminal.1.xml:148(term)
 msgid "<option>-h</option>, <option>--help</option>"
 msgstr "<option>-h</option>, <option>--help</option>"
 
-#: xfce4-terminal.1.xml:151(para)
+#: xfce4-terminal.1.xml:152(para)
 msgid ""
 "List the various command line options supported by @PACKAGE_NAME@ and exit"
 msgstr ""
 "Tampilkan berbagai opsi baris perintah yang didukung oleh @PACKAGE_NAME@ "
 "lalu keluar"
 
-#: xfce4-terminal.1.xml:156(term)
+#: xfce4-terminal.1.xml:157(term)
 msgid "<option>-V</option>, <option>--version</option>"
 msgstr "<option>-V</option>, <option>--version</option>"
 
-#: xfce4-terminal.1.xml:160(para)
+#: xfce4-terminal.1.xml:161(para)
 msgid "Display version information and exit"
 msgstr "Tampilkan informasi versi dan keluar"
 
-#: xfce4-terminal.1.xml:166(option)
+#: xfce4-terminal.1.xml:167(option)
 msgid "--disable-server"
 msgstr "--disable-server"
 
-#: xfce4-terminal.1.xml:169(para)
+#: xfce4-terminal.1.xml:170(para)
 msgid "Do not register with the D-BUS session message bus"
 msgstr "Jangan daftarkan dengan bus pesan sesi D-BUS"
 
-#: xfce4-terminal.1.xml:175(replaceable) Terminal.1.xml:271(replaceable)
+#: xfce4-terminal.1.xml:176(option)
+msgid "--color-table"
+msgstr ""
+
+#: xfce4-terminal.1.xml:179(para)
+msgid "Echo the color codes"
+msgstr ""
+
+#: xfce4-terminal.1.xml:185(replaceable) xfce4-terminal.1.xml:282(replaceable)
 msgid "display"
 msgstr "tampilan"
 
-#: xfce4-terminal.1.xml:175(option)
+#: xfce4-terminal.1.xml:185(option)
 msgid "--default-display=<placeholder-1/>"
 msgstr "--default-display=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:178(para)
+#: xfce4-terminal.1.xml:188(para)
 msgid "Default X display to use."
 msgstr "Tampilan X standar untuk digunakan."
 
-#: xfce4-terminal.1.xml:184(replaceable) Terminal.1.xml:239(replaceable)
+#: xfce4-terminal.1.xml:194(replaceable) xfce4-terminal.1.xml:250(replaceable)
 msgid "directory"
 msgstr "direktori"
 
-#: xfce4-terminal.1.xml:184(option)
+#: xfce4-terminal.1.xml:194(option)
 msgid "--default-working-directory=<placeholder-1/>"
 msgstr "--default-working-directory=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:187(para)
+#: xfce4-terminal.1.xml:197(para)
 msgid ""
 "Set <parameter>directory</parameter> as the default working directory for "
 "the terminal"
@@ -254,11 +264,11 @@ msgstr ""
 "Atur <parameter>direktori</parameter> sebagai direktori kerja standar untuk "
 "terminal"
 
-#: xfce4-terminal.1.xml:198(option)
+#: xfce4-terminal.1.xml:208(option)
 msgid "--tab"
 msgstr "--tab"
 
-#: xfce4-terminal.1.xml:201(para)
+#: xfce4-terminal.1.xml:211(para)
 msgid ""
 "Open a new tab in the last-specified window; more than one of these options "
 "can be provided."
@@ -266,11 +276,17 @@ msgstr ""
 "Buka tab baru di jendela yang ditentukan terakhir; lebih dari satu opsi "
 "seperti ini dapat diberikan."
 
-#: xfce4-terminal.1.xml:207(option)
+#: xfce4-terminal.1.xml:212(para)
+msgid ""
+"If you use this as the first option, without --window separators, the last "
+"window will be re-used."
+msgstr ""
+
+#: xfce4-terminal.1.xml:218(option)
 msgid "--window"
 msgstr "--window"
 
-#: xfce4-terminal.1.xml:210(para)
+#: xfce4-terminal.1.xml:221(para)
 msgid ""
 "Open a new window containing one tab; more than one of these options can be "
 "provided."
@@ -278,15 +294,15 @@ msgstr ""
 "Buka jendela baru yang berisi satu tab; lebih dari satu opsi seperti ini "
 "dapat diberikan."
 
-#: xfce4-terminal.1.xml:220(term)
+#: xfce4-terminal.1.xml:231(term)
 msgid "<option>-x</option>, <option>--execute</option>"
 msgstr "<option>-x</option>, <option>--execute</option>"
 
-#: xfce4-terminal.1.xml:224(para)
+#: xfce4-terminal.1.xml:235(para)
 msgid "Execute the remainder of the command line inside the terminal"
 msgstr "Eksekusi pengingat baris perintah di dalam terminal"
 
-#: xfce4-terminal.1.xml:229(term)
+#: xfce4-terminal.1.xml:240(term)
 msgid ""
 "<option>-e</option>, <option>--command=<replaceable>command</replaceable></"
 "option>"
@@ -294,22 +310,22 @@ msgstr ""
 "<option>-e</option>, <option>--command=<replaceable>perintah</replaceable></"
 "option>"
 
-#: xfce4-terminal.1.xml:233(para)
+#: xfce4-terminal.1.xml:244(para)
 msgid "Execute <parameter>command</parameter> inside the terminal"
 msgstr "Eksekusi <parameter>perintah</parameter> di dalam terminal"
 
-#: xfce4-terminal.1.xml:239(option)
+#: xfce4-terminal.1.xml:250(option)
 msgid "--working-directory=<placeholder-1/>"
 msgstr "--working-directory=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:242(para)
+#: xfce4-terminal.1.xml:253(para)
 msgid ""
 "Set <parameter>directory</parameter> as the working directory for the "
 "terminal"
 msgstr ""
 "Atur <parameter>direktori</parameter> sebagai direktori kerja untuk terminal"
 
-#: xfce4-terminal.1.xml:247(term)
+#: xfce4-terminal.1.xml:258(term)
 msgid ""
 "<option>-T</option>, <option>--title=<replaceable>title</replaceable></"
 "option>"
@@ -317,39 +333,39 @@ msgstr ""
 "<option>-T</option>, <option>--title=<replaceable>judul</replaceable></"
 "option>"
 
-#: xfce4-terminal.1.xml:251(para)
+#: xfce4-terminal.1.xml:262(para)
 msgid ""
 "Set <parameter>title</parameter> as the initial window title for the terminal"
 msgstr ""
 "Atur <parameter>judul</parameter> sebagai judul jendela utama untuk terminal"
 
-#: xfce4-terminal.1.xml:256(term)
+#: xfce4-terminal.1.xml:267(term)
 msgid "<option>-H</option>, <option>--hold</option>"
 msgstr "<option>-H</option>, <option>--hold</option>"
 
-#: xfce4-terminal.1.xml:260(para)
+#: xfce4-terminal.1.xml:271(para)
 msgid ""
 "Causes the terminal to be kept around after the child command has terminated"
 msgstr ""
 "Menyebabkan terminal tetap terbuka ketika perintah anak telah dimatikan"
 
-#: xfce4-terminal.1.xml:271(option)
+#: xfce4-terminal.1.xml:282(option)
 msgid "--display=<placeholder-1/>"
 msgstr "--display=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:274(para)
+#: xfce4-terminal.1.xml:285(para)
 msgid "X display to use for the last- specified window."
 msgstr "Tampilan X untuk digunakan bagi jendela yang terakhir ditentukan."
 
-#: xfce4-terminal.1.xml:280(replaceable)
+#: xfce4-terminal.1.xml:291(replaceable)
 msgid "geometry"
 msgstr "geometri"
 
-#: xfce4-terminal.1.xml:280(option)
+#: xfce4-terminal.1.xml:291(option)
 msgid "--geometry=<placeholder-1/>"
 msgstr "--geometry=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:283(para)
+#: xfce4-terminal.1.xml:294(para)
 msgid ""
 "Sets the geometry of the last-specified window to <parameter>geometry</"
 "parameter>. Read <citerefentry><refentrytitle>X</refentrytitle><manvolnum>7</"
@@ -361,35 +377,36 @@ msgstr ""
 "manvolnum></citerefentry> untuk informasi lebih lanjut tentang bagaimana "
 "menentukan geometri jendela."
 
-#: xfce4-terminal.1.xml:293(replaceable)
+#: xfce4-terminal.1.xml:304(replaceable)
 msgid "role"
 msgstr "peran"
 
-#: xfce4-terminal.1.xml:293(option)
+#: xfce4-terminal.1.xml:304(option)
 msgid "--role=<placeholder-1/>"
 msgstr "--role=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:296(para)
+#: xfce4-terminal.1.xml:307(para)
+#, fuzzy
 msgid ""
 "Sets the window role of the last-specified window to <parameter>role</"
 "parameter>. Applies to only one window and can be specified once for each "
-"window you create from the command line. It is mostly used for session "
-"management inside @PACKAGE_NAME@"
+"window you create from the command line. The <parameter>role</parameter> is "
+"a unique identifier for the window to be used when restoring a session."
 msgstr ""
 "Atur peran jendela dari jendela yang ditentukan terakhir ke "
 "<parameter>peran</parameter>. Berlaku hanya untuk satu jendela dan dapat "
 "ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah. Hal "
 "ini seringkali digunakan untuk manajemen sesi di dalam @PACKAGE_NAME@"
 
-#: xfce4-terminal.1.xml:306(replaceable)
+#: xfce4-terminal.1.xml:318(replaceable)
 msgid "string"
 msgstr "tali"
 
-#: xfce4-terminal.1.xml:306(option)
+#: xfce4-terminal.1.xml:318(option)
 msgid "--startup-id=<placeholder-1/>"
 msgstr "--startup-id=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:309(para)
+#: xfce4-terminal.1.xml:321(para)
 msgid ""
 "Specifies the startup notification id for the last-specified window. Used "
 "internally to forward the startup notification id when using the D-BUS "
@@ -399,23 +416,23 @@ msgstr ""
 "Gunakan secara internal untuk meneruskan id notifikasi hidupkan ketika "
 "menggunakan layanan D-BUS."
 
-#: xfce4-terminal.1.xml:318(replaceable)
+#: xfce4-terminal.1.xml:330(replaceable)
 msgid "icon"
 msgstr "ikon"
 
-#: xfce4-terminal.1.xml:318(option)
+#: xfce4-terminal.1.xml:330(option)
 msgid "-I, --icon=<placeholder-1/>"
 msgstr "-I, --icon=<placeholder-1/>"
 
-#: xfce4-terminal.1.xml:321(para)
+#: xfce4-terminal.1.xml:333(para)
 msgid "Set the terminal's icon as an icon name or filename."
 msgstr "Atur ikon terminal sebagai nama ikon atau nama berkas."
 
-#: xfce4-terminal.1.xml:329(option)
+#: xfce4-terminal.1.xml:341(option)
 msgid "--fullscreen"
 msgstr "--fullscreen"
 
-#: xfce4-terminal.1.xml:332(para)
+#: xfce4-terminal.1.xml:344(para)
 msgid ""
 "Set the last-specified window into fullscreen mode; applies to only one "
 "window; can be specified once for each window you create from the command "
@@ -425,11 +442,11 @@ msgstr ""
 "hanya untuk satu jendela; dapat ditentukan sekali untuk tiap jendela yang "
 "anda buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:341(option)
+#: xfce4-terminal.1.xml:353(option)
 msgid "--maximize"
 msgstr "--maximize"
 
-#: xfce4-terminal.1.xml:344(para)
+#: xfce4-terminal.1.xml:356(para)
 msgid ""
 "Set the last-specified window into maximized mode; applies to only one "
 "window; can be specified once for each window you create from the command "
@@ -439,11 +456,11 @@ msgstr ""
 "hanya untuk satu jendela; dapat ditentukan sekali untuk tiap jendela yang "
 "anda buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:353(option)
+#: xfce4-terminal.1.xml:365(option)
 msgid "--show-menubar"
 msgstr "--show-menubar"
 
-#: xfce4-terminal.1.xml:356(para)
+#: xfce4-terminal.1.xml:368(para)
 msgid ""
 "Turn on the menubar for the last-specified window. Can be specified once for "
 "each window you create from the command line."
@@ -451,11 +468,11 @@ msgstr ""
 "Nyalakan batang menu untuk jendela yang ditentukan terakhir. Dapat "
 "ditentukan sekali untuk tiap jendela yang anda buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:365(option)
+#: xfce4-terminal.1.xml:377(option)
 msgid "--hide-menubar"
 msgstr "--hide-menubar"
 
-#: xfce4-terminal.1.xml:368(para)
+#: xfce4-terminal.1.xml:380(para)
 msgid ""
 "Turn off the menubar for the last-specified window. Can be specified once "
 "for each window you create from the command line."
@@ -463,11 +480,11 @@ msgstr ""
 "Matikan batang menu untuk jendela yang ditentukan terakhir. Dapat ditentukan "
 "sekali untuk tiap jendela yang anda buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:377(option)
+#: xfce4-terminal.1.xml:389(option)
 msgid "--show-borders"
 msgstr "--show-borders"
 
-#: xfce4-terminal.1.xml:380(para)
+#: xfce4-terminal.1.xml:392(para)
 msgid ""
 "Turn on the window decorations for the last-specified window. Applies to "
 "only one window. Can be specified once for each window you create from the "
@@ -477,11 +494,11 @@ msgstr ""
 "hanya untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang "
 "anda buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:389(option)
+#: xfce4-terminal.1.xml:401(option)
 msgid "--hide-borders"
 msgstr "--hide-borders"
 
-#: xfce4-terminal.1.xml:392(para)
+#: xfce4-terminal.1.xml:404(para)
 msgid ""
 "Turn off the window decorations for the last-specified window. Applies to "
 "only one window. Can be specified once for each window you create from the "
@@ -491,11 +508,11 @@ msgstr ""
 "hanya untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang "
 "anda buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:401(option)
+#: xfce4-terminal.1.xml:413(option)
 msgid "--show-toolbars"
 msgstr "--show-toolbars"
 
-#: xfce4-terminal.1.xml:404(para)
+#: xfce4-terminal.1.xml:416(para)
 msgid ""
 "Turn on the toolbars for the last-specified window. Applies to only one "
 "window. Can be specified once for each window you create from the command "
@@ -505,11 +522,11 @@ msgstr ""
 "untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang anda "
 "buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:413(option)
+#: xfce4-terminal.1.xml:425(option)
 msgid "--hide-toolbars"
 msgstr "--hide-toolbars"
 
-#: xfce4-terminal.1.xml:416(para)
+#: xfce4-terminal.1.xml:428(para)
 msgid ""
 "Turn off the toolbars for the last-specified window. Applies to only one "
 "window. Can be specified once for each window you create from the command "
@@ -519,15 +536,15 @@ msgstr ""
 "untuk satu jendela. Dapat ditentukan sekali untuk tiap jendela yang anda "
 "buat dari baris perintah."
 
-#: xfce4-terminal.1.xml:427(title)
+#: xfce4-terminal.1.xml:439(title)
 msgid "Examples"
 msgstr "Contoh"
 
-#: xfce4-terminal.1.xml:430(term)
+#: xfce4-terminal.1.xml:442(term)
 msgid "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
 msgstr "@PACKAGE_NAME@ --geometry 80x40 --command mutt --tab --command mc"
 
-#: xfce4-terminal.1.xml:432(para)
+#: xfce4-terminal.1.xml:444(para)
 msgid ""
 "Opens a new terminal window with a geometry of 80 columns and 40 rows and "
 "two tabs in it, where the first tab runs <command>mutt</command> and the "
@@ -537,11 +554,11 @@ msgstr ""
 "di dalamnya, dimana tab pertama menjalankan <command>mutt</command> dan tab "
 "kedua menjalankan <command>mc</command>"
 
-#: xfce4-terminal.1.xml:443(title)
+#: xfce4-terminal.1.xml:455(title)
 msgid "Environment"
 msgstr "Lingkungan"
 
-#: xfce4-terminal.1.xml:445(para)
+#: xfce4-terminal.1.xml:457(para)
 msgid ""
 "Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
 "freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data "
@@ -554,11 +571,11 @@ msgstr ""
 "dapat ditentukan sebagai alamat yang relatif terhadap direktori yang "
 "dijelaskan dalam spesifikasi."
 
-#: xfce4-terminal.1.xml:454(varname)
+#: xfce4-terminal.1.xml:466(varname)
 msgid "${XDG_CONFIG_HOME}"
 msgstr "${XDG_CONFIG_HOME}"
 
-#: xfce4-terminal.1.xml:456(para)
+#: xfce4-terminal.1.xml:468(para)
 msgid ""
 "The first base directory to look for configuration files. By default this is "
 "set to <filename role=\"directory\">~/.config/</filename>."
@@ -566,11 +583,11 @@ msgstr ""
 "Direktori awal pertama untuk mencari berkas konfigurasi. Standarnya ini "
 "diatur ke <filename role=\"directory\">~/.config/</filename>."
 
-#: xfce4-terminal.1.xml:464(varname)
+#: xfce4-terminal.1.xml:476(varname)
 msgid "${XDG_CONFIG_DIRS}"
 msgstr "${XDG_CONFIG_DIRS}"
 
-#: xfce4-terminal.1.xml:466(para)
+#: xfce4-terminal.1.xml:478(para)
 msgid ""
 "A colon separated list of base directories that contain configuration data. "
 "By default the application will look in <filename role=\"directory\">"
@@ -584,11 +601,11 @@ msgstr ""
 "tergantung pada bagaimana program dibangun dan akan sering menjadi <filename "
 "role=\"directory\">/etc/</filename> untuk paket biner."
 
-#: xfce4-terminal.1.xml:477(varname)
+#: xfce4-terminal.1.xml:489(varname)
 msgid "${XDG_DATA_HOME}"
 msgstr "${XDG_DATA_HOME}"
 
-#: xfce4-terminal.1.xml:479(para)
+#: xfce4-terminal.1.xml:491(para)
 msgid ""
 "The root for all user-specific data files. By default this is set to "
 "<filename role=\"directory\">~/.local/share/</filename>."
@@ -596,11 +613,11 @@ msgstr ""
 "Akar untuk semua berkas data khusus pengguna. Pada keadaan standar diatur ke "
 "<filename role=\"directory\">~/.local/share/</filename>."
 
-#: xfce4-terminal.1.xml:487(varname)
+#: xfce4-terminal.1.xml:499(varname)
 msgid "${XDG_DATA_DIRS}"
 msgstr "${XDG_DATA_DIRS}"
 
-#: xfce4-terminal.1.xml:489(para)
+#: xfce4-terminal.1.xml:501(para)
 msgid ""
 "A set of preference ordered base directories relative to which data files "
 "should be searched in addition to the <varname>${XDG_DATA_HOME}</varname> "
@@ -611,37 +628,21 @@ msgstr ""
 "direktori dasar <varname>${XDG_DATA_HOME}</varname>. Direktori-direktori "
 "harus dipisahkan oleh tanda titik dua."
 
-#: xfce4-terminal.1.xml:501(title)
+#: xfce4-terminal.1.xml:513(title)
 msgid "Files"
 msgstr "Berkas"
 
-#: xfce4-terminal.1.xml:505(filename)
+#: xfce4-terminal.1.xml:517(filename)
 msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
 
-#: xfce4-terminal.1.xml:507(para)
+#: xfce4-terminal.1.xml:519(para)
 msgid ""
 "This is the location of the configuration file that includes the preferences "
 "which control the look and feel of @PACKAGE_NAME@."
 msgstr ""
 "Ini adalah lokasi berkas konfigurasi yang termasuk pengaturan yang "
 "mengontrol tampilan dan rasa @PACKAGE_NAME@."
-
-#: xfce4-terminal.1.xml:515(filename)
-msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
-
-#: xfce4-terminal.1.xml:517(para)
-msgid ""
-"This file includes the user interface definition for the toolbars. If you "
-"customize the toolbars using the graphical toolbars editor, @PACKAGE_NAME@ "
-"will store the new toolbars layout in the file <filename>${XDG_DATA_HOME}/"
-"Terminal/Terminal-toolbars.ui</filename>."
-msgstr ""
-"Berkas ini menyertakan definisi antarmuka penggna untuk batang alat. Jika "
-"anda menyesuaikan batang alat dengan memakai penyunting batang alat grafis, "
-"@PACKAGE_NAME@ akan menyimpan tata letak batang alat baru di berkas "
-"<filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>."
 
 #: xfce4-terminal.1.xml:529(title)
 msgid "See also"
@@ -661,3 +662,18 @@ msgstr ""
 #: xfce4-terminal.1.xml:0(None)
 msgid "translator-credits"
 msgstr "Andhika Padmawan <andhika.padmawan@gmail.com>, 2009"
+
+#~ msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+#~ msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
+
+#~ msgid ""
+#~ "This file includes the user interface definition for the toolbars. If you "
+#~ "customize the toolbars using the graphical toolbars editor, "
+#~ "@PACKAGE_NAME@ will store the new toolbars layout in the file <filename>"
+#~ "${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</filename>."
+#~ msgstr ""
+#~ "Berkas ini menyertakan definisi antarmuka penggna untuk batang alat. Jika "
+#~ "anda menyesuaikan batang alat dengan memakai penyunting batang alat "
+#~ "grafis, @PACKAGE_NAME@ akan menyimpan tata letak batang alat baru di "
+#~ "berkas <filename>${XDG_DATA_HOME}/Terminal/Terminal-toolbars.ui</"
+#~ "filename>."
