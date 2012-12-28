@@ -438,9 +438,7 @@ terminal_window_attr_parse (gint              argc,
           tab_attr = win_attr->tabs->data;
           attrs = g_slist_append (attrs, win_attr);
         }
-      else if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL)
-               || terminal_option_cmp ("version", 'V', argc, argv, &n, NULL)
-               || terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
+      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
                || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL)
                || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL))
         {
