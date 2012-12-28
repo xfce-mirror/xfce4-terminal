@@ -816,7 +816,6 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
       gtk_action_group_add_action (window->action_group, GTK_ACTION (radio_action));
       g_signal_connect (G_OBJECT (radio_action), "activate",
           G_CALLBACK (terminal_window_action_goto_tab), window->notebook);
-      gtk_action_set_sensitive (GTK_ACTION (radio_action), TRUE);
 
       /* connect action to the page so we can active it when a tab is switched */
       g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark,
