@@ -1237,34 +1237,27 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
                                    TerminalScreen *screen)
 {
   GtkWidget *toplevel;
-  gint       xpad = 0;
-  gint       ypad = 0;
+  gint       xpad;
+  gint       ypad;
   glong      grid_width;
   glong      grid_height;
-  GtkBorder *border = NULL;
+  glong      char_width;
+  glong      char_height;
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   /* don't do anything if the window is already fullscreen/maximized */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  if (!GTK_WIDGET_REALIZED (toplevel)
+  if (!gtk_widget_get_realized (toplevel)
       || (gdk_window_get_state (toplevel->window)
           & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) != 0)
     return;
 
-  /* we have to calculate the grid size, because the signal
-   * returns a size in pixels */
-  gtk_widget_style_get (GTK_WIDGET (terminal), "inner-border", &border, NULL);
-  if (border != NULL)
-    {
-      xpad = border->left + border->right;
-      ypad = border->top + border->bottom;
-      gtk_border_free (border);
-    }
+  terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
 
-  grid_width = (width - xpad) / terminal->char_width;
-  grid_height = (height - ypad) / terminal->char_height;
+  grid_width = (width - xpad) / char_width;
+  grid_height = (height - ypad) / char_height;
 
   /* leave if there is nothing to resize */
   if (terminal->column_count == grid_width
@@ -1274,8 +1267,10 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   /* set the terminal size and resize the window if it is active */
   vte_terminal_set_size (terminal, grid_width, grid_height);
   if (screen == terminal_window_get_active (TERMINAL_WINDOW (toplevel)))
-    terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel),
-                                         grid_width, grid_height);
+    {
+      terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel),
+                                           grid_width, grid_height);
+    }
 }
 
 
@@ -1649,6 +1644,46 @@ terminal_screen_set_size (TerminalScreen *screen,
 
 
 
+void
+terminal_screen_get_geometry (TerminalScreen *screen,
+                              glong          *char_width,
+                              glong          *char_height,
+                              gint           *xpad,
+                              gint           *ypad)
+{
+  GtkBorder *border = NULL;
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+
+  if (char_width != NULL)
+    *char_width = vte_terminal_get_char_width (VTE_TERMINAL (screen->terminal));
+  if (char_height != NULL)
+    *char_height = vte_terminal_get_char_height (VTE_TERMINAL (screen->terminal));
+
+  if (xpad != NULL || ypad != NULL)
+    {
+      gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
+      if (G_LIKELY (border != NULL))
+        {
+          if (xpad != NULL)
+            *xpad = border->left + border->right;
+          if (ypad != NULL)
+            *ypad = border->top + border->bottom;
+          gtk_border_free (border);
+        }
+      else
+        {
+          if (xpad != NULL)
+            *xpad = 0;
+          if (ypad != NULL)
+            *ypad = 0;
+        }
+    }
+}
+
+
+
 /**
  * terminal_screen_set_window_geometry_hints:
  *
@@ -1660,27 +1695,24 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
                                            GtkWindow      *window)
 {
   GdkGeometry  hints;
-  gint         xpad = 0;
-  gint         ypad = 0;
-  GtkBorder   *border = NULL;
+  gint         xpad;
+  gint         ypad;
+  glong        char_width;
+  glong        char_height;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
   terminal_return_if_fail (GTK_WIDGET_REALIZED (screen));
   terminal_return_if_fail (GTK_WIDGET_REALIZED (window));
 
-  gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
-  if (border != NULL)
-    {
-      xpad = border->left + border->right;
-      ypad = border->top + border->bottom;
-      gtk_border_free (border);
-    }
+  terminal_screen_get_geometry (screen,
+                                &char_width, &char_height,
+                                &xpad, &ypad);
 
   hints.base_width = xpad;
   hints.base_height = ypad;
-  hints.width_inc = VTE_TERMINAL (screen->terminal)->char_width ;
-  hints.height_inc = VTE_TERMINAL (screen->terminal)->char_height;
+  hints.width_inc = char_width;
+  hints.height_inc = char_height;
   hints.min_width = hints.base_width + hints.width_inc * 4;
   hints.min_height = hints.base_height + hints.height_inc * 2;
 
@@ -1703,18 +1735,17 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 void
 terminal_screen_force_resize_window (TerminalScreen *screen,
                                      GtkWindow      *window,
-                                     glong           force_columns,
-                                     glong           force_rows)
+                                     glong           columns,
+                                     glong           rows)
 {
   GtkRequisition terminal_requisition;
   GtkRequisition window_requisition;
   gint           width;
   gint           height;
-  glong          columns;
-  glong          rows;
-  gint           xpad = 0;
-  gint           ypad = 0;
-  GtkBorder     *border = NULL;
+  gint           xpad, ypad;
+  glong          char_width;
+  glong          char_height;
+
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -1725,29 +1756,24 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   gtk_widget_size_request (GTK_WIDGET (window), &window_requisition);
   gtk_widget_size_request (screen->terminal, &terminal_requisition);
 
-  width = MAX (window_requisition.width - terminal_requisition.width, 0);
-  height = MAX (window_requisition.height - terminal_requisition.height, 0);
+  if (columns < 1)
+    columns = vte_terminal_get_column_count (VTE_TERMINAL (screen->terminal));
+  if (rows < 1)
+    rows = vte_terminal_get_row_count (VTE_TERMINAL (screen->terminal));
 
-  if (force_columns < 0)
-    columns = VTE_TERMINAL (screen->terminal)->column_count;
-  else
-    columns = force_columns;
+  terminal_screen_get_geometry (screen,
+                                &char_width, &char_height,
+                                &xpad, &ypad);
 
-  if (force_rows < 0)
-    rows = VTE_TERMINAL (screen->terminal)->row_count;
-  else
-    rows = force_rows;
+  width = window_requisition.width - terminal_requisition.width;
+  if (width < 0)
+    width = 0;
+  width += xpad + char_width * columns;
 
-  gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
-  if (border != NULL)
-    {
-      xpad = border->left + border->right;
-      ypad = border->top + border->bottom;
-      gtk_border_free (border);
-    }
-
-  width += xpad + VTE_TERMINAL (screen->terminal)->char_width * columns;
-  height += ypad + VTE_TERMINAL (screen->terminal)->char_height * rows;
+  height = window_requisition.height - terminal_requisition.height;
+  if (height < 0)
+    height = 0;
+  height += ypad + char_height * rows;
 
   if (GTK_WIDGET_MAPPED (window))
     gtk_window_resize (window, width, height);
@@ -2107,9 +2133,8 @@ terminal_screen_reset_activity (TerminalScreen *screen)
 GtkWidget *
 terminal_screen_get_tab_label (TerminalScreen *screen)
 {
-  GtkWidget  *hbox;
-  GtkWidget  *button, *image, *align;
-  GtkRcStyle *style;
+  GtkWidget *hbox;
+  GtkWidget *button, *image, *align;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -2147,10 +2172,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_show (button);
 
   /* make button a bit smaller */
-  style = gtk_rc_style_new ();
-  style->xthickness = style->ythickness = 0;
-  gtk_widget_modify_style (button, style);
-  g_object_unref (G_OBJECT (style));
+  terminal_set_style_thinkess (button, 0);
 
   /* button image */
   image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);

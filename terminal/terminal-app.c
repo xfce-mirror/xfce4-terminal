@@ -43,6 +43,7 @@
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
+#include <terminal/terminal-window-dropdown.h>
 
 #define ACCEL_MAP_PATH "xfce4/terminal/accels.scm"
 
@@ -53,12 +54,6 @@ static void               terminal_app_update_accels            (TerminalApp    
 static void               terminal_app_update_mnemonics         (TerminalApp        *app);
 static gboolean           terminal_app_accel_map_load           (gpointer            user_data);
 static gboolean           terminal_app_accel_map_save           (gpointer            user_data);
-static GtkWidget         *terminal_app_create_window            (TerminalApp        *app,
-                                                                 const gchar        *role,
-                                                                 gboolean            fullscreen,
-                                                                 TerminalVisibility  menubar,
-                                                                 TerminalVisibility  borders,
-                                                                 TerminalVisibility  toolbar);
 static void               terminal_app_new_window               (TerminalWindow     *window,
                                                                  const gchar        *working_directory,
                                                                  TerminalApp        *app);
@@ -293,6 +288,29 @@ terminal_app_accel_map_load (gpointer user_data)
 
 
 
+static void
+terminal_app_take_window (TerminalApp *app,
+                          GtkWindow   *window)
+{
+  GtkWindowGroup *group;
+
+  terminal_return_if_fail (GTK_IS_WINDOW (window));
+
+  group = gtk_window_group_new ();
+  gtk_window_group_add_window (group, window);
+  g_object_weak_ref (G_OBJECT (window), (GWeakNotify) g_object_unref, group);
+
+  g_signal_connect (G_OBJECT (window), "destroy",
+                    G_CALLBACK (terminal_app_window_destroyed), app);
+  g_signal_connect (G_OBJECT (window), "new-window",
+                    G_CALLBACK (terminal_app_new_window), app);
+  g_signal_connect (G_OBJECT (window), "new-window-with-screen",
+                    G_CALLBACK (terminal_app_new_window_with_terminal), app);
+  app->windows = g_slist_prepend (app->windows, window);
+}
+
+
+
 static GtkWidget*
 terminal_app_create_window (TerminalApp       *app,
                             const gchar       *role,
@@ -303,7 +321,6 @@ terminal_app_create_window (TerminalApp       *app,
 {
   GtkWidget *window;
   gchar     *new_role = NULL;
-  GtkWindowGroup *group;
 
   if (role == NULL)
     {
@@ -313,20 +330,23 @@ terminal_app_create_window (TerminalApp       *app,
     }
 
   window = terminal_window_new (role, fullscreen, menubar, borders, toolbar);
-
-  group = gtk_window_group_new ();
-  gtk_window_group_add_window (group, GTK_WINDOW (window));
-  g_object_weak_ref (G_OBJECT (window), (GWeakNotify) g_object_unref, group);
-
-  g_signal_connect (G_OBJECT (window), "destroy",
-                    G_CALLBACK (terminal_app_window_destroyed), app);
-  g_signal_connect (G_OBJECT (window), "new-window",
-                    G_CALLBACK (terminal_app_new_window), app);
-  g_signal_connect (G_OBJECT (window), "new-window-with-screen",
-                    G_CALLBACK (terminal_app_new_window_with_terminal), app);
-  app->windows = g_slist_prepend (app->windows, window);
-
   g_free (new_role);
+
+  terminal_app_take_window (app, GTK_WINDOW (window));
+
+  return window;
+}
+
+
+
+static GtkWidget*
+terminal_app_create_drop_down (TerminalApp *app)
+{
+  GtkWidget *window;
+
+  window = terminal_window_dropdown_new ();
+
+  terminal_app_take_window (app, GTK_WINDOW (window));
 
   return window;
 }
@@ -441,9 +461,13 @@ terminal_app_save_yourself (XfceSMClient *client,
   gint                  argc;
   gint                  n;
 
-  for (lp = app->windows; lp != NULL; lp = lp->next)
+  for (lp = app->windows, n = 0; lp != NULL; lp = lp->next)
     {
-      if (lp != app->windows)
+      /* don't session save dropdown windows */
+      if (TERMINAL_IS_WINDOW_DROPDOWN (lp->data))
+        continue;
+
+      if (n++ != 0)
         result = g_slist_append (result, g_strdup ("--window"));
       result = g_slist_concat (result, terminal_window_get_restart_command (lp->data));
     }
@@ -557,8 +581,25 @@ terminal_app_open_window (TerminalApp        *app,
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (attr != NULL);
 
-  if (attr->reuse_last_window
-      && app->windows != NULL)
+  if (attr->drop_down)
+    {
+      /* look for an exising drop-down window */
+      for (lp = app->windows; lp != NULL; lp = lp->next)
+        if (TERMINAL_IS_WINDOW_DROPDOWN (lp->data))
+          break;
+
+      if (lp != NULL)
+        {
+          /* toggle state of visible window */
+          terminal_window_dropdown_toggle (lp->data, attr->startup_id);
+          return;
+        }
+
+      /* create new drop-down window */
+      window = terminal_app_create_drop_down (app);
+    }
+  else if (attr->reuse_last_window
+           && app->windows != NULL)
     {
       /* open the tabs in an existing window */
       window = app->windows->data;
@@ -574,10 +615,12 @@ terminal_app_open_window (TerminalApp        *app,
                                            attr->borders,
                                            attr->toolbar);
 
-      if (attr->startup_id != NULL)
-        gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);
+      /* apply normal window properties */
       if (attr->maximize)
         gtk_window_maximize (GTK_WINDOW (window));
+
+      if (attr->startup_id != NULL)
+        gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);
 
       if (attr->icon != NULL)
         {
@@ -595,6 +638,7 @@ terminal_app_open_window (TerminalApp        *app,
         }
     }
 
+  /* add the tabs */
   for (lp = attr->tabs; lp != NULL; lp = lp->next)
     {
       terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
@@ -617,23 +661,29 @@ terminal_app_open_window (TerminalApp        *app,
   if (reuse_window)
     return;
 
-  /* set the window geometry, this can only be set after one of the tabs
-   * has been added, because vte is the geometry widget, so atleast one
-   * call should have been made to terminal_screen_set_window_geometry_hints */
-  if (G_LIKELY (attr->geometry == NULL))
-    g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
-  else
-    geometry = g_strdup (attr->geometry);
+  if (!attr->drop_down)
+    {
+      /* set the window geometry, this can only be set after one of the tabs
+       * has been added, because vte is the geometry widget, so atleast one
+       * call should have been made to terminal_screen_set_window_geometry_hints */
+      if (G_LIKELY (attr->geometry == NULL))
+        g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
+      else
+        geometry = g_strdup (attr->geometry);
 
-  /* try to apply the geometry to the window */
-  if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
-    g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
+      /* try to apply the geometry to the window */
+      if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
+        g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
 
-  /* cleanup */
-  g_free (geometry);
+      /* cleanup */
+      g_free (geometry);
+    }
 
   /* show the window */
-  gtk_widget_show (window);
+  if (attr->drop_down)
+    terminal_window_dropdown_toggle (TERMINAL_WINDOW_DROPDOWN (window), attr->startup_id);
+  else
+    gtk_widget_show (window);
 }
 
 

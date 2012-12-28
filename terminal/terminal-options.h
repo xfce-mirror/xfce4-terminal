@@ -47,6 +47,7 @@ struct _TerminalTabAttr
 struct _TerminalWindowAttr
 {
   GSList              *tabs;
+  guint                drop_down : 1;
   gchar               *display;
   gchar               *geometry;
   gchar               *role;

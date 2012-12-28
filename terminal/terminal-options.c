@@ -394,6 +394,10 @@ terminal_window_attr_parse (gint              argc,
               win_attr->icon = g_strdup (s);
             }
         }
+      else if (terminal_option_cmp ("drop-down", 0, argc, argv, &n, NULL))
+        {
+          win_attr->drop_down = TRUE;
+        }
       else if (terminal_option_show_hide_cmp ("menubar", argc, argv, &n, &visible))
         {
           win_attr->menubar = visible;

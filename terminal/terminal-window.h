@@ -23,6 +23,7 @@
 
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-options.h>
+#include <terminal/terminal-preferences.h>
 
 G_BEGIN_DECLS
 
@@ -35,6 +36,56 @@ G_BEGIN_DECLS
 
 typedef struct _TerminalWindowClass TerminalWindowClass;
 typedef struct _TerminalWindow      TerminalWindow;
+
+struct _TerminalWindowClass
+{
+  GtkWindowClass __parent__;
+};
+
+struct _TerminalWindow
+{
+  GtkWindow            __parent__;
+
+  /* if this is a TerminalWindowDropdown */
+  guint                drop_down : 1;
+
+  /* for the drop-down to keep open with dialogs */
+  guint                n_child_windows;
+
+  TerminalPreferences *preferences;
+  GtkWidget           *preferences_dialog;
+
+  GtkActionGroup      *action_group;
+  GtkUIManager        *ui_manager;
+
+  guint                tabs_menu_merge_id;
+  GSList              *tabs_menu_actions;
+
+  GtkWidget           *menubar;
+  GtkWidget           *toolbar;
+  GtkWidget           *notebook;
+
+  GtkWidget           *search_dialog;
+
+  /* pushed size of screen */
+  glong                grid_width;
+  glong                grid_height;
+
+  GtkAction           *encoding_action;
+
+  TerminalScreen      *active;
+
+  /* cached actions to avoid lookups */
+  GtkAction           *action_detah_tab;
+  GtkAction           *action_close_tab;
+  GtkAction           *action_prev_tab;
+  GtkAction           *action_next_tab;
+  GtkAction           *action_move_tab_left;
+  GtkAction           *action_move_tab_right;
+  GtkAction           *action_copy;
+  GtkAction           *action_search_next;
+  GtkAction           *action_search_prev;
+};
 
 GType           terminal_window_get_type             (void) G_GNUC_CONST;
 

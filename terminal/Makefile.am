@@ -28,7 +28,8 @@ xfce4_terminal_headers = \
 	terminal-private.h \
 	terminal-screen.h \
 	terminal-widget.h \
-	terminal-window.h \
+	terminal-window.h \ \
+	terminal-window-dropdown.h \
 	terminal-window-ui.h
 
 xfce4_terminal_SOURCES = \
@@ -46,24 +47,25 @@ xfce4_terminal_SOURCES = \
 	terminal-search-dialog.c \
 	terminal-screen.c \
 	terminal-widget.c \
-	terminal-window.c
+	terminal-window.c \
+	terminal-window-dropdown.c
 
 xfce4_terminal_CFLAGS = \
 	$(GTK_CFLAGS) \
 	$(GIO_CFLAGS) \
-	$(LIBX11_CFLAGS)\
+	$(LIBX11_CFLAGS) \
 	$(VTE_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 xfce4_terminal_LDFLAGS = \
 	-no-undefined \
+	$(LIBX11_LDFLAGS) \
 	$(PLATFORM_LDFLAGS)
 
 xfce4_terminal_LDADD = \
 	$(GTK_LIBS) \
 	$(GIO_LIBS) \
-	$(LIBX11_LDFLAGS) \
 	$(LIBX11_LIBS) \
 	$(VTE_LIBS) \
 	$(LIBXFCE4UI_LIBS) \

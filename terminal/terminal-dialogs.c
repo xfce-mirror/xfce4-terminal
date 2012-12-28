@@ -29,6 +29,12 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include <gdk/gdk.h>
+#ifdef GDK_WINDOWING_X11
+#include <gdk/gdkx.h>
+#include <X11/Xlib.h>
+#endif
+
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-private.h>
 
@@ -83,4 +89,54 @@ terminal_dialogs_show_about (GtkWindow *parent)
                          "website", "http://goodies.xfce.org/projects/applications/terminal",
                          "website-label", _("Visit Terminal website"),
                          NULL);
+}
+
+
+
+void
+terminal_set_style_thinkess (GtkWidget *widget,
+                             gint       thinkness)
+{
+  GtkRcStyle *style;
+
+  style = gtk_rc_style_new ();
+  style->xthickness = style->ythickness = thinkness;
+  gtk_widget_modify_style (widget, style);
+  g_object_unref (G_OBJECT (style));
+}
+
+
+
+void
+terminal_activate_window (GtkWindow *window)
+{
+#ifdef GDK_WINDOWING_X11
+  XClientMessageEvent event;
+
+  terminal_return_if_fail (GTK_IS_WINDOW (window));
+  terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
+
+  /* we need a slightly custom version of the call through Gtk+ to
+   * properly focus the panel when a plugin calls
+   * xfce_panel_plugin_focus_widget() */
+  event.type = ClientMessage;
+  event.window = GDK_WINDOW_XID (gtk_widget_get_window (GTK_WIDGET (window)));
+  event.message_type = gdk_x11_get_xatom_by_name ("_NET_ACTIVE_WINDOW");
+  event.format = 32;
+  event.data.l[0] = 0;
+
+  gdk_error_trap_push ();
+
+  XSendEvent (gdk_x11_get_default_xdisplay (),
+              gdk_x11_get_default_root_xwindow (), False,
+              StructureNotifyMask, (XEvent *) &event);
+
+  gdk_flush ();
+
+  if (gdk_error_trap_pop () != 0)
+    g_critical ("Failed to focus window");
+#else
+  /* our best guess on non-x11 clients */
+  gtk_window_present (window);
+#endif
 }

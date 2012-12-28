@@ -191,52 +191,6 @@ static void            terminal_window_action_about                  (GtkAction 
 
 
 
-struct _TerminalWindowClass
-{
-  GtkWindowClass __parent__;
-};
-
-struct _TerminalWindow
-{
-  GtkWindow            __parent__;
-
-  TerminalPreferences *preferences;
-  GtkWidget           *preferences_dialog;
-
-  GtkActionGroup      *action_group;
-  GtkUIManager        *ui_manager;
-
-  guint                tabs_menu_merge_id;
-  GSList              *tabs_menu_actions;
-
-  GtkWidget           *menubar;
-  GtkWidget           *toolbar;
-  GtkWidget           *notebook;
-
-  GtkWidget           *search_dialog;
-
-  /* pushed size of screen */
-  glong                grid_width;
-  glong                grid_height;
-
-  GtkAction           *encoding_action;
-
-  TerminalScreen      *active;
-
-  /* cached actions to avoid lookups */
-  GtkAction           *action_detah_tab;
-  GtkAction           *action_close_tab;
-  GtkAction           *action_prev_tab;
-  GtkAction           *action_next_tab;
-  GtkAction           *action_move_tab_left;
-  GtkAction           *action_move_tab_right;
-  GtkAction           *action_copy;
-  GtkAction           *action_search_next;
-  GtkAction           *action_search_prev;
-};
-
-
-
 static guint         window_signals[LAST_SIGNAL];
 static gconstpointer window_notebook_group = PACKAGE_NAME;
 static GQuark        tabs_menu_action_quark = 0;
@@ -343,7 +297,6 @@ terminal_window_init (TerminalWindow *window)
   GtkAction      *action;
   GtkWidget      *vbox;
   gboolean        always_show_tabs;
-  GtkRcStyle     *style;
   GdkScreen      *screen;
   GdkColormap    *colormap;
 
@@ -399,15 +352,9 @@ terminal_window_init (TerminalWindow *window)
                                    "tab-hborder", 0,
                                    "tab-vborder", 0,
                                    NULL);
-  g_object_bind_property (G_OBJECT (window->preferences), "misc-tab-position",
-                          G_OBJECT (window->notebook), "tab-pos",
-                          G_BINDING_SYNC_CREATE);
 
   /* hide the ugly terminal border when tabs are shown */
-  style = gtk_rc_style_new ();
-  style->xthickness = style->ythickness = 0;
-  gtk_widget_modify_style (window->notebook, style);
-  g_object_unref (G_OBJECT (style));
+  terminal_set_style_thinkess (window->notebook, 0);
 
   /* set the notebook group id */
   gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook),
@@ -681,7 +628,8 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   /* required to get the char height/width right */
-  if (gtk_widget_get_realized (GTK_WIDGET (screen)))
+  if (gtk_widget_get_realized (GTK_WIDGET (screen))
+      && !window->drop_down)
     {
       terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
                                            force_grid_width, force_grid_height);
@@ -901,6 +849,10 @@ terminal_window_notebook_show_tabs (TerminalWindow *window)
   GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
   gboolean     show_tabs = TRUE;
   gint         npages;
+
+  /* handled by other widget */
+  if (window->drop_down)
+    return;
 
   /* set the visibility of the tabs */
   npages = gtk_notebook_get_n_pages (notebook);
@@ -1614,9 +1566,9 @@ terminal_window_action_goto_tab (GtkRadioAction *action,
 
 
 static void
-title_dialog_response (GtkWidget *dialog,
-                       gint       response,
-                       GBinding  *title_binding)
+title_dialog_response (GtkWidget      *dialog,
+                       gint            response,
+                       TerminalWindow *window)
 {
   /* check if we should open the user manual */
   if (response == GTK_RESPONSE_HELP)
@@ -1626,8 +1578,12 @@ title_dialog_response (GtkWidget *dialog,
     }
   else
     {
+      /* need for hiding on focus */
+      if (window->drop_down)
+        terminal_activate_window (GTK_WINDOW (window));
+
       /* close the dialog */
-      g_object_unref (title_binding);
+      window->n_child_windows--;
       gtk_widget_destroy (dialog);
     }
 }
@@ -1635,9 +1591,11 @@ title_dialog_response (GtkWidget *dialog,
 
 
 static void
-title_dialog_quit (GtkWidget *dialog)
+title_dialog_clear (GtkWidget            *entry,
+                    GtkEntryIconPosition  icon_pos)
 {
-  gtk_dialog_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+  if (icon_pos == GTK_ENTRY_ICON_SECONDARY)
+    gtk_entry_set_text (GTK_ENTRY (entry), "");
 }
 
 
@@ -1646,54 +1604,51 @@ static void
 terminal_window_action_set_title (GtkAction      *action,
                                   TerminalWindow *window)
 {
-  AtkRelationSet   *relations;
-  AtkRelation      *relation;
-  AtkObject        *object;
-  GtkWidget        *dialog;
-  GtkWidget        *box;
-  GtkWidget        *label;
-  GtkWidget        *entry;
-  GBinding         *title_binding;
+  AtkObject *object;
+  GtkWidget *dialog;
+  GtkWidget *box;
+  GtkWidget *label;
+  GtkWidget *entry;
 
   if (G_LIKELY (window->active != NULL))
     {
+      window->n_child_windows++;
+
       dialog = gtk_dialog_new_with_buttons (Q_("Window Title|Set Title"),
                                             GTK_WINDOW (window),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT
-                                            | GTK_DIALOG_NO_SEPARATOR,
+                                            GTK_DIALOG_DESTROY_WITH_PARENT,
                                             GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                             GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
                                             NULL);
+      gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 
       box = gtk_hbox_new (FALSE, 12);
       gtk_container_set_border_width (GTK_CONTAINER (box), 6);
       gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), box, TRUE, TRUE, 0);
       gtk_widget_show (box);
 
-      label = gtk_label_new (_("Title:"));
+      label = gtk_label_new_with_mnemonic (_("_Title:"));
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
       gtk_widget_show (label);
 
       entry = gtk_entry_new ();
       gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
-      g_signal_connect_swapped (G_OBJECT (entry), "activate",
-                                G_CALLBACK (title_dialog_quit), dialog);
+      gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
+      gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+      gtk_entry_set_icon_from_stock (GTK_ENTRY (entry), GTK_ENTRY_ICON_SECONDARY, GTK_STOCK_CLEAR);
+      g_signal_connect (G_OBJECT (entry), "icon-release", G_CALLBACK (title_dialog_clear), NULL);
       gtk_widget_show (entry);
 
       /* set Atk description and label relation for the entry */
       object = gtk_widget_get_accessible (entry);
       atk_object_set_description (object, _("Enter the title for the current terminal tab"));
-      relations = atk_object_ref_relation_set (gtk_widget_get_accessible (label));
-      relation = atk_relation_new (&object, 1, ATK_RELATION_LABEL_FOR);
-      atk_relation_set_add (relations, relation);
-      g_object_unref (G_OBJECT (relation));
 
-      title_binding = g_object_bind_property (G_OBJECT (window->active), "custom-title",
-                                              G_OBJECT (entry), "text",
-                                              G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
+      g_object_bind_property (G_OBJECT (window->active), "custom-title",
+                              G_OBJECT (entry), "text",
+                              G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
       g_signal_connect (G_OBJECT (dialog), "response",
-                        G_CALLBACK (title_dialog_response), title_binding);
+                        G_CALLBACK (title_dialog_response), window);
 
       gtk_widget_show (dialog);
     }
@@ -1740,7 +1695,12 @@ terminal_window_action_search_response (GtkWidget      *dialog,
     }
   else
     {
+      /* need for hiding on focus */
+      if (window->drop_down)
+        terminal_activate_window (GTK_WINDOW (window));
+
       /* hide dialog */
+      window->n_child_windows--;
       gtk_widget_hide (dialog);
     }
 
@@ -1761,8 +1721,11 @@ terminal_window_action_search (GtkAction      *action,
       window->search_dialog = terminal_search_dialog_new (GTK_WINDOW (window));
       g_signal_connect (G_OBJECT (window->search_dialog), "response",
           G_CALLBACK (terminal_window_action_search_response), window);
-      gtk_widget_show_all (window->search_dialog);
     }
+
+  /* increase child counter */
+  if (!gtk_widget_get_visible (window->search_dialog))
+    window->n_child_windows++;
 
   terminal_search_dialog_present (TERMINAL_SEARCH_DIALOG (window->search_dialog));
 }
@@ -1895,6 +1858,11 @@ terminal_window_new (const gchar       *role,
     show_borders = (borders == TERMINAL_VISIBILITY_SHOW);
   action = gtk_action_group_get_action (window->action_group, "show-borders");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_borders);
+
+  /* property that is not suitable for init */
+  g_object_bind_property (G_OBJECT (window->preferences), "misc-tab-position",
+                          G_OBJECT (window->notebook), "tab-pos",
+                          G_BINDING_SYNC_CREATE);
 
   return GTK_WIDGET (window);
 }

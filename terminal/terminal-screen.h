@@ -51,6 +51,12 @@ void         terminal_screen_set_size                     (TerminalScreen *scree
                                                            glong           width_chars,
                                                            glong           height_chars);
 
+void         terminal_screen_get_geometry                 (TerminalScreen *screen,
+                                                           glong          *char_width,
+                                                           glong          *char_height,
+                                                           gint           *xpad,
+                                                           gint           *ypad);
+
 void         terminal_screen_set_window_geometry_hints    (TerminalScreen *screen,
                                                            GtkWindow      *window);
 
