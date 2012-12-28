@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal trunk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-27 11:42+0000\n"
+"POT-Creation-Date: 2012-12-28 19:48+0000\n"
 "PO-Revision-Date: 2010-05-01 21:02+0100\n"
 "Last-Translator: gianluca foddis <gianluca.foddis@gmail.com>\n"
 "Language-Team: Italian <xfce-it-translators@googlegroups.com>\n"
@@ -23,7 +23,7 @@ msgstr "Nero su sfondo bianco"
 
 #: ../colorschemes/dark-pastels.theme.in.h:1
 msgid "Dark Pastels"
-msgstr ""
+msgstr "Pastelli scuri"
 
 #: ../colorschemes/green-on-black.theme.in.h:1
 msgid "Green on Black"
@@ -31,7 +31,7 @@ msgstr "Verde su sfondo nero"
 
 #: ../colorschemes/solarized-dark.theme.in.h:1
 msgid "Solarized"
-msgstr ""
+msgstr "Solarizzato"
 
 #: ../colorschemes/tango.theme.in.h:1
 msgid "Tango"
@@ -147,7 +147,7 @@ msgstr "Segnalare i bug su <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Impossibile registrare il servizio terminale: %s\n"
 
-#: ../terminal/terminal-app.c:617
+#: ../terminal/terminal-app.c:630
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Stringa della geometria non valida \"%s\"\n"
@@ -349,7 +349,7 @@ msgstr ""
 "L'opzione \"--icon/-I\" richiede di specificare il nome dell'icona o il nome "
 "del file come parametro"
 
-#: ../terminal/terminal-options.c:453
+#: ../terminal/terminal-options.c:451
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Opzione \"%s\" sconosciuta"
@@ -472,7 +472,7 @@ msgstr "Control-H"
 
 #: ../terminal/terminal-preferences.glade.h:27
 msgid "Cu_rsor color:"
-msgstr "Colore del cu_rsore"
+msgstr "Colore del cu_rsore:"
 
 #: ../terminal/terminal-preferences.glade.h:28
 msgid "Custom Colors"
@@ -869,7 +869,7 @@ msgstr "_Esegui il comando come shell di login"
 
 #: ../terminal/terminal-preferences.glade.h:114
 msgid "_Text color:"
-msgstr "Co_lore del testo"
+msgstr "Co_lore del testo:"
 
 #: ../terminal/terminal-preferences.glade.h:115
 msgid "_Update utmp/wtmp records when command is launched"
@@ -887,23 +887,55 @@ msgstr "secondi"
 msgid "Terminal"
 msgstr "Terminale"
 
-#: ../terminal/terminal-screen.c:415 ../terminal/terminal-screen.c:647
-#: ../terminal/terminal-screen.c:1742
+#: ../terminal/terminal-screen.c:394 ../terminal/terminal-screen.c:679
+#: ../terminal/terminal-screen.c:1799
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: ../terminal/terminal-screen.c:547
+#: ../terminal/terminal-screen.c:579
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossibile individuare la shell di login"
 
-#: ../terminal/terminal-screen.c:1472 ../terminal/terminal-screen.c:1501
+#: ../terminal/terminal-screen.c:1529 ../terminal/terminal-screen.c:1558
 msgid "Failed to execute child"
 msgstr "Esecuzione del processo figlio fallita"
 
-#: ../terminal/terminal-screen.c:2083
+#: ../terminal/terminal-screen.c:2143
 msgid "Close this tab"
 msgstr "Chiudi questa scheda"
+
+#: ../terminal/terminal-search-dialog.c:91
+msgid "Find"
+msgstr "Trova"
+
+#: ../terminal/terminal-search-dialog.c:96
+msgid "_Previous"
+msgstr "_Precedente"
+
+#: ../terminal/terminal-search-dialog.c:100
+msgid "_Next"
+msgstr "_Successiva"
+
+#: ../terminal/terminal-search-dialog.c:110
+msgid "_Search for:"
+msgstr "_Cerca per:"
+
+#: ../terminal/terminal-search-dialog.c:123
+msgid "C_ase sensitive"
+msgstr "_Maiuscolo/minuscole"
+
+#: ../terminal/terminal-search-dialog.c:128
+msgid "Match as _regular expression"
+msgstr "Fai corrispondere all'espressione r_egolare"
+
+#: ../terminal/terminal-search-dialog.c:133
+msgid "Match _entire word only"
+msgstr "Fai corrispondere solo all'intera paro_la"
+
+#: ../terminal/terminal-search-dialog.c:138
+msgid "_Wrap around"
+msgstr ""
 
 #: ../terminal/terminal-widget.c:324
 msgid "Copy Email Address"
@@ -956,189 +988,201 @@ msgstr ""
 msgid "Failed to open the URL `%s'"
 msgstr "Impossibile aprire la URL '%s'"
 
-#: ../terminal/terminal-window.c:237
+#: ../terminal/terminal-window.c:248
 msgid "_File"
 msgstr "_File"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:249
 msgid "Open _Tab"
 msgstr "Apri _scheda"
 
-#: ../terminal/terminal-window.c:238
+#: ../terminal/terminal-window.c:249
 msgid "Open a new terminal tab"
 msgstr "Apre una nuova scheda"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:250
 msgid "Open T_erminal"
 msgstr "Apri t_erminale"
 
-#: ../terminal/terminal-window.c:239
+#: ../terminal/terminal-window.c:250
 msgid "Open a new terminal window"
 msgstr "Apre una nuova finestra"
 
-#: ../terminal/terminal-window.c:240
+#: ../terminal/terminal-window.c:251
 msgid "_Detach Tab"
 msgstr "_Stacca scheda"
 
-#: ../terminal/terminal-window.c:241 ../terminal/terminal-window.c:557
+#: ../terminal/terminal-window.c:252 ../terminal/terminal-window.c:574
 msgid "Close T_ab"
 msgstr "Chiudi s_cheda"
 
-#: ../terminal/terminal-window.c:242 ../terminal/terminal-window.c:561
+#: ../terminal/terminal-window.c:253 ../terminal/terminal-window.c:578
 msgid "Close _Window"
 msgstr "Chiudi _finestra"
 
-#: ../terminal/terminal-window.c:243
+#: ../terminal/terminal-window.c:254
 msgid "_Edit"
 msgstr "_Modifica"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:255
 msgid "_Copy"
 msgstr "_Copia"
 
-#: ../terminal/terminal-window.c:244
+#: ../terminal/terminal-window.c:255
 msgid "Copy to clipboard"
 msgstr "Copia negli appunti"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:256
 msgid "_Paste"
 msgstr "_Incolla"
 
-#: ../terminal/terminal-window.c:245
+#: ../terminal/terminal-window.c:256
 msgid "Paste from clipboard"
 msgstr "Incolla dagli appunti"
 
-#: ../terminal/terminal-window.c:246
+#: ../terminal/terminal-window.c:257
 msgid "Paste _Selection"
 msgstr "Incolla _selezione"
 
-#: ../terminal/terminal-window.c:247
+#: ../terminal/terminal-window.c:258
 msgid "Select _All"
 msgstr "Seleziona _tutto"
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:259
 msgid "Pr_eferences..."
 msgstr "Pr_eferenze..."
 
-#: ../terminal/terminal-window.c:248
+#: ../terminal/terminal-window.c:259
 msgid "Open the preferences dialog"
 msgstr "Apre la finestra delle preferenze"
 
-#: ../terminal/terminal-window.c:249
+#: ../terminal/terminal-window.c:260
 msgid "_View"
 msgstr "_Visualizza"
 
-#: ../terminal/terminal-window.c:250
+#: ../terminal/terminal-window.c:261
 msgid "_Terminal"
 msgstr "_Terminale"
 
-#: ../terminal/terminal-window.c:251
+#: ../terminal/terminal-window.c:262
 msgid "_Set Title..."
 msgstr "_Imposta titolo"
 
-#: ../terminal/terminal-window.c:252
+#: ../terminal/terminal-window.c:263
+msgid "_Find..."
+msgstr "_Trova"
+
+#: ../terminal/terminal-window.c:264
+msgid "Find Ne_xt"
+msgstr "Trova _successiva"
+
+#: ../terminal/terminal-window.c:265
+msgid "Find Pre_vious"
+msgstr "Trova _precedente"
+
+#: ../terminal/terminal-window.c:266
+msgid "_Reset"
+msgstr "_Reimposta"
+
+#: ../terminal/terminal-window.c:267
 #, fuzzy
-msgid "_Clear Scrollback"
+msgid "_Clear Scrollback and Reset"
 msgstr "Sco_rrimento:"
 
-#: ../terminal/terminal-window.c:253
-msgid "Clear Scrollback and _Reset"
-msgstr ""
+#: ../terminal/terminal-window.c:268
+msgid "T_abs"
+msgstr "Sc_hede"
 
-#: ../terminal/terminal-window.c:254
-msgid "_Go"
-msgstr "_Vai"
-
-#: ../terminal/terminal-window.c:255
+#: ../terminal/terminal-window.c:269
 msgid "_Previous Tab"
 msgstr "Scheda _precedente"
 
-#: ../terminal/terminal-window.c:255
+#: ../terminal/terminal-window.c:269
 msgid "Switch to previous tab"
 msgstr "Seleziona la scheda precedente"
 
-#: ../terminal/terminal-window.c:256
+#: ../terminal/terminal-window.c:270
 msgid "_Next Tab"
 msgstr "Scheda _successiva"
 
-#: ../terminal/terminal-window.c:256
+#: ../terminal/terminal-window.c:270
 msgid "Switch to next tab"
 msgstr "Seleziona la scheda successiva"
 
-#: ../terminal/terminal-window.c:257
+#: ../terminal/terminal-window.c:271
 msgid "Move Tab _Left"
 msgstr "Sposta scheda a sinist_ra"
 
-#: ../terminal/terminal-window.c:258
+#: ../terminal/terminal-window.c:272
 msgid "Move Tab _Right"
 msgstr "Sposta scheda a _destra"
 
-#: ../terminal/terminal-window.c:259
+#: ../terminal/terminal-window.c:273
 msgid "_Help"
 msgstr "_Aiuto"
 
-#: ../terminal/terminal-window.c:260
+#: ../terminal/terminal-window.c:274
 msgid "_Contents"
 msgstr "_Contenuti"
 
-#: ../terminal/terminal-window.c:260
+#: ../terminal/terminal-window.c:274
 msgid "Display help contents"
 msgstr "Mostra il contenuto dell'aiuto"
 
-#: ../terminal/terminal-window.c:261
+#: ../terminal/terminal-window.c:275
 msgid "_Report a bug"
 msgstr "_Segnala un problema"
 
-#: ../terminal/terminal-window.c:262
+#: ../terminal/terminal-window.c:276
 msgid "_About"
 msgstr "Inform_azioni"
 
-#: ../terminal/terminal-window.c:263
+#: ../terminal/terminal-window.c:277
 msgid "_Input Methods"
 msgstr "Modalità di _input"
 
-#: ../terminal/terminal-window.c:268
+#: ../terminal/terminal-window.c:282
 msgid "Show _Menubar"
 msgstr "Mostra la barra dei _menu"
 
-#: ../terminal/terminal-window.c:268
+#: ../terminal/terminal-window.c:282
 msgid "Show/hide the menubar"
 msgstr "Mostra/Nasconde la barra dei menu"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:283
 msgid "Show _Toolbar"
 msgstr "Mostra barra s_trumenti"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:283
 msgid "Show/hide the toolbar"
 msgstr "Mostra/nasconde la barra degli strumenti"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:284
 msgid "Show Window _Borders"
 msgstr "Mostra i _bordi della finestra"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:284
 msgid "Show/hide the window decorations"
 msgstr "Mostra/nascondi le decorazioni della finestra"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:285
 msgid "_Fullscreen"
 msgstr "_Schermo intero"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:285
 msgid "Toggle fullscreen mode"
 msgstr "Abilita/Disabilita la modalità schermo intero"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:422
+#: ../terminal/terminal-window.c:436
 msgid "Set _Encoding"
 msgstr "Imposta _codifica"
 
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:566
 msgid "Warning"
 msgstr "Attenzione"
 
-#: ../terminal/terminal-window.c:580
+#: ../terminal/terminal-window.c:597
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
@@ -1147,29 +1191,36 @@ msgstr ""
 "Questa finestra ha %d schede aperte. Chiudendo\n"
 "questa finestra verranno chiuse anche tutte le schede."
 
-#: ../terminal/terminal-window.c:583
+#: ../terminal/terminal-window.c:600
 msgid "Close all tabs?"
 msgstr "Chiudere tutte le schede?"
 
-#: ../terminal/terminal-window.c:596
+#: ../terminal/terminal-window.c:613
 msgid "Do _not ask me again"
 msgstr "_Non chiedere nuovamente"
 
-#: ../terminal/terminal-window.c:1640
+#: ../terminal/terminal-window.c:1660
 msgid "Window Title|Set Title"
 msgstr "Imposta titolo"
 
-#: ../terminal/terminal-window.c:1653
+#: ../terminal/terminal-window.c:1673
 msgid "Title:"
 msgstr "Titolo:"
 
-#: ../terminal/terminal-window.c:1665
+#: ../terminal/terminal-window.c:1685
 msgid "Enter the title for the current terminal tab"
 msgstr "Inserire il titolo per la scheda corrente"
+
+#: ../terminal/terminal-window.c:1737
+msgid "Failed to create the regular expression"
+msgstr "Creazione dell'espressione regolare non riuscita"
 
 #: ../xfce4-terminal.desktop.in.h:1
 msgid "Terminal Emulator"
 msgstr "Emulatore di Terminale"
+
+#~ msgid "_Go"
+#~ msgstr "_Vai"
 
 #~ msgid "C_lose Tab"
 #~ msgstr "_Chiudi scheda"
@@ -1197,9 +1248,6 @@ msgstr "Emulatore di Terminale"
 
 #~ msgid "Set a custom title for the current tab"
 #~ msgstr "Imposta un titolo per la scheda corrente"
-
-#~ msgid "_Reset"
-#~ msgstr "_Reimposta"
 
 #~ msgid "Reset and C_lear"
 #~ msgstr "Reimposta e _cancella"
@@ -1341,9 +1389,6 @@ msgstr "Emulatore di Terminale"
 
 #~ msgid "Reset and Clear"
 #~ msgstr "Reimposta e cancella"
-
-#~ msgid "Previous Tab"
-#~ msgstr "Scheda precedente"
 
 #~ msgid "Next Tab"
 #~ msgstr "Scheda successiva"
