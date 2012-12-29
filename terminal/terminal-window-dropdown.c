@@ -430,7 +430,8 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
   /* check if keep open is not enabled */
   if (gtk_widget_get_visible (widget)
       && TERMINAL_WINDOW (dropdown)->n_child_windows == 0
-      && gtk_grab_get_current () == NULL) /* popup menu check */
+      && gtk_grab_get_current () == NULL
+      && dropdown->animation_dir != ANIMATION_DIR_UP) /* popup menu check */
     {
       if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dropdown->keep_open)))
         {
