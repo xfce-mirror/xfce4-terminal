@@ -129,7 +129,7 @@ usage (void)
            _("directory"));
 
   g_print ("%s:\n"
-           "  --display=%s; --geometry=%s; --role=%s;\n"
+           "  --display=%s; --geometry=%s; --role=%s; --drop-down;\n"
            "  --startup-id=%s; -I, --icon=%s; --fullscreen; --maximize;\n"
            "  --show-menubar, --hide-menubar; --show-borders, --hide-borders;\n"
            "  --show-toolbar, --hide-toolbar\n\n",

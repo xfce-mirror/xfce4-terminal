@@ -30,7 +30,7 @@ xfce4_terminal_headers = \
 	terminal-private.h \
 	terminal-screen.h \
 	terminal-widget.h \
-	terminal-window.h \ \
+	terminal-window.h \
 	terminal-window-dropdown.h
 
 xfce4_terminal_SOURCES = \
