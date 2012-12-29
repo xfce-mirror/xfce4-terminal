@@ -13,7 +13,8 @@ xfce4_terminal_built_sources = \
 	terminal-enum-types.c \
 	terminal-enum-types.h \
 	terminal-marshal.c \
-	terminal-marshal.h
+	terminal-marshal.h \
+	terminal-window-ui.h
 
 xfce4_terminal_headers = \
 	terminal-app.h \
@@ -24,13 +25,13 @@ xfce4_terminal_headers = \
 	terminal-options.h \
 	terminal-preferences.h \
 	terminal-preferences-dialog.h \
+	terminal-preferences-dropdown-dialog.h \
 	terminal-search-dialog.h \
 	terminal-private.h \
 	terminal-screen.h \
 	terminal-widget.h \
 	terminal-window.h \ \
-	terminal-window-dropdown.h \
-	terminal-window-ui.h
+	terminal-window-dropdown.h
 
 xfce4_terminal_SOURCES = \
 	$(xfce4_terminal_built_sources) \
@@ -44,6 +45,7 @@ xfce4_terminal_SOURCES = \
 	terminal-options.c \
 	terminal-preferences.c \
 	terminal-preferences-dialog.c \
+	terminal-preferences-dropdown-dialog.c \
 	terminal-search-dialog.c \
 	terminal-screen.c \
 	terminal-widget.c \
@@ -72,7 +74,9 @@ xfce4_terminal_LDADD = \
 	$(TERMINAL_LIBS)
 
 uidir = $(datadir)/xfce4/terminal
-ui_DATA = terminal-preferences.ui
+ui_DATA = \
+	terminal-preferences.ui \
+	terminal-preferences-dropdown.ui
 
 ##
 ## Rules to auto-generate built sources
@@ -91,20 +95,21 @@ CLEANFILES = \
 	xgen-tmh
 
 DISTCLEANFILES = \
+	$(ui_DATA) \
+	$(xfce4_terminal_built_sources) \
 	stamp-terminal-enum-types.h \
-	stamp-terminal-marshal.h \
-	terminal-window-ui.h \
-	terminal-preferences.ui \
-	$(Terminal_built_sources)
+	stamp-terminal-marshal.h
 
 BUILT_SOURCES = \
-	terminal-window-ui.h \
 	$(xfce4_terminal_built_sources)
 
 terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
 	$(AM_V_GEN) xdt-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
 
 terminal-preferences.ui: $(srcdir)/terminal-preferences.glade Makefile
+	$(AM_V_GEN) $(XMLLINT) --nonet --noblanks $< > $@ || cat $< > $@
+
+terminal-preferences-dropdown.ui: $(srcdir)/terminal-preferences-dropdown.glade Makefile
 	$(AM_V_GEN) $(XMLLINT) --nonet --noblanks $< > $@ || cat $< > $@
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
@@ -154,11 +159,12 @@ endif
 clean-local:
 	rm -f *.core core core.*
 
-EXTRA_DIST =\
+EXTRA_DIST = \
 	$(ui_DATA) \
 	terminal-config.h.in \
 	terminal-marshal.list \
 	terminal-window-ui.xml \
-	terminal-preferences.glade
+	terminal-preferences.glade \
+	terminal-preferences-dropdown.glade
 
 # vi:set ts=8 sw=8 noet ai nocindent:

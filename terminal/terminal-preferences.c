@@ -61,6 +61,15 @@ enum
   PROP_COLOR_PALETTE,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_DROPDOWN_KEEP_OPEN_DEFAULT,
+  PROP_DROPDOWN_KEEP_ABOVE,
+  PROP_DROPDOWN_TOGGLE_FOCUS,
+  PROP_DROPDOWN_STATUS_ICON,
+  PROP_DROPDOWN_WIDTH,
+  PROP_DROPDOWN_HEIGHT,
+  PROP_DROPDOWN_OPACITY,
+  PROP_DROPDOWN_POSITION,
+  PROP_DROPDOWN_MOVE_TO_ACTIVE,
   PROP_ENCODING,
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_NAME,
@@ -480,11 +489,104 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
+   * TerminalPreferences:dropdown-keep-open-default:
+   **/
+  preferences_props[PROP_DROPDOWN_KEEP_OPEN_DEFAULT] =
+      g_param_spec_boolean ("dropdown-keep-open-default",
+                            NULL,
+                            "DropdownKeepOpenDefault",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+
+  /**
+   * TerminalPreferences:dropdown-keep-above:
+   **/
+  preferences_props[PROP_DROPDOWN_KEEP_ABOVE] =
+      g_param_spec_boolean ("dropdown-keep-above",
+                            NULL,
+                            "DropdownKeepAbove",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+
+  /**
+   * TerminalPreferences:dropdown-toggle-focus:
+   **/
+  preferences_props[PROP_DROPDOWN_TOGGLE_FOCUS] =
+      g_param_spec_boolean ("dropdown-toggle-focus",
+                            NULL,
+                            "DropdownToggleFocus",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-status-icon:
+   **/
+  preferences_props[PROP_DROPDOWN_STATUS_ICON] =
+      g_param_spec_boolean ("dropdown-status-icon",
+                            NULL,
+                            "DropdownStatusIcon",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+
+  /**
+   * TerminalPreferences:dropdown-width:
+   **/
+  preferences_props[PROP_DROPDOWN_WIDTH] =
+      g_param_spec_uint ("dropdown-width",
+                         NULL,
+                         "DropdownWidth",
+                         10, 100, 80,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-height:
+   **/
+  preferences_props[PROP_DROPDOWN_HEIGHT] =
+      g_param_spec_uint ("dropdown-height",
+                         NULL,
+                         "DropdownHeight",
+                         10, 100, 50,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-opacity:
+   **/
+  preferences_props[PROP_DROPDOWN_OPACITY] =
+      g_param_spec_uint ("dropdown-opacity",
+                         NULL,
+                         "DropdownOpacity",
+                         0, 100, 100,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-position:
+   **/
+  preferences_props[PROP_DROPDOWN_POSITION] =
+      g_param_spec_uint ("dropdown-position",
+                         NULL,
+                         "DropdownPosition",
+                         0, 100, 0,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:move-to-active:
+   **/
+  preferences_props[PROP_DROPDOWN_MOVE_TO_ACTIVE] =
+      g_param_spec_boolean ("dropdown-move-to-active",
+                            NULL,
+                            "DropdownMoveToActive",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
    * TerminalPreferences:encoding:
    **/
   preferences_props[PROP_ENCODING] =
       g_param_spec_string ("encoding",
-                           "encodinge",
+                           NULL,
                            "Encoding",
                            NULL,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);

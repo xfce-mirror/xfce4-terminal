@@ -43,22 +43,41 @@
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-dialogs.h>
 #include <terminal/terminal-window-dropdown.h>
+#include <terminal/terminal-preferences-dropdown-dialog.h>
+
+
+
+enum
+{
+  PROP_0,
+  PROP_DROPDOWN_WIDTH,
+  PROP_DROPDOWN_HEIGHT,
+  PROP_DROPDOWN_POSITION,
+  PROP_DROPDOWN_OPACITY,
+  PROP_DROPDOWN_STATUS_ICON,
+  PROP_DROPDOWN_KEEP_ABOVE,
+  N_PROPERTIES
+};
 
 
 
 static void            terminal_window_dropdown_finalize                      (GObject                *object);
+static void            terminal_window_dropdown_set_property                  (GObject                *object,
+                                                                               guint                   prop_id,
+                                                                               const GValue           *value,
+                                                                               GParamSpec             *pspec);
 static gboolean        terminal_window_dropdown_focus_out_event               (GtkWidget              *widget,
                                                                                GdkEventFocus          *event);
-static void            terminal_window_dropdown_position                      (TerminalWindowDropdown *dropdown);
+static gboolean        terminal_window_dropdown_status_icon_press_event       (GtkStatusIcon          *status_icon,
+                                                                               GdkEventButton         *event,
+                                                                               TerminalWindowDropdown *dropdown);
+static void            terminal_window_dropdown_position                      (TerminalWindowDropdown *dropdown,
+                                                                               guint32                 timestamp);
+static void            terminal_window_dropdown_toggle_real                   (TerminalWindowDropdown *dropdown,
+                                                                               guint32                 timestamp);
 static void            terminal_window_dropdown_preferences                   (TerminalWindowDropdown *dropdown);
 
 
-typedef enum
-{
-  DROPDOWN_STATE_HIDDEN,
-  DROPDOWN_STATE_VISIBLE,
-}
-DropdownState;
 
 struct _TerminalWindowDropdownClass
 {
@@ -69,17 +88,32 @@ struct _TerminalWindowDropdown
 {
   TerminalWindow __parent__;
 
-  /* ui widgets */
-  GtkWidget     *keep_open;
+  TerminalPreferences *preferences;
 
-  /* size */
-  gdouble        rel_width;
-  gdouble        rel_height;
+  /* ui widgets */
+  GtkWidget           *keep_open;
+
+  /* measurements */
+  gdouble              rel_width;
+  gdouble              rel_height;
+  gdouble              rel_position;
+
+  GtkWidget           *preferences_dialog;
+
+  GtkStatusIcon       *status_icon;
+
+  /* last screen and monitor */
+  GdkScreen           *screen;
+  gint                 monitor_num;
 };
 
 
 
 G_DEFINE_TYPE (TerminalWindowDropdown, terminal_window_dropdown, TERMINAL_TYPE_WINDOW)
+
+
+
+static GParamSpec *dropdown_props[N_PROPERTIES] = { NULL, };
 
 
 
@@ -90,10 +124,50 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
   GtkWidgetClass *gtkwidget_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->set_property = terminal_window_dropdown_set_property;
   gobject_class->finalize = terminal_window_dropdown_finalize;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->focus_out_event = terminal_window_dropdown_focus_out_event;
+
+  dropdown_props[PROP_DROPDOWN_WIDTH] =
+      g_param_spec_uint ("dropdown-width",
+                         NULL, NULL,
+                         10, 100, 80,
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  dropdown_props[PROP_DROPDOWN_HEIGHT] =
+      g_param_spec_uint ("dropdown-height",
+                         NULL, NULL,
+                         10, 100, 50,
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  dropdown_props[PROP_DROPDOWN_POSITION] =
+      g_param_spec_uint ("dropdown-position",
+                         NULL, NULL,
+                         0, 100, 0,
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  dropdown_props[PROP_DROPDOWN_OPACITY] =
+      g_param_spec_uint ("dropdown-opacity",
+                         NULL, NULL,
+                         0, 100, 100,
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  dropdown_props[PROP_DROPDOWN_STATUS_ICON] =
+      g_param_spec_boolean ("dropdown-status-icon",
+                            NULL, NULL,
+                            TRUE,
+                            G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  dropdown_props[PROP_DROPDOWN_KEEP_ABOVE] =
+      g_param_spec_boolean ("dropdown-keep-above",
+                            NULL, NULL,
+                            TRUE,
+                            G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  /* install all properties */
+  g_object_class_install_properties (gobject_class, N_PROPERTIES, dropdown_props);
 }
 
 
@@ -106,20 +180,23 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   GtkWidget      *hbox;
   GtkWidget      *button;
   GtkWidget      *img;
+  guint           n;
+  const gchar    *name;
+  gboolean        keep_open;
+
+  dropdown->preferences = terminal_preferences_get ();
+  dropdown->rel_width = 0.80;
+  dropdown->rel_height = 0.50;
+  dropdown->rel_position = 0.50;
 
   /* shared setting to disable some functionality in TerminalWindow */
   window->drop_down = TRUE;
 
-  dropdown->rel_width = 0.8;
-  dropdown->rel_height = 0.6;
-
   /* default window settings */
   gtk_window_set_resizable (GTK_WINDOW (dropdown), FALSE);
   gtk_window_set_decorated (GTK_WINDOW (dropdown), FALSE);
-  gtk_window_set_keep_above (GTK_WINDOW (dropdown), TRUE);
   gtk_window_set_gravity (GTK_WINDOW (dropdown), GDK_GRAVITY_STATIC);
-  gtk_window_set_type_hint  (GTK_WINDOW (dropdown), GDK_WINDOW_TYPE_HINT_DIALOG); /* avoid smart placement */
-  gtk_window_set_opacity (GTK_WINDOW (dropdown), 0.85);
+  gtk_window_set_type_hint  (GTK_WINDOW (dropdown), GDK_WINDOW_TYPE_HINT_DIALOG); /* avoids smart placement */
   gtk_window_stick (GTK_WINDOW (dropdown));
 
   /* this avoids to return focus to the window after dialog changes,
@@ -148,6 +225,9 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   gtk_widget_show (button);
 
+  g_object_get (G_OBJECT (dropdown->preferences), "dropdown-keep-open-default", &keep_open, NULL);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
+
   img = gtk_image_new_from_stock (GTK_STOCK_GOTO_BOTTOM, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
   gtk_widget_show (img);
@@ -164,6 +244,86 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   img = gtk_image_new_from_stock (GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
   gtk_widget_show (img);
+
+  /* connect bindings */
+  for (n = 1; n < N_PROPERTIES; n++)
+    {
+      name = g_param_spec_get_name (dropdown_props[n]);
+      g_object_bind_property (G_OBJECT (dropdown->preferences), name,
+                              G_OBJECT (dropdown), name,
+                              G_BINDING_SYNC_CREATE);
+    }
+}
+
+
+
+static void
+terminal_window_dropdown_set_property (GObject      *object,
+                                       guint         prop_id,
+                                       const GValue *value,
+                                       GParamSpec   *pspec)
+{
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (object);
+  gdouble                 opacity;
+  GdkScreen              *screen;
+
+  switch (prop_id)
+    {
+    case PROP_DROPDOWN_WIDTH:
+      dropdown->rel_width = g_value_get_uint (value) / 100.0;
+      break;
+
+    case PROP_DROPDOWN_HEIGHT:
+      dropdown->rel_height = g_value_get_uint (value) / 100.0;
+      break;
+
+    case PROP_DROPDOWN_POSITION:
+      dropdown->rel_position = g_value_get_uint (value) / 100.0;
+      break;
+
+    case PROP_DROPDOWN_OPACITY:
+      screen = gtk_window_get_screen (GTK_WINDOW (dropdown));
+      if (gdk_screen_is_composited (screen))
+        opacity = g_value_get_uint (value) / 100.0;
+      else
+        opacity = 1.00;
+
+      gtk_window_set_opacity (GTK_WINDOW (dropdown), opacity);
+      return;
+
+    case PROP_DROPDOWN_STATUS_ICON:
+      if (g_value_get_boolean (value))
+        {
+          if (dropdown->status_icon == NULL)
+            {
+              dropdown->status_icon = gtk_status_icon_new_from_icon_name ("utilities-terminal");
+              gtk_status_icon_set_name (dropdown->status_icon, PACKAGE_NAME);
+              gtk_status_icon_set_title (dropdown->status_icon, _("Drop-down Terminal"));
+              gtk_status_icon_set_tooltip_text (dropdown->status_icon, _("Toggle Drop-down Terminal"));
+              g_signal_connect (G_OBJECT (dropdown->status_icon), "button-press-event",
+                  G_CALLBACK (terminal_window_dropdown_status_icon_press_event), dropdown);
+            }
+        }
+      else if (dropdown->status_icon != NULL)
+        {
+          g_object_unref (G_OBJECT (dropdown->status_icon));
+          dropdown->status_icon = NULL;
+        }
+      return;
+
+    case PROP_DROPDOWN_KEEP_ABOVE:
+      gtk_window_set_keep_above (GTK_WINDOW (dropdown), g_value_get_boolean (value));
+      if (dropdown->preferences_dialog != NULL)
+        terminal_activate_window (GTK_WINDOW (dropdown->preferences_dialog));
+      return;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      return;
+    }
+
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    terminal_window_dropdown_position (dropdown, 0);
 }
 
 
@@ -171,7 +331,12 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 static void
 terminal_window_dropdown_finalize (GObject *object)
 {
-  //TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (object);
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (object);
+
+  g_object_unref (dropdown->preferences);
+
+  if (dropdown->status_icon != NULL)
+    g_object_unref (G_OBJECT (dropdown->status_icon));
 
   (*G_OBJECT_CLASS (terminal_window_dropdown_parent_class)->finalize) (object);
 }
@@ -192,6 +357,7 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
   /* check if keep open is not enabled */
   if (gtk_widget_get_visible (widget)
       && TERMINAL_WINDOW (dropdown)->n_child_windows == 0
+      && dropdown->preferences_dialog == NULL
       && gtk_grab_get_current () == NULL /* popup menu check */
       && !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dropdown->keep_open)))
     {
@@ -212,29 +378,47 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
 
 
 
+static gboolean
+terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status_icon,
+                                                  GdkEventButton         *event,
+                                                  TerminalWindowDropdown *dropdown)
+{
+  terminal_window_dropdown_toggle_real (dropdown, event->time);
+  return FALSE;
+}
+
+
+
 static void
-terminal_window_dropdown_position (TerminalWindowDropdown *dropdown)
+terminal_window_dropdown_position (TerminalWindowDropdown *dropdown,
+                                   guint32                 timestamp)
 {
   TerminalWindow *window = TERMINAL_WINDOW (dropdown);
   gint            w, h;
   GdkRectangle    monitor_geo;
   gint            x_dest, y_dest;
-  GdkScreen      *screen;
-  gint            monitor_num;
   gint            xpad, ypad;
   glong           char_width, char_height;
   GtkRequisition  req1, req2;
+  gboolean        move_to_active;
 
-  /* nothing to do if the window is hidden */
+  /* show window */
   if (!gtk_widget_get_visible (GTK_WIDGET (dropdown)))
-    return;
+    gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
+
+  g_object_get (G_OBJECT (dropdown->preferences),
+                "dropdown-move-to-active", &move_to_active, NULL);
+
+  if (move_to_active
+      || dropdown->screen == NULL
+      || dropdown->monitor_num == -1)
+    dropdown->screen = xfce_gdk_screen_get_active (&dropdown->monitor_num);
 
   /* get the active monitor size */
-  screen = xfce_gdk_screen_get_active (&monitor_num);
-  gdk_screen_get_monitor_geometry (screen, monitor_num, &monitor_geo);
+  gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &monitor_geo);
 
   /* move window to correct screen */
-  gtk_window_set_screen (GTK_WINDOW (dropdown), screen);
+  gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
 
   /* calculate size */
   w = monitor_geo.width * dropdown->rel_width;
@@ -257,7 +441,7 @@ terminal_window_dropdown_position (TerminalWindowDropdown *dropdown)
   gtk_widget_set_size_request (window->notebook, w, h);
 
   /* calc position */
-  x_dest = monitor_geo.x + (monitor_geo.width - w) / 2;
+  x_dest = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
   y_dest = monitor_geo.y;
 
   /* move */
@@ -267,9 +451,54 @@ terminal_window_dropdown_position (TerminalWindowDropdown *dropdown)
 
 
 static void
+terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
+                                      guint32                 timestamp)
+{
+  gboolean toggle_focus;
+
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    {
+      g_object_get (G_OBJECT (dropdown->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
+
+      if (!toggle_focus)
+        {
+          /* hide */
+          gtk_widget_hide (GTK_WIDGET (dropdown));
+        }
+      else
+        {
+          terminal_window_dropdown_position (dropdown, timestamp);
+          terminal_activate_window (GTK_WINDOW (dropdown));
+        }
+    }
+  else
+    {
+      /* popup */
+      terminal_window_dropdown_position (dropdown, timestamp);
+    }
+}
+
+
+
+static void
 terminal_window_dropdown_preferences (TerminalWindowDropdown *dropdown)
 {
+  if (dropdown->preferences_dialog == NULL)
+    {
+      dropdown->preferences_dialog = terminal_preferences_dropdown_dialog_new ();
+      if (G_LIKELY (dropdown->preferences_dialog != NULL))
+        {
+          g_object_add_weak_pointer (G_OBJECT (dropdown->preferences_dialog),
+                                     (gpointer) &dropdown->preferences_dialog);
+        }
+    }
 
+  if (dropdown->preferences_dialog != NULL)
+    {
+      gtk_window_set_transient_for (GTK_WINDOW (dropdown->preferences_dialog), GTK_WINDOW (dropdown));
+      gtk_window_present (GTK_WINDOW (dropdown->preferences_dialog));
+      gtk_window_set_modal (GTK_WINDOW (dropdown->preferences_dialog), TRUE);
+    }
 }
 
 
@@ -317,20 +546,9 @@ terminal_window_dropdown_toggle (TerminalWindowDropdown *dropdown,
 {
   guint32 timestamp;
 
-  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
-    {
-      /* hide */
-      gtk_widget_hide (GTK_WIDGET (dropdown));
-    }
-  else
-    {
-      /* show with event time */
-      timestamp = terminal_window_dropdown_get_timestamp (GTK_WIDGET (dropdown), startup_id);
-      gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
-
-      /* check position */
-      terminal_window_dropdown_position (dropdown);
-    }
+  /* toggle window */
+  timestamp = terminal_window_dropdown_get_timestamp (GTK_WIDGET (dropdown), startup_id);
+  terminal_window_dropdown_toggle_real (dropdown, timestamp);
 
   /* window is focussed or hidden */
   if (startup_id != NULL)

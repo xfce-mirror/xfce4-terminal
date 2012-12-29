@@ -733,20 +733,17 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
 
 /**
  * terminal_preferences_dialog_new:
- * @parent      : A #GtkWindow or %NULL.
  *
  * Return value :
  **/
 GtkWidget*
-terminal_preferences_dialog_new (GtkWindow *parent)
+terminal_preferences_dialog_new (void)
 {
   GtkBuilder *builder;
   GObject    *dialog;
 
   builder = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
   dialog = gtk_builder_get_object (builder, "dialog");
-  if (parent != NULL && dialog != NULL)
-    gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
 
   return GTK_WIDGET (dialog);
 }

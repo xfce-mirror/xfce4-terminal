@@ -1369,25 +1369,20 @@ static void
 terminal_window_action_prefs (GtkAction      *action,
                               TerminalWindow *window)
 {
-  /* check if we already have a preferences dialog instance */
-  if (G_UNLIKELY (window->preferences_dialog != NULL))
+  if (window->preferences_dialog == NULL)
     {
-      /* move to the current screen and make transient for this window */
-      gtk_window_set_screen (GTK_WINDOW (window->preferences_dialog), gtk_widget_get_screen (GTK_WIDGET (window)));
-      gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
-
-      /* present the preferences dialog on the current workspace */
-      gtk_window_present (GTK_WINDOW (window->preferences_dialog));
-    }
-  else
-    {
-      /* allocate a new preferences dialog instance */
-      window->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
+      window->preferences_dialog = terminal_preferences_dialog_new ();
       if (G_LIKELY (window->preferences_dialog != NULL))
         {
-          g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog), (gpointer) &window->preferences_dialog);
-          gtk_widget_show (window->preferences_dialog);
+          g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog),
+                                     (gpointer) &window->preferences_dialog);
         }
+    }
+
+  if (window->preferences_dialog != NULL)
+    {
+      gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
+      gtk_window_present (GTK_WINDOW (window->preferences_dialog));
     }
 }
 
