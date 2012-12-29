@@ -377,7 +377,6 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
   /* check if keep open is not enabled */
   if (gtk_widget_get_visible (widget)
       && TERMINAL_WINDOW (dropdown)->n_child_windows == 0
-      && dropdown->preferences_dialog == NULL
       && gtk_grab_get_current () == NULL) /* popup menu check */
     {
       if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dropdown->keep_open)))
@@ -511,6 +510,20 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
 
 
 static void
+terminal_window_dropdown_preferences_died (gpointer  user_data,
+                                           GObject  *where_the_object_was)
+{
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (user_data);
+
+  dropdown->preferences_dialog = NULL;
+  TERMINAL_WINDOW (dropdown)->n_child_windows--;
+
+  terminal_activate_window (GTK_WINDOW (dropdown));
+}
+
+
+
+static void
 terminal_window_dropdown_preferences (TerminalWindowDropdown *dropdown)
 {
   if (dropdown->preferences_dialog == NULL)
@@ -518,8 +531,9 @@ terminal_window_dropdown_preferences (TerminalWindowDropdown *dropdown)
       dropdown->preferences_dialog = terminal_preferences_dropdown_dialog_new ();
       if (G_LIKELY (dropdown->preferences_dialog != NULL))
         {
-          g_object_add_weak_pointer (G_OBJECT (dropdown->preferences_dialog),
-                                     (gpointer) &dropdown->preferences_dialog);
+          TERMINAL_WINDOW (dropdown)->n_child_windows++;
+          g_object_weak_ref (G_OBJECT (dropdown->preferences_dialog),
+                             terminal_window_dropdown_preferences_died, dropdown);
         }
     }
 
