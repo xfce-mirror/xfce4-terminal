@@ -61,6 +61,7 @@ struct _TerminalWindow
   guint                tabs_menu_merge_id;
   GSList              *tabs_menu_actions;
 
+  GtkWidget           *vbox;
   GtkWidget           *menubar;
   GtkWidget           *toolbar;
   GtkWidget           *notebook;

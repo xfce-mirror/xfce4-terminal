@@ -329,7 +329,7 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect_after (G_OBJECT (accel_group), "accel-activate",
       G_CALLBACK (terminal_window_accel_activate), window);
 
-  vbox = gtk_vbox_new (FALSE, 0);
+  window->vbox = vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
   gtk_widget_show (vbox);
 
@@ -1408,8 +1408,6 @@ static void
 terminal_window_action_show_menubar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
-  GtkWidget *vbox;
-
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
 
   terminal_window_size_push (window);
@@ -1418,10 +1416,9 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
     {
       if (G_LIKELY (window->menubar == NULL))
         {
-          vbox = gtk_bin_get_child (GTK_BIN (window));
           window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
-          gtk_box_pack_start (GTK_BOX (vbox), window->menubar, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (vbox), window->menubar, 0);
+          gtk_box_pack_start (GTK_BOX (window->vbox), window->menubar, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (window->vbox), window->menubar, 0);
         }
 
       gtk_widget_show (window->menubar);
@@ -1440,8 +1437,6 @@ static void
 terminal_window_action_show_toolbar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
-  GtkWidget *vbox;
-
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
   terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->action_group));
 
@@ -1451,10 +1446,9 @@ terminal_window_action_show_toolbar (GtkToggleAction *action,
     {
       if (window->toolbar == NULL)
         {
-          vbox = gtk_bin_get_child (GTK_BIN (window));
           window->toolbar = gtk_ui_manager_get_widget (window->ui_manager, "/main-toolbar");
-          gtk_box_pack_start (GTK_BOX (vbox), window->toolbar, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (vbox), window->toolbar, window->menubar != NULL ? 1 : 0);
+          gtk_box_pack_start (GTK_BOX (window->vbox), window->toolbar, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (window->vbox), window->toolbar, window->menubar != NULL ? 1 : 0);
         }
 
       gtk_widget_show (window->toolbar);
