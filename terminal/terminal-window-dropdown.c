@@ -541,6 +541,7 @@ terminal_window_dropdown_animate_down (gpointer data)
 
   /* resize */
   gtk_widget_set_size_request (dropdown->viewport, req2.width, viewport_h);
+  gtk_window_resize (GTK_WINDOW (dropdown), req2.width, viewport_h);
 
   return viewport_h < req1.height;
 }
@@ -711,13 +712,19 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   if (!visible)
     gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
 
-  if (dropdown->animation_time > 0)
+  if (dropdown->animation_time > 0
+      && viewport_h < h)
     {
       dropdown->animation_dir = ANIMATION_DIR_DOWN;
       dropdown->animation_timeout_id =
           g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
                               terminal_window_dropdown_animate_down, dropdown,
                               terminal_window_dropdown_animate_destroyed);
+    }
+  else
+    {
+      /* make sure all the content fits */
+      gtk_window_resize (GTK_WINDOW (dropdown), w, h);
     }
 }
 
