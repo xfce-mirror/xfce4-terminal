@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: terminal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-28 09:06+0000\n"
+"POT-Creation-Date: 2012-12-29 21:44+0000\n"
 "PO-Revision-Date: 2011-09-08 12:16+0200\n"
 "Last-Translator: Pjotr\n"
 "Language-Team: Dutch (Flemish)\n"
@@ -145,32 +145,24 @@ msgstr "Gelieve fouten te melden aan <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan terminaldienst niet registreren: %s\n"
 
-#: ../terminal/terminal-app.c:630
+#: ../terminal/terminal-app.c:682
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ongeldig geometrie-tekstsnoer '%s'\n"
 
-#: ../terminal/terminal-gdbus.c:81
-msgid "User id mismatch"
-msgstr "Gebruikers-id komt niet overeen"
-
-#: ../terminal/terminal-gdbus.c:87
-msgid "Display mismatch"
-msgstr "Scherm komt niet overeen"
-
-#: ../terminal/terminal-dialogs.c:74
+#: ../terminal/terminal-dialogs.c:80
 #: ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "Xfce Terminalvenster"
 
-#: ../terminal/terminal-dialogs.c:81
+#: ../terminal/terminal-dialogs.c:87
 msgid "translator-credits"
 msgstr ""
 "Stephan Arts <stephan@xfce.org>\n"
 "Jasper Huijsmans <jasper@xfce.org>\n"
 "Pjotr"
 
-#: ../terminal/terminal-dialogs.c:84
+#: ../terminal/terminal-dialogs.c:90
 msgid "Visit Terminal website"
 msgstr "Bezoek de Terminal-website"
 
@@ -248,6 +240,14 @@ msgstr "Anders"
 #, c-format
 msgid "Default (%s)"
 msgstr "Standaard (%s)"
+
+#: ../terminal/terminal-gdbus.c:81
+msgid "User id mismatch"
+msgstr "Gebruikers-id komt niet overeen"
+
+#: ../terminal/terminal-gdbus.c:87
+msgid "Display mismatch"
+msgstr "Scherm komt niet overeen"
 
 #: ../terminal/terminal-options.c:213
 #, c-format
@@ -330,7 +330,9 @@ msgstr ""
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
-msgstr "Optie '--sm-client-id' vereist dat u het unieke sessie-ID opgeeft als zijn parameter"
+msgstr ""
+"Optie '--sm-client-id' vereist dat u het unieke sessie-ID opgeeft als zijn "
+"parameter"
 
 #: ../terminal/terminal-options.c:372
 #, c-format
@@ -349,7 +351,7 @@ msgstr ""
 "De optie \"--icon/-I\" vereist dat u een pictogramnaam of bestandnaam "
 "opgeeft als zijn parameter"
 
-#: ../terminal/terminal-options.c:453
+#: ../terminal/terminal-options.c:455
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Onbekende optie '%s'"
@@ -365,6 +367,424 @@ msgstr "Afbeeldingbestanden"
 #: ../terminal/terminal-preferences-dialog.c:567
 msgid "Load Presets..."
 msgstr "Voorkeuzes aan het laden..."
+
+#: ../terminal/terminal-preferences.c:869
+msgid "Terminal"
+msgstr "Terminal"
+
+#: ../terminal/terminal-screen.c:394 ../terminal/terminal-screen.c:679
+#: ../terminal/terminal-screen.c:1825
+msgid "Untitled"
+msgstr "Zonder titel"
+
+#: ../terminal/terminal-screen.c:579
+#, c-format
+msgid "Unable to determine your login shell."
+msgstr "Kan uw aanmeldscherm niet bepalen."
+
+#: ../terminal/terminal-screen.c:1524 ../terminal/terminal-screen.c:1553
+msgid "Failed to execute child"
+msgstr "Kon afgeleid proces niet uitvoeren"
+
+#: ../terminal/terminal-screen.c:2168
+msgid "Close this tab"
+msgstr "Dit tabblad sluiten"
+
+#: ../terminal/terminal-search-dialog.c:91
+msgid "Find"
+msgstr "Zoeken"
+
+#: ../terminal/terminal-search-dialog.c:96
+msgid "_Previous"
+msgstr "_Vorige"
+
+#: ../terminal/terminal-search-dialog.c:101
+msgid "_Next"
+msgstr "Vo_lgende"
+
+#: ../terminal/terminal-search-dialog.c:114
+msgid "_Search for:"
+msgstr "_Zoeken naar:"
+
+#: ../terminal/terminal-search-dialog.c:129
+msgid "C_ase sensitive"
+msgstr "Hoofdlettergevoelig"
+
+#: ../terminal/terminal-search-dialog.c:135
+msgid "Match as _regular expression"
+msgstr "Overeenkomend als reguliere uitdrukking"
+
+#: ../terminal/terminal-search-dialog.c:141
+msgid "Match _entire word only"
+msgstr "Alleen overeenkomend als geheel woord"
+
+#: ../terminal/terminal-search-dialog.c:147
+msgid "_Wrap around"
+msgstr "Wikkelen om"
+
+#: ../terminal/terminal-widget.c:324
+msgid "Copy Email Address"
+msgstr "Emailadres kopiëren"
+
+#: ../terminal/terminal-widget.c:325
+msgid "Compose Email"
+msgstr "Email opstellen"
+
+#: ../terminal/terminal-widget.c:329
+msgid "Copy Link Address"
+msgstr "Adres van koppeling kopiëren"
+
+#: ../terminal/terminal-widget.c:330
+msgid "Open Link"
+msgstr "Koppeling openen"
+
+#: ../terminal/terminal-widget.c:484
+#, c-format
+msgid ""
+"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
+"or length (%d)\n"
+msgstr ""
+"Kon selectie met type 'platte tekst' niet naar terminal slepen: verkeerde "
+"opmaak (%d) of lengte (%d)\n"
+
+#: ../terminal/terminal-widget.c:500
+#, c-format
+msgid ""
+"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Kon Mozilla URL niet naar terminal slepen: verkeerde opmaak (%d) of lengte "
+"(%d)\n"
+
+#: ../terminal/terminal-widget.c:526
+#, c-format
+msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Kon URI lijst niet naar terminal slepen: verkeerde opmaak (%d) of lengte "
+"(%d)\n"
+
+#: ../terminal/terminal-widget.c:571
+#, c-format
+msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
+msgstr ""
+"Ongeldige kleurinformatie ontvangen: verkeerde opmaak (%d) of lengte (%d)\n"
+
+#: ../terminal/terminal-widget.c:705
+#, c-format
+msgid "Failed to open the URL `%s'"
+msgstr "Kon de URL `%s' niet openen"
+
+#: ../terminal/terminal-window-dropdown.c:270
+msgid "Keep window open when it loses focus"
+msgstr "Houd venster geopend wanneer het scherpstelling verliest"
+
+#: ../terminal/terminal-window-dropdown.c:284
+#: ../terminal/terminal-window-dropdown.c:491
+msgid "Drop-down Preferences..."
+msgstr "Neerklapvoorkeuren..."
+
+#: ../terminal/terminal-window-dropdown.c:348
+msgid "Drop-down Terminal"
+msgstr "Neerklapterminal"
+
+#: ../terminal/terminal-window-dropdown.c:349
+msgid "Toggle Drop-down Terminal"
+msgstr "Schakel neerklapterminal"
+
+#: ../terminal/terminal-window.c:202
+msgid "_File"
+msgstr "_Bestand"
+
+#: ../terminal/terminal-window.c:203
+msgid "Open _Tab"
+msgstr "Nieuw _tabblad"
+
+#: ../terminal/terminal-window.c:203
+msgid "Open a new terminal tab"
+msgstr "Een nieuw terminal-tabblad openen"
+
+#: ../terminal/terminal-window.c:204
+msgid "Open T_erminal"
+msgstr "T_erminal openen"
+
+#: ../terminal/terminal-window.c:204
+msgid "Open a new terminal window"
+msgstr "Nieuw terminalvenster openen"
+
+#: ../terminal/terminal-window.c:205
+msgid "_Detach Tab"
+msgstr "Tabblad _losmaken"
+
+#: ../terminal/terminal-window.c:206 ../terminal/terminal-window.c:521
+msgid "Close T_ab"
+msgstr "Tabblad sluiten"
+
+#: ../terminal/terminal-window.c:207 ../terminal/terminal-window.c:525
+msgid "Close _Window"
+msgstr "Venster sluiten"
+
+#: ../terminal/terminal-window.c:208
+msgid "_Edit"
+msgstr "Be_werken"
+
+#: ../terminal/terminal-window.c:209
+msgid "_Copy"
+msgstr "_Kopiëren"
+
+#: ../terminal/terminal-window.c:209
+msgid "Copy to clipboard"
+msgstr "Naar klembord kopiëren"
+
+#: ../terminal/terminal-window.c:210
+msgid "_Paste"
+msgstr "_Plakken"
+
+#: ../terminal/terminal-window.c:210
+msgid "Paste from clipboard"
+msgstr "Plakken vanuit klembord"
+
+#: ../terminal/terminal-window.c:211
+msgid "Paste _Selection"
+msgstr "_Selectie plakken"
+
+#: ../terminal/terminal-window.c:212
+msgid "Select _All"
+msgstr "Selecteer _alle"
+
+#: ../terminal/terminal-window.c:213
+msgid "Pr_eferences..."
+msgstr "_Voorkeuren..."
+
+#: ../terminal/terminal-window.c:213
+msgid "Open the preferences dialog"
+msgstr "Open de voorkeurendialoog"
+
+#: ../terminal/terminal-window.c:214
+msgid "_View"
+msgstr "_Beeld"
+
+#: ../terminal/terminal-window.c:215
+msgid "_Terminal"
+msgstr "_Terminal"
+
+#: ../terminal/terminal-window.c:216
+msgid "_Set Title..."
+msgstr "Titel in_stellen..."
+
+#: ../terminal/terminal-window.c:217
+msgid "_Find..."
+msgstr "Zoe_ken..."
+
+#: ../terminal/terminal-window.c:218
+msgid "Find Ne_xt"
+msgstr "Volgende zoeken"
+
+#: ../terminal/terminal-window.c:219
+msgid "Find Pre_vious"
+msgstr "Vorige zoeken"
+
+#: ../terminal/terminal-window.c:220
+msgid "_Reset"
+msgstr "Te_rugzetten op standaard"
+
+#: ../terminal/terminal-window.c:221
+msgid "_Clear Scrollback and Reset"
+msgstr "Terugbladeren wissen en terugzetten op standaardwaarden"
+
+#: ../terminal/terminal-window.c:222
+msgid "T_abs"
+msgstr "Tabbladen"
+
+#: ../terminal/terminal-window.c:223
+msgid "_Previous Tab"
+msgstr "_Vorig tabblad"
+
+#: ../terminal/terminal-window.c:223
+msgid "Switch to previous tab"
+msgstr "Naar vorig tabblad schakelen"
+
+#: ../terminal/terminal-window.c:224
+msgid "_Next Tab"
+msgstr "Volge_nd tabblad"
+
+#: ../terminal/terminal-window.c:224
+msgid "Switch to next tab"
+msgstr "Naar volgende tabblad schakelen"
+
+#: ../terminal/terminal-window.c:225
+msgid "Move Tab _Left"
+msgstr "Verplaats tabblad naar links"
+
+#: ../terminal/terminal-window.c:226
+msgid "Move Tab _Right"
+msgstr "Verplaats tabblad naar rechts"
+
+#: ../terminal/terminal-window.c:227
+msgid "_Help"
+msgstr "_Hulp"
+
+#: ../terminal/terminal-window.c:228
+msgid "_Contents"
+msgstr "_Inhoud"
+
+#: ../terminal/terminal-window.c:228
+msgid "Display help contents"
+msgstr "Hulptekst weergeven"
+
+#: ../terminal/terminal-window.c:229
+msgid "_Report a bug"
+msgstr "Een fout _melden"
+
+#: ../terminal/terminal-window.c:230
+msgid "_About"
+msgstr "_Over"
+
+#: ../terminal/terminal-window.c:231
+msgid "_Input Methods"
+msgstr "_Invoermethoden"
+
+#: ../terminal/terminal-window.c:236
+msgid "Show _Menubar"
+msgstr "_Menubalk tonen"
+
+#: ../terminal/terminal-window.c:236
+msgid "Show/hide the menubar"
+msgstr "Menubalk tonen/verbergen"
+
+#: ../terminal/terminal-window.c:237
+msgid "Show _Toolbar"
+msgstr "Werkbalk tonen"
+
+#: ../terminal/terminal-window.c:237
+msgid "Show/hide the toolbar"
+msgstr "Werkbalk tonen/verbergen"
+
+#: ../terminal/terminal-window.c:238
+msgid "Show Window _Borders"
+msgstr "Vensterranden t_onen"
+
+#: ../terminal/terminal-window.c:238
+msgid "Show/hide the window decorations"
+msgstr "Vensterdecoraties tonen/verbergen"
+
+#: ../terminal/terminal-window.c:239
+msgid "_Fullscreen"
+msgstr "_Volledig scherm"
+
+#: ../terminal/terminal-window.c:239
+msgid "Toggle fullscreen mode"
+msgstr "Schakelen tussen normale weergave en volledig scherm"
+
+#. create encoding action
+#: ../terminal/terminal-window.c:383
+msgid "Set _Encoding"
+msgstr "Stel codering in"
+
+#: ../terminal/terminal-window.c:513
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: ../terminal/terminal-window.c:544
+#, c-format
+msgid ""
+"This window has %d tabs open. Closing this window\n"
+"will also close all its tabs."
+msgstr ""
+"Dit venster heeft %d tabbladen open. Als u dit\n"
+"venster sluit, sluiten ook alle tabbladen."
+
+#: ../terminal/terminal-window.c:547
+msgid "Close all tabs?"
+msgstr "Alle tabbladen sluiten?"
+
+#: ../terminal/terminal-window.c:560
+msgid "Do _not ask me again"
+msgstr "Niet _nogmaals vragen"
+
+#: ../terminal/terminal-window.c:1622
+msgid "Window Title|Set Title"
+msgstr "Venstertitel|Titel instellen"
+
+#: ../terminal/terminal-window.c:1635
+msgid "_Title:"
+msgstr "Titel:"
+
+#: ../terminal/terminal-window.c:1649
+msgid "Enter the title for the current terminal tab"
+msgstr "Geef titel voor het huidige terminaltabblad"
+
+#: ../terminal/terminal-window.c:1697
+msgid "Failed to create the regular expression"
+msgstr "Kon de reguliere uitdrukking niet maken"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:1
+msgid "Always keep window op _top"
+msgstr "Houd het venster altijd bovenaan"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:2
+msgid "Appearance and Animation"
+msgstr "Uiterlijk en animatie"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:3
+msgid "Behaviour"
+msgstr "Gedrag"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:4
+msgid "D_uration:"
+msgstr "Duur:"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:5
+msgid "Drop-down Preferences"
+msgstr "Neerklapvoorkeuren"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:6
+msgid "He_ight:"
+msgstr "Hoogte:"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:7
+msgid ""
+"If enabled, the shortcut to open en retract the window will give focus, "
+"rather than closing it, if it has previously lost focus"
+msgstr "Indien ingeschakeld, zal de sneltoets om het venster te openen en in te trekken scherpstelling geven in plaats van het te sluiten, indien het voordien scherpstelling heeft verloren"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:8
+msgid "L_eft"
+msgstr "Links"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:9
+msgid "Move to monitor with poi_nter"
+msgstr "Verplaats naar monitor met muispijl"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:10
+msgid "Position"
+msgstr "Positie"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:11
+msgid "Right"
+msgstr "Rechts"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:12
+msgid "Show _status icon in notification area"
+msgstr "Toon statuspictogram in meldingsgebied"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:13
+msgid "Use shortcut to _focus visible window"
+msgstr "Gebruik sneltoets om scherp te stellen op het zichtbare venster"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:14
+msgid "_Keep window open when it loses focus"
+msgstr "Houd venster geopend wanneer het scherpstelling verliest"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:15
+msgid "_Opacity:"
+msgstr "Ondoorzichtigheid:"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:16
+msgid "_Width:"
+msgstr "Breedte:"
+
+#: ../terminal/terminal-preferences-dropdown.glade.h:17
+msgid "ms"
+msgstr "ms"
 
 #: ../terminal/terminal-preferences.glade.h:1
 msgid "$TERM s_etting:"
@@ -538,13 +958,18 @@ msgstr ""
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
-msgstr "Schakel deze optie in om een aangepaste achtergrondkleur in te stellen voor de selectie. Indien uitgeschakeld zullen de kleuren voor achtergrond en tekst worden teruggedraaid."
+msgstr ""
+"Schakel deze optie in om een aangepaste achtergrondkleur in te stellen voor "
+"de selectie. Indien uitgeschakeld zullen de kleuren voor achtergrond en "
+"tekst worden teruggedraaid."
 
 #: ../terminal/terminal-preferences.glade.h:42
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
-msgstr "Schakel deze optie in om een aangepaste kleur in te stellen voor vetgedrukt. Indien uitgeschakeld zal de tekstkleur worden gebruikt."
+msgstr ""
+"Schakel deze optie in om een aangepaste kleur in te stellen voor vetgedrukt. "
+"Indien uitgeschakeld zal de tekstkleur worden gebruikt."
 
 #: ../terminal/terminal-preferences.glade.h:43
 msgid ""
@@ -871,340 +1296,12 @@ msgstr "Maak de achtergrondkleur voor elk tabblad anders"
 msgid "seconds"
 msgstr "seconden"
 
-#: ../terminal/terminal-preferences.c:756
-msgid "Terminal"
-msgstr "Terminal"
-
-#: ../terminal/terminal-screen.c:394 ../terminal/terminal-screen.c:679
-#: ../terminal/terminal-screen.c:1799
-msgid "Untitled"
-msgstr "Zonder titel"
-
-#: ../terminal/terminal-screen.c:579
-#, c-format
-msgid "Unable to determine your login shell."
-msgstr "Kan uw aanmeldscherm niet bepalen."
-
-#: ../terminal/terminal-screen.c:1529 ../terminal/terminal-screen.c:1558
-msgid "Failed to execute child"
-msgstr "Kon afgeleid proces niet uitvoeren"
-
-#: ../terminal/terminal-screen.c:2143
-msgid "Close this tab"
-msgstr "Dit tabblad sluiten"
-
-#: ../terminal/terminal-search-dialog.c:91
-msgid "Find"
-msgstr "Zoeken"
-
-#: ../terminal/terminal-search-dialog.c:96
-msgid "_Previous"
-msgstr "_Vorige"
-
-#: ../terminal/terminal-search-dialog.c:100
-msgid "_Next"
-msgstr "Vo_lgende"
-
-#: ../terminal/terminal-search-dialog.c:110
-msgid "_Search for:"
-msgstr "_Zoeken naar:"
-
-#: ../terminal/terminal-search-dialog.c:123
-msgid "C_ase sensitive"
-msgstr "Hoofdlettergevoelig"
-
-#: ../terminal/terminal-search-dialog.c:128
-msgid "Match as _regular expression"
-msgstr "Overeenkomend als reguliere uitdrukking"
-
-#: ../terminal/terminal-search-dialog.c:133
-msgid "Match _entire word only"
-msgstr "Alleen overeenkomend als geheel woord"
-
-#: ../terminal/terminal-search-dialog.c:138
-msgid "_Wrap around"
-msgstr "Wikkelen om"
-
-#: ../terminal/terminal-widget.c:324
-msgid "Copy Email Address"
-msgstr "Emailadres kopiëren"
-
-#: ../terminal/terminal-widget.c:325
-msgid "Compose Email"
-msgstr "Email opstellen"
-
-#: ../terminal/terminal-widget.c:329
-msgid "Copy Link Address"
-msgstr "Adres van koppeling kopiëren"
-
-#: ../terminal/terminal-widget.c:330
-msgid "Open Link"
-msgstr "Koppeling openen"
-
-#: ../terminal/terminal-widget.c:484
-#, c-format
-msgid ""
-"Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
-"or length (%d)\n"
-msgstr ""
-"Kon selectie met type 'platte tekst' niet naar terminal slepen: verkeerde "
-"opmaak (%d) of lengte (%d)\n"
-
-#: ../terminal/terminal-widget.c:500
-#, c-format
-msgid ""
-"Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Kon Mozilla URL niet naar terminal slepen: verkeerde opmaak (%d) of lengte "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:526
-#, c-format
-msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Kon URI lijst niet naar terminal slepen: verkeerde opmaak (%d) of lengte "
-"(%d)\n"
-
-#: ../terminal/terminal-widget.c:571
-#, c-format
-msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Ongeldige kleurinformatie ontvangen: verkeerde opmaak (%d) of lengte (%d)\n"
-
-#: ../terminal/terminal-widget.c:705
-#, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "Kon de URL `%s' niet openen"
-
-#: ../terminal/terminal-window.c:248
-msgid "_File"
-msgstr "_Bestand"
-
-#: ../terminal/terminal-window.c:249
-msgid "Open _Tab"
-msgstr "Nieuw _tabblad"
-
-#: ../terminal/terminal-window.c:249
-msgid "Open a new terminal tab"
-msgstr "Een nieuw terminal-tabblad openen"
-
-#: ../terminal/terminal-window.c:250
-msgid "Open T_erminal"
-msgstr "T_erminal openen"
-
-#: ../terminal/terminal-window.c:250
-msgid "Open a new terminal window"
-msgstr "Nieuw terminalvenster openen"
-
-#: ../terminal/terminal-window.c:251
-msgid "_Detach Tab"
-msgstr "Tabblad _losmaken"
-
-#: ../terminal/terminal-window.c:252 ../terminal/terminal-window.c:574
-msgid "Close T_ab"
-msgstr "Tabblad sluiten"
-
-#: ../terminal/terminal-window.c:253 ../terminal/terminal-window.c:578
-msgid "Close _Window"
-msgstr "Venster sluiten"
-
-#: ../terminal/terminal-window.c:254
-msgid "_Edit"
-msgstr "Be_werken"
-
-#: ../terminal/terminal-window.c:255
-msgid "_Copy"
-msgstr "_Kopiëren"
-
-#: ../terminal/terminal-window.c:255
-msgid "Copy to clipboard"
-msgstr "Naar klembord kopiëren"
-
-#: ../terminal/terminal-window.c:256
-msgid "_Paste"
-msgstr "_Plakken"
-
-#: ../terminal/terminal-window.c:256
-msgid "Paste from clipboard"
-msgstr "Plakken vanuit klembord"
-
-#: ../terminal/terminal-window.c:257
-msgid "Paste _Selection"
-msgstr "_Selectie plakken"
-
-#: ../terminal/terminal-window.c:258
-msgid "Select _All"
-msgstr "Selecteer _alle"
-
-#: ../terminal/terminal-window.c:259
-msgid "Pr_eferences..."
-msgstr "_Voorkeuren..."
-
-#: ../terminal/terminal-window.c:259
-msgid "Open the preferences dialog"
-msgstr "Open de voorkeurendialoog"
-
-#: ../terminal/terminal-window.c:260
-msgid "_View"
-msgstr "_Beeld"
-
-#: ../terminal/terminal-window.c:261
-msgid "_Terminal"
-msgstr "_Terminal"
-
-#: ../terminal/terminal-window.c:262
-msgid "_Set Title..."
-msgstr "Titel in_stellen..."
-
-#: ../terminal/terminal-window.c:263
-msgid "_Find..."
-msgstr "Zoe_ken..."
-
-#: ../terminal/terminal-window.c:264
-msgid "Find Ne_xt"
-msgstr "Volgende zoeken"
-
-#: ../terminal/terminal-window.c:265
-msgid "Find Pre_vious"
-msgstr "Vorige zoeken"
-
-#: ../terminal/terminal-window.c:266
-msgid "_Clear Scrollback"
-msgstr "Terugbladeren wissen"
-
-#: ../terminal/terminal-window.c:267
-msgid "Clear Scrollback and _Reset"
-msgstr "Terugbladeren wissen en terugzetten op standaardwaarden"
-
-#: ../terminal/terminal-window.c:268
-msgid "T_abs"
-msgstr "Tabbladen"
-
-#: ../terminal/terminal-window.c:269
-msgid "_Previous Tab"
-msgstr "_Vorig tabblad"
-
-#: ../terminal/terminal-window.c:269
-msgid "Switch to previous tab"
-msgstr "Naar vorig tabblad schakelen"
-
-#: ../terminal/terminal-window.c:270
-msgid "_Next Tab"
-msgstr "Volge_nd tabblad"
-
-#: ../terminal/terminal-window.c:270
-msgid "Switch to next tab"
-msgstr "Naar volgende tabblad schakelen"
-
-#: ../terminal/terminal-window.c:271
-msgid "Move Tab _Left"
-msgstr "Verplaats tabblad naar links"
-
-#: ../terminal/terminal-window.c:272
-msgid "Move Tab _Right"
-msgstr "Verplaats tabblad naar rechts"
-
-#: ../terminal/terminal-window.c:273
-msgid "_Help"
-msgstr "_Hulp"
-
-#: ../terminal/terminal-window.c:274
-msgid "_Contents"
-msgstr "_Inhoud"
-
-#: ../terminal/terminal-window.c:274
-msgid "Display help contents"
-msgstr "Hulptekst weergeven"
-
-#: ../terminal/terminal-window.c:275
-msgid "_Report a bug"
-msgstr "Een fout _melden"
-
-#: ../terminal/terminal-window.c:276
-msgid "_About"
-msgstr "_Over"
-
-#: ../terminal/terminal-window.c:277
-msgid "_Input Methods"
-msgstr "_Invoermethoden"
-
-#: ../terminal/terminal-window.c:282
-msgid "Show _Menubar"
-msgstr "_Menubalk tonen"
-
-#: ../terminal/terminal-window.c:282
-msgid "Show/hide the menubar"
-msgstr "Menubalk tonen/verbergen"
-
-#: ../terminal/terminal-window.c:283
-msgid "Show _Toolbar"
-msgstr "Werkbalk tonen"
-
-#: ../terminal/terminal-window.c:283
-msgid "Show/hide the toolbar"
-msgstr "Werkbalk tonen/verbergen"
-
-#: ../terminal/terminal-window.c:284
-msgid "Show Window _Borders"
-msgstr "Vensterranden t_onen"
-
-#: ../terminal/terminal-window.c:284
-msgid "Show/hide the window decorations"
-msgstr "Vensterdecoraties tonen/verbergen"
-
-#: ../terminal/terminal-window.c:285
-msgid "_Fullscreen"
-msgstr "_Volledig scherm"
-
-#: ../terminal/terminal-window.c:285
-msgid "Toggle fullscreen mode"
-msgstr "Schakelen tussen normale weergave en volledig scherm"
-
-#. create encoding action
-#: ../terminal/terminal-window.c:436
-msgid "Set _Encoding"
-msgstr "Stel codering in"
-
-#: ../terminal/terminal-window.c:566
-msgid "Warning"
-msgstr "Waarschuwing"
-
-#: ../terminal/terminal-window.c:597
-#, c-format
-msgid ""
-"This window has %d tabs open. Closing this window\n"
-"will also close all its tabs."
-msgstr ""
-"Dit venster heeft %d tabbladen open. Als u dit\n"
-"venster sluit, sluiten ook alle tabbladen."
-
-#: ../terminal/terminal-window.c:600
-msgid "Close all tabs?"
-msgstr "Alle tabbladen sluiten?"
-
-#: ../terminal/terminal-window.c:613
-msgid "Do _not ask me again"
-msgstr "Niet _nogmaals vragen"
-
-#: ../terminal/terminal-window.c:1661
-msgid "Window Title|Set Title"
-msgstr "Venstertitel|Titel instellen"
-
-#: ../terminal/terminal-window.c:1674
-msgid "Title:"
-msgstr "Titel:"
-
-#: ../terminal/terminal-window.c:1686
-msgid "Enter the title for the current terminal tab"
-msgstr "Geef titel voor het huidige terminaltabblad"
-
-#: ../terminal/terminal-window.c:1738
-msgid "Failed to create the regular expression"
-msgstr "Kon de reguliere uitdrukking niet maken"
-
 #: ../xfce4-terminal.desktop.in.h:1
 msgid "Terminal Emulator"
 msgstr "Terminalvenster"
+
+#~ msgid "_Clear Scrollback"
+#~ msgstr "Terugbladeren wissen"
 
 #~ msgid "C_lose Tab"
 #~ msgstr "Tabblad s_luiten"
@@ -1250,9 +1347,6 @@ msgstr "Terminalvenster"
 
 #~ msgid "Set a custom title for the current tab"
 #~ msgstr "Aangepaste titel voor huidig tabblad instellen"
-
-#~ msgid "_Reset"
-#~ msgstr "Te_rugzetten op standaard"
 
 #~ msgid "Reset"
 #~ msgstr "Terugzetten op standaard"
@@ -1403,9 +1497,6 @@ msgstr "Terminalvenster"
 
 #~ msgid "Select All"
 #~ msgstr "Selecteer alle"
-
-#~ msgid "Preferences"
-#~ msgstr "Voorkeuren"
 
 #~ msgid "Show menubar"
 #~ msgstr "Menubalk tonen"
