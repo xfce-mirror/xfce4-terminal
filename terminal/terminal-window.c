@@ -1366,6 +1366,21 @@ terminal_window_action_select_all (GtkAction      *action,
 
 
 static void
+terminal_window_action_prefs_died (gpointer  user_data,
+                                   GObject  *where_the_object_was)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (user_data);
+
+  window->preferences_dialog = NULL;
+  window->n_child_windows--;
+
+  if (window->drop_down)
+    terminal_activate_window (GTK_WINDOW (window));
+}
+
+
+
+static void
 terminal_window_action_prefs (GtkAction      *action,
                               TerminalWindow *window)
 {
@@ -1374,8 +1389,9 @@ terminal_window_action_prefs (GtkAction      *action,
       window->preferences_dialog = terminal_preferences_dialog_new ();
       if (G_LIKELY (window->preferences_dialog != NULL))
         {
-          g_object_add_weak_pointer (G_OBJECT (window->preferences_dialog),
-                                     (gpointer) &window->preferences_dialog);
+          window->n_child_windows++;
+          g_object_weak_ref (G_OBJECT (window->preferences_dialog),
+                             terminal_window_action_prefs_died, window);
         }
     }
 
