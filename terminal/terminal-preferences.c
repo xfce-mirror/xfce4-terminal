@@ -61,6 +61,7 @@ enum
   PROP_COLOR_PALETTE,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_DROPDOWN_ANIMATION_TIME,
   PROP_DROPDOWN_KEEP_OPEN_DEFAULT,
   PROP_DROPDOWN_KEEP_ABOVE,
   PROP_DROPDOWN_TOGGLE_FOCUS,
@@ -487,6 +488,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "CommandLoginShell",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-animation-time:
+   **/
+  preferences_props[PROP_DROPDOWN_ANIMATION_TIME] =
+      g_param_spec_uint ("dropdown-animation-time",
+                         NULL,
+                         "DropdownAnimationTime",
+                         0, 500, 0,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:dropdown-keep-open-default:

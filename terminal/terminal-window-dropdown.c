@@ -45,6 +45,9 @@
 #include <terminal/terminal-window-dropdown.h>
 #include <terminal/terminal-preferences-dropdown-dialog.h>
 
+/* animation fps */
+#define ANIMATION_FPS (1000 / 20)
+
 
 
 enum
@@ -56,6 +59,7 @@ enum
   PROP_DROPDOWN_OPACITY,
   PROP_DROPDOWN_STATUS_ICON,
   PROP_DROPDOWN_KEEP_ABOVE,
+  PROP_DROPDOWN_ANIMATION_TIME,
   N_PROPERTIES
 };
 
@@ -73,7 +77,9 @@ static gboolean        terminal_window_dropdown_focus_out_event               (G
 static gboolean        terminal_window_dropdown_status_icon_press_event       (GtkStatusIcon          *status_icon,
                                                                                GdkEventButton         *event,
                                                                                TerminalWindowDropdown *dropdown);
-static void            terminal_window_dropdown_position                      (TerminalWindowDropdown *dropdown,
+
+static void            terminal_window_dropdown_hide                          (TerminalWindowDropdown *dropdown);
+static void            terminal_window_dropdown_show                          (TerminalWindowDropdown *dropdown,
                                                                                guint32                 timestamp);
 static void            terminal_window_dropdown_toggle_real                   (TerminalWindowDropdown *dropdown,
                                                                                guint32                 timestamp);
@@ -86,11 +92,27 @@ struct _TerminalWindowDropdownClass
   TerminalWindowClass __parent__;
 };
 
+typedef enum
+{
+  ANIMATION_DIR_NONE,
+  ANIMATION_DIR_UP,
+  ANIMATION_DIR_DOWN,
+}
+TerminalDirection;
+
 struct _TerminalWindowDropdown
 {
   TerminalWindow __parent__;
 
   TerminalPreferences *preferences;
+
+  /* viewport for animation */
+  GtkWidget           *viewport;
+
+  /* timeout for animation */
+  guint                animation_timeout_id;
+  guint                animation_time;
+  TerminalDirection    animation_dir;
 
   /* ui widgets */
   GtkWidget           *keep_open;
@@ -172,6 +194,12 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
                             TRUE,
                             G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
 
+  dropdown_props[PROP_DROPDOWN_ANIMATION_TIME] =
+      g_param_spec_uint ("dropdown-animation-time",
+                         NULL, NULL,
+                         0, 500, 0,
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, dropdown_props);
 }
@@ -189,14 +217,27 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   guint           n;
   const gchar    *name;
   gboolean        keep_open;
+  GtkWidget      *child;;
 
   dropdown->preferences = terminal_preferences_get ();
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
   dropdown->rel_position = 0.50;
+  dropdown->animation_dir = ANIMATION_DIR_NONE;
 
   /* shared setting to disable some functionality in TerminalWindow */
   window->drop_down = TRUE;
+
+  /* move the window content into a viewport for animation */
+  dropdown->viewport = gtk_viewport_new (NULL, NULL);
+  gtk_viewport_set_shadow_type (GTK_VIEWPORT (dropdown->viewport), GTK_SHADOW_NONE);
+  child = gtk_bin_get_child (GTK_BIN (dropdown));
+  g_object_ref (G_OBJECT (child));
+  gtk_container_remove (GTK_CONTAINER (dropdown), child);
+  gtk_container_add (GTK_CONTAINER (dropdown), dropdown->viewport);
+  gtk_container_add (GTK_CONTAINER (dropdown->viewport), child);
+  g_object_unref (G_OBJECT (child));
+  gtk_widget_show (dropdown->viewport);
 
   /* default window settings */
   gtk_window_set_resizable (GTK_WINDOW (dropdown), FALSE);
@@ -323,13 +364,17 @@ terminal_window_dropdown_set_property (GObject      *object,
         terminal_activate_window (GTK_WINDOW (dropdown->preferences_dialog));
       return;
 
+    case PROP_DROPDOWN_ANIMATION_TIME:
+      dropdown->animation_time = g_value_get_uint (value);
+      break;
+
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
       return;
     }
 
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
-    terminal_window_dropdown_position (dropdown, 0);
+    terminal_window_dropdown_show (dropdown, 0);
 }
 
 
@@ -338,6 +383,9 @@ static void
 terminal_window_dropdown_finalize (GObject *object)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (object);
+
+  if (dropdown->animation_timeout_id != 0)
+    g_source_remove (dropdown->animation_timeout_id);
 
   g_object_unref (dropdown->preferences);
 
@@ -387,9 +435,9 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
             {
               /* drop the grab */
               gdk_keyboard_ungrab (GDK_CURRENT_TIME);
-         
+
               /* hide the window */
-              gtk_widget_hide (GTK_WIDGET (dropdown));
+              terminal_window_dropdown_hide (dropdown);
 
               return retval;
             }
@@ -410,18 +458,111 @@ terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status
                                                   TerminalWindowDropdown *dropdown)
 {
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
-    gtk_widget_hide (GTK_WIDGET (dropdown));
+    terminal_window_dropdown_hide (dropdown);
   else
-    terminal_window_dropdown_position (dropdown, event->time);
+    terminal_window_dropdown_show (dropdown, event->time);
 
   return FALSE;
 }
 
 
 
+static gboolean
+terminal_window_dropdown_animate_down (gpointer data)
+{
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
+  GtkRequisition          req1, req2;
+  gint                    step_size;
+  gint                    viewport_h;
+
+  /* decrease each interval */
+  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->notebook, &req1);
+  step_size = req1.height * ANIMATION_FPS / dropdown->animation_time;
+  if (step_size < 1)
+    step_size = 1;
+
+  /* new viewport size */
+  gtk_widget_size_request (dropdown->viewport, &req2);
+  viewport_h = req2.height + step_size;
+  if (viewport_h > req1.height)
+    viewport_h = req1.height;
+
+  /* resize */
+  gtk_widget_set_size_request (dropdown->viewport, req2.width, viewport_h);
+
+  return viewport_h < req1.height;
+}
+
+
+
+static gboolean
+terminal_window_dropdown_animate_up (gpointer data)
+{
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
+  GtkRequisition          req1, req2;
+  gint                    step_size;
+  gint                    viewport_h;
+
+  /* decrease each interval */
+  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->notebook, &req1);
+  step_size = req1.height * ANIMATION_FPS / dropdown->animation_time;
+  if (step_size < 1)
+    step_size = 1;
+
+  /* new viewport size */
+  gtk_widget_size_request (dropdown->viewport, &req2);
+  viewport_h = req2.height - step_size;
+
+  if (viewport_h < step_size)
+    {
+      /* animation complete */
+      gtk_widget_hide (GTK_WIDGET (dropdown));
+      return FALSE;
+    }
+  else
+    {
+      /* resize viewport */
+      gtk_widget_set_size_request (dropdown->viewport, req2.width, viewport_h);
+      return TRUE;
+    }
+}
+
+
+
 static void
-terminal_window_dropdown_position (TerminalWindowDropdown *dropdown,
-                                   guint32                 timestamp)
+terminal_window_dropdown_animate_destroyed (gpointer data)
+{
+  TERMINAL_WINDOW_DROPDOWN (data)->animation_timeout_id = 0;
+  TERMINAL_WINDOW_DROPDOWN (data)->animation_dir = ANIMATION_DIR_NONE;
+}
+
+
+
+static void
+terminal_window_dropdown_hide (TerminalWindowDropdown *dropdown)
+{
+  if (dropdown->animation_timeout_id != 0)
+    g_source_remove (dropdown->animation_timeout_id);
+
+  if (dropdown->animation_time > 0)
+    {
+      dropdown->animation_dir = ANIMATION_DIR_UP;
+      dropdown->animation_timeout_id =
+          g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
+                              terminal_window_dropdown_animate_up, dropdown,
+                              terminal_window_dropdown_animate_destroyed);
+    }
+  else
+    {
+      gtk_widget_hide (GTK_WIDGET (dropdown));
+    }
+}
+
+
+
+static void
+terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
+                               guint32                 timestamp)
 {
   TerminalWindow *window = TERMINAL_WINDOW (dropdown);
   gint            w, h;
@@ -431,14 +572,19 @@ terminal_window_dropdown_position (TerminalWindowDropdown *dropdown,
   glong           char_width, char_height;
   GtkRequisition  req1, req2;
   gboolean        move_to_active;
+  gboolean        visible;
+  gint            viewport_h;
 
-  /* show window */
-  if (!gtk_widget_get_visible (GTK_WIDGET (dropdown)))
-    gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
+  visible = gtk_widget_get_visible (GTK_WIDGET (dropdown));
+
+  if (dropdown->animation_timeout_id != 0)
+    g_source_remove (dropdown->animation_timeout_id);
 
   g_object_get (G_OBJECT (dropdown->preferences),
-                "dropdown-move-to-active", &move_to_active, NULL);
+                "dropdown-move-to-active", &move_to_active,
+                NULL);
 
+  /* target screen, either the last one or the active screen */
   if (move_to_active
       || dropdown->screen == NULL
       || dropdown->monitor_num == -1)
@@ -458,7 +604,7 @@ terminal_window_dropdown_position (TerminalWindowDropdown *dropdown,
   terminal_screen_get_geometry (window->active, &char_width, &char_height, &xpad, &ypad);
 
   /* correct padding with notebook size */
-  gtk_widget_size_request (GTK_WIDGET (window->notebook), &req1);
+  gtk_widget_size_request (window->notebook, &req1);
   gtk_widget_size_request (GTK_WIDGET (window->active), &req2);
   xpad += MAX (req1.width - req2.width, 0);
   ypad += MAX (req1.height - req2.height, 0);
@@ -466,9 +612,27 @@ terminal_window_dropdown_position (TerminalWindowDropdown *dropdown,
   /* minimize to fit terminal charaters */
   w -= (w - xpad) % char_width;
   h -= (h - ypad) % char_height;
+  viewport_h = h;
 
-  /* resize the notebook */
+  /* viewport start height for animation */
+  if (dropdown->animation_time > 0)
+    {
+      if (!visible)
+        {
+          /* start animation collapsed */
+          viewport_h = 0;
+        }
+      else
+        {
+          /* pick up where we aborted */
+          gtk_widget_size_request (dropdown->viewport, &req1);
+          viewport_h = req1.height;
+        }
+    }
+
+  /* resize the widgets */
   gtk_widget_set_size_request (window->notebook, w, h);
+  gtk_widget_set_size_request (dropdown->viewport, w, viewport_h);
 
   /* calc position */
   x_dest = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
@@ -476,6 +640,19 @@ terminal_window_dropdown_position (TerminalWindowDropdown *dropdown,
 
   /* move */
   gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
+
+  /* show window */
+  if (!visible)
+    gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
+
+  if (dropdown->animation_time > 0)
+    {
+      dropdown->animation_dir = ANIMATION_DIR_DOWN;
+      dropdown->animation_timeout_id =
+          g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
+                              terminal_window_dropdown_animate_down, dropdown,
+                              terminal_window_dropdown_animate_destroyed);
+    }
 }
 
 
@@ -486,7 +663,8 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
 {
   gboolean toggle_focus;
 
-  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
+      && dropdown->animation_dir != ANIMATION_DIR_UP)
     {
       g_object_get (G_OBJECT (dropdown->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
 
@@ -496,18 +674,18 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
           || (g_get_real_time () - dropdown->focus_out_time) < G_USEC_PER_SEC / 10)
         {
           /* hide */
-          gtk_widget_hide (GTK_WIDGET (dropdown));
+          terminal_window_dropdown_hide (dropdown);
         }
       else
         {
-          terminal_window_dropdown_position (dropdown, timestamp);
+          terminal_window_dropdown_show (dropdown, timestamp);
           terminal_activate_window (GTK_WINDOW (dropdown));
         }
     }
   else
     {
       /* popup */
-      terminal_window_dropdown_position (dropdown, timestamp);
+      terminal_window_dropdown_show (dropdown, timestamp);
     }
 }
 

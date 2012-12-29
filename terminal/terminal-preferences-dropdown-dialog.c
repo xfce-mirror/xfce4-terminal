@@ -95,7 +95,8 @@ terminal_preferences_dropdown_dialog_init (TerminalPreferencesDropdownDialog *di
   const gchar      *props_value[] = { "dropdown-height",
                                       "dropdown-width",
                                       "dropdown-position",
-                                      "dropdown-opacity" };
+                                      "dropdown-opacity",
+                                      "dropdown-animation-time" };
 
   dialog->preferences = terminal_preferences_get ();
 
