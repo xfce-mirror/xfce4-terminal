@@ -66,6 +66,8 @@ static void            terminal_window_dropdown_set_property                  (G
                                                                                guint                   prop_id,
                                                                                const GValue           *value,
                                                                                GParamSpec             *pspec);
+static gboolean        terminal_window_dropdown_focus_in_event                (GtkWidget              *widget,
+                                                                               GdkEventFocus          *event);
 static gboolean        terminal_window_dropdown_focus_out_event               (GtkWidget              *widget,
                                                                                GdkEventFocus          *event);
 static gboolean        terminal_window_dropdown_status_icon_press_event       (GtkStatusIcon          *status_icon,
@@ -105,6 +107,9 @@ struct _TerminalWindowDropdown
   /* last screen and monitor */
   GdkScreen           *screen;
   gint                 monitor_num;
+
+  /* server time of focus out with grab */
+  gint64               focus_out_time;
 };
 
 
@@ -128,6 +133,7 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
   gobject_class->finalize = terminal_window_dropdown_finalize;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
+  gtkwidget_class->focus_in_event = terminal_window_dropdown_focus_in_event;
   gtkwidget_class->focus_out_event = terminal_window_dropdown_focus_out_event;
 
   dropdown_props[PROP_DROPDOWN_WIDTH] =
@@ -344,6 +350,20 @@ terminal_window_dropdown_finalize (GObject *object)
 
 
 static gboolean
+terminal_window_dropdown_focus_in_event (GtkWidget     *widget,
+                                         GdkEventFocus *event)
+{
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (widget);
+
+  /* unset */
+  dropdown->focus_out_time = 0;
+
+  return (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_in_event) (widget, event);;
+}
+
+
+
+static gboolean
 terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
                                           GdkEventFocus *event)
 {
@@ -358,19 +378,26 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
   if (gtk_widget_get_visible (widget)
       && TERMINAL_WINDOW (dropdown)->n_child_windows == 0
       && dropdown->preferences_dialog == NULL
-      && gtk_grab_get_current () == NULL /* popup menu check */
-      && !gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dropdown->keep_open)))
+      && gtk_grab_get_current () == NULL) /* popup menu check */
     {
-      /* check if the user is not pressing a key */
-      status = gdk_keyboard_grab (event->window, FALSE, GDK_CURRENT_TIME);
-      if (status == GDK_GRAB_SUCCESS)
+      if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dropdown->keep_open)))
         {
-          /* drop the grab */
-          gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+          /* check if the user is not pressing a key */
+          status = gdk_keyboard_grab (event->window, FALSE, GDK_CURRENT_TIME);
+          if (status == GDK_GRAB_SUCCESS)
+            {
+              /* drop the grab */
+              gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+         
+              /* hide the window */
+              gtk_widget_hide (GTK_WIDGET (dropdown));
 
-          /* hide the window */
-          gtk_widget_hide (GTK_WIDGET (dropdown));
+              return retval;
+            }
         }
+
+      /* focus out time */
+      dropdown->focus_out_time = g_get_real_time ();
     }
 
   return retval;
@@ -460,7 +487,10 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
     {
       g_object_get (G_OBJECT (dropdown->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
 
-      if (!toggle_focus)
+      /* if the focus was lost for 0.1 second and toggle-focus is used, we had
+       * focus until the shortcut was pressed, and then we hide the window */
+      if (!toggle_focus
+          || (g_get_real_time () - dropdown->focus_out_time) < G_USEC_PER_SEC / 10)
         {
           /* hide */
           gtk_widget_hide (GTK_WIDGET (dropdown));
