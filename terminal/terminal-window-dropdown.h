@@ -36,7 +36,9 @@ typedef struct _TerminalWindowDropdown      TerminalWindowDropdown;
 
 GType           terminal_window_dropdown_get_type             (void) G_GNUC_CONST;
 
-GtkWidget      *terminal_window_dropdown_new                  (void);
+GtkWidget      *terminal_window_dropdown_new                  (const gchar            *role,
+                                                               TerminalVisibility      menubar,
+                                                               TerminalVisibility      toolbar);
 
 void            terminal_window_dropdown_toggle               (TerminalWindowDropdown *dropdown,
                                                                const gchar            *startup_id);

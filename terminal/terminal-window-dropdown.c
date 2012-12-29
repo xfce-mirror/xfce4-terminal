@@ -107,8 +107,6 @@ struct _TerminalWindowDropdown
 {
   TerminalWindow __parent__;
 
-  TerminalPreferences *preferences;
-
   /* viewport for animation */
   GtkWidget           *viewport;
 
@@ -222,7 +220,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gboolean        keep_open;
   GtkWidget      *child;;
 
-  dropdown->preferences = terminal_preferences_get ();
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
   dropdown->rel_position = 0.50;
@@ -275,7 +272,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   gtk_widget_show (button);
 
-  g_object_get (G_OBJECT (dropdown->preferences), "dropdown-keep-open-default", &keep_open, NULL);
+  g_object_get (G_OBJECT (window->preferences), "dropdown-keep-open-default", &keep_open, NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
 
   img = gtk_image_new_from_stock (GTK_STOCK_GOTO_BOTTOM, GTK_ICON_SIZE_MENU);
@@ -299,7 +296,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   for (n = 1; n < N_PROPERTIES; n++)
     {
       name = g_param_spec_get_name (dropdown_props[n]);
-      g_object_bind_property (G_OBJECT (dropdown->preferences), name,
+      g_object_bind_property (G_OBJECT (window->preferences), name,
                               G_OBJECT (dropdown), name,
                               G_BINDING_SYNC_CREATE);
     }
@@ -391,8 +388,6 @@ terminal_window_dropdown_finalize (GObject *object)
 
   if (dropdown->animation_timeout_id != 0)
     g_source_remove (dropdown->animation_timeout_id);
-
-  g_object_unref (dropdown->preferences);
 
   if (dropdown->status_icon != NULL)
     g_object_unref (G_OBJECT (dropdown->status_icon));
@@ -533,7 +528,7 @@ terminal_window_dropdown_animate_down (gpointer data)
   gint                    viewport_h;
 
   /* decrease each interval */
-  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->notebook, &req1);
+  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->vbox, &req1);
   step_size = req1.height * ANIMATION_FPS / dropdown->animation_time;
   if (step_size < 1)
     step_size = 1;
@@ -561,7 +556,7 @@ terminal_window_dropdown_animate_up (gpointer data)
   gint                    viewport_h;
 
   /* decrease each interval */
-  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->notebook, &req1);
+  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->vbox, &req1);
   step_size = req1.height * ANIMATION_FPS / dropdown->animation_time;
   if (step_size < 1)
     step_size = 1;
@@ -637,7 +632,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   if (dropdown->animation_timeout_id != 0)
     g_source_remove (dropdown->animation_timeout_id);
 
-  g_object_get (G_OBJECT (dropdown->preferences),
+  g_object_get (G_OBJECT (window->preferences),
                 "dropdown-move-to-active", &move_to_active,
                 NULL);
 
@@ -666,6 +661,20 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   xpad += MAX (req1.width - req2.width, 0);
   ypad += MAX (req1.height - req2.height, 0);
 
+  if (window->menubar != NULL
+      && gtk_widget_get_visible (window->menubar))
+    {
+      gtk_widget_size_request (window->menubar, &req2);
+      ypad += req2.height;
+    }
+
+  if (window->toolbar != NULL
+      && gtk_widget_get_visible (window->toolbar))
+    {
+      gtk_widget_size_request (window->toolbar, &req2);
+      ypad += req2.height;
+    }
+
   /* minimize to fit terminal charaters */
   w -= (w - xpad) % char_width;
   h -= (h - ypad) % char_height;
@@ -688,7 +697,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
     }
 
   /* resize the widgets */
-  gtk_widget_set_size_request (window->notebook, w, h);
+  gtk_widget_set_size_request (window->vbox, w, h);
   gtk_widget_set_size_request (dropdown->viewport, w, viewport_h);
 
   /* calc position */
@@ -718,12 +727,13 @@ static void
 terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
                                       guint32                 timestamp)
 {
-  gboolean toggle_focus;
+  TerminalWindow *window = TERMINAL_WINDOW (dropdown);
+  gboolean        toggle_focus;
 
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
       && dropdown->animation_dir != ANIMATION_DIR_UP)
     {
-      g_object_get (G_OBJECT (dropdown->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
+      g_object_get (G_OBJECT (window->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
 
       /* if the focus was lost for 0.1 second and toggle-focus is used, we had
        * focus until the shortcut was pressed, and then we hide the window */
@@ -815,10 +825,55 @@ terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
 
 
 
-GtkWidget *
-terminal_window_dropdown_new (void)
+static void
+terminal_window_dropdown_bar_visibility_changed (TerminalWindowDropdown *dropdown)
 {
-  return g_object_new (TERMINAL_TYPE_WINDOW_DROPDOWN, NULL);
+  /* update geometry if toolbar or menu is shown */
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
+      && dropdown->animation_dir == ANIMATION_DIR_NONE)
+    terminal_window_dropdown_show (dropdown, 0);
+}
+
+
+
+GtkWidget *
+terminal_window_dropdown_new (const gchar        *role,
+                              TerminalVisibility  menubar,
+                              TerminalVisibility  toolbar)
+{
+  TerminalWindow *window;
+  gboolean        show_menubar;
+  gboolean        show_toolbar;
+  GtkAction      *action;
+
+  if (G_LIKELY (role == NULL))
+    role = PACKAGE_NAME "-dropdown";
+
+  window = g_object_new (TERMINAL_TYPE_WINDOW_DROPDOWN, "role", role, NULL);
+
+  /* read default preferences */
+  g_object_get (G_OBJECT (window->preferences),
+                "misc-menubar-default", &show_menubar,
+                "misc-toolbar-default", &show_toolbar,
+                NULL);
+
+  /* setup menubar visibility */
+  if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
+    show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
+  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
+  g_signal_connect_swapped (action, "activate",
+      G_CALLBACK (terminal_window_dropdown_bar_visibility_changed), window);
+
+  /* setup toolbar visibility */
+  if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
+    show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
+  action = gtk_action_group_get_action (window->action_group, "show-toolbar");
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
+  g_signal_connect_swapped (action, "activate",
+      G_CALLBACK (terminal_window_dropdown_bar_visibility_changed), window);
+
+  return GTK_WIDGET (window);
 }
 
 
