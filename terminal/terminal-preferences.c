@@ -279,7 +279,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_BACKGROUND_MODE] =
       g_param_spec_enum ("background-mode",
-                         "background-mode",
+                         NULL,
                          "BackgroundMode",
                          TERMINAL_TYPE_BACKGROUND,
                          TERMINAL_BACKGROUND_SOLID,
@@ -290,7 +290,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_BACKGROUND_IMAGE_FILE] =
       g_param_spec_string ("background-image-file",
-                           "background-image-file",
+                           NULL,
                            "BackgroundImageFile",
                            NULL,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -300,7 +300,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_BACKGROUND_IMAGE_STYLE] =
       g_param_spec_enum ("background-image-style",
-                         "background-image-style",
+                         NULL,
                          "BackgroundImageStyle",
                          TERMINAL_TYPE_BACKGROUND_STYLE,
                          TERMINAL_BACKGROUND_STYLE_TILED,
@@ -316,7 +316,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_BACKGROUND_DARKNESS] =
       g_param_spec_double ("background-darkness",
-                           "background-darkness",
+                           NULL,
                            "BackgroundDarkness",
                            0.0, 1.0, 0.5,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -326,7 +326,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_BINDING_BACKSPACE] =
       g_param_spec_enum ("binding-backspace",
-                         "binding-backspace",
+                         NULL,
                          "BindingBackspace",
                          TERMINAL_TYPE_ERASE_BINDING,
                          TERMINAL_ERASE_BINDING_AUTO,
@@ -337,7 +337,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_BINDING_DELETE] =
       g_param_spec_enum ("binding-delete",
-                         "binding-delete",
+                         NULL,
                          "BindingDelete",
                          TERMINAL_TYPE_ERASE_BINDING,
                          TERMINAL_ERASE_BINDING_AUTO,
@@ -348,7 +348,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_FOREGROUND] =
       g_param_spec_string ("color-foreground",
-                           "color-foreground",
+                           NULL,
                            "ColorForeground",
                            "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -358,7 +358,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_BACKGROUND] =
       g_param_spec_string ("color-background",
-                           "color-background",
+                           NULL,
                            "ColorBackground",
                            "#000000",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -368,7 +368,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_BACKGROUND_VARY] =
       g_param_spec_boolean ("color-background-vary",
-                            "color-background-vary",
+                            NULL,
                             "ColorBackgroundVary",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -378,7 +378,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_CURSOR] =
       g_param_spec_string ("color-cursor",
-                           "color-cursor",
+                           NULL,
                            "ColorCursor",
                            "#00aa00",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -388,7 +388,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_SELECTION] =
       g_param_spec_string ("color-selection",
-                           "color-selection",
+                           NULL,
                            "ColorSelection",
                            "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -398,7 +398,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_SELECTION_USE_DEFAULT] =
       g_param_spec_boolean ("color-selection-use-default",
-                            "color-selection-use-default",
+                            NULL,
                             "ColorSelectionUseDefault",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -408,7 +408,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_BOLD] =
       g_param_spec_string ("color-bold",
-                           "color-bold",
+                           NULL,
                            "ColorBold",
                            "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -418,7 +418,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_BOLD_USE_DEFAULT] =
       g_param_spec_boolean ("color-bold-use-default",
-                            "color-bold-use-default",
+                            NULL,
                             "ColorBoldUseDefault",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -428,7 +428,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COLOR_PALETTE] =
       g_param_spec_string ("color-palette",
-                           "color-palette",
+                           NULL,
                            "ColorPalette",
                            "#000000;"
                            "#aa0000;"
@@ -453,7 +453,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_TAB_ACTIVITY_COLOR] =
       g_param_spec_string ("tab-activity-color",
-                           "tab-activity-color",
+                           NULL,
                            "TabActivityColor",
                            "#aa0000",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -463,7 +463,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_TAB_ACTIVITY_TIMEOUT] =
       g_param_spec_uint ("tab-activity-timeout",
-                         "tab-activity-timeout",
+                         NULL,
                          "TabActivityTimeout",
                          0, 30, 2,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -473,7 +473,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COMMAND_UPDATE_RECORDS] =
       g_param_spec_boolean ("command-update-records",
-                            "command-update-records",
+                            NULL,
                             "CommandUpdateRecords",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -483,7 +483,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_COMMAND_LOGIN_SHELL] =
       g_param_spec_boolean ("command-login-shell",
-                            "command-login-shell",
+                            NULL,
                             "CommandLoginShell",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -596,7 +596,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_FONT_ALLOW_BOLD] =
       g_param_spec_boolean ("font-allow-bold",
-                            "font-allow-bold",
+                            NULL,
                             "FontAllowBold",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -606,7 +606,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_FONT_NAME] =
       g_param_spec_string ("font-name",
-                           "font-name",
+                           NULL,
                            "FontName",
                            "Monospace 12",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -616,7 +616,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_ALWAYS_SHOW_TABS] =
       g_param_spec_boolean ("misc-always-show-tabs",
-                            "misc-always-show-tabs",
+                            NULL,
                             "MiscAlwaysShowTabs",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -626,7 +626,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_BELL] =
       g_param_spec_boolean ("misc-bell",
-                            "misc-bell",
+                            NULL,
                             "MiscBell",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -636,7 +636,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_BORDERS_DEFAULT] =
       g_param_spec_boolean ("misc-borders-default",
-                            "misc-borders-default",
+                            NULL,
                             "MiscBordersDefault",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -646,7 +646,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_CURSOR_BLINKS] =
       g_param_spec_boolean ("misc-cursor-blinks",
-                            "misc-cursor-blinks",
+                            NULL,
                             "MiscCursorBlinks",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -656,7 +656,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_CURSOR_SHAPE] =
       g_param_spec_enum ("misc-cursor-shape",
-                         "misc-cursor-shape",
+                         NULL,
                          "MiscCursorShape",
                          TERMINAL_TYPE_CURSOR_SHAPE,
                          TERMINAL_CURSOR_SHAPE_BLOCK,
@@ -667,7 +667,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_DEFAULT_GEOMETRY] =
       g_param_spec_string ("misc-default-geometry",
-                           "misc-default-geometry",
+                           NULL,
                            "MiscDefaultGeometry",
                            "80x24",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -677,7 +677,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_INHERIT_GEOMETRY] =
       g_param_spec_boolean ("misc-inherit-geometry",
-                            "misc-inherit-geometry",
+                            NULL,
                             "MiscInheritGeometry",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -687,7 +687,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_MENUBAR_DEFAULT] =
       g_param_spec_boolean ("misc-menubar-default",
-                            "misc-menubar-default",
+                            NULL,
                             "MiscMenubarDefault",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -697,7 +697,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_MOUSE_AUTOHIDE] =
       g_param_spec_boolean ("misc-mouse-autohide",
-                            "misc-mouse-autohide",
+                            NULL,
                             "MiscMouseAutohide",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -707,7 +707,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_TOOLBAR_DEFAULT] =
       g_param_spec_boolean ("misc-toolbar-default",
-                            "misc-toolbar-default",
+                            NULL,
                             "MiscToolbarDefault",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -717,7 +717,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_CONFIRM_CLOSE] =
       g_param_spec_boolean ("misc-confirm-close",
-                            "misc-confirm-close",
+                            NULL,
                             "MiscConfirmClose",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -727,7 +727,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_CYCLE_TABS] =
       g_param_spec_boolean ("misc-cycle-tabs",
-                            "misc-cycle-tabs",
+                            NULL,
                             "MiscCycleTabs",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -737,7 +737,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_TAB_CLOSE_BUTTONS] =
       g_param_spec_boolean ("misc-tab-close-buttons",
-                            "misc-tab-close-buttons",
+                            NULL,
                             "MiscTabCloseButtons",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -747,7 +747,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_TAB_CLOSE_MIDDLE_CLICK] =
       g_param_spec_boolean ("misc-tab-close-middle-click",
-                            "misc-tab-close-middle-click",
+                            NULL,
                             "MiscTabCloseMiddleClick",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -757,7 +757,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_TAB_POSITION] =
       g_param_spec_enum ("misc-tab-position",
-                         "misc-tab-position",
+                         NULL,
                          "MiscTabPosition",
                          GTK_TYPE_POSITION_TYPE,
                          GTK_POS_TOP,
@@ -768,7 +768,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_MISC_HIGHLIGHT_URLS] =
       g_param_spec_boolean ("misc-highlight-urls",
-                            "misc-highlight-urls",
+                            NULL,
                             "MiscHighlightUrls",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -778,7 +778,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SCROLLING_BAR] =
       g_param_spec_enum ("scrolling-bar",
-                         "scrolling-bar",
+                         NULL,
                          "ScrollingBar",
                          TERMINAL_TYPE_SCROLLBAR,
                          TERMINAL_SCROLLBAR_RIGHT,
@@ -789,7 +789,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SCROLLING_LINES] =
       g_param_spec_uint ("scrolling-lines",
-                         "scrolling-lines",
+                         NULL,
                          "ScrollingLines",
                          0u, 1024u * 1024u, 1000u,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -799,7 +799,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SCROLLING_ON_OUTPUT] =
       g_param_spec_boolean ("scrolling-on-output",
-                            "scrolling-on-output",
+                            NULL,
                             "ScrollingOnOutput",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -809,7 +809,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SCROLLING_ON_KEYSTROKE] =
       g_param_spec_boolean ("scrolling-on-keystroke",
-                            "scrolling-on-keystroke",
+                            NULL,
                             "ScrollingOnKeystroke",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -821,7 +821,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SCROLLING_SINGLE_LINE] =
       g_param_spec_boolean ("scrolling-single-line",
-                            "scrolling-single-line",
+                            NULL,
                             "ScrollingSingleLine",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -833,7 +833,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SHORTCUTS_NO_MENUKEY] =
       g_param_spec_boolean ("shortcuts-no-menukey",
-                            "shortcuts-no-menukey",
+                            NULL,
                             "ShortcutsNoMenukey",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -843,7 +843,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_SHORTCUTS_NO_MNEMONICS] =
       g_param_spec_boolean ("shortcuts-no-mnemonics",
-                            "shortcuts-no-mnemonics",
+                            NULL,
                             "ShortcutsNoMnemonics",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -853,7 +853,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_TITLE_INITIAL] =
       g_param_spec_string ("title-initial",
-                           "title-initial",
+                           NULL,
                            "TitleInitial",
                            _("Terminal"),
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -863,7 +863,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_TITLE_MODE] =
       g_param_spec_enum ("title-mode",
-                         "title-mode",
+                         NULL,
                          "TitleMode",
                          TERMINAL_TYPE_TITLE,
                          TERMINAL_TITLE_APPEND,
@@ -874,7 +874,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_TERM] =
       g_param_spec_string ("term",
-                           "term",
+                           NULL,
                            "Term",
                            "xterm",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -884,7 +884,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
    **/
   preferences_props[PROP_WORD_CHARS] =
       g_param_spec_string ("word-chars",
-                           "word-chars",
+                           NULL,
                            "WordChars",
                            "-A-Za-z0-9,./?%&#:_=+@~",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
@@ -1086,6 +1086,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
       name = g_param_spec_get_name (pspec);
 
 #ifdef G_ENABLE_DEBUG
+      terminal_assert (g_param_spec_get_nick (pspec) != NULL);
       terminal_preferences_check_blurb (pspec);
 #endif
 
