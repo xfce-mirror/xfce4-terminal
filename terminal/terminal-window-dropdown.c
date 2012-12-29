@@ -77,7 +77,10 @@ static gboolean        terminal_window_dropdown_focus_out_event               (G
 static gboolean        terminal_window_dropdown_status_icon_press_event       (GtkStatusIcon          *status_icon,
                                                                                GdkEventButton         *event,
                                                                                TerminalWindowDropdown *dropdown);
-
+static void            terminal_window_dropdown_status_icon_popup_menu        (GtkStatusIcon          *status_icon,
+                                                                               guint                   button,
+                                                                               guint32                 timestamp,
+                                                                               TerminalWindowDropdown *dropdown);
 static void            terminal_window_dropdown_hide                          (TerminalWindowDropdown *dropdown);
 static void            terminal_window_dropdown_show                          (TerminalWindowDropdown *dropdown,
                                                                                guint32                 timestamp);
@@ -349,6 +352,8 @@ terminal_window_dropdown_set_property (GObject      *object,
               gtk_status_icon_set_tooltip_text (dropdown->status_icon, _("Toggle Drop-down Terminal"));
               g_signal_connect (G_OBJECT (dropdown->status_icon), "button-press-event",
                   G_CALLBACK (terminal_window_dropdown_status_icon_press_event), dropdown);
+              g_signal_connect (G_OBJECT (dropdown->status_icon), "popup-menu",
+                  G_CALLBACK (terminal_window_dropdown_status_icon_popup_menu), dropdown);
             }
         }
       else if (dropdown->status_icon != NULL)
@@ -457,12 +462,63 @@ terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status
                                                   GdkEventButton         *event,
                                                   TerminalWindowDropdown *dropdown)
 {
+  /* keep this event for the menu */
+  if (event->button == 3)
+    return FALSE;
+
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
     terminal_window_dropdown_hide (dropdown);
   else
     terminal_window_dropdown_show (dropdown, event->time);
 
-  return FALSE;
+  return TRUE;
+}
+
+
+
+static void
+terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_icon,
+                                                 guint                   button,
+                                                 guint32                 timestamp,
+                                                 TerminalWindowDropdown *dropdown)
+{
+  GtkActionGroup *group = TERMINAL_WINDOW (dropdown)->action_group;
+  GtkWidget      *menu;
+  GtkWidget      *mi;
+  GtkWidget      *image;
+  GtkAction      *action;
+
+  menu = gtk_menu_new ();
+  g_signal_connect (G_OBJECT (menu), "selection-done",
+      G_CALLBACK (gtk_widget_destroy), NULL);
+
+  mi = gtk_image_menu_item_new_with_label (_("Drop-down Preferences..."));
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+  g_signal_connect_swapped (G_OBJECT (mi), "activate",
+     G_CALLBACK (terminal_window_dropdown_preferences), dropdown);
+  gtk_widget_show (mi);
+
+  image = gtk_image_new_from_stock (GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
+  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), image);
+
+  action = gtk_action_group_get_action (group, "preferences");
+  mi = gtk_action_create_menu_item (action);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+  gtk_widget_show (mi);
+
+  mi = gtk_separator_menu_item_new ();
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+  gtk_widget_show (mi);
+
+  action = gtk_action_group_get_action (group, "close-window");
+  mi = gtk_action_create_menu_item (action);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
+  gtk_widget_show (mi);
+
+  gtk_menu_popup (GTK_MENU (menu),
+                  NULL, NULL,
+                  NULL, NULL,
+                  button, timestamp);
 }
 
 
