@@ -409,7 +409,11 @@ terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status
                                                   GdkEventButton         *event,
                                                   TerminalWindowDropdown *dropdown)
 {
-  terminal_window_dropdown_toggle_real (dropdown, event->time);
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    gtk_widget_hide (GTK_WIDGET (dropdown));
+  else
+    terminal_window_dropdown_position (dropdown, event->time);
+
   return FALSE;
 }
 
