@@ -771,6 +771,14 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
                              "/main-menu/tabs-menu/placeholder-tab-items",
                              name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
 
+      if (npages > 1)
+        {
+          /* add to right-click tab menu */
+          gtk_ui_manager_add_ui (window->ui_manager, window->tabs_menu_merge_id,
+                                 "/tab-menu/tabs-menu/placeholder-tab-items",
+                                 name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+        }
+
       /* set an accelerator path */
       g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", n + 1);
       gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
