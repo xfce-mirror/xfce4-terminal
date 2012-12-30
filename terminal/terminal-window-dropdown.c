@@ -617,21 +617,25 @@ static void
 terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
                                guint32                 timestamp)
 {
-  TerminalWindow *window = TERMINAL_WINDOW (dropdown);
-  gint            w, h;
-  GdkRectangle    monitor_geo;
-  gint            x_dest, y_dest;
-  gint            xpad, ypad;
-  glong           char_width, char_height;
-  GtkRequisition  req1, req2;
-  gboolean        move_to_active;
-  gboolean        visible;
-  gint            viewport_h;
+  TerminalWindow    *window = TERMINAL_WINDOW (dropdown);
+  gint               w, h;
+  GdkRectangle       monitor_geo;
+  gint               x_dest, y_dest;
+  gint               xpad, ypad;
+  glong              char_width, char_height;
+  GtkRequisition     req1, req2;
+  gboolean           move_to_active;
+  gboolean           visible;
+  gint               viewport_h;
+  TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
 
   visible = gtk_widget_get_visible (GTK_WIDGET (dropdown));
 
   if (dropdown->animation_timeout_id != 0)
-    g_source_remove (dropdown->animation_timeout_id);
+    {
+      old_animation_dir = dropdown->animation_dir;
+      g_source_remove (dropdown->animation_timeout_id);
+    }
 
   g_object_get (G_OBJECT (window->preferences),
                 "dropdown-move-to-active", &move_to_active,
@@ -689,7 +693,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
           /* start animation collapsed */
           viewport_h = 0;
         }
-      else
+      else if (old_animation_dir == ANIMATION_DIR_UP)
         {
           /* pick up where we aborted */
           gtk_widget_size_request (dropdown->viewport, &req1);
