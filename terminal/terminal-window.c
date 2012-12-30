@@ -184,8 +184,6 @@ static void            terminal_window_action_reset_and_clear        (GtkAction 
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_contents               (GtkAction              *action,
                                                                       TerminalWindow         *window);
-static void            terminal_window_action_report_bug             (GtkAction              *action,
-                                                                      TerminalWindow         *window);
 static void            terminal_window_action_about                  (GtkAction              *action,
                                                                       TerminalWindow         *window);
 
@@ -226,7 +224,6 @@ static const GtkActionEntry action_entries[] =
     { "move-tab-right", NULL, N_ ("Move Tab _Right"), NULL, NULL, G_CALLBACK (terminal_window_action_move_tab_right), },
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
     { "contents", GTK_STOCK_HELP, N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
-    { "report-bug", NULL, N_ ("_Report a bug"), NULL, NULL, G_CALLBACK (terminal_window_action_report_bug), },
     { "about", GTK_STOCK_ABOUT, N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
@@ -1776,16 +1773,6 @@ terminal_window_action_reset_and_clear (GtkAction       *action,
       terminal_screen_reset (window->active, TRUE);
       terminal_window_update_actions (window);
     }
-}
-
-
-
-static void
-terminal_window_action_report_bug (GtkAction       *action,
-                                   TerminalWindow  *window)
-{
-  /* open the "Support" section of the user manual */
-  xfce_dialog_show_help (GTK_WINDOW (window), "terminal", "support", NULL);
 }
 
 
