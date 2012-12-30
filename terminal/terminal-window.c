@@ -1723,6 +1723,8 @@ terminal_window_action_search (GtkAction      *action,
       window->search_dialog = terminal_search_dialog_new (GTK_WINDOW (window));
       g_signal_connect (G_OBJECT (window->search_dialog), "response",
           G_CALLBACK (terminal_window_action_search_response), window);
+      g_signal_connect (G_OBJECT (window->search_dialog), "delete-event",
+          G_CALLBACK (gtk_widget_hide_on_delete), NULL);
     }
 
   /* increase child counter */
