@@ -22,7 +22,7 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-dialogs.h>
+#include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences.h>
 #include <terminal/terminal-preferences-dropdown-dialog.h>

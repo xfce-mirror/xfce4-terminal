@@ -35,13 +35,13 @@
 #include <X11/Xlib.h>
 #endif
 
-#include <terminal/terminal-dialogs.h>
+#include <terminal/terminal-util.h>
 #include <terminal/terminal-private.h>
 
 
 
 /**
- * terminal_dialogs_show_about:
+ * terminal_util_show_about_dialog:
  * @parent : the parent #GtkWindow or %NULL.
  * @title  : the software title.
  * @format : the printf()-style format for the main text in the about dialog.
@@ -50,7 +50,7 @@
  * Displays the Terminal about dialog with @format as main text.
  **/
 void
-terminal_dialogs_show_about (GtkWindow *parent)
+terminal_util_show_about_dialog (GtkWindow *parent)
 {
   static const gchar *authors[] =
   {
@@ -94,8 +94,8 @@ terminal_dialogs_show_about (GtkWindow *parent)
 
 
 void
-terminal_set_style_thinkess (GtkWidget *widget,
-                             gint       thinkness)
+terminal_util_set_style_thinkess (GtkWidget *widget,
+                                  gint       thinkness)
 {
   GtkRcStyle *style;
 
@@ -108,7 +108,7 @@ terminal_set_style_thinkess (GtkWidget *widget,
 
 
 void
-terminal_activate_window (GtkWindow *window)
+terminal_util_activate_window (GtkWindow *window)
 {
 #ifdef GDK_WINDOWING_X11
   XClientMessageEvent event;

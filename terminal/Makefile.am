@@ -18,7 +18,6 @@ xfce4_terminal_built_sources = \
 
 xfce4_terminal_headers = \
 	terminal-app.h \
-	terminal-dialogs.h \
 	terminal-encoding-action.h \
 	terminal-gdbus.h \
 	terminal-image-loader.h \
@@ -29,6 +28,7 @@ xfce4_terminal_headers = \
 	terminal-search-dialog.h \
 	terminal-private.h \
 	terminal-screen.h \
+	terminal-util.h \
 	terminal-widget.h \
 	terminal-window.h \
 	terminal-window-dropdown.h
@@ -38,7 +38,6 @@ xfce4_terminal_SOURCES = \
 	$(xfce4_terminal_headers) \
 	main.c \
 	terminal-app.c \
-	terminal-dialogs.c \
 	terminal-encoding-action.c \
 	terminal-gdbus.c \
 	terminal-image-loader.c \
@@ -48,6 +47,7 @@ xfce4_terminal_SOURCES = \
 	terminal-preferences-dropdown-dialog.c \
 	terminal-search-dialog.c \
 	terminal-screen.c \
+	terminal-util.c \
 	terminal-widget.c \
 	terminal-window.c \
 	terminal-window-dropdown.c

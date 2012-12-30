@@ -41,7 +41,7 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <terminal/terminal-dialogs.h>
+#include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-marshal.h>
@@ -2172,7 +2172,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_show (button);
 
   /* make button a bit smaller */
-  terminal_set_style_thinkess (button, 0);
+  terminal_util_set_style_thinkess (button, 0);
 
   /* button image */
   image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);

@@ -41,7 +41,7 @@
 
 #include <terminal/terminal-private.h>
 #include <terminal/terminal-window.h>
-#include <terminal/terminal-dialogs.h>
+#include <terminal/terminal-util.h>
 #include <terminal/terminal-window-dropdown.h>
 #include <terminal/terminal-preferences-dropdown-dialog.h>
 
@@ -250,14 +250,14 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_window_stick (GTK_WINDOW (dropdown));
 
   /* this avoids to return focus to the window after dialog changes,
-   * but we have terminal_activate_window() for that */
+   * but we have terminal_util_activate_window() for that */
   gtk_window_set_skip_pager_hint (GTK_WINDOW (dropdown), TRUE);
   gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dropdown), TRUE);
 
   /* adjust notebook for drop-down usage */
   gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), TRUE);
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (window->notebook), GTK_POS_BOTTOM);
-  terminal_set_style_thinkess (window->notebook, 1);
+  terminal_util_set_style_thinkess (window->notebook, 1);
 
   /* actions we don't want */
   action = gtk_action_group_get_action (window->action_group, "show-borders");
@@ -366,7 +366,7 @@ terminal_window_dropdown_set_property (GObject      *object,
     case PROP_DROPDOWN_KEEP_ABOVE:
       gtk_window_set_keep_above (GTK_WINDOW (dropdown), g_value_get_boolean (value));
       if (dropdown->preferences_dialog != NULL)
-        terminal_activate_window (GTK_WINDOW (dropdown->preferences_dialog));
+        terminal_util_activate_window (GTK_WINDOW (dropdown->preferences_dialog));
       return;
 
     case PROP_DROPDOWN_ANIMATION_TIME:
@@ -800,7 +800,7 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
       else
         {
           terminal_window_dropdown_show (dropdown, timestamp);
-          terminal_activate_window (GTK_WINDOW (dropdown));
+          terminal_util_activate_window (GTK_WINDOW (dropdown));
         }
     }
   else
@@ -821,7 +821,7 @@ terminal_window_dropdown_preferences_died (gpointer  user_data,
   dropdown->preferences_dialog = NULL;
   TERMINAL_WINDOW (dropdown)->n_child_windows--;
 
-  terminal_activate_window (GTK_WINDOW (dropdown));
+  terminal_util_activate_window (GTK_WINDOW (dropdown));
 }
 
 

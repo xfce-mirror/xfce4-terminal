@@ -43,7 +43,7 @@
 #include <gdk/gdkx.h>
 #endif
 
-#include <terminal/terminal-dialogs.h>
+#include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-preferences-dialog.h>
@@ -351,7 +351,7 @@ terminal_window_init (TerminalWindow *window)
                                    NULL);
 
   /* hide the ugly terminal border when tabs are shown */
-  terminal_set_style_thinkess (window->notebook, 0);
+  terminal_util_set_style_thinkess (window->notebook, 0);
 
   /* set the notebook group id */
   gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook),
@@ -1372,7 +1372,7 @@ terminal_window_action_prefs_died (gpointer  user_data,
   window->n_child_windows--;
 
   if (window->drop_down)
-    terminal_activate_window (GTK_WINDOW (window));
+    terminal_util_activate_window (GTK_WINDOW (window));
 }
 
 
@@ -1582,7 +1582,7 @@ title_dialog_response (GtkWidget      *dialog,
     {
       /* need for hiding on focus */
       if (window->drop_down)
-        terminal_activate_window (GTK_WINDOW (window));
+        terminal_util_activate_window (GTK_WINDOW (window));
 
       /* close the dialog */
       window->n_child_windows--;
@@ -1699,7 +1699,7 @@ terminal_window_action_search_response (GtkWidget      *dialog,
     {
       /* need for hiding on focus */
       if (window->drop_down)
-        terminal_activate_window (GTK_WINDOW (window));
+        terminal_util_activate_window (GTK_WINDOW (window));
 
       /* hide dialog */
       window->n_child_windows--;
@@ -1794,7 +1794,7 @@ terminal_window_action_about (GtkAction      *action,
                               TerminalWindow *window)
 {
   /* display the about dialog */
-  terminal_dialogs_show_about (GTK_WINDOW (window));
+  terminal_util_show_about_dialog (GTK_WINDOW (window));
 }
 
 
