@@ -118,6 +118,9 @@ struct _TerminalWindowDropdown
   /* ui widgets */
   GtkWidget           *keep_open;
 
+  /* idle for detecting focus out during grabs (Alt+Tab) */
+  guint                grab_timeout_id;
+
   /* measurements */
   gdouble              rel_width;
   gdouble              rel_height;
@@ -386,6 +389,9 @@ terminal_window_dropdown_finalize (GObject *object)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (object);
 
+  if (dropdown->grab_timeout_id != 0)
+    g_source_remove (dropdown->grab_timeout_id);
+
   if (dropdown->animation_timeout_id != 0)
     g_source_remove (dropdown->animation_timeout_id);
 
@@ -406,7 +412,41 @@ terminal_window_dropdown_focus_in_event (GtkWidget     *widget,
   /* unset */
   dropdown->focus_out_time = 0;
 
+  /* stop a possible grab test */
+  if (dropdown->grab_timeout_id != 0)
+    g_source_remove (dropdown->grab_timeout_id);
+
   return (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_in_event) (widget, event);;
+}
+
+
+
+static gboolean
+terminal_window_dropdown_can_grab (gpointer data)
+{
+  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
+  GdkGrabStatus           status;
+  GdkWindow              *window;
+
+  window = gtk_widget_get_window (GTK_WIDGET (dropdown));
+  status = gdk_keyboard_grab (window, FALSE, GDK_CURRENT_TIME);
+  if (status == GDK_GRAB_SUCCESS)
+    {
+      /* drop the grab */
+      gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+
+      return FALSE;
+    }
+
+  return TRUE;
+}
+
+
+
+static void
+terminal_window_dropdown_can_grab_destroyed (gpointer data)
+{
+  TERMINAL_WINDOW_DROPDOWN (data)->grab_timeout_id = 0;
 }
 
 
@@ -417,7 +457,6 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (widget);
   gboolean                retval;
-  GdkGrabStatus           status;
 
   /* let Gtk do its thingy */
   retval = (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_out_event) (widget, event);
@@ -431,21 +470,25 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
       if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dropdown->keep_open)))
         {
           /* check if the user is not pressing a key */
-          status = gdk_keyboard_grab (event->window, FALSE, GDK_CURRENT_TIME);
-          if (status == GDK_GRAB_SUCCESS)
+          if (!terminal_window_dropdown_can_grab (dropdown))
             {
-              /* drop the grab */
-              gdk_keyboard_ungrab (GDK_CURRENT_TIME);
-
               /* hide the window */
               terminal_window_dropdown_hide (dropdown);
 
               return retval;
             }
+          else if (dropdown->grab_timeout_id == 0)
+            {
+              /* focus-out with keyboard grab */
+              dropdown->grab_timeout_id =
+                  g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, 50, terminal_window_dropdown_can_grab,
+                                      dropdown, terminal_window_dropdown_can_grab_destroyed);
+            }
         }
 
       /* focus out time */
       dropdown->focus_out_time = g_get_real_time ();
+
     }
 
   return retval;
