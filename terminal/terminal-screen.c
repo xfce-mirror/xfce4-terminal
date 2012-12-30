@@ -327,7 +327,7 @@ terminal_screen_finalize (GObject *object)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
 
-  if (screen->activity_timeout_id != 0))
+  if (screen->activity_timeout_id != 0)
     g_source_remove (screen->activity_timeout_id);
 
   if (screen->background_timer_id != 0)
