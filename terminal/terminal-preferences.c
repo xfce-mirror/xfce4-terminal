@@ -71,6 +71,7 @@ enum
   PROP_DROPDOWN_OPACITY,
   PROP_DROPDOWN_POSITION,
   PROP_DROPDOWN_MOVE_TO_ACTIVE,
+  PROP_DROPDOWN_ALWAYS_SHOW_TABS,
   PROP_ENCODING,
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_NAME,
@@ -589,6 +590,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("dropdown-move-to-active",
                             NULL,
                             "DropdownMoveToActive",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-always-show-tabs:
+   **/
+  preferences_props[PROP_DROPDOWN_ALWAYS_SHOW_TABS] =
+      g_param_spec_boolean ("dropdown-always-show-tabs",
+                            NULL,
+                            "DropdownAlwaysShowTabs",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

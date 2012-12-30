@@ -60,6 +60,7 @@ enum
   PROP_DROPDOWN_STATUS_ICON,
   PROP_DROPDOWN_KEEP_ABOVE,
   PROP_DROPDOWN_ANIMATION_TIME,
+  PROP_DROPDOWN_ALWAYS_SHOW_TABS,
   N_PROPERTIES
 };
 
@@ -87,7 +88,7 @@ static void            terminal_window_dropdown_show                          (T
 static void            terminal_window_dropdown_toggle_real                   (TerminalWindowDropdown *dropdown,
                                                                                guint32                 timestamp);
 static void            terminal_window_dropdown_preferences                   (TerminalWindowDropdown *dropdown);
-
+static void            terminal_window_dropdown_update_geometry               (TerminalWindowDropdown *dropdown);
 
 
 struct _TerminalWindowDropdownClass
@@ -204,6 +205,12 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
                          0, 500, 0,
                          G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
 
+  dropdown_props[PROP_DROPDOWN_ALWAYS_SHOW_TABS] =
+      g_param_spec_boolean ("dropdown-always-show-tabs",
+                            NULL, NULL,
+                            TRUE,
+                            G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, dropdown_props);
 }
@@ -221,7 +228,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   guint           n;
   const gchar    *name;
   gboolean        keep_open;
-  GtkWidget      *child;;
+  GtkWidget      *child;
 
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
@@ -255,8 +262,9 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dropdown), TRUE);
 
   /* adjust notebook for drop-down usage */
-  gtk_notebook_set_show_tabs (GTK_NOTEBOOK (window->notebook), TRUE);
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (window->notebook), GTK_POS_BOTTOM);
+  gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), TRUE);
+  terminal_window_notebook_show_tabs (window);
   terminal_util_set_style_thinkess (window->notebook, 1);
 
   /* actions we don't want */
@@ -371,7 +379,11 @@ terminal_window_dropdown_set_property (GObject      *object,
 
     case PROP_DROPDOWN_ANIMATION_TIME:
       dropdown->animation_time = g_value_get_uint (value);
-      break;
+      return;
+
+    case PROP_DROPDOWN_ALWAYS_SHOW_TABS:
+      terminal_window_notebook_show_tabs (TERMINAL_WINDOW (dropdown));
+      return;
 
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -850,6 +862,19 @@ terminal_window_dropdown_preferences (TerminalWindowDropdown *dropdown)
 
 
 
+static void
+terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
+{
+  terminal_return_if_fail (TERMINAL_IS_WINDOW_DROPDOWN (dropdown));
+
+  /* update geometry if toolbar or menu is shown */
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
+      && dropdown->animation_dir == ANIMATION_DIR_NONE)
+    terminal_window_dropdown_show (dropdown, 0);
+}
+
+
+
 static guint32
 terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
                                         const gchar *startup_id)
@@ -875,17 +900,6 @@ terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
     }
 
   return GDK_CURRENT_TIME;
-}
-
-
-
-static void
-terminal_window_dropdown_bar_visibility_changed (TerminalWindowDropdown *dropdown)
-{
-  /* update geometry if toolbar or menu is shown */
-  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
-      && dropdown->animation_dir == ANIMATION_DIR_NONE)
-    terminal_window_dropdown_show (dropdown, 0);
 }
 
 
@@ -917,7 +931,7 @@ terminal_window_dropdown_new (const gchar        *role,
   action = gtk_action_group_get_action (window->action_group, "show-menubar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
   g_signal_connect_swapped (action, "activate",
-      G_CALLBACK (terminal_window_dropdown_bar_visibility_changed), window);
+      G_CALLBACK (terminal_window_dropdown_update_geometry), window);
 
   /* setup toolbar visibility */
   if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
@@ -925,7 +939,7 @@ terminal_window_dropdown_new (const gchar        *role,
   action = gtk_action_group_get_action (window->action_group, "show-toolbar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
   g_signal_connect_swapped (action, "activate",
-      G_CALLBACK (terminal_window_dropdown_bar_visibility_changed), window);
+      G_CALLBACK (terminal_window_dropdown_update_geometry), window);
 
   return GTK_WIDGET (window);
 }

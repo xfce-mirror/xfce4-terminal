@@ -91,7 +91,8 @@ terminal_preferences_dropdown_dialog_init (TerminalPreferencesDropdownDialog *di
                                        "dropdown-keep-above",
                                        "dropdown-toggle-focus",
                                        "dropdown-status-icon",
-                                       "dropdown-move-to-active" };
+                                       "dropdown-move-to-active",
+                                       "dropdown-always-show-tabs" };
   const gchar      *props_value[] = { "dropdown-height",
                                       "dropdown-width",
                                       "dropdown-position",

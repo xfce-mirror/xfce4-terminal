@@ -101,6 +101,8 @@ void            terminal_window_add                  (TerminalWindow     *window
 
 TerminalScreen *terminal_window_get_active           (TerminalWindow     *window);
 
+void            terminal_window_notebook_show_tabs   (TerminalWindow     *window);
+
 GSList         *terminal_window_get_restart_command  (TerminalWindow     *window);
 
 G_END_DECLS

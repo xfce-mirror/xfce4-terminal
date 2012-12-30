@@ -96,7 +96,6 @@ static void            terminal_window_notebook_page_reordered       (GtkNoteboo
                                                                       GtkNotebookPage        *page,
                                                                       guint                   page_num,
                                                                       TerminalWindow         *window);
-static void            terminal_window_notebook_show_tabs            (TerminalWindow         *window);
 static void            terminal_window_notebook_page_added           (GtkNotebook            *notebook,
                                                                       GtkWidget              *child,
                                                                       guint                   page_num,
@@ -844,38 +843,6 @@ terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
 
   /* Regenerate the "Go" menu */
   terminal_window_rebuild_tabs_menu (window);
-}
-
-
-
-static void
-terminal_window_notebook_show_tabs (TerminalWindow *window)
-{
-  GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
-  gboolean     show_tabs = TRUE;
-  gint         npages;
-
-  /* handled by other widget */
-  if (window->drop_down)
-    return;
-
-  /* set the visibility of the tabs */
-  npages = gtk_notebook_get_n_pages (notebook);
-  if (npages < 2)
-    g_object_get (G_OBJECT (window->preferences),
-                  "misc-always-show-tabs", &show_tabs, NULL);
-
-  if (gtk_notebook_get_show_tabs (notebook) != show_tabs)
-    {
-      /* store size */
-      terminal_window_size_push (window);
-
-      /* show or hdie the tabs */
-      gtk_notebook_set_show_tabs (notebook, show_tabs);
-
-      /* update the window geometry */
-      terminal_window_size_pop (window);
-    }
 }
 
 
@@ -1923,6 +1890,40 @@ terminal_window_get_active (TerminalWindow *window)
 {
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
   return window->active;
+}
+
+
+
+void
+terminal_window_notebook_show_tabs (TerminalWindow *window)
+{
+  GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
+  gboolean     show_tabs = TRUE;
+  gint         npages;
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  /* check preferences */
+  npages = gtk_notebook_get_n_pages (notebook);
+  if (npages < 2)
+    {
+      g_object_get (G_OBJECT (window->preferences),
+                    window->drop_down ? "dropdown-always-show-tabs" :
+                    "misc-always-show-tabs", &show_tabs, NULL);
+    }
+
+  /* set the visibility of the tabs */
+  if (gtk_notebook_get_show_tabs (notebook) != show_tabs)
+    {
+      /* store size */
+      terminal_window_size_push (window);
+
+      /* show or hdie the tabs */
+      gtk_notebook_set_show_tabs (notebook, show_tabs);
+
+      /* update the window geometry */
+      terminal_window_size_pop (window);
+    }
 }
 
 
