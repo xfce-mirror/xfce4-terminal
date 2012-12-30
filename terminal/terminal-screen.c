@@ -2145,6 +2145,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 
   screen->tab_label = gtk_label_new (NULL);
   gtk_misc_set_padding (GTK_MISC (screen->tab_label), 2, 0);
+  gtk_label_set_width_chars (GTK_LABEL (screen->tab_label), 10);
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   g_object_bind_property (G_OBJECT (screen), "title",
                           G_OBJECT (screen->tab_label), "label",
