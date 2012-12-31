@@ -43,7 +43,6 @@
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-window-dropdown.h>
-#include <terminal/terminal-preferences-dropdown-dialog.h>
 
 /* animation fps */
 #define ANIMATION_FPS (1000 / 20)
@@ -87,7 +86,6 @@ static void            terminal_window_dropdown_show                          (T
                                                                                guint32                 timestamp);
 static void            terminal_window_dropdown_toggle_real                   (TerminalWindowDropdown *dropdown,
                                                                                guint32                 timestamp);
-static void            terminal_window_dropdown_preferences                   (TerminalWindowDropdown *dropdown);
 static void            terminal_window_dropdown_update_geometry               (TerminalWindowDropdown *dropdown);
 
 
@@ -126,8 +124,6 @@ struct _TerminalWindowDropdown
   gdouble              rel_width;
   gdouble              rel_height;
   gdouble              rel_position;
-
-  GtkWidget           *preferences_dialog;
 
   GtkStatusIcon       *status_icon;
 
@@ -289,16 +285,18 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_container_add (GTK_CONTAINER (button), img);
   gtk_widget_show (img);
 
+  action = gtk_action_group_get_action (window->action_group, "preferences");
+
   button = gtk_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-  gtk_widget_set_tooltip_text (button, _("Drop-down Preferences..."));
+  gtk_widget_set_tooltip_text (button, gtk_action_get_tooltip (action));
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
-      G_CALLBACK (terminal_window_dropdown_preferences), dropdown);
+      G_CALLBACK (gtk_action_activate), action);
   gtk_widget_show (button);
 
-  img = gtk_image_new_from_stock (GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
+  img = gtk_action_create_icon (action, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
   gtk_widget_show (img);
 
@@ -321,6 +319,7 @@ terminal_window_dropdown_set_property (GObject      *object,
                                        GParamSpec   *pspec)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (object);
+  TerminalWindow         *window = TERMINAL_WINDOW (object);
   gdouble                 opacity;
   GdkScreen              *screen;
 
@@ -372,8 +371,8 @@ terminal_window_dropdown_set_property (GObject      *object,
 
     case PROP_DROPDOWN_KEEP_ABOVE:
       gtk_window_set_keep_above (GTK_WINDOW (dropdown), g_value_get_boolean (value));
-      if (dropdown->preferences_dialog != NULL)
-        terminal_util_activate_window (GTK_WINDOW (dropdown->preferences_dialog));
+      if (window->preferences_dialog != NULL)
+        terminal_util_activate_window (GTK_WINDOW (window->preferences_dialog));
       return;
 
     case PROP_DROPDOWN_ANIMATION_TIME:
@@ -535,21 +534,11 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
   GtkActionGroup *group = TERMINAL_WINDOW (dropdown)->action_group;
   GtkWidget      *menu;
   GtkWidget      *mi;
-  GtkWidget      *image;
   GtkAction      *action;
 
   menu = gtk_menu_new ();
   g_signal_connect (G_OBJECT (menu), "selection-done",
       G_CALLBACK (gtk_widget_destroy), NULL);
-
-  mi = gtk_image_menu_item_new_with_label (_("Drop-down Preferences..."));
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-  g_signal_connect_swapped (G_OBJECT (mi), "activate",
-     G_CALLBACK (terminal_window_dropdown_preferences), dropdown);
-  gtk_widget_show (mi);
-
-  image = gtk_image_new_from_stock (GTK_STOCK_PREFERENCES, GTK_ICON_SIZE_MENU);
-  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), image);
 
   action = gtk_action_group_get_action (group, "preferences");
   mi = gtk_action_create_menu_item (action);
@@ -818,44 +807,6 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
     {
       /* popup */
       terminal_window_dropdown_show (dropdown, timestamp);
-    }
-}
-
-
-
-static void
-terminal_window_dropdown_preferences_died (gpointer  user_data,
-                                           GObject  *where_the_object_was)
-{
-  TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (user_data);
-
-  dropdown->preferences_dialog = NULL;
-  TERMINAL_WINDOW (dropdown)->n_child_windows--;
-
-  terminal_util_activate_window (GTK_WINDOW (dropdown));
-}
-
-
-
-static void
-terminal_window_dropdown_preferences (TerminalWindowDropdown *dropdown)
-{
-  if (dropdown->preferences_dialog == NULL)
-    {
-      dropdown->preferences_dialog = terminal_preferences_dropdown_dialog_new ();
-      if (G_LIKELY (dropdown->preferences_dialog != NULL))
-        {
-          TERMINAL_WINDOW (dropdown)->n_child_windows++;
-          g_object_weak_ref (G_OBJECT (dropdown->preferences_dialog),
-                             terminal_window_dropdown_preferences_died, dropdown);
-        }
-    }
-
-  if (dropdown->preferences_dialog != NULL)
-    {
-      gtk_window_set_transient_for (GTK_WINDOW (dropdown->preferences_dialog), GTK_WINDOW (dropdown));
-      gtk_window_present (GTK_WINDOW (dropdown->preferences_dialog));
-      gtk_window_set_modal (GTK_WINDOW (dropdown->preferences_dialog), TRUE);
     }
 }
 

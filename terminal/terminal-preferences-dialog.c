@@ -131,11 +131,18 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
                                        "background-mode", "background-image-style",
-                                       "color-background-vary"
+                                       "color-background-vary", "dropdown-keep-open-default",
+                                       "dropdown-keep-above", "dropdown-toggle-focus",
+                                       "dropdown-status-icon", "dropdown-move-to-active",
+                                       "dropdown-always-show-tabs"
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-cursor",
                                        "color-background", "tab-activity-color",
                                        "color-selection", "color-bold"
+                                     };
+  const gchar      *props_value[] =  { "dropdown-height", "dropdown-width",
+                                       "dropdown-position", "dropdown-opacity",
+                                       "dropdown-animation-time"
                                      };
 
   dialog->preferences = terminal_preferences_get ();
@@ -179,6 +186,10 @@ error:
   for (i = 0; i < G_N_ELEMENTS (props_color); i++)
     BIND_PROPERTIES (props_color[i], "color");
 
+  /* bind color properties */
+  for (i = 0; i < G_N_ELEMENTS (props_value); i++)
+    BIND_PROPERTIES (props_value[i], "value");
+
   /* bind color palette properties */
   for (i = 1; i <= 16; i++)
     {
@@ -217,6 +228,12 @@ error:
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_reset_word_chars), dialog);
+
+  /* position scale */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "scale-position");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  for (i = 0; i <= 100; i += 25)
+    gtk_scale_add_mark (GTK_SCALE (object), i, GTK_POS_BOTTOM, NULL);
 
   /* inverted custom colors and set sensitivity */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-custom");
@@ -306,14 +323,28 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
                                       gint                       response,
                                       TerminalPreferencesDialog *dialog)
 {
-  GSList *li;
+  GSList      *li;
+  GObject     *object;
+  GObject     *notebook;
+  const gchar *section;
 
   /* check if we should open the user manual */
   if (G_UNLIKELY (response == 1))
     {
+      /* if the drop-down preferences are shown, we open that page in the wiki */
+      notebook = gtk_builder_get_object (GTK_BUILDER (dialog), "notebook");
+      terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
+      object = gtk_builder_get_object (GTK_BUILDER (dialog), "dropdown-box");
+      terminal_return_if_fail (G_IS_OBJECT (object));
+      if (gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (object))
+          == gtk_notebook_get_current_page (GTK_NOTEBOOK (notebook)))
+        section = "dropdown";
+      else
+        section = "preferences";
+
       /* open the "Preferences" section of the user manual */
       xfce_dialog_show_help (GTK_WINDOW (widget), "terminal",
-                             "preferences", NULL);
+                             section, NULL);
     }
   else
     {
@@ -505,15 +536,15 @@ terminal_preferences_dialog_presets_changed (GtkComboBox               *combobox
 static void
 terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
 {
-  gchar   **presets;
-  guint     n;
-  GObject  *object;
-  guint     n_presets = 0;
-  XfceRc   *rc;
+  gchar       **presets;
+  guint         n;
+  GObject      *object;
+  guint         n_presets = 0;
+  XfceRc       *rc;
   GtkListStore *store;
-  GtkTreeIter iter;
-  const gchar *title;
-  gchar *path;
+  GtkTreeIter   iter;
+  const gchar  *title;
+  gchar        *path;
 
   /* load schemes */
   presets = xfce_resource_match (XFCE_RESOURCE_DATA, "xfce4/terminal/colorschemes/*", TRUE);
@@ -737,13 +768,29 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
  * Return value :
  **/
 GtkWidget*
-terminal_preferences_dialog_new (void)
+terminal_preferences_dialog_new (gboolean show_drop_down)
 {
   GtkBuilder *builder;
   GObject    *dialog;
+  GObject    *object;
+  GObject    *notebook;
 
   builder = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
-  dialog = gtk_builder_get_object (builder, "dialog");
 
+  object = gtk_builder_get_object (builder, "dropdown-box");
+  terminal_return_val_if_fail (GTK_IS_WIDGET (object), NULL);
+  gtk_widget_set_visible (GTK_WIDGET (object), show_drop_down);
+
+  if (show_drop_down)
+    {
+      /* focus the drop-down tab if enabled */
+      notebook = gtk_builder_get_object (builder, "notebook");
+      terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), NULL);
+      gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
+          gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (object)));
+    }
+
+  dialog = gtk_builder_get_object (builder, "dialog");
+  terminal_return_val_if_fail (XFCE_IS_TITLED_DIALOG (dialog), NULL);
   return GTK_WIDGET (dialog);
 }

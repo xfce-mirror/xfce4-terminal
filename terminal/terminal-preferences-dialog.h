@@ -37,7 +37,7 @@ typedef struct _TerminalPreferencesDialog      TerminalPreferencesDialog;
 
 GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
 
-GtkWidget *terminal_preferences_dialog_new      (void);
+GtkWidget *terminal_preferences_dialog_new      (gboolean show_drop_down);
 
 G_END_DECLS
 

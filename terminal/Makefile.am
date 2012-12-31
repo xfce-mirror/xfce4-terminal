@@ -24,7 +24,6 @@ xfce4_terminal_headers = \
 	terminal-options.h \
 	terminal-preferences.h \
 	terminal-preferences-dialog.h \
-	terminal-preferences-dropdown-dialog.h \
 	terminal-search-dialog.h \
 	terminal-private.h \
 	terminal-screen.h \
@@ -44,7 +43,6 @@ xfce4_terminal_SOURCES = \
 	terminal-options.c \
 	terminal-preferences.c \
 	terminal-preferences-dialog.c \
-	terminal-preferences-dropdown-dialog.c \
 	terminal-search-dialog.c \
 	terminal-screen.c \
 	terminal-util.c \
@@ -75,8 +73,7 @@ xfce4_terminal_LDADD = \
 
 uidir = $(datadir)/xfce4/terminal
 ui_DATA = \
-	terminal-preferences.ui \
-	terminal-preferences-dropdown.ui
+	terminal-preferences.ui
 
 ##
 ## Rules to auto-generate built sources
@@ -107,9 +104,6 @@ terminal-window-ui.h: Makefile $(srcdir)/terminal-window-ui.xml
 	$(AM_V_GEN) xdt-csource --strip-comments --strip-content --static --name=terminal_window_ui $(srcdir)/terminal-window-ui.xml > terminal-window-ui.h
 
 terminal-preferences.ui: $(srcdir)/terminal-preferences.glade Makefile
-	$(AM_V_GEN) $(XMLLINT) --nonet --noblanks $< > $@ || cat $< > $@
-
-terminal-preferences-dropdown.ui: $(srcdir)/terminal-preferences-dropdown.glade Makefile
 	$(AM_V_GEN) $(XMLLINT) --nonet --noblanks $< > $@ || cat $< > $@
 
 terminal-enum-types.h: stamp-terminal-enum-types.h
@@ -164,7 +158,6 @@ EXTRA_DIST = \
 	terminal-config.h.in \
 	terminal-marshal.list \
 	terminal-window-ui.xml \
-	terminal-preferences.glade \
-	terminal-preferences-dropdown.glade
+	terminal-preferences.glade
 
 # vi:set ts=8 sw=8 noet ai nocindent:

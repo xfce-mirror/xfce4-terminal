@@ -1358,7 +1358,7 @@ terminal_window_action_prefs (GtkAction      *action,
 {
   if (window->preferences_dialog == NULL)
     {
-      window->preferences_dialog = terminal_preferences_dialog_new ();
+      window->preferences_dialog = terminal_preferences_dialog_new (window->drop_down);
       if (G_LIKELY (window->preferences_dialog != NULL))
         {
           window->n_child_windows++;
