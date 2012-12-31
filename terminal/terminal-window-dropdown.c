@@ -249,6 +249,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_window_set_resizable (GTK_WINDOW (dropdown), FALSE);
   gtk_window_set_decorated (GTK_WINDOW (dropdown), FALSE);
   gtk_window_set_gravity (GTK_WINDOW (dropdown), GDK_GRAVITY_STATIC);
+  gtk_window_set_type_hint (GTK_WINDOW (dropdown), GDK_WINDOW_TYPE_HINT_NORMAL);
   gtk_window_stick (GTK_WINDOW (dropdown));
 
   /* this avoids to return focus to the window after dialog changes,
@@ -426,7 +427,7 @@ terminal_window_dropdown_focus_in_event (GtkWidget     *widget,
   if (dropdown->grab_timeout_id != 0)
     g_source_remove (dropdown->grab_timeout_id);
 
-  return (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_in_event) (widget, event);;
+  return (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_in_event) (widget, event);
 }
 
 
@@ -759,6 +760,9 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   if (!visible)
     gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
 
+  /* force focus to the window */
+  terminal_util_activate_window (GTK_WINDOW (dropdown));
+
   if (dropdown->animation_time > 0
       && viewport_h < h)
     {
@@ -800,7 +804,6 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
       else
         {
           terminal_window_dropdown_show (dropdown, timestamp);
-          terminal_util_activate_window (GTK_WINDOW (dropdown));
         }
     }
   else
