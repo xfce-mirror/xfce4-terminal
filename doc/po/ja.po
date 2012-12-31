@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.8\n"
-"POT-Creation-Date: 2012-12-29 22:43+0100\n"
-"PO-Revision-Date: 2012-12-28 23:21+0900\n"
+"POT-Creation-Date: 2012-12-31 18:03+0900\n"
+"PO-Revision-Date: 2012-12-31 17:56+0900\n"
 "Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
 "Language-Team: Japanese <xfce-users-jp@ml.fdiary.net>\n"
 "Language: ja\n"
@@ -65,10 +65,6 @@ msgstr "X ターミナルエミュレーター"
 #: xfce4-terminal.1.xml:48(title)
 msgid "Synopsis"
 msgstr "書式"
-
-#: xfce4-terminal.1.xml:50(command)
-msgid "Terminal"
-msgstr "Terminal"
 
 #: xfce4-terminal.1.xml:51(arg)
 msgid "OPTION"
@@ -181,7 +177,6 @@ msgid "Window Options"
 msgstr "ウィンドウオプション"
 
 #: xfce4-terminal.1.xml:125(para)
-#, fuzzy
 msgid ""
 "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
 "drop-down\"/>; <xref linkend=\"options-window-geometry\"/>; <xref linkend="
@@ -194,14 +189,14 @@ msgid ""
 "toolbars\"/>, <xref linkend=\"options-window-hide-toolbars\"/>"
 msgstr ""
 "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
-"geometry\"/>; <xref linkend=\"options-window-role\"/>; <xref linkend="
-"\"options-window-startup-id\"/>; <xref linkend=\"options-window-icon\"/>; "
-"<xref linkend=\"options-window-fullscreen\"/>; <xref linkend=\"options-"
-"window-maximize\"/>; <xref linkend=\"options-window-show-menubar\"/>, <xref "
-"linkend=\"options-window-hide-menubar\"/>; <xref linkend=\"options-window-"
-"show-borders\"/>, <xref linkend=\"options-window-hide-borders\"/>; <xref "
-"linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-"
-"hide-toolbars\"/>"
+"drop-down\"/>; <xref linkend=\"options-window-geometry\"/>; <xref linkend="
+"\"options-window-role\"/>; <xref linkend=\"options-window-startup-id\"/>; "
+"<xref linkend=\"options-window-icon\"/>; <xref linkend=\"options-window-"
+"fullscreen\"/>; <xref linkend=\"options-window-maximize\"/>; <xref linkend="
+"\"options-window-show-menubar\"/>, <xref linkend=\"options-window-hide-"
+"menubar\"/>; <xref linkend=\"options-window-show-borders\"/>, <xref linkend="
+"\"options-window-hide-borders\"/>; <xref linkend=\"options-window-show-"
+"toolbars\"/>, <xref linkend=\"options-window-hide-toolbars\"/>"
 
 #: xfce4-terminal.1.xml:149(term)
 msgid "<option>-h</option>, <option>--help</option>"
@@ -364,14 +359,17 @@ msgstr "最後に指定されたウィンドウで使用する X ディスプレ
 
 #: xfce4-terminal.1.xml:292(option)
 msgid "--drop-down"
-msgstr ""
+msgstr "--drop-down"
 
 #: xfce4-terminal.1.xml:295(para)
 msgid ""
 "Will start the window in drop-down mode (also called a Quake-style "
 "terminal). This will only apply to the first window started with this "
-"option. It is adviced to bind this to a shortcut in the keyboard preferences."
+"option. It is advised to bind this to a shortcut in the keyboard preferences."
 msgstr ""
+"ドロップダウンモードでウィンドウを開始します (Quake スタイルターミナルとも呼"
+"ばれます)。このオプションはウィンドウを開始する初回のみ適用されます。これは"
+"キーボードの設定でショートカットを割り当てて使用するのが良いでしょう。"
 
 #: xfce4-terminal.1.xml:305(replaceable)
 msgid "geometry"
@@ -440,7 +438,7 @@ msgstr "-I, --icon=<placeholder-1/>"
 
 #: xfce4-terminal.1.xml:347(para)
 msgid "Set the terminal's icon as an icon name or filename."
-msgstr "Terminal のアイコンをアイコン名またはファイル名で指定します。"
+msgstr "ターミナルのアイコンをアイコン名またはファイル名で指定します。"
 
 #: xfce4-terminal.1.xml:355(option)
 msgid "--fullscreen"
@@ -565,7 +563,7 @@ msgid ""
 "two tabs in it, where the first tab runs <command>mutt</command> and the "
 "second tab runs <command>mc</command>."
 msgstr ""
-"Terminal ウィンドウを幅 80 桁・高さ 40 行、2 つのタブで開き、最初のタブで "
+"ターミナルウィンドウを幅 80 桁・高さ 40 行、2 つのタブで開き、最初のタブで "
 "<command>mutt</command> を、2 つ目のタブで <command>mc</command> コマンドを実"
 "行します。"
 
@@ -575,15 +573,17 @@ msgstr "環境変数"
 
 #: xfce4-terminal.1.xml:471(para)
 msgid ""
-"Terminal uses the Basedir Specification as defined on <ulink url=\"http://"
-"freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate its data "
-"and configuration files. This means that file locations will be specified as "
-"a path relative to the directories described in the specification."
+"@PACKAGE_NAME@ uses the Basedir Specification as defined on <ulink url="
+"\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> to locate "
+"its data and configuration files. This means that file locations will be "
+"specified as a path relative to the directories described in the "
+"specification."
 msgstr ""
-"Terminal はそのデータおよび設定ファイルの場所を探す際に、<ulink url=\"http://"
-"freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> で策定されている基本"
-"フォルダーの仕様 (Basedir Specification) に従います。従って、各ファイルの位置"
-"は、この仕様に記述されているフォルダーの相対パスとして指定されます。"
+"@PACKAGE_NAME@ はそのデータおよび設定ファイルの場所を探す際に、<ulink url="
+"\"http://freedesktop.org/\" type=\"http\">Freedesktop.org</ulink> で策定され"
+"ている基本フォルダーの仕様 (Basedir Specification) に従います。従って、各ファ"
+"イルの位置は、この仕様に記述されているフォルダーの相対パスとして指定されま"
+"す。"
 
 #: xfce4-terminal.1.xml:480(varname)
 msgid "${XDG_CONFIG_HOME}"
@@ -646,8 +646,8 @@ msgid "Files"
 msgstr "ファイル"
 
 #: xfce4-terminal.1.xml:531(filename)
-msgid "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
-msgstr "${XDG_CONFIG_DIRS}/Terminal/terminalrc"
+msgid "${XDG_CONFIG_DIRS}/xfce4/terminal/terminalrc"
+msgstr "${XDG_CONFIG_DIRS}/xfce4/terminal/terminalrc"
 
 #: xfce4-terminal.1.xml:533(para)
 msgid ""
@@ -675,7 +675,10 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Daichi Kawahata <daichi@xfce.org>, 2005, 2006.\n"
-"Masato Hashimoto <hashimo@xfce.org>, 2009. "
+"Masato Hashimoto <hashimo@xfce.org>, 2009, 2012."
+
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
 
 #~ msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
 #~ msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
