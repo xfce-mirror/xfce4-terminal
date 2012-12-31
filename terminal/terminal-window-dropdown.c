@@ -85,7 +85,8 @@ static void            terminal_window_dropdown_hide                          (T
 static void            terminal_window_dropdown_show                          (TerminalWindowDropdown *dropdown,
                                                                                guint32                 timestamp);
 static void            terminal_window_dropdown_toggle_real                   (TerminalWindowDropdown *dropdown,
-                                                                               guint32                 timestamp);
+                                                                               guint32                 timestamp,
+                                                                               gboolean                force_show);
 static void            terminal_window_dropdown_update_geometry               (TerminalWindowDropdown *dropdown);
 
 
@@ -822,12 +823,14 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
 
 static void
 terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
-                                      guint32                 timestamp)
+                                      guint32                 timestamp,
+                                      gboolean                force_show)
 {
   TerminalWindow *window = TERMINAL_WINDOW (dropdown);
   gboolean        toggle_focus;
 
-  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
+  if (!force_show
+      && gtk_widget_get_visible (GTK_WIDGET (dropdown))
       && dropdown->animation_dir != ANIMATION_DIR_UP)
     {
       g_object_get (G_OBJECT (window->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
@@ -949,13 +952,14 @@ terminal_window_dropdown_new (const gchar        *role,
 
 void
 terminal_window_dropdown_toggle (TerminalWindowDropdown *dropdown,
-                                 const gchar            *startup_id)
+                                 const gchar            *startup_id,
+                                 gboolean                force_show)
 {
   guint32 timestamp;
 
   /* toggle window */
   timestamp = terminal_window_dropdown_get_timestamp (GTK_WIDGET (dropdown), startup_id);
-  terminal_window_dropdown_toggle_real (dropdown, timestamp);
+  terminal_window_dropdown_toggle_real (dropdown, timestamp, force_show);
 
   /* window is focussed or hidden */
   if (startup_id != NULL)

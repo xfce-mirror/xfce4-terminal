@@ -603,7 +603,7 @@ terminal_app_open_window (TerminalApp        *app,
           else
             {
               /* toggle state of visible window */
-              terminal_window_dropdown_toggle (lp->data, attr->startup_id);
+              terminal_window_dropdown_toggle (lp->data, attr->startup_id, FALSE);
               return;
             }
         }
@@ -700,7 +700,7 @@ terminal_app_open_window (TerminalApp        *app,
 
   /* show the window */
   if (attr->drop_down)
-    terminal_window_dropdown_toggle (TERMINAL_WINDOW_DROPDOWN (window), attr->startup_id);
+    terminal_window_dropdown_toggle (TERMINAL_WINDOW_DROPDOWN (window), attr->startup_id, reuse_window);
   else
     gtk_widget_show (window);
 }

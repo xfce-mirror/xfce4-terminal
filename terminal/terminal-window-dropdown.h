@@ -42,7 +42,8 @@ GtkWidget      *terminal_window_dropdown_new                  (const gchar      
                                                                TerminalVisibility      toolbar);
 
 void            terminal_window_dropdown_toggle               (TerminalWindowDropdown *dropdown,
-                                                               const gchar            *startup_id);
+                                                               const gchar            *startup_id,
+                                                               gboolean                force_show);
 
 void            terminal_window_dropdown_get_size             (TerminalWindowDropdown *dropdown,
                                                                TerminalScreen         *screen,
