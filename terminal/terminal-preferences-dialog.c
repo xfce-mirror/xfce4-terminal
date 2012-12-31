@@ -23,6 +23,11 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
+#ifdef GDK_WINDOWING_X11
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#endif
+
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences-dialog.h>
@@ -35,6 +40,13 @@ static void terminal_preferences_dialog_finalize          (GObject              
 static void terminal_preferences_dialog_response          (GtkWidget                 *widget,
                                                            gint                       response,
                                                            TerminalPreferencesDialog *dialog);
+#ifdef GDK_WINDOWING_X11
+static void terminal_preferences_dialog_geometry_changed  (TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_geometry_columns  (GtkAdjustment             *adj,
+                                                           TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_geometry_rows     (GtkAdjustment             *adj,
+                                                           TerminalPreferencesDialog *dialog);
+#endif
 static void terminal_preferences_dialog_palette_changed   (GtkWidget                 *button,
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_palette_notify    (TerminalPreferencesDialog *dialog);
@@ -69,6 +81,7 @@ struct _TerminalPreferencesDialog
 
   gulong               bg_image_signal_id;
   gulong               palette_signal_id;
+  gulong               geometry_sigal_id;
 };
 
 enum
@@ -255,6 +268,28 @@ error:
                           G_OBJECT (object2), "sensitive",
                           G_BINDING_SYNC_CREATE);
 
+#ifdef GDK_WINDOWING_X11
+  terminal_preferences_dialog_geometry_changed (dialog);
+  dialog->geometry_sigal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences),
+      "notify::misc-default-geometry",
+      G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
+
+  /* geo changes */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "geo-columns");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (G_OBJECT (object), "value-changed",
+      G_CALLBACK (terminal_preferences_dialog_geometry_columns), dialog);
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "geo-rows");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (G_OBJECT (object), "value-changed",
+      G_CALLBACK (terminal_preferences_dialog_geometry_rows), dialog);
+#else
+  /* hide */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "geo-box");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_BOX (object));
+#endif
+
   /* background widgets visibility */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "background-mode");
   terminal_return_if_fail (G_IS_OBJECT (object));
@@ -308,6 +343,8 @@ terminal_preferences_dialog_finalize (GObject *object)
     g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
   if (G_LIKELY (dialog->palette_signal_id != 0))
     g_signal_handler_disconnect (dialog->preferences, dialog->palette_signal_id);
+  if (G_LIKELY (dialog->geometry_sigal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->geometry_sigal_id);
 
   /* release the preferences */
   g_object_unref (G_OBJECT (dialog->preferences));
@@ -356,6 +393,104 @@ terminal_preferences_dialog_response (GtkWidget                 *widget,
       gtk_widget_destroy (widget);
     }
 }
+
+
+
+#ifdef GDK_WINDOWING_X11
+static void
+terminal_preferences_dialog_geometry_changed (TerminalPreferencesDialog *dialog)
+{
+  GObject *object;
+  gchar   *geo;
+  guint    w = 0, h = 0;
+  gint     x, y;
+
+  g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geo, NULL);
+  if (G_LIKELY (geo != NULL))
+    {
+      /* parse the string */
+      XParseGeometry (geo, &x, &y, &w, &h);
+      g_free (geo);
+    }
+
+  /* set cols */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "geo-columns");
+  terminal_return_if_fail (GTK_IS_ADJUSTMENT (object));
+  g_signal_handlers_block_by_func (G_OBJECT (object),
+      terminal_preferences_dialog_geometry_columns, dialog);
+  gtk_adjustment_set_value (GTK_ADJUSTMENT (object), w != 0 ? w : 80);
+  g_signal_handlers_unblock_by_func (G_OBJECT (object),
+      terminal_preferences_dialog_geometry_columns, dialog);
+
+  /* set rows */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "geo-rows");
+  terminal_return_if_fail (GTK_IS_ADJUSTMENT (object));
+  g_signal_handlers_block_by_func (G_OBJECT (object),
+      terminal_preferences_dialog_geometry_columns, dialog);
+  gtk_adjustment_set_value (GTK_ADJUSTMENT (object), h != 0 ? h : 24);
+  g_signal_handlers_unblock_by_func (G_OBJECT (object),
+      terminal_preferences_dialog_geometry_columns, dialog);
+}
+
+
+
+static void
+terminal_preferences_dialog_geometry (TerminalPreferencesDialog *dialog,
+                                      gint                       columns,
+                                      gint                       rows)
+{
+  gint     x, y;
+  guint    w, h;
+  gchar   *geo;
+  gint     mask = NoValue;
+
+  g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geo, NULL);
+  if (G_LIKELY (geo != NULL))
+    {
+      /* parse the string */
+      mask = XParseGeometry (geo, &x, &y, &w, &h);
+      g_free (geo);
+    }
+
+  /* set new value */
+  if (columns > 0)
+    w = columns;
+  if (rows > 0)
+    h = rows;
+
+  /* if there is an x or y value, preserve this */
+  if ((mask & XValue) != 0 || (mask & YValue) != 0)
+    geo = g_strdup_printf ("%dx%d%+d%+d", w, h, x, y);
+  else
+    geo = g_strdup_printf ("%dx%d", w, h);
+
+  /* save */
+  g_signal_handler_block (G_OBJECT (dialog->preferences), dialog->geometry_sigal_id);
+  g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry", geo, NULL);
+  g_signal_handler_unblock (G_OBJECT (dialog->preferences), dialog->geometry_sigal_id);
+  g_free (geo);
+}
+
+
+
+static void
+terminal_preferences_dialog_geometry_columns (GtkAdjustment             *adj,
+                                              TerminalPreferencesDialog *dialog)
+{
+  terminal_return_if_fail (GTK_IS_ADJUSTMENT (adj));
+  terminal_preferences_dialog_geometry (dialog, gtk_adjustment_get_value (adj), -1);
+}
+
+
+
+static void
+terminal_preferences_dialog_geometry_rows (GtkAdjustment             *adj,
+                                           TerminalPreferencesDialog *dialog)
+{
+  terminal_return_if_fail (GTK_IS_ADJUSTMENT (adj));
+  terminal_preferences_dialog_geometry (dialog, -1, gtk_adjustment_get_value (adj));
+}
+#endif
 
 
 
