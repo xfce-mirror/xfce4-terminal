@@ -52,6 +52,7 @@
 #include <terminal/terminal-marshal.h>
 #include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-window.h>
+#include <terminal/terminal-window-dropdown.h>
 #include <terminal/terminal-window-ui.h>
 #include <terminal/terminal-widget.h>
 
@@ -882,6 +883,12 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
 
       /* show the tabs when needed */
       terminal_window_notebook_show_tabs (window);
+    }
+  else if (G_UNLIKELY (window->drop_down))
+    {
+      /* try to calculate a decent grid size based on the info we have now */
+      terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
+      terminal_screen_set_size (screen, w, h);
     }
   else
     {

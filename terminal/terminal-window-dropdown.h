@@ -43,6 +43,11 @@ GtkWidget      *terminal_window_dropdown_new                  (const gchar      
 void            terminal_window_dropdown_toggle               (TerminalWindowDropdown *dropdown,
                                                                const gchar            *startup_id);
 
+void            terminal_window_dropdown_get_size             (TerminalWindowDropdown *dropdown,
+                                                               TerminalScreen         *screen,
+                                                               glong                  *grid_width,
+                                                               glong                  *grid_height);
+
 G_END_DECLS
 
 #endif /* !__TERMINAL_WINDOW_DROPDOWN_H__ */

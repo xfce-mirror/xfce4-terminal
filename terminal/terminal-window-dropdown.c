@@ -913,3 +913,37 @@ terminal_window_dropdown_toggle (TerminalWindowDropdown *dropdown,
   if (startup_id != NULL)
     gdk_notify_startup_complete_with_id (startup_id);
 }
+
+
+
+void
+terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
+                                   TerminalScreen         *screen,
+                                   glong                  *grid_width,
+                                   glong                  *grid_height)
+{
+  GdkScreen      *gdkscreen;
+  gint            monitor_num;
+  GdkRectangle    monitor_geo;
+  gint            xpad, ypad;
+  glong           char_width, char_height;
+  GtkRequisition  req;
+
+  /* get the active monitor size */
+  gdkscreen = xfce_gdk_screen_get_active (&monitor_num);
+  gdk_screen_get_monitor_geometry (gdkscreen, monitor_num, &monitor_geo);
+
+  /* get terminal size */
+  terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
+
+  /* correct padding with visible widgets */
+  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->vbox, &req);
+  xpad += 2;
+  ypad += req.height;
+
+  /* return grid size */
+  if (G_LIKELY (grid_width != NULL))
+    *grid_width = ((monitor_geo.width * dropdown->rel_width) - xpad) / char_width;
+  if (G_LIKELY (grid_height != NULL))
+    *grid_height = ((monitor_geo.height * dropdown->rel_height) - ypad) / char_height;
+}
