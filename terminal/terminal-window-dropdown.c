@@ -726,7 +726,8 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
     {
       /* don't fullscreen during animation*/
-      gtk_window_unfullscreen (GTK_WINDOW (window));
+      if (dropdown->animation_time > 0)
+        gtk_window_unfullscreen (GTK_WINDOW (window));
 
       /* use monitor geometry */
       w = monitor_geo.width;
