@@ -41,7 +41,7 @@
 
 
 
-#define USERCHARS       "-[:alnum:]"
+#define USERCHARS       "-_+[:alnum:]"
 #define USERCHARS_CLASS "[" USERCHARS "]"
 #define PASSCHARS_CLASS "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]"
 #define HOSTCHARS_CLASS "[-[:alnum:]]"
