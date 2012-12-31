@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal-0.4.2\n"
 "POT-Creation-Date: 2012-12-29 22:43+0100\n"
-"PO-Revision-Date: 2012-12-22 00:05-0300\n"
+"PO-Revision-Date: 2012-12-30 22:16-0300\n"
 "Last-Translator: Rafael Ferreira <rafael.f.f1@gmail.com>\n"
 "Language-Team: Xfce Brazilian Portuguese Translation Team <xfce-i18n-br@xfce."
 "org>\n"
@@ -137,7 +137,6 @@ msgid "General Options"
 msgstr "Opções Gerais"
 
 #: xfce4-terminal.1.xml:91(para)
-#, fuzzy
 msgid ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
@@ -147,8 +146,9 @@ msgid ""
 msgstr ""
 "<xref linkend=\"options-general-help\"/>; <xref linkend=\"options-general-"
 "version\"/>; <xref linkend=\"options-general-disable-server\"/>; <xref "
-"linkend=\"options-general-default-display\"/>; <xref linkend=\"options-"
-"general-default-working-directory\"/>"
+"linkend=\"options-general-color-table\"/>; <xref linkend=\"options-general-"
+"default-display\"/>; <xref linkend=\"options-general-default-working-"
+"directory\"/>"
 
 #: xfce4-terminal.1.xml:102(link) xfce4-terminal.1.xml:205(title)
 msgid "Window or Tab Separators"
@@ -181,7 +181,6 @@ msgid "Window Options"
 msgstr "Opções de Janelas"
 
 #: xfce4-terminal.1.xml:125(para)
-#, fuzzy
 msgid ""
 "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
 "drop-down\"/>; <xref linkend=\"options-window-geometry\"/>; <xref linkend="
@@ -194,14 +193,14 @@ msgid ""
 "toolbars\"/>, <xref linkend=\"options-window-hide-toolbars\"/>"
 msgstr ""
 "<xref linkend=\"options-window-display\"/>; <xref linkend=\"options-window-"
-"geometry\"/>; <xref linkend=\"options-window-role\"/>; <xref linkend="
-"\"options-window-startup-id\"/>; <xref linkend=\"options-window-icon\"/>; "
-"<xref linkend=\"options-window-fullscreen\"/>; <xref linkend=\"options-"
-"window-maximize\"/>; <xref linkend=\"options-window-show-menubar\"/>, <xref "
-"linkend=\"options-window-hide-menubar\"/>; <xref linkend=\"options-window-"
-"show-borders\"/>, <xref linkend=\"options-window-hide-borders\"/>; <xref "
-"linkend=\"options-window-show-toolbars\"/>, <xref linkend=\"options-window-"
-"hide-toolbars\"/>"
+"drop-down\"/>; <xref linkend=\"options-window-geometry\"/>; <xref linkend="
+"\"options-window-role\"/>; <xref linkend=\"options-window-startup-id\"/>; "
+"<xref linkend=\"options-window-icon\"/>; <xref linkend=\"options-window-"
+"fullscreen\"/>; <xref linkend=\"options-window-maximize\"/>; <xref linkend="
+"\"options-window-show-menubar\"/>, <xref linkend=\"options-window-hide-"
+"menubar\"/>; <xref linkend=\"options-window-show-borders\"/>, <xref linkend="
+"\"options-window-hide-borders\"/>; <xref linkend=\"options-window-show-"
+"toolbars\"/>, <xref linkend=\"options-window-hide-toolbars\"/>"
 
 #: xfce4-terminal.1.xml:149(term)
 msgid "<option>-h</option>, <option>--help</option>"
@@ -232,11 +231,11 @@ msgstr "Não registar com o bus de mensagem de sessão D-BUS"
 
 #: xfce4-terminal.1.xml:177(option)
 msgid "--color-table"
-msgstr ""
+msgstr "--color-table"
 
 #: xfce4-terminal.1.xml:180(para)
 msgid "Echo the color codes"
-msgstr ""
+msgstr "Imprime os códigos de cor"
 
 #: xfce4-terminal.1.xml:186(replaceable) xfce4-terminal.1.xml:283(replaceable)
 msgid "display"
@@ -283,6 +282,8 @@ msgid ""
 "If you use this as the first option, without --window separators, the last "
 "window will be re-used."
 msgstr ""
+"Se você usa isso como a primeira opção, sem separadores --window, a última "
+"janela será reusada."
 
 #: xfce4-terminal.1.xml:219(option)
 msgid "--window"
@@ -362,7 +363,7 @@ msgstr "Tela X a usar na última janela especificada"
 
 #: xfce4-terminal.1.xml:292(option)
 msgid "--drop-down"
-msgstr ""
+msgstr "--drop-down"
 
 #: xfce4-terminal.1.xml:295(para)
 msgid ""
@@ -370,6 +371,10 @@ msgid ""
 "terminal). This will only apply to the first window started with this "
 "option. It is adviced to bind this to a shortcut in the keyboard preferences."
 msgstr ""
+"Vai iniciar a janela no modo desdobrável (também chamado de um terminal "
+"estilo Quake). Isso vai aplicar-se somente à primeira janela iniciada com "
+"esta opção. É aconselhado que se vincule isso a um atalho nas preferências "
+"de teclado."
 
 #: xfce4-terminal.1.xml:305(replaceable)
 msgid "geometry"
@@ -400,7 +405,6 @@ msgid "--role=<placeholder-1/>"
 msgstr "--role=<placeholder-1/>"
 
 #: xfce4-terminal.1.xml:321(para)
-#, fuzzy
 msgid ""
 "Sets the window role of the last-specified window to <parameter>role</"
 "parameter>. Applies to only one window and can be specified once for each "
@@ -409,8 +413,9 @@ msgid ""
 msgstr ""
 "Define a regra da última janela especificada para <parameter>regra</"
 "parameter>. Aplica-se apenas a uma janela e pode ser especificada uma vez "
-"para cada janela que criar na linha de comandos. Usado principalmente para a "
-"gestão da sessão dentro do @PACKAGE_NAME@."
+"para cada janela que criar na linha de comando. A <parameter>regra</"
+"parameter> é um identificador único para a janela a ser usado ao se "
+"restaurar uma sessão."
 
 #: xfce4-terminal.1.xml:332(replaceable)
 msgid "string"
@@ -678,7 +683,8 @@ msgid "translator-credits"
 msgstr ""
 "Nuno Miguel <nunis@netcabo.pt>, 2009\n"
 "Sérgio Marques <smarquespt@gmail.com>, 2009\n"
-"Henrique P. Machado <zehrique@xfce.org>, 2011"
+"Henrique P. Machado <zehrique@xfce.org>, 2011\n"
+"Rafael Ferreira <rafael.f.f1@gmail.com>, 2012"
 
 #~ msgid "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
 #~ msgstr "${XDG_DATA_DIRS}/Terminal/Terminal-toolbars.ui"
