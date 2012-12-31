@@ -594,17 +594,28 @@ terminal_app_open_window (TerminalApp        *app,
 
       if (lp != NULL)
         {
-          /* toggle state of visible window */
-          terminal_window_dropdown_toggle (lp->data, attr->startup_id);
-          return;
+          if (G_UNLIKELY (attr->reuse_last_window))
+            {
+              /* use the drop-down window to insert the tab */
+              window = lp->data;
+              reuse_window = TRUE;
+            }
+          else
+            {
+              /* toggle state of visible window */
+              terminal_window_dropdown_toggle (lp->data, attr->startup_id);
+              return;
+            }
         }
-
-      /* create new drop-down window */
-      window = terminal_app_create_drop_down (app,
-                                              attr->role,
-                                              attr->fullscreen,
-                                              attr->menubar,
-                                              attr->toolbar);
+      else
+        {
+          /* create new drop-down window */
+          window = terminal_app_create_drop_down (app,
+                                                  attr->role,
+                                                  attr->fullscreen,
+                                                  attr->menubar,
+                                                  attr->toolbar);
+        }
     }
   else if (attr->reuse_last_window
            && app->windows != NULL)
@@ -665,12 +676,12 @@ terminal_app_open_window (TerminalApp        *app,
       terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
     }
 
-  /* don't apply other attributes to teh window when reusing */
-  if (reuse_window)
-    return;
-
   if (!attr->drop_down)
     {
+      /* don't apply other attributes to the window when reusing */
+      if (reuse_window)
+        return;
+
       /* set the window geometry, this can only be set after one of the tabs
        * has been added, because vte is the geometry widget, so atleast one
        * call should have been made to terminal_screen_set_window_geometry_hints */
