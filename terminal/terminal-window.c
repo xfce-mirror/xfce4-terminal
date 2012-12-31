@@ -291,7 +291,6 @@ static void
 terminal_window_init (TerminalWindow *window)
 {
   GtkAccelGroup  *accel_group;
-  GtkAction      *action;
   GtkWidget      *vbox;
   gboolean        always_show_tabs;
   GdkScreen      *screen;
@@ -329,15 +328,6 @@ terminal_window_init (TerminalWindow *window)
   window->vbox = vbox = gtk_vbox_new (FALSE, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
   gtk_widget_show (vbox);
-
-#if defined(GDK_WINDOWING_X11)
-  /* setup fullscreen mode */
-  if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
-    {
-      action = gtk_action_group_get_action (window->action_group, "fullscreen");
-      gtk_action_set_sensitive (action, FALSE);
-    }
-#endif
 
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
@@ -392,6 +382,13 @@ terminal_window_init (TerminalWindow *window)
   window->action_copy = gtk_action_group_get_action (window->action_group, "copy");
   window->action_search_next = gtk_action_group_get_action (window->action_group, "search-next");
   window->action_search_prev = gtk_action_group_get_action (window->action_group, "search-prev");
+  window->action_fullscreen = gtk_action_group_get_action (window->action_group, "fullscreen");
+
+#if defined(GDK_WINDOWING_X11)
+  /* setup fullscreen mode */
+  if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
+    gtk_action_set_sensitive (window->action_fullscreen, FALSE);
+#endif
 }
 
 
@@ -443,18 +440,17 @@ terminal_window_state_event (GtkWidget           *widget,
                              GdkEventWindowState *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
-  GtkAction      *action;
   gboolean        fullscreen;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
 
   /* update the fullscreen action if the fullscreen state changed by the wm */
-  if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0)
+  if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0
+      && gtk_widget_get_visible (widget))
     {
       fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
-      action = gtk_action_group_get_action (window->action_group, "fullscreen");
-      if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)) != fullscreen)
-        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), fullscreen);
+      if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)) != fullscreen)
+        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->action_fullscreen), fullscreen);
     }
 
   if (GTK_WIDGET_CLASS (terminal_window_parent_class)->window_state_event != NULL)
@@ -1813,9 +1809,8 @@ terminal_window_new (const gchar       *role,
                 NULL);
 
   /* setup full screen */
-  action = gtk_action_group_get_action (window->action_group, "fullscreen");
-  if (fullscreen && gtk_action_is_sensitive (action))
-    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+  if (fullscreen && gtk_action_is_sensitive (window->action_fullscreen))
+    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->action_fullscreen), TRUE);
 
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
@@ -1974,8 +1969,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
   if (G_LIKELY (role != NULL))
     result = g_slist_prepend (result, g_strdup_printf ("--role=%s", role));
 
-  action = gtk_action_group_get_action (window->action_group, "fullscreen");
-  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
     result = g_slist_prepend (result, g_strdup ("--fullscreen"));
 
   action = gtk_action_group_get_action (window->action_group, "show-menubar");

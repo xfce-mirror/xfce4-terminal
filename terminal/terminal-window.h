@@ -86,6 +86,7 @@ struct _TerminalWindow
   GtkAction           *action_copy;
   GtkAction           *action_search_next;
   GtkAction           *action_search_prev;
+  GtkAction           *action_fullscreen;
 };
 
 GType           terminal_window_get_type             (void) G_GNUC_CONST;

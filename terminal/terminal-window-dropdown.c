@@ -567,12 +567,13 @@ static gboolean
 terminal_window_dropdown_animate_down (gpointer data)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
+  TerminalWindow         *window = TERMINAL_WINDOW (data);
   GtkRequisition          req1, req2;
   gint                    step_size;
   gint                    viewport_h;
 
   /* decrease each interval */
-  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->vbox, &req1);
+  gtk_widget_size_request (window->vbox, &req1);
   step_size = req1.height * ANIMATION_FPS / dropdown->animation_time;
   if (step_size < 1)
     step_size = 1;
@@ -587,7 +588,16 @@ terminal_window_dropdown_animate_down (gpointer data)
   gtk_widget_set_size_request (dropdown->viewport, req2.width, viewport_h);
   gtk_window_resize (GTK_WINDOW (dropdown), req2.width, viewport_h);
 
-  return viewport_h < req1.height;
+  /* continue the animation */
+  if (viewport_h < req1.height)
+    return TRUE;
+
+  /* restore the fullscreen state */
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+    gtk_window_fullscreen (GTK_WINDOW (window));
+
+  /* animation complete */
+  return FALSE;
 }
 
 
@@ -596,12 +606,26 @@ static gboolean
 terminal_window_dropdown_animate_up (gpointer data)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
+  TerminalWindow         *window = TERMINAL_WINDOW (data);
   GtkRequisition          req1, req2;
   gint                    step_size;
   gint                    viewport_h;
+  GdkRectangle            rect;
+
+  /* get window size */
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+    {
+      /* use the monitor size for the animation */
+      gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
+      req1.width = rect.width;
+      req1.height = rect.height;
+    }
+  else
+    {
+      gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->vbox, &req1);
+    }
 
   /* decrease each interval */
-  gtk_widget_size_request (TERMINAL_WINDOW (dropdown)->vbox, &req1);
   step_size = req1.height * ANIMATION_FPS / dropdown->animation_time;
   if (step_size < 1)
     step_size = 1;
@@ -619,7 +643,8 @@ terminal_window_dropdown_animate_up (gpointer data)
   else
     {
       /* resize viewport */
-      gtk_widget_set_size_request (dropdown->viewport, req2.width, viewport_h);
+      gtk_widget_set_size_request (dropdown->viewport, req1.width, viewport_h);
+      gtk_window_resize (GTK_WINDOW (dropdown), req1.width, viewport_h);
       return TRUE;
     }
 }
@@ -697,36 +722,50 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   /* move window to correct screen */
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
 
-  /* calculate size */
-  w = monitor_geo.width * dropdown->rel_width;
-  h = monitor_geo.height * dropdown->rel_height;
-
   /* get terminal size */
   terminal_screen_get_geometry (window->active, &char_width, &char_height, &xpad, &ypad);
 
   /* correct padding with notebook size */
-  gtk_widget_size_request (window->notebook, &req1);
-  gtk_widget_size_request (GTK_WIDGET (window->active), &req2);
-  xpad += MAX (req1.width - req2.width, 0);
-  ypad += MAX (req1.height - req2.height, 0);
-
-  if (window->menubar != NULL
-      && gtk_widget_get_visible (window->menubar))
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
     {
-      gtk_widget_size_request (window->menubar, &req2);
-      ypad += req2.height;
+      /* don't fullscreen during animation*/
+      gtk_window_unfullscreen (GTK_WINDOW (window));
+
+      /* use monitor geometry */
+      w = monitor_geo.width;
+      h = monitor_geo.height;
+    }
+  else
+    {
+      /* calculate size */
+      w = monitor_geo.width * dropdown->rel_width;
+      h = monitor_geo.height * dropdown->rel_height;
+
+      gtk_widget_size_request (window->notebook, &req1);
+      gtk_widget_size_request (GTK_WIDGET (window->active), &req2);
+      xpad += MAX (req1.width - req2.width, 0);
+      ypad += MAX (req1.height - req2.height, 0);
+
+      if (window->menubar != NULL
+          && gtk_widget_get_visible (window->menubar))
+        {
+          gtk_widget_size_request (window->menubar, &req2);
+          ypad += req2.height;
+        }
+
+      if (window->toolbar != NULL
+          && gtk_widget_get_visible (window->toolbar))
+        {
+          gtk_widget_size_request (window->toolbar, &req2);
+          ypad += req2.height;
+        }
+
+      /* minimize to fit terminal charaters */
+      w -= (w - xpad) % char_width;
+      h -= (h - ypad) % char_height;
     }
 
-  if (window->toolbar != NULL
-      && gtk_widget_get_visible (window->toolbar))
-    {
-      gtk_widget_size_request (window->toolbar, &req2);
-      ypad += req2.height;
-    }
-
-  /* minimize to fit terminal charaters */
-  w -= (w - xpad) % char_width;
-  h -= (h - ypad) % char_height;
+  /* viewport size if not animated */
   viewport_h = h;
 
   /* viewport start height for animation */
@@ -859,6 +898,7 @@ terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
 
 GtkWidget *
 terminal_window_dropdown_new (const gchar        *role,
+                              gboolean            fullscreen,
                               TerminalVisibility  menubar,
                               TerminalVisibility  toolbar)
 {
@@ -878,6 +918,10 @@ terminal_window_dropdown_new (const gchar        *role,
                 "misc-toolbar-default", &show_toolbar,
                 NULL);
 
+  /* setup full screen */
+  if (fullscreen && gtk_action_is_sensitive (window->action_fullscreen))
+    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->action_fullscreen), TRUE);
+
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
     show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
@@ -892,6 +936,10 @@ terminal_window_dropdown_new (const gchar        *role,
   action = gtk_action_group_get_action (window->action_group, "show-toolbar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
   g_signal_connect_swapped (action, "activate",
+      G_CALLBACK (terminal_window_dropdown_update_geometry), window);
+
+
+  g_signal_connect_swapped (window->action_fullscreen, "activate",
       G_CALLBACK (terminal_window_dropdown_update_geometry), window);
 
   return GTK_WIDGET (window);

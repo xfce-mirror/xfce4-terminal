@@ -37,6 +37,7 @@ typedef struct _TerminalWindowDropdown      TerminalWindowDropdown;
 GType           terminal_window_dropdown_get_type             (void) G_GNUC_CONST;
 
 GtkWidget      *terminal_window_dropdown_new                  (const gchar            *role,
+                                                               gboolean                fullscreen,
                                                                TerminalVisibility      menubar,
                                                                TerminalVisibility      toolbar);
 
