@@ -218,6 +218,7 @@ terminal_window_attr_parse (gint              argc,
             {
               g_free (default_display);
               default_display = g_strdup (s);
+              continue;
             }
         }
       else if (terminal_option_cmp ("default-working-directory", 0, argc, argv, &n, &s))
@@ -234,6 +235,7 @@ terminal_window_attr_parse (gint              argc,
             {
               g_free (default_directory);
               default_directory = g_strdup (s);
+              continue;
             }
         }
       else if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL))
@@ -377,6 +379,7 @@ terminal_window_attr_parse (gint              argc,
             {
               g_free (win_attr->startup_id);
               win_attr->startup_id = g_strdup (s);
+              continue;
             }
         }
       else if (terminal_option_cmp ("icon", 'I', argc, argv, &n, &s))
@@ -420,7 +423,7 @@ terminal_window_attr_parse (gint              argc,
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
-          if (n == 4 && can_reuse_tab)
+          if (can_reuse_tab)
             {
               /* tab is the first user option, reuse existing window */
               win_attr->reuse_last_window = TRUE;
@@ -447,6 +450,7 @@ terminal_window_attr_parse (gint              argc,
                || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL))
         {
           /* options we can ignore */
+          continue;
         }
       else
         {
@@ -455,6 +459,9 @@ unknown_option:
                        _("Unknown option \"%s\""), argv[n]);
           goto failed;
         }
+
+      /* not the first option anymore */
+      can_reuse_tab = FALSE;
     }
 
   /* substitute default working directory and default display if any */
