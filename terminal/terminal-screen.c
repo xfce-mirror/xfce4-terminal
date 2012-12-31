@@ -124,7 +124,7 @@ static void       terminal_screen_update_encoding               (TerminalScreen 
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
 static void       terminal_screen_update_font                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
-static void       terminal_screen_update_term                   (TerminalScreen        *screen);
+static void       terminal_screen_update_emulation              (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
@@ -298,7 +298,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_encoding (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
-  terminal_screen_update_term (screen);
+  terminal_screen_update_emulation (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
   terminal_screen_update_misc_cursor_shape (screen);
   terminal_screen_update_misc_mouse_autohide (screen);
@@ -491,8 +491,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_font (screen);
   else if (strcmp ("misc-bell", name) == 0)
     terminal_screen_update_misc_bell (screen);
-  else if (strcmp ("term", name) == 0)
-    terminal_screen_update_term (screen);
+  else if (strcmp ("emulation", name) == 0)
+    terminal_screen_update_emulation (screen);
   else if (strcmp ("misc-cursor-blinks", name) == 0)
     terminal_screen_update_misc_cursor_blinks (screen);
   else if (strcmp ("misc-cursor-shape", name) == 0)
@@ -719,7 +719,6 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
       if (strcmp (*p, "COLUMNS") == 0
           || strcmp (*p, "LINES") == 0
           || strcmp (*p, "WINDOWID") == 0
-          || strcmp (*p, "TERM") == 0
           || strcmp (*p, "GNOME_DESKTOP_ICON") == 0
           || strcmp (*p, "COLORTERM") == 0
           || strcmp (*p, "DISPLAY") == 0)
@@ -1015,13 +1014,13 @@ terminal_screen_update_misc_bell (TerminalScreen *screen)
 
 
 static void
-terminal_screen_update_term (TerminalScreen *screen)
+terminal_screen_update_emulation (TerminalScreen *screen)
 {
-  gchar *term;
-  g_object_get (G_OBJECT (screen->preferences), "term", &term, NULL);
-  if (g_strcmp0 (term, vte_terminal_get_emulation (VTE_TERMINAL (screen->terminal))) != 0)
-    vte_terminal_set_emulation (VTE_TERMINAL (screen->terminal), term);
-  g_free (term);
+  gchar *emulation;
+  g_object_get (G_OBJECT (screen->preferences), "emulation", &emulation, NULL);
+  if (g_strcmp0 (emulation, vte_terminal_get_emulation (VTE_TERMINAL (screen->terminal))) != 0)
+    vte_terminal_set_emulation (VTE_TERMINAL (screen->terminal), emulation);
+  g_free (emulation);
 }
 
 

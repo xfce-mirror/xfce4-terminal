@@ -116,6 +116,10 @@ terminal_util_activate_window (GtkWindow *window)
   terminal_return_if_fail (GTK_IS_WINDOW (window));
   terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
 
+  /* leave if the window is already active */
+  if (gtk_window_is_active (window))
+    return;
+
   /* we need a slightly custom version of the call through Gtk+ to
    * properly focus the panel when a plugin calls
    * xfce_panel_plugin_focus_widget() */

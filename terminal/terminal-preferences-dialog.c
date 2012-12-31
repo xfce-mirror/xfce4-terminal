@@ -211,7 +211,7 @@ error:
   /* other properties */
   BIND_PROPERTIES ("font-name", "font-name");
   BIND_PROPERTIES ("title-initial", "text");
-  BIND_PROPERTIES ("term", "text");
+  BIND_PROPERTIES ("emulation", "text");
   BIND_PROPERTIES ("word-chars", "text");
   BIND_PROPERTIES ("scrolling-lines", "value");
   BIND_PROPERTIES ("tab-activity-timeout", "value");
@@ -632,7 +632,7 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
 {
   GParamSpec  *spec;
   GValue       value = { 0, };
-  const gchar *properties[] = { "binding-backspace", "binding-delete", "term" };
+  const gchar *properties[] = { "binding-backspace", "binding-delete", "emulation" };
   guint        i;
 
   for (i = 0; i < G_N_ELEMENTS (properties); i++)
