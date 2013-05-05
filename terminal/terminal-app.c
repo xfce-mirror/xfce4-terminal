@@ -65,7 +65,6 @@ static void               terminal_app_window_destroyed         (GtkWidget      
                                                                  TerminalApp        *app);
 static void               terminal_app_save_yourself            (XfceSMClient       *client,
                                                                  TerminalApp        *app);
-static GdkScreen         *terminal_app_find_screen              (const gchar        *display_name);
 static void               terminal_app_open_window              (TerminalApp        *app,
                                                                  TerminalWindowAttr *attr);
 
@@ -500,12 +499,12 @@ terminal_app_save_yourself (XfceSMClient *client,
 
 
 
-static GdkScreen*
-terminal_app_find_screen (const gchar *display_name)
+static GdkDisplay *
+terminal_app_find_display (const gchar *display_name,
+                           gint        *screen_num)
 {
   const gchar *other_name;
   GdkDisplay  *display = NULL;
-  GdkScreen   *screen = NULL;
   GSList      *displays;
   GSList      *dp;
   gulong       n;
@@ -517,6 +516,8 @@ terminal_app_find_screen (const gchar *display_name)
   if (display_name != NULL)
     {
       name = g_strdup (display_name);
+
+      /* extract screen number from display name */
       period = strrchr (name, '.');
       if (period != NULL)
         {
@@ -540,22 +541,39 @@ terminal_app_find_screen (const gchar *display_name)
         }
       g_slist_free (displays);
 
+      g_free (name);
+
       if (display == NULL)
         display = gdk_display_open (display_name);
+    }
 
-      if (display != NULL)
-        {
-          if (num >= 0)
-            screen = gdk_display_get_screen (display, num);
+  if (display == NULL)
+    display = gdk_display_get_default ();
 
-          if (screen == NULL)
-            screen = gdk_display_get_default_screen (display);
+  if (screen_num != NULL)
+    *screen_num = num;
 
-          if (screen != NULL)
-            g_object_ref (G_OBJECT (screen));
-        }
+  return display;
+}
 
-      g_free (name);
+
+
+static GdkScreen *
+terminal_app_find_screen (GdkDisplay *display,
+                          gint        screen_num)
+{
+  GdkScreen *screen = NULL;
+
+  if (display != NULL)
+    {
+      if (screen_num >= 0)
+        screen = gdk_display_get_screen (display, screen_num);
+
+      if (screen == NULL)
+        screen = gdk_display_get_default_screen (display);
+
+      if (screen != NULL)
+        g_object_ref (G_OBJECT (screen));
     }
 
   if (screen == NULL)
@@ -565,6 +583,18 @@ terminal_app_find_screen (const gchar *display_name)
     }
 
   return screen;
+}
+
+
+
+static GdkScreen *
+terminal_app_find_screen_by_name (const gchar *display_name)
+{
+  GdkDisplay *display;
+  gint        screen_num;
+
+  display = terminal_app_find_display (display_name, &screen_num);
+  return terminal_app_find_screen (display, screen_num);
 }
 
 
@@ -580,6 +610,8 @@ terminal_app_open_window (TerminalApp        *app,
   gchar           *geometry;
   GSList          *lp;
   gboolean         reuse_window = FALSE;
+  GdkDisplay      *attr_display;
+  gint             attr_screen_num;
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (attr != NULL);
@@ -587,9 +619,17 @@ terminal_app_open_window (TerminalApp        *app,
   if (attr->drop_down)
     {
       /* look for an exising drop-down window */
+      attr_display = terminal_app_find_display (attr->display, &attr_screen_num);
       for (lp = app->windows; lp != NULL; lp = lp->next)
-        if (TERMINAL_IS_WINDOW_DROPDOWN (lp->data))
-          break;
+        {
+          if (TERMINAL_IS_WINDOW_DROPDOWN (lp->data))
+            {
+              /* check if the screen of the display matches (bug #9957) */
+              screen = gtk_window_get_screen (GTK_WINDOW (lp->data));
+              if (gdk_screen_get_display (screen) == attr_display)
+                break;
+            }
+        }
 
       if (lp != NULL)
         {
@@ -614,6 +654,10 @@ terminal_app_open_window (TerminalApp        *app,
                                                   attr->fullscreen,
                                                   attr->menubar,
                                                   attr->toolbar);
+
+          /* put it on the correct screen/display */
+          screen = terminal_app_find_screen (attr_display, attr_screen_num);
+          gtk_window_set_screen (GTK_WINDOW (window), screen);
         }
     }
   else if (attr->reuse_last_window
@@ -648,7 +692,7 @@ terminal_app_open_window (TerminalApp        *app,
             gtk_window_set_icon_name (GTK_WINDOW (window), attr->icon);
         }
 
-      screen = terminal_app_find_screen (attr->display);
+      screen = terminal_app_find_screen_by_name (attr->display);
       if (G_LIKELY (screen != NULL))
         {
           gtk_window_set_screen (GTK_WINDOW (window), screen);
