@@ -48,6 +48,27 @@ static const gchar terminal_gdbus_introspection_xml[] =
 
 
 
+static gchar *
+terminal_gdbus_display_name (void)
+{
+  const gchar *display_name;
+  gchar       *name;
+  gchar       *period;
+
+  display_name = g_getenv ("DISPLAY");
+  if (G_UNLIKELY (display_name == NULL))
+    return "";
+
+  name = g_strdup (display_name);
+  period = strrchr (name, '.');
+  if (period != NULL)
+    *period = '\0';
+
+  return name;
+}
+
+
+
 static void
 terminal_gdbus_method_call (GDBusConnection       *connection,
                             const gchar           *sender,
@@ -63,6 +84,7 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
   gchar        *display_name = NULL;
   gchar       **argv = NULL;
   GError       *error = NULL;
+  gchar        *display_name2;
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (!g_strcmp0 (object_path, TERMINAL_DBUS_PATH));
@@ -73,13 +95,15 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
       /* get paramenters */
       g_variant_get (parameters, "(u^ay^aay)", &uid, &display_name, &argv);
 
+      display_name2 = terminal_gdbus_display_name ();
+
       if (uid != getuid ())
         {
           g_dbus_method_invocation_return_error (invocation,
               TERMINAL_ERROR, TERMINAL_ERROR_USER_MISMATCH,
               _("User id mismatch"));
         }
-      else if (g_strcmp0 (display_name, g_getenv ("DISPLAY")) != 0)
+      else if (g_strcmp0 (display_name, display_name2) != 0)
         {
           g_dbus_method_invocation_return_error (invocation,
               TERMINAL_ERROR, TERMINAL_ERROR_DISPLAY_MISMATCH,
@@ -99,6 +123,7 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
         }
 
       g_free (display_name);
+      g_free (display_name2);
       g_strfreev (argv);
     }
   else
@@ -184,6 +209,7 @@ terminal_gdbus_invoke_launch (gint     argc,
   GError          *err = NULL;
   gboolean         result;
   guint32          uid;
+  gchar           *display_name;
 
   terminal_return_val_if_fail (argc == (gint) g_strv_length (argv), FALSE);
 
@@ -193,6 +219,7 @@ terminal_gdbus_invoke_launch (gint     argc,
 
   /* store in an uin32 for gvariant */
   uid = getuid ();
+  display_name = terminal_gdbus_display_name ();
 
   reply = g_dbus_connection_call_sync (connection,
                                        TERMINAL_DBUS_SERVICE,
@@ -201,7 +228,7 @@ terminal_gdbus_invoke_launch (gint     argc,
                                        TERMINAL_DBUS_METHOD_LAUNCH,
                                        g_variant_new ("(u^ay^aay)",
                                                       uid,
-                                                      g_getenv ("DISPLAY"),
+                                                      display_name,
                                                       argv),
                                        NULL,
                                        G_DBUS_CALL_FLAGS_NO_AUTO_START,
@@ -210,6 +237,7 @@ terminal_gdbus_invoke_launch (gint     argc,
                                        &err);
 
   g_object_unref (connection);
+  g_free (display_name);
 
   result = (reply != NULL);
   if (G_LIKELY (result))
