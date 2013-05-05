@@ -89,7 +89,7 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
         {
           g_dbus_method_invocation_return_error (invocation,
               TERMINAL_ERROR, TERMINAL_ERROR_OPTIONS,
-              error->message);
+              "%s", error->message);
           g_error_free (error);
         }
       else
