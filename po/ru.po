@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Terminal 0.2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-28 10:30+0000\n"
+"POT-Creation-Date: 2013-05-20 15:30+0000\n"
 "PO-Revision-Date: 2010-03-02 18:14+0300\n"
 "Last-Translator: Dima Smirnov <arch@cnc-parts.info>\n"
 "Language-Team: \n"
@@ -25,23 +25,20 @@ msgid "Black on White"
 msgstr "Черное на белом"
 
 #: ../colorschemes/dark-pastels.theme.in.h:1
-#, fuzzy
 msgid "Dark Pastels"
-msgstr "Dark Pastels"
+msgstr "Темная пастель"
 
 #: ../colorschemes/green-on-black.theme.in.h:1
 msgid "Green on Black"
 msgstr "Зеленое на черном"
 
 #: ../colorschemes/solarized-dark.theme.in.h:1
-#, fuzzy
 msgid "Solarized"
-msgstr "Solarized"
+msgstr "Засветка"
 
 #: ../colorschemes/tango.theme.in.h:1
-#, fuzzy
 msgid "Tango"
-msgstr "Tango"
+msgstr "Танго"
 
 #: ../colorschemes/white-on-black.theme.in.h:1
 msgid "White on Black"
@@ -143,12 +140,12 @@ msgstr "и Nick Schermer <nick@xfce.org>."
 msgid "Please report bugs to <%s>."
 msgstr "Сообщить об ошибке: <%s>."
 
-#: ../terminal/main.c:302
+#: ../terminal/main.c:304
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Невозможно запустить службу терминала: %s\n"
 
-#: ../terminal/terminal-app.c:694
+#: ../terminal/terminal-app.c:738
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Неверная строка с размерами: \"%s\"\n"
@@ -167,7 +164,7 @@ msgstr "Балтийская"
 
 #: ../terminal/terminal-encoding-action.c:73
 msgid "South-Eastern Europe"
-msgstr ""
+msgstr "Юговосточная Европа"
 
 #: ../terminal/terminal-encoding-action.c:74
 msgid "Turkish"
@@ -203,7 +200,7 @@ msgstr "Арабская"
 
 #: ../terminal/terminal-encoding-action.c:82
 msgid "Hebrew"
-msgstr ""
+msgstr "Иврит"
 
 #: ../terminal/terminal-encoding-action.c:83
 msgid "Thai"
@@ -218,7 +215,6 @@ msgid "Unicode"
 msgstr "Unicode"
 
 #: ../terminal/terminal-encoding-action.c:86
-#, fuzzy
 msgid "Other"
 msgstr "Другая..."
 
@@ -229,11 +225,11 @@ msgstr "Другая..."
 msgid "Default (%s)"
 msgstr "По умолчанию (%s)"
 
-#: ../terminal/terminal-gdbus.c:80
+#: ../terminal/terminal-gdbus.c:104
 msgid "User id mismatch"
 msgstr "Несовпадение идентификатора пользователя"
 
-#: ../terminal/terminal-gdbus.c:86
+#: ../terminal/terminal-gdbus.c:110
 msgid "Display mismatch"
 msgstr "Показать несовпадение"
 
@@ -380,9 +376,8 @@ msgid "_Previous"
 msgstr "_Предыдущая вкладка"
 
 #: ../terminal/terminal-search-dialog.c:100
-#, fuzzy
 msgid "_Next"
-msgstr "_Следующая вкладка"
+msgstr "_Далее"
 
 #: ../terminal/terminal-search-dialog.c:113
 msgid "_Search for:"
@@ -477,13 +472,12 @@ msgid "Keep window open when it loses focus"
 msgstr "Сохранять окно открытым при потере фокуса"
 
 #: ../terminal/terminal-window-dropdown.c:355
-#, fuzzy
 msgid "Drop-down Terminal"
-msgstr "Открыть _терминал"
+msgstr "Раскрывающийся терминал"
 
 #: ../terminal/terminal-window-dropdown.c:356
 msgid "Toggle Drop-down Terminal"
-msgstr ""
+msgstr "Включает раскрывающееся окно терминала"
 
 #: ../terminal/terminal-window.c:196
 msgid "_File"
@@ -867,7 +861,8 @@ msgstr "Показывать _меню в новых окнах"
 
 #: ../terminal/terminal-preferences.glade.h:41
 msgid "Display _toolbar in new windows"
-msgstr "В окне открыто %d вкладок. Если вы закроете окно, будут закрыты все вкладки."
+msgstr ""
+"В окне открыто %d вкладок. Если вы закроете окно, будут закрыты все вкладки."
 
 #: ../terminal/terminal-preferences.glade.h:42
 msgid "Double Click"
@@ -898,17 +893,18 @@ msgstr ""
 "помощью клавиш вверх/вниз, удерживая Shift."
 
 #: ../terminal/terminal-preferences.glade.h:47
-#, fuzzy
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
-msgstr "Указать цвет фона"
+msgstr "Разрешает использование цвета для выделения. В противном случае выделение будет показано инверсией цвета."
 
 #: ../terminal/terminal-preferences.glade.h:48
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
-msgstr "Включите эту опцию, чтобы настроить цвет полужирного текста. Если опция выключена, значит, будет использоваться цвет обычного текста."
+msgstr ""
+"Включите эту опцию, чтобы настроить цвет полужирного текста. Если опция "
+"выключена, значит, будет использоваться цвет обычного текста."
 
 #: ../terminal/terminal-preferences.glade.h:49
 msgid ""
@@ -918,7 +914,9 @@ msgstr "Включить показ строки меню в открываем�
 #: ../terminal/terminal-preferences.glade.h:50
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
-msgstr "Включите эту опцию, чтобы панель инструментов отображалась в новых окнах терминала"
+msgstr ""
+"Включите эту опцию, чтобы панель инструментов отображалась в новых окнах "
+"терминала"
 
 #: ../terminal/terminal-preferences.glade.h:51
 msgid ""
@@ -1017,9 +1015,8 @@ msgid "Menubar Access"
 msgstr "Доступ к меню"
 
 #: ../terminal/terminal-preferences.glade.h:73
-#, fuzzy
 msgid "Move to monitor with poi_nter"
-msgstr "Геометрия по умолчанию"
+msgstr "Перемещать на монитор, содержащий _указатель мыши"
 
 #: ../terminal/terminal-preferences.glade.h:74
 msgid "None (use solid color)"
