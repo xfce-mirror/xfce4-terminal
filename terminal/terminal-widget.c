@@ -40,17 +40,19 @@
 
 
 
-#define USERCHARS       "-_+[:alnum:]"
+#define USERCHARS       "-[:alnum:]\\Q_.+\\E"
 #define USERCHARS_CLASS "[" USERCHARS "]"
 #define PASSCHARS_CLASS "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]"
 #define HOSTCHARS_CLASS "[-[:alnum:]]"
-#define HOST            HOSTCHARS_CLASS "+(\\." HOSTCHARS_CLASS "+)*"
+#define HOSTNAME        HOSTCHARS_CLASS "+(?:\\." HOSTCHARS_CLASS "+)*"
+#define IPV6ADDRESS     "\\[(?:[[:xdigit:]]{0,4}:){2,7}[[:xdigit:]]{0,4}\\]"
+#define HOST            "(?:" HOSTNAME "|" IPV6ADDRESS ")"
 #define PORT            "(?:\\:[[:digit:]]{1,5})?"
 #define PATHCHARS_CLASS "[-[:alnum:]\\Q_$.+!*,;@&=?/:~#'%\\E]"
-#define PATHTERM_CLASS  "[^\\Q]'.}>) \t\r\n,\"\\E]"
+#define PATHTERM_CLASS  "[[:alnum:]\\Q_$+*@&=/~#%\\E]"
 #define SCHEME          "(?:news:|telnet:|nntp:|file:\\/|https?:|ftps?:|sftp:|webcal:|magnet:)"
 #define USERPASS        USERCHARS_CLASS "+(?:" PASSCHARS_CLASS "+)?"
-#define URLPATH         "(?:(/"PATHCHARS_CLASS"+(?:[(]"PATHCHARS_CLASS"*[)])*"PATHCHARS_CLASS"*)*"PATHTERM_CLASS")?"
+#define URLPATH         "(?:(?:\\(" PATHCHARS_CLASS "*\\)|" PATHCHARS_CLASS ")*(?:\\(" PATHCHARS_CLASS "*\\)|" PATHTERM_CLASS "))?"
 
 
 
@@ -78,7 +80,7 @@ TerminalRegexPattern;
 static const TerminalRegexPattern regex_patterns[] =
 {
   { SCHEME "//(?:" USERPASS "\\@)?" HOST PORT URLPATH, PATTERN_TYPE_FULL_HTTP },
-  { "(?:www|ftp)" HOSTCHARS_CLASS "*\\." HOST PORT URLPATH, PATTERN_TYPE_HTTP },
+  { "(?:www[[:digit:]]{0,3}|ftp)" HOSTCHARS_CLASS "*\\." HOST PORT URLPATH, PATTERN_TYPE_HTTP },
   { "(?:mailto:)?" USERCHARS_CLASS "[" USERCHARS ".]*\\@" HOSTCHARS_CLASS "+\\." HOST, PATTERN_TYPE_EMAIL },
   { "news:[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", PATTERN_TYPE_FULL_HTTP }
 };
