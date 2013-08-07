@@ -5,6 +5,7 @@ presets_in_files = 							\
 	dark-pastels.theme.in						\
 	green-on-black.theme.in						\
 	solarized-dark.theme.in						\
+	solarized-light.theme.in					\
 	tango.theme.in							\
 	white-on-black.theme.in						\
 	xterm.theme.in
