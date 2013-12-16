@@ -774,16 +774,17 @@ terminal_app_process (TerminalApp  *app,
   if (G_UNLIKELY (attrs == NULL))
     return FALSE;
 
+  /* Connect to session manager first before starting any other windows */
   for (lp = attrs; lp != NULL; lp = lp->next)
     {
       attr = lp->data;
 
       /* take first sm client id */
-      if (sm_client_id == NULL && attr->sm_client_id != NULL)
-        sm_client_id = g_strdup (attr->sm_client_id);
-
-      terminal_app_open_window (app, attr);
-      terminal_window_attr_free (attr);
+      if (attr->sm_client_id != NULL)
+        {
+          sm_client_id = g_strdup (attr->sm_client_id);
+          break;
+        }
     }
 
   if (G_LIKELY (app->session_client == NULL))
@@ -806,6 +807,14 @@ terminal_app_process (TerminalApp  *app,
           g_printerr ("Failed to connect to session manager: %s\n", err->message);
           g_error_free (err);
         }
+    }
+
+  for (lp = attrs; lp != NULL; lp = lp->next)
+    {
+      attr = lp->data;
+
+      terminal_app_open_window (app, attr);
+      terminal_window_attr_free (attr);
     }
 
   g_slist_free (attrs);
