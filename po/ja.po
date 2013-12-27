@@ -1,21 +1,21 @@
-# Japanese translations for xfce4-terminal package.
-# Copyright (C) 2003-2012 os-cillation e.K.
-# This file is distributed under the same license as the xfce4-terminal package.
-# Daichi Kawahata <daichi@xfce.org>, 2005-2007.
-# Masato Hashimoto <cabezon.hashimoto@gmail.com>, 2008-2012.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-terminal 0.6.0\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-03 19:33+0100\n"
-"PO-Revision-Date: 2013-01-01 16:06+0900\n"
-"Last-Translator: Masato Hashimoto <cabezon.hashimoto@gmail.com>\n"
-"Language-Team: Japanese <xfce-users-jp@googlegroups.com>\n"
-"Language: ja\n"
+"POT-Creation-Date: 2013-12-27 00:31+0100\n"
+"PO-Revision-Date: 2013-12-27 10:25+0000\n"
+"Last-Translator: Masato HASHIMOTO <cabezon.hashimoto@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/xfce/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ../colorschemes/black-on-white.theme.in.h:1
 msgid "Black on White"
@@ -30,8 +30,12 @@ msgid "Green on Black"
 msgstr "黒地に緑文字"
 
 #: ../colorschemes/solarized-dark.theme.in.h:1
-msgid "Solarized"
-msgstr "ソラライズ"
+msgid "Solarized (dark)"
+msgstr "ソラライズ (暗)"
+
+#: ../colorschemes/solarized-light.theme.in.h:1
+msgid "Solarized (light)"
+msgstr "ソラライズ (明)"
 
 #: ../colorschemes/tango.theme.in.h:1
 msgid "Tango"
@@ -137,12 +141,12 @@ msgstr "and Nick Schermer <nick@xfce.org>."
 msgid "Please report bugs to <%s>."
 msgstr "バグの報告は <%s> までお願いします。"
 
-#: ../terminal/main.c:302
+#: ../terminal/main.c:304
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ターミナルサービスを登録できません: %s\n"
 
-#: ../terminal/terminal-app.c:694
+#: ../terminal/terminal-app.c:738
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ジオメトリ文字列 \"%s\" は不適切です。\n"
@@ -217,16 +221,16 @@ msgstr "その他"
 
 #. action to reset to the default
 #: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:386
+#: ../terminal/terminal-encoding-action.c:385
 #, c-format
 msgid "Default (%s)"
 msgstr "デフォルト (%s)"
 
-#: ../terminal/terminal-gdbus.c:80
+#: ../terminal/terminal-gdbus.c:104
 msgid "User id mismatch"
 msgstr "ユーザー ID が一致しません。"
 
-#: ../terminal/terminal-gdbus.c:86
+#: ../terminal/terminal-gdbus.c:110
 msgid "Display mismatch"
 msgstr "ディスプレイが一致しません。"
 
@@ -235,102 +239,77 @@ msgstr "ディスプレイが一致しません。"
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
-msgstr ""
-"オプション \"--default-display\" にはパラメーターとして標準の X ディスプレイ"
-"を指定する必要があります"
+msgstr "オプション \"--default-display\" にはパラメーターとして標準の X ディスプレイを指定する必要があります"
 
 #: ../terminal/terminal-options.c:228
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
-msgstr ""
-"オプション \"--default-working-directory\" にはパラメーターとしてデフォルトの"
-"作業フォルダーを指定する必要があります"
+msgstr "オプション \"--default-working-directory\" にはパラメーターとしてデフォルトの作業フォルダーを指定する必要があります"
 
 #: ../terminal/terminal-options.c:245
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
-msgstr ""
-"オプション \"--execute/-x\" にはこの後に実行するコマンドを指定する必要があり"
-"ます"
+msgstr "オプション \"--execute/-x\" にはこの後に実行するコマンドを指定する必要があります"
 
 #: ../terminal/terminal-options.c:262
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
-msgstr ""
-"オプション \"--command/-e\" にはパラメーターとして実行するコマンドを指定する"
-"必要があります"
+msgstr "オプション \"--command/-e\" にはパラメーターとして実行するコマンドを指定する必要があります"
 
 #: ../terminal/terminal-options.c:279
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
-msgstr ""
-"オプション \"--working-directory\" にはパラメーターとして作業フォルダーを指定"
-"する必要があります"
+msgstr "オプション \"--working-directory\" にはパラメーターとして作業フォルダーを指定する必要があります"
 
 #: ../terminal/terminal-options.c:294
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr ""
-"オプション \"--title/-T\" にはパラメーターとしてタイトルを指定する必要があり"
-"ます"
+msgstr "オプション \"--title/-T\" にはパラメーターとしてタイトルを指定する必要があります"
 
 #: ../terminal/terminal-options.c:313
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
-msgstr ""
-"オプション \"--display\" にはパラメーターとして X ディスプレイを指定する必要"
-"があります"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgstr "オプション \"--display\" にはパラメーターとして X ディスプレイを指定する必要があります"
 
 #: ../terminal/terminal-options.c:328
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr ""
-"オプション \"--geometry\" にはパラメーターとしてジオメトリを指定する必要があ"
-"ります"
+msgstr "オプション \"--geometry\" にはパラメーターとしてジオメトリを指定する必要があります"
 
 #: ../terminal/terminal-options.c:343
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr ""
-"オプション \"--role\" にはパラメーターとしてウィンドウロールを指定する必要が"
-"あります"
+msgstr "オプション \"--role\" にはパラメーターとしてウィンドウロールを指定する必要があります"
 
 #: ../terminal/terminal-options.c:358
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
-msgstr ""
-"オプション \"--sm-client-id\" にはパラメーターとして一意のセッション ID を指"
-"定する必要があります"
+msgstr "オプション \"--sm-client-id\" にはパラメーターとして一意のセッション ID を指定する必要があります"
 
 #: ../terminal/terminal-options.c:373
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"オプション \"--startup-id\" にはパラメーターとして起動 ID を指定する必要があ"
-"ります"
+msgstr "オプション \"--startup-id\" にはパラメーターとして起動 ID を指定する必要があります"
 
 #: ../terminal/terminal-options.c:389
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
-msgstr ""
-"オプション \"--icon/-I\" にはパラメーターとしてアイコン名またはファイル名を指"
-"定する必要があります"
+msgstr "オプション \"--icon/-I\" にはパラメーターとしてアイコン名またはファイル名を指定する必要があります"
 
 #: ../terminal/terminal-options.c:458
 #, c-format
@@ -409,61 +388,52 @@ msgstr "Xfce ターミナルエミュレーター"
 
 #: ../terminal/terminal-util.c:86
 msgid "translator-credits"
-msgstr ""
-"Daichi Kawahata <daichi@xfce.org>\n"
-"Masato Hashimoto <hashimo@xfce.org>\n"
-"Nobuhiro Iwamatsu <iwamatsu@nigauri.org>"
+msgstr "Daichi Kawahata <daichi@xfce.org>\nMasato Hashimoto <hashimo@xfce.org>\nNobuhiro Iwamatsu <iwamatsu@nigauri.org>"
 
 #: ../terminal/terminal-util.c:89
 msgid "Visit Terminal website"
 msgstr "Terminal のウェブサイトへ"
 
-#: ../terminal/terminal-widget.c:323
+#: ../terminal/terminal-widget.c:325
 msgid "Copy Email Address"
 msgstr "メールアドレスをコピー"
 
-#: ../terminal/terminal-widget.c:324
+#: ../terminal/terminal-widget.c:326
 msgid "Compose Email"
 msgstr "メールの作成"
 
-#: ../terminal/terminal-widget.c:328
+#: ../terminal/terminal-widget.c:330
 msgid "Copy Link Address"
 msgstr "リンクのアドレスをコピー"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:331
 msgid "Open Link"
 msgstr "リンクを開く"
 
-#: ../terminal/terminal-widget.c:483
+#: ../terminal/terminal-widget.c:485
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
-msgstr ""
-"MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形"
-"式 (%d) か長さ (%d) です\n"
+msgstr "MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:499
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ "
-"(%d) です\n"
+msgstr "ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:525
+#: ../terminal/terminal-widget.c:527
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) で"
-"す\n"
+msgstr "ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:570
+#: ../terminal/terminal-widget.c:572
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "不正な色データを受け取りました: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:706
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "URL '%s' をブラウザーで開けませんでした"
@@ -674,9 +644,7 @@ msgstr "警告"
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
-msgstr ""
-"このウィンドウで %d 個のタブが開いています。\n"
-"ウィンドウを閉じるとすべてのタブも閉じられます。"
+msgstr "このウィンドウで %d 個のタブが開いています。\nウィンドウを閉じるとすべてのタブも閉じられます。"
 
 #: ../terminal/terminal-window.c:536
 msgid "Close all tabs?"
@@ -800,15 +768,11 @@ msgstr "ログインシェルとしてコマンドを実行する(_R)"
 
 #: ../terminal/terminal-preferences.glade.h:25
 msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
+"Select this option to force Terminal to run your shell as a login shell when"
+" you open new terminals. See the documentation of your shell for details "
 "about differences between running it as interactive shell and running it as "
 "login shell."
-msgstr ""
-"新しいターミナルを開く際に、シェルを強制的にログインシェルとして実行させる場"
-"合は、このオプションを選択してください。シェルがインタラクティブシェルとして"
-"実行される場合と、ログインシェルとして実行される場合の違いに関する詳細は、"
-"シェルのドキュメントを御覧ください。"
+msgstr "新しいターミナルを開く際に、シェルを強制的にログインシェルとして実行させる場合は、このオプションを選択してください。シェルがインタラクティブシェルとして実行される場合と、ログインシェルとして実行される場合の違いに関する詳細は、シェルのドキュメントを御覧ください。"
 
 #: ../terminal/terminal-preferences.glade.h:26
 msgid "_Update utmp/wtmp records when command is launched"
@@ -826,9 +790,7 @@ msgstr "Shift+↑/+↓ キーを使用して1行ずつスクロールする(_L)"
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
-msgstr ""
-"このオプションを有効にすると、Shift キーを押しながら↑/↓キーを押すことによって"
-"1行ずつスクロールできるようになります。"
+msgstr "このオプションを有効にすると、Shift キーを押しながら↑/↓キーを押すことによって1行ずつスクロールできるようになります。"
 
 #: ../terminal/terminal-preferences.glade.h:30
 msgid "Scroll on ou_tput"
@@ -837,10 +799,9 @@ msgstr "出力でスクロールさせる(_T)"
 #: ../terminal/terminal-preferences.glade.h:31
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"ターミナル内で実行するコマンドによって新しい出力が表示された時、いつでも自動"
-"的に下へスクロールするかどうかを選択します。"
+"whenever new output is generated by the commands running inside the "
+"terminal."
+msgstr "ターミナル内で実行するコマンドによって新しい出力が表示された時、いつでも自動的に下へスクロールするかどうかを選択します。"
 
 #: ../terminal/terminal-preferences.glade.h:32
 msgid "Scroll on _keystroke"
@@ -850,9 +811,7 @@ msgstr "キー入力でスクロールさせる(_K)"
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
-msgstr ""
-"有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンドウ"
-"をコマンドプロンプトまでスクロールします。"
+msgstr "有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンドウをコマンドプロンプトまでスクロールします。"
 
 #: ../terminal/terminal-preferences.glade.h:34
 msgid "Scr_ollbar is:"
@@ -891,10 +850,7 @@ msgstr "ショートカットを表示中のウィンドウへのフォーカス
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
-msgstr ""
-"このオプションを有効にすると、表示中のターミナルウィンドウにフォーカスがない"
-"時に、ウィンドウを開く/引き込むショートカットによってウィンドウにフォーカスを"
-"移動します。"
+msgstr "このオプションを有効にすると、表示中のターミナルウィンドウにフォーカスがない時に、ウィンドウを開く/引き込むショートカットによってウィンドウにフォーカスを移動します。"
 
 #: ../terminal/terminal-preferences.glade.h:43
 msgid "Show _status icon in notification area"
@@ -962,11 +918,9 @@ msgstr "太字の使用を許可する(_X)"
 
 #: ../terminal/terminal-preferences.glade.h:59
 msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr ""
-"ターミナルウィンドウ内で実行するアプリケーションに太字を使用させてもよいな"
-"ら、このオプションを有効にしてください。"
+"Enable this option to allow applications running inside the terminal windows"
+" to use bold text."
+msgstr "ターミナルウィンドウ内で実行するアプリケーションに太字を使用させてもよいなら、このオプションを有効にしてください。"
 
 #: ../terminal/terminal-preferences.glade.h:60
 msgid "Font"
@@ -999,9 +953,7 @@ msgstr "メニューバーを表示する(_M)"
 #: ../terminal/terminal-preferences.glade.h:67
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
-msgstr ""
-"このオプションを有効にすると、新しく作成されるターミナルウィンドウでメニュー"
-"バーが表示されます。"
+msgstr "このオプションを有効にすると、新しく作成されるターミナルウィンドウでメニューバーが表示されます。"
 
 #: ../terminal/terminal-preferences.glade.h:68
 msgid "Display _toolbar in new windows"
@@ -1010,9 +962,7 @@ msgstr "新しいウィンドウでツールバーを表示する(_T)"
 #: ../terminal/terminal-preferences.glade.h:69
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
-msgstr ""
-"このオプションを有効にすると、新しく作成されるターミナルウィンドウでツール"
-"バーが表示されます。"
+msgstr "このオプションを有効にすると、新しく作成されるターミナルウィンドウでツールバーが表示されます。"
 
 #: ../terminal/terminal-preferences.glade.h:70
 msgid "Display _borders around new windows"
@@ -1022,9 +972,7 @@ msgstr "ウィンドウ枠を表示する(_B)"
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
-msgstr ""
-"このオプションを有効にすると、新しく作成されるターミナルウィンドウのウィンド"
-"ウ枠が表示されます。"
+msgstr "このオプションを有効にすると、新しく作成されるターミナルウィンドウのウィンドウ枠が表示されます。"
 
 #: ../terminal/terminal-preferences.glade.h:72
 msgid "Default geometry:"
@@ -1080,11 +1028,9 @@ msgstr "タブごとに背景色を変える(_V)"
 
 #: ../terminal/terminal-preferences.glade.h:85
 msgid ""
-"The random color is based on the selected background color, keeping the same "
-"brightness. "
-msgstr ""
-"設定された背景色を基にタブごとの背景色をランダムに変更します。明度は変わりま"
-"せん。"
+"The random color is based on the selected background color, keeping the same"
+" brightness. "
+msgstr "設定された背景色を基にタブごとの背景色をランダムに変更します。明度は変わりません。"
 
 #: ../terminal/terminal-preferences.glade.h:86
 msgid "Choose background color"
@@ -1122,9 +1068,7 @@ msgstr "選択領域の文字背景色(_S):"
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
-msgstr ""
-"このオプションで選択領域の背景色をカスタマイズできます。無効にした場合、文字"
-"色を反転します。"
+msgstr "このオプションで選択領域の背景色をカスタマイズできます。無効にした場合、文字色を反転します。"
 
 #: ../terminal/terminal-preferences.glade.h:95
 msgid "Choose text selection background color"
@@ -1138,9 +1082,7 @@ msgstr "太字の色(_O):"
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
-msgstr ""
-"このオプションで太字の色をカスタマイズできます。無効にした場合、文字色が使用"
-"されます。"
+msgstr "このオプションで太字の色をカスタマイズできます。無効にした場合、文字色が使用されます。"
 
 #: ../terminal/terminal-preferences.glade.h:98
 msgid "Choose bold font color"
@@ -1242,19 +1184,13 @@ msgstr "エミュレーション設定(_E):"
 msgid "_Reset compatibility options to defaults"
 msgstr "互換性オプションをデフォルトに戻す(_R)"
 
-# These line breaks are compromise of VL P Gothic, IPA P Gothic and
-# (especially) UmePlus P Gothic, 10pt each.
 #: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
-msgstr ""
-"これらのオプションによって、正常に動作しないアプリケー\n"
-"ションがあるかもしれません。これらのオプションは、他の\n"
-"端末での動作を前提とする一部のアプリケーションや OS \n"
-"での問題を解決するために存在します。"
+msgstr "これらのオプションによって、正常に動作しないアプリケー\nションがあるかもしれません。これらのオプションは、他の\n端末での動作を前提とする一部のアプリケーションや OS \nでの問題を解決するために存在します。"
 
 #: ../terminal/terminal-preferences.glade.h:127
 msgid "Compatibility"
@@ -1305,624 +1241,3 @@ msgstr "上級者(_V)"
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "ターミナルエミュレーター"
-
-#~ msgid "Drop-down Preferences..."
-#~ msgstr "ドロップダウン設定..."
-
-#~ msgid "Drop-down Preferences"
-#~ msgstr "ドロップダウン設定"
-
-#~ msgid "_Report a bug"
-#~ msgstr "バグを報告(_R)"
-
-#~ msgid "_Clear Scrollback"
-#~ msgstr "スクロールバックのクリア(_C)"
-
-#~ msgid "C_lose Tab"
-#~ msgstr "タブを閉じる(_L)"
-
-#~ msgid "_Close Window"
-#~ msgstr "ウィンドウを閉じる(_C)"
-
-#~ msgid "_Go"
-#~ msgstr "移動(_G)"
-
-#~ msgid "Close all tabs"
-#~ msgstr "すべてのタブを閉じる"
-
-#~ msgid "Terminal applications have this color palette available to them."
-#~ msgstr "Terminal アプリケーションはこの色パレットを使用できます。"
-
-#~ msgid "Open a new window for the current terminal tab"
-#~ msgstr "現在のターミナルタブを新しいウィンドウで開きます"
-
-#~ msgid "Close the current terminal tab"
-#~ msgstr "現在のターミナルタブを閉じます"
-
-#~ msgid "Close the terminal window"
-#~ msgstr "このターミナルウィンドウを閉じます"
-
-#~ msgid "Paste from primary selection"
-#~ msgstr "プライマリセレクションから貼り付けます"
-
-#~ msgid "Select all text in the terminal"
-#~ msgstr "ターミナル内のすべての文字を選択します"
-
-#~ msgid "Set a custom title for the current tab"
-#~ msgstr "現在のタブに指定したタイトルを付けます"
-
-#~ msgid "Reset"
-#~ msgstr "リセット"
-
-#~ msgid "Reset and C_lear"
-#~ msgstr "リセットしてクリア(_L)"
-
-#~ msgid "Reset and clear"
-#~ msgstr "リセットして消去"
-
-#~ msgid "Report a bug in Terminal"
-#~ msgstr "Terminal のバグを報告します"
-
-#~ msgid "Display information about Terminal"
-#~ msgstr "Terminal に関する情報を表示します"
-
-#~ msgid "Use _default color"
-#~ msgstr "デフォルトの色を使用する(_D)"
-
-#~ msgid "Use the default text selection background color"
-#~ msgstr "テキスト選択領域の背景色にデフォルトの色を使用します。"
-
-#~ msgid "Use c_ustom color:"
-#~ msgstr "指定色を使用する(_U):"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "テキスト選択領域の背景色に指定色を使用します。"
-
-#~ msgid "D-BUS message bus disconnected, exiting...\n"
-#~ msgstr "D-BUS メッセージバスの接続が切れました。終了します...\n"
-
-#~ msgid "Unable to register object %s"
-#~ msgstr "オブジェクト %s を登録できません。"
-
-#~ msgid "Open Tab"
-#~ msgstr "タブを開く"
-
-#~ msgid "Detach Tab"
-#~ msgstr "タブを切り離す"
-
-#~ msgid "Copy"
-#~ msgstr "コピー"
-
-#~ msgid "Paste"
-#~ msgstr "貼り付け"
-
-#~ msgid "Paste Selection"
-#~ msgstr "選択領域を貼り付け"
-
-#~ msgid "Select All"
-#~ msgstr "すべて選択"
-
-#~ msgid "Show menubar"
-#~ msgstr "メニューバーを表示"
-
-#~ msgid "Show toolbars"
-#~ msgstr "ツールバーを表示"
-
-#~ msgid "Show borders"
-#~ msgstr "ウィンドウ枠を表示"
-
-#~ msgid "Fullscreen"
-#~ msgstr "全画面表示"
-
-#~ msgid "Set Title"
-#~ msgstr "タイトルを付ける"
-
-#~ msgid "Reset and Clear"
-#~ msgstr "リセットして消去"
-
-#~ msgid "Next Tab"
-#~ msgstr "次のタブ"
-
-#~ msgid "Switch to Tab 1"
-#~ msgstr "タブ1 に切り替える"
-
-#~ msgid "Switch to Tab 2"
-#~ msgstr "タブ2 に切り替える"
-
-#~ msgid "Switch to Tab 3"
-#~ msgstr "タブ3 に切り替える"
-
-#~ msgid "Switch to Tab 4"
-#~ msgstr "タブ4 に切り替える"
-
-#~ msgid "Switch to Tab 5"
-#~ msgstr "タブ5 に切り替える"
-
-#~ msgid "Switch to Tab 6"
-#~ msgstr "タブ6 に切り替える"
-
-#~ msgid "Switch to Tab 7"
-#~ msgstr "タブ7 に切り替える"
-
-#~ msgid "Switch to Tab 8"
-#~ msgstr "タブ8 に切り替える"
-
-#~ msgid "Switch to Tab 9"
-#~ msgstr "タブ9 に切り替える"
-
-#~ msgid "Contents"
-#~ msgstr "目次"
-
-#~ msgid "File"
-#~ msgstr "ファイル"
-
-#~ msgid "Edit"
-#~ msgstr "編集"
-
-#~ msgid "View"
-#~ msgstr "表示"
-
-#~ msgid "Go"
-#~ msgstr "移動"
-
-#~ msgid "Help"
-#~ msgstr "ヘルプ"
-
-#~ msgid "Action"
-#~ msgstr "アクション"
-
-#~ msgid "Shortcut key"
-#~ msgstr "ショートカットキー"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "ショートカットの編集"
-
-#~ msgid "Clea_r"
-#~ msgstr "クリア(_R)"
-
-#~ msgid "Compose shortcut for:"
-#~ msgstr "このショートカットキーを編集:"
-
-#~ msgid "Failed to acquire keyboard"
-#~ msgstr "キーボードの取得に失敗しました"
-
-#~ msgid "Another application has already acquired control over your keyboard."
-#~ msgstr "すでに他のアプリケーションがキーボードの制御を取得しています。"
-
-#~ msgid "Toolbar Editor"
-#~ msgstr "ツールバーエディター"
-
-#~ msgid "_Toolbars..."
-#~ msgstr "ツールバー(_T)..."
-
-#~ msgid "Customize the toolbars"
-#~ msgstr "ツールバーをカスタマイズします"
-
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "ターミナルフォントのアンチエイリアスを有効にする(_L)"
-
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "ターミナルウィンドウで表示する文字にアンチエイリアスをかける場合はこのオプ"
-#~ "ションを有効にしてください。このオプションを無効にすると、ターミナルの描画"
-#~ "性能を劇的に向上させ、低速なシステムにおいてシステム全般の負荷を下げること"
-#~ "ができるかもしれません。"
-
-#~ msgid "Palette entry 1"
-#~ msgstr "パレットエントリ 1"
-
-#~ msgid "Palette entry 2"
-#~ msgstr "パレットエントリ 2"
-
-#~ msgid "Palette entry 12"
-#~ msgstr "パレットエントリ 12"
-
-#~ msgid "Palette entry 9"
-#~ msgstr "パレットエントリ 9"
-
-#~ msgid "Palette entry 10"
-#~ msgstr "パレットエントリ 10"
-
-#~ msgid "Palette entry 11"
-#~ msgstr "パレットエントリ 11"
-
-#~ msgid "Palette entry 3"
-#~ msgstr "パレットエントリ 3"
-
-#~ msgid "Palette entry 4"
-#~ msgstr "パレットエントリ 4"
-
-#~ msgid "Palette entry 5"
-#~ msgstr "パレットエントリ 5"
-
-#~ msgid "Palette entry 13"
-#~ msgstr "パレットエントリ 13"
-
-#~ msgid "Palette entry 14"
-#~ msgstr "パレットエントリ 14"
-
-#~ msgid "Palette entry 6"
-#~ msgstr "パレットエントリ 6"
-
-#~ msgid "Palette entry 7"
-#~ msgstr "パレットエントリ 7"
-
-#~ msgid "Palette entry 15"
-#~ msgstr "パレットエントリ 15"
-
-#~ msgid "Palette entry 16"
-#~ msgstr "パレットエントリ 16"
-
-#~ msgid "Palette entry 8"
-#~ msgstr "パレットエントリ 8"
-
-#~ msgid "Shortcut Keys"
-#~ msgstr "ショートカットキー"
-
-#~ msgid "_Shortcuts"
-#~ msgstr "ショートカット(_S)"
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "新しいタブやウィンドウが開かれる時に設定される環境変数 $TERM の値を指定し"
-#~ "ます。一部のアプリケーションで色の表示に問題があるなら、ここに xterm-"
-#~ "color を指定してみてください。"
-
-#~ msgid "The %s user manual is not installed on your computer"
-#~ msgstr "%s ユーザーマニュアルはインストールされていません"
-
-#~ msgid ""
-#~ "You can read the user manual online. This manual may however not exactly "
-#~ "match your %s version."
-#~ msgstr ""
-#~ "マニュアルはオンラインで見ることもできますが、現在のバージョン %s 用ではな"
-#~ "いかもしれません。"
-
-#~ msgid "User manual is missing"
-#~ msgstr "ユーザーマニュアルが見つかりません"
-
-#~ msgid "_Read Online"
-#~ msgstr "オンラインでよむ(_R)"
-
-#~ msgid "Failed to open the documentation browser"
-#~ msgstr "ドキュメントブラウザーを開けませんでした"
-
-#~ msgid ""
-#~ "%s %s (Xfce %s)\n"
-#~ "\n"
-#~ "Copyright (c) %s\n"
-#~ "        os-cillation e.K. All rights reserved.\n"
-#~ "\n"
-#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
-#~ "\n"
-#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-#~ "\n"
-#~ "Please report bugs to <%s>.\n"
-#~ msgstr ""
-#~ "%s %s (Xfce %s)\n"
-#~ "\n"
-#~ "Copyright (c) %s\n"
-#~ "        os-cillation e.K. All rights reserved.\n"
-#~ "\n"
-#~ "Benedikt Meurer <benny@xfce.org> が作成しました。\n"
-#~ "\n"
-#~ "Gtk+-%d.%d.%d でビルド、Gtk+-%d.%d.%d で実行しています。\n"
-#~ "\n"
-#~ "バグの報告は <%s> にお願いします。\n"
-
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
-#~ msgstr "  -h, --help                          このヘルプを表示して終了する"
-
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr ""
-#~ "  -V, --version                       バージョン情報を表示して終了する"
-
-#~ msgid ""
-#~ "  --disable-server                    Do not register with the D-BUS\n"
-#~ "                                      session message bus"
-#~ msgstr ""
-#~ "  --disable-server                    D-BUS セッションメッセージバスに\n"
-#~ "                                      登録しない"
-
-#~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr ""
-#~ "  --default-display=DISPLAY           使用する標準の X ディスプレイを指"
-#~ "定\n"
-#~ "                                      する"
-
-#~ msgid ""
-#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
-#~ "                                      directory"
-#~ msgstr ""
-#~ "  --default-working-directory=DIRNAME ターミナルの標準の作業フォルダーを指"
-#~ "定\n"
-#~ "                                      する"
-
-#~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
-#~ "                                      window; more than one of these\n"
-#~ "                                      options can be provided"
-#~ msgstr ""
-#~ "  --tab                               最後に指定したウィンドウで新しいタ"
-#~ "ブ\n"
-#~ "                                      を開く; 他のオプションと同時に指定で"
-#~ "きる"
-
-#~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
-#~ "                                      provided"
-#~ msgstr ""
-#~ "  --window                            一つのタブを含む新しいウィンドウを\n"
-#~ "                                      開く; 他のオプションと同時に指定でき"
-#~ "る"
-
-#~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
-#~ "                                      line inside the terminal"
-#~ msgstr ""
-#~ "  -x, --execute                       残りのコマンドラインをターミナル内"
-#~ "で\n"
-#~ "                                      実行する"
-
-#~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
-#~ "                                      inside the terminal"
-#~ msgstr ""
-#~ "  -e, --command=STRING                このオプションの引数をターミナル内"
-#~ "で\n"
-#~ "                                      実行する"
-
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr ""
-#~ "  --working-directory=DIRNAME         ターミナルの作業フォルダーを指定する"
-
-#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr "  -T, --title=TITLE                   ターミナルのタイトルを付ける"
-
-#~ msgid ""
-#~ "  -H, --hold                          Do not immediately destroy the tab\n"
-#~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold                          子コマンドが終了してもすぐに\n"
-#~ "                                      タブを破棄しない"
-
-#~ msgid ""
-#~ "  --display=DISPLAY                   X display to use for the last-\n"
-#~ "                                      specified window"
-#~ msgstr ""
-#~ "  --display=DISPLAY                   最後に指定したウィンドウに使用する\n"
-#~ "                                      X ディスプレイを指定する"
-
-#~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
-#~ "                                      window to be opened"
-#~ msgstr ""
-#~ "  --geometry=GEOMETRY                 X のジオメトリを指定する (\"X\" の "
-#~ "man\n"
-#~ "                                      ページを参照)。開くウィンドウ毎に指"
-#~ "定\n"
-#~ "                                      できる"
-
-#~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
-#~ "                                      you create from the command line"
-#~ msgstr ""
-#~ "  --role=ROLE                         最後に指定したウィンドウにロールを\n"
-#~ "                                      セットする; 一つのウィンドウのみに\n"
-#~ "                                      適用される; コマンドラインから作成す"
-#~ "る\n"
-#~ "                                      各々のウィンドウに対して一度指定でき"
-#~ "る"
-
-#~ msgid ""
-#~ "  --startup-id=STRING                 ID for the startup notification\n"
-#~ "                                      protocol"
-#~ msgstr ""
-#~ "  --startup-id=STRING                 起動通知プロトコルの ID を指定する"
-
-#~ msgid ""
-#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-#~ "                                      name or filename"
-#~ msgstr ""
-#~ "  -I, --icon=ICON                     ターミナルのアイコンのアイコン名また"
-#~ "は\n"
-#~ "                                      ファイル名を設定する"
-
-#~ msgid ""
-#~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --fullscreen                        最後に指定したウィンドウを全画面\n"
-#~ "                                      モードにセットする; 一つのウィン\n"
-#~ "                                      ドウのみに適用される; コマンドライ"
-#~ "ン\n"
-#~ "                                      から作成する各々のウィンドウに対し"
-#~ "て\n"
-#~ "                                      一度指定できる"
-
-#~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
-#~ "                                      applies to only one window; can be\n"
-#~ "                                      specified once for each window you\n"
-#~ "                                      create from the command line"
-#~ msgstr ""
-#~ "  --maximize                          最後に指定されたウィンドウを最大化す"
-#~ "る;\n"
-#~ "                                      一つのウィンドウのみに適用される;\n"
-#~ "                                      コマンドラインから作成する各々のウィ"
-#~ "ンドウ\n"
-#~ "                                      に対して一度指定できる"
-
-#~ msgid ""
-#~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-menubar                      最後に指定したウィンドウでメニュー\n"
-#~ "                                      バーを表示する; 一つのウィンドウ\n"
-#~ "                                      のみに適用される; コマンドラインか"
-#~ "ら\n"
-#~ "                                      作成する各々のウィンドウに対して\n"
-#~ "                                      一度指定できる"
-
-#~ msgid ""
-#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-menubar                      最後に指定したウィンドウでメニュー\n"
-#~ "                                      バーを表示しない; 一つのウィンドウ\n"
-#~ "                                      のみに適用される; コマンドラインか"
-#~ "ら\n"
-#~ "                                      作成する各々のウィンドウに対して一"
-#~ "度\n"
-#~ "                                      指定できる"
-
-#~ msgid ""
-#~ "  --show-borders                      Turn on the window decorations for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --show-borders                      最後に指定したウィンドウでウィンド"
-#~ "ウ\n"
-#~ "                                      の枠を表示する; 一つのウィンドウ\n"
-#~ "                                      のみに適用される; コマンドラインか"
-#~ "ら\n"
-#~ "                                      作成する各々のウィンドウに対して一"
-#~ "度\n"
-#~ "                                      指定できる"
-
-#~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --hide-borders                      最後に指定したウィンドウでウィンド"
-#~ "ウ\n"
-#~ "                                      の枠を表示しない; 一つのウィンドウ\n"
-#~ "                                      のみに適用される; コマンドラインか"
-#~ "ら\n"
-#~ "                                      作成する各々のウィンドウに対して一"
-#~ "度\n"
-#~ "                                      指定できる"
-
-#~ msgid ""
-#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-toolbars                     最後に指定したウィンドウでツール"
-#~ "バー\n"
-#~ "                                      を表示する; 一つのウィンドウのみに\n"
-#~ "                                      適用される; コマンドラインから作成す"
-#~ "る\n"
-#~ "                                      各々のウィンドウに対して一度指定でき"
-#~ "る"
-
-#~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-toolbars                     最後に指定したウィンドウでツール"
-#~ "バー\n"
-#~ "                                      を表示しない; 一つのウィンドウのみ\n"
-#~ "                                      に適用される; コマンドラインから作"
-#~ "成\n"
-#~ "                                      する各々のウィンドウに対して一度指"
-#~ "定\n"
-#~ "                                      できる"
-
-#~ msgid "Unable to launch terminal: %s\n"
-#~ msgstr "ターミナルを起動できません: %s\n"
-
-#~ msgid "<b>Title:</b>"
-#~ msgstr "<b>タイトル:</b>"
-
-#~ msgid "Usage: Terminal [OPTION...]"
-#~ msgstr "使用法: Terminal [オプション...]"
-
-#~ msgid "<b>Title</b>"
-#~ msgstr "<b>タイトル</b>"
-
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
-#~ msgstr ""
-#~ "ターミナルで実行するコマンドが、新しいタイトルを自動的に付ける場合がありま"
-#~ "す。"
-
-#~ msgid "<b>Font</b>"
-#~ msgstr "<b>フォント</b>"
-
-#~ msgid "<b>Background</b>"
-#~ msgstr "<b>背景</b>"
-
-#~ msgid "Shade transparent or image background:"
-#~ msgstr "背景画像のシェードまたは背景の不透明度:"
-
-#~ msgid "<small><i>None</i></small>"
-#~ msgstr "<small><i>無し</i></small>"
-
-#~ msgid "<small><i>Maximum</i></small>"
-#~ msgstr "<small><i>最大</i></small>"
-
-#~ msgid "<b>Foreground and Background</b>"
-#~ msgstr "<b>文字と背景</b>"
-
-#~ msgid "<b>Tab activity</b>"
-#~ msgstr "<b>動作中タブ</b>"
-
-#~ msgid "<b>Shortcut keys</b>"
-#~ msgstr "<b>ショートカットキー</b>"
