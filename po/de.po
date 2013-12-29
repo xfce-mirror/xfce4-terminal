@@ -6,13 +6,14 @@
 # Enrico Tröger <enrico@xfce.org>, 2009
 # gem <eckert.georg@gmx.de>, 2013
 # Jakob Kramer <jakob.kramer@gmx.de>, 2012
+# M4he, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-03 20:42+0200\n"
-"PO-Revision-Date: 2013-09-19 10:40+0000\n"
-"Last-Translator: gem <eckert.georg@gmx.de>\n"
+"POT-Creation-Date: 2013-12-27 00:31+0100\n"
+"PO-Revision-Date: 2013-12-29 23:29+0000\n"
+"Last-Translator: M4he\n"
 "Language-Team: German (http://www.transifex.com/projects/p/xfce/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,8 +34,12 @@ msgid "Green on Black"
 msgstr "Grün auf Schwarz"
 
 #: ../colorschemes/solarized-dark.theme.in.h:1
-msgid "Solarized"
-msgstr "Solarisiert (stark überbelichtet)"
+msgid "Solarized (dark)"
+msgstr "Solarized (dunkel)"
+
+#: ../colorschemes/solarized-light.theme.in.h:1
+msgid "Solarized (light)"
+msgstr "Solarized (hell)"
 
 #: ../colorschemes/tango.theme.in.h:1
 msgid "Tango"
@@ -220,7 +225,7 @@ msgstr "Sonstige"
 
 #. action to reset to the default
 #: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:386
+#: ../terminal/terminal-encoding-action.c:385
 #, c-format
 msgid "Default (%s)"
 msgstr "Vorgabe (%s)"
@@ -295,7 +300,7 @@ msgstr "Die Option »--role« benötigt als Parameter die Angabe einer Rolle\nf�
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
-msgstr ""
+msgstr "Die Option \"--sm-client-id\" benötigt als Parameter die Sitzungs-Identifikationsnummer."
 
 #: ../terminal/terminal-options.c:373
 #, c-format
@@ -351,35 +356,35 @@ msgstr "Reiter schließen"
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
-msgstr ""
+msgstr "Suchen"
 
 #: ../terminal/terminal-search-dialog.c:95
 msgid "_Previous"
-msgstr ""
+msgstr "_Vorherige"
 
 #: ../terminal/terminal-search-dialog.c:100
 msgid "_Next"
-msgstr ""
+msgstr "_Nächste"
 
 #: ../terminal/terminal-search-dialog.c:113
 msgid "_Search for:"
-msgstr ""
+msgstr "_Suche nach:"
 
 #: ../terminal/terminal-search-dialog.c:128
 msgid "C_ase sensitive"
-msgstr ""
+msgstr "_Groß- und Kleinschreibung beachten"
 
 #: ../terminal/terminal-search-dialog.c:134
 msgid "Match as _regular expression"
-msgstr ""
+msgstr "_Regulären Ausdruck suchen"
 
 #: ../terminal/terminal-search-dialog.c:140
 msgid "Match _entire word only"
-msgstr ""
+msgstr "N_ur ganzes Wort suchen"
 
 #: ../terminal/terminal-search-dialog.c:146
 msgid "_Wrap around"
-msgstr ""
+msgstr "_Bei Ende von vorn beginnen"
 
 #: ../terminal/terminal-util.c:79 ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
@@ -393,46 +398,46 @@ msgstr "Benedikt Meurer <benny@xfce.org>\nFabian Nowak <timystery@arcor.de>\nEnr
 msgid "Visit Terminal website"
 msgstr "Webseite von Terminal besuchen"
 
-#: ../terminal/terminal-widget.c:323
+#: ../terminal/terminal-widget.c:325
 msgid "Copy Email Address"
 msgstr "E-Mail-Adresse kopieren"
 
-#: ../terminal/terminal-widget.c:324
+#: ../terminal/terminal-widget.c:326
 msgid "Compose Email"
 msgstr "E-Mail schreiben"
 
-#: ../terminal/terminal-widget.c:328
+#: ../terminal/terminal-widget.c:330
 msgid "Copy Link Address"
 msgstr "Verknüpfung kopieren"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:331
 msgid "Open Link"
 msgstr "Verknüpfung öffnen"
 
-#: ../terminal/terminal-widget.c:483
+#: ../terminal/terminal-widget.c:485
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Auswahl des Typs »text/plain« konnte nicht einfügt werden: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:499
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Mozilla-URL konnte nicht einfügt werden: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:525
+#: ../terminal/terminal-widget.c:527
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "URI-Liste konnte nicht einfügt werden: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:570
+#: ../terminal/terminal-widget.c:572
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Ungültige Farbdaten erhalten: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:706
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Die URL »%s« konnte nicht geöffnet werden"
@@ -531,7 +536,7 @@ msgstr "_Titel festlegen…"
 
 #: ../terminal/terminal-window.c:211
 msgid "_Find..."
-msgstr "_Finden..."
+msgstr "_Suchen..."
 
 #: ../terminal/terminal-window.c:212
 msgid "Find Ne_xt"
@@ -835,61 +840,61 @@ msgstr "_Allgemein"
 
 #: ../terminal/terminal-preferences.glade.h:39
 msgid "_Keep window open when it loses focus"
-msgstr ""
+msgstr "Fenster offen lassen, wenn es den Fo_kus verliert"
 
 #: ../terminal/terminal-preferences.glade.h:40
 msgid "Always keep window on _top"
-msgstr ""
+msgstr "Fens_ter immer im Vordergrund halten"
 
 #: ../terminal/terminal-preferences.glade.h:41
 msgid "Use shortcut to _focus visible window"
-msgstr ""
+msgstr "Sichtbares _Fenster mit Tastenkürzel fokussieren"
 
 #: ../terminal/terminal-preferences.glade.h:42
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
-msgstr ""
+msgstr "Wenn aktiviert, wird das Tastenkürzel zum Öffnen und Verstecken des Fensters, das Fenster in den Vordergrund bringen anstatt es zu schließen, falls es vorher den Fokus verloren hat."
 
 #: ../terminal/terminal-preferences.glade.h:43
 msgid "Show _status icon in notification area"
-msgstr ""
+msgstr "_Statussymbol im Benachrichtigungsbereich anzeigen"
 
 #: ../terminal/terminal-preferences.glade.h:44
 msgid "Behavior"
-msgstr ""
+msgstr "Verhalten"
 
 #: ../terminal/terminal-preferences.glade.h:45
 msgid "Wi_dth:"
-msgstr ""
+msgstr "_Breite:"
 
 #: ../terminal/terminal-preferences.glade.h:46
 msgid "He_ight:"
-msgstr "Höhe:"
+msgstr "_Höhe:"
 
 #: ../terminal/terminal-preferences.glade.h:47
 msgid "_Opacity:"
-msgstr ""
+msgstr "_Deckkraft:"
 
 #: ../terminal/terminal-preferences.glade.h:48
 msgid "D_uration:"
-msgstr ""
+msgstr "Da_uer:"
 
 #: ../terminal/terminal-preferences.glade.h:49
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: ../terminal/terminal-preferences.glade.h:50
 msgid "_Always show tabs"
-msgstr ""
+msgstr "Reiter immer _anzeigen"
 
 #: ../terminal/terminal-preferences.glade.h:51
 msgid "Appearance and Animation"
-msgstr ""
+msgstr "Erscheinungsbild und Animationen"
 
 #: ../terminal/terminal-preferences.glade.h:52
 msgid "L_eft"
-msgstr ""
+msgstr "_Links"
 
 #: ../terminal/terminal-preferences.glade.h:53
 msgid "Right"
@@ -897,15 +902,15 @@ msgstr "Rechts"
 
 #: ../terminal/terminal-preferences.glade.h:54
 msgid "Move to monitor with poi_nter"
-msgstr ""
+msgstr "Auf Bildschirm mit Zeiger verschiebe_n"
 
 #: ../terminal/terminal-preferences.glade.h:55
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: ../terminal/terminal-preferences.glade.h:56
 msgid "Drop-do_wn"
-msgstr ""
+msgstr "Drop-do_wn"
 
 #: ../terminal/terminal-preferences.glade.h:57
 msgid "Choose Terminal Font"
@@ -956,12 +961,12 @@ msgstr "Aktivieren Sie diesen Schalter, um standardmäßig die Menüleiste in ne
 
 #: ../terminal/terminal-preferences.glade.h:68
 msgid "Display _toolbar in new windows"
-msgstr ""
+msgstr "_Werkzeugleiste in neuen Terminals anzeigen"
 
 #: ../terminal/terminal-preferences.glade.h:69
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
-msgstr ""
+msgstr "Aktivieren Sie diese Option, um die Werkzeugleiste in neuen Terminalfenstern standardmäßig anzuzeigen."
 
 #: ../terminal/terminal-preferences.glade.h:70
 msgid "Display _borders around new windows"
@@ -975,7 +980,7 @@ msgstr "Aktivieren Sie diese Option, um neue Fenster mit Dekoration zu starten."
 
 #: ../terminal/terminal-preferences.glade.h:72
 msgid "Default geometry:"
-msgstr ""
+msgstr "Abmessungen:"
 
 #: ../terminal/terminal-preferences.glade.h:73
 msgid "c_olumns"
@@ -1023,7 +1028,7 @@ msgstr "_Cursorfarbe:"
 
 #: ../terminal/terminal-preferences.glade.h:84
 msgid "_Vary the background color for each tab"
-msgstr ""
+msgstr "Hintergrundfarbe für jeden Reiter _variieren"
 
 #: ../terminal/terminal-preferences.glade.h:85
 msgid ""
@@ -1033,7 +1038,7 @@ msgstr "Zufällig gewählte Farbe ist von der gewählten Hintergrundfarbe abhän
 
 #: ../terminal/terminal-preferences.glade.h:86
 msgid "Choose background color"
-msgstr ""
+msgstr "Hintergrundfarbe auswählen"
 
 #: ../terminal/terminal-preferences.glade.h:87
 msgid "Color Selector"
@@ -1045,11 +1050,11 @@ msgstr "Einen Dialog öffnen, um die Farbe zu wählen"
 
 #: ../terminal/terminal-preferences.glade.h:89
 msgid "Choose text color"
-msgstr ""
+msgstr "Textfarbe auswählen"
 
 #: ../terminal/terminal-preferences.glade.h:90
 msgid "Choose cursor color"
-msgstr ""
+msgstr "Cursorfarbe auswählen"
 
 #: ../terminal/terminal-preferences.glade.h:91
 msgid "Choose tab activity color"
@@ -1061,7 +1066,7 @@ msgstr "Allgemein"
 
 #: ../terminal/terminal-preferences.glade.h:93
 msgid "Text _selection color:"
-msgstr ""
+msgstr "Textau_swahlfarbe:"
 
 #: ../terminal/terminal-preferences.glade.h:94
 msgid ""
@@ -1071,11 +1076,11 @@ msgstr "Option aktivieren um benutzerdefinierte Hintergrundfarbe für die Auswah
 
 #: ../terminal/terminal-preferences.glade.h:95
 msgid "Choose text selection background color"
-msgstr ""
+msgstr "Textauswahlfarbe festlegen"
 
 #: ../terminal/terminal-preferences.glade.h:96
 msgid "B_old text color:"
-msgstr ""
+msgstr "Farbe für _Fettschrift:"
 
 #: ../terminal/terminal-preferences.glade.h:97
 msgid ""
@@ -1085,11 +1090,11 @@ msgstr "Option aktivieren um Farbe für fett gedruckten Text zu ändern. Andernf
 
 #: ../terminal/terminal-preferences.glade.h:98
 msgid "Choose bold font color"
-msgstr ""
+msgstr "Farbe für Fettschrift auswählen"
 
 #: ../terminal/terminal-preferences.glade.h:99
 msgid "Custom Colors"
-msgstr ""
+msgstr "Benutzerdefinierte Farben"
 
 #: ../terminal/terminal-preferences.glade.h:100
 msgid "Black"
@@ -1101,7 +1106,7 @@ msgstr "Rot"
 
 #: ../terminal/terminal-preferences.glade.h:102
 msgid "Yellow"
-msgstr ""
+msgstr "Gelb"
 
 #: ../terminal/terminal-preferences.glade.h:103
 msgid "Dark Gray"
@@ -1109,11 +1114,11 @@ msgstr "Dunkles Grau"
 
 #: ../terminal/terminal-preferences.glade.h:104
 msgid "Light Red"
-msgstr ""
+msgstr "Helles Rot"
 
 #: ../terminal/terminal-preferences.glade.h:105
 msgid "Light Green"
-msgstr ""
+msgstr "Helles Grün"
 
 #: ../terminal/terminal-preferences.glade.h:106
 msgid "Green"
@@ -1129,23 +1134,23 @@ msgstr "Blau"
 
 #: ../terminal/terminal-preferences.glade.h:109
 msgid "Light Blue"
-msgstr ""
+msgstr "Helles Blau"
 
 #: ../terminal/terminal-preferences.glade.h:110
 msgid "Light Magenta"
-msgstr ""
+msgstr "Helles Violett"
 
 #: ../terminal/terminal-preferences.glade.h:111
 msgid "Magenta"
-msgstr ""
+msgstr "Violett"
 
 #: ../terminal/terminal-preferences.glade.h:112
 msgid "Cyan"
-msgstr "Cyan"
+msgstr "Türkis"
 
 #: ../terminal/terminal-preferences.glade.h:113
 msgid "Light Cyan"
-msgstr ""
+msgstr "Helles Türkis"
 
 #: ../terminal/terminal-preferences.glade.h:114
 msgid "White"
@@ -1153,7 +1158,7 @@ msgstr "Weiß"
 
 #: ../terminal/terminal-preferences.glade.h:115
 msgid "Light Gray"
-msgstr ""
+msgstr "Helles Grau"
 
 #: ../terminal/terminal-preferences.glade.h:116
 msgid "Palette"
@@ -1161,7 +1166,7 @@ msgstr "Farbpalette"
 
 #: ../terminal/terminal-preferences.glade.h:117
 msgid "Presets"
-msgstr ""
+msgstr "Voreinstellungen"
 
 #: ../terminal/terminal-preferences.glade.h:118
 msgid "_Colors"
@@ -1177,7 +1182,7 @@ msgstr "E_ntfernentaste erzeugt:"
 
 #: ../terminal/terminal-preferences.glade.h:121
 msgid "Emulation s_etting:"
-msgstr ""
+msgstr "$TERM _Einstellung:"
 
 #: ../terminal/terminal-preferences.glade.h:122
 msgid "_Reset compatibility options to defaults"
@@ -1197,7 +1202,7 @@ msgstr "Kompatibilität"
 
 #: ../terminal/terminal-preferences.glade.h:128
 msgid "Co_mpatibility"
-msgstr ""
+msgstr "Ko_mpatibilität"
 
 #: ../terminal/terminal-preferences.glade.h:129
 msgid ""
@@ -1215,11 +1220,11 @@ msgstr "Doppelklick"
 
 #: ../terminal/terminal-preferences.glade.h:133
 msgid "Default character e_ncoding:"
-msgstr ""
+msgstr "Sta_ndardzeichensatz:"
 
 #: ../terminal/terminal-preferences.glade.h:134
 msgid "Encoding"
-msgstr ""
+msgstr "Zeichensatz"
 
 #: ../terminal/terminal-preferences.glade.h:135
 msgid "Disable all me_nu access keys (such as Alt+f)"
