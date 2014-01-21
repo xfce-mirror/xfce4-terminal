@@ -1,24 +1,24 @@
-# Polish translations for Terminal.
-# Copyright (C) 2003-2006 Benedikt Meurer
-# This file is distributed under the same license as the Terminal package.
-# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.
-# Piotr Sokół <psokol@jabster.pl>, 2009, 2011, 2012, 2013.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Piotr Sokół <psokol@jabster.pl>, 2009,2011-2013
+# Piotr Strębski <strebski@o2.pl>, 2014
+# Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006
 msgid ""
 msgstr ""
-"Project-Id-Version: terminal 0.4.5\n"
+"Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-02 06:48+0000\n"
-"PO-Revision-Date: 2013-01-14 09:11+0100\n"
-"Last-Translator: Piotr Sokół <psokol@jabster.pl>\n"
-"Language-Team: polski <>\n"
-"Language: pl\n"
+"POT-Creation-Date: 2013-12-27 00:31+0100\n"
+"PO-Revision-Date: 2014-01-21 16:07+0000\n"
+"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/xfce/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bits\n"
-"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : ((n%10>=2 && n%10<=4 && (n"
-"%100<10 || n%100>=20)) ? 1 : 2));\n"
-"X-Generator: Gtranslator 2.91.5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../colorschemes/black-on-white.theme.in.h:1
 msgid "Black on White"
@@ -33,8 +33,12 @@ msgid "Green on Black"
 msgstr "Zielone na czarnym"
 
 #: ../colorschemes/solarized-dark.theme.in.h:1
-msgid "Solarized"
-msgstr "Solarized"
+msgid "Solarized (dark)"
+msgstr "Prześwietlenie (ciemne)"
+
+#: ../colorschemes/solarized-light.theme.in.h:1
+msgid "Solarized (light)"
+msgstr "Prześwietlenie (jasne)"
 
 #: ../colorschemes/tango.theme.in.h:1
 msgid "Tango"
@@ -117,10 +121,9 @@ msgstr "PLIK"
 #: ../terminal/main.c:147
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
-msgstr ""
-"Dokładny opis opcji programu %s znajduje się w podręczniku użytkownika."
+msgstr "Dokładny opis opcji programu %s znajduje się w podręczniku użytkownika."
 
-#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:2
+#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Terminal Xfce"
 
@@ -141,12 +144,12 @@ msgstr "i Nick Schermer <nick@xfce.org>."
 msgid "Please report bugs to <%s>."
 msgstr "Proszę zgłaszać błędy na adres <%s>."
 
-#: ../terminal/main.c:302
+#: ../terminal/main.c:304
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nie udało się zarejestrować usługi terminala: %s.\n"
 
-#: ../terminal/terminal-app.c:694
+#: ../terminal/terminal-app.c:738
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Nieprawidłowa geometria „%s”.\n"
@@ -221,16 +224,16 @@ msgstr "Inne"
 
 #. action to reset to the default
 #: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:386
+#: ../terminal/terminal-encoding-action.c:385
 #, c-format
 msgid "Default (%s)"
 msgstr "Domyślne (%s)"
 
-#: ../terminal/terminal-gdbus.c:80
+#: ../terminal/terminal-gdbus.c:104
 msgid "User id mismatch"
 msgstr "Niezgodny identyfikator użytkownika."
 
-#: ../terminal/terminal-gdbus.c:86
+#: ../terminal/terminal-gdbus.c:110
 msgid "Display mismatch"
 msgstr "Niezgodny ekran"
 
@@ -239,45 +242,35 @@ msgstr "Niezgodny ekran"
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
-msgstr ""
-"Opcja „--default-display” wymaga określenia domyślnego ekranu X jako jej "
-"parametru."
+msgstr "Opcja „--default-display” wymaga określenia domyślnego ekranu X jako jej parametru."
 
 #: ../terminal/terminal-options.c:228
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
-msgstr ""
-"Opcja „--default-working-directory” wymaga określenia domyślnego katalogu "
-"roboczego jako jej parametru."
+msgstr "Opcja „--default-working-directory” wymaga określenia domyślnego katalogu roboczego jako jej parametru."
 
 #: ../terminal/terminal-options.c:245
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
-msgstr ""
-"Opcja „--execute/-x” wymaga określenia polecenia do uruchomienia jako jej "
-"parametru."
+msgstr "Opcja „--execute/-x” wymaga określenia polecenia do uruchomienia jako jej parametru."
 
 #: ../terminal/terminal-options.c:262
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
-msgstr ""
-"Opcja „--command/-e” wymaga określenia polecenia do uruchomienia jako jej "
-"parametru."
+msgstr "Opcja „--command/-e” wymaga określenia polecenia do uruchomienia jako jej parametru."
 
 #: ../terminal/terminal-options.c:279
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
-msgstr ""
-"Opcja „--working-directory” wymaga określenia katalogu roboczego jako jej "
-"parametru."
+msgstr "Opcja „--working-directory” wymaga określenia katalogu roboczego jako jej parametru."
 
 #: ../terminal/terminal-options.c:294
 #, c-format
@@ -286,8 +279,7 @@ msgstr "Opcja „--title/-T” wymaga określenia tytułu okna jako jej parametr
 
 #: ../terminal/terminal-options.c:313
 #, c-format
-msgid ""
-"Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Opcja „--display” wymaga określenia ekranu X jako jej parametru."
 
 #: ../terminal/terminal-options.c:328
@@ -295,8 +287,7 @@ msgstr "Opcja „--display” wymaga określenia ekranu X jako jej parametru."
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr ""
-"Opcja „--geometry” wymaga określenia geometrii okna jako jej parametru."
+msgstr "Opcja „--geometry” wymaga określenia geometrii okna jako jej parametru."
 
 #: ../terminal/terminal-options.c:343
 #, c-format
@@ -308,17 +299,13 @@ msgstr "Opcja „--role” wymaga określenia roli okna jako jej parametru."
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
-msgstr ""
-"Opcja „--sm-client-id” wymaga wprowadzenia identyfikatora sesji jako "
-"parametru."
+msgstr "Opcja „--sm-client-id” wymaga wprowadzenia identyfikatora sesji jako parametru."
 
 #: ../terminal/terminal-options.c:373
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr ""
-"Opcja „--startup-id” wymaga określenia identyfikatora uruchamiania jako jej "
-"parametru."
+msgstr "Opcja „--startup-id” wymaga określenia identyfikatora uruchamiania jako jej parametru."
 
 #: ../terminal/terminal-options.c:389
 #, c-format
@@ -404,61 +391,52 @@ msgstr "Emuluje działanie terminala X w środowisku Xfce"
 
 #: ../terminal/terminal-util.c:86
 msgid "translator-credits"
-msgstr ""
-"Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.\n"
-"Piotr Sokół <psokol@jabster.pl>, 2009, 2011, 2012."
+msgstr "Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.\nPiotr Sokół <psokol@jabster.pl>, 2009, 2011, 2012."
 
 #: ../terminal/terminal-util.c:89
 msgid "Visit Terminal website"
 msgstr "Strona główna"
 
-#: ../terminal/terminal-widget.c:323
+#: ../terminal/terminal-widget.c:325
 msgid "Copy Email Address"
 msgstr "Skopiuj adres e-mail"
 
-#: ../terminal/terminal-widget.c:324
+#: ../terminal/terminal-widget.c:326
 msgid "Compose Email"
 msgstr "Utwórz wiadomość e-mail"
 
-#: ../terminal/terminal-widget.c:328
+#: ../terminal/terminal-widget.c:330
 msgid "Copy Link Address"
 msgstr "Skopiuj adres odnośnika"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:331
 msgid "Open Link"
 msgstr "Otwórz odnośnik"
 
-#: ../terminal/terminal-widget.c:483
+#: ../terminal/terminal-widget.c:485
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
-msgstr ""
-"Nie udało się przeciągnąć zaznaczenia typu text/plain do terminala: "
-"nieprawidłowy format (%d) lub długość (%d).\n"
+msgstr "Nie udało się przeciągnąć zaznaczenia typu text/plain do terminala: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:499
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nie udało się przeciągnąć adresu URL programu Mozilla do terminala: "
-"nieprawidłowy format (%d) lub długość (%d).\n"
+msgstr "Nie udało się przeciągnąć adresu URL programu Mozilla do terminala: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:525
+#: ../terminal/terminal-widget.c:527
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Nie udało się przeciągnąć adresu URI do terminala: nieprawidłowy format (%d) "
-"lub długość (%d).\n"
+msgstr "Nie udało się przeciągnąć adresu URI do terminala: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:570
+#: ../terminal/terminal-widget.c:572
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
-msgstr ""
-"Odebrano błędne dane o kolorze: nieprawidłowy format (%d) lub długość (%d).\n"
+msgstr "Odebrano błędne dane o kolorze: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:704
+#: ../terminal/terminal-widget.c:706
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Nie udało się otworzyć adresu URL „%s”."
@@ -669,9 +647,7 @@ msgstr "Ostrzeżenie"
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
-msgstr ""
-"Bieżące okno posiada %d otwartych kart. Zamknięcie\n"
-"go spowoduje zamknięcie wszystkich otwartych kart."
+msgstr "Bieżące okno posiada %d otwartych kart. Zamknięcie\ngo spowoduje zamknięcie wszystkich otwartych kart."
 
 #: ../terminal/terminal-window.c:536
 msgid "Close all tabs?"
@@ -698,1317 +674,573 @@ msgid "Failed to create the regular expression"
 msgstr "Nie udało się utworzyć wyrażenia regularnego"
 
 #: ../terminal/terminal-preferences.glade.h:1
-msgid "ASCII DEL"
-msgstr "Znak DEL kodu ASCII"
+msgid "Replaces initial title"
+msgstr "Zastępowanie początkowego tytułu"
 
 #: ../terminal/terminal-preferences.glade.h:2
-msgid "Ad_vanced"
-msgstr "_Zaawansowane"
+msgid "Goes before initial title"
+msgstr "Wypisywanie przed początkowym tytułem"
 
 #: ../terminal/terminal-preferences.glade.h:3
-msgid "Allow bold te_xt"
-msgstr "Możliwe wypisywanie tekstu p_ogrubioną czcionką"
+msgid "Goes after initial title"
+msgstr "Wypisywanie za początkowym tytułem"
 
 #: ../terminal/terminal-preferences.glade.h:4
-msgid "Always keep window on _top"
-msgstr "Utrzymywanie okna na _wierzchu"
+msgid "Isn't displayed"
+msgstr "Brak"
 
 #: ../terminal/terminal-preferences.glade.h:5
-msgid "Appearance and Animation"
-msgstr "Wygląd i animacja"
+msgid "Disabled"
+msgstr "Wyłączony"
 
 #: ../terminal/terminal-preferences.glade.h:6
-msgid "Auto-detect"
-msgstr "Automatyczne wykrywanie"
+msgid "On the left side"
+msgstr "Po lewej stronie"
 
 #: ../terminal/terminal-preferences.glade.h:7
-msgid "B_old text color:"
-msgstr "Pogrubiony _tekst:"
+msgid "On the right side"
+msgstr "Po prawej stronie"
 
 #: ../terminal/terminal-preferences.glade.h:8
-msgid "Background"
-msgstr "Tło"
+msgid "None (use solid color)"
+msgstr "Brak (jednolity kolor)"
 
 #: ../terminal/terminal-preferences.glade.h:9
 msgid "Background image"
 msgstr "Obraz"
 
 #: ../terminal/terminal-preferences.glade.h:10
-msgid "Behavior"
-msgstr "Zachowanie"
+msgid "Transparent background"
+msgstr "Przezroczyste"
 
 #: ../terminal/terminal-preferences.glade.h:11
-msgid "Black"
-msgstr "Czarny"
+msgid "Auto-detect"
+msgstr "Automatyczne wykrywanie"
 
 #: ../terminal/terminal-preferences.glade.h:12
-msgid "Blue"
-msgstr "Niebieski"
+msgid "ASCII DEL"
+msgstr "Znak DEL kodu ASCII"
 
 #: ../terminal/terminal-preferences.glade.h:13
-msgid "Brown / Yellow"
-msgstr "Brązowy / żółty"
+msgid "Escape sequence"
+msgstr "Sekwencja sterująca"
 
 #: ../terminal/terminal-preferences.glade.h:14
-msgid "Centered"
-msgstr "Wyśrodkowanie"
-
-#: ../terminal/terminal-preferences.glade.h:15
-msgid "Choose Terminal Font"
-msgstr "Wybór czcionki"
-
-#: ../terminal/terminal-preferences.glade.h:16
-msgid "Choose background color"
-msgstr "Wybór koloru tła"
-
-#: ../terminal/terminal-preferences.glade.h:17
-msgid "Choose bold font color"
-msgstr "Wybór koloru pogrubionej czcionki"
-
-#: ../terminal/terminal-preferences.glade.h:18
-msgid "Choose cursor color"
-msgstr "Wybór koloru kursora"
-
-#: ../terminal/terminal-preferences.glade.h:19
-msgid "Choose tab activity color"
-msgstr "Wybór koloru aktywności kart"
-
-#: ../terminal/terminal-preferences.glade.h:20
-msgid "Choose text color"
-msgstr "Wybór koloru tekstu"
-
-#: ../terminal/terminal-preferences.glade.h:21
-msgid "Choose text selection background color"
-msgstr "Wybór koloru tła zaznaczonego tekstu"
-
-#: ../terminal/terminal-preferences.glade.h:22
-msgid "Co_mpatibility"
-msgstr "_Kompatybilność"
-
-#: ../terminal/terminal-preferences.glade.h:23
-msgid "Color Selector"
-msgstr "Wybór kolorów"
-
-#: ../terminal/terminal-preferences.glade.h:24
-msgid "Command"
-msgstr "Polecenie"
-
-#: ../terminal/terminal-preferences.glade.h:25
-msgid "Compatibility"
-msgstr "Kompatybilność"
-
-#: ../terminal/terminal-preferences.glade.h:26
-msgid ""
-"Consider the following characters part of a _word\n"
-"when double clicking:"
-msgstr "Zestaw znaków rozpoznawanych jako _słowo podczas zaznaczania:"
-
-#: ../terminal/terminal-preferences.glade.h:28
 msgid "Control-H"
 msgstr "CTRL+H"
 
-#: ../terminal/terminal-preferences.glade.h:29
-msgid "Cu_rsor color:"
-msgstr "K_ursor:"
+#: ../terminal/terminal-preferences.glade.h:15
+msgid "Erase TTY"
+msgstr "Specjalny znak wymazania"
 
-#: ../terminal/terminal-preferences.glade.h:30
-msgid "Custom Colors"
-msgstr "Własne"
+#: ../terminal/terminal-preferences.glade.h:16
+msgid "Tiled"
+msgstr "Sąsiadująco"
 
-#: ../terminal/terminal-preferences.glade.h:31
-msgid "Cyan"
-msgstr "Turkusowy"
+#: ../terminal/terminal-preferences.glade.h:17
+msgid "Centered"
+msgstr "Wyśrodkowanie"
 
-#: ../terminal/terminal-preferences.glade.h:32
-msgid "D_uration:"
-msgstr "_Czas trwania:"
+#: ../terminal/terminal-preferences.glade.h:18
+msgid "Scaled"
+msgstr "Przeskalowanie"
 
-#: ../terminal/terminal-preferences.glade.h:33
-msgid "Dark Gray"
-msgstr "Ciemny szary"
+#: ../terminal/terminal-preferences.glade.h:19
+msgid "Stretched"
+msgstr "Rozciągnięcie"
 
-#: ../terminal/terminal-preferences.glade.h:34
-msgid "Default character e_ncoding:"
-msgstr "Domyślne _kodowanie znaków:"
+#: ../terminal/terminal-preferences.glade.h:20
+msgid "Terminal Preferences"
+msgstr "Preferencje"
 
-#: ../terminal/terminal-preferences.glade.h:35
-msgid "Default geometry:"
-msgstr "Domyślny rozmiar:"
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "_Initial title:"
+msgstr "_Początkowy:"
 
-#: ../terminal/terminal-preferences.glade.h:36
-msgid "Disable all me_nu access keys (such as Alt+f)"
-msgstr "Wyłączenie skrótów _menu (np. Alt+f)"
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "_Dynamically-set title:"
+msgstr "Nadawany _dynamicznie:"
 
-#: ../terminal/terminal-preferences.glade.h:37
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Wyłączenie klawisza wyświetlania m_enu (domyślnie F10)"
+#: ../terminal/terminal-preferences.glade.h:23
+msgid "Title"
+msgstr "Tytuł"
 
-#: ../terminal/terminal-preferences.glade.h:38
-msgid "Disabled"
-msgstr "Wyłączony"
+#: ../terminal/terminal-preferences.glade.h:24
+msgid "_Run command as login shell"
+msgstr "_Uruchamianie w roli powłoki startowej"
 
-#: ../terminal/terminal-preferences.glade.h:39
-msgid "Display _borders around new windows"
-msgstr "_Obramowanie okna"
-
-#: ../terminal/terminal-preferences.glade.h:40
-msgid "Display _menubar in new windows"
-msgstr "Pasek _menu"
-
-#: ../terminal/terminal-preferences.glade.h:41
-msgid "Display _toolbar in new windows"
-msgstr "Pasek _narzędziowy"
-
-#: ../terminal/terminal-preferences.glade.h:42
-msgid "Double Click"
-msgstr "Dwukrotne kliknięcie"
-
-#: ../terminal/terminal-preferences.glade.h:43
-msgid "Drop-do_wn"
-msgstr "_Wysuwanie"
-
-#: ../terminal/terminal-preferences.glade.h:44
-msgid "Emulation s_etting:"
-msgstr "_Ustawienie emulacji:"
-
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:25
 msgid ""
-"Enable this option to allow applications running inside the terminal windows "
-"to use bold text."
-msgstr "Umożliwia programom używanie pogrubionego tekstu w oknach terminala"
+"Select this option to force Terminal to run your shell as a login shell when"
+" you open new terminals. See the documentation of your shell for details "
+"about differences between running it as interactive shell and running it as "
+"login shell."
+msgstr "Uruchamia powłokę jako powłokę startową, po otwarciu terminala. Opis różnic pomiędzy działaniem powłoki interaktywnej i startowej można znaleźć w dokumentacji powłoki."
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Uaktualnianie wpisów utmp/wtmp podczas uruchamiania polecenia"
+
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "Command"
+msgstr "Polecenie"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Scroll single _line using Shift-Up/-Down keys"
+msgstr "Przewijanie o jeden _wiersz przy użyciu klawiszy Shift i góra/dół"
+
+#: ../terminal/terminal-preferences.glade.h:29
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
-msgstr ""
-"Przewija o jeden wiersz za pomocą klawiszy góra/dół z wciśniętym klawiszem "
-"Shift"
+msgstr "Przewija o jeden wiersz za pomocą klawiszy góra/dół z wciśniętym klawiszem Shift"
+
+#: ../terminal/terminal-preferences.glade.h:30
+msgid "Scroll on ou_tput"
+msgstr "Przewijanie po w_ypisaniu na wyjście "
+
+#: ../terminal/terminal-preferences.glade.h:31
+msgid ""
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the "
+"terminal."
+msgstr "Przewija zawartość terminala do wiersza poleceń jeśli uruchomiony program lub wykonywane polecenie wypisze tekst na wyjście"
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid "Scroll on _keystroke"
+msgstr "Przewijanie po _naciśnięciu klawisza"
+
+#: ../terminal/terminal-preferences.glade.h:33
+msgid ""
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr "Przewija zawartość terminala do wiersza poleceń po wciśnięciu dowolnego klawisza"
+
+#: ../terminal/terminal-preferences.glade.h:34
+msgid "Scr_ollbar is:"
+msgstr "Położenie p_aska przewijania:"
+
+#: ../terminal/terminal-preferences.glade.h:35
+msgid "Scroll_back:"
+msgstr "_Bufor przewijania:"
+
+#: ../terminal/terminal-preferences.glade.h:36
+msgid ""
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Określa całkowitą ilość wierszy jaką może przechować i wyświetlić terminal, używając paska przewijania"
+
+#: ../terminal/terminal-preferences.glade.h:37
+msgid "Scrolling"
+msgstr "Przewijanie"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid "_General"
+msgstr "_Ogólne"
+
+#: ../terminal/terminal-preferences.glade.h:39
+msgid "_Keep window open when it loses focus"
+msgstr "_Utrzymywanie otwartego okna programu po utracie uaktywnienia"
+
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Always keep window on _top"
+msgstr "Utrzymywanie okna na _wierzchu"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid "Use shortcut to _focus visible window"
+msgstr "_Uaktywnianie widocznego okna przy pomocy skrótu klawiszowego"
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid ""
+"If enabled, the shortcut to open and retract the window will give focus, "
+"rather than closing it, if it has previously lost focus"
+msgstr "Uaktywnia okno terminala za pomocą skrótu klawiszowego, zamiast je zamykać, jeśli okno wcześniej przestało być aktywne"
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "Show _status icon in notification area"
+msgstr "Wyświetlanie _ikony programy w obszarze powiadamiania"
+
+#: ../terminal/terminal-preferences.glade.h:44
+msgid "Behavior"
+msgstr "Zachowanie"
+
+#: ../terminal/terminal-preferences.glade.h:45
+msgid "Wi_dth:"
+msgstr "_Szerokość:"
+
+#: ../terminal/terminal-preferences.glade.h:46
+msgid "He_ight:"
+msgstr "_Wysokość:"
 
 #: ../terminal/terminal-preferences.glade.h:47
-msgid ""
-"Enable this option to set a custom background color for the selection. If "
-"disabled the background and text colors will be reversed."
-msgstr ""
-"Umożliwia wybranie koloru tła zaznaczonego tekstu. Jeśli opcja jest "
-"wyłączona, kolory tła i tekstu są odwracane."
+msgid "_Opacity:"
+msgstr "_Nieprzezroczystość:"
 
 #: ../terminal/terminal-preferences.glade.h:48
-msgid ""
-"Enable this option to set a custom bold color. If disabled the text color "
-"will be used."
-msgstr ""
-"Umożliwia wybranie koloru pogrubionego tekstu. Jeśli opcja jest wyłączona, "
-"pogrubiony tekst będzie wypisywany tym samy kolorem co zwykły."
+msgid "D_uration:"
+msgstr "_Czas trwania:"
 
 #: ../terminal/terminal-preferences.glade.h:49
+msgid "ms"
+msgstr "ms"
+
+#: ../terminal/terminal-preferences.glade.h:50
+msgid "_Always show tabs"
+msgstr "_Zawsze widoczne karty"
+
+#: ../terminal/terminal-preferences.glade.h:51
+msgid "Appearance and Animation"
+msgstr "Wygląd i animacja"
+
+#: ../terminal/terminal-preferences.glade.h:52
+msgid "L_eft"
+msgstr "_Lewo"
+
+#: ../terminal/terminal-preferences.glade.h:53
+msgid "Right"
+msgstr "Prawo"
+
+#: ../terminal/terminal-preferences.glade.h:54
+msgid "Move to monitor with poi_nter"
+msgstr "Przemieszczanie na ekran wyświetlający _kursor myszy"
+
+#: ../terminal/terminal-preferences.glade.h:55
+msgid "Position"
+msgstr "Położenie"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "Drop-do_wn"
+msgstr "_Wysuwanie"
+
+#: ../terminal/terminal-preferences.glade.h:57
+msgid "Choose Terminal Font"
+msgstr "Wybór czcionki"
+
+#: ../terminal/terminal-preferences.glade.h:58
+msgid "Allow bold te_xt"
+msgstr "Możliwe wypisywanie tekstu p_ogrubioną czcionką"
+
+#: ../terminal/terminal-preferences.glade.h:59
+msgid ""
+"Enable this option to allow applications running inside the terminal windows"
+" to use bold text."
+msgstr "Umożliwia programom używanie pogrubionego tekstu w oknach terminala"
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "Font"
+msgstr "Czcionka"
+
+#: ../terminal/terminal-preferences.glade.h:61
+msgid "_File:"
+msgstr "_Plik:"
+
+#: ../terminal/terminal-preferences.glade.h:62
+msgid "St_yle:"
+msgstr "_Styl:"
+
+#: ../terminal/terminal-preferences.glade.h:63
+msgid "Select Background Image File"
+msgstr "Wybór pliku"
+
+#: ../terminal/terminal-preferences.glade.h:64
+msgid "Transpare_ncy:"
+msgstr "Niep_rzezroczystość:"
+
+#: ../terminal/terminal-preferences.glade.h:65
+msgid "Background"
+msgstr "Tło"
+
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Display _menubar in new windows"
+msgstr "Pasek _menu"
+
+#: ../terminal/terminal-preferences.glade.h:67
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Wyświetla pasek menu w nowo otwartych oknach"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:68
+msgid "Display _toolbar in new windows"
+msgstr "Pasek _narzędziowy"
+
+#: ../terminal/terminal-preferences.glade.h:69
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Wyświetla pasek narzędziowy w nowo otwartych oknach"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:70
+msgid "Display _borders around new windows"
+msgstr "_Obramowanie okna"
+
+#: ../terminal/terminal-preferences.glade.h:71
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Wyświetla obramowania nowo otwartych okien"
 
-#: ../terminal/terminal-preferences.glade.h:52
-msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr ""
-"Przewija zawartość terminala do wiersza poleceń po wciśnięciu dowolnego "
-"klawisza"
-
-#: ../terminal/terminal-preferences.glade.h:53
-msgid "Encoding"
-msgstr "Kodowanie"
-
-#: ../terminal/terminal-preferences.glade.h:54
-msgid "Erase TTY"
-msgstr "Specjalny znak wymazania"
-
-#: ../terminal/terminal-preferences.glade.h:55
-msgid "Escape sequence"
-msgstr "Sekwencja sterująca"
-
-#: ../terminal/terminal-preferences.glade.h:56
-msgid "Font"
-msgstr "Czcionka"
-
-#: ../terminal/terminal-preferences.glade.h:57
-msgid "General"
-msgstr "Ogólne"
-
-#: ../terminal/terminal-preferences.glade.h:58
-msgid "Goes after initial title"
-msgstr "Wypisywanie za początkowym tytułem"
-
-#: ../terminal/terminal-preferences.glade.h:59
-msgid "Goes before initial title"
-msgstr "Wypisywanie przed początkowym tytułem"
-
-#: ../terminal/terminal-preferences.glade.h:60
-msgid "Green"
-msgstr "Zielony"
-
-#: ../terminal/terminal-preferences.glade.h:61
-msgid "He_ight:"
-msgstr "_Wysokość:"
-
-#: ../terminal/terminal-preferences.glade.h:62
-msgid ""
-"If enabled, the shortcut to open and retract the window will give focus, "
-"rather than closing it, if it has previously lost focus"
-msgstr ""
-"Uaktywnia okno terminala za pomocą skrótu klawiszowego, zamiast je zamykać, "
-"jeśli okno wcześniej przestało być aktywne"
-
-#: ../terminal/terminal-preferences.glade.h:63
-msgid "Isn't displayed"
-msgstr "Brak"
-
-#: ../terminal/terminal-preferences.glade.h:64
-msgid "L_eft"
-msgstr "_Lewo"
-
-#: ../terminal/terminal-preferences.glade.h:65
-msgid "Light Blue"
-msgstr "Jasny niebieski"
-
-#: ../terminal/terminal-preferences.glade.h:66
-msgid "Light Cyan"
-msgstr "Jasny turkusowy"
-
-#: ../terminal/terminal-preferences.glade.h:67
-msgid "Light Gray"
-msgstr "Jasny szary"
-
-#: ../terminal/terminal-preferences.glade.h:68
-msgid "Light Green"
-msgstr "Jasny zielony"
-
-#: ../terminal/terminal-preferences.glade.h:69
-msgid "Light Magenta"
-msgstr "Jasny magenta"
-
-#: ../terminal/terminal-preferences.glade.h:70
-msgid "Light Red"
-msgstr "Jasny czerwony"
-
-#: ../terminal/terminal-preferences.glade.h:71
-msgid "Magenta"
-msgstr "Magenta"
-
 #: ../terminal/terminal-preferences.glade.h:72
-msgid "Menubar Access"
-msgstr "Pasek menu"
+msgid "Default geometry:"
+msgstr "Domyślny rozmiar:"
 
 #: ../terminal/terminal-preferences.glade.h:73
-msgid "Move to monitor with poi_nter"
-msgstr "Przemieszczanie na ekran wyświetlający _kursor myszy"
+msgid "c_olumns"
+msgstr "_kolumn"
 
 #: ../terminal/terminal-preferences.glade.h:74
-msgid "None (use solid color)"
-msgstr "Brak (jednolity kolor)"
+msgid "row_s"
+msgstr "_wierszy"
 
 #: ../terminal/terminal-preferences.glade.h:75
-msgid "On the left side"
-msgstr "Po lewej stronie"
-
-#: ../terminal/terminal-preferences.glade.h:76
-msgid "On the right side"
-msgstr "Po prawej stronie"
-
-#: ../terminal/terminal-preferences.glade.h:77
-msgid "Open a dialog to specify the color"
-msgstr "Otwórz okno dialogowe, aby wybrać kolor"
-
-#: ../terminal/terminal-preferences.glade.h:78
 msgid "Opening New Windows"
 msgstr "Nowe okna"
 
-#: ../terminal/terminal-preferences.glade.h:79
-msgid "Palette"
-msgstr "Paleta"
-
-#: ../terminal/terminal-preferences.glade.h:80
-msgid "Position"
-msgstr "Położenie"
-
-#: ../terminal/terminal-preferences.glade.h:81
-msgid "Presets"
-msgstr "Profile"
-
-#: ../terminal/terminal-preferences.glade.h:82
-msgid "Red"
-msgstr "Czerwony"
-
-#: ../terminal/terminal-preferences.glade.h:83
-msgid "Replaces initial title"
-msgstr "Zastępowanie początkowego tytułu"
-
-#: ../terminal/terminal-preferences.glade.h:84
-msgid "Rese_t double click options to defaults"
-msgstr "Przywróć _domyślne"
-
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "Reset tab activity _indicator after"
 msgstr "_Ukrywanie po upływie"
 
-#: ../terminal/terminal-preferences.glade.h:86
-msgid "Right"
-msgstr "Prawo"
+#: ../terminal/terminal-preferences.glade.h:77
+msgid "seconds"
+msgstr "sekund"
 
-#: ../terminal/terminal-preferences.glade.h:87
-msgid "Scaled"
-msgstr "Przeskalowanie"
-
-#: ../terminal/terminal-preferences.glade.h:88
-msgid "Scr_ollbar is:"
-msgstr "Położenie p_aska przewijania:"
-
-#: ../terminal/terminal-preferences.glade.h:89
-msgid "Scroll on _keystroke"
-msgstr "Przewijanie po _naciśnięciu klawisza"
-
-#: ../terminal/terminal-preferences.glade.h:90
-msgid "Scroll on ou_tput"
-msgstr "Przewijanie po w_ypisaniu na wyjście "
-
-#: ../terminal/terminal-preferences.glade.h:91
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "Przewijanie o jeden _wiersz przy użyciu klawiszy Shift i góra/dół"
-
-#: ../terminal/terminal-preferences.glade.h:92
-msgid "Scroll_back:"
-msgstr "_Bufor przewijania:"
-
-#: ../terminal/terminal-preferences.glade.h:93
-msgid "Scrolling"
-msgstr "Przewijanie"
-
-#: ../terminal/terminal-preferences.glade.h:94
-msgid "Select Background Image File"
-msgstr "Wybór pliku"
-
-#: ../terminal/terminal-preferences.glade.h:95
-msgid ""
-"Select this option to force Terminal to run your shell as a login shell when "
-"you open new terminals. See the documentation of your shell for details "
-"about differences between running it as interactive shell and running it as "
-"login shell."
-msgstr ""
-"Uruchamia powłokę jako powłokę startową, po otwarciu terminala. Opis różnic "
-"pomiędzy działaniem powłoki interaktywnej i startowej można znaleźć w "
-"dokumentacji powłoki."
-
-#: ../terminal/terminal-preferences.glade.h:96
-msgid "Show _status icon in notification area"
-msgstr "Wyświetlanie _ikony programy w obszarze powiadamiania"
-
-#: ../terminal/terminal-preferences.glade.h:97
-msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr ""
-"Określa całkowitą ilość wierszy jaką może przechować i wyświetlić terminal, "
-"używając paska przewijania"
-
-#: ../terminal/terminal-preferences.glade.h:98
-msgid "St_yle:"
-msgstr "_Styl:"
-
-#: ../terminal/terminal-preferences.glade.h:99
-msgid "Stretched"
-msgstr "Rozciągnięcie"
-
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Tab Activity Indicator"
 msgstr "Wskaźnik aktywności kart"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:79
+msgid "_Appearance"
+msgstr "_Wygląd"
+
+#: ../terminal/terminal-preferences.glade.h:80
+msgid "_Text color:"
+msgstr "_Tekst:"
+
+#: ../terminal/terminal-preferences.glade.h:81
+msgid "_Background color:"
+msgstr "Tł_o:"
+
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Tab activit_y color:"
 msgstr "_Aktywne karty:"
 
-#: ../terminal/terminal-preferences.glade.h:102
-msgid "Terminal Preferences"
-msgstr "Preferencje"
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Cu_rsor color:"
+msgstr "K_ursor:"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:84
+msgid "_Vary the background color for each tab"
+msgstr "_Inny kolor tła każdej karty"
+
+#: ../terminal/terminal-preferences.glade.h:85
+msgid ""
+"The random color is based on the selected background color, keeping the same"
+" brightness. "
+msgstr "Nadaje różne kolory tłom każdej karty na podstawie wybranego koloru, zachowując tą samą jasność"
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "Choose background color"
+msgstr "Wybór koloru tła"
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Color Selector"
+msgstr "Wybór kolorów"
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Open a dialog to specify the color"
+msgstr "Otwórz okno dialogowe, aby wybrać kolor"
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Choose text color"
+msgstr "Wybór koloru tekstu"
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "Choose cursor color"
+msgstr "Wybór koloru kursora"
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Choose tab activity color"
+msgstr "Wybór koloru aktywności kart"
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "General"
+msgstr "Ogólne"
+
+#: ../terminal/terminal-preferences.glade.h:93
 msgid "Text _selection color:"
 msgstr "_Zaznaczenie tekstu:"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:94
 msgid ""
-"The random color is based on the selected background color, keeping the same "
-"brightness. "
-msgstr ""
-"Nadaje różne kolory tłom każdej karty na podstawie wybranego koloru, "
-"zachowując tą samą jasność"
+"Enable this option to set a custom background color for the selection. If "
+"disabled the background and text colors will be reversed."
+msgstr "Umożliwia wybranie koloru tła zaznaczonego tekstu. Jeśli opcja jest wyłączona, kolory tła i tekstu są odwracane."
+
+#: ../terminal/terminal-preferences.glade.h:95
+msgid "Choose text selection background color"
+msgstr "Wybór koloru tła zaznaczonego tekstu"
+
+#: ../terminal/terminal-preferences.glade.h:96
+msgid "B_old text color:"
+msgstr "Pogrubiony _tekst:"
+
+#: ../terminal/terminal-preferences.glade.h:97
+msgid ""
+"Enable this option to set a custom bold color. If disabled the text color "
+"will be used."
+msgstr "Umożliwia wybranie koloru pogrubionego tekstu. Jeśli opcja jest wyłączona, pogrubiony tekst będzie wypisywany tym samy kolorem co zwykły."
+
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "Choose bold font color"
+msgstr "Wybór koloru pogrubionej czcionki"
+
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "Custom Colors"
+msgstr "Własne"
+
+#: ../terminal/terminal-preferences.glade.h:100
+msgid "Black"
+msgstr "Czarny"
+
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "Red"
+msgstr "Czerwony"
+
+#: ../terminal/terminal-preferences.glade.h:102
+msgid "Yellow"
+msgstr "Żółty"
+
+#: ../terminal/terminal-preferences.glade.h:103
+msgid "Dark Gray"
+msgstr "Ciemny szary"
+
+#: ../terminal/terminal-preferences.glade.h:104
+msgid "Light Red"
+msgstr "Jasny czerwony"
 
 #: ../terminal/terminal-preferences.glade.h:105
+msgid "Light Green"
+msgstr "Jasny zielony"
+
+#: ../terminal/terminal-preferences.glade.h:106
+msgid "Green"
+msgstr "Zielony"
+
+#: ../terminal/terminal-preferences.glade.h:107
+msgid "Brown / Yellow"
+msgstr "Brązowy / żółty"
+
+#: ../terminal/terminal-preferences.glade.h:108
+msgid "Blue"
+msgstr "Niebieski"
+
+#: ../terminal/terminal-preferences.glade.h:109
+msgid "Light Blue"
+msgstr "Jasny niebieski"
+
+#: ../terminal/terminal-preferences.glade.h:110
+msgid "Light Magenta"
+msgstr "Jasny magenta"
+
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Magenta"
+msgstr "Magenta"
+
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Cyan"
+msgstr "Turkusowy"
+
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Light Cyan"
+msgstr "Jasny turkusowy"
+
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "White"
+msgstr "Biały"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Light Gray"
+msgstr "Jasny szary"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Palette"
+msgstr "Paleta"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Presets"
+msgstr "Profile"
+
+#: ../terminal/terminal-preferences.glade.h:118
+msgid "_Colors"
+msgstr "_Kolory"
+
+#: ../terminal/terminal-preferences.glade.h:119
+msgid "_Backspace key generates:"
+msgstr "Działanie klawisza _Backspace:"
+
+#: ../terminal/terminal-preferences.glade.h:120
+msgid "_Delete key generates:"
+msgstr "Działanie klawisza _Delete:"
+
+#: ../terminal/terminal-preferences.glade.h:121
+msgid "Emulation s_etting:"
+msgstr "_Ustawienie emulacji:"
+
+#: ../terminal/terminal-preferences.glade.h:122
+msgid "_Reset compatibility options to defaults"
+msgstr "Przywróć _domyślne"
+
+#: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
-msgstr ""
-"Poniższe opcje mogą powodować nieprawidłowe działanie niektórych programów. "
-"Zostały one udostępnione  tylko po to, aby umożliwić pracę z pewnymi "
-"programami i systemami operacyjnymi, które oczekują nieco innego zachowania "
-"terminala."
-
-#: ../terminal/terminal-preferences.glade.h:109
-msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the terminal."
-msgstr ""
-"Przewija zawartość terminala do wiersza poleceń jeśli uruchomiony program "
-"lub wykonywane polecenie wypisze tekst na wyjście"
-
-#: ../terminal/terminal-preferences.glade.h:110
-msgid "Tiled"
-msgstr "Sąsiadująco"
-
-#: ../terminal/terminal-preferences.glade.h:111
-msgid "Title"
-msgstr "Tytuł"
-
-#: ../terminal/terminal-preferences.glade.h:112
-msgid "Transpare_ncy:"
-msgstr "Niep_rzezroczystość:"
-
-#: ../terminal/terminal-preferences.glade.h:113
-msgid "Transparent background"
-msgstr "Przezroczyste"
-
-#: ../terminal/terminal-preferences.glade.h:114
-msgid "Use shortcut to _focus visible window"
-msgstr "_Uaktywnianie widocznego okna przy pomocy skrótu klawiszowego"
-
-#: ../terminal/terminal-preferences.glade.h:115
-msgid "White"
-msgstr "Biały"
-
-#: ../terminal/terminal-preferences.glade.h:116
-msgid "Wi_dth:"
-msgstr "_Szerokość:"
-
-#: ../terminal/terminal-preferences.glade.h:117
-msgid "Yellow"
-msgstr "Żółty"
-
-#: ../terminal/terminal-preferences.glade.h:118
-msgid "_Always show tabs"
-msgstr "_Zawsze widoczne karty"
-
-#: ../terminal/terminal-preferences.glade.h:119
-msgid "_Appearance"
-msgstr "_Wygląd"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Background color:"
-msgstr "Tł_o:"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "_Backspace key generates:"
-msgstr "Działanie klawisza _Backspace:"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Colors"
-msgstr "_Kolory"
-
-#: ../terminal/terminal-preferences.glade.h:123
-msgid "_Delete key generates:"
-msgstr "Działanie klawisza _Delete:"
-
-#: ../terminal/terminal-preferences.glade.h:124
-msgid "_Dynamically-set title:"
-msgstr "Nadawany _dynamicznie:"
-
-#: ../terminal/terminal-preferences.glade.h:125
-msgid "_File:"
-msgstr "_Plik:"
-
-#: ../terminal/terminal-preferences.glade.h:126
-msgid "_General"
-msgstr "_Ogólne"
+msgstr "Poniższe opcje mogą powodować nieprawidłowe działanie niektórych programów. Zostały one udostępnione  tylko po to, aby umożliwić pracę z pewnymi programami i systemami operacyjnymi, które oczekują nieco innego zachowania terminala."
 
 #: ../terminal/terminal-preferences.glade.h:127
-msgid "_Initial title:"
-msgstr "_Początkowy:"
+msgid "Compatibility"
+msgstr "Kompatybilność"
 
 #: ../terminal/terminal-preferences.glade.h:128
-msgid "_Keep window open when it loses focus"
-msgstr "_Utrzymywanie otwartego okna programu po utracie uaktywnienia"
+msgid "Co_mpatibility"
+msgstr "_Kompatybilność"
 
 #: ../terminal/terminal-preferences.glade.h:129
-msgid "_Opacity:"
-msgstr "_Nieprzezroczystość:"
-
-#: ../terminal/terminal-preferences.glade.h:130
-msgid "_Reset compatibility options to defaults"
-msgstr "Przywróć _domyślne"
+msgid ""
+"Consider the following characters part of a _word\n"
+"when double clicking:"
+msgstr "Zestaw znaków rozpoznawanych jako _słowo podczas zaznaczania:"
 
 #: ../terminal/terminal-preferences.glade.h:131
-msgid "_Run command as login shell"
-msgstr "_Uruchamianie w roli powłoki startowej"
+msgid "Rese_t double click options to defaults"
+msgstr "Przywróć _domyślne"
 
 #: ../terminal/terminal-preferences.glade.h:132
-msgid "_Text color:"
-msgstr "_Tekst:"
+msgid "Double Click"
+msgstr "Dwukrotne kliknięcie"
 
 #: ../terminal/terminal-preferences.glade.h:133
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_Uaktualnianie wpisów utmp/wtmp podczas uruchamiania polecenia"
+msgid "Default character e_ncoding:"
+msgstr "Domyślne _kodowanie znaków:"
 
 #: ../terminal/terminal-preferences.glade.h:134
-msgid "_Vary the background color for each tab"
-msgstr "_Inny kolor tła każdej karty"
+msgid "Encoding"
+msgstr "Kodowanie"
 
 #: ../terminal/terminal-preferences.glade.h:135
-msgid "c_olumns"
-msgstr "_kolumn"
+msgid "Disable all me_nu access keys (such as Alt+f)"
+msgstr "Wyłączenie skrótów _menu (np. Alt+f)"
 
 #: ../terminal/terminal-preferences.glade.h:136
-msgid "ms"
-msgstr "ms"
+msgid "Disable m_enu shortcut keys (F10 by default)"
+msgstr "Wyłączenie klawisza wyświetlania m_enu (domyślnie F10)"
 
 #: ../terminal/terminal-preferences.glade.h:137
-msgid "row_s"
-msgstr "_wierszy"
+msgid "Menubar Access"
+msgstr "Pasek menu"
 
 #: ../terminal/terminal-preferences.glade.h:138
-msgid "seconds"
-msgstr "sekund"
+msgid "Ad_vanced"
+msgstr "_Zaawansowane"
 
-#: ../xfce4-terminal.desktop.in.h:1
+#: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Emuluje działanie terminala X"
-
-#~ msgid "_Report a bug"
-#~ msgstr "Zgłoś _błąd"
-
-#~ msgid "C_lose Tab"
-#~ msgstr "Zamknij k_artę"
-
-#~ msgid "_Close Window"
-#~ msgstr "_Zamknij "
-
-#~ msgid "_Go"
-#~ msgstr "_Karty"
-
-#~ msgid "Close all tabs"
-#~ msgstr "Zamknij wszystkie karty"
-
-#~ msgid "D-BUS message bus disconnected, exiting...\n"
-#~ msgstr "Szyna wymiany informacji D-BUS rozłączyła się, kończenie...\n"
-
-#~ msgid "Unable to register object %s"
-#~ msgstr "Nie udało się zarejestrować obiektu %s."
-
-#~ msgid "Open Tab"
-#~ msgstr "Nowa karta"
-
-#~ msgid "Detach Tab"
-#~ msgstr "Odłącz kartę"
-
-#~ msgid "Copy"
-#~ msgstr "Skopiuj"
-
-#~ msgid "Paste"
-#~ msgstr "Wklej"
-
-#~ msgid "Paste Selection"
-#~ msgstr "Wklej zaznaczenie"
-
-#~ msgid "Select All"
-#~ msgstr "Zaznacz wszystko"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferencje..."
-
-#~ msgid "Show menubar"
-#~ msgstr "Pasek menu"
-
-#~ msgid "Show toolbars"
-#~ msgstr "Pasek narzędzi"
-
-#~ msgid "Show borders"
-#~ msgstr "Obramowanie okna"
-
-#~ msgid "Fullscreen"
-#~ msgstr "Pełny ekran"
-
-#~ msgid "Set Title"
-#~ msgstr "Nadaj tytuł"
-
-#~ msgid "Reset and Clear"
-#~ msgstr "Wyzeruj stan i wyczyść"
-
-#~ msgid "Next Tab"
-#~ msgstr "Następna karta"
-
-#~ msgid "Switch to Tab 1"
-#~ msgstr "Przejdź do karty 1"
-
-#~ msgid "Switch to Tab 2"
-#~ msgstr "Przejdź do karty 2"
-
-#~ msgid "Switch to Tab 3"
-#~ msgstr "Przejdź do karty 3"
-
-#~ msgid "Switch to Tab 4"
-#~ msgstr "Przejdź do karty 4"
-
-#~ msgid "Switch to Tab 5"
-#~ msgstr "Przejdź do karty 5"
-
-#~ msgid "Switch to Tab 6"
-#~ msgstr "Przejdź do karty 6"
-
-#~ msgid "Switch to Tab 7"
-#~ msgstr "Przejdź do karty 7"
-
-#~ msgid "Switch to Tab 8"
-#~ msgstr "Przejdź do karty 8"
-
-#~ msgid "Switch to Tab 9"
-#~ msgstr "Przejdź do karty 9"
-
-#~ msgid "Contents"
-#~ msgstr "Spis treści"
-
-#~ msgid "File"
-#~ msgstr "Plik"
-
-#~ msgid "Edit"
-#~ msgstr "Edycja"
-
-#~ msgid "View"
-#~ msgstr "Widok"
-
-#~ msgid "Go"
-#~ msgstr "Karty"
-
-#~ msgid "Help"
-#~ msgstr "Pomoc"
-
-#~ msgid "Action"
-#~ msgstr "Czynność"
-
-#~ msgid "Shortcut key"
-#~ msgstr "Skrót"
-
-#~ msgid "Compose shortcut"
-#~ msgstr "Tworzenie skrótu"
-
-#~ msgid "Clea_r"
-#~ msgstr "Wy_czyść"
-
-#~ msgid "Compose shortcut for:"
-#~ msgstr "Skrót klawiszowy dla polecenia:"
-
-#~ msgid "Failed to acquire keyboard"
-#~ msgstr "Nie udało się uzyskać klawiatury."
-
-#~ msgid "Another application has already acquired control over your keyboard."
-#~ msgstr "Inny program przejął kontrolę nad klawiaturą."
-
-#~ msgid "Toolbar Editor"
-#~ msgstr "Modyfikowanie paska narzędziowego"
-
-#~ msgid "Open a new window for the current terminal tab"
-#~ msgstr "Otwórz nowe okno z bieżącą kartą terminala"
-
-#~ msgid "Close the current terminal tab"
-#~ msgstr "Zamyka bieżącą kartę"
-
-#~ msgid "Close the terminal window"
-#~ msgstr "Zamyka okno programu"
-
-#~ msgid "Paste from primary selection"
-#~ msgstr "Wkleja zaznaczony tekst"
-
-#~ msgid "Select all text in the terminal"
-#~ msgstr "Zaznacza całą zawartość terminala"
-
-#~ msgid "_Toolbars..."
-#~ msgstr "_Paski narzędziowe..."
-
-#~ msgid "Customize the toolbars"
-#~ msgstr "Otwiera okno konfiguracji pasków narzędziowych"
-
-#~ msgid "Set a custom title for the current tab"
-#~ msgstr "Nadaje własny tytuł bieżącej karcie"
-
-#~ msgid "Reset and C_lear"
-#~ msgstr "Wyzeruj stan i wy_czyść"
-
-#~ msgid "Reset and clear"
-#~ msgstr "Przywraca pierwotny stan terminala i czyści jego bufor przewijania"
-
-#~ msgid "Report a bug in Terminal"
-#~ msgstr "Zgłasza błąd w programie"
-
-#~ msgid "Display information about Terminal"
-#~ msgstr "Wyświetla informacje o programie"
-
-#~ msgid "Enab_le anti-aliasing for the terminal font"
-#~ msgstr "_Antyaliasing"
-
-#~ msgid ""
-#~ "Enable this option if you want Terminal to use anti-aliasing when "
-#~ "rendering text in terminal windows. Disabling this option can "
-#~ "impressively speed up terminal rendering performance and reduce the "
-#~ "overall system load on slow systems."
-#~ msgstr ""
-#~ "Używa antyaliasingu podczas wyświetlania tekstu w oknach terminala. "
-#~ "Wyłączenie tej opcji może znacząco przyspieszyć działanie terminala i "
-#~ "zmniejszyć obciążenie systemu na mało wydajnych komputerach."
-
-#~ msgid "Palette entry 1"
-#~ msgstr "1. kolor palety"
-
-#~ msgid "Palette entry 10"
-#~ msgstr "10. kolor palety"
-
-#~ msgid "Palette entry 11"
-#~ msgstr "11. kolor palety"
-
-#~ msgid "Palette entry 12"
-#~ msgstr "12. kolor palety"
-
-#~ msgid "Palette entry 13"
-#~ msgstr "13. kolor palety"
-
-#~ msgid "Palette entry 14"
-#~ msgstr "14. kolor palety"
-
-#~ msgid "Palette entry 15"
-#~ msgstr "15. kolor palety"
-
-#~ msgid "Palette entry 16"
-#~ msgstr "16. kolor palety"
-
-#~ msgid "Palette entry 2"
-#~ msgstr "2. kolor palety"
-
-#~ msgid "Palette entry 3"
-#~ msgstr "3. kolor palety"
-
-#~ msgid "Palette entry 4"
-#~ msgstr "4. kolor palety"
-
-#~ msgid "Palette entry 5"
-#~ msgstr "5. kolor palety"
-
-#~ msgid "Palette entry 6"
-#~ msgstr "6. kolor palety"
-
-#~ msgid "Palette entry 7"
-#~ msgstr "7. kolor palety"
-
-#~ msgid "Palette entry 8"
-#~ msgstr "8. kolor palety"
-
-#~ msgid "Palette entry 9"
-#~ msgstr "9. kolor palety"
-
-#~ msgid "Shortcut Keys"
-#~ msgstr "Skróty klawiszowe"
-
-#~ msgid "Terminal applications have this color palette available to them:"
-#~ msgstr "Paleta barw dostępna dla programów uruchamianych w terminalu:"
-
-#~ msgid ""
-#~ "This specifies the value the $TERM environment variable is set to, when a "
-#~ "new terminal tab or terminal window is opened. The default should be ok "
-#~ "for most systems. If you have problems with colors in some applications, "
-#~ "try xterm-color here."
-#~ msgstr ""
-#~ "Określa pożądaną wartość zmiennej środowiskowej $TERM przy otwieraniu "
-#~ "nowych okien lub kart. Domyślna wartość powinna być poprawna dla "
-#~ "większości systemów. Jeśli występują problemy z kolorami w niektórych "
-#~ "programach, proszę spróbować użyć xterm-color."
-
-#~ msgid "Use _default color"
-#~ msgstr "_Domyślny"
-
-#~ msgid "Use a custom text selection background color"
-#~ msgstr "Używa innego koloru tła zaznaczanego tekstu"
-
-#~ msgid "Use c_ustom color:"
-#~ msgstr "_Własny:"
-
-#~ msgid "Use the default text selection background color"
-#~ msgstr "Używa domyślnego koloru tła zaznaczanego tekstu"
-
-#~ msgid "_Shortcuts"
-#~ msgstr "_Klawiatura"
-
-#~ msgid "The %s user manual is not installed on your computer"
-#~ msgstr "Nie zainstalowano podręcznika użytkownika programu %s."
-
-#~ msgid ""
-#~ "You can read the user manual online. This manual may however not exactly "
-#~ "match your %s version."
-#~ msgstr ""
-#~ "Można użyć podręcznika umieszczonego w sieci, lecz jego zawartość może "
-#~ "dotyczyć wersji programu innej niż zainstalowana %s."
-
-#~ msgid "User manual is missing"
-#~ msgstr "Brak podręcznika użytkownika programu"
-
-#~ msgid "_Read Online"
-#~ msgstr "_Przejdź na stronę podręcznika"
-
-#~ msgid "Failed to open the documentation browser"
-#~ msgstr "Nie udało się otworzyć przeglądarki dokumentacji."
-
-#~ msgid ""
-#~ "%s %s (Xfce %s)\n"
-#~ "\n"
-#~ "Copyright (c) %s\n"
-#~ "        os-cillation e.K. All rights reserved.\n"
-#~ "\n"
-#~ "Written by Benedikt Meurer <benny@xfce.org>.\n"
-#~ "\n"
-#~ "Built with Gtk+-%d.%d.%d, running with Gtk+-%d.%d.%d.\n"
-#~ "\n"
-#~ "Please report bugs to <%s>.\n"
-#~ msgstr ""
-#~ "%s %s (Xfce %s)\n"
-#~ "\n"
-#~ "Copyright (c) %s\n"
-#~ "        os-cillation e.K. Wszelkie prawa zastrzeżone.\n"
-#~ "\n"
-#~ "Autor: Benedikt Meurer <benny@xfce.org>.\n"
-#~ "\n"
-#~ "Skompilowano przy użyciu Gtk+-%d.%d.%d, uruchomiono przy użyciu Gtk+-%d."
-#~ "%d.%d.\n"
-#~ "\n"
-#~ "Proszę zgłaszać błędy na adres <%s>.\n"
-
-#~ msgid ""
-#~ "  -h, --help                          Print this help message and exit"
-#~ msgstr "  -h, --help\t\t\tWypisuje ten komunikat i kończy program"
-
-#~ msgid ""
-#~ "  -V, --version                       Print version information and exit"
-#~ msgstr "  -v, --version\t\t\tWypisuje informacje o wersji i kończy program"
-
-#~ msgid ""
-#~ "  --disable-server                    Do not register with the D-BUS\n"
-#~ "                                      session message bus"
-#~ msgstr "  --disable-server\t\tNie rejestruje się z szyną komunikatów D-BUS"
-
-#~ msgid "  --default-display=DISPLAY           default X display to use"
-#~ msgstr "  --default-display=DISPLAY\tOkreśla domyślnie używany ekran X"
-
-#~ msgid ""
-#~ "  --default-working-directory=DIRNAME Set the default terminal's working\n"
-#~ "                                      directory"
-#~ msgstr ""
-#~ "  --default-working-directory=DIRNAME\n"
-#~ "\t\t\t\tOkreśla domyślny katalog roboczy programu"
-
-#~ msgid ""
-#~ "  --tab                               Open a new tab in the last-"
-#~ "specified\n"
-#~ "                                      window; more than one of these\n"
-#~ "                                      options can be provided"
-#~ msgstr ""
-#~ "  --tab\t\t\t\tOtwiera nową kartę w ostatnim określonym oknie.\n"
-#~ "\t\t\t\tMożna użyć wielokrotnie."
-
-#~ msgid ""
-#~ "  --window                            Open a new window containing one "
-#~ "tab;\n"
-#~ "                                      more than one of these options can "
-#~ "be\n"
-#~ "                                      provided"
-#~ msgstr ""
-#~ "  --window\t\t\tOtwiera nowe okno, zawierające jedną kartę.\n"
-#~ "\t\t\t\tMożna użyć wielokrotnie."
-
-#~ msgid ""
-#~ "  -x, --execute                       Execute the remainder of the "
-#~ "command\n"
-#~ "                                      line inside the terminal"
-#~ msgstr ""
-#~ "  -x, --execute\t\t\tWykonuje polecenie wewnątrz terminala\n"
-#~ "\t\t\t\tpodane w dalszej części wiersza poleceń"
-
-#~ msgid ""
-#~ "  -e, --command=STRING                Execute the argument to this "
-#~ "option\n"
-#~ "                                      inside the terminal"
-#~ msgstr ""
-#~ "  -e, --command=STRING\t\tWykonuje parametr tej opcji wewnątrz terminala"
-
-#~ msgid ""
-#~ "  --working-directory=DIRNAME         Set the terminal's working directory"
-#~ msgstr "  --working-directory=DIRNAME\tUstawia katalog roboczy terminala"
-
-#~ msgid "  -T, --title=TITLE                   Set the terminal's title"
-#~ msgstr "  -T, --title=TITLE\t\tUstawia tytuł okna terminala"
-
-#~ msgid ""
-#~ "  -H, --hold                          Do not immediately destroy the tab\n"
-#~ "                                      when the child command exits"
-#~ msgstr ""
-#~ "  -H, --hold\t\t\tNie niszczy karty, nawet gdy proces potomny\n"
-#~ "\t\t\t\tzostanie zakończony"
-
-#~ msgid ""
-#~ "  --display=DISPLAY                   X display to use for the last-\n"
-#~ "                                      specified window"
-#~ msgstr ""
-#~ "  --display=DISPLAY\t\tOkreśla ekran X do użycia przez ostatnie\n"
-#~ "\t\t\t\tokreślone okno"
-
-#~ msgid ""
-#~ "  --geometry=GEOMETRY                 X geometry specification (see \"X"
-#~ "\"\n"
-#~ "                                      man page), can be specified once "
-#~ "per\n"
-#~ "                                      window to be opened"
-#~ msgstr ""
-#~ "  --geometry=GEOMETRY\t\tOkreśla geometrię okna X (informacje\n"
-#~ "\t\t\t\tna stronach podręcznika „X”). Można użyć\n"
-#~ "\t\t\t\tjednokrotnie dla każdego otwieranego okna."
-
-#~ msgid ""
-#~ "  --role=ROLE                         Set the role for the last-"
-#~ "specified\n"
-#~ "                                      window; applies to only one "
-#~ "window;\n"
-#~ "                                      can be specified once for each "
-#~ "window\n"
-#~ "                                      you create from the command line"
-#~ msgstr ""
-#~ "  --role=ROLE\t\t\tUstawia rolę ostatniego okna. Odnosi\n"
-#~ "\t\t\t\tsię tylko do jednego okna. Można użyć\n"
-#~ "\t\t\t\tjednokrotnie dla każdego okna wywoływanego\n"
-#~ "\t\t\t\tz wiersza poleceń."
-
-#~ msgid ""
-#~ "  --startup-id=STRING                 ID for the startup notification\n"
-#~ "                                      protocol"
-#~ msgstr ""
-#~ "  --startup-id=STRING\t\tOkreśla ID protokołu powiadamiania przy\n"
-#~ "\t\t\t\turuchamianiu"
-
-#~ msgid ""
-#~ "  -I, --icon=ICON                     Set the terminal's icon as an icon\n"
-#~ "                                      name or filename"
-#~ msgstr ""
-#~ "  -e, --command=STRING\t\tWykonuje parametr tej opcji wewnątrz terminala"
-
-#~ msgid ""
-#~ "  --fullscreen                        Set the last-specified window into\n"
-#~ "                                      fullscreen mode; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --fullscreen\t\t\tUstawia ostatnio określone okno w tryb pełno-\n"
-#~ "\t\t\t\tekranowy. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid ""
-#~ "  --maximize                          Maximize the last-specified "
-#~ "window;\n"
-#~ "                                      applies to only one window; can be\n"
-#~ "                                      specified once for each window you\n"
-#~ "                                      create from the command line"
-#~ msgstr ""
-#~ "  --role=ROLE\t\t\tUstawia rolę ostatniego okna. Odnosi\n"
-#~ "\t\t\t\tsię tylko do jednego okna. Można użyć\n"
-#~ "\t\t\t\tjednokrotnie dla każdego okna wywoływanego\n"
-#~ "\t\t\t\tz wiersza poleceń."
-
-#~ msgid ""
-#~ "  --show-menubar                      Turn on the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-menubar\t\tWyświetla pasek menu w ostatnim określonym\n"
-#~ "\t\t\t\toknie. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid ""
-#~ "  --hide-menubar                      Turn off the menubar for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-menubar\t\tUkrywa pasek menu w ostatnim określonym\n"
-#~ "\t\t\t\toknie. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid ""
-#~ "  --show-borders                      Turn on the window decorations for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --show-borders\t\tWyświetla obramowanie ostatniego określonego\n"
-#~ "\t\t\t\tokna. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid ""
-#~ "  --hide-borders                      Turn off the window decorations "
-#~ "for\n"
-#~ "                                      the last-specified window; applies\n"
-#~ "                                      to only one window; can be "
-#~ "specified\n"
-#~ "                                      once for each window you create "
-#~ "from\n"
-#~ "                                      the command line"
-#~ msgstr ""
-#~ "  --hide-borders\t\tUkrywa obramowanie ostatniego określonego\n"
-#~ "\t\t\t\tokna. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid ""
-#~ "  --show-toolbars                     Turn on the toolbars for the last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --show-toolbars\t\tWyświetla paski narzędziowe w ostatnim okre-\n"
-#~ "\t\t\t\tślonym oknie. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid ""
-#~ "  --hide-toolbars                     Turn off the toolbars for the "
-#~ "last-\n"
-#~ "                                      specified window; applies to only "
-#~ "one\n"
-#~ "                                      window; can be specified once for\n"
-#~ "                                      each window you create from the\n"
-#~ "                                      command line"
-#~ msgstr ""
-#~ "  --hide-toolbars\t\tUkrywa paski narzędziowe w ostatnim określonym\n"
-#~ "\t\t\t\toknie. Odnosi się tylko do jednego okna.\n"
-#~ "\t\t\t\tMożna użyć jednorazowo dla każdego okna\n"
-#~ "\t\t\t\twywoływanego z wiersza poleceń."
-
-#~ msgid "Unable to launch terminal: %s\n"
-#~ msgstr "Nie udało się uruchomić terminala: %s.\n"
-
-#~ msgid "<b>Title:</b>"
-#~ msgstr "<b>Tytuł:</b>"
-
-#~ msgid "Usage: Terminal [OPTION...]"
-#~ msgstr "Użycie: Terminal [OPCJA...]"
-
-#~ msgid "<b>Title</b>"
-#~ msgstr "<b>Tytuł</b>"
-
-#~ msgid ""
-#~ "The command running inside the terminal may dynamically set a new title."
-#~ msgstr ""
-#~ "Polecenie uruchamiane wewnątrz terminala może dynamicznie ustawić nowy "
-#~ "tytuł."
-
-#~ msgid "<b>Font</b>"
-#~ msgstr "<b>Czcionka</b>"
-
-#~ msgid "<b>Background</b>"
-#~ msgstr "<b>Tło</b>"
-
-#~ msgid "Shade transparent or image background:"
-#~ msgstr "Przyciemnianie przezroczystości i obrazów w tle:"
-
-#~ msgid "<small><i>None</i></small>"
-#~ msgstr "<small><i>Brak</i></small>"
-
-#~ msgid "<small><i>Maximum</i></small>"
-#~ msgstr "<small><i>Maksymalne</i></small>"
-
-#~ msgid "<b>Foreground and Background</b>"
-#~ msgstr "<b>Pierwszy plan i tło</b>"
-
-#~ msgid "<b>Tab activity</b>"
-#~ msgstr "<b>Aktywność kart</b>"
-
-#~ msgid "<b>Shortcut keys</b>"
-#~ msgstr "<b>Skróty klawiszowe</b>"
-
-#~ msgid "Web Browser"
-#~ msgstr "Przeglądarka WWW"
-
-#~ msgid "Mail Reader"
-#~ msgstr "Program pocztowy"
-
-#~ msgid ""
-#~ "Choose your preferred Web Browser. The preferred\n"
-#~ "Web Browser opens when you right-click on a URL\n"
-#~ "and select Open Link from the context menu."
-#~ msgstr ""
-#~ "Wybierz preferowaną przeglądarkę WWW. Będą w niej\n"
-#~ "otwierane łącza, gdy klikniesz prawym klawiszem myszy\n"
-#~ "na URLu i wybierzesz \"Otwórz łącze\" z menu kontekstowego."
-
-#~ msgid ""
-#~ "Choose your preferred Mail Reader. The preferred\n"
-#~ "Mail Reader opens when you right-click on an email\n"
-#~ "address and select Compose Email from the context\n"
-#~ "menu."
-#~ msgstr ""
-#~ "Wybierz preferowany program pocztowy. Zostanie on\n"
-#~ "uruchomiony, gdy klikniesz prawym klawiszem myszy\n"
-#~ "na adresie e-mail i wybierzesz opcję \"Napisz wiadomość\"\n"
-#~ "z menu kontekstowego."
-
-#~ msgid ""
-#~ "Click here to change the selected application or to disable this feature."
-#~ msgstr ""
-#~ "Kliknij tutaj, aby zmienić zaznaczoną aplikację lub wyłączyć tą opcję."
-
-#~ msgid "Select application"
-#~ msgstr "Wybierz aplikację"
-
-#~ msgid "Choose a custom Web Browser"
-#~ msgstr "Wybierz inną przeglądarkę WWW"
-
-#~ msgid "Choose a custom Mail Reader"
-#~ msgstr "Wybierz inny program pocztowy"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Web Browser in Terminal:"
-#~ msgstr ""
-#~ "Określ, jakiej aplikacji chcesz używać jako\n"
-#~ "przegląraki internetowej w Terminalu:"
-
-#~ msgid ""
-#~ "Specify the application you want to use as\n"
-#~ "Mail Reader in Terminal:"
-#~ msgstr ""
-#~ "Określi, jakiej aplikacji chcesz używać jako\n"
-#~ "prorgamu pocztowego w Terminalu:"
-
-#~ msgid "_Browse..."
-#~ msgstr "_Przeglądaj..."
-
-#~ msgid "Disable this feature"
-#~ msgstr "Wyłącz tą opcję"
-
-#~ msgid "No application selected"
-#~ msgstr "Nie wybrano żadnej aplikacji"
-
-#~ msgid "Preferred Applications"
-#~ msgstr "Preferowane aplikacje"
-
-#~ msgid "Applications"
-#~ msgstr "Aplikacje"
-
-#~ msgid "_Applications..."
-#~ msgstr "_Aplikacje..."
-
-#~ msgid "Customize your preferred applications"
-#~ msgstr "Dostosuj preferowane aplikacji"
-
-#~ msgid ""
-#~ "You did not choose your preferred Web\n"
-#~ "Browser yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "Jeszcze nie wybrałeś swojej preferowanej\n"
-#~ "przeglądarki internetowej. Czy chcesz ją\n"
-#~ "ustawić teraz?"
-
-#~ msgid ""
-#~ "You did not choose your preferred Mail\n"
-#~ "Reader yet. Do you want to setup your\n"
-#~ "preferred applications now?"
-#~ msgstr ""
-#~ "Jeszcze nie wybrałeś swojego preferowanego\n"
-#~ "programu pocztowego. Czy chcesz go ustawić\n"
-#~ "teraz?"
-
-#~ msgid "Balsa"
-#~ msgstr "Balsa"
-
-#~ msgid "Epiphany Web Browser"
-#~ msgstr "Przeglądarka internetowa Epiphany"
-
-#~ msgid "Novell Evolution"
-#~ msgstr "Novell Evolution"
-
-#~ msgid "Default Web Browser (Xfce)"
-#~ msgstr "Domyślna przeglądarka internetowa (Xfce)"
-
-#~ msgid "Default Mail Reader (Xfce)"
-#~ msgstr "Domyślny program pocztowy (Xfce)"
-
-#~ msgid "Mozilla Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Galeon Web Browser"
-#~ msgstr "Przeglądarka internetowa Galeon"
-
-#~ msgid "KMail"
-#~ msgstr "KMail"
-
-#~ msgid "Konqueror"
-#~ msgstr "Konqueror"
-
-#~ msgid "Lynx"
-#~ msgstr "Lynx"
-
-#~ msgid "Mozilla Browser"
-#~ msgstr "Przeglądarka internetowa Mozilla"
-
-#~ msgid "Mozilla Mail"
-#~ msgstr "Mozilla Mail"
-
-#~ msgid "Mutt"
-#~ msgstr "Mutt"
-
-#~ msgid "Opera Browser"
-#~ msgstr "Przeglądarka internetowa Opera"
-
-#~ msgid "Opera Mail"
-#~ msgstr "Opera Mail"
-
-#~ msgid "Debian Sensible Browser"
-#~ msgstr "Debian Sensible Browser"
-
-#~ msgid "Sylpheed Claws"
-#~ msgstr "Sylpheed Claws"
-
-#~ msgid "Mozilla Thunderbird"
-#~ msgstr "Mozilla Thunderbird"
-
-#~ msgid "Custom title"
-#~ msgstr "Inny tytuł"
-
-#~ msgid "Tab title"
-#~ msgstr "Tytuł zakładki"
