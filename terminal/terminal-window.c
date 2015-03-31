@@ -86,11 +86,9 @@ static gboolean        terminal_window_accel_activate                (GtkAccelGr
 static void            terminal_window_update_actions                (TerminalWindow         *window);
 static void            terminal_window_rebuild_tabs_menu             (TerminalWindow         *window);
 static void            terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
-                                                                      GtkNotebookPage        *page,
                                                                       guint                   page_num,
                                                                       TerminalWindow         *window);
 static void            terminal_window_notebook_page_reordered       (GtkNotebook            *notebook,
-                                                                      GtkNotebookPage        *page,
                                                                       guint                   page_num,
                                                                       TerminalWindow         *window);
 static void            terminal_window_notebook_page_added           (GtkNotebook            *notebook,
@@ -290,15 +288,15 @@ terminal_window_init (TerminalWindow *window)
   GtkWidget      *vbox;
   gboolean        always_show_tabs;
   GdkScreen      *screen;
-  GdkColormap    *colormap;
+  GdkVisual    *visual;
 
   window->preferences = terminal_preferences_get ();
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
-  colormap = gdk_screen_get_rgba_colormap (screen);
-  if (colormap != NULL)
-    gtk_widget_set_colormap (GTK_WIDGET (window), colormap);
+  visual = gdk_screen_get_rgba_visual (screen);
+  if (visual != NULL)
+    gtk_widget_set_visual (GTK_WIDGET (window), visual);
 
   window->action_group = gtk_action_group_new ("terminal-window");
   gtk_action_group_set_translation_domain (window->action_group,
@@ -501,7 +499,7 @@ terminal_window_confirm_close (TerminalWindow *window)
 
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT
-                                        | GTK_DIALOG_NO_SEPARATOR
+                                        | 0
                                         | GTK_DIALOG_MODAL,
                                         NULL);
 
@@ -518,7 +516,6 @@ terminal_window_confirm_close (TerminalWindow *window)
 
   hbox = gtk_hbox_new (FALSE, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
-  gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
   image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
@@ -784,7 +781,6 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
 
 static void
 terminal_window_notebook_page_switched (GtkNotebook     *notebook,
-                                        GtkNotebookPage *page,
                                         guint            page_num,
                                         TerminalWindow  *window)
 {
@@ -829,7 +825,6 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 
 static void
 terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
-                                         GtkNotebookPage *page,
                                          guint            page_num,
                                          TerminalWindow  *window)
 {
@@ -936,16 +931,25 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
     }
 }
 
+static gboolean
+terminal_window_notebook_event_in_allocation (gint event_x,
+											  gint event_y,
+											  GtkWidget *widget)
+{
+	cairo_rectangle_int_t *allocation;
+	gtk_widget_get_allocation (widget, allocation);
 
+	if (event_x >= allocation->x \
+		&& event_x <= allocation->x + allocation->width \
+		&& event_y >= allocation->y \
+		&& event_y <= allocation->y + allocation->height)
+		{
+			return TRUE;
+		}
+	else
+		return FALSE;
 
-#define EVENT_IN_ALLOCATION(event_x,event_y,widget) \
-  ((event_x) >= (widget)->allocation.x  \
-  && (event_x) <= (widget)->allocation.x + (widget)->allocation.width \
-  && (event_y) >= (widget)->allocation.y \
-  && (event_y) <= (widget)->allocation.y + (widget)->allocation.height)
-
-
-
+}
 static gboolean
 terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
                                              GdkEventButton *event,
@@ -969,7 +973,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
         {
           /* check if the user double-clicked on the label */
           label = gtk_notebook_get_tab_label (notebook, GTK_WIDGET (window->active));
-          if (EVENT_IN_ALLOCATION (x, y, label))
+          if (terminal_window_notebook_event_in_allocation (x, y, label))
             {
               terminal_window_action_set_title (NULL, window);
               return TRUE;
@@ -982,7 +986,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
       while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
         {
           label = gtk_notebook_get_tab_label (notebook, page);
-          if (EVENT_IN_ALLOCATION (x, y, label))
+          if (terminal_window_notebook_event_in_allocation (x, y, label))
             break;
           page_num++;
         }
@@ -1048,6 +1052,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
   GtkWidget  *child, *label;
   gint        i, n_pages;
   gboolean    succeed = FALSE;
+  cairo_rectangle_int_t *allocation;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (widget));
@@ -1059,12 +1064,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
       notebook = gtk_drag_get_source_widget (context);
       terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
 
-      /* get the dragged screen */
-      screen = (GtkWidget **) selection_data->data;
-      if (!TERMINAL_IS_SCREEN (*screen))
-        goto leave;
-
-      /* leave if we dropped in the same screen and there is only one
+      /* leave if there is only one
        * page in the notebook (window will close before we insert) */
       if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) < 2
           && *screen == widget)
@@ -1077,9 +1077,9 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
           /* get the child label */
           child = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i);
           label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (window->notebook), child);
-
+		  gtk_widget_get_allocation (label, allocation);
           /* break if we have a matching drop position */
-          if (x < (label->allocation.x + label->allocation.width / 2))
+          if (x < (allocation->x + allocation->width / 2))
             break;
         }
 
@@ -1600,7 +1600,6 @@ terminal_window_action_set_title (GtkAction      *action,
 
       box = gtk_hbox_new (FALSE, 12);
       gtk_container_set_border_width (GTK_CONTAINER (box), 6);
-      gtk_box_pack_start (GTK_BOX (GTK_DIALOG (dialog)->vbox), box, TRUE, TRUE, 0);
       gtk_widget_show (box);
 
       label = gtk_label_new_with_mnemonic (_("_Title:"));

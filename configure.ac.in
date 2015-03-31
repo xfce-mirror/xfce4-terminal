@@ -9,8 +9,8 @@ dnl ***************************
 dnl *** Version information ***
 dnl ***************************
 m4_define([terminal_version_major], [0])
-m4_define([terminal_version_minor], [6])
-m4_define([terminal_version_micro], [3])
+m4_define([terminal_version_minor], [7])
+m4_define([terminal_version_micro], [0])
 m4_define([terminal_version_nano], [])
 m4_define([terminal_version_build], [@REVISION@])
 m4_define([terminal_version_tag], [git])
@@ -86,10 +86,10 @@ XDT_CHECK_LIBX11()
 dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([GTK], [gtk+-2.0], [2.24.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.14.0])
 XDT_CHECK_PACKAGE([VTE], [vte], [0.28])
 XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.26.0])
-XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-1], [4.10.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.10.0])
 
 dnl ***********************************
 dnl *** Used to compress glade data ***

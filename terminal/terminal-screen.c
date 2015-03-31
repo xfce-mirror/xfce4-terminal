@@ -439,7 +439,7 @@ terminal_screen_realize (GtkWidget *widget)
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->realize) (widget);
 
   /* make sure the TerminalWidget is realized as well */
-  if (!GTK_WIDGET_REALIZED (TERMINAL_SCREEN (widget)->terminal))
+  if (! gtk_widget_get_realized(TERMINAL_SCREEN (widget)->terminal))
     gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
 
   /* connect to the "composited-changed" signal */
@@ -735,10 +735,10 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   /* determine the toplevel widget */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  if (toplevel != NULL && GTK_WIDGET_REALIZED (toplevel))
+  if (toplevel != NULL &&  gtk_widget_get_realized(toplevel))
     {
 #ifdef GDK_WINDOWING_X11
-      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_WINDOW_XWINDOW (toplevel->window));
+      //result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_DRAWABLE_XID (gtk_widget_get_window(toplevel)));
 #endif
 
       /* determine the DISPLAY value for the command */
@@ -1251,7 +1251,7 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   /* don't do anything if the window is already fullscreen/maximized */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   if (!gtk_widget_get_realized (toplevel)
-      || (gdk_window_get_state (toplevel->window)
+      || (gdk_window_get_state (gtk_widget_get_window(toplevel))
           & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) != 0)
     return;
 
@@ -1331,7 +1331,7 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
-      || GTK_WIDGET_STATE (screen->tab_label) != GTK_STATE_ACTIVE
+      || gtk_widget_get_state (screen->tab_label) != GTK_STATE_ACTIVE
       || time (NULL) - screen->activity_resize_time <= 1)
     return;
 
@@ -1388,8 +1388,8 @@ terminal_screen_timer_background (gpointer user_data)
     {
       loader = terminal_image_loader_get ();
       image = terminal_image_loader_load (loader,
-                                          screen->terminal->allocation.width,
-                                          screen->terminal->allocation.height);
+										  gtk_widget_get_allocated_width (screen->terminal),
+										  gtk_widget_get_allocated_height (screen->terminal));
       vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
       if (G_LIKELY (image != NULL))
         g_object_unref (G_OBJECT (image));
@@ -1776,7 +1776,7 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
     height = 0;
   height += ypad + char_height * rows;
 
-  if (GTK_WIDGET_MAPPED (window))
+  if (gtk_widget_get_mapped (window))
     gtk_window_resize (window, width, height);
   else
     gtk_window_set_default_size (window, width, height);
@@ -2166,7 +2166,8 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   button = gtk_button_new ();
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-  GTK_WIDGET_UNSET_FLAGS (button, GTK_CAN_DEFAULT | GTK_CAN_FOCUS);
+  gtk_widget_set_can_focus (button, FALSE);
+  gtk_widget_set_can_default (button, FALSE);
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
   gtk_container_add (GTK_CONTAINER (align), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",

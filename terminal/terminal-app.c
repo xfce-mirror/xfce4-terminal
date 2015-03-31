@@ -272,7 +272,7 @@ terminal_app_accel_map_load (gpointer user_data)
       for (i = 1; i < 10; i++)
         {
           g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", i);
-          gtk_accel_map_change_entry (name, GDK_0 + i, GDK_MOD1_MASK, FALSE);
+          gtk_accel_map_change_entry (name, GDK_KEY_0 + i, GDK_MOD1_MASK, FALSE);
         }
     }
 
