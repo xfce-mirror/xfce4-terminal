@@ -281,7 +281,7 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_resize_window), screen);
   gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
 
-  screen->scrollbar = gtk_vscrollbar_new (VTE_TERMINAL (screen->terminal)->adjustment);
+  screen->scrollbar = gtk_vscrollbar_new (gtk_scrollable_get_vadjustment(GTK_SCROLLABLE (screen->terminal)));
   gtk_box_pack_start (GTK_BOX (screen), screen->scrollbar, FALSE, FALSE, 0);
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
   gtk_widget_show (screen->scrollbar);
@@ -387,7 +387,7 @@ terminal_screen_get_property (GObject          *object,
             }
           else if (G_LIKELY (screen->terminal != NULL))
             {
-              title = VTE_TERMINAL (screen->terminal)->window_title;
+              title = vte_terminal_get_window_title(VTE_TERMINAL (screen->terminal));
             }
 
           /* TRANSLATORS: title for the tab/window used when all other
@@ -676,7 +676,7 @@ terminal_screen_parse_title (TerminalScreen *screen,
 
         case 'w':
           /* window title from vte */
-          vte_title = VTE_TERMINAL (screen->terminal)->window_title;
+          vte_title = vte_terminal_get_window_title(VTE_TERMINAL (screen->terminal));
           if (G_UNLIKELY (vte_title == NULL))
             vte_title = _("Untitled");
           g_string_append (string, vte_title);
@@ -778,7 +778,7 @@ terminal_screen_update_background (TerminalScreen *screen)
 
 
 
-static VteTerminalEraseBinding
+static VteEraseBinding
 terminal_screen_binding_vte (TerminalEraseBinding binding)
 {
   switch (binding)
@@ -835,9 +835,12 @@ static void
 terminal_screen_update_encoding (TerminalScreen *screen)
 {
   gchar *encoding;
+  GError *error;
 
   g_object_get (G_OBJECT (screen->preferences), "encoding", &encoding, NULL);
-  vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), encoding);
+  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), encoding, &error)) {
+      g_printerr("Failed to set encoding: %s\n", error->message);
+  }
   g_free (encoding);
 }
 
@@ -846,12 +849,12 @@ terminal_screen_update_encoding (TerminalScreen *screen)
 static void
 terminal_screen_update_colors (TerminalScreen *screen)
 {
-  GdkColor   palette[16];
-  GdkColor   bg;
-  GdkColor   fg;
-  GdkColor   cursor;
-  GdkColor   selection;
-  GdkColor   bold;
+  GdkRGBA    palette[16];
+  GdkRGBA    bg;
+  GdkRGBA    fg;
+  GdkRGBA    cursor;
+  GdkRGBA    selection;
+  GdkRGBA    bold;
   gboolean   selection_use_default;
   gboolean   bold_use_default;
   guint      n = 0;
@@ -880,7 +883,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
       if (colors != NULL)
         for (; colors[n] != NULL && n < 16; n++)
-          if (!gdk_color_parse (colors[n], palette + n))
+          if (!gdk_rgba_parse (palette + n, colors[n]))
             {
               g_warning ("Unable to parse color \"%s\".", colors[n]);
               break;
@@ -945,7 +948,8 @@ terminal_screen_update_colors (TerminalScreen *screen)
                  "The default palette has been applied.");
     }
 
-  vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
+  // TODO: removed functionality? remove if sure
+  //vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
 
   /* cursor color */
   has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
@@ -968,10 +972,11 @@ terminal_screen_update_colors (TerminalScreen *screen)
 static void
 terminal_screen_update_font (TerminalScreen *screen)
 {
-  gboolean             font_allow_bold;
-  gchar               *font_name;
-  glong                grid_w = 0, grid_h = 0;
-  GtkWidget           *toplevel;
+  gboolean               font_allow_bold;
+  gchar                 *font_name;
+  PangoFontDescription  *font_desc;
+  glong                  grid_w = 0, grid_h = 0;
+  GtkWidget             *toplevel;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -987,8 +992,10 @@ terminal_screen_update_font (TerminalScreen *screen)
 
   if (G_LIKELY (font_name != NULL))
     {
+      font_desc = pango_font_description_from_string (font_name);
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
-      vte_terminal_set_font_from_string (VTE_TERMINAL (screen->terminal), font_name);
+      vte_terminal_set_font(VTE_TERMINAL (screen->terminal), font_desc);
+      pango_font_description_free(font_desc);
       g_free (font_name);
     }
 
@@ -1015,11 +1022,12 @@ terminal_screen_update_misc_bell (TerminalScreen *screen)
 static void
 terminal_screen_update_emulation (TerminalScreen *screen)
 {
-  gchar *emulation;
+  // FIXME: Commented out because I have no idea what happened to this function in VTE
+/*  gchar *emulation;
   g_object_get (G_OBJECT (screen->preferences), "emulation", &emulation, NULL);
   if (g_strcmp0 (emulation, vte_terminal_get_emulation (VTE_TERMINAL (screen->terminal))) != 0)
     vte_terminal_set_emulation (VTE_TERMINAL (screen->terminal), emulation);
-  g_free (emulation);
+  g_free (emulation);*/
 }
 
 
@@ -1039,7 +1047,7 @@ static void
 terminal_screen_update_misc_cursor_shape (TerminalScreen *screen)
 {
   TerminalCursorShape    val;
-  VteTerminalCursorShape shape = VTE_CURSOR_SHAPE_BLOCK;
+  VteCursorShape shape = VTE_CURSOR_SHAPE_BLOCK;
 
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-shape", &val, NULL);
 
@@ -1163,7 +1171,8 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
   g_object_get (G_OBJECT (screen->preferences), "word-chars", &word_chars, NULL);
   if (G_LIKELY (word_chars != NULL))
     {
-      vte_terminal_set_word_chars (VTE_TERMINAL (screen->terminal), word_chars);
+      // TODO: removed functionality, remove
+      //vte_terminal_set_word_chars (VTE_TERMINAL (screen->terminal), word_chars);
       g_free (word_chars);
     }
 }
@@ -1261,8 +1270,8 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   grid_height = (height - ypad) / char_height;
 
   /* leave if there is nothing to resize */
-  if (terminal->column_count == grid_width
-      && terminal->row_count == grid_height)
+  if (vte_terminal_get_column_count(terminal) == grid_width
+      && vte_terminal_get_column_count(terminal) == grid_height)
     return;
 
   /* set the terminal size and resize the window if it is active */
@@ -1388,9 +1397,9 @@ terminal_screen_timer_background (gpointer user_data)
     {
       loader = terminal_image_loader_get ();
       image = terminal_image_loader_load (loader,
-										  gtk_widget_get_allocated_width (screen->terminal),
-										  gtk_widget_get_allocated_height (screen->terminal));
-      vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
+                                          gtk_widget_get_allocated_width (screen->terminal),
+                                          gtk_widget_get_allocated_height (screen->terminal));
+      //vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
       if (G_LIKELY (image != NULL))
         g_object_unref (G_OBJECT (image));
       g_object_unref (G_OBJECT (loader));
@@ -1413,7 +1422,7 @@ terminal_screen_timer_background (gpointer user_data)
         }
 
       /* WARNING: the causes a resize too! */
-      vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
+      //vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
     }
 
   if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE
@@ -1425,11 +1434,11 @@ terminal_screen_timer_background (gpointer user_data)
       opacity = 0xffff * background_darkness;
     }
 
-  vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
-  vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), opacity);
-  vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
-                                           background_mode == TERMINAL_BACKGROUND_TRANSPARENT
-                                           && !gtk_widget_is_composited (GTK_WIDGET (screen)));
+  //vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
+  //vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), opacity);
+  //vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
+  //                                         background_mode == TERMINAL_BACKGROUND_TRANSPARENT
+  //                                         && !gtk_widget_is_composited (GTK_WIDGET (screen)));
 
   GDK_THREADS_LEAVE ();
 
@@ -1543,12 +1552,12 @@ terminal_screen_launch_child (TerminalScreen *screen)
           spawn_flags |= G_SPAWN_FILE_AND_ARGV_ZERO;
         }
 
-      if (!vte_terminal_fork_command_full (VTE_TERMINAL (screen->terminal),
+      if (!vte_terminal_spawn_sync (VTE_TERMINAL (screen->terminal),
                                            update ? VTE_PTY_DEFAULT : VTE_PTY_NO_LASTLOG | VTE_PTY_NO_UTMP | VTE_PTY_NO_WTMP,
                                            screen->working_directory, argv2, env,
                                            spawn_flags,
                                            NULL, NULL,
-                                           &screen->pid, &error))
+                                           &screen->pid, NULL, &error))
         {
           xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
                                   error, _("Failed to execute child"));
@@ -1807,7 +1816,7 @@ terminal_screen_get_title (TerminalScreen *screen)
   if (G_UNLIKELY (screen->custom_title != NULL))
     return terminal_screen_parse_title (screen, screen->custom_title);
 
-  vte_title = VTE_TERMINAL (screen->terminal)->window_title;
+  vte_title = vte_terminal_get_window_title(VTE_TERMINAL (screen->terminal));
   g_object_get (G_OBJECT (screen->preferences),
                 "title-mode", &mode,
                 "title-initial", &tmp,
@@ -2050,7 +2059,7 @@ terminal_screen_reset (TerminalScreen *screen,
   vte_terminal_reset (VTE_TERMINAL (screen->terminal), TRUE, clear);
 
   if (clear)
-    vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), NULL);
+    vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), NULL, 0);
 }
 
 
@@ -2071,7 +2080,8 @@ terminal_screen_im_append_menuitems (TerminalScreen *screen,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (GTK_IS_MENU_SHELL (menushell));
 
-  vte_terminal_im_append_menuitems (VTE_TERMINAL (screen->terminal), menushell);
+  // FIXME: functionalit seems to have been removed
+  //vte_terminal_im_append_menuitems (VTE_TERMINAL (screen->terminal), menushell);
 }
 
 
@@ -2213,8 +2223,11 @@ void
 terminal_screen_set_encoding (TerminalScreen *screen,
                               const gchar    *charset)
 {
+  GError *error;
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset);
+  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, &error)) {
+    g_printerr("Failed to set encoding: %s\n", error->message);
+  }
 }
 
 
@@ -2225,7 +2238,7 @@ terminal_screen_search_set_gregex (TerminalScreen *screen,
                                    gboolean        wrap_around)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), regex);
+  vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), regex, 0);
   vte_terminal_search_set_wrap_around (VTE_TERMINAL (screen->terminal), wrap_around);
 }
 

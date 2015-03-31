@@ -183,9 +183,9 @@ static void            terminal_window_action_about                  (GtkAction 
 
 
 
-static guint         window_signals[LAST_SIGNAL];
-static gconstpointer window_notebook_group = PACKAGE_NAME;
-static GQuark        tabs_menu_action_quark = 0;
+static guint   window_signals[LAST_SIGNAL];
+static gchar   *window_notebook_group = PACKAGE_NAME;
+static GQuark  tabs_menu_action_quark = 0;
 
 
 
@@ -338,8 +338,7 @@ terminal_window_init (TerminalWindow *window)
   terminal_util_set_style_thinkess (window->notebook, 0);
 
   /* set the notebook group id */
-  gtk_notebook_set_group (GTK_NOTEBOOK (window->notebook),
-                          (gpointer) window_notebook_group);
+  gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook), window_notebook_group);
 
   /* signals */
   g_signal_connect (G_OBJECT (window->notebook), "switch-page",
@@ -380,7 +379,7 @@ terminal_window_init (TerminalWindow *window)
 
 #if defined(GDK_WINDOWING_X11)
   /* setup fullscreen mode */
-  if (!gdk_net_wm_supports (gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
+  if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
     gtk_action_set_sensitive (window->action_fullscreen, FALSE);
 #endif
 }
@@ -1854,7 +1853,8 @@ terminal_window_add (TerminalWindow *window,
   label = terminal_screen_get_tab_label (screen);
 
   page = gtk_notebook_append_page (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), label);
-  gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE, TRUE, GTK_PACK_START);
+  // TODO: should not be used anymore according to Gtk docs, remove if sure
+  //gtk_notebook_set_tab_label_packing (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE, TRUE, GTK_PACK_START);
 
   /* allow tab sorting and dnd */
   gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);

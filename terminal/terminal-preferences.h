@@ -92,7 +92,7 @@ TerminalPreferences *terminal_preferences_get       (void);
 
 gboolean             terminal_preferences_get_color (TerminalPreferences *preferences,
                                                      const gchar         *property,
-                                                     GdkColor            *color_return);
+                                                     GdkRGBA             *color_return);
 
 
 G_END_DECLS

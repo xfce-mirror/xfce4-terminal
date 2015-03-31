@@ -294,7 +294,10 @@ terminal_widget_context_menu (TerminalWidget *widget,
     return;
 
   /* check if we have a match */
-  match = vte_terminal_match_check (terminal, x / terminal->char_width, y / terminal->char_height, &tag);
+  match = vte_terminal_match_check (terminal,
+                                    x / vte_terminal_get_char_width(terminal),
+                                    y / vte_terminal_get_char_height(terminal),
+                                    &tag);
   if (G_UNLIKELY (match != NULL))
     {
       /* prepend a separator to the menu if it does not already contain one */
@@ -406,8 +409,8 @@ terminal_widget_button_press_event (GtkWidget       *widget,
     {
       /* middle-clicking on an URI fires the responsible application */
       match = vte_terminal_match_check (VTE_TERMINAL (widget),
-                                        event->x / VTE_TERMINAL (widget)->char_width,
-                                        event->y / VTE_TERMINAL (widget)->char_height,
+                                        event->x / vte_terminal_get_char_width(VTE_TERMINAL (widget)),
+                                        event->y / vte_terminal_get_char_height(VTE_TERMINAL (widget)),
                                         &tag);
       if (G_UNLIKELY (match != NULL))
         {
@@ -616,7 +619,7 @@ static gboolean
 terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
-  GtkAdjustment *adjustment = VTE_TERMINAL (widget)->adjustment;
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment(GTK_SCROLLABLE (widget));
   gboolean       scrolling_single_line;
   gboolean       shortcuts_no_menukey;
   gdouble        value;
