@@ -835,7 +835,7 @@ static void
 terminal_screen_update_encoding (TerminalScreen *screen)
 {
   gchar *encoding;
-  GError *error;
+  GError *error = NULL;
 
   g_object_get (G_OBJECT (screen->preferences), "encoding", &encoding, NULL);
   if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), encoding, &error)) {

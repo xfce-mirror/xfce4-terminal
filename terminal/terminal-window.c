@@ -86,9 +86,11 @@ static gboolean        terminal_window_accel_activate                (GtkAccelGr
 static void            terminal_window_update_actions                (TerminalWindow         *window);
 static void            terminal_window_rebuild_tabs_menu             (TerminalWindow         *window);
 static void            terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
+                                                                      GtkWidget              *page,
                                                                       guint                   page_num,
                                                                       TerminalWindow         *window);
 static void            terminal_window_notebook_page_reordered       (GtkNotebook            *notebook,
+                                                                      GtkWidget              *child,
                                                                       guint                   page_num,
                                                                       TerminalWindow         *window);
 static void            terminal_window_notebook_page_added           (GtkNotebook            *notebook,
@@ -780,6 +782,7 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
 
 static void
 terminal_window_notebook_page_switched (GtkNotebook     *notebook,
+                                        GtkWidget       *page,
                                         guint            page_num,
                                         TerminalWindow  *window)
 {
@@ -788,7 +791,8 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
   const gchar    *encoding;
 
   /* get the new active page */
-  active = TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, page_num));
+  active = TERMINAL_SCREEN (page);
+  terminal_return_if_fail (window == NULL);
   terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
 
   /* only update when really changed */
@@ -824,6 +828,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 
 static void
 terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
+                                         GtkWidget       *child,
                                          guint            page_num,
                                          TerminalWindow  *window)
 {
