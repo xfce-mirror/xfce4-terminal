@@ -942,7 +942,11 @@ terminal_window_notebook_event_in_allocation (gint event_x,
 {
 	cairo_rectangle_int_t *allocation;
 	gtk_widget_get_allocation (widget, allocation);
-
+	
+	if(allocation == NULL)
+		return FALSE;
+	
+	
 	if (event_x >= allocation->x \
 		&& event_x <= allocation->x + allocation->width \
 		&& event_y >= allocation->y \
