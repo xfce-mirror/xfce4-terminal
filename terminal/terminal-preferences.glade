@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.18.3 -->
 <interface>
-  <requires lib="gtk+" version="2.24"/>
-  <!-- interface-requires libxfce4ui 4.5 -->
-  <!-- interface-naming-policy project-wide -->
+  <requires lib="gtk+" version="3.14"/>
+  <requires lib="libxfce4ui" version="4.12"/>
   <object class="GtkAdjustment" id="background-darkness">
     <property name="upper">1</property>
     <property name="step_increment">0.01</property>
@@ -186,12 +186,13 @@
     <property name="icon_name">gtk-preferences</property>
     <property name="type_hint">normal</property>
     <child internal-child="vbox">
-      <object class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child internal-child="action_area">
-          <object class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
@@ -240,10 +241,11 @@
             <property name="can_focus">True</property>
             <property name="border_width">6</property>
             <child>
-              <object class="GtkVBox" id="vbox1">
+              <object class="GtkBox" id="vbox1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame1">
@@ -252,82 +254,72 @@
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
                     <child>
-                      <object class="GtkAlignment" id="alignment1">
+                      <object class="GtkGrid" id="grid3">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="margin_left">18</property>
+                        <property name="margin_right">12</property>
+                        <property name="margin_top">12</property>
+                        <property name="margin_bottom">6</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
                         <child>
-                          <object class="GtkTable" id="table1">
+                          <object class="GtkLabel" id="label5">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="border_width">6</property>
-                            <property name="n_rows">2</property>
-                            <property name="n_columns">2</property>
-                            <property name="column_spacing">12</property>
-                            <property name="row_spacing">6</property>
+                            <property name="label" translatable="yes">_Initial title:</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label6">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">_Dynamically-set title:</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="title-initial">
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="hexpand">True</property>
+                            <property name="invisible_char">•</property>
+                            <property name="primary_icon_activatable">False</property>
+                            <property name="secondary_icon_activatable">False</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkComboBox" id="title-mode">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="hexpand">True</property>
+                            <property name="model">liststore1</property>
                             <child>
-                              <object class="GtkLabel" id="label5">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">_Initial title:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">title-initial</property>
-                              </object>
-                              <packing>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="title-initial">
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="invisible_char">•</property>
-                                <property name="primary_icon_activatable">False</property>
-                                <property name="secondary_icon_activatable">False</property>
-                                <property name="primary_icon_sensitive">True</property>
-                                <property name="secondary_icon_sensitive">True</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label6">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">_Dynamically-set title:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">title-mode</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="title-mode">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="model">liststore1</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
+                              <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                              <attributes>
+                                <attribute name="text">0</attribute>
+                              </attributes>
                             </child>
                           </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
@@ -361,10 +353,11 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox2">
+                          <object class="GtkBox" id="vbox2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="command-login-shell">
@@ -375,6 +368,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell.</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -391,6 +385,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -433,10 +428,11 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox3">
+                          <object class="GtkBox" id="vbox3">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="scrolling-single-line">
@@ -447,6 +443,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key.</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -456,7 +453,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHBox" id="hbox1">
+                              <object class="GtkBox" id="hbox1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="spacing">12</property>
@@ -470,6 +467,7 @@
                                     <property name="receives_default">False</property>
                                     <property name="tooltip_text" translatable="yes">This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal.</property>
                                     <property name="use_underline">True</property>
+                                    <property name="xalign">0.5</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
                                   <packing>
@@ -487,6 +485,7 @@
                                     <property name="receives_default">False</property>
                                     <property name="tooltip_text" translatable="yes">Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt.</property>
                                     <property name="use_underline">True</property>
+                                    <property name="xalign">0.5</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
                                   <packing>
@@ -503,66 +502,29 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkTable" id="table2">
+                              <object class="GtkGrid" id="grid1">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="n_rows">2</property>
-                                <property name="n_columns">2</property>
-                                <property name="column_spacing">12</property>
                                 <property name="row_spacing">6</property>
+                                <property name="column_spacing">12</property>
                                 <child>
                                   <object class="GtkLabel" id="label9">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
                                     <property name="label" translatable="yes">Scr_ollbar is:</property>
                                     <property name="use_underline">True</property>
-                                    <property name="mnemonic_widget">scrolling-bar</property>
-                                  </object>
-                                  <packing>
-                                    <property name="x_options">GTK_FILL</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel" id="label10">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">False</property>
                                     <property name="xalign">0</property>
-                                    <property name="label" translatable="yes">Scroll_back:</property>
-                                    <property name="use_underline">True</property>
-                                    <property name="mnemonic_widget">scrolling-lines</property>
                                   </object>
                                   <packing>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
-                                    <property name="x_options">GTK_FILL</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkSpinButton" id="scrolling-lines">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="tooltip_text" translatable="yes">Specifies the number of lines that you can scroll back using the scrollbar.</property>
-                                    <property name="invisible_char">•</property>
-                                    <property name="primary_icon_activatable">False</property>
-                                    <property name="secondary_icon_activatable">False</property>
-                                    <property name="primary_icon_sensitive">True</property>
-                                    <property name="secondary_icon_sensitive">True</property>
-                                    <property name="adjustment">scrolling-line</property>
-                                    <property name="numeric">True</property>
-                                    <property name="update_policy">if-valid</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left_attach">1</property>
-                                    <property name="right_attach">2</property>
-                                    <property name="top_attach">1</property>
-                                    <property name="bottom_attach">2</property>
+                                    <property name="left_attach">0</property>
+                                    <property name="top_attach">0</property>
                                   </packing>
                                 </child>
                                 <child>
                                   <object class="GtkComboBox" id="scrolling-bar">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="hexpand">True</property>
                                     <property name="model">liststore2</property>
                                     <child>
                                       <object class="GtkCellRendererText" id="cellrenderertext2"/>
@@ -573,12 +535,43 @@
                                   </object>
                                   <packing>
                                     <property name="left_attach">1</property>
-                                    <property name="right_attach">2</property>
+                                    <property name="top_attach">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label10">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">Scroll_back:</property>
+                                    <property name="use_underline">True</property>
+                                    <property name="xalign">0</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">0</property>
+                                    <property name="top_attach">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <object class="GtkSpinButton" id="scrolling-lines">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="tooltip_text" translatable="yes">Specifies the number of lines that you can scroll back using the scrollbar.</property>
+                                    <property name="halign">start</property>
+                                    <property name="invisible_char">•</property>
+                                    <property name="primary_icon_activatable">False</property>
+                                    <property name="secondary_icon_activatable">False</property>
+                                    <property name="adjustment">scrolling-line</property>
+                                    <property name="numeric">True</property>
+                                    <property name="update_policy">if-valid</property>
+                                  </object>
+                                  <packing>
+                                    <property name="left_attach">1</property>
+                                    <property name="top_attach">1</property>
                                   </packing>
                                 </child>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">2</property>
                               </packing>
@@ -619,10 +612,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="dropdown-box">
+              <object class="GtkBox" id="dropdown-box">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame10">
@@ -636,10 +630,11 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox10">
+                          <object class="GtkBox" id="vbox10">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="dropdown-keep-open-default">
@@ -649,6 +644,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -665,6 +661,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -682,6 +679,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">If enabled, the shortcut to open and retract the window will give focus, rather than closing it, if it has previously lost focus</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -698,6 +696,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -752,10 +751,10 @@
                               <object class="GtkLabel" id="label36">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Wi_dth:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-width</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -766,10 +765,10 @@
                               <object class="GtkLabel" id="label39">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">He_ight:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-height</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -782,10 +781,10 @@
                               <object class="GtkLabel" id="label40">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">_Opacity:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-opacity</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">2</property>
@@ -798,10 +797,10 @@
                               <object class="GtkLabel" id="label41">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">D_uration:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-duration</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">3</property>
@@ -811,7 +810,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHScale" id="scale-height">
+                              <object class="GtkScale" id="scale-height">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">dropdown-height</property>
@@ -827,7 +826,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHScale" id="scale-width">
+                              <object class="GtkScale" id="scale-width">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">dropdown-width</property>
@@ -841,7 +840,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHScale" id="scale-opacity">
+                              <object class="GtkScale" id="scale-opacity">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">dropdown-opacity</property>
@@ -857,7 +856,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHScale" id="scale-duration">
+                              <object class="GtkScale" id="scale-duration">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="adjustment">dropdown-animation-time</property>
@@ -890,8 +889,8 @@
                               <object class="GtkLabel" id="label43">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label">%</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -903,8 +902,8 @@
                               <object class="GtkLabel" id="label44">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label">%</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -918,8 +917,8 @@
                               <object class="GtkLabel" id="label45">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label">%</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -937,6 +936,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -980,13 +980,14 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox15">
+                          <object class="GtkBox" id="vbox15">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
-                              <object class="GtkHBox" id="hbox2">
+                              <object class="GtkBox" id="hbox2">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="spacing">6</property>
@@ -994,10 +995,10 @@
                                   <object class="GtkLabel" id="label47">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
                                     <property name="label" translatable="yes">L_eft</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">scale-position</property>
+                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1006,7 +1007,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkHScale" id="scale-position">
+                                  <object class="GtkScale" id="scale-position">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="adjustment">dropdown-position</property>
@@ -1024,8 +1025,8 @@
                                   <object class="GtkLabel" id="label48">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">1</property>
                                     <property name="label" translatable="yes">Right</property>
+                                    <property name="xalign">1</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1048,6 +1049,7 @@
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1096,10 +1098,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox4">
+              <object class="GtkBox" id="vbox4">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame4">
@@ -1114,9 +1117,10 @@
                         <property name="border_width">6</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox5">
+                          <object class="GtkBox" id="vbox5">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkFontButton" id="font-name">
@@ -1124,8 +1128,8 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
+                                <property name="font">Sans 12</property>
                                 <property name="title" translatable="yes">Choose Terminal Font</property>
-                                <property name="font_name">Monospace 12</property>
                                 <property name="use_font">True</property>
                               </object>
                               <packing>
@@ -1143,6 +1147,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to allow applications running inside the terminal windows to use bold text.</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1185,10 +1190,11 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox6">
+                          <object class="GtkBox" id="vbox6">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkComboBox" id="background-mode">
@@ -1220,10 +1226,10 @@
                                   <object class="GtkLabel" id="file-label">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
                                     <property name="label" translatable="yes">_File:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">background-image-file</property>
+                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="x_options">GTK_FILL</property>
@@ -1233,10 +1239,10 @@
                                   <object class="GtkLabel" id="style-label">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
                                     <property name="label" translatable="yes">St_yle:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">background-image-style</property>
+                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="top_attach">1</property>
@@ -1282,7 +1288,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHBox" id="box-opacity">
+                              <object class="GtkBox" id="box-opacity">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="spacing">12</property>
@@ -1290,10 +1296,10 @@
                                   <object class="GtkLabel" id="opacity-label">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
-                                    <property name="xalign">0</property>
                                     <property name="label" translatable="yes">Transpare_ncy:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">trans-scale</property>
+                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1302,10 +1308,9 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkHScale" id="trans-scale">
+                                  <object class="GtkScale" id="trans-scale">
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
-                                    <property name="update_policy">delayed</property>
                                     <property name="adjustment">background-darkness</property>
                                     <property name="digits">2</property>
                                     <property name="value_pos">right</property>
@@ -1357,10 +1362,11 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox7">
+                          <object class="GtkBox" id="vbox7">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="misc-menubar-default">
@@ -1371,6 +1377,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to show the menubar in newly created terminal windows.</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1388,6 +1395,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to show the toolbar in newly created terminal windows.</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1405,6 +1413,7 @@
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to show window decorations around newly created terminal windows.</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1414,7 +1423,7 @@
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkHBox" id="geo-box">
+                              <object class="GtkBox" id="geo-box">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
                                 <property name="spacing">12</property>
@@ -1431,7 +1440,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkHBox" id="hbox6">
+                                  <object class="GtkBox" id="hbox6">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="spacing">6</property>
@@ -1442,8 +1451,6 @@
                                         <property name="invisible_char">●</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">geo-columns</property>
                                       </object>
                                       <packing>
@@ -1474,7 +1481,7 @@
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkHBox" id="hbox7">
+                                  <object class="GtkBox" id="hbox7">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
                                     <property name="spacing">6</property>
@@ -1485,8 +1492,6 @@
                                         <property name="invisible_char">●</property>
                                         <property name="primary_icon_activatable">False</property>
                                         <property name="secondary_icon_activatable">False</property>
-                                        <property name="primary_icon_sensitive">True</property>
-                                        <property name="secondary_icon_sensitive">True</property>
                                         <property name="adjustment">geo-rows</property>
                                       </object>
                                       <packing>
@@ -1557,7 +1562,7 @@
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkHBox" id="hbox4">
+                          <object class="GtkBox" id="hbox4">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
@@ -1581,11 +1586,8 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">•</property>
-                                <property name="invisible_char_set">True</property>
                                 <property name="primary_icon_activatable">False</property>
                                 <property name="secondary_icon_activatable">False</property>
-                                <property name="primary_icon_sensitive">True</property>
-                                <property name="secondary_icon_sensitive">True</property>
                                 <property name="adjustment">tab-activity-timeout</property>
                                 <property name="numeric">True</property>
                                 <property name="update_policy">if-valid</property>
@@ -1648,10 +1650,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox8">
+              <object class="GtkBox" id="vbox8">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame7">
@@ -1660,213 +1663,168 @@
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
                     <child>
-                      <object class="GtkAlignment" id="alignment7">
+                      <object class="GtkGrid" id="grid5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="margin_left">18</property>
+                        <property name="margin_right">12</property>
+                        <property name="margin_top">6</property>
+                        <property name="margin_bottom">6</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">36</property>
                         <child>
-                          <object class="GtkTable" id="table3">
+                          <object class="GtkLabel" id="label15">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="border_width">6</property>
-                            <property name="n_rows">3</property>
-                            <property name="n_columns">4</property>
-                            <property name="column_spacing">12</property>
-                            <property name="row_spacing">6</property>
-                            <child>
-                              <object class="GtkLabel" id="label15">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">_Text color:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">color-foreground</property>
+                            <property name="label" translatable="yes">_Text color:</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-foreground">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="halign">end</property>
+                            <property name="title" translatable="yes">Choose text color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-foreground-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
                               </object>
-                              <packing>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label38">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">_Background color:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">color-background</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label37">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Tab activit_y color:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">tab-activity-color</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="right_attach">3</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label35">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Cu_rsor color:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">color-cursor</property>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="right_attach">3</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="color-background-vary">
-                                <property name="label" translatable="yes">_Vary the background color for each tab</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="tooltip_text" translatable="yes">The random color is based on the selected background color, keeping the same brightness. </property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="right_attach">4</property>
-                                <property name="top_attach">2</property>
-                                <property name="bottom_attach">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment10">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkColorButton" id="color-background">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="title" translatable="yes">Choose background color</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-background-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment13">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkColorButton" id="color-foreground">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="title" translatable="yes">Choose text color</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-foreground-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment19">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkColorButton" id="color-cursor">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="title" translatable="yes">Choose cursor color</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-cursor-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">3</property>
-                                <property name="right_attach">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment20">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkColorButton" id="tab-activity-color">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="title" translatable="yes">Choose tab activity color</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="tab-activity-color-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">3</property>
-                                <property name="right_attach">4</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
                             </child>
                           </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label35">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Cu_rsor color:</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-cursor">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="halign">end</property>
+                            <property name="title" translatable="yes">Choose cursor color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-cursor-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label38">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">_Background color:</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-background">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="halign">end</property>
+                            <property name="title" translatable="yes">Choose background color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-background-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label37">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="label" translatable="yes">Tab activit_y color:</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="tab-activity-color">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="halign">end</property>
+                            <property name="title" translatable="yes">Choose tab activity color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="tab-activity-color-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="color-background-vary">
+                            <property name="label" translatable="yes">_Vary the background color for each tab</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">The random color is based on the selected background color, keeping the same brightness. </property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0.5</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                            <property name="width">4</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
@@ -1895,104 +1853,82 @@
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
                     <child>
-                      <object class="GtkAlignment" id="alignment11">
+                      <object class="GtkGrid" id="grid6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="margin_left">18</property>
+                        <property name="margin_right">12</property>
+                        <property name="margin_top">6</property>
+                        <property name="margin_bottom">6</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
                         <child>
-                          <object class="GtkTable" id="table6">
+                          <object class="GtkColorButton" id="color-selection">
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="border_width">6</property>
-                            <property name="n_rows">2</property>
-                            <property name="n_columns">2</property>
-                            <property name="column_spacing">12</property>
-                            <property name="row_spacing">6</property>
-                            <child>
-                              <object class="GtkCheckButton" id="color-selection-custom">
-                                <property name="label" translatable="yes">Text _selection color:</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="tooltip_text" translatable="yes">Enable this option to set a custom background color for the selection. If disabled the background and text colors will be reversed.</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_indicator">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose text selection background color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-selection-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
                               </object>
-                              <packing>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment22">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkColorButton" id="color-selection">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="title" translatable="yes">Choose text selection background color</property>
-                                    <property name="color">#000000000000</property>
-                                    <child internal-child="accessible">
-                                      <object class="AtkObject" id="color-selection-atkobject">
-                                        <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                        <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                      </object>
-                                    </child>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkCheckButton" id="color-bold-custom">
-                                <property name="label" translatable="yes">B_old text color:</property>
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">False</property>
-                                <property name="tooltip_text" translatable="yes">Enable this option to set a custom bold color. If disabled the text color will be used.</property>
-                                <property name="use_underline">True</property>
-                                <property name="draw_indicator">True</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment23">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkColorButton" id="color-bold">
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="title" translatable="yes">Choose bold font color</property>
-                                    <property name="color">#000000000000</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
                             </child>
                           </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-bold">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose bold font color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="color-selection-custom">
+                            <property name="label" translatable="yes">Text _selection color:</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to set a custom background color for the selection. If disabled the background and text colors will be reversed.</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0.5</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="color-bold-custom">
+                            <property name="label" translatable="yes">B_old text color:</property>
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to set a custom bold color. If disabled the text color will be used.</property>
+                            <property name="use_underline">True</property>
+                            <property name="xalign">0.5</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
@@ -2021,349 +1957,333 @@
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
                     <child>
-                      <object class="GtkAlignment" id="alignment12">
+                      <object class="GtkGrid" id="grid4">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="margin_left">18</property>
+                        <property name="margin_right">6</property>
+                        <property name="margin_top">6</property>
+                        <property name="margin_bottom">6</property>
+                        <property name="column_homogeneous">True</property>
                         <child>
-                          <object class="GtkTable" id="table4">
+                          <object class="GtkColorButton" id="color-palette1">
+                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="border_width">6</property>
-                            <property name="n_rows">2</property>
-                            <property name="n_columns">8</property>
-                            <property name="homogeneous">True</property>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette1">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Black</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette1-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Black</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette1-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
                               </object>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette2">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Red</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette2-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette12">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Yellow</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette12-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">3</property>
-                                <property name="right_attach">4</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette9">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Dark Gray</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette9-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette10">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Light Red</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette10-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette11">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Light Green</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette11-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="right_attach">3</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette3">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Green</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette3-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">2</property>
-                                <property name="right_attach">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette4">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Brown / Yellow</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette4-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">3</property>
-                                <property name="right_attach">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette5">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Blue</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette5-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">4</property>
-                                <property name="right_attach">5</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette13">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Light Blue</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette13-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">4</property>
-                                <property name="right_attach">5</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette14">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Light Magenta</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette14-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">5</property>
-                                <property name="right_attach">6</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette6">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Magenta</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette6-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">5</property>
-                                <property name="right_attach">6</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette7">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Cyan</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette7-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">6</property>
-                                <property name="right_attach">7</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette15">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Light Cyan</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette15-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">6</property>
-                                <property name="right_attach">7</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette16">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">White</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette16-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">7</property>
-                                <property name="right_attach">8</property>
-                                <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkColorButton" id="color-palette8">
-                                <property name="use_action_appearance">False</property>
-                                <property name="visible">True</property>
-                                <property name="can_focus">True</property>
-                                <property name="receives_default">True</property>
-                                <property name="tooltip_text" translatable="yes">Light Gray</property>
-                                <property name="color">#000000000000</property>
-                                <child internal-child="accessible">
-                                  <object class="AtkObject" id="color-palette8-atkobject">
-                                    <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                    <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">7</property>
-                                <property name="right_attach">8</property>
-                              </packing>
                             </child>
                           </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette9">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Dark Gray</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette9-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette2">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Red</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette2-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette10">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Light Red</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette10-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette3">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Green</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette3-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette11">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Light Green</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette11-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette4">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Brown / Yellow</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette4-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette12">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Yellow</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette12-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette5">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Blue</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette5-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">4</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette13">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Light Blue</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette13-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">4</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette6">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Magenta</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette6-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">5</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette14">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Light Magenta</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette14-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">5</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette7">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Cyan</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette7-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">6</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette15">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Light Cyan</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette15-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">6</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette8">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">Light Gray</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette8-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">7</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-palette16">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="tooltip_text" translatable="yes">White</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-palette16-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">7</property>
+                            <property name="top_attach">1</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
@@ -2449,10 +2369,11 @@
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox11">
+              <object class="GtkBox" id="vbox11">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame12">
@@ -2461,104 +2382,100 @@
                     <property name="label_xalign">0</property>
                     <property name="shadow_type">none</property>
                     <child>
-                      <object class="GtkAlignment" id="alignment15">
+                      <object class="GtkBox" id="box1">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="left_padding">12</property>
+                        <property name="orientation">vertical</property>
                         <child>
-                          <object class="GtkTable" id="table5">
+                          <object class="GtkInfoBar" id="infobar1">
+                            <property name="visible">True</property>
+                            <property name="app_paintable">True</property>
+                            <property name="can_focus">False</property>
+                            <child internal-child="action_area">
+                              <object class="GtkButtonBox" id="infobar-action_area1">
+                                <property name="can_focus">False</property>
+                                <property name="spacing">6</property>
+                                <property name="layout_style">end</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child internal-child="content_area">
+                              <object class="GtkBox" id="infobar-content_area1">
+                                <property name="can_focus">False</property>
+                                <property name="spacing">16</property>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                                <child>
+                                  <object class="GtkLabel" id="label34">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">False</property>
+                                    <property name="label" translatable="yes">These options may cause some applications to behave
+incorrectly. They are only here to allow you to work around
+certain applications and operating systems that expect
+different terminal behavior.</property>
+                                    <property name="wrap">True</property>
+                                    <property name="ellipsize">end</property>
+                                    <property name="xalign">0</property>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <placeholder/>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkGrid" id="grid2">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
-                            <property name="border_width">6</property>
-                            <property name="n_rows">5</property>
-                            <property name="n_columns">2</property>
-                            <property name="column_spacing">12</property>
+                            <property name="margin_left">24</property>
+                            <property name="margin_right">12</property>
+                            <property name="margin_top">6</property>
+                            <property name="margin_bottom">6</property>
                             <property name="row_spacing">6</property>
+                            <property name="column_spacing">12</property>
+                            <property name="column_homogeneous">True</property>
                             <child>
                               <object class="GtkLabel" id="label31">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">_Backspace key generates:</property>
                                 <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">binding-backspace</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
+                                <property name="left_attach">0</property>
                                 <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label32">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">_Delete key generates:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">binding-delete</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">2</property>
-                                <property name="bottom_attach">3</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="label33">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">Emulation s_etting:</property>
-                                <property name="use_underline">True</property>
-                                <property name="mnemonic_widget">emulation</property>
-                              </object>
-                              <packing>
-                                <property name="top_attach">3</property>
-                                <property name="bottom_attach">4</property>
-                                <property name="x_options">GTK_FILL</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkAlignment" id="alignment18">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <child>
-                                  <object class="GtkButton" id="reset-compatibility">
-                                    <property name="label" translatable="yes">_Reset compatibility options to defaults</property>
-                                    <property name="use_action_appearance">False</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="use_underline">True</property>
-                                  </object>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">4</property>
-                                <property name="bottom_attach">5</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="binding-delete">
-                                <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="model">liststore5</property>
-                                <child>
-                                  <object class="GtkCellRendererText" id="cellrenderertext5"/>
-                                  <attributes>
-                                    <attribute name="text">0</attribute>
-                                  </attributes>
-                                </child>
-                              </object>
-                              <packing>
-                                <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
-                                <property name="top_attach">2</property>
-                                <property name="bottom_attach">3</property>
                               </packing>
                             </child>
                             <child>
@@ -2575,9 +2492,50 @@
                               </object>
                               <packing>
                                 <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
                                 <property name="top_attach">1</property>
-                                <property name="bottom_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="label32">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">_Delete key generates:</property>
+                                <property name="use_underline">True</property>
+                                <property name="xalign">0</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkComboBox" id="binding-delete">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="model">liststore5</property>
+                                <child>
+                                  <object class="GtkCellRendererText" id="cellrenderertext5"/>
+                                  <attributes>
+                                    <attribute name="text">0</attribute>
+                                  </attributes>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="left_attach">1</property>
+                                <property name="top_attach">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkLabel" id="label33">
+                                <property name="visible">True</property>
+                                <property name="can_focus">False</property>
+                                <property name="label" translatable="yes">Emulation s_etting:</property>
+                                <property name="use_underline">True</property>
+                                <property name="xalign">0</property>
+                              </object>
+                              <packing>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">3</property>
                               </packing>
                             </child>
                             <child>
@@ -2585,35 +2543,41 @@
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">•</property>
-                                <property name="invisible_char_set">True</property>
                                 <property name="primary_icon_activatable">False</property>
                                 <property name="secondary_icon_activatable">False</property>
-                                <property name="primary_icon_sensitive">True</property>
-                                <property name="secondary_icon_sensitive">True</property>
                               </object>
                               <packing>
                                 <property name="left_attach">1</property>
-                                <property name="right_attach">2</property>
                                 <property name="top_attach">3</property>
-                                <property name="bottom_attach">4</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkLabel" id="label34">
+                              <object class="GtkButton" id="reset-compatibility">
+                                <property name="label" translatable="yes">_Reset compatibility options to defaults</property>
+                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="label" translatable="yes">These options may cause some applications to behave
-incorrectly. They are only here to allow you to work around
-certain applications and operating systems that expect
-different terminal behavior.</property>
-                                <property name="wrap">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="use_underline">True</property>
                               </object>
                               <packing>
-                                <property name="right_attach">2</property>
+                                <property name="left_attach">0</property>
+                                <property name="top_attach">4</property>
+                                <property name="width">2</property>
                               </packing>
                             </child>
+                            <child>
+                              <placeholder/>
+                            </child>
+                            <child>
+                              <placeholder/>
+                            </child>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
                         </child>
                       </object>
                     </child>
@@ -2653,10 +2617,11 @@ different terminal behavior.</property>
               </packing>
             </child>
             <child>
-              <object class="GtkVBox" id="vbox13">
+              <object class="GtkBox" id="vbox13">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="border_width">6</property>
+                <property name="orientation">vertical</property>
                 <property name="spacing">6</property>
                 <child>
                   <object class="GtkFrame" id="frame13">
@@ -2670,20 +2635,21 @@ different terminal behavior.</property>
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox14">
+                          <object class="GtkBox" id="vbox14">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkLabel" id="label30">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Consider the following characters part of a _word
 when double clicking:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">word-chars</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -2696,11 +2662,8 @@ when double clicking:</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="invisible_char">•</property>
-                                <property name="invisible_char_set">True</property>
                                 <property name="primary_icon_activatable">False</property>
                                 <property name="secondary_icon_activatable">False</property>
-                                <property name="primary_icon_sensitive">True</property>
-                                <property name="secondary_icon_sensitive">True</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -2766,7 +2729,7 @@ when double clicking:</property>
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkHBox" id="hbox5">
+                          <object class="GtkBox" id="hbox5">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
@@ -2775,10 +2738,10 @@ when double clicking:</property>
                               <object class="GtkLabel" id="encoding-label">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
                                 <property name="label" translatable="yes">Default character e_ncoding:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">encoding-combo</property>
+                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -2836,10 +2799,11 @@ when double clicking:</property>
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkVBox" id="vbox12">
+                          <object class="GtkBox" id="vbox12">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
+                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkCheckButton" id="shortcuts-no-mnemonics">
@@ -2849,6 +2813,7 @@ when double clicking:</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -2865,6 +2830,7 @@ when double clicking:</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="use_underline">True</property>
+                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
