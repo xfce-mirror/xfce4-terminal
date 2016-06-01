@@ -152,14 +152,14 @@ static void
 transform_color_to_string (const GValue *src,
                            GValue       *dst)
 {
-  GdkColor *color;
-  gchar     buffer[32];
+  GdkRGBA *color;
+  gchar    buffer[8];
 
   color = g_value_get_boxed (src);
-  g_snprintf (buffer, 32, "#%04x%04x%04x",
-              (guint) color->red,
-              (guint) color->green,
-              (guint) color->blue);
+  g_snprintf (buffer, sizeof (buffer), "#%02x%02x%02x",
+              (guint) (color->red * 255),
+              (guint) (color->green * 255),
+              (guint) (color->blue * 255));
   g_value_set_string (dst, buffer);
 }
 
@@ -178,9 +178,9 @@ static void
 transform_string_to_color (const GValue *src,
                            GValue       *dst)
 {
-  GdkColor color;
+  GdkRGBA color;
 
-  gdk_color_parse (g_value_get_string (src), &color);
+  gdk_rgba_parse (&color, g_value_get_string (src));
   g_value_set_boxed (dst, &color);
 }
 
@@ -250,12 +250,12 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   gobject_class->set_property = terminal_preferences_set_property;
 
   /* register transform functions */
-  if (!g_value_type_transformable (GDK_TYPE_COLOR, G_TYPE_STRING))
-    g_value_register_transform_func (GDK_TYPE_COLOR, G_TYPE_STRING, transform_color_to_string);
+  if (!g_value_type_transformable (GDK_TYPE_RGBA, G_TYPE_STRING))
+    g_value_register_transform_func (GDK_TYPE_RGBA, G_TYPE_STRING, transform_color_to_string);
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_BOOLEAN))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_BOOLEAN, transform_string_to_boolean);
-  if (!g_value_type_transformable (G_TYPE_STRING, GDK_TYPE_COLOR))
-    g_value_register_transform_func (G_TYPE_STRING, GDK_TYPE_COLOR, transform_string_to_color);
+  if (!g_value_type_transformable (G_TYPE_STRING, GDK_TYPE_RGBA))
+    g_value_register_transform_func (G_TYPE_STRING, GDK_TYPE_RGBA, transform_string_to_color);
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_DOUBLE))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_DOUBLE, transform_string_to_double);
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))

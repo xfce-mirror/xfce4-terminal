@@ -265,7 +265,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_action_set_visible (action, FALSE);
 
   /* notebook buttons */
-  hbox = gtk_hbox_new (TRUE, 2);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
   gtk_notebook_set_action_widget (GTK_NOTEBOOK (window->notebook), hbox, GTK_PACK_END);
   gtk_widget_show (hbox);
 
@@ -336,13 +336,13 @@ terminal_window_dropdown_set_property (GObject      *object,
       break;
 
     case PROP_DROPDOWN_OPACITY:
-      screen = gtk_window_get_screen (GTK_WINDOW (dropdown));
+      screen = gtk_widget_get_screen (GTK_WIDGET (dropdown));
       if (gdk_screen_is_composited (screen))
         opacity = g_value_get_uint (value) / 100.0;
       else
         opacity = 1.00;
 
-      gtk_window_set_opacity (GTK_WINDOW (dropdown), opacity);
+      gtk_widget_set_opacity (GTK_WIDGET (dropdown), opacity);
       return;
 
     case PROP_DROPDOWN_STATUS_ICON:

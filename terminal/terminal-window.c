@@ -34,7 +34,6 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 
-#include <gdk/gdkkeysyms.h>
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
 #endif
@@ -290,7 +289,7 @@ terminal_window_init (TerminalWindow *window)
   GtkWidget      *vbox;
   gboolean        always_show_tabs;
   GdkScreen      *screen;
-  GdkVisual    *visual;
+  GdkVisual      *visual;
 
   window->preferences = terminal_preferences_get ();
 
@@ -321,7 +320,7 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect_after (G_OBJECT (accel_group), "accel-activate",
       G_CALLBACK (terminal_window_accel_activate), window);
 
-  window->vbox = vbox = gtk_vbox_new (FALSE, 0);
+  window->vbox = vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
   gtk_widget_show (vbox);
 
@@ -497,11 +496,12 @@ terminal_window_confirm_close (TerminalWindow *window)
 
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT
-                                        | 0
                                         | GTK_DIALOG_MODAL,
+                                        GTK_STOCK_CANCEL,
+                                        GTK_RESPONSE_CANCEL,
                                         NULL);
 
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+  //gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
 
   button = xfce_gtk_button_new_mixed (GTK_STOCK_CLOSE, _("Close T_ab"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
@@ -512,8 +512,9 @@ terminal_window_confirm_close (TerminalWindow *window)
   gtk_widget_grab_focus (button);
   gtk_widget_show (button);
 
-  hbox = gtk_hbox_new (FALSE, 6);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
+  gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
   image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
@@ -521,7 +522,7 @@ terminal_window_confirm_close (TerminalWindow *window)
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
   gtk_widget_show (image);
 
-  vbox = gtk_vbox_new (FALSE, 6);
+  vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
   gtk_widget_show (vbox);
 
@@ -934,27 +935,23 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
 static gboolean
 terminal_window_notebook_event_in_allocation (gint event_x,
-											  gint event_y,
-											  GtkWidget *widget)
+                                              gint event_y,
+                                              GtkWidget *widget)
 {
-	cairo_rectangle_int_t *allocation;
-	gtk_widget_get_allocation (widget, allocation);
-	
-	if(allocation == NULL)
-		return FALSE;
-	
-	
-	if (event_x >= allocation->x \
-		&& event_x <= allocation->x + allocation->width \
-		&& event_y >= allocation->y \
-		&& event_y <= allocation->y + allocation->height)
-		{
-			return TRUE;
-		}
-	else
-		return FALSE;
+  cairo_rectangle_int_t allocation;
+  gtk_widget_get_allocation (widget, &allocation);
 
+  if (event_x >= allocation.x \
+      && event_x <= allocation.x + allocation.width \
+      && event_y >= allocation.y \
+      && event_y <= allocation.y + allocation.height)
+    {
+      return TRUE;
+    }
+
+  return FALSE;
 }
+
 static gboolean
 terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
                                              GdkEventButton *event,
@@ -1057,7 +1054,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
   GtkWidget  *child, *label;
   gint        i, n_pages;
   gboolean    succeed = FALSE;
-  cairo_rectangle_int_t *allocation;
+  cairo_rectangle_int_t allocation;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (widget));
@@ -1082,9 +1079,10 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
           /* get the child label */
           child = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), i);
           label = gtk_notebook_get_tab_label (GTK_NOTEBOOK (window->notebook), child);
-		  gtk_widget_get_allocation (label, allocation);
+          gtk_widget_get_allocation (label, &allocation);
+
           /* break if we have a matching drop position */
-          if (x < (allocation->x + allocation->width / 2))
+          if (x < (allocation.x + allocation.width / 2))
             break;
         }
 
@@ -1603,8 +1601,9 @@ terminal_window_action_set_title (GtkAction      *action,
                                             NULL);
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 
-      box = gtk_hbox_new (FALSE, 12);
+      box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
       gtk_container_set_border_width (GTK_CONTAINER (box), 6);
+      gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box, TRUE, TRUE, 0);
       gtk_widget_show (box);
 
       label = gtk_label_new_with_mnemonic (_("_Title:"));
