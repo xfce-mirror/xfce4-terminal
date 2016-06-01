@@ -328,12 +328,9 @@ terminal_window_init (TerminalWindow *window)
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
-                                   "homogeneous", TRUE,
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
                                    "show-tabs", always_show_tabs,
-                                   "tab-hborder", 0,
-                                   "tab-vborder", 0,
                                    NULL);
 
   /* hide the ugly terminal border when tabs are shown */
