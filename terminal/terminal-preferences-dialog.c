@@ -196,7 +196,7 @@ error:
 
   /* bind color properties */
   for (i = 0; i < G_N_ELEMENTS (props_color); i++)
-    BIND_PROPERTIES (props_color[i], "color");
+    BIND_PROPERTIES (props_color[i], "rgba");
 
   /* bind color properties */
   for (i = 0; i < G_N_ELEMENTS (props_value); i++)
@@ -498,12 +498,12 @@ static void
 terminal_preferences_dialog_palette_changed (GtkWidget                 *button,
                                              TerminalPreferencesDialog *dialog)
 {
-  gchar     name[16];
-  guint     i;
-  GObject  *obj;
-  GdkColor  color;
-  gchar    *color_str;
-  GString  *array;
+  gchar    name[16];
+  guint    i;
+  GObject *obj;
+  GdkRGBA  color;
+  gchar   *color_str;
+  GString *array;
 
   array = g_string_sized_new (225);
 
@@ -513,10 +513,10 @@ terminal_preferences_dialog_palette_changed (GtkWidget                 *button,
       g_snprintf (name, sizeof (name), "color-palette%d", i);
       obj = gtk_builder_get_object (GTK_BUILDER (dialog), name);
       terminal_return_if_fail (GTK_IS_COLOR_BUTTON (obj));
-      gtk_color_button_get_color (GTK_COLOR_BUTTON (obj), &color);
+      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (obj), &color);
 
       /* append to string */
-      color_str = gdk_color_to_string (&color);
+      color_str = gdk_rgba_to_string (&color);
       g_string_append (array, color_str);
       g_free (color_str);
 
@@ -536,12 +536,12 @@ terminal_preferences_dialog_palette_changed (GtkWidget                 *button,
 static void
 terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
 {
-  gchar    *color_str;
-  gchar   **colors;
-  guint     i;
-  gchar     name[16];
-  GObject  *obj;
-  GdkColor  color;
+  gchar   *color_str;
+  gchar  **colors;
+  guint    i;
+  gchar    name[16];
+  GObject *obj;
+  GdkRGBA  color;
 
   g_object_get (dialog->preferences, "color-palette", &color_str, NULL);
   if (G_LIKELY (color_str != NULL))
@@ -558,8 +558,8 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
             obj = gtk_builder_get_object (GTK_BUILDER (dialog), name);
             terminal_return_if_fail (GTK_IS_COLOR_BUTTON (obj));
 
-            if (gdk_color_parse (colors[i], &color))
-              gtk_color_button_set_color (GTK_COLOR_BUTTON (obj), &color);
+            if (gdk_rgba_parse (&color, colors[i]))
+              gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (obj), &color);
           }
 
       g_strfreev (colors);

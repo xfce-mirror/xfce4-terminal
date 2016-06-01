@@ -35,8 +35,6 @@
 #include <string.h>
 #endif
 
-#include <gdk/gdkkeysyms.h>
-
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-config.h>
 #include <terminal/terminal-preferences.h>

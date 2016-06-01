@@ -134,7 +134,7 @@ static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen 
 static void       terminal_screen_update_title                  (TerminalScreen        *screen);
 static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
 static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
-                                                                 gint                   arg1, 
+                                                                 gint                   arg1,
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_eof                       (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
@@ -195,7 +195,7 @@ static guint screen_last_session_id = 0;
 
 
 
-G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_HBOX)
+G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_BOX)
 
 
 
@@ -282,7 +282,8 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_resize_window), screen);
   gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
 
-  screen->scrollbar = gtk_vscrollbar_new (gtk_scrollable_get_vadjustment(GTK_SCROLLABLE (screen->terminal)));
+  // TODO: use NULL for adjustment
+  screen->scrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL, NULL);
   gtk_box_pack_start (GTK_BOX (screen), screen->scrollbar, FALSE, FALSE, 0);
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
   gtk_widget_show (screen->scrollbar);
@@ -388,7 +389,7 @@ terminal_screen_get_property (GObject          *object,
             }
           else if (G_LIKELY (screen->terminal != NULL))
             {
-              title = vte_terminal_get_window_title(VTE_TERMINAL (screen->terminal));
+              title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
             }
 
           /* TRANSLATORS: title for the tab/window used when all other
@@ -440,7 +441,7 @@ terminal_screen_realize (GtkWidget *widget)
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->realize) (widget);
 
   /* make sure the TerminalWidget is realized as well */
-  if (! gtk_widget_get_realized(TERMINAL_SCREEN (widget)->terminal))
+  if (!gtk_widget_get_realized (TERMINAL_SCREEN (widget)->terminal))
     gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
 
   /* connect to the "composited-changed" signal */
@@ -677,7 +678,7 @@ terminal_screen_parse_title (TerminalScreen *screen,
 
         case 'w':
           /* window title from vte */
-          vte_title = vte_terminal_get_window_title(VTE_TERMINAL (screen->terminal));
+          vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
           if (G_UNLIKELY (vte_title == NULL))
             vte_title = _("Untitled");
           g_string_append (string, vte_title);
@@ -736,10 +737,10 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   /* determine the toplevel widget */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  if (toplevel != NULL &&  gtk_widget_get_realized(toplevel))
+  if (toplevel != NULL && gtk_widget_get_realized (toplevel))
     {
 #ifdef GDK_WINDOWING_X11
-      //result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) GDK_DRAWABLE_XID (gtk_widget_get_window(toplevel)));
+      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) gdk_x11_window_get_xid (gtk_widget_get_window (toplevel)));
 #endif
 
       /* determine the DISPLAY value for the command */
@@ -995,8 +996,8 @@ terminal_screen_update_font (TerminalScreen *screen)
     {
       font_desc = pango_font_description_from_string (font_name);
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
-      vte_terminal_set_font(VTE_TERMINAL (screen->terminal), font_desc);
-      pango_font_description_free(font_desc);
+      vte_terminal_set_font (VTE_TERMINAL (screen->terminal), font_desc);
+      pango_font_description_free (font_desc);
       g_free (font_name);
     }
 
@@ -1262,7 +1263,7 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   /* don't do anything if the window is already fullscreen/maximized */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   if (!gtk_widget_get_realized (toplevel)
-      || (gdk_window_get_state (gtk_widget_get_window(toplevel))
+      || (gdk_window_get_state (gtk_widget_get_window (toplevel))
           & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) != 0)
     return;
 
@@ -1272,8 +1273,8 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
   grid_height = (height - ypad) / char_height;
 
   /* leave if there is nothing to resize */
-  if (vte_terminal_get_column_count(terminal) == grid_width
-      && vte_terminal_get_column_count(terminal) == grid_height)
+    if (vte_terminal_get_column_count (terminal) == grid_width
+        && vte_terminal_get_row_count (terminal) == grid_height)
     return;
 
   /* set the terminal size and resize the window if it is active */
@@ -1292,8 +1293,8 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
   GtkStyle       *style;
-  GdkColor        color;
-  GdkColor        active_color;
+  GdkRGBA         color;
+  GdkRGBA         active_color;
 
   if (G_UNLIKELY (screen->tab_label == NULL))
     return FALSE;
@@ -1311,7 +1312,7 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
       color.green = (active_color.green + style->fg[GTK_STATE_ACTIVE].green) / 2;
       color.blue = (active_color.blue + style->fg[GTK_STATE_ACTIVE].blue) / 2;
 
-      gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, &color);
+      gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, &color);
     }
 
   GDK_THREADS_LEAVE ();
@@ -1333,7 +1334,7 @@ static void
 terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 {
   guint    timeout;
-  GdkColor color;
+  GdkRGBA  color;
   gboolean has_color;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1342,7 +1343,7 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
-      || gtk_widget_get_state (screen->tab_label) != GTK_STATE_ACTIVE
+      || gtk_widget_get_state_flags (screen->tab_label) != GTK_STATE_FLAG_ACTIVE
       || time (NULL) - screen->activity_resize_time <= 1)
     return;
 
@@ -1353,7 +1354,8 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* set label color */
   has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
-  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, has_color ? &color : NULL);
+  gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, has_color ? &color : NULL);
+
 
   /* stop running reset timeout */
   if (screen->activity_timeout_id != 0)
@@ -1385,8 +1387,6 @@ terminal_screen_timer_background (gpointer user_data)
   TerminalBackground   background_mode;
   GdkPixbuf           *image;
   gdouble              background_darkness;
-  gdouble              saturation = 1.0;
-  guint16              opacity = 0xffff;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
@@ -1431,9 +1431,6 @@ terminal_screen_timer_background (gpointer user_data)
       || background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
     {
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
-
-      saturation = 1.0 - background_darkness;
-      opacity = 0xffff * background_darkness;
     }
 
   //vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
@@ -1663,7 +1660,7 @@ terminal_screen_get_geometry (TerminalScreen *screen,
                               gint           *xpad,
                               gint           *ypad)
 {
-  GtkBorder *border = NULL;
+  GtkBorder border;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -1675,22 +1672,13 @@ terminal_screen_get_geometry (TerminalScreen *screen,
 
   if (xpad != NULL || ypad != NULL)
     {
-      gtk_widget_style_get (GTK_WIDGET (screen->terminal), "inner-border", &border, NULL);
-      if (G_LIKELY (border != NULL))
-        {
-          if (xpad != NULL)
-            *xpad = border->left + border->right;
-          if (ypad != NULL)
-            *ypad = border->top + border->bottom;
-          gtk_border_free (border);
-        }
-      else
-        {
-          if (xpad != NULL)
-            *xpad = 0;
-          if (ypad != NULL)
-            *ypad = 0;
-        }
+      gtk_style_context_get_padding (gtk_widget_get_style_context (screen->terminal),
+                                     gtk_widget_get_state_flags (screen->terminal),
+                                     &border);
+      if (xpad != NULL)
+        *xpad = border.left + border.right;
+      if (ypad != NULL)
+        *ypad = border.top + border.bottom;
     }
 }
 
@@ -1714,8 +1702,8 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
-  terminal_return_if_fail (GTK_WIDGET_REALIZED (screen));
-  terminal_return_if_fail (GTK_WIDGET_REALIZED (window));
+  terminal_return_if_fail (gtk_widget_get_realized (screen));
+  terminal_return_if_fail (gtk_widget_get_realized (window));
 
   terminal_screen_get_geometry (screen,
                                 &char_width, &char_height,
@@ -1787,7 +1775,7 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
     height = 0;
   height += ypad + char_height * rows;
 
-  if (gtk_widget_get_mapped (window))
+  if (gtk_widget_get_mapped (GTK_WIDGET (window)))
     gtk_window_resize (window, width, height);
   else
     gtk_window_set_default_size (window, width, height);
@@ -1818,7 +1806,7 @@ terminal_screen_get_title (TerminalScreen *screen)
   if (G_UNLIKELY (screen->custom_title != NULL))
     return terminal_screen_parse_title (screen, screen->custom_title);
 
-  vte_title = vte_terminal_get_window_title(VTE_TERMINAL (screen->terminal));
+  vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
   g_object_get (G_OBJECT (screen->preferences),
                 "title-mode", &mode,
                 "title-initial", &tmp,
@@ -2082,7 +2070,7 @@ terminal_screen_im_append_menuitems (TerminalScreen *screen,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (GTK_IS_MENU_SHELL (menushell));
 
-  // FIXME: functionalit seems to have been removed
+  // FIXME: functionality seems to have been removed
   //vte_terminal_im_append_menuitems (VTE_TERMINAL (screen->terminal), menushell);
 }
 
@@ -2152,7 +2140,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
   /* create the box */
-  hbox = gtk_hbox_new (FALSE, 0);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 2);
   gtk_widget_show (hbox);
 
