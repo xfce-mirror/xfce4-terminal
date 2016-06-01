@@ -134,6 +134,7 @@ static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen 
 static void       terminal_screen_update_title                  (TerminalScreen        *screen);
 static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
 static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
+                                                                 gint                   arg1, 
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_eof                       (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
@@ -1181,6 +1182,7 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
 
 static void
 terminal_screen_vte_child_exited (VteTerminal    *terminal,
+                                  gint            arg1,
                                   TerminalScreen *screen)
 {
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
