@@ -1066,7 +1066,12 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
       notebook = gtk_drag_get_source_widget (context);
       terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
 
-      /* leave if there is only one
+      /* get the dragged screen */
+      screen = (GtkWidget **) gtk_selection_data_get_data (selection_data);
+      if (!TERMINAL_IS_SCREEN (*screen))
+        goto leave;
+
+      /* leave if we dropped in the same screen and there is only one
        * page in the notebook (window will close before we insert) */
       if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) < 2
           && *screen == widget)
