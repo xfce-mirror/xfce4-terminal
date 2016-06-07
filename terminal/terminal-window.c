@@ -1046,7 +1046,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
                                              gint              y,
                                              GtkSelectionData *selection_data,
                                              guint             info,
-                                             guint32           drag_time,
+                                             guint             drag_time,
                                              TerminalWindow   *window)
 {
   GtkWidget  *notebook;
@@ -1151,7 +1151,11 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
       g_object_ref (G_OBJECT (screen));
 
       /* remove screen from active window */
-      gtk_container_remove (GTK_CONTAINER (window->notebook), child);
+      #if GTK_CHECK_VERSION (3,16,0)
+        gtk_notebook_detach_tab (notebook, child);
+      #else
+        gtk_container_remove (GTK_CONTAINER (notebook), child);
+      #endif
 
       /* create new window with the screen */
       g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_SCREEN], 0, screen, x, y);
