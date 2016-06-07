@@ -837,12 +837,9 @@ static void
 terminal_screen_update_encoding (TerminalScreen *screen)
 {
   gchar *encoding;
-  GError *error = NULL;
 
   g_object_get (G_OBJECT (screen->preferences), "encoding", &encoding, NULL);
-  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), encoding, &error)) {
-      g_printerr("Failed to set encoding: %s\n", error->message);
-  }
+  terminal_screen_set_encoding (screen, encoding);
   g_free (encoding);
 }
 
@@ -2213,10 +2210,9 @@ void
 terminal_screen_set_encoding (TerminalScreen *screen,
                               const gchar    *charset)
 {
-  GError *error;
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, &error)) {
-    g_printerr("Failed to set encoding: %s\n", error->message);
+  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, NULL)) {
+    g_printerr("Failed to set encoding %s\n", charset);
   }
 }
 
