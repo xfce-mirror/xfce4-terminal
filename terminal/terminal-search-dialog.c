@@ -90,14 +90,14 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   gtk_window_set_title (GTK_WINDOW (dialog), _("Find"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
 
-  gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE);
+  gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Close"), GTK_RESPONSE_CLOSE);
 
-  dialog->button_prev = xfce_gtk_button_new_mixed (GTK_STOCK_GO_BACK, _("_Previous"));
+  dialog->button_prev = xfce_gtk_button_new_mixed ("go-previous", _("_Previous"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
   gtk_widget_set_can_default (dialog->button_prev, TRUE);
   gtk_widget_show (dialog->button_prev);
 
-  dialog->button_next = xfce_gtk_button_new_mixed (GTK_STOCK_GO_FORWARD, _("_Next"));
+  dialog->button_next = xfce_gtk_button_new_mixed ("go-next", _("_Next"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
   gtk_widget_show (dialog->button_next);
 
@@ -118,7 +118,7 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   gtk_box_pack_start (GTK_BOX (hbox), dialog->entry, TRUE, TRUE, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), dialog->entry);
   gtk_entry_set_activates_default (GTK_ENTRY (dialog->entry), TRUE);
-  gtk_entry_set_icon_from_stock (GTK_ENTRY (dialog->entry), GTK_ENTRY_ICON_SECONDARY, GTK_STOCK_CLEAR);
+  gtk_entry_set_icon_from_icon_name (GTK_ENTRY (dialog->entry), GTK_ENTRY_ICON_SECONDARY, "edit-clear");
   g_signal_connect (G_OBJECT (dialog->entry), "icon-release",
       G_CALLBACK (terminal_search_dialog_entry_icon_release), NULL);
   g_signal_connect (G_OBJECT (dialog->entry), "changed",
