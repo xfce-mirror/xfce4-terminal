@@ -552,7 +552,7 @@ terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
 
       /* apply values to buttons */
       if (colors != NULL)
-        for (i = 0; colors[i] != NULL && i < 16; i++)
+        for (i = 0; i < 16 && colors[i] != NULL; i++)
           {
             g_snprintf (name, sizeof (name), "color-palette%d", i + 1);
             obj = gtk_builder_get_object (GTK_BUILDER (dialog), name);
