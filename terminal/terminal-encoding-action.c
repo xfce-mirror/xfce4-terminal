@@ -82,33 +82,38 @@ static const gchar *terminal_encodings_names[] =
   N_("Hebrew"),
   N_("Thai"),
   N_("Vietnamese"),
+  N_("Nordic"),
+  N_("Celtic"),
+  N_("Romanian"),
+  N_("Armenian"),
+  N_("Georgian"),
   N_("Unicode"),
   N_("Other"),
 };
 
 /* charsets for the groups above, order matters! */
-static const gchar *terminal_encodings_charsets[][6] =
+static const gchar *terminal_encodings_charsets[][8] =
 {
   /* Western European */
-  { "ISO-8859-1", "ISO-8859-15", "ISO-8859-14", "WINDOWS-1252", "IBM850", NULL },
+  { "ISO-8859-1", "ISO-8859-15", "WINDOWS-1252", "IBM850", NULL },
   /* Central European */
-  { "ISO-8859-2", "ISO-8859-3", "WINDOWS-1250", NULL },
+  { "ISO-8859-2", "ISO-8859-3", "WINDOWS-1250", "IBM852", NULL },
   /* Baltic */
   { "ISO-8859-4", "ISO-8859-13", "WINDOWS-1257", NULL },
   /* South-Eastern Europe */
   { "ISO-8859-16", NULL },
   /* Turkish */
-  { "ISO-8859-9", "WINDOWS-1254", NULL },
+  { "ISO-8859-9", "WINDOWS-1254", "IBM857", NULL },
   /* Cyrillic */
-  { "KOI8-R", "ISO-8859-5", "WINDOWS-1251", "KOI8-U", "IBM855", NULL },
+  { "CP866", "KOI8-R", "ISO-8859-5", "WINDOWS-1251", "KOI8-U", "IBM855", "ISO-IR-111", NULL },
   /* Chinese Traditional */
-  { "BIG5", "BIG5-HKSCS", NULL },
+  { "BIG5", "BIG5-HKSCS", "EUC-TW", NULL },
   /* Chinese Simplified */
   { "GB18030", "GBK", "GB2312", NULL },
   /* Korean */
-  { "EUC-KR", NULL },
+  { "EUC-KR", "ISO-2022-KR", "UHC", NULL },
   /* Japanese */
-  { "SHIFT_JIS", "JIS7", "EUC-JP", NULL },
+  { "SHIFT_JIS", "JIS7", "EUC-JP", "ISO-2022-JP", NULL },
   /* Greek */
   { "ISO-8859-7", "WINDOWS-1253", NULL },
   /* Arabic */
@@ -118,11 +123,21 @@ static const gchar *terminal_encodings_charsets[][6] =
   /* Thai */
   { "TIS-620", "ISO-8859-11", NULL },
   /* Vietnamese */
-  { "WINDOWS-1258", NULL },
+  { "TCVN", "VISCII", "WINDOWS-1258", NULL },
+  /* Nordic */
+  { "ISO-8859-10", NULL },
+  /* Celtic */
+  { "ISO-8859-14", NULL },
+  /* Romanian */
+  { "ISO-8859-16", NULL },
+  /* Armenian */
+  { "ARMSCII-8", NULL },
+  /* Georgian */
+  { "GEORGIAN-PS", NULL },
   /* Unicode */
   { "UTF-8", "UTF-16", "UTF-7", "UCS-2", NULL },
   /* Other */
-  { "IBM874", "WINDOWS-1258", "TSCII", NULL },
+  { "IBM874", "TSCII", NULL },
 };
 
 
