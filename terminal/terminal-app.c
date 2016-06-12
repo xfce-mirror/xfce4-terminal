@@ -185,11 +185,10 @@ terminal_app_update_accels (TerminalApp *app)
   g_object_get (G_OBJECT (app->preferences),
                 "shortcuts-no-menukey", &no_menukey,
                 NULL);
-
-  gtk_settings_set_string_property (gtk_settings_get_default (),
-                                    "gtk-menu-bar-accel",
-                                    no_menukey ? "" : app->initial_menu_bar_accel,
-                                    PACKAGE_NAME);
+  g_object_set (G_OBJECT (gtk_settings_get_default ()),
+                "gtk-menu-bar-accel",
+                no_menukey ? NULL : app->initial_menu_bar_accel,
+                NULL);
 }
 
 
