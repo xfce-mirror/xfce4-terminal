@@ -196,30 +196,30 @@ static const GtkActionEntry action_entries[] =
     { "new-tab", "tab-new", N_ ("Open _Tab"), "<control><shift>t", N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), },
     { "new-window", "window-new", N_ ("Open T_erminal"), "<control><shift>n", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), },
     { "detach-tab", NULL, N_ ("_Detach Tab"), "<control><shift>d", NULL, G_CALLBACK (terminal_window_action_detach_tab), },
-    { "close-tab", GTK_STOCK_CLOSE, N_ ("Close T_ab"), "<control><shift>w", NULL, G_CALLBACK (terminal_window_action_close_tab), },
-    { "close-window", GTK_STOCK_QUIT, N_ ("Close _Window"), "<control><shift>q", NULL, G_CALLBACK (terminal_window_action_close_window), },
+    { "close-tab", "window-close", N_ ("Close T_ab"), "<control><shift>w", NULL, G_CALLBACK (terminal_window_action_close_tab), },
+    { "close-window", "application-exit", N_ ("Close _Window"), "<control><shift>q", NULL, G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
-    { "copy", GTK_STOCK_COPY, N_ ("_Copy"), "<control><shift>c", N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
-    { "paste", GTK_STOCK_PASTE, N_ ("_Paste"), "<control><shift>v", N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
+    { "copy", "edit-copy", N_ ("_Copy"), "<control><shift>c", N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
+    { "paste", "edit-paste", N_ ("_Paste"), "<control><shift>v", N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
     { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, NULL, G_CALLBACK (terminal_window_action_paste_selection), },
-    { "select-all", GTK_STOCK_SELECT_ALL, N_ ("Select _All"), "<control><shift>a", NULL, G_CALLBACK (terminal_window_action_select_all), },
-    { "preferences", GTK_STOCK_PREFERENCES, N_ ("Pr_eferences..."), NULL, N_ ("Open the preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
+    { "select-all", "edit-select-all", N_ ("Select _All"), "<control><shift>a", NULL, G_CALLBACK (terminal_window_action_select_all), },
+    { "preferences", "preferences-system", N_ ("Pr_eferences..."), NULL, N_ ("Open the preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
   { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
     { "set-title", NULL, N_ ("_Set Title..."), NULL, NULL, G_CALLBACK (terminal_window_action_set_title), },
-    { "search", GTK_STOCK_FIND, N_ ("_Find..."), "<control><shift>f", NULL, G_CALLBACK (terminal_window_action_search), },
+    { "search", "edit-find", N_ ("_Find..."), "<control><shift>f", NULL, G_CALLBACK (terminal_window_action_search), },
     { "search-next", NULL, N_ ("Find Ne_xt"), NULL, NULL, G_CALLBACK (terminal_window_action_search_next), },
     { "search-prev", NULL, N_ ("Find Pre_vious"), NULL, NULL, G_CALLBACK (terminal_window_action_search_prev), },
     { "reset", NULL, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
     { "reset-and-clear", NULL, N_ ("_Clear Scrollback and Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "tabs-menu", NULL, N_ ("T_abs"), NULL, NULL, NULL, },
-    { "prev-tab", GTK_STOCK_GO_BACK, N_ ("_Previous Tab"), "<Control>Page_Up", N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
-    { "next-tab", GTK_STOCK_GO_FORWARD, N_ ("_Next Tab"), "<Control>Page_Down", N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
+    { "prev-tab", "go-previous", N_ ("_Previous Tab"), "<Control>Page_Up", N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
+    { "next-tab", "go-next", N_ ("_Next Tab"), "<Control>Page_Down", N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
     { "move-tab-left", NULL, N_ ("Move Tab _Left"), NULL, NULL, G_CALLBACK (terminal_window_action_move_tab_left), },
     { "move-tab-right", NULL, N_ ("Move Tab _Right"), NULL, NULL, G_CALLBACK (terminal_window_action_move_tab_right), },
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
-    { "contents", GTK_STOCK_HELP, N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
-    { "about", GTK_STOCK_ABOUT, N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
+    { "contents", "help-browser", N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
+    { "about", "help-about", N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
   { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
 
@@ -228,7 +228,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "show-menubar", NULL, N_ ("Show _Menubar"), NULL, N_ ("Show/hide the menubar"), G_CALLBACK (terminal_window_action_show_menubar), FALSE, },
   { "show-toolbar", NULL, N_ ("Show _Toolbar"), NULL, N_ ("Show/hide the toolbar"), G_CALLBACK (terminal_window_action_show_toolbar), FALSE, },
   { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
-  { "fullscreen", GTK_STOCK_FULLSCREEN, N_ ("_Fullscreen"), "F11", N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
+  { "fullscreen", "view-fullscreen", N_ ("_Fullscreen"), "F11", N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
 };
 
 
@@ -497,17 +497,15 @@ terminal_window_confirm_close (TerminalWindow *window)
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT
                                         | GTK_DIALOG_MODAL,
-                                        GTK_STOCK_CANCEL,
+                                        _("_Cancel"),
                                         GTK_RESPONSE_CANCEL,
                                         NULL);
 
-  //gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
-
-  button = xfce_gtk_button_new_mixed (GTK_STOCK_CLOSE, _("Close T_ab"));
+  button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
   gtk_widget_show (button);
 
-  button = xfce_gtk_button_new_mixed (GTK_STOCK_QUIT, _("Close _Window"));
+  button = xfce_gtk_button_new_mixed ("application-exit", _("Close _Window"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
   gtk_widget_grab_focus (button);
   gtk_widget_show (button);
@@ -517,7 +515,7 @@ terminal_window_confirm_close (TerminalWindow *window)
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox, TRUE, TRUE, 0);
   gtk_widget_show (hbox);
 
-  image = gtk_image_new_from_stock (GTK_STOCK_DIALOG_WARNING, GTK_ICON_SIZE_DIALOG);
+  image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
   gtk_misc_set_alignment (GTK_MISC (image), 0.5, 0.0);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
   gtk_widget_show (image);
@@ -1605,8 +1603,8 @@ terminal_window_action_set_title (GtkAction      *action,
       dialog = gtk_dialog_new_with_buttons (Q_("Window Title|Set Title"),
                                             GTK_WINDOW (window),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            GTK_STOCK_HELP, GTK_RESPONSE_HELP,
-                                            GTK_STOCK_CLOSE, GTK_RESPONSE_CLOSE,
+                                            _("_Help"), GTK_RESPONSE_HELP,
+                                            _("_Close"), GTK_RESPONSE_CLOSE,
                                             NULL);
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 
@@ -1623,7 +1621,7 @@ terminal_window_action_set_title (GtkAction      *action,
       gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
       gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
       gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
-      gtk_entry_set_icon_from_stock (GTK_ENTRY (entry), GTK_ENTRY_ICON_SECONDARY, GTK_STOCK_CLEAR);
+      gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_SECONDARY, "edit-clear");
       g_signal_connect (G_OBJECT (entry), "icon-release", G_CALLBACK (title_dialog_clear), NULL);
       gtk_widget_show (entry);
 
