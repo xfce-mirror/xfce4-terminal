@@ -10,14 +10,14 @@
 # Jérôme Guelfucci <jeromeg@»fce.org>, 2009
 # Stephane Roy <sroy@j2n.net>, 2004
 # Urien Desterres <urien.desterres@gmail.com>, 2014-2015
-# Yannick Le Guen <leguen.yannick@gmail.com>, 2014
+# Yannick Le Guen <leguen.yannick@gmail.com>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-27 00:31+0100\n"
-"PO-Revision-Date: 2015-08-04 22:20+0000\n"
-"Last-Translator: Arnaud LE CAM <arnaud.lecam@yahoo.fr>\n"
+"POT-Creation-Date: 2016-06-13 00:31+0200\n"
+"PO-Revision-Date: 2016-06-13 09:00+0000\n"
+"Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,7 +154,7 @@ msgstr "Merci de signaler les bogues à <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Impossible d'enregistrer le service terminal : %s\n"
 
-#: ../terminal/terminal-app.c:738
+#: ../terminal/terminal-app.c:735
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Chaine de géométrie invalide « %s »\n"
@@ -220,16 +220,36 @@ msgid "Vietnamese"
 msgstr "Vietnamien"
 
 #: ../terminal/terminal-encoding-action.c:85
+msgid "Nordic"
+msgstr "Nordique"
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Celtic"
+msgstr "Celtique"
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Romanian"
+msgstr "Roumain"
+
+#: ../terminal/terminal-encoding-action.c:88
+msgid "Armenian"
+msgstr "Arménien"
+
+#: ../terminal/terminal-encoding-action.c:89
+msgid "Georgian"
+msgstr "Géorgien"
+
+#: ../terminal/terminal-encoding-action.c:90
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../terminal/terminal-encoding-action.c:86
+#: ../terminal/terminal-encoding-action.c:91
 msgid "Other"
 msgstr "Autre"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:385
+#: ../terminal/terminal-encoding-action.c:269
+#: ../terminal/terminal-encoding-action.c:400
 #, c-format
 msgid "Default (%s)"
 msgstr "Défaut (%s)"
@@ -340,27 +360,31 @@ msgstr "Charger préréglages..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:396 ../terminal/terminal-screen.c:681
-#: ../terminal/terminal-screen.c:1826
+#: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
+#: ../terminal/terminal-screen.c:1822
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: ../terminal/terminal-screen.c:581
+#: ../terminal/terminal-screen.c:583
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossible de déterminer votre shell de connexion."
 
-#: ../terminal/terminal-screen.c:1525 ../terminal/terminal-screen.c:1554
+#: ../terminal/terminal-screen.c:1530 ../terminal/terminal-screen.c:1559
 msgid "Failed to execute child"
 msgstr "Impossible d'exécuter un fils"
 
-#: ../terminal/terminal-screen.c:2170
+#: ../terminal/terminal-screen.c:2168
 msgid "Close this tab"
 msgstr "Fermer cet onglet"
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
 msgstr "Trouver"
+
+#: ../terminal/terminal-search-dialog.c:93
+msgid "_Close"
+msgstr "_Fermer"
 
 #: ../terminal/terminal-search-dialog.c:95
 msgid "_Previous"
@@ -402,46 +426,46 @@ msgstr "L’équipe de traduction francophone de Xfce"
 msgid "Visit Terminal website"
 msgstr "Visitez le site web de Terminal"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:323
 msgid "Copy Email Address"
 msgstr "Copier l’adresse électronique"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:324
 msgid "Compose Email"
 msgstr "Écrire un courriel"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:328
 msgid "Copy Link Address"
 msgstr "Copier l’adresse du lien"
 
-#: ../terminal/terminal-widget.c:331
+#: ../terminal/terminal-widget.c:329
 msgid "Open Link"
 msgstr "Ouvrir le lien"
 
-#: ../terminal/terminal-widget.c:485
+#: ../terminal/terminal-widget.c:480
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Impossible d'envoyer la sélection de type texte brut vers le terminal : mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:501
+#: ../terminal/terminal-widget.c:496
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Impossible d'envoyer le lien Mozilla vers le terminal : mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:527
+#: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Impossible d'envoyer la liste d'URI vers le terminal : mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:572
+#: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Couleur non conforme : Mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:706
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Impossible d'ouvrir l'URL « %s »"
@@ -458,223 +482,225 @@ msgstr "Terminal déroulant"
 msgid "Toggle Drop-down Terminal"
 msgstr "(Dés)activer le terminal déroulant"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:195
 msgid "_File"
 msgstr "_Fichier"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:196
 msgid "Open _Tab"
 msgstr "Ouvrir un _onglet"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:196
 msgid "Open a new terminal tab"
 msgstr "Ouvre un terminal dans un nouvel onglet"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:197
 msgid "Open T_erminal"
 msgstr "Ouvrir un _terminal"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:197
 msgid "Open a new terminal window"
 msgstr "Ouvrir un terminal dans une nouvelle fenêtre"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:198
 msgid "_Detach Tab"
 msgstr "_Détacher l'onglet"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
+#. gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
+#. GTK_RESPONSE_CANCEL);
+#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:506
 msgid "Close T_ab"
 msgstr "Fermer l'onglet"
 
-#: ../terminal/terminal-window.c:201 ../terminal/terminal-window.c:514
+#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
 msgid "Close _Window"
 msgstr "Fermer la fenêtre"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:201
 msgid "_Edit"
 msgstr "É_dition"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:202
 msgid "_Copy"
 msgstr "_Copier"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:202
 msgid "Copy to clipboard"
 msgstr "Copier vers le presse-papiers"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:203
 msgid "_Paste"
 msgstr "C_oller"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:203
 msgid "Paste from clipboard"
 msgstr "Coller depuis le presse-papiers"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:204
 msgid "Paste _Selection"
 msgstr "Coller la _sélection"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:205
 msgid "Select _All"
 msgstr "Tout _sélectionner"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:206
 msgid "Pr_eferences..."
 msgstr "Pr_éférences..."
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:206
 msgid "Open the preferences dialog"
 msgstr "Ouvre la fenêtre des préférences"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:207
 msgid "_View"
 msgstr "_Affichage"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:208
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:209
 msgid "_Set Title..."
 msgstr "_Définir le titre..."
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:210
 msgid "_Find..."
 msgstr "_Trouver..."
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:211
 msgid "Find Ne_xt"
 msgstr "Trouver _suivant"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:212
 msgid "Find Pre_vious"
 msgstr "Trouver _précédent"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:213
 msgid "_Reset"
 msgstr "_Réinitialiser"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:214
 msgid "_Clear Scrollback and Reset"
 msgstr "Effacer le défilement et réinitialiser"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:215
 msgid "T_abs"
 msgstr "_Onglets"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:216
 msgid "_Previous Tab"
 msgstr "Onglet _précédent"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:216
 msgid "Switch to previous tab"
 msgstr "Revenir à l'onglet précédent"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:217
 msgid "_Next Tab"
 msgstr "Onglet _suivant"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:217
 msgid "Switch to next tab"
 msgstr "Passer à l'onglet suivant"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:218
 msgid "Move Tab _Left"
 msgstr "Déplacer _l'onglet à gauche"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:219
 msgid "Move Tab _Right"
 msgstr "Déplacer _l'onglet à droite"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:220
 msgid "_Help"
 msgstr "Aid_e"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:221
 msgid "_Contents"
 msgstr "_Guide d’utilisation"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:221
 msgid "Display help contents"
 msgstr "Affiche le guide d'utilisation"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:222
 msgid "_About"
 msgstr "À _propos"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:223
 msgid "_Input Methods"
 msgstr "_Méthodes de saisie"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:228
 msgid "Show _Menubar"
 msgstr "Afficher la _barre de menus"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:228
 msgid "Show/hide the menubar"
 msgstr "Afficher/cacher la barre de menus"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:229
 msgid "Show _Toolbar"
 msgstr "Afficher la barre d'_outils"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:229
 msgid "Show/hide the toolbar"
 msgstr "Afficher/Cacher la barre d'outils"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Show Window _Borders"
 msgstr "Afficher les _bordures de la fenêtre"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Show/hide the window decorations"
 msgstr "Afficher/cacher les décorations de la fenêtre"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "_Fullscreen"
 msgstr "_Plein écran"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Toggle fullscreen mode"
 msgstr "(Dés)activer le mode plein écran"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:361
 msgid "Set _Encoding"
 msgstr "Définir l’_encodage"
 
-#: ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:497
 msgid "Warning"
 msgstr "Attention"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:529
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Cette fenêtre a %d onglets ouverts. Fermer\ncette fenêtre fermera aussi tous ses onglets."
 
-#: ../terminal/terminal-window.c:536
+#: ../terminal/terminal-window.c:532
 msgid "Close all tabs?"
 msgstr "Fermer tous les onglets ?"
 
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:545
 msgid "Do _not ask me again"
 msgstr "_Ne plus poser la question"
 
-#: ../terminal/terminal-window.c:1593
+#: ../terminal/terminal-window.c:1605
 msgid "Window Title|Set Title"
 msgstr "Titre de la fenêtre|Définir le titre"
 
-#: ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:1618
 msgid "_Title:"
 msgstr "_Titre :"
 
-#: ../terminal/terminal-window.c:1620
+#: ../terminal/terminal-window.c:1632
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrer le titre pour l'onglet courant du terminal"
 
-#: ../terminal/terminal-window.c:1668
+#: ../terminal/terminal-window.c:1680
 msgid "Failed to create the regular expression"
 msgstr "Impossible de créer l'expression régulière"
 
@@ -1019,82 +1045,82 @@ msgid "_Text color:"
 msgstr "Couleur du _texte :"
 
 #: ../terminal/terminal-preferences.glade.h:81
-msgid "_Background color:"
-msgstr "Couleur d’arrière-pla_n :"
+msgid "Choose text color"
+msgstr "Choisir la couleur de texte"
 
 #: ../terminal/terminal-preferences.glade.h:82
-msgid "Tab activit_y color:"
-msgstr "Couleur d'activ_ité d'onglet :"
+msgid "Color Selector"
+msgstr "Sélecteur de couleur"
 
 #: ../terminal/terminal-preferences.glade.h:83
+msgid "Open a dialog to specify the color"
+msgstr "Ouvre une fenêtre pour spécifier la couleur"
+
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Cu_rsor color:"
 msgstr "Couleur du cu_rseur :"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Choose cursor color"
+msgstr "Choisir la couleur du curseur"
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "_Background color:"
+msgstr "Couleur d’arrière-pla_n :"
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Choose background color"
+msgstr "Choisir la couleur d'arrière-plan"
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Tab activit_y color:"
+msgstr "Couleur d'activ_ité d'onglet :"
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Choose tab activity color"
+msgstr "Choisir la couleur d'activité d'onglet"
+
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "_Vary the background color for each tab"
 msgstr "_Changer la couleur d'arrière-plan pour chaque onglet"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:91
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "La couleur aléatoire est basée sur la couleur d'arrière-plan sélectionnée, en gardant la même luminosité."
-
-#: ../terminal/terminal-preferences.glade.h:86
-msgid "Choose background color"
-msgstr "Choisir la couleur d'arrière-plan"
-
-#: ../terminal/terminal-preferences.glade.h:87
-msgid "Color Selector"
-msgstr "Sélecteur de couleur"
-
-#: ../terminal/terminal-preferences.glade.h:88
-msgid "Open a dialog to specify the color"
-msgstr "Ouvre une fenêtre pour spécifier la couleur"
-
-#: ../terminal/terminal-preferences.glade.h:89
-msgid "Choose text color"
-msgstr "Choisir la couleur de texte"
-
-#: ../terminal/terminal-preferences.glade.h:90
-msgid "Choose cursor color"
-msgstr "Choisir la couleur du curseur"
-
-#: ../terminal/terminal-preferences.glade.h:91
-msgid "Choose tab activity color"
-msgstr "Choisir la couleur d'activité d'onglet"
 
 #: ../terminal/terminal-preferences.glade.h:92
 msgid "General"
 msgstr "Général"
 
 #: ../terminal/terminal-preferences.glade.h:93
+msgid "Choose text selection background color"
+msgstr "Choisir la couleur d'arrière-plan du texte sélectionné"
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Choose bold font color"
+msgstr "Choisir la couleur de police en gras"
+
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "Text _selection color:"
 msgstr "Couleur de sélection du texte :"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
 msgstr "Activer cette option pour définir une couleur d’arrière-plan personnalisée pour la sélection. Si désactivée, les couleurs de l’arrière-plan et du texte seront inversées."
 
-#: ../terminal/terminal-preferences.glade.h:95
-msgid "Choose text selection background color"
-msgstr "Choisir la couleur d'arrière-plan du texte sélectionné"
-
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "B_old text color:"
 msgstr "Couleur du texte en gra_s :"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:98
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Activer cette option pour définir une couleur gras personnalisée. Si elle est désactivée la couleur du texte sera utilisée."
-
-#: ../terminal/terminal-preferences.glade.h:98
-msgid "Choose bold font color"
-msgstr "Choisir la couleur de police en gras"
 
 #: ../terminal/terminal-preferences.glade.h:99
 msgid "Custom Colors"
@@ -1105,32 +1131,32 @@ msgid "Black"
 msgstr "Noir"
 
 #: ../terminal/terminal-preferences.glade.h:101
-msgid "Red"
-msgstr "Rouge"
-
-#: ../terminal/terminal-preferences.glade.h:102
-msgid "Yellow"
-msgstr "Jaune"
-
-#: ../terminal/terminal-preferences.glade.h:103
 msgid "Dark Gray"
 msgstr "Gris foncé"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:102
+msgid "Red"
+msgstr "Rouge"
+
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Light Red"
 msgstr "Rouge clair"
+
+#: ../terminal/terminal-preferences.glade.h:104
+msgid "Green"
+msgstr "Vert"
 
 #: ../terminal/terminal-preferences.glade.h:105
 msgid "Light Green"
 msgstr "Vert clair"
 
 #: ../terminal/terminal-preferences.glade.h:106
-msgid "Green"
-msgstr "Vert"
-
-#: ../terminal/terminal-preferences.glade.h:107
 msgid "Brown / Yellow"
 msgstr "Brun / Jaune"
+
+#: ../terminal/terminal-preferences.glade.h:107
+msgid "Yellow"
+msgstr "Jaune"
 
 #: ../terminal/terminal-preferences.glade.h:108
 msgid "Blue"
@@ -1141,12 +1167,12 @@ msgid "Light Blue"
 msgstr "Bleu clair"
 
 #: ../terminal/terminal-preferences.glade.h:110
-msgid "Light Magenta"
-msgstr "Magenta clair"
-
-#: ../terminal/terminal-preferences.glade.h:111
 msgid "Magenta"
 msgstr "Magenta"
+
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Light Magenta"
+msgstr "Magenta clair"
 
 #: ../terminal/terminal-preferences.glade.h:112
 msgid "Cyan"
@@ -1157,12 +1183,12 @@ msgid "Light Cyan"
 msgstr "Cyan clair"
 
 #: ../terminal/terminal-preferences.glade.h:114
-msgid "White"
-msgstr "Blanc"
-
-#: ../terminal/terminal-preferences.glade.h:115
 msgid "Light Gray"
 msgstr "Gris clair"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "White"
+msgstr "Blanc"
 
 #: ../terminal/terminal-preferences.glade.h:116
 msgid "Palette"
@@ -1177,28 +1203,28 @@ msgid "_Colors"
 msgstr "_Couleurs"
 
 #: ../terminal/terminal-preferences.glade.h:119
-msgid "_Backspace key generates:"
-msgstr "La touche _Retour arrière émet :"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Delete key generates:"
-msgstr "La touche _Supprimer émet :"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "Emulation s_etting:"
-msgstr "Paramètr_e d'émulation :"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Reset compatibility options to defaults"
-msgstr "_Réinitialiser les options de compatibilité aux valeurs par défaut"
-
-#: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr "Ces options peuvent gêner le fonctionnement de certaines\napplications. Elles sont seulement là pour vous permettre\nde faire fonctionner certaines applications et systèmes\nd'exploitation qui attendent un comportement différent\ndu terminal."
+
+#: ../terminal/terminal-preferences.glade.h:123
+msgid "_Backspace key generates:"
+msgstr "La touche _Retour arrière émet :"
+
+#: ../terminal/terminal-preferences.glade.h:124
+msgid "_Delete key generates:"
+msgstr "La touche _Supprimer émet :"
+
+#: ../terminal/terminal-preferences.glade.h:125
+msgid "Emulation s_etting:"
+msgstr "Paramètr_e d'émulation :"
+
+#: ../terminal/terminal-preferences.glade.h:126
+msgid "_Reset compatibility options to defaults"
+msgstr "_Réinitialiser les options de compatibilité aux valeurs par défaut"
 
 #: ../terminal/terminal-preferences.glade.h:127
 msgid "Compatibility"
