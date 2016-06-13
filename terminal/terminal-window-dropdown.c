@@ -279,7 +279,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   g_object_get (G_OBJECT (window->preferences), "dropdown-keep-open-default", &keep_open, NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
 
-  img = gtk_image_new_from_stock (GTK_STOCK_GOTO_BOTTOM, GTK_ICON_SIZE_MENU);
+  img = gtk_image_new_from_icon_name ("go-bottom", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
   gtk_widget_show (img);
 
