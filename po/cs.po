@@ -5,16 +5,16 @@
 # Translators:
 # Alois Nešpor <info@aloisnespor.info>, 2013
 # Alois Nešpor <info@aloisnespor.info>, 2014
-# Radim Kolář <kolar.radim@gmail.com>, 2013
-# Michal Várady <miko.vaji@gmail.com>, 2014
+# hsn <kolar.radim@gmail.com>, 2013
+# Michal Várady <miko.vaji@gmail.com>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-27 00:31+0100\n"
-"PO-Revision-Date: 2014-03-23 20:15+0000\n"
-"Last-Translator: Alois Nešpor <info@aloisnespor.info>\n"
-"Language-Team: Czech (http://www.transifex.com/projects/p/xfce/language/cs/)\n"
+"POT-Creation-Date: 2016-06-13 00:31+0200\n"
+"PO-Revision-Date: 2016-06-13 08:06+0000\n"
+"Last-Translator: Michal Várady <miko.vaji@gmail.com>\n"
+"Language-Team: Czech (http://www.transifex.com/xfce/xfce-apps/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -150,7 +150,7 @@ msgstr "Hlášení o chybách posílejte na adresu <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nelze registrovat službu terminálu: %s\n"
 
-#: ../terminal/terminal-app.c:738
+#: ../terminal/terminal-app.c:735
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neplatný řetězec geometrie \"%s\"\n"
@@ -216,16 +216,36 @@ msgid "Vietnamese"
 msgstr "Vietnamština"
 
 #: ../terminal/terminal-encoding-action.c:85
+msgid "Nordic"
+msgstr "Severské"
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Celtic"
+msgstr "Keltské"
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Romanian"
+msgstr "Rumunština"
+
+#: ../terminal/terminal-encoding-action.c:88
+msgid "Armenian"
+msgstr "Arménština"
+
+#: ../terminal/terminal-encoding-action.c:89
+msgid "Georgian"
+msgstr "Gruzínština"
+
+#: ../terminal/terminal-encoding-action.c:90
 msgid "Unicode"
 msgstr "Unicode"
 
-#: ../terminal/terminal-encoding-action.c:86
+#: ../terminal/terminal-encoding-action.c:91
 msgid "Other"
 msgstr "Jiné"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:385
+#: ../terminal/terminal-encoding-action.c:269
+#: ../terminal/terminal-encoding-action.c:400
 #, c-format
 msgid "Default (%s)"
 msgstr "Výchozí (%s)"
@@ -336,27 +356,31 @@ msgstr "Načíst přednastavení..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:396 ../terminal/terminal-screen.c:681
-#: ../terminal/terminal-screen.c:1826
+#: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
+#: ../terminal/terminal-screen.c:1822
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: ../terminal/terminal-screen.c:581
+#: ../terminal/terminal-screen.c:583
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nelze zjistit vaše uživatelské jméno."
 
-#: ../terminal/terminal-screen.c:1525 ../terminal/terminal-screen.c:1554
+#: ../terminal/terminal-screen.c:1530 ../terminal/terminal-screen.c:1559
 msgid "Failed to execute child"
 msgstr "Spuštění procesu potomka se nezdařilo"
 
-#: ../terminal/terminal-screen.c:2170
+#: ../terminal/terminal-screen.c:2168
 msgid "Close this tab"
 msgstr "Zavřít tuto kartu"
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
 msgstr "Najít"
+
+#: ../terminal/terminal-search-dialog.c:93
+msgid "_Close"
+msgstr "_Zavřít"
 
 #: ../terminal/terminal-search-dialog.c:95
 msgid "_Previous"
@@ -398,46 +422,46 @@ msgstr "translator-credits"
 msgid "Visit Terminal website"
 msgstr "Navštívit webovou stránku aplikace Terminal"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:323
 msgid "Copy Email Address"
 msgstr "Kopírovat e-mailovou adresu"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:324
 msgid "Compose Email"
 msgstr "Napsat e-mail"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:328
 msgid "Copy Link Address"
 msgstr "Kopírovat adresu odkazu"
 
-#: ../terminal/terminal-widget.c:331
+#: ../terminal/terminal-widget.c:329
 msgid "Open Link"
 msgstr "Otevřít odkaz"
 
-#: ../terminal/terminal-widget.c:485
+#: ../terminal/terminal-widget.c:480
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Nelze předat vybraný text typu text/plain na terminál. Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:501
+#: ../terminal/terminal-widget.c:496
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nelze předat adresu Mozilla URL na teminál: Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:527
+#: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nelze předat seznam adres URI terminálu. Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:572
+#: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Přijata neplatná data o barvách: Nesprávný formát (%d) nebo délka (%d)\n"
 
-#: ../terminal/terminal-widget.c:706
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Nepodařilo se otevřít adresu URL `%s'"
@@ -454,223 +478,225 @@ msgstr "Otevřít T_erminál"
 msgid "Toggle Drop-down Terminal"
 msgstr "Přepnout drop-down terminál"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:195
 msgid "_File"
 msgstr "_Soubor"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:196
 msgid "Open _Tab"
 msgstr "Otevří_t kartu"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:196
 msgid "Open a new terminal tab"
 msgstr "Otevře novou kartu terminálu"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:197
 msgid "Open T_erminal"
 msgstr "Otevřít T_erminál"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:197
 msgid "Open a new terminal window"
 msgstr "Otevře nové okno terminálu"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:198
 msgid "_Detach Tab"
 msgstr "O_dpojit kartu"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
+#. gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
+#. GTK_RESPONSE_CANCEL);
+#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:506
 msgid "Close T_ab"
 msgstr "Zavřít _kartu"
 
-#: ../terminal/terminal-window.c:201 ../terminal/terminal-window.c:514
+#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
 msgid "Close _Window"
 msgstr "Zavřít _okno"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:201
 msgid "_Edit"
 msgstr "Ú_pravy"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:202
 msgid "_Copy"
 msgstr "_Kopírovat"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:202
 msgid "Copy to clipboard"
 msgstr "Zkopírovat do schránky."
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:203
 msgid "_Paste"
 msgstr "Vlož_it"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:203
 msgid "Paste from clipboard"
 msgstr "Vložit ze schránky"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:204
 msgid "Paste _Selection"
 msgstr "Vložit _výběr"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:205
 msgid "Select _All"
 msgstr "_Vybrat vše"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:206
 msgid "Pr_eferences..."
 msgstr "Na_stavení..."
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:206
 msgid "Open the preferences dialog"
 msgstr "Otevřít dialogové okno nastavení"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:207
 msgid "_View"
 msgstr "_Zobrazit"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:208
 msgid "_Terminal"
 msgstr "_Terminál"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:209
 msgid "_Set Title..."
 msgstr "_Nastavit titulek..."
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:210
 msgid "_Find..."
 msgstr "_Najít..."
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:211
 msgid "Find Ne_xt"
 msgstr "Najít _další"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:212
 msgid "Find Pre_vious"
 msgstr "Najít _předchozí"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:213
 msgid "_Reset"
 msgstr "_Inicializovat"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:214
 msgid "_Clear Scrollback and Reset"
 msgstr "Smazat historii a reinicializovat"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:215
 msgid "T_abs"
 msgstr "K_arty"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:216
 msgid "_Previous Tab"
 msgstr "_Předchozí karta"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:216
 msgid "Switch to previous tab"
 msgstr "Přejde se na předchozí kartu"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:217
 msgid "_Next Tab"
 msgstr "_Následující karta"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:217
 msgid "Switch to next tab"
 msgstr "Přejde na následující kartu"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:218
 msgid "Move Tab _Left"
 msgstr "Přesunout panel _doleva"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:219
 msgid "Move Tab _Right"
 msgstr "Přesunout panel _doprava"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:220
 msgid "_Help"
 msgstr "_Nápověda"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:221
 msgid "_Contents"
 msgstr "_Obsah"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:221
 msgid "Display help contents"
 msgstr "Zobrazit obsah nápovědy"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:222
 msgid "_About"
 msgstr "O _aplikaci"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:223
 msgid "_Input Methods"
 msgstr "Vstupní metod_y"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:228
 msgid "Show _Menubar"
 msgstr "Zo_brazovat panel s nabídkou"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:228
 msgid "Show/hide the menubar"
 msgstr "Skrýt/zobrazit panel nabídky"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:229
 msgid "Show _Toolbar"
 msgstr "Zobrazit _panel nástrojů"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:229
 msgid "Show/hide the toolbar"
 msgstr "Zobrazit/Skrýt panely nástrojů"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Show Window _Borders"
 msgstr "Zo_brazit okraje okna"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Show/hide the window decorations"
 msgstr "Zobrazit nebo skrýt dekorace oken"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "_Fullscreen"
 msgstr "_Celá obrazovka"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Toggle fullscreen mode"
 msgstr "Přepnout do režimu celé obrazovky"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:361
 msgid "Set _Encoding"
 msgstr "Nastavit _kódování"
 
-#: ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:497
 msgid "Warning"
 msgstr "Varování"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:529
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "V okně je otevřeno %d karet. Zavřením\ntohoto okna budou zavřeny také všechny jeho karty."
 
-#: ../terminal/terminal-window.c:536
+#: ../terminal/terminal-window.c:532
 msgid "Close all tabs?"
 msgstr "Zavřít všechny karty?"
 
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:545
 msgid "Do _not ask me again"
 msgstr "Příště se již _nedotazovat"
 
-#: ../terminal/terminal-window.c:1593
+#: ../terminal/terminal-window.c:1605
 msgid "Window Title|Set Title"
 msgstr "Nastavit titulek"
 
-#: ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:1618
 msgid "_Title:"
 msgstr "Název:"
 
-#: ../terminal/terminal-window.c:1620
+#: ../terminal/terminal-window.c:1632
 msgid "Enter the title for the current terminal tab"
 msgstr "Vložte název pro aktuální kartu terminálu"
 
-#: ../terminal/terminal-window.c:1668
+#: ../terminal/terminal-window.c:1680
 msgid "Failed to create the regular expression"
 msgstr "Vytvoření regulárního výrazu se nepodařilo"
 
@@ -1015,82 +1041,82 @@ msgid "_Text color:"
 msgstr "Barva _textu:"
 
 #: ../terminal/terminal-preferences.glade.h:81
-msgid "_Background color:"
-msgstr "Barva _pozadí:"
+msgid "Choose text color"
+msgstr "Zvolte barvu textu"
 
 #: ../terminal/terminal-preferences.glade.h:82
-msgid "Tab activit_y color:"
-msgstr "B_arva při aktivitě karty:"
+msgid "Color Selector"
+msgstr "Výběr barev"
 
 #: ../terminal/terminal-preferences.glade.h:83
+msgid "Open a dialog to specify the color"
+msgstr "Otevře dialog výběru barvy"
+
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Cu_rsor color:"
 msgstr "Barva _kurzoru:"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Choose cursor color"
+msgstr "Zvolte barvu kurzoru"
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "_Background color:"
+msgstr "Barva _pozadí:"
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Choose background color"
+msgstr "Vyberte barvu pozadí"
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Tab activit_y color:"
+msgstr "B_arva při aktivitě karty:"
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Choose tab activity color"
+msgstr "Zvolte barvu indikace aktivity karty"
+
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "_Vary the background color for each tab"
 msgstr "_Různé barvy pozadí pro jednotlivé karty"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:91
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Náhodná barva je založena na nastavené barvě pozadí, ale zachovává stejný jas."
-
-#: ../terminal/terminal-preferences.glade.h:86
-msgid "Choose background color"
-msgstr "Vyberte barvu pozadí"
-
-#: ../terminal/terminal-preferences.glade.h:87
-msgid "Color Selector"
-msgstr "Výběr barev"
-
-#: ../terminal/terminal-preferences.glade.h:88
-msgid "Open a dialog to specify the color"
-msgstr "Otevře dialog výběru barvy"
-
-#: ../terminal/terminal-preferences.glade.h:89
-msgid "Choose text color"
-msgstr "Zvolte barvu textu"
-
-#: ../terminal/terminal-preferences.glade.h:90
-msgid "Choose cursor color"
-msgstr "Zvolte barvu kurzoru"
-
-#: ../terminal/terminal-preferences.glade.h:91
-msgid "Choose tab activity color"
-msgstr "Zvolte barvu indikace aktivity karty"
 
 #: ../terminal/terminal-preferences.glade.h:92
 msgid "General"
 msgstr "Obecné"
 
 #: ../terminal/terminal-preferences.glade.h:93
+msgid "Choose text selection background color"
+msgstr "Zvolte barvu pozadí vybraného textu"
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Choose bold font color"
+msgstr "Vyberte font a barvu pro tučný text"
+
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "Text _selection color:"
 msgstr "Barva výběr textu:"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
 msgstr "Povolte tuto volbu pro uživatelem nastavenou barvu pozadí výběru. Pokud volba není povolena barvy textu budou obráceny."
 
-#: ../terminal/terminal-preferences.glade.h:95
-msgid "Choose text selection background color"
-msgstr "Zvolte barvu pozadí vybraného textu"
-
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "B_old text color:"
 msgstr "Barva tučného textu:"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:98
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Povolte tuto volbu pro nastavení barvy tučného textu. Pokud není povolena tak se použije výchozí barva pro text."
-
-#: ../terminal/terminal-preferences.glade.h:98
-msgid "Choose bold font color"
-msgstr "Vyberte font a barvu pro tučný text"
 
 #: ../terminal/terminal-preferences.glade.h:99
 msgid "Custom Colors"
@@ -1101,32 +1127,32 @@ msgid "Black"
 msgstr "Černá"
 
 #: ../terminal/terminal-preferences.glade.h:101
-msgid "Red"
-msgstr "Červená"
-
-#: ../terminal/terminal-preferences.glade.h:102
-msgid "Yellow"
-msgstr "Žlutá"
-
-#: ../terminal/terminal-preferences.glade.h:103
 msgid "Dark Gray"
 msgstr "Tmavě šedivá"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:102
+msgid "Red"
+msgstr "Červená"
+
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Light Red"
 msgstr "Světle červená"
+
+#: ../terminal/terminal-preferences.glade.h:104
+msgid "Green"
+msgstr "Zelená"
 
 #: ../terminal/terminal-preferences.glade.h:105
 msgid "Light Green"
 msgstr "Světle zelená"
 
 #: ../terminal/terminal-preferences.glade.h:106
-msgid "Green"
-msgstr "Zelená"
-
-#: ../terminal/terminal-preferences.glade.h:107
 msgid "Brown / Yellow"
 msgstr "Hnědá / Žlutá"
+
+#: ../terminal/terminal-preferences.glade.h:107
+msgid "Yellow"
+msgstr "Žlutá"
 
 #: ../terminal/terminal-preferences.glade.h:108
 msgid "Blue"
@@ -1137,12 +1163,12 @@ msgid "Light Blue"
 msgstr "Světle modrá"
 
 #: ../terminal/terminal-preferences.glade.h:110
-msgid "Light Magenta"
-msgstr "Světle purpurová"
-
-#: ../terminal/terminal-preferences.glade.h:111
 msgid "Magenta"
 msgstr "Purpurová"
+
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Light Magenta"
+msgstr "Světle purpurová"
 
 #: ../terminal/terminal-preferences.glade.h:112
 msgid "Cyan"
@@ -1153,12 +1179,12 @@ msgid "Light Cyan"
 msgstr "Světle modrozelená"
 
 #: ../terminal/terminal-preferences.glade.h:114
-msgid "White"
-msgstr "Bílá"
-
-#: ../terminal/terminal-preferences.glade.h:115
 msgid "Light Gray"
 msgstr "Světle šedivá"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "White"
+msgstr "Bílá"
 
 #: ../terminal/terminal-preferences.glade.h:116
 msgid "Palette"
@@ -1173,28 +1199,28 @@ msgid "_Colors"
 msgstr "_Barvy"
 
 #: ../terminal/terminal-preferences.glade.h:119
-msgid "_Backspace key generates:"
-msgstr "Klávesa _Backspace generuje:"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Delete key generates:"
-msgstr "Klávesa _Delete generuje:"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "Emulation s_etting:"
-msgstr "Nastavení emulace terminálu:"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Reset compatibility options to defaults"
-msgstr "Obnovit výchozí nastavení pro _kompatibilitu"
-
-#: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr "Tyto volby mohou způsobit, že některé aplikace nebudou\npracovat správně. Jsou tu pouze pro možnost obejití\nneočekávaného chování terminálu u některých aplikací\na operačních systémů."
+
+#: ../terminal/terminal-preferences.glade.h:123
+msgid "_Backspace key generates:"
+msgstr "Klávesa _Backspace generuje:"
+
+#: ../terminal/terminal-preferences.glade.h:124
+msgid "_Delete key generates:"
+msgstr "Klávesa _Delete generuje:"
+
+#: ../terminal/terminal-preferences.glade.h:125
+msgid "Emulation s_etting:"
+msgstr "Nastavení emulace terminálu:"
+
+#: ../terminal/terminal-preferences.glade.h:126
+msgid "_Reset compatibility options to defaults"
+msgstr "Obnovit výchozí nastavení pro _kompatibilitu"
 
 #: ../terminal/terminal-preferences.glade.h:127
 msgid "Compatibility"
