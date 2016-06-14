@@ -153,13 +153,13 @@ transform_color_to_string (const GValue *src,
                            GValue       *dst)
 {
   GdkRGBA *color;
-  gchar    buffer[8];
+  gchar    buffer[16];
 
   color = g_value_get_boxed (src);
-  g_snprintf (buffer, sizeof (buffer), "#%02x%02x%02x",
-              (guint) (color->red * 255),
-              (guint) (color->green * 255),
-              (guint) (color->blue * 255));
+  g_snprintf (buffer, sizeof (buffer), "#%04x%04x%04x",
+              (guint) (color->red * 65535),
+              (guint) (color->green * 65535),
+              (guint) (color->blue * 65535));
   g_value_set_string (dst, buffer);
 }
 
