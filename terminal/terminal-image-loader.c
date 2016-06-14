@@ -66,7 +66,7 @@ struct _TerminalImageLoader
   GSList                  *cache;
   GSList                  *cache_invalid;
   gdouble                  darkness;
-  GdkColor                 bgcolor;
+  GdkRGBA                  bgcolor;
   GdkPixbuf               *pixbuf;
   TerminalBackgroundStyle  style;
 };
@@ -119,7 +119,7 @@ static void
 terminal_image_loader_check (TerminalImageLoader *loader)
 {
   TerminalBackgroundStyle selected_style;
-  GdkColor                selected_color;
+  GdkRGBA                 selected_color;
   gboolean                invalidate = FALSE;
   gdouble                 selected_darkness;
   gchar                  *selected_color_spec;
@@ -158,8 +158,8 @@ terminal_image_loader_check (TerminalImageLoader *loader)
       invalidate = TRUE;
     }
 
-  gdk_color_parse (selected_color_spec, &selected_color);
-  if (!gdk_color_equal (&selected_color, &loader->bgcolor))
+  gdk_rgba_parse (&selected_color, selected_color_spec);
+  if (!gdk_rgba_equal (&selected_color, &loader->bgcolor))
     {
       loader->bgcolor = selected_color;
       invalidate = TRUE;
@@ -261,9 +261,9 @@ terminal_image_loader_center (TerminalImageLoader *loader,
   gint    y0;
 
   /* fill with background color */
-  rgba = (((loader->bgcolor.red & 0xff00) << 8)
-        | ((loader->bgcolor.green & 0xff00))
-        | ((loader->bgcolor.blue & 0xff00 >> 8))) << 8;
+  rgba = ((((guint)(loader->bgcolor.red * 65535) & 0xff00) << 8)
+        | (((guint)(loader->bgcolor.green * 65535) & 0xff00))
+        | (((guint)(loader->bgcolor.blue * 65535) & 0xff00) >> 8)) << 8;
   gdk_pixbuf_fill (target, rgba);
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
@@ -298,9 +298,9 @@ terminal_image_loader_scale (TerminalImageLoader *loader,
   gint    y;
 
   /* fill with background color */
-  rgba = (((loader->bgcolor.red & 0xff00) << 8)
-        | ((loader->bgcolor.green & 0xff00))
-        | ((loader->bgcolor.blue & 0xff00 >> 8))) << 8;
+  rgba = ((((guint)(loader->bgcolor.red * 65535) & 0xff00) << 8)
+        | (((guint)(loader->bgcolor.green * 65535) & 0xff00))
+        | (((guint)(loader->bgcolor.blue * 65535) & 0xff00) >> 8)) << 8;
   gdk_pixbuf_fill (target, rgba);
 
   source_width = gdk_pixbuf_get_width (loader->pixbuf);
@@ -379,20 +379,20 @@ terminal_image_loader_saturate (TerminalImageLoader *loader,
     {
       for (i = 0; i < 256; ++i)
         {
-          red[i] = loader->bgcolor.red >> 8;
-          green[i] = loader->bgcolor.green >> 8;
-          blue[i] = loader->bgcolor.blue >> 8;
+          red[i] = (guint)(loader->bgcolor.red * 65535) >> 8;
+          green[i] = (guint)(loader->bgcolor.green * 65535) >> 8;
+          blue[i] = (guint)(loader->bgcolor.blue * 65535) >> 8;
         }
     }
   else
     {
       for (i = 0; i < 256; ++i)
         {
-          red[i] = CLAMP ((loader->darkness * (loader->bgcolor.red >> 8))
+          red[i] = CLAMP ((loader->darkness * ((guint)(loader->bgcolor.red * 65535) >> 8))
                         + ((1.0 - loader->darkness) * i), 0, 255);
-          green[i] = CLAMP ((loader->darkness * (loader->bgcolor.green >> 8))
+          green[i] = CLAMP ((loader->darkness * ((guint)(loader->bgcolor.green * 65535) >> 8))
                         + ((1.0 - loader->darkness) * i), 0, 255);
-          blue[i] = CLAMP ((loader->darkness * (loader->bgcolor.blue >> 8))
+          blue[i] = CLAMP ((loader->darkness * ((guint)(loader->bgcolor.blue * 65535) >> 8))
                         + ((1.0 - loader->darkness) * i), 0, 255);
         }
     }
