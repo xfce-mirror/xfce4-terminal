@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-13 00:31+0200\n"
-"PO-Revision-Date: 2016-06-13 09:24+0000\n"
+"POT-Creation-Date: 2016-06-16 00:30+0200\n"
+"PO-Revision-Date: 2016-06-16 07:40+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -377,7 +377,7 @@ msgstr "Užverti šią kortelę"
 msgid "Find"
 msgstr "Ieškoti"
 
-#: ../terminal/terminal-search-dialog.c:93
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1607
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -501,13 +501,11 @@ msgstr "Atverti naują terminalo langą"
 msgid "_Detach Tab"
 msgstr "_Atkabinti kortelę"
 
-#. gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
-#. GTK_RESPONSE_CANCEL);
-#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:506
+#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:504
 msgid "Close T_ab"
 msgstr "Užverti ko_rtelę"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
+#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:508
 msgid "Close _Window"
 msgstr "Užverti _langą"
 
@@ -607,7 +605,7 @@ msgstr "Perkelti kortelę _kairėn"
 msgid "Move Tab _Right"
 msgstr "Perkelti kortelę _dešinėn"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1606
 msgid "_Help"
 msgstr "Ž_inynas"
 
@@ -668,34 +666,38 @@ msgstr "Nustatyti k_oduotę"
 msgid "Warning"
 msgstr "Įspėjimas"
 
-#: ../terminal/terminal-window.c:529
+#: ../terminal/terminal-window.c:500
+msgid "_Cancel"
+msgstr "_Atsisakyti"
+
+#: ../terminal/terminal-window.c:527
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Šis langas turi %d atvertas korteles. Užvėrus\nšį langą, bus užvertos ir visos kortelės."
 
-#: ../terminal/terminal-window.c:532
+#: ../terminal/terminal-window.c:530
 msgid "Close all tabs?"
 msgstr "Užverti visas korteles?"
 
-#: ../terminal/terminal-window.c:545
+#: ../terminal/terminal-window.c:543
 msgid "Do _not ask me again"
 msgstr "Daugiau n_ebeklausti"
 
-#: ../terminal/terminal-window.c:1605
+#: ../terminal/terminal-window.c:1603
 msgid "Window Title|Set Title"
 msgstr "Lango antraštė|Nustatykite antraštę"
 
-#: ../terminal/terminal-window.c:1618
+#: ../terminal/terminal-window.c:1616
 msgid "_Title:"
 msgstr "_Antraštė:"
 
-#: ../terminal/terminal-window.c:1632
+#: ../terminal/terminal-window.c:1630
 msgid "Enter the title for the current terminal tab"
 msgstr "Įveskite antraštę, dabartinei terminalo kortelei"
 
-#: ../terminal/terminal-window.c:1680
+#: ../terminal/terminal-window.c:1678
 msgid "Failed to create the regular expression"
 msgstr "Nepavyko sukurti reguliarios išraiškos"
 
