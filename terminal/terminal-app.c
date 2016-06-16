@@ -596,6 +596,36 @@ terminal_app_find_screen_by_name (const gchar *display_name)
 
 
 
+/**
+ * Parses geometry string for GTK>=3.20 (gtk_window_parse_geometry() declared deprecated)
+ * geometry format is "1000x1000+0+0"
+ * TODO: support +0+0
+ */
+static gboolean
+terminal_app_parse_geometry (const gchar *geometry,
+                             gint        *x,
+                             gint        *y)
+{
+  gchar    **strings;
+  gboolean   res;
+
+  strings = g_strsplit_set (geometry, "x+", -1);
+  if (!strings[0] || !*strings[0] || !strings[1] || !*strings[1])
+    {
+      res = FALSE;
+    }
+  else
+    {
+      res = TRUE;
+      *x = atoi (strings[0]);
+      *y = atoi (strings[1]);
+    }
+  g_strfreev (strings);
+  return res;
+}
+
+
+
 static void
 terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
@@ -609,6 +639,11 @@ terminal_app_open_window (TerminalApp        *app,
   gboolean         reuse_window = FALSE;
   GdkDisplay      *attr_display;
   gint             attr_screen_num;
+#if GTK_CHECK_VERSION (3,20,0)
+  gint             width, height;
+  glong            char_width, char_height;
+  gint             xpad, ypad;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
   terminal_return_if_fail (attr != NULL);
@@ -714,6 +749,10 @@ terminal_app_open_window (TerminalApp        *app,
       terminal_window_add (TERMINAL_WINDOW (window), TERMINAL_SCREEN (terminal));
 
       terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
+
+#if GTK_CHECK_VERSION (3,20,0)
+      terminal_screen_get_geometry (TERMINAL_SCREEN (terminal), &char_width, &char_height, &xpad, &ypad);
+#endif
     }
 
   if (!attr->drop_down)
@@ -731,7 +770,13 @@ terminal_app_open_window (TerminalApp        *app,
         geometry = g_strdup (attr->geometry);
 
       /* try to apply the geometry to the window */
+#if GTK_CHECK_VERSION (3,20,0)
+      if (terminal_app_parse_geometry (geometry, &width, &height))
+        gtk_window_set_default_size (GTK_WINDOW (window), width * char_width + xpad, height * char_height + ypad);
+      else
+#else
       if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
+#endif
         g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
 
       /* cleanup */
