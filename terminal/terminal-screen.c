@@ -1289,9 +1289,9 @@ static gboolean
 terminal_screen_reset_activity_timeout (gpointer user_data)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
-  GtkStyle       *style;
   GdkRGBA         color;
   GdkRGBA         active_color;
+  GdkRGBA         fg_color;
 
   if (G_UNLIKELY (screen->tab_label == NULL))
     return FALSE;
@@ -1299,15 +1299,16 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
   GDK_THREADS_ENTER ();
 
   /* unset */
-  gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, NULL);
+  gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, NULL);
 
   if (terminal_preferences_get_color (screen->preferences, "tab-activity-color", &active_color))
     {
       /* calculate color between fg and active color */
-      style = gtk_widget_get_style (screen->tab_label);
-      color.red = (active_color.red + style->fg[GTK_STATE_ACTIVE].red) / 2;
-      color.green = (active_color.green + style->fg[GTK_STATE_ACTIVE].green) / 2;
-      color.blue = (active_color.blue + style->fg[GTK_STATE_ACTIVE].blue) / 2;
+      gtk_style_context_get_color (gtk_widget_get_style_context (screen->tab_label),
+                                   GTK_STATE_FLAG_ACTIVE, &fg_color);
+      color.red = (active_color.red + fg_color.red) / 2;
+      color.green = (active_color.green + fg_color.green) / 2;
+      color.blue = (active_color.blue + fg_color.blue) / 2;
 
       gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, &color);
     }
@@ -2123,7 +2124,7 @@ terminal_screen_reset_activity (TerminalScreen *screen)
     g_source_remove (screen->activity_timeout_id);
 
   if (screen->tab_label != NULL)
-    gtk_widget_modify_fg (screen->tab_label, GTK_STATE_ACTIVE, NULL);
+    gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, NULL);
 }
 
 
@@ -2161,7 +2162,11 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
                           G_BINDING_SYNC_CREATE);
 
   button = gtk_button_new ();
+#if GTK_CHECK_VERSION (3,20,0)
+  gtk_widget_set_focus_on_click (button, FALSE);
+#else
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
+#endif
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_widget_set_can_focus (button, FALSE);
   gtk_widget_set_can_default (button, FALSE);
@@ -2175,7 +2180,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   terminal_util_set_style_thinkess (button, 0);
 
   /* button image */
-  image = gtk_image_new_from_stock (GTK_STOCK_CLOSE, GTK_ICON_SIZE_MENU);
+  image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), image);
   gtk_widget_show (image);
 
