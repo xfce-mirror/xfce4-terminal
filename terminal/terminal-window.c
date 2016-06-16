@@ -665,8 +665,8 @@ terminal_window_update_actions (TerminalWindow *window)
   /* "Detach Tab" is only sensitive if we have atleast two pages */
   gtk_action_set_sensitive (window->action_detah_tab, (n_pages > 1));
 
-  /* ... same for the "Close Tab" action */
-  gtk_action_set_sensitive (window->action_close_tab, (n_pages > 1));
+  /* always allow "Close Tab" action (bug 12490) */
+  gtk_action_set_sensitive (window->action_close_tab, TRUE);
 
   /* update the actions for the current terminal screen */
  if (G_LIKELY (window->active != NULL))
