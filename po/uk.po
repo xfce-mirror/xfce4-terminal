@@ -5,16 +5,16 @@
 # Translators:
 # Dmitry Nikitin <luckas_fb@mail.ru>, 2008
 # Maxim Dziumanenko <dziumanenko@gmail.com>, 2006
-# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013,2015
+# Yarema aka Knedlyk <yupadmin@gmail.com>, 2013,2015-2016
 # zubr139, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-27 00:31+0100\n"
-"PO-Revision-Date: 2015-06-23 10:28+0000\n"
+"POT-Creation-Date: 2016-06-16 18:31+0200\n"
+"PO-Revision-Date: 2016-06-17 17:15+0000\n"
 "Last-Translator: Yarema aka Knedlyk <yupadmin@gmail.com>\n"
-"Language-Team: Ukrainian (http://www.transifex.com/projects/p/xfce-apps/language/uk/)\n"
+"Language-Team: Ukrainian (http://www.transifex.com/xfce/xfce-apps/language/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -150,7 +150,7 @@ msgstr "Сповіщайте про помилки до <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Не вдається зареєструвати службу терміналу: %s\n"
 
-#: ../terminal/terminal-app.c:738
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Неправильний рядок геометрії \"%s\"\n"
@@ -216,16 +216,36 @@ msgid "Vietnamese"
 msgstr "В’єтнамське"
 
 #: ../terminal/terminal-encoding-action.c:85
+msgid "Nordic"
+msgstr "Скандінавська"
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Celtic"
+msgstr "Кельтська"
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Romanian"
+msgstr "Румунська"
+
+#: ../terminal/terminal-encoding-action.c:88
+msgid "Armenian"
+msgstr "Вірменська"
+
+#: ../terminal/terminal-encoding-action.c:89
+msgid "Georgian"
+msgstr "Грузинська"
+
+#: ../terminal/terminal-encoding-action.c:90
 msgid "Unicode"
 msgstr "Юнікод"
 
-#: ../terminal/terminal-encoding-action.c:86
+#: ../terminal/terminal-encoding-action.c:91
 msgid "Other"
 msgstr "Інше"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:385
+#: ../terminal/terminal-encoding-action.c:269
+#: ../terminal/terminal-encoding-action.c:400
 #, c-format
 msgid "Default (%s)"
 msgstr "Типово (%s)"
@@ -336,27 +356,31 @@ msgstr "Завантажую типові налаштування"
 msgid "Terminal"
 msgstr "Термінал"
 
-#: ../terminal/terminal-screen.c:396 ../terminal/terminal-screen.c:681
-#: ../terminal/terminal-screen.c:1826
+#: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
+#: ../terminal/terminal-screen.c:1823
 msgid "Untitled"
 msgstr "Без назви"
 
-#: ../terminal/terminal-screen.c:581
+#: ../terminal/terminal-screen.c:583
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Не вдається визначити оболонку входу  у систему."
 
-#: ../terminal/terminal-screen.c:1525 ../terminal/terminal-screen.c:1554
+#: ../terminal/terminal-screen.c:1531 ../terminal/terminal-screen.c:1560
 msgid "Failed to execute child"
 msgstr "Помилка виконання дочірнього процес"
 
-#: ../terminal/terminal-screen.c:2170
+#: ../terminal/terminal-screen.c:2173
 msgid "Close this tab"
 msgstr "Закрити вкладку"
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
 msgstr "Знайти"
+
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1607
+msgid "_Close"
+msgstr "_Закрити"
 
 #: ../terminal/terminal-search-dialog.c:95
 msgid "_Previous"
@@ -398,46 +422,46 @@ msgstr "Максим Дзюманенко <dziumanenko@gmail.com>/nЯрема ak
 msgid "Visit Terminal website"
 msgstr "Відвідати вебсайт Terminal"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:323
 msgid "Copy Email Address"
 msgstr "Копіювати адресу ел. пошти"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:324
 msgid "Compose Email"
 msgstr "Написати поштове повідомлення"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:328
 msgid "Copy Link Address"
 msgstr "Копіювати Інтернет-адресу"
 
-#: ../terminal/terminal-widget.c:331
+#: ../terminal/terminal-widget.c:329
 msgid "Open Link"
 msgstr "Відкрити посилання"
 
-#: ../terminal/terminal-widget.c:485
+#: ../terminal/terminal-widget.c:480
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Не вдається виконати перетягування тексту у термінал: неправильний формат (%d) чи довжина (%d)\n"
 
-#: ../terminal/terminal-widget.c:501
+#: ../terminal/terminal-widget.c:496
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Не вдається виконати перетягування Інтернет-адреси у термінал: неправильний формат (%d) чи довжина (%d)\n"
 
-#: ../terminal/terminal-widget.c:527
+#: ../terminal/terminal-widget.c:522
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Не вдається виконати перетягування URI: неправильний формат (%d) чи довжина (%d)\n"
 
-#: ../terminal/terminal-widget.c:572
+#: ../terminal/terminal-widget.c:567
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Отримано некоректні дані про колір: неправильний формат (%d) чи довжина (%d)\n"
 
-#: ../terminal/terminal-widget.c:706
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Помилка при відкритті посилання URL `%s'"
@@ -446,231 +470,235 @@ msgstr "Помилка при відкритті посилання URL `%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Зберегти вікно відкритим при втраті фокусу"
 
-#: ../terminal/terminal-window-dropdown.c:355
+#: ../terminal/terminal-window-dropdown.c:363
 msgid "Drop-down Terminal"
 msgstr "Вигулькний термінал"
 
-#: ../terminal/terminal-window-dropdown.c:356
+#: ../terminal/terminal-window-dropdown.c:364
 msgid "Toggle Drop-down Terminal"
 msgstr "Включити вигулькний термінал"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:195
 msgid "_File"
 msgstr "_Файл"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:196
 msgid "Open _Tab"
 msgstr "Відкрити в_кладку"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:196
 msgid "Open a new terminal tab"
 msgstr "Відкрити нову вкладку терміналу"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:197
 msgid "Open T_erminal"
 msgstr "Відкрити _термінал"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:197
 msgid "Open a new terminal window"
 msgstr "Відкрити нове вікно терміналу"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:198
 msgid "_Detach Tab"
 msgstr "_Відкріпити вкладку"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
+#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:504
 msgid "Close T_ab"
 msgstr "Закрити _вкладку"
 
-#: ../terminal/terminal-window.c:201 ../terminal/terminal-window.c:514
+#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:508
 msgid "Close _Window"
 msgstr "Закрити ві_кно"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:201
 msgid "_Edit"
 msgstr "З_міни"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:202
 msgid "_Copy"
 msgstr "_Копіювати"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:202
 msgid "Copy to clipboard"
 msgstr "Скопіювати у буфер обміну"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:203
 msgid "_Paste"
 msgstr "Вст_авити"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:203
 msgid "Paste from clipboard"
 msgstr "Вставити з буферу обміну"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:204
 msgid "Paste _Selection"
 msgstr "Вставити вибра_не"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:205
 msgid "Select _All"
 msgstr "Позначити _все"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:206
 msgid "Pr_eferences..."
 msgstr "_Параметри"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:206
 msgid "Open the preferences dialog"
 msgstr "Відкрити діалог налаштування"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:207
 msgid "_View"
 msgstr "_Вигляд"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:208
 msgid "_Terminal"
 msgstr "_Термінал"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:209
 msgid "_Set Title..."
 msgstr "Встанов_ити заголовок..."
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:210
 msgid "_Find..."
 msgstr "_Знайти..."
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:211
 msgid "Find Ne_xt"
 msgstr "Знайти _наступне"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:212
 msgid "Find Pre_vious"
 msgstr "Знайти _попереднє"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:213
 msgid "_Reset"
 msgstr "Скин_ути"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:214
 msgid "_Clear Scrollback and Reset"
 msgstr "_Очистити прокрутку і скинути на типове"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:215
 msgid "T_abs"
 msgstr "В_кладки"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:216
 msgid "_Previous Tab"
 msgstr "Поп_ередня вкладка"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:216
 msgid "Switch to previous tab"
 msgstr "Перейти на попередню вкладку"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:217
 msgid "_Next Tab"
 msgstr "_Наступна вкладка"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:217
 msgid "Switch to next tab"
 msgstr "Перейти на наступну вкладку"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:218
 msgid "Move Tab _Left"
 msgstr "Пересунути вкладку _вліво"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:219
 msgid "Move Tab _Right"
 msgstr "Пересунути вкладку в_право"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1606
 msgid "_Help"
 msgstr "_Довідка"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:221
 msgid "_Contents"
 msgstr "_Зміст"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:221
 msgid "Display help contents"
 msgstr "Показати зміст довідки"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:222
 msgid "_About"
 msgstr "_Про програму"
 
-#: ../terminal/terminal-window.c:224
+#: ../terminal/terminal-window.c:223
 msgid "_Input Methods"
 msgstr "Методи _вводу"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:228
 msgid "Show _Menubar"
 msgstr "Показувати панель _меню"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:228
 msgid "Show/hide the menubar"
 msgstr "Показати чи сховати панель меню"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:229
 msgid "Show _Toolbar"
 msgstr "Показувати панель"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:229
 msgid "Show/hide the toolbar"
 msgstr "Показати/сховати панель"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Show Window _Borders"
 msgstr "Показувати _рамки вікон"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:230
 msgid "Show/hide the window decorations"
 msgstr "Показати чи приховати рамки навколо вікон"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "_Fullscreen"
 msgstr "На весь _екран"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:231
 msgid "Toggle fullscreen mode"
 msgstr "Перемикання повноекранного режиму"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:361
 msgid "Set _Encoding"
 msgstr "Встановити _кодування "
 
-#: ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:497
 msgid "Warning"
 msgstr "Попередження"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:500
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: ../terminal/terminal-window.c:527
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "У вікні відкрито %d вкладок. Закриття вікна\nпризведе до закриття усіх його вкладок."
 
-#: ../terminal/terminal-window.c:536
+#: ../terminal/terminal-window.c:530
 msgid "Close all tabs?"
 msgstr "Закрити усі вкладки?"
 
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:543
 msgid "Do _not ask me again"
 msgstr "_Не питати знову"
 
-#: ../terminal/terminal-window.c:1593
+#: ../terminal/terminal-window.c:1603
 msgid "Window Title|Set Title"
 msgstr "Встановити заголовок вікна"
 
-#: ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:1616
 msgid "_Title:"
 msgstr "_Назва:"
 
-#: ../terminal/terminal-window.c:1620
+#: ../terminal/terminal-window.c:1630
 msgid "Enter the title for the current terminal tab"
 msgstr "Введіть заголовок поточної вкладки"
 
-#: ../terminal/terminal-window.c:1668
+#: ../terminal/terminal-window.c:1678
 msgid "Failed to create the regular expression"
 msgstr "Неможливо створити регулярний вираз"
 
@@ -1015,82 +1043,82 @@ msgid "_Text color:"
 msgstr "Колір т_ексту:"
 
 #: ../terminal/terminal-preferences.glade.h:81
-msgid "_Background color:"
-msgstr "Колір _тла:"
+msgid "Choose text color"
+msgstr "Вибір кольору тексту"
 
 #: ../terminal/terminal-preferences.glade.h:82
-msgid "Tab activit_y color:"
-msgstr "Колір актив_ності вкладок:"
+msgid "Color Selector"
+msgstr "Вибір кольору"
 
 #: ../terminal/terminal-preferences.glade.h:83
+msgid "Open a dialog to specify the color"
+msgstr "Відкрити діалог вибору кольору"
+
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Cu_rsor color:"
 msgstr "Колір в_казівника:"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:85
+msgid "Choose cursor color"
+msgstr "Вибір кольору курсору"
+
+#: ../terminal/terminal-preferences.glade.h:86
+msgid "_Background color:"
+msgstr "Колір _тла:"
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Choose background color"
+msgstr "Вибір кольору тла"
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Tab activit_y color:"
+msgstr "Колір актив_ності вкладок:"
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "Choose tab activity color"
+msgstr "Вибір кольору tab-активності"
+
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "_Vary the background color for each tab"
 msgstr "_Міняти колір тла для кожної вкладки"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:91
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Випадковий колір вибирається щодо вибраного кольору тла, зберігаючи ту саму яскравість."
-
-#: ../terminal/terminal-preferences.glade.h:86
-msgid "Choose background color"
-msgstr "Вибір кольору тла"
-
-#: ../terminal/terminal-preferences.glade.h:87
-msgid "Color Selector"
-msgstr "Вибір кольору"
-
-#: ../terminal/terminal-preferences.glade.h:88
-msgid "Open a dialog to specify the color"
-msgstr "Відкрити діалог вибору кольору"
-
-#: ../terminal/terminal-preferences.glade.h:89
-msgid "Choose text color"
-msgstr "Вибір кольору тексту"
-
-#: ../terminal/terminal-preferences.glade.h:90
-msgid "Choose cursor color"
-msgstr "Вибір кольору курсору"
-
-#: ../terminal/terminal-preferences.glade.h:91
-msgid "Choose tab activity color"
-msgstr "Вибір кольору tab-активності"
 
 #: ../terminal/terminal-preferences.glade.h:92
 msgid "General"
 msgstr "Загальні"
 
 #: ../terminal/terminal-preferences.glade.h:93
+msgid "Choose text selection background color"
+msgstr "Вибір кольору тла виділення тексту"
+
+#: ../terminal/terminal-preferences.glade.h:94
+msgid "Choose bold font color"
+msgstr "Вибір кольору жирного шрифту"
+
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "Text _selection color:"
 msgstr "Колір вибору _тексту:"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
 msgstr "Включити цей параметр для встановлення іншого кольору тла для вибору. Якщо виключено, тоді колір тла і колір тексту поміняються місцями."
 
-#: ../terminal/terminal-preferences.glade.h:95
-msgid "Choose text selection background color"
-msgstr "Вибір кольору тла виділення тексту"
-
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "B_old text color:"
 msgstr "Колір жирного т_ексту:"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:98
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Включити цей параметр для встановлення іншого кольору жирного тексту. Якщо виключено, тоді буде використовуватися колір тексту."
-
-#: ../terminal/terminal-preferences.glade.h:98
-msgid "Choose bold font color"
-msgstr "Вибір кольору жирного шрифту"
 
 #: ../terminal/terminal-preferences.glade.h:99
 msgid "Custom Colors"
@@ -1101,32 +1129,32 @@ msgid "Black"
 msgstr "Чорний"
 
 #: ../terminal/terminal-preferences.glade.h:101
-msgid "Red"
-msgstr "Червоний"
-
-#: ../terminal/terminal-preferences.glade.h:102
-msgid "Yellow"
-msgstr "Жовтий"
-
-#: ../terminal/terminal-preferences.glade.h:103
 msgid "Dark Gray"
 msgstr "Темно-сірий"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:102
+msgid "Red"
+msgstr "Червоний"
+
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Light Red"
 msgstr "Світло-червоний"
+
+#: ../terminal/terminal-preferences.glade.h:104
+msgid "Green"
+msgstr "Зелений"
 
 #: ../terminal/terminal-preferences.glade.h:105
 msgid "Light Green"
 msgstr "Світло-зелений"
 
 #: ../terminal/terminal-preferences.glade.h:106
-msgid "Green"
-msgstr "Зелений"
-
-#: ../terminal/terminal-preferences.glade.h:107
 msgid "Brown / Yellow"
 msgstr "Коричневий / Жовтий"
+
+#: ../terminal/terminal-preferences.glade.h:107
+msgid "Yellow"
+msgstr "Жовтий"
 
 #: ../terminal/terminal-preferences.glade.h:108
 msgid "Blue"
@@ -1137,12 +1165,12 @@ msgid "Light Blue"
 msgstr "Світло-синій"
 
 #: ../terminal/terminal-preferences.glade.h:110
-msgid "Light Magenta"
-msgstr "Світло-пурпурний"
-
-#: ../terminal/terminal-preferences.glade.h:111
 msgid "Magenta"
 msgstr "Пурпурний"
+
+#: ../terminal/terminal-preferences.glade.h:111
+msgid "Light Magenta"
+msgstr "Світло-пурпурний"
 
 #: ../terminal/terminal-preferences.glade.h:112
 msgid "Cyan"
@@ -1153,12 +1181,12 @@ msgid "Light Cyan"
 msgstr "Світло-блакитний"
 
 #: ../terminal/terminal-preferences.glade.h:114
-msgid "White"
-msgstr "Білий"
-
-#: ../terminal/terminal-preferences.glade.h:115
 msgid "Light Gray"
 msgstr "Світло-сірий"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "White"
+msgstr "Білий"
 
 #: ../terminal/terminal-preferences.glade.h:116
 msgid "Palette"
@@ -1173,28 +1201,28 @@ msgid "_Colors"
 msgstr "К_ольори"
 
 #: ../terminal/terminal-preferences.glade.h:119
-msgid "_Backspace key generates:"
-msgstr "Клавіша _Backspace генерує:"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Delete key generates:"
-msgstr "Клавіша _Delete генерує:"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "Emulation s_etting:"
-msgstr "Параметри _емуляції:"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Reset compatibility options to defaults"
-msgstr "С_кинути значення опцій сумісності на початкові"
-
-#: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
 msgstr "Ці опції можуть спричинити некоректну роботу деяких\nпрограм. Вони існують лише для того, щоб дозволити роботу\nз деякими програмами і операційними системами, що\nрозраховують на іншу поведінку терміналу."
+
+#: ../terminal/terminal-preferences.glade.h:123
+msgid "_Backspace key generates:"
+msgstr "Клавіша _Backspace генерує:"
+
+#: ../terminal/terminal-preferences.glade.h:124
+msgid "_Delete key generates:"
+msgstr "Клавіша _Delete генерує:"
+
+#: ../terminal/terminal-preferences.glade.h:125
+msgid "Emulation s_etting:"
+msgstr "Параметри _емуляції:"
+
+#: ../terminal/terminal-preferences.glade.h:126
+msgid "_Reset compatibility options to defaults"
+msgstr "С_кинути значення опцій сумісності на початкові"
 
 #: ../terminal/terminal-preferences.glade.h:127
 msgid "Compatibility"
@@ -1231,7 +1259,7 @@ msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Вимкнути всі комбінації клавіш для м_еню (такі як Alt+ф для меню Файл)"
 
 #: ../terminal/terminal-preferences.glade.h:136
-msgid "Disable m_enu shortcut keys (F10 by default)"
+msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Вимкнути швидку клавішу доступу до _меню (зазвичай F10)"
 
 #: ../terminal/terminal-preferences.glade.h:137
