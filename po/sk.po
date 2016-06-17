@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-13 00:31+0200\n"
-"PO-Revision-Date: 2016-06-13 18:22+0000\n"
+"POT-Creation-Date: 2016-06-16 18:31+0200\n"
+"PO-Revision-Date: 2016-06-17 15:27+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfce-apps/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -152,7 +152,7 @@ msgstr "Chyby prosím nahláste na <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nejde registrovať službu terminálu: %s\n"
 
-#: ../terminal/terminal-app.c:735
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neplatný reťazec geometrie \"%s\"\n"
@@ -359,7 +359,7 @@ msgid "Terminal"
 msgstr "Terminál"
 
 #: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
-#: ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1823
 msgid "Untitled"
 msgstr "Bez názvu"
 
@@ -368,11 +368,11 @@ msgstr "Bez názvu"
 msgid "Unable to determine your login shell."
 msgstr "Nejde zisiť vaše užívateľské meno."
 
-#: ../terminal/terminal-screen.c:1530 ../terminal/terminal-screen.c:1559
+#: ../terminal/terminal-screen.c:1531 ../terminal/terminal-screen.c:1560
 msgid "Failed to execute child"
 msgstr "Spustenie procesu potomka zlyhalo"
 
-#: ../terminal/terminal-screen.c:2168
+#: ../terminal/terminal-screen.c:2173
 msgid "Close this tab"
 msgstr "Zavrieť túto kartu"
 
@@ -380,7 +380,7 @@ msgstr "Zavrieť túto kartu"
 msgid "Find"
 msgstr "Nájsť"
 
-#: ../terminal/terminal-search-dialog.c:93
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1607
 msgid "_Close"
 msgstr "_Zavrieť"
 
@@ -472,11 +472,11 @@ msgstr "Nepodarilo sa otvoriť adresu URL `%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Pri strate zamerania ponechať okno otvorené"
 
-#: ../terminal/terminal-window-dropdown.c:355
+#: ../terminal/terminal-window-dropdown.c:363
 msgid "Drop-down Terminal"
 msgstr "Rozbaľovací terminál"
 
-#: ../terminal/terminal-window-dropdown.c:356
+#: ../terminal/terminal-window-dropdown.c:364
 msgid "Toggle Drop-down Terminal"
 msgstr "Prepnúť rozbaľovací terminál"
 
@@ -504,13 +504,11 @@ msgstr "Otvorí nové okno terminálu"
 msgid "_Detach Tab"
 msgstr "O_dpojiť kartu"
 
-#. gtk_dialog_add_button (GTK_DIALOG (dialog), GTK_STOCK_CANCEL,
-#. GTK_RESPONSE_CANCEL);
-#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:506
+#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:504
 msgid "Close T_ab"
 msgstr "Z_atvoriť záložku"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
+#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:508
 msgid "Close _Window"
 msgstr "Zatvoriť _okno"
 
@@ -610,7 +608,7 @@ msgstr "Presunúť kartu _vľavo"
 msgid "Move Tab _Right"
 msgstr "Presunúť kartu vp_ravo"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1606
 msgid "_Help"
 msgstr "_Pomocník"
 
@@ -671,34 +669,38 @@ msgstr "Nastaviť _kódovanie"
 msgid "Warning"
 msgstr "Upozornenie"
 
-#: ../terminal/terminal-window.c:529
+#: ../terminal/terminal-window.c:500
+msgid "_Cancel"
+msgstr "_Zrušiť"
+
+#: ../terminal/terminal-window.c:527
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Okno obsahuje %d otvorených kariet. Zatvorením tohoto okna\nbudú tiež zavreté všetky jeho karty."
 
-#: ../terminal/terminal-window.c:532
+#: ../terminal/terminal-window.c:530
 msgid "Close all tabs?"
 msgstr "Zavrieť všetky karty?"
 
-#: ../terminal/terminal-window.c:545
+#: ../terminal/terminal-window.c:543
 msgid "Do _not ask me again"
 msgstr "_Nepýtať sa v budúcnosti"
 
-#: ../terminal/terminal-window.c:1605
+#: ../terminal/terminal-window.c:1603
 msgid "Window Title|Set Title"
 msgstr "Nastaviť titulok"
 
-#: ../terminal/terminal-window.c:1618
+#: ../terminal/terminal-window.c:1616
 msgid "_Title:"
 msgstr "_Titulok:"
 
-#: ../terminal/terminal-window.c:1632
+#: ../terminal/terminal-window.c:1630
 msgid "Enter the title for the current terminal tab"
 msgstr "Vložte názov pre aktuálnu kartu terminálu"
 
-#: ../terminal/terminal-window.c:1680
+#: ../terminal/terminal-window.c:1678
 msgid "Failed to create the regular expression"
 msgstr "Zlyhalo vytvorenie regulárneho výrazu"
 
@@ -1259,8 +1261,8 @@ msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Zakázať všetky klávesy pre prístup k po_nuke (také ako Alt+f)"
 
 #: ../terminal/terminal-preferences.glade.h:136
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Zakázať klávesy pre _prístup k ponuke (východzia F10)"
+msgid "Disable m_enu shortcut key (F10 by default)"
+msgstr "Zakázať klávesu skratky pre _prístup k ponuke (východzia F10)"
 
 #: ../terminal/terminal-preferences.glade.h:137
 msgid "Menubar Access"
