@@ -788,6 +788,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 
   /* get the new active page */
   active = TERMINAL_SCREEN (page);
+
   terminal_return_if_fail (window == NULL);
   terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
 
@@ -896,7 +897,9 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
                                        guint           page_num,
                                        TerminalWindow *window)
 {
-  gint npages;
+  GtkWidget *new_page;
+  gint       new_page_num;
+  gint       npages;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -920,15 +923,19 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
     {
       /* no tabs, destroy the window */
       gtk_widget_destroy (GTK_WIDGET (window));
+      return;
     }
-  else
-    {
-      /* show the tabs when needed */
-      terminal_window_notebook_show_tabs (window);
 
-      /* regenerate the "Go" menu */
-      terminal_window_rebuild_tabs_menu (window);
-    }
+  /* send a signal about switching to another tab */
+  new_page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
+  new_page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), new_page_num);
+  terminal_window_notebook_page_switched (notebook, new_page, new_page_num, window);
+
+  /* show the tabs when needed */
+  terminal_window_notebook_show_tabs (window);
+
+  /* regenerate the "Go" menu */
+  terminal_window_rebuild_tabs_menu (window);
 }
 
 static gboolean
