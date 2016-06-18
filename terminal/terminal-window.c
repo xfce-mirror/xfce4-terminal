@@ -364,7 +364,7 @@ terminal_window_init (TerminalWindow *window)
       G_CALLBACK (terminal_window_action_set_encoding), window);
 
   /* cache action pointers */
-  window->action_detah_tab = gtk_action_group_get_action (window->action_group, "detach-tab");
+  window->action_detach_tab = gtk_action_group_get_action (window->action_group, "detach-tab");
   window->action_close_tab = gtk_action_group_get_action (window->action_group, "close-tab");
   window->action_prev_tab = gtk_action_group_get_action (window->action_group, "prev-tab");
   window->action_next_tab = gtk_action_group_get_action (window->action_group, "next-tab");
@@ -662,8 +662,8 @@ terminal_window_update_actions (TerminalWindow *window)
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
 
-  /* "Detach Tab" is only sensitive if we have atleast two pages */
-  gtk_action_set_sensitive (window->action_detah_tab, (n_pages > 1));
+  /* "Detach Tab" is only sensitive if we have at least two pages */
+  gtk_action_set_sensitive (window->action_detach_tab, (n_pages > 1));
 
   /* always allow "Close Tab" action (bug 12490) */
   gtk_action_set_sensitive (window->action_close_tab, TRUE);

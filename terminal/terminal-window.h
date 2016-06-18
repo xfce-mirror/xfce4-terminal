@@ -76,7 +76,7 @@ struct _TerminalWindow
   TerminalScreen      *active;
 
   /* cached actions to avoid lookups */
-  GtkAction           *action_detah_tab;
+  GtkAction           *action_detach_tab;
   GtkAction           *action_close_tab;
   GtkAction           *action_prev_tab;
   GtkAction           *action_next_tab;
