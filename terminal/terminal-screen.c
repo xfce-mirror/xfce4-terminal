@@ -502,7 +502,7 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_misc_mouse_autohide (screen);
   else if (strcmp ("scrolling-bar", name) == 0)
     terminal_screen_update_scrolling_bar (screen);
-  else if (strcmp ("scrolling-lines", name) == 0)
+  else if (strcmp ("scrolling-lines", name) == 0 || strcmp ("scrolling-unlimited", name) == 0)
     terminal_screen_update_scrolling_lines (screen);
   else if (strcmp ("scrolling-on-output", name) == 0)
     terminal_screen_update_scrolling_on_output (screen);
@@ -1123,9 +1123,12 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 static void
 terminal_screen_update_scrolling_lines (TerminalScreen *screen)
 {
-  guint lines;
+  glong    lines;
+  gboolean unlimited;
   g_object_get (G_OBJECT (screen->preferences), "scrolling-lines", &lines, NULL);
-  vte_terminal_set_scrollback_lines (VTE_TERMINAL (screen->terminal), lines);
+  g_object_get (G_OBJECT (screen->preferences), "scrolling-unlimited", &unlimited, NULL);
+  vte_terminal_set_scrollback_lines (VTE_TERMINAL (screen->terminal),
+                                     unlimited ? -1 : lines);
 }
 
 
