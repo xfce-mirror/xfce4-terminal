@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-16 00:30+0200\n"
-"PO-Revision-Date: 2016-06-16 15:25+0000\n"
+"POT-Creation-Date: 2016-06-19 06:31+0200\n"
+"PO-Revision-Date: 2016-06-19 14:47+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfce-apps/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -150,7 +150,7 @@ msgstr "Докладвайте за грешки на <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Не може да се регистрира терминала: %s\n"
 
-#: ../terminal/terminal-app.c:735
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Невалидна геометрична поредица „%s“\n"
@@ -352,12 +352,12 @@ msgstr "Файлове с изображения"
 msgid "Load Presets..."
 msgstr "Зареждане на готовите комплекти..."
 
-#: ../terminal/terminal-preferences.c:879
+#: ../terminal/terminal-preferences.c:890
 msgid "Terminal"
 msgstr "Терминал"
 
 #: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
-#: ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1826
 msgid "Untitled"
 msgstr "Без име"
 
@@ -366,11 +366,11 @@ msgstr "Без име"
 msgid "Unable to determine your login shell."
 msgstr "Не може да се определи средата за вход."
 
-#: ../terminal/terminal-screen.c:1530 ../terminal/terminal-screen.c:1559
+#: ../terminal/terminal-screen.c:1534 ../terminal/terminal-screen.c:1563
 msgid "Failed to execute child"
 msgstr "Не може да се изпълни дъщерен процес"
 
-#: ../terminal/terminal-screen.c:2168
+#: ../terminal/terminal-screen.c:2176
 msgid "Close this tab"
 msgstr "Затваряне този подпрозорец"
 
@@ -378,7 +378,7 @@ msgstr "Затваряне този подпрозорец"
 msgid "Find"
 msgstr "Намиране"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1607
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1614
 msgid "_Close"
 msgstr "Затваряне"
 
@@ -470,11 +470,11 @@ msgstr "Неуспешно отваряне на адреса „%s“"
 msgid "Keep window open when it loses focus"
 msgstr "Запазване на прозореца отворен, когато изгуби фокус"
 
-#: ../terminal/terminal-window-dropdown.c:355
+#: ../terminal/terminal-window-dropdown.c:363
 msgid "Drop-down Terminal"
 msgstr "Падащ терминал"
 
-#: ../terminal/terminal-window-dropdown.c:356
+#: ../terminal/terminal-window-dropdown.c:364
 msgid "Toggle Drop-down Terminal"
 msgstr "Превключване на терминал с падащо меню"
 
@@ -606,7 +606,7 @@ msgstr "Преместване на подпрозореца наляво"
 msgid "Move Tab _Right"
 msgstr "Преместване на подпрозореца надясно"
 
-#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1613
 msgid "_Help"
 msgstr "Помощ"
 
@@ -686,19 +686,19 @@ msgstr "Затваряне на всички подпрозорци?"
 msgid "Do _not ask me again"
 msgstr "Не ме питай отново"
 
-#: ../terminal/terminal-window.c:1603
+#: ../terminal/terminal-window.c:1610
 msgid "Window Title|Set Title"
 msgstr "Заглавие на прозорец|Задаване на заглавие"
 
-#: ../terminal/terminal-window.c:1616
+#: ../terminal/terminal-window.c:1623
 msgid "_Title:"
 msgstr "Заглавие:"
 
-#: ../terminal/terminal-window.c:1630
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Въвеждане на заглавие на текущият подпрозорец"
 
-#: ../terminal/terminal-window.c:1678
+#: ../terminal/terminal-window.c:1685
 msgid "Failed to create the regular expression"
 msgstr "Грешка при създаването на регулярен израз"
 
@@ -859,348 +859,357 @@ msgid ""
 msgstr "Задай колко реда да се превъртат назад с лентата за превъртане"
 
 #: ../terminal/terminal-preferences.glade.h:37
+msgid "Unli_mited scrollback"
+msgstr "Неограничено превъртане назад"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid ""
+"This option controls whether the terminal will have no limits on scrollback."
+msgstr "При тази опция, терминалът ще може да показва предишните редове без ограничения."
+
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "Scrolling"
 msgstr "Превъртане"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:40
 msgid "_General"
 msgstr "Общи"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:41
 msgid "_Keep window open when it loses focus"
 msgstr "Запазване на прозореца отворен, когато изгуби фокус"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:42
 msgid "Always keep window on _top"
 msgstr "Винаги поставяй прозореца отгоре"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:43
 msgid "Use shortcut to _focus visible window"
 msgstr "Използване на клавишна комбинация за фокусиране на видим прозорец"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:44
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "Ако е включено, клавишната комбинация за отваряне и и прибиране на прозореца ще поставя прозореца на фокус, ако преди това фокусът е бил изгубен"
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:45
 msgid "Show _status icon in notification area"
 msgstr "Показване на икона за състоянието в областта за уведомяване"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:46
 msgid "Behavior"
 msgstr "Поведение"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:47
 msgid "Wi_dth:"
 msgstr "Ширина:"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "He_ight:"
 msgstr "Височина:"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:49
 msgid "_Opacity:"
 msgstr "Непрозрачност:"
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "D_uration:"
 msgstr "Продължителност:"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:51
 msgid "ms"
 msgstr "мс"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "_Always show tabs"
 msgstr "Винаги показвай подпрозорците"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "Appearance and Animation"
 msgstr "Външен вид и анимация"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "L_eft"
 msgstr "Ляво"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "Right"
 msgstr "Дясно"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "Move to monitor with poi_nter"
 msgstr "Преместване на наблюдението с показалеца"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "Position"
 msgstr "Позиция"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "Drop-do_wn"
 msgstr "Падащо меню"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Choose Terminal Font"
 msgstr "Избор на шрифт за терминала"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Allow bold te_xt"
 msgstr "Разрешаване на удебелен текст"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:61
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "Тази опция позволява програмите да използват удебелен текст в терминала."
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "Font"
 msgstr "Шрифт"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "_File:"
 msgstr "Файл:"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "St_yle:"
 msgstr "Стил:"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "Select Background Image File"
 msgstr "Избор на изображение за фон"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:66
 msgid "Transpare_ncy:"
 msgstr "Прозрачност"
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:67
 msgid "Background"
 msgstr "Фон"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "Display _menubar in new windows"
 msgstr "Показване на лентата на менюто в новите прозорци"
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:69
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Опция за показване лентата на менюто в новоотворени прозорци."
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "Display _toolbar in new windows"
 msgstr "Показване на лентата с инструменти в новите прозорци"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:71
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Включване на тази опция за да се показва лентата с инструменти в новосъздадени терминални прозорци."
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "Display _borders around new windows"
 msgstr "Показване на рамките на новите прозорци"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:73
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Опция за показване на декорациите на новоотворените прозорци."
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "Default geometry:"
 msgstr "Геометрия по подразбиране:"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "c_olumns"
 msgstr "колони"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "row_s"
 msgstr "редове"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Opening New Windows"
 msgstr "Отваря се нов прозорец"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Reset tab activity _indicator after"
 msgstr "Възстанови указателя за активност в подпрозореца след"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "seconds"
 msgstr "секунди"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Tab Activity Indicator"
 msgstr "Указател за активност в подпрозореца"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "_Appearance"
 msgstr "Външен вид"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "_Text color:"
 msgstr "Цвят на текста:"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "Choose text color"
 msgstr "Избор на цвят за текста на терминала"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Color Selector"
 msgstr "Избор на цвят"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Open a dialog to specify the color"
 msgstr "Отваряне на прозорец за избор на цвят"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "Cu_rsor color:"
 msgstr "Цвят на курсора:"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "Choose cursor color"
 msgstr "Избор на цвят за курсора на терминала"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "_Background color:"
 msgstr "Цвят на тапета"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:89
 msgid "Choose background color"
 msgstr "Избор на цвят за фон"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "Tab activit_y color:"
 msgstr "Цвят при активност в подпрозореца"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:91
 msgid "Choose tab activity color"
 msgstr "Избери цвят за активност на подпрозореца"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "_Vary the background color for each tab"
 msgstr "Различен цвят за фона на всеки подпрозорец"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:93
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Случайно избран цвят се базира на избрания цвят на фона, като се запазва същата яркост."
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "General"
 msgstr "Общи"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "Choose text selection background color"
 msgstr "Избор на цвят за избран текст в терминала"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Choose bold font color"
 msgstr "Избор на открояващ се цвят за шрифта"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "Text _selection color:"
 msgstr "Цвят за избраният текст:"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:98
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
 msgstr "Активирайте тази опция, за да зададете потребителски фон за селекцията. Ако я изключите, цветовете на фона и текста ще бъдат обърнати."
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "B_old text color:"
 msgstr "Открояващ се цвят на текста:"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:100
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Активирайте тази опция за да зададете по подразбиране открояващ се цвят. Ако я изключите ще бъде използван цветът на текста."
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "Custom Colors"
 msgstr "Цветове по подразбиране"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "Black"
 msgstr "Черен"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Dark Gray"
 msgstr "Тъмно сив"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:104
 msgid "Red"
 msgstr "Червен"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Light Red"
 msgstr "Светло червен"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "Green"
 msgstr "Зелен"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "Light Green"
 msgstr "Светло зелен"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Brown / Yellow"
 msgstr "Кафяво / Жълто"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "Yellow"
 msgstr "Жълто"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Blue"
 msgstr "Син"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Light Blue"
 msgstr "Светло син"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Magenta"
 msgstr "Пурпурен"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Light Magenta"
 msgstr "Светло пурпурен"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "Cyan"
 msgstr "Синьо-зелен"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Light Cyan"
 msgstr "Светло синьо-зелен"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Light Gray"
 msgstr "Светло сив"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "White"
 msgstr "Бяло"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Palette"
 msgstr "Палитра"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Presets"
 msgstr "Готови комплекти"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "_Colors"
 msgstr "Цветове"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:121
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1208,65 +1217,65 @@ msgid ""
 "different terminal behavior."
 msgstr "Тези опции може да не позволят на някои програми да се изпълнят коректно.\nПолзват се само при програми, които очакват различно поведение от терминала."
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "_Backspace key generates:"
 msgstr "_Backspace клавиша създава:"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "_Delete key generates:"
 msgstr "_Delete клавиша създава:"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Emulation s_etting:"
 msgstr "Настройка на емулацията:"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "_Reset compatibility options to defaults"
 msgstr "Възстановяване на опциите за съвместимост"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Compatibility"
 msgstr "Съвместимост"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "Co_mpatibility"
 msgstr "Съвместимост"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:131
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr "Знаци, считани за букви, като част от думата, при двойно натискане:"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Rese_t double click options to defaults"
 msgstr "Възстанови опциите за двойно кликване"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Double Click"
 msgstr "Двойно кликване"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Default character e_ncoding:"
 msgstr "Кодировка по подразбиране:"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Encoding"
 msgstr "Кодировка"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Изключване на всички бързи клавиши (като Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:136
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Изключване на бързият клавиш за менюто (F10 по подразбиране)"
+#: ../terminal/terminal-preferences.glade.h:138
+msgid "Disable m_enu shortcut key (F10 by default)"
+msgstr "Изключи бързия клавиш за менюто (F10 по подразбиране)"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Menubar Access"
 msgstr "Достъп до лентата на менюто"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Ad_vanced"
 msgstr "Допълнителни"
 
