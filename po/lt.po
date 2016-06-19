@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-16 00:30+0200\n"
-"PO-Revision-Date: 2016-06-16 07:40+0000\n"
+"POT-Creation-Date: 2016-06-19 06:31+0200\n"
+"PO-Revision-Date: 2016-06-19 18:10+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,7 @@ msgstr "Apie klaidas pranešti <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nepavyko priregistruoti terminalo tarnybos: %s\n"
 
-#: ../terminal/terminal-app.c:735
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neteisingas geometrijos apibrėžimas „%s“\n"
@@ -351,12 +351,12 @@ msgstr "Paveikslėlių failai"
 msgid "Load Presets..."
 msgstr "Įkelti išankstines parinktis..."
 
-#: ../terminal/terminal-preferences.c:879
+#: ../terminal/terminal-preferences.c:890
 msgid "Terminal"
 msgstr "Terminalas"
 
 #: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
-#: ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1826
 msgid "Untitled"
 msgstr "Be pavadinimo"
 
@@ -365,11 +365,11 @@ msgstr "Be pavadinimo"
 msgid "Unable to determine your login shell."
 msgstr "Nepavyko aptikti jūsų prisijungimo shell."
 
-#: ../terminal/terminal-screen.c:1530 ../terminal/terminal-screen.c:1559
+#: ../terminal/terminal-screen.c:1534 ../terminal/terminal-screen.c:1563
 msgid "Failed to execute child"
 msgstr "Nepavyko paleisti antrinio proceso"
 
-#: ../terminal/terminal-screen.c:2168
+#: ../terminal/terminal-screen.c:2176
 msgid "Close this tab"
 msgstr "Užverti šią kortelę"
 
@@ -377,7 +377,7 @@ msgstr "Užverti šią kortelę"
 msgid "Find"
 msgstr "Ieškoti"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1607
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1614
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -469,11 +469,11 @@ msgstr "Nepavyko atverti URL „%s“"
 msgid "Keep window open when it loses focus"
 msgstr "Palikti langą atvertą, kai jis praranda fokusą"
 
-#: ../terminal/terminal-window-dropdown.c:355
+#: ../terminal/terminal-window-dropdown.c:363
 msgid "Drop-down Terminal"
 msgstr "Išskleidžiamas terminalas"
 
-#: ../terminal/terminal-window-dropdown.c:356
+#: ../terminal/terminal-window-dropdown.c:364
 msgid "Toggle Drop-down Terminal"
 msgstr "Perjungti išskleidžiamąjį terminalą"
 
@@ -605,7 +605,7 @@ msgstr "Perkelti kortelę _kairėn"
 msgid "Move Tab _Right"
 msgstr "Perkelti kortelę _dešinėn"
 
-#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1613
 msgid "_Help"
 msgstr "Ž_inynas"
 
@@ -685,19 +685,19 @@ msgstr "Užverti visas korteles?"
 msgid "Do _not ask me again"
 msgstr "Daugiau n_ebeklausti"
 
-#: ../terminal/terminal-window.c:1603
+#: ../terminal/terminal-window.c:1610
 msgid "Window Title|Set Title"
 msgstr "Lango antraštė|Nustatykite antraštę"
 
-#: ../terminal/terminal-window.c:1616
+#: ../terminal/terminal-window.c:1623
 msgid "_Title:"
 msgstr "_Antraštė:"
 
-#: ../terminal/terminal-window.c:1630
+#: ../terminal/terminal-window.c:1637
 msgid "Enter the title for the current terminal tab"
 msgstr "Įveskite antraštę, dabartinei terminalo kortelei"
 
-#: ../terminal/terminal-window.c:1678
+#: ../terminal/terminal-window.c:1685
 msgid "Failed to create the regular expression"
 msgstr "Nepavyko sukurti reguliarios išraiškos"
 
@@ -858,348 +858,357 @@ msgid ""
 msgstr "Nurodo eilučių skaičių, kuriomis slinksitės atgal naudojant slinkties juostą."
 
 #: ../terminal/terminal-preferences.glade.h:37
+msgid "Unli_mited scrollback"
+msgstr "Neribo_tas slinkimas atgal"
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid ""
+"This option controls whether the terminal will have no limits on scrollback."
+msgstr "Ši parinktis valdo ar terminale bus ribojamas slinkimas atgal."
+
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "Scrolling"
 msgstr "Slinkimas"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:40
 msgid "_General"
 msgstr "_Bendra"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:41
 msgid "_Keep window open when it loses focus"
 msgstr "Pali_kti langą atvertą, kai jis praranda fokusą"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:42
 msgid "Always keep window on _top"
 msgstr "Visada išlaiky_ti viršuje"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:43
 msgid "Use shortcut to _focus visible window"
-msgstr "Naudoti susiejimą, si_ekiant sutelkti fokusą į matomą langą"
+msgstr "Naudoti susiejimą, si_ekiant sufokusuoti matomą langą"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:44
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "Jeigu įjungta, lango atvėrimo ir užvėrimo susiejimas, vietoj to, kad langą užvertų, sutelks į jį fokusą tuo atveju, jei prieš tai langas buvo praradęs fokusą."
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:45
 msgid "Show _status icon in notification area"
 msgstr "Pranešimų srityje rodyti bū_senos piktogramą"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:46
 msgid "Behavior"
 msgstr "Elgsena"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:47
 msgid "Wi_dth:"
 msgstr "_Plotis:"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "He_ight:"
 msgstr "_Aukštis:"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:49
 msgid "_Opacity:"
 msgstr "_Nepermatomumas:"
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "D_uration:"
 msgstr "Tr_ukmė:"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:51
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "_Always show tabs"
 msgstr "Vis_ada rodyti korteles"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "Appearance and Animation"
 msgstr "Išvaizda ir animacija"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "L_eft"
 msgstr "Ka_irė"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "Right"
 msgstr "Dešinė"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "Move to monitor with poi_nter"
 msgstr "Perkelti į mo_nitorių su pelės žymekliu"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "Position"
 msgstr "Pozicija"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "Drop-do_wn"
 msgstr "Išskleidžia_masis"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Choose Terminal Font"
 msgstr "Pasirinkite terminalo šriftą"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Allow bold te_xt"
 msgstr "Leisti _paryškintą tekstą"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:61
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "Įjunkite šią parinktį, norėdami leisti programoms, veikiančioms terminale, naudoti paryškintą tekstą."
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "Font"
 msgstr "Šriftas"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "_File:"
 msgstr "_Failas:"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "St_yle:"
 msgstr "St_ilius:"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "Select Background Image File"
 msgstr "Pasirinkite fono paveikslėlio failą"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:66
 msgid "Transpare_ncy:"
 msgstr "P_ermatomumas:"
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:67
 msgid "Background"
 msgstr "Fonas"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "Display _menubar in new windows"
 msgstr "_Naujuose languose rodyti meniu juostą"
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:69
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Įjunkite šią parinktį, jei norite matyti meniu juostą naujai sukurtuose terminalo languose."
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "Display _toolbar in new windows"
 msgstr "Naujuose languose rodyti įrankių juos_tą"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:71
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Įjunkite šią parinktį, jei norite matyti įrankių juostą naujai sukurtuose terminalo languose."
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "Display _borders around new windows"
 msgstr "_Rodyti rėmelius aplink naujus langus"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:73
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Įjunkite šią parinktį, jei norite matyti langų dekoracijas aplink naujai sukurtus terminalo langus."
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "Default geometry:"
 msgstr "Numatytoji geometrija:"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "c_olumns"
 msgstr "s_tulpelių"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "row_s"
 msgstr "_eilučių"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Opening New Windows"
 msgstr "Atveriami nauji langai"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Reset tab activity _indicator after"
 msgstr "Atstatyti kortelių _aktyvumo indikatorių po"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "seconds"
 msgstr "sekundės"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Tab Activity Indicator"
 msgstr "Kortelės aktyvumo indikatorius"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "_Appearance"
 msgstr "_Išvaizda"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "_Text color:"
 msgstr "_Teksto spalva:"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "Choose text color"
 msgstr "Pasirinkite teksto spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Color Selector"
 msgstr "Spalvų pasirinkimas"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Open a dialog to specify the color"
 msgstr "Atverkite dialogą norėdami nurodyti spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "Cu_rsor color:"
 msgstr "Ž_ymeklio spalva:"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "Choose cursor color"
 msgstr "Pasirinkite žymeklio spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "_Background color:"
 msgstr "_Fono spalva:"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:89
 msgid "Choose background color"
 msgstr "Pasirinkite fono spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "Tab activit_y color:"
 msgstr "_Kortelės aktyvumo spalva:"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:91
 msgid "Choose tab activity color"
 msgstr "Pasirinkite kortelės aktyvumo spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "_Vary the background color for each tab"
 msgstr "Į_vairinti kiekvienos kortelės fono spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:93
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Atsitiktinė spalva pasirenkama, remiantis pasirinkta fono spalva, išlaikant tokį patį ryškumą."
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "General"
 msgstr "Bendra"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "Choose text selection background color"
 msgstr "Pasirinkite teksto žymėjimo fono spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Choose bold font color"
 msgstr "Pasirinkite pusjuodžio šrifto spalvą"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "Text _selection color:"
 msgstr "Tek_sto žymėjimo spalva:"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:98
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
 msgstr "Įjunkite šią parinktį, norėdami žymėjimui nustatyti pasirinktinę fono spalvą. Jei išjungta, bus perstatomos fono ir teksto spalvos."
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "B_old text color:"
 msgstr "Pusju_odžio teksto spalva:"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:100
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Įjunkite šią parinktį, norėdami nustatyti pasirinktinę pusjuodžio teksto spalvą. Jei išjungta, bus naudojama teksto spalva."
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "Custom Colors"
 msgstr "Pasirinktinės spalvos"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "Black"
 msgstr "Juoda"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Dark Gray"
 msgstr "Tamsiai pilka"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:104
 msgid "Red"
 msgstr "Raudona"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Light Red"
 msgstr "Šviesiai raudona"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "Green"
 msgstr "Žalia"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "Light Green"
 msgstr "Šviesiai žalia"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Brown / Yellow"
 msgstr "Ruda / Geltona"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "Yellow"
 msgstr "Geltona"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Blue"
 msgstr "Mėlyna"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Light Blue"
 msgstr "Šviesiai mėlyna"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Magenta"
 msgstr "Purpurinė"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Light Magenta"
 msgstr "Šviesiai purpurinė"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "Cyan"
 msgstr "Žydra"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Light Cyan"
 msgstr "Šviesiai žydra"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Light Gray"
 msgstr "Šviesiai pilka"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "White"
 msgstr "Balta"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Palette"
 msgstr "Paletė"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Presets"
 msgstr "Išankstinės parinktys"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "_Colors"
 msgstr "Sp_alvos"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:121
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1207,65 +1216,65 @@ msgid ""
 "different terminal behavior."
 msgstr "Šios parinktys gali priversti kai kurias programas\nveikti netinkamai. Jos čia tik tam, kad leistų jums\napeiti kai kurias programas ir operacines sistemas,\nkurios tikisi kitokios terminalo elgsenos."
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "_Backspace key generates:"
 msgstr "_Backspace klavišas siunčia:"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "_Delete key generates:"
 msgstr "_Delete klavišas siunčia:"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Emulation s_etting:"
 msgstr "_Emuliavimo nustatymas:"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "_Reset compatibility options to defaults"
 msgstr "_Atstatyti suderinamumo parinktis į numatytąsias"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Compatibility"
 msgstr "Suderinamumas"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "Co_mpatibility"
 msgstr "Suderina_mumas"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:131
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr "Dukart spragtelėjus, šiuos simbolius laikyti \nžodžio dalimi:"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Rese_t double click options to defaults"
 msgstr "Atstatyti dvigubo spragtelėjimo parinktis į numatytąsias"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Double Click"
 msgstr "Dvigubas spustelėjimas"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Default character e_ncoding:"
 msgstr "Numatytoji simbolių _koduotė:"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Encoding"
 msgstr "Koduotė"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Išjungti visus _meniu priėjimo klavišus (tokius kaip Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:136
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "Išjungti _meniu susiejimus (numatyta F10)"
+#: ../terminal/terminal-preferences.glade.h:138
+msgid "Disable m_enu shortcut key (F10 by default)"
+msgstr "Išjungti _meniu susiejimą (pagal numatymą F10)"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Menubar Access"
 msgstr "Meniu juostos priėjimas"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Ad_vanced"
 msgstr "S_udėtingesni"
 
