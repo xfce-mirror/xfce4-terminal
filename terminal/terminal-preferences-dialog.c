@@ -64,6 +64,8 @@ static void terminal_preferences_dialog_background_set    (GtkFileChooserButton 
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_encoding_changed  (GtkComboBox               *combobox,
                                                            TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_scroll_unlimited  (GtkWidget                 *button,
+                                                           TerminalPreferencesDialog *dialog);
 
 
 
@@ -228,6 +230,12 @@ error:
   BIND_PROPERTIES ("scrolling-lines", "value");
   BIND_PROPERTIES ("tab-activity-timeout", "value");
   BIND_PROPERTIES ("background-darkness", "value");
+
+  /* unlimited scrollback button */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-unlimited");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (G_OBJECT (object), "clicked",
+      G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
 
   /* reset comparibility button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-compatibility");
@@ -892,6 +900,25 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
       g_object_set (dialog->preferences, "encoding", encoding, NULL);
       g_free (encoding);
     }
+}
+
+
+
+static void
+terminal_preferences_dialog_scroll_unlimited (GtkWidget                 *button,
+                                              TerminalPreferencesDialog *dialog)
+{
+  GObject *object;
+  gboolean unlimited;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  terminal_return_if_fail (GTK_IS_TOGGLE_BUTTON (widget));
+
+  unlimited = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-lines");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_set (G_OBJECT (object), "sensitive", !unlimited, NULL);
 }
 
 
