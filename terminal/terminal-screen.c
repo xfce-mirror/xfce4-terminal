@@ -722,7 +722,8 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           || strcmp (*p, "WINDOWID") == 0
           || strcmp (*p, "GNOME_DESKTOP_ICON") == 0
           || strcmp (*p, "COLORTERM") == 0
-          || strcmp (*p, "DISPLAY") == 0)
+          || strcmp (*p, "DISPLAY") == 0
+          || strcmp (*p, "TERM") == 0)
         continue;
 
       /* copy the variable */
