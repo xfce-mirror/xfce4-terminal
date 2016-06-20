@@ -234,6 +234,8 @@ error:
   /* unlimited scrollback button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-unlimited");
   terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (G_OBJECT (object), "realize",
+      G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
 
