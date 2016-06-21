@@ -571,9 +571,10 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
         {
           /* get the color from the selection data (ignoring the alpha setting) */
           const guchar *data = gtk_selection_data_get_data (selection_data);
-          color.red   = ((gdouble *) data)[0];
-          color.green = ((gdouble *) data)[1];
-          color.blue  = ((gdouble *) data)[2];
+          color.red   = (gdouble) data[0] / 65535.;
+          color.green = (gdouble) data[1] / 65535.;
+          color.blue  = (gdouble) data[2] / 65535.;
+          color.alpha = 1.;
 
           /* prepare the value */
           g_value_init (&value, GDK_TYPE_RGBA);
