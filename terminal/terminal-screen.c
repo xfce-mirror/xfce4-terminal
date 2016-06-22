@@ -1748,6 +1748,10 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   glong          char_width;
   glong          char_height;
 
+#if GTK_CHECK_VERSION (3,20,0)
+  // Don't need this on gtk>=3.20
+  return;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
