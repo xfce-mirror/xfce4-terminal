@@ -1386,6 +1386,7 @@ terminal_window_action_prefs (GtkAction      *action,
   if (window->preferences_dialog != NULL)
     {
       gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
+      gtk_window_set_keep_above (GTK_WINDOW (window->preferences_dialog), TRUE);
       gtk_window_present (GTK_WINDOW (window->preferences_dialog));
     }
 }
