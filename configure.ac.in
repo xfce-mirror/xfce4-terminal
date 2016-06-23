@@ -22,6 +22,11 @@ dnl *** Debugging support for GIT snapshots ***
 dnl *******************************************
 m4_define([terminal_debug_default], [ifelse(terminal_version_tag(), [git], [yes], [minimum])])
 
+dnl ****************************
+dnl *** For intltool support ***
+dnl ****************************
+m4_define([intltool_minimum_version], [0.35])
+
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
@@ -60,7 +65,7 @@ dnl ********************************
 AC_PROG_CC()
 AM_PROG_CC_C_O()
 AC_PROG_INSTALL()
-AC_PROG_INTLTOOL([0.31], [no-xml])
+IT_PROG_INTLTOOL([intltool_minimum_version], [no-xml])
 
 dnl **************************
 dnl *** Initialize libtool ***
