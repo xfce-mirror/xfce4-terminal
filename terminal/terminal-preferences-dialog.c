@@ -140,7 +140,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "command-update-records", "scrolling-single-line",
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "scrolling-unlimited",
-                                       "misc-cursor-shape",
+                                       "misc-cursor-shape", "misc-cursor-blinks",
                                        "font-allow-bold", "misc-menubar-default",
                                        "misc-toolbar-default", "misc-borders-default",
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
