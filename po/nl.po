@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-16 18:31+0200\n"
-"PO-Revision-Date: 2016-06-17 19:55+0000\n"
+"POT-Creation-Date: 2016-06-25 18:30+0200\n"
+"PO-Revision-Date: 2016-06-26 11:23+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -339,24 +339,24 @@ msgstr "De optie '--icon/-I' vereist dat u een pictogramnaam of bestandnaam opge
 msgid "Unknown option \"%s\""
 msgstr "Onbekende optie '%s'"
 
-#: ../terminal/terminal-preferences-dialog.c:311
+#: ../terminal/terminal-preferences-dialog.c:322
 msgid "All Files"
 msgstr "Alle bestanden"
 
-#: ../terminal/terminal-preferences-dialog.c:317
+#: ../terminal/terminal-preferences-dialog.c:328
 msgid "Image Files"
 msgstr "Afbeeldingbestanden"
 
-#: ../terminal/terminal-preferences-dialog.c:732
+#: ../terminal/terminal-preferences-dialog.c:743
 msgid "Load Presets..."
 msgstr "Voorinstellingen aan het laden..."
 
-#: ../terminal/terminal-preferences.c:879
+#: ../terminal/terminal-preferences.c:890
 msgid "Terminal"
 msgstr "Terminalvenster"
 
 #: ../terminal/terminal-screen.c:398 ../terminal/terminal-screen.c:683
-#: ../terminal/terminal-screen.c:1823
+#: ../terminal/terminal-screen.c:1831
 msgid "Untitled"
 msgstr "Zonder titel"
 
@@ -365,11 +365,11 @@ msgstr "Zonder titel"
 msgid "Unable to determine your login shell."
 msgstr "Kan uw aanmeldscherm niet bepalen."
 
-#: ../terminal/terminal-screen.c:1531 ../terminal/terminal-screen.c:1560
+#: ../terminal/terminal-screen.c:1535 ../terminal/terminal-screen.c:1564
 msgid "Failed to execute child"
 msgstr "Kon afgeleid proces niet uitvoeren"
 
-#: ../terminal/terminal-screen.c:2173
+#: ../terminal/terminal-screen.c:2181
 msgid "Close this tab"
 msgstr "Dit tabblad sluiten"
 
@@ -377,7 +377,7 @@ msgstr "Dit tabblad sluiten"
 msgid "Find"
 msgstr "Zoeken"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1607
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1616
 msgid "_Close"
 msgstr "_Sluiten"
 
@@ -460,7 +460,7 @@ msgstr "Kon URI-lijst niet naar terminalvenster slepen: verkeerde opmaak (%d) of
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Ongeldige kleurinformatie ontvangen: verkeerde opmaak (%d) of lengte (%d)\n"
 
-#: ../terminal/terminal-widget.c:699
+#: ../terminal/terminal-widget.c:700
 #, c-format
 msgid "Failed to open the URL `%s'"
 msgstr "Kon het webdadres `%s' niet openen"
@@ -605,7 +605,7 @@ msgstr "Verplaats tabblad naar links"
 msgid "Move Tab _Right"
 msgstr "Verplaats tabblad naar rechts"
 
-#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:220 ../terminal/terminal-window.c:1615
 msgid "_Help"
 msgstr "_Hulp"
 
@@ -685,19 +685,19 @@ msgstr "Alle tabbladen sluiten?"
 msgid "Do _not ask me again"
 msgstr "Niet _nogmaals vragen"
 
-#: ../terminal/terminal-window.c:1603
+#: ../terminal/terminal-window.c:1612
 msgid "Window Title|Set Title"
 msgstr "Venstertitel|Titel instellen"
 
-#: ../terminal/terminal-window.c:1616
+#: ../terminal/terminal-window.c:1625
 msgid "_Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:1630
+#: ../terminal/terminal-window.c:1639
 msgid "Enter the title for the current terminal tab"
 msgstr "Voer titel in voor het huidige terminalvenster-tabblad"
 
-#: ../terminal/terminal-window.c:1678
+#: ../terminal/terminal-window.c:1687
 msgid "Failed to create the regular expression"
 msgstr "Kon de reguliere uitdrukking niet maken"
 
@@ -778,26 +778,38 @@ msgid "Stretched"
 msgstr "Uitgerekt"
 
 #: ../terminal/terminal-preferences.glade.h:20
+msgid "Block"
+msgstr "Blok"
+
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "I-Beam"
+msgstr "I-balk"
+
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "Underline"
+msgstr "Onderstrepen"
+
+#: ../terminal/terminal-preferences.glade.h:23
 msgid "Terminal Preferences"
 msgstr "Terminalvenster-voorkeuren"
 
-#: ../terminal/terminal-preferences.glade.h:21
+#: ../terminal/terminal-preferences.glade.h:24
 msgid "_Initial title:"
 msgstr "Begin_titel:"
 
-#: ../terminal/terminal-preferences.glade.h:22
+#: ../terminal/terminal-preferences.glade.h:25
 msgid "_Dynamically-set title:"
 msgstr "_Dynamisch ingestelde titel:"
 
-#: ../terminal/terminal-preferences.glade.h:23
+#: ../terminal/terminal-preferences.glade.h:26
 msgid "Title"
 msgstr "Titel"
 
-#: ../terminal/terminal-preferences.glade.h:24
+#: ../terminal/terminal-preferences.glade.h:27
 msgid "_Run command as login shell"
 msgstr "Opdracht _uitvoeren als aanmeldscherm"
 
-#: ../terminal/terminal-preferences.glade.h:25
+#: ../terminal/terminal-preferences.glade.h:28
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when"
 " you open new terminals. See the documentation of your shell for details "
@@ -805,401 +817,426 @@ msgid ""
 "login shell."
 msgstr "Selecteer deze optie om Terminalvenster uw gebruikersschil te laten gebruiken als aanmeldscherm voor nieuwe terminalvensters. Raadpleeg de documentatie van uw gebruikersschil voor het verschil tussen een interactieve schil en een aanmeldscherm."
 
-#: ../terminal/terminal-preferences.glade.h:26
+#: ../terminal/terminal-preferences.glade.h:29
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "utmp/wtmp records _vernieuwen wanneer opdracht wordt uitgevoerd"
 
-#: ../terminal/terminal-preferences.glade.h:27
+#: ../terminal/terminal-preferences.glade.h:30
 msgid "Command"
 msgstr "Opdracht"
 
-#: ../terminal/terminal-preferences.glade.h:28
+#: ../terminal/terminal-preferences.glade.h:31
 msgid "Scroll single _line using Shift-Up/-Down keys"
 msgstr "Enkele _regel bladeren met Shift+Omhoog/+Omlaag-toetsen"
 
-#: ../terminal/terminal-preferences.glade.h:29
+#: ../terminal/terminal-preferences.glade.h:32
 msgid ""
 "Enable this option to be able to scroll by a single line using the up/down "
 "arrow keys together with the Shift key."
 msgstr "Schakel deze optie in om per enkele regel te kunnen bladeren, met gebruikmaking van de pijltjestoetsen omhoog/omlaag samen met de Shift-toets."
 
-#: ../terminal/terminal-preferences.glade.h:30
+#: ../terminal/terminal-preferences.glade.h:33
 msgid "Scroll on ou_tput"
 msgstr "Bladeren bij ui_tvoer"
 
-#: ../terminal/terminal-preferences.glade.h:31
+#: ../terminal/terminal-preferences.glade.h:34
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "Deze optie bepaalt of het terminalvenster automatisch omlaag schuift als er nieuwe uitvoer gegenereerd wordt door de lopende terminalopdrachten."
 
-#: ../terminal/terminal-preferences.glade.h:32
+#: ../terminal/terminal-preferences.glade.h:35
 msgid "Scroll on _keystroke"
 msgstr "Bladeren bij _toetsaanslag"
 
-#: ../terminal/terminal-preferences.glade.h:33
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr "Als deze optie is ingeschakeld zal elke toets de terminal laten doorschuiven naar de opdrachtregel."
 
-#: ../terminal/terminal-preferences.glade.h:34
+#: ../terminal/terminal-preferences.glade.h:37
 msgid "Scr_ollbar is:"
 msgstr "_Bladerbalk is:"
 
-#: ../terminal/terminal-preferences.glade.h:35
+#: ../terminal/terminal-preferences.glade.h:38
 msgid "Scroll_back:"
 msgstr "Terug_bladeren:"
 
-#: ../terminal/terminal-preferences.glade.h:36
+#: ../terminal/terminal-preferences.glade.h:39
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Specificeert het aantal regels dat u terug kunt bladeren met de bladerbalk."
 
-#: ../terminal/terminal-preferences.glade.h:37
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Unli_mited scrollback"
+msgstr "Onbeperkt terugschuiven"
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid ""
+"This option controls whether the terminal will have no limits on scrollback."
+msgstr "Deze optie bepaalt of de terminal geen beperkingen heeft bij terugschuiven."
+
+#: ../terminal/terminal-preferences.glade.h:42
 msgid "Scrolling"
 msgstr "Bladeren"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "Cursor shape:"
+msgstr "Vorm van aanwijzer:"
+
+#: ../terminal/terminal-preferences.glade.h:44
+msgid "Cursor blinks"
+msgstr "Aanwijzer knippert"
+
+#: ../terminal/terminal-preferences.glade.h:45
+msgid "This option controls whether the cursor will be blinking or not."
+msgstr "Deze optie bepaalt of de aanwijzer al dan niet knippert."
+
+#: ../terminal/terminal-preferences.glade.h:46
+msgid "Cursor"
+msgstr "Aanwijzer"
+
+#: ../terminal/terminal-preferences.glade.h:47
 msgid "_General"
 msgstr "_Algemeen"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "_Keep window open when it loses focus"
 msgstr "Houd venster geopend wanneer het scherpstelling verliest"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:49
 msgid "Always keep window on _top"
 msgstr "Houd het venster altijd bovenaan"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "Use shortcut to _focus visible window"
 msgstr "Gebruik sneltoets om scherp te stellen op het zichtbare venster"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:51
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "Indien ingeschakeld, zal de sneltoets om het venster te openen en in te trekken, scherpstelling geven in plaats van het te sluiten, indien het voordien scherpstelling heeft verloren"
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "Show _status icon in notification area"
 msgstr "Toon statuspictogram in meldingsgebied"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "Behavior"
 msgstr "Gedrag"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "Wi_dth:"
 msgstr "Breedte:"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "He_ight:"
 msgstr "Hoogte:"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "_Opacity:"
 msgstr "Ondoorzichtigheid:"
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "D_uration:"
 msgstr "Duur:"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "_Always show tabs"
 msgstr "Altijd tabbladen tonen"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Appearance and Animation"
 msgstr "Uiterlijk en animatie"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "L_eft"
 msgstr "Links"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "Right"
 msgstr "Rechts"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "Move to monitor with poi_nter"
 msgstr "Verplaats naar monitor met muispijl"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "Position"
 msgstr "Positie"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "Drop-do_wn"
 msgstr "Klap-neer"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:66
 msgid "Choose Terminal Font"
 msgstr "Kies lettertype voor terminalvenster"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:67
 msgid "Allow bold te_xt"
 msgstr "Vetgedrukte te_kst toestaan"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:68
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "Selecteer deze optie om terminaltoepassingen toe te staan om vetgedrukte tekst te gebruiken."
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:69
 msgid "Font"
 msgstr "Lettertype"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "_File:"
 msgstr "_Bestand:"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:71
 msgid "St_yle:"
 msgstr "Sti_jl:"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "Select Background Image File"
 msgstr "Achtergrondafbeelding kiezen"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Transpare_ncy:"
 msgstr "Tra_nsparantie:"
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "Background"
 msgstr "Achtergrond"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Display _menubar in new windows"
 msgstr "_Menubalk weergeven in nieuwe vensters"
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:76
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Schakel deze optie in om de menubalk te tonen in nieuwe terminalvensters."
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Display _toolbar in new windows"
 msgstr "Werkbalken weergeven in nieuwe vensters"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:78
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Schakel deze optie in om de werkbalk te tonen in nieuwe terminalvensters."
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "Display _borders around new windows"
 msgstr "_Randen weergeven rond nieuwe vensters"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:80
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Schakel deze optie in om vensterdecoraties te tonen rond nieuwe terminalvensters."
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "Default geometry:"
 msgstr "Standaardgeometrie:"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "c_olumns"
 msgstr "kolommen"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "row_s"
 msgstr "rijen"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Opening New Windows"
 msgstr "Nieuwe vensters openen"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Reset tab activity _indicator after"
 msgstr "Indicator voor tabblad-activiteit opnieuw instellen na"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "seconds"
 msgstr "seconden"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "Tab Activity Indicator"
 msgstr "Indicator voor tabblad-activiteit"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "_Appearance"
 msgstr "_Uiterlijk"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:89
 msgid "_Text color:"
 msgstr "_Tekstkleur:"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "Choose text color"
 msgstr "Kies kleur van tekst"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:91
 msgid "Color Selector"
 msgstr "Kleurenkiezer"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "Open a dialog to specify the color"
 msgstr "Open een dialoogvenster om de kleur op te geven"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:93
 msgid "Cu_rsor color:"
 msgstr "Cu_rsorkleur:"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "Choose cursor color"
 msgstr "Kies kleur voor aanwijzer"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "_Background color:"
 msgstr "_Achtergrondkleur:"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Choose background color"
 msgstr "Kies achtergrondkleur"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "Tab activit_y color:"
 msgstr "Kleur voor _tabblad-activiteit:"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "Choose tab activity color"
 msgstr "Kies kleur voor activiteit van tabblad"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "_Vary the background color for each tab"
 msgstr "Maak de achtergrondkleur voor elk tabblad anders"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:100
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "De willekeurige kleur is gebaseerd op de gekozen achtergrondkleur, met behoud van dezelfde helderheid."
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "General"
 msgstr "Algemeen"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "Choose text selection background color"
 msgstr "Kies achtergrondkleur voor geselecteerde tekst"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Choose bold font color"
 msgstr "Kies kleur voor vetgedrukt lettertype"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:104
 msgid "Text _selection color:"
 msgstr "Kleur van tekstselectie:"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:105
 msgid ""
 "Enable this option to set a custom background color for the selection. If "
 "disabled the background and text colors will be reversed."
 msgstr "Schakel deze optie in om een aangepaste achtergrondkleur in te stellen voor de selectie. Indien uitgeschakeld zullen de kleuren voor achtergrond en tekst worden teruggedraaid."
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "B_old text color:"
 msgstr "Kleur van vetgedrukte tekst:"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:107
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Schakel deze optie in om een aangepaste kleur in te stellen voor vetgedrukt. Indien uitgeschakeld zal de tekstkleur worden gebruikt."
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Custom Colors"
 msgstr "Aangepaste kleuren"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "Black"
 msgstr "Zwart"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Dark Gray"
 msgstr "Donkergrijs"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Red"
 msgstr "Rood"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Light Red"
 msgstr "Lichtrood"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Green"
 msgstr "Groen"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "Light Green"
 msgstr "Lichtgroen"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Brown / Yellow"
 msgstr "Bruin/geel"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Yellow"
 msgstr "Geel"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Blue"
 msgstr "Blauw"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Light Blue"
 msgstr "Lichtblauw"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Magenta"
 msgstr "Paars"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Light Magenta"
 msgstr "Lichtpaars"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Cyan"
 msgstr "Cyaan"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Light Cyan"
 msgstr "Lichtcyaan"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Light Gray"
 msgstr "Lichtgrijs"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "White"
 msgstr "Wit"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Palette"
 msgstr "Palet"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "Presets"
 msgstr "Voorkeuzes"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "_Colors"
 msgstr "_Kleuren"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:128
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1207,65 +1244,65 @@ msgid ""
 "different terminal behavior."
 msgstr "Door deze opties kunnen sommige toepassingen zich\nwellicht incorrect gedragen. Ze zijn er alleen zodat u om \nsommige toepassingen en besturingssystemen heen kunt\nwerken die een ander terminalgedrag verwachten."
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "_Backspace key generates:"
 msgstr "_Backspace-toets genereert:"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "_Delete key generates:"
 msgstr "_Delete-toets genereert:"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Emulation s_etting:"
 msgstr "Instelling van nabootsing:"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "_Reset compatibility options to defaults"
 msgstr "Verenigbaarheid-opties te_rugzetten naar standaardinstellingen"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Compatibility"
 msgstr "Verenigbaarheid"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Co_mpatibility"
 msgstr "Verenigbaarheid"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:138
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr "Beschouw de volgende tekens als onderdeel van een _woord\nbij dubbelklikken:"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Rese_t double click options to defaults"
 msgstr "Dubbelklikopties _terugzetten naar standaardinstellingen"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Double Click"
 msgstr "Dubbelklikken"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Default character e_ncoding:"
 msgstr "Standaard-tekencodering:"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Encoding"
 msgstr "Codering"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Alle menu-sneltoetsen (zoals Alt+f) uitschakelen"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Schakel de sneltoets voor het menu uit (standaard is dat F10)"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "Menubar Access"
 msgstr "Toegang tot menubalk"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "Ad_vanced"
 msgstr "Gea_vanceerd"
 
