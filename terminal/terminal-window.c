@@ -1109,7 +1109,11 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
           g_object_ref (G_OBJECT (window));
 
           /* remove the document from the source notebook */
+#if GTK_CHECK_VERSION (3,16,0)
+          gtk_notebook_detach_tab (notebook, *screen);
+#else
           gtk_container_remove (GTK_CONTAINER (notebook), *screen);
+#endif
 
           /* add the screen to the new window */
           terminal_window_add (window, TERMINAL_SCREEN (*screen));
