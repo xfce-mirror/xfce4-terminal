@@ -93,20 +93,6 @@ terminal_util_show_about_dialog (GtkWindow *parent)
 
 
 void
-terminal_util_set_style_thinkess (GtkWidget *widget,
-                                  gint       thinkness)
-{
-  GtkRcStyle *style;
-
-  style = gtk_rc_style_new ();
-  style->xthickness = style->ythickness = thinkness;
-  gtk_widget_modify_style (widget, style);
-  g_object_unref (G_OBJECT (style));
-}
-
-
-
-void
 terminal_util_activate_window (GtkWindow *window)
 {
 #ifdef GDK_WINDOWING_X11

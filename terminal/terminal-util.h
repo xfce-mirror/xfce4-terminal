@@ -24,9 +24,6 @@ G_BEGIN_DECLS
 
 void terminal_util_show_about_dialog  (GtkWindow    *parent);
 
-void terminal_util_set_style_thinkess (GtkWidget    *widget,
-                                       gint          thinkness);
-
 void terminal_util_activate_window    (GtkWindow    *window);
 
 G_END_DECLS

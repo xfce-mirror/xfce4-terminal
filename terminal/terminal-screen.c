@@ -2180,9 +2180,6 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
                             G_CALLBACK (gtk_widget_destroy), screen);
   gtk_widget_show (button);
 
-  /* make button a bit smaller */
-  terminal_util_set_style_thinkess (button, 0);
-
   /* button image */
   image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), image);

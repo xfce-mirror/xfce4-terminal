@@ -257,7 +257,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (window->notebook), GTK_POS_BOTTOM);
   gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), TRUE);
   terminal_window_notebook_show_tabs (window);
-  terminal_util_set_style_thinkess (window->notebook, 1);
 
   /* actions we don't want */
   action = gtk_action_group_get_action (window->action_group, "show-borders");

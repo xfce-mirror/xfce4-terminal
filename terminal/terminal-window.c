@@ -332,9 +332,6 @@ terminal_window_init (TerminalWindow *window)
                                    "show-tabs", always_show_tabs,
                                    NULL);
 
-  /* hide the ugly terminal border when tabs are shown */
-  terminal_util_set_style_thinkess (window->notebook, 0);
-
   /* set the notebook group id */
   gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook), window_notebook_group);
 
