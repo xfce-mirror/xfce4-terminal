@@ -1476,8 +1476,8 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
     {
       angle = 0.0;
       ellipsize = PANGO_ELLIPSIZE_END;
-
-      gtk_misc_set_alignment (GTK_MISC (screen->tab_label), 0.00, 0.50);
+      gtk_widget_set_halign (screen->tab_label, GTK_ALIGN_START);
+      gtk_widget_set_valign (screen->tab_label, GTK_ALIGN_CENTER);
 
       /* reset size request, ellipsize works now */
       gtk_widget_set_size_request (screen->tab_label, -1, -1);
@@ -1486,7 +1486,8 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
     {
       angle = position == GTK_POS_LEFT ? 90.0 : 270.0;
       ellipsize = PANGO_ELLIPSIZE_NONE;
-      gtk_misc_set_alignment (GTK_MISC (screen->tab_label), 0.50, 0.00);
+      gtk_widget_set_halign (screen->tab_label, GTK_ALIGN_CENTER);
+      gtk_widget_set_valign (screen->tab_label, GTK_ALIGN_START);
 
       /* set a minimum height of 30px, because ellipsize does not work */
       gtk_widget_set_size_request (screen->tab_label, -1, 30);
@@ -2151,7 +2152,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_show (hbox);
 
   screen->tab_label = gtk_label_new (NULL);
-  gtk_misc_set_padding (GTK_MISC (screen->tab_label), 2, 0);
+  gtk_widget_set_margin_start (screen->tab_label, 2);
   gtk_label_set_width_chars (GTK_LABEL (screen->tab_label), 10);
   gtk_box_pack_start  (GTK_BOX (hbox), screen->tab_label, TRUE, TRUE, 0);
   g_object_bind_property (G_OBJECT (screen), "title",
