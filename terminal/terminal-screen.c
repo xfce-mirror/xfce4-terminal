@@ -2141,8 +2141,7 @@ terminal_screen_reset_activity (TerminalScreen *screen)
 GtkWidget *
 terminal_screen_get_tab_label (TerminalScreen *screen)
 {
-  GtkWidget *hbox;
-  GtkWidget *button, *image, *align;
+  GtkWidget *hbox, *button, *image;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
@@ -2164,12 +2163,6 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_set_has_tooltip (screen->tab_label, TRUE);
   gtk_widget_show (screen->tab_label);
 
-  align = gtk_alignment_new (0.5f, 0.5f, 0.0f, 0.0f);
-  gtk_box_pack_start  (GTK_BOX (hbox), align, FALSE, FALSE, 0);
-  g_object_bind_property (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
-                          G_OBJECT (align), "visible",
-                          G_BINDING_SYNC_CREATE);
-
   button = gtk_button_new ();
 #if GTK_CHECK_VERSION (3,20,0)
   gtk_widget_set_focus_on_click (button, FALSE);
@@ -2180,7 +2173,9 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_set_can_focus (button, FALSE);
   gtk_widget_set_can_default (button, FALSE);
   gtk_widget_set_tooltip_text (button, _("Close this tab"));
-  gtk_container_add (GTK_CONTAINER (align), button);
+  gtk_widget_set_halign (button, GTK_ALIGN_CENTER);
+  gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
+  gtk_container_add (GTK_CONTAINER (hbox), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
                             G_CALLBACK (gtk_widget_destroy), screen);
   gtk_widget_show (button);
@@ -2195,6 +2190,11 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
 
   /* update orientation */
   terminal_screen_update_label_orientation (screen);
+
+  /* respect the show/hide buttons option */
+  g_object_bind_property (G_OBJECT (screen->preferences), "misc-tab-close-buttons",
+                          G_OBJECT (button), "visible",
+                          G_BINDING_SYNC_CREATE);
 
   return hbox;
 }
