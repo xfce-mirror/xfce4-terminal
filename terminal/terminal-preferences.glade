@@ -217,7 +217,6 @@
             <child>
               <object class="GtkButton" id="button-help">
                 <property name="label">gtk-help</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -233,7 +232,6 @@
             <child>
               <object class="GtkButton" id="button-close">
                 <property name="label">gtk-close</property>
-                <property name="use_action_appearance">False</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
@@ -285,9 +283,9 @@
                           <object class="GtkLabel" id="label5">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">_Initial title:</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -298,9 +296,9 @@
                           <object class="GtkLabel" id="label6">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">_Dynamically-set title:</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -380,13 +378,12 @@
                             <child>
                               <object class="GtkCheckButton" id="command-login-shell">
                                 <property name="label" translatable="yes">_Run command as login shell</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Select this option to force Terminal to run your shell as a login shell when you open new terminals. See the documentation of your shell for details about differences between running it as interactive shell and running it as login shell.</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -398,12 +395,11 @@
                             <child>
                               <object class="GtkCheckButton" id="command-update-records">
                                 <property name="label" translatable="yes">_Update utmp/wtmp records when command is launched</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -455,13 +451,12 @@
                             <child>
                               <object class="GtkCheckButton" id="scrolling-single-line">
                                 <property name="label" translatable="yes">Scroll single _line using Shift-Up/-Down keys</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to be able to scroll by a single line using the up/down arrow keys together with the Shift key.</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -479,13 +474,12 @@
                                 <child>
                                   <object class="GtkCheckButton" id="scrolling-on-output">
                                     <property name="label" translatable="yes">Scroll on ou_tput</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="tooltip_text" translatable="yes">This option controls whether the terminal will scroll down automatically whenever new output is generated by the commands running inside the terminal.</property>
+                                    <property name="halign">start</property>
                                     <property name="use_underline">True</property>
-                                    <property name="xalign">0.5</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
                                   <packing>
@@ -497,13 +491,12 @@
                                 <child>
                                   <object class="GtkCheckButton" id="scrolling-on-keystroke">
                                     <property name="label" translatable="yes">Scroll on _keystroke</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="tooltip_text" translatable="yes">Enables you to press any key on the keyboard to scroll down the terminal window to the command prompt.</property>
+                                    <property name="halign">start</property>
                                     <property name="use_underline">True</property>
-                                    <property name="xalign">0.5</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
                                   <packing>
@@ -531,7 +524,6 @@
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Scr_ollbar is:</property>
                                     <property name="use_underline">True</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="left_attach">0</property>
@@ -563,7 +555,6 @@
                                     <property name="can_focus">False</property>
                                     <property name="label" translatable="yes">Scroll_back:</property>
                                     <property name="use_underline">True</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="left_attach">0</property>
@@ -595,6 +586,7 @@
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="tooltip_text" translatable="yes">This option controls whether the terminal will have no limits on scrollback.</property>
+                                    <property name="halign">start</property>
                                     <property name="use_underline">True</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
@@ -691,6 +683,7 @@
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">False</property>
                                     <property name="tooltip_text" translatable="yes">This option controls whether the cursor will be blinking or not.</property>
+                                    <property name="halign">start</property>
                                     <property name="use_underline">True</property>
                                     <property name="draw_indicator">True</property>
                                   </object>
@@ -768,12 +761,11 @@
                             <child>
                               <object class="GtkCheckButton" id="dropdown-keep-open-default">
                                 <property name="label" translatable="yes">_Keep window open when it loses focus</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -785,12 +777,11 @@
                             <child>
                               <object class="GtkCheckButton" id="dropdown-keep-above">
                                 <property name="label" translatable="yes">Always keep window on _top</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -802,13 +793,12 @@
                             <child>
                               <object class="GtkCheckButton" id="dropdown-toggle-focus">
                                 <property name="label" translatable="yes">Use shortcut to _focus visible window</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">If enabled, the shortcut to open and retract the window will give focus, rather than closing it, if it has previously lost focus</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -820,12 +810,11 @@
                             <child>
                               <object class="GtkCheckButton" id="dropdown-status-icon">
                                 <property name="label" translatable="yes">Show _status icon in notification area</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -880,10 +869,10 @@
                               <object class="GtkLabel" id="label36">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">Wi_dth:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-width</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="x_options">GTK_FILL</property>
@@ -894,10 +883,10 @@
                               <object class="GtkLabel" id="label39">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">He_ight:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-height</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">1</property>
@@ -910,10 +899,10 @@
                               <object class="GtkLabel" id="label40">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">_Opacity:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-opacity</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">2</property>
@@ -926,10 +915,10 @@
                               <object class="GtkLabel" id="label41">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">D_uration:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">scale-duration</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="top_attach">3</property>
@@ -1004,6 +993,7 @@
                               <object class="GtkLabel" id="label42">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">ms</property>
                               </object>
                               <packing>
@@ -1018,8 +1008,8 @@
                               <object class="GtkLabel" id="label43">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label">%</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1031,8 +1021,8 @@
                               <object class="GtkLabel" id="label44">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label">%</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1046,8 +1036,8 @@
                               <object class="GtkLabel" id="label45">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label">%</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">2</property>
@@ -1060,12 +1050,11 @@
                             <child>
                               <object class="GtkCheckButton" id="dropdown-always-show-tabs">
                                 <property name="label" translatable="yes">_Always show tabs</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1124,10 +1113,10 @@
                                   <object class="GtkLabel" id="label47">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="halign">start</property>
                                     <property name="label" translatable="yes">L_eft</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">scale-position</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1154,8 +1143,8 @@
                                   <object class="GtkLabel" id="label48">
                                     <property name="visible">True</property>
                                     <property name="can_focus">False</property>
+                                    <property name="halign">end</property>
                                     <property name="label" translatable="yes">Right</property>
-                                    <property name="xalign">1</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1173,12 +1162,11 @@
                             <child>
                               <object class="GtkCheckButton" id="dropdown-move-to-active">
                                 <property name="label" translatable="yes">Move to monitor with poi_nter</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1270,13 +1258,12 @@
                             <child>
                               <object class="GtkCheckButton" id="font-allow-bold">
                                 <property name="label" translatable="yes">Allow bold te_xt</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to allow applications running inside the terminal windows to use bold text.</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1358,7 +1345,6 @@
                                     <property name="label" translatable="yes">_File:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">background-image-file</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="x_options">GTK_FILL</property>
@@ -1371,7 +1357,6 @@
                                     <property name="label" translatable="yes">St_yle:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">background-image-style</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="top_attach">1</property>
@@ -1428,7 +1413,6 @@
                                     <property name="label" translatable="yes">Transpare_ncy:</property>
                                     <property name="use_underline">True</property>
                                     <property name="mnemonic_widget">trans-scale</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -1500,13 +1484,12 @@
                             <child>
                               <object class="GtkCheckButton" id="misc-menubar-default">
                                 <property name="label" translatable="yes">Display _menubar in new windows</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to show the menubar in newly created terminal windows.</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1518,13 +1501,12 @@
                             <child>
                               <object class="GtkCheckButton" id="misc-toolbar-default">
                                 <property name="label" translatable="yes">Display _toolbar in new windows</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to show the toolbar in newly created terminal windows.</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1536,13 +1518,12 @@
                             <child>
                               <object class="GtkCheckButton" id="misc-borders-default">
                                 <property name="label" translatable="yes">Display _borders around new windows</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
                                 <property name="tooltip_text" translatable="yes">Enable this option to show window decorations around newly created terminal windows.</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -1807,9 +1788,9 @@
                           <object class="GtkLabel" id="label15">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">_Text color:</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1841,9 +1822,9 @@
                           <object class="GtkLabel" id="label35">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Cu_rsor color:</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1875,9 +1856,9 @@
                           <object class="GtkLabel" id="label38">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">_Background color:</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">0</property>
@@ -1909,9 +1890,9 @@
                           <object class="GtkLabel" id="label37">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
+                            <property name="halign">start</property>
                             <property name="label" translatable="yes">Tab activit_y color:</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
@@ -1942,13 +1923,12 @@
                         <child>
                           <object class="GtkCheckButton" id="color-background-vary">
                             <property name="label" translatable="yes">_Vary the background color for each tab</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="tooltip_text" translatable="yes">The random color is based on the selected background color, keeping the same brightness. </property>
+                            <property name="halign">start</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -2030,13 +2010,12 @@
                         <child>
                           <object class="GtkCheckButton" id="color-selection-custom">
                             <property name="label" translatable="yes">Text _selection color:</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="tooltip_text" translatable="yes">Enable this option to set a custom background color for the selection. If disabled the background and text colors will be reversed.</property>
+                            <property name="halign">start</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -2047,13 +2026,12 @@
                         <child>
                           <object class="GtkCheckButton" id="color-bold-custom">
                             <property name="label" translatable="yes">B_old text color:</property>
-                            <property name="use_action_appearance">False</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">False</property>
                             <property name="tooltip_text" translatable="yes">Enable this option to set a custom bold color. If disabled the text color will be used.</property>
+                            <property name="halign">start</property>
                             <property name="use_underline">True</property>
-                            <property name="xalign">0.5</property>
                             <property name="draw_indicator">True</property>
                           </object>
                           <packing>
@@ -2560,7 +2538,6 @@ certain applications and operating systems that expect
 different terminal behavior.</property>
                                     <property name="wrap">True</property>
                                     <property name="ellipsize">end</property>
-                                    <property name="xalign">0</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -2600,9 +2577,9 @@ different terminal behavior.</property>
                               <object class="GtkLabel" id="label31">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">_Backspace key generates:</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -2630,9 +2607,9 @@ different terminal behavior.</property>
                               <object class="GtkLabel" id="label32">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">_Delete key generates:</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -2660,9 +2637,9 @@ different terminal behavior.</property>
                               <object class="GtkLabel" id="label33">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
+                                <property name="halign">start</property>
                                 <property name="label" translatable="yes">Emulation s_etting:</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="left_attach">0</property>
@@ -2685,7 +2662,6 @@ different terminal behavior.</property>
                             <child>
                               <object class="GtkButton" id="reset-compatibility">
                                 <property name="label" translatable="yes">_Reset compatibility options to defaults</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">True</property>
@@ -2780,7 +2756,6 @@ different terminal behavior.</property>
 when double clicking:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">word-chars</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">True</property>
@@ -2812,7 +2787,6 @@ when double clicking:</property>
                                 <child>
                                   <object class="GtkButton" id="reset-word-chars">
                                     <property name="label" translatable="yes">Rese_t double click options to defaults</property>
-                                    <property name="use_action_appearance">False</property>
                                     <property name="visible">True</property>
                                     <property name="can_focus">True</property>
                                     <property name="receives_default">True</property>
@@ -2872,7 +2846,6 @@ when double clicking:</property>
                                 <property name="label" translatable="yes">Default character e_ncoding:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">encoding-combo</property>
-                                <property name="xalign">0</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
@@ -2939,12 +2912,11 @@ when double clicking:</property>
                             <child>
                               <object class="GtkCheckButton" id="shortcuts-no-mnemonics">
                                 <property name="label" translatable="yes">Disable all me_nu access keys (such as Alt+f)</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
@@ -2956,12 +2928,11 @@ when double clicking:</property>
                             <child>
                               <object class="GtkCheckButton" id="shortcuts-no-menukey">
                                 <property name="label" translatable="yes">Disable m_enu shortcut key (F10 by default)</property>
-                                <property name="use_action_appearance">False</property>
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
                                 <property name="receives_default">False</property>
+                                <property name="halign">start</property>
                                 <property name="use_underline">True</property>
-                                <property name="xalign">0.5</property>
                                 <property name="draw_indicator">True</property>
                               </object>
                               <packing>
