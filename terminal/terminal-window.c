@@ -1108,7 +1108,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
 
           /* remove the document from the source notebook */
 #if GTK_CHECK_VERSION (3,16,0)
-          gtk_notebook_detach_tab (notebook, *screen);
+          gtk_notebook_detach_tab (GTK_NOTEBOOK (notebook), *screen);
 #else
           gtk_container_remove (GTK_CONTAINER (notebook), *screen);
 #endif
