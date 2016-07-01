@@ -1388,6 +1388,7 @@ terminal_screen_timer_background (gpointer user_data)
   TerminalImageLoader *loader;
   TerminalBackground   background_mode;
   GdkPixbuf           *image;
+  GtkWidget           *toplevel;
   gdouble              background_darkness;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
@@ -1434,12 +1435,16 @@ terminal_screen_timer_background (gpointer user_data)
     {
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
     }
+  else
+    background_darkness = 0.0;
 
   //vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
   //vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), opacity);
   //vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
   //                                         background_mode == TERMINAL_BACKGROUND_TRANSPARENT
   //                                         && !gtk_widget_is_composited (GTK_WIDGET (screen)));
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  gtk_widget_set_opacity (toplevel, 1.0 - background_darkness);
 
   GDK_THREADS_LEAVE ();
 
