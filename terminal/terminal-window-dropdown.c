@@ -221,6 +221,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   guint           n;
   const gchar    *name;
   gboolean        keep_open;
+  gboolean        show_borders;
   GtkWidget      *child;
 
   dropdown->rel_width = 0.80;
@@ -255,7 +256,8 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 
   /* adjust notebook for drop-down usage */
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (window->notebook), GTK_POS_BOTTOM);
-  gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), TRUE);
+  g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &show_borders, NULL);
+  gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), show_borders);
   terminal_window_notebook_show_tabs (window);
 
   /* actions we don't want */
