@@ -757,9 +757,12 @@ terminal_app_open_window (TerminalApp        *app,
 
   if (!attr->drop_down)
     {
-      /* don't apply other attributes to the window when reusing */
+      /* don't apply other attributes to the window when reusing, just present it to user */
       if (reuse_window)
-        return;
+        {
+          gtk_window_present (GTK_WINDOW (window));
+          return;
+        }
 
       /* set the window geometry, this can only be set after one of the tabs
        * has been added, because vte is the geometry widget, so atleast one
