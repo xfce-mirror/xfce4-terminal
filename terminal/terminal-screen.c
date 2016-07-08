@@ -1436,7 +1436,7 @@ terminal_screen_timer_background (gpointer user_data)
       g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
     }
   else
-    background_darkness = 0.0;
+    background_darkness = 1.0;
 
   //vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
   //vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), opacity);
@@ -1444,7 +1444,7 @@ terminal_screen_timer_background (gpointer user_data)
   //                                         background_mode == TERMINAL_BACKGROUND_TRANSPARENT
   //                                         && !gtk_widget_is_composited (GTK_WIDGET (screen)));
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  gtk_widget_set_opacity (toplevel, 1.0 - background_darkness);
+  gtk_widget_set_opacity (toplevel, background_darkness);
 
   GDK_THREADS_LEAVE ();
 
