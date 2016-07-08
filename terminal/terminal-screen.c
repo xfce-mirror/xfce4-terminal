@@ -1754,8 +1754,8 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   glong          char_width;
   glong          char_height;
 
-#if GTK_CHECK_VERSION (3,20,0)
   // Don't need this on gtk>=3.20
+#if GTK_CHECK_VERSION (3,20,0)
   return;
 #endif
 
@@ -1765,8 +1765,8 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
 
   terminal_screen_set_window_geometry_hints (screen, window);
 
-  gtk_widget_size_request (GTK_WIDGET (window), &window_requisition);
-  gtk_widget_size_request (screen->terminal, &terminal_requisition);
+  gtk_widget_get_preferred_size (GTK_WIDGET (window), &window_requisition, NULL);
+  gtk_widget_get_preferred_size (screen->terminal, &terminal_requisition, NULL);
 
   if (columns < 1)
     columns = vte_terminal_get_column_count (VTE_TERMINAL (screen->terminal));
