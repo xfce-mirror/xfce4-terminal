@@ -613,8 +613,7 @@ terminal_window_dropdown_animate_up (gpointer data)
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
   TerminalWindow         *window = TERMINAL_WINDOW (data);
   GtkRequisition          req1, req2;
-  gint                    step_size;
-  gint                    viewport_h;
+  gint                    step_size, viewport_h, min_size;
   GdkRectangle            rect;
 
   /* get window size */
@@ -627,7 +626,7 @@ terminal_window_dropdown_animate_up (gpointer data)
     }
   else
     {
-      gtk_widget_get_preferred_size (TERMINAL_WINDOW (dropdown)->vbox, &req1, NULL);
+      gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
     }
 
   /* decrease each interval */
@@ -639,19 +638,34 @@ terminal_window_dropdown_animate_up (gpointer data)
   gtk_widget_get_preferred_size (dropdown->viewport, &req2, NULL);
   viewport_h = req2.height - step_size;
 
-  if (viewport_h < step_size)
+  /* sizes of the widgets that cannot be shrunk */
+  gtk_widget_get_preferred_size (window->notebook, &req2, NULL);
+  min_size = req2.height;
+  if (window->menubar != NULL
+      && gtk_widget_get_visible (window->menubar))
+    {
+      gtk_widget_get_preferred_size (window->menubar, &req2, NULL);
+      min_size += req2.height;
+    }
+  if (window->toolbar != NULL
+      && gtk_widget_get_visible (window->toolbar))
+    {
+      gtk_widget_get_preferred_size (window->toolbar, &req2, NULL);
+      min_size += req2.height;
+    }
+
+  if (viewport_h < min_size)
     {
       /* animation complete */
       gtk_widget_hide (GTK_WIDGET (dropdown));
       return FALSE;
     }
-  else
-    {
-      /* resize viewport */
-      gtk_widget_set_size_request (dropdown->viewport, req1.width, viewport_h);
-      gtk_window_resize (GTK_WINDOW (dropdown), req1.width, viewport_h);
-      return TRUE;
-    }
+
+  /* resize window */
+  gtk_widget_set_size_request (dropdown->viewport, req1.width, viewport_h);
+  gtk_widget_set_size_request (window->vbox, req1.width, viewport_h);
+  gtk_window_resize (GTK_WINDOW (dropdown), req1.width, viewport_h);
+  return TRUE;
 }
 
 
