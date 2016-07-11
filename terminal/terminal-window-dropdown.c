@@ -359,7 +359,6 @@ terminal_window_dropdown_set_property (GObject      *object,
           if (dropdown->status_icon == NULL)
             {
               dropdown->status_icon = gtk_status_icon_new_from_icon_name ("utilities-terminal");
-              gtk_status_icon_set_name (dropdown->status_icon, PACKAGE_NAME);
               gtk_status_icon_set_title (dropdown->status_icon, _("Drop-down Terminal"));
               gtk_status_icon_set_tooltip_text (dropdown->status_icon, _("Toggle Drop-down Terminal"));
               g_signal_connect (G_OBJECT (dropdown->status_icon), "button-press-event",
