@@ -35,6 +35,13 @@
 #include <string.h>
 #endif
 
+#include <libxfce4ui/libxfce4ui.h>
+
+#ifdef GDK_WINDOWING_X11
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#endif
+
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-config.h>
 #include <terminal/terminal-preferences.h>
@@ -596,36 +603,6 @@ terminal_app_find_screen_by_name (const gchar *display_name)
 
 
 
-/**
- * Parses geometry string for GTK>=3.20 (gtk_window_parse_geometry() declared deprecated)
- * geometry format is "1000x1000+0+0"
- * TODO: support +0+0
- */
-static gboolean
-terminal_app_parse_geometry (const gchar *geometry,
-                             gint        *x,
-                             gint        *y)
-{
-  gchar    **strings;
-  gboolean   res;
-
-  strings = g_strsplit_set (geometry, "x+", -1);
-  if (!strings[0] || !*strings[0] || !strings[1] || !*strings[1])
-    {
-      res = FALSE;
-    }
-  else
-    {
-      res = TRUE;
-      *x = atoi (strings[0]);
-      *y = atoi (strings[1]);
-    }
-  g_strfreev (strings);
-  return res;
-}
-
-
-
 static void
 terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
@@ -641,7 +618,8 @@ terminal_app_open_window (TerminalApp        *app,
   gint             attr_screen_num;
 #if GTK_CHECK_VERSION (3,20,0)
   TerminalScreen  *active_terminal;
-  gint             width, height;
+  gint             mask = NoValue;
+  guint            width, height;
   glong            char_width = 1, char_height = 1;
   gint             xpad = 0, ypad = 0;
 #endif
@@ -770,8 +748,10 @@ terminal_app_open_window (TerminalApp        *app,
         geometry = g_strdup (attr->geometry);
 
       /* try to apply the geometry to the window */
-#if GTK_CHECK_VERSION (3,20,0)
-      if (terminal_app_parse_geometry (geometry, &width, &height))
+#if GTK_CHECK_VERSION (3,20,0) && defined (GDK_WINDOWING_X11)
+      /* TODO: support x/y offsets */
+      mask = XParseGeometry (geometry, NULL, NULL, &width, &height);
+      if ((mask & WidthValue) && (mask & HeightValue))
         {
           active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
           if (G_LIKELY (active_terminal != NULL))
