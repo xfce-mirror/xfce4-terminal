@@ -620,8 +620,6 @@ terminal_app_open_window (TerminalApp        *app,
   TerminalScreen  *active_terminal;
   gint             mask = NoValue;
   guint            width, height;
-  glong            char_width = 1, char_height = 1;
-  gint             xpad = 0, ypad = 0;
 #endif
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
@@ -755,8 +753,7 @@ terminal_app_open_window (TerminalApp        *app,
         {
           active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
           if (G_LIKELY (active_terminal != NULL))
-            terminal_screen_get_geometry (active_terminal, &char_width, &char_height, &xpad, &ypad);
-          gtk_window_set_default_size (GTK_WINDOW (window), width * char_width + xpad, height * char_height + ypad);
+            terminal_screen_set_size (active_terminal, width, height);
         }
       else
 #else
