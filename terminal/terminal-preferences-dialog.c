@@ -452,7 +452,7 @@ terminal_preferences_dialog_geometry (TerminalPreferencesDialog *dialog,
                                       gint                       rows)
 {
   gint     x, y;
-  guint    w, h;
+  guint    w = 0, h = 0;
   gchar   *geo;
   gint     mask = NoValue;
 
