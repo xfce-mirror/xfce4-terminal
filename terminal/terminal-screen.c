@@ -305,7 +305,7 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
 
   /* show the terminal */
-  gtk_widget_show_all (GTK_WIDGET (screen));
+  gtk_widget_show_all (screen->terminal);
 }
 
 
