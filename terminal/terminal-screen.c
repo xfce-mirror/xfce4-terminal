@@ -157,6 +157,8 @@ struct _TerminalScreen
   GtkWidget           *scrollbar;
   GtkWidget           *tab_label;
 
+  GdkRGBA              background_color;
+
   guint                session_id;
 
   gulong               background_signal_id;
@@ -917,9 +919,13 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   if (G_LIKELY (valid_palette))
     {
+      screen->background_color.red = bg.red;
+      screen->background_color.green = bg.green;
+      screen->background_color.blue = bg.blue;
+
       vte_terminal_set_colors (VTE_TERMINAL (screen->terminal),
                                has_fg ? &fg : NULL,
-                               has_bg ? &bg : NULL,
+                               has_bg ? &screen->background_color : NULL,
                                palette, 16);
     }
   else
@@ -1369,7 +1375,6 @@ terminal_screen_timer_background (gpointer user_data)
   TerminalImageLoader *loader;
   TerminalBackground   background_mode;
   GdkPixbuf           *image;
-  GtkWidget           *toplevel;
   gdouble              background_darkness;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
@@ -1424,8 +1429,8 @@ terminal_screen_timer_background (gpointer user_data)
   //vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
   //                                         background_mode == TERMINAL_BACKGROUND_TRANSPARENT
   //                                         && !gtk_widget_is_composited (GTK_WIDGET (screen)));
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  gtk_widget_set_opacity (toplevel, background_darkness);
+  screen->background_color.alpha = background_darkness;
+  vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
 
   GDK_THREADS_LEAVE ();
 
