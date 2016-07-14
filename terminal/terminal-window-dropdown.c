@@ -241,7 +241,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_container_add (GTK_CONTAINER (dropdown), dropdown->viewport);
   gtk_container_add (GTK_CONTAINER (dropdown->viewport), child);
   g_object_unref (G_OBJECT (child));
-  gtk_widget_show (dropdown->viewport);
 
   /* default window settings */
   gtk_window_set_decorated (GTK_WINDOW (dropdown), FALSE);
@@ -267,7 +266,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   /* notebook buttons */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
   gtk_notebook_set_action_widget (GTK_NOTEBOOK (window->notebook), hbox, GTK_PACK_END);
-  gtk_widget_show (hbox);
 
   button = dropdown->keep_open = gtk_toggle_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
@@ -278,14 +276,12 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 #else
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
 #endif
-  gtk_widget_show (button);
 
   g_object_get (G_OBJECT (window->preferences), "dropdown-keep-open-default", &keep_open, NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
 
   img = gtk_image_new_from_icon_name ("go-bottom", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
-  gtk_widget_show (img);
 
   action = gtk_action_group_get_action (window->action_group, "preferences");
 
@@ -300,11 +296,9 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 #endif
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
       G_CALLBACK (gtk_action_activate), action);
-  gtk_widget_show (button);
 
   img = gtk_action_create_icon (action, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
-  gtk_widget_show (img);
 
   /* connect bindings */
   for (n = 1; n < N_PROPERTIES; n++)
@@ -538,7 +532,6 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
 {
   GtkActionGroup *group = TERMINAL_WINDOW (dropdown)->action_group;
   GtkWidget      *menu;
-  GtkWidget      *mi;
   GtkAction      *action;
 
   menu = gtk_menu_new ();
@@ -546,19 +539,17 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
       G_CALLBACK (gtk_widget_destroy), NULL);
 
   action = gtk_action_group_get_action (group, "preferences");
-  mi = gtk_action_create_menu_item (action);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-  gtk_widget_show (mi);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         gtk_action_create_menu_item (action));
 
-  mi = gtk_separator_menu_item_new ();
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-  gtk_widget_show (mi);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         gtk_separator_menu_item_new ());
 
   action = gtk_action_group_get_action (group, "close-window");
-  mi = gtk_action_create_menu_item (action);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), mi);
-  gtk_widget_show (mi);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         gtk_action_create_menu_item (action));
 
+  gtk_widget_show_all (menu);
   gtk_menu_popup (GTK_MENU (menu),
                   NULL, NULL,
                   NULL, NULL,
@@ -816,7 +807,10 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
 
   /* show window */
   if (!visible)
-    gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
+    {
+      gtk_widget_show_all (GTK_WIDGET (dropdown));
+      gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
+    }
 
   /* force focus to the window */
   terminal_util_activate_window (GTK_WINDOW (dropdown));

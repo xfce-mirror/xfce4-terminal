@@ -274,7 +274,6 @@ terminal_screen_init (TerminalScreen *screen)
                                          gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
   gtk_box_pack_start (GTK_BOX (screen), screen->scrollbar, FALSE, FALSE, 0);
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
-  gtk_widget_show (screen->scrollbar);
 
   /* watch preferences changes */
   screen->preferences = terminal_preferences_get ();
@@ -306,7 +305,7 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
 
   /* show the terminal */
-  gtk_widget_show (screen->terminal);
+  gtk_widget_show_all (GTK_WIDGET (screen));
 }
 
 
@@ -2135,7 +2134,6 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   /* create the box */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 2);
-  gtk_widget_show (hbox);
 
   screen->tab_label = gtk_label_new (NULL);
   gtk_widget_set_margin_start (screen->tab_label, 2);
@@ -2148,7 +2146,6 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
                           G_OBJECT (screen->tab_label), "tooltip-text",
                           G_BINDING_SYNC_CREATE);
   gtk_widget_set_has_tooltip (screen->tab_label, TRUE);
-  gtk_widget_show (screen->tab_label);
 
   button = gtk_button_new ();
 #if GTK_CHECK_VERSION (3,20,0)
@@ -2165,12 +2162,13 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_container_add (GTK_CONTAINER (hbox), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
                             G_CALLBACK (gtk_widget_destroy), screen);
-  gtk_widget_show (button);
 
   /* button image */
   image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), image);
-  gtk_widget_show (image);
+
+  /* show the box and all its widgets */
+  gtk_widget_show_all (hbox);
 
   /* update orientation */
   terminal_screen_update_label_orientation (screen);

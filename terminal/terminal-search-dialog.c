@@ -94,29 +94,23 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   close = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), close, GTK_RESPONSE_CLOSE);
   gtk_widget_set_can_default (close, TRUE);
-  gtk_widget_show (close);
 
   dialog->button_prev = xfce_gtk_button_new_mixed ("go-previous", _("_Previous"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
   gtk_widget_set_can_default (dialog->button_prev, TRUE);
-  gtk_widget_show (dialog->button_prev);
 
   dialog->button_next = xfce_gtk_button_new_mixed ("go-next", _("_Next"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
-  gtk_widget_show (dialog->button_next);
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), vbox, TRUE, TRUE, 0);
   gtk_container_set_border_width (GTK_CONTAINER (vbox), 6);
-  gtk_widget_show (vbox);
 
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
   gtk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, TRUE, 0);
-  gtk_widget_show (hbox);
 
   label = gtk_label_new_with_mnemonic (_("_Search for:"));
   gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-  gtk_widget_show (label);
 
   dialog->entry = gtk_entry_new ();
   gtk_box_pack_start (GTK_BOX (hbox), dialog->entry, TRUE, TRUE, 0);
@@ -127,31 +121,26 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
       G_CALLBACK (terminal_search_dialog_entry_icon_release), NULL);
   g_signal_connect (G_OBJECT (dialog->entry), "changed",
       G_CALLBACK (terminal_search_dialog_entry_changed), dialog);
-  gtk_widget_show (dialog->entry);
 
   dialog->match_case = gtk_check_button_new_with_mnemonic (_("C_ase sensitive"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_case, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->match_case), "toggled",
       G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
-  gtk_widget_show (dialog->match_case);
 
   dialog->match_regex = gtk_check_button_new_with_mnemonic (_("Match as _regular expression"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_regex, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->match_regex), "toggled",
       G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
-  gtk_widget_show (dialog->match_regex);
 
   dialog->match_word = gtk_check_button_new_with_mnemonic (_("Match _entire word only"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_word, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->match_word), "toggled",
       G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
-  gtk_widget_show (dialog->match_word);
 
   dialog->wrap_around = gtk_check_button_new_with_mnemonic (_("_Wrap around"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_around, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->wrap_around), "toggled",
       G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
-  gtk_widget_show (dialog->wrap_around);
 
   terminal_search_dialog_entry_changed (dialog->entry, dialog);
 }
@@ -287,6 +276,7 @@ terminal_search_dialog_present (TerminalSearchDialog  *dialog)
 {
   terminal_return_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog));
 
+  gtk_widget_show_all (GTK_WIDGET (dialog));
   gtk_window_present (GTK_WINDOW (dialog));
   gtk_widget_grab_focus (dialog->entry);
 }

@@ -273,7 +273,6 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
   gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), found);
   g_signal_connect (G_OBJECT (item), "activate",
       G_CALLBACK (terminal_encoding_action_activated), action);
-  gtk_widget_show (item);
   g_free (default_label);
 
   /*add the groups */
@@ -282,7 +281,6 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
       /* category item */
       item = gtk_menu_item_new_with_label (_(terminal_encodings_names[n]));
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);
-      gtk_widget_show (item);
 
       submenu = gtk_menu_new ();
       gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), submenu);
@@ -298,7 +296,6 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
           groups = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item2));
           gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item2);
           g_object_set_qdata (G_OBJECT (item2), encoding_action_quark, (gchar *) charset);
-          gtk_widget_show (item2);
 
           if (!found
               && strcmp (action->current, charset) == 0)
@@ -325,7 +322,6 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
       gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item2), TRUE);
       g_signal_connect (G_OBJECT (item2), "activate",
         G_CALLBACK (terminal_encoding_action_activated), action);
-      gtk_widget_show (item2);
 
       /* other group */
       bold_item = item;
@@ -339,6 +335,8 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
       gtk_label_set_attributes (GTK_LABEL (label), attrs);
       pango_attr_list_unref (attrs);
     }
+
+  gtk_widget_show_all (menu);
 }
 
 

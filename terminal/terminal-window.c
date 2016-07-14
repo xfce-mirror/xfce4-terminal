@@ -322,7 +322,6 @@ terminal_window_init (TerminalWindow *window)
 
   window->vbox = vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (window), vbox);
-  gtk_widget_show (vbox);
 
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
@@ -352,7 +351,7 @@ terminal_window_init (TerminalWindow *window)
       G_CALLBACK (terminal_window_notebook_button_release_event), window);
 
   gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
-  gtk_widget_show (window->notebook);
+  gtk_widget_show_all (vbox);
 
   /* create encoding action */
   window->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
@@ -500,27 +499,22 @@ terminal_window_confirm_close (TerminalWindow *window)
 
   button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
-  gtk_widget_show (button);
 
   button = xfce_gtk_button_new_mixed ("application-exit", _("Close _Window"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
   gtk_widget_grab_focus (button);
-  gtk_widget_show (button);
 
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), hbox, TRUE, TRUE, 0);
-  gtk_widget_show (hbox);
 
   image = gtk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
   gtk_widget_set_halign (image, GTK_ALIGN_CENTER);
   gtk_widget_set_valign (image, GTK_ALIGN_START);
   gtk_box_pack_start (GTK_BOX (hbox), image, FALSE, FALSE, 0);
-  gtk_widget_show (image);
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
-  gtk_widget_show (vbox);
 
   message = g_strdup_printf (_("This window has %d tabs open. Closing this window\n"
                                "will also close all its tabs."), n_tabs);
@@ -534,13 +528,13 @@ terminal_window_confirm_close (TerminalWindow *window)
                         "xalign", 0.0,
                         NULL);
   gtk_box_pack_start (GTK_BOX (vbox), label, FALSE, TRUE, 0);
-  gtk_widget_show (label);
 
   g_free (markup);
 
   checkbox = gtk_check_button_new_with_mnemonic (_("Do _not ask me again"));
   gtk_box_pack_start (GTK_BOX (vbox), checkbox, FALSE, FALSE, 0);
-  gtk_widget_show (checkbox);
+
+  gtk_widget_show_all (dialog);
 
   response = gtk_dialog_run (GTK_DIALOG (dialog));
   if (response == GTK_RESPONSE_YES)
@@ -1622,11 +1616,9 @@ terminal_window_action_set_title (GtkAction      *action,
       box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
       gtk_container_set_border_width (GTK_CONTAINER (box), 6);
       gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box, TRUE, TRUE, 0);
-      gtk_widget_show (box);
 
       label = gtk_label_new_with_mnemonic (_("_Title:"));
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
-      gtk_widget_show (label);
 
       entry = gtk_entry_new ();
       gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
@@ -1634,7 +1626,6 @@ terminal_window_action_set_title (GtkAction      *action,
       gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
       gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_SECONDARY, "edit-clear");
       g_signal_connect (G_OBJECT (entry), "icon-release", G_CALLBACK (title_dialog_clear), NULL);
-      gtk_widget_show (entry);
 
       /* set Atk description and label relation for the entry */
       object = gtk_widget_get_accessible (entry);
@@ -1647,7 +1638,7 @@ terminal_window_action_set_title (GtkAction      *action,
       g_signal_connect (G_OBJECT (dialog), "response",
                         G_CALLBACK (title_dialog_response), window);
 
-      gtk_widget_show (dialog);
+      gtk_widget_show_all (dialog);
     }
 }
 

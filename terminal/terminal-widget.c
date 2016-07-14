@@ -302,7 +302,6 @@ terminal_widget_context_menu (TerminalWidget *widget,
         {
           item_separator = gtk_separator_menu_item_new ();
           gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_separator);
-          gtk_widget_show (item_separator);
         }
       else
         item_separator = NULL;
@@ -333,17 +332,17 @@ terminal_widget_context_menu (TerminalWidget *widget,
       g_object_set_data_full (G_OBJECT (item_copy), I_("terminal-widget-link"), g_strdup (match), g_free);
       g_signal_connect_swapped (G_OBJECT (item_copy), "activate", G_CALLBACK (terminal_widget_context_menu_copy), widget);
       gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_copy);
-      gtk_widget_show (item_copy);
 
       /* prepend the "OPEN" menu item */
       g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-link"), g_strdup (match), g_free);
       g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-tag"), g_memdup (&tag, sizeof (tag)), g_free);
       g_signal_connect_swapped (G_OBJECT (item_open), "activate", G_CALLBACK (terminal_widget_context_menu_open), widget);
       gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_open);
-      gtk_widget_show (item_open);
 
       g_free (match);
     }
+
+  gtk_widget_show_all (menu);
 
   /* take a reference on the menu */
   g_object_ref_sink (G_OBJECT (menu));
