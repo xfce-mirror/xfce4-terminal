@@ -1544,13 +1544,7 @@ title_dialog_response (GtkWidget      *dialog,
                        gint            response,
                        TerminalWindow *window)
 {
-  /* check if we should open the user manual */
-  if (response == GTK_RESPONSE_HELP)
-    {
-      /* open the "Set Title" paragraph in the "Usage" section */
-      xfce_dialog_show_help (GTK_WINDOW (dialog), "terminal", "usage", NULL);
-    }
-  else
+  if (response == GTK_RESPONSE_CLOSE)
     {
       /* need for hiding on focus */
       if (window->drop_down)
@@ -1580,6 +1574,7 @@ terminal_window_action_set_title (GtkAction      *action,
 {
   AtkObject *object;
   GtkWidget *dialog;
+  GtkWidget *button;
   GtkWidget *box;
   GtkWidget *label;
   GtkWidget *entry;
@@ -1591,9 +1586,12 @@ terminal_window_action_set_title (GtkAction      *action,
       dialog = gtk_dialog_new_with_buttons (Q_("Window Title|Set Title"),
                                             GTK_WINDOW (window),
                                             GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            _("_Help"), GTK_RESPONSE_HELP,
-                                            _("_Close"), GTK_RESPONSE_CLOSE,
+                                            NULL,
                                             NULL);
+
+      button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
+      gtk_widget_set_can_default (button, TRUE);
+      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
       gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
 
       box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
