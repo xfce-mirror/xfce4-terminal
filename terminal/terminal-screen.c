@@ -2053,28 +2053,6 @@ terminal_screen_reset (TerminalScreen *screen,
 
 
 /**
- * terminal_screen_im_append_menuitems:
- * @screen    : A #TerminalScreen.
- * @menushell : A #GtkMenuShell.
- *
- * Appends menu items for various input methods to the given @menushell.
- * The user can select one of these items to modify the input method
- * used by the terminal.
- **/
-void
-terminal_screen_im_append_menuitems (TerminalScreen *screen,
-                                     GtkMenuShell   *menushell)
-{
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  terminal_return_if_fail (GTK_IS_MENU_SHELL (menushell));
-
-  // FIXME: functionality seems to have been removed
-  //vte_terminal_im_append_menuitems (VTE_TERMINAL (screen->terminal), menushell);
-}
-
-
-
-/**
  * terminal_screen_get_restart_command:
  * @screen  : A #TerminalScreen.
  *

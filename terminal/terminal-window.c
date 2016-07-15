@@ -220,7 +220,6 @@ static const GtkActionEntry action_entries[] =
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
     { "contents", "help-browser", N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
     { "about", "help-about", N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
-  { "input-methods", NULL, N_ ("_Input Methods"), NULL, NULL, NULL, },
 };
 
 static const GtkToggleActionEntry toggle_action_entries[] =
@@ -1175,27 +1174,11 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
                                   TerminalWindow  *window)
 {
   GtkWidget *popup;
-  GtkWidget *menu;
-  GtkWidget *item;
 
   if (G_UNLIKELY (screen != window->active))
     return NULL;
 
   popup = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu");
-  if (G_LIKELY (popup != NULL))
-    {
-      item = gtk_ui_manager_get_widget (window->ui_manager, "/popup-menu/input-methods");
-      if (G_LIKELY (item != NULL && GTK_IS_MENU_ITEM (item)))
-        {
-          /* append input methods */
-          menu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (item));
-          if (G_LIKELY (menu != NULL))
-            gtk_widget_destroy (menu);
-          menu = gtk_menu_new ();
-          terminal_screen_im_append_menuitems (screen, GTK_MENU_SHELL (menu));
-          gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), menu);
-        }
-    }
 
   return popup;
 }
