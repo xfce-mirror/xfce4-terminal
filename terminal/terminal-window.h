@@ -66,6 +66,7 @@ struct _TerminalWindow
   GtkWidget           *notebook;
 
   GtkWidget           *search_dialog;
+  GtkWidget           *title_dialog;
 
   /* pushed size of screen */
   glong                grid_width;

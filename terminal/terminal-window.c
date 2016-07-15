@@ -1540,20 +1540,30 @@ terminal_window_action_goto_tab (GtkRadioAction *action,
 
 
 static void
+title_dialog_close (GtkWidget      *dialog,
+                    TerminalWindow *window)
+{
+  terminal_return_if_fail (window->title_dialog == dialog);
+
+  /* need for hiding on focus */
+  if (window->drop_down)
+    terminal_util_activate_window (GTK_WINDOW (window));
+
+  /* close the dialog */
+  window->n_child_windows--;
+  gtk_widget_destroy (dialog);
+  window->title_dialog = NULL;
+}
+
+
+
+static void
 title_dialog_response (GtkWidget      *dialog,
                        gint            response,
                        TerminalWindow *window)
 {
   if (response == GTK_RESPONSE_CLOSE)
-    {
-      /* need for hiding on focus */
-      if (window->drop_down)
-        terminal_util_activate_window (GTK_WINDOW (window));
-
-      /* close the dialog */
-      window->n_child_windows--;
-      gtk_widget_destroy (dialog);
-    }
+    title_dialog_close (dialog, window);
 }
 
 
@@ -1573,30 +1583,29 @@ terminal_window_action_set_title (GtkAction      *action,
                                   TerminalWindow *window)
 {
   AtkObject *object;
-  GtkWidget *dialog;
   GtkWidget *button;
   GtkWidget *box;
   GtkWidget *label;
   GtkWidget *entry;
 
-  if (G_LIKELY (window->active != NULL))
-    {
-      window->n_child_windows++;
+  terminal_return_if_fail (window->active != NULL);
 
-      dialog = gtk_dialog_new_with_buttons (Q_("Window Title|Set Title"),
-                                            GTK_WINDOW (window),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            NULL,
-                                            NULL);
+  if (window->title_dialog == NULL)
+    {
+      window->title_dialog = gtk_dialog_new_with_buttons (Q_("Window Title|Set Title"),
+                                                          GTK_WINDOW (window),
+                                                          GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                          NULL,
+                                                          NULL);
 
       button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
       gtk_widget_set_can_default (button, TRUE);
-      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
-      gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CLOSE);
+      gtk_dialog_add_action_widget (GTK_DIALOG (window->title_dialog), button, GTK_RESPONSE_CLOSE);
+      gtk_dialog_set_default_response (GTK_DIALOG (window->title_dialog), GTK_RESPONSE_CLOSE);
 
       box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
       gtk_container_set_border_width (GTK_CONTAINER (box), 6);
-      gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box, TRUE, TRUE, 0);
+      gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (window->title_dialog))), box, TRUE, TRUE, 0);
 
       label = gtk_label_new_with_mnemonic (_("_Title:"));
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
@@ -1616,11 +1625,17 @@ terminal_window_action_set_title (GtkAction      *action,
                               G_OBJECT (entry), "text",
                               G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
 
-      g_signal_connect (G_OBJECT (dialog), "response",
+      g_signal_connect (G_OBJECT (window->title_dialog), "response",
                         G_CALLBACK (title_dialog_response), window);
-
-      gtk_widget_show_all (dialog);
+      g_signal_connect (G_OBJECT (window->title_dialog), "close",
+                        G_CALLBACK (title_dialog_close), window);
     }
+
+    if (!gtk_widget_get_visible (window->title_dialog))
+      window->n_child_windows++;
+
+    gtk_widget_show_all (window->title_dialog);
+    gtk_window_present (GTK_WINDOW (window->title_dialog));
 }
 
 
