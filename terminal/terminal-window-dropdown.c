@@ -699,9 +699,8 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gint               w, h;
   GdkRectangle       monitor_geo;
   gint               x_dest, y_dest;
-  gint               xpad, ypad;
   glong              char_width, char_height;
-  GtkRequisition     req1, req2;
+  GtkRequisition     req1;
   gboolean           move_to_active;
   gboolean           visible;
   gint               viewport_h;
@@ -732,7 +731,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
 
   /* get terminal size */
-  terminal_screen_get_geometry (window->active, &char_width, &char_height, &xpad, &ypad);
+  terminal_screen_get_geometry (window->active, &char_width, &char_height, NULL, NULL);
 
   /* correct padding with notebook size */
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
@@ -750,29 +749,6 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
       /* calculate size */
       w = monitor_geo.width * dropdown->rel_width;
       h = monitor_geo.height * dropdown->rel_height;
-
-      gtk_widget_get_preferred_size (window->notebook, &req1, NULL);
-      gtk_widget_get_preferred_size (GTK_WIDGET (window->active), &req2, NULL);
-      xpad += MAX (req1.width - req2.width, 0);
-      ypad += MAX (req1.height - req2.height, 0);
-
-      if (window->menubar != NULL
-          && gtk_widget_get_visible (window->menubar))
-        {
-          gtk_widget_get_preferred_size (window->menubar, &req2, NULL);
-          ypad += req2.height;
-        }
-
-      if (window->toolbar != NULL
-          && gtk_widget_get_visible (window->toolbar))
-        {
-          gtk_widget_get_preferred_size (window->toolbar, &req2, NULL);
-          ypad += req2.height;
-        }
-
-      /* minimize to fit terminal charaters */
-      w -= (w - xpad) % char_width;
-      h -= (h - ypad) % char_height;
     }
 
   /* viewport size if not animated */
