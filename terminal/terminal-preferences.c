@@ -100,7 +100,6 @@ enum
   PROP_SHORTCUTS_NO_MNEMONICS,
   PROP_TITLE_INITIAL,
   PROP_TITLE_MODE,
-  PROP_EMULATION,
   PROP_WORD_CHARS,
   PROP_TAB_ACTIVITY_COLOR,
   PROP_TAB_ACTIVITY_TIMEOUT,
@@ -900,16 +899,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          TERMINAL_TYPE_TITLE,
                          TERMINAL_TITLE_APPEND,
                          G_PARAM_READWRITE| G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:emulation:
-   **/
-  preferences_props[PROP_EMULATION] =
-      g_param_spec_string ("emulation",
-                           NULL,
-                           "Emulation",
-                           "xterm",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:word-chars:

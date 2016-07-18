@@ -111,7 +111,6 @@ static void       terminal_screen_update_encoding               (TerminalScreen 
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
 static void       terminal_screen_update_font                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
-static void       terminal_screen_update_emulation              (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
@@ -288,7 +287,6 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_encoding (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
-  terminal_screen_update_emulation (screen);
   terminal_screen_update_misc_cursor_blinks (screen);
   terminal_screen_update_misc_cursor_shape (screen);
   terminal_screen_update_misc_mouse_autohide (screen);
@@ -481,8 +479,6 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_font (screen);
   else if (strcmp ("misc-bell", name) == 0)
     terminal_screen_update_misc_bell (screen);
-  else if (strcmp ("emulation", name) == 0)
-    terminal_screen_update_emulation (screen);
   else if (strcmp ("misc-cursor-blinks", name) == 0)
     terminal_screen_update_misc_cursor_blinks (screen);
   else if (strcmp ("misc-cursor-shape", name) == 0)
@@ -937,9 +933,6 @@ terminal_screen_update_colors (TerminalScreen *screen)
                  "The default palette has been applied.");
     }
 
-  // TODO: removed functionality? remove if sure
-  //vte_terminal_set_background_tint_color (VTE_TERMINAL (screen->terminal), has_bg ? &bg : NULL);
-
   /* cursor color */
   has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
   vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
@@ -1008,19 +1001,6 @@ terminal_screen_update_misc_bell (TerminalScreen *screen)
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-bell", &bval, NULL);
   vte_terminal_set_audible_bell (VTE_TERMINAL (screen->terminal), bval);
-}
-
-
-
-static void
-terminal_screen_update_emulation (TerminalScreen *screen)
-{
-  // FIXME: Commented out because I have no idea what happened to this function in VTE
-/*  gchar *emulation;
-  g_object_get (G_OBJECT (screen->preferences), "emulation", &emulation, NULL);
-  if (g_strcmp0 (emulation, vte_terminal_get_emulation (VTE_TERMINAL (screen->terminal))) != 0)
-    vte_terminal_set_emulation (VTE_TERMINAL (screen->terminal), emulation);
-  g_free (emulation);*/
 }
 
 
@@ -1424,11 +1404,6 @@ terminal_screen_timer_background (gpointer user_data)
   else
     background_darkness = 1.0;
 
-  //vte_terminal_set_background_saturation (VTE_TERMINAL (screen->terminal), saturation);
-  //vte_terminal_set_opacity (VTE_TERMINAL (screen->terminal), opacity);
-  //vte_terminal_set_background_transparent (VTE_TERMINAL (screen->terminal),
-  //                                         background_mode == TERMINAL_BACKGROUND_TRANSPARENT
-  //                                         && !gtk_widget_is_composited (GTK_WIDGET (screen)));
   screen->background_color.alpha = background_darkness;
   vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
 
