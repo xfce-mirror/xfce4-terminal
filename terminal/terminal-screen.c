@@ -751,8 +751,9 @@ terminal_screen_update_background_fast (TerminalScreen *screen)
 {
   if (G_UNLIKELY (screen->background_timer_id == 0))
     {
-      screen->background_timer_id = g_idle_add_full (G_PRIORITY_LOW, terminal_screen_timer_background,
-                                                     screen, terminal_screen_timer_background_destroy);
+      screen->background_timer_id =
+          gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_screen_timer_background,
+                                     screen, terminal_screen_timer_background_destroy);
     }
 }
 
@@ -764,8 +765,9 @@ terminal_screen_update_background (TerminalScreen *screen)
   if (G_UNLIKELY (screen->background_timer_id != 0))
     g_source_remove (screen->background_timer_id);
 
-  screen->background_timer_id = g_timeout_add_full (G_PRIORITY_LOW, 250, terminal_screen_timer_background,
-                                                    screen, terminal_screen_timer_background_destroy);
+  screen->background_timer_id =
+      gdk_threads_add_timeout_full (G_PRIORITY_LOW, 250, terminal_screen_timer_background,
+                                    screen, terminal_screen_timer_background_destroy);
 }
 
 
@@ -1291,8 +1293,6 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
   if (G_UNLIKELY (screen->tab_label == NULL))
     return FALSE;
 
-  GDK_THREADS_ENTER ();
-
   /* unset */
   gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, NULL);
 
@@ -1307,8 +1307,6 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
 
       gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, &color);
     }
-
-  GDK_THREADS_LEAVE ();
 
   return FALSE;
 }
@@ -1356,9 +1354,9 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* start new timeout to unset the activity */
   screen->activity_timeout_id =
-      g_timeout_add_seconds_full (G_PRIORITY_DEFAULT, timeout,
-                                  terminal_screen_reset_activity_timeout,
-                                  screen, terminal_screen_reset_activity_destroyed);
+      gdk_threads_add_timeout_seconds_full (G_PRIORITY_DEFAULT, timeout,
+                                            terminal_screen_reset_activity_timeout,
+                                            screen, terminal_screen_reset_activity_destroyed);
 }
 
 
@@ -1383,8 +1381,6 @@ terminal_screen_timer_background (gpointer user_data)
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
-
-  GDK_THREADS_ENTER ();
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
@@ -1435,8 +1431,6 @@ terminal_screen_timer_background (gpointer user_data)
   //                                         && !gtk_widget_is_composited (GTK_WIDGET (screen)));
   screen->background_color.alpha = background_darkness;
   vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
-
-  GDK_THREADS_LEAVE ();
 
   return FALSE;
 }
