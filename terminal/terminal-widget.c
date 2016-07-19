@@ -696,6 +696,8 @@ terminal_widget_open_uri (TerminalWidget *widget,
       screen = gtk_widget_get_screen (GTK_WIDGET (widget));
       if (!gtk_show_uri (screen, uri, gtk_get_current_event_time (), &error))
         {
+          /* escape ampersand symbols, etc. */
+          uri = g_markup_escape_text (uri, -1);
           /* tell the user that we were unable to open the responsible application */
           xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget))),
                                   error, _("Failed to open the URL '%s'"), uri);
