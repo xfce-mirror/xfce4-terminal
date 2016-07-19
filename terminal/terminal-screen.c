@@ -93,6 +93,8 @@ static void       terminal_screen_set_property                  (GObject        
                                                                  GParamSpec            *pspec);
 static void       terminal_screen_realize                       (GtkWidget             *widget);
 static void       terminal_screen_unrealize                     (GtkWidget             *widget);
+static void       terminal_screen_key_press_event               (GtkWidget             *widget,
+                                                                 GdkEventKey           *event);
 static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
                                                                  GParamSpec            *pspec,
                                                                  TerminalScreen        *screen);
@@ -202,6 +204,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->realize = terminal_screen_realize;
   gtkwidget_class->unrealize = terminal_screen_unrealize;
+  gtkwidget_class->key_press_event = terminal_screen_key_press_event;
 
   /**
    * TerminalScreen:custom-title:
@@ -448,6 +451,21 @@ terminal_screen_unrealize (GtkWidget *widget)
   g_signal_handlers_disconnect_by_func (G_OBJECT (screen), terminal_screen_update_background, widget);
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->unrealize) (widget);
+}
+
+
+
+static void
+terminal_screen_key_press_event (GtkWidget   *widget,
+                                 GdkEventKey *event)
+{
+  gboolean ret;
+  TerminalScreen *screen = TERMINAL_SCREEN (widget);
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  /* propagate to the terminal */
+  g_signal_emit_by_name (G_OBJECT (screen->terminal), "key-press-event", event, &ret);
 }
 
 

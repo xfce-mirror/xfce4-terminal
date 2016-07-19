@@ -143,7 +143,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "misc-cursor-shape", "misc-cursor-blinks",
                                        "font-allow-bold", "misc-menubar-default",
                                        "misc-toolbar-default", "misc-borders-default",
-                                       "misc-tab-close-middle-click",
+                                       "misc-tab-close-middle-click", "shortcuts-no-helpkey",
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
                                        "background-mode", "background-image-style",

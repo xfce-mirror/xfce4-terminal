@@ -1765,8 +1765,19 @@ static void
 terminal_window_action_contents (GtkAction       *action,
                                  TerminalWindow  *window)
 {
-  /* open the Terminal user manual */
-  xfce_dialog_show_help (GTK_WINDOW (window), "terminal", NULL, NULL);
+  gboolean shortcuts_no_helpkey;
+  gboolean ret;
+
+  g_object_get (G_OBJECT (window->preferences),
+                "shortcuts-no-helpkey", &shortcuts_no_helpkey,
+                NULL);
+
+  if (!shortcuts_no_helpkey)
+    /* open the Terminal user manual */
+    xfce_dialog_show_help (GTK_WINDOW (window), "terminal", NULL, NULL);
+  else
+    /* propagate to the terminal */
+    g_signal_emit_by_name (G_OBJECT (window->active), "key-press-event", gtk_get_current_event (), &ret);
 }
 
 
