@@ -192,10 +192,11 @@ main (int argc, char **argv)
   if (G_UNLIKELY (show_version))
     {
       g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
-      g_print ("%s\n", "Copyright (c) 2003-2012");
+      g_print ("%s\n", "Copyright (c) 2003-2016");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
-      g_print ("%s\n", _("Written by Benedikt Meurer <benny@xfce.org>"));
-      g_print ("%s\n\n", _("and Nick Schermer <nick@xfce.org>."));
+      g_print ("%s\n", _("Written by Benedikt Meurer <benny@xfce.org>,"));
+      g_print ("%s\n", _("Nick Schermer <nick@xfce.org>"));
+      g_print ("%s\n\n", _("and Igor Zakharov <f2404@yandex.ru>."));
       g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
       g_print ("\n");
 
