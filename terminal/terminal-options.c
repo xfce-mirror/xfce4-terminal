@@ -104,12 +104,13 @@ terminal_option_show_hide_cmp (const gchar         *long_name,
                                TerminalVisibility  *return_visibility)
 {
   gchar *arg = argv[*argv_offset];
+  const size_t pref_len = strlen ("--show-");
 
   terminal_return_val_if_fail (long_name != NULL, FALSE);
   terminal_return_val_if_fail (return_visibility != NULL, FALSE);
 
-  if ((strncmp (arg, "--show-", 7) == 0 || strncmp (arg, "--hide-", 7) == 0)
-      && strcmp (arg + 7, long_name) == 0)
+  if ((strncmp (arg, "--show-", pref_len) == 0 || strncmp (arg, "--hide-", pref_len) == 0)
+      && strcmp (arg + pref_len, long_name) == 0)
     {
       if (*(arg + 2) == 's')
         *return_visibility = TERMINAL_VISIBILITY_SHOW;

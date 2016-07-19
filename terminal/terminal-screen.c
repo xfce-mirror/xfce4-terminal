@@ -485,15 +485,15 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
   name = g_param_spec_get_name (pspec);
   terminal_assert (name != NULL);
 
-  if (strncmp ("background-", name, 11) == 0)
+  if (strncmp ("background-", name, strlen ("background-")) == 0)
     terminal_screen_update_background (screen);
   else if (strcmp ("binding-backspace", name) == 0)
     terminal_screen_update_binding_backspace (screen);
   else if (strcmp ("binding-delete", name) == 0)
     terminal_screen_update_binding_delete (screen);
-  else if (strncmp ("color-", name, 6) == 0)
+  else if (strncmp ("color-", name, strlen ("color-")) == 0)
     terminal_screen_update_colors (screen);
-  else if (strncmp ("font-", name, 5) == 0)
+  else if (strncmp ("font-", name, strlen ("font-")) == 0)
     terminal_screen_update_font (screen);
   else if (strcmp ("misc-bell", name) == 0)
     terminal_screen_update_misc_bell (screen);
@@ -511,7 +511,7 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_scrolling_on_output (screen);
   else if (strcmp ("scrolling-on-keystroke", name) == 0)
     terminal_screen_update_scrolling_on_keystroke (screen);
-  else if (strncmp ("title-", name, 6) == 0)
+  else if (strncmp ("title-", name, strlen ("title-")) == 0)
     terminal_screen_update_title (screen);
   else if (strcmp ("word-chars", name) == 0)
     terminal_screen_update_word_chars (screen);

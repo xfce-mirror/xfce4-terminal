@@ -39,6 +39,7 @@
 
 
 
+#define MAILTO          "mailto:"
 #define USERCHARS       "-[:alnum:]\\Q_.+\\E"
 #define USERCHARS_CLASS "[" USERCHARS "]"
 #define PASSCHARS_CLASS "[-[:alnum:]\\Q,?;.:/!%$^*&~\"#'\\E]"
@@ -80,7 +81,7 @@ static const TerminalRegexPattern regex_patterns[] =
 {
   { SCHEME "//(?:" USERPASS "\\@)?" HOST PORT URLPATH, PATTERN_TYPE_FULL_HTTP },
   { "(?:www[[:digit:]]{0,3}|ftp)" HOSTCHARS_CLASS "*\\." HOST PORT URLPATH, PATTERN_TYPE_HTTP },
-  { "(?:mailto:)?" USERCHARS_CLASS "[" USERCHARS ".]*\\@" HOSTCHARS_CLASS "+\\." HOST, PATTERN_TYPE_EMAIL },
+  { "(?:" MAILTO ")?" USERCHARS_CLASS "[" USERCHARS ".]*\\@" HOSTCHARS_CLASS "+\\." HOST, PATTERN_TYPE_EMAIL },
   { "news:[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", PATTERN_TYPE_FULL_HTTP }
 };
 
@@ -233,9 +234,9 @@ terminal_widget_context_menu_copy (TerminalWidget *widget,
       display = gtk_widget_get_display (GTK_WIDGET (widget));
 
       /* strip mailto from links, bug #7909 */
-      if (g_str_has_prefix (wlink, "mailto:"))
+      if (g_str_has_prefix (wlink, MAILTO))
         {
-          modified_wlink = g_strdup (wlink + 7);
+          modified_wlink = g_strdup (wlink + strlen (MAILTO));
           wlink = modified_wlink;
         }
 
@@ -680,14 +681,15 @@ terminal_widget_open_uri (TerminalWidget *widget,
             break;
 
           case PATTERN_TYPE_EMAIL:
-            if (strncmp (wlink, "mailto:", 7) == 0)
+            if (strncmp (wlink, MAILTO, strlen (MAILTO)) == 0)
               uri = g_strdup (wlink);
             else
-              uri = g_strconcat ("mailto:", wlink, NULL);
+              uri = g_strconcat (MAILTO, wlink, NULL);
             break;
 
           default:
-            goto invalid_tag;
+            g_warning ("Invalid tag specified while trying to open link \"%s\".", wlink);
+            return;
         }
 
       /* try to open the URI with the responsible application */
@@ -696,7 +698,7 @@ terminal_widget_open_uri (TerminalWidget *widget,
         {
           /* tell the user that we were unable to open the responsible application */
           xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget))),
-                                  error, _("Failed to open the URL `%s'"), uri);
+                                  error, _("Failed to open the URL '%s'"), uri);
           g_error_free (error);
         }
 
@@ -705,10 +707,6 @@ terminal_widget_open_uri (TerminalWidget *widget,
       /* done */
       return;
     }
-
-invalid_tag:
-
-  g_warning ("Invalid tag specified while trying to open link \"%s\".", wlink);
 }
 
 
