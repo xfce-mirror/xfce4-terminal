@@ -82,7 +82,8 @@ static const TerminalRegexPattern regex_patterns[] =
   { SCHEME "//(?:" USERPASS "\\@)?" HOST PORT URLPATH, PATTERN_TYPE_FULL_HTTP },
   { "(?:www[[:digit:]]{0,3}|ftp)" HOSTCHARS_CLASS "*\\." HOST PORT URLPATH, PATTERN_TYPE_HTTP },
   { "(?:" MAILTO ")?" USERCHARS_CLASS "[" USERCHARS ".]*\\@" HOSTCHARS_CLASS "+\\." HOST, PATTERN_TYPE_EMAIL },
-  { "news:[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", PATTERN_TYPE_FULL_HTTP }
+  { "news:[[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", PATTERN_TYPE_FULL_HTTP },
+  { "magnet:[-[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+", PATTERN_TYPE_FULL_HTTP }
 };
 
 
