@@ -62,18 +62,19 @@ enum
   LAST_SIGNAL,
 };
 
-enum
+typedef enum
 {
   PATTERN_TYPE_NONE,
   PATTERN_TYPE_FULL_HTTP,
   PATTERN_TYPE_HTTP,
   PATTERN_TYPE_EMAIL
-};
+}
+PatternType;
 
 typedef struct
 {
   const gchar *pattern;
-  gint         type;
+  PatternType  type;
 }
 TerminalRegexPattern;
 
@@ -287,7 +288,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
   gchar       *match;
   guint        id, i;
   gint         tag;
-  gint         pattern_type = PATTERN_TYPE_NONE;
+  PatternType  pattern_type = PATTERN_TYPE_NONE;
 
   g_signal_emit (G_OBJECT (widget), widget_signals[GET_CONTEXT_MENU], 0, &menu);
   if (G_UNLIKELY (menu == NULL))
