@@ -93,7 +93,7 @@ static void       terminal_screen_set_property                  (GObject        
                                                                  GParamSpec            *pspec);
 static void       terminal_screen_realize                       (GtkWidget             *widget);
 static void       terminal_screen_unrealize                     (GtkWidget             *widget);
-static void       terminal_screen_key_press_event               (GtkWidget             *widget,
+static gboolean   terminal_screen_key_press_event               (GtkWidget             *widget,
                                                                  GdkEventKey           *event);
 static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
                                                                  GParamSpec            *pspec,
@@ -455,7 +455,7 @@ terminal_screen_unrealize (GtkWidget *widget)
 
 
 
-static void
+static gboolean
 terminal_screen_key_press_event (GtkWidget   *widget,
                                  GdkEventKey *event)
 {
@@ -466,6 +466,8 @@ terminal_screen_key_press_event (GtkWidget   *widget,
 
   /* propagate to the terminal */
   g_signal_emit_by_name (G_OBJECT (screen->terminal), "key-press-event", event, &ret);
+
+  return ret;
 }
 
 
