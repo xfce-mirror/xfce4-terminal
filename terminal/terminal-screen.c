@@ -1115,12 +1115,12 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 static void
 terminal_screen_update_scrolling_lines (TerminalScreen *screen)
 {
-  glong    lines;
+  guint    lines;
   gboolean unlimited;
   g_object_get (G_OBJECT (screen->preferences), "scrolling-lines", &lines, NULL);
   g_object_get (G_OBJECT (screen->preferences), "scrolling-unlimited", &unlimited, NULL);
   vte_terminal_set_scrollback_lines (VTE_TERMINAL (screen->terminal),
-                                     unlimited ? -1 : lines);
+                                     unlimited ? -1 : (glong) lines);
 }
 
 
