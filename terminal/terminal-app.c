@@ -618,7 +618,7 @@ terminal_app_open_window (TerminalApp        *app,
   gint             attr_screen_num;
 #if GTK_CHECK_VERSION (3,20,0)
   TerminalScreen  *active_terminal;
-  gint             mask = NoValue;
+  gint             mask = NoValue, x, y;
   guint            width, height;
 #endif
 
@@ -747,13 +747,17 @@ terminal_app_open_window (TerminalApp        *app,
 
       /* try to apply the geometry to the window */
 #if GTK_CHECK_VERSION (3,20,0) && defined (GDK_WINDOWING_X11)
-      /* TODO: support x/y offsets */
-      mask = XParseGeometry (geometry, NULL, NULL, &width, &height);
-      if ((mask & WidthValue) && (mask & HeightValue))
+      mask = XParseGeometry (geometry, &x, &y, &width, &height);
+      if (((mask & WidthValue) && (mask & HeightValue)) || ((mask & XValue) && (mask & YValue)))
         {
-          active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
-          if (G_LIKELY (active_terminal != NULL))
-            terminal_screen_set_size (active_terminal, width, height);
+          if ((mask & WidthValue) && (mask & HeightValue))
+            {
+              active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
+              if (G_LIKELY (active_terminal != NULL))
+                terminal_screen_set_size (active_terminal, width, height);
+            }
+          if ((mask & XValue) && (mask & YValue))
+            gtk_window_move (GTK_WINDOW (window), x, y);
         }
       else
 #else
