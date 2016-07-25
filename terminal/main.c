@@ -131,7 +131,7 @@ usage (void)
            "  --display=%s; --geometry=%s; --role=%s; --drop-down;\n"
            "  --startup-id=%s; -I, --icon=%s; --fullscreen; --maximize;\n"
            "  --show-menubar, --hide-menubar; --show-borders, --hide-borders;\n"
-           "  --show-toolbar, --hide-toolbar, --font=%s, --zoom=%s\n\n",
+           "  --show-toolbar, --hide-toolbar; --font=%s, --zoom=%s\n\n",
            _("Window Options"),
            /* parameter of --display */
            _("display"),
