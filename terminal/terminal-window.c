@@ -155,6 +155,12 @@ static void            terminal_window_action_show_borders           (GtkToggleA
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_fullscreen             (GtkToggleAction        *action,
                                                                       TerminalWindow         *window);
+static void            terminal_window_action_zoom_in                (GtkAction              *action,
+                                                                      TerminalWindow         *window);
+static void            terminal_window_action_zoom_out               (GtkAction              *action,
+                                                                      TerminalWindow         *window);
+static void            terminal_window_action_zoom_reset             (GtkAction              *action,
+                                                                      TerminalWindow         *window);
 static void            terminal_window_action_prev_tab               (GtkAction              *action,
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_next_tab               (GtkAction              *action,
@@ -181,6 +187,7 @@ static void            terminal_window_action_contents               (GtkAction 
                                                                       TerminalWindow         *window);
 static void            terminal_window_action_about                  (GtkAction              *action,
                                                                       TerminalWindow         *window);
+static void            terminal_window_zoom_update_screens           (TerminalWindow         *window);
 
 
 
@@ -205,6 +212,9 @@ static const GtkActionEntry action_entries[] =
     { "select-all", "edit-select-all", N_ ("Select _All"), "<control><shift>a", NULL, G_CALLBACK (terminal_window_action_select_all), },
     { "preferences", "preferences-system", N_ ("Pr_eferences..."), NULL, N_ ("Open the preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
+    { "zoom-in", "zoom-in", N_ ("Zoom _In"), "<control>plus", N_ ("Zoom in with larger font"), G_CALLBACK (terminal_window_action_zoom_in), },
+    { "zoom-out", "zoom-out", N_ ("Zoom _Out"), "<control>minus", N_ ("Zoom out with smaller font"), G_CALLBACK (terminal_window_action_zoom_out), },
+    { "zoom-reset", "zoom-original", N_ ("_Normal Size"), "<control>0", N_ ("Zoom to default size"), G_CALLBACK (terminal_window_action_zoom_reset), },
   { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
     { "set-title", NULL, N_ ("_Set Title..."), "<control><shift>s", NULL, G_CALLBACK (terminal_window_action_set_title), },
     { "search", "edit-find", N_ ("_Find..."), "<control><shift>f", N_ ("Search terminal contents"), G_CALLBACK (terminal_window_action_search), },
@@ -291,6 +301,9 @@ terminal_window_init (TerminalWindow *window)
   GdkVisual      *visual;
 
   window->preferences = terminal_preferences_get ();
+
+  window->font = NULL;
+  window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -390,6 +403,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->encoding_action));
 
   g_slist_free (window->tabs_menu_actions);
+  g_free (window->font);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -1455,6 +1469,51 @@ terminal_window_action_fullscreen (GtkToggleAction *action,
 
 
 static void
+terminal_window_action_zoom_in (GtkAction     *action,
+                               TerminalWindow *window)
+{
+  terminal_return_if_fail (window->active != NULL);
+
+  if (window->zoom < TERMINAL_ZOOM_LEVEL_MAXIMUM)
+    {
+      ++window->zoom;
+      terminal_window_zoom_update_screens (window);
+    }
+}
+
+
+
+static void
+terminal_window_action_zoom_out (GtkAction      *action,
+                                 TerminalWindow *window)
+{
+  terminal_return_if_fail (window->active != NULL);
+
+  if (window->zoom > TERMINAL_ZOOM_LEVEL_MINIMUM)
+    {
+      --window->zoom;
+      terminal_window_zoom_update_screens (window);
+    }
+}
+
+
+
+static void
+terminal_window_action_zoom_reset (GtkAction      *action,
+                                   TerminalWindow *window)
+{
+  terminal_return_if_fail (window->active != NULL);
+
+  if (window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+    {
+      window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
+      terminal_window_zoom_update_screens (window);
+    }
+}
+
+
+
+static void
 terminal_window_action_prev_tab (GtkAction       *action,
                                  TerminalWindow  *window)
 {
@@ -1792,6 +1851,25 @@ terminal_window_action_about (GtkAction      *action,
 
 
 
+static void
+terminal_window_zoom_update_screens (TerminalWindow *window)
+{
+  gint            npages, n;
+  TerminalScreen *screen;
+
+  terminal_return_if_fail (GTK_IS_NOTEBOOK (window->notebook));
+
+  /* walk the tabs */
+  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  for (n = 0; n < npages; n++)
+    {
+      screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n));
+      terminal_screen_update_font (screen);
+    }
+}
+
+
+
 /**
  * terminal_window_new:
  * @fullscreen: Whether to set the window to fullscreen.
@@ -1880,6 +1958,10 @@ terminal_window_add (TerminalWindow *window,
   /* allow tab sorting and dnd */
   gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);
   gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);
+
+  /* update screen font from window */
+  if (window->font || window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+    terminal_screen_update_font (screen);
 
   /* show the terminal screen */
   gtk_widget_realize (GTK_WIDGET (screen));
@@ -2005,6 +2087,11 @@ terminal_window_get_restart_command (TerminalWindow *window)
     result = g_slist_prepend (result, g_strdup ("--show-toolbar"));
   else
     result = g_slist_prepend (result, g_strdup ("--hide-toolbar"));
+
+  if (window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+    result = g_slist_prepend (result, g_strdup_printf ("--zoom=%d", window->zoom));
+  if (window->font != NULL)
+    result = g_slist_prepend (result, g_strdup_printf ("--font=%s", window->font));
 
   /* set restart commands of the tabs */
   children = gtk_container_get_children (GTK_CONTAINER (window->notebook));

@@ -27,12 +27,29 @@ G_BEGIN_DECLS
 typedef struct _TerminalTabAttr    TerminalTabAttr;
 typedef struct _TerminalWindowAttr TerminalWindowAttr;
 typedef enum   _TerminalVisibility TerminalVisibility;
+typedef enum   _TerminalZoomLevel  TerminalZoomLevel;
 
 enum _TerminalVisibility
 {
   TERMINAL_VISIBILITY_DEFAULT,
   TERMINAL_VISIBILITY_SHOW,
   TERMINAL_VISIBILITY_HIDE
+};
+
+enum _TerminalZoomLevel
+{
+  TERMINAL_ZOOM_LEVEL_XXX_SMALL = -4,
+  TERMINAL_ZOOM_LEVEL_XX_SMALL  = -3,
+  TERMINAL_ZOOM_LEVEL_X_SMALL   = -2,
+  TERMINAL_ZOOM_LEVEL_SMALL     = -1,
+  TERMINAL_ZOOM_LEVEL_MEDIUM    = 0,
+  TERMINAL_ZOOM_LEVEL_LARGE     = +1,
+  TERMINAL_ZOOM_LEVEL_X_LARGE   = +2,
+  TERMINAL_ZOOM_LEVEL_XX_LARGE  = +3,
+  TERMINAL_ZOOM_LEVEL_XXX_LARGE = +4,
+  TERMINAL_ZOOM_LEVEL_MINIMUM   = TERMINAL_ZOOM_LEVEL_XXX_SMALL,
+  TERMINAL_ZOOM_LEVEL_MAXIMUM   = TERMINAL_ZOOM_LEVEL_XXX_LARGE,
+  TERMINAL_ZOOM_LEVEL_DEFAULT   = TERMINAL_ZOOM_LEVEL_MEDIUM,
 };
 
 struct _TerminalTabAttr
@@ -53,10 +70,12 @@ struct _TerminalWindowAttr
   gchar               *startup_id;
   gchar               *sm_client_id;
   gchar               *icon;
+  gchar               *font;
   guint                fullscreen : 1;
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
   TerminalVisibility   toolbar;
+  TerminalZoomLevel    zoom;
   guint                maximize : 1;
   guint                reuse_last_window : 1;
 };

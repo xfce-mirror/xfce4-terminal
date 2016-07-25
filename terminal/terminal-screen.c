@@ -111,7 +111,6 @@ static void       terminal_screen_update_binding_backspace      (TerminalScreen 
 static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
 static void       terminal_screen_update_encoding               (TerminalScreen        *screen);
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
-static void       terminal_screen_update_font                   (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
@@ -142,7 +141,9 @@ static void       terminal_screen_vte_window_contents_resized   (TerminalScreen 
 static gboolean   terminal_screen_timer_background              (gpointer               user_data);
 static void       terminal_screen_timer_background_destroy      (gpointer               user_data);
 static void       terminal_screen_update_label_orientation      (TerminalScreen        *screen);
-
+static gchar     *terminal_screen_zoom_font                     (TerminalScreen        *screen,
+                                                                 gchar                 *font_name,
+                                                                 TerminalZoomLevel      zoom);
 
 
 struct _TerminalScreenClass
@@ -975,7 +976,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
 
 
-static void
+void
 terminal_screen_update_font (TerminalScreen *screen)
 {
   gboolean               font_allow_bold;
@@ -993,6 +994,18 @@ terminal_screen_update_font (TerminalScreen *screen)
                 "font-name", &font_name,
                 NULL);
 
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  if (TERMINAL_IS_WINDOW (toplevel))
+    {
+      if (TERMINAL_WINDOW (toplevel)->font)
+        {
+          g_free (font_name);
+          font_name = g_strdup (TERMINAL_WINDOW (toplevel)->font);
+        }
+      if (TERMINAL_WINDOW (toplevel)->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+        font_name = terminal_screen_zoom_font (screen, font_name, TERMINAL_WINDOW (toplevel)->zoom);
+    }
+
   if (gtk_widget_get_realized (GTK_WIDGET (screen)))
     terminal_screen_get_size (screen, &grid_w, &grid_h);
 
@@ -1007,10 +1020,7 @@ terminal_screen_update_font (TerminalScreen *screen)
 
   /* update window geometry it required */
   if (grid_w > 0 && grid_h > 0)
-    {
-      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-      terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
-    }
+    terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
 }
 
 
@@ -1484,6 +1494,56 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
   terminal_return_if_fail (GTK_IS_ORIENTABLE (box));
   gtk_orientable_set_orientation (GTK_ORIENTABLE (box),
     angle == 0.0 ? GTK_ORIENTATION_HORIZONTAL : GTK_ORIENTATION_VERTICAL);
+}
+
+
+
+static
+gchar* terminal_screen_zoom_font (TerminalScreen *screen,
+                                  gchar *font_name,
+                                  TerminalZoomLevel zoom)
+{
+  gdouble               scale;
+  PangoFontDescription *font_desc;
+  gchar                *font_zoomed;
+
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+  terminal_return_val_if_fail (font_name != NULL, NULL);
+
+  switch (zoom)
+   {
+     case TERMINAL_ZOOM_LEVEL_XXX_SMALL: scale = PANGO_SCALE_XX_SMALL/1.2; break;
+     case TERMINAL_ZOOM_LEVEL_XX_SMALL:  scale = PANGO_SCALE_XX_SMALL;     break;
+     case TERMINAL_ZOOM_LEVEL_X_SMALL:   scale = PANGO_SCALE_X_SMALL;      break;
+     case TERMINAL_ZOOM_LEVEL_SMALL:     scale = PANGO_SCALE_SMALL;        break;
+     case TERMINAL_ZOOM_LEVEL_LARGE:     scale = PANGO_SCALE_LARGE;        break;
+     case TERMINAL_ZOOM_LEVEL_X_LARGE:   scale = PANGO_SCALE_X_LARGE;      break;
+     case TERMINAL_ZOOM_LEVEL_XX_LARGE:  scale = PANGO_SCALE_XX_LARGE;     break;
+     case TERMINAL_ZOOM_LEVEL_XXX_LARGE: scale = PANGO_SCALE_XX_LARGE*1.2; break;
+     default:
+       return font_name;
+   }
+
+  font_desc = pango_font_description_from_string (font_name);
+  if (font_desc == NULL)
+    return font_name;
+
+  if (pango_font_description_get_size_is_absolute (font_desc))
+    pango_font_description_set_absolute_size (font_desc,
+                                              scale * pango_font_description_get_size (font_desc));
+  else
+    pango_font_description_set_size (font_desc,
+                                     scale * pango_font_description_get_size (font_desc));
+
+  font_zoomed = pango_font_description_to_string (font_desc);
+  pango_font_description_free (font_desc);
+
+  if (font_zoomed == NULL)
+      return font_name;
+
+  g_free(font_name);
+
+  return font_zoomed;
 }
 
 

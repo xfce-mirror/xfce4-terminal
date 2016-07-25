@@ -72,6 +72,9 @@ struct _TerminalWindow
   glong                grid_width;
   glong                grid_height;
 
+  gchar               *font;
+  TerminalZoomLevel    zoom;
+
   GtkAction           *encoding_action;
 
   TerminalScreen      *active;

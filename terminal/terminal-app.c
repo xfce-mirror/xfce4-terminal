@@ -377,6 +377,9 @@ terminal_app_new_window (TerminalWindow *window,
   win_attr->display = gdk_screen_make_display_name (screen);
   tab_attr = win_attr->tabs->data;
   tab_attr->directory = g_strdup (working_directory);
+  if (window->font)
+    win_attr->font = g_strdup (window->font);
+  win_attr->zoom = window->zoom;
 
   /* check if we should try to inherit the parent geometry */
   g_object_get (G_OBJECT (app->preferences), "misc-inherit-geometry", &inherit_geometry, NULL);
@@ -707,6 +710,17 @@ terminal_app_open_window (TerminalApp        *app,
           gtk_window_set_screen (GTK_WINDOW (window), screen);
           g_object_unref (G_OBJECT (screen));
         }
+    }
+
+  /* font and zoom for new window */
+  if (!reuse_window)
+    {
+      if (attr->font)
+        {
+          g_free (TERMINAL_WINDOW (window)->font);
+          TERMINAL_WINDOW (window)->font = g_strdup (attr->font);
+        }
+      TERMINAL_WINDOW (window)->zoom = attr->zoom;
     }
 
   /* add the tabs */

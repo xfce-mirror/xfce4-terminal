@@ -107,6 +107,7 @@ void         terminal_screen_search_find_next             (TerminalScreen *scree
 
 void         terminal_screen_search_find_previous         (TerminalScreen *screen);
 
+void         terminal_screen_update_font                  (TerminalScreen *screen);
 
 G_END_DECLS
 

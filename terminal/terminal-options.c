@@ -27,6 +27,9 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
 
 #include <libxfce4util/libxfce4util.h>
 
@@ -193,6 +196,7 @@ terminal_window_attr_parse (gint              argc,
   GSList             *tp, *wp;
   GSList             *attrs;
   gint                n;
+  gchar              *end_ptr = NULL;
   TerminalVisibility  visible;
 
   win_attr = terminal_window_attr_new ();
@@ -445,6 +449,40 @@ terminal_window_attr_parse (gint              argc,
           tab_attr = win_attr->tabs->data;
           attrs = g_slist_append (attrs, win_attr);
         }
+      else if (terminal_option_cmp ("font", 0, argc, argv, &n, &s))
+        {
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--font\" requires specifying "
+                             "the font name as its parameter"));
+              goto failed;
+            }
+          else
+            {
+              g_free (win_attr->font);
+              win_attr->font = g_strdup (s);
+              continue;
+            }
+        }
+      else if (terminal_option_cmp ("zoom", 0, argc, argv, &n, &s))
+        {
+          if (G_UNLIKELY (s == NULL) ||
+              strtol (s, &end_ptr, 0) < TERMINAL_ZOOM_LEVEL_MINIMUM ||
+              strtol (s, &end_ptr, 0) > TERMINAL_ZOOM_LEVEL_MAXIMUM)
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--zoom\" requires specifying "
+                             "the zoom (%d .. %d) as its parameter"),
+                           TERMINAL_ZOOM_LEVEL_MINIMUM, TERMINAL_ZOOM_LEVEL_MAXIMUM);
+              goto failed;
+            }
+          else
+            {
+              win_attr->zoom = strtol (s, &end_ptr, 0);
+              continue;
+            }
+        }
       else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
                || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL)
                || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL))
@@ -514,6 +552,7 @@ terminal_window_attr_new (void)
   win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->toolbar = TERMINAL_VISIBILITY_DEFAULT;
+  win_attr->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
 
   tab_attr = g_slice_new0 (TerminalTabAttr);
   win_attr->tabs = g_slist_prepend (NULL, tab_attr);
@@ -540,5 +579,6 @@ terminal_window_attr_free (TerminalWindowAttr *attr)
   g_free (attr->display);
   g_free (attr->role);
   g_free (attr->icon);
+  g_free (attr->font);
   g_slice_free (TerminalWindowAttr, attr);
 }
