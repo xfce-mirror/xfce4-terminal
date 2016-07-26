@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-21 00:30+0200\n"
-"PO-Revision-Date: 2016-07-22 10:53+0000\n"
+"POT-Creation-Date: 2016-07-25 18:30+0200\n"
+"PO-Revision-Date: 2016-07-26 18:17+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -118,42 +118,52 @@ msgstr "tekstsnoer"
 msgid "icon"
 msgstr "pictogram"
 
+#. parameter of --font
 #: ../terminal/main.c:147
+msgid "font"
+msgstr "lettertype"
+
+#. parameter of --zoom
+#: ../terminal/main.c:149
+msgid "zoom"
+msgstr "zoomen"
+
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Bekijk de %s man-pagina voor volledige uitleg van de bovenstaande opties."
 
-#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce-terminalvenster"
 
-#: ../terminal/main.c:196
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "De Xfce-ontwikkelploeg. Alle rechten voorbehouden."
 
-#: ../terminal/main.c:197
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Geschreven door Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:198
+#: ../terminal/main.c:202
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:199
+#: ../terminal/main.c:203
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "en Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:200
+#: ../terminal/main.c:204
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Gelieve fouten te melden aan <%s>."
 
-#: ../terminal/main.c:305
+#: ../terminal/main.c:309
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan terminaldienst niet registreren: %s\n"
 
-#: ../terminal/terminal-app.c:762
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ongeldig geometrie-tekstsnoer '%s'\n"
@@ -261,84 +271,94 @@ msgstr "Gebruikers-id komt niet overeen"
 msgid "Display mismatch"
 msgstr "Scherm komt niet overeen"
 
-#: ../terminal/terminal-options.c:213
+#: ../terminal/terminal-options.c:217
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "De optie '--default-display' vereist dat het standaard-X-scherm als zijn parameter wordt gespecificeerd"
 
-#: ../terminal/terminal-options.c:229
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "De optie '--default-working-directory' vereist dat de standaard-werkmap als zijn parameter wordt gespecificeerd"
 
-#: ../terminal/terminal-options.c:246
+#: ../terminal/terminal-options.c:250
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "De optie '--execute/-x' vereist dat u de opdracht specificeert die op de rest van de opdrachtregel moet draaien"
 
-#: ../terminal/terminal-options.c:263
+#: ../terminal/terminal-options.c:267
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "De optie '--command/-e' vereist dat u de opdracht specificeert die als zijn parameter moet draaien"
 
-#: ../terminal/terminal-options.c:280
+#: ../terminal/terminal-options.c:284
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "De optie '--working-directory' vereist dat u de werkmap specificeert als zijn parameter"
 
-#: ../terminal/terminal-options.c:295
+#: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "De optie '--title/-T' vereist dat u de titel specificeert als zijn parameter"
 
-#: ../terminal/terminal-options.c:314
+#: ../terminal/terminal-options.c:318
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "De optie '--display' vereist dat u het X-scherm specificeert als zijn parameter"
 
-#: ../terminal/terminal-options.c:329
+#: ../terminal/terminal-options.c:333
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "De optie '--geometry' vereist dat u de venstergeometrie specificeert als zijn parameter"
 
-#: ../terminal/terminal-options.c:344
+#: ../terminal/terminal-options.c:348
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "De optie '--role' vereist dat u de rol van het venster specificeert als zijn parameter"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:363
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Optie '--sm-client-id' vereist dat u het unieke sessie-ID opgeeft als zijn parameter"
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:378
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "De optie '--startup-id' vereist dat u het opstart-ID specificeert als zijn parameter"
 
-#: ../terminal/terminal-options.c:390
+#: ../terminal/terminal-options.c:394
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "De optie '--icon/-I' vereist dat u een pictogramnaam of bestandnaam opgeeft als zijn parameter"
 
-#: ../terminal/terminal-options.c:459
+#: ../terminal/terminal-options.c:457
+#, c-format
+msgid "Option \"--font\" requires specifying the font name as its parameter"
+msgstr "De optie '--font' vereist dat u de lettertypenaam opgeeft als zijn parameter"
+
+#: ../terminal/terminal-options.c:475
+#, c-format
+msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
+msgstr "De optie '--zoom' vereist dat u de zoomfactor (%d .. %d) opgeeft als zijn parameter"
+
+#: ../terminal/terminal-options.c:497
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Onbekende optie '%s'"
@@ -359,21 +379,21 @@ msgstr "Voorinstellingen aan het laden..."
 msgid "Terminal"
 msgstr "Terminalvenster"
 
-#: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:686
-#: ../terminal/terminal-screen.c:1814
+#: ../terminal/terminal-screen.c:389 ../terminal/terminal-screen.c:689
+#: ../terminal/terminal-screen.c:1876
 msgid "Untitled"
 msgstr "Zonder titel"
 
-#: ../terminal/terminal-screen.c:586
+#: ../terminal/terminal-screen.c:589
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kan uw aanmeldscherm niet bepalen."
 
-#: ../terminal/terminal-screen.c:1518 ../terminal/terminal-screen.c:1547
+#: ../terminal/terminal-screen.c:1580 ../terminal/terminal-screen.c:1609
 msgid "Failed to execute child"
 msgstr "Kon afgeleid proces niet uitvoeren"
 
-#: ../terminal/terminal-screen.c:2133
+#: ../terminal/terminal-screen.c:2195
 msgid "Close this tab"
 msgstr "Dit tabblad sluiten"
 
@@ -381,7 +401,7 @@ msgstr "Dit tabblad sluiten"
 msgid "Find"
 msgstr "Zoeken"
 
-#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1601
+#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1660
 msgid "_Close"
 msgstr "_Sluiten"
 
@@ -481,227 +501,251 @@ msgstr "Neerklap-terminalvenster"
 msgid "Toggle Drop-down Terminal"
 msgstr "Schakel neerklap-terminalvenster"
 
-#: ../terminal/terminal-window.c:195
+#: ../terminal/terminal-window.c:202
 msgid "_File"
 msgstr "_Bestand"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open _Tab"
 msgstr "Nieuw _tabblad"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open a new terminal tab"
 msgstr "Open een nieuw terminalvenster-tabblad"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open T_erminal"
 msgstr "T_erminal openen"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open a new terminal window"
 msgstr "Open een nieuw terminalvenster"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:205
 msgid "_Detach Tab"
 msgstr "Tabblad _losmaken"
 
-#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:499
+#: ../terminal/terminal-window.c:206 ../terminal/terminal-window.c:513
 msgid "Close T_ab"
 msgstr "Tabblad sluiten"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:207 ../terminal/terminal-window.c:516
 msgid "Close _Window"
 msgstr "Venster sluiten"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:208
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "_Copy"
 msgstr "_Kopiëren"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "Copy to clipboard"
 msgstr "Kopieer naar klembord"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "_Paste"
 msgstr "_Plakken"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "Paste from clipboard"
 msgstr "Plak vanuit klembord"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:211
 msgid "Paste _Selection"
 msgstr "Plak _selectie"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:212
 msgid "Select _All"
 msgstr "Selecteer _alle"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Pr_eferences..."
 msgstr "_Voorkeuren..."
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Open the preferences dialog"
 msgstr "Open de voorkeurendialoog"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:214
 msgid "_View"
 msgstr "_Beeld"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:215
+msgid "Zoom _In"
+msgstr "_Inzoomen"
+
+#: ../terminal/terminal-window.c:215
+msgid "Zoom in with larger font"
+msgstr "Inzoomen met groter lettertype"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom _Out"
+msgstr "_Uitzoomen"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom out with smaller font"
+msgstr "Uitzoomen met kleiner lettertype"
+
+#: ../terminal/terminal-window.c:217
+msgid "_Normal Size"
+msgstr "_Normale grootte"
+
+#: ../terminal/terminal-window.c:217
+msgid "Zoom to default size"
+msgstr "Zoomen naar standaardgrootte"
+
+#: ../terminal/terminal-window.c:218
 msgid "_Terminal"
 msgstr "_Terminalvenster"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:219
 msgid "_Set Title..."
 msgstr "Titel in_stellen..."
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "_Find..."
 msgstr "Zoe_ken..."
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "Search terminal contents"
 msgstr "Inhoud van terminal doorzoeken"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:221
 msgid "Find Ne_xt"
 msgstr "Volgende zoeken"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:222
 msgid "Find Pre_vious"
 msgstr "Vorige zoeken"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:223
 msgid "_Reset"
 msgstr "Te_rugzetten op standaardwaarde"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:224
 msgid "_Clear Scrollback and Reset"
 msgstr "Terugbladeren wissen en terugzetten op standaardwaarden"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:225
 msgid "T_abs"
 msgstr "Tabbladen"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "_Previous Tab"
 msgstr "_Vorig tabblad"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "Switch to previous tab"
 msgstr "Schakel naar vorig tabblad"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "_Next Tab"
 msgstr "Volge_nd tabblad"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "Switch to next tab"
 msgstr "Schakel naar volgend tabblad"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:228
 msgid "Move Tab _Left"
 msgstr "Verplaats tabblad naar links"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:229
 msgid "Move Tab _Right"
 msgstr "Verplaats tabblad naar rechts"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:230
 msgid "_Help"
 msgstr "_Hulp"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "_Contents"
 msgstr "_Inhoud"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "Display help contents"
 msgstr "Toon hulptekst"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:232
 msgid "_About"
 msgstr "_Over"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show _Menubar"
 msgstr "_Menubalk tonen"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show/hide the menubar"
 msgstr "Menubalk tonen/verbergen"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show _Toolbar"
 msgstr "Werkbalk tonen"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show/hide the toolbar"
 msgstr "Werkbalk tonen/verbergen"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show Window _Borders"
 msgstr "Vensterranden t_onen"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show/hide the window decorations"
 msgstr "Vensterdecoraties tonen/verbergen"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "_Fullscreen"
 msgstr "_Volledig scherm"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "Toggle fullscreen mode"
 msgstr "Schakelen tussen normale weergave en volledig scherm"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:369
 msgid "Set _Encoding"
 msgstr "Stel codering in"
 
-#: ../terminal/terminal-window.c:492
+#: ../terminal/terminal-window.c:506
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: ../terminal/terminal-window.c:495
+#: ../terminal/terminal-window.c:509
 msgid "_Cancel"
 msgstr "_Annuleren"
 
-#: ../terminal/terminal-window.c:518
+#: ../terminal/terminal-window.c:532
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Dit venster heeft %d tabbladen open. Als u dit\nvenster sluit, sluiten ook alle tabbladen."
 
-#: ../terminal/terminal-window.c:521
+#: ../terminal/terminal-window.c:535
 msgid "Close all tabs?"
 msgstr "Alle tabbladen sluiten?"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:547
 msgid "Do _not ask me again"
 msgstr "Niet _nogmaals vragen"
 
-#: ../terminal/terminal-window.c:1595
+#: ../terminal/terminal-window.c:1654
 msgid "Window Title|Set Title"
 msgstr "Venstertitel|Titel instellen"
 
-#: ../terminal/terminal-window.c:1610
+#: ../terminal/terminal-window.c:1669
 msgid "_Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:1622
+#: ../terminal/terminal-window.c:1681
 msgid "Enter the title for the current terminal tab"
 msgstr "Voer titel in voor het huidige terminalvenster-tabblad"
 
-#: ../terminal/terminal-window.c:1676
+#: ../terminal/terminal-window.c:1735
 msgid "Failed to create the regular expression"
 msgstr "Kon de reguliere uitdrukking niet maken"
 
