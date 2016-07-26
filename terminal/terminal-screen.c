@@ -1512,14 +1512,20 @@ gchar* terminal_screen_zoom_font (TerminalScreen *screen,
 
   switch (zoom)
    {
-     case TERMINAL_ZOOM_LEVEL_XXX_SMALL: scale = PANGO_SCALE_XX_SMALL/1.2; break;
-     case TERMINAL_ZOOM_LEVEL_XX_SMALL:  scale = PANGO_SCALE_XX_SMALL;     break;
-     case TERMINAL_ZOOM_LEVEL_X_SMALL:   scale = PANGO_SCALE_X_SMALL;      break;
-     case TERMINAL_ZOOM_LEVEL_SMALL:     scale = PANGO_SCALE_SMALL;        break;
-     case TERMINAL_ZOOM_LEVEL_LARGE:     scale = PANGO_SCALE_LARGE;        break;
-     case TERMINAL_ZOOM_LEVEL_X_LARGE:   scale = PANGO_SCALE_X_LARGE;      break;
-     case TERMINAL_ZOOM_LEVEL_XX_LARGE:  scale = PANGO_SCALE_XX_LARGE;     break;
-     case TERMINAL_ZOOM_LEVEL_XXX_LARGE: scale = PANGO_SCALE_XX_LARGE*1.2; break;
+     case TERMINAL_ZOOM_LEVEL_XXXXXX_SMALL: scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2/1.2; break;
+     case TERMINAL_ZOOM_LEVEL_XXXXX_SMALL:  scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2;     break;
+     case TERMINAL_ZOOM_LEVEL_XXXX_SMALL:   scale = PANGO_SCALE_XX_SMALL/1.2/1.2;         break;
+     case TERMINAL_ZOOM_LEVEL_XXX_SMALL:    scale = PANGO_SCALE_XX_SMALL/1.2;             break;
+     case TERMINAL_ZOOM_LEVEL_XX_SMALL:     scale = PANGO_SCALE_XX_SMALL;                 break;
+     case TERMINAL_ZOOM_LEVEL_X_SMALL:      scale = PANGO_SCALE_X_SMALL;                  break;
+     case TERMINAL_ZOOM_LEVEL_SMALL:        scale = PANGO_SCALE_SMALL;                    break;
+     case TERMINAL_ZOOM_LEVEL_LARGE:        scale = PANGO_SCALE_LARGE;                    break;
+     case TERMINAL_ZOOM_LEVEL_X_LARGE:      scale = PANGO_SCALE_X_LARGE;                  break;
+     case TERMINAL_ZOOM_LEVEL_XX_LARGE:     scale = PANGO_SCALE_XX_LARGE;                 break;
+     case TERMINAL_ZOOM_LEVEL_XXX_LARGE:    scale = PANGO_SCALE_XX_LARGE*1.2;             break;
+     case TERMINAL_ZOOM_LEVEL_XXXX_LARGE:   scale = PANGO_SCALE_XX_LARGE*1.2*1.2;         break;
+     case TERMINAL_ZOOM_LEVEL_XXXXX_LARGE:  scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2;     break;
+     case TERMINAL_ZOOM_LEVEL_XXXXXX_LARGE: scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2*1.2; break;
      default:
        return font_name;
    }
