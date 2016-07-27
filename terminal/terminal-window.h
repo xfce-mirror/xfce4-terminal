@@ -33,15 +33,12 @@ G_BEGIN_DECLS
 #define TERMINAL_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW))
 #define TERMINAL_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WINDOW, TerminalWindowClass))
 
-typedef struct _TerminalWindowClass TerminalWindowClass;
-typedef struct _TerminalWindow      TerminalWindow;
-
-struct _TerminalWindowClass
+typedef struct _TerminalWindowClass
 {
   GtkWindowClass __parent__;
-};
+} TerminalWindowClass;
 
-struct _TerminalWindow
+typedef struct
 {
   GtkWindow            __parent__;
 
@@ -90,7 +87,7 @@ struct _TerminalWindow
   GtkAction           *action_search_next;
   GtkAction           *action_search_prev;
   GtkAction           *action_fullscreen;
-};
+} TerminalWindow;
 
 GType           terminal_window_get_type             (void) G_GNUC_CONST;
 

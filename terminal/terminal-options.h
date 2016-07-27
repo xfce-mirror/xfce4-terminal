@@ -24,19 +24,14 @@
 
 G_BEGIN_DECLS
 
-typedef struct _TerminalTabAttr    TerminalTabAttr;
-typedef struct _TerminalWindowAttr TerminalWindowAttr;
-typedef enum   _TerminalVisibility TerminalVisibility;
-typedef enum   _TerminalZoomLevel  TerminalZoomLevel;
-
-enum _TerminalVisibility
+typedef enum
 {
   TERMINAL_VISIBILITY_DEFAULT,
   TERMINAL_VISIBILITY_SHOW,
   TERMINAL_VISIBILITY_HIDE
-};
+} TerminalVisibility;
 
-enum _TerminalZoomLevel
+typedef enum
 {
   TERMINAL_ZOOM_LEVEL_MINIMUM     = -7,
   TERMINAL_ZOOM_LEVEL_XXXXX_SMALL = -6,
@@ -54,17 +49,17 @@ enum _TerminalZoomLevel
   TERMINAL_ZOOM_LEVEL_XXXXX_LARGE = +6,
   TERMINAL_ZOOM_LEVEL_MAXIMUM     = +7,
   TERMINAL_ZOOM_LEVEL_DEFAULT     = TERMINAL_ZOOM_LEVEL_MEDIUM
-};
+} TerminalZoomLevel;
 
-struct _TerminalTabAttr
+typedef struct
 {
   gchar    **command;
   gchar     *directory;
   gchar     *title;
   guint      hold : 1;
-};
+} TerminalTabAttr;
 
-struct _TerminalWindowAttr
+typedef struct
 {
   GSList              *tabs;
   guint                drop_down : 1;
@@ -82,7 +77,7 @@ struct _TerminalWindowAttr
   TerminalZoomLevel    zoom;
   guint                maximize : 1;
   guint                reuse_last_window : 1;
-};
+} TerminalWindowAttr;
 
 void                terminal_options_parse     (gint                 argc,
                                                 gchar              **argv,
