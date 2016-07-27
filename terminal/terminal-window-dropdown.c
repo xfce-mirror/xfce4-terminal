@@ -96,8 +96,7 @@ typedef enum
   ANIMATION_DIR_NONE,
   ANIMATION_DIR_UP,
   ANIMATION_DIR_DOWN,
-}
-TerminalDirection;
+} TerminalDirection;
 
 struct _TerminalWindowDropdown
 {

@@ -68,15 +68,13 @@ typedef enum
   PATTERN_TYPE_FULL_HTTP,
   PATTERN_TYPE_HTTP,
   PATTERN_TYPE_EMAIL
-}
-PatternType;
+} PatternType;
 
 typedef struct
 {
   const gchar *pattern;
   PatternType  type;
-}
-TerminalRegexPattern;
+} TerminalRegexPattern;
 
 static const TerminalRegexPattern regex_patterns[] =
 {

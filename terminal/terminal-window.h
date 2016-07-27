@@ -33,7 +33,7 @@ G_BEGIN_DECLS
 #define TERMINAL_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), TERMINAL_TYPE_WINDOW))
 #define TERMINAL_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), TERMINAL_TYPE_WINDOW, TerminalWindowClass))
 
-typedef struct _TerminalWindowClass
+typedef struct
 {
   GtkWindowClass __parent__;
 } TerminalWindowClass;
