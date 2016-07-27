@@ -398,13 +398,19 @@ terminal_widget_button_press_event (GtkWidget       *widget,
                                     GdkEventButton  *event)
 {
   gboolean committed = FALSE;
+  gboolean middle_click_opens_uri;
   gchar   *match;
   guint    signal_id = 0;
   gint     tag;
 
-  if (event->button == 2 && event->type == GDK_BUTTON_PRESS)
+  /* check whether to use ctrl-click or middle click to open URI */
+  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+      "misc-middle-click-opens-uri", &middle_click_opens_uri, NULL);
+
+  if ((middle_click_opens_uri ? (event->button == 2) : (event->button == 1 && (event->state & GDK_CONTROL_MASK))) &&
+        event->type == GDK_BUTTON_PRESS)
     {
-      /* middle-clicking on an URI fires the responsible application */
+      /* clicking on an URI fires the responsible application */
       match = vte_terminal_match_check_event (VTE_TERMINAL (widget), (GdkEvent *) event, &tag);
       if (G_UNLIKELY (match != NULL))
         {

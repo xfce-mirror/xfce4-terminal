@@ -90,6 +90,7 @@ enum
   PROP_MISC_TAB_CLOSE_MIDDLE_CLICK,
   PROP_MISC_TAB_POSITION,
   PROP_MISC_HIGHLIGHT_URLS,
+  PROP_MISC_MIDDLE_CLICK_OPENS_URI,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -792,6 +793,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("misc-highlight-urls",
                             NULL,
                             "MiscHighlightUrls",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-middle-click-open-uri:
+   **/
+  preferences_props[PROP_MISC_MIDDLE_CLICK_OPENS_URI] =
+      g_param_spec_boolean ("misc-middle-click-opens-uri",
+                            NULL,
+                            "MiscMiddleClickOpensUri",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
