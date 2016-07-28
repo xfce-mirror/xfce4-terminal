@@ -405,8 +405,8 @@ terminal_widget_button_press_event (GtkWidget       *widget,
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
       "misc-middle-click-opens-uri", &middle_click_opens_uri, NULL);
 
-  if ((middle_click_opens_uri ? (event->button == 2) : (event->button == 1 && (event->state & GDK_CONTROL_MASK))) &&
-        event->type == GDK_BUTTON_PRESS)
+  if ((middle_click_opens_uri ? (event->button == 2) : (event->button == 1 && event->state == GDK_CONTROL_MASK)) &&
+      event->type == GDK_BUTTON_PRESS)
     {
       /* clicking on an URI fires the responsible application */
       match = vte_terminal_match_check_event (VTE_TERMINAL (widget), (GdkEvent *) event, &tag);
