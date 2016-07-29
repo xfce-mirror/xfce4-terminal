@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-21 00:30+0200\n"
-"PO-Revision-Date: 2016-07-21 08:14+0000\n"
+"POT-Creation-Date: 2016-07-25 18:30+0200\n"
+"PO-Revision-Date: 2016-07-29 11:47+0000\n"
 "Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -121,42 +121,52 @@ msgstr "מחרוזת"
 msgid "icon"
 msgstr "סמל"
 
+#. parameter of --font
 #: ../terminal/main.c:147
+msgid "font"
+msgstr "גופן"
+
+#. parameter of --zoom
+#: ../terminal/main.c:149
+msgid "zoom"
+msgstr "זום"
+
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "See the %s man page for full explanation of the options above."
 
-#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce Terminal"
 
-#: ../terminal/main.c:196
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: ../terminal/main.c:197
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "נכתב ע\"י Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:198
+#: ../terminal/main.c:202
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:199
+#: ../terminal/main.c:203
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "ו- Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:200
+#: ../terminal/main.c:204
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Please report bugs to <%s>."
 
-#: ../terminal/main.c:305
+#: ../terminal/main.c:309
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Unable to register terminal service: %s\n"
 
-#: ../terminal/terminal-app.c:762
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "מחרוזת גודל ומיקום לא שגויה \"%s\"\n"
@@ -264,84 +274,94 @@ msgstr "חוסר התאמה מזהה משתמש"
 msgid "Display mismatch"
 msgstr "חוסר התאמה תצוגה"
 
-#: ../terminal/terminal-options.c:213
+#: ../terminal/terminal-options.c:217
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Option \"--default-display\" requires specifying the default X display as its parameter"
 
-#: ../terminal/terminal-options.c:229
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Option \"--default-working-directory\" requires specifying the default working directory as its parameter"
 
-#: ../terminal/terminal-options.c:246
+#: ../terminal/terminal-options.c:250
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Option \"--execute/-x\" requires specifying the command to run on the rest of the command line"
 
-#: ../terminal/terminal-options.c:263
+#: ../terminal/terminal-options.c:267
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Option \"--command/-e\" requires specifying the command to run as its parameter"
 
-#: ../terminal/terminal-options.c:280
+#: ../terminal/terminal-options.c:284
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Option \"--working-directory\" requires specifying the working directory as its parameter"
 
-#: ../terminal/terminal-options.c:295
+#: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Option \"--title/-T\" requires specifying the title as its parameter"
 
-#: ../terminal/terminal-options.c:314
+#: ../terminal/terminal-options.c:318
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Option \"--display\" requires specifying the X display as its parameters"
 
-#: ../terminal/terminal-options.c:329
+#: ../terminal/terminal-options.c:333
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Option \"--geometry\" requires specifying the window geometry as its parameter"
 
-#: ../terminal/terminal-options.c:344
+#: ../terminal/terminal-options.c:348
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Option \"--role\" requires specifying the window role as its parameter"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:363
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Option \"--sm-client-id\" requires specifying the unique session id as its parameter"
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:378
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Option \"--startup-id\" requires specifying the startup id as its parameter"
 
-#: ../terminal/terminal-options.c:390
+#: ../terminal/terminal-options.c:394
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Option \"--icon/-I\" requires specifying an icon name or filename as its parameter"
 
-#: ../terminal/terminal-options.c:459
+#: ../terminal/terminal-options.c:457
+#, c-format
+msgid "Option \"--font\" requires specifying the font name as its parameter"
+msgstr "האפשרות \"--font\" דורשת ציון שם הגופן כפרמטר שלה"
+
+#: ../terminal/terminal-options.c:475
+#, c-format
+msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
+msgstr "האפשרות \"--zoom\" דורשת ציון הזום (%d .. %d) כפרמטר שלה"
+
+#: ../terminal/terminal-options.c:497
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Unknown option \"%s\""
@@ -362,21 +382,21 @@ msgstr "טען ערכות עיצוב…"
 msgid "Terminal"
 msgstr "מסוף"
 
-#: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:686
-#: ../terminal/terminal-screen.c:1814
+#: ../terminal/terminal-screen.c:389 ../terminal/terminal-screen.c:689
+#: ../terminal/terminal-screen.c:1876
 msgid "Untitled"
 msgstr "ללא כותרת"
 
-#: ../terminal/terminal-screen.c:586
+#: ../terminal/terminal-screen.c:589
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "לא מסוגל לקבוע את מעטפת הכניסה שלך."
 
-#: ../terminal/terminal-screen.c:1518 ../terminal/terminal-screen.c:1547
+#: ../terminal/terminal-screen.c:1580 ../terminal/terminal-screen.c:1609
 msgid "Failed to execute child"
 msgstr "אין אפשרות להריץ צאצא"
 
-#: ../terminal/terminal-screen.c:2133
+#: ../terminal/terminal-screen.c:2195
 msgid "Close this tab"
 msgstr "סגור כרטיסייה זו"
 
@@ -384,7 +404,7 @@ msgstr "סגור כרטיסייה זו"
 msgid "Find"
 msgstr "חיפוש"
 
-#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1601
+#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1660
 msgid "_Close"
 msgstr "_סגור"
 
@@ -484,227 +504,251 @@ msgstr "מסוף נפתח כלפי מטה"
 msgid "Toggle Drop-down Terminal"
 msgstr "החלף מסוף נפתח כלפי מטה"
 
-#: ../terminal/terminal-window.c:195
+#: ../terminal/terminal-window.c:202
 msgid "_File"
 msgstr "_קובץ"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open _Tab"
 msgstr "_פתח כרטיסייה"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open a new terminal tab"
 msgstr "פתח כרטיסיית מסוף חדשה"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open T_erminal"
 msgstr "פתח מ_סוף"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open a new terminal window"
 msgstr "פתח חלון מסוף חדש"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:205
 msgid "_Detach Tab"
 msgstr "_נתק כרטיסיה"
 
-#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:499
+#: ../terminal/terminal-window.c:206 ../terminal/terminal-window.c:513
 msgid "Close T_ab"
 msgstr "סגור _כרטיסייה"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:207 ../terminal/terminal-window.c:516
 msgid "Close _Window"
 msgstr "סגור _חלון"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:208
 msgid "_Edit"
 msgstr "ע_ריכה"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "_Copy"
 msgstr "ה_עתק"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "Copy to clipboard"
 msgstr "העתק ללוח גזירה"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "_Paste"
 msgstr "ה_דבק"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "Paste from clipboard"
 msgstr "הדבק מלוח גזירה"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:211
 msgid "Paste _Selection"
 msgstr "הדבק _בחירה"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:212
 msgid "Select _All"
 msgstr "בחר _הכל"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Pr_eferences..."
 msgstr "_העדפות..."
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Open the preferences dialog"
 msgstr "פתח את דו שיח העדפות"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:214
 msgid "_View"
 msgstr "_תצוגה"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:215
+msgid "Zoom _In"
+msgstr "זום _פנימה"
+
+#: ../terminal/terminal-window.c:215
+msgid "Zoom in with larger font"
+msgstr "זום פנימה עם גופן גדול יותר"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom _Out"
+msgstr "זום _החוצה"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom out with smaller font"
+msgstr "זום החוצה עם גופן קטן יותר"
+
+#: ../terminal/terminal-window.c:217
+msgid "_Normal Size"
+msgstr "גודל _רגיל"
+
+#: ../terminal/terminal-window.c:217
+msgid "Zoom to default size"
+msgstr "זום לגודל ברירת מחדל"
+
+#: ../terminal/terminal-window.c:218
 msgid "_Terminal"
 msgstr "_מסוף"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:219
 msgid "_Set Title..."
 msgstr "הגדר _כותרת..."
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "_Find..."
 msgstr "_חפש…"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "Search terminal contents"
 msgstr "חיפוש בתוכן מסוף"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:221
 msgid "Find Ne_xt"
 msgstr "מצא את ה_בא"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:222
 msgid "Find Pre_vious"
 msgstr "מצא את ה_קודם"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:223
 msgid "_Reset"
 msgstr "_אפס"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:224
 msgid "_Clear Scrollback and Reset"
 msgstr "_טהר פס גלילה ואפס"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:225
 msgid "T_abs"
 msgstr "_כרטיסיות"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "_Previous Tab"
 msgstr "כרטיסייה _קודמת"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "Switch to previous tab"
 msgstr "דלג לכרטיסייה קודמת "
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "_Next Tab"
 msgstr "כרטיסייה _הבאה"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "Switch to next tab"
 msgstr "דלג לכרטיסייה הבאה"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:228
 msgid "Move Tab _Left"
 msgstr "העבר כרטיסייה _שמאלה"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:229
 msgid "Move Tab _Right"
 msgstr "העבר כרטיסייה _ימינה"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:230
 msgid "_Help"
 msgstr "_עזרה"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "_Contents"
 msgstr "_תכנים"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "Display help contents"
 msgstr "הצג תכני עזרה"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:232
 msgid "_About"
 msgstr "_אודות"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show _Menubar"
 msgstr "הצג שורת _תפריט"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show/hide the menubar"
 msgstr "הצג/הסתר שורת תפריט"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show _Toolbar"
 msgstr "הצג סרגל _כלים"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show/hide the toolbar"
 msgstr "הצג/הסתר סרגל כלים"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show Window _Borders"
 msgstr "הצג _גבולות חלון"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show/hide the window decorations"
 msgstr "הצג/הסתר עיטורי חלון"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "Toggle fullscreen mode"
 msgstr "הפעל מצב מסך מלא"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:369
 msgid "Set _Encoding"
 msgstr "הגדר _קידוד"
 
-#: ../terminal/terminal-window.c:492
+#: ../terminal/terminal-window.c:506
 msgid "Warning"
 msgstr "אזהרה"
 
-#: ../terminal/terminal-window.c:495
+#: ../terminal/terminal-window.c:509
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../terminal/terminal-window.c:518
+#: ../terminal/terminal-window.c:532
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "לחלון זה יש %d כרטיסיות פתוחות. סגירה של חלון זה\nתסגור גם את כל הכרטיסיות שלו."
 
-#: ../terminal/terminal-window.c:521
+#: ../terminal/terminal-window.c:535
 msgid "Close all tabs?"
 msgstr "לסגור את כל הכרטיסיות?"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:547
 msgid "Do _not ask me again"
 msgstr "_אל תשאל אותי שוב"
 
-#: ../terminal/terminal-window.c:1595
+#: ../terminal/terminal-window.c:1654
 msgid "Window Title|Set Title"
 msgstr "כותרת חלון|בחירת כותרת"
 
-#: ../terminal/terminal-window.c:1610
+#: ../terminal/terminal-window.c:1669
 msgid "_Title:"
 msgstr "_כותרת:"
 
-#: ../terminal/terminal-window.c:1622
+#: ../terminal/terminal-window.c:1681
 msgid "Enter the title for the current terminal tab"
 msgstr "הזן כותרת עבור כרטיסיית מסוף הנוכחית"
 
-#: ../terminal/terminal-window.c:1676
+#: ../terminal/terminal-window.c:1735
 msgid "Failed to create the regular expression"
 msgstr "נכשל ליצור ביטוי רגולרי"
 
