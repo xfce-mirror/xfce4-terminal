@@ -1,3 +1,58 @@
+0.6.90
+======
+- Migrate to GTK+3/VTE3 (bugs #11207, #11909, #10602, #11828, #12405, #11119,
+  #11558, #12615, #9702, #10551, #9720, #3599, #7473, #8720, #4331, #10010,
+  #12440, #12589)
+- Fix closing wrong tabs with Ctrl+Shift+W (bug #10691)
+- Make close tab shortcut work for single tab (bug #12490)
+- Add Ctrl+Shift+PgUp/PgDn shortcuts to move tabs left/right (bug #11373)
+- Add support for unlimited scrollback (bug #9875)
+- Fix actions applied to wrong tab after closing another one (bug #11227)
+- Update intltool (bug #12661)
+- Add Ctrl+Shift+S hotkey to set title (bug #10960)
+- Expose MiscTabCloseMiddleClick option to Preferences (bug #10271)
+- Fix terminal window not moved to foreground when using --tab option
+  (bug #11010)
+- Respect Display window borders setting in drop-down mode (bug #10297)
+- Apply opacity setting by chaging background color alpha value (bug #12681)
+- Prevent characters from being hidden by block cursor (bug #9348)
+- Fix in drop-down mode, "100% width" isn't really 100% (bug #12162)
+- Add ShortcutsNoHelpkey option to disable F1 (help) shortcut key and expose
+  it to Preferences (bug #10718)
+- Add support for magnet links (bug #9775)
+- Expose MiscMouseAutohide option to Preferences (bug #7221)
+- Fix terminal crash when starting with --geometry (bug #12721)
+- Add ability to zoom in/out by pressing Ctrl +/-; add --font and --zoom
+  command line options (bug #5605)
+- Expand zoom level (bug #12729)
+- Add hidden option MiscMiddleClickOpensUri to control whether middle click
+  opens URI: if FALSE, Ctrl + left click is used for that; default is FALSE
+  (bugs #10621, #7714, #9166)
+- Fix compilation for vte < 0.44
+- Remove emulation setting and input methods menu as they are not supported
+  by vte
+- Do not allow creating multiple Set Title dialog windows
+- Remove Help button and add icon to Close button in Set Title dialog
+- Add an icon to the search dialog close button
+- Rename UI setting from Transparency to Opacity
+- Update terminal website address in the About dialog
+- Fix crash on moving a tab from one window to another
+- Add tooltip for the Find toolbar button
+- Add setting to allow cursor blinking to Preferences
+- Add setting to change cursor shape to Preferences
+- Fix typo in the preferences dialog
+- Add some new encodings taken from gnome-terminal
+- Fix crash on setting encoding
+- Fix detach tab functionality with GTK>=3.16
+- Fix segfault when right/middle click on tab bar
+- Translation updates: Arabic, Asturian, Bulgarian, Catalan, Chinese (China),
+  Chinese (Taiwan), Croatian, Czech, Danish, Dutch, English (Australia),
+  Esperanto, Finnish, French, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Italian, Japanese, Kazakh, Korean, Lithuanian, Malay,
+  Norwegian Bokmål, Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian.
+
+
 0.6.3
 =====
 - Improve URL matching (bug #7959, bug #9800).
