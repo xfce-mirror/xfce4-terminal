@@ -957,8 +957,10 @@ terminal_screen_update_colors (TerminalScreen *screen)
   /* cursor color */
   has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
   vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
+#if VTE_CHECK_VERSION (0, 44, 2)
   vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen->terminal),
                                             has_cursor && has_bg ? &bg : NULL);
+#endif
 
   /* selection color */
   if (!selection_use_default)
