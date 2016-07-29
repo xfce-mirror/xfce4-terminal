@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-21 00:30+0200\n"
-"PO-Revision-Date: 2016-07-21 04:50+0000\n"
+"POT-Creation-Date: 2016-07-25 18:30+0200\n"
+"PO-Revision-Date: 2016-07-29 05:57+0000\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak (http://www.transifex.com/xfce/xfce-apps/language/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -121,42 +121,52 @@ msgstr "reťazec"
 msgid "icon"
 msgstr "ikona"
 
+#. parameter of --font
 #: ../terminal/main.c:147
+msgid "font"
+msgstr "písmo"
+
+#. parameter of --zoom
+#: ../terminal/main.c:149
+msgid "zoom"
+msgstr "priblíženie"
+
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Kompletnú dokumentáciu k voľbám uvedeným vyššie, nájdete v manuálovej stránke aplikácie %s."
 
-#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Terminál Xfce"
 
-#: ../terminal/main.c:196
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "Vývojový tím Xfce. Všetky práva vyhradené."
 
-#: ../terminal/main.c:197
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Napísal Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:198
+#: ../terminal/main.c:202
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:199
+#: ../terminal/main.c:203
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "a Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:200
+#: ../terminal/main.c:204
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Chyby prosím nahláste na <%s>."
 
-#: ../terminal/main.c:305
+#: ../terminal/main.c:309
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nejde registrovať službu terminálu: %s\n"
 
-#: ../terminal/terminal-app.c:762
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neplatný reťazec geometrie \"%s\"\n"
@@ -264,84 +274,94 @@ msgstr "ID užívateľa sa nezhoduje"
 msgid "Display mismatch"
 msgstr "Zobraziť nezhodu"
 
-#: ../terminal/terminal-options.c:213
+#: ../terminal/terminal-options.c:217
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Voľba \"--default-display\" vyžaduje zadanie východzieho X displeja ako jej parameter"
 
-#: ../terminal/terminal-options.c:229
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Voľba \"--default-working-directory\" vyžaduje zadanie východziehopracovného adresára ako jej parameter"
 
-#: ../terminal/terminal-options.c:246
+#: ../terminal/terminal-options.c:250
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Voľba \"--execute/-x\" vyžaduje zadanie príkazu ku spusteniu na zvyšku príkazového riadka"
 
-#: ../terminal/terminal-options.c:263
+#: ../terminal/terminal-options.c:267
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Voľba \"--command/-e\" vyžaduje zadanie príkazu ku spusteniu ako jeho parametra"
 
-#: ../terminal/terminal-options.c:280
+#: ../terminal/terminal-options.c:284
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Voľba \"--working-directory\" vyžaduje zadanie pracovného adresára ako parametera"
 
-#: ../terminal/terminal-options.c:295
+#: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Voľba \"--title/-T\" vyžaduje zadanie titulku ako jeho parametra"
 
-#: ../terminal/terminal-options.c:314
+#: ../terminal/terminal-options.c:318
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Voľba \"--display\" vyžaduje zadanie X displeja ako jeho parametra"
 
-#: ../terminal/terminal-options.c:329
+#: ../terminal/terminal-options.c:333
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Voľba \"--geometry\" vyžaduje zadanie geometrie okna ako jeho parametra"
 
-#: ../terminal/terminal-options.c:344
+#: ../terminal/terminal-options.c:348
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Voľba \"--role\" vyžaduje zadanie úlohy okna ako jeho parametra"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:363
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Voľba „--sm-client-id” vyžaduje ako parameter zadanie jedinečného ID sedenia"
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:378
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Voľba \"--startup-id\" vyžaduje zadanie spúšťacieho identifikátora (id) ako jeho parametra"
 
-#: ../terminal/terminal-options.c:390
+#: ../terminal/terminal-options.c:394
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Voľba \"--icon/-I\" vyžaduje zadanie názvu ikony alebo názvu súboru ako jeho parametru"
 
-#: ../terminal/terminal-options.c:459
+#: ../terminal/terminal-options.c:457
+#, c-format
+msgid "Option \"--font\" requires specifying the font name as its parameter"
+msgstr "Voľba \"--font\" vyžaduje určenie názva písma ako jej parametru"
+
+#: ../terminal/terminal-options.c:475
+#, c-format
+msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
+msgstr "Voľba \"--zoom\" vyžaduje určenie priblíženia (%d .. %d) ako jej parametru"
+
+#: ../terminal/terminal-options.c:497
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Neznáma predvoľba \"%s\""
@@ -362,21 +382,21 @@ msgstr "Načítať prednastavenia..."
 msgid "Terminal"
 msgstr "Terminál"
 
-#: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:686
-#: ../terminal/terminal-screen.c:1814
+#: ../terminal/terminal-screen.c:389 ../terminal/terminal-screen.c:689
+#: ../terminal/terminal-screen.c:1876
 msgid "Untitled"
 msgstr "Bez názvu"
 
-#: ../terminal/terminal-screen.c:586
+#: ../terminal/terminal-screen.c:589
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nejde zisiť vaše užívateľské meno."
 
-#: ../terminal/terminal-screen.c:1518 ../terminal/terminal-screen.c:1547
+#: ../terminal/terminal-screen.c:1580 ../terminal/terminal-screen.c:1609
 msgid "Failed to execute child"
 msgstr "Spustenie procesu potomka zlyhalo"
 
-#: ../terminal/terminal-screen.c:2133
+#: ../terminal/terminal-screen.c:2195
 msgid "Close this tab"
 msgstr "Zavrieť túto kartu"
 
@@ -384,7 +404,7 @@ msgstr "Zavrieť túto kartu"
 msgid "Find"
 msgstr "Nájsť"
 
-#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1601
+#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1660
 msgid "_Close"
 msgstr "_Zavrieť"
 
@@ -484,227 +504,251 @@ msgstr "Rozbaľovací terminál"
 msgid "Toggle Drop-down Terminal"
 msgstr "Prepnúť rozbaľovací terminál"
 
-#: ../terminal/terminal-window.c:195
+#: ../terminal/terminal-window.c:202
 msgid "_File"
 msgstr "_Súbor"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open _Tab"
 msgstr "Otvoriť ka_rtu"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open a new terminal tab"
 msgstr "Otvorí novú kartu"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open T_erminal"
 msgstr "Otvoriť _terminál"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open a new terminal window"
 msgstr "Otvorí nové okno terminálu"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:205
 msgid "_Detach Tab"
 msgstr "O_dpojiť kartu"
 
-#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:499
+#: ../terminal/terminal-window.c:206 ../terminal/terminal-window.c:513
 msgid "Close T_ab"
 msgstr "Z_atvoriť záložku"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:207 ../terminal/terminal-window.c:516
 msgid "Close _Window"
 msgstr "Zatvoriť _okno"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:208
 msgid "_Edit"
 msgstr "_Upraviť"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "_Copy"
 msgstr "_Kopírovať"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "Copy to clipboard"
 msgstr "Kopírovať do schránky"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "_Paste"
 msgstr "_Vložiť"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "Paste from clipboard"
 msgstr "Vložiť zo schránky"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:211
 msgid "Paste _Selection"
 msgstr "Vložiť _výber"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:212
 msgid "Select _All"
 msgstr "Ozn_ačiť všetko"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Pr_eferences..."
 msgstr "_Predvoľby..."
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Open the preferences dialog"
 msgstr "Otvoriť dialog nastavení"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:214
 msgid "_View"
 msgstr "_Zobraziť"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:215
+msgid "Zoom _In"
+msgstr "_Priblížiť"
+
+#: ../terminal/terminal-window.c:215
+msgid "Zoom in with larger font"
+msgstr "Priblížiť s väčším písmom"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom _Out"
+msgstr "_Vzdialiť"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom out with smaller font"
+msgstr "Vzdialiť s menším písmom"
+
+#: ../terminal/terminal-window.c:217
+msgid "_Normal Size"
+msgstr "_Normálna veľkosť"
+
+#: ../terminal/terminal-window.c:217
+msgid "Zoom to default size"
+msgstr "Priblížiť na predvolené písmo"
+
+#: ../terminal/terminal-window.c:218
 msgid "_Terminal"
 msgstr "_Terminál"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:219
 msgid "_Set Title..."
 msgstr "_Nastaviť titulok..."
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "_Find..."
 msgstr "_Nájsť…"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "Search terminal contents"
 msgstr "Vyhľadať v obsahu temrinálu"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:221
 msgid "Find Ne_xt"
 msgstr "Nájsť ď_alší"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:222
 msgid "Find Pre_vious"
 msgstr "Nájsť pre_dchádzajúci"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:223
 msgid "_Reset"
 msgstr "_Reštartovať"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:224
 msgid "_Clear Scrollback and Reset"
 msgstr "Vyma_zať spätné rolovanie a vynulovať"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:225
 msgid "T_abs"
 msgstr "K_arty"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "_Previous Tab"
 msgstr "_Predchádzajúca karta"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "Switch to previous tab"
 msgstr "Prepnúť na predchádzajúcu kartu"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "_Next Tab"
 msgstr "_Nasledujúca karta"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "Switch to next tab"
 msgstr "Prepnúť na nasledujúcu kartu"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:228
 msgid "Move Tab _Left"
 msgstr "Presunúť kartu _vľavo"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:229
 msgid "Move Tab _Right"
 msgstr "Presunúť kartu vp_ravo"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:230
 msgid "_Help"
 msgstr "_Pomocník"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "_Contents"
 msgstr "O_bsah"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "Display help contents"
 msgstr "Zobrazí obsah"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:232
 msgid "_About"
 msgstr "_O programe"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show _Menubar"
 msgstr "Zobraziť _menu"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show/hide the menubar"
 msgstr "Zobraziť/skryť menu"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show _Toolbar"
 msgstr "Zobraziť _panel nástrojov"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show/hide the toolbar"
 msgstr "Zobraziť/skryť panel nástrojov"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show Window _Borders"
 msgstr "Zobraziť okraje _okien"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show/hide the window decorations"
 msgstr "Zobraziť/skryť dekorácie okien"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "_Fullscreen"
 msgstr "_Celá obrazovka"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "Toggle fullscreen mode"
 msgstr "Prepne na celú obrazovku"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:369
 msgid "Set _Encoding"
 msgstr "Nastaviť _kódovanie"
 
-#: ../terminal/terminal-window.c:492
+#: ../terminal/terminal-window.c:506
 msgid "Warning"
 msgstr "Upozornenie"
 
-#: ../terminal/terminal-window.c:495
+#: ../terminal/terminal-window.c:509
 msgid "_Cancel"
 msgstr "_Zrušiť"
 
-#: ../terminal/terminal-window.c:518
+#: ../terminal/terminal-window.c:532
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Okno obsahuje %d otvorených kariet. Zatvorením tohoto okna\nbudú tiež zavreté všetky jeho karty."
 
-#: ../terminal/terminal-window.c:521
+#: ../terminal/terminal-window.c:535
 msgid "Close all tabs?"
 msgstr "Zavrieť všetky karty?"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:547
 msgid "Do _not ask me again"
 msgstr "_Nepýtať sa v budúcnosti"
 
-#: ../terminal/terminal-window.c:1595
+#: ../terminal/terminal-window.c:1654
 msgid "Window Title|Set Title"
 msgstr "Nastaviť titulok"
 
-#: ../terminal/terminal-window.c:1610
+#: ../terminal/terminal-window.c:1669
 msgid "_Title:"
 msgstr "_Titulok:"
 
-#: ../terminal/terminal-window.c:1622
+#: ../terminal/terminal-window.c:1681
 msgid "Enter the title for the current terminal tab"
 msgstr "Vložte názov pre aktuálnu kartu terminálu"
 
-#: ../terminal/terminal-window.c:1676
+#: ../terminal/terminal-window.c:1735
 msgid "Failed to create the regular expression"
 msgstr "Zlyhalo vytvorenie regulárneho výrazu"
 
@@ -786,15 +830,15 @@ msgstr "Roztiahnutý"
 
 #: ../terminal/terminal-preferences.glade.h:20
 msgid "Block"
-msgstr ""
+msgstr "Blok"
 
 #: ../terminal/terminal-preferences.glade.h:21
 msgid "I-Beam"
-msgstr ""
+msgstr "Tvar I"
 
 #: ../terminal/terminal-preferences.glade.h:22
 msgid "Underline"
-msgstr "Podčiarknutie"
+msgstr "Podčiarkovník"
 
 #: ../terminal/terminal-preferences.glade.h:23
 msgid "Terminal Preferences"
@@ -925,7 +969,7 @@ msgstr "Použiť klávesovú skratku na _zameranie viditeľného okna"
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
-msgstr ""
+msgstr "Ak je povolené, skratka na otvorenie a odvolanie okna vykoná jeho zameranie namiesto toho aby ho zatvorila, ak predošle stratilo zameranie."
 
 #: ../terminal/terminal-preferences.glade.h:52
 msgid "Show _status icon in notification area"
@@ -1303,7 +1347,7 @@ msgstr "Zakázať klávesovú skratku pre okno _pomocníka (predvolene to je F1)
 
 #: ../terminal/terminal-preferences.glade.h:145
 msgid "Shortcuts"
-msgstr ""
+msgstr "Klávesové skratky"
 
 #: ../terminal/terminal-preferences.glade.h:146
 msgid "Use _middle mouse click to close tabs"
@@ -1311,7 +1355,7 @@ msgstr "Použiť kliknutie _stredným tlačidlom myši na zatvorenie kariet"
 
 #: ../terminal/terminal-preferences.glade.h:147
 msgid "Auto-hi_de mouse pointer"
-msgstr ""
+msgstr "Automaticky sk_ryť kurzor myši"
 
 #: ../terminal/terminal-preferences.glade.h:148
 msgid "Misc"
