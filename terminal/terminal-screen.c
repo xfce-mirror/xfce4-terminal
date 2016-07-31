@@ -1179,8 +1179,7 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
   g_object_get (G_OBJECT (screen->preferences), "word-chars", &word_chars, NULL);
   if (G_LIKELY (word_chars != NULL))
     {
-      // TODO: removed functionality, remove
-      //vte_terminal_set_word_chars (VTE_TERMINAL (screen->terminal), word_chars);
+      vte_terminal_set_word_char_exceptions (VTE_TERMINAL (screen->terminal), word_chars);
       g_free (word_chars);
     }
 }
