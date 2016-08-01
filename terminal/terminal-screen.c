@@ -2209,7 +2209,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
                             G_CALLBACK (gtk_widget_destroy), screen);
 
   /* button image */
-  image = gtk_image_new_from_icon_name ("window-close", GTK_ICON_SIZE_MENU);
+  image = gtk_image_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), image);
 
   /* show the box and all its widgets */
