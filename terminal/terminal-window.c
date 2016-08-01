@@ -1063,6 +1063,9 @@ terminal_window_notebook_scroll_event (GtkNotebook    *notebook,
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
   terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
 
+  if ((event->state & gtk_accelerator_get_default_mod_mask ()) != 0)
+    return FALSE;
+
   switch (event->direction) {
     case GDK_SCROLL_RIGHT:
     case GDK_SCROLL_DOWN:
