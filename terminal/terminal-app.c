@@ -768,7 +768,8 @@ terminal_app_open_window (TerminalApp        *app,
             {
               active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
               if (G_LIKELY (active_terminal != NULL))
-                terminal_screen_set_size (active_terminal, width, height);
+                terminal_screen_force_resize_window (active_terminal, GTK_WINDOW (window),
+                                                     width, height);
             }
           if ((mask & XValue) && (mask & YValue))
             gtk_window_move (GTK_WINDOW (window), x, y);
