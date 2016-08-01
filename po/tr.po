@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-21 00:30+0200\n"
-"PO-Revision-Date: 2016-07-25 08:15+0000\n"
+"POT-Creation-Date: 2016-07-25 18:30+0200\n"
+"PO-Revision-Date: 2016-08-01 09:08+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -122,42 +122,52 @@ msgstr "dizgi"
 msgid "icon"
 msgstr "simge"
 
+#. parameter of --font
 #: ../terminal/main.c:147
+msgid "font"
+msgstr "yazı tipi"
+
+#. parameter of --zoom
+#: ../terminal/main.c:149
+msgid "zoom"
+msgstr "yakınlaştır"
+
+#: ../terminal/main.c:151
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Yukarıdaki seçeneklerin tam açıklamaları için %s man sayfasına bakınız."
 
-#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:184 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce Terminal"
 
-#: ../terminal/main.c:196
+#: ../terminal/main.c:200
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce geliştirme takımı. Tüm hakları saklıdır."
 
-#: ../terminal/main.c:197
+#: ../terminal/main.c:201
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Benedikt Meurer tarafından yazılmıştır <benny@xfce.org>,"
 
-#: ../terminal/main.c:198
+#: ../terminal/main.c:202
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:199
+#: ../terminal/main.c:203
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "ve Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:200
+#: ../terminal/main.c:204
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Lütfen hataları <%s>'e bildiriniz."
 
-#: ../terminal/main.c:305
+#: ../terminal/main.c:309
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "%s uçbirim hizmeti kayıt edilmiyor.\n"
 
-#: ../terminal/terminal-app.c:762
+#: ../terminal/terminal-app.c:780
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Geçersiz geometri dizgesi \"%s\"\n"
@@ -265,84 +275,94 @@ msgstr "uyumsuz kullanıcı kimliği (id)"
 msgid "Display mismatch"
 msgstr "Görüntü uyuşmazlığı"
 
-#: ../terminal/terminal-options.c:213
+#: ../terminal/terminal-options.c:217
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "\"--default-display\" seçeneği parametre olarak varsayılan X ekranını ister"
 
-#: ../terminal/terminal-options.c:229
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "\"--default-working-directory\" seçeneği parametre olarak varsayılan çalışma dizini ister"
 
-#: ../terminal/terminal-options.c:246
+#: ../terminal/terminal-options.c:250
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "\"--execute/-x\" seçeneği, komut satırının geri kalanında çalışacak komutu ister"
 
-#: ../terminal/terminal-options.c:263
+#: ../terminal/terminal-options.c:267
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "\"--command/-e\" seçeneği parametre olarak çalışacak komutu ister"
 
-#: ../terminal/terminal-options.c:280
+#: ../terminal/terminal-options.c:284
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "\"--working-directory\" seçeneği parametre olarak çalışma dizininiister"
 
-#: ../terminal/terminal-options.c:295
+#: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "\"--title/-T\" seçeneği parametre olarak başlığı ister"
 
-#: ../terminal/terminal-options.c:314
+#: ../terminal/terminal-options.c:318
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "\"--display\" seçeneği parametre olarak belirlenen X ekranını ister"
 
-#: ../terminal/terminal-options.c:329
+#: ../terminal/terminal-options.c:333
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "\"--geometry\" seçeneği parametre olarak pencere biçimini ister."
 
-#: ../terminal/terminal-options.c:344
+#: ../terminal/terminal-options.c:348
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "\"--role\" seçeneği parameter olarak pencere rolünü ister"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:363
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "\"--sm-client-id\" seçeneği parametre olarak belirlenen oturum kimliğini ister"
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:378
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "\"--startup-id\" seçeneği parametre olarak başlangıç kimliğini ister"
 
-#: ../terminal/terminal-options.c:390
+#: ../terminal/terminal-options.c:394
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "\"--icon/-I\" seçeneği parametre olarak bir simge adı veya dosya adı gerektirir  "
 
-#: ../terminal/terminal-options.c:459
+#: ../terminal/terminal-options.c:457
+#, c-format
+msgid "Option \"--font\" requires specifying the font name as its parameter"
+msgstr "\"--font\" seçeneği ile parametre olarak yazı tipi adını da kullanmak gereklidir"
+
+#: ../terminal/terminal-options.c:475
+#, c-format
+msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
+msgstr "\"--zoom\" seçeneği ile yakınlaştırmanın (%d .. %d) parametre olarak kullanılması gerekir"
+
+#: ../terminal/terminal-options.c:497
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Bilinmeyen seçenek \"%s\""
@@ -363,21 +383,21 @@ msgstr "Varsayılanlar Yükleniyor..."
 msgid "Terminal"
 msgstr "Uçbirim"
 
-#: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:686
-#: ../terminal/terminal-screen.c:1814
+#: ../terminal/terminal-screen.c:389 ../terminal/terminal-screen.c:689
+#: ../terminal/terminal-screen.c:1876
 msgid "Untitled"
 msgstr "İsimsiz"
 
-#: ../terminal/terminal-screen.c:586
+#: ../terminal/terminal-screen.c:589
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Giriş kabuğunuzun belirlenmesi mümkün değil"
 
-#: ../terminal/terminal-screen.c:1518 ../terminal/terminal-screen.c:1547
+#: ../terminal/terminal-screen.c:1580 ../terminal/terminal-screen.c:1609
 msgid "Failed to execute child"
 msgstr "Alt komutu çalıştırırken hata oluştu"
 
-#: ../terminal/terminal-screen.c:2133
+#: ../terminal/terminal-screen.c:2195
 msgid "Close this tab"
 msgstr "Bu sekmeyi kapat"
 
@@ -385,7 +405,7 @@ msgstr "Bu sekmeyi kapat"
 msgid "Find"
 msgstr "Bul"
 
-#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1601
+#: ../terminal/terminal-search-dialog.c:94 ../terminal/terminal-window.c:1660
 msgid "_Close"
 msgstr "_Kapat"
 
@@ -485,227 +505,251 @@ msgstr "Yukarıdan inen Terminal"
 msgid "Toggle Drop-down Terminal"
 msgstr "Yukarıdan İnen Terminali Göster/Gizle"
 
-#: ../terminal/terminal-window.c:195
+#: ../terminal/terminal-window.c:202
 msgid "_File"
 msgstr "Dosya"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open _Tab"
 msgstr "Sekme Aç"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:203
 msgid "Open a new terminal tab"
 msgstr "Yeni bir uçbirim sekmesi aç"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open T_erminal"
 msgstr "Uçbirimi Aç"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:204
 msgid "Open a new terminal window"
 msgstr "Yeni bir uçbirim penceresi aç"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:205
 msgid "_Detach Tab"
 msgstr "Sekmeyi Ayır"
 
-#: ../terminal/terminal-window.c:199 ../terminal/terminal-window.c:499
+#: ../terminal/terminal-window.c:206 ../terminal/terminal-window.c:513
 msgid "Close T_ab"
 msgstr "Sekmeyi K_apat"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:207 ../terminal/terminal-window.c:516
 msgid "Close _Window"
 msgstr "Pencereyi _Kapat"
 
-#: ../terminal/terminal-window.c:201
+#: ../terminal/terminal-window.c:208
 msgid "_Edit"
 msgstr "Düzenle"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "_Copy"
 msgstr "_Kopyala"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:209
 msgid "Copy to clipboard"
 msgstr "Panoya koypala"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "_Paste"
 msgstr "Ya_pıştır"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:210
 msgid "Paste from clipboard"
 msgstr "Panodan yapıştır"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:211
 msgid "Paste _Selection"
 msgstr "Seçileni Yapıştır"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:212
 msgid "Select _All"
 msgstr "Tümünü_Seç"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Pr_eferences..."
 msgstr "Özellikler"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:213
 msgid "Open the preferences dialog"
 msgstr "Tercihler penceresini aç"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:214
 msgid "_View"
 msgstr "Göster"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:215
+msgid "Zoom _In"
+msgstr "_Yakınlaştır"
+
+#: ../terminal/terminal-window.c:215
+msgid "Zoom in with larger font"
+msgstr "Daha büyük yazı tipi ile görüntüle"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom _Out"
+msgstr "_Uzaklaştır"
+
+#: ../terminal/terminal-window.c:216
+msgid "Zoom out with smaller font"
+msgstr "Daha küçük yazı tipi ile görüntüle"
+
+#: ../terminal/terminal-window.c:217
+msgid "_Normal Size"
+msgstr "_Normal Boyut"
+
+#: ../terminal/terminal-window.c:217
+msgid "Zoom to default size"
+msgstr "Varsayılan boyuta döndür"
+
+#: ../terminal/terminal-window.c:218
 msgid "_Terminal"
 msgstr "Uçbirim"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:219
 msgid "_Set Title..."
 msgstr "Başlık Belirle..."
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "_Find..."
 msgstr "_Bul..."
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:220
 msgid "Search terminal contents"
 msgstr "Terminal içeriklerini ara"
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:221
 msgid "Find Ne_xt"
 msgstr "Sonrakini B_ul"
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:222
 msgid "Find Pre_vious"
 msgstr "Ö_ncekini Bul"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:223
 msgid "_Reset"
 msgstr "Sıfı_rla"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:224
 msgid "_Clear Scrollback and Reset"
 msgstr "Gerikaydırmayı temizle ve yenile"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:225
 msgid "T_abs"
 msgstr "S_ekmeler"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "_Previous Tab"
 msgstr "Önceki Sekme"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:226
 msgid "Switch to previous tab"
 msgstr "Önceki sekmeye atla"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "_Next Tab"
 msgstr "So_nraki Sekme"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:227
 msgid "Switch to next tab"
 msgstr "Sonraki sekmeye atla"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:228
 msgid "Move Tab _Left"
 msgstr "Sekmeyi So_la Taşı"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:229
 msgid "Move Tab _Right"
 msgstr "Sekmeyi _Sağa Taşı"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:230
 msgid "_Help"
 msgstr "Yardım"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "_Contents"
 msgstr "İçerikler"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:231
 msgid "Display help contents"
 msgstr "Yardım içeriğini göster"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:232
 msgid "_About"
 msgstr "H_akkında"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show _Menubar"
 msgstr "Menü Çubuğunu Göster"
 
-#: ../terminal/terminal-window.c:227
+#: ../terminal/terminal-window.c:237
 msgid "Show/hide the menubar"
 msgstr "Menü çubuğunu göster/gizle"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show _Toolbar"
 msgstr "Araç Çubuğunu _Göster"
 
-#: ../terminal/terminal-window.c:228
+#: ../terminal/terminal-window.c:238
 msgid "Show/hide the toolbar"
 msgstr "Araç çubuğununu göster/gizle"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show Window _Borders"
 msgstr "Pencere Sınırlarını Göster"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:239
 msgid "Show/hide the window decorations"
 msgstr "Pencere dekorasyonunu gizle/göster"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "_Fullscreen"
 msgstr "Tam ekran"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:240
 msgid "Toggle fullscreen mode"
 msgstr "Tam ekran kipine geç"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:369
 msgid "Set _Encoding"
 msgstr "Karakter _Kodlamasını Ayarla"
 
-#: ../terminal/terminal-window.c:492
+#: ../terminal/terminal-window.c:506
 msgid "Warning"
 msgstr "Uyarı"
 
-#: ../terminal/terminal-window.c:495
+#: ../terminal/terminal-window.c:509
 msgid "_Cancel"
 msgstr "_İptal"
 
-#: ../terminal/terminal-window.c:518
+#: ../terminal/terminal-window.c:532
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Bu pencere açık %d sekme içeriyor. Bu pencereyi kapatmak\nbütün sekmeleri de kapatacak."
 
-#: ../terminal/terminal-window.c:521
+#: ../terminal/terminal-window.c:535
 msgid "Close all tabs?"
 msgstr "Bütün sekmeler kapatılsın mı?"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:547
 msgid "Do _not ask me again"
 msgstr "Bir daha sorma"
 
-#: ../terminal/terminal-window.c:1595
+#: ../terminal/terminal-window.c:1654
 msgid "Window Title|Set Title"
 msgstr "Pencere Başlığı|Başlık Belirle"
 
-#: ../terminal/terminal-window.c:1610
+#: ../terminal/terminal-window.c:1669
 msgid "_Title:"
 msgstr "_Başlık:"
 
-#: ../terminal/terminal-window.c:1622
+#: ../terminal/terminal-window.c:1681
 msgid "Enter the title for the current terminal tab"
 msgstr "Aktif uçbirim sekmesine başlık girin"
 
-#: ../terminal/terminal-window.c:1676
+#: ../terminal/terminal-window.c:1735
 msgid "Failed to create the regular expression"
 msgstr "Düzenli ifade oluşturulamadı"
 
