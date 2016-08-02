@@ -168,6 +168,8 @@ terminal_app_finalize (GObject *object)
     {
       g_signal_handlers_disconnect_by_func (G_OBJECT (lp->data), G_CALLBACK (terminal_app_window_destroyed), app);
       g_signal_handlers_disconnect_by_func (G_OBJECT (lp->data), G_CALLBACK (terminal_app_new_window), app);
+      g_signal_handlers_disconnect_by_func (G_OBJECT (lp->data), G_CALLBACK (terminal_app_new_window_with_terminal), app);
+      g_signal_handlers_disconnect_by_func (G_OBJECT (lp->data), G_CALLBACK (terminal_app_unset_urgent_bell), app);
       gtk_widget_destroy (GTK_WIDGET (lp->data));
     }
   g_slist_free (app->windows);
