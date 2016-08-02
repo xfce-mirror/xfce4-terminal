@@ -1939,7 +1939,7 @@ terminal_screen_get_working_directory (TerminalScreen *screen)
       file = g_strdup_printf ("/proc/%d/cwd", screen->pid);
 #endif
 
-      length = readlink (file, buffer, sizeof (buffer));
+      length = readlink (file, buffer, sizeof (buffer) - 1);
       if (length > 0 && *buffer == '/')
         {
           buffer[length] = '\0';
