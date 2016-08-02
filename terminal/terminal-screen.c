@@ -144,6 +144,9 @@ static void       terminal_screen_update_label_orientation      (TerminalScreen 
 static gchar     *terminal_screen_zoom_font                     (TerminalScreen        *screen,
                                                                  gchar                 *font_name,
                                                                  TerminalZoomLevel      zoom);
+static void       terminal_screen_urgent_bell                   (TerminalWidget        *widget,
+                                                                 TerminalScreen        *screen);
+
 
 
 struct _TerminalScreenClass
@@ -1033,6 +1036,7 @@ terminal_screen_update_misc_bell (TerminalScreen *screen)
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-bell", &bval, NULL);
   vte_terminal_set_audible_bell (VTE_TERMINAL (screen->terminal), bval);
+  g_signal_connect (screen->terminal, "bell", G_CALLBACK (terminal_screen_urgent_bell), screen);
 }
 
 
@@ -1501,10 +1505,10 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
 
 
 
-static
-gchar* terminal_screen_zoom_font (TerminalScreen *screen,
-                                  gchar *font_name,
-                                  TerminalZoomLevel zoom)
+static gchar*
+terminal_screen_zoom_font (TerminalScreen *screen,
+                           gchar *font_name,
+                           TerminalZoomLevel zoom)
 {
   gdouble               scale;
   PangoFontDescription *font_desc;
@@ -1553,6 +1557,26 @@ gchar* terminal_screen_zoom_font (TerminalScreen *screen,
   g_free(font_name);
 
   return font_zoomed;
+}
+
+
+
+static void
+terminal_screen_urgent_bell (TerminalWidget *widget,
+                             TerminalScreen *screen)
+{
+  GtkWidget *toplevel;
+  gboolean   enabled;
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  g_object_get (G_OBJECT (screen->preferences), "misc-bell-urgent", &enabled, NULL);
+
+  if (!enabled)
+    return;
+
+  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+  gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), TRUE);
 }
 
 
