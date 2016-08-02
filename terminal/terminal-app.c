@@ -412,6 +412,7 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
 {
   GtkWidget *window;
   GdkScreen *screen;
+  glong      width, height;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (existing));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (terminal));
@@ -439,6 +440,10 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
   gtk_widget_hide (GTK_WIDGET (terminal));
 
   terminal_window_add (TERMINAL_WINDOW (window), terminal);
+
+  /* resize new window to the original terminal geometry */
+  terminal_screen_get_size (terminal, &width, &height);
+  terminal_screen_force_resize_window (terminal, GTK_WINDOW (window), width, height);
 
   gtk_widget_show (window);
 }
