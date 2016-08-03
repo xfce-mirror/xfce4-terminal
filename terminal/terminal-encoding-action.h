@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_ENCODING_ACTION_H__
-#define __TERMINAL_ENCODING_ACTION_H__
+#ifndef TERMINAL_ENCODING_ACTION_H
+#define TERMINAL_ENCODING_ACTION_H
 
 #include <gtk/gtk.h>
 
@@ -53,4 +53,4 @@ GtkTreeModel *terminal_encoding_model_new          (const gchar *current,
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_ENCODING_ACTION_H__ */
+#endif /* !TERMINAL_ENCODING_ACTION_H */

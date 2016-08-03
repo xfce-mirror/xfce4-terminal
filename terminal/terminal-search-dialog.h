@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_SEARCH_DIALOG_H__
-#define __TERMINAL_SEARCH_DIALOG_H__
+#ifndef TERMINAL_SEARCH_DIALOG_H
+#define TERMINAL_SEARCH_DIALOG_H
 
 #include <vte/vte.h>
 
@@ -51,4 +51,4 @@ void       terminal_search_dialog_present         (TerminalSearchDialog  *dialog
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_SEARCH_DIALOG_H__ */
+#endif /* !TERMINAL_SEARCH_DIALOG_H */

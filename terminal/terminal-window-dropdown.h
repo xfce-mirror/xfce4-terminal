@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_WINDOW_DROPDOWN_DROPDOWN_H__
-#define __TERMINAL_WINDOW_DROPDOWN_DROPDOWN_H__
+#ifndef TERMINAL_WINDOW_DROPDOWN_DROPDOWN_H
+#define TERMINAL_WINDOW_DROPDOWN_DROPDOWN_H
 
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-options.h>
@@ -51,4 +51,4 @@ void            terminal_window_dropdown_get_size             (TerminalWindowDro
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_WINDOW_DROPDOWN_H__ */
+#endif /* !TERMINAL_WINDOW_DROPDOWN_H */

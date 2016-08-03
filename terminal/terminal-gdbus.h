@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_DBUS_H__
-#define __TERMINAL_DBUS_H__
+#ifndef TERMINAL_GDBUS_H
+#define TERMINAL_GDBUS_H
 
 #include <terminal/terminal-app.h>
 
@@ -32,4 +32,4 @@ gboolean  terminal_gdbus_invoke_launch     (gint          argc,
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_DBUS_H__ */
+#endif /* !TERMINAL_GDBUS_H */

@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_SCREEN_H__
-#define __TERMINAL_SCREEN_H__
+#ifndef TERMINAL_SCREEN_H
+#define TERMINAL_SCREEN_H
 
 #include <gtk/gtk.h>
 
@@ -111,4 +111,4 @@ void         terminal_screen_update_font                  (TerminalScreen *scree
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_SCREEN_H__ */
+#endif /* !TERMINAL_SCREEN_H */

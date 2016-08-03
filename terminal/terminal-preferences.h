@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_PREFERENCES_H__
-#define __TERMINAL_PREFERENCES_H__
+#ifndef TERMINAL_PREFERENCES_H
+#define TERMINAL_PREFERENCES_H
 
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -97,4 +97,4 @@ gboolean             terminal_preferences_get_color (TerminalPreferences *prefer
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_PREFERENCES_H__ */
+#endif /* !TERMINAL_PREFERENCES_H */

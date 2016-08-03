@@ -110,10 +110,10 @@ terminal-enum-types.h: stamp-terminal-enum-types.h
 	@true
 stamp-terminal-enum-types.h: terminal-preferences.h Makefile
 	$(AM_V_GEN)  ( cd $(srcdir) && glib-mkenums \
-	--fhead "#ifndef __TERMINAL_ENUM_TYPES_H__\n#define __TERMINAL_ENUM_TYPES_H__\n#include <gtk/gtk.h>\nG_BEGIN_DECLS\n" \
+	--fhead "#ifndef TERMINAL_ENUM_TYPES_H\n#define TERMINAL_ENUM_TYPES_H\n#include <gtk/gtk.h>\nG_BEGIN_DECLS\n" \
 	--fprod "/* enumerations from \"@filename@\" */\n" \
 	--vhead "GType @enum_name@_get_type (void);\n#define TERMINAL_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n" \
-	--ftail "G_END_DECLS\n\n#endif /* !__TERMINAL_ENUM_TYPES_H__ */" \
+	--ftail "G_END_DECLS\n\n#endif /* !TERMINAL_ENUM_TYPES_H */" \
 	terminal-preferences.h ) >> xgen-teth \
 	&& (cmp -s xgen-teth terminal-enum-types.h || cp xgen-teth terminal-enum-types.h ) \
 	&& rm -f xgen-teth \

@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_PREFERENCES_DIALOG_H__
-#define __TERMINAL_PREFERENCES_DIALOG_H__
+#ifndef TERMINAL_PREFERENCES_DIALOG_H
+#define TERMINAL_PREFERENCES_DIALOG_H
 
 #include <terminal/terminal-preferences.h>
 
@@ -40,4 +40,4 @@ GtkWidget *terminal_preferences_dialog_new      (gboolean show_drop_down);
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_PREFERENCES_DIALOG_H__ */
+#endif /* !TERMINAL_PREFERENCES_DIALOG_H */

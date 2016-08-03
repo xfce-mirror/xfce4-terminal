@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_OPTIONS_H__
-#define __TERMINAL_OPTIONS_H__
+#ifndef TERMINAL_OPTIONS_H
+#define TERMINAL_OPTIONS_H
 
 #include <glib.h>
 
@@ -97,4 +97,4 @@ void                terminal_window_attr_free  (TerminalWindowAttr  *attr);
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_OPTIONS_H__ */
+#endif /* !TERMINAL_OPTIONS_H */

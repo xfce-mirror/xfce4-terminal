@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_IMAGE_LOADER_H__
-#define __TERMINAL_IMAGE_LOADER_H__
+#ifndef TERMINAL_IMAGE_LOADER_H
+#define TERMINAL_IMAGE_LOADER_H
 
 #include <terminal/terminal-preferences.h>
 
@@ -44,4 +44,4 @@ GdkPixbuf           *terminal_image_loader_load (TerminalImageLoader *loader,
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_IMAGE_LOADER_H__ */
+#endif /* !TERMINAL_IMAGE_LOADER_H */

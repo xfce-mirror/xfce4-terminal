@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_APP_H__
-#define __TERMINAL_APP_H__
+#ifndef TERMINAL_APP_H
+#define TERMINAL_APP_H
 
 #include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
@@ -62,4 +62,4 @@ gboolean     terminal_app_process             (TerminalApp        *app,
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_APP_H__ */
+#endif /* !TERMINAL_APP_H */

@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_WIDGET_H__
-#define __TERMINAL_WIDGET_H__
+#ifndef TERMINAL_WIDGET_H
+#define TERMINAL_WIDGET_H
 
 #include <vte/vte.h>
 
@@ -51,4 +51,4 @@ GType      terminal_widget_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_WIDGET_H__ */
+#endif /* !TERMINAL_WIDGET_H */

@@ -17,8 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_WINDOW_H__
-#define __TERMINAL_WINDOW_H__
+#ifndef TERMINAL_WINDOW_H
+#define TERMINAL_WINDOW_H
 
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-options.h>
@@ -108,4 +108,4 @@ GSList         *terminal_window_get_restart_command  (TerminalWindow     *window
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_WINDOW_H__ */
+#endif /* !TERMINAL_WINDOW_H */

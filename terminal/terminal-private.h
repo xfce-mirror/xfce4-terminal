@@ -15,8 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __TERMINAL_PRIVATE_H__
-#define __TERMINAL_PRIVATE_H__
+#ifndef TERMINAL_PRIVATE_H
+#define TERMINAL_PRIVATE_H
 
 #include <glib-object.h>
 
@@ -28,9 +28,9 @@ G_BEGIN_DECLS
 /* macro for some debugging */
 #define PRINT_TIME(desc) \
   G_BEGIN_DECLS { \
-    GTimeVal __tv; \
-    g_get_current_time (&__tv); \
-    g_print ("%ld.%ld: %s\n", __tv.tv_sec, __tv.tv_usec, desc); \
+    GTimeVal gtv; \
+    g_get_current_time (&gtv); \
+    g_print ("%ld.%ld: %s\n", gtv.tv_sec, gtv.tv_usec, desc); \
   } G_END_DECLS
 
 /* support macros for debugging */
@@ -72,4 +72,4 @@ G_BEGIN_DECLS
 
 G_END_DECLS
 
-#endif /* !__TERMINAL_PRIVATE_H__ */
+#endif /* !TERMINAL_PRIVATE_H */
