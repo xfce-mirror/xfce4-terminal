@@ -87,36 +87,36 @@ static const TerminalRegexPattern regex_patterns[] =
 
 
 
-static void     terminal_widget_finalize              (GObject              *object);
-static gboolean terminal_widget_button_press_event    (GtkWidget            *widget,
-                                                       GdkEventButton       *event);
-static void     terminal_widget_drag_data_received    (GtkWidget            *widget,
-                                                       GdkDragContext       *context,
-                                                       gint                  x,
-                                                       gint                  y,
-                                                       GtkSelectionData     *selection_data,
-                                                       guint                 info,
-                                                       guint                 time);
-static gboolean terminal_widget_key_press_event       (GtkWidget            *widget,
-                                                       GdkEventKey          *event);
-static void     terminal_widget_open_uri              (TerminalWidget       *widget,
-                                                       const gchar          *link,
-                                                       gint                  tag);
-static void     terminal_widget_update_highlight_urls (TerminalWidget       *widget);
+static void     terminal_widget_finalize              (GObject          *object);
+static gboolean terminal_widget_button_press_event    (GtkWidget        *widget,
+                                                       GdkEventButton   *event);
+static void     terminal_widget_drag_data_received    (GtkWidget        *widget,
+                                                       GdkDragContext   *context,
+                                                       gint              x,
+                                                       gint              y,
+                                                       GtkSelectionData *selection_data,
+                                                       guint             info,
+                                                       guint             time);
+static gboolean terminal_widget_key_press_event       (GtkWidget        *widget,
+                                                       GdkEventKey      *event);
+static void     terminal_widget_open_uri              (TerminalWidget   *widget,
+                                                       const gchar      *link,
+                                                       gint              tag);
+static void     terminal_widget_update_highlight_urls (TerminalWidget   *widget);
 
 
 
 struct _TerminalWidgetClass
 {
-  VteTerminalClass __parent__;
+  VteTerminalClass parent_class;
 
   /* signals */
-  GtkWidget*  (*get_context_menu) (TerminalWidget        *widget);
+  GtkWidget*     (*get_context_menu) (TerminalWidget *widget);
 };
 
 struct _TerminalWidget
 {
-  VteTerminal __parent__;
+  VteTerminal          parent_instance;
 
   /*< private >*/
   TerminalPreferences *preferences;

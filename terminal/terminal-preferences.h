@@ -81,11 +81,6 @@ typedef enum /*< enum,prefix=TERMINAL_CURSOR_SHAPE >*/
   TERMINAL_CURSOR_SHAPE_UNDERLINE
 } TerminalCursorShape;
 
-struct _TerminalPreferencesClass
-{
-  GObjectClass __parent__;
-};
-
 GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
 
 TerminalPreferences *terminal_preferences_get       (void);

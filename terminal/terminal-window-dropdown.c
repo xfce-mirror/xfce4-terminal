@@ -61,34 +61,34 @@ enum
 
 
 
-static void            terminal_window_dropdown_finalize                      (GObject                *object);
-static void            terminal_window_dropdown_set_property                  (GObject                *object,
-                                                                               guint                   prop_id,
-                                                                               const GValue           *value,
-                                                                               GParamSpec             *pspec);
-static gboolean        terminal_window_dropdown_focus_in_event                (GtkWidget              *widget,
-                                                                               GdkEventFocus          *event);
-static gboolean        terminal_window_dropdown_focus_out_event               (GtkWidget              *widget,
-                                                                               GdkEventFocus          *event);
-static gboolean        terminal_window_dropdown_status_icon_press_event       (GtkStatusIcon          *status_icon,
-                                                                               GdkEventButton         *event,
-                                                                               TerminalWindowDropdown *dropdown);
-static void            terminal_window_dropdown_status_icon_popup_menu        (GtkStatusIcon          *status_icon,
-                                                                               guint                   button,
-                                                                               guint32                 timestamp,
-                                                                               TerminalWindowDropdown *dropdown);
-static void            terminal_window_dropdown_hide                          (TerminalWindowDropdown *dropdown);
-static void            terminal_window_dropdown_show                          (TerminalWindowDropdown *dropdown,
-                                                                               guint32                 timestamp);
-static void            terminal_window_dropdown_toggle_real                   (TerminalWindowDropdown *dropdown,
-                                                                               guint32                 timestamp,
-                                                                               gboolean                force_show);
-static void            terminal_window_dropdown_update_geometry               (TerminalWindowDropdown *dropdown);
+static void     terminal_window_dropdown_finalize                (GObject                *object);
+static void     terminal_window_dropdown_set_property            (GObject                *object,
+                                                                  guint                   prop_id,
+                                                                  const GValue           *value,
+                                                                  GParamSpec             *pspec);
+static gboolean terminal_window_dropdown_focus_in_event          (GtkWidget              *widget,
+                                                                  GdkEventFocus          *event);
+static gboolean terminal_window_dropdown_focus_out_event         (GtkWidget              *widget,
+                                                                  GdkEventFocus          *event);
+static gboolean terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status_icon,
+                                                                  GdkEventButton         *event,
+                                                                  TerminalWindowDropdown *dropdown);
+static void     terminal_window_dropdown_status_icon_popup_menu  (GtkStatusIcon          *status_icon,
+                                                                  guint                   button,
+                                                                  guint32                 timestamp,
+                                                                  TerminalWindowDropdown *dropdown);
+static void     terminal_window_dropdown_hide                    (TerminalWindowDropdown *dropdown);
+static void     terminal_window_dropdown_show                    (TerminalWindowDropdown *dropdown,
+                                                                  guint32                 timestamp);
+static void     terminal_window_dropdown_toggle_real             (TerminalWindowDropdown *dropdown,
+                                                                  guint32                 timestamp,
+                                                                  gboolean                force_show);
+static void     terminal_window_dropdown_update_geometry         (TerminalWindowDropdown *dropdown);
 
 
 struct _TerminalWindowDropdownClass
 {
-  TerminalWindowClass __parent__;
+  TerminalWindowClass parent_class;
 };
 
 typedef enum
@@ -100,7 +100,7 @@ typedef enum
 
 struct _TerminalWindowDropdown
 {
-  TerminalWindow __parent__;
+  TerminalWindow       parent_instance;
 
   /* viewport for animation */
   GtkWidget           *viewport;

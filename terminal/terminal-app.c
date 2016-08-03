@@ -53,39 +53,39 @@
 
 
 
-static void               terminal_app_finalize                 (GObject            *object);
-static void               terminal_app_update_accels            (TerminalApp        *app);
-static void               terminal_app_update_mnemonics         (TerminalApp        *app);
-static gboolean           terminal_app_accel_map_load           (gpointer            user_data);
-static gboolean           terminal_app_accel_map_save           (gpointer            user_data);
-static void               terminal_app_unset_urgent_bell        (TerminalWindow     *window,
-                                                                 GdkEvent           *event,
-                                                                 TerminalApp        *app);
-static void               terminal_app_new_window               (TerminalWindow     *window,
-                                                                 const gchar        *working_directory,
-                                                                 TerminalApp        *app);
-static void               terminal_app_new_window_with_terminal (TerminalWindow     *window,
-                                                                 TerminalScreen     *terminal,
-                                                                 gint                x,
-                                                                 gint                y,
-                                                                 TerminalApp        *app);
-static void               terminal_app_window_destroyed         (GtkWidget          *window,
-                                                                 TerminalApp        *app);
-static void               terminal_app_save_yourself            (XfceSMClient       *client,
-                                                                 TerminalApp        *app);
-static void               terminal_app_open_window              (TerminalApp        *app,
-                                                                 TerminalWindowAttr *attr);
+static void     terminal_app_finalize                 (GObject            *object);
+static void     terminal_app_update_accels            (TerminalApp        *app);
+static void     terminal_app_update_mnemonics         (TerminalApp        *app);
+static gboolean terminal_app_accel_map_load           (gpointer            user_data);
+static gboolean terminal_app_accel_map_save           (gpointer            user_data);
+static void     terminal_app_unset_urgent_bell        (TerminalWindow     *window,
+                                                       GdkEvent           *event,
+                                                       TerminalApp        *app);
+static void     terminal_app_new_window               (TerminalWindow     *window,
+                                                       const gchar        *working_directory,
+                                                       TerminalApp        *app);
+static void     terminal_app_new_window_with_terminal (TerminalWindow     *window,
+                                                       TerminalScreen     *terminal,
+                                                       gint                x,
+                                                       gint                y,
+                                                       TerminalApp        *app);
+static void     terminal_app_window_destroyed         (GtkWidget          *window,
+                                                       TerminalApp        *app);
+static void     terminal_app_save_yourself            (XfceSMClient       *client,
+                                                       TerminalApp        *app);
+static void     terminal_app_open_window              (TerminalApp        *app,
+                                                       TerminalWindowAttr *attr);
 
 
 
 struct _TerminalAppClass
 {
-  GObjectClass  __parent__;
+  GObjectClass parent_class;
 };
 
 struct _TerminalApp
 {
-  GObject              __parent__;
+  GObject              parent_instance;
   TerminalPreferences *preferences;
   XfceSMClient        *session_client;
   gchar               *initial_menu_bar_accel;

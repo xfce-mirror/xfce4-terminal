@@ -27,38 +27,38 @@
 
 
 
-static void       terminal_image_loader_finalize          (GObject                  *object);
-static void       terminal_image_loader_check             (TerminalImageLoader      *loader);
-static void       terminal_image_loader_pixbuf_destroyed  (gpointer                  data,
-                                                           GObject                  *pixbuf);
-static void       terminal_image_loader_tile              (TerminalImageLoader      *loader,
-                                                           GdkPixbuf                *target,
-                                                           gint                      width,
-                                                           gint                      height);
-static void       terminal_image_loader_center            (TerminalImageLoader      *loader,
-                                                           GdkPixbuf                *target,
-                                                           gint                      width,
-                                                           gint                      height);
-static void       terminal_image_loader_scale             (TerminalImageLoader      *loader,
-                                                           GdkPixbuf                *target,
-                                                           gint                      width,
-                                                           gint                      height);
-static void       terminal_image_loader_stretch           (TerminalImageLoader      *loader,
-                                                           GdkPixbuf                *target,
-                                                           gint                      width,
-                                                           gint                      height);
-static void       terminal_image_loader_saturate          (TerminalImageLoader      *loader,
-                                                           GdkPixbuf                *pixbuf);
+static void terminal_image_loader_finalize         (GObject             *object);
+static void terminal_image_loader_check            (TerminalImageLoader *loader);
+static void terminal_image_loader_pixbuf_destroyed (gpointer             data,
+                                                    GObject             *pixbuf);
+static void terminal_image_loader_tile             (TerminalImageLoader *loader,
+                                                    GdkPixbuf           *target,
+                                                    gint                 width,
+                                                    gint                 height);
+static void terminal_image_loader_center           (TerminalImageLoader *loader,
+                                                    GdkPixbuf           *target,
+                                                    gint                 width,
+                                                    gint                 height);
+static void terminal_image_loader_scale            (TerminalImageLoader *loader,
+                                                    GdkPixbuf           *target,
+                                                    gint                 width,
+                                                    gint                 height);
+static void terminal_image_loader_stretch          (TerminalImageLoader *loader,
+                                                    GdkPixbuf           *target,
+                                                    gint                 width,
+                                                    gint                 height);
+static void terminal_image_loader_saturate         (TerminalImageLoader *loader,
+                                                    GdkPixbuf           *pixbuf);
 
 
 struct _TerminalImageLoaderClass
 {
-  GObjectClass  __parent__;
+  GObjectClass parent_class;
 };
 
 struct _TerminalImageLoader
 {
-  GObject                  __parent__;
+  GObject                  parent_instance;
   TerminalPreferences     *preferences;
 
   /* the cached image data */

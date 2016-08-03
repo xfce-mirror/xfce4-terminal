@@ -109,18 +109,23 @@ enum
   N_PROPERTIES,
 };
 
+struct _TerminalPreferencesClass
+{
+  GObjectClass parent_class;
+};
+
 struct _TerminalPreferences
 {
-  GObject __parent__;
+  GObject       parent_instance;
 
-  GValue           values[N_PROPERTIES];
+  GValue        values[N_PROPERTIES];
 
-  GFile           *file;
-  GFileMonitor    *monitor;
-  guint32          last_mtime;
+  GFile        *file;
+  GFileMonitor *monitor;
+  guint64       last_mtime;
 
-  guint            store_idle_id;
-  guint            loading_in_progress : 1;
+  guint         store_idle_id;
+  guint         loading_in_progress : 1;
 };
 
 

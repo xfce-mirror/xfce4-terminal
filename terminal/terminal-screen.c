@@ -151,12 +151,12 @@ static void       terminal_screen_urgent_bell                   (TerminalWidget 
 
 struct _TerminalScreenClass
 {
-  GtkHBoxClass __parent__;
+  GtkHBoxClass parent_class;
 };
 
 struct _TerminalScreen
 {
-  GtkHBox              __parent__;
+  GtkHBox              parent_instance;
   TerminalPreferences *preferences;
   GtkWidget           *terminal;
   GtkWidget           *scrollbar;

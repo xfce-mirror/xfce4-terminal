@@ -43,23 +43,22 @@ enum
 
 
 
-static void       terminal_encoding_action_finalize          (GObject                *object);
-static GtkWidget *terminal_encoding_action_create_menu_item  (GtkAction              *action);
-static void       terminal_encoding_action_menu_shown        (GtkWidget              *menu,
-                                                              TerminalEncodingAction *encoding_action);
+static void       terminal_encoding_action_finalize         (GObject                *object);
+static GtkWidget *terminal_encoding_action_create_menu_item (GtkAction              *action);
+static void       terminal_encoding_action_menu_shown       (GtkWidget              *menu,
+                                                             TerminalEncodingAction *encoding_action);
 
 
 
 struct _TerminalEncodingActionClass
 {
-  GtkActionClass __parent__;
+  GtkActionClass parent_class;
 };
 
 struct _TerminalEncodingAction
 {
-  GtkAction  __parent__;
-
-  gchar *current;
+  GtkAction  parent_instance;
+  gchar     *current;
 };
 
 

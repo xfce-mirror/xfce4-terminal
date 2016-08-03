@@ -43,12 +43,12 @@ static void terminal_search_dialog_entry_changed      (GtkWidget            *ent
 
 struct _TerminalSearchDialogClass
 {
-  GtkDialogClass __parent__;
+  GtkDialogClass parent_class;
 };
 
 struct _TerminalSearchDialog
 {
-  GtkDialog __parent__;
+  GtkDialog parent_instance;
 
   GRegex    *last_gregex;
 

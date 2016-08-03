@@ -71,12 +71,12 @@ static void terminal_preferences_dialog_scroll_unlimited  (GtkWidget            
 
 struct _TerminalPreferencesDialogClass
 {
-  GtkBuilderClass __parent__;
+  GtkBuilderClass parent_class;
 };
 
 struct _TerminalPreferencesDialog
 {
-  GtkBuilder           __parent__;
+  GtkBuilder           parent_instance;
 
   TerminalPreferences *preferences;
   GSList              *bindings;
