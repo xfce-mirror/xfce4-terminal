@@ -501,7 +501,7 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_colors (screen);
   else if (strncmp ("font-", name, strlen ("font-")) == 0)
     terminal_screen_update_font (screen);
-  else if (strcmp ("misc-bell", name) == 0)
+  else if (strncmp ("misc-bell", name, strlen ("misc-bell")) == 0)
     terminal_screen_update_misc_bell (screen);
   else if (strcmp ("misc-cursor-blinks", name) == 0)
     terminal_screen_update_misc_cursor_blinks (screen);
