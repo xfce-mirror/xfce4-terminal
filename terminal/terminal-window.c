@@ -298,7 +298,6 @@ static void
 terminal_window_init (TerminalWindow *window)
 {
   GtkAccelGroup  *accel_group;
-  GtkWidget      *vbox;
   gboolean        always_show_tabs;
   GdkScreen      *screen;
   GdkVisual      *visual;
@@ -335,8 +334,8 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect_after (G_OBJECT (accel_group), "accel-activate",
       G_CALLBACK (terminal_window_accel_activate), window);
 
-  window->vbox = vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  gtk_container_add (GTK_CONTAINER (window), vbox);
+  window->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  gtk_container_add (GTK_CONTAINER (window), window->vbox);
 
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
@@ -368,8 +367,8 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect (G_OBJECT (window->notebook), "scroll-event",
       G_CALLBACK (terminal_window_notebook_scroll_event), window);
 
-  gtk_box_pack_start (GTK_BOX (vbox), window->notebook, TRUE, TRUE, 0);
-  gtk_widget_show_all (vbox);
+  gtk_box_pack_start (GTK_BOX (window->vbox), window->notebook, TRUE, TRUE, 0);
+  gtk_widget_show_all (window->vbox);
 
   /* create encoding action */
   window->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
