@@ -102,9 +102,6 @@ struct _TerminalWindowDropdown
 {
   TerminalWindow       parent_instance;
 
-  /* viewport for animation */
-  GtkWidget           *viewport;
-
   /* timeout for animation */
   guint                animation_timeout_id;
   guint                animation_time;
@@ -230,16 +227,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 
   /* shared setting to disable some functionality in TerminalWindow */
   window->drop_down = TRUE;
-
-  /* move the window content into a viewport for animation */
-  dropdown->viewport = gtk_viewport_new (NULL, NULL);
-  gtk_viewport_set_shadow_type (GTK_VIEWPORT (dropdown->viewport), GTK_SHADOW_NONE);
-  child = gtk_bin_get_child (GTK_BIN (dropdown));
-  g_object_ref (G_OBJECT (child));
-  gtk_container_remove (GTK_CONTAINER (dropdown), child);
-  gtk_container_add (GTK_CONTAINER (dropdown), dropdown->viewport);
-  gtk_container_add (GTK_CONTAINER (dropdown->viewport), child);
-  g_object_unref (G_OBJECT (child));
 
   /* default window settings */
   gtk_window_set_decorated (GTK_WINDOW (dropdown), FALSE);
@@ -564,7 +551,7 @@ terminal_window_dropdown_animate_down (gpointer data)
   TerminalWindow         *window = TERMINAL_WINDOW (data);
   GtkRequisition          req1;
   GdkRectangle            rect;
-  gint                    step_size, viewport_h;
+  gint                    step_size, vbox_h;
 
   /* get window size */
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
@@ -580,18 +567,18 @@ terminal_window_dropdown_animate_down (gpointer data)
   if (step_size < 1)
     step_size = 1;
 
-  /* new viewport size */
-  gtk_widget_get_preferred_size (dropdown->viewport, &req1, NULL);
-  viewport_h = req1.height + step_size;
-  if (viewport_h > rect.height)
-    viewport_h = rect.height;
+  /* new vbox size */
+  gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
+  vbox_h = req1.height + step_size;
+  if (vbox_h > rect.height)
+    vbox_h = rect.height;
 
   /* resize */
-  gtk_widget_set_size_request (dropdown->viewport, req1.width, viewport_h);
-  gtk_window_resize (GTK_WINDOW (window), req1.width, viewport_h);
+  gtk_widget_set_size_request (window->vbox, req1.width, vbox_h);
+  gtk_window_resize (GTK_WINDOW (window), req1.width, vbox_h);
 
   /* continue the animation */
-  if (viewport_h < rect.height)
+  if (vbox_h < rect.height)
     return TRUE;
 
   /* restore the fullscreen state */
@@ -611,7 +598,7 @@ terminal_window_dropdown_animate_up (gpointer data)
   TerminalWindow         *window = TERMINAL_WINDOW (data);
   GtkRequisition          req1;
   GdkRectangle            rect;
-  gint                    step_size, viewport_h, min_size;
+  gint                    step_size, vbox_h, min_size;
 
   /* get window size */
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
@@ -627,9 +614,9 @@ terminal_window_dropdown_animate_up (gpointer data)
   if (step_size < 1)
     step_size = 1;
 
-  /* new viewport size */
-  gtk_widget_get_preferred_size (dropdown->viewport, &req1, NULL);
-  viewport_h = req1.height - step_size;
+  /* new vbox size */
+  gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
+  vbox_h = req1.height - step_size;
 
   /* sizes of the widgets that cannot be shrunk */
   gtk_widget_get_preferred_size (window->notebook, &req1, NULL);
@@ -647,7 +634,7 @@ terminal_window_dropdown_animate_up (gpointer data)
       min_size += req1.height;
     }
 
-  if (viewport_h < min_size)
+  if (vbox_h < min_size)
     {
       /* animation complete */
       gtk_widget_hide (GTK_WIDGET (dropdown));
@@ -655,8 +642,8 @@ terminal_window_dropdown_animate_up (gpointer data)
     }
 
   /* resize window */
-  gtk_widget_set_size_request (dropdown->viewport, rect.width, viewport_h);
-  gtk_window_resize (GTK_WINDOW (window), rect.width, viewport_h);
+  gtk_widget_set_size_request (window->vbox, rect.width, vbox_h);
+  gtk_window_resize (GTK_WINDOW (window), rect.width, vbox_h);
 
   return TRUE;
 }
@@ -705,7 +692,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   GtkRequisition     req1;
   gboolean           move_to_active;
   gboolean           visible;
-  gint               viewport_h;
+  gint               vbox_h;
   TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
 
   visible = gtk_widget_get_visible (GTK_WIDGET (dropdown));
@@ -750,27 +737,27 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
       h = monitor_geo.height * dropdown->rel_height;
     }
 
-  /* viewport size if not animated */
-  viewport_h = h;
+  /* vbox size if not animated */
+  vbox_h = h;
 
-  /* viewport start height for animation */
+  /* vbox start height for animation */
   if (dropdown->animation_time > 0)
     {
       if (!visible)
         {
           /* start animation collapsed */
-          viewport_h = 0;
+          vbox_h = 0;
         }
       else if (old_animation_dir == ANIMATION_DIR_UP)
         {
           /* pick up where we aborted */
-          gtk_widget_get_preferred_size (dropdown->viewport, &req1, NULL);
-          viewport_h = req1.height;
+          gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
+          vbox_h = req1.height;
         }
     }
 
   /* resize */
-  gtk_widget_set_size_request (dropdown->viewport, w, viewport_h);
+  gtk_widget_set_size_request (window->vbox, w, vbox_h);
 
   /* calc position */
   x_dest = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
@@ -790,7 +777,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   terminal_util_activate_window (GTK_WINDOW (dropdown));
 
   if (dropdown->animation_time > 0
-      && viewport_h < h)
+      && vbox_h < h)
     {
       dropdown->animation_dir = ANIMATION_DIR_DOWN;
       dropdown->animation_timeout_id =
