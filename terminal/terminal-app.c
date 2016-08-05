@@ -262,6 +262,7 @@ static gboolean
 terminal_app_accel_map_load (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
+  GtkAccelKey  key;
   gchar       *path;
   gchar        name[50];
   guint        i;
@@ -275,20 +276,19 @@ terminal_app_accel_map_load (gpointer user_data)
       gtk_accel_map_load (path);
       g_free (path);
     }
-  else
-    {
-      /* create default Alt+N accelerators */
-      for (i = 1; i < 10; i++)
-        {
-          g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", i);
-          gtk_accel_map_change_entry (name, GDK_KEY_0 + i, GDK_MOD1_MASK, FALSE);
-        }
-    }
 
   /* watch for changes */
   app->accel_map = gtk_accel_map_get ();
   g_signal_connect_swapped (G_OBJECT (app->accel_map), "changed",
       G_CALLBACK (terminal_app_accel_map_changed), app);
+
+  /* check and create default Alt+N accelerators */
+  for (i = 1; i < 10; i++)
+    {
+      g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", i);
+      if (!gtk_accel_map_lookup_entry (name, &key) || key.accel_key == 0)
+        gtk_accel_map_change_entry (name, GDK_KEY_0 + i, GDK_MOD1_MASK, FALSE);
+    }
 
   return FALSE;
 }
