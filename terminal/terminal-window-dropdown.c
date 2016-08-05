@@ -218,7 +218,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   const gchar    *name;
   gboolean        keep_open;
   gboolean        show_borders;
-  GtkWidget      *child;
 
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
