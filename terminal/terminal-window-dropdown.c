@@ -762,15 +762,15 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   x_dest = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
   y_dest = monitor_geo.y;
 
-  /* move */
-  gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
-
   /* show window */
   if (!visible)
     {
       gtk_widget_show_all (GTK_WIDGET (dropdown));
       gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
     }
+
+  /* move */
+  gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
 
   /* force focus to the window */
   terminal_util_activate_window (GTK_WINDOW (dropdown));
