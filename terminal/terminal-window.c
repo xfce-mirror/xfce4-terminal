@@ -141,6 +141,8 @@ static void         terminal_window_action_detach_tab             (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_close_tab              (GtkAction              *action,
                                                                    TerminalWindow         *window);
+static void         terminal_window_action_close_other_tabs       (GtkAction              *action,
+                                                                   TerminalWindow         *window);
 static void         terminal_window_action_close_window           (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_copy                   (GtkAction              *action,
@@ -214,6 +216,7 @@ static const GtkActionEntry action_entries[] =
     { "new-window", "window-new", N_ ("Open T_erminal"), "<control><shift>n", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), },
     { "detach-tab", NULL, N_ ("_Detach Tab"), "<control><shift>d", NULL, G_CALLBACK (terminal_window_action_detach_tab), },
     { "close-tab", "window-close", N_ ("Close T_ab"), "<control><shift>w", NULL, G_CALLBACK (terminal_window_action_close_tab), },
+    { "close-other-tabs", "edit-clear", N_ ("Close Other Ta_bs"), NULL, NULL, G_CALLBACK (terminal_window_action_close_other_tabs), },
     { "close-window", "application-exit", N_ ("Close _Window"), "<control><shift>q", NULL, G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
     { "copy", "edit-copy", N_ ("_Copy"), "<control><shift>c", N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
@@ -385,7 +388,7 @@ terminal_window_init (TerminalWindow *window)
 
   /* cache action pointers */
   window->action_detach_tab = gtk_action_group_get_action (window->action_group, "detach-tab");
-  window->action_close_tab = gtk_action_group_get_action (window->action_group, "close-tab");
+  window->action_close_other_tabs = gtk_action_group_get_action (window->action_group, "close-other-tabs");
   window->action_prev_tab = gtk_action_group_get_action (window->action_group, "prev-tab");
   window->action_next_tab = gtk_action_group_get_action (window->action_group, "next-tab");
   window->action_move_tab_left = gtk_action_group_get_action (window->action_group, "move-tab-left");
@@ -679,14 +682,15 @@ terminal_window_update_actions (TerminalWindow *window)
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
 
-  /* "Detach Tab" is only sensitive if we have at least two pages */
+  /* "Detach Tab", "Close Other Tabs" and move tab actions are only sensitive
+   * if we have at least two pages */
   gtk_action_set_sensitive (window->action_detach_tab, (n_pages > 1));
-
-  /* always allow "Close Tab" action (bug 12490) */
-  gtk_action_set_sensitive (window->action_close_tab, TRUE);
+  gtk_action_set_sensitive (window->action_close_other_tabs, n_pages > 1);
+  gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
+  gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
   /* update the actions for the current terminal screen */
- if (G_LIKELY (window->active != NULL))
+  if (G_LIKELY (window->active != NULL))
     {
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->active));
 
@@ -698,9 +702,6 @@ terminal_window_update_actions (TerminalWindow *window)
                                 (cycle_tabs && n_pages > 1) || (page_num > 0));
       gtk_action_set_sensitive (window->action_next_tab,
                                 (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1));
-
-      gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
-      gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
       gtk_action_set_sensitive (window->action_copy,
                                 terminal_screen_has_selection (window->active));
@@ -809,6 +810,9 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
   terminal_return_if_fail (window == NULL);
   terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
 
+  /* update actions in the window */
+  terminal_window_update_actions (window);
+
   /* only update when really changed */
   if (G_LIKELY (window->active != active))
     {
@@ -821,9 +825,6 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
 
       /* set the new window title */
       terminal_window_notify_title (active, NULL, window);
-
-      /* update actions in the window */
-      terminal_window_update_actions (window);
 
       /* reset the activity counter */
       terminal_screen_reset_activity (active);
@@ -1353,6 +1354,26 @@ terminal_window_action_close_tab (GtkAction       *action,
 {
   if (G_LIKELY (window->active != NULL))
     gtk_widget_destroy (GTK_WIDGET (window->active));
+}
+
+
+
+static void
+terminal_window_action_close_other_tabs (GtkAction       *action,
+                                         TerminalWindow  *window)
+{
+    gint         npages, n;
+    GtkWidget   *child;
+    GtkNotebook *notebook = GTK_NOTEBOOK (window->notebook);
+
+    npages = gtk_notebook_get_n_pages (notebook);
+    child = gtk_notebook_get_nth_page (notebook,
+                                       gtk_notebook_get_current_page (notebook));
+    /* move current page to the beginning */
+    gtk_notebook_reorder_child (notebook, child, 0);
+    /* remove the others */
+    for (n = npages - 1; n > 0; n--)
+      gtk_notebook_remove_page (notebook, n);
 }
 
 

@@ -78,7 +78,7 @@ typedef struct
 
   /* cached actions to avoid lookups */
   GtkAction           *action_detach_tab;
-  GtkAction           *action_close_tab;
+  GtkAction           *action_close_other_tabs;
   GtkAction           *action_prev_tab;
   GtkAction           *action_next_tab;
   GtkAction           *action_move_tab_left;
