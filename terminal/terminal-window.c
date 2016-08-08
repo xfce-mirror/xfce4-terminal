@@ -818,9 +818,6 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
   terminal_return_if_fail (window == NULL);
   terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
 
-  /* update actions in the window */
-  terminal_window_update_actions (window);
-
   /* only update when really changed */
   if (G_LIKELY (window->active != active))
     {
@@ -845,6 +842,9 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
       if (G_LIKELY (!was_null))
         terminal_screen_set_window_geometry_hints (active, GTK_WINDOW (window));
     }
+
+  /* update actions in the window */
+  terminal_window_update_actions (window);
 }
 
 
