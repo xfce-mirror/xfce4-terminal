@@ -932,7 +932,8 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
   /* store working dir of the tab being closed */
   g_free (window->last_working_directory);
-  window->last_working_directory = g_strdup (terminal_screen_get_working_directory (child));
+  window->last_working_directory =
+      g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
 
   /* unset the go menu item */
   g_object_set_qdata (G_OBJECT (child), tabs_menu_action_quark, NULL);
