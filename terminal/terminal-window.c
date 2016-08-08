@@ -137,6 +137,8 @@ static void         terminal_window_action_new_tab                (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_new_window             (GtkAction              *action,
                                                                    TerminalWindow         *window);
+static void         terminal_window_action_undo_close_tab         (GtkAction              *action,
+                                                                   TerminalWindow         *window);
 static void         terminal_window_action_detach_tab             (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_close_tab              (GtkAction              *action,
@@ -214,6 +216,7 @@ static const GtkActionEntry action_entries[] =
   { "file-menu", NULL, N_ ("_File"), NULL, NULL, NULL, },
     { "new-tab", "tab-new", N_ ("Open _Tab"), "<control><shift>t", N_ ("Open a new terminal tab"), G_CALLBACK (terminal_window_action_new_tab), },
     { "new-window", "window-new", N_ ("Open T_erminal"), "<control><shift>n", N_ ("Open a new terminal window"), G_CALLBACK (terminal_window_action_new_window), },
+    { "undo-close-tab", "document-revert", N_ ("_Undo Close Tab"), NULL, NULL, G_CALLBACK (terminal_window_action_undo_close_tab), },
     { "detach-tab", NULL, N_ ("_Detach Tab"), "<control><shift>d", NULL, G_CALLBACK (terminal_window_action_detach_tab), },
     { "close-tab", "window-close", N_ ("Close T_ab"), "<control><shift>w", NULL, G_CALLBACK (terminal_window_action_close_tab), },
     { "close-other-tabs", "edit-clear", N_ ("Close Other Ta_bs"), NULL, NULL, G_CALLBACK (terminal_window_action_close_other_tabs), },
@@ -316,6 +319,7 @@ terminal_window_init (TerminalWindow *window)
 
   window->font = NULL;
   window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
+  window->last_working_directory = NULL;
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -387,6 +391,7 @@ terminal_window_init (TerminalWindow *window)
       G_CALLBACK (terminal_window_action_set_encoding), window);
 
   /* cache action pointers */
+  window->action_undo_close_tab = gtk_action_group_get_action (window->action_group, "undo-close-tab");
   window->action_detach_tab = gtk_action_group_get_action (window->action_group, "detach-tab");
   window->action_close_other_tabs = gtk_action_group_get_action (window->action_group, "close-other-tabs");
   window->action_prev_tab = gtk_action_group_get_action (window->action_group, "prev-tab");
@@ -419,6 +424,7 @@ terminal_window_finalize (GObject *object)
 
   g_slist_free (window->tabs_menu_actions);
   g_free (window->font);
+  g_free (window->last_working_directory);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -689,6 +695,8 @@ terminal_window_update_actions (TerminalWindow *window)
   gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
   gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
+  gtk_action_set_sensitive (window->action_undo_close_tab, window->last_working_directory != NULL);
+
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->active != NULL))
     {
@@ -921,6 +929,10 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  /* store working dir of the tab being closed */
+  g_free (window->last_working_directory);
+  window->last_working_directory = g_strdup (terminal_screen_get_working_directory (child));
 
   /* unset the go menu item */
   g_object_set_qdata (G_OBJECT (child), tabs_menu_action_quark, NULL);
@@ -1300,8 +1312,8 @@ terminal_window_action_set_encoding (GtkAction      *action,
 
 
 static void
-terminal_window_action_new_tab (GtkAction       *action,
-                                TerminalWindow  *window)
+terminal_window_action_new_tab (GtkAction      *action,
+                                TerminalWindow *window)
 {
   const gchar *directory;
   GtkWidget   *terminal;
@@ -1322,8 +1334,8 @@ terminal_window_action_new_tab (GtkAction       *action,
 
 
 static void
-terminal_window_action_new_window (GtkAction       *action,
-                                   TerminalWindow  *window)
+terminal_window_action_new_window (GtkAction      *action,
+                                   TerminalWindow *window)
 {
   const gchar *directory;
 
@@ -1332,6 +1344,23 @@ terminal_window_action_new_window (GtkAction       *action,
       directory = terminal_screen_get_working_directory (window->active);
       g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
     }
+}
+
+
+
+static void
+terminal_window_action_undo_close_tab (GtkAction      *action,
+                                       TerminalWindow *window)
+{
+  GtkWidget *terminal;
+
+  terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
+
+  if (G_LIKELY (window->last_working_directory != NULL))
+    terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal), window->last_working_directory);
+
+  terminal_window_add (window, TERMINAL_SCREEN (terminal));
+  terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
 }
 
 
@@ -1349,8 +1378,8 @@ terminal_window_action_detach_tab (GtkAction      *action,
 
 
 static void
-terminal_window_action_close_tab (GtkAction       *action,
-                                  TerminalWindow  *window)
+terminal_window_action_close_tab (GtkAction      *action,
+                                  TerminalWindow *window)
 {
   if (G_LIKELY (window->active != NULL))
     gtk_widget_destroy (GTK_WIDGET (window->active));
@@ -1359,8 +1388,8 @@ terminal_window_action_close_tab (GtkAction       *action,
 
 
 static void
-terminal_window_action_close_other_tabs (GtkAction       *action,
-                                         TerminalWindow  *window)
+terminal_window_action_close_other_tabs (GtkAction      *action,
+                                         TerminalWindow *window)
 {
     gint         npages, n;
     GtkWidget   *child;
@@ -1379,8 +1408,8 @@ terminal_window_action_close_other_tabs (GtkAction       *action,
 
 
 static void
-terminal_window_action_close_window (GtkAction       *action,
-                                     TerminalWindow  *window)
+terminal_window_action_close_window (GtkAction      *action,
+                                     TerminalWindow *window)
 {
   if (terminal_window_confirm_close (window))
     gtk_widget_destroy (GTK_WIDGET (window));
@@ -1389,8 +1418,8 @@ terminal_window_action_close_window (GtkAction       *action,
 
 
 static void
-terminal_window_action_copy (GtkAction       *action,
-                             TerminalWindow  *window)
+terminal_window_action_copy (GtkAction      *action,
+                             TerminalWindow *window)
 {
   if (G_LIKELY (window->active != NULL))
     terminal_screen_copy_clipboard (window->active);
@@ -1399,8 +1428,8 @@ terminal_window_action_copy (GtkAction       *action,
 
 
 static void
-terminal_window_action_paste (GtkAction       *action,
-                              TerminalWindow  *window)
+terminal_window_action_paste (GtkAction      *action,
+                              TerminalWindow *window)
 {
   if (G_LIKELY (window->active != NULL))
     terminal_screen_paste_clipboard (window->active);
