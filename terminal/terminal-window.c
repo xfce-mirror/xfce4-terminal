@@ -319,7 +319,7 @@ terminal_window_init (TerminalWindow *window)
 
   window->font = NULL;
   window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
-  window->last_working_directory = NULL;
+  window->working_dirs_list = NULL;
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -424,7 +424,8 @@ terminal_window_finalize (GObject *object)
 
   g_slist_free (window->tabs_menu_actions);
   g_free (window->font);
-  g_free (window->last_working_directory);
+  printf("list=%p\n", window->working_dirs_list);
+  g_list_free_full (window->working_dirs_list, g_free);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -695,7 +696,7 @@ terminal_window_update_actions (TerminalWindow *window)
   gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
   gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
-  gtk_action_set_sensitive (window->action_undo_close_tab, window->last_working_directory != NULL);
+  gtk_action_set_sensitive (window->action_undo_close_tab, window->working_dirs_list != NULL);
 
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->active != NULL))
@@ -953,9 +954,8 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
     }
 
   /* store working dir of the tab being closed */
-  g_free (window->last_working_directory);
-  window->last_working_directory =
-      g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
+  window->working_dirs_list = g_list_append (window->working_dirs_list,
+        g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child))));
 
   /* show the tabs when needed */
   terminal_window_notebook_show_tabs (window);
@@ -1354,11 +1354,21 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
                                        TerminalWindow *window)
 {
   GtkWidget *terminal;
+  GList     *link;
 
   terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
-  if (G_LIKELY (window->last_working_directory != NULL))
-    terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal), window->last_working_directory);
+  if (G_LIKELY (window->working_dirs_list != NULL))
+    {
+      /* set working directory of the last closed tab */
+      link = g_list_last (window->working_dirs_list);
+      terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
+                                             (const gchar *) link->data);
+      /* remove it from the list */
+      window->working_dirs_list = g_list_remove_link (window->working_dirs_list, link);
+      g_free ((gchar *) link->data);
+      g_list_free (link);
+    }
 
   terminal_window_add (window, TERMINAL_SCREEN (terminal));
   terminal_screen_launch_child (TERMINAL_SCREEN (terminal));

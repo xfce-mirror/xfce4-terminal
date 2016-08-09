@@ -89,7 +89,7 @@ typedef struct
   GtkAction           *action_search_prev;
   GtkAction           *action_fullscreen;
 
-  gchar               *last_working_directory;
+  GList               *working_dirs_list;
 } TerminalWindow;
 
 GType           terminal_window_get_type            (void) G_GNUC_CONST;
