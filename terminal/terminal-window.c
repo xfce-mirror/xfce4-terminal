@@ -53,6 +53,13 @@
 
 
 
+/* Closed tabs stored info */
+typedef struct
+{
+  gchar *working_directory;
+  gint   position;
+} TerminalWindowTabInfo;
+
 /* Signal identifiers */
 enum
 {
@@ -202,6 +209,7 @@ static void         terminal_window_switch_tab                    (GtkNotebook  
                                                                    gboolean                switch_left);
 static void         terminal_window_move_tab                      (GtkNotebook            *notebook,
                                                                    gboolean                move_left);
+static void         terminal_window_tab_info_free                 (TerminalWindowTabInfo  *tab_info);
 
 
 
@@ -319,7 +327,7 @@ terminal_window_init (TerminalWindow *window)
 
   window->font = NULL;
   window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
-  window->working_dirs_list = NULL;
+  window->closed_tabs_list = NULL;
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -424,7 +432,8 @@ terminal_window_finalize (GObject *object)
 
   g_slist_free (window->tabs_menu_actions);
   g_free (window->font);
-  g_list_free_full (window->working_dirs_list, g_free);
+  g_list_foreach (window->closed_tabs_list, (GFunc) terminal_window_tab_info_free, NULL);
+  g_list_free (window->closed_tabs_list);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -695,7 +704,7 @@ terminal_window_update_actions (TerminalWindow *window)
   gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
   gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
-  gtk_action_set_sensitive (window->action_undo_close_tab, window->working_dirs_list != NULL);
+  gtk_action_set_sensitive (window->action_undo_close_tab, window->closed_tabs_list != NULL);
 
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->active != NULL))
@@ -926,6 +935,7 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   GtkWidget *new_page;
   gint       new_page_num;
   gint       npages;
+  TerminalWindowTabInfo *tab_info;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -952,9 +962,11 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
       return;
     }
 
-  /* store working dir of the tab being closed */
-  window->working_dirs_list = g_list_append (window->working_dirs_list,
-        g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child))));
+  /* store info on the tab being closed */
+  tab_info = g_malloc (sizeof (TerminalWindowTabInfo));
+  tab_info->position = page_num;
+  tab_info->working_directory = g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
+  window->closed_tabs_list = g_list_append (window->closed_tabs_list, tab_info);
 
   /* show the tabs when needed */
   terminal_window_notebook_show_tabs (window);
@@ -1354,22 +1366,27 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
 {
   GtkWidget *terminal;
   GList     *link;
+  TerminalWindowTabInfo *tab_info;
 
   terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
-  if (G_LIKELY (window->working_dirs_list != NULL))
+  terminal_window_add (window, TERMINAL_SCREEN (terminal));
+
+  if (G_LIKELY (window->closed_tabs_list != NULL))
     {
-      /* set working directory of the last closed tab */
-      link = g_list_last (window->working_dirs_list);
+      /* set working directory and position of the last closed tab */
+      link = g_list_last (window->closed_tabs_list);
+      tab_info = (TerminalWindowTabInfo *) link->data;
       terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
-                                             (const gchar *) link->data);
+                                             tab_info->working_directory);
+      gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook), terminal, tab_info->position);
+
       /* remove it from the list */
-      window->working_dirs_list = g_list_remove_link (window->working_dirs_list, link);
-      g_free ((gchar *) link->data);
+      window->closed_tabs_list = g_list_remove_link (window->closed_tabs_list, link);
+      terminal_window_tab_info_free (tab_info);
       g_list_free (link);
     }
 
-  terminal_window_add (window, TERMINAL_SCREEN (terminal));
   terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
 }
 
@@ -1994,6 +2011,15 @@ terminal_window_move_tab (GtkNotebook *notebook,
   else
     gtk_notebook_reorder_child (notebook, page,
                                 page_num == last_page ? 0 : page_num + 1);
+}
+
+
+
+static void
+terminal_window_tab_info_free (TerminalWindowTabInfo *tab_info)
+{
+  g_free (tab_info->working_directory);
+  g_free (tab_info);
 }
 
 
