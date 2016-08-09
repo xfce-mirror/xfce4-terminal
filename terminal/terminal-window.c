@@ -424,7 +424,6 @@ terminal_window_finalize (GObject *object)
 
   g_slist_free (window->tabs_menu_actions);
   g_free (window->font);
-  printf("list=%p\n", window->working_dirs_list);
   g_list_free_full (window->working_dirs_list, g_free);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
