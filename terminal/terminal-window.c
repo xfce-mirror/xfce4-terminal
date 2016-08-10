@@ -963,7 +963,7 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
     }
 
   /* store info on the tab being closed */
-  tab_info = g_malloc (sizeof (TerminalWindowTabInfo));
+  tab_info = g_new (TerminalWindowTabInfo, 1);
   tab_info->position = page_num;
   tab_info->working_directory = g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
   window->closed_tabs_list = g_list_append (window->closed_tabs_list, tab_info);
@@ -1238,6 +1238,7 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
                                         TerminalWindow *window)
 {
   TerminalScreen *screen;
+  GList          *link;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (child), NULL);
@@ -1264,6 +1265,14 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
 
       /* release our reference */
       g_object_unref (G_OBJECT (screen));
+
+      /* erase last closed tabs entry as we don't want it on detach */
+      link = g_list_last (window->closed_tabs_list);
+      window->closed_tabs_list = g_list_remove_link (window->closed_tabs_list, link);
+      terminal_window_tab_info_free (link->data);
+      g_list_free (link);
+      /* and update action to make the undo action inactive */
+      terminal_window_update_actions (window);
     }
 
   return NULL;
