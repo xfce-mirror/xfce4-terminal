@@ -1370,22 +1370,25 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
 
   terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
-  terminal_window_add (window, TERMINAL_SCREEN (terminal));
-
   if (G_LIKELY (window->closed_tabs_list != NULL))
     {
-      /* set working directory and position of the last closed tab */
+      /* get info on the last closed tab and remove it from the list */
       link = g_list_last (window->closed_tabs_list);
+      window->closed_tabs_list = g_list_remove_link (window->closed_tabs_list, link);
+
+      /* set info to the new tab */
       tab_info = (TerminalWindowTabInfo *) link->data;
+      terminal_window_add (window, TERMINAL_SCREEN (terminal));
       terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
                                              tab_info->working_directory);
       gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook), terminal, tab_info->position);
 
-      /* remove it from the list */
-      window->closed_tabs_list = g_list_remove_link (window->closed_tabs_list, link);
+      /* free info */
       terminal_window_tab_info_free (tab_info);
       g_list_free (link);
     }
+  else
+    terminal_window_add (window, TERMINAL_SCREEN (terminal));
 
   terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
 }
