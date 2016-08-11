@@ -20,7 +20,6 @@
 #ifndef TERMINAL_PREFERENCES_H
 #define TERMINAL_PREFERENCES_H
 
-#include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 G_BEGIN_DECLS

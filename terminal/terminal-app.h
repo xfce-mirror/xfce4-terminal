@@ -20,7 +20,6 @@
 #ifndef TERMINAL_APP_H
 #define TERMINAL_APP_H
 
-#include <gtk/gtk.h>
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-options.h>
