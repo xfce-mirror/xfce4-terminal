@@ -1528,9 +1528,14 @@ terminal_window_action_prefs (GtkAction      *action,
 
   if (window->preferences_dialog != NULL)
     {
-      gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
+      /* do not set this in fullscreen mode as preferences would be hidden behind the terminal window */
+      if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+        gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
+
+      /* move preferences on top in dropdown mode */
       if (window->drop_down)
         gtk_window_set_keep_above (GTK_WINDOW (window->preferences_dialog), TRUE);
+
       gtk_window_present (GTK_WINDOW (window->preferences_dialog));
     }
 }
