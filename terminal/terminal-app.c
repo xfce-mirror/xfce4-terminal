@@ -130,6 +130,8 @@ terminal_app_init (TerminalApp *app)
   app->preferences = terminal_preferences_get ();
   g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-menukey",
                             G_CALLBACK (terminal_app_update_accels), app);
+  g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-helpkey",
+                            G_CALLBACK (terminal_app_update_accels), app);
   g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-mnemonics",
                             G_CALLBACK (terminal_app_update_mnemonics), app);
 
@@ -192,15 +194,21 @@ terminal_app_finalize (GObject *object)
 static void
 terminal_app_update_accels (TerminalApp *app)
 {
-  gboolean no_menukey;
+  gboolean no_key;
 
   g_object_get (G_OBJECT (app->preferences),
-                "shortcuts-no-menukey", &no_menukey,
+                "shortcuts-no-menukey", &no_key,
                 NULL);
   g_object_set (G_OBJECT (gtk_settings_get_default ()),
                 "gtk-menu-bar-accel",
-                no_menukey ? NULL : app->initial_menu_bar_accel,
+                no_key ? NULL : app->initial_menu_bar_accel,
                 NULL);
+
+  g_object_get (G_OBJECT (app->preferences),
+                "shortcuts-no-helpkey", &no_key,
+                NULL);
+  gtk_accel_map_change_entry ("<Actions>/terminal-window/contents",
+                              no_key ? 0 : GDK_KEY_F1, 0, TRUE);
 }
 
 

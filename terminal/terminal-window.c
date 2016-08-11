@@ -211,10 +211,6 @@ static void         terminal_window_move_tab                      (GtkNotebook  
                                                                    gboolean                move_left);
 static void         terminal_window_tab_info_free                 (TerminalWindowTabInfo  *tab_info);
 
-static void         terminal_window_preferences_changed           (TerminalPreferences    *preferences,
-                                                                   GParamSpec             *pspec,
-                                                                   TerminalWindow         *window);
-
 
 
 static guint   window_signals[LAST_SIGNAL];
@@ -327,10 +323,7 @@ terminal_window_init (TerminalWindow *window)
   GdkScreen      *screen;
   GdkVisual      *visual;
 
-  /* watch preferences changes */
   window->preferences = terminal_preferences_get ();
-  g_signal_connect (G_OBJECT (window->preferences), "notify",
-      G_CALLBACK (terminal_window_preferences_changed), window);
 
   window->font = NULL;
   window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
@@ -432,9 +425,6 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
-  /* detach from preferences */
-  g_signal_handlers_disconnect_by_func (window->preferences,
-      G_CALLBACK (terminal_window_preferences_changed), window);
   g_object_unref (G_OBJECT (window->preferences));
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->ui_manager));
@@ -2036,31 +2026,6 @@ terminal_window_tab_info_free (TerminalWindowTabInfo *tab_info)
 {
   g_free (tab_info->working_directory);
   g_free (tab_info);
-}
-
-
-
-static void
-terminal_window_preferences_changed (TerminalPreferences *preferences,
-                                     GParamSpec          *pspec,
-                                     TerminalWindow      *window)
-{
-  const gchar *name;
-  gboolean     set;
-
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES (preferences));
-  terminal_return_if_fail (window->preferences == preferences);
-
-  /* get name */
-  name = g_param_spec_get_name (pspec);
-  terminal_assert (name != NULL);
-
-  if (strcmp ("shortcuts-no-helpkey", name) == 0)
-    {
-      g_object_get (G_OBJECT (window->preferences), name, &set, NULL);
-      gtk_accel_map_change_entry ("<Actions>/terminal-window/contents", set ? 0 : GDK_KEY_F1, 0, TRUE);
-    }
 }
 
 
