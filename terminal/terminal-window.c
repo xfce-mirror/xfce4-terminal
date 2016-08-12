@@ -1226,7 +1226,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
           terminal_window_tab_info_free (tab_info);
           /* and update action to make the undo action inactive */
           terminal_window_update_actions (orig_window);
-      }
+        }
 
       /* looks like everything worked out */
       succeed = TRUE;
