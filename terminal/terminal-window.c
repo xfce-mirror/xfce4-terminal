@@ -327,7 +327,7 @@ terminal_window_init (TerminalWindow *window)
 
   window->font = NULL;
   window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
-  window->closed_tabs_list = NULL;
+  window->closed_tabs_list = g_queue_new ();
 
   /* try to set the rgba colormap so vte can use real transparency */
   screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -432,8 +432,8 @@ terminal_window_finalize (GObject *object)
 
   g_slist_free (window->tabs_menu_actions);
   g_free (window->font);
-  g_list_foreach (window->closed_tabs_list, (GFunc) terminal_window_tab_info_free, NULL);
-  g_list_free (window->closed_tabs_list);
+  g_queue_foreach (window->closed_tabs_list, (GFunc) terminal_window_tab_info_free, NULL);
+  g_queue_free (window->closed_tabs_list);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -704,7 +704,7 @@ terminal_window_update_actions (TerminalWindow *window)
   gtk_action_set_sensitive (window->action_move_tab_left, n_pages > 1);
   gtk_action_set_sensitive (window->action_move_tab_right, n_pages > 1);
 
-  gtk_action_set_sensitive (window->action_undo_close_tab, window->closed_tabs_list != NULL);
+  gtk_action_set_sensitive (window->action_undo_close_tab, !g_queue_is_empty (window->closed_tabs_list));
 
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->active != NULL))
@@ -966,7 +966,7 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   tab_info = g_new (TerminalWindowTabInfo, 1);
   tab_info->position = page_num;
   tab_info->working_directory = g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
-  window->closed_tabs_list = g_list_append (window->closed_tabs_list, tab_info);
+  g_queue_push_tail (window->closed_tabs_list, tab_info);
 
   /* show the tabs when needed */
   terminal_window_notebook_show_tabs (window);
@@ -1238,7 +1238,7 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
                                         TerminalWindow *window)
 {
   TerminalScreen *screen;
-  GList          *link;
+  TerminalWindowTabInfo *tab_info;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (child), NULL);
@@ -1267,10 +1267,8 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
       g_object_unref (G_OBJECT (screen));
 
       /* erase last closed tabs entry as we don't want it on detach */
-      link = g_list_last (window->closed_tabs_list);
-      window->closed_tabs_list = g_list_remove_link (window->closed_tabs_list, link);
-      terminal_window_tab_info_free (link->data);
-      g_list_free (link);
+      tab_info = g_queue_pop_tail (window->closed_tabs_list);
+      terminal_window_tab_info_free (tab_info);
       /* and update action to make the undo action inactive */
       terminal_window_update_actions (window);
     }
@@ -1374,19 +1372,16 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
                                        TerminalWindow *window)
 {
   GtkWidget *terminal;
-  GList     *link;
   TerminalWindowTabInfo *tab_info;
 
   terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
-  if (G_LIKELY (window->closed_tabs_list != NULL))
+  if (G_LIKELY (!g_queue_is_empty (window->closed_tabs_list)))
     {
       /* get info on the last closed tab and remove it from the list */
-      link = g_list_last (window->closed_tabs_list);
-      window->closed_tabs_list = g_list_remove_link (window->closed_tabs_list, link);
+      tab_info = g_queue_pop_tail (window->closed_tabs_list);
 
       /* set info to the new tab */
-      tab_info = (TerminalWindowTabInfo *) link->data;
       terminal_window_add (window, TERMINAL_SCREEN (terminal));
       terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
                                              tab_info->working_directory);
@@ -1394,7 +1389,6 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
 
       /* free info */
       terminal_window_tab_info_free (tab_info);
-      g_list_free (link);
     }
   else
     terminal_window_add (window, TERMINAL_SCREEN (terminal));
