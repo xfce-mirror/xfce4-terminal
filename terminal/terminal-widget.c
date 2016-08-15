@@ -109,9 +109,6 @@ static void     terminal_widget_update_highlight_urls (TerminalWidget   *widget)
 struct _TerminalWidgetClass
 {
   VteTerminalClass parent_class;
-
-  /* signals */
-  GtkWidget*     (*get_context_menu) (TerminalWidget *widget);
 };
 
 struct _TerminalWidget
