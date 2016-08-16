@@ -1343,20 +1343,25 @@ static void
 terminal_window_action_new_tab (GtkAction      *action,
                                 TerminalWindow *window)
 {
-  const gchar *directory;
-  GtkWidget   *terminal;
+  const gchar    *directory = NULL;
+  gchar          *default_dir;
+  TerminalScreen *terminal;
 
-  terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
+  terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
+  g_object_get (G_OBJECT (window->preferences), "misc-default-working-dir", &default_dir, NULL);
 
-  if (G_LIKELY (window->active != NULL))
-    {
-      directory = terminal_screen_get_working_directory (window->active);
-      terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
-                                             directory);
-    }
+  if (!g_str_equal (default_dir, ""))
+    directory = default_dir;
+  else if (G_LIKELY (window->active != NULL))
+    directory = terminal_screen_get_working_directory (window->active);
 
-  terminal_window_add (window, TERMINAL_SCREEN (terminal));
-  terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
+  if (directory != NULL)
+    terminal_screen_set_working_directory (terminal, directory);
+
+  g_free (default_dir);
+
+  terminal_window_add (window, terminal);
+  terminal_screen_launch_child (terminal);
 }
 
 
@@ -1365,13 +1370,20 @@ static void
 terminal_window_action_new_window (GtkAction      *action,
                                    TerminalWindow *window)
 {
-  const gchar *directory;
+  const gchar *directory = NULL;
+  gchar       *default_dir;
 
-  if (G_LIKELY (window->active != NULL))
-    {
-      directory = terminal_screen_get_working_directory (window->active);
-      g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
-    }
+  g_object_get (G_OBJECT (window->preferences), "misc-default-working-dir", &default_dir, NULL);
+
+  if (!g_str_equal (default_dir, ""))
+    directory = default_dir;
+  else if (G_LIKELY (window->active != NULL))
+    directory = terminal_screen_get_working_directory (window->active);
+
+  if (directory != NULL)
+    g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
+
+  g_free (default_dir);
 }
 
 

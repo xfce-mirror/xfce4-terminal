@@ -92,6 +92,7 @@ enum
   PROP_MISC_TAB_POSITION,
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
+  PROP_MISC_DEFAULT_WORKING_DIR,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -821,6 +822,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscMiddleClickOpensUri",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-default-working-dir:
+   **/
+  preferences_props[PROP_MISC_DEFAULT_WORKING_DIR] =
+      g_param_spec_string ("misc-default-working-dir",
+                           NULL,
+                           "MiscDefaultWorkingDir",
+                           "",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:
