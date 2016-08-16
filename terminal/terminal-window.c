@@ -1350,7 +1350,7 @@ terminal_window_action_new_tab (GtkAction      *action,
   terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
   g_object_get (G_OBJECT (window->preferences), "misc-default-working-dir", &default_dir, NULL);
 
-  if (!g_str_equal (default_dir, ""))
+  if (g_strcmp0 (default_dir, "") != 0)
     directory = default_dir;
   else if (G_LIKELY (window->active != NULL))
     directory = terminal_screen_get_working_directory (window->active);
@@ -1375,7 +1375,7 @@ terminal_window_action_new_window (GtkAction      *action,
 
   g_object_get (G_OBJECT (window->preferences), "misc-default-working-dir", &default_dir, NULL);
 
-  if (!g_str_equal (default_dir, ""))
+  if (g_strcmp0 (default_dir, "") != 0)
     directory = default_dir;
   else if (G_LIKELY (window->active != NULL))
     directory = terminal_screen_get_working_directory (window->active);
