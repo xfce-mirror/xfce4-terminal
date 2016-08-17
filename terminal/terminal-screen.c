@@ -1806,6 +1806,7 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   glong          char_width;
   glong          char_height;
 
+
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
   terminal_return_if_fail (GTK_IS_WINDOW (window));
@@ -1839,7 +1840,7 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   else
     gtk_window_set_default_size (window, width, height);
 
-  gtk_widget_grab_focus (screen->terminal);
+  gtk_widget_grab_focus (screen);
 }
 
 
