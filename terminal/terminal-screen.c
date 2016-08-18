@@ -2293,3 +2293,13 @@ terminal_screen_search_find_previous (TerminalScreen *screen)
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_search_find_previous (VTE_TERMINAL (screen->terminal));
 }
+
+
+
+void
+terminal_screen_set_input_enabled (TerminalScreen *screen,
+                                   gboolean        enabled)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_set_input_enabled (VTE_TERMINAL (screen->terminal), enabled);
+}

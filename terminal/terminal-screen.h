@@ -109,6 +109,9 @@ void         terminal_screen_search_find_previous         (TerminalScreen *scree
 
 void         terminal_screen_update_font                  (TerminalScreen *screen);
 
+void         terminal_screen_set_input_enabled            (TerminalScreen *screen,
+                                                           gboolean        enabled);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_SCREEN_H */

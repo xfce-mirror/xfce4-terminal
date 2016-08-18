@@ -172,6 +172,8 @@ static void         terminal_window_action_show_borders           (GtkToggleActi
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_fullscreen             (GtkToggleAction        *action,
                                                                    TerminalWindow         *window);
+static void         terminal_window_action_readonly               (GtkToggleAction        *action,
+                                                                   TerminalWindow         *window);
 static void         terminal_window_action_zoom_in                (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_zoom_out               (GtkAction              *action,
@@ -262,6 +264,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "show-toolbar", NULL, N_ ("Show _Toolbar"), NULL, N_ ("Show/hide the toolbar"), G_CALLBACK (terminal_window_action_show_toolbar), FALSE, },
   { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
   { "fullscreen", "view-fullscreen", N_ ("_Fullscreen"), "F11", N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
+  { "read-only", NULL, N_ ("_Read-Only"), NULL, N_ ("Toggle read-only mode"), G_CALLBACK (terminal_window_action_readonly), FALSE, },
 };
 
 
@@ -1634,6 +1637,18 @@ terminal_window_action_fullscreen (GtkToggleAction *action,
     gtk_window_fullscreen (GTK_WINDOW (window));
   else
     gtk_window_unfullscreen (GTK_WINDOW (window));
+}
+
+
+
+static void
+terminal_window_action_readonly (GtkToggleAction *action,
+                                 TerminalWindow  *window)
+{
+  terminal_return_if_fail (window->active != NULL);
+
+  terminal_screen_set_input_enabled (window->active,
+                                     !gtk_toggle_action_get_active (action));
 }
 
 
