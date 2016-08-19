@@ -756,7 +756,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
           /* build the regex */
           error = NULL;
           regex = g_regex_new (pattern->pattern,
-                               G_REGEX_CASELESS | G_REGEX_OPTIMIZE,
+                               G_REGEX_CASELESS | G_REGEX_OPTIMIZE | G_REGEX_MULTILINE,
                                0, &error);
           if (G_UNLIKELY (error != NULL))
             {
