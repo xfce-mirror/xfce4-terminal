@@ -37,11 +37,6 @@
 #include <terminal/terminal-widget.h>
 #include <terminal/terminal-private.h>
 
-#if VTE_CHECK_VERSION (0, 46, 00)
-#define PCRE2_CODE_UNIT_WIDTH 0
-#include <pcre2.h>
-#endif
-
 
 
 #define MAILTO          "mailto:"
@@ -728,11 +723,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 {
   guint                       i;
   gboolean                    highlight_urls;
-#if VTE_CHECK_VERSION (0, 46, 00)
-  VteRegex                   *regex;
-#else
   GRegex                     *regex;
-#endif
   const TerminalRegexPattern *pattern;
   GError                     *error;
 
@@ -764,7 +755,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 
           /* build the regex */
           error = NULL;
-#if VTE_CHECK_VERSION (0, 46, 00)
+#if VTE_CHECK_VERSION (0, 45, 90)
           regex = vte_regex_new_for_match (pattern->pattern, -1,
                                            PCRE2_CASELESS | PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE,
                                            &error);
@@ -782,21 +773,12 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
             }
 
           /* set the new regular expression */
-#if VTE_CHECK_VERSION (0, 46, 00)
-          widget->regex_tags[i] = vte_terminal_match_add_regex (VTE_TERMINAL (widget),
-                                                                regex, 0);
-#else
           widget->regex_tags[i] = vte_terminal_match_add_gregex (VTE_TERMINAL (widget),
                                                                  regex, 0);
-#endif
           vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
                                               widget->regex_tags[i], GDK_HAND2);
           /* release the regex owned by vte now */
-#if VTE_CHECK_VERSION (0, 46, 00)
-          vte_regex_unref (regex);
-#else
           g_regex_unref (regex);
-#endif
         }
     }
 }

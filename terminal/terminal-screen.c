@@ -44,7 +44,6 @@
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-marshal.h>
-#include <terminal/terminal-private.h>
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
 #include <terminal/terminal-window.h>

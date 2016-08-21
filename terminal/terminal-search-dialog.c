@@ -29,7 +29,6 @@
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-search-dialog.h>
-#include <terminal/terminal-private.h>
 
 
 
@@ -223,7 +222,11 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
                                   GError               **error)
 {
   const gchar        *pattern;
+#if VTE_CHECK_VERSION (0, 45, 90)
+  guint32             flags = 0;
+#else
   GRegexCompileFlags  flags = G_REGEX_OPTIMIZE;
+#endif
   gchar              *pattern_escaped = NULL;
   gchar              *word_regex = NULL;
   GRegex             *regex;
@@ -241,10 +244,18 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
     return NULL;
 
   if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_case)))
+#if VTE_CHECK_VERSION (0, 45, 90)
+    flags += PCRE2_CASELESS;
+#else
     flags |= G_REGEX_CASELESS;
+#endif
 
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_regex)))
+#if VTE_CHECK_VERSION (0, 45, 90)
+    flags += PCRE2_MULTILINE;
+#else
     flags |= G_REGEX_MULTILINE;
+#endif
   else
     {
       pattern_escaped = g_regex_escape_string (pattern, -1);
@@ -257,7 +268,11 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
       pattern = word_regex;
     }
 
+#if VTE_CHECK_VERSION (0, 45, 90)
+  regex = vte_regex_new_for_search (pattern, -1, flags, error);
+#else
   regex = g_regex_new (pattern, flags, 0, error);
+#endif
 
   g_free (pattern_escaped);
   g_free (word_regex);
