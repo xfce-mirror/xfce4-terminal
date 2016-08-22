@@ -56,6 +56,7 @@
 /* Closed tabs stored info */
 typedef struct
 {
+  gchar *custom_title;
   gchar *working_directory;
   gint   position;
 } TerminalWindowTabInfo;
@@ -969,6 +970,8 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   tab_info = g_new (TerminalWindowTabInfo, 1);
   tab_info->position = page_num;
   tab_info->working_directory = g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
+  tab_info->custom_title = IS_STRING (terminal_screen_get_custom_title (TERMINAL_SCREEN (child))) ?
+                           g_strdup (terminal_screen_get_custom_title (TERMINAL_SCREEN (child))) : NULL;
   g_queue_push_tail (window->closed_tabs_list, tab_info);
 
   /* show the tabs when needed */
@@ -1409,6 +1412,8 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
       terminal_window_add (window, TERMINAL_SCREEN (terminal));
       terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
                                              tab_info->working_directory);
+      if (tab_info->custom_title != NULL)
+        terminal_screen_set_custom_title (TERMINAL_SCREEN (terminal), tab_info->custom_title);
       gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook), terminal, tab_info->position);
 
       /* free info */
@@ -2054,6 +2059,7 @@ terminal_window_move_tab (GtkNotebook *notebook,
 static void
 terminal_window_tab_info_free (TerminalWindowTabInfo *tab_info)
 {
+  g_free (tab_info->custom_title);
   g_free (tab_info->working_directory);
   g_free (tab_info);
 }

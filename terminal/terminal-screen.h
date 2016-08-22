@@ -41,6 +41,7 @@ void         terminal_screen_launch_child                 (TerminalScreen *scree
 
 void         terminal_screen_set_custom_command           (TerminalScreen *screen,
                                                            gchar         **command);
+const gchar *terminal_screen_get_custom_title             (TerminalScreen *screen);
 void         terminal_screen_set_custom_title             (TerminalScreen *screen,
                                                            const gchar    *title);
 

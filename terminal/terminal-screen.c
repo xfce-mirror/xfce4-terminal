@@ -1655,6 +1655,20 @@ terminal_screen_set_custom_command (TerminalScreen *screen,
 
 
 /**
+ * terminal_screen_get_custom_title:
+ * @screen  : A #TerminalScreen.
+ **/
+const gchar *
+terminal_screen_get_custom_title (TerminalScreen *screen)
+{
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
+
+  return screen->custom_title;
+}
+
+
+
+/**
  * terminal_screen_set_custom_title:
  * @screen  : A #TerminalScreen.
  * @title   : Title string.
