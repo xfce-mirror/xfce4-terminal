@@ -2013,10 +2013,10 @@ terminal_window_action_save_contents (GtkAction      *action,
     }
 
   if (error)
-  {
-    xfce_dialog_show_error (GTK_WINDOW (window), error, _("Failed to save terminal contents"));
-    g_error_free (error);
-  }
+    {
+      xfce_dialog_show_error (GTK_WINDOW (window), error, _("Failed to save terminal contents"));
+      g_error_free (error);
+    }
 
   g_object_unref (file);
   g_free (filename_uri);
