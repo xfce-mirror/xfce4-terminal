@@ -199,6 +199,8 @@ static void         terminal_window_action_search_next            (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_search_prev            (GtkAction              *action,
                                                                    TerminalWindow         *window);
+static void         terminal_window_action_save_contents          (GtkAction              *action,
+                                                                   TerminalWindow         *window);
 static void         terminal_window_action_reset                  (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_reset_and_clear        (GtkAction              *action,
@@ -247,6 +249,7 @@ static const GtkActionEntry action_entries[] =
     { "search", "edit-find", N_ ("_Find..."), "<control><shift>f", N_ ("Search terminal contents"), G_CALLBACK (terminal_window_action_search), },
     { "search-next", NULL, N_ ("Find Ne_xt"), NULL, NULL, G_CALLBACK (terminal_window_action_search_next), },
     { "search-prev", NULL, N_ ("Find Pre_vious"), NULL, NULL, G_CALLBACK (terminal_window_action_search_prev), },
+    { "save-contents", "document-save-as", N_ ("Sa_ve Contents..."), NULL, NULL, G_CALLBACK (terminal_window_action_save_contents), },
     { "reset", NULL, N_ ("_Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset), },
     { "reset-and-clear", NULL, N_ ("_Clear Scrollback and Reset"), NULL, NULL, G_CALLBACK (terminal_window_action_reset_and_clear), },
   { "tabs-menu", NULL, N_ ("T_abs"), NULL, NULL, NULL, },
@@ -1953,6 +1956,70 @@ terminal_window_action_search_prev (GtkAction      *action,
 {
   if (G_LIKELY (window->active != NULL))
     terminal_screen_search_find_previous (window->active);
+}
+
+
+
+static void
+terminal_window_action_save_contents (GtkAction      *action,
+                                      TerminalWindow *window)
+{
+  GtkWidget     *dialog;
+  GFile         *file;
+  GOutputStream *stream;
+  GError        *error = NULL;
+  gchar         *filename_uri;
+  gint           response;
+
+  terminal_return_if_fail (window->active != NULL);
+
+  dialog = gtk_file_chooser_dialog_new (_("Save contents..."),
+                                        GTK_WINDOW (window),
+                                        GTK_FILE_CHOOSER_ACTION_SAVE,
+                                        _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                        _("_Save"), GTK_RESPONSE_ACCEPT,
+                                        NULL);
+  gtk_file_chooser_set_do_overwrite_confirmation (GTK_FILE_CHOOSER (dialog), TRUE);
+
+  /* save to current working directory */
+  gtk_file_chooser_set_current_folder (GTK_FILE_CHOOSER (dialog),
+                                       terminal_screen_get_working_directory (TERMINAL_SCREEN (window->active)));
+
+  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+  gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+  gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+
+  gtk_widget_show_all (dialog);
+
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
+  if (response != GTK_RESPONSE_ACCEPT)
+    {
+      gtk_widget_destroy (dialog);
+      return;
+    }
+
+  filename_uri = gtk_file_chooser_get_uri (GTK_FILE_CHOOSER (dialog));
+  gtk_widget_destroy (dialog);
+
+  if (filename_uri == NULL)
+    return;
+
+  file = g_file_new_for_uri (filename_uri);
+  stream = G_OUTPUT_STREAM (g_file_replace (file, NULL, FALSE, G_FILE_CREATE_NONE, NULL, &error));
+  if (stream)
+    {
+      terminal_screen_save_contents (TERMINAL_SCREEN (window->active), stream, error);
+      g_object_unref (stream);
+    }
+
+  if (error)
+  {
+    xfce_dialog_show_error (GTK_WINDOW (window), error, _("Failed to save terminal contents"));
+    g_error_free (error);
+  }
+
+  g_object_unref (file);
+  g_free (filename_uri);
 }
 
 

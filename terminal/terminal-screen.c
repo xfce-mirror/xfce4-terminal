@@ -2316,3 +2316,15 @@ terminal_screen_set_input_enabled (TerminalScreen *screen,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_set_input_enabled (VTE_TERMINAL (screen->terminal), enabled);
 }
+
+
+
+void
+terminal_screen_save_contents (TerminalScreen *screen,
+                               GOutputStream  *stream,
+                               GError         *error)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_write_contents_sync (VTE_TERMINAL (screen->terminal),
+                                    stream, VTE_WRITE_DEFAULT, NULL, &error);
+}
