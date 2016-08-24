@@ -1,5 +1,6 @@
 /*
  * Copyright © 2015 Egmont Koblinger
+ * Copyright (c) 2016 Igor Zakharov
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -140,6 +141,6 @@
 #define REGEX_URL_HTTP   DEFS "(?<!(?:" HOSTNAMESEGMENTCHARS_CLASS "|[.]))(?=(?i:www|ftp))" HOSTNAME1 PORT URLPATH
 #define REGEX_URL_VOIP   DEFS "(?i:h323:|sips?:)" USERPASS URL_HOST PORT VOIP_PATH
 #define REGEX_EMAIL      DEFS "(?i:mailto:)?" USER "@" EMAIL_HOST
-#define REGEX_NEWS_MAN   "(?i:news:|man:|info:)[-[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
+#define REGEX_NEWS_MAN   "(?i:news:|man:|info:|magnet:)[-[:alnum:]\\Q^_{|}~!\"#$%&'()*+,./;:=?`\\E]+"
 
 #endif /* !TERMINAL_REGEX_H */
