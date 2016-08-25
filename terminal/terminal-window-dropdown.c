@@ -764,10 +764,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
 
   /* show window */
   if (!visible)
-    {
-      gtk_widget_show_all (GTK_WIDGET (dropdown));
-      gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
-    }
+    gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
 
   /* move */
   gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
