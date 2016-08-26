@@ -729,7 +729,8 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
   if (toplevel != NULL && gtk_widget_get_realized (toplevel))
     {
 #ifdef GDK_WINDOWING_X11
-      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) gdk_x11_window_get_xid (gtk_widget_get_window (toplevel)));
+      if (GDK_IS_X11_WINDOW (gtk_widget_get_window (toplevel)))
+        result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) gdk_x11_window_get_xid (gtk_widget_get_window (toplevel)));
 #endif
 
       /* determine the DISPLAY value for the command */
