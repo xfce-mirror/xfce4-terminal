@@ -666,6 +666,8 @@ terminal_app_open_window (TerminalApp        *app,
   TerminalScreen  *active_terminal;
   gint             mask = NoValue, x, y;
   guint            width, height;
+  gint             screen_width, screen_height;
+  gint             window_width, window_height;
 #endif
 
   terminal_return_if_fail (TERMINAL_IS_APP (app));
@@ -815,7 +817,17 @@ terminal_app_open_window (TerminalApp        *app,
                                                      width, height);
             }
           if ((mask & XValue) && (mask & YValue))
-            gtk_window_move (GTK_WINDOW (window), x, y);
+            {
+              screen = gtk_window_get_screen (GTK_WINDOW (window));
+              screen_width = gdk_screen_get_width (screen);
+              screen_height = gdk_screen_get_height (screen);
+              gtk_window_get_default_size (GTK_WINDOW (window), &window_width, &window_height);
+              if (mask & XNegative)
+                x = screen_width - window_width + x;
+              if (mask & YNegative)
+                y = screen_height - window_height + y;
+              gtk_window_move (GTK_WINDOW (window), x, y);
+            }
         }
       else
 #else
