@@ -232,7 +232,9 @@ main (int argc, char **argv)
     }
 
   /* append default display if given */
-  display = g_getenv ("DISPLAY");
+  display = g_getenv ("WAYLAND_DISPLAY");
+  if (display == NULL)
+    display = g_getenv ("DISPLAY");
   if (G_LIKELY (display != NULL))
     nargv[nargc++] = g_strdup_printf ("--default-display=%s", display);
 
