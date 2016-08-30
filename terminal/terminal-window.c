@@ -1823,6 +1823,9 @@ terminal_window_action_set_title (GtkAction      *action,
                                                           NULL,
                                                           NULL);
 
+      /* set window height to minimum to fix huge size under wayland */
+      gtk_window_set_default_size (GTK_WINDOW (window->title_dialog), -1, 1);
+
       button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
       gtk_widget_set_can_default (button, TRUE);
       gtk_dialog_add_action_widget (GTK_DIALOG (window->title_dialog), button, GTK_RESPONSE_CLOSE);
