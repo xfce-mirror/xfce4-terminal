@@ -24,8 +24,9 @@ xfce4_terminal_headers = \
 	terminal-options.h \
 	terminal-preferences.h \
 	terminal-preferences-dialog.h \
-	terminal-search-dialog.h \
 	terminal-private.h \
+	terminal-regex.h \
+	terminal-search-dialog.h \
 	terminal-screen.h \
 	terminal-util.h \
 	terminal-widget.h \
