@@ -1,3 +1,49 @@
+0.6.91
+======
+- Fix solarized light theme colors (bug #12800)
+- Fix huge size of Set Title dialog under wayland
+- Support wayland (resolve crashes and warnings) (bug #12785)
+- Improve handling negative x/y geometry positions (bug #12791)
+- Fix scrollbar/menubar/toolbar incorrectly shown in dropdown mode after
+  window has been minimized/restored (bug #12790)
+- Add ability to save terminal contents to file (bug #6276)
+- Prepare for upcoming vte regex API change
+- Fix Vte-WARNING related to regex
+- Implement Read-Only mode (user input disabled)
+- Fix input focus lost issue after exiting a console app (e.g. nano)
+- Fix cursor not blinking when fg color = bg color (bug #11981)
+- Enable configuration of a new tab working directory: MiscDefaultWorkingDir
+  option. If it is set (non-empty value), new tabs and windows will use the dir
+  specified as their working dir. Otherwise, the behavior remains as is
+  (current dir will be used). (bug #3891)
+- Do not un-close tab that was moved to another window
+- Properly enable/disable F1 shortcut
+- Fix Preferences window hidden in fullscreen mode
+- Do not un-close tab that was detached to create another window
+- Fix incorrect update of go-to-tab menu
+- Add Undo Close Tab functionality: stores closed tabs in chronological order;
+  restores working directory, position in the tabbar, custom title
+- Add Close Other Tabs functionality
+- Make terminal always drop down from the top of the screen (bug #10713)
+- Create Alt+digit shortcuts if they haven't been loaded from config file
+  (bug #10639)
+- Fix dropdown window animation; remove viewport widget
+- Code cleanup: Do not declare or define a reserved identifier
+- Add urgent bell functionality: MiscBellUrgent option (bug #9928)
+- When detaching a tab, make new window respect original geometry
+- Fix possible buffer overwrite issue found by Coverity
+- Keep rows number constant when adding/removing widgets such as toolbar or
+  tabbar (bug #12734)
+- Make tab close button icon a bit smaller
+- Add ability to switch tabs with mouse scroll wheel (request from
+  www.opennet.ru)
+- Fix selection characters override (bug #12735)
+- Fix resize logic with tab (bug #12660)
+- Translation updates: Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Dutch, English (Australia), German, Hebrew, Japanese, Korean,
+  Portuguese (Brazil), Russian, Serbian, Spanish, Swedish, Turkish, Ukrainian
+
+
 0.6.90
 ======
 - Migrate to GTK+3/VTE3 (bugs #11207, #11909, #10602, #11828, #12405, #11119,
