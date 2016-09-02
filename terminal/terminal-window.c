@@ -1656,10 +1656,16 @@ static void
 terminal_window_action_readonly (GtkToggleAction *action,
                                  TerminalWindow  *window)
 {
+  gboolean input_enabled;
+
   terminal_return_if_fail (window->active != NULL);
 
-  terminal_screen_set_input_enabled (window->active,
-                                     !gtk_toggle_action_get_active (action));
+  input_enabled = !gtk_toggle_action_get_active (action);
+  gtk_action_set_sensitive (gtk_action_group_get_action (window->action_group, "reset"),
+                            input_enabled);
+  gtk_action_set_sensitive (gtk_action_group_get_action (window->action_group, "reset-and-clear"),
+                            input_enabled);
+  terminal_screen_set_input_enabled (window->active, input_enabled);
 }
 
 
