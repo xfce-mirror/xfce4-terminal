@@ -1680,6 +1680,9 @@ terminal_window_action_zoom_in (GtkAction     *action,
     {
       ++window->zoom;
       terminal_window_zoom_update_screens (window);
+      if (window->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
+        gtk_action_set_sensitive (gtk_action_group_get_action (window->action_group, "zoom-in"),
+                                  FALSE);
     }
 }
 
@@ -1695,6 +1698,9 @@ terminal_window_action_zoom_out (GtkAction      *action,
     {
       --window->zoom;
       terminal_window_zoom_update_screens (window);
+      if (window->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
+        gtk_action_set_sensitive (gtk_action_group_get_action (window->action_group, "zoom-out"),
+                                  FALSE);
     }
 }
 
