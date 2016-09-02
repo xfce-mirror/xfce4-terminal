@@ -1680,8 +1680,6 @@ terminal_window_action_zoom_in (GtkAction     *action,
     {
       ++window->zoom;
       terminal_window_zoom_update_screens (window);
-      if (window->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
-        gtk_action_set_sensitive (action, FALSE);
     }
 }
 
@@ -1697,8 +1695,6 @@ terminal_window_action_zoom_out (GtkAction      *action,
     {
       --window->zoom;
       terminal_window_zoom_update_screens (window);
-      if (window->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
-        gtk_action_set_sensitive (action, FALSE);
     }
 }
 
@@ -2088,6 +2084,7 @@ terminal_window_zoom_update_screens (TerminalWindow *window)
 {
   gint            npages, n;
   TerminalScreen *screen;
+  GtkAction      *action;
 
   terminal_return_if_fail (GTK_IS_NOTEBOOK (window->notebook));
 
@@ -2098,6 +2095,19 @@ terminal_window_zoom_update_screens (TerminalWindow *window)
       screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n));
       terminal_screen_update_font (screen);
     }
+
+  /* update zoom actions */
+  action = gtk_action_group_get_action (window->action_group, "zoom-in");
+  if (window->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
+    gtk_action_set_sensitive (action, FALSE);
+  else if (!gtk_action_is_sensitive (action))
+    gtk_action_set_sensitive (action, TRUE);
+
+  action = gtk_action_group_get_action (window->action_group, "zoom-out");
+  if (window->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
+      gtk_action_set_sensitive (action, FALSE);
+    else if (!gtk_action_is_sensitive (action))
+      gtk_action_set_sensitive (action, TRUE);
 }
 
 
