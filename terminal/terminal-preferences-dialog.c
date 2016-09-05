@@ -137,7 +137,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gchar            *current;
   GtkTreeIter       current_iter;
   const gchar      *props_active[] = { "title-mode", "command-login-shell",
-                                       "command-update-records", "scrolling-single-line",
+                                       "scrolling-single-line",
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "scrolling-unlimited",
                                        "misc-cursor-shape", "misc-cursor-blinks",

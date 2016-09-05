@@ -1570,13 +1570,13 @@ terminal_screen_urgent_bell (TerminalWidget *widget,
 void
 terminal_screen_launch_child (TerminalScreen *screen)
 {
-  gboolean      update;
   GError       *error = NULL;
   gchar        *command;
   gchar       **argv;
   gchar       **env;
   gchar       **argv2;
   guint         i;
+  VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
   GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1595,9 +1595,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
     }
   else
     {
-      g_object_get (G_OBJECT (screen->preferences),
-                    "command-update-records", &update,
-                    NULL);
       env = terminal_screen_get_child_environment (screen);
 
       argv2 = g_new0 (gchar *, g_strv_length (argv) + 2);
@@ -1612,7 +1609,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
         }
 
       if (!vte_terminal_spawn_sync (VTE_TERMINAL (screen->terminal),
-                                           update ? VTE_PTY_DEFAULT : VTE_PTY_NO_LASTLOG | VTE_PTY_NO_UTMP | VTE_PTY_NO_WTMP,
+                                           pty_flags,
                                            screen->working_directory, argv2, env,
                                            spawn_flags,
                                            NULL, NULL,

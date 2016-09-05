@@ -58,7 +58,6 @@ enum
   PROP_COLOR_BOLD,
   PROP_COLOR_BOLD_USE_DEFAULT,
   PROP_COLOR_PALETTE,
-  PROP_COMMAND_UPDATE_RECORDS,
   PROP_COMMAND_LOGIN_SHELL,
   PROP_DROPDOWN_ANIMATION_TIME,
   PROP_DROPDOWN_KEEP_OPEN_DEFAULT,
@@ -477,16 +476,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          "TabActivityTimeout",
                          0, 30, 2,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:command-update-records:
-   **/
-  preferences_props[PROP_COMMAND_UPDATE_RECORDS] =
-      g_param_spec_boolean ("command-update-records",
-                            NULL,
-                            "CommandUpdateRecords",
-                            TRUE,
-                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:command-login-shell:
