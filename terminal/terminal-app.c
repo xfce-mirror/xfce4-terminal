@@ -813,8 +813,14 @@ terminal_app_open_window (TerminalApp        *app,
             {
               active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
               if (G_LIKELY (active_terminal != NULL))
-                terminal_screen_force_resize_window (active_terminal, GTK_WINDOW (window),
-                                                     width, height);
+                {
+                  /* save window geometry to prevent overriding */
+                  TERMINAL_WINDOW (window)->grid_height = height;
+                  TERMINAL_WINDOW (window)->grid_width = width;
+
+                  terminal_screen_force_resize_window (active_terminal, GTK_WINDOW (window),
+                                                       width, height);
+                }
             }
           if ((mask & XValue) && (mask & YValue))
             {
