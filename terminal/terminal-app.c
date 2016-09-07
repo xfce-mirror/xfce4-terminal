@@ -58,7 +58,7 @@ static void     terminal_app_update_accels            (TerminalApp        *app);
 static void     terminal_app_update_mnemonics         (TerminalApp        *app);
 static gboolean terminal_app_accel_map_load           (gpointer            user_data);
 static gboolean terminal_app_accel_map_save           (gpointer            user_data);
-static void     terminal_app_unset_urgent_bell        (TerminalWindow     *window,
+static gboolean terminal_app_unset_urgent_bell        (TerminalWindow     *window,
                                                        GdkEvent           *event,
                                                        TerminalApp        *app);
 static void     terminal_app_new_window               (TerminalWindow     *window,
@@ -303,7 +303,7 @@ terminal_app_accel_map_load (gpointer user_data)
 
 
 
-static void
+static gboolean
 terminal_app_unset_urgent_bell (TerminalWindow *window,
                                 GdkEvent       *event,
                                 TerminalApp    *app)
@@ -315,11 +315,13 @@ terminal_app_unset_urgent_bell (TerminalWindow *window,
                 "misc-bell-urgent", &enabled,
                 NULL);
 
-  if (!enabled)
-    return;
+  if (enabled)
+    {
+      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (window));
+      gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), FALSE);
+    }
 
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (window));
-  gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), FALSE);
+  return FALSE;
 }
 
 
