@@ -522,6 +522,7 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
                               "/bin/dash", "/usr/bin/dash",
                               "/bin/zsh",  "/usr/bin/zsh",
                               "/bin/tcsh", "/usr/bin/tcsh",
+                              "/bin/csh",  "/usr/bin/csh",
                               "/bin/ksh",  "/usr/bin/ksh" };
 
   if (screen->custom_command != NULL)
