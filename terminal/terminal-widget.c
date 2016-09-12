@@ -448,7 +448,6 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
   gchar        **uris;
   gchar         *filename;
   gchar         *text;
-  gint           argc;
   gint           n;
   GtkWidget     *screen;
 
@@ -532,18 +531,9 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
                   /* release the file:-URI */
                   g_free (uris[n]);
 
-                  /* check if we need to quote the file name (for the shell) */
-                  if (!g_shell_parse_argv (filename, &argc, NULL, NULL) || argc != 1)
-                    {
-                      /* we need to quote the filename */
-                      uris[n] = g_shell_quote (filename);
-                      g_free (filename);
-                    }
-                  else
-                    {
-                      /* no need to quote, shell will handle properly */
-                      uris[n] = filename;
-                    }
+                  /* quote the file name (for the shell) */
+                  uris[n] = g_shell_quote (filename);
+                  g_free (filename);
                 }
             }
 
