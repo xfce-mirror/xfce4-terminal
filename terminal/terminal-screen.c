@@ -1284,7 +1284,6 @@ static gboolean
 terminal_screen_reset_activity_timeout (gpointer user_data)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
-  GdkRGBA         color;
   GdkRGBA         active_color;
   GdkRGBA         fg_color;
 
@@ -1292,18 +1291,19 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
     return FALSE;
 
   /* unset */
-  gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, NULL);
+  gtk_widget_override_color (screen->tab_label, gtk_widget_get_state_flags (screen->tab_label), NULL);
 
   if (terminal_preferences_get_color (screen->preferences, "tab-activity-color", &active_color))
     {
       /* calculate color between fg and active color */
       gtk_style_context_get_color (gtk_widget_get_style_context (screen->tab_label),
-                                   GTK_STATE_FLAG_ACTIVE, &fg_color);
-      color.red = (active_color.red + fg_color.red) / 2;
-      color.green = (active_color.green + fg_color.green) / 2;
-      color.blue = (active_color.blue + fg_color.blue) / 2;
+                                   gtk_widget_get_state_flags (screen->tab_label),
+                                   &fg_color);
+      active_color.red = (active_color.red + fg_color.red) / 2;
+      active_color.green = (active_color.green + fg_color.green) / 2;
+      active_color.blue = (active_color.blue + fg_color.blue) / 2;
 
-      gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, &color);
+      gtk_widget_override_color (screen->tab_label, gtk_widget_get_state_flags (screen->tab_label), &active_color);
     }
 
   return FALSE;
@@ -1332,7 +1332,7 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
-      || gtk_widget_get_state_flags (screen->tab_label) != GTK_STATE_FLAG_ACTIVE
+      || (gtk_widget_get_state_flags (screen->terminal) & GTK_STATE_FLAG_FOCUSED) != 0
       || time (NULL) - screen->activity_resize_time <= 1)
     return;
 
@@ -1343,8 +1343,9 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* set label color */
   has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
-  gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, has_color ? &color : NULL);
-
+  gtk_widget_override_color (screen->tab_label,
+                             gtk_widget_get_state_flags (screen->tab_label),
+                             has_color ? &color : NULL);
 
   /* stop running reset timeout */
   if (screen->activity_timeout_id != 0)
@@ -2174,7 +2175,7 @@ terminal_screen_reset_activity (TerminalScreen *screen)
     g_source_remove (screen->activity_timeout_id);
 
   if (screen->tab_label != NULL)
-    gtk_widget_override_color (screen->tab_label, GTK_STATE_FLAG_ACTIVE, NULL);
+    gtk_widget_override_color (screen->tab_label, gtk_widget_get_state_flags (screen->tab_label), NULL);
 }
 
 
