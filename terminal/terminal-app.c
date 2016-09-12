@@ -664,8 +664,9 @@ terminal_app_open_window (TerminalApp        *app,
   gboolean         reuse_window = FALSE;
   GdkDisplay      *attr_display;
   gint             attr_screen_num;
-#if GTK_CHECK_VERSION (3,20,0)
+#if GTK_CHECK_VERSION (3,20,0) && defined (GDK_WINDOWING_X11)
   TerminalScreen  *active_terminal;
+  GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
   gint             mask = NoValue, x, y;
   guint            width, height;
   gint             screen_width, screen_height;
@@ -831,9 +832,16 @@ terminal_app_open_window (TerminalApp        *app,
               screen_height = gdk_screen_get_height (screen);
               gtk_window_get_default_size (GTK_WINDOW (window), &window_width, &window_height);
               if (mask & XNegative)
-                x = screen_width - window_width + x;
+                {
+                  x = screen_width - window_width + x;
+                  gravity = GDK_GRAVITY_NORTH_EAST;
+                }
               if (mask & YNegative)
-                y = screen_height - window_height + y;
+                {
+                  y = screen_height - window_height + y;
+                  gravity = (mask & XNegative) ? GDK_GRAVITY_SOUTH_EAST : GDK_GRAVITY_SOUTH_WEST;
+                }
+              gtk_window_set_gravity (GTK_WINDOW (window), gravity);
               gtk_window_move (GTK_WINDOW (window), x, y);
             }
         }
