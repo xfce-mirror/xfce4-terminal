@@ -820,13 +820,15 @@ static void
 terminal_preferences_dialog_background_mode (GtkWidget                 *combobox,
                                              TerminalPreferencesDialog *dialog)
 {
-  GObject *object;
-  gint     active;
+  GObject  *object;
+  gint      active;
+  gboolean  composited;
 
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
   terminal_return_if_fail (GTK_IS_COMBO_BOX (combobox));
 
   active = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
+  composited = gdk_screen_is_composited (gtk_widget_get_screen (combobox));
 
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-file");
   terminal_return_if_fail (G_IS_OBJECT (object));
@@ -835,6 +837,11 @@ terminal_preferences_dialog_background_mode (GtkWidget                 *combobox
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-opacity");
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_set (G_OBJECT (object), "visible", active > 0, NULL);
+  g_object_set (G_OBJECT (object), "sensitive", active > 0 && composited, NULL);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "label-opacity-not-available");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_set (G_OBJECT (object), "visible", active > 0 && !composited, NULL);
 }
 
 
@@ -939,6 +946,7 @@ terminal_preferences_dialog_new (gboolean show_drop_down)
   GObject    *dialog;
   GObject    *object;
   GObject    *notebook;
+  gboolean    composited;
 
   builder = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
 
@@ -953,6 +961,18 @@ terminal_preferences_dialog_new (gboolean show_drop_down)
       terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), NULL);
       gtk_notebook_set_current_page (GTK_NOTEBOOK (notebook),
           gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (object)));
+
+      /* show warning and disable control if WM does not support compositing */
+      composited = gdk_screen_is_composited (gtk_widget_get_screen (GTK_WIDGET (object)));
+      if (!composited)
+        {
+          object = gtk_builder_get_object (builder, "dropdown-opacity-not-available");
+          terminal_return_if_fail (G_IS_OBJECT (object));
+          gtk_widget_set_visible (GTK_WIDGET (object), TRUE);
+          object = gtk_builder_get_object (builder, "scale-opacity");
+          terminal_return_if_fail (G_IS_OBJECT (object));
+          gtk_widget_set_sensitive (GTK_WIDGET (object), FALSE);
+        }
     }
 
   dialog = gtk_builder_get_object (builder, "dialog");
