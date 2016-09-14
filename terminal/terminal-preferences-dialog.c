@@ -828,7 +828,7 @@ terminal_preferences_dialog_background_mode (GtkWidget                 *combobox
   terminal_return_if_fail (GTK_IS_COMBO_BOX (combobox));
 
   active = gtk_combo_box_get_active (GTK_COMBO_BOX (combobox));
-  composited = gdk_screen_is_composited (gtk_widget_get_screen (combobox));
+  composited = gtk_widget_is_composited (combobox);
 
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-file");
   terminal_return_if_fail (G_IS_OBJECT (object));
@@ -963,7 +963,7 @@ terminal_preferences_dialog_new (gboolean show_drop_down)
           gtk_notebook_page_num (GTK_NOTEBOOK (notebook), GTK_WIDGET (object)));
 
       /* show warning and disable control if WM does not support compositing */
-      composited = gdk_screen_is_composited (gtk_widget_get_screen (GTK_WIDGET (object)));
+      composited = gtk_widget_is_composited (GTK_WIDGET (object));
       if (!composited)
         {
           object = gtk_builder_get_object (builder, "dropdown-opacity-not-available");
