@@ -174,7 +174,6 @@ struct _TerminalScreen
   guint                hold : 1;
 
   guint                background_timer_id;
-  guint                launch_idle_id;
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
