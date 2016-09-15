@@ -342,6 +342,9 @@ terminal_window_init (TerminalWindow *window)
   if (visual != NULL)
     gtk_widget_set_visual (GTK_WIDGET (window), visual);
 
+  /* required for vte transparency support: see https://bugzilla.gnome.org/show_bug.cgi?id=729884 */
+  gtk_widget_set_app_paintable (window, TRUE);
+
   window->action_group = gtk_action_group_new ("terminal-window");
   gtk_action_group_set_translation_domain (window->action_group,
                                            GETTEXT_PACKAGE);
@@ -1575,6 +1578,10 @@ static void
 terminal_window_action_show_menubar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
+  GtkStyleContext *context;
+  GtkStateFlags    state;
+  GdkRGBA          bg;
+
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->ui_manager));
 
   terminal_window_size_push (window);
@@ -1586,6 +1593,12 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
           window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
           gtk_box_pack_start (GTK_BOX (window->vbox), window->menubar, FALSE, FALSE, 0);
           gtk_box_reorder_child (GTK_BOX (window->vbox), window->menubar, 0);
+
+          /* make menubar opaque */
+          context = gtk_widget_get_style_context (GTK_WIDGET (window));
+          state = gtk_widget_get_state_flags (GTK_WIDGET (window));
+          gtk_style_context_get_background_color (context, state, &bg);
+          gtk_widget_override_background_color (window->menubar, state, &bg);
         }
 
       gtk_widget_show (window->menubar);
