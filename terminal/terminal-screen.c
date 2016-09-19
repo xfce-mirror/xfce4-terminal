@@ -1241,12 +1241,6 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
                                    TerminalScreen *screen)
 {
   GtkWidget *toplevel;
-  gint       xpad;
-  gint       ypad;
-  glong      grid_width;
-  glong      grid_height;
-  glong      char_width;
-  glong      char_height;
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1258,23 +1252,10 @@ terminal_screen_vte_resize_window (VteTerminal    *terminal,
           & (GDK_WINDOW_STATE_MAXIMIZED | GDK_WINDOW_STATE_FULLSCREEN)) != 0)
     return;
 
-  terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
-
-  grid_width = (width - xpad) / char_width;
-  grid_height = (height - ypad) / char_height;
-
-  /* leave if there is nothing to resize */
-    if (vte_terminal_get_column_count (terminal) == grid_width
-        && vte_terminal_get_row_count (terminal) == grid_height)
-    return;
-
   /* set the terminal size and resize the window if it is active */
-  vte_terminal_set_size (terminal, grid_width, grid_height);
+  vte_terminal_set_size (terminal, width, height);
   if (screen == terminal_window_get_active (TERMINAL_WINDOW (toplevel)))
-    {
-      terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel),
-                                           grid_width, grid_height);
-    }
+    terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), width, height);
 }
 
 
