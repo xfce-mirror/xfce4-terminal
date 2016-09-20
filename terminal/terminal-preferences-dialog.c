@@ -842,6 +842,10 @@ terminal_preferences_dialog_background_mode (GtkWidget                 *combobox
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "label-opacity-not-available");
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_set (G_OBJECT (object), "visible", active > 0 && !composited, NULL);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "opacity-label");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_set (G_OBJECT (object), "label", active == 1 ? "_Image\ndarkening:" : "_Opacity:", NULL);
 }
 
 
