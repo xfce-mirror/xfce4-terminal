@@ -29,8 +29,6 @@
 
 static void terminal_image_loader_finalize         (GObject             *object);
 static void terminal_image_loader_check            (TerminalImageLoader *loader);
-static void terminal_image_loader_pixbuf_destroyed (gpointer             data,
-                                                    GObject             *pixbuf);
 static void terminal_image_loader_tile             (TerminalImageLoader *loader,
                                                     GdkPixbuf           *target,
                                                     gint                 width,
@@ -101,8 +99,8 @@ terminal_image_loader_finalize (GObject *object)
 {
   TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
 
-  terminal_assert (loader->cache == NULL);
-  terminal_assert (loader->cache_invalid == NULL);
+  g_slist_free_full (loader->cache, g_object_unref);
+  g_slist_free_full (loader->cache_invalid, g_object_unref);
 
   g_object_unref (G_OBJECT (loader->preferences));
 
@@ -174,38 +172,6 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   g_free (selected_color_spec);
   g_free (selected_path);
-}
-
-
-
-static void
-terminal_image_loader_pixbuf_destroyed (gpointer data,
-                                        GObject *pixbuf)
-{
-  TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (data);
-  GSList              *lp;
-
-  for (lp = loader->cache; lp != NULL; lp = lp->next)
-    if (lp->data == pixbuf)
-      {
-        loader->cache = g_slist_delete_link (loader->cache, lp);
-        g_object_unref (G_OBJECT (loader));
-        return;
-      }
-
-  for (lp = loader->cache_invalid; lp != NULL; lp = lp->next)
-    if (lp->data == pixbuf)
-      {
-        loader->cache_invalid = g_slist_delete_link (loader->cache_invalid, lp);
-        g_object_unref (G_OBJECT (loader));
-        return;
-      }
-
-#ifdef G_ENABLE_DEBUG
-  g_warning ("Pixbuf %p was freed from loader cache %p, "
-             "this should not happend", pixbuf, loader);
-  terminal_assert_not_reached ();
-#endif
 }
 
 
@@ -537,11 +503,8 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   terminal_image_loader_saturate (loader, pixbuf);
 
   loader->cache = g_slist_prepend (loader->cache, pixbuf);
-  g_object_weak_ref (G_OBJECT (pixbuf), terminal_image_loader_pixbuf_destroyed,
-                     g_object_ref (G_OBJECT (loader)));
 
-  return pixbuf;
+  return g_object_ref (G_OBJECT (pixbuf));
 }
-
 
 

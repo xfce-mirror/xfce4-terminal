@@ -92,6 +92,9 @@ static void       terminal_screen_set_property                  (GObject        
                                                                  GParamSpec            *pspec);
 static void       terminal_screen_realize                       (GtkWidget             *widget);
 static void       terminal_screen_unrealize                     (GtkWidget             *widget);
+static gboolean   terminal_screen_draw                          (GtkWidget             *widget,
+                                                                 cairo_t               *cr,
+                                                                 gpointer               user_data);
 static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
                                                                  GParamSpec            *pspec,
                                                                  TerminalScreen        *screen);
@@ -103,7 +106,6 @@ static gchar     *terminal_screen_parse_title                   (TerminalScreen 
                                                                  const gchar           *title);
 static gchar    **terminal_screen_get_child_environment         (TerminalScreen        *screen);
 static void       terminal_screen_update_background             (TerminalScreen        *screen);
-static void       terminal_screen_update_background_fast        (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
 static void       terminal_screen_update_encoding               (TerminalScreen        *screen);
@@ -135,8 +137,6 @@ static void       terminal_screen_vte_resize_window             (VteTerminal    
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_window_contents_changed   (TerminalScreen        *screen);
 static void       terminal_screen_vte_window_contents_resized   (TerminalScreen        *screen);
-static gboolean   terminal_screen_timer_background              (gpointer               user_data);
-static void       terminal_screen_timer_background_destroy      (gpointer               user_data);
 static void       terminal_screen_update_label_orientation      (TerminalScreen        *screen);
 static gchar     *terminal_screen_zoom_font                     (TerminalScreen        *screen,
                                                                  gchar                 *font_name,
@@ -155,6 +155,7 @@ struct _TerminalScreen
 {
   GtkHBox              parent_instance;
   TerminalPreferences *preferences;
+  TerminalImageLoader *loader;
   GtkWidget           *terminal;
   GtkWidget           *scrollbar;
   GtkWidget           *tab_label;
@@ -163,8 +164,6 @@ struct _TerminalScreen
 
   guint                session_id;
 
-  gulong               background_signal_id;
-
   GPid                 pid;
   gchar               *working_directory;
 
@@ -172,8 +171,6 @@ struct _TerminalScreen
   gchar               *custom_title;
 
   guint                hold : 1;
-
-  guint                background_timer_id;
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
@@ -255,6 +252,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
 static void
 terminal_screen_init (TerminalScreen *screen)
 {
+  screen->loader = NULL;
   screen->working_directory = g_get_current_dir ();
   screen->session_id = ++screen_last_session_id;
 
@@ -271,6 +269,8 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_window_title_changed), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "resize-window",
       G_CALLBACK (terminal_screen_vte_resize_window), screen);
+  g_signal_connect (G_OBJECT (screen->terminal), "draw",
+      G_CALLBACK (terminal_screen_draw), screen);
   gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
 
   screen->scrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL,
@@ -297,7 +297,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_scrolling_on_output (screen);
   terminal_screen_update_scrolling_on_keystroke (screen);
   terminal_screen_update_word_chars (screen);
-  terminal_screen_timer_background (screen);
+  terminal_screen_update_background (screen);
   terminal_screen_update_colors (screen);
 
   /* last, connect contents-changed to avoid a race with updates above */
@@ -320,13 +320,13 @@ terminal_screen_finalize (GObject *object)
   if (screen->activity_timeout_id != 0)
     g_source_remove (screen->activity_timeout_id);
 
-  if (screen->background_timer_id != 0)
-    g_source_remove (screen->background_timer_id);
-
   /* detach from preferences */
   g_signal_handlers_disconnect_by_func (screen->preferences,
       G_CALLBACK (terminal_screen_preferences_changed), screen);
   g_object_unref (G_OBJECT (screen->preferences));
+
+  if (screen->loader != NULL)
+    g_object_unref (G_OBJECT (screen->loader));
 
   g_strfreev (screen->custom_command);
   g_free (screen->working_directory);
@@ -450,6 +450,63 @@ terminal_screen_unrealize (GtkWidget *widget)
   g_signal_handlers_disconnect_by_func (G_OBJECT (screen), terminal_screen_update_background, widget);
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->unrealize) (widget);
+}
+
+
+
+static gboolean
+terminal_screen_draw (GtkWidget *widget,
+                      cairo_t   *cr,
+                      gpointer   user_data)
+{
+  TerminalScreen      *screen = TERMINAL_SCREEN (user_data);
+  TerminalBackground   background_mode;
+  GdkPixbuf           *image;
+  gint                 width, height;
+  cairo_surface_t     *surface;
+  cairo_t             *ctx;
+
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
+
+  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
+
+  if (G_LIKELY (background_mode != TERMINAL_BACKGROUND_IMAGE))
+    return FALSE;
+
+  width = gtk_widget_get_allocated_width (screen->terminal);
+  height = gtk_widget_get_allocated_height (screen->terminal);
+
+  if (screen->loader == NULL)
+    screen->loader = terminal_image_loader_get ();
+  image = terminal_image_loader_load (screen->loader, width, height);
+
+  if (G_UNLIKELY (image == NULL))
+    return FALSE;
+
+  g_signal_handlers_disconnect_by_func (G_OBJECT (screen->terminal),
+      G_CALLBACK (terminal_screen_draw), screen);
+
+  cairo_save (cr);
+
+  gdk_cairo_set_source_pixbuf (cr, image, 0, 0);
+  cairo_paint (cr);
+  g_object_unref (G_OBJECT (image));
+
+  surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
+  ctx = cairo_create (surface);
+  gtk_widget_draw (screen->terminal, ctx);
+  cairo_set_source_surface (cr, surface, 0, 0);
+  cairo_paint (cr);
+  cairo_destroy (ctx);
+  cairo_surface_destroy (surface);
+
+  cairo_restore (cr);
+
+  g_signal_connect (G_OBJECT (screen->terminal), "draw",
+      G_CALLBACK (terminal_screen_draw), screen);
+
+  return TRUE;
 }
 
 
@@ -747,27 +804,28 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
 
 static void
-terminal_screen_update_background_fast (TerminalScreen *screen)
-{
-  if (G_UNLIKELY (screen->background_timer_id == 0))
-    {
-      screen->background_timer_id =
-          gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_screen_timer_background,
-                                     screen, terminal_screen_timer_background_destroy);
-    }
-}
-
-
-
-static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
-  if (G_UNLIKELY (screen->background_timer_id != 0))
-    g_source_remove (screen->background_timer_id);
+  TerminalBackground background_mode;
+  gdouble            background_darkness;
 
-  screen->background_timer_id =
-      gdk_threads_add_timeout_full (G_PRIORITY_LOW, 250, terminal_screen_timer_background,
-                                    screen, terminal_screen_timer_background_destroy);
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
+
+  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
+
+  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE ||
+      background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
+    {
+      g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
+    }
+  else
+    background_darkness = 1.0;
+
+  screen->background_color.alpha = background_darkness;
+  vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
+
+  gtk_widget_queue_draw (GTK_WIDGET (screen));
 }
 
 
@@ -1345,76 +1403,6 @@ terminal_screen_vte_window_contents_resized (TerminalScreen *screen)
 {
   /* avoid a content changed when the window is resized */
   screen->activity_resize_time = time (NULL);
-}
-
-
-
-static gboolean
-terminal_screen_timer_background (gpointer user_data)
-{
-  TerminalScreen      *screen = TERMINAL_SCREEN (user_data);
-  TerminalImageLoader *loader;
-  TerminalBackground   background_mode;
-  GdkPixbuf           *image;
-  gdouble              background_darkness;
-
-  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-  terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
-
-  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
-
-  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
-    {
-      loader = terminal_image_loader_get ();
-      image = terminal_image_loader_load (loader,
-                                          gtk_widget_get_allocated_width (screen->terminal),
-                                          gtk_widget_get_allocated_height (screen->terminal));
-      //vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), image);
-      if (G_LIKELY (image != NULL))
-        g_object_unref (G_OBJECT (image));
-      g_object_unref (G_OBJECT (loader));
-
-      /* refresh background on size changes */
-      if (screen->background_signal_id == 0)
-        {
-          screen->background_signal_id =
-             g_signal_connect_swapped (G_OBJECT (screen->terminal), "size-allocate",
-                                       G_CALLBACK (terminal_screen_update_background_fast), screen);
-        }
-    }
-  else
-    {
-      /* stop updating on size changes */
-      if (screen->background_signal_id != 0)
-        {
-          g_signal_handler_disconnect (G_OBJECT (screen->terminal), screen->background_signal_id);
-          screen->background_signal_id = 0;
-        }
-
-      /* WARNING: the causes a resize too! */
-      //vte_terminal_set_background_image (VTE_TERMINAL (screen->terminal), NULL);
-    }
-
-  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE
-      || background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
-    {
-      g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
-    }
-  else
-    background_darkness = 1.0;
-
-  screen->background_color.alpha = background_darkness;
-  vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
-
-  return FALSE;
-}
-
-
-
-static void
-terminal_screen_timer_background_destroy (gpointer user_data)
-{
-  TERMINAL_SCREEN (user_data)->background_timer_id = 0;
 }
 
 
