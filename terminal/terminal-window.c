@@ -215,8 +215,6 @@ static void         terminal_window_switch_tab                    (GtkNotebook  
 static void         terminal_window_move_tab                      (GtkNotebook            *notebook,
                                                                    gboolean                move_left);
 static void         terminal_window_tab_info_free                 (TerminalWindowTabInfo  *tab_info);
-static void         terminal_window_make_child_opaque             (GtkWidget              *child,
-                                                                   GtkWidget              *window);
 
 
 
@@ -327,10 +325,13 @@ terminal_window_class_init (TerminalWindowClass *klass)
 static void
 terminal_window_init (TerminalWindow *window)
 {
-  GtkAccelGroup  *accel_group;
-  gboolean        always_show_tabs;
-  GdkScreen      *screen;
-  GdkVisual      *visual;
+  GtkAccelGroup   *accel_group;
+  gboolean         always_show_tabs;
+  GdkScreen       *screen;
+  GdkVisual       *visual;
+  GtkStyleContext *context;
+  GtkStateFlags    state;
+  GdkRGBA          bg;
 
   window->preferences = terminal_preferences_get ();
 
@@ -371,6 +372,12 @@ terminal_window_init (TerminalWindow *window)
   window->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (window), window->vbox);
 
+  /* avoid transparent widgets, such as menubar or tabbar */
+  context = gtk_widget_get_style_context (GTK_WIDGET (window));
+  state = gtk_widget_get_state_flags (GTK_WIDGET (window));
+  gtk_style_context_get_background_color (context, state, &bg);
+  gtk_widget_override_background_color (window->vbox, state, &bg);
+
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
@@ -379,7 +386,6 @@ terminal_window_init (TerminalWindow *window)
                                    "show-tabs", always_show_tabs,
                                    NULL);
   gtk_widget_add_events (window->notebook, GDK_SCROLL_MASK);
-  terminal_window_make_child_opaque (window->notebook, GTK_WIDGET (window));
 
   /* set the notebook group id */
   gtk_notebook_set_group_name (GTK_NOTEBOOK (window->notebook), window_notebook_group);
@@ -1592,7 +1598,6 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
           window->menubar = gtk_ui_manager_get_widget (window->ui_manager, "/main-menu");
           gtk_box_pack_start (GTK_BOX (window->vbox), window->menubar, FALSE, FALSE, 0);
           gtk_box_reorder_child (GTK_BOX (window->vbox), window->menubar, 0);
-          terminal_window_make_child_opaque (window->menubar, GTK_WIDGET (window));
         }
 
       gtk_widget_show (window->menubar);
@@ -2162,20 +2167,6 @@ terminal_window_tab_info_free (TerminalWindowTabInfo *tab_info)
   g_free (tab_info->custom_title);
   g_free (tab_info->working_directory);
   g_free (tab_info);
-}
-
-
-
-static void
-terminal_window_make_child_opaque (GtkWidget *child,
-                                   GtkWidget *window)
-{
-  GtkStyleContext *context;
-  GdkRGBA          bg;
-
-  context = gtk_widget_get_style_context (window);
-  gtk_style_context_get_background_color (context, GTK_STATE_FLAG_ACTIVE, &bg);
-  gtk_widget_override_background_color (child, GTK_STATE_FLAG_ACTIVE, &bg);
 }
 
 
