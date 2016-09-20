@@ -2171,13 +2171,11 @@ terminal_window_make_child_opaque (GtkWidget *child,
                                    GtkWidget *window)
 {
   GtkStyleContext *context;
-  GtkStateFlags    state;
   GdkRGBA          bg;
 
   context = gtk_widget_get_style_context (window);
-  state = gtk_widget_get_state_flags (window);
-  gtk_style_context_get_background_color (context, state, &bg);
-  gtk_widget_override_background_color (child, state, &bg);
+  gtk_style_context_get_background_color (context, GTK_STATE_FLAG_ACTIVE, &bg);
+  gtk_widget_override_background_color (child, GTK_STATE_FLAG_ACTIVE, &bg);
 }
 
 
