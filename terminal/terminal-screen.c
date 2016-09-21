@@ -781,20 +781,19 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
 
   result[n++] = g_strdup_printf ("COLORTERM=%s", PACKAGE_NAME);
 
+#ifdef GDK_WINDOWING_X11
   /* determine the toplevel widget */
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  if (toplevel != NULL && gtk_widget_get_realized (toplevel))
+  if (toplevel != NULL && gtk_widget_get_realized (toplevel) && GDK_IS_X11_WINDOW (gtk_widget_get_window (toplevel)))
     {
-#ifdef GDK_WINDOWING_X11
-      if (GDK_IS_X11_WINDOW (gtk_widget_get_window (toplevel)))
-        result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) gdk_x11_window_get_xid (gtk_widget_get_window (toplevel)));
-#endif
+      result[n++] = g_strdup_printf ("WINDOWID=%ld", (glong) gdk_x11_window_get_xid (gtk_widget_get_window (toplevel)));
 
       /* determine the DISPLAY value for the command */
       display_name = gdk_screen_make_display_name (gtk_widget_get_screen (toplevel));
       result[n++] = g_strdup_printf ("DISPLAY=%s", display_name);
       g_free (display_name);
     }
+#endif
 
   result[n] = NULL;
 
