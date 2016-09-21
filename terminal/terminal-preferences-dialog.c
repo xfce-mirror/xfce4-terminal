@@ -132,6 +132,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gchar             palette_name[16];
   GtkFileFilter    *filter;
   gchar            *file;
+  guint             res;
   GBinding         *binding;
   GtkTreeModel     *model;
   gchar            *current;
@@ -180,7 +181,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
     }
 
   /* load the builder data into the object */
-  if (gtk_builder_add_from_file (GTK_BUILDER (dialog), file, &error) == 0)
+  res = gtk_builder_add_from_file (GTK_BUILDER (dialog), file, &error);
+  g_free (file);
+
+  if (res == 0)
     {
 error:
       g_critical ("Failed to load ui file: %s.", error->message);
