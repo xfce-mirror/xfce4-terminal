@@ -78,6 +78,8 @@ static gboolean     terminal_window_state_event                   (GtkWidget    
                                                                    GdkEventWindowState    *event);
 static void         terminal_window_style_set                     (GtkWidget              *widget,
                                                                    GtkStyle               *previous_style);
+static gboolean     terminal_window_scroll_event                  (GtkWidget              *widget,
+                                                                   GdkEventScroll         *event);
 static gboolean     terminal_window_confirm_close                 (TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
 static gboolean     terminal_window_size_pop                      (gpointer                data);
@@ -290,6 +292,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gtkwidget_class->window_state_event = terminal_window_state_event;
   gtkwidget_class->delete_event = terminal_window_delete_event;
   gtkwidget_class->style_set = terminal_window_style_set;
+  gtkwidget_class->scroll_event = terminal_window_scroll_event;
 
   /**
    * TerminalWindow::new-window
@@ -527,6 +530,29 @@ terminal_window_style_set (GtkWidget *widget,
   /* delay the pop until after size allocate */
   if (previous_style != NULL)
     g_idle_add (terminal_window_size_pop, window);
+}
+
+
+
+static gboolean
+terminal_window_scroll_event (GtkWidget      *widget,
+                              GdkEventScroll *event)
+{
+    TerminalWindow *window = TERMINAL_WINDOW (widget);
+
+    if (event->state == GDK_CONTROL_MASK && event->direction == GDK_SCROLL_UP)
+      {
+        terminal_window_action_zoom_in (NULL, window);
+        return TRUE;
+      }
+
+    if (event->state == GDK_CONTROL_MASK && event->direction == GDK_SCROLL_DOWN)
+      {
+        terminal_window_action_zoom_out (NULL, window);
+        return TRUE;
+      }
+
+    return FALSE;
 }
 
 
