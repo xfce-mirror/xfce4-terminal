@@ -45,8 +45,6 @@ static void terminal_image_loader_stretch          (TerminalImageLoader *loader,
                                                     GdkPixbuf           *target,
                                                     gint                 width,
                                                     gint                 height);
-static void terminal_image_loader_saturate         (TerminalImageLoader *loader,
-                                                    GdkPixbuf           *pixbuf);
 
 
 struct _TerminalImageLoaderClass
@@ -63,7 +61,6 @@ struct _TerminalImageLoader
   gchar                   *path;
   GSList                  *cache;
   GSList                  *cache_invalid;
-  gdouble                  darkness;
   GdkRGBA                  bgcolor;
   GdkPixbuf               *pixbuf;
   TerminalBackgroundStyle  style;
@@ -119,14 +116,12 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   TerminalBackgroundStyle selected_style;
   GdkRGBA                 selected_color;
   gboolean                invalidate = FALSE;
-  gdouble                 selected_darkness;
   gchar                  *selected_color_spec;
   gchar                  *selected_path;
 
   terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
   g_object_get (G_OBJECT (loader->preferences),
-                "background-darkness", &selected_darkness,
                 "background-image-file", &selected_path,
                 "background-image-style", &selected_style,
                 "color-background", &selected_color_spec,
@@ -147,12 +142,6 @@ terminal_image_loader_check (TerminalImageLoader *loader)
   if (selected_style != loader->style)
     {
       loader->style = selected_style;
-      invalidate = TRUE;
-    }
-
-  if (selected_darkness != loader->darkness)
-    {
-      loader->darkness = selected_darkness;
       invalidate = TRUE;
     }
 
@@ -322,78 +311,6 @@ terminal_image_loader_stretch (TerminalImageLoader *loader,
 
 
 
-static void
-terminal_image_loader_saturate (TerminalImageLoader *loader,
-                                GdkPixbuf           *pixbuf)
-{
-  guchar   *pixels;
-  guchar    red[256];
-  guchar    green[256];
-  guchar    blue[256];
-  gint      channels;
-  gint      stride;
-  gint      width;
-  gint      height;
-  gint      i;
-  gint      x;
-  gint      y;
-
-  if (loader->darkness == 0)
-    return;
-
-  if (loader->darkness == 1)
-    {
-      for (i = 0; i < 256; ++i)
-        {
-          red[i] = (guint)(loader->bgcolor.red * 65535) >> 8;
-          green[i] = (guint)(loader->bgcolor.green * 65535) >> 8;
-          blue[i] = (guint)(loader->bgcolor.blue * 65535) >> 8;
-        }
-    }
-  else
-    {
-      for (i = 0; i < 256; ++i)
-        {
-          red[i] = CLAMP ((loader->darkness * ((guint)(loader->bgcolor.red * 65535) >> 8))
-                        + ((1.0 - loader->darkness) * i), 0, 255);
-          green[i] = CLAMP ((loader->darkness * ((guint)(loader->bgcolor.green * 65535) >> 8))
-                        + ((1.0 - loader->darkness) * i), 0, 255);
-          blue[i] = CLAMP ((loader->darkness * ((guint)(loader->bgcolor.blue * 65535) >> 8))
-                        + ((1.0 - loader->darkness) * i), 0, 255);
-        }
-    }
-
-  stride = gdk_pixbuf_get_rowstride (pixbuf);
-  width = gdk_pixbuf_get_width (pixbuf);
-  height = gdk_pixbuf_get_height (pixbuf);
-  channels = gdk_pixbuf_get_n_channels (pixbuf);
-
-  for (y = 0; y < height; ++y)
-    {
-      pixels = gdk_pixbuf_get_pixels (pixbuf) + y * stride;
-
-      for (x = 0; x < width * channels; ++x)
-        {
-          switch (x % channels)
-            {
-            case 0:
-              pixels[x] = red[pixels[x]];
-              break;
-            case 1:
-              pixels[x] = green[pixels[x]];
-              break;
-            case 2:
-              pixels[x] = blue[pixels[x]];
-              break;
-            default:
-              break;
-            }
-        }
-    }
-}
-
-
-
 /**
  * terminal_image_loader_get:
  *
@@ -499,8 +416,6 @@ terminal_image_loader_load (TerminalImageLoader *loader,
     default:
       terminal_assert_not_reached ();
     }
-
-  terminal_image_loader_saturate (loader, pixbuf);
 
   loader->cache = g_slist_prepend (loader->cache, pixbuf);
 
