@@ -96,7 +96,6 @@ enum
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
   PROP_SCROLLING_ON_KEYSTROKE,
-  PROP_SCROLLING_SINGLE_LINE,
   PROP_SCROLLING_UNLIMITED,
   PROP_SHORTCUTS_NO_HELPKEY,
   PROP_SHORTCUTS_NO_MENUKEY,
@@ -870,18 +869,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("scrolling-on-keystroke",
                             NULL,
                             "ScrollingOnKeystroke",
-                            TRUE,
-                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:scrolling-single-line:
-   *
-   * Whether to enable scrolling single lines using Shift-Up/-Down.
-   **/
-  preferences_props[PROP_SCROLLING_SINGLE_LINE] =
-      g_param_spec_boolean ("scrolling-single-line",
-                            NULL,
-                            "ScrollingSingleLine",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
