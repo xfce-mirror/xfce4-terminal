@@ -1369,6 +1369,7 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* leave if we should not start an update */
   if (screen->tab_label == NULL
+      || !gtk_window_is_active (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))))
       || (gtk_widget_get_state_flags (screen->terminal) & GTK_STATE_FLAG_FOCUSED) != 0
       || time (NULL) - screen->activity_resize_time <= 1)
     return;
