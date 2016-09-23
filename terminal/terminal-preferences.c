@@ -83,6 +83,7 @@ enum
   PROP_MISC_INHERIT_GEOMETRY,
   PROP_MISC_MENUBAR_DEFAULT,
   PROP_MISC_MOUSE_AUTOHIDE,
+  PROP_MISC_MOUSE_WHEEL_ZOOM,
   PROP_MISC_TOOLBAR_DEFAULT,
   PROP_MISC_CONFIRM_CLOSE,
   PROP_MISC_CYCLE_TABS,
@@ -728,6 +729,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             NULL,
                             "MiscMouseAutohide",
                             FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-mouse-wheel-zoom:
+   **/
+  preferences_props[PROP_MISC_MOUSE_WHEEL_ZOOM] =
+      g_param_spec_boolean ("misc-mouse-wheel-zoom",
+                            NULL,
+                            "MiscMouseWheelZoom",
+                            TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
