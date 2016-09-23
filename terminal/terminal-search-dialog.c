@@ -223,7 +223,7 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
 {
   const gchar        *pattern;
 #if VTE_CHECK_VERSION (0, 45, 90)
-  guint32             flags = 0;
+  guint32             flags = PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE;
 #else
   GRegexCompileFlags  flags = G_REGEX_OPTIMIZE;
 #endif
@@ -245,17 +245,18 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
 
   if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_case)))
 #if VTE_CHECK_VERSION (0, 45, 90)
-    flags += PCRE2_CASELESS;
+    flags |= PCRE2_CASELESS;
 #else
     flags |= G_REGEX_CASELESS;
 #endif
 
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_regex)))
-#if VTE_CHECK_VERSION (0, 45, 90)
-    flags += PCRE2_MULTILINE;
-#else
-    flags |= G_REGEX_MULTILINE;
+    {
+/* MULTILINE flag is always used for pcre2 */
+#if !VTE_CHECK_VERSION (0, 45, 90)
+      flags |= G_REGEX_MULTILINE;
 #endif
+    }
   else
     {
       pattern_escaped = g_regex_escape_string (pattern, -1);
