@@ -806,22 +806,21 @@ static void
 terminal_screen_update_background (TerminalScreen *screen)
 {
   TerminalBackground background_mode;
-  gdouble            background_darkness;
+  gdouble            background_alpha;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
-  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE ||
-      background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
-    {
-      g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_darkness, NULL);
-    }
+  if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_TRANSPARENT))
+    g_object_get (G_OBJECT (screen->preferences), "background-darkness", &background_alpha, NULL);
+  else if (G_UNLIKELY (background_mode == TERMINAL_BACKGROUND_IMAGE))
+    g_object_get (G_OBJECT (screen->preferences), "background-image-shading", &background_alpha, NULL);
   else
-    background_darkness = 1.0;
+    background_alpha = 1.0;
 
-  screen->background_color.alpha = background_darkness;
+  screen->background_color.alpha = background_alpha;
   vte_terminal_set_color_background (VTE_TERMINAL (screen->terminal), &screen->background_color);
 
   gtk_widget_queue_draw (GTK_WIDGET (screen));

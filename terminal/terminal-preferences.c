@@ -47,6 +47,7 @@ enum
   PROP_BACKGROUND_IMAGE_FILE,
   PROP_BACKGROUND_IMAGE_STYLE,
   PROP_BACKGROUND_DARKNESS,
+  PROP_BACKGROUND_IMAGE_SHADING,
   PROP_BINDING_BACKSPACE,
   PROP_BINDING_DELETE,
   PROP_COLOR_FOREGROUND,
@@ -327,6 +328,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_double ("background-darkness",
                            NULL,
                            "BackgroundDarkness",
+                           0.0, 1.0, 0.5,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:background-image-shading:
+   **/
+  preferences_props[PROP_BACKGROUND_IMAGE_SHADING] =
+      g_param_spec_double ("background-image-shading",
+                           NULL,
+                           "BackgroundImageShading",
                            0.0, 1.0, 0.5,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

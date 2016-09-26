@@ -235,6 +235,7 @@ error:
   BIND_PROPERTIES ("scrolling-lines", "value");
   BIND_PROPERTIES ("tab-activity-timeout", "value");
   BIND_PROPERTIES ("background-darkness", "value");
+  BIND_PROPERTIES ("background-image-shading", "value");
 
   /* unlimited scrollback button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-unlimited");
@@ -837,18 +838,19 @@ terminal_preferences_dialog_background_mode (GtkWidget                 *combobox
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_set (G_OBJECT (object), "visible", active == 1, NULL);
 
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-shading");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_set (G_OBJECT (object), "visible", active == 1, NULL);
+
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-opacity");
   terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_set (G_OBJECT (object), "visible", active > 0, NULL);
-  g_object_set (G_OBJECT (object), "sensitive", active > 0 && composited, NULL);
+  g_object_set (G_OBJECT (object), "visible", active > 1, NULL);
+  g_object_set (G_OBJECT (object), "sensitive", active > 1 && composited, NULL);
 
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "label-opacity-not-available");
   terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_set (G_OBJECT (object), "visible", active > 0 && !composited, NULL);
+  g_object_set (G_OBJECT (object), "visible", active > 1 && !composited, NULL);
 
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "opacity-label");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_set (G_OBJECT (object), "label", active == 1 ? "_Image\ndarkening:" : "_Opacity:", NULL);
 }
 
 
