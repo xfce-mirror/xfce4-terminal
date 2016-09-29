@@ -114,6 +114,7 @@ static void       terminal_screen_update_misc_bell              (TerminalScreen 
 static void       terminal_screen_update_misc_cursor_blinks     (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_cursor_shape      (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_mouse_autohide    (TerminalScreen        *screen);
+static void       terminal_screen_update_misc_rewrap_on_resize  (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_lines        (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_on_output    (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen        *screen);
@@ -291,6 +292,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_misc_cursor_blinks (screen);
   terminal_screen_update_misc_cursor_shape (screen);
   terminal_screen_update_misc_mouse_autohide (screen);
+  terminal_screen_update_misc_rewrap_on_resize (screen);
   terminal_screen_update_scrolling_bar (screen);
   terminal_screen_update_scrolling_lines (screen);
   terminal_screen_update_scrolling_on_output (screen);
@@ -543,6 +545,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_misc_cursor_shape (screen);
   else if (strcmp ("misc-mouse-autohide", name) == 0)
     terminal_screen_update_misc_mouse_autohide (screen);
+  else if (strcmp ("misc-rewrap-on-resize", name) == 0)
+    terminal_screen_update_misc_rewrap_on_resize (screen);
   else if (strcmp ("scrolling-bar", name) == 0)
     terminal_screen_update_scrolling_bar (screen);
   else if (strcmp ("scrolling-lines", name) == 0 || strcmp ("scrolling-unlimited", name) == 0)
@@ -1073,6 +1077,16 @@ terminal_screen_update_misc_mouse_autohide (TerminalScreen *screen)
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-mouse-autohide", &bval, NULL);
   vte_terminal_set_mouse_autohide (VTE_TERMINAL (screen->terminal), bval);
+}
+
+
+
+static void
+terminal_screen_update_misc_rewrap_on_resize (TerminalScreen *screen)
+{
+  gboolean bval;
+  g_object_get (G_OBJECT (screen->preferences), "misc-rewrap-on-resize", &bval, NULL);
+  vte_terminal_set_rewrap_on_resize (VTE_TERMINAL (screen->terminal), bval);
 }
 
 

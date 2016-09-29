@@ -94,6 +94,7 @@ enum
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
   PROP_MISC_DEFAULT_WORKING_DIR,
+  PROP_MISC_REWRAP_ON_RESIZE,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -842,6 +843,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "MiscDefaultWorkingDir",
                            "",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-rewrap-on-resize:
+   **/
+  preferences_props[PROP_MISC_REWRAP_ON_RESIZE] =
+      g_param_spec_boolean ("misc-rewrap-on-resize",
+                            NULL,
+                            "MiscRewrapOnResize",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:
