@@ -62,7 +62,6 @@ typedef struct
 typedef struct
 {
   GSList              *tabs;
-  guint                drop_down : 1;
   gchar               *display;
   gchar               *geometry;
   gchar               *role;
@@ -70,13 +69,14 @@ typedef struct
   gchar               *sm_client_id;
   gchar               *icon;
   gchar               *font;
+  guint                drop_down : 1;
   guint                fullscreen : 1;
+  guint                maximize : 1;
+  guint                reuse_last_window : 1;
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
   TerminalVisibility   toolbar;
   TerminalZoomLevel    zoom;
-  guint                maximize : 1;
-  guint                reuse_last_window : 1;
 } TerminalWindowAttr;
 
 void                terminal_options_parse     (gint                 argc,
