@@ -109,6 +109,8 @@ void         terminal_screen_search_find_next             (TerminalScreen *scree
 
 void         terminal_screen_search_find_previous         (TerminalScreen *screen);
 
+void         terminal_screen_update_scrolling_bar         (TerminalScreen *screen);
+
 void         terminal_screen_update_font                  (TerminalScreen *screen);
 
 void         terminal_screen_set_input_enabled            (TerminalScreen *screen,

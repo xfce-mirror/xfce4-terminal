@@ -76,6 +76,7 @@ typedef struct
   TerminalVisibility   menubar;
   TerminalVisibility   borders;
   TerminalVisibility   toolbar;
+  TerminalVisibility   scrollbar;
   TerminalZoomLevel    zoom;
 } TerminalWindowAttr;
 

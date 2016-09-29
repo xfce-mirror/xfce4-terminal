@@ -2292,6 +2292,10 @@ terminal_window_add (TerminalWindow *window,
   gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);
   gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);
 
+  /* update scrollbar visibility */
+  if (window->scrollbar_visibility != TERMINAL_VISIBILITY_DEFAULT)
+    terminal_screen_update_scrolling_bar (screen);
+
   /* update screen font from window */
   if (window->font || window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
     terminal_screen_update_font (screen);

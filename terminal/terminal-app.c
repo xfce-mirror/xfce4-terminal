@@ -760,6 +760,8 @@ terminal_app_open_window (TerminalApp        *app,
         }
     }
 
+  TERMINAL_WINDOW (window)->scrollbar_visibility = attr->scrollbar;
+
   /* font and zoom for new window */
   if (!reuse_window)
     {

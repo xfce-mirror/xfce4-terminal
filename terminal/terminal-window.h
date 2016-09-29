@@ -90,6 +90,8 @@ typedef struct
   GtkAction           *action_fullscreen;
 
   GQueue              *closed_tabs_list;
+
+  TerminalVisibility   scrollbar_visibility;
 } TerminalWindow;
 
 GType           terminal_window_get_type            (void) G_GNUC_CONST;

@@ -425,6 +425,10 @@ terminal_window_attr_parse (gint              argc,
         {
           win_attr->toolbar = visible;
         }
+      else if (terminal_option_show_hide_cmp ("scrollbar", argc, argv, &n, &visible))
+        {
+          win_attr->scrollbar = visible;
+        }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
           if (can_reuse_tab)
@@ -552,6 +556,7 @@ terminal_window_attr_new (void)
   win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->toolbar = TERMINAL_VISIBILITY_DEFAULT;
+  win_attr->scrollbar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
 
   tab_attr = g_slice_new0 (TerminalTabAttr);
