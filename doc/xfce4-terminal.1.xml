@@ -144,6 +144,8 @@
               <xref linkend="options-window-hide-borders"/>;
               <xref linkend="options-window-show-toolbar"/>,
               <xref linkend="options-window-hide-toolbar"/>
+              <xref linkend="options-window-show-scrollbar"/>,
+              <xref linkend="options-window-hide-scrollbar"/>
             </para>
           </listitem>
         </varlistentry>
@@ -449,6 +451,31 @@
           <listitem>
             <para>
               Turn off the toolbar for the last-specified window. Applies to only one window. Can
+              be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-show-scrollbar">
+            <option>--show-scrollbar</option>
+          </term>
+          <listitem>
+            <para>
+              Turn on the scrollbar for the last-specified window. Scrollbar position is taken from
+              the settings; if position is None, the default position is Right side. Applies to only
+              one window. Can be specified once for each window you create from the command line.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-window-hide-scrollbar">
+            <option>--hide-scrollbar</option>
+          </term>
+          <listitem>
+            <para>
+              Turn off the scrollbar for the last-specified window. Applies to only one window. Can
               be specified once for each window you create from the command line.
             </para>
           </listitem>
