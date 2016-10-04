@@ -103,7 +103,7 @@ terminal_util_activate_window (GtkWindow *window)
   terminal_return_if_fail (GTK_IS_WINDOW (window));
   terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
 
-  if (!GDK_IS_X11_WINDOW (window))
+  if (!GDK_IS_X11_WINDOW (gtk_widget_get_window (GTK_WIDGET (window))))
     return;
 
   /* leave if the window is already active */
@@ -117,7 +117,8 @@ terminal_util_activate_window (GtkWindow *window)
   event.window = GDK_WINDOW_XID (gtk_widget_get_window (GTK_WIDGET (window)));
   event.message_type = gdk_x11_get_xatom_by_name ("_NET_ACTIVE_WINDOW");
   event.format = 32;
-  event.data.l[0] = 0;
+  event.data.l[0] = 1; /* app */
+  event.data.l[1] = event.data.l[2] = event.data.l[3] = event.data.l[4] = 0;
 
   gdk_error_trap_push ();
 
