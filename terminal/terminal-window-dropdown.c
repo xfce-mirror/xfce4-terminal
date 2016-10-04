@@ -293,6 +293,8 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
                               G_OBJECT (dropdown), name,
                               G_BINDING_SYNC_CREATE);
     }
+
+  gtk_widget_show_all (hbox);
 }
 
 
