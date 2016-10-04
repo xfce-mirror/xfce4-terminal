@@ -815,6 +815,7 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
       /* if the focus was lost for 0.1 second and toggle-focus is used, we had
        * focus until the shortcut was pressed, and then we hide the window */
       if (!toggle_focus
+          || dropdown->focus_out_time == 0
           || (g_get_real_time () - dropdown->focus_out_time) < G_USEC_PER_SEC / 10)
         {
           /* hide */
