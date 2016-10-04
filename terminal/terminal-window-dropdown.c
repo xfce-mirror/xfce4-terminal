@@ -692,6 +692,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gint               x_dest, y_dest;
   GtkRequisition     req1;
   gboolean           move_to_active;
+  gboolean           keep_above;
   gboolean           visible;
   gint               vbox_h;
   TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
@@ -785,6 +786,11 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
     }
   else
     {
+      g_object_get (G_OBJECT (window->preferences),
+                    "dropdown-keep-above", &keep_above,
+                    NULL);
+      gtk_window_set_keep_above (GTK_WINDOW (dropdown), keep_above);
+
       /* make sure all the content fits */
       gtk_window_resize (GTK_WINDOW (dropdown), w, h);
     }
