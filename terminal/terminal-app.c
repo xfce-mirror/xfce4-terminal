@@ -618,8 +618,10 @@ terminal_app_find_screen (GdkDisplay *display,
 
   if (display != NULL)
     {
+#if !GTK_CHECK_VERSION (3, 20, 0)
       if (screen_num >= 0)
         screen = gdk_display_get_screen (display, screen_num);
+#endif
 
       if (screen == NULL)
         screen = gdk_display_get_default_screen (display);
