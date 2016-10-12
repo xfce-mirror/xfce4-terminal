@@ -333,8 +333,6 @@ terminal_window_init (TerminalWindow *window)
   GdkScreen       *screen;
   GdkVisual       *visual;
   GtkStyleContext *context;
-  GtkStateFlags    state;
-  GdkRGBA          bg;
 
   window->preferences = terminal_preferences_get ();
 
@@ -376,10 +374,8 @@ terminal_window_init (TerminalWindow *window)
   gtk_container_add (GTK_CONTAINER (window), window->vbox);
 
   /* avoid transparent widgets, such as menubar or tabbar */
-  context = gtk_widget_get_style_context (GTK_WIDGET (window));
-  state = gtk_widget_get_state_flags (GTK_WIDGET (window));
-  gtk_style_context_get_background_color (context, state, &bg);
-  gtk_widget_override_background_color (window->vbox, state, &bg);
+  context = gtk_widget_get_style_context (window->vbox);
+  gtk_style_context_add_class (context, GTK_STYLE_CLASS_BACKGROUND);
 
   /* allocate the notebook for the terminal screens */
   g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
