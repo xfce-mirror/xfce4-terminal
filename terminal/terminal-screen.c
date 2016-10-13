@@ -1247,12 +1247,14 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
   GdkRGBA         active_color;
   GdkRGBA         fg_color;
+  PangoAttrList  *attrs;
+  PangoAttribute *foreground;
 
   if (G_UNLIKELY (screen->tab_label == NULL))
     return FALSE;
 
   /* unset */
-  gtk_widget_override_color (screen->tab_label, gtk_widget_get_state_flags (screen->tab_label), NULL);
+  gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
 
   if (terminal_preferences_get_color (screen->preferences, "tab-activity-color", &active_color))
     {
@@ -1264,7 +1266,13 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
       active_color.green = (active_color.green + fg_color.green) / 2;
       active_color.blue = (active_color.blue + fg_color.blue) / 2;
 
-      gtk_widget_override_color (screen->tab_label, gtk_widget_get_state_flags (screen->tab_label), &active_color);
+      attrs = pango_attr_list_new ();
+      foreground = pango_attr_foreground_new ((guint16)(active_color.red*65535),
+                                              (guint16)(active_color.green*65535),
+                                              (guint16)(active_color.blue*65535));
+      pango_attr_list_insert (attrs, foreground);
+      gtk_label_set_attributes (GTK_LABEL (screen->tab_label), attrs);
+      pango_attr_list_unref (attrs);
     }
 
   return FALSE;
@@ -1283,9 +1291,11 @@ terminal_screen_reset_activity_destroyed (gpointer user_data)
 static void
 terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 {
-  guint    timeout;
-  GdkRGBA  color;
-  gboolean has_color;
+  guint           timeout;
+  GdkRGBA         color;
+  gboolean        has_color;
+  PangoAttrList  *attrs;
+  PangoAttribute *foreground;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (GTK_IS_LABEL (screen->tab_label));
@@ -1305,9 +1315,18 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 
   /* set label color */
   has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
-  gtk_widget_override_color (screen->tab_label,
-                             gtk_widget_get_state_flags (screen->tab_label),
-                             has_color ? &color : NULL);
+  if (G_LIKELY (has_color))
+    {
+      attrs = pango_attr_list_new ();
+      foreground = pango_attr_foreground_new ((guint16)(color.red*65535),
+                                              (guint16)(color.green*65535),
+                                              (guint16)(color.blue*65535));
+      pango_attr_list_insert (attrs, foreground);
+      gtk_label_set_attributes (GTK_LABEL (screen->tab_label), attrs);
+      pango_attr_list_unref (attrs);
+    }
+  else
+      gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
 
   /* stop running reset timeout */
   if (screen->activity_timeout_id != 0)
@@ -2067,7 +2086,7 @@ terminal_screen_reset_activity (TerminalScreen *screen)
     g_source_remove (screen->activity_timeout_id);
 
   if (screen->tab_label != NULL)
-    gtk_widget_override_color (screen->tab_label, gtk_widget_get_state_flags (screen->tab_label), NULL);
+    gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
 }
 
 
