@@ -262,6 +262,7 @@ static const GtkActionEntry action_entries[] =
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
     { "contents", "help-browser", N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
     { "about", "help-about", N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
+  { "zoom-menu", NULL, N_ ("_Zoom"), NULL, NULL, NULL, },
 };
 
 static const GtkToggleActionEntry toggle_action_entries[] =
