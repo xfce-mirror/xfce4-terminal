@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-29 18:30+0200\n"
-"PO-Revision-Date: 2016-10-01 13:09+0000\n"
+"POT-Creation-Date: 2016-10-14 18:30+0200\n"
+"PO-Revision-Date: 2016-10-17 10:11+0000\n"
 "Last-Translator: Elishai Eliyahu <e1907@mm.st>\n"
 "Language-Team: Hebrew (http://www.transifex.com/xfce/xfce-apps/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -166,7 +166,7 @@ msgstr "Please report bugs to <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Unable to register terminal service: %s\n"
 
-#: ../terminal/terminal-app.c:854
+#: ../terminal/terminal-app.c:856
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "מחרוזת גודל ומיקום לא שגויה \"%s\"\n"
@@ -383,7 +383,7 @@ msgid "Terminal"
 msgstr "מסוף"
 
 #: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:731
-#: ../terminal/terminal-screen.c:1788
+#: ../terminal/terminal-screen.c:1807
 msgid "Untitled"
 msgstr "ללא כותרת"
 
@@ -392,11 +392,11 @@ msgstr "ללא כותרת"
 msgid "Unable to determine your login shell."
 msgstr "לא מסוגל לקבוע את מעטפת הכניסה שלך."
 
-#: ../terminal/terminal-screen.c:1487 ../terminal/terminal-screen.c:1513
+#: ../terminal/terminal-screen.c:1506 ../terminal/terminal-screen.c:1532
 msgid "Failed to execute child"
 msgstr "אין אפשרות להריץ צאצא"
 
-#: ../terminal/terminal-screen.c:2107
+#: ../terminal/terminal-screen.c:2126
 msgid "Close this tab"
 msgstr "סגור כרטיסייה זו"
 
@@ -404,7 +404,7 @@ msgstr "סגור כרטיסייה זו"
 msgid "Find"
 msgstr "חיפוש"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1879
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1876
 msgid "_Close"
 msgstr "_סגור"
 
@@ -496,11 +496,11 @@ msgstr "נכשל לפתוח את ה-URL '%s' "
 msgid "Keep window open when it loses focus"
 msgstr "השאר חלון פתוח כאשר זה מאבד מיקוד"
 
-#: ../terminal/terminal-window-dropdown.c:341
+#: ../terminal/terminal-window-dropdown.c:343
 msgid "Drop-down Terminal"
 msgstr "מסוף נפתח כלפי מטה"
 
-#: ../terminal/terminal-window-dropdown.c:342
+#: ../terminal/terminal-window-dropdown.c:344
 msgid "Toggle Drop-down Terminal"
 msgstr "החלף מסוף נפתח כלפי מטה"
 
@@ -532,7 +532,7 @@ msgstr "_בטל סגירת לשונית"
 msgid "_Detach Tab"
 msgstr "_נתק כרטיסיה"
 
-#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:597
+#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:594
 msgid "Close T_ab"
 msgstr "סגור _כרטיסייה"
 
@@ -540,7 +540,7 @@ msgstr "סגור _כרטיסייה"
 msgid "Close Other Ta_bs"
 msgstr "סגור לשו_ניות אחרות"
 
-#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:600
+#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:597
 msgid "Close _Window"
 msgstr "סגור _חלון"
 
@@ -688,99 +688,103 @@ msgstr "הצג תכני עזרה"
 msgid "_About"
 msgstr "_אודות"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:265
+msgid "_Zoom"
+msgstr "_זום"
+
+#: ../terminal/terminal-window.c:270
 msgid "Show _Menubar"
 msgstr "הצג שורת _תפריט"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:270
 msgid "Show/hide the menubar"
 msgstr "הצג/הסתר שורת תפריט"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show _Toolbar"
 msgstr "הצג סרגל _כלים"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show/hide the toolbar"
 msgstr "הצג/הסתר סרגל כלים"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show Window _Borders"
 msgstr "הצג _גבולות חלון"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show/hide the window decorations"
 msgstr "הצג/הסתר עיטורי חלון"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "_Fullscreen"
 msgstr "_מסך מלא"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "Toggle fullscreen mode"
 msgstr "הפעל מצב מסך מלא"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "_Read-Only"
 msgstr "_קריאה בלבד"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "Toggle read-only mode"
 msgstr "החלף מצב קריאה בלבד"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:418
+#: ../terminal/terminal-window.c:415
 msgid "Set _Encoding"
 msgstr "הגדר _קידוד"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:587
 msgid "Warning"
 msgstr "אזהרה"
 
-#: ../terminal/terminal-window.c:593 ../terminal/terminal-window.c:2035
+#: ../terminal/terminal-window.c:590 ../terminal/terminal-window.c:2032
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ../terminal/terminal-window.c:616
+#: ../terminal/terminal-window.c:613
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "לחלון זה יש %d כרטיסיות פתוחות. סגירה של חלון זה\nתסגור גם את כל הכרטיסיות שלו."
 
-#: ../terminal/terminal-window.c:619
+#: ../terminal/terminal-window.c:616
 msgid "Close all tabs?"
 msgstr "לסגור את כל הכרטיסיות?"
 
-#: ../terminal/terminal-window.c:631
+#: ../terminal/terminal-window.c:628
 msgid "Do _not ask me again"
 msgstr "_אל תשאל אותי שוב"
 
-#: ../terminal/terminal-window.c:1870
+#: ../terminal/terminal-window.c:1867
 msgid "Window Title|Set Title"
 msgstr "כותרת חלון|בחירת כותרת"
 
-#: ../terminal/terminal-window.c:1888
+#: ../terminal/terminal-window.c:1885
 msgid "_Title:"
 msgstr "_כותרת:"
 
-#: ../terminal/terminal-window.c:1900
+#: ../terminal/terminal-window.c:1897
 msgid "Enter the title for the current terminal tab"
 msgstr "הזן כותרת עבור כרטיסיית מסוף הנוכחית"
 
-#: ../terminal/terminal-window.c:1954
+#: ../terminal/terminal-window.c:1951
 msgid "Failed to create the regular expression"
 msgstr "נכשל ליצור ביטוי רגולרי"
 
-#: ../terminal/terminal-window.c:2032
+#: ../terminal/terminal-window.c:2029
 msgid "Save contents..."
 msgstr "שמור תוכן..."
 
-#: ../terminal/terminal-window.c:2036
+#: ../terminal/terminal-window.c:2033
 msgid "_Save"
 msgstr "_שמור"
 
-#: ../terminal/terminal-window.c:2073
+#: ../terminal/terminal-window.c:2070
 msgid "Failed to save terminal contents"
 msgstr "נכשל לשמור תוכן מסוף"
 
