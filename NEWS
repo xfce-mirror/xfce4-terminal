@@ -1,3 +1,37 @@
+0.8.0
+=====
+- Move context menu zoom actions to a sub-menu
+- Fix some build-time deprecation warnings
+- Fix hiding of dropdown terminal
+- Fix setting focus to dropdown window (bug #12878)
+- Fix "Always keep window on top" setting that was ignored
+- Show missing action icons in dropdown mode
+- Add rewrap on resize control option to Preferences
+- Add --show/hide-scrollbar command line options (bug #1779)
+- Implement background image support (bug #12845);
+  add BackgroundImageShading setting for background image mode
+- Remove "Scrolling single line" option as the functionality is implemented
+  by vte (bug #12816)
+- Add mouse-wheel binding for zoom: Shift + Ctrl + wheel up/down controlled by
+  a hidden option MiscMouseWheelZoom - ON by default (bug #12869)
+- Do not set DISPLAY variable in non-X11 environments (e.g. Wayland)
+  (bug #12867)
+- Fix memory leak when showing preferences dialog
+- Fix menubar text not visible with some themes
+- Fix vte "resize-window" signal handler (bug #12859)
+- Fix notebook widget transparency seen under Unity
+- Make vte transparency work in Gnome under both X11 and Wayland
+- Show warning and disable Opacity control in Preferences if window manager
+  does not support compositing
+- Fix tab activity indication
+- Fix geometry positioning when a negative offset is used (bug #12833)
+- Quote all file names/URIs drag-and-dropped to the terminal (bug #12836)
+- Fix cursor focus (bug #12807)
+- Translation updates: Bulgarian, Chinese (Taiwan), Croatian, Czech, Dutch,
+  English (Australia), French, German, Hebrew, Japanese, Korean, Lithuanian,
+  Malay, Polish, Portuguese, Portuguese (Brazil), Russian, Slovak, Spanish,
+  Swedish, Thai, Ukrainian
+
 0.6.92
 ======
 - Fix geometry setting (default or provided via the command line option)
