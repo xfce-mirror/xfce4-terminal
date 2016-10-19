@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-29 18:30+0200\n"
-"PO-Revision-Date: 2016-10-10 04:22+0000\n"
+"POT-Creation-Date: 2016-10-14 18:30+0200\n"
+"PO-Revision-Date: 2016-10-18 23:19+0000\n"
 "Last-Translator: Michael Findlay <translate@cobber-linux.org>\n"
 "Language-Team: English (Australia) (http://www.transifex.com/xfce/xfce-apps/language/en_AU/)\n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,7 @@ msgstr "Please report bugs to <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Unable to register terminal service: %s\n"
 
-#: ../terminal/terminal-app.c:854
+#: ../terminal/terminal-app.c:856
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Invalid geometry string \"%s\"\n"
@@ -379,7 +379,7 @@ msgid "Terminal"
 msgstr "Terminal"
 
 #: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:731
-#: ../terminal/terminal-screen.c:1788
+#: ../terminal/terminal-screen.c:1807
 msgid "Untitled"
 msgstr "Untitled"
 
@@ -388,11 +388,11 @@ msgstr "Untitled"
 msgid "Unable to determine your login shell."
 msgstr "Unable to determine your login shell."
 
-#: ../terminal/terminal-screen.c:1487 ../terminal/terminal-screen.c:1513
+#: ../terminal/terminal-screen.c:1506 ../terminal/terminal-screen.c:1532
 msgid "Failed to execute child"
 msgstr "Failed to execute child"
 
-#: ../terminal/terminal-screen.c:2107
+#: ../terminal/terminal-screen.c:2126
 msgid "Close this tab"
 msgstr "Close this tab"
 
@@ -400,7 +400,7 @@ msgstr "Close this tab"
 msgid "Find"
 msgstr "Find"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1879
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1876
 msgid "_Close"
 msgstr "_Close"
 
@@ -492,11 +492,11 @@ msgstr "Failed to open the URL '%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Keep window open when it loses focus"
 
-#: ../terminal/terminal-window-dropdown.c:341
+#: ../terminal/terminal-window-dropdown.c:343
 msgid "Drop-down Terminal"
 msgstr "Drop-down Terminal"
 
-#: ../terminal/terminal-window-dropdown.c:342
+#: ../terminal/terminal-window-dropdown.c:344
 msgid "Toggle Drop-down Terminal"
 msgstr "Toggle Drop-down Terminal"
 
@@ -528,7 +528,7 @@ msgstr "_Undo Close Tab"
 msgid "_Detach Tab"
 msgstr "_Detach Tab"
 
-#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:597
+#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:594
 msgid "Close T_ab"
 msgstr "Close T_ab"
 
@@ -536,7 +536,7 @@ msgstr "Close T_ab"
 msgid "Close Other Ta_bs"
 msgstr "Close Other Ta_bs"
 
-#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:600
+#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:597
 msgid "Close _Window"
 msgstr "Close _Window"
 
@@ -684,99 +684,103 @@ msgstr "Display help contents"
 msgid "_About"
 msgstr "_About"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:265
+msgid "_Zoom"
+msgstr "_Zoom"
+
+#: ../terminal/terminal-window.c:270
 msgid "Show _Menubar"
 msgstr "Show _Menubar"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:270
 msgid "Show/hide the menubar"
 msgstr "Show/hide the menubar"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show _Toolbar"
 msgstr "Show _Toolbar"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show/hide the toolbar"
 msgstr "Show/hide the toolbar"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show Window _Borders"
 msgstr "Show Window _Borders"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show/hide the window decorations"
 msgstr "Show/hide the window decorations"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "_Fullscreen"
 msgstr "_Fullscreen"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "Toggle fullscreen mode"
 msgstr "Toggle fullscreen mode"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "_Read-Only"
 msgstr "_Read-Only"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "Toggle read-only mode"
 msgstr "Toggle read-only mode"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:418
+#: ../terminal/terminal-window.c:415
 msgid "Set _Encoding"
 msgstr "Set _Encoding"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:587
 msgid "Warning"
 msgstr "Warning"
 
-#: ../terminal/terminal-window.c:593 ../terminal/terminal-window.c:2035
+#: ../terminal/terminal-window.c:590 ../terminal/terminal-window.c:2032
 msgid "_Cancel"
 msgstr "_Cancel"
 
-#: ../terminal/terminal-window.c:616
+#: ../terminal/terminal-window.c:613
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "This window has %d tabs open. Closing this window\nwill also close all its tabs."
 
-#: ../terminal/terminal-window.c:619
+#: ../terminal/terminal-window.c:616
 msgid "Close all tabs?"
 msgstr "Close all tabs?"
 
-#: ../terminal/terminal-window.c:631
+#: ../terminal/terminal-window.c:628
 msgid "Do _not ask me again"
 msgstr "Do _not ask me again"
 
-#: ../terminal/terminal-window.c:1870
+#: ../terminal/terminal-window.c:1867
 msgid "Window Title|Set Title"
 msgstr "Set Title"
 
-#: ../terminal/terminal-window.c:1888
+#: ../terminal/terminal-window.c:1885
 msgid "_Title:"
 msgstr "_Title:"
 
-#: ../terminal/terminal-window.c:1900
+#: ../terminal/terminal-window.c:1897
 msgid "Enter the title for the current terminal tab"
 msgstr "Enter the title for the current terminal tab"
 
-#: ../terminal/terminal-window.c:1954
+#: ../terminal/terminal-window.c:1951
 msgid "Failed to create the regular expression"
 msgstr "Failed to create the regular expression"
 
-#: ../terminal/terminal-window.c:2032
+#: ../terminal/terminal-window.c:2029
 msgid "Save contents..."
 msgstr "Save contents..."
 
-#: ../terminal/terminal-window.c:2036
+#: ../terminal/terminal-window.c:2033
 msgid "_Save"
 msgstr "_Save"
 
-#: ../terminal/terminal-window.c:2073
+#: ../terminal/terminal-window.c:2070
 msgid "Failed to save terminal contents"
 msgstr "Failed to save terminal contents"
 
