@@ -686,10 +686,9 @@ terminal_preferences_dialog_presets_changed (GtkComboBox               *combobox
 static void
 terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
 {
-  gchar       **presets;
-  guint         n;
+  gchar       **global, **user, **presets;
+  guint         n_global, n_user, n_presets = 0, n;
   GObject      *object;
-  guint         n_presets = 0;
   XfceRc       *rc;
   GtkListStore *store;
   GtkTreeIter   iter;
@@ -697,9 +696,19 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
   gchar        *path;
 
   /* load schemes */
-  presets = xfce_resource_match (XFCE_RESOURCE_DATA, "xfce4/terminal/colorschemes/*", TRUE);
+  global = xfce_resource_match (XFCE_RESOURCE_DATA, "xfce4/terminal/colorschemes/*", TRUE);
+  user = xfce_resource_match (XFCE_RESOURCE_CONFIG, "xfce4/terminal/colorschemes/*", TRUE);
+  n_global = g_strv_length (global);
+  n_user = g_strv_length (user);
+  presets = g_new0 (gchar *, n_global + n_user);
   if (G_LIKELY (presets != NULL))
     {
+      /* copy pointers to global- and user-defined presets */
+      for (n = 0; n < n_global; n++)
+        presets[n] = global[n];
+      for (n = 0; n < n_user; n++)
+        presets[n_global + n] = user[n];
+
       /* create sorting store */
       store = gtk_list_store_new (N_PRESET_COLUMNS, G_TYPE_STRING,
                                   G_TYPE_BOOLEAN, G_TYPE_STRING);
@@ -708,10 +717,11 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
                                             GTK_SORT_ASCENDING);
 
       /* append files */
-      for (n = 0; presets[n] != NULL; n++)
+      for (n = 0; n < n_global + n_user && presets[n] != NULL; n++)
         {
           /* open the scheme */
-          path = xfce_resource_lookup (XFCE_RESOURCE_DATA, presets[n]);
+          path = xfce_resource_lookup (n < n_global ? XFCE_RESOURCE_DATA : XFCE_RESOURCE_CONFIG,
+                                       presets[n]);
           if (G_UNLIKELY (path == NULL))
             continue;
 
@@ -763,7 +773,9 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
       g_object_unref (store);
     }
 
-  g_strfreev (presets);
+  g_strfreev (global);
+  g_strfreev (user);
+  g_free (presets);
 
   if (n_presets == 0)
     {
