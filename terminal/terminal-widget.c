@@ -596,11 +596,15 @@ static gboolean
 terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
   gboolean       shortcuts_no_menukey;
+  gboolean       shift_arrows_scroll;
+  gdouble        value;
 
   /* determine current settings */
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
                 "shortcuts-no-menukey", &shortcuts_no_menukey,
+                "misc-shift-arrows-scroll", &shift_arrows_scroll,
                 NULL);
 
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
@@ -609,6 +613,22 @@ terminal_widget_key_press_event (GtkWidget    *widget,
     {
       terminal_widget_context_menu (TERMINAL_WIDGET (widget), 0, event->time, (GdkEvent *) event);
       return TRUE;
+    }
+  else if (G_UNLIKELY (shift_arrows_scroll))
+    {
+      /* scroll up one line with "<Shift>Up" */
+      if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up))
+        {
+          gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
+          return TRUE;
+        }
+      /* scroll down one line with "<Shift>Down" */
+      else if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down))
+        {
+          value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+          gtk_adjustment_set_value (adjustment, value);
+          return TRUE;
+        }
     }
 
   return (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->key_press_event) (widget, event);
