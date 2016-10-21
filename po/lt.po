@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-29 18:30+0200\n"
-"PO-Revision-Date: 2016-09-30 07:38+0000\n"
+"POT-Creation-Date: 2016-10-14 18:30+0200\n"
+"PO-Revision-Date: 2016-10-21 10:29+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -163,7 +163,7 @@ msgstr "Apie klaidas pranešti <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nepavyko priregistruoti terminalo tarnybos: %s\n"
 
-#: ../terminal/terminal-app.c:854
+#: ../terminal/terminal-app.c:856
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neteisingas geometrijos apibrėžimas „%s“\n"
@@ -380,7 +380,7 @@ msgid "Terminal"
 msgstr "Terminalas"
 
 #: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:731
-#: ../terminal/terminal-screen.c:1788
+#: ../terminal/terminal-screen.c:1807
 msgid "Untitled"
 msgstr "Be pavadinimo"
 
@@ -389,11 +389,11 @@ msgstr "Be pavadinimo"
 msgid "Unable to determine your login shell."
 msgstr "Nepavyko aptikti jūsų prisijungimo apvalkalo."
 
-#: ../terminal/terminal-screen.c:1487 ../terminal/terminal-screen.c:1513
+#: ../terminal/terminal-screen.c:1506 ../terminal/terminal-screen.c:1532
 msgid "Failed to execute child"
 msgstr "Nepavyko paleisti antrinio proceso"
 
-#: ../terminal/terminal-screen.c:2107
+#: ../terminal/terminal-screen.c:2126
 msgid "Close this tab"
 msgstr "Užverti šią kortelę"
 
@@ -401,7 +401,7 @@ msgstr "Užverti šią kortelę"
 msgid "Find"
 msgstr "Ieškoti"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1879
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1876
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -493,11 +493,11 @@ msgstr "Nepavyko atverti URL \"%s\""
 msgid "Keep window open when it loses focus"
 msgstr "Palikti langą atvertą, kai jis praranda fokusą"
 
-#: ../terminal/terminal-window-dropdown.c:341
+#: ../terminal/terminal-window-dropdown.c:343
 msgid "Drop-down Terminal"
 msgstr "Išskleidžiamas terminalas"
 
-#: ../terminal/terminal-window-dropdown.c:342
+#: ../terminal/terminal-window-dropdown.c:344
 msgid "Toggle Drop-down Terminal"
 msgstr "Perjungti išskleidžiamąjį terminalą"
 
@@ -529,7 +529,7 @@ msgstr "A_tšaukti kortelės užvėrimą"
 msgid "_Detach Tab"
 msgstr "_Atskirti kortelę"
 
-#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:597
+#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:594
 msgid "Close T_ab"
 msgstr "Užverti ko_rtelę"
 
@@ -537,7 +537,7 @@ msgstr "Užverti ko_rtelę"
 msgid "Close Other Ta_bs"
 msgstr "Užverti kitas kort_eles"
 
-#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:600
+#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:597
 msgid "Close _Window"
 msgstr "Užverti _langą"
 
@@ -563,11 +563,11 @@ msgstr "Įdėti iš iškarpinės"
 
 #: ../terminal/terminal-window.c:242
 msgid "Paste _Selection"
-msgstr "Įdėti _pasirinkimą"
+msgstr "Įdėti ž_ymėjimą"
 
 #: ../terminal/terminal-window.c:243
 msgid "Select _All"
-msgstr "Pasirinkti _viską"
+msgstr "Pažymėti _viską"
 
 #: ../terminal/terminal-window.c:244
 msgid "Pr_eferences..."
@@ -685,99 +685,103 @@ msgstr "Rodyti žinyno turinį"
 msgid "_About"
 msgstr "_Apie"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:265
+msgid "_Zoom"
+msgstr "_Mastelis"
+
+#: ../terminal/terminal-window.c:270
 msgid "Show _Menubar"
 msgstr "Rodyti _meniu juostą"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:270
 msgid "Show/hide the menubar"
 msgstr "Rodyti/slėpti meniu juostą"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show _Toolbar"
 msgstr "Rodyti įr_ankių juostą"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show/hide the toolbar"
 msgstr "Rodyti/slėpti įrankių juostą"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show Window _Borders"
 msgstr "Rodyti lango _rėmelius"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show/hide the window decorations"
 msgstr "Rodyti/slėpti lango dekoracijas"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "_Fullscreen"
 msgstr "_Visas ekranas"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "Toggle fullscreen mode"
 msgstr "Perjungti rodymą visame ekrane"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "_Read-Only"
 msgstr "_Tik skaityti"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "Toggle read-only mode"
 msgstr "Perjungti tik skaitymo veikseną"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:418
+#: ../terminal/terminal-window.c:415
 msgid "Set _Encoding"
 msgstr "Nustatyti k_oduotę"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:587
 msgid "Warning"
 msgstr "Įspėjimas"
 
-#: ../terminal/terminal-window.c:593 ../terminal/terminal-window.c:2035
+#: ../terminal/terminal-window.c:590 ../terminal/terminal-window.c:2032
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
-#: ../terminal/terminal-window.c:616
+#: ../terminal/terminal-window.c:613
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Šis langas turi %d atvertas korteles. Užvėrus\nšį langą, bus užvertos ir visos kortelės."
 
-#: ../terminal/terminal-window.c:619
+#: ../terminal/terminal-window.c:616
 msgid "Close all tabs?"
 msgstr "Užverti visas korteles?"
 
-#: ../terminal/terminal-window.c:631
+#: ../terminal/terminal-window.c:628
 msgid "Do _not ask me again"
 msgstr "Daugiau n_ebeklausti"
 
-#: ../terminal/terminal-window.c:1870
+#: ../terminal/terminal-window.c:1867
 msgid "Window Title|Set Title"
 msgstr "Lango antraštė|Nustatykite antraštę"
 
-#: ../terminal/terminal-window.c:1888
+#: ../terminal/terminal-window.c:1885
 msgid "_Title:"
 msgstr "_Antraštė:"
 
-#: ../terminal/terminal-window.c:1900
+#: ../terminal/terminal-window.c:1897
 msgid "Enter the title for the current terminal tab"
 msgstr "Įveskite antraštę, dabartinei terminalo kortelei"
 
-#: ../terminal/terminal-window.c:1954
+#: ../terminal/terminal-window.c:1951
 msgid "Failed to create the regular expression"
 msgstr "Nepavyko sukurti reguliariojo reiškinio"
 
-#: ../terminal/terminal-window.c:2032
+#: ../terminal/terminal-window.c:2029
 msgid "Save contents..."
 msgstr "Įrašyti turinį..."
 
-#: ../terminal/terminal-window.c:2036
+#: ../terminal/terminal-window.c:2033
 msgid "_Save"
 msgstr "Į_rašyti"
 
-#: ../terminal/terminal-window.c:2073
+#: ../terminal/terminal-window.c:2070
 msgid "Failed to save terminal contents"
 msgstr "Nepavyko įrašyti terminalo turinio"
 
