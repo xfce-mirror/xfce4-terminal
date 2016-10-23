@@ -565,7 +565,14 @@ terminal_window_dropdown_animate_down (gpointer data)
   gint                    step_size, vbox_h;
 
   /* get window size */
+#if GTK_CHECK_VERSION (3, 22, 0)
+  GdkDisplay *display = gdk_screen_get_display (dropdown->screen);
+  GdkMonitor *monitor =
+      gdk_display_get_monitor_at_window (display, gtk_widget_get_window (GTK_WIDGET (data)));
+  gdk_monitor_get_geometry (monitor, &rect);
+#else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
+#endif
   if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
     {
       /* calculate width/height if not fullscreen */
@@ -612,7 +619,14 @@ terminal_window_dropdown_animate_up (gpointer data)
   gint                    step_size, vbox_h, min_size;
 
   /* get window size */
+#if GTK_CHECK_VERSION (3, 22, 0)
+  GdkDisplay *display = gdk_screen_get_display (dropdown->screen);
+  GdkMonitor *monitor =
+      gdk_display_get_monitor_at_window (display, gtk_widget_get_window (GTK_WIDGET (data)));
+  gdk_monitor_get_geometry (monitor, &rect);
+#else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
+#endif
   if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
     {
       /* calculate width/height if not fullscreen */
@@ -706,6 +720,10 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gboolean           visible;
   gint               vbox_h;
   TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
+#if GTK_CHECK_VERSION (3, 22, 0)
+  GdkDisplay        *display;
+  GdkMonitor        *monitor;
+#endif
 
   visible = gtk_widget_get_visible (GTK_WIDGET (dropdown));
 
@@ -726,7 +744,14 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
     dropdown->screen = xfce_gdk_screen_get_active (&dropdown->monitor_num);
 
   /* get the active monitor size */
+#if GTK_CHECK_VERSION (3, 22, 0)
+  display = gdk_screen_get_display (dropdown->screen);
+  monitor = gdk_display_get_monitor_at_window (display,
+                                               gtk_widget_get_window (GTK_WIDGET (dropdown)));
+  gdk_monitor_get_geometry (monitor, &monitor_geo);
+#else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &monitor_geo);
+#endif
 
   /* move window to correct screen */
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
@@ -967,10 +992,21 @@ terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
   gint            xpad, ypad;
   glong           char_width, char_height;
   GtkRequisition  req;
+#if GTK_CHECK_VERSION (3, 22, 0)
+  GdkDisplay     *display;
+  GdkMonitor     *monitor;
+#endif
 
   /* get the active monitor size */
   gdkscreen = xfce_gdk_screen_get_active (&monitor_num);
+#if GTK_CHECK_VERSION (3, 22, 0)
+  display = gdk_screen_get_display (gdkscreen);
+  monitor = gdk_display_get_monitor_at_window (display,
+                                               gtk_widget_get_window (GTK_WIDGET (dropdown)));
+  gdk_monitor_get_geometry (monitor, &monitor_geo);
+#else
   gdk_screen_get_monitor_geometry (gdkscreen, monitor_num, &monitor_geo);
+#endif
 
   /* get terminal size */
   terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
