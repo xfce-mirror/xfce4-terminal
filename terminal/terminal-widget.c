@@ -346,7 +346,11 @@ terminal_widget_context_menu (TerminalWidget *widget,
 
   /* run our custom main loop */
   gtk_grab_add (menu);
+#if GTK_CHECK_VERSION (3, 22, 0)
+  gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+#else
   gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, event_time);
+#endif
   g_main_loop_run (loop);
   g_main_loop_unref (loop);
   gtk_grab_remove (menu);

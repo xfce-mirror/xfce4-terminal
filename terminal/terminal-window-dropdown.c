@@ -547,10 +547,14 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
                          gtk_action_create_menu_item (action));
 
   gtk_widget_show_all (menu);
+#if GTK_CHECK_VERSION (3, 22, 0)
+  gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+#else
   gtk_menu_popup (GTK_MENU (menu),
                   NULL, NULL,
                   NULL, NULL,
                   button, timestamp);
+#endif
 }
 
 
