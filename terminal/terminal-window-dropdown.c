@@ -511,7 +511,7 @@ terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status
   if (event->button == 3)
     return FALSE;
 
-  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+  if (gdk_window_is_visible (gtk_widget_get_window (GTK_WIDGET (dropdown))))
     terminal_window_dropdown_hide (dropdown);
   else
     terminal_window_dropdown_show (dropdown, event->time);
@@ -729,7 +729,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   GdkMonitor        *monitor;
 #endif
 
-  visible = gtk_widget_get_visible (GTK_WIDGET (dropdown));
+  visible = gdk_window_is_visible (gtk_widget_get_window (GTK_WIDGET (dropdown)));
 
   if (dropdown->animation_timeout_id != 0)
     {
@@ -805,7 +805,8 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   y_dest = monitor_geo.y;
 
   /* show window */
-  gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
+  if (!visible)
+    gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
 
   /* move */
   gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
@@ -845,7 +846,7 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
   gboolean        toggle_focus;
 
   if (!force_show
-      && gtk_widget_get_visible (GTK_WIDGET (dropdown))
+      && gdk_window_is_visible (gtk_widget_get_window (GTK_WIDGET (dropdown)))
       && dropdown->animation_dir != ANIMATION_DIR_UP)
     {
       g_object_get (G_OBJECT (window->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
