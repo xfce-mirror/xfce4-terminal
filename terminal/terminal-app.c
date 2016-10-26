@@ -270,7 +270,6 @@ static gboolean
 terminal_app_accel_map_load (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
-  GtkAccelKey  key;
   gchar       *path;
   gchar        name[50];
   guint        i;
@@ -294,7 +293,7 @@ terminal_app_accel_map_load (gpointer user_data)
   for (i = 1; i < 10; i++)
     {
       g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", i);
-      if (!gtk_accel_map_lookup_entry (name, &key) || key.accel_key == 0)
+      if (!gtk_accel_map_lookup_entry (name, NULL))
         gtk_accel_map_change_entry (name, GDK_KEY_0 + i, GDK_MOD1_MASK, FALSE);
     }
 

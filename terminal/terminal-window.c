@@ -796,6 +796,7 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
   GtkRadioAction *radio_action;
   gchar           name[50];
   GSList         *lp;
+  GtkAccelKey     key = {0};
 
   if (window->tabs_menu_merge_id != 0)
     {
@@ -853,7 +854,8 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
 
       /* set an accelerator path */
       g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", n + 1);
-      gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
+      if (gtk_accel_map_lookup_entry (name, &key) && key.accel_key != 0)
+        gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
 
       /* store */
       window->tabs_menu_actions = g_slist_prepend (window->tabs_menu_actions, radio_action);
