@@ -998,5 +998,6 @@ terminal_preferences_dialog_new (gboolean show_drop_down)
 
   dialog = gtk_builder_get_object (builder, "dialog");
   terminal_return_val_if_fail (XFCE_IS_TITLED_DIALOG (dialog), NULL);
+  gtk_window_set_type_hint (GTK_WINDOW (dialog), GDK_WINDOW_TYPE_HINT_DIALOG);
   return GTK_WIDGET (dialog);
 }
