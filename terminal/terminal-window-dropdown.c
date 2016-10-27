@@ -958,10 +958,6 @@ terminal_window_dropdown_new (const gchar        *role,
   g_signal_connect_swapped (action, "activate",
       G_CALLBACK (terminal_window_dropdown_update_geometry), window);
 
-
-  g_signal_connect_swapped (window->action_fullscreen, "activate",
-      G_CALLBACK (terminal_window_dropdown_update_geometry), window);
-
   return GTK_WIDGET (window);
 }
 
