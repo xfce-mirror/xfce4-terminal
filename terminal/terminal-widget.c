@@ -384,11 +384,12 @@ static gboolean
 terminal_widget_button_press_event (GtkWidget       *widget,
                                     GdkEventButton  *event)
 {
-  gboolean committed = FALSE;
-  gboolean middle_click_opens_uri;
-  gchar   *match;
-  guint    signal_id = 0;
-  gint     tag;
+  GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ();
+  gboolean        committed = FALSE;
+  gboolean        middle_click_opens_uri;
+  gchar          *match;
+  guint           signal_id = 0;
+  gint            tag;
 
   if (event->type == GDK_BUTTON_PRESS)
     {
@@ -396,7 +397,9 @@ terminal_widget_button_press_event (GtkWidget       *widget,
       g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
           "misc-middle-click-opens-uri", &middle_click_opens_uri, NULL);
 
-      if (middle_click_opens_uri ? (event->button == 2) : (event->button == 1 && event->state == GDK_CONTROL_MASK))
+      if (middle_click_opens_uri
+            ? (event->button == 2)
+            : (event->button == 1 && (event->state & modifiers) == GDK_CONTROL_MASK))
         {
           /* clicking on an URI fires the responsible application */
           match = vte_terminal_match_check_event (VTE_TERMINAL (widget), (GdkEvent *) event, &tag);
@@ -423,7 +426,7 @@ terminal_widget_button_press_event (GtkWidget       *widget,
       /* no data (mouse actions) was committed to the terminal application
        * which means, we can safely popup a context menu now.
        */
-      if (!committed || (event->state & GDK_MODIFIER_MASK) == GDK_SHIFT_MASK)
+      if (!committed || (event->state & modifiers) == GDK_SHIFT_MASK)
         {
           terminal_widget_context_menu (TERMINAL_WIDGET (widget),
                                         event->button, event->time,
