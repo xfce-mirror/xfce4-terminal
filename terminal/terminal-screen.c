@@ -1674,25 +1674,31 @@ terminal_screen_get_geometry (TerminalScreen *screen,
  * I don't like this way, but its required to work-around a Gtk+
  * bug (maybe also caused by a Vte bug, not sure).
  *
- * Code borrowed from gnome-terminal (terminal_window_update_geometry).
+ * Code for GTK > 3.19.5 borrowed from gnome-terminal
+ * (terminal_window_update_geometry).
  **/
 void
 terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
                                            GtkWindow      *window)
 {
   GdkGeometry    hints;
+  glong          char_width, char_height;
+#if GTK_CHECK_VERSION (3, 19, 5)
   GtkRequisition vbox_request;
   GtkAllocation  toplevel_allocation, vbox_allocation;
-  glong          char_width, char_height;
   glong          grid_width, grid_height;
   glong          chrome_width, chrome_height;
   gint           csd_width, csd_height;
+#else
+  gint           xpad, ypad;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
   terminal_return_if_fail (gtk_widget_get_realized (screen));
   terminal_return_if_fail (gtk_widget_get_realized (window));
 
+#if GTK_CHECK_VERSION (3, 19, 5)
   terminal_screen_get_geometry (screen, &char_width, &char_height, NULL, NULL);
   terminal_screen_get_size (screen, &grid_width, &grid_height);
 
@@ -1707,13 +1713,24 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 
   hints.base_width = chrome_width + csd_width;
   hints.base_height = chrome_height + csd_height;
+#else
+  terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
+
+  hints.base_width = xpad;
+  hints.base_height = ypad;
+#endif
+
   hints.width_inc = char_width;
   hints.height_inc = char_height;
   hints.min_width = hints.base_width + hints.width_inc * 4;
   hints.min_height = hints.base_height + hints.height_inc * 2;
 
   gtk_window_set_geometry_hints (window,
+#if GTK_CHECK_VERSION (3, 19, 5)
                                  NULL,
+#else
+                                 screen->terminal,
+#endif
                                  &hints,
                                  GDK_HINT_RESIZE_INC
                                  | GDK_HINT_MIN_SIZE
