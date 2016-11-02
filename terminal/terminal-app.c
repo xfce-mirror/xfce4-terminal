@@ -821,8 +821,7 @@ terminal_app_open_window (TerminalApp        *app,
               if (G_LIKELY (active_terminal != NULL))
                 {
                   /* save window geometry to prevent overriding */
-                  TERMINAL_WINDOW (window)->grid_height = height;
-                  TERMINAL_WINDOW (window)->grid_width = width;
+                  terminal_window_set_grid_size (TERMINAL_WINDOW (window), width, height);
 
                   terminal_screen_force_resize_window (active_terminal, GTK_WINDOW (window),
                                                        width, height);
