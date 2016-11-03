@@ -222,35 +222,41 @@ static void         terminal_window_tab_info_free                 (TerminalWindo
 
 struct _TerminalWindowPrivate
 {
-  GtkUIManager   *ui_manager;
+  GtkUIManager        *ui_manager;
 
-  guint           tabs_menu_merge_id;
-  GSList         *tabs_menu_actions;
+  /* for the drop-down to keep open with dialogs */
+  guint                n_child_windows;
 
-  GtkWidget      *search_dialog;
-  GtkWidget      *title_dialog;
+  guint                tabs_menu_merge_id;
+  GSList              *tabs_menu_actions;
+
+  TerminalPreferences *preferences;
+  GtkWidget           *preferences_dialog;
+
+  GtkWidget           *search_dialog;
+  GtkWidget           *title_dialog;
 
   /* pushed size of screen */
-  glong           grid_width;
-  glong           grid_height;
+  glong                grid_width;
+  glong                grid_height;
 
-  GtkAction      *encoding_action;
+  GtkAction           *encoding_action;
 
-  TerminalScreen *active;
+  TerminalScreen      *active;
 
   /* cached actions to avoid lookups */
-  GtkAction      *action_undo_close_tab;
-  GtkAction      *action_detach_tab;
-  GtkAction      *action_close_other_tabs;
-  GtkAction      *action_prev_tab;
-  GtkAction      *action_next_tab;
-  GtkAction      *action_move_tab_left;
-  GtkAction      *action_move_tab_right;
-  GtkAction      *action_copy;
-  GtkAction      *action_search_next;
-  GtkAction      *action_search_prev;
+  GtkAction           *action_undo_close_tab;
+  GtkAction           *action_detach_tab;
+  GtkAction           *action_close_other_tabs;
+  GtkAction           *action_prev_tab;
+  GtkAction           *action_next_tab;
+  GtkAction           *action_move_tab_left;
+  GtkAction           *action_move_tab_right;
+  GtkAction           *action_copy;
+  GtkAction           *action_search_next;
+  GtkAction           *action_search_prev;
 
-  GQueue         *closed_tabs_list;
+  GQueue              *closed_tabs_list;
 };
 
 static guint   window_signals[LAST_SIGNAL];
@@ -372,7 +378,7 @@ terminal_window_init (TerminalWindow *window)
 
   window->priv = G_TYPE_INSTANCE_GET_PRIVATE (window, TERMINAL_TYPE_WINDOW, TerminalWindowPrivate);
 
-  window->preferences = terminal_preferences_get ();
+  window->priv->preferences = terminal_preferences_get ();
 
   window->font = NULL;
   window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
@@ -416,7 +422,7 @@ terminal_window_init (TerminalWindow *window)
   gtk_style_context_add_class (context, GTK_STYLE_CLASS_BACKGROUND);
 
   /* allocate the notebook for the terminal screens */
-  g_object_get (G_OBJECT (window->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
+  g_object_get (G_OBJECT (window->priv->preferences), "misc-always-show-tabs", &always_show_tabs, NULL);
   window->notebook = g_object_new (GTK_TYPE_NOTEBOOK,
                                    "scrollable", TRUE,
                                    "show-border", FALSE,
@@ -484,7 +490,7 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
-  g_object_unref (G_OBJECT (window->preferences));
+  g_object_unref (G_OBJECT (window->priv->preferences));
   g_object_unref (G_OBJECT (window->action_group));
   g_object_unref (G_OBJECT (window->priv->ui_manager));
   g_object_unref (G_OBJECT (window->priv->encoding_action));
@@ -575,7 +581,7 @@ terminal_window_scroll_event (GtkWidget      *widget,
   gboolean mouse_wheel_zoom;
   TerminalWindow *window = TERMINAL_WINDOW (widget);
 
-  g_object_get (G_OBJECT (window->preferences),
+  g_object_get (G_OBJECT (window->priv->preferences),
                 "misc-mouse-wheel-zoom", &mouse_wheel_zoom, NULL);
 
   if (mouse_wheel_zoom && event->state == (GDK_SHIFT_MASK | GDK_CONTROL_MASK)
@@ -617,7 +623,7 @@ terminal_window_confirm_close (TerminalWindow *window)
   if (G_UNLIKELY (n_tabs < 2))
     return TRUE;
 
-  g_object_get (G_OBJECT (window->preferences), "misc-confirm-close", &confirm_close, NULL);
+  g_object_get (G_OBJECT (window->priv->preferences), "misc-confirm-close", &confirm_close, NULL);
   if (!confirm_close)
     return TRUE;
 
@@ -672,7 +678,7 @@ terminal_window_confirm_close (TerminalWindow *window)
     {
       if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbox)))
         {
-          g_object_set (G_OBJECT (window->preferences),
+          g_object_set (G_OBJECT (window->priv->preferences),
                         "misc-confirm-close", FALSE,
                         NULL);
         }
@@ -799,7 +805,7 @@ terminal_window_update_actions (TerminalWindow *window)
     {
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->active));
 
-      g_object_get (G_OBJECT (window->preferences),
+      g_object_get (G_OBJECT (window->priv->preferences),
                     "misc-cycle-tabs", &cycle_tabs,
                     NULL);
 
@@ -1142,7 +1148,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
       if (event->button == 2)
         {
           /* close the tab on middle click */
-          g_object_get (G_OBJECT (window->preferences),
+          g_object_get (G_OBJECT (window->priv->preferences),
                         "misc-tab-close-middle-click", &close_middle_click, NULL);
           if (close_middle_click)
             gtk_widget_destroy (page);
@@ -1444,7 +1450,7 @@ terminal_window_action_new_tab (GtkAction      *action,
   TerminalScreen *terminal;
 
   terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
-  g_object_get (G_OBJECT (window->preferences), "misc-default-working-dir", &default_dir, NULL);
+  g_object_get (G_OBJECT (window->priv->preferences), "misc-default-working-dir", &default_dir, NULL);
 
   if (g_strcmp0 (default_dir, "") != 0)
     directory = default_dir;
@@ -1469,7 +1475,7 @@ terminal_window_action_new_window (GtkAction      *action,
   const gchar *directory = NULL;
   gchar       *default_dir;
 
-  g_object_get (G_OBJECT (window->preferences), "misc-default-working-dir", &default_dir, NULL);
+  g_object_get (G_OBJECT (window->priv->preferences), "misc-default-working-dir", &default_dir, NULL);
 
   if (g_strcmp0 (default_dir, "") != 0)
     directory = default_dir;
@@ -1615,8 +1621,8 @@ terminal_window_action_prefs_died (gpointer  user_data,
 {
   TerminalWindow *window = TERMINAL_WINDOW (user_data);
 
-  window->preferences_dialog = NULL;
-  window->n_child_windows--;
+  window->priv->preferences_dialog = NULL;
+  window->priv->n_child_windows--;
 
   if (window->drop_down)
     terminal_util_activate_window (GTK_WINDOW (window));
@@ -1628,21 +1634,21 @@ static void
 terminal_window_action_prefs (GtkAction      *action,
                               TerminalWindow *window)
 {
-  if (window->preferences_dialog == NULL)
+  if (window->priv->preferences_dialog == NULL)
     {
-      window->preferences_dialog = terminal_preferences_dialog_new (window->drop_down);
-      if (G_LIKELY (window->preferences_dialog != NULL))
+      window->priv->preferences_dialog = terminal_preferences_dialog_new (window->drop_down);
+      if (G_LIKELY (window->priv->preferences_dialog != NULL))
         {
-          window->n_child_windows++;
-          g_object_weak_ref (G_OBJECT (window->preferences_dialog),
+          window->priv->n_child_windows++;
+          g_object_weak_ref (G_OBJECT (window->priv->preferences_dialog),
                              terminal_window_action_prefs_died, window);
         }
     }
 
-  if (window->preferences_dialog != NULL)
+  if (window->priv->preferences_dialog != NULL)
     {
-      gtk_window_set_transient_for (GTK_WINDOW (window->preferences_dialog), GTK_WINDOW (window));
-      gtk_window_present (GTK_WINDOW (window->preferences_dialog));
+      gtk_window_set_transient_for (GTK_WINDOW (window->priv->preferences_dialog), GTK_WINDOW (window));
+      gtk_window_present (GTK_WINDOW (window->priv->preferences_dialog));
     }
 }
 
@@ -1858,7 +1864,7 @@ title_dialog_close (GtkWidget      *dialog,
     terminal_util_activate_window (GTK_WINDOW (window));
 
   /* close the dialog */
-  window->n_child_windows--;
+  window->priv->n_child_windows--;
   gtk_widget_destroy (dialog);
   window->priv->title_dialog = NULL;
 }
@@ -1945,7 +1951,7 @@ terminal_window_action_set_title (GtkAction      *action,
     }
 
     if (!gtk_widget_get_visible (window->priv->title_dialog))
-      window->n_child_windows++;
+      window->priv->n_child_windows++;
 
     gtk_widget_show_all (window->priv->title_dialog);
     gtk_window_present (GTK_WINDOW (window->priv->title_dialog));
@@ -1997,7 +2003,7 @@ terminal_window_action_search_response (GtkWidget      *dialog,
         terminal_util_activate_window (GTK_WINDOW (window));
 
       /* hide dialog */
-      window->n_child_windows--;
+      window->priv->n_child_windows--;
       gtk_widget_hide (dialog);
     }
 
@@ -2024,7 +2030,7 @@ terminal_window_action_search (GtkAction      *action,
 
   /* increase child counter */
   if (!gtk_widget_get_visible (window->priv->search_dialog))
-    window->n_child_windows++;
+    window->priv->n_child_windows++;
 
   terminal_search_dialog_present (TERMINAL_SEARCH_DIALOG (window->priv->search_dialog));
 }
@@ -2263,7 +2269,7 @@ terminal_window_new (const gchar       *role,
   window = g_object_new (TERMINAL_TYPE_WINDOW, "role", role, NULL);
 
   /* read default preferences */
-  g_object_get (G_OBJECT (window->preferences),
+  g_object_get (G_OBJECT (window->priv->preferences),
                 "misc-menubar-default", &show_menubar,
                 "misc-toolbar-default", &show_toolbar,
                 "misc-borders-default", &show_borders,
@@ -2292,7 +2298,7 @@ terminal_window_new (const gchar       *role,
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_borders);
 
   /* property that is not suitable for init */
-  g_object_bind_property (G_OBJECT (window->preferences), "misc-tab-position",
+  g_object_bind_property (G_OBJECT (window->priv->preferences), "misc-tab-position",
                           G_OBJECT (window->notebook), "tab-pos",
                           G_BINDING_SYNC_CREATE);
 
@@ -2379,7 +2385,7 @@ terminal_window_notebook_show_tabs (TerminalWindow *window)
   npages = gtk_notebook_get_n_pages (notebook);
   if (npages < 2)
     {
-      g_object_get (G_OBJECT (window->preferences),
+      g_object_get (G_OBJECT (window->priv->preferences),
                     window->drop_down ? "dropdown-always-show-tabs" :
                     "misc-always-show-tabs", &show_tabs, NULL);
     }
@@ -2492,4 +2498,40 @@ terminal_window_set_grid_size (TerminalWindow *window,
 {
   window->priv->grid_width = width;
   window->priv->grid_height = height;
+}
+
+
+
+/**
+ * terminal_window_has_children:
+ * @window  : A #TerminalWindow.
+ **/
+gboolean
+terminal_window_has_children (TerminalWindow *window)
+{
+  return window->priv->n_child_windows != 0;
+}
+
+
+
+/**
+ * terminal_window_get_preferences:
+ * @window  : A #TerminalWindow.
+ **/
+GObject*
+terminal_window_get_preferences (TerminalWindow *window)
+{
+  return G_OBJECT (window->priv->preferences);
+}
+
+
+
+/**
+ * terminal_window_get_preferences_dialog:
+ * @window  : A #TerminalWindow.
+ **/
+GtkWidget*
+terminal_window_get_preferences_dialog (TerminalWindow *window)
+{
+  return window->priv->preferences_dialog;
 }

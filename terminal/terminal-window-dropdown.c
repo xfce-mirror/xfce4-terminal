@@ -240,7 +240,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 
   /* adjust notebook for drop-down usage */
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (window->notebook), GTK_POS_BOTTOM);
-  g_object_get (G_OBJECT (window->preferences), "misc-borders-default", &show_borders, NULL);
+  g_object_get (terminal_window_get_preferences (window), "misc-borders-default", &show_borders, NULL);
   gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), show_borders);
   terminal_window_notebook_show_tabs (window);
 
@@ -262,7 +262,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
 #endif
 
-  g_object_get (G_OBJECT (window->preferences), "dropdown-keep-open-default", &keep_open, NULL);
+  g_object_get (terminal_window_get_preferences (window), "dropdown-keep-open-default", &keep_open, NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
 
   img = gtk_image_new_from_icon_name ("go-bottom", GTK_ICON_SIZE_MENU);
@@ -289,7 +289,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   for (n = 1; n < N_PROPERTIES; n++)
     {
       name = g_param_spec_get_name (dropdown_props[n]);
-      g_object_bind_property (G_OBJECT (window->preferences), name,
+      g_object_bind_property (terminal_window_get_preferences (window), name,
                               G_OBJECT (dropdown), name,
                               G_BINDING_SYNC_CREATE);
     }
@@ -357,8 +357,8 @@ terminal_window_dropdown_set_property (GObject      *object,
 
     case PROP_DROPDOWN_KEEP_ABOVE:
       gtk_window_set_keep_above (GTK_WINDOW (dropdown), g_value_get_boolean (value));
-      if (window->preferences_dialog != NULL)
-        terminal_util_activate_window (GTK_WINDOW (window->preferences_dialog));
+      if (terminal_window_get_preferences_dialog (window) != NULL)
+        terminal_util_activate_window (GTK_WINDOW (terminal_window_get_preferences_dialog (window)));
       return;
 
     case PROP_DROPDOWN_ANIMATION_TIME:
@@ -455,7 +455,7 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
 
   /* check if keep open is not enabled */
   if (gtk_widget_get_visible (widget)
-      && TERMINAL_WINDOW (dropdown)->n_child_windows == 0
+      && !terminal_window_has_children (TERMINAL_WINDOW (dropdown))
       && gtk_grab_get_current () == NULL
       && dropdown->animation_dir != ANIMATION_DIR_UP) /* popup menu check */
     {
@@ -723,7 +723,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
       g_source_remove (dropdown->animation_timeout_id);
     }
 
-  g_object_get (G_OBJECT (window->preferences),
+  g_object_get (terminal_window_get_preferences (window),
                 "dropdown-move-to-active", &move_to_active,
                 NULL);
 
@@ -811,7 +811,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
     }
   else
     {
-      g_object_get (G_OBJECT (window->preferences),
+      g_object_get (terminal_window_get_preferences (window),
                     "dropdown-keep-above", &keep_above,
                     NULL);
       gtk_window_set_keep_above (GTK_WINDOW (dropdown), keep_above);
@@ -835,7 +835,9 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
       && gdk_window_is_visible (gtk_widget_get_window (GTK_WIDGET (dropdown)))
       && dropdown->animation_dir != ANIMATION_DIR_UP)
     {
-      g_object_get (G_OBJECT (window->preferences), "dropdown-toggle-focus", &toggle_focus, NULL);
+      g_object_get (terminal_window_get_preferences (window),
+                    "dropdown-toggle-focus", &toggle_focus,
+                    NULL);
 
       /* if the focus was lost for 0.1 second and toggle-focus is used, we had
        * focus until the shortcut was pressed, and then we hide the window */
@@ -919,7 +921,7 @@ terminal_window_dropdown_new (const gchar        *role,
   window = g_object_new (TERMINAL_TYPE_WINDOW_DROPDOWN, "role", role, NULL);
 
   /* read default preferences */
-  g_object_get (G_OBJECT (window->preferences),
+  g_object_get (terminal_window_get_preferences (window),
                 "misc-menubar-default", &show_menubar,
                 "misc-toolbar-default", &show_toolbar,
                 NULL);

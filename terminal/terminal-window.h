@@ -49,12 +49,6 @@ typedef struct
   /* if this is a TerminalWindowDropdown */
   guint                  drop_down : 1;
 
-  /* for the drop-down to keep open with dialogs */
-  guint                  n_child_windows;
-
-  TerminalPreferences   *preferences;
-  GtkWidget             *preferences_dialog;
-
   GtkActionGroup        *action_group;
 
   GtkWidget             *vbox;
@@ -70,26 +64,32 @@ typedef struct
   TerminalVisibility     scrollbar_visibility;
 } TerminalWindow;
 
-GType           terminal_window_get_type            (void) G_GNUC_CONST;
+GType           terminal_window_get_type               (void) G_GNUC_CONST;
 
-GtkWidget      *terminal_window_new                 (const gchar        *role,
-                                                     gboolean            fullscreen,
-                                                     TerminalVisibility  menubar,
-                                                     TerminalVisibility  borders,
-                                                     TerminalVisibility  toolbar);
+GtkWidget      *terminal_window_new                    (const gchar        *role,
+                                                        gboolean            fullscreen,
+                                                        TerminalVisibility  menubar,
+                                                        TerminalVisibility  borders,
+                                                        TerminalVisibility  toolbar);
 
-void            terminal_window_add                 (TerminalWindow     *window,
-                                                     TerminalScreen     *screen);
+void            terminal_window_add                    (TerminalWindow     *window,
+                                                        TerminalScreen     *screen);
 
-TerminalScreen *terminal_window_get_active          (TerminalWindow     *window);
+TerminalScreen *terminal_window_get_active             (TerminalWindow     *window);
 
-void            terminal_window_notebook_show_tabs  (TerminalWindow     *window);
+void            terminal_window_notebook_show_tabs     (TerminalWindow     *window);
 
-GSList         *terminal_window_get_restart_command (TerminalWindow     *window);
+GSList         *terminal_window_get_restart_command    (TerminalWindow     *window);
 
-void            terminal_window_set_grid_size       (TerminalWindow     *window,
-                                                     glong               width,
-                                                     glong               height);
+void            terminal_window_set_grid_size          (TerminalWindow     *window,
+                                                        glong               width,
+                                                        glong               height);
+
+gboolean        terminal_window_has_children           (TerminalWindow     *window);
+
+GObject        *terminal_window_get_preferences        (TerminalWindow     *window);
+
+GtkWidget      *terminal_window_get_preferences_dialog (TerminalWindow     *window);
 
 G_END_DECLS
 
