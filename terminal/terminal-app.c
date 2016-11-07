@@ -383,13 +383,14 @@ terminal_app_create_window (TerminalApp       *app,
 static GtkWidget*
 terminal_app_create_drop_down (TerminalApp        *app,
                                const gchar        *role,
+                               const gchar        *icon,
                                gboolean            fullscreen,
                                TerminalVisibility  menubar,
                                TerminalVisibility  toolbar)
 {
   GtkWidget *window;
 
-  window = terminal_window_dropdown_new (role, fullscreen, menubar, toolbar);
+  window = terminal_window_dropdown_new (role, icon, fullscreen, menubar, toolbar);
 
   terminal_app_take_window (app, GTK_WINDOW (window));
 
@@ -712,6 +713,7 @@ terminal_app_open_window (TerminalApp        *app,
           /* create new drop-down window */
           window = terminal_app_create_drop_down (app,
                                                   attr->role,
+                                                  attr->icon,
                                                   attr->fullscreen,
                                                   attr->menubar,
                                                   attr->toolbar);

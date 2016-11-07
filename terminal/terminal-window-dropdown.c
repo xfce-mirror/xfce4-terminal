@@ -309,6 +309,7 @@ terminal_window_dropdown_set_property (GObject      *object,
   TerminalWindow         *window = TERMINAL_WINDOW (object);
   gdouble                 opacity;
   GdkScreen              *screen;
+  const gchar            *icon_name;
 
   switch (prop_id)
     {
@@ -337,9 +338,13 @@ terminal_window_dropdown_set_property (GObject      *object,
     case PROP_DROPDOWN_STATUS_ICON:
       if (g_value_get_boolean (value))
         {
-          if (dropdown->status_icon == NULL)
+          /* icon_name will be NULL initially after creation; will update it later */
+          icon_name = gtk_window_get_icon_name (GTK_WINDOW (object));
+          if (dropdown->status_icon == NULL && icon_name != NULL)
             {
-              dropdown->status_icon = gtk_status_icon_new_from_icon_name ("utilities-terminal");
+              dropdown->status_icon = g_path_is_absolute (icon_name)
+                ? gtk_status_icon_new_from_file (icon_name)
+                : gtk_status_icon_new_from_icon_name (icon_name);
               gtk_status_icon_set_title (dropdown->status_icon, _("Drop-down Terminal"));
               gtk_status_icon_set_tooltip_text (dropdown->status_icon, _("Toggle Drop-down Terminal"));
               g_signal_connect (G_OBJECT (dropdown->status_icon), "button-press-event",
@@ -906,6 +911,7 @@ terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
 
 GtkWidget *
 terminal_window_dropdown_new (const gchar        *role,
+                              const gchar        *icon,
                               gboolean            fullscreen,
                               TerminalVisibility  menubar,
                               TerminalVisibility  toolbar)
@@ -913,18 +919,30 @@ terminal_window_dropdown_new (const gchar        *role,
   TerminalWindow *window;
   gboolean        show_menubar;
   gboolean        show_toolbar;
+  gboolean        show_icon;
   GtkAction      *action;
+  GValue          value = G_VALUE_INIT;
 
   if (G_LIKELY (role == NULL))
     role = PACKAGE_NAME "-dropdown";
 
-  window = g_object_new (TERMINAL_TYPE_WINDOW_DROPDOWN, "role", role, NULL);
+  window = g_object_new (TERMINAL_TYPE_WINDOW_DROPDOWN,
+                         "role", role,
+                         "icon-name", icon != NULL ? icon : "utilities-terminal",
+                         NULL);
 
   /* read default preferences */
   g_object_get (terminal_window_get_preferences (window),
                 "misc-menubar-default", &show_menubar,
                 "misc-toolbar-default", &show_toolbar,
+                "dropdown-status-icon", &show_icon,
                 NULL);
+
+  /* update status bar icon */
+  g_value_init (&value, G_TYPE_BOOLEAN);
+  g_value_set_boolean (&value, show_icon);
+  terminal_window_dropdown_set_property (G_OBJECT (window),
+                                         PROP_DROPDOWN_STATUS_ICON, &value, NULL);
 
   /* setup full screen */
   if (fullscreen && gtk_action_is_sensitive (window->action_fullscreen))
