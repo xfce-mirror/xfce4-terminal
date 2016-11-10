@@ -1199,8 +1199,16 @@ static void
 terminal_screen_vte_selection_changed (VteTerminal    *terminal,
                                        TerminalScreen *screen)
 {
+  gboolean copy_on_select;
+
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  /* copy vte selection to GDK_SELECTION_CLIPBOARD if option is set */
+  g_object_get (G_OBJECT (screen->preferences),
+                "misc-copy-on-select", &copy_on_select, NULL);
+  if (copy_on_select)
+    vte_terminal_copy_clipboard (terminal);
 
   g_signal_emit (G_OBJECT (screen), screen_signals[SELECTION_CHANGED], 0);
 }

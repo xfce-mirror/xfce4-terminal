@@ -93,6 +93,7 @@ enum
   PROP_MISC_TAB_POSITION,
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
+  PROP_MISC_COPY_ON_SELECT,
   PROP_MISC_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
   PROP_MISC_SHIFT_ARROWS_SCROLL,
@@ -832,6 +833,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("misc-middle-click-opens-uri",
                             NULL,
                             "MiscMiddleClickOpensUri",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-copy-on-select:
+   **/
+  preferences_props[PROP_MISC_COPY_ON_SELECT] =
+      g_param_spec_boolean ("misc-copy-on-select",
+                            NULL,
+                            "MiscCopyOnSelect",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
