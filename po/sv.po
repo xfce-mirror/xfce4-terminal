@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-29 18:30+0200\n"
-"PO-Revision-Date: 2016-10-02 08:58+0000\n"
-"Last-Translator: Påvel Nicklasson <pavelnicklasson@bahnhof.se>\n"
+"POT-Creation-Date: 2016-10-14 18:30+0200\n"
+"PO-Revision-Date: 2016-11-10 07:05+0000\n"
+"Last-Translator: Påvel Nicklasson <pavel2@frimix.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -163,7 +163,7 @@ msgstr "Rapportera fel till <%s>.\r\nSkicka synpunkter på översättningen till
 msgid "Unable to register terminal service: %s\n"
 msgstr "Det gick inte att registrera terminaltjänsten: %s\n"
 
-#: ../terminal/terminal-app.c:854
+#: ../terminal/terminal-app.c:856
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ogiltig geometristräng: \"%s\"\n"
@@ -380,7 +380,7 @@ msgid "Terminal"
 msgstr "Terminal"
 
 #: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:731
-#: ../terminal/terminal-screen.c:1788
+#: ../terminal/terminal-screen.c:1807
 msgid "Untitled"
 msgstr "Namnlös"
 
@@ -389,11 +389,11 @@ msgstr "Namnlös"
 msgid "Unable to determine your login shell."
 msgstr "Det gick inte att bestämma ditt inloggningsskal."
 
-#: ../terminal/terminal-screen.c:1487 ../terminal/terminal-screen.c:1513
+#: ../terminal/terminal-screen.c:1506 ../terminal/terminal-screen.c:1532
 msgid "Failed to execute child"
 msgstr "Misslyckades att köra barnprocess"
 
-#: ../terminal/terminal-screen.c:2107
+#: ../terminal/terminal-screen.c:2126
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
@@ -401,7 +401,7 @@ msgstr "Stäng denna flik"
 msgid "Find"
 msgstr "Sök"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1879
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1876
 msgid "_Close"
 msgstr "_Stäng"
 
@@ -493,11 +493,11 @@ msgstr "Misslyckades med att öppna URL '%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Behåll fönstret öppet då det tappar fokus"
 
-#: ../terminal/terminal-window-dropdown.c:341
+#: ../terminal/terminal-window-dropdown.c:343
 msgid "Drop-down Terminal"
 msgstr "Drop-down terminal"
 
-#: ../terminal/terminal-window-dropdown.c:342
+#: ../terminal/terminal-window-dropdown.c:344
 msgid "Toggle Drop-down Terminal"
 msgstr "Växla Drop-down terminal"
 
@@ -529,7 +529,7 @@ msgstr "_Ångra Stäng flik"
 msgid "_Detach Tab"
 msgstr "_Frigör flik"
 
-#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:597
+#: ../terminal/terminal-window.c:236 ../terminal/terminal-window.c:594
 msgid "Close T_ab"
 msgstr "Stäng fl_ik"
 
@@ -537,7 +537,7 @@ msgstr "Stäng fl_ik"
 msgid "Close Other Ta_bs"
 msgstr "Stäng andra flik_ar"
 
-#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:600
+#: ../terminal/terminal-window.c:238 ../terminal/terminal-window.c:597
 msgid "Close _Window"
 msgstr "Stäng f_önster"
 
@@ -685,99 +685,103 @@ msgstr "Visa hjälpinnehåll"
 msgid "_About"
 msgstr "_Om"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:265
+msgid "_Zoom"
+msgstr "_Zooma"
+
+#: ../terminal/terminal-window.c:270
 msgid "Show _Menubar"
 msgstr "Visa _menyrad"
 
-#: ../terminal/terminal-window.c:269
+#: ../terminal/terminal-window.c:270
 msgid "Show/hide the menubar"
 msgstr "Visa/dölj menyraden"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show _Toolbar"
 msgstr "Visa verk_tygsrad"
 
-#: ../terminal/terminal-window.c:270
+#: ../terminal/terminal-window.c:271
 msgid "Show/hide the toolbar"
 msgstr "Visa/dölj verktygsraden"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show Window _Borders"
 msgstr "Visa fönster_kanter"
 
-#: ../terminal/terminal-window.c:271
+#: ../terminal/terminal-window.c:272
 msgid "Show/hide the window decorations"
 msgstr "Visa/dölj fönsterdekorationer"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "_Fullscreen"
 msgstr "_Fullskärmsläge"
 
-#: ../terminal/terminal-window.c:272
+#: ../terminal/terminal-window.c:273
 msgid "Toggle fullscreen mode"
 msgstr "Växla fullskärmsläge"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "_Read-Only"
 msgstr "Sk_risvskyddad"
 
-#: ../terminal/terminal-window.c:273
+#: ../terminal/terminal-window.c:274
 msgid "Toggle read-only mode"
 msgstr "Växla skrivskyddat läge"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:418
+#: ../terminal/terminal-window.c:415
 msgid "Set _Encoding"
 msgstr "Ställ in _kodning"
 
-#: ../terminal/terminal-window.c:590
+#: ../terminal/terminal-window.c:587
 msgid "Warning"
 msgstr "Varning"
 
-#: ../terminal/terminal-window.c:593 ../terminal/terminal-window.c:2035
+#: ../terminal/terminal-window.c:590 ../terminal/terminal-window.c:2032
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: ../terminal/terminal-window.c:616
+#: ../terminal/terminal-window.c:613
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Det här fönstret har %d flikar öppna. Att stänga fönstret\nkommer också att stänga alla dess flikar."
 
-#: ../terminal/terminal-window.c:619
+#: ../terminal/terminal-window.c:616
 msgid "Close all tabs?"
 msgstr "Stäng alla flikar?"
 
-#: ../terminal/terminal-window.c:631
+#: ../terminal/terminal-window.c:628
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
-#: ../terminal/terminal-window.c:1870
+#: ../terminal/terminal-window.c:1867
 msgid "Window Title|Set Title"
 msgstr "Ange namn"
 
-#: ../terminal/terminal-window.c:1888
+#: ../terminal/terminal-window.c:1885
 msgid "_Title:"
 msgstr "_Namn:"
 
-#: ../terminal/terminal-window.c:1900
+#: ../terminal/terminal-window.c:1897
 msgid "Enter the title for the current terminal tab"
 msgstr "Ange namn för den aktiva terminalfliken"
 
-#: ../terminal/terminal-window.c:1954
+#: ../terminal/terminal-window.c:1951
 msgid "Failed to create the regular expression"
 msgstr "Det gick inte att skapa det reguljära uttrycket"
 
-#: ../terminal/terminal-window.c:2032
+#: ../terminal/terminal-window.c:2029
 msgid "Save contents..."
 msgstr "Spara innehåll..."
 
-#: ../terminal/terminal-window.c:2036
+#: ../terminal/terminal-window.c:2033
 msgid "_Save"
 msgstr "_Spara"
 
-#: ../terminal/terminal-window.c:2073
+#: ../terminal/terminal-window.c:2070
 msgid "Failed to save terminal contents"
 msgstr "Det gick inte att spara terminalinnehåll"
 
