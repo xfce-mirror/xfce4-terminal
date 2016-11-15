@@ -56,6 +56,7 @@
 static void     terminal_app_finalize                 (GObject            *object);
 static void     terminal_app_update_accels            (TerminalApp        *app);
 static void     terminal_app_update_mnemonics         (TerminalApp        *app);
+static void     terminal_app_update_windows_accels    (gpointer            user_data);
 static gboolean terminal_app_accel_map_load           (gpointer            user_data);
 static gboolean terminal_app_accel_map_save           (gpointer            user_data);
 static gboolean terminal_app_unset_urgent_bell        (TerminalWindow     *window,
@@ -143,8 +144,9 @@ terminal_app_init (TerminalApp *app)
   terminal_app_update_accels (app);
   terminal_app_update_mnemonics (app);
 
-  /* schedule accel map load */
-  app->accel_map_load_id = g_idle_add_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app, NULL);
+  /* schedule accel map load and update windows when finished */
+  app->accel_map_load_id = g_idle_add_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
+                                            terminal_app_update_windows_accels);
 }
 
 
@@ -228,6 +230,20 @@ terminal_app_update_mnemonics (TerminalApp *app)
 
 
 
+static void
+terminal_app_update_windows_accels (gpointer user_data)
+{
+  TerminalApp *app = TERMINAL_APP (user_data);
+  GSList      *lp;
+
+  for (lp = app->windows; lp != NULL; lp = lp->next)
+    terminal_window_rebuild_tabs_menu (TERMINAL_WINDOW (lp->data));
+
+  app->accel_map_load_id = 0;
+}
+
+
+
 static gboolean
 terminal_app_accel_map_save (gpointer user_data)
 {
@@ -273,8 +289,6 @@ terminal_app_accel_map_load (gpointer user_data)
   gchar       *path;
   gchar        name[50];
   guint        i;
-
-  app->accel_map_load_id = 0;
 
   path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, ACCEL_MAP_PATH);
   if (G_LIKELY (path != NULL))

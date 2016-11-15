@@ -91,6 +91,8 @@ GObject        *terminal_window_get_preferences        (TerminalWindow     *wind
 
 GtkWidget      *terminal_window_get_preferences_dialog (TerminalWindow     *window);
 
+void            terminal_window_rebuild_tabs_menu      (TerminalWindow     *window);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_WINDOW_H */

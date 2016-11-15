@@ -93,7 +93,6 @@ static gboolean     terminal_window_accel_activate                (GtkAccelGroup
                                                                    GdkModifierType         accel_mods,
                                                                    TerminalWindow         *window);
 static void         terminal_window_update_actions                (TerminalWindow         *window);
-static void         terminal_window_rebuild_tabs_menu             (TerminalWindow         *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
                                                                    GtkWidget              *page,
                                                                    guint                   page_num,
@@ -825,83 +824,6 @@ terminal_window_update_actions (TerminalWindow *window)
       action = g_object_get_qdata (G_OBJECT (window->priv->active), tabs_menu_action_quark);
       if (G_LIKELY (action != NULL))
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
-    }
-}
-
-
-
-static void
-terminal_window_rebuild_tabs_menu (TerminalWindow *window)
-{
-  gint            npages, n;
-  GtkWidget      *page;
-  GSList         *group = NULL;
-  GtkRadioAction *radio_action;
-  gchar           name[50];
-  GSList         *lp;
-  GtkAccelKey     key = {0};
-
-  if (window->priv->tabs_menu_merge_id != 0)
-    {
-      /* remove merge id */
-      gtk_ui_manager_remove_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id);
-
-      /* drop all the old accels from the action group */
-      for (lp = window->priv->tabs_menu_actions; lp != NULL; lp = lp->next)
-        gtk_action_group_remove_action (window->action_group, GTK_ACTION (lp->data));
-
-      g_slist_free (window->priv->tabs_menu_actions);
-      window->priv->tabs_menu_actions = NULL;
-    }
-
-  /* create a new merge id */
-  window->priv->tabs_menu_merge_id = gtk_ui_manager_new_merge_id (window->priv->ui_manager);
-  terminal_assert (window->priv->tabs_menu_actions == NULL);
-
-  /* walk the tabs */
-  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
-  for (n = 0; n < npages; n++)
-    {
-      page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n);
-
-      g_snprintf (name, sizeof (name), "goto-tab-%d", n + 1);
-
-      /* create action */
-      radio_action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
-      gtk_action_set_sensitive (GTK_ACTION (radio_action), npages > 1);
-      g_object_bind_property (G_OBJECT (page), "title",
-                              G_OBJECT (radio_action), "label",
-                              G_BINDING_SYNC_CREATE);
-      gtk_radio_action_set_group (radio_action, group);
-      group = gtk_radio_action_get_group (radio_action);
-      gtk_action_group_add_action (window->action_group, GTK_ACTION (radio_action));
-      g_signal_connect (G_OBJECT (radio_action), "activate",
-          G_CALLBACK (terminal_window_action_goto_tab), window->notebook);
-
-      /* connect action to the page so we can active it when a tab is switched */
-      g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark,
-                               radio_action, g_object_unref);
-
-      /* add action in the menu */
-      gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
-                             "/main-menu/tabs-menu/placeholder-tab-items",
-                             name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
-
-      if (npages > 1)
-        {
-          /* add to right-click tab menu */
-          gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
-                                 "/tab-menu/tabs-menu/placeholder-tab-items",
-                                 name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
-        }
-
-      /* set an accelerator path */
-      g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", n + 1);
-      if (gtk_accel_map_lookup_entry (name, &key) && key.accel_key != 0)
-        gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
-
-      /* store */
-      window->priv->tabs_menu_actions = g_slist_prepend (window->priv->tabs_menu_actions, radio_action);
     }
 }
 
@@ -2534,4 +2456,85 @@ GtkWidget*
 terminal_window_get_preferences_dialog (TerminalWindow *window)
 {
   return window->priv->preferences_dialog;
+}
+
+
+
+/**
+ * terminal_window_rebuild_tabs_menu:
+ * @window  : A #TerminalWindow.
+ **/
+void
+terminal_window_rebuild_tabs_menu (TerminalWindow *window)
+{
+  gint            npages, n;
+  GtkWidget      *page;
+  GSList         *group = NULL;
+  GtkRadioAction *radio_action;
+  gchar           name[50];
+  GSList         *lp;
+  GtkAccelKey     key = {0};
+
+  if (window->priv->tabs_menu_merge_id != 0)
+    {
+      /* remove merge id */
+      gtk_ui_manager_remove_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id);
+
+      /* drop all the old accels from the action group */
+      for (lp = window->priv->tabs_menu_actions; lp != NULL; lp = lp->next)
+        gtk_action_group_remove_action (window->action_group, GTK_ACTION (lp->data));
+
+      g_slist_free (window->priv->tabs_menu_actions);
+      window->priv->tabs_menu_actions = NULL;
+    }
+
+  /* create a new merge id */
+  window->priv->tabs_menu_merge_id = gtk_ui_manager_new_merge_id (window->priv->ui_manager);
+  terminal_assert (window->priv->tabs_menu_actions == NULL);
+
+  /* walk the tabs */
+  npages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->notebook));
+  for (n = 0; n < npages; n++)
+    {
+      page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->notebook), n);
+
+      g_snprintf (name, sizeof (name), "goto-tab-%d", n + 1);
+
+      /* create action */
+      radio_action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
+      gtk_action_set_sensitive (GTK_ACTION (radio_action), npages > 1);
+      g_object_bind_property (G_OBJECT (page), "title",
+                              G_OBJECT (radio_action), "label",
+                              G_BINDING_SYNC_CREATE);
+      gtk_radio_action_set_group (radio_action, group);
+      group = gtk_radio_action_get_group (radio_action);
+      gtk_action_group_add_action (window->action_group, GTK_ACTION (radio_action));
+      g_signal_connect (G_OBJECT (radio_action), "activate",
+          G_CALLBACK (terminal_window_action_goto_tab), window->notebook);
+
+      /* connect action to the page so we can active it when a tab is switched */
+      g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark,
+                               radio_action, g_object_unref);
+
+      /* add action in the menu */
+      gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
+                             "/main-menu/tabs-menu/placeholder-tab-items",
+                             name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+
+      if (npages > 1)
+        {
+          /* add to right-click tab menu */
+          gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
+                                 "/tab-menu/tabs-menu/placeholder-tab-items",
+                                 name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+        }
+
+      /* set an accelerator path */
+      g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", n + 1);
+      if (gtk_accel_map_lookup_entry (name, &key) && key.accel_key != 0)
+        gtk_action_set_accel_path (GTK_ACTION (radio_action), name);
+
+      /* store */
+      window->priv->tabs_menu_actions = g_slist_prepend (window->priv->tabs_menu_actions, radio_action);
+    }
 }
