@@ -245,7 +245,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   terminal_window_notebook_show_tabs (window);
 
   /* actions we don't want */
-  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  action = terminal_window_get_action (window, "show-borders");
   gtk_action_set_visible (action, FALSE);
 
   /* notebook buttons */
@@ -268,7 +268,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   img = gtk_image_new_from_icon_name ("go-bottom", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
 
-  action = gtk_action_group_get_action (window->action_group, "preferences");
+  action = terminal_window_get_action (window, "preferences");
 
   button = gtk_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
@@ -518,22 +518,21 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
                                                  guint32                 timestamp,
                                                  TerminalWindowDropdown *dropdown)
 {
-  GtkActionGroup *group = TERMINAL_WINDOW (dropdown)->action_group;
-  GtkWidget      *menu;
-  GtkAction      *action;
+  GtkWidget *menu;
+  GtkAction *action;
 
   menu = gtk_menu_new ();
   g_signal_connect (G_OBJECT (menu), "selection-done",
       G_CALLBACK (gtk_widget_destroy), NULL);
 
-  action = gtk_action_group_get_action (group, "preferences");
+  action = terminal_window_get_action (TERMINAL_WINDOW (dropdown), "preferences");
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          gtk_action_create_menu_item (action));
 
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          gtk_separator_menu_item_new ());
 
-  action = gtk_action_group_get_action (group, "close-window");
+  action = terminal_window_get_action (TERMINAL_WINDOW (dropdown), "close-window");
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          gtk_action_create_menu_item (action));
 
@@ -951,7 +950,7 @@ terminal_window_dropdown_new (const gchar        *role,
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
     show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  action = terminal_window_get_action (window, "show-menubar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
   g_signal_connect_swapped (action, "activate",
       G_CALLBACK (terminal_window_dropdown_update_geometry), window);
@@ -959,7 +958,7 @@ terminal_window_dropdown_new (const gchar        *role,
   /* setup toolbar visibility */
   if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
     show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "show-toolbar");
+  action = terminal_window_get_action (window, "show-toolbar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
   g_signal_connect_swapped (action, "activate",
       G_CALLBACK (terminal_window_dropdown_update_geometry), window);

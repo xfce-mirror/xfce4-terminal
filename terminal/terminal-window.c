@@ -232,6 +232,8 @@ struct _TerminalWindowPrivate
   TerminalPreferences *preferences;
   GtkWidget           *preferences_dialog;
 
+  GtkActionGroup      *action_group;
+
   GtkWidget           *search_dialog;
   GtkWidget           *title_dialog;
 
@@ -392,20 +394,20 @@ terminal_window_init (TerminalWindow *window)
   /* required for vte transparency support: see https://bugzilla.gnome.org/show_bug.cgi?id=729884 */
   gtk_widget_set_app_paintable (GTK_WIDGET (window), TRUE);
 
-  window->action_group = gtk_action_group_new ("terminal-window");
-  gtk_action_group_set_translation_domain (window->action_group,
+  window->priv->action_group = gtk_action_group_new ("terminal-window");
+  gtk_action_group_set_translation_domain (window->priv->action_group,
                                            GETTEXT_PACKAGE);
-  gtk_action_group_add_actions (window->action_group,
+  gtk_action_group_add_actions (window->priv->action_group,
                                 action_entries,
                                 G_N_ELEMENTS (action_entries),
                                 GTK_WIDGET (window));
-  gtk_action_group_add_toggle_actions (window->action_group,
+  gtk_action_group_add_toggle_actions (window->priv->action_group,
                                        toggle_action_entries,
                                        G_N_ELEMENTS (toggle_action_entries),
                                        GTK_WIDGET (window));
 
   window->priv->ui_manager = gtk_ui_manager_new ();
-  gtk_ui_manager_insert_action_group (window->priv->ui_manager, window->action_group, 0);
+  gtk_ui_manager_insert_action_group (window->priv->ui_manager, window->priv->action_group, 0);
   gtk_ui_manager_add_ui_from_string (window->priv->ui_manager, terminal_window_ui, terminal_window_ui_length, NULL);
 
   accel_group = gtk_ui_manager_get_accel_group (window->priv->ui_manager);
@@ -455,22 +457,22 @@ terminal_window_init (TerminalWindow *window)
 
   /* create encoding action */
   window->priv->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
-  gtk_action_group_add_action (window->action_group, window->priv->encoding_action);
+  gtk_action_group_add_action (window->priv->action_group, window->priv->encoding_action);
   g_signal_connect (G_OBJECT (window->priv->encoding_action), "encoding-changed",
       G_CALLBACK (terminal_window_action_set_encoding), window);
 
   /* cache action pointers */
-  window->priv->action_undo_close_tab = gtk_action_group_get_action (window->action_group, "undo-close-tab");
-  window->priv->action_detach_tab = gtk_action_group_get_action (window->action_group, "detach-tab");
-  window->priv->action_close_other_tabs = gtk_action_group_get_action (window->action_group, "close-other-tabs");
-  window->priv->action_prev_tab = gtk_action_group_get_action (window->action_group, "prev-tab");
-  window->priv->action_next_tab = gtk_action_group_get_action (window->action_group, "next-tab");
-  window->priv->action_move_tab_left = gtk_action_group_get_action (window->action_group, "move-tab-left");
-  window->priv->action_move_tab_right = gtk_action_group_get_action (window->action_group, "move-tab-right");
-  window->priv->action_copy = gtk_action_group_get_action (window->action_group, "copy");
-  window->priv->action_search_next = gtk_action_group_get_action (window->action_group, "search-next");
-  window->priv->action_search_prev = gtk_action_group_get_action (window->action_group, "search-prev");
-  window->action_fullscreen = gtk_action_group_get_action (window->action_group, "fullscreen");
+  window->priv->action_undo_close_tab = terminal_window_get_action (window, "undo-close-tab");
+  window->priv->action_detach_tab = terminal_window_get_action (window, "detach-tab");
+  window->priv->action_close_other_tabs = terminal_window_get_action (window, "close-other-tabs");
+  window->priv->action_prev_tab = terminal_window_get_action (window, "prev-tab");
+  window->priv->action_next_tab = terminal_window_get_action (window, "next-tab");
+  window->priv->action_move_tab_left = terminal_window_get_action (window, "move-tab-left");
+  window->priv->action_move_tab_right = terminal_window_get_action (window, "move-tab-right");
+  window->priv->action_copy = terminal_window_get_action (window, "copy");
+  window->priv->action_search_next = terminal_window_get_action (window, "search-next");
+  window->priv->action_search_prev = terminal_window_get_action (window, "search-prev");
+  window->action_fullscreen = terminal_window_get_action (window, "fullscreen");
 
 #if defined(GDK_WINDOWING_X11)
   if (GDK_IS_X11_SCREEN (screen))
@@ -490,7 +492,7 @@ terminal_window_finalize (GObject *object)
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
   g_object_unref (G_OBJECT (window->priv->preferences));
-  g_object_unref (G_OBJECT (window->action_group));
+  g_object_unref (G_OBJECT (window->priv->action_group));
   g_object_unref (G_OBJECT (window->priv->ui_manager));
   g_object_unref (G_OBJECT (window->priv->encoding_action));
 
@@ -1610,7 +1612,7 @@ terminal_window_action_show_toolbar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->priv->ui_manager));
-  terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->action_group));
+  terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->priv->action_group));
 
   terminal_window_size_push (window);
 
@@ -1666,10 +1668,8 @@ terminal_window_action_readonly (GtkToggleAction *action,
   terminal_return_if_fail (window->priv->active != NULL);
 
   input_enabled = !gtk_toggle_action_get_active (action);
-  gtk_action_set_sensitive (gtk_action_group_get_action (window->action_group, "reset"),
-                            input_enabled);
-  gtk_action_set_sensitive (gtk_action_group_get_action (window->action_group, "reset-and-clear"),
-                            input_enabled);
+  gtk_action_set_sensitive (terminal_window_get_action (window, "reset"), input_enabled);
+  gtk_action_set_sensitive (terminal_window_get_action (window, "reset-and-clear"), input_enabled);
   terminal_screen_set_input_enabled (window->priv->active, input_enabled);
 }
 
@@ -2104,13 +2104,13 @@ terminal_window_zoom_update_screens (TerminalWindow *window)
     }
 
   /* update zoom actions */
-  action = gtk_action_group_get_action (window->action_group, "zoom-in");
+  action = terminal_window_get_action (window, "zoom-in");
   if (window->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
     gtk_action_set_sensitive (action, FALSE);
   else if (!gtk_action_is_sensitive (action))
     gtk_action_set_sensitive (action, TRUE);
 
-  action = gtk_action_group_get_action (window->action_group, "zoom-out");
+  action = terminal_window_get_action (window, "zoom-out");
   if (window->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
       gtk_action_set_sensitive (action, FALSE);
     else if (!gtk_action_is_sensitive (action))
@@ -2204,19 +2204,19 @@ terminal_window_new (const gchar       *role,
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
     show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  action = terminal_window_get_action (window, "show-menubar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
 
   /* setup toolbar visibility */
   if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
     show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "show-toolbar");
+  action = terminal_window_get_action (window, "show-toolbar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
 
   /* setup borders visibility */
   if (G_LIKELY (borders != TERMINAL_VISIBILITY_DEFAULT))
     show_borders = (borders == TERMINAL_VISIBILITY_SHOW);
-  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  action = terminal_window_get_action (window, "show-borders");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_borders);
 
   /* property that is not suitable for init */
@@ -2370,19 +2370,19 @@ terminal_window_get_restart_command (TerminalWindow *window)
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
     result = g_slist_prepend (result, g_strdup ("--fullscreen"));
 
-  action = gtk_action_group_get_action (window->action_group, "show-menubar");
+  action = terminal_window_get_action (window, "show-menubar");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
     result = g_slist_prepend (result, g_strdup ("--show-menubar"));
   else
     result = g_slist_prepend (result, g_strdup ("--hide-menubar"));
 
-  action = gtk_action_group_get_action (window->action_group, "show-borders");
+  action = terminal_window_get_action (window, "show-borders");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
     result = g_slist_prepend (result, g_strdup ("--show-borders"));
   else
     result = g_slist_prepend (result, g_strdup ("--hide-borders"));
 
-  action = gtk_action_group_get_action (window->action_group, "show-toolbar");
+  action = terminal_window_get_action (window, "show-toolbar");
   if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
     result = g_slist_prepend (result, g_strdup ("--show-toolbar"));
   else
@@ -2461,6 +2461,19 @@ terminal_window_get_preferences_dialog (TerminalWindow *window)
 
 
 /**
+ * terminal_window_get_action_group:
+ * @window  : A #TerminalWindow.
+ **/
+GtkAction*
+terminal_window_get_action (TerminalWindow *window,
+                            const gchar    *action_name)
+{
+  return gtk_action_group_get_action (window->priv->action_group, action_name);
+}
+
+
+
+/**
  * terminal_window_rebuild_tabs_menu:
  * @window  : A #TerminalWindow.
  **/
@@ -2482,7 +2495,7 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
 
       /* drop all the old accels from the action group */
       for (lp = window->priv->tabs_menu_actions; lp != NULL; lp = lp->next)
-        gtk_action_group_remove_action (window->action_group, GTK_ACTION (lp->data));
+        gtk_action_group_remove_action (window->priv->action_group, GTK_ACTION (lp->data));
 
       g_slist_free (window->priv->tabs_menu_actions);
       window->priv->tabs_menu_actions = NULL;
@@ -2508,7 +2521,7 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
                               G_BINDING_SYNC_CREATE);
       gtk_radio_action_set_group (radio_action, group);
       group = gtk_radio_action_get_group (radio_action);
-      gtk_action_group_add_action (window->action_group, GTK_ACTION (radio_action));
+      gtk_action_group_add_action (window->priv->action_group, GTK_ACTION (radio_action));
       g_signal_connect (G_OBJECT (radio_action), "activate",
           G_CALLBACK (terminal_window_action_goto_tab), window->notebook);
 

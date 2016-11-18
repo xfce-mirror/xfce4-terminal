@@ -49,8 +49,6 @@ typedef struct
   /* if this is a TerminalWindowDropdown */
   guint                  drop_down : 1;
 
-  GtkActionGroup        *action_group;
-
   GtkWidget             *vbox;
   GtkWidget             *menubar;
   GtkWidget             *toolbar;
@@ -90,6 +88,9 @@ gboolean        terminal_window_has_children           (TerminalWindow     *wind
 GObject        *terminal_window_get_preferences        (TerminalWindow     *window);
 
 GtkWidget      *terminal_window_get_preferences_dialog (TerminalWindow     *window);
+
+GtkAction      *terminal_window_get_action             (TerminalWindow     *window,
+                                                        const gchar        *action_name);
 
 void            terminal_window_rebuild_tabs_menu      (TerminalWindow     *window);
 
