@@ -554,6 +554,7 @@ terminal_window_dropdown_animate_down (gpointer data)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
   TerminalWindow         *window = TERMINAL_WINDOW (data);
+  GtkToggleAction        *action_fullscreen;
   GtkRequisition          req1;
   GdkRectangle            rect;
   gint                    step_size, vbox_h;
@@ -567,7 +568,9 @@ terminal_window_dropdown_animate_down (gpointer data)
 #else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
 #endif
-  if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+
+  action_fullscreen = GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen"));
+  if (!gtk_toggle_action_get_active (action_fullscreen))
     {
       /* calculate width/height if not fullscreen */
       rect.width *= dropdown->rel_width;
@@ -594,7 +597,7 @@ terminal_window_dropdown_animate_down (gpointer data)
     return TRUE;
 
   /* restore the fullscreen state */
-  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+  if (gtk_toggle_action_get_active (action_fullscreen))
     gtk_window_fullscreen (GTK_WINDOW (window));
 
   /* animation complete */
@@ -621,7 +624,7 @@ terminal_window_dropdown_animate_up (gpointer data)
 #else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
 #endif
-  if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+  if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen"))))
     {
       /* calculate width/height if not fullscreen */
       rect.width *= dropdown->rel_width;
@@ -751,7 +754,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
 
   /* correct padding with notebook size */
-  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen"))))
     {
       /* don't fullscreen during animation*/
       if (dropdown->animation_time > 0)
@@ -944,8 +947,9 @@ terminal_window_dropdown_new (const gchar        *role,
                                          PROP_DROPDOWN_STATUS_ICON, &value, NULL);
 
   /* setup full screen */
-  if (fullscreen && gtk_action_is_sensitive (window->action_fullscreen))
-    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->action_fullscreen), TRUE);
+  action = terminal_window_get_action (window, "fullscreen");
+  if (fullscreen && gtk_action_is_sensitive (action))
+    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
 
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))

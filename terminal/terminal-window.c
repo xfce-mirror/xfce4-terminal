@@ -256,6 +256,7 @@ struct _TerminalWindowPrivate
   GtkAction           *action_copy;
   GtkAction           *action_search_next;
   GtkAction           *action_search_prev;
+  GtkAction           *action_fullscreen;
 
   GQueue              *closed_tabs_list;
 };
@@ -472,14 +473,14 @@ terminal_window_init (TerminalWindow *window)
   window->priv->action_copy = terminal_window_get_action (window, "copy");
   window->priv->action_search_next = terminal_window_get_action (window, "search-next");
   window->priv->action_search_prev = terminal_window_get_action (window, "search-prev");
-  window->action_fullscreen = terminal_window_get_action (window, "fullscreen");
+  window->priv->action_fullscreen = terminal_window_get_action (window, "fullscreen");
 
 #if defined(GDK_WINDOWING_X11)
   if (GDK_IS_X11_SCREEN (screen))
     {
       /* setup fullscreen mode */
       if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
-        gtk_action_set_sensitive (window->action_fullscreen, FALSE);
+        gtk_action_set_sensitive (window->priv->action_fullscreen, FALSE);
     }
 #endif
 }
@@ -545,8 +546,8 @@ terminal_window_state_event (GtkWidget           *widget,
       && gtk_widget_get_visible (widget))
     {
       fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
-      if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)) != fullscreen)
-        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->action_fullscreen), fullscreen);
+      if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)) != fullscreen)
+        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), fullscreen);
     }
 
   if (GTK_WIDGET_CLASS (terminal_window_parent_class)->window_state_event != NULL)
@@ -2198,8 +2199,8 @@ terminal_window_new (const gchar       *role,
                 NULL);
 
   /* setup full screen */
-  if (fullscreen && gtk_action_is_sensitive (window->action_fullscreen))
-    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->action_fullscreen), TRUE);
+  if (fullscreen && gtk_action_is_sensitive (window->priv->action_fullscreen))
+    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), TRUE);
 
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
@@ -2367,7 +2368,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
   if (G_LIKELY (role != NULL))
     result = g_slist_prepend (result, g_strdup_printf ("--role=%s", role));
 
-  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->action_fullscreen)))
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)))
     result = g_slist_prepend (result, g_strdup ("--fullscreen"));
 
   action = terminal_window_get_action (window, "show-menubar");

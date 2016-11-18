@@ -57,8 +57,6 @@ typedef struct
   gchar                 *font;
   TerminalZoomLevel      zoom;
 
-  GtkAction             *action_fullscreen;
-
   TerminalVisibility     scrollbar_visibility;
 } TerminalWindow;
 
