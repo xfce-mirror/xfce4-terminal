@@ -56,41 +56,44 @@ typedef struct
 
   gchar                 *font;
   TerminalZoomLevel      zoom;
-
-  TerminalVisibility     scrollbar_visibility;
 } TerminalWindow;
 
-GType           terminal_window_get_type               (void) G_GNUC_CONST;
+GType              terminal_window_get_type                 (void) G_GNUC_CONST;
 
-GtkWidget      *terminal_window_new                    (const gchar        *role,
-                                                        gboolean            fullscreen,
-                                                        TerminalVisibility  menubar,
-                                                        TerminalVisibility  borders,
-                                                        TerminalVisibility  toolbar);
+GtkWidget         *terminal_window_new                      (const gchar        *role,
+                                                             gboolean            fullscreen,
+                                                             TerminalVisibility  menubar,
+                                                             TerminalVisibility  borders,
+                                                             TerminalVisibility  toolbar);
 
-void            terminal_window_add                    (TerminalWindow     *window,
-                                                        TerminalScreen     *screen);
+void               terminal_window_add                      (TerminalWindow     *window,
+                                                             TerminalScreen     *screen);
 
-TerminalScreen *terminal_window_get_active             (TerminalWindow     *window);
+TerminalScreen    *terminal_window_get_active               (TerminalWindow     *window);
 
-void            terminal_window_notebook_show_tabs     (TerminalWindow     *window);
+void               terminal_window_notebook_show_tabs       (TerminalWindow     *window);
 
-GSList         *terminal_window_get_restart_command    (TerminalWindow     *window);
+GSList            *terminal_window_get_restart_command      (TerminalWindow     *window);
 
-void            terminal_window_set_grid_size          (TerminalWindow     *window,
-                                                        glong               width,
-                                                        glong               height);
+void               terminal_window_set_grid_size            (TerminalWindow     *window,
+                                                             glong               width,
+                                                             glong               height);
 
-gboolean        terminal_window_has_children           (TerminalWindow     *window);
+gboolean           terminal_window_has_children             (TerminalWindow     *window);
 
-GObject        *terminal_window_get_preferences        (TerminalWindow     *window);
+GObject           *terminal_window_get_preferences          (TerminalWindow     *window);
 
-GtkWidget      *terminal_window_get_preferences_dialog (TerminalWindow     *window);
+GtkWidget         *terminal_window_get_preferences_dialog   (TerminalWindow     *window);
 
-GtkAction      *terminal_window_get_action             (TerminalWindow     *window,
-                                                        const gchar        *action_name);
+GtkAction         *terminal_window_get_action               (TerminalWindow     *window,
+                                                             const gchar        *action_name);
 
-void            terminal_window_rebuild_tabs_menu      (TerminalWindow     *window);
+TerminalVisibility terminal_window_get_scrollbar_visibility (TerminalWindow     *window);
+
+void               terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
+                                                             TerminalVisibility  scrollbar);
+
+void               terminal_window_rebuild_tabs_menu        (TerminalWindow     *window);
 
 G_END_DECLS
 

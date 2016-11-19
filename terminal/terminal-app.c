@@ -777,7 +777,7 @@ terminal_app_open_window (TerminalApp        *app,
         }
     }
 
-  TERMINAL_WINDOW (window)->scrollbar_visibility = attr->scrollbar;
+  terminal_window_set_scrollbar_visibility (TERMINAL_WINDOW (window), attr->scrollbar);
 
   /* font and zoom for new window */
   if (!reuse_window)

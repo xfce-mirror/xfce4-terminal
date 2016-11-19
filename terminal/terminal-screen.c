@@ -2276,7 +2276,7 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   if (TERMINAL_IS_WINDOW (toplevel))
-    visibility = TERMINAL_WINDOW (toplevel)->scrollbar_visibility;
+    visibility = terminal_window_get_scrollbar_visibility (TERMINAL_WINDOW (toplevel));
 
   if (G_LIKELY (visibility == TERMINAL_VISIBILITY_DEFAULT))
     {

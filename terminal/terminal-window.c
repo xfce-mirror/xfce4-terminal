@@ -259,6 +259,8 @@ struct _TerminalWindowPrivate
   GtkAction           *action_fullscreen;
 
   GQueue              *closed_tabs_list;
+
+  TerminalVisibility   scrollbar_visibility;
 };
 
 static guint   window_signals[LAST_SIGNAL];
@@ -2257,7 +2259,7 @@ terminal_window_add (TerminalWindow *window,
   gtk_notebook_set_tab_detachable (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (screen), TRUE);
 
   /* update scrollbar visibility */
-  if (window->scrollbar_visibility != TERMINAL_VISIBILITY_DEFAULT)
+  if (window->priv->scrollbar_visibility != TERMINAL_VISIBILITY_DEFAULT)
     terminal_screen_update_scrolling_bar (screen);
 
   /* update screen font from window */
@@ -2462,14 +2464,41 @@ terminal_window_get_preferences_dialog (TerminalWindow *window)
 
 
 /**
- * terminal_window_get_action_group:
- * @window  : A #TerminalWindow.
+ * terminal_window_get_action:
+ * @window      : A #TerminalWindow.
+ * @action_name : Name of action.
  **/
 GtkAction*
 terminal_window_get_action (TerminalWindow *window,
                             const gchar    *action_name)
 {
   return gtk_action_group_get_action (window->priv->action_group, action_name);
+}
+
+
+
+/**
+ * terminal_window_get_scrollbar_visibility:
+ * @window  : A #TerminalWindow.
+ **/
+TerminalVisibility
+terminal_window_get_scrollbar_visibility (TerminalWindow *window)
+{
+  return window->priv->scrollbar_visibility;
+}
+
+
+
+/**
+ * terminal_window_set_scrollbar_visibility:
+ * @window    : A #TerminalWindow.
+ * @scrollbar : Scrollbar visibility.
+ **/
+void
+terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
+                                          TerminalVisibility  scrollbar)
+{
+  window->priv->scrollbar_visibility = scrollbar;
 }
 
 
