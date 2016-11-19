@@ -643,18 +643,8 @@ terminal_window_dropdown_animate_up (gpointer data)
   /* sizes of the widgets that cannot be shrunk */
   gtk_widget_get_preferred_size (window->notebook, &req1, NULL);
   min_size = req1.height;
-  if (window->menubar != NULL
-      && gtk_widget_get_visible (window->menubar))
-    {
-      gtk_widget_get_preferred_size (window->menubar, &req1, NULL);
-      min_size += req1.height;
-    }
-  if (window->toolbar != NULL
-      && gtk_widget_get_visible (window->toolbar))
-    {
-      gtk_widget_get_preferred_size (window->toolbar, &req1, NULL);
-      min_size += req1.height;
-    }
+  min_size += terminal_window_get_menubar_height (window);
+  min_size += terminal_window_get_toolbar_height (window);
 
   if (vbox_h < min_size)
     {

@@ -50,8 +50,6 @@ typedef struct
   guint                  drop_down : 1;
 
   GtkWidget             *vbox;
-  GtkWidget             *menubar;
-  GtkWidget             *toolbar;
   GtkWidget             *notebook;
 
   gchar                 *font;
@@ -92,6 +90,10 @@ TerminalVisibility terminal_window_get_scrollbar_visibility (TerminalWindow     
 
 void               terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
                                                              TerminalVisibility  scrollbar);
+
+gint               terminal_window_get_menubar_height       (TerminalWindow     *window);
+
+gint               terminal_window_get_toolbar_height       (TerminalWindow     *window);
 
 void               terminal_window_rebuild_tabs_menu        (TerminalWindow     *window);
 

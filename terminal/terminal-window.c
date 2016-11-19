@@ -223,6 +223,9 @@ struct _TerminalWindowPrivate
 {
   GtkUIManager        *ui_manager;
 
+  GtkWidget           *menubar;
+  GtkWidget           *toolbar;
+
   /* for the drop-down to keep open with dialogs */
   guint                n_child_windows;
 
@@ -1591,18 +1594,18 @@ terminal_window_action_show_menubar (GtkToggleAction *action,
 
   if (gtk_toggle_action_get_active (action))
     {
-      if (G_LIKELY (window->menubar == NULL))
+      if (G_LIKELY (window->priv->menubar == NULL))
         {
-          window->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
-          gtk_box_pack_start (GTK_BOX (window->vbox), window->menubar, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (window->vbox), window->menubar, 0);
+          window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
+          gtk_box_pack_start (GTK_BOX (window->vbox), window->priv->menubar, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (window->vbox), window->priv->menubar, 0);
         }
 
-      gtk_widget_show (window->menubar);
+      gtk_widget_show (window->priv->menubar);
     }
-  else if (window->menubar != NULL)
+  else if (window->priv->menubar != NULL)
     {
-      gtk_widget_hide (window->menubar);
+      gtk_widget_hide (window->priv->menubar);
     }
 
   terminal_window_size_pop (window);
@@ -1621,18 +1624,20 @@ terminal_window_action_show_toolbar (GtkToggleAction *action,
 
   if (gtk_toggle_action_get_active (action))
     {
-      if (window->toolbar == NULL)
+      if (window->priv->toolbar == NULL)
         {
-          window->toolbar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-toolbar");
-          gtk_box_pack_start (GTK_BOX (window->vbox), window->toolbar, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (window->vbox), window->toolbar, window->menubar != NULL ? 1 : 0);
+          window->priv->toolbar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-toolbar");
+          gtk_box_pack_start (GTK_BOX (window->vbox), window->priv->toolbar, FALSE, FALSE, 0);
+          gtk_box_reorder_child (GTK_BOX (window->vbox),
+                                 window->priv->toolbar,
+                                 window->priv->menubar != NULL ? 1 : 0);
         }
 
-      gtk_widget_show (window->toolbar);
+      gtk_widget_show (window->priv->toolbar);
     }
-  else if (window->toolbar != NULL)
+  else if (window->priv->toolbar != NULL)
     {
-      gtk_widget_hide (window->toolbar);
+      gtk_widget_hide (window->priv->toolbar);
     }
 
   terminal_window_size_pop (window);
@@ -2499,6 +2504,44 @@ terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
                                           TerminalVisibility  scrollbar)
 {
   window->priv->scrollbar_visibility = scrollbar;
+}
+
+
+
+/**
+ * terminal_window_get_menubar_height:
+ * @window  : A #TerminalWindow.
+ **/
+gint
+terminal_window_get_menubar_height (TerminalWindow *window)
+{
+  GtkRequisition req;
+
+  req.height = 0;
+
+  if (window->priv->menubar != NULL && gtk_widget_get_visible (window->priv->menubar))
+    gtk_widget_get_preferred_size (window->priv->menubar, &req, NULL);
+
+  return req.height;
+}
+
+
+
+/**
+ * terminal_window_get_toolbar_height:
+ * @window  : A #TerminalWindow.
+ **/
+gint
+terminal_window_get_toolbar_height (TerminalWindow *window)
+{
+  GtkRequisition req;
+
+  req.height = 0;
+
+  if (window->priv->toolbar != NULL && gtk_widget_get_visible (window->priv->toolbar))
+    gtk_widget_get_preferred_size (window->priv->toolbar, &req, NULL);
+
+  return req.height;
 }
 
 
