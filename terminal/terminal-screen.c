@@ -2318,20 +2318,30 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 void
 terminal_screen_update_font (TerminalScreen *screen)
 {
-  gboolean               font_allow_bold;
-  gchar                 *font_name;
-  PangoFontDescription  *font_desc;
-  glong                  grid_w = 0, grid_h = 0;
-  GtkWidget             *toplevel;
+  gboolean              font_use_system, font_allow_bold;
+  gchar                *font_name;
+  PangoFontDescription *font_desc;
+  glong                 grid_w = 0, grid_h = 0;
+  GtkWidget            *toplevel;
+  GSettings            *settings;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
   g_object_get (G_OBJECT (screen->preferences),
+                "font-use-system", &font_use_system,
                 "font-allow-bold", &font_allow_bold,
-                "font-name", &font_name,
                 NULL);
+
+  if (font_use_system)
+    {
+      settings = g_settings_new ("org.gnome.desktop.interface");
+      font_name = g_settings_get_string (settings, "monospace-font-name");
+      g_object_unref (settings);
+    }
+  else
+    g_object_get (G_OBJECT (screen->preferences), "font-name", &font_name, NULL);
 
   toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   if (TERMINAL_IS_WINDOW (toplevel))

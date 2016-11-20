@@ -74,6 +74,7 @@ enum
   PROP_ENCODING,
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_NAME,
+  PROP_FONT_USE_SYSTEM,
   PROP_MISC_ALWAYS_SHOW_TABS,
   PROP_MISC_BELL,
   PROP_MISC_BELL_URGENT,
@@ -643,6 +644,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "FontName",
                            "Monospace 12",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:font-allow-bold:
+   **/
+  preferences_props[PROP_FONT_USE_SYSTEM] =
+      g_param_spec_boolean ("font-use-system",
+                            NULL,
+                            "FontUseSystem",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:misc-always-show-tabs:

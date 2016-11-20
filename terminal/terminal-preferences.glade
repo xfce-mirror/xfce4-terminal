@@ -1228,6 +1228,23 @@ Opacity setting is not available.</property>
                               </packing>
                             </child>
                             <child>
+                              <object class="GtkCheckButton" id="font-use-system">
+                                <property name="label" translatable="yes">Use system _font</property>
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">False</property>
+                                <property name="tooltip_text" translatable="yes">Enable this option to use system-wide monospace font.</property>
+                                <property name="halign">start</property>
+                                <property name="use_underline">True</property>
+                                <property name="draw_indicator">True</property>
+                              </object>
+                              <packing>
+                                <property name="expand">True</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
                               <object class="GtkCheckButton" id="font-allow-bold">
                                 <property name="label" translatable="yes">Allow bold te_xt</property>
                                 <property name="visible">True</property>
@@ -1241,7 +1258,7 @@ Opacity setting is not available.</property>
                               <packing>
                                 <property name="expand">True</property>
                                 <property name="fill">True</property>
-                                <property name="position">1</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                           </object>

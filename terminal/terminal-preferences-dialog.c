@@ -66,6 +66,8 @@ static void terminal_preferences_dialog_encoding_changed  (GtkComboBox          
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_scroll_unlimited  (GtkWidget                 *button,
                                                            TerminalPreferencesDialog *dialog);
+static void terminal_preferences_dialog_font_use_system   (GtkWidget                 *button,
+                                                           TerminalPreferencesDialog *dialog);
 
 
 
@@ -141,7 +143,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "scrolling-unlimited",
                                        "misc-cursor-shape", "misc-cursor-blinks",
-                                       "font-allow-bold", "misc-menubar-default",
+                                       "font-allow-bold", "font-use-system",
+                                       "misc-menubar-default",
                                        "misc-toolbar-default", "misc-borders-default",
                                        "misc-tab-close-middle-click", "misc-mouse-autohide",
                                        "misc-rewrap-on-resize", "misc-copy-on-select",
@@ -244,6 +247,14 @@ error:
       G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
   g_signal_connect (G_OBJECT (object), "clicked",
       G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
+
+  /* use system font button */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-use-system");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (G_OBJECT (object), "realize",
+      G_CALLBACK (terminal_preferences_dialog_font_use_system), dialog);
+  g_signal_connect (G_OBJECT (object), "clicked",
+      G_CALLBACK (terminal_preferences_dialog_font_use_system), dialog);
 
   /* reset comparibility button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-compatibility");
@@ -947,10 +958,27 @@ terminal_preferences_dialog_scroll_unlimited (GtkWidget                 *button,
   terminal_return_if_fail (GTK_IS_TOGGLE_BUTTON (widget));
 
   unlimited = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-lines");
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_set (G_OBJECT (object), "sensitive", !unlimited, NULL);
+}
+
+
+
+static void
+terminal_preferences_dialog_font_use_system (GtkWidget                 *button,
+                                             TerminalPreferencesDialog *dialog)
+{
+  GObject *object;
+  gboolean use_system;
+
+  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
+  terminal_return_if_fail (GTK_IS_TOGGLE_BUTTON (widget));
+
+  use_system = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-name");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_set (G_OBJECT (object), "sensitive", !use_system, NULL);
 }
 
 
