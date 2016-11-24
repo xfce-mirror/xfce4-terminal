@@ -55,6 +55,7 @@ enum
   PROP_COLOR_BACKGROUND_VARY,
   PROP_COLOR_CURSOR,
   PROP_COLOR_SELECTION,
+  PROP_COLOR_SELECTION_BG,
   PROP_COLOR_SELECTION_USE_DEFAULT,
   PROP_COLOR_BOLD,
   PROP_COLOR_BOLD_USE_DEFAULT,
@@ -414,6 +415,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-selection",
                            NULL,
                            "ColorSelection",
+                           "#ffffff",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:color-selection-bg:
+   **/
+  preferences_props[PROP_COLOR_SELECTION_BG] =
+      g_param_spec_string ("color-selection-bg",
+                           NULL,
+                           "ColorSelectionBackground",
                            "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

@@ -1010,10 +1010,12 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   /* selection color */
   if (!selection_use_default)
-    selection_use_default = !terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
-  vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
-  vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen->terminal),
-                                               selection_use_default && has_bg ? NULL : &bg);
+    {
+      selection_use_default = !terminal_preferences_get_color (screen->preferences, "color-selection", &selection);
+      vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
+      selection_use_default = !terminal_preferences_get_color (screen->preferences, "color-selection-bg", &selection);
+      vte_terminal_set_color_highlight (VTE_TERMINAL (screen->terminal), selection_use_default ? NULL : &selection);
+    }
 
   /* bold color */
   if (!bold_use_default)
