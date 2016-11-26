@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-20 18:30+0100\n"
-"PO-Revision-Date: 2016-11-21 00:20+0000\n"
+"POT-Creation-Date: 2016-11-25 18:31+0100\n"
+"PO-Revision-Date: 2016-11-26 13:40+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -364,24 +364,24 @@ msgstr "選項 \"--zoom\" 需要指定縮放等級 (%d .. %d) 作為其參數"
 msgid "Unknown option \"%s\""
 msgstr "未知的選項 \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:338
+#: ../terminal/terminal-preferences-dialog.c:343
 msgid "All Files"
 msgstr "所有檔案"
 
-#: ../terminal/terminal-preferences-dialog.c:344
+#: ../terminal/terminal-preferences-dialog.c:349
 msgid "Image Files"
 msgstr "影像檔"
 
-#: ../terminal/terminal-preferences-dialog.c:769
+#: ../terminal/terminal-preferences-dialog.c:774
 msgid "Load Presets..."
 msgstr "載入預置設定..."
 
-#: ../terminal/terminal-preferences.c:982
+#: ../terminal/terminal-preferences.c:993
 msgid "Terminal"
 msgstr "終端機"
 
 #: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:735
-#: ../terminal/terminal-screen.c:1848
+#: ../terminal/terminal-screen.c:1850
 msgid "Untitled"
 msgstr "無標題"
 
@@ -390,11 +390,11 @@ msgstr "無標題"
 msgid "Unable to determine your login shell."
 msgstr "無法決定您登入的 shell。"
 
-#: ../terminal/terminal-screen.c:1518 ../terminal/terminal-screen.c:1544
+#: ../terminal/terminal-screen.c:1520 ../terminal/terminal-screen.c:1546
 msgid "Failed to execute child"
 msgstr "無法執行子程序"
 
-#: ../terminal/terminal-screen.c:2167
+#: ../terminal/terminal-screen.c:2169
 msgid "Close this tab"
 msgstr "關閉此分頁"
 
@@ -1214,8 +1214,8 @@ msgid "General"
 msgstr "一般"
 
 #: ../terminal/terminal-preferences.glade.h:103
-msgid "Choose text selection background color"
-msgstr "選擇文字選取背景色彩"
+msgid "Choose text selection foreground color"
+msgstr "選擇文字選取前景色彩"
 
 #: ../terminal/terminal-preferences.glade.h:104
 msgid "Choose bold font color"
@@ -1227,9 +1227,9 @@ msgstr "文字選取色彩(_S)："
 
 #: ../terminal/terminal-preferences.glade.h:106
 msgid ""
-"Enable this option to set a custom background color for the selection. If "
-"disabled the background and text colors will be reversed."
-msgstr "啟用此選項來為選取範圍設定自訂背景色彩。如果停用，則背景與文字色彩會回復。"
+"Enable this option to set custom text and background colors for the "
+"selection. If disabled the background and text colors will be reversed."
+msgstr "啟用此選項來為選取範圍設定自訂文字與背景色彩。如果停用，則背景與文字色彩會回復。"
 
 #: ../terminal/terminal-preferences.glade.h:107
 msgid "B_old text color:"
@@ -1242,86 +1242,90 @@ msgid ""
 msgstr "啟用此選項可設定自訂粗體色彩。如果停用，則會使用文字色彩。"
 
 #: ../terminal/terminal-preferences.glade.h:109
+msgid "Choose text selection background color"
+msgstr "選擇文字選取背景色彩"
+
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Custom Colors"
 msgstr "自訂色彩"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Black"
 msgstr "黑"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Dark Gray"
 msgstr "暗灰"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Red"
 msgstr "紅"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "Light Red"
 msgstr "亮紅"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Green"
 msgstr "綠"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Light Green"
 msgstr "亮綠"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Brown / Yellow"
 msgstr "棕/黃"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Yellow"
 msgstr "黃"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Blue"
 msgstr "藍"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Light Blue"
 msgstr "亮藍"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Magenta"
 msgstr "洋紅"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Light Magenta"
 msgstr "亮洋紅"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Cyan"
 msgstr "青"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Light Cyan"
 msgstr "亮青"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Light Gray"
 msgstr "亮灰"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "White"
 msgstr "白"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Palette"
 msgstr "調色盤"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Presets"
 msgstr "預置設定"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "_Colors"
 msgstr "色彩(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:130
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1329,85 +1333,85 @@ msgid ""
 "different terminal behavior."
 msgstr "這些選項可能導致某些應用程式表現不正常。\n它們只是讓您處理某些特定的應用程式和\n作業系統中對終端機的行為有不同預期這\n件事。"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "_Backspace key generates:"
 msgstr "Backspace 鍵產生(_B)："
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "_Delete key generates:"
 msgstr "Delete 鍵產生(_D)："
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "_Reset compatibility options to defaults"
 msgstr "將相容性選項重設回預設值(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Compatibility"
 msgstr "相容性"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Co_mpatibility"
 msgstr "相容性(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:139
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr "雙擊時將下列字元視為一個單詞的一部分(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Rese_t double click options to defaults"
 msgstr "將雙擊選項重設回預設值(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Double Click"
 msgstr "雙擊"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Default character e_ncoding:"
 msgstr "預設字元編碼(_N)："
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Encoding"
 msgstr "編碼"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "停用所有選單列存取按鍵(像是 Alt+f)(_N)"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "停用選單快捷鍵（預設為 F10）(_E)"
 
-#: ../terminal/terminal-preferences.glade.h:146
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "停用說明視窗快捷鍵（預設為 F1）(_H)"
 
-#: ../terminal/terminal-preferences.glade.h:147
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "Shortcuts"
 msgstr "快捷鍵"
 
-#: ../terminal/terminal-preferences.glade.h:148
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "Use _middle mouse click to close tabs"
 msgstr "使用滑鼠中鍵點選以關閉分頁(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "Auto-hi_de mouse pointer"
 msgstr "自動隱藏滑鼠游標(_D)"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "Re_wrap terminal contents on resize"
 msgstr "在調整大小時重新換行終端機內容(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "Automatically _copy selection to clipboard"
 msgstr "自動複製選取的部份到剪貼簿中(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "Misc"
 msgstr "雜項"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Ad_vanced"
 msgstr "進階(_V)"
 
