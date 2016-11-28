@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-20 18:30+0100\n"
-"PO-Revision-Date: 2016-11-22 12:26+0000\n"
+"POT-Creation-Date: 2016-11-25 18:31+0100\n"
+"PO-Revision-Date: 2016-11-28 06:22+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/xfce/xfce-apps/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -361,24 +361,24 @@ msgstr "\"--zoom\" опциясы масштабтың (%d .. %d) парамет
 msgid "Unknown option \"%s\""
 msgstr "Белгісіз опция \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:338
+#: ../terminal/terminal-preferences-dialog.c:343
 msgid "All Files"
 msgstr "Барлығы"
 
-#: ../terminal/terminal-preferences-dialog.c:344
+#: ../terminal/terminal-preferences-dialog.c:349
 msgid "Image Files"
 msgstr "Сурет файлдары"
 
-#: ../terminal/terminal-preferences-dialog.c:769
+#: ../terminal/terminal-preferences-dialog.c:774
 msgid "Load Presets..."
 msgstr "Сақталған баптауларды жүктеу..."
 
-#: ../terminal/terminal-preferences.c:982
+#: ../terminal/terminal-preferences.c:993
 msgid "Terminal"
 msgstr "Терминал"
 
 #: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:735
-#: ../terminal/terminal-screen.c:1848
+#: ../terminal/terminal-screen.c:1850
 msgid "Untitled"
 msgstr "Атаусыз"
 
@@ -387,11 +387,11 @@ msgstr "Атаусыз"
 msgid "Unable to determine your login shell."
 msgstr "Тіркелгіңіздің командалық қоршауын анықтау мүмкін емес."
 
-#: ../terminal/terminal-screen.c:1518 ../terminal/terminal-screen.c:1544
+#: ../terminal/terminal-screen.c:1520 ../terminal/terminal-screen.c:1546
 msgid "Failed to execute child"
 msgstr "Ұрпақ үрдісін жөнелту қатемен аяқталды"
 
-#: ../terminal/terminal-screen.c:2167
+#: ../terminal/terminal-screen.c:2169
 msgid "Close this tab"
 msgstr "Бұл бетті жабу"
 
@@ -1211,8 +1211,8 @@ msgid "General"
 msgstr "Жалпы"
 
 #: ../terminal/terminal-preferences.glade.h:103
-msgid "Choose text selection background color"
-msgstr "Мәтін ерекшелінетін фон түсін таңдаңыз"
+msgid "Choose text selection foreground color"
+msgstr "Мәтін ерекшелінетін алдыңғы көрініс түсін таңдаңыз"
 
 #: ../terminal/terminal-preferences.glade.h:104
 msgid "Choose bold font color"
@@ -1224,9 +1224,9 @@ msgstr "Мәтінді ерек_шелеу түсі:"
 
 #: ../terminal/terminal-preferences.glade.h:106
 msgid ""
-"Enable this option to set a custom background color for the selection. If "
-"disabled the background and text colors will be reversed."
-msgstr "Таңдалған мәтіннің фон түсін таңдауыңызша етіп орнату үшін бұл опцияны іске қосыңыз. Сөндірілген болса, фон мен мәтін түстері терістелетін болады."
+"Enable this option to set custom text and background colors for the "
+"selection. If disabled the background and text colors will be reversed."
+msgstr "Таңдалған мәтіннің фон және алдыңғы көрініс түсін таңдауыңызша етіп орнату үшін бұл опцияны іске қосыңыз. Сөндірілген болса, фон мен мәтін түстері терістелетін болады."
 
 #: ../terminal/terminal-preferences.glade.h:107
 msgid "B_old text color:"
@@ -1239,86 +1239,90 @@ msgid ""
 msgstr "Таңдауыңызша жуан түсті алу үшін бұл опцияны іске қосыңыз. Сөндірілген болса, мәтін түсі қолданылады."
 
 #: ../terminal/terminal-preferences.glade.h:109
+msgid "Choose text selection background color"
+msgstr "Мәтін ерекшелінетін фон түсін таңдаңыз"
+
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Custom Colors"
 msgstr "Таңдауыңызша түстер"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Black"
 msgstr "Қара"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Dark Gray"
 msgstr "Күңгірт сұр"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Red"
 msgstr "Қызыл"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "Light Red"
 msgstr "Ашық қызыл "
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Green"
 msgstr "Жасыл"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Light Green"
 msgstr "Ашық жасыл"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Brown / Yellow"
 msgstr "Қоңыр / Сары"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Yellow"
 msgstr "Сары"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Blue"
 msgstr "Көк"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Light Blue"
 msgstr "Ашық көк"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Magenta"
 msgstr "Қарақошқыл"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Light Magenta"
 msgstr "Ақшыл қарақошқыл"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Cyan"
 msgstr "Көгілдір"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Light Cyan"
 msgstr "Ақшыл көгілдір"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Light Gray"
 msgstr "Ашық сұр"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "White"
 msgstr "Ақ"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Palette"
 msgstr "Палитра"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Presets"
 msgstr "Сақталған баптаулар"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "_Colors"
 msgstr "Тү_стер"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:130
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1326,85 +1330,85 @@ msgid ""
 "different terminal behavior."
 msgstr "Бұл опциялар кейбір қолданбалардың бұрыс жұмысына\nәкеп соғуы мүмкін, және терминал жұмысынан басқаны\nкүтіп тұрған қолданбалар мен жүйелердің жұмысын\nмүмкін қылуға арналған."
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "_Backspace key generates:"
 msgstr "Backspace ба_тырмасы әрекеті:"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "_Delete key generates:"
 msgstr "Delete баты_рмасы әрекеті:"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "_Reset compatibility options to defaults"
 msgstr "Үйлесі_мділік опцияларын бастапқы түріне келтіру"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Compatibility"
 msgstr "Үйлесімділік"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Co_mpatibility"
 msgstr "Үйлесі_мділігі"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:139
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr "Қос шерткенде, _келесі таңбаларды сөздің\nбөлігі ретінде санау:"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Rese_t double click options to defaults"
 msgstr "Қ_ос шерту опциясын бастапқы түріне келтіру"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Double Click"
 msgstr "Қос шерту"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Default character e_ncoding:"
 msgstr "Бас_тапқы кодтауы:"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Encoding"
 msgstr "Кодталуы"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Барлық мәзірге қат_ынас батырмаларын сөндіру (Alt+f сияқты)"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Мәзі_рге қатынау жарлығын сөндіру (F10 бастапқыда)"
 
-#: ../terminal/terminal-preferences.glade.h:146
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "Кө_мекті ашу жарлығын сөндіру (F1 бастапқыда)"
 
-#: ../terminal/terminal-preferences.glade.h:147
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "Shortcuts"
 msgstr "Жарлықтар"
 
-#: ../terminal/terminal-preferences.glade.h:148
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "Use _middle mouse click to close tabs"
 msgstr "Беттерді жабу үшін тышқанның ор_та батырмасын қолдану"
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "Auto-hi_de mouse pointer"
 msgstr "Тышқан курсорын автожас_ыру"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "Re_wrap terminal contents on resize"
 msgstr "Терминал өлшемі өзгергенде құрамасын қайта тасы_малдау"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "Automatically _copy selection to clipboard"
 msgstr "Таңдалғанды алмасу буферіне авто_көшіру"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "Misc"
 msgstr "Әр түрлі"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Ad_vanced"
 msgstr "К_еңейтілген"
 
