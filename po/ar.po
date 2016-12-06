@@ -5,16 +5,17 @@
 # Translators:
 # Khaled Hosny <khaledhosny@eglug.org>, 2007
 # محمد الحرقان <malham1@gmail.com>, 2012
+# Oukiki Saleh <salehoukiki@gmail.com>, 2016
 # محمد الحرقان <malham1@gmail.com>, 2012-2013
 # محمد هاني صباغ <hannysabbagh@hotmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-27 00:31+0100\n"
-"PO-Revision-Date: 2014-12-07 16:39+0000\n"
-"Last-Translator: عبدالله رضوان <abbodmar@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/xfce-apps/language/ar/)\n"
+"POT-Creation-Date: 2016-11-25 18:31+0100\n"
+"PO-Revision-Date: 2016-12-06 12:14+0000\n"
+"Last-Translator: Oukiki Saleh <salehoukiki@gmail.com>\n"
+"Language-Team: Arabic (http://www.transifex.com/xfce/xfce-apps/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,7 +68,7 @@ msgstr "خيارات عامة"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:137
+#: ../terminal/main.c:111 ../terminal/main.c:138
 msgid "display"
 msgstr "إظهار"
 
@@ -95,137 +96,171 @@ msgstr "أمر"
 msgid "title"
 msgstr "عنوان"
 
-#: ../terminal/main.c:135
+#: ../terminal/main.c:136
 msgid "Window Options"
 msgstr "خيارات النافذة"
 
 #. parameter of --geometry
-#: ../terminal/main.c:139
+#: ../terminal/main.c:140
 msgid "geometry"
 msgstr "هندسية"
 
 #. parameter of --role
-#: ../terminal/main.c:141
+#: ../terminal/main.c:142
 msgid "role"
 msgstr "دور"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:143
+#: ../terminal/main.c:144
 msgid "string"
 msgstr "سلسلة"
 
 #. parameter of --icon
-#: ../terminal/main.c:145
+#: ../terminal/main.c:146
 msgid "icon"
 msgstr "أيقونة"
 
-#: ../terminal/main.c:147
+#. parameter of --font
+#: ../terminal/main.c:148
+msgid "font"
+msgstr "خط"
+
+#. parameter of --zoom
+#: ../terminal/main.c:150
+msgid "zoom"
+msgstr "تكبير"
+
+#: ../terminal/main.c:152
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "انظر إلى %s الصفحة الرئيسية لشرح الخيارات المذكورة أعلاه."
 
-#: ../terminal/main.c:180 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "طرفية إكسفس"
 
-#: ../terminal/main.c:196
+#: ../terminal/main.c:201
 msgid "The Xfce development team. All rights reserved."
 msgstr "فريق تطوير إكسفس. كل الحقوق محفوظة."
 
-#: ../terminal/main.c:197
-msgid "Written by Benedikt Meurer <benny@xfce.org>"
-msgstr "كتب من طرف Benedikt Meurer <benny@xfce.org>"
+#: ../terminal/main.c:202
+msgid "Written by Benedikt Meurer <benny@xfce.org>,"
+msgstr ""
 
-#: ../terminal/main.c:198
-msgid "and Nick Schermer <nick@xfce.org>."
-msgstr "و Nick Schermer <nick@xfce.org>."
+#: ../terminal/main.c:203
+msgid "Nick Schermer <nick@xfce.org>"
+msgstr ""
 
-#: ../terminal/main.c:199
+#: ../terminal/main.c:204
+msgid "and Igor Zakharov <f2404@yandex.ru>."
+msgstr ""
+
+#: ../terminal/main.c:205
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "المرجوا الإبلاغ عن علة إلى <%s>."
 
-#: ../terminal/main.c:304
+#: ../terminal/main.c:312
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "تعذّر تسجيل خدمة الطرفية: %s\n"
 
-#: ../terminal/terminal-app.c:738
+#: ../terminal/terminal-app.c:870
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "سلسلة هندسة غير سليمة \"%s\"\n"
 
-#: ../terminal/terminal-encoding-action.c:70
+#: ../terminal/terminal-encoding-action.c:68
 msgid "Western European"
 msgstr "أوروبا الغربية"
 
-#: ../terminal/terminal-encoding-action.c:71
+#: ../terminal/terminal-encoding-action.c:69
 msgid "Central European"
 msgstr "أوروبا الوسطى"
 
-#: ../terminal/terminal-encoding-action.c:72
+#: ../terminal/terminal-encoding-action.c:70
 msgid "Baltic"
 msgstr "بلطيقي"
 
-#: ../terminal/terminal-encoding-action.c:73
+#: ../terminal/terminal-encoding-action.c:71
 msgid "South-Eastern Europe"
 msgstr "جنوب شرق أوروبا"
 
-#: ../terminal/terminal-encoding-action.c:74
+#: ../terminal/terminal-encoding-action.c:72
 msgid "Turkish"
 msgstr "تركي"
 
-#: ../terminal/terminal-encoding-action.c:75
+#: ../terminal/terminal-encoding-action.c:73
 msgid "Cyrillic"
 msgstr "سيريالي"
 
-#: ../terminal/terminal-encoding-action.c:76
+#: ../terminal/terminal-encoding-action.c:74
 msgid "Chinese Traditional"
 msgstr "صيني تقليدي"
 
-#: ../terminal/terminal-encoding-action.c:77
+#: ../terminal/terminal-encoding-action.c:75
 msgid "Chinese Simplified"
 msgstr "صيني مبسّط"
 
-#: ../terminal/terminal-encoding-action.c:78
+#: ../terminal/terminal-encoding-action.c:76
 msgid "Korean"
 msgstr "كوري"
 
-#: ../terminal/terminal-encoding-action.c:79
+#: ../terminal/terminal-encoding-action.c:77
 msgid "Japanese"
 msgstr "ياباني"
 
-#: ../terminal/terminal-encoding-action.c:80
+#: ../terminal/terminal-encoding-action.c:78
 msgid "Greek"
 msgstr "يوناني"
 
-#: ../terminal/terminal-encoding-action.c:81
+#: ../terminal/terminal-encoding-action.c:79
 msgid "Arabic"
 msgstr "عربي"
 
-#: ../terminal/terminal-encoding-action.c:82
+#: ../terminal/terminal-encoding-action.c:80
 msgid "Hebrew"
 msgstr "عبري"
 
-#: ../terminal/terminal-encoding-action.c:83
+#: ../terminal/terminal-encoding-action.c:81
 msgid "Thai"
 msgstr "تايلاندي"
 
-#: ../terminal/terminal-encoding-action.c:84
+#: ../terminal/terminal-encoding-action.c:82
 msgid "Vietnamese"
 msgstr "فتنامي"
 
+#: ../terminal/terminal-encoding-action.c:83
+msgid "Nordic"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:84
+msgid "Celtic"
+msgstr ""
+
 #: ../terminal/terminal-encoding-action.c:85
+msgid "Romanian"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:86
+msgid "Armenian"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:87
+msgid "Georgian"
+msgstr ""
+
+#: ../terminal/terminal-encoding-action.c:88
 msgid "Unicode"
 msgstr "الترميز"
 
-#: ../terminal/terminal-encoding-action.c:86
+#: ../terminal/terminal-encoding-action.c:89
 msgid "Other"
 msgstr "أخرى"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:254
-#: ../terminal/terminal-encoding-action.c:385
+#: ../terminal/terminal-encoding-action.c:267
+#: ../terminal/terminal-encoding-action.c:396
 #, c-format
 msgid "Default (%s)"
 msgstr "الافتراضي (%s)"
@@ -238,119 +273,129 @@ msgstr "لم يتطابق معرِّف المستخدم"
 msgid "Display mismatch"
 msgstr "عدم تطابق العرض"
 
-#: ../terminal/terminal-options.c:212
+#: ../terminal/terminal-options.c:217
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "خيار \"--العرض-الافتراضي\" يتطلب تحديد عرض X الافتراضي كمعلمة لها"
 
-#: ../terminal/terminal-options.c:228
+#: ../terminal/terminal-options.c:233
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "خيار \"--مجلد-العمل-الافتراضي\" يتطلب تحديد مجلد العمل الافتراضي كمعلمة لها"
 
-#: ../terminal/terminal-options.c:245
+#: ../terminal/terminal-options.c:250
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "يحتاج الخيار \"--execute/-x\" لتحديد الأمر الذي سيشغل على باقي سطر الأوامر"
 
-#: ../terminal/terminal-options.c:262
+#: ../terminal/terminal-options.c:267
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "يحتاج الخيار \"--execute/-x\" لتحديد الأمر الذي سيُشغل كمعلمة لها"
 
-#: ../terminal/terminal-options.c:279
+#: ../terminal/terminal-options.c:284
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "يحتاج الخيار \"--execute/-x\" لتحديد مجلّد العمل كمعلمة لها"
 
-#: ../terminal/terminal-options.c:294
+#: ../terminal/terminal-options.c:299
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "يحتاج الخيار \"--execute/-x\" لتحديد العنوان كمعلمة لها"
 
-#: ../terminal/terminal-options.c:313
+#: ../terminal/terminal-options.c:318
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "خيار \"--العرض\" يتطلب تحديد عرض X كمعلمة لها"
 
-#: ../terminal/terminal-options.c:328
+#: ../terminal/terminal-options.c:333
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "خيار \"--الهندسية\" يتطلب تحديد هندسة النافذة كمعلمة لها"
 
-#: ../terminal/terminal-options.c:343
+#: ../terminal/terminal-options.c:348
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "خيار \"--وظيفة\" يتطلب تحديد وظيفة النافذة كمعلمة لها"
 
-#: ../terminal/terminal-options.c:358
+#: ../terminal/terminal-options.c:363
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "خيار \"--sm-client-id\" يتطلب تحديد بدء الهوية كمعلمة لها"
 
-#: ../terminal/terminal-options.c:373
+#: ../terminal/terminal-options.c:378
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "خيار \"--بدء الهوية\" يتطلب تحديد بدء الهوية كمعلمة لها"
 
-#: ../terminal/terminal-options.c:389
+#: ../terminal/terminal-options.c:394
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "خيار \"--أيقونة\" يتطلب تحديد اسم أيقونة الملف كمعلمة لها"
 
-#: ../terminal/terminal-options.c:458
+#: ../terminal/terminal-options.c:461
+#, c-format
+msgid "Option \"--font\" requires specifying the font name as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:479
+#, c-format
+msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:501
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "خيار مجهول \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:311
+#: ../terminal/terminal-preferences-dialog.c:343
 msgid "All Files"
 msgstr "كل الملفات"
 
-#: ../terminal/terminal-preferences-dialog.c:317
+#: ../terminal/terminal-preferences-dialog.c:349
 msgid "Image Files"
 msgstr "ملفات صور"
 
-#: ../terminal/terminal-preferences-dialog.c:732
+#: ../terminal/terminal-preferences-dialog.c:774
 msgid "Load Presets..."
 msgstr "تحميل الإعدادات المسبقة..."
 
-#: ../terminal/terminal-preferences.c:879
+#: ../terminal/terminal-preferences.c:993
 msgid "Terminal"
 msgstr "طرفية"
 
-#: ../terminal/terminal-screen.c:396 ../terminal/terminal-screen.c:681
-#: ../terminal/terminal-screen.c:1826
+#: ../terminal/terminal-screen.c:388 ../terminal/terminal-screen.c:735
+#: ../terminal/terminal-screen.c:1850
 msgid "Untitled"
 msgstr "بدون عنوان"
 
-#: ../terminal/terminal-screen.c:581
+#: ../terminal/terminal-screen.c:635
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "تعذّر تحديد صدفة الولوج."
 
-#: ../terminal/terminal-screen.c:1525 ../terminal/terminal-screen.c:1554
+#: ../terminal/terminal-screen.c:1520 ../terminal/terminal-screen.c:1546
 msgid "Failed to execute child"
 msgstr "فشل تنفيذ الإبن"
 
-#: ../terminal/terminal-screen.c:2170
+#: ../terminal/terminal-screen.c:2169
 msgid "Close this tab"
 msgstr "اغلق هذا التبويب"
 
@@ -358,321 +403,389 @@ msgstr "اغلق هذا التبويب"
 msgid "Find"
 msgstr "بحث"
 
-#: ../terminal/terminal-search-dialog.c:95
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1849
+msgid "_Close"
+msgstr ""
+
+#: ../terminal/terminal-search-dialog.c:97
 msgid "_Previous"
 msgstr "_السابق"
 
-#: ../terminal/terminal-search-dialog.c:100
+#: ../terminal/terminal-search-dialog.c:101
 msgid "_Next"
 msgstr "_التالي"
 
-#: ../terminal/terminal-search-dialog.c:113
+#: ../terminal/terminal-search-dialog.c:111
 msgid "_Search for:"
 msgstr "_ابحث عن:"
 
-#: ../terminal/terminal-search-dialog.c:128
+#: ../terminal/terminal-search-dialog.c:124
 msgid "C_ase sensitive"
 msgstr "حساس لل_حالة"
 
-#: ../terminal/terminal-search-dialog.c:134
+#: ../terminal/terminal-search-dialog.c:129
 msgid "Match as _regular expression"
 msgstr "طابق التعابير النمطية"
 
-#: ../terminal/terminal-search-dialog.c:140
+#: ../terminal/terminal-search-dialog.c:134
 msgid "Match _entire word only"
 msgstr "طابق الكلمات ال_كاملة فقط"
 
-#: ../terminal/terminal-search-dialog.c:146
+#: ../terminal/terminal-search-dialog.c:139
 msgid "_Wrap around"
 msgstr "_التفاف حول"
 
-#: ../terminal/terminal-util.c:79 ../xfce4-terminal-default-apps.xml.in.in.h:1
+#: ../terminal/terminal-util.c:80 ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
 msgstr "محاكي طرفية Xfce"
 
-#: ../terminal/terminal-util.c:86
+#: ../terminal/terminal-util.c:88
 msgid "translator-credits"
 msgstr "Karim Oulad Chalha كريم اولاد الشلحة Mohamed Al Hargan محمد الحرقان"
 
-#: ../terminal/terminal-util.c:89
+#: ../terminal/terminal-util.c:91
 msgid "Visit Terminal website"
 msgstr "زيارة موقع الطرفية"
 
-#: ../terminal/terminal-widget.c:325
+#: ../terminal/terminal-widget.c:308
 msgid "Copy Email Address"
 msgstr "انسخ عنوان البريد الألكتروني"
 
-#: ../terminal/terminal-widget.c:326
+#: ../terminal/terminal-widget.c:309
 msgid "Compose Email"
 msgstr "ركب البريد الإلكتروني"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:313
 msgid "Copy Link Address"
 msgstr "انسخ عنوان الوصلة"
 
-#: ../terminal/terminal-widget.c:331
+#: ../terminal/terminal-widget.c:314
 msgid "Open Link"
 msgstr "افتح الوصلة"
 
-#: ../terminal/terminal-widget.c:485
+#: ../terminal/terminal-widget.c:479
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "غير قادر على إسقاط تحديد نص بسيط في الطرفية: تنسيق خاطئ (%d) أو طول (%d)\n"
 
-#: ../terminal/terminal-widget.c:501
+#: ../terminal/terminal-widget.c:495
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "غير قادر على إسقاط رابط موزيلا على الطرفية: تنسيق خاطئ (%d) أو طول (%d)\n"
 
-#: ../terminal/terminal-widget.c:527
+#: ../terminal/terminal-widget.c:521
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "غير قادر على إسقاط قائمة الروابط على الطرفية: تنسيق خاطئ (%d) أو طول (%d)\n"
 
-#: ../terminal/terminal-widget.c:572
+#: ../terminal/terminal-widget.c:557
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "وردت بيانات لون غير صالح : تنسيق خاطئ (%d) أو طول (%d)\n"
 
-#: ../terminal/terminal-widget.c:706
+#: ../terminal/terminal-widget.c:693
 #, c-format
-msgid "Failed to open the URL `%s'"
-msgstr "فشل في فتح العنوان `%s'"
+msgid "Failed to open the URL '%s'"
+msgstr ""
 
-#: ../terminal/terminal-window-dropdown.c:274
+#: ../terminal/terminal-window-dropdown.c:257
 msgid "Keep window open when it loses focus"
 msgstr "إبقاء النافذة مفتوحة عند فقد التركيز"
 
-#: ../terminal/terminal-window-dropdown.c:355
+#: ../terminal/terminal-window-dropdown.c:348
 msgid "Drop-down Terminal"
 msgstr "القائمة المنسدلة للمحطة الطرفية"
 
-#: ../terminal/terminal-window-dropdown.c:356
+#: ../terminal/terminal-window-dropdown.c:349
 msgid "Toggle Drop-down Terminal"
 msgstr "تبديل القائمة المنسدلة للمحطة الطرفية"
 
-#: ../terminal/terminal-window.c:196
+#: ../terminal/terminal-window.c:277
 msgid "_File"
 msgstr "_ملف"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:278
 msgid "Open _Tab"
 msgstr "افتح _التبويب"
 
-#: ../terminal/terminal-window.c:197
+#: ../terminal/terminal-window.c:278
 msgid "Open a new terminal tab"
 msgstr "افتح تبويب طرفية جديد"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:279
 msgid "Open T_erminal"
 msgstr "افتح _طرفية"
 
-#: ../terminal/terminal-window.c:198
+#: ../terminal/terminal-window.c:279
 msgid "Open a new terminal window"
 msgstr "افتح نافذة طرفية جديدة"
 
-#: ../terminal/terminal-window.c:199
+#: ../terminal/terminal-window.c:280
+msgid "_Undo Close Tab"
+msgstr ""
+
+#: ../terminal/terminal-window.c:281
 msgid "_Detach Tab"
 msgstr "_افصل التبويب"
 
-#: ../terminal/terminal-window.c:200 ../terminal/terminal-window.c:510
+#: ../terminal/terminal-window.c:282 ../terminal/terminal-window.c:644
 msgid "Close T_ab"
 msgstr "اغلاق علامة التبويب"
 
-#: ../terminal/terminal-window.c:201 ../terminal/terminal-window.c:514
+#: ../terminal/terminal-window.c:283
+msgid "Close Other Ta_bs"
+msgstr ""
+
+#: ../terminal/terminal-window.c:284 ../terminal/terminal-window.c:647
 msgid "Close _Window"
 msgstr "اغلاق النافذة"
 
-#: ../terminal/terminal-window.c:202
+#: ../terminal/terminal-window.c:285
 msgid "_Edit"
 msgstr "_حرّر"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:286
 msgid "_Copy"
 msgstr "_انسخ"
 
-#: ../terminal/terminal-window.c:203
+#: ../terminal/terminal-window.c:286
 msgid "Copy to clipboard"
 msgstr "انسخ إلى الحافظة"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:287
 msgid "_Paste"
 msgstr "_لصق"
 
-#: ../terminal/terminal-window.c:204
+#: ../terminal/terminal-window.c:287
 msgid "Paste from clipboard"
 msgstr "إلصق من الحافظة"
 
-#: ../terminal/terminal-window.c:205
+#: ../terminal/terminal-window.c:288
 msgid "Paste _Selection"
 msgstr "الصق ال_مُنتقى"
 
-#: ../terminal/terminal-window.c:206
+#: ../terminal/terminal-window.c:289
 msgid "Select _All"
 msgstr "حدد ال_كل"
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:290
 msgid "Pr_eferences..."
 msgstr "تفضيلات..."
 
-#: ../terminal/terminal-window.c:207
+#: ../terminal/terminal-window.c:290
 msgid "Open the preferences dialog"
 msgstr "افتح حوار التفضيلات"
 
-#: ../terminal/terminal-window.c:208
+#: ../terminal/terminal-window.c:291
 msgid "_View"
 msgstr "_اعرض"
 
-#: ../terminal/terminal-window.c:209
+#: ../terminal/terminal-window.c:292
+msgid "Zoom _In"
+msgstr ""
+
+#: ../terminal/terminal-window.c:292
+msgid "Zoom in with larger font"
+msgstr ""
+
+#: ../terminal/terminal-window.c:293
+msgid "Zoom _Out"
+msgstr ""
+
+#: ../terminal/terminal-window.c:293
+msgid "Zoom out with smaller font"
+msgstr ""
+
+#: ../terminal/terminal-window.c:294
+msgid "_Normal Size"
+msgstr ""
+
+#: ../terminal/terminal-window.c:294
+msgid "Zoom to default size"
+msgstr ""
+
+#: ../terminal/terminal-window.c:295
 msgid "_Terminal"
 msgstr "_طرفية"
 
-#: ../terminal/terminal-window.c:210
+#: ../terminal/terminal-window.c:296
 msgid "_Set Title..."
 msgstr "_اضبط العنوان..."
 
-#: ../terminal/terminal-window.c:211
+#: ../terminal/terminal-window.c:297
 msgid "_Find..."
 msgstr "_ابحث..."
 
-#: ../terminal/terminal-window.c:212
+#: ../terminal/terminal-window.c:297
+msgid "Search terminal contents"
+msgstr ""
+
+#: ../terminal/terminal-window.c:298
 msgid "Find Ne_xt"
 msgstr "ابحث عن الت_الي"
 
-#: ../terminal/terminal-window.c:213
+#: ../terminal/terminal-window.c:299
 msgid "Find Pre_vious"
 msgstr "ابحث عن ال_سابق"
 
-#: ../terminal/terminal-window.c:214
+#: ../terminal/terminal-window.c:300
+msgid "Sa_ve Contents..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:301
 msgid "_Reset"
 msgstr "_إعادة ضبط"
 
-#: ../terminal/terminal-window.c:215
+#: ../terminal/terminal-window.c:302
 msgid "_Clear Scrollback and Reset"
 msgstr "_امح التمرير الخلفي و أعد الضبط"
 
-#: ../terminal/terminal-window.c:216
+#: ../terminal/terminal-window.c:303
 msgid "T_abs"
 msgstr "تبويبات"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:304
 msgid "_Previous Tab"
 msgstr "_التبويب السابق"
 
-#: ../terminal/terminal-window.c:217
+#: ../terminal/terminal-window.c:304
 msgid "Switch to previous tab"
 msgstr "تحوّل للتبويب السابق"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:305
 msgid "_Next Tab"
 msgstr "_للتبويب التالي"
 
-#: ../terminal/terminal-window.c:218
+#: ../terminal/terminal-window.c:305
 msgid "Switch to next tab"
 msgstr "تحوّل للتبويب التالي"
 
-#: ../terminal/terminal-window.c:219
+#: ../terminal/terminal-window.c:306
 msgid "Move Tab _Left"
 msgstr "انقل التبويب يسار"
 
-#: ../terminal/terminal-window.c:220
+#: ../terminal/terminal-window.c:307
 msgid "Move Tab _Right"
 msgstr "انقل اللِّسان يمين"
 
-#: ../terminal/terminal-window.c:221
+#: ../terminal/terminal-window.c:308
 msgid "_Help"
 msgstr "_مساعدة"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:309
 msgid "_Contents"
 msgstr "_المحتويات"
 
-#: ../terminal/terminal-window.c:222
+#: ../terminal/terminal-window.c:309
 msgid "Display help contents"
 msgstr "اعرض محتويات المساعدة"
 
-#: ../terminal/terminal-window.c:223
+#: ../terminal/terminal-window.c:310
 msgid "_About"
 msgstr "_حوْل"
 
-#: ../terminal/terminal-window.c:224
-msgid "_Input Methods"
-msgstr "_طرق الإدخال"
+#: ../terminal/terminal-window.c:311
+msgid "_Zoom"
+msgstr ""
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:316
 msgid "Show _Menubar"
 msgstr "أظهر _شريط القوائم"
 
-#: ../terminal/terminal-window.c:229
+#: ../terminal/terminal-window.c:316
 msgid "Show/hide the menubar"
 msgstr "أظهر/اخفِ شريط القوائم"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:317
 msgid "Show _Toolbar"
 msgstr "إظهار شريط الأ_دوات"
 
-#: ../terminal/terminal-window.c:230
+#: ../terminal/terminal-window.c:317
 msgid "Show/hide the toolbar"
 msgstr "إظهار/إخفاء شريط الأدوات"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:318
 msgid "Show Window _Borders"
 msgstr "تظهر حدود النافذة"
 
-#: ../terminal/terminal-window.c:231
+#: ../terminal/terminal-window.c:318
 msgid "Show/hide the window decorations"
 msgstr "إظهار/إخفاء إطار النافذة"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:319
 msgid "_Fullscreen"
 msgstr "_ملء الشاشة"
 
-#: ../terminal/terminal-window.c:232
+#: ../terminal/terminal-window.c:319
 msgid "Toggle fullscreen mode"
 msgstr "بدّل نمط ملء الشاشة"
 
+#: ../terminal/terminal-window.c:320
+msgid "_Read-Only"
+msgstr ""
+
+#: ../terminal/terminal-window.c:320
+msgid "Toggle read-only mode"
+msgstr ""
+
 #. create encoding action
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:465
 msgid "Set _Encoding"
 msgstr "إختيار الترميز"
 
-#: ../terminal/terminal-window.c:502
+#: ../terminal/terminal-window.c:637
 msgid "Warning"
 msgstr "تحذير"
 
-#: ../terminal/terminal-window.c:533
+#: ../terminal/terminal-window.c:640 ../terminal/terminal-window.c:2006
+msgid "_Cancel"
+msgstr ""
+
+#: ../terminal/terminal-window.c:663
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "يحتوي هذا الإطار %d علامات تبويب مفتوحة. \nإغلاق هذه النافذة يؤدي لإغلاق كافة علامات التبويب."
 
-#: ../terminal/terminal-window.c:536
+#: ../terminal/terminal-window.c:666
 msgid "Close all tabs?"
 msgstr "إغلاق جميع التبويبات؟"
 
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:678
 msgid "Do _not ask me again"
 msgstr "لا _تسألني ثانية"
 
-#: ../terminal/terminal-window.c:1593
+#: ../terminal/terminal-window.c:1840
 msgid "Window Title|Set Title"
 msgstr "عنوان نافذة | عنوان تعيين"
 
-#: ../terminal/terminal-window.c:1606
+#: ../terminal/terminal-window.c:1859
 msgid "_Title:"
 msgstr "_العنوان:"
 
-#: ../terminal/terminal-window.c:1620
+#: ../terminal/terminal-window.c:1871
 msgid "Enter the title for the current terminal tab"
 msgstr "أدخل عنوان لتبويب الطرفية الحالية"
 
-#: ../terminal/terminal-window.c:1668
+#: ../terminal/terminal-window.c:1925
 msgid "Failed to create the regular expression"
 msgstr "فشل إنشاء التعبير العادي"
+
+#: ../terminal/terminal-window.c:2003
+msgid "Save contents..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:2007
+msgid "_Save"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2044
+msgid "Failed to save terminal contents"
+msgstr ""
 
 #: ../terminal/terminal-preferences.glade.h:1
 msgid "Replaces initial title"
@@ -751,26 +864,38 @@ msgid "Stretched"
 msgstr "مُمدد"
 
 #: ../terminal/terminal-preferences.glade.h:20
+msgid "Block"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:21
+msgid "I-Beam"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:22
+msgid "Underline"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:23
 msgid "Terminal Preferences"
 msgstr "تفضيلات الطرفية"
 
-#: ../terminal/terminal-preferences.glade.h:21
+#: ../terminal/terminal-preferences.glade.h:24
 msgid "_Initial title:"
 msgstr "_العنوان الأولي:"
 
-#: ../terminal/terminal-preferences.glade.h:22
+#: ../terminal/terminal-preferences.glade.h:25
 msgid "_Dynamically-set title:"
 msgstr "_العنوان المحدد ديناميكيا:"
 
-#: ../terminal/terminal-preferences.glade.h:23
+#: ../terminal/terminal-preferences.glade.h:26
 msgid "Title"
 msgstr "العنوان"
 
-#: ../terminal/terminal-preferences.glade.h:24
+#: ../terminal/terminal-preferences.glade.h:27
 msgid "_Run command as login shell"
 msgstr "_شغِّل أمر كصدفة ولوج"
 
-#: ../terminal/terminal-preferences.glade.h:25
+#: ../terminal/terminal-preferences.glade.h:28
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when"
 " you open new terminals. See the documentation of your shell for details "
@@ -778,23 +903,9 @@ msgid ""
 "login shell."
 msgstr "انتقِ هذا الخيار لتجبر نافذة الطرفية على تشغيل الصدفة كصدفة ولوج عندما تفتح طرفيات جديدة. راجع وثائق نافذة الطرفية لتحصل على تفاصيل أكثر حول الفرق بين تشغيلها كصدفة تفاعلية أو صدفة ولوج."
 
-#: ../terminal/terminal-preferences.glade.h:26
-msgid "_Update utmp/wtmp records when command is launched"
-msgstr "_حدِّث سجلّات utmp/wtmp عند إطلاق أمر"
-
-#: ../terminal/terminal-preferences.glade.h:27
+#: ../terminal/terminal-preferences.glade.h:29
 msgid "Command"
 msgstr "أمر"
-
-#: ../terminal/terminal-preferences.glade.h:28
-msgid "Scroll single _line using Shift-Up/-Down keys"
-msgstr "إنتقال إلى السطر بستعمال مفاتيح Shift-Up/-Down"
-
-#: ../terminal/terminal-preferences.glade.h:29
-msgid ""
-"Enable this option to be able to scroll by a single line using the up/down "
-"arrow keys together with the Shift key."
-msgstr "تمكين هذا الخيار لتكون قادرة على التنقل سطر واحد بواسطة باستخدام مفاتيح الأسهم أعلى/أسفل مع زر Shift."
 
 #: ../terminal/terminal-preferences.glade.h:30
 msgid "Scroll on ou_tput"
@@ -831,364 +942,391 @@ msgid ""
 msgstr "يحدد عدد السطور التي يمكن أتلفها للخلف باستخدام شريط التمرير."
 
 #: ../terminal/terminal-preferences.glade.h:37
+msgid "Unli_mited scrollback"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:38
+msgid ""
+"This option controls whether the terminal will have no limits on scrollback."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "Scrolling"
 msgstr "التمرير"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:40
+msgid "Cursor shape:"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:41
+msgid "Cursor blinks"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:42
+msgid "This option controls whether the cursor will be blinking or not."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:43
+msgid "Cursor"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:44
 msgid "_General"
 msgstr "_عام"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:45
 msgid "_Keep window open when it loses focus"
 msgstr "_إبقاء النافذة مفتوحة عند فقد التركيز"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:46
 msgid "Always keep window on _top"
 msgstr "إبقاء النافذة في الأعلى دائما"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:47
 msgid "Use shortcut to _focus visible window"
 msgstr "استخدام اختصار للتركيز على النافذة المرئية"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:48
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "إذا تم تمكينه، فإن اختصار فتح وسحب النافذة يعطي تركيز، بدلا من إغلاق النافذة، إذا كانت النافذة قد فقدت التركيز في وقت سابق"
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:49
 msgid "Show _status icon in notification area"
 msgstr "عرض أيقونة الحالة في منطقة الإشعارات"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "Behavior"
 msgstr "السلوك"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:51
 msgid "Wi_dth:"
 msgstr "العرض:"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "He_ight:"
 msgstr "الارتفاع:"
 
-#: ../terminal/terminal-preferences.glade.h:47
-msgid "_Opacity:"
-msgstr "_الإعتام:"
-
-#: ../terminal/terminal-preferences.glade.h:48
-msgid "D_uration:"
-msgstr "المدة:"
-
-#: ../terminal/terminal-preferences.glade.h:49
-msgid "ms"
-msgstr "مِلي ثانية"
-
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "_Always show tabs"
 msgstr "_إظهار علامات التبويب دائما"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:54
+msgid "D_uration:"
+msgstr "المدة:"
+
+#: ../terminal/terminal-preferences.glade.h:55
+msgid "ms"
+msgstr "مِلي ثانية"
+
+#: ../terminal/terminal-preferences.glade.h:56
+msgid "_Opacity:"
+msgstr "_الإعتام:"
+
+#: ../terminal/terminal-preferences.glade.h:57
+msgid ""
+"Sorry, your Window Manager does not support compositing:\n"
+"Opacity setting is not available."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Appearance and Animation"
 msgstr "المظهر والحركة"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "L_eft"
 msgstr "يسار"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "Right"
 msgstr "يمين"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "Move to monitor with poi_nter"
 msgstr "تحريك الشاشة مع المؤشر"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "Position"
 msgstr "الموقع"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "Drop-do_wn"
 msgstr "القائمة المنسدلة"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "Choose Terminal Font"
 msgstr "اختر خط الطرفية"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:66
+msgid "Use system _font"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:67
+msgid "Enable this option to use system-wide monospace font."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "Allow bold te_xt"
 msgstr "اسمح بالخط الثخين"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:69
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "فعِّل هذا الخيار لتسمح للتطبيقات التي تعمل داخل الطرفية باستخدام خط ثخين."
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "Font"
 msgstr "الخط"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:71
 msgid "_File:"
 msgstr "_ملف:"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "St_yle:"
 msgstr "نمط:"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Select Background Image File"
 msgstr "حدد ملف صورة الخلفية"
 
-#: ../terminal/terminal-preferences.glade.h:64
-msgid "Transpare_ncy:"
-msgstr "الشفافية:"
+#: ../terminal/terminal-preferences.glade.h:74
+msgid "_Shading:"
+msgstr ""
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Background"
 msgstr "صورة الخلفية"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "Display _menubar in new windows"
 msgstr "اعرض شريط _قوائم في النوافذ الجديدة"
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:77
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "فعِّل هذا الخيار لتعرض شريط قوائم في نافذة الطرفية المنشأة حديثا."
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Display _toolbar in new windows"
 msgstr "عرض شريط الأدوات في نافذة جديدة"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:79
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "فعِّل هذا الخيار لعرض شريط أدوات في نافذة الطرفية المنشأة حديثا."
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Display _borders around new windows"
 msgstr "اعرض _حواف حول النوافذ الجديدة"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:81
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "فعِّل هذا الخيار لتعرض زخرفة النوافذ حول نافذة الطرفية المنشأة حديثا."
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Default geometry:"
 msgstr "الهندسة الافتراضية:"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "c_olumns"
 msgstr "أعمدة"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "row_s"
 msgstr "صفوف"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Opening New Windows"
 msgstr "فتح نوافذ جديدة"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "Reset tab activity _indicator after"
 msgstr "إعادة تعيين مؤشر علامة التبويب النشط"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "seconds"
 msgstr "ثوان"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "Tab Activity Indicator"
 msgstr "مؤشر التبويب النشط"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:89
 msgid "_Appearance"
 msgstr "_المظهر"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "_Text color:"
 msgstr "_لون النص:"
 
-#: ../terminal/terminal-preferences.glade.h:81
-msgid "_Background color:"
-msgstr "_لون الخلفية:"
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Choose text color"
+msgstr "اختر لون النص"
 
-#: ../terminal/terminal-preferences.glade.h:82
-msgid "Tab activit_y color:"
-msgstr "لون التب_ويب النشط:"
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Color Selector"
+msgstr "منتقي الألوان"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:93
+msgid "Open a dialog to specify the color"
+msgstr "افتح حوار لتحديد لون"
+
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "Cu_rsor color:"
 msgstr "لون المؤشر:"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:95
+msgid "Choose cursor color"
+msgstr "اختر لون المؤشر"
+
+#: ../terminal/terminal-preferences.glade.h:96
+msgid "_Background color:"
+msgstr "_لون الخلفية:"
+
+#: ../terminal/terminal-preferences.glade.h:97
+msgid "Choose background color"
+msgstr "اختر لون الخلفية"
+
+#: ../terminal/terminal-preferences.glade.h:98
+msgid "Tab activit_y color:"
+msgstr "لون التب_ويب النشط:"
+
+#: ../terminal/terminal-preferences.glade.h:99
+msgid "Choose tab activity color"
+msgstr "اختر لون التبويب النشط"
+
+#: ../terminal/terminal-preferences.glade.h:100
 msgid "_Vary the background color for each tab"
 msgstr "_غير لون خلفية لكل علامة تبويب"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:101
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "لون عشوائي يعتمد على لون الخلفية المحددة، ويحفظ نفس السطوع. "
 
-#: ../terminal/terminal-preferences.glade.h:86
-msgid "Choose background color"
-msgstr "اختر لون الخلفية"
-
-#: ../terminal/terminal-preferences.glade.h:87
-msgid "Color Selector"
-msgstr "منتقي الألوان"
-
-#: ../terminal/terminal-preferences.glade.h:88
-msgid "Open a dialog to specify the color"
-msgstr "افتح حوار لتحديد لون"
-
-#: ../terminal/terminal-preferences.glade.h:89
-msgid "Choose text color"
-msgstr "اختر لون النص"
-
-#: ../terminal/terminal-preferences.glade.h:90
-msgid "Choose cursor color"
-msgstr "اختر لون المؤشر"
-
-#: ../terminal/terminal-preferences.glade.h:91
-msgid "Choose tab activity color"
-msgstr "اختر لون التبويب النشط"
-
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "General"
 msgstr "عام"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:103
+msgid "Choose text selection foreground color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:104
+msgid "Choose bold font color"
+msgstr "اختر لون الخط السميك"
+
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Text _selection color:"
 msgstr "لون النص المحدد:"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:106
 msgid ""
-"Enable this option to set a custom background color for the selection. If "
-"disabled the background and text colors will be reversed."
-msgstr "تمكين هذا الخيار لتعيين خلفية مخصصة للإختيار. إذا تم تعطيله فإن ألوان الخلفية والنص ستكون معكوسة."
+"Enable this option to set custom text and background colors for the "
+"selection. If disabled the background and text colors will be reversed."
+msgstr ""
 
-#: ../terminal/terminal-preferences.glade.h:95
-msgid "Choose text selection background color"
-msgstr "اختر لون خلفية تحديد النص"
-
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "B_old text color:"
 msgstr "لون النص الواضح:"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:108
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "تمكين هذا الخيار لتعيين لون واضح مخصص. في حالة تعطيله سيتم استخدام لون النص."
 
-#: ../terminal/terminal-preferences.glade.h:98
-msgid "Choose bold font color"
-msgstr "اختر لون الخط السميك"
+#: ../terminal/terminal-preferences.glade.h:109
+msgid "Choose text selection background color"
+msgstr "اختر لون خلفية تحديد النص"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Custom Colors"
 msgstr "ألوان مخصصة"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Black"
 msgstr "أسود"
 
-#: ../terminal/terminal-preferences.glade.h:101
-msgid "Red"
-msgstr "أحمر"
-
-#: ../terminal/terminal-preferences.glade.h:102
-msgid "Yellow"
-msgstr "أصفر"
-
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Dark Gray"
 msgstr "فضي داكن"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Red"
+msgstr "أحمر"
+
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "Light Red"
 msgstr "أحر فاتح"
 
-#: ../terminal/terminal-preferences.glade.h:105
-msgid "Light Green"
-msgstr "أخضر فاتح"
-
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Green"
 msgstr "أخضر"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Light Green"
+msgstr "أخضر فاتح"
+
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Brown / Yellow"
 msgstr "بني / أصفر"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:118
+msgid "Yellow"
+msgstr "أصفر"
+
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Blue"
 msgstr "أزرق"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Light Blue"
 msgstr "أزرق فاتح"
 
-#: ../terminal/terminal-preferences.glade.h:110
-msgid "Light Magenta"
-msgstr "أرجواني فاتح"
-
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Magenta"
 msgstr "أرجواني"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:122
+msgid "Light Magenta"
+msgstr "أرجواني فاتح"
+
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Cyan"
 msgstr "سماوي"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Light Cyan"
 msgstr "سماوي فاتح"
 
-#: ../terminal/terminal-preferences.glade.h:114
-msgid "White"
-msgstr "أبيض"
-
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Light Gray"
 msgstr "رمادي فاتح"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:126
+msgid "White"
+msgstr "أبيض"
+
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Palette"
 msgstr "لوح"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Presets"
 msgstr "مُحدد مُسبقا"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "_Colors"
 msgstr "_ألوان"
 
-#: ../terminal/terminal-preferences.glade.h:119
-msgid "_Backspace key generates:"
-msgstr "_مفتاح الرجوع للخلف يولِّد:"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Delete key generates:"
-msgstr "_مفتاح الحذف يولد:"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "Emulation s_etting:"
-msgstr "إعدادات المحاكاة:"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Reset compatibility options to defaults"
-msgstr "_أعد ضبط خيارات التوافقية الافتراضي"
-
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:130
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1196,49 +1334,85 @@ msgid ""
 "different terminal behavior."
 msgstr "قد تسبب بعض هذه الخيارات بتصرف التطبيقات بشكل غير صحيح. \nهنا فقط تستطيع التغلب\nعلى بعض التطبيقات وأنظمة التشغيل التي تتوقع\nسلوكا مختلفا للطرفية."
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:134
+msgid "_Backspace key generates:"
+msgstr "_مفتاح الرجوع للخلف يولِّد:"
+
+#: ../terminal/terminal-preferences.glade.h:135
+msgid "_Delete key generates:"
+msgstr "_مفتاح الحذف يولد:"
+
+#: ../terminal/terminal-preferences.glade.h:136
+msgid "_Reset compatibility options to defaults"
+msgstr "_أعد ضبط خيارات التوافقية الافتراضي"
+
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Compatibility"
 msgstr "التوافق"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Co_mpatibility"
 msgstr "التوافقية"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:139
 msgid ""
 "Consider the following characters part of a _word\n"
 "when double clicking:"
 msgstr "إعتبار الحروف التالية جزء من الك_لمة\nعنذ النقر المزدوج:"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Rese_t double click options to defaults"
 msgstr "إعادة تعيين _خيارات النقر المزدوج إلى الإفتراضي"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Double Click"
 msgstr "نقر مزدوج"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Default character e_ncoding:"
 msgstr "ترميز المحارف الافتراضي:"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Encoding"
 msgstr "الترميز"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "عطِّل كل مفاتيح الوصول لشريط القوائم (مثل Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:136
-msgid "Disable m_enu shortcut keys (F10 by default)"
-msgstr "تعطيل مفاتيح الاختصار القائمة (F10 افتراضيا)"
+#: ../terminal/terminal-preferences.glade.h:146
+msgid "Disable m_enu shortcut key (F10 by default)"
+msgstr ""
 
-#: ../terminal/terminal-preferences.glade.h:137
-msgid "Menubar Access"
-msgstr "وصول لشريط القوائم"
+#: ../terminal/terminal-preferences.glade.h:147
+msgid "Disable _help window shortcut key (F1 by default)"
+msgstr ""
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:148
+msgid "Shortcuts"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:149
+msgid "Use _middle mouse click to close tabs"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:150
+msgid "Auto-hi_de mouse pointer"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:151
+msgid "Re_wrap terminal contents on resize"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:152
+msgid "Automatically _copy selection to clipboard"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:153
+msgid "Misc"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Ad_vanced"
 msgstr "متقدم"
 
