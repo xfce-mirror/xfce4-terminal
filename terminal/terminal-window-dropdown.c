@@ -733,8 +733,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   /* get the active monitor size */
 #if GTK_CHECK_VERSION (3, 22, 0)
   display = gdk_screen_get_display (dropdown->screen);
-  monitor = gdk_display_get_monitor_at_window (display,
-                                               gtk_widget_get_window (GTK_WIDGET (dropdown)));
+  monitor = gdk_display_get_monitor (display, dropdown->monitor_num);
   gdk_monitor_get_geometry (monitor, &monitor_geo);
 #else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &monitor_geo);
