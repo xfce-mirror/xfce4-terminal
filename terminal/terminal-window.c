@@ -56,9 +56,10 @@
 /* Closed tabs stored info */
 typedef struct
 {
-  gchar *custom_title;
-  gchar *working_directory;
-  gint   position;
+  gchar   *custom_title;
+  gchar   *working_directory;
+  gint     position;
+  gboolean was_active;
 } TerminalWindowTabInfo;
 
 /* Signal identifiers */
@@ -247,6 +248,7 @@ struct _TerminalWindowPrivate
   GtkAction           *encoding_action;
 
   TerminalScreen      *active;
+  TerminalScreen      *last_closed_active;
 
   /* cached actions to avoid lookups */
   GtkAction           *action_undo_close_tab;
@@ -442,15 +444,15 @@ terminal_window_init (TerminalWindow *window)
 
   /* signals */
   g_signal_connect (G_OBJECT (window->notebook), "switch-page",
-    G_CALLBACK (terminal_window_notebook_page_switched), window);
+      G_CALLBACK (terminal_window_notebook_page_switched), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-reordered",
-    G_CALLBACK (terminal_window_notebook_page_reordered), window);
+      G_CALLBACK (terminal_window_notebook_page_reordered), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-removed",
-    G_CALLBACK (terminal_window_notebook_page_removed), window);
+      G_CALLBACK (terminal_window_notebook_page_removed), window);
   g_signal_connect (G_OBJECT (window->notebook), "page-added",
-    G_CALLBACK (terminal_window_notebook_page_added), window);
+      G_CALLBACK (terminal_window_notebook_page_added), window);
   g_signal_connect (G_OBJECT (window->notebook), "create-window",
-    G_CALLBACK (terminal_window_notebook_create_window), window);
+      G_CALLBACK (terminal_window_notebook_create_window), window);
   g_signal_connect (G_OBJECT (window->notebook), "button-press-event",
       G_CALLBACK (terminal_window_notebook_button_press_event), window);
   g_signal_connect (G_OBJECT (window->notebook), "button-release-event",
@@ -860,6 +862,11 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
        * in the page add function */
       was_null = (window->priv->active == NULL);
 
+      /* last active tab was closed; used by the undo close action to restore tab focus */
+      if (!was_null &&
+          gtk_notebook_page_num (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (window->priv->active)) == -1)
+        window->priv->last_closed_active = window->priv->active;
+
       /* set new active tab */
       window->priv->active = active;
 
@@ -958,9 +965,9 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
                                        guint           page_num,
                                        TerminalWindow *window)
 {
-  GtkWidget *new_page;
-  gint       new_page_num;
-  gint       npages;
+  GtkWidget             *new_page;
+  gint                   new_page_num;
+  gint                   npages;
   TerminalWindowTabInfo *tab_info;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (child));
@@ -990,6 +997,7 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
   /* store info on the tab being closed */
   tab_info = g_new (TerminalWindowTabInfo, 1);
+  tab_info->was_active = (TERMINAL_SCREEN (child) == window->priv->last_closed_active);
   tab_info->position = page_num;
   tab_info->working_directory = g_strdup (terminal_screen_get_working_directory (TERMINAL_SCREEN (child)));
   tab_info->custom_title = IS_STRING (terminal_screen_get_custom_title (TERMINAL_SCREEN (child))) ?
@@ -1278,7 +1286,7 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
                                         gint            y,
                                         TerminalWindow *window)
 {
-  TerminalScreen *screen;
+  TerminalScreen        *screen;
   TerminalWindowTabInfo *tab_info;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), NULL);
@@ -1424,10 +1432,12 @@ static void
 terminal_window_action_undo_close_tab (GtkAction      *action,
                                        TerminalWindow *window)
 {
-  GtkWidget *terminal;
+  TerminalScreen        *terminal;
   TerminalWindowTabInfo *tab_info;
+  gint                   current = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->notebook));
 
-  terminal = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
+  terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
+  terminal_window_add (window, terminal);
 
   if (G_LIKELY (!g_queue_is_empty (window->priv->closed_tabs_list)))
     {
@@ -1435,20 +1445,20 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
       tab_info = g_queue_pop_tail (window->priv->closed_tabs_list);
 
       /* set info to the new tab */
-      terminal_window_add (window, TERMINAL_SCREEN (terminal));
-      terminal_screen_set_working_directory (TERMINAL_SCREEN (terminal),
-                                             tab_info->working_directory);
+      terminal_screen_set_working_directory (terminal, tab_info->working_directory);
       if (tab_info->custom_title != NULL)
-        terminal_screen_set_custom_title (TERMINAL_SCREEN (terminal), tab_info->custom_title);
-      gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook), terminal, tab_info->position);
+        terminal_screen_set_custom_title (terminal, tab_info->custom_title);
+      gtk_notebook_reorder_child (GTK_NOTEBOOK (window->notebook), GTK_WIDGET (terminal), tab_info->position);
+
+      /* restore tab focus if the unclosed one wasn't active when it was closed */
+      if (!tab_info->was_active)
+        gtk_notebook_set_current_page (GTK_NOTEBOOK (window->notebook), current);
 
       /* free info */
       terminal_window_tab_info_free (tab_info);
     }
-  else
-    terminal_window_add (window, TERMINAL_SCREEN (terminal));
 
-  terminal_screen_launch_child (TERMINAL_SCREEN (terminal));
+  terminal_screen_launch_child (terminal);
 }
 
 
