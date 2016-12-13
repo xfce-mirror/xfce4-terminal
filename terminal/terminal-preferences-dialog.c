@@ -144,13 +144,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "scrolling-bar", "scrolling-unlimited",
                                        "misc-cursor-shape", "misc-cursor-blinks",
                                        "font-allow-bold", "font-use-system",
-                                       "misc-menubar-default",
-                                       "misc-toolbar-default", "misc-borders-default",
-                                       "misc-tab-close-middle-click", "misc-mouse-autohide",
-                                       "misc-rewrap-on-resize", "misc-copy-on-select",
-                                       "shortcuts-no-helpkey", "shortcuts-no-mnemonics",
-                                       "shortcuts-no-menukey", "binding-backspace",
-                                       "binding-delete", "background-mode",
+                                       "misc-menubar-default", "misc-toolbar-default",
+                                       "misc-borders-default", "misc-tab-close-middle-click",
+                                       "misc-mouse-autohide", "misc-rewrap-on-resize",
+                                       "misc-copy-on-select", "shortcuts-no-helpkey",
+                                       "shortcuts-no-mnemonics", "shortcuts-no-menukey",
+                                       "binding-backspace", "binding-delete",
+                                       "binding-ambiguous-width", "background-mode",
                                        "background-image-style", "color-background-vary",
                                        "dropdown-keep-open-default", "dropdown-keep-above",
                                        "dropdown-toggle-focus", "dropdown-status-icon",
@@ -810,7 +810,7 @@ terminal_preferences_dialog_reset_compat (GtkWidget                 *button,
 {
   GParamSpec  *spec;
   GValue       value = { 0, };
-  const gchar *properties[] = { "binding-backspace", "binding-delete" };
+  const gchar *properties[] = { "binding-backspace", "binding-delete", "binding-ambiguous-width" };
   guint        i;
 
   for (i = 0; i < G_N_ELEMENTS (properties); i++)

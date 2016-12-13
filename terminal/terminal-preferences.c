@@ -50,6 +50,7 @@ enum
   PROP_BACKGROUND_IMAGE_SHADING,
   PROP_BINDING_BACKSPACE,
   PROP_BINDING_DELETE,
+  PROP_BINDING_AMBIGUOUS_WIDTH,
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
   PROP_COLOR_BACKGROUND_VARY,
@@ -286,6 +287,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_TITLE, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_ERASE_BINDING))
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_ERASE_BINDING, transform_string_to_enum);
+  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING))
+    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING, transform_string_to_enum);
   if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_CURSOR_SHAPE))
     g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_CURSOR_SHAPE, transform_string_to_enum);
 
@@ -366,6 +369,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          "BindingDelete",
                          TERMINAL_TYPE_ERASE_BINDING,
                          TERMINAL_ERASE_BINDING_AUTO,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:binding-ambiguous-width:
+   **/
+  preferences_props[PROP_BINDING_AMBIGUOUS_WIDTH] =
+      g_param_spec_enum ("binding-ambiguous-width",
+                         NULL,
+                         "BindingAmbiguousWidth",
+                         TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
+                         TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**

@@ -108,6 +108,7 @@ static gchar    **terminal_screen_get_child_environment         (TerminalScreen 
 static void       terminal_screen_update_background             (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_backspace      (TerminalScreen        *screen);
 static void       terminal_screen_update_binding_delete         (TerminalScreen        *screen);
+static void       terminal_screen_update_binding_ambiguous_width(TerminalScreen        *screen);
 static void       terminal_screen_update_encoding               (TerminalScreen        *screen);
 static void       terminal_screen_update_colors                 (TerminalScreen        *screen);
 static void       terminal_screen_update_misc_bell              (TerminalScreen        *screen);
@@ -286,6 +287,7 @@ terminal_screen_init (TerminalScreen *screen)
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
   terminal_screen_update_binding_delete (screen);
+  terminal_screen_update_binding_ambiguous_width (screen);
   terminal_screen_update_encoding (screen);
   terminal_screen_update_font (screen);
   terminal_screen_update_misc_bell (screen);
@@ -537,6 +539,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_binding_backspace (screen);
   else if (strcmp ("binding-delete", name) == 0)
     terminal_screen_update_binding_delete (screen);
+  else if (strcmp ("binding-ambiguous-width", name) == 0)
+    terminal_screen_update_binding_ambiguous_width (screen);
   else if (strncmp ("color-", name, strlen ("color-")) == 0)
     terminal_screen_update_colors (screen);
   else if (strncmp ("font-", name, strlen ("font-")) == 0)
@@ -884,6 +888,18 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
   g_object_get (G_OBJECT (screen->preferences), "binding-delete", &binding, NULL);
   vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal),
       terminal_screen_binding_vte (binding));
+}
+
+
+
+static void
+terminal_screen_update_binding_ambiguous_width (TerminalScreen *screen)
+{
+  TerminalAmbiguousWidthBinding binding;
+
+  g_object_get (G_OBJECT (screen->preferences), "binding-ambiguous-width", &binding, NULL);
+  vte_terminal_set_cjk_ambiguous_width (VTE_TERMINAL (screen->terminal),
+      binding == TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW ? 1 : 2);
 }
 
 

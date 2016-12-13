@@ -73,6 +73,12 @@ typedef enum /*< enum,prefix=TERMINAL_ERASE_BINDING >*/
   TERMINAL_ERASE_BINDING_ERASE_TTY        /* TTY Erase */
 } TerminalEraseBinding;
 
+typedef enum /*< enum,prefix=TERMINAL_AMBIGUOUS_WIDTH_BINDING >*/
+{
+  TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW,
+  TERMINAL_AMBIGUOUS_WIDTH_BINDING_WIDE
+} TerminalAmbiguousWidthBinding;
+
 typedef enum /*< enum,prefix=TERMINAL_CURSOR_SHAPE >*/
 {
   TERMINAL_CURSOR_SHAPE_BLOCK,
