@@ -1189,11 +1189,10 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
 {
   GtkWidget  *notebook;
   GtkWidget **screen;
-  GtkWidget  *child, *label;
+  GtkWidget  *child, *label, *orig_window;
   gint        i, n_pages;
   gboolean    succeed = FALSE;
   GtkAllocation allocation;
-  TerminalWindow *orig_window;
   TerminalWindowTabInfo *tab_info;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -1260,12 +1259,16 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
           g_object_unref (G_OBJECT (*screen));
           g_object_unref (G_OBJECT (window));
 
-          /* erase last closed tabs entry from the original window as we don't want it on DND */
-          orig_window = TERMINAL_WINDOW (gtk_widget_get_toplevel (notebook));
-          tab_info = g_queue_pop_tail (orig_window->priv->closed_tabs_list);
-          terminal_window_tab_info_free (tab_info);
-          /* and update action to make the undo action inactive */
-          terminal_window_update_actions (orig_window);
+          /* erase last closed tabs entry from the original window as we don't want it on DND;
+           * if it's not a window, it means the last tab was dropped here - don't do anything */
+          orig_window = gtk_widget_get_toplevel (notebook);
+          if (TERMINAL_IS_WINDOW (orig_window))
+            {
+              tab_info = g_queue_pop_tail (TERMINAL_WINDOW (orig_window)->priv->closed_tabs_list);
+              terminal_window_tab_info_free (tab_info);
+              /* update actions to make the undo action inactive */
+              terminal_window_update_actions (TERMINAL_WINDOW (orig_window));
+            }
         }
 
       /* looks like everything worked out */
