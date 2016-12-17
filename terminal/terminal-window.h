@@ -49,9 +49,6 @@ typedef struct
   /* if this is a TerminalWindowDropdown */
   guint                  drop_down : 1;
 
-  GtkWidget             *vbox;
-  GtkWidget             *notebook;
-
   gchar                 *font;
   TerminalZoomLevel      zoom;
 } TerminalWindow;
@@ -80,6 +77,10 @@ void               terminal_window_set_grid_size            (TerminalWindow     
 gboolean           terminal_window_has_children             (TerminalWindow     *window);
 
 GObject           *terminal_window_get_preferences          (TerminalWindow     *window);
+
+GtkWidget         *terminal_window_get_vbox                 (TerminalWindow     *window);
+
+GtkWidget         *terminal_window_get_notebook             (TerminalWindow     *window);
 
 GtkWidget         *terminal_window_get_preferences_dialog   (TerminalWindow     *window);
 

@@ -239,9 +239,9 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_window_set_skip_taskbar_hint (GTK_WINDOW (dropdown), TRUE);
 
   /* adjust notebook for drop-down usage */
-  gtk_notebook_set_tab_pos (GTK_NOTEBOOK (window->notebook), GTK_POS_BOTTOM);
+  gtk_notebook_set_tab_pos (GTK_NOTEBOOK (terminal_window_get_notebook (window)), GTK_POS_BOTTOM);
   g_object_get (terminal_window_get_preferences (window), "misc-borders-default", &show_borders, NULL);
-  gtk_notebook_set_show_border (GTK_NOTEBOOK (window->notebook), show_borders);
+  gtk_notebook_set_show_border (GTK_NOTEBOOK (terminal_window_get_notebook (window)), show_borders);
   terminal_window_notebook_show_tabs (window);
 
   /* actions we don't want */
@@ -250,7 +250,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 
   /* notebook buttons */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-  gtk_notebook_set_action_widget (GTK_NOTEBOOK (window->notebook), hbox, GTK_PACK_END);
+  gtk_notebook_set_action_widget (GTK_NOTEBOOK (terminal_window_get_notebook (window)), hbox, GTK_PACK_END);
 
   button = dropdown->keep_open = gtk_toggle_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
@@ -583,13 +583,13 @@ terminal_window_dropdown_animate_down (gpointer data)
     step_size = 1;
 
   /* new vbox size */
-  gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
+  gtk_widget_get_preferred_size (terminal_window_get_vbox (window), &req1, NULL);
   vbox_h = req1.height + step_size;
   if (vbox_h > rect.height)
     vbox_h = rect.height;
 
   /* resize */
-  gtk_widget_set_size_request (window->vbox, req1.width, vbox_h);
+  gtk_widget_set_size_request (terminal_window_get_vbox (window), req1.width, vbox_h);
   gtk_window_resize (GTK_WINDOW (window), req1.width, vbox_h);
 
   /* continue the animation */
@@ -637,11 +637,11 @@ terminal_window_dropdown_animate_up (gpointer data)
     step_size = 1;
 
   /* new vbox size */
-  gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
+  gtk_widget_get_preferred_size (terminal_window_get_vbox (window), &req1, NULL);
   vbox_h = req1.height - step_size;
 
   /* sizes of the widgets that cannot be shrunk */
-  gtk_widget_get_preferred_size (window->notebook, &req1, NULL);
+  gtk_widget_get_preferred_size (terminal_window_get_notebook (window), &req1, NULL);
   min_size = req1.height;
   min_size += terminal_window_get_menubar_height (window);
   min_size += terminal_window_get_toolbar_height (window);
@@ -654,7 +654,7 @@ terminal_window_dropdown_animate_up (gpointer data)
     }
 
   /* resize window */
-  gtk_widget_set_size_request (window->vbox, rect.width, vbox_h);
+  gtk_widget_set_size_request (terminal_window_get_vbox (window), rect.width, vbox_h);
   gtk_window_resize (GTK_WINDOW (window), rect.width, vbox_h);
 
   return TRUE;
@@ -774,13 +774,13 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
       else if (old_animation_dir == ANIMATION_DIR_UP)
         {
           /* pick up where we aborted */
-          gtk_widget_get_preferred_size (window->vbox, &req1, NULL);
+          gtk_widget_get_preferred_size (terminal_window_get_vbox (window), &req1, NULL);
           vbox_h = req1.height;
         }
     }
 
   /* resize */
-  gtk_widget_set_size_request (window->vbox, w, vbox_h);
+  gtk_widget_set_size_request (terminal_window_get_vbox (window), w, vbox_h);
 
   /* calc position */
   x_dest = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
@@ -1011,7 +1011,7 @@ terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
   terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
 
   /* correct padding with visible widgets */
-  gtk_widget_get_preferred_size (TERMINAL_WINDOW (dropdown)->vbox, &req, NULL);
+  gtk_widget_get_preferred_size (terminal_window_get_vbox (TERMINAL_WINDOW (dropdown)), &req, NULL);
   xpad += 2;
   ypad += req.height;
 

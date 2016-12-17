@@ -1732,11 +1732,11 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
   terminal_screen_get_geometry (screen, &char_width, &char_height, NULL, NULL);
   terminal_screen_get_size (screen, &grid_width, &grid_height);
 
-  gtk_widget_get_preferred_size (TERMINAL_WINDOW (window)->vbox, NULL, &vbox_request);
+  gtk_widget_get_preferred_size (terminal_window_get_vbox (TERMINAL_WINDOW (window)), NULL, &vbox_request);
   chrome_width = vbox_request.width - (char_width * grid_width);
   chrome_height = vbox_request.height - (char_height * grid_height);
 
-  gtk_widget_get_allocation (TERMINAL_WINDOW (window)->vbox, &vbox_allocation);
+  gtk_widget_get_allocation (terminal_window_get_vbox (TERMINAL_WINDOW (window)), &vbox_allocation);
   gtk_widget_get_allocation (GTK_WIDGET (window), &toplevel_allocation);
   csd_width = toplevel_allocation.width - vbox_allocation.width;
   csd_height = toplevel_allocation.height - vbox_allocation.height;
