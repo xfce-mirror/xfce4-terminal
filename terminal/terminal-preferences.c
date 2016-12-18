@@ -62,6 +62,8 @@ enum
   PROP_COLOR_BOLD_USE_DEFAULT,
   PROP_COLOR_PALETTE,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_RUN_CUSTOM_COMMAND,
+  PROP_CUSTOM_COMMAND,
   PROP_DROPDOWN_ANIMATION_TIME,
   PROP_DROPDOWN_KEEP_OPEN_DEFAULT,
   PROP_DROPDOWN_KEEP_ABOVE,
@@ -526,6 +528,26 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "CommandLoginShell",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:run-custom-command:
+   **/
+  preferences_props[PROP_RUN_CUSTOM_COMMAND] =
+      g_param_spec_boolean ("run-custom-command",
+                            NULL,
+                            "RunCustomCommand",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:custom-command:
+   **/
+  preferences_props[PROP_CUSTOM_COMMAND] =
+      g_param_spec_string ("custom-command",
+                           NULL,
+                           "CustomCommand",
+                           "",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:dropdown-animation-time:

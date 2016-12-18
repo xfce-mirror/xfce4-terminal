@@ -582,7 +582,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
   struct passwd *pw;
   const gchar   *shell_name;
   const gchar   *shell_fullpath = NULL;
+  gchar         *custom_command = NULL;
   gboolean       command_login_shell;
+  gboolean       run_custom_command;
   guint          i;
   const gchar   *shells[] = { "/bin/sh",
                               "/bin/bash", "/usr/bin/bash",
@@ -599,61 +601,72 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
     }
   else
     {
-      /* use the SHELL environement variable if we're in
-       * non-setuid mode and the path is executable */
-      if (geteuid () == getuid ()
-          && getegid () == getgid ())
+      g_object_get (G_OBJECT (screen->preferences),
+                    "command-login-shell", &command_login_shell,
+                    "run-custom-command", &run_custom_command,
+                    NULL);
+
+      if (run_custom_command)
         {
-          shell_fullpath = g_getenv ("SHELL");
-          if (shell_fullpath != NULL
-              && g_access (shell_fullpath, X_OK) != 0)
-            shell_fullpath = NULL;
+          /* use custom command specified in preferences */
+          g_object_get (G_OBJECT (screen->preferences),
+                        "custom-command", &custom_command,
+                        NULL);
+          shell_fullpath = custom_command;
         }
-
-      if (shell_fullpath == NULL)
+      else
         {
-          pw = getpwuid (getuid ());
-          if (pw != NULL
-              && pw->pw_shell != NULL
-              && g_access (pw->pw_shell, X_OK) == 0)
+          /* use the SHELL environement variable if we're in
+          * non-setuid mode and the path is executable */
+          if (geteuid () == getuid ()
+              && getegid () == getgid ())
             {
-              /* set the shell from the password database */
-              shell_fullpath = pw->pw_shell;
+              shell_fullpath = g_getenv ("SHELL");
+              if (shell_fullpath != NULL
+                  && g_access (shell_fullpath, X_OK) != 0)
+                shell_fullpath = NULL;
             }
-          else
-            {
-              /* lookup a good fallback */
-              for (i = 0; i < G_N_ELEMENTS (shells); i++)
-                {
-                  if (access (shells [i], X_OK) == 0)
-                    {
-                      shell_fullpath = shells [i];
-                      break;
-                    }
-                }
 
-              if (G_UNLIKELY (shell_fullpath == NULL))
+          if (shell_fullpath == NULL)
+            {
+              pw = getpwuid (getuid ());
+              if (pw != NULL
+                  && pw->pw_shell != NULL
+                  && g_access (pw->pw_shell, X_OK) == 0)
                 {
-                  /* the system is truly broken */
-                  g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                               _("Unable to determine your login shell."));
-                  return FALSE;
+                  /* set the shell from the password database */
+                  shell_fullpath = pw->pw_shell;
                 }
+              else
+                {
+                  /* lookup a good fallback */
+                  for (i = 0; i < G_N_ELEMENTS (shells); i++)
+                    {
+                      if (access (shells [i], X_OK) == 0)
+                        {
+                          shell_fullpath = shells [i];
+                          break;
+                        }
+                    }
+
+                  if (G_UNLIKELY (shell_fullpath == NULL))
+                    {
+                      /* the system is truly broken */
+                      g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
+                                   _("Unable to determine your login shell."));
+                      return FALSE;
+                    }
+                 }
             }
         }
 
       terminal_assert (shell_fullpath != NULL);
       shell_name = strrchr (shell_fullpath, '/');
-
       if (shell_name != NULL)
         ++shell_name;
       else
         shell_name = shell_fullpath;
       *command = g_strdup (shell_fullpath);
-
-      g_object_get (G_OBJECT (screen->preferences),
-                    "command-login-shell", &command_login_shell,
-                    NULL);
 
       *argv = g_new (gchar *, 2);
       if (command_login_shell)
@@ -661,6 +674,9 @@ terminal_screen_get_child_command (TerminalScreen   *screen,
       else
         (*argv)[0] = g_strdup (shell_name);
       (*argv)[1] = NULL;
+
+      if (custom_command != NULL)
+        g_free (custom_command);
     }
 
   return TRUE;
