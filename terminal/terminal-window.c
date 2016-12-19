@@ -81,6 +81,8 @@ static void         terminal_window_style_set                     (GtkWidget    
                                                                    GtkStyle               *previous_style);
 static gboolean     terminal_window_scroll_event                  (GtkWidget              *widget,
                                                                    GdkEventScroll         *event);
+static gboolean     terminal_window_key_press_event               (GtkWidget              *widget,
+                                                                   GdkEventKey            *event);
 static gboolean     terminal_window_confirm_close                 (TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
 static gboolean     terminal_window_size_pop                      (gpointer                data);
@@ -217,6 +219,8 @@ static void         terminal_window_switch_tab                    (GtkNotebook  
 static void         terminal_window_move_tab                      (GtkNotebook            *notebook,
                                                                    gboolean                move_left);
 static void         terminal_window_tab_info_free                 (TerminalWindowTabInfo  *tab_info);
+static void         terminal_window_menubar_deactivate            (GtkWidget              *widget,
+                                                                   TerminalWindow         *window);
 
 
 
@@ -344,6 +348,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gtkwidget_class->delete_event = terminal_window_delete_event;
   gtkwidget_class->style_set = terminal_window_style_set;
   gtkwidget_class->scroll_event = terminal_window_scroll_event;
+  gtkwidget_class->key_press_event = terminal_window_key_press_event;
 
   /**
    * TerminalWindow::new-window
@@ -610,6 +615,40 @@ terminal_window_scroll_event (GtkWidget      *widget,
     }
 
   return FALSE;
+}
+
+
+
+static gboolean
+terminal_window_key_press_event (GtkWidget   *widget,
+                                 GdkEventKey *event)
+{
+  GdkModifierType  mod;
+  guint            key;
+  gboolean         no_menukey;
+  gchar           *menu_bar_accel;
+  TerminalWindow  *window = TERMINAL_WINDOW (widget);
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "shortcuts-no-menukey", &no_menukey,
+                NULL);
+
+  if (!no_menukey && terminal_window_get_menubar_height (window) == 0)
+    {
+      g_object_get (G_OBJECT (gtk_settings_get_default ()),
+                    "gtk-menu-bar-accel", &menu_bar_accel,
+                    NULL);
+      gtk_accelerator_parse (menu_bar_accel, &key, &mod);
+      g_free (menu_bar_accel);
+      if (event->keyval == key && (event->state & gtk_accelerator_get_default_mod_mask ()) == mod)
+        {
+          terminal_window_size_push (window);
+          gtk_widget_show (window->priv->menubar);
+          terminal_window_size_pop (window);
+        }
+    }
+
+  return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
 }
 
 
@@ -1603,25 +1642,12 @@ static void
 terminal_window_action_show_menubar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
-  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->priv->ui_manager));
-
   terminal_window_size_push (window);
 
   if (gtk_toggle_action_get_active (action))
-    {
-      if (G_LIKELY (window->priv->menubar == NULL))
-        {
-          window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
-          gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
-          gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
-        }
-
-      gtk_widget_show (window->priv->menubar);
-    }
-  else if (window->priv->menubar != NULL)
-    {
-      gtk_widget_hide (window->priv->menubar);
-    }
+    gtk_widget_show (window->priv->menubar);
+  else
+    gtk_widget_hide (window->priv->menubar);
 
   terminal_window_size_pop (window);
 }
@@ -2189,6 +2215,20 @@ terminal_window_tab_info_free (TerminalWindowTabInfo *tab_info)
 
 
 
+static void
+terminal_window_menubar_deactivate (GtkWidget      *widget,
+                                    TerminalWindow *window)
+{
+  GtkAction *action;
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  action = terminal_window_get_action (window, "show-menubar");
+  terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
+}
+
+
+
 /**
  * terminal_window_new:
  * @fullscreen: Whether to set the window to fullscreen.
@@ -2224,11 +2264,19 @@ terminal_window_new (const gchar       *role,
   if (fullscreen && gtk_action_is_sensitive (window->priv->action_fullscreen))
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), TRUE);
 
+  window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
+  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
+  gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
+  /* auto-hide menubar if it was shown temporarily */
+  g_signal_connect (G_OBJECT (window->priv->menubar), "deactivate",
+      G_CALLBACK (terminal_window_menubar_deactivate), window);
+
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
     show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
   action = terminal_window_get_action (window, "show-menubar");
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
+  terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
 
   /* setup toolbar visibility */
   if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
