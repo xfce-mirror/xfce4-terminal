@@ -64,12 +64,6 @@ static void terminal_preferences_dialog_background_set    (GtkFileChooserButton 
                                                            TerminalPreferencesDialog *dialog);
 static void terminal_preferences_dialog_encoding_changed  (GtkComboBox               *combobox,
                                                            TerminalPreferencesDialog *dialog);
-static void terminal_preferences_dialog_custom_command    (GtkWidget                 *button,
-                                                           TerminalPreferencesDialog *dialog);
-static void terminal_preferences_dialog_scroll_unlimited  (GtkWidget                 *button,
-                                                           TerminalPreferencesDialog *dialog);
-static void terminal_preferences_dialog_font_use_system   (GtkWidget                 *button,
-                                                           TerminalPreferencesDialog *dialog);
 
 
 
@@ -247,27 +241,27 @@ error:
 
   /* run custom command button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "run-custom-command");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_signal_connect (G_OBJECT (object), "realize",
-      G_CALLBACK (terminal_preferences_dialog_custom_command), dialog);
-  g_signal_connect (G_OBJECT (object), "clicked",
-      G_CALLBACK (terminal_preferences_dialog_custom_command), dialog);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "hbox3");
+  terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_SYNC_CREATE);
 
   /* unlimited scrollback button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-unlimited");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_signal_connect (G_OBJECT (object), "realize",
-      G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
-  g_signal_connect (G_OBJECT (object), "clicked",
-      G_CALLBACK (terminal_preferences_dialog_scroll_unlimited), dialog);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-lines");
+  terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
 
   /* use system font button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-use-system");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_signal_connect (G_OBJECT (object), "realize",
-      G_CALLBACK (terminal_preferences_dialog_font_use_system), dialog);
-  g_signal_connect (G_OBJECT (object), "clicked",
-      G_CALLBACK (terminal_preferences_dialog_font_use_system), dialog);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "font-name");
+  terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
 
   /* reset comparibility button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-compatibility");
@@ -294,10 +288,12 @@ error:
                           G_OBJECT (object), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection");
+  terminal_return_if_fail (G_IS_OBJECT (object2));
   g_object_bind_property (G_OBJECT (object), "active",
                           G_OBJECT (object2), "sensitive",
                           G_BINDING_SYNC_CREATE);
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-bg");
+  terminal_return_if_fail (G_IS_OBJECT (objec2));
   g_object_bind_property (G_OBJECT (object), "active",
                           G_OBJECT (object2), "sensitive",
                           G_BINDING_SYNC_CREATE);
@@ -308,6 +304,7 @@ error:
                           G_OBJECT (object), "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-bold");
+  terminal_return_if_fail (G_IS_OBJECT (object2));
   g_object_bind_property (G_OBJECT (object), "active",
                           G_OBJECT (object2), "sensitive",
                           G_BINDING_SYNC_CREATE);
@@ -960,60 +957,6 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
       g_object_set (dialog->preferences, "encoding", encoding, NULL);
       g_free (encoding);
     }
-}
-
-
-
-static void
-terminal_preferences_dialog_custom_command (GtkWidget                 *button,
-                                            TerminalPreferencesDialog *dialog)
-{
-  GObject *object;
-  gboolean run_custom_command;
-
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_TOGGLE_BUTTON (widget));
-
-  run_custom_command = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "custom-command");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_set (G_OBJECT (object), "sensitive", run_custom_command, NULL);
-}
-
-
-
-static void
-terminal_preferences_dialog_scroll_unlimited (GtkWidget                 *button,
-                                              TerminalPreferencesDialog *dialog)
-{
-  GObject *object;
-  gboolean unlimited;
-
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_TOGGLE_BUTTON (widget));
-
-  unlimited = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "scrolling-lines");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_set (G_OBJECT (object), "sensitive", !unlimited, NULL);
-}
-
-
-
-static void
-terminal_preferences_dialog_font_use_system (GtkWidget                 *button,
-                                             TerminalPreferencesDialog *dialog)
-{
-  GObject *object;
-  gboolean use_system;
-
-  terminal_return_if_fail (TERMINAL_IS_PREFERENCES_DIALOG (dialog));
-  terminal_return_if_fail (GTK_IS_TOGGLE_BUTTON (widget));
-
-  use_system = gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-name");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_set (G_OBJECT (object), "sensitive", !use_system, NULL);
 }
 
 
