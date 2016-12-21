@@ -70,6 +70,26 @@ enum
   LAST_SIGNAL
 };
 
+/* CSS for slim notebook tabs style */
+const gchar *CSS_SLIM_TABS =
+"notebook tab {\n"
+"  min-height: 0;\n"
+"  padding-top: 2px;\n"
+"  padding-bottom: 2px;\n"
+"}\n"
+"notebook tab button {\n"
+"  min-height: 0;\n"
+"  min-width: 0;\n"
+"  padding: 2px;\n"
+"  margin-top: 2px;\n"
+"  margin-bottom: 2px;\n"
+"}\n"
+"notebook button {\n"
+"  min-height: 0;\n"
+"  min-width: 0;\n"
+"  padding: 2px;\n"
+"}\n";
+
 
 
 static void         terminal_window_finalize                      (GObject                *object);
@@ -96,6 +116,7 @@ static gboolean     terminal_window_accel_activate                (GtkAccelGroup
                                                                    GdkModifierType         accel_mods,
                                                                    TerminalWindow         *window);
 static void         terminal_window_update_actions                (TerminalWindow         *window);
+static void         terminal_window_update_slim_tabs              (TerminalWindow         *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
                                                                    GtkWidget              *page,
                                                                    guint                   page_num,
@@ -448,6 +469,8 @@ terminal_window_init (TerminalWindow *window)
 
   /* set the notebook group id */
   gtk_notebook_set_group_name (GTK_NOTEBOOK (window->priv->notebook), window_notebook_group);
+
+  terminal_window_update_slim_tabs (window);
 
   /* signals */
   g_signal_connect (G_OBJECT (window->priv->notebook), "switch-page",
@@ -875,6 +898,29 @@ terminal_window_update_actions (TerminalWindow *window)
       action = g_object_get_qdata (G_OBJECT (window->priv->active), tabs_menu_action_quark);
       if (G_LIKELY (action != NULL))
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+    }
+}
+
+
+
+static void
+terminal_window_update_slim_tabs (TerminalWindow *window)
+{
+  GdkScreen      *screen = gtk_window_get_screen (GTK_WINDOW (window));
+  GtkCssProvider *provider;
+  gboolean        slim_tabs;
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "misc-slim-tabs", &slim_tabs,
+                NULL);
+  if (slim_tabs)
+    {
+      provider = gtk_css_provider_new ();
+      gtk_style_context_add_provider_for_screen (screen,
+                                                 GTK_STYLE_PROVIDER (provider),
+                                                 GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+      gtk_css_provider_load_from_data (provider, CSS_SLIM_TABS, -1, NULL);
+      g_object_unref (provider);
     }
 }
 

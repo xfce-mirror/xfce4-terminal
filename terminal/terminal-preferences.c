@@ -102,6 +102,7 @@ enum
   PROP_MISC_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
   PROP_MISC_SHIFT_ARROWS_SCROLL,
+  PROP_MISC_SLIM_TABS,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -931,6 +932,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("misc-shift-arrows-scroll",
                             NULL,
                             "MiscUseShiftArrowsToScroll",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-shift-arrows-scroll:
+   **/
+  preferences_props[PROP_MISC_SLIM_TABS] =
+      g_param_spec_boolean ("misc-slim-tabs",
+                            NULL,
+                            "MiscSlimTabs",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
