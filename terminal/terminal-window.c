@@ -71,20 +71,21 @@ enum
 };
 
 /* CSS for slim notebook tabs style */
+#define NOTEBOOK_NAME PACKAGE_NAME "-notebook"
 const gchar *CSS_SLIM_TABS =
-"notebook tab {\n"
+"#" NOTEBOOK_NAME " tab {\n"
 "  min-height: 0;\n"
 "  padding-top: 2px;\n"
 "  padding-bottom: 2px;\n"
 "}\n"
-"notebook tab button {\n"
+"#" NOTEBOOK_NAME " tab button {\n"
 "  min-height: 0;\n"
 "  min-width: 0;\n"
 "  padding: 2px;\n"
 "  margin-top: 2px;\n"
 "  margin-bottom: 2px;\n"
 "}\n"
-"notebook button {\n"
+"#" NOTEBOOK_NAME " button {\n"
 "  min-height: 0;\n"
 "  min-width: 0;\n"
 "  padding: 2px;\n"
@@ -470,6 +471,8 @@ terminal_window_init (TerminalWindow *window)
   /* set the notebook group id */
   gtk_notebook_set_group_name (GTK_NOTEBOOK (window->priv->notebook), window_notebook_group);
 
+  /* set notebook tabs style */
+  gtk_widget_set_name (window->priv->notebook, NOTEBOOK_NAME);
   terminal_window_update_slim_tabs (window);
 
   /* signals */
