@@ -196,7 +196,9 @@ terminal_app_finalize (GObject *object)
 static void
 terminal_app_update_accels (TerminalApp *app)
 {
-  gboolean no_key;
+  gboolean        no_key;
+  GdkModifierType mod;
+  guint           key;
 
   g_object_get (G_OBJECT (app->preferences),
                 "shortcuts-no-menukey", &no_key,
@@ -205,6 +207,9 @@ terminal_app_update_accels (TerminalApp *app)
                 "gtk-menu-bar-accel",
                 no_key ? NULL : app->initial_menu_bar_accel,
                 NULL);
+  gtk_accelerator_parse (app->initial_menu_bar_accel, &key, &mod);
+  gtk_accel_map_change_entry ("<Actions>/terminal-window/toggle-menubar",
+                              no_key ? 0 : key, no_key ? 0 : mod, TRUE);
 
   g_object_get (G_OBJECT (app->preferences),
                 "shortcuts-no-helpkey", &no_key,
