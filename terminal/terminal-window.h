@@ -98,6 +98,9 @@ gint               terminal_window_get_toolbar_height       (TerminalWindow     
 
 void               terminal_window_rebuild_tabs_menu        (TerminalWindow     *window);
 
+void               terminal_window_action_show_menubar      (GtkToggleAction    *action,
+                                                             TerminalWindow     *window);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_WINDOW_H */

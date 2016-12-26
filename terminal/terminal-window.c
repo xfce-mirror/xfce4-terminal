@@ -189,8 +189,6 @@ static void         terminal_window_action_select_all             (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_prefs                  (GtkAction              *action,
                                                                    TerminalWindow         *window);
-static void         terminal_window_action_show_menubar           (GtkToggleAction        *action,
-                                                                   TerminalWindow         *window);
 static void         terminal_window_action_show_toolbar           (GtkToggleAction        *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_show_borders           (GtkToggleAction        *action,
@@ -504,6 +502,13 @@ terminal_window_init (TerminalWindow *window)
   gtk_action_group_add_action (window->priv->action_group, window->priv->encoding_action);
   g_signal_connect (G_OBJECT (window->priv->encoding_action), "encoding-changed",
       G_CALLBACK (terminal_window_action_set_encoding), window);
+
+  window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
+  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
+  gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
+  /* auto-hide menubar if it was shown temporarily */
+  g_signal_connect (G_OBJECT (window->priv->menubar), "deactivate",
+      G_CALLBACK (terminal_window_menubar_deactivate), window);
 
   /* cache action pointers */
   window->priv->action_undo_close_tab = terminal_window_get_action (window, "undo-close-tab");
@@ -1657,22 +1662,6 @@ terminal_window_action_prefs (GtkAction      *action,
 
 
 static void
-terminal_window_action_show_menubar (GtkToggleAction *action,
-                                     TerminalWindow  *window)
-{
-  terminal_window_size_push (window);
-
-  if (gtk_toggle_action_get_active (action))
-    gtk_widget_show (window->priv->menubar);
-  else
-    gtk_widget_hide (window->priv->menubar);
-
-  terminal_window_size_pop (window);
-}
-
-
-
-static void
 terminal_window_action_show_toolbar (GtkToggleAction *action,
                                      TerminalWindow  *window)
 {
@@ -2296,13 +2285,6 @@ terminal_window_new (const gchar       *role,
   if (fullscreen && gtk_action_is_sensitive (window->priv->action_fullscreen))
     gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), TRUE);
 
-  window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
-  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
-  gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
-  /* auto-hide menubar if it was shown temporarily */
-  g_signal_connect (G_OBJECT (window->priv->menubar), "deactivate",
-      G_CALLBACK (terminal_window_menubar_deactivate), window);
-
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
     show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
@@ -2397,6 +2379,10 @@ terminal_window_get_active (TerminalWindow *window)
 
 
 
+/**
+ * terminal_window_notebook_show_tabs:
+ * @window  : A #TerminalWindow.
+ **/
 void
 terminal_window_notebook_show_tabs (TerminalWindow *window)
 {
@@ -2742,4 +2728,25 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
       /* store */
       window->priv->tabs_menu_actions = g_slist_prepend (window->priv->tabs_menu_actions, radio_action);
     }
+}
+
+
+
+/**
+ * terminal_window_action_show_menubar:
+ * @action  : A toggle action.
+ * @window  : A #TerminalWindow.
+ **/
+void
+terminal_window_action_show_menubar (GtkToggleAction *action,
+                                     TerminalWindow  *window)
+{
+  terminal_window_size_push (window);
+
+  if (gtk_toggle_action_get_active (action))
+    gtk_widget_show (window->priv->menubar);
+  else
+    gtk_widget_hide (window->priv->menubar);
+
+  terminal_window_size_pop (window);
 }

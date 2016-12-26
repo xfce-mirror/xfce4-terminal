@@ -947,6 +947,7 @@ terminal_window_dropdown_new (const gchar        *role,
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
   g_signal_connect_swapped (action, "activate",
       G_CALLBACK (terminal_window_dropdown_update_geometry), window);
+  terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
 
   /* setup toolbar visibility */
   if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
