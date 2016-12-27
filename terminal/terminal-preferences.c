@@ -103,6 +103,7 @@ enum
   PROP_MISC_REWRAP_ON_RESIZE,
   PROP_MISC_SHIFT_ARROWS_SCROLL,
   PROP_MISC_SLIM_TABS,
+  PROP_MISC_BRACKETED_PASTE,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -936,12 +937,22 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:misc-shift-arrows-scroll:
+   * TerminalPreferences:misc-slim-tabs:
    **/
   preferences_props[PROP_MISC_SLIM_TABS] =
       g_param_spec_boolean ("misc-slim-tabs",
                             NULL,
                             "MiscSlimTabs",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-bracketed-paste:
+   **/
+  preferences_props[PROP_MISC_BRACKETED_PASTE] =
+      g_param_spec_boolean ("misc-bracketed-paste",
+                            NULL,
+                            "MiscBracketedPaste",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
