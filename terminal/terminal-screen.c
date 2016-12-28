@@ -1537,8 +1537,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
   guint         i;
   VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
   GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
-  const gchar  *bracketed_paste = "\e[?2004h";
-  gboolean      enable_bracketed_paste;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1570,23 +1568,15 @@ terminal_screen_launch_child (TerminalScreen *screen)
         }
 
       if (!vte_terminal_spawn_sync (VTE_TERMINAL (screen->terminal),
-                                    pty_flags,
-                                    screen->working_directory, argv2, env,
-                                    spawn_flags,
-                                    NULL, NULL,
-                                    &screen->pid, NULL, &error))
+                                           pty_flags,
+                                           screen->working_directory, argv2, env,
+                                           spawn_flags,
+                                           NULL, NULL,
+                                           &screen->pid, NULL, &error))
         {
           xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
                                   error, _("Failed to execute child"));
           g_error_free (error);
-        }
-      else
-        {
-          g_object_get (G_OBJECT (screen->preferences),
-                        "misc-bracketed-paste", &enable_bracketed_paste,
-                        NULL);
-          if (enable_bracketed_paste)
-            vte_terminal_feed (VTE_TERMINAL (screen->terminal), bracketed_paste, strlen (bracketed_paste));
         }
 
       g_free (argv2);
