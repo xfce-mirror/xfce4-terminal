@@ -1,3 +1,29 @@
+0.8.2
+=====
+- Add hidden option MiscSlimTabs to override huge gtk3 tabs style (bug #12796)
+- Temporarily show menubar with F10 even if it's hidden (bug #13231)
+- Add "Run custom command instead of shell" feature (bug #13236)
+- Fix segfault on dragging last window tab to another window
+- Add option for ambigouos-width characters (narrow/wide)
+- Don't show palette when editing palette colors in preferences
+- Fix move dropdown window to monitor with pointer behavior (bug #13266)
+- When un-closing a tab, set it active if it was active when it got closed
+- Set locale as vte encoding in case encoding is not set in prefs
+  (support for running 'LANG=charset xfce4-terminal')
+- Allow to specify text selection background color (bug #13003)
+- Allow to select system-wide monospace font in preferences
+- Fix Alt+n shortcuts when starting with several tabs (bug #13264)
+- Add option to automatically copy selection to the clipboard (bug #12931)
+- Support background image transparency (bug #12944)
+- Fix deprecation warnings
+- Support setting drop-down status bar icon with --icon option (bug #12937)
+- Fix terminal geometry hints for GTK < 3.19.5
+- Translation updates: Arabic, Bulgarian, Catalan, Chinese (China),
+  Chinese (Taiwan), Croatian, Czech, Danish, Deutsch, Dutch, French, Hebrew,
+  Italian, Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål,
+  Polish, Portuguese, Portuguese (Brazil), Russian, Slovak, Spanish, Swedish,
+  Ukrainian
+
 0.8.1
 =====
 - Fix Ctrl press recognition for opening URIs with Ctrl+click
