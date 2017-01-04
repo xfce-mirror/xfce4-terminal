@@ -84,6 +84,8 @@ static void     terminal_window_dropdown_toggle_real             (TerminalWindow
                                                                   guint32                 timestamp,
                                                                   gboolean                force_show);
 static void     terminal_window_dropdown_update_geometry         (TerminalWindowDropdown *dropdown);
+static void     terminal_dropdown_window_screen_size_changed     (GdkScreen              *screen,
+                                                                  TerminalWindowDropdown *dropdown);
 
 
 struct _TerminalWindowDropdownClass
@@ -398,6 +400,11 @@ terminal_window_dropdown_finalize (GObject *object)
 
   if (dropdown->status_icon != NULL)
     g_object_unref (G_OBJECT (dropdown->status_icon));
+
+  if (dropdown->screen != NULL)
+    g_signal_handlers_disconnect_by_func (G_OBJECT (dropdown->screen),
+                                          G_CALLBACK (terminal_dropdown_window_screen_size_changed),
+                                          dropdown);
 
   (*G_OBJECT_CLASS (terminal_window_dropdown_parent_class)->finalize) (object);
 }
@@ -728,7 +735,18 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   if (move_to_active
       || dropdown->screen == NULL
       || dropdown->monitor_num == -1)
-    dropdown->screen = xfce_gdk_screen_get_active (&dropdown->monitor_num);
+    {
+      if (dropdown->screen != NULL)
+        g_signal_handlers_disconnect_by_func (G_OBJECT (dropdown->screen),
+                                              G_CALLBACK (terminal_dropdown_window_screen_size_changed),
+                                              dropdown);
+
+      dropdown->screen = xfce_gdk_screen_get_active (&dropdown->monitor_num);
+
+      /* watch for screen size changes to update terminal geometry accordingly*/
+      g_signal_connect (G_OBJECT (dropdown->screen), "size-changed",
+                        G_CALLBACK (terminal_dropdown_window_screen_size_changed), dropdown);
+    }
 
   /* get the active monitor size */
 #if GTK_CHECK_VERSION (3, 22, 0)
@@ -896,6 +914,16 @@ terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
     }
 
   return GDK_CURRENT_TIME;
+}
+
+
+
+static void
+terminal_dropdown_window_screen_size_changed (GdkScreen              *screen,
+                                              TerminalWindowDropdown *dropdown)
+{
+  /* resize/move terminal window due to a screen size change */
+  terminal_window_dropdown_show (dropdown, 0);
 }
 
 
