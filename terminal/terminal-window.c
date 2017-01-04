@@ -75,20 +75,20 @@ enum
 const gchar *CSS_SLIM_TABS =
 "#" NOTEBOOK_NAME " tab {\n"
 "  min-height: 0;\n"
-"  padding-top: 2px;\n"
-"  padding-bottom: 2px;\n"
+"  padding-top: 1px;\n"
+"  padding-bottom: 1px;\n"
 "}\n"
 "#" NOTEBOOK_NAME " tab button {\n"
 "  min-height: 0;\n"
 "  min-width: 0;\n"
-"  padding: 2px;\n"
-"  margin-top: 2px;\n"
-"  margin-bottom: 2px;\n"
+"  padding: 1px;\n"
+"  margin-top: 1px;\n"
+"  margin-bottom: 1px;\n"
 "}\n"
 "#" NOTEBOOK_NAME " button {\n"
 "  min-height: 0;\n"
 "  min-width: 0;\n"
-"  padding: 2px;\n"
+"  padding: 1px;\n"
 "}\n";
 
 
