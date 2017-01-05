@@ -219,6 +219,11 @@ error:
       terminal_return_if_fail (G_IS_OBJECT (object));
       g_signal_connect (G_OBJECT (object), "color-set",
           G_CALLBACK (terminal_preferences_dialog_palette_changed), dialog);
+
+#if GTK_CHECK_VERSION (3, 20, 0)
+      /* don't show palette when editing colors */
+      g_object_set (object, "show-editor", TRUE, NULL);
+#endif
     }
 
   /* watch color changes in property */
