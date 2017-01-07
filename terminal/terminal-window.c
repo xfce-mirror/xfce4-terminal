@@ -1854,7 +1854,13 @@ title_dialog_response (GtkWidget      *dialog,
                        gint            response,
                        TerminalWindow *window)
 {
-  if (response == GTK_RESPONSE_CLOSE)
+  /* check if we should open the user manual */
+  if (response == GTK_RESPONSE_HELP)
+    {
+      /* open the "Set Title" paragraph in the "Usage" section */
+      xfce_dialog_show_help (GTK_WINDOW (dialog), "terminal", "usage#to_change_the_terminal_title", NULL);
+    }
+  else
     title_dialog_close (dialog, window);
 }
 
@@ -1894,6 +1900,8 @@ terminal_window_action_set_title (GtkAction      *action,
       /* set window height to minimum to fix huge size under wayland */
       gtk_window_set_default_size (GTK_WINDOW (window->priv->title_dialog), -1, 1);
 
+      button = xfce_gtk_button_new_mixed ("help-browser", _("_Help"));
+      gtk_dialog_add_action_widget (GTK_DIALOG (window->priv->title_dialog), button, GTK_RESPONSE_HELP);
       button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
       gtk_widget_set_can_default (button, TRUE);
       gtk_dialog_add_action_widget (GTK_DIALOG (window->priv->title_dialog), button, GTK_RESPONSE_CLOSE);
