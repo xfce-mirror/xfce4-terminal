@@ -910,7 +910,6 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
                                         TerminalWindow  *window)
 {
   TerminalScreen *active;
-  gboolean        was_null;
   const gchar    *encoding;
 
   /* get the new active page */
@@ -922,13 +921,9 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
   /* only update when really changed */
   if (G_LIKELY (window->priv->active != active))
     {
-      /* check if we need to set the size or if this was already done
-       * in the page add function */
-      was_null = (window->priv->active == NULL);
-
       /* last active tab was closed; used by the undo close action to restore tab focus */
-      if (!was_null &&
-          gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active)) == -1)
+      if (window->priv->active != NULL &&
+          gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->active)) == -1)
         window->priv->last_closed_active = window->priv->active;
 
       /* set new active tab */
@@ -943,10 +938,6 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
       /* set charset for menu */
       encoding = terminal_screen_get_encoding (window->priv->active);
       terminal_encoding_action_set_charset (window->priv->encoding_action, encoding);
-
-      /* set the new geometry widget */
-      if (G_LIKELY (!was_null))
-        terminal_screen_set_window_geometry_hints (active, GTK_WINDOW (window));
     }
 
   /* update actions in the window */
