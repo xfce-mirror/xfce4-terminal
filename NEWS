@@ -1,3 +1,17 @@
+0.8.3
+=====
+- Fix incorrect initial position of a drop-down window under Unity
+- min-height/width CSS properties not available in old GTK versions
+- Remove redundant set_window_geometry_hints() call (bug #13280)
+- Add Help button to Set Title dialog
+- GtkColorButton show-editor property only available starting with GTK 3.20
+  (bug #13278)
+- Watch for screen size changes to update drop-down window size or position
+  accordingly. Size change signal is emitted when monitor resolution is
+  changed or another monitor is connected
+- Make slim tabs even more slim
+- Translation updates: Chinese (China), Lithuanian, Thai
+
 0.8.2
 =====
 - Add hidden option MiscSlimTabs to override huge gtk3 tabs style (bug #12796)
