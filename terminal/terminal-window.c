@@ -74,20 +74,26 @@ enum
 #define NOTEBOOK_NAME PACKAGE_NAME "-notebook"
 const gchar *CSS_SLIM_TABS =
 "#" NOTEBOOK_NAME " tab {\n"
-"  font-weight: normal;\n"
+#if GTK_CHECK_VERSION (3, 20, 0)
 "  min-height: 0;\n"
+#endif
+"  font-weight: normal;\n"
 "  padding: 1px;\n"
 "  margin: 0;\n"
 "}\n"
 "#" NOTEBOOK_NAME " tab button {\n"
+#if GTK_CHECK_VERSION (3, 20, 0)
 "  min-height: 0;\n"
 "  min-width: 0;\n"
+#endif
 "  padding: 1px;\n"
 "  margin: 0;\n"
 "}\n"
 "#" NOTEBOOK_NAME " button {\n"
+#if GTK_CHECK_VERSION (3, 20, 0)
 "  min-height: 0;\n"
 "  min-width: 0;\n"
+#endif
 "  padding: 1px;\n"
 "}\n";
 
