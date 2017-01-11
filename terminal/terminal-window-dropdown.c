@@ -83,7 +83,6 @@ static void     terminal_window_dropdown_show                    (TerminalWindow
 static void     terminal_window_dropdown_toggle_real             (TerminalWindowDropdown *dropdown,
                                                                   guint32                 timestamp,
                                                                   gboolean                force_show);
-static void     terminal_window_dropdown_update_geometry         (TerminalWindowDropdown *dropdown);
 static void     terminal_dropdown_window_screen_size_changed     (GdkScreen              *screen,
                                                                   TerminalWindowDropdown *dropdown);
 
@@ -882,19 +881,6 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
 
 
 
-static void
-terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
-{
-  terminal_return_if_fail (TERMINAL_IS_WINDOW_DROPDOWN (dropdown));
-
-  /* update geometry if toolbar or menu is shown */
-  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
-      && dropdown->animation_dir == ANIMATION_DIR_NONE)
-    terminal_window_dropdown_show (dropdown, 0);
-}
-
-
-
 static guint32
 terminal_window_dropdown_get_timestamp (GtkWidget   *widget,
                                         const gchar *startup_id)
@@ -1055,4 +1041,17 @@ terminal_window_dropdown_get_size (TerminalWindowDropdown *dropdown,
     *grid_width = ((monitor_geo.width * dropdown->rel_width) - xpad) / char_width;
   if (G_LIKELY (grid_height != NULL))
     *grid_height = ((monitor_geo.height * dropdown->rel_height) - ypad) / char_height;
+}
+
+
+
+void
+terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
+{
+  terminal_return_if_fail (TERMINAL_IS_WINDOW_DROPDOWN (dropdown));
+
+  /* update geometry if toolbar or menu is shown */
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
+      && dropdown->animation_dir == ANIMATION_DIR_NONE)
+    terminal_window_dropdown_show (dropdown, 0);
 }

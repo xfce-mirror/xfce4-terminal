@@ -33,22 +33,24 @@ G_BEGIN_DECLS
 typedef struct _TerminalWindowDropdownClass TerminalWindowDropdownClass;
 typedef struct _TerminalWindowDropdown      TerminalWindowDropdown;
 
-GType           terminal_window_dropdown_get_type             (void) G_GNUC_CONST;
+GType      terminal_window_dropdown_get_type        (void) G_GNUC_CONST;
 
-GtkWidget      *terminal_window_dropdown_new                  (const gchar            *role,
-                                                               const gchar            *icon,
-                                                               gboolean                fullscreen,
-                                                               TerminalVisibility      menubar,
-                                                               TerminalVisibility      toolbar);
+GtkWidget *terminal_window_dropdown_new             (const gchar            *role,
+                                                     const gchar            *icon,
+                                                     gboolean                fullscreen,
+                                                     TerminalVisibility      menubar,
+                                                     TerminalVisibility      toolbar);
 
-void            terminal_window_dropdown_toggle               (TerminalWindowDropdown *dropdown,
-                                                               const gchar            *startup_id,
-                                                               gboolean                force_show);
+void       terminal_window_dropdown_toggle          (TerminalWindowDropdown *dropdown,
+                                                     const gchar            *startup_id,
+                                                     gboolean                force_show);
 
-void            terminal_window_dropdown_get_size             (TerminalWindowDropdown *dropdown,
-                                                               TerminalScreen         *screen,
-                                                               glong                  *grid_width,
-                                                               glong                  *grid_height);
+void       terminal_window_dropdown_get_size        (TerminalWindowDropdown *dropdown,
+                                                     TerminalScreen         *screen,
+                                                     glong                  *grid_width,
+                                                     glong                  *grid_height);
+
+void       terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown);
 
 G_END_DECLS
 

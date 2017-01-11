@@ -1707,7 +1707,13 @@ terminal_window_action_fullscreen (GtkToggleAction *action,
   if (gtk_toggle_action_get_active (action))
     gtk_window_fullscreen (GTK_WINDOW (window));
   else
-    gtk_window_unfullscreen (GTK_WINDOW (window));
+    {
+      gtk_window_unfullscreen (GTK_WINDOW (window));
+
+      /* update drop-down window geometry, otherwise it'll be incorrect */
+      if (window->drop_down)
+        terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
+    }
 }
 
 
