@@ -108,6 +108,8 @@ static void         terminal_window_style_set                     (GtkWidget    
                                                                    GtkStyle               *previous_style);
 static gboolean     terminal_window_scroll_event                  (GtkWidget              *widget,
                                                                    GdkEventScroll         *event);
+static gboolean     terminal_window_map_event                     (GtkWidget              *widget,
+                                                                   GdkEventAny            *event);
 static gboolean     terminal_window_confirm_close                 (TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
 static gboolean     terminal_window_size_pop                      (gpointer                data);
@@ -374,6 +376,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gtkwidget_class->delete_event = terminal_window_delete_event;
   gtkwidget_class->style_set = terminal_window_style_set;
   gtkwidget_class->scroll_event = terminal_window_scroll_event;
+  gtkwidget_class->map_event = terminal_window_map_event;
 
   /**
    * TerminalWindow::new-window
@@ -653,6 +656,20 @@ terminal_window_scroll_event (GtkWidget      *widget,
       terminal_window_action_zoom_out (NULL, window);
       return TRUE;
     }
+
+  return FALSE;
+}
+
+
+
+static gboolean
+terminal_window_map_event (GtkWidget   *widget,
+                           GdkEventAny *event)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (widget);
+
+  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)))
+    gtk_window_fullscreen (GTK_WINDOW (widget));
 
   return FALSE;
 }
@@ -1704,15 +1721,18 @@ static void
 terminal_window_action_fullscreen (GtkToggleAction *action,
                                    TerminalWindow  *window)
 {
-  if (gtk_toggle_action_get_active (action))
-    gtk_window_fullscreen (GTK_WINDOW (window));
-  else
+  if (gtk_widget_get_visible (GTK_WIDGET (window)))
     {
-      gtk_window_unfullscreen (GTK_WINDOW (window));
+      if (gtk_toggle_action_get_active (action))
+        gtk_window_fullscreen (GTK_WINDOW (window));
+      else
+        {
+          gtk_window_unfullscreen (GTK_WINDOW (window));
 
-      /* update drop-down window geometry, otherwise it'll be incorrect */
-      if (window->drop_down)
-        terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
+          /* update drop-down window geometry, otherwise it'll be incorrect */
+          if (window->drop_down)
+            terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
+        }
     }
 }
 
