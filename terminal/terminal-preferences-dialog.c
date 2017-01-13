@@ -151,7 +151,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "background-image-style", "color-background-vary",
                                        "dropdown-keep-open-default", "dropdown-keep-above",
                                        "dropdown-toggle-focus", "dropdown-status-icon",
-                                       "dropdown-move-to-active", "dropdown-always-show-tabs"
+                                       "dropdown-move-to-active", "dropdown-always-show-tabs",
+                                       "dropdown-show-borders"
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-cursor",
                                        "color-background", "tab-activity-color",

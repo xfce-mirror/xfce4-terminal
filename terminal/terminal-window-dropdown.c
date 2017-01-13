@@ -56,6 +56,7 @@ enum
   PROP_DROPDOWN_KEEP_ABOVE,
   PROP_DROPDOWN_ANIMATION_TIME,
   PROP_DROPDOWN_ALWAYS_SHOW_TABS,
+  PROP_DROPDOWN_SHOW_BORDERS,
   N_PROPERTIES
 };
 
@@ -201,6 +202,12 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
                             TRUE,
                             G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
 
+  dropdown_props[PROP_DROPDOWN_SHOW_BORDERS] =
+      g_param_spec_boolean ("dropdown-show-borders",
+                            NULL, NULL,
+                            FALSE,
+                            G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, dropdown_props);
 }
@@ -218,7 +225,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   guint           n;
   const gchar    *name;
   gboolean        keep_open;
-  gboolean        show_borders;
 
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
@@ -241,8 +247,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 
   /* adjust notebook for drop-down usage */
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (terminal_window_get_notebook (window)), GTK_POS_BOTTOM);
-  g_object_get (terminal_window_get_preferences (window), "misc-borders-default", &show_borders, NULL);
-  gtk_notebook_set_show_border (GTK_NOTEBOOK (terminal_window_get_notebook (window)), show_borders);
   terminal_window_notebook_show_tabs (window);
 
   /* actions we don't want */
@@ -373,6 +377,11 @@ terminal_window_dropdown_set_property (GObject      *object,
 
     case PROP_DROPDOWN_ALWAYS_SHOW_TABS:
       terminal_window_notebook_show_tabs (TERMINAL_WINDOW (dropdown));
+      return;
+
+    case PROP_DROPDOWN_SHOW_BORDERS:
+      gtk_notebook_set_show_border (GTK_NOTEBOOK (terminal_window_get_notebook (window)),
+                                    g_value_get_boolean (value));
       return;
 
     default:

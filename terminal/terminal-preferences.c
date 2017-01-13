@@ -75,6 +75,7 @@ enum
   PROP_DROPDOWN_POSITION,
   PROP_DROPDOWN_MOVE_TO_ACTIVE,
   PROP_DROPDOWN_ALWAYS_SHOW_TABS,
+  PROP_DROPDOWN_SHOW_BORDERS,
   PROP_ENCODING,
   PROP_FONT_ALLOW_BOLD,
   PROP_FONT_NAME,
@@ -661,6 +662,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             NULL,
                             "DropdownAlwaysShowTabs",
                             TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-show-borders:
+   **/
+  preferences_props[PROP_DROPDOWN_SHOW_BORDERS] =
+      g_param_spec_boolean ("dropdown-show-borders",
+                            NULL,
+                            "DropdownShowBorders",
+                            FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
