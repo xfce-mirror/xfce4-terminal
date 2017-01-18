@@ -2898,23 +2898,24 @@ different terminal behavior.</property>
                         <property name="can_focus">False</property>
                         <property name="left_padding">12</property>
                         <child>
-                          <object class="GtkBox" id="vbox14">
+                          <object class="GtkBox" id="hbox8">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="border_width">6</property>
-                            <property name="orientation">vertical</property>
                             <property name="spacing">6</property>
                             <child>
                               <object class="GtkLabel" id="label30">
                                 <property name="visible">True</property>
                                 <property name="can_focus">False</property>
-                                <property name="label" translatable="yes">Consider the following characters part of a _word
+                                <property name="halign">start</property>
+                                <property name="label" translatable="yes">Consider the following
+characters part of a _word
 when double clicking:</property>
                                 <property name="use_underline">True</property>
                                 <property name="mnemonic_widget">word-chars</property>
                               </object>
                               <packing>
-                                <property name="expand">True</property>
+                                <property name="expand">False</property>
                                 <property name="fill">True</property>
                                 <property name="position">0</property>
                               </packing>
@@ -2923,6 +2924,7 @@ when double clicking:</property>
                               <object class="GtkEntry" id="word-chars">
                                 <property name="visible">True</property>
                                 <property name="can_focus">True</property>
+                                <property name="valign">center</property>
                                 <property name="invisible_char">•</property>
                                 <property name="primary_icon_activatable">False</property>
                                 <property name="secondary_icon_activatable">False</property>
@@ -2934,25 +2936,18 @@ when double clicking:</property>
                               </packing>
                             </child>
                             <child>
-                              <object class="GtkAlignment" id="alignment8">
+                              <object class="GtkButton" id="reset-word-chars">
+                                <property name="label" translatable="yes">Rese_t</property>
                                 <property name="visible">True</property>
-                                <property name="can_focus">False</property>
-                                <property name="xalign">0</property>
-                                <property name="xscale">0</property>
-                                <property name="yscale">0</property>
-                                <child>
-                                  <object class="GtkButton" id="reset-word-chars">
-                                    <property name="label" translatable="yes">Rese_t double click options to defaults</property>
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="receives_default">True</property>
-                                    <property name="use_underline">True</property>
-                                  </object>
-                                </child>
+                                <property name="can_focus">True</property>
+                                <property name="receives_default">True</property>
+                                <property name="tooltip_text" translatable="yes">Reset double click options to defaults</property>
+                                <property name="valign">center</property>
+                                <property name="use_underline">True</property>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
-                                <property name="fill">False</property>
+                                <property name="fill">True</property>
                                 <property name="position">2</property>
                               </packing>
                             </child>
