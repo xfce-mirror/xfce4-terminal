@@ -80,7 +80,8 @@ static void     terminal_window_dropdown_status_icon_popup_menu  (GtkStatusIcon 
                                                                   TerminalWindowDropdown *dropdown);
 static void     terminal_window_dropdown_hide                    (TerminalWindowDropdown *dropdown);
 static void     terminal_window_dropdown_show                    (TerminalWindowDropdown *dropdown,
-                                                                  guint32                 timestamp);
+                                                                  guint32                 timestamp,
+                                                                  gboolean                activate);
 static void     terminal_window_dropdown_toggle_real             (TerminalWindowDropdown *dropdown,
                                                                   guint32                 timestamp,
                                                                   gboolean                force_show);
@@ -390,7 +391,7 @@ terminal_window_dropdown_set_property (GObject      *object,
     }
 
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
-    terminal_window_dropdown_show (dropdown, 0);
+    terminal_window_dropdown_show (dropdown, 0, TRUE);
 }
 
 
@@ -520,7 +521,7 @@ terminal_window_dropdown_status_icon_press_event (GtkStatusIcon          *status
   if (gdk_window_is_visible (gtk_widget_get_window (GTK_WIDGET (dropdown))))
     terminal_window_dropdown_hide (dropdown);
   else
-    terminal_window_dropdown_show (dropdown, event->time);
+    terminal_window_dropdown_show (dropdown, event->time, TRUE);
 
   return TRUE;
 }
@@ -710,7 +711,8 @@ terminal_window_dropdown_hide (TerminalWindowDropdown *dropdown)
 
 static void
 terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
-                               guint32                 timestamp)
+                               guint32                 timestamp,
+                               gboolean                activate)
 {
   TerminalWindow    *window = TERMINAL_WINDOW (dropdown);
   gint               w, h;
@@ -826,7 +828,8 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
     gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
 
   /* force focus to the window */
-  terminal_util_activate_window (GTK_WINDOW (dropdown));
+  if (activate)
+    terminal_util_activate_window (GTK_WINDOW (dropdown));
 
   if (dropdown->animation_time > 0
       && vbox_h < h)
@@ -878,13 +881,13 @@ terminal_window_dropdown_toggle_real (TerminalWindowDropdown *dropdown,
         }
       else
         {
-          terminal_window_dropdown_show (dropdown, timestamp);
+          terminal_window_dropdown_show (dropdown, timestamp, TRUE);
         }
     }
   else
     {
       /* popup */
-      terminal_window_dropdown_show (dropdown, timestamp);
+      terminal_window_dropdown_show (dropdown, timestamp, TRUE);
     }
 }
 
@@ -924,7 +927,8 @@ terminal_dropdown_window_screen_size_changed (GdkScreen              *screen,
                                               TerminalWindowDropdown *dropdown)
 {
   /* resize/move terminal window due to a screen size change */
-  terminal_window_dropdown_show (dropdown, 0);
+  if (gtk_widget_get_visible (GTK_WIDGET (dropdown)))
+    terminal_window_dropdown_show (dropdown, 0, FALSE);
 }
 
 
@@ -1062,5 +1066,5 @@ terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
   /* update geometry if toolbar or menu is shown */
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
       && dropdown->animation_dir == ANIMATION_DIR_NONE)
-    terminal_window_dropdown_show (dropdown, 0);
+    terminal_window_dropdown_show (dropdown, 0, TRUE);
 }
