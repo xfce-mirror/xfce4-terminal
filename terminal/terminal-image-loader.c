@@ -25,26 +25,30 @@
 #include <terminal/terminal-image-loader.h>
 #include <terminal/terminal-private.h>
 
+/* max image resolution is 8K */
+#define MAX_IMAGE_WIDTH  7680
+#define MAX_IMAGE_HEIGHT 4320
 
 
-static void terminal_image_loader_finalize         (GObject             *object);
-static void terminal_image_loader_check            (TerminalImageLoader *loader);
-static void terminal_image_loader_tile             (TerminalImageLoader *loader,
-                                                    GdkPixbuf           *target,
-                                                    gint                 width,
-                                                    gint                 height);
-static void terminal_image_loader_center           (TerminalImageLoader *loader,
-                                                    GdkPixbuf           *target,
-                                                    gint                 width,
-                                                    gint                 height);
-static void terminal_image_loader_scale            (TerminalImageLoader *loader,
-                                                    GdkPixbuf           *target,
-                                                    gint                 width,
-                                                    gint                 height);
-static void terminal_image_loader_stretch          (TerminalImageLoader *loader,
-                                                    GdkPixbuf           *target,
-                                                    gint                 width,
-                                                    gint                 height);
+
+static void terminal_image_loader_finalize (GObject             *object);
+static void terminal_image_loader_check    (TerminalImageLoader *loader);
+static void terminal_image_loader_tile     (TerminalImageLoader *loader,
+                                            GdkPixbuf           *target,
+                                            gint                 width,
+                                            gint                 height);
+static void terminal_image_loader_center   (TerminalImageLoader *loader,
+                                            GdkPixbuf           *target,
+                                            gint                 width,
+                                            gint                 height);
+static void terminal_image_loader_scale    (TerminalImageLoader *loader,
+                                            GdkPixbuf           *target,
+                                            gint                 width,
+                                            gint                 height);
+static void terminal_image_loader_stretch  (TerminalImageLoader *loader,
+                                            GdkPixbuf           *target,
+                                            gint                 width,
+                                            gint                 height);
 
 
 struct _TerminalImageLoaderClass
@@ -115,9 +119,12 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 {
   TerminalBackgroundStyle selected_style;
   GdkRGBA                 selected_color;
+  GdkPixbuf              *tmp;
   gboolean                invalidate = FALSE;
   gchar                  *selected_color_spec;
   gchar                  *selected_path;
+  gint                    width;
+  gint                    height;
 
   terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
@@ -134,7 +141,34 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
       if (GDK_IS_PIXBUF (loader->pixbuf))
         g_object_unref (G_OBJECT (loader->pixbuf));
-      loader->pixbuf = gdk_pixbuf_new_from_file (loader->path, NULL);
+
+      tmp = gdk_pixbuf_new_from_file (loader->path, NULL);
+      width = gdk_pixbuf_get_width (tmp);
+      height = gdk_pixbuf_get_height (tmp);
+
+      if (width <= MAX_IMAGE_WIDTH && height <= MAX_IMAGE_HEIGHT)
+        loader->pixbuf = tmp;
+      else
+        {
+          /* scale image resolution down to 8K */
+          gdouble xscale = (gdouble) MAX_IMAGE_WIDTH / width;
+          gdouble yscale = (gdouble) MAX_IMAGE_HEIGHT / height;
+
+          if (xscale < yscale)
+            yscale = xscale;
+          else
+            xscale = yscale;
+          width = (gint) (width * xscale);
+          height = (gint) (height * yscale);
+
+          loader->pixbuf = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (tmp),
+                                           gdk_pixbuf_get_has_alpha (tmp),
+                                           gdk_pixbuf_get_bits_per_sample (tmp),
+                                           width, height);
+          gdk_pixbuf_composite (tmp, loader->pixbuf, 0, 0, width, height,
+                                0, 0, xscale, yscale, GDK_INTERP_BILINEAR, 255);
+          g_object_unref (G_OBJECT (tmp));
+        }
 
       invalidate = TRUE;
     }

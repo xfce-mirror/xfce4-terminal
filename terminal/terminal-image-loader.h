@@ -34,13 +34,13 @@ G_BEGIN_DECLS
 typedef struct _TerminalImageLoaderClass TerminalImageLoaderClass;
 typedef struct _TerminalImageLoader      TerminalImageLoader;
 
-GType                terminal_image_loader_get_type   (void) G_GNUC_CONST;
+GType                terminal_image_loader_get_type (void) G_GNUC_CONST;
 
-TerminalImageLoader *terminal_image_loader_get        (void);
+TerminalImageLoader *terminal_image_loader_get      (void);
 
-GdkPixbuf           *terminal_image_loader_load (TerminalImageLoader *loader,
-                                                 gint                 width,
-                                                 gint                 height);
+GdkPixbuf           *terminal_image_loader_load     (TerminalImageLoader *loader,
+                                                     gint                 width,
+                                                     gint                 height);
 
 G_END_DECLS
 
