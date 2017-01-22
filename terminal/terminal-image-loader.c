@@ -119,12 +119,9 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 {
   TerminalBackgroundStyle selected_style;
   GdkRGBA                 selected_color;
-  GdkPixbuf              *tmp;
   gboolean                invalidate = FALSE;
   gchar                  *selected_color_spec;
   gchar                  *selected_path;
-  gint                    width;
-  gint                    height;
 
   terminal_return_if_fail (TERMINAL_IS_IMAGE_LOADER (loader));
 
@@ -136,39 +133,21 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   if (g_strcmp0 (selected_path, loader->path) != 0)
     {
+      gint width, height;
+
       g_free (loader->path);
       loader->path = g_strdup (selected_path);
 
       if (GDK_IS_PIXBUF (loader->pixbuf))
         g_object_unref (G_OBJECT (loader->pixbuf));
 
-      tmp = gdk_pixbuf_new_from_file (loader->path, NULL);
-      width = gdk_pixbuf_get_width (tmp);
-      height = gdk_pixbuf_get_height (tmp);
-
+      gdk_pixbuf_get_file_info (loader->path, &width, &height);
       if (width <= MAX_IMAGE_WIDTH && height <= MAX_IMAGE_HEIGHT)
-        loader->pixbuf = tmp;
+        loader->pixbuf = gdk_pixbuf_new_from_file (loader->path, NULL);
       else
-        {
-          /* scale image resolution down to 8K */
-          gdouble xscale = (gdouble) MAX_IMAGE_WIDTH / width;
-          gdouble yscale = (gdouble) MAX_IMAGE_HEIGHT / height;
-
-          if (xscale < yscale)
-            yscale = xscale;
-          else
-            xscale = yscale;
-          width = (gint) (width * xscale);
-          height = (gint) (height * yscale);
-
-          loader->pixbuf = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (tmp),
-                                           gdk_pixbuf_get_has_alpha (tmp),
-                                           gdk_pixbuf_get_bits_per_sample (tmp),
-                                           width, height);
-          gdk_pixbuf_composite (tmp, loader->pixbuf, 0, 0, width, height,
-                                0, 0, xscale, yscale, GDK_INTERP_BILINEAR, 255);
-          g_object_unref (G_OBJECT (tmp));
-        }
+        loader->pixbuf = gdk_pixbuf_new_from_file_at_size (loader->path,
+                                                           MAX_IMAGE_WIDTH, MAX_IMAGE_WIDTH,
+                                                           NULL);
 
       invalidate = TRUE;
     }
