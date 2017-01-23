@@ -141,8 +141,12 @@ terminal_image_loader_check (TerminalImageLoader *loader)
       if (GDK_IS_PIXBUF (loader->pixbuf))
         g_object_unref (G_OBJECT (loader->pixbuf));
 
-      gdk_pixbuf_get_file_info (loader->path, &width, &height);
-      if (width <= MAX_IMAGE_WIDTH && height <= MAX_IMAGE_HEIGHT)
+      if (gdk_pixbuf_get_file_info (loader->path, &width, &height) == NULL)
+        {
+          g_warning ("Unable to load background image file \"%s\"", loader->path);
+          loader->pixbuf = NULL;
+        }
+      else if (width <= MAX_IMAGE_WIDTH && height <= MAX_IMAGE_HEIGHT)
         loader->pixbuf = gdk_pixbuf_new_from_file (loader->path, NULL);
       else
         loader->pixbuf = gdk_pixbuf_new_from_file_at_size (loader->path,
