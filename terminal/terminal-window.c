@@ -1229,7 +1229,7 @@ terminal_window_notebook_scroll_event (GtkNotebook    *notebook,
       gtk_notebook_prev_page (notebook);
       return TRUE;
 
-    case GDK_SCROLL_SMOOTH:
+    default: /* GDK_SCROLL_SMOOTH */
       switch (gtk_notebook_get_tab_pos (notebook)) {
         case GTK_POS_LEFT:
         case GTK_POS_RIGHT:
@@ -1239,8 +1239,7 @@ terminal_window_notebook_scroll_event (GtkNotebook    *notebook,
             gtk_notebook_prev_page (notebook);
           break;
 
-        case GTK_POS_TOP:
-        case GTK_POS_BOTTOM:
+        default: /* GTK_POS_TOP or GTK_POS_BOTTOM */
           if (event->delta_x > 0)
             gtk_notebook_next_page (notebook);
           else if (event->delta_x < 0)

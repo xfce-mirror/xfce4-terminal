@@ -2327,7 +2327,7 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
           gtk_widget_show (screen->scrollbar);
           break;
 
-        case TERMINAL_SCROLLBAR_RIGHT:
+        default: /* TERMINAL_SCROLLBAR_RIGHT */
           gtk_box_reorder_child (GTK_BOX (screen), screen->scrollbar, 1);
           gtk_widget_show (screen->scrollbar);
           break;
