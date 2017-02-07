@@ -1857,7 +1857,7 @@ static void
 title_dialog_close (GtkWidget      *dialog,
                     TerminalWindow *window)
 {
-  terminal_return_if_fail (window->priv->title_dialog == dialog);
+  terminal_return_if_fail (window->priv->title_dialog != NULL);
 
   /* need for hiding on focus */
   if (window->drop_down)
@@ -1865,7 +1865,8 @@ title_dialog_close (GtkWidget      *dialog,
 
   /* close the dialog */
   window->priv->n_child_windows--;
-  gtk_widget_destroy (dialog);
+  if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 0)
+    gtk_widget_destroy (window->priv->title_dialog);
   window->priv->title_dialog = NULL;
 }
 
@@ -1955,6 +1956,8 @@ terminal_window_action_set_title (GtkAction      *action,
       g_signal_connect (G_OBJECT (window->priv->title_dialog), "response",
                         G_CALLBACK (title_dialog_response), window);
       g_signal_connect (G_OBJECT (window->priv->title_dialog), "close",
+                        G_CALLBACK (title_dialog_close), window);
+      g_signal_connect (G_OBJECT (window->priv->active), "destroy",
                         G_CALLBACK (title_dialog_close), window);
     }
 
