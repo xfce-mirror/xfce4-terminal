@@ -249,6 +249,8 @@ static void         terminal_window_toggle_menubar                (GtkWidget    
                                                                    TerminalWindow         *window);
 static void         terminal_window_menubar_deactivate            (GtkWidget              *widget,
                                                                    TerminalWindow         *window);
+static void         title_dialog_close                            (GtkWidget              *dialog,
+                                                                   TerminalWindow         *window);
 
 
 
@@ -569,10 +571,21 @@ terminal_window_delete_event (GtkWidget   *widget,
                               GdkEventAny *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
+  GtkWidget      *child;
+  gint            n_pages, i;
 
   /* disconnect remove signal if we're closing the window */
   if (terminal_window_confirm_close (window))
     {
+      /* disconnect handlers for closing Set Title dialog */
+      n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+      for (i = 0; i < n_pages; i++)
+        {
+          child = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i);
+          g_signal_handlers_disconnect_by_func (G_OBJECT (child),
+              G_CALLBACK (title_dialog_close), window);
+        }
+
       /* avoid a lot of page remove calls */
       g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->notebook),
           G_CALLBACK (terminal_window_notebook_page_removed), window);
@@ -1865,8 +1878,7 @@ title_dialog_close (GtkWidget      *dialog,
 
   /* close the dialog */
   window->priv->n_child_windows--;
-  if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 0)
-    gtk_widget_destroy (window->priv->title_dialog);
+  gtk_widget_destroy (window->priv->title_dialog);
   window->priv->title_dialog = NULL;
 }
 
