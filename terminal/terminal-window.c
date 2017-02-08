@@ -551,6 +551,8 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
+  if (window->priv->preferences_dialog != NULL)
+    gtk_widget_destroy (window->priv->preferences_dialog);
   g_object_unref (G_OBJECT (window->priv->preferences));
   g_object_unref (G_OBJECT (window->priv->action_group));
   g_object_unref (G_OBJECT (window->priv->ui_manager));
