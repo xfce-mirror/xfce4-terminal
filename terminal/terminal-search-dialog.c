@@ -203,7 +203,9 @@ GtkWidget *
 terminal_search_dialog_new (GtkWindow *parent)
 {
   return g_object_new (TERMINAL_TYPE_SEARCH_DIALOG,
-                       "transient-for", parent, NULL);
+                       "transient-for", parent,
+                       "destroy-with-parent", TRUE,
+                       NULL);
 }
 
 
