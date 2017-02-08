@@ -578,12 +578,15 @@ terminal_window_delete_event (GtkWidget   *widget,
   if (terminal_window_confirm_close (window))
     {
       /* disconnect handlers for closing Set Title dialog */
-      n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
-      for (i = 0; i < n_pages; i++)
+      if (window->priv->title_dialog != NULL)
         {
-          child = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i);
-          g_signal_handlers_disconnect_by_func (G_OBJECT (child),
-              G_CALLBACK (title_dialog_close), window);
+          n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+          for (i = 0; i < n_pages; i++)
+            {
+              child = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i);
+              g_signal_handlers_disconnect_by_func (G_OBJECT (child),
+                  G_CALLBACK (title_dialog_close), window);
+            }
         }
 
       /* avoid a lot of page remove calls */
