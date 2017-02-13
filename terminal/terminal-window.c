@@ -1338,11 +1338,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
           g_object_ref (G_OBJECT (window));
 
           /* remove the document from the source notebook */
-#if GTK_CHECK_VERSION (3,16,0)
           gtk_notebook_detach_tab (GTK_NOTEBOOK (notebook), *screen);
-#else
-          gtk_container_remove (GTK_CONTAINER (notebook), *screen);
-#endif
 
           /* add the screen to the new window */
           terminal_window_add (window, TERMINAL_SCREEN (*screen));
@@ -1401,11 +1397,7 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
       g_object_ref (G_OBJECT (screen));
 
       /* remove screen from active window */
-      #if GTK_CHECK_VERSION (3,16,0)
-        gtk_notebook_detach_tab (notebook, child);
-      #else
-        gtk_container_remove (GTK_CONTAINER (notebook), child);
-      #endif
+      gtk_notebook_detach_tab (notebook, child);
 
       /* create new window with the screen */
       g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW_WITH_SCREEN], 0, screen, x, y);
