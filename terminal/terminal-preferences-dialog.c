@@ -988,12 +988,17 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
 GtkWidget*
 terminal_preferences_dialog_new (gboolean show_drop_down)
 {
-  GtkBuilder *builder;
-  GObject    *dialog;
-  GObject    *object;
-  GObject    *notebook;
+  static GtkBuilder *builder = NULL;
 
-  builder = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
+  GObject *dialog;
+  GObject *object;
+  GObject *notebook;
+
+  if (builder == NULL)
+    {
+      builder = g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
+      g_object_add_weak_pointer (G_OBJECT (builder), (gpointer) &builder);
+    }
 
   object = gtk_builder_get_object (builder, "dropdown-box");
   terminal_return_val_if_fail (GTK_IS_WIDGET (object), NULL);
