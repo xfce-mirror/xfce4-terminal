@@ -251,8 +251,9 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   terminal_window_notebook_show_tabs (window);
 
   /* actions we don't want */
-  action = terminal_window_get_action (window, "show-borders");
-  gtk_action_set_visible (action, FALSE);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  gtk_action_set_visible (terminal_window_get_action (window, "show-borders"), FALSE);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* notebook buttons */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
@@ -278,17 +279,23 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 
   button = gtk_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_widget_set_tooltip_text (button, gtk_action_get_tooltip (action));
+G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
 #if GTK_CHECK_VERSION (3,20,0)
   gtk_widget_set_focus_on_click (button, FALSE);
 #else
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
 #endif
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
       G_CALLBACK (gtk_action_activate), action);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   img = gtk_action_create_icon (action, GTK_ICON_SIZE_MENU);
+G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_container_add (GTK_CONTAINER (button), img);
 
   /* connect bindings */
@@ -535,6 +542,7 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
                                                  TerminalWindowDropdown *dropdown)
 {
   GtkWidget *menu;
+  GtkWidget *menu_item;
   GtkAction *action;
 
   menu = gtk_menu_new ();
@@ -542,15 +550,18 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
       G_CALLBACK (gtk_widget_destroy), NULL);
 
   action = terminal_window_get_action (TERMINAL_WINDOW (dropdown), "preferences");
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         gtk_action_create_menu_item (action));
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  menu_item = gtk_action_create_menu_item (action);
+G_GNUC_END_IGNORE_DEPRECATIONS
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         gtk_separator_menu_item_new ());
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), gtk_separator_menu_item_new ());
 
   action = terminal_window_get_action (TERMINAL_WINDOW (dropdown), "close-window");
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         gtk_action_create_menu_item (action));
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  menu_item = gtk_action_create_menu_item (action);
+G_GNUC_END_IGNORE_DEPRECATIONS
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
   gtk_widget_show_all (menu);
 #if GTK_CHECK_VERSION (3, 22, 0)
@@ -570,10 +581,10 @@ terminal_window_dropdown_animate_down (gpointer data)
 {
   TerminalWindowDropdown *dropdown = TERMINAL_WINDOW_DROPDOWN (data);
   TerminalWindow         *window = TERMINAL_WINDOW (data);
-  GtkToggleAction        *action_fullscreen;
   GtkRequisition          req1;
   GdkRectangle            rect;
   gint                    step_size, vbox_h;
+  gboolean                fullscreen;
 
   /* get window size */
 #if GTK_CHECK_VERSION (3, 22, 0)
@@ -585,8 +596,10 @@ terminal_window_dropdown_animate_down (gpointer data)
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
 #endif
 
-  action_fullscreen = GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen"));
-  if (!gtk_toggle_action_get_active (action_fullscreen))
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen")));
+G_GNUC_END_IGNORE_DEPRECATIONS
+  if (!fullscreen)
     {
       /* calculate width/height if not fullscreen */
       rect.width *= dropdown->rel_width;
@@ -613,7 +626,7 @@ terminal_window_dropdown_animate_down (gpointer data)
     return TRUE;
 
   /* restore the fullscreen state */
-  if (gtk_toggle_action_get_active (action_fullscreen))
+  if (fullscreen)
     gtk_window_fullscreen (GTK_WINDOW (window));
 
   /* animation complete */
@@ -630,6 +643,7 @@ terminal_window_dropdown_animate_up (gpointer data)
   GtkRequisition          req1;
   GdkRectangle            rect;
   gint                    step_size, vbox_h, min_size;
+  gboolean                fullscreen;
 
   /* get window size */
 #if GTK_CHECK_VERSION (3, 22, 0)
@@ -640,7 +654,11 @@ terminal_window_dropdown_animate_up (gpointer data)
 #else
   gdk_screen_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
 #endif
-  if (!gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen"))))
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen")));
+G_GNUC_END_IGNORE_DEPRECATIONS
+  if (!fullscreen)
     {
       /* calculate width/height if not fullscreen */
       rect.width *= dropdown->rel_width;
@@ -724,6 +742,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gboolean           visible;
   gint               vbox_h;
   TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
+  gboolean           fullscreen;
 #if GTK_CHECK_VERSION (3, 22, 0)
   GdkDisplay        *display;
   GdkMonitor        *monitor;
@@ -771,7 +790,10 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
 
   /* correct padding with notebook size */
-  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen"))))
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen")));
+G_GNUC_END_IGNORE_DEPRECATIONS
+  if (fullscreen)
     {
       /* don't fullscreen during animation*/
       if (dropdown->animation_time > 0)
@@ -968,6 +990,7 @@ terminal_window_dropdown_new (const gchar        *role,
   terminal_window_dropdown_set_property (G_OBJECT (window),
                                          PROP_DROPDOWN_STATUS_ICON, &value, NULL);
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /* setup full screen */
   action = terminal_window_get_action (window, "fullscreen");
   if (fullscreen && gtk_action_is_sensitive (action))
@@ -989,6 +1012,7 @@ terminal_window_dropdown_new (const gchar        *role,
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
   g_signal_connect_swapped (action, "activate",
       G_CALLBACK (terminal_window_dropdown_update_geometry), window);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
   return GTK_WIDGET (window);
 }

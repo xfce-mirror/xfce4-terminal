@@ -145,7 +145,9 @@ static GQuark encoding_action_quark = 0;
 
 
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_DEFINE_TYPE (TerminalEncodingAction, terminal_encoding_action, GTK_TYPE_ACTION)
+G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 
@@ -158,7 +160,9 @@ terminal_encoding_action_class_init (TerminalEncodingActionClass *klass)
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_encoding_action_finalize;
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtkaction_class = GTK_ACTION_CLASS (klass);
+G_GNUC_END_IGNORE_DEPRECATIONS
   gtkaction_class->create_menu_item = terminal_encoding_action_create_menu_item;
 
   encoding_action_quark = g_quark_from_static_string ("encoding-action-quark");
@@ -203,7 +207,9 @@ terminal_encoding_action_create_menu_item (GtkAction *action)
   terminal_return_val_if_fail (TERMINAL_IS_ENCODING_ACTION (action), NULL);
 
   /* let GtkAction allocate the menu item */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   item = (*GTK_ACTION_CLASS (terminal_encoding_action_parent_class)->create_menu_item) (action);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* associate an empty submenu with the item (will be filled when shown) */
   menu = gtk_menu_new ();
