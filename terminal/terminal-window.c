@@ -453,13 +453,13 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                                        toggle_action_entries,
                                        G_N_ELEMENTS (toggle_action_entries),
                                        GTK_WIDGET (window));
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   window->priv->ui_manager = gtk_ui_manager_new ();
   gtk_ui_manager_insert_action_group (window->priv->ui_manager, window->priv->action_group, 0);
   gtk_ui_manager_add_ui_from_string (window->priv->ui_manager, terminal_window_ui, terminal_window_ui_length, NULL);
 
   accel_group = gtk_ui_manager_get_accel_group (window->priv->ui_manager);
+G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
   g_signal_connect_after (G_OBJECT (accel_group), "accel-activate",
       G_CALLBACK (terminal_window_accel_activate), window);
@@ -518,7 +518,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_signal_connect (G_OBJECT (window->priv->encoding_action), "encoding-changed",
       G_CALLBACK (terminal_window_action_set_encoding), window);
 
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
+G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
   gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
   /* auto-hide menubar if it was shown temporarily */
@@ -1212,7 +1214,9 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
           gtk_notebook_set_current_page (notebook, page_num);
 
           /* show the tab menu */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           menu = gtk_ui_manager_get_widget (window->priv->ui_manager, "/tab-menu");
+G_GNUC_END_IGNORE_DEPRECATIONS
 #if GTK_CHECK_VERSION (3, 22, 0)
           gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 #else
@@ -1443,7 +1447,11 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
   GtkWidget *popup = NULL;
 
   if (G_LIKELY (screen == window->priv->active))
-    popup = gtk_ui_manager_get_widget (window->priv->ui_manager, "/popup-menu");
+    {
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+      popup = gtk_ui_manager_get_widget (window->priv->ui_manager, "/popup-menu");
+G_GNUC_END_IGNORE_DEPRECATIONS
+    }
 
   return popup;
 }
@@ -1721,7 +1729,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     {
       if (window->priv->toolbar == NULL)
         {
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           window->priv->toolbar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-toolbar");
+G_GNUC_END_IGNORE_DEPRECATIONS
           gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->toolbar, FALSE, FALSE, 0);
           gtk_box_reorder_child (GTK_BOX (window->priv->vbox),
                                  window->priv->toolbar,
@@ -2759,7 +2769,9 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
   if (window->priv->tabs_menu_merge_id != 0)
     {
       /* remove merge id */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_ui_manager_remove_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
       /* drop all the old accels from the action group */
       for (lp = window->priv->tabs_menu_actions; lp != NULL; lp = lp->next)
@@ -2774,7 +2786,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   /* create a new merge id */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   window->priv->tabs_menu_merge_id = gtk_ui_manager_new_merge_id (window->priv->ui_manager);
+G_GNUC_END_IGNORE_DEPRECATIONS
   terminal_assert (window->priv->tabs_menu_actions == NULL);
 
   /* walk the tabs */
@@ -2804,16 +2818,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                radio_action, g_object_unref);
 
       /* add action in the menu */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
                              "/main-menu/tabs-menu/placeholder-tab-items",
                              name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (npages > 1)
         {
           /* add to right-click tab menu */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
                                  "/tab-menu/tabs-menu/placeholder-tab-items",
                                  name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
+G_GNUC_END_IGNORE_DEPRECATIONS
         }
 
       /* set an accelerator path */
