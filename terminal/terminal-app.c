@@ -433,7 +433,7 @@ terminal_app_new_window (TerminalWindow *window,
   screen = gtk_window_get_screen (GTK_WINDOW (window));
 
   win_attr = terminal_window_attr_new ();
-  win_attr->display = gdk_screen_make_display_name (screen);
+  win_attr->display = g_strdup (gdk_display_get_name (gdk_screen_get_display (screen)));
   tab_attr = win_attr->tabs->data;
   tab_attr->directory = g_strdup (working_directory);
   if (window->font)

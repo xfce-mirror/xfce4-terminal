@@ -2545,7 +2545,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
   if (G_LIKELY (gscreen != NULL))
     {
       result = g_slist_prepend (result, g_strdup ("--display"));
-      result = g_slist_prepend (result, gdk_screen_make_display_name (gscreen));
+      result = g_slist_prepend (result, g_strdup (gdk_display_get_name (gdk_screen_get_display (gscreen))));
     }
 
   role = gtk_window_get_role (GTK_WINDOW (window));
