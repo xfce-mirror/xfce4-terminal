@@ -333,9 +333,6 @@ terminal_widget_context_menu (TerminalWidget *widget,
   /* take a reference on the menu */
   g_object_ref_sink (G_OBJECT (menu));
 
-  if (event_time == 0)
-    event_time = gtk_get_current_event_time ();
-
   loop = g_main_loop_new (NULL, FALSE);
 
   /* connect the deactivate handler */
@@ -349,7 +346,8 @@ terminal_widget_context_menu (TerminalWidget *widget,
 #if GTK_CHECK_VERSION (3, 22, 0)
   gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 #else
-  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button, event_time);
+  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button,
+                  event_time > 0 ? event_time : gtk_get_current_event_time ());
 #endif
   g_main_loop_run (loop);
   g_main_loop_unref (loop);
@@ -384,18 +382,18 @@ static gboolean
 terminal_widget_button_press_event (GtkWidget       *widget,
                                     GdkEventButton  *event)
 {
-  GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ();
-  gboolean        committed = FALSE;
-  gboolean        middle_click_opens_uri;
-  gchar          *match;
-  guint           signal_id = 0;
-  gint            tag;
+  const GdkModifierType modifiers = gtk_accelerator_get_default_mod_mask ();
+  gboolean              committed = FALSE;
+  gboolean              middle_click_opens_uri;
+  gchar                *match;
+  guint                 signal_id = 0;
+  gint                  tag;
 
   if (event->type == GDK_BUTTON_PRESS)
     {
       /* check whether to use ctrl-click or middle click to open URI */
       g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
-          "misc-middle-click-opens-uri", &middle_click_opens_uri, NULL);
+                    "misc-middle-click-opens-uri", &middle_click_opens_uri, NULL);
 
       if (middle_click_opens_uri
             ? (event->button == 2)
