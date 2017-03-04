@@ -129,7 +129,7 @@ usage (void)
 
   g_print ("%s:\n"
            "  --display=%s; --geometry=%s; --role=%s; --drop-down;\n"
-           "  --startup-id=%s; -I, --icon=%s; --fullscreen; --maximize;\n"
+           "  --startup-id=%s; -I, --icon=%s; --fullscreen; --maximize; --minimize;\n"
            "  --show-menubar, --hide-menubar; --show-borders, --hide-borders;\n"
            "  --show-toolbar, --hide-toolbar; --show-scrollbar, --hide-scrollbar;\n"
            "  --font=%s; --zoom=%s\n\n",

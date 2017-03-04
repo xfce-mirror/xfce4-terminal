@@ -762,6 +762,8 @@ terminal_app_open_window (TerminalApp        *app,
       /* apply normal window properties */
       if (attr->maximize)
         gtk_window_maximize (GTK_WINDOW (window));
+      if (attr->minimize)
+        gtk_window_iconify (GTK_WINDOW (window));
 
       if (attr->startup_id != NULL)
         gtk_window_set_startup_id (GTK_WINDOW (window), attr->startup_id);

@@ -72,6 +72,7 @@ typedef struct
   guint                drop_down : 1;
   guint                fullscreen : 1;
   guint                maximize : 1;
+  guint                minimize : 1;
   guint                reuse_last_window : 1;
   TerminalVisibility   menubar;
   TerminalVisibility   borders;

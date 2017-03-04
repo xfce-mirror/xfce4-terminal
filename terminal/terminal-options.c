@@ -417,6 +417,10 @@ terminal_window_attr_parse (gint              argc,
         {
           win_attr->maximize = TRUE;
         }
+      else if (terminal_option_cmp ("minimize", 0, argc, argv, &n, NULL))
+        {
+          win_attr->minimize = TRUE;
+        }
       else if (terminal_option_show_hide_cmp ("borders", argc, argv, &n, &visible))
         {
           win_attr->borders = visible;
