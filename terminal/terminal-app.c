@@ -838,18 +838,24 @@ terminal_app_open_window (TerminalApp        *app,
       mask = XParseGeometry (geometry, &x, &y, &width, &height);
       if (((mask & WidthValue) && (mask & HeightValue)) || ((mask & XValue) && (mask & YValue)))
         {
-          if ((mask & WidthValue) && (mask & HeightValue))
+          /* use geometry from settings if command line parameter doesn't provide it */
+          if (!(mask & WidthValue) || !(mask & HeightValue))
             {
-              active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
-              if (G_LIKELY (active_terminal != NULL))
-                {
-                  /* save window geometry to prevent overriding */
-                  terminal_window_set_grid_size (TERMINAL_WINDOW (window), width, height);
-
-                  terminal_screen_force_resize_window (active_terminal, GTK_WINDOW (window),
-                                                       width, height);
-                }
+              g_free (geometry);
+              g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
+              XParseGeometry (geometry, NULL, NULL, &width, &height);
             }
+
+          active_terminal = terminal_window_get_active (TERMINAL_WINDOW (window));
+          if (G_LIKELY (active_terminal != NULL))
+            {
+              /* save window geometry to prevent overriding */
+              terminal_window_set_grid_size (TERMINAL_WINDOW (window), width, height);
+
+              terminal_screen_force_resize_window (active_terminal, GTK_WINDOW (window),
+                                                   width, height);
+            }
+
           if ((mask & XValue) && (mask & YValue))
             {
               screen = gtk_window_get_screen (GTK_WINDOW (window));
