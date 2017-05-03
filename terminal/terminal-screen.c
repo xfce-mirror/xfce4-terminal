@@ -144,6 +144,8 @@ static gchar     *terminal_screen_zoom_font                     (TerminalScreen 
                                                                  TerminalZoomLevel      zoom);
 static void       terminal_screen_urgent_bell                   (TerminalWidget        *widget,
                                                                  TerminalScreen        *screen);
+static void       terminal_screen_set_custom_command            (TerminalScreen        *screen,
+                                                                 gchar                **command);
 
 
 
@@ -1519,6 +1521,58 @@ terminal_screen_urgent_bell (TerminalWidget *widget,
 
 
 
+static void
+terminal_screen_set_custom_command (TerminalScreen *screen,
+                                    gchar         **command)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  if (G_UNLIKELY (screen->custom_command != NULL))
+    g_strfreev (screen->custom_command);
+
+  if (G_LIKELY (command != NULL && *command != NULL))
+    screen->custom_command = g_strdupv (command);
+  else
+    screen->custom_command = NULL;
+}
+
+
+
+/**
+ * terminal_screen_new:
+ * @command   : Command.
+ * @directory : Working directory.
+ * @title     : Terminal title.
+ * @hold      : Whether to hold the terminal after child exits.
+ * @columns   : Columns (width).
+ * @rows      : Rows (height).
+ *
+ * Creates a terminal screen object.
+ **/
+TerminalScreen *
+terminal_screen_new (gchar    **command,
+                     gchar     *directory,
+                     gchar     *title,
+                     gboolean   hold,
+                     glong      columns,
+                     glong      rows)
+{
+  TerminalScreen *screen = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
+
+  if (command != NULL)
+    terminal_screen_set_custom_command (screen, command);
+  if (directory != NULL)
+    terminal_screen_set_working_directory (screen, directory);
+  if (title != NULL)
+    terminal_screen_set_custom_title (screen, title);
+  screen->hold = hold;
+  vte_terminal_set_size (VTE_TERMINAL (screen->terminal), columns, rows);
+
+  return screen;
+}
+
+
+
 /**
  * terminal_screen_launch_child:
  * @screen  : A #TerminalScreen.
@@ -1584,28 +1638,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
       g_strfreev (env);
       g_free (command);
     }
-}
-
-
-
-/**
- * terminal_screen_set_custom_command:
- * @screen  : A #TerminalScreen.
- * @command :
- **/
-void
-terminal_screen_set_custom_command (TerminalScreen *screen,
-                                    gchar         **command)
-{
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-
-  if (G_UNLIKELY (screen->custom_command != NULL))
-    g_strfreev (screen->custom_command);
-
-  if (G_LIKELY (command != NULL && *command != NULL))
-    screen->custom_command = g_strdupv (command);
-  else
-    screen->custom_command = NULL;
 }
 
 
@@ -1985,24 +2017,6 @@ terminal_screen_set_working_directory (TerminalScreen *screen,
 
   g_free (screen->working_directory);
   screen->working_directory = g_strdup (directory);
-}
-
-
-
-/**
- * terminal_screen_set_hold:
- * @screen : A #TerminalScreen.
- * @hold   : %TRUE to keep @screen around when the child exits.
- *
- * Sets  whether the terminal screen will be destroyed when
- * the child exits.
- **/
-void
-terminal_screen_set_hold (TerminalScreen *screen,
-                          gboolean        hold)
-{
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  screen->hold = hold;
 }
 
 

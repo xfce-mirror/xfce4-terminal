@@ -1063,12 +1063,6 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
       terminal_screen_set_size (screen, w, h);
     }
-  else
-    {
-      /* force a screen size, needed for misc-default-geometry */
-      terminal_screen_get_size (screen, &w, &h);
-      terminal_window_set_size_force_grid (window, screen, w, h);
-    }
 
   /* regenerate the "Go" menu */
   terminal_window_rebuild_tabs_menu (window);
