@@ -648,7 +648,7 @@ terminal_widget_open_uri (TerminalWidget *widget,
 {
   GtkWindow *window = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (widget)));
   GError    *error = NULL;
-  gchar     *uri;
+  gchar     *uri, *escaped;
   guint      i;
 
   for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
@@ -689,9 +689,10 @@ terminal_widget_open_uri (TerminalWidget *widget,
 #endif
         {
           /* escape ampersand symbols, etc. */
-          uri = g_markup_escape_text (uri, -1);
+          escaped = g_markup_escape_text (uri, -1);
           /* tell the user that we were unable to open the responsible application */
-          xfce_dialog_show_error (window, error, _("Failed to open the URL '%s'"), uri);
+          xfce_dialog_show_error (window, error, _("Failed to open the URL '%s'"), escaped);
+          g_free (escaped);
           g_error_free (error);
         }
 
