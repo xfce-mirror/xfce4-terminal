@@ -2366,16 +2366,19 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 void
 terminal_screen_update_font (TerminalScreen *screen)
 {
+  GtkWidget            *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   gboolean              font_use_system, font_allow_bold;
   gchar                *font_name;
   PangoFontDescription *font_desc;
   glong                 grid_w = 0, grid_h = 0;
-  GtkWidget            *toplevel;
   GSettings            *settings;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
+
+  if (!TERMINAL_IS_WINDOW (toplevel))
+    return;
 
   g_object_get (G_OBJECT (screen->preferences),
                 "font-use-system", &font_use_system,
@@ -2391,17 +2394,14 @@ terminal_screen_update_font (TerminalScreen *screen)
   else
     g_object_get (G_OBJECT (screen->preferences), "font-name", &font_name, NULL);
 
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  if (TERMINAL_IS_WINDOW (toplevel))
+  if (TERMINAL_WINDOW (toplevel)->font)
     {
-      if (TERMINAL_WINDOW (toplevel)->font)
-        {
-          g_free (font_name);
-          font_name = g_strdup (TERMINAL_WINDOW (toplevel)->font);
-        }
-      if (TERMINAL_WINDOW (toplevel)->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
-        font_name = terminal_screen_zoom_font (screen, font_name, TERMINAL_WINDOW (toplevel)->zoom);
+      g_free (font_name);
+      font_name = g_strdup (TERMINAL_WINDOW (toplevel)->font);
     }
+
+  if (TERMINAL_WINDOW (toplevel)->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+    font_name = terminal_screen_zoom_font (screen, font_name, TERMINAL_WINDOW (toplevel)->zoom);
 
   if (gtk_widget_get_realized (GTK_WIDGET (screen)))
     terminal_screen_get_size (screen, &grid_w, &grid_h);
@@ -2415,8 +2415,8 @@ terminal_screen_update_font (TerminalScreen *screen)
       g_free (font_name);
     }
 
-  /* update window geometry it required */
-  if (grid_w > 0 && grid_h > 0)
+  /* update window geometry it required (not needed for drop-down) */
+  if (!TERMINAL_WINDOW (toplevel)->drop_down && grid_w > 0 && grid_h > 0)
     terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
 }
 
