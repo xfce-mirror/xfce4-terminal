@@ -1,3 +1,29 @@
+0.8.5
+=====
+- Do not change drop-down window size when zooming in/out
+- Create terminal of desired size instead of default size of 80x24: this allows
+  to avoid resizing the terminal right after creation (#13521)
+- Use default terminal geometry when --geometry parameter is used but its value
+  only contains X and Y offsets
+- Improve label layout in preferences dialog: restrict max width to 80 chars
+  (#13497)
+- Add --minimize command line option
+- Calculate screen dimensions properly when having multiple monitors
+- Prevent clipboard from being filled with garbage (#13403)
+- Resolve deprecation warnings: gtk_show_uri_on_window,
+  gdk_screen_make_display_name, gdk_screen_get_width/height
+- Silence most of deprecation warnings that are not resolved
+- Make Preferences dialog app-global - the same dialog window will be used
+  by multiple terminal windows
+- Remove large space to the left of tab text when the text is too short
+  (this allows tabs to be smaller)
+- Gtk3 required version bumped to 3.16.0
+- Fix memory leaks
+- Close Find dialog when closing parent terminal window
+- Close Set Title dialog when closing its corresponding tab
+- Translation updates: Catalan, Chinese (Taiwan), German, Greek, Hebrew, Kazakh,
+  Lithuanian, Norwegian Bokmål, Polish, Portuguese (Brasil), Russian, Serbian, Slovenian, Swedish, Thai, Ukrainian
+
 0.8.4
 =====
 - Fixes related to fullscreen state and showing/hiding window in drop-down
