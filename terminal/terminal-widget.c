@@ -669,10 +669,8 @@ terminal_widget_open_uri (TerminalWidget *widget,
             break;
 
           case PATTERN_TYPE_EMAIL:
-            if (strncmp (wlink, MAILTO, strlen (MAILTO)) == 0)
-              uri = g_strdup (wlink);
-            else
-              uri = g_strconcat (MAILTO, wlink, NULL);
+            uri = strncmp (wlink, MAILTO, strlen (MAILTO)) == 0
+                ? g_strdup (wlink) : g_strconcat (MAILTO, wlink, NULL);
             break;
 
           default:
@@ -723,8 +721,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
       for (i = 0; i < G_N_ELEMENTS (regex_patterns); i++)
         if (widget->regex_tags[i] != -1)
           {
-            vte_terminal_match_remove (VTE_TERMINAL (widget),
-                                       widget->regex_tags[i]);
+            vte_terminal_match_remove (VTE_TERMINAL (widget), widget->regex_tags[i]);
             widget->regex_tags[i] = -1;
           }
     }
@@ -753,17 +750,14 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 #endif
           if (G_UNLIKELY (error != NULL))
             {
-              g_critical ("Failed to parse regular expression pattern %d: %s",
-                          i, error->message);
+              g_critical ("Failed to parse regular expression pattern %d: %s", i, error->message);
               g_error_free (error);
               continue;
             }
 
           /* set the new regular expression */
-          widget->regex_tags[i] = vte_terminal_match_add_gregex (VTE_TERMINAL (widget),
-                                                                 regex, 0);
-          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget),
-                                              widget->regex_tags[i], GDK_HAND2);
+          widget->regex_tags[i] = vte_terminal_match_add_gregex (VTE_TERMINAL (widget), regex, 0);
+          vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget), widget->regex_tags[i], GDK_HAND2);
           /* release the regex owned by vte now */
           g_regex_unref (regex);
         }
