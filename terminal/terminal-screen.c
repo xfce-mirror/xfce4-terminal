@@ -2377,9 +2377,6 @@ terminal_screen_update_font (TerminalScreen *screen)
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
-  if (!TERMINAL_IS_WINDOW (toplevel))
-    return;
-
   g_object_get (G_OBJECT (screen->preferences),
                 "font-use-system", &font_use_system,
                 "font-allow-bold", &font_allow_bold,
@@ -2394,14 +2391,17 @@ terminal_screen_update_font (TerminalScreen *screen)
   else
     g_object_get (G_OBJECT (screen->preferences), "font-name", &font_name, NULL);
 
-  if (TERMINAL_WINDOW (toplevel)->font)
+  if (TERMINAL_IS_WINDOW (toplevel))
     {
-      g_free (font_name);
-      font_name = g_strdup (TERMINAL_WINDOW (toplevel)->font);
-    }
+      if (TERMINAL_WINDOW (toplevel)->font)
+        {
+          g_free (font_name);
+          font_name = g_strdup (TERMINAL_WINDOW (toplevel)->font);
+        }
 
-  if (TERMINAL_WINDOW (toplevel)->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
-    font_name = terminal_screen_zoom_font (screen, font_name, TERMINAL_WINDOW (toplevel)->zoom);
+      if (TERMINAL_WINDOW (toplevel)->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+        font_name = terminal_screen_zoom_font (screen, font_name, TERMINAL_WINDOW (toplevel)->zoom);
+    }
 
   if (gtk_widget_get_realized (GTK_WIDGET (screen)))
     terminal_screen_get_size (screen, &grid_w, &grid_h);
@@ -2416,7 +2416,7 @@ terminal_screen_update_font (TerminalScreen *screen)
     }
 
   /* update window geometry it required (not needed for drop-down) */
-  if (!TERMINAL_WINDOW (toplevel)->drop_down && grid_w > 0 && grid_h > 0)
+  if (TERMINAL_IS_WINDOW (toplevel) && !TERMINAL_WINDOW (toplevel)->drop_down && grid_w > 0 && grid_h > 0)
     terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
 }
 
