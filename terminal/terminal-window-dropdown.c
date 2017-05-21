@@ -736,15 +736,15 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
                                gboolean                activate)
 {
   TerminalWindow    *window = TERMINAL_WINDOW (dropdown);
-  gint               w, h;
+  TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
   GdkRectangle       monitor_geo;
-  gint               x_dest, y_dest, x_pos, y_pos;
   GtkRequisition     req1;
+  gint               w, h;
+  gint               x, y;
   gboolean           move_to_active;
   gboolean           keep_above;
   gboolean           visible;
   gint               vbox_h;
-  TerminalDirection  old_animation_dir = ANIMATION_DIR_NONE;
   gboolean           fullscreen;
 
   visible = gdk_window_is_visible (gtk_widget_get_window (GTK_WIDGET (dropdown)));
@@ -826,21 +826,18 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_widget_set_size_request (terminal_window_get_vbox (window), w, vbox_h);
 
   /* calc position */
-  x_dest = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
-  y_dest = monitor_geo.y;
+  x = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
+  y = monitor_geo.y;
 
   /* move */
-  gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
+  gtk_window_move (GTK_WINDOW (dropdown), x, y);
 
   /* show window */
   if (!visible)
     gtk_window_present_with_time (GTK_WINDOW (dropdown), timestamp);
 
-  /* check window position after showing it
-   * https://bugzilla.xfce.org/show_bug.cgi?id=10713 */
-  gtk_window_get_position (GTK_WINDOW (dropdown), &x_pos, &y_pos);
-  if (x_pos != x_dest || y_pos != y_dest)
-    gtk_window_move (GTK_WINDOW (dropdown), x_dest, y_dest);
+  /* move window after showing: https://bugzilla.xfce.org/show_bug.cgi?id=10713 */
+  gtk_window_move (GTK_WINDOW (dropdown), x, y);
 
   /* force focus to the window */
   if (activate)
