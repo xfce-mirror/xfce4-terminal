@@ -798,13 +798,6 @@ terminal_app_open_window (TerminalApp        *app,
 
   if (!attr->drop_down)
     {
-      /* don't apply other attributes to the window when reusing, just present it to user */
-      if (reuse_window)
-        {
-          gtk_window_present (GTK_WINDOW (window));
-          return;
-        }
-
       /* try to apply the geometry to the window */
       g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geometry, NULL);
 #ifdef GDK_WINDOWING_X11
@@ -886,7 +879,11 @@ terminal_app_open_window (TerminalApp        *app,
       terminal_window_set_grid_size (TERMINAL_WINDOW (window), width, height);
       terminal_screen_force_resize_window (terminal_window_get_active (TERMINAL_WINDOW (window)),
                                            GTK_WINDOW (window), width, height);
-      gtk_widget_show (window);
+
+      if (reuse_window)
+        gtk_window_present (GTK_WINDOW (window));
+      else
+        gtk_widget_show (window);
     }
 }
 
