@@ -434,9 +434,12 @@ terminal_screen_realize (GtkWidget *widget)
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->realize) (widget);
 
-  /* make sure the TerminalWidget is realized as well */
+#if !GTK_CHECK_VERSION (3, 20, 0)
+  /* make sure the TerminalWidget is realized as well
+     (produces "Drawing a gadget with negative dimensions" Gtk-WARNING) */
   if (!gtk_widget_get_realized (TERMINAL_SCREEN (widget)->terminal))
     gtk_widget_realize (TERMINAL_SCREEN (widget)->terminal);
+#endif
 
   /* connect to the "composited-changed" signal */
   screen = gtk_widget_get_screen (widget);
