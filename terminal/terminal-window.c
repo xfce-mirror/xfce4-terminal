@@ -117,11 +117,6 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
                                                                    TerminalScreen         *screen,
                                                                    glong                   force_grid_width,
                                                                    glong                   force_grid_height);
-static gboolean     terminal_window_accel_activate                (GtkAccelGroup          *accel_group,
-                                                                   GObject                *acceleratable,
-                                                                   guint                   accel_key,
-                                                                   GdkModifierType         accel_mods,
-                                                                   TerminalWindow         *window);
 static void         terminal_window_update_actions                (TerminalWindow         *window);
 static void         terminal_window_update_slim_tabs              (TerminalWindow         *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
@@ -461,8 +456,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   accel_group = gtk_ui_manager_get_accel_group (window->priv->ui_manager);
 G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
-  g_signal_connect_after (G_OBJECT (accel_group), "accel-activate",
-      G_CALLBACK (terminal_window_accel_activate), window);
 
   gtk_accel_group_connect_by_path (accel_group, "<Actions>/terminal-window/toggle-menubar", toggle_menubar_closure);
 
@@ -852,36 +845,6 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
       terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
                                            force_grid_width, force_grid_height);
     }
-}
-
-
-
-static gboolean
-terminal_window_accel_activate (GtkAccelGroup   *accel_group,
-                                GObject         *acceleratable,
-                                guint            accel_key,
-                                GdkModifierType  accel_mods,
-                                TerminalWindow  *window)
-{
-  GtkAction   *actions[] = { window->priv->action_prev_tab, window->priv->action_next_tab };
-  guint        n;
-  GtkAccelKey  key;
-
-  for (n = 0; n < G_N_ELEMENTS (actions); n++)
-    {
-      /* pretend we handled the accelerator if the event matches one of
-       * the insensitive actions, so we don't send weird key events to vte
-       * see http://bugzilla.xfce.org/show_bug.cgi?id=3715 */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      if (!gtk_action_is_sensitive (actions[n])
-          && gtk_accel_map_lookup_entry (gtk_action_get_accel_path (actions[n]), &key)
-          && key.accel_key == accel_key
-          && key.accel_mods == accel_mods)
-        return TRUE;
-G_GNUC_END_IGNORE_DEPRECATIONS
-    }
-
-  return FALSE;
 }
 
 
