@@ -54,7 +54,9 @@ enum
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
   PROP_COLOR_BACKGROUND_VARY,
+  PROP_COLOR_CURSOR_FG,
   PROP_COLOR_CURSOR,
+  PROP_COLOR_CURSOR_USE_DEFAULT,
   PROP_COLOR_SELECTION,
   PROP_COLOR_SELECTION_BG,
   PROP_COLOR_SELECTION_USE_DEFAULT,
@@ -417,14 +419,34 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
+   * TerminalPreferences:color-cursor-fg:
+   **/
+  preferences_props[PROP_COLOR_CURSOR_FG] =
+      g_param_spec_string ("color-cursor-fg",
+                           NULL,
+                           "ColorCursorForeground",
+                           "",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
    * TerminalPreferences:color-cursor:
    **/
   preferences_props[PROP_COLOR_CURSOR] =
       g_param_spec_string ("color-cursor",
                            NULL,
                            "ColorCursor",
-                           "#00aa00",
+                           "",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:color-cursor-use-default:
+   **/
+  preferences_props[PROP_COLOR_CURSOR_USE_DEFAULT] =
+      g_param_spec_boolean ("color-cursor-use-default",
+                            NULL,
+                            "ColorCursorUseDefault",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:color-selection:
@@ -433,7 +455,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-selection",
                            NULL,
                            "ColorSelection",
-                           "#ffffff",
+                           "",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -443,7 +465,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-selection-bg",
                            NULL,
                            "ColorSelectionBackground",
-                           "#ffffff",
+                           "",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
@@ -463,7 +485,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_string ("color-bold",
                            NULL,
                            "ColorBold",
-                           "#ffffff",
+                           "",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**

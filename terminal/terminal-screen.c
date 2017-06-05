@@ -945,12 +945,12 @@ terminal_screen_update_colors (TerminalScreen *screen)
   GdkRGBA    cursor;
   GdkRGBA    selection;
   GdkRGBA    bold;
+  gboolean   cursor_use_default;
   gboolean   selection_use_default;
   gboolean   bold_use_default;
   guint      n = 0;
   gboolean   has_bg;
   gboolean   has_fg;
-  gboolean   has_cursor;
   gboolean   valid_palette = FALSE;
   gchar     *palette_str;
   gchar    **colors;
@@ -960,6 +960,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
 
   g_object_get (screen->preferences,
                 "color-palette", &palette_str,
+                "color-cursor-use-default", &cursor_use_default,
                 "color-selection-use-default", &selection_use_default,
                 "color-bold-use-default", &bold_use_default,
                 "color-background-vary", &vary_bg,
@@ -1037,12 +1038,15 @@ terminal_screen_update_colors (TerminalScreen *screen)
     }
 
   /* cursor color */
-  has_cursor = terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
-  vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), has_cursor ? &cursor : NULL);
+  if (!cursor_use_default)
+    {
+      cursor_use_default = !terminal_preferences_get_color (screen->preferences, "color-cursor-fg", &cursor);
 #if VTE_CHECK_VERSION (0, 44, 0)
-  vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen->terminal),
-                                            has_cursor && has_bg ? &bg : NULL);
+      vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen->terminal), cursor_use_default ? NULL : &cursor);
 #endif
+      cursor_use_default = !terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
+      vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), cursor_use_default ? NULL : &cursor);
+    }
 
   /* selection color */
   if (!selection_use_default)

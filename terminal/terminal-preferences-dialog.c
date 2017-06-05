@@ -157,10 +157,10 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "dropdown-move-to-active", "dropdown-always-show-tabs",
                                        "dropdown-show-borders"
                                      };
-  const gchar      *props_color[] =  { "color-foreground", "color-cursor",
-                                       "color-background", "tab-activity-color",
-                                       "color-selection", "color-selection-bg",
-                                       "color-bold"
+  const gchar      *props_color[] =  { "color-foreground", "color-background",
+                                       "tab-activity-color", "color-cursor-fg",
+                                       "color-cursor", "color-selection",
+                                       "color-selection-bg", "color-bold"
                                      };
   const gchar      *props_value[] =  { "dropdown-height", "dropdown-width",
                                        "dropdown-position", "dropdown-opacity",
@@ -293,6 +293,22 @@ error:
     gtk_scale_add_mark (GTK_SCALE (object), i, GTK_POS_BOTTOM, NULL);
 
   /* inverted custom colors and set sensitivity */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-cursor-custom");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
+                          G_OBJECT (object), "active",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-cursor-fg");
+  terminal_return_if_fail (G_IS_OBJECT (object2));
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_SYNC_CREATE);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-cursor");
+  terminal_return_if_fail (G_IS_OBJECT (objec2));
+  g_object_bind_property (G_OBJECT (object), "active",
+                          G_OBJECT (object2), "sensitive",
+                          G_BINDING_SYNC_CREATE);
+
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-custom");
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-selection-use-default",

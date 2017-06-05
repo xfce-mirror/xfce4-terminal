@@ -1912,6 +1912,7 @@ Opacity setting is not available.</property>
                       <object class="GtkGrid" id="grid5">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">start</property>
                         <property name="margin_left">18</property>
                         <property name="margin_right">12</property>
                         <property name="margin_top">6</property>
@@ -1937,7 +1938,6 @@ Opacity setting is not available.</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">end</property>
                             <property name="title" translatable="yes">Choose text color</property>
                             <property name="rgba">rgb(0,0,0)</property>
                             <child internal-child="accessible">
@@ -1950,108 +1950,6 @@ Opacity setting is not available.</property>
                           <packing>
                             <property name="left_attach">1</property>
                             <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label35">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Cu_rsor color:</property>
-                            <property name="use_underline">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkColorButton" id="color-cursor">
-                            <property name="use_action_appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="halign">end</property>
-                            <property name="title" translatable="yes">Choose cursor color</property>
-                            <property name="rgba">rgb(0,0,0)</property>
-                            <child internal-child="accessible">
-                              <object class="AtkObject" id="color-cursor-atkobject">
-                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label38">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">_Background color:</property>
-                            <property name="use_underline">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkColorButton" id="color-background">
-                            <property name="use_action_appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="halign">end</property>
-                            <property name="title" translatable="yes">Choose background color</property>
-                            <property name="rgba">rgb(0,0,0)</property>
-                            <child internal-child="accessible">
-                              <object class="AtkObject" id="color-background-atkobject">
-                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkLabel" id="label37">
-                            <property name="visible">True</property>
-                            <property name="can_focus">False</property>
-                            <property name="halign">start</property>
-                            <property name="label" translatable="yes">Tab activit_y color:</property>
-                            <property name="use_underline">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">2</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkColorButton" id="tab-activity-color">
-                            <property name="use_action_appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="halign">end</property>
-                            <property name="title" translatable="yes">Choose tab activity color</property>
-                            <property name="rgba">rgb(0,0,0)</property>
-                            <child internal-child="accessible">
-                              <object class="AtkObject" id="tab-activity-color-atkobject">
-                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
-                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
-                              </object>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="left_attach">3</property>
-                            <property name="top_attach">1</property>
                           </packing>
                         </child>
                         <child>
@@ -2070,6 +1968,78 @@ Opacity setting is not available.</property>
                             <property name="top_attach">2</property>
                             <property name="width">4</property>
                           </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label38">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">_Background color:</property>
+                            <property name="use_underline">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-background">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose background color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-background-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">3</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="label37">
+                            <property name="visible">True</property>
+                            <property name="can_focus">False</property>
+                            <property name="halign">start</property>
+                            <property name="label" translatable="yes">Tab activit_y color:</property>
+                            <property name="use_underline">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="tab-activity-color">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose tab activity color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="tab-activity-color-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                       </object>
                     </child>
@@ -2101,12 +2071,59 @@ Opacity setting is not available.</property>
                       <object class="GtkGrid" id="grid6">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">start</property>
                         <property name="margin_left">18</property>
                         <property name="margin_right">12</property>
                         <property name="margin_top">6</property>
                         <property name="margin_bottom">6</property>
                         <property name="row_spacing">6</property>
                         <property name="column_spacing">12</property>
+                        <child>
+                          <object class="GtkCheckButton" id="color-bold-custom">
+                            <property name="label" translatable="yes">B_old text color:</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to set a custom bold color. If disabled the text color will be used.</property>
+                            <property name="halign">start</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-bold">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose bold font color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
+                            <property name="top_attach">2</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="color-selection-custom">
+                            <property name="label" translatable="yes">Text _selection color:</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to set custom text and background colors for the selection. If disabled the background and text colors will be reversed.</property>
+                            <property name="halign">start</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
                         <child>
                           <object class="GtkColorButton" id="color-selection">
                             <property name="use_action_appearance">False</property>
@@ -2124,52 +2141,6 @@ Opacity setting is not available.</property>
                           </object>
                           <packing>
                             <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkColorButton" id="color-bold">
-                            <property name="use_action_appearance">False</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="title" translatable="yes">Choose bold font color</property>
-                            <property name="rgba">rgb(0,0,0)</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">1</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="color-selection-custom">
-                            <property name="label" translatable="yes">Text _selection color:</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="tooltip_text" translatable="yes">Enable this option to set custom text and background colors for the selection. If disabled the background and text colors will be reversed.</property>
-                            <property name="halign">start</property>
-                            <property name="use_underline">True</property>
-                            <property name="draw_indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkCheckButton" id="color-bold-custom">
-                            <property name="label" translatable="yes">B_old text color:</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">False</property>
-                            <property name="tooltip_text" translatable="yes">Enable this option to set a custom bold color. If disabled the text color will be used.</property>
-                            <property name="halign">start</property>
-                            <property name="use_underline">True</property>
-                            <property name="draw_indicator">True</property>
-                          </object>
-                          <packing>
-                            <property name="left_attach">0</property>
                             <property name="top_attach">1</property>
                           </packing>
                         </child>
@@ -2179,7 +2150,6 @@ Opacity setting is not available.</property>
                             <property name="visible">True</property>
                             <property name="can_focus">True</property>
                             <property name="receives_default">True</property>
-                            <property name="halign">start</property>
                             <property name="title" translatable="yes">Choose text selection background color</property>
                             <property name="rgba">rgb(0,0,0)</property>
                             <child internal-child="accessible">
@@ -2191,6 +2161,62 @@ Opacity setting is not available.</property>
                           </object>
                           <packing>
                             <property name="left_attach">2</property>
+                            <property name="top_attach">1</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkCheckButton" id="color-cursor-custom">
+                            <property name="label" translatable="yes">Cu_rsor color:</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">False</property>
+                            <property name="tooltip_text" translatable="yes">Enable this option to set custom text and background colors for the cursor. If disabled the background and text colors will be reversed.</property>
+                            <property name="halign">start</property>
+                            <property name="use_underline">True</property>
+                            <property name="draw_indicator">True</property>
+                          </object>
+                          <packing>
+                            <property name="left_attach">0</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-cursor">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose cursor background color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-cursor-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">2</property>
+                            <property name="top_attach">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkColorButton" id="color-cursor-fg">
+                            <property name="use_action_appearance">False</property>
+                            <property name="visible">True</property>
+                            <property name="can_focus">True</property>
+                            <property name="receives_default">True</property>
+                            <property name="title" translatable="yes">Choose cursor foreground color</property>
+                            <property name="rgba">rgb(0,0,0)</property>
+                            <child internal-child="accessible">
+                              <object class="AtkObject" id="color-cursor-fg-atkobject">
+                                <property name="AtkObject::accessible-name" translatable="yes">Color Selector</property>
+                                <property name="AtkObject::accessible-description" translatable="yes">Open a dialog to specify the color</property>
+                              </object>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="left_attach">1</property>
                             <property name="top_attach">0</property>
                           </packing>
                         </child>
@@ -2695,8 +2721,7 @@ incorrectly. They are only here to allow you to work around
 certain applications and operating systems that expect
 different terminal behavior.</property>
                                     <property name="wrap">True</property>
-                                    <property name="ellipsize">none</property>
-                                    <property name="max-width-chars">80</property>
+                                    <property name="max_width_chars">80</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
