@@ -676,7 +676,6 @@ static void
 terminal_app_open_window (TerminalApp        *app,
                           TerminalWindowAttr *attr)
 {
-  TerminalTabAttr *tab_attr = NULL;
   GtkWidget       *window;
   TerminalScreen  *terminal;
   GdkScreen       *screen;
@@ -858,14 +857,9 @@ terminal_app_open_window (TerminalApp        *app,
   /* add the tabs */
   for (lp = attr->tabs; lp != NULL; lp = lp->next)
     {
-      tab_attr = lp->data;
-      terminal = terminal_screen_new (tab_attr->command,
-                                      tab_attr->directory,
-                                      tab_attr->title,
-                                      tab_attr->hold,
+      terminal = terminal_screen_new ((TerminalTabAttr *) lp->data,
                                       width,
                                       height);
-
       terminal_window_add (TERMINAL_WINDOW (window), terminal);
       terminal_screen_launch_child (terminal);
     }

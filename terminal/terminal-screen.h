@@ -22,6 +22,7 @@
 
 #include <gtk/gtk.h>
 #include <terminal/terminal-private.h>
+#include <terminal/terminal-options.h>
 
 G_BEGIN_DECLS
 
@@ -37,10 +38,7 @@ typedef struct _TerminalScreen      TerminalScreen;
 
 GType           terminal_screen_get_type                  (void) G_GNUC_CONST;
 
-TerminalScreen *terminal_screen_new                       (gchar         **command,
-                                                           gchar          *directory,
-                                                           gchar           *title,
-                                                           gboolean         hold,
+TerminalScreen *terminal_screen_new                       (TerminalTabAttr *attr,
                                                            glong            columns,
                                                            glong            rows);
 

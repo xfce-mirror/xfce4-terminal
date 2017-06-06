@@ -172,7 +172,9 @@ struct _TerminalScreen
 
   gchar              **custom_command;
   gchar               *custom_title;
+  gchar               *initial_title;
 
+  TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
 
   guint                activity_timeout_id;
@@ -257,6 +259,7 @@ terminal_screen_init (TerminalScreen *screen)
 {
   screen->loader = NULL;
   screen->working_directory = g_get_current_dir ();
+  screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
   screen->session_id = ++screen_last_session_id;
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
@@ -336,6 +339,7 @@ terminal_screen_finalize (GObject *object)
   g_strfreev (screen->custom_command);
   g_free (screen->working_directory);
   g_free (screen->custom_title);
+  g_free (screen->initial_title);
 
   (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
@@ -372,11 +376,18 @@ terminal_screen_get_property (GObject          *object,
         }
       else
         {
-          g_object_get (G_OBJECT (screen->preferences), "title-mode", &mode, NULL);
+          if (G_UNLIKELY (screen->dynamic_title_mode != TERMINAL_TITLE_DEFAULT))
+            mode = screen->dynamic_title_mode;
+          else
+            g_object_get (G_OBJECT (screen->preferences), "title-mode", &mode, NULL);
+
           if (G_UNLIKELY (mode == TERMINAL_TITLE_HIDE))
             {
               /* show the initial title if the dynamic title is set to hidden */
-              g_object_get (G_OBJECT (screen->preferences), "title-initial", &initial, NULL);
+              if (G_UNLIKELY (screen->initial_title != NULL))
+                initial = g_strdup (screen->initial_title);
+              else
+                g_object_get (G_OBJECT (screen->preferences), "title-initial", &initial, NULL);
               parsed_title = terminal_screen_parse_title (screen, initial);
               title = parsed_title;
               g_free (initial);
@@ -1547,32 +1558,29 @@ terminal_screen_set_custom_command (TerminalScreen *screen,
 
 /**
  * terminal_screen_new:
- * @command   : Command.
- * @directory : Working directory.
- * @title     : Terminal title.
- * @hold      : Whether to hold the terminal after child exits.
- * @columns   : Columns (width).
- * @rows      : Rows (height).
+ * @attr    : Terminal attributes.
+ * @columns : Columns (width).
+ * @rows    : Rows (height).
  *
  * Creates a terminal screen object.
  **/
 TerminalScreen *
-terminal_screen_new (gchar    **command,
-                     gchar     *directory,
-                     gchar     *title,
-                     gboolean   hold,
-                     glong      columns,
-                     glong      rows)
+terminal_screen_new (TerminalTabAttr *attr,
+                     glong            columns,
+                     glong            rows)
 {
   TerminalScreen *screen = g_object_new (TERMINAL_TYPE_SCREEN, NULL);
 
-  if (command != NULL)
-    terminal_screen_set_custom_command (screen, command);
-  if (directory != NULL)
-    terminal_screen_set_working_directory (screen, directory);
-  if (title != NULL)
-    terminal_screen_set_custom_title (screen, title);
-  screen->hold = hold;
+  if (attr->command != NULL)
+    terminal_screen_set_custom_command (screen, attr->command);
+  if (attr->directory != NULL)
+    terminal_screen_set_working_directory (screen, attr->directory);
+  if (attr->title != NULL)
+    terminal_screen_set_custom_title (screen, attr->title);
+  if (attr->initial_title != NULL)
+    screen->initial_title = g_strdup (attr->initial_title);
+  screen->dynamic_title_mode = attr->dynamic_title_mode;
+  screen->hold = attr->hold;
   vte_terminal_set_size (VTE_TERMINAL (screen->terminal), columns, rows);
 
   return screen;
@@ -1902,12 +1910,20 @@ terminal_screen_get_title (TerminalScreen *screen)
     return terminal_screen_parse_title (screen, screen->custom_title);
 
   vte_title = vte_terminal_get_window_title (VTE_TERMINAL (screen->terminal));
-  g_object_get (G_OBJECT (screen->preferences),
-                "title-mode", &mode,
-                "title-initial", &tmp,
-                NULL);
-  initial = terminal_screen_parse_title (screen, tmp);
-  g_free (tmp);
+
+  if (G_UNLIKELY (screen->initial_title != NULL))
+    initial = terminal_screen_parse_title (screen, screen->initial_title);
+  else
+    {
+      g_object_get (G_OBJECT (screen->preferences), "title-initial", &tmp, NULL);
+      initial = terminal_screen_parse_title (screen, tmp);
+      g_free (tmp);
+    }
+
+  if (G_UNLIKELY (screen->dynamic_title_mode != TERMINAL_TITLE_DEFAULT))
+    mode = screen->dynamic_title_mode;
+  else
+    g_object_get (G_OBJECT (screen->preferences), "title-mode", &mode, NULL);
 
   switch (mode)
     {

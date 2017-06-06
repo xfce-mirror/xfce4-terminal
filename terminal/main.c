@@ -118,11 +118,16 @@ usage (void)
 
   g_print ("%s:\n"
            "  -x, --execute; -e, --command=%s; -T, --title=%s;\n"
-           "  --working-directory=%s; -H, --hold\n\n",
+           "  --dynamic-title-mode=%s ('replace', 'before', 'after', 'none');\n"
+           "  --initial-title=%s; --working-directory=%s; -H, --hold\n\n",
            _("Tab Options"),
            /* parameter of --command */
            _("command"),
            /* parameter of --title */
+           _("title"),
+           /* parameter of --dynamic-title-mode */
+           _("mode"),
+           /* parameter of --initial-title */
            _("title"),
            /* parameter of --working-directory */
            _("directory"));
