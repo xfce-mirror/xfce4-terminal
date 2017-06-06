@@ -327,8 +327,8 @@ terminal_window_attr_parse (gint              argc,
           else
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Invalid argument for option \"--dynamic-title\": "
-                             "%s"), s);
+                           _("Invalid argument for option \"--dynamic-title-mode\": %s"),
+                           s);
               goto failed;
             }
         }
