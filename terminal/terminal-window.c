@@ -1954,13 +1954,13 @@ terminal_window_action_set_title (GtkAction      *action,
 
       button = gtk_button_new_from_icon_name ("help-browser", GTK_ICON_SIZE_BUTTON);
       gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-      gtk_widget_set_tooltip_text (button, _("Help"));
+      gtk_widget_set_tooltip_text (button, _("_Help"));
       g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (title_popover_help), window);
       gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
 
       button = gtk_button_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_BUTTON);
       gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-      gtk_widget_set_tooltip_text (button, _("Close"));
+      gtk_widget_set_tooltip_text (button, _("_Close"));
       g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (title_popover_close), window);
       gtk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
 
