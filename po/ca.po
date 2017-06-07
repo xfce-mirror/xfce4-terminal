@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-06 06:31+0200\n"
-"PO-Revision-Date: 2017-06-06 15:41+0000\n"
+"POT-Creation-Date: 2017-06-07 00:31+0200\n"
+"PO-Revision-Date: 2017-06-07 07:39+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -66,13 +66,13 @@ msgstr "Opcions generals"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:138
+#: ../terminal/main.c:111 ../terminal/main.c:143
 msgid "display"
 msgstr "pantalla"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:128
+#: ../terminal/main.c:113 ../terminal/main.c:133
 msgid "directory"
 msgstr "directori"
 
@@ -80,90 +80,96 @@ msgstr "directori"
 msgid "Window or Tab Separators"
 msgstr "Finestra o separadors de pestanyes"
 
-#: ../terminal/main.c:122
+#: ../terminal/main.c:123
 msgid "Tab Options"
 msgstr "Opcions de pestanyes"
 
 #. parameter of --command
-#: ../terminal/main.c:124
+#: ../terminal/main.c:125
 msgid "command"
 msgstr "ordre"
 
 #. parameter of --title
-#: ../terminal/main.c:126
+#. parameter of --initial-title
+#: ../terminal/main.c:127 ../terminal/main.c:131
 msgid "title"
 msgstr "títol"
 
-#: ../terminal/main.c:136
+#. parameter of --dynamic-title-mode
+#: ../terminal/main.c:129
+msgid "mode"
+msgstr "mode"
+
+#: ../terminal/main.c:141
 msgid "Window Options"
 msgstr "Opcions de finestra"
 
 #. parameter of --geometry
-#: ../terminal/main.c:140
+#: ../terminal/main.c:145
 msgid "geometry"
 msgstr "geometria"
 
 #. parameter of --role
-#: ../terminal/main.c:142
+#: ../terminal/main.c:147
 msgid "role"
 msgstr "rol"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:144
+#: ../terminal/main.c:149
 msgid "string"
 msgstr "cadena de caràcters"
 
 #. parameter of --icon
-#: ../terminal/main.c:146
+#: ../terminal/main.c:151
 msgid "icon"
 msgstr "icona"
 
 #. parameter of --font
-#: ../terminal/main.c:148
+#: ../terminal/main.c:153
 msgid "font"
 msgstr "lletra"
 
 #. parameter of --zoom
-#: ../terminal/main.c:150
+#: ../terminal/main.c:155
 msgid "zoom"
 msgstr "zoom"
 
-#: ../terminal/main.c:152
+#: ../terminal/main.c:157
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Veieu la pàgina del manual de %s per a una explicació detallada de les opcions anteriors."
 
-#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Terminal de Xfce"
 
-#: ../terminal/main.c:201
+#: ../terminal/main.c:206
 msgid "The Xfce development team. All rights reserved."
 msgstr "L'equip de desenvolupament de Xfce. Tots els drets reservats."
 
-#: ../terminal/main.c:202
+#: ../terminal/main.c:207
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Escrit per Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:203
+#: ../terminal/main.c:208
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:204
+#: ../terminal/main.c:209
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "i Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:205
+#: ../terminal/main.c:210
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Si us plau, notifiqueu els errors a <%s>."
 
-#: ../terminal/main.c:312
+#: ../terminal/main.c:317
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "No es pot registrar el servei de terminal: %s\n"
 
-#: ../terminal/terminal-app.c:852
+#: ../terminal/terminal-app.c:851
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Cadena de geometria invàlida «%s»\n"
@@ -271,94 +277,113 @@ msgstr "L'identificador d'usuari no coincideix"
 msgid "Display mismatch"
 msgstr "La pantalla no coincideix"
 
-#: ../terminal/terminal-options.c:217
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "A l'opció «--default-display» li cal que especifiqueu com paràmetre la pantalla predeterminada de les X"
 
-#: ../terminal/terminal-options.c:233
+#: ../terminal/terminal-options.c:234
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "A l'opció «--default-working-directory» li cal que especifiqueu com paràmetre el directori de treball per defecte"
 
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:251
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "A l'opció «--execute/-x» li cal que especifiqueu l'ordre a executar en la resta de la línia d'ordres"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:268
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "A l'opció «--command/-e» li cal que especifiqueu com a paràmetre l'ordre a executar"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "A l'opció «--working-directory» li cal que especifiqueu com a paràmetre el directori de treball"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "A l'opció «--title/-T» li cal que especifiqueu com a paràmetre el títol."
 
-#: ../terminal/terminal-options.c:318
+#: ../terminal/terminal-options.c:315
+#, c-format
+msgid ""
+"Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
+"as its parameter"
+msgstr "A l'opció «--dynamic-title-mode» li cal que especifiqueu com a paràmetre el mode del títol dinàmic."
+
+#: ../terminal/terminal-options.c:330
+#, c-format
+msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
+msgstr "Argument no vàlid per a l'opció «--dynamic-title-mode»: %s"
+
+#: ../terminal/terminal-options.c:340
+#, c-format
+msgid ""
+"Option \"--initial-title\" requires specifying the initial title as its "
+"parameter"
+msgstr "A l'opció «--initial-title» li cal que especifiqueu com a paràmetre el títol inicial."
+
+#: ../terminal/terminal-options.c:359
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "A l'opció «--display» li cal que especifiqueu com a paràmetre la pantalla de les X"
 
-#: ../terminal/terminal-options.c:333
+#: ../terminal/terminal-options.c:374
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "A l'opció «--geometry» li cal que especifiqueu com a paràmetre la geometria de la finestra"
 
-#: ../terminal/terminal-options.c:348
+#: ../terminal/terminal-options.c:389
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "A l'opció «--role» li cal que especifiqueu com a paràmetre el rol de la finestra"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:404
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "A l'opció «--sm-client-id» li cal que especifiqueu com a paràmetre l'identificador únic de sessió"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "A l'opció «--startup-id» li cal que especifiqueu com paràmetre l'identificador d'engegada"
 
-#: ../terminal/terminal-options.c:394
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "A l'opció «--icon/-I» li cal que especifiqueu un nom d'icona o nom de fitxer com a paràmetre"
 
-#: ../terminal/terminal-options.c:465
+#: ../terminal/terminal-options.c:506
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "A l'opció «--font» li cal que especifiqueu com a paràmetre el nom de la lletra"
 
-#: ../terminal/terminal-options.c:483
+#: ../terminal/terminal-options.c:524
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "A l'opció «--zoom» li cal que especifiqueu com a paràmetre el zoom (%d .. %d)"
 
-#: ../terminal/terminal-options.c:505
+#: ../terminal/terminal-options.c:546
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "L'opció «%s» és desconeguda"
@@ -379,21 +404,21 @@ msgstr "Carrega els valors predefinits..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:760
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:403 ../terminal/terminal-screen.c:771
+#: ../terminal/terminal-screen.c:1936
 msgid "Untitled"
 msgstr "Sense títol"
 
-#: ../terminal/terminal-screen.c:661
+#: ../terminal/terminal-screen.c:672
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "No s'ha pogut determinar el vostre shell d'inici de sessió."
 
-#: ../terminal/terminal-screen.c:1612 ../terminal/terminal-screen.c:1638
+#: ../terminal/terminal-screen.c:1620 ../terminal/terminal-screen.c:1646
 msgid "Failed to execute child"
 msgstr "Ha fallat l'execució del fill"
 
-#: ../terminal/terminal-screen.c:2220
+#: ../terminal/terminal-screen.c:2236
 msgid "Close this tab"
 msgstr "Tanca aquesta pestanya"
 
@@ -401,7 +426,7 @@ msgstr "Tanca aquesta pestanya"
 msgid "Find"
 msgstr "Cerca"
 
-#: ../terminal/terminal-search-dialog.c:93
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1963
 msgid "_Close"
 msgstr "Tan_ca"
 
@@ -670,7 +695,7 @@ msgstr "Mou la pestanya a _l'esquerra"
 msgid "Move Tab _Right"
 msgstr "Mou la pestanya a la d_reta"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:341 ../terminal/terminal-window.c:1957
 msgid "_Help"
 msgstr "A_juda"
 
@@ -765,14 +790,6 @@ msgstr "_Títol:"
 #: ../terminal/terminal-window.c:1949
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduïu el títol de la pestanya del terminal actual"
-
-#: ../terminal/terminal-window.c:1957
-msgid "Help"
-msgstr "Ajuda"
-
-#: ../terminal/terminal-window.c:1963
-msgid "Close"
-msgstr "Tanca"
 
 #: ../terminal/terminal-window.c:2009
 msgid "Failed to create the regular expression"
