@@ -937,7 +937,7 @@ terminal_app_process (TerminalApp  *app,
         }
       else
         {
-          g_printerr ("Failed to connect to session manager: %s\n", err->message);
+          g_printerr (_("Failed to connect to session manager: %s\n"), err->message);
           g_error_free (err);
         }
     }

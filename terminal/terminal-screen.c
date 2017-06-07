@@ -2287,7 +2287,7 @@ terminal_screen_set_encoding (TerminalScreen *screen,
   if (charset == NULL)
     g_get_charset (&charset);
   if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, NULL)) {
-    g_printerr("Failed to set encoding %s\n", charset);
+    g_printerr (_("Failed to set encoding %s\n"), charset);
   }
 }
 
