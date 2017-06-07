@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-05 06:31+0200\n"
-"PO-Revision-Date: 2017-06-05 13:13+0000\n"
+"POT-Creation-Date: 2017-06-07 00:31+0200\n"
+"PO-Revision-Date: 2017-06-07 09:00+0000\n"
 "Last-Translator: Moo\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
@@ -66,13 +66,13 @@ msgstr "Bendri parametrai"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:138
+#: ../terminal/main.c:111 ../terminal/main.c:143
 msgid "display"
 msgstr "ekranas"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:128
+#: ../terminal/main.c:113 ../terminal/main.c:133
 msgid "directory"
 msgstr "aplankas"
 
@@ -80,90 +80,96 @@ msgstr "aplankas"
 msgid "Window or Tab Separators"
 msgstr "Langų ar kortelių skirtukas"
 
-#: ../terminal/main.c:122
+#: ../terminal/main.c:123
 msgid "Tab Options"
 msgstr "Kortelių parametrai"
 
 #. parameter of --command
-#: ../terminal/main.c:124
+#: ../terminal/main.c:125
 msgid "command"
 msgstr "komanda"
 
 #. parameter of --title
-#: ../terminal/main.c:126
+#. parameter of --initial-title
+#: ../terminal/main.c:127 ../terminal/main.c:131
 msgid "title"
 msgstr "antraštė"
 
-#: ../terminal/main.c:136
+#. parameter of --dynamic-title-mode
+#: ../terminal/main.c:129
+msgid "mode"
+msgstr "veiksena"
+
+#: ../terminal/main.c:141
 msgid "Window Options"
 msgstr "Langų parametrai"
 
 #. parameter of --geometry
-#: ../terminal/main.c:140
+#: ../terminal/main.c:145
 msgid "geometry"
 msgstr "geometrija"
 
 #. parameter of --role
-#: ../terminal/main.c:142
+#: ../terminal/main.c:147
 msgid "role"
 msgstr "vaidmuo"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:144
+#: ../terminal/main.c:149
 msgid "string"
 msgstr "eilutė"
 
 #. parameter of --icon
-#: ../terminal/main.c:146
+#: ../terminal/main.c:151
 msgid "icon"
 msgstr "piktograma"
 
 #. parameter of --font
-#: ../terminal/main.c:148
+#: ../terminal/main.c:153
 msgid "font"
 msgstr "šriftas"
 
 #. parameter of --zoom
-#: ../terminal/main.c:150
+#: ../terminal/main.c:155
 msgid "zoom"
 msgstr "mastelis"
 
-#: ../terminal/main.c:152
+#: ../terminal/main.c:157
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Peržiūrėkite %s „man“ puslapį pilnam parametrų aprašymui."
 
-#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce terminalas"
 
-#: ../terminal/main.c:201
+#: ../terminal/main.c:206
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce kūrėjų komanda. Visos teisės saugomos."
 
-#: ../terminal/main.c:202
+#: ../terminal/main.c:207
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Parašė Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:203
+#: ../terminal/main.c:208
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:204
+#: ../terminal/main.c:209
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "ir Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:205
+#: ../terminal/main.c:210
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Apie klaidas pranešti <%s>."
 
-#: ../terminal/main.c:312
+#: ../terminal/main.c:317
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nepavyko priregistruoti terminalo tarnybos: %s\n"
 
-#: ../terminal/terminal-app.c:852
+#: ../terminal/terminal-app.c:851
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neteisingas geometrijos apibrėžimas „%s“\n"
@@ -271,94 +277,113 @@ msgstr "Naudotojų id nesutampa"
 msgid "Display mismatch"
 msgstr "Ekranai nesutampa"
 
-#: ../terminal/terminal-options.c:217
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Parametras \"--default-display\" reikalauja nurodyti numatytąjį X ekraną kaip parametrą"
 
-#: ../terminal/terminal-options.c:233
+#: ../terminal/terminal-options.c:234
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Parametras „--default-working-directory“ reikalauja nurodyti numatytąjį aplanką kaip parametrą"
 
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:251
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Parametras „--execute/-x“ reikalauja nurodyti komandą kuri bus toliau vykdoma komandų eilutėje"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:268
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Parametras „--command/-e“ reikalauja nurodyti komandą kuri bus vykdoma kaip jo parametras"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Parametras „--working-directory“ reikalauja nurodyti aplanką kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Parametras „--title/-T“ reikalauja nurodyti pavadinimą kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:318
+#: ../terminal/terminal-options.c:315
+#, c-format
+msgid ""
+"Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
+"as its parameter"
+msgstr "Parametras \"--dynamic-title-mode\" kaip savo parametrą reikalauja nurodyti dinaminio pavadinimo veikseną"
+
+#: ../terminal/terminal-options.c:330
+#, c-format
+msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
+msgstr "Neteisingas parametro \"--dynamic-title-mode\" argumentas: %s"
+
+#: ../terminal/terminal-options.c:340
+#, c-format
+msgid ""
+"Option \"--initial-title\" requires specifying the initial title as its "
+"parameter"
+msgstr "Parametras \"--initial-title\" kaip savo parametrą reikalauja nurodyti pradinį pavadinimą"
+
+#: ../terminal/terminal-options.c:359
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Parametras \"--display\" reikalauja nurodyti X ekraną kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:333
+#: ../terminal/terminal-options.c:374
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Parametras „--geometry“ reikalauja nurodyti lango geometriją kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:348
+#: ../terminal/terminal-options.c:389
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Parametras „--role“ reikalauja nurodyti lango vaidmenį kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:404
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Parametras \"--sm-client-id\" reikalauja nurodyti unikalų seanso id kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Parametras „--startup-id“ reikalauja nurodyti paleidimo id kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:394
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Parametras „--icon/-I“ reikalauja nurodyti piktogramos vardą ar failo vardo kaip jo parametrą"
 
-#: ../terminal/terminal-options.c:465
+#: ../terminal/terminal-options.c:506
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Parametras \"--font\" kaip savo parametrą reikalauja nurodyti šrifto pavadinimą"
 
-#: ../terminal/terminal-options.c:483
+#: ../terminal/terminal-options.c:524
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Parametras \"--zoom\" kaip savo parametrą reikalauja nurodyti mastelį (%d .. %d)"
 
-#: ../terminal/terminal-options.c:505
+#: ../terminal/terminal-options.c:546
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Nežinoma parametras „%s“"
@@ -379,21 +404,21 @@ msgstr "Įkelti išankstines parinktis..."
 msgid "Terminal"
 msgstr "Terminalas"
 
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:760
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:403 ../terminal/terminal-screen.c:771
+#: ../terminal/terminal-screen.c:1936
 msgid "Untitled"
 msgstr "Be pavadinimo"
 
-#: ../terminal/terminal-screen.c:661
+#: ../terminal/terminal-screen.c:672
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nepavyko aptikti jūsų prisijungimo apvalkalo."
 
-#: ../terminal/terminal-screen.c:1612 ../terminal/terminal-screen.c:1638
+#: ../terminal/terminal-screen.c:1620 ../terminal/terminal-screen.c:1646
 msgid "Failed to execute child"
 msgstr "Nepavyko paleisti antrinio proceso"
 
-#: ../terminal/terminal-screen.c:2220
+#: ../terminal/terminal-screen.c:2236
 msgid "Close this tab"
 msgstr "Užverti šią kortelę"
 
@@ -401,7 +426,7 @@ msgstr "Užverti šią kortelę"
 msgid "Find"
 msgstr "Ieškoti"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1940
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1963
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -670,7 +695,7 @@ msgstr "Perkelti kortelę _kairėn"
 msgid "Move Tab _Right"
 msgstr "Perkelti kortelę _dešinėn"
 
-#: ../terminal/terminal-window.c:341 ../terminal/terminal-window.c:1938
+#: ../terminal/terminal-window.c:341 ../terminal/terminal-window.c:1957
 msgid "_Help"
 msgstr "Ž_inynas"
 
@@ -739,7 +764,7 @@ msgstr "Nustatyti k_oduotę"
 msgid "Warning"
 msgstr "Įspėjimas"
 
-#: ../terminal/terminal-window.c:732 ../terminal/terminal-window.c:2101
+#: ../terminal/terminal-window.c:732 ../terminal/terminal-window.c:2092
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
@@ -758,31 +783,27 @@ msgstr "Užverti visas korteles?"
 msgid "Do _not ask me again"
 msgstr "Daugiau n_ebeklausti"
 
-#: ../terminal/terminal-window.c:1929
-msgid "Window Title|Set Title"
-msgstr "Lango antraštė|Nustatykite antraštę"
-
-#: ../terminal/terminal-window.c:1950
+#: ../terminal/terminal-window.c:1936
 msgid "_Title:"
 msgstr "_Antraštė:"
 
-#: ../terminal/terminal-window.c:1962
+#: ../terminal/terminal-window.c:1949
 msgid "Enter the title for the current terminal tab"
 msgstr "Įveskite antraštę, dabartinei terminalo kortelei"
 
-#: ../terminal/terminal-window.c:2018
+#: ../terminal/terminal-window.c:2009
 msgid "Failed to create the regular expression"
 msgstr "Nepavyko sukurti reguliariojo reiškinio"
 
-#: ../terminal/terminal-window.c:2098
+#: ../terminal/terminal-window.c:2089
 msgid "Save contents..."
 msgstr "Įrašyti turinį..."
 
-#: ../terminal/terminal-window.c:2102
+#: ../terminal/terminal-window.c:2093
 msgid "_Save"
 msgstr "Į_rašyti"
 
-#: ../terminal/terminal-window.c:2139
+#: ../terminal/terminal-window.c:2130
 msgid "Failed to save terminal contents"
 msgstr "Nepavyko įrašyti terminalo turinio"
 
