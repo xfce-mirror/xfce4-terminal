@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-06 06:31+0200\n"
-"PO-Revision-Date: 2017-06-06 13:57+0000\n"
+"POT-Creation-Date: 2017-06-07 00:31+0200\n"
+"PO-Revision-Date: 2017-06-07 07:21+0000\n"
 "Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -66,13 +66,13 @@ msgstr "일반 옵션"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:138
+#: ../terminal/main.c:111 ../terminal/main.c:143
 msgid "display"
 msgstr "디스플레이"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:128
+#: ../terminal/main.c:113 ../terminal/main.c:133
 msgid "directory"
 msgstr "디렉터리"
 
@@ -80,90 +80,96 @@ msgstr "디렉터리"
 msgid "Window or Tab Separators"
 msgstr "창 또는 탭 구분선"
 
-#: ../terminal/main.c:122
+#: ../terminal/main.c:123
 msgid "Tab Options"
 msgstr "탭 옵션"
 
 #. parameter of --command
-#: ../terminal/main.c:124
+#: ../terminal/main.c:125
 msgid "command"
 msgstr "명령어"
 
 #. parameter of --title
-#: ../terminal/main.c:126
+#. parameter of --initial-title
+#: ../terminal/main.c:127 ../terminal/main.c:131
 msgid "title"
 msgstr "제목"
 
-#: ../terminal/main.c:136
+#. parameter of --dynamic-title-mode
+#: ../terminal/main.c:129
+msgid "mode"
+msgstr "모드"
+
+#: ../terminal/main.c:141
 msgid "Window Options"
 msgstr "창 옵션"
 
 #. parameter of --geometry
-#: ../terminal/main.c:140
+#: ../terminal/main.c:145
 msgid "geometry"
 msgstr "크기"
 
 #. parameter of --role
-#: ../terminal/main.c:142
+#: ../terminal/main.c:147
 msgid "role"
 msgstr "역할"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:144
+#: ../terminal/main.c:149
 msgid "string"
 msgstr "문자열"
 
 #. parameter of --icon
-#: ../terminal/main.c:146
+#: ../terminal/main.c:151
 msgid "icon"
 msgstr "아이콘"
 
 #. parameter of --font
-#: ../terminal/main.c:148
+#: ../terminal/main.c:153
 msgid "font"
 msgstr "글꼴"
 
 #. parameter of --zoom
-#: ../terminal/main.c:150
+#: ../terminal/main.c:155
 msgid "zoom"
 msgstr "확대"
 
-#: ../terminal/main.c:152
+#: ../terminal/main.c:157
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "다음 옵션의 완전한 설명을 보려면 %s 맨페이지를 보십시오."
 
-#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce 터미널"
 
-#: ../terminal/main.c:201
+#: ../terminal/main.c:206
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 개발 팀. All rights reserved."
 
-#: ../terminal/main.c:202
+#: ../terminal/main.c:207
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:203
+#: ../terminal/main.c:208
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:204
+#: ../terminal/main.c:209
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "Igor Zakharov <f2404@yandex.ru>가 작성함."
 
-#: ../terminal/main.c:205
+#: ../terminal/main.c:210
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "<%s>(으)로 버그를 알려주십시오."
 
-#: ../terminal/main.c:312
+#: ../terminal/main.c:317
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "터미널 서비스 등록에 실패했습니다: %s\n"
 
-#: ../terminal/terminal-app.c:852
+#: ../terminal/terminal-app.c:851
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "\"%s\" 공간 크기 문자열이 잘못되었습니다\n"
@@ -271,94 +277,113 @@ msgstr "User id가 일치하지 않습니다"
 msgid "Display mismatch"
 msgstr "화면이 일치하지 않습니다"
 
-#: ../terminal/terminal-options.c:217
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "옵션 \"--default-display\"에 매개변수로 기본 X 디스플레이를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:233
+#: ../terminal/terminal-options.c:234
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "옵션 \"--default-working-directory\"에 매개변수로 기본 작업 디렉터리를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:251
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "옵션 \"--execute/-x\"는 명령행 뒤쪽에 실행할 명령을 지정해야 합니다\""
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:268
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "옵션 \"--command/-e\"에 매개변수로 실행할 명령을 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "옵션 \"--working-directory\"에 매개변수로 작업 디렉터리를 명시해야 합니다"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "옵션 \"--title/-T\"에 매개변수로 타이틀을 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:318
+#: ../terminal/terminal-options.c:315
+#, c-format
+msgid ""
+"Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
+"as its parameter"
+msgstr "옵션 \"--dynamic-title-mode\"에 매개변수로 타이틀을 지정해야 합니다"
+
+#: ../terminal/terminal-options.c:330
+#, c-format
+msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
+msgstr "옵션 \"--dynamic-title-mode\"의 변수가 잘못되었습니다: %s"
+
+#: ../terminal/terminal-options.c:340
+#, c-format
+msgid ""
+"Option \"--initial-title\" requires specifying the initial title as its "
+"parameter"
+msgstr "옵션 \"--initial-title\"에 매개변수로 타이틀을 지정해야 합니다"
+
+#: ../terminal/terminal-options.c:359
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "옵션 \"--display\"에 매개변수로 X 디스플레이를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:333
+#: ../terminal/terminal-options.c:374
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "옵션 \"--geometry\"에 매개변수로 창 크기 및 위치를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:348
+#: ../terminal/terminal-options.c:389
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "옵션 \"--role\"에 매개변수로 창의 역할을 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:404
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "\"--startup-id\" 옵션은 파라미터로 유일한 세션 ID를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "옵션 \"--startup-id\"에 매개변수로 시작 ID를 지정해야 합니다"
 
-#: ../terminal/terminal-options.c:394
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "옵션 \"--icon/-I\"에 매개변수로 아이콘 이름이나 파일 이름을 지정해야 합니다."
 
-#: ../terminal/terminal-options.c:465
+#: ../terminal/terminal-options.c:506
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "\"--font\" 옵션에 폰트 이름을 매개변수로 지정해야합니다"
 
-#: ../terminal/terminal-options.c:483
+#: ../terminal/terminal-options.c:524
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "\"--zoom\" 옵션에 확대 값(%d .. %d)을 매개변수로 지정해야합니다"
 
-#: ../terminal/terminal-options.c:505
+#: ../terminal/terminal-options.c:546
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "알 수 없는 옵션 \"%s\""
@@ -379,21 +404,21 @@ msgstr "설정 불러오기..."
 msgid "Terminal"
 msgstr "터미널"
 
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:760
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:403 ../terminal/terminal-screen.c:771
+#: ../terminal/terminal-screen.c:1936
 msgid "Untitled"
 msgstr "제목 없음"
 
-#: ../terminal/terminal-screen.c:661
+#: ../terminal/terminal-screen.c:672
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "로그인 셸을 정할 수 없습니다."
 
-#: ../terminal/terminal-screen.c:1612 ../terminal/terminal-screen.c:1638
+#: ../terminal/terminal-screen.c:1620 ../terminal/terminal-screen.c:1646
 msgid "Failed to execute child"
 msgstr "자식 프로세스 실행 실패"
 
-#: ../terminal/terminal-screen.c:2220
+#: ../terminal/terminal-screen.c:2236
 msgid "Close this tab"
 msgstr "이 탭 닫기"
 
@@ -401,7 +426,7 @@ msgstr "이 탭 닫기"
 msgid "Find"
 msgstr "찾기"
 
-#: ../terminal/terminal-search-dialog.c:93
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1963
 msgid "_Close"
 msgstr "닫기(_C)"
 
@@ -670,7 +695,7 @@ msgstr "탭을 왼쪽으로 이동(_L)"
 msgid "Move Tab _Right"
 msgstr "탭을 오른쪽으로 이동 _R)"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:341 ../terminal/terminal-window.c:1957
 msgid "_Help"
 msgstr "도움말(_H)"
 
@@ -765,14 +790,6 @@ msgstr "제목(_T):"
 #: ../terminal/terminal-window.c:1949
 msgid "Enter the title for the current terminal tab"
 msgstr "현재 터미널 탭의 타이틀을 입력하십시오"
-
-#: ../terminal/terminal-window.c:1957
-msgid "Help"
-msgstr "도움말"
-
-#: ../terminal/terminal-window.c:1963
-msgid "Close"
-msgstr "닫기"
 
 #: ../terminal/terminal-window.c:2009
 msgid "Failed to create the regular expression"
