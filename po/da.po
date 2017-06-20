@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-06 06:31+0200\n"
-"PO-Revision-Date: 2017-06-06 11:23+0000\n"
+"POT-Creation-Date: 2017-06-08 00:31+0200\n"
+"PO-Revision-Date: 2017-06-20 20:45+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -68,13 +68,13 @@ msgstr "Generelle tilvalg"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:138
+#: ../terminal/main.c:111 ../terminal/main.c:143
 msgid "display"
 msgstr "vis"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:128
+#: ../terminal/main.c:113 ../terminal/main.c:133
 msgid "directory"
 msgstr "mappe"
 
@@ -82,93 +82,104 @@ msgstr "mappe"
 msgid "Window or Tab Separators"
 msgstr "Adskillere til vindue eller faneblad"
 
-#: ../terminal/main.c:122
+#: ../terminal/main.c:123
 msgid "Tab Options"
 msgstr "Tilvalg til faneblad"
 
 #. parameter of --command
-#: ../terminal/main.c:124
+#: ../terminal/main.c:125
 msgid "command"
 msgstr "kommando"
 
 #. parameter of --title
-#: ../terminal/main.c:126
+#. parameter of --initial-title
+#: ../terminal/main.c:127 ../terminal/main.c:131
 msgid "title"
 msgstr "titel"
 
-#: ../terminal/main.c:136
+#. parameter of --dynamic-title-mode
+#: ../terminal/main.c:129
+msgid "mode"
+msgstr "tilstand"
+
+#: ../terminal/main.c:141
 msgid "Window Options"
 msgstr "Tilvalgsvindue"
 
 #. parameter of --geometry
-#: ../terminal/main.c:140
+#: ../terminal/main.c:145
 msgid "geometry"
 msgstr "geometri"
 
 #. parameter of --role
-#: ../terminal/main.c:142
+#: ../terminal/main.c:147
 msgid "role"
 msgstr "rolle"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:144
+#: ../terminal/main.c:149
 msgid "string"
 msgstr "streng"
 
 #. parameter of --icon
-#: ../terminal/main.c:146
+#: ../terminal/main.c:151
 msgid "icon"
 msgstr "ikon"
 
 #. parameter of --font
-#: ../terminal/main.c:148
+#: ../terminal/main.c:153
 msgid "font"
 msgstr "skrifttype"
 
 #. parameter of --zoom
-#: ../terminal/main.c:150
+#: ../terminal/main.c:155
 msgid "zoom"
 msgstr "zoom"
 
-#: ../terminal/main.c:152
+#: ../terminal/main.c:157
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Læs manualsiden %s for alle forklaringer til tilvalgene foroven."
 
-#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
-msgstr "Xfce Terminal"
+msgstr "Xfce-terminal"
 
-#: ../terminal/main.c:201
+#: ../terminal/main.c:206
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce's udviklingshold. Alle rettigheder forbeholdes."
 
-#: ../terminal/main.c:202
+#: ../terminal/main.c:207
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Skrevet af Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:203
+#: ../terminal/main.c:208
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:204
+#: ../terminal/main.c:209
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "og Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:205
+#: ../terminal/main.c:210
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Rapportér venligst fejl til <%s>."
 
-#: ../terminal/main.c:312
+#: ../terminal/main.c:317
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan ikke registrere terminalservice: %s\n"
 
-#: ../terminal/terminal-app.c:852
+#: ../terminal/terminal-app.c:851
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ugyldig geometri-streng \"%s\"\n"
+
+#: ../terminal/terminal-app.c:940
+#, c-format
+msgid "Failed to connect to session manager: %s\n"
+msgstr "Kunne ikke oprette forbindelse til sessionhåndtering: %s\n"
 
 #: ../terminal/terminal-encoding-action.c:68
 msgid "Western European"
@@ -273,94 +284,113 @@ msgstr "Bruger-id passer ikke"
 msgid "Display mismatch"
 msgstr "Vis uoverenstemmelse"
 
-#: ../terminal/terminal-options.c:217
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Tilvalg \"--default-display\" kræver angivelser af standard X skærm som parameter"
 
-#: ../terminal/terminal-options.c:233
+#: ../terminal/terminal-options.c:234
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Tilvalg \"--default-working-directory\" kræver angivelse af standard aktuel arbejdsmappe som parameter"
 
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:251
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Tilvalg \"--execute/-x\" kræver en kommando, som skal køres på resten af kommandolinjen"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:268
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Tilvalg \"--command/-e\" kræver kommandoen, som skal køres som parameter"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Tilvalg \"--working-directory\" kræver aktuel arbejdsmappe som parameter"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Tilvalg \"--title/-T\" kræver en titel som parameter"
 
-#: ../terminal/terminal-options.c:318
+#: ../terminal/terminal-options.c:315
+#, c-format
+msgid ""
+"Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
+"as its parameter"
+msgstr "Tilvalg \"--dynamic-title-mode\" kræver angivelse af den dynamiske titels tilstand som sin parameter"
+
+#: ../terminal/terminal-options.c:330
+#, c-format
+msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
+msgstr "Ugyldigt argument for tilvalg \"--dynamic-title-mode\": %s"
+
+#: ../terminal/terminal-options.c:340
+#, c-format
+msgid ""
+"Option \"--initial-title\" requires specifying the initial title as its "
+"parameter"
+msgstr "Tilvalg \"--initial-title\" kræver angivelse af den indledende titel som sin parameter"
+
+#: ../terminal/terminal-options.c:359
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Tilvalg \"--display\" kræver angivelse af X skærm som parameter"
 
-#: ../terminal/terminal-options.c:333
+#: ../terminal/terminal-options.c:374
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Tilvalg \"--geometry\" kræver angivelse af vinduets geometri som parameter"
 
-#: ../terminal/terminal-options.c:348
+#: ../terminal/terminal-options.c:389
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Tilvalg \"--role\" kræver angivelse af vinduets rolle som parameter"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:404
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Tilvalg \"--sm-client-id\" kræver angivelse af det unikke session-id, som dets parameter"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Tilvalg \"--startup-id\" kræver angivelse af startup ID som parameter"
 
-#: ../terminal/terminal-options.c:394
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Tilvalg \"--icon/-I\" kræver angivelse af ikonnavn eller filnavn som parameter"
 
-#: ../terminal/terminal-options.c:465
+#: ../terminal/terminal-options.c:506
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Tilvalg \"--font\" kræver angivelse af skrifttypenavnet som sin parameter"
 
-#: ../terminal/terminal-options.c:483
+#: ../terminal/terminal-options.c:524
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Tilvalg \"--zoom\" kræver angivelse af zoom (%d .. %d) som sin parameter"
 
-#: ../terminal/terminal-options.c:505
+#: ../terminal/terminal-options.c:546
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Ukendt tilvalg \"%s\""
@@ -381,29 +411,34 @@ msgstr "Indlæs forudinstillinger..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:760
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:403 ../terminal/terminal-screen.c:771
+#: ../terminal/terminal-screen.c:1936
 msgid "Untitled"
 msgstr "Uden titel"
 
-#: ../terminal/terminal-screen.c:661
+#: ../terminal/terminal-screen.c:672
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kunne ikke bestemme din login-skal."
 
-#: ../terminal/terminal-screen.c:1612 ../terminal/terminal-screen.c:1638
+#: ../terminal/terminal-screen.c:1620 ../terminal/terminal-screen.c:1646
 msgid "Failed to execute child"
 msgstr "Kunne ikke afvikle underproces"
 
-#: ../terminal/terminal-screen.c:2220
+#: ../terminal/terminal-screen.c:2236
 msgid "Close this tab"
 msgstr "Luk dette faneblad"
+
+#: ../terminal/terminal-screen.c:2290
+#, c-format
+msgid "Failed to set encoding %s\n"
+msgstr "Kunne ikke indstille kodning %s\n"
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
 msgstr "Find"
 
-#: ../terminal/terminal-search-dialog.c:93
+#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1963
 msgid "_Close"
 msgstr "_Luk"
 
@@ -437,7 +472,7 @@ msgstr "_Forfra når slutningen er nået"
 
 #: ../terminal/terminal-util.c:80 ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
-msgstr "Xfce terminal-emulator"
+msgstr "Xfce-terminalemulator"
 
 #: ../terminal/terminal-util.c:88
 msgid "translator-credits"
@@ -672,7 +707,7 @@ msgstr "Flyt faneblad til _venstre"
 msgid "Move Tab _Right"
 msgstr "Flyt faneblad til _højre"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:341 ../terminal/terminal-window.c:1957
 msgid "_Help"
 msgstr "_Hjælp"
 
@@ -767,14 +802,6 @@ msgstr "_Titel:"
 #: ../terminal/terminal-window.c:1949
 msgid "Enter the title for the current terminal tab"
 msgstr "Indtast titlen for det nuværende terminalfaneblad"
-
-#: ../terminal/terminal-window.c:1957
-msgid "Help"
-msgstr "Hjælp"
-
-#: ../terminal/terminal-window.c:1963
-msgid "Close"
-msgstr "Luk"
 
 #: ../terminal/terminal-window.c:2009
 msgid "Failed to create the regular expression"
@@ -898,7 +925,7 @@ msgstr "_Opstarttitel:"
 
 #: ../terminal/terminal-preferences.glade.h:27
 msgid "_Dynamically-set title:"
-msgstr "Indstil _dynamisk titel:"
+msgstr "Indstil titel _dynamisk:"
 
 #: ../terminal/terminal-preferences.glade.h:28
 msgid "Title"
@@ -1472,4 +1499,4 @@ msgstr "A_vanceret"
 
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
-msgstr "Terminal-emulator"
+msgstr "Terminalemulator"
