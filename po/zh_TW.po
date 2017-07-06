@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-05 06:31+0200\n"
-"PO-Revision-Date: 2017-06-05 11:19+0000\n"
+"POT-Creation-Date: 2017-07-06 06:31+0200\n"
+"PO-Revision-Date: 2017-07-06 12:31+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -67,13 +67,13 @@ msgstr "一般選項"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:138
+#: ../terminal/main.c:111 ../terminal/main.c:143
 msgid "display"
 msgstr "display"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:128
+#: ../terminal/main.c:113 ../terminal/main.c:133
 msgid "directory"
 msgstr "directory"
 
@@ -81,93 +81,104 @@ msgstr "directory"
 msgid "Window or Tab Separators"
 msgstr "視窗或分頁分隔符"
 
-#: ../terminal/main.c:122
+#: ../terminal/main.c:123
 msgid "Tab Options"
 msgstr "分頁選項"
 
 #. parameter of --command
-#: ../terminal/main.c:124
+#: ../terminal/main.c:125
 msgid "command"
 msgstr "command"
 
 #. parameter of --title
-#: ../terminal/main.c:126
+#. parameter of --initial-title
+#: ../terminal/main.c:127 ../terminal/main.c:131
 msgid "title"
 msgstr "title"
 
-#: ../terminal/main.c:136
+#. parameter of --dynamic-title-mode
+#: ../terminal/main.c:129
+msgid "mode"
+msgstr "模式"
+
+#: ../terminal/main.c:141
 msgid "Window Options"
 msgstr "視窗選項"
 
 #. parameter of --geometry
-#: ../terminal/main.c:140
+#: ../terminal/main.c:145
 msgid "geometry"
 msgstr "geometry"
 
 #. parameter of --role
-#: ../terminal/main.c:142
+#: ../terminal/main.c:147
 msgid "role"
 msgstr "role"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:144
+#: ../terminal/main.c:149
 msgid "string"
 msgstr "string"
 
 #. parameter of --icon
-#: ../terminal/main.c:146
+#: ../terminal/main.c:151
 msgid "icon"
 msgstr "icon"
 
 #. parameter of --font
-#: ../terminal/main.c:148
+#: ../terminal/main.c:153
 msgid "font"
 msgstr "字型"
 
 #. parameter of --zoom
-#: ../terminal/main.c:150
+#: ../terminal/main.c:155
 msgid "zoom"
 msgstr "縮放"
 
-#: ../terminal/main.c:152
+#: ../terminal/main.c:157
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "查看 %s 手冊頁面以了解上述選項的完整解釋。"
 
-#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce 終端機"
 
-#: ../terminal/main.c:201
+#: ../terminal/main.c:206
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce 開發團隊。保留所有權利。"
 
-#: ../terminal/main.c:202
+#: ../terminal/main.c:207
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "撰寫者：Benedikt Meurer <benny@xfce.org>，"
 
-#: ../terminal/main.c:203
+#: ../terminal/main.c:208
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:204
+#: ../terminal/main.c:209
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "與 Igor Zakharov <f2404@yandex.ru>。"
 
-#: ../terminal/main.c:205
+#: ../terminal/main.c:210
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "請回報臭蟲至 <%s>。"
 
-#: ../terminal/main.c:312
+#: ../terminal/main.c:317
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "無法註冊終端機服務：%s\n"
 
-#: ../terminal/terminal-app.c:852
+#: ../terminal/terminal-app.c:851
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "無效的幾何字串 \"%s\"\n"
+
+#: ../terminal/terminal-app.c:940
+#, c-format
+msgid "Failed to connect to session manager: %s\n"
+msgstr "連線至工作階段管理員時失敗：%s\n"
 
 #: ../terminal/terminal-encoding-action.c:68
 msgid "Western European"
@@ -272,94 +283,113 @@ msgstr "使用者 ID 不符"
 msgid "Display mismatch"
 msgstr "顯示不相符"
 
-#: ../terminal/terminal-options.c:217
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "選項 \"--default-display\" 需要指定預設的 X 螢幕作為其參數"
 
-#: ../terminal/terminal-options.c:233
+#: ../terminal/terminal-options.c:234
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "選項 \"--default-working-directory\" 需要指定預設的工作目錄作為其參數"
 
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:251
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "選項 \"--execute/-x\" 需要指定剩下的命令列中所要執行的命令。"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:268
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "選項 \"--command/-e\" 需要指定命令作為其參數"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "選項 \"--working-directory\" 需要指定工作目錄作為其參數"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "選項 \"--title/-T\" 需要指定標題作為其參數"
 
-#: ../terminal/terminal-options.c:318
+#: ../terminal/terminal-options.c:315
+#, c-format
+msgid ""
+"Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
+"as its parameter"
+msgstr "選項 \"--dynamic-title-mode\" 需要指定動態標題模式作為其參數"
+
+#: ../terminal/terminal-options.c:330
+#, c-format
+msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
+msgstr "選項 \"--dynamic-title-mode\" 有無效的參數：%s"
+
+#: ../terminal/terminal-options.c:340
+#, c-format
+msgid ""
+"Option \"--initial-title\" requires specifying the initial title as its "
+"parameter"
+msgstr "選項 \"--initial-title\" 需要指定初始標題作為其參數"
+
+#: ../terminal/terminal-options.c:359
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "選項 \"--display\" 需要指定 X 螢幕作為其參數"
 
-#: ../terminal/terminal-options.c:333
+#: ../terminal/terminal-options.c:374
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "選項 \"--geometry\" 需要指定視窗大小作為其參數"
 
-#: ../terminal/terminal-options.c:348
+#: ../terminal/terminal-options.c:389
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "選項 \"--role\" 需要指定視窗識別碼作為其參數"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:404
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "選項 \"--sm-client-id\" 需要指定獨一的 session id 作為其參數"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "選項 \"--startup-id\" 需要指定啟動 id 作為其參數"
 
-#: ../terminal/terminal-options.c:394
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "選項 \"--icon/-I\" 需要指定圖示名稱或檔名作為其參數"
 
-#: ../terminal/terminal-options.c:465
+#: ../terminal/terminal-options.c:506
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "選項 \"--font\" 需要指定字型名稱作為其參數"
 
-#: ../terminal/terminal-options.c:483
+#: ../terminal/terminal-options.c:524
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "選項 \"--zoom\" 需要指定縮放等級 (%d .. %d) 作為其參數"
 
-#: ../terminal/terminal-options.c:505
+#: ../terminal/terminal-options.c:546
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "未知的選項 \"%s\""
@@ -380,29 +410,34 @@ msgstr "載入預置設定..."
 msgid "Terminal"
 msgstr "終端機"
 
-#: ../terminal/terminal-screen.c:392 ../terminal/terminal-screen.c:760
-#: ../terminal/terminal-screen.c:1920
+#: ../terminal/terminal-screen.c:403 ../terminal/terminal-screen.c:771
+#: ../terminal/terminal-screen.c:1936
 msgid "Untitled"
 msgstr "無標題"
 
-#: ../terminal/terminal-screen.c:661
+#: ../terminal/terminal-screen.c:672
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "無法決定您登入的 shell。"
 
-#: ../terminal/terminal-screen.c:1612 ../terminal/terminal-screen.c:1638
+#: ../terminal/terminal-screen.c:1620 ../terminal/terminal-screen.c:1646
 msgid "Failed to execute child"
 msgstr "無法執行子程序"
 
-#: ../terminal/terminal-screen.c:2220
+#: ../terminal/terminal-screen.c:2236
 msgid "Close this tab"
 msgstr "關閉此分頁"
+
+#: ../terminal/terminal-screen.c:2290
+#, c-format
+msgid "Failed to set encoding %s\n"
+msgstr "設定編碼 %s 時失敗\n"
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
 msgstr "尋找"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1940
+#: ../terminal/terminal-search-dialog.c:93
 msgid "_Close"
 msgstr "關閉(_C)"
 
@@ -671,7 +706,7 @@ msgstr "左移分頁(_L)"
 msgid "Move Tab _Right"
 msgstr "右移分頁(_R)"
 
-#: ../terminal/terminal-window.c:341 ../terminal/terminal-window.c:1938
+#: ../terminal/terminal-window.c:341
 msgid "_Help"
 msgstr "說明(_H)"
 
@@ -740,7 +775,7 @@ msgstr "設定編碼(_E)"
 msgid "Warning"
 msgstr "警告"
 
-#: ../terminal/terminal-window.c:732 ../terminal/terminal-window.c:2101
+#: ../terminal/terminal-window.c:732 ../terminal/terminal-window.c:2092
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -759,31 +794,35 @@ msgstr "關閉所有分頁？"
 msgid "Do _not ask me again"
 msgstr "不要再問我(_n)"
 
-#: ../terminal/terminal-window.c:1929
-msgid "Window Title|Set Title"
-msgstr "視窗標題|設定標題"
-
-#: ../terminal/terminal-window.c:1950
+#: ../terminal/terminal-window.c:1936
 msgid "_Title:"
 msgstr "標題(_T)："
 
-#: ../terminal/terminal-window.c:1962
+#: ../terminal/terminal-window.c:1949
 msgid "Enter the title for the current terminal tab"
 msgstr "請輸入目前終端機分頁的標題"
 
-#: ../terminal/terminal-window.c:2018
+#: ../terminal/terminal-window.c:1957
+msgid "Help"
+msgstr "說明"
+
+#: ../terminal/terminal-window.c:1963
+msgid "Close"
+msgstr "關閉"
+
+#: ../terminal/terminal-window.c:2009
 msgid "Failed to create the regular expression"
 msgstr "無法建立正規表述式"
 
-#: ../terminal/terminal-window.c:2098
+#: ../terminal/terminal-window.c:2089
 msgid "Save contents..."
 msgstr "儲存內容..."
 
-#: ../terminal/terminal-window.c:2102
+#: ../terminal/terminal-window.c:2093
 msgid "_Save"
 msgstr "儲存(_S)"
 
-#: ../terminal/terminal-window.c:2139
+#: ../terminal/terminal-window.c:2130
 msgid "Failed to save terminal contents"
 msgstr "儲存終端機內容失敗"
 
