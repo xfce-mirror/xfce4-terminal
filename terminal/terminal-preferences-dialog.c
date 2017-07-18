@@ -1061,10 +1061,10 @@ terminal_preferences_dialog_new (gboolean show_drop_down)
       if (!gdk_screen_is_composited (gtk_widget_get_screen (GTK_WIDGET (object))))
         {
           object = gtk_builder_get_object (builder, "dropdown-opacity-not-available");
-          terminal_return_if_fail (G_IS_OBJECT (object));
+          terminal_return_val_if_fail (G_IS_OBJECT (object), NULL);
           gtk_widget_set_visible (GTK_WIDGET (object), TRUE);
           object = gtk_builder_get_object (builder, "scale-opacity");
-          terminal_return_if_fail (G_IS_OBJECT (object));
+          terminal_return_val_if_fail (G_IS_OBJECT (object), NULL);
           gtk_widget_set_sensitive (GTK_WIDGET (object), FALSE);
         }
     }

@@ -850,8 +850,8 @@ terminal_screen_update_background (TerminalScreen *screen)
   TerminalBackground background_mode;
   gdouble            background_alpha;
 
-  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-  terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
 
   g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
 
@@ -1787,8 +1787,8 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
-  terminal_return_if_fail (gtk_widget_get_realized (screen));
-  terminal_return_if_fail (gtk_widget_get_realized (window));
+  terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (screen)));
+  terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
 
 #if GTK_CHECK_VERSION (3, 19, 5)
   terminal_screen_get_geometry (screen, &char_width, &char_height, NULL, NULL);
@@ -2448,7 +2448,7 @@ terminal_screen_update_font (TerminalScreen *screen)
 gboolean
 terminal_screen_get_input_enabled (TerminalScreen *screen)
 {
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   return vte_terminal_get_input_enabled (VTE_TERMINAL (screen->terminal));
 }
 
