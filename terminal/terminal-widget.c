@@ -609,7 +609,7 @@ terminal_widget_key_press_event (GtkWidget    *widget,
   /* determine current settings */
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
                 "shortcuts-no-menukey", &shortcuts_no_menukey,
-                "misc-shift-arrows-scroll", &shift_arrows_scroll,
+                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
                 NULL);
 
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */

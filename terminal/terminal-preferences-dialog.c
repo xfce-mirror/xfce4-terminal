@@ -160,9 +160,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "dropdown-show-borders"
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-background",
-                                       "tab-activity-color", "color-cursor-fg",
+                                       "tab-activity-color", "color-cursor-foreground",
                                        "color-cursor", "color-selection",
-                                       "color-selection-bg", "color-bold"
+                                       "color-selection-background", "color-bold"
                                      };
   const gchar      *props_value[] =  { "dropdown-height", "dropdown-width",
                                        "dropdown-position", "dropdown-position-vertical",
@@ -304,7 +304,7 @@ error:
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",
                           object, "active",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
-  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-cursor-fg");
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-cursor-foreground");
   terminal_return_if_fail (G_IS_OBJECT (object2));
   g_object_bind_property (object, "active",
                           object2, "sensitive",
@@ -325,7 +325,7 @@ error:
   g_object_bind_property (object, "active",
                           object2, "sensitive",
                           G_BINDING_SYNC_CREATE);
-  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-bg");
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-selection-background");
   terminal_return_if_fail (G_IS_OBJECT (object2));
   g_object_bind_property (object, "active",
                           object2, "sensitive",

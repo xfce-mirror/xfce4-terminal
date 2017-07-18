@@ -54,11 +54,11 @@ enum
   PROP_COLOR_FOREGROUND,
   PROP_COLOR_BACKGROUND,
   PROP_COLOR_BACKGROUND_VARY,
-  PROP_COLOR_CURSOR_FG,
+  PROP_COLOR_CURSOR_FOREGROUND,
   PROP_COLOR_CURSOR,
   PROP_COLOR_CURSOR_USE_DEFAULT,
   PROP_COLOR_SELECTION,
-  PROP_COLOR_SELECTION_BG,
+  PROP_COLOR_SELECTION_BACKGROUND,
   PROP_COLOR_SELECTION_USE_DEFAULT,
   PROP_COLOR_BOLD,
   PROP_COLOR_BOLD_USE_DEFAULT,
@@ -105,7 +105,7 @@ enum
   PROP_MISC_COPY_ON_SELECT,
   PROP_MISC_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
-  PROP_MISC_SHIFT_ARROWS_SCROLL,
+  PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL,
   PROP_MISC_SLIM_TABS,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
@@ -420,10 +420,10 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:color-cursor-fg:
+   * TerminalPreferences:color-cursor-foreground:
    **/
-  preferences_props[PROP_COLOR_CURSOR_FG] =
-      g_param_spec_string ("color-cursor-fg",
+  preferences_props[PROP_COLOR_CURSOR_FOREGROUND] =
+      g_param_spec_string ("color-cursor-foreground",
                            NULL,
                            "ColorCursorForeground",
                            "",
@@ -460,10 +460,10 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:color-selection-bg:
+   * TerminalPreferences:color-selection-background:
    **/
-  preferences_props[PROP_COLOR_SELECTION_BG] =
-      g_param_spec_string ("color-selection-bg",
+  preferences_props[PROP_COLOR_SELECTION_BACKGROUND] =
+      g_param_spec_string ("color-selection-background",
                            NULL,
                            "ColorSelectionBackground",
                            "",
@@ -970,17 +970,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:misc-shift-arrows-scroll:
+   * TerminalPreferences:misc-use-shift-arrows-to-scroll:
    **/
-  preferences_props[PROP_MISC_SHIFT_ARROWS_SCROLL] =
-      g_param_spec_boolean ("misc-shift-arrows-scroll",
+  preferences_props[PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL] =
+      g_param_spec_boolean ("misc-use-shift-arrows-to-scroll",
                             NULL,
                             "MiscUseShiftArrowsToScroll",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * TerminalPreferences:misc-shift-arrows-scroll:
+   * TerminalPreferences:misc-slim-tabs:
    **/
   preferences_props[PROP_MISC_SLIM_TABS] =
       g_param_spec_boolean ("misc-slim-tabs",
