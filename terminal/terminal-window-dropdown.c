@@ -51,6 +51,7 @@ enum
   PROP_DROPDOWN_WIDTH,
   PROP_DROPDOWN_HEIGHT,
   PROP_DROPDOWN_POSITION,
+  PROP_DROPDOWN_POSITION_VERTICAL,
   PROP_DROPDOWN_OPACITY,
   PROP_DROPDOWN_STATUS_ICON,
   PROP_DROPDOWN_KEEP_ABOVE,
@@ -130,6 +131,7 @@ struct _TerminalWindowDropdown
   gdouble              rel_width;
   gdouble              rel_height;
   gdouble              rel_position;
+  gdouble              rel_position_vertical;
 
   GtkStatusIcon       *status_icon;
 
@@ -179,6 +181,12 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
 
   dropdown_props[PROP_DROPDOWN_POSITION] =
       g_param_spec_uint ("dropdown-position",
+                         NULL, NULL,
+                         0, 100, 0,
+                         G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
+
+  dropdown_props[PROP_DROPDOWN_POSITION_VERTICAL] =
+      g_param_spec_uint ("dropdown-position-vertical",
                          NULL, NULL,
                          0, 100, 0,
                          G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS);
@@ -240,6 +248,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
   dropdown->rel_position = 0.50;
+  dropdown->rel_position_vertical = 0.0;
   dropdown->animation_dir = ANIMATION_DIR_NONE;
 
   /* shared setting to disable some functionality in TerminalWindow */
@@ -370,6 +379,10 @@ terminal_window_dropdown_set_property (GObject      *object,
 
     case PROP_DROPDOWN_POSITION:
       dropdown->rel_position = g_value_get_uint (value) / 100.0;
+      break;
+
+    case PROP_DROPDOWN_POSITION_VERTICAL:
+      dropdown->rel_position_vertical = g_value_get_uint (value) / 100.0;
       break;
 
     case PROP_DROPDOWN_OPACITY:
@@ -836,7 +849,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* calc position */
   x = monitor_geo.x + (monitor_geo.width - w) * dropdown->rel_position;
-  y = monitor_geo.y;
+  y = monitor_geo.y + (monitor_geo.height - h) * dropdown->rel_position_vertical;
 
   /* move */
   gtk_window_move (GTK_WINDOW (dropdown), x, y);

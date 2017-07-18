@@ -75,6 +75,7 @@ enum
   PROP_DROPDOWN_HEIGHT,
   PROP_DROPDOWN_OPACITY,
   PROP_DROPDOWN_POSITION,
+  PROP_DROPDOWN_POSITION_VERTICAL,
   PROP_DROPDOWN_MOVE_TO_ACTIVE,
   PROP_DROPDOWN_ALWAYS_SHOW_TABS,
   PROP_DROPDOWN_SHOW_BORDERS,
@@ -664,6 +665,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          NULL,
                          "DropdownPosition",
                          0, 100, 50,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:dropdown-position-vertical:
+   **/
+  preferences_props[PROP_DROPDOWN_POSITION_VERTICAL] =
+      g_param_spec_uint ("dropdown-position-vertical",
+                         NULL,
+                         "DropdownPositionVertical",
+                         0, 100, 0,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**

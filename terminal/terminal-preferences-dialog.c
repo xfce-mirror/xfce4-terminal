@@ -165,8 +165,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "color-selection-bg", "color-bold"
                                      };
   const gchar      *props_value[] =  { "dropdown-height", "dropdown-width",
-                                       "dropdown-position", "dropdown-opacity",
-                                       "dropdown-animation-time"
+                                       "dropdown-position", "dropdown-position-vertical",
+                                       "dropdown-opacity", "dropdown-animation-time"
                                      };
 
   dialog->preferences = terminal_preferences_get ();
