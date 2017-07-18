@@ -945,7 +945,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
   /* get the new active page */
   active = TERMINAL_SCREEN (page);
 
-  terminal_return_if_fail (window == NULL);
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
 
   /* only update when really changed */
