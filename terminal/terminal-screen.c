@@ -2445,6 +2445,15 @@ terminal_screen_update_font (TerminalScreen *screen)
 
 
 
+gboolean
+terminal_screen_get_input_enabled (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  return vte_terminal_get_input_enabled (VTE_TERMINAL (screen->terminal));
+}
+
+
+
 void
 terminal_screen_set_input_enabled (TerminalScreen *screen,
                                    gboolean        enabled)

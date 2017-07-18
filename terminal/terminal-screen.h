@@ -113,6 +113,7 @@ void            terminal_screen_update_scrolling_bar      (TerminalScreen *scree
 
 void            terminal_screen_update_font               (TerminalScreen *screen);
 
+gboolean        terminal_screen_get_input_enabled         (TerminalScreen *screen);
 void            terminal_screen_set_input_enabled         (TerminalScreen *screen,
                                                            gboolean        enabled);
 

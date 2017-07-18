@@ -895,6 +895,11 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_action_set_sensitive (window->priv->action_search_next, can_search);
       gtk_action_set_sensitive (window->priv->action_search_prev, can_search);
 
+      /* update read-only mode */
+      action = terminal_window_get_action (window, "read-only");
+      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+                                    !terminal_screen_get_input_enabled (window->priv->active));
+
       /* update the "Go" menu */
       action = g_object_get_qdata (G_OBJECT (window->priv->active), tabs_menu_action_quark);
       if (G_LIKELY (action != NULL))
@@ -1756,10 +1761,13 @@ terminal_window_action_readonly (GtkToggleAction *action,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   input_enabled = !gtk_toggle_action_get_active (action);
-  gtk_action_set_sensitive (terminal_window_get_action (window, "reset"), input_enabled);
-  gtk_action_set_sensitive (terminal_window_get_action (window, "reset-and-clear"), input_enabled);
+  if (terminal_screen_get_input_enabled (window->priv->active) != input_enabled)
+    {
+      gtk_action_set_sensitive (terminal_window_get_action (window, "reset"), input_enabled);
+      gtk_action_set_sensitive (terminal_window_get_action (window, "reset-and-clear"), input_enabled);
+      terminal_screen_set_input_enabled (window->priv->active, input_enabled);
+    }
 G_GNUC_END_IGNORE_DEPRECATIONS
-  terminal_screen_set_input_enabled (window->priv->active, input_enabled);
 }
 
 
