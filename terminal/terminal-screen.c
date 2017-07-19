@@ -176,6 +176,7 @@ struct _TerminalScreen
 
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
+  guint                scroll_on_output : 1;
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
@@ -1166,6 +1167,7 @@ terminal_screen_update_scrolling_on_output (TerminalScreen *screen)
 {
   gboolean scroll;
   g_object_get (G_OBJECT (screen->preferences), "scrolling-on-output", &scroll, NULL);
+  screen->scroll_on_output = scroll;
   vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), scroll);
 }
 
@@ -2461,6 +2463,26 @@ terminal_screen_set_input_enabled (TerminalScreen *screen,
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_set_input_enabled (VTE_TERMINAL (screen->terminal), enabled);
+}
+
+
+
+gboolean
+terminal_screen_get_scroll_on_output (TerminalScreen *screen)
+{
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+  return screen->scroll_on_output;
+}
+
+
+
+void
+terminal_screen_set_scroll_on_output (TerminalScreen *screen,
+                                      gboolean        enabled)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  screen->scroll_on_output = enabled;
+  vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
 }
 
 

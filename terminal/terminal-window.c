@@ -119,6 +119,7 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
                                                                    glong                   force_grid_height);
 static void         terminal_window_update_actions                (TerminalWindow         *window);
 static void         terminal_window_update_slim_tabs              (TerminalWindow         *window);
+static void         terminal_window_update_scroll_on_output       (TerminalWindow         *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook            *notebook,
                                                                    GtkWidget              *page,
                                                                    guint                   page_num,
@@ -199,6 +200,8 @@ static void         terminal_window_action_show_borders           (GtkToggleActi
 static void         terminal_window_action_fullscreen             (GtkToggleAction        *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_readonly               (GtkToggleAction        *action,
+                                                                   TerminalWindow         *window);
+static void         terminal_window_action_scroll_on_output       (GtkToggleAction        *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_zoom_in                (GtkAction              *action,
                                                                    TerminalWindow         *window);
@@ -354,6 +357,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "show-borders", NULL, N_ ("Show Window _Borders"), NULL, N_ ("Show/hide the window decorations"), G_CALLBACK (terminal_window_action_show_borders), TRUE, },
   { "fullscreen", "view-fullscreen", N_ ("_Fullscreen"), "F11", N_ ("Toggle fullscreen mode"), G_CALLBACK (terminal_window_action_fullscreen), FALSE, },
   { "read-only", NULL, N_ ("_Read-Only"), NULL, N_ ("Toggle read-only mode"), G_CALLBACK (terminal_window_action_readonly), FALSE, },
+  { "scroll-on-output", NULL, N_ ("Scroll on _Output"), NULL, N_ ("Toggle scroll on output"), G_CALLBACK (terminal_window_action_scroll_on_output), FALSE, },
 };
 
 
@@ -536,6 +540,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   window->priv->action_search_prev = terminal_window_get_action (window, "search-prev");
   window->priv->action_fullscreen = terminal_window_get_action (window, "fullscreen");
 
+  /* monitor the scrolling-on-output setting */
+  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::scrolling-on-output",
+                            G_CALLBACK (terminal_window_update_scroll_on_output), window);
+
 #if defined(GDK_WINDOWING_X11)
   if (GDK_IS_X11_SCREEN (screen))
     {
@@ -556,6 +564,10 @@ static void
 terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
+
+  /* disconnect the scrolling-on-output watch */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
+                                        G_CALLBACK (terminal_window_update_scroll_on_output), window);
 
   if (window->priv->preferences_dialog != NULL)
     gtk_widget_destroy (window->priv->preferences_dialog);
@@ -903,6 +915,11 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
                                     !terminal_screen_get_input_enabled (window->priv->active));
 
+      /* update scroll on output mode */
+      action = terminal_window_get_action (window, "scroll-on-output");
+      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
+                                    terminal_screen_get_scroll_on_output (window->priv->active));
+
       /* update the "Go" menu */
       action = g_object_get_qdata (G_OBJECT (window->priv->active), tabs_menu_action_quark);
       if (G_LIKELY (action != NULL))
@@ -932,6 +949,23 @@ terminal_window_update_slim_tabs (TerminalWindow *window)
       gtk_css_provider_load_from_data (provider, CSS_SLIM_TABS, -1, NULL);
       g_object_unref (provider);
     }
+}
+
+
+
+static void
+terminal_window_update_scroll_on_output (TerminalWindow *window)
+{
+  GtkAction *action;
+  gboolean   scroll;
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "scrolling-on-output", &scroll,
+                NULL);
+  action = terminal_window_get_action (window, "scroll-on-output");
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), scroll);
+G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
@@ -1769,6 +1803,25 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_action_set_sensitive (terminal_window_get_action (window, "reset"), input_enabled);
       gtk_action_set_sensitive (terminal_window_get_action (window, "reset-and-clear"), input_enabled);
       terminal_screen_set_input_enabled (window->priv->active, input_enabled);
+    }
+G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+
+
+static void
+terminal_window_action_scroll_on_output (GtkToggleAction *action,
+                                         TerminalWindow  *window)
+{
+  gboolean scroll_enabled;
+
+  terminal_return_if_fail (window->priv->active != NULL);
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  scroll_enabled = gtk_toggle_action_get_active (action);
+  if (terminal_screen_get_scroll_on_output (window->priv->active) != scroll_enabled)
+    {
+      terminal_screen_set_scroll_on_output (window->priv->active, scroll_enabled);
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
 }

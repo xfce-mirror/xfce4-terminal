@@ -95,18 +95,15 @@ GtkWidget      *terminal_screen_get_tab_label             (TerminalScreen *scree
 void            terminal_screen_focus                     (TerminalScreen *screen);
 
 const gchar    *terminal_screen_get_encoding              (TerminalScreen *screen);
-
 void            terminal_screen_set_encoding              (TerminalScreen *screen,
                                                            const gchar    *charset);
 
 void            terminal_screen_search_set_gregex         (TerminalScreen *screen,
                                                            GRegex         *regex,
                                                            gboolean        wrap_around);
-
 gboolean        terminal_screen_search_has_gregex         (TerminalScreen *screen);
 
 void            terminal_screen_search_find_next          (TerminalScreen *screen);
-
 void            terminal_screen_search_find_previous      (TerminalScreen *screen);
 
 void            terminal_screen_update_scrolling_bar      (TerminalScreen *screen);
@@ -117,9 +114,14 @@ gboolean        terminal_screen_get_input_enabled         (TerminalScreen *scree
 void            terminal_screen_set_input_enabled         (TerminalScreen *screen,
                                                            gboolean        enabled);
 
+gboolean        terminal_screen_get_scroll_on_output      (TerminalScreen *screen);
+void            terminal_screen_set_scroll_on_output      (TerminalScreen *screen,
+                                                           gboolean        enabled);
+
 void            terminal_screen_save_contents             (TerminalScreen *screen,
                                                            GOutputStream  *stream,
                                                            GError         *error);
+
 
 G_END_DECLS
 
