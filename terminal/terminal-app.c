@@ -436,9 +436,9 @@ terminal_app_new_window (TerminalWindow *window,
   win_attr->display = g_strdup (gdk_display_get_name (gdk_screen_get_display (screen)));
   tab_attr = win_attr->tabs->data;
   tab_attr->directory = g_strdup (working_directory);
-  if (window->font)
-    win_attr->font = g_strdup (window->font);
-  win_attr->zoom = window->zoom;
+  if (terminal_window_get_font (window))
+    win_attr->font = g_strdup (terminal_window_get_font (window));
+  win_attr->zoom = terminal_window_get_zoom_level (window);
 
   /* check if we should try to inherit the parent geometry */
   g_object_get (G_OBJECT (app->preferences), "misc-inherit-geometry", &inherit_geometry, NULL);
@@ -788,11 +788,8 @@ terminal_app_open_window (TerminalApp        *app,
   if (!reuse_window)
     {
       if (attr->font)
-        {
-          g_free (TERMINAL_WINDOW (window)->font);
-          TERMINAL_WINDOW (window)->font = g_strdup (attr->font);
-        }
-      TERMINAL_WINDOW (window)->zoom = attr->zoom;
+        terminal_window_set_font (TERMINAL_WINDOW (window), attr->font);
+      terminal_window_set_zoom_level (TERMINAL_WINDOW (window), attr->zoom);
     }
 
   if (!attr->drop_down)

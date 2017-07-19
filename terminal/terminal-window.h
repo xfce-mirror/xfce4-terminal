@@ -48,9 +48,6 @@ typedef struct
 
   /* if this is a TerminalWindowDropdown */
   guint                  drop_down : 1;
-
-  gchar                 *font;
-  TerminalZoomLevel      zoom;
 } TerminalWindow;
 
 GType              terminal_window_get_type                 (void) G_GNUC_CONST;
@@ -87,10 +84,20 @@ GtkWidget         *terminal_window_get_preferences_dialog   (TerminalWindow     
 GtkAction         *terminal_window_get_action               (TerminalWindow     *window,
                                                              const gchar        *action_name);
 
+const gchar       *terminal_window_get_font                 (TerminalWindow     *window);
+
+void               terminal_window_set_font                 (TerminalWindow     *window,
+                                                             const gchar        *font);
+
 TerminalVisibility terminal_window_get_scrollbar_visibility (TerminalWindow     *window);
 
 void               terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
                                                              TerminalVisibility  scrollbar);
+
+TerminalZoomLevel  terminal_window_get_zoom_level           (TerminalWindow     *window);
+
+void               terminal_window_set_zoom_level           (TerminalWindow     *window,
+                                                             TerminalZoomLevel   zoom);
 
 gint               terminal_window_get_menubar_height       (TerminalWindow     *window);
 

@@ -2416,14 +2416,15 @@ terminal_screen_update_font (TerminalScreen *screen)
 
   if (TERMINAL_IS_WINDOW (toplevel))
     {
-      if (TERMINAL_WINDOW (toplevel)->font)
+      if (terminal_window_get_font (TERMINAL_WINDOW (toplevel)))
         {
           g_free (font_name);
-          font_name = g_strdup (TERMINAL_WINDOW (toplevel)->font);
+          font_name = g_strdup (terminal_window_get_font (TERMINAL_WINDOW (toplevel)));
         }
 
-      if (TERMINAL_WINDOW (toplevel)->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
-        font_name = terminal_screen_zoom_font (screen, font_name, TERMINAL_WINDOW (toplevel)->zoom);
+      if (terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)) != TERMINAL_ZOOM_LEVEL_DEFAULT)
+        font_name = terminal_screen_zoom_font (screen, font_name,
+                                               terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)));
     }
 
   if (gtk_widget_get_realized (GTK_WIDGET (screen)))

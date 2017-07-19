@@ -296,7 +296,10 @@ struct _TerminalWindowPrivate
 
   GQueue              *closed_tabs_list;
 
+  gchar               *font;
+
   TerminalVisibility   scrollbar_visibility;
+  TerminalZoomLevel    zoom;
 };
 
 static guint   window_signals[LAST_SIGNAL];
@@ -423,8 +426,8 @@ terminal_window_init (TerminalWindow *window)
 
   window->priv->preferences = terminal_preferences_get ();
 
-  window->font = NULL;
-  window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
+  window->priv->font = NULL;
+  window->priv->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
   window->priv->closed_tabs_list = g_queue_new ();
 
   /* try to set the rgba colormap so vte can use real transparency */
@@ -562,7 +565,7 @@ terminal_window_finalize (GObject *object)
   g_object_unref (G_OBJECT (window->priv->encoding_action));
 
   g_slist_free (window->priv->tabs_menu_actions);
-  g_free (window->font);
+  g_free (window->priv->font);
   g_queue_foreach (window->priv->closed_tabs_list, (GFunc) terminal_window_tab_info_free, NULL);
   g_queue_free (window->priv->closed_tabs_list);
 
@@ -1778,9 +1781,9 @@ terminal_window_action_zoom_in (GtkAction     *action,
 {
   terminal_return_if_fail (window->priv->active != NULL);
 
-  if (window->zoom < TERMINAL_ZOOM_LEVEL_MAXIMUM)
+  if (window->priv->zoom < TERMINAL_ZOOM_LEVEL_MAXIMUM)
     {
-      ++window->zoom;
+      ++window->priv->zoom;
       terminal_window_zoom_update_screens (window);
     }
 }
@@ -1793,9 +1796,9 @@ terminal_window_action_zoom_out (GtkAction      *action,
 {
   terminal_return_if_fail (window->priv->active != NULL);
 
-  if (window->zoom > TERMINAL_ZOOM_LEVEL_MINIMUM)
+  if (window->priv->zoom > TERMINAL_ZOOM_LEVEL_MINIMUM)
     {
-      --window->zoom;
+      --window->priv->zoom;
       terminal_window_zoom_update_screens (window);
     }
 }
@@ -1808,9 +1811,9 @@ terminal_window_action_zoom_reset (GtkAction      *action,
 {
   terminal_return_if_fail (window->priv->active != NULL);
 
-  if (window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+  if (window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
     {
-      window->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
+      window->priv->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
       terminal_window_zoom_update_screens (window);
     }
 }
@@ -2208,13 +2211,13 @@ terminal_window_zoom_update_screens (TerminalWindow *window)
   /* update zoom actions */
   action = terminal_window_get_action (window, "zoom-in");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (window->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
+  if (window->priv->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
     gtk_action_set_sensitive (action, FALSE);
   else if (!gtk_action_is_sensitive (action))
     gtk_action_set_sensitive (action, TRUE);
 
   action = terminal_window_get_action (window, "zoom-out");
-  if (window->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
+  if (window->priv->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
       gtk_action_set_sensitive (action, FALSE);
     else if (!gtk_action_is_sensitive (action))
       gtk_action_set_sensitive (action, TRUE);
@@ -2397,7 +2400,7 @@ terminal_window_add (TerminalWindow *window,
     terminal_screen_update_scrolling_bar (screen);
 
   /* update screen font from window */
-  if (window->font || window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+  if (window->priv->font || window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
     terminal_screen_update_font (screen);
 
   /* show the terminal screen */
@@ -2531,10 +2534,10 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     result = g_slist_prepend (result, g_strdup ("--hide-toolbar"));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  if (window->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
-    result = g_slist_prepend (result, g_strdup_printf ("--zoom=%d", window->zoom));
-  if (window->font != NULL)
-    result = g_slist_prepend (result, g_strdup_printf ("--font=%s", window->font));
+  if (window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+    result = g_slist_prepend (result, g_strdup_printf ("--zoom=%d", window->priv->zoom));
+  if (window->priv->font != NULL)
+    result = g_slist_prepend (result, g_strdup_printf ("--font=%s", window->priv->font));
 
   /* set restart commands of the tabs */
   children = gtk_container_get_children (GTK_CONTAINER (window->priv->notebook));
@@ -2644,6 +2647,33 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 /**
+ * terminal_window_get_font:
+ * @window  : A #TerminalWindow.
+ **/
+const gchar*
+terminal_window_get_font (TerminalWindow *window)
+{
+  return window->priv->font;
+}
+
+
+
+/**
+ * terminal_window_set_font:
+ * @window  : A #TerminalWindow.
+ **/
+void
+terminal_window_set_font (TerminalWindow *window,
+                          const gchar    *font)
+{
+  terminal_return_if_fail (font != NULL);
+  g_free (window->priv->font);
+  window->priv->font = g_strdup (font);
+}
+
+
+
+/**
  * terminal_window_get_scrollbar_visibility:
  * @window  : A #TerminalWindow.
  **/
@@ -2665,6 +2695,31 @@ terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
                                           TerminalVisibility  scrollbar)
 {
   window->priv->scrollbar_visibility = scrollbar;
+}
+
+
+
+/**
+ * terminal_window_get_zoom_level:
+ * @window  : A #TerminalWindow.
+ **/
+TerminalZoomLevel
+terminal_window_get_zoom_level (TerminalWindow *window)
+{
+  return window->priv->zoom;
+}
+
+
+
+/**
+ * terminal_window_set_zoom_level:
+ * @window  : A #TerminalWindow.
+ **/
+void
+terminal_window_set_zoom_level (TerminalWindow    *window,
+                                TerminalZoomLevel  zoom)
+{
+  window->priv->zoom = zoom;
 }
 
 
