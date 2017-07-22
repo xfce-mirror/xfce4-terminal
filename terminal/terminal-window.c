@@ -185,6 +185,10 @@ static void         terminal_window_action_close_window           (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_copy                   (GtkAction              *action,
                                                                    TerminalWindow         *window);
+#if VTE_CHECK_VERSION (0, 49, 2)
+static void         terminal_window_action_copy_html              (GtkAction              *action,
+                                                                   TerminalWindow         *window);
+#endif
 static void         terminal_window_action_paste                  (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_paste_selection        (GtkAction              *action,
@@ -323,6 +327,9 @@ static const GtkActionEntry action_entries[] =
     { "close-window", "application-exit", N_ ("Close _Window"), "<control><shift>q", NULL, G_CALLBACK (terminal_window_action_close_window), },
   { "edit-menu", NULL, N_ ("_Edit"), NULL, NULL, NULL, },
     { "copy", "edit-copy", N_ ("_Copy"), "<control><shift>c", N_ ("Copy to clipboard"), G_CALLBACK (terminal_window_action_copy), },
+#if VTE_CHECK_VERSION (0, 49, 2)
+    { "copy-html", "edit-copy", N_ ("Copy as _HTML"), NULL, N_ ("Copy to clipboard as HTML"), G_CALLBACK (terminal_window_action_copy_html), },
+#endif
     { "paste", "edit-paste", N_ ("_Paste"), "<control><shift>v", N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
     { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, NULL, G_CALLBACK (terminal_window_action_paste_selection), },
     { "select-all", "edit-select-all", N_ ("Select _All"), "<control><shift>a", NULL, G_CALLBACK (terminal_window_action_select_all), },
@@ -458,7 +465,24 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
   window->priv->ui_manager = gtk_ui_manager_new ();
   gtk_ui_manager_insert_action_group (window->priv->ui_manager, window->priv->action_group, 0);
+#if VTE_CHECK_VERSION (0, 49, 2)
+  {
+    /* add "Copy as HTML" to Edit and context menus */
+    const gchar *p1 = strstr (terminal_window_ui, "<menuitem action=\"paste\"/>"); // Edit menu
+    const gchar *p2 = strstr (p1 + 1, "<menuitem action=\"paste\"/>"); // context menu
+    const guint length_new = terminal_window_ui_length + 2 * strlen ("<menuitem action=\"copy-html\"/>");
+    gchar *ui_new = g_new0 (gchar, length_new + 1);
+    strncpy (ui_new, terminal_window_ui, p1 - terminal_window_ui);
+    strcat (ui_new, "<menuitem action=\"copy-html\"/>");
+    strncat (ui_new, p1, p2 - p1);
+    strcat (ui_new, "<menuitem action=\"copy-html\"/>");
+    strcat (ui_new, p2);
+    gtk_ui_manager_add_ui_from_string (window->priv->ui_manager, ui_new, length_new, NULL);
+    g_free (ui_new);
+  }
+#else
   gtk_ui_manager_add_ui_from_string (window->priv->ui_manager, terminal_window_ui, terminal_window_ui_length, NULL);
+#endif
 
   accel_group = gtk_ui_manager_get_accel_group (window->priv->ui_manager);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -905,6 +929,10 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       gtk_action_set_sensitive (window->priv->action_copy,
                                 terminal_screen_has_selection (window->priv->active));
+#if VTE_CHECK_VERSION (0, 49,2)
+      gtk_action_set_sensitive (terminal_window_get_action (window, "copy-html"),
+                                terminal_screen_has_selection (window->priv->active));
+#endif
 
       can_search = terminal_screen_search_has_gregex (window->priv->active);
       gtk_action_set_sensitive (window->priv->action_search_next, can_search);
@@ -1638,6 +1666,18 @@ terminal_window_action_copy (GtkAction      *action,
   if (G_LIKELY (window->priv->active != NULL))
     terminal_screen_copy_clipboard (window->priv->active);
 }
+
+
+
+#if VTE_CHECK_VERSION (0, 49, 2)
+static void
+terminal_window_action_copy_html (GtkAction      *action,
+                                  TerminalWindow *window)
+{
+  if (G_LIKELY (window->priv->active != NULL))
+    terminal_screen_copy_clipboard_html (window->priv->active);
+}
+#endif
 
 
 

@@ -1263,7 +1263,11 @@ terminal_screen_vte_selection_changed (VteTerminal    *terminal,
   g_object_get (G_OBJECT (screen->preferences),
                 "misc-copy-on-select", &copy_on_select, NULL);
   if (copy_on_select && vte_terminal_get_has_selection (terminal))
+#if VTE_CHECK_VERSION (0, 49, 2)
+    vte_terminal_copy_clipboard_format (terminal, VTE_FORMAT_TEXT);
+#else
     vte_terminal_copy_clipboard (terminal);
+#endif
 
   g_signal_emit (G_OBJECT (screen), screen_signals[SELECTION_CHANGED], 0);
 }
@@ -2068,14 +2072,36 @@ terminal_screen_has_selection (TerminalScreen *screen)
  * terminal_screen_copy_clipboard:
  * @screen  : A #TerminalScreen.
  *
- * Places the selected text in the terminal in the #GDK_SELECTIN_CLIPBOARD selection.
+ * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD selection.
  **/
 void
 terminal_screen_copy_clipboard (TerminalScreen *screen)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+#if VTE_CHECK_VERSION (0, 49, 2)
+  vte_terminal_copy_clipboard_format (VTE_TERMINAL (screen->terminal), VTE_FORMAT_TEXT);
+#else
   vte_terminal_copy_clipboard (VTE_TERMINAL (screen->terminal));
+#endif
 }
+
+
+
+/**
+ * terminal_screen_copy_clipboard_html:
+ * @screen  : A #TerminalScreen.
+ *
+ * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD selection
+ * as HTML (preserving colors, bold font, etc).
+ **/
+#if VTE_CHECK_VERSION (0, 49, 2)
+void
+terminal_screen_copy_clipboard_html (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_copy_clipboard_format (VTE_TERMINAL (screen->terminal), VTE_FORMAT_HTML);
+}
+#endif
 
 
 
