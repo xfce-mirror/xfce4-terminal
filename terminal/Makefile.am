@@ -72,6 +72,10 @@ xfce4_terminal_LDADD = \
 	$(LIBXFCE4UI_LIBS) \
 	$(TERMINAL_LIBS)
 
+if HAVE_UTEMPTER
+xfce4_terminal_LDADD += -lutempter
+endif
+
 uidir = $(datadir)/xfce4/terminal
 ui_DATA = \
 	terminal-preferences.ui

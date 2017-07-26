@@ -27,6 +27,9 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
+#ifdef HAVE_LIBUTEMPTER
+#include <utempter.h>
+#endif
 
 #include <libxfce4ui/libxfce4ui.h>
 
@@ -192,6 +195,10 @@ static void
 terminal_widget_finalize (GObject *object)
 {
   TerminalWidget *widget = TERMINAL_WIDGET (object);
+
+#ifdef HAVE_LIBUTEMPTER
+  utempter_remove_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (widget))));
+#endif
 
   /* disconnect the misc-highlight-urls watch */
   g_signal_handlers_disconnect_by_func (G_OBJECT (widget->preferences), G_CALLBACK (terminal_widget_update_highlight_urls), widget);

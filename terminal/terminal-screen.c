@@ -37,6 +37,9 @@
 #ifdef HAVE_TIME_H
 #include <time.h>
 #endif
+#ifdef HAVE_LIBUTEMPTER
+#include <utempter.h>
+#endif
 
 #include <libxfce4ui/libxfce4ui.h>
 
@@ -1652,6 +1655,10 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                   error, _("Failed to execute child"));
           g_error_free (error);
         }
+
+#ifdef HAVE_LIBUTEMPTER
+      utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
+#endif
 
       g_free (argv2);
 
