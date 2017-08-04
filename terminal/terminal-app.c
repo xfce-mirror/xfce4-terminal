@@ -816,39 +816,7 @@ terminal_app_open_window (TerminalApp        *app,
           if (mask & YValue)
             y = new_y;
         }
-
-        if ((mask & XValue) || (mask & YValue))
-          {
-            screen = gtk_window_get_screen (GTK_WINDOW (window));
-  #if GTK_CHECK_VERSION (3, 22, 0)
-            gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
-                                     &screen_width, &screen_height);
-  #else
-            screen_width = gdk_screen_get_width (screen);
-            screen_height = gdk_screen_get_height (screen);
-  #endif
-            gtk_window_get_default_size (GTK_WINDOW (window), &window_width, &window_height);
-            if (mask & XNegative)
-              {
-                x = screen_width - window_width + x;
-                gravity = GDK_GRAVITY_NORTH_EAST;
-              }
-            if (mask & YNegative)
-              {
-                y = screen_height - window_height + y;
-                gravity = (mask & XNegative) ? GDK_GRAVITY_SOUTH_EAST : GDK_GRAVITY_SOUTH_WEST;
-              }
-            gtk_window_set_gravity (GTK_WINDOW (window), gravity);
-            gtk_window_move (GTK_WINDOW (window), x, y);
-          }
-      else if (!(mask & WidthValue) && !(mask & XValue))
-#else
-      if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
 #endif
-        g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
-
-      /* cleanup */
-      g_free (geometry);
     }
 
   /* add the tabs */
@@ -859,6 +827,44 @@ terminal_app_open_window (TerminalApp        *app,
                                       height);
       terminal_window_add (TERMINAL_WINDOW (window), terminal);
       terminal_screen_launch_child (terminal);
+    }
+
+  if (!attr->drop_down)
+    {
+      /* move the window to desired position */
+#ifdef GDK_WINDOWING_X11
+      if ((mask & XValue) || (mask & YValue))
+        {
+          screen = gtk_window_get_screen (GTK_WINDOW (window));
+  #if GTK_CHECK_VERSION (3, 22, 0)
+          gdk_window_get_geometry (gdk_screen_get_root_window (screen), NULL, NULL,
+                                   &screen_width, &screen_height);
+  #else
+          screen_width = gdk_screen_get_width (screen);
+          screen_height = gdk_screen_get_height (screen);
+  #endif
+          gtk_window_get_size (GTK_WINDOW (window), &window_width, &window_height);
+          if (mask & XNegative)
+            {
+              x = screen_width - window_width + x;
+              gravity = GDK_GRAVITY_NORTH_EAST;
+            }
+          if (mask & YNegative)
+            {
+              y = screen_height - window_height + y;
+              gravity = (mask & XNegative) ? GDK_GRAVITY_SOUTH_EAST : GDK_GRAVITY_SOUTH_WEST;
+            }
+          gtk_window_set_gravity (GTK_WINDOW (window), gravity);
+          gtk_window_move (GTK_WINDOW (window), x, y);
+        }
+      else if (!(mask & WidthValue) && !(mask & XValue))
+#else
+      if (!gtk_window_parse_geometry (GTK_WINDOW (window), geometry))
+#endif
+        g_printerr (_("Invalid geometry string \"%s\"\n"), geometry);
+
+      /* cleanup */
+      g_free (geometry);
     }
 
   /* show the window */
