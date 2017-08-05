@@ -1983,6 +1983,10 @@ title_popover_close (GtkWidget      *popover,
   /* close the dialog */
   gtk_widget_destroy (window->priv->title_popover);
   window->priv->title_popover = NULL;
+
+  /* focus the terminal: bug #13754 */
+  if (G_LIKELY (window->priv->active != NULL))
+    terminal_screen_focus (window->priv->active);
 }
 
 
