@@ -755,14 +755,25 @@ terminal_window_confirm_close (TerminalWindow *window)
   gchar     *message;
   gchar     *markup;
   gint       response;
-  gint       n_tabs;
-
-  n_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
-  if (G_UNLIKELY (n_tabs < 2))
-    return TRUE;
+  gint       i, n_tabs;
 
   g_object_get (G_OBJECT (window->priv->preferences), "misc-confirm-close", &confirm_close, NULL);
   if (!confirm_close)
+    return TRUE;
+
+  n_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+  confirm_close = FALSE;
+  for (i = 0; i < n_tabs; ++i)
+    {
+      TerminalScreen *screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
+      if (terminal_screen_has_foreground_process (screen))
+        {
+          confirm_close = TRUE;
+          break;
+        }
+    }
+
+  if (n_tabs < 2 && !confirm_close)
     return TRUE;
 
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
@@ -772,8 +783,30 @@ terminal_window_confirm_close (TerminalWindow *window)
                                         GTK_RESPONSE_CANCEL,
                                         NULL);
 
-  button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
+  if (n_tabs > 1)
+    {
+      /* multiple tabs */
+      button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
+      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
+
+      if (confirm_close)
+        {
+          /* and process running */
+          message = g_strdup_printf (_("There are still processes running in some tabs.\n"
+                                       "Closing this window will kill all of them."));
+        }
+      else
+        {
+          message = g_strdup_printf (_("This window has %d tabs open. Closing this window\n"
+                                       "will also close all its tabs."), n_tabs);
+        }
+    }
+  else
+    {
+      /* single tab, process running */
+      message = g_strdup_printf (_("There is still a process running.\n"
+                                   "Closing this window will kill it."));
+    }
 
   button = xfce_gtk_button_new_mixed ("application-exit", _("Close _Window"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
@@ -791,10 +824,8 @@ terminal_window_confirm_close (TerminalWindow *window)
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
 
-  message = g_strdup_printf (_("This window has %d tabs open. Closing this window\n"
-                               "will also close all its tabs."), n_tabs);
   markup = g_strdup_printf ("<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
-                            _("Close all tabs?"), message);
+                            n_tabs > 1 ? _("Close all tabs?") : _("Close window?"), message);
   g_free (message);
 
   label = g_object_new (GTK_TYPE_LABEL,
@@ -2076,7 +2107,7 @@ terminal_window_action_set_title (GtkAction      *action,
                         G_CALLBACK (title_popover_close), window);
     }
 
-    gtk_widget_show_all (window->priv->title_popover);
+  gtk_widget_show_all (window->priv->title_popover);
 }
 
 

@@ -2529,3 +2529,36 @@ terminal_screen_save_contents (TerminalScreen *screen,
   vte_terminal_write_contents_sync (VTE_TERMINAL (screen->terminal),
                                     stream, VTE_WRITE_DEFAULT, NULL, &error);
 }
+
+
+
+/**
+ * terminal_screen_has_foreground_process:
+ * @screen  : A #TerminalScreen.
+ *
+ * Return value: %TRUE if there's a foreground process running in @screen.
+ **/
+gboolean
+terminal_screen_has_foreground_process (TerminalScreen *screen)
+{
+  VtePty *pty;
+  int     fd;
+  int     fgpid;
+
+  if (screen == NULL)
+    return FALSE;
+
+  pty = vte_terminal_get_pty (VTE_TERMINAL (screen->terminal));
+  if (pty == NULL)
+    return FALSE;
+
+  fd = vte_pty_get_fd (pty);
+  if (fd == -1)
+    return FALSE;
+
+  fgpid = tcgetpgrp (fd);
+  if (fgpid == -1 || fgpid == screen->pid)
+    return FALSE;
+
+  return TRUE;
+}

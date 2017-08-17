@@ -125,6 +125,8 @@ void            terminal_screen_save_contents             (TerminalScreen *scree
                                                            GOutputStream  *stream,
                                                            GError         *error);
 
+gboolean        terminal_screen_has_foreground_process    (TerminalScreen *screen);
+
 
 G_END_DECLS
 
