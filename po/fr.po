@@ -18,9 +18,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-28 14:23+0000\n"
-"Last-Translator: jc1 <jc1.quebecos@gmail.com>\n"
+"POT-Creation-Date: 2017-08-17 18:31+0200\n"
+"PO-Revision-Date: 2017-08-18 07:42+0000\n"
+"Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -177,12 +177,12 @@ msgstr "Merci de signaler les bogues à <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Impossible d'enregistrer le service terminal : %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Chaine de géométrie invalide « %s »\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Impossible de se connecter au gestionnaire de session : %s\n"
@@ -417,25 +417,25 @@ msgstr "Charger préréglages..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossible de déterminer votre shell de connexion."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Impossible d'exécuter un fils"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Fermer cet onglet"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Impossible de définir le codage %s\n"
@@ -488,47 +488,47 @@ msgstr "L’équipe de traduction francophone de Xfce"
 msgid "Visit Terminal website"
 msgstr "Visitez le site web de Terminal"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Copier l’adresse électronique"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Écrire un courriel"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Copier l’adresse du lien"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Ouvrir le lien"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Impossible d'envoyer la sélection de type texte brut vers le terminal : mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Impossible d'envoyer le lien Mozilla vers le terminal : mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Impossible d'envoyer la liste d'URI vers le terminal : mauvais format (%d) ou longueur (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Couleur non conforme : Mauvais format (%d) ou longueur (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Impossible d'ouvrir l'URL « %s »"
@@ -573,7 +573,8 @@ msgstr "_Annuler la fermeture de l’onglet"
 msgid "_Detach Tab"
 msgstr "_Détacher l'onglet"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Fermer l'onglet"
 
@@ -581,7 +582,7 @@ msgstr "Fermer l'onglet"
 msgid "Close Other Ta_bs"
 msgstr "Fermer les autres on_glets"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Fermer la fenêtre"
 
@@ -794,58 +795,78 @@ msgstr "Basculer le défilement sur la sortie"
 msgid "Set _Encoding"
 msgstr "Définir l’_encodage"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Attention"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Annuler"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Il y a encore des processus en cours d’exécution dans certains onglets.\nIls seront tous terminés à la fermeture de cette fenêtre."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Cette fenêtre a %d onglets ouverts. Fermer\ncette fenêtre fermera aussi tous ses onglets."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Il y a encore un processus en cours d’exécution.\nIl sera terminé à la fermeture de cette fenêtre."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Fermer tous les onglets ?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Fermer la fenêtre ?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "_Ne plus poser la question"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Titre :"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrer le titre pour l'onglet courant du terminal"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Aide"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Fermer"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Impossible de créer l'expression régulière"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Enregistrer le contenu…"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Enregistrer"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Impossible d'enregistrer le contenu du terminal"
 
