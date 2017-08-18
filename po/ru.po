@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-22 13:10+0000\n"
+"POT-Creation-Date: 2017-08-17 18:31+0200\n"
+"PO-Revision-Date: 2017-08-18 13:43+0000\n"
 "Last-Translator: Igor <f2404@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfce-apps/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -174,12 +174,12 @@ msgstr "Сообщайте об ошибках на <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Невозможно запустить службу терминала: %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Неверная строка геометрии: \"%s\"\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Не удалось подключиться к менеджеру сессий: %s\n"
@@ -414,25 +414,25 @@ msgstr "Загрузить предустановки"
 msgid "Terminal"
 msgstr "Терминал"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Без названия"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Ошибка выполнения дочернего процесса"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Не удалось задать кодировку %s\n"
@@ -485,47 +485,47 @@ msgstr "Anthony Ivanoff <a-i@bk.ru>\nAndrey Fedoseev <andrey.fedoseev@gmail.com>
 msgid "Visit Terminal website"
 msgstr "Посетить сайт программы Терминал"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Копировать адрес электронной почты"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Написать письмо"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Копировать адрес ссылки"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Открыть ссылку"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Невозможно перетащить выделенный текст в терминал: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Невозможно перетащить интернет-адрес в терминал: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Невозможно перетащить список адресов: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Получены неверные данные о цвете: неверный формат (%d) или длина (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Не удалось открыть адрес \"%s\""
@@ -570,7 +570,8 @@ msgstr "Восстановить закр_ытую вкладку"
 msgid "_Detach Tab"
 msgstr "_Отделить вкладку"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Закрыть _вкладку"
 
@@ -578,7 +579,7 @@ msgstr "Закрыть _вкладку"
 msgid "Close Other Ta_bs"
 msgstr "Закрыть все остальные вкла_дки"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Закрыть _окно"
 
@@ -791,58 +792,78 @@ msgstr "Переключить режим прокрутки по мере вы�
 msgid "Set _Encoding"
 msgstr "_Задать кодировку"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Отмена"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Некоторые процессы всё ещё работают.\nЗакрытие этого окна остановит их всех."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "В этом окне открыто %d вкладок. Если вы\nзакроете окно, будут закрыты все вкладки."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Один процесс всё ещё работает.\nЗакрытие этого окна остановит его."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Закрыть все вкладки?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Закрыть окно?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "_Больше не спрашивать"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Заголовок:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Введите заголовок для текущей вкладки"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Справка"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Не удалось создать регулярное выражение"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Сохранить содержимое..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Сохранить"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Не удалось сохранить содержимое терминала"
 
