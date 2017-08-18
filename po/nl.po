@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-08-07 22:04+0000\n"
+"POT-Creation-Date: 2017-08-17 18:31+0200\n"
+"PO-Revision-Date: 2017-08-18 08:59+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -169,12 +169,12 @@ msgstr "Gelieve fouten te melden aan <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan terminaldienst niet registreren: %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ongeldig geometrie-tekstsnoer '%s'\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Kon geen verbinding maken met sessiebeheerder: %s\n"
@@ -409,25 +409,25 @@ msgstr "Voorinstellingen aan het laden..."
 msgid "Terminal"
 msgstr "Terminalvenster"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Zonder titel"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kan uw aanmeldscherm niet bepalen."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Kon afgeleid proces niet uitvoeren"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Dit tabblad sluiten"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Kon codering %s niet instellen\n"
@@ -480,47 +480,47 @@ msgstr "Stephan Arts <stephan@xfce.org>\nJasper Huijsmans <jasper@xfce.org>\nPjo
 msgid "Visit Terminal website"
 msgstr "Bezoek de website van Terminalvenster"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Kopieer e-mailadres"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Stel e-mail op"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Kopieer adres van koppeling"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Open koppeling"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Kon selectie met type 'platte tekst' niet naar terminalvenster slepen: verkeerde opmaak (%d) of lengte (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Kon Mozilla-webadres niet naar terminalvenster slepen: verkeerde opmaak (%d) of lengte (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Kon URI-lijst niet naar terminalvenster slepen: verkeerde opmaak (%d) of lengte (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Ongeldige kleurinformatie ontvangen: verkeerde opmaak (%d) of lengte (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Kon het webadres '%s' niet openen"
@@ -565,7 +565,8 @@ msgstr "Sluiten van tabblad ongedaan maken"
 msgid "_Detach Tab"
 msgstr "Tabblad _losmaken"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Tabblad sluiten"
 
@@ -573,7 +574,7 @@ msgstr "Tabblad sluiten"
 msgid "Close Other Ta_bs"
 msgstr "Andere tabbladen sluiten"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Venster sluiten"
 
@@ -786,58 +787,78 @@ msgstr "'Schuiven bij uitvoer' omschakelen"
 msgid "Set _Encoding"
 msgstr "Stel codering in"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Waarschuwing"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Annuleren"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "In sommige tabbladen draaien er nog processen.\nSluiten van dit venster zal hen allemaal beëindigen."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Dit venster heeft %d tabbladen open. Als u dit\nvenster sluit, sluiten ook alle tabbladen."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Er draait nog steeds een proces.\nSluiten van dit venster zal het beëindigen."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Alle tabbladen sluiten?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Venster sluiten?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "Niet _nogmaals vragen"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Voer titel in voor het huidige terminalvenster-tabblad"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Hulp"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Sluiten"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Kon de reguliere uitdrukking niet maken"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Inhoud opslaan..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Opslaan"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Kon de inhoud van de terminal niet opslaan"
 
