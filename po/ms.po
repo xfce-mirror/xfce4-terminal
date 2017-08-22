@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 12:30+0100\n"
-"PO-Revision-Date: 2017-01-28 12:19+0000\n"
+"POT-Creation-Date: 2017-08-17 18:31+0200\n"
+"PO-Revision-Date: 2017-08-22 03:49+0000\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Malay (http://www.transifex.com/xfce/xfce-apps/language/ms/)\n"
 "MIME-Version: 1.0\n"
@@ -65,13 +65,13 @@ msgstr "Pilihan Am"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:138
+#: ../terminal/main.c:111 ../terminal/main.c:143
 msgid "display"
 msgstr "paparan"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:128
+#: ../terminal/main.c:113 ../terminal/main.c:133
 msgid "directory"
 msgstr "direktori"
 
@@ -79,93 +79,104 @@ msgstr "direktori"
 msgid "Window or Tab Separators"
 msgstr "Pemisah Tetingkap atau Tab"
 
-#: ../terminal/main.c:122
+#: ../terminal/main.c:123
 msgid "Tab Options"
 msgstr "Pilihan Tab"
 
 #. parameter of --command
-#: ../terminal/main.c:124
+#: ../terminal/main.c:125
 msgid "command"
 msgstr "perintah"
 
 #. parameter of --title
-#: ../terminal/main.c:126
+#. parameter of --initial-title
+#: ../terminal/main.c:127 ../terminal/main.c:131
 msgid "title"
 msgstr "tajuk"
 
-#: ../terminal/main.c:136
+#. parameter of --dynamic-title-mode
+#: ../terminal/main.c:129
+msgid "mode"
+msgstr "mod"
+
+#: ../terminal/main.c:141
 msgid "Window Options"
 msgstr "Pilihan Tetingkap"
 
 #. parameter of --geometry
-#: ../terminal/main.c:140
+#: ../terminal/main.c:145
 msgid "geometry"
 msgstr "geometri"
 
 #. parameter of --role
-#: ../terminal/main.c:142
+#: ../terminal/main.c:147
 msgid "role"
 msgstr "peranan"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:144
+#: ../terminal/main.c:149
 msgid "string"
 msgstr "rentetan"
 
 #. parameter of --icon
-#: ../terminal/main.c:146
+#: ../terminal/main.c:151
 msgid "icon"
 msgstr "ikon"
 
 #. parameter of --font
-#: ../terminal/main.c:148
+#: ../terminal/main.c:153
 msgid "font"
 msgstr "fon"
 
 #. parameter of --zoom
-#: ../terminal/main.c:150
+#: ../terminal/main.c:155
 msgid "zoom"
 msgstr "zum"
 
-#: ../terminal/main.c:152
+#: ../terminal/main.c:157
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Lihat halaman man %s untuk penerangan penuh pilihan diatas."
 
-#: ../terminal/main.c:185 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Terminal Xfce"
 
-#: ../terminal/main.c:201
+#: ../terminal/main.c:206
 msgid "The Xfce development team. All rights reserved."
 msgstr "Pasukan pembangunan Xfce. Hak cipta terpelihara."
 
-#: ../terminal/main.c:202
+#: ../terminal/main.c:207
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Ditulis oleh Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:203
+#: ../terminal/main.c:208
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:204
+#: ../terminal/main.c:209
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "dan Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:205
+#: ../terminal/main.c:210
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Sila laporkan pepijat ke <%s>."
 
-#: ../terminal/main.c:312
+#: ../terminal/main.c:317
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Tidak boleh daftar perkhidmatan terminal: %s\n"
 
-#: ../terminal/terminal-app.c:875
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Rentetan geometri \"%s\" tidak sah\n"
+
+#: ../terminal/terminal-app.c:943
+#, c-format
+msgid "Failed to connect to session manager: %s\n"
+msgstr "Gagal menyambung ke pengurus sesi: %s\n"
 
 #: ../terminal/terminal-encoding-action.c:68
 msgid "Western European"
@@ -256,8 +267,8 @@ msgid "Other"
 msgstr "Lain-lain:"
 
 #. action to reset to the default
-#: ../terminal/terminal-encoding-action.c:267
-#: ../terminal/terminal-encoding-action.c:396
+#: ../terminal/terminal-encoding-action.c:273
+#: ../terminal/terminal-encoding-action.c:402
 #, c-format
 msgid "Default (%s)"
 msgstr "Lalai (%s)"
@@ -270,137 +281,161 @@ msgstr "id Pengguna tidak sepadan"
 msgid "Display mismatch"
 msgstr "Paparan tidak sepadan"
 
-#: ../terminal/terminal-options.c:217
+#: ../terminal/terminal-options.c:218
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Pilihan \"--default-display\" perlu nyatakan papara Xlalai sebagai parameternya"
 
-#: ../terminal/terminal-options.c:233
+#: ../terminal/terminal-options.c:234
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Pilihan \"--default-working-directory\" perlu nyatakan direktori kerja lalai sebagai parameternya"
 
-#: ../terminal/terminal-options.c:250
+#: ../terminal/terminal-options.c:251
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Pilihan \"--execute/-x\" perlu nyatakan perintah untuk jalankan baki baris perintah"
 
-#: ../terminal/terminal-options.c:267
+#: ../terminal/terminal-options.c:268
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Pilihan \"--command/-e\" perlu nyatakan perintah untuk jalankan sebagai parameternya"
 
-#: ../terminal/terminal-options.c:284
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Pilihan \"--working-directory\" perlu nyatakan direktori kerja sebagai parameternya"
 
-#: ../terminal/terminal-options.c:299
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Pilihan \"--title/-T\" perlu nyatakan tajuk sebagai parameternya"
 
-#: ../terminal/terminal-options.c:318
+#: ../terminal/terminal-options.c:315
+#, c-format
+msgid ""
+"Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
+"as its parameter"
+msgstr "Pilihan \"--dynamic-title-mode\" perlu nyatakan mod tajuk dinamik sebagai parameternya"
+
+#: ../terminal/terminal-options.c:330
+#, c-format
+msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
+msgstr ""
+
+#: ../terminal/terminal-options.c:340
+#, c-format
+msgid ""
+"Option \"--initial-title\" requires specifying the initial title as its "
+"parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:359
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameters"
 msgstr "Pilihan \"--display\" perlu nyatakan paparan X sebagai parameternya"
 
-#: ../terminal/terminal-options.c:333
+#: ../terminal/terminal-options.c:374
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Pilihan \"--geometri\" perlu nyatakan geometri tetingkap sebagai parameternya"
 
-#: ../terminal/terminal-options.c:348
+#: ../terminal/terminal-options.c:389
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Pilihan \"--role\" perlu nyatakan peranan tetingkap sebagai parameternya"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:404
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Pilihan \"--sm-client-id\" perlu nyatakan id sesi unik sebagai parameternya"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:419
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Pilihan \"--startup-id\" perlu nyatakan id permulaan sebagai parameternya"
 
-#: ../terminal/terminal-options.c:394
+#: ../terminal/terminal-options.c:435
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Pilihan \"--icon/-I\" perlu nyatakan nama ikon atau nama fail sebagai parameternya"
 
-#: ../terminal/terminal-options.c:461
+#: ../terminal/terminal-options.c:506
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Pilihan \"--font\" perlu nyatakan nama fon sebagai parameternya"
 
-#: ../terminal/terminal-options.c:479
+#: ../terminal/terminal-options.c:524
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Pilihan \"--zoom\" perlu nyatakan zum (%d .. %d) sebagai parameternya"
 
-#: ../terminal/terminal-options.c:501
+#: ../terminal/terminal-options.c:546
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Pilihan \"%s\" tidak diketahui"
 
-#: ../terminal/terminal-preferences-dialog.c:359
+#: ../terminal/terminal-preferences-dialog.c:385
 msgid "All Files"
 msgstr "Semua Fail"
 
-#: ../terminal/terminal-preferences-dialog.c:365
+#: ../terminal/terminal-preferences-dialog.c:391
 msgid "Image Files"
 msgstr "Fail Imej"
 
-#: ../terminal/terminal-preferences-dialog.c:790
+#: ../terminal/terminal-preferences-dialog.c:847
 msgid "Load Presets..."
 msgstr "Muat Praset..."
 
-#: ../terminal/terminal-preferences.c:1051
+#: ../terminal/terminal-preferences.c:1084
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:390 ../terminal/terminal-screen.c:755
-#: ../terminal/terminal-screen.c:1882
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Tidak Bertajuk"
 
-#: ../terminal/terminal-screen.c:656
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Tidak boleh tentukan shell daftar masuk anda."
 
-#: ../terminal/terminal-screen.c:1552 ../terminal/terminal-screen.c:1578
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Gagal lakukan anak"
 
-#: ../terminal/terminal-screen.c:2201
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Tutup tab ini"
+
+#: ../terminal/terminal-screen.c:2325
+#, c-format
+msgid "Failed to set encoding %s\n"
+msgstr ""
 
 #: ../terminal/terminal-search-dialog.c:90
 msgid "Find"
 msgstr "Cari"
 
-#: ../terminal/terminal-search-dialog.c:93 ../terminal/terminal-window.c:1927
+#: ../terminal/terminal-search-dialog.c:93
 msgid "_Close"
 msgstr "_Tutup"
 
@@ -444,343 +479,385 @@ msgstr "Abuyop <abuyop@gmail.com>"
 msgid "Visit Terminal website"
 msgstr "Lawat laman sesawang Terminal"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Salin Alamat Emel"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Gubah Emel"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Salin Alamat Pautan"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Buka Pautan"
 
-#: ../terminal/terminal-widget.c:479
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Tidak boleh lepaskan pemilihan jenis teks/biasa ke terminal: Format (%d) atau panjang (%d) salah\n"
 
-#: ../terminal/terminal-widget.c:495
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Tidak boleh lepas URL Mozilla pada terminal: Format (%d) atau panjang (%d) salah\n"
 
-#: ../terminal/terminal-widget.c:521
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Tidak boleh lepaskan senarai URI pada terminal: format (%d) atau panjang (%d) salah\n"
 
-#: ../terminal/terminal-widget.c:557
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Data warna tidak sah diterima: Format (%d) atau panjang (%d) salah\n"
 
-#: ../terminal/terminal-widget.c:693
+#. tell the user that we were unable to open the responsible application
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Gagal membuka URL '%s'"
 
-#: ../terminal/terminal-window-dropdown.c:263
+#: ../terminal/terminal-window-dropdown.c:283
 msgid "Keep window open when it loses focus"
 msgstr "Kekalkan tetingkap terbuka bila ia kehilangan fokus"
 
-#: ../terminal/terminal-window-dropdown.c:354
+#: ../terminal/terminal-window-dropdown.c:408
 msgid "Drop-down Terminal"
 msgstr "Terminal Lepas-bawah"
 
-#: ../terminal/terminal-window-dropdown.c:355
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Toggle Drop-down Terminal"
 msgstr "Togol Terminal Lepas-turun"
 
-#: ../terminal/terminal-window.c:313
+#: ../terminal/terminal-window.c:320
 msgid "_File"
 msgstr "_Fail"
 
-#: ../terminal/terminal-window.c:314
+#: ../terminal/terminal-window.c:321
 msgid "Open _Tab"
 msgstr "Buka _Tab"
 
-#: ../terminal/terminal-window.c:314
+#: ../terminal/terminal-window.c:321
 msgid "Open a new terminal tab"
 msgstr "Buka tab terminal baharu"
 
-#: ../terminal/terminal-window.c:315
+#: ../terminal/terminal-window.c:322
 msgid "Open T_erminal"
 msgstr "Buka T_erminal"
 
-#: ../terminal/terminal-window.c:315
+#: ../terminal/terminal-window.c:322
 msgid "Open a new terminal window"
 msgstr "Buka tetingkap terminal baharu"
 
-#: ../terminal/terminal-window.c:316
+#: ../terminal/terminal-window.c:323
 msgid "_Undo Close Tab"
 msgstr "B_uat Asal Tab Tutup"
 
-#: ../terminal/terminal-window.c:317
+#: ../terminal/terminal-window.c:324
 msgid "_Detach Tab"
 msgstr "Tan_ggalkan Tab"
 
-#: ../terminal/terminal-window.c:318 ../terminal/terminal-window.c:710
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Tutup T_ab"
 
-#: ../terminal/terminal-window.c:319
+#: ../terminal/terminal-window.c:326
 msgid "Close Other Ta_bs"
 msgstr "Tutup Ta_b Lain"
 
-#: ../terminal/terminal-window.c:320 ../terminal/terminal-window.c:713
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Tutup T_etingkap"
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:328
 msgid "_Edit"
 msgstr "_Sunting"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:329
 msgid "_Copy"
 msgstr "Sa_lin"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:329
 msgid "Copy to clipboard"
 msgstr "Salin ke papan keratan"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:331
+msgid "Copy as _HTML"
+msgstr "Salin sebagai _HTML"
+
+#: ../terminal/terminal-window.c:331
+msgid "Copy to clipboard as HTML"
+msgstr "Salin ke papan keratan sebagai HTML"
+
+#: ../terminal/terminal-window.c:333
 msgid "_Paste"
 msgstr "_Tampal"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:333
 msgid "Paste from clipboard"
 msgstr "Tampal dari papan keratan"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:334
 msgid "Paste _Selection"
 msgstr "Tampal Pe_milihan"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:335
 msgid "Select _All"
 msgstr "Pilih Semu_a"
 
-#: ../terminal/terminal-window.c:326
+#: ../terminal/terminal-window.c:336
 msgid "Pr_eferences..."
 msgstr "K_eutamaan..."
 
-#: ../terminal/terminal-window.c:326
+#: ../terminal/terminal-window.c:336
 msgid "Open the preferences dialog"
 msgstr "Buka dialog keutamaan"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:337
 msgid "_View"
 msgstr "_Lihat"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:338
 msgid "Zoom _In"
 msgstr "Zum _Masuk"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:338
 msgid "Zoom in with larger font"
 msgstr "Zum masuk dengan fon lebih besar"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:339
 msgid "Zoom _Out"
 msgstr "Zum _Keluar"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:339
 msgid "Zoom out with smaller font"
 msgstr "Zum keluar dengan fon lebih kecil"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:340
 msgid "_Normal Size"
 msgstr "Saiz _Biasa"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:340
 msgid "Zoom to default size"
 msgstr "Zum ke saiz lalai"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:341
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:342
 msgid "_Set Title..."
 msgstr "T_etapkan Tajuk..."
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:343
 msgid "_Find..."
 msgstr "_Cari..."
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:343
 msgid "Search terminal contents"
 msgstr "Gelintar kandungan terminal"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:344
 msgid "Find Ne_xt"
 msgstr "Cari Be_rikutnya"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:345
 msgid "Find Pre_vious"
 msgstr "Cari Ter_dahulu"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:346
 msgid "Sa_ve Contents..."
 msgstr "S_impan Kandungan..."
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:347
 msgid "_Reset"
 msgstr "T_etap Semula"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:348
 msgid "_Clear Scrollback and Reset"
 msgstr "_Kosongkan Tatal Balik dan Tetap Semula"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:349
 msgid "T_abs"
 msgstr "T_ab"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:350
 msgid "_Previous Tab"
 msgstr "Tab Te_rdahulu"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:350
 msgid "Switch to previous tab"
 msgstr "Tukar ke tab terdahulu"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:351
 msgid "_Next Tab"
 msgstr "Tab _Berikutnya"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:351
 msgid "Switch to next tab"
 msgstr "Tukar ke tab berikutnya"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:352
 msgid "Move Tab _Left"
 msgstr "Alih Tab Ke K_iri"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:353
 msgid "Move Tab _Right"
 msgstr "Alih Tab Ke K_anan"
 
-#: ../terminal/terminal-window.c:344 ../terminal/terminal-window.c:1925
+#: ../terminal/terminal-window.c:354
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:355
 msgid "_Contents"
 msgstr "Kand_ungan"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:355
 msgid "Display help contents"
 msgstr "Papar kandungan bantuan"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:356
 msgid "_About"
 msgstr "Per_ihal"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:357
 msgid "_Zoom"
 msgstr "_Zum"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:362
 msgid "Show _Menubar"
 msgstr "Tunjuk Palang _Menu"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the menubar"
 msgstr "Tunjuk/sembunyi palang menu"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:363
 msgid "Show _Toolbar"
 msgstr "Tunjuk Palang Ala_t"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the toolbar"
 msgstr "Tunjuk/sembunyi palang alat"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:364
 msgid "Show Window _Borders"
 msgstr "Tunjuk Sempada_n Tetingkap"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:364
 msgid "Show/hide the window decorations"
 msgstr "Tunjuk/sembunyi hiasan tetingkap"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:365
 msgid "_Fullscreen"
 msgstr "Skrin Pe_nuh"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:365
 msgid "Toggle fullscreen mode"
 msgstr "Togol mod skrin penuh"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:366
 msgid "_Read-Only"
 msgstr "_Baca-Sahaja"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:366
 msgid "Toggle read-only mode"
 msgstr "Togol mod baca-sahaja"
 
+#: ../terminal/terminal-window.c:367
+msgid "Scroll on _Output"
+msgstr "Tatal pada _Output"
+
+#: ../terminal/terminal-window.c:367
+msgid "Toggle scroll on output"
+msgstr "Togol tatal pada output"
+
 #. create encoding action
-#: ../terminal/terminal-window.c:510
+#: ../terminal/terminal-window.c:538
 msgid "Set _Encoding"
 msgstr "Tetapkan P_engekodan"
 
-#: ../terminal/terminal-window.c:703
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Amaran"
 
-#: ../terminal/terminal-window.c:706 ../terminal/terminal-window.c:2084
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: ../terminal/terminal-window.c:729
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr ""
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Tetingkap ini mempunyai %d tab dibuka. Menutup tetingkap\nini juga akan menutup semua tabnya."
 
-#: ../terminal/terminal-window.c:732
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr ""
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Tutup semua tab?"
 
-#: ../terminal/terminal-window.c:744
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr ""
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "Janga_n tanya saya lagi"
 
-#: ../terminal/terminal-window.c:1916
-msgid "Window Title|Set Title"
-msgstr "Tajuk Tetingkap|Tetapkan Tajuk"
-
-#: ../terminal/terminal-window.c:1937
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Tajuk:"
 
-#: ../terminal/terminal-window.c:1949
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Masukkan tajuk untuk tab terminal semasa"
 
-#: ../terminal/terminal-window.c:2003
+#: ../terminal/terminal-window.c:2096
+msgid "Help"
+msgstr "Bantuan"
+
+#: ../terminal/terminal-window.c:2102
+msgid "Close"
+msgstr "Tutup"
+
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Gagal mencipta ungkapan nalar"
 
-#: ../terminal/terminal-window.c:2081
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Simpan kandungan..."
 
-#: ../terminal/terminal-window.c:2085
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Simpan"
 
-#: ../terminal/terminal-window.c:2122
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Gagal menyimpan kandungan terminal"
 
@@ -1066,290 +1143,312 @@ msgid "Right"
 msgstr "K_anan"
 
 #: ../terminal/terminal-preferences.glade.h:68
+msgid "U_p"
+msgstr "_Naik"
+
+#: ../terminal/terminal-preferences.glade.h:69
+msgid "Down"
+msgstr "Turun"
+
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "Move to monitor with poi_nter"
 msgstr "Alih ke monitor dengan pen_uding"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:71
 msgid "Position"
 msgstr "Kedudukan"
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "Drop-do_wn"
 msgstr "Lepas-bawah"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Choose Terminal Font"
 msgstr "Pilih Fon Terminal"
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "Use system _font"
 msgstr "Guna _fon sistem"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Enable this option to use system-wide monospace font."
 msgstr "Benarkan pilihan ini untuk guna fon monspace menyeluruhi-sistem."
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "Allow bold te_xt"
 msgstr "Benarkan te_ks tebal"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:77
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "Benarkan pilihan ini untuk membolehkan aplikasi berjalan dibawah tetingkap terminal untuk guna teks tebal."
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Font"
 msgstr "Fon"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "_File:"
 msgstr "_Fail:"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "St_yle:"
 msgstr "Ga_ya:"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "Select Background Image File"
 msgstr "Pilih Fail Imej Latar Belakang"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "_Shading:"
 msgstr "Pembayangan:"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "Background"
 msgstr "Latar Belakang"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Display _menubar in new windows"
 msgstr "Papar palang _menu dalam tetingkap baharu"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:85
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Benarkan pilihan ini untuk tunjuk palang menu dalam tetingkap terminal yang baharu dicipta."
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "Display _toolbar in new windows"
 msgstr "Papar palang ala_t dalam tetingkap baharu"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:87
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Benarkan pilihan ini untuk tunjuk palang alat dalam tetingkap terminal yang baharu dicipta."
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "Display _borders around new windows"
 msgstr "Papar se_mpadan disekeliling tetingkap baharu"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:89
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Benarkan pilihan ini untuk tunjuk hiasan tetingkap disekeliling tetingkap terminal yang baharu dicipta."
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "Default geometry:"
 msgstr "Geometri lalai:"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:91
 msgid "c_olumns"
 msgstr "La_jur"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "row_s"
 msgstr "ba_ris"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:93
 msgid "Opening New Windows"
 msgstr "Membuka Tetingkap Baharu"
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "Reset tab activity _indicator after"
 msgstr "Tetap semula pe_nunjuk aktiviti selepas"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "seconds"
 msgstr "saat"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Tab Activity Indicator"
 msgstr "Penunjuk Aktiviti Tab"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "_Appearance"
 msgstr "Penampi_lan"
 
-#: ../terminal/terminal-preferences.glade.h:96
-msgid "_Text color:"
-msgstr "_Warna teks:"
-
-#: ../terminal/terminal-preferences.glade.h:97
-msgid "Choose text color"
-msgstr "Pilih warna teks"
-
 #: ../terminal/terminal-preferences.glade.h:98
-msgid "Color Selector"
-msgstr "Pemilih Warna"
-
-#: ../terminal/terminal-preferences.glade.h:99
-msgid "Open a dialog to specify the color"
-msgstr "Buka dialog untuk nyatakan warna"
-
-#: ../terminal/terminal-preferences.glade.h:100
-msgid "Cu_rsor color:"
-msgstr "Warna k_ursor:"
-
-#: ../terminal/terminal-preferences.glade.h:101
-msgid "Choose cursor color"
-msgstr "Pilih warna kursor"
-
-#: ../terminal/terminal-preferences.glade.h:102
-msgid "_Background color:"
-msgstr "Warna latar bela_kang:"
-
-#: ../terminal/terminal-preferences.glade.h:103
-msgid "Choose background color"
-msgstr "Pilih warna latar belakang"
-
-#: ../terminal/terminal-preferences.glade.h:104
-msgid "Tab activit_y color:"
-msgstr "Warna aktivit_i tab:"
-
-#: ../terminal/terminal-preferences.glade.h:105
-msgid "Choose tab activity color"
-msgstr "Pilih warna aktiviti tab"
-
-#: ../terminal/terminal-preferences.glade.h:106
 msgid "_Vary the background color for each tab"
 msgstr "Be_zakan warna latar belakang bagi setiap tab"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:99
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Warna rawak berasaskan pada warna latar belakang terpilih, kekalkan kecerahan yang serupa."
 
+#: ../terminal/terminal-preferences.glade.h:100
+msgid "Tab activit_y color:"
+msgstr "Warna aktivit_i tab:"
+
+#: ../terminal/terminal-preferences.glade.h:101
+msgid "Choose tab activity color"
+msgstr "Pilih warna aktiviti tab"
+
+#: ../terminal/terminal-preferences.glade.h:102
+msgid "Color Selector"
+msgstr "Pemilih Warna"
+
+#: ../terminal/terminal-preferences.glade.h:103
+msgid "Open a dialog to specify the color"
+msgstr "Buka dialog untuk nyatakan warna"
+
+#: ../terminal/terminal-preferences.glade.h:104
+msgid "_Text color:"
+msgstr "_Warna teks:"
+
+#: ../terminal/terminal-preferences.glade.h:105
+msgid "Choose text color"
+msgstr "Pilih warna teks"
+
+#: ../terminal/terminal-preferences.glade.h:106
+msgid "_Background color:"
+msgstr "Warna latar bela_kang:"
+
+#: ../terminal/terminal-preferences.glade.h:107
+msgid "Choose background color"
+msgstr "Pilih warna latar belakang"
+
 #: ../terminal/terminal-preferences.glade.h:108
+msgid "Note: Ctrl+click for color editor."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "General"
 msgstr "Am"
 
-#: ../terminal/terminal-preferences.glade.h:109
-msgid "Choose text selection foreground color"
-msgstr "Pilih warna latar hadapan pemilihan teks"
-
 #: ../terminal/terminal-preferences.glade.h:110
-msgid "Choose bold font color"
-msgstr "Pilih warna fon tebal"
-
-#: ../terminal/terminal-preferences.glade.h:111
-msgid "Text _selection color:"
-msgstr "Warna p_emilihan teks:"
-
-#: ../terminal/terminal-preferences.glade.h:112
-msgid ""
-"Enable this option to set custom text and background colors for the "
-"selection. If disabled the background and text colors will be reversed."
-msgstr "Benarkan pilihan ini untuk tetapkan warna latar belakang dan teks suai pemilihan. Jika lumpuhkan latar belakang dan warna teks akan disongsangkan."
-
-#: ../terminal/terminal-preferences.glade.h:113
 msgid "B_old text color:"
 msgstr "Warna teks t_ebal:"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:111
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Benarkan pilihan ini untuk tetapkan warna tebal suai. Jika dilumpuhkan warna teks akan digunakan."
 
+#: ../terminal/terminal-preferences.glade.h:112
+msgid "Choose bold font color"
+msgstr "Pilih warna fon tebal"
+
+#: ../terminal/terminal-preferences.glade.h:113
+msgid "Text _selection color:"
+msgstr "Warna p_emilihan teks:"
+
+#: ../terminal/terminal-preferences.glade.h:114
+msgid ""
+"Enable this option to set custom text and background colors for the "
+"selection. If disabled the background and text colors will be reversed."
+msgstr "Benarkan pilihan ini untuk tetapkan warna latar belakang dan teks suai pemilihan. Jika lumpuhkan latar belakang dan warna teks akan disongsangkan."
+
 #: ../terminal/terminal-preferences.glade.h:115
+msgid "Choose text selection foreground color"
+msgstr "Pilih warna latar hadapan pemilihan teks"
+
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Choose text selection background color"
 msgstr "Pilih warna latar belakang pemilihan teks"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Cu_rsor color:"
+msgstr "Warna k_ursor:"
+
+#: ../terminal/terminal-preferences.glade.h:118
+msgid ""
+"Enable this option to set custom text and background colors for the cursor. "
+"If disabled the background and text colors will be reversed."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:119
+msgid "Choose cursor background color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:120
+msgid "Choose cursor foreground color"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Custom Colors"
 msgstr "Warna Suai"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Black"
 msgstr "Hitam"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Dark Gray"
 msgstr "Kelabu Gelap"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Red"
 msgstr "Merah"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Light Red"
 msgstr "Merah Cair"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "Green"
 msgstr "Hijau"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Light Green"
 msgstr "Hijau Cair"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Brown / Yellow"
 msgstr "Coklat / Kuning"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Yellow"
 msgstr "Kuning"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "Blue"
 msgstr "Biru"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "Light Blue"
 msgstr "Biru Cair"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "Magenta"
 msgstr "Magenta"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Light Magenta"
 msgstr "Magenta Cair"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Cyan"
 msgstr "Sian"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Light Cyan"
 msgstr "Sian Cair"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Light Gray"
 msgstr "Kelabu Cair"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "White"
 msgstr "Putih"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Palette"
 msgstr "Palet"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Presets"
 msgstr "Praset"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "_Colors"
 msgstr "_Warna"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:141
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1357,98 +1456,98 @@ msgid ""
 "different terminal behavior."
 msgstr "Pilihan ini boleh menyebabkan beberapa aplikasi berkelakuan\npelik. Ia disediakan untuk membolehkan anda berkerja pada\naplikasi dan sistem pengoperasian tertentu yang mana dijangka\nkelakuan terminal yang berlainan."
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "_Backspace key generates:"
 msgstr "Kekunci _backspace jana:"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "_Delete key generates:"
 msgstr "Kekunci _Delete jana:"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "_Reset compatibility options to defaults"
 msgstr "T_etap semula pilihan keserasian ke lalai"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "_Ambiguous-width characters:"
 msgstr "_Aksara lebar-kabur:"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "Compatibility"
 msgstr "Keserasian"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "Co_mpatibility"
 msgstr "Ke_serasian"
 
-#: ../terminal/terminal-preferences.glade.h:146
+#: ../terminal/terminal-preferences.glade.h:151
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "Anggap aksara berikut\nsebahagian dari _perkataan\nbila di dwi-klik:"
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Rese_t"
 msgstr "T_etap semula"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:155
 msgid "Reset double click options to defaults"
 msgstr "Tetap semula pilihan dwi-klik ke lalai"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:156
 msgid "Double Click"
 msgstr "Dwi Klik"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:157
 msgid "Default character e_ncoding:"
 msgstr "Pe_ngekodan aksara lalai:"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:158
 msgid "Encoding"
 msgstr "Pengekodan"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:159
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Lumpuhkan semua kekunci capaian me_nu (seperti Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:155
+#: ../terminal/terminal-preferences.glade.h:160
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Lumpuhkan kekunci pintasan me_nu (F10 adalah lalai)"
 
-#: ../terminal/terminal-preferences.glade.h:156
+#: ../terminal/terminal-preferences.glade.h:161
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "Lumpuhkan kekunci pintasan tetingkap _bentuan (F1 adalah lalai)"
 
-#: ../terminal/terminal-preferences.glade.h:157
+#: ../terminal/terminal-preferences.glade.h:162
 msgid "Shortcuts"
 msgstr "Pintasan"
 
-#: ../terminal/terminal-preferences.glade.h:158
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "Use _middle mouse click to close tabs"
 msgstr "Guna klik tetikus te_ngah untuk menutup tab"
 
-#: ../terminal/terminal-preferences.glade.h:159
+#: ../terminal/terminal-preferences.glade.h:164
 msgid "Auto-hi_de mouse pointer"
 msgstr "Auto-semb_unyi penuding tetikus"
 
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:165
 msgid "Re_wrap terminal contents on resize"
 msgstr "Balut semula kandungan terminal apabila saiz semula"
 
-#: ../terminal/terminal-preferences.glade.h:161
+#: ../terminal/terminal-preferences.glade.h:166
 msgid "Automatically _copy selection to clipboard"
 msgstr "_Salin pemilihan secara automatik ke dalam papan keratan"
 
-#: ../terminal/terminal-preferences.glade.h:162
+#: ../terminal/terminal-preferences.glade.h:167
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Guna penggayaan suai untuk jadikan tab nipi_s (mula semula diperlukan)"
 
-#: ../terminal/terminal-preferences.glade.h:163
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "Misc"
 msgstr "Pelbagai"
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Ad_vanced"
 msgstr "_Lanjutan"
 
