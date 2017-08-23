@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-24 02:10+0000\n"
+"POT-Creation-Date: 2017-08-17 18:31+0200\n"
+"PO-Revision-Date: 2017-08-23 07:53+0000\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/xfce/xfce-apps/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -170,12 +170,12 @@ msgstr "Silakan laporkan kutu ke <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Tidak dapat mendaftarkan layanan terminal: %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Tali geometri \"%s\" tidak benar\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Gagal terhubung ke manajer sesi: %s\n"
@@ -410,25 +410,25 @@ msgstr "Memuat Pra-aturan"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Tanpa judul"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Tidak dapat menentukan shell login anda."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Gagal mengeksekusi sub-proses"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Tutup tab ini"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Gagal mengatur pengkodean %s\n"
@@ -481,47 +481,47 @@ msgstr "Andhika Padmawan <andhika.padmawan@gmail.com>, 2009.\nKukuh Syafaat <sya
 msgid "Visit Terminal website"
 msgstr "Kunjungi situs web Terminal"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Salin Alamat Surel"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Tulis Surel"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Salin Alamat Tautan"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Buka Tautan"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Tidak dapat menaruh seleksi dari ketikan teks/biasa di terminal: Salah format (%d) atau panjang (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Tidak dapat menaruh URL Mozilla di terminal: Salah format (%d) atau panjang (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Tidak dapat menaruh senarai URI di terminal: Salah format (%d) atau panjang (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Menerima data warna yang tidak benar. Salah format (%d) atau panjang (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Gagal membuka URL '%s'"
@@ -566,7 +566,8 @@ msgstr "Batalkan T_utup Tab"
 msgid "_Detach Tab"
 msgstr "_Lepas Tab"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Tutup T_ab"
 
@@ -574,7 +575,7 @@ msgstr "Tutup T_ab"
 msgid "Close Other Ta_bs"
 msgstr "Tutup Ta_b lainnya"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Tutup _Jendela"
 
@@ -787,58 +788,78 @@ msgstr "Jungkitkan gulir pada keluaran"
 msgid "Set _Encoding"
 msgstr "Atur _Enkode"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Peringatan"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Masih ada proses yang berjalan di beberapa tab.\nMenutup jendela ini akan menghentikan mereka semua."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Jendela ini memiliki %d tab terbuka, dengan menutupnya\njuga akan menutup semua tab tersebut."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Masih ada proses yang berjalan.\nMenutup jendela ini akan menghentikannya."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Tutup semua tab?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Tutup jendela?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "Ja_ngan tanya saya lagi"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Judul:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Masukkan judul untuk tab terminal ini"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Bantuan"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Tutup"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Gagal membuat ekspresi reguler"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Simpan konten..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Simpan"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Gagal menyimpan konten terminal"
 
