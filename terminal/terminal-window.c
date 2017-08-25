@@ -2506,8 +2506,9 @@ void
 terminal_window_add (TerminalWindow *window,
                      TerminalScreen *screen)
 {
-  GtkWidget  *label;
-  gint        page;
+  GtkWidget *label;
+  gint       page, position = -1;
+  gboolean   adjacent;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -2515,7 +2516,12 @@ terminal_window_add (TerminalWindow *window,
   /* create the tab label */
   label = terminal_screen_get_tab_label (screen);
 
-  page = gtk_notebook_append_page (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (screen), label);
+  /* determine the tab position */
+  g_object_get (G_OBJECT (window->priv->preferences), "misc-new-tab-adjacent", &adjacent, NULL);
+  if (G_UNLIKELY (adjacent))
+    position = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active)) + 1;
+
+  page = gtk_notebook_insert_page (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (screen), label, position);
   gtk_container_child_set (GTK_CONTAINER (window->priv->notebook), GTK_WIDGET (screen), "tab-expand", TRUE, NULL);
   gtk_container_child_set (GTK_CONTAINER (window->priv->notebook), GTK_WIDGET (screen), "tab-fill", TRUE, NULL);
 

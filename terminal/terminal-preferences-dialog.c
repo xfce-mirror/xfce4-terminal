@@ -149,7 +149,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "misc-borders-default", "misc-tab-close-middle-click",
                                        "misc-mouse-autohide", "misc-rewrap-on-resize",
                                        "misc-copy-on-select", "misc-slim-tabs",
-                                       "shortcuts-no-helpkey",
+                                       "misc-new-tab-adjacent", "shortcuts-no-helpkey",
                                        "shortcuts-no-mnemonics", "shortcuts-no-menukey",
                                        "binding-backspace", "binding-delete",
                                        "binding-ambiguous-width", "background-mode",

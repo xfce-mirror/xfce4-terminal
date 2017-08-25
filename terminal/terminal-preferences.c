@@ -107,6 +107,7 @@ enum
   PROP_MISC_REWRAP_ON_RESIZE,
   PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL,
   PROP_MISC_SLIM_TABS,
+  PROP_MISC_NEW_TAB_ADJACENT,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -986,6 +987,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("misc-slim-tabs",
                             NULL,
                             "MiscSlimTabs",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-new-tab-adjacent:
+   **/
+  preferences_props[PROP_MISC_NEW_TAB_ADJACENT] =
+      g_param_spec_boolean ("misc-new-tab-adjacent",
+                            NULL,
+                            "MiscNewTabAdjacent",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
