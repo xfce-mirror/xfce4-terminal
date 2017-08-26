@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-08-10 22:32+0000\n"
+"POT-Creation-Date: 2017-08-26 00:31+0200\n"
+"PO-Revision-Date: 2017-08-26 18:49+0000\n"
 "Last-Translator: Vinzenz Vietzke <vinz@vinzv.de>\n"
 "Language-Team: German (http://www.transifex.com/xfce/xfce-apps/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -172,12 +172,12 @@ msgstr "Fehler bitte an <%s> melden."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Fehler beim Registrieren des Terminaldienstes: %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ungültige Abmessungen »%s«\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Fehler bei der Verbindung zur Sitzungsverwaltung: %s\n"
@@ -408,29 +408,29 @@ msgstr "Bilddateien"
 msgid "Load Presets..."
 msgstr "Voreinstellungen laden …"
 
-#: ../terminal/terminal-preferences.c:1084
+#: ../terminal/terminal-preferences.c:1095
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Unbenannt"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Anmelde-Shell konnte nicht ermittelt werden."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Ausführen des Kindprozesses ist fehlgeschlagen"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Reiter schließen"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Setzen der Enkodierung %s fehlgeschlagen\n"
@@ -483,47 +483,47 @@ msgstr "Benedikt Meurer,\nFabian Nowak,\nEnrico Tröger,\nPaul Seyfert,\nGeorg E
 msgid "Visit Terminal website"
 msgstr "Internetseite von Terminal besuchen"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "E-Mail-Adresse kopieren"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "E-Mail schreiben"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Verknüpfung kopieren"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Verknüpfung öffnen"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Auswahl des Typs »text/plain« konnte nicht einfügt werden: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Mozilla-URL konnte nicht einfügt werden: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Adressliste konnte nicht einfügt werden: Falsches Format (%d) oder Länge (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Ungültige Farbdaten erhalten: Falsches Format (%d) oder Länge (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Öffnen der Adresse »%s« ist fehlgeschlagen"
@@ -568,7 +568,8 @@ msgstr "R_ückgängig Reiter schließen"
 msgid "_Detach Tab"
 msgstr "Reiter _abtrennen"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Reiter s_chließen"
 
@@ -576,7 +577,7 @@ msgstr "Reiter s_chließen"
 msgid "Close Other Ta_bs"
 msgstr "A_ndere Reiter schließen"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "_Fenster schließen"
 
@@ -789,58 +790,78 @@ msgstr "Bei Ausgabe scrollen umschalten"
 msgid "Set _Encoding"
 msgstr "_Kodierung festlegen"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Achtung"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Abbruch"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Es laufen noch Prozesse in einigen Tabs.\nDas Schließen dieses Fensters wird alle davon töten."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "In diesem Fenster sind %d Reiter geöffnet. Wenn\nSie das Fenster jetzt schließen, werden auch\nalle Reiter darin geschlossen."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Es läuft noch ein Prozess.\nDas Schließen dieses Fensters wird ihn töten."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Alle Reiter schließen?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Fenster schließen?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "In Zukunft _nicht mehr nachfragen"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Titel:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Bitte den Titel für den aktuellen Terminalreiter eingeben"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Hilfe"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Schließen"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Erstellen des regulärer Ausdruckes ist fehlgeschlagen"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Inhalte speichern …"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Speichern"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Speichern des Terminal-Inhaltes ist fehlgeschlagen"
 
@@ -1527,10 +1548,14 @@ msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "_Benutzerdefinierten Stil verwenden, um die Reiter schmal zu machen (erfordert einen Neustart)"
 
 #: ../terminal/terminal-preferences.glade.h:168
+msgid "Open new tab to the _right of the active tab"
+msgstr "Neues Tab _rechts vom aktiven Tab öffnen"
+
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Misc"
 msgstr "Verschiedenes"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Ad_vanced"
 msgstr "F_ortgeschritten"
 
