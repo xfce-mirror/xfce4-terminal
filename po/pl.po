@@ -4,7 +4,7 @@
 # 
 # Translators:
 # Andrzej <ndrwrdck@gmail.com>, 2017
-# G G <grzegorz.gebczynski@gmail.com>, 2016
+# Grzegorz Gębczyński <grzegorz.gebczynski@gmail.com>, 2016
 # Kamil "elder" P. <elderlinx@riseup.net>, 2016
 # m4sk1n <m4sk1n@vivaldi.net>, 2016-2017
 # m4sk1n <m4sk1n@vivaldi.net>, 2017
@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-24 10:57+0000\n"
+"POT-Creation-Date: 2017-08-26 00:31+0200\n"
+"PO-Revision-Date: 2017-08-29 19:12+0000\n"
 "Last-Translator: No Ne\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfce-apps/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -178,12 +178,12 @@ msgstr "Proszę zgłaszać błędy na adres <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nie udało się zarejestrować usługi terminala: %s.\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Nieprawidłowa geometria „%s”.\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Nie udało się połączyć z menedżerem sesji: %s\n"
@@ -414,29 +414,29 @@ msgstr "Pliki obrazów"
 msgid "Load Presets..."
 msgstr "Wczytaj profil..."
 
-#: ../terminal/terminal-preferences.c:1084
+#: ../terminal/terminal-preferences.c:1095
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Bez tytułu"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nie udało się określić powłoki logowania."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Nie udało się wywołać procesu potomnego."
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Zamyka kartę"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Nie udało się ustawić kodowania %s\n"
@@ -489,47 +489,47 @@ msgstr "Szymon Kałasz <szymon_maestro@gazeta.pl>, 2006.\nPiotr Sokół <psokol.
 msgid "Visit Terminal website"
 msgstr "Strona główna"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Skopiuj adres e-mail"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Utwórz wiadomość e-mail"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Skopiuj adres odnośnika"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Otwórz odnośnik"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Nie udało się przeciągnąć zaznaczenia typu text/plain do terminala: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nie udało się przeciągnąć adresu URL programu Mozilla do terminala: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nie udało się przeciągnąć adresu URI do terminala: nieprawidłowy format (%d) lub długość (%d).\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Odebrano błędne dane o kolorze: nieprawidłowy format (%d) lub długość (%d).\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Nie udało się otworzyć adresu URL „%s”."
@@ -574,7 +574,8 @@ msgstr "_Cofnij zamknięcie karty"
 msgid "_Detach Tab"
 msgstr "_Odłącz kartę"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Zamknij _kartę"
 
@@ -582,7 +583,7 @@ msgstr "Zamknij _kartę"
 msgid "Close Other Ta_bs"
 msgstr "Zamknij po_zostałe karty"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Za_mknij okno"
 
@@ -795,58 +796,78 @@ msgstr "Przełącz przewijanie po wypisaniu na wyjście"
 msgid "Set _Encoding"
 msgstr "_Kodowanie"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Anuluj"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Procesy nadal działają w niektórych kartach.\nZamknięcie tego okna zabije je wszystkie."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Bieżące okno posiada %d otwartych kart. Zamknięcie\ngo spowoduje zamknięcie wszystkich otwartych kart."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Proces nadal działa.\nZamknięcie tego okna zabije go."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Zamknąć wszystkie karty?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Zamknąć okno?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "_Pomijanie tego pytania w przyszłości"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Tytuł:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Proszę wprowadzić tytuł bieżącej karty terminala."
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Pomoc"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Zamknij"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Nie udało się utworzyć wyrażenia regularnego"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Zapisz zawartość..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Zapisz"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Nie udało się zapisać zawartości terminala"
 
@@ -1533,10 +1554,14 @@ msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Użycie niestandardowego stylu, aby uczynić karty _węższe (wymaga ponownego uruchomienia)"
 
 #: ../terminal/terminal-preferences.glade.h:168
+msgid "Open new tab to the _right of the active tab"
+msgstr "Otwórz nową kartę na _prawo od aktywnej karty"
+
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Misc"
 msgstr "Różne"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Ad_vanced"
 msgstr "_Zaawansowane"
 
