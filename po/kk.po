@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-28 07:48+0000\n"
+"POT-Creation-Date: 2017-08-26 00:31+0200\n"
+"PO-Revision-Date: 2017-09-02 11:03+0000\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh (http://www.transifex.com/xfce/xfce-apps/language/kk/)\n"
 "MIME-Version: 1.0\n"
@@ -167,12 +167,12 @@ msgstr "Ақаулықтар жөнінде хабарлаңыз: <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Терминал қызметін тіркеу мүмкін емес: %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Қате geometry жолы \"%s\"\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Сессиялар басқарушысына байланысу сәтсіз аяқталды: %s\n"
@@ -403,29 +403,29 @@ msgstr "Сурет файлдары"
 msgid "Load Presets..."
 msgstr "Сақталған баптауларды жүктеу..."
 
-#: ../terminal/terminal-preferences.c:1084
+#: ../terminal/terminal-preferences.c:1095
 msgid "Terminal"
 msgstr "Терминал"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Атаусыз"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Тіркелгіңіздің командалық қоршауын анықтау мүмкін емес."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Ұрпақ үрдісін жөнелту қатемен аяқталды"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Бұл бетті жабу"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "%s кодталуын орнату сәтсіз аяқталды\n"
@@ -478,47 +478,47 @@ msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>, 2009-2014"
 msgid "Visit Terminal website"
 msgstr "Terminal веб сайтын шолу"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Email адресін көшіру"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Email жазу"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Сілтеме адресін көшіру"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Сілтемені ашу"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Ерекшеленгенді терминалға кірістіру мүмкін емес: Қате пішімі (%d) не ұзындығы (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Mozilla URL-ын терминалға кірістіру қатесі:  Қате пішімі (%d) не ұзындығы (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "URI тізімін терминалға кірістіру қатесі:  Қате пішімі (%d) не ұзындығы (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Қате түс туралы ақпараты алынды:  Қате пішімі (%d) не ұзындығы (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "'%s' URL-ын ашу сәтсіз аяқталды"
@@ -563,7 +563,8 @@ msgstr "Жабылған бетті қа_йтару"
 msgid "_Detach Tab"
 msgstr "Бетті бө_ліп жіберу"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Бет_ті жабу"
 
@@ -571,7 +572,7 @@ msgstr "Бет_ті жабу"
 msgid "Close Other Ta_bs"
 msgstr "Басқа бет_терді жабу"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Тере_зені жабу"
 
@@ -784,58 +785,78 @@ msgstr "Шығыс кезінде айналдыруды іске қосу/сө�
 msgid "Set _Encoding"
 msgstr "К_одтауды орнату"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Ескерту"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Бас тарту"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Кейбір беттерде орындалып тұрған процестер әлі бар.\nБұл терезені жабу олардың барлығын өлтіреді."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Бұл терезеде %d ашық бет бар. Терезені жабу\nкезінде ондағы барлық беттері де жабылады."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Орындалып тұрған процесс әлі бар.\nБұл терезені жабу оны өлтіреді."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Барлық беттерді жабу керек пе?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Терезені жабу керек пе?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "Келесіде ме_ні осы туралы сұрамау"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "А_тауы:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Ағымдағы терминал беті үшін атауды енгізіңіз"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Көмек"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Жабу"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Тұрақты өрнекті жасау сәтсіз"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Құрамасын сақтау..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Сақтау"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Терминал құрамасынан сақтау сәтсіз аяқталды"
 
@@ -1522,10 +1543,14 @@ msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Беттерді жіңі_шке қылу үшін пайдаланушы стилін қолдану (қолданбаны қайта іске қосу керек)"
 
 #: ../terminal/terminal-preferences.glade.h:168
+msgid "Open new tab to the _right of the active tab"
+msgstr "Жаңа бетті белсенді беттің _оң жағынан ашу"
+
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Misc"
 msgstr "Әр түрлі"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Ad_vanced"
 msgstr "К_еңейтілген"
 
