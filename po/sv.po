@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-24 13:05+0000\n"
+"POT-Creation-Date: 2017-08-26 00:31+0200\n"
+"PO-Revision-Date: 2017-09-03 16:21+0000\n"
 "Last-Translator: Påvel Nicklasson <pavel2@frimix.se>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -169,12 +169,12 @@ msgstr "Rapportera fel till <%s>.\r\nSkicka synpunkter på översättningen till
 msgid "Unable to register terminal service: %s\n"
 msgstr "Det gick inte att registrera terminaltjänsten: %s\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ogiltig geometristräng: \"%s\"\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Det gick inte att ansluta till sessionshanterare: %s\n"
@@ -405,29 +405,29 @@ msgstr "Bildfiler"
 msgid "Load Presets..."
 msgstr "Läs in förinställningar..."
 
-#: ../terminal/terminal-preferences.c:1084
+#: ../terminal/terminal-preferences.c:1095
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Det gick inte att bestämma ditt inloggningsskal."
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Misslyckades att köra barnprocess"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Stäng denna flik"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Misslyckades ställa in kodning %s\n"
@@ -480,47 +480,47 @@ msgstr "Daniel Nylander <po@danielnylander.se>\nJens Hagerman <godhet@gmail.com>
 msgid "Visit Terminal website"
 msgstr "Besök Terminals webbplats"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "Kopiera e-postadress"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "Skriv e-postmeddelande"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Kopiera länkadress"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Öppna länk"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Det gick inte att släppa markering av typen text/plain i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Det gick inte att släppa Mozilla-URL i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Det gick inte att släppa URI-lista i terminal: Felaktigt format (%d) eller längd (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Tog emot felaktigt färgdata: Felaktigt format (%d) eller längd (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Misslyckades med att öppna URL '%s'"
@@ -565,7 +565,8 @@ msgstr "_Ångra Stäng flik"
 msgid "_Detach Tab"
 msgstr "_Frigör flik"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Stäng fl_ik"
 
@@ -573,7 +574,7 @@ msgstr "Stäng fl_ik"
 msgid "Close Other Ta_bs"
 msgstr "Stäng andra flik_ar"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Stäng f_önster"
 
@@ -786,58 +787,78 @@ msgstr "Växla rullning vid utmatning"
 msgid "Set _Encoding"
 msgstr "Ställ in _kodning"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Varning"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Det finns fortfarande processor som körs på några flikar.\nAtt stänga detta fönster kommer att döda dem alla."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Det här fönstret har %d flikar öppna. Att stänga fönstret\nkommer också att stänga alla dess flikar."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Det finns fortfarande en process som körs.\nAtt stänga detta fönster kommer att döda den."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Stäng alla flikar?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Stäng fönster?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Namn:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Ange namn för den aktiva terminalfliken"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Hjälp"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Stäng"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Det gick inte att skapa det reguljära uttrycket"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "Spara innehåll..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Spara"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Det gick inte att spara terminalinnehåll"
 
@@ -1524,10 +1545,14 @@ msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Använd anpassad formgivning för att göra flikar_smala (kräver omstart)"
 
 #: ../terminal/terminal-preferences.glade.h:168
+msgid "Open new tab to the _right of the active tab"
+msgstr "Öppna ny flik till höge_r om den aktiva fliken"
+
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Misc"
 msgstr "Diverse"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Ad_vanced"
 msgstr "A_vancerat"
 
