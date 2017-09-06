@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-22 06:31+0200\n"
-"PO-Revision-Date: 2017-07-25 07:47+0000\n"
+"POT-Creation-Date: 2017-08-26 00:31+0200\n"
+"PO-Revision-Date: 2017-09-06 13:01+0000\n"
 "Last-Translator: Necdet Yücel <necdetyucel@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -173,12 +173,12 @@ msgstr "Lütfen hataları <%s>'e bildiriniz."
 msgid "Unable to register terminal service: %s\n"
 msgstr "%s uçbirim hizmeti kayıt edilmiyor.\n"
 
-#: ../terminal/terminal-app.c:848
+#: ../terminal/terminal-app.c:864
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Geçersiz geometri dizgesi \"%s\"\n"
 
-#: ../terminal/terminal-app.c:937
+#: ../terminal/terminal-app.c:943
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Oturum yöneticisine bağlanılamadı: %s\n"
@@ -409,29 +409,29 @@ msgstr "Resim Dosyaları"
 msgid "Load Presets..."
 msgstr "Varsayılanlar Yükleniyor..."
 
-#: ../terminal/terminal-preferences.c:1084
+#: ../terminal/terminal-preferences.c:1095
 msgid "Terminal"
 msgstr "Uçbirim"
 
-#: ../terminal/terminal-screen.c:404 ../terminal/terminal-screen.c:772
-#: ../terminal/terminal-screen.c:1942
+#: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
+#: ../terminal/terminal-screen.c:1949
 msgid "Untitled"
 msgstr "İsimsiz"
 
-#: ../terminal/terminal-screen.c:673
+#: ../terminal/terminal-screen.c:676
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Giriş kabuğunuzun belirlenmesi mümkün değil"
 
-#: ../terminal/terminal-screen.c:1626 ../terminal/terminal-screen.c:1652
+#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
 msgid "Failed to execute child"
 msgstr "Alt komutu çalıştırırken hata oluştu"
 
-#: ../terminal/terminal-screen.c:2264
+#: ../terminal/terminal-screen.c:2271
 msgid "Close this tab"
 msgstr "Bu sekmeyi kapat"
 
-#: ../terminal/terminal-screen.c:2318
+#: ../terminal/terminal-screen.c:2325
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Kodlama ayarlanamadı %s\n"
@@ -484,47 +484,47 @@ msgstr "Türker Gülüm <turker.gulum@linux.org.tr>"
 msgid "Visit Terminal website"
 msgstr "Terminal'ın web sayfasına git"
 
-#: ../terminal/terminal-widget.c:308
+#: ../terminal/terminal-widget.c:315
 msgid "Copy Email Address"
 msgstr "E-posta Adresini Kopyala"
 
-#: ../terminal/terminal-widget.c:309
+#: ../terminal/terminal-widget.c:316
 msgid "Compose Email"
 msgstr "E-posta Yaz"
 
-#: ../terminal/terminal-widget.c:313
+#: ../terminal/terminal-widget.c:320
 msgid "Copy Link Address"
 msgstr "Bağlantı Adresini Kopyala"
 
-#: ../terminal/terminal-widget.c:314
+#: ../terminal/terminal-widget.c:321
 msgid "Open Link"
 msgstr "Bağlantıyı Aç"
 
-#: ../terminal/terminal-widget.c:477
+#: ../terminal/terminal-widget.c:484
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Seçilmiş metin veya düz yazıyı uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:493
+#: ../terminal/terminal-widget.c:500
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Mozilla URL'sini uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:519
+#: ../terminal/terminal-widget.c:526
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "URI listesini uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:555
+#: ../terminal/terminal-widget.c:562
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Hatalı renk verisi alındı: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:692
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "`%s' bağlantı adresi açılamadı"
@@ -569,7 +569,8 @@ msgstr "Sekme _Kapatmayı Geri Al"
 msgid "_Detach Tab"
 msgstr "Sekmeyi Ayır"
 
-#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:775
+#. multiple tabs
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:789
 msgid "Close T_ab"
 msgstr "Sekmeyi K_apat"
 
@@ -577,7 +578,7 @@ msgstr "Sekmeyi K_apat"
 msgid "Close Other Ta_bs"
 msgstr "Diğer _Sekmeleri Kapat"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:778
+#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:811
 msgid "Close _Window"
 msgstr "Pencereyi _Kapat"
 
@@ -790,58 +791,78 @@ msgstr "Çıktıyı kaydırma kipine geç"
 msgid "Set _Encoding"
 msgstr "Karakter _Kodlamasını Ayarla"
 
-#: ../terminal/terminal-window.c:768
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Uyarı"
 
-#: ../terminal/terminal-window.c:771 ../terminal/terminal-window.c:2196
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2231
 msgid "_Cancel"
 msgstr "_İptal"
 
-#: ../terminal/terminal-window.c:794
+#. and process running
+#: ../terminal/terminal-window.c:795
+#, c-format
+msgid ""
+"There are still processes running in some tabs.\n"
+"Closing this window will kill all of them."
+msgstr "Diğer sekmelerde çalışan süreçler var.\nBu pencereyi kapatmak onları da sonlandıracaktır."
+
+#: ../terminal/terminal-window.c:800
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Bu pencere açık %d sekme içeriyor. Bu pencereyi kapatmak\nbütün sekmeleri de kapatacak."
 
-#: ../terminal/terminal-window.c:797
+#. single tab, process running
+#: ../terminal/terminal-window.c:807
+#, c-format
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Çalışan bir süreç mevcut.\nBu pencereyi kapatmak onu da sonlandıracaktır."
+
+#: ../terminal/terminal-window.c:828
 msgid "Close all tabs?"
 msgstr "Bütün sekmeler kapatılsın mı?"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:828
+msgid "Close window?"
+msgstr "Pencere kapatılsın mı?"
+
+#: ../terminal/terminal-window.c:840
 msgid "Do _not ask me again"
 msgstr "Bir daha sorma"
 
-#: ../terminal/terminal-window.c:2040
+#: ../terminal/terminal-window.c:2075
 msgid "_Title:"
 msgstr "_Başlık:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2088
 msgid "Enter the title for the current terminal tab"
 msgstr "Aktif uçbirim sekmesine başlık girin"
 
-#: ../terminal/terminal-window.c:2061
+#: ../terminal/terminal-window.c:2096
 msgid "Help"
 msgstr "Yardım"
 
-#: ../terminal/terminal-window.c:2067
+#: ../terminal/terminal-window.c:2102
 msgid "Close"
 msgstr "Kapat"
 
-#: ../terminal/terminal-window.c:2113
+#: ../terminal/terminal-window.c:2148
 msgid "Failed to create the regular expression"
 msgstr "Düzenli ifade oluşturulamadı"
 
-#: ../terminal/terminal-window.c:2193
+#: ../terminal/terminal-window.c:2228
 msgid "Save contents..."
 msgstr "İçeriği kopyala..."
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2232
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: ../terminal/terminal-window.c:2234
+#: ../terminal/terminal-window.c:2269
 msgid "Failed to save terminal contents"
 msgstr "Uçbirim içerikleri kaydedilemedi"
 
@@ -1528,10 +1549,14 @@ msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Sekmeleri _inceltmek için özel biçimlendirme kullan (yeniden başlatmayı gerektirir)"
 
 #: ../terminal/terminal-preferences.glade.h:168
+msgid "Open new tab to the _right of the active tab"
+msgstr "Etkin sekmenin _sağında yeni bir sekme aç"
+
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Misc"
 msgstr "Çeşitli"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Ad_vanced"
 msgstr "Geliş_miş"
 
