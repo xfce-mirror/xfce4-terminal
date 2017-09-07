@@ -197,7 +197,9 @@ terminal_widget_finalize (GObject *object)
   TerminalWidget *widget = TERMINAL_WIDGET (object);
 
 #ifdef HAVE_LIBUTEMPTER
-  utempter_remove_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (widget))));
+  VtePty *pty = vte_terminal_get_pty (VTE_TERMINAL (widget));
+  if (VTE_IS_PTY (pty))
+    utempter_remove_record (vte_pty_get_fd (pty));
 #endif
 
   /* disconnect the misc-highlight-urls watch */
