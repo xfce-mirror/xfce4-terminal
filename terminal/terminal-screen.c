@@ -125,7 +125,7 @@ static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen 
 static void       terminal_screen_update_title                  (TerminalScreen        *screen);
 static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
 static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
-                                                                 gint                   arg1,
+                                                                 gint                   status,
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_vte_eof                       (VteTerminal           *terminal,
                                                                  TerminalScreen        *screen);
@@ -1217,14 +1217,52 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
 
 static void
 terminal_screen_vte_child_exited (VteTerminal    *terminal,
-                                  gint            arg1,
+                                  gint            status,
                                   TerminalScreen *screen)
 {
+  GtkWidget *window, *dialog, *label, *content_area;
+  gchar     *message;
+  gint       response;
+
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (G_LIKELY (!screen->hold))
     gtk_widget_destroy (GTK_WIDGET (screen));
+  else
+    {
+      /* create "Relaunch" dialog */
+      window = gtk_widget_get_toplevel (GTK_WIDGET (screen));
+      dialog = gtk_dialog_new_with_buttons (_("Child process exited"),
+                                            GTK_WINDOW (window),
+                                            GTK_DIALOG_DESTROY_WITH_PARENT,
+                                            _("_Relaunch"),
+                                            GTK_RESPONSE_YES,
+                                            NULL);
+      gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_YES);
+
+      if (WIFEXITED (status))
+        message = g_strdup_printf (_("The child process exited normally with status %d."), WEXITSTATUS (status));
+      else if (WIFSIGNALED (status))
+        message = g_strdup_printf (_("The child process was aborted by signal %d."), WTERMSIG (status));
+      else
+        message = g_strdup_printf (_("The child process was aborted."));
+
+      label = gtk_label_new (message);
+      g_free (message);
+
+      content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+      gtk_container_add (GTK_CONTAINER (content_area), label);
+
+      gtk_widget_show_all (dialog);
+      response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+      /* relaunch the process */
+      if (response == GTK_RESPONSE_YES)
+        terminal_screen_launch_child (screen);
+
+      gtk_widget_destroy (dialog);
+    }
 }
 
 
