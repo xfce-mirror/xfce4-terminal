@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 00:31+0200\n"
-"PO-Revision-Date: 2017-08-26 21:07+0000\n"
+"POT-Creation-Date: 2017-09-08 06:31+0200\n"
+"PO-Revision-Date: 2017-09-08 12:36+0000\n"
 "Last-Translator: Igor <f2404@yandex.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/xfce/xfce-apps/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -415,7 +415,7 @@ msgid "Terminal"
 msgstr "Терминал"
 
 #: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
-#: ../terminal/terminal-screen.c:1949
+#: ../terminal/terminal-screen.c:1987
 msgid "Untitled"
 msgstr "Без названия"
 
@@ -424,15 +424,38 @@ msgstr "Без названия"
 msgid "Unable to determine your login shell."
 msgstr "Невозможно определить оболочку входа в систему."
 
-#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
+#: ../terminal/terminal-screen.c:1236
+msgid "Child process exited"
+msgstr "Дочерний процесс завершился"
+
+#: ../terminal/terminal-screen.c:1239
+msgid "_Relaunch"
+msgstr "_Перезапустить"
+
+#: ../terminal/terminal-screen.c:1245
+#, c-format
+msgid "The child process exited normally with status %d."
+msgstr "Дочерний процесс завершился нормально с кодом %d."
+
+#: ../terminal/terminal-screen.c:1247
+#, c-format
+msgid "The child process was aborted by signal %d."
+msgstr "Дочерний процесс был прерван по сигналу %d."
+
+#: ../terminal/terminal-screen.c:1249
+#, c-format
+msgid "The child process was aborted."
+msgstr "Дочерний процесс был прерван."
+
+#: ../terminal/terminal-screen.c:1667 ../terminal/terminal-screen.c:1693
 msgid "Failed to execute child"
 msgstr "Ошибка выполнения дочернего процесса"
 
-#: ../terminal/terminal-screen.c:2271
+#: ../terminal/terminal-screen.c:2309
 msgid "Close this tab"
 msgstr "Закрыть эту вкладку"
 
-#: ../terminal/terminal-screen.c:2325
+#: ../terminal/terminal-screen.c:2363
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Не удалось задать кодировку %s\n"
@@ -485,47 +508,47 @@ msgstr "Anthony Ivanoff <a-i@bk.ru>\nAndrey Fedoseev <andrey.fedoseev@gmail.com>
 msgid "Visit Terminal website"
 msgstr "Посетить сайт программы Терминал"
 
-#: ../terminal/terminal-widget.c:315
+#: ../terminal/terminal-widget.c:317
 msgid "Copy Email Address"
 msgstr "Копировать адрес электронной почты"
 
-#: ../terminal/terminal-widget.c:316
+#: ../terminal/terminal-widget.c:318
 msgid "Compose Email"
 msgstr "Написать письмо"
 
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:322
 msgid "Copy Link Address"
 msgstr "Копировать адрес ссылки"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:323
 msgid "Open Link"
 msgstr "Открыть ссылку"
 
-#: ../terminal/terminal-widget.c:484
+#: ../terminal/terminal-widget.c:486
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Невозможно перетащить выделенный текст в терминал: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:500
+#: ../terminal/terminal-widget.c:502
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Невозможно перетащить интернет-адрес в терминал: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:526
+#: ../terminal/terminal-widget.c:528
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Невозможно перетащить список адресов: неверный формат (%d) или длина (%d)\n"
 
-#: ../terminal/terminal-widget.c:562
+#: ../terminal/terminal-widget.c:564
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Получены неверные данные о цвете: неверный формат (%d) или длина (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:699
+#: ../terminal/terminal-widget.c:701
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Не удалось открыть адрес \"%s\""
