@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-17 18:31+0200\n"
-"PO-Revision-Date: 2017-08-24 02:21+0000\n"
+"POT-Creation-Date: 2017-09-08 06:31+0200\n"
+"PO-Revision-Date: 2017-09-08 12:33+0000\n"
 "Last-Translator: Jeff Huang <s8321414@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/xfce/xfce-apps/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -406,12 +406,12 @@ msgstr "影像檔"
 msgid "Load Presets..."
 msgstr "載入預置設定..."
 
-#: ../terminal/terminal-preferences.c:1084
+#: ../terminal/terminal-preferences.c:1095
 msgid "Terminal"
 msgstr "終端機"
 
 #: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
-#: ../terminal/terminal-screen.c:1949
+#: ../terminal/terminal-screen.c:1987
 msgid "Untitled"
 msgstr "無標題"
 
@@ -420,15 +420,38 @@ msgstr "無標題"
 msgid "Unable to determine your login shell."
 msgstr "無法決定您登入的 shell。"
 
-#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
+#: ../terminal/terminal-screen.c:1236
+msgid "Child process exited"
+msgstr "子行程已結束"
+
+#: ../terminal/terminal-screen.c:1239
+msgid "_Relaunch"
+msgstr "重新啟動(_R)"
+
+#: ../terminal/terminal-screen.c:1245
+#, c-format
+msgid "The child process exited normally with status %d."
+msgstr "子行程以狀態 %d 正常結束。"
+
+#: ../terminal/terminal-screen.c:1247
+#, c-format
+msgid "The child process was aborted by signal %d."
+msgstr "子行程已被訊號 %d 中斷。"
+
+#: ../terminal/terminal-screen.c:1249
+#, c-format
+msgid "The child process was aborted."
+msgstr "子行程已被中斷。"
+
+#: ../terminal/terminal-screen.c:1667 ../terminal/terminal-screen.c:1693
 msgid "Failed to execute child"
 msgstr "無法執行子程序"
 
-#: ../terminal/terminal-screen.c:2271
+#: ../terminal/terminal-screen.c:2309
 msgid "Close this tab"
 msgstr "關閉此分頁"
 
-#: ../terminal/terminal-screen.c:2325
+#: ../terminal/terminal-screen.c:2363
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "設定編碼 %s 時失敗\n"
@@ -481,47 +504,47 @@ msgstr "Cheng-Chia Tseng <pswo10680@gmail.com>, 2011"
 msgid "Visit Terminal website"
 msgstr "造訪終端機網站"
 
-#: ../terminal/terminal-widget.c:315
+#: ../terminal/terminal-widget.c:317
 msgid "Copy Email Address"
 msgstr "複製電子郵件位址"
 
-#: ../terminal/terminal-widget.c:316
+#: ../terminal/terminal-widget.c:318
 msgid "Compose Email"
 msgstr "寫電子郵件"
 
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:322
 msgid "Copy Link Address"
 msgstr "複製連結網址"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:323
 msgid "Open Link"
 msgstr "開啟連結"
 
-#: ../terminal/terminal-widget.c:484
+#: ../terminal/terminal-widget.c:486
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "無法在終端機上放置純文字選取內容：錯誤的格式 (%d) 或長度 (%d)\n"
 
-#: ../terminal/terminal-widget.c:500
+#: ../terminal/terminal-widget.c:502
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "無法在終端機上放置 Mozilla 網址：錯誤的格式 (%d) 或長度 (%d)\n"
 
-#: ../terminal/terminal-widget.c:526
+#: ../terminal/terminal-widget.c:528
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "無法在終端機上放置網址清單：錯誤的格式 (%d) 或長度 (%d)\n"
 
-#: ../terminal/terminal-widget.c:562
+#: ../terminal/terminal-widget.c:564
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "收到無效的顏色資料：錯誤的格式(%d) 或長度 (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:699
+#: ../terminal/terminal-widget.c:701
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "無法開啟網址「%s」"
@@ -1546,10 +1569,14 @@ msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "使用自訂樣式讓分頁更輕薄（需要重新啟動）(_S)"
 
 #: ../terminal/terminal-preferences.glade.h:168
+msgid "Open new tab to the _right of the active tab"
+msgstr "在作用中分頁的右邊開啟新分頁(_R)"
+
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Misc"
 msgstr "雜項"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Ad_vanced"
 msgstr "進階(_V)"
 
