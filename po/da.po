@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-26 00:31+0200\n"
-"PO-Revision-Date: 2017-08-27 18:42+0000\n"
+"POT-Creation-Date: 2017-09-08 06:31+0200\n"
+"PO-Revision-Date: 2017-09-10 23:13+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -412,7 +412,7 @@ msgid "Terminal"
 msgstr "Terminal"
 
 #: ../terminal/terminal-screen.c:407 ../terminal/terminal-screen.c:775
-#: ../terminal/terminal-screen.c:1949
+#: ../terminal/terminal-screen.c:1987
 msgid "Untitled"
 msgstr "Uden titel"
 
@@ -421,15 +421,38 @@ msgstr "Uden titel"
 msgid "Unable to determine your login shell."
 msgstr "Kunne ikke bestemme din login-skal."
 
-#: ../terminal/terminal-screen.c:1629 ../terminal/terminal-screen.c:1655
+#: ../terminal/terminal-screen.c:1236
+msgid "Child process exited"
+msgstr "Barneproces afsluttede"
+
+#: ../terminal/terminal-screen.c:1239
+msgid "_Relaunch"
+msgstr "_Start igen"
+
+#: ../terminal/terminal-screen.c:1245
+#, c-format
+msgid "The child process exited normally with status %d."
+msgstr "Barneprocessen afsluttede normalt med status %d."
+
+#: ../terminal/terminal-screen.c:1247
+#, c-format
+msgid "The child process was aborted by signal %d."
+msgstr "Barneprocessen blev afbrudt af signal %d."
+
+#: ../terminal/terminal-screen.c:1249
+#, c-format
+msgid "The child process was aborted."
+msgstr "Barneprocessen blev afbrudt."
+
+#: ../terminal/terminal-screen.c:1667 ../terminal/terminal-screen.c:1693
 msgid "Failed to execute child"
 msgstr "Kunne ikke afvikle underproces"
 
-#: ../terminal/terminal-screen.c:2271
+#: ../terminal/terminal-screen.c:2309
 msgid "Close this tab"
 msgstr "Luk dette faneblad"
 
-#: ../terminal/terminal-screen.c:2325
+#: ../terminal/terminal-screen.c:2363
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Kunne ikke indstille kodning %s\n"
@@ -482,47 +505,47 @@ msgstr "Per Kongstad <p_kongstad@op.pl>\n\nDansk-gruppen <dansk@dansk-gruppen.dk
 msgid "Visit Terminal website"
 msgstr "Besøg webstedet for Terminal"
 
-#: ../terminal/terminal-widget.c:315
+#: ../terminal/terminal-widget.c:317
 msgid "Copy Email Address"
 msgstr "Kopiér e-mailtadresse"
 
-#: ../terminal/terminal-widget.c:316
+#: ../terminal/terminal-widget.c:318
 msgid "Compose Email"
 msgstr "Skriv e-mail"
 
-#: ../terminal/terminal-widget.c:320
+#: ../terminal/terminal-widget.c:322
 msgid "Copy Link Address"
 msgstr "Kopiér henvisningsadresse"
 
-#: ../terminal/terminal-widget.c:321
+#: ../terminal/terminal-widget.c:323
 msgid "Open Link"
 msgstr "Åbn henvisning"
 
-#: ../terminal/terminal-widget.c:484
+#: ../terminal/terminal-widget.c:486
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Kan ikke indsætte markering af typen text/plain til terminalen: forkert format (%d) eller længde (%d)\n"
 
-#: ../terminal/terminal-widget.c:500
+#: ../terminal/terminal-widget.c:502
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Kan ikke indsætte Mozilla-URL på terminalen: Forkert format (%d) eller længde (%d)\n"
 
-#: ../terminal/terminal-widget.c:526
+#: ../terminal/terminal-widget.c:528
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Kan ikke indsætte URI-liste på terminalen: Forkert format (%d) eller længde (%d)\n"
 
-#: ../terminal/terminal-widget.c:562
+#: ../terminal/terminal-widget.c:564
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Modtog ugyldig farvedata: Forkert format (%d) eller længde (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:699
+#: ../terminal/terminal-widget.c:701
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Kunne ikke åbne URL'en '%s'"
