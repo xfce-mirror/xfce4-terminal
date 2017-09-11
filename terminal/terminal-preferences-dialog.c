@@ -140,7 +140,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gchar            *current;
   GtkTreeIter       current_iter;
   const gchar      *props_active[] = { "title-mode", "command-login-shell",
-                                       "run-custom-command",
+                                       "run-custom-command", "use-default-working-dir",
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "scrolling-unlimited",
                                        "misc-cursor-shape", "misc-cursor-blinks",
@@ -250,6 +250,7 @@ error:
   BIND_PROPERTIES ("font-name", "font-name");
   BIND_PROPERTIES ("title-initial", "text");
   BIND_PROPERTIES ("custom-command", "text");
+  BIND_PROPERTIES ("default-working-dir", "text");
   BIND_PROPERTIES ("word-chars", "text");
   BIND_PROPERTIES ("scrolling-lines", "value");
   BIND_PROPERTIES ("tab-activity-timeout", "value");
@@ -259,6 +260,14 @@ error:
   /* run custom command button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "run-custom-command");
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "hbox3");
+  terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  g_object_bind_property (object, "active",
+                          object2, "sensitive",
+                          G_BINDING_SYNC_CREATE);
+
+  /* working directory button */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "use-default-working-dir");
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "default-working-dir");
   terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
   g_object_bind_property (object, "active",
                           object2, "sensitive",

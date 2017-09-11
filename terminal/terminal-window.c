@@ -1554,26 +1554,40 @@ terminal_window_action_set_encoding (GtkAction      *action,
 
 
 
+static gchar *
+terminal_window_get_working_directory (TerminalWindow *window)
+{
+  gchar    *default_dir;
+  gboolean  use_default_dir;
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "use-default-working-dir", &use_default_dir,
+                "default-working-dir", &default_dir,
+                NULL);
+
+  if (use_default_dir && g_strcmp0 (default_dir, "") != 0)
+    return default_dir;
+
+  if (G_LIKELY (window->priv->active != NULL))
+    return g_strdup (terminal_screen_get_working_directory (window->priv->active));
+
+  return NULL;
+}
+
+
+
 static void
 terminal_window_action_new_tab (GtkAction      *action,
                                 TerminalWindow *window)
 {
-  const gchar    *directory = NULL;
-  gchar          *default_dir;
-  TerminalScreen *terminal;
-
-  terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
-  g_object_get (G_OBJECT (window->priv->preferences), "misc-default-working-dir", &default_dir, NULL);
-
-  if (g_strcmp0 (default_dir, "") != 0)
-    directory = default_dir;
-  else if (G_LIKELY (window->priv->active != NULL))
-    directory = terminal_screen_get_working_directory (window->priv->active);
+  TerminalScreen *terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
+  gchar          *directory = terminal_window_get_working_directory (window);
 
   if (directory != NULL)
-    terminal_screen_set_working_directory (terminal, directory);
-
-  g_free (default_dir);
+    {
+      terminal_screen_set_working_directory (terminal, directory);
+      g_free (directory);
+    }
 
   terminal_window_add (window, terminal);
   terminal_screen_launch_child (terminal);
@@ -1585,20 +1599,13 @@ static void
 terminal_window_action_new_window (GtkAction      *action,
                                    TerminalWindow *window)
 {
-  const gchar *directory = NULL;
-  gchar       *default_dir;
-
-  g_object_get (G_OBJECT (window->priv->preferences), "misc-default-working-dir", &default_dir, NULL);
-
-  if (g_strcmp0 (default_dir, "") != 0)
-    directory = default_dir;
-  else if (G_LIKELY (window->priv->active != NULL))
-    directory = terminal_screen_get_working_directory (window->priv->active);
+  gchar *directory = terminal_window_get_working_directory (window);
 
   if (directory != NULL)
-    g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
-
-  g_free (default_dir);
+    {
+      g_signal_emit (G_OBJECT (window), window_signals[NEW_WINDOW], 0, directory);
+      g_free (directory);
+    }
 }
 
 

@@ -103,7 +103,8 @@ enum
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
   PROP_MISC_COPY_ON_SELECT,
-  PROP_MISC_DEFAULT_WORKING_DIR,
+  PROP_USE_DEFAULT_WORKING_DIR,
+  PROP_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
   PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL,
   PROP_MISC_SLIM_TABS,
@@ -576,6 +577,26 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
+   * TerminalPreferences:use-default-working-dir:
+   **/
+  preferences_props[PROP_USE_DEFAULT_WORKING_DIR] =
+      g_param_spec_boolean ("use-default-working-dir",
+                            NULL,
+                            "UseDefaultWorkingDir",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:default-working-dir:
+   **/
+  preferences_props[PROP_DEFAULT_WORKING_DIR] =
+      g_param_spec_string ("default-working-dir",
+                           NULL,
+                           "DefaultWorkingDir",
+                           "",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
    * TerminalPreferences:dropdown-animation-time:
    **/
   preferences_props[PROP_DROPDOWN_ANIMATION_TIME] =
@@ -949,16 +970,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscCopyOnSelect",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:misc-default-working-dir:
-   **/
-  preferences_props[PROP_MISC_DEFAULT_WORKING_DIR] =
-      g_param_spec_string ("misc-default-working-dir",
-                           NULL,
-                           "MiscDefaultWorkingDir",
-                           "",
-                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:misc-rewrap-on-resize:
