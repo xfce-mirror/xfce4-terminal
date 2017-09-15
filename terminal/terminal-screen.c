@@ -179,7 +179,9 @@ struct _TerminalScreen
 
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
+#if !VTE_CHECK_VERSION (0, 52, 0)
   guint                scroll_on_output : 1;
+#endif
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
@@ -1157,8 +1159,10 @@ terminal_screen_update_scrolling_lines (TerminalScreen *screen)
 {
   guint    lines;
   gboolean unlimited;
-  g_object_get (G_OBJECT (screen->preferences), "scrolling-lines", &lines, NULL);
-  g_object_get (G_OBJECT (screen->preferences), "scrolling-unlimited", &unlimited, NULL);
+  g_object_get (G_OBJECT (screen->preferences),
+                "scrolling-lines", &lines,
+                "scrolling-unlimited", &unlimited,
+                NULL);
   vte_terminal_set_scrollback_lines (VTE_TERMINAL (screen->terminal),
                                      unlimited ? -1 : (glong) lines);
 }
@@ -1170,8 +1174,7 @@ terminal_screen_update_scrolling_on_output (TerminalScreen *screen)
 {
   gboolean scroll;
   g_object_get (G_OBJECT (screen->preferences), "scrolling-on-output", &scroll, NULL);
-  screen->scroll_on_output = scroll;
-  vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), scroll);
+  terminal_screen_set_scroll_on_output (screen, scroll);
 }
 
 
@@ -2542,7 +2545,11 @@ gboolean
 terminal_screen_get_scroll_on_output (TerminalScreen *screen)
 {
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
+#if VTE_CHECK_VERSION (0, 52, 0)
+  return vte_terminal_get_scroll_on_output (VTE_TERMINAL (screen->terminal));
+#else
   return screen->scroll_on_output;
+#endif
 }
 
 
@@ -2552,7 +2559,9 @@ terminal_screen_set_scroll_on_output (TerminalScreen *screen,
                                       gboolean        enabled)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+#if !VTE_CHECK_VERSION (0, 52, 0)
   screen->scroll_on_output = enabled;
+#endif
   vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
 }
 
