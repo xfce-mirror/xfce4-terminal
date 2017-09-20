@@ -353,10 +353,10 @@ terminal_screen_finalize (GObject *object)
 
 
 static void
-terminal_screen_get_property (GObject          *object,
-                              guint             prop_id,
-                              GValue           *value,
-                              GParamSpec       *pspec)
+terminal_screen_get_property (GObject    *object,
+                              guint       prop_id,
+                              GValue     *value,
+                              GParamSpec *pspec)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
   const gchar    *title = NULL;
@@ -423,10 +423,10 @@ terminal_screen_get_property (GObject          *object,
 
 
 static void
-terminal_screen_set_property (GObject          *object,
-                              guint             prop_id,
-                              const GValue     *value,
-                              GParamSpec       *pspec)
+terminal_screen_set_property (GObject      *object,
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (object);
 
@@ -484,12 +484,12 @@ terminal_screen_draw (GtkWidget *widget,
                       cairo_t   *cr,
                       gpointer   user_data)
 {
-  TerminalScreen      *screen = TERMINAL_SCREEN (user_data);
-  TerminalBackground   background_mode;
-  GdkPixbuf           *image;
-  gint                 width, height;
-  cairo_surface_t     *surface;
-  cairo_t             *ctx;
+  TerminalScreen     *screen = TERMINAL_SCREEN (user_data);
+  TerminalBackground  background_mode;
+  GdkPixbuf          *image;
+  gint                width, height;
+  cairo_surface_t    *surface;
+  cairo_t            *ctx;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
@@ -924,7 +924,7 @@ terminal_screen_update_binding_delete (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "binding-delete", &binding, NULL);
   vte_terminal_set_delete_binding (VTE_TERMINAL (screen->terminal),
-      terminal_screen_binding_vte (binding));
+                                   terminal_screen_binding_vte (binding));
 }
 
 
@@ -936,7 +936,7 @@ terminal_screen_update_binding_ambiguous_width (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "binding-ambiguous-width", &binding, NULL);
   vte_terminal_set_cjk_ambiguous_width (VTE_TERMINAL (screen->terminal),
-      binding == TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW ? 1 : 2);
+                                        binding == TERMINAL_AMBIGUOUS_WIDTH_BINDING_NARROW ? 1 : 2);
 }
 
 
@@ -1108,8 +1108,8 @@ terminal_screen_update_misc_cursor_blinks (TerminalScreen *screen)
 static void
 terminal_screen_update_misc_cursor_shape (TerminalScreen *screen)
 {
-  TerminalCursorShape    val;
-  VteCursorShape shape = VTE_CURSOR_SHAPE_BLOCK;
+  TerminalCursorShape val;
+  VteCursorShape      shape = VTE_CURSOR_SHAPE_BLOCK;
 
   g_object_get (G_OBJECT (screen->preferences), "misc-cursor-shape", &val, NULL);
 
@@ -1307,11 +1307,7 @@ terminal_screen_vte_selection_changed (VteTerminal    *terminal,
   g_object_get (G_OBJECT (screen->preferences),
                 "misc-copy-on-select", &copy_on_select, NULL);
   if (copy_on_select && vte_terminal_get_has_selection (terminal))
-#if VTE_CHECK_VERSION (0, 49, 2)
-    vte_terminal_copy_clipboard_format (terminal, VTE_FORMAT_TEXT);
-#else
-    vte_terminal_copy_clipboard (terminal);
-#endif
+    terminal_screen_copy_clipboard (screen);
 
   g_signal_emit (G_OBJECT (screen), screen_signals[SELECTION_CHANGED], 0);
 }
@@ -1514,8 +1510,8 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
 
 
 static gchar*
-terminal_screen_zoom_font (TerminalScreen *screen,
-                           gchar *font_name,
+terminal_screen_zoom_font (TerminalScreen   *screen,
+                           gchar            *font_name,
                            TerminalZoomLevel zoom)
 {
   gdouble               scale;
@@ -1560,9 +1556,9 @@ terminal_screen_zoom_font (TerminalScreen *screen,
   pango_font_description_free (font_desc);
 
   if (font_zoomed == NULL)
-      return font_name;
+    return font_name;
 
-  g_free(font_name);
+  g_free (font_name);
 
   return font_zoomed;
 }
@@ -1573,18 +1569,14 @@ static void
 terminal_screen_urgent_bell (TerminalWidget *widget,
                              TerminalScreen *screen)
 {
-  GtkWidget *toplevel;
-  gboolean   enabled;
+  gboolean enabled;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   g_object_get (G_OBJECT (screen->preferences), "misc-bell-urgent", &enabled, NULL);
 
-  if (!enabled)
-    return;
-
-  toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-  gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), TRUE);
+  if (enabled)
+    gtk_window_set_urgency_hint (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))), TRUE);
 }
 
 
@@ -1904,7 +1896,6 @@ terminal_screen_force_resize_window (TerminalScreen *screen,
   gint           xpad, ypad;
   glong          char_width;
   glong          char_height;
-
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
@@ -2340,7 +2331,6 @@ void
 terminal_screen_focus (TerminalScreen *screen)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-
   gtk_widget_grab_focus (GTK_WIDGET (screen->terminal));
 }
 
@@ -2362,9 +2352,8 @@ terminal_screen_set_encoding (TerminalScreen *screen,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   if (charset == NULL)
     g_get_charset (&charset);
-  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, NULL)) {
+  if (!vte_terminal_set_encoding (VTE_TERMINAL (screen->terminal), charset, NULL))
     g_printerr (_("Failed to set encoding %s\n"), charset);
-  }
 }
 
 
