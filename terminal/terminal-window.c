@@ -1671,18 +1671,16 @@ static void
 terminal_window_action_close_other_tabs (GtkAction      *action,
                                          TerminalWindow *window)
 {
-    gint         npages, n;
-    GtkWidget   *child;
-    GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
+  GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
+  gint         npages, n;
 
-    npages = gtk_notebook_get_n_pages (notebook);
-    child = gtk_notebook_get_nth_page (notebook,
-                                       gtk_notebook_get_current_page (notebook));
-    /* move current page to the beginning */
-    gtk_notebook_reorder_child (notebook, child, 0);
-    /* remove the others */
-    for (n = npages - 1; n > 0; n--)
-      gtk_notebook_remove_page (notebook, n);
+  /* move current page to the beginning */
+  gtk_notebook_reorder_child (notebook, GTK_WIDGET (window->priv->active), 0);
+
+  /* remove the others */
+  npages = gtk_notebook_get_n_pages (notebook);
+  for (n = npages - 1; n > 0; n--)
+    gtk_notebook_remove_page (notebook, n);
 }
 
 
