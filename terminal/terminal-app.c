@@ -740,11 +740,19 @@ terminal_app_open_window (TerminalApp        *app,
           gtk_window_set_screen (GTK_WINDOW (window), screen);
         }
     }
-  else if (attr->reuse_last_window
-           && app->windows != NULL)
+  else if (attr->reuse_last_window && app->windows != NULL)
     {
-      /* open the tabs in an existing window */
+      /* open tabs in the existing window */
       window = app->windows->data;
+      /* try to find active window (bug #13891) */
+      for (lp = app->windows; lp != NULL; lp = lp->next)
+        {
+          if (gtk_window_has_toplevel_focus (GTK_WINDOW (lp->data)))
+            {
+              window = lp->data;
+              break;
+            }
+        }
       reuse_window = TRUE;
     }
   else
