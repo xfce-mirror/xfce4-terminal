@@ -71,6 +71,7 @@ enum
 {
   GET_CONTEXT_MENU,
   SELECTION_CHANGED,
+  CLOSE_TAB,
   LAST_SIGNAL
 };
 
@@ -251,6 +252,17 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    **/
   screen_signals[SELECTION_CHANGED] =
     g_signal_new (I_("selection-changed"),
+                  G_TYPE_FROM_CLASS (gobject_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
+
+  /**
+   * TerminalScreen::close-tab-request
+   **/
+  screen_signals[CLOSE_TAB] =
+    g_signal_new (I_("close-tab-request"),
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
@@ -2269,6 +2281,14 @@ terminal_screen_reset_activity (TerminalScreen *screen)
 
 
 
+static void
+terminal_screen_close_tab_cb (TerminalScreen *screen)
+{
+  g_signal_emit (G_OBJECT (screen), screen_signals[CLOSE_TAB], 0);
+}
+
+
+
 GtkWidget *
 terminal_screen_get_tab_label (TerminalScreen *screen)
 {
@@ -2305,7 +2325,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_set_valign (button, GTK_ALIGN_CENTER);
   gtk_container_add (GTK_CONTAINER (hbox), button);
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
-                            G_CALLBACK (gtk_widget_destroy), screen);
+                            G_CALLBACK (terminal_screen_close_tab_cb), screen);
 
   /* button image */
   image = gtk_image_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_MENU);

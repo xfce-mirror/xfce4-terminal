@@ -110,7 +110,8 @@ static gboolean     terminal_window_scroll_event                  (GtkWidget    
                                                                    GdkEventScroll         *event);
 static gboolean     terminal_window_map_event                     (GtkWidget              *widget,
                                                                    GdkEventAny            *event);
-static gboolean     terminal_window_confirm_close                 (TerminalWindow         *window);
+static gboolean     terminal_window_confirm_close                 (TerminalScreen         *terminal,
+                                                                   TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
 static gboolean     terminal_window_size_pop                      (gpointer                data);
 static void         terminal_window_set_size_force_grid           (TerminalWindow         *window,
@@ -619,7 +620,7 @@ terminal_window_delete_event (GtkWidget   *widget,
   gint            n_pages, i;
 
   /* disconnect remove signal if we're closing the window */
-  if (terminal_window_confirm_close (window))
+  if (terminal_window_confirm_close (NULL, window))
     {
       /* disconnect handlers for closing Set Title dialog */
       if (window->priv->title_popover != NULL)
@@ -742,20 +743,22 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 static gboolean
-terminal_window_confirm_close (TerminalWindow *window)
+terminal_window_confirm_close (TerminalScreen *terminal,
+                               TerminalWindow *window)
 {
-  GtkWidget *dialog;
-  GtkWidget *button;
-  GtkWidget *hbox;
-  GtkWidget *image;
-  GtkWidget *vbox;
-  GtkWidget *label;
-  GtkWidget *checkbox;
-  gboolean   confirm_close;
-  gchar     *message;
-  gchar     *markup;
-  gint       response;
-  gint       i, n_tabs;
+  GtkWidget   *dialog;
+  GtkWidget   *button;
+  GtkWidget   *hbox;
+  GtkWidget   *image;
+  GtkWidget   *vbox;
+  GtkWidget   *label;
+  GtkWidget   *checkbox;
+  const gchar *title;
+  gchar       *message;
+  gchar       *markup;
+  gint         response;
+  gint         i, n_tabs;
+  gboolean     confirm_close;
 
   g_object_get (G_OBJECT (window->priv->preferences), "misc-confirm-close", &confirm_close, NULL);
   if (!confirm_close)
@@ -766,14 +769,14 @@ terminal_window_confirm_close (TerminalWindow *window)
   for (i = 0; i < n_tabs; ++i)
     {
       TerminalScreen *screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
-      if (terminal_screen_has_foreground_process (screen))
+      if ((terminal == NULL || terminal == screen) && terminal_screen_has_foreground_process (screen))
         {
           confirm_close = TRUE;
           break;
         }
     }
 
-  if (n_tabs < 2 && !confirm_close)
+  if ((terminal != NULL || n_tabs < 2) && !confirm_close)
     return TRUE;
 
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
@@ -783,12 +786,9 @@ terminal_window_confirm_close (TerminalWindow *window)
                                         GTK_RESPONSE_CANCEL,
                                         NULL);
 
-  if (n_tabs > 1)
+  if (terminal == NULL && n_tabs > 1)
     {
-      /* multiple tabs */
-      button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
-      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
-
+      /* closing window with multiple tabs */
       if (confirm_close)
         {
           /* and process running */
@@ -797,20 +797,38 @@ terminal_window_confirm_close (TerminalWindow *window)
         }
       else
         {
+          /* and no process running */
           message = g_strdup_printf (_("This window has %d tabs open. Closing this window\n"
                                        "will also close all its tabs."), n_tabs);
         }
+
+      title = _("Close all tabs?");
     }
   else
     {
-      /* single tab, process running */
+      /* closing a tab or a single tab window, and process running */
       message = g_strdup_printf (_("There is still a process running.\n"
-                                   "Closing this window will kill it."));
+                                   "Closing this %s will kill it."), terminal != NULL ? "tab" : "window");
+
+      if (terminal != NULL)
+        title = _("Close tab?");
+      else
+        title = _("Close window?");
     }
 
-  button = xfce_gtk_button_new_mixed ("application-exit", _("Close _Window"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
-  gtk_widget_grab_focus (button);
+  if (terminal != NULL || n_tabs > 1)
+    {
+      button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
+      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
+      gtk_widget_grab_focus (button);
+    }
+
+  if (terminal == NULL)
+    {
+      button = xfce_gtk_button_new_mixed ("application-exit", _("Close _Window"));
+      gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
+      gtk_widget_grab_focus (button);
+    }
 
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
   gtk_container_set_border_width (GTK_CONTAINER (hbox), 8);
@@ -824,8 +842,7 @@ terminal_window_confirm_close (TerminalWindow *window)
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (hbox), vbox, TRUE, TRUE, 0);
 
-  markup = g_strdup_printf ("<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s",
-                            n_tabs > 1 ? _("Close all tabs?") : _("Close window?"), message);
+  markup = g_strdup_printf ("<span weight=\"bold\" size=\"larger\">%s</span>\n\n%s", title, message);
   g_free (message);
 
   label = g_object_new (GTK_TYPE_LABEL,
@@ -1086,6 +1103,16 @@ terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
 
 
 static void
+terminal_window_close_tab_request (TerminalScreen *screen,
+                                   TerminalWindow *window)
+{
+  if (terminal_window_confirm_close (screen, window))
+    gtk_widget_destroy (GTK_WIDGET (screen));
+}
+
+
+
+static void
 terminal_window_notebook_page_added (GtkNotebook    *notebook,
                                      GtkWidget      *child,
                                      guint           page_num,
@@ -1106,6 +1133,8 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       G_CALLBACK (terminal_window_notify_title), window);
   g_signal_connect_swapped (G_OBJECT (screen), "selection-changed",
       G_CALLBACK (terminal_window_update_actions), window);
+  g_signal_connect (G_OBJECT (screen), "close-tab-request",
+      G_CALLBACK (terminal_window_close_tab_request), window);
   g_signal_connect (G_OBJECT (screen), "drag-data-received",
       G_CALLBACK (terminal_window_notebook_drag_data_received), window);
 
@@ -1662,7 +1691,7 @@ terminal_window_action_close_tab (GtkAction      *action,
                                   TerminalWindow *window)
 {
   if (G_LIKELY (window->priv->active != NULL))
-    gtk_widget_destroy (GTK_WIDGET (window->priv->active));
+    terminal_window_close_tab_request (window->priv->active, window);
 }
 
 
@@ -1689,7 +1718,7 @@ static void
 terminal_window_action_close_window (GtkAction      *action,
                                      TerminalWindow *window)
 {
-  if (terminal_window_confirm_close (window))
+  if (terminal_window_confirm_close (NULL, window))
     gtk_widget_destroy (GTK_WIDGET (window));
 }
 
