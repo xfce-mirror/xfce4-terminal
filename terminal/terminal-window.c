@@ -110,7 +110,7 @@ static gboolean     terminal_window_scroll_event                  (GtkWidget    
                                                                    GdkEventScroll         *event);
 static gboolean     terminal_window_map_event                     (GtkWidget              *widget,
                                                                    GdkEventAny            *event);
-static gboolean     terminal_window_confirm_close                 (TerminalScreen         *terminal,
+static gboolean     terminal_window_confirm_close                 (TerminalScreen         *screen,
                                                                    TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
 static gboolean     terminal_window_size_pop                      (gpointer                data);
@@ -743,7 +743,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 static gboolean
-terminal_window_confirm_close (TerminalScreen *terminal,
+terminal_window_confirm_close (TerminalScreen *screen,
                                TerminalWindow *window)
 {
   GtkWidget   *dialog;
@@ -768,15 +768,15 @@ terminal_window_confirm_close (TerminalScreen *terminal,
   confirm_close = FALSE;
   for (i = 0; i < n_tabs; ++i)
     {
-      TerminalScreen *screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
-      if ((terminal == NULL || terminal == screen) && terminal_screen_has_foreground_process (screen))
+      TerminalScreen *tab = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), i));
+      if ((screen == NULL || screen == tab) && terminal_screen_has_foreground_process (tab))
         {
           confirm_close = TRUE;
           break;
         }
     }
 
-  if ((terminal != NULL || n_tabs < 2) && !confirm_close)
+  if ((screen != NULL || n_tabs < 2) && !confirm_close)
     return TRUE;
 
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
@@ -786,7 +786,7 @@ terminal_window_confirm_close (TerminalScreen *terminal,
                                         GTK_RESPONSE_CANCEL,
                                         NULL);
 
-  if (terminal == NULL && n_tabs > 1)
+  if (screen == NULL && n_tabs > 1)
     {
       /* closing window with multiple tabs */
       if (confirm_close)
@@ -806,7 +806,7 @@ terminal_window_confirm_close (TerminalScreen *terminal,
     }
   else
     {
-      if (terminal != NULL)
+      if (screen != NULL)
         {
           /* closing a tab, and process running */
           message = g_strdup (_("There is still a process running.\n"
@@ -822,14 +822,14 @@ terminal_window_confirm_close (TerminalScreen *terminal,
         }
     }
 
-  if (terminal != NULL || n_tabs > 1)
+  if (screen != NULL || n_tabs > 1)
     {
       button = xfce_gtk_button_new_mixed ("window-close", _("Close T_ab"));
       gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CLOSE);
       gtk_widget_grab_focus (button);
     }
 
-  if (terminal == NULL)
+  if (screen == NULL)
     {
       button = xfce_gtk_button_new_mixed ("application-exit", _("Close _Window"));
       gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
@@ -875,10 +875,12 @@ terminal_window_confirm_close (TerminalScreen *terminal,
                         NULL);
         }
     }
-  else if (response == GTK_RESPONSE_CLOSE
-           && window->priv->active != NULL)
+  else if (response == GTK_RESPONSE_CLOSE)
     {
-      gtk_widget_destroy (GTK_WIDGET (window->priv->active));
+      if (screen != NULL)
+        gtk_widget_destroy (GTK_WIDGET (screen));
+      else if (window->priv->active != NULL)
+        gtk_widget_destroy (GTK_WIDGET (window->priv->active));
     }
 
   gtk_widget_destroy (dialog);
