@@ -792,8 +792,8 @@ terminal_window_confirm_close (TerminalScreen *terminal,
       if (confirm_close)
         {
           /* and process running */
-          message = g_strdup_printf (_("There are still processes running in some tabs.\n"
-                                       "Closing this window will kill all of them."));
+          message = g_strdup (_("There are still processes running in some tabs.\n"
+                                "Closing this window will kill all of them."));
         }
       else
         {
@@ -806,14 +806,20 @@ terminal_window_confirm_close (TerminalScreen *terminal,
     }
   else
     {
-      /* closing a tab or a single tab window, and process running */
-      message = g_strdup_printf (_("There is still a process running.\n"
-                                   "Closing this %s will kill it."), terminal != NULL ? "tab" : "window");
-
       if (terminal != NULL)
-        title = _("Close tab?");
+        {
+          /* closing a tab, and process running */
+          message = g_strdup (_("There is still a process running.\n"
+                                "Closing this tab will kill it."));
+          title = _("Close tab?");
+        }
       else
-        title = _("Close window?");
+        {
+          /* closing a single tab window, and process running */
+          message = g_strdup (_("There is still a process running.\n"
+                                "Closing this window will kill it."));
+          title = _("Close window?");
+        }
     }
 
   if (terminal != NULL || n_tabs > 1)
