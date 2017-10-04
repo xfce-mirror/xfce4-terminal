@@ -1717,7 +1717,8 @@ terminal_window_action_close_other_tabs (GtkAction      *action,
   /* remove the others */
   npages = gtk_notebook_get_n_pages (notebook);
   for (n = npages - 1; n > 0; n--)
-    gtk_notebook_remove_page (notebook, n);
+    if (terminal_window_confirm_close (TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, n)), window))
+      gtk_notebook_remove_page (notebook, n);
 }
 
 
