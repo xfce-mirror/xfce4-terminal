@@ -18,8 +18,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-03 00:31+0200\n"
-"PO-Revision-Date: 2017-10-03 06:17+0000\n"
+"POT-Creation-Date: 2017-10-04 00:31+0200\n"
+"PO-Revision-Date: 2017-10-04 08:30+0000\n"
 "Last-Translator: Yannick Le Guen <leguen.yannick@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -596,7 +596,7 @@ msgstr "_Annuler la fermeture de l’onglet"
 msgid "_Detach Tab"
 msgstr "_Détacher l'onglet"
 
-#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:821
+#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:827
 msgid "Close T_ab"
 msgstr "Fermer l'onglet"
 
@@ -604,7 +604,7 @@ msgstr "Fermer l'onglet"
 msgid "Close Other Ta_bs"
 msgstr "Fermer les autres on_glets"
 
-#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:834
 msgid "Close _Window"
 msgstr "Fermer la fenêtre"
 
@@ -821,17 +821,16 @@ msgstr "Définir l’_encodage"
 msgid "Warning"
 msgstr "Attention"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2265
+#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2273
 msgid "_Cancel"
 msgstr "_Annuler"
 
 #. and process running
 #: ../terminal/terminal-window.c:795
-#, c-format
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
-msgstr "Il y a encore des processus en cours d’exécution dans certains onglets.\nIls seront tous terminés à la fermeture de cette fenêtre."
+msgstr "Il y a encore des processus en cours d’exécution dans certains onglets.\nIls seront tous interrompus à la fermeture de cette fenêtre."
 
 #. and no process running
 #: ../terminal/terminal-window.c:801
@@ -845,55 +844,61 @@ msgstr "Cette fenêtre a %d onglets ouverts. Fermer\ncette fenêtre fermera auss
 msgid "Close all tabs?"
 msgstr "Fermer tous les onglets ?"
 
-#. closing a tab or a single tab window, and process running
-#: ../terminal/terminal-window.c:810
-#, c-format
+#. closing a tab, and process running
+#: ../terminal/terminal-window.c:812
 msgid ""
 "There is still a process running.\n"
-"Closing this %s will kill it."
-msgstr "Il y a encore un processus en cours d’exécution.\nIl sera terminé à la fermeture de cet(te) %s."
+"Closing this tab will kill it."
+msgstr "Un processus est encore en cours d’exécution.\nIl sera interrompu à la fermeture de cet onglet."
 
 #: ../terminal/terminal-window.c:814
 msgid "Close tab?"
 msgstr "Fermer l’onglet ?"
 
-#: ../terminal/terminal-window.c:816
+#. closing a single tab window, and process running
+#: ../terminal/terminal-window.c:819
+msgid ""
+"There is still a process running.\n"
+"Closing this window will kill it."
+msgstr "Un processus est encore en cours d’exécution.\nIl sera interrompu à la fermeture de cette fenêtre."
+
+#: ../terminal/terminal-window.c:821
 msgid "Close window?"
 msgstr "Fermer la fenêtre ?"
 
-#: ../terminal/terminal-window.c:857
+#: ../terminal/terminal-window.c:863
 msgid "Do _not ask me again"
 msgstr "_Ne plus poser la question"
 
-#: ../terminal/terminal-window.c:2109
+#: ../terminal/terminal-window.c:2117
 msgid "_Title:"
 msgstr "_Titre :"
 
-#: ../terminal/terminal-window.c:2122
+#: ../terminal/terminal-window.c:2130
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrer le titre pour l'onglet courant du terminal"
 
-#: ../terminal/terminal-window.c:2130
+#: ../terminal/terminal-window.c:2138
 msgid "Help"
 msgstr "Aide"
 
-#: ../terminal/terminal-window.c:2136
+#: ../terminal/terminal-window.c:2144
 msgid "Close"
 msgstr "Fermer"
 
-#: ../terminal/terminal-window.c:2182
+#: ../terminal/terminal-window.c:2190
 msgid "Failed to create the regular expression"
 msgstr "Impossible de créer l'expression régulière"
 
-#: ../terminal/terminal-window.c:2262
+#: ../terminal/terminal-window.c:2270
 msgid "Save contents..."
 msgstr "Enregistrer le contenu…"
 
-#: ../terminal/terminal-window.c:2266
+#: ../terminal/terminal-window.c:2274
 msgid "_Save"
 msgstr "_Enregistrer"
 
-#: ../terminal/terminal-window.c:2303
+#: ../terminal/terminal-window.c:2311
 msgid "Failed to save terminal contents"
 msgstr "Impossible d'enregistrer le contenu du terminal"
 
@@ -1303,206 +1308,202 @@ msgid "Reset tab activity _indicator after"
 msgstr "Réinitialiser l’i_ndication d'activité de l'onglet après"
 
 #: ../terminal/terminal-preferences.glade.h:97
-msgid "0"
-msgstr "0"
-
-#: ../terminal/terminal-preferences.glade.h:98
 msgid "seconds"
 msgstr "secondes"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Utiliser un style personnalisé pour rendre les onglets _fins (redémarrage requis)"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "Tabs"
 msgstr "Onglets"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:100
 msgid "_Appearance"
 msgstr "_Apparence"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "_Vary the background color for each tab"
 msgstr "_Changer la couleur d'arrière-plan pour chaque onglet"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:102
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "La couleur aléatoire est basée sur la couleur d'arrière-plan sélectionnée, en gardant la même luminosité."
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Tab activit_y color:"
 msgstr "Couleur d'activ_ité d'onglet :"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:104
 msgid "Choose tab activity color"
 msgstr "Choisir la couleur d'activité d'onglet"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Color Selector"
 msgstr "Sélecteur de couleur"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "Open a dialog to specify the color"
 msgstr "Ouvrir une fenêtre pour spécifier la couleur"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "_Text color:"
 msgstr "Couleur du _texte :"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Choose text color"
 msgstr "Choisir la couleur de texte"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "_Background color:"
 msgstr "Couleur d’arrière-pla_n :"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Choose background color"
 msgstr "Choisir la couleur d'arrière-plan"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Note: Ctrl+click for color editor."
 msgstr "Note : Ctrl+clic pour l'éditeur de couleurs."
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "General"
 msgstr "Général"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "B_old text color:"
 msgstr "Couleur du texte en gra_s :"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:114
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Activer cette option pour définir une couleur gras personnalisée. Si elle est désactivée la couleur du texte sera utilisée."
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Choose bold font color"
 msgstr "Choisir la couleur de police en gras"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Text _selection color:"
 msgstr "Couleur de sélection du texte :"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:117
 msgid ""
 "Enable this option to set custom text and background colors for the "
 "selection. If disabled the background and text colors will be reversed."
 msgstr "Activer cette option pour définir des couleurs de texte et d’arrière-plan personnalisées pour la sélection. Si désactivée, les couleurs de l’arrière-plan et du texte seront inversées."
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Choose text selection foreground color"
 msgstr "Choisir la couleur de premier plan du texte sélectionné"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Choose text selection background color"
 msgstr "Choisir la couleur d'arrière-plan du texte sélectionné"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Cu_rsor color:"
 msgstr "Couleur du cu_rseur :"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:121
 msgid ""
 "Enable this option to set custom text and background colors for the cursor. "
 "If disabled the background and text colors will be reversed."
 msgstr "Activer cette option pour définir des couleurs de texte et d’arrière-plan personnalisées pour le curseur. Si désactivée, les couleurs de l’arrière-plan et du texte seront inversées."
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Choose cursor background color"
 msgstr "Choisir la couleur d'arrière-plan du curseur"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Choose cursor foreground color"
 msgstr "Choisir la couleur de premier plan du curseur"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Custom Colors"
 msgstr "Couleurs personnalisées"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Black"
 msgstr "Noir"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "Dark Gray"
 msgstr "Gris foncé"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Red"
 msgstr "Rouge"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Light Red"
 msgstr "Rouge clair"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Green"
 msgstr "Vert"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "Light Green"
 msgstr "Vert clair"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "Brown / Yellow"
 msgstr "Brun / Jaune"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "Yellow"
 msgstr "Jaune"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Blue"
 msgstr "Bleu"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Light Blue"
 msgstr "Bleu clair"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Magenta"
 msgstr "Magenta"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Light Magenta"
 msgstr "Magenta clair"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Cyan"
 msgstr "Cyan"
 
-#: ../terminal/terminal-preferences.glade.h:139
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Light Cyan"
 msgstr "Cyan clair"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Light Gray"
 msgstr "Gris clair"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "White"
 msgstr "Blanc"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Palette"
 msgstr "Palette"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Presets"
 msgstr "Préréglages"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "_Colors"
 msgstr "_Couleurs"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:144
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1510,98 +1511,98 @@ msgid ""
 "different terminal behavior."
 msgstr "Ces options peuvent gêner le fonctionnement de certaines\napplications. Elles sont seulement là pour vous permettre\nde faire fonctionner certaines applications et systèmes\nd'exploitation qui attendent un comportement différent\ndu terminal."
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "_Backspace key generates:"
 msgstr "La touche _Retour arrière émet :"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "_Delete key generates:"
 msgstr "La touche _Supprimer émet :"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "_Reset compatibility options to defaults"
 msgstr "_Réinitialiser les options de compatibilité aux valeurs par défaut"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "_Ambiguous-width characters:"
 msgstr "Caractères à largeur _ambiguë :"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "Compatibility"
 msgstr "Compatibilité"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "Co_mpatibility"
 msgstr "Co_mpatibilité"
 
-#: ../terminal/terminal-preferences.glade.h:155
+#: ../terminal/terminal-preferences.glade.h:154
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "Considérer les caractères suivants\ncomme faisant partie d’un _mot\nlors d’un double clic"
 
-#: ../terminal/terminal-preferences.glade.h:158
+#: ../terminal/terminal-preferences.glade.h:157
 msgid "Rese_t"
 msgstr "Réini_tialiser"
 
-#: ../terminal/terminal-preferences.glade.h:159
+#: ../terminal/terminal-preferences.glade.h:158
 msgid "Reset double click options to defaults"
 msgstr "Réinitialiser les options de double clic aux valeurs par défaut"
 
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:159
 msgid "Double Click"
 msgstr "Double clic"
 
-#: ../terminal/terminal-preferences.glade.h:161
+#: ../terminal/terminal-preferences.glade.h:160
 msgid "Default character e_ncoding:"
 msgstr "Encodage des caractères par défaut :"
 
-#: ../terminal/terminal-preferences.glade.h:162
+#: ../terminal/terminal-preferences.glade.h:161
 msgid "Encoding"
 msgstr "Encodage"
 
-#: ../terminal/terminal-preferences.glade.h:163
+#: ../terminal/terminal-preferences.glade.h:162
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Désactiver les touches d'accès des me_nus (comme Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Désactiver le raccourci clavier du m_enu (F10 par défaut)"
 
-#: ../terminal/terminal-preferences.glade.h:165
+#: ../terminal/terminal-preferences.glade.h:164
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "Désactiver le raccourci clavier de la fenêtre d'_aide (F1 par défaut)"
 
-#: ../terminal/terminal-preferences.glade.h:166
+#: ../terminal/terminal-preferences.glade.h:165
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
-#: ../terminal/terminal-preferences.glade.h:167
+#: ../terminal/terminal-preferences.glade.h:166
 msgid "Use _middle mouse click to close tabs"
 msgstr "Utiliser le clic _molette pour fermer les onglets"
 
-#: ../terminal/terminal-preferences.glade.h:168
+#: ../terminal/terminal-preferences.glade.h:167
 msgid "Auto-hi_de mouse pointer"
 msgstr "Mas_quer automatiquement le pointeur de la souris"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "Re_wrap terminal contents on resize"
 msgstr "Réarran_ger le contenu du terminal lors d’un redimensionnement"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Automatically _copy selection to clipboard"
 msgstr "_Copier automatiquement la sélection vers le presse-papiers"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Open new tab to the _right of the active tab"
 msgstr "Ouvrir un nouvel onglet à _droite de l'onglet actif"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "Misc"
 msgstr "Divers"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Ad_vanced"
 msgstr "A_vancé"
 
