@@ -947,23 +947,20 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
 static void
 terminal_window_update_actions (TerminalWindow *window)
 {
-  GtkNotebook    *notebook = GTK_NOTEBOOK (window->priv->notebook);
-  GtkAction      *action;
-  gboolean        cycle_tabs;
-  gint            page_num;
-  gint            n_pages;
-  gboolean        can_search;
+  GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
+  GtkAction   *action;
+  gboolean     cycle_tabs;
+  gint         page_num;
+  gint         n_pages;
 
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
 
-  /* "Detach Tab", "Close Other Tabs" and move tab actions are only sensitive
-   * if we have at least two pages */
+  /* "Detach Tab" and "Close Other Tabs" are sensitive if we have at least two pages.
+   * "Undo Close" is sensitive if there is a tab to unclose. */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_action_set_sensitive (window->priv->action_detach_tab, (n_pages > 1));
   gtk_action_set_sensitive (window->priv->action_close_other_tabs, n_pages > 1);
-  gtk_action_set_sensitive (window->priv->action_move_tab_left, n_pages > 1);
-  gtk_action_set_sensitive (window->priv->action_move_tab_right, n_pages > 1);
 
   gtk_action_set_sensitive (window->priv->action_undo_close_tab, !g_queue_is_empty (window->priv->closed_tabs_list));
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -971,17 +968,22 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->priv->active != NULL))
     {
+      gboolean can_go_left, can_go_right, can_search;
+
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->active));
 
       g_object_get (G_OBJECT (window->priv->preferences),
                     "misc-cycle-tabs", &cycle_tabs,
                     NULL);
 
+      can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
+      can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
+
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      gtk_action_set_sensitive (window->priv->action_prev_tab,
-                                (cycle_tabs && n_pages > 1) || (page_num > 0));
-      gtk_action_set_sensitive (window->priv->action_next_tab,
-                                (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1));
+      gtk_action_set_sensitive (window->priv->action_prev_tab, can_go_left);
+      gtk_action_set_sensitive (window->priv->action_move_tab_left, can_go_left);
+      gtk_action_set_sensitive (window->priv->action_next_tab, can_go_right);
+      gtk_action_set_sensitive (window->priv->action_move_tab_right, can_go_right);
 
       gtk_action_set_sensitive (window->priv->action_copy,
                                 terminal_screen_has_selection (window->priv->active));
@@ -1988,19 +1990,21 @@ terminal_window_action_zoom_reset (GtkAction      *action,
 
 
 static void
-terminal_window_action_prev_tab (GtkAction       *action,
-                                 TerminalWindow  *window)
+terminal_window_action_prev_tab (GtkAction      *action,
+                                 TerminalWindow *window)
 {
   terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
+  terminal_window_update_actions (window);
 }
 
 
 
 static void
-terminal_window_action_next_tab (GtkAction       *action,
-                                 TerminalWindow  *window)
+terminal_window_action_next_tab (GtkAction      *action,
+                                 TerminalWindow *window)
 {
   terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
+  terminal_window_update_actions (window);
 }
 
 
@@ -2010,6 +2014,7 @@ terminal_window_action_move_tab_left (GtkAction      *action,
                                       TerminalWindow *window)
 {
   terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
+  terminal_window_update_actions (window);
 }
 
 
@@ -2019,6 +2024,7 @@ terminal_window_action_move_tab_right (GtkAction      *action,
                                        TerminalWindow *window)
 {
   terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
+  terminal_window_update_actions (window);
 }
 
 
