@@ -832,6 +832,14 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           || strcmp (*p, "TERM") == 0)
         continue;
 
+      /* copy working directory to $PWD, to preserve symlinks
+       * see https://bugzilla.gnome.org/show_bug.cgi?id=758452 */
+      if (strcmp (*p, "PWD") == 0)
+        {
+          result[n++] = g_strconcat (*p, "=", screen->working_directory, NULL);
+          continue;
+        }
+
       /* copy the variable */
       value = g_getenv (*p);
       if (G_LIKELY (value != NULL))
@@ -2034,14 +2042,22 @@ terminal_screen_get_title (TerminalScreen *screen)
 const gchar*
 terminal_screen_get_working_directory (TerminalScreen *screen)
 {
-  gchar  buffer[4096 + 1];
-  gchar *file;
-  gchar *cwd;
-  gint   length;
+  gchar        buffer[4096 + 1];
+  gchar       *file;
+  gchar       *cwd;
+  const gchar *uri;
+  gint         length;
 
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
 
-  if (screen->pid >= 0)
+  /* try to use vte functionality first: see bug #13902 */
+  uri = vte_terminal_get_current_directory_uri (VTE_TERMINAL (screen->terminal));
+  if (uri != NULL)
+    {
+      g_free (screen->working_directory);
+      screen->working_directory = g_filename_from_uri (uri, NULL, NULL);
+    }
+  else if (screen->pid >= 0)
     {
       /* make sure that we use linprocfs on all systems */
 #if defined(__FreeBSD__)
