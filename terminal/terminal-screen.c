@@ -1667,6 +1667,9 @@ terminal_screen_launch_child (TerminalScreen *screen)
   guint         i;
   VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
   GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
+#ifdef HAVE_LIBUTEMPTER
+  gboolean      update_records;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1710,7 +1713,9 @@ terminal_screen_launch_child (TerminalScreen *screen)
         }
 
 #ifdef HAVE_LIBUTEMPTER
-      utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
+      g_object_get (G_OBJECT (screen->preferences), "command-update-records", &update_records, NULL);
+      if (update_records)
+        utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
 #endif
 
       g_free (argv2);

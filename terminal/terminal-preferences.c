@@ -64,6 +64,7 @@ enum
   PROP_COLOR_BOLD_USE_DEFAULT,
   PROP_COLOR_PALETTE,
   PROP_COMMAND_LOGIN_SHELL,
+  PROP_COMMAND_UPDATE_RECORDS,
   PROP_RUN_CUSTOM_COMMAND,
   PROP_CUSTOM_COMMAND,
   PROP_DROPDOWN_ANIMATION_TIME,
@@ -553,6 +554,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
       g_param_spec_boolean ("command-login-shell",
                             NULL,
                             "CommandLoginShell",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:command-update-records:
+   **/
+  preferences_props[PROP_COMMAND_UPDATE_RECORDS] =
+      g_param_spec_boolean ("command-update-records",
+                            NULL,
+                            "CommandUpdateRecords",
                             FALSE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 

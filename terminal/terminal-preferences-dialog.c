@@ -140,6 +140,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gchar            *current;
   GtkTreeIter       current_iter;
   const gchar      *props_active[] = { "title-mode", "command-login-shell",
+                                       "command-update-records",
                                        "run-custom-command", "use-default-working-dir",
                                        "scrolling-on-output", "scrolling-on-keystroke",
                                        "scrolling-bar", "scrolling-unlimited",
@@ -257,6 +258,13 @@ error:
   BIND_PROPERTIES ("tab-activity-timeout", "value");
   BIND_PROPERTIES ("background-darkness", "value");
   BIND_PROPERTIES ("background-image-shading", "value");
+
+#ifndef HAVE_LIBUTEMPTER
+  /* hide "Update utmp/wtmp records" if no support for that */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "command-update-records");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+#endif
 
   /* run custom command button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "run-custom-command");
