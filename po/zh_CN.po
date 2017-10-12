@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-05 00:31+0200\n"
-"PO-Revision-Date: 2017-10-08 04:31+0000\n"
-"Last-Translator: xiaobo zhou <zhouxiaobo.500@gmail.com>\n"
+"POT-Creation-Date: 2017-10-12 00:31+0200\n"
+"PO-Revision-Date: 2017-10-12 05:13+0000\n"
+"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -399,24 +399,24 @@ msgstr "选项“--zoom”需要指定缩放大小（%d .. %d）作为其参数"
 msgid "Unknown option \"%s\""
 msgstr "未知选项 “%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:395
+#: ../terminal/terminal-preferences-dialog.c:403
 msgid "All Files"
 msgstr "所有文件"
 
-#: ../terminal/terminal-preferences-dialog.c:401
+#: ../terminal/terminal-preferences-dialog.c:409
 msgid "Image Files"
 msgstr "图片文件"
 
-#: ../terminal/terminal-preferences-dialog.c:857
+#: ../terminal/terminal-preferences-dialog.c:865
 msgid "Load Presets..."
 msgstr "载入预设..."
 
-#: ../terminal/terminal-preferences.c:1106
+#: ../terminal/terminal-preferences.c:1117
 msgid "Terminal"
 msgstr "Terminal 终端"
 
 #: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:1993
+#: ../terminal/terminal-screen.c:2006
 msgid "Untitled"
 msgstr "无标题"
 
@@ -425,38 +425,38 @@ msgstr "无标题"
 msgid "Unable to determine your login shell."
 msgstr "未能确定您的登录 shell。"
 
-#: ../terminal/terminal-screen.c:1251
+#: ../terminal/terminal-screen.c:1259
 msgid "Child process exited"
 msgstr "子进程已退出"
 
-#: ../terminal/terminal-screen.c:1254
+#: ../terminal/terminal-screen.c:1262
 msgid "_Relaunch"
 msgstr "重新运行(_R)"
 
-#: ../terminal/terminal-screen.c:1260
+#: ../terminal/terminal-screen.c:1268
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子进程返回状态%d并正常退出"
 
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1270
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子进程已被信号%d所终止"
 
-#: ../terminal/terminal-screen.c:1264
+#: ../terminal/terminal-screen.c:1272
 #, c-format
 msgid "The child process was aborted."
 msgstr "子进程已被终止。"
 
-#: ../terminal/terminal-screen.c:1674 ../terminal/terminal-screen.c:1700
+#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
 msgid "Failed to execute child"
 msgstr "无法执行子进程"
 
-#: ../terminal/terminal-screen.c:2323
+#: ../terminal/terminal-screen.c:2344
 msgid "Close this tab"
 msgstr "关闭此标签"
 
-#: ../terminal/terminal-screen.c:2376
+#: ../terminal/terminal-screen.c:2397
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "设置编码 %s 失败\n"
@@ -819,7 +819,7 @@ msgstr "设置编码(_E)"
 msgid "Warning"
 msgstr "警告"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2274
+#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
 msgid "_Cancel"
 msgstr "取消(_C)"
 
@@ -868,35 +868,35 @@ msgstr "关闭窗口？"
 msgid "Do _not ask me again"
 msgstr "不再询问(_N)"
 
-#: ../terminal/terminal-window.c:2118
+#: ../terminal/terminal-window.c:2124
 msgid "_Title:"
 msgstr "标题(_T)："
 
-#: ../terminal/terminal-window.c:2131
+#: ../terminal/terminal-window.c:2137
 msgid "Enter the title for the current terminal tab"
 msgstr "输入当前终端标签的标题"
 
-#: ../terminal/terminal-window.c:2139
+#: ../terminal/terminal-window.c:2145
 msgid "Help"
 msgstr "帮助"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2151
 msgid "Close"
 msgstr "关闭"
 
-#: ../terminal/terminal-window.c:2191
+#: ../terminal/terminal-window.c:2197
 msgid "Failed to create the regular expression"
 msgstr "无法创建正则表达式"
 
-#: ../terminal/terminal-window.c:2271
+#: ../terminal/terminal-window.c:2277
 msgid "Save contents..."
 msgstr "保存内容至..."
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2281
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../terminal/terminal-window.c:2312
+#: ../terminal/terminal-window.c:2318
 msgid "Failed to save terminal contents"
 msgstr "保存终端内容失败"
 
@@ -1025,483 +1025,493 @@ msgid ""
 msgstr "在您打开新终端时，选中此项强制将您的 shell 作为登录 shell 运行。参看作为交互 shell 运行和作为登录 shell 运行的相关文档了解它们更详细的区别。"
 
 #: ../terminal/terminal-preferences.glade.h:31
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "在命令启动时更新 utmp/wtmp 记录(_U)"
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid ""
+"Select this option to allow commands that use utmp/wtmp records (such as "
+"`write` or `wall`) to work."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:33
 msgid "Run a _custom command instead of my shell"
 msgstr "运行一个自定义命令，而不是 Shell (_C)"
 
-#: ../terminal/terminal-preferences.glade.h:32
+#: ../terminal/terminal-preferences.glade.h:34
 msgid ""
 "Select this option to force Terminal to run custom command instead of your "
 "shell when you open new terminals."
 msgstr "选中此选项以强制在打开新终端时运行自定义命令而不是你的 Shell。"
 
-#: ../terminal/terminal-preferences.glade.h:33
+#: ../terminal/terminal-preferences.glade.h:35
 msgid "C_ustom command:"
 msgstr "自定义命令(_U)："
 
-#: ../terminal/terminal-preferences.glade.h:34
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Select this option to make new terminals (tabs or windows) use custom "
 "working directory. Otherwise, current working directory will be used."
 msgstr "设置该选项以使新终端（标签页或者窗口）使用自定义工作目录。否则，当前的工作目录将会被使用"
 
-#: ../terminal/terminal-preferences.glade.h:35
+#: ../terminal/terminal-preferences.glade.h:37
 msgid "_Working directory:"
 msgstr "工作目录(_W)："
 
-#: ../terminal/terminal-preferences.glade.h:36
+#: ../terminal/terminal-preferences.glade.h:38
 msgid "Command"
 msgstr "命令"
 
-#: ../terminal/terminal-preferences.glade.h:37
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "Scroll on ou_tput"
 msgstr "输出时滚动(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:40
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "此选项控制每当终端中运行的命令有新输出时终端是否自动向下滚动。"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:41
 msgid "Scroll on _keystroke"
 msgstr "按键时滚动(_K)"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:42
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr "能让您通过按键盘上任意键将终端窗口向下滚动至命令提示符处。"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:43
 msgid "Scr_ollbar is:"
 msgstr "滚动条在(_O)："
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:44
 msgid "Scroll_back:"
 msgstr "向上滚动(_B)："
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:45
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "指定您可以使用滚动条向上滚动的行数"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:46
 msgid "Unli_mited scrollback"
 msgstr "无限回滚(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:47
 msgid ""
 "This option controls whether the terminal will have no limits on scrollback."
 msgstr "该选项控制终端是否带有回滚限制。"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "Scrolling"
 msgstr "滚动"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:49
 msgid "Cursor shape:"
 msgstr "光标形状："
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "Cursor blinks"
 msgstr "光标闪烁"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:51
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "该选项控制是否闪烁光标。"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "Cursor"
 msgstr "光标"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "_General"
 msgstr "一般(_G)"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "_Keep window open when it loses focus"
 msgstr "当窗口失去焦点时保持其打开"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "Always keep window on _top"
 msgstr "始终保持窗口位于顶部"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "Use shortcut to _focus visible window"
 msgstr "使用快捷键聚焦可见的窗口(_F)"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:57
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "如果启用，此快捷键在打开和缩进窗口时会聚焦而不是关闭此窗口，如果以前已不聚焦的话"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "Show _status icon in notification area"
 msgstr "在通知区域显示状态图标(_S)"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Behavior"
 msgstr "行为"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Wi_dth:"
 msgstr "宽(_D):"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "He_ight:"
 msgstr "高(_I)"
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "_Always show tabs"
 msgstr "总是显示标签（_A）"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "D_uration:"
 msgstr "持续时间(_U)"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "_Opacity:"
 msgstr "透明度(_O)："
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:66
 msgid ""
 "Sorry, your Window Manager does not support compositing:\n"
 "Opacity setting is not available."
 msgstr "对不起，您的窗口管理器不支持合成:\n不透明度设置不可用。"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "Show window _borders"
 msgstr "显示窗口边框(_B)"
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:69
 msgid "Appearance and Animation"
 msgstr "外观和动画"
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "L_eft"
 msgstr "左(_E)"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:71
 msgid "Right"
 msgstr "右"
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "U_p"
 msgstr "上(_P)"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Down"
 msgstr "下"
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "Move to monitor with poi_nter"
 msgstr "移至指针所在屏幕(_N)"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Position"
 msgstr "位置"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "Drop-do_wn"
 msgstr "下拉"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Choose Terminal Font"
 msgstr "选择终端字体"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Use system _font"
 msgstr "使用系统字体(_F)"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "Enable this option to use system-wide monospace font."
 msgstr "启用此选项以使用系统等宽字体。"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Allow bold te_xt"
 msgstr "允许粗体字(_X)"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:81
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "启用此项让在终端窗口中运行的应用程序使用粗体。"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Font"
 msgstr "字体"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "_File:"
 msgstr "文件(_F)："
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "St_yle:"
 msgstr "样式(_Y)："
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Select Background Image File"
 msgstr "选择背景图片文件"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "_Shading:"
 msgstr "底纹(_S):"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "Background"
 msgstr "背景"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "Display _menubar in new windows"
 msgstr "在新窗口中显示菜单栏(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:89
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "启用此项在新创建的终端窗口中显示菜单栏。"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "Display _toolbar in new windows"
 msgstr "在新窗口中显示工具栏(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:91
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "启用此项在新创建的终端窗口中显示工具栏。"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "Display _borders around new windows"
 msgstr "在新窗口周围显示边框(_B)"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:93
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "启用此项在新创建的终端窗口周围显示窗口修饰。"
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "Default geometry:"
 msgstr "默认几何属性:"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "c_olumns"
 msgstr "列(_O)"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "row_s"
 msgstr "行(_S)"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "Opening New Windows"
 msgstr "打开新窗口"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "Reset tab activity _indicator after"
 msgstr "此后重置标签活动指示器(_I)"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "seconds"
 msgstr "秒"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:100
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "使用自定义样式以将标签页变窄（需要重启）"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "Tabs"
 msgstr "标签"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "_Appearance"
 msgstr "外观(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "_Vary the background color for each tab"
 msgstr "每个标签使用不同背景颜色(_V)"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:104
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "随机颜色基于选定的背景颜色，保持相同的亮度。"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Tab activit_y color:"
 msgstr "标签活动颜色(_Y)："
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "Choose tab activity color"
 msgstr "选择标签活动颜色"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "Color Selector"
 msgstr "颜色选择器"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Open a dialog to specify the color"
 msgstr "打开对话框指定颜色"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "_Text color:"
 msgstr "文字颜色(_T)："
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Choose text color"
 msgstr "选择终端文字颜色"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "_Background color:"
 msgstr "背景色(_B)："
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Choose background color"
 msgstr "选择终端背景色"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Note: Ctrl+click for color editor."
 msgstr "注意：Ctrl+单击打开颜色编辑器。"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "General"
 msgstr "一般"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "B_old text color:"
 msgstr "粗体字颜色(_O)："
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:116
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "启用该项将设置一个自定义的粗体字颜色。如果禁用将使用文字颜色。"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Choose bold font color"
 msgstr "选择粗体字颜色"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Text _selection color:"
 msgstr "文字选择区颜色(_S):"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:119
 msgid ""
 "Enable this option to set custom text and background colors for the "
 "selection. If disabled the background and text colors will be reversed."
 msgstr "选中此选项以设置文字选区的自定义前景色。如不启用则使用文字颜色的反色。"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Choose text selection foreground color"
 msgstr "选择终端文字选择区前景色"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Choose text selection background color"
 msgstr "选择终端文字选择区背景色"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Cu_rsor color:"
 msgstr "光标颜色(_R)："
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "Enable this option to set custom text and background colors for the cursor. "
 "If disabled the background and text colors will be reversed."
 msgstr "启用此选项以为光标设置自定义字符及背景色。如禁用此选项，背景色将是文本颜色的反色。"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Choose cursor background color"
 msgstr "选择光标背景色"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Choose cursor foreground color"
 msgstr "选择光标前景色"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "Custom Colors"
 msgstr "自定义颜色"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Black"
 msgstr "黑色"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Dark Gray"
 msgstr "深灰色"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Red"
 msgstr "红色"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "Light Red"
 msgstr "淡红色"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "Green"
 msgstr "绿色"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "Light Green"
 msgstr "浅绿色"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Brown / Yellow"
 msgstr "棕色/黄色"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Yellow"
 msgstr "黄色"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Blue"
 msgstr "蓝色"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Light Blue"
 msgstr "淡蓝色"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Magenta"
 msgstr "洋红色"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Light Magenta"
 msgstr "淡洋红色"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Cyan"
 msgstr "青色"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Light Cyan"
 msgstr "浅青色"
 
-#: ../terminal/terminal-preferences.glade.h:139
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Light Gray"
 msgstr "浅灰色"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "White"
 msgstr "白色"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Palette"
 msgstr "调色板"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Presets"
 msgstr "预设"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "_Colors"
 msgstr "颜色(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:146
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1509,120 +1519,120 @@ msgid ""
 "different terminal behavior."
 msgstr "这些选项可能会让一些应用程序表现不正常。列在\n此处，仅供您调整以便适应期望不同终端行为的特\n定应用程序或操作系统。"
 
-#: ../terminal/terminal-preferences.glade.h:148
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "_Backspace key generates:"
 msgstr "Backspace 键产生(_B)："
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "_Delete key generates:"
 msgstr "Delete 键产生(_D)："
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "_Reset compatibility options to defaults"
 msgstr "重置兼容性选项为默认(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "_Ambiguous-width characters:"
 msgstr "模糊宽度字符(_A)："
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Compatibility"
 msgstr "兼容性"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:155
 msgid "Co_mpatibility"
 msgstr "兼容性(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:156
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "双击时认为以下字符为\n某个词语的一部分(_W)："
 
-#: ../terminal/terminal-preferences.glade.h:157
+#: ../terminal/terminal-preferences.glade.h:159
 msgid "Rese_t"
 msgstr "重置(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:158
+#: ../terminal/terminal-preferences.glade.h:160
 msgid "Reset double click options to defaults"
 msgstr "重置双击选项为默认值"
 
-#: ../terminal/terminal-preferences.glade.h:159
+#: ../terminal/terminal-preferences.glade.h:161
 msgid "Double Click"
 msgstr "双击"
 
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:162
 msgid "Default character e_ncoding:"
 msgstr "默认字符编码(_N):"
 
-#: ../terminal/terminal-preferences.glade.h:161
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "Encoding"
 msgstr "编码"
 
-#: ../terminal/terminal-preferences.glade.h:162
+#: ../terminal/terminal-preferences.glade.h:164
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "禁用所有菜单访问键(比如 Alt + f)(_N)"
 
-#: ../terminal/terminal-preferences.glade.h:163
+#: ../terminal/terminal-preferences.glade.h:165
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "禁用菜单快捷键(默认为 F10)(_E)"
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:166
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "禁用帮助窗口快捷键（默认为 F1）"
 
-#: ../terminal/terminal-preferences.glade.h:165
+#: ../terminal/terminal-preferences.glade.h:167
 msgid "Shortcuts"
 msgstr "快捷键"
 
-#: ../terminal/terminal-preferences.glade.h:166
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "Use _middle mouse click to close tabs"
 msgstr "中键单击以关闭标签页(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:167
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Auto-hi_de mouse pointer"
 msgstr "自动隐藏鼠标指针(_D)"
 
-#: ../terminal/terminal-preferences.glade.h:168
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Re_wrap terminal contents on resize"
 msgstr "调整大小时重新调整终端内容(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "Automatically _copy selection to clipboard"
 msgstr "自动将选区复制到剪贴板(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Open new tab to the _right of the active tab"
 msgstr "向左活动标签打开新标签(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "如果被禁用，新窗口将会在最右边的位置打开。"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "_Audible bell"
 msgstr "声音铃声(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "允许终端通过播放声音以反应事件。"
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "_Visual bell"
 msgstr "可视化铃声(_V)"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:177
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "允许终端使用WM（窗口管理器）的紧急提示功能来反应事件。"
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "Misc"
 msgstr "杂项"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:179
 msgid "Ad_vanced"
 msgstr "高级(_V)"
 
