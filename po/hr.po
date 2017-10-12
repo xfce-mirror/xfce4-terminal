@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-05 00:31+0200\n"
-"PO-Revision-Date: 2017-10-05 06:54+0000\n"
+"POT-Creation-Date: 2017-10-12 00:31+0200\n"
+"PO-Revision-Date: 2017-10-12 11:49+0000\n"
 "Last-Translator: Edin Veskovic <edin.lockedin@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -396,24 +396,24 @@ msgstr "Opcija \"--font\" zahtijeva određivanje povećanja (%d .. %d) kao svog 
 msgid "Unknown option \"%s\""
 msgstr "Nepoznata opcija  \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:395
+#: ../terminal/terminal-preferences-dialog.c:403
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:401
+#: ../terminal/terminal-preferences-dialog.c:409
 msgid "Image Files"
 msgstr "Datoteke slika"
 
-#: ../terminal/terminal-preferences-dialog.c:857
+#: ../terminal/terminal-preferences-dialog.c:865
 msgid "Load Presets..."
 msgstr "Učitaj spremljene..."
 
-#: ../terminal/terminal-preferences.c:1106
+#: ../terminal/terminal-preferences.c:1117
 msgid "Terminal"
 msgstr "Terminal"
 
 #: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:1993
+#: ../terminal/terminal-screen.c:2006
 msgid "Untitled"
 msgstr "Nenaslovljeno"
 
@@ -422,38 +422,38 @@ msgstr "Nenaslovljeno"
 msgid "Unable to determine your login shell."
 msgstr "Ne mogu odrediti vaš ljusku za prijavu."
 
-#: ../terminal/terminal-screen.c:1251
+#: ../terminal/terminal-screen.c:1259
 msgid "Child process exited"
 msgstr "Proces dijete ugašen"
 
-#: ../terminal/terminal-screen.c:1254
+#: ../terminal/terminal-screen.c:1262
 msgid "_Relaunch"
 msgstr "Ponovno pok_reni"
 
-#: ../terminal/terminal-screen.c:1260
+#: ../terminal/terminal-screen.c:1268
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Proces dijete ugašen normalno sa statusom %d."
 
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1270
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Proces dijete prekinut signalom %d."
 
-#: ../terminal/terminal-screen.c:1264
+#: ../terminal/terminal-screen.c:1272
 #, c-format
 msgid "The child process was aborted."
 msgstr "Proces dijete prekinut."
 
-#: ../terminal/terminal-screen.c:1674 ../terminal/terminal-screen.c:1700
+#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
 msgid "Failed to execute child"
 msgstr "Neuspjelo izvršavanje djeteta"
 
-#: ../terminal/terminal-screen.c:2323
+#: ../terminal/terminal-screen.c:2344
 msgid "Close this tab"
 msgstr "Zatvori ovu karticu"
 
-#: ../terminal/terminal-screen.c:2376
+#: ../terminal/terminal-screen.c:2397
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Neuspješno postavljanje znakovnog kodiranja %s\n"
@@ -816,7 +816,7 @@ msgstr "Postavi _enkodiranje"
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2274
+#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
 msgid "_Cancel"
 msgstr "_Odustani"
 
@@ -865,35 +865,35 @@ msgstr "Zatvori prozor?"
 msgid "Do _not ask me again"
 msgstr "Ne_pitaj me ponovo"
 
-#: ../terminal/terminal-window.c:2118
+#: ../terminal/terminal-window.c:2124
 msgid "_Title:"
 msgstr "_Naslov:"
 
-#: ../terminal/terminal-window.c:2131
+#: ../terminal/terminal-window.c:2137
 msgid "Enter the title for the current terminal tab"
 msgstr "Unesi naslov trenutne kartice terminala"
 
-#: ../terminal/terminal-window.c:2139
+#: ../terminal/terminal-window.c:2145
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2151
 msgid "Close"
 msgstr "Zatvori"
 
-#: ../terminal/terminal-window.c:2191
+#: ../terminal/terminal-window.c:2197
 msgid "Failed to create the regular expression"
 msgstr "Neuspjelo stvaranje regularnih izraza"
 
-#: ../terminal/terminal-window.c:2271
+#: ../terminal/terminal-window.c:2277
 msgid "Save contents..."
 msgstr "Spremi sadržaje..."
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2281
 msgid "_Save"
 msgstr "_Spremi"
 
-#: ../terminal/terminal-window.c:2312
+#: ../terminal/terminal-window.c:2318
 msgid "Failed to save terminal contents"
 msgstr "Neuspjelo spremanje sadržaja terminala"
 
@@ -1022,483 +1022,493 @@ msgid ""
 msgstr "Izaberite ovu opciju kako bi se terminal pokretao kao ljuska za prijavu pri novom pokretanju. Proučite dokumentaciju vaše ljuske radi razlike između interaktivne ljuske i ljuske za prijavu."
 
 #: ../terminal/terminal-preferences.glade.h:31
+msgid "_Update utmp/wtmp records when command is launched"
+msgstr "_Ažuriraj utmp/wtmp zapise kada se pokrene naredba"
+
+#: ../terminal/terminal-preferences.glade.h:32
+msgid ""
+"Select this option to allow commands that use utmp/wtmp records (such as "
+"`write` or `wall`) to work."
+msgstr "Odaberite ovu opciju kako bi naredbe koje koriste utmp/wtmp zapise (kao što su `write` ili `wall`) radile."
+
+#: ../terminal/terminal-preferences.glade.h:33
 msgid "Run a _custom command instead of my shell"
 msgstr "Pokreni prila_gođenu naredbu umjesto moje ljuske"
 
-#: ../terminal/terminal-preferences.glade.h:32
+#: ../terminal/terminal-preferences.glade.h:34
 msgid ""
 "Select this option to force Terminal to run custom command instead of your "
 "shell when you open new terminals."
 msgstr "Odaberite ovu opciju kako bi prisilili Terminal da pokrene prilagođenu naredbu umjesto Vaše ljuske pri otvarnju novog naredbenog prozora"
 
-#: ../terminal/terminal-preferences.glade.h:33
+#: ../terminal/terminal-preferences.glade.h:35
 msgid "C_ustom command:"
 msgstr "Prilagođena _naredba:"
 
-#: ../terminal/terminal-preferences.glade.h:34
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Select this option to make new terminals (tabs or windows) use custom "
 "working directory. Otherwise, current working directory will be used."
 msgstr "Odaberite ovu opciju ako želite da novi terminal (kartica ili prozor) koristi drugi radni direktorij. Inače, koristit će se trenutni direktorij. "
 
-#: ../terminal/terminal-preferences.glade.h:35
+#: ../terminal/terminal-preferences.glade.h:37
 msgid "_Working directory:"
 msgstr "_Radni direktorij:"
 
-#: ../terminal/terminal-preferences.glade.h:36
+#: ../terminal/terminal-preferences.glade.h:38
 msgid "Command"
 msgstr "Naredba"
 
-#: ../terminal/terminal-preferences.glade.h:37
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "Scroll on ou_tput"
 msgstr "Klizi pri i_spisu izlaza"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:40
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "Ova opcija kontrolira hoće li terminal kliziti prema dole automatski kada naredba kreira izlaz unutar terminala."
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:41
 msgid "Scroll on _keystroke"
 msgstr "_Klizi pritiskom na tipku"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:42
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr "Omogućava da terminal klizi prema naredbenom retku pritiskom na bilo koju tipku tipkovnice."
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:43
 msgid "Scr_ollbar is:"
 msgstr "Klizn_a traka je:"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:44
 msgid "Scroll_back:"
 msgstr "Klizanje unatrag:"
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:45
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "Određuje broj linija vidljivih unatrag pomoću trake za klizanje."
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:46
 msgid "Unli_mited scrollback"
 msgstr "Neog_raničeni scrollback"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:47
 msgid ""
 "This option controls whether the terminal will have no limits on scrollback."
 msgstr "Ova opcija upravlja da li terminal neće imati ograničenje na scrollback."
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "Scrolling"
 msgstr "Klizanje"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:49
 msgid "Cursor shape:"
 msgstr "Oblik pokazivača"
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "Cursor blinks"
 msgstr "Titranja pokazivača"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:51
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "Ova opcija upravlja da li će pokazivač titrati ili ne"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "Cursor"
 msgstr "Pokazivač"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "_General"
 msgstr "_Osnovno"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "_Keep window open when it loses focus"
 msgstr "_Ostavi prozor otvorenim kada izgubi fokus"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "Always keep window on _top"
 msgstr "Prozor uvijek na na _vrhu"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "Use shortcut to _focus visible window"
 msgstr "Koristi kraticu za _fokusiranje vidljivog prozora"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:57
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "Ako je ova opcija omogućena, kratica za otvaranje i uvlaćenje će fokusirati prozor umjesto zatvoriti ga ako je izgubio fokus prije toga"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "Show _status icon in notification area"
 msgstr "Pokazuj ikonu _statusa u području obavijesti"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Behavior"
 msgstr "Ponašanje"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Wi_dth:"
 msgstr "Ši_rina:"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "He_ight:"
 msgstr "Vi_sina:"
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "_Always show tabs"
 msgstr "_Uvijek pokaži kartice"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "D_uration:"
 msgstr "T_rajanje:"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "_Opacity:"
 msgstr "_Neprozirnost:"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:66
 msgid ""
 "Sorry, your Window Manager does not support compositing:\n"
 "Opacity setting is not available."
 msgstr "Oprostite, ali vaš upravitelj prozora ne podržava sastavljanje:\nProzirnost nije dostupna."
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "Show window _borders"
 msgstr "Prikaži o_brube prozora"
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:69
 msgid "Appearance and Animation"
 msgstr "Izgled i animacija"
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "L_eft"
 msgstr "L_ijevo"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:71
 msgid "Right"
 msgstr "Desno"
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "U_p"
 msgstr "_Gore"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Down"
 msgstr "Dolje"
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "Move to monitor with poi_nter"
 msgstr "Premjesti na monitor po_kazivačem"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Position"
 msgstr "Pozicija"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "Drop-do_wn"
 msgstr "Padaju_ći"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Choose Terminal Font"
 msgstr "Odaberi font terminala"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Use system _font"
 msgstr "Koristi _font sustava"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "Enable this option to use system-wide monospace font."
 msgstr "Omogučite ovu opciju da bi koristili font sustava fiksne širine."
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Allow bold te_xt"
 msgstr "Dozvoli podebljani tek_st"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:81
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "Omogućite ovu opciju da rpogrami pokrenuti unutar treminalih prozora mogu koristiti podebljani tekst"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Font"
 msgstr "Font"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "_File:"
 msgstr "_Datoteka:"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "St_yle:"
 msgstr "Stil"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Select Background Image File"
 msgstr "Odaberi pozadinsku slikovnu datoteku"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "_Shading:"
 msgstr "_Sjenčanje:"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "Background"
 msgstr "Pozadina"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "Display _menubar in new windows"
 msgstr "Prikaži _traku izbornika u novim prozorima"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:89
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Omogući ovu opciju za prikazivanje trake izbornika u novostvorenim prozorima terminala"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:90
 msgid "Display _toolbar in new windows"
 msgstr "Prikaži _alatnu traku u novim prozorima"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:91
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Omogući ovu opciju za prikazivanje altnih traka u novostvorenim prozorima terminala"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "Display _borders around new windows"
 msgstr "Prikaži _rubove oko novih prozora"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:93
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Omogući ovu opciju za prikazivanje ukrašavanja prozora oko novodtvorenih prozora terminala"
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "Default geometry:"
 msgstr "Zadana geometrija:"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "c_olumns"
 msgstr "s_tupci"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "row_s"
 msgstr "re_ci"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "Opening New Windows"
 msgstr "Otvaranje novih prozora"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "Reset tab activity _indicator after"
 msgstr "Reset_iraj aktivnost kartica poslije"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "seconds"
 msgstr "sekunde"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:100
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Koristi prilagođeni _stil radi prikaza tanjih kartica (potrebno ponovno pokretanje)"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "Tabs"
 msgstr "Kartice"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "_Appearance"
 msgstr "_Izgled"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "_Vary the background color for each tab"
 msgstr "_Mijenjaj boju pozadine za svaku karticu"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:104
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Nasumična boja je bazirana na odabranim bojama pozadine, koristeći istu svijetlinu."
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Tab activit_y color:"
 msgstr "Boja aktivnost_i kartice"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "Choose tab activity color"
 msgstr "Odaberite boju aktivnosti kartice"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "Color Selector"
 msgstr "Odabirač boja"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Open a dialog to specify the color"
 msgstr "Otvori dialod za određivanje boje"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "_Text color:"
 msgstr "_Boja teksta:"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "Choose text color"
 msgstr "Odaberi boju teksta "
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "_Background color:"
 msgstr "_Pozadinska boja:"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Choose background color"
 msgstr "Odaberi pozadinsku boju "
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Note: Ctrl+click for color editor."
 msgstr "Napomena: Pritisnite Ctrl+click za prikaz uređivača boje."
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "General"
 msgstr "Osnovno"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "B_old text color:"
 msgstr "B_oja podebljanog teksta:"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:116
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Omogućite ovu opciju za postavljanje svoje boje podebljanog teksta. Ako je opcija onemogućena koristit će se boja teksta."
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Choose bold font color"
 msgstr "Odaberite boju podabljanog fonta"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Text _selection color:"
 msgstr "Boja odabranog tek_sta:"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:119
 msgid ""
 "Enable this option to set custom text and background colors for the "
 "selection. If disabled the background and text colors will be reversed."
 msgstr "Omogućite ovu opciju kako bi sami postavili boju teksta i pozadine za označen tekst. Ako je opcija onemogućena boja pozadine i teksta bit će obrnute."
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Choose text selection foreground color"
 msgstr "Izaberi prednju boju odabranog teksta"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Choose text selection background color"
 msgstr "Odaberite bodu pozadine odabranog teksta"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "Cu_rsor color:"
 msgstr "Bo_ja pokazivača"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:123
 msgid ""
 "Enable this option to set custom text and background colors for the cursor. "
 "If disabled the background and text colors will be reversed."
 msgstr "Omogućite ovu opciju kako bi postavili svoju boju teksta i pozadine za pokazivač. Ako je opcija onemogućena boja pozadine i teksta bit će obrnute."
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Choose cursor background color"
 msgstr "Odaberi pozadinsku boju pokazivača"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Choose cursor foreground color"
 msgstr "Odaberi prednju boju pokazivača"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "Custom Colors"
 msgstr "Prilagođene boje"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "Black"
 msgstr "Crna"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Dark Gray"
 msgstr "Tamno sivo"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Red"
 msgstr "Crvena"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "Light Red"
 msgstr "Svijetlo crvena"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "Green"
 msgstr "Zelena"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "Light Green"
 msgstr "Svijetlo zelena"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Brown / Yellow"
 msgstr "Smeđa / Žuta"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Yellow"
 msgstr "Žuta"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Blue"
 msgstr "Plava"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Light Blue"
 msgstr "Svijetlo plava"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Magenta"
 msgstr "Magenta"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Light Magenta"
 msgstr "Svijetla magenta"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Cyan"
 msgstr "Cyan"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Light Cyan"
 msgstr "Svijetlo tirkizna/cijan"
 
-#: ../terminal/terminal-preferences.glade.h:139
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Light Gray"
 msgstr "Svijetlo siva"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "White"
 msgstr "Bijela"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Palette"
 msgstr "Paleta"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Presets"
 msgstr "Spremljene"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "_Colors"
 msgstr "_Boje"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:146
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1506,120 +1516,120 @@ msgid ""
 "different terminal behavior."
 msgstr "Ove opcije mogu učiniti da se neke aplikacije ponašaju\nnepravilno. One su ovdje kako bi vam omogućile zaobilaženje\nnekih radnji određenih aplikacija koje očekuju različito\nponašanje terminala."
 
-#: ../terminal/terminal-preferences.glade.h:148
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "_Backspace key generates:"
 msgstr "_Backspace tipka čini:"
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "_Delete key generates:"
 msgstr "_Delete tipka čini:"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "_Reset compatibility options to defaults"
 msgstr "_Vrati opcije kompatibilnosti na zadano"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "_Ambiguous-width characters:"
 msgstr "Neodređeno široki zn_akovi:"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Compatibility"
 msgstr "Kompatibilnost"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:155
 msgid "Co_mpatibility"
 msgstr "Ko_mpatibilnost"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:156
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "Smatraj slijedeće\nznakove dijelom _riječi\npri dvostrukom kliku:"
 
-#: ../terminal/terminal-preferences.glade.h:157
+#: ../terminal/terminal-preferences.glade.h:159
 msgid "Rese_t"
 msgstr "Rese_tiraj"
 
-#: ../terminal/terminal-preferences.glade.h:158
+#: ../terminal/terminal-preferences.glade.h:160
 msgid "Reset double click options to defaults"
 msgstr "Resetiraj opcije dvoklika na zadane"
 
-#: ../terminal/terminal-preferences.glade.h:159
+#: ../terminal/terminal-preferences.glade.h:161
 msgid "Double Click"
 msgstr "Dvostruki klik"
 
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:162
 msgid "Default character e_ncoding:"
 msgstr "Zadano kodiranje z_nakova:"
 
-#: ../terminal/terminal-preferences.glade.h:161
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "Encoding"
 msgstr "Kodiranje"
 
-#: ../terminal/terminal-preferences.glade.h:162
+#: ../terminal/terminal-preferences.glade.h:164
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Onemogući sve tip_ke pristupa izbornika (poput Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:163
+#: ../terminal/terminal-preferences.glade.h:165
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "Onemogući t_ipku prečaca izbornika (F10 zadano)"
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:166
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "Onemogući _tipku prečaca za pomoć (F1 zadano)"
 
-#: ../terminal/terminal-preferences.glade.h:165
+#: ../terminal/terminal-preferences.glade.h:167
 msgid "Shortcuts"
 msgstr "Prečaci"
 
-#: ../terminal/terminal-preferences.glade.h:166
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "Use _middle mouse click to close tabs"
 msgstr "Koristi _srednju tipku miša za zatvaranje kartica"
 
-#: ../terminal/terminal-preferences.glade.h:167
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "Auto-hi_de mouse pointer"
 msgstr "Automatski sa_krij pokazivač"
 
-#: ../terminal/terminal-preferences.glade.h:168
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "Re_wrap terminal contents on resize"
 msgstr "Po_novno prelomi sadržaj terminala prilikom promjene veličine"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "Automatically _copy selection to clipboard"
 msgstr "Automatski _kopiraj obabir u međuspremnik"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Open new tab to the _right of the active tab"
 msgstr "Otvori novu karticu _desno od aktivne kartice"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "Ako je onemogućeno, nova kartica otvorit će se na krajnje desnoj poziciji."
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "_Audible bell"
 msgstr "_Ćujno zvonce"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "Dopušta terminalu da reproducira zvuk kako bi ukazao na neki događaj."
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "_Visual bell"
 msgstr "_Vidljivo zvonce"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:177
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "Dopušta terminalu korištenje mogućnosti hitnih obavijesti upravitelja prozorima kako bi ukazao na neki događaj."
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "Misc"
 msgstr "Ostalo"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:179
 msgid "Ad_vanced"
 msgstr "Na_predno"
 
