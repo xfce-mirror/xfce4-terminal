@@ -41,6 +41,8 @@
 #include <utempter.h>
 #endif
 
+#include <sys/wait.h>
+
 #include <libxfce4ui/libxfce4ui.h>
 
 #include <terminal/terminal-util.h>
