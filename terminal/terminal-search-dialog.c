@@ -82,7 +82,7 @@ terminal_search_dialog_class_init (TerminalSearchDialogClass *klass)
 static void
 terminal_search_dialog_init (TerminalSearchDialog *dialog)
 {
-  GtkWidget *close;
+  GtkWidget *close_button;
   GtkWidget *hbox;
   GtkWidget *vbox;
   GtkWidget *label;
@@ -90,9 +90,9 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   gtk_window_set_title (GTK_WINDOW (dialog), _("Find"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
 
-  close = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), close, GTK_RESPONSE_CLOSE);
-  gtk_widget_set_can_default (close, TRUE);
+  close_button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), close_button, GTK_RESPONSE_CLOSE);
+  gtk_widget_set_can_default (close_button, TRUE);
 
   dialog->button_prev = xfce_gtk_button_new_mixed ("go-previous", _("_Previous"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
