@@ -182,7 +182,7 @@ struct _TerminalScreen
 
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
-#if !VTE_CHECK_VERSION (0, 52, 0)
+#if !VTE_CHECK_VERSION (0, 51, 1)
   guint                scroll_on_output : 1;
 #endif
 
@@ -2577,7 +2577,7 @@ gboolean
 terminal_screen_get_scroll_on_output (TerminalScreen *screen)
 {
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-#if VTE_CHECK_VERSION (0, 52, 0)
+#if VTE_CHECK_VERSION (0, 51, 1)
   return vte_terminal_get_scroll_on_output (VTE_TERMINAL (screen->terminal));
 #else
   return screen->scroll_on_output;
@@ -2591,10 +2591,11 @@ terminal_screen_set_scroll_on_output (TerminalScreen *screen,
                                       gboolean        enabled)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-#if !VTE_CHECK_VERSION (0, 52, 0)
+#if VTE_CHECK_VERSION (0, 51, 1)
+  vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
+#else
   screen->scroll_on_output = enabled;
 #endif
-  vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
 }
 
 
