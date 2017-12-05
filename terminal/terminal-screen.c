@@ -2577,10 +2577,10 @@ gboolean
 terminal_screen_get_scroll_on_output (TerminalScreen *screen)
 {
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-#if VTE_CHECK_VERSION (0, 51, 1)
-  return vte_terminal_get_scroll_on_output (VTE_TERMINAL (screen->terminal));
-#else
+#if !VTE_CHECK_VERSION (0, 51, 1)
   return screen->scroll_on_output;
+#else
+  return vte_terminal_get_scroll_on_output (VTE_TERMINAL (screen->terminal));
 #endif
 }
 
@@ -2591,11 +2591,10 @@ terminal_screen_set_scroll_on_output (TerminalScreen *screen,
                                       gboolean        enabled)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-#if VTE_CHECK_VERSION (0, 51, 1)
-  vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
-#else
+#if !VTE_CHECK_VERSION (0, 51, 1)
   screen->scroll_on_output = enabled;
 #endif
+  vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
 }
 
 
