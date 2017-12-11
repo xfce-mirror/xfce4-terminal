@@ -678,8 +678,8 @@ terminal_widget_open_uri (TerminalWidget *widget,
             break;
 
           case PATTERN_TYPE_EMAIL:
-            uri = g_str_has_prefix (wlink, MAILTO "//")
-                ? g_strdup (wlink) : g_strconcat (MAILTO "//", wlink, NULL);
+            uri = strncmp (wlink, MAILTO, strlen (MAILTO)) == 0
+                ? g_strdup (wlink) : g_strconcat (MAILTO, wlink, NULL);
             break;
 
           default:
