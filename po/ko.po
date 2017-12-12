@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 00:31+0200\n"
-"PO-Revision-Date: 2017-11-14 12:10+0000\n"
+"POT-Creation-Date: 2017-12-12 00:32+0100\n"
+"PO-Revision-Date: 2017-12-12 09:13+0000\n"
 "Last-Translator: 박정규(Jung-Kyu Park) <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -409,48 +409,48 @@ msgstr "설정 불러오기..."
 msgid "Terminal"
 msgstr "터미널"
 
-#: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:2006
+#: ../terminal/terminal-screen.c:423 ../terminal/terminal-screen.c:791
+#: ../terminal/terminal-screen.c:2008
 msgid "Untitled"
 msgstr "제목 없음"
 
-#: ../terminal/terminal-screen.c:690
+#: ../terminal/terminal-screen.c:692
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "로그인 셸을 정할 수 없습니다."
 
-#: ../terminal/terminal-screen.c:1259
+#: ../terminal/terminal-screen.c:1261
 msgid "Child process exited"
 msgstr "하위 프로세스를 빠져나왔습니다"
 
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1264
 msgid "_Relaunch"
 msgstr "재실행(_R)"
 
-#: ../terminal/terminal-screen.c:1268
+#: ../terminal/terminal-screen.c:1270
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "하위 프로세스에서 %d 상태로 정상적으로 빠져나왔습니다."
 
-#: ../terminal/terminal-screen.c:1270
+#: ../terminal/terminal-screen.c:1272
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "하위 프로세스를 %d상태로 중단했습니다."
 
-#: ../terminal/terminal-screen.c:1272
+#: ../terminal/terminal-screen.c:1274
 #, c-format
 msgid "The child process was aborted."
 msgstr "하위 프로세스를 중단했습니다."
 
-#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
+#: ../terminal/terminal-screen.c:1687 ../terminal/terminal-screen.c:1713
 msgid "Failed to execute child"
 msgstr "자식 프로세스 실행 실패"
 
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:2346
 msgid "Close this tab"
 msgstr "이 탭 닫기"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2399
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "인코딩 설정을 못했습니다 %s\n"
@@ -543,7 +543,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "잘못된 색 정보를 받음: 잘못된 포맷 (%d) 또는 길이 (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:701
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "'%s' URL 열기에 실패했습니다"
@@ -1585,48 +1585,56 @@ msgid "Use _middle mouse click to close tabs"
 msgstr "마우스 가운데 단추를 탭 닫기에 활용(_M)"
 
 #: ../terminal/terminal-preferences.glade.h:169
+msgid "Use middle mouse click to open _URLs"
+msgstr "URL을 열 때 마우스 가운데 버튼 사용하기(_U)"
+
+#: ../terminal/terminal-preferences.glade.h:170
+msgid "If disabled, URLs can be opened by Ctrl + left mouse click."
+msgstr "사용 안 함으로 되어 있을 땐, Ctrl + 마우스 왼쪽 버튼 클릭으로 URL을 열면 됩니다. "
+
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "Auto-hi_de mouse pointer"
 msgstr "마우스 포인터 자동 숨김(_D)"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Re_wrap terminal contents on resize"
 msgstr "창 크기를 바꿀 때 터미널 내용 줄 다시 바꾸기(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "Automatically _copy selection to clipboard"
 msgstr "선택한 내용을 자동으로 클립보드로 복사(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "Open new tab to the _right of the active tab"
 msgstr "활성 탭의 오른쪽에 새 탭 열기(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "비활성화되면, 새 탭이 가장의 오른쪽에 열리게 됩니다."
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "_Audible bell"
 msgstr "소리 벨(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:177
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "터미널이 일부 이벤트에 나는 소리를 낼 수 있도록 허용합니다."
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "_Visual bell"
 msgstr "영상 벨(_V)"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:179
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "터미널이 일부 이벤트에 표시하는 창 관리자의 긴급 힌트 기능의 사용을 허용합니다."
 
-#: ../terminal/terminal-preferences.glade.h:178
+#: ../terminal/terminal-preferences.glade.h:180
 msgid "Misc"
 msgstr "기타"
 
-#: ../terminal/terminal-preferences.glade.h:179
+#: ../terminal/terminal-preferences.glade.h:181
 msgid "Ad_vanced"
 msgstr "고급(_V)"
 
