@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 00:31+0200\n"
-"PO-Revision-Date: 2017-11-27 21:34+0000\n"
+"POT-Creation-Date: 2017-12-12 00:32+0100\n"
+"PO-Revision-Date: 2017-12-12 23:14+0000\n"
 "Last-Translator: scootergrisen\n"
 "Language-Team: Danish (http://www.transifex.com/xfce/xfce-apps/language/da/)\n"
 "MIME-Version: 1.0\n"
@@ -412,48 +412,48 @@ msgstr "Indlæs forudinstillinger..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:2006
+#: ../terminal/terminal-screen.c:423 ../terminal/terminal-screen.c:791
+#: ../terminal/terminal-screen.c:2008
 msgid "Untitled"
 msgstr "Uden titel"
 
-#: ../terminal/terminal-screen.c:690
+#: ../terminal/terminal-screen.c:692
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Kan ikke bestemme din login-skal."
 
-#: ../terminal/terminal-screen.c:1259
+#: ../terminal/terminal-screen.c:1261
 msgid "Child process exited"
 msgstr "Barneproces afsluttede"
 
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1264
 msgid "_Relaunch"
 msgstr "_Start igen"
 
-#: ../terminal/terminal-screen.c:1268
+#: ../terminal/terminal-screen.c:1270
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Barneprocessen afsluttede normalt med status %d."
 
-#: ../terminal/terminal-screen.c:1270
+#: ../terminal/terminal-screen.c:1272
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Barneprocessen blev afbrudt af signal %d."
 
-#: ../terminal/terminal-screen.c:1272
+#: ../terminal/terminal-screen.c:1274
 #, c-format
 msgid "The child process was aborted."
 msgstr "Barneprocessen blev afbrudt."
 
-#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
+#: ../terminal/terminal-screen.c:1687 ../terminal/terminal-screen.c:1713
 msgid "Failed to execute child"
 msgstr "Kunne ikke afvikle underproces"
 
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:2346
 msgid "Close this tab"
 msgstr "Luk dette faneblad"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2399
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Kunne ikke indstille kodning %s\n"
@@ -546,7 +546,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Modtog ugyldig farvedata: Forkert format (%d) eller længde (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:701
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Kunne ikke åbne URL'en '%s'"
@@ -1585,51 +1585,59 @@ msgstr "Genveje"
 
 #: ../terminal/terminal-preferences.glade.h:168
 msgid "Use _middle mouse click to close tabs"
-msgstr "Brug _mellem museklik for at lukke faneblade"
+msgstr "Brug _midterklik med musen for at lukke faneblade"
 
 #: ../terminal/terminal-preferences.glade.h:169
+msgid "Use middle mouse click to open _URLs"
+msgstr "Brug midterklik med musen for at åbne _URL'er"
+
+#: ../terminal/terminal-preferences.glade.h:170
+msgid "If disabled, URLs can be opened by Ctrl + left mouse click."
+msgstr "Hvis deaktiveret, så kan URL'er åbens med Ctrl + venstreklik med musen."
+
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "Auto-hi_de mouse pointer"
 msgstr "Skjul automatisk musens _markør"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Re_wrap terminal contents on resize"
 msgstr "_Genombryd terminalens indhold ved ændring af størrelse"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "Automatically _copy selection to clipboard"
 msgstr "_Kopiér automatisk markering til udklipsholder"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "Open new tab to the _right of the active tab"
 msgstr "Åbn nyt faneblad til _højre for det aktive faneblad"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "Hvis deaktiveret, så vil nyt faneblad blive åbnet yderst til højre."
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "_Audible bell"
 msgstr "Klokke med _lyd"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:177
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "Tillader at terminalen afspille lyd for at indikere nogle hændelser."
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "_Visual bell"
 msgstr "Klokke som er _visuel"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:179
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "Tillader terminalen at bruge vindueshåndteringens formåenheder af \"urgent hint\" til at indikere nogle hændelser."
 
-#: ../terminal/terminal-preferences.glade.h:178
+#: ../terminal/terminal-preferences.glade.h:180
 msgid "Misc"
 msgstr "Diverse"
 
-#: ../terminal/terminal-preferences.glade.h:179
+#: ../terminal/terminal-preferences.glade.h:181
 msgid "Ad_vanced"
 msgstr "A_vanceret"
 
