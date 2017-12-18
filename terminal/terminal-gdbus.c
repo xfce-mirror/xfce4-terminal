@@ -57,7 +57,7 @@ terminal_gdbus_display_name (void)
 
   display_name = g_getenv ("DISPLAY");
   if (G_UNLIKELY (display_name == NULL))
-    return "";
+    display_name = "";
 
   name = g_strdup (display_name);
   period = strrchr (name, '.');
