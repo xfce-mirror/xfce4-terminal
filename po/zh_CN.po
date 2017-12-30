@@ -6,6 +6,7 @@
 # Chipong Luo <chipong.luo@yahoo.com>, 2011-2013
 # Hunt Xu <huntxu@live.cn>, 2009
 # Mingcong Bai <jeffbai@aosc.xyz>, 2016-2017
+# Sam Zhang <samzh@outlook.com>, 2017
 # xiaobo zhou <zhouxiaobo.500@gmail.com>, 2017
 # 玉堂白鹤 <yjwork@qq.com>, 2014
 # xiaobo zhou <zhouxiaobo.500@gmail.com>, 2013
@@ -16,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 00:31+0200\n"
-"PO-Revision-Date: 2017-10-12 05:13+0000\n"
-"Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
+"POT-Creation-Date: 2017-12-12 00:32+0100\n"
+"PO-Revision-Date: 2017-12-30 18:43+0000\n"
+"Last-Translator: Sam Zhang <samzh@outlook.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -415,48 +416,48 @@ msgstr "载入预设..."
 msgid "Terminal"
 msgstr "Terminal 终端"
 
-#: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:2006
+#: ../terminal/terminal-screen.c:423 ../terminal/terminal-screen.c:791
+#: ../terminal/terminal-screen.c:2008
 msgid "Untitled"
 msgstr "无标题"
 
-#: ../terminal/terminal-screen.c:690
+#: ../terminal/terminal-screen.c:692
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "未能确定您的登录 shell。"
 
-#: ../terminal/terminal-screen.c:1259
+#: ../terminal/terminal-screen.c:1261
 msgid "Child process exited"
 msgstr "子进程已退出"
 
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1264
 msgid "_Relaunch"
 msgstr "重新运行(_R)"
 
-#: ../terminal/terminal-screen.c:1268
+#: ../terminal/terminal-screen.c:1270
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子进程返回状态%d并正常退出"
 
-#: ../terminal/terminal-screen.c:1270
+#: ../terminal/terminal-screen.c:1272
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子进程已被信号%d所终止"
 
-#: ../terminal/terminal-screen.c:1272
+#: ../terminal/terminal-screen.c:1274
 #, c-format
 msgid "The child process was aborted."
 msgstr "子进程已被终止。"
 
-#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
+#: ../terminal/terminal-screen.c:1687 ../terminal/terminal-screen.c:1713
 msgid "Failed to execute child"
 msgstr "无法执行子进程"
 
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:2346
 msgid "Close this tab"
 msgstr "关闭此标签"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2399
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "设置编码 %s 失败\n"
@@ -549,7 +550,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "收到了无效的颜色数据：错误的格式(%d)或长度(%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:701
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "无法打开 URL “%s”"
@@ -1032,7 +1033,7 @@ msgstr "在命令启动时更新 utmp/wtmp 记录(_U)"
 msgid ""
 "Select this option to allow commands that use utmp/wtmp records (such as "
 "`write` or `wall`) to work."
-msgstr ""
+msgstr "选择该选项以允许使用 utemp/wtmp 记录的命令（如“write”和“wall”）工作。"
 
 #: ../terminal/terminal-preferences.glade.h:33
 msgid "Run a _custom command instead of my shell"
@@ -1591,48 +1592,56 @@ msgid "Use _middle mouse click to close tabs"
 msgstr "中键单击以关闭标签页(_M)"
 
 #: ../terminal/terminal-preferences.glade.h:169
+msgid "Use middle mouse click to open _URLs"
+msgstr "点击鼠标中键打开 _URL"
+
+#: ../terminal/terminal-preferences.glade.h:170
+msgid "If disabled, URLs can be opened by Ctrl + left mouse click."
+msgstr "如果被禁止，可以用 Ctrl + 鼠标左键打开URL。"
+
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "Auto-hi_de mouse pointer"
 msgstr "自动隐藏鼠标指针(_D)"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Re_wrap terminal contents on resize"
 msgstr "调整大小时重新调整终端内容(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "Automatically _copy selection to clipboard"
 msgstr "自动将选区复制到剪贴板(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "Open new tab to the _right of the active tab"
 msgstr "向左活动标签打开新标签(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "如果被禁用，新窗口将会在最右边的位置打开。"
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "_Audible bell"
 msgstr "声音铃声(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:177
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "允许终端通过播放声音以反应事件。"
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "_Visual bell"
 msgstr "可视化铃声(_V)"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:179
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "允许终端使用WM（窗口管理器）的紧急提示功能来反应事件。"
 
-#: ../terminal/terminal-preferences.glade.h:178
+#: ../terminal/terminal-preferences.glade.h:180
 msgid "Misc"
 msgstr "杂项"
 
-#: ../terminal/terminal-preferences.glade.h:179
+#: ../terminal/terminal-preferences.glade.h:181
 msgid "Ad_vanced"
 msgstr "高级(_V)"
 
