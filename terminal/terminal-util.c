@@ -88,7 +88,7 @@ terminal_util_show_about_dialog (GtkWindow *parent)
                          "translator-credits", _("translator-credits"),
                          "version", PACKAGE_VERSION,
                          "website", "http://docs.xfce.org/apps/terminal/start",
-                         "website-label", _("Visit Terminal website"),
+                         "website-label", _("Visit Xfce Terminal website"),
                          NULL);
 }
 
