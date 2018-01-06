@@ -123,6 +123,7 @@ enum
   PROP_WORD_CHARS,
   PROP_TAB_ACTIVITY_COLOR,
   PROP_TAB_ACTIVITY_TIMEOUT,
+  PROP_TEXT_BLINK_MODE,
   N_PROPERTIES,
 };
 
@@ -267,6 +268,18 @@ static void
 terminal_preferences_class_init (TerminalPreferencesClass *klass)
 {
   GObjectClass *gobject_class;
+  GType enum_types[] = {
+    GTK_TYPE_POSITION_TYPE,
+    TERMINAL_TYPE_BACKGROUND_STYLE,
+    TERMINAL_TYPE_BACKGROUND,
+    TERMINAL_TYPE_SCROLLBAR,
+    TERMINAL_TYPE_TITLE,
+    TERMINAL_TYPE_ERASE_BINDING,
+    TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
+    TERMINAL_TYPE_CURSOR_SHAPE,
+    TERMINAL_TYPE_TEXT_BLINK_MODE
+  };
+  guint i;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->dispose = terminal_preferences_dispose;
@@ -285,22 +298,10 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_DOUBLE, transform_string_to_double);
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_UINT, transform_string_to_uint);
-  if (!g_value_type_transformable (G_TYPE_STRING, GTK_TYPE_POSITION_TYPE))
-    g_value_register_transform_func (G_TYPE_STRING, GTK_TYPE_POSITION_TYPE, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND_STYLE))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND_STYLE, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_BACKGROUND, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_SCROLLBAR))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_SCROLLBAR, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_TITLE))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_TITLE, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_ERASE_BINDING))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_ERASE_BINDING, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING, transform_string_to_enum);
-  if (!g_value_type_transformable (G_TYPE_STRING, TERMINAL_TYPE_CURSOR_SHAPE))
-    g_value_register_transform_func (G_TYPE_STRING, TERMINAL_TYPE_CURSOR_SHAPE, transform_string_to_enum);
+  /* enum types */
+  for (i = 0; i < sizeof(enum_types) / sizeof (GType); ++i)
+    if (!g_value_type_transformable (G_TYPE_STRING, enum_types[i]))
+      g_value_register_transform_func (G_TYPE_STRING, enum_types[i], transform_string_to_enum);
 
   /**
    * TerminalPreferences:background-mode:
@@ -1137,6 +1138,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "WordChars",
                            "-A-Za-z0-9,./?%&#:_=+@~",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:text-blink-mode:
+   **/
+  preferences_props[PROP_TEXT_BLINK_MODE] =
+      g_param_spec_enum ("text-blink-mode",
+                         NULL,
+                         "TextBlinkMode",
+                         TERMINAL_TYPE_TEXT_BLINK_MODE,
+                         TERMINAL_TEXT_BLINK_ALWAYS,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);

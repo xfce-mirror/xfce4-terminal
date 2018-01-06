@@ -145,7 +145,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "scrolling-on-keystroke", "scrolling-bar",
                                        "scrolling-unlimited", "misc-cursor-shape",
                                        "misc-cursor-blinks", "font-allow-bold",
-                                       "font-use-system", "misc-menubar-default",
+                                       "font-use-system", "text-blink-mode",
+                                       "misc-menubar-default",
                                        "misc-toolbar-default", "misc-borders-default",
                                        "misc-tab-close-middle-click", "misc-middle-click-opens-uri",
                                        "misc-mouse-autohide", "misc-rewrap-on-resize",
@@ -262,6 +263,13 @@ error:
 #ifndef HAVE_LIBUTEMPTER
   /* hide "Update utmp/wtmp records" if no support for that */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "command-update-records");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+#endif
+
+#if !VTE_CHECK_VERSION (0, 51, 3)
+  /* hide "Text blinks" if vte doesn't support it */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-text-blink");
   terminal_return_if_fail (G_IS_OBJECT (object));
   gtk_widget_hide (GTK_WIDGET (object));
 #endif
