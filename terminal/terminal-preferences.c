@@ -268,7 +268,8 @@ static void
 terminal_preferences_class_init (TerminalPreferencesClass *klass)
 {
   GObjectClass *gobject_class;
-  GType enum_types[] = {
+  guint         i;
+  const GType   enum_types[] = {
     GTK_TYPE_POSITION_TYPE,
     TERMINAL_TYPE_BACKGROUND_STYLE,
     TERMINAL_TYPE_BACKGROUND,
@@ -279,7 +280,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     TERMINAL_TYPE_CURSOR_SHAPE,
     TERMINAL_TYPE_TEXT_BLINK_MODE
   };
-  guint i;
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->dispose = terminal_preferences_dispose;
