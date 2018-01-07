@@ -1147,7 +1147,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          NULL,
                          "TextBlinkMode",
                          TERMINAL_TYPE_TEXT_BLINK_MODE,
-                         TERMINAL_TEXT_BLINK_ALWAYS,
+                         TERMINAL_TEXT_BLINK_MODE_ALWAYS,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /* install all properties */

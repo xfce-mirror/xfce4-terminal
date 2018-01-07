@@ -1226,18 +1226,18 @@ terminal_screen_update_text_blink_mode (TerminalScreen *screen)
 
   switch (val)
     {
-      case VTE_TEXT_BLINK_ALWAYS:
+      case TERMINAL_TEXT_BLINK_MODE_ALWAYS:
         break;
 
-      case TERMINAL_TEXT_BLINK_NEVER:
+      case TERMINAL_TEXT_BLINK_MODE_NEVER:
         mode = VTE_TEXT_BLINK_NEVER;
         break;
 
-      case TERMINAL_TEXT_BLINK_FOCUSED:
+      case TERMINAL_TEXT_BLINK_MODE_FOCUSED:
         mode = VTE_TEXT_BLINK_FOCUSED;
         break;
 
-      case TERMINAL_TEXT_BLINK_UNFOCUSED:
+      case TERMINAL_TEXT_BLINK_MODE_UNFOCUSED:
         mode = VTE_TEXT_BLINK_UNFOCUSED;
         break;
 
