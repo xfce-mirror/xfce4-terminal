@@ -1218,6 +1218,7 @@ terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen)
 static void
 terminal_screen_update_text_blink_mode (TerminalScreen *screen)
 {
+#if VTE_CHECK_VERSION (0, 51, 3)
   TerminalTextBlinkMode val;
   VteTextBlinkMode      mode = VTE_TEXT_BLINK_ALWAYS;
 
@@ -1244,7 +1245,6 @@ terminal_screen_update_text_blink_mode (TerminalScreen *screen)
         terminal_assert_not_reached ();
     }
 
-#if VTE_CHECK_VERSION (0, 51, 3)
   vte_terminal_set_text_blink_mode (VTE_TERMINAL (screen->terminal), mode);
 #endif
 }
