@@ -157,6 +157,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "binding-backspace", "binding-delete",
                                        "binding-ambiguous-width", "background-mode",
                                        "background-image-style", "color-background-vary",
+                                       "color-bold-is-bright",
                                        "dropdown-keep-open-default", "dropdown-keep-above",
                                        "dropdown-toggle-focus", "dropdown-status-icon",
                                        "dropdown-move-to-active", "dropdown-always-show-tabs",
@@ -267,9 +268,19 @@ error:
   gtk_widget_hide (GTK_WIDGET (object));
 #endif
 
-#if !VTE_CHECK_VERSION (0, 51, 3)
+#if VTE_CHECK_VERSION (0, 51, 3)
+  /* hide "Allow bold" if vte supports "bold is bright" */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-allow-bold");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+#else
   /* hide "Text blinks" if vte doesn't support it */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-text-blink");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+
+  /* hide "Bold is bright" if vte doesn't support it */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-bold-is-bright");
   terminal_return_if_fail (G_IS_OBJECT (object));
   gtk_widget_hide (GTK_WIDGET (object));
 #endif

@@ -1000,6 +1000,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
   gboolean   vary_bg;
   gdouble    hsv[N_HSV];
   gdouble    sat_min, sat_max;
+  gboolean   bold_is_bright;
 
   g_object_get (screen->preferences,
                 "color-palette", &palette_str,
@@ -1007,6 +1008,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
                 "color-selection-use-default", &selection_use_default,
                 "color-bold-use-default", &bold_use_default,
                 "color-background-vary", &vary_bg,
+                "color-bold-is-bright", &bold_is_bright,
                 NULL);
 
   if (G_LIKELY (palette_str != NULL))
@@ -1105,6 +1107,11 @@ terminal_screen_update_colors (TerminalScreen *screen)
     bold_use_default = !terminal_preferences_get_color (screen->preferences, "color-bold", &bold);
   if (!bold_use_default || has_fg)
     vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? &fg : &bold);
+
+#if VTE_CHECK_VERSION (0, 51, 3)
+  /* "bold-is-bright" supported since vte 0.51.3 */
+  vte_terminal_set_bold_is_bright (VTE_TERMINAL (screen->terminal), bold_is_bright);
+#endif
 }
 
 
@@ -2581,7 +2588,10 @@ terminal_screen_update_font (TerminalScreen *screen)
   if (G_LIKELY (font_name != NULL))
     {
       font_desc = pango_font_description_from_string (font_name);
+#if !VTE_CHECK_VERSION (0, 51, 3)
+      /* "bold-is-bright" is used since vte 0.51.3 */
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
+#endif
       vte_terminal_set_font (VTE_TERMINAL (screen->terminal), font_desc);
       pango_font_description_free (font_desc);
       g_free (font_name);

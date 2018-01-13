@@ -63,6 +63,7 @@ enum
   PROP_COLOR_BOLD,
   PROP_COLOR_BOLD_USE_DEFAULT,
   PROP_COLOR_PALETTE,
+  PROP_COLOR_BOLD_IS_BRIGHT,
   PROP_COMMAND_LOGIN_SHELL,
   PROP_COMMAND_UPDATE_RECORDS,
   PROP_RUN_CUSTOM_COMMAND,
@@ -527,6 +528,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "#55ffff;"
                            "#ffffff",
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:color-bold-is-bright:
+   **/
+  preferences_props[PROP_COLOR_BOLD_IS_BRIGHT] =
+      g_param_spec_boolean ("color-bold-is-bright",
+                            NULL,
+                            "ColorBoldIsBright",
+                            TRUE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:tab-activity-color:
