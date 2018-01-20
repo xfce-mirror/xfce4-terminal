@@ -579,6 +579,10 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_binding_delete (screen);
   else if (strcmp ("binding-ambiguous-width", name) == 0)
     terminal_screen_update_binding_ambiguous_width (screen);
+#if VTE_CHECK_VERSION (0, 51, 3)
+  else if (strcmp ("cell-width-scale", name) == 0 || strcmp ("cell-height-scale", name) == 0)
+    terminal_screen_update_font (screen);
+#endif
   else if (strncmp ("color-", name, strlen ("color-")) == 0)
     terminal_screen_update_colors (screen);
   else if (strncmp ("font-", name, strlen ("font-")) == 0)
@@ -2550,6 +2554,9 @@ terminal_screen_update_font (TerminalScreen *screen)
   PangoFontDescription *font_desc;
   glong                 grid_w = 0, grid_h = 0;
   GSettings            *settings;
+#if VTE_CHECK_VERSION (0, 51, 3)
+  gdouble cell_width_scale, cell_height_scale;
+#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -2596,6 +2603,16 @@ terminal_screen_update_font (TerminalScreen *screen)
       pango_font_description_free (font_desc);
       g_free (font_name);
     }
+
+#if VTE_CHECK_VERSION (0, 51, 3)
+  g_object_get (G_OBJECT (screen->preferences),
+                "cell-width-scale", &cell_width_scale,
+                "cell-height-scale", &cell_height_scale,
+                NULL);
+
+  vte_terminal_set_cell_width_scale (VTE_TERMINAL (screen->terminal), cell_width_scale);
+  vte_terminal_set_cell_height_scale (VTE_TERMINAL (screen->terminal), cell_height_scale);
+#endif
 
   /* update window geometry it required (not needed for drop-down) */
   if (TERMINAL_IS_WINDOW (toplevel) && !TERMINAL_WINDOW (toplevel)->drop_down && grid_w > 0 && grid_h > 0)

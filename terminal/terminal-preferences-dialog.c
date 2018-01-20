@@ -55,6 +55,10 @@ static void     terminal_preferences_dialog_palette_changed   (GtkWidget        
                                                                TerminalPreferencesDialog *dialog);
 static void     terminal_preferences_dialog_palette_notify    (TerminalPreferencesDialog *dialog);
 static void     terminal_preferences_dialog_presets_load      (TerminalPreferencesDialog *dialog);
+#if VTE_CHECK_VERSION (0, 51, 3)
+static void     terminal_preferences_dialog_reset_cell_scale  (GtkWidget                 *button,
+                                                               TerminalPreferencesDialog *dialog);
+#endif
 static void     terminal_preferences_dialog_reset_compat      (GtkWidget                 *button,
                                                                TerminalPreferencesDialog *dialog);
 static void     terminal_preferences_dialog_reset_word_chars  (GtkWidget                 *button,
@@ -288,6 +292,30 @@ error:
 #endif
 
 #if VTE_CHECK_VERSION (0, 51, 3)
+  /* bind cell width scale */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "spin-cell-width-scale");
+  object2 = G_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (object)));
+  terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  binding = g_object_bind_property (G_OBJECT (dialog->preferences), "cell-width-scale",
+                                    G_OBJECT (object2), "value",
+                                    G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  dialog->bindings = g_slist_prepend (dialog->bindings, binding);
+
+  /* bind cell height scale */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "spin-cell-height-scale");
+  object2 = G_OBJECT (gtk_spin_button_get_adjustment (GTK_SPIN_BUTTON (object)));
+  terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  binding = g_object_bind_property (G_OBJECT (dialog->preferences), "cell-height-scale",
+                                    G_OBJECT (object2), "value",
+                                    G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
+  dialog->bindings = g_slist_prepend (dialog->bindings, binding);
+
+  /* cell scale "Reset" button */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "reset-cell-scale");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (object, "clicked",
+                    G_CALLBACK (terminal_preferences_dialog_reset_cell_scale), dialog);
+
   /* hide "Allow bold" if vte supports "bold is bright" */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-allow-bold");
   terminal_return_if_fail (G_IS_OBJECT (object));
@@ -295,6 +323,11 @@ error:
 #else
   /* hide "Text blinks" if vte doesn't support it */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-text-blink");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+
+  /* hide "Cell spacing" if vte doesn't support it */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "cell-sp-box");
   terminal_return_if_fail (G_IS_OBJECT (object));
   gtk_widget_hide (GTK_WIDGET (object));
 
@@ -930,6 +963,18 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog)
       gtk_widget_hide (GTK_WIDGET (object));
     }
 }
+
+
+
+#if VTE_CHECK_VERSION (0, 51, 3)
+static void
+terminal_preferences_dialog_reset_cell_scale (GtkWidget                 *button,
+                                              TerminalPreferencesDialog *dialog)
+{
+  const gchar *properties[] = { "cell-width-scale", "cell-height-scale" };
+  RESET_PROPERTIES (properties);
+}
+#endif
 
 
 

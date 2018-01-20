@@ -125,6 +125,8 @@ enum
   PROP_TAB_ACTIVITY_COLOR,
   PROP_TAB_ACTIVITY_TIMEOUT,
   PROP_TEXT_BLINK_MODE,
+  PROP_CELL_WIDTH_SCALE,
+  PROP_CELL_HEIGHT_SCALE,
   N_PROPERTIES,
 };
 
@@ -300,7 +302,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   if (!g_value_type_transformable (G_TYPE_STRING, G_TYPE_UINT))
     g_value_register_transform_func (G_TYPE_STRING, G_TYPE_UINT, transform_string_to_uint);
   /* enum types */
-  for (i = 0; i < sizeof(enum_types) / sizeof (GType); ++i)
+  for (i = 0; i < G_N_ELEMENTS (enum_types); ++i)
     if (!g_value_type_transformable (G_TYPE_STRING, enum_types[i]))
       g_value_register_transform_func (G_TYPE_STRING, enum_types[i], transform_string_to_enum);
 
@@ -1160,6 +1162,26 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          TERMINAL_TYPE_TEXT_BLINK_MODE,
                          TERMINAL_TEXT_BLINK_MODE_ALWAYS,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:cell-width-scale:
+   **/
+  preferences_props[PROP_CELL_WIDTH_SCALE] =
+      g_param_spec_double ("cell-width-scale",
+                           NULL,
+                           "CellWidthScale",
+                           1.0, 2.0, 1.0,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:cell-height-scale:
+   **/
+  preferences_props[PROP_CELL_HEIGHT_SCALE] =
+      g_param_spec_double ("cell-height-scale",
+                           NULL,
+                           "CellHeightScale",
+                           1.0, 2.0, 1.0,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
