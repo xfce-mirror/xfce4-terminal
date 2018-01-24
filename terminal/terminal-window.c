@@ -2956,7 +2956,7 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
   GtkWidget      *page;
   GSList         *group = NULL;
   GtkRadioAction *radio_action;
-  gchar           name[50];
+  gchar           name[50], menu_item_name[100];
   GSList         *lp;
   GtkAccelKey     key = {0};
 
@@ -3011,22 +3011,26 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark,
                                radio_action, g_object_unref);
 
-      /* add action in the menu */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+      /* add action in the menu */
       gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
                              "/main-menu/tabs-menu/placeholder-tab-items",
                              name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
-G_GNUC_END_IGNORE_DEPRECATIONS
+      /* allow underscore to be shown */
+      g_snprintf (menu_item_name, sizeof (menu_item_name), "/main-menu/tabs-menu/placeholder-tab-items/%s", name);
+      gtk_menu_item_set_use_underline (GTK_MENU_ITEM (gtk_ui_manager_get_widget (window->priv->ui_manager, menu_item_name)), FALSE);
 
       if (npages > 1)
         {
           /* add to right-click tab menu */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           gtk_ui_manager_add_ui (window->priv->ui_manager, window->priv->tabs_menu_merge_id,
                                  "/tab-menu/tabs-menu/placeholder-tab-items",
                                  name, name, GTK_UI_MANAGER_MENUITEM, FALSE);
-G_GNUC_END_IGNORE_DEPRECATIONS
+          /* allow underscore to be shown */
+          g_snprintf (menu_item_name, sizeof (menu_item_name), "/tab-menu/tabs-menu/placeholder-tab-items/%s", name);
+          gtk_menu_item_set_use_underline (GTK_MENU_ITEM (gtk_ui_manager_get_widget (window->priv->ui_manager, menu_item_name)), FALSE);
         }
+G_GNUC_END_IGNORE_DEPRECATIONS
 
       /* set an accelerator path */
       g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", n + 1);
