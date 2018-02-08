@@ -842,6 +842,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           || strcmp (*p, "TERM") == 0)
         continue;
 
+#if !VTE_CHECK_VERSION (0, 51, 90)
       /* copy working directory to $PWD, to preserve symlinks
        * see https://bugzilla.gnome.org/show_bug.cgi?id=758452 */
       if (strcmp (*p, "PWD") == 0)
@@ -849,6 +850,7 @@ terminal_screen_get_child_environment (TerminalScreen *screen)
           result[n++] = g_strconcat (*p, "=", screen->working_directory, NULL);
           continue;
         }
+#endif
 
       /* copy the variable */
       value = g_getenv (*p);
