@@ -127,15 +127,15 @@ terminal_util_activate_window (GtkWindow *window)
   event.data.l[1] = timestamp;
   event.data.l[2] = event.data.l[3] = event.data.l[4] = 0;
 
-  gdk_error_trap_push ();
+  gdk_x11_display_error_trap_push (gdk_window_get_display (gdk_window));
 
   XSendEvent (gdk_x11_get_default_xdisplay (),
               gdk_x11_get_default_root_xwindow (), False,
               StructureNotifyMask, (XEvent *) &event);
 
-  gdk_flush ();
+  gdk_display_flush (gdk_window_get_display (gdk_window));
 
-  if (gdk_error_trap_pop () != 0)
+  if (gdk_x11_display_error_trap_pop (gdk_window_get_display (gdk_window)) != 0)
     g_critical ("Failed to focus window");
 #else
   /* our best guess on non-x11 clients */
