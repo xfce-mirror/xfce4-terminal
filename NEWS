@@ -1,3 +1,54 @@
+0.8.7
+=======
+- Update man page: add a note about config file changes being picked up
+- Update 'Read-Only' checkbox state when switching between tabs
+- Use Ctrl+click to directly open color editor in Preferences (#13715)
+- Add a setting to control drop-down window vertical position (#13722)
+- Allow per-terminal configuration of 'scroll on output' mode
+- Add "Copy as HTML" to Edit and context menus (VTE 0.50 required)
+- Add support for utmp file updates (build using --with-utempter parameter)
+  (#13710)
+- Fix negative geometry offsets handling (#13753)
+- Focus the terminal after closing Set Title popover (#13754)
+- Request confirmation when closing window or tab which has a running process
+  (#13781)
+- Add an option to open new tab to the right of the current tab (#13821)
+- Fix VTE critical message when a terminal has no pty
+- Allow to restart a process after it exited or was killed (for -H/--hold)
+  (#13820)
+- Expose default terminal directory setting to Preferences: if set, will be
+  used by new terminals; current directory will be used otherwise.
+  MiscDefaultWorkingDir renamed to DefaultWorkingDir.
+- Make use of VTE 0.52 new vte_terminal_get_scroll_on_output() API
+- Add new tab to the currently active window, not to the last open (#13891)
+- Move slim tabs setting to the Appearance tab
+- Add Audible and Visual bells configuration to Preferences (#13874)
+- Disable move tab actions when MiscCycleTabs is false and the tab is in the
+  leftmost or rightmost position (#13892)
+- Try to retrieve current working directory from VTE (#13902)
+- Fix BSD build by adding missing include
+- Bump required GTK+ version to 3.20.8 to resolve the problem with Set Title
+  dialog that is using GtkPopover (#13996)
+- Do not escape URL as libxfce4ui now does it (#12715)
+- Expose "middle mouse click to open URLs" setting to Preferences
+- Fix handling empty $DISPLAY env var which may happen under Wayland (#14092)
+- Update regex definitions from gnome-terminal: Disallow terminating semicolon
+  in URLs, Allow balanced pairs of square brackets in URLs
+- Remove man page translation files as Transifex doesn't take care of them
+  (#12938)
+- Add option to control text blinking (VTE 0.51.3) (#14127)
+- Add "Bold is bright" option; remove "Allow bold text" option (VTE 0.51.3)
+- Add cell spacing options (VTE 0.51.3) (#14127)
+- Allow underscores that are part of tab titles to be shown in the tabs menu
+- Don't copy working directory to $PWD for vte >= 0.51.90
+- Resolve deprecations of GDK functions
+- Translation updates: Arabic, Asturian, Basque, Bulgarian, Catalan, Chinese
+  (China), Chinese (Taiwan), Croatian, Czech, Danish, Dutch, English
+  (Australia), Finnish, French, German, Greek, Hebrew, Hungarian, Icelandic,
+  Indonesian, Italian, Japanese, Kazakh,   Korean, Lithuanian, Malay, Norwegian
+  Bokmål, Occitan, Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Uighur, Ukrainian
+
 0.8.6
 =======
 - Fix handling email addresses
