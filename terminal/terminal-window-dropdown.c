@@ -402,11 +402,13 @@ terminal_window_dropdown_set_property (GObject      *object,
           icon_name = gtk_window_get_icon_name (GTK_WINDOW (object));
           if (dropdown->status_icon == NULL && icon_name != NULL)
             {
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
               dropdown->status_icon = g_path_is_absolute (icon_name)
                 ? gtk_status_icon_new_from_file (icon_name)
                 : gtk_status_icon_new_from_icon_name (icon_name);
               gtk_status_icon_set_title (dropdown->status_icon, _("Drop-down Terminal"));
               gtk_status_icon_set_tooltip_text (dropdown->status_icon, _("Toggle Drop-down Terminal"));
+G_GNUC_END_IGNORE_DEPRECATIONS
               g_signal_connect (G_OBJECT (dropdown->status_icon), "button-press-event",
                   G_CALLBACK (terminal_window_dropdown_status_icon_press_event), dropdown);
               g_signal_connect (G_OBJECT (dropdown->status_icon), "popup-menu",
