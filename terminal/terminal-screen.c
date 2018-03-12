@@ -157,10 +157,6 @@ static void       terminal_screen_urgent_bell                   (TerminalWidget 
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_set_custom_command            (TerminalScreen        *screen,
                                                                  gchar                **command);
-static void       terminal_screen_child_error                   (VteTerminal           *terminal,
-                                                                 GPid                   pid,
-                                                                 GError                *error,
-                                                                 gpointer               user_data);
 
 
 
@@ -1681,11 +1677,12 @@ terminal_screen_set_custom_command (TerminalScreen *screen,
 
 
 
+#if VTE_CHECK_VERSION (0, 48, 0)
 static void
-terminal_screen_child_error (VteTerminal *terminal,
-                             GPid         pid,
-                             GError      *error,
-                             gpointer     user_data)
+terminal_screen_spawn_async_cb (VteTerminal *terminal,
+                                GPid         pid,
+                                GError      *error,
+                                gpointer     user_data)
 {
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
 
@@ -1699,6 +1696,7 @@ terminal_screen_child_error (VteTerminal *terminal,
       g_error_free (error);
     }
 }
+#endif
 
 
 
@@ -1765,7 +1763,9 @@ terminal_screen_launch_child (TerminalScreen *screen)
   if (!terminal_screen_get_child_command (screen, &command, &argv, &error))
     {
       /* tell the user that we were unable to execute the command */
-      terminal_screen_child_error (VTE_TERMINAL (screen->terminal), -1, error, screen);
+      xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
+                              error, _("Failed to execute child"));
+      g_error_free (error);
     }
   else
     {
@@ -1790,7 +1790,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                 NULL, NULL,
                                 NULL, SPAWN_TIMEOUT,
                                 NULL,
-                                terminal_screen_child_error,
+                                terminal_screen_spawn_async_cb,
                                 screen);
 #else
       if (!vte_terminal_spawn_sync (VTE_TERMINAL (screen->terminal),
@@ -1800,7 +1800,9 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                     NULL, NULL,
                                     &screen->pid, NULL, &error))
         {
-          terminal_screen_child_error (VTE_TERMINAL (screen->terminal), -1, error, screen);
+          xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
+                                  error, _("Failed to execute child"));
+          g_error_free (error);
         }
 #endif
 
