@@ -1105,10 +1105,8 @@ terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
                                          guint            page_num,
                                          TerminalWindow  *window)
 {
-
-  /* update actions in the window */
-  terminal_window_update_actions (window);
-
+  /* Regenerate the "Go" menu */
+  terminal_window_rebuild_tabs_menu (window);
 }
 
 
