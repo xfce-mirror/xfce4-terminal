@@ -1062,11 +1062,8 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
                                         guint            page_num,
                                         TerminalWindow  *window)
 {
-  TerminalScreen *active;
+  TerminalScreen *active = TERMINAL_SCREEN (page);
   const gchar    *encoding;
-
-  /* get the new active page */
-  active = TERMINAL_SCREEN (page);
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (active == NULL || TERMINAL_IS_SCREEN (active));
@@ -1105,8 +1102,9 @@ terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
                                          guint            page_num,
                                          TerminalWindow  *window)
 {
-  /* Regenerate the "Go" menu */
+  /* Regenerate the "Go" menu and update actions */
   terminal_window_rebuild_tabs_menu (window);
+  terminal_window_update_actions (window);
 }
 
 
