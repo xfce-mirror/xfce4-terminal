@@ -579,12 +579,16 @@ static gboolean
 terminal_window_dropdown_can_grab (gpointer data)
 {
   GdkWindow    *window = gtk_widget_get_window (GTK_WIDGET (data));
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   GdkGrabStatus status = gdk_keyboard_grab (window, FALSE, GDK_CURRENT_TIME);
+G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (status == GDK_GRAB_SUCCESS)
     {
       /* drop the grab */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+G_GNUC_END_IGNORE_DEPRECATIONS
       return FALSE;
     }
 
