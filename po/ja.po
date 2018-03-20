@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2016-2017
-# 出口　憲 <kdeguchi@sz.tokoha-u.ac.jp>, 2017
+# Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2016-2018
+# kdeguchi <kdeguchi@sz.tokoha-u.ac.jp>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 00:31+0200\n"
-"PO-Revision-Date: 2017-10-26 06:20+0000\n"
-"Last-Translator: 出口　憲 <kdeguchi@sz.tokoha-u.ac.jp>\n"
+"POT-Creation-Date: 2018-01-20 18:31+0100\n"
+"PO-Revision-Date: 2018-03-20 05:29+0000\n"
+"Last-Translator: Nobuhiro Iwamatsu <iwamatsu@nigauri.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -392,64 +392,64 @@ msgstr "オプション \"--zoom\" にはパラメーターとしてズーム (%
 msgid "Unknown option \"%s\""
 msgstr "\"%s\" は不明なオプションです"
 
-#: ../terminal/terminal-preferences-dialog.c:403
+#: ../terminal/terminal-preferences-dialog.c:474
 msgid "All Files"
 msgstr "すべてのファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: ../terminal/terminal-preferences-dialog.c:480
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:865
+#: ../terminal/terminal-preferences-dialog.c:936
 msgid "Load Presets..."
 msgstr "プリセットの読み込み..."
 
-#: ../terminal/terminal-preferences.c:1117
+#: ../terminal/terminal-preferences.c:1131
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:2006
+#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
+#: ../terminal/terminal-screen.c:2059
 msgid "Untitled"
 msgstr "無題"
 
-#: ../terminal/terminal-screen.c:690
+#: ../terminal/terminal-screen.c:700
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "あなたのログインシェルを特定できません。"
 
-#: ../terminal/terminal-screen.c:1259
+#: ../terminal/terminal-screen.c:1312
 msgid "Child process exited"
 msgstr "子プロセスが終了しました"
 
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1315
 msgid "_Relaunch"
 msgstr "再開(_R)"
 
-#: ../terminal/terminal-screen.c:1268
+#: ../terminal/terminal-screen.c:1321
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子プロセスがステータス %d で正常に終了しました。"
 
-#: ../terminal/terminal-screen.c:1270
+#: ../terminal/terminal-screen.c:1323
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子プロセスがシグナル %d で中断されました。"
 
-#: ../terminal/terminal-screen.c:1272
+#: ../terminal/terminal-screen.c:1325
 #, c-format
 msgid "The child process was aborted."
 msgstr "子プロセスが中断されました。"
 
-#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
+#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
 msgid "Failed to execute child"
 msgstr "子プロセスの実行に失敗しました。"
 
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:2397
 msgid "Close this tab"
 msgstr "このタブを閉じる"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2450
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "文字エンコーディングの設定に失敗しました %s\n"
@@ -499,8 +499,8 @@ msgid "translator-credits"
 msgstr "Daichi Kawahata <daichi@xfce.org>\nMasato Hashimoto <hashimo@xfce.org>\nNobuhiro Iwamatsu <iwamatsu@nigauri.org>"
 
 #: ../terminal/terminal-util.c:91
-msgid "Visit Terminal website"
-msgstr "Terminal のウェブサイトへ"
+msgid "Visit Xfce Terminal website"
+msgstr ""
 
 #: ../terminal/terminal-widget.c:317
 msgid "Copy Email Address"
@@ -542,7 +542,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "不正な色データを受け取りました: 不正な形式 (%d) か長さ (%d) です\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:701
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "URL '%s' をブラウザーで開けませんでした"
@@ -990,26 +990,42 @@ msgid "Wide"
 msgstr "全角"
 
 #: ../terminal/terminal-preferences.glade.h:25
+msgid "Never"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "When focused"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "When unfocused"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Always"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:29
 msgid "Terminal Preferences"
 msgstr "ターミナルの設定"
 
-#: ../terminal/terminal-preferences.glade.h:26
+#: ../terminal/terminal-preferences.glade.h:30
 msgid "_Initial title:"
 msgstr "最初のタイトル(_I):"
 
-#: ../terminal/terminal-preferences.glade.h:27
+#: ../terminal/terminal-preferences.glade.h:31
 msgid "_Dynamically-set title:"
 msgstr "自動的に付くタイトル(_D):"
 
-#: ../terminal/terminal-preferences.glade.h:28
+#: ../terminal/terminal-preferences.glade.h:32
 msgid "Title"
 msgstr "タイトル"
 
-#: ../terminal/terminal-preferences.glade.h:29
+#: ../terminal/terminal-preferences.glade.h:33
 msgid "_Run command as login shell"
 msgstr "ログインシェルとしてコマンドを実行する(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:30
+#: ../terminal/terminal-preferences.glade.h:34
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when"
 " you open new terminals. See the documentation of your shell for details "
@@ -1017,494 +1033,535 @@ msgid ""
 "login shell."
 msgstr "新しいターミナルを開く際に、シェルを強制的にログインシェルとして実行させる場合は、このオプションを選択してください。シェルがインタラクティブシェルとして実行される場合と、ログインシェルとして実行される場合の違いに関する詳細は、シェルのドキュメントを御覧ください。"
 
-#: ../terminal/terminal-preferences.glade.h:31
+#: ../terminal/terminal-preferences.glade.h:35
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "コマンドが開始された時に utmp/wtmp の記録を更新する(_U)"
 
-#: ../terminal/terminal-preferences.glade.h:32
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Select this option to allow commands that use utmp/wtmp records (such as "
 "`write` or `wall`) to work."
 msgstr "このオプションを選択すると(`write` や `wall` のような)コマンドが実行された時に utmp/wtmp へ記録することを許可します。"
 
-#: ../terminal/terminal-preferences.glade.h:33
+#: ../terminal/terminal-preferences.glade.h:37
 msgid "Run a _custom command instead of my shell"
 msgstr "自分のシェルの代わりにカスタムコマンドを実行(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:34
+#: ../terminal/terminal-preferences.glade.h:38
 msgid ""
 "Select this option to force Terminal to run custom command instead of your "
 "shell when you open new terminals."
 msgstr "新しいターミナルを開くときにシェルを実行する代わりにカスタムコマンドの実行を強制したいときにこのオプションを選択してください。"
 
-#: ../terminal/terminal-preferences.glade.h:35
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "C_ustom command:"
 msgstr "カスタムコマンド(_U):"
 
-#: ../terminal/terminal-preferences.glade.h:36
+#: ../terminal/terminal-preferences.glade.h:40
 msgid ""
 "Select this option to make new terminals (tabs or windows) use custom "
 "working directory. Otherwise, current working directory will be used."
 msgstr "このオプションを選択すると新しいターミナルはカスタム作業フォルダーを使えます。そうでないときは現在の作業フォルダーを使います。"
 
-#: ../terminal/terminal-preferences.glade.h:37
+#: ../terminal/terminal-preferences.glade.h:41
 msgid "_Working directory:"
 msgstr "作業フォルダー(_W):"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:42
 msgid "Command"
 msgstr "コマンド"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:43
 msgid "Scroll on ou_tput"
 msgstr "出力でスクロールさせる(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:44
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "ターミナル内で実行するコマンドによって新しい出力が表示された時、いつでも自動的に下へスクロールするかどうかを選択します。"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:45
 msgid "Scroll on _keystroke"
 msgstr "キー入力でスクロールさせる(_K)"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:46
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr "有効にすると、キーボード上のいずれかのキーを押すことで、ターミナルウィンドウをコマンドプロンプトまでスクロールします。"
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:47
 msgid "Scr_ollbar is:"
 msgstr "スクロールバー(_O):"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "Scroll_back:"
 msgstr "スクロールバック(_B):"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:49
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "スクロールバーを使用してスクロールバックできる行数を指定してください。"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "Unli_mited scrollback"
 msgstr "無制限のスクロールバック(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:51
 msgid ""
 "This option controls whether the terminal will have no limits on scrollback."
 msgstr "このオプションはスクロールバックを無制限にするかをコントロールします。"
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "Scrolling"
 msgstr "スクロール"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "Cursor shape:"
 msgstr "カーソルの形:"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "Cursor blinks"
 msgstr "カーソル点滅"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "このオプションはカーソルの点滅させるか、させないかをコントロールします。"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "Cursor"
 msgstr "カーソル"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "_General"
 msgstr "一般(_G)"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "_Keep window open when it loses focus"
 msgstr "フォーカスが他へ移動してもウィンドウを開いたままにする(_K)"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Always keep window on _top"
 msgstr "ウィンドウを常に最前面に表示する(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Use shortcut to _focus visible window"
 msgstr "ショートカットを表示中のウィンドウへのフォーカス移動に使用する(_F)"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:61
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "このオプションを有効にすると、表示中のターミナルウィンドウにフォーカスがない時に、ウィンドウを開く/引き込むショートカットによってウィンドウにフォーカスを移動します。"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "Show _status icon in notification area"
 msgstr "通知エリアにステータスアイコンを表示する(_S)"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "Behavior"
 msgstr "振る舞い"
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "Wi_dth:"
 msgstr "幅(_D):"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "He_ight:"
 msgstr "高さ(_I):"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:66
 msgid "_Always show tabs"
 msgstr "常にタブを表示する(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:67
 msgid "D_uration:"
 msgstr "時間(_U):"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:69
 msgid "_Opacity:"
 msgstr "不透明度(_O):"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:70
 msgid ""
 "Sorry, your Window Manager does not support compositing:\n"
 "Opacity setting is not available."
 msgstr "ウィンドウマネージャーがコンポジットをサポートしていません。:\n不透明度の設定はできません。"
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "Show window _borders"
 msgstr "ウィンドウ枠を表示する(_B)"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Appearance and Animation"
 msgstr "外観とアニメーション"
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "L_eft"
 msgstr "左(_E):"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Right"
 msgstr "右"
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "U_p"
 msgstr "上(_P)"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Down"
 msgstr "下"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Move to monitor with poi_nter"
 msgstr "ポインターのあるモニターに移動する(_N)"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "Position"
 msgstr "配置"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Drop-do_wn"
 msgstr "ドロップダウン(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "Choose Terminal Font"
 msgstr "ターミナルフォントを選択してください"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Use system _font"
 msgstr "システムフォントを使用する(_F)"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "Enable this option to use system-wide monospace font."
 msgstr "このオプションはシステム全体の等幅フォントを使うことを可能にします。"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Allow bold te_xt"
 msgstr "太字の使用を許可する(_X)"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:85
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "ターミナルウィンドウ内で実行するアプリケーションに太字を使用させてもよいなら、このオプションを有効にしてください。"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:86
+msgid ""
+"Controls whether text in the terminal is allowed to blink when '\\e[5m' "
+"escape codes are used."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Text blinks:"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Cell spacing:"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "x width"
+msgstr "x 幅"
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "x height"
+msgstr "x 高さ"
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Rese_t"
+msgstr "リセット(_T)"
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Reset cell spacing values to defaults"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:93
 msgid "Font"
 msgstr "フォント"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "_File:"
 msgstr "ファイル(_F):"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "St_yle:"
 msgstr "スタイル(_Y):"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Select Background Image File"
 msgstr "背景画像ファイルを選択してください"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "_Shading:"
 msgstr "明暗(_S):"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "Background"
 msgstr "背景"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "Display _menubar in new windows"
 msgstr "メニューバーを表示する(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:100
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "このオプションを有効にすると、新しく作成されるターミナルウィンドウでメニューバーが表示されます。"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "Display _toolbar in new windows"
 msgstr "新しいウィンドウでツールバーを表示する(_T)"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:102
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "このオプションを有効にすると、新しく作成されるターミナルウィンドウでツールバーが表示されます。"
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Display _borders around new windows"
 msgstr "ウィンドウ枠を表示する(_B)"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:104
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "このオプションを有効にすると、新しく作成されるターミナルウィンドウのウィンドウ枠が表示されます。"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Default geometry:"
 msgstr "デフォルトジオメトリ:"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "c_olumns"
 msgstr "列(_O)"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "row_s"
 msgstr "行(_S)"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Opening New Windows"
 msgstr "新しいウィンドウを開く場合"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "Reset tab activity _indicator after"
 msgstr "動作中タブ表示をリセットするまでの秒数(_I):"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "seconds"
 msgstr "秒"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "タブをスリム化するためのカスタムスタイルを使う(再起動が必要)(_S)"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Tabs"
 msgstr "タブ"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "_Appearance"
 msgstr "外観(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "_Vary the background color for each tab"
 msgstr "タブごとに背景色を変える(_V)"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:115
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "設定された背景色を基にタブごとの背景色をランダムに変更します。明度は変わりません。"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Tab activit_y color:"
 msgstr "動作中タブの色(_Y):"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "Choose tab activity color"
 msgstr "動作中タブの色を選択してください"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "Color Selector"
 msgstr "色の選択"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Open a dialog to specify the color"
 msgstr "色を指定するダイアログを開きます"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "_Text color:"
 msgstr "文字色(_T):"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Choose text color"
 msgstr "文字色の選択"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "_Background color:"
 msgstr "背景色(_B):"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Choose background color"
 msgstr "背景色の選択"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Note: Ctrl+click for color editor."
 msgstr "注意: Ctrl+click するとカラーエディターが使えます。"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "General"
 msgstr "一般"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "B_old text color:"
 msgstr "太字の色(_O):"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:127
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "このオプションで太字の色をカスタマイズできます。無効にした場合、文字色が使用されます。"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Choose bold font color"
 msgstr "太字の色の選択"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Text _selection color:"
 msgstr "選択領域の文字背景色(_S):"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:130
 msgid ""
 "Enable this option to set custom text and background colors for the "
 "selection. If disabled the background and text colors will be reversed."
 msgstr "このオプションを有効にすると選択領域の文字と背景色をカスタムできます。有効でなければ背景と文字の色は反転させられます。"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "Choose text selection foreground color"
 msgstr "選択領域の前景色の選択"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "Choose text selection background color"
 msgstr "選択領域の文字背景色の選択"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Cu_rsor color:"
 msgstr "カーソルの色(_R):"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:134
 msgid ""
 "Enable this option to set custom text and background colors for the cursor. "
 "If disabled the background and text colors will be reversed."
 msgstr "このオプションを有効にするとカーソルの文字と背景色をカスタムできます。有効でないと背景と文字色は反転させられます。"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Choose cursor background color"
 msgstr "カーソルの背景色を選択"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Choose cursor foreground color"
 msgstr "カーソルの前景色を選択"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Custom Colors"
 msgstr "色のカスタマイズ"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Black"
 msgstr "黒"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Dark Gray"
 msgstr "ダークグレー"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Red"
 msgstr "赤"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Light Red"
 msgstr "明るい赤"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Green"
 msgstr "緑"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Light Green"
 msgstr "明るい緑"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Brown / Yellow"
 msgstr "茶 / 黄"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Yellow"
 msgstr "黄"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "Blue"
 msgstr "青"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "Light Blue"
 msgstr "明るい青"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "Magenta"
 msgstr "マゼンタ"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "Light Magenta"
 msgstr "明るいマゼンタ"
 
-#: ../terminal/terminal-preferences.glade.h:139
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "Cyan"
 msgstr "シアン"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "Light Cyan"
 msgstr "明るいシアン"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "Light Gray"
 msgstr "ライトグレー"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "White"
 msgstr "白"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:154
+msgid "Show bold text in b_right colors"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:155
+msgid ""
+"Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
+"text to bright colors in addition to bold. If disabled, text color will "
+"remain intact."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:156
 msgid "Palette"
 msgstr "パレット"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:157
 msgid "Presets"
 msgstr "プリセット"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:158
 msgid "_Colors"
 msgstr "配色(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:146
+#: ../terminal/terminal-preferences.glade.h:159
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1512,120 +1569,124 @@ msgid ""
 "different terminal behavior."
 msgstr "これらのオプションによって、正常に動作しないアプリケー\nションがあるかもしれません。これらのオプションは、他の\n端末での動作を前提とする一部のアプリケーションや OS \nでの問題を解決するために存在します。"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "_Backspace key generates:"
 msgstr "Backspace キーの生成(_B):"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:164
 msgid "_Delete key generates:"
 msgstr "Delete キーの生成(_D):"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:165
 msgid "_Reset compatibility options to defaults"
 msgstr "互換性オプションをデフォルトに戻す(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:166
 msgid "_Ambiguous-width characters:"
 msgstr "曖昧な幅の文字:"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:167
 msgid "Compatibility"
 msgstr "互換性"
 
-#: ../terminal/terminal-preferences.glade.h:155
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "Co_mpatibility"
 msgstr "互換性(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:156
+#: ../terminal/terminal-preferences.glade.h:169
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "ダブルクリックしたときに\n単語の中にある次の文字を\n配慮する:"
 
-#: ../terminal/terminal-preferences.glade.h:159
-msgid "Rese_t"
-msgstr "リセット(_T)"
-
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Reset double click options to defaults"
 msgstr "ダブルクリックオプションをデフォルトに戻す"
 
-#: ../terminal/terminal-preferences.glade.h:161
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "Double Click"
 msgstr "ダブルクリック"
 
-#: ../terminal/terminal-preferences.glade.h:162
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "Default character e_ncoding:"
 msgstr "デフォルトの文字エンコーディング(_N):"
 
-#: ../terminal/terminal-preferences.glade.h:163
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "Encoding"
 msgstr "エンコーディング"
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "メニューへのアクセスキー (例えば Alt+f) をすべて無効にする(_N)"
 
-#: ../terminal/terminal-preferences.glade.h:165
+#: ../terminal/terminal-preferences.glade.h:177
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "メニューショートカットキー (デフォルトは F10) を無効にする(_E)"
 
-#: ../terminal/terminal-preferences.glade.h:166
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "ヘルプウィンドウショートカットキー (デフォルトは F1) を無効にする(_H)"
 
-#: ../terminal/terminal-preferences.glade.h:167
+#: ../terminal/terminal-preferences.glade.h:179
 msgid "Shortcuts"
 msgstr "ショートカット"
 
-#: ../terminal/terminal-preferences.glade.h:168
+#: ../terminal/terminal-preferences.glade.h:180
 msgid "Use _middle mouse click to close tabs"
 msgstr "タブを閉じるためにマウスの中クリックを使用(_M)"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:181
+msgid "Use middle mouse click to open _URLs"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:182
+msgid "If disabled, URLs can be opened by Ctrl + left mouse click."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:183
 msgid "Auto-hi_de mouse pointer"
 msgstr "自動的にマウスポインターを隠す(_H)"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:184
 msgid "Re_wrap terminal contents on resize"
 msgstr "リサイズされたらターミナルの内容を折り返す(_W)"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:185
 msgid "Automatically _copy selection to clipboard"
 msgstr "選択領域を自動的にクリップボードへコピー(_C)"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:186
 msgid "Open new tab to the _right of the active tab"
 msgstr "アクティブなタブの右側で新しいタブを開く(_R)"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:187
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "有効でないと、新しいタブは一番右側の場所で開かれます。"
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:188
 msgid "_Audible bell"
 msgstr "オーディオベル(_A)"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:189
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "イベントを知らせるためにサウンドの再生を許可します。"
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:190
 msgid "_Visual bell"
 msgstr "ビジュアルベル(_V)"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:191
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "イベントを知らせるためにウィンドウマネージャーの緊急通知の機能を使うことを許可します。"
 
-#: ../terminal/terminal-preferences.glade.h:178
+#: ../terminal/terminal-preferences.glade.h:192
 msgid "Misc"
 msgstr "その他"
 
-#: ../terminal/terminal-preferences.glade.h:179
+#: ../terminal/terminal-preferences.glade.h:193
 msgid "Ad_vanced"
 msgstr "上級者(_V)"
 
