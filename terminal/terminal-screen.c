@@ -2638,10 +2638,7 @@ terminal_screen_update_font (TerminalScreen *screen)
   if (G_LIKELY (font_name != NULL))
     {
       font_desc = pango_font_description_from_string (font_name);
-#if !VTE_CHECK_VERSION (0, 51, 3)
-      /* "bold-is-bright" is used since vte 0.51.3 */
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
-#endif
       vte_terminal_set_font (VTE_TERMINAL (screen->terminal), font_desc);
       pango_font_description_free (font_desc);
       g_free (font_name);

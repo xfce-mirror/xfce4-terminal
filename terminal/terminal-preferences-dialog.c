@@ -315,11 +315,6 @@ error:
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_signal_connect (object, "clicked",
                     G_CALLBACK (terminal_preferences_dialog_reset_cell_scale), dialog);
-
-  /* hide "Allow bold" if vte supports "bold is bright" */
-  object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-allow-bold");
-  terminal_return_if_fail (G_IS_OBJECT (object));
-  gtk_widget_hide (GTK_WIDGET (object));
 #else
   /* hide "Text blinks" if vte doesn't support it */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-text-blink");
