@@ -286,6 +286,7 @@ terminal_screen_init (TerminalScreen *screen)
   screen->working_directory = g_get_current_dir ();
   screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
   screen->session_id = ++screen_last_session_id;
+  screen->pid = -1;
 
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
@@ -2728,7 +2729,7 @@ terminal_screen_has_foreground_process (TerminalScreen *screen)
   int     fd;
   int     fgpid;
 
-  if (screen == NULL)
+  if (screen == NULL || screen->pid == -1)
     return FALSE;
 
   pty = vte_terminal_get_pty (VTE_TERMINAL (screen->terminal));
