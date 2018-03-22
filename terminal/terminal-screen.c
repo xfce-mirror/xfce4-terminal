@@ -1692,11 +1692,8 @@ terminal_screen_spawn_async_cb (VteTerminal *terminal,
   screen->pid = pid;
 
   if (error)
-    {
-      xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
-                              error, _("Failed to execute child"));
-      g_error_free (error);
-    }
+    xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
+                            error, _("Failed to execute child"));
 }
 #endif
 
