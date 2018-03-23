@@ -105,6 +105,7 @@ enum
   PROP_MISC_HIGHLIGHT_URLS,
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
   PROP_MISC_COPY_ON_SELECT,
+  PROP_MISC_SHOW_RELAUNCH_DIALOG,
   PROP_USE_DEFAULT_WORKING_DIR,
   PROP_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
@@ -1034,6 +1035,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             NULL,
                             "MiscNewTabAdjacent",
                             FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-show-relaunch-dialog:
+   **/
+  preferences_props[PROP_MISC_SHOW_RELAUNCH_DIALOG] =
+      g_param_spec_boolean ("misc-show-relaunch-dialog",
+                            NULL,
+                            "MiscShowRelaunchDialog",
+                            TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
