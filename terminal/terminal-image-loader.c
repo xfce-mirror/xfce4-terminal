@@ -393,17 +393,15 @@ terminal_image_loader_load (TerminalImageLoader *loader,
   /* check for a cached version */
   for (lp = loader->cache; lp != NULL; lp = lp->next)
     {
+      gint w, h;
       pixbuf = GDK_PIXBUF (lp->data);
-      if (gdk_pixbuf_get_height (pixbuf) == height
-          && gdk_pixbuf_get_width (pixbuf) == width)
+      w = gdk_pixbuf_get_width (pixbuf);
+      h = gdk_pixbuf_get_height (pixbuf);
+
+      if ((w == width && h == height) ||
+          (w >= width && h >= height && loader->style == TERMINAL_BACKGROUND_STYLE_TILED))
         {
-          return g_object_ref (G_OBJECT (pixbuf));
-        }
-      else if (gdk_pixbuf_get_height (pixbuf) >= height
-            && gdk_pixbuf_get_width (pixbuf) >= width
-            && loader->style == TERMINAL_BACKGROUND_STYLE_TILED)
-        {
-          return g_object_ref (G_OBJECT (pixbuf));
+          return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
         }
     }
 
@@ -436,7 +434,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
 
   loader->cache = g_slist_prepend (loader->cache, pixbuf);
 
-  return g_object_ref (G_OBJECT (pixbuf));
+  return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
 }
 
 
