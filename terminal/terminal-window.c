@@ -2092,7 +2092,6 @@ static void
 terminal_window_action_set_title (GtkAction      *action,
                                   TerminalWindow *window)
 {
-  AtkObject *object;
   GtkWidget *button;
   GtkWidget *box;
   GtkWidget *label;
@@ -2122,16 +2121,14 @@ terminal_window_action_set_title (GtkAction      *action,
       gtk_box_pack_start (GTK_BOX (box), label, FALSE, TRUE, 0);
 
       entry = gtk_entry_new ();
+      gtk_widget_set_tooltip_text (entry, _("Enter the title for the current terminal tab"));
       gtk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
       gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
       gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
       gtk_entry_set_icon_from_icon_name (GTK_ENTRY (entry), GTK_ENTRY_ICON_SECONDARY, "edit-clear");
+      gtk_entry_set_icon_tooltip_text (GTK_ENTRY (entry), GTK_ENTRY_ICON_SECONDARY, _("Reset"));
       g_signal_connect (G_OBJECT (entry), "icon-release", G_CALLBACK (title_popover_clear), NULL);
       g_signal_connect (G_OBJECT (entry), "activate", G_CALLBACK (title_popover_close), window);
-
-      /* set Atk description and label relation for the entry */
-      object = gtk_widget_get_accessible (entry);
-      atk_object_set_description (object, _("Enter the title for the current terminal tab"));
 
       g_object_bind_property (G_OBJECT (window->priv->active), "custom-title",
                               G_OBJECT (entry), "text",
