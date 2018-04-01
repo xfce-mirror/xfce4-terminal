@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 18:31+0100\n"
-"PO-Revision-Date: 2018-03-02 09:13+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"POT-Creation-Date: 2018-04-01 00:31+0200\n"
+"PO-Revision-Date: 2018-04-01 08:32+0000\n"
+"Last-Translator: Edin Veskovic <edin.lockedin@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -396,64 +396,68 @@ msgstr "Opcija \"--font\" zahtijeva određivanje povećanja (%d .. %d) kao svog 
 msgid "Unknown option \"%s\""
 msgstr "Nepoznata opcija  \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: ../terminal/terminal-preferences-dialog.c:469
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:475
 msgid "Image Files"
 msgstr "Datoteke slika"
 
-#: ../terminal/terminal-preferences-dialog.c:936
+#: ../terminal/terminal-preferences-dialog.c:931
 msgid "Load Presets..."
 msgstr "Učitaj spremljene..."
 
-#: ../terminal/terminal-preferences.c:1131
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
-#: ../terminal/terminal-screen.c:2059
+#: ../terminal/terminal-screen.c:430 ../terminal/terminal-screen.c:804
+#: ../terminal/terminal-screen.c:2109
 msgid "Untitled"
 msgstr "Nenaslovljeno"
 
-#: ../terminal/terminal-screen.c:700
+#: ../terminal/terminal-screen.c:705
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Ne mogu odrediti vaš ljusku za prijavu."
 
-#: ../terminal/terminal-screen.c:1312
+#: ../terminal/terminal-screen.c:1322
 msgid "Child process exited"
 msgstr "Proces dijete ugašen"
 
-#: ../terminal/terminal-screen.c:1315
+#: ../terminal/terminal-screen.c:1325
 msgid "_Relaunch"
 msgstr "_Ponovno pokreni"
 
-#: ../terminal/terminal-screen.c:1321
+#: ../terminal/terminal-screen.c:1334
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Proces dijete ugašen normalno sa statusom %d."
 
-#: ../terminal/terminal-screen.c:1323
+#: ../terminal/terminal-screen.c:1336
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Proces dijete prekinut signalom %d."
 
-#: ../terminal/terminal-screen.c:1325
-#, c-format
+#: ../terminal/terminal-screen.c:1338
 msgid "The child process was aborted."
 msgstr "Proces dijete prekinut."
 
-#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1344 ../terminal/terminal-window.c:863
+msgid "Do _not ask me again"
+msgstr "Ne_pitaj me ponovo"
+
+#: ../terminal/terminal-screen.c:1706 ../terminal/terminal-screen.c:1776
+#: ../terminal/terminal-screen.c:1813
 msgid "Failed to execute child"
 msgstr "Neuspjelo izvršavanje djeteta"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2447
 msgid "Close this tab"
 msgstr "Zatvori ovu karticu"
 
-#: ../terminal/terminal-screen.c:2450
+#: ../terminal/terminal-screen.c:2500
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Neuspješno postavljanje znakovnog kodiranja %s\n"
@@ -555,11 +559,11 @@ msgstr "Nisam uspio otvoriti URL '%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Ostavi prozor otvorenim kada izgubi fokus"
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr "Padajući terminal"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr "Upali/ugasi padajući terminal"
 
@@ -816,7 +820,7 @@ msgstr "Postavi _enkodiranje"
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2274
 msgid "_Cancel"
 msgstr "_Odustani"
 
@@ -861,39 +865,39 @@ msgstr "Proces se još uvijek izvodi.\nZatvaranje prozora će ga ubiti."
 msgid "Close window?"
 msgstr "Zatvori prozor?"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "Ne_pitaj me ponovo"
-
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:2120
 msgid "_Title:"
 msgstr "_Naslov:"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2124
 msgid "Enter the title for the current terminal tab"
 msgstr "Unesi naslov trenutne kartice terminala"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2129
+msgid "Reset"
+msgstr "Restiraj"
+
+#: ../terminal/terminal-window.c:2139
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2145
 msgid "Close"
 msgstr "Zatvori"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2191
 msgid "Failed to create the regular expression"
 msgstr "Neuspjelo stvaranje regularnih izraza"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2271
 msgid "Save contents..."
 msgstr "Spremi sadržaje..."
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2275
 msgid "_Save"
 msgstr "_Spremi"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2312
 msgid "Failed to save terminal contents"
 msgstr "Neuspjelo spremanje sadržaja terminala"
 
