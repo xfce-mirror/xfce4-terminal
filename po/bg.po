@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 18:31+0100\n"
-"PO-Revision-Date: 2018-01-21 07:55+0000\n"
+"POT-Creation-Date: 2018-04-01 00:31+0200\n"
+"PO-Revision-Date: 2018-04-01 05:50+0000\n"
 "Last-Translator: Kiril Kirilov <cybercop_montana@abv.bg>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/xfce/xfce-apps/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -394,64 +394,68 @@ msgstr "Опцията \"--zoom\" изисква задаване размер �
 msgid "Unknown option \"%s\""
 msgstr "Непозната опция „%s“"
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: ../terminal/terminal-preferences-dialog.c:469
 msgid "All Files"
 msgstr "Всички файлове"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:475
 msgid "Image Files"
 msgstr "Файлове с изображения"
 
-#: ../terminal/terminal-preferences-dialog.c:936
+#: ../terminal/terminal-preferences-dialog.c:931
 msgid "Load Presets..."
 msgstr "Зареждане на готовите комплекти..."
 
-#: ../terminal/terminal-preferences.c:1131
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "Терминал"
 
-#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
-#: ../terminal/terminal-screen.c:2059
+#: ../terminal/terminal-screen.c:430 ../terminal/terminal-screen.c:804
+#: ../terminal/terminal-screen.c:2109
 msgid "Untitled"
 msgstr "Без име"
 
-#: ../terminal/terminal-screen.c:700
+#: ../terminal/terminal-screen.c:705
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Не може да се определи средата за вход."
 
-#: ../terminal/terminal-screen.c:1312
+#: ../terminal/terminal-screen.c:1322
 msgid "Child process exited"
 msgstr "Дъщерният процес е изключен"
 
-#: ../terminal/terminal-screen.c:1315
+#: ../terminal/terminal-screen.c:1325
 msgid "_Relaunch"
 msgstr "_Рестартиране"
 
-#: ../terminal/terminal-screen.c:1321
+#: ../terminal/terminal-screen.c:1334
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Дъщерният процес се изключи нормално със статус %d."
 
-#: ../terminal/terminal-screen.c:1323
+#: ../terminal/terminal-screen.c:1336
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Дъщерният процес беше отхвърлен от сигнал %d."
 
-#: ../terminal/terminal-screen.c:1325
-#, c-format
+#: ../terminal/terminal-screen.c:1338
 msgid "The child process was aborted."
 msgstr "Дъщерният процес беше отхвърлен."
 
-#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1344 ../terminal/terminal-window.c:863
+msgid "Do _not ask me again"
+msgstr "Не ме питай отново"
+
+#: ../terminal/terminal-screen.c:1706 ../terminal/terminal-screen.c:1776
+#: ../terminal/terminal-screen.c:1813
 msgid "Failed to execute child"
 msgstr "Не може да се изпълни дъщерен процес"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2447
 msgid "Close this tab"
 msgstr "Затваряне този подпрозорец"
 
-#: ../terminal/terminal-screen.c:2450
+#: ../terminal/terminal-screen.c:2500
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Неуспех при задаване на кодировка %s\n"
@@ -553,11 +557,11 @@ msgstr "Неуспешно отваряне на URL '%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Запазване на прозореца отворен, когато изгуби фокус"
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr "Падащ терминал"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr "Превключване на терминал с падащо меню"
 
@@ -814,7 +818,7 @@ msgstr "Задаване на кодировка"
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2274
 msgid "_Cancel"
 msgstr "_Отмяна"
 
@@ -859,39 +863,39 @@ msgstr "Все още има стартирани процеси.\nЗатвар�
 msgid "Close window?"
 msgstr "Затваряне на прозореца ?"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "Не ме питай отново"
-
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:2120
 msgid "_Title:"
 msgstr "Заглавие:"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2124
 msgid "Enter the title for the current terminal tab"
 msgstr "Въвеждане на заглавие на текущият подпрозорец"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2129
+msgid "Reset"
+msgstr "Нулиране"
+
+#: ../terminal/terminal-window.c:2139
 msgid "Help"
 msgstr "Помощ"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2145
 msgid "Close"
 msgstr "Затваряне"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2191
 msgid "Failed to create the regular expression"
 msgstr "Грешка при създаването на регулярен израз"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2271
 msgid "Save contents..."
 msgstr "Запази съдържанието..."
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2275
 msgid "_Save"
 msgstr "_Запази"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2312
 msgid "Failed to save terminal contents"
 msgstr "Не може да бъде запазено съдържанието на терминала"
 
