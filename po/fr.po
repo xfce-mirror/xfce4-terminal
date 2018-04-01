@@ -5,7 +5,8 @@
 # Translators:
 # Arnaud LE CAM <arnaud.lecam@yahoo.fr>, 2015
 # Benedikt Meurer <benny@xfce.org>, 2004
-# Charles Monzat <superboa@hotmail.fr>, 2016-2017
+# Charles Monzat <superboa@hotmail.fr>, 2016-2018
+# Charles Monzat <superboa@hotmail.fr>, 2018
 # Charles Monzat <superboa@hotmail.fr>, 2018
 # Guillaume Laville <laville.guillaume@gmail.com>, 2013
 # jc1 <jc1.quebecos@gmail.com>, 2013,2017-2018
@@ -21,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 18:31+0100\n"
-"PO-Revision-Date: 2018-03-15 12:17+0000\n"
+"POT-Creation-Date: 2018-04-01 00:31+0200\n"
+"PO-Revision-Date: 2018-04-01 09:12+0000\n"
 "Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -404,64 +405,68 @@ msgstr "L’option « --zoom » demande comme paramètre le zoom (%d .. %d)"
 msgid "Unknown option \"%s\""
 msgstr "Option « %s » inconnue"
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: ../terminal/terminal-preferences-dialog.c:469
 msgid "All Files"
 msgstr "Tous les fichiers"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:475
 msgid "Image Files"
 msgstr "Fichiers image"
 
-#: ../terminal/terminal-preferences-dialog.c:936
+#: ../terminal/terminal-preferences-dialog.c:931
 msgid "Load Presets..."
 msgstr "Charger préréglages…"
 
-#: ../terminal/terminal-preferences.c:1131
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
-#: ../terminal/terminal-screen.c:2059
+#: ../terminal/terminal-screen.c:430 ../terminal/terminal-screen.c:804
+#: ../terminal/terminal-screen.c:2109
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: ../terminal/terminal-screen.c:700
+#: ../terminal/terminal-screen.c:705
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossible de déterminer votre shell de connexion."
 
-#: ../terminal/terminal-screen.c:1312
+#: ../terminal/terminal-screen.c:1322
 msgid "Child process exited"
 msgstr "Processus fils terminé"
 
-#: ../terminal/terminal-screen.c:1315
+#: ../terminal/terminal-screen.c:1325
 msgid "_Relaunch"
 msgstr "_Relancer"
 
-#: ../terminal/terminal-screen.c:1321
+#: ../terminal/terminal-screen.c:1334
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Le processus fils s’est terminé normalement avec l’état %d."
 
-#: ../terminal/terminal-screen.c:1323
+#: ../terminal/terminal-screen.c:1336
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Le processus fils a été interrompu par le signal %d."
 
-#: ../terminal/terminal-screen.c:1325
-#, c-format
+#: ../terminal/terminal-screen.c:1338
 msgid "The child process was aborted."
 msgstr "Le processus fils a été interrompu."
 
-#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1344 ../terminal/terminal-window.c:863
+msgid "Do _not ask me again"
+msgstr "_Ne plus poser la question"
+
+#: ../terminal/terminal-screen.c:1706 ../terminal/terminal-screen.c:1776
+#: ../terminal/terminal-screen.c:1813
 msgid "Failed to execute child"
 msgstr "Impossible d’exécuter un fils"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2447
 msgid "Close this tab"
 msgstr "Fermer cet onglet"
 
-#: ../terminal/terminal-screen.c:2450
+#: ../terminal/terminal-screen.c:2500
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Impossible de définir le codage %s\n"
@@ -563,11 +568,11 @@ msgstr "Impossible d’ouvrir l’URL « %s »"
 msgid "Keep window open when it loses focus"
 msgstr "Garder la fenêtre ouverte quand elle perd le focus"
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr "Terminal déroulant"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr "(Dés)activer le terminal déroulant"
 
@@ -824,7 +829,7 @@ msgstr "Définir l’_encodage"
 msgid "Warning"
 msgstr "Attention"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2274
 msgid "_Cancel"
 msgstr "_Annuler"
 
@@ -869,39 +874,39 @@ msgstr "Un processus est encore en cours d’exécution.\nIl sera interrompu à 
 msgid "Close window?"
 msgstr "Fermer la fenêtre ?"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "_Ne plus poser la question"
-
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:2120
 msgid "_Title:"
 msgstr "_Titre :"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2124
 msgid "Enter the title for the current terminal tab"
 msgstr "Entrer le titre pour l’onglet courant du terminal"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2129
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: ../terminal/terminal-window.c:2139
 msgid "Help"
 msgstr "Aide"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2145
 msgid "Close"
 msgstr "Fermer"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2191
 msgid "Failed to create the regular expression"
 msgstr "Impossible de créer l’expression régulière"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2271
 msgid "Save contents..."
 msgstr "Enregistrer le contenu…"
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2275
 msgid "_Save"
 msgstr "_Enregistrer"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2312
 msgid "Failed to save terminal contents"
 msgstr "Impossible d’enregistrer le contenu du terminal"
 
