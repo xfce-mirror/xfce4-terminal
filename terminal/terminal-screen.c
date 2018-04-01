@@ -162,14 +162,15 @@ static void       terminal_screen_set_custom_command            (TerminalScreen 
 
 struct _TerminalScreenClass
 {
-  GtkHBoxClass parent_class;
+  GtkOverlayClass parent_class;
 };
 
 struct _TerminalScreen
 {
-  GtkHBox              parent_instance;
+  GtkOverlay           parent_instance;
   TerminalPreferences *preferences;
   TerminalImageLoader *loader;
+  GtkWidget           *hbox;
   GtkWidget           *terminal;
   GtkWidget           *scrollbar;
   GtkWidget           *tab_label;
@@ -202,7 +203,7 @@ static guint screen_last_session_id = 0;
 
 
 
-G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_BOX)
+G_DEFINE_TYPE (TerminalScreen, terminal_screen, GTK_TYPE_OVERLAY)
 
 
 
@@ -288,6 +289,9 @@ terminal_screen_init (TerminalScreen *screen)
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
 
+  screen->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  gtk_container_add (GTK_CONTAINER (screen), screen->hbox);
+
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
       G_CALLBACK (terminal_screen_vte_child_exited), screen);
@@ -303,11 +307,11 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_resize_window), screen);
   g_signal_connect (G_OBJECT (screen->terminal), "draw",
       G_CALLBACK (terminal_screen_draw), screen);
-  gtk_box_pack_start (GTK_BOX (screen), screen->terminal, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (screen->hbox), screen->terminal, TRUE, TRUE, 0);
 
   screen->scrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL,
                                          gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
-  gtk_box_pack_start (GTK_BOX (screen), screen->scrollbar, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (screen->hbox), screen->scrollbar, FALSE, FALSE, 0);
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
 
   /* watch preferences changes */
@@ -342,7 +346,7 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
 
   /* show the terminal */
-  gtk_widget_show_all (screen->terminal);
+  gtk_widget_show_all (screen->hbox);
 }
 
 
@@ -1299,14 +1303,37 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
 
 
 static void
+relaunch_bar_response (GtkInfoBar     *info_bar,
+                       gint            response_id,
+                       TerminalScreen *screen)
+{
+  /* relaunch the process or remember to not show it anymore */
+  if (response_id == GTK_RESPONSE_YES)
+    {
+      terminal_screen_launch_child (screen);
+      terminal_screen_focus (screen);
+    }
+  else
+    {
+      GtkWidget       *content_area = gtk_info_bar_get_content_area (info_bar);
+      GList           *children = gtk_container_get_children (GTK_CONTAINER (content_area));
+      GtkToggleButton *checkbox = g_list_nth_data (children, 1);
+
+      if (G_LIKELY (checkbox != NULL) && GTK_IS_TOGGLE_BUTTON (checkbox) && gtk_toggle_button_get_active (checkbox))
+        g_object_set (G_OBJECT (screen->preferences), "misc-show-relaunch-dialog", FALSE, NULL);
+    }
+
+  gtk_widget_destroy (GTK_WIDGET (info_bar));
+}
+
+
+
+static void
 terminal_screen_vte_child_exited (VteTerminal    *terminal,
                                   gint            status,
                                   TerminalScreen *screen)
 {
-  GtkWidget *window, *dialog, *content_area, *label, *checkbox;
-  gchar     *message;
-  gint       response;
-  gboolean   show_relaunch_dialog;
+  gboolean show_relaunch_dialog;
 
   terminal_return_if_fail (VTE_IS_TERMINAL (terminal));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
@@ -1317,18 +1344,14 @@ terminal_screen_vte_child_exited (VteTerminal    *terminal,
     gtk_widget_destroy (GTK_WIDGET (screen));
   else if (show_relaunch_dialog)
     {
-      /* create "Relaunch" dialog */
-      window = gtk_widget_get_toplevel (GTK_WIDGET (screen));
-      dialog = gtk_dialog_new_with_buttons (_("Child process exited"),
-                                            GTK_WINDOW (window),
-                                            GTK_DIALOG_DESTROY_WITH_PARENT,
-                                            _("_Relaunch"),
-                                            GTK_RESPONSE_YES,
-                                            NULL);
-      gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_YES);
+      /* create "Relaunch" bar */
+      GtkWidget *relaunch_bar, *content_area, *label, *checkbox;
+      gchar *message;
 
-      content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-      gtk_box_set_spacing (GTK_BOX (content_area), 6);
+      relaunch_bar = gtk_info_bar_new_with_buttons (_("_Relaunch"), GTK_RESPONSE_YES, NULL);
+      gtk_info_bar_set_message_type (GTK_INFO_BAR (relaunch_bar), GTK_MESSAGE_INFO);
+      gtk_info_bar_set_show_close_button (GTK_INFO_BAR (relaunch_bar), TRUE);
+      content_area = gtk_info_bar_get_content_area (GTK_INFO_BAR (relaunch_bar));
 
       if (WIFEXITED (status))
         message = g_strdup_printf (_("The child process exited normally with status %d."), WEXITSTATUS (status));
@@ -1344,16 +1367,12 @@ terminal_screen_vte_child_exited (VteTerminal    *terminal,
       checkbox = gtk_check_button_new_with_mnemonic (_("Do _not ask me again"));
       gtk_container_add (GTK_CONTAINER (content_area), checkbox);
 
-      gtk_widget_show_all (dialog);
-      response = gtk_dialog_run (GTK_DIALOG (dialog));
+      g_signal_connect (G_OBJECT (relaunch_bar), "response", G_CALLBACK (relaunch_bar_response), screen);
 
-      /* relaunch the process or remember to not show it anymore */
-      if (response == GTK_RESPONSE_YES)
-        terminal_screen_launch_child (screen);
-      else if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbox)))
-        g_object_set (G_OBJECT (screen->preferences), "misc-show-relaunch-dialog", FALSE, NULL);
-
-      gtk_widget_destroy (dialog);
+      gtk_widget_set_halign (relaunch_bar, GTK_ALIGN_FILL);
+      gtk_widget_set_valign (relaunch_bar, GTK_ALIGN_START);
+      gtk_overlay_add_overlay (GTK_OVERLAY (screen), relaunch_bar);
+      gtk_widget_show_all (relaunch_bar);
     }
 }
 
@@ -2567,12 +2586,12 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
           break;
 
         case TERMINAL_SCROLLBAR_LEFT:
-          gtk_box_reorder_child (GTK_BOX (screen), screen->scrollbar, 0);
+          gtk_box_reorder_child (GTK_BOX (screen->hbox), screen->scrollbar, 0);
           gtk_widget_show (screen->scrollbar);
           break;
 
         default: /* TERMINAL_SCROLLBAR_RIGHT */
-          gtk_box_reorder_child (GTK_BOX (screen), screen->scrollbar, 1);
+          gtk_box_reorder_child (GTK_BOX (screen->hbox), screen->scrollbar, 1);
           gtk_widget_show (screen->scrollbar);
           break;
         }
