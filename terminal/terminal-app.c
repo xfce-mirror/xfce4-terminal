@@ -684,6 +684,7 @@ terminal_app_open_window (TerminalApp        *app,
   gboolean         reuse_window = FALSE;
   GdkDisplay      *attr_display;
   gint             attr_screen_num;
+  gint             active_tab = -1, i;
 #ifdef GDK_WINDOWING_X11
   GdkGravity       gravity = GDK_GRAVITY_NORTH_WEST;
   gint             mask = NoValue, x, y, new_x, new_y;
@@ -828,13 +829,23 @@ terminal_app_open_window (TerminalApp        *app,
     }
 
   /* add the tabs */
-  for (lp = attr->tabs; lp != NULL; lp = lp->next)
+  for (lp = attr->tabs, i = 0; lp != NULL; lp = lp->next, ++i)
     {
-      terminal = terminal_screen_new ((TerminalTabAttr *) lp->data,
-                                      width,
-                                      height);
+      TerminalTabAttr *tab_attr = (TerminalTabAttr *) lp->data;
+      terminal = terminal_screen_new (tab_attr, width, height);
       terminal_window_add (TERMINAL_WINDOW (window), terminal);
       terminal_screen_launch_child (terminal);
+
+      /* whether the tab was set as active */
+      if (G_UNLIKELY (tab_attr->active))
+        active_tab = i;
+    }
+
+  /* set active tab */
+  if (active_tab > -1)
+    {
+      GtkNotebook *notebook = GTK_NOTEBOOK (terminal_window_get_notebook (TERMINAL_WINDOW (window)));
+      gtk_notebook_set_current_page (notebook, active_tab);
     }
 
   if (!attr->drop_down)

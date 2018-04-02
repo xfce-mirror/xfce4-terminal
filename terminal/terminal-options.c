@@ -351,6 +351,10 @@ terminal_window_attr_parse (gint              argc,
         {
           tab_attr->hold = TRUE;
         }
+      else if (terminal_option_cmp ("active-tab", 0, argc, argv, &n, NULL))
+        {
+          tab_attr->active = TRUE;
+        }
       else if (terminal_option_cmp ("display", 0, argc, argv, &n, &s))
         {
           if (G_UNLIKELY (s == NULL))

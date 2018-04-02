@@ -2722,12 +2722,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     {
       if (lp != children)
         result = g_slist_prepend (result, g_strdup ("--tab"));
+      if (window->priv->active == lp->data)
+        result = g_slist_prepend (result, g_strdup ("--active-tab"));
       result = g_slist_concat (terminal_screen_get_restart_command (lp->data), result);
     }
   g_list_free (children);
 
   return g_slist_reverse (result);
 }
+
 
 
 /**

@@ -60,6 +60,7 @@ typedef struct
   gchar        *initial_title;
   TerminalTitle dynamic_title_mode;
   guint         hold : 1;
+  guint         active : 1;
 } TerminalTabAttr;
 
 typedef struct
