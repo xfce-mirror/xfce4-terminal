@@ -319,6 +319,9 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
       G_CALLBACK (terminal_screen_preferences_changed), screen);
 
+  /* show the terminal */
+  gtk_widget_show_all (screen->hbox);
+
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
   terminal_screen_update_binding_delete (screen);
@@ -344,9 +347,6 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_vte_window_contents_changed), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "size-allocate",
       G_CALLBACK (terminal_screen_vte_window_contents_resized), screen);
-
-  /* show the terminal */
-  gtk_widget_show_all (screen->hbox);
 }
 
 
