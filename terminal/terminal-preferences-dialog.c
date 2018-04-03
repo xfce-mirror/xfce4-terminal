@@ -198,10 +198,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->preferences = terminal_preferences_get ();
 
-  /* hack to initialize the XfceTitledDialog class */
-  if (xfce_titled_dialog_get_type () == 0)
-    return;
-
   /* lookup the ui file */
   xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
   file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "xfce4/terminal/terminal-preferences.ui");
