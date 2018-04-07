@@ -120,9 +120,12 @@
           <listitem>
             <para><xref linkend="options-tab-execute"/>;
               <xref linkend="options-tab-command"/>;
-              <xref linkend="options-tab-working-directory"/>;
               <xref linkend="options-tab-title"/>;
-              <xref linkend="options-tab-hold"/>
+              <xref linkend="options-tab-dynamic-title-mode"/>;
+              <xref linkend="options-tab-initial-title"/>;
+              <xref linkend="options-tab-working-directory"/>;
+              <xref linkend="options-tab-hold"/>;
+              <xref linkend="options-tab-active-tab"/>
             </para>
           </listitem>
         </varlistentry>
@@ -258,6 +261,42 @@
         </varlistentry>
 
         <varlistentry>
+          <term id="options-tab-title">
+            <option>-T</option>, <option>--title=<replaceable>title</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set <parameter>title</parameter> as the window title for the terminal (ignores
+              dynamically-set title)
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-dynamic-title-mode">
+            <option>--dynamic-title-mode=<replaceable>mode</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set <parameter>mode</parameter> as the dynamically-set title mode for the terminal, one of:
+              'replace', 'before', 'after', 'none'
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-initial-title">
+            <option>--initial-title=<replaceable>title</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set <parameter>title</parameter> as the initial window title for the terminal (respects
+              dynamically-set title)
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term id="options-tab-working-directory">
             <option>--working-directory=<replaceable>directory</replaceable></option>
           </term>
@@ -267,20 +306,20 @@
         </varlistentry>
 
         <varlistentry>
-          <term id="options-tab-title">
-            <option>-T</option>, <option>--title=<replaceable>title</replaceable></option>
-          </term>
-          <listitem>
-            <para>Set <parameter>title</parameter> as the initial window title for the terminal</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
           <term id="options-tab-hold">
             <option>-H</option>, <option>--hold</option>
           </term>
           <listitem>
             <para>Causes the terminal to be kept around after the child command has terminated</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-active-tab">
+            <option>--active-tab</option>
+          </term>
+          <listitem>
+            <para>Makes the terminal active: useful when a terminal window contains multiple tabs</para>
           </listitem>
         </varlistentry>
       </variablelist>
