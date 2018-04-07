@@ -147,9 +147,11 @@
               <xref linkend="options-window-show-borders"/>,
               <xref linkend="options-window-hide-borders"/>;
               <xref linkend="options-window-show-toolbar"/>,
-              <xref linkend="options-window-hide-toolbar"/>
+              <xref linkend="options-window-hide-toolbar"/>;
               <xref linkend="options-window-show-scrollbar"/>,
-              <xref linkend="options-window-hide-scrollbar"/>
+              <xref linkend="options-window-hide-scrollbar"/>;
+              <xref linkend="options-window-font"/>;
+              <xref linkend="options-window-zoom"/>
             </para>
           </listitem>
         </varlistentry>
@@ -646,6 +648,18 @@
             preferences which control the look and feel of &application;. Note:
             any update made to the configuration file via an external editor
             will be picked up by &application; instances running.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term><filename>${XDG_CONFIG_DIRS}/xfce4/terminal/accels.scm</filename></term>
+        <listitem>
+          <para>
+            This is the location of the keyboard shortcuts configuration file for &application;.
+            Editing this file allows to modify or disable shortcuts for the supported actions.
           </para>
         </listitem>
       </varlistentry>
