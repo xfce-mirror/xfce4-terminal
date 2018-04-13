@@ -2062,7 +2062,7 @@ title_popover_close (GtkWidget      *popover,
   window->priv->title_popover = NULL;
 
   /* focus the terminal: bug #13754 */
-  if (G_LIKELY (window->priv->active != NULL))
+  if (G_LIKELY (window->priv->active != NULL && TERMINAL_IS_SCREEN (window->priv->active)))
     terminal_screen_focus (window->priv->active);
 }
 
