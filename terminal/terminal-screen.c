@@ -2774,3 +2774,13 @@ terminal_screen_has_foreground_process (TerminalScreen *screen)
 
   return TRUE;
 }
+
+
+
+void
+terminal_screen_feed_text (TerminalScreen *screen,
+                           const char     *text)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_feed_child (VTE_TERMINAL (screen->terminal), text, strlen (text));
+}

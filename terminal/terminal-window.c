@@ -196,6 +196,8 @@ static void         terminal_window_action_paste_selection        (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_select_all             (GtkAction              *action,
                                                                    TerminalWindow         *window);
+static void         terminal_window_action_copy_input             (GtkAction              *action,
+                                                                   TerminalWindow         *window);
 static void         terminal_window_action_prefs                  (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_show_toolbar           (GtkToggleAction        *action,
@@ -334,6 +336,7 @@ static const GtkActionEntry action_entries[] =
     { "paste", "edit-paste", N_ ("_Paste"), "<control><shift>v", N_ ("Paste from clipboard"), G_CALLBACK (terminal_window_action_paste), },
     { "paste-selection", NULL, N_ ("Paste _Selection"), NULL, NULL, G_CALLBACK (terminal_window_action_paste_selection), },
     { "select-all", "edit-select-all", N_ ("Select _All"), "<control><shift>a", NULL, G_CALLBACK (terminal_window_action_select_all), },
+    { "copy-input", NULL, N_ ("Copy _Input To All Tabs..."), NULL, NULL, G_CALLBACK (terminal_window_action_copy_input), },
     { "preferences", "preferences-system", N_ ("Pr_eferences..."), NULL, N_ ("Open the preferences dialog"), G_CALLBACK (terminal_window_action_prefs), },
   { "view-menu", NULL, N_ ("_View"), NULL, NULL, NULL, },
     { "zoom-in", "zoom-in", N_ ("Zoom _In"), "<control>plus", N_ ("Zoom in with larger font"), G_CALLBACK (terminal_window_action_zoom_in), },
@@ -1780,6 +1783,78 @@ terminal_window_action_select_all (GtkAction      *action,
 {
   if (G_LIKELY (window->priv->active != NULL))
     terminal_screen_select_all (window->priv->active);
+}
+
+
+
+static void
+copy_input_popover_close (GtkWidget      *popover,
+                          TerminalWindow *window)
+{
+  /* need for hiding on focus */
+  if (window->drop_down)
+    terminal_util_activate_window (GTK_WINDOW (window));
+
+  /* close the dialog */
+  gtk_widget_destroy (popover);
+
+  /* focus the terminal */
+  if (G_LIKELY (window->priv->active != NULL && TERMINAL_IS_SCREEN (window->priv->active)))
+    terminal_screen_focus (window->priv->active);
+}
+
+
+
+static void
+copy_input_popover_do_copy (GtkWidget *popover,
+                            GtkWidget *entry)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (gtk_widget_get_toplevel (popover));
+  GtkNotebook    *notebook = GTK_NOTEBOOK (window->priv->notebook);
+  gint            n, npages = gtk_notebook_get_n_pages (notebook);
+
+  /* copy the input to all tabs */
+  for (n = 0; n < npages; n++)
+    {
+      TerminalScreen *screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (notebook, n));
+      terminal_screen_feed_text (screen, gtk_entry_get_text (GTK_ENTRY (entry)));
+    }
+}
+
+
+
+static void
+terminal_window_action_copy_input (GtkAction      *action,
+                                   TerminalWindow *window)
+{
+  GtkWidget *popover, *button, *box, *label, *entry;
+
+  popover = gtk_popover_new (GTK_WIDGET (window->priv->menubar));
+  gtk_popover_set_position (GTK_POPOVER (popover), GTK_POS_BOTTOM);
+
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+  gtk_container_set_border_width (GTK_CONTAINER (box), 6);
+  gtk_container_add (GTK_CONTAINER (popover), box);
+
+  label = gtk_label_new_with_mnemonic (_("Copy _Input:"));
+  gtk_container_add (GTK_CONTAINER (box), label);
+
+  entry = gtk_entry_new ();
+  gtk_widget_set_tooltip_text (entry, _("Enter the text to be copied to all tabs"));
+  gtk_container_add (GTK_CONTAINER (box), entry);
+  gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
+  gtk_label_set_mnemonic_widget (GTK_LABEL (label), entry);
+  g_signal_connect (G_OBJECT (entry), "activate", G_CALLBACK (copy_input_popover_do_copy), entry);
+
+  button = gtk_button_new_from_icon_name ("edit-copy-symbolic", GTK_ICON_SIZE_BUTTON);
+  gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
+  gtk_widget_set_tooltip_text (button, _("Copy input"));
+  gtk_container_add (GTK_CONTAINER (box), button);
+  g_signal_connect (G_OBJECT (button), "clicked", G_CALLBACK (copy_input_popover_do_copy), entry);
+
+  g_signal_connect (G_OBJECT (popover), "closed", G_CALLBACK (copy_input_popover_close), window);
+
+  gtk_widget_show_all (popover);
 }
 
 

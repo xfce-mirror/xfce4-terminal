@@ -127,6 +127,9 @@ void            terminal_screen_save_contents             (TerminalScreen *scree
 
 gboolean        terminal_screen_has_foreground_process    (TerminalScreen *screen);
 
+void            terminal_screen_feed_text                 (TerminalScreen *screen,
+                                                           const char     *text);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_SCREEN_H */
