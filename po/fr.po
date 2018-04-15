@@ -22,8 +22,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-14 00:31+0200\n"
-"PO-Revision-Date: 2018-04-14 09:10+0000\n"
+"POT-Creation-Date: 2018-04-15 06:32+0200\n"
+"PO-Revision-Date: 2018-04-15 10:53+0000\n"
 "Last-Translator: Charles Monzat <superboa@hotmail.fr>\n"
 "Language-Team: French (http://www.transifex.com/xfce/xfce-apps/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -189,7 +189,7 @@ msgstr "Chaîne de géométrie non valide « %s »\n"
 #: ../terminal/terminal-app.c:962
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
-msgstr "Impossible de se connecter au gestionnaire de session : %s\n"
+msgstr "Impossible de se connecter au gestionnaire de sessions : %s\n"
 
 #: ../terminal/terminal-encoding-action.c:68
 msgid "Western European"
@@ -294,113 +294,128 @@ msgstr "Mauvaise concordance de l’id utilisateur"
 msgid "Display mismatch"
 msgstr "L’affichage diffère"
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:220
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
-msgstr "L’option « --default-display » demande comme paramètre l’écran X à utiliser par défaut"
+msgstr "L’option « --default-display » nécessite de spécifier l’écran X à utiliser par défaut comme paramètre"
 
-#: ../terminal/terminal-options.c:234
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
-msgstr "L’option « --default-working-directory » demande comme paramètre le répertoire de travail par défaut"
+msgstr "L’option « --default-working-directory » nécessite de spécifier le répertoire de travail par défaut comme paramètre"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "L’option « --execute/-x » doit être suivie par la commande à exécuter"
 
-#: ../terminal/terminal-options.c:268
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
-msgstr "L’option « --command/-e » demande comme paramètre la commande à exécuter"
+msgstr "L’option « --command/-e » nécessite de spécifier la commande à exécuter comme paramètre"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:287
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
-msgstr "L’option « --working-directory » demande comme paramètre le répertoire de travail"
+msgstr "L’option « --working-directory » nécessite de spécifier le répertoire de travail comme paramètre"
 
-#: ../terminal/terminal-options.c:300
+#: ../terminal/terminal-options.c:302
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
-msgstr "L’option « --title/-T » demande le titre comme paramètre"
+msgstr "L’option « --title/-T » nécessite de spécifier le titre comme paramètre"
 
-#: ../terminal/terminal-options.c:315
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "L’option « --dynamic-title-mode » nécessite de spécifier le mode de titre dynamique comme paramètre"
 
-#: ../terminal/terminal-options.c:330
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "Argument non valide pour l’option « --dynamic-title-mode » : %s"
 
-#: ../terminal/terminal-options.c:340
+#: ../terminal/terminal-options.c:342
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "L’option « --initial-title » nécessite de spécifier le titre initial comme paramètre"
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:366
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "L’option « --display » demande comme paramètre l’écran X"
+msgid "Option \"--color-text\" requires specifying the color as its parameter"
+msgstr "L’option « --Color-Text » nécessite de spécifier la couleur comme paramètre"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:373 ../terminal/terminal-options.c:392
+#, c-format
+msgid "Unable to parse color: %s"
+msgstr "Impossible d’analyser la couleur : %s"
+
+#: ../terminal/terminal-options.c:385
+#, c-format
+msgid "Option \"--color-bg\" requires specifying the color as its parameter"
+msgstr "L’option « --color-bg » nécessite de spécifier la couleur comme paramètre"
+
+#: ../terminal/terminal-options.c:403
+#, c-format
+msgid "Option \"--display\" requires specifying the X display as its parameter"
+msgstr "L’option « --display » nécessite de spécifier l’écran X comme paramètre"
+
+#: ../terminal/terminal-options.c:418
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
-msgstr "L’option « --geometry » demande comme paramètre les dimensions de la fenêtre"
+msgstr "L’option « --geometry » nécessite de spécifier les dimensions de la fenêtre comme paramètre"
 
-#: ../terminal/terminal-options.c:393
+#: ../terminal/terminal-options.c:433
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
-msgstr "L’option « --role » demande comme paramètre le rôle de la fenêtre"
+msgstr "L’option « --role » nécessite de spécifier le rôle de la fenêtre comme paramètre"
 
-#: ../terminal/terminal-options.c:408
+#: ../terminal/terminal-options.c:448
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
-msgstr "L’option « --sm-client-id » demande comme paramètre l’identifiant de session"
+msgstr "L’option « --sm-client-id » nécessite de spécifier l’identifiant de session comme paramètre"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:463
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
-msgstr "L’option « --startup-id » demande comme paramètre l’identifiant de démarrage"
+msgstr "L’option « --startup-id » nécessite de spécifier l’identifiant de démarrage comme paramètre"
 
-#: ../terminal/terminal-options.c:439
+#: ../terminal/terminal-options.c:479
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
-msgstr "L’option « --icon/-I » demande comme paramètre le nom de l’icône ou le nom du fichier"
-
-#: ../terminal/terminal-options.c:510
-#, c-format
-msgid "Option \"--font\" requires specifying the font name as its parameter"
-msgstr "L’option « --font » demande comme paramètre le nom de la police"
-
-#: ../terminal/terminal-options.c:528
-#, c-format
-msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
-msgstr "L’option « --zoom » demande comme paramètre le zoom (%d .. %d)"
+msgstr "L’option « --icon/-I » nécessite de spécifier le nom de l’icône ou le nom du fichier comme paramètre"
 
 #: ../terminal/terminal-options.c:550
+#, c-format
+msgid "Option \"--font\" requires specifying the font name as its parameter"
+msgstr "L’option « --font » nécessite de spécifier le nom de la police comme paramètre"
+
+#: ../terminal/terminal-options.c:568
+#, c-format
+msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
+msgstr "L’option « --zoom » nécessite de spécifier le zoom (%d .. %d) comme paramètre"
+
+#: ../terminal/terminal-options.c:590
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Option « %s » inconnue"
@@ -421,48 +436,48 @@ msgstr "Charger préréglages…"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:434 ../terminal/terminal-screen.c:808
-#: ../terminal/terminal-screen.c:2128
+#: ../terminal/terminal-screen.c:439 ../terminal/terminal-screen.c:813
+#: ../terminal/terminal-screen.c:2147
 msgid "Untitled"
 msgstr "Sans titre"
 
-#: ../terminal/terminal-screen.c:709
+#: ../terminal/terminal-screen.c:714
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossible de déterminer votre shell de connexion."
 
-#: ../terminal/terminal-screen.c:1351
+#: ../terminal/terminal-screen.c:1363
 msgid "_Relaunch"
 msgstr "_Relancer"
 
-#: ../terminal/terminal-screen.c:1357
+#: ../terminal/terminal-screen.c:1369
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Le processus fils s’est terminé normalement avec l’état %d."
 
-#: ../terminal/terminal-screen.c:1359
+#: ../terminal/terminal-screen.c:1371
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Le processus fils a été interrompu par le signal %d."
 
-#: ../terminal/terminal-screen.c:1361
+#: ../terminal/terminal-screen.c:1373
 msgid "The child process was aborted."
 msgstr "Le processus fils a été interrompu."
 
-#: ../terminal/terminal-screen.c:1367 ../terminal/terminal-window.c:866
+#: ../terminal/terminal-screen.c:1379 ../terminal/terminal-window.c:866
 msgid "Do _not ask me again"
 msgstr "_Ne plus poser la question"
 
-#: ../terminal/terminal-screen.c:1725 ../terminal/terminal-screen.c:1795
-#: ../terminal/terminal-screen.c:1832
+#: ../terminal/terminal-screen.c:1737 ../terminal/terminal-screen.c:1814
+#: ../terminal/terminal-screen.c:1851
 msgid "Failed to execute child"
 msgstr "Impossible d’exécuter un fils"
 
-#: ../terminal/terminal-screen.c:2466
+#: ../terminal/terminal-screen.c:2485
 msgid "Close this tab"
 msgstr "Fermer cet onglet"
 
-#: ../terminal/terminal-screen.c:2519
+#: ../terminal/terminal-screen.c:2538
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Impossible de définir le codage %s\n"
