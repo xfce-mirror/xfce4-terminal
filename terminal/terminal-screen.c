@@ -186,6 +186,9 @@ struct _TerminalScreen
   gchar               *custom_title;
   gchar               *initial_title;
 
+  gchar               *custom_fg_color;
+  gchar               *custom_bg_color;
+
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
 #if !VTE_CHECK_VERSION (0, 51, 1)
@@ -371,6 +374,8 @@ terminal_screen_finalize (GObject *object)
   g_free (screen->working_directory);
   g_free (screen->custom_title);
   g_free (screen->initial_title);
+  g_free (screen->custom_fg_color);
+  g_free (screen->custom_bg_color);
 
   (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
@@ -1043,11 +1048,18 @@ terminal_screen_update_colors (TerminalScreen *screen)
       valid_palette = (n == 16);
     }
 
-  has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
-  has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
+  if (G_LIKELY (screen->custom_bg_color == NULL))
+    has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
+  else
+    has_bg = gdk_rgba_parse (&bg, screen->custom_bg_color);
+
+  if (G_LIKELY (screen->custom_fg_color == NULL))
+    has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
+  else
+    has_fg = gdk_rgba_parse (&fg, screen->custom_fg_color);
 
   /* we pick a random hue value to keep readability */
-  if (vary_bg && has_bg)
+  if (G_LIKELY (screen->custom_bg_color == NULL) && vary_bg && has_bg)
     {
       gtk_rgb_to_hsv (bg.red, bg.green, bg.blue,
                       NULL, &hsv[HSV_SATURATION], &hsv[HSV_VALUE]);
@@ -1754,6 +1766,13 @@ terminal_screen_new (TerminalTabAttr *attr,
   screen->dynamic_title_mode = attr->dynamic_title_mode;
   screen->hold = attr->hold;
   vte_terminal_set_size (VTE_TERMINAL (screen->terminal), columns, rows);
+
+  if (attr->color_text != NULL)
+    screen->custom_fg_color = g_strdup (attr->color_text);
+  if (attr->color_bg != NULL)
+    screen->custom_bg_color = g_strdup (attr->color_bg);
+  if (attr->color_text != NULL || attr->color_bg != NULL)
+    terminal_screen_update_colors (screen);
 
   return screen;
 }

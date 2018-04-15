@@ -137,6 +137,8 @@ terminal_tab_attr_free (TerminalTabAttr *attr)
   g_free (attr->directory);
   g_free (attr->title);
   g_free (attr->initial_title);
+  g_free (attr->color_text);
+  g_free (attr->color_bg);
   g_slice_free (TerminalTabAttr, attr);
 }
 
@@ -355,13 +357,51 @@ terminal_window_attr_parse (gint              argc,
         {
           tab_attr->active = TRUE;
         }
+      else if (terminal_option_cmp ("color-text", 0, argc, argv, &n, &s))
+        {
+          GdkRGBA color;
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--color-text\" requires specifying "
+                             "the color as its parameter"));
+              goto failed;
+            }
+          else if (!gdk_rgba_parse (&color, s))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Unable to parse color: %s"), s);
+              goto failed;
+            }
+          g_free (tab_attr->color_text);
+          tab_attr->color_text = g_strdup (s);
+        }
+      else if (terminal_option_cmp ("color-bg", 0, argc, argv, &n, &s))
+        {
+          GdkRGBA color;
+          if (G_UNLIKELY (s == NULL))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Option \"--color-bg\" requires specifying "
+                             "the color as its parameter"));
+              goto failed;
+            }
+          else if (!gdk_rgba_parse (&color, s))
+            {
+              g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                           _("Unable to parse color: %s"), s);
+              goto failed;
+            }
+          g_free (tab_attr->color_bg);
+          tab_attr->color_bg = g_strdup (s);
+        }
       else if (terminal_option_cmp ("display", 0, argc, argv, &n, &s))
         {
           if (G_UNLIKELY (s == NULL))
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
                            _("Option \"--display\" requires specifying "
-                             "the X display as its parameters"));
+                             "the X display as its parameter"));
               goto failed;
             }
           else

@@ -58,6 +58,8 @@ typedef struct
   gchar        *directory;
   gchar        *title;
   gchar        *initial_title;
+  gchar        *color_text;
+  gchar        *color_bg;
   TerminalTitle dynamic_title_mode;
   guint         hold : 1;
   guint         active : 1;
