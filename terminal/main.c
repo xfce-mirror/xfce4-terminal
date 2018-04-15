@@ -120,7 +120,7 @@ usage (void)
            "  -x, --execute; -e, --command=%s; -T, --title=%s;\n"
            "  --dynamic-title-mode=%s ('replace', 'before', 'after', 'none');\n"
            "  --initial-title=%s; --working-directory=%s; -H, --hold;\n"
-           "  --active-tab\n\n",
+           "  --active-tab; --color-text=color; --color-bg=color\n\n",
            _("Tab Options"),
            /* parameter of --command */
            _("command"),
