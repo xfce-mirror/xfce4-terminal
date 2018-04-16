@@ -33,8 +33,8 @@
 
 #include <terminal/terminal-app.h>
 #include <terminal/terminal-private.h>
-
 #include <terminal/terminal-gdbus.h>
+#include <terminal/terminal-preferences-dialog.h>
 
 
 
@@ -104,7 +104,7 @@ usage (void)
            _("Usage:"), PACKAGE_NAME, _("OPTION"));
 
   g_print ("%s:\n"
-           "  -h, --help; -V, --version; --disable-server; --color-table;\n"
+           "  -h, --help; -V, --version; --disable-server; --color-table; --preferences;\n"
            "  --default-display=%s; --default-working-directory=%s\n\n",
            _("General Options"),
            /* parameter of --default-display */
@@ -166,10 +166,7 @@ usage (void)
 int
 main (int argc, char **argv)
 {
-  gboolean         show_help = FALSE;
-  gboolean         show_version = FALSE;
-  gboolean         show_colors = FALSE;
-  gboolean         disable_server = FALSE;
+  TerminalOptions  options;
   TerminalApp     *app;
   const gchar     *startup_id;
   const gchar     *display;
@@ -178,6 +175,10 @@ main (int argc, char **argv)
   gint             nargc;
   gint             n;
   const gchar     *msg;
+
+  /* initialize options */
+  options.disable_server = options.show_version = options.show_colors = options.show_help =
+      options.show_preferences = FALSE;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
@@ -198,9 +199,9 @@ main (int argc, char **argv)
 #endif
 
   /* parse some options we need in main, not the windows attrs */
-  terminal_options_parse (argc, argv, &show_help, &show_version, &show_colors, &disable_server);
+  terminal_options_parse (argc, argv, &options);
 
-  if (G_UNLIKELY (show_version))
+  if (G_UNLIKELY (options.show_version))
     {
       g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
       g_print ("%s\n", "Copyright (c) 2003-2018");
@@ -213,14 +214,22 @@ main (int argc, char **argv)
 
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (show_colors))
+  else if (G_UNLIKELY (options.show_colors))
     {
       colortable ();
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (show_help))
+  else if (G_UNLIKELY (options.show_help))
     {
       usage ();
+      return EXIT_SUCCESS;
+    }
+  else if (G_UNLIKELY (options.show_preferences))
+    {
+      GtkWidget *dialog;
+      gtk_init (&argc, &argv);
+      dialog = terminal_preferences_dialog_new (TRUE, FALSE);
+      gtk_dialog_run (GTK_DIALOG (dialog));
       return EXIT_SUCCESS;
     }
 
@@ -255,7 +264,7 @@ main (int argc, char **argv)
   g_type_init ();
 #endif
 
-  if (!disable_server)
+  if (!options.disable_server)
     {
       /* try to connect to an existing Terminal service */
       if (terminal_gdbus_invoke_launch (nargc, nargv, &error))
@@ -268,7 +277,7 @@ main (int argc, char **argv)
               || g_error_matches (error, TERMINAL_ERROR, TERMINAL_ERROR_DISPLAY_MISMATCH))
             {
               /* don't try to establish another service here */
-              disable_server = TRUE;
+              options.disable_server = TRUE;
 
 #ifdef G_ENABLE_DEBUG
               g_debug ("%s mismatch when invoking remote terminal: %s",
@@ -311,7 +320,7 @@ main (int argc, char **argv)
 
   app = g_object_new (TERMINAL_TYPE_APP, NULL);
 
-  if (!disable_server)
+  if (!options.disable_server)
     {
       if (!terminal_gdbus_register_service (app, &error))
         {

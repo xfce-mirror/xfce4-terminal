@@ -145,14 +145,11 @@ terminal_tab_attr_free (TerminalTabAttr *attr)
 
 
 void
-terminal_options_parse (gint       argc,
-                        gchar    **argv,
-                        gboolean  *show_help,
-                        gboolean  *show_version,
-                        gboolean  *show_colors,
-                        gboolean  *disable_server)
+terminal_options_parse (gint              argc,
+                        gchar           **argv,
+                        TerminalOptions  *options)
 {
-  gint   n;
+  gint n;
 
   for (n = 1; n < argc; ++n)
     {
@@ -165,13 +162,15 @@ terminal_options_parse (gint       argc,
         break;
 
       if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
-        *show_help = TRUE;
+        options->show_help = TRUE;
       else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL))
-        *show_version = TRUE;
+        options->show_version = TRUE;
       else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL))
-        *disable_server = TRUE;
+        options->disable_server = TRUE;
       else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL))
-        *show_colors = TRUE;
+        options->show_colors = TRUE;
+      else if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL))
+        options->show_preferences = TRUE;
     }
 }
 
