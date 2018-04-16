@@ -363,8 +363,8 @@ terminal_window_attr_parse (gint              argc,
           if (G_UNLIKELY (s == NULL))
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--color-text\" requires specifying "
-                             "the color as its parameter"));
+                           _("Option \"%s\" requires specifying "
+                             "the color as its parameter"), "--color-text");
               goto failed;
             }
           else if (!gdk_rgba_parse (&color, s))
@@ -382,8 +382,8 @@ terminal_window_attr_parse (gint              argc,
           if (G_UNLIKELY (s == NULL))
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                           _("Option \"--color-bg\" requires specifying "
-                             "the color as its parameter"));
+                           _("Option \"%s\" requires specifying "
+                             "the color as its parameter"), "--color-bg");
               goto failed;
             }
           else if (!gdk_rgba_parse (&color, s))
