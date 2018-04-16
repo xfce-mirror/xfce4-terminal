@@ -17,7 +17,7 @@ ChangeLog: Makefile
 dist-hook: ChangeLog
 
 desktopdir = $(datadir)/applications
-desktop_in_files = xfce4-terminal.desktop.in
+desktop_in_files = xfce4-terminal.desktop.in xfce4-terminal-settings.desktop.in
 desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
 
