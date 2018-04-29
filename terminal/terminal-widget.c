@@ -764,7 +764,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
           /* set the new regular expression */
           widget->regex_tags[i] = vte_terminal_match_add_gregex (VTE_TERMINAL (widget), regex, 0);
 #if VTE_CHECK_VERSION (0, 53, 00)
-          vte_terminal_match_set_cursor_name (VTE_TERMINAL (widget), widget->regex_tags[i], "grab");
+          vte_terminal_match_set_cursor_name (VTE_TERMINAL (widget), widget->regex_tags[i], "hand2");
 #else
           vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget), widget->regex_tags[i], GDK_HAND2);
 #endif
