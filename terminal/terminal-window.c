@@ -2631,6 +2631,9 @@ terminal_window_add (TerminalWindow *window,
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
+  /* show the terminal screen first: see bug #13263*/
+  gtk_widget_show (GTK_WIDGET (screen));
+
   /* create the tab label */
   label = terminal_screen_get_tab_label (screen);
 
@@ -2654,10 +2657,6 @@ terminal_window_add (TerminalWindow *window,
   /* update screen font from window */
   if (window->priv->font || window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
     terminal_screen_update_font (screen);
-
-  /* show the terminal screen */
-  gtk_widget_realize (GTK_WIDGET (screen));
-  gtk_widget_show (GTK_WIDGET (screen));
 
   /* switch to the new tab */
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), page);
