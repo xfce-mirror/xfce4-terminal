@@ -1655,7 +1655,7 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
 {
   TerminalScreen        *terminal;
   TerminalWindowTabInfo *tab_info;
-  gint                   current = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->priv->notebook));
+  GtkWidget             *current = GTK_WIDGET (window->priv->active);
 
   terminal = TERMINAL_SCREEN (g_object_new (TERMINAL_TYPE_SCREEN, NULL));
   terminal_window_add (window, terminal);
@@ -1673,7 +1673,10 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
 
       /* restore tab focus if the unclosed one wasn't active when it was closed */
       if (!tab_info->was_active)
-        gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), current);
+        {
+          gint page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), current);
+          gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), page_num);
+        }
 
       /* free info */
       terminal_window_tab_info_free (tab_info);
