@@ -665,8 +665,7 @@ terminal_window_attr_free (TerminalWindowAttr *attr)
 {
   terminal_return_if_fail (attr != NULL);
 
-  g_slist_foreach (attr->tabs, (GFunc) terminal_tab_attr_free, NULL);
-  g_slist_free (attr->tabs);
+  g_slist_free_full (attr->tabs, (GDestroyNotify) terminal_tab_attr_free);
   g_free (attr->startup_id);
   g_free (attr->sm_client_id);
   g_free (attr->geometry);

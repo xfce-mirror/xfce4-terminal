@@ -606,8 +606,7 @@ terminal_window_finalize (GObject *object)
 
   g_slist_free (window->priv->tabs_menu_actions);
   g_free (window->priv->font);
-  g_queue_foreach (window->priv->closed_tabs_list, (GFunc) terminal_window_tab_info_free, NULL);
-  g_queue_free (window->priv->closed_tabs_list);
+  g_queue_free_full (window->priv->closed_tabs_list, (GDestroyNotify) terminal_window_tab_info_free);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
