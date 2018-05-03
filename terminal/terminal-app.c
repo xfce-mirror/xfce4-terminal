@@ -354,7 +354,7 @@ terminal_app_take_window (TerminalApp *app,
 
   group = gtk_window_group_new ();
   gtk_window_group_add_window (group, window);
-  g_object_weak_ref (G_OBJECT (window), (GWeakNotify) g_object_unref, group);
+  g_object_unref (group);
 
   g_signal_connect (G_OBJECT (window), "destroy",
                     G_CALLBACK (terminal_app_window_destroyed), app);

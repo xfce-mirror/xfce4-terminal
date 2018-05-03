@@ -39,6 +39,8 @@
 static void     terminal_preferences_dialog_finalize          (GObject                   *object);
 static void     terminal_preferences_dialog_disc_bindings     (GtkWidget                 *widget,
                                                                TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_died              (gpointer                   user_data,
+                                                               GObject                   *where_the_object_was);
 static void     terminal_preferences_dialog_response          (GtkWidget                 *widget,
                                                                gint                       response,
                                                                TerminalPreferencesDialog *dialog);
@@ -224,7 +226,7 @@ error:
   /* connect response to dialog */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "dialog");
   terminal_return_if_fail (G_IS_OBJECT (object));
-  g_object_weak_ref (object, (GWeakNotify) g_object_unref, dialog);
+  g_object_weak_ref (object, (GWeakNotify) terminal_preferences_dialog_died, dialog);
   g_signal_connect (object, "destroy",
       G_CALLBACK (terminal_preferences_dialog_disc_bindings), dialog);
   g_signal_connect (object, "response",
@@ -518,6 +520,15 @@ terminal_preferences_dialog_disc_bindings (GtkWidget                 *widget,
   for (li = dialog->bindings; li != NULL; li = li->next)
     g_object_unref (G_OBJECT (li->data));
   g_slist_free (dialog->bindings);
+}
+
+
+
+static void
+terminal_preferences_dialog_died (gpointer  user_data,
+                                  GObject  *where_the_object_was)
+{
+  g_object_unref (G_OBJECT (user_data));
 }
 
 
