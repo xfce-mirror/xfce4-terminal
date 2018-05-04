@@ -138,9 +138,9 @@ terminal_gdbus_method_call (GDBusConnection       *connection,
 
 static const GDBusInterfaceVTable terminal_gdbus_vtable =
 {
-  terminal_gdbus_method_call,
-  NULL, /* get property */
-  NULL  /* set property */
+  .method_call = terminal_gdbus_method_call,
+  .get_property = NULL,
+  .set_property = NULL
 };
 
 
