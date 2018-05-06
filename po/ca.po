@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-14 00:31+0200\n"
-"PO-Revision-Date: 2018-04-14 05:33+0000\n"
+"POT-Creation-Date: 2018-04-16 18:31+0200\n"
+"PO-Revision-Date: 2018-05-06 21:10+0000\n"
 "Last-Translator: Robert Antoni Buj Gelonch <rbuj@fedoraproject.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/xfce/xfce-apps/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -282,113 +282,123 @@ msgstr "L'identificador d'usuari no coincideix"
 msgid "Display mismatch"
 msgstr "La pantalla no coincideix"
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:220
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "A l'opció «--default-display» li cal que especifiqueu com paràmetre la pantalla predeterminada de les X"
 
-#: ../terminal/terminal-options.c:234
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "A l'opció «--default-working-directory» li cal que especifiqueu com paràmetre el directori de treball per defecte"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "A l'opció «--execute/-x» li cal que especifiqueu l'ordre a executar en la resta de la línia d'ordres"
 
-#: ../terminal/terminal-options.c:268
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "A l'opció «--command/-e» li cal que especifiqueu com a paràmetre l'ordre a executar"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:287
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "A l'opció «--working-directory» li cal que especifiqueu com a paràmetre el directori de treball"
 
-#: ../terminal/terminal-options.c:300
+#: ../terminal/terminal-options.c:302
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "A l'opció «--title/-T» li cal que especifiqueu com a paràmetre el títol."
 
-#: ../terminal/terminal-options.c:315
+#: ../terminal/terminal-options.c:317
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "A l'opció «--dynamic-title-mode» li cal que especifiqueu com a paràmetre el mode del títol dinàmic."
 
-#: ../terminal/terminal-options.c:330
+#: ../terminal/terminal-options.c:332
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "Argument no vàlid per a l'opció «--dynamic-title-mode»: %s"
 
-#: ../terminal/terminal-options.c:340
+#: ../terminal/terminal-options.c:342
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "A l'opció «--initial-title» li cal que especifiqueu com a paràmetre el títol inicial."
 
-#: ../terminal/terminal-options.c:363
+#: ../terminal/terminal-options.c:366 ../terminal/terminal-options.c:385
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"%s\" requires specifying the color as its parameter"
+msgstr "A l'opció «%s» li cal que especifiqueu com a paràmetre el color"
+
+#: ../terminal/terminal-options.c:373 ../terminal/terminal-options.c:392
+#, c-format
+msgid "Unable to parse color: %s"
+msgstr "No es pot analitzar el color: %s"
+
+#: ../terminal/terminal-options.c:403
+#, c-format
+msgid "Option \"--display\" requires specifying the X display as its parameter"
 msgstr "A l'opció «--display» li cal que especifiqueu com a paràmetre la pantalla de les X"
 
-#: ../terminal/terminal-options.c:378
+#: ../terminal/terminal-options.c:418
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "A l'opció «--geometry» li cal que especifiqueu com a paràmetre la geometria de la finestra"
 
-#: ../terminal/terminal-options.c:393
+#: ../terminal/terminal-options.c:433
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "A l'opció «--role» li cal que especifiqueu com a paràmetre el rol de la finestra"
 
-#: ../terminal/terminal-options.c:408
+#: ../terminal/terminal-options.c:448
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "A l'opció «--sm-client-id» li cal que especifiqueu com a paràmetre l'identificador únic de sessió"
 
-#: ../terminal/terminal-options.c:423
+#: ../terminal/terminal-options.c:463
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "A l'opció «--startup-id» li cal que especifiqueu com paràmetre l'identificador d'engegada"
 
-#: ../terminal/terminal-options.c:439
+#: ../terminal/terminal-options.c:479
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "A l'opció «--icon/-I» li cal que especifiqueu un nom d'icona o nom de fitxer com a paràmetre"
 
-#: ../terminal/terminal-options.c:510
+#: ../terminal/terminal-options.c:550
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "A l'opció «--font» li cal que especifiqueu com a paràmetre el nom de la lletra"
 
-#: ../terminal/terminal-options.c:528
+#: ../terminal/terminal-options.c:568
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "A l'opció «--zoom» li cal que especifiqueu com a paràmetre el zoom (%d .. %d)"
 
-#: ../terminal/terminal-options.c:550
+#: ../terminal/terminal-options.c:590
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "L'opció «%s» és desconeguda"
@@ -399,7 +409,7 @@ msgstr "Tots els fitxers"
 
 #: ../terminal/terminal-preferences-dialog.c:471
 msgid "Image Files"
-msgstr "Fitxers d'imatge"
+msgstr "Fitxers d'imatges"
 
 #: ../terminal/terminal-preferences-dialog.c:927
 msgid "Load Presets..."
@@ -409,48 +419,48 @@ msgstr "Carrega els valors predefinits..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:434 ../terminal/terminal-screen.c:808
-#: ../terminal/terminal-screen.c:2128
+#: ../terminal/terminal-screen.c:439 ../terminal/terminal-screen.c:813
+#: ../terminal/terminal-screen.c:2147
 msgid "Untitled"
 msgstr "Sense títol"
 
-#: ../terminal/terminal-screen.c:709
+#: ../terminal/terminal-screen.c:714
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "No es pot determinar el vostre shell d'inici de sessió."
 
-#: ../terminal/terminal-screen.c:1351
+#: ../terminal/terminal-screen.c:1363
 msgid "_Relaunch"
 msgstr "To_rna a llançar"
 
-#: ../terminal/terminal-screen.c:1357
+#: ../terminal/terminal-screen.c:1369
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "S'ha sortit normalment del procés fill amb l'estat %d."
 
-#: ../terminal/terminal-screen.c:1359
+#: ../terminal/terminal-screen.c:1371
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "S'ha avortat el procés fill amb el senyal %d."
 
-#: ../terminal/terminal-screen.c:1361
+#: ../terminal/terminal-screen.c:1373
 msgid "The child process was aborted."
 msgstr "S'ha avortat el procés fill."
 
-#: ../terminal/terminal-screen.c:1367 ../terminal/terminal-window.c:866
+#: ../terminal/terminal-screen.c:1379 ../terminal/terminal-window.c:866
 msgid "Do _not ask me again"
 msgstr "_No tornis a mostrar aquest missatge"
 
-#: ../terminal/terminal-screen.c:1725 ../terminal/terminal-screen.c:1795
-#: ../terminal/terminal-screen.c:1832
+#: ../terminal/terminal-screen.c:1737 ../terminal/terminal-screen.c:1814
+#: ../terminal/terminal-screen.c:1851
 msgid "Failed to execute child"
 msgstr "Ha fallat l'execució del fill"
 
-#: ../terminal/terminal-screen.c:2466
+#: ../terminal/terminal-screen.c:2485
 msgid "Close this tab"
 msgstr "Tanca aquesta pestanya"
 
-#: ../terminal/terminal-screen.c:2519
+#: ../terminal/terminal-screen.c:2538
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Ha fallat l'establiment de la codificació %s\n"
