@@ -114,33 +114,33 @@ typedef enum
 
 struct _TerminalWindowDropdown
 {
-  TerminalWindow       parent_instance;
+  TerminalWindow     parent_instance;
 
   /* timeout for animation */
-  guint                animation_timeout_id;
-  guint                animation_time;
-  TerminalDirection    animation_dir;
+  guint              animation_timeout_id;
+  guint              animation_time;
+  TerminalDirection  animation_dir;
 
   /* ui widgets */
-  GtkWidget           *keep_open;
+  GtkWidget         *keep_open;
 
   /* idle for detecting focus out during grabs (Alt+Tab) */
-  guint                grab_timeout_id;
+  guint              grab_timeout_id;
 
   /* measurements */
-  gdouble              rel_width;
-  gdouble              rel_height;
-  gdouble              rel_position;
-  gdouble              rel_position_vertical;
+  gdouble            rel_width;
+  gdouble            rel_height;
+  gdouble            rel_position;
+  gdouble            rel_position_vertical;
 
-  GtkStatusIcon       *status_icon;
+  GtkStatusIcon     *status_icon;
 
   /* last screen and monitor */
-  GdkScreen           *screen;
-  gint                 monitor_num;
+  GdkScreen         *screen;
+  gint               monitor_num;
 
   /* server time of focus out with grab */
-  gint64               focus_out_time;
+  gint64             focus_out_time;
 };
 
 
@@ -252,7 +252,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   dropdown->animation_dir = ANIMATION_DIR_NONE;
 
   /* shared setting to disable some functionality in TerminalWindow */
-  window->drop_down = TRUE;
+  terminal_window_set_drop_down (window, TRUE);
 
   /* default window settings */
   gtk_window_set_decorated (GTK_WINDOW (dropdown), FALSE);

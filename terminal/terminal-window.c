@@ -309,6 +309,9 @@ struct _TerminalWindowPrivate
 
   TerminalVisibility   scrollbar_visibility;
   TerminalZoomLevel    zoom;
+
+  /* if this is a TerminalWindowDropdown */
+  guint                drop_down : 1;
 };
 
 static guint   window_signals[LAST_SIGNAL];
@@ -929,7 +932,7 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
 
   /* required to get the char height/width right */
   if (gtk_widget_get_realized (GTK_WIDGET (screen))
-      && !window->drop_down)
+      && !window->priv->drop_down)
     {
       terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
                                            force_grid_width, force_grid_height);
@@ -1157,7 +1160,7 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       /* show the tabs when needed */
       terminal_window_notebook_show_tabs (window);
     }
-  else if (G_UNLIKELY (window->drop_down))
+  else if (G_UNLIKELY (window->priv->drop_down))
     {
       /* try to calculate a decent grid size based on the info we have now */
       terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
@@ -1761,7 +1764,7 @@ copy_input_popover_close (GtkWidget      *popover,
                           TerminalWindow *window)
 {
   /* need for hiding on focus */
-  if (window->drop_down)
+  if (window->priv->drop_down)
     terminal_util_activate_window (GTK_WINDOW (window));
 
   /* close the dialog */
@@ -1837,7 +1840,7 @@ terminal_window_action_prefs_died (gpointer  user_data,
   window->priv->preferences_dialog = NULL;
   window->priv->n_child_windows--;
 
-  if (window->drop_down)
+  if (window->priv->drop_down)
     terminal_util_activate_window (GTK_WINDOW (window));
 }
 
@@ -1849,7 +1852,7 @@ terminal_window_action_prefs (GtkAction      *action,
 {
   if (window->priv->preferences_dialog == NULL)
     {
-      window->priv->preferences_dialog = terminal_preferences_dialog_new (window->drop_down, window->drop_down);
+      window->priv->preferences_dialog = terminal_preferences_dialog_new (window->priv->drop_down, window->priv->drop_down);
       if (G_LIKELY (window->priv->preferences_dialog != NULL))
         {
           window->priv->n_child_windows++;
@@ -1937,7 +1940,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           gtk_window_unfullscreen (GTK_WINDOW (window));
 
           /* update drop-down window geometry, otherwise it'll be incorrect */
-          if (window->drop_down)
+          if (window->priv->drop_down)
             terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
         }
     }
@@ -2098,7 +2101,7 @@ title_popover_close (GtkWidget      *popover,
   terminal_return_if_fail (window->priv->title_popover != NULL);
 
   /* need for hiding on focus */
-  if (window->drop_down)
+  if (window->priv->drop_down)
     terminal_util_activate_window (GTK_WINDOW (window));
 
   /* close the dialog */
@@ -2239,7 +2242,7 @@ terminal_window_action_search_response (GtkWidget      *dialog,
   else
     {
       /* need for hiding on focus */
-      if (window->drop_down)
+      if (window->priv->drop_down)
         terminal_util_activate_window (GTK_WINDOW (window));
 
       /* hide dialog */
@@ -2672,7 +2675,7 @@ terminal_window_notebook_show_tabs (TerminalWindow *window)
   if (npages < 2)
     {
       g_object_get (G_OBJECT (window->priv->preferences),
-                    window->drop_down ? "dropdown-always-show-tabs" :
+                    window->priv->drop_down ? "dropdown-always-show-tabs" :
                     "misc-always-show-tabs", &show_tabs, NULL);
     }
 
@@ -2937,12 +2940,39 @@ terminal_window_get_zoom_level (TerminalWindow *window)
 /**
  * terminal_window_set_zoom_level:
  * @window  : A #TerminalWindow.
+ * @zoom    : Zoom level.
  **/
 void
 terminal_window_set_zoom_level (TerminalWindow    *window,
                                 TerminalZoomLevel  zoom)
 {
   window->priv->zoom = zoom;
+}
+
+
+
+/**
+ * terminal_window_is_drop_down:
+ * @window  : A #TerminalWindow.
+ **/
+gboolean
+terminal_window_is_drop_down (TerminalWindow *window)
+{
+  return window->priv->drop_down != 0;
+}
+
+
+
+/**
+ * terminal_window_set_drop_down:
+ * @window    : A #TerminalWindow.
+ * @drop_down : Whether the window is drop-down.
+ **/
+void
+terminal_window_set_drop_down (TerminalWindow *window,
+                               gboolean        drop_down)
+{
+  window->priv->drop_down = drop_down;
 }
 
 

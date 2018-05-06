@@ -2700,7 +2700,7 @@ terminal_screen_update_font (TerminalScreen *screen)
 #endif
 
   /* update window geometry it required (not needed for drop-down) */
-  if (TERMINAL_IS_WINDOW (toplevel) && !TERMINAL_WINDOW (toplevel)->drop_down && grid_w > 0 && grid_h > 0)
+  if (TERMINAL_IS_WINDOW (toplevel) && !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel)) && grid_w > 0 && grid_h > 0)
     terminal_screen_force_resize_window (screen, GTK_WINDOW (toplevel), grid_w, grid_h);
 }
 

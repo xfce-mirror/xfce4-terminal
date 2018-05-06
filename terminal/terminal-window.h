@@ -45,9 +45,6 @@ typedef struct
   GtkWindow              parent_instance;
 
   TerminalWindowPrivate *priv;
-
-  /* if this is a TerminalWindowDropdown */
-  guint                  drop_down : 1;
 } TerminalWindow;
 
 GType              terminal_window_get_type                 (void) G_GNUC_CONST;
@@ -85,19 +82,20 @@ GtkAction         *terminal_window_get_action               (TerminalWindow     
                                                              const gchar        *action_name);
 
 const gchar       *terminal_window_get_font                 (TerminalWindow     *window);
-
 void               terminal_window_set_font                 (TerminalWindow     *window,
                                                              const gchar        *font);
 
 TerminalVisibility terminal_window_get_scrollbar_visibility (TerminalWindow     *window);
-
 void               terminal_window_set_scrollbar_visibility (TerminalWindow     *window,
                                                              TerminalVisibility  scrollbar);
 
 TerminalZoomLevel  terminal_window_get_zoom_level           (TerminalWindow     *window);
-
 void               terminal_window_set_zoom_level           (TerminalWindow     *window,
                                                              TerminalZoomLevel   zoom);
+
+gboolean           terminal_window_is_drop_down             (TerminalWindow     *window);
+void               terminal_window_set_drop_down            (TerminalWindow     *window,
+                                                             gboolean            drop_down);
 
 gint               terminal_window_get_menubar_height       (TerminalWindow     *window);
 
