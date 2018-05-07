@@ -125,7 +125,9 @@
               <xref linkend="options-tab-initial-title"/>;
               <xref linkend="options-tab-working-directory"/>;
               <xref linkend="options-tab-hold"/>;
-              <xref linkend="options-tab-active-tab"/>
+              <xref linkend="options-tab-active-tab"/>;
+              <xref linkend="options-tab-color-text"/>;
+              <xref linkend="options-tab-color-bg"/>
             </para>
           </listitem>
         </varlistentry>
@@ -322,6 +324,30 @@
           </term>
           <listitem>
             <para>Makes the terminal active: useful when a terminal window contains multiple tabs</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-color-text">
+            <option>--color-text=<replaceable>color</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set <parameter>color</parameter> as the text color for the terminal per the following
+              specification: https://developer.gnome.org/gdk3/stable/gdk3-RGBA-Colors.html#gdk-rgba-parse
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term id="options-tab-color-bg">
+            <option>--color-bg=<replaceable>color</replaceable></option>
+          </term>
+          <listitem>
+            <para>
+              Set <parameter>color</parameter> as the background color for the terminal per the following
+              specification: https://developer.gnome.org/gdk3/stable/gdk3-RGBA-Colors.html#gdk-rgba-parse
+            </para>
           </listitem>
         </varlistentry>
       </variablelist>
