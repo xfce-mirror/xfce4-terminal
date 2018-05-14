@@ -478,9 +478,9 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     const gchar *p2 = strstr (p1 + 1, "<menuitem action=\"paste\"/>"); // context menu
     const guint length_new = terminal_window_ui_length + 2 * strlen ("<menuitem action=\"copy-html\"/>");
     gchar *ui_new = g_new0 (gchar, length_new + 1);
-    strncpy (ui_new, terminal_window_ui, p1 - terminal_window_ui);
+    memcpy (ui_new, terminal_window_ui, p1 - terminal_window_ui);
     strcat (ui_new, "<menuitem action=\"copy-html\"/>");
-    strncat (ui_new, p1, p2 - p1);
+    memcpy (ui_new + strlen (ui_new), p1, p2 - p1);
     strcat (ui_new, "<menuitem action=\"copy-html\"/>");
     strcat (ui_new, p2);
     gtk_ui_manager_add_ui_from_string (window->priv->ui_manager, ui_new, length_new, NULL);
