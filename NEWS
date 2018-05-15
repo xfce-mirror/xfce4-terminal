@@ -1,3 +1,29 @@
+0.8.7.4
+=======
+- Tab became active if unclosed to the left of the current tab
+- Fix new tab being one pixel short under some GTK themes (e.g., Greybird)
+  which led to changing the window geometry and losing a row (bug #13263)
+- Resolve deprecation of vte_terminal_match_set_cursor_type()
+- Add --preferences command line option and corresponding .desktop file: this
+  allows to open a standalone Preferences dialog from Xfce Settings (bug #13249)
+- Add command line options for setting text (foreground) and backround colors:
+  --color-text and --color-bg, respectively (bug #4887)
+- Add "Copy Input" action: it shows a popover and allows to copy the input
+  to all tabs within the current window (bug #10047)
+- Update URLs to use https protocol
+- Add info on accels.scm to the man page
+- Reduce the Preferences dialog height
+- First show the terminal and then update its settings (bug #14322)
+- Add command line option --active-tab which allows to specify active tab within
+  a window. It also allows to keep the active tab when restoring a saved Xfce
+  session.
+- Convert "Relaunch" dialog to GtkInfoBar to make it less intrusive
+- Add tooltips for "Set Title" popover elements
+- Resolve the warnings gcc8 has introduced
+- Translation updates: Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
+  Croatian, Czech, Danish, Dutch, English (Australia), French, German, Hebrew,
+  Hungarian, Japanese, Lithuanian, Malay, Polish, Portuguese, Portuguese (Brazil), Russian, Turkish, Ukrainian
+
 0.8.7.3
 =======
 - Fix drop-down terminal hotkey (bug #14289)
