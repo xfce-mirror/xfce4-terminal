@@ -984,7 +984,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       gtk_action_set_sensitive (window->priv->action_copy,
                                 terminal_screen_has_selection (window->priv->active));
-#if VTE_CHECK_VERSION (0, 49,2)
+#if VTE_CHECK_VERSION (0, 49, 2)
       gtk_action_set_sensitive (terminal_window_get_action (window, "copy-html"),
                                 terminal_screen_has_selection (window->priv->active));
 #endif
