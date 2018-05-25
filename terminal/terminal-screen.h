@@ -130,6 +130,10 @@ gboolean        terminal_screen_has_foreground_process    (TerminalScreen *scree
 void            terminal_screen_feed_text                 (TerminalScreen *screen,
                                                            const char     *text);
 
+const gchar    *terminal_screen_get_custom_fg_color       (TerminalScreen *screen);
+
+const gchar    *terminal_screen_get_custom_bg_color       (TerminalScreen *screen);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_SCREEN_H */

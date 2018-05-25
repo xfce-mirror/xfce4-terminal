@@ -2803,3 +2803,21 @@ terminal_screen_feed_text (TerminalScreen *screen,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_feed_child (VTE_TERMINAL (screen->terminal), text, strlen (text));
 }
+
+
+
+const gchar *
+terminal_screen_get_custom_fg_color (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  return screen->custom_fg_color;
+}
+
+
+
+const gchar *
+terminal_screen_get_custom_bg_color (TerminalScreen *screen)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  return screen->custom_bg_color;
+}

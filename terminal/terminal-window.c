@@ -1097,7 +1097,7 @@ terminal_window_close_tab_request (TerminalScreen *screen,
 {
   if (terminal_window_confirm_close (screen, window))
     {
-      /* store info on the tab being closed */
+      /* store attrs of the tab being closed */
       TerminalTabAttr *tab_attr = g_slice_new0 (TerminalTabAttr);
       tab_attr->active = (screen == window->priv->active);
       tab_attr->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
@@ -1105,6 +1105,10 @@ terminal_window_close_tab_request (TerminalScreen *screen,
       tab_attr->directory = g_strdup (terminal_screen_get_working_directory (screen));
       tab_attr->title = IS_STRING (terminal_screen_get_custom_title (screen)) ?
                         g_strdup (terminal_screen_get_custom_title (screen)) : NULL;
+      tab_attr->color_text = IS_STRING (terminal_screen_get_custom_fg_color (screen)) ?
+                             g_strdup (terminal_screen_get_custom_fg_color (screen)) : NULL;
+      tab_attr->color_bg = IS_STRING (terminal_screen_get_custom_bg_color (screen)) ?
+                           g_strdup (terminal_screen_get_custom_bg_color (screen)) : NULL;
       g_queue_push_tail (window->priv->closed_tabs_list, tab_attr);
 
       gtk_widget_destroy (GTK_WIDGET (screen));
