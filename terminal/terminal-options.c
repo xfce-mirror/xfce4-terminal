@@ -128,22 +128,6 @@ terminal_option_show_hide_cmp (const gchar         *long_name,
 
 
 
-static void
-terminal_tab_attr_free (TerminalTabAttr *attr)
-{
-  terminal_return_if_fail (attr != NULL);
-
-  g_strfreev (attr->command);
-  g_free (attr->directory);
-  g_free (attr->title);
-  g_free (attr->initial_title);
-  g_free (attr->color_text);
-  g_free (attr->color_bg);
-  g_slice_free (TerminalTabAttr, attr);
-}
-
-
-
 void
 terminal_options_parse (gint              argc,
                         gchar           **argv,
@@ -649,9 +633,30 @@ terminal_window_attr_new (void)
 
   tab_attr = g_slice_new0 (TerminalTabAttr);
   tab_attr->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
+  tab_attr->position = -1;
   win_attr->tabs = g_slist_prepend (NULL, tab_attr);
 
   return win_attr;
+}
+
+
+
+/**
+ * terminal_tab_attr_free:
+ * @attr  : A #TerminalTabAttr.
+ **/
+void
+terminal_tab_attr_free (TerminalTabAttr *attr)
+{
+  terminal_return_if_fail (attr != NULL);
+
+  g_strfreev (attr->command);
+  g_free (attr->directory);
+  g_free (attr->title);
+  g_free (attr->initial_title);
+  g_free (attr->color_text);
+  g_free (attr->color_bg);
+  g_slice_free (TerminalTabAttr, attr);
 }
 
 

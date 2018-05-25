@@ -61,6 +61,7 @@ typedef struct
   gchar        *color_text;
   gchar        *color_bg;
   TerminalTitle dynamic_title_mode;
+  gint          position;
   guint         hold : 1;
   guint         active : 1;
 } TerminalTabAttr;
@@ -106,6 +107,8 @@ GSList             *terminal_window_attr_parse (gint                 argc,
                                                 GError             **error);
 
 TerminalWindowAttr *terminal_window_attr_new   (void);
+
+void                terminal_tab_attr_free     (TerminalTabAttr     *attr);
 
 void                terminal_window_attr_free  (TerminalWindowAttr  *attr);
 
