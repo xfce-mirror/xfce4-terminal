@@ -120,7 +120,7 @@ usage (void)
            "  -x, --execute; -e, --command=%s; -T, --title=%s;\n"
            "  --dynamic-title-mode=%s ('replace', 'before', 'after', 'none');\n"
            "  --initial-title=%s; --working-directory=%s; -H, --hold;\n"
-           "  --active-tab; --color-text=color; --color-bg=color\n\n",
+           "  --active-tab; --color-text=%s; --color-bg=%s\n\n",
            _("Tab Options"),
            /* parameter of --command */
            _("command"),
@@ -131,7 +131,11 @@ usage (void)
            /* parameter of --initial-title */
            _("title"),
            /* parameter of --working-directory */
-           _("directory"));
+           _("directory"),
+           /* parameter of --color-text */
+           _("color"),
+           /* parameter of --color-bg */
+           _("color"));
 
   g_print ("%s:\n"
            "  --display=%s; --geometry=%s; --role=%s; --drop-down;\n"
