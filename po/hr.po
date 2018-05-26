@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-16 18:31+0200\n"
-"PO-Revision-Date: 2018-05-10 14:09+0000\n"
-"Last-Translator: Ivica  Kolić <ikoli@yahoo.com>\n"
+"POT-Creation-Date: 2018-05-26 00:31+0200\n"
+"PO-Revision-Date: 2018-05-26 06:34+0000\n"
+"Last-Translator: Edin Veskovic <edin.lockedin@gmail.com>\n"
 "Language-Team: Croatian (http://www.transifex.com/xfce/xfce-apps/language/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,7 +69,7 @@ msgstr "Osnovne opcije"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:144
+#: ../terminal/main.c:111 ../terminal/main.c:148
 msgid "display"
 msgstr "prikaz"
 
@@ -103,71 +103,78 @@ msgstr "naslov"
 msgid "mode"
 msgstr "način"
 
-#: ../terminal/main.c:142
+#. parameter of --color-text
+#. parameter of --color-bg
+#: ../terminal/main.c:136 ../terminal/main.c:138
+msgid "color"
+msgstr "boja"
+
+#: ../terminal/main.c:146
 msgid "Window Options"
 msgstr "Opcije prozora"
 
 #. parameter of --geometry
-#: ../terminal/main.c:146
+#: ../terminal/main.c:150
 msgid "geometry"
 msgstr "geometrija"
 
 #. parameter of --role
-#: ../terminal/main.c:148
+#: ../terminal/main.c:152
 msgid "role"
 msgstr "uloga"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:150
+#: ../terminal/main.c:154
 msgid "string"
 msgstr "string"
 
 #. parameter of --icon
-#: ../terminal/main.c:152
+#: ../terminal/main.c:156
 msgid "icon"
 msgstr "ikona"
 
 #. parameter of --font
-#: ../terminal/main.c:154
+#: ../terminal/main.c:158
 msgid "font"
 msgstr "font"
 
 #. parameter of --zoom
-#: ../terminal/main.c:156
+#: ../terminal/main.c:160
 msgid "zoom"
 msgstr "zumiraj"
 
-#: ../terminal/main.c:158
+#: ../terminal/main.c:162
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Vidi  %s man stranicu za puno objašnjenje gornjih opcija."
 
-#: ../terminal/main.c:191 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
+#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce terminal"
 
-#: ../terminal/main.c:207
+#: ../terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr " Xfce razvojni tim. Sva prava pridržana."
 
-#: ../terminal/main.c:208
+#: ../terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Napisao Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:209
+#: ../terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:210
+#: ../terminal/main.c:215
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "i Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:211
+#: ../terminal/main.c:216
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Molim,prijavite probleme na <%s>."
 
-#: ../terminal/main.c:318
+#: ../terminal/main.c:334
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ne mogu registrirati terminalni servis: %s\n"
@@ -285,136 +292,136 @@ msgstr "Nepodudarni korisnički id"
 msgid "Display mismatch"
 msgstr "Prikaži nepodudarnost"
 
-#: ../terminal/terminal-options.c:220
+#: ../terminal/terminal-options.c:203
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Opcija \"--default-display\"  zahtjeva određivanje zadanog X zaslona kao svog parametra"
 
-#: ../terminal/terminal-options.c:236
+#: ../terminal/terminal-options.c:219
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Opcija \"--default-working-directory\" zahtjeva određivanje zadanog radnog direktorija kao svog parametra"
 
-#: ../terminal/terminal-options.c:253
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Opcija \"--execute/-x\" zahtjeva određivanje naredbe za pokretanje u ostatku naredbenog retka"
 
-#: ../terminal/terminal-options.c:270
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Opcija \"--command/-e\" zahtjeva određivanje naredbe za pokretanje kao svog parametra"
 
-#: ../terminal/terminal-options.c:287
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Opcija \"--working-directory\" zahtjeva određivanje radnog direktorija kao svog parametra"
 
-#: ../terminal/terminal-options.c:302
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Opcija \"--title/-T\" zahtjeva određivanje naslova kao svog parametra"
 
-#: ../terminal/terminal-options.c:317
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "Opcija \"--dynamic-title-mode\" zahtijeva određivanje dinamičkog načina naslova kao njegovog parametra"
 
-#: ../terminal/terminal-options.c:332
+#: ../terminal/terminal-options.c:315
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "Nevaljan argument za opciju \"--dynamic-title-mode\": %s"
 
-#: ../terminal/terminal-options.c:342
+#: ../terminal/terminal-options.c:325
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "Opcija \"--initial-title\" zahtjeva određivanje početnog naslova kao njegovog parametra"
 
-#: ../terminal/terminal-options.c:366 ../terminal/terminal-options.c:385
+#: ../terminal/terminal-options.c:349 ../terminal/terminal-options.c:368
 #, c-format
 msgid "Option \"%s\" requires specifying the color as its parameter"
 msgstr "Opcija \"%s\" zahtijeva određivanje boje kao svoj parametar"
 
-#: ../terminal/terminal-options.c:373 ../terminal/terminal-options.c:392
+#: ../terminal/terminal-options.c:356 ../terminal/terminal-options.c:375
 #, c-format
 msgid "Unable to parse color: %s"
 msgstr "Nemoguće raščlaniti boju: %s"
 
-#: ../terminal/terminal-options.c:403
+#: ../terminal/terminal-options.c:386
 #, c-format
 msgid "Option \"--display\" requires specifying the X display as its parameter"
 msgstr "Opcija \"--display\" zahtijeva određivanje X zaslona kao svog parametra "
 
-#: ../terminal/terminal-options.c:418
+#: ../terminal/terminal-options.c:401
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Opcija \"--geometry\" zahtjeva određivanje geometrije prozora kao svog parametra"
 
-#: ../terminal/terminal-options.c:433
+#: ../terminal/terminal-options.c:416
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Opcija \"--role\" zahtjeva određivanje uloge prozora kao svog parametra"
 
-#: ../terminal/terminal-options.c:448
+#: ../terminal/terminal-options.c:431
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Opcija \"--sm-client-id\" zahtjeva određivanje jedinstvene identifikacije sesije kao svog parametra"
 
-#: ../terminal/terminal-options.c:463
+#: ../terminal/terminal-options.c:446
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Opcija \"--startup-id\" zahtjeva određivanje identifikacije pokretanja sustava kao svog parametra"
 
-#: ../terminal/terminal-options.c:479
+#: ../terminal/terminal-options.c:462
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Opcija \"--icon/-I\" zahtjeva određivanje imena ikone ili imena datoteke kao svog parametra"
 
-#: ../terminal/terminal-options.c:550
+#: ../terminal/terminal-options.c:533
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Opcija \"--font\" zahtijeva određivanje imena fonta kao svog parametra"
 
-#: ../terminal/terminal-options.c:568
+#: ../terminal/terminal-options.c:551
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Opcija \"--font\" zahtijeva određivanje povećanja (%d .. %d) kao svog parametra"
 
-#: ../terminal/terminal-options.c:590
+#: ../terminal/terminal-options.c:573
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Nepoznata opcija  \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:465
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "All Files"
 msgstr "Sve datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:471
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Image Files"
 msgstr "Datoteke slika"
 
-#: ../terminal/terminal-preferences-dialog.c:927
+#: ../terminal/terminal-preferences-dialog.c:938
 msgid "Load Presets..."
 msgstr "Učitaj spremljene..."
 
@@ -450,7 +457,7 @@ msgstr "Proces dijete prekinut signalom %d."
 msgid "The child process was aborted."
 msgstr "Proces dijete prekinut."
 
-#: ../terminal/terminal-screen.c:1379 ../terminal/terminal-window.c:866
+#: ../terminal/terminal-screen.c:1379 ../terminal/terminal-window.c:857
 msgid "Do _not ask me again"
 msgstr "Ne_pitaj me ponovo"
 
@@ -573,353 +580,353 @@ msgstr "Padajući terminal"
 msgid "Toggle Drop-down Terminal"
 msgstr "Upali/ugasi padajući terminal"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:315
 msgid "_File"
 msgstr "_Datoteka"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:316
 msgid "Open _Tab"
 msgstr "Otvori _karticu"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:316
 msgid "Open a new terminal tab"
 msgstr "Otvori novu terminalnu karticu"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:317
 msgid "Open T_erminal"
 msgstr "Otvori T_erminal"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:317
 msgid "Open a new terminal window"
 msgstr "Otvori novi terminalni prozor"
 
-#: ../terminal/terminal-window.c:326
+#: ../terminal/terminal-window.c:318
 msgid "_Undo Close Tab"
 msgstr "_Poništi zatvori karticu"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:319
 msgid "_Detach Tab"
 msgstr "_Odspoji karticu"
 
-#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:830
+#: ../terminal/terminal-window.c:320 ../terminal/terminal-window.c:821
 msgid "Close T_ab"
 msgstr "Zatvori k_articu"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:321
 msgid "Close Other Ta_bs"
 msgstr "Zatvori druge ka_rtice"
 
-#: ../terminal/terminal-window.c:330 ../terminal/terminal-window.c:837
+#: ../terminal/terminal-window.c:322 ../terminal/terminal-window.c:828
 msgid "Close _Window"
 msgstr "Zatvori _prozor"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:323
 msgid "_Edit"
 msgstr "_Uredi"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:324
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:324
 msgid "Copy to clipboard"
 msgstr "Kopiraj u međuspremnik"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:326
 msgid "Copy as _HTML"
 msgstr "Kopiraj kao _HTML"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:326
 msgid "Copy to clipboard as HTML"
 msgstr "Kopiraj u međuspremnik kao HTML"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "_Zalijepi"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:328
 msgid "Paste from clipboard"
 msgstr "Zalijepi iz međuspremnika"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:329
 msgid "Paste _Selection"
 msgstr "Zalijepi _Odabir"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:330
 msgid "Select _All"
 msgstr "Odaberi _sve"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:331
 msgid "Copy _Input To All Tabs..."
 msgstr "Kopiraj _unos svim karticama..."
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:332
 msgid "Pr_eferences..."
 msgstr "Os_obitosti"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:332
 msgid "Open the preferences dialog"
 msgstr "Otvori dijalog osobitosti"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:333
 msgid "_View"
 msgstr "_Pogled"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:334
 msgid "Zoom _In"
 msgstr "Zumi_raj"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:334
 msgid "Zoom in with larger font"
 msgstr "Zumiraj sa većim fontom"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:335
 msgid "Zoom _Out"
 msgstr "U_manji"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:335
 msgid "Zoom out with smaller font"
 msgstr "Zumiraj sa manjim fontom"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:336
 msgid "_Normal Size"
 msgstr "_Normalna veličina"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:336
 msgid "Zoom to default size"
 msgstr "Zumiraj na zadanu veličinu"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:337
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:338
 msgid "_Set Title..."
 msgstr "_Postavi naslov..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:339
 msgid "_Find..."
 msgstr "_Nađi..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:339
 msgid "Search terminal contents"
 msgstr "Traži sadržaj terminala"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:340
 msgid "Find Ne_xt"
 msgstr "Nađi sli_jedeće"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:341
 msgid "Find Pre_vious"
 msgstr "Nađi pre_thodno"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:342
 msgid "Sa_ve Contents..."
 msgstr "Sp_remi sadržaje..."
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:343
 msgid "_Reset"
 msgstr "_Resetiraj"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:344
 msgid "_Clear Scrollback and Reset"
 msgstr "_Očisti pomake unatrag i resetiraj"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:345
 msgid "T_abs"
 msgstr "K_artice"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:346
 msgid "_Previous Tab"
 msgstr "_Prethodna kartica"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:346
 msgid "Switch to previous tab"
 msgstr "Prebaci na prethodnu karticu"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:347
 msgid "_Next Tab"
 msgstr "_Slijedeća kartica"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:347
 msgid "Switch to next tab"
 msgstr "Prebaci na slijedeću karticu"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:348
 msgid "Move Tab _Left"
 msgstr "Pomakni karticu _lijevo"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:349
 msgid "Move Tab _Right"
 msgstr "Pomakni karticu _desno"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:350
 msgid "_Help"
 msgstr "_Pomoć"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:351
 msgid "_Contents"
 msgstr "_Sadržaj"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:351
 msgid "Display help contents"
 msgstr "Prikaži sadržaj pomoći"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:352
 msgid "_About"
 msgstr "_O programu"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:353
 msgid "_Zoom"
 msgstr "_Zumiranje"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:358
 msgid "Show _Menubar"
 msgstr "Pokaži _traku izbornika"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:358
 msgid "Show/hide the menubar"
 msgstr "Pokaži/sakrij traku izbornika"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:359
 msgid "Show _Toolbar"
 msgstr "Pokaži _alatnu traku"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:359
 msgid "Show/hide the toolbar"
 msgstr "Pokaži/sakrij alatnu traku"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:360
 msgid "Show Window _Borders"
 msgstr "Pokaži rubove _prozora"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:360
 msgid "Show/hide the window decorations"
 msgstr "Pokaži/sakrij ukrašavanje prozora"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:361
 msgid "_Fullscreen"
 msgstr "_Puni zaslon"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:361
 msgid "Toggle fullscreen mode"
 msgstr "Upali/ugasi cijeli zaslon"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:362
 msgid "_Read-Only"
 msgstr "_Samo za čitanje"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:362
 msgid "Toggle read-only mode"
 msgstr "Upali/ugasi samo za čitanje"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:363
 msgid "Scroll on _Output"
 msgstr "P_omiči prikaz sa izlaznim prikazom"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:363
 msgid "Toggle scroll on output"
 msgstr "Uključi/isključi pomicanje prikaz sa izlaznim prikazom"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:542
+#: ../terminal/terminal-window.c:534
 msgid "Set _Encoding"
 msgstr "Postavi _enkodiranje"
 
-#: ../terminal/terminal-window.c:785
+#: ../terminal/terminal-window.c:776
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: ../terminal/terminal-window.c:788 ../terminal/terminal-window.c:2349
+#: ../terminal/terminal-window.c:779 ../terminal/terminal-window.c:2313
 msgid "_Cancel"
 msgstr "_Odustani"
 
 #. and process running
-#: ../terminal/terminal-window.c:798
+#: ../terminal/terminal-window.c:789
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Neki procesi se još uvijek izvode u ostalim karticama.\nZatvaranjem prozora svi procesi bit će ubijeni."
 
 #. and no process running
-#: ../terminal/terminal-window.c:804
+#: ../terminal/terminal-window.c:795
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Ovaj prozor ima %d otvorenih kartica.Zatvaranje\novog prozora zatvoriti će sve kartice."
 
-#: ../terminal/terminal-window.c:808
+#: ../terminal/terminal-window.c:799
 msgid "Close all tabs?"
 msgstr "Zatvoriti sve kartice?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:815
+#: ../terminal/terminal-window.c:806
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Proces se još uvijek izvodi.\nZatvaranje kartice će ga ubiti."
 
-#: ../terminal/terminal-window.c:817
+#: ../terminal/terminal-window.c:808
 msgid "Close tab?"
 msgstr "Zatvori karticu?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:822
+#: ../terminal/terminal-window.c:813
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Proces se još uvijek izvodi.\nZatvaranje prozora će ga ubiti."
 
-#: ../terminal/terminal-window.c:824
+#: ../terminal/terminal-window.c:815
 msgid "Close window?"
 msgstr "Zatvori prozor?"
 
-#: ../terminal/terminal-window.c:1839
+#: ../terminal/terminal-window.c:1803
 msgid "Copy _Input:"
 msgstr "Kopiraj _unos:"
 
-#: ../terminal/terminal-window.c:1843
+#: ../terminal/terminal-window.c:1807
 msgid "Enter the text to be copied to all tabs"
 msgstr "Upišite tekst namjenjen kopiranju svim karticama"
 
-#: ../terminal/terminal-window.c:1851
+#: ../terminal/terminal-window.c:1815
 msgid "Copy input"
 msgstr "Kopiraj unos"
 
-#: ../terminal/terminal-window.c:2195
+#: ../terminal/terminal-window.c:2159
 msgid "_Title:"
 msgstr "_Naslov:"
 
-#: ../terminal/terminal-window.c:2199
+#: ../terminal/terminal-window.c:2163
 msgid "Enter the title for the current terminal tab"
 msgstr "Unesi naslov trenutne kartice terminala"
 
-#: ../terminal/terminal-window.c:2204
+#: ../terminal/terminal-window.c:2168
 msgid "Reset"
 msgstr "Restiraj"
 
-#: ../terminal/terminal-window.c:2214
+#: ../terminal/terminal-window.c:2178
 msgid "Help"
 msgstr "Pomoć"
 
-#: ../terminal/terminal-window.c:2220
+#: ../terminal/terminal-window.c:2184
 msgid "Close"
 msgstr "Zatvori"
 
-#: ../terminal/terminal-window.c:2266
+#: ../terminal/terminal-window.c:2230
 msgid "Failed to create the regular expression"
 msgstr "Neuspjelo stvaranje regularnih izraza"
 
-#: ../terminal/terminal-window.c:2346
+#: ../terminal/terminal-window.c:2310
 msgid "Save contents..."
 msgstr "Spremi sadržaje..."
 
-#: ../terminal/terminal-window.c:2350
+#: ../terminal/terminal-window.c:2314
 msgid "_Save"
 msgstr "_Spremi"
 
-#: ../terminal/terminal-window.c:2387
+#: ../terminal/terminal-window.c:2351
 msgid "Failed to save terminal contents"
 msgstr "Neuspjelo spremanje sadržaja terminala"
 
@@ -1720,6 +1727,6 @@ msgstr "Ostalo"
 msgid "Ad_vanced"
 msgstr "Na_predno"
 
-#: ../xfce4-terminal.desktop.in.h:2
+#: ../xfce4-terminal.desktop.in.h:2 ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Emulator terminala"
