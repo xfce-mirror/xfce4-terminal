@@ -656,6 +656,7 @@ terminal_tab_attr_free (TerminalTabAttr *attr)
   g_free (attr->initial_title);
   g_free (attr->color_text);
   g_free (attr->color_bg);
+  g_free (attr->color_title);
   g_slice_free (TerminalTabAttr, attr);
 }
 

@@ -1112,6 +1112,8 @@ terminal_window_close_tab_request (TerminalScreen *screen,
                              g_strdup (terminal_screen_get_custom_fg_color (screen)) : NULL;
       tab_attr->color_bg = IS_STRING (terminal_screen_get_custom_bg_color (screen)) ?
                            g_strdup (terminal_screen_get_custom_bg_color (screen)) : NULL;
+      tab_attr->color_title = IS_STRING (terminal_screen_get_custom_title_color (screen)) ?
+                              g_strdup (terminal_screen_get_custom_title_color (screen)) : NULL;
       g_queue_push_tail (window->priv->closed_tabs_list, tab_attr);
 
       gtk_widget_destroy (GTK_WIDGET (screen));
@@ -1633,7 +1635,11 @@ terminal_window_action_undo_close_tab (GtkAction      *action,
   terminal = terminal_screen_new (tab_attr, window->priv->grid_width, window->priv->grid_height);
   terminal_window_add (window, terminal);
 
-  /* set unclosed tab position */
+  /* restore tab title color */
+  if (tab_attr->color_title != NULL)
+    terminal_screen_set_custom_title_color (terminal, tab_attr->color_title);
+
+  /* restore tab position */
   gtk_notebook_reorder_child (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (terminal), tab_attr->position);
 
   /* restore tab focus if the unclosed one wasn't active when it was closed */

@@ -60,6 +60,7 @@ typedef struct
   gchar        *initial_title;
   gchar        *color_text;
   gchar        *color_bg;
+  gchar        *color_title;
   TerminalTitle dynamic_title_mode;
   gint          position;
   guint         hold : 1;
