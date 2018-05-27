@@ -42,6 +42,7 @@
     </menu>
     <menu action="terminal-menu">
       <menuitem action="set-title"/>
+      <menuitem action="set-title-color"/>
       <separator/>
       <menuitem action="search"/>
       <menuitem action="search-next"/>
@@ -63,8 +64,6 @@
       <separator/>
       <menuitem action="move-tab-left"/>
       <menuitem action="move-tab-right"/>
-      <separator/>
-      <menuitem action="set-tab-label-color"/>
       <separator/>
       <placeholder name="placeholder-tab-items"/>
     </menu>
@@ -101,12 +100,12 @@
   <popup name="tab-menu">
     <menuitem action="detach-tab"/>
     <menuitem action="close-other-tabs"/>
+    <separator/>
     <menuitem action="set-title"/>
+    <menuitem action="set-title-color"/>
     <separator/>
     <menuitem action="move-tab-left"/>
     <menuitem action="move-tab-right"/>
-    <separator/>
-    <menuitem action="set-tab-label-color"/>
     <separator/>
     <menu action="tabs-menu">
       <placeholder name="placeholder-tab-items"/>

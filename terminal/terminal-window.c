@@ -217,9 +217,9 @@ static void         terminal_window_action_move_tab_right         (GtkAction    
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_goto_tab               (GtkRadioAction         *action,
                                                                    GtkNotebook            *notebook);
-static void         terminal_window_action_set_tab_label_color    (GtkAction              *action,
-                                                                   TerminalWindow         *window);
 static void         terminal_window_action_set_title              (GtkAction              *action,
+                                                                   TerminalWindow         *window);
+static void         terminal_window_action_set_title_color        (GtkAction              *action,
                                                                    TerminalWindow         *window);
 static void         terminal_window_action_search                 (GtkAction              *action,
                                                                    TerminalWindow         *window);
@@ -338,6 +338,7 @@ static const GtkActionEntry action_entries[] =
     { "zoom-reset", "zoom-original", N_ ("_Normal Size"), "<control>0", N_ ("Zoom to default size"), G_CALLBACK (terminal_window_action_zoom_reset), },
   { "terminal-menu", NULL, N_ ("_Terminal"), NULL, NULL, NULL, },
     { "set-title", NULL, N_ ("_Set Title..."), "<control><shift>s", NULL, G_CALLBACK (terminal_window_action_set_title), },
+    { "set-title-color", NULL, N_ ("Set Title Co_lor..."), NULL, NULL, G_CALLBACK (terminal_window_action_set_title_color), },
     { "search", "edit-find", N_ ("_Find..."), "<control><shift>f", N_ ("Search terminal contents"), G_CALLBACK (terminal_window_action_search), },
     { "search-next", NULL, N_ ("Find Ne_xt"), NULL, NULL, G_CALLBACK (terminal_window_action_search_next), },
     { "search-prev", NULL, N_ ("Find Pre_vious"), NULL, NULL, G_CALLBACK (terminal_window_action_search_prev), },
@@ -349,7 +350,6 @@ static const GtkActionEntry action_entries[] =
     { "next-tab", "go-next", N_ ("_Next Tab"), "<control>Page_Down", N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
     { "move-tab-left", NULL, N_ ("Move Tab _Left"), "<control><shift>Page_Up", NULL, G_CALLBACK (terminal_window_action_move_tab_left), },
     { "move-tab-right", NULL, N_ ("Move Tab _Right"), "<control><shift>Page_Down", NULL, G_CALLBACK (terminal_window_action_move_tab_right), },
-    { "set-tab-label-color", NULL, N_ ("Set Tab Label _Color"), NULL, NULL, G_CALLBACK (terminal_window_action_set_tab_label_color), },
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
     { "contents", "help-browser", N_ ("_Contents"), "F1", N_ ("Display help contents"), G_CALLBACK (terminal_window_action_contents), },
     { "about", "help-about", N_ ("_About"), NULL, NULL, G_CALLBACK (terminal_window_action_about), },
@@ -2090,28 +2090,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 static void
-terminal_window_action_set_tab_label_color (GtkAction      *action,
-                                            TerminalWindow *window)
-{
-  GdkRGBA    color;
-  gchar     *color_string;
-  GtkWidget *dialog = gtk_color_chooser_dialog_new (_("Choose tab label color"), GTK_WINDOW (window));
-  int        response = gtk_dialog_run (GTK_DIALOG (dialog));
-
-  if (response == GTK_RESPONSE_OK)
-    {
-      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &color);
-      color_string = gdk_rgba_to_string (&color);
-      terminal_screen_set_custom_tab_label_color (window->priv->active, color_string);
-      g_free (color_string);
-    }
-
-  gtk_widget_destroy (dialog);
-}
-
-
-
-static void
 title_popover_close (GtkWidget      *popover,
                      TerminalWindow *window)
 {
@@ -2215,6 +2193,28 @@ terminal_window_action_set_title (GtkAction      *action,
     }
 
   gtk_widget_show_all (window->priv->title_popover);
+}
+
+
+
+static void
+terminal_window_action_set_title_color (GtkAction      *action,
+                                        TerminalWindow *window)
+{
+  GdkRGBA    color;
+  gchar     *color_string;
+  GtkWidget *dialog = gtk_color_chooser_dialog_new (_("Choose tab label color"), GTK_WINDOW (window));
+  int        response = gtk_dialog_run (GTK_DIALOG (dialog));
+
+  if (response == GTK_RESPONSE_OK)
+    {
+      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &color);
+      color_string = gdk_rgba_to_string (&color);
+      terminal_screen_set_custom_title_color (window->priv->active, color_string);
+      g_free (color_string);
+    }
+
+  gtk_widget_destroy (dialog);
 }
 
 

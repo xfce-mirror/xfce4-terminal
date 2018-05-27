@@ -190,7 +190,7 @@ struct _TerminalScreen
 
   gchar               *custom_fg_color;
   gchar               *custom_bg_color;
-  gchar               *custom_tab_label_color;
+  gchar               *custom_title_color;
 
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
@@ -379,7 +379,7 @@ terminal_screen_finalize (GObject *object)
   g_free (screen->initial_title);
   g_free (screen->custom_fg_color);
   g_free (screen->custom_bg_color);
-  g_free (screen->custom_tab_label_color);
+  g_free (screen->custom_title_color);
 
   (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
@@ -1488,9 +1488,9 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
     return FALSE;
 
   /* unset */
-  if (G_LIKELY (screen->custom_tab_label_color == NULL))
+  if (G_LIKELY (screen->custom_title_color == NULL))
     gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
-  else if (gdk_rgba_parse (&label_color, screen->custom_tab_label_color))
+  else if (gdk_rgba_parse (&label_color, screen->custom_title_color))
     terminal_screen_set_tab_label_color (screen, &label_color);
 
   if (terminal_preferences_get_color (screen->preferences, "tab-activity-color", &active_color))
@@ -1547,9 +1547,9 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
   has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
   if (G_LIKELY (has_color))
     terminal_screen_set_tab_label_color (screen, &color);
-  else if (G_LIKELY (screen->custom_tab_label_color == NULL))
+  else if (G_LIKELY (screen->custom_title_color == NULL))
     gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
-  else if (gdk_rgba_parse (&label_color, screen->custom_tab_label_color))
+  else if (gdk_rgba_parse (&label_color, screen->custom_title_color))
     terminal_screen_set_tab_label_color (screen, &label_color);
 
   /* stop running reset timeout */
@@ -2449,9 +2449,9 @@ terminal_screen_reset_activity (TerminalScreen *screen)
 
   if (screen->tab_label != NULL)
     {
-      if (G_LIKELY (screen->custom_tab_label_color == NULL))
+      if (G_LIKELY (screen->custom_title_color == NULL))
         gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
-      else if (gdk_rgba_parse (&label_color, screen->custom_tab_label_color))
+      else if (gdk_rgba_parse (&label_color, screen->custom_title_color))
         terminal_screen_set_tab_label_color (screen, &label_color);
     }
 }
@@ -2840,8 +2840,8 @@ terminal_screen_get_custom_bg_color (TerminalScreen *screen)
 
 
 void
-terminal_screen_set_custom_tab_label_color (TerminalScreen *screen,
-                                            const gchar    *color)
+terminal_screen_set_custom_title_color (TerminalScreen *screen,
+                                        const gchar    *color)
 {
   GdkRGBA label_color;
 
@@ -2849,8 +2849,8 @@ terminal_screen_set_custom_tab_label_color (TerminalScreen *screen,
 
   if (gdk_rgba_parse (&label_color, color))
     {
-      g_free (screen->custom_tab_label_color);
-      screen->custom_tab_label_color = g_strdup (color);
+      g_free (screen->custom_title_color);
+      screen->custom_title_color = g_strdup (color);
       terminal_screen_set_tab_label_color (screen, &label_color);
     }
 }
