@@ -157,6 +157,8 @@ static void       terminal_screen_urgent_bell                   (TerminalWidget 
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_set_custom_command            (TerminalScreen        *screen,
                                                                  gchar                **command);
+static void       terminal_screen_set_tab_label_color           (TerminalScreen        *screen,
+                                                                 const GdkRGBA         *color);
 
 
 
@@ -188,6 +190,7 @@ struct _TerminalScreen
 
   gchar               *custom_fg_color;
   gchar               *custom_bg_color;
+  gchar               *custom_tab_label_color;
 
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
@@ -376,6 +379,7 @@ terminal_screen_finalize (GObject *object)
   g_free (screen->initial_title);
   g_free (screen->custom_fg_color);
   g_free (screen->custom_bg_color);
+  g_free (screen->custom_tab_label_color);
 
   (*G_OBJECT_CLASS (terminal_screen_parent_class)->finalize) (object);
 }
@@ -1478,14 +1482,16 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
   TerminalScreen *screen = TERMINAL_SCREEN (user_data);
   GdkRGBA         active_color;
   GdkRGBA         fg_color;
-  PangoAttrList  *attrs;
-  PangoAttribute *foreground;
+  GdkRGBA         label_color;
 
   if (G_UNLIKELY (screen->tab_label == NULL))
     return FALSE;
 
   /* unset */
-  gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+  if (G_LIKELY (screen->custom_tab_label_color == NULL))
+    gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+  else if (gdk_rgba_parse (&label_color, screen->custom_tab_label_color))
+    terminal_screen_set_tab_label_color (screen, &label_color);
 
   if (terminal_preferences_get_color (screen->preferences, "tab-activity-color", &active_color))
     {
@@ -1497,13 +1503,7 @@ terminal_screen_reset_activity_timeout (gpointer user_data)
       active_color.green = (active_color.green + fg_color.green) / 2;
       active_color.blue = (active_color.blue + fg_color.blue) / 2;
 
-      attrs = pango_attr_list_new ();
-      foreground = pango_attr_foreground_new ((guint16)(active_color.red*65535),
-                                              (guint16)(active_color.green*65535),
-                                              (guint16)(active_color.blue*65535));
-      pango_attr_list_insert (attrs, foreground);
-      gtk_label_set_attributes (GTK_LABEL (screen->tab_label), attrs);
-      pango_attr_list_unref (attrs);
+      terminal_screen_set_tab_label_color (screen, &active_color);
     }
 
   return FALSE;
@@ -1524,9 +1524,8 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
 {
   guint           timeout;
   GdkRGBA         color;
+  GdkRGBA         label_color;
   gboolean        has_color;
-  PangoAttrList  *attrs;
-  PangoAttribute *foreground;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (GTK_IS_LABEL (screen->tab_label));
@@ -1547,17 +1546,11 @@ terminal_screen_vte_window_contents_changed (TerminalScreen *screen)
   /* set label color */
   has_color = terminal_preferences_get_color (screen->preferences, "tab-activity-color", &color);
   if (G_LIKELY (has_color))
-    {
-      attrs = pango_attr_list_new ();
-      foreground = pango_attr_foreground_new ((guint16)(color.red*65535),
-                                              (guint16)(color.green*65535),
-                                              (guint16)(color.blue*65535));
-      pango_attr_list_insert (attrs, foreground);
-      gtk_label_set_attributes (GTK_LABEL (screen->tab_label), attrs);
-      pango_attr_list_unref (attrs);
-    }
-  else
-      gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+    terminal_screen_set_tab_label_color (screen, &color);
+  else if (G_LIKELY (screen->custom_tab_label_color == NULL))
+    gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+  else if (gdk_rgba_parse (&label_color, screen->custom_tab_label_color))
+    terminal_screen_set_tab_label_color (screen, &label_color);
 
   /* stop running reset timeout */
   if (screen->activity_timeout_id != 0)
@@ -1714,6 +1707,21 @@ terminal_screen_set_custom_command (TerminalScreen *screen,
     screen->custom_command = g_strdupv (command);
   else
     screen->custom_command = NULL;
+}
+
+
+
+static void
+terminal_screen_set_tab_label_color (TerminalScreen *screen,
+                                     const GdkRGBA  *color)
+{
+  PangoAttrList *attrs = pango_attr_list_new ();
+  PangoAttribute *foreground = pango_attr_foreground_new ((guint16)(color->red*65535),
+                                                          (guint16)(color->green*65535),
+                                                          (guint16)(color->blue*65535));
+  pango_attr_list_insert (attrs, foreground);
+  gtk_label_set_attributes (GTK_LABEL (screen->tab_label), attrs);
+  pango_attr_list_unref (attrs);
 }
 
 
@@ -2432,13 +2440,20 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
 void
 terminal_screen_reset_activity (TerminalScreen *screen)
 {
+  GdkRGBA label_color;
+
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   if (screen->activity_timeout_id != 0)
     g_source_remove (screen->activity_timeout_id);
 
   if (screen->tab_label != NULL)
-    gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+    {
+      if (G_LIKELY (screen->custom_tab_label_color == NULL))
+        gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+      else if (gdk_rgba_parse (&label_color, screen->custom_tab_label_color))
+        terminal_screen_set_tab_label_color (screen, &label_color);
+    }
 }
 
 
@@ -2820,4 +2835,22 @@ terminal_screen_get_custom_bg_color (TerminalScreen *screen)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   return screen->custom_bg_color;
+}
+
+
+
+void
+terminal_screen_set_custom_tab_label_color (TerminalScreen *screen,
+                                            const gchar    *color)
+{
+  GdkRGBA label_color;
+
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  if (gdk_rgba_parse (&label_color, color))
+    {
+      g_free (screen->custom_tab_label_color);
+      screen->custom_tab_label_color = g_strdup (color);
+      terminal_screen_set_tab_label_color (screen, &label_color);
+    }
 }
