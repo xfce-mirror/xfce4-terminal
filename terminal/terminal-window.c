@@ -2209,7 +2209,7 @@ terminal_window_action_set_title_color (GtkAction      *action,
 {
   GdkRGBA    color;
   gchar     *color_string;
-  GtkWidget *dialog = gtk_color_chooser_dialog_new (_("Choose tab label color"), GTK_WINDOW (window));
+  GtkWidget *dialog = gtk_color_chooser_dialog_new (_("Choose title color"), GTK_WINDOW (window));
   int        response = gtk_dialog_run (GTK_DIALOG (dialog));
 
   if (response == GTK_RESPONSE_OK)
