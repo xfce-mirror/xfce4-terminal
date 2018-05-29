@@ -2856,9 +2856,13 @@ terminal_screen_set_custom_title_color (TerminalScreen *screen,
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
-  if (gdk_rgba_parse (&label_color, color))
+  g_free (screen->custom_title_color);
+  screen->custom_title_color = NULL;
+
+  if (color == NULL)
+    gtk_label_set_attributes (GTK_LABEL (screen->tab_label), NULL);
+  else if (gdk_rgba_parse (&label_color, color))
     {
-      g_free (screen->custom_title_color);
       screen->custom_title_color = g_strdup (color);
       terminal_screen_set_tab_label_color (screen, &label_color);
     }

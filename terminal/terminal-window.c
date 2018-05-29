@@ -2207,10 +2207,14 @@ static void
 terminal_window_action_set_title_color (GtkAction      *action,
                                         TerminalWindow *window)
 {
-  GdkRGBA    color;
+  GtkWidget *dialog;
   gchar     *color_string;
-  GtkWidget *dialog = gtk_color_chooser_dialog_new (_("Choose title color"), GTK_WINDOW (window));
-  int        response = gtk_dialog_run (GTK_DIALOG (dialog));
+  GdkRGBA    color;
+  int        response;
+
+  dialog = gtk_color_chooser_dialog_new (_("Choose title color"), GTK_WINDOW (window));
+  gtk_dialog_add_button (GTK_DIALOG (dialog), _("_Reset"), GTK_RESPONSE_NO);
+  response = gtk_dialog_run (GTK_DIALOG (dialog));
 
   if (response == GTK_RESPONSE_OK)
     {
@@ -2219,6 +2223,8 @@ terminal_window_action_set_title_color (GtkAction      *action,
       terminal_screen_set_custom_title_color (window->priv->active, color_string);
       g_free (color_string);
     }
+  else if (response == GTK_RESPONSE_NO)
+    terminal_screen_set_custom_title_color (window->priv->active, NULL);
 
   gtk_widget_destroy (dialog);
 }
