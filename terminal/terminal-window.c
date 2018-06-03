@@ -1105,9 +1105,8 @@ terminal_window_close_tab_request (TerminalScreen *screen,
       GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
 
       /* store attrs of the tab being closed */
-      TerminalTabAttr *tab_attr = g_slice_new0 (TerminalTabAttr);
+      TerminalTabAttr *tab_attr = terminal_tab_attr_new ();
       tab_attr->active = (screen == window->priv->active);
-      tab_attr->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
       tab_attr->position = gtk_notebook_page_num (notebook, GTK_WIDGET (screen));
       tab_attr->directory = g_strdup (terminal_screen_get_working_directory (screen));
       tab_attr->title = IS_STRING (terminal_screen_get_custom_title (screen)) ?

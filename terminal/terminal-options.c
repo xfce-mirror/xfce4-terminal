@@ -146,15 +146,15 @@ terminal_options_parse (gint              argc,
         break;
 
       if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
-        options->show_help = TRUE;
+        options->show_help = 1;
       else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL))
-        options->show_version = TRUE;
+        options->show_version = 1;
       else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL))
-        options->disable_server = TRUE;
+        options->disable_server = 1;
       else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL))
-        options->show_colors = TRUE;
+        options->show_colors = 1;
       else if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL))
-        options->show_preferences = TRUE;
+        options->show_preferences = 1;
     }
 }
 
@@ -511,7 +511,7 @@ terminal_window_attr_parse (gint              argc,
           else
             {
               /* add new tab */
-              tab_attr = g_slice_new0 (TerminalTabAttr);
+              tab_attr = terminal_tab_attr_new ();
               win_attr->tabs = g_slist_append (win_attr->tabs, tab_attr);
             }
         }
@@ -620,23 +620,32 @@ failed:
 TerminalWindowAttr*
 terminal_window_attr_new (void)
 {
-  TerminalWindowAttr *win_attr;
-  TerminalTabAttr    *tab_attr;
+  TerminalWindowAttr *win_attr = g_slice_new0 (TerminalWindowAttr);
 
-  win_attr = g_slice_new0 (TerminalWindowAttr);
   win_attr->fullscreen = FALSE;
   win_attr->menubar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->borders = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->toolbar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->scrollbar = TERMINAL_VISIBILITY_DEFAULT;
   win_attr->zoom = TERMINAL_ZOOM_LEVEL_DEFAULT;
-
-  tab_attr = g_slice_new0 (TerminalTabAttr);
-  tab_attr->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
-  tab_attr->position = -1;
-  win_attr->tabs = g_slist_prepend (NULL, tab_attr);
+  win_attr->tabs = g_slist_prepend (NULL, terminal_tab_attr_new ());
 
   return win_attr;
+}
+
+
+
+/**
+ **/
+TerminalTabAttr*
+terminal_tab_attr_new (void)
+{
+  TerminalTabAttr *tab_attr = g_slice_new0 (TerminalTabAttr);
+
+  tab_attr->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
+  tab_attr->position = -1;
+
+  return tab_attr;
 }
 
 

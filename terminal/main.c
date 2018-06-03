@@ -182,7 +182,7 @@ main (int argc, char **argv)
 
   /* initialize options */
   options.disable_server = options.show_version = options.show_colors = options.show_help =
-      options.show_preferences = FALSE;
+      options.show_preferences = 0;
 
   /* install required signal handlers */
   signal (SIGPIPE, SIG_IGN);
@@ -284,7 +284,7 @@ main (int argc, char **argv)
               || g_error_matches (error, TERMINAL_ERROR, TERMINAL_ERROR_DISPLAY_MISMATCH))
             {
               /* don't try to establish another service here */
-              options.disable_server = TRUE;
+              options.disable_server = 1;
 
 #ifdef G_ENABLE_DEBUG
               g_debug ("%s mismatch when invoking remote terminal: %s",

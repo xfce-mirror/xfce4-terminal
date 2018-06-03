@@ -54,48 +54,48 @@ typedef enum
 
 typedef struct
 {
-  gchar       **command;
-  gchar        *directory;
-  gchar        *title;
-  gchar        *initial_title;
-  gchar        *color_text;
-  gchar        *color_bg;
-  gchar        *color_title;
-  TerminalTitle dynamic_title_mode;
-  gint          position;
-  guint         hold : 1;
-  guint         active : 1;
+  gchar         **command;
+  gchar          *directory;
+  gchar          *title;
+  gchar          *initial_title;
+  gchar          *color_text;
+  gchar          *color_bg;
+  gchar          *color_title;
+  TerminalTitle   dynamic_title_mode;
+  gint            position;
+  guint           hold : 1;
+  guint           active : 1;
 } TerminalTabAttr;
 
 typedef struct
 {
-  GSList              *tabs;
-  gchar               *display;
-  gchar               *geometry;
-  gchar               *role;
-  gchar               *startup_id;
-  gchar               *sm_client_id;
-  gchar               *icon;
-  gchar               *font;
-  guint                drop_down : 1;
-  guint                fullscreen : 1;
-  guint                maximize : 1;
-  guint                minimize : 1;
-  guint                reuse_last_window : 1;
-  TerminalVisibility   menubar;
-  TerminalVisibility   borders;
-  TerminalVisibility   toolbar;
-  TerminalVisibility   scrollbar;
-  TerminalZoomLevel    zoom;
+  GSList             *tabs;
+  gchar              *display;
+  gchar              *geometry;
+  gchar              *role;
+  gchar              *startup_id;
+  gchar              *sm_client_id;
+  gchar              *icon;
+  gchar              *font;
+  guint               drop_down : 1;
+  guint               fullscreen : 1;
+  guint               maximize : 1;
+  guint               minimize : 1;
+  guint               reuse_last_window : 1;
+  TerminalVisibility  menubar;
+  TerminalVisibility  borders;
+  TerminalVisibility  toolbar;
+  TerminalVisibility  scrollbar;
+  TerminalZoomLevel   zoom;
 } TerminalWindowAttr;
 
 typedef struct
 {
-  gboolean show_help;
-  gboolean show_version;
-  gboolean show_colors;
-  gboolean show_preferences;
-  gboolean disable_server;
+  guint show_help : 1;
+  guint show_version : 1;
+  guint show_colors : 1;
+  guint show_preferences : 1;
+  guint disable_server : 1;
 } TerminalOptions;
 
 void                terminal_options_parse     (gint                 argc,
@@ -108,6 +108,8 @@ GSList             *terminal_window_attr_parse (gint                 argc,
                                                 GError             **error);
 
 TerminalWindowAttr *terminal_window_attr_new   (void);
+
+TerminalTabAttr    *terminal_tab_attr_new      (void);
 
 void                terminal_tab_attr_free     (TerminalTabAttr     *attr);
 
