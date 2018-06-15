@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 18:31+0100\n"
-"PO-Revision-Date: 2018-03-18 18:45+0000\n"
+"POT-Creation-Date: 2018-05-28 06:31+0200\n"
+"PO-Revision-Date: 2018-06-15 21:16+0000\n"
 "Last-Translator: Πέτρος Σαμαράς <psamaras1@gmail.com>\n"
 "Language-Team: Greek (http://www.transifex.com/xfce/xfce-apps/language/el/)\n"
 "MIME-Version: 1.0\n"
@@ -72,13 +72,13 @@ msgstr "Γενικές επιλογές"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:143
+#: ../terminal/main.c:111 ../terminal/main.c:148
 msgid "display"
 msgstr "προβολή"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:133
+#: ../terminal/main.c:113 ../terminal/main.c:134
 msgid "directory"
 msgstr "κατάλογος"
 
@@ -86,101 +86,108 @@ msgstr "κατάλογος"
 msgid "Window or Tab Separators"
 msgstr "Διαχωριστικά παραθύρων ή καρτελών"
 
-#: ../terminal/main.c:123
+#: ../terminal/main.c:124
 msgid "Tab Options"
 msgstr "Επιλογές Καρτέλας"
 
 #. parameter of --command
-#: ../terminal/main.c:125
+#: ../terminal/main.c:126
 msgid "command"
 msgstr "εντολή"
 
 #. parameter of --title
 #. parameter of --initial-title
-#: ../terminal/main.c:127 ../terminal/main.c:131
+#: ../terminal/main.c:128 ../terminal/main.c:132
 msgid "title"
 msgstr "τίτλος"
 
 #. parameter of --dynamic-title-mode
-#: ../terminal/main.c:129
+#: ../terminal/main.c:130
 msgid "mode"
 msgstr "λειτουργία"
 
-#: ../terminal/main.c:141
+#. parameter of --color-text
+#. parameter of --color-bg
+#: ../terminal/main.c:136 ../terminal/main.c:138
+msgid "color"
+msgstr ""
+
+#: ../terminal/main.c:146
 msgid "Window Options"
 msgstr "Επιλογές Παραθύρου"
 
 #. parameter of --geometry
-#: ../terminal/main.c:145
+#: ../terminal/main.c:150
 msgid "geometry"
 msgstr "γεωμετρία"
 
 #. parameter of --role
-#: ../terminal/main.c:147
+#: ../terminal/main.c:152
 msgid "role"
 msgstr "ρόλος"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:149
+#: ../terminal/main.c:154
 msgid "string"
 msgstr "αλφαριθμητικό"
 
 #. parameter of --icon
-#: ../terminal/main.c:151
+#: ../terminal/main.c:156
 msgid "icon"
 msgstr "εικονίδιο"
 
 #. parameter of --font
-#: ../terminal/main.c:153
+#: ../terminal/main.c:158
 msgid "font"
 msgstr "γραμματοσειρά"
 
 #. parameter of --zoom
-#: ../terminal/main.c:155
+#: ../terminal/main.c:160
 msgid "zoom"
 msgstr "μεγέθυνση-σμίκρυνση"
 
-#: ../terminal/main.c:157
+#: ../terminal/main.c:162
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Δείτε την σελίδα %s του manual για λεπτομερή εξήγηση όλων των παραπάνω επιλογών."
 
-#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
+#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Τερματικό Xfce"
 
-#: ../terminal/main.c:206
+#: ../terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Η ομάδα ανάπτυξης του Xfce. Όλα τα δικαιώματα διατηρούνται."
 
-#: ../terminal/main.c:207
+#: ../terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Γράφτηκε από τον Benedikt Meurer <benny@xfce.org>"
 
-#: ../terminal/main.c:208
+#: ../terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:209
+#: ../terminal/main.c:215
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "και Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:210
+#: ../terminal/main.c:216
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Παρακαλούμε αναφέρετε τα προβλήματα στο <%s>."
 
-#: ../terminal/main.c:317
+#: ../terminal/main.c:334
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Δεν ήταν δυνατή η καταχώρηση της υπηρεσίας τερματικού: %s\n"
 
-#: ../terminal/terminal-app.c:872
+#: ../terminal/terminal-app.c:883
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Μη έγκυρο αλφαριθμητικό γεωμετρίας \"%s\"\"\n"
 
-#: ../terminal/terminal-app.c:951
+#: ../terminal/terminal-app.c:962
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Η σύνδεση στον διαχειριστή συνεδριών απέτυχε: %s\n"
@@ -288,175 +295,185 @@ msgstr "Το αναγνωριστικό χρήστη δεν αντιστοιχε
 msgid "Display mismatch"
 msgstr "Εμφάνιση αναντιστοιχίας"
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:203
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Η επιλογή \"--default-display\" απαιτεί τον προσδιορισμό του προεπιλεγμένου X display ως παράμετρο"
 
-#: ../terminal/terminal-options.c:234
+#: ../terminal/terminal-options.c:219
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Η επιλογή \"--default-working-directory\" απαιτεί τον προσδιορισμό του προκαθορισμένου καταλόγου στον οποίο θα ξεκινήσει ως παράμετρο"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Η επιλογή \"--execute/-x\" απαιτεί τον προσδιορισμό της εντολής που θα εκτελεστεί στο υπόλοιπο της εντολής"
 
-#: ../terminal/terminal-options.c:268
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Η επιλογή \"--command/-e\" απαιτεί τον προσδιορισμό της εντολής που θα εκτελεστεί ως παράμετρο"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Η επιλογή \"--working-directory\" απαιτεί τον προσδιορισμό του καταλόγου στον οποίο θα ξεκινήσει ως παράμετρο"
 
-#: ../terminal/terminal-options.c:300
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Η εντολή \"--title/-T\" απαιτεί τον προσδιορισμό του τίτλου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:315
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "Η επιλογή \"--dynamic-title-mode\" απαιτεί τον προσδιορισμό της λειτουργίας δυναμικού τίτλου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:330
+#: ../terminal/terminal-options.c:315
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "Άκυρη παράμετρος για την επιλογή \"--dynamic-title-mode\": %s"
 
-#: ../terminal/terminal-options.c:340
+#: ../terminal/terminal-options.c:325
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "Η εντολή \"--initial-title\" απαιτεί τον προσδιορισμό του αρχικού τίτλου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:349 ../terminal/terminal-options.c:368
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "Η επιλογή \"--display\" απαιτεί τον προσδιορισμό του X display ως παράμετρο"
+msgid "Option \"%s\" requires specifying the color as its parameter"
+msgstr ""
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:356 ../terminal/terminal-options.c:375
+#, c-format
+msgid "Unable to parse color: %s"
+msgstr ""
+
+#: ../terminal/terminal-options.c:386
+#, c-format
+msgid "Option \"--display\" requires specifying the X display as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:401
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Η επιλογή \"--geometry\" απαιτεί τον προσδιορισμό της γεωμετρίας του παραθύρου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:389
+#: ../terminal/terminal-options.c:416
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Η επιλογή \"--role\" απαιτεί τον προσδιορισμό του ρόλου του παραθύρου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:404
+#: ../terminal/terminal-options.c:431
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Η επιλογή \"--sm-client-id\" απαιτεί τον προσδιορισμό του μοναδικού id της συνεδρίας ως παράμετρο"
 
-#: ../terminal/terminal-options.c:419
+#: ../terminal/terminal-options.c:446
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Η επιλογή \"--startup-id\" απαιτεί τον προσδιορισμό του αναγνωριστικού εκκίνησης ως παράμετρο"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:462
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Η επιλογή \"--icon/-I\" απαιτεί τον καθορισμό ενός ονόματος εικονιδίου ή αρχείου ως παράμετρο"
 
-#: ../terminal/terminal-options.c:506
+#: ../terminal/terminal-options.c:533
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Η επιλογή \"--font\" απαιτεί τον καθορισμό του ονόματος γραμματοσειράς ως παράμετρο"
 
-#: ../terminal/terminal-options.c:524
+#: ../terminal/terminal-options.c:551
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Η επιλογή \"--zoom\"  τον καθορισμό μεγέθυνσης/σμίκρυνσης (%d .. %d) ως παράμετρο"
 
-#: ../terminal/terminal-options.c:546
+#: ../terminal/terminal-options.c:573
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Άγνωστη επιλογή \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "All Files"
 msgstr "Όλα τα Αρχεία"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Image Files"
 msgstr "Αρχεία Εικόνων"
 
-#: ../terminal/terminal-preferences-dialog.c:936
+#: ../terminal/terminal-preferences-dialog.c:938
 msgid "Load Presets..."
 msgstr "Φόρτωση Προεπιλογών..."
 
-#: ../terminal/terminal-preferences.c:1131
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "Τερματικό"
 
-#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
-#: ../terminal/terminal-screen.c:2059
+#: ../terminal/terminal-screen.c:443 ../terminal/terminal-screen.c:817
+#: ../terminal/terminal-screen.c:2155
 msgid "Untitled"
 msgstr "Ανώνυμο"
 
-#: ../terminal/terminal-screen.c:700
+#: ../terminal/terminal-screen.c:718
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Δεν ήταν δυνατός ο προσδιορισμός του κελύφους εισόδου σας."
 
-#: ../terminal/terminal-screen.c:1312
-msgid "Child process exited"
-msgstr "Η υπο-διαδικασία τερματίστηκε"
-
-#: ../terminal/terminal-screen.c:1315
+#: ../terminal/terminal-screen.c:1367
 msgid "_Relaunch"
 msgstr "_Επανεκκίνηση"
 
-#: ../terminal/terminal-screen.c:1321
+#: ../terminal/terminal-screen.c:1373
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Η υπο-διαδικασία τερματίστηκε κανονικά με κατάσταση %d."
 
-#: ../terminal/terminal-screen.c:1323
+#: ../terminal/terminal-screen.c:1375
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Η υπο-διαδικασία ματαιώθηκε με σήμα %d."
 
-#: ../terminal/terminal-screen.c:1325
-#, c-format
+#: ../terminal/terminal-screen.c:1377
 msgid "The child process was aborted."
 msgstr "Η υπο-διαδικασία ματαιώθηκε."
 
-#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1383 ../terminal/terminal-window.c:860
+msgid "Do _not ask me again"
+msgstr "Να _μην ξαναγίνει η ερώτηση"
+
+#: ../terminal/terminal-screen.c:1745 ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1859
 msgid "Failed to execute child"
 msgstr "Αποτυχία εκτέλεσης θυγατρικής διεργασίας"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2500
 msgid "Close this tab"
 msgstr "Κλείσιμο αυτής της καρτέλας"
 
-#: ../terminal/terminal-screen.c:2450
+#: ../terminal/terminal-screen.c:2553
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Αποτυχία ορισμού κωδικοποίησης %s\n"
@@ -558,345 +575,369 @@ msgstr "Αποτυχία ανοίγματος του URL '%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Διατήρηση του παραθύρου ανοιχτού όταν χάνεται η εστίαση"
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr "Πτυσσόμενο τερματικό"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr "Άνοιγμα/κλείσιμο πτυσσόμενου τερματικού"
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:317
 msgid "_File"
 msgstr "_Αρχείο"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:318
 msgid "Open _Tab"
 msgstr "Άνοιγμα _Καρτέλας"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:318
 msgid "Open a new terminal tab"
 msgstr "Άνοιγμα μιας νέας καρτέλας τερματικού"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:319
 msgid "Open T_erminal"
 msgstr "Άνοιγμα _τερματικού"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:319
 msgid "Open a new terminal window"
 msgstr "Άνοιγμα ενός νέου παραθύρου τερματικού"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:320
 msgid "_Undo Close Tab"
 msgstr "_Αναίρεση: Κλείσιμο Καρτέλας"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:321
 msgid "_Detach Tab"
 msgstr "Α_πόσπαση καρτέλας"
 
-#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:827
+#: ../terminal/terminal-window.c:322 ../terminal/terminal-window.c:824
 msgid "Close T_ab"
 msgstr "_Κλείσιμο καρτέλας"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:323
 msgid "Close Other Ta_bs"
 msgstr "Κ_λείσιμο άλλων καρτελών"
 
-#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:834
+#: ../terminal/terminal-window.c:324 ../terminal/terminal-window.c:831
 msgid "Close _Window"
 msgstr "Κλείσιμο _Παραθύρου"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:325
 msgid "_Edit"
 msgstr "_Επεξεργασία"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:326
 msgid "_Copy"
 msgstr "_Αντιγραφή"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:326
 msgid "Copy to clipboard"
 msgstr "Αντιγραφή στο πρόχειρο"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:328
 msgid "Copy as _HTML"
 msgstr "Αντιγραφή ως _HTML"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:328
 msgid "Copy to clipboard as HTML"
 msgstr "Αντιγραφή στο πρόχειρο ως HTML"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:330
 msgid "_Paste"
 msgstr "_Επικόλληση"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:330
 msgid "Paste from clipboard"
 msgstr "Επικόλληση από το πρόχειρο"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:331
 msgid "Paste _Selection"
 msgstr "Επι_κόλληση Επιλογής"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:332
 msgid "Select _All"
 msgstr "Επιλογή ό_λων"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:333
+msgid "Copy _Input To All Tabs..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:334
 msgid "Pr_eferences..."
 msgstr "_Προτιμήσεις..."
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:334
 msgid "Open the preferences dialog"
 msgstr "Άνοιγμα του διαλόγου προτιμήσεων"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:335
 msgid "_View"
 msgstr "_Προβολή"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:336
 msgid "Zoom _In"
 msgstr "_Μεγέθυνση"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:336
 msgid "Zoom in with larger font"
 msgstr "Μεγέθυνση με μεγαλύτερη γραμματοσειρά"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:337
 msgid "Zoom _Out"
 msgstr "_Σμίκρυνση"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:337
 msgid "Zoom out with smaller font"
 msgstr "Σμίκρυνση με μικρότερη γραμματοσειρά"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:338
 msgid "_Normal Size"
 msgstr "Κανο_νικό μέγεθος"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:338
 msgid "Zoom to default size"
 msgstr "Εστίαση στο προκαθορισμένο μέγεθος"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:339
 msgid "_Terminal"
 msgstr "_Τερματικό"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:340
 msgid "_Set Title..."
 msgstr "_Ορισμός τίτλου..."
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:341
+msgid "Set Title Co_lor..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:342
 msgid "_Find..."
 msgstr "_Εύρεση..."
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:342
 msgid "Search terminal contents"
 msgstr "Αναζήτηση περιεχομένων τερματικού"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:343
 msgid "Find Ne_xt"
 msgstr "Εύρεση επό_μενου"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:344
 msgid "Find Pre_vious"
 msgstr "Εύρεση _προηγούμενου"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:345
 msgid "Sa_ve Contents..."
 msgstr "Α_ποθήκευση Περιεχομένων"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:346
 msgid "_Reset"
 msgstr "Επανα_φορά"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:347
 msgid "_Clear Scrollback and Reset"
 msgstr "Κα_θαρισμός Κύλισης προς τα Πίσω και Επαναφορά"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:348
 msgid "T_abs"
 msgstr "_Καρτέλες"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:349
 msgid "_Previous Tab"
 msgstr "_Προηγούμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:349
 msgid "Switch to previous tab"
 msgstr "Μετάβαση στην προηγούμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:350
 msgid "_Next Tab"
 msgstr "_Επόμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:350
 msgid "Switch to next tab"
 msgstr "Μετάβαση στην επόμενη καρτέλα"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:351
 msgid "Move Tab _Left"
 msgstr "Μετακίνηση καρτέλας _αριστερά"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:352
 msgid "Move Tab _Right"
 msgstr "Μετακίνηση Καρτέλας _δεξιά"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:353
 msgid "_Help"
 msgstr "_Βοήθεια"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:354
 msgid "_Contents"
 msgstr "Περι_εχόμενα"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:354
 msgid "Display help contents"
 msgstr "Προβολή περιεχομένων βοήθειας"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:355
 msgid "_About"
 msgstr "_Περί"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:356
 msgid "_Zoom"
 msgstr "_Μεγέθυνση"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:361
 msgid "Show _Menubar"
 msgstr "Εμφάνιση _Μενού"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:361
 msgid "Show/hide the menubar"
 msgstr "Εμφάνιση/απόκρυψη μπάρας μενού"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:362
 msgid "Show _Toolbar"
 msgstr "Εμφάνιση _Εργαλειοθήκης"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the toolbar"
 msgstr "Εμφάνιση/απόκρυψη εργαλειοθήκης"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:363
 msgid "Show Window _Borders"
 msgstr "Εμφάνιση _Περιγραμμάτων Παραθύρου"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the window decorations"
 msgstr "Εμφάνιση/απόκρυψη των περιγραμμάτων παραθύρου"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:364
 msgid "_Fullscreen"
 msgstr "Πλήρης _Οθόνη"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:364
 msgid "Toggle fullscreen mode"
 msgstr "Εναλλαγή λειτουργίας πλήρους οθόνης"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:365
 msgid "_Read-Only"
 msgstr "_Μόνο για Ανάγνωση"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:365
 msgid "Toggle read-only mode"
 msgstr "Ενεργοποίηση λειτουργίας «Μόνο για ανάγνωση»"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:366
 msgid "Scroll on _Output"
 msgstr "Κύλιση της Ε_ξόδου"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:366
 msgid "Toggle scroll on output"
 msgstr "Εναλλαγή κύλισης της εξόδου"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:539
+#: ../terminal/terminal-window.c:537
 msgid "Set _Encoding"
 msgstr "Ορισμός _Κωδικοποίησης"
 
-#: ../terminal/terminal-window.c:782
+#: ../terminal/terminal-window.c:779
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:782 ../terminal/terminal-window.c:2344
 msgid "_Cancel"
 msgstr "Α_κύρωση"
 
 #. and process running
-#: ../terminal/terminal-window.c:795
+#: ../terminal/terminal-window.c:792
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Υπάρχουν ακόμη ενεργές διαδικασίες σε κάποιες καρτέλες.\nΚλείνοντας το παράθυρο θα διακοπούν όλες."
 
 #. and no process running
-#: ../terminal/terminal-window.c:801
+#: ../terminal/terminal-window.c:798
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Αυτό το παράθυρο έχει %d ανοιχτές καρτέλες. Εάν το κλείσετε\nθα κλείσουν όλες οι καρτέλες του."
 
-#: ../terminal/terminal-window.c:805
+#: ../terminal/terminal-window.c:802
 msgid "Close all tabs?"
 msgstr "Κλείσιμο όλων των καρτελών;"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:812
+#: ../terminal/terminal-window.c:809
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Υπάρχει ακόμη μια ενεργή διαδικασία.\nΚλείνοντας την καρτέλα θα διακοπεί."
 
-#: ../terminal/terminal-window.c:814
+#: ../terminal/terminal-window.c:811
 msgid "Close tab?"
 msgstr "Κλείσιμο της καρτέλας;"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:819
+#: ../terminal/terminal-window.c:816
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Υπάρχει ακόμη μια ενεργή διαδικασία.\nΚλείνοντας το παράθυρο θα διακοπεί."
 
-#: ../terminal/terminal-window.c:821
+#: ../terminal/terminal-window.c:818
 msgid "Close window?"
 msgstr "Να κλείσει το παράθυρο;"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "Να _μην ξαναγίνει η ερώτηση"
+#: ../terminal/terminal-window.c:1812
+msgid "Copy _Input:"
+msgstr ""
 
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:1816
+msgid "Enter the text to be copied to all tabs"
+msgstr ""
+
+#: ../terminal/terminal-window.c:1824
+msgid "Copy input"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2168
 msgid "_Title:"
 msgstr "_Τίτλος:"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2172
 msgid "Enter the title for the current terminal tab"
 msgstr "Εισάγετε τον τίτλο για την τρέχουσα καρτέλα"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2177
+msgid "Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2187
 msgid "Help"
 msgstr "Βοήθεια"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2193
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2212
+msgid "Choose title color"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2261
 msgid "Failed to create the regular expression"
 msgstr "Αδυναμία δημιουργίας κανονικής έκφρασης"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2341
 msgid "Save contents..."
 msgstr "Αποθήκευση περιεχομένων..."
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2345
 msgid "_Save"
 msgstr "Α_ποθήκευση"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2382
 msgid "Failed to save terminal contents"
 msgstr "Αποτυχία αποθήκευσης περιεχομένων τερματικού"
 
@@ -1238,16 +1279,16 @@ msgid "Drop-do_wn"
 msgstr "Πτυσσόμενο"
 
 #: ../terminal/terminal-preferences.glade.h:81
-msgid "Choose Terminal Font"
-msgstr "Επιλογή γραμματοσειράς τερματικού"
-
-#: ../terminal/terminal-preferences.glade.h:82
 msgid "Use system _font"
 msgstr "Χρήση της γραμματοσειράς συστήματος"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Enable this option to use system-wide monospace font."
 msgstr "Αν είναι επιλεγμένο θα χρησιμοποιηθεί η γραμματοσειρά σταθερού πλάτους του συστήματος."
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Choose Terminal Font"
+msgstr "Επιλογή γραμματοσειράς τερματικού"
 
 #: ../terminal/terminal-preferences.glade.h:84
 msgid "Allow bold te_xt"
@@ -1378,50 +1419,50 @@ msgid "_Appearance"
 msgstr "_Εμφάνιση"
 
 #: ../terminal/terminal-preferences.glade.h:114
+msgid "_Text color:"
+msgstr "Χρώμα _κειμένου:"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Choose text color"
+msgstr "Επιλογή χρώματος κειμένου"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Color Selector"
+msgstr "Επιλογέας Χρώματος"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Open a dialog to specify the color"
+msgstr "Άνοιγμα ενός διαλόγου για τον καθορισμό του χρώματος"
+
+#: ../terminal/terminal-preferences.glade.h:118
+msgid "_Background color:"
+msgstr "Χρώμα _παρασκηνίου:"
+
+#: ../terminal/terminal-preferences.glade.h:119
+msgid "Choose background color"
+msgstr "Επιλογή χρώματος φόντου"
+
+#: ../terminal/terminal-preferences.glade.h:120
+msgid "Note: Ctrl+click for color editor."
+msgstr "Σημείωση: Ctrl+κλικ για επεξεργασία χρώματος."
+
+#: ../terminal/terminal-preferences.glade.h:121
+msgid "Tab activit_y color:"
+msgstr "Χρώμα δραστηριότητας καρ_τέλας:"
+
+#: ../terminal/terminal-preferences.glade.h:122
+msgid "Choose tab activity color"
+msgstr "Επιλογή χρώματος δραστηριότητας καρτέλας"
+
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "_Vary the background color for each tab"
 msgstr "_Παραλλαγή χρώματος φόντου για καθεμιά καρτέλα"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:124
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Το τυχαίο χρώμα βασίζεται στο επιλεγμένο χρώμα φόντου, κρατώντας την ίδια φωτεινότητα "
-
-#: ../terminal/terminal-preferences.glade.h:116
-msgid "Tab activit_y color:"
-msgstr "Χρώμα δραστηριότητας καρ_τέλας:"
-
-#: ../terminal/terminal-preferences.glade.h:117
-msgid "Choose tab activity color"
-msgstr "Επιλογή χρώματος δραστηριότητας καρτέλας"
-
-#: ../terminal/terminal-preferences.glade.h:118
-msgid "Color Selector"
-msgstr "Επιλογέας Χρώματος"
-
-#: ../terminal/terminal-preferences.glade.h:119
-msgid "Open a dialog to specify the color"
-msgstr "Άνοιγμα ενός διαλόγου για τον καθορισμό του χρώματος"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Text color:"
-msgstr "Χρώμα _κειμένου:"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "Choose text color"
-msgstr "Επιλογή χρώματος κειμένου"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Background color:"
-msgstr "Χρώμα _παρασκηνίου:"
-
-#: ../terminal/terminal-preferences.glade.h:123
-msgid "Choose background color"
-msgstr "Επιλογή χρώματος φόντου"
-
-#: ../terminal/terminal-preferences.glade.h:124
-msgid "Note: Ctrl+click for color editor."
-msgstr "Σημείωση: Ctrl+κλικ για επεξεργασία χρώματος."
 
 #: ../terminal/terminal-preferences.glade.h:125
 msgid "General"
@@ -1697,6 +1738,6 @@ msgstr "Διάφορα"
 msgid "Ad_vanced"
 msgstr "Για προχ_ωρημένους"
 
-#: ../xfce4-terminal.desktop.in.h:2
+#: ../xfce4-terminal.desktop.in.h:2 ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Terminal Emulator"
-msgstr "Προσομοίωση τερματικού"
+msgstr "Ρυθμίσεις Τερματικού XFCE"
