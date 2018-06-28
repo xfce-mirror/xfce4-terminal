@@ -101,6 +101,8 @@ static gboolean     terminal_window_scroll_event                  (GtkWidget    
                                                                    GdkEventScroll         *event);
 static gboolean     terminal_window_map_event                     (GtkWidget              *widget,
                                                                    GdkEventAny            *event);
+static gboolean     terminal_window_focus_in_event                (GtkWidget              *widget,
+                                                                   GdkEventFocus          *event);
 static gboolean     terminal_window_confirm_close                 (TerminalScreen         *screen,
                                                                    TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
@@ -388,6 +390,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gtkwidget_class->style_set = terminal_window_style_set;
   gtkwidget_class->scroll_event = terminal_window_scroll_event;
   gtkwidget_class->map_event = terminal_window_map_event;
+  gtkwidget_class->focus_in_event = terminal_window_focus_in_event;
 
   /**
    * TerminalWindow::new-window
@@ -736,6 +739,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     gtk_window_fullscreen (GTK_WINDOW (widget));
 
   return FALSE;
+}
+
+
+
+static gboolean
+terminal_window_focus_in_event (GtkWidget     *widget,
+                                GdkEventFocus *event)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (widget);
+
+  /* reset activity indicator for the active tab when focusing window */
+  terminal_screen_reset_activity (window->priv->active);
+
+  return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->focus_in_event) (widget, event);
 }
 
 
