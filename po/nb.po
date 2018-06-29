@@ -8,13 +8,14 @@
 # Erlend Østlie <erlendandreas12368@gmail.com>, 2018
 # Harald H. <haarektrans@gmail.com>, 2014
 # Terje Uriansrud <terje@uriansrud.net>, 2010
+# Torkel Bjørnson-Langen, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 18:31+0100\n"
-"PO-Revision-Date: 2018-03-12 12:30+0000\n"
-"Last-Translator: Erlend Østlie <erlendandreas12368@gmail.com>\n"
+"POT-Creation-Date: 2018-06-19 00:31+0200\n"
+"PO-Revision-Date: 2018-06-29 22:30+0000\n"
+"Last-Translator: Torkel Bjørnson-Langen\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/xfce/xfce-apps/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,13 +69,13 @@ msgstr "Generelle innstillinger"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:143
+#: ../terminal/main.c:111 ../terminal/main.c:148
 msgid "display"
 msgstr "skjerm"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:133
+#: ../terminal/main.c:113 ../terminal/main.c:134
 msgid "directory"
 msgstr "mappe"
 
@@ -82,101 +83,108 @@ msgstr "mappe"
 msgid "Window or Tab Separators"
 msgstr "Vindu eller fanedelere"
 
-#: ../terminal/main.c:123
+#: ../terminal/main.c:124
 msgid "Tab Options"
 msgstr "Faneinnstillinger"
 
 #. parameter of --command
-#: ../terminal/main.c:125
+#: ../terminal/main.c:126
 msgid "command"
 msgstr "commando"
 
 #. parameter of --title
 #. parameter of --initial-title
-#: ../terminal/main.c:127 ../terminal/main.c:131
+#: ../terminal/main.c:128 ../terminal/main.c:132
 msgid "title"
 msgstr "tittel"
 
 #. parameter of --dynamic-title-mode
-#: ../terminal/main.c:129
+#: ../terminal/main.c:130
 msgid "mode"
 msgstr "modus"
 
-#: ../terminal/main.c:141
+#. parameter of --color-text
+#. parameter of --color-bg
+#: ../terminal/main.c:136 ../terminal/main.c:138
+msgid "color"
+msgstr ""
+
+#: ../terminal/main.c:146
 msgid "Window Options"
 msgstr "Vindusinnstillinger"
 
 #. parameter of --geometry
-#: ../terminal/main.c:145
+#: ../terminal/main.c:150
 msgid "geometry"
 msgstr "geometri"
 
 #. parameter of --role
-#: ../terminal/main.c:147
+#: ../terminal/main.c:152
 msgid "role"
 msgstr "rolle"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:149
+#: ../terminal/main.c:154
 msgid "string"
 msgstr "streng"
 
 #. parameter of --icon
-#: ../terminal/main.c:151
+#: ../terminal/main.c:156
 msgid "icon"
 msgstr "ikon"
 
 #. parameter of --font
-#: ../terminal/main.c:153
+#: ../terminal/main.c:158
 msgid "font"
 msgstr "skrift"
 
 #. parameter of --zoom
-#: ../terminal/main.c:155
+#: ../terminal/main.c:160
 msgid "zoom"
 msgstr "forstørrelsesnivå"
 
-#: ../terminal/main.c:157
+#: ../terminal/main.c:162
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "Se %s man side for fullstendig forklaring på opsjonene."
 
-#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
+#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce-terminal"
 
-#: ../terminal/main.c:206
+#: ../terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Xfce utviklingsgemenskap. Alle rettigheter reservert."
 
-#: ../terminal/main.c:207
+#: ../terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Skrevet av Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:208
+#: ../terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:209
+#: ../terminal/main.c:215
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "og Igor Zakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:210
+#: ../terminal/main.c:216
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Meld inn feil til <%s>."
 
-#: ../terminal/main.c:317
+#: ../terminal/main.c:334
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "Klarte ikke registerer terminaltjeneste: %s\n"
 
-#: ../terminal/terminal-app.c:872
+#: ../terminal/terminal-app.c:883
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ugyldig geomtriangivelse «%s»\n"
 
-#: ../terminal/terminal-app.c:951
+#: ../terminal/terminal-app.c:962
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Klarte ikke å koble til øktbehandler: %s\n"
@@ -284,175 +292,185 @@ msgstr "Brukerid stemmer ikke"
 msgid "Display mismatch"
 msgstr "Skjerm "
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:203
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Valget «--default-display» krever at man angir forvalgt X-display som argument."
 
-#: ../terminal/terminal-options.c:234
+#: ../terminal/terminal-options.c:219
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Valget «--default-working-directory» krever at man angir forvalgt arbeidsmappe som argument"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Valget «--execute/-x» krever at man angir kommandoen som skal kjøres påresten av kommandolinjen"
 
-#: ../terminal/terminal-options.c:268
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Valget «--command/-e» krever at man angir kommandoen som skal kjøres som argument"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Valget «--working-directory» krever at man angir arbeidskatalogen som argument"
 
-#: ../terminal/terminal-options.c:300
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Valget «--title/-T» krever at man angir tittel som argument"
 
-#: ../terminal/terminal-options.c:315
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "Valget \"--dynamic-title-mode\" krever at man angir dynamisk flismodus som som argument"
 
-#: ../terminal/terminal-options.c:330
+#: ../terminal/terminal-options.c:315
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "Ugyldig argument for valget \"--dynamic-title-mode\": %s"
 
-#: ../terminal/terminal-options.c:340
+#: ../terminal/terminal-options.c:325
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "Valget \"--initial-title\" krever at man angir første tittel som argument"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:349 ../terminal/terminal-options.c:368
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
+msgid "Option \"%s\" requires specifying the color as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:356 ../terminal/terminal-options.c:375
+#, c-format
+msgid "Unable to parse color: %s"
+msgstr "Kunne ikke tolkes som farge: %s"
+
+#: ../terminal/terminal-options.c:386
+#, c-format
+msgid "Option \"--display\" requires specifying the X display as its parameter"
 msgstr "Valget «--display» krever at man angir X-skjerm som argument"
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:401
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Valget «--geometry» krever at man angir vindusgeometrien som argument"
 
-#: ../terminal/terminal-options.c:389
+#: ../terminal/terminal-options.c:416
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Valget «--role» krever at man angir vindusrollen som argument"
 
-#: ../terminal/terminal-options.c:404
+#: ../terminal/terminal-options.c:431
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "Alternativet \"--sm-client-id\" krever at man spesifiserer dens unike økt ID-en som dets parameter."
 
-#: ../terminal/terminal-options.c:419
+#: ../terminal/terminal-options.c:446
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Valget «--startup-id» krever at man angir oppstarttid som argument"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:462
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "Valget «--icon/-I» krever at man angir et ikonnavn eller filnavnet til et ikon"
 
-#: ../terminal/terminal-options.c:506
+#: ../terminal/terminal-options.c:533
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "Valget \"--font\" krever at man angir skriftnavnet som dets argument"
 
-#: ../terminal/terminal-options.c:524
+#: ../terminal/terminal-options.c:551
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "Valget \"--zoom\"krever at man angir forstørrelsesnivå (%d .. %d) som dets argument"
 
-#: ../terminal/terminal-options.c:546
+#: ../terminal/terminal-options.c:573
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Ukjent valgt «%s»"
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "All Files"
 msgstr "Alle filer"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Image Files"
 msgstr "Bildefiler"
 
-#: ../terminal/terminal-preferences-dialog.c:936
+#: ../terminal/terminal-preferences-dialog.c:938
 msgid "Load Presets..."
 msgstr "Last inn forvalg…"
 
-#: ../terminal/terminal-preferences.c:1131
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
-#: ../terminal/terminal-screen.c:2059
+#: ../terminal/terminal-screen.c:443 ../terminal/terminal-screen.c:817
+#: ../terminal/terminal-screen.c:2155
 msgid "Untitled"
 msgstr "Uten tittel"
 
-#: ../terminal/terminal-screen.c:700
+#: ../terminal/terminal-screen.c:718
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Klarte ikke bestemme innloggingsskallet ditt."
 
-#: ../terminal/terminal-screen.c:1312
-msgid "Child process exited"
-msgstr "Underprosess avsluttet"
-
-#: ../terminal/terminal-screen.c:1315
+#: ../terminal/terminal-screen.c:1367
 msgid "_Relaunch"
 msgstr "_Start igjen"
 
-#: ../terminal/terminal-screen.c:1321
+#: ../terminal/terminal-screen.c:1373
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Underprosessen avsluttet normalt med status %d."
 
-#: ../terminal/terminal-screen.c:1323
+#: ../terminal/terminal-screen.c:1375
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Underprosessen ble avbrutt med signalet %d."
 
-#: ../terminal/terminal-screen.c:1325
-#, c-format
+#: ../terminal/terminal-screen.c:1377
 msgid "The child process was aborted."
 msgstr "Underprosessen ble avbrutt."
 
-#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1383 ../terminal/terminal-window.c:861
+msgid "Do _not ask me again"
+msgstr "_Ikke spør på nytt"
+
+#: ../terminal/terminal-screen.c:1745 ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1859
 msgid "Failed to execute child"
 msgstr "Klarte ikke kjøre underprosess"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2500
 msgid "Close this tab"
 msgstr "Lukke denne fanen"
 
-#: ../terminal/terminal-screen.c:2450
+#: ../terminal/terminal-screen.c:2553
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Klarte ikke å sette kodingen %s\n"
@@ -554,345 +572,369 @@ msgstr "Klarte ikke å åpne nettadressen '%s'"
 msgid "Keep window open when it loses focus"
 msgstr "Hold vindu åpnet når det mister fokus"
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr "Nedfellbar Terminal"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr "Veksle rullegardin-terminal"
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:318
 msgid "_File"
 msgstr "_Fil"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:319
 msgid "Open _Tab"
 msgstr "Ny _fane"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:319
 msgid "Open a new terminal tab"
 msgstr "Åpne ny terminalfane"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:320
 msgid "Open T_erminal"
 msgstr "Ny t_erminal"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:320
 msgid "Open a new terminal window"
 msgstr "Åpne nytt terminalvindu"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:321
 msgid "_Undo Close Tab"
 msgstr "_Angre lukking av fane"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:322
 msgid "_Detach Tab"
 msgstr "Lø_sne fane"
 
-#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:827
+#: ../terminal/terminal-window.c:323 ../terminal/terminal-window.c:825
 msgid "Close T_ab"
 msgstr "Lukk _fane"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:324
 msgid "Close Other Ta_bs"
 msgstr "Lukk _andre faner"
 
-#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:834
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:832
 msgid "Close _Window"
 msgstr "Lukk _vindu"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:326
 msgid "_Edit"
 msgstr "_Rediger"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:327
 msgid "_Copy"
 msgstr "Ko_pier"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:327
 msgid "Copy to clipboard"
 msgstr "Kopier til utklippstavlen"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:329
 msgid "Copy as _HTML"
 msgstr "Kopier som _HTML"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:329
 msgid "Copy to clipboard as HTML"
 msgstr "Kopier til utklippstavle som HTML"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:331
 msgid "_Paste"
 msgstr "_Lim inn"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:331
 msgid "Paste from clipboard"
 msgstr "Lim inn fra utklippstavlen"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:332
 msgid "Paste _Selection"
 msgstr "Lim inn merket _område"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:333
 msgid "Select _All"
 msgstr "Velg _alt"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:334
+msgid "Copy _Input To All Tabs..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:335
 msgid "Pr_eferences..."
 msgstr "_Innstillinger"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:335
 msgid "Open the preferences dialog"
 msgstr "Åpne meldingsvindu for innstilinger"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:336
 msgid "_View"
 msgstr "_Vis"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:337
 msgid "Zoom _In"
 msgstr "_Forstørre"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:337
 msgid "Zoom in with larger font"
 msgstr "Forstørr med større skrift"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:338
 msgid "Zoom _Out"
 msgstr "_Forminske"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:338
 msgid "Zoom out with smaller font"
 msgstr "Forminsk med mindre skrift"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:339
 msgid "_Normal Size"
 msgstr "_Normal størrelse"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:339
 msgid "Zoom to default size"
 msgstr "Endre forstørrelsesnivå til forvalg"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:340
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:341
 msgid "_Set Title..."
 msgstr "_Sett tittel…"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:342
+msgid "Set Title Co_lor..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:343
 msgid "_Find..."
 msgstr "_Finn…"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:343
 msgid "Search terminal contents"
 msgstr "Søk i terminalinnhold"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:344
 msgid "Find Ne_xt"
 msgstr "Finn _neste"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:345
 msgid "Find Pre_vious"
 msgstr "Finn _forrige"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:346
 msgid "Sa_ve Contents..."
 msgstr "_Lagre innhold…"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:347 ../terminal/terminal-window.c:2226
 msgid "_Reset"
 msgstr "_Nullstill"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:348
 msgid "_Clear Scrollback and Reset"
 msgstr "_Tøm rulleminne og nullstill"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:349
 msgid "T_abs"
 msgstr "_Faner"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "_Previous Tab"
 msgstr "_Forrige fane"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "Switch to previous tab"
 msgstr "Bytt til forrige  fane"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "_Next Tab"
 msgstr "_Neste fane"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "Switch to next tab"
 msgstr "Bytt til neste fane"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:352
 msgid "Move Tab _Left"
 msgstr "Flytt fane til _venstre"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:353
 msgid "Move Tab _Right"
 msgstr "Flytt fane til _høyre"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:354
 msgid "_Help"
 msgstr "_Hjelp"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "_Contents"
 msgstr "_Innhold"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "Display help contents"
 msgstr "Vis hjelpeinnhold"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:356
 msgid "_About"
 msgstr "_Om"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:357
 msgid "_Zoom"
 msgstr "_Forstørrelse"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Show _Menubar"
 msgstr "Vis _menylinje"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the menubar"
 msgstr "Vis/skjul menylinjen"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "Show _Toolbar"
 msgstr "Vis _verktøylinje"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the toolbar"
 msgstr "Vis/skjul verktøylinjen"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "Show Window _Borders"
 msgstr "Vis _vinduskant"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "Show/hide the window decorations"
 msgstr "Vis/skjul vindusdekorasjoner"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "_Fullscreen"
 msgstr "_Fullskjerm"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "Toggle fullscreen mode"
 msgstr "Slå av/på fullskjermmodus"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "_Read-Only"
 msgstr "_Skrivebeskyttet"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "Toggle read-only mode"
 msgstr "Veksle skrivebeskyttelse"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Scroll on _Output"
 msgstr "Rull ved _utdata"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Toggle scroll on output"
 msgstr "Veksle rulling ved utdata"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:539
+#: ../terminal/terminal-window.c:538
 msgid "Set _Encoding"
 msgstr "Velg _koding"
 
-#: ../terminal/terminal-window.c:782
+#: ../terminal/terminal-window.c:780
 msgid "Warning"
 msgstr "Advarsel"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:783 ../terminal/terminal-window.c:2360
 msgid "_Cancel"
 msgstr "_Avbryt"
 
 #. and process running
-#: ../terminal/terminal-window.c:795
+#: ../terminal/terminal-window.c:793
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Noen faner har fremdeles kjørende prosesser.\nLukking av dette vinduet vil drepe dem alle."
 
 #. and no process running
-#: ../terminal/terminal-window.c:801
+#: ../terminal/terminal-window.c:799
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Dette vinduet har %d åpne faner. Ved å lukke\ndette vinduet vil også alle fanene lukkes."
 
-#: ../terminal/terminal-window.c:805
+#: ../terminal/terminal-window.c:803
 msgid "Close all tabs?"
 msgstr "Lukk alle faner?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:812
+#: ../terminal/terminal-window.c:810
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Det er fremdeles en prosess som kjører.\nLukking av denne fanen vil drepe den."
 
-#: ../terminal/terminal-window.c:814
+#: ../terminal/terminal-window.c:812
 msgid "Close tab?"
 msgstr "Lukk fane?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:819
+#: ../terminal/terminal-window.c:817
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Det er fremdles en prosess som kjører.\nLukking av dette vinduet vil drepe den."
 
-#: ../terminal/terminal-window.c:821
+#: ../terminal/terminal-window.c:819
 msgid "Close window?"
 msgstr "Lukk vindu?"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "_Ikke spør på nytt"
+#: ../terminal/terminal-window.c:1822
+msgid "Copy _Input:"
+msgstr ""
 
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:1826
+msgid "Enter the text to be copied to all tabs"
+msgstr "Skriv inn teksten som skal kopieres til alle fanene"
+
+#: ../terminal/terminal-window.c:1834
+msgid "Copy input"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2178
 msgid "_Title:"
 msgstr "_Tittel:"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2182
 msgid "Enter the title for the current terminal tab"
 msgstr "Skriv inn tittel for gjeldende terminalfane"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2187
+msgid "Reset"
+msgstr "Nullstille"
+
+#: ../terminal/terminal-window.c:2197
 msgid "Help"
 msgstr "Hjelp"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2203
 msgid "Close"
 msgstr "Lukk"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2225
+msgid "Choose title color"
+msgstr "Velg tittelfarge"
+
+#: ../terminal/terminal-window.c:2277
 msgid "Failed to create the regular expression"
 msgstr "Kunne ikke opprette regulært uttrykk"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2357
 msgid "Save contents..."
 msgstr "Lagre innhold…"
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2361
 msgid "_Save"
 msgstr "_Lagre"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2398
 msgid "Failed to save terminal contents"
 msgstr "Klarte ikke å lagre terminalinnhold"
 
@@ -1234,16 +1276,16 @@ msgid "Drop-do_wn"
 msgstr "Rulle_gardin"
 
 #: ../terminal/terminal-preferences.glade.h:81
-msgid "Choose Terminal Font"
-msgstr "Velg terminal skrift"
-
-#: ../terminal/terminal-preferences.glade.h:82
 msgid "Use system _font"
 msgstr "Bruk system_skrift"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Enable this option to use system-wide monospace font."
 msgstr "Aktiver denne innstillingen for å bruke fastbreddeskrift på hele systemet."
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Choose Terminal Font"
+msgstr "Velg terminal skrift"
 
 #: ../terminal/terminal-preferences.glade.h:84
 msgid "Allow bold te_xt"
@@ -1374,50 +1416,50 @@ msgid "_Appearance"
 msgstr "_Utseende"
 
 #: ../terminal/terminal-preferences.glade.h:114
+msgid "_Text color:"
+msgstr "_Tekstfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Choose text color"
+msgstr "Velg tekstfarge"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Color Selector"
+msgstr "Fargevelger"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Open a dialog to specify the color"
+msgstr "Åpne bilde for å spesifiere farge"
+
+#: ../terminal/terminal-preferences.glade.h:118
+msgid "_Background color:"
+msgstr "_Bakgrunnsfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:119
+msgid "Choose background color"
+msgstr "Velg bakgrunnsfarge"
+
+#: ../terminal/terminal-preferences.glade.h:120
+msgid "Note: Ctrl+click for color editor."
+msgstr "Merk: Ctrl+klikk for fargebehandler."
+
+#: ../terminal/terminal-preferences.glade.h:121
+msgid "Tab activit_y color:"
+msgstr "F_aneaktivitetsfarge:"
+
+#: ../terminal/terminal-preferences.glade.h:122
+msgid "Choose tab activity color"
+msgstr "Velg faneaktivitetsfarge"
+
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "_Vary the background color for each tab"
 msgstr "_Varier bakgrunnsfargen for hver enkelt fane"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:124
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Den tilfeldige fargen er basert på den valgte bakgrunnsfargen, den samme lysstyrken beholdes."
-
-#: ../terminal/terminal-preferences.glade.h:116
-msgid "Tab activit_y color:"
-msgstr "F_aneaktivitetsfarge:"
-
-#: ../terminal/terminal-preferences.glade.h:117
-msgid "Choose tab activity color"
-msgstr "Velg faneaktivitetsfarge"
-
-#: ../terminal/terminal-preferences.glade.h:118
-msgid "Color Selector"
-msgstr "Fargevelger"
-
-#: ../terminal/terminal-preferences.glade.h:119
-msgid "Open a dialog to specify the color"
-msgstr "Åpne bilde for å spesifiere farge"
-
-#: ../terminal/terminal-preferences.glade.h:120
-msgid "_Text color:"
-msgstr "_Tekstfarge:"
-
-#: ../terminal/terminal-preferences.glade.h:121
-msgid "Choose text color"
-msgstr "Velg tekstfarge"
-
-#: ../terminal/terminal-preferences.glade.h:122
-msgid "_Background color:"
-msgstr "_Bakgrunnsfarge:"
-
-#: ../terminal/terminal-preferences.glade.h:123
-msgid "Choose background color"
-msgstr "Velg bakgrunnsfarge"
-
-#: ../terminal/terminal-preferences.glade.h:124
-msgid "Note: Ctrl+click for color editor."
-msgstr "Merk: Ctrl+klikk for fargebehandler."
 
 #: ../terminal/terminal-preferences.glade.h:125
 msgid "General"
@@ -1696,3 +1738,7 @@ msgstr "A_vansert"
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Teminalemulator"
+
+#: ../xfce4-terminal-settings.desktop.in.h:2
+msgid "Configure Xfce Terminal"
+msgstr "Konfigurer Xfce-terminal"
