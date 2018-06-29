@@ -500,9 +500,27 @@ terminal_app_new_window_with_terminal (TerminalWindow *existing,
 
   terminal_window_add (TERMINAL_WINDOW (window), terminal);
 
-  /* resize new window to the original terminal geometry */
-  terminal_screen_get_size (terminal, &width, &height);
-  terminal_screen_force_resize_window (terminal, GTK_WINDOW (window), width, height);
+  if (G_UNLIKELY (terminal_window_is_drop_down (existing)))
+    {
+      /* resize new window to the default geometry */
+#ifdef GDK_WINDOWING_X11
+      gchar *geo;
+      guint  w, h;
+      g_object_get (G_OBJECT (app->preferences), "misc-default-geometry", &geo, NULL);
+      if (G_LIKELY (geo != NULL))
+        {
+          XParseGeometry (geo, NULL, NULL, &w, &h);
+          g_free (geo);
+          terminal_screen_force_resize_window (terminal, GTK_WINDOW (window), w, h);
+        }
+#endif
+    }
+  else
+    {
+      /* resize new window to the original terminal geometry */
+      terminal_screen_get_size (terminal, &width, &height);
+      terminal_screen_force_resize_window (terminal, GTK_WINDOW (window), width, height);
+    }
 
   gtk_widget_show (window);
 }
