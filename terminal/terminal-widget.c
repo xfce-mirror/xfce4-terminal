@@ -586,8 +586,8 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       break;
 
     case TARGET_GTK_NOTEBOOK_TAB:
-      /* 'send' the drag to the parent widget (TerminalScreen) */
-      screen = gtk_widget_get_parent (widget);
+      /* 'send' the drag to the parent's parent widget (TerminalWidget -> GtkBox -> TerminalScreen) */
+      screen = gtk_widget_get_parent (gtk_widget_get_parent (widget));
       if (G_LIKELY (screen))
         {
           g_signal_emit_by_name (G_OBJECT (screen), "drag-data-received", context,
