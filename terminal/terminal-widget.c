@@ -351,7 +351,6 @@ terminal_widget_context_menu (TerminalWidget *widget,
   gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (widget)));
 
   /* run our custom main loop */
-  gtk_grab_add (menu);
 #if GTK_CHECK_VERSION (3, 22, 0)
   gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
 #else
@@ -360,7 +359,6 @@ terminal_widget_context_menu (TerminalWidget *widget,
 #endif
   g_main_loop_run (loop);
   g_main_loop_unref (loop);
-  gtk_grab_remove (menu);
 
   /* remove the additional items (if any) */
   if (item_separator != NULL) gtk_widget_destroy (item_separator);
