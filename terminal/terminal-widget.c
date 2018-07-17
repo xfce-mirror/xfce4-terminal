@@ -747,6 +747,13 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
           regex = vte_regex_new_for_match (pattern->pattern, -1,
                                            PCRE2_CASELESS | PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE,
                                            &error);
+
+          if (error == NULL && (!vte_regex_jit (regex, PCRE2_JIT_COMPLETE, &error) ||
+                                !vte_regex_jit (regex, PCRE2_JIT_PARTIAL_SOFT, &error)))
+            {
+              g_critical ("Failed to JIT regular expression '%s': %s\n", pattern->pattern, error->message);
+              g_clear_error (&error);
+            }
 #else
           regex = g_regex_new (pattern->pattern,
                                G_REGEX_CASELESS | G_REGEX_OPTIMIZE | G_REGEX_MULTILINE,
