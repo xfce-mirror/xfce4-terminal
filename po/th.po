@@ -4,13 +4,13 @@
 # 
 # Translators:
 # Theppitak Karoonboonyanan <thep@linux.thai.net>, 2013
-# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2016-2017
+# Theppitak Karoonboonyanan <theppitak@gmail.com>, 2016-2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 00:31+0200\n"
-"PO-Revision-Date: 2017-12-06 08:13+0000\n"
+"POT-Creation-Date: 2018-06-19 00:31+0200\n"
+"PO-Revision-Date: 2018-09-02 00:54+0000\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
@@ -65,13 +65,13 @@ msgstr "ตัวเลือกทั่วไป"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:143
+#: ../terminal/main.c:111 ../terminal/main.c:148
 msgid "display"
 msgstr "ดิสเพลย์"
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:133
+#: ../terminal/main.c:113 ../terminal/main.c:134
 msgid "directory"
 msgstr "ไดเรกทอรี"
 
@@ -79,101 +79,108 @@ msgstr "ไดเรกทอรี"
 msgid "Window or Tab Separators"
 msgstr "หน้าต่างหรือแท็บ"
 
-#: ../terminal/main.c:123
+#: ../terminal/main.c:124
 msgid "Tab Options"
 msgstr "ตัวเลือกของแท็บ"
 
 #. parameter of --command
-#: ../terminal/main.c:125
+#: ../terminal/main.c:126
 msgid "command"
 msgstr "คำสั่ง"
 
 #. parameter of --title
 #. parameter of --initial-title
-#: ../terminal/main.c:127 ../terminal/main.c:131
+#: ../terminal/main.c:128 ../terminal/main.c:132
 msgid "title"
 msgstr "ชื่อ"
 
 #. parameter of --dynamic-title-mode
-#: ../terminal/main.c:129
+#: ../terminal/main.c:130
 msgid "mode"
 msgstr "โหมด"
 
-#: ../terminal/main.c:141
+#. parameter of --color-text
+#. parameter of --color-bg
+#: ../terminal/main.c:136 ../terminal/main.c:138
+msgid "color"
+msgstr "สี"
+
+#: ../terminal/main.c:146
 msgid "Window Options"
 msgstr "ตัวเลือกของหน้าต่าง"
 
 #. parameter of --geometry
-#: ../terminal/main.c:145
+#: ../terminal/main.c:150
 msgid "geometry"
 msgstr "เรขาคณิต"
 
 #. parameter of --role
-#: ../terminal/main.c:147
+#: ../terminal/main.c:152
 msgid "role"
 msgstr "บทบาท"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:149
+#: ../terminal/main.c:154
 msgid "string"
 msgstr "สตริง"
 
 #. parameter of --icon
-#: ../terminal/main.c:151
+#: ../terminal/main.c:156
 msgid "icon"
 msgstr "ไอคอน"
 
 #. parameter of --font
-#: ../terminal/main.c:153
+#: ../terminal/main.c:158
 msgid "font"
 msgstr "แบบอักษร"
 
 #. parameter of --zoom
-#: ../terminal/main.c:155
+#: ../terminal/main.c:160
 msgid "zoom"
 msgstr "ซูม"
 
-#: ../terminal/main.c:157
+#: ../terminal/main.c:162
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr "อ่านคำอธิบายเต็มๆ ของตัวเลือกต่างๆ ข้างต้นได้จาก man page ของ %s"
 
-#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
+#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "เทอร์มินัลของ Xfce"
 
-#: ../terminal/main.c:206
+#: ../terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "The Xfce development team. All rights reserved."
 
-#: ../terminal/main.c:207
+#: ../terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "เขียนโดย Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:208
+#: ../terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>,"
 
-#: ../terminal/main.c:209
+#: ../terminal/main.c:215
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "และ Igor Zakharov <f2404@yandex.ru>"
 
-#: ../terminal/main.c:210
+#: ../terminal/main.c:216
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "หากพบปัญหา กรุณารายงานที่ <%s>"
 
-#: ../terminal/main.c:317
+#: ../terminal/main.c:334
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "ไม่สามารถลงทะเบียนบริการเทอร์มินัลได้: %s\n"
 
-#: ../terminal/terminal-app.c:872
+#: ../terminal/terminal-app.c:883
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "สตริงข้อกำหนดเรขาคณิต \"%s\" ไม่ถูกต้อง\n"
 
-#: ../terminal/terminal-app.c:951
+#: ../terminal/terminal-app.c:962
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "ติดต่อกับโปรแกรมจัดการวาระไม่สำเร็จ: %s\n"
@@ -281,175 +288,185 @@ msgstr "เลขประจำตัวผู้ใช้ไม่ตรงก
 msgid "Display mismatch"
 msgstr "ดิสเพลย์ไม่ตรงกัน"
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:203
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "ตัวเลือก \"--default-display\" ต้องระบุดิสเพลย์ X ปริยายเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:234
+#: ../terminal/terminal-options.c:219
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "ตัวเลือก \"--default-working-directory\" ต้องระบุไดเรกทอรีทำงานปริยายเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "ตัวเลือก \"--execute/-x\" ต้องระบุคำสั่งที่จะเรียกทำงานในส่วนท้ายที่เหลือของบรรทัดคำสั่งด้วย"
 
-#: ../terminal/terminal-options.c:268
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "ตัวเลือก \"--command/-e\" ต้องระบุคำสั่งที่จะเรียกทำงานเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "ตัวเลือก \"--working-directory\" ต้องระบุไดเรกทอรีทำงานเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:300
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "ตัวเลือก \"--title/-T\" ต้องระบุชื่อเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:315
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr "ตัวเลือก \"--dynamic-title-mode\" ต้องระบุโหมดการแปรชื่อหน้าต่างเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:330
+#: ../terminal/terminal-options.c:315
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr "อาร์กิวเมนต์ไม่ถูกต้องสำหรับตัวเลือก \"--dynamic-title-mode\": %s"
 
-#: ../terminal/terminal-options.c:340
+#: ../terminal/terminal-options.c:325
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr "ตัวเลือก \"--initial-title\" ต้องระบุชื่อเริ่มแรกของหน้าต่างเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:349 ../terminal/terminal-options.c:368
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "ตัวเลือก \"--display\" ต้องระบุดิสเพลย์ X เป็นพารามิเตอร์ประกอบด้วย"
+msgid "Option \"%s\" requires specifying the color as its parameter"
+msgstr "ตัวเลือก \"%s\" ต้องระบุสีเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:356 ../terminal/terminal-options.c:375
+#, c-format
+msgid "Unable to parse color: %s"
+msgstr "ไม่สามารถแจงสี: %s"
+
+#: ../terminal/terminal-options.c:386
+#, c-format
+msgid "Option \"--display\" requires specifying the X display as its parameter"
+msgstr "ตัวเลือก \"--display\" ต้องระบุดิสเพลย์ของ X เป็นพารามิเตอร์ประกอบด้วย"
+
+#: ../terminal/terminal-options.c:401
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "ตัวเลือก \"--geometry\" ต้องระบุเรขาคณิตของหน้าต่างเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:389
+#: ../terminal/terminal-options.c:416
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "ตัวเลือก \"--role\" ต้องระบุบทบาทของหน้าต่างเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:404
+#: ../terminal/terminal-options.c:431
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr "ตัวเลือก \"--sm-client-id\" ต้องระบุหมายเลขวาระที่เป็นเอกลักษณ์เป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:419
+#: ../terminal/terminal-options.c:446
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "ตัวเลือก \"--startup-id\" ต้องระบุหมายเลขการเริ่มทำงานเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:462
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr "ตัวเลือก \"--icon/-I\" ต้องระบุชื่อไอคอนหรือชื่อแฟ้มไอคอนเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:506
+#: ../terminal/terminal-options.c:533
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr "ตัวเลือก \"--font\" ต้องระบุชื่อแบบอักษรเป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:524
+#: ../terminal/terminal-options.c:551
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr "ตัวเลือก \"--zoom\" ต้องระบุระดับการซูม (%d .. %d) เป็นพารามิเตอร์ประกอบด้วย"
 
-#: ../terminal/terminal-options.c:546
+#: ../terminal/terminal-options.c:573
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "ไม่รู้จักตัวเลือก \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:403
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "All Files"
 msgstr "ทุกแฟ้ม"
 
-#: ../terminal/terminal-preferences-dialog.c:409
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Image Files"
 msgstr "แฟ้มรูปภาพ"
 
-#: ../terminal/terminal-preferences-dialog.c:865
+#: ../terminal/terminal-preferences-dialog.c:938
 msgid "Load Presets..."
 msgstr "โหลดชุดที่จัดไว้..."
 
-#: ../terminal/terminal-preferences.c:1117
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "เทอร์มินัล"
 
-#: ../terminal/terminal-screen.c:421 ../terminal/terminal-screen.c:789
-#: ../terminal/terminal-screen.c:2006
+#: ../terminal/terminal-screen.c:443 ../terminal/terminal-screen.c:817
+#: ../terminal/terminal-screen.c:2155
 msgid "Untitled"
 msgstr "ไม่มีชื่อ"
 
-#: ../terminal/terminal-screen.c:690
+#: ../terminal/terminal-screen.c:718
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "ไม่สามารถพิจารณาเชลล์เข้าระบบของคุณได้"
 
-#: ../terminal/terminal-screen.c:1259
-msgid "Child process exited"
-msgstr "โพรเซสลูกจบการทำงาน"
-
-#: ../terminal/terminal-screen.c:1262
+#: ../terminal/terminal-screen.c:1367
 msgid "_Relaunch"
 msgstr "เ_รียกทำงานใหม่"
 
-#: ../terminal/terminal-screen.c:1268
+#: ../terminal/terminal-screen.c:1373
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "โพรเซสลูกจบการทำงานแบบปกติด้วยสถานะ %d"
 
-#: ../terminal/terminal-screen.c:1270
+#: ../terminal/terminal-screen.c:1375
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "โพรเซสลูกถูกยกเลิกการทำงานด้วยสัญญาณ %d"
 
-#: ../terminal/terminal-screen.c:1272
-#, c-format
+#: ../terminal/terminal-screen.c:1377
 msgid "The child process was aborted."
 msgstr "โพรเซสลูกถูกยกเลิกการทำงาน"
 
-#: ../terminal/terminal-screen.c:1685 ../terminal/terminal-screen.c:1711
+#: ../terminal/terminal-screen.c:1383 ../terminal/terminal-window.c:861
+msgid "Do _not ask me again"
+msgstr "ไ_ม่ต้องถามคำถามนี้อีก"
+
+#: ../terminal/terminal-screen.c:1745 ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1859
 msgid "Failed to execute child"
 msgstr "เรียกทำงานโพรเซสลูกไม่สำเร็จ"
 
-#: ../terminal/terminal-screen.c:2344
+#: ../terminal/terminal-screen.c:2500
 msgid "Close this tab"
 msgstr "ปิดแท็บนี้"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2553
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "กำหนดใช้รหัสอักขระ %s ไม่สำเร็จ\n"
@@ -499,8 +516,8 @@ msgid "translator-credits"
 msgstr "Theppitak Karoonboonyanan <theppitak@gmail.com>"
 
 #: ../terminal/terminal-util.c:91
-msgid "Visit Terminal website"
-msgstr "เยี่ยมชมเว็บไซต์ของเทอร์มินัล"
+msgid "Visit Xfce Terminal website"
+msgstr "เยี่ยมชมเว็บไซต์ของเทอร์มินัล Xfce"
 
 #: ../terminal/terminal-widget.c:317
 msgid "Copy Email Address"
@@ -542,7 +559,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "ได้รับข้อมูลสีที่ไม่ถูกต้อง: ฟอร์แมต (%d) หรือความยาว (%d) ผิด\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:701
+#: ../terminal/terminal-widget.c:699
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "เปิด URL '%s' ไม่สำเร็จ"
@@ -551,345 +568,369 @@ msgstr "เปิด URL '%s' ไม่สำเร็จ"
 msgid "Keep window open when it loses focus"
 msgstr "คงหน้าต่างเปิดไว้เมื่อเสียโฟกัส"
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr "เทอร์มินัลทิ้งตัว"
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr "เปิด-ปิดเทอร์มินัลทิ้งตัว"
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:318
 msgid "_File"
 msgstr "แ_ฟ้ม"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:319
 msgid "Open _Tab"
 msgstr "เปิดแท็_บ"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:319
 msgid "Open a new terminal tab"
 msgstr "เปิดแท็บเทอร์มินัลใหม่"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:320
 msgid "Open T_erminal"
 msgstr "เปิดเทอร์มินั_ล"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:320
 msgid "Open a new terminal window"
 msgstr "เปิดหน้าต่างเทอร์มินัลใหม่"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:321
 msgid "_Undo Close Tab"
 msgstr "เ_รียกคืนแท็บที่ปิดไป"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:322
 msgid "_Detach Tab"
 msgstr "แ_ยกแท็บ"
 
-#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:827
+#: ../terminal/terminal-window.c:323 ../terminal/terminal-window.c:825
 msgid "Close T_ab"
 msgstr "ปิดแ_ท็บ"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:324
 msgid "Close Other Ta_bs"
 msgstr "ปิดแท็บ_อื่นๆ"
 
-#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:834
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:832
 msgid "Close _Window"
 msgstr "ปิด_หน้าต่าง"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:326
 msgid "_Edit"
 msgstr "แ_ก้ไข"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:327
 msgid "_Copy"
 msgstr "_คัดลอก"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:327
 msgid "Copy to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ด"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:329
 msgid "Copy as _HTML"
 msgstr "คัดลอกเป็น _HTML"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:329
 msgid "Copy to clipboard as HTML"
 msgstr "คัดลอกไปยังคลิปบอร์ดในรูปแบบ HTML"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:331
 msgid "_Paste"
 msgstr "_แปะ"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:331
 msgid "Paste from clipboard"
 msgstr "แปะจากคลิปบอร์ด"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:332
 msgid "Paste _Selection"
 msgstr "แปะสิ่งที่เ_ลือก"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:333
 msgid "Select _All"
 msgstr "เลือก_ทั้งหมด"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:334
+msgid "Copy _Input To All Tabs..."
+msgstr "คัดลอกข้อความที่ป้อ_นไปยังทุกแท็บ..."
+
+#: ../terminal/terminal-window.c:335
 msgid "Pr_eferences..."
 msgstr "_ปรับแต่ง..."
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:335
 msgid "Open the preferences dialog"
 msgstr "เปิดกล่องโต้ตอบปรับแต่ง"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:336
 msgid "_View"
 msgstr "มุ_มมอง"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:337
 msgid "Zoom _In"
 msgstr "ซูมเ_ข้า"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:337
 msgid "Zoom in with larger font"
 msgstr "ซูมเข้าโดยใช้ตัวอักษรขนาดใหญ่ขึ้น"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:338
 msgid "Zoom _Out"
 msgstr "ซูม_ออก"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:338
 msgid "Zoom out with smaller font"
 msgstr "ซูมออกโดยใช้ตัวอักษรขนาดเล็กลง"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:339
 msgid "_Normal Size"
 msgstr "ขนาด_ปกติ"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:339
 msgid "Zoom to default size"
 msgstr "ซูมโดยใช้ขนาดตัวอักษรปกติ"
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:340
 msgid "_Terminal"
 msgstr "เ_ทอร์มินัล"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:341
 msgid "_Set Title..."
-msgstr "_กำหนดชื่อ..."
+msgstr "_กำหนดชื่อเทอร์มินัล..."
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:342
+msgid "Set Title Co_lor..."
+msgstr "กำหนดสีขอ_งชื่อเทอร์มินัล..."
+
+#: ../terminal/terminal-window.c:343
 msgid "_Find..."
 msgstr "_หา..."
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:343
 msgid "Search terminal contents"
 msgstr "ค้นเนื้อหาเทอร์มินัล"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:344
 msgid "Find Ne_xt"
 msgstr "หา_ถัดไป"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:345
 msgid "Find Pre_vious"
 msgstr "หา_ก่อนหน้า"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:346
 msgid "Sa_ve Contents..."
 msgstr "_บันทึกเนื้อหา..."
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:347 ../terminal/terminal-window.c:2226
 msgid "_Reset"
 msgstr "ล้าง_สถานะ"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:348
 msgid "_Clear Scrollback and Reset"
 msgstr "ล้าง_ข้อมูลบนจอและล้างสถานะ"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:349
 msgid "T_abs"
 msgstr "แท็_บ"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "_Previous Tab"
 msgstr "แท็บ_ก่อนหน้า"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "Switch to previous tab"
 msgstr "เปลี่ยนไปยังแท็บก่อนหน้า"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "_Next Tab"
 msgstr "แท็บ_ถัดไป"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "Switch to next tab"
 msgstr "เปลี่ยนไปยังแท็บถัดไป"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:352
 msgid "Move Tab _Left"
 msgstr "ย้ายแท็บไปทางซ้า_ย"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:353
 msgid "Move Tab _Right"
 msgstr "ย้ายแท็บไปทาง_ขวา"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:354
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "_Contents"
 msgstr "เนื้อ_หา"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "Display help contents"
 msgstr "แสดงเนื้อหาคู่มือวิธีใช้"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:356
 msgid "_About"
 msgstr "เ_กี่ยวกับ"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:357
 msgid "_Zoom"
 msgstr "ซู_ม"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Show _Menubar"
 msgstr "แสดงแถบ_เมนู"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the menubar"
 msgstr "แสดง/ซ่อนแถบเมนู"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "Show _Toolbar"
 msgstr "แสดงแถบเ_ครื่องมือ"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the toolbar"
 msgstr "แสดง/ซ่อนแถบเครื่องมือ"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "Show Window _Borders"
 msgstr "แสดง_ขอบหน้าต่าง"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "Show/hide the window decorations"
 msgstr "แสดง/ซ่อนการตกแต่งขอบหน้าต่าง"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "_Fullscreen"
 msgstr "เ_ต็มจอ"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "Toggle fullscreen mode"
 msgstr "เปิด/ปิดการแสดงผลแบบเต็มจอ"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "_Read-Only"
 msgstr "_อ่านอย่างเดียว"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "Toggle read-only mode"
 msgstr "เปิด-ปิดโหมดการอ่านอย่างเดียว"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Scroll on _Output"
 msgstr "เลื่อนจอเมื่อมี_ข้อความใหม่"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Toggle scroll on output"
 msgstr "เปิด-ปิดการเลื่อนจอเมื่อมีข้อความใหม่"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:539
+#: ../terminal/terminal-window.c:538
 msgid "Set _Encoding"
-msgstr "กำหนดรหัส_อักขระ"
+msgstr "กำหนด_รหัสอักขระ"
 
-#: ../terminal/terminal-window.c:782
+#: ../terminal/terminal-window.c:780
 msgid "Warning"
 msgstr "คำเตือน"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:783 ../terminal/terminal-window.c:2360
 msgid "_Cancel"
 msgstr "_ยกเลิก"
 
 #. and process running
-#: ../terminal/terminal-window.c:795
+#: ../terminal/terminal-window.c:793
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "ยังคงมีโพรเซสทำงานอยู่ในบางแท็บ\nการปิดหน้าต่างนี้จะเป็นการฆ่าโพรเซสเหล่านั้นทั้งหมด"
 
 #. and no process running
-#: ../terminal/terminal-window.c:801
+#: ../terminal/terminal-window.c:799
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "หน้าต่างนี้มีแท็บเปิดอยู่ %d แท็บ การปิดหน้าต่างนี้\nจะเป็นการปิดแท็บทั้งหมดของหน้าต่างด้วย"
 
-#: ../terminal/terminal-window.c:805
+#: ../terminal/terminal-window.c:803
 msgid "Close all tabs?"
 msgstr "ปิดแท็บทั้งหมดหรือไม่?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:812
+#: ../terminal/terminal-window.c:810
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "ยังคงมีโพรเซสหนึ่งทำงานอยู่\nถ้าปิดแท็บนี้ โพรเซสดังกล่าวก็จะถูกฆ่าด้วย"
 
-#: ../terminal/terminal-window.c:814
+#: ../terminal/terminal-window.c:812
 msgid "Close tab?"
 msgstr "ปิดแท็บหรือไม่?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:819
+#: ../terminal/terminal-window.c:817
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "ยังคงมีโพรเซสหนึ่งทำงานอยู่\nถ้าปิดหน้าต่างนี้ โพรเซสดังกล่าวก็จะถูกฆ่าด้วย"
 
-#: ../terminal/terminal-window.c:821
+#: ../terminal/terminal-window.c:819
 msgid "Close window?"
 msgstr "ปิดหน้าต่างหรือไม่?"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "ไ_ม่ต้องถามคำถามนี้อีก"
+#: ../terminal/terminal-window.c:1822
+msgid "Copy _Input:"
+msgstr "_ข้อความที่จะคัดลอก:"
 
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:1826
+msgid "Enter the text to be copied to all tabs"
+msgstr "ป้อนข้อความที่จะคัดลอกไปยังทุกแท็บ"
+
+#: ../terminal/terminal-window.c:1834
+msgid "Copy input"
+msgstr "คัดลอกข้อความ"
+
+#: ../terminal/terminal-window.c:2178
 msgid "_Title:"
 msgstr "_ชื่อ:"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2182
 msgid "Enter the title for the current terminal tab"
 msgstr "ป้อนชื่อของแท็บปัจจุบันของเทอร์มินัล"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2187
+msgid "Reset"
+msgstr "คืนค่าเดิม"
+
+#: ../terminal/terminal-window.c:2197
 msgid "Help"
 msgstr "วิธีใช้"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2203
 msgid "Close"
 msgstr "ปิด"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2225
+msgid "Choose title color"
+msgstr "เลือกสีของชื่อ"
+
+#: ../terminal/terminal-window.c:2277
 msgid "Failed to create the regular expression"
 msgstr "สร้างนิพจน์เรกิวลาร์ไม่สำเร็จ"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2357
 msgid "Save contents..."
 msgstr "บันทึกเนื้อหา..."
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2361
 msgid "_Save"
 msgstr "_บันทึก"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2398
 msgid "Failed to save terminal contents"
 msgstr "บันทึกเนื้อหาเทอร์มินัลไม่สำเร็จ"
 
@@ -990,26 +1031,42 @@ msgid "Wide"
 msgstr "กว้าง"
 
 #: ../terminal/terminal-preferences.glade.h:25
+msgid "Never"
+msgstr "ไม่เลย"
+
+#: ../terminal/terminal-preferences.glade.h:26
+msgid "When focused"
+msgstr "เมื่อได้โฟกัส"
+
+#: ../terminal/terminal-preferences.glade.h:27
+msgid "When unfocused"
+msgstr "เมื่อเสียโฟกัส"
+
+#: ../terminal/terminal-preferences.glade.h:28
+msgid "Always"
+msgstr "เสมอ"
+
+#: ../terminal/terminal-preferences.glade.h:29
 msgid "Terminal Preferences"
 msgstr "ปรับแต่งเทอร์มินัล"
 
-#: ../terminal/terminal-preferences.glade.h:26
+#: ../terminal/terminal-preferences.glade.h:30
 msgid "_Initial title:"
 msgstr "_ชื่อตั้งต้น:"
 
-#: ../terminal/terminal-preferences.glade.h:27
+#: ../terminal/terminal-preferences.glade.h:31
 msgid "_Dynamically-set title:"
 msgstr "ชื่อที่_ปรับตามสภาวะ:"
 
-#: ../terminal/terminal-preferences.glade.h:28
+#: ../terminal/terminal-preferences.glade.h:32
 msgid "Title"
 msgstr "ชื่อ"
 
-#: ../terminal/terminal-preferences.glade.h:29
+#: ../terminal/terminal-preferences.glade.h:33
 msgid "_Run command as login shell"
 msgstr "เ_รียกคำสั่งในเชลล์เข้าระบบ"
 
-#: ../terminal/terminal-preferences.glade.h:30
+#: ../terminal/terminal-preferences.glade.h:34
 msgid ""
 "Select this option to force Terminal to run your shell as a login shell when"
 " you open new terminals. See the documentation of your shell for details "
@@ -1017,494 +1074,535 @@ msgid ""
 "login shell."
 msgstr "เลือกตัวเลือกนี้เพื่อบังคับให้เทอร์มินัลเรียกเชลล์ของคุณในแบบเชลล์เข้าระบบเมื่อคุณเปิดเทอร์มินัลใหม่ ศึกษารายละเอียดเกี่ยวกับความแตกต่างระหว่างการเรียกเชลล์แบบโต้ตอบธรรมดากับแบบเชลล์เข้าระบบได้จากเอกสารของเชลล์ของคุณ"
 
-#: ../terminal/terminal-preferences.glade.h:31
+#: ../terminal/terminal-preferences.glade.h:35
 msgid "_Update utmp/wtmp records when command is launched"
 msgstr "ปรับข้อมูลระเ_บียน utmp/wtmp เมื่อเรียกคำสั่งทำงาน"
 
-#: ../terminal/terminal-preferences.glade.h:32
+#: ../terminal/terminal-preferences.glade.h:36
 msgid ""
 "Select this option to allow commands that use utmp/wtmp records (such as "
 "`write` or `wall`) to work."
 msgstr "เลือกตัวเลือกนี้เพื่อให้คำสั่งที่ใช้ระเบียน utmp/wtmp (เช่น `write` หรือ `wall`) สามารถทำงานได้"
 
-#: ../terminal/terminal-preferences.glade.h:33
+#: ../terminal/terminal-preferences.glade.h:37
 msgid "Run a _custom command instead of my shell"
 msgstr "เรียกทำงานคำสั่งที่กำห_นดเองแทนเชลล์ของฉัน"
 
-#: ../terminal/terminal-preferences.glade.h:34
+#: ../terminal/terminal-preferences.glade.h:38
 msgid ""
 "Select this option to force Terminal to run custom command instead of your "
 "shell when you open new terminals."
 msgstr "เลือกตัวเลือกนี้เพื่อบังคับให้เทอร์มินัลเรียกคำสั่งที่กำหนดเองแทนเชลล์ของคุณเมื่อเปิดเทอร์มินัลอันใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:35
+#: ../terminal/terminal-preferences.glade.h:39
 msgid "C_ustom command:"
 msgstr "กำ_หนดคำสั่ง:"
 
-#: ../terminal/terminal-preferences.glade.h:36
+#: ../terminal/terminal-preferences.glade.h:40
 msgid ""
 "Select this option to make new terminals (tabs or windows) use custom "
 "working directory. Otherwise, current working directory will be used."
 msgstr "เลือกตัวเลือกนี้เพื่อให้เทอร์มินัลที่เปิดใหม่ (ไม่ว่าจะเป็นแท็บหรือหน้าต่าง) ใช้ไดเรกทอรีทำงานที่กำหนด มิฉะนั้น ก็จะใช้ไดเรกทอรีทำงานปัจจุบัน"
 
-#: ../terminal/terminal-preferences.glade.h:37
+#: ../terminal/terminal-preferences.glade.h:41
 msgid "_Working directory:"
 msgstr "_ไดเรกทอรีทำงาน:"
 
-#: ../terminal/terminal-preferences.glade.h:38
+#: ../terminal/terminal-preferences.glade.h:42
 msgid "Command"
 msgstr "คำสั่ง"
 
-#: ../terminal/terminal-preferences.glade.h:39
+#: ../terminal/terminal-preferences.glade.h:43
 msgid "Scroll on ou_tput"
 msgstr "เลื่อนจอเมื่อมีข้อความ_ออก"
 
-#: ../terminal/terminal-preferences.glade.h:40
+#: ../terminal/terminal-preferences.glade.h:44
 msgid ""
 "This option controls whether the terminal will scroll down automatically "
 "whenever new output is generated by the commands running inside the "
 "terminal."
 msgstr "ตัวเลือกนี้จะควบคุมว่าเทอร์มินัลจะเลื่อนจอลงโดยอัตโนมัติหรือไม่ เมื่อมีข้อความใหม่ออกจากคำสั่งที่ทำงานในเทอร์มินัล"
 
-#: ../terminal/terminal-preferences.glade.h:41
+#: ../terminal/terminal-preferences.glade.h:45
 msgid "Scroll on _keystroke"
 msgstr "เลื่อน_จอเมื่อมีการกดปุ่ม"
 
-#: ../terminal/terminal-preferences.glade.h:42
+#: ../terminal/terminal-preferences.glade.h:46
 msgid ""
 "Enables you to press any key on the keyboard to scroll down the terminal "
 "window to the command prompt."
 msgstr "ทำให้คุณสามารถกดปุ่มใดๆ บนแป้นพิมพ์เพื่อเลื่อนจอเทอร์มินัลลงมาที่บรรทัดรับคำสั่ง"
 
-#: ../terminal/terminal-preferences.glade.h:43
+#: ../terminal/terminal-preferences.glade.h:47
 msgid "Scr_ollbar is:"
 msgstr "แ_ถบเลื่อน:"
 
-#: ../terminal/terminal-preferences.glade.h:44
+#: ../terminal/terminal-preferences.glade.h:48
 msgid "Scroll_back:"
 msgstr "เลื่อน_กลับ:"
 
-#: ../terminal/terminal-preferences.glade.h:45
+#: ../terminal/terminal-preferences.glade.h:49
 msgid ""
 "Specifies the number of lines that you can scroll back using the scrollbar."
 msgstr "ระบุจำนวนบรรทัดที่คุณจะสามารถเลื่อนกลับได้โดยใช้แถบเลื่อน"
 
-#: ../terminal/terminal-preferences.glade.h:46
+#: ../terminal/terminal-preferences.glade.h:50
 msgid "Unli_mited scrollback"
 msgstr "เลื่อนกลับได้ไ_ม่จำกัด"
 
-#: ../terminal/terminal-preferences.glade.h:47
+#: ../terminal/terminal-preferences.glade.h:51
 msgid ""
 "This option controls whether the terminal will have no limits on scrollback."
 msgstr "ตัวเลือกนี้จะกำหนดว่าเทอร์มินัลจะสามารถเลื่อนกลับได้ไม่จำกัดหรือไม่"
 
-#: ../terminal/terminal-preferences.glade.h:48
+#: ../terminal/terminal-preferences.glade.h:52
 msgid "Scrolling"
 msgstr "การเลื่อนจอ"
 
-#: ../terminal/terminal-preferences.glade.h:49
+#: ../terminal/terminal-preferences.glade.h:53
 msgid "Cursor shape:"
 msgstr "รูปร่างเคอร์เซอร์:"
 
-#: ../terminal/terminal-preferences.glade.h:50
+#: ../terminal/terminal-preferences.glade.h:54
 msgid "Cursor blinks"
 msgstr "เคอร์เซอร์กะพริบ"
 
-#: ../terminal/terminal-preferences.glade.h:51
+#: ../terminal/terminal-preferences.glade.h:55
 msgid "This option controls whether the cursor will be blinking or not."
 msgstr "ตัวเลือกนี้จะกำหนดว่าเคอร์เซอร์จะกะพริบหรือไม่"
 
-#: ../terminal/terminal-preferences.glade.h:52
+#: ../terminal/terminal-preferences.glade.h:56
 msgid "Cursor"
 msgstr "เคอร์เซอร์"
 
-#: ../terminal/terminal-preferences.glade.h:53
+#: ../terminal/terminal-preferences.glade.h:57
 msgid "_General"
 msgstr "_ทั่วไป"
 
-#: ../terminal/terminal-preferences.glade.h:54
+#: ../terminal/terminal-preferences.glade.h:58
 msgid "_Keep window open when it loses focus"
 msgstr "_คงหน้าต่างเปิดไว้เมื่อเสียโฟกัส"
 
-#: ../terminal/terminal-preferences.glade.h:55
+#: ../terminal/terminal-preferences.glade.h:59
 msgid "Always keep window on _top"
 msgstr "วางหน้าต่างไว้_บนสุดเสมอ"
 
-#: ../terminal/terminal-preferences.glade.h:56
+#: ../terminal/terminal-preferences.glade.h:60
 msgid "Use shortcut to _focus visible window"
 msgstr "ใช้ปุ่มลัดในการให้โ_ฟกัสกับหน้าต่างที่ปรากฏ"
 
-#: ../terminal/terminal-preferences.glade.h:57
+#: ../terminal/terminal-preferences.glade.h:61
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "ถ้าเปิดใช้ ปุ่มลัดที่ใช้เปิดและหดหน้าต่างจะให้โฟกัสกับหน้าต่างแทนที่จะปิด ถ้าเดิมหน้าต่างเสียโฟกัสไป"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "Show _status icon in notification area"
 msgstr "แสดงไอคอนส_ถานะในพื้นที่แจ้งเหตุ"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "Behavior"
 msgstr "พฤติกรรม"
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "Wi_dth:"
 msgstr "ความ_กว้าง:"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:65
 msgid "He_ight:"
 msgstr "ความสู_ง:"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:66
 msgid "_Always show tabs"
 msgstr "แสดงแท็บเสม_อ"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:67
 msgid "D_uration:"
 msgstr "_ระยะเวลา:"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:69
 msgid "_Opacity:"
 msgstr "ความทึ_บแสง:"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:70
 msgid ""
 "Sorry, your Window Manager does not support compositing:\n"
 "Opacity setting is not available."
 msgstr "เสียใจด้วย โปรแกรมจัดการหน้าต่างของคุณไม่รองรับ composite:\nไม่สามารถกำหนดค่าความทึบแสงของหน้าต่างได้"
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "Show window _borders"
 msgstr "แสดงกรอ_บหน้าต่าง"
 
-#: ../terminal/terminal-preferences.glade.h:69
+#: ../terminal/terminal-preferences.glade.h:73
 msgid "Appearance and Animation"
 msgstr "รูปลักษณ์และการเคลื่อนไหว"
 
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:74
 msgid "L_eft"
 msgstr "ซ้า_ย"
 
-#: ../terminal/terminal-preferences.glade.h:71
+#: ../terminal/terminal-preferences.glade.h:75
 msgid "Right"
 msgstr "ขวา"
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "U_p"
 msgstr "_ขึ้น"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Down"
 msgstr "ลง"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "Move to monitor with poi_nter"
 msgstr "ย้ายไปที่จอภาพที่ตัว_ชี้เมาส์วางอยู่"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "Position"
 msgstr "ตำแหน่ง"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "Drop-do_wn"
 msgstr "ทิ้ง_ตัว"
 
-#: ../terminal/terminal-preferences.glade.h:77
-msgid "Choose Terminal Font"
-msgstr "เลือกแบบอักษรของเทอร์มินัล"
-
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "Use system _font"
 msgstr "ใช้แ_บบอักษรของระบบ"
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Enable this option to use system-wide monospace font."
 msgstr "เลือกตัวเลือกนี้หากต้องการใช้แบบอักษรความกว้างคงที่ที่กำหนดไว้ในระบบ"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Choose Terminal Font"
+msgstr "เลือกแบบอักษรของเทอร์มินัล"
+
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Allow bold te_xt"
 msgstr "ให้ใช้ตัวห_นาได้"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:85
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "เปิดตัวเลือกนี้ถ้าต้องการให้โปรแกรมที่ทำงานภายในหน้าต่างเทอร์มินัลสามารถใช้ข้อความตัวหนาได้"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:86
+msgid ""
+"Controls whether text in the terminal is allowed to blink when '\\e[5m' "
+"escape codes are used."
+msgstr "กำหนดว่าจะให้ข้อความในเทอร์มินัลกะพริบหรือไม่เมื่อมีการใช้รหัสหลีก '\\e[5m'"
+
+#: ../terminal/terminal-preferences.glade.h:87
+msgid "Text blinks:"
+msgstr "ข้อความกะพริบ:"
+
+#: ../terminal/terminal-preferences.glade.h:88
+msgid "Cell spacing:"
+msgstr "ขนาดของเซลล์:"
+
+#: ../terminal/terminal-preferences.glade.h:89
+msgid "x width"
+msgstr "x ความกว้าง"
+
+#: ../terminal/terminal-preferences.glade.h:90
+msgid "x height"
+msgstr "x ความสูง"
+
+#: ../terminal/terminal-preferences.glade.h:91
+msgid "Rese_t"
+msgstr "ล้างค่_า"
+
+#: ../terminal/terminal-preferences.glade.h:92
+msgid "Reset cell spacing values to defaults"
+msgstr "คืนค่าขนาดของเซลล์กลับเป็นค่าปริยาย"
+
+#: ../terminal/terminal-preferences.glade.h:93
 msgid "Font"
 msgstr "แบบอักษร"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "_File:"
 msgstr "แ_ฟ้ม:"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "St_yle:"
 msgstr "รูปแ_บบ:"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Select Background Image File"
 msgstr "เลือกแฟ้มรูปภาพ"
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "_Shading:"
 msgstr "เฉดสี_ภาพ:"
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "Background"
 msgstr "พื้นหลัง"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "Display _menubar in new windows"
 msgstr "แสดงแถบเ_มนูในหน้าต่างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:100
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "เปิดใช้ตัวเลือกนี้ถ้าต้องการแสดงแถบเมนูในหน้าต่างเทอร์มินัลที่สร้างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "Display _toolbar in new windows"
 msgstr "แสดงแถบเค_รื่องมือในหน้าต่างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:102
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "เปิดใช้ตัวเลือกนี้ถ้าต้องการแสดงแถบเครื่องมือในหน้าต่างเทอร์มินัลที่สร้างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Display _borders around new windows"
 msgstr "แสดงข_อบรอบหน้าต่างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:104
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "เปิดใช้ตัวเลือกนี้ถ้าต้องการตกแต่งขอบหน้าต่างรอบหน้าต่างเทอร์มินัลที่สร้างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Default geometry:"
 msgstr "ขนาดปริยาย:"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:106
 msgid "c_olumns"
 msgstr "_คอลัมน์"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "row_s"
 msgstr "แ_ถว"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:108
 msgid "Opening New Windows"
 msgstr "การเปิดหน้าต่างใหม่"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "Reset tab activity _indicator after"
 msgstr "ล้างสถานะตัวบ่ง_ชี้กิจกรรมในแท็บหลังจาก"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "seconds"
 msgstr "วินาที"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "ใช้สไตล์พิเศษเพื่อปรับให้แ_ท็บบางลง (ต้องเริ่มโปรแกรมใหม่)"
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Tabs"
 msgstr "แท็บ"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "_Appearance"
 msgstr "รูป_ลักษณ์"
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:114
+msgid "_Text color:"
+msgstr "สีข้อควา_ม:"
+
+#: ../terminal/terminal-preferences.glade.h:115
+msgid "Choose text color"
+msgstr "เลือกสีข้อความ"
+
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Color Selector"
+msgstr "กล่องเลือกสี"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Open a dialog to specify the color"
+msgstr "เปิดกล่องโต้ตอบเพื่อเลือกสี"
+
+#: ../terminal/terminal-preferences.glade.h:118
+msgid "_Background color:"
+msgstr "สี_พื้นหลัง:"
+
+#: ../terminal/terminal-preferences.glade.h:119
+msgid "Choose background color"
+msgstr "เลือกสีพื้นหลัง"
+
+#: ../terminal/terminal-preferences.glade.h:120
+msgid "Note: Ctrl+click for color editor."
+msgstr "หมายเหตุ: Ctrl+คลิก จะเปิดเครื่องมือแก้ไขสี"
+
+#: ../terminal/terminal-preferences.glade.h:121
+msgid "Tab activit_y color:"
+msgstr "สี_กิจกรรมในแท็บ:"
+
+#: ../terminal/terminal-preferences.glade.h:122
+msgid "Choose tab activity color"
+msgstr "เลือกสีกิจกรรมในแท็บ"
+
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "_Vary the background color for each tab"
 msgstr "ใช้สีพื้นหลังที่ต่างกั_นในแต่ละแท็บ"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:124
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "สุ่มสีตามสีพื้นหลังที่เลือก โดยใช้ความสว่างเท่ากัน"
 
-#: ../terminal/terminal-preferences.glade.h:105
-msgid "Tab activit_y color:"
-msgstr "สี_กิจกรรมในแท็บ:"
-
-#: ../terminal/terminal-preferences.glade.h:106
-msgid "Choose tab activity color"
-msgstr "เลือกสีกิจกรรมในแท็บ"
-
-#: ../terminal/terminal-preferences.glade.h:107
-msgid "Color Selector"
-msgstr "กล่องเลือกสี"
-
-#: ../terminal/terminal-preferences.glade.h:108
-msgid "Open a dialog to specify the color"
-msgstr "เปิดกล่องโต้ตอบเพื่อเลือกสี"
-
-#: ../terminal/terminal-preferences.glade.h:109
-msgid "_Text color:"
-msgstr "สีข้อควา_ม:"
-
-#: ../terminal/terminal-preferences.glade.h:110
-msgid "Choose text color"
-msgstr "เลือกสีข้อความ"
-
-#: ../terminal/terminal-preferences.glade.h:111
-msgid "_Background color:"
-msgstr "สี_พื้นหลัง:"
-
-#: ../terminal/terminal-preferences.glade.h:112
-msgid "Choose background color"
-msgstr "เลือกสีพื้นหลัง"
-
-#: ../terminal/terminal-preferences.glade.h:113
-msgid "Note: Ctrl+click for color editor."
-msgstr "หมายเหตุ: Ctrl+คลิก จะเปิดเครื่องมือแก้ไขสี"
-
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "General"
 msgstr "ทั่วไป"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "B_old text color:"
 msgstr "สีของข้อความตัว_หนา:"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:127
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "เปิดใช้ตัวเลือกนี้ถ้าต้องการกำหนดสีของข้อความตัวหนา ถ้าปิด ก็จะใช้สีเหมือนสีข้อความปกติ"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "Choose bold font color"
 msgstr "เลือกสีข้อความตัวหนา"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:129
 msgid "Text _selection color:"
 msgstr "สีการเลื_อกข้อความ"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:130
 msgid ""
 "Enable this option to set custom text and background colors for the "
 "selection. If disabled the background and text colors will be reversed."
 msgstr "เปิดใช้ตัวเลือกนี้ถ้าต้องการกำหนดสีตัวอักษรและสีพื้นหลังสำหรับการเลือกข้อความ ถ้าปิด ก็จะใช้วิธีกลับสีพื้นหลังกับสีข้อความกัน"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "Choose text selection foreground color"
 msgstr "เลือกสีตัวอักษรของการเลือกข้อความ"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:132
 msgid "Choose text selection background color"
 msgstr "เลือกสีพื้นหลังของการเลือกข้อความ"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Cu_rsor color:"
 msgstr "สีเ_คอร์เซอร์:"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:134
 msgid ""
 "Enable this option to set custom text and background colors for the cursor. "
 "If disabled the background and text colors will be reversed."
 msgstr "เปิดใช้ตัวเลือกนี้เพื่อกำหนดสีตัวอักษรและสีพื้นหลังของเคอร์เซอร์ ถ้าปิดใช้ ก็จะใช้วิธีสลับสีตัวอักษรกับสีพื้นหลัง"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:135
 msgid "Choose cursor background color"
 msgstr "เลือกสีพื้นหลังของเคอร์เซอร์"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Choose cursor foreground color"
 msgstr "เลือกสีตัวอักษรของเคอร์เซอร์"
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Custom Colors"
 msgstr "กำหนดสีเอง"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Black"
 msgstr "ดำ"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:139
 msgid "Dark Gray"
 msgstr "เทาแก่"
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Red"
 msgstr "แดง"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Light Red"
 msgstr "แดงอ่อน"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Green"
 msgstr "เขียว"
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Light Green"
 msgstr "เขียวอ่อน"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Brown / Yellow"
 msgstr "น้ำตาล / เหลือง"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Yellow"
 msgstr "เหลือง"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "Blue"
 msgstr "น้ำเงิน"
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "Light Blue"
 msgstr "ฟ้า"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "Magenta"
 msgstr "บานเย็น"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "Light Magenta"
 msgstr "บานเย็นอ่อน"
 
-#: ../terminal/terminal-preferences.glade.h:139
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "Cyan"
 msgstr "น้ำเงินเขียว"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "Light Cyan"
 msgstr "น้ำเงินเขียวอ่อน"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "Light Gray"
 msgstr "เทาอ่อน"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "White"
 msgstr "ขาว"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:154
+msgid "Show bold text in b_right colors"
+msgstr "แสดงข้อความตัวหนาด้วยสีสว่_าง"
+
+#: ../terminal/terminal-preferences.glade.h:155
+msgid ""
+"Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
+"text to bright colors in addition to bold. If disabled, text color will "
+"remain intact."
+msgstr "เปิดใช้ตัวเลือกนี้ถ้าต้องการให้รหัสหลีกเช่น '\\e[1;35m' เปลี่ยนสีข้อความเป็นสีสว่างด้วย นอกเหนือจากการใช้ฟอนต์ตัวหนา ถ้าปิดตัวเลือกนี้ สีข้อความก็จะเป็นสีปกติ"
+
+#: ../terminal/terminal-preferences.glade.h:156
 msgid "Palette"
 msgstr "จานสี"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:157
 msgid "Presets"
 msgstr "ชุดที่จัดไว้"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:158
 msgid "_Colors"
 msgstr "_สี"
 
-#: ../terminal/terminal-preferences.glade.h:146
+#: ../terminal/terminal-preferences.glade.h:159
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1512,123 +1610,131 @@ msgid ""
 "different terminal behavior."
 msgstr "ตัวเลือกเหล่านี้อาจทำให้โปรแกรมบางโปรแกรมทำงานผิด\nแต่มีไว้เพื่อให้คุณสามารถแก้ขัดปัญหาของโปรแกรมบางโปรแกรม\nและระบบปฏิบัติการบางระบบซึ่งต้องการพฤติกรรมของเทอร์มินัล\nที่ต่างออกไป"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "_Backspace key generates:"
 msgstr "ปุ่ม _Backspace ส่ง:"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:164
 msgid "_Delete key generates:"
 msgstr "ปุ่ม _Delete ส่ง:"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:165
 msgid "_Reset compatibility options to defaults"
 msgstr "ล้างตัวเลือ_กความเข้ากันได้กลับเป็นค่าปริยาย"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:166
 msgid "_Ambiguous-width characters:"
 msgstr "อักขระที่ความกว้าง_คลุมเครือ:"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:167
 msgid "Compatibility"
 msgstr "ความเข้ากันได้"
 
-#: ../terminal/terminal-preferences.glade.h:155
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "Co_mpatibility"
 msgstr "ความเ_ข้ากันได้"
 
-#: ../terminal/terminal-preferences.glade.h:156
+#: ../terminal/terminal-preferences.glade.h:169
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "ถือว่าอักขระต่อไปนี้\nเป็นส่วนหนึ่งของ_คำ\nเมื่อดับเบิลคลิก:"
 
-#: ../terminal/terminal-preferences.glade.h:159
-msgid "Rese_t"
-msgstr "ล้างค่_า"
-
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Reset double click options to defaults"
 msgstr "ล้างค่าตัวเลือกดับเบิลคลิกกลับเป็นค่าปริยาย"
 
-#: ../terminal/terminal-preferences.glade.h:161
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "Double Click"
 msgstr "ดับเบิลคลิก"
 
-#: ../terminal/terminal-preferences.glade.h:162
+#: ../terminal/terminal-preferences.glade.h:174
 msgid "Default character e_ncoding:"
 msgstr "_รหัสอักขระปริยาย:"
 
-#: ../terminal/terminal-preferences.glade.h:163
+#: ../terminal/terminal-preferences.glade.h:175
 msgid "Encoding"
 msgstr "รหัสอักขระ"
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:176
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "ปิดปุ่มเข้า_ถึงเมนูทั้งหมด (เช่น Alt+ฟ)"
 
-#: ../terminal/terminal-preferences.glade.h:165
+#: ../terminal/terminal-preferences.glade.h:177
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "ปิดการใช้ปุ่มลัดเ_มนู (ค่าปริยายคือ F10)"
 
-#: ../terminal/terminal-preferences.glade.h:166
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "ปิดการใช้ปุ่มลัดหน้าต่างวิธีใ_ช้ (ค่าปริยายคือ F1)"
 
-#: ../terminal/terminal-preferences.glade.h:167
+#: ../terminal/terminal-preferences.glade.h:179
 msgid "Shortcuts"
 msgstr "ปุ่มลัด"
 
-#: ../terminal/terminal-preferences.glade.h:168
+#: ../terminal/terminal-preferences.glade.h:180
 msgid "Use _middle mouse click to close tabs"
 msgstr "ใช้เมาส์ปุ่ม_กลางปิดแท็บ"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:181
+msgid "Use middle mouse click to open _URLs"
+msgstr "ใช้เมาส์ปุ่มกลางเปิด _URL"
+
+#: ../terminal/terminal-preferences.glade.h:182
+msgid "If disabled, URLs can be opened by Ctrl + left mouse click."
+msgstr "ถ้าปิดตัวเลือกนี้ จะใช้ Ctrl + คลิกเมาส์ปุ่มซ้ายในการเปิด URL"
+
+#: ../terminal/terminal-preferences.glade.h:183
 msgid "Auto-hi_de mouse pointer"
 msgstr "ซ่อน_ตัวชี้เมาส์โดยอัตโนมัติ"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:184
 msgid "Re_wrap terminal contents on resize"
 msgstr "แบ่ง_บรรทัดเนื้อหาในเทอร์มินัลใหม่เมื่อมีการปรับขนาดหน้าต่าง"
 
-#: ../terminal/terminal-preferences.glade.h:171
+#: ../terminal/terminal-preferences.glade.h:185
 msgid "Automatically _copy selection to clipboard"
 msgstr "คัดล_อกสิ่งที่เลือกไปยังคลิปบอร์ดโดยอัตโนมัติ"
 
-#: ../terminal/terminal-preferences.glade.h:172
+#: ../terminal/terminal-preferences.glade.h:186
 msgid "Open new tab to the _right of the active tab"
 msgstr "เปิดแท็บใหม่ทาง_ขวาถัดจากแท็บที่ทำงานอยู่"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:187
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "ถ้าไม่เลือก ก็จะเปิดแท็บใหม่ที่ตำแหน่งขวาสุดเสมอ"
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:188
 msgid "_Audible bell"
-msgstr "ใช้เ_สียงบี๊บ"
+msgstr "ใช้_เสียงบี๊บ"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:189
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "ให้เทอร์มินัลส่งเสียงเพื่อแจ้งบอกเหตุการณ์บางอย่าง"
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:190
 msgid "_Visual bell"
 msgstr "แทนเสียงบี๊บด้วย_ภาพ"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:191
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "ให้เทอร์มินัลใช้ความสามารถบ่งบอกเหตุด่วนของโปรแกรมจัดการหน้าต่างในการแจ้งบอกเหตุการณ์บางอย่าง"
 
-#: ../terminal/terminal-preferences.glade.h:178
+#: ../terminal/terminal-preferences.glade.h:192
 msgid "Misc"
 msgstr "จิปาถะ"
 
-#: ../terminal/terminal-preferences.glade.h:179
+#: ../terminal/terminal-preferences.glade.h:193
 msgid "Ad_vanced"
 msgstr "ขั้นสู_ง"
 
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "โปรแกรมจำลองเทอร์มินัล"
+
+#: ../xfce4-terminal-settings.desktop.in.h:2
+msgid "Configure Xfce Terminal"
+msgstr "ตั้งค่าเทอร์มินัล Xfce"
