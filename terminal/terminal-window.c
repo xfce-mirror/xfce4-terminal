@@ -61,6 +61,14 @@ enum
   LAST_SIGNAL
 };
 
+/* Used by confirm_close() */
+enum
+{
+  CONFIRMED_NONE = 0,
+  CONFIRMED_CLOSE_TAB = 1,
+  CONFIRMED_CLOSE_WINDOW = 2
+};
+
 /* CSS for slim notebook tabs style */
 #define NOTEBOOK_NAME PACKAGE_NAME "-notebook"
 const gchar *CSS_SLIM_TABS =
@@ -103,7 +111,7 @@ static gboolean     terminal_window_map_event                     (GtkWidget    
                                                                    GdkEventAny            *event);
 static gboolean     terminal_window_focus_in_event                (GtkWidget              *widget,
                                                                    GdkEventFocus          *event);
-static gboolean     terminal_window_confirm_close                 (TerminalScreen         *screen,
+static gint         terminal_window_confirm_close                 (TerminalScreen         *screen,
                                                                    TerminalWindow         *window);
 static void         terminal_window_size_push                     (TerminalWindow         *window);
 static gboolean     terminal_window_size_pop                      (gpointer                data);
@@ -249,6 +257,8 @@ static void         terminal_window_toggle_menubar                (GtkWidget    
 static void         terminal_window_menubar_deactivate            (GtkWidget              *widget,
                                                                    TerminalWindow         *window);
 static void         title_popover_close                           (GtkWidget              *popover,
+                                                                   TerminalWindow         *window);
+static void         terminal_window_do_close_tab                  (TerminalScreen         *screen,
                                                                    TerminalWindow         *window);
 
 
@@ -618,10 +628,12 @@ terminal_window_delete_event (GtkWidget   *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
   GtkWidget      *child;
-  gint            n_pages, i;
+  gint            n_pages, i, response;
+
+  response = terminal_window_confirm_close (NULL, window);
 
   /* disconnect remove signal if we're closing the window */
-  if (terminal_window_confirm_close (NULL, window))
+  if (response == CONFIRMED_CLOSE_WINDOW)
     {
       /* disconnect handlers for closing Set Title dialog */
       if (window->priv->title_popover != NULL)
@@ -645,6 +657,8 @@ terminal_window_delete_event (GtkWidget   *widget,
 
       return FALSE;
     }
+  else if (response == CONFIRMED_CLOSE_TAB)
+    terminal_window_do_close_tab (window->priv->active, window);
 
   return TRUE;
 }
@@ -757,7 +771,7 @@ terminal_window_focus_in_event (GtkWidget     *widget,
 
 
 
-static gboolean
+static gint
 terminal_window_confirm_close (TerminalScreen *screen,
                                TerminalWindow *window)
 {
@@ -777,7 +791,7 @@ terminal_window_confirm_close (TerminalScreen *screen,
 
   g_object_get (G_OBJECT (window->priv->preferences), "misc-confirm-close", &confirm_close, NULL);
   if (!confirm_close)
-    return TRUE;
+    return (screen != NULL) ? CONFIRMED_CLOSE_TAB : CONFIRMED_CLOSE_WINDOW;
 
   n_tabs = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
   confirm_close = FALSE;
@@ -792,7 +806,7 @@ terminal_window_confirm_close (TerminalScreen *screen,
     }
 
   if ((screen != NULL || n_tabs < 2) && !confirm_close)
-    return TRUE;
+    return (screen != NULL) ? CONFIRMED_CLOSE_TAB : CONFIRMED_CLOSE_WINDOW;
 
   dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
                                         GTK_DIALOG_DESTROY_WITH_PARENT
@@ -893,7 +907,11 @@ terminal_window_confirm_close (TerminalScreen *screen,
 
   gtk_widget_destroy (dialog);
 
-  return (response == GTK_RESPONSE_YES || response == GTK_RESPONSE_CLOSE);
+  if (response == GTK_RESPONSE_YES)
+    return CONFIRMED_CLOSE_WINDOW;
+  if (response == GTK_RESPONSE_CLOSE)
+    return CONFIRMED_CLOSE_TAB;
+  return CONFIRMED_NONE;
 }
 
 
@@ -1117,34 +1135,8 @@ static void
 terminal_window_close_tab_request (TerminalScreen *screen,
                                    TerminalWindow *window)
 {
-  if (terminal_window_confirm_close (screen, window))
-    {
-      GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
-
-      /* store attrs of the tab being closed */
-      TerminalTabAttr *tab_attr = terminal_tab_attr_new ();
-      tab_attr->active = (screen == window->priv->active);
-      tab_attr->position = gtk_notebook_page_num (notebook, GTK_WIDGET (screen));
-      tab_attr->directory = g_strdup (terminal_screen_get_working_directory (screen));
-      tab_attr->title = IS_STRING (terminal_screen_get_custom_title (screen)) ?
-                        g_strdup (terminal_screen_get_custom_title (screen)) : NULL;
-      tab_attr->color_text = IS_STRING (terminal_screen_get_custom_fg_color (screen)) ?
-                             g_strdup (terminal_screen_get_custom_fg_color (screen)) : NULL;
-      tab_attr->color_bg = IS_STRING (terminal_screen_get_custom_bg_color (screen)) ?
-                           g_strdup (terminal_screen_get_custom_bg_color (screen)) : NULL;
-      tab_attr->color_title = IS_STRING (terminal_screen_get_custom_title_color (screen)) ?
-                              g_strdup (terminal_screen_get_custom_title_color (screen)) : NULL;
-      g_queue_push_tail (window->priv->closed_tabs_list, tab_attr);
-
-      /* switch to the previously active tab */
-      if (screen == window->priv->active && window->priv->last_active != NULL)
-        {
-          gint page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->last_active));
-          gtk_notebook_set_current_page (notebook, page_num);
-        }
-
-      gtk_widget_destroy (GTK_WIDGET (screen));
-    }
+  if (terminal_window_confirm_close (screen, window) == CONFIRMED_CLOSE_TAB)
+    terminal_window_do_close_tab (screen, window);
 }
 
 
@@ -2563,6 +2555,39 @@ terminal_window_menubar_deactivate (GtkWidget      *widget,
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
 G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+
+
+static void
+terminal_window_do_close_tab (TerminalScreen *screen,
+                              TerminalWindow *window)
+{
+  GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
+
+  /* store attrs of the tab being closed */
+  TerminalTabAttr *tab_attr = terminal_tab_attr_new ();
+  tab_attr->active = (screen == window->priv->active);
+  tab_attr->position = gtk_notebook_page_num (notebook, GTK_WIDGET (screen));
+  tab_attr->directory = g_strdup (terminal_screen_get_working_directory (screen));
+  tab_attr->title = IS_STRING (terminal_screen_get_custom_title (screen)) ?
+                    g_strdup (terminal_screen_get_custom_title (screen)) : NULL;
+  tab_attr->color_text = IS_STRING (terminal_screen_get_custom_fg_color (screen)) ?
+                         g_strdup (terminal_screen_get_custom_fg_color (screen)) : NULL;
+  tab_attr->color_bg = IS_STRING (terminal_screen_get_custom_bg_color (screen)) ?
+                       g_strdup (terminal_screen_get_custom_bg_color (screen)) : NULL;
+  tab_attr->color_title = IS_STRING (terminal_screen_get_custom_title_color (screen)) ?
+                          g_strdup (terminal_screen_get_custom_title_color (screen)) : NULL;
+  g_queue_push_tail (window->priv->closed_tabs_list, tab_attr);
+
+  /* switch to the previously active tab */
+  if (screen == window->priv->active && window->priv->last_active != NULL)
+    {
+      gint page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->last_active));
+      gtk_notebook_set_current_page (notebook, page_num);
+    }
+
+  gtk_widget_destroy (GTK_WIDGET (screen));
 }
 
 
