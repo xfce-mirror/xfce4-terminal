@@ -1729,8 +1729,8 @@ static void
 terminal_window_action_close_window (GtkAction      *action,
                                      TerminalWindow *window)
 {
-  if (terminal_window_confirm_close (NULL, window))
-    gtk_widget_destroy (GTK_WIDGET (window));
+  /* this will invoke the "delete-event" handler */
+  gtk_window_close (GTK_WINDOW (window));
 }
 
 
