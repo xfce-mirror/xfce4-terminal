@@ -381,7 +381,7 @@ static const GtkToggleActionEntry toggle_action_entries[] =
 
 
 
-G_DEFINE_TYPE (TerminalWindow, terminal_window, GTK_TYPE_WINDOW)
+G_DEFINE_TYPE_WITH_CODE (TerminalWindow, terminal_window, GTK_TYPE_WINDOW, G_ADD_PRIVATE (TerminalWindow))
 
 
 
@@ -426,8 +426,6 @@ terminal_window_class_init (TerminalWindowClass *klass)
                   G_TYPE_NONE, 3,
                   G_TYPE_OBJECT,
                   G_TYPE_INT, G_TYPE_INT);
-
-  g_type_class_add_private (gobject_class, sizeof (TerminalWindowPrivate));
 
   /* initialize quark */
   tabs_menu_action_quark = g_quark_from_static_string ("tabs-menu-item");
