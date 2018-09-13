@@ -65,7 +65,7 @@ static gboolean terminal_app_unset_urgent_bell        (TerminalWindow     *windo
 static void     terminal_app_new_window               (TerminalWindow     *window,
                                                        const gchar        *working_directory,
                                                        TerminalApp        *app);
-static void     terminal_app_new_window_with_terminal (TerminalWindow     *window,
+static void     terminal_app_new_window_with_terminal (TerminalWindow     *existing,
                                                        TerminalScreen     *terminal,
                                                        gint                x,
                                                        gint                y,

@@ -1408,7 +1408,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
                                              gint              y,
                                              GtkSelectionData *selection_data,
                                              guint             info,
-                                             guint             drag_time,
+                                             guint             time,
                                              TerminalWindow   *window)
 {
   GtkWidget  *notebook;
@@ -1483,7 +1483,7 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
 
   /* finish the drag */
 leave:
-  gtk_drag_finish (context, succeed, FALSE, drag_time);
+  gtk_drag_finish (context, succeed, FALSE, time);
 }
 
 

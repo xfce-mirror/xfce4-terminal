@@ -91,7 +91,7 @@ static void     terminal_widget_drag_data_received    (GtkWidget        *widget,
 static gboolean terminal_widget_key_press_event       (GtkWidget        *widget,
                                                        GdkEventKey      *event);
 static void     terminal_widget_open_uri              (TerminalWidget   *widget,
-                                                       const gchar      *link,
+                                                       const gchar      *wlink,
                                                        gint              tag);
 static void     terminal_widget_update_highlight_urls (TerminalWidget   *widget);
 
@@ -451,7 +451,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
                                     gint              y,
                                     GtkSelectionData *selection_data,
                                     guint             info,
-                                    guint32           drag_time)
+                                    guint             time)
 {
   const guint16 *ucs;
   GdkRGBA        color;
@@ -589,7 +589,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       if (G_LIKELY (screen))
         {
           g_signal_emit_by_name (G_OBJECT (screen), "drag-data-received", context,
-                                 x, y, selection_data, info, drag_time);
+                                 x, y, selection_data, info, time);
         }
       break;
 
@@ -599,7 +599,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
     }
 
   if (info != TARGET_GTK_NOTEBOOK_TAB)
-    gtk_drag_finish (context, TRUE, FALSE, drag_time);
+    gtk_drag_finish (context, TRUE, FALSE, time);
 }
 
 
