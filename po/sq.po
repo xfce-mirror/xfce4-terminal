@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-20 18:31+0100\n"
-"PO-Revision-Date: 2018-02-27 23:28+0000\n"
-"Last-Translator: Besnik <besnik@programeshqip.org>\n"
+"POT-Creation-Date: 2018-06-19 00:31+0200\n"
+"PO-Revision-Date: 2018-09-14 00:16+0000\n"
+"Last-Translator: Nick Schermer <nick@xfce.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -65,13 +65,13 @@ msgstr "Mundësi të Përgjithshme"
 
 #. parameter of --default-display
 #. parameter of --display
-#: ../terminal/main.c:111 ../terminal/main.c:143
+#: ../terminal/main.c:111 ../terminal/main.c:148
 msgid "display"
 msgstr ""
 
 #. parameter of --default-working-directory
 #. parameter of --working-directory
-#: ../terminal/main.c:113 ../terminal/main.c:133
+#: ../terminal/main.c:113 ../terminal/main.c:134
 msgid "directory"
 msgstr "drejtori"
 
@@ -79,101 +79,108 @@ msgstr "drejtori"
 msgid "Window or Tab Separators"
 msgstr "Ndarës Dritaresh ose Skedash"
 
-#: ../terminal/main.c:123
+#: ../terminal/main.c:124
 msgid "Tab Options"
 msgstr "Mundësi Skedash"
 
 #. parameter of --command
-#: ../terminal/main.c:125
+#: ../terminal/main.c:126
 msgid "command"
 msgstr "urdhër"
 
 #. parameter of --title
 #. parameter of --initial-title
-#: ../terminal/main.c:127 ../terminal/main.c:131
+#: ../terminal/main.c:128 ../terminal/main.c:132
 msgid "title"
 msgstr "titull"
 
 #. parameter of --dynamic-title-mode
-#: ../terminal/main.c:129
+#: ../terminal/main.c:130
 msgid "mode"
 msgstr "mënyrë"
 
-#: ../terminal/main.c:141
+#. parameter of --color-text
+#. parameter of --color-bg
+#: ../terminal/main.c:136 ../terminal/main.c:138
+msgid "color"
+msgstr ""
+
+#: ../terminal/main.c:146
 msgid "Window Options"
 msgstr "Mundësi Dritareje"
 
 #. parameter of --geometry
-#: ../terminal/main.c:145
+#: ../terminal/main.c:150
 msgid "geometry"
 msgstr "gjeometri."
 
 #. parameter of --role
-#: ../terminal/main.c:147
+#: ../terminal/main.c:152
 msgid "role"
 msgstr "rol"
 
 #. parameter of --startup-id
-#: ../terminal/main.c:149
+#: ../terminal/main.c:154
 msgid "string"
 msgstr "varg"
 
 #. parameter of --icon
-#: ../terminal/main.c:151
+#: ../terminal/main.c:156
 msgid "icon"
 msgstr "ikonë"
 
 #. parameter of --font
-#: ../terminal/main.c:153
+#: ../terminal/main.c:158
 msgid "font"
 msgstr "shkronja"
 
 #. parameter of --zoom
-#: ../terminal/main.c:155
+#: ../terminal/main.c:160
 msgid "zoom"
 msgstr ""
 
-#: ../terminal/main.c:157
+#: ../terminal/main.c:162
 #, c-format
 msgid "See the %s man page for full explanation of the options above."
 msgstr ""
 
-#: ../terminal/main.c:190 ../xfce4-terminal.desktop.in.h:1
+#: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
+#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Terminal Xfce"
 
-#: ../terminal/main.c:206
+#: ../terminal/main.c:212
 msgid "The Xfce development team. All rights reserved."
 msgstr "Ekipi i zhvillimit të Xfce-së. Tërë të drejtat të rezervuara."
 
-#: ../terminal/main.c:207
+#: ../terminal/main.c:213
 msgid "Written by Benedikt Meurer <benny@xfce.org>,"
 msgstr "Shkruar nga Benedikt Meurer <benny@xfce.org>,"
 
-#: ../terminal/main.c:208
+#: ../terminal/main.c:214
 msgid "Nick Schermer <nick@xfce.org>"
 msgstr "Nick Schermer <nick@xfce.org>"
 
-#: ../terminal/main.c:209
+#: ../terminal/main.c:215
 msgid "and Igor Zakharov <f2404@yandex.ru>."
 msgstr "dheakharov <f2404@yandex.ru>."
 
-#: ../terminal/main.c:210
+#: ../terminal/main.c:216
 #, c-format
 msgid "Please report bugs to <%s>."
 msgstr "Ju lutemi, njoftoni të meta te <%s>."
 
-#: ../terminal/main.c:317
+#: ../terminal/main.c:334
 #, c-format
 msgid "Unable to register terminal service: %s\n"
 msgstr "I pazoti të regjistrojë shërbim terminali: %s\n"
 
-#: ../terminal/terminal-app.c:872
+#: ../terminal/terminal-app.c:883
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Varg gjeometrie i pavlefshëm \"%s\"\n"
 
-#: ../terminal/terminal-app.c:951
+#: ../terminal/terminal-app.c:962
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Dështoi të lidhet te përgjegjës sesionesh: %s\n"
@@ -281,175 +288,185 @@ msgstr "Mospërputhje id-je përdoruesi"
 msgid "Display mismatch"
 msgstr ""
 
-#: ../terminal/terminal-options.c:218
+#: ../terminal/terminal-options.c:203
 #, c-format
 msgid ""
 "Option \"--default-display\" requires specifying the default X display as "
 "its parameter"
 msgstr "Mundësia \"--default-display\" lyp tregimin e ekranit X parazgjedhje si parametër të vet"
 
-#: ../terminal/terminal-options.c:234
+#: ../terminal/terminal-options.c:219
 #, c-format
 msgid ""
 "Option \"--default-working-directory\" requires specifying the default "
 "working directory as its parameter"
 msgstr "Mundësia \"--command/-e\" lyp tregimin e drejtorisë parazgjedhje të punimit si parametër të vet"
 
-#: ../terminal/terminal-options.c:251
+#: ../terminal/terminal-options.c:236
 #, c-format
 msgid ""
 "Option \"--execute/-x\" requires specifying the command to run on the rest "
 "of the command line"
 msgstr "Mundësia \"--execute/-x\" lyp tregimin e urdhërit për xhirim te pjesa e mbetur për rreshtin e urdhrit"
 
-#: ../terminal/terminal-options.c:268
+#: ../terminal/terminal-options.c:253
 #, c-format
 msgid ""
 "Option \"--command/-e\" requires specifying the command to run as its "
 "parameter"
 msgstr "Mundësia \"--command/-e\" lyp tregimin e urdhërit për xhirim si parametër të vet"
 
-#: ../terminal/terminal-options.c:285
+#: ../terminal/terminal-options.c:270
 #, c-format
 msgid ""
 "Option \"--working-directory\" requires specifying the working directory as "
 "its parameter"
 msgstr "Mundësia \"--working-directory\" lyp tregimin e drejtorisë së punimit si parametër të vet"
 
-#: ../terminal/terminal-options.c:300
+#: ../terminal/terminal-options.c:285
 #, c-format
 msgid "Option \"--title/-T\" requires specifying the title as its parameter"
 msgstr "Mundësia \"--title/-T\" lyp tregimin e titullit si parametër të vet"
 
-#: ../terminal/terminal-options.c:315
+#: ../terminal/terminal-options.c:300
 #, c-format
 msgid ""
 "Option \"--dynamic-title-mode\" requires specifying the dynamic title mode "
 "as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:330
+#: ../terminal/terminal-options.c:315
 #, c-format
 msgid "Invalid argument for option \"--dynamic-title-mode\": %s"
 msgstr ""
 
-#: ../terminal/terminal-options.c:340
+#: ../terminal/terminal-options.c:325
 #, c-format
 msgid ""
 "Option \"--initial-title\" requires specifying the initial title as its "
 "parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:359
+#: ../terminal/terminal-options.c:349 ../terminal/terminal-options.c:368
 #, c-format
-msgid "Option \"--display\" requires specifying the X display as its parameters"
-msgstr "Mundësia \"--display\" lyp tregimin e ekranit X si parametër të vet"
+msgid "Option \"%s\" requires specifying the color as its parameter"
+msgstr ""
 
-#: ../terminal/terminal-options.c:374
+#: ../terminal/terminal-options.c:356 ../terminal/terminal-options.c:375
+#, c-format
+msgid "Unable to parse color: %s"
+msgstr ""
+
+#: ../terminal/terminal-options.c:386
+#, c-format
+msgid "Option \"--display\" requires specifying the X display as its parameter"
+msgstr ""
+
+#: ../terminal/terminal-options.c:401
 #, c-format
 msgid ""
 "Option \"--geometry\" requires specifying the window geometry as its "
 "parameter"
 msgstr "Mundësia \"--geometry\" lyp tregimin e gjeometrisë së dritares si parametër të vet"
 
-#: ../terminal/terminal-options.c:389
+#: ../terminal/terminal-options.c:416
 #, c-format
 msgid "Option \"--role\" requires specifying the window role as its parameter"
 msgstr "Mundësia \"--role\" lyp tregimin e rolit të dritares si parametër të vet"
 
-#: ../terminal/terminal-options.c:404
+#: ../terminal/terminal-options.c:431
 #, c-format
 msgid ""
 "Option \"--sm-client-id\" requires specifying the unique session id as its "
 "parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:419
+#: ../terminal/terminal-options.c:446
 #, c-format
 msgid ""
 "Option \"--startup-id\" requires specifying the startup id as its parameter"
 msgstr "Mundësia \"--startup-id\" lyp tregimin e id-së së nisjes si parametër të vet"
 
-#: ../terminal/terminal-options.c:435
+#: ../terminal/terminal-options.c:462
 #, c-format
 msgid ""
 "Option \"--icon/-I\" requires specifying an icon name or filename as its "
 "parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:506
+#: ../terminal/terminal-options.c:533
 #, c-format
 msgid "Option \"--font\" requires specifying the font name as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:524
+#: ../terminal/terminal-options.c:551
 #, c-format
 msgid "Option \"--zoom\" requires specifying the zoom (%d .. %d) as its parameter"
 msgstr ""
 
-#: ../terminal/terminal-options.c:546
+#: ../terminal/terminal-options.c:573
 #, c-format
 msgid "Unknown option \"%s\""
 msgstr "Mundësi e panjohur \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:474
+#: ../terminal/terminal-preferences-dialog.c:467
 msgid "All Files"
 msgstr "Tërë Kartelat"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "Image Files"
 msgstr "Kartela Pamje"
 
-#: ../terminal/terminal-preferences-dialog.c:936
+#: ../terminal/terminal-preferences-dialog.c:938
 msgid "Load Presets..."
 msgstr "Ngarko Paracaktime…"
 
-#: ../terminal/terminal-preferences.c:1131
+#: ../terminal/terminal-preferences.c:1142
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:425 ../terminal/terminal-screen.c:799
-#: ../terminal/terminal-screen.c:2059
+#: ../terminal/terminal-screen.c:443 ../terminal/terminal-screen.c:817
+#: ../terminal/terminal-screen.c:2155
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: ../terminal/terminal-screen.c:700
+#: ../terminal/terminal-screen.c:718
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "I pazoti të përcaktojë shell tuajin për hyrje."
 
-#: ../terminal/terminal-screen.c:1312
-msgid "Child process exited"
-msgstr "Procesi pjellë doli"
-
-#: ../terminal/terminal-screen.c:1315
+#: ../terminal/terminal-screen.c:1367
 msgid "_Relaunch"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1321
+#: ../terminal/terminal-screen.c:1373
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1323
+#: ../terminal/terminal-screen.c:1375
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1325
-#, c-format
+#: ../terminal/terminal-screen.c:1377
 msgid "The child process was aborted."
 msgstr "Procesi pjellë u ndërpre."
 
-#: ../terminal/terminal-screen.c:1738 ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1383 ../terminal/terminal-window.c:861
+msgid "Do _not ask me again"
+msgstr "Mos _më pyet sërish"
+
+#: ../terminal/terminal-screen.c:1745 ../terminal/terminal-screen.c:1822
+#: ../terminal/terminal-screen.c:1859
 msgid "Failed to execute child"
 msgstr "Dështoi në përmbushjen e pjellës"
 
-#: ../terminal/terminal-screen.c:2397
+#: ../terminal/terminal-screen.c:2500
 msgid "Close this tab"
 msgstr "Mbylle këtë skedë"
 
-#: ../terminal/terminal-screen.c:2450
+#: ../terminal/terminal-screen.c:2553
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Dështoi në caktim kodimi %s\n"
@@ -551,345 +568,369 @@ msgstr "Dështoi në hapjen e URL-së '%s'"
 msgid "Keep window open when it loses focus"
 msgstr ""
 
-#: ../terminal/terminal-window-dropdown.c:408
+#: ../terminal/terminal-window-dropdown.c:409
 msgid "Drop-down Terminal"
 msgstr ""
 
-#: ../terminal/terminal-window-dropdown.c:409
+#: ../terminal/terminal-window-dropdown.c:410
 msgid "Toggle Drop-down Terminal"
 msgstr ""
 
-#: ../terminal/terminal-window.c:321
+#: ../terminal/terminal-window.c:318
 msgid "_File"
 msgstr "_Kartelë"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:319
 msgid "Open _Tab"
 msgstr "Hap _Skedë"
 
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:319
 msgid "Open a new terminal tab"
 msgstr "Hap skedë të re terminali"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:320
 msgid "Open T_erminal"
 msgstr "Hap T_erminal"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:320
 msgid "Open a new terminal window"
 msgstr "Hap dritare të re terminali"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:321
 msgid "_Undo Close Tab"
 msgstr "_Zhbëje Mbylljen e Skedës"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:322
 msgid "_Detach Tab"
 msgstr "_Shqit Skedë"
 
-#: ../terminal/terminal-window.c:326 ../terminal/terminal-window.c:827
+#: ../terminal/terminal-window.c:323 ../terminal/terminal-window.c:825
 msgid "Close T_ab"
 msgstr "Mbylle _Skedën"
 
-#: ../terminal/terminal-window.c:327
+#: ../terminal/terminal-window.c:324
 msgid "Close Other Ta_bs"
 msgstr "Mbylli Skedat e _Tjera"
 
-#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:834
+#: ../terminal/terminal-window.c:325 ../terminal/terminal-window.c:832
 msgid "Close _Window"
 msgstr "Mbylle _Dritaren"
 
-#: ../terminal/terminal-window.c:329
+#: ../terminal/terminal-window.c:326
 msgid "_Edit"
 msgstr "_Përpunoni"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:327
 msgid "_Copy"
 msgstr "_Kopjo"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:327
 msgid "Copy to clipboard"
 msgstr "Kopjo në të papastër"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:329
 msgid "Copy as _HTML"
 msgstr "Kopjoje si _HTML"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:329
 msgid "Copy to clipboard as HTML"
 msgstr "Kopjoje në të papastër si HTML"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:331
 msgid "_Paste"
 msgstr "_Ngjite"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:331
 msgid "Paste from clipboard"
 msgstr "Ngjit prej së papastrës"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:332
 msgid "Paste _Selection"
 msgstr "Ngjite _Përzgjedhjen"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:333
 msgid "Select _All"
 msgstr "Përzgjidhi _Krejt"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:334
+msgid "Copy _Input To All Tabs..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:335
 msgid "Pr_eferences..."
 msgstr "P_arapëlqime…"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:335
 msgid "Open the preferences dialog"
 msgstr "Hap dialogun e parapëlqimeve"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:336
 msgid "_View"
 msgstr "_Parje"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:337
 msgid "Zoom _In"
 msgstr ""
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:337
 msgid "Zoom in with larger font"
 msgstr ""
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:338
 msgid "Zoom _Out"
 msgstr ""
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:338
 msgid "Zoom out with smaller font"
 msgstr ""
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:339
 msgid "_Normal Size"
 msgstr "Madhësi _Normale"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:339
 msgid "Zoom to default size"
 msgstr ""
 
-#: ../terminal/terminal-window.c:342
+#: ../terminal/terminal-window.c:340
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:341
 msgid "_Set Title..."
 msgstr "_Caktoni Titull…"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:342
+msgid "Set Title Co_lor..."
+msgstr ""
+
+#: ../terminal/terminal-window.c:343
 msgid "_Find..."
 msgstr "_Gjeni…"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:343
 msgid "Search terminal contents"
 msgstr "Kërkoni në lëndë terminali"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:344
 msgid "Find Ne_xt"
 msgstr ""
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:345
 msgid "Find Pre_vious"
 msgstr ""
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:346
 msgid "Sa_ve Contents..."
 msgstr ""
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:347 ../terminal/terminal-window.c:2226
 msgid "_Reset"
 msgstr "_Ricaktoni"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:348
 msgid "_Clear Scrollback and Reset"
 msgstr ""
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:349
 msgid "T_abs"
 msgstr "_Skeda"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "_Previous Tab"
 msgstr "Skeda e _Mëparshme"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:350
 msgid "Switch to previous tab"
 msgstr "Kalo te skeda e mëparshme"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "_Next Tab"
 msgstr "Skeda _Pasuese"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:351
 msgid "Switch to next tab"
 msgstr "Kalo te skeda pasuese"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:352
 msgid "Move Tab _Left"
 msgstr "Kaloje Skedën _Majtas"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:353
 msgid "Move Tab _Right"
 msgstr "Kaloje Skedën _Djathtas"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:354
 msgid "_Help"
 msgstr "_Ndihmë"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "_Contents"
 msgstr "_Përmbajtje"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:355
 msgid "Display help contents"
 msgstr "Shfaq përmbajtje ndihme"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:356
 msgid "_About"
 msgstr "_Rreth"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:357
 msgid "_Zoom"
 msgstr ""
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Show _Menubar"
 msgstr "Shfaq Shtyllë _Menush"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the menubar"
 msgstr "Shfaq/fshih shtyllën e menusë"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "Show _Toolbar"
 msgstr "Shfaq _Panelin"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the toolbar"
 msgstr "Shfaq/fshih panelin"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "Show Window _Borders"
 msgstr "Shfaq _Anë Dritaresh"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:364
 msgid "Show/hide the window decorations"
 msgstr "Shfaq/fshih zbukurime dritaresh"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "_Fullscreen"
 msgstr "_Tërë ekrani"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:365
 msgid "Toggle fullscreen mode"
 msgstr "Këmbe mënyrën ekran i plotë"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "_Read-Only"
 msgstr ""
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:366
 msgid "Toggle read-only mode"
 msgstr ""
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Scroll on _Output"
 msgstr ""
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:367
 msgid "Toggle scroll on output"
 msgstr ""
 
 #. create encoding action
-#: ../terminal/terminal-window.c:539
+#: ../terminal/terminal-window.c:538
 msgid "Set _Encoding"
 msgstr ""
 
-#: ../terminal/terminal-window.c:782
+#: ../terminal/terminal-window.c:780
 msgid "Warning"
 msgstr "Kujdes"
 
-#: ../terminal/terminal-window.c:785 ../terminal/terminal-window.c:2280
+#: ../terminal/terminal-window.c:783 ../terminal/terminal-window.c:2360
 msgid "_Cancel"
 msgstr "_Anuloje"
 
 #. and process running
-#: ../terminal/terminal-window.c:795
+#: ../terminal/terminal-window.c:793
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr ""
 
 #. and no process running
-#: ../terminal/terminal-window.c:801
+#: ../terminal/terminal-window.c:799
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr ""
 
-#: ../terminal/terminal-window.c:805
+#: ../terminal/terminal-window.c:803
 msgid "Close all tabs?"
 msgstr "Të mbyll tërë skedat?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:812
+#: ../terminal/terminal-window.c:810
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr ""
 
-#: ../terminal/terminal-window.c:814
+#: ../terminal/terminal-window.c:812
 msgid "Close tab?"
 msgstr "Të mbyllet skeda?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:819
+#: ../terminal/terminal-window.c:817
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr ""
 
-#: ../terminal/terminal-window.c:821
+#: ../terminal/terminal-window.c:819
 msgid "Close window?"
 msgstr "Të mbyllet dritarja?"
 
-#: ../terminal/terminal-window.c:863
-msgid "Do _not ask me again"
-msgstr "Mos _më pyet sërish"
+#: ../terminal/terminal-window.c:1822
+msgid "Copy _Input:"
+msgstr ""
 
-#: ../terminal/terminal-window.c:2124
+#: ../terminal/terminal-window.c:1826
+msgid "Enter the text to be copied to all tabs"
+msgstr ""
+
+#: ../terminal/terminal-window.c:1834
+msgid "Copy input"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2178
 msgid "_Title:"
 msgstr "_Titull:"
 
-#: ../terminal/terminal-window.c:2137
+#: ../terminal/terminal-window.c:2182
 msgid "Enter the title for the current terminal tab"
 msgstr "Jepni titullin për skedën e çastit të terminalit"
 
-#: ../terminal/terminal-window.c:2145
+#: ../terminal/terminal-window.c:2187
+msgid "Reset"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2197
 msgid "Help"
 msgstr "Ndihmë"
 
-#: ../terminal/terminal-window.c:2151
+#: ../terminal/terminal-window.c:2203
 msgid "Close"
 msgstr "Mbylle"
 
-#: ../terminal/terminal-window.c:2197
+#: ../terminal/terminal-window.c:2225
+msgid "Choose title color"
+msgstr ""
+
+#: ../terminal/terminal-window.c:2277
 msgid "Failed to create the regular expression"
 msgstr "Dështoi në krijim shprehjeje të rregullt"
 
-#: ../terminal/terminal-window.c:2277
+#: ../terminal/terminal-window.c:2357
 msgid "Save contents..."
 msgstr "Ruani lëndë…"
 
-#: ../terminal/terminal-window.c:2281
+#: ../terminal/terminal-window.c:2361
 msgid "_Save"
 msgstr "_Ruaje"
 
-#: ../terminal/terminal-window.c:2318
+#: ../terminal/terminal-window.c:2398
 msgid "Failed to save terminal contents"
 msgstr ""
 
@@ -1035,7 +1076,7 @@ msgstr "Përzgjidhni këtë mundësi për ta detyruar Terminalin të xhirojë sh
 
 #: ../terminal/terminal-preferences.glade.h:35
 msgid "_Update utmp/wtmp records when command is launched"
-msgstr ""
+msgstr "_Përditëso regjistrime utmp/wtmp kur niset urdhri"
 
 #: ../terminal/terminal-preferences.glade.h:36
 msgid ""
@@ -1231,16 +1272,16 @@ msgid "Drop-do_wn"
 msgstr "_Hapmbyll"
 
 #: ../terminal/terminal-preferences.glade.h:81
-msgid "Choose Terminal Font"
-msgstr "Zgjidhni Shkronja Terminali"
-
-#: ../terminal/terminal-preferences.glade.h:82
 msgid "Use system _font"
 msgstr "Përdorur shkronja sistemi"
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Enable this option to use system-wide monospace font."
 msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:83
+msgid "Choose Terminal Font"
+msgstr "Zgjidhni Shkronja Terminali"
 
 #: ../terminal/terminal-preferences.glade.h:84
 msgid "Allow bold te_xt"
@@ -1371,49 +1412,49 @@ msgid "_Appearance"
 msgstr "_Dukje"
 
 #: ../terminal/terminal-preferences.glade.h:114
-msgid "_Vary the background color for each tab"
-msgstr ""
-
-#: ../terminal/terminal-preferences.glade.h:115
-msgid ""
-"The random color is based on the selected background color, keeping the same"
-" brightness. "
-msgstr ""
-
-#: ../terminal/terminal-preferences.glade.h:116
-msgid "Tab activit_y color:"
-msgstr "Ngjyrë veprimtarie skede:"
-
-#: ../terminal/terminal-preferences.glade.h:117
-msgid "Choose tab activity color"
-msgstr "Zgjidhni ngjyrë veprimtarie skede"
-
-#: ../terminal/terminal-preferences.glade.h:118
-msgid "Color Selector"
-msgstr "Përzgjedhës Ngjyrash"
-
-#: ../terminal/terminal-preferences.glade.h:119
-msgid "Open a dialog to specify the color"
-msgstr "Hap dialog për caktimin e ngjyrës"
-
-#: ../terminal/terminal-preferences.glade.h:120
 msgid "_Text color:"
 msgstr "Ngjyrë _teksti:"
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Choose text color"
 msgstr "Zgjidhni ngjyrë teksti"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:116
+msgid "Color Selector"
+msgstr "Përzgjedhës Ngjyrash"
+
+#: ../terminal/terminal-preferences.glade.h:117
+msgid "Open a dialog to specify the color"
+msgstr "Hap dialog për caktimin e ngjyrës"
+
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "_Background color:"
 msgstr "Ngjyrë _sfondi:"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Choose background color"
 msgstr "Zgjidhni ngjyrë sfondi"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Note: Ctrl+click for color editor."
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:121
+msgid "Tab activit_y color:"
+msgstr "Ngjyrë veprimtarie skede:"
+
+#: ../terminal/terminal-preferences.glade.h:122
+msgid "Choose tab activity color"
+msgstr "Zgjidhni ngjyrë veprimtarie skede"
+
+#: ../terminal/terminal-preferences.glade.h:123
+msgid "_Vary the background color for each tab"
+msgstr ""
+
+#: ../terminal/terminal-preferences.glade.h:124
+msgid ""
+"The random color is based on the selected background color, keeping the same"
+" brightness. "
 msgstr ""
 
 #: ../terminal/terminal-preferences.glade.h:125
@@ -1693,3 +1734,7 @@ msgstr ""
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Emulues Terminali"
+
+#: ../xfce4-terminal-settings.desktop.in.h:2
+msgid "Configure Xfce Terminal"
+msgstr ""
