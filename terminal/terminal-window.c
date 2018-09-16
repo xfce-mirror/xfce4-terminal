@@ -1411,10 +1411,10 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
                                              guint             time,
                                              TerminalWindow   *window)
 {
-  GtkWidget  *notebook;
-  GtkWidget **screen;
-  gint        i, n_pages;
-  gboolean    succeed = FALSE;
+  GtkWidget *notebook;
+  GtkWidget *screen;
+  gint       i, n_pages;
+  gboolean   succeed = FALSE;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (widget));
@@ -1426,14 +1426,14 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
       notebook = gtk_drag_get_source_widget (context);
       terminal_return_if_fail (GTK_IS_NOTEBOOK (notebook));
 
-      /* get the dragged screen */
-      screen = (GtkWidget **) gtk_selection_data_get_data (selection_data);
-      if (!TERMINAL_IS_SCREEN (*screen))
+      /* get the dragged screen: selection_data's data is a (GtkWidget **) screen */
+      memcpy (&screen, gtk_selection_data_get_data (selection_data), sizeof (screen));
+      if (!TERMINAL_IS_SCREEN (screen))
         goto leave;
 
       /* leave if we dropped in the same screen and there is only one
        * page in the notebook (window will close before we insert) */
-      if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) < 2 && *screen == widget)
+      if (gtk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) < 2 && screen == widget)
         goto leave;
 
       /* figure out where to insert the tab in the notebook */
@@ -1455,25 +1455,25 @@ terminal_window_notebook_drag_data_received (GtkWidget        *widget,
         {
           /* if we're in the same notebook, don't risk anything and do a
            * simple reorder */
-          gtk_notebook_reorder_child (GTK_NOTEBOOK (notebook), *screen, i);
+          gtk_notebook_reorder_child (GTK_NOTEBOOK (notebook), screen, i);
         }
       else
         {
           /* take a reference */
-          g_object_ref (G_OBJECT (*screen));
+          g_object_ref (G_OBJECT (screen));
           g_object_ref (G_OBJECT (window));
 
           /* remove the document from the source notebook */
-          gtk_notebook_detach_tab (GTK_NOTEBOOK (notebook), *screen);
+          gtk_notebook_detach_tab (GTK_NOTEBOOK (notebook), screen);
 
           /* add the screen to the new window */
-          terminal_window_add (window, TERMINAL_SCREEN (*screen));
+          terminal_window_add (window, TERMINAL_SCREEN (screen));
 
           /* move the child to the correct position */
-          gtk_notebook_reorder_child (GTK_NOTEBOOK (window->priv->notebook), *screen, i);
+          gtk_notebook_reorder_child (GTK_NOTEBOOK (window->priv->notebook), screen, i);
 
           /* release reference */
-          g_object_unref (G_OBJECT (*screen));
+          g_object_unref (G_OBJECT (screen));
           g_object_unref (G_OBJECT (window));
         }
 
