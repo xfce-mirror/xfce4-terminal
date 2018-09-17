@@ -31,9 +31,6 @@
 #ifdef HAVE_STRING_H
 #include <string.h>
 #endif
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
 
 #include <terminal/terminal-enum-types.h>
 #include <terminal/terminal-preferences.h>
@@ -1674,14 +1671,19 @@ terminal_preferences_monitor_connect (TerminalPreferences *preferences,
   GError    *error = NULL;
   GFileInfo *info;
   GFile     *new_file;
-  gchar      buf[PATH_MAX] = {0};
-
-  /* filename could be a symlink: read the actual path to rc file then */
-  if (readlink (filename, buf, sizeof (buf)-1) != -1)
-    filename = buf;
 
   /* get new file location */
   new_file = g_file_new_for_path (filename);
+
+  /* filename could be a symlink: read the actual path to rc file then */
+  info = g_file_query_info (new_file, G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK","G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET,
+                            G_FILE_QUERY_INFO_NONE, NULL, NULL);
+  if (g_file_info_get_is_symlink (info))
+    {
+      g_object_unref (new_file);
+      new_file = g_file_new_for_path (g_file_info_get_symlink_target (info));
+      g_object_unref (info);
+    }
 
   /* check if we need to start or update file monitoring */
   if (preferences->file == NULL
