@@ -2581,6 +2581,10 @@ terminal_window_do_close_tab (TerminalScreen *screen,
       gtk_notebook_set_current_page (notebook, page_num);
     }
 
+  /* clean last_active if we've just closed it */
+  if (screen == window->priv->last_active)
+    window->priv->last_active = NULL;
+
   gtk_widget_destroy (GTK_WIDGET (screen));
 }
 
