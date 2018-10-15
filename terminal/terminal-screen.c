@@ -1740,8 +1740,19 @@ terminal_screen_spawn_async_cb (VteTerminal *terminal,
   screen->pid = pid;
 
   if (error)
-    xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
-                            error, _("Failed to execute child"));
+    {
+      xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
+                              error, _("Failed to execute child"));
+    }
+#ifdef HAVE_LIBUTEMPTER
+  else
+    {
+      gboolean update_records;
+      g_object_get (G_OBJECT (screen->preferences), "command-update-records", &update_records, NULL);
+      if (update_records)
+        utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
+    }
+#endif // HAVE_LIBUTEMPTER
 }
 #endif
 
@@ -1803,9 +1814,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
   guint         i;
   VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
   GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
-#ifdef HAVE_LIBUTEMPTER
-  gboolean      update_records;
-#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
@@ -1858,12 +1866,15 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                   error, _("Failed to execute child"));
           g_error_free (error);
         }
-#endif
-
 #ifdef HAVE_LIBUTEMPTER
-      g_object_get (G_OBJECT (screen->preferences), "command-update-records", &update_records, NULL);
-      if (update_records)
-        utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
+      else
+        {
+          gboolean update_records;
+          g_object_get (G_OBJECT (screen->preferences), "command-update-records", &update_records, NULL);
+          if (update_records)
+            utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
+        }
+#endif // HAVE_LIBUTEMPTER
 #endif
 
       g_free (argv2);
