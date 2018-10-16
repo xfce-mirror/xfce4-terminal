@@ -668,19 +668,26 @@ terminal_window_state_event (GtkWidget           *widget,
                              GdkEventWindowState *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
-  gboolean        fullscreen;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
 
-  /* update the fullscreen action if the fullscreen state changed by the wm */
-  if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0
+  if (((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0
+       || (event->changed_mask & GDK_WINDOW_STATE_MAXIMIZED) != 0)
       && gtk_widget_get_visible (widget))
     {
-      fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
+      gboolean fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
+      gboolean maximized = (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
+
+      /* update the fullscreen action if the fullscreen state changed by the wm */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)) != fullscreen)
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), fullscreen);
 G_GNUC_END_IGNORE_DEPRECATIONS
+
+      /* restore the window size after turning fullscreen or maximized mode off
+         see https://bugzilla.xfce.org/show_bug.cgi?id=14765 */
+      if (!fullscreen && !maximized)
+        terminal_window_size_pop (window);
     }
 
   if (GTK_WIDGET_CLASS (terminal_window_parent_class)->window_state_event != NULL)
