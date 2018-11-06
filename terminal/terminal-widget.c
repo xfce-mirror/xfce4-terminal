@@ -516,6 +516,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
             {
               vte_terminal_feed_child (VTE_TERMINAL (widget), str->str, str->len);
             }
+          vte_terminal_feed_child (VTE_TERMINAL (widget), " ", 1);
           g_string_free (str, TRUE);
         }
       break;
@@ -551,6 +552,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
 
           text = g_strjoinv (" ", uris);
           vte_terminal_feed_child (VTE_TERMINAL (widget), text, strlen (text));
+          vte_terminal_feed_child (VTE_TERMINAL (widget), " ", 1);
           g_strfreev (uris);
           g_free (text);
         }
