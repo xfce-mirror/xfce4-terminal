@@ -2048,11 +2048,7 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
   hints.min_height = hints.base_height + hints.height_inc * 2;
 
   gtk_window_set_geometry_hints (window,
-#if GTK_CHECK_VERSION (3, 19, 5)
-                                 NULL,
-#else
                                  screen->terminal,
-#endif
                                  &hints,
                                  GDK_HINT_RESIZE_INC
                                  | GDK_HINT_MIN_SIZE
