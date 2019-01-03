@@ -1140,7 +1140,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
   /* the meaning of NULL for bold color changed in vte 0.52: see bug #15019 */
   vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? NULL : &bold);
 #else
-  /* avoding computed bold color for older vte versions */
+  /* avoid computed bold color for older vte versions */
   if (!bold_use_default || has_fg)
     vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? &fg : &bold);
 #endif
