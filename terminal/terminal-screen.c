@@ -1136,8 +1136,14 @@ terminal_screen_update_colors (TerminalScreen *screen)
   /* bold color */
   if (!bold_use_default)
     bold_use_default = !terminal_preferences_get_color (screen->preferences, "color-bold", &bold);
+#if VTE_CHECK_VERSION (0, 52, 0)
+  /* the meaning of NULL for bold color changed in vte 0.52: see bug #15019 */
+  vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? NULL : &bold);
+#else
+  /* avoding computed bold color for older vte versions */
   if (!bold_use_default || has_fg)
     vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? &fg : &bold);
+#endif
 
 #if VTE_CHECK_VERSION (0, 51, 3)
   /* "bold-is-bright" supported since vte 0.51.3 */
