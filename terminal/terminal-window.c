@@ -1787,7 +1787,7 @@ copy_input_popover_close (GtkWidget      *popover,
   gtk_widget_destroy (popover);
 
   /* focus the terminal */
-  if (G_LIKELY (window->priv->active != NULL && TERMINAL_IS_SCREEN (window->priv->active)))
+  if (TERMINAL_IS_SCREEN (window->priv->active))
     terminal_screen_focus (window->priv->active);
 }
 
@@ -2123,7 +2123,7 @@ title_popover_close (GtkWidget      *popover,
   window->priv->title_popover = NULL;
 
   /* focus the terminal: bug #13754 */
-  if (G_LIKELY (window->priv->active != NULL && TERMINAL_IS_SCREEN (window->priv->active)))
+  if (TERMINAL_IS_SCREEN (window->priv->active))
     terminal_screen_focus (window->priv->active);
 }
 

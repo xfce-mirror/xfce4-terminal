@@ -293,7 +293,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
       /* prepend a separator to the menu if it does not already contain one */
       children = gtk_container_get_children (GTK_CONTAINER (menu));
       item_separator = g_list_nth_data (children, 0);
-      if (G_LIKELY (item_separator != NULL && !GTK_IS_SEPARATOR_MENU_ITEM (item_separator)))
+      if (!GTK_IS_SEPARATOR_MENU_ITEM (item_separator))
         {
           item_separator = gtk_separator_menu_item_new ();
           gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_separator);

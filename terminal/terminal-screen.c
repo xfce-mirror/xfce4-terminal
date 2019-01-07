@@ -1341,7 +1341,7 @@ relaunch_bar_response (GtkInfoBar     *info_bar,
       GList           *children = gtk_container_get_children (GTK_CONTAINER (content_area));
       GtkToggleButton *checkbox = g_list_nth_data (children, 1);
 
-      if (G_LIKELY (checkbox != NULL) && GTK_IS_TOGGLE_BUTTON (checkbox) && gtk_toggle_button_get_active (checkbox))
+      if (GTK_IS_TOGGLE_BUTTON (checkbox) && gtk_toggle_button_get_active (checkbox))
         g_object_set (G_OBJECT (screen->preferences), "misc-show-relaunch-dialog", FALSE, NULL);
     }
 
