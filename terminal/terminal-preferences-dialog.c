@@ -91,7 +91,7 @@ struct _TerminalPreferencesDialog
 
   gulong               bg_image_signal_id;
   gulong               palette_signal_id;
-  gulong               geometry_sigal_id;
+  gulong               geometry_signal_id;
 };
 
 enum
@@ -426,7 +426,7 @@ error:
 
 #ifdef GDK_WINDOWING_X11
   terminal_preferences_dialog_geometry_changed (dialog);
-  dialog->geometry_sigal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences),
+  dialog->geometry_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences),
       "notify::misc-default-geometry",
       G_CALLBACK (terminal_preferences_dialog_geometry_changed), dialog);
 
@@ -499,8 +499,8 @@ terminal_preferences_dialog_finalize (GObject *object)
     g_signal_handler_disconnect (dialog->preferences, dialog->bg_image_signal_id);
   if (G_LIKELY (dialog->palette_signal_id != 0))
     g_signal_handler_disconnect (dialog->preferences, dialog->palette_signal_id);
-  if (G_LIKELY (dialog->geometry_sigal_id != 0))
-    g_signal_handler_disconnect (dialog->preferences, dialog->geometry_sigal_id);
+  if (G_LIKELY (dialog->geometry_signal_id != 0))
+    g_signal_handler_disconnect (dialog->preferences, dialog->geometry_signal_id);
 
   /* release the preferences */
   g_object_unref (G_OBJECT (dialog->preferences));
@@ -661,9 +661,9 @@ terminal_preferences_dialog_geometry (TerminalPreferencesDialog *dialog,
     geo = g_strdup_printf ("%dx%d", w, h);
 
   /* save */
-  g_signal_handler_block (G_OBJECT (dialog->preferences), dialog->geometry_sigal_id);
+  g_signal_handler_block (G_OBJECT (dialog->preferences), dialog->geometry_signal_id);
   g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry", geo, NULL);
-  g_signal_handler_unblock (G_OBJECT (dialog->preferences), dialog->geometry_sigal_id);
+  g_signal_handler_unblock (G_OBJECT (dialog->preferences), dialog->geometry_signal_id);
   g_free (geo);
 }
 
