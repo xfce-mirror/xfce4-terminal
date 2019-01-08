@@ -385,7 +385,7 @@ terminal_app_create_window (TerminalApp       *app,
   if (role == NULL)
     {
       /* create a new window role */
-      new_role = g_strdup_printf ("%s-%u-%d", PACKAGE_NAME, (guint) time (NULL), g_random_int ());
+      new_role = g_strdup_printf ("%s-%u-%u", PACKAGE_NAME, (guint) time (NULL), g_random_int ());
       role = new_role;
     }
 

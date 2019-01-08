@@ -656,9 +656,9 @@ terminal_preferences_dialog_geometry (TerminalPreferencesDialog *dialog,
 
   /* if there is an x or y value, preserve this */
   if ((mask & XValue) != 0 || (mask & YValue) != 0)
-    geo = g_strdup_printf ("%dx%d%+d%+d", w, h, x, y);
+    geo = g_strdup_printf ("%ux%u%+d%+d", w, h, x, y);
   else
-    geo = g_strdup_printf ("%dx%d", w, h);
+    geo = g_strdup_printf ("%ux%u", w, h);
 
   /* save */
   g_signal_handler_block (G_OBJECT (dialog->preferences), dialog->geometry_signal_id);
