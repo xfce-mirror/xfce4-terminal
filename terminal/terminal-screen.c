@@ -1817,7 +1817,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
   gchar       **argv;
   gchar       **env;
   gchar       **argv2;
-  guint         i;
+  guint         i, argc;
   VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
   GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
 
@@ -1839,7 +1839,8 @@ terminal_screen_launch_child (TerminalScreen *screen)
     {
       env = terminal_screen_get_child_environment (screen);
 
-      argv2 = g_new0 (gchar *, g_strv_length (argv) + 2);
+      argc = argv != NULL ? g_strv_length (argv) : 0;
+      argv2 = g_new0 (gchar *, argc + 2);
       argv2[0] = command;
 
       if (argv != NULL)
