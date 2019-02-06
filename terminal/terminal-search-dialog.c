@@ -137,6 +137,7 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
       G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
 
   dialog->wrap_around = gtk_check_button_new_with_mnemonic (_("_Wrap around"));
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->wrap_around), TRUE);
   gtk_box_pack_start (GTK_BOX (vbox), dialog->wrap_around, FALSE, FALSE, 0);
   g_signal_connect_swapped (G_OBJECT (dialog->wrap_around), "toggled",
       G_CALLBACK (terminal_search_dialog_clear_gregex), dialog);
