@@ -2249,9 +2249,6 @@ terminal_window_action_search_response (GtkWidget      *dialog,
                                         gint            response_id,
                                         TerminalWindow *window)
 {
-  GRegex   *regex;
-  GError   *error = NULL;
-  gboolean  wrap_around;
   gboolean  can_search;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -2259,28 +2256,10 @@ terminal_window_action_search_response (GtkWidget      *dialog,
   terminal_return_if_fail (TERMINAL_IS_SCREEN (window->priv->active));
   terminal_return_if_fail (window->priv->search_dialog == dialog);
 
-  if (response_id == TERMINAL_RESPONSE_SEARCH_NEXT
-      || response_id == TERMINAL_RESPONSE_SEARCH_PREV)
-    {
-      regex = terminal_search_dialog_get_regex (TERMINAL_SEARCH_DIALOG (dialog), &error);
-      if (G_LIKELY (error == NULL))
-        {
-          wrap_around = terminal_search_dialog_get_wrap_around (TERMINAL_SEARCH_DIALOG (dialog));
-          terminal_screen_search_set_gregex (window->priv->active, regex, wrap_around);
-          if (regex != NULL)
-            g_regex_unref (regex);
-
-          if (response_id == TERMINAL_RESPONSE_SEARCH_NEXT)
-            terminal_screen_search_find_next (window->priv->active);
-          else
-            terminal_screen_search_find_previous (window->priv->active);
-        }
-      else
-        {
-          xfce_dialog_show_error (GTK_WINDOW (dialog), error, _("Failed to create the regular expression"));
-          g_error_free (error);
-        }
-    }
+  if (response_id == TERMINAL_RESPONSE_SEARCH_NEXT)
+    terminal_window_action_search_next (NULL, window);
+  else if (response_id == TERMINAL_RESPONSE_SEARCH_PREV)
+    terminal_window_action_search_prev (NULL, window);
   else
     {
       /* need for hiding on focus */
@@ -2324,11 +2303,38 @@ terminal_window_action_search (GtkAction      *action,
 
 
 
+static gboolean
+prepare_regex (TerminalWindow *window)
+{
+  GRegex   *regex;
+  GError   *error = NULL;
+  gboolean  wrap_around;
+
+  regex = terminal_search_dialog_get_regex (TERMINAL_SEARCH_DIALOG (window->priv->search_dialog), &error);
+  if (G_LIKELY (error == NULL))
+    {
+      wrap_around = terminal_search_dialog_get_wrap_around (TERMINAL_SEARCH_DIALOG (window->priv->search_dialog));
+      terminal_screen_search_set_gregex (window->priv->active, regex, wrap_around);
+      if (regex != NULL)
+        g_regex_unref (regex);
+
+      return TRUE;
+    }
+
+  xfce_dialog_show_error (GTK_WINDOW (window->priv->search_dialog), error,
+                          _("Failed to create the regular expression"));
+  g_error_free (error);
+
+  return FALSE;
+}
+
+
+
 static void
 terminal_window_action_search_next (GtkAction      *action,
                                     TerminalWindow *window)
 {
-  if (G_LIKELY (window->priv->active != NULL))
+  if (prepare_regex (window))
     terminal_screen_search_find_next (window->priv->active);
 }
 
@@ -2338,7 +2344,7 @@ static void
 terminal_window_action_search_prev (GtkAction      *action,
                                     TerminalWindow *window)
 {
-  if (G_LIKELY (window->priv->active != NULL))
+  if (prepare_regex (window))
     terminal_screen_search_find_previous (window->priv->active);
 }
 
