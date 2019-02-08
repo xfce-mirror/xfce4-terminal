@@ -82,13 +82,16 @@ terminal_search_dialog_class_init (TerminalSearchDialogClass *klass)
 static void
 terminal_search_dialog_init (TerminalSearchDialog *dialog)
 {
-  GtkWidget *close_button;
-  GtkWidget *hbox;
-  GtkWidget *vbox;
-  GtkWidget *label;
+  GtkWidget     *close_button;
+  GtkWidget     *hbox;
+  GtkWidget     *vbox;
+  GtkWidget     *label;
+  GtkAccelGroup *group = gtk_accel_group_new ();
+  GtkAccelKey    key_prev = {0}, key_next = {0};
 
   gtk_window_set_title (GTK_WINDOW (dialog), _("Find"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
+  gtk_window_add_accel_group (GTK_WINDOW (dialog), group);
 
   close_button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), close_button, GTK_RESPONSE_CLOSE);
@@ -100,6 +103,13 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
 
   dialog->button_next = xfce_gtk_button_new_mixed ("go-next", _("_Next"));
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
+
+  gtk_accel_map_lookup_entry ("<Actions>/terminal-window/search-prev", &key_prev);
+  if (key_prev.accel_key != 0)
+    gtk_widget_add_accelerator (dialog->button_prev, "activate", group, key_prev.accel_key, key_prev.accel_mods, key_prev.accel_flags);
+  gtk_accel_map_lookup_entry ("<Actions>/terminal-window/search-next", &key_next);
+  if (key_next.accel_key != 0)
+    gtk_widget_add_accelerator (dialog->button_next, "activate", group, key_next.accel_key, key_next.accel_mods, key_next.accel_flags);
 
   vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 6);
   gtk_box_pack_start (GTK_BOX (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), vbox, TRUE, TRUE, 0);
