@@ -182,7 +182,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "binding-backspace", "binding-delete",
                                        "binding-ambiguous-width", "background-mode",
                                        "background-image-style", "color-background-vary",
-                                       "color-bold-is-bright",
+                                       "color-bold-is-bright", "color-use-theme",
                                        "dropdown-keep-open-default", "dropdown-keep-above",
                                        "dropdown-toggle-focus", "dropdown-status-icon",
                                        "dropdown-move-to-active", "dropdown-always-show-tabs",
@@ -381,6 +381,19 @@ error:
     gtk_scale_add_mark (GTK_SCALE (object), i, GTK_POS_BOTTOM, NULL);
 
   /* inverted custom colors and set sensitivity */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-use-theme");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-foreground");
+  terminal_return_if_fail (G_IS_OBJECT (object2));
+  g_object_bind_property (object, "active",
+                          object2, "sensitive",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
+  object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "color-background");
+  terminal_return_if_fail (G_IS_OBJECT (object2));
+  g_object_bind_property (object, "active",
+                          object2, "sensitive",
+                          G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
+
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "color-cursor-custom");
   terminal_return_if_fail (G_IS_OBJECT (object));
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-cursor-use-default",

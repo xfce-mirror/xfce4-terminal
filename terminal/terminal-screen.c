@@ -102,6 +102,7 @@ static void       terminal_screen_set_property                  (GObject        
                                                                  GParamSpec            *pspec);
 static void       terminal_screen_realize                       (GtkWidget             *widget);
 static void       terminal_screen_unrealize                     (GtkWidget             *widget);
+static void       terminal_screen_style_updated                 (GtkWidget             *widget);
 static gboolean   terminal_screen_draw                          (GtkWidget             *widget,
                                                                  cairo_t               *cr,
                                                                  gpointer               user_data);
@@ -227,6 +228,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->realize = terminal_screen_realize;
   gtkwidget_class->unrealize = terminal_screen_unrealize;
+  gtkwidget_class->style_updated = terminal_screen_style_updated;
 
   /**
    * TerminalScreen:custom-title:
@@ -509,6 +511,16 @@ terminal_screen_unrealize (GtkWidget *widget)
   g_signal_handlers_disconnect_by_func (G_OBJECT (screen), terminal_screen_update_background, widget);
 
   (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->unrealize) (widget);
+}
+
+
+
+static void
+terminal_screen_style_updated (GtkWidget *widget)
+{
+  (*GTK_WIDGET_CLASS (terminal_screen_parent_class)->style_updated) (widget);
+
+  terminal_screen_update_colors (TERMINAL_SCREEN (widget));
 }
 
 
@@ -1025,6 +1037,9 @@ terminal_screen_update_colors (TerminalScreen *screen)
   gdouble    hsv[N_HSV];
   gdouble    sat_min, sat_max;
   gboolean   bold_is_bright;
+  gboolean   use_theme;
+
+  GtkStyleContext *context = gtk_widget_get_style_context (gtk_widget_get_toplevel (GTK_WIDGET (screen)));
 
   g_object_get (screen->preferences,
                 "color-palette", &palette_str,
@@ -1033,6 +1048,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
                 "color-bold-use-default", &bold_use_default,
                 "color-background-vary", &vary_bg,
                 "color-bold-is-bright", &bold_is_bright,
+                "color-use-theme", &use_theme,
                 NULL);
 
   if (G_LIKELY (palette_str != NULL))
@@ -1053,12 +1069,26 @@ terminal_screen_update_colors (TerminalScreen *screen)
     }
 
   if (G_LIKELY (screen->custom_bg_color == NULL))
-    has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
+    {
+      has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
+      if (use_theme || !has_bg)
+        {
+          gtk_style_context_get_background_color (context, GTK_STATE_ACTIVE, &bg);
+          has_bg = TRUE;
+        }
+    }
   else
     has_bg = gdk_rgba_parse (&bg, screen->custom_bg_color);
 
   if (G_LIKELY (screen->custom_fg_color == NULL))
-    has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
+    {
+      has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
+      if (use_theme || !has_fg)
+        {
+          gtk_style_context_get_color (context, GTK_STATE_ACTIVE, &fg);
+          has_fg = TRUE;
+        }
+    }
   else
     has_fg = gdk_rgba_parse (&fg, screen->custom_fg_color);
 
