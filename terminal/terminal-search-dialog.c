@@ -166,7 +166,7 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   opacity_label = gtk_label_new_with_mnemonic (_("_Opacity:"));
   gtk_box_pack_start (GTK_BOX (opacity_box), opacity_label, FALSE, FALSE, 0);
 
-  opacity_scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0.0, 100.0, 1.0);
+  opacity_scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10.0, 100.0, 1.0);
   gtk_scale_set_value_pos (GTK_SCALE (opacity_scale), GTK_POS_RIGHT);
   gtk_box_pack_start (GTK_BOX (opacity_box), opacity_scale, TRUE, TRUE, 0);
 
