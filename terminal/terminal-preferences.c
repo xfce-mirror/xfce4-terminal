@@ -113,6 +113,7 @@ enum
   PROP_MISC_USE_SHIFT_ARROWS_TO_SCROLL,
   PROP_MISC_SLIM_TABS,
   PROP_MISC_NEW_TAB_ADJACENT,
+  PROP_MISC_SEARCH_DIALOG_OPACITY,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -1057,6 +1058,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscShowRelaunchDialog",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-search-dialog-opacity:
+   **/
+  preferences_props[PROP_MISC_SEARCH_DIALOG_OPACITY] =
+      g_param_spec_uint ("misc-search-dialog-opacity",
+                         NULL,
+                         "MiscSearchDialogOpacity",
+                         0, 100, 100,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:
