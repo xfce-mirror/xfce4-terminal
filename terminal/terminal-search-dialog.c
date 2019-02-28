@@ -356,9 +356,11 @@ terminal_search_dialog_present (TerminalSearchDialog *dialog)
   gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header_bar), TRUE);
   gtk_window_set_titlebar (GTK_WINDOW (dialog), header_bar);
 
+  gtk_widget_show_all (GTK_WIDGET (dialog));
+
+  /* Manjaro's version of GTK doesn't like this placed before show_all() */
   terminal_search_dialog_opacity_changed (dialog);
 
-  gtk_widget_show_all (GTK_WIDGET (dialog));
   gtk_window_present (GTK_WINDOW (dialog));
   gtk_widget_grab_focus (dialog->entry);
 }
