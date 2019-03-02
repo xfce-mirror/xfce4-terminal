@@ -111,6 +111,8 @@ static gboolean     terminal_window_map_event                     (GtkWidget    
                                                                    GdkEventAny         *event);
 static gboolean     terminal_window_focus_in_event                (GtkWidget           *widget,
                                                                    GdkEventFocus       *event);
+static gboolean     terminal_window_key_press_event               (GtkWidget           *widget,
+                                                                   GdkEventKey         *event);
 static gint         terminal_window_confirm_close                 (TerminalScreen      *screen,
                                                                    TerminalWindow      *window);
 static void         terminal_window_size_push                     (TerminalWindow      *window);
@@ -401,6 +403,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
   gtkwidget_class->scroll_event = terminal_window_scroll_event;
   gtkwidget_class->map_event = terminal_window_map_event;
   gtkwidget_class->focus_in_event = terminal_window_focus_in_event;
+  gtkwidget_class->key_press_event = terminal_window_key_press_event;
 
   /**
    * TerminalWindow::new-window
@@ -765,6 +768,36 @@ terminal_window_focus_in_event (GtkWidget     *widget,
   terminal_screen_reset_activity (window->priv->active);
 
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->focus_in_event) (widget, event);
+}
+
+
+
+static gboolean
+terminal_window_key_press_event (GtkWidget   *widget,
+                                 GdkEventKey *event)
+{
+  TerminalWindow *window = TERMINAL_WINDOW (widget);
+  const guint     modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
+  gboolean        use_tab;
+
+  /* whether to use Ctrl+Tab/Ctrl+Shift+Tab as Next/Prev Tab shortcuts, respectively */
+  g_object_get (G_OBJECT (window->priv->preferences), "misc-use-tab-key-to-cycle-tabs", &use_tab, NULL);
+
+  if (G_UNLIKELY (use_tab && (event->keyval == GDK_KEY_Tab || event->keyval == GDK_KEY_ISO_Left_Tab)))
+    {
+      if (modifiers == (GDK_CONTROL_MASK | GDK_SHIFT_MASK))
+        {
+          terminal_window_action_prev_tab (NULL, window);
+          return TRUE;
+        }
+      else if (modifiers == GDK_CONTROL_MASK)
+        {
+          terminal_window_action_next_tab (NULL, window);
+          return TRUE;
+        }
+    }
+
+  return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
 }
 
 

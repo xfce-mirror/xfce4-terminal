@@ -114,6 +114,7 @@ enum
   PROP_MISC_SLIM_TABS,
   PROP_MISC_NEW_TAB_ADJACENT,
   PROP_MISC_SEARCH_DIALOG_OPACITY,
+  PROP_MISC_USE_TAB_KEY_TO_CYCLE_TABS,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -1068,6 +1069,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          "MiscSearchDialogOpacity",
                          0, 100, 100,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-use-tab-key-to-cycle-tabs:
+   **/
+  preferences_props[PROP_MISC_USE_TAB_KEY_TO_CYCLE_TABS] =
+      g_param_spec_boolean ("misc-use-tab-key-to-cycle-tabs",
+                            NULL,
+                            "MiscUseTabKeyToCycleTabs",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:
