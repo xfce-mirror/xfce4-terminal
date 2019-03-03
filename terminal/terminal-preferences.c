@@ -115,6 +115,7 @@ enum
   PROP_MISC_NEW_TAB_ADJACENT,
   PROP_MISC_SEARCH_DIALOG_OPACITY,
   PROP_MISC_USE_TAB_KEY_TO_CYCLE_TABS,
+  PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -1078,6 +1079,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             NULL,
                             "MiscUseTabKeyToCycleTabs",
                             FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-show-unsafe-paste-dialog:
+   **/
+  preferences_props[PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG] =
+      g_param_spec_boolean ("misc-show-unsafe-paste-dialog",
+                            NULL,
+                            "MiscShowUnsafePasteDialog",
+                            TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**

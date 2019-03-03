@@ -160,6 +160,10 @@ static void       terminal_screen_set_custom_command            (TerminalScreen 
                                                                  gchar                **command);
 static void       terminal_screen_set_tab_label_color           (TerminalScreen        *screen,
                                                                  const GdkRGBA         *color);
+static GtkWidget* terminal_screen_unsafe_paste_dialog_new       (TerminalScreen        *screen,
+                                                                 const gchar           *text);
+static void       terminal_screen_paste_unsafe_text             (TerminalScreen        *screen,
+                                                                 const gchar           *text);
 
 
 
@@ -1761,6 +1765,86 @@ terminal_screen_set_tab_label_color (TerminalScreen *screen,
 
 
 
+gboolean
+terminal_screen_is_text_unsafe (const gchar *text)
+{
+  return text != NULL && (strstr (text, "sudo") != NULL || strchr (text, '\n') != NULL);
+}
+
+
+
+static GtkWidget*
+terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
+                                         const gchar    *text)
+{
+  GtkWindow     *parent = GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen)));
+  GtkTextBuffer *buffer = gtk_text_buffer_new (gtk_text_tag_table_new ());
+  GtkWidget     *tv = gtk_text_view_new_with_buffer (buffer);
+  GtkWidget     *sw = gtk_scrolled_window_new (NULL, NULL);
+  GtkWidget     *dialog = xfce_titled_dialog_new_with_buttons (_("Warning: Unsafe Paste"), parent,
+                                                               GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                               _("_Cancel"), GTK_RESPONSE_CANCEL,
+                                                               _("_Paste"), GTK_RESPONSE_YES,
+                                                               NULL);
+
+  xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dialog),
+                                   _("Pasting this text to the terminal may be dangerous as it looks like\n"
+                                     "some commands may be executed, potentially involving root access ('sudo')."));
+
+  gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
+  gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
+  gtk_text_view_set_top_margin (GTK_TEXT_VIEW (tv), 6);
+  gtk_text_view_set_bottom_margin (GTK_TEXT_VIEW (tv), 6);
+  gtk_text_view_set_right_margin (GTK_TEXT_VIEW (tv), 6);
+  gtk_text_view_set_left_margin (GTK_TEXT_VIEW (tv), 6);
+
+  gtk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 400);
+  gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 150);
+
+  gtk_container_add (GTK_CONTAINER (sw), tv);
+  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), sw);
+
+  gtk_text_buffer_set_text (buffer, text, -1);
+
+  gtk_window_set_focus (GTK_WINDOW (dialog), tv);
+
+  return dialog;
+}
+
+
+
+static void
+terminal_screen_paste_unsafe_text (TerminalScreen *screen,
+                                   const gchar    *text)
+{
+  GtkWidget *dialog = terminal_screen_unsafe_paste_dialog_new (screen, text);
+
+  gtk_widget_show_all (dialog);
+
+  if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
+    {
+      GtkWidget     *content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+      GtkWidget     *sw = g_list_first (gtk_container_get_children (GTK_CONTAINER (content_area)))->data;
+      GtkTextView   *tv = GTK_TEXT_VIEW (gtk_bin_get_child (GTK_BIN (sw)));
+      GtkTextBuffer *buffer = gtk_text_view_get_buffer (tv);
+      GtkTextIter    start, end;
+      char          *res_text;
+
+      gtk_text_buffer_get_bounds (buffer, &start, &end);
+      res_text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
+
+      if (res_text != NULL)
+        {
+          vte_terminal_feed_child (VTE_TERMINAL (screen->terminal), res_text, strlen (res_text));
+          g_free (res_text);
+        }
+    }
+
+  gtk_widget_destroy (dialog);
+}
+
+
+
 #if VTE_CHECK_VERSION (0, 48, 0)
 static void
 terminal_screen_spawn_async_cb (VteTerminal *terminal,
@@ -2384,8 +2468,19 @@ terminal_screen_copy_clipboard_html (TerminalScreen *screen)
 void
 terminal_screen_paste_clipboard (TerminalScreen *screen)
 {
+  gboolean  show_dialog;
+  gchar    *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_CLIPBOARD));
+
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
+
+  g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
+
+  if (show_dialog && terminal_screen_is_text_unsafe (text))
+    terminal_screen_paste_unsafe_text (screen, text);
+  else
+    vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
+
+  g_free (text);
 }
 
 
@@ -2402,8 +2497,19 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 void
 terminal_screen_paste_primary (TerminalScreen *screen)
 {
+  gboolean  show_dialog;
+  gchar    *text = gtk_clipboard_wait_for_text (gtk_clipboard_get (GDK_SELECTION_PRIMARY));
+
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
+
+  g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
+
+  if (show_dialog && terminal_screen_is_text_unsafe (text))
+    terminal_screen_paste_unsafe_text (screen, text);
+  else
+    vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
+
+  g_free (text);
 }
 
 
