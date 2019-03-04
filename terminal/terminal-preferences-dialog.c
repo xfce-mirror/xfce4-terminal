@@ -171,7 +171,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "scrolling-unlimited", "misc-cursor-shape",
                                        "misc-cursor-blinks", "font-allow-bold",
                                        "font-use-system", "text-blink-mode",
-                                       "misc-menubar-default",
+                                       "misc-show-unsafe-paste-dialog", "misc-menubar-default",
                                        "misc-toolbar-default", "misc-borders-default",
                                        "misc-tab-close-middle-click", "misc-middle-click-opens-uri",
                                        "misc-mouse-autohide", "misc-rewrap-on-resize",
