@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 00:31+0100\n"
-"PO-Revision-Date: 2019-02-26 01:49+0000\n"
+"POT-Creation-Date: 2019-03-04 00:31+0100\n"
+"PO-Revision-Date: 2019-03-04 00:56+0000\n"
 "Last-Translator: 玉堂白鹤 <yjwork@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -433,91 +433,115 @@ msgstr "图片文件"
 msgid "Load Presets..."
 msgstr "载入预设..."
 
-#: ../terminal/terminal-preferences.c:1153
+#: ../terminal/terminal-preferences.c:1186
 msgid "Terminal"
 msgstr "Terminal 终端"
 
-#: ../terminal/terminal-screen.c:445 ../terminal/terminal-screen.c:829
-#: ../terminal/terminal-screen.c:2202
+#: ../terminal/terminal-screen.c:449 ../terminal/terminal-screen.c:833
+#: ../terminal/terminal-screen.c:2286
 msgid "Untitled"
 msgstr "无标题"
 
-#: ../terminal/terminal-screen.c:730
+#: ../terminal/terminal-screen.c:734
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "未能确定您的登录 shell。"
 
-#: ../terminal/terminal-screen.c:1403
+#: ../terminal/terminal-screen.c:1407
 msgid "_Relaunch"
 msgstr "重新运行(_R)"
 
-#: ../terminal/terminal-screen.c:1409
+#: ../terminal/terminal-screen.c:1413
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子进程返回状态%d并正常退出"
 
-#: ../terminal/terminal-screen.c:1411
+#: ../terminal/terminal-screen.c:1415
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子进程已被信号%d所终止"
 
-#: ../terminal/terminal-screen.c:1413
+#: ../terminal/terminal-screen.c:1417
 msgid "The child process was aborted."
 msgstr "子进程已被终止。"
 
-#: ../terminal/terminal-screen.c:1419 ../terminal/terminal-window.c:890
+#: ../terminal/terminal-screen.c:1423 ../terminal/terminal-window.c:923
 msgid "Do _not ask me again"
 msgstr "不再询问(_N)"
 
-#: ../terminal/terminal-screen.c:1781 ../terminal/terminal-screen.c:1865
-#: ../terminal/terminal-screen.c:1903
+#: ../terminal/terminal-screen.c:1784
+msgid "Warning: Unsafe Paste"
+msgstr "警告：不安全的粘贴"
+
+#: ../terminal/terminal-screen.c:1786 ../terminal/terminal-window.c:845
+#: ../terminal/terminal-window.c:2402
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: ../terminal/terminal-screen.c:1787 ../terminal/terminal-window.c:345
+msgid "_Paste"
+msgstr "粘贴(_P)"
+
+#: ../terminal/terminal-screen.c:1791
+msgid ""
+"Pasting this text to the terminal may be dangerous as it looks like\n"
+"some commands may be executed, potentially involving root access ('sudo')."
+msgstr "将此文本粘贴到终端可能有存在危险，因为它看起来\n像会执行某些命令，可能涉及 root 访问权限 ('sudo')。"
+
+#: ../terminal/terminal-screen.c:1865 ../terminal/terminal-screen.c:1949
+#: ../terminal/terminal-screen.c:1987
 msgid "Failed to execute child"
 msgstr "无法执行子进程"
 
-#: ../terminal/terminal-screen.c:2547
+#: ../terminal/terminal-screen.c:2653
 msgid "Close this tab"
 msgstr "关闭此标签"
 
-#: ../terminal/terminal-screen.c:2600
+#: ../terminal/terminal-screen.c:2706
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "设置编码 %s 失败\n"
 
-#: ../terminal/terminal-search-dialog.c:92
-msgid "Find"
-msgstr "查找"
-
-#: ../terminal/terminal-search-dialog.c:96
+#: ../terminal/terminal-search-dialog.c:104
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: ../terminal/terminal-search-dialog.c:100
+#: ../terminal/terminal-search-dialog.c:108
 msgid "_Previous"
 msgstr "上一个(_P)"
 
-#: ../terminal/terminal-search-dialog.c:104
+#: ../terminal/terminal-search-dialog.c:112
 msgid "_Next"
 msgstr "下一个(_N)"
 
-#: ../terminal/terminal-search-dialog.c:121
+#: ../terminal/terminal-search-dialog.c:129
 msgid "_Search for:"
 msgstr "搜索(_S)："
 
-#: ../terminal/terminal-search-dialog.c:134
+#: ../terminal/terminal-search-dialog.c:142
 msgid "C_ase sensitive"
 msgstr "区分大小写(_A)"
 
-#: ../terminal/terminal-search-dialog.c:139
+#: ../terminal/terminal-search-dialog.c:147
 msgid "Match as _regular expression"
 msgstr "匹配正则表达式(_R)"
 
-#: ../terminal/terminal-search-dialog.c:144
+#: ../terminal/terminal-search-dialog.c:152
 msgid "Match _entire word only"
 msgstr "匹配整个单词(_E)"
 
-#: ../terminal/terminal-search-dialog.c:149
+#: ../terminal/terminal-search-dialog.c:157
 msgid "_Wrap around"
 msgstr "回绕模式（_W）"
+
+#: ../terminal/terminal-search-dialog.c:166
+#: ../terminal/terminal-preferences.glade.h:69
+msgid "_Opacity:"
+msgstr "透明度(_O)："
+
+#: ../terminal/terminal-search-dialog.c:355
+msgid "Find"
+msgstr "查找"
 
 #: ../terminal/terminal-util.c:80 ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
@@ -588,361 +612,353 @@ msgstr "下拉终端"
 msgid "Toggle Drop-down Terminal"
 msgstr "切换下拉终端"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:332
 msgid "_File"
 msgstr "文件(_F)"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:333
 msgid "Open _Tab"
 msgstr "打开标签(_T)"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:333
 msgid "Open a new terminal tab"
 msgstr "打开新的终端标签"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:334
 msgid "Open T_erminal"
 msgstr "打开终端(_E)"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:334
 msgid "Open a new terminal window"
 msgstr "打开新的终端窗口"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:335
 msgid "_Undo Close Tab"
 msgstr "撤销关闭标签(_U)"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:336
 msgid "_Detach Tab"
 msgstr "分离标签(_D)"
 
-#: ../terminal/terminal-window.c:335 ../terminal/terminal-window.c:854
+#: ../terminal/terminal-window.c:337 ../terminal/terminal-window.c:887
 msgid "Close T_ab"
 msgstr "关闭标签(_A)"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:338
 msgid "Close Other Ta_bs"
 msgstr "关闭其他标签(_B)"
 
-#: ../terminal/terminal-window.c:337 ../terminal/terminal-window.c:861
+#: ../terminal/terminal-window.c:339 ../terminal/terminal-window.c:894
 msgid "Close _Window"
 msgstr "关闭窗口(_W)"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:340
 msgid "_Edit"
 msgstr "编辑(_E)"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:341
 msgid "_Copy"
 msgstr "复制(_C)"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:341
 msgid "Copy to clipboard"
 msgstr "复制至剪贴板"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:343
 msgid "Copy as _HTML"
 msgstr "复制为 HTML(_H)"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:343
 msgid "Copy to clipboard as HTML"
 msgstr "以 HTML 形式复制到剪贴板 "
 
-#: ../terminal/terminal-window.c:343
-msgid "_Paste"
-msgstr "粘贴(_P)"
-
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:345
 msgid "Paste from clipboard"
 msgstr "从剪贴板粘贴"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:346
 msgid "Paste _Selection"
 msgstr "粘贴所选内容(_S)"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:347
 msgid "Select _All"
 msgstr "全选(_A)"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:348
 msgid "Copy _Input To All Tabs..."
 msgstr "复制输入到所有标签页(_I)…"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:349
 msgid "Pr_eferences..."
 msgstr "首选项...(_E)"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:349
 msgid "Open the preferences dialog"
 msgstr "打开终端首选项对话框"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:350
 msgid "_View"
 msgstr "视图(_V)"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:351
 msgid "Zoom _In"
 msgstr "放大(_I)"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:351
 msgid "Zoom in with larger font"
 msgstr "放大并增大字号"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:352
 msgid "Zoom _Out"
 msgstr "缩小(_O)"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:352
 msgid "Zoom out with smaller font"
 msgstr "缩小并减小字号"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:353
 msgid "_Normal Size"
 msgstr "正常大小(_N)"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:353
 msgid "Zoom to default size"
 msgstr "缩放到默认大小"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:354
 msgid "_Terminal"
 msgstr "终端(_T)"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:355
 msgid "_Set Title..."
 msgstr "设置标题(_S)..."
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:356
 msgid "Set Title Co_lor..."
 msgstr "设置标题颜色(_L)..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:357
 msgid "_Find..."
 msgstr "查找..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:357
 msgid "Search terminal contents"
 msgstr "搜索终端内容"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:358
 msgid "Find Ne_xt"
 msgstr "查找下一个(_X)"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:359
 msgid "Find Pre_vious"
 msgstr "查找上一个(_V)"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:360
 msgid "Sa_ve Contents..."
 msgstr "保存内容至(_V)..."
 
-#: ../terminal/terminal-window.c:359 ../terminal/terminal-window.c:2229
+#: ../terminal/terminal-window.c:361 ../terminal/terminal-window.c:2262
 msgid "_Reset"
 msgstr "重置(_R)"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:362
 msgid "_Clear Scrollback and Reset"
 msgstr "清除屏幕回滚并重置(_C)"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:363
 msgid "T_abs"
 msgstr "标签(_A)"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:364
 msgid "_Previous Tab"
 msgstr "上一标签(_P)"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:364
 msgid "Switch to previous tab"
 msgstr "切换至上一个标签"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:365
 msgid "_Next Tab"
 msgstr "下一标签(_N)"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:365
 msgid "Switch to next tab"
 msgstr "切换至下一个标签"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:366
 msgid "Move Tab _Left"
 msgstr "左移标签(_L)"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:367
 msgid "Move Tab _Right"
 msgstr "右移标签(_R)"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:368
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:369
 msgid "_Contents"
 msgstr "内容(_C)"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:369
 msgid "Display help contents"
 msgstr "显示帮助内容"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:370
 msgid "_About"
 msgstr "关于(_A)"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:371
 msgid "_Zoom"
 msgstr "缩放(_Z)"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:376
 msgid "Show _Menubar"
 msgstr "显示菜单栏(_M)"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:376
 msgid "Show/hide the menubar"
 msgstr "显示/隐藏菜单栏"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:377
 msgid "Show _Toolbar"
 msgstr "显示工具栏(_T)"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:377
 msgid "Show/hide the toolbar"
 msgstr "显示/隐藏工具栏"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:378
 msgid "Show Window _Borders"
 msgstr "显示窗口边框(_B)"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:378
 msgid "Show/hide the window decorations"
 msgstr "显示/隐藏窗口修饰"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:379
 msgid "_Fullscreen"
 msgstr "全屏(_F)"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:379
 msgid "Toggle fullscreen mode"
 msgstr "切换全屏模式"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:380
 msgid "_Read-Only"
 msgstr "只读(_R)"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:380
 msgid "Toggle read-only mode"
 msgstr "切换只读模式"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:381
 msgid "Scroll on _Output"
 msgstr "输出时滚动(_O)"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:381
 msgid "Toggle scroll on output"
 msgstr "切换输出时滚动"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:552
 msgid "Set _Encoding"
 msgstr "设置编码(_E)"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:842
 msgid "Warning"
 msgstr "警告"
 
-#: ../terminal/terminal-window.c:812 ../terminal/terminal-window.c:2369
-msgid "_Cancel"
-msgstr "取消(_C)"
-
 #. and process running
-#: ../terminal/terminal-window.c:822
+#: ../terminal/terminal-window.c:855
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "仍有一些进程在一些标签页中运行。\n关闭该窗口以将其全部杀死。"
 
 #. and no process running
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:861
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "窗口有 %d 个标签打开。\n关闭此窗口也会关闭其所有的标签页。"
 
-#: ../terminal/terminal-window.c:832
+#: ../terminal/terminal-window.c:865
 msgid "Close all tabs?"
 msgstr "关闭所有标签？"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:839
+#: ../terminal/terminal-window.c:872
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "仍有一个进程运行中。\n关闭该标签来杀死它。"
 
-#: ../terminal/terminal-window.c:841
+#: ../terminal/terminal-window.c:874
 msgid "Close tab?"
 msgstr "关闭标签？"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:846
+#: ../terminal/terminal-window.c:879
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "仍有一个进程运行中。\n关闭该窗口来杀死它"
 
-#: ../terminal/terminal-window.c:848
+#: ../terminal/terminal-window.c:881
 msgid "Close window?"
 msgstr "关闭窗口？"
 
-#: ../terminal/terminal-window.c:1827
+#: ../terminal/terminal-window.c:1860
 msgid "Copy _Input:"
 msgstr "复制输入(_I)："
 
-#: ../terminal/terminal-window.c:1831
+#: ../terminal/terminal-window.c:1864
 msgid "Enter the text to be copied to all tabs"
 msgstr "输入的文本复制到所有标签页"
 
-#: ../terminal/terminal-window.c:1839
+#: ../terminal/terminal-window.c:1872
 msgid "Copy input"
 msgstr "复制输入"
 
-#: ../terminal/terminal-window.c:2181
+#: ../terminal/terminal-window.c:2214
 msgid "_Title:"
 msgstr "标题(_T)："
 
-#: ../terminal/terminal-window.c:2185
+#: ../terminal/terminal-window.c:2218
 msgid "Enter the title for the current terminal tab"
 msgstr "输入当前终端标签的标题"
 
-#: ../terminal/terminal-window.c:2190
+#: ../terminal/terminal-window.c:2223
 msgid "Reset"
 msgstr "重置"
 
-#: ../terminal/terminal-window.c:2200
+#: ../terminal/terminal-window.c:2233
 msgid "Help"
 msgstr "帮助"
 
-#: ../terminal/terminal-window.c:2206
+#: ../terminal/terminal-window.c:2239
 msgid "Close"
 msgstr "关闭"
 
-#: ../terminal/terminal-window.c:2228
+#: ../terminal/terminal-window.c:2261
 msgid "Choose title color"
 msgstr "选择标题颜色"
 
-#: ../terminal/terminal-window.c:2325
+#: ../terminal/terminal-window.c:2358
 msgid "Failed to create the regular expression"
 msgstr "无法创建正则表达式"
 
-#: ../terminal/terminal-window.c:2366
+#: ../terminal/terminal-window.c:2399
 msgid "Save contents..."
 msgstr "保存内容至..."
 
-#: ../terminal/terminal-window.c:2370
+#: ../terminal/terminal-window.c:2403
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../terminal/terminal-window.c:2407
+#: ../terminal/terminal-window.c:2440
 msgid "Failed to save terminal contents"
 msgstr "保存终端内容失败"
 
@@ -1237,10 +1253,6 @@ msgstr "持续时间(_U)"
 #: ../terminal/terminal-preferences.glade.h:68
 msgid "ms"
 msgstr "ms"
-
-#: ../terminal/terminal-preferences.glade.h:69
-msgid "_Opacity:"
-msgstr "透明度(_O)："
 
 #: ../terminal/terminal-preferences.glade.h:70
 msgid ""
