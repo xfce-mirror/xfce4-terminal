@@ -6,14 +6,15 @@
 # Hugo Carvalho <hugokarvalho@hotmail.com>, 2016
 # José Vieira <jvieira33@sapo.pt>, 2016-2018
 # Nuno Miguel <nunomgue@gmail.com>, 2016-2019
+# Rui <xymarior@yandex.com>, 2019
 # Sérgio Marques <smarquespt@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 00:31+0100\n"
-"PO-Revision-Date: 2019-03-02 18:07+0000\n"
-"Last-Translator: Nuno Miguel <nunomgue@gmail.com>\n"
+"POT-Creation-Date: 2019-03-04 00:31+0100\n"
+"PO-Revision-Date: 2019-03-04 12:53+0000\n"
+"Last-Translator: Rui <xymarior@yandex.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/xfce/xfce-apps/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -423,91 +424,115 @@ msgstr "Ficheiros de Imagem"
 msgid "Load Presets..."
 msgstr "Carregar pré-ajustes..."
 
-#: ../terminal/terminal-preferences.c:1153
+#: ../terminal/terminal-preferences.c:1186
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:445 ../terminal/terminal-screen.c:829
-#: ../terminal/terminal-screen.c:2202
+#: ../terminal/terminal-screen.c:449 ../terminal/terminal-screen.c:833
+#: ../terminal/terminal-screen.c:2286
 msgid "Untitled"
 msgstr "Sem título"
 
-#: ../terminal/terminal-screen.c:730
+#: ../terminal/terminal-screen.c:734
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Incapaz de determinar a shell de início de sessão."
 
-#: ../terminal/terminal-screen.c:1403
+#: ../terminal/terminal-screen.c:1407
 msgid "_Relaunch"
 msgstr "_Relançar"
 
-#: ../terminal/terminal-screen.c:1409
+#: ../terminal/terminal-screen.c:1413
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "O processo dependente terminad terminou normalmente no estado %d."
 
-#: ../terminal/terminal-screen.c:1411
+#: ../terminal/terminal-screen.c:1415
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "O processo dependente terminad foi abortado pelo sinal %d."
 
-#: ../terminal/terminal-screen.c:1413
+#: ../terminal/terminal-screen.c:1417
 msgid "The child process was aborted."
 msgstr "O processo dependente foi abortado"
 
-#: ../terminal/terminal-screen.c:1419 ../terminal/terminal-window.c:890
+#: ../terminal/terminal-screen.c:1423 ../terminal/terminal-window.c:923
 msgid "Do _not ask me again"
 msgstr "_Não perguntar novamente"
 
-#: ../terminal/terminal-screen.c:1781 ../terminal/terminal-screen.c:1865
-#: ../terminal/terminal-screen.c:1903
+#: ../terminal/terminal-screen.c:1784
+msgid "Warning: Unsafe Paste"
+msgstr "Aviso: colar inseguro"
+
+#: ../terminal/terminal-screen.c:1786 ../terminal/terminal-window.c:845
+#: ../terminal/terminal-window.c:2402
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: ../terminal/terminal-screen.c:1787 ../terminal/terminal-window.c:345
+msgid "_Paste"
+msgstr "C_olar"
+
+#: ../terminal/terminal-screen.c:1791
+msgid ""
+"Pasting this text to the terminal may be dangerous as it looks like\n"
+"some commands may be executed, potentially involving root access ('sudo')."
+msgstr "Colar este texto num terminal pode ser perigoso uma vez que parece\nque alguns comandos podem ser executados, envolvendo potencialmente acesso root ('sudo')."
+
+#: ../terminal/terminal-screen.c:1865 ../terminal/terminal-screen.c:1949
+#: ../terminal/terminal-screen.c:1987
 msgid "Failed to execute child"
 msgstr "Falha ao executar o processo dependente"
 
-#: ../terminal/terminal-screen.c:2547
+#: ../terminal/terminal-screen.c:2653
 msgid "Close this tab"
 msgstr "Fechar este separador"
 
-#: ../terminal/terminal-screen.c:2600
+#: ../terminal/terminal-screen.c:2706
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Falhou a definição da codificação %s\n"
 
-#: ../terminal/terminal-search-dialog.c:92
-msgid "Find"
-msgstr "Localizar"
-
-#: ../terminal/terminal-search-dialog.c:96
+#: ../terminal/terminal-search-dialog.c:104
 msgid "_Close"
 msgstr "_Fechar"
 
-#: ../terminal/terminal-search-dialog.c:100
+#: ../terminal/terminal-search-dialog.c:108
 msgid "_Previous"
 msgstr "_Anterior"
 
-#: ../terminal/terminal-search-dialog.c:104
+#: ../terminal/terminal-search-dialog.c:112
 msgid "_Next"
 msgstr "_Seguinte"
 
-#: ../terminal/terminal-search-dialog.c:121
+#: ../terminal/terminal-search-dialog.c:129
 msgid "_Search for:"
 msgstr "Pr_ocurar:"
 
-#: ../terminal/terminal-search-dialog.c:134
+#: ../terminal/terminal-search-dialog.c:142
 msgid "C_ase sensitive"
 msgstr "Distinguir m_aiúsculas de minúsculas "
 
-#: ../terminal/terminal-search-dialog.c:139
+#: ../terminal/terminal-search-dialog.c:147
 msgid "Match as _regular expression"
 msgstr "Coincidente com expressão reg_ular"
 
-#: ../terminal/terminal-search-dialog.c:144
+#: ../terminal/terminal-search-dialog.c:152
 msgid "Match _entire word only"
 msgstr "Coincid_ente com palavra completa"
 
-#: ../terminal/terminal-search-dialog.c:149
+#: ../terminal/terminal-search-dialog.c:157
 msgid "_Wrap around"
 msgstr "Tra_nslinear"
+
+#: ../terminal/terminal-search-dialog.c:166
+#: ../terminal/terminal-preferences.glade.h:69
+msgid "_Opacity:"
+msgstr "_Opacidade:"
+
+#: ../terminal/terminal-search-dialog.c:355
+msgid "Find"
+msgstr "Localizar"
 
 #: ../terminal/terminal-util.c:80 ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
@@ -578,361 +603,353 @@ msgstr "Terminal suspenso"
 msgid "Toggle Drop-down Terminal"
 msgstr "Alternar terminal suspenso"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:332
 msgid "_File"
 msgstr "_Ficheiro"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:333
 msgid "Open _Tab"
 msgstr "Abrir _separador"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:333
 msgid "Open a new terminal tab"
 msgstr "Abrir novo separador de terminal"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:334
 msgid "Open T_erminal"
 msgstr "Abrir t_erminal"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:334
 msgid "Open a new terminal window"
 msgstr "Abrir nova janela de terminal"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:335
 msgid "_Undo Close Tab"
 msgstr "Desfa_zer fechar separador"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:336
 msgid "_Detach Tab"
 msgstr "_Destacar separador"
 
-#: ../terminal/terminal-window.c:335 ../terminal/terminal-window.c:854
+#: ../terminal/terminal-window.c:337 ../terminal/terminal-window.c:887
 msgid "Close T_ab"
 msgstr "Fechar sep_arador"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:338
 msgid "Close Other Ta_bs"
 msgstr "Fechar outros s_eparadores"
 
-#: ../terminal/terminal-window.c:337 ../terminal/terminal-window.c:861
+#: ../terminal/terminal-window.c:339 ../terminal/terminal-window.c:894
 msgid "Close _Window"
 msgstr "Fechar ja_nela"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:340
 msgid "_Edit"
 msgstr "_Editar"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:341
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:341
 msgid "Copy to clipboard"
 msgstr "Copiar para a área de transferência"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:343
 msgid "Copy as _HTML"
 msgstr "Copiar como _HTML"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:343
 msgid "Copy to clipboard as HTML"
 msgstr "Copiar para área de transferência como HTML"
 
-#: ../terminal/terminal-window.c:343
-msgid "_Paste"
-msgstr "C_olar"
-
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:345
 msgid "Paste from clipboard"
 msgstr "Colar da área de transferência"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:346
 msgid "Paste _Selection"
 msgstr "Colar _seleção"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:347
 msgid "Select _All"
 msgstr "Selecion_ar tudo"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:348
 msgid "Copy _Input To All Tabs..."
 msgstr "Copiar _entrada para todos os separadores..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:349
 msgid "Pr_eferences..."
 msgstr "Pr_eferências..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:349
 msgid "Open the preferences dialog"
 msgstr "Abrir caixa de diálogo de preferências"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:350
 msgid "_View"
 msgstr "_Ver"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:351
 msgid "Zoom _In"
 msgstr "A_mpliar"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:351
 msgid "Zoom in with larger font"
 msgstr "Aumentar com tipo de letra maior"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:352
 msgid "Zoom _Out"
 msgstr "Redu_zir"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:352
 msgid "Zoom out with smaller font"
 msgstr "Reduzir com tipo de letra menor"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:353
 msgid "_Normal Size"
 msgstr "Tamanho _normal"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:353
 msgid "Zoom to default size"
 msgstr "Repôr o tamanho pré-definido"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:354
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:355
 msgid "_Set Title..."
 msgstr "_Definir título..."
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:356
 msgid "Set Title Co_lor..."
 msgstr "Mudar cor do títu_lo..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:357
 msgid "_Find..."
 msgstr "_Localizar..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:357
 msgid "Search terminal contents"
 msgstr "Pesquisar conteúdo do terminal"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:358
 msgid "Find Ne_xt"
 msgstr "Localizar _seguinte"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:359
 msgid "Find Pre_vious"
 msgstr "Localizar _anterior"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:360
 msgid "Sa_ve Contents..."
 msgstr "Guar_dar conteúdo..."
 
-#: ../terminal/terminal-window.c:359 ../terminal/terminal-window.c:2229
+#: ../terminal/terminal-window.c:361 ../terminal/terminal-window.c:2262
 msgid "_Reset"
 msgstr "_Repor"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:362
 msgid "_Clear Scrollback and Reset"
 msgstr "Limpar barra de deslo_cação e reiniciar"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:363
 msgid "T_abs"
 msgstr "Separa_dores"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:364
 msgid "_Previous Tab"
 msgstr "Separador _anterior"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:364
 msgid "Switch to previous tab"
 msgstr "Mudar para o separador anterior"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:365
 msgid "_Next Tab"
 msgstr "Separador _seguinte"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:365
 msgid "Switch to next tab"
 msgstr "Mudar para o separador seguinte"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:366
 msgid "Move Tab _Left"
 msgstr "Mover separador para a _esquerda"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:367
 msgid "Move Tab _Right"
 msgstr "Mover separador para a _direita"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:368
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:369
 msgid "_Contents"
 msgstr "_Conteúdo"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:369
 msgid "Display help contents"
 msgstr "Mostrar conteúdo de ajuda"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:370
 msgid "_About"
 msgstr "_Sobre"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:371
 msgid "_Zoom"
 msgstr "_Ampliação"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:376
 msgid "Show _Menubar"
 msgstr "Mostrar barra de _menu"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:376
 msgid "Show/hide the menubar"
 msgstr "Mostrar/ocultar barra de menu"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:377
 msgid "Show _Toolbar"
 msgstr "Mostrar barra de ferrame_ntas"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:377
 msgid "Show/hide the toolbar"
 msgstr "Mostrar/ocultar barra de ferramentas"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:378
 msgid "Show Window _Borders"
 msgstr "Mostrar contornos da j_anela"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:378
 msgid "Show/hide the window decorations"
 msgstr "Mostrar/ocultar moldura da janela"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:379
 msgid "_Fullscreen"
 msgstr "_Ecrã completo"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:379
 msgid "Toggle fullscreen mode"
 msgstr "Alternar o modo de ecrã completo"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:380
 msgid "_Read-Only"
 msgstr "_Só de leitura"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:380
 msgid "Toggle read-only mode"
 msgstr "Alternar o modo só de leitura"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:381
 msgid "Scroll on _Output"
 msgstr "Deslocar na _saída"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:381
 msgid "Toggle scroll on output"
 msgstr "Inverter deslocamento na saída"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:552
 msgid "Set _Encoding"
 msgstr "D_efinir codificação"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:842
 msgid "Warning"
 msgstr "Aviso"
 
-#: ../terminal/terminal-window.c:812 ../terminal/terminal-window.c:2369
-msgid "_Cancel"
-msgstr "_Cancelar"
-
 #. and process running
-#: ../terminal/terminal-window.c:822
+#: ../terminal/terminal-window.c:855
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Ainda há processos em execução nalguns separadores.\nSerão interrompidos ao fechar esta janela."
 
 #. and no process running
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:861
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Esta janela tem %d separadores abertos. Ao fechar a janela\nfecha todos os separadores."
 
-#: ../terminal/terminal-window.c:832
+#: ../terminal/terminal-window.c:865
 msgid "Close all tabs?"
 msgstr "Fechar todos os separadores?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:839
+#: ../terminal/terminal-window.c:872
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Ainda há um processo em execução.\nFechar este separador forçará a sua interrupção."
 
-#: ../terminal/terminal-window.c:841
+#: ../terminal/terminal-window.c:874
 msgid "Close tab?"
 msgstr "Fechar o separador?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:846
+#: ../terminal/terminal-window.c:879
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Ainda há um processo em execução.\nFechar esta janela forçará a sua interrupção."
 
-#: ../terminal/terminal-window.c:848
+#: ../terminal/terminal-window.c:881
 msgid "Close window?"
 msgstr "Fechar janela?"
 
-#: ../terminal/terminal-window.c:1827
+#: ../terminal/terminal-window.c:1860
 msgid "Copy _Input:"
 msgstr "Copiar _entrada:"
 
-#: ../terminal/terminal-window.c:1831
+#: ../terminal/terminal-window.c:1864
 msgid "Enter the text to be copied to all tabs"
 msgstr "Introduza o texto a ser copiado para todos os separadores"
 
-#: ../terminal/terminal-window.c:1839
+#: ../terminal/terminal-window.c:1872
 msgid "Copy input"
 msgstr "Copiar entrada"
 
-#: ../terminal/terminal-window.c:2181
+#: ../terminal/terminal-window.c:2214
 msgid "_Title:"
 msgstr "Tít_ulo:"
 
-#: ../terminal/terminal-window.c:2185
+#: ../terminal/terminal-window.c:2218
 msgid "Enter the title for the current terminal tab"
 msgstr "Introduza o título para o atual separador de terminal"
 
-#: ../terminal/terminal-window.c:2190
+#: ../terminal/terminal-window.c:2223
 msgid "Reset"
 msgstr "Restaurar"
 
-#: ../terminal/terminal-window.c:2200
+#: ../terminal/terminal-window.c:2233
 msgid "Help"
 msgstr "Ajuda"
 
-#: ../terminal/terminal-window.c:2206
+#: ../terminal/terminal-window.c:2239
 msgid "Close"
 msgstr "Fechar"
 
-#: ../terminal/terminal-window.c:2228
+#: ../terminal/terminal-window.c:2261
 msgid "Choose title color"
 msgstr "Escolher cor do título"
 
-#: ../terminal/terminal-window.c:2325
+#: ../terminal/terminal-window.c:2358
 msgid "Failed to create the regular expression"
 msgstr "Ocorreu um erro ao criar a expressão"
 
-#: ../terminal/terminal-window.c:2366
+#: ../terminal/terminal-window.c:2399
 msgid "Save contents..."
 msgstr "Gravar conteúdo..."
 
-#: ../terminal/terminal-window.c:2370
+#: ../terminal/terminal-window.c:2403
 msgid "_Save"
 msgstr "_Gravar"
 
-#: ../terminal/terminal-window.c:2407
+#: ../terminal/terminal-window.c:2440
 msgid "Failed to save terminal contents"
 msgstr "Falha ao gravar conteúdo do terminal"
 
@@ -1227,10 +1244,6 @@ msgstr "D_uração:"
 #: ../terminal/terminal-preferences.glade.h:68
 msgid "ms"
 msgstr "ms"
-
-#: ../terminal/terminal-preferences.glade.h:69
-msgid "_Opacity:"
-msgstr "_Opacidade:"
 
 #: ../terminal/terminal-preferences.glade.h:70
 msgid ""
