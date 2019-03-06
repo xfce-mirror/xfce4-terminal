@@ -1783,15 +1783,21 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkTextBuffer *buffer = gtk_text_buffer_new (gtk_text_tag_table_new ());
   GtkWidget     *tv = gtk_text_view_new_with_buffer (buffer);
   GtkWidget     *sw = gtk_scrolled_window_new (NULL, NULL);
-  GtkWidget     *dialog = xfce_titled_dialog_new_with_buttons (_("Warning: Unsafe Paste"), parent,
-                                                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                               _("_Cancel"), GTK_RESPONSE_CANCEL,
-                                                               _("_Paste"), GTK_RESPONSE_YES,
-                                                               NULL);
+  GtkWidget     *cancel_button = gtk_button_new_with_mnemonic (_("_Cancel"));
+  GtkWidget     *paste_button = gtk_button_new_with_mnemonic (_("_Paste"));
+  GtkWidget     *dialog = g_object_new (XFCE_TYPE_TITLED_DIALOG,
+                                        "transient-for", parent,
+                                        "destroy-with-parent", TRUE,
+                                        "title", _("Warning: Unsafe Paste"),
+                                        NULL);
 
   xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dialog),
                                    _("Pasting this text to the terminal may be dangerous as it looks like\n"
                                      "some commands may be executed, potentially involving root access ('sudo')."));
+
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), cancel_button, GTK_RESPONSE_CANCEL);
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), paste_button, GTK_RESPONSE_YES);
+  gtk_widget_set_can_default (paste_button, TRUE);
 
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
@@ -1808,7 +1814,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
 
   gtk_text_buffer_set_text (buffer, text, -1);
 
-  gtk_window_set_focus (GTK_WINDOW (dialog), tv);
+  gtk_window_set_focus (GTK_WINDOW (dialog), paste_button);
 
   return dialog;
 }
