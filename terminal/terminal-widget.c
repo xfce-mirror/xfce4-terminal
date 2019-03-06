@@ -50,6 +50,7 @@
 enum
 {
   GET_CONTEXT_MENU,
+  PASTE_SELECTION_REQUEST,
   LAST_SIGNAL,
 };
 
@@ -160,6 +161,17 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
                   0, NULL, NULL,
                   _terminal_marshal_OBJECT__VOID,
                   GTK_TYPE_MENU, 0);
+
+  /**
+   * TerminalWidget::paste-selection-request:
+   **/
+  widget_signals[PASTE_SELECTION_REQUEST] =
+    g_signal_new (I_("paste-selection-request"),
+                  G_TYPE_FROM_CLASS (klass),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 
@@ -414,6 +426,13 @@ terminal_widget_button_press_event (GtkWidget       *widget,
               g_free (match);
               return TRUE;
             }
+        }
+
+      /* intercept middle button click that would paste the selection */
+      if (event->button == 2)
+        {
+          g_signal_emit (G_OBJECT (widget), widget_signals[PASTE_SELECTION_REQUEST], 0, NULL);
+          return TRUE;
         }
       else if (event->button == 3)
         {
