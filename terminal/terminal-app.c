@@ -563,6 +563,11 @@ terminal_app_save_yourself (XfceSMClient *client,
       result = g_slist_concat (result, terminal_window_get_restart_command (lp->data));
     }
 
+  /* no windows were saved - this can happen if there is only a dropdown window
+     that we don't want to save */
+  if (result == NULL)
+    return;
+
   argc = g_slist_length (result) + 1;
   argv = g_new (gchar*, argc + 1);
   for (lp = result, n = 1; n < argc && lp != NULL; lp = lp->next, ++n)
