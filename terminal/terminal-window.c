@@ -446,8 +446,6 @@ terminal_window_init (TerminalWindow *window)
   GtkStyleContext *context;
 
   GClosure *toggle_menubar_closure = g_cclosure_new (G_CALLBACK (terminal_window_toggle_menubar), window, NULL);
-  GClosure *paste_closure = g_cclosure_new (G_CALLBACK (terminal_window_action_paste), window, NULL);
-  GClosure *paste_selection_closure = g_cclosure_new (G_CALLBACK (terminal_window_action_paste_selection), window, NULL);
 
   window->priv = G_TYPE_INSTANCE_GET_PRIVATE (window, TERMINAL_TYPE_WINDOW, TerminalWindowPrivate);
 
@@ -505,10 +503,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
   gtk_accel_group_connect_by_path (accel_group, "<Actions>/terminal-window/toggle-menubar", toggle_menubar_closure);
-
-  /* handle Ctrl+Shift+Ins (paste clipboard) and Shift+Ins (paste selection) as if the menu items were used */
-  gtk_accel_group_connect (accel_group, GDK_KEY_Insert, GDK_CONTROL_MASK | GDK_SHIFT_MASK, 0, paste_closure);
-  gtk_accel_group_connect (accel_group, GDK_KEY_Insert, GDK_SHIFT_MASK, 0, paste_selection_closure);
 
   window->priv->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (window), window->priv->vbox);
@@ -799,6 +793,21 @@ terminal_window_key_press_event (GtkWidget   *widget,
       else if (modifiers == GDK_CONTROL_MASK)
         {
           terminal_window_action_next_tab (NULL, window);
+          return TRUE;
+        }
+    }
+
+  /* handle Ctrl+Shift+Ins (paste clipboard) and Shift+Ins (paste selection) */
+  if (event->keyval == GDK_KEY_Insert || event->keyval == GDK_KEY_KP_Insert)
+    {
+      if (modifiers == (GDK_CONTROL_MASK | GDK_SHIFT_MASK))
+        {
+          terminal_window_action_paste (NULL, window);
+          return TRUE;
+        }
+      else if (modifiers == GDK_SHIFT_MASK)
+        {
+          terminal_window_action_paste_selection (NULL, window);
           return TRUE;
         }
     }
