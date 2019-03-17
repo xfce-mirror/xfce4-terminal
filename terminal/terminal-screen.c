@@ -44,6 +44,7 @@
 #include <sys/wait.h>
 
 #include <libxfce4ui/libxfce4ui.h>
+#include <xfconf/xfconf.h>
 
 #include <terminal/terminal-util.h>
 #include <terminal/terminal-enum-types.h>
@@ -2808,10 +2809,11 @@ terminal_screen_update_font (TerminalScreen *screen)
 {
   GtkWidget            *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (screen));
   gboolean              font_use_system, font_allow_bold;
-  gchar                *font_name;
+  gchar                *font_name = NULL;
   PangoFontDescription *font_desc;
   glong                 grid_w = 0, grid_h = 0;
   GSettings            *settings;
+  XfconfChannel        *channel;
 #if VTE_CHECK_VERSION (0, 51, 3)
   gdouble cell_width_scale, cell_height_scale;
 #endif
@@ -2827,9 +2829,21 @@ terminal_screen_update_font (TerminalScreen *screen)
 
   if (font_use_system)
     {
-      settings = g_settings_new ("org.gnome.desktop.interface");
-      font_name = g_settings_get_string (settings, "monospace-font-name");
-      g_object_unref (settings);
+      /* read Xfce settings */
+      xfconf_init (NULL);
+      channel = xfconf_channel_get ("xsettings");
+      if (xfconf_channel_has_property (channel, "/Gtk/MonospaceFontName"))
+        font_name = xfconf_channel_get_string (channel, "/Gtk/MonospaceFontName", "");
+      xfconf_shutdown ();
+
+      /* if font isn't set, read GNOME settings */
+      if (!IS_STRING (font_name))
+        {
+          g_free (font_name);
+          settings = g_settings_new ("org.gnome.desktop.interface");
+          font_name = g_settings_get_string (settings, "monospace-font-name");
+          g_object_unref (settings);
+        }
     }
   else
     g_object_get (G_OBJECT (screen->preferences), "font-name", &font_name, NULL);

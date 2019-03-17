@@ -57,6 +57,7 @@ xfce4_terminal_CFLAGS = \
 	$(LIBX11_CFLAGS) \
 	$(VTE_CFLAGS) \
 	$(LIBXFCE4UI_CFLAGS) \
+	$(XFCONF_CFLAGS) \
 	$(PLATFORM_CFLAGS)
 
 xfce4_terminal_LDFLAGS = \
@@ -70,6 +71,7 @@ xfce4_terminal_LDADD = \
 	$(LIBX11_LIBS) \
 	$(VTE_LIBS) \
 	$(LIBXFCE4UI_LIBS) \
+	$(XFCONF_LIBS) \
 	$(TERMINAL_LIBS)
 
 if HAVE_UTEMPTER
