@@ -223,6 +223,8 @@ static void         terminal_window_action_prev_tab               (GtkAction    
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_next_tab               (GtkAction           *action,
                                                                    TerminalWindow      *window);
+static void         terminal_window_action_last_active_tab        (GtkAction           *action,
+                                                                   TerminalWindow      *window);
 static void         terminal_window_action_move_tab_left          (GtkAction           *action,
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_move_tab_right         (GtkAction           *action,
@@ -303,6 +305,7 @@ struct _TerminalWindowPrivate
   GtkAction           *action_close_other_tabs;
   GtkAction           *action_prev_tab;
   GtkAction           *action_next_tab;
+  GtkAction           *action_last_active_tab;
   GtkAction           *action_move_tab_left;
   GtkAction           *action_move_tab_right;
   GtkAction           *action_copy;
@@ -363,6 +366,7 @@ static const GtkActionEntry action_entries[] =
   { "tabs-menu", NULL, N_ ("T_abs"), NULL, NULL, NULL, },
     { "prev-tab", "go-previous", N_ ("_Previous Tab"), "<control>Page_Up", N_ ("Switch to previous tab"), G_CALLBACK (terminal_window_action_prev_tab), },
     { "next-tab", "go-next", N_ ("_Next Tab"), "<control>Page_Down", N_ ("Switch to next tab"), G_CALLBACK (terminal_window_action_next_tab), },
+    { "last-active-tab", NULL, N_ ("Last _Active Tab"), NULL, N_ ("Switch to last active tab"), G_CALLBACK (terminal_window_action_last_active_tab), },
     { "move-tab-left", NULL, N_ ("Move Tab _Left"), "<control><shift>Page_Up", NULL, G_CALLBACK (terminal_window_action_move_tab_left), },
     { "move-tab-right", NULL, N_ ("Move Tab _Right"), "<control><shift>Page_Down", NULL, G_CALLBACK (terminal_window_action_move_tab_right), },
   { "help-menu", NULL, N_ ("_Help"), NULL, NULL, NULL, },
@@ -571,6 +575,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   window->priv->action_close_other_tabs = terminal_window_get_action (window, "close-other-tabs");
   window->priv->action_prev_tab = terminal_window_get_action (window, "prev-tab");
   window->priv->action_next_tab = terminal_window_get_action (window, "next-tab");
+  window->priv->action_last_active_tab = terminal_window_get_action (window, "last-active-tab");
   window->priv->action_move_tab_left = terminal_window_get_action (window, "move-tab-left");
   window->priv->action_move_tab_right = terminal_window_get_action (window, "move-tab-right");
   window->priv->action_copy = terminal_window_get_action (window, "copy");
@@ -1056,6 +1061,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_action_set_sensitive (window->priv->action_move_tab_left, can_go_left);
       gtk_action_set_sensitive (window->priv->action_next_tab, can_go_right);
       gtk_action_set_sensitive (window->priv->action_move_tab_right, can_go_right);
+      gtk_action_set_sensitive (window->priv->action_last_active_tab, window->priv->last_active != NULL);
 
       gtk_action_set_sensitive (window->priv->action_copy,
                                 terminal_screen_has_selection (window->priv->active));
@@ -2111,6 +2117,21 @@ terminal_window_action_next_tab (GtkAction      *action,
 {
   terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
   terminal_window_update_actions (window);
+}
+
+
+
+static void
+terminal_window_action_last_active_tab (GtkAction      *action,
+                                        TerminalWindow *window)
+{
+  if (window->priv->last_active != NULL)
+    {
+      GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
+      gint page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->last_active));
+      gtk_notebook_set_current_page (notebook, page_num);
+      terminal_window_update_actions (window);
+    }
 }
 
 
