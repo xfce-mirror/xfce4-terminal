@@ -96,6 +96,17 @@ const gchar *CSS_SLIM_TABS =
 "  padding: 1px;\n"
 "}\n";
 
+/* See gnome-terminal bug #789356 */
+#if GTK_CHECK_VERSION (3, 22, 23)
+#define WINDOW_STATE_TILED (GDK_WINDOW_STATE_TILED       | \
+                            GDK_WINDOW_STATE_LEFT_TILED  | \
+                            GDK_WINDOW_STATE_RIGHT_TILED | \
+                            GDK_WINDOW_STATE_TOP_TILED   | \
+                            GDK_WINDOW_STATE_BOTTOM_TILED)
+#else
+#define WINDOW_STATE_TILED (GDK_WINDOW_STATE_TILED)
+#endif
+
 
 
 static void         terminal_window_finalize                      (GObject             *object);
@@ -1007,12 +1018,16 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
                                      glong           force_grid_width,
                                      glong           force_grid_height)
 {
+  GdkWindow *gdk_window = gtk_widget_get_window (GTK_WIDGET (window));
+
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
   /* required to get the char height/width right */
   if (gtk_widget_get_realized (GTK_WIDGET (screen))
-      && !window->priv->drop_down)
+      && gdk_window != NULL
+      && (gdk_window_get_state (gdk_window) & (GDK_WINDOW_STATE_FULLSCREEN | WINDOW_STATE_TILED)) == 0
+      && !window->priv->drop_down )
     {
       terminal_screen_force_resize_window (screen, GTK_WINDOW (window),
                                            force_grid_width, force_grid_height);
