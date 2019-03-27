@@ -55,6 +55,11 @@
 
 static void     terminal_app_finalize                 (GObject            *object);
 static void     terminal_app_update_accels            (TerminalApp        *app);
+static void     terminal_app_update_tab_key_accels    (gpointer            data,
+                                                       const gchar        *accel_path,
+                                                       guint               accel_key,
+                                                       GdkModifierType     accel_mods,
+                                                       gboolean            changed);
 static void     terminal_app_update_mnemonics         (TerminalApp        *app);
 static void     terminal_app_update_windows_accels    (gpointer            user_data);
 static gboolean terminal_app_accel_map_load           (gpointer            user_data);
@@ -95,6 +100,7 @@ struct _TerminalApp
   guint                accel_map_load_id;
   guint                accel_map_save_id;
   GtkAccelMap         *accel_map;
+  GSList              *tab_key_accels;
 };
 
 
@@ -188,6 +194,10 @@ terminal_app_finalize (GObject *object)
   if (app->session_client != NULL)
     g_object_unref (G_OBJECT (app->session_client));
 
+  for (lp = app->tab_key_accels; lp != NULL; lp = lp->next)
+    g_free (((TerminalAccel*) lp->data)->path);
+  g_slist_free_full (app->tab_key_accels, g_free);
+
   (*G_OBJECT_CLASS (terminal_app_parent_class)->finalize) (object);
 }
 
@@ -221,6 +231,27 @@ terminal_app_update_accels (TerminalApp *app)
 
 
 static void
+terminal_app_update_tab_key_accels (gpointer         data,
+                                    const gchar     *accel_path,
+                                    guint            accel_key,
+                                    GdkModifierType  accel_mods,
+                                    gboolean         changed)
+{
+  if (accel_key == GDK_KEY_Tab || accel_key == GDK_KEY_ISO_Left_Tab)
+    {
+      TerminalApp *app = TERMINAL_APP (data);
+      TerminalAccel *accel = g_new0 (TerminalAccel, 1);
+
+      accel->path = g_strdup (g_strrstr (accel_path, "/") + 1); // <Actions>/terminal-window/action
+      accel->mods = accel_mods;
+
+      app->tab_key_accels = g_slist_prepend (app->tab_key_accels, accel);
+    }
+}
+
+
+
+static void
 terminal_app_update_mnemonics (TerminalApp *app)
 {
   gboolean no_mnemonics;
@@ -242,7 +273,10 @@ terminal_app_update_windows_accels (gpointer user_data)
   GSList      *lp;
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
-    terminal_window_rebuild_tabs_menu (TERMINAL_WINDOW (lp->data));
+    {
+      terminal_window_rebuild_tabs_menu (TERMINAL_WINDOW (lp->data));
+      terminal_window_update_tab_key_accels (TERMINAL_WINDOW (lp->data), app->tab_key_accels);
+    }
 
   app->accel_map_load_id = 0;
 }
@@ -316,6 +350,16 @@ terminal_app_accel_map_load (gpointer user_data)
         gtk_accel_map_change_entry (name, GDK_KEY_0 + i, GDK_MOD1_MASK, FALSE);
     }
 
+  /* identify accelerators containing the Tab key */
+  if (app->tab_key_accels != NULL)
+    {
+      GSList *lp;
+      for (lp = app->tab_key_accels; lp != NULL; lp = lp->next)
+        g_free (((TerminalAccel*) lp->data)->path);
+      g_slist_free_full (app->tab_key_accels, g_free);
+    }
+  gtk_accel_map_foreach (app, terminal_app_update_tab_key_accels);
+
   return FALSE;
 }
 
@@ -367,6 +411,8 @@ terminal_app_take_window (TerminalApp *app,
   g_signal_connect (G_OBJECT (window), "key-release-event",
                     G_CALLBACK (terminal_app_unset_urgent_bell), app);
   app->windows = g_slist_prepend (app->windows, window);
+
+  terminal_window_update_tab_key_accels (TERMINAL_WINDOW (window), app->tab_key_accels);
 }
 
 

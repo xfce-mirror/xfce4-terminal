@@ -47,6 +47,12 @@ typedef struct
   TerminalWindowPrivate *priv;
 } TerminalWindow;
 
+typedef struct
+{
+  gchar *path;
+  guint  mods;
+} TerminalAccel;
+
 GType              terminal_window_get_type                 (void) G_GNUC_CONST;
 
 GtkWidget         *terminal_window_new                      (const gchar        *role,
@@ -105,6 +111,9 @@ void               terminal_window_rebuild_tabs_menu        (TerminalWindow     
 
 void               terminal_window_action_show_menubar      (GtkToggleAction    *action,
                                                              TerminalWindow     *window);
+
+void               terminal_window_update_tab_key_accels    (TerminalWindow     *window,
+                                                             GSList             *tab_key_accels);
 
 G_END_DECLS
 

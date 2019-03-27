@@ -331,6 +331,8 @@ struct _TerminalWindowPrivate
   TerminalVisibility   scrollbar_visibility;
   TerminalZoomLevel    zoom;
 
+  GSList              *tab_key_accels;
+
   /* if this is a TerminalWindowDropdown */
   guint                drop_down : 1;
 };
@@ -794,22 +796,27 @@ terminal_window_key_press_event (GtkWidget   *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
   const guint     modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
-  gboolean        use_tab;
 
-  /* whether to use Ctrl+Tab/Ctrl+Shift+Tab as Next/Prev Tab shortcuts, respectively */
-  g_object_get (G_OBJECT (window->priv->preferences), "misc-use-tab-key-to-cycle-tabs", &use_tab, NULL);
-
-  if (G_UNLIKELY (use_tab && (event->keyval == GDK_KEY_Tab || event->keyval == GDK_KEY_ISO_Left_Tab)))
+  /* support shortcuts that contain the Tab key
+     Tab sometimes becomes ISO_Left_Tab (e.g. in Ctrl+Shift+Tab) so check both here */
+  if (G_UNLIKELY (window->priv->tab_key_accels != NULL
+                  && (event->keyval == GDK_KEY_Tab || event->keyval == GDK_KEY_ISO_Left_Tab)))
     {
-      if (modifiers == (GDK_CONTROL_MASK | GDK_SHIFT_MASK))
+      GSList *lp;
+      for (lp = window->priv->tab_key_accels; lp != NULL; lp = lp->next)
         {
-          terminal_window_action_prev_tab (NULL, window);
-          return TRUE;
-        }
-      else if (modifiers == GDK_CONTROL_MASK)
-        {
-          terminal_window_action_next_tab (NULL, window);
-          return TRUE;
+          TerminalAccel *accel = lp->data;
+          if (accel->mods == modifiers)
+            {
+              GtkAction *action = terminal_window_get_action (window, accel->path);
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+              if (G_LIKELY (GTK_IS_ACTION (action)))
+                {
+                  gtk_action_activate (action);
+                  return TRUE;
+                }
+G_GNUC_END_IGNORE_DEPRECATIONS
+            }
         }
     }
 
@@ -3300,4 +3307,18 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     gtk_widget_hide (window->priv->menubar);
 
   terminal_window_size_pop (window);
+}
+
+
+
+/**
+ * terminal_window_action_show_menubar:
+ * @window          : A #TerminalWindow.
+ * @tab_key_accels  : A list of Tab key accelerators.
+ **/
+void
+terminal_window_update_tab_key_accels (TerminalWindow *window,
+                                       GSList         *tab_key_accels)
+{
+  window->priv->tab_key_accels = tab_key_accels;
 }
