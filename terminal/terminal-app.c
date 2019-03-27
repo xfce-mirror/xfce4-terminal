@@ -357,6 +357,7 @@ terminal_app_accel_map_load (gpointer user_data)
       for (lp = app->tab_key_accels; lp != NULL; lp = lp->next)
         g_free (((TerminalAccel*) lp->data)->path);
       g_slist_free_full (app->tab_key_accels, g_free);
+      app->tab_key_accels = NULL;
     }
   gtk_accel_map_foreach (app, terminal_app_update_tab_key_accels);
 
