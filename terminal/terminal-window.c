@@ -1303,6 +1303,10 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
       return;
     }
 
+  /* clear last_active tab if it has just been closed */
+  if (child == GTK_WIDGET (window->priv->last_active))
+    window->priv->last_active = NULL;
+
   /* show the tabs when needed */
   terminal_window_notebook_show_tabs (window);
 
@@ -2677,10 +2681,6 @@ terminal_window_do_close_tab (TerminalScreen *screen,
       gint page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->last_active));
       gtk_notebook_set_current_page (notebook, page_num);
     }
-
-  /* clean last_active if we've just closed it */
-  if (screen == window->priv->last_active)
-    window->priv->last_active = NULL;
 
   gtk_widget_destroy (GTK_WIDGET (screen));
 }
