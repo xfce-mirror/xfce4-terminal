@@ -16,8 +16,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 00:31+0100\n"
-"PO-Revision-Date: 2019-02-24 20:13+0000\n"
+"POT-Creation-Date: 2019-03-21 18:31+0100\n"
+"PO-Revision-Date: 2019-04-06 21:43+0000\n"
 "Last-Translator: Demiray Muhterem <mdemiray@msn.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/xfce/xfce-apps/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -182,12 +182,12 @@ msgstr "Lütfen hataları <%s>'e bildiriniz."
 msgid "Unable to register terminal service: %s\n"
 msgstr "%s uçbirim hizmeti kayıt edilmiyor.\n"
 
-#: ../terminal/terminal-app.c:901
+#: ../terminal/terminal-app.c:906
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Geçersiz geometri dizgesi \"%s\"\n"
 
-#: ../terminal/terminal-app.c:980
+#: ../terminal/terminal-app.c:985
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Oturum yöneticisine bağlanılamadı: %s\n"
@@ -428,91 +428,115 @@ msgstr "Resim Dosyaları"
 msgid "Load Presets..."
 msgstr "Varsayılanlar Yükleniyor..."
 
-#: ../terminal/terminal-preferences.c:1153
+#: ../terminal/terminal-preferences.c:1186
 msgid "Terminal"
 msgstr "Uçbirim"
 
-#: ../terminal/terminal-screen.c:445 ../terminal/terminal-screen.c:829
-#: ../terminal/terminal-screen.c:2202
+#: ../terminal/terminal-screen.c:452 ../terminal/terminal-screen.c:836
+#: ../terminal/terminal-screen.c:2289
 msgid "Untitled"
 msgstr "İsimsiz"
 
-#: ../terminal/terminal-screen.c:730
+#: ../terminal/terminal-screen.c:737
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Giriş kabuğunuzun belirlenmesi mümkün değil"
 
-#: ../terminal/terminal-screen.c:1403
+#: ../terminal/terminal-screen.c:1410
 msgid "_Relaunch"
 msgstr "_Yeniden Başlat"
 
-#: ../terminal/terminal-screen.c:1409
+#: ../terminal/terminal-screen.c:1416
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Çocuk süreç normal olarak sonlandı, durum iletisi %d."
 
-#: ../terminal/terminal-screen.c:1411
+#: ../terminal/terminal-screen.c:1418
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Çocuk süreç iptal edildi, durum iletisi %d."
 
-#: ../terminal/terminal-screen.c:1413
+#: ../terminal/terminal-screen.c:1420
 msgid "The child process was aborted."
 msgstr "Çocuk süreç iptal edildi."
 
-#: ../terminal/terminal-screen.c:1419 ../terminal/terminal-window.c:890
+#: ../terminal/terminal-screen.c:1426 ../terminal/terminal-window.c:943
 msgid "Do _not ask me again"
 msgstr "Bir daha sorma"
 
-#: ../terminal/terminal-screen.c:1781 ../terminal/terminal-screen.c:1865
-#: ../terminal/terminal-screen.c:1903
+#: ../terminal/terminal-screen.c:1787
+msgid "Warning: Unsafe Paste"
+msgstr "Uyarı: Riskli Yapıştırma"
+
+#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:865
+#: ../terminal/terminal-window.c:2438
+msgid "_Cancel"
+msgstr "_İptal"
+
+#: ../terminal/terminal-screen.c:1790 ../terminal/terminal-window.c:348
+msgid "_Paste"
+msgstr "Ya_pıştır"
+
+#: ../terminal/terminal-screen.c:1794
+msgid ""
+"Pasting this text to the terminal may be dangerous as it looks like\n"
+"some commands may be executed, potentially involving root access ('sudo')."
+msgstr "Bu metni terminale yapıştırmak göründüğü gibi tehlikeli olabilir\npotansiyel olarak root erişimi ('sudo') içeren bazı komutlar içerebilir."
+
+#: ../terminal/terminal-screen.c:1868 ../terminal/terminal-screen.c:1952
+#: ../terminal/terminal-screen.c:1990
 msgid "Failed to execute child"
 msgstr "Alt komutu çalıştırırken hata oluştu"
 
-#: ../terminal/terminal-screen.c:2547
+#: ../terminal/terminal-screen.c:2656
 msgid "Close this tab"
 msgstr "Bu sekmeyi kapat"
 
-#: ../terminal/terminal-screen.c:2600
+#: ../terminal/terminal-screen.c:2709
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Kodlama ayarlanamadı %s\n"
 
-#: ../terminal/terminal-search-dialog.c:92
-msgid "Find"
-msgstr "Bul"
-
-#: ../terminal/terminal-search-dialog.c:96
+#: ../terminal/terminal-search-dialog.c:104
 msgid "_Close"
 msgstr "_Kapat"
 
-#: ../terminal/terminal-search-dialog.c:100
+#: ../terminal/terminal-search-dialog.c:108
 msgid "_Previous"
 msgstr "_Önceki"
 
-#: ../terminal/terminal-search-dialog.c:104
+#: ../terminal/terminal-search-dialog.c:112
 msgid "_Next"
 msgstr "_Sonraki"
 
-#: ../terminal/terminal-search-dialog.c:121
+#: ../terminal/terminal-search-dialog.c:129
 msgid "_Search for:"
 msgstr "_Ara:"
 
-#: ../terminal/terminal-search-dialog.c:134
+#: ../terminal/terminal-search-dialog.c:142
 msgid "C_ase sensitive"
 msgstr "Büyük küçük h_arf duyarlı"
 
-#: ../terminal/terminal-search-dialog.c:139
+#: ../terminal/terminal-search-dialog.c:147
 msgid "Match as _regular expression"
 msgstr "Düzenli ifade ola_rak eşle"
 
-#: ../terminal/terminal-search-dialog.c:144
+#: ../terminal/terminal-search-dialog.c:152
 msgid "Match _entire word only"
 msgstr "Sadece tüm kelimeyi _eşle"
 
-#: ../terminal/terminal-search-dialog.c:149
+#: ../terminal/terminal-search-dialog.c:157
 msgid "_Wrap around"
 msgstr "_Sar"
+
+#: ../terminal/terminal-search-dialog.c:166
+#: ../terminal/terminal-preferences.glade.h:73
+msgid "_Opacity:"
+msgstr "_Saydamsızlık"
+
+#: ../terminal/terminal-search-dialog.c:355
+msgid "Find"
+msgstr "Bul"
 
 #: ../terminal/terminal-util.c:80 ../xfce4-terminal-default-apps.xml.in.in.h:1
 msgid "Xfce Terminal Emulator"
@@ -526,47 +550,47 @@ msgstr "Türker Gülüm <turker.gulum@linux.org.tr>"
 msgid "Visit Xfce Terminal website"
 msgstr "Xfce Terminal internet sayfasını ziyaret edin"
 
-#: ../terminal/terminal-widget.c:317
+#: ../terminal/terminal-widget.c:329
 msgid "Copy Email Address"
 msgstr "E-posta Adresini Kopyala"
 
-#: ../terminal/terminal-widget.c:318
+#: ../terminal/terminal-widget.c:330
 msgid "Compose Email"
 msgstr "E-posta Yaz"
 
-#: ../terminal/terminal-widget.c:322
+#: ../terminal/terminal-widget.c:334
 msgid "Copy Link Address"
 msgstr "Bağlantı Adresini Kopyala"
 
-#: ../terminal/terminal-widget.c:323
+#: ../terminal/terminal-widget.c:335
 msgid "Open Link"
 msgstr "Bağlantıyı Aç"
 
-#: ../terminal/terminal-widget.c:484
+#: ../terminal/terminal-widget.c:503
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Seçilmiş metin veya düz yazıyı uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:500
+#: ../terminal/terminal-widget.c:519
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Mozilla URL'sini uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:527
+#: ../terminal/terminal-widget.c:546
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "URI listesini uçbirime düşüremiyor: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
-#: ../terminal/terminal-widget.c:564
+#: ../terminal/terminal-widget.c:583
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Hatalı renk verisi alındı: Hatalı biçim (%d) veya uzunluk (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:699
+#: ../terminal/terminal-widget.c:718
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "`%s' bağlantı adresi açılamadı"
@@ -583,361 +607,361 @@ msgstr "Yukarıdan inen Terminal"
 msgid "Toggle Drop-down Terminal"
 msgstr "Yukarıdan İnen Terminali Göster/Gizle"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:335
 msgid "_File"
 msgstr "Dosya"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:336
 msgid "Open _Tab"
 msgstr "Sekme Aç"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:336
 msgid "Open a new terminal tab"
 msgstr "Yeni bir uçbirim sekmesi aç"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:337
 msgid "Open T_erminal"
 msgstr "Uçbirimi Aç"
 
-#: ../terminal/terminal-window.c:332
+#: ../terminal/terminal-window.c:337
 msgid "Open a new terminal window"
 msgstr "Yeni bir uçbirim penceresi aç"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:338
 msgid "_Undo Close Tab"
 msgstr "Sekme _Kapatmayı Geri Al"
 
-#: ../terminal/terminal-window.c:334
+#: ../terminal/terminal-window.c:339
 msgid "_Detach Tab"
 msgstr "Sekmeyi Ayır"
 
-#: ../terminal/terminal-window.c:335 ../terminal/terminal-window.c:854
+#: ../terminal/terminal-window.c:340 ../terminal/terminal-window.c:907
 msgid "Close T_ab"
 msgstr "Sekmeyi K_apat"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:341
 msgid "Close Other Ta_bs"
 msgstr "Diğer _Sekmeleri Kapat"
 
-#: ../terminal/terminal-window.c:337 ../terminal/terminal-window.c:861
+#: ../terminal/terminal-window.c:342 ../terminal/terminal-window.c:914
 msgid "Close _Window"
 msgstr "Pencereyi _Kapat"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:343
 msgid "_Edit"
 msgstr "Düzenle"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:344
 msgid "_Copy"
 msgstr "_Kopyala"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:344
 msgid "Copy to clipboard"
 msgstr "Panoya koypala"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:346
 msgid "Copy as _HTML"
 msgstr "_HTML olarak kopyala"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:346
 msgid "Copy to clipboard as HTML"
 msgstr "Panoya HTML olarak kopyala"
 
-#: ../terminal/terminal-window.c:343
-msgid "_Paste"
-msgstr "Ya_pıştır"
-
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:348
 msgid "Paste from clipboard"
 msgstr "Panodan yapıştır"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:349
 msgid "Paste _Selection"
 msgstr "Seçileni Yapıştır"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:350
 msgid "Select _All"
 msgstr "Tümünü_Seç"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:351
 msgid "Copy _Input To All Tabs..."
 msgstr "Girdiyi _Tüm Sekmelere Kopyala..."
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:352
 msgid "Pr_eferences..."
 msgstr "Özellikler"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:352
 msgid "Open the preferences dialog"
 msgstr "Tercihler penceresini aç"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:353
 msgid "_View"
 msgstr "Göster"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:354
 msgid "Zoom _In"
 msgstr "_Yakınlaştır"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:354
 msgid "Zoom in with larger font"
 msgstr "Daha büyük yazı tipi ile görüntüle"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:355
 msgid "Zoom _Out"
 msgstr "_Uzaklaştır"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:355
 msgid "Zoom out with smaller font"
 msgstr "Daha küçük yazı tipi ile görüntüle"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:356
 msgid "_Normal Size"
 msgstr "_Normal Boyut"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:356
 msgid "Zoom to default size"
 msgstr "Varsayılan boyuta döndür"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:357
 msgid "_Terminal"
 msgstr "Uçbirim"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:358
 msgid "_Set Title..."
 msgstr "Başlık Belirle..."
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:359
 msgid "Set Title Co_lor..."
 msgstr "Re_nk adını ayarla..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:360
 msgid "_Find..."
 msgstr "_Bul..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:360
 msgid "Search terminal contents"
 msgstr "Terminal içeriklerini ara"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:361
 msgid "Find Ne_xt"
 msgstr "Sonrakini B_ul"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:362
 msgid "Find Pre_vious"
 msgstr "Ö_ncekini Bul"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:363
 msgid "Sa_ve Contents..."
 msgstr "İçeriği Ko_pyala..."
 
-#: ../terminal/terminal-window.c:359 ../terminal/terminal-window.c:2229
+#: ../terminal/terminal-window.c:364 ../terminal/terminal-window.c:2298
 msgid "_Reset"
 msgstr "Sıfı_rla"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:365
 msgid "_Clear Scrollback and Reset"
 msgstr "Gerikaydırmayı temizle ve yenile"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:366
 msgid "T_abs"
 msgstr "S_ekmeler"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:367
 msgid "_Previous Tab"
 msgstr "Önceki Sekme"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:367
 msgid "Switch to previous tab"
 msgstr "Önceki sekmeye atla"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:368
 msgid "_Next Tab"
 msgstr "So_nraki Sekme"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:368
 msgid "Switch to next tab"
 msgstr "Sonraki sekmeye atla"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:369
+msgid "Last _Active Tab"
+msgstr "Son _Etkin Sekme"
+
+#: ../terminal/terminal-window.c:369
+msgid "Switch to last active tab"
+msgstr "Son etkin sekmeye geç"
+
+#: ../terminal/terminal-window.c:370
 msgid "Move Tab _Left"
 msgstr "Sekmeyi So_la Taşı"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:371
 msgid "Move Tab _Right"
 msgstr "Sekmeyi _Sağa Taşı"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:372
 msgid "_Help"
 msgstr "Yardım"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:373
 msgid "_Contents"
 msgstr "İçerikler"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:373
 msgid "Display help contents"
 msgstr "Yardım içeriğini göster"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:374
 msgid "_About"
 msgstr "H_akkında"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:375
 msgid "_Zoom"
 msgstr "_Yakınlaştır"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:380
 msgid "Show _Menubar"
 msgstr "Menü Çubuğunu Göster"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:380
 msgid "Show/hide the menubar"
 msgstr "Menü çubuğunu göster/gizle"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:381
 msgid "Show _Toolbar"
 msgstr "Araç Çubuğunu _Göster"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:381
 msgid "Show/hide the toolbar"
 msgstr "Araç çubuğununu göster/gizle"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:382
 msgid "Show Window _Borders"
 msgstr "Pencere Sınırlarını Göster"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:382
 msgid "Show/hide the window decorations"
 msgstr "Pencere dekorasyonunu gizle/göster"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:383
 msgid "_Fullscreen"
 msgstr "Tam ekran"
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:383
 msgid "Toggle fullscreen mode"
 msgstr "Tam ekran kipine geç"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:384
 msgid "_Read-Only"
 msgstr "_Salt Okunur"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:384
 msgid "Toggle read-only mode"
 msgstr "Salt okunur kipe geç"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:385
 msgid "Scroll on _Output"
 msgstr "Çıktıyı _kaydır"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:385
 msgid "Toggle scroll on output"
 msgstr "Çıktıyı kaydırma kipine geç"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:549
+#: ../terminal/terminal-window.c:556
 msgid "Set _Encoding"
 msgstr "Karakter _Kodlamasını Ayarla"
 
-#: ../terminal/terminal-window.c:809
+#: ../terminal/terminal-window.c:862
 msgid "Warning"
 msgstr "Uyarı"
 
-#: ../terminal/terminal-window.c:812 ../terminal/terminal-window.c:2369
-msgid "_Cancel"
-msgstr "_İptal"
-
 #. and process running
-#: ../terminal/terminal-window.c:822
+#: ../terminal/terminal-window.c:875
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Diğer sekmelerde çalışan süreçler var.\nBu pencereyi kapatmak onları da sonlandıracaktır."
 
 #. and no process running
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:881
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Bu pencere açık %d sekme içeriyor. Bu pencereyi kapatmak\nbütün sekmeleri de kapatacak."
 
-#: ../terminal/terminal-window.c:832
+#: ../terminal/terminal-window.c:885
 msgid "Close all tabs?"
 msgstr "Bütün sekmeler kapatılsın mı?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:839
+#: ../terminal/terminal-window.c:892
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Çalışan bir süreç mevcut.\nBu sekmeyi kapatmak onu da sonlandıracaktır."
 
-#: ../terminal/terminal-window.c:841
+#: ../terminal/terminal-window.c:894
 msgid "Close tab?"
 msgstr "Sekme kapatılsın mı?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:846
+#: ../terminal/terminal-window.c:899
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Çalışan bir süreç mevcut.\nBu pencereyi kapatmak onu da sonlandıracaktır."
 
-#: ../terminal/terminal-window.c:848
+#: ../terminal/terminal-window.c:901
 msgid "Close window?"
 msgstr "Pencere kapatılsın mı?"
 
-#: ../terminal/terminal-window.c:1827
+#: ../terminal/terminal-window.c:1881
 msgid "Copy _Input:"
 msgstr "Girdiyi _Kopyala:"
 
-#: ../terminal/terminal-window.c:1831
+#: ../terminal/terminal-window.c:1885
 msgid "Enter the text to be copied to all tabs"
 msgstr "Tüm sekmelere kopyalanacak metni girin"
 
-#: ../terminal/terminal-window.c:1839
+#: ../terminal/terminal-window.c:1893
 msgid "Copy input"
 msgstr "Girdiyi kopyala"
 
-#: ../terminal/terminal-window.c:2181
+#: ../terminal/terminal-window.c:2250
 msgid "_Title:"
 msgstr "_Başlık:"
 
-#: ../terminal/terminal-window.c:2185
+#: ../terminal/terminal-window.c:2254
 msgid "Enter the title for the current terminal tab"
 msgstr "Aktif uçbirim sekmesine başlık girin"
 
-#: ../terminal/terminal-window.c:2190
+#: ../terminal/terminal-window.c:2259
 msgid "Reset"
 msgstr "Sıfırla"
 
-#: ../terminal/terminal-window.c:2200
+#: ../terminal/terminal-window.c:2269
 msgid "Help"
 msgstr "Yardım"
 
-#: ../terminal/terminal-window.c:2206
+#: ../terminal/terminal-window.c:2275
 msgid "Close"
 msgstr "Kapat"
 
-#: ../terminal/terminal-window.c:2228
+#: ../terminal/terminal-window.c:2297
 msgid "Choose title color"
 msgstr "Renk adını seç"
 
-#: ../terminal/terminal-window.c:2325
+#: ../terminal/terminal-window.c:2394
 msgid "Failed to create the regular expression"
 msgstr "Düzenli ifade oluşturulamadı"
 
-#: ../terminal/terminal-window.c:2366
+#: ../terminal/terminal-window.c:2435
 msgid "Save contents..."
 msgstr "İçeriği kopyala..."
 
-#: ../terminal/terminal-window.c:2370
+#: ../terminal/terminal-window.c:2439
 msgid "_Save"
 msgstr "_Kaydet"
 
-#: ../terminal/terminal-window.c:2407
+#: ../terminal/terminal-window.c:2476
 msgid "Failed to save terminal contents"
 msgstr "Uçbirim içerikleri kaydedilemedi"
 
@@ -1121,47 +1145,47 @@ msgid "Command"
 msgstr "Komut"
 
 #: ../terminal/terminal-preferences.glade.h:43
-msgid "Scroll on ou_tput"
-msgstr "Çıktıyı kaydırm_a"
+msgid "Scroll_back:"
+msgstr "Geriye ka_ydır:"
 
 #: ../terminal/terminal-preferences.glade.h:44
 msgid ""
-"This option controls whether the terminal will scroll down automatically "
-"whenever new output is generated by the commands running inside the "
-"terminal."
-msgstr "Uçbirim içinde çalışan komut yeni çıktı oluşturduğunda, bu seçenekle kendiliğinden aşağı kayması kontrol edilir."
+"Specifies the number of lines that you can scroll back using the scrollbar."
+msgstr "Kaydırma çubuğunda kaç satır geriye gidileceğini belirler."
 
 #: ../terminal/terminal-preferences.glade.h:45
-msgid "Scroll on _keystroke"
-msgstr "Tuşa basara_k kaydır"
+msgid "Unli_mited scrollback"
+msgstr "Sınırsız kaydır_ma"
 
 #: ../terminal/terminal-preferences.glade.h:46
 msgid ""
-"Enables you to press any key on the keyboard to scroll down the terminal "
-"window to the command prompt."
-msgstr "Uçbirim penceresinde aşağı kaydırmak için herhangi bir tuşa basılmasını etkinleştir"
+"This option controls whether the terminal will have no limits on scrollback."
+msgstr "Bu seçenek terminalin aşağı kaydırılmasında bir sınır olup olmamasını kontrol eder."
 
 #: ../terminal/terminal-preferences.glade.h:47
 msgid "Scr_ollbar is:"
 msgstr "Kaydı_rma çubuğu:"
 
 #: ../terminal/terminal-preferences.glade.h:48
-msgid "Scroll_back:"
-msgstr "Geriye ka_ydır:"
+msgid "Scroll on ou_tput"
+msgstr "Çıktıyı kaydırm_a"
 
 #: ../terminal/terminal-preferences.glade.h:49
 msgid ""
-"Specifies the number of lines that you can scroll back using the scrollbar."
-msgstr "Kaydırma çubuğunda kaç satır geriye gidileceğini belirler."
+"This option controls whether the terminal will scroll down automatically "
+"whenever new output is generated by the commands running inside the "
+"terminal."
+msgstr "Uçbirim içinde çalışan komut yeni çıktı oluşturduğunda, bu seçenekle kendiliğinden aşağı kayması kontrol edilir."
 
 #: ../terminal/terminal-preferences.glade.h:50
-msgid "Unli_mited scrollback"
-msgstr "Sınırsız kaydır_ma"
+msgid "Scroll on _keystroke"
+msgstr "Tuşa basara_k kaydır"
 
 #: ../terminal/terminal-preferences.glade.h:51
 msgid ""
-"This option controls whether the terminal will have no limits on scrollback."
-msgstr "Bu seçenek terminalin aşağı kaydırılmasında bir sınır olup olmamasını kontrol eder."
+"Enables you to press any key on the keyboard to scroll down the terminal "
+"window to the command prompt."
+msgstr "Uçbirim penceresinde aşağı kaydırmak için herhangi bir tuşa basılmasını etkinleştir"
 
 #: ../terminal/terminal-preferences.glade.h:52
 msgid "Scrolling"
@@ -1184,437 +1208,451 @@ msgid "Cursor"
 msgstr "İmleç"
 
 #: ../terminal/terminal-preferences.glade.h:57
+msgid "Automatically _copy selection to clipboard"
+msgstr "Seçimi otomatik olarak panoya _kopyala"
+
+#: ../terminal/terminal-preferences.glade.h:58
+msgid "Show unsafe _paste dialog"
+msgstr "Riskli _yapıştırma iletişim kutusunu göster"
+
+#: ../terminal/terminal-preferences.glade.h:59
+msgid ""
+"Show a dialog that allows to edit text that is considered unsafe for "
+"pasting."
+msgstr "Yapıştırma için riskli olduğu düşünülen metni düzenlemeye izin veren bir iletişim kutusu gösterin."
+
+#: ../terminal/terminal-preferences.glade.h:60
+msgid "Clipboard"
+msgstr "Pano"
+
+#: ../terminal/terminal-preferences.glade.h:61
 msgid "_General"
 msgstr "_Genel"
 
-#: ../terminal/terminal-preferences.glade.h:58
+#: ../terminal/terminal-preferences.glade.h:62
 msgid "_Keep window open when it loses focus"
 msgstr "Odağı kaybettiğinde pencereyi açı_k tut"
 
-#: ../terminal/terminal-preferences.glade.h:59
+#: ../terminal/terminal-preferences.glade.h:63
 msgid "Always keep window on _top"
 msgstr "Pencereyi hep en üstte _tut"
 
-#: ../terminal/terminal-preferences.glade.h:60
+#: ../terminal/terminal-preferences.glade.h:64
 msgid "Use shortcut to _focus visible window"
 msgstr "Görünür pencereye odaklanmak için kısayol kullan"
 
-#: ../terminal/terminal-preferences.glade.h:61
+#: ../terminal/terminal-preferences.glade.h:65
 msgid ""
 "If enabled, the shortcut to open and retract the window will give focus, "
 "rather than closing it, if it has previously lost focus"
 msgstr "Etkinse, pencereyi gösteren ve gizleyen kısayol pencere odağını kaybetmişse onu kapatmak yerine ona odaklanmayı sağlar"
 
-#: ../terminal/terminal-preferences.glade.h:62
+#: ../terminal/terminal-preferences.glade.h:66
 msgid "Show _status icon in notification area"
 msgstr "Bildirim alanında durum _simgesini göster"
 
-#: ../terminal/terminal-preferences.glade.h:63
+#: ../terminal/terminal-preferences.glade.h:67
 msgid "Behavior"
 msgstr "Davranış"
 
-#: ../terminal/terminal-preferences.glade.h:64
+#: ../terminal/terminal-preferences.glade.h:68
 msgid "Wi_dth:"
 msgstr "Ge_nişlik"
 
-#: ../terminal/terminal-preferences.glade.h:65
+#: ../terminal/terminal-preferences.glade.h:69
 msgid "He_ight:"
 msgstr "Yüksekl_ik:"
 
-#: ../terminal/terminal-preferences.glade.h:66
+#: ../terminal/terminal-preferences.glade.h:70
 msgid "_Always show tabs"
 msgstr "Sekmeleri d_aima göster."
 
-#: ../terminal/terminal-preferences.glade.h:67
+#: ../terminal/terminal-preferences.glade.h:71
 msgid "D_uration:"
 msgstr "S_üre:"
 
-#: ../terminal/terminal-preferences.glade.h:68
+#: ../terminal/terminal-preferences.glade.h:72
 msgid "ms"
 msgstr "ms"
 
-#: ../terminal/terminal-preferences.glade.h:69
-msgid "_Opacity:"
-msgstr "_Saydamsızlık"
-
-#: ../terminal/terminal-preferences.glade.h:70
+#: ../terminal/terminal-preferences.glade.h:74
 msgid ""
 "Opacity setting is not available since compositing is either disabled\n"
 "or not supported by your Window Manager."
 msgstr "Görüntü birleştirme devre dışı bırakıldığından, opaklık ayarı kullanılamıyor\nveya Pencere Yöneticiniz tarafından desteklenmiyor."
 
-#: ../terminal/terminal-preferences.glade.h:72
+#: ../terminal/terminal-preferences.glade.h:76
 msgid "Show window _borders"
 msgstr "Pencere _kenarlıklarını göster"
 
-#: ../terminal/terminal-preferences.glade.h:73
+#: ../terminal/terminal-preferences.glade.h:77
 msgid "Appearance and Animation"
 msgstr "Görünüm ve Animasyon"
 
-#: ../terminal/terminal-preferences.glade.h:74
+#: ../terminal/terminal-preferences.glade.h:78
 msgid "L_eft"
 msgstr "S_ol"
 
-#: ../terminal/terminal-preferences.glade.h:75
+#: ../terminal/terminal-preferences.glade.h:79
 msgid "Right"
 msgstr "Sağ"
 
-#: ../terminal/terminal-preferences.glade.h:76
+#: ../terminal/terminal-preferences.glade.h:80
 msgid "U_p"
 msgstr "Yu_karı"
 
-#: ../terminal/terminal-preferences.glade.h:77
+#: ../terminal/terminal-preferences.glade.h:81
 msgid "Down"
 msgstr "Aşağı"
 
-#: ../terminal/terminal-preferences.glade.h:78
+#: ../terminal/terminal-preferences.glade.h:82
 msgid "Move to monitor with poi_nter"
 msgstr "İmleci_n bulunduğu monitöre kaydır."
 
-#: ../terminal/terminal-preferences.glade.h:79
+#: ../terminal/terminal-preferences.glade.h:83
 msgid "Position"
 msgstr "Konum"
 
-#: ../terminal/terminal-preferences.glade.h:80
+#: ../terminal/terminal-preferences.glade.h:84
 msgid "Drop-do_wn"
 msgstr "Üstten-aşağı"
 
-#: ../terminal/terminal-preferences.glade.h:81
+#: ../terminal/terminal-preferences.glade.h:85
 msgid "Use system _font"
 msgstr "Sistem _yazı tipini kullan"
 
-#: ../terminal/terminal-preferences.glade.h:82
+#: ../terminal/terminal-preferences.glade.h:86
 msgid "Enable this option to use system-wide monospace font."
 msgstr "Sistem genelinde monospace yazı tipi kullanmak için bu seçeneği etkinleştirin."
 
-#: ../terminal/terminal-preferences.glade.h:83
+#: ../terminal/terminal-preferences.glade.h:87
 msgid "Choose Terminal Font"
 msgstr "Uçbirim Yazı Tipini Seç"
 
-#: ../terminal/terminal-preferences.glade.h:84
+#: ../terminal/terminal-preferences.glade.h:88
 msgid "Allow bold te_xt"
 msgstr "Kalın yazıya izin _ver"
 
-#: ../terminal/terminal-preferences.glade.h:85
+#: ../terminal/terminal-preferences.glade.h:89
 msgid ""
 "Enable this option to allow applications running inside the terminal windows"
 " to use bold text."
 msgstr "Uygulamaların uçbirim penceresi içerisinde kalın yazıyla kullanılması için\nbu seçeneği etkinleştirin."
 
-#: ../terminal/terminal-preferences.glade.h:86
+#: ../terminal/terminal-preferences.glade.h:90
 msgid ""
 "Controls whether text in the terminal is allowed to blink when '\\e[5m' "
 "escape codes are used."
 msgstr "'\\e[5m' kaçış kodları kullanıldığında, terminaldeki metnin yanıp sönmesine izin verilip verilmeyeceğini denetler."
 
-#: ../terminal/terminal-preferences.glade.h:87
+#: ../terminal/terminal-preferences.glade.h:91
 msgid "Text blinks:"
 msgstr "Metin yanıp sönüyor:"
 
-#: ../terminal/terminal-preferences.glade.h:88
+#: ../terminal/terminal-preferences.glade.h:92
 msgid "Cell spacing:"
 msgstr "Hücre aralığı:"
 
-#: ../terminal/terminal-preferences.glade.h:89
+#: ../terminal/terminal-preferences.glade.h:93
 msgid "x width"
 msgstr "x genişlik"
 
-#: ../terminal/terminal-preferences.glade.h:90
+#: ../terminal/terminal-preferences.glade.h:94
 msgid "x height"
 msgstr "x yükseklik"
 
-#: ../terminal/terminal-preferences.glade.h:91
+#: ../terminal/terminal-preferences.glade.h:95
 msgid "Rese_t"
 msgstr "Sı_fırla"
 
-#: ../terminal/terminal-preferences.glade.h:92
+#: ../terminal/terminal-preferences.glade.h:96
 msgid "Reset cell spacing values to defaults"
 msgstr "Hücre aralığı değerlerini varsayılanlara döndür"
 
-#: ../terminal/terminal-preferences.glade.h:93
+#: ../terminal/terminal-preferences.glade.h:97
 msgid "Font"
 msgstr "Yazıtipi"
 
-#: ../terminal/terminal-preferences.glade.h:94
+#: ../terminal/terminal-preferences.glade.h:98
 msgid "_File:"
 msgstr "Dosya:"
 
-#: ../terminal/terminal-preferences.glade.h:95
+#: ../terminal/terminal-preferences.glade.h:99
 msgid "St_yle:"
 msgstr "Sti_l:"
 
-#: ../terminal/terminal-preferences.glade.h:96
+#: ../terminal/terminal-preferences.glade.h:100
 msgid "Select Background Image File"
 msgstr "Artalan görüntü dosyasını seç"
 
-#: ../terminal/terminal-preferences.glade.h:97
+#: ../terminal/terminal-preferences.glade.h:101
 msgid "_Shading:"
 msgstr "_Gölgelendirme:"
 
-#: ../terminal/terminal-preferences.glade.h:98
+#: ../terminal/terminal-preferences.glade.h:102
 msgid "Background"
 msgstr "Artalan"
 
-#: ../terminal/terminal-preferences.glade.h:99
+#: ../terminal/terminal-preferences.glade.h:103
 msgid "Display _menubar in new windows"
 msgstr "Menü çubuğunu yeni pencerede göster"
 
-#: ../terminal/terminal-preferences.glade.h:100
+#: ../terminal/terminal-preferences.glade.h:104
 msgid ""
 "Enable this option to show the menubar in newly created terminal windows."
 msgstr "Yeni yaratılan uçbirim penceresinde menü çubuğunu göstermeyi etkinleştir."
 
-#: ../terminal/terminal-preferences.glade.h:101
+#: ../terminal/terminal-preferences.glade.h:105
 msgid "Display _toolbar in new windows"
 msgstr "Araç çubuğunu yeni pencerede gös_ter"
 
-#: ../terminal/terminal-preferences.glade.h:102
+#: ../terminal/terminal-preferences.glade.h:106
 msgid ""
 "Enable this option to show the toolbar in newly created terminal windows."
 msgstr "Yeni yaratılan uçbirim penceresinde araç çubuğunu göstermeyi etkinleştir."
 
-#: ../terminal/terminal-preferences.glade.h:103
+#: ../terminal/terminal-preferences.glade.h:107
 msgid "Display _borders around new windows"
 msgstr "Yeni pencerelerin çerçevesini göster"
 
-#: ../terminal/terminal-preferences.glade.h:104
+#: ../terminal/terminal-preferences.glade.h:108
 msgid ""
 "Enable this option to show window decorations around newly created terminal "
 "windows."
 msgstr "Yeni yaratılan pencerelerin etrafında pencere desenini gösterme seçeneğini etkinleştir"
 
-#: ../terminal/terminal-preferences.glade.h:105
+#: ../terminal/terminal-preferences.glade.h:109
 msgid "Default geometry:"
 msgstr "Öntanımlı geometri:"
 
-#: ../terminal/terminal-preferences.glade.h:106
+#: ../terminal/terminal-preferences.glade.h:110
 msgid "c_olumns"
 msgstr "k_olon"
 
-#: ../terminal/terminal-preferences.glade.h:107
+#: ../terminal/terminal-preferences.glade.h:111
 msgid "row_s"
 msgstr "_satır"
 
-#: ../terminal/terminal-preferences.glade.h:108
+#: ../terminal/terminal-preferences.glade.h:112
 msgid "Opening New Windows"
 msgstr "Yeni Pencere Açın"
 
-#: ../terminal/terminal-preferences.glade.h:109
+#: ../terminal/terminal-preferences.glade.h:113
 msgid "Reset tab activity _indicator after"
 msgstr "Sekme etkinliği gösterges_ini sıfırla"
 
-#: ../terminal/terminal-preferences.glade.h:110
+#: ../terminal/terminal-preferences.glade.h:114
 msgid "seconds"
 msgstr "saniye"
 
-#: ../terminal/terminal-preferences.glade.h:111
+#: ../terminal/terminal-preferences.glade.h:115
 msgid "Use custom styling to make tabs _slim (restart required)"
 msgstr "Sekmeleri _inceltmek için özel biçimlendirme kullan (yeniden başlatmayı gerektirir)"
 
-#: ../terminal/terminal-preferences.glade.h:112
+#: ../terminal/terminal-preferences.glade.h:116
 msgid "Tabs"
 msgstr "Sekmeler"
 
-#: ../terminal/terminal-preferences.glade.h:113
+#: ../terminal/terminal-preferences.glade.h:117
 msgid "_Appearance"
 msgstr "Görünü_m"
 
-#: ../terminal/terminal-preferences.glade.h:114
+#: ../terminal/terminal-preferences.glade.h:118
 msgid "_Text color:"
 msgstr "Me_tin rengi"
 
-#: ../terminal/terminal-preferences.glade.h:115
+#: ../terminal/terminal-preferences.glade.h:119
 msgid "Choose text color"
 msgstr "Metin rengini seç"
 
-#: ../terminal/terminal-preferences.glade.h:116
+#: ../terminal/terminal-preferences.glade.h:120
 msgid "Color Selector"
 msgstr "Renk Seçici"
 
-#: ../terminal/terminal-preferences.glade.h:117
+#: ../terminal/terminal-preferences.glade.h:121
 msgid "Open a dialog to specify the color"
 msgstr "Renk belirlemek için pencere aç"
 
-#: ../terminal/terminal-preferences.glade.h:118
+#: ../terminal/terminal-preferences.glade.h:122
 msgid "_Background color:"
 msgstr "_Artalan rengi:"
 
-#: ../terminal/terminal-preferences.glade.h:119
+#: ../terminal/terminal-preferences.glade.h:123
 msgid "Choose background color"
 msgstr "Arka plan rengini seç"
 
-#: ../terminal/terminal-preferences.glade.h:120
+#: ../terminal/terminal-preferences.glade.h:124
 msgid "Note: Ctrl+click for color editor."
 msgstr "Not: Renk düzenleyici için Ctrl+tıklama kullanın."
 
-#: ../terminal/terminal-preferences.glade.h:121
+#: ../terminal/terminal-preferences.glade.h:125
 msgid "Tab activit_y color:"
 msgstr "Sekme et_kinliği rengi:"
 
-#: ../terminal/terminal-preferences.glade.h:122
+#: ../terminal/terminal-preferences.glade.h:126
 msgid "Choose tab activity color"
 msgstr "Sekme etkinliği rengini seç"
 
-#: ../terminal/terminal-preferences.glade.h:123
+#: ../terminal/terminal-preferences.glade.h:127
 msgid "_Use system theme colors for text and background"
 msgstr "_Metin ve arka plan için sistem teması renklerini kullanın"
 
-#: ../terminal/terminal-preferences.glade.h:124
+#: ../terminal/terminal-preferences.glade.h:128
 msgid "_Vary the background color for each tab"
 msgstr "Her sekmeye farklı arkaplan rengi _ver"
 
-#: ../terminal/terminal-preferences.glade.h:125
+#: ../terminal/terminal-preferences.glade.h:129
 msgid ""
 "The random color is based on the selected background color, keeping the same"
 " brightness. "
 msgstr "Rasgele renk, aynı canlılığı koruyarak seçilen arkaplan rengini baz alır."
 
-#: ../terminal/terminal-preferences.glade.h:126
+#: ../terminal/terminal-preferences.glade.h:130
 msgid "General"
 msgstr "Genel"
 
-#: ../terminal/terminal-preferences.glade.h:127
+#: ../terminal/terminal-preferences.glade.h:131
 msgid "B_old text color:"
 msgstr "Kalın metin rengi:"
 
-#: ../terminal/terminal-preferences.glade.h:128
+#: ../terminal/terminal-preferences.glade.h:132
 msgid ""
 "Enable this option to set a custom bold color. If disabled the text color "
 "will be used."
 msgstr "Koyu metin rengini ayarlamak için bu seçeneği etkinleştirin. Eğer etkin değilse varsayılan metin rengi kullanılır."
 
-#: ../terminal/terminal-preferences.glade.h:129
+#: ../terminal/terminal-preferences.glade.h:133
 msgid "Choose bold font color"
 msgstr "Kalın yazı tipi rengini seç"
 
-#: ../terminal/terminal-preferences.glade.h:130
+#: ../terminal/terminal-preferences.glade.h:134
 msgid "Text _selection color:"
 msgstr "Metin _seçimi rengi:"
 
-#: ../terminal/terminal-preferences.glade.h:131
+#: ../terminal/terminal-preferences.glade.h:135
 msgid ""
 "Enable this option to set custom text and background colors for the "
 "selection. If disabled the background and text colors will be reversed."
 msgstr "Seçim için özel metin ve arka plan rengi ayarlamak için bu seçeneği etkinleştirin. Devre dışı bırakılırsa arka plan ve metin renkleri ters çevrilir."
 
-#: ../terminal/terminal-preferences.glade.h:132
+#: ../terminal/terminal-preferences.glade.h:136
 msgid "Choose text selection foreground color"
 msgstr "Metin seçimi arkaplan rengini seçin"
 
-#: ../terminal/terminal-preferences.glade.h:133
+#: ../terminal/terminal-preferences.glade.h:137
 msgid "Choose text selection background color"
 msgstr "Metin seçimi arkaplan rengini seç"
 
-#: ../terminal/terminal-preferences.glade.h:134
+#: ../terminal/terminal-preferences.glade.h:138
 msgid "Cu_rsor color:"
 msgstr "Metin ve imleç _rengi"
 
-#: ../terminal/terminal-preferences.glade.h:135
+#: ../terminal/terminal-preferences.glade.h:139
 msgid ""
 "Enable this option to set custom text and background colors for the cursor. "
 "If disabled the background and text colors will be reversed."
 msgstr "İmlecin özel metin ve arka plan renklerini ayarlamak için bu seçeneği etkinleştirin. Devre dışı bırakılırsa arka plan ve metin renkleri ters çevrilir."
 
-#: ../terminal/terminal-preferences.glade.h:136
+#: ../terminal/terminal-preferences.glade.h:140
 msgid "Choose cursor background color"
 msgstr "İmleç arkaplan rengini seçin"
 
-#: ../terminal/terminal-preferences.glade.h:137
+#: ../terminal/terminal-preferences.glade.h:141
 msgid "Choose cursor foreground color"
 msgstr "İmleç önplan rengini seçin"
 
-#: ../terminal/terminal-preferences.glade.h:138
+#: ../terminal/terminal-preferences.glade.h:142
 msgid "Custom Colors"
 msgstr "Özel Renkler"
 
-#: ../terminal/terminal-preferences.glade.h:139
+#: ../terminal/terminal-preferences.glade.h:143
 msgid "Black"
 msgstr "Siyah"
 
-#: ../terminal/terminal-preferences.glade.h:140
+#: ../terminal/terminal-preferences.glade.h:144
 msgid "Dark Gray"
 msgstr "Koyu Gri"
 
-#: ../terminal/terminal-preferences.glade.h:141
+#: ../terminal/terminal-preferences.glade.h:145
 msgid "Red"
 msgstr "Kırmızı"
 
-#: ../terminal/terminal-preferences.glade.h:142
+#: ../terminal/terminal-preferences.glade.h:146
 msgid "Light Red"
 msgstr "Açık Kırmızı"
 
-#: ../terminal/terminal-preferences.glade.h:143
+#: ../terminal/terminal-preferences.glade.h:147
 msgid "Green"
 msgstr "Yeşil"
 
-#: ../terminal/terminal-preferences.glade.h:144
+#: ../terminal/terminal-preferences.glade.h:148
 msgid "Light Green"
 msgstr "Açık Yeşil"
 
-#: ../terminal/terminal-preferences.glade.h:145
+#: ../terminal/terminal-preferences.glade.h:149
 msgid "Brown / Yellow"
 msgstr "Kahverengi / Sarı"
 
-#: ../terminal/terminal-preferences.glade.h:146
+#: ../terminal/terminal-preferences.glade.h:150
 msgid "Yellow"
 msgstr "Sarı"
 
-#: ../terminal/terminal-preferences.glade.h:147
+#: ../terminal/terminal-preferences.glade.h:151
 msgid "Blue"
 msgstr "Mavi"
 
-#: ../terminal/terminal-preferences.glade.h:148
+#: ../terminal/terminal-preferences.glade.h:152
 msgid "Light Blue"
 msgstr "Açık Mavi"
 
-#: ../terminal/terminal-preferences.glade.h:149
+#: ../terminal/terminal-preferences.glade.h:153
 msgid "Magenta"
 msgstr "Kızılımsı Mor"
 
-#: ../terminal/terminal-preferences.glade.h:150
+#: ../terminal/terminal-preferences.glade.h:154
 msgid "Light Magenta"
 msgstr "Açık Kızılımsı Mor"
 
-#: ../terminal/terminal-preferences.glade.h:151
+#: ../terminal/terminal-preferences.glade.h:155
 msgid "Cyan"
 msgstr "Deniz Mavisi"
 
-#: ../terminal/terminal-preferences.glade.h:152
+#: ../terminal/terminal-preferences.glade.h:156
 msgid "Light Cyan"
 msgstr "Açık Deniz Mavisi"
 
-#: ../terminal/terminal-preferences.glade.h:153
+#: ../terminal/terminal-preferences.glade.h:157
 msgid "Light Gray"
 msgstr "Açık Gri"
 
-#: ../terminal/terminal-preferences.glade.h:154
+#: ../terminal/terminal-preferences.glade.h:158
 msgid "White"
 msgstr "Beyaz"
 
-#: ../terminal/terminal-preferences.glade.h:155
+#: ../terminal/terminal-preferences.glade.h:159
 msgid "Show bold text in b_right colors"
 msgstr "Pa_rlak renklerle kalın metinleri göster"
 
-#: ../terminal/terminal-preferences.glade.h:156
+#: ../terminal/terminal-preferences.glade.h:160
 msgid ""
 "Enable this option to allow escape sequences such as '\\e[1;35m' to switch "
 "text to bright colors in addition to bold. If disabled, text color will "
 "remain intact."
 msgstr "'\\e[1;35m' gibi koyu renklere ek olarak metni parlak renklere çevirmek için kaçış dizilimlerine izin vermek için bu seçeneği etkinleştirin. Devre dışı bırakılırsa, metin rengi bozulmadan kalır."
 
-#: ../terminal/terminal-preferences.glade.h:157
+#: ../terminal/terminal-preferences.glade.h:161
 msgid "Palette"
 msgstr "Palet"
 
-#: ../terminal/terminal-preferences.glade.h:158
+#: ../terminal/terminal-preferences.glade.h:162
 msgid "Presets"
 msgstr "Önayarlar"
 
-#: ../terminal/terminal-preferences.glade.h:159
+#: ../terminal/terminal-preferences.glade.h:163
 msgid "_Colors"
 msgstr "Re_nkler"
 
-#: ../terminal/terminal-preferences.glade.h:160
+#: ../terminal/terminal-preferences.glade.h:164
 msgid ""
 "These options may cause some applications to behave\n"
 "incorrectly. They are only here to allow you to work around\n"
@@ -1622,124 +1660,120 @@ msgid ""
 "different terminal behavior."
 msgstr "Bu seçenekler bazı uygulamaların hatalı çalışmasına neden\nolabilir. Farklı uçbirim ayarlarına gereksinim duyan özel\nuygulamalar ve işletim sistemlerinin çalıştırılması için\nbu seçenekler bulunmaktadır."
 
-#: ../terminal/terminal-preferences.glade.h:164
+#: ../terminal/terminal-preferences.glade.h:168
 msgid "_Backspace key generates:"
 msgstr "Geri tuşuna basıldığında:"
 
-#: ../terminal/terminal-preferences.glade.h:165
+#: ../terminal/terminal-preferences.glade.h:169
 msgid "_Delete key generates:"
 msgstr "Sil tuşuna basıldığında:"
 
-#: ../terminal/terminal-preferences.glade.h:166
+#: ../terminal/terminal-preferences.glade.h:170
 msgid "_Reset compatibility options to defaults"
 msgstr "Uyumluluk ayarlarını varsayılana geri geti_r"
 
-#: ../terminal/terminal-preferences.glade.h:167
+#: ../terminal/terminal-preferences.glade.h:171
 msgid "_Ambiguous-width characters:"
 msgstr "_Belirsiz genişlikteki karakterler:"
 
-#: ../terminal/terminal-preferences.glade.h:168
+#: ../terminal/terminal-preferences.glade.h:172
 msgid "Compatibility"
 msgstr "Uyumluluk"
 
-#: ../terminal/terminal-preferences.glade.h:169
+#: ../terminal/terminal-preferences.glade.h:173
 msgid "Co_mpatibility"
 msgstr "Uyu_mluluk"
 
-#: ../terminal/terminal-preferences.glade.h:170
+#: ../terminal/terminal-preferences.glade.h:174
 msgid ""
 "Consider the following\n"
 "characters part of a _word\n"
 "when double clicking:"
 msgstr "Çift tıklandığında sözcüğün\ntakip eden harflerini\nhesaba kat:"
 
-#: ../terminal/terminal-preferences.glade.h:173
+#: ../terminal/terminal-preferences.glade.h:177
 msgid "Reset double click options to defaults"
 msgstr "Varsayılanlara çift tıklama seçeneklerini sıfırlayın"
 
-#: ../terminal/terminal-preferences.glade.h:174
+#: ../terminal/terminal-preferences.glade.h:178
 msgid "Double Click"
 msgstr "Çift tıklama"
 
-#: ../terminal/terminal-preferences.glade.h:175
+#: ../terminal/terminal-preferences.glade.h:179
 msgid "Default character e_ncoding:"
 msgstr "Varsayıla_n karakter kodlaması:"
 
-#: ../terminal/terminal-preferences.glade.h:176
+#: ../terminal/terminal-preferences.glade.h:180
 msgid "Encoding"
 msgstr "Kodlama"
 
-#: ../terminal/terminal-preferences.glade.h:177
+#: ../terminal/terminal-preferences.glade.h:181
 msgid "Disable all me_nu access keys (such as Alt+f)"
 msgstr "Bütün me_nü erişim tuşlarını devre dışı bırak (örneğin Alt+f)"
 
-#: ../terminal/terminal-preferences.glade.h:178
+#: ../terminal/terminal-preferences.glade.h:182
 msgid "Disable m_enu shortcut key (F10 by default)"
 msgstr "M_enü kısayol tuşunu devredışı bırak (Varsayılan F10)"
 
-#: ../terminal/terminal-preferences.glade.h:179
+#: ../terminal/terminal-preferences.glade.h:183
 msgid "Disable _help window shortcut key (F1 by default)"
 msgstr "Yardım _penceresi kısayolunu devredışı bırak (Varsayılan F1)"
 
-#: ../terminal/terminal-preferences.glade.h:180
+#: ../terminal/terminal-preferences.glade.h:184
 msgid "Shortcuts"
 msgstr "Kısayollar"
 
-#: ../terminal/terminal-preferences.glade.h:181
+#: ../terminal/terminal-preferences.glade.h:185
 msgid "Use _middle mouse click to close tabs"
 msgstr "Sekmeleri _kapatmak için farenin orta tuşunu kullan"
 
-#: ../terminal/terminal-preferences.glade.h:182
+#: ../terminal/terminal-preferences.glade.h:186
 msgid "Use middle mouse click to open _URLs"
 msgstr "Farenin orta tuşunu _Adresleri açmak için kullan"
 
-#: ../terminal/terminal-preferences.glade.h:183
+#: ../terminal/terminal-preferences.glade.h:187
 msgid "If disabled, URLs can be opened by Ctrl + left mouse click."
 msgstr "İptal edilidiğinde Adresler sadece Ctrl + farenin sol tıklamasıyla açılabilir."
 
-#: ../terminal/terminal-preferences.glade.h:184
+#: ../terminal/terminal-preferences.glade.h:188
 msgid "Auto-hi_de mouse pointer"
 msgstr "Fare imlecini _otomatik gizle"
 
-#: ../terminal/terminal-preferences.glade.h:185
+#: ../terminal/terminal-preferences.glade.h:189
 msgid "Re_wrap terminal contents on resize"
 msgstr "Uçbirim yeniden boyutlandırıldığında içeriği _yeniden kaydır"
 
-#: ../terminal/terminal-preferences.glade.h:186
-msgid "Automatically _copy selection to clipboard"
-msgstr "Seçimi otomatik olarak panoya _kopyala"
-
-#: ../terminal/terminal-preferences.glade.h:187
+#: ../terminal/terminal-preferences.glade.h:190
 msgid "Open new tab to the _right of the active tab"
 msgstr "Etkin sekmenin _sağında yeni bir sekme aç"
 
-#: ../terminal/terminal-preferences.glade.h:188
+#: ../terminal/terminal-preferences.glade.h:191
 msgid "If disabled, new tab will be opened in the rightmost position."
 msgstr "Etkisiz hale getirilirse yeni sekme sağ üst konumda açılacaktır."
 
-#: ../terminal/terminal-preferences.glade.h:189
+#: ../terminal/terminal-preferences.glade.h:192
 msgid "_Audible bell"
 msgstr "_Sesli uyarı"
 
-#: ../terminal/terminal-preferences.glade.h:190
+#: ../terminal/terminal-preferences.glade.h:193
 msgid "Allows the terminal to play sound to indicate some events."
 msgstr "Uçbirimin bazı olaylar gerçekleştiğinde sesler çalmasına izin verir."
 
-#: ../terminal/terminal-preferences.glade.h:191
+#: ../terminal/terminal-preferences.glade.h:194
 msgid "_Visual bell"
 msgstr "_Görsel uyarı"
 
-#: ../terminal/terminal-preferences.glade.h:192
+#: ../terminal/terminal-preferences.glade.h:195
 msgid ""
 "Allows the terminal to use WM's capability of urgent hint to indicate some "
 "events."
 msgstr "Uçbirimin bazı olayları göstermek için WM'nin acil ipucu yeteneğini kullanmasına izin verir."
 
-#: ../terminal/terminal-preferences.glade.h:193
+#: ../terminal/terminal-preferences.glade.h:196
 msgid "Misc"
 msgstr "Çeşitli"
 
-#: ../terminal/terminal-preferences.glade.h:194
+#: ../terminal/terminal-preferences.glade.h:197
 msgid "Ad_vanced"
 msgstr "Geliş_miş"
 
