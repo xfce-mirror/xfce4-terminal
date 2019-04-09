@@ -1838,6 +1838,12 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
       if (res_text != NULL)
         {
+          /* convert LF to CR before feeding: see https://gitlab.gnome.org/GNOME/vte/issues/106 */
+          size_t i;
+          for (i = 0; i < strlen (res_text); ++i)
+            if (res_text[i] == '\x0A')
+              res_text[i] = '\x0D';
+
           vte_terminal_feed_child (VTE_TERMINAL (screen->terminal), res_text, strlen (res_text));
           g_free (res_text);
         }
