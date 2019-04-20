@@ -702,7 +702,11 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)) != fullscreen)
         gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), fullscreen);
 G_GNUC_END_IGNORE_DEPRECATIONS
-    }
+
+      /* update drop-down window geometry, otherwise it'll be incorrect */
+      if (!fullscreen && window->priv->drop_down)
+        terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
+  }
 
   if (GTK_WIDGET_CLASS (terminal_window_parent_class)->window_state_event != NULL)
     return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->window_state_event) (widget, event);
@@ -2032,13 +2036,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       if (fullscreen)
         gtk_window_fullscreen (GTK_WINDOW (window));
       else
-        {
-          gtk_window_unfullscreen (GTK_WINDOW (window));
-
-          /* update drop-down window geometry, otherwise it'll be incorrect */
-          if (window->priv->drop_down)
-            terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
-        }
+        gtk_window_unfullscreen (GTK_WINDOW (window));
     }
 }
 
