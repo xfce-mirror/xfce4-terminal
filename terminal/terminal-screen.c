@@ -1080,7 +1080,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
       has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
       if (use_theme || !has_bg)
         {
-          gtk_style_context_get_background_color (context, GTK_STATE_ACTIVE, &bg);
+          gtk_style_context_get_background_color (context, GTK_STATE_FLAG_ACTIVE, &bg);
           has_bg = TRUE;
         }
     }
@@ -1092,7 +1092,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
       has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
       if (use_theme || !has_fg)
         {
-          gtk_style_context_get_color (context, GTK_STATE_ACTIVE, &fg);
+          gtk_style_context_get_color (context, GTK_STATE_FLAG_ACTIVE, &fg);
           has_fg = TRUE;
         }
     }
