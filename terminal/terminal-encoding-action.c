@@ -133,7 +133,7 @@ static const gchar *terminal_encodings_charsets[][8] =
   /* Georgian */
   { "GEORGIAN-PS", NULL },
   /* Unicode */
-  { "UTF-8", "UTF-16", "UTF-7", "UCS-2", NULL },
+  { "UTF-8", NULL },
   /* Other */
   { "IBM874", "TSCII", NULL },
 };
