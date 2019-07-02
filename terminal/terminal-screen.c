@@ -1771,7 +1771,7 @@ terminal_screen_set_tab_label_color (TerminalScreen *screen,
 static gboolean
 terminal_screen_is_text_unsafe (const gchar *text)
 {
-  return text != NULL && (strstr (text, "sudo") != NULL || strchr (text, '\n') != NULL);
+  return text != NULL && strchr (text, '\n') != NULL;
 }
 
 
