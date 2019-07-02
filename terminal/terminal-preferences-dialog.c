@@ -330,6 +330,13 @@ error:
   gtk_widget_hide (GTK_WIDGET (object));
 #endif
 
+#if VTE_CHECK_VERSION (0, 58, 0)
+  /* hide "Rewrap on resize" if vte's support for it has been dropped */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "misc-rewrap-on-resize");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+#endif
+
   /* run custom command button */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "run-custom-command");
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "hbox3");

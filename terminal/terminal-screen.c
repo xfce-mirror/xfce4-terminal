@@ -1256,7 +1256,9 @@ terminal_screen_update_misc_rewrap_on_resize (TerminalScreen *screen)
 {
   gboolean bval;
   g_object_get (G_OBJECT (screen->preferences), "misc-rewrap-on-resize", &bval, NULL);
+#if !VTE_CHECK_VERSION (0, 58, 0)
   vte_terminal_set_rewrap_on_resize (VTE_TERMINAL (screen->terminal), bval);
+#endif
 }
 
 
