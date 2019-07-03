@@ -1,3 +1,61 @@
+0.8.8
+=====
+- Do not show "Rewrap on resize" option for vte>=0.58: it's been deprecated,
+  rewrapping on resize will always be enabled. (bug #15562)
+- Drop support of Unicode encodings other than UTF-8 (bug #15377)
+- Fix the size of drop-down window after it's been in fullscreen mode
+  (bug #15240)
+- Convert LF to CR when feeding text - this fixes pasting text to some apps
+  (see https://gitlab.gnome.org/GNOME/vte/issues/106)
+- Save accelerators map on exit (bug #15201)
+- Add support for the Tab key in shortcuts (by default, GTK doesn't allow that)
+- Do not resize the window when it's vertically maximized (bug #10551)
+- Add action to switch to last active tab (bug #15201)
+- Respect Xfce monospace font setting (bug #15202)
+- Dropdown window was session saved and restored as a normal window if it was
+  the only one (bug #11362)
+- Preferences: Align controls on the General tab
+- Implement "Unsafe Paste" dialog (bug #13252)
+- Enable Ctrl+(Shift)+Tab as Next/Prev Tab shortcuts (bug #15092)
+- Add an option to use system theme colors for text and background (bug #14808)
+- Search dialog improvements: Enable "Wrap around" by default; Make
+  "Find Next"/"Find Previous" menu items respect search settings; Make buttons
+  use menu item accelerators; Allow to set opacity (min 10%) (bug #15124)
+- Fix handling of OSC-10 escape sequence (bold text color) (bug #15019)
+- Refine the wording for "opacity not available" (bug #14904)
+- Add a space character after a dragged filename or URL (bug #14849)
+- Support monitoring of the terminalrc file even it's a symlink (bug #14698)
+- Fix the "Close tab" button: When the "Close tab" button got clicked in the
+  "Confirm close" dialog, the entire window (instead of just the current tab)
+  got closed (bug #14645)
+- Preferences: remove dependency on libxfce4ui
+- Fix typo in the .desktop file (bug #14594)
+- Improve .desktop files for GNOME (bug #14575)
+- Fix a small typo in the manpage
+- JIT compile regexes (taken from gnome-terminal). This allows to recognize
+  longer and more complex URLs.
+- Update terminal regexes from gnome-terminal (regex: Allow apostrophes in
+  URLs, except when enclosed between them)
+- Allow to move tabs between windows by dragging them onto the terminal area
+- When detaching a tab from a drop-down window, resize the new window to the
+  default geometry
+- Reset activity indicator for the active tab when focusing window
+- Distinguish terminal settings from the actual terminal entry in the menu
+  (bug #14456)
+- When closing an active tab, switch to the previously active one
+- Tab title color feature improvements: add action, restore the color when
+  unclosing a tab, fix the color picker dialog's name, add Reset button
+- Some parts of the --help output were not translated
+- Restore terminal colors when unclosing a tab
+- New translations: Armenian (Armenia), Interlingue
+- Translation updates: Albanian, Arabic, Asturian, Basque, Belarusian,
+  Bulgarian, Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech,
+  Danish, Dutch, English (Australia), English (United Kingdom), Finnish,
+  French, Galician, German, Greek, Hebrew, Hungarian, Icelandic, Indonesian,
+  Italian, Japanese, Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål,
+  Occitan, Polish, Portuguese, Portuguese (Brazil), Romanian, Russian, Serbian,
+  Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Uighur, Ukrainian
+
 0.8.7.4
 =======
 - Tab became active if unclosed to the left of the current tab
@@ -22,7 +80,8 @@
 - Resolve the warnings gcc8 has introduced
 - Translation updates: Bulgarian, Catalan, Chinese (China), Chinese (Taiwan),
   Croatian, Czech, Danish, Dutch, English (Australia), French, German, Hebrew,
-  Hungarian, Japanese, Lithuanian, Malay, Polish, Portuguese, Portuguese (Brazil), Russian, Turkish, Ukrainian
+  Hungarian, Japanese, Lithuanian, Malay, Polish, Portuguese, Portuguese
+  (Brazil), Russian, Turkish, Ukrainian
 
 0.8.7.3
 =======
