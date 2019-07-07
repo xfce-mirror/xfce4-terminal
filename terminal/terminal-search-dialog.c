@@ -169,6 +169,8 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   opacity_scale = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10.0, 100.0, 1.0);
   gtk_scale_set_value_pos (GTK_SCALE (opacity_scale), GTK_POS_RIGHT);
   gtk_box_pack_start (GTK_BOX (opacity_box), opacity_scale, TRUE, TRUE, 0);
+  /* don't want text entry to lose focus when user changes opacity */
+  gtk_widget_set_can_focus (opacity_scale, FALSE);
 
   percent_label = gtk_label_new ("%");
   gtk_box_pack_start (GTK_BOX (opacity_box), percent_label, FALSE, FALSE, 0);
