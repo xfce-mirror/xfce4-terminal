@@ -1396,7 +1396,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
           g_object_get (G_OBJECT (window->priv->preferences),
                         "misc-tab-close-middle-click", &close_middle_click, NULL);
           if (close_middle_click)
-            gtk_widget_destroy (page);
+            terminal_window_close_tab_request (TERMINAL_SCREEN (page), window);
         }
       else
         {
