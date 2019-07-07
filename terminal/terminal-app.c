@@ -804,6 +804,10 @@ terminal_app_open_window (TerminalApp        *app,
                                                   attr->menubar,
                                                   attr->toolbar);
 
+          /* drop-down window can be maximized */
+          if (attr->maximize)
+            gtk_window_maximize (GTK_WINDOW (window));
+
           /* put it on the correct screen/display */
           screen = terminal_app_find_screen (attr_display, attr_screen_num);
           gtk_window_set_screen (GTK_WINDOW (window), screen);
