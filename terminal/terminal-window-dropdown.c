@@ -752,6 +752,9 @@ terminal_window_dropdown_hide (TerminalWindowDropdown *dropdown)
     }
   else
     {
+      /* it seems that xfwm4 wants the window unmaximized when it's hidden (bug #15681) */
+      if (gtk_window_is_maximized (GTK_WINDOW (dropdown)))
+        gtk_window_unmaximize (GTK_WINDOW (dropdown));
       gtk_widget_hide (GTK_WIDGET (dropdown));
     }
 }
