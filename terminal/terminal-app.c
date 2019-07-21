@@ -169,8 +169,10 @@ terminal_app_finalize (GObject *object)
   if (app->accel_map != NULL)
     g_object_unref (G_OBJECT (app->accel_map));
   if (G_UNLIKELY (app->accel_map_save_id != 0))
-    g_source_remove (app->accel_map_save_id);
-  terminal_app_accel_map_save (app);
+    {
+      g_source_remove (app->accel_map_save_id);
+      terminal_app_accel_map_save (app);
+    }
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
