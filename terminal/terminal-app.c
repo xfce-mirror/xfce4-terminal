@@ -369,18 +369,8 @@ terminal_app_unset_urgent_bell (TerminalWindow *window,
                                 GdkEvent       *event,
                                 TerminalApp    *app)
 {
-  GtkWidget *toplevel;
-  gboolean   enabled;
-
-  g_object_get (G_OBJECT (app->preferences),
-                "misc-bell-urgent", &enabled,
-                NULL);
-
-  if (enabled)
-    {
-      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (window));
-      gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), FALSE);
-    }
+  GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (window));
+  gtk_window_set_urgency_hint (GTK_WINDOW (toplevel), FALSE);
 
   return FALSE;
 }
