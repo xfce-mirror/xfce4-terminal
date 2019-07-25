@@ -200,6 +200,7 @@ struct _TerminalScreen
 
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
+  guint                has_random_bg_color : 1;
 #if !VTE_CHECK_VERSION (0, 51, 1)
   guint                scroll_on_output : 1;
 #endif
@@ -1075,18 +1076,6 @@ terminal_screen_update_colors (TerminalScreen *screen)
       valid_palette = (n == 16);
     }
 
-  if (G_LIKELY (screen->custom_bg_color == NULL))
-    {
-      has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
-      if (use_theme || !has_bg)
-        {
-          gtk_style_context_get_background_color (context, GTK_STATE_FLAG_ACTIVE, &bg);
-          has_bg = TRUE;
-        }
-    }
-  else
-    has_bg = gdk_rgba_parse (&bg, screen->custom_bg_color);
-
   if (G_LIKELY (screen->custom_fg_color == NULL))
     {
       has_fg = terminal_preferences_get_color (screen->preferences, "color-foreground", &fg);
@@ -1099,45 +1088,75 @@ terminal_screen_update_colors (TerminalScreen *screen)
   else
     has_fg = gdk_rgba_parse (&fg, screen->custom_fg_color);
 
-  /* we pick a random hue value to keep readability */
-  if (G_LIKELY (screen->custom_bg_color == NULL) && vary_bg && has_bg)
+  if (G_LIKELY (screen->custom_bg_color == NULL))
     {
-      gtk_rgb_to_hsv (bg.red, bg.green, bg.blue,
-                      NULL, &hsv[HSV_SATURATION], &hsv[HSV_VALUE]);
-
-      /* pick random hue */
-      hsv[HSV_HUE] = g_random_double_range (0.00, 1.00);
-
-      /* saturation moving window, depending on the value */
-      if (hsv[HSV_SATURATION] <= SATURATION_WINDOW)
+      has_bg = terminal_preferences_get_color (screen->preferences, "color-background", &bg);
+      if (use_theme || !has_bg)
         {
-          sat_min = 0.00;
-          sat_max = (2 * SATURATION_WINDOW);
-        }
-      else if (hsv[HSV_SATURATION] >= (1.00 - SATURATION_WINDOW))
-        {
-          sat_min = 1.00 - (2 * SATURATION_WINDOW);
-          sat_max = 1.00;
-        }
-      else
-        {
-          sat_min = hsv[HSV_SATURATION] - SATURATION_WINDOW;
-          sat_max = hsv[HSV_SATURATION] + SATURATION_WINDOW;
+          gtk_style_context_get_background_color (context, GTK_STATE_FLAG_ACTIVE, &bg);
+          has_bg = TRUE;
         }
 
-      hsv[HSV_SATURATION] = g_random_double_range (sat_min, sat_max);
+      /* we pick a random hue value to keep readability */
+      if (vary_bg && !screen->has_random_bg_color)
+        {
+          gtk_rgb_to_hsv (bg.red, bg.green, bg.blue,
+                          NULL, &hsv[HSV_SATURATION], &hsv[HSV_VALUE]);
 
-      /* and back to a rgb color */
-      gtk_hsv_to_rgb (hsv[HSV_HUE], hsv[HSV_SATURATION], hsv[HSV_VALUE],
-                      &bg.red, &bg.green, &bg.blue);
+          /* pick random hue */
+          hsv[HSV_HUE] = g_random_double_range (0.00, 1.00);
+
+          /* saturation moving window, depending on the value */
+          if (hsv[HSV_SATURATION] <= SATURATION_WINDOW)
+            {
+              sat_min = 0.00;
+              sat_max = (2 * SATURATION_WINDOW);
+            }
+          else if (hsv[HSV_SATURATION] >= (1.00 - SATURATION_WINDOW))
+            {
+              sat_min = 1.00 - (2 * SATURATION_WINDOW);
+              sat_max = 1.00;
+            }
+          else
+            {
+              sat_min = hsv[HSV_SATURATION] - SATURATION_WINDOW;
+              sat_max = hsv[HSV_SATURATION] + SATURATION_WINDOW;
+            }
+
+          hsv[HSV_SATURATION] = g_random_double_range (sat_min, sat_max);
+
+          /* and back to a rgb color */
+          gtk_hsv_to_rgb (hsv[HSV_HUE], hsv[HSV_SATURATION], hsv[HSV_VALUE],
+                          &bg.red, &bg.green, &bg.blue);
+
+          /* save the color */
+          screen->background_color.red = bg.red;
+          screen->background_color.green = bg.green;
+          screen->background_color.blue = bg.blue;
+
+          /* it seems that random color may not be generated on the first run
+           * so add a check here */
+          if (bg.red != 0 && bg.green != 0 && bg.blue != 0)
+            screen->has_random_bg_color = 1;
+        }
+      else if (vary_bg && screen->has_random_bg_color)
+        {
+          /* we already have a random bg color - do nothing */
+        }
+      else if (!vary_bg)
+        {
+          /* update the color if the vary setting is unchecked */
+          screen->background_color.red = bg.red;
+          screen->background_color.green = bg.green;
+          screen->background_color.blue = bg.blue;
+          screen->has_random_bg_color = 0;
+        }
     }
+  else
+    has_bg = gdk_rgba_parse (&screen->background_color, screen->custom_bg_color);
 
   if (G_LIKELY (valid_palette))
     {
-      screen->background_color.red = bg.red;
-      screen->background_color.green = bg.green;
-      screen->background_color.blue = bg.blue;
-
       vte_terminal_set_colors (VTE_TERMINAL (screen->terminal),
                                has_fg ? &fg : NULL,
                                has_bg ? &screen->background_color : NULL,
