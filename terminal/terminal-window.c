@@ -881,12 +881,14 @@ terminal_window_confirm_close (TerminalScreen *screen,
   if ((screen != NULL || n_tabs < 2) && !confirm_close)
     return (screen != NULL) ? CONFIRMED_CLOSE_TAB : CONFIRMED_CLOSE_WINDOW;
 
-  dialog = gtk_dialog_new_with_buttons (_("Warning"), GTK_WINDOW (window),
-                                        GTK_DIALOG_DESTROY_WITH_PARENT
-                                        | GTK_DIALOG_MODAL,
-                                        _("_Cancel"),
-                                        GTK_RESPONSE_CANCEL,
-                                        NULL);
+  dialog = gtk_dialog_new ();
+  gtk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (window));
+  gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+  gtk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Warning"));
+
+  button = xfce_gtk_button_new_mixed ("gtk-cancel", _("_Cancel"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
 
   if (screen == NULL && n_tabs > 1)
     {

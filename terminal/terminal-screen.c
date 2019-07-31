@@ -1805,15 +1805,20 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkTextBuffer *buffer = gtk_text_buffer_new (gtk_text_tag_table_new ());
   GtkWidget     *tv = gtk_text_view_new_with_buffer (buffer);
   GtkWidget     *sw = gtk_scrolled_window_new (NULL, NULL);
-  GtkWidget     *dialog = xfce_titled_dialog_new_with_buttons (_("Warning: Unsafe Paste"), parent,
-                                                               GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                               _("_Cancel"), GTK_RESPONSE_CANCEL,
-                                                               _("_Paste"), GTK_RESPONSE_YES,
-                                                               NULL);
+  GtkWidget     *dialog = xfce_titled_dialog_new ();
+  GtkWidget     *button;
 
+  gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
+  gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Warning: Unsafe Paste"));
   xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dialog),
                                    _("Pasting this text to the terminal may be dangerous as it looks like\n"
                                      "some commands may be executed, potentially involving root access ('sudo')."));
+
+  button = xfce_gtk_button_new_mixed ("gtk-cancel", _("_Cancel"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
+  button = xfce_gtk_button_new_mixed ("gtk-ok", _("_Paste"));
+  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
 
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
