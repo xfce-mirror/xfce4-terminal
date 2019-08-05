@@ -152,9 +152,6 @@ static void       terminal_screen_vte_resize_window             (VteTerminal    
 static void       terminal_screen_vte_window_contents_changed   (TerminalScreen        *screen);
 static void       terminal_screen_vte_window_contents_resized   (TerminalScreen        *screen);
 static void       terminal_screen_update_label_orientation      (TerminalScreen        *screen);
-static gchar     *terminal_screen_zoom_font                     (TerminalScreen        *screen,
-                                                                 gchar                 *font_name,
-                                                                 TerminalZoomLevel      zoom);
 static void       terminal_screen_urgent_bell                   (TerminalWidget        *widget,
                                                                  TerminalScreen        *screen);
 static void       terminal_screen_set_custom_command            (TerminalScreen        *screen,
@@ -1685,62 +1682,6 @@ terminal_screen_update_label_orientation (TerminalScreen *screen)
 
 
 
-static gchar*
-terminal_screen_zoom_font (TerminalScreen   *screen,
-                           gchar            *font_name,
-                           TerminalZoomLevel zoom)
-{
-  gdouble               scale;
-  PangoFontDescription *font_desc;
-  gchar                *font_zoomed;
-
-  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
-  terminal_return_val_if_fail (font_name != NULL, NULL);
-
-  switch (zoom)
-    {
-      case TERMINAL_ZOOM_LEVEL_MINIMUM:     scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2/1.2; break;
-      case TERMINAL_ZOOM_LEVEL_XXXXX_SMALL: scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2;     break;
-      case TERMINAL_ZOOM_LEVEL_XXXX_SMALL:  scale = PANGO_SCALE_XX_SMALL/1.2/1.2;         break;
-      case TERMINAL_ZOOM_LEVEL_XXX_SMALL:   scale = PANGO_SCALE_XX_SMALL/1.2;             break;
-      case TERMINAL_ZOOM_LEVEL_XX_SMALL:    scale = PANGO_SCALE_XX_SMALL;                 break;
-      case TERMINAL_ZOOM_LEVEL_X_SMALL:     scale = PANGO_SCALE_X_SMALL;                  break;
-      case TERMINAL_ZOOM_LEVEL_SMALL:       scale = PANGO_SCALE_SMALL;                    break;
-      case TERMINAL_ZOOM_LEVEL_LARGE:       scale = PANGO_SCALE_LARGE;                    break;
-      case TERMINAL_ZOOM_LEVEL_X_LARGE:     scale = PANGO_SCALE_X_LARGE;                  break;
-      case TERMINAL_ZOOM_LEVEL_XX_LARGE:    scale = PANGO_SCALE_XX_LARGE;                 break;
-      case TERMINAL_ZOOM_LEVEL_XXX_LARGE:   scale = PANGO_SCALE_XX_LARGE*1.2;             break;
-      case TERMINAL_ZOOM_LEVEL_XXXX_LARGE:  scale = PANGO_SCALE_XX_LARGE*1.2*1.2;         break;
-      case TERMINAL_ZOOM_LEVEL_XXXXX_LARGE: scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2;     break;
-      case TERMINAL_ZOOM_LEVEL_MAXIMUM:     scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2*1.2; break;
-      default:
-        return font_name;
-    }
-
-  font_desc = pango_font_description_from_string (font_name);
-  if (font_desc == NULL)
-    return font_name;
-
-  if (pango_font_description_get_size_is_absolute (font_desc))
-    pango_font_description_set_absolute_size (font_desc,
-                                              scale * pango_font_description_get_size (font_desc));
-  else
-    pango_font_description_set_size (font_desc,
-                                     scale * pango_font_description_get_size (font_desc));
-
-  font_zoomed = pango_font_description_to_string (font_desc);
-  pango_font_description_free (font_desc);
-
-  if (font_zoomed == NULL)
-    return font_name;
-
-  g_free (font_name);
-
-  return font_zoomed;
-}
-
-
-
 static void
 terminal_screen_urgent_bell (TerminalWidget *widget,
                              TerminalScreen *screen)
@@ -2846,6 +2787,7 @@ terminal_screen_update_font (TerminalScreen *screen)
   glong                 grid_w = 0, grid_h = 0;
   GSettings            *settings;
   XfconfChannel        *channel;
+  gdouble               font_scale = PANGO_SCALE_MEDIUM;
 #if VTE_CHECK_VERSION (0, 51, 3)
   gdouble cell_width_scale, cell_height_scale;
 #endif
@@ -2888,9 +2830,24 @@ terminal_screen_update_font (TerminalScreen *screen)
           font_name = g_strdup (terminal_window_get_font (TERMINAL_WINDOW (toplevel)));
         }
 
-      if (terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)) != TERMINAL_ZOOM_LEVEL_DEFAULT)
-        font_name = terminal_screen_zoom_font (screen, font_name,
-                                               terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)));
+      switch (terminal_window_get_zoom_level (TERMINAL_WINDOW (toplevel)))
+        {
+          case TERMINAL_ZOOM_LEVEL_MINIMUM:     font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2/1.2; break;
+          case TERMINAL_ZOOM_LEVEL_XXXXX_SMALL: font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2/1.2;     break;
+          case TERMINAL_ZOOM_LEVEL_XXXX_SMALL:  font_scale = PANGO_SCALE_XX_SMALL/1.2/1.2;         break;
+          case TERMINAL_ZOOM_LEVEL_XXX_SMALL:   font_scale = PANGO_SCALE_XX_SMALL/1.2;             break;
+          case TERMINAL_ZOOM_LEVEL_XX_SMALL:    font_scale = PANGO_SCALE_XX_SMALL;                 break;
+          case TERMINAL_ZOOM_LEVEL_X_SMALL:     font_scale = PANGO_SCALE_X_SMALL;                  break;
+          case TERMINAL_ZOOM_LEVEL_SMALL:       font_scale = PANGO_SCALE_SMALL;                    break;
+          case TERMINAL_ZOOM_LEVEL_LARGE:       font_scale = PANGO_SCALE_LARGE;                    break;
+          case TERMINAL_ZOOM_LEVEL_X_LARGE:     font_scale = PANGO_SCALE_X_LARGE;                  break;
+          case TERMINAL_ZOOM_LEVEL_XX_LARGE:    font_scale = PANGO_SCALE_XX_LARGE;                 break;
+          case TERMINAL_ZOOM_LEVEL_XXX_LARGE:   font_scale = PANGO_SCALE_XX_LARGE*1.2;             break;
+          case TERMINAL_ZOOM_LEVEL_XXXX_LARGE:  font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2;         break;
+          case TERMINAL_ZOOM_LEVEL_XXXXX_LARGE: font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2;     break;
+          case TERMINAL_ZOOM_LEVEL_MAXIMUM:     font_scale = PANGO_SCALE_XX_LARGE*1.2*1.2*1.2*1.2; break;
+          default:                              font_scale = PANGO_SCALE_MEDIUM;                   break;
+        }
     }
 
   if (gtk_widget_get_realized (GTK_WIDGET (screen)))
@@ -2901,6 +2858,7 @@ terminal_screen_update_font (TerminalScreen *screen)
       font_desc = pango_font_description_from_string (font_name);
       vte_terminal_set_allow_bold (VTE_TERMINAL (screen->terminal), font_allow_bold);
       vte_terminal_set_font (VTE_TERMINAL (screen->terminal), font_desc);
+      vte_terminal_set_font_scale (VTE_TERMINAL (screen->terminal), font_scale);
       pango_font_description_free (font_desc);
       g_free (font_name);
     }
