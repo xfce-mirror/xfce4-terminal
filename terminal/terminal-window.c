@@ -1256,6 +1256,10 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_screen_get_size (window->priv->active, &w, &h);
       terminal_screen_set_size (screen, w, h);
 
+      /* match the zoom */
+      if (window->priv->font || window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+        terminal_screen_update_font (screen);
+
       /* show the tabs when needed */
       terminal_window_notebook_show_tabs (window);
     }
@@ -2791,10 +2795,6 @@ terminal_window_add (TerminalWindow *window,
   /* update scrollbar visibility */
   if (window->priv->scrollbar_visibility != TERMINAL_VISIBILITY_DEFAULT)
     terminal_screen_update_scrolling_bar (screen);
-
-  /* update screen font from window */
-  if (window->priv->font || window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
-    terminal_screen_update_font (screen);
 
   /* switch to the new tab */
   gtk_notebook_set_current_page (GTK_NOTEBOOK (window->priv->notebook), page);
