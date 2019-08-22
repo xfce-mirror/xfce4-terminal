@@ -1250,15 +1250,15 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
   /* release to the grid size applies */
   gtk_widget_realize (GTK_WIDGET (screen));
 
+  /* match zoom and font */
+  if (window->priv->font || window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
+    terminal_screen_update_font (screen);
+
   if (G_LIKELY (window->priv->active != NULL))
     {
       /* match the size of the active screen */
       terminal_screen_get_size (window->priv->active, &w, &h);
       terminal_screen_set_size (screen, w, h);
-
-      /* match the zoom */
-      if (window->priv->font || window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
-        terminal_screen_update_font (screen);
 
       /* show the tabs when needed */
       terminal_window_notebook_show_tabs (window);
