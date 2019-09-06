@@ -500,8 +500,8 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
             {
               /* focus-out with keyboard grab */
               dropdown->grab_timeout_id =
-                  g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, 50, terminal_window_dropdown_can_grab,
-                                      dropdown, terminal_window_dropdown_can_grab_destroyed);
+                  gdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE, 50, terminal_window_dropdown_can_grab,
+                                                dropdown, terminal_window_dropdown_can_grab_destroyed);
             }
         }
 
@@ -746,9 +746,9 @@ terminal_window_dropdown_hide (TerminalWindowDropdown *dropdown)
     {
       dropdown->animation_dir = ANIMATION_DIR_UP;
       dropdown->animation_timeout_id =
-          g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
-                              terminal_window_dropdown_animate_up, dropdown,
-                              terminal_window_dropdown_animate_destroyed);
+          gdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
+                                        terminal_window_dropdown_animate_up, dropdown,
+                                        terminal_window_dropdown_animate_destroyed);
     }
   else
     {
@@ -879,9 +879,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     {
       dropdown->animation_dir = ANIMATION_DIR_DOWN;
       dropdown->animation_timeout_id =
-          g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
-                              terminal_window_dropdown_animate_down, dropdown,
-                              terminal_window_dropdown_animate_destroyed);
+          gdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE, ANIMATION_FPS,
+                                        terminal_window_dropdown_animate_down, dropdown,
+                                        terminal_window_dropdown_animate_destroyed);
     }
   else
     {

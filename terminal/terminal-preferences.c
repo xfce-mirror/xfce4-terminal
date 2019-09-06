@@ -1506,8 +1506,8 @@ terminal_preferences_schedule_store (TerminalPreferences *preferences)
   if (preferences->store_idle_id == 0 && !preferences->loading_in_progress)
     {
       preferences->store_idle_id =
-          g_timeout_add_seconds_full (G_PRIORITY_LOW, 1, terminal_preferences_store_idle,
-                                      preferences, terminal_preferences_store_idle_destroy);
+          gdk_threads_add_timeout_seconds_full (G_PRIORITY_LOW, 1, terminal_preferences_store_idle,
+                                                preferences, terminal_preferences_store_idle_destroy);
     }
 }
 

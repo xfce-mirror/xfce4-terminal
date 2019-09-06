@@ -729,7 +729,7 @@ terminal_window_style_set (GtkWidget *widget,
 
   /* delay the pop until after size allocate */
   if (previous_style != NULL)
-    g_idle_add (terminal_window_size_pop, window);
+    gdk_threads_add_idle (terminal_window_size_pop, window);
 }
 
 

@@ -151,8 +151,8 @@ terminal_app_init (TerminalApp *app)
   terminal_app_update_mnemonics (app);
 
   /* schedule accel map load and update windows when finished */
-  app->accel_map_load_id = g_idle_add_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
-                                            terminal_app_update_windows_accels);
+  app->accel_map_load_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
+                                                      terminal_app_update_windows_accels);
 }
 
 
@@ -316,7 +316,7 @@ terminal_app_accel_map_changed (TerminalApp *app)
     }
 
   /* schedule new save */
-  app->accel_map_save_id = g_timeout_add_seconds (10, terminal_app_accel_map_save, app);
+  app->accel_map_save_id = gdk_threads_add_timeout_seconds (10, terminal_app_accel_map_save, app);
 }
 
 
