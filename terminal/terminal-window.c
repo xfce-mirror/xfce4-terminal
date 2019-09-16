@@ -3299,20 +3299,24 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gboolean show = gtk_toggle_action_get_active (action);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  terminal_window_size_push (window);
+  /* don't do anything if the menubar is already in the desired state (shown/hidden) */
+  if (gtk_widget_is_visible (window->priv->menubar) != show)
+    {
+      terminal_window_size_push (window);
 
-  if (show)
-    gtk_widget_show (window->priv->menubar);
-  else
-    gtk_widget_hide (window->priv->menubar);
+      if (show)
+        gtk_widget_show (window->priv->menubar);
+      else
+        gtk_widget_hide (window->priv->menubar);
 
-  terminal_window_size_pop (window);
+      terminal_window_size_pop (window);
+    }
 }
 
 
 
 /**
- * terminal_window_action_show_menubar:
+ * terminal_window_update_tab_key_accels:
  * @window          : A #TerminalWindow.
  * @tab_key_accels  : A list of Tab key accelerators.
  **/
