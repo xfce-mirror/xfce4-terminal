@@ -578,6 +578,8 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
   gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
+  /* don't show menubar by default */
+  gtk_widget_hide (window->priv->menubar);
   /* auto-hide menubar if it was shown temporarily */
   g_signal_connect (G_OBJECT (window->priv->menubar), "deactivate",
       G_CALLBACK (terminal_window_menubar_deactivate), window);
