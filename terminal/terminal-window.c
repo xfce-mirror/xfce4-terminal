@@ -135,6 +135,7 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
 static void         terminal_window_update_actions                (TerminalWindow      *window);
 static void         terminal_window_update_slim_tabs              (TerminalWindow      *window);
 static void         terminal_window_update_scroll_on_output       (TerminalWindow      *window);
+static void         terminal_window_update_mnemonic_modifier      (TerminalWindow      *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook         *notebook,
                                                                    GtkWidget           *page,
                                                                    guint                page_num,
@@ -602,6 +603,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::scrolling-on-output",
                             G_CALLBACK (terminal_window_update_scroll_on_output), window);
 
+  /* monitor the shortcuts-no-mnemonics setting */
+  terminal_window_update_mnemonic_modifier (window);
+  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::shortcuts-no-mnemonics",
+                            G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
+
 #if defined(GDK_WINDOWING_X11)
   if (GDK_IS_X11_SCREEN (screen))
     {
@@ -623,9 +629,11 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
-  /* disconnect the scrolling-on-output watch */
+  /* disconnect scrolling-on-output and shortcuts-no-mnemonics watches */
   g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
                                         G_CALLBACK (terminal_window_update_scroll_on_output), window);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
+                                        G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
 
   if (window->priv->preferences_dialog != NULL)
     gtk_widget_destroy (window->priv->preferences_dialog);
@@ -1160,6 +1168,22 @@ terminal_window_update_scroll_on_output (TerminalWindow *window)
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), scroll);
 G_GNUC_END_IGNORE_DEPRECATIONS
+}
+
+
+
+static void
+terminal_window_update_mnemonic_modifier (TerminalWindow *window)
+{
+  gboolean no_mnemonics;
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "shortcuts-no-mnemonics", &no_mnemonics,
+                NULL);
+  if (no_mnemonics)
+    gtk_window_set_mnemonic_modifier (GTK_WINDOW (window), GDK_MODIFIER_MASK & ~GDK_RELEASE_MASK);
+  else
+    gtk_window_set_mnemonic_modifier (GTK_WINDOW (window), GDK_MOD1_MASK);
 }
 
 

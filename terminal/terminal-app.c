@@ -60,7 +60,6 @@ static void     terminal_app_update_tab_key_accels    (gpointer            data,
                                                        guint               accel_key,
                                                        GdkModifierType     accel_mods,
                                                        gboolean            changed);
-static void     terminal_app_update_mnemonics         (TerminalApp        *app);
 static void     terminal_app_update_windows_accels    (gpointer            user_data);
 static gboolean terminal_app_accel_map_load           (gpointer            user_data);
 static gboolean terminal_app_accel_map_save           (gpointer            user_data);
@@ -139,8 +138,6 @@ terminal_app_init (TerminalApp *app)
                             G_CALLBACK (terminal_app_update_accels), app);
   g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-helpkey",
                             G_CALLBACK (terminal_app_update_accels), app);
-  g_signal_connect_swapped (G_OBJECT (app->preferences), "notify::shortcuts-no-mnemonics",
-                            G_CALLBACK (terminal_app_update_mnemonics), app);
 
   /* remember the original menu bar accel */
   g_object_get (G_OBJECT (gtk_settings_get_default ()),
@@ -148,7 +145,6 @@ terminal_app_init (TerminalApp *app)
                 NULL);
 
   terminal_app_update_accels (app);
-  terminal_app_update_mnemonics (app);
 
   /* schedule accel map load and update windows when finished */
   app->accel_map_load_id = gdk_threads_add_idle_full (G_PRIORITY_LOW, terminal_app_accel_map_load, app,
@@ -185,7 +181,6 @@ terminal_app_finalize (GObject *object)
   g_slist_free (app->windows);
 
   g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_accels), app);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (app->preferences), G_CALLBACK (terminal_app_update_mnemonics), app);
   g_object_unref (G_OBJECT (app->preferences));
 
   if (app->initial_menu_bar_accel != NULL)
@@ -247,21 +242,6 @@ terminal_app_update_tab_key_accels (gpointer         data,
 
       app->tab_key_accels = g_slist_prepend (app->tab_key_accels, accel);
     }
-}
-
-
-
-static void
-terminal_app_update_mnemonics (TerminalApp *app)
-{
-  gboolean no_mnemonics;
-
-  g_object_get (G_OBJECT (app->preferences),
-                "shortcuts-no-mnemonics", &no_mnemonics,
-                NULL);
-  g_object_set (G_OBJECT (gtk_settings_get_default ()),
-                "gtk-enable-mnemonics", !no_mnemonics,
-                NULL);
 }
 
 
