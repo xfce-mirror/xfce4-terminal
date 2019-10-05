@@ -465,7 +465,7 @@ terminal_window_init (TerminalWindow *window)
 
   GClosure *toggle_menubar_closure = g_cclosure_new (G_CALLBACK (terminal_window_toggle_menubar), window, NULL);
 
-  window->priv = G_TYPE_INSTANCE_GET_PRIVATE (window, TERMINAL_TYPE_WINDOW, TerminalWindowPrivate);
+  window->priv = terminal_window_get_instance_private (window);
 
   window->priv->preferences = terminal_preferences_get ();
 
