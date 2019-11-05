@@ -50,6 +50,7 @@
 #include <terminal/terminal-window-dropdown.h>
 
 #define ACCEL_MAP_PATH "xfce4/terminal/accels.scm"
+#define TERMINAL_DESKTOP_FILE (DATADIR "/applications/xfce4-terminal.desktop")
 
 
 
@@ -996,6 +997,7 @@ terminal_app_process (TerminalApp  *app,
                                                      PACKAGE_NAME ".desktop");
       if (xfce_sm_client_connect (app->session_client, &err))
         {
+          xfce_sm_client_set_desktop_file (app->session_client, TERMINAL_DESKTOP_FILE);
           g_signal_connect (G_OBJECT (app->session_client), "save-state",
                             G_CALLBACK (terminal_app_save_yourself), app);
           g_signal_connect (G_OBJECT (app->session_client), "quit",
