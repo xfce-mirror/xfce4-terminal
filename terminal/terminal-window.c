@@ -1083,7 +1083,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->priv->active != NULL))
     {
-      gboolean can_go_left, can_go_right, can_search;
+      gboolean can_go_left, can_go_right, can_search, input_enabled;
 
       page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->active));
 
@@ -1113,9 +1113,15 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_action_set_sensitive (window->priv->action_search_prev, can_search);
 
       /* update read-only mode */
+      input_enabled = terminal_screen_get_input_enabled (window->priv->active);
       action = terminal_window_get_action (window, "read-only");
-      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
-                                    !terminal_screen_get_input_enabled (window->priv->active));
+      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !input_enabled);
+
+      /* update "Paste" actions */
+      action = terminal_window_get_action (window, "paste");
+      gtk_action_set_sensitive (action, input_enabled);
+      action = terminal_window_get_action (window, "paste-selection");
+      gtk_action_set_sensitive (action, input_enabled);
 
       /* update scroll on output mode */
       action = terminal_window_get_action (window, "scroll-on-output");
@@ -2088,6 +2094,8 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     {
       gtk_action_set_sensitive (terminal_window_get_action (window, "reset"), input_enabled);
       gtk_action_set_sensitive (terminal_window_get_action (window, "reset-and-clear"), input_enabled);
+      gtk_action_set_sensitive (terminal_window_get_action (window, "paste"), input_enabled);
+      gtk_action_set_sensitive (terminal_window_get_action (window, "paste-selection"), input_enabled);
       terminal_screen_set_input_enabled (window->priv->active, input_enabled);
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
