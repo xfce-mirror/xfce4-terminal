@@ -1,3 +1,45 @@
+0.8.9
+=====
+- Respect the "Working Directory" setting when opening initial window (the
+  current directory was used instead). (bug #16292)
+- Disable "Paste" actions in read-only mode
+- Point session manager to desktop file. This means that the session manager
+  will know the (translated) name and icon for the application. This is visible
+  e.g. in xfce4-session-settings in the "Current Session" tab. (bug #16121)
+- Resolve G_TYPE_INSTANCE_GET_PRIVATE deprecation warning
+- Allow to use <Alt> shortcuts when menu mnemonics are disabled - like <Alt>h
+  which is normally used for "Help" menu. (bug #15989)
+- Fix 'Menubar starts shown when set to hidden in properties' (bug #15979)
+- Fix invalid geometry on Wayland. Also fixes the issue with increasing the
+  window size when showing or hiding widgets such as tabbar, toolbar, menubar
+  on Wayland.
+- Fix size increase when the menu is used on Wayland (bug #13938)
+- Avoid passing null pointer to g_warning()
+- Replace GLib threading functions with their GDK counterparts
+- Fix setting a font via the command line (bug #15869)
+- Properly apply zoom factor when creating new tab (bug #15785)
+- Add icons to "Cancel" and "Paste" buttons
+- Fix background color changing when changing focus if "Vary the background
+  color for each tab" is enabled (bug #15740)
+- Revert "Save accelerators map on exit". It turned out that saving accelerators
+  map on exit prevents users from disabling the Alt+N shortcuts by setting them
+  to "" in accels.scm. The shortcuts that had been disabled got overridden on
+  the next launch of the terminal. (bug #16058)
+- Allow to unset window urgency hint even if "Visual bell" is disabled (bug
+  #15729)
+- Unmaximize drop-down window when hiding it. This seems to help xfwm4;
+  otherwise, it won't be able to unmaximize the window once it's shown again.
+  (bug #15681)
+- Allow to use --maximize with drop-down windows
+- Search dialog: Make opacity scale unfocusable. This prevents the text entry
+  from losing focus when the opacity scale is used.
+- Fix closing tabs with middle click. This includes switching to last active
+  tab, allowing to undo close tab, and checking for a running process. (bug
+  #15687)
+- Translation updates: Croatian, English (United Kingdom), Finnish, French,
+  Galician, Greek, Italian, Lithuanian, Norwegian Bokmål, Portuguese, Slovak,
+  Slovenian
+
 0.8.8
 =====
 - Do not show "Rewrap on resize" option for vte>=0.58: it's been deprecated,
