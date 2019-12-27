@@ -243,6 +243,8 @@ main (int argc, char **argv)
   /* create a copy of the standard arguments with our additional stuff */
   nargv = g_new (gchar*, argc + 5); nargc = 0;
   nargv[nargc++] = g_strdup (argv[0]);
+  nargv[nargc++] = g_strdup ("--default-working-directory");
+  nargv[nargc++] = g_get_current_dir ();
 
   /* append startup if given */
   startup_id = g_getenv ("DESKTOP_STARTUP_ID");

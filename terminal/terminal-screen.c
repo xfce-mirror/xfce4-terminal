@@ -294,10 +294,8 @@ terminal_screen_class_init (TerminalScreenClass *klass)
 static void
 terminal_screen_init (TerminalScreen *screen)
 {
-  gchar    *default_dir;
-  gboolean  use_default_dir;
-
   screen->loader = NULL;
+  screen->working_directory = g_get_current_dir ();
   screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
@@ -333,13 +331,6 @@ terminal_screen_init (TerminalScreen *screen)
   screen->preferences = terminal_preferences_get ();
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
       G_CALLBACK (terminal_screen_preferences_changed), screen);
-
-  /* set working directory - from the preferences, if available, or the current dir otherwise */
-  g_object_get (G_OBJECT (screen->preferences),
-                "use-default-working-dir", &use_default_dir,
-                "default-working-dir", &default_dir,
-                NULL);
-  screen->working_directory = (use_default_dir && g_strcmp0 (default_dir, "") != 0) ? default_dir : g_get_current_dir ();
 
   /* show the terminal */
   gtk_widget_show_all (screen->hbox);
