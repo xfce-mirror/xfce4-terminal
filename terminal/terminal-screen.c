@@ -1146,8 +1146,13 @@ terminal_screen_update_colors (TerminalScreen *screen)
           screen->has_random_bg_color = 0;
         }
     }
-  else
-    has_bg = gdk_rgba_parse (&screen->background_color, screen->custom_bg_color);
+  else if ((has_bg = gdk_rgba_parse (&bg, screen->custom_bg_color)))
+    {
+      /* preserve the alpha value which is responsible for transparency */
+      screen->background_color.red = bg.red;
+      screen->background_color.green = bg.green;
+      screen->background_color.blue = bg.blue;
+    }
 
   if (G_LIKELY (valid_palette))
     {
