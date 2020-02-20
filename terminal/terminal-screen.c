@@ -65,6 +65,10 @@
 /* taken from gnome-terminal (terminal-screen.c) */
 #define SPAWN_TIMEOUT (30 * 1000 /* 30 s*/)
 
+/* minimum terminal dimensions */
+#define MIN_COLUMNS 4
+#define MIN_ROWS    1
+
 
 
 enum
@@ -2143,8 +2147,8 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 
   hints.width_inc = char_width;
   hints.height_inc = char_height;
-  hints.min_width = hints.base_width + hints.width_inc * 4;
-  hints.min_height = hints.base_height + hints.height_inc * 2;
+  hints.min_width = hints.base_width + hints.width_inc * MIN_COLUMNS;
+  hints.min_height = hints.base_height + hints.height_inc * MIN_ROWS;
 
   gtk_window_set_geometry_hints (window,
 #if GTK_CHECK_VERSION (3, 19, 5)
