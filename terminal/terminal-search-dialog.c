@@ -364,5 +364,5 @@ terminal_search_dialog_present (TerminalSearchDialog *dialog)
   terminal_search_dialog_opacity_changed (dialog);
 
   gtk_window_present (GTK_WINDOW (dialog));
-  gtk_widget_grab_focus (dialog->entry);
+  gtk_entry_grab_focus_without_selecting (GTK_ENTRY (dialog->entry));
 }
