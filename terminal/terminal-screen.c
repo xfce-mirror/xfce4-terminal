@@ -1821,6 +1821,7 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
            */
           GtkClipboard *clipboard = gtk_clipboard_get (original_clipboard);
           gtk_clipboard_set_text (clipboard, res_text, strlen (res_text));
+          g_free (res_text);
 
           if (original_clipboard == GDK_SELECTION_CLIPBOARD) {
             vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
@@ -1828,7 +1829,8 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
             vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
           }
 
-          g_free (res_text);
+          /* restore original clipboard contents */
+          gtk_clipboard_set_text (clipboard, text, strlen (text));
         }
     }
 
