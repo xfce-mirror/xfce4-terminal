@@ -35,6 +35,7 @@ xml_DATA = $(xml_in_files:.xml.in=.xml)
 
 EXTRA_DIST = \
 	HACKING \
+	README.md \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \

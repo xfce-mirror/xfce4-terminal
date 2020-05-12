@@ -1,19 +1,16 @@
-What is it?
-===========
+## What is it?
 
 Xfce Terminal is a lightweight and easy to use terminal emulator application
 with many advanced features including drop down, tabs, unlimited scrolling,
 full colors, fonts, transparent backgrounds, and more.
 
 
-Installation
-============
+## Installation
 
-The file 'INSTALL' contains generic installation instructions.
+The file [`INSTALL`](INSTALL) contains generic installation instructions.
 
 
-Performance issues
-==================
+## Performance issues
 
 Xfce Terminal is based on the Vte terminal widget library, just like
 gnome-terminal. Vte is probably not the fastest terminal emulation library on
@@ -26,12 +23,11 @@ experiencing problems with the terminal rendering speed, you might want to
 disable the anti-aliasing for the terminal font.
 
 
-How to report bugs?
-===================
+## How to report bugs?
 
-Bugs should be reported to the Xfce bug tracking system
-(https://bugzilla.xfce.org, product Xfce4-terminal). You will
+Bugs should be reported to the [Xfce bug tracking system](https://bugzilla.xfce.org)
+against the product Xfce4-terminal. You will
 need to create an account for yourself.
 
-Please read the HACKING file for information on where to send changes
+Please read the [`HACKING`](HACKING) file for information on where to send changes
 or bugfixes for this package.
