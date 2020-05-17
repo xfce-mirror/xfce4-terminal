@@ -34,7 +34,7 @@
 #include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-private.h>
 
-
+#include "terminal-preferences-ui.h"
 
 static void     terminal_preferences_dialog_finalize          (GObject                   *object);
 static void     terminal_preferences_dialog_disc_bindings     (GtkWidget                 *widget,
@@ -158,8 +158,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GObject          *object, *object2;
   gchar             palette_name[16];
   GtkFileFilter    *filter;
-  gchar            *file;
-  guint             res;
   GBinding         *binding;
   GtkTreeModel     *model;
   gchar            *current;
@@ -200,28 +198,11 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   dialog->preferences = terminal_preferences_get ();
 
-  /* lookup the ui file */
-  xfce_resource_push_path (XFCE_RESOURCE_DATA, DATADIR);
-  file = xfce_resource_lookup (XFCE_RESOURCE_DATA, "xfce4/terminal/terminal-preferences.ui");
-  xfce_resource_pop_path (XFCE_RESOURCE_DATA);
-
-  if (G_UNLIKELY (file == NULL))
-    {
-      g_set_error (&error, 0, 0, "file not found");
-      goto error;
-    }
-
-  /* load the builder data into the object */
-  res = gtk_builder_add_from_file (GTK_BUILDER (dialog), file, &error);
-  g_free (file);
-
-  if (res == 0)
-    {
-error:
-      g_critical ("Failed to load ui file: %s.", error->message);
-      g_error_free (error);
-      return;
-    }
+  if (!gtk_builder_add_from_string (GTK_BUILDER (dialog), terminal_preferences_ui,
+                                    terminal_preferences_ui_length, &error)) {
+      g_critical ("Error loading UI: %s", error->message);
+      g_error_free(error);
+  }
 
   /* connect response to dialog */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "dialog");
