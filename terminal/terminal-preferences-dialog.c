@@ -201,7 +201,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   if (!gtk_builder_add_from_string (GTK_BUILDER (dialog), terminal_preferences_ui,
                                     terminal_preferences_ui_length, &error)) {
       g_critical ("Error loading UI: %s", error->message);
-      g_error_free(error);
+      g_error_free (error);
+      return;
   }
 
   /* connect response to dialog */
