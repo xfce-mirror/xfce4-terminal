@@ -134,6 +134,11 @@ fi
 AM_CONDITIONAL([HAVE_GNOME_DEFAULT_APPSDIR], [test -n "$GNOME_DEFAULT_APPSDIR"])
 AC_SUBST([GNOME_DEFAULT_APPSDIR])
 
+dnl *************************
+dnl *** Check for gtk-doc ***
+dnl *************************
+GTK_DOC_CHECK([1.9])
+
 dnl ***********************************
 dnl *** Check for debugging support ***
 dnl ***********************************
