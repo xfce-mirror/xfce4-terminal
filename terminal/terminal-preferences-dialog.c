@@ -74,6 +74,9 @@ static void     terminal_preferences_dialog_background_set    (GtkFileChooserBut
                                                                TerminalPreferencesDialog *dialog);
 static void     terminal_preferences_dialog_encoding_changed  (GtkComboBox               *combobox,
                                                                TerminalPreferencesDialog *dialog);
+static gboolean monospace_filter                              (const PangoFontFamily     *family,
+                                                               const PangoFontFace       *face,
+                                                               gpointer                   data);
 
 
 
@@ -347,6 +350,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "font-use-system");
   object2 = gtk_builder_get_object (GTK_BUILDER (dialog), "font-name");
   terminal_return_if_fail (G_IS_OBJECT (object) && G_IS_OBJECT (object2));
+  gtk_font_chooser_set_filter_func (GTK_FONT_CHOOSER (object2), monospace_filter, NULL, NULL);
   g_object_bind_property (object, "active",
                           object2, "sensitive",
                           G_BINDING_INVERT_BOOLEAN | G_BINDING_SYNC_CREATE);
@@ -1102,6 +1106,16 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
       g_object_set (dialog->preferences, "encoding", encoding, NULL);
       g_free (encoding);
     }
+}
+
+
+
+static gboolean
+monospace_filter (const PangoFontFamily *family,
+                  const PangoFontFace   *face,
+                  gpointer data)
+{
+  return pango_font_family_is_monospace ((PangoFontFamily *) family);
 }
 
 
