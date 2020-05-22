@@ -79,10 +79,6 @@ if HAVE_UTEMPTER
 xfce4_terminal_LDADD += -lutempter
 endif
 
-uidir = $(datadir)/xfce4/terminal
-ui_DATA = \
-	terminal-preferences-ui.h
-
 ##
 ## Rules to auto-generate built sources
 ##
@@ -100,7 +96,6 @@ CLEANFILES = \
 	xgen-tmh
 
 DISTCLEANFILES = \
-	$(ui_DATA) \
 	$(xfce4_terminal_built_sources) \
 	stamp-terminal-enum-types.h \
 	stamp-terminal-marshal.h
@@ -162,7 +157,6 @@ clean-local:
 	rm -f *.core core core.*
 
 EXTRA_DIST = \
-	$(ui_DATA) \
 	terminal-config.h.in \
 	terminal-marshal.list \
 	terminal-window-ui.xml \
