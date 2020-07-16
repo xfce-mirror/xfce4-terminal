@@ -842,7 +842,7 @@ terminal_preferences_dialog_presets_changed (GtkComboBox               *combobox
         }
       else
         {
-          g_value_set_static_string (&src, str);
+          g_value_set_string (&src, str);
 
           if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
             {
