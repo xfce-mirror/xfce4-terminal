@@ -994,7 +994,7 @@ terminal_window_dropdown_new (const gchar        *role,
 
   window = g_object_new (TERMINAL_TYPE_WINDOW_DROPDOWN,
                          "role", role,
-                         "icon-name", icon != NULL ? icon : "utilities-terminal",
+                         "icon-name", icon != NULL ? icon : "org.xfce.terminal",
                          NULL);
 
   /* read default preferences */
