@@ -1,4 +1,4 @@
-/*-
+/*-F
  * Copyright (c) 2004-2007 os-cillation e.K.
  *
  * Written by Benedikt Meurer <benny@xfce.org>.
@@ -323,7 +323,7 @@ main (int argc, char **argv)
   gtk_init (&argc, &argv);
 
   /* set default window icon */
-  gtk_window_set_default_icon_name ("utilities-terminal");
+  gtk_window_set_default_icon_name ("org.xfce.terminal");
 
   app = g_object_new (TERMINAL_TYPE_APP, NULL);
 
