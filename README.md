@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/xfce/xfce4-terminal/COPYING)
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://gitlab.xfce.org/apps/xfce4-terminal/-/blob/master/COPYING)
 
 # xfce4-terminal
 
@@ -10,7 +10,7 @@ full colors, fonts, transparent backgrounds, and more.
 
 ### Homepage
 
-[xfce4-terminal documentation](https://docs.xfce.org/apps/xfce4-terminal/start)
+[Xfce4-terminal documentation](https://docs.xfce.org/apps/xfce4-terminal/start)
 
 ### Changelog
 
@@ -30,13 +30,13 @@ disable the anti-aliasing for the terminal font.
 
 ### Source Code Repository
 
-[xfce4-terminal source code](https://gitlab.xfce.org/apps/xfce4-terminal)
+[Xfce4-terminal source code](https://gitlab.xfce.org/apps/xfce4-terminal)
 
-### Download A Release Tarball
+### Download a Release Tarball
 
-[xfce4-terminal archive](https://archive.xfce.org/src/apps/xfce4-terminal)
+[Xfce4-terminal archive](https://archive.xfce.org/src/apps/xfce4-terminal)
     or
-[xfce4-terminal tags](https://gitlab.xfce.org/apps/xfce4-terminal/-/tags)
+[Xfce4-terminal tags](https://gitlab.xfce.org/apps/xfce4-terminal/-/tags)
 
 ### Installation
 
