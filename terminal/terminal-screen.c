@@ -1927,7 +1927,7 @@ terminal_screen_launch_child (TerminalScreen *screen)
   gchar       **argv2;
   guint         i, argc;
   VtePtyFlags   pty_flags = VTE_PTY_DEFAULT;
-  GSpawnFlags   spawn_flags = G_SPAWN_CHILD_INHERITS_STDIN | G_SPAWN_SEARCH_PATH;
+  GSpawnFlags   spawn_flags = G_SPAWN_SEARCH_PATH;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
 
