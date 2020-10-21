@@ -5,14 +5,15 @@
 # Translators:
 # kdeguchi <kdeguchi@sz.tokoha-u.ac.jp>, 2019
 # Nobuhiro Iwamatsu <iwamatsu@nigauri.org>, 2016-2019
+# UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2020
 # kdeguchi <kdeguchi@sz.tokoha-u.ac.jp>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 18:31+0100\n"
-"PO-Revision-Date: 2019-06-14 22:31+0000\n"
-"Last-Translator: kdeguchi <kdeguchi@sz.tokoha-u.ac.jp>\n"
+"POT-Creation-Date: 2020-10-20 12:48+0200\n"
+"PO-Revision-Date: 2020-10-21 05:47+0000\n"
+"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -146,7 +147,6 @@ msgid "See the %s man page for full explanation of the options above."
 msgstr "上記オプションの詳しい説明は man %s でご覧ください。"
 
 #: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
-#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce Terminal"
 
@@ -176,12 +176,12 @@ msgstr "バグの報告は <%s> までお願いします。"
 msgid "Unable to register terminal service: %s\n"
 msgstr "ターミナルサービスを登録できません: %s\n"
 
-#: ../terminal/terminal-app.c:906
+#: ../terminal/terminal-app.c:928
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ジオメトリ文字列 \"%s\" は不適切です。\n"
 
-#: ../terminal/terminal-app.c:985
+#: ../terminal/terminal-app.c:1008
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "セッションマネージャーへの接続に失敗しました: %s\n"
@@ -410,24 +410,24 @@ msgstr "オプション \"--zoom\" にはパラメーターとしてズーム (%
 msgid "Unknown option \"%s\""
 msgstr "\"%s\" は不明なオプションです"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "All Files"
 msgstr "すべてのファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:486
+#: ../terminal/terminal-preferences-dialog.c:479
 msgid "Image Files"
 msgstr "画像ファイル"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: ../terminal/terminal-preferences-dialog.c:944
 msgid "Load Presets..."
 msgstr "プリセットの読み込み..."
 
-#: ../terminal/terminal-preferences.c:1186
+#: ../terminal/terminal-preferences.c:1175
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:452 ../terminal/terminal-screen.c:836
-#: ../terminal/terminal-screen.c:2289
+#: ../terminal/terminal-screen.c:455 ../terminal/terminal-screen.c:836
+#: ../terminal/terminal-screen.c:2280
 msgid "Untitled"
 msgstr "無題"
 
@@ -436,57 +436,57 @@ msgstr "無題"
 msgid "Unable to determine your login shell."
 msgstr "あなたのログインシェルを特定できません。"
 
-#: ../terminal/terminal-screen.c:1410
+#: ../terminal/terminal-screen.c:1435
 msgid "_Relaunch"
 msgstr "再開(_R)"
 
-#: ../terminal/terminal-screen.c:1416
+#: ../terminal/terminal-screen.c:1441
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子プロセスがステータス %d で正常に終了しました。"
 
-#: ../terminal/terminal-screen.c:1418
+#: ../terminal/terminal-screen.c:1443
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子プロセスがシグナル %d で中断されました。"
 
-#: ../terminal/terminal-screen.c:1420
+#: ../terminal/terminal-screen.c:1445
 msgid "The child process was aborted."
 msgstr "子プロセスが中断されました。"
 
-#: ../terminal/terminal-screen.c:1426 ../terminal/terminal-window.c:943
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:977
 msgid "Do _not ask me again"
 msgstr "次回から確認しない(_N)"
 
-#: ../terminal/terminal-screen.c:1787
+#: ../terminal/terminal-screen.c:1761
 msgid "Warning: Unsafe Paste"
 msgstr "警告:安全でない貼り付け"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:865
-#: ../terminal/terminal-window.c:2438
-msgid "_Cancel"
-msgstr "キャンセル(_C)"
-
-#: ../terminal/terminal-screen.c:1790 ../terminal/terminal-window.c:348
-msgid "_Paste"
-msgstr "貼り付け(_P)"
-
-#: ../terminal/terminal-screen.c:1794
+#: ../terminal/terminal-screen.c:1763
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like\n"
 "some commands may be executed, potentially involving root access ('sudo')."
 msgstr "このテキストを端末に貼り付けることは、潜在的にルートへのアクセスを伴う('sudo'のような)コマンドを実行することになり、危険かもしれません。"
 
-#: ../terminal/terminal-screen.c:1868 ../terminal/terminal-screen.c:1952
-#: ../terminal/terminal-screen.c:1990
+#: ../terminal/terminal-screen.c:1766 ../terminal/terminal-window.c:900
+#: ../terminal/terminal-window.c:2502
+msgid "_Cancel"
+msgstr "キャンセル(_C)"
+
+#: ../terminal/terminal-screen.c:1768 ../terminal/terminal-window.c:362
+msgid "_Paste"
+msgstr "貼り付け(_P)"
+
+#: ../terminal/terminal-screen.c:1859 ../terminal/terminal-screen.c:1943
+#: ../terminal/terminal-screen.c:1981
 msgid "Failed to execute child"
 msgstr "子プロセスの実行に失敗しました。"
 
-#: ../terminal/terminal-screen.c:2656
+#: ../terminal/terminal-screen.c:2647
 msgid "Close this tab"
 msgstr "このタブを閉じる"
 
-#: ../terminal/terminal-screen.c:2709
+#: ../terminal/terminal-screen.c:2700
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "文字エンコーディングの設定に失敗しました %s\n"
@@ -528,7 +528,7 @@ msgstr "行の折り返しを含む(_W)"
 msgid "_Opacity:"
 msgstr "不透明度(_O):"
 
-#: ../terminal/terminal-search-dialog.c:355
+#: ../terminal/terminal-search-dialog.c:357
 msgid "Find"
 msgstr "検索"
 
@@ -601,361 +601,361 @@ msgstr "ドロップダウンターミナル"
 msgid "Toggle Drop-down Terminal"
 msgstr "ドロップダウンターミナルの切り替え"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:349
 msgid "_File"
 msgstr "ファイル(_F)"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open _Tab"
 msgstr "タブを開く(_T)"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open a new terminal tab"
 msgstr "新しいタブをこのターミナルで開きます"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open T_erminal"
 msgstr "ターミナルを開く(_E)"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open a new terminal window"
 msgstr "新しいターミナルウィンドウを開きます"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:352
 msgid "_Undo Close Tab"
 msgstr "閉じたタブ元に戻す(U)"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:353
 msgid "_Detach Tab"
 msgstr "タブを切り離す(_D)"
 
-#: ../terminal/terminal-window.c:340 ../terminal/terminal-window.c:907
+#: ../terminal/terminal-window.c:354 ../terminal/terminal-window.c:941
 msgid "Close T_ab"
 msgstr "タブを閉じる(_A)"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:355
 msgid "Close Other Ta_bs"
 msgstr "他のタブを閉じる(_B)"
 
-#: ../terminal/terminal-window.c:342 ../terminal/terminal-window.c:914
+#: ../terminal/terminal-window.c:356 ../terminal/terminal-window.c:948
 msgid "Close _Window"
 msgstr "ウィンドウを閉じる(_W)"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:357
 msgid "_Edit"
 msgstr "編集(_E)"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "_Copy"
 msgstr "コピー(_C)"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "Copy to clipboard"
 msgstr "クリップボードへコピーします"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy as _HTML"
 msgstr " _HTML としてコピー"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy to clipboard as HTML"
 msgstr "HTMLとしてクリップボードへコピー"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:362
 msgid "Paste from clipboard"
 msgstr "クリップボードから貼り付けます"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:363
 msgid "Paste _Selection"
 msgstr "選択領域を貼り付け(_S)"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:364
 msgid "Select _All"
 msgstr "すべて選択(_A)"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:365
 msgid "Copy _Input To All Tabs..."
 msgstr "すべてのタブにコピー入力する…(_I)"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Pr_eferences..."
 msgstr "設定(_E)..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Open the preferences dialog"
 msgstr "設定ダイアログを開きます"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:367
 msgid "_View"
 msgstr "表示(_V)"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom _In"
 msgstr "拡大(_I)"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom in with larger font"
 msgstr "大きなフォントで拡大"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom _Out"
 msgstr "縮小(_O)"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom out with smaller font"
 msgstr "小さいフォントで縮小"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "_Normal Size"
 msgstr "標準サイズ(_N)"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "Zoom to default size"
 msgstr "デフォルトサイズに合わせる"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:371
 msgid "_Terminal"
 msgstr "ターミナル(_T)"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:372
 msgid "_Set Title..."
 msgstr "タイトルを付ける(_S)..."
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:373
 msgid "Set Title Co_lor..."
 msgstr "タイトルの色を設定…(_L)"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "_Find..."
 msgstr "検索(_F)..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "Search terminal contents"
 msgstr "ターミナルの内容を検索する"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:375
 msgid "Find Ne_xt"
 msgstr "次を検索(_X)..."
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:376
 msgid "Find Pre_vious"
 msgstr "前を検索(_V)"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:377
 msgid "Sa_ve Contents..."
 msgstr "名前を付けて内容を保存...(_V)"
 
-#: ../terminal/terminal-window.c:364 ../terminal/terminal-window.c:2298
+#: ../terminal/terminal-window.c:378 ../terminal/terminal-window.c:2362
 msgid "_Reset"
 msgstr "リセット(_R)"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:379
 msgid "_Clear Scrollback and Reset"
 msgstr "スクロールバックのクリアとリセット(_C)"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:380
 msgid "T_abs"
 msgstr "タブ(_A)"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "_Previous Tab"
 msgstr "前のタブ(_P)"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "Switch to previous tab"
 msgstr "前のタブに切り替えます"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "_Next Tab"
 msgstr "次のタブ(_N)"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "Switch to next tab"
 msgstr "次のタブに切り替えます"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Last _Active Tab"
 msgstr "最後のアクティブタグ (_A)"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Switch to last active tab"
 msgstr "最後のアクティブタブに切り替え"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:384
 msgid "Move Tab _Left"
 msgstr "タブを左へ移動(_L)"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:385
 msgid "Move Tab _Right"
 msgstr "タブを右へ移動(_R)"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:386
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "_Contents"
 msgstr "目次(_C)"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "Display help contents"
 msgstr "ヘルプの目次を表示します"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:388
 msgid "_About"
 msgstr "このプログラムについて(_A)"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:389
 msgid "_Zoom"
 msgstr "拡大(_Z)"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show _Menubar"
 msgstr "メニューバー(_M)"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show/hide the menubar"
 msgstr "メニューバーの表示/非表示を切り替えます"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show _Toolbar"
 msgstr "ツールバー(_T)"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show/hide the toolbar"
 msgstr "ツールバーの表示/非表示を切り替えます"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show Window _Borders"
 msgstr "ウィンドウ枠(_B)"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show/hide the window decorations"
 msgstr "ウィンドウの装飾枠の表示/非表示を切り替えます"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "_Fullscreen"
 msgstr "全画面表示(_F)"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "Toggle fullscreen mode"
 msgstr "全画面モードの切り替えを行います"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "_Read-Only"
 msgstr "読み込み専用(_R)"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "Toggle read-only mode"
 msgstr "読み込み専用モードを切り替える"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Scroll on _Output"
 msgstr "出力でスクロールさせる(_O)"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Toggle scroll on output"
 msgstr "出力でスクロールさせるのを切り替える"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:556
+#: ../terminal/terminal-window.c:570
 msgid "Set _Encoding"
 msgstr "文字エンコーディング(_E)"
 
-#: ../terminal/terminal-window.c:862
+#: ../terminal/terminal-window.c:898
 msgid "Warning"
 msgstr "警告"
 
 #. and process running
-#: ../terminal/terminal-window.c:875
+#: ../terminal/terminal-window.c:909
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "いくつかのタブでまだプロセスが走っています。\nこのウィンドウを閉じることで全てのプロセスが終了します。"
 
 #. and no process running
-#: ../terminal/terminal-window.c:881
+#: ../terminal/terminal-window.c:915
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "このウィンドウで %d 個のタブが開いています。\nウィンドウを閉じるとすべてのタブも閉じられます。"
 
-#: ../terminal/terminal-window.c:885
+#: ../terminal/terminal-window.c:919
 msgid "Close all tabs?"
 msgstr "すべてのタブを閉じますか?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:892
+#: ../terminal/terminal-window.c:926
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "まだプロセスが走っています。\nこのタブを閉じるとプロセスは終了します。"
 
-#: ../terminal/terminal-window.c:894
+#: ../terminal/terminal-window.c:928
 msgid "Close tab?"
 msgstr "タブを閉じますか?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:899
+#: ../terminal/terminal-window.c:933
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "まだプロセスが走っています。\nこのウィンドウを閉じるとプロセスは終了します。"
 
-#: ../terminal/terminal-window.c:901
+#: ../terminal/terminal-window.c:935
 msgid "Close window?"
 msgstr "ウィンドウを閉じますか?"
 
-#: ../terminal/terminal-window.c:1881
+#: ../terminal/terminal-window.c:1949
 msgid "Copy _Input:"
 msgstr "コピー入力(_I):"
 
-#: ../terminal/terminal-window.c:1885
+#: ../terminal/terminal-window.c:1953
 msgid "Enter the text to be copied to all tabs"
 msgstr "すべてのタブにコピーするテキストを入力してください"
 
-#: ../terminal/terminal-window.c:1893
+#: ../terminal/terminal-window.c:1961
 msgid "Copy input"
 msgstr "コピー入力"
 
-#: ../terminal/terminal-window.c:2250
+#: ../terminal/terminal-window.c:2314
 msgid "_Title:"
 msgstr "タイトル(_T):"
 
-#: ../terminal/terminal-window.c:2254
+#: ../terminal/terminal-window.c:2318
 msgid "Enter the title for the current terminal tab"
 msgstr "現在のターミナルタブのタイトルを入力してください"
 
-#: ../terminal/terminal-window.c:2259
+#: ../terminal/terminal-window.c:2323
 msgid "Reset"
 msgstr "リセット"
 
-#: ../terminal/terminal-window.c:2269
+#: ../terminal/terminal-window.c:2333
 msgid "Help"
 msgstr "ヘルプ"
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2339
 msgid "Close"
 msgstr "閉じる"
 
-#: ../terminal/terminal-window.c:2297
+#: ../terminal/terminal-window.c:2361
 msgid "Choose title color"
 msgstr "タイトルの色を選択"
 
-#: ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:2458
 msgid "Failed to create the regular expression"
 msgstr "正規表現の作成に失敗しました"
 
-#: ../terminal/terminal-window.c:2435
+#: ../terminal/terminal-window.c:2499
 msgid "Save contents..."
 msgstr "内容を保存する..."
 
-#: ../terminal/terminal-window.c:2439
+#: ../terminal/terminal-window.c:2503
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../terminal/terminal-window.c:2476
+#: ../terminal/terminal-window.c:2540
 msgid "Failed to save terminal contents"
 msgstr "ターミナルの内容の保存に失敗しました"
 
@@ -1774,6 +1774,10 @@ msgstr "上級者(_V)"
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "ターミナルエミュレーター"
+
+#: ../xfce4-terminal-settings.desktop.in.h:1
+msgid "Xfce Terminal Settings"
+msgstr "Xfce ターミナル設定"
 
 #: ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Configure Xfce Terminal"
