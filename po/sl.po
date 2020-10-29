@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 18:31+0100\n"
-"PO-Revision-Date: 2020-02-12 15:04+0000\n"
+"POT-Creation-Date: 2020-10-20 12:48+0200\n"
+"PO-Revision-Date: 2020-10-29 14:26+0000\n"
 "Last-Translator: Arnold Marko <arnold.marko@gmail.com>\n"
 "Language-Team: Slovenian (http://www.transifex.com/xfce/xfce-apps/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -147,7 +147,6 @@ msgid "See the %s man page for full explanation of the options above."
 msgstr "Za celotno razlago zgoraj navedenih možnosti, poglejte stran z navodili za %s."
 
 #: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
-#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce terminal"
 
@@ -177,12 +176,12 @@ msgstr "Prijavite hroče na <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Ni bilo možno registrirati storitve terminala: %s\n"
 
-#: ../terminal/terminal-app.c:906
+#: ../terminal/terminal-app.c:928
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "neveljaven geometrijski niz \"%s\"\n"
 
-#: ../terminal/terminal-app.c:985
+#: ../terminal/terminal-app.c:1008
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Nuespešno priklapljanje na upravljalnik seanse: %s\n"
@@ -411,24 +410,24 @@ msgstr "Možnost \"--zoom\" za parameter zahteva navedbo povečave (%d .. %d)"
 msgid "Unknown option \"%s\""
 msgstr "Neznana možnost \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "All Files"
 msgstr "Vse datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:486
+#: ../terminal/terminal-preferences-dialog.c:479
 msgid "Image Files"
 msgstr "Slikovne datoteke"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: ../terminal/terminal-preferences-dialog.c:944
 msgid "Load Presets..."
 msgstr "Naloži prednastavitve ..."
 
-#: ../terminal/terminal-preferences.c:1186
+#: ../terminal/terminal-preferences.c:1175
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:452 ../terminal/terminal-screen.c:836
-#: ../terminal/terminal-screen.c:2289
+#: ../terminal/terminal-screen.c:455 ../terminal/terminal-screen.c:836
+#: ../terminal/terminal-screen.c:2280
 msgid "Untitled"
 msgstr "Neimenovano"
 
@@ -437,57 +436,57 @@ msgstr "Neimenovano"
 msgid "Unable to determine your login shell."
 msgstr "Ni mogoče določiti vaše lupine za prijavo."
 
-#: ../terminal/terminal-screen.c:1410
+#: ../terminal/terminal-screen.c:1435
 msgid "_Relaunch"
 msgstr "_Ponovni zagon"
 
-#: ../terminal/terminal-screen.c:1416
+#: ../terminal/terminal-screen.c:1441
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Podrejeni proces se je normalno zaključil s statusom %d."
 
-#: ../terminal/terminal-screen.c:1418
+#: ../terminal/terminal-screen.c:1443
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Podrejeni proces je bil prekinjen zaradi signala %d."
 
-#: ../terminal/terminal-screen.c:1420
+#: ../terminal/terminal-screen.c:1445
 msgid "The child process was aborted."
 msgstr "Podrejeni proces je bil prekinjen."
 
-#: ../terminal/terminal-screen.c:1426 ../terminal/terminal-window.c:943
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:977
 msgid "Do _not ask me again"
 msgstr "_Ne vprašaj ponovno"
 
-#: ../terminal/terminal-screen.c:1787
+#: ../terminal/terminal-screen.c:1761
 msgid "Warning: Unsafe Paste"
 msgstr "Opozorilo: nevarno vstavljanje"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:865
-#: ../terminal/terminal-window.c:2438
-msgid "_Cancel"
-msgstr "_Prekliči"
-
-#: ../terminal/terminal-screen.c:1790 ../terminal/terminal-window.c:348
-msgid "_Paste"
-msgstr "Prilepi"
-
-#: ../terminal/terminal-screen.c:1794
+#: ../terminal/terminal-screen.c:1763
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like\n"
 "some commands may be executed, potentially involving root access ('sudo')."
 msgstr "Vstavljanje tega teksta v terminal je lahko nevarno, ker je videti,\nda bodo nekateri ukazi izvedeni s korenskim root dostopom ('sudo')."
 
-#: ../terminal/terminal-screen.c:1868 ../terminal/terminal-screen.c:1952
-#: ../terminal/terminal-screen.c:1990
+#: ../terminal/terminal-screen.c:1766 ../terminal/terminal-window.c:900
+#: ../terminal/terminal-window.c:2502
+msgid "_Cancel"
+msgstr "_Prekliči"
+
+#: ../terminal/terminal-screen.c:1768 ../terminal/terminal-window.c:362
+msgid "_Paste"
+msgstr "Prilepi"
+
+#: ../terminal/terminal-screen.c:1859 ../terminal/terminal-screen.c:1943
+#: ../terminal/terminal-screen.c:1981
 msgid "Failed to execute child"
 msgstr "Ni mogoče izvesti podrejenega opravila"
 
-#: ../terminal/terminal-screen.c:2656
+#: ../terminal/terminal-screen.c:2647
 msgid "Close this tab"
 msgstr "Zapri ta zavihek"
 
-#: ../terminal/terminal-screen.c:2709
+#: ../terminal/terminal-screen.c:2700
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Neuspešno nastavljanje kodiranja %s\n"
@@ -529,7 +528,7 @@ msgstr "Prelomi vrstice"
 msgid "_Opacity:"
 msgstr "Raven prekrivanja:"
 
-#: ../terminal/terminal-search-dialog.c:355
+#: ../terminal/terminal-search-dialog.c:357
 msgid "Find"
 msgstr "Najdi"
 
@@ -602,361 +601,361 @@ msgstr "Spustni terminal"
 msgid "Toggle Drop-down Terminal"
 msgstr "Preklop spustnega terminala"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:349
 msgid "_File"
 msgstr "Datoteka"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open _Tab"
 msgstr "Odpri zavihek"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open a new terminal tab"
 msgstr "Odpi nov zavihek terminala"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open T_erminal"
 msgstr "Odpri terminal"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open a new terminal window"
 msgstr "Odpri novo okno terminala"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:352
 msgid "_Undo Close Tab"
 msgstr "Razveljavi zapiranje zavihka"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:353
 msgid "_Detach Tab"
 msgstr "O_dpni zavihek"
 
-#: ../terminal/terminal-window.c:340 ../terminal/terminal-window.c:907
+#: ../terminal/terminal-window.c:354 ../terminal/terminal-window.c:941
 msgid "Close T_ab"
 msgstr "Zapri zavihek"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:355
 msgid "Close Other Ta_bs"
 msgstr "Zapri ostale zavihke"
 
-#: ../terminal/terminal-window.c:342 ../terminal/terminal-window.c:914
+#: ../terminal/terminal-window.c:356 ../terminal/terminal-window.c:948
 msgid "Close _Window"
 msgstr "Zapri okno"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:357
 msgid "_Edit"
 msgstr "Ur_edi"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "Copy to clipboard"
 msgstr "Kopiraj na odložišče"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy as _HTML"
 msgstr "Kopiraj kot _HTML"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy to clipboard as HTML"
 msgstr "Kopiraj na odložišče kot HTML"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:362
 msgid "Paste from clipboard"
 msgstr "Prilepi iz odložišča"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:363
 msgid "Paste _Selection"
 msgstr "Prilepi izbor"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:364
 msgid "Select _All"
 msgstr "Izberi vse"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:365
 msgid "Copy _Input To All Tabs..."
 msgstr "Kop_iraj vnos na vse zavihke..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Pr_eferences..."
 msgstr "Nastavitve ..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Open the preferences dialog"
 msgstr "Odpri nastavitveno pogovorno okno"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:367
 msgid "_View"
 msgstr "Pogled"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom _In"
 msgstr "Približaj"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom in with larger font"
 msgstr "Približaj z večjo pisavo"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom _Out"
 msgstr "Oddalji"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom out with smaller font"
 msgstr "Oddalji z manjšo pisavo"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "_Normal Size"
 msgstr "Običajna velikost"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "Zoom to default size"
 msgstr "Približaj na običajno velikost"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:371
 msgid "_Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:372
 msgid "_Set Title..."
 msgstr "Nastavi naslov"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:373
 msgid "Set Title Co_lor..."
 msgstr "Določi barvo naslova"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "_Find..."
 msgstr "Najdi ..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "Search terminal contents"
 msgstr "Preišči vsebino terminala"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:375
 msgid "Find Ne_xt"
 msgstr "Najdi naslednje"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:376
 msgid "Find Pre_vious"
 msgstr "Najdi prejšnje"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:377
 msgid "Sa_ve Contents..."
 msgstr "Shrani _vsebino..."
 
-#: ../terminal/terminal-window.c:364 ../terminal/terminal-window.c:2298
+#: ../terminal/terminal-window.c:378 ../terminal/terminal-window.c:2362
 msgid "_Reset"
 msgstr "Ponastavi"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:379
 msgid "_Clear Scrollback and Reset"
 msgstr "Počisti zgodovino in ponastavi"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:380
 msgid "T_abs"
 msgstr "Z_avihki"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "_Previous Tab"
 msgstr "_Prejšnji zavihek"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "Switch to previous tab"
 msgstr "Preklopi na prejšnji zavihek"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "_Next Tab"
 msgstr "_Naslednji zavihek"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "Switch to next tab"
 msgstr "Preklopi na naslednji zavihek"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Last _Active Tab"
 msgstr "Zadnji _aktivni zavihek"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Switch to last active tab"
 msgstr "Preklopi na zadnji aktivni zavihek"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:384
 msgid "Move Tab _Left"
 msgstr "Premakni zavihek na levo"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:385
 msgid "Move Tab _Right"
 msgstr "Premakni zavihek na desno"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:386
 msgid "_Help"
 msgstr "Pomoč"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "_Contents"
 msgstr "Vsebina"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "Display help contents"
 msgstr "Prikaži vsebino pomoči"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:388
 msgid "_About"
 msgstr "O programu"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:389
 msgid "_Zoom"
 msgstr "Približevanje"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show _Menubar"
 msgstr "Pokaži vrstico menija"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show/hide the menubar"
 msgstr "Pokaži/skrij vrstico menija"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show _Toolbar"
 msgstr "Pokaži orodno vrstico"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show/hide the toolbar"
 msgstr "Pokaži/skrij orodno vrstico"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show Window _Borders"
 msgstr "Pokaži obrobe okna"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show/hide the window decorations"
 msgstr "Pokaži/skrij okenske okraske"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "_Fullscreen"
 msgstr "Celozaslonsko"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "Toggle fullscreen mode"
 msgstr "Preklopi na celozaslonski način"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "_Read-Only"
 msgstr "Samo za b_ranje"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "Toggle read-only mode"
 msgstr "Preklopi način samo za branje"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Scroll on _Output"
 msgstr "Drsenje _ob izpisovanju"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Toggle scroll on output"
 msgstr "Preklopi med drsenjem ob izpisovanju"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:556
+#: ../terminal/terminal-window.c:570
 msgid "Set _Encoding"
 msgstr "Nastavi kodiranje"
 
-#: ../terminal/terminal-window.c:862
+#: ../terminal/terminal-window.c:898
 msgid "Warning"
 msgstr "Opozorilo"
 
 #. and process running
-#: ../terminal/terminal-window.c:875
+#: ../terminal/terminal-window.c:909
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "V nekaterih zavihkih se nahajajo dejavni procesi.\nZapiranje tega okna jih bo prekinilo."
 
 #. and no process running
-#: ../terminal/terminal-window.c:881
+#: ../terminal/terminal-window.c:915
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Število odprtih zavihkov v tem oknu je %d. Zaprtje tega okna\nbo zaprlo tudi vse njegove zavihke."
 
-#: ../terminal/terminal-window.c:885
+#: ../terminal/terminal-window.c:919
 msgid "Close all tabs?"
 msgstr "Zaprtje vseh zavihkov?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:892
+#: ../terminal/terminal-window.c:926
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Proces se izvaja.\nZapiranje tega zavihka ga bo prekinilo."
 
-#: ../terminal/terminal-window.c:894
+#: ../terminal/terminal-window.c:928
 msgid "Close tab?"
 msgstr "Zaprem zavihek?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:899
+#: ../terminal/terminal-window.c:933
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Proces se izvaja.\nZapiranje tega okna ga bo prekinilo."
 
-#: ../terminal/terminal-window.c:901
+#: ../terminal/terminal-window.c:935
 msgid "Close window?"
 msgstr "Zaprem okno?"
 
-#: ../terminal/terminal-window.c:1881
+#: ../terminal/terminal-window.c:1949
 msgid "Copy _Input:"
 msgstr "Kop_iranje _vnosa:"
 
-#: ../terminal/terminal-window.c:1885
+#: ../terminal/terminal-window.c:1953
 msgid "Enter the text to be copied to all tabs"
 msgstr "Vnesite tekst, ki naj se kopira na vse zavihke"
 
-#: ../terminal/terminal-window.c:1893
+#: ../terminal/terminal-window.c:1961
 msgid "Copy input"
 msgstr "Kopiraj vnos"
 
-#: ../terminal/terminal-window.c:2250
+#: ../terminal/terminal-window.c:2314
 msgid "_Title:"
 msgstr "Naslov:"
 
-#: ../terminal/terminal-window.c:2254
+#: ../terminal/terminal-window.c:2318
 msgid "Enter the title for the current terminal tab"
 msgstr "Vnesite naslov za trenutni zavihek terminala"
 
-#: ../terminal/terminal-window.c:2259
+#: ../terminal/terminal-window.c:2323
 msgid "Reset"
 msgstr "Ponastavitev"
 
-#: ../terminal/terminal-window.c:2269
+#: ../terminal/terminal-window.c:2333
 msgid "Help"
 msgstr "Pomoč"
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2339
 msgid "Close"
 msgstr "Zapri"
 
-#: ../terminal/terminal-window.c:2297
+#: ../terminal/terminal-window.c:2361
 msgid "Choose title color"
 msgstr "Izbira barve naslova"
 
-#: ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:2458
 msgid "Failed to create the regular expression"
 msgstr "Ustvarjanje logičnega izraza je spodletelo"
 
-#: ../terminal/terminal-window.c:2435
+#: ../terminal/terminal-window.c:2499
 msgid "Save contents..."
 msgstr "Shrani vsebino..."
 
-#: ../terminal/terminal-window.c:2439
+#: ../terminal/terminal-window.c:2503
 msgid "_Save"
 msgstr "_Shrani"
 
-#: ../terminal/terminal-window.c:2476
+#: ../terminal/terminal-window.c:2540
 msgid "Failed to save terminal contents"
 msgstr "Shranjevanje vsebine terminala ni uspelo"
 
@@ -1775,6 +1774,10 @@ msgstr "Napre_dno"
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Posnemovalnik terminala"
+
+#: ../xfce4-terminal-settings.desktop.in.h:1
+msgid "Xfce Terminal Settings"
+msgstr "Nastavitve za Xfce Terminal"
 
 #: ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Configure Xfce Terminal"
