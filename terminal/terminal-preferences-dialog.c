@@ -187,7 +187,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "dropdown-keep-open-default", "dropdown-keep-above",
                                        "dropdown-toggle-focus", "dropdown-status-icon",
                                        "dropdown-move-to-active", "dropdown-always-show-tabs",
-                                       "dropdown-show-borders"
+                                       "dropdown-show-borders", "osc-allow-clip-read",
+                                       "osc-allow-clip-write",
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-background",
                                        "tab-activity-color", "color-cursor-foreground",
@@ -301,6 +302,15 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 #else
   /* hide "Text blinks" if vte doesn't support it */
   object = gtk_builder_get_object (GTK_BUILDER (dialog), "box-text-blink");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+
+  /* hide "Text blinks" if vte doesn't support it */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "osc-allow-clip-read");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  gtk_widget_hide (GTK_WIDGET (object));
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "osc-allow-clip-write");
   terminal_return_if_fail (G_IS_OBJECT (object));
   gtk_widget_hide (GTK_WIDGET (object));
 
