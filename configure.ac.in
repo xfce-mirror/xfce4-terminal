@@ -30,13 +30,14 @@ m4_define([intltool_minimum_version], [0.35])
 dnl ***************************
 dnl *** Initialize autoconf ***
 dnl ***************************
-AC_COPYRIGHT([Copyright (c) 2003-2011
+AC_COPYRIGHT([Copyright (c) 2003-2020
+        The Xfce development team. All rights reserved.
         os-cillation e.K. All rights reserved.
 
 Written by Benedikt Meurer <benny@xfce.org>.])
-AC_INIT([xfce4-terminal], [terminal_version], [https://bugzilla.xfce.org/])
+AC_INIT([xfce4-terminal], [terminal_version], [https://gitlab.xfce.org/apps/xfce4-terminal/])
 AC_REVISION([@REVISION@])
-AC_PREREQ([2.50])
+AC_PREREQ([2.69])
 AC_ARG_PROGRAM()
 
 dnl ***************************
@@ -57,8 +58,7 @@ AC_SUBST([TERMINAL_VERSION_DBUS])
 dnl *******************************
 dnl *** Check for UNIX variants ***
 dnl *******************************
-AC_AIX()
-AC_ISC_POSIX()
+AC_USE_SYSTEM_EXTENSIONS
 
 dnl ********************************
 dnl *** Check for basic programs ***
@@ -92,11 +92,11 @@ XDT_CHECK_LIBX11()
 dnl ***********************************
 dnl *** Check for required packages ***
 dnl ***********************************
-XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.20.8])
-XDT_CHECK_PACKAGE([VTE], [vte-2.91], [0.38])
-XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.38.0])
-XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.10.0])
-XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.10.0])
+XDT_CHECK_PACKAGE([GTK], [gtk+-3.0], [3.22.0])
+XDT_CHECK_PACKAGE([VTE], [vte-2.91], [0.46])
+XDT_CHECK_PACKAGE([GIO], [gio-2.0], [2.42.0])
+XDT_CHECK_PACKAGE([LIBXFCE4UI], [libxfce4ui-2], [4.14.0])
+XDT_CHECK_PACKAGE([XFCONF], [libxfconf-0], [4.14.0])
 
 dnl ****************************************
 dnl *** Check if we need to use utempter ***
@@ -162,7 +162,7 @@ AC_MSG_CHECKING([PLATFORM_LDFLAGS])
 AC_MSG_RESULT([$PLATFORM_LDFLAGS])
 AC_SUBST([PLATFORM_LDFLAGS])
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
 colorschemes/Makefile
 doc/Makefile
@@ -177,6 +177,7 @@ icons/48x48/Makefile
 icons/128x128/Makefile
 icons/scalable/Makefile
 ])
+AC_OUTPUT
 
 dnl ***************************
 dnl *** Print configuration ***

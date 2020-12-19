@@ -363,12 +363,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
   gtk_menu_set_screen (GTK_MENU (menu), gtk_widget_get_screen (GTK_WIDGET (widget)));
 
   /* run our custom main loop */
-#if GTK_CHECK_VERSION (3, 22, 0)
   gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
-#else
-  gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, button,
-                  event_time > 0 ? event_time : gtk_get_current_event_time ());
-#endif
   g_main_loop_run (loop);
   g_main_loop_unref (loop);
 
@@ -707,12 +702,7 @@ terminal_widget_open_uri (TerminalWidget *widget,
         }
 
       /* try to open the URI with the responsible application */
-#if GTK_CHECK_VERSION (3, 22, 0)
       if (!gtk_show_uri_on_window (window, uri, gtk_get_current_event_time (), &error))
-#else
-      if (!gtk_show_uri (gtk_widget_get_screen (GTK_WIDGET (widget)),
-                         uri, gtk_get_current_event_time (), &error))
-#endif
         {
           /* tell the user that we were unable to open the responsible application */
           xfce_dialog_show_error (window, error, _("Failed to open the URL '%s'"), uri);
@@ -733,7 +723,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 {
   guint                       i;
   gboolean                    highlight_urls;
-  GRegex                     *regex;
+  VteRegex                   *regex;
   const TerminalRegexPattern *pattern;
   GError                     *error;
 
@@ -764,7 +754,6 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 
           /* build the regex */
           error = NULL;
-#if VTE_CHECK_VERSION (0, 45, 90)
           regex = vte_regex_new_for_match (pattern->pattern, -1,
                                            PCRE2_CASELESS | PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE,
                                            &error);
@@ -775,11 +764,6 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
               g_critical ("Failed to JIT regular expression '%s': %s\n", pattern->pattern, error->message);
               g_clear_error (&error);
             }
-#else
-          regex = g_regex_new (pattern->pattern,
-                               G_REGEX_CASELESS | G_REGEX_OPTIMIZE | G_REGEX_MULTILINE,
-                               0, &error);
-#endif
           if (G_UNLIKELY (error != NULL))
             {
               g_critical ("Failed to parse regular expression pattern %d: %s", i, error->message);
@@ -788,14 +772,14 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
             }
 
           /* set the new regular expression */
-          widget->regex_tags[i] = vte_terminal_match_add_gregex (VTE_TERMINAL (widget), regex, 0);
+          widget->regex_tags[i] = vte_terminal_match_add_regex (VTE_TERMINAL (widget), regex, 0);
 #if VTE_CHECK_VERSION (0, 53, 0)
           vte_terminal_match_set_cursor_name (VTE_TERMINAL (widget), widget->regex_tags[i], "hand2");
 #else
           vte_terminal_match_set_cursor_type (VTE_TERMINAL (widget), widget->regex_tags[i], GDK_HAND2);
 #endif
           /* release the regex owned by vte now */
-          g_regex_unref (regex);
+          vte_regex_unref (regex);
         }
     }
 }

@@ -73,26 +73,20 @@ enum
 #define NOTEBOOK_NAME PACKAGE_NAME "-notebook"
 const gchar *CSS_SLIM_TABS =
 "#" NOTEBOOK_NAME " tab {\n"
-#if GTK_CHECK_VERSION (3, 20, 0)
 "  min-height: 0;\n"
-#endif
 "  font-weight: normal;\n"
 "  padding: 1px;\n"
 "  margin: 0;\n"
 "}\n"
 "#" NOTEBOOK_NAME " tab button {\n"
-#if GTK_CHECK_VERSION (3, 20, 0)
 "  min-height: 0;\n"
 "  min-width: 0;\n"
-#endif
 "  padding: 1px;\n"
 "  margin: 0;\n"
 "}\n"
 "#" NOTEBOOK_NAME " button {\n"
-#if GTK_CHECK_VERSION (3, 20, 0)
 "  min-height: 0;\n"
 "  min-width: 0;\n"
-#endif
 "  padding: 1px;\n"
 "}\n";
 
@@ -1445,11 +1439,7 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           menu = gtk_ui_manager_get_widget (window->priv->ui_manager, "/tab-menu");
 G_GNUC_END_IGNORE_DEPRECATIONS
-#if GTK_CHECK_VERSION (3, 22, 0)
           gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
-#else
-          gtk_menu_popup (GTK_MENU (menu), NULL, NULL, NULL, NULL, event->button, event->time);
-#endif
         }
 
       return TRUE;
@@ -2439,7 +2429,7 @@ terminal_window_action_search (GtkAction      *action,
 static gboolean
 prepare_regex (TerminalWindow *window)
 {
-  GRegex   *regex;
+  VteRegex *regex;
   GError   *error = NULL;
   gboolean  wrap_around;
 
@@ -2449,7 +2439,7 @@ prepare_regex (TerminalWindow *window)
       wrap_around = terminal_search_dialog_get_wrap_around (TERMINAL_SEARCH_DIALOG (window->priv->search_dialog));
       terminal_screen_search_set_gregex (window->priv->active, regex, wrap_around);
       if (regex != NULL)
-        g_regex_unref (regex);
+        vte_regex_unref (regex);
 
       return TRUE;
     }

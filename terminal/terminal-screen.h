@@ -102,7 +102,7 @@ void            terminal_screen_set_encoding              (TerminalScreen *scree
                                                            const gchar    *charset);
 
 void            terminal_screen_search_set_gregex         (TerminalScreen *screen,
-                                                           GRegex         *regex,
+                                                           VteRegex       *regex,
                                                            gboolean        wrap_around);
 gboolean        terminal_screen_search_has_gregex         (TerminalScreen *screen);
 
