@@ -51,7 +51,7 @@ struct _TerminalSearchDialog
 {
   GtkDialog      parent_instance;
 
-  GRegex        *last_gregex;
+  VteRegex        *last_gregex;
 
   GtkWidget     *button_prev;
   GtkWidget     *button_next;
@@ -219,7 +219,7 @@ terminal_search_dialog_clear_gregex (TerminalSearchDialog *dialog)
 {
   if (dialog->last_gregex != NULL)
     {
-      g_regex_unref (dialog->last_gregex);
+      vte_regex_unref (dialog->last_gregex);
       dialog->last_gregex = NULL;
     }
 }
@@ -277,26 +277,22 @@ terminal_search_dialog_get_wrap_around (TerminalSearchDialog *dialog)
 
 
 
-GRegex *
+VteRegex *
 terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
                                   GError               **error)
 {
   const gchar        *pattern;
-#if VTE_CHECK_VERSION (0, 45, 90)
   guint32             flags = PCRE2_UTF | PCRE2_NO_UTF_CHECK | PCRE2_MULTILINE;
-#else
-  GRegexCompileFlags  flags = G_REGEX_OPTIMIZE;
-#endif
   gchar              *pattern_escaped = NULL;
   gchar              *word_regex = NULL;
-  GRegex             *regex;
+  VteRegex           *regex;
 
   terminal_return_val_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog), NULL);
   terminal_return_val_if_fail (error == NULL || *error == NULL, NULL);
 
   /* if not cleared, use the old regex */
   if (dialog->last_gregex != NULL)
-    return g_regex_ref (dialog->last_gregex);
+    return vte_regex_ref (dialog->last_gregex);
 
   /* unset if no pattern is typed */
   pattern = gtk_entry_get_text (GTK_ENTRY (dialog->entry));
@@ -304,18 +300,12 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
     return NULL;
 
   if (!gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_case)))
-#if VTE_CHECK_VERSION (0, 45, 90)
     flags |= PCRE2_CASELESS;
-#else
-    flags |= G_REGEX_CASELESS;
-#endif
 
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->match_regex)))
     {
 /* MULTILINE flag is always used for pcre2 */
-#if !VTE_CHECK_VERSION (0, 45, 90)
       flags |= G_REGEX_MULTILINE;
-#endif
     }
   else
     {
@@ -329,18 +319,14 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
       pattern = word_regex;
     }
 
-#if VTE_CHECK_VERSION (0, 45, 90)
   regex = vte_regex_new_for_search (pattern, -1, flags, error);
-#else
-  regex = g_regex_new (pattern, flags, 0, error);
-#endif
 
   g_free (pattern_escaped);
   g_free (word_regex);
 
   /* keep around */
   if (regex != NULL)
-    dialog->last_gregex = g_regex_ref (regex);
+    dialog->last_gregex = vte_regex_ref (regex);
 
   return regex;
 }
