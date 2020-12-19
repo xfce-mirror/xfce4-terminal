@@ -44,7 +44,7 @@ GtkWidget *terminal_search_dialog_new             (GtkWindow             *parent
 
 gboolean   terminal_search_dialog_get_wrap_around (TerminalSearchDialog  *dialog);
 
-GRegex    *terminal_search_dialog_get_regex       (TerminalSearchDialog  *dialog,
+VteRegex    *terminal_search_dialog_get_regex       (TerminalSearchDialog  *dialog,
                                                    GError               **error);
 
 void       terminal_search_dialog_present         (TerminalSearchDialog  *dialog);

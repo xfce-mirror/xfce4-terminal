@@ -1177,9 +1177,7 @@ terminal_screen_update_colors (TerminalScreen *screen)
   if (!cursor_use_default)
     {
       cursor_use_default = !terminal_preferences_get_color (screen->preferences, "color-cursor-foreground", &cursor);
-#if VTE_CHECK_VERSION (0, 44, 0)
       vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen->terminal), cursor_use_default ? NULL : &cursor);
-#endif
       cursor_use_default = !terminal_preferences_get_color (screen->preferences, "color-cursor", &cursor);
       vte_terminal_set_color_cursor (VTE_TERMINAL (screen->terminal), cursor_use_default ? NULL : &cursor);
     }
@@ -1377,9 +1375,7 @@ terminal_screen_update_word_chars (TerminalScreen *screen)
   g_object_get (G_OBJECT (screen->preferences), "word-chars", &word_chars, NULL);
   if (G_LIKELY (word_chars != NULL))
     {
-#if VTE_CHECK_VERSION (0, 40, 0)
       vte_terminal_set_word_char_exceptions (VTE_TERMINAL (screen->terminal), word_chars);
-#endif
       g_free (word_chars);
     }
 }
@@ -2120,22 +2116,17 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 {
   GdkGeometry    hints;
   glong          char_width, char_height;
-#if GTK_CHECK_VERSION (3, 19, 5)
   GtkRequisition vbox_request;
   GtkAllocation  toplevel_allocation, vbox_allocation;
   glong          grid_width, grid_height;
   glong          chrome_width, chrome_height;
   gint           csd_width, csd_height;
-#else
-  gint           xpad, ypad;
-#endif
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (VTE_IS_TERMINAL (screen->terminal));
   terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (screen)));
   terminal_return_if_fail (gtk_widget_get_realized (GTK_WIDGET (window)));
 
-#if GTK_CHECK_VERSION (3, 19, 5)
   terminal_screen_get_geometry (screen, &char_width, &char_height, NULL, NULL);
   terminal_screen_get_size (screen, &grid_width, &grid_height);
 
@@ -2150,12 +2141,6 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
 
   hints.base_width = chrome_width + csd_width;
   hints.base_height = chrome_height + csd_height;
-#else
-  terminal_screen_get_geometry (screen, &char_width, &char_height, &xpad, &ypad);
-
-  hints.base_width = xpad;
-  hints.base_height = ypad;
-#endif
 
   hints.width_inc = char_width;
   hints.height_inc = char_height;
@@ -2163,11 +2148,7 @@ terminal_screen_set_window_geometry_hints (TerminalScreen *screen,
   hints.min_height = hints.base_height + hints.height_inc * MIN_ROWS;
 
   gtk_window_set_geometry_hints (window,
-#if GTK_CHECK_VERSION (3, 19, 5)
                                  NULL,
-#else
-                                 screen->terminal,
-#endif
                                  &hints,
                                  GDK_HINT_RESIZE_INC
                                  | GDK_HINT_MIN_SIZE
@@ -2538,7 +2519,7 @@ terminal_screen_reset (TerminalScreen *screen,
   vte_terminal_reset (VTE_TERMINAL (screen->terminal), TRUE, clear);
 
   if (clear)
-    vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), NULL, 0);
+    vte_terminal_search_set_regex (VTE_TERMINAL (screen->terminal), NULL, 0);
 }
 
 
@@ -2636,11 +2617,7 @@ terminal_screen_get_tab_label (TerminalScreen *screen)
   gtk_widget_set_has_tooltip (screen->tab_label, TRUE);
 
   button = gtk_button_new ();
-#if GTK_CHECK_VERSION (3,20,0)
   gtk_widget_set_focus_on_click (button, FALSE);
-#else
-  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
-#endif
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_widget_set_can_focus (button, FALSE);
   gtk_widget_set_can_default (button, FALSE);
@@ -2704,11 +2681,11 @@ terminal_screen_set_encoding (TerminalScreen *screen,
 
 void
 terminal_screen_search_set_gregex (TerminalScreen *screen,
-                                   GRegex         *regex,
+                                   VteRegex         *regex,
                                    gboolean        wrap_around)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-  vte_terminal_search_set_gregex (VTE_TERMINAL (screen->terminal), regex, 0);
+  vte_terminal_search_set_regex (VTE_TERMINAL (screen->terminal), regex, 0);
   vte_terminal_search_set_wrap_around (VTE_TERMINAL (screen->terminal), wrap_around);
 }
 
@@ -2718,7 +2695,7 @@ gboolean
 terminal_screen_search_has_gregex (TerminalScreen *screen)
 {
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-  return vte_terminal_search_get_gregex (VTE_TERMINAL (screen->terminal)) != NULL;
+  return vte_terminal_search_get_regex (VTE_TERMINAL (screen->terminal)) != NULL;
 }
 
 

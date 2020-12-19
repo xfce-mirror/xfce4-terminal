@@ -282,11 +282,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
   gtk_widget_set_tooltip_text (button, _("Keep window open when it loses focus"));
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-#if GTK_CHECK_VERSION (3,20,0)
   gtk_widget_set_focus_on_click (button, FALSE);
-#else
-  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
-#endif
 
   g_object_get (terminal_window_get_preferences (window), "dropdown-keep-open-default", &keep_open, NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
@@ -302,11 +298,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_widget_set_tooltip_text (button, gtk_action_get_tooltip (action));
 G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
-#if GTK_CHECK_VERSION (3,20,0)
   gtk_widget_set_focus_on_click (button, FALSE);
-#else
-  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
-#endif
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_signal_connect_swapped (G_OBJECT (button), "clicked",
       G_CALLBACK (gtk_action_activate), action);
@@ -563,14 +555,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
 
   gtk_widget_show_all (menu);
-#if GTK_CHECK_VERSION (3, 22, 0)
   gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
-#else
-  gtk_menu_popup (GTK_MENU (menu),
-                  NULL, NULL,
-                  NULL, NULL,
-                  button, timestamp);
-#endif
 }
 
 
@@ -610,13 +595,9 @@ terminal_window_dropdown_get_monitor_geometry (GdkScreen    *screen,
                                                gint          monitor_num,
                                                GdkRectangle *geometry)
 {
-#if GTK_CHECK_VERSION (3, 22, 0)
   GdkDisplay *display = gdk_screen_get_display (screen);
   GdkMonitor *monitor = gdk_display_get_monitor (display, monitor_num);
   gdk_monitor_get_geometry (monitor, geometry);
-#else
-  gdk_screen_get_monitor_geometry (screen, monitor_num, geometry);
-#endif
 }
 
 
