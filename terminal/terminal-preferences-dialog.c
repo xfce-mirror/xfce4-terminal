@@ -242,10 +242,8 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
       g_signal_connect (object, "color-set",
           G_CALLBACK (terminal_preferences_dialog_palette_changed), dialog);
 
-#if GTK_CHECK_VERSION (3, 20, 0)
       /* don't show palette when editing colors */
       g_object_set (object, "show-editor", TRUE, NULL);
-#endif
     }
 
   /* watch color changes in property */
@@ -543,7 +541,6 @@ static gboolean
 terminal_preferences_dialog_color_press_event (GtkWidget      *widget,
                                                GdkEventButton *event)
 {
-#if GTK_CHECK_VERSION (3, 20, 0)
   gboolean show_editor;
 
   if (event->type == GDK_BUTTON_PRESS && event->button == 1 && event->state == GDK_CONTROL_MASK)
@@ -555,7 +552,6 @@ terminal_preferences_dialog_color_press_event (GtkWidget      *widget,
       g_object_set (G_OBJECT (widget), "show-editor", show_editor, NULL);
       return TRUE;
     }
-#endif
 
   return FALSE;
 }

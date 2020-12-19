@@ -21,32 +21,8 @@
 #include <glib-object.h>
 #include <vte/vte.h>
 
-/* Use new VTE regex API; this is to replace many ifs.
- */
-#if VTE_CHECK_VERSION (0, 45, 90)
-
 #define PCRE2_CODE_UNIT_WIDTH 0
 #include <pcre2.h>
-
-#undef GRegex
-#define GRegex VteRegex
-
-#undef vte_terminal_match_add_gregex
-#define vte_terminal_match_add_gregex(terminal,regex,flags) vte_terminal_match_add_regex(terminal,regex,flags)
-
-#undef vte_terminal_search_get_gregex
-#define vte_terminal_search_get_gregex(terminal) vte_terminal_search_get_regex(terminal)
-
-#undef vte_terminal_search_set_gregex
-#define vte_terminal_search_set_gregex(terminal,regex,flags) vte_terminal_search_set_regex(terminal,regex,flags)
-
-#undef g_regex_ref
-#define g_regex_ref(regex) vte_regex_ref(regex)
-
-#undef g_regex_unref
-#define g_regex_unref(regex) vte_regex_unref(regex)
-
-#endif
 
 G_BEGIN_DECLS
 

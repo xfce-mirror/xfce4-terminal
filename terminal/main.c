@@ -266,11 +266,6 @@ main (int argc, char **argv)
     nargv[nargc++] = g_strdup (argv[n]);
   nargv[nargc] = NULL;
 
-#if !GLIB_CHECK_VERSION (2, 36, 0)
-  /* for GDBus */
-  g_type_init ();
-#endif
-
   if (!options.disable_server)
     {
       /* try to connect to an existing Terminal service */
