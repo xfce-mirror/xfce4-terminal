@@ -167,6 +167,7 @@ static GtkWidget* terminal_screen_unsafe_paste_dialog_new       (TerminalScreen 
 static void       terminal_screen_paste_unsafe_text             (TerminalScreen        *screen,
                                                                  const gchar           *text,
                                                                  GdkAtom                original_clipboard);
+static void       terminal_screen_update_sixel                  (TerminalScreen *screen);
 
 
 
@@ -359,6 +360,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_word_chars (screen);
   terminal_screen_update_background (screen);
   terminal_screen_update_colors (screen);
+  terminal_screen_update_sixel (screen);
 
   /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
@@ -650,6 +652,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_word_chars (screen);
   else if (strcmp ("misc-tab-position", name) == 0)
     terminal_screen_update_label_orientation (screen);
+  else if (strcmp ("enable-sixel", name) == 0)
+    terminal_screen_update_sixel (screen);
 }
 
 
@@ -3043,4 +3047,16 @@ terminal_screen_set_custom_title_color (TerminalScreen *screen,
       screen->custom_title_color = g_strdup (color);
       terminal_screen_set_tab_label_color (screen, &label_color);
     }
+}
+
+void terminal_screen_update_sixel (TerminalScreen *screen)
+{
+  // sixel support was only available in VTE after this release
+  #if VTE_CHECK_VERSION (0, 61, 90)
+  gboolean enable_sixel;
+  g_object_get (G_OBJECT (screen->preferences),
+                "enable-sixel", &enable_sixel,
+                NULL);
+  vte_terminal_set_enable_sixel (VTE_TERMINAL (screen->terminal), enable_sixel);
+  #endif
 }
