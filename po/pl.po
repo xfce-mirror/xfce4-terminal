@@ -11,7 +11,7 @@
 # Marcin Mikołajczak <me@mkljczk.pl>, 2016
 # Marcin Mikołajczak <me@mkljczk.pl>, 2016
 # No Ne, 2020
-# No Ne, 2017-2019
+# No Ne, 2017-2021
 # Piotr Sokół <psokol.l10n@gmail.com>, 2009,2011-2014
 # Piotr Sokół <psokol.l10n@gmail.com>, 2017
 # Piotr Strębski <strebski@gmail.com>, 2014
@@ -20,8 +20,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 18:31+0100\n"
-"PO-Revision-Date: 2020-03-25 13:12+0000\n"
+"POT-Creation-Date: 2020-10-20 12:48+0200\n"
+"PO-Revision-Date: 2021-01-02 10:37+0000\n"
 "Last-Translator: No Ne\n"
 "Language-Team: Polish (http://www.transifex.com/xfce/xfce-apps/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -156,7 +156,6 @@ msgid "See the %s man page for full explanation of the options above."
 msgstr "Dokładny opis opcji programu %s znajduje się w podręczniku użytkownika."
 
 #: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
-#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Terminal Xfce"
 
@@ -186,12 +185,12 @@ msgstr "Proszę zgłaszać błędy na adres <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nie udało się zarejestrować usługi terminala: %s.\n"
 
-#: ../terminal/terminal-app.c:906
+#: ../terminal/terminal-app.c:928
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Nieprawidłowa geometria „%s”.\n"
 
-#: ../terminal/terminal-app.c:985
+#: ../terminal/terminal-app.c:1008
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Nie udało się połączyć z menedżerem sesji: %s\n"
@@ -420,24 +419,24 @@ msgstr "Opcja \"--zoom\" wymaga określenia stopnia powiększenia (%d .. %d) jak
 msgid "Unknown option \"%s\""
 msgstr "Nieznana opcja „%s”"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "All Files"
 msgstr "Wszystkie pliki"
 
-#: ../terminal/terminal-preferences-dialog.c:486
+#: ../terminal/terminal-preferences-dialog.c:479
 msgid "Image Files"
 msgstr "Pliki obrazów"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: ../terminal/terminal-preferences-dialog.c:944
 msgid "Load Presets..."
 msgstr "Wczytaj profil..."
 
-#: ../terminal/terminal-preferences.c:1186
+#: ../terminal/terminal-preferences.c:1175
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:452 ../terminal/terminal-screen.c:836
-#: ../terminal/terminal-screen.c:2289
+#: ../terminal/terminal-screen.c:455 ../terminal/terminal-screen.c:836
+#: ../terminal/terminal-screen.c:2280
 msgid "Untitled"
 msgstr "Bez tytułu"
 
@@ -446,57 +445,57 @@ msgstr "Bez tytułu"
 msgid "Unable to determine your login shell."
 msgstr "Nie udało się określić powłoki logowania."
 
-#: ../terminal/terminal-screen.c:1410
+#: ../terminal/terminal-screen.c:1435
 msgid "_Relaunch"
 msgstr "_Ponowne uruchomienie"
 
-#: ../terminal/terminal-screen.c:1416
+#: ../terminal/terminal-screen.c:1441
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Proces podrzędny zakończono normalnie ze statusem %d."
 
-#: ../terminal/terminal-screen.c:1418
+#: ../terminal/terminal-screen.c:1443
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Proces podrzędny został przerwany przez sygnał %d."
 
-#: ../terminal/terminal-screen.c:1420
+#: ../terminal/terminal-screen.c:1445
 msgid "The child process was aborted."
 msgstr "Proces podrzędny został przerwany."
 
-#: ../terminal/terminal-screen.c:1426 ../terminal/terminal-window.c:943
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:977
 msgid "Do _not ask me again"
 msgstr "_Pomijanie tego pytania w przyszłości"
 
-#: ../terminal/terminal-screen.c:1787
+#: ../terminal/terminal-screen.c:1761
 msgid "Warning: Unsafe Paste"
 msgstr "Ostrzeżenie: Niebezpieczne wklejenie"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:865
-#: ../terminal/terminal-window.c:2438
-msgid "_Cancel"
-msgstr "_Anuluj"
-
-#: ../terminal/terminal-screen.c:1790 ../terminal/terminal-window.c:348
-msgid "_Paste"
-msgstr "Wk_lej"
-
-#: ../terminal/terminal-screen.c:1794
+#: ../terminal/terminal-screen.c:1763
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like\n"
 "some commands may be executed, potentially involving root access ('sudo')."
 msgstr "Wklejanie tego tekstu do terminala może być niebezpieczne, ponieważ wygląda na to,\nże mogą zostać wykonane niektóre polecenia, co może wiązać się z dostępem użytkownika root ('sudo')."
 
-#: ../terminal/terminal-screen.c:1868 ../terminal/terminal-screen.c:1952
-#: ../terminal/terminal-screen.c:1990
+#: ../terminal/terminal-screen.c:1766 ../terminal/terminal-window.c:900
+#: ../terminal/terminal-window.c:2502
+msgid "_Cancel"
+msgstr "_Anuluj"
+
+#: ../terminal/terminal-screen.c:1768 ../terminal/terminal-window.c:362
+msgid "_Paste"
+msgstr "Wk_lej"
+
+#: ../terminal/terminal-screen.c:1859 ../terminal/terminal-screen.c:1943
+#: ../terminal/terminal-screen.c:1981
 msgid "Failed to execute child"
 msgstr "Nie udało się wywołać procesu potomnego."
 
-#: ../terminal/terminal-screen.c:2656
+#: ../terminal/terminal-screen.c:2647
 msgid "Close this tab"
 msgstr "Zamyka kartę"
 
-#: ../terminal/terminal-screen.c:2709
+#: ../terminal/terminal-screen.c:2700
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Nie udało się ustawić kodowania %s\n"
@@ -538,7 +537,7 @@ msgstr "_Przeszukanie od początku po osiągnięciu końca"
 msgid "_Opacity:"
 msgstr "_Nieprzezroczystość:"
 
-#: ../terminal/terminal-search-dialog.c:355
+#: ../terminal/terminal-search-dialog.c:357
 msgid "Find"
 msgstr "Wyszukiwanie"
 
@@ -611,361 +610,361 @@ msgstr "Wysuwany terminal"
 msgid "Toggle Drop-down Terminal"
 msgstr "Przełącza widoczność wysuwanego terminala"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:349
 msgid "_File"
 msgstr "_Plik"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open _Tab"
 msgstr "Nowa _karta"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open a new terminal tab"
 msgstr "Otwiera nową kartę terminala"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open T_erminal"
 msgstr "_Nowe okno"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open a new terminal window"
 msgstr "Otwiera nowe okno terminala"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:352
 msgid "_Undo Close Tab"
 msgstr "_Cofnij zamknięcie karty"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:353
 msgid "_Detach Tab"
 msgstr "_Odłącz kartę"
 
-#: ../terminal/terminal-window.c:340 ../terminal/terminal-window.c:907
+#: ../terminal/terminal-window.c:354 ../terminal/terminal-window.c:941
 msgid "Close T_ab"
 msgstr "Zamknij _kartę"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:355
 msgid "Close Other Ta_bs"
 msgstr "Zamknij po_zostałe karty"
 
-#: ../terminal/terminal-window.c:342 ../terminal/terminal-window.c:914
+#: ../terminal/terminal-window.c:356 ../terminal/terminal-window.c:948
 msgid "Close _Window"
 msgstr "Za_mknij okno"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:357
 msgid "_Edit"
 msgstr "_Edycja"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "_Copy"
 msgstr "S_kopiuj"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "Copy to clipboard"
 msgstr "Kopiuje zaznaczony tekst do schowka"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy as _HTML"
 msgstr "Skopiuj jako _HTML"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy to clipboard as HTML"
 msgstr "Skopiowanie do schowka jako HTML"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:362
 msgid "Paste from clipboard"
 msgstr "Wkleja wcześniej skopiowany tekst ze schowka"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:363
 msgid "Paste _Selection"
 msgstr "Wklej _zaznaczenie"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:364
 msgid "Select _All"
 msgstr "Zazn_acz wszystko"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:365
 msgid "Copy _Input To All Tabs..."
 msgstr "Skopiuj  _dane wejściowe do wszystkich kart..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Pr_eferences..."
 msgstr "P_referencje..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Open the preferences dialog"
 msgstr "Otwiera okno preferencji programu"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:367
 msgid "_View"
 msgstr "_Widok"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom _In"
 msgstr "Po_większ"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom in with larger font"
 msgstr "Powiększ z większą czcionką"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom _Out"
 msgstr "Po_mniejsz"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom out with smaller font"
 msgstr "Pomniejsz z mniejszą czcionką"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "_Normal Size"
 msgstr "_Zwykły rozmiar"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "Zoom to default size"
 msgstr "Przywróć domyślny rozmiar"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:371
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:372
 msgid "_Set Title..."
 msgstr "_Nadaj tytuł..."
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:373
 msgid "Set Title Co_lor..."
 msgstr "Nadaj ko_lor tytułu..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "_Find..."
 msgstr "_Wyszukaj..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "Search terminal contents"
 msgstr "Wyszukuje zawartość terminala"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:375
 msgid "Find Ne_xt"
 msgstr "Wyszukaj _następny"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:376
 msgid "Find Pre_vious"
 msgstr "Wyszukaj p_oprzedni"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:377
 msgid "Sa_ve Contents..."
 msgstr "Zapisz za_wartość..."
 
-#: ../terminal/terminal-window.c:364 ../terminal/terminal-window.c:2298
+#: ../terminal/terminal-window.c:378 ../terminal/terminal-window.c:2362
 msgid "_Reset"
 msgstr "_Wyzeruj stan"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:379
 msgid "_Clear Scrollback and Reset"
 msgstr "_Wyczyść bufor przewijania i wyzeruj stan"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:380
 msgid "T_abs"
 msgstr "_Karty"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "_Previous Tab"
 msgstr "_Poprzednia"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "Switch to previous tab"
 msgstr "Przechodzi do poprzedniej karty"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "_Next Tab"
 msgstr "_Następna"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "Switch to next tab"
 msgstr "Przechodzi do następnej karty"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Last _Active Tab"
 msgstr "Ostatnio _aktywna karta"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Switch to last active tab"
 msgstr "Przechodzi do ostatnio aktywnej karty"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:384
 msgid "Move Tab _Left"
 msgstr "Przemieść kartę w _lewo"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:385
 msgid "Move Tab _Right"
 msgstr "Przemieść kartę w p_rawo"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:386
 msgid "_Help"
 msgstr "Pomo_c"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "_Contents"
 msgstr "_Spis treści"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "Display help contents"
 msgstr "Wyświetla zawartość podręcznika użytkownika"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:388
 msgid "_About"
 msgstr "_O programie"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:389
 msgid "_Zoom"
 msgstr "Powięks_z"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show _Menubar"
 msgstr "Pasek _menu"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show/hide the menubar"
 msgstr "Przełącza wyświetlanie paska menu"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show _Toolbar"
 msgstr "Pasek _narzędziowy"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show/hide the toolbar"
 msgstr "Przełącza wyświetlanie paska narzędziowego"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show Window _Borders"
 msgstr "O_bramowanie okna"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show/hide the window decorations"
 msgstr "Przełącza wyświetlanie obramowania okna"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "_Fullscreen"
 msgstr "Pełny _ekran"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "Toggle fullscreen mode"
 msgstr "Przełącza wyświetlanie w trybie pełnego ekranu"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "_Read-Only"
 msgstr "_Tylko do odczytu"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "Toggle read-only mode"
 msgstr "Przełącza tryb tylko do odczytu"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Scroll on _Output"
 msgstr "Przewijanie po w_ypisaniu na wyjście"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Toggle scroll on output"
 msgstr "Przełącz przewijanie po wypisaniu na wyjście"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:556
+#: ../terminal/terminal-window.c:570
 msgid "Set _Encoding"
 msgstr "_Kodowanie"
 
-#: ../terminal/terminal-window.c:862
+#: ../terminal/terminal-window.c:898
 msgid "Warning"
 msgstr "Ostrzeżenie"
 
 #. and process running
-#: ../terminal/terminal-window.c:875
+#: ../terminal/terminal-window.c:909
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Procesy nadal działają w niektórych kartach.\nZamknięcie tego okna zabije je wszystkie."
 
 #. and no process running
-#: ../terminal/terminal-window.c:881
+#: ../terminal/terminal-window.c:915
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Bieżące okno posiada %d otwartych kart. Zamknięcie\ngo spowoduje zamknięcie wszystkich otwartych kart."
 
-#: ../terminal/terminal-window.c:885
+#: ../terminal/terminal-window.c:919
 msgid "Close all tabs?"
 msgstr "Zamknąć wszystkie karty?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:892
+#: ../terminal/terminal-window.c:926
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Proces nadal działa.\nZamknięcie tej karty zabije go."
 
-#: ../terminal/terminal-window.c:894
+#: ../terminal/terminal-window.c:928
 msgid "Close tab?"
 msgstr "Zamknąć kartę?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:899
+#: ../terminal/terminal-window.c:933
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Proces nadal działa.\nZamknięcie tego okna zabije go."
 
-#: ../terminal/terminal-window.c:901
+#: ../terminal/terminal-window.c:935
 msgid "Close window?"
 msgstr "Zamknąć okno?"
 
-#: ../terminal/terminal-window.c:1881
+#: ../terminal/terminal-window.c:1949
 msgid "Copy _Input:"
 msgstr "Skopiuj _dane wejściowe:"
 
-#: ../terminal/terminal-window.c:1885
+#: ../terminal/terminal-window.c:1953
 msgid "Enter the text to be copied to all tabs"
 msgstr "Proszę wprowadzić tekst do skopiowania do wszystkich kart"
 
-#: ../terminal/terminal-window.c:1893
+#: ../terminal/terminal-window.c:1961
 msgid "Copy input"
 msgstr "Skopiuj dane wejściowe"
 
-#: ../terminal/terminal-window.c:2250
+#: ../terminal/terminal-window.c:2314
 msgid "_Title:"
 msgstr "_Tytuł:"
 
-#: ../terminal/terminal-window.c:2254
+#: ../terminal/terminal-window.c:2318
 msgid "Enter the title for the current terminal tab"
 msgstr "Proszę wprowadzić tytuł bieżącej karty terminala."
 
-#: ../terminal/terminal-window.c:2259
+#: ../terminal/terminal-window.c:2323
 msgid "Reset"
 msgstr "Resetuj"
 
-#: ../terminal/terminal-window.c:2269
+#: ../terminal/terminal-window.c:2333
 msgid "Help"
 msgstr "Pomoc"
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2339
 msgid "Close"
 msgstr "Zamknij"
 
-#: ../terminal/terminal-window.c:2297
+#: ../terminal/terminal-window.c:2361
 msgid "Choose title color"
 msgstr "Wybór koloru tytułu"
 
-#: ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:2458
 msgid "Failed to create the regular expression"
 msgstr "Nie udało się utworzyć wyrażenia regularnego"
 
-#: ../terminal/terminal-window.c:2435
+#: ../terminal/terminal-window.c:2499
 msgid "Save contents..."
 msgstr "Zapisz zawartość..."
 
-#: ../terminal/terminal-window.c:2439
+#: ../terminal/terminal-window.c:2503
 msgid "_Save"
 msgstr "_Zapisz"
 
-#: ../terminal/terminal-window.c:2476
+#: ../terminal/terminal-window.c:2540
 msgid "Failed to save terminal contents"
 msgstr "Nie udało się zapisać zawartości terminala"
 
@@ -1662,7 +1661,7 @@ msgid ""
 "incorrectly. They are only here to allow you to work around\n"
 "certain applications and operating systems that expect\n"
 "different terminal behavior."
-msgstr "Poniższe opcje mogą powodować nieprawidłowe działanie\nniektórych programów. Zostały one udostępnione  tylko po to,\naby umożliwić pracę z pewnymi programami i systemami\noperacyjnymi, które oczekują nieco innego zachowania terminala."
+msgstr "Poniższe opcje mogą powodować nieprawidłowe działanie\nniektórych programów. Zostały one udostępnione tylko po to,\naby umożliwić pracę z pewnymi programami i systemami\noperacyjnymi, które oczekują nieco innego zachowania terminala."
 
 #: ../terminal/terminal-preferences.glade.h:168
 msgid "_Backspace key generates:"
@@ -1749,7 +1748,7 @@ msgstr "_Przewijanie zawartość terminala przy zmianie rozmiaru"
 
 #: ../terminal/terminal-preferences.glade.h:190
 msgid "Open new tab to the _right of the active tab"
-msgstr "Otwórz nową kartę na _prawo od aktywnej karty"
+msgstr "Otwieranie nowej karty na _prawo od aktywnej karty"
 
 #: ../terminal/terminal-preferences.glade.h:191
 msgid "If disabled, new tab will be opened in the rightmost position."
@@ -1785,6 +1784,10 @@ msgstr "_Zaawansowane"
 msgid "Terminal Emulator"
 msgstr "Emuluje działanie terminala X"
 
+#: ../xfce4-terminal-settings.desktop.in.h:1
+msgid "Xfce Terminal Settings"
+msgstr "Ustawienia terminala Xfce"
+
 #: ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Configure Xfce Terminal"
-msgstr "Skonfiguruj terminal Xfce"
+msgstr "Konfiguruje terminal Xfce"
