@@ -1751,6 +1751,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkWidget     *sw = gtk_scrolled_window_new (NULL, NULL);
   GtkWidget     *dialog = xfce_titled_dialog_new ();
   GtkWidget     *button;
+  gint           parent_w, parent_h;
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
@@ -1784,8 +1785,13 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_text_view_set_right_margin (GTK_TEXT_VIEW (tv), 6);
   gtk_text_view_set_left_margin (GTK_TEXT_VIEW (tv), 6);
 
-  gtk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 400);
-  gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 150);
+  gtk_window_get_size (GTK_WINDOW (parent), &parent_w, &parent_h);
+  gtk_window_set_default_size (GTK_WINDOW (dialog),
+                               CLAMP (parent_w * 0.7, 300, 1050),
+                               CLAMP (parent_h * 0.7, 200, 700));
+  gtk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 300);
+  gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 200);
+  gtk_widget_set_vexpand (sw, TRUE);
 
   gtk_container_add (GTK_CONTAINER (sw), tv);
   gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), sw);
