@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 18:31+0100\n"
-"PO-Revision-Date: 2019-05-25 11:06+0000\n"
-"Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
+"POT-Creation-Date: 2020-10-20 12:48+0200\n"
+"PO-Revision-Date: 2020-10-20 10:48+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Thai (http://www.transifex.com/xfce/xfce-apps/language/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -145,7 +145,6 @@ msgid "See the %s man page for full explanation of the options above."
 msgstr "อ่านคำอธิบายเต็มๆ ของตัวเลือกต่างๆ ข้างต้นได้จาก man page ของ %s"
 
 #: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
-#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "เทอร์มินัลของ Xfce"
 
@@ -175,12 +174,12 @@ msgstr "หากพบปัญหา กรุณารายงานที�
 msgid "Unable to register terminal service: %s\n"
 msgstr "ไม่สามารถลงทะเบียนบริการเทอร์มินัลได้: %s\n"
 
-#: ../terminal/terminal-app.c:906
+#: ../terminal/terminal-app.c:928
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "สตริงข้อกำหนดเรขาคณิต \"%s\" ไม่ถูกต้อง\n"
 
-#: ../terminal/terminal-app.c:985
+#: ../terminal/terminal-app.c:1008
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "ติดต่อกับโปรแกรมจัดการวาระไม่สำเร็จ: %s\n"
@@ -409,24 +408,24 @@ msgstr "ตัวเลือก \"--zoom\" ต้องระบุระดั
 msgid "Unknown option \"%s\""
 msgstr "ไม่รู้จักตัวเลือก \"%s\""
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "All Files"
 msgstr "ทุกแฟ้ม"
 
-#: ../terminal/terminal-preferences-dialog.c:486
+#: ../terminal/terminal-preferences-dialog.c:479
 msgid "Image Files"
 msgstr "แฟ้มรูปภาพ"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: ../terminal/terminal-preferences-dialog.c:944
 msgid "Load Presets..."
 msgstr "โหลดชุดที่จัดไว้..."
 
-#: ../terminal/terminal-preferences.c:1186
+#: ../terminal/terminal-preferences.c:1175
 msgid "Terminal"
 msgstr "เทอร์มินัล"
 
-#: ../terminal/terminal-screen.c:452 ../terminal/terminal-screen.c:836
-#: ../terminal/terminal-screen.c:2289
+#: ../terminal/terminal-screen.c:455 ../terminal/terminal-screen.c:836
+#: ../terminal/terminal-screen.c:2280
 msgid "Untitled"
 msgstr "ไม่มีชื่อ"
 
@@ -435,57 +434,57 @@ msgstr "ไม่มีชื่อ"
 msgid "Unable to determine your login shell."
 msgstr "ไม่สามารถพิจารณาเชลล์เข้าระบบของคุณได้"
 
-#: ../terminal/terminal-screen.c:1410
+#: ../terminal/terminal-screen.c:1435
 msgid "_Relaunch"
 msgstr "เ_รียกทำงานใหม่"
 
-#: ../terminal/terminal-screen.c:1416
+#: ../terminal/terminal-screen.c:1441
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "โพรเซสลูกจบการทำงานแบบปกติด้วยสถานะ %d"
 
-#: ../terminal/terminal-screen.c:1418
+#: ../terminal/terminal-screen.c:1443
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "โพรเซสลูกถูกยกเลิกการทำงานด้วยสัญญาณ %d"
 
-#: ../terminal/terminal-screen.c:1420
+#: ../terminal/terminal-screen.c:1445
 msgid "The child process was aborted."
 msgstr "โพรเซสลูกถูกยกเลิกการทำงาน"
 
-#: ../terminal/terminal-screen.c:1426 ../terminal/terminal-window.c:943
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:977
 msgid "Do _not ask me again"
 msgstr "ไ_ม่ต้องถามคำถามนี้อีก"
 
-#: ../terminal/terminal-screen.c:1787
+#: ../terminal/terminal-screen.c:1761
 msgid "Warning: Unsafe Paste"
 msgstr "คำเตือน: การแปะที่ไม่ปลอดภัย"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:865
-#: ../terminal/terminal-window.c:2438
-msgid "_Cancel"
-msgstr "_ยกเลิก"
-
-#: ../terminal/terminal-screen.c:1790 ../terminal/terminal-window.c:348
-msgid "_Paste"
-msgstr "_แปะ"
-
-#: ../terminal/terminal-screen.c:1794
+#: ../terminal/terminal-screen.c:1763
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like\n"
 "some commands may be executed, potentially involving root access ('sudo')."
 msgstr "การแปะข้อความนี้ลงในเทอร์มินัลอาจเป็นอันตราย เนื่องจากมีลักษณะคล้ายคำสั่งที่อาจทำงาน\nด้วยสิทธิ์ของ root ('sudo')"
 
-#: ../terminal/terminal-screen.c:1868 ../terminal/terminal-screen.c:1952
-#: ../terminal/terminal-screen.c:1990
+#: ../terminal/terminal-screen.c:1766 ../terminal/terminal-window.c:900
+#: ../terminal/terminal-window.c:2502
+msgid "_Cancel"
+msgstr "_ยกเลิก"
+
+#: ../terminal/terminal-screen.c:1768 ../terminal/terminal-window.c:362
+msgid "_Paste"
+msgstr "_แปะ"
+
+#: ../terminal/terminal-screen.c:1859 ../terminal/terminal-screen.c:1943
+#: ../terminal/terminal-screen.c:1981
 msgid "Failed to execute child"
 msgstr "เรียกทำงานโพรเซสลูกไม่สำเร็จ"
 
-#: ../terminal/terminal-screen.c:2656
+#: ../terminal/terminal-screen.c:2647
 msgid "Close this tab"
 msgstr "ปิดแท็บนี้"
 
-#: ../terminal/terminal-screen.c:2709
+#: ../terminal/terminal-screen.c:2700
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "กำหนดใช้รหัสอักขระ %s ไม่สำเร็จ\n"
@@ -527,7 +526,7 @@ msgstr "หมดแล้วเริ่มให_ม่"
 msgid "_Opacity:"
 msgstr "ความทึ_บแสง:"
 
-#: ../terminal/terminal-search-dialog.c:355
+#: ../terminal/terminal-search-dialog.c:357
 msgid "Find"
 msgstr "หา"
 
@@ -600,361 +599,361 @@ msgstr "เทอร์มินัลทิ้งตัว"
 msgid "Toggle Drop-down Terminal"
 msgstr "เปิด-ปิดเทอร์มินัลทิ้งตัว"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:349
 msgid "_File"
 msgstr "แ_ฟ้ม"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open _Tab"
 msgstr "เปิดแท็_บ"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open a new terminal tab"
 msgstr "เปิดแท็บเทอร์มินัลใหม่"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open T_erminal"
 msgstr "เปิดเทอร์มินั_ล"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open a new terminal window"
 msgstr "เปิดหน้าต่างเทอร์มินัลใหม่"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:352
 msgid "_Undo Close Tab"
 msgstr "เ_รียกคืนแท็บที่ปิดไป"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:353
 msgid "_Detach Tab"
 msgstr "แ_ยกแท็บ"
 
-#: ../terminal/terminal-window.c:340 ../terminal/terminal-window.c:907
+#: ../terminal/terminal-window.c:354 ../terminal/terminal-window.c:941
 msgid "Close T_ab"
 msgstr "ปิดแ_ท็บ"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:355
 msgid "Close Other Ta_bs"
 msgstr "ปิดแท็บ_อื่นๆ"
 
-#: ../terminal/terminal-window.c:342 ../terminal/terminal-window.c:914
+#: ../terminal/terminal-window.c:356 ../terminal/terminal-window.c:948
 msgid "Close _Window"
 msgstr "ปิด_หน้าต่าง"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:357
 msgid "_Edit"
 msgstr "แ_ก้ไข"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "_Copy"
 msgstr "_คัดลอก"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "Copy to clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ด"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy as _HTML"
 msgstr "คัดลอกเป็น _HTML"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy to clipboard as HTML"
 msgstr "คัดลอกไปยังคลิปบอร์ดในรูปแบบ HTML"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:362
 msgid "Paste from clipboard"
 msgstr "แปะจากคลิปบอร์ด"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:363
 msgid "Paste _Selection"
 msgstr "แปะสิ่งที่เ_ลือก"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:364
 msgid "Select _All"
 msgstr "เลือก_ทั้งหมด"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:365
 msgid "Copy _Input To All Tabs..."
 msgstr "คัดลอกข้อความที่ป้อ_นไปยังทุกแท็บ..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Pr_eferences..."
 msgstr "_ปรับแต่ง..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Open the preferences dialog"
 msgstr "เปิดกล่องโต้ตอบปรับแต่ง"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:367
 msgid "_View"
 msgstr "มุ_มมอง"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom _In"
 msgstr "ซูมเ_ข้า"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom in with larger font"
 msgstr "ซูมเข้าโดยใช้ตัวอักษรขนาดใหญ่ขึ้น"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom _Out"
 msgstr "ซูม_ออก"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom out with smaller font"
 msgstr "ซูมออกโดยใช้ตัวอักษรขนาดเล็กลง"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "_Normal Size"
 msgstr "ขนาด_ปกติ"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "Zoom to default size"
 msgstr "ซูมโดยใช้ขนาดตัวอักษรปกติ"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:371
 msgid "_Terminal"
 msgstr "เ_ทอร์มินัล"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:372
 msgid "_Set Title..."
 msgstr "_กำหนดชื่อเทอร์มินัล..."
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:373
 msgid "Set Title Co_lor..."
 msgstr "กำหนดสีขอ_งชื่อเทอร์มินัล..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "_Find..."
 msgstr "_หา..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "Search terminal contents"
 msgstr "ค้นเนื้อหาเทอร์มินัล"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:375
 msgid "Find Ne_xt"
 msgstr "หา_ถัดไป"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:376
 msgid "Find Pre_vious"
 msgstr "หา_ก่อนหน้า"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:377
 msgid "Sa_ve Contents..."
 msgstr "_บันทึกเนื้อหา..."
 
-#: ../terminal/terminal-window.c:364 ../terminal/terminal-window.c:2298
+#: ../terminal/terminal-window.c:378 ../terminal/terminal-window.c:2362
 msgid "_Reset"
 msgstr "ล้าง_สถานะ"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:379
 msgid "_Clear Scrollback and Reset"
 msgstr "ล้าง_ข้อมูลบนจอและล้างสถานะ"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:380
 msgid "T_abs"
 msgstr "แท็_บ"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "_Previous Tab"
 msgstr "แท็บ_ก่อนหน้า"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "Switch to previous tab"
 msgstr "เปลี่ยนไปยังแท็บก่อนหน้า"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "_Next Tab"
 msgstr "แท็บ_ถัดไป"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "Switch to next tab"
 msgstr "เปลี่ยนไปยังแท็บถัดไป"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Last _Active Tab"
 msgstr "แท็บที่ใช้งาน_ล่าสุด"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Switch to last active tab"
 msgstr "เปลี่ยนไปยังแท็บที่ใช้งานล่าสุด"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:384
 msgid "Move Tab _Left"
 msgstr "ย้ายแท็บไปทางซ้า_ย"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:385
 msgid "Move Tab _Right"
 msgstr "ย้ายแท็บไปทาง_ขวา"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:386
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "_Contents"
 msgstr "เนื้อ_หา"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "Display help contents"
 msgstr "แสดงเนื้อหาคู่มือวิธีใช้"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:388
 msgid "_About"
 msgstr "เ_กี่ยวกับ"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:389
 msgid "_Zoom"
 msgstr "ซู_ม"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show _Menubar"
 msgstr "แสดงแถบ_เมนู"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show/hide the menubar"
 msgstr "แสดง/ซ่อนแถบเมนู"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show _Toolbar"
 msgstr "แสดงแถบเ_ครื่องมือ"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show/hide the toolbar"
 msgstr "แสดง/ซ่อนแถบเครื่องมือ"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show Window _Borders"
 msgstr "แสดง_ขอบหน้าต่าง"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show/hide the window decorations"
 msgstr "แสดง/ซ่อนการตกแต่งขอบหน้าต่าง"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "_Fullscreen"
 msgstr "เ_ต็มจอ"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "Toggle fullscreen mode"
 msgstr "เปิด/ปิดการแสดงผลแบบเต็มจอ"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "_Read-Only"
 msgstr "_อ่านอย่างเดียว"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "Toggle read-only mode"
 msgstr "เปิด-ปิดโหมดการอ่านอย่างเดียว"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Scroll on _Output"
 msgstr "เลื่อนจอเมื่อมี_ข้อความใหม่"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Toggle scroll on output"
 msgstr "เปิด-ปิดการเลื่อนจอเมื่อมีข้อความใหม่"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:556
+#: ../terminal/terminal-window.c:570
 msgid "Set _Encoding"
 msgstr "กำหนด_รหัสอักขระ"
 
-#: ../terminal/terminal-window.c:862
+#: ../terminal/terminal-window.c:898
 msgid "Warning"
 msgstr "คำเตือน"
 
 #. and process running
-#: ../terminal/terminal-window.c:875
+#: ../terminal/terminal-window.c:909
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "ยังคงมีโพรเซสทำงานอยู่ในบางแท็บ\nการปิดหน้าต่างนี้จะเป็นการฆ่าโพรเซสเหล่านั้นทั้งหมด"
 
 #. and no process running
-#: ../terminal/terminal-window.c:881
+#: ../terminal/terminal-window.c:915
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "หน้าต่างนี้มีแท็บเปิดอยู่ %d แท็บ การปิดหน้าต่างนี้\nจะเป็นการปิดแท็บทั้งหมดของหน้าต่างด้วย"
 
-#: ../terminal/terminal-window.c:885
+#: ../terminal/terminal-window.c:919
 msgid "Close all tabs?"
 msgstr "ปิดแท็บทั้งหมดหรือไม่?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:892
+#: ../terminal/terminal-window.c:926
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "ยังคงมีโพรเซสหนึ่งทำงานอยู่\nถ้าปิดแท็บนี้ โพรเซสดังกล่าวก็จะถูกฆ่าด้วย"
 
-#: ../terminal/terminal-window.c:894
+#: ../terminal/terminal-window.c:928
 msgid "Close tab?"
 msgstr "ปิดแท็บหรือไม่?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:899
+#: ../terminal/terminal-window.c:933
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "ยังคงมีโพรเซสหนึ่งทำงานอยู่\nถ้าปิดหน้าต่างนี้ โพรเซสดังกล่าวก็จะถูกฆ่าด้วย"
 
-#: ../terminal/terminal-window.c:901
+#: ../terminal/terminal-window.c:935
 msgid "Close window?"
 msgstr "ปิดหน้าต่างหรือไม่?"
 
-#: ../terminal/terminal-window.c:1881
+#: ../terminal/terminal-window.c:1949
 msgid "Copy _Input:"
 msgstr "_ข้อความที่จะคัดลอก:"
 
-#: ../terminal/terminal-window.c:1885
+#: ../terminal/terminal-window.c:1953
 msgid "Enter the text to be copied to all tabs"
 msgstr "ป้อนข้อความที่จะคัดลอกไปยังทุกแท็บ"
 
-#: ../terminal/terminal-window.c:1893
+#: ../terminal/terminal-window.c:1961
 msgid "Copy input"
 msgstr "คัดลอกข้อความ"
 
-#: ../terminal/terminal-window.c:2250
+#: ../terminal/terminal-window.c:2314
 msgid "_Title:"
 msgstr "_ชื่อ:"
 
-#: ../terminal/terminal-window.c:2254
+#: ../terminal/terminal-window.c:2318
 msgid "Enter the title for the current terminal tab"
 msgstr "ป้อนชื่อของแท็บปัจจุบันของเทอร์มินัล"
 
-#: ../terminal/terminal-window.c:2259
+#: ../terminal/terminal-window.c:2323
 msgid "Reset"
 msgstr "คืนค่าเดิม"
 
-#: ../terminal/terminal-window.c:2269
+#: ../terminal/terminal-window.c:2333
 msgid "Help"
 msgstr "วิธีใช้"
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2339
 msgid "Close"
 msgstr "ปิด"
 
-#: ../terminal/terminal-window.c:2297
+#: ../terminal/terminal-window.c:2361
 msgid "Choose title color"
 msgstr "เลือกสีของชื่อ"
 
-#: ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:2458
 msgid "Failed to create the regular expression"
 msgstr "สร้างนิพจน์เรกิวลาร์ไม่สำเร็จ"
 
-#: ../terminal/terminal-window.c:2435
+#: ../terminal/terminal-window.c:2499
 msgid "Save contents..."
 msgstr "บันทึกเนื้อหา..."
 
-#: ../terminal/terminal-window.c:2439
+#: ../terminal/terminal-window.c:2503
 msgid "_Save"
 msgstr "_บันทึก"
 
-#: ../terminal/terminal-window.c:2476
+#: ../terminal/terminal-window.c:2540
 msgid "Failed to save terminal contents"
 msgstr "บันทึกเนื้อหาเทอร์มินัลไม่สำเร็จ"
 
@@ -1773,6 +1772,10 @@ msgstr "ขั้นสู_ง"
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "โปรแกรมจำลองเทอร์มินัล"
+
+#: ../xfce4-terminal-settings.desktop.in.h:1
+msgid "Xfce Terminal Settings"
+msgstr ""
 
 #: ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Configure Xfce Terminal"
