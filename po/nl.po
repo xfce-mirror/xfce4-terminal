@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-21 18:31+0100\n"
-"PO-Revision-Date: 2020-05-16 18:26+0000\n"
+"POT-Creation-Date: 2020-10-20 12:48+0200\n"
+"PO-Revision-Date: 2020-10-20 11:05+0000\n"
 "Last-Translator: Pjotr <pjotrvertaalt@gmail.com>\n"
 "Language-Team: Dutch (http://www.transifex.com/xfce/xfce-apps/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +146,6 @@ msgid "See the %s man page for full explanation of the options above."
 msgstr "Bekijk de %s man-pagina voor volledige uitleg van de bovenstaande opties."
 
 #: ../terminal/main.c:196 ../xfce4-terminal.desktop.in.h:1
-#: ../xfce4-terminal-settings.desktop.in.h:1
 msgid "Xfce Terminal"
 msgstr "Xfce-terminalvenster"
 
@@ -176,12 +175,12 @@ msgstr "Gelieve fouten te melden aan <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Kan terminaldienst niet registreren: %s\n"
 
-#: ../terminal/terminal-app.c:906
+#: ../terminal/terminal-app.c:928
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ongeldig geometrie-tekstsnoer '%s'\n"
 
-#: ../terminal/terminal-app.c:985
+#: ../terminal/terminal-app.c:1008
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Kon geen verbinding maken met sessiebeheerder: %s\n"
@@ -410,24 +409,24 @@ msgstr "De optie '--zoom' vereist dat u de vergrotingsfactor (%d .. %d) opgeeft 
 msgid "Unknown option \"%s\""
 msgstr "Onbekende optie '%s'"
 
-#: ../terminal/terminal-preferences-dialog.c:480
+#: ../terminal/terminal-preferences-dialog.c:473
 msgid "All Files"
 msgstr "Alle bestanden"
 
-#: ../terminal/terminal-preferences-dialog.c:486
+#: ../terminal/terminal-preferences-dialog.c:479
 msgid "Image Files"
 msgstr "Afbeeldingbestanden"
 
-#: ../terminal/terminal-preferences-dialog.c:951
+#: ../terminal/terminal-preferences-dialog.c:944
 msgid "Load Presets..."
 msgstr "Voorinstellingen aan het laden..."
 
-#: ../terminal/terminal-preferences.c:1186
+#: ../terminal/terminal-preferences.c:1175
 msgid "Terminal"
 msgstr "Terminalvenster"
 
-#: ../terminal/terminal-screen.c:452 ../terminal/terminal-screen.c:836
-#: ../terminal/terminal-screen.c:2289
+#: ../terminal/terminal-screen.c:455 ../terminal/terminal-screen.c:836
+#: ../terminal/terminal-screen.c:2280
 msgid "Untitled"
 msgstr "Zonder titel"
 
@@ -436,57 +435,57 @@ msgstr "Zonder titel"
 msgid "Unable to determine your login shell."
 msgstr "Kan uw aanmeldscherm niet bepalen."
 
-#: ../terminal/terminal-screen.c:1410
+#: ../terminal/terminal-screen.c:1435
 msgid "_Relaunch"
 msgstr "Herstarten"
 
-#: ../terminal/terminal-screen.c:1416
+#: ../terminal/terminal-screen.c:1441
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Het afgeleide proces werd normaal beëindigd met status %d."
 
-#: ../terminal/terminal-screen.c:1418
+#: ../terminal/terminal-screen.c:1443
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Het afgeleide proces werd afgebroken door signaal %d."
 
-#: ../terminal/terminal-screen.c:1420
+#: ../terminal/terminal-screen.c:1445
 msgid "The child process was aborted."
 msgstr "Het afgeleide proces werd afgebroken."
 
-#: ../terminal/terminal-screen.c:1426 ../terminal/terminal-window.c:943
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:977
 msgid "Do _not ask me again"
 msgstr "Niet _nogmaals vragen"
 
-#: ../terminal/terminal-screen.c:1787
+#: ../terminal/terminal-screen.c:1761
 msgid "Warning: Unsafe Paste"
 msgstr "Waarschuwing: onveilig plakken"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:865
-#: ../terminal/terminal-window.c:2438
-msgid "_Cancel"
-msgstr "_Annuleren"
-
-#: ../terminal/terminal-screen.c:1790 ../terminal/terminal-window.c:348
-msgid "_Paste"
-msgstr "_Plakken"
-
-#: ../terminal/terminal-screen.c:1794
+#: ../terminal/terminal-screen.c:1763
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like\n"
 "some commands may be executed, potentially involving root access ('sudo')."
 msgstr "Het plakken van deze tekst in de terminal zou gevaarlijk kunnen zijn,\ndaar het erop lijkt dat er bepaalde opdrachten worden uitgevoerd,\nmogelijk met rootbevoegdheid ('sudo')."
 
-#: ../terminal/terminal-screen.c:1868 ../terminal/terminal-screen.c:1952
-#: ../terminal/terminal-screen.c:1990
+#: ../terminal/terminal-screen.c:1766 ../terminal/terminal-window.c:900
+#: ../terminal/terminal-window.c:2502
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: ../terminal/terminal-screen.c:1768 ../terminal/terminal-window.c:362
+msgid "_Paste"
+msgstr "_Plakken"
+
+#: ../terminal/terminal-screen.c:1859 ../terminal/terminal-screen.c:1943
+#: ../terminal/terminal-screen.c:1981
 msgid "Failed to execute child"
 msgstr "Kon afgeleid proces niet uitvoeren"
 
-#: ../terminal/terminal-screen.c:2656
+#: ../terminal/terminal-screen.c:2647
 msgid "Close this tab"
 msgstr "Dit tabblad sluiten"
 
-#: ../terminal/terminal-screen.c:2709
+#: ../terminal/terminal-screen.c:2700
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Kon codering %s niet instellen\n"
@@ -528,7 +527,7 @@ msgstr "Wikkelen om"
 msgid "_Opacity:"
 msgstr "Ondoorzichtigheid:"
 
-#: ../terminal/terminal-search-dialog.c:355
+#: ../terminal/terminal-search-dialog.c:357
 msgid "Find"
 msgstr "Zoeken"
 
@@ -601,361 +600,361 @@ msgstr "Neerklap-terminalvenster"
 msgid "Toggle Drop-down Terminal"
 msgstr "Schakel neerklap-terminalvenster"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:349
 msgid "_File"
 msgstr "_Bestand"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open _Tab"
 msgstr "Nieuw _tabblad"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:350
 msgid "Open a new terminal tab"
 msgstr "Open een nieuw terminalvenster-tabblad"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open T_erminal"
 msgstr "T_erminal openen"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:351
 msgid "Open a new terminal window"
 msgstr "Open een nieuw terminalvenster"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:352
 msgid "_Undo Close Tab"
 msgstr "Sluiten van tabblad ongedaan maken"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:353
 msgid "_Detach Tab"
 msgstr "Tabblad _losmaken"
 
-#: ../terminal/terminal-window.c:340 ../terminal/terminal-window.c:907
+#: ../terminal/terminal-window.c:354 ../terminal/terminal-window.c:941
 msgid "Close T_ab"
 msgstr "Tabblad sluiten"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:355
 msgid "Close Other Ta_bs"
 msgstr "Andere tabbladen sluiten"
 
-#: ../terminal/terminal-window.c:342 ../terminal/terminal-window.c:914
+#: ../terminal/terminal-window.c:356 ../terminal/terminal-window.c:948
 msgid "Close _Window"
 msgstr "Venster sluiten"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:357
 msgid "_Edit"
 msgstr "Be_werken"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "_Copy"
 msgstr "_Kopiëren"
 
-#: ../terminal/terminal-window.c:344
+#: ../terminal/terminal-window.c:358
 msgid "Copy to clipboard"
 msgstr "Kopieer naar klembord"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy as _HTML"
 msgstr "Kopieer als HTML"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:360
 msgid "Copy to clipboard as HTML"
 msgstr "Kopieer naar klembord als HTML"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:362
 msgid "Paste from clipboard"
 msgstr "Plak vanuit klembord"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:363
 msgid "Paste _Selection"
 msgstr "Plak _selectie"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:364
 msgid "Select _All"
 msgstr "Kies _alle"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:365
 msgid "Copy _Input To All Tabs..."
 msgstr "Kopieer invoer naar alle tabbladen..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Pr_eferences..."
 msgstr "_Voorkeuren..."
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:366
 msgid "Open the preferences dialog"
 msgstr "Open de voorkeurendialoog"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:367
 msgid "_View"
 msgstr "_Beeld"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom _In"
 msgstr "Ver_groten"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:368
 msgid "Zoom in with larger font"
 msgstr "Vergroten met groter lettertype"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom _Out"
 msgstr "Ver_kleinen"
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:369
 msgid "Zoom out with smaller font"
 msgstr "Verkleinen met kleiner lettertype"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "_Normal Size"
 msgstr "_Normale grootte"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:370
 msgid "Zoom to default size"
 msgstr "Standaard-vergrotingsfactor instellen"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:371
 msgid "_Terminal"
 msgstr "_Terminalvenster"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:372
 msgid "_Set Title..."
 msgstr "Titel in_stellen..."
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:373
 msgid "Set Title Co_lor..."
 msgstr "Titelkleur instellen..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "_Find..."
 msgstr "Zoe_ken..."
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:374
 msgid "Search terminal contents"
 msgstr "Inhoud van terminal doorzoeken"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:375
 msgid "Find Ne_xt"
 msgstr "Volgende zoeken"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:376
 msgid "Find Pre_vious"
 msgstr "Vorige zoeken"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:377
 msgid "Sa_ve Contents..."
 msgstr "Inhoud opslaan..."
 
-#: ../terminal/terminal-window.c:364 ../terminal/terminal-window.c:2298
+#: ../terminal/terminal-window.c:378 ../terminal/terminal-window.c:2362
 msgid "_Reset"
 msgstr "Te_rugzetten op standaardwaarde"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:379
 msgid "_Clear Scrollback and Reset"
 msgstr "Terugbladeren wissen en terugzetten op standaardwaarden"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:380
 msgid "T_abs"
 msgstr "Tabbladen"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "_Previous Tab"
 msgstr "_Vorig tabblad"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:381
 msgid "Switch to previous tab"
 msgstr "Schakel naar vorig tabblad"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "_Next Tab"
 msgstr "Volge_nd tabblad"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:382
 msgid "Switch to next tab"
 msgstr "Schakel naar volgend tabblad"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Last _Active Tab"
 msgstr "Laatst actieve tabblad"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:383
 msgid "Switch to last active tab"
 msgstr "Omschakelen naar laatst actieve tabblad"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:384
 msgid "Move Tab _Left"
 msgstr "Verplaats tabblad naar links"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:385
 msgid "Move Tab _Right"
 msgstr "Verplaats tabblad naar rechts"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:386
 msgid "_Help"
 msgstr "_Hulp"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "_Contents"
 msgstr "_Inhoud"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:387
 msgid "Display help contents"
 msgstr "Toon hulptekst"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:388
 msgid "_About"
 msgstr "_Over"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:389
 msgid "_Zoom"
 msgstr "Vergrotings_factor instellen"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show _Menubar"
 msgstr "_Menubalk tonen"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:394
 msgid "Show/hide the menubar"
 msgstr "Menubalk tonen/verbergen"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show _Toolbar"
 msgstr "Werkbalk tonen"
 
-#: ../terminal/terminal-window.c:381
+#: ../terminal/terminal-window.c:395
 msgid "Show/hide the toolbar"
 msgstr "Werkbalk tonen/verbergen"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show Window _Borders"
 msgstr "Vensterranden t_onen"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:396
 msgid "Show/hide the window decorations"
 msgstr "Vensterdecoraties tonen/verbergen"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "_Fullscreen"
 msgstr "_Volledig scherm"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:397
 msgid "Toggle fullscreen mode"
 msgstr "Schakelen tussen normale weergave en volledig scherm"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "_Read-Only"
 msgstr "_Alleen-lezen"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:398
 msgid "Toggle read-only mode"
 msgstr "Schakel de alleen-lezen-modus om"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Scroll on _Output"
 msgstr "Schuiven bij uitvoer"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:399
 msgid "Toggle scroll on output"
 msgstr "'Schuiven bij uitvoer' omschakelen"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:556
+#: ../terminal/terminal-window.c:570
 msgid "Set _Encoding"
 msgstr "Stel codering in"
 
-#: ../terminal/terminal-window.c:862
+#: ../terminal/terminal-window.c:898
 msgid "Warning"
 msgstr "Waarschuwing"
 
 #. and process running
-#: ../terminal/terminal-window.c:875
+#: ../terminal/terminal-window.c:909
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "In sommige tabbladen draaien er nog processen.\nSluiten van dit venster zal hen allemaal beëindigen."
 
 #. and no process running
-#: ../terminal/terminal-window.c:881
+#: ../terminal/terminal-window.c:915
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Dit venster heeft %d tabbladen open. Als u dit\nvenster sluit, sluiten ook alle tabbladen."
 
-#: ../terminal/terminal-window.c:885
+#: ../terminal/terminal-window.c:919
 msgid "Close all tabs?"
 msgstr "Alle tabbladen sluiten?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:892
+#: ../terminal/terminal-window.c:926
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Er draait nog steeds een proces.\nHet sluiten van dit tabblad zal het afbreken."
 
-#: ../terminal/terminal-window.c:894
+#: ../terminal/terminal-window.c:928
 msgid "Close tab?"
 msgstr "Tabblad sluiten?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:899
+#: ../terminal/terminal-window.c:933
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Er draait nog steeds een proces.\nHet sluiten van dit venster zal het afbreken."
 
-#: ../terminal/terminal-window.c:901
+#: ../terminal/terminal-window.c:935
 msgid "Close window?"
 msgstr "Venster sluiten?"
 
-#: ../terminal/terminal-window.c:1881
+#: ../terminal/terminal-window.c:1949
 msgid "Copy _Input:"
 msgstr "Invoer kopiëren:"
 
-#: ../terminal/terminal-window.c:1885
+#: ../terminal/terminal-window.c:1953
 msgid "Enter the text to be copied to all tabs"
 msgstr "Voer de tekst in die gekopieerd moet worden naar alle tabbladen"
 
-#: ../terminal/terminal-window.c:1893
+#: ../terminal/terminal-window.c:1961
 msgid "Copy input"
 msgstr "Invoer kopiëren"
 
-#: ../terminal/terminal-window.c:2250
+#: ../terminal/terminal-window.c:2314
 msgid "_Title:"
 msgstr "Titel:"
 
-#: ../terminal/terminal-window.c:2254
+#: ../terminal/terminal-window.c:2318
 msgid "Enter the title for the current terminal tab"
 msgstr "Voer titel in voor het huidige terminalvenster-tabblad"
 
-#: ../terminal/terminal-window.c:2259
+#: ../terminal/terminal-window.c:2323
 msgid "Reset"
 msgstr "Terugzetten"
 
-#: ../terminal/terminal-window.c:2269
+#: ../terminal/terminal-window.c:2333
 msgid "Help"
 msgstr "Hulp"
 
-#: ../terminal/terminal-window.c:2275
+#: ../terminal/terminal-window.c:2339
 msgid "Close"
 msgstr "Sluiten"
 
-#: ../terminal/terminal-window.c:2297
+#: ../terminal/terminal-window.c:2361
 msgid "Choose title color"
 msgstr "Titelkleur kiezen"
 
-#: ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:2458
 msgid "Failed to create the regular expression"
 msgstr "Kon de reguliere uitdrukking niet maken"
 
-#: ../terminal/terminal-window.c:2435
+#: ../terminal/terminal-window.c:2499
 msgid "Save contents..."
 msgstr "Inhoud opslaan..."
 
-#: ../terminal/terminal-window.c:2439
+#: ../terminal/terminal-window.c:2503
 msgid "_Save"
 msgstr "_Opslaan"
 
-#: ../terminal/terminal-window.c:2476
+#: ../terminal/terminal-window.c:2540
 msgid "Failed to save terminal contents"
 msgstr "Kon de inhoud van de terminal niet opslaan"
 
@@ -1774,6 +1773,10 @@ msgstr "Gea_vanceerd"
 #: ../xfce4-terminal.desktop.in.h:2
 msgid "Terminal Emulator"
 msgstr "Terminalvenster"
+
+#: ../xfce4-terminal-settings.desktop.in.h:1
+msgid "Xfce Terminal Settings"
+msgstr "Instellingen van Xfce Terminal"
 
 #: ../xfce4-terminal-settings.desktop.in.h:2
 msgid "Configure Xfce Terminal"
