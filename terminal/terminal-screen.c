@@ -1759,10 +1759,23 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
                                    _("Pasting this text to the terminal may be dangerous as it looks like\n"
                                      "some commands may be executed, potentially involving root access ('sudo')."));
 
+#if LIBXFCE4UI_CHECK_VERSION (4, 16, 0)
+  xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
+#endif
+
   button = xfce_gtk_button_new_mixed ("gtk-cancel", _("_Cancel"));
+#if LIBXFCE4UI_CHECK_VERSION (4, 16, 0)
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
+#else
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_CANCEL);
+#endif
+
   button = xfce_gtk_button_new_mixed ("gtk-ok", _("_Paste"));
+#if LIBXFCE4UI_CHECK_VERSION (4, 16, 0)
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), button, GTK_RESPONSE_YES);
+#else
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
+#endif
 
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
