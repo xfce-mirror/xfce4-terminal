@@ -467,7 +467,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
                                     guint             info,
                                     guint             time)
 {
-  const guint16 *ucs;
+  const guchar  *ucs;
   GdkRGBA        color;
   GString       *str;
   GValue         value = { 0, };
@@ -517,9 +517,9 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
       else
         {
           str = g_string_new (NULL);
-          ucs = (const guint16 *) gtk_selection_data_get_data (selection_data);
+          ucs = gtk_selection_data_get_data (selection_data);
           for (n = 0; n < gtk_selection_data_get_length (selection_data) / 2 && ucs[n] != '\n'; ++n)
-            g_string_append_unichar (str, (gunichar) ucs[n]);
+            g_string_append_unichar (str, ucs[n]);
           filename = g_filename_from_uri (str->str, NULL, NULL);
           if (filename != NULL)
             {
