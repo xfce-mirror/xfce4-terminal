@@ -1750,15 +1750,21 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkWidget     *tv = gtk_text_view_new_with_buffer (buffer);
   GtkWidget     *sw = gtk_scrolled_window_new (NULL, NULL);
   GtkWidget     *dialog = xfce_titled_dialog_new ();
-  GtkWidget     *button;
+  GtkWidget     *infobar = gtk_info_bar_new ();
+  GtkWidget     *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
+  GtkWidget     *button, *label;
   gint           parent_w, parent_h;
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
   gtk_window_set_title (GTK_WINDOW (dialog), _("Warning: Unsafe Paste"));
-  xfce_titled_dialog_set_subtitle (XFCE_TITLED_DIALOG (dialog),
-                                   _("Pasting this text to the terminal may be dangerous as it looks like\n"
-                                     "some commands may be executed, potentially involving root access ('sudo')."));
+
+  label = gtk_label_new (_("Pasting this text to the terminal may be dangerous as it looks like "
+                           "some commands may be executed, potentially involving root access ('sudo')."));
+  gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
+  gtk_container_add (gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar)), label);
+  gtk_container_add (GTK_CONTAINER (box), infobar);
+  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box);
 
 #if LIBXFCE4UI_CHECK_VERSION (4, 16, 0)
   xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
@@ -1794,7 +1800,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_widget_set_vexpand (sw, TRUE);
 
   gtk_container_add (GTK_CONTAINER (sw), tv);
-  gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), sw);
+  gtk_container_add (GTK_CONTAINER (box), sw);
 
   gtk_text_buffer_set_text (buffer, text, -1);
 
