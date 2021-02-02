@@ -1764,6 +1764,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   gtk_container_add (gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar)), label);
   gtk_container_add (GTK_CONTAINER (box), infobar);
+  gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 0);
   gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box);
 
 #if LIBXFCE4UI_CHECK_VERSION (4, 16, 0)
