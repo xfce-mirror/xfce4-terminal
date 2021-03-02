@@ -42,8 +42,8 @@
  * terminal_option_cmp:
  * @long_name     : long option text or %NULL
  * @short_name    : short option character or 0
- * @argv          : pointer to the argument vector
  * @argc          : length of the argument vector
+ * @argv          : pointer to the argument vector
  * @argv_offset   : current offset in the argument vector
  * @return_string : return location of a pointer to the option
  *                  arguments, or %NULL to make this function
@@ -89,10 +89,10 @@ terminal_option_cmp (const gchar   *long_name,
   terminal_assert (return_string != NULL);
   if (*(arg + offset) == '=')
     *return_string = arg + (offset + 1);
-  else if (*argv_offset + 1 > argc)
-    *return_string = NULL;
-  else
+  else if (*(arg + offset) == '\0')
     *return_string = argv[++*argv_offset];
+  else
+    return FALSE;
 
   return TRUE;
 }
