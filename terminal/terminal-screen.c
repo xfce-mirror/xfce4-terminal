@@ -1762,7 +1762,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   label = gtk_label_new (_("Pasting this text to the terminal may be dangerous as it looks like "
                            "some commands may be executed, potentially involving root access ('sudo')."));
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
-  gtk_container_add (gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar)), label);
+  gtk_container_add (GTK_CONTAINER (gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar))), label);
   gtk_container_add (GTK_CONTAINER (box), infobar);
   gtk_container_set_border_width (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), 0);
   gtk_container_add (GTK_CONTAINER (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), box);
@@ -3004,7 +3004,7 @@ terminal_screen_feed_text (TerminalScreen *screen,
 const gchar *
 terminal_screen_get_custom_fg_color (TerminalScreen *screen)
 {
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
   return screen->custom_fg_color;
 }
 
@@ -3013,7 +3013,7 @@ terminal_screen_get_custom_fg_color (TerminalScreen *screen)
 const gchar *
 terminal_screen_get_custom_bg_color (TerminalScreen *screen)
 {
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
   return screen->custom_bg_color;
 }
 
@@ -3022,7 +3022,7 @@ terminal_screen_get_custom_bg_color (TerminalScreen *screen)
 const gchar *
 terminal_screen_get_custom_title_color (TerminalScreen *screen)
 {
-  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), NULL);
   return screen->custom_title_color;
 }
 
