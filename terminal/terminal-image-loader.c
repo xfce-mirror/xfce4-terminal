@@ -63,8 +63,7 @@ struct _TerminalImageLoader
 
   /* the cached image data */
   gchar                   *path;
-  GSList                  *cache;
-  GSList                  *cache_invalid;
+  GHashTable              *cache;
   GdkRGBA                  bgcolor;
   GdkPixbuf               *pixbuf;
   TerminalBackgroundStyle  style;
@@ -100,16 +99,31 @@ terminal_image_loader_finalize (GObject *object)
 {
   TerminalImageLoader *loader = TERMINAL_IMAGE_LOADER (object);
 
-  g_slist_free_full (loader->cache, g_object_unref);
-  g_slist_free_full (loader->cache_invalid, g_object_unref);
-
   g_object_unref (G_OBJECT (loader->preferences));
 
   if (G_LIKELY (loader->pixbuf != NULL))
     g_object_unref (G_OBJECT (loader->pixbuf));
   g_free (loader->path);
 
+  g_hash_table_destroy(loader->cache);
+
   (*G_OBJECT_CLASS (terminal_image_loader_parent_class)->finalize) (object);
+}
+
+
+
+/**
+ * terminal_image_screen_finalize:
+ * @loader      : A #TerminalImageLoader.
+ * @pid         : Process ID for screen.
+ *
+ * Clear cached pixbuf for closing terminal window.
+ **/
+void
+terminal_image_screen_finalize (TerminalImageLoader *loader,
+                                GPid                 pid)
+{
+  g_hash_table_remove(loader->cache, GINT_TO_POINTER(pid));
 }
 
 
@@ -171,9 +185,7 @@ terminal_image_loader_check (TerminalImageLoader *loader)
 
   if (invalidate)
     {
-      loader->cache_invalid = g_slist_concat (loader->cache_invalid,
-                                              loader->cache);
-      loader->cache = NULL;
+      g_hash_table_remove_all(loader->cache);
     }
 
   g_free (selected_color_spec);
@@ -346,6 +358,15 @@ terminal_image_loader_get (void)
     {
       loader = g_object_new (TERMINAL_TYPE_IMAGE_LOADER, NULL);
       g_object_add_weak_pointer (G_OBJECT (loader), (gpointer) &loader);
+      /* Set up with g_object_unref so we can free old values
+       * directly.
+       * */
+      loader->cache = g_hash_table_new_full(
+          g_direct_hash,
+          g_direct_equal,
+          NULL,
+          g_object_unref
+          );
     }
   else
     {
@@ -360,19 +381,19 @@ terminal_image_loader_get (void)
 /**
  * terminal_image_loader_load:
  * @loader      : A #TerminalImageLoader.
- * @width       : The image width.
- * @height      : The image height.
+ * @width       : The terminal window width.
+ * @height      : The terminal window height.
  *
  * Return value : The image in the given @width and @height drawn with
  *                the configured style or %NULL on error.
  **/
 GdkPixbuf*
 terminal_image_loader_load (TerminalImageLoader *loader,
+                            GPid                 pid,
                             gint                 width,
                             gint                 height)
 {
   GdkPixbuf *pixbuf;
-  GSList    *lp;
 
   terminal_return_val_if_fail (TERMINAL_IS_IMAGE_LOADER (loader), NULL);
   terminal_return_val_if_fail (width > 0, NULL);
@@ -384,26 +405,22 @@ terminal_image_loader_load (TerminalImageLoader *loader,
     return NULL;
 
 #ifdef G_ENABLE_DEBUG
-  g_debug ("Image Loader Memory Status: %d images in valid "
-           "cache, %d in invalid cache",
-           g_slist_length (loader->cache),
-           g_slist_length (loader->cache_invalid));
+  g_debug ("Image Loader Memory Status: %d images in cache",
+           g_hash_table_size(loader->cache));
 #endif
 
-  /* check for a cached version */
-  for (lp = loader->cache; lp != NULL; lp = lp->next)
+  /* check for a cached version - only caching one per window */
+  pixbuf = GDK_PIXBUF(g_hash_table_lookup(loader->cache, GINT_TO_POINTER(pid)));
+  if (pixbuf != NULL) {
+    gint w, h;
+    w = gdk_pixbuf_get_width(pixbuf);
+    h = gdk_pixbuf_get_height(pixbuf);
+    if ((w == width && h == height) ||
+        (w >= width && h >= height && loader->style == TERMINAL_BACKGROUND_STYLE_TILED))
     {
-      gint w, h;
-      pixbuf = GDK_PIXBUF (lp->data);
-      w = gdk_pixbuf_get_width (pixbuf);
-      h = gdk_pixbuf_get_height (pixbuf);
-
-      if ((w == width && h == height) ||
-          (w >= width && h >= height && loader->style == TERMINAL_BACKGROUND_STYLE_TILED))
-        {
-          return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
-        }
+      return GDK_PIXBUF(g_object_ref(G_OBJECT(pixbuf)));
     }
+  }
 
   pixbuf = gdk_pixbuf_new (gdk_pixbuf_get_colorspace (loader->pixbuf),
                            gdk_pixbuf_get_has_alpha (loader->pixbuf),
@@ -432,7 +449,7 @@ terminal_image_loader_load (TerminalImageLoader *loader,
       terminal_assert_not_reached ();
     }
 
-  loader->cache = g_slist_prepend (loader->cache, pixbuf);
+  g_hash_table_insert (loader->cache, GINT_TO_POINTER(pid), pixbuf);
 
   return GDK_PIXBUF (g_object_ref (G_OBJECT (pixbuf)));
 }
