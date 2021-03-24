@@ -8,6 +8,7 @@ presets_in_files = 							\
 	solarized-light.theme.in					\
 	tango.theme.in							\
 	white-on-black.theme.in						\
+	SUSE-xterm.theme.in						\
 	xterm.theme.in
 
 presetsdir = $(datadir)/xfce4/terminal/colorschemes
