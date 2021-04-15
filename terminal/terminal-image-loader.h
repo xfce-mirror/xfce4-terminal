@@ -39,9 +39,12 @@ GType                terminal_image_loader_get_type (void) G_GNUC_CONST;
 TerminalImageLoader *terminal_image_loader_get      (void);
 
 GdkPixbuf           *terminal_image_loader_load     (TerminalImageLoader *loader,
+                                                     GPid                 pid,
                                                      gint                 width,
                                                      gint                 height);
 
+void terminal_image_screen_finalize                 (TerminalImageLoader *loader,
+                                                     GPid                 pid);
 G_END_DECLS
 
 #endif /* !TERMINAL_IMAGE_LOADER_H */
