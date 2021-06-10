@@ -152,6 +152,13 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
   } G_STMT_END
 
 
+#if VTE_CHECK_VERSION(0, 61, 90)
+#define VTE_SIXEL_CHECK vte_get_feature_flags() & VTE_FEATURE_FLAG_SIXEL
+#else
+#define VTE_SIXEL_CHECK FALSE
+#endif
+
+
 
 static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
@@ -187,7 +194,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
                                        "dropdown-keep-open-default", "dropdown-keep-above",
                                        "dropdown-toggle-focus", "dropdown-status-icon",
                                        "dropdown-move-to-active", "dropdown-always-show-tabs",
-                                       "dropdown-show-borders"
+                                       "dropdown-show-borders", "enable-sixel"
                                      };
   const gchar      *props_color[] =  { "color-foreground", "color-background",
                                        "tab-activity-color", "color-cursor-foreground",
@@ -427,6 +434,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   g_object_bind_property (object, "active",
                           object2, "sensitive",
                           G_BINDING_SYNC_CREATE);
+  /* only show sixel options if VTE build supports it */
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "enable-sixel");
+
+  if (!(VTE_SIXEL_CHECK))
+  {
+    gtk_widget_hide (GTK_WIDGET (object));
+  }
 
 #ifdef GDK_WINDOWING_X11
   terminal_preferences_dialog_geometry_changed (dialog);
