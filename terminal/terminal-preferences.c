@@ -131,6 +131,8 @@ enum
   PROP_TEXT_BLINK_MODE,
   PROP_CELL_WIDTH_SCALE,
   PROP_CELL_HEIGHT_SCALE,
+  PROP_OSC_CLIP_WRITE_ENABLE,
+  PROP_OSC_CLIP_READ_ENABLE,
   N_PROPERTIES,
 };
 
@@ -285,7 +287,7 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     TERMINAL_TYPE_ERASE_BINDING,
     TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
     TERMINAL_TYPE_CURSOR_SHAPE,
-    TERMINAL_TYPE_TEXT_BLINK_MODE
+    TERMINAL_TYPE_TEXT_BLINK_MODE,
   };
 
   gobject_class = G_OBJECT_CLASS (klass);
@@ -1227,6 +1229,24 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            1.0, 2.0, 1.0,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
+  /**
+   * TerminalPreferences:osc-allow-clip-read:
+   **/
+  preferences_props[PROP_OSC_CLIP_READ_ENABLE] =
+      g_param_spec_boolean ("osc-allow-clip-read",
+                           NULL,
+                           "OSCAllowClipRead",
+                           FALSE,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+  /**
+   * TerminalPreferences:osc-allow-clip-write:
+   **/
+  preferences_props[PROP_OSC_CLIP_WRITE_ENABLE] =
+      g_param_spec_boolean ("osc-allow-clip-write",
+                           NULL,
+                           "OSCAllowClipWrite",
+                           FALSE,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
 }

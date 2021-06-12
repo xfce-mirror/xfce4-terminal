@@ -136,6 +136,7 @@ static void       terminal_screen_update_scrolling_lines        (TerminalScreen 
 static void       terminal_screen_update_scrolling_on_output    (TerminalScreen        *screen);
 static void       terminal_screen_update_scrolling_on_keystroke (TerminalScreen        *screen);
 static void       terminal_screen_update_text_blink_mode        (TerminalScreen        *screen);
+static void       terminal_screen_update_allow_clip_access      (TerminalScreen        *screen);
 static void       terminal_screen_update_title                  (TerminalScreen        *screen);
 static void       terminal_screen_update_word_chars             (TerminalScreen        *screen);
 static void       terminal_screen_vte_child_exited              (VteTerminal           *terminal,
@@ -359,6 +360,7 @@ terminal_screen_init (TerminalScreen *screen)
   terminal_screen_update_word_chars (screen);
   terminal_screen_update_background (screen);
   terminal_screen_update_colors (screen);
+  terminal_screen_update_allow_clip_access (screen);
 
   /* last, connect contents-changed to avoid a race with updates above */
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "contents-changed",
@@ -650,6 +652,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_word_chars (screen);
   else if (strcmp ("misc-tab-position", name) == 0)
     terminal_screen_update_label_orientation (screen);
+  else if (strncmp ("osc-allow-clip-", name, strlen ("osc-allow-clip-")) == 0)
+    terminal_screen_update_allow_clip_access (screen);
 }
 
 
@@ -1318,6 +1322,15 @@ terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen)
 }
 
 
+static void
+terminal_screen_update_allow_clip_access (TerminalScreen *screen)
+{
+  gboolean allow_read, allow_write;
+  g_object_get (G_OBJECT (screen->preferences), "osc-allow-clip-read", &allow_read, NULL);
+  g_object_get (G_OBJECT (screen->preferences), "osc-allow-clip-write", &allow_write, NULL);
+  vte_terminal_set_allow_clip_read (VTE_TERMINAL (screen->terminal), allow_read);
+  vte_terminal_set_allow_clip_write (VTE_TERMINAL (screen->terminal), allow_write);
+}
 
 static void
 terminal_screen_update_text_blink_mode (TerminalScreen *screen)
@@ -2703,7 +2716,21 @@ terminal_screen_set_encoding (TerminalScreen *screen,
     g_printerr (_("Failed to set encoding %s\n"), charset);
 }
 
+void
+terminal_screen_set_allow_clip_read (TerminalScreen *screen,
+                                     const gboolean allow)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_set_allow_clip_read(VTE_TERMINAL (screen->terminal), allow);
+}
 
+void
+terminal_screen_set_allow_clip_write (TerminalScreen *screen,
+                                      const gboolean allow)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  vte_terminal_set_allow_clip_write(VTE_TERMINAL (screen->terminal), allow);
+}
 
 void
 terminal_screen_search_set_gregex (TerminalScreen *screen,
