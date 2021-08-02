@@ -1441,7 +1441,7 @@ terminal_preferences_load (TerminalPreferences *preferences)
         }
       else
         {
-          g_value_set_static_string (&src, string);
+          g_value_set_string (&src, string);
 
           if (G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_STRING)
             {
