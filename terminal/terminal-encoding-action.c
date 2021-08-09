@@ -319,7 +319,6 @@ terminal_encoding_action_menu_shown (GtkWidget              *menu,
     {
       /* add an action with the unknown charset */
       item2 = gtk_radio_menu_item_new_with_label (groups, action->current);
-      groups = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (item2));
       g_object_set_qdata_full (G_OBJECT (item2), encoding_action_quark,
                                g_strdup (action->current), g_free);
       gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item2);
