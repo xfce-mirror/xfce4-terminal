@@ -104,7 +104,7 @@ void                terminal_options_parse     (gint                 argc,
 
 GSList             *terminal_window_attr_parse (gint                 argc,
                                                 gchar              **argv,
-                                                gboolean             can_reuse_tab,
+                                                gboolean             can_reuse_window,
                                                 GError             **error);
 
 TerminalWindowAttr *terminal_window_attr_new   (void);
