@@ -360,8 +360,12 @@ static const GtkActionEntry action_entries[] =
     { "preferences",      "preferences-system", N_ ("Pr_eferences..."),             NULL,                         N_ ("Open the preferences dialog"),   G_CALLBACK (terminal_window_action_prefs), },
     { "view-menu",        NULL,                 N_ ("_View"),                       NULL,                         NULL,                                 NULL, },
     { "zoom-in",          "zoom-in",            N_ ("Zoom _In"),                    "<control>plus",              N_ ("Zoom in with larger font"),      G_CALLBACK (terminal_window_action_zoom_in), },
+    /* the alternative shortcuts must be used separately in terminal-window-ui.xml to be activated */
+    { "zoom-in-alt",      "zoom-in-alt",        NULL,                               "<control>KP_Add",            NULL,                                 G_CALLBACK (terminal_window_action_zoom_in), },
     { "zoom-out",         "zoom-out",           N_ ("Zoom _Out"),                   "<control>minus",             N_ ("Zoom out with smaller font"),    G_CALLBACK (terminal_window_action_zoom_out), },
+    { "zoom-out-alt",     "zoom-out-alt",       NULL,                               "<control>KP_Subtract",       NULL,                                 G_CALLBACK (terminal_window_action_zoom_out), },
     { "zoom-reset",       "zoom-original",      N_ ("_Normal Size"),                "<control>0",                 N_ ("Zoom to default size"),          G_CALLBACK (terminal_window_action_zoom_reset), },
+    { "zoom-reset-alt",   "zoom-original-alt",  NULL,                               "<control>KP_0",              NULL,                                 G_CALLBACK (terminal_window_action_zoom_reset), },
     { "terminal-menu",    NULL,                 N_ ("_Terminal"),                   NULL,                         NULL,                                 NULL, },
     { "set-title",        NULL,                 N_ ("_Set Title..."),               "<control><shift>s",          NULL,                                 G_CALLBACK (terminal_window_action_set_title), },
     { "set-title-color",  NULL,                 N_ ("Set Title Co_lor..."),         NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_set_title_color), },
@@ -512,6 +516,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
   accel_group = gtk_ui_manager_get_accel_group (window->priv->ui_manager);
 G_GNUC_END_IGNORE_DEPRECATIONS
+  /* could have used gtk_action_group_get_accel_group alternatively to avoid this dependency */
   gtk_window_add_accel_group (GTK_WINDOW (window), accel_group);
 
   gtk_accel_group_connect_by_path (accel_group, "<Actions>/terminal-window/toggle-menubar", toggle_menubar_closure);
