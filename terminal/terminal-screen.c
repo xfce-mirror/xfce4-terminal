@@ -1785,6 +1785,8 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
 #endif
 
+  gtk_widget_grab_focus (button);
+
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_top_margin (GTK_TEXT_VIEW (tv), 6);
@@ -1794,8 +1796,8 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
 
   gtk_window_get_size (GTK_WINDOW (parent), &parent_w, &parent_h);
   gtk_window_set_default_size (GTK_WINDOW (dialog),
-                               CLAMP (parent_w * 0.7, 300, 1050),
-                               CLAMP (parent_h * 0.7, 200, 700));
+                               CLAMP (parent_w * 0.75, 300, 1050),
+                               CLAMP (parent_h * 0.75, 200, 700));
   gtk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 300);
   gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 200);
   gtk_widget_set_vexpand (sw, TRUE);
@@ -1821,13 +1823,12 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
   dialog = terminal_screen_unsafe_paste_dialog_new (screen, text);
   gtk_widget_show_all (dialog);
-  /* set focus to the Paste button */
-  gtk_widget_grab_focus (gtk_dialog_get_widget_for_response (GTK_DIALOG (dialog), GTK_RESPONSE_YES));
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
       GtkWidget     *content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
-      GtkWidget     *sw = g_list_first (gtk_container_get_children (GTK_CONTAINER (content_area)))->data;
+      GtkWidget     *box = ((gtk_container_get_children (GTK_CONTAINER (content_area))))->data;
+      GtkWidget     *sw = gtk_container_get_children (GTK_CONTAINER (box))->next->data;
       GtkTextView   *tv = GTK_TEXT_VIEW (gtk_bin_get_child (GTK_BIN (sw)));
       GtkTextBuffer *buffer = gtk_text_view_get_buffer (tv);
       GtkTextIter    start, end;
