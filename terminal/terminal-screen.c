@@ -1796,8 +1796,8 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
 
   gtk_window_get_size (GTK_WINDOW (parent), &parent_w, &parent_h);
   gtk_window_set_default_size (GTK_WINDOW (dialog),
-                               CLAMP (parent_w * 0.7, 300, 1050),
-                               CLAMP (parent_h * 0.7, 200, 700));
+                               CLAMP (parent_w * 0.75, 300, 1050),
+                               CLAMP (parent_h * 0.75, 200, 700));
   gtk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 300);
   gtk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 200);
   gtk_widget_set_vexpand (sw, TRUE);
