@@ -1785,6 +1785,8 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_dialog_add_action_widget (GTK_DIALOG (dialog), button, GTK_RESPONSE_YES);
 #endif
 
+  gtk_widget_grab_focus (button);
+
   gtk_text_view_set_cursor_visible (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_monospace (GTK_TEXT_VIEW (tv), TRUE);
   gtk_text_view_set_top_margin (GTK_TEXT_VIEW (tv), 6);
@@ -1821,8 +1823,6 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
   dialog = terminal_screen_unsafe_paste_dialog_new (screen, text);
   gtk_widget_show_all (dialog);
-  /* set focus to the Paste button */
-  gtk_widget_grab_focus (gtk_dialog_get_widget_for_response (GTK_DIALOG (dialog), GTK_RESPONSE_YES));
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
