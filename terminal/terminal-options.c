@@ -162,16 +162,22 @@ terminal_options_parse (gint              argc,
 
 /**
  * terminal_window_attr_parse:
- * @argc            :
- * @argv            :
- * @error           :
+ * @argc                : argument count
+ * @argv                : arguments
+ * @can_reuse_window    : a %gboolean denoting whether new tabs should be opened in an existing window or not
+ * @error               : a %GError used for error reporting
  *
- * Return value: %NULL on failure.
+ * As far as "--tab" and "--window" are concerned: Each "--window" argument opens an additional window.
+ * Each "--tab" argument opens an additional tab in the preceding window (or in the current active window, if such exists,
+ * and no "--window" argument has been read previously).
+ *
+ *
+ * Return value: a list of %TerminalWindowAttr or %NULL on failure.
  **/
 GSList *
 terminal_window_attr_parse (gint              argc,
                             gchar           **argv,
-                            gboolean          can_reuse_tab,
+                            gboolean          can_reuse_window,
                             GError          **error)
 {
   TerminalWindowAttr *win_attr;
@@ -187,7 +193,7 @@ terminal_window_attr_parse (gint              argc,
 
   win_attr = terminal_window_attr_new ();
   tab_attr = win_attr->tabs->data;
-  attrs = g_slist_prepend (NULL, win_attr);
+  attrs = g_slist_prepend (NULL, win_attr); /* used as the return value */
 
   for (n = 1; n < argc; ++n)
     {
@@ -503,10 +509,11 @@ terminal_window_attr_parse (gint              argc,
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
         {
-          if (can_reuse_tab)
+          if (can_reuse_window)
             {
-              /* tab is the first user option, reuse existing window */
+              /* add tabs in an existing active window, until a '--window' option in encountered */
               win_attr->reuse_last_window = TRUE;
+              can_reuse_window = FALSE;
             }
           else
             {
@@ -517,8 +524,8 @@ terminal_window_attr_parse (gint              argc,
         }
       else if (terminal_option_cmp ("window", 0, argc, argv, &n, NULL))
         {
-          /* multiple windows, don't reuse */
-          win_attr->reuse_last_window = FALSE;
+          /* all new tabs will be added to new windows */
+          can_reuse_window = FALSE;
 
           /* setup new window */
           win_attr = terminal_window_attr_new ();
@@ -573,9 +580,6 @@ unknown_option:
                        _("Unknown option \"%s\""), argv[n]);
           goto failed;
         }
-
-      /* not the first option anymore */
-      can_reuse_tab = FALSE;
     }
 
   /* substitute default working directory and default display if any */
