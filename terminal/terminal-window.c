@@ -253,40 +253,8 @@ static void         terminal_window_action_reset                  (GtkAction    
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_reset_and_clear        (GtkAction           *action,
                                                                    TerminalWindow      *window);
-#define DEF_ACTION_SEND_SIGNAL(signum) \
-  static void       terminal_window_action_send_signal_##signum   (GtkAction           *action,\
+static void         terminal_window_action_send_signal            (GtkAction           *action,
                                                                    TerminalWindow      *window);
-DEF_ACTION_SEND_SIGNAL(1)
-DEF_ACTION_SEND_SIGNAL(2)
-DEF_ACTION_SEND_SIGNAL(3)
-DEF_ACTION_SEND_SIGNAL(4)
-DEF_ACTION_SEND_SIGNAL(5)
-DEF_ACTION_SEND_SIGNAL(6)
-DEF_ACTION_SEND_SIGNAL(7)
-DEF_ACTION_SEND_SIGNAL(8)
-DEF_ACTION_SEND_SIGNAL(9)
-DEF_ACTION_SEND_SIGNAL(10)
-DEF_ACTION_SEND_SIGNAL(11)
-DEF_ACTION_SEND_SIGNAL(12)
-DEF_ACTION_SEND_SIGNAL(13)
-DEF_ACTION_SEND_SIGNAL(14)
-DEF_ACTION_SEND_SIGNAL(15)
-DEF_ACTION_SEND_SIGNAL(16)
-DEF_ACTION_SEND_SIGNAL(17)
-DEF_ACTION_SEND_SIGNAL(18)
-DEF_ACTION_SEND_SIGNAL(19)
-DEF_ACTION_SEND_SIGNAL(20)
-DEF_ACTION_SEND_SIGNAL(21)
-DEF_ACTION_SEND_SIGNAL(22)
-DEF_ACTION_SEND_SIGNAL(23)
-DEF_ACTION_SEND_SIGNAL(24)
-DEF_ACTION_SEND_SIGNAL(25)
-DEF_ACTION_SEND_SIGNAL(26)
-DEF_ACTION_SEND_SIGNAL(27)
-DEF_ACTION_SEND_SIGNAL(28)
-DEF_ACTION_SEND_SIGNAL(29)
-DEF_ACTION_SEND_SIGNAL(30)
-DEF_ACTION_SEND_SIGNAL(31)
 static void         terminal_window_action_contents               (GtkAction           *action,
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_about                  (GtkAction           *action,
@@ -371,7 +339,9 @@ static gchar  *window_notebook_group = PACKAGE_NAME;
 static GQuark  tabs_menu_action_quark = 0;
 
 
-#define DEF_SEND_SIGNAL_CALLBACK(signum, name) { "signal-" #signum, NULL, "" #signum " - " #name, NULL, NULL, G_CALLBACK (terminal_window_action_send_signal_##signum), }
+
+/*  used to define send signal to foreground process entries */
+#define DEF_SEND_SIGNAL_CALLBACK(signum, name) "signal-" #signum, NULL, "" #signum " - " #name, NULL, NULL, G_CALLBACK (terminal_window_action_send_signal),
 
 static const GtkActionEntry action_entries[] =
 {
@@ -420,37 +390,37 @@ static const GtkActionEntry action_entries[] =
     { "contents",         "help-browser",       N_ ("_Contents"),                   "F1",                         N_ ("Display help contents"),         G_CALLBACK (terminal_window_action_contents), },
     { "about",            "help-about",         N_ ("_About"),                      NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_about), },
     { "zoom-menu",        NULL,                 N_ ("_Zoom"),                       NULL,                         NULL,                                 NULL, },
-    DEF_SEND_SIGNAL_CALLBACK(1,  HUP   ),
-    DEF_SEND_SIGNAL_CALLBACK(2,  INT   ),
-    DEF_SEND_SIGNAL_CALLBACK(3,  QUIT  ),
-    DEF_SEND_SIGNAL_CALLBACK(4,  ILL   ),
-    DEF_SEND_SIGNAL_CALLBACK(5,  TRAP  ),
-    DEF_SEND_SIGNAL_CALLBACK(6,  ABRT  ),
-    DEF_SEND_SIGNAL_CALLBACK(7,  BUS   ),
-    DEF_SEND_SIGNAL_CALLBACK(8,  FPE   ),
-    DEF_SEND_SIGNAL_CALLBACK(9,  KILL  ),
-    DEF_SEND_SIGNAL_CALLBACK(10, USR1  ),
-    DEF_SEND_SIGNAL_CALLBACK(11, SEGV  ),
-    DEF_SEND_SIGNAL_CALLBACK(12, USR2  ),
-    DEF_SEND_SIGNAL_CALLBACK(13, PIPE  ),
-    DEF_SEND_SIGNAL_CALLBACK(14, ALRM  ),
-    DEF_SEND_SIGNAL_CALLBACK(15, TERM  ),
-    DEF_SEND_SIGNAL_CALLBACK(16, STKFLT),
-    DEF_SEND_SIGNAL_CALLBACK(17, CHLD  ),
-    DEF_SEND_SIGNAL_CALLBACK(18, CONT  ),
-    DEF_SEND_SIGNAL_CALLBACK(19, STOP  ),
-    DEF_SEND_SIGNAL_CALLBACK(20, TSTP  ),
-    DEF_SEND_SIGNAL_CALLBACK(21, TTIN  ),
-    DEF_SEND_SIGNAL_CALLBACK(22, TTOU  ),
-    DEF_SEND_SIGNAL_CALLBACK(23, URG   ),
-    DEF_SEND_SIGNAL_CALLBACK(24, XCPU  ),
-    DEF_SEND_SIGNAL_CALLBACK(25, XFSZ  ),
-    DEF_SEND_SIGNAL_CALLBACK(26, VTALRM),
-    DEF_SEND_SIGNAL_CALLBACK(27, PROF  ),
-    DEF_SEND_SIGNAL_CALLBACK(28, INCH  ),
-    DEF_SEND_SIGNAL_CALLBACK(29, IO    ),
-    DEF_SEND_SIGNAL_CALLBACK(30, PWR   ),
-    DEF_SEND_SIGNAL_CALLBACK(31, SYS   ),
+    { DEF_SEND_SIGNAL_CALLBACK(1,  HUP   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(2,  INT   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(3,  QUIT  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(4,  ILL   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(5,  TRAP  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(6,  ABRT  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(7,  BUS   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(8,  FPE   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(9,  KILL  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(10, USR1  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(11, SEGV  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(12, USR2  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(13, PIPE  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(14, ALRM  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(15, TERM  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(16, STKFLT) },
+    { DEF_SEND_SIGNAL_CALLBACK(17, CHLD  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(18, CONT  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(19, STOP  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(20, TSTP  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(21, TTIN  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(22, TTOU  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(23, URG   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(24, XCPU  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(25, XFSZ  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(26, VTALRM) },
+    { DEF_SEND_SIGNAL_CALLBACK(27, PROF  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(28, INCH  ) },
+    { DEF_SEND_SIGNAL_CALLBACK(29, IO    ) },
+    { DEF_SEND_SIGNAL_CALLBACK(30, PWR   ) },
+    { DEF_SEND_SIGNAL_CALLBACK(31, SYS   ) },
 };
 
 static const GtkToggleActionEntry toggle_action_entries[] =
@@ -2631,45 +2601,19 @@ terminal_window_action_reset_and_clear (GtkAction       *action,
 
 
 
-#define ACTION_SEND_SIGNAL(signum) \
-  static void \
-  terminal_window_action_send_signal_##signum (GtkAction      *action, \
-                                               TerminalWindow *window) \
-  { \
-    if (G_LIKELY (window->priv->active != NULL)) \
-      terminal_screen_send_signal (window->priv->active, signum); \
-  }
-ACTION_SEND_SIGNAL(1)
-ACTION_SEND_SIGNAL(2)
-ACTION_SEND_SIGNAL(3)
-ACTION_SEND_SIGNAL(4)
-ACTION_SEND_SIGNAL(5)
-ACTION_SEND_SIGNAL(6)
-ACTION_SEND_SIGNAL(7)
-ACTION_SEND_SIGNAL(8)
-ACTION_SEND_SIGNAL(9)
-ACTION_SEND_SIGNAL(10)
-ACTION_SEND_SIGNAL(11)
-ACTION_SEND_SIGNAL(12)
-ACTION_SEND_SIGNAL(13)
-ACTION_SEND_SIGNAL(14)
-ACTION_SEND_SIGNAL(15)
-ACTION_SEND_SIGNAL(16)
-ACTION_SEND_SIGNAL(17)
-ACTION_SEND_SIGNAL(18)
-ACTION_SEND_SIGNAL(19)
-ACTION_SEND_SIGNAL(20)
-ACTION_SEND_SIGNAL(21)
-ACTION_SEND_SIGNAL(22)
-ACTION_SEND_SIGNAL(23)
-ACTION_SEND_SIGNAL(24)
-ACTION_SEND_SIGNAL(25)
-ACTION_SEND_SIGNAL(26)
-ACTION_SEND_SIGNAL(27)
-ACTION_SEND_SIGNAL(28)
-ACTION_SEND_SIGNAL(29)
-ACTION_SEND_SIGNAL(30)
-ACTION_SEND_SIGNAL(31)
+static void
+terminal_window_action_send_signal (GtkAction      *action,
+                                    TerminalWindow *window)
+{
+  const gchar *label = gtk_action_get_label (action);
+  gchar num[3]       = { 0, 0, 0 };
+  int signal_num;
+
+  strncpy (num, label, 2);
+  signal_num = atoi (num);
+  if (G_LIKELY (window->priv->active != NULL))
+    terminal_screen_send_signal (window->priv->active, signal_num);
+}
 
 
 

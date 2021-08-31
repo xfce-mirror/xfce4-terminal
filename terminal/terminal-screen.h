@@ -138,7 +138,7 @@ const gchar    *terminal_screen_get_custom_title_color    (TerminalScreen *scree
 void            terminal_screen_set_custom_title_color    (TerminalScreen *screen,
                                                            const gchar    *color);
 void            terminal_screen_send_signal               (TerminalScreen *screen,
-                                                           int            signum);
+                                                           int             signum);
 
 G_END_DECLS
 
