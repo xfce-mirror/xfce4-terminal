@@ -40,6 +40,9 @@
 #ifdef HAVE_LIBUTEMPTER
 #include <utempter.h>
 #endif
+#ifdef HAVE_SIGNAL_H
+#include <signal.h>
+#endif
 
 #include <sys/wait.h>
 
@@ -3060,4 +3063,19 @@ terminal_screen_set_custom_title_color (TerminalScreen *screen,
       screen->custom_title_color = g_strdup (color);
       terminal_screen_set_tab_label_color (screen, &label_color);
     }
+}
+
+
+
+void
+terminal_screen_send_signal (TerminalScreen *screen,
+                             int             signum)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+  terminal_return_if_fail (screen->pid > 0);
+  terminal_return_if_fail (signum >= 1 && signum <= 31);
+
+  int fgpid = tcgetpgrp (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))));
+  if (fgpid != -1 && fgpid != screen->pid)
+    kill (fgpid, signum);
 }
