@@ -236,20 +236,23 @@ terminal_window_dropdown_class_init (TerminalWindowDropdownClass *klass)
 static void
 terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 {
-  TerminalWindow *window = TERMINAL_WINDOW (dropdown);
-  GtkAction      *action;
-  GtkWidget      *hbox;
-  GtkWidget      *button;
-  GtkWidget      *img;
-  guint           n;
-  const gchar    *name;
-  gboolean        keep_open;
+  TerminalWindow      *window = TERMINAL_WINDOW (dropdown);
+  TerminalPreferences *preferences;
+  GtkAction           *action;
+  GtkWidget           *hbox;
+  GtkWidget           *button;
+  GtkWidget           *img;
+  guint                n;
+  const gchar         *name;
+  gboolean             keep_open;
 
   dropdown->rel_width = 0.80;
   dropdown->rel_height = 0.50;
   dropdown->rel_position = 0.50;
   dropdown->rel_position_vertical = 0.0;
   dropdown->animation_dir = ANIMATION_DIR_NONE;
+
+  preferences = terminal_preferences_get();
 
   /* shared setting to disable some functionality in TerminalWindow */
   terminal_window_set_drop_down (window, TRUE);
@@ -287,6 +290,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   g_object_get (terminal_window_get_preferences (window), "dropdown-keep-open-default", &keep_open, NULL);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), keep_open);
 
+  /* synchronize the `keep-open` toggle with the `keep-open` checkbox in the preferences dialog (unidirectional preferences-dialog -> notebook) */
+  g_object_bind_property (G_OBJECT (preferences), "dropdown-keep-open-default",
+                          GTK_TOGGLE_BUTTON(dropdown->keep_open), "active",
+                          G_BINDING_DEFAULT);
+
   img = gtk_image_new_from_icon_name ("go-bottom", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
 
@@ -319,6 +327,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   gtk_widget_show_all (hbox);
+
+  g_object_unref (preferences);
 }
 
 
