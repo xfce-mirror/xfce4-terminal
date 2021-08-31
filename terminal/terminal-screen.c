@@ -1752,7 +1752,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkWidget     *dialog = xfce_titled_dialog_new ();
   GtkWidget     *infobar = gtk_info_bar_new ();
   GtkWidget     *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  GtkWidget     *button, *label;
+  GtkWidget     *button, *label, *checkbox;
   gint           parent_w, parent_h;
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
@@ -1805,6 +1805,10 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_container_add (GTK_CONTAINER (sw), tv);
   gtk_container_add (GTK_CONTAINER (box), sw);
 
+  checkbox = gtk_check_button_new_with_mnemonic (_("Do _not warn me again"));
+  gtk_container_add (GTK_CONTAINER (box), checkbox);
+  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), FALSE);
+
   gtk_text_buffer_set_text (buffer, text, -1);
 
   return dialog;
@@ -1831,6 +1835,7 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
       GtkWidget     *sw = gtk_container_get_children (GTK_CONTAINER (box))->next->data;
       GtkTextView   *tv = GTK_TEXT_VIEW (gtk_bin_get_child (GTK_BIN (sw)));
       GtkTextBuffer *buffer = gtk_text_view_get_buffer (tv);
+      GtkWidget     *checkbox = gtk_container_get_children (GTK_CONTAINER (box))->next->next->data;
       GtkTextIter    start, end;
       char          *res_text;
 
@@ -1854,6 +1859,14 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
           /* restore original clipboard contents */
           gtk_clipboard_set_text (clipboard, text, strlen (text));
+        }
+
+      /* disable the dialog */
+      if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbox)))
+        {
+          g_object_set (G_OBJECT (screen->preferences),
+                        "misc-show-unsafe-paste-dialog", FALSE,
+                        NULL);
         }
     }
 
