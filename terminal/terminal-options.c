@@ -145,18 +145,28 @@ terminal_option_show_hide_cmp (const gchar         *long_name,
 
 
 
-void
+gboolean
 terminal_options_parse (gint              argc,
                         gchar           **argv,
-                        TerminalOptions  *options)
+                        TerminalOptions  *options,
+                        GError          **error)
 {
   gint n, short_offset = 0;
+  gboolean other = FALSE;
 
   for (n = 1; n < argc; ++n)
     {
-      /* all arguments should atleast start with a dash */
-      if (argv[n] == NULL || *argv[n] != '-')
+      if (argv[n] == NULL)
         continue;
+
+      /* all arguments should atleast start with a dash */
+      if (*argv[n] != '-')
+        {
+          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
+            goto failed;
+          other = TRUE;
+          continue;
+        }
 
       /* "--" option delimiter */
       if (terminal_option_cmp ("", 0, argc, argv, &n, NULL, &short_offset))
@@ -164,19 +174,57 @@ terminal_options_parse (gint              argc,
 
       /* everything after execute belongs to the command */
       if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL, &short_offset))
-        break;
+        {
+          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
+            goto failed;
+          break;
+        }
 
       if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL, &short_offset))
-        options->show_help = 1;
+        {
+          if (options->show_version || options->show_colors || options->show_preferences || options->disable_server || other)
+            goto failed;
+          options->show_help = 1;
+        }
       else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL, &short_offset))
-        options->show_version = 1;
-      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
-        options->disable_server = 1;
+        {
+          if (options->show_help || options->show_colors || options->show_preferences || options->disable_server || other)
+            goto failed;
+          options->show_version = 1;
+        }
       else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL, &short_offset))
-        options->show_colors = 1;
+        {
+          if (options->show_help || options->show_version || options->show_preferences || options->disable_server || other)
+            goto failed;
+          options->show_colors = 1;
+        }
       else if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL, &short_offset))
-        options->show_preferences = 1;
+        {
+          if (options->show_help || options->show_version || options->show_colors || options->disable_server || other)
+            goto failed;
+          options->show_preferences = 1;
+        }
+      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
+            goto failed;
+          options->disable_server = 1;
+        }
+      else
+        {
+          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
+            goto failed;
+          other = TRUE;
+        }
     }
+
+  return TRUE;
+
+  failed:
+  g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+               _("Options \"--help/-h\", \"--version/-V\", \"--color-table\","
+                 "\"--preferences\" must be used standalone."));
+  return FALSE;
 }
 
 
