@@ -225,8 +225,7 @@
             <option>--tab</option>
           </term>
           <listitem>
-            <para>Open a new tab in the last-specified window; more than one of these options can be provided.</para>
-            <para>If you use this as the first option, without --window separators, the last window will be re-used.</para>
+            <para>Open a new tab in the last specified window. More than one of these options can be provided, each opening an additional tab.</para>
           </listitem>
         </varlistentry>
 
@@ -235,10 +234,20 @@
             <option>--window</option>
           </term>
           <listitem>
-            <para>Open a new window containing one tab; more than one of these options can be provided.</para>
+            <para>Open a new window containing one tab. More than one of these options can be provided.</para>
           </listitem>
         </varlistentry>
       </variablelist>
+      <para>
+        If there is an active window, the last specified window is that window until a --window option is encountered at which point that new window is the last specified window.
+      </para>
+      <para>
+        If there is no active window, the last specified window is the window created by xfce4-terminal until a --window option
+        is encountered at which point that new window is the last specified window.
+      </para>
+      <para>
+        These options can be combined with --drop-down.
+      </para>
     </refsect2>
 
     <refsect2 id="options-tab">
