@@ -98,9 +98,10 @@ typedef struct
   guint disable_server : 1;
 } TerminalOptions;
 
-void                terminal_options_parse     (gint                 argc,
+gboolean            terminal_options_parse     (gint                 argc,
                                                 gchar              **argv,
-                                                TerminalOptions     *options);
+                                                TerminalOptions     *options,
+                                                GError             **error);
 
 GSList             *terminal_window_attr_parse (gint                 argc,
                                                 gchar              **argv,
