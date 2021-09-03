@@ -162,8 +162,6 @@ terminal_options_parse (gint              argc,
 
       if (*argv[n] != '-')
         {
-          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
-            goto failed;
           other = TRUE;
           continue;
         }
@@ -174,48 +172,44 @@ terminal_options_parse (gint              argc,
 
       /* everything after execute belongs to the command */
       if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL, &short_offset))
-        {
-          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
-            goto failed;
-          break;
-        }
+        break;
 
       if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL, &short_offset))
         {
-          if (options->show_version || options->show_colors || options->show_preferences || options->disable_server || other)
+          if (other)
             goto failed;
           options->show_help = 1;
+          break;
         }
-      else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL, &short_offset))
+
+      if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL, &short_offset))
         {
-          if (options->show_help || options->show_colors || options->show_preferences || options->disable_server || other)
+          if (other)
             goto failed;
           options->show_version = 1;
+          break;
         }
-      else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL, &short_offset))
+
+      if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL, &short_offset))
         {
-          if (options->show_help || options->show_version || options->show_preferences || options->disable_server || other)
+          if (other)
             goto failed;
           options->show_colors = 1;
+          break;
         }
-      else if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL, &short_offset))
+
+      if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL, &short_offset))
         {
-          if (options->show_help || options->show_version || options->show_colors || options->disable_server || other)
+          if (other)
             goto failed;
           options->show_preferences = 1;
+          break;
         }
-      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
-        {
-          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
-            goto failed;
-          options->disable_server = 1;
-        }
+
+      if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
+        options->disable_server = 1;
       else
-        {
-          if (options->show_help || options->show_version || options->show_colors || options->show_preferences)
-            goto failed;
-          other = TRUE;
-        }
+        other = TRUE;
     }
 
   return TRUE;
