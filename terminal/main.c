@@ -203,7 +203,13 @@ main (int argc, char **argv)
 #endif
 
   /* parse some options we need in main, not the windows attrs */
-  terminal_options_parse (argc, argv, &options);
+  if (!terminal_options_parse (argc, argv, &options, &error))
+    {
+      /* parsing one of the arguments failed */
+      g_printerr ("%s: %s\n", PACKAGE_NAME, error->message);
+      g_error_free (error);
+      return EXIT_FAILURE;
+    }
 
   if (G_UNLIKELY (options.show_version))
     {
