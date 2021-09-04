@@ -1762,8 +1762,12 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
   gtk_window_set_title (GTK_WINDOW (dialog), _("Warning: Unsafe Paste"));
 
-  label = gtk_label_new (_("Pasting this text to the terminal may be dangerous as it looks like "
-                           "some commands may be executed, potentially involving root access ('sudo')."));
+  if (strstr (text, "sudo") != NULL)
+    label = gtk_label_new (_("Pasting this text to the terminal may be dangerous as it looks like "
+                             "some commands may be executed, potentially involving root access ('sudo')."));
+  else
+    label = gtk_label_new (_("Pasting this text to the terminal may be dangerous as it looks like "
+                             "some commands may be executed."));
   gtk_label_set_line_wrap (GTK_LABEL (label), TRUE);
   gtk_container_add (GTK_CONTAINER (gtk_info_bar_get_content_area (GTK_INFO_BAR (infobar))), label);
   gtk_container_add (GTK_CONTAINER (box), infobar);
