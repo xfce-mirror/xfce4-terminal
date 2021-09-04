@@ -208,11 +208,12 @@ main (int argc, char **argv)
   if (G_UNLIKELY (options.show_version))
     {
       g_print ("%s %s (Xfce %s)\n\n", PACKAGE_NAME, PACKAGE_VERSION, xfce_version_string ());
-      g_print ("%s\n", "Copyright (c) 2003-2020");
+      g_print ("%s\n", "Copyright (c) 2003-2021");
       g_print ("\t%s\n\n", _("The Xfce development team. All rights reserved."));
       g_print ("%s\n", _("Written by Benedikt Meurer <benny@xfce.org>,"));
-      g_print ("%s\n", _("Nick Schermer <nick@xfce.org>"));
-      g_print ("%s\n\n", _("and Igor Zakharov <f2404@yandex.ru>."));
+      g_print ("%s\n", _("Nick Schermer <nick@xfce.org>,"));
+      g_print ("%s\n", _("Igor Zakharov <f2404@yandex.ru>,"));
+      g_print ("%s\n\n", _("Sergios - Anestis Kefalidis <sergioskefalidis@gmail.com>."));
       g_print (_("Please report bugs to <%s>."), PACKAGE_BUGREPORT);
       g_print ("\n");
 
