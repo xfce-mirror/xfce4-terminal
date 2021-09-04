@@ -42,12 +42,13 @@
  * terminal_option_cmp:
  * @long_name     : long option text or %NULL
  * @short_name    : short option character or 0
- * @argv          : pointer to the argument vector
  * @argc          : length of the argument vector
+ * @argv          : pointer to the argument vector
  * @argv_offset   : current offset in the argument vector
  * @return_string : return location of a pointer to the option
  *                  arguments, or %NULL to make this function
  *                  behave for string comparison.
+ * @short_offset  : current offset in grouped short arguments e.g. -abcd
  *
  * Return value: %TRUE if @long_name or @short_name was found.
  **/
@@ -57,10 +58,12 @@ terminal_option_cmp (const gchar   *long_name,
                      gint           argc,
                      gchar        **argv,
                      gint          *argv_offset,
-                     gchar        **return_string)
+                     gchar        **return_string,
+                     gint          *short_offset)
 {
   gint   len, offset;
   gchar *arg = argv[*argv_offset];
+  gboolean short_option = FALSE;
 
   if (long_name != NULL && *(arg + 1) == '-')
     {
@@ -74,12 +77,24 @@ terminal_option_cmp (const gchar   *long_name,
 
       offset = 2 + len;
     }
-  else if (short_name != 0 && *(arg + 1) == short_name)
+  else if (short_name != 0 && *(arg + 1 + *short_offset) == short_name)
     {
       if (return_string == NULL)
-        return (*(arg + 2) == '\0');
+        {
+          if (*(arg + 2 + *short_offset) != '\0')
+            {
+              ++*short_offset;
+              --*argv_offset;
+            }
+          else
+            *short_offset = 0;
 
-      offset = 2;
+          return TRUE;
+        }
+
+      offset = 2 + *short_offset;
+      *short_offset = 0;
+      short_option = TRUE;
     }
   else
     {
@@ -87,12 +102,14 @@ terminal_option_cmp (const gchar   *long_name,
     }
 
   terminal_assert (return_string != NULL);
-  if (*(arg + offset) == '=')
-    *return_string = arg + (offset + 1);
-  else if (*argv_offset + 1 > argc)
-    *return_string = NULL;
-  else
+  if (*(arg + offset) == '\0')
     *return_string = argv[++*argv_offset];
+  else if (short_option)
+    *return_string = arg + offset;
+  else if (*(arg + offset) == '=')
+    *return_string = arg + (offset + 1);
+  else
+    return FALSE;
 
   return TRUE;
 }
@@ -128,34 +145,80 @@ terminal_option_show_hide_cmp (const gchar         *long_name,
 
 
 
-void
+gboolean
 terminal_options_parse (gint              argc,
                         gchar           **argv,
-                        TerminalOptions  *options)
+                        TerminalOptions  *options,
+                        GError          **error)
 {
-  gint n;
+  gint n, short_offset = 0;
+  gboolean other = FALSE;
 
   for (n = 1; n < argc; ++n)
     {
-      /* all arguments should atleast start with a dash */
-      if (argv[n] == NULL || *argv[n] != '-')
+      if (argv[n] == NULL)
         continue;
 
-      /* everything after execute belongs to the command */
-      if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL))
+      /* all arguments should atleast start with a dash */
+      if (*argv[n] != '-')
+        {
+          other = TRUE;
+          continue;
+        }
+
+      /* "--" option delimiter */
+      if (terminal_option_cmp ("", 0, argc, argv, &n, NULL, &short_offset))
         break;
 
-      if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL))
-        options->show_help = 1;
-      else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL))
-        options->show_version = 1;
-      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL))
+      /* everything after execute belongs to the command */
+      if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL, &short_offset))
+        break;
+
+      if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL, &short_offset))
+        {
+          if (other)
+            goto failed;
+          options->show_help = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL, &short_offset))
+        {
+          if (other)
+            goto failed;
+          options->show_version = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          if (other)
+            goto failed;
+          options->show_colors = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          if (other)
+            goto failed;
+          options->show_preferences = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
         options->disable_server = 1;
-      else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL))
-        options->show_colors = 1;
-      else if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL))
-        options->show_preferences = 1;
+      else
+        other = TRUE;
     }
+
+  return TRUE;
+
+  failed:
+  g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+               _("Options \"--help/-h\", \"--version/-V\", \"--color-table\","
+                 "\"--preferences\" must be used standalone."));
+  return FALSE;
 }
 
 
@@ -187,7 +250,7 @@ terminal_window_attr_parse (gint              argc,
   gchar              *s;
   GSList             *tp, *wp;
   GSList             *attrs;
-  gint                n;
+  gint                n, short_offset = 0;
   gchar              *end_ptr = NULL;
   TerminalVisibility  visible;
 
@@ -201,7 +264,11 @@ terminal_window_attr_parse (gint              argc,
       if (argv[n] == NULL || *argv[n] != '-')
         goto unknown_option;
 
-      if (terminal_option_cmp ("default-display", 0, argc, argv, &n, &s))
+      /* "--" option delimiter*/
+      if (terminal_option_cmp ("", 0, argc, argv, &n, NULL, &short_offset))
+        break;
+
+      if (terminal_option_cmp ("default-display", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -217,7 +284,7 @@ terminal_window_attr_parse (gint              argc,
               continue;
             }
         }
-      else if (terminal_option_cmp ("default-working-directory", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("default-working-directory", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -234,13 +301,14 @@ terminal_window_attr_parse (gint              argc,
               continue;
             }
         }
-      else if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("execute", 'x', argc, argv, &n, NULL, &short_offset))
         {
-          if (++n >= argc)
+          if (short_offset > 0 || ++n >= argc)
             {
               g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
                            _("Option \"--execute/-x\" requires specifying the command "
-                             "to run on the rest of the command line"));
+                             "to run on the rest of the command line separated from "
+                             "\"--execute/-x\""));
               goto failed;
             }
           else
@@ -251,7 +319,7 @@ terminal_window_attr_parse (gint              argc,
 
           break;
         }
-      else if (terminal_option_cmp ("command", 'e', argc, argv, &n, &s))
+      else if (terminal_option_cmp ("command", 'e', argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -268,7 +336,7 @@ terminal_window_attr_parse (gint              argc,
                 goto failed;
             }
         }
-      else if (terminal_option_cmp ("working-directory", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("working-directory", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -283,7 +351,7 @@ terminal_window_attr_parse (gint              argc,
               tab_attr->directory = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("title", 'T', argc, argv, &n, &s))
+      else if (terminal_option_cmp ("title", 'T', argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -298,7 +366,7 @@ terminal_window_attr_parse (gint              argc,
               tab_attr->title = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("dynamic-title-mode", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("dynamic-title-mode", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -323,7 +391,7 @@ terminal_window_attr_parse (gint              argc,
               goto failed;
             }
         }
-      else if (terminal_option_cmp ("initial-title", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("initial-title", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -338,15 +406,15 @@ terminal_window_attr_parse (gint              argc,
               tab_attr->initial_title = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("hold", 'H', argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("hold", 'H', argc, argv, &n, NULL, &short_offset))
         {
           tab_attr->hold = TRUE;
         }
-      else if (terminal_option_cmp ("active-tab", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("active-tab", 0, argc, argv, &n, NULL, &short_offset))
         {
           tab_attr->active = TRUE;
         }
-      else if (terminal_option_cmp ("color-text", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("color-text", 0, argc, argv, &n, &s, &short_offset))
         {
           GdkRGBA color;
           if (G_UNLIKELY (s == NULL))
@@ -365,7 +433,7 @@ terminal_window_attr_parse (gint              argc,
           g_free (tab_attr->color_text);
           tab_attr->color_text = g_strdup (s);
         }
-      else if (terminal_option_cmp ("color-bg", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("color-bg", 0, argc, argv, &n, &s, &short_offset))
         {
           GdkRGBA color;
           if (G_UNLIKELY (s == NULL))
@@ -384,7 +452,7 @@ terminal_window_attr_parse (gint              argc,
           g_free (tab_attr->color_bg);
           tab_attr->color_bg = g_strdup (s);
         }
-      else if (terminal_option_cmp ("display", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("display", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -399,7 +467,7 @@ terminal_window_attr_parse (gint              argc,
               win_attr->display = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("geometry", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("geometry", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -414,7 +482,7 @@ terminal_window_attr_parse (gint              argc,
               win_attr->geometry = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("role", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("role", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -429,7 +497,7 @@ terminal_window_attr_parse (gint              argc,
               win_attr->role = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("sm-client-id", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -444,7 +512,7 @@ terminal_window_attr_parse (gint              argc,
               win_attr->sm_client_id = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("startup-id", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("startup-id", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -460,7 +528,7 @@ terminal_window_attr_parse (gint              argc,
               continue;
             }
         }
-      else if (terminal_option_cmp ("icon", 'I', argc, argv, &n, &s))
+      else if (terminal_option_cmp ("icon", 'I', argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -475,7 +543,7 @@ terminal_window_attr_parse (gint              argc,
               win_attr->icon = g_strdup (s);
             }
         }
-      else if (terminal_option_cmp ("drop-down", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("drop-down", 0, argc, argv, &n, NULL, &short_offset))
         {
           win_attr->drop_down = TRUE;
         }
@@ -483,15 +551,15 @@ terminal_window_attr_parse (gint              argc,
         {
           win_attr->menubar = visible;
         }
-      else if (terminal_option_cmp ("fullscreen", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("fullscreen", 0, argc, argv, &n, NULL, &short_offset))
         {
           win_attr->fullscreen = TRUE;
         }
-      else if (terminal_option_cmp ("maximize", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("maximize", 0, argc, argv, &n, NULL, &short_offset))
         {
           win_attr->maximize = TRUE;
         }
-      else if (terminal_option_cmp ("minimize", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("minimize", 0, argc, argv, &n, NULL, &short_offset))
         {
           win_attr->minimize = TRUE;
         }
@@ -507,7 +575,7 @@ terminal_window_attr_parse (gint              argc,
         {
           win_attr->scrollbar = visible;
         }
-      else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL, &short_offset))
         {
           if (can_reuse_window)
             {
@@ -522,7 +590,7 @@ terminal_window_attr_parse (gint              argc,
               win_attr->tabs = g_slist_append (win_attr->tabs, tab_attr);
             }
         }
-      else if (terminal_option_cmp ("window", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("window", 0, argc, argv, &n, NULL, &short_offset))
         {
           /* all new tabs will be added to new windows */
           can_reuse_window = FALSE;
@@ -532,7 +600,7 @@ terminal_window_attr_parse (gint              argc,
           tab_attr = win_attr->tabs->data;
           attrs = g_slist_append (attrs, win_attr);
         }
-      else if (terminal_option_cmp ("font", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("font", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL))
             {
@@ -548,7 +616,7 @@ terminal_window_attr_parse (gint              argc,
               continue;
             }
         }
-      else if (terminal_option_cmp ("zoom", 0, argc, argv, &n, &s))
+      else if (terminal_option_cmp ("zoom", 0, argc, argv, &n, &s, &short_offset))
         {
           if (G_UNLIKELY (s == NULL) ||
               strtol (s, &end_ptr, 0) < TERMINAL_ZOOM_LEVEL_MINIMUM ||
@@ -566,9 +634,9 @@ terminal_window_attr_parse (gint              argc,
               continue;
             }
         }
-      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL)
-               || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL)
-               || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL))
+      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset)
+               || terminal_option_cmp ("sync", 0, argc, argv, &n, NULL, &short_offset)
+               || terminal_option_cmp ("g-fatal-warnings", 0, argc, argv, &n, NULL, &short_offset))
         {
           /* options we can ignore */
           continue;
@@ -576,8 +644,13 @@ terminal_window_attr_parse (gint              argc,
       else
         {
 unknown_option:
-          g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
-                       _("Unknown option \"%s\""), argv[n]);
+          if (short_offset > 0)
+            g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                         _("Unknown option \"-%c\""), *(argv[n] + 1 + short_offset));
+          else
+            g_set_error (error, G_SHELL_ERROR, G_SHELL_ERROR_FAILED,
+                         _("Unknown option \"%s\""), argv[n]);
+
           goto failed;
         }
     }
