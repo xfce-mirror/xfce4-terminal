@@ -49,6 +49,10 @@ static void terminal_image_loader_stretch  (TerminalImageLoader *loader,
                                             GdkPixbuf           *target,
                                             gint                 width,
                                             gint                 height);
+static void terminal_image_loader_fill     (TerminalImageLoader *loader,
+                                            GdkPixbuf           *target,
+                                            gint                 width,
+                                            gint                 height);
 
 
 struct _TerminalImageLoaderClass
@@ -328,6 +332,47 @@ terminal_image_loader_stretch (TerminalImageLoader *loader,
 
 
 
+static void
+terminal_image_loader_fill    (TerminalImageLoader *loader,
+                               GdkPixbuf           *target,
+                               gint                 width,
+                               gint                 height)
+{
+  gdouble xscale;
+  gdouble yscale;
+  gdouble scale;
+  gdouble xoff;
+  gdouble yoff;
+  gint    source_width;
+  gint    source_height;
+
+  source_width = gdk_pixbuf_get_width (loader->pixbuf);
+  source_height = gdk_pixbuf_get_height (loader->pixbuf);
+
+  xscale = (gdouble) width / source_width;
+  yscale = (gdouble) height / source_height;
+  if (xscale < yscale)
+    {
+       scale = yscale;
+       xoff = ((scale - xscale) * source_width) * -0.5;
+       yoff = 0;
+    }
+  else
+    {
+       scale = xscale;
+       xoff = 0;
+       yoff = ((scale - yscale) * source_height) * -0.5;
+    }
+  scale = MAX(xscale,yscale);
+
+  gdk_pixbuf_scale (loader->pixbuf, target,
+                        0, 0, width, height,
+                        xoff, yoff, scale, scale,
+                        GDK_INTERP_BILINEAR);
+}
+
+
+
 /**
  * terminal_image_loader_get:
  *
@@ -426,6 +471,10 @@ terminal_image_loader_load (TerminalImageLoader *loader,
 
     case TERMINAL_BACKGROUND_STYLE_STRETCHED:
       terminal_image_loader_stretch (loader, pixbuf, width, height);
+      break;
+
+    case TERMINAL_BACKGROUND_STYLE_FILLED:
+      terminal_image_loader_fill (loader, pixbuf, width, height);
       break;
 
     default:
