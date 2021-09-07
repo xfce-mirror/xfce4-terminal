@@ -219,17 +219,20 @@ main (int argc, char **argv)
 
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options.show_colors))
+
+  if (G_UNLIKELY (options.show_colors))
     {
       colortable ();
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options.show_help))
+
+  if (G_UNLIKELY (options.show_help))
     {
       usage ();
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options.show_preferences))
+
+  if (G_UNLIKELY (options.show_preferences))
     {
       GtkWidget *dialog;
       gtk_init (&argc, &argv);
