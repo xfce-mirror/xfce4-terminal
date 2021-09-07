@@ -167,15 +167,31 @@ terminal_options_parse (gint              argc,
         break;
 
       if (terminal_option_cmp ("help", 'h', argc, argv, &n, NULL, &short_offset))
-        options->show_help = 1;
-      else if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL, &short_offset))
-        options->show_version = 1;
-      else if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          options->show_help = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("version", 'V', argc, argv, &n, NULL, &short_offset))
+        {
+          options->show_version = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          options->show_colors = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          options->show_preferences = 1;
+          break;
+        }
+
+      if (terminal_option_cmp ("disable-server", 0, argc, argv, &n, NULL, &short_offset))
         options->disable_server = 1;
-      else if (terminal_option_cmp ("color-table", 0, argc, argv, &n, NULL, &short_offset))
-        options->show_colors = 1;
-      else if (terminal_option_cmp ("preferences", 0, argc, argv, &n, NULL, &short_offset))
-        options->show_preferences = 1;
     }
 }
 
