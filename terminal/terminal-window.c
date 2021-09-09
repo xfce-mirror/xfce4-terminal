@@ -128,6 +128,7 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
                                                                    glong                force_grid_height);
 static void         terminal_window_update_actions                (TerminalWindow      *window);
 static void         terminal_window_update_slim_tabs              (TerminalWindow      *window);
+static void         terminal_window_update_commands               (TerminalWindow      *window);
 static void         terminal_window_update_scroll_on_output       (TerminalWindow      *window);
 static void         terminal_window_update_mnemonic_modifier      (TerminalWindow      *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook         *notebook,
@@ -284,6 +285,8 @@ struct _TerminalWindowPrivate
   GtkWidget           *menubar;
   GtkWidget           *toolbar;
 
+  gchar              **v_user_commands;
+
   /* for the drop-down to keep open with dialogs */
   guint                n_child_windows;
 
@@ -433,6 +436,8 @@ static const GtkToggleActionEntry toggle_action_entries[] =
   { "read-only",        NULL,              N_ ("_Read-Only"),           NULL,                           N_ ("Toggle read-only mode"),             G_CALLBACK (terminal_window_action_readonly),         FALSE, },
   { "scroll-on-output", NULL,              N_ ("Scroll on _Output"),    NULL,                           N_ ("Toggle scroll on output"),           G_CALLBACK (terminal_window_action_scroll_on_output), FALSE, },
 };
+
+static const char* MENU_ITEM_PROP_NAME = "terminal_window_private";
 
 
 
@@ -635,6 +640,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   window->priv->action_search_prev = terminal_window_get_action (window, "search-prev");
   window->priv->action_fullscreen = terminal_window_get_action (window, "fullscreen");
 
+  /* monitor the commands setting */
+  window->priv->v_user_commands = NULL;
+  terminal_window_update_commands (window);
+  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::commands",
+                            G_CALLBACK (terminal_window_update_commands), window);
+
   /* monitor the scrolling-on-output setting */
   g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::scrolling-on-output",
                             G_CALLBACK (terminal_window_update_scroll_on_output), window);
@@ -665,7 +676,9 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
-  /* disconnect scrolling-on-output and shortcuts-no-mnemonics watches */
+  /* disconnect commands, scrolling-on-output and shortcuts-no-mnemonics watches */
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
+                                        G_CALLBACK (terminal_window_update_commands), window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
                                         G_CALLBACK (terminal_window_update_scroll_on_output), window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
@@ -681,6 +694,7 @@ terminal_window_finalize (GObject *object)
   g_slist_free (window->priv->tabs_menu_actions);
   g_free (window->priv->font);
   g_queue_free_full (window->priv->closed_tabs_list, (GDestroyNotify) terminal_tab_attr_free);
+  g_strfreev (window->priv->v_user_commands);
 
   (*G_OBJECT_CLASS (terminal_window_parent_class)->finalize) (object);
 }
@@ -1192,6 +1206,148 @@ terminal_window_update_slim_tabs (TerminalWindow *window)
                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
       gtk_css_provider_load_from_data (provider, CSS_SLIM_TABS, -1, NULL);
       g_object_unref (provider);
+    }
+}
+
+
+
+static void
+user_menu_item_activate (GtkWidget  *menu_item,
+                         const char *cmd)
+{
+  TerminalWindowPrivate *priv;
+
+  priv = (TerminalWindowPrivate*)g_object_get_data (G_OBJECT (menu_item), MENU_ITEM_PROP_NAME);
+  if (priv && priv->active)
+    terminal_screen_feed_text (priv->active, cmd);
+}
+
+
+
+static GtkWidget*
+add_user_menu_item (GtkMenuShell          *menu,
+                    const char            *lbl,
+                    const char            *cmd,
+                    TerminalWindowPrivate *priv)
+{
+  GtkWidget *menu_item;
+
+  if ('\0' == *lbl) /* an empty label means a separator */
+    menu_item = gtk_separator_menu_item_new ();
+  else
+    {
+      menu_item = gtk_menu_item_new_with_label (lbl);
+      g_signal_connect (G_OBJECT (menu_item), "activate",
+          (GCallback)user_menu_item_activate, (gpointer)cmd);
+    }
+
+  g_object_set_data (G_OBJECT (menu_item), MENU_ITEM_PROP_NAME, (gpointer)priv);
+  gtk_menu_shell_append (menu, menu_item);
+  gtk_widget_show (menu_item);
+  return menu_item;
+}
+
+
+
+static GtkWidget*
+add_user_menu (GtkMenuShell *menu_shell,
+               const char   *label)
+{
+  GtkWidget *menu_item, *menu;
+
+  menu_item = gtk_menu_item_new_with_label (label);
+  g_object_set_data (G_OBJECT (menu_item), MENU_ITEM_PROP_NAME, (gpointer)TRUE);
+  gtk_menu_shell_append (menu_shell, menu_item);
+  gtk_widget_show (menu_item);
+
+  menu = gtk_menu_new ();
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item), menu);
+  return menu;
+}
+
+
+
+static gchar**
+fill_user_menu (gchar                **v_lines,
+                GtkMenuShell          *menu_shell,
+                TerminalWindowPrivate *priv)
+{
+  gchar** line;
+  
+  for (line = v_lines; line[0] != NULL; line++)
+  {
+    char *tab_pos;
+
+    if ('\0' == **line)
+      return line;
+
+    tab_pos = strchr (*line, '\t');
+    if (NULL == tab_pos)
+      {
+        GtkWidget *menu;
+
+        menu = add_user_menu (menu_shell, *line);
+        line = fill_user_menu (line + 1, GTK_MENU_SHELL (menu), priv);
+        if (NULL == line)
+          return NULL;
+      }
+    else
+      {
+        gchar *out, *in;
+
+        *tab_pos = '\0';
+        out = tab_pos + 1;
+        for (in = tab_pos + 1; *in; in++, out++)
+        {
+          if ('\\' == in[0])
+            {
+              if ('n' == in[1])
+                {
+                  in++;
+                  *out = '\n';
+                }
+              else if ('t' == in[1])
+                {
+                  in++;
+                  *out = '\t';
+                }
+            }
+        }
+        *out = '\0';
+
+        add_user_menu_item (menu_shell, *line, tab_pos + 1, priv);
+      }
+  }
+  
+  return NULL;
+}
+
+
+
+static void
+destroy_user_menu_items (GtkWidget *widget,
+                         gpointer   user_data)
+{
+  if (g_object_get_data (G_OBJECT (widget), MENU_ITEM_PROP_NAME))
+    gtk_widget_destroy (widget);
+}
+
+
+
+static void
+terminal_window_update_commands (TerminalWindow *window)
+{
+  gchar *commands;
+
+  gtk_container_forall (GTK_CONTAINER (window->priv->menubar), destroy_user_menu_items, NULL);
+
+  g_object_get (window->priv->preferences, "commands", &commands, NULL);
+  if (commands)
+    {
+      g_strfreev (window->priv->v_user_commands);
+      window->priv->v_user_commands = g_strsplit_set (commands, "\n", -1);
+      fill_user_menu (window->priv->v_user_commands, GTK_MENU_SHELL (window->priv->menubar), window->priv);
+      g_free (commands);
     }
 }
 
