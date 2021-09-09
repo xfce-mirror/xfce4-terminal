@@ -141,6 +141,9 @@ struct _TerminalWindowDropdown
 
   /* server time of focus out with grab */
   gint64             focus_out_time;
+
+  /* used to not hide the terminal when dialogs are opened */
+  gboolean            ignore_next_focus_out_event;
 };
 
 
@@ -481,6 +484,13 @@ terminal_window_dropdown_focus_out_event (GtkWidget     *widget,
 
   /* let Gtk do its thingy */
   retval = (*GTK_WIDGET_CLASS (terminal_window_dropdown_parent_class)->focus_out_event) (widget, event);
+
+  /* ignore this event and reset the flag */
+  if (dropdown->ignore_next_focus_out_event == TRUE)
+    {
+      dropdown->ignore_next_focus_out_event = FALSE;
+      return retval;
+    }
 
   /* check if keep open is not enabled */
   if (gtk_widget_get_visible (widget)
@@ -1091,4 +1101,18 @@ terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown)
   if (gtk_widget_get_visible (GTK_WIDGET (dropdown))
       && dropdown->animation_dir == ANIMATION_DIR_NONE)
     terminal_window_dropdown_show (dropdown, 0, TRUE);
+}
+
+
+
+/**
+ * terminal_window_dropdown_ignore_next_focus_out_event:
+ * @dropdown  : A #TerminalWindowDropdown.
+ *
+ * Used to avoid hiding the terminal when it loses focus. Used when opening dialogs (like the `About` dialog).
+ **/
+void
+terminal_window_dropdown_ignore_next_focus_out_event (TerminalWindowDropdown *dropdown)
+{
+  dropdown->ignore_next_focus_out_event = TRUE;
 }

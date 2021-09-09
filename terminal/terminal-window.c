@@ -2622,6 +2622,10 @@ static void
 terminal_window_action_contents (GtkAction       *action,
                                  TerminalWindow  *window)
 {
+  /* don't hide the drop-down terminal */
+  if (TERMINAL_IS_WINDOW_DROPDOWN (window))
+    terminal_window_dropdown_ignore_next_focus_out_event (TERMINAL_WINDOW_DROPDOWN (window));
+
   /* open the Terminal user manual */
   xfce_dialog_show_help (GTK_WINDOW (window), "terminal", NULL, NULL);
 }
@@ -2632,6 +2636,10 @@ static void
 terminal_window_action_about (GtkAction      *action,
                               TerminalWindow *window)
 {
+  /* don't hide the drop-down terminal */
+  if (TERMINAL_IS_WINDOW_DROPDOWN (window))
+    terminal_window_dropdown_ignore_next_focus_out_event (TERMINAL_WINDOW_DROPDOWN (window));
+
   /* display the about dialog */
   terminal_util_show_about_dialog (GTK_WINDOW (window));
 }

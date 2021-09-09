@@ -51,6 +51,7 @@ void       terminal_window_dropdown_get_size        (TerminalWindowDropdown *dro
                                                      glong                  *grid_height);
 
 void       terminal_window_dropdown_update_geometry (TerminalWindowDropdown *dropdown);
+void       terminal_window_dropdown_ignore_next_focus_out_event (TerminalWindowDropdown *dropdown);
 
 G_END_DECLS
 

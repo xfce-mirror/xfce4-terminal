@@ -56,6 +56,7 @@
 #include <terminal/terminal-screen.h>
 #include <terminal/terminal-widget.h>
 #include <terminal/terminal-window.h>
+#include <terminal/terminal-window-dropdown.h>
 
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -1834,6 +1835,10 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
   dialog = terminal_screen_unsafe_paste_dialog_new (screen, text);
   gtk_widget_show_all (dialog);
+
+  /* don't hide the drop-down terminal */
+  if (TERMINAL_IS_WINDOW_DROPDOWN (gtk_widget_get_toplevel (GTK_WIDGET (screen))))
+    terminal_window_dropdown_ignore_next_focus_out_event (TERMINAL_WINDOW_DROPDOWN (gtk_widget_get_toplevel (GTK_WIDGET (screen))));
 
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_YES)
     {
