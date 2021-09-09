@@ -1761,7 +1761,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
   gtk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
-  gtk_window_set_title (GTK_WINDOW (dialog), _("Warning: Unsafe Paste"));
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Warning: Potentially Unsafe Paste"));
 
   if (strstr (text, "sudo") != NULL)
     label = gtk_label_new (_("Pasting this text to the terminal may be dangerous as it looks like "
@@ -1813,7 +1813,7 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_container_add (GTK_CONTAINER (sw), tv);
   gtk_container_add (GTK_CONTAINER (box), sw);
 
-  checkbox = gtk_check_button_new_with_mnemonic (_("Do _not warn me again"));
+  checkbox = gtk_check_button_new_with_mnemonic (_("Do _not warn me again (not recommended)"));
   gtk_container_add (GTK_CONTAINER (box), checkbox);
   gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), FALSE);
 
