@@ -131,6 +131,7 @@ enum
   PROP_TEXT_BLINK_MODE,
   PROP_CELL_WIDTH_SCALE,
   PROP_CELL_HEIGHT_SCALE,
+  PROP_COMMANDS,
   N_PROPERTIES,
 };
 
@@ -1226,6 +1227,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                            "CellHeightScale",
                            1.0, 2.0, 1.0,
                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:commands:
+   **/
+  preferences_props[PROP_COMMANDS] =
+      g_param_spec_string ("commands",
+                           NULL,
+                           "Commands",
+                           NULL,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS); 
 
   /* install all properties */
   g_object_class_install_properties (gobject_class, N_PROPERTIES, preferences_props);
