@@ -77,6 +77,28 @@ static void     terminal_preferences_dialog_encoding_changed  (GtkComboBox      
 static gboolean monospace_filter                              (const PangoFontFamily     *family,
                                                                const PangoFontFace       *face,
                                                                gpointer                   data);
+static gchar**  fill_commands_model                           (gchar                     **v_lines,
+                                                               GtkTreeStore              *model,
+                                                               GtkTreeIter               *iter_parent);
+static void     terminal_preferences_dialog_add_menu          (GtkWidget                 *button,
+                                                               TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_add_command       (GtkWidget                 *button,
+                                                               TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_del_command       (GtkWidget                 *button,
+                                                               TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_up_down_command   (GtkWidget                 *button,
+                                                               TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_command_edited    (GtkCellRendererText       *renderer,
+                                                               const char                *path_string,
+                                                               const char                *new_text,
+                                                               TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_commands_update_sensitive (GtkTreeSelection  *self,
+                                                               TerminalPreferencesDialog *dialog);
+static void     terminal_preferences_dialog_commands_deleted  (GtkTreeModel              *model_commands,
+                                                               GtkTreePath               *path,
+                                                               TerminalPreferences       *preferences);
+static void     terminal_preferences_dialog_save_commands     (GtkTreeModel              *ls_commands,
+                                                               TerminalPreferences       *preferences);
 
 
 
@@ -105,6 +127,13 @@ enum
   N_PRESET_COLUMNS
 };
 
+enum
+{
+  COMMAND_COLUMN_LABEL,
+  COMMAND_COLUMN_COMMAND,
+  COMMAND_COLUMN_SENSITIVE,
+  N_COMMAND_COLUMNS
+};
 
 
 G_DEFINE_TYPE (TerminalPreferencesDialog, terminal_preferences_dialog, GTK_TYPE_BUILDER)
@@ -153,6 +182,45 @@ terminal_preferences_dialog_class_init (TerminalPreferencesDialogClass *klass)
 
 
 
+static gchar**
+fill_commands_model (gchar **v_lines,
+                     GtkTreeStore *model,
+                     GtkTreeIter *iter_parent)
+{
+  gchar** line;
+  for (line = v_lines; line[0] != NULL; line++)
+    {
+      GtkTreeIter iter;
+      gchar *tab_pos;
+
+      if ('\0' == **line)
+        return line;
+
+      tab_pos = strchr (*line, '\t');
+      gtk_tree_store_append (model, &iter, iter_parent);
+      if (NULL == tab_pos)
+        {
+          gtk_tree_store_set (model, &iter, COMMAND_COLUMN_LABEL, *line, -1);
+          line = fill_commands_model (line + 1, model, &iter);
+          if (NULL == line)
+            return NULL;
+        }
+      else
+        {
+          *tab_pos = '\0';
+          gtk_tree_store_set (model, &iter,
+              COMMAND_COLUMN_LABEL,    *line,
+              COMMAND_COLUMN_COMMAND,   tab_pos + 1,
+              COMMAND_COLUMN_SENSITIVE, TRUE,
+              -1);
+        }
+    }
+
+  return NULL;
+}
+
+
+
 static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
@@ -165,6 +233,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkTreeModel     *model;
   gchar            *current;
   GtkTreeIter       current_iter;
+  gchar            *commands;
   const gchar      *props_active[] = { "title-mode", "command-login-shell",
                                        "command-update-records", "run-custom-command",
                                        "use-default-working-dir", "scrolling-on-output",
@@ -489,6 +558,60 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
       G_CALLBACK (terminal_preferences_dialog_encoding_changed), dialog);
   g_object_unref (G_OBJECT (model));
   g_free (current);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "add-menu");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (object, "clicked",
+      G_CALLBACK (terminal_preferences_dialog_add_menu), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "add-command");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (object, "clicked",
+      G_CALLBACK (terminal_preferences_dialog_add_command), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "commands");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  model = GTK_TREE_MODEL (gtk_tree_store_new (N_COMMAND_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_BOOLEAN));
+  g_object_get (dialog->preferences, "commands", &commands, NULL);
+  if (commands)
+    {
+      gchar** v_lines;
+
+      v_lines = g_strsplit_set (commands, "\n", -1);
+      fill_commands_model (v_lines, GTK_TREE_STORE (model), NULL);
+      g_strfreev (v_lines);
+      g_free (commands);
+    }
+  gtk_tree_view_set_model (GTK_TREE_VIEW (object), model);
+  g_signal_connect (model, "row-deleted", /* for reordering with D&D */
+      G_CALLBACK (terminal_preferences_dialog_commands_deleted),
+      dialog->preferences);
+  g_object_unref (G_OBJECT (model));
+
+  g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW (object)), "changed",
+      G_CALLBACK (terminal_preferences_dialog_commands_update_sensitive), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "del-command");
+  g_signal_connect (object, "clicked",
+      G_CALLBACK (terminal_preferences_dialog_del_command), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "up-command");
+  g_signal_connect (object, "clicked",
+      G_CALLBACK (terminal_preferences_dialog_up_down_command), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "down-command");
+  g_signal_connect (object, "clicked",
+      G_CALLBACK (terminal_preferences_dialog_up_down_command), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "crt-label");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (object, "edited",
+      G_CALLBACK (terminal_preferences_dialog_command_edited), dialog);
+
+  object = gtk_builder_get_object (GTK_BUILDER (dialog), "crt-command");
+  terminal_return_if_fail (G_IS_OBJECT (object));
+  g_signal_connect (object, "edited",
+      G_CALLBACK (terminal_preferences_dialog_command_edited), dialog);
 }
 
 
@@ -1165,4 +1288,232 @@ terminal_preferences_dialog_new (gboolean show_drop_down,
   terminal_return_val_if_fail (XFCE_IS_TITLED_DIALOG (dialog), NULL);
   gtk_window_set_type_hint (GTK_WINDOW (dialog), GDK_WINDOW_TYPE_HINT_DIALOG);
   return GTK_WIDGET (dialog);
+}
+
+
+
+static void
+terminal_preferences_dialog_add_menu (GtkWidget                 *button,
+                                      TerminalPreferencesDialog *dialog)
+{
+  GtkTreeIter   iter_sel, iter_menu, iter_cmd;
+  GtkTreeView  *tv;
+  GtkTreeModel *model;
+
+  tv = GTK_TREE_VIEW(gtk_builder_get_object (GTK_BUILDER (dialog), "commands"));
+  model = gtk_tree_view_get_model (tv);
+  gtk_tree_store_insert_after (GTK_TREE_STORE (model), &iter_menu, NULL,
+      gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tv), NULL, &iter_sel) ? &iter_sel : NULL);
+  gtk_tree_store_append (GTK_TREE_STORE (model), &iter_cmd, &iter_menu);
+  gtk_tree_store_set (GTK_TREE_STORE (model), &iter_cmd, COMMAND_COLUMN_SENSITIVE, TRUE, -1);
+
+  terminal_preferences_dialog_commands_update_sensitive (gtk_tree_view_get_selection (tv), dialog);
+  terminal_preferences_dialog_save_commands (model, dialog->preferences);
+}
+
+
+
+static void
+terminal_preferences_dialog_add_command (GtkWidget                 *button,
+                                         TerminalPreferencesDialog *dialog)
+{
+  GtkTreeIter   iter_sel, iter_cmd;
+  GtkTreeView  *tv;
+  GtkTreeModel *model;
+  
+  tv = GTK_TREE_VIEW(gtk_builder_get_object (GTK_BUILDER (dialog), "commands"));
+  model = gtk_tree_view_get_model (tv);
+  gtk_tree_store_insert_after (GTK_TREE_STORE (model), &iter_cmd, NULL,
+      gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tv), NULL, &iter_sel) ? &iter_sel : NULL);
+  gtk_tree_store_set (GTK_TREE_STORE (model), &iter_cmd, COMMAND_COLUMN_SENSITIVE, TRUE, -1);
+  terminal_preferences_dialog_commands_update_sensitive (gtk_tree_view_get_selection (tv), dialog);
+  terminal_preferences_dialog_save_commands (model, dialog->preferences);
+}
+
+
+
+static GString*
+tree_level_to_str(GtkTreeModel *model,
+                  GtkTreeIter  *iter_parent)
+{
+  GtkTreeIter iter;
+  GString    *s;
+  gboolean    valid;
+
+  s = g_string_new (NULL);
+  for (valid = gtk_tree_model_iter_children (model, &iter, iter_parent);
+       valid;
+       valid = gtk_tree_model_iter_next (model, &iter))
+    {
+      char *label;
+      char *command;
+
+      gtk_tree_model_get (model, &iter,
+          COMMAND_COLUMN_LABEL,   &label,
+          COMMAND_COLUMN_COMMAND, &command,
+          -1);
+
+      if(!gtk_tree_model_iter_has_child (model, &iter))
+        {
+          g_string_append_printf (s, "%s\t%s\n",
+              (NULL == label)   ? "" : label,
+              (NULL == command) ? "" : command);
+        }
+      else
+        {
+          GString* sub_menu;
+
+          sub_menu = tree_level_to_str (model, &iter);
+          g_string_append_printf (s, "%s\n%s\n",
+              (NULL == label) ? "" : label,
+              sub_menu->str);
+          g_string_free (sub_menu, TRUE);
+        }
+
+      g_free (label);
+      g_free (command);
+    }
+
+  return s;
+}
+
+
+
+static void
+terminal_preferences_dialog_save_commands (GtkTreeModel        *model,
+                                           TerminalPreferences *preferences)
+{
+  GString* prop_value;
+
+  prop_value = tree_level_to_str (model, NULL);
+  g_object_set (G_OBJECT (preferences), "commands",
+      ((prop_value->len > 0) ? prop_value->str : NULL), NULL);
+  g_string_free (prop_value, TRUE);
+}
+
+
+
+static void
+terminal_preferences_dialog_del_command (GtkWidget                 *button,
+                                         TerminalPreferencesDialog *dialog)
+{
+  GtkTreeModel *model;
+  GtkTreeIter   iter;
+  GtkTreeView  *tv;
+
+  tv = GTK_TREE_VIEW (gtk_builder_get_object (GTK_BUILDER (dialog), "commands"));
+  if (gtk_tree_selection_get_selected (gtk_tree_view_get_selection (tv), &model, &iter))
+    gtk_tree_store_remove (GTK_TREE_STORE (model), &iter);
+}
+
+
+
+static void
+terminal_preferences_dialog_up_down_command (GtkWidget                 *button,
+                                             TerminalPreferencesDialog *dialog)
+{
+  GtkTreeModel     *model;
+  GtkTreeIter       iter, iter2;
+  GtkTreeView      *commands;
+  GtkTreeSelection *ts;
+  
+  commands = GTK_TREE_VIEW (gtk_builder_get_object (GTK_BUILDER (dialog), "commands"));
+  ts = gtk_tree_view_get_selection (commands);
+  if (!gtk_tree_selection_get_selected (ts, &model, &iter))
+    return;
+
+  iter2 = iter;
+  if (GTK_WIDGET (gtk_builder_get_object (GTK_BUILDER (dialog), "up-command")) == button)
+    {
+      gtk_tree_model_iter_previous (model, &iter2);
+      gtk_tree_store_move_before (
+          GTK_TREE_STORE (model),
+          &iter,
+          &iter2);
+    }
+  else
+    {
+      gtk_tree_model_iter_next (model, &iter2);
+      gtk_tree_store_move_after (
+          GTK_TREE_STORE (model),
+          &iter,
+          &iter2);
+    }
+  terminal_preferences_dialog_commands_update_sensitive (ts, dialog);
+  terminal_preferences_dialog_save_commands (model, dialog->preferences);
+}
+
+
+
+static void
+terminal_preferences_dialog_command_edited (GtkCellRendererText       *renderer,
+                                            const char                *path_string,
+                                            const char                *new_text,
+                                            TerminalPreferencesDialog *dialog)
+{
+  int           column;
+  GtkTreeView  *commands;
+  GtkTreePath  *path;
+  GtkTreeIter   iter;
+  GtkTreeModel *model;
+
+  commands = GTK_TREE_VIEW (gtk_builder_get_object (GTK_BUILDER (dialog),
+                                                   "commands"));
+  terminal_return_if_fail (G_IS_OBJECT (commands));
+  path = gtk_tree_path_new_from_string (path_string);
+  model = gtk_tree_view_get_model (commands);
+  gtk_tree_model_get_iter (model, &iter, path);
+  column = 
+      (GTK_CELL_RENDERER_TEXT (gtk_builder_get_object (GTK_BUILDER (dialog),
+                                   "crt-label")) == renderer)
+        ? COMMAND_COLUMN_LABEL 
+        : COMMAND_COLUMN_COMMAND;
+  gtk_tree_store_set (GTK_TREE_STORE (model), &iter, column, new_text, -1);
+  terminal_preferences_dialog_save_commands (model, dialog->preferences);
+}
+
+
+
+static void
+terminal_preferences_dialog_commands_update_sensitive (GtkTreeSelection          *ts,
+                                                       TerminalPreferencesDialog *dialog)
+{
+  gboolean up_sensitive, down_sensitive, del_sensitive;
+
+  del_sensitive = (gtk_tree_selection_count_selected_rows (ts) != 0);
+  gtk_widget_set_sensitive (
+      GTK_WIDGET(gtk_builder_get_object (GTK_BUILDER (dialog), "del-command")),
+      del_sensitive);
+
+  if (!del_sensitive)
+    {
+      up_sensitive = down_sensitive = FALSE;
+    }
+  else
+    {
+      GtkTreeModel *model;
+      GtkTreeIter   iter, iter_tmp;
+
+      gtk_tree_selection_get_selected (ts, &model, &iter);
+      iter_tmp = iter;
+      down_sensitive = gtk_tree_model_iter_next (model, &iter_tmp);
+      up_sensitive = gtk_tree_model_iter_previous (model, &iter);
+    }
+
+  gtk_widget_set_sensitive (
+      GTK_WIDGET (gtk_builder_get_object (GTK_BUILDER (dialog), "up-command")),
+      up_sensitive);
+  gtk_widget_set_sensitive (
+      GTK_WIDGET(gtk_builder_get_object (GTK_BUILDER (dialog), "down-command")),
+      down_sensitive);
+}
+
+
+
+static void
+terminal_preferences_dialog_commands_deleted (GtkTreeModel        *model_commands,
+                                              GtkTreePath         *path,
+                                              TerminalPreferences *preferences)
+{
+  terminal_preferences_dialog_save_commands (model_commands, preferences);
 }
