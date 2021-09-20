@@ -1085,16 +1085,6 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
   /**
    * TerminalPreferences:misc-show-unsafe-paste-dialog:
    **/
-  preferences_props[PROP_MISC_RESTORE_SESSION] =
-      g_param_spec_boolean ("restore-session",
-                            NULL,
-                            "MiscRestoreSession",
-                            TRUE,
-                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-
-  /**
-   * TerminalPreferences:misc-show-unsafe-paste-dialog:
-   **/
   preferences_props[PROP_MISC_SESSION] =
       g_param_spec_string ("session",
                            NULL,
