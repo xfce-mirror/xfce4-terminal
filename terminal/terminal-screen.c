@@ -2597,17 +2597,11 @@ terminal_screen_get_restart_command (TerminalScreen *screen)
     }
 
   if (screen->custom_title != NULL)
-    {
-      result = g_slist_prepend (result, g_strdup ("--title"));
-      result = g_slist_prepend (result, g_strdup (screen->custom_title));
-    }
+    result = g_slist_prepend (result, g_strdup_printf ("--title=%s", screen->custom_title));
 
   directory = terminal_screen_get_working_directory (screen);
   if (G_LIKELY (directory != NULL))
-    {
-      result = g_slist_prepend (result, g_strdup ("--working-directory"));
-      result = g_slist_prepend (result, g_strdup (directory));
-    }
+    result = g_slist_prepend (result, g_strdup_printf ("--working-directory=%s", directory));
 
   if (G_UNLIKELY (screen->hold))
     result = g_slist_prepend (result, g_strdup ("--hold"));
