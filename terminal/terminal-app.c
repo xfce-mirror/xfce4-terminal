@@ -614,6 +614,7 @@ terminal_app_restore_session ()
     {
       GtkWindow *window = g_slist_last (app->windows)->data;
       gtk_window_close (window);
+      app->windows = g_slist_remove (app->windows, window);
     }
 }
 
