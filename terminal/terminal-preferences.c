@@ -107,6 +107,7 @@ enum
   PROP_MISC_MIDDLE_CLICK_OPENS_URI,
   PROP_MISC_COPY_ON_SELECT,
   PROP_MISC_SHOW_RELAUNCH_DIALOG,
+  PROP_MISC_SESSION,
   PROP_USE_DEFAULT_WORKING_DIR,
   PROP_DEFAULT_WORKING_DIR,
   PROP_MISC_REWRAP_ON_RESIZE,
@@ -1079,6 +1080,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscShowUnsafePasteDialog",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-show-unsafe-paste-dialog:
+   **/
+  preferences_props[PROP_MISC_SESSION] =
+      g_param_spec_string ("session",
+                           NULL,
+                           "MiscSession",
+                           "",
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:

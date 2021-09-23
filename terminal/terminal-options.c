@@ -549,6 +549,10 @@ terminal_window_attr_parse (gint              argc,
         {
           win_attr->scrollbar = visible;
         }
+      else if (terminal_option_cmp ("restore", 0, argc, argv, &n, NULL, &short_offset))
+        {
+
+        }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL, &short_offset))
         {
           if (can_reuse_window)
