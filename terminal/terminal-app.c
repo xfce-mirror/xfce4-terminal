@@ -689,7 +689,7 @@ terminal_app_find_display (const gchar *display_name,
   if (display_name != NULL)
     {
       name = g_strdup (display_name);
-      
+
       /* extract screen number from display name */
       period = strrchr (name, '.');
       if (period != NULL)
@@ -1065,7 +1065,9 @@ terminal_app_process (TerminalApp  *app,
     {
       attr = lp->data;
 
-      terminal_app_open_window (app, attr);
+      if (attr->restore_session == FALSE)
+        terminal_app_open_window (app, attr);
+
       terminal_window_attr_free (attr);
     }
 
