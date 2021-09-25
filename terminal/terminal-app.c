@@ -104,6 +104,8 @@ struct _TerminalApp
 };
 
 
+TerminalApp *app = NULL;
+
 
 GQuark
 terminal_error_quark (void)
@@ -559,6 +561,65 @@ terminal_app_window_destroyed (GtkWidget   *window,
 
 
 
+gchar*
+terminal_app_get_session_string ()
+{
+  GString              *result = g_string_new ("");
+  GSList               *lp, *lp2;
+  GSList               *temp;
+  gint                  n;
+
+  for (lp = app->windows, n = 0; lp != NULL; lp = lp->next)
+    {
+      /* don't session save dropdown windows */
+      if (TERMINAL_IS_WINDOW_DROPDOWN (lp->data))
+        continue;
+
+      if (n++ != 0)
+        g_string_append (result, "--window ");
+
+      temp = terminal_window_get_restart_command (lp->data);
+      for (lp2 = temp; lp2 != NULL; lp2 = lp2->next)
+        {
+          g_string_append (result, lp2->data);
+          g_string_append (result, " ");
+        }
+    }
+
+  g_string_truncate (result, result->len - 1);
+
+  return result->str;
+}
+
+
+
+void
+terminal_app_restore_session ()
+{
+  gchar  *final;
+  gchar **argv;
+  gint    argc;
+  gint    window_count;
+
+  g_object_get (G_OBJECT (app->preferences), "session", &final, NULL);
+  argv = g_strsplit (final, " ", 0);
+  argc = g_strv_length (argv);
+
+  /* remove all windows */
+  window_count = g_slist_length (app->windows);
+
+  terminal_app_process (app, argv, argc, NULL);
+
+  for (gint i = 0; i < window_count; i++)
+    {
+      GtkWindow *window = g_slist_last (app->windows)->data;
+      gtk_window_close (window);
+      app->windows = g_slist_remove (app->windows, window);
+    }
+}
+
+
+
 static void
 terminal_app_save_yourself (XfceSMClient *client,
                             TerminalApp  *app)
@@ -628,6 +689,8 @@ terminal_app_find_display (const gchar *display_name,
   if (display_name != NULL)
     {
       name = g_strdup (display_name);
+
+      printf("Name %s\n", name);
 
       /* extract screen number from display name */
       period = strrchr (name, '.');
