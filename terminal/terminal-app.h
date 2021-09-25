@@ -58,6 +58,8 @@ gboolean     terminal_app_process             (TerminalApp        *app,
                                                gchar             **argv,
                                                gint                argc,
                                                GError            **error);
+gchar       *terminal_app_get_session_string  ();
+void         terminal_app_restore_session     ();
 
 G_END_DECLS
 
