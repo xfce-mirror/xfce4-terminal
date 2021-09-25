@@ -234,7 +234,7 @@ terminal_window_attr_parse (gint              argc,
 
   for (n = 1; n < argc; ++n)
     {
-      /* all arguments should atleast start with a dash */
+      /* all arguments should at least start with a dash */
       if (argv[n] == NULL || *argv[n] != '-')
         goto unknown_option;
 
