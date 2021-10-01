@@ -165,13 +165,12 @@ usage (void)
   g_print ("\n\n");
 }
 
-
+extern TerminalApp *app;
 
 int
 main (int argc, char **argv)
 {
   TerminalOptions  options;
-  TerminalApp     *app;
   const gchar     *startup_id;
   const gchar     *display;
   GError          *error = NULL;

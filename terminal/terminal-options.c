@@ -33,6 +33,7 @@
 
 #include <libxfce4util/libxfce4util.h>
 
+#include <terminal/terminal-app.h>
 #include <terminal/terminal-options.h>
 #include <terminal/terminal-private.h>
 
@@ -548,6 +549,15 @@ terminal_window_attr_parse (gint              argc,
       else if (terminal_option_show_hide_cmp ("scrollbar", argc, argv, &n, &visible))
         {
           win_attr->scrollbar = visible;
+        }
+      else if (terminal_option_cmp ("restore", 0, argc, argv, &n, NULL, &short_offset))
+        {
+          terminal_app_restore_session ();
+          /* TODO: free existing attributes and list */
+          win_attr = terminal_window_attr_new ();
+          win_attr->restore_session = TRUE;
+          tab_attr = win_attr->tabs->data;
+          attrs = g_slist_prepend (NULL, win_attr);
         }
       else if (terminal_option_cmp ("tab", 0, argc, argv, &n, NULL, &short_offset))
         {
