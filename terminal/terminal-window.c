@@ -1616,14 +1616,40 @@ static GtkWidget*
 terminal_window_get_context_menu (TerminalScreen  *screen,
                                   TerminalWindow  *window)
 {
-//  GtkWidget *popup = NULL;
-//
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  if (G_LIKELY (screen == window->priv->active))
-//    popup = gtk_ui_manager_get_widget (window->priv->ui_manager, "/popup-menu");
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//
-//  return popup;
+  GtkWidget *context_menu;
+  GtkWidget *item;
+  GList     *children, *lp;
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  context_menu = g_object_new (GTK_TYPE_MENU, NULL);
+
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_HTML), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  /* TODO: starting values should not be hard-coded */
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), TRUE, GTK_MENU_SHELL (context_menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), FALSE, GTK_MENU_SHELL (context_menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), FALSE, GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  /* TODO: zoom submenu */
+  /* TODO: signals submenu */
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+
+  /* hide labels */
+  children = gtk_container_get_children (GTK_CONTAINER (context_menu));
+  for (lp = children; lp != NULL; lp = lp->next)
+    xfce_gtk_menu_item_set_accel_label (lp->data, NULL);
+  g_list_free (children);
+
+  return context_menu;
 }
 
 
