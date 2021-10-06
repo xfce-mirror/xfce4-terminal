@@ -2580,21 +2580,6 @@ terminal_window_zoom_update_screens (TerminalWindow *window)
       screen = TERMINAL_SCREEN (gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), n));
       terminal_screen_update_font (screen);
     }
-
-  /* update zoom actions */
-//  action = terminal_window_get_action (window, "zoom-in");
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  if (window->priv->zoom == TERMINAL_ZOOM_LEVEL_MAXIMUM)
-//    gtk_action_set_sensitive (action, FALSE);
-//  else if (!gtk_action_is_sensitive (action))
-//    gtk_action_set_sensitive (action, TRUE);
-
-//  action = terminal_window_get_action (window, "zoom-out");
-//  if (window->priv->zoom == TERMINAL_ZOOM_LEVEL_MINIMUM)
-//    gtk_action_set_sensitive (action, FALSE);
-//  else if (!gtk_action_is_sensitive (action))
-//    gtk_action_set_sensitive (action, TRUE);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
@@ -3325,8 +3310,10 @@ terminal_window_update_view_menu     (TerminalWindow      *window,
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_IN), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_OUT), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_IN), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, window->priv->zoom != TERMINAL_ZOOM_LEVEL_MAXIMUM);
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_OUT), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, window->priv->zoom != TERMINAL_ZOOM_LEVEL_MINIMUM);
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_RESET), G_OBJECT (window), GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (GTK_WIDGET (menu));
