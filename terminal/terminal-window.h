@@ -189,8 +189,7 @@ gint               terminal_window_get_toolbar_height       (TerminalWindow     
 
 void               terminal_window_rebuild_tabs_menu        (TerminalWindow     *window);
 
-void               terminal_window_action_show_menubar      (GtkToggleAction    *action,
-                                                             TerminalWindow     *window);
+void               terminal_window_action_show_menubar      (TerminalWindow     *window);
 
 void               terminal_window_update_tab_key_accels    (TerminalWindow     *window,
                                                              GSList             *tab_key_accels);

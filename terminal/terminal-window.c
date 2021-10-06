@@ -1632,7 +1632,7 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
   /* TODO: starting values should not be hard-coded */
-  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), TRUE, GTK_MENU_SHELL (context_menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), gtk_widget_is_visible (window->priv->menubar), GTK_MENU_SHELL (context_menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), FALSE, GTK_MENU_SHELL (context_menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), FALSE, GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
@@ -3192,25 +3192,19 @@ terminal_window_rebuild_tabs_menu (TerminalWindow *window)
  * @window  : A #TerminalWindow.
  **/
 void
-terminal_window_action_show_menubar (GtkToggleAction *action,
-                                     TerminalWindow  *window)
+terminal_window_action_show_menubar (TerminalWindow  *window)
 {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gboolean show = gtk_toggle_action_get_active (action);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
-  /* don't do anything if the menubar is already in the desired state (shown/hidden) */
-  if (gtk_widget_is_visible (window->priv->menubar) != show)
-    {
-      terminal_window_size_push (window);
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
-      if (show)
-        gtk_widget_show (window->priv->menubar);
-      else
-        gtk_widget_hide (window->priv->menubar);
+  terminal_window_size_push (window);
 
-      terminal_window_size_pop (window);
-    }
+  if (gtk_widget_is_visible (window->priv->menubar) == FALSE)
+    gtk_widget_show (window->priv->menubar);
+  else
+    gtk_widget_hide (window->priv->menubar);
+
+  terminal_window_size_pop (window);
 }
 
 
