@@ -283,20 +283,6 @@ struct _TerminalWindowPrivate
   TerminalScreen      *active;
   TerminalScreen      *last_active;
 
-  /* cached actions to avoid lookups */
-  GtkAction           *action_undo_close_tab;
-  GtkAction           *action_detach_tab;
-  GtkAction           *action_close_other_tabs;
-  GtkAction           *action_prev_tab;
-  GtkAction           *action_next_tab;
-  GtkAction           *action_last_active_tab;
-  GtkAction           *action_move_tab_left;
-  GtkAction           *action_move_tab_right;
-  GtkAction           *action_copy;
-  GtkAction           *action_search_next;
-  GtkAction           *action_search_prev;
-  GtkAction           *action_fullscreen;
-
   GQueue              *closed_tabs_list;
 
   gchar               *font;
@@ -405,6 +391,8 @@ static XfceGtkActionEntry action_entries[] =
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries,G_N_ELEMENTS(action_entries),id)
+
+
 
 G_DEFINE_TYPE_WITH_CODE (TerminalWindow, terminal_window, GTK_TYPE_WINDOW, G_ADD_PRIVATE (TerminalWindow))
 
@@ -1041,15 +1029,6 @@ terminal_window_update_actions (TerminalWindow *window)
 
   /* determine the number of pages */
   n_pages = gtk_notebook_get_n_pages (notebook);
-
-  /* "Detach Tab" and "Close Other Tabs" are sensitive if we have at least two pages.
-   * "Undo Close" is sensitive if there is a tab to unclose. */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  gtk_action_set_sensitive (window->priv->action_detach_tab, (n_pages > 1));
-//  gtk_action_set_sensitive (window->priv->action_close_other_tabs, n_pages > 1);
-//
-//  gtk_action_set_sensitive (window->priv->action_undo_close_tab, !g_queue_is_empty (window->priv->closed_tabs_list));
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* update the actions for the current terminal screen */
   if (G_LIKELY (window->priv->active != NULL))
@@ -3252,19 +3231,28 @@ terminal_window_update_file_menu (TerminalWindow      *window,
                                   GtkWidget           *menu)
 {
   GtkWidget  *item;
+  gint        n_pages;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  /* "Detach Tab" and "Close Other Tabs" are sensitive if we have at least two pages.
+   * "Undo Close" is sensitive if there is a tab to unclose. */
+
+  /* determine the number of pages */
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
 
   terminal_window_menu_clean (GTK_MENU (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_UNDO_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_UNDO_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, !g_queue_is_empty (window->priv->closed_tabs_list));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_DETACH_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  gtk_widget_set_sensitive (item, gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook)) > 1);
+  gtk_widget_set_sensitive (item, n_pages > 1);
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_OTHER_TABS), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_OTHER_TABS), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, n_pages > 1);
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (CONFIRMED_CLOSE_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (GTK_WIDGET (menu));
