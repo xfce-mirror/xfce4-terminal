@@ -271,8 +271,8 @@ struct _TerminalWindowPrivate
 
   GtkAccelGroup       *accel_group;
 
+  gboolean             fullscreen_supported;
   gboolean             is_fullscreen;
-  gboolean             visible_borders;
 
   GtkWidget           *search_dialog;
   GtkWidget           *title_popover;
@@ -590,16 +590,13 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::shortcuts-no-mnemonics",
                             G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
 
+  window->priv->fullscreen_supported = TRUE;
 #if defined(GDK_WINDOWING_X11)
   if (GDK_IS_X11_SCREEN (screen))
     {
       /* setup fullscreen mode */
       if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern ("_NET_WM_STATE_FULLSCREEN", FALSE)))
-        {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//          gtk_action_set_sensitive (window->priv->action_fullscreen, FALSE);
-G_GNUC_END_IGNORE_DEPRECATIONS
-        }
+        window->priv->fullscreen_supported = FALSE;
     }
 #endif
 }
@@ -753,13 +750,10 @@ static gboolean
 terminal_window_map_event (GtkWidget   *widget,
                            GdkEventAny *event)
 {
-//  TerminalWindow *window = TERMINAL_WINDOW (widget);
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  gboolean        fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen));
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//
-//  if (fullscreen)
-//    gtk_window_fullscreen (GTK_WINDOW (widget));
+  TerminalWindow *window = TERMINAL_WINDOW (widget);
+
+  if (window->priv->is_fullscreen)
+    gtk_window_fullscreen (GTK_WINDOW (widget));
 
   return FALSE;
 }
@@ -1972,7 +1966,7 @@ terminal_window_action_toggle_toolbar (TerminalWindow  *window)
 static void
 terminal_window_action_toggle_borders (TerminalWindow  *window)
 {
-  gtk_window_set_decorated (GTK_WINDOW (window), window->priv->visible_borders);
+  gtk_window_set_decorated (GTK_WINDOW (window), !gtk_window_get_decorated (GTK_WINDOW (window)));
 }
 
 
@@ -1980,16 +1974,13 @@ terminal_window_action_toggle_borders (TerminalWindow  *window)
 static void
 terminal_window_action_fullscreen (TerminalWindow  *window)
 {
-  gboolean fullscreen;
-
   if (gtk_widget_get_visible (GTK_WIDGET (window)))
     {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-G_GNUC_END_IGNORE_DEPRECATIONS
-      if (fullscreen)
+      if (window->priv->is_fullscreen)
         gtk_window_fullscreen (GTK_WINDOW (window));
       else
         gtk_window_unfullscreen (GTK_WINDOW (window));
+      window->priv->is_fullscreen = !window->priv->is_fullscreen;
     }
 }
 
@@ -1998,20 +1989,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 terminal_window_action_readonly (TerminalWindow  *window)
 {
-  gboolean input_enabled;
-
   terminal_return_if_fail (window->priv->active != NULL);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (terminal_screen_get_input_enabled (window->priv->active) != input_enabled)
-    {
-//      gtk_action_set_sensitive (terminal_window_get_action (window, "reset"), input_enabled);
-//      gtk_action_set_sensitive (terminal_window_get_action (window, "reset-and-clear"), input_enabled);
-//      gtk_action_set_sensitive (terminal_window_get_action (window, "paste"), input_enabled);
-//      gtk_action_set_sensitive (terminal_window_get_action (window, "paste-selection"), input_enabled);
-      terminal_screen_set_input_enabled (window->priv->active, input_enabled);
-    }
-G_GNUC_END_IGNORE_DEPRECATIONS
+  terminal_screen_set_input_enabled (window->priv->active, !terminal_screen_get_input_enabled (window->priv->active));
 }
 
 
@@ -2019,14 +1999,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 terminal_window_action_scroll_on_output (TerminalWindow  *window)
 {
-  gboolean scroll_enabled;
-
   terminal_return_if_fail (window->priv->active != NULL);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (terminal_screen_get_scroll_on_output (window->priv->active) != scroll_enabled)
-    terminal_screen_set_scroll_on_output (window->priv->active, scroll_enabled);
-G_GNUC_END_IGNORE_DEPRECATIONS
+  terminal_screen_set_scroll_on_output (window->priv->active, !terminal_screen_get_scroll_on_output (window->priv->active));
 }
 
 
@@ -2283,8 +2258,6 @@ terminal_window_action_search_response (GtkWidget      *dialog,
                                         gint            response_id,
                                         TerminalWindow *window)
 {
-  gboolean  can_search;
-
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
   terminal_return_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog));
   terminal_return_if_fail (TERMINAL_IS_SCREEN (window->priv->active));
@@ -2304,13 +2277,6 @@ terminal_window_action_search_response (GtkWidget      *dialog,
       window->priv->n_child_windows--;
       gtk_widget_hide (dialog);
     }
-
-  /* update actions */
-  can_search = terminal_screen_search_has_gregex (window->priv->active);
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  gtk_action_set_sensitive (window->priv->action_search_next, can_search);
-//  gtk_action_set_sensitive (window->priv->action_search_prev, can_search);
-//G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
@@ -2468,7 +2434,7 @@ terminal_window_action_reset_and_clear (TerminalWindow  *window)
 static void
 terminal_window_action_send_signal (TerminalWindow *window)
 {
-  const gchar *label = "";//gtk_action_get_label (action);
+  const gchar *label = ""; // TODO: gtk_action_get_label (action);
   gchar num[3]       = { 0, 0, 0 };
   int signal_num;
 
@@ -2670,12 +2636,10 @@ terminal_window_new (const gchar       *role,
   /* setup borders visibility */
   if (G_LIKELY (borders != TERMINAL_VISIBILITY_DEFAULT))
     show_borders = (borders == TERMINAL_VISIBILITY_SHOW);
-  window->priv->visible_borders = show_borders;
-  gtk_window_set_decorated (GTK_WINDOW (window), window->priv->visible_borders);
+  gtk_window_set_decorated (GTK_WINDOW (window), show_borders);
 
   /* setup full screen */
-//  if (fullscreen && gtk_action_is_sensitive (window->priv->action_fullscreen))
-//    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), TRUE);
+  window->priv->is_fullscreen = fullscreen && window->priv->fullscreen_supported;
 
   /* property that is not suitable for init */
   g_object_bind_property (G_OBJECT (window->priv->preferences), "misc-tab-position",
@@ -2830,28 +2794,23 @@ terminal_window_get_restart_command (TerminalWindow *window)
   if (G_LIKELY (role != NULL))
     result = g_slist_prepend (result, g_strdup_printf ("--role=%s", role));
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)))
-//    result = g_slist_prepend (result, g_strdup ("--fullscreen"));
-//
-////  action = terminal_window_get_action (window, "show-menubar");
-//  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-//    result = g_slist_prepend (result, g_strdup ("--show-menubar"));
-//  else
-//    result = g_slist_prepend (result, g_strdup ("--hide-menubar"));
-//
-////  action = terminal_window_get_action (window, "show-borders");
-//  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-//    result = g_slist_prepend (result, g_strdup ("--show-borders"));
-//  else
-//    result = g_slist_prepend (result, g_strdup ("--hide-borders"));
-//
-////  action = terminal_window_get_action (window, "show-toolbar");
-//  if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)))
-//    result = g_slist_prepend (result, g_strdup ("--show-toolbar"));
-//  else
-//    result = g_slist_prepend (result, g_strdup ("--hide-toolbar"));
-G_GNUC_END_IGNORE_DEPRECATIONS
+  if (window->priv->is_fullscreen)
+    result = g_slist_prepend (result, g_strdup ("--fullscreen"));
+
+  if (gtk_widget_is_visible (window->priv->menubar))
+    result = g_slist_prepend (result, g_strdup ("--show-menubar"));
+  else
+    result = g_slist_prepend (result, g_strdup ("--hide-menubar"));
+
+  if (gtk_window_get_decorated (GTK_WINDOW (window)))
+    result = g_slist_prepend (result, g_strdup ("--show-borders"));
+  else
+    result = g_slist_prepend (result, g_strdup ("--hide-borders"));
+
+  if (gtk_widget_is_visible (window->priv->toolbar))
+    result = g_slist_prepend (result, g_strdup ("--show-toolbar"));
+  else
+    result = g_slist_prepend (result, g_strdup ("--hide-toolbar"));
 
   if (window->priv->zoom != TERMINAL_ZOOM_LEVEL_DEFAULT)
     result = g_slist_prepend (result, g_strdup_printf ("--zoom=%d", window->priv->zoom));
