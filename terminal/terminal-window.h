@@ -167,10 +167,6 @@ GtkWidget         *terminal_window_get_vbox                 (TerminalWindow     
 GtkWidget         *terminal_window_get_notebook             (TerminalWindow     *window);
 
 GtkWidget         *terminal_window_get_preferences_dialog   (TerminalWindow     *window);
-
-GtkAction         *terminal_window_get_action               (TerminalWindow     *window,
-                                                             const gchar        *action_name);
-
 const gchar       *terminal_window_get_font                 (TerminalWindow     *window);
 void               terminal_window_set_font                 (TerminalWindow     *window,
                                                              const gchar        *font);
