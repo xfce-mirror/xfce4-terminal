@@ -1043,40 +1043,6 @@ terminal_window_update_actions (TerminalWindow *window)
       can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
       can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//      gtk_action_set_sensitive (window->priv->action_prev_tab, can_go_left);
-//      gtk_action_set_sensitive (window->priv->action_move_tab_left, can_go_left);
-//      gtk_action_set_sensitive (window->priv->action_next_tab, can_go_right);
-//      gtk_action_set_sensitive (window->priv->action_move_tab_right, can_go_right);
-//      gtk_action_set_sensitive (window->priv->action_last_active_tab, window->priv->last_active != NULL);
-//
-//      gtk_action_set_sensitive (window->priv->action_copy,
-//                                terminal_screen_has_selection (window->priv->active));
-#if VTE_CHECK_VERSION (0, 49, 2)
-//      gtk_action_set_sensitive (terminal_window_get_action (window, "copy-html"),
-//                                terminal_screen_has_selection (window->priv->active));
-#endif
-
-//      can_search = terminal_screen_search_has_gregex (window->priv->active);
-//      gtk_action_set_sensitive (window->priv->action_search_next, can_search);
-//      gtk_action_set_sensitive (window->priv->action_search_prev, can_search);
-
-      /* update read-only mode */
-//      input_enabled = terminal_screen_get_input_enabled (window->priv->active);
-//      action = terminal_window_get_action (window, "read-only");
-//      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), !input_enabled);
-
-      /* update "Paste" actions */
-//      action = terminal_window_get_action (window, "paste");
-//      gtk_action_set_sensitive (action, input_enabled);
-//      action = terminal_window_get_action (window, "paste-selection");
-//      gtk_action_set_sensitive (action, input_enabled);
-
-      /* update scroll on output mode */
-//      action = terminal_window_get_action (window, "scroll-on-output");
-//      gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action),
-//                                    terminal_screen_get_scroll_on_output (window->priv->active));
-
       /* update the "Go" menu */
 //      action = g_object_get_qdata (G_OBJECT (window->priv->active), tabs_menu_action_quark);
 //      if (G_LIKELY (action != NULL))
@@ -1602,6 +1568,7 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
 
   context_menu = g_object_new (GTK_TYPE_MENU, NULL);
 
+  /* TODO: Sensitivity logic should not be duplicated (e.g. copy/paste) */
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
@@ -3268,11 +3235,17 @@ terminal_window_update_edit_menu     (TerminalWindow      *window,
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_HTML), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
+#if VTE_CHECK_VERSION (0, 49, 2)
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_HTML), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
+#endif
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE_SELECTION), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, terminal_screen_get_input_enabled (window->priv->active));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE_SELECTION), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, terminal_screen_get_input_enabled (window->priv->active));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SELECT_ALL), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
@@ -3314,10 +3287,34 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
   GtkWidget  *item;
+  gboolean    can_search;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SET_TITLE), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SET_TITLE_COLOR), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  can_search = terminal_screen_search_has_gregex (window->priv->active);
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH_NEXT), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, can_search);
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH_PREV), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, can_search);
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  /* TODO: Encoding */
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  item = xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, !terminal_screen_get_input_enabled (window->priv->active));
+  item = xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, terminal_screen_get_scroll_on_output (window->priv->active));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  /* TODO: Signals */
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_RESET), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_RESET_AND_CLEAR), G_OBJECT (window), GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (GTK_WIDGET (menu));
 }
@@ -3329,10 +3326,37 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
   GtkWidget  *item;
+  gint        page_num;
+  gint        n_pages;
+  gboolean    cycle_tabs;
+  gboolean    can_go_left;
+  gboolean    can_go_right;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+  page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active));
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "misc-cycle-tabs", &cycle_tabs,
+                NULL);
+
+  can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
+  can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
+
   terminal_window_menu_clean (GTK_MENU (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREV_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, can_go_left);
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEXT_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, can_go_right);
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_LAST_ACTIVE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, window->priv->last_active != NULL);
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_LEFT), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, can_go_left);
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_RIGHT), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  gtk_widget_set_sensitive (item, can_go_right);
+  /* TODO: tabs entries */
 
   gtk_widget_show_all (GTK_WIDGET (menu));
 }
