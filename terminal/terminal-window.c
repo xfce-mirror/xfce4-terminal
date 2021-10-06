@@ -194,8 +194,8 @@ static void         terminal_window_action_paste_selection        (TerminalWindo
 static void         terminal_window_action_select_all             (TerminalWindow      *window);
 static void         terminal_window_action_copy_input             (TerminalWindow      *window);
 static void         terminal_window_action_prefs                  (TerminalWindow      *window);
-static void         terminal_window_action_show_toolbar           (TerminalWindow      *window);
-static void         terminal_window_action_show_borders           (TerminalWindow      *window);
+static void         terminal_window_action_toggle_toolbar         (TerminalWindow      *window);
+static void         terminal_window_action_toggle_borders         (TerminalWindow      *window);
 static void         terminal_window_action_fullscreen             (TerminalWindow      *window);
 static void         terminal_window_action_readonly               (TerminalWindow      *window);
 static void         terminal_window_action_scroll_on_output       (TerminalWindow      *window);
@@ -270,6 +270,9 @@ struct _TerminalWindowPrivate
   GtkWidget           *preferences_dialog;
 
   GtkAccelGroup       *accel_group;
+
+  gboolean             is_fullscreen;
+  gboolean             visible_borders;
 
   GtkWidget           *search_dialog;
   GtkWidget           *title_popover;
@@ -350,8 +353,8 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_ABOUT,             "<Actions>/TerminalWindow/about",            "",                          XFCE_GTK_MENU_ITEM,       N_ ("_About"),                        NULL,                                     "help-about",             G_CALLBACK (terminal_window_action_about), },
     { TERMINAL_WINDOW_ACTION_ZOOM_MENU,         "<Actions>/TerminalWindow/zoom-menu",        "",                          XFCE_GTK_MENU_ITEM,       N_ ("_Zoom"),                         NULL,                                     NULL,                     NULL, },
     { TERMINAL_WINDOW_ACTION_SHOW_MENUBAR,      "<Actions>/TerminalWindow/show-menubar",     "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show _Menubar"),                 N_ ("Show/hide the menubar"),             NULL,                     G_CALLBACK (terminal_window_action_show_menubar), },
-    { TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR,      "<Actions>/TerminalWindow/show-toolbar",     "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show _Toolbar"),                 N_ ("Show/hide the toolbar"),             NULL,                     G_CALLBACK (terminal_window_action_show_toolbar), },
-    { TERMINAL_WINDOW_ACTION_SHOW_BORDERS,      "<Actions>/TerminalWindow/show-borders",     "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show Window _Borders"),          N_ ("Show/hide the window decorations"),  NULL,                     G_CALLBACK (terminal_window_action_show_borders), },
+    { TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR,      "<Actions>/TerminalWindow/show-toolbar",     "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show _Toolbar"),                 N_ ("Show/hide the toolbar"),             NULL,                     G_CALLBACK (terminal_window_action_toggle_toolbar), },
+    { TERMINAL_WINDOW_ACTION_SHOW_BORDERS,      "<Actions>/TerminalWindow/show-borders",     "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Show Window _Borders"),          N_ ("Show/hide the window decorations"),  NULL,                     G_CALLBACK (terminal_window_action_toggle_borders), },
     { TERMINAL_WINDOW_ACTION_FULLSCREEN,        "<Actions>/TerminalWindow/fullscreen",       "F11",                       XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Fullscreen"),                   N_ ("Toggle fullscreen mode"),            "view-fullscreen",        G_CALLBACK (terminal_window_action_fullscreen), },
     { TERMINAL_WINDOW_ACTION_READ_ONLY,         "<Actions>/TerminalWindow/read-only",        "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Read-Only"),                    N_ ("Toggle read-only mode"),             NULL,                     G_CALLBACK (terminal_window_action_readonly), },
     { TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT,  "<Actions>/TerminalWindow/scroll-on-output", "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Scroll on _Output"),             N_ ("Toggle scroll on output"),           NULL,                     G_CALLBACK (terminal_window_action_scroll_on_output), },
@@ -494,6 +497,25 @@ terminal_window_init (TerminalWindow *window)
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_HELP_MENU, G_CALLBACK (terminal_window_update_help_menu));
   gtk_widget_show_all (window->priv->menubar);
 
+  window->priv->toolbar = gtk_toolbar_new();
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 2);
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 5);
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 7);
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 10);
+  /* TODO: Sensitivity */
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREV_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEXT_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 13);
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CONTENTS), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_widget_show_all (window->priv->toolbar);
+
   window->priv->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
   gtk_container_add (GTK_CONTAINER (window), window->priv->vbox);
 
@@ -536,6 +558,7 @@ terminal_window_init (TerminalWindow *window)
       G_CALLBACK (terminal_window_notebook_scroll_event), window);
 
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->toolbar, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->notebook, TRUE, TRUE, 0);
   gtk_widget_show_all (window->priv->vbox);
 
@@ -657,7 +680,6 @@ terminal_window_state_event (GtkWidget           *widget,
                              GdkEventWindowState *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
-  gboolean        fullscreen;
 
   terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
 
@@ -665,14 +687,10 @@ terminal_window_state_event (GtkWidget           *widget,
   if ((event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN) != 0
       && gtk_widget_get_visible (widget))
     {
-      fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//      if (gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen)) != fullscreen)
-//        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), fullscreen);
-//G_GNUC_END_IGNORE_DEPRECATIONS
+      window->priv->is_fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
 
       /* update drop-down window geometry, otherwise it'll be incorrect */
-      if (!fullscreen && window->priv->drop_down)
+      if (!window->priv->is_fullscreen && window->priv->drop_down)
         terminal_window_dropdown_update_geometry (TERMINAL_WINDOW_DROPDOWN (window));
   }
 
@@ -1932,51 +1950,29 @@ terminal_window_action_prefs (TerminalWindow *window)
 
 
 static void
-terminal_window_action_show_toolbar (TerminalWindow  *window)
+terminal_window_action_toggle_toolbar (TerminalWindow  *window)
 {
-//  gboolean show;
-//
-//  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->priv->ui_manager));
-//  terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->priv->action_group));
-//
-//  terminal_window_size_push (window);
-//
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  show = gtk_toggle_action_get_active (action);
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//  if (show)
-//    {
-//      if (window->priv->toolbar == NULL)
-//        {
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//          window->priv->toolbar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-toolbar");
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//          gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->toolbar, FALSE, FALSE, 0);
-//          gtk_box_reorder_child (GTK_BOX (window->priv->vbox),
-//                                 window->priv->toolbar,
-//                                 window->priv->menubar != NULL ? 1 : 0);
-//        }
-//
-//      gtk_widget_show (window->priv->toolbar);
-//    }
-//  else if (window->priv->toolbar != NULL)
-//    {
-//      gtk_widget_hide (window->priv->toolbar);
-//    }
-//
-//  terminal_window_size_pop (window);
+  gboolean show;
+
+  terminal_return_if_fail (GTK_IS_UI_MANAGER (window->priv->ui_manager));
+  terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->priv->action_group));
+
+  terminal_window_size_push (window);
+
+  if (gtk_widget_is_visible (window->priv->toolbar) == FALSE)
+    gtk_widget_show (window->priv->toolbar);
+  else
+    gtk_widget_hide (window->priv->toolbar);
+
+  terminal_window_size_pop (window);
 }
 
 
 
 static void
-terminal_window_action_show_borders (TerminalWindow  *window)
+terminal_window_action_toggle_borders (TerminalWindow  *window)
 {
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  gboolean decorated = gtk_toggle_action_get_active (action);
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//
-//  gtk_window_set_decorated (GTK_WINDOW (window), decorated);
+  gtk_window_set_decorated (GTK_WINDOW (window), window->priv->visible_borders);
 }
 
 
@@ -2661,30 +2657,25 @@ terminal_window_new (const gchar       *role,
                 "misc-borders-default", &show_borders,
                 NULL);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  /* setup menubar visibility */
+  if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
+    show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
+  gtk_widget_set_visible (window->priv->menubar, show_menubar);
+
+  /* setup toolbar visibility */
+  if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
+    show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
+  gtk_widget_set_visible (window->priv->toolbar, show_toolbar);
+
+  /* setup borders visibility */
+  if (G_LIKELY (borders != TERMINAL_VISIBILITY_DEFAULT))
+    show_borders = (borders == TERMINAL_VISIBILITY_SHOW);
+  window->priv->visible_borders = show_borders;
+  gtk_window_set_decorated (GTK_WINDOW (window), window->priv->visible_borders);
+
   /* setup full screen */
 //  if (fullscreen && gtk_action_is_sensitive (window->priv->action_fullscreen))
 //    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (window->priv->action_fullscreen), TRUE);
-
-  /* setup menubar visibility */
-//  if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
-//    show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
-//  action = terminal_window_get_action (window, "show-menubar");
-//  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
-//  terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
-
-  /* setup toolbar visibility */
-//  if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
-//    show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
-//  action = terminal_window_get_action (window, "show-toolbar");
-//  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
-
-  /* setup borders visibility */
-//  if (G_LIKELY (borders != TERMINAL_VISIBILITY_DEFAULT))
-//    show_borders = (borders == TERMINAL_VISIBILITY_SHOW);
-//  action = terminal_window_get_action (window, "show-borders");
-//  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_borders);
-//G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* property that is not suitable for init */
   g_object_bind_property (G_OBJECT (window->priv->preferences), "misc-tab-position",
@@ -3267,9 +3258,9 @@ terminal_window_update_view_menu     (TerminalWindow      *window,
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
-  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), TRUE, GTK_MENU_SHELL (menu));
-  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
-  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), gtk_widget_is_visible (window->priv->menubar), GTK_MENU_SHELL (menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR), G_OBJECT (window), gtk_widget_is_visible (window->priv->toolbar), GTK_MENU_SHELL (menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), window->priv->is_fullscreen, GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_IN), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, window->priv->zoom != TERMINAL_ZOOM_LEVEL_MAXIMUM);
