@@ -128,7 +128,6 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
                                                                    glong                force_grid_height);
 static void         terminal_window_update_actions                (TerminalWindow      *window);
 static void         terminal_window_update_slim_tabs              (TerminalWindow      *window);
-static void         terminal_window_update_scroll_on_output       (TerminalWindow      *window);
 static void         terminal_window_update_mnemonic_modifier      (TerminalWindow      *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook         *notebook,
                                                                    GtkWidget           *page,
@@ -581,10 +580,6 @@ terminal_window_init (TerminalWindow *window)
 //  g_signal_connect (G_OBJECT (window->priv->menubar), "deactivate",
 //      G_CALLBACK (terminal_window_menubar_deactivate), window);
 
-  /* monitor the scrolling-on-output setting */
-  g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::scrolling-on-output",
-                            G_CALLBACK (terminal_window_update_scroll_on_output), window);
-
   /* monitor the shortcuts-no-mnemonics setting */
   terminal_window_update_mnemonic_modifier (window);
   g_signal_connect_swapped (G_OBJECT (window->priv->preferences), "notify::shortcuts-no-mnemonics",
@@ -608,9 +603,7 @@ terminal_window_finalize (GObject *object)
 {
   TerminalWindow *window = TERMINAL_WINDOW (object);
 
-  /* disconnect scrolling-on-output and shortcuts-no-mnemonics watches */
-  g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
-                                        G_CALLBACK (terminal_window_update_scroll_on_output), window);
+  /* disconnect shortcuts-no-mnemonics watches */
   g_signal_handlers_disconnect_by_func (G_OBJECT (window->priv->preferences),
                                         G_CALLBACK (terminal_window_update_mnemonic_modifier), window);
 
@@ -1085,23 +1078,6 @@ terminal_window_update_slim_tabs (TerminalWindow *window)
       gtk_css_provider_load_from_data (provider, CSS_SLIM_TABS, -1, NULL);
       g_object_unref (provider);
     }
-}
-
-
-
-static void
-terminal_window_update_scroll_on_output (TerminalWindow *window)
-{
-  GtkAction *action;
-  gboolean   scroll;
-
-  g_object_get (G_OBJECT (window->priv->preferences),
-                "scrolling-on-output", &scroll,
-                NULL);
-//  action = terminal_window_get_action (window, "scroll-on-output");
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), scroll);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
@@ -3255,10 +3231,8 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   /* TODO: Encoding */
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
-  item = xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
-  gtk_widget_set_sensitive (item, !terminal_screen_get_input_enabled (window->priv->active));
-  item = xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT), G_OBJECT (window), FALSE, GTK_MENU_SHELL (menu));
-  gtk_widget_set_sensitive (item, terminal_screen_get_scroll_on_output (window->priv->active));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), !terminal_screen_get_input_enabled (window->priv->active), GTK_MENU_SHELL (menu));
+  xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT), G_OBJECT (window), terminal_screen_get_scroll_on_output (window->priv->active), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
