@@ -432,12 +432,6 @@ terminal_window_init (TerminalWindow *window)
   GdkScreen       *screen;
   GdkVisual       *visual;
   GtkStyleContext *context;
-  GtkWidget       *item;
-  gint             page_num;
-  gint             n_pages;
-  gboolean         cycle_tabs;
-  gboolean         can_go_left;
-  gboolean         can_go_right;
 
   GClosure *toggle_menubar_closure = g_cclosure_new (G_CALLBACK (terminal_window_toggle_menubar), window, NULL);
 
@@ -475,17 +469,7 @@ terminal_window_init (TerminalWindow *window)
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_TABS_MENU, G_CALLBACK (terminal_window_update_tabs_menu));
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_HELP_MENU, G_CALLBACK (terminal_window_update_help_menu));
   gtk_widget_show_all (window->priv->menubar);
-
-  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
-  page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active));
-
-  g_object_get (G_OBJECT (window->priv->preferences),
-                "misc-cycle-tabs", &cycle_tabs,
-                NULL);
-
-  can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
-  can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
-
+  
   window->priv->toolbar = gtk_toolbar_new();
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
@@ -499,9 +483,7 @@ terminal_window_init (TerminalWindow *window)
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 10);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREV_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
-  gtk_widget_set_sensitive (item, can_go_left);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEXT_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
-  gtk_widget_set_sensitive (item, can_go_right);
   gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 13);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CONTENTS), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   gtk_widget_show_all (window->priv->toolbar);
