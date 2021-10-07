@@ -88,6 +88,15 @@ typedef enum
     TERMINAL_WINDOW_ACTION_SIGNAL_MENU,
 } TerminalWindowAction;
 
+typedef enum
+{
+    MENU_SECTION_ZOOM       = 1 << 0,
+    MENU_SECTION_SIGNAL     = 1 << 1,
+    MENU_SECTION_COPY       = 1 << 2,
+    MENU_SECTION_PASTE      = 1 << 3,
+    MENU_SECTION_VIEW       = 1 << 4,
+} MenuSections;
+
 typedef struct
 {
   GtkWindowClass parent_class;
