@@ -252,6 +252,7 @@ struct _TerminalWindowPrivate
   GtkWidget           *notebook;
   GtkWidget           *menubar;
   GtkWidget           *toolbar;
+  GtkWidget           *tabs_menu; /* used for the go-to tab accelerators */
 
   /* for the drop-down to keep open with dialogs */
   guint                n_child_windows;
@@ -1127,6 +1128,9 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
       terminal_screen_set_size (screen, w, h);
     }
+
+  /* update the go-to accelerators */
+  terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
 }
 
 
@@ -1177,6 +1181,9 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   new_page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->priv->notebook));
   new_page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), new_page_num);
   terminal_window_notebook_page_switched (notebook, new_page, new_page_num, window);
+
+  /* update the go-to accelerators */
+  terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
 }
 
 
@@ -2972,6 +2979,9 @@ terminal_window_create_menu (TerminalWindow        *window,
   gtk_menu_set_accel_group (GTK_MENU (submenu), window->priv->accel_group);
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), GTK_WIDGET (submenu));
   g_signal_connect_swapped (G_OBJECT (submenu), "show", G_CALLBACK (cb_update_menu), window);
+
+  if (action == TERMINAL_WINDOW_ACTION_TABS_MENU)
+    window->priv->tabs_menu = submenu;
 }
 
 
@@ -3184,6 +3194,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
                               G_BINDING_SYNC_CREATE);
       gtk_radio_action_set_group (radio_action, group);
       group = gtk_radio_action_get_group (radio_action);
+      gtk_action_set_accel_group (GTK_ACTION (radio_action), window->priv->accel_group);
       G_GNUC_END_IGNORE_DEPRECATIONS
 
       g_signal_connect (G_OBJECT (radio_action), "activate",
@@ -3193,13 +3204,13 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
       g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark, radio_action, g_object_unref);
 
       /* set an accelerator path */
-//      g_snprintf (buf, sizeof (buf), "<Actions>/terminal-window/%s", name);
-//      if (gtk_accel_map_lookup_entry (buf, &key) && key.accel_key != 0)
-//        {
-//          G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//          gtk_action_set_accel_path (GTK_ACTION (radio_action), buf);
-//          G_GNUC_END_IGNORE_DEPRECATIONS
-//        }
+      g_snprintf (buf, sizeof (buf), "<Actions>/terminal-window/%s", name);
+      if (gtk_accel_map_lookup_entry (buf, &key) && key.accel_key != 0)
+        {
+          G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+          gtk_action_set_accel_path (GTK_ACTION (radio_action), buf);
+          G_GNUC_END_IGNORE_DEPRECATIONS
+        }
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       /* add action in the menu */
@@ -3211,7 +3222,8 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
     }
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_radio_action_set_current_value (radio_action, gtk_notebook_get_current_page (GTK_NOTEBOOK (window->priv->notebook)));
+  if (n_pages > 1)
+    gtk_radio_action_set_current_value (radio_action, gtk_notebook_get_current_page (GTK_NOTEBOOK (window->priv->notebook)));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   gtk_widget_show_all (GTK_WIDGET (menu));
