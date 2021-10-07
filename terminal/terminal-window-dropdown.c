@@ -241,7 +241,7 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
 {
   TerminalWindow      *window = TERMINAL_WINDOW (dropdown);
   TerminalPreferences *preferences;
-  GtkAction           *action;
+  XfceGtkActionEntry  *entry;
   GtkWidget           *hbox;
   GtkWidget           *button;
   GtkWidget           *img;
@@ -275,11 +275,6 @@ terminal_window_dropdown_init (TerminalWindowDropdown *dropdown)
   gtk_notebook_set_tab_pos (GTK_NOTEBOOK (terminal_window_get_notebook (window)), GTK_POS_BOTTOM);
   terminal_window_notebook_show_tabs (window);
 
-  /* actions we don't want */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_action_set_visible (terminal_window_get_action (window, "show-borders"), FALSE);
-G_GNUC_END_IGNORE_DEPRECATIONS
-
   /* notebook buttons */
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
   gtk_notebook_set_action_widget (GTK_NOTEBOOK (terminal_window_get_notebook (window)), hbox, GTK_PACK_END);
@@ -301,23 +296,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   img = gtk_image_new_from_icon_name ("go-bottom", GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
 
-  action = terminal_window_get_action (window, "preferences");
+  entry = terminal_window_get_action_entry (window, TERMINAL_WINDOW_ACTION_PREFERENCES);
 
   button = gtk_button_new ();
   gtk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gtk_widget_set_tooltip_text (button, gtk_action_get_tooltip (action));
-G_GNUC_END_IGNORE_DEPRECATIONS
+  gtk_widget_set_tooltip_text (button, entry->menu_item_tooltip_text);
   gtk_button_set_relief (GTK_BUTTON (button), GTK_RELIEF_NONE);
   gtk_widget_set_focus_on_click (button, FALSE);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  g_signal_connect_swapped (G_OBJECT (button), "clicked",
-      G_CALLBACK (gtk_action_activate), action);
-G_GNUC_END_IGNORE_DEPRECATIONS
+  g_signal_connect_swapped (G_OBJECT (button), "clicked", entry->callback, window);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  img = gtk_action_create_icon (action, GTK_ICON_SIZE_MENU);
-G_GNUC_END_IGNORE_DEPRECATIONS
+  img = gtk_image_new_from_icon_name (entry->menu_item_icon_name, GTK_ICON_SIZE_MENU);
   gtk_container_add (GTK_CONTAINER (button), img);
 
   /* connect bindings */
@@ -552,27 +540,19 @@ terminal_window_dropdown_status_icon_popup_menu (GtkStatusIcon          *status_
                                                  guint32                 timestamp,
                                                  TerminalWindowDropdown *dropdown)
 {
-  GtkWidget *menu;
-  GtkWidget *menu_item;
-  GtkAction *action;
+  TerminalWindow *window;
+  GtkWidget      *menu;
+
+  window = TERMINAL_WINDOW (dropdown);
 
   menu = gtk_menu_new ();
   g_signal_connect (G_OBJECT (menu), "selection-done",
       G_CALLBACK (gtk_widget_destroy), NULL);
 
-  action = terminal_window_get_action (TERMINAL_WINDOW (dropdown), "preferences");
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  menu_item = gtk_action_create_menu_item (action);
-G_GNUC_END_IGNORE_DEPRECATIONS
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
-
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), gtk_separator_menu_item_new ());
-
-  action = terminal_window_get_action (TERMINAL_WINDOW (dropdown), "close-window");
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  menu_item = gtk_action_create_menu_item (action);
-G_GNUC_END_IGNORE_DEPRECATIONS
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+  xfce_gtk_menu_item_new_from_action_entry (terminal_window_get_action_entry (window, TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (terminal_window_get_action_entry (window, TERMINAL_WINDOW_ACTION_CLOSE_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (menu);
   gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
@@ -635,9 +615,7 @@ terminal_window_dropdown_animate_down (gpointer data)
   /* get window size */
   terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen")));
-G_GNUC_END_IGNORE_DEPRECATIONS
+  fullscreen = window->is_fullscreen;
   if (!fullscreen)
     {
       /* calculate width/height if not fullscreen */
@@ -687,9 +665,7 @@ terminal_window_dropdown_animate_up (gpointer data)
   /* get window size */
   terminal_window_dropdown_get_monitor_geometry (dropdown->screen, dropdown->monitor_num, &rect);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen")));
-G_GNUC_END_IGNORE_DEPRECATIONS
+  fullscreen = window->is_fullscreen;
   if (!fullscreen)
     {
       /* calculate width/height if not fullscreen */
@@ -815,9 +791,7 @@ terminal_window_dropdown_show (TerminalWindowDropdown *dropdown,
   gtk_window_set_screen (GTK_WINDOW (dropdown), dropdown->screen);
 
   /* correct padding with notebook size */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  fullscreen = gtk_toggle_action_get_active (GTK_TOGGLE_ACTION (terminal_window_get_action (window, "fullscreen")));
-G_GNUC_END_IGNORE_DEPRECATIONS
+  fullscreen = window->is_fullscreen;
   if (fullscreen)
     {
       /* don't fullscreen during animation*/
@@ -987,7 +961,6 @@ terminal_window_dropdown_new (const gchar        *role,
   gboolean        show_menubar;
   gboolean        show_toolbar;
   gboolean        show_icon;
-  GtkAction      *action;
   GValue          value = G_VALUE_INIT;
 
   if (G_LIKELY (role == NULL))
@@ -1011,29 +984,18 @@ terminal_window_dropdown_new (const gchar        *role,
   terminal_window_dropdown_set_property (G_OBJECT (window),
                                          PROP_DROPDOWN_STATUS_ICON, &value, NULL);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  /* setup full screen */
-  action = terminal_window_get_action (window, "fullscreen");
-  if (fullscreen && gtk_action_is_sensitive (action))
-    gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
-
   /* setup menubar visibility */
   if (G_LIKELY (menubar != TERMINAL_VISIBILITY_DEFAULT))
     show_menubar = (menubar == TERMINAL_VISIBILITY_SHOW);
-  action = terminal_window_get_action (window, "show-menubar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_menubar);
-  g_signal_connect_swapped (action, "activate",
-      G_CALLBACK (terminal_window_dropdown_update_geometry), window);
-  terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
+  gtk_widget_set_visible (window->menubar, show_menubar);
 
   /* setup toolbar visibility */
   if (G_LIKELY (toolbar != TERMINAL_VISIBILITY_DEFAULT))
     show_toolbar = (toolbar == TERMINAL_VISIBILITY_SHOW);
-  action = terminal_window_get_action (window, "show-toolbar");
-  gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), show_toolbar);
-  g_signal_connect_swapped (action, "activate",
-      G_CALLBACK (terminal_window_dropdown_update_geometry), window);
-G_GNUC_END_IGNORE_DEPRECATIONS
+  gtk_widget_set_visible (window->toolbar, show_toolbar);
+
+  /* setup full screen */
+  window->is_fullscreen = fullscreen && window->fullscreen_supported;
 
   return GTK_WIDGET (window);
 }
