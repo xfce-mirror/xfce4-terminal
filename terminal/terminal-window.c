@@ -228,8 +228,6 @@ static void         terminal_window_switch_tab                    (GtkNotebook  
                                                                    gboolean             switch_left);
 static void         terminal_window_move_tab                      (GtkNotebook         *notebook,
                                                                    gboolean             move_left);
-static void         terminal_window_toggle_menubar                (GtkWidget           *widget,
-                                                                   TerminalWindow      *window);
 static void         title_popover_close                           (GtkWidget           *popover,
                                                                    TerminalWindow      *window);
 static void         terminal_window_do_close_tab                  (TerminalScreen      *screen,
@@ -2374,20 +2372,6 @@ terminal_window_move_tab (GtkNotebook *notebook,
   else
     gtk_notebook_reorder_child (notebook, page,
                                 page_num == last_page ? 0 : page_num + 1);
-}
-
-
-
-static void
-terminal_window_toggle_menubar (GtkWidget      *widget,
-                                TerminalWindow *window)
-{
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-
-  terminal_window_size_push (window);
-  if (terminal_window_get_menubar_height (window) == 0)
-    gtk_widget_show (window->priv->menubar);
-  terminal_window_size_pop (window);
 }
 
 
