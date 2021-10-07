@@ -103,6 +103,13 @@ const gchar *CSS_SLIM_TABS =
 
 
 
+typedef struct {
+    TerminalWindow *window;
+    gint            signal;
+} SendSignalData;
+
+
+
 static void         terminal_window_finalize                      (GObject             *object);
 static gboolean     terminal_window_delete_event                  (GtkWidget           *widget,
                                                                    GdkEventAny         *event);
@@ -212,7 +219,7 @@ static void         terminal_window_action_search_prev            (TerminalWindo
 static void         terminal_window_action_save_contents          (TerminalWindow      *window);
 static void         terminal_window_action_reset                  (TerminalWindow      *window);
 static void         terminal_window_action_reset_and_clear        (TerminalWindow      *window);
-static void         terminal_window_action_send_signal            (TerminalWindow      *window);
+static void         terminal_window_action_send_signal            (SendSignalData      *data);
 static void         terminal_window_action_contents               (TerminalWindow      *window);
 static void         terminal_window_action_about                  (TerminalWindow      *window);
 
@@ -296,11 +303,15 @@ struct _TerminalWindowPrivate
 static guint   window_signals[LAST_SIGNAL];
 static gchar  *window_notebook_group = PACKAGE_NAME;
 static GQuark  tabs_menu_action_quark = 0;
+static gchar  *signal_names[] =
+{
+  NULL,
+  "HUP", "INT", "QUIT", "ILL", "TRAP", "ABRT", "BUS", "FPE", "KILL", "USR1", "SEGV", "USR2", "PIPE", "ALRM", "TERM",
+  "STKFLT", "CHLD", "CONT", "STOP", "TSTP", "TTIN", "TTOU", "URG", "XCPU", "XFSZ", "VTALRM", "PROF", "INCH", "IO",
+  "PWR", "SYS"
+};
 
 
-
-/*  used to define send signal to foreground process entries */
-#define DEF_SEND_SIGNAL_CALLBACK(signum, name) "<Actions>/TerminalWindow/signal-" #signum, NULL, "" #signum " - " #name, NULL, NULL, G_CALLBACK (terminal_window_action_send_signal),
 
 static XfceGtkActionEntry action_entries[] =
 {
@@ -352,39 +363,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_FULLSCREEN,        "<Actions>/TerminalWindow/fullscreen",       "F11",                       XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Fullscreen"),                   N_ ("Toggle fullscreen mode"),            "view-fullscreen",        G_CALLBACK (terminal_window_action_fullscreen), },
     { TERMINAL_WINDOW_ACTION_READ_ONLY,         "<Actions>/TerminalWindow/read-only",        "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Read-Only"),                    N_ ("Toggle read-only mode"),             NULL,                     G_CALLBACK (terminal_window_action_readonly), },
     { TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT,  "<Actions>/TerminalWindow/scroll-on-output", "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Scroll on _Output"),             N_ ("Toggle scroll on output"),           NULL,                     G_CALLBACK (terminal_window_action_scroll_on_output), },
-
-//    { "<Actions>/TerminalWindow/signal-menu",      NULL,                 N_ ("_Send Signal"),                NULL,                         NULL,                                 NULL, },
-//    { DEF_SEND_SIGNAL_CALLBACK(1,  HUP   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(2,  INT   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(3,  QUIT  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(4,  ILL   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(5,  TRAP  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(6,  ABRT  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(7,  BUS   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(8,  FPE   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(9,  KILL  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(10, USR1  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(11, SEGV  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(12, USR2  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(13, PIPE  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(14, ALRM  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(15, TERM  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(16, STKFLT) },
-//    { DEF_SEND_SIGNAL_CALLBACK(17, CHLD  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(18, CONT  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(19, STOP  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(20, TSTP  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(21, TTIN  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(22, TTOU  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(23, URG   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(24, XCPU  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(25, XFSZ  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(26, VTALRM) },
-//    { DEF_SEND_SIGNAL_CALLBACK(27, PROF  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(28, INCH  ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(29, IO    ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(30, PWR   ) },
-//    { DEF_SEND_SIGNAL_CALLBACK(31, SYS   ) },
+    { TERMINAL_WINDOW_ACTION_SIGNAL_MENU,       "<Actions>/TerminalWindow/signal-menu",      "",                          XFCE_GTK_MENU_ITEM,       N_ ("Send Signal"),                   NULL,                                     NULL,                     NULL},
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries,G_N_ELEMENTS(action_entries),id)
@@ -453,6 +432,12 @@ terminal_window_init (TerminalWindow *window)
   GdkScreen       *screen;
   GdkVisual       *visual;
   GtkStyleContext *context;
+  GtkWidget       *item;
+  gint             page_num;
+  gint             n_pages;
+  gboolean         cycle_tabs;
+  gboolean         can_go_left;
+  gboolean         can_go_right;
 
   GClosure *toggle_menubar_closure = g_cclosure_new (G_CALLBACK (terminal_window_toggle_menubar), window, NULL);
 
@@ -491,6 +476,16 @@ terminal_window_init (TerminalWindow *window)
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_HELP_MENU, G_CALLBACK (terminal_window_update_help_menu));
   gtk_widget_show_all (window->priv->menubar);
 
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+  page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active));
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "misc-cycle-tabs", &cycle_tabs,
+                NULL);
+
+  can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
+  can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
+
   window->priv->toolbar = gtk_toolbar_new();
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
@@ -503,9 +498,10 @@ terminal_window_init (TerminalWindow *window)
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 10);
-  /* TODO: Sensitivity */
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREV_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_widget_set_sensitive (item, can_go_left);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEXT_TAB), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
+  gtk_widget_set_sensitive (item, can_go_right);
   gtk_toolbar_insert (GTK_TOOLBAR (window->priv->toolbar), gtk_separator_tool_item_new (), 13);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CONTENTS), G_OBJECT (window), GTK_TOOLBAR (window->priv->toolbar));
   gtk_widget_show_all (window->priv->toolbar);
@@ -2321,16 +2317,12 @@ terminal_window_action_reset_and_clear (TerminalWindow  *window)
 
 
 static void
-terminal_window_action_send_signal (TerminalWindow *window)
+terminal_window_action_send_signal (SendSignalData *data)
 {
-  const gchar *label = ""; // TODO: gtk_action_get_label (action);
-  gchar num[3]       = { 0, 0, 0 };
-  int signal_num;
+  if (G_LIKELY (data->window->priv->active != NULL))
+    terminal_screen_send_signal (data->window->priv->active, data->signal);
 
-  strncpy (num, label, 2);
-  signal_num = atoi (num);
-  if (G_LIKELY (window->priv->active != NULL))
-    terminal_screen_send_signal (window->priv->active, signal_num);
+  g_free (data);
 }
 
 
@@ -3101,6 +3093,7 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
   GtkWidget  *item;
+  GtkWidget  *submenu;
   gboolean    can_search;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -3126,7 +3119,22 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
-  /* TODO: Signals */
+
+  /* Send signal to foreground process */
+  item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SIGNAL_MENU), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  submenu = g_object_new (GTK_TYPE_MENU, NULL);
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), GTK_WIDGET (submenu));
+  for (int i = 1; i < 32; i++)
+    {
+      SendSignalData *p = malloc (sizeof (SendSignalData)); /* TODO: Free this */
+      p->window = window;
+      p->signal = i;
+      gchar *label = g_strdup_printf("%i - %s", i, signal_names[i]);
+      item = gtk_menu_item_new_with_mnemonic (label);
+      g_signal_connect_swapped (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p);
+      gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item);
+    }
+
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_RESET), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_RESET_AND_CLEAR), G_OBJECT (window), GTK_MENU_SHELL (menu));
