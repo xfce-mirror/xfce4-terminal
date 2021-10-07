@@ -563,11 +563,8 @@ terminal_window_init (TerminalWindow *window)
 
   /* create encoding action */
   window->priv->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  gtk_action_group_add_action (window->priv->action_group, window->priv->encoding_action);
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//  g_signal_connect (G_OBJECT (window->priv->encoding_action), "encoding-changed",
-//      G_CALLBACK (terminal_window_action_set_encoding), window);
+  g_signal_connect (G_OBJECT (window->priv->encoding_action), "encoding-changed",
+      G_CALLBACK (terminal_window_action_set_encoding), window);
 
 //G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 //  window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
@@ -3228,7 +3225,10 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH_PREV), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_search);
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
-  /* TODO: Encoding */
+  /* Set Encoding uses the TerminalAction, GtkAction, therefore it is deprecated */
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu), gtk_action_create_menu_item (window->priv->encoding_action));
+G_GNUC_END_IGNORE_DEPRECATIONS
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), !terminal_screen_get_input_enabled (window->priv->active), GTK_MENU_SHELL (menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT), G_OBJECT (window), terminal_screen_get_scroll_on_output (window->priv->active), GTK_MENU_SHELL (menu));
