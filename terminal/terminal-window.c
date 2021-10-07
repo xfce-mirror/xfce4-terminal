@@ -175,7 +175,8 @@ static GtkWidget   *terminal_window_get_context_menu              (TerminalScree
 static void         terminal_window_notify_title                  (TerminalScreen      *screen,
                                                                    GParamSpec          *pspec,
                                                                    TerminalWindow      *window);
-static void         terminal_window_action_set_encoding           (const gchar         *charset,
+static void         terminal_window_action_set_encoding           (GtkAction           *action,
+                                                                   const gchar         *charset,
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_new_tab                (TerminalWindow      *window);
 static void         terminal_window_action_new_window             (TerminalWindow      *window);
@@ -1589,20 +1590,21 @@ terminal_window_notify_title (TerminalScreen *screen,
 
 
 static void
-terminal_window_action_set_encoding (const gchar    *charset,
+terminal_window_action_set_encoding (GtkAction      *action,
+                                     const gchar    *charset,
                                      TerminalWindow *window)
 {
-//  const gchar *new;
-//
-//  if (G_LIKELY (window->priv->active != NULL))
-//    {
-//      /* set the charset */
-//      terminal_screen_set_encoding (window->priv->active, charset);
-//
-//      /* update menu */
-//      new = terminal_screen_get_encoding (window->priv->active);
-//      terminal_encoding_action_set_charset (action, new);
-//    }
+  const gchar *new;
+
+  if (G_LIKELY (window->priv->active != NULL))
+    {
+      /* set the charset */
+      terminal_screen_set_encoding (window->priv->active, charset);
+
+      /* update menu */
+      new = terminal_screen_get_encoding (window->priv->active);
+      terminal_encoding_action_set_charset (action, new);
+    }
 }
 
 
