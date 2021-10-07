@@ -324,6 +324,7 @@ static XfceGtkActionEntry action_entries[] =
 #if VTE_CHECK_VERSION (0, 49, 2)
     { TERMINAL_WINDOW_ACTION_COPY_HTML,         "<Actions>/TerminalWindow/copy-html",        "",                          XFCE_GTK_MENU_ITEM,       N_ ("Copy as _HTML"),                 N_ ("Copy to clipboard as HTML"),         "edit-copy",              G_CALLBACK (terminal_window_action_copy_html), },
 #endif
+    /* TERMINAL_WINDOW_ACTION_PASTE is handled manually in terminal_window_key_press_event */
     { TERMINAL_WINDOW_ACTION_PASTE,             "<Actions>/TerminalWindow/paste",            "<control><shift>v",         XFCE_GTK_MENU_ITEM,       N_ ("_Paste"),                        N_ ("Paste from clipboard"),              "edit-paste",             G_CALLBACK (terminal_window_action_paste), },
     { TERMINAL_WINDOW_ACTION_PASTE_SELECTION,   "<Actions>/TerminalWindow/paste-selection",  "",                          XFCE_GTK_MENU_ITEM,       N_ ("Paste _Selection"),              NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_paste_selection), },
     { TERMINAL_WINDOW_ACTION_SELECT_ALL,        "<Actions>/TerminalWindow/select-all",       "<control><shift>a",         XFCE_GTK_MENU_ITEM,       N_ ("Select _All"),                   NULL,                                     "edit-select-all",        G_CALLBACK (terminal_window_action_select_all), },
