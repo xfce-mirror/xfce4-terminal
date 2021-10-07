@@ -436,8 +436,6 @@ terminal_window_init (TerminalWindow *window)
   GdkVisual       *visual;
   GtkStyleContext *context;
 
-  GClosure *toggle_menubar_closure = g_cclosure_new (G_CALLBACK (terminal_window_toggle_menubar), window, NULL);
-
   window->priv = terminal_window_get_instance_private (window);
 
   window->priv->preferences = terminal_preferences_get ();
@@ -1448,7 +1446,6 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
                                   TerminalWindow  *window)
 {
   GtkWidget *context_menu;
-  GtkWidget *item;
   GList     *children, *lp;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -1811,8 +1808,6 @@ terminal_window_action_prefs (TerminalWindow *window)
 static void
 terminal_window_action_toggle_toolbar (TerminalWindow  *window)
 {
-  gboolean show;
-
   terminal_return_if_fail (GTK_IS_UI_MANAGER (window->priv->ui_manager));
   terminal_return_if_fail (GTK_IS_ACTION_GROUP (window->priv->action_group));
 
@@ -2332,7 +2327,6 @@ terminal_window_zoom_update_screens (TerminalWindow *window)
 {
   gint            npages, n;
   TerminalScreen *screen;
-  GtkAction      *action;
 
   terminal_return_if_fail (GTK_IS_NOTEBOOK (window->priv->notebook));
 
@@ -2448,7 +2442,6 @@ terminal_window_new (const gchar       *role,
                      TerminalVisibility toolbar)
 {
   TerminalWindow *window;
-  GtkAction      *action;
   gboolean        show_menubar;
   gboolean        show_toolbar;
   gboolean        show_borders;
@@ -2607,7 +2600,6 @@ GSList*
 terminal_window_get_restart_command (TerminalWindow *window)
 {
   const gchar *role;
-  GtkAction   *action;
   GdkScreen   *gscreen;
   GList       *children, *lp;
   GSList      *result = NULL;
@@ -2998,10 +2990,11 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       AS_SUBMENU ("Send Signal")
       for (int i = 1; i < 32; i++)
         {
+          gchar          *label;
           SendSignalData *p = malloc (sizeof (SendSignalData)); /* TODO: Free this */
           p->window = window;
           p->signal = i;
-          gchar *label = g_strdup_printf("%i - %s", i, signal_names[i]);
+          label = g_strdup_printf("%i - %s", i, signal_names[i]);
           item = gtk_menu_item_new_with_mnemonic (label);
           g_signal_connect_swapped (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p);
           gtk_menu_shell_append (GTK_MENU_SHELL (insert_to_menu), item);
@@ -3098,8 +3091,6 @@ static void
 terminal_window_update_edit_menu     (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
-  GtkWidget  *item;
-
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
@@ -3119,8 +3110,6 @@ static void
 terminal_window_update_view_menu     (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
-  GtkWidget  *item;
-
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
@@ -3136,7 +3125,6 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
   GtkWidget  *item;
-  GtkWidget  *submenu;
   gboolean    can_search;
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
@@ -3185,8 +3173,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gint            n;
   GtkWidget      *page;
   GSList         *group = NULL;
-  GSList         *lp;
-  GtkRadioAction *radio_action;
+  GtkRadioAction *radio_action = NULL;
   GtkAccelKey     key = {0};
   gchar           name[50], buf[100];
 
@@ -3271,8 +3258,6 @@ static void
 terminal_window_update_help_menu     (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
-  GtkWidget  *item;
-
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   terminal_window_menu_clean (GTK_MENU (menu));
