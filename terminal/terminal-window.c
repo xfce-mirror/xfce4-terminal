@@ -770,14 +770,13 @@ terminal_window_key_press_event (GtkWidget   *widget,
           TerminalAccel *accel = lp->data;
           if (accel->mods == modifiers)
             {
-//              GtkAction *action = terminal_window_get_action (window, accel->path);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//              if (G_LIKELY (GTK_IS_ACTION (action)))
-//                {
-//                  gtk_action_activate (action);
-//                  return TRUE;
-//                }
-G_GNUC_END_IGNORE_DEPRECATIONS
+              guint length = strlen (accel->path);
+              for (unsigned long i = 0; i < sizeof (action_entries) / sizeof (XfceGtkActionEntry); i++)
+                {
+                  XfceGtkActionEntry entry = action_entries[i];
+                  if (strncmp (accel->path, entry.accel_path + strlen (entry.accel_path) - length, length) == 0)
+                    ((void (*) (TerminalWindow*))entry.callback) (window);
+                }
             }
         }
     }
