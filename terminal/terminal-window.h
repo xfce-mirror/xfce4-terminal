@@ -35,6 +35,90 @@ G_BEGIN_DECLS
 
 typedef struct _TerminalWindowPrivate TerminalWindowPrivate;
 
+/* #XfceGtkActionEntrys provided by this widget */
+typedef enum
+{
+    TERMINAL_WINDOW_ACTION_FILE_MENU,
+    TERMINAL_WINDOW_ACTION_NEW_TAB,
+    TERMINAL_WINDOW_ACTION_NEW_WINDOW,
+    TERMINAL_WINDOW_ACTION_UNDO_CLOSE_TAB,
+    TERMINAL_WINDOW_ACTION_DETACH_TAB,
+    TERMINAL_WINDOW_ACTION_CLOSE_TAB,
+    TERMINAL_WINDOW_ACTION_CLOSE_OTHER_TABS,
+    TERMINAL_WINDOW_ACTION_CLOSE_WINDOW,
+    TERMINAL_WINDOW_ACTION_EDIT_MENU,
+    TERMINAL_WINDOW_ACTION_COPY,
+#if VTE_CHECK_VERSION (0, 49, 2)
+    TERMINAL_WINDOW_ACTION_COPY_HTML,
+#endif
+    TERMINAL_WINDOW_ACTION_PASTE,
+    TERMINAL_WINDOW_ACTION_PASTE_SELECTION,
+    TERMINAL_WINDOW_ACTION_SELECT_ALL,
+    TERMINAL_WINDOW_ACTION_COPY_INPUT,
+    TERMINAL_WINDOW_ACTION_PREFERENCES,
+    TERMINAL_WINDOW_ACTION_VIEW_MENU,
+    TERMINAL_WINDOW_ACTION_ZOOM_IN,
+    TERMINAL_WINDOW_ACTION_ZOOM_OUT,
+    TERMINAL_WINDOW_ACTION_ZOOM_RESET,
+    TERMINAL_WINDOW_ACTION_TERMINAL_MENU,
+    TERMINAL_WINDOW_ACTION_SET_TITLE,
+    TERMINAL_WINDOW_ACTION_SET_TITLE_COLOR,
+    TERMINAL_WINDOW_ACTION_SEARCH,
+    TERMINAL_WINDOW_ACTION_SEARCH_NEXT,
+    TERMINAL_WINDOW_ACTION_SEARCH_PREV,
+    TERMINAL_WINDOW_ACTION_SAVE_CONTENTS,
+    TERMINAL_WINDOW_ACTION_RESET,
+    TERMINAL_WINDOW_ACTION_RESET_AND_CLEAR,
+    TERMINAL_WINDOW_ACTION_TABS_MENU,
+    TERMINAL_WINDOW_ACTION_PREV_TAB,
+    TERMINAL_WINDOW_ACTION_NEXT_TAB,
+    TERMINAL_WINDOW_ACTION_LAST_ACTIVE_TAB,
+    TERMINAL_WINDOW_ACTION_MOVE_TAB_LEFT,
+    TERMINAL_WINDOW_ACTION_MOVE_TAB_RIGHT,
+    TERMINAL_WINDOW_ACTION_HELP_MENU,
+    TERMINAL_WINDOW_ACTION_CONTENTS,
+    TERMINAL_WINDOW_ACTION_ABOUT,
+    TERMINAL_WINDOW_ACTION_ZOOM_MENU,
+    TERMINAL_WINDOW_ACTION_SHOW_MENUBAR,
+    TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR,
+    TERMINAL_WINDOW_ACTION_SHOW_BORDERS,
+    TERMINAL_WINDOW_ACTION_FULLSCREEN,
+    TERMINAL_WINDOW_ACTION_READ_ONLY,
+    TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT,
+    TERMINAL_WINDOW_ACTION_SIGNAL_MENU,
+    TERMINAL_WINDOW_ACTION_SIGNAL_1,
+    TERMINAL_WINDOW_ACTION_SIGNAL_2,
+    TERMINAL_WINDOW_ACTION_SIGNAL_3,
+    TERMINAL_WINDOW_ACTION_SIGNAL_4,
+    TERMINAL_WINDOW_ACTION_SIGNAL_5,
+    TERMINAL_WINDOW_ACTION_SIGNAL_6,
+    TERMINAL_WINDOW_ACTION_SIGNAL_7,
+    TERMINAL_WINDOW_ACTION_SIGNAL_8,
+    TERMINAL_WINDOW_ACTION_SIGNAL_9,
+    TERMINAL_WINDOW_ACTION_SIGNAL_10,
+    TERMINAL_WINDOW_ACTION_SIGNAL_11,
+    TERMINAL_WINDOW_ACTION_SIGNAL_12,
+    TERMINAL_WINDOW_ACTION_SIGNAL_13,
+    TERMINAL_WINDOW_ACTION_SIGNAL_14,
+    TERMINAL_WINDOW_ACTION_SIGNAL_15,
+    TERMINAL_WINDOW_ACTION_SIGNAL_16,
+    TERMINAL_WINDOW_ACTION_SIGNAL_17,
+    TERMINAL_WINDOW_ACTION_SIGNAL_18,
+    TERMINAL_WINDOW_ACTION_SIGNAL_19,
+    TERMINAL_WINDOW_ACTION_SIGNAL_20,
+    TERMINAL_WINDOW_ACTION_SIGNAL_21,
+    TERMINAL_WINDOW_ACTION_SIGNAL_22,
+    TERMINAL_WINDOW_ACTION_SIGNAL_23,
+    TERMINAL_WINDOW_ACTION_SIGNAL_24,
+    TERMINAL_WINDOW_ACTION_SIGNAL_25,
+    TERMINAL_WINDOW_ACTION_SIGNAL_26,
+    TERMINAL_WINDOW_ACTION_SIGNAL_27,
+    TERMINAL_WINDOW_ACTION_SIGNAL_28,
+    TERMINAL_WINDOW_ACTION_SIGNAL_29,
+    TERMINAL_WINDOW_ACTION_SIGNAL_30,
+    TERMINAL_WINDOW_ACTION_SIGNAL_31,
+} TerminalWindowAction;
+
 typedef struct
 {
   GtkWindowClass parent_class;
@@ -83,10 +167,6 @@ GtkWidget         *terminal_window_get_vbox                 (TerminalWindow     
 GtkWidget         *terminal_window_get_notebook             (TerminalWindow     *window);
 
 GtkWidget         *terminal_window_get_preferences_dialog   (TerminalWindow     *window);
-
-GtkAction         *terminal_window_get_action               (TerminalWindow     *window,
-                                                             const gchar        *action_name);
-
 const gchar       *terminal_window_get_font                 (TerminalWindow     *window);
 void               terminal_window_set_font                 (TerminalWindow     *window,
                                                              const gchar        *font);
@@ -107,10 +187,7 @@ gint               terminal_window_get_menubar_height       (TerminalWindow     
 
 gint               terminal_window_get_toolbar_height       (TerminalWindow     *window);
 
-void               terminal_window_rebuild_tabs_menu        (TerminalWindow     *window);
-
-void               terminal_window_action_show_menubar      (GtkToggleAction    *action,
-                                                             TerminalWindow     *window);
+void               terminal_window_action_show_menubar      (TerminalWindow     *window);
 
 void               terminal_window_update_tab_key_accels    (TerminalWindow     *window,
                                                              GSList             *tab_key_accels);
