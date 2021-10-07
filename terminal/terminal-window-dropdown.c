@@ -961,7 +961,6 @@ terminal_window_dropdown_new (const gchar        *role,
   gboolean        show_menubar;
   gboolean        show_toolbar;
   gboolean        show_icon;
-  GtkAction      *action;
   GValue          value = G_VALUE_INIT;
 
   if (G_LIKELY (role == NULL))

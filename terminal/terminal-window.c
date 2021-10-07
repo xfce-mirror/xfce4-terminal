@@ -48,7 +48,6 @@
 #include <terminal/terminal-encoding-action.h>
 #include <terminal/terminal-window.h>
 #include <terminal/terminal-window-dropdown.h>
-#include <terminal/terminal-window-ui.h>
 #include <terminal/terminal-widget.h>
 
 
@@ -332,7 +331,6 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_PREFERENCES,       "<Actions>/TerminalWindow/preferences",      "",                          XFCE_GTK_MENU_ITEM,       N_ ("Pr_eferences..."),               N_ ("Open the preferences dialog"),       "preferences-system",     G_CALLBACK (terminal_window_action_prefs), },
     { TERMINAL_WINDOW_ACTION_VIEW_MENU,         "<Actions>/TerminalWindow/view-menu",        "",                          XFCE_GTK_MENU_ITEM,       N_ ("_View"),                         NULL,                                     NULL,                     NULL, },
     { TERMINAL_WINDOW_ACTION_ZOOM_IN,           "<Actions>/TerminalWindow/zoom-in",          "<control>plus",             XFCE_GTK_MENU_ITEM,       N_ ("Zoom _In"),                      N_ ("Zoom in with larger font"),          "zoom-in",                G_CALLBACK (terminal_window_action_zoom_in), },
-    /* the alternative shortcuts must be used separately in terminal-window-ui.xml to be activated */
     { TERMINAL_WINDOW_ACTION_ZOOM_OUT,          "<Actions>/TerminalWindow/zoom-out",         "<control>minus",            XFCE_GTK_MENU_ITEM,       N_ ("Zoom _Out"),                     N_ ("Zoom out with smaller font"),        "zoom-out",               G_CALLBACK (terminal_window_action_zoom_out), },
     { TERMINAL_WINDOW_ACTION_ZOOM_RESET,        "<Actions>/TerminalWindow/zoom-reset",       "<control>0",                XFCE_GTK_MENU_ITEM,       N_ ("_Normal Size"),                  N_ ("Zoom to default size"),              "zoom-original",          G_CALLBACK (terminal_window_action_zoom_reset), },
     { TERMINAL_WINDOW_ACTION_TERMINAL_MENU,     "<Actions>/TerminalWindow/terminal-menu",    "",                          XFCE_GTK_MENU_ITEM,       N_ ("_Terminal"),                     NULL,                                     NULL,                     NULL, },
@@ -2974,7 +2972,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
           p->signal = i;
           label = g_strdup_printf("%i - %s", i, signal_names[i]);
           item = gtk_menu_item_new_with_mnemonic (label);
-          g_signal_connect_data (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p, (GClosureNotify) g_free, G_CONNECT_SWAPPED);
+          g_signal_connect_data (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p, terminal_util_free_data, G_CONNECT_SWAPPED);
           gtk_menu_shell_append (GTK_MENU_SHELL (insert_to_menu), item);
         }
       xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
@@ -3251,5 +3249,5 @@ XfceGtkActionEntry*
 terminal_window_get_action_entry (TerminalWindow      *window,
                                   TerminalWindowAction action)
 {
-  return get_action_entry (action);
+  return (XfceGtkActionEntry*) get_action_entry (action);
 }
