@@ -227,8 +227,6 @@ static void         terminal_window_move_tab                      (GtkNotebook  
                                                                    gboolean             move_left);
 static void         terminal_window_toggle_menubar                (GtkWidget           *widget,
                                                                    TerminalWindow      *window);
-static void         terminal_window_menubar_deactivate            (GtkWidget           *widget,
-                                                                   TerminalWindow      *window);
 static void         title_popover_close                           (GtkWidget           *popover,
                                                                    TerminalWindow      *window);
 static void         terminal_window_do_close_tab                  (TerminalScreen      *screen,
@@ -565,17 +563,6 @@ terminal_window_init (TerminalWindow *window)
   window->priv->encoding_action = terminal_encoding_action_new ("set-encoding", _("Set _Encoding"));
   g_signal_connect (G_OBJECT (window->priv->encoding_action), "encoding-changed",
       G_CALLBACK (terminal_window_action_set_encoding), window);
-
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  window->priv->menubar = gtk_ui_manager_get_widget (window->priv->ui_manager, "/main-menu");
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->menubar, FALSE, FALSE, 0);
-//  gtk_box_reorder_child (GTK_BOX (window->priv->vbox), window->priv->menubar, 0);
-//  /* don't show menubar by default */
-//  gtk_widget_hide (window->priv->menubar);
-//  /* auto-hide menubar if it was shown temporarily */
-//  g_signal_connect (G_OBJECT (window->priv->menubar), "deactivate",
-//      G_CALLBACK (terminal_window_menubar_deactivate), window);
 
   /* monitor the shortcuts-no-mnemonics setting */
   terminal_window_update_mnemonic_modifier (window);
@@ -2513,22 +2500,6 @@ terminal_window_toggle_menubar (GtkWidget      *widget,
   if (terminal_window_get_menubar_height (window) == 0)
     gtk_widget_show (window->priv->menubar);
   terminal_window_size_pop (window);
-}
-
-
-
-static void
-terminal_window_menubar_deactivate (GtkWidget      *widget,
-                                    TerminalWindow *window)
-{
-  GtkAction *action;
-
-  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
-
-//  action = terminal_window_get_action (window, "show-menubar");
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//  terminal_window_action_show_menubar (GTK_TOGGLE_ACTION (action), window);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
