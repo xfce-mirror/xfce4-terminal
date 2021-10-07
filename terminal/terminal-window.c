@@ -126,15 +126,10 @@ static void         terminal_window_set_size_force_grid           (TerminalWindo
                                                                    TerminalScreen      *screen,
                                                                    glong                force_grid_width,
                                                                    glong                force_grid_height);
-static void         terminal_window_update_actions                (TerminalWindow      *window);
 static void         terminal_window_update_slim_tabs              (TerminalWindow      *window);
 static void         terminal_window_update_mnemonic_modifier      (TerminalWindow      *window);
 static void         terminal_window_notebook_page_switched        (GtkNotebook         *notebook,
                                                                    GtkWidget           *page,
-                                                                   guint                page_num,
-                                                                   TerminalWindow      *window);
-static void         terminal_window_notebook_page_reordered       (GtkNotebook         *notebook,
-                                                                   GtkWidget           *child,
                                                                    guint                page_num,
                                                                    TerminalWindow      *window);
 static void         terminal_window_notebook_page_added           (GtkNotebook         *notebook,
@@ -540,8 +535,6 @@ terminal_window_init (TerminalWindow *window)
   /* signals */
   g_signal_connect (G_OBJECT (window->priv->notebook), "switch-page",
       G_CALLBACK (terminal_window_notebook_page_switched), window);
-  g_signal_connect (G_OBJECT (window->priv->notebook), "page-reordered",
-      G_CALLBACK (terminal_window_notebook_page_reordered), window);
   g_signal_connect (G_OBJECT (window->priv->notebook), "page-removed",
       G_CALLBACK (terminal_window_notebook_page_removed), window);
   g_signal_connect (G_OBJECT (window->priv->notebook), "page-added",
@@ -1008,42 +1001,6 @@ terminal_window_set_size_force_grid (TerminalWindow *window,
 
 
 static void
-terminal_window_update_actions (TerminalWindow *window)
-{
-  GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
-  GtkAction   *action;
-  gboolean     cycle_tabs;
-  gint         page_num;
-  gint         n_pages;
-
-  /* determine the number of pages */
-  n_pages = gtk_notebook_get_n_pages (notebook);
-
-  /* update the actions for the current terminal screen */
-  if (G_LIKELY (window->priv->active != NULL))
-    {
-      gboolean can_go_left, can_go_right, can_search, input_enabled;
-
-      page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->active));
-
-      g_object_get (G_OBJECT (window->priv->preferences),
-                    "misc-cycle-tabs", &cycle_tabs,
-                    NULL);
-
-      can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
-      can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
-
-      /* update the "Go" menu */
-//      action = g_object_get_qdata (G_OBJECT (window->priv->active), tabs_menu_action_quark);
-//      if (G_LIKELY (action != NULL))
-//        gtk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
-//G_GNUC_END_IGNORE_DEPRECATIONS
-    }
-}
-
-
-
-static void
 terminal_window_update_slim_tabs (TerminalWindow *window)
 {
   GdkScreen      *screen = gtk_window_get_screen (GTK_WINDOW (window));
@@ -1111,22 +1068,6 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
       encoding = terminal_screen_get_encoding (window->priv->active);
       terminal_encoding_action_set_charset (window->priv->encoding_action, encoding);
     }
-
-  /* update actions in the window */
-  terminal_window_update_actions (window);
-}
-
-
-
-static void
-terminal_window_notebook_page_reordered (GtkNotebook     *notebook,
-                                         GtkWidget       *child,
-                                         guint            page_num,
-                                         TerminalWindow  *window)
-{
-  /* Regenerate the "Go" menu and update actions */
-  terminal_window_rebuild_tabs_menu (window);
-  terminal_window_update_actions (window);
 }
 
 
@@ -1160,8 +1101,6 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       G_CALLBACK (terminal_window_get_context_menu), window);
   g_signal_connect (G_OBJECT (screen), "notify::title",
       G_CALLBACK (terminal_window_notify_title), window);
-  g_signal_connect_swapped (G_OBJECT (screen), "selection-changed",
-      G_CALLBACK (terminal_window_update_actions), window);
   g_signal_connect (G_OBJECT (screen), "close-tab-request",
       G_CALLBACK (terminal_window_close_tab_request), window);
   g_signal_connect (G_OBJECT (screen), "drag-data-received",
@@ -1189,9 +1128,6 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
       terminal_screen_set_size (screen, w, h);
     }
-
-  /* regenerate the "Go" menu */
-  terminal_window_rebuild_tabs_menu (window);
 }
 
 
@@ -1218,8 +1154,6 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
   g_signal_handlers_disconnect_by_func (G_OBJECT (child),
       terminal_window_notify_title, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (child),
-      terminal_window_update_actions, window);
-  g_signal_handlers_disconnect_by_func (G_OBJECT (child),
       terminal_window_close_tab_request, window);
   g_signal_handlers_disconnect_by_func (G_OBJECT (child),
       terminal_window_notebook_drag_data_received, window);
@@ -1239,9 +1173,6 @@ terminal_window_notebook_page_removed (GtkNotebook    *notebook,
 
   /* show the tabs when needed */
   terminal_window_notebook_show_tabs (window);
-
-  /* regenerate the "Go" menu */
-  terminal_window_rebuild_tabs_menu (window);
 
   /* send a signal about switching to another tab */
   new_page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (window->priv->notebook));
@@ -1518,9 +1449,6 @@ terminal_window_notebook_create_window (GtkNotebook    *notebook,
 
       /* release our reference */
       g_object_unref (G_OBJECT (child));
-
-      /* update actions */
-      terminal_window_update_actions (window);
     }
 
   return NULL;
@@ -1696,7 +1624,6 @@ terminal_window_action_undo_close_tab (TerminalWindow *window)
   /* free info */
   terminal_tab_attr_free (tab_attr);
 
-  terminal_window_update_actions (window);
   terminal_screen_launch_child (terminal);
 }
 
@@ -2013,7 +1940,6 @@ static void
 terminal_window_action_prev_tab (TerminalWindow *window)
 {
   terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
-  terminal_window_update_actions (window);
 }
 
 
@@ -2022,7 +1948,6 @@ static void
 terminal_window_action_next_tab (TerminalWindow *window)
 {
   terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
-  terminal_window_update_actions (window);
 }
 
 
@@ -2035,7 +1960,6 @@ terminal_window_action_last_active_tab (TerminalWindow *window)
       GtkNotebook *notebook = GTK_NOTEBOOK (window->priv->notebook);
       gint page_num = gtk_notebook_page_num (notebook, GTK_WIDGET (window->priv->last_active));
       gtk_notebook_set_current_page (notebook, page_num);
-      terminal_window_update_actions (window);
     }
 }
 
@@ -2045,7 +1969,6 @@ static void
 terminal_window_action_move_tab_left (TerminalWindow *window)
 {
   terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
-  terminal_window_update_actions (window);
 }
 
 
@@ -2054,7 +1977,6 @@ static void
 terminal_window_action_move_tab_right (TerminalWindow *window)
 {
   terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
-  terminal_window_update_actions (window);
 }
 
 
@@ -2386,7 +2308,6 @@ terminal_window_action_reset_and_clear (TerminalWindow  *window)
   if (G_LIKELY (window->priv->active != NULL))
     {
       terminal_screen_reset (window->priv->active, TRUE);
-      terminal_window_update_actions (window);
     }
 }
 
@@ -3000,18 +2921,6 @@ terminal_window_get_toolbar_height (TerminalWindow *window)
 
 
 /**
- * terminal_window_rebuild_tabs_menu:
- * @window  : A #TerminalWindow.
- **/
-void
-terminal_window_rebuild_tabs_menu (TerminalWindow *window)
-{
-//  printf("Rebuild\n");
-}
-
-
-
-/**
  * terminal_window_action_show_menubar:
  * @action  : A toggle action.
  * @window  : A #TerminalWindow.
@@ -3227,6 +3136,14 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gboolean    cycle_tabs;
   gboolean    can_go_left;
   gboolean    can_go_right;
+  /* go-to menu */
+  gint            n;
+  GtkWidget      *page;
+  GSList         *group = NULL;
+  GSList         *lp;
+  GtkRadioAction *radio_action;
+  GtkAccelKey     key = {0};
+  gchar           name[50], buf[100];
 
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
@@ -3252,7 +3169,51 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gtk_widget_set_sensitive (item, can_go_left);
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_RIGHT), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_go_right);
-  /* TODO: tabs entries */
+  /* go-to menu */
+  for (n = 0; n < n_pages; n++)
+    {
+      page = gtk_notebook_get_nth_page (GTK_NOTEBOOK (window->priv->notebook), n);
+
+      g_snprintf (name, sizeof (name), "goto-tab-%d", n + 1);
+
+      /* create action */
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+      radio_action = gtk_radio_action_new (name, NULL, NULL, NULL, n);
+      gtk_action_set_sensitive (GTK_ACTION (radio_action), n_pages > 1);
+      g_object_bind_property (G_OBJECT (page), "title",
+                              G_OBJECT (radio_action), "label",
+                              G_BINDING_SYNC_CREATE);
+      gtk_radio_action_set_group (radio_action, group);
+      group = gtk_radio_action_get_group (radio_action);
+      G_GNUC_END_IGNORE_DEPRECATIONS
+
+      g_signal_connect (G_OBJECT (radio_action), "activate",
+                        G_CALLBACK (terminal_window_action_goto_tab), window->priv->notebook);
+
+      /* connect action to the page, so we can activate it when a tab is switched */
+      g_object_set_qdata_full (G_OBJECT (page), tabs_menu_action_quark, radio_action, g_object_unref);
+
+      /* set an accelerator path */
+//      g_snprintf (buf, sizeof (buf), "<Actions>/terminal-window/%s", name);
+//      if (gtk_accel_map_lookup_entry (buf, &key) && key.accel_key != 0)
+//        {
+//          G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+//          gtk_action_set_accel_path (GTK_ACTION (radio_action), buf);
+//          G_GNUC_END_IGNORE_DEPRECATIONS
+//        }
+
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+      /* add action in the menu */
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), gtk_action_create_menu_item (GTK_ACTION (radio_action)));
+      G_GNUC_END_IGNORE_DEPRECATIONS
+
+      /* store */
+      window->priv->tabs_menu_actions = g_slist_prepend (window->priv->tabs_menu_actions, radio_action);
+    }
+
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+  gtk_radio_action_set_current_value (radio_action, gtk_notebook_get_current_page (GTK_NOTEBOOK (window->priv->notebook)));
+G_GNUC_END_IGNORE_DEPRECATIONS
 
   gtk_widget_show_all (GTK_WIDGET (menu));
 }
