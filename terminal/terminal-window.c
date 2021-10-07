@@ -1274,70 +1274,69 @@ terminal_window_notebook_button_press_event (GtkNotebook    *notebook,
                                              GdkEventButton *event,
                                              TerminalWindow *window)
 {
-//  GtkWidget *page, *label, *menu;
-//  gint       page_num = 0;
-//  gboolean   close_middle_click;
-//  gint       x, y;
-//
-//  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
-//  terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
-//
-//  gdk_window_get_position (event->window, &x, &y);
-//  x += event->x;
-//  y += event->y;
-//
-//  if (event->button == 1)
-//    {
-//      if (event->type == GDK_2BUTTON_PRESS)
-//        {
-//          /* check if the user double-clicked on the label */
-//          label = gtk_notebook_get_tab_label (notebook, GTK_WIDGET (window->priv->active));
-//          if (terminal_window_notebook_event_in_allocation (x, y, label))
-//            {
-//              terminal_window_action_set_title (NULL, window);
-//              return TRUE;
-//            }
-//        }
-//    }
-//  else if (event->type == GDK_BUTTON_PRESS && event->button <= 3)
-//    {
-//      /* select the page the user clicked on */
-//      while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
-//        {
-//          label = gtk_notebook_get_tab_label (notebook, page);
-//          if (terminal_window_notebook_event_in_allocation (x, y, label))
-//            break;
-//          page_num++;
-//        }
-//
-//      /* leave if somehow no tab was found */
-//      if (G_UNLIKELY (page == NULL))
-//        return FALSE;
-//
-//      if (event->button == 2)
-//        {
-//          /* close the tab on middle click */
-//          g_object_get (G_OBJECT (window->priv->preferences),
-//                        "misc-tab-close-middle-click", &close_middle_click, NULL);
-//          if (close_middle_click)
-//            terminal_window_close_tab_request (TERMINAL_SCREEN (page), window);
-//        }
-//      else
-//        {
-//          /* update the current tab before we show the menu */
-//          gtk_notebook_set_current_page (notebook, page_num);
-//
-//          /* show the tab menu */
-//G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-//          menu = gtk_ui_manager_get_widget (window->priv->ui_manager, "/tab-menu");
-//G_GNUC_END_IGNORE_DEPRECATIONS
-//          gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
-//        }
-//
-//      return TRUE;
-//    }
-//
-//  return FALSE;
+  GtkWidget *page, *label, *menu;
+  gint       page_num = 0;
+  gboolean   close_middle_click;
+  gint       x, y;
+
+  terminal_return_val_if_fail (TERMINAL_IS_WINDOW (window), FALSE);
+  terminal_return_val_if_fail (GTK_IS_NOTEBOOK (notebook), FALSE);
+
+  gdk_window_get_position (event->window, &x, &y);
+  x += event->x;
+  y += event->y;
+
+  if (event->button == 1)
+    {
+      if (event->type == GDK_2BUTTON_PRESS)
+        {
+          /* check if the user double-clicked on the label */
+          label = gtk_notebook_get_tab_label (notebook, GTK_WIDGET (window->priv->active));
+          if (terminal_window_notebook_event_in_allocation (x, y, label))
+            {
+              terminal_window_action_set_title (window);
+              return TRUE;
+            }
+        }
+    }
+  else if (event->type == GDK_BUTTON_PRESS && event->button <= 3)
+    {
+      /* select the page the user clicked on */
+      while ((page = gtk_notebook_get_nth_page (notebook, page_num)) != NULL)
+        {
+          label = gtk_notebook_get_tab_label (notebook, page);
+          if (terminal_window_notebook_event_in_allocation (x, y, label))
+            break;
+          page_num++;
+        }
+
+      /* leave if somehow no tab was found */
+      if (G_UNLIKELY (page == NULL))
+        return FALSE;
+
+      if (event->button == 2)
+        {
+          /* close the tab on middle click */
+          g_object_get (G_OBJECT (window->priv->preferences),
+                        "misc-tab-close-middle-click", &close_middle_click, NULL);
+          if (close_middle_click)
+            terminal_window_close_tab_request (TERMINAL_SCREEN (page), window);
+        }
+      else
+        {
+          /* update the current tab before we show the menu */
+          gtk_notebook_set_current_page (notebook, page_num);
+
+          /* show the tab menu */
+          menu = gtk_menu_new ();
+          terminal_window_update_tabs_menu (window, menu);
+          gtk_menu_popup_at_pointer (GTK_MENU (menu), NULL);
+        }
+
+      return TRUE;
+    }
+
+  return FALSE;
 }
 
 
