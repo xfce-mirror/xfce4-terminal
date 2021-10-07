@@ -2288,8 +2288,6 @@ terminal_window_action_send_signal (SendSignalData *data)
 {
   if (G_LIKELY (data->window->priv->active != NULL))
     terminal_screen_send_signal (data->window->priv->active, data->signal);
-
-  g_free (data);
 }
 
 
@@ -2975,12 +2973,12 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       for (int i = 1; i < 32; i++)
         {
           gchar          *label;
-          SendSignalData *p = malloc (sizeof (SendSignalData)); /* TODO: Free this */
+          SendSignalData *p = malloc (sizeof (SendSignalData));
           p->window = window;
           p->signal = i;
           label = g_strdup_printf("%i - %s", i, signal_names[i]);
           item = gtk_menu_item_new_with_mnemonic (label);
-          g_signal_connect_swapped (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p);
+          g_signal_connect_data (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p, (GClosureNotify) g_free, G_CONNECT_SWAPPED);
           gtk_menu_shell_append (GTK_MENU_SHELL (insert_to_menu), item);
         }
       xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
