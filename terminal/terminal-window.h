@@ -105,6 +105,12 @@ typedef struct
 {
   GtkWindow              parent_instance;
 
+  GtkWidget           *menubar;
+  GtkWidget           *toolbar;
+
+  gboolean             fullscreen_supported;
+  gboolean             is_fullscreen;
+
   TerminalWindowPrivate *priv;
 } TerminalWindow;
 
@@ -168,6 +174,9 @@ void               terminal_window_action_show_menubar      (TerminalWindow     
 
 void               terminal_window_update_tab_key_accels    (TerminalWindow     *window,
                                                              GSList             *tab_key_accels);
+
+XfceGtkActionEntry *terminal_window_get_action_entry         (TerminalWindow      *window,
+                                                              TerminalWindowAction action);
 
 G_END_DECLS
 
