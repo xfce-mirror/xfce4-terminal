@@ -255,7 +255,6 @@ terminal_app_update_windows_accels (gpointer user_data)
 
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
-      terminal_window_rebuild_tabs_menu (TERMINAL_WINDOW (lp->data));
       terminal_window_update_tab_key_accels (TERMINAL_WINDOW (lp->data), app->tab_key_accels);
     }
 
