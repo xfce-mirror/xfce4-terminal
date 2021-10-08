@@ -82,6 +82,7 @@ typedef struct
   guint               maximize : 1;
   guint               minimize : 1;
   guint               reuse_last_window : 1;
+  guint               restore_session : 1;
   TerminalVisibility  menubar;
   TerminalVisibility  borders;
   TerminalVisibility  toolbar;
