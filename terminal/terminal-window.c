@@ -786,18 +786,19 @@ terminal_window_scroll_event (GtkWidget      *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
   gboolean        mouse_wheel_zoom;
+  const guint     modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
 
   g_object_get (G_OBJECT (window->priv->preferences),
                 "misc-mouse-wheel-zoom", &mouse_wheel_zoom, NULL);
 
-  if (mouse_wheel_zoom && event->state == (GDK_SHIFT_MASK | GDK_CONTROL_MASK)
+  if (mouse_wheel_zoom && modifiers == (GDK_SHIFT_MASK | GDK_CONTROL_MASK)
       && event->direction == GDK_SCROLL_UP)
     {
       terminal_window_action_zoom_in (NULL, window);
       return TRUE;
     }
 
-  if (mouse_wheel_zoom && event->state == (GDK_SHIFT_MASK | GDK_CONTROL_MASK)
+  if (mouse_wheel_zoom && modifiers == (GDK_SHIFT_MASK | GDK_CONTROL_MASK)
       && event->direction == GDK_SCROLL_DOWN)
     {
       terminal_window_action_zoom_out (NULL, window);
