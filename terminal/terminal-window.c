@@ -50,6 +50,7 @@
 #include <terminal/terminal-window-dropdown.h>
 #include <terminal/terminal-window-ui.h>
 #include <terminal/terminal-widget.h>
+#include <terminal/terminal-app.h>
 
 
 
@@ -253,6 +254,10 @@ static void         terminal_window_action_reset                  (GtkAction    
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_reset_and_clear        (GtkAction           *action,
                                                                    TerminalWindow      *window);
+static void         terminal_window_action_save_session           (GtkAction           *action,
+                                                                   TerminalWindow      *window);
+static void         terminal_window_action_restore_session        (GtkAction           *action,
+                                                                   TerminalWindow      *window);
 static void         terminal_window_action_send_signal            (GtkAction           *action,
                                                                    TerminalWindow      *window);
 static void         terminal_window_action_contents               (GtkAction           *action,
@@ -380,6 +385,8 @@ static const GtkActionEntry action_entries[] =
     { "save-contents",    "document-save-as",   N_ ("Sa_ve Contents..."),           NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_save_contents), },
     { "reset",            NULL,                 N_ ("_Reset"),                      NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_reset), },
     { "reset-and-clear",  NULL,                 N_ ("_Clear Scrollback and Reset"), NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_reset_and_clear), },
+    { "save-session",     NULL,                 N_ ("Save Session"),                NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_save_session), },
+    { "restore-session",  NULL,                 N_ ("_Restore Session"),            NULL,                         NULL,                                 G_CALLBACK (terminal_window_action_restore_session), },
     { "tabs-menu",        NULL,                 N_ ("T_abs"),                       NULL,                         NULL,                                 NULL, },
     { "prev-tab",         "go-previous",        N_ ("_Previous Tab"),               "<control>Page_Up",           N_ ("Switch to previous tab"),        G_CALLBACK (terminal_window_action_prev_tab), },
     { "next-tab",         "go-next",            N_ ("_Next Tab"),                   "<control>Page_Down",         N_ ("Switch to next tab"),            G_CALLBACK (terminal_window_action_next_tab), },
@@ -2604,6 +2611,26 @@ terminal_window_action_reset_and_clear (GtkAction       *action,
 
 
 static void
+terminal_window_action_save_session (GtkAction       *action,
+                                     TerminalWindow  *window)
+{
+  gchar *string;
+  string = terminal_app_get_session_string ();
+  g_object_set (G_OBJECT (window->priv->preferences), "session", string, NULL);
+}
+
+
+
+static void
+terminal_window_action_restore_session (GtkAction       *action,
+                                        TerminalWindow  *window)
+{
+  terminal_app_restore_session ();
+}
+
+
+
+static void
 terminal_window_action_send_signal (GtkAction      *action,
                                     TerminalWindow *window)
 {
@@ -2982,10 +3009,7 @@ terminal_window_get_restart_command (TerminalWindow *window)
 
   gscreen = gtk_window_get_screen (GTK_WINDOW (window));
   if (G_LIKELY (gscreen != NULL))
-    {
-      result = g_slist_prepend (result, g_strdup ("--display"));
-      result = g_slist_prepend (result, g_strdup (gdk_display_get_name (gdk_screen_get_display (gscreen))));
-    }
+    result = g_slist_prepend (result, g_strdup_printf ("--display=%s", (gdk_display_get_name (gdk_screen_get_display (gscreen)))));
 
   role = gtk_window_get_role (GTK_WINDOW (window));
   if (G_LIKELY (role != NULL))
