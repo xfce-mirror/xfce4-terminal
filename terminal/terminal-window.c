@@ -1841,11 +1841,11 @@ terminal_window_action_fullscreen (TerminalWindow  *window)
 {
   if (gtk_widget_get_visible (GTK_WIDGET (window)))
     {
+      window->is_fullscreen = !window->is_fullscreen;
       if (window->is_fullscreen)
         gtk_window_fullscreen (GTK_WINDOW (window));
       else
         gtk_window_unfullscreen (GTK_WINDOW (window));
-      window->is_fullscreen = !window->is_fullscreen;
     }
 }
 
