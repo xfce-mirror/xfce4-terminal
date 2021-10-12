@@ -26,6 +26,9 @@ void terminal_util_show_about_dialog  (GtkWindow    *parent);
 
 void terminal_util_activate_window    (GtkWindow    *window);
 
+void terminal_util_free_data          (gpointer      data,
+                                       GClosure     *closure);
+
 G_END_DECLS
 
 #endif /* !TERMINAL_UTIL_H */
