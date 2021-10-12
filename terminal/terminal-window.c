@@ -102,7 +102,8 @@ const gchar *CSS_SLIM_TABS =
 
 
 
-typedef struct {
+typedef struct
+{
     TerminalWindow *window;
     gint            signal;
 } SendSignalData;
