@@ -628,6 +628,14 @@ terminal_widget_key_press_event (GtkWidget    *widget,
   gboolean       shortcuts_no_menukey;
   gboolean       shift_arrows_scroll;
   gdouble        value;
+  GtkAccelGroup *group     = gtk_accel_groups_from_object (G_OBJECT (gtk_widget_get_toplevel (widget)))->data;
+  const guint    modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
+  guint          found;
+
+  /* check if the key combination is used by terminal-window, if so don't process it */
+  gtk_accel_group_query (group, event->keyval, modifiers, &found);
+  if (found)
+    return TRUE;
 
   /* determine current settings */
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
