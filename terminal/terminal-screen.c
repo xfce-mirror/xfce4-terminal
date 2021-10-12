@@ -381,6 +381,9 @@ terminal_screen_finalize (GObject *object)
   if (screen->activity_timeout_id != 0)
     g_source_remove (screen->activity_timeout_id);
 
+  /* finalize image loader */
+  terminal_image_screen_finalize(screen->loader, screen->pid);
+
   /* detach from preferences */
   g_signal_handlers_disconnect_by_func (screen->preferences,
       G_CALLBACK (terminal_screen_preferences_changed), screen);
@@ -561,7 +564,7 @@ terminal_screen_draw (GtkWidget *widget,
 
   if (screen->loader == NULL)
     screen->loader = terminal_image_loader_get ();
-  image = terminal_image_loader_load (screen->loader, width, height);
+  image = terminal_image_loader_load (screen->loader, screen->pid, width, height);
 
   if (G_UNLIKELY (image == NULL))
     return FALSE;
