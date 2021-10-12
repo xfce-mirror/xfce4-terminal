@@ -765,16 +765,6 @@ terminal_window_key_press_event (GtkWidget   *widget,
         }
     }
 
-  /* handle Ctrl+Shift+V (paste clipboard) */
-  if (event->keyval == GDK_KEY_V)
-    {
-      if (modifiers == (GDK_CONTROL_MASK | GDK_SHIFT_MASK))
-        {
-          terminal_window_action_paste (window);
-          return TRUE;
-        }
-    }
-
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
 }
 
