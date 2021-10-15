@@ -2946,16 +2946,17 @@ terminal_window_menu_add_section (TerminalWindow      *window,
     gtk_menu_shell_append (GTK_MENU_SHELL (menu), item);                    \
   }
 
-  GtkWidget *item;
-  GtkWidget *insert_to_menu;
-  GtkMenu   *submenu;
+  GtkWidget         *item;
+  GtkWidget         *insert_to_menu;
+  GtkMenu           *submenu;
+  static const gint  n_signal_names = 31;
 
   insert_to_menu = menu;
 
   if (sections & MENU_SECTION_SIGNAL)
     {
       AS_SUBMENU ("Send Signal")
-      for (int i = 1; i < 32; i++)
+      for (int i = 1; i < n_signal_names; i++)
         {
           gchar          *label;
           SendSignalData *p = malloc (sizeof (SendSignalData));
@@ -3107,6 +3108,7 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH_PREV), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_search);
   xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+
   /* Set Encoding uses the TerminalAction, GtkAction, therefore it is deprecated */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), gtk_action_create_menu_item (window->priv->encoding_action));
@@ -3136,6 +3138,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gboolean    cycle_tabs;
   gboolean    can_go_left;
   gboolean    can_go_right;
+
   /* go-to menu */
   gint            n;
   GtkWidget      *page;
@@ -3168,6 +3171,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gtk_widget_set_sensitive (item, can_go_left);
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_RIGHT), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_go_right);
+  
   /* go-to menu */
   for (n = 0; n < n_pages; n++)
     {

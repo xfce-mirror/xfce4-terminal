@@ -110,11 +110,11 @@ typedef struct
 {
   GtkWindow              parent_instance;
 
-  GtkWidget           *menubar;
-  GtkWidget           *toolbar;
+  GtkWidget             *menubar;
+  GtkWidget             *toolbar;
 
-  gboolean             fullscreen_supported;
-  gboolean             is_fullscreen;
+  gboolean               fullscreen_supported;
+  gboolean               is_fullscreen;
 
   TerminalWindowPrivate *priv;
 } TerminalWindow;

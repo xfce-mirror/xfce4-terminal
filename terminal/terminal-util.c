@@ -152,5 +152,5 @@ void
 terminal_util_free_data (gpointer  data,
                          GClosure *closure)
 {
-  g_free(data);
+  g_free (data);
 }
