@@ -1,3 +1,46 @@
+0.9.0
+======
+This is a development release.
+
+- Replace the deprecated GtkActionEntries with XfceGtkActionEntries (Issue #79)
+- Opening a dialog from a drop-down window closes the window (Issue #136)
+- Add `Fill` background image style (MR !23).
+- Improved options parsing (for both short and long forms)
+- Add a menu entry to send signals to the foreground process (Issue #59)
+- Fix `keep window open` preference being applied on restart.
+- Rework "--tab" and "--window" behavior (Issue #13)
+- Ignore unused modifiers for scroll wheel zooming
+- Add alternative shortcuts for zooming (Issue #126)
+- Expand scrolled window and make dialog size 70% of parent (!17)
+- Support libxfce4ui XfceTitledDialog new API
+
+Unsafe Paste Dialog:
+- Update unsafe paste dialog text (Issue #73)
+- Fix paste button focus
+- Replace subtitle by infobar for Unsafe paste dialog
+- Fix the `unsafe paste` dialog to actually paste
+
+Cleanup:
+- Update `.gitignore`, HACKING, AUTHORS, COPYRIGHTS
+- Update --preferences, --tab and --window documentation
+- Fix various typos
+- Fix compilation warnings
+- Remove unnecessary function call (!24)
+
+Temporary changes (will be changed before the final release):
+- Add a "Do not warn me again" checkbox for the "Unsafe Paste" dialog (Issue #129)
+
+Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Bulgarian,
+  Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (United
+  Kingdom), Estonian, Finnish, French, Galician, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Interlingue, Italian, Japanese,
+  Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål, Occitan (post
+  1500), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish,
+  Ukrainian, Uyghur
+
 0.8.10
 ======
 - Bump libvte, gtk and xfce minimal versions (4.14)
