@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-10 00:50+0200\n"
-"PO-Revision-Date: 2021-09-09 22:50+0000\n"
+"POT-Creation-Date: 2021-10-16 12:50+0200\n"
+"PO-Revision-Date: 2021-10-16 10:51+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Malay (http://www.transifex.com/xfce/xfce-apps/language/ms/)\n"
 "MIME-Version: 1.0\n"
@@ -178,12 +178,12 @@ msgstr "Sila laporkan pepijat ke <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Tidak boleh daftar perkhidmatan terminal: %s\n"
 
-#: ../terminal/terminal-app.c:918
+#: ../terminal/terminal-app.c:917
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Rentetan geometri \"%s\" tidak sah\n"
 
-#: ../terminal/terminal-app.c:998
+#: ../terminal/terminal-app.c:997
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Gagal menyambung ke pengurus sesi: %s\n"
@@ -461,7 +461,7 @@ msgstr "Proses anak dihenti paksa oleh isyarat %d."
 msgid "The child process was aborted."
 msgstr "Proses anak telah dihenti paksa."
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:1013
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "Janga_n tanya saya lagi"
 
@@ -481,12 +481,12 @@ msgid ""
 "commands may be executed."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:936
-#: ../terminal/terminal-window.c:2534
+#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "_Batal"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:361
+#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "_Tampal"
 
@@ -601,382 +601,398 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Data warna tidak sah diterima: Format (%d) atau panjang (%d) salah\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:708
+#: ../terminal/terminal-widget.c:716
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Gagal membuka URL '%s'"
 
-#: ../terminal/terminal-window-dropdown.c:289
+#: ../terminal/terminal-window-dropdown.c:284
 msgid "Keep window open when it loses focus"
 msgstr "Kekalkan tetingkap terbuka bila ia kehilangan fokus"
 
-#: ../terminal/terminal-window-dropdown.c:414
+#: ../terminal/terminal-window-dropdown.c:402
 msgid "Drop-down Terminal"
 msgstr "Terminal Lepas-bawah"
 
-#: ../terminal/terminal-window-dropdown.c:415
+#: ../terminal/terminal-window-dropdown.c:403
 msgid "Toggle Drop-down Terminal"
 msgstr "Togol Terminal Lepas-turun"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:315
 msgid "_File"
 msgstr "_Fail"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:316
 msgid "Open _Tab"
 msgstr "Buka _Tab"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:316
 msgid "Open a new terminal tab"
 msgstr "Buka tab terminal baharu"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:317
 msgid "Open T_erminal"
 msgstr "Buka T_erminal"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:317
 msgid "Open a new terminal window"
 msgstr "Buka tetingkap terminal baharu"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:318
 msgid "_Undo Close Tab"
 msgstr "B_uat Asal Tab Tutup"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:319
 msgid "_Detach Tab"
 msgstr "Tan_ggalkan Tab"
 
-#: ../terminal/terminal-window.c:353 ../terminal/terminal-window.c:977
+#: ../terminal/terminal-window.c:320 ../terminal/terminal-window.c:844
 msgid "Close T_ab"
 msgstr "Tutup T_ab"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:321
 msgid "Close Other Ta_bs"
 msgstr "Tutup Ta_b Lain"
 
-#: ../terminal/terminal-window.c:355 ../terminal/terminal-window.c:984
+#: ../terminal/terminal-window.c:322 ../terminal/terminal-window.c:851
 msgid "Close _Window"
 msgstr "Tutup T_etingkap"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:323
 msgid "_Edit"
 msgstr "_Sunting"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:324
 msgid "_Copy"
 msgstr "Sa_lin"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:324
 msgid "Copy to clipboard"
 msgstr "Salin ke papan keratan"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:326
 msgid "Copy as _HTML"
 msgstr "Salin sebagai _HTML"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:326
 msgid "Copy to clipboard as HTML"
 msgstr "Salin ke papan keratan sebagai HTML"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:328
 msgid "Paste from clipboard"
 msgstr "Tampal dari papan keratan"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:329
+msgid "_Paste Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:330
 msgid "Paste _Selection"
 msgstr "Tampal Pe_milihan"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:331
+msgid "Paste _Selection Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:332
 msgid "Select _All"
 msgstr "Pilih Semu_a"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:333
 msgid "Copy _Input To All Tabs..."
 msgstr "Salin _Input Ke Semua Tab..."
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:334
 msgid "Pr_eferences..."
 msgstr "K_eutamaan..."
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:334
 msgid "Open the preferences dialog"
 msgstr "Buka dialog keutamaan"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:335
 msgid "_View"
 msgstr "_Lihat"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:336
 msgid "Zoom _In"
 msgstr "Zum _Masuk"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:336
 msgid "Zoom in with larger font"
 msgstr "Zum masuk dengan fon lebih besar"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:337
+msgid "Zoom In Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:338
 msgid "Zoom _Out"
 msgstr "Zum _Keluar"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:338
 msgid "Zoom out with smaller font"
 msgstr "Zum keluar dengan fon lebih kecil"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:339
+msgid "Zoom Out Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:340
 msgid "_Normal Size"
 msgstr "Saiz _Biasa"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:340
 msgid "Zoom to default size"
 msgstr "Zum ke saiz lalai"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:341
+msgid "_Normal Size Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:342
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:343
 msgid "_Set Title..."
 msgstr "T_etapkan Tajuk..."
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:344
 msgid "Set Title Co_lor..."
 msgstr "Tetapkan _Warna Tajuk..."
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:345
 msgid "_Find..."
 msgstr "_Cari..."
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:345
 msgid "Search terminal contents"
 msgstr "Gelintar kandungan terminal"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:346
 msgid "Find Ne_xt"
 msgstr "Cari Be_rikutnya"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:347
 msgid "Find Pre_vious"
 msgstr "Cari Ter_dahulu"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:348
 msgid "Sa_ve Contents..."
 msgstr "S_impan Kandungan..."
 
-#: ../terminal/terminal-window.c:381 ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:349 ../terminal/terminal-window.c:2076
 msgid "_Reset"
 msgstr "T_etap Semula"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:350
 msgid "_Clear Scrollback and Reset"
 msgstr "_Kosongkan Tatal Balik dan Tetap Semula"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:351
 msgid "T_abs"
 msgstr "T_ab"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:352
 msgid "_Previous Tab"
 msgstr "Tab Te_rdahulu"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:352
 msgid "Switch to previous tab"
 msgstr "Tukar ke tab terdahulu"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:353
 msgid "_Next Tab"
 msgstr "Tab _Berikutnya"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:353
 msgid "Switch to next tab"
 msgstr "Tukar ke tab berikutnya"
 
-#: ../terminal/terminal-window.c:386
+#: ../terminal/terminal-window.c:354
 msgid "Last _Active Tab"
 msgstr "Tab _Aktif Terakhir"
 
-#: ../terminal/terminal-window.c:386
+#: ../terminal/terminal-window.c:354
 msgid "Switch to last active tab"
 msgstr "Tukar ke tab aktif terakhir"
 
-#: ../terminal/terminal-window.c:387
+#: ../terminal/terminal-window.c:355
 msgid "Move Tab _Left"
 msgstr "Alih Tab Ke K_iri"
 
-#: ../terminal/terminal-window.c:388
+#: ../terminal/terminal-window.c:356
 msgid "Move Tab _Right"
 msgstr "Alih Tab Ke K_anan"
 
-#: ../terminal/terminal-window.c:389
+#: ../terminal/terminal-window.c:357
 msgid "_Help"
 msgstr "_Bantuan"
 
-#: ../terminal/terminal-window.c:390
+#: ../terminal/terminal-window.c:358
 msgid "_Contents"
 msgstr "Kand_ungan"
 
-#: ../terminal/terminal-window.c:390
+#: ../terminal/terminal-window.c:358
 msgid "Display help contents"
 msgstr "Papar kandungan bantuan"
 
-#: ../terminal/terminal-window.c:391
+#: ../terminal/terminal-window.c:359
 msgid "_About"
 msgstr "Per_ihal"
 
-#: ../terminal/terminal-window.c:392
+#: ../terminal/terminal-window.c:360
 msgid "_Zoom"
 msgstr "_Zum"
 
-#: ../terminal/terminal-window.c:393
-msgid "_Send Signal"
-msgstr ""
-
-#: ../terminal/terminal-window.c:429
+#: ../terminal/terminal-window.c:361
 msgid "Show _Menubar"
 msgstr "Tunjuk Palang _Menu"
 
-#: ../terminal/terminal-window.c:429
+#: ../terminal/terminal-window.c:361
 msgid "Show/hide the menubar"
 msgstr "Tunjuk/sembunyi palang menu"
 
-#: ../terminal/terminal-window.c:430
+#: ../terminal/terminal-window.c:362
 msgid "Show _Toolbar"
 msgstr "Tunjuk Palang Ala_t"
 
-#: ../terminal/terminal-window.c:430
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the toolbar"
 msgstr "Tunjuk/sembunyi palang alat"
 
-#: ../terminal/terminal-window.c:431
+#: ../terminal/terminal-window.c:363
 msgid "Show Window _Borders"
 msgstr "Tunjuk Sempada_n Tetingkap"
 
-#: ../terminal/terminal-window.c:431
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the window decorations"
 msgstr "Tunjuk/sembunyi hiasan tetingkap"
 
-#: ../terminal/terminal-window.c:432
+#: ../terminal/terminal-window.c:364
 msgid "_Fullscreen"
 msgstr "Skrin Pe_nuh"
 
-#: ../terminal/terminal-window.c:432
+#: ../terminal/terminal-window.c:364
 msgid "Toggle fullscreen mode"
 msgstr "Togol mod skrin penuh"
 
-#: ../terminal/terminal-window.c:433
+#: ../terminal/terminal-window.c:365
 msgid "_Read-Only"
 msgstr "_Baca-Sahaja"
 
-#: ../terminal/terminal-window.c:433
+#: ../terminal/terminal-window.c:365
 msgid "Toggle read-only mode"
 msgstr "Togol mod baca-sahaja"
 
-#: ../terminal/terminal-window.c:434
+#: ../terminal/terminal-window.c:366
 msgid "Scroll on _Output"
 msgstr "Tatal pada _Output"
 
-#: ../terminal/terminal-window.c:434
+#: ../terminal/terminal-window.c:366
 msgid "Toggle scroll on output"
 msgstr "Togol tatal pada output"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:534
 msgid "Set _Encoding"
 msgstr "Tetapkan P_engekodan"
 
-#: ../terminal/terminal-window.c:934
+#: ../terminal/terminal-window.c:801
 msgid "Warning"
 msgstr "Amaran"
 
 #. and process running
-#: ../terminal/terminal-window.c:945
+#: ../terminal/terminal-window.c:812
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Masih terdapat proses yang berjalan dalam sesetengah tab.\nMenutup tetingkap ini akan mematikan kesemuanya."
 
 #. and no process running
-#: ../terminal/terminal-window.c:951
+#: ../terminal/terminal-window.c:818
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Tetingkap ini mempunyai %d tab dibuka. Menutup tetingkap\nini juga akan menutup semua tabnya."
 
-#: ../terminal/terminal-window.c:955
+#: ../terminal/terminal-window.c:822
 msgid "Close all tabs?"
 msgstr "Tutup semua tab?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:962
+#: ../terminal/terminal-window.c:829
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Masih terdapat proses yang berjalan.\nMenutup tab ini akan mematikannya."
 
-#: ../terminal/terminal-window.c:964
+#: ../terminal/terminal-window.c:831
 msgid "Close tab?"
 msgstr "Tutup tab?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:969
+#: ../terminal/terminal-window.c:836
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Masih terdapat proses yang berjalan.\nMenutup tetingkap ini akan mematikan kesemuanya."
 
-#: ../terminal/terminal-window.c:971
+#: ../terminal/terminal-window.c:838
 msgid "Close window?"
 msgstr "Tutup tetingkap?"
 
-#: ../terminal/terminal-window.c:1981
+#: ../terminal/terminal-window.c:1730
 msgid "Copy _Input:"
 msgstr "Salin _Input:"
 
-#: ../terminal/terminal-window.c:1985
+#: ../terminal/terminal-window.c:1734
 msgid "Enter the text to be copied to all tabs"
 msgstr "Masukkna teks yang mahu disalin ke semua tab"
 
-#: ../terminal/terminal-window.c:1993
+#: ../terminal/terminal-window.c:1742
 msgid "Copy input"
 msgstr "Salin input"
 
-#: ../terminal/terminal-window.c:2346
+#: ../terminal/terminal-window.c:2029
 msgid "_Title:"
 msgstr "_Tajuk:"
 
-#: ../terminal/terminal-window.c:2350
+#: ../terminal/terminal-window.c:2033
 msgid "Enter the title for the current terminal tab"
 msgstr "Masukkan tajuk untuk tab terminal semasa"
 
-#: ../terminal/terminal-window.c:2355
+#: ../terminal/terminal-window.c:2038
 msgid "Reset"
 msgstr "Tetap Semula"
 
-#: ../terminal/terminal-window.c:2365
+#: ../terminal/terminal-window.c:2048
 msgid "Help"
 msgstr "Bantuan"
 
-#: ../terminal/terminal-window.c:2371
+#: ../terminal/terminal-window.c:2054
 msgid "Close"
 msgstr "Tutup"
 
-#: ../terminal/terminal-window.c:2393
+#: ../terminal/terminal-window.c:2075
 msgid "Choose title color"
 msgstr "Pilih warna tajuk"
 
-#: ../terminal/terminal-window.c:2490
+#: ../terminal/terminal-window.c:2162
 msgid "Failed to create the regular expression"
 msgstr "Gagal mencipta ungkapan nalar"
 
-#: ../terminal/terminal-window.c:2531
+#: ../terminal/terminal-window.c:2200
 msgid "Save contents..."
 msgstr "Simpan kandungan..."
 
-#: ../terminal/terminal-window.c:2535
+#: ../terminal/terminal-window.c:2204
 msgid "_Save"
 msgstr "_Simpan"
 
-#: ../terminal/terminal-window.c:2572
+#: ../terminal/terminal-window.c:2241
 msgid "Failed to save terminal contents"
 msgstr "Gagal menyimpan kandungan terminal"
 
