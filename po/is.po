@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-10 00:50+0200\n"
-"PO-Revision-Date: 2021-09-09 22:50+0000\n"
+"POT-Creation-Date: 2021-10-16 12:50+0200\n"
+"PO-Revision-Date: 2021-10-16 10:51+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Icelandic (http://www.transifex.com/xfce/xfce-apps/language/is/)\n"
 "MIME-Version: 1.0\n"
@@ -178,12 +178,12 @@ msgstr "Tilkynntu villur til <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr ""
 
-#: ../terminal/terminal-app.c:918
+#: ../terminal/terminal-app.c:917
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr ""
 
-#: ../terminal/terminal-app.c:998
+#: ../terminal/terminal-app.c:997
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr ""
@@ -461,7 +461,7 @@ msgstr ""
 msgid "The child process was aborted."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:1013
+#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "E_kki spyrja mig aftur"
 
@@ -481,12 +481,12 @@ msgid ""
 "commands may be executed."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:936
-#: ../terminal/terminal-window.c:2534
+#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "_Hætta við"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:361
+#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "_Líma"
 
@@ -601,382 +601,398 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr ""
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:708
+#: ../terminal/terminal-widget.c:716
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Mistókst að opna URL-slóð '%s'"
 
-#: ../terminal/terminal-window-dropdown.c:289
+#: ../terminal/terminal-window-dropdown.c:284
 msgid "Keep window open when it loses focus"
 msgstr "Halda glugga opnum þegar hann missir virkni"
 
-#: ../terminal/terminal-window-dropdown.c:414
+#: ../terminal/terminal-window-dropdown.c:402
 msgid "Drop-down Terminal"
 msgstr "Skjáhermir í fellilista"
 
-#: ../terminal/terminal-window-dropdown.c:415
+#: ../terminal/terminal-window-dropdown.c:403
 msgid "Toggle Drop-down Terminal"
 msgstr "Víxla skjáhermi í fellilista af/á"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:315
 msgid "_File"
 msgstr "_Skrá"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:316
 msgid "Open _Tab"
 msgstr "Opna _flipa"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:316
 msgid "Open a new terminal tab"
 msgstr "Opna nýjan flipa í skjáhermi"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:317
 msgid "Open T_erminal"
 msgstr "O_pna skjáhermi"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:317
 msgid "Open a new terminal window"
 msgstr "Opna nýjan glugga í skjáhermi"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:318
 msgid "_Undo Close Tab"
 msgstr "Aftur_kalla að loka flipa"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:319
 msgid "_Detach Tab"
 msgstr "_Aftengja flipa"
 
-#: ../terminal/terminal-window.c:353 ../terminal/terminal-window.c:977
+#: ../terminal/terminal-window.c:320 ../terminal/terminal-window.c:844
 msgid "Close T_ab"
 msgstr "L_oka flipa"
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:321
 msgid "Close Other Ta_bs"
 msgstr "Loka öðrum fli_pum"
 
-#: ../terminal/terminal-window.c:355 ../terminal/terminal-window.c:984
+#: ../terminal/terminal-window.c:322 ../terminal/terminal-window.c:851
 msgid "Close _Window"
 msgstr "Lo_ka glugga"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:323
 msgid "_Edit"
 msgstr "_Breyta"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:324
 msgid "_Copy"
 msgstr "_Afrita"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:324
 msgid "Copy to clipboard"
 msgstr "Afrita á klippispjald"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:326
 msgid "Copy as _HTML"
 msgstr "Afrita sem _HTML"
 
-#: ../terminal/terminal-window.c:359
+#: ../terminal/terminal-window.c:326
 msgid "Copy to clipboard as HTML"
 msgstr "Afrita á klippispjald sem HTML"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:328
 msgid "Paste from clipboard"
 msgstr "Líma af klippiborði"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:329
+msgid "_Paste Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:330
 msgid "Paste _Selection"
 msgstr "_Líma valið"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:331
+msgid "Paste _Selection Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:332
 msgid "Select _All"
 msgstr "Velja _allt"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:333
 msgid "Copy _Input To All Tabs..."
 msgstr "Afrita _inntak á alla flipa..."
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:334
 msgid "Pr_eferences..."
 msgstr "E_iginleikar..."
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:334
 msgid "Open the preferences dialog"
 msgstr "Opna valmynd fyrir stillingar"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:335
 msgid "_View"
 msgstr "S_koða"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:336
 msgid "Zoom _In"
 msgstr "Renna _að"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:336
 msgid "Zoom in with larger font"
 msgstr "Renna að með stærra letri"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:337
+msgid "Zoom In Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:338
 msgid "Zoom _Out"
 msgstr "Renna _frá"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:338
 msgid "Zoom out with smaller font"
 msgstr "Renna að með minna letri"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:339
+msgid "Zoom Out Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:340
 msgid "_Normal Size"
 msgstr "Ve_njuleg Stærð"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:340
 msgid "Zoom to default size"
 msgstr "Renna ða sjálfgefinni stærð"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:341
+msgid "_Normal Size Alt"
+msgstr ""
+
+#: ../terminal/terminal-window.c:342
 msgid "_Terminal"
 msgstr "S_kjáhermir"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:343
 msgid "_Set Title..."
 msgstr "_Setja titil..."
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:344
 msgid "Set Title Co_lor..."
 msgstr "Stilla _lit á titli..."
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:345
 msgid "_Find..."
 msgstr "_Finna..."
 
-#: ../terminal/terminal-window.c:377
+#: ../terminal/terminal-window.c:345
 msgid "Search terminal contents"
 msgstr "Leita í efni skjáhermis"
 
-#: ../terminal/terminal-window.c:378
+#: ../terminal/terminal-window.c:346
 msgid "Find Ne_xt"
 msgstr "Finna _næsta"
 
-#: ../terminal/terminal-window.c:379
+#: ../terminal/terminal-window.c:347
 msgid "Find Pre_vious"
 msgstr "Finna f_yrri"
 
-#: ../terminal/terminal-window.c:380
+#: ../terminal/terminal-window.c:348
 msgid "Sa_ve Contents..."
 msgstr "_Vista innihald..."
 
-#: ../terminal/terminal-window.c:381 ../terminal/terminal-window.c:2394
+#: ../terminal/terminal-window.c:349 ../terminal/terminal-window.c:2076
 msgid "_Reset"
 msgstr "F_rumstilla"
 
-#: ../terminal/terminal-window.c:382
+#: ../terminal/terminal-window.c:350
 msgid "_Clear Scrollback and Reset"
 msgstr "Hreinsa afturrakningu og frumstilla"
 
-#: ../terminal/terminal-window.c:383
+#: ../terminal/terminal-window.c:351
 msgid "T_abs"
 msgstr "_Flipar"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:352
 msgid "_Previous Tab"
 msgstr "_Fyrri flipi"
 
-#: ../terminal/terminal-window.c:384
+#: ../terminal/terminal-window.c:352
 msgid "Switch to previous tab"
 msgstr "Fara á síðasta flipa"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:353
 msgid "_Next Tab"
 msgstr "_Næsti flipi"
 
-#: ../terminal/terminal-window.c:385
+#: ../terminal/terminal-window.c:353
 msgid "Switch to next tab"
 msgstr "Fara á næsta flipa"
 
-#: ../terminal/terminal-window.c:386
+#: ../terminal/terminal-window.c:354
 msgid "Last _Active Tab"
 msgstr "Síð_asti virki flipi"
 
-#: ../terminal/terminal-window.c:386
+#: ../terminal/terminal-window.c:354
 msgid "Switch to last active tab"
 msgstr "Skipta yfir í síðast virka flipa"
 
-#: ../terminal/terminal-window.c:387
+#: ../terminal/terminal-window.c:355
 msgid "Move Tab _Left"
 msgstr "Færa flipa til _vinstri"
 
-#: ../terminal/terminal-window.c:388
+#: ../terminal/terminal-window.c:356
 msgid "Move Tab _Right"
 msgstr "Fæ_ra flipa til hægri"
 
-#: ../terminal/terminal-window.c:389
+#: ../terminal/terminal-window.c:357
 msgid "_Help"
 msgstr "_Hjálp"
 
-#: ../terminal/terminal-window.c:390
+#: ../terminal/terminal-window.c:358
 msgid "_Contents"
 msgstr "_Innihald"
 
-#: ../terminal/terminal-window.c:390
+#: ../terminal/terminal-window.c:358
 msgid "Display help contents"
 msgstr "Birta efnisyfirlit hjálpar"
 
-#: ../terminal/terminal-window.c:391
+#: ../terminal/terminal-window.c:359
 msgid "_About"
 msgstr "_Um forritið"
 
-#: ../terminal/terminal-window.c:392
+#: ../terminal/terminal-window.c:360
 msgid "_Zoom"
 msgstr "_Aðdráttur"
 
-#: ../terminal/terminal-window.c:393
-msgid "_Send Signal"
-msgstr ""
-
-#: ../terminal/terminal-window.c:429
+#: ../terminal/terminal-window.c:361
 msgid "Show _Menubar"
 msgstr "Sýna _valmyndaslá"
 
-#: ../terminal/terminal-window.c:429
+#: ../terminal/terminal-window.c:361
 msgid "Show/hide the menubar"
 msgstr "Birta/Fela valmyndaslá"
 
-#: ../terminal/terminal-window.c:430
+#: ../terminal/terminal-window.c:362
 msgid "Show _Toolbar"
 msgstr "_Birta verkfærastiku"
 
-#: ../terminal/terminal-window.c:430
+#: ../terminal/terminal-window.c:362
 msgid "Show/hide the toolbar"
 msgstr "Sýna/Fela verkfærastikuna"
 
-#: ../terminal/terminal-window.c:431
+#: ../terminal/terminal-window.c:363
 msgid "Show Window _Borders"
 msgstr "Sýna glugga_jaðra"
 
-#: ../terminal/terminal-window.c:431
+#: ../terminal/terminal-window.c:363
 msgid "Show/hide the window decorations"
 msgstr "Sýna/Fela gluggaskreytingar"
 
-#: ../terminal/terminal-window.c:432
+#: ../terminal/terminal-window.c:364
 msgid "_Fullscreen"
 msgstr "_Heilskjár"
 
-#: ../terminal/terminal-window.c:432
+#: ../terminal/terminal-window.c:364
 msgid "Toggle fullscreen mode"
 msgstr "Víxla heilskjásham"
 
-#: ../terminal/terminal-window.c:433
+#: ../terminal/terminal-window.c:365
 msgid "_Read-Only"
 msgstr "Sk_rifvarið"
 
-#: ../terminal/terminal-window.c:433
+#: ../terminal/terminal-window.c:365
 msgid "Toggle read-only mode"
 msgstr "Víxla lesham/skrifham af/á"
 
-#: ../terminal/terminal-window.c:434
+#: ../terminal/terminal-window.c:366
 msgid "Scroll on _Output"
 msgstr "Skr_una með úttaki"
 
-#: ../terminal/terminal-window.c:434
+#: ../terminal/terminal-window.c:366
 msgid "Toggle scroll on output"
 msgstr "Víxla skruna með úttaki af/á"
 
 #. create encoding action
-#: ../terminal/terminal-window.c:606
+#: ../terminal/terminal-window.c:534
 msgid "Set _Encoding"
 msgstr "_Setja stafatöflu"
 
-#: ../terminal/terminal-window.c:934
+#: ../terminal/terminal-window.c:801
 msgid "Warning"
 msgstr "Aðvörun"
 
 #. and process running
-#: ../terminal/terminal-window.c:945
+#: ../terminal/terminal-window.c:812
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Enn eru ferli í gangi í einhverjum flipum.\nEf þú lokar glugganum muntu drepa ferlin."
 
 #. and no process running
-#: ../terminal/terminal-window.c:951
+#: ../terminal/terminal-window.c:818
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Þessi gluggi er með %d flipa opna. Ef glugganum\ner lokað, er öllum flipum lokað."
 
-#: ../terminal/terminal-window.c:955
+#: ../terminal/terminal-window.c:822
 msgid "Close all tabs?"
 msgstr "Loka öllum flipum?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:962
+#: ../terminal/terminal-window.c:829
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "Enn er ferli í gangi.\nEf þú lokar flipanum muntu drepa ferlið."
 
-#: ../terminal/terminal-window.c:964
+#: ../terminal/terminal-window.c:831
 msgid "Close tab?"
 msgstr "Loka flipa?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:969
+#: ../terminal/terminal-window.c:836
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Enn er ferli í gangi.\nEf þú lokar skjáherminum muntu drepa ferlið."
 
-#: ../terminal/terminal-window.c:971
+#: ../terminal/terminal-window.c:838
 msgid "Close window?"
 msgstr "Loka glugga?"
 
-#: ../terminal/terminal-window.c:1981
+#: ../terminal/terminal-window.c:1730
 msgid "Copy _Input:"
 msgstr "Afrita _inntak:"
 
-#: ../terminal/terminal-window.c:1985
+#: ../terminal/terminal-window.c:1734
 msgid "Enter the text to be copied to all tabs"
 msgstr ""
 
-#: ../terminal/terminal-window.c:1993
+#: ../terminal/terminal-window.c:1742
 msgid "Copy input"
 msgstr "Afrita inntak"
 
-#: ../terminal/terminal-window.c:2346
+#: ../terminal/terminal-window.c:2029
 msgid "_Title:"
 msgstr "_Titill:"
 
-#: ../terminal/terminal-window.c:2350
+#: ../terminal/terminal-window.c:2033
 msgid "Enter the title for the current terminal tab"
 msgstr ""
 
-#: ../terminal/terminal-window.c:2355
+#: ../terminal/terminal-window.c:2038
 msgid "Reset"
 msgstr "Frumstilla"
 
-#: ../terminal/terminal-window.c:2365
+#: ../terminal/terminal-window.c:2048
 msgid "Help"
 msgstr "Hjálp"
 
-#: ../terminal/terminal-window.c:2371
+#: ../terminal/terminal-window.c:2054
 msgid "Close"
 msgstr "Loka"
 
-#: ../terminal/terminal-window.c:2393
+#: ../terminal/terminal-window.c:2075
 msgid "Choose title color"
 msgstr "Veldu lit á titil"
 
-#: ../terminal/terminal-window.c:2490
+#: ../terminal/terminal-window.c:2162
 msgid "Failed to create the regular expression"
 msgstr ""
 
-#: ../terminal/terminal-window.c:2531
+#: ../terminal/terminal-window.c:2200
 msgid "Save contents..."
 msgstr "Vista innihald..."
 
-#: ../terminal/terminal-window.c:2535
+#: ../terminal/terminal-window.c:2204
 msgid "_Save"
 msgstr "Vi_sta"
 
-#: ../terminal/terminal-window.c:2572
+#: ../terminal/terminal-window.c:2241
 msgid "Failed to save terminal contents"
 msgstr "Mistókst að vista efni skjáhermis"
 
