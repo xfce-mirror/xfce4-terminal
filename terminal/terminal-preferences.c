@@ -115,6 +115,8 @@ enum
   PROP_MISC_NEW_TAB_ADJACENT,
   PROP_MISC_SEARCH_DIALOG_OPACITY,
   PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG,
+  /* RGBA value for border. Only in rc file. */
+  PROP_MISC_COLOR_BORDER_WINDOW,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -1079,6 +1081,19 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscShowUnsafePasteDialog",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-color-border-window:
+   *
+   * RGBA value for custom border. If not set (NULL) border will not be
+   * painted. (No default value).
+   **/
+  preferences_props[PROP_MISC_COLOR_BORDER_WINDOW] =
+      g_param_spec_string ("misc-color-border-window",
+                           NULL,
+                           "MiscColorBorderWindow",
+                           NULL,
+                           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:
