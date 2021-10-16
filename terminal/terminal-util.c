@@ -145,3 +145,12 @@ terminal_util_activate_window (GtkWindow *window)
   gtk_window_present (window);
 #endif
 }
+
+
+
+void
+terminal_util_free_data (gpointer  data,
+                         GClosure *closure)
+{
+  g_free (data);
+}
