@@ -256,6 +256,9 @@ terminal_app_update_windows_accels (gpointer user_data)
   for (lp = app->windows; lp != NULL; lp = lp->next)
     {
       terminal_window_update_tab_key_accels (TERMINAL_WINDOW (lp->data), app->tab_key_accels);
+
+      /* the accel_map is loaded after the first windows are created, so they can't create the go-to actions on page-insert */
+      terminal_window_update_goto_accels (TERMINAL_WINDOW (lp->data));
     }
 
   app->accel_map_load_id = 0;

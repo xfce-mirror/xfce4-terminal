@@ -180,6 +180,8 @@ void               terminal_window_action_show_menubar      (TerminalWindow     
 void               terminal_window_update_tab_key_accels    (TerminalWindow     *window,
                                                              GSList             *tab_key_accels);
 
+void               terminal_window_update_goto_accels       (TerminalWindow     *window);
+
 XfceGtkActionEntry *terminal_window_get_action_entry         (TerminalWindow      *window,
                                                               TerminalWindowAction action);
 

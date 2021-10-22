@@ -3225,6 +3225,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 
 
+/**
+ * terminal_window_update_goto_accels:
+ * @window  : A #TerminalWindow.
+ *
+ * Calls terminal_window_update_tabs_menu to create the go-to actions and their accelerators.
+ **/
+void
+terminal_window_update_goto_accels (TerminalWindow *window)
+{
+  terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
+}
+
+
+
 static void
 terminal_window_update_help_menu     (TerminalWindow      *window,
                                       GtkWidget           *menu)
