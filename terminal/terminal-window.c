@@ -2280,6 +2280,15 @@ terminal_window_action_send_signal (SendSignalData *data)
 static void
 terminal_window_action_contents (TerminalWindow  *window)
 {
+  gboolean no_key;
+
+  /* check if the user has disabled the`Help` shortcut */
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "shortcuts-no-helpkey", &no_key,
+                NULL);
+  if (no_key == TRUE)
+    return;
+
   /* don't hide the drop-down terminal */
   if (TERMINAL_IS_WINDOW_DROPDOWN (window))
     terminal_window_dropdown_ignore_next_focus_out_event (TERMINAL_WINDOW_DROPDOWN (window));
