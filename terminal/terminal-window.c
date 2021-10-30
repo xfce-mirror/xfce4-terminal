@@ -3057,7 +3057,7 @@ terminal_window_update_file_menu (TerminalWindow      *window,
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_OTHER_TABS), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, n_pages > 1);
-  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (CONFIRMED_CLOSE_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (GTK_WIDGET (menu));
 }
