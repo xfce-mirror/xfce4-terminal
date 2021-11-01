@@ -33,6 +33,7 @@
 #endif
 
 #include <libxfce4ui/libxfce4ui.h>
+#include <libxfce4kbd-private-3/libxfce4kbd-private/xfce-shortcuts-editor-dialog.h>
 
 #if defined(GDK_WINDOWING_X11)
 #include <gdk/gdkx.h>
@@ -2302,12 +2303,13 @@ terminal_window_action_contents (TerminalWindow  *window)
 static void
 terminal_window_action_about (TerminalWindow *window)
 {
-  /* don't hide the drop-down terminal */
-  if (TERMINAL_IS_WINDOW_DROPDOWN (window))
-    terminal_window_dropdown_ignore_next_focus_out_event (TERMINAL_WINDOW_DROPDOWN (window));
-
-  /* display the about dialog */
-  terminal_util_show_about_dialog (GTK_WINDOW (window));
+//  /* don't hide the drop-down terminal */
+//  if (TERMINAL_IS_WINDOW_DROPDOWN (window))
+//    terminal_window_dropdown_ignore_next_focus_out_event (TERMINAL_WINDOW_DROPDOWN (window));
+//
+//  /* display the about dialog */
+//  terminal_util_show_about_dialog (GTK_WINDOW (window));
+  xfce_shortcuts_editor_dialog_new (3, action_entries, TERMINAL_WINDOW_ACTION_N);
 }
 
 
