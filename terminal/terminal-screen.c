@@ -98,6 +98,17 @@ enum
   N_HSV
 };
 
+typedef enum
+{
+  DISABLE_PASTE_DIALOG_NOT,
+  DISABLE_PASTE_DIALOG_5,
+  DISABLE_PASTE_DIALOG_15,
+  DISABLE_PASTE_DIALOG_RESTART,
+  DISABLE_PASTE_DIALOG_PERMANENT,
+
+  DISABLE_PASTE_DIALOG_N
+} DisablePasteDialog;
+
 
 
 static void       terminal_screen_finalize                      (GObject               *object);
@@ -215,10 +226,26 @@ struct _TerminalScreen
   time_t               activity_resize_time;
 };
 
+typedef struct
+{
+  DisablePasteDialog  id;
+  gchar              *string;
+} DisablePasteDialogEntry;
 
 
-static guint screen_signals[LAST_SIGNAL];
-static guint screen_last_session_id = 0;
+
+static guint                   screen_signals[LAST_SIGNAL];
+static guint                   screen_last_session_id             = 0;
+static gboolean                disable_paste_dialog_temporarily   = FALSE;
+static gboolean                disable_paste_dialog_until_restart = FALSE;
+static DisablePasteDialogEntry disable_unsafe_past_dialog_texts[] =
+{
+  { DISABLE_PASTE_DIALOG_NOT,       N_ ("Do not disable dialog")                                 },
+  { DISABLE_PASTE_DIALOG_5,         N_ ("Disable for 5 minutes")                                 },
+  { DISABLE_PASTE_DIALOG_15,        N_ ("Disable for 15 minutes")                                },
+  { DISABLE_PASTE_DIALOG_RESTART,   N_ ("Disable until program restart")                         },
+  { DISABLE_PASTE_DIALOG_PERMANENT, N_ ("Disable dialog (can be re-enabled in the Preferences)") }
+};
 
 
 
@@ -1756,7 +1783,8 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   GtkWidget     *dialog = xfce_titled_dialog_new ();
   GtkWidget     *infobar = gtk_info_bar_new ();
   GtkWidget     *box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  GtkWidget     *button, *label, *checkbox;
+  GtkWidget     *button, *label;
+  GtkWidget     *combo;
   gint           parent_w, parent_h;
 
   gtk_window_set_transient_for (GTK_WINDOW (dialog), parent);
@@ -1813,13 +1841,24 @@ terminal_screen_unsafe_paste_dialog_new (TerminalScreen *screen,
   gtk_container_add (GTK_CONTAINER (sw), tv);
   gtk_container_add (GTK_CONTAINER (box), sw);
 
-  checkbox = gtk_check_button_new_with_mnemonic (_("Do _not warn me again (not recommended)"));
-  gtk_container_add (GTK_CONTAINER (box), checkbox);
-  gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), FALSE);
+  combo = gtk_combo_box_text_new ();
+  for (gint i = 0; i < DISABLE_PASTE_DIALOG_N; i++)
+    gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), disable_unsafe_past_dialog_texts[i].string);
+  gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
+  gtk_container_add (GTK_CONTAINER (box), combo);
 
   gtk_text_buffer_set_text (buffer, text, -1);
 
   return dialog;
+}
+
+
+
+static gboolean
+enable_unsafe_paste_dialog (gpointer ptr)
+{
+  disable_paste_dialog_temporarily = FALSE;
+  return FALSE;
 }
 
 
@@ -1847,9 +1886,11 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
       GtkWidget     *sw = gtk_container_get_children (GTK_CONTAINER (box))->next->data;
       GtkTextView   *tv = GTK_TEXT_VIEW (gtk_bin_get_child (GTK_BIN (sw)));
       GtkTextBuffer *buffer = gtk_text_view_get_buffer (tv);
-      GtkWidget     *checkbox = gtk_container_get_children (GTK_CONTAINER (box))->next->next->data;
+      GtkWidget     *combo = gtk_container_get_children (GTK_CONTAINER (box))->next->next->data;
       GtkTextIter    start, end;
-      char          *res_text;
+      gchar         *res_text;
+      gchar         *combo_text;
+      gint           i;
 
       gtk_text_buffer_get_bounds (buffer, &start, &end);
       res_text = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
@@ -1874,11 +1915,36 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
         }
 
       /* disable the dialog */
-      if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbox)))
+      combo_text = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (combo));
+      for (i = DISABLE_PASTE_DIALOG_NOT; i < DISABLE_PASTE_DIALOG_N; i++)
         {
-          g_object_set (G_OBJECT (screen->preferences),
-                        "misc-show-unsafe-paste-dialog", FALSE,
-                        NULL);
+          if (g_strcmp0 (combo_text, disable_unsafe_past_dialog_texts[i].string) == 0)
+            break;
+        }
+
+      switch (i)
+        {
+          case DISABLE_PASTE_DIALOG_NOT:
+            break;
+          case DISABLE_PASTE_DIALOG_5:
+            disable_paste_dialog_temporarily = TRUE;
+            g_timeout_add_seconds (300, enable_unsafe_paste_dialog, NULL);
+            break;
+          case DISABLE_PASTE_DIALOG_15:
+            disable_paste_dialog_temporarily = TRUE;
+            g_timeout_add_seconds (900, enable_unsafe_paste_dialog, NULL);
+            break;
+          case DISABLE_PASTE_DIALOG_RESTART:
+            disable_paste_dialog_until_restart = TRUE;
+            break;
+          case DISABLE_PASTE_DIALOG_PERMANENT:
+            g_object_set (G_OBJECT (screen->preferences),
+                          "misc-show-unsafe-paste-dialog", FALSE,
+                          NULL);
+            break;
+
+          default:
+            break;
         }
     }
 
@@ -2502,7 +2568,7 @@ terminal_screen_paste_clipboard (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
 
-  if (show_dialog && terminal_screen_is_text_unsafe (text))
+  if (show_dialog && terminal_screen_is_text_unsafe (text) && disable_paste_dialog_temporarily == FALSE && disable_paste_dialog_until_restart == FALSE)
     terminal_screen_paste_unsafe_text (screen, text, GDK_SELECTION_CLIPBOARD);
   else
     vte_terminal_paste_clipboard (VTE_TERMINAL (screen->terminal));
@@ -2531,7 +2597,7 @@ terminal_screen_paste_primary (TerminalScreen *screen)
 
   g_object_get (G_OBJECT (screen->preferences), "misc-show-unsafe-paste-dialog", &show_dialog, NULL);
 
-  if (show_dialog && terminal_screen_is_text_unsafe (text))
+  if (show_dialog && terminal_screen_is_text_unsafe (text) && disable_paste_dialog_temporarily == FALSE && disable_paste_dialog_until_restart == FALSE)
     terminal_screen_paste_unsafe_text (screen, text, GDK_SELECTION_PRIMARY);
   else
     vte_terminal_paste_primary (VTE_TERMINAL (screen->terminal));
