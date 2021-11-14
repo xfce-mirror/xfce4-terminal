@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 12:50+0200\n"
-"PO-Revision-Date: 2021-10-17 00:05+0000\n"
+"POT-Creation-Date: 2021-11-14 00:50+0100\n"
+"PO-Revision-Date: 2021-11-14 06:26+0000\n"
 "Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>\n"
 "Language-Team: Japanese (http://www.transifex.com/xfce/xfce-apps/language/ja/)\n"
 "MIME-Version: 1.0\n"
@@ -180,12 +180,12 @@ msgstr "バグの報告は <%s> までお願いします。"
 msgid "Unable to register terminal service: %s\n"
 msgstr "ターミナルサービスを登録できません: %s\n"
 
-#: ../terminal/terminal-app.c:917
+#: ../terminal/terminal-app.c:920
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "ジオメトリ文字列 \"%s\" は不適切です。\n"
 
-#: ../terminal/terminal-app.c:997
+#: ../terminal/terminal-app.c:1000
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "セッションマネージャーへの接続に失敗しました: %s\n"
@@ -435,77 +435,93 @@ msgstr "プリセットの読み込み..."
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:459 ../terminal/terminal-screen.c:840
-#: ../terminal/terminal-screen.c:2313
+#: ../terminal/terminal-screen.c:243
+msgid "Do not disable dialog"
+msgstr "ダイアログを無効にしない"
+
+#: ../terminal/terminal-screen.c:244
+msgid "Disable for 5 minutes"
+msgstr "5分間無効にする"
+
+#: ../terminal/terminal-screen.c:245
+msgid "Disable for 15 minutes"
+msgstr "15分間無効にする"
+
+#: ../terminal/terminal-screen.c:246
+msgid "Disable until program restart"
+msgstr "プログラムを再起動するまで無効にする"
+
+#: ../terminal/terminal-screen.c:247
+msgid "Disable dialog (can be re-enabled in the Preferences)"
+msgstr "ダイアログを無効にする（設定で再度有効にできます）"
+
+#: ../terminal/terminal-screen.c:486 ../terminal/terminal-screen.c:867
+#: ../terminal/terminal-screen.c:2379
 msgid "Untitled"
 msgstr "無題"
 
-#: ../terminal/terminal-screen.c:741
+#: ../terminal/terminal-screen.c:768
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "あなたのログインシェルを特定できません。"
 
-#: ../terminal/terminal-screen.c:1435
+#: ../terminal/terminal-screen.c:1462
 msgid "_Relaunch"
 msgstr "再開(_R)"
 
-#: ../terminal/terminal-screen.c:1441
+#: ../terminal/terminal-screen.c:1468
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "子プロセスがステータス %d で正常に終了しました。"
 
-#: ../terminal/terminal-screen.c:1443
+#: ../terminal/terminal-screen.c:1470
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "子プロセスがシグナル %d で中断されました。"
 
-#: ../terminal/terminal-screen.c:1445
+#: ../terminal/terminal-screen.c:1472
 msgid "The child process was aborted."
 msgstr "子プロセスが中断されました。"
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
+#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "次回から確認しない(_N)"
 
-#: ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1792
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "警告: 安全ではない可能性のある貼り付け"
 
-#: ../terminal/terminal-screen.c:1767
+#: ../terminal/terminal-screen.c:1795
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "このテキストをターミナルに貼り付けるのは危険かもしれません。いくつかのコマンドが実行され、ルートアクセス（sudo）が発生する可能性があります。"
 
-#: ../terminal/terminal-screen.c:1770
+#: ../terminal/terminal-screen.c:1798
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "このテキストをターミナルにペーストすると、何かしらのコマンドが実行されるように見えるため危険です。"
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-screen.c:1810 ../terminal/terminal-window.c:803
 #: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
+#: ../terminal/terminal-screen.c:1817 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "貼り付け(_P)"
 
-#: ../terminal/terminal-screen.c:1816
-msgid "Do _not warn me again (not recommended)"
-msgstr "再度警告しない (非推奨) (_N)"
-
-#: ../terminal/terminal-screen.c:1907 ../terminal/terminal-screen.c:1991
-#: ../terminal/terminal-screen.c:2029
+#: ../terminal/terminal-screen.c:1973 ../terminal/terminal-screen.c:2057
+#: ../terminal/terminal-screen.c:2095
 msgid "Failed to execute child"
 msgstr "子プロセスの実行に失敗しました。"
 
-#: ../terminal/terminal-screen.c:2676
+#: ../terminal/terminal-screen.c:2742
 msgid "Close this tab"
 msgstr "このタブを閉じる"
 
-#: ../terminal/terminal-screen.c:2729
+#: ../terminal/terminal-screen.c:2795
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "文字エンコーディングの設定に失敗しました %s\n"
@@ -563,47 +579,47 @@ msgstr "Daichi Kawahata <daichi@xfce.org>\nMasato Hashimoto <hashimo@xfce.org>\n
 msgid "Visit Xfce Terminal website"
 msgstr "Xfce Terminal のウェブサイトへ"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:332
 msgid "Copy Email Address"
 msgstr "メールアドレスをコピー"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:333
 msgid "Compose Email"
 msgstr "メールの作成"
 
-#: ../terminal/terminal-widget.c:334
+#: ../terminal/terminal-widget.c:337
 msgid "Copy Link Address"
 msgstr "リンクのアドレスをコピー"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:338
 msgid "Open Link"
 msgstr "リンクを開く"
 
-#: ../terminal/terminal-widget.c:498
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "MIME タイプ text/plain の選択領域をターミナルにドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:514
+#: ../terminal/terminal-widget.c:517
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "ターミナルの URL を Mozilla にドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:541
+#: ../terminal/terminal-widget.c:544
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "ターミナルの URI リストをドロップできません: 不正な形式 (%d) か長さ (%d) です\n"
 
-#: ../terminal/terminal-widget.c:578
+#: ../terminal/terminal-widget.c:581
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "不正な色データを受け取りました: 不正な形式 (%d) か長さ (%d) です\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:716
+#: ../terminal/terminal-widget.c:740
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "URL '%s' をブラウザーで開けませんでした"
