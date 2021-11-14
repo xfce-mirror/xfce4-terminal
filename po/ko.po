@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 12:50+0200\n"
-"PO-Revision-Date: 2021-10-16 10:51+0000\n"
+"POT-Creation-Date: 2021-11-14 00:50+0100\n"
+"PO-Revision-Date: 2021-11-13 23:50+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Korean (http://www.transifex.com/xfce/xfce-apps/language/ko/)\n"
 "MIME-Version: 1.0\n"
@@ -179,12 +179,12 @@ msgstr "<%s>(으)로 버그를 알려주십시오."
 msgid "Unable to register terminal service: %s\n"
 msgstr "터미널 서비스 등록에 실패했습니다: %s\n"
 
-#: ../terminal/terminal-app.c:917
+#: ../terminal/terminal-app.c:920
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "\"%s\" 공간 크기 문자열이 잘못되었습니다\n"
 
-#: ../terminal/terminal-app.c:997
+#: ../terminal/terminal-app.c:1000
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "세션 관리자와의 연결에 실패했습니다: %s\n"
@@ -434,77 +434,93 @@ msgstr "설정 불러오기..."
 msgid "Terminal"
 msgstr "터미널"
 
-#: ../terminal/terminal-screen.c:459 ../terminal/terminal-screen.c:840
-#: ../terminal/terminal-screen.c:2313
+#: ../terminal/terminal-screen.c:243
+msgid "Do not disable dialog"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:244
+msgid "Disable for 5 minutes"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:245
+msgid "Disable for 15 minutes"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:246
+msgid "Disable until program restart"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:247
+msgid "Disable dialog (can be re-enabled in the Preferences)"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:486 ../terminal/terminal-screen.c:867
+#: ../terminal/terminal-screen.c:2379
 msgid "Untitled"
 msgstr "제목 없음"
 
-#: ../terminal/terminal-screen.c:741
+#: ../terminal/terminal-screen.c:768
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "로그인 셸을 정할 수 없습니다."
 
-#: ../terminal/terminal-screen.c:1435
+#: ../terminal/terminal-screen.c:1462
 msgid "_Relaunch"
 msgstr "재실행(_R)"
 
-#: ../terminal/terminal-screen.c:1441
+#: ../terminal/terminal-screen.c:1468
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "하위 프로세스에서 %d 상태로 정상적으로 빠져나왔습니다."
 
-#: ../terminal/terminal-screen.c:1443
+#: ../terminal/terminal-screen.c:1470
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "하위 프로세스를 %d상태로 중단했습니다."
 
-#: ../terminal/terminal-screen.c:1445
+#: ../terminal/terminal-screen.c:1472
 msgid "The child process was aborted."
 msgstr "하위 프로세스를 중단했습니다."
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
+#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "다시 묻지 마십시오(_N)"
 
-#: ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1792
 msgid "Warning: Potentially Unsafe Paste"
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1767
+#: ../terminal/terminal-screen.c:1795
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1770
+#: ../terminal/terminal-screen.c:1798
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr ""
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-screen.c:1810 ../terminal/terminal-window.c:803
 #: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "취소(_C)"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
+#: ../terminal/terminal-screen.c:1817 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "붙여넣기(_P)"
 
-#: ../terminal/terminal-screen.c:1816
-msgid "Do _not warn me again (not recommended)"
-msgstr ""
-
-#: ../terminal/terminal-screen.c:1907 ../terminal/terminal-screen.c:1991
-#: ../terminal/terminal-screen.c:2029
+#: ../terminal/terminal-screen.c:1973 ../terminal/terminal-screen.c:2057
+#: ../terminal/terminal-screen.c:2095
 msgid "Failed to execute child"
 msgstr "자식 프로세스 실행 실패"
 
-#: ../terminal/terminal-screen.c:2676
+#: ../terminal/terminal-screen.c:2742
 msgid "Close this tab"
 msgstr "이 탭 닫기"
 
-#: ../terminal/terminal-screen.c:2729
+#: ../terminal/terminal-screen.c:2795
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "인코딩 설정을 못했습니다 %s\n"
@@ -562,47 +578,47 @@ msgstr "Kibum Han <yui@yui.pe.kr>\nSeong-ho Cho <darkcircle.0426@gmail.com>\nJun
 msgid "Visit Xfce Terminal website"
 msgstr "Xfce 터미널 웹 사이트를 방문해보세요"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:332
 msgid "Copy Email Address"
 msgstr "전자메일 주소 복사"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:333
 msgid "Compose Email"
 msgstr "전자메일 작성"
 
-#: ../terminal/terminal-widget.c:334
+#: ../terminal/terminal-widget.c:337
 msgid "Copy Link Address"
 msgstr "링크 주소 복사"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:338
 msgid "Open Link"
 msgstr "링크 열기"
 
-#: ../terminal/terminal-widget.c:498
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "터미널에 text/plain 유형의 선택 내용을 넘길 수 없음: 잘못된 포맷 (%d) 또는 길이 (%d)\n"
 
-#: ../terminal/terminal-widget.c:514
+#: ../terminal/terminal-widget.c:517
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "터미널에 모질라 URL를 넘길 수 없음: 잘못된 포맷 (%d) 또는 길이 (%d)\n"
 
-#: ../terminal/terminal-widget.c:541
+#: ../terminal/terminal-widget.c:544
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "터미널에 URI 목록을 넘길 수 없음: 잘못된 포맷 (%d) 또는 길이 (%d)\n"
 
-#: ../terminal/terminal-widget.c:578
+#: ../terminal/terminal-widget.c:581
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "잘못된 색 정보를 받음: 잘못된 포맷 (%d) 또는 길이 (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:716
+#: ../terminal/terminal-widget.c:740
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "'%s' URL 열기에 실패했습니다"
