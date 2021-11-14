@@ -126,6 +126,10 @@ static void       terminal_screen_style_updated                 (GtkWidget      
 static gboolean   terminal_screen_draw                          (GtkWidget             *widget,
                                                                  cairo_t               *cr,
                                                                  gpointer               user_data);
+static void       terminal_screen_draw_border                   (cairo_t               *cr,
+                                                                 const gchar           *color_spec,
+                                                                 gint                   width,
+                                                                 gint                   height);
 static void       terminal_screen_preferences_changed           (TerminalPreferences   *preferences,
                                                                  GParamSpec            *pspec,
                                                                  TerminalScreen        *screen);
@@ -570,6 +574,7 @@ terminal_screen_draw (GtkWidget *widget,
 {
   TerminalScreen     *screen = TERMINAL_SCREEN (user_data);
   TerminalBackground  background_mode;
+  gchar              *color_border_spec;
   GdkPixbuf          *image;
   gint                width, height;
   cairo_surface_t    *surface;
@@ -578,7 +583,10 @@ terminal_screen_draw (GtkWidget *widget,
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
   terminal_return_val_if_fail (VTE_IS_TERMINAL (screen->terminal), FALSE);
 
-  g_object_get (G_OBJECT (screen->preferences), "background-mode", &background_mode, NULL);
+  g_object_get (G_OBJECT (screen->preferences),
+                "background-mode", &background_mode,
+                "misc-color-border-window", &color_border_spec,
+                NULL);
 
   if (G_LIKELY (background_mode != TERMINAL_BACKGROUND_IMAGE))
     return FALSE;
@@ -607,10 +615,22 @@ terminal_screen_draw (GtkWidget *widget,
   /* draw vte terminal */
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, width, height);
   ctx = cairo_create (surface);
+
+
   gtk_widget_draw (screen->terminal, ctx);
+
   cairo_set_source_surface (cr, surface, 0, 0);
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
   cairo_paint (cr);
+
+  /* Draw a subtle border if set in configuration file.
+   * Only draw if color set by user. No default value.
+   * */
+  if (G_UNLIKELY (color_border_spec != NULL)) {
+    terminal_screen_draw_border (cr, color_border_spec, width, height);
+    g_free (color_border_spec);
+  }
+
   cairo_destroy (ctx);
   cairo_surface_destroy (surface);
 
@@ -622,7 +642,46 @@ terminal_screen_draw (GtkWidget *widget,
   return TRUE;
 }
 
+static void
+terminal_screen_draw_border(cairo_t     *cr,
+                            const gchar *color_spec,
+                            gint         width,
+                            gint         height)
+{
+  GdkRGBA                 rgba;
 
+  gdk_rgba_parse (&rgba, color_spec);
+
+  /* Set path for border.
+   * Here one could also have a CSS approach by width for each side
+   * in case user do not want borders on all sides.
+   * Likely best with GtkCssProvider or similar.
+   * */
+  cairo_move_to(cr, 0, 0);
+  cairo_line_to(cr, width, 0);
+  cairo_line_to(cr, width, height);
+  cairo_line_to(cr, 0, height);
+  cairo_close_path(cr);
+
+  /* OPERATOR ADD: source and destination layers are accumulated.
+   * https://cairographics.org/operators/#add
+   * */
+  cairo_set_operator (cr, CAIRO_OPERATOR_ADD);
+  cairo_set_source_rgba (cr, rgba.red, rgba.green, rgba.blue, rgba.alpha);
+  cairo_set_line_width (cr, 1.0);
+  cairo_stroke (cr);
+
+  /* One could paint twice to give it some effect, but complicated
+   * how to deal with user preferences if mixing colors.
+   cairo_set_source_rgba (cr, 0.9, 0.9, 0.9, 0.7);
+   cairo_set_line_width (cr, 2.0);
+   cairo_stroke_preserve (cr);
+   ...
+   cairo_set_line_width (cr, 1.0);
+   cairo_stroke (cr);
+   */
+
+}
 
 static void
 terminal_screen_preferences_changed (TerminalPreferences *preferences,
