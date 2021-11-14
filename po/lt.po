@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 12:50+0200\n"
-"PO-Revision-Date: 2021-10-17 18:35+0000\n"
-"Last-Translator: Moo\n"
+"POT-Creation-Date: 2021-11-14 00:50+0100\n"
+"PO-Revision-Date: 2021-11-13 23:50+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Lithuanian (http://www.transifex.com/xfce/xfce-apps/language/lt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,12 +179,12 @@ msgstr "Apie klaidas pranešti <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Nepavyko priregistruoti terminalo tarnybos: %s\n"
 
-#: ../terminal/terminal-app.c:917
+#: ../terminal/terminal-app.c:920
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Neteisingas geometrijos apibrėžimas „%s“\n"
 
-#: ../terminal/terminal-app.c:997
+#: ../terminal/terminal-app.c:1000
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Nepavyko prisijungti prie seansų tvarkytuvės: %s\n"
@@ -434,77 +434,93 @@ msgstr "Įkelti išankstines parinktis..."
 msgid "Terminal"
 msgstr "Terminalas"
 
-#: ../terminal/terminal-screen.c:459 ../terminal/terminal-screen.c:840
-#: ../terminal/terminal-screen.c:2313
+#: ../terminal/terminal-screen.c:243
+msgid "Do not disable dialog"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:244
+msgid "Disable for 5 minutes"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:245
+msgid "Disable for 15 minutes"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:246
+msgid "Disable until program restart"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:247
+msgid "Disable dialog (can be re-enabled in the Preferences)"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:486 ../terminal/terminal-screen.c:867
+#: ../terminal/terminal-screen.c:2379
 msgid "Untitled"
 msgstr "Be pavadinimo"
 
-#: ../terminal/terminal-screen.c:741
+#: ../terminal/terminal-screen.c:768
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Nepavyko aptikti jūsų prisijungimo apvalkalo."
 
-#: ../terminal/terminal-screen.c:1435
+#: ../terminal/terminal-screen.c:1462
 msgid "_Relaunch"
 msgstr "_Paleisti iš naujo"
 
-#: ../terminal/terminal-screen.c:1441
+#: ../terminal/terminal-screen.c:1468
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Antrinis procesas išėjo normaliai, su būsena %d."
 
-#: ../terminal/terminal-screen.c:1443
+#: ../terminal/terminal-screen.c:1470
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Antrinis procesas buvo nutrauktas %d signalo."
 
-#: ../terminal/terminal-screen.c:1445
+#: ../terminal/terminal-screen.c:1472
 msgid "The child process was aborted."
 msgstr "Antrinis procesas buvo nutrauktas."
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
+#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "Daugiau n_ebeklausti"
 
-#: ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1792
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Įspėjimas: Galimai nesaugus įdėjimas"
 
-#: ../terminal/terminal-screen.c:1767
+#: ../terminal/terminal-screen.c:1795
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Šio teksto įdėjimas į terminalą gali būti pavojingas, nes atrodo, kad gali būti įvykdytos komandos, galimai įtraukiančios supernaudotojo („sudo“) prieigą."
 
-#: ../terminal/terminal-screen.c:1770
+#: ../terminal/terminal-screen.c:1798
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Šio teksto įdėjimas į terminalą gali būti pavojingas, nes atrodo, kad gali būti įvykdytos tam tikros komandos."
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-screen.c:1810 ../terminal/terminal-window.c:803
 #: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "_Atsisakyti"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
+#: ../terminal/terminal-screen.c:1817 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "Į_dėti"
 
-#: ../terminal/terminal-screen.c:1816
-msgid "Do _not warn me again (not recommended)"
-msgstr "Daugiau manęs _nebeįspėti (nerekomenduojama)"
-
-#: ../terminal/terminal-screen.c:1907 ../terminal/terminal-screen.c:1991
-#: ../terminal/terminal-screen.c:2029
+#: ../terminal/terminal-screen.c:1973 ../terminal/terminal-screen.c:2057
+#: ../terminal/terminal-screen.c:2095
 msgid "Failed to execute child"
 msgstr "Nepavyko paleisti antrinio proceso"
 
-#: ../terminal/terminal-screen.c:2676
+#: ../terminal/terminal-screen.c:2742
 msgid "Close this tab"
 msgstr "Užverti šią kortelę"
 
-#: ../terminal/terminal-screen.c:2729
+#: ../terminal/terminal-screen.c:2795
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Nepavyko nustatyti koduotės %s\n"
@@ -562,47 +578,47 @@ msgstr "Algimantas Margevičius <margevicius.algimantas@gmail.com>\nMoo"
 msgid "Visit Xfce Terminal website"
 msgstr "Apsilankyti Xfce Terminalo svetainėje"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:332
 msgid "Copy Email Address"
 msgstr "Kopijuoti el. pašto adresą"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:333
 msgid "Compose Email"
 msgstr "Rašyti laišką"
 
-#: ../terminal/terminal-widget.c:334
+#: ../terminal/terminal-widget.c:337
 msgid "Copy Link Address"
 msgstr "Kopijuoti nuorodos adresą"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:338
 msgid "Open Link"
 msgstr "Atverti nuorodą"
 
-#: ../terminal/terminal-widget.c:498
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Nepavyko nutempti pažymėto teksto ant terminalo: Netinkamas formatas (%d) arba ilgis (%d)\n"
 
-#: ../terminal/terminal-widget.c:514
+#: ../terminal/terminal-widget.c:517
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nepavyko nutempti Mozilla URL ant terminalo: Netinkamas formatas (%d) arba ilgis (%d)\n"
 
-#: ../terminal/terminal-widget.c:541
+#: ../terminal/terminal-widget.c:544
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Nepavyko nutempti URI sąrašo ant terminalo: Netinkamas formatas (%d) arba ilgis (%d)\n"
 
-#: ../terminal/terminal-widget.c:578
+#: ../terminal/terminal-widget.c:581
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Gauti netinkami spalvos duomenys: Netinkamas formatas (%d) arba ilgis (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:716
+#: ../terminal/terminal-widget.c:740
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Nepavyko atverti URL \"%s\""
