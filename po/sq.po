@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 12:50+0200\n"
-"PO-Revision-Date: 2021-10-16 10:51+0000\n"
-"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
+"POT-Creation-Date: 2021-11-14 00:50+0100\n"
+"PO-Revision-Date: 2021-11-14 09:09+0000\n"
+"Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/xfce/xfce-apps/language/sq/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -179,12 +179,12 @@ msgstr "Ju lutemi, të metat njoftojini te <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "S’arrihet të regjistrohet shërbim terminali: %s\n"
 
-#: ../terminal/terminal-app.c:917
+#: ../terminal/terminal-app.c:920
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Varg gjeometrie i pavlefshëm \"%s\"\n"
 
-#: ../terminal/terminal-app.c:997
+#: ../terminal/terminal-app.c:1000
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "S’u arrit të lidhet te përgjegjës sesionesh: %s\n"
@@ -434,77 +434,93 @@ msgstr "Ngarko Paracaktime…"
 msgid "Terminal"
 msgstr "Terminal"
 
-#: ../terminal/terminal-screen.c:459 ../terminal/terminal-screen.c:840
-#: ../terminal/terminal-screen.c:2313
+#: ../terminal/terminal-screen.c:243
+msgid "Do not disable dialog"
+msgstr "Mos e çaktivizo dialogun"
+
+#: ../terminal/terminal-screen.c:244
+msgid "Disable for 5 minutes"
+msgstr "Çaktivizoje për 5 minuta"
+
+#: ../terminal/terminal-screen.c:245
+msgid "Disable for 15 minutes"
+msgstr "Çaktivizoje për 15 minuta"
+
+#: ../terminal/terminal-screen.c:246
+msgid "Disable until program restart"
+msgstr "Çaktivizoje deri sa ta riniset programi"
+
+#: ../terminal/terminal-screen.c:247
+msgid "Disable dialog (can be re-enabled in the Preferences)"
+msgstr "Çaktivizoje dialogun (mund të riaktivizohet te Parapëlqimet)"
+
+#: ../terminal/terminal-screen.c:486 ../terminal/terminal-screen.c:867
+#: ../terminal/terminal-screen.c:2379
 msgid "Untitled"
 msgstr "Pa titull"
 
-#: ../terminal/terminal-screen.c:741
+#: ../terminal/terminal-screen.c:768
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "S’arrihet të përcaktohet shell juaji për hyrje."
 
-#: ../terminal/terminal-screen.c:1435
+#: ../terminal/terminal-screen.c:1462
 msgid "_Relaunch"
 msgstr "_Rinise"
 
-#: ../terminal/terminal-screen.c:1441
+#: ../terminal/terminal-screen.c:1468
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Procesi pjellë përfundoi normalisht, me gjendjen %d."
 
-#: ../terminal/terminal-screen.c:1443
+#: ../terminal/terminal-screen.c:1470
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Procesi pjellë u ndërpre nga sinjali %d."
 
-#: ../terminal/terminal-screen.c:1445
+#: ../terminal/terminal-screen.c:1472
 msgid "The child process was aborted."
 msgstr "Procesi pjellë u ndërpre."
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
+#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "Mos _më pyet sërish"
 
-#: ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1792
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Kujdes: Ngjitje Potencialisht Jo e Sigurt"
 
-#: ../terminal/terminal-screen.c:1767
+#: ../terminal/terminal-screen.c:1795
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Hedhja e këtij teksti te terminali mund të jetë e rrezikshme, ngaqë duket se mund të ekzekutohen disa urdhra, që përfshijnë potencialisht përdorim përdoruesi rrënjë ('sudo')."
 
-#: ../terminal/terminal-screen.c:1770
+#: ../terminal/terminal-screen.c:1798
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Hedhja e këtij teksti te terminali mund të jetë e rrezikshme, ngaqë duket se mund të ekzekutohen disa urdhra."
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-screen.c:1810 ../terminal/terminal-window.c:803
 #: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "_Anuloje"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
+#: ../terminal/terminal-screen.c:1817 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "_Ngjite"
 
-#: ../terminal/terminal-screen.c:1816
-msgid "Do _not warn me again (not recommended)"
-msgstr "_Mos më sinjalizo sërish (e parekomanduar)"
-
-#: ../terminal/terminal-screen.c:1907 ../terminal/terminal-screen.c:1991
-#: ../terminal/terminal-screen.c:2029
+#: ../terminal/terminal-screen.c:1973 ../terminal/terminal-screen.c:2057
+#: ../terminal/terminal-screen.c:2095
 msgid "Failed to execute child"
 msgstr "S’u arrit të ekzekutohej pjella"
 
-#: ../terminal/terminal-screen.c:2676
+#: ../terminal/terminal-screen.c:2742
 msgid "Close this tab"
 msgstr "Mbylle këtë skedë"
 
-#: ../terminal/terminal-screen.c:2729
+#: ../terminal/terminal-screen.c:2795
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "S’u arrit të caktohej kodimi %s\n"
@@ -562,47 +578,47 @@ msgstr "Besnik Bleta"
 msgid "Visit Xfce Terminal website"
 msgstr "Vizitoni sajtin e Terminalit Xfce"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:332
 msgid "Copy Email Address"
 msgstr "Kopjo Adresë Email"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:333
 msgid "Compose Email"
 msgstr "Hartoni Email"
 
-#: ../terminal/terminal-widget.c:334
+#: ../terminal/terminal-widget.c:337
 msgid "Copy Link Address"
 msgstr "Kopjo Adresë Lidhjeje"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:338
 msgid "Open Link"
 msgstr "Hap Lidhje"
 
-#: ../terminal/terminal-widget.c:498
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "S’arrihet të hidhet në terminal përzgjedhje e llojit tekst/i thjeshtë: Format (%d) ose gjatësi (%d) e gabuar\n"
 
-#: ../terminal/terminal-widget.c:514
+#: ../terminal/terminal-widget.c:517
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "S’arrihet të hidhet në terminal URL Mozilla: Format (%d) ose gjatësi e gabuar (%d)\n"
 
-#: ../terminal/terminal-widget.c:541
+#: ../terminal/terminal-widget.c:544
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "S’arrihet të hidhet në terminal Listë URI: Format (%d) ose gjatësi e gabuar (%d)\n"
 
-#: ../terminal/terminal-widget.c:578
+#: ../terminal/terminal-widget.c:581
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "U morën të dhëna ngjyre të pavlefshme: Format (%d) ose gjatësi (%d) e gabuar\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:716
+#: ../terminal/terminal-widget.c:740
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "S’u arrit të hapej URL-ja '%s'"
