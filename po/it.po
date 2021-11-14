@@ -17,9 +17,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-16 12:50+0200\n"
-"PO-Revision-Date: 2021-10-20 15:20+0000\n"
-"Last-Translator: Emanuele Petriglia <transifex@emanuelepetriglia.com>\n"
+"POT-Creation-Date: 2021-11-14 00:50+0100\n"
+"PO-Revision-Date: 2021-11-13 23:50+0000\n"
+"Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Italian (http://www.transifex.com/xfce/xfce-apps/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -186,12 +186,12 @@ msgstr "Segnalare eventuali errori su <%s>."
 msgid "Unable to register terminal service: %s\n"
 msgstr "Impossibile registrare il servizio terminale: %s\n"
 
-#: ../terminal/terminal-app.c:917
+#: ../terminal/terminal-app.c:920
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Stringa della geometria non valida \"%s\"\n"
 
-#: ../terminal/terminal-app.c:997
+#: ../terminal/terminal-app.c:1000
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Impossibile connettersi al gestore della sessione: %s\n"
@@ -441,77 +441,93 @@ msgstr "Carica predefiniti…"
 msgid "Terminal"
 msgstr "Terminale"
 
-#: ../terminal/terminal-screen.c:459 ../terminal/terminal-screen.c:840
-#: ../terminal/terminal-screen.c:2313
+#: ../terminal/terminal-screen.c:243
+msgid "Do not disable dialog"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:244
+msgid "Disable for 5 minutes"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:245
+msgid "Disable for 15 minutes"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:246
+msgid "Disable until program restart"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:247
+msgid "Disable dialog (can be re-enabled in the Preferences)"
+msgstr ""
+
+#: ../terminal/terminal-screen.c:486 ../terminal/terminal-screen.c:867
+#: ../terminal/terminal-screen.c:2379
 msgid "Untitled"
 msgstr "Senza titolo"
 
-#: ../terminal/terminal-screen.c:741
+#: ../terminal/terminal-screen.c:768
 #, c-format
 msgid "Unable to determine your login shell."
 msgstr "Impossibile individuare la shell di login."
 
-#: ../terminal/terminal-screen.c:1435
+#: ../terminal/terminal-screen.c:1462
 msgid "_Relaunch"
 msgstr "_Rilancia"
 
-#: ../terminal/terminal-screen.c:1441
+#: ../terminal/terminal-screen.c:1468
 #, c-format
 msgid "The child process exited normally with status %d."
 msgstr "Processo figlio chiuso correttamente con lo stato %d."
 
-#: ../terminal/terminal-screen.c:1443
+#: ../terminal/terminal-screen.c:1470
 #, c-format
 msgid "The child process was aborted by signal %d."
 msgstr "Processo figlio terminato con segnale %d."
 
-#: ../terminal/terminal-screen.c:1445
+#: ../terminal/terminal-screen.c:1472
 msgid "The child process was aborted."
 msgstr "Il processo figlio è stato annullato."
 
-#: ../terminal/terminal-screen.c:1451 ../terminal/terminal-window.c:880
+#: ../terminal/terminal-screen.c:1478 ../terminal/terminal-window.c:880
 msgid "Do _not ask me again"
 msgstr "_Non chiedere nuovamente"
 
-#: ../terminal/terminal-screen.c:1764
+#: ../terminal/terminal-screen.c:1792
 msgid "Warning: Potentially Unsafe Paste"
 msgstr "Attenzione: potenziale copia non sicura"
 
-#: ../terminal/terminal-screen.c:1767
+#: ../terminal/terminal-screen.c:1795
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed, potentially involving root access ('sudo')."
 msgstr "Incollare il testo copiato nel terminale potrebbe risultare dannoso, potrebbero essere infatti eseguiti dei comandi che richiedono l'accesso root ('sudo')."
 
-#: ../terminal/terminal-screen.c:1770
+#: ../terminal/terminal-screen.c:1798
 msgid ""
 "Pasting this text to the terminal may be dangerous as it looks like some "
 "commands may be executed."
 msgstr "Incollare questo testo sul terminale potrebbe risultare dannoso, poiché potrebbero essere eseguiti dei comandi."
 
-#: ../terminal/terminal-screen.c:1782 ../terminal/terminal-window.c:803
+#: ../terminal/terminal-screen.c:1810 ../terminal/terminal-window.c:803
 #: ../terminal/terminal-window.c:2203
 msgid "_Cancel"
 msgstr "A_nnulla"
 
-#: ../terminal/terminal-screen.c:1789 ../terminal/terminal-window.c:328
+#: ../terminal/terminal-screen.c:1817 ../terminal/terminal-window.c:328
 msgid "_Paste"
 msgstr "_Incolla"
 
-#: ../terminal/terminal-screen.c:1816
-msgid "Do _not warn me again (not recommended)"
-msgstr "_Non avvisare nuovamente (non raccomandato)"
-
-#: ../terminal/terminal-screen.c:1907 ../terminal/terminal-screen.c:1991
-#: ../terminal/terminal-screen.c:2029
+#: ../terminal/terminal-screen.c:1973 ../terminal/terminal-screen.c:2057
+#: ../terminal/terminal-screen.c:2095
 msgid "Failed to execute child"
 msgstr "Impossibile eseguire il processo figlio"
 
-#: ../terminal/terminal-screen.c:2676
+#: ../terminal/terminal-screen.c:2742
 msgid "Close this tab"
 msgstr "Chiudi questa scheda"
 
-#: ../terminal/terminal-screen.c:2729
+#: ../terminal/terminal-screen.c:2795
 #, c-format
 msgid "Failed to set encoding %s\n"
 msgstr "Impossibile impostare la codifica %s\n"
@@ -569,47 +585,47 @@ msgstr "Vincenzo Reale, <smart2128@baslug.org> 2020\nEmanuele Petriglia <inbox@e
 msgid "Visit Xfce Terminal website"
 msgstr "Visita il sito web del terminale di Xfce"
 
-#: ../terminal/terminal-widget.c:329
+#: ../terminal/terminal-widget.c:332
 msgid "Copy Email Address"
 msgstr "Copia l'indirizzo email"
 
-#: ../terminal/terminal-widget.c:330
+#: ../terminal/terminal-widget.c:333
 msgid "Compose Email"
 msgstr "Componi email"
 
-#: ../terminal/terminal-widget.c:334
+#: ../terminal/terminal-widget.c:337
 msgid "Copy Link Address"
 msgstr "Copia indirizzo collegamento"
 
-#: ../terminal/terminal-widget.c:335
+#: ../terminal/terminal-widget.c:338
 msgid "Open Link"
 msgstr "Apri collegamento"
 
-#: ../terminal/terminal-widget.c:498
+#: ../terminal/terminal-widget.c:501
 #, c-format
 msgid ""
 "Unable to drop selection of type text/plain to terminal: Wrong format (%d) "
 "or length (%d)\n"
 msgstr "Impossibile importare la selezione di tipo testo nel terminale: formato (%d) o lunghezza (%d) errati\n"
 
-#: ../terminal/terminal-widget.c:514
+#: ../terminal/terminal-widget.c:517
 #, c-format
 msgid ""
 "Unable to drop Mozilla URL on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Impossibile importare una URL Mozilla nel terminale: formato (%d) o lunghezza (%d) errati\n"
 
-#: ../terminal/terminal-widget.c:541
+#: ../terminal/terminal-widget.c:544
 #, c-format
 msgid "Unable to drop URI list on terminal: Wrong format (%d) or length (%d)\n"
 msgstr "Impossibile importare una lista di URI nel terminale: formato (%d) o lunghezza (%d) errati\n"
 
-#: ../terminal/terminal-widget.c:578
+#: ../terminal/terminal-widget.c:581
 #, c-format
 msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Ricevuto un dato colore non valido: formato (%d) o lunghezza (%d) errati\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:716
+#: ../terminal/terminal-widget.c:740
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Impossibile aprire la URL '%s'"
