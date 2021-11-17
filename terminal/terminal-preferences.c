@@ -115,6 +115,7 @@ enum
   PROP_MISC_NEW_TAB_ADJACENT,
   PROP_MISC_SEARCH_DIALOG_OPACITY,
   PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG,
+  PROP_MISC_RIGHT_CLICK_ACTION,
   PROP_SCROLLING_BAR,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
@@ -285,7 +286,8 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
     TERMINAL_TYPE_ERASE_BINDING,
     TERMINAL_TYPE_AMBIGUOUS_WIDTH_BINDING,
     TERMINAL_TYPE_CURSOR_SHAPE,
-    TERMINAL_TYPE_TEXT_BLINK_MODE
+    TERMINAL_TYPE_TEXT_BLINK_MODE,
+    TERMINAL_TYPE_RIGHT_CLICK_ACTION
   };
 
   gobject_class = G_OBJECT_CLASS (klass);
@@ -1079,6 +1081,17 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                             "MiscShowUnsafePasteDialog",
                             TRUE,
                             G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+   * TerminalPreferences:misc-right-click-action:
+   **/
+  preferences_props[PROP_MISC_RIGHT_CLICK_ACTION] =
+      g_param_spec_enum ("misc-right-click-action",
+                         NULL,
+                         "MiscRightClickAction",
+                         TERMINAL_TYPE_RIGHT_CLICK_ACTION,
+                         TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU,
+                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-bar:

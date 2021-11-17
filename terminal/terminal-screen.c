@@ -356,6 +356,8 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_draw), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-selection-request",
       G_CALLBACK (terminal_screen_paste_primary), screen);
+  g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-clipboard-request",
+      G_CALLBACK (terminal_screen_paste_clipboard), screen);
   gtk_box_pack_start (GTK_BOX (screen->hbox), screen->terminal, TRUE, TRUE, 0);
 
   screen->scrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL,

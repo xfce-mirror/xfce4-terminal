@@ -96,6 +96,13 @@ typedef enum /*< enum,prefix=TERMINAL_TEXT_BLINK_MODE >*/
   TERMINAL_TEXT_BLINK_MODE_ALWAYS
 } TerminalTextBlinkMode;
 
+typedef enum /*< enum,prefix=TERMINAL_RIGHT_CLICK_ACTION >*/
+{
+    TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU,
+    TERMINAL_RIGHT_CLICK_ACTION_PASTE_CLIPBOARD,
+    TERMINAL_RIGHT_CLICK_ACTION_PASTE_SELECTION
+} TerminalRightClickAction;
+
 GType                terminal_preferences_get_type  (void) G_GNUC_CONST;
 
 TerminalPreferences *terminal_preferences_get       (void);
