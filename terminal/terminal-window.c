@@ -1802,7 +1802,7 @@ terminal_window_action_prefs (TerminalWindow *window)
 static void
 terminal_window_action_shortcuts (TerminalWindow *window)
 {
-  xfce_shortcuts_editor_dialog_new (FALSE, 5, "", action_entries, TERMINAL_WINDOW_ACTION_N);
+  xfce_shortcuts_editor_dialog_new (4, "", action_entries, TERMINAL_WINDOW_ACTION_N);
 }
 #endif
 
