@@ -117,6 +117,7 @@ enum
   PROP_MISC_SHOW_UNSAFE_PASTE_DIALOG,
   PROP_MISC_RIGHT_CLICK_ACTION,
   PROP_SCROLLING_BAR,
+  PROP_OVERLAY_SCROLLING,
   PROP_SCROLLING_LINES,
   PROP_SCROLLING_ON_OUTPUT,
   PROP_SCROLLING_ON_KEYSTROKE,
@@ -1103,6 +1104,16 @@ terminal_preferences_class_init (TerminalPreferencesClass *klass)
                          TERMINAL_TYPE_SCROLLBAR,
                          TERMINAL_SCROLLBAR_RIGHT,
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+
+  /**
+ * TerminalPreferences:overlay-scrolling:
+ **/
+  preferences_props[PROP_OVERLAY_SCROLLING] =
+      g_param_spec_boolean ("overlay-scrolling",
+                            NULL,
+                            "OverlayScrolling",
+                            FALSE,
+                            G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
 
   /**
    * TerminalPreferences:scrolling-lines:

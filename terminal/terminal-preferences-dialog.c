@@ -168,7 +168,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   const gchar      *props_active[] = { "title-mode", "command-login-shell",
                                        "command-update-records", "run-custom-command",
                                        "use-default-working-dir", "scrolling-on-output",
-                                       "scrolling-on-keystroke", "scrolling-bar",
+                                       "scrolling-on-keystroke", "scrolling-bar", "overlay-scrolling",
                                        "scrolling-unlimited", "misc-cursor-shape",
                                        "misc-cursor-blinks", "font-allow-bold",
                                        "font-use-system", "text-blink-mode",

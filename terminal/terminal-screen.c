@@ -195,7 +195,7 @@ struct _TerminalScreen
   GtkOverlay           parent_instance;
   TerminalPreferences *preferences;
   TerminalImageLoader *loader;
-  GtkWidget           *hbox;
+  GtkWidget           *swin;
   GtkWidget           *terminal;
   GtkWidget           *scrollbar;
   GtkWidget           *tab_label;
@@ -336,9 +336,6 @@ terminal_screen_init (TerminalScreen *screen)
   screen->session_id = ++screen_last_session_id;
   screen->pid = -1;
 
-  screen->hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  gtk_container_add (GTK_CONTAINER (screen), screen->hbox);
-
   screen->terminal = g_object_new (TERMINAL_TYPE_WIDGET, NULL);
   g_signal_connect (G_OBJECT (screen->terminal), "child-exited",
       G_CALLBACK (terminal_screen_vte_child_exited), screen);
@@ -358,11 +355,15 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_paste_primary), screen);
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-clipboard-request",
       G_CALLBACK (terminal_screen_paste_clipboard), screen);
-  gtk_box_pack_start (GTK_BOX (screen->hbox), screen->terminal, TRUE, TRUE, 0);
 
-  screen->scrollbar = gtk_scrollbar_new (GTK_ORIENTATION_VERTICAL,
-                                         gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
-  gtk_box_pack_start (GTK_BOX (screen->hbox), screen->scrollbar, FALSE, FALSE, 0);
+  screen->swin = gtk_scrolled_window_new (gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (screen->terminal)), gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
+  gtk_scrolled_window_set_propagate_natural_width (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
+  gtk_scrolled_window_set_propagate_natural_height (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
+  gtk_container_add (GTK_CONTAINER (screen->swin), screen->terminal);
+
+  gtk_container_add (GTK_CONTAINER (screen), screen->swin);
+
+  screen->scrollbar = gtk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (screen->swin));
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
 
   /* watch preferences changes */
@@ -371,7 +372,7 @@ terminal_screen_init (TerminalScreen *screen)
       G_CALLBACK (terminal_screen_preferences_changed), screen);
 
   /* show the terminal */
-  gtk_widget_show_all (screen->hbox);
+  gtk_widget_show_all (screen->swin);
 
   /* apply current settings */
   terminal_screen_update_binding_backspace (screen);
@@ -667,7 +668,7 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_misc_mouse_autohide (screen);
   else if (strcmp ("misc-rewrap-on-resize", name) == 0)
     terminal_screen_update_misc_rewrap_on_resize (screen);
-  else if (strcmp ("scrolling-bar", name) == 0)
+  else if (strcmp ("scrolling-bar", name) == 0 || strcmp ("overlay-scrolling", name) == 0)
     terminal_screen_update_scrolling_bar (screen);
   else if (strcmp ("scrolling-lines", name) == 0 || strcmp ("scrolling-unlimited", name) == 0)
     terminal_screen_update_scrolling_lines (screen);
@@ -2842,11 +2843,13 @@ void
 terminal_screen_update_scrolling_bar (TerminalScreen *screen)
 {
   TerminalScrollbar  scrollbar;
+  gboolean           overlay_scrolling;
   TerminalVisibility visibility = TERMINAL_VISIBILITY_DEFAULT;
   glong              grid_w = 0, grid_h = 0;
   GtkWidget         *toplevel;
 
   g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, NULL);
+  g_object_get (G_OBJECT (screen->preferences), "overlay-scrolling", &overlay_scrolling, NULL);
 
   if (gtk_widget_get_realized (GTK_WIDGET (screen)))
     terminal_screen_get_size (screen, &grid_w, &grid_h);
@@ -2864,12 +2867,12 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
           break;
 
         case TERMINAL_SCROLLBAR_LEFT:
-          gtk_box_reorder_child (GTK_BOX (screen->hbox), screen->scrollbar, 0);
+          gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (screen->swin), GTK_CORNER_TOP_RIGHT);
           gtk_widget_show (screen->scrollbar);
           break;
 
         default: /* TERMINAL_SCROLLBAR_RIGHT */
-          gtk_box_reorder_child (GTK_BOX (screen->hbox), screen->scrollbar, 1);
+          gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (screen->swin), GTK_CORNER_TOP_LEFT);
           gtk_widget_show (screen->scrollbar);
           break;
         }
@@ -2880,10 +2883,12 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
     }
   else /* show */
     {
-      gtk_box_reorder_child (GTK_BOX (screen), screen->scrollbar,
-                             scrollbar == TERMINAL_SCROLLBAR_LEFT ? 0 : 1);
+      gtk_scrolled_window_set_placement (GTK_SCROLLED_WINDOW (screen->swin), scrollbar == TERMINAL_SCROLLBAR_LEFT ? GTK_CORNER_TOP_RIGHT : GTK_CORNER_TOP_LEFT);
       gtk_widget_show (screen->scrollbar);
     }
+
+  /* set overlay scrolling */
+  gtk_scrolled_window_set_overlay_scrolling (GTK_SCROLLED_WINDOW (screen->swin), overlay_scrolling);
 
   /* update window geometry it required */
   if (grid_w > 0 && grid_h > 0)
