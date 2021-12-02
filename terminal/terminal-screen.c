@@ -359,6 +359,7 @@ terminal_screen_init (TerminalScreen *screen)
   screen->swin = gtk_scrolled_window_new (gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (screen->terminal)), gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
   gtk_scrolled_window_set_propagate_natural_width (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
   gtk_scrolled_window_set_propagate_natural_height (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (screen->swin), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
   gtk_container_add (GTK_CONTAINER (screen->swin), screen->terminal);
 
   gtk_container_add (GTK_CONTAINER (screen), screen->swin);
