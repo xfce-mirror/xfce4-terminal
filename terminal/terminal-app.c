@@ -56,7 +56,8 @@
 
 static void     terminal_app_finalize                 (GObject            *object);
 static void     terminal_app_update_accels            (TerminalApp        *app);
-static void     terminal_app_update_tab_key_accels    (gpointer            data,
+static void     terminal_app_update_tab_key_accels    (TerminalApp        *app);
+static void     terminal_app_store_tab_key_accel      (gpointer            data,
                                                        const gchar        *accel_path,
                                                        guint               accel_key,
                                                        GdkModifierType     accel_mods,
@@ -227,7 +228,23 @@ terminal_app_update_accels (TerminalApp *app)
 
 
 static void
-terminal_app_update_tab_key_accels (gpointer         data,
+terminal_app_update_tab_key_accels (TerminalApp *app)
+{
+  if (app->tab_key_accels != NULL)
+    {
+      GSList *lp;
+      for (lp = app->tab_key_accels; lp != NULL; lp = lp->next)
+        g_free (((TerminalAccel*) lp->data)->path);
+      g_slist_free_full (app->tab_key_accels, g_free);
+      app->tab_key_accels = NULL;
+    }
+  gtk_accel_map_foreach (app, terminal_app_store_tab_key_accel);
+}
+
+
+
+static void
+terminal_app_store_tab_key_accel   (gpointer         data,
                                     const gchar     *accel_path,
                                     guint            accel_key,
                                     GdkModifierType  accel_mods,
@@ -300,6 +317,14 @@ terminal_app_accel_map_changed (TerminalApp *app)
 
   /* schedule new save */
   app->accel_map_save_id = gdk_threads_add_timeout_seconds (10, terminal_app_accel_map_save, app);
+
+  /* identify accelerators containing the Tab key */
+  terminal_app_update_tab_key_accels (app);
+
+  /* TODO: we should also update the go-to accelerators */
+
+  /* update the tab-key accel list in each window */
+  terminal_app_update_windows_accels (app);
 }
 
 
@@ -334,15 +359,7 @@ terminal_app_accel_map_load (gpointer user_data)
     }
 
   /* identify accelerators containing the Tab key */
-  if (app->tab_key_accels != NULL)
-    {
-      GSList *lp;
-      for (lp = app->tab_key_accels; lp != NULL; lp = lp->next)
-        g_free (((TerminalAccel*) lp->data)->path);
-      g_slist_free_full (app->tab_key_accels, g_free);
-      app->tab_key_accels = NULL;
-    }
-  gtk_accel_map_foreach (app, terminal_app_update_tab_key_accels);
+  terminal_app_update_tab_key_accels (app);
 
   return FALSE;
 }
