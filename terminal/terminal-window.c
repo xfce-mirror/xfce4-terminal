@@ -535,7 +535,7 @@ terminal_window_init (TerminalWindow *window)
   g_signal_connect (G_OBJECT (window->priv->notebook), "scroll-event",
       G_CALLBACK (terminal_window_notebook_scroll_event), window);
 
-  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->menubar, TRUE, TRUE, 0);
+  gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->menubar, FALSE, FALSE, 0);
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->toolbar, TRUE, TRUE, 0);
   gtk_box_pack_start (GTK_BOX (window->priv->vbox), window->priv->notebook, TRUE, TRUE, 0);
   gtk_widget_show_all (window->priv->vbox);
