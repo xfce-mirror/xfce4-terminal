@@ -83,7 +83,7 @@ terminal_util_show_about_dialog (GtkWindow *parent)
                          "copyright", "Copyright \302\251 2003-2008 Benedikt Meurer\n"
                                       "Copyright \302\251 2007-2012 Nick Schermer\n"
                                       "Copyright \302\251 2016-2020 Igor Zakharov\n"
-                                      "Copyright \302\251 2021 Sergios - Anestis Kefalidis",
+                                      "Copyright \302\251 2021-2022 Sergios - Anestis Kefalidis",
                          "license", XFCE_LICENSE_GPL,
                          "logo-icon-name", "org.xfce.terminal",
                          "program-name", PACKAGE_NAME,
