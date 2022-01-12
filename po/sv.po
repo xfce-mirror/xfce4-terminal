@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-02 12:52+0100\n"
-"PO-Revision-Date: 2021-12-02 11:52+0000\n"
+"POT-Creation-Date: 2022-01-12 12:52+0100\n"
+"PO-Revision-Date: 2022-01-12 11:52+0000\n"
 "Last-Translator: Xfce Bot <transifex@xfce.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/xfce/xfce-apps/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -181,12 +181,12 @@ msgstr "Rapportera fel till <%s>.\r\nSkicka synpunkter på översättningen till
 msgid "Unable to register terminal service: %s\n"
 msgstr "Det gick inte att registrera terminaltjänsten: %s\n"
 
-#: ../terminal/terminal-app.c:920
+#: ../terminal/terminal-app.c:927
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "Ogiltig geometristräng: \"%s\"\n"
 
-#: ../terminal/terminal-app.c:1000
+#: ../terminal/terminal-app.c:1007
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "Det gick inte att ansluta till sessionshanterare: %s\n"
@@ -484,7 +484,7 @@ msgstr "Barnprocessen avbröts av signal %d."
 msgid "The child process was aborted."
 msgstr "Barnprocessen avbröts."
 
-#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:890
+#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:901
 msgid "Do _not ask me again"
 msgstr "Fråga mig _inte igen"
 
@@ -504,12 +504,12 @@ msgid ""
 "commands may be executed."
 msgstr "Kllistra in denna text till terminalen kan vara farligt eftersom det ser ut som att vissa kommandon kan köras."
 
-#: ../terminal/terminal-screen.c:1814 ../terminal/terminal-window.c:813
-#: ../terminal/terminal-window.c:2223
+#: ../terminal/terminal-screen.c:1814 ../terminal/terminal-window.c:824
+#: ../terminal/terminal-window.c:2279
 msgid "_Cancel"
 msgstr "_Avbryt"
 
-#: ../terminal/terminal-screen.c:1821 ../terminal/terminal-window.c:335
+#: ../terminal/terminal-screen.c:1821 ../terminal/terminal-window.c:336
 msgid "_Paste"
 msgstr "Klistra _in"
 
@@ -620,7 +620,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "Tog emot felaktigt färgdata: Felaktigt format (%d) eller längd (%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:762
+#: ../terminal/terminal-widget.c:754
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "Misslyckades med att öppna URL '%s'"
@@ -638,389 +638,427 @@ msgid "Toggle Drop-down Terminal"
 msgstr "Växla Drop-down terminal"
 
 #. Use old accelerator paths for backwards compatibility
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:323
 msgid "_File"
 msgstr "_Arkiv"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:324
 msgid "Open _Tab"
 msgstr "Ny _flik"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:324
 msgid "Open a new terminal tab"
 msgstr "Öppna en ny terminalflik"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:325
 msgid "Open T_erminal"
 msgstr "Öppna T_erminal"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:325
 msgid "Open a new terminal window"
 msgstr "Öppna ett nytt terminalfönster"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:326
 msgid "_Undo Close Tab"
 msgstr "_Ångra Stäng flik"
 
-#: ../terminal/terminal-window.c:326
+#: ../terminal/terminal-window.c:327
 msgid "_Detach Tab"
 msgstr "_Frigör flik"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:854
+#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:865
 msgid "Close T_ab"
 msgstr "Stäng fl_ik"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:329
 msgid "Close Other Ta_bs"
 msgstr "Stäng andra flik_ar"
 
-#: ../terminal/terminal-window.c:329 ../terminal/terminal-window.c:861
+#: ../terminal/terminal-window.c:330 ../terminal/terminal-window.c:872
 msgid "Close _Window"
 msgstr "Stäng f_önster"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:331
 msgid "_Edit"
 msgstr "R_edigera"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:332
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:332
 msgid "Copy to clipboard"
 msgstr "Kopiera till urklipp"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:334
 msgid "Copy as _HTML"
 msgstr "Kopiera som _HTML"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:334
 msgid "Copy to clipboard as HTML"
 msgstr "Kopiera till urklipp som HTML"
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:336
 msgid "Paste from clipboard"
 msgstr "Klistra in från urklipp"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:337
 msgid "_Paste Alt"
 msgstr "_Klistra in Alt"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:338
 msgid "Paste _Selection"
 msgstr "Klistra in _markering"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:339
 msgid "Paste _Selection Alt"
 msgstr "Klistra in _markering Alt"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:340
 msgid "Select _All"
 msgstr "Välj _alla"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:341
 msgid "Copy _Input To All Tabs..."
 msgstr "Kopiera _Inmatning till alla flikar..."
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:342
 msgid "Pr_eferences..."
 msgstr "Inställninga_r..."
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:342
 msgid "Open the preferences dialog"
 msgstr "Öppna dialogrutan inställningar"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:344
 msgid "Short_cuts..."
 msgstr "Gen_vägar..."
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:344
 msgid "Open the shortcuts dialog"
 msgstr "Öppna dialogrutan genvägar"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:346
 msgid "_View"
 msgstr "_Visa"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:347
 msgid "Zoom _In"
 msgstr "Zooma _in"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:347
 msgid "Zoom in with larger font"
 msgstr "Zooma in med större teckensnitt"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:348
 msgid "Zoom In Alt"
 msgstr "Zooma in Alt"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:349
 msgid "Zoom _Out"
 msgstr "Z_ooma ut"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:349
 msgid "Zoom out with smaller font"
 msgstr "Zooma ut med mindre teckensnitt"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:350
 msgid "Zoom Out Alt"
 msgstr "Zooma ut Alt"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:351
 msgid "_Normal Size"
 msgstr "_Normal storlek"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:351
 msgid "Zoom to default size"
 msgstr "Zooma till standardstorlek"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:352
 msgid "_Normal Size Alt"
 msgstr "_Normal storlek Alt"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:353
 msgid "_Terminal"
 msgstr "_Terminal"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:354
 msgid "_Set Title..."
 msgstr "A_nge namn..."
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:355
 msgid "Set Title Co_lor..."
 msgstr "Ange tite_lfärg..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:356
 msgid "_Find..."
 msgstr "S_ök..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:356
 msgid "Search terminal contents"
 msgstr "Sök terminalinnehåll"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:357
 msgid "Find Ne_xt"
 msgstr "Sök n_ästa"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:358
 msgid "Find Pre_vious"
 msgstr "Sök Föreg_ående"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:359
 msgid "Sa_ve Contents..."
 msgstr "S_para Innehåll..."
 
-#: ../terminal/terminal-window.c:359 ../terminal/terminal-window.c:2096
+#: ../terminal/terminal-window.c:360 ../terminal/terminal-window.c:2146
 msgid "_Reset"
 msgstr "_Återställ"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:361
 msgid "_Clear Scrollback and Reset"
 msgstr "_Rensa Rullningsfält och återställ"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:362
 msgid "T_abs"
 msgstr "Flik_ar"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:363
 msgid "_Previous Tab"
 msgstr "_Föregående flik"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:363
 msgid "Switch to previous tab"
 msgstr "Växla till föregående flik"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:364
 msgid "_Next Tab"
 msgstr "_Nästa flik"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:364
 msgid "Switch to next tab"
 msgstr "Växla till nästa flik"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:365
 msgid "Last _Active Tab"
 msgstr "Senast _aktiv flik"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:365
 msgid "Switch to last active tab"
 msgstr "Växla till senast aktiv flik"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:366
 msgid "Move Tab _Left"
 msgstr "Flytta till flik åt _vänster"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:367
 msgid "Move Tab _Right"
 msgstr "Flytta till flik åt _höger"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:368
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:369
 msgid "_Contents"
 msgstr "_Innehåll"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:369
 msgid "Display help contents"
 msgstr "Visa hjälpinnehåll"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:370
 msgid "_About"
 msgstr "_Om"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:371
 msgid "_Zoom"
 msgstr "_Zooma"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:372
 msgid "Show _Menubar"
 msgstr "Visa _menyrad"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:372
 msgid "Show/hide the menubar"
 msgstr "Visa/dölj menyraden"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:373
 msgid "Show _Toolbar"
 msgstr "Visa verk_tygsrad"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:373
 msgid "Show/hide the toolbar"
 msgstr "Visa/dölj verktygsraden"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:374
 msgid "Show Window _Borders"
 msgstr "Visa fönster_kanter"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:374
 msgid "Show/hide the window decorations"
 msgstr "Visa/dölj fönsterdekorationer"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:375
 msgid "_Fullscreen"
 msgstr "_Fullskärmsläge"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:375
 msgid "Toggle fullscreen mode"
 msgstr "Växla fullskärmsläge"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:376
 msgid "_Read-Only"
 msgstr "Sk_risvskyddad"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:376
 msgid "Toggle read-only mode"
 msgstr "Växla skrivskyddat läge"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:377
 msgid "Scroll on _Output"
 msgstr "Rulla vid _utmatning"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:377
 msgid "Toggle scroll on output"
 msgstr "Växla rullning vid utmatning"
 
+#. used for changing the accelerator keys via the ShortcutsEditor, the logic
+#. is still handle by GtkActionEntries
+#: ../terminal/terminal-window.c:379
+msgid "Go to Tab 1"
+msgstr ""
+
+#: ../terminal/terminal-window.c:380
+msgid "Go to Tab 2"
+msgstr ""
+
+#: ../terminal/terminal-window.c:381
+msgid "Go to Tab 3"
+msgstr ""
+
+#: ../terminal/terminal-window.c:382
+msgid "Go to Tab 4"
+msgstr ""
+
+#: ../terminal/terminal-window.c:383
+msgid "Go to Tab 5"
+msgstr ""
+
+#: ../terminal/terminal-window.c:384
+msgid "Go to Tab 6"
+msgstr ""
+
+#: ../terminal/terminal-window.c:385
+msgid "Go to Tab 7"
+msgstr ""
+
+#: ../terminal/terminal-window.c:386
+msgid "Go to Tab 8"
+msgstr ""
+
+#: ../terminal/terminal-window.c:387
+msgid "Go to Tab 9"
+msgstr ""
+
 #. create encoding action
-#: ../terminal/terminal-window.c:544
+#: ../terminal/terminal-window.c:555
 msgid "Set _Encoding"
 msgstr "Ställ in _kodning"
 
-#: ../terminal/terminal-window.c:811
+#: ../terminal/terminal-window.c:822
 msgid "Warning"
 msgstr "Varning"
 
 #. and process running
-#: ../terminal/terminal-window.c:822
+#: ../terminal/terminal-window.c:833
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "Det finns fortfarande processor som körs på några flikar.\nAtt stänga detta fönster kommer att döda dem alla."
 
 #. and no process running
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:839
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "Det här fönstret har %d flikar öppna. Att stänga fönstret\nkommer också att stänga alla dess flikar."
 
-#: ../terminal/terminal-window.c:832
+#: ../terminal/terminal-window.c:843
 msgid "Close all tabs?"
 msgstr "Stäng alla flikar?"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:839
+#: ../terminal/terminal-window.c:850
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "En process körs fortfarande\nStänga denna flik kommer att döda den."
 
-#: ../terminal/terminal-window.c:841
+#: ../terminal/terminal-window.c:852
 msgid "Close tab?"
 msgstr "Stäng flik?"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:846
+#: ../terminal/terminal-window.c:857
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "Det finns fortfarande en process som körs.\nAtt stänga detta fönster kommer att döda den."
 
-#: ../terminal/terminal-window.c:848
+#: ../terminal/terminal-window.c:859
 msgid "Close window?"
 msgstr "Stäng fönster?"
 
-#: ../terminal/terminal-window.c:1740
+#: ../terminal/terminal-window.c:1767
 msgid "Copy _Input:"
 msgstr "Kopiera _Inmatning:"
 
-#: ../terminal/terminal-window.c:1744
+#: ../terminal/terminal-window.c:1771
 msgid "Enter the text to be copied to all tabs"
 msgstr "Ange texten som ska kopieras till alla flikar"
 
-#: ../terminal/terminal-window.c:1752
+#: ../terminal/terminal-window.c:1779
 msgid "Copy input"
 msgstr "kopiera inmatning"
 
-#: ../terminal/terminal-window.c:2049
+#: ../terminal/terminal-window.c:2097
 msgid "_Title:"
 msgstr "_Namn:"
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2101
 msgid "Enter the title for the current terminal tab"
 msgstr "Ange namn för den aktiva terminalfliken"
 
-#: ../terminal/terminal-window.c:2058
+#: ../terminal/terminal-window.c:2106
 msgid "Reset"
 msgstr "Återställ"
 
-#: ../terminal/terminal-window.c:2068
+#: ../terminal/terminal-window.c:2116
 msgid "Help"
 msgstr "Hjälp"
 
-#: ../terminal/terminal-window.c:2074
+#: ../terminal/terminal-window.c:2122
 msgid "Close"
 msgstr "Stäng"
 
-#: ../terminal/terminal-window.c:2095
+#: ../terminal/terminal-window.c:2145
 msgid "Choose title color"
 msgstr "Välj titelfärg"
 
-#: ../terminal/terminal-window.c:2182
+#: ../terminal/terminal-window.c:2236
 msgid "Failed to create the regular expression"
 msgstr "Det gick inte att skapa det reguljära uttrycket"
 
-#: ../terminal/terminal-window.c:2220
+#: ../terminal/terminal-window.c:2276
 msgid "Save contents..."
 msgstr "Spara innehåll..."
 
-#: ../terminal/terminal-window.c:2224
+#: ../terminal/terminal-window.c:2280
 msgid "_Save"
 msgstr "_Spara"
 
-#: ../terminal/terminal-window.c:2261
+#: ../terminal/terminal-window.c:2317
 msgid "Failed to save terminal contents"
 msgstr "Det gick inte att spara terminalinnehåll"
 
