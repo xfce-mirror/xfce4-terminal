@@ -15,6 +15,7 @@
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2017-2018
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2018
 # 玉堂白鹤 <yjwork@qq.com>, 2014
+# YuHeng Chou <wojiushixxx@126.com>, 2022
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2013
 # Xiaobo Zhou <zhouxiaobo.500@gmail.com>, 2014
 # 张诚 <xxzhangcheng1@gmail.com>, 2017
@@ -23,9 +24,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Xfce Apps\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-02 12:52+0100\n"
-"PO-Revision-Date: 2021-12-04 10:08+0000\n"
-"Last-Translator: Haoyu Qiu\n"
+"POT-Creation-Date: 2022-01-12 12:52+0100\n"
+"PO-Revision-Date: 2022-01-12 12:16+0000\n"
+"Last-Translator: YuHeng Chou <wojiushixxx@126.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/xfce/xfce-apps/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,12 +193,12 @@ msgstr "请向 <%s> 报告缺陷。"
 msgid "Unable to register terminal service: %s\n"
 msgstr "未能注册终端服务：%s\n"
 
-#: ../terminal/terminal-app.c:920
+#: ../terminal/terminal-app.c:927
 #, c-format
 msgid "Invalid geometry string \"%s\"\n"
 msgstr "无效的几何属性字符串 “%s”\n"
 
-#: ../terminal/terminal-app.c:1000
+#: ../terminal/terminal-app.c:1007
 #, c-format
 msgid "Failed to connect to session manager: %s\n"
 msgstr "无法连接到会话管理器：%s\n"
@@ -495,7 +496,7 @@ msgstr "子进程已被信号%d所终止"
 msgid "The child process was aborted."
 msgstr "子进程已被终止。"
 
-#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:890
+#: ../terminal/terminal-screen.c:1482 ../terminal/terminal-window.c:901
 msgid "Do _not ask me again"
 msgstr "不再询问(_N)"
 
@@ -515,12 +516,12 @@ msgid ""
 "commands may be executed."
 msgstr "将此文本粘贴到终端可能有存在危险，因为它看起来像会执行某些命令。"
 
-#: ../terminal/terminal-screen.c:1814 ../terminal/terminal-window.c:813
-#: ../terminal/terminal-window.c:2223
+#: ../terminal/terminal-screen.c:1814 ../terminal/terminal-window.c:824
+#: ../terminal/terminal-window.c:2279
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../terminal/terminal-screen.c:1821 ../terminal/terminal-window.c:335
+#: ../terminal/terminal-screen.c:1821 ../terminal/terminal-window.c:336
 msgid "_Paste"
 msgstr "粘贴(_P)"
 
@@ -631,7 +632,7 @@ msgid "Received invalid color data: Wrong format (%d) or length (%d)\n"
 msgstr "收到了无效的颜色数据：错误的格式(%d)或长度(%d)\n"
 
 #. tell the user that we were unable to open the responsible application
-#: ../terminal/terminal-widget.c:762
+#: ../terminal/terminal-widget.c:754
 #, c-format
 msgid "Failed to open the URL '%s'"
 msgstr "无法打开 URL “%s”"
@@ -649,389 +650,427 @@ msgid "Toggle Drop-down Terminal"
 msgstr "切换下拉终端"
 
 #. Use old accelerator paths for backwards compatibility
-#: ../terminal/terminal-window.c:322
+#: ../terminal/terminal-window.c:323
 msgid "_File"
 msgstr "文件(_F)"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:324
 msgid "Open _Tab"
 msgstr "打开标签(_T)"
 
-#: ../terminal/terminal-window.c:323
+#: ../terminal/terminal-window.c:324
 msgid "Open a new terminal tab"
 msgstr "打开新的终端标签"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:325
 msgid "Open T_erminal"
 msgstr "打开终端(_E)"
 
-#: ../terminal/terminal-window.c:324
+#: ../terminal/terminal-window.c:325
 msgid "Open a new terminal window"
 msgstr "打开新的终端窗口"
 
-#: ../terminal/terminal-window.c:325
+#: ../terminal/terminal-window.c:326
 msgid "_Undo Close Tab"
 msgstr "撤销关闭标签(_U)"
 
-#: ../terminal/terminal-window.c:326
+#: ../terminal/terminal-window.c:327
 msgid "_Detach Tab"
 msgstr "分离标签(_D)"
 
-#: ../terminal/terminal-window.c:327 ../terminal/terminal-window.c:854
+#: ../terminal/terminal-window.c:328 ../terminal/terminal-window.c:865
 msgid "Close T_ab"
 msgstr "关闭标签(_A)"
 
-#: ../terminal/terminal-window.c:328
+#: ../terminal/terminal-window.c:329
 msgid "Close Other Ta_bs"
 msgstr "关闭其他标签(_B)"
 
-#: ../terminal/terminal-window.c:329 ../terminal/terminal-window.c:861
+#: ../terminal/terminal-window.c:330 ../terminal/terminal-window.c:872
 msgid "Close _Window"
 msgstr "关闭窗口(_W)"
 
-#: ../terminal/terminal-window.c:330
+#: ../terminal/terminal-window.c:331
 msgid "_Edit"
 msgstr "编辑(_E)"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:332
 msgid "_Copy"
 msgstr "复制(_C)"
 
-#: ../terminal/terminal-window.c:331
+#: ../terminal/terminal-window.c:332
 msgid "Copy to clipboard"
 msgstr "复制至剪贴板"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:334
 msgid "Copy as _HTML"
 msgstr "复制为 HTML(_H)"
 
-#: ../terminal/terminal-window.c:333
+#: ../terminal/terminal-window.c:334
 msgid "Copy to clipboard as HTML"
 msgstr "以 HTML 形式复制到剪贴板 "
 
-#: ../terminal/terminal-window.c:335
+#: ../terminal/terminal-window.c:336
 msgid "Paste from clipboard"
 msgstr "从剪贴板粘贴"
 
-#: ../terminal/terminal-window.c:336
+#: ../terminal/terminal-window.c:337
 msgid "_Paste Alt"
 msgstr "粘贴 Alt(_P)"
 
-#: ../terminal/terminal-window.c:337
+#: ../terminal/terminal-window.c:338
 msgid "Paste _Selection"
 msgstr "粘贴所选内容(_S)"
 
-#: ../terminal/terminal-window.c:338
+#: ../terminal/terminal-window.c:339
 msgid "Paste _Selection Alt"
 msgstr "粘贴所选内容 Alt(_S)"
 
-#: ../terminal/terminal-window.c:339
+#: ../terminal/terminal-window.c:340
 msgid "Select _All"
 msgstr "全选(_A)"
 
-#: ../terminal/terminal-window.c:340
+#: ../terminal/terminal-window.c:341
 msgid "Copy _Input To All Tabs..."
 msgstr "复制输入到所有标签页(_I)…"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:342
 msgid "Pr_eferences..."
 msgstr "首选项...(_E)"
 
-#: ../terminal/terminal-window.c:341
+#: ../terminal/terminal-window.c:342
 msgid "Open the preferences dialog"
 msgstr "打开终端首选项对话框"
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:344
 msgid "Short_cuts..."
 msgstr "快捷键(_C)..."
 
-#: ../terminal/terminal-window.c:343
+#: ../terminal/terminal-window.c:344
 msgid "Open the shortcuts dialog"
 msgstr "打开快捷键对话框"
 
-#: ../terminal/terminal-window.c:345
+#: ../terminal/terminal-window.c:346
 msgid "_View"
 msgstr "视图(_V)"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:347
 msgid "Zoom _In"
 msgstr "放大(_I)"
 
-#: ../terminal/terminal-window.c:346
+#: ../terminal/terminal-window.c:347
 msgid "Zoom in with larger font"
 msgstr "放大并增大字号"
 
-#: ../terminal/terminal-window.c:347
+#: ../terminal/terminal-window.c:348
 msgid "Zoom In Alt"
 msgstr "放大 Alt"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:349
 msgid "Zoom _Out"
 msgstr "缩小(_O)"
 
-#: ../terminal/terminal-window.c:348
+#: ../terminal/terminal-window.c:349
 msgid "Zoom out with smaller font"
 msgstr "缩小并减小字号"
 
-#: ../terminal/terminal-window.c:349
+#: ../terminal/terminal-window.c:350
 msgid "Zoom Out Alt"
 msgstr "缩小 Alt"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:351
 msgid "_Normal Size"
 msgstr "正常大小(_N)"
 
-#: ../terminal/terminal-window.c:350
+#: ../terminal/terminal-window.c:351
 msgid "Zoom to default size"
 msgstr "缩放到默认大小"
 
-#: ../terminal/terminal-window.c:351
+#: ../terminal/terminal-window.c:352
 msgid "_Normal Size Alt"
 msgstr "正常大小 Alt(_N)"
 
-#: ../terminal/terminal-window.c:352
+#: ../terminal/terminal-window.c:353
 msgid "_Terminal"
 msgstr "终端(_T)"
 
-#: ../terminal/terminal-window.c:353
+#: ../terminal/terminal-window.c:354
 msgid "_Set Title..."
 msgstr "设置标题(_S)..."
 
-#: ../terminal/terminal-window.c:354
+#: ../terminal/terminal-window.c:355
 msgid "Set Title Co_lor..."
 msgstr "设置标题颜色(_L)..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:356
 msgid "_Find..."
 msgstr "查找..."
 
-#: ../terminal/terminal-window.c:355
+#: ../terminal/terminal-window.c:356
 msgid "Search terminal contents"
 msgstr "搜索终端内容"
 
-#: ../terminal/terminal-window.c:356
+#: ../terminal/terminal-window.c:357
 msgid "Find Ne_xt"
 msgstr "查找下一个(_X)"
 
-#: ../terminal/terminal-window.c:357
+#: ../terminal/terminal-window.c:358
 msgid "Find Pre_vious"
 msgstr "查找上一个(_V)"
 
-#: ../terminal/terminal-window.c:358
+#: ../terminal/terminal-window.c:359
 msgid "Sa_ve Contents..."
 msgstr "保存内容至(_V)..."
 
-#: ../terminal/terminal-window.c:359 ../terminal/terminal-window.c:2096
+#: ../terminal/terminal-window.c:360 ../terminal/terminal-window.c:2146
 msgid "_Reset"
 msgstr "重置(_R)"
 
-#: ../terminal/terminal-window.c:360
+#: ../terminal/terminal-window.c:361
 msgid "_Clear Scrollback and Reset"
 msgstr "清除屏幕回滚并重置(_C)"
 
-#: ../terminal/terminal-window.c:361
+#: ../terminal/terminal-window.c:362
 msgid "T_abs"
 msgstr "标签(_A)"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:363
 msgid "_Previous Tab"
 msgstr "上一标签(_P)"
 
-#: ../terminal/terminal-window.c:362
+#: ../terminal/terminal-window.c:363
 msgid "Switch to previous tab"
 msgstr "切换至上一个标签"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:364
 msgid "_Next Tab"
 msgstr "下一标签(_N)"
 
-#: ../terminal/terminal-window.c:363
+#: ../terminal/terminal-window.c:364
 msgid "Switch to next tab"
 msgstr "切换至下一个标签"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:365
 msgid "Last _Active Tab"
 msgstr "最后的活动标签(_A)"
 
-#: ../terminal/terminal-window.c:364
+#: ../terminal/terminal-window.c:365
 msgid "Switch to last active tab"
 msgstr "切换至最后的活动标签"
 
-#: ../terminal/terminal-window.c:365
+#: ../terminal/terminal-window.c:366
 msgid "Move Tab _Left"
 msgstr "左移标签(_L)"
 
-#: ../terminal/terminal-window.c:366
+#: ../terminal/terminal-window.c:367
 msgid "Move Tab _Right"
 msgstr "右移标签(_R)"
 
-#: ../terminal/terminal-window.c:367
+#: ../terminal/terminal-window.c:368
 msgid "_Help"
 msgstr "帮助(_H)"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:369
 msgid "_Contents"
 msgstr "内容(_C)"
 
-#: ../terminal/terminal-window.c:368
+#: ../terminal/terminal-window.c:369
 msgid "Display help contents"
 msgstr "显示帮助内容"
 
-#: ../terminal/terminal-window.c:369
+#: ../terminal/terminal-window.c:370
 msgid "_About"
 msgstr "关于(_A)"
 
-#: ../terminal/terminal-window.c:370
+#: ../terminal/terminal-window.c:371
 msgid "_Zoom"
 msgstr "缩放(_Z)"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:372
 msgid "Show _Menubar"
 msgstr "显示菜单栏(_M)"
 
-#: ../terminal/terminal-window.c:371
+#: ../terminal/terminal-window.c:372
 msgid "Show/hide the menubar"
 msgstr "显示/隐藏菜单栏"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:373
 msgid "Show _Toolbar"
 msgstr "显示工具栏(_T)"
 
-#: ../terminal/terminal-window.c:372
+#: ../terminal/terminal-window.c:373
 msgid "Show/hide the toolbar"
 msgstr "显示/隐藏工具栏"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:374
 msgid "Show Window _Borders"
 msgstr "显示窗口边框(_B)"
 
-#: ../terminal/terminal-window.c:373
+#: ../terminal/terminal-window.c:374
 msgid "Show/hide the window decorations"
 msgstr "显示/隐藏窗口修饰"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:375
 msgid "_Fullscreen"
 msgstr "全屏(_F)"
 
-#: ../terminal/terminal-window.c:374
+#: ../terminal/terminal-window.c:375
 msgid "Toggle fullscreen mode"
 msgstr "切换全屏模式"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:376
 msgid "_Read-Only"
 msgstr "只读(_R)"
 
-#: ../terminal/terminal-window.c:375
+#: ../terminal/terminal-window.c:376
 msgid "Toggle read-only mode"
 msgstr "切换只读模式"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:377
 msgid "Scroll on _Output"
 msgstr "输出时滚动(_O)"
 
-#: ../terminal/terminal-window.c:376
+#: ../terminal/terminal-window.c:377
 msgid "Toggle scroll on output"
 msgstr "切换输出时滚动"
 
+#. used for changing the accelerator keys via the ShortcutsEditor, the logic
+#. is still handle by GtkActionEntries
+#: ../terminal/terminal-window.c:379
+msgid "Go to Tab 1"
+msgstr "转到标签 1"
+
+#: ../terminal/terminal-window.c:380
+msgid "Go to Tab 2"
+msgstr "转到标签 2"
+
+#: ../terminal/terminal-window.c:381
+msgid "Go to Tab 3"
+msgstr "转到标签 3"
+
+#: ../terminal/terminal-window.c:382
+msgid "Go to Tab 4"
+msgstr "转到标签 4"
+
+#: ../terminal/terminal-window.c:383
+msgid "Go to Tab 5"
+msgstr "转到标签 5"
+
+#: ../terminal/terminal-window.c:384
+msgid "Go to Tab 6"
+msgstr "转到标签 6"
+
+#: ../terminal/terminal-window.c:385
+msgid "Go to Tab 7"
+msgstr "转到标签 7"
+
+#: ../terminal/terminal-window.c:386
+msgid "Go to Tab 8"
+msgstr "转到标签 8"
+
+#: ../terminal/terminal-window.c:387
+msgid "Go to Tab 9"
+msgstr "转到标签 9"
+
 #. create encoding action
-#: ../terminal/terminal-window.c:544
+#: ../terminal/terminal-window.c:555
 msgid "Set _Encoding"
 msgstr "设置编码(_E)"
 
-#: ../terminal/terminal-window.c:811
+#: ../terminal/terminal-window.c:822
 msgid "Warning"
 msgstr "警告"
 
 #. and process running
-#: ../terminal/terminal-window.c:822
+#: ../terminal/terminal-window.c:833
 msgid ""
 "There are still processes running in some tabs.\n"
 "Closing this window will kill all of them."
 msgstr "仍有一些进程在一些标签页中运行。\n关闭该窗口以将其全部杀死。"
 
 #. and no process running
-#: ../terminal/terminal-window.c:828
+#: ../terminal/terminal-window.c:839
 #, c-format
 msgid ""
 "This window has %d tabs open. Closing this window\n"
 "will also close all its tabs."
 msgstr "窗口有 %d 个标签打开。\n关闭此窗口也会关闭其所有的标签页。"
 
-#: ../terminal/terminal-window.c:832
+#: ../terminal/terminal-window.c:843
 msgid "Close all tabs?"
 msgstr "关闭所有标签？"
 
 #. closing a tab, and process running
-#: ../terminal/terminal-window.c:839
+#: ../terminal/terminal-window.c:850
 msgid ""
 "There is still a process running.\n"
 "Closing this tab will kill it."
 msgstr "仍有一个进程运行中。\n关闭该标签来杀死它。"
 
-#: ../terminal/terminal-window.c:841
+#: ../terminal/terminal-window.c:852
 msgid "Close tab?"
 msgstr "关闭标签？"
 
 #. closing a single tab window, and process running
-#: ../terminal/terminal-window.c:846
+#: ../terminal/terminal-window.c:857
 msgid ""
 "There is still a process running.\n"
 "Closing this window will kill it."
 msgstr "仍有一个进程运行中。\n关闭该窗口来杀死它"
 
-#: ../terminal/terminal-window.c:848
+#: ../terminal/terminal-window.c:859
 msgid "Close window?"
 msgstr "关闭窗口？"
 
-#: ../terminal/terminal-window.c:1740
+#: ../terminal/terminal-window.c:1767
 msgid "Copy _Input:"
 msgstr "复制输入(_I)："
 
-#: ../terminal/terminal-window.c:1744
+#: ../terminal/terminal-window.c:1771
 msgid "Enter the text to be copied to all tabs"
 msgstr "输入的文本复制到所有标签页"
 
-#: ../terminal/terminal-window.c:1752
+#: ../terminal/terminal-window.c:1779
 msgid "Copy input"
 msgstr "复制输入"
 
-#: ../terminal/terminal-window.c:2049
+#: ../terminal/terminal-window.c:2097
 msgid "_Title:"
 msgstr "标题(_T)："
 
-#: ../terminal/terminal-window.c:2053
+#: ../terminal/terminal-window.c:2101
 msgid "Enter the title for the current terminal tab"
 msgstr "输入当前终端标签的标题"
 
-#: ../terminal/terminal-window.c:2058
+#: ../terminal/terminal-window.c:2106
 msgid "Reset"
 msgstr "重置"
 
-#: ../terminal/terminal-window.c:2068
+#: ../terminal/terminal-window.c:2116
 msgid "Help"
 msgstr "帮助"
 
-#: ../terminal/terminal-window.c:2074
+#: ../terminal/terminal-window.c:2122
 msgid "Close"
 msgstr "关闭"
 
-#: ../terminal/terminal-window.c:2095
+#: ../terminal/terminal-window.c:2145
 msgid "Choose title color"
 msgstr "选择标题颜色"
 
-#: ../terminal/terminal-window.c:2182
+#: ../terminal/terminal-window.c:2236
 msgid "Failed to create the regular expression"
 msgstr "无法创建正则表达式"
 
-#: ../terminal/terminal-window.c:2220
+#: ../terminal/terminal-window.c:2276
 msgid "Save contents..."
 msgstr "保存内容至..."
 
-#: ../terminal/terminal-window.c:2224
+#: ../terminal/terminal-window.c:2280
 msgid "_Save"
 msgstr "保存(_S)"
 
-#: ../terminal/terminal-window.c:2261
+#: ../terminal/terminal-window.c:2317
 msgid "Failed to save terminal contents"
 msgstr "保存终端内容失败"
 
