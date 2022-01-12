@@ -228,6 +228,7 @@ static gboolean     terminal_window_action_reset_and_clear        (TerminalWindo
 static void         terminal_window_action_send_signal            (SendSignalData      *data);
 static gboolean     terminal_window_action_contents               (TerminalWindow      *window);
 static gboolean     terminal_window_action_about                  (TerminalWindow      *window);
+static gboolean     terminal_window_action_do_nothing             (TerminalWindow      *window);
 
 static void         terminal_window_zoom_update_screens           (TerminalWindow      *window);
 static void         terminal_window_switch_tab                    (GtkNotebook         *notebook,
@@ -374,6 +375,16 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_FULLSCREEN,            "<Actions>/terminal-window/fullscreen",            "F11",                       XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Fullscreen"),                   N_ ("Toggle fullscreen mode"),            "view-fullscreen",        G_CALLBACK (terminal_window_action_fullscreen), },
     { TERMINAL_WINDOW_ACTION_READ_ONLY,             "<Actions>/terminal-window/read-only",             "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("_Read-Only"),                    N_ ("Toggle read-only mode"),             NULL,                     G_CALLBACK (terminal_window_action_readonly), },
     { TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT,      "<Actions>/terminal-window/scroll-on-output",      "",                          XFCE_GTK_CHECK_MENU_ITEM, N_ ("Scroll on _Output"),             N_ ("Toggle scroll on output"),           NULL,                     G_CALLBACK (terminal_window_action_scroll_on_output), },
+    /* used for changing the accelerator keys via the ShortcutsEditor, the logic is still handle by GtkActionEntries */
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_1,            "<Actions>/terminal-window/goto-tab-1",            "<Alt>1",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 1"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_2,            "<Actions>/terminal-window/goto-tab-2",            "<Alt>2",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 2"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_3,            "<Actions>/terminal-window/goto-tab-3",            "<Alt>3",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 3"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_4,            "<Actions>/terminal-window/goto-tab-4",            "<Alt>4",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 4"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_5,            "<Actions>/terminal-window/goto-tab-5",            "<Alt>5",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 5"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_6,            "<Actions>/terminal-window/goto-tab-6",            "<Alt>6",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 6"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_7,            "<Actions>/terminal-window/goto-tab-7",            "<Alt>7",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 7"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_8,            "<Actions>/terminal-window/goto-tab-8",            "<Alt>8",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 8"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
+    { TERMINAL_WINDOW_ACTION_GOTO_TAB_9,            "<Actions>/terminal-window/goto-tab-9",            "<Alt>9",                    XFCE_GTK_CHECK_MENU_ITEM, N_ ("Go to Tab 9"),                   NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_do_nothing), },
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries,G_N_ELEMENTS(action_entries),id)
@@ -2379,6 +2390,22 @@ terminal_window_action_about (TerminalWindow *window)
   terminal_util_show_about_dialog (GTK_WINDOW (window));
 
   return TRUE;
+}
+
+
+
+/**
+ * terminal_window_action_do_nothing:
+ *
+ * Used as a dummy value for go-to tab accelerators XfceGtkActionEntries.
+ * If an entry doesn't have a Callback it won't appear in the XfceShortcutsEditor.
+ * go-to tab accelerator entries don't have an actual tab because all their logic still uses
+ * GtkActionEntries. Until that is dealt with we use their XfceGtkActionEntries only for changing the shortcuts via the editor.
+ **/
+static gboolean
+terminal_window_action_do_nothing (TerminalWindow *window)
+{
+  return FALSE;
 }
 
 

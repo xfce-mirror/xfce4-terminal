@@ -321,8 +321,6 @@ terminal_app_accel_map_changed (TerminalApp *app)
   /* identify accelerators containing the Tab key */
   terminal_app_update_tab_key_accels (app);
 
-  /* TODO: we should also update the go-to accelerators */
-
   /* update the tab-key accel list in each window */
   terminal_app_update_windows_accels (app);
 }
@@ -349,14 +347,6 @@ terminal_app_accel_map_load (gpointer user_data)
   app->accel_map = gtk_accel_map_get ();
   g_signal_connect_swapped (G_OBJECT (app->accel_map), "changed",
       G_CALLBACK (terminal_app_accel_map_changed), app);
-
-  /* check and create default Alt+N accelerators */
-  for (i = 1; i < 10; i++)
-    {
-      g_snprintf (name, sizeof (name), "<Actions>/terminal-window/goto-tab-%d", i);
-      if (!gtk_accel_map_lookup_entry (name, NULL))
-        gtk_accel_map_change_entry (name, GDK_KEY_0 + i, GDK_MOD1_MASK, FALSE);
-    }
 
   /* identify accelerators containing the Tab key */
   terminal_app_update_tab_key_accels (app);
