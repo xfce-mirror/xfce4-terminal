@@ -330,6 +330,8 @@ terminal_screen_class_init (TerminalScreenClass *klass)
 static void
 terminal_screen_init (TerminalScreen *screen)
 {
+  gboolean scrollbar;
+
   screen->loader = NULL;
   screen->working_directory = g_get_current_dir ();
   screen->dynamic_title_mode = TERMINAL_TITLE_DEFAULT;
@@ -356,10 +358,14 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect_swapped (G_OBJECT (screen->terminal), "paste-clipboard-request",
       G_CALLBACK (terminal_screen_paste_clipboard), screen);
 
+  screen->preferences = terminal_preferences_get ();
+
+  g_object_get (G_OBJECT (screen->preferences), "scrolling-bar", &scrollbar, NULL);
+
   screen->swin = gtk_scrolled_window_new (gtk_scrollable_get_hadjustment (GTK_SCROLLABLE (screen->terminal)), gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (screen->terminal)));
   gtk_scrolled_window_set_propagate_natural_width (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
   gtk_scrolled_window_set_propagate_natural_height (GTK_SCROLLED_WINDOW (screen->swin), TRUE);
-  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (screen->swin), GTK_POLICY_NEVER, GTK_POLICY_ALWAYS);
+  gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (screen->swin), GTK_POLICY_NEVER, scrollbar != TERMINAL_SCROLLBAR_NONE ? GTK_POLICY_ALWAYS : GTK_POLICY_NEVER);
   gtk_container_add (GTK_CONTAINER (screen->swin), screen->terminal);
 
   gtk_container_add (GTK_CONTAINER (screen), screen->swin);
@@ -368,7 +374,6 @@ terminal_screen_init (TerminalScreen *screen)
   g_signal_connect_after (G_OBJECT (screen->scrollbar), "button-press-event", G_CALLBACK (gtk_true), NULL);
 
   /* watch preferences changes */
-  screen->preferences = terminal_preferences_get ();
   g_signal_connect (G_OBJECT (screen->preferences), "notify",
       G_CALLBACK (terminal_screen_preferences_changed), screen);
 
