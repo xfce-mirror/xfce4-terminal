@@ -332,8 +332,6 @@ terminal_app_accel_map_load (gpointer user_data)
 {
   TerminalApp *app = TERMINAL_APP (user_data);
   gchar       *path;
-  gchar        name[50];
-  guint        i;
 
   path = xfce_resource_lookup (XFCE_RESOURCE_CONFIG, ACCEL_MAP_PATH);
   if (G_LIKELY (path != NULL))
