@@ -218,9 +218,6 @@ struct _TerminalScreen
   TerminalTitle        dynamic_title_mode;
   guint                hold : 1;
   guint                has_random_bg_color : 1;
-#if !VTE_CHECK_VERSION (0, 51, 1)
-  guint                scroll_on_output : 1;
-#endif
 
   guint                activity_timeout_id;
   time_t               activity_resize_time;
@@ -656,10 +653,8 @@ terminal_screen_preferences_changed (TerminalPreferences *preferences,
     terminal_screen_update_binding_delete (screen);
   else if (strcmp ("binding-ambiguous-width", name) == 0)
     terminal_screen_update_binding_ambiguous_width (screen);
-#if VTE_CHECK_VERSION (0, 51, 3)
   else if (strcmp ("cell-width-scale", name) == 0 || strcmp ("cell-height-scale", name) == 0)
     terminal_screen_update_font (screen);
-#endif
   else if (strncmp ("color-", name, strlen ("color-")) == 0)
     terminal_screen_update_colors (screen);
   else if (strncmp ("font-", name, strlen ("font-")) == 0)
@@ -1243,10 +1238,8 @@ terminal_screen_update_colors (TerminalScreen *screen)
     vte_terminal_set_color_bold (VTE_TERMINAL (screen->terminal), bold_use_default ? &fg : &bold);
 #endif
 
-#if VTE_CHECK_VERSION (0, 51, 3)
   /* "bold-is-bright" supported since vte 0.51.3 */
   vte_terminal_set_bold_is_bright (VTE_TERMINAL (screen->terminal), bold_is_bright);
-#endif
 }
 
 
@@ -1362,7 +1355,6 @@ terminal_screen_update_scrolling_on_keystroke (TerminalScreen *screen)
 static void
 terminal_screen_update_text_blink_mode (TerminalScreen *screen)
 {
-#if VTE_CHECK_VERSION (0, 51, 3)
   TerminalTextBlinkMode val;
   VteTextBlinkMode      mode = VTE_TEXT_BLINK_ALWAYS;
 
@@ -1390,7 +1382,6 @@ terminal_screen_update_text_blink_mode (TerminalScreen *screen)
     }
 
   vte_terminal_set_text_blink_mode (VTE_TERMINAL (screen->terminal), mode);
-#endif
 }
 
 
@@ -1962,7 +1953,6 @@ terminal_screen_paste_unsafe_text (TerminalScreen *screen,
 
 
 
-#if VTE_CHECK_VERSION (0, 48, 0)
 static void
 terminal_screen_spawn_async_cb (VteTerminal *terminal,
                                 GPid         pid,
@@ -1991,7 +1981,6 @@ terminal_screen_spawn_async_cb (VteTerminal *terminal,
     }
 #endif // HAVE_LIBUTEMPTER
 }
-#endif
 
 
 
@@ -2082,7 +2071,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
           spawn_flags |= G_SPAWN_FILE_AND_ARGV_ZERO;
         }
 
-#if VTE_CHECK_VERSION (0, 48, 0)
       vte_terminal_spawn_async (VTE_TERMINAL (screen->terminal),
                                 pty_flags,
                                 screen->working_directory, argv2, env,
@@ -2092,28 +2080,6 @@ terminal_screen_launch_child (TerminalScreen *screen)
                                 NULL,
                                 terminal_screen_spawn_async_cb,
                                 screen);
-#else
-      if (!vte_terminal_spawn_sync (VTE_TERMINAL (screen->terminal),
-                                    pty_flags,
-                                    screen->working_directory, argv2, env,
-                                    spawn_flags,
-                                    NULL, NULL,
-                                    &screen->pid, NULL, &error))
-        {
-          xfce_dialog_show_error (GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (screen))),
-                                  error, _("Failed to execute child"));
-          g_error_free (error);
-        }
-#ifdef HAVE_LIBUTEMPTER
-      else
-        {
-          gboolean update_records;
-          g_object_get (G_OBJECT (screen->preferences), "command-update-records", &update_records, NULL);
-          if (update_records)
-            utempter_add_record (vte_pty_get_fd (vte_terminal_get_pty (VTE_TERMINAL (screen->terminal))), NULL);
-        }
-#endif // HAVE_LIBUTEMPTER
-#endif
 
       g_free (argv2);
 
@@ -2532,11 +2498,7 @@ void
 terminal_screen_copy_clipboard (TerminalScreen *screen)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-#if VTE_CHECK_VERSION (0, 49, 2)
   vte_terminal_copy_clipboard_format (VTE_TERMINAL (screen->terminal), VTE_FORMAT_TEXT);
-#else
-  vte_terminal_copy_clipboard (VTE_TERMINAL (screen->terminal));
-#endif
 }
 
 
@@ -2548,14 +2510,12 @@ terminal_screen_copy_clipboard (TerminalScreen *screen)
  * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD selection
  * as HTML (preserving colors, bold font, etc).
  **/
-#if VTE_CHECK_VERSION (0, 49, 2)
 void
 terminal_screen_copy_clipboard_html (TerminalScreen *screen)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   vte_terminal_copy_clipboard_format (VTE_TERMINAL (screen->terminal), VTE_FORMAT_HTML);
 }
-#endif
 
 
 
@@ -2914,9 +2874,7 @@ terminal_screen_update_font (TerminalScreen *screen)
   GSettings            *settings;
   XfconfChannel        *channel;
   gdouble               font_scale = PANGO_SCALE_MEDIUM;
-#if VTE_CHECK_VERSION (0, 51, 3)
-  gdouble cell_width_scale, cell_height_scale;
-#endif
+  gdouble               cell_width_scale, cell_height_scale;
 
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
   terminal_return_if_fail (TERMINAL_IS_PREFERENCES (screen->preferences));
@@ -2989,7 +2947,6 @@ terminal_screen_update_font (TerminalScreen *screen)
       g_free (font_name);
     }
 
-#if VTE_CHECK_VERSION (0, 51, 3)
   g_object_get (G_OBJECT (screen->preferences),
                 "cell-width-scale", &cell_width_scale,
                 "cell-height-scale", &cell_height_scale,
@@ -2997,7 +2954,6 @@ terminal_screen_update_font (TerminalScreen *screen)
 
   vte_terminal_set_cell_width_scale (VTE_TERMINAL (screen->terminal), cell_width_scale);
   vte_terminal_set_cell_height_scale (VTE_TERMINAL (screen->terminal), cell_height_scale);
-#endif
 
   /* update window geometry it required (not needed for drop-down) */
   if (TERMINAL_IS_WINDOW (toplevel) && !terminal_window_is_drop_down (TERMINAL_WINDOW (toplevel)) && grid_w > 0 && grid_h > 0)
@@ -3029,11 +2985,7 @@ gboolean
 terminal_screen_get_scroll_on_output (TerminalScreen *screen)
 {
   terminal_return_val_if_fail (TERMINAL_IS_SCREEN (screen), FALSE);
-#if !VTE_CHECK_VERSION (0, 51, 1)
-  return screen->scroll_on_output;
-#else
   return vte_terminal_get_scroll_on_output (VTE_TERMINAL (screen->terminal));
-#endif
 }
 
 
@@ -3043,9 +2995,6 @@ terminal_screen_set_scroll_on_output (TerminalScreen *screen,
                                       gboolean        enabled)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
-#if !VTE_CHECK_VERSION (0, 51, 1)
-  screen->scroll_on_output = enabled;
-#endif
   vte_terminal_set_scroll_on_output (VTE_TERMINAL (screen->terminal), enabled);
 }
 

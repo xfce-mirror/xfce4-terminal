@@ -191,9 +191,7 @@ static gboolean     terminal_window_action_close_tab              (TerminalWindo
 static gboolean     terminal_window_action_close_other_tabs       (TerminalWindow      *window);
 static gboolean     terminal_window_action_close_window           (TerminalWindow      *window);
 static gboolean     terminal_window_action_copy                   (TerminalWindow      *window);
-#if VTE_CHECK_VERSION (0, 49, 2)
 static gboolean     terminal_window_action_copy_html              (TerminalWindow      *window);
-#endif
 static gboolean     terminal_window_action_paste                  (TerminalWindow      *window);
 static gboolean     terminal_window_action_paste_selection        (TerminalWindow      *window);
 static gboolean     terminal_window_action_select_all             (TerminalWindow      *window);
@@ -330,9 +328,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_CLOSE_WINDOW,          "<Actions>/terminal-window/close-window",          "<control><shift>q",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Close _Window"),                 NULL,                                     "application-exit",       G_CALLBACK (terminal_window_action_close_window), },
     { TERMINAL_WINDOW_ACTION_EDIT_MENU,             "<Actions>/terminal-window/edit-menu",             "",                          XFCE_GTK_MENU_ITEM,       N_ ("_Edit"),                         NULL,                                     NULL,                     NULL, },
     { TERMINAL_WINDOW_ACTION_COPY,                  "<Actions>/terminal-window/copy",                  "<control><shift>c",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_Copy"),                         N_ ("Copy to clipboard"),                 "edit-copy",              G_CALLBACK (terminal_window_action_copy), },
-#if VTE_CHECK_VERSION (0, 49, 2)
     { TERMINAL_WINDOW_ACTION_COPY_HTML,             "<Actions>/terminal-window/copy-html",             "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Copy as _HTML"),                 N_ ("Copy to clipboard as HTML"),         "edit-copy",              G_CALLBACK (terminal_window_action_copy_html), },
-#endif
     { TERMINAL_WINDOW_ACTION_PASTE,                 "<Actions>/terminal-window/paste",                 "<control><shift>v",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_Paste"),                        N_ ("Paste from clipboard"),              "edit-paste",             G_CALLBACK (terminal_window_action_paste), },
     { TERMINAL_WINDOW_ACTION_PASTE_ALT,             "<Actions>/terminal-window/paste-alt",             "<control><shift>Insert",    XFCE_GTK_IMAGE_MENU_ITEM, N_ ("_Paste Alt"),                    NULL,                                     "edit-paste-alt",         G_CALLBACK (terminal_window_action_paste), },
     { TERMINAL_WINDOW_ACTION_PASTE_SELECTION,       "<Actions>/terminal-window/paste-selection",       "",                          XFCE_GTK_MENU_ITEM,       N_ ("Paste _Selection"),              NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_paste_selection), },
@@ -1674,7 +1670,6 @@ terminal_window_action_copy (TerminalWindow *window)
 
 
 
-#if VTE_CHECK_VERSION (0, 49, 2)
 static gboolean
 terminal_window_action_copy_html (TerminalWindow *window)
 {
@@ -1682,7 +1677,6 @@ terminal_window_action_copy_html (TerminalWindow *window)
     terminal_screen_copy_clipboard_html (window->priv->active);
   return TRUE;
 }
-#endif
 
 
 
@@ -3095,11 +3089,9 @@ terminal_window_menu_add_section (TerminalWindow      *window,
 
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
-#if VTE_CHECK_VERSION (0, 49, 2)
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_HTML), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
       xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
-#endif
     }
 
   if (sections & MENU_SECTION_PASTE)
