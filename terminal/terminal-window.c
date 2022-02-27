@@ -1827,7 +1827,11 @@ terminal_window_action_prefs (TerminalWindow *window)
 static gboolean
 terminal_window_action_shortcuts (TerminalWindow *window)
 {
+#if LIBXFCE4UI_CHECK_VERSION (4, 17, 5)
+  xfce_shortcuts_editor_dialog_new_with_parent (GTK_WINDOW (window), 4, "", action_entries, TERMINAL_WINDOW_ACTION_N);
+#else
   xfce_shortcuts_editor_dialog_new (4, "", action_entries, TERMINAL_WINDOW_ACTION_N);
+#endif
   return TRUE;
 }
 #endif
