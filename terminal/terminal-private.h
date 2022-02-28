@@ -32,9 +32,8 @@ G_BEGIN_DECLS
 /* macro for some debugging */
 #define PRINT_TIME(desc) \
   G_BEGIN_DECLS { \
-    GTimeVal gtv; \
-    g_get_current_time (&gtv); \
-    g_print ("%ld.%ld: %s\n", gtv.tv_sec, gtv.tv_usec, desc); \
+    gint64 __time = g_get_real_time ();                       \
+    g_print ("%ld.%ld: %s\n", __time / G_USEC_PER_SEC, __time % G_USEC_PER_SEC, desc); \
   } G_END_DECLS
 
 /* support macros for debugging */
