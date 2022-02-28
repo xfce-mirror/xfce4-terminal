@@ -30,11 +30,12 @@ G_BEGIN_DECLS
 #define IS_STRING(string) ((string) != NULL && *(string) != '\0')
 
 /* macro for some debugging */
+#define F64 "%" G_GINT64_FORMAT
 #define PRINT_TIME(desc) \
   G_BEGIN_DECLS { \
-    GTimeVal gtv; \
-    g_get_current_time (&gtv); \
-    g_print ("%ld.%ld: %s\n", gtv.tv_sec, gtv.tv_usec, desc); \
+    gint64 __time = g_get_real_time ();                               \
+    g_print (F64 "." F64 ": %s\n",                                    \
+             __time / G_USEC_PER_SEC, __time % G_USEC_PER_SEC, desc); \
   } G_END_DECLS
 
 /* support macros for debugging */
