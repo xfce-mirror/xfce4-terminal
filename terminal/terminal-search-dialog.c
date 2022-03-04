@@ -44,12 +44,12 @@ static void terminal_search_dialog_entry_changed      (GtkWidget            *ent
 
 struct _TerminalSearchDialogClass
 {
-  GtkDialogClass parent_class;
+  XfceTitledDialogClass parent_class;
 };
 
 struct _TerminalSearchDialog
 {
-  GtkDialog      parent_instance;
+  XfceTitledDialog parent_instance;
 
   VteRegex        *last_gregex;
 
@@ -68,7 +68,7 @@ struct _TerminalSearchDialog
 
 
 
-G_DEFINE_TYPE (TerminalSearchDialog, terminal_search_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE (TerminalSearchDialog, terminal_search_dialog, XFCE_TYPE_TITLED_DIALOG)
 
 
 
@@ -98,19 +98,22 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   GtkAccelGroup *group = gtk_accel_group_new ();
   GtkAccelKey    key_prev = {0}, key_next = {0};
 
+  gtk_window_set_title (GTK_WINDOW (dialog), _("Find"));
   gtk_window_set_default_size (GTK_WINDOW (dialog), 400, -1);
   gtk_window_add_accel_group (GTK_WINDOW (dialog), group);
 
+  xfce_titled_dialog_create_action_area (XFCE_TITLED_DIALOG (dialog));
+
   close_button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), close_button, GTK_RESPONSE_CLOSE);
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), close_button, GTK_RESPONSE_CLOSE);
   gtk_widget_set_can_default (close_button, TRUE);
 
   dialog->button_prev = xfce_gtk_button_new_mixed ("go-previous", _("_Previous"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
   gtk_widget_set_can_default (dialog->button_prev, TRUE);
 
   dialog->button_next = xfce_gtk_button_new_mixed ("go-next", _("_Next"));
-  gtk_dialog_add_action_widget (GTK_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
+  xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
 
   gtk_accel_map_lookup_entry ("<Actions>/terminal-window/search-prev", &key_prev);
   if (key_prev.accel_key != 0)
@@ -336,13 +339,7 @@ terminal_search_dialog_get_regex (TerminalSearchDialog  *dialog,
 void
 terminal_search_dialog_present (TerminalSearchDialog *dialog)
 {
-  GtkWidget *header_bar = gtk_header_bar_new ();
-
   terminal_return_if_fail (TERMINAL_IS_SEARCH_DIALOG (dialog));
-
-  gtk_header_bar_set_title (GTK_HEADER_BAR (header_bar), _("Find"));
-  gtk_header_bar_set_show_close_button (GTK_HEADER_BAR (header_bar), TRUE);
-  gtk_window_set_titlebar (GTK_WINDOW (dialog), header_bar);
 
   gtk_widget_show_all (GTK_WIDGET (dialog));
 
