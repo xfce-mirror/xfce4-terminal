@@ -1,3 +1,45 @@
+0.9.2
+======
+This is a RELEASE CANDIDATE for 1.0.0. If you want to help keep xfce4-terminal
+bug-free you can test this release and report any problems you encounter.
+
+DEPENDENCIES UPDATED:
+- VTE: 0.51.3
+- Xfce-libs: 4.16.0
+
+General Improvements:
+- Use XfceTitledDialog for `Find` (Issue #168)
+- Include '\r' in unsafe-paste checks
+- Update tab accelerators at runtime
+- Consume events that activate accelerator callbacks (Issues #159 #153)
+
+Shortcuts editor (depends on libxfce4ui 4.17): 
+- Center on the active terminal window.
+- Change handling of goto-tab accelerators so they can be changed through the editor.
+
+Regressions fixed:
+- Menubar changes size when the window is maximized (Issue #156)
+- Context Menu: Revert changes in order and contents introduced by the transition to XfceGtkActionEntries
+- Add "Show Window Borders" entry in View menu (it was missing in the last 2 dev releases)
+- Revert view menu order (Zoom entries below checkboxes)
+- Fix the visibility flag of the scrollbar (Issue #161, could lead to broken themes)
+
+Other:
+- Replace GTimeVal with gint64
+- Fix build warnings
+- Update Copyright
+
+Translation Updates:
+  Albanian, Arabic, Armenian (Armenia), Basque, Belarusian, Bulgarian,
+  Catalan, Chinese (China), Chinese (Taiwan), Croatian, Czech, Danish,
+  Dutch, Eastern Armenian, English (Australia), English (United
+  Kingdom), Estonian, Finnish, French, Galician, German, Greek, Hebrew,
+  Hungarian, Icelandic, Indonesian, Interlingue, Italian, Japanese,
+  Kazakh, Korean, Lithuanian, Malay, Norwegian Bokmål, Occitan (post
+  1500), Polish, Portuguese, Portuguese (Brazil), Romanian, Russian,
+  Serbian, Slovak, Slovenian, Spanish, Swedish, Thai, Turkish,
+  Ukrainian
+
 0.9.1
 ======
 This is a development release.
