@@ -175,7 +175,7 @@ main (int argc, char **argv)
   TerminalOptions  options;
   TerminalApp     *app;
   const gchar     *startup_id;
-  const gchar     *display;
+  GdkDisplay      *display;
   GError          *error = NULL;
   gchar          **nargv;
   gint             nargc;
@@ -273,11 +273,9 @@ main (int argc, char **argv)
     }
 
   /* append default display if given */
-  display = g_getenv ("WAYLAND_DISPLAY");
-  if (display == NULL)
-    display = g_getenv ("DISPLAY");
+  display = gdk_display_get_default ();
   if (G_LIKELY (display != NULL))
-    nargv[nargc++] = g_strdup_printf ("--default-display=%s", display);
+    nargv[nargc++] = g_strdup_printf ("--default-display=%s", gdk_display_get_name (display));
 
   /* append all given arguments */
   for (n = 1; n < argc; ++n)
