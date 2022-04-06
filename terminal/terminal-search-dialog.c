@@ -40,6 +40,12 @@ static void terminal_search_dialog_entry_icon_release (GtkWidget            *ent
                                                        GtkEntryIconPosition  icon_pos);
 static void terminal_search_dialog_entry_changed      (GtkWidget            *entry,
                                                        TerminalSearchDialog *dialog);
+static void terminal_search_dialog_entry_activated    (GtkWidget            *entry,
+                                                       TerminalSearchDialog *dialog);
+static void terminal_search_dialog_prev_activated     (GtkWidget            *button,
+                                                       TerminalSearchDialog *dialog);
+static void terminal_search_dialog_next_activated     (GtkWidget            *button,
+                                                       TerminalSearchDialog *dialog);
 
 
 struct _TerminalSearchDialogClass
@@ -55,6 +61,9 @@ struct _TerminalSearchDialog
 
   GtkWidget     *button_prev;
   GtkWidget     *button_next;
+
+  /* used to decide whether Return should activate Previous or Next when activating the entry field */
+  gboolean       search_previous;
 
   GtkWidget     *entry;
 
@@ -111,9 +120,13 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
   dialog->button_prev = xfce_gtk_button_new_mixed ("go-previous", _("_Previous"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
   gtk_widget_set_can_default (dialog->button_prev, TRUE);
+  g_signal_connect (G_OBJECT (dialog->button_prev), "clicked",
+                    G_CALLBACK (terminal_search_dialog_prev_activated), dialog);
 
   dialog->button_next = xfce_gtk_button_new_mixed ("go-next", _("_Next"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
+  g_signal_connect (G_OBJECT (dialog->button_next), "clicked",
+                    G_CALLBACK (terminal_search_dialog_next_activated), dialog);
 
   gtk_accel_map_lookup_entry ("<Actions>/terminal-window/search-prev", &key_prev);
   if (key_prev.accel_key != 0)
@@ -141,6 +154,11 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
       G_CALLBACK (terminal_search_dialog_entry_icon_release), NULL);
   g_signal_connect (G_OBJECT (dialog->entry), "changed",
       G_CALLBACK (terminal_search_dialog_entry_changed), dialog);
+  g_signal_connect (G_OBJECT (dialog->entry), "activate",
+                    G_CALLBACK (terminal_search_dialog_entry_activated), dialog);
+
+  /* in a terminal it makes sense to search the previous contents by default */
+  dialog->search_previous = TRUE;
 
   dialog->match_case = gtk_check_button_new_with_mnemonic (_("C_ase sensitive"));
   gtk_box_pack_start (GTK_BOX (vbox), dialog->match_case, FALSE, FALSE, 0);
@@ -256,6 +274,36 @@ terminal_search_dialog_entry_changed (GtkWidget            *entry,
 
   gtk_dialog_set_default_response (GTK_DIALOG (dialog),
     has_text ? TERMINAL_RESPONSE_SEARCH_PREV : GTK_RESPONSE_CLOSE);
+}
+
+
+
+static void
+terminal_search_dialog_entry_activated (GtkWidget            *entry,
+                                        TerminalSearchDialog *dialog)
+{
+  if (dialog->search_previous == FALSE)
+    gtk_widget_activate (GTK_WIDGET (dialog->button_next));
+  else
+    gtk_widget_activate (GTK_WIDGET (dialog->button_prev));
+}
+
+
+
+static void
+terminal_search_dialog_prev_activated (GtkWidget            *button,
+                                       TerminalSearchDialog *dialog)
+{
+  dialog->search_previous = TRUE;
+}
+
+
+
+static void
+terminal_search_dialog_next_activated (GtkWidget            *button,
+                                       TerminalSearchDialog *dialog)
+{
+  dialog->search_previous = FALSE;
 }
 
 
