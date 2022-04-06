@@ -543,7 +543,7 @@ terminal_widget_drag_data_received (GtkWidget        *widget,
         {
           str = g_string_new (NULL);
           ucs = gtk_selection_data_get_data (selection_data);
-          for (n = 0; n < gtk_selection_data_get_length (selection_data) / 2 && ucs[n] != '\n'; ++n)
+          for (n = 0; n < gtk_selection_data_get_length (selection_data) && ucs[n] != '\n'; ++n)
             g_string_append_unichar (str, ucs[n]);
           filename = g_filename_from_uri (str->str, NULL, NULL);
           if (filename != NULL)
