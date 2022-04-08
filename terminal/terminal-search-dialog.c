@@ -106,11 +106,11 @@ terminal_search_dialog_init (TerminalSearchDialog *dialog)
 
   close_button = xfce_gtk_button_new_mixed ("window-close", _("_Close"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), close_button, GTK_RESPONSE_CLOSE);
-  gtk_widget_set_can_default (close_button, TRUE);
 
   dialog->button_prev = xfce_gtk_button_new_mixed ("go-previous", _("_Previous"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), dialog->button_prev, TERMINAL_RESPONSE_SEARCH_PREV);
   gtk_widget_set_can_default (dialog->button_prev, TRUE);
+  gtk_widget_grab_default (dialog->button_prev);
 
   dialog->button_next = xfce_gtk_button_new_mixed ("go-next", _("_Next"));
   xfce_titled_dialog_add_action_widget (XFCE_TITLED_DIALOG (dialog), dialog->button_next, TERMINAL_RESPONSE_SEARCH_NEXT);
