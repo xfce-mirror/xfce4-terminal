@@ -257,6 +257,7 @@ terminal_widget_finalize (GObject *object)
 
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
+  g_object_unref (G_OBJECT (widget->accel_group));
 
   (*G_OBJECT_CLASS (terminal_widget_parent_class)->finalize) (object);
 }
