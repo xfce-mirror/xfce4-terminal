@@ -142,8 +142,8 @@ static const GtkTargetEntry targets[] =
 /* scroll down one line with "<Shift>Down" */
 static XfceGtkActionEntry action_entries[] =
 {
-        { TERMINAL_WIDGET_ACTION_SHIFT_UP,           "<Actions>/terminal-widget/shift-up",           "<shift>up",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),                           NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_up), },
-        { TERMINAL_WIDGET_ACTION_SHIFT_DOWN,         "<Actions>/terminal-widget/shift-down",         "<shift>down",                        XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"),                         NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_down), },
+    { TERMINAL_WIDGET_ACTION_SHIFT_UP,           "<Actions>/terminal-widget/shift-up",           "<shift>up",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),                           NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_up), },
+    { TERMINAL_WIDGET_ACTION_SHIFT_DOWN,         "<Actions>/terminal-widget/shift-down",         "<shift>down",                        XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"),                         NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_down), },
 };
 
 
@@ -227,13 +227,12 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-highlight-urls",
                             G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
-    widget->accel_group = gtk_accel_group_new ();
-    xfce_gtk_accel_map_add_entries (action_entries, G_N_ELEMENTS (action_entries));
-    xfce_gtk_accel_group_connect_action_entries (widget->accel_group,
-                                                 action_entries,
-                                                 G_N_ELEMENTS (action_entries),
-                                                 widget);
-
+  widget->accel_group = gtk_accel_group_new ();
+  xfce_gtk_accel_map_add_entries (action_entries, G_N_ELEMENTS (action_entries));
+  xfce_gtk_accel_group_connect_action_entries (widget->accel_group,
+                                               action_entries,
+                                               G_N_ELEMENTS (action_entries),
+                                               widget);
 
   /* apply the initial misc-highlight-urls setting */
   terminal_widget_update_highlight_urls (widget);
