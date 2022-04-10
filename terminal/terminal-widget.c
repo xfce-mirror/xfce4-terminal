@@ -142,7 +142,7 @@ static const GtkTargetEntry targets[] =
 /* scroll down one line with "<Shift>Down" */
 static XfceGtkActionEntry action_entries[] =
 {
-    { TERMINAL_WIDGET_ACTION_SHIFT_UP,           "<Actions>/terminal-widget/shift-up",           "<shift>up",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),                           NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_up), },
+    { TERMINAL_WIDGET_ACTION_SHIFT_UP,           "<Actions>/terminal-widget/shift-up",           "<shift>up",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),                           NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_up),   },
     { TERMINAL_WIDGET_ACTION_SHIFT_DOWN,         "<Actions>/terminal-widget/shift-down",         "<shift>down",                        XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"),                         NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_down), },
 };
 
@@ -692,42 +692,42 @@ terminal_widget_key_press_event (GtkWidget    *widget,
 static gboolean
 terminal_widget_action_shift_up (GtkWidget    *widget)
 {
-    gboolean       shift_arrows_scroll;
-    GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+  gboolean       shift_arrows_scroll;
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
 
-    terminal_return_val_if_fail(widget,FALSE);
+  terminal_return_val_if_fail(widget,FALSE);
 
-    g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
-                  "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
-                  NULL);
+  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
+                NULL);
 
 
-    if(G_UNLIKELY (shift_arrows_scroll))
+  if(G_UNLIKELY (shift_arrows_scroll))
     {
-        gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
+      gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
     }
-    return TRUE;
+  return TRUE;
 }
 
 static gboolean
 terminal_widget_action_shift_down (GtkWidget    *widget)
 {
-    GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
-    gboolean       shift_arrows_scroll;
-    gdouble        value;
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+  gboolean       shift_arrows_scroll;
+  gdouble        value;
 
-    terminal_return_val_if_fail(widget,FALSE);
-    g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
-                  "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
-                  NULL);
+  terminal_return_val_if_fail(widget,FALSE);
+  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
+                NULL);
 
 
-    if(G_UNLIKELY (shift_arrows_scroll))
+  if(G_UNLIKELY (shift_arrows_scroll))
     {
         value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
         gtk_adjustment_set_value (adjustment, value);
     }
-    return TRUE;
+  return TRUE;
 }
 
 
