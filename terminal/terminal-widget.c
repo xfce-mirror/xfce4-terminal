@@ -380,7 +380,7 @@ terminal_widget_context_menu (TerminalWidget *widget,
 
       /* prepend the "OPEN" menu item */
       g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-link"), g_strdup (match), g_free);
-      g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-tag"), g_memdup2 (&tag, sizeof (tag)), g_free);
+      g_object_set_data_full (G_OBJECT (item_open), I_("terminal-widget-tag"), g_memdup (&tag, sizeof (tag)), g_free);
       g_signal_connect_swapped (G_OBJECT (item_open), "activate", G_CALLBACK (terminal_widget_context_menu_open), widget);
       gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), item_open);
 
