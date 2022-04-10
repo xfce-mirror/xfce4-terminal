@@ -42,13 +42,9 @@ enum
   TARGET_MOZ_URL,
   TARGET_APPLICATION_X_COLOR,
   TARGET_GTK_NOTEBOOK_TAB,
-};
-
-enum
-{
   TERMINAL_WIDGET_ACTION_SHIFT_UP,
   TERMINAL_WIDGET_ACTION_SHIFT_DOWN
-}  TerminalWidgetAction;
+};
 
 typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
