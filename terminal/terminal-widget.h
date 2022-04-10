@@ -41,7 +41,7 @@ enum {
     TARGET_MOZ_URL,
     TARGET_APPLICATION_X_COLOR,
     TARGET_GTK_NOTEBOOK_TAB,
-}
+};
 
 enum
 {
