@@ -227,6 +227,7 @@ terminal_window_attr_parse (gint              argc,
   gint                n, short_offset = 0;
   gchar              *end_ptr = NULL;
   TerminalVisibility  visible;
+  gboolean            ignore_window_option = TRUE;
 
   win_attr = terminal_window_attr_new ();
   tab_attr = win_attr->tabs->data;
@@ -566,6 +567,16 @@ terminal_window_attr_parse (gint              argc,
         }
       else if (terminal_option_cmp ("window", 0, argc, argv, &n, NULL, &short_offset))
         {
+          /* --window is ignored if no tab has been added in the active window or no other window has been created.
+           * This way users can separate between adding tabs to the existing window and adding tabs to a single new window.
+           */
+          if (can_reuse_window == TRUE && ignore_window_option == TRUE)
+            {
+              ignore_window_option = FALSE;
+              can_reuse_window = FALSE;
+              continue;
+            }
+
           /* all new tabs will be added to new windows */
           can_reuse_window = FALSE;
 
