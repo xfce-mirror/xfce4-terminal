@@ -1,3 +1,22 @@
+1.0.1
+======
+Stable release fixing regressions and a couple of older bugs.
+
+- A new hidden preference `DropdownParametersOnce` has been introduced to control whether the drop-down
+  window accepts command line arguments after creation. With the introduction of this preference
+  an older bug was fixed where tabs could be added to the drop-down window even though they
+  weren't supposed to.
+- Options: --active-tab does not behave properly when adding tabs to existing windows.
+
+Regressions fixed:
+- Find dialog does not respond to Return key (Issue #176)
+- Dragging a URL from Chromium ends up truncated (Issue #180)
+- Toolbar size changes when the window is maximized (Issue #181).
+- Unable to create a single window with many tabs through command line options (Issue #182).
+
+Translation Updates:
+  Danish, Finnish, Greek, Russian, Turkish
+
 1.0.0
 ======
 Stable release including improvements introduced in versions 0.9.0, 0.9.1 and 0.9.2. 
