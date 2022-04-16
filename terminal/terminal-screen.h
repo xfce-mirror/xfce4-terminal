@@ -137,6 +137,8 @@ void            terminal_screen_set_custom_title_color    (TerminalScreen *scree
                                                            const gchar    *color);
 void            terminal_screen_send_signal               (TerminalScreen *screen,
                                                            int             signum);
+void            terminal_screen_widget_append_accels      (TerminalScreen *screen,
+                                                           GtkAccelGroup  *accel_group);
 
 G_END_DECLS
 
