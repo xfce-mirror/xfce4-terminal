@@ -3108,3 +3108,14 @@ terminal_screen_send_signal (TerminalScreen *screen,
   if (fgpid != -1 && fgpid != screen->pid)
     kill (fgpid, signum);
 }
+
+
+
+void
+terminal_screen_widget_append_accels (TerminalScreen *screen,
+                                        GtkAccelGroup  *accel_group)
+{
+  terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));
+
+  g_object_set (G_OBJECT (screen->terminal), "accel-group", accel_group, NULL);
+}
