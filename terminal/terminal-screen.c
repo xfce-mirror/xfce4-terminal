@@ -3112,7 +3112,7 @@ terminal_screen_send_signal (TerminalScreen *screen,
 
 
 void
-terminal_screen_widget_connect_accels (TerminalScreen *screen,
+terminal_screen_widget_append_accels (TerminalScreen *screen,
                                         GtkAccelGroup  *accel_group)
 {
   terminal_return_if_fail (TERMINAL_IS_SCREEN (screen));

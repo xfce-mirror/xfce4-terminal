@@ -475,7 +475,7 @@ terminal_window_init (TerminalWindow *window)
                                                window);
 
   gtk_window_add_accel_group (GTK_WINDOW (window), window->priv->accel_group);
-  terminal_screen_widget_connect_accels (TERMINAL_SCREEN (window->priv->active), window->priv->accel_group);
+  terminal_screen_widget_append_accels (TERMINAL_SCREEN (window->priv->active), window->priv->accel_group);
 
   window->menubar = gtk_menu_bar_new ();
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_FILE_MENU, G_CALLBACK (terminal_window_update_file_menu));
