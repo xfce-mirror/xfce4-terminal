@@ -46,8 +46,7 @@ enum
 
 enum
 {
-  PROP_WIDGET_0,
-  PROP_ACCEL_GROUP,
+  PROP_ACCEL_GROUP = 1,
   N_PROPERTIES
 };
 
