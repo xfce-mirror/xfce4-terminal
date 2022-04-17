@@ -87,32 +87,32 @@ static const TerminalRegexPattern regex_patterns[] =
 
 
 
-static void     terminal_widget_finalize                (GObject              *object);
-static void     terminal_widget_set_property            (GObject              *object,
-                                                         guint                 prop_id,
-                                                         const GValue         *value,
-                                                         GParamSpec           *pspec);
-static gboolean terminal_widget_button_press_event      (GtkWidget            *widget,
-                                                         GdkEventButton       *event);
-static void     terminal_widget_drag_data_received      (GtkWidget            *widget,
-                                                         GdkDragContext       *context,
-                                                         gint                  x,
-                                                         gint                  y,
-                                                         GtkSelectionData     *selection_data,
-                                                         guint                 info,
-                                                         guint                 time);
-static gboolean terminal_widget_key_press_event         (GtkWidget            *widget,
-                                                         GdkEventKey          *event);
-static gboolean terminal_widget_scroll_event            (GtkWidget            *widget,
-                                                         GdkEventScroll       *event);
-static void     terminal_widget_open_uri                (TerminalWidget       *widget,
-                                                         const gchar          *wlink,
-                                                         gint                  tag);
-static void     terminal_widget_update_highlight_urls   (TerminalWidget       *widget);
-static gboolean terminal_widget_action_shift_scroll     (GtkWidget            *widget,
-                                                         TerminalWidgetAction  action);
-static void     terminal_widget_connect_accelerators    (TerminalWidget       *widget);
-static void     terminal_widget_disconnect_accelerators (TerminalWidget       *widget);
+static void     terminal_widget_finalize                 (GObject          *object);
+static void     terminal_widget_set_property             (GObject          *object,
+                                                          guint             prop_id,
+                                                          const GValue     *value,
+                                                          GParamSpec       *pspec);
+static gboolean terminal_widget_button_press_event       (GtkWidget        *widget,
+                                                          GdkEventButton   *event);
+static void     terminal_widget_drag_data_received       (GtkWidget        *widget,
+                                                          GdkDragContext   *context,
+                                                          gint              x,
+                                                          gint              y,
+                                                          GtkSelectionData *selection_data,
+                                                          guint             info,
+                                                          guint             time);
+static gboolean terminal_widget_key_press_event          (GtkWidget        *widget,
+                                                          GdkEventKey      *event);
+static gboolean terminal_widget_scroll_event             (GtkWidget        *widget,
+                                                          GdkEventScroll   *event);
+static void     terminal_widget_open_uri                 (TerminalWidget   *widget,
+                                                          const gchar      *wlink,
+                                                          gint              tag);
+static void     terminal_widget_update_highlight_urls    (TerminalWidget   *widget);
+static gboolean terminal_widget_action_shift_scroll_up   (GtkWidget        *widget);
+static gboolean terminal_widget_action_shift_scroll_down (GtkWidget        *widget);
+static void     terminal_widget_connect_accelerators     (TerminalWidget   *widget);
+static void     terminal_widget_disconnect_accelerators  (TerminalWidget   *widget);
 
 
 
@@ -160,8 +160,8 @@ static const GtkTargetEntry targets[] =
 
 static XfceGtkActionEntry action_entries[] =
 {
-    { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll), },
-    { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll), },
+  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
+  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries, G_N_ELEMENTS(action_entries), id)
@@ -887,35 +887,25 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 
 
 static gboolean
-terminal_widget_action_shift_scroll (GtkWidget            *widget,
-                                     TerminalWidgetAction  action)
+terminal_widget_action_shift_scroll_up (GtkWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
-  gboolean       shift_arrows_scroll;
+
+  gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
+  return TRUE;
+}
+
+
+
+static gboolean
+terminal_widget_action_shift_scroll_down (GtkWidget *widget)
+{
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
   gdouble        value;
 
-  /* determine current settings */
-  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
-                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
-                NULL);
-
-  if (!G_UNLIKELY (shift_arrows_scroll))
-    return FALSE;
-
-  switch (action)
-    {
-      case TERMINAL_WIDGET_ACTION_SCROLL_UP:
-        gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
-        return TRUE;
-
-      case TERMINAL_WIDGET_ACTION_SCROLL_DOWN:
-        value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
-        gtk_adjustment_set_value (adjustment, value);
-        return TRUE;
-
-      default:
-        return FALSE;
-    }
+  value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+  gtk_adjustment_set_value (adjustment, value);
+  return TRUE;
 }
 
 

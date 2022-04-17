@@ -747,8 +747,6 @@ terminal_window_key_press_event (GtkWidget   *widget,
   TerminalWindow *window = TERMINAL_WINDOW (widget);
   const guint     modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
 
-  terminal_screen_widget_append_accels (TERMINAL_SCREEN (window->priv->active), window->priv->accel_group);
-
   /* support shortcuts that contain the Tab key
      Tab sometimes becomes ISO_Left_Tab (e.g. in Ctrl+Shift+Tab) so check both here */
   if (G_UNLIKELY (window->priv->tab_key_accels != NULL
@@ -1109,6 +1107,8 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
       terminal_screen_set_size (screen, w, h);
     }
+
+  terminal_screen_widget_append_accels (TERMINAL_SCREEN (child), window->priv->accel_group);
 
   /* update the go-to accelerators */
   terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
