@@ -475,7 +475,6 @@ terminal_window_init (TerminalWindow *window)
                                                window);
 
   gtk_window_add_accel_group (GTK_WINDOW (window), window->priv->accel_group);
-  terminal_screen_widget_append_accels (TERMINAL_SCREEN (window->priv->active), window->priv->accel_group);
 
   window->menubar = gtk_menu_bar_new ();
   terminal_window_create_menu (window, TERMINAL_WINDOW_ACTION_FILE_MENU, G_CALLBACK (terminal_window_update_file_menu));
@@ -747,6 +746,8 @@ terminal_window_key_press_event (GtkWidget   *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
   const guint     modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
+
+  terminal_screen_widget_append_accels (TERMINAL_SCREEN (window->priv->active), window->priv->accel_group);
 
   /* support shortcuts that contain the Tab key
      Tab sometimes becomes ISO_Left_Tab (e.g. in Ctrl+Shift+Tab) so check both here */
