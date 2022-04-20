@@ -1110,6 +1110,8 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_screen_set_size (screen, w, h);
     }
 
+  terminal_screen_widget_append_accels (TERMINAL_SCREEN (child), window->priv->accel_group);
+
   /* update the go-to accelerators */
   terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
 }
@@ -1558,6 +1560,8 @@ terminal_window_action_new_tab (TerminalWindow *window)
 
   terminal_window_add (window, terminal);
   terminal_screen_launch_child (terminal);
+
+  terminal_screen_widget_append_accels (terminal, window->priv->accel_group);
 
   return TRUE;
 }
