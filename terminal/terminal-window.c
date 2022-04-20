@@ -1046,6 +1046,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
       /* set charset for menu */
       encoding = terminal_screen_get_encoding (window->priv->active);
       terminal_encoding_action_set_charset (window->priv->encoding_action, encoding);
+      terminal_screen_widget_append_accels (active, window->priv->accel_group);
     }
 }
 
