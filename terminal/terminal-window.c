@@ -258,6 +258,8 @@ static void         terminal_window_update_tabs_menu              (TerminalWindo
                                                                    GtkWidget           *menu);
 static void         terminal_window_update_help_menu              (TerminalWindow      *window,
                                                                    GtkWidget           *menu);
+static gboolean     terminal_window_can_go_left                   (TerminalWindow      *window);
+static gboolean     terminal_window_can_go_right                  (TerminalWindow      *window);
 
 
 struct _TerminalWindowPrivate
@@ -1961,8 +1963,13 @@ terminal_window_action_zoom_reset (TerminalWindow *window)
 static gboolean
 terminal_window_action_prev_tab (TerminalWindow *window)
 {
-  terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
-  return TRUE;
+  if (terminal_window_can_go_left (window) == TRUE)
+    {
+      terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
+      return TRUE;
+    }
+  else
+    return FALSE;
 }
 
 
@@ -1970,8 +1977,13 @@ terminal_window_action_prev_tab (TerminalWindow *window)
 static gboolean
 terminal_window_action_next_tab (TerminalWindow *window)
 {
-  terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
-  return TRUE;
+  if (terminal_window_can_go_right (window) == TRUE)
+    {
+      terminal_window_switch_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
+      return TRUE;
+    }
+  else
+    return FALSE;
 }
 
 
@@ -1994,8 +2006,13 @@ terminal_window_action_last_active_tab (TerminalWindow *window)
 static gboolean
 terminal_window_action_move_tab_left (TerminalWindow *window)
 {
-  terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
-  return TRUE;
+  if (terminal_window_can_go_left (window) == TRUE)
+    {
+      terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), TRUE);
+      return TRUE;
+    }
+  else
+    return FALSE;
 }
 
 
@@ -2003,8 +2020,13 @@ terminal_window_action_move_tab_left (TerminalWindow *window)
 static gboolean
 terminal_window_action_move_tab_right (TerminalWindow *window)
 {
-  terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
-  return TRUE;
+  if (terminal_window_can_go_right (window) == TRUE)
+    {
+      terminal_window_move_tab (GTK_NOTEBOOK (window->priv->notebook), FALSE);
+      return TRUE;
+    }
+  else
+    return FALSE;
 }
 
 
@@ -3250,9 +3272,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
                                       GtkWidget           *menu)
 {
   GtkWidget  *item;
-  gint        page_num;
   gint        n_pages;
-  gboolean    cycle_tabs;
   gboolean    can_go_left;
   gboolean    can_go_right;
 
@@ -3267,14 +3287,9 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
 
   n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
-  page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active));
 
-  g_object_get (G_OBJECT (window->priv->preferences),
-                "misc-cycle-tabs", &cycle_tabs,
-                NULL);
-
-  can_go_left = (cycle_tabs && n_pages > 1) || (page_num > 0);
-  can_go_right = (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
+  can_go_left = terminal_window_can_go_left (window);
+  can_go_right = terminal_window_can_go_right (window);
 
   terminal_window_menu_clean (GTK_MENU (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREV_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
@@ -3367,6 +3382,50 @@ terminal_window_update_help_menu     (TerminalWindow      *window,
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ABOUT), G_OBJECT (window), GTK_MENU_SHELL (menu));
 
   gtk_widget_show_all (GTK_WIDGET (menu));
+}
+
+
+
+static gboolean
+terminal_window_can_go_left (TerminalWindow *window)
+{
+  gint        page_num;
+  gint        n_pages;
+  gboolean    cycle_tabs;
+
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+  page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active));
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "misc-cycle-tabs", &cycle_tabs,
+                NULL);
+
+  return (cycle_tabs && n_pages > 1) || (page_num > 0);
+}
+
+
+
+static gboolean
+terminal_window_can_go_right (TerminalWindow *window)
+{
+  gint        page_num;
+  gint        n_pages;
+  gboolean    cycle_tabs;
+
+
+  terminal_return_if_fail (TERMINAL_IS_WINDOW (window));
+
+  n_pages = gtk_notebook_get_n_pages (GTK_NOTEBOOK (window->priv->notebook));
+  page_num = gtk_notebook_page_num (GTK_NOTEBOOK (window->priv->notebook), GTK_WIDGET (window->priv->active));
+
+  g_object_get (G_OBJECT (window->priv->preferences),
+                "misc-cycle-tabs", &cycle_tabs,
+                NULL);
+
+  return (cycle_tabs && n_pages > 1) || (page_num < n_pages - 1);
 }
 
 
