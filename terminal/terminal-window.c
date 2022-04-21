@@ -2507,6 +2507,9 @@ terminal_window_do_close_tab (TerminalScreen *screen,
     }
 
   gtk_widget_destroy (GTK_WIDGET (screen));
+
+  /* reconnect the accels of the active terminal */
+  terminal_screen_widget_append_accels (window->priv->active, window->priv->accel_group);
 }
 
 
