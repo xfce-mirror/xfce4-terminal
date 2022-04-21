@@ -44,6 +44,12 @@ enum
   TARGET_GTK_NOTEBOOK_TAB
 };
 
+enum
+{
+  PROP_ACCEL_GROUP = 1,
+  N_PROPERTIES
+};
+
 typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
