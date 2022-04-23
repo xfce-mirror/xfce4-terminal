@@ -186,8 +186,11 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
   gtkwidget_class->button_press_event = terminal_widget_button_press_event;
   gtkwidget_class->drag_data_received = terminal_widget_drag_data_received;
   gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
+<<<<<<< HEAD
 
   xfce_gtk_translate_action_entries (action_entries, G_N_ELEMENTS (action_entries));
+=======
+>>>>>>> upstream/master
 
   /**
    * TerminalWidget::get-context-menu:
