@@ -103,8 +103,6 @@ static void     terminal_widget_drag_data_received       (GtkWidget        *widg
                                                           guint             time);
 static gboolean terminal_widget_key_press_event          (GtkWidget        *widget,
                                                           GdkEventKey      *event);
-static gboolean terminal_widget_scroll_event             (GtkWidget        *widget,
-                                                          GdkEventScroll   *event);
 static void     terminal_widget_open_uri                 (TerminalWidget   *widget,
                                                           const gchar      *wlink,
                                                           gint              tag);
