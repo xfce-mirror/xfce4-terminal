@@ -64,11 +64,11 @@ typedef enum
   PATTERN_TYPE_EMAIL
 } PatternType;
 
-typedef enum
+enum
 {
-  TERMINAL_WIDGET_ACTION_SCROLL_UP,
-  TERMINAL_WIDGET_ACTION_SCROLL_DOWN
-} TerminalWidgetAction;
+  PROP_ACCEL_GROUP = 1,
+  N_PROPERTIES
+};
 
 typedef struct
 {
@@ -88,6 +88,10 @@ static const TerminalRegexPattern regex_patterns[] =
 
 
 static void     terminal_widget_finalize                 (GObject          *object);
+static void     terminal_widget_set_property             (GObject          *object,
+                                                          guint             prop_id,
+                                                          const GValue     *value,
+                                                          GParamSpec       *pspec);
 static gboolean terminal_widget_button_press_event       (GtkWidget        *widget,
                                                           GdkEventButton   *event);
 static void     terminal_widget_drag_data_received       (GtkWidget        *widget,
@@ -103,13 +107,8 @@ static void     terminal_widget_open_uri                 (TerminalWidget   *widg
                                                           const gchar      *wlink,
                                                           gint              tag);
 static void     terminal_widget_update_highlight_urls    (TerminalWidget   *widget);
-
-static void     terminal_widget_set_property             (GObject          *object,
-                                                          guint             prop_id,
-                                                          const GValue     *value,
-                                                          GParamSpec       *pspec);
-static gboolean terminal_widget_action_shift_scroll_up   (GtkWidget        *widget);
-static gboolean terminal_widget_action_shift_scroll_down (GtkWidget        *widget);
+static gboolean terminal_widget_action_shift_scroll_up   (TerminalWidget   *widget);
+static gboolean terminal_widget_action_shift_scroll_down (TerminalWidget   *widget);
 static void     terminal_widget_connect_accelerators     (TerminalWidget   *widget);
 static void     terminal_widget_disconnect_accelerators  (TerminalWidget   *widget);
 
@@ -159,8 +158,8 @@ static const GtkTargetEntry targets[] =
 
 static XfceGtkActionEntry action_entries[] =
 {
-  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
-  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
+  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
+  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
 };
 
 #define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries, G_N_ELEMENTS(action_entries), id)
@@ -864,7 +863,7 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
 
 
 static gboolean
-terminal_widget_action_shift_scroll_up (GtkWidget *widget)
+terminal_widget_action_shift_scroll_up (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
 
@@ -875,7 +874,7 @@ terminal_widget_action_shift_scroll_up (GtkWidget *widget)
 
 
 static gboolean
-terminal_widget_action_shift_scroll_down (GtkWidget *widget)
+terminal_widget_action_shift_scroll_down (TerminalWidget *widget)
 {
   GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
   gdouble        value;
@@ -916,14 +915,10 @@ terminal_widget_disconnect_accelerators (TerminalWidget *widget)
   if (widget->accel_group == NULL)
     return;
 
-  /* Dont listen to the accel keys defined by the action entries any more */
+  /* Don't listen to the accel keys defined by the action entries any more */
   xfce_gtk_accel_group_disconnect_action_entries (widget->accel_group,
                                                   action_entries,
                                                   G_N_ELEMENTS (action_entries));
-
-  /* as well disconnect accelerators of derived widgets */
-  if (TERMINAL_WIDGET_GET_CLASS (widget)->disconnect_accelerators != NULL)
-    (*TERMINAL_WIDGET_GET_CLASS (widget)->disconnect_accelerators) (widget, widget->accel_group);
 
   /* and release the accel group */
   g_object_unref (widget->accel_group);
