@@ -2832,6 +2832,7 @@ terminal_screen_update_scrolling_bar (TerminalScreen *screen)
           gtk_widget_show (screen->scrollbar);
           break;
         }
+      gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (screen->swin), GTK_POLICY_NEVER, scrollbar != TERMINAL_SCROLLBAR_NONE ? GTK_POLICY_ALWAYS : GTK_POLICY_NEVER);
     }
   else if (visibility == TERMINAL_VISIBILITY_HIDE)
     {
