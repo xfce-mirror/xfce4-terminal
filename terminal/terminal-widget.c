@@ -98,7 +98,9 @@ static void     terminal_widget_open_uri              (TerminalWidget   *widget,
                                                        gint              tag);
 static void     terminal_widget_update_highlight_urls (TerminalWidget   *widget);
 
+static gboolean terminal_widget_action_shift_up        (GtkWidget       *widget);
 
+static gboolean terminal_widget_action_shift_down      (GtkWidget       *widget);
 
 struct _TerminalWidgetClass
 {
@@ -111,6 +113,7 @@ struct _TerminalWidget
 
   /*< private >*/
   TerminalPreferences *preferences;
+  GtkAccelGroup       *accel_group;
   gint                 regex_tags[G_N_ELEMENTS (regex_patterns)];
 };
 
@@ -134,6 +137,15 @@ static const GtkTargetEntry targets[] =
 };
 
 
+/* scroll down one line with "<Shift>Down" */
+static XfceGtkActionEntry action_entries[] =
+{
+    { TERMINAL_WIDGET_ACTION_SHIFT_UP,           "<Actions>/terminal-widget/shift-up",           "<shift>up",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),                           NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_up),   },
+    { TERMINAL_WIDGET_ACTION_SHIFT_DOWN,         "<Actions>/terminal-widget/shift-down",         "<shift>down",                        XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"),                         NULL,                           NULL,                           G_CALLBACK (terminal_widget_action_shift_down), },
+};
+
+
+#define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries,G_N_ELEMENTS(action_entries),id)
 
 G_DEFINE_TYPE (TerminalWidget, terminal_widget, VTE_TYPE_TERMINAL)
 
@@ -152,6 +164,8 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
   gtkwidget_class->button_press_event = terminal_widget_button_press_event;
   gtkwidget_class->drag_data_received = terminal_widget_drag_data_received;
   gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
+
+  xfce_gtk_translate_action_entries (action_entries, G_N_ELEMENTS (action_entries));
 
   /**
    * TerminalWidget::get-context-menu:
@@ -210,6 +224,13 @@ terminal_widget_init (TerminalWidget *widget)
   g_signal_connect_swapped (G_OBJECT (widget->preferences), "notify::misc-highlight-urls",
                             G_CALLBACK (terminal_widget_update_highlight_urls), widget);
 
+  widget->accel_group = gtk_accel_group_new ();
+  xfce_gtk_accel_map_add_entries (action_entries, G_N_ELEMENTS (action_entries));
+  xfce_gtk_accel_group_connect_action_entries (widget->accel_group,
+                                               action_entries,
+                                               G_N_ELEMENTS (action_entries),
+                                               widget);
+
   /* apply the initial misc-highlight-urls setting */
   terminal_widget_update_highlight_urls (widget);
 }
@@ -232,6 +253,7 @@ terminal_widget_finalize (GObject *object)
 
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
+  g_object_unref (G_OBJECT (widget->accel_group));
 
   (*G_OBJECT_CLASS (terminal_widget_parent_class)->finalize) (object);
 }
@@ -646,15 +668,11 @@ static gboolean
 terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
-  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
   gboolean       shortcuts_no_menukey;
-  gboolean       shift_arrows_scroll;
-  gdouble        value;
 
   /* determine current settings */
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
                 "shortcuts-no-menukey", &shortcuts_no_menukey,
-                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
                 NULL);
 
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
@@ -664,26 +682,50 @@ terminal_widget_key_press_event (GtkWidget    *widget,
       terminal_widget_context_menu (TERMINAL_WIDGET (widget), 0, event->time, (GdkEvent *) event);
       return TRUE;
     }
-  else if (G_UNLIKELY (shift_arrows_scroll))
-    {
-      /* scroll up one line with "<Shift>Up" */
-      if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up))
-        {
-          gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
-          return TRUE;
-        }
-      /* scroll down one line with "<Shift>Down" */
-      else if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down))
-        {
-          value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
-          gtk_adjustment_set_value (adjustment, value);
-          return TRUE;
-        }
-    }
 
   return (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->key_press_event) (widget, event);
 }
 
+static gboolean
+terminal_widget_action_shift_up (GtkWidget    *widget)
+{
+  gboolean       shift_arrows_scroll;
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+
+  terminal_return_val_if_fail(widget,FALSE);
+
+  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
+                NULL);
+
+
+  if(G_UNLIKELY (shift_arrows_scroll))
+    {
+      gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
+    }
+  return TRUE;
+}
+
+static gboolean
+terminal_widget_action_shift_down (GtkWidget    *widget)
+{
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+  gboolean       shift_arrows_scroll;
+  gdouble        value;
+
+  terminal_return_val_if_fail(widget,FALSE);
+  g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
+                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
+                NULL);
+
+
+  if(G_UNLIKELY (shift_arrows_scroll))
+    {
+        value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+        gtk_adjustment_set_value (adjustment, value);
+    }
+  return TRUE;
+}
 
 
 static void
