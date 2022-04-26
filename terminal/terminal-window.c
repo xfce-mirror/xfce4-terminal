@@ -298,8 +298,6 @@ struct _TerminalWindowPrivate
   TerminalVisibility   scrollbar_visibility;
   TerminalZoomLevel    zoom;
 
-  GSList              *tab_key_accels;
-
   /* if this is a TerminalWindowDropdown */
   guint                drop_down : 1;
 };
@@ -747,29 +745,8 @@ terminal_window_key_press_event (GtkWidget   *widget,
                                  GdkEventKey *event)
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
-  const guint     modifiers = event->state & gtk_accelerator_get_default_mod_mask ();
-
-  /* support shortcuts that contain the Tab key
-     Tab sometimes becomes ISO_Left_Tab (e.g. in Ctrl+Shift+Tab) so check both here */
-  if (G_UNLIKELY (window->priv->tab_key_accels != NULL
-                  && (event->keyval == GDK_KEY_Tab || event->keyval == GDK_KEY_ISO_Left_Tab)))
-    {
-      GSList *lp;
-      for (lp = window->priv->tab_key_accels; lp != NULL; lp = lp->next)
-        {
-          TerminalAccel *accel = lp->data;
-          if (accel->mods == modifiers)
-            {
-              guint length = strlen (accel->path);
-              for (unsigned long i = 0; i < sizeof (action_entries) / sizeof (XfceGtkActionEntry); i++)
-                {
-                  XfceGtkActionEntry entry = action_entries[i];
-                  if (strncmp (accel->path, entry.accel_path + strlen (entry.accel_path) - length, length) == 0)
-                    ((void (*) (TerminalWindow*))entry.callback) (window);
-                }
-            }
-        }
-    }
+  
+  // TODO
 
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
 }
@@ -3007,20 +2984,6 @@ terminal_window_action_show_menubar (TerminalWindow  *window)
     gtk_widget_hide (window->menubar);
 
   terminal_window_size_pop (window);
-}
-
-
-
-/**
- * terminal_window_update_tab_key_accels:
- * @window          : A #TerminalWindow.
- * @tab_key_accels  : A list of Tab key accelerators.
- **/
-void
-terminal_window_update_tab_key_accels (TerminalWindow *window,
-                                       GSList         *tab_key_accels)
-{
-  window->priv->tab_key_accels = tab_key_accels;
 }
 
 
