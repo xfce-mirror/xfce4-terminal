@@ -746,7 +746,8 @@ terminal_window_key_press_event (GtkWidget   *widget,
 {
   TerminalWindow *window = TERMINAL_WINDOW (widget);
   
-  // TODO
+  if (xfce_gtk_handle_tab_accels (event, window->priv->accel_group, window, action_entries, G_N_ELEMENTS (action_entries)) == TRUE)
+    return TRUE;
 
   return (*GTK_WIDGET_CLASS (terminal_window_parent_class)->key_press_event) (widget, event);
 }
