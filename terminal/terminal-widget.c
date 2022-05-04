@@ -64,6 +64,12 @@ typedef enum
   PATTERN_TYPE_EMAIL
 } PatternType;
 
+enum
+{
+  PROP_ACCEL_GROUP = 1,
+  N_PROPERTIES
+};
+
 typedef struct
 {
   const gchar *pattern;
@@ -81,28 +87,42 @@ static const TerminalRegexPattern regex_patterns[] =
 
 
 
-static void     terminal_widget_finalize              (GObject          *object);
-static gboolean terminal_widget_button_press_event    (GtkWidget        *widget,
-                                                       GdkEventButton   *event);
-static void     terminal_widget_drag_data_received    (GtkWidget        *widget,
-                                                       GdkDragContext   *context,
-                                                       gint              x,
-                                                       gint              y,
-                                                       GtkSelectionData *selection_data,
-                                                       guint             info,
-                                                       guint             time);
-static gboolean terminal_widget_key_press_event       (GtkWidget        *widget,
-                                                       GdkEventKey      *event);
-static void     terminal_widget_open_uri              (TerminalWidget   *widget,
-                                                       const gchar      *wlink,
-                                                       gint              tag);
-static void     terminal_widget_update_highlight_urls (TerminalWidget   *widget);
+static void     terminal_widget_finalize                 (GObject          *object);
+static void     terminal_widget_set_property             (GObject          *object,
+                                                          guint             prop_id,
+                                                          const GValue     *value,
+                                                          GParamSpec       *pspec);
+static gboolean terminal_widget_button_press_event       (GtkWidget        *widget,
+                                                          GdkEventButton   *event);
+static void     terminal_widget_drag_data_received       (GtkWidget        *widget,
+                                                          GdkDragContext   *context,
+                                                          gint              x,
+                                                          gint              y,
+                                                          GtkSelectionData *selection_data,
+                                                          guint             info,
+                                                          guint             time);
+static gboolean terminal_widget_key_press_event          (GtkWidget        *widget,
+                                                          GdkEventKey      *event);
+static void     terminal_widget_open_uri                 (TerminalWidget   *widget,
+                                                          const gchar      *wlink,
+                                                          gint              tag);
+static void     terminal_widget_update_highlight_urls    (TerminalWidget   *widget);
+static gboolean terminal_widget_action_shift_scroll_up   (TerminalWidget   *widget);
+static gboolean terminal_widget_action_shift_scroll_down (TerminalWidget   *widget);
+static void     terminal_widget_connect_accelerators     (TerminalWidget   *widget);
+static void     terminal_widget_disconnect_accelerators  (TerminalWidget   *widget);
 
 
 
 struct _TerminalWidgetClass
 {
   VteTerminalClass parent_class;
+
+  /* Connects widget-specific accelerators to the given accelGroup */
+  void (*connect_accelerators)    (TerminalWidget *widget, GtkAccelGroup *accel_group);
+
+  /* Disconnects widget-specific accelerators to the given accelGroup */
+  void (*disconnect_accelerators) (TerminalWidget *widget, GtkAccelGroup *accel_group);
 };
 
 struct _TerminalWidget
@@ -111,6 +131,7 @@ struct _TerminalWidget
 
   /*< private >*/
   TerminalPreferences *preferences;
+  GtkAccelGroup       *accel_group;
   gint                 regex_tags[G_N_ELEMENTS (regex_patterns)];
 };
 
@@ -135,6 +156,18 @@ static const GtkTargetEntry targets[] =
 
 
 
+static XfceGtkActionEntry action_entries[] =
+{
+  { TERMINAL_WIDGET_ACTION_SCROLL_UP,   "<Actions>/terminal-widget/shift-up",   "<Shift>Up",   XFCE_GTK_MENU_ITEM, N_ ("Misc Use Shift Arrows Up"),   NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_up),   },
+  { TERMINAL_WIDGET_ACTION_SCROLL_DOWN, "<Actions>/terminal-widget/shift-down", "<Shift>Down", XFCE_GTK_MENU_ITEM, N_ ("Misc Use Shift Arrows Down"), NULL, NULL, G_CALLBACK (terminal_widget_action_shift_scroll_down), },
+};
+
+#define get_action_entry(id) xfce_gtk_get_action_entry_by_id(action_entries, G_N_ELEMENTS(action_entries), id)
+
+static GParamSpec *terminal_widget_props[N_PROPERTIES] = { NULL, };
+
+
+
 G_DEFINE_TYPE (TerminalWidget, terminal_widget, VTE_TYPE_TERMINAL)
 
 
@@ -147,11 +180,14 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   gobject_class->finalize = terminal_widget_finalize;
+  gobject_class->set_property = terminal_widget_set_property;
 
   gtkwidget_class = GTK_WIDGET_CLASS (klass);
   gtkwidget_class->button_press_event = terminal_widget_button_press_event;
   gtkwidget_class->drag_data_received = terminal_widget_drag_data_received;
   gtkwidget_class->key_press_event    = terminal_widget_key_press_event;
+
+  xfce_gtk_translate_action_entries (action_entries, G_N_ELEMENTS (action_entries));
 
   /**
    * TerminalWidget::get-context-menu:
@@ -185,6 +221,15 @@ terminal_widget_class_init (TerminalWidgetClass *klass)
                   0, NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+
+  terminal_widget_props[PROP_ACCEL_GROUP] =
+    g_param_spec_object ("accel-group",
+                         "accel-group",
+                         "accel-group",
+                         GTK_TYPE_ACCEL_GROUP,
+                         G_PARAM_WRITABLE);
+
+  g_object_class_install_properties (gobject_class, N_PROPERTIES, terminal_widget_props);
 }
 
 
@@ -212,6 +257,8 @@ terminal_widget_init (TerminalWidget *widget)
 
   /* apply the initial misc-highlight-urls setting */
   terminal_widget_update_highlight_urls (widget);
+
+  widget->accel_group = NULL;
 }
 
 
@@ -233,7 +280,34 @@ terminal_widget_finalize (GObject *object)
   /* disconnect from the preferences */
   g_object_unref (G_OBJECT (widget->preferences));
 
+  /* disconnect accelerators */
+  terminal_widget_disconnect_accelerators (widget);
+
   (*G_OBJECT_CLASS (terminal_widget_parent_class)->finalize) (object);
+}
+
+
+
+static void
+terminal_widget_set_property (GObject      *object,
+                              guint         prop_id,
+                              const GValue *value,
+                              GParamSpec   *pspec)
+{
+  TerminalWidget *widget = TERMINAL_WIDGET (object);
+
+  switch (prop_id)
+    {
+    case PROP_ACCEL_GROUP:
+      terminal_widget_disconnect_accelerators (widget);
+      widget->accel_group = g_value_dup_object (value);
+      terminal_widget_connect_accelerators (widget);
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
 }
 
 
@@ -646,15 +720,11 @@ static gboolean
 terminal_widget_key_press_event (GtkWidget    *widget,
                                  GdkEventKey  *event)
 {
-  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
   gboolean       shortcuts_no_menukey;
-  gboolean       shift_arrows_scroll;
-  gdouble        value;
 
   /* determine current settings */
   g_object_get (G_OBJECT (TERMINAL_WIDGET (widget)->preferences),
                 "shortcuts-no-menukey", &shortcuts_no_menukey,
-                "misc-use-shift-arrows-to-scroll", &shift_arrows_scroll,
                 NULL);
 
   /* popup context menu if "Menu" or "<Shift>F10" is pressed */
@@ -663,22 +733,6 @@ terminal_widget_key_press_event (GtkWidget    *widget,
     {
       terminal_widget_context_menu (TERMINAL_WIDGET (widget), 0, event->time, (GdkEvent *) event);
       return TRUE;
-    }
-  else if (G_UNLIKELY (shift_arrows_scroll))
-    {
-      /* scroll up one line with "<Shift>Up" */
-      if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up))
-        {
-          gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
-          return TRUE;
-        }
-      /* scroll down one line with "<Shift>Down" */
-      else if ((event->state & GDK_SHIFT_MASK) != 0 && (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down))
-        {
-          value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
-          gtk_adjustment_set_value (adjustment, value);
-          return TRUE;
-        }
     }
 
   return (*GTK_WIDGET_CLASS (terminal_widget_parent_class)->key_press_event) (widget, event);
@@ -804,4 +858,69 @@ terminal_widget_update_highlight_urls (TerminalWidget *widget)
           vte_regex_unref (regex);
         }
     }
+}
+
+
+
+static gboolean
+terminal_widget_action_shift_scroll_up (TerminalWidget *widget)
+{
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+
+  gtk_adjustment_set_value (adjustment, gtk_adjustment_get_value (adjustment) - 1);
+  return TRUE;
+}
+
+
+
+static gboolean
+terminal_widget_action_shift_scroll_down (TerminalWidget *widget)
+{
+  GtkAdjustment *adjustment = gtk_scrollable_get_vadjustment (GTK_SCROLLABLE (widget));
+  gdouble        value;
+
+  value = MIN (gtk_adjustment_get_value (adjustment) + 1, gtk_adjustment_get_upper (adjustment) - gtk_adjustment_get_page_size (adjustment));
+  gtk_adjustment_set_value (adjustment, value);
+  return TRUE;
+}
+
+
+
+static void
+terminal_widget_connect_accelerators (TerminalWidget *widget)
+{
+  terminal_return_if_fail (TERMINAL_IS_WIDGET (widget));
+
+  if (widget->accel_group == NULL)
+    return;
+
+  xfce_gtk_accel_map_add_entries (action_entries, G_N_ELEMENTS (action_entries));
+  xfce_gtk_accel_group_connect_action_entries (widget->accel_group,
+                                               action_entries,
+                                               G_N_ELEMENTS (action_entries),
+                                               widget);
+
+  /* as well append accelerators of derived widgets */
+  if (TERMINAL_WIDGET_GET_CLASS (widget)->connect_accelerators != NULL)
+    (*TERMINAL_WIDGET_GET_CLASS (widget)->connect_accelerators) (widget, widget->accel_group);
+}
+
+
+
+static void
+terminal_widget_disconnect_accelerators (TerminalWidget *widget)
+{
+  terminal_return_if_fail (TERMINAL_IS_WIDGET (widget));
+
+  if (widget->accel_group == NULL)
+    return;
+
+  /* Don't listen to the accel keys defined by the action entries any more */
+  xfce_gtk_accel_group_disconnect_action_entries (widget->accel_group,
+                                                  action_entries,
+                                                  G_N_ELEMENTS (action_entries));
+
+  /* and release the accel group */
+  g_object_unref (widget->accel_group);
+  widget->accel_group = NULL;
 }
