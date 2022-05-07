@@ -765,7 +765,10 @@ terminal_window_key_press_event (GtkWidget   *widget,
                 {
                   XfceGtkActionEntry entry = action_entries[i];
                   if (strncmp (accel->path, entry.accel_path + strlen (entry.accel_path) - length, length) == 0)
-                    ((void (*) (TerminalWindow*))entry.callback) (window);
+                    {
+                      ((void (*) (TerminalWindow *)) entry.callback) (window);
+                      return TRUE;
+                    }
                 }
             }
         }
