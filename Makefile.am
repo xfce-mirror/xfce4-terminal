@@ -52,6 +52,7 @@ DISTCLEANFILES = \
 	intltool-extract \
 	intltool-merge \
 	intltool-update \
+	po/.intltool-merge-cache.lock \
 	$(desktop_DATA) \
 	$(xml_in_files) \
 	$(xml_DATA)
