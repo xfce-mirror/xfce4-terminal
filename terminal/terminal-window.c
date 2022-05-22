@@ -451,6 +451,7 @@ terminal_window_init (TerminalWindow *window)
   GdkScreen       *screen;
   GdkVisual       *visual;
   GtkStyleContext *context;
+  GtkToolItem     *item;
 
   window->priv = terminal_window_get_instance_private (window);
 
@@ -496,13 +497,18 @@ terminal_window_init (TerminalWindow *window)
   gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), gtk_separator_tool_item_new (), 5);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
   gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), gtk_separator_tool_item_new (), 7);
-  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
-  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
-  gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), gtk_separator_tool_item_new (), 10);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREV_TAB), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEXT_TAB), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
-  gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), gtk_separator_tool_item_new (), 13);
+  gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), gtk_separator_tool_item_new (), 10);
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
+  gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), gtk_separator_tool_item_new (), 12);
   xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CONTENTS), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
+  /* expand last separator */
+  item = gtk_separator_tool_item_new ();
+  gtk_separator_tool_item_set_draw (GTK_SEPARATOR_TOOL_ITEM (item), FALSE);
+  gtk_tool_item_set_expand (item, TRUE);
+  gtk_toolbar_insert (GTK_TOOLBAR (window->toolbar), item, 14);
+  xfce_gtk_tool_button_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), GTK_TOOLBAR (window->toolbar));
   gtk_widget_show_all (window->toolbar);
 
   window->priv->vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
