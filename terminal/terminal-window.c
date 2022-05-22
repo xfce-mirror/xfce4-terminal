@@ -1465,22 +1465,22 @@ terminal_window_get_context_menu (TerminalScreen  *screen,
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_TAB), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   terminal_window_menu_add_section (window, context_menu, MENU_SECTION_COPY | MENU_SECTION_PASTE, FALSE);
 
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_MENUBAR), G_OBJECT (window), gtk_widget_is_visible (window->menubar), GTK_MENU_SHELL (context_menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), window->is_fullscreen, GTK_MENU_SHELL (context_menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), !terminal_screen_get_input_enabled (window->priv->active), GTK_MENU_SHELL (context_menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   terminal_window_menu_add_section (window, context_menu, MENU_SECTION_ZOOM | MENU_SECTION_SIGNAL, TRUE);
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (context_menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (context_menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (context_menu));
 
   /* hide labels */
   children = gtk_container_get_children (GTK_CONTAINER (context_menu));
@@ -3112,7 +3112,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
           g_signal_connect_data (G_OBJECT (item), "activate", G_CALLBACK (terminal_window_action_send_signal), p, terminal_util_free_data, G_CONNECT_SWAPPED);
           gtk_menu_shell_append (GTK_MENU_SHELL (insert_to_menu), item);
         }
-      xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+      xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     }
 
   if (sections & MENU_SECTION_ZOOM)
@@ -3124,7 +3124,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_OUT), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, window->priv->zoom != TERMINAL_ZOOM_LEVEL_MINIMUM);
       xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_ZOOM_RESET), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
-      xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+      xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     }
 
   if (sections & MENU_SECTION_COPY)
@@ -3135,7 +3135,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_HTML), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, terminal_screen_has_selection (window->priv->active));
-      xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+      xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     }
 
   if (sections & MENU_SECTION_PASTE)
@@ -3146,7 +3146,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       gtk_widget_set_sensitive (item, terminal_screen_get_input_enabled (window->priv->active));
       item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PASTE_SELECTION), G_OBJECT (window), GTK_MENU_SHELL (insert_to_menu));
       gtk_widget_set_sensitive (item, terminal_screen_get_input_enabled (window->priv->active));
-      xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+      xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     }
 
   if (sections & MENU_SECTION_VIEW)
@@ -3157,7 +3157,7 @@ terminal_window_menu_add_section (TerminalWindow      *window,
       xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_TOOLBAR), G_OBJECT (window), gtk_widget_is_visible (window->toolbar), GTK_MENU_SHELL (insert_to_menu));
       xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHOW_BORDERS), G_OBJECT (window), gtk_window_get_decorated (GTK_WINDOW (window)), GTK_MENU_SHELL (insert_to_menu));
       xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_FULLSCREEN), G_OBJECT (window), window->is_fullscreen, GTK_MENU_SHELL (insert_to_menu));
-      xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+      xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
     }
 
 #undef AS_SUBMENU
@@ -3185,10 +3185,10 @@ terminal_window_update_file_menu (TerminalWindow      *window,
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_NEW_WINDOW), G_OBJECT (window), GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_UNDO_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, !g_queue_is_empty (window->priv->closed_tabs_list));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_DETACH_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, n_pages > 1);
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_CLOSE_OTHER_TABS), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, n_pages > 1);
@@ -3208,9 +3208,9 @@ terminal_window_update_edit_menu     (TerminalWindow      *window,
   terminal_window_menu_clean (GTK_MENU (menu));
   terminal_window_menu_add_section (window, menu, MENU_SECTION_COPY | MENU_SECTION_PASTE, FALSE);
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SELECT_ALL), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_COPY_INPUT), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_PREFERENCES), G_OBJECT (window), GTK_MENU_SHELL (menu));
 #if LIBXFCE4UI_CHECK_VERSION (4, 17, 2)
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SHORTCUTS), G_OBJECT (window), GTK_MENU_SHELL (menu));
@@ -3248,25 +3248,25 @@ terminal_window_update_terminal_menu (TerminalWindow      *window,
   terminal_window_menu_clean (GTK_MENU (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SET_TITLE), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SET_TITLE_COLOR), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   can_search = terminal_screen_search_has_gregex (window->priv->active);
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH), G_OBJECT (window), GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH_NEXT), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_search);
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SEARCH_PREV), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_search);
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
 
   /* Set Encoding uses the TerminalAction, GtkAction, therefore it is deprecated */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   gtk_menu_shell_append (GTK_MENU_SHELL (menu), gtk_action_create_menu_item (window->priv->encoding_action));
 G_GNUC_END_IGNORE_DEPRECATIONS
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_READ_ONLY), G_OBJECT (window), !terminal_screen_get_input_enabled (window->priv->active), GTK_MENU_SHELL (menu));
   xfce_gtk_toggle_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SCROLL_ON_OUTPUT), G_OBJECT (window), terminal_screen_get_scroll_on_output (window->priv->active), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_SAVE_CONTENTS), G_OBJECT (window), GTK_MENU_SHELL (menu));
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   terminal_window_menu_add_section (window, menu, MENU_SECTION_SIGNAL, TRUE);
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_RESET), G_OBJECT (window), GTK_MENU_SHELL (menu));
   xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_RESET_AND_CLEAR), G_OBJECT (window), GTK_MENU_SHELL (menu));
@@ -3307,7 +3307,7 @@ terminal_window_update_tabs_menu     (TerminalWindow      *window,
   gtk_widget_set_sensitive (item, can_go_right);
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_LAST_ACTIVE_TAB), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, window->priv->last_active != NULL);
-  xfce_gtk_menu_append_seperator (GTK_MENU_SHELL (menu));
+  xfce_gtk_menu_append_separator (GTK_MENU_SHELL (menu));
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_LEFT), G_OBJECT (window), GTK_MENU_SHELL (menu));
   gtk_widget_set_sensitive (item, can_go_left);
   item = xfce_gtk_menu_item_new_from_action_entry (get_action_entry (TERMINAL_WINDOW_ACTION_MOVE_TAB_RIGHT), G_OBJECT (window), GTK_MENU_SHELL (menu));
