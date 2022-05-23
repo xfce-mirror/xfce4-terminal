@@ -1051,6 +1051,7 @@ terminal_window_notebook_page_switched (GtkNotebook     *notebook,
       /* set charset for menu */
       encoding = terminal_screen_get_encoding (window->priv->active);
       terminal_encoding_action_set_charset (window->priv->encoding_action, encoding);
+      terminal_screen_widget_append_accels (active, window->priv->accel_group);
     }
 }
 
@@ -1112,6 +1113,8 @@ terminal_window_notebook_page_added (GtkNotebook    *notebook,
       terminal_window_dropdown_get_size (TERMINAL_WINDOW_DROPDOWN (window), screen, &w, &h);
       terminal_screen_set_size (screen, w, h);
     }
+
+  terminal_screen_widget_append_accels (TERMINAL_SCREEN (child), window->priv->accel_group);
 
   /* update the go-to accelerators */
   terminal_window_update_tabs_menu (window, window->priv->tabs_menu);
@@ -2522,6 +2525,9 @@ terminal_window_do_close_tab (TerminalScreen *screen,
     }
 
   gtk_widget_destroy (GTK_WIDGET (screen));
+
+  /* reconnect the accels of the active terminal */
+  terminal_screen_widget_append_accels (window->priv->active, window->priv->accel_group);
 }
 
 

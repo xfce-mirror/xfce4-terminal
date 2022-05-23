@@ -44,6 +44,12 @@ enum
   TARGET_GTK_NOTEBOOK_TAB
 };
 
+typedef enum
+{
+  TERMINAL_WIDGET_ACTION_SCROLL_UP,
+  TERMINAL_WIDGET_ACTION_SCROLL_DOWN
+} TerminalWidgetAction;
+
 typedef struct _TerminalWidget      TerminalWidget;
 typedef struct _TerminalWidgetClass TerminalWidgetClass;
 
