@@ -88,6 +88,10 @@ static const TerminalRegexPattern regex_patterns[] =
 
 
 static void     terminal_widget_finalize                 (GObject          *object);
+static void     terminal_widget_set_property             (GObject          *object,
+                                                          guint             prop_id,
+                                                          const GValue     *value,
+                                                          GParamSpec       *pspec);
 static gboolean terminal_widget_button_press_event       (GtkWidget        *widget,
                                                           GdkEventButton   *event);
 static void     terminal_widget_drag_data_received       (GtkWidget        *widget,
@@ -103,10 +107,6 @@ static void     terminal_widget_open_uri                 (TerminalWidget   *widg
                                                           const gchar      *wlink,
                                                           gint              tag);
 static void     terminal_widget_update_highlight_urls    (TerminalWidget   *widget);
-static void     terminal_widget_set_property             (GObject          *object,
-                                                          guint             prop_id,
-                                                          const GValue     *value,
-                                                          GParamSpec       *pspec);
 static gboolean terminal_widget_action_shift_scroll_up   (TerminalWidget   *widget);
 static gboolean terminal_widget_action_shift_scroll_down (TerminalWidget   *widget);
 static void     terminal_widget_connect_accelerators     (TerminalWidget   *widget);
