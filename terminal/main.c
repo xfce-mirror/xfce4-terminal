@@ -229,17 +229,17 @@ main (int argc, char **argv)
       usage ();
       return EXIT_SUCCESS;
     }
-  else if (G_UNLIKELY (options.show_preferences))
-    {
-      GtkWidget *dialog;
-      gtk_init (&argc, &argv);
-      dialog = terminal_preferences_dialog_new (TRUE, FALSE);
-      g_signal_connect_after (G_OBJECT (dialog), "destroy",
-          G_CALLBACK (gtk_main_quit), NULL);
-      gtk_window_present (GTK_WINDOW (dialog));
-      gtk_main ();
-      return EXIT_SUCCESS;
-    }
+  // else if (G_UNLIKELY (options.show_preferences))
+  //   {
+  //     GtkWidget *dialog;
+  //     gtk_init (&argc, &argv);
+  //     dialog = terminal_preferences_dialog_new (app->window);
+  //     g_signal_connect_after (G_OBJECT (dialog), "destroy",
+  //         G_CALLBACK (gtk_main_quit), NULL);
+  //     gtk_window_present (GTK_WINDOW (dialog));
+  //     gtk_main ();
+  //     return EXIT_SUCCESS;
+  //   }
 
   /* create a copy of the standard arguments with our additional stuff */
   nargv = g_new (gchar*, argc + 5); nargc = 0;
