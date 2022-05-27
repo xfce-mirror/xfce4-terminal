@@ -1795,7 +1795,7 @@ terminal_window_action_prefs (TerminalWindow *window)
 {
   if (window->priv->preferences_dialog == NULL)
     {
-      window->priv->preferences_dialog = terminal_preferences_dialog_new (window->priv->drop_down, window->priv->drop_down);
+      window->priv->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
       if (G_LIKELY (window->priv->preferences_dialog != NULL))
         {
           window->priv->n_child_windows++;
@@ -2819,7 +2819,7 @@ terminal_window_get_notebook (TerminalWindow *window)
 GtkWidget*
 terminal_window_get_preferences_dialog (TerminalWindow *window)
 {
-  return window->priv->preferences_dialog;
+  return terminal_preferences_dialog_new(GTK_WINDOW (window));
 }
 
 
@@ -3398,4 +3398,12 @@ terminal_window_get_action_entry (TerminalWindow      *window,
                                   TerminalWindowAction action)
 {
   return (XfceGtkActionEntry*) get_action_entry (action);
+}
+
+
+
+XfceGtkActionEntry*
+terminal_window_get_action_entries (void)
+{
+  return action_entries;
 }
