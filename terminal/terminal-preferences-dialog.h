@@ -36,8 +36,7 @@ typedef struct _TerminalPreferencesDialog      TerminalPreferencesDialog;
 
 GType      terminal_preferences_dialog_get_type (void) G_GNUC_CONST;
 
-GtkWidget *terminal_preferences_dialog_new      (gboolean show_drop_down,
-                                                 gboolean drop_down_mode);
+GtkWidget *terminal_preferences_dialog_new      (GtkWindow *parent);
 
 G_END_DECLS
 
