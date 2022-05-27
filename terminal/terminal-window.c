@@ -333,7 +333,7 @@ static XfceGtkActionEntry action_entries[] =
     { TERMINAL_WINDOW_ACTION_PASTE_SELECTION_ALT,   "<Actions>/terminal-window/paste-selection-alt",   "",                          XFCE_GTK_MENU_ITEM,       N_ ("Paste _Selection Alt"),          NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_paste_selection), },
     { TERMINAL_WINDOW_ACTION_SELECT_ALL,            "<Actions>/terminal-window/select-all",            "<control><shift>a",         XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Select _All"),                   NULL,                                     "edit-select-all",        G_CALLBACK (terminal_window_action_select_all), },
     { TERMINAL_WINDOW_ACTION_COPY_INPUT,            "<Actions>/terminal-window/copy-input",            "",                          XFCE_GTK_MENU_ITEM,       N_ ("Copy _Input To All Tabs..."),    NULL,                                     NULL,                     G_CALLBACK (terminal_window_action_copy_input), },
-    { TERMINAL_WINDOW_ACTION_PREFERENCES,           "<Actions>/terminal-window/preferences",           "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Pr_eferences..."),               N_ ("Open the preferences dialog"),       "preferences-system",     G_CALLBACK (terminal_window_action_prefs), },
+    { TERMINAL_WINDOW_ACTION_PREFERENCES,           "<Actions>/terminal-window/preferences",           "<control><shift>x",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Pr_eferences..."),               N_ ("Open the preferences dialog"),       "preferences-system",     G_CALLBACK (terminal_window_action_prefs), },
     { TERMINAL_WINDOW_ACTION_SHORTCUTS,             "<Actions>/TerminalWindow/shortcuts",              "",                          XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Short_cuts..."),                 N_ ("Open the shortcuts dialog"),         "",                       G_CALLBACK (terminal_window_action_shortcuts), },
     { TERMINAL_WINDOW_ACTION_VIEW_MENU,             "<Actions>/terminal-window/view-menu",             "",                          XFCE_GTK_MENU_ITEM,       N_ ("_View"),                         NULL,                                     NULL,                     NULL, },
     { TERMINAL_WINDOW_ACTION_ZOOM_IN,               "<Actions>/terminal-window/zoom-in",               "<control>plus",             XFCE_GTK_IMAGE_MENU_ITEM, N_ ("Zoom _In"),                      N_ ("Zoom in with larger font"),          "zoom-in",                G_CALLBACK (terminal_window_action_zoom_in), },
@@ -1820,7 +1820,7 @@ terminal_window_action_prefs (TerminalWindow *window)
 {
   if (window->priv->preferences_dialog == NULL)
     {
-      window->priv->preferences_dialog = terminal_preferences_dialog_new (window->priv->drop_down, window->priv->drop_down);
+      window->priv->preferences_dialog = terminal_preferences_dialog_new (GTK_WINDOW (window));
       if (G_LIKELY (window->priv->preferences_dialog != NULL))
         {
           window->priv->n_child_windows++;
@@ -3437,4 +3437,12 @@ terminal_window_get_action_entry (TerminalWindow      *window,
                                   TerminalWindowAction action)
 {
   return (XfceGtkActionEntry*) get_action_entry (action);
+}
+
+
+
+XfceGtkActionEntry*
+terminal_window_get_action_entries (void)
+{
+  return action_entries;
 }
