@@ -55,9 +55,9 @@ static void      terminal_preferences_dialog_reset_compatibility_options (GtkWid
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_reset_double_click_select   (GtkWidget                  *button,
                                                                           TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_opacity_changed             (GtkScale                   *scale,
-                                                                          TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_image_shading_changed       (GtkScale                   *scale,
+                                                                          TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_opacity_changed             (GtkScale                   *scale,
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_background_notify           (GObject                    *object,
                                                                           GParamSpec                 *pspec,
@@ -196,6 +196,16 @@ terminal_preferences_dialog_reset_double_click_select (GtkWidget                
 
 
 static gboolean
+transform_combo_show_image_options (GBinding     *binding,
+                                      const GValue *src_value,
+                                      GValue       *dst_value,
+                                      gpointer      user_data)
+{
+  COMBO_SHOW_OPTIONS(1, src_value, dst_value);
+}
+
+
+static gboolean
 transform_combo_show_opacity_options (GBinding     *binding,
                                       const GValue *src_value,
                                       GValue       *dst_value,
@@ -206,13 +216,21 @@ transform_combo_show_opacity_options (GBinding     *binding,
 
 
 
-static gboolean
-transform_combo_show_image_options (GBinding     *binding,
-                                      const GValue *src_value,
-                                      GValue       *dst_value,
-                                      gpointer      user_data)
+#define SAVE_SCALE_VALUE(button, dialog, property) \
+  G_STMT_START { \
+  gdouble value; \
+  value = gtk_range_get_value (GTK_RANGE (button)); \
+  g_object_set (G_OBJECT (dialog->preferences), property, \
+                value, NULL); \
+  } G_STMT_END \
+
+
+
+static void
+terminal_preferences_dialog_image_shading_changed (GtkScale                  *button,
+                                                   TerminalPreferencesDialog *dialog)
 {
-  COMBO_SHOW_OPTIONS(2, src_value, dst_value);
+  SAVE_SCALE_VALUE(button, dialog, "background-image-shading");
 }
 
 
@@ -221,22 +239,7 @@ static void
 terminal_preferences_dialog_opacity_changed (GtkScale                  *button,
                                              TerminalPreferencesDialog *dialog)
 {
-  gdouble value;
-  value = gtk_range_get_value (GTK_RANGE (button));
-  g_object_set (G_OBJECT (dialog->preferences), "background-darkness",
-                value, NULL);
-}
-
-
-
-static void
-terminal_preferences_dialog_image_shading_changed (GtkScale                  *button,
-                                                   TerminalPreferencesDialog *dialog)
-{
-  GValue value = { 0, };
-  g_value_init (&value, G_TYPE_DOUBLE);
-  g_value_set_double (&value, gtk_range_get_value (GTK_RANGE (button)));
-  g_object_set_property (G_OBJECT (dialog->preferences), "background-image-shading", &value);
+  SAVE_SCALE_VALUE(button, dialog, "background-darkness");
 }
 
 
@@ -1190,6 +1193,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
 
+  /* free value */
+  g_value_unset (&value);
+
 
   /* image options */
   frame = g_object_new (GTK_TYPE_FRAME, "border-width", 0, "shadow-type", GTK_SHADOW_NONE, NULL);
@@ -1277,6 +1283,9 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_set_hexpand (button, TRUE);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
+
+  /* free value */
+  g_value_unset (&value);
 
 
   /* section: Opening new windows */
