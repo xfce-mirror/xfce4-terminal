@@ -55,15 +55,17 @@ static void      terminal_preferences_dialog_reset_compatibility_options (GtkWid
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_reset_double_click_select   (GtkWidget                  *button,
                                                                           TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_opacity_changed             (GtkScale                   *scale,
+                                                                          TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_image_shading_changed       (GtkScale                   *scale,
+                                                                          TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_background_notify           (GObject                    *object,
                                                                           GParamSpec                 *pspec,
                                                                           GObject                    *widget);
 static void      terminal_preferences_dialog_background_set              (GtkFileChooserButton       *widget,
                                                                           TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_image_shading_changed       (GtkScale                   *scale,
-                                                                          TerminalPreferencesDialog  *dialog);
-static void      terminal_preferences_dialog_opacity_changed             (GtkScale                   *scale,
-                                                                          TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_encoding_changed            (GtkComboBox               *combobox,
+                                                                          TerminalPreferencesDialog *dialog);
 gint             terminal_preferences_dialog_geometry_get_rows           (TerminalPreferencesDialog  *dialog);
 gint             terminal_preferences_dialog_geometry_get_columns        (TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_geometry_rows_changed       (GtkSpinButton              *button,
@@ -76,6 +78,9 @@ static gboolean  terminal_preferences_dialog_presets_sepfunc             (GtkTre
 static void      terminal_preferences_dialog_presets_changed             (GtkComboBox                *combobox,
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_preferences_dialog_presets_load                (GtkComboBox                *button,
+                                                                          TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_palette_notify              (TerminalPreferencesDialog  *dialog);
+static void      terminal_preferences_dialog_palette_changed             (GtkColorButton             *button,
                                                                           TerminalPreferencesDialog  *dialog);
 static void      terminal_gtk_label_set_a11y_relation                    (GtkLabel                   *label,
                                                                           GtkWidget                  *widget);
@@ -93,7 +98,10 @@ struct _TerminalPreferencesDialog
   XfceTitledDialog     __parent__;
   TerminalPreferences *preferences;
 
+  GtkColorButton      *buttons[16];
+
   gulong               bg_image_signal_id;
+  gulong               palette_signal_id;
 };
 
 enum
@@ -174,35 +182,26 @@ terminal_preferences_dialog_reset_double_click_select (GtkWidget                
 
 
 
+#define COMBO_SHOW_OPTIONS(id, src_value, dst_value) \
+  G_STMT_START { \
+  gint     active_id; \
+  gboolean show = FALSE; \
+  active_id = g_value_get_int (src_value); \
+  if (G_UNLIKELY (active_id == id)) \
+    show = TRUE; \
+  g_value_set_boolean (dst_value, show); \
+  return TRUE; \
+  } G_STMT_END \
+
+
+
 static gboolean
 transform_combo_show_opacity_options (GBinding     *binding,
                                       const GValue *src_value,
                                       GValue       *dst_value,
                                       gpointer      user_data)
 {
-  gint     active_id;
-  gboolean show = FALSE;
-
-  active_id = g_value_get_int (src_value);
-
-  if (G_UNLIKELY (active_id == 2))
-    show = TRUE;
-  
-  g_value_set_boolean (dst_value, show);
-
-  return TRUE;
-}
-
-
-
-static void
-terminal_preferences_dialog_opacity_changed (GtkScale                  *button,
-                                             TerminalPreferencesDialog *dialog)
-{
-  GValue value = { 0, };
-  g_value_init (&value, G_TYPE_DOUBLE);
-  g_value_set_double (&value, gtk_range_get_value (GTK_RANGE (button)));
-  g_object_set_property (G_OBJECT (dialog->preferences), "background-darkness", &value);
+  COMBO_SHOW_OPTIONS(2, src_value, dst_value);
 }
 
 
@@ -213,17 +212,19 @@ transform_combo_show_image_options (GBinding     *binding,
                                       GValue       *dst_value,
                                       gpointer      user_data)
 {
-  gint     active_id;
-  gboolean show = FALSE;
+  COMBO_SHOW_OPTIONS(2, src_value, dst_value);
+}
 
-  active_id = g_value_get_int (src_value);
 
-  if (G_UNLIKELY (active_id == 1))
-    show = TRUE;
-  
-  g_value_set_boolean (dst_value, show);
 
-  return TRUE;
+static void
+terminal_preferences_dialog_opacity_changed (GtkScale                  *button,
+                                             TerminalPreferencesDialog *dialog)
+{
+  gdouble value;
+  value = gtk_range_get_value (GTK_RANGE (button));
+  g_object_set (G_OBJECT (dialog->preferences), "background-darkness",
+                value, NULL);
 }
 
 
@@ -309,17 +310,25 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
 
 
 
+#define GET_GEOMETRY(axis, value) \
+  G_STMT_START { \
+  gchar   *geometry; \
+  gchar  **split; \
+  g_object_get (G_OBJECT (dialog->preferences), "misc-default-geometry", &geometry, NULL); \
+  split = g_strsplit (geometry, "x", -1); \
+  *value = atoi (split[axis]); \
+  g_strfreev (split); \
+  g_free (geometry); \
+  } G_STMT_END 
+
+
+
 gint
 terminal_preferences_dialog_geometry_get_rows (TerminalPreferencesDialog *dialog)
 {
-  GValue   value = { 0, };
-  gchar  **split;
-  g_value_init (&value, G_TYPE_STRING);
-
-  g_object_get_property (G_OBJECT (dialog->preferences), "misc-default-geometry", &value);
-  split = g_strsplit (g_value_get_string (&value), "x", -1);
-
-  return atoi(split[1]); 
+  gint value;
+  GET_GEOMETRY(1, &value);
+  return value;
 }
 
 
@@ -327,14 +336,9 @@ terminal_preferences_dialog_geometry_get_rows (TerminalPreferencesDialog *dialog
 gint
 terminal_preferences_dialog_geometry_get_columns (TerminalPreferencesDialog *dialog)
 {
-  GValue   value = { 0, };
-  gchar  **split;
-  g_value_init (&value, G_TYPE_STRING);
-
-  g_object_get_property (G_OBJECT (dialog->preferences), "misc-default-geometry", &value);
-  split = g_strsplit (g_value_get_string (&value), "x", -1);
-
-  return atoi(split[0]); 
+  gint value;
+  GET_GEOMETRY(0, &value);
+  return value;
 }
 
 
@@ -343,19 +347,19 @@ static void
 terminal_preferences_dialog_geometry_rows_changed (GtkSpinButton             *button,
                                                    TerminalPreferencesDialog *dialog)
 {
-  GValue   value = { 0, };
-  gint     rows;
-  gchar   *str;
-  gchar  **split;
-  g_value_init (&value, G_TYPE_STRING);
+  gint   rows;
+  gint   cols;
+  gchar *geo;
 
-  g_object_get_property (G_OBJECT (dialog->preferences), "misc-default-geometry", &value);
-  split = g_strsplit (g_value_get_string (&value), "x", -1);
   rows = gtk_spin_button_get_value_as_int (button);
-  str = g_strdup_printf ("%sx%d", split[0], rows);
-  g_value_take_string (&value, str);
+  GET_GEOMETRY(0, &cols);
 
-  g_object_set_property (G_OBJECT (dialog->preferences), "misc-default-geometry", &value);
+  geo = g_strdup_printf ("%dx%d", cols, rows);
+
+  g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry",
+                geo, NULL);
+
+  g_free (geo);
 }
 
 
@@ -364,19 +368,19 @@ static void
 terminal_preferences_dialog_geometry_columns_changed (GtkSpinButton             *button,
                                                       TerminalPreferencesDialog *dialog)
 {
-  GValue   value = { 0, };
-  gint     cols;
-  gchar   *str;
-  gchar  **split;
-  g_value_init (&value, G_TYPE_STRING);
+  gint   rows;
+  gint   cols;
+  gchar *geo;
 
-  g_object_get_property (G_OBJECT (dialog->preferences), "misc-default-geometry", &value);
-  split = g_strsplit (g_value_get_string (&value), "x", -1);
   cols = gtk_spin_button_get_value_as_int (button);
-  str = g_strdup_printf ("%dx%s", cols, split[1]);
-  g_value_take_string (&value, str);
+  GET_GEOMETRY(1, &rows);
 
-  g_object_set_property (G_OBJECT (dialog->preferences), "misc-default-geometry", &value);
+  geo = g_strdup_printf ("%dx%d", cols, rows);
+
+  g_object_set (G_OBJECT (dialog->preferences), "misc-default-geometry",
+                geo, NULL);
+
+  g_free (geo);
 }
 
 
@@ -486,7 +490,6 @@ terminal_preferences_dialog_presets_load (GtkComboBox               *button,
 {
   gchar       **global, **user, **presets;
   guint         n_global, n_user, n_presets = 0, n;
-  GObject      *object;
   XfceRc       *rc;
   GtkListStore *store;
   GtkTreeIter   iter;
@@ -572,11 +575,74 @@ terminal_preferences_dialog_presets_load (GtkComboBox               *button,
   g_strfreev (user);
   g_free (presets);
 
+  /* TODO: should we hide the presets ? we could still load, eh ? */
   if (n_presets == 0)
     {
       /* hide frame + combo */
       gtk_widget_hide (GTK_WIDGET (button));
     }
+}
+
+
+
+static void
+terminal_preferences_dialog_palette_notify (TerminalPreferencesDialog *dialog)
+{
+  gchar   *color_str;
+  gchar  **colors;
+  guint    i;
+  GdkRGBA  color;
+
+  g_object_get (dialog->preferences, "color-palette", &color_str, NULL);
+  if (G_LIKELY (color_str != NULL))
+    {
+      /* make array */
+      colors = g_strsplit (color_str, ";", -1);
+      g_free (color_str);
+
+      /* apply values to buttons */
+      if (colors != NULL)
+        for (i = 0; i < 16 && colors[i] != NULL; i++)
+          {
+            if (gdk_rgba_parse (&color, colors[i]))
+              gtk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
+          }
+
+      g_strfreev (colors);
+    }
+}
+
+
+
+static void
+terminal_preferences_dialog_palette_changed (GtkColorButton            *button,
+                                             TerminalPreferencesDialog *dialog)
+{
+  guint    i;
+  GdkRGBA  color;
+  gchar   *color_str;
+  GString *array;
+
+  array = g_string_sized_new (225);
+
+  for (i = 0; i < 16; i++)
+    {
+      gtk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog->buttons[i]), &color);
+
+      /* append to string */
+      color_str = gdk_rgba_to_string (&color);
+      g_string_append (array, color_str);
+      g_free (color_str);
+
+      if (i != 15)
+        g_string_append_c (array, ';');
+    }
+
+  /* set property */
+  g_signal_handler_block (dialog->preferences, dialog->palette_signal_id);
+  g_object_set (dialog->preferences, "color-palette", array->str, NULL);
+  g_signal_handler_unblock (dialog->preferences, dialog->palette_signal_id);
+  g_string_free (array, TRUE);
 }
 
 
@@ -651,6 +717,8 @@ static void
 terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 {
   GtkFileFilter *filter;
+  GtkTreeModel  *model;
+  GtkTreeIter    current_iter;
   GtkWidget     *notebook;
   GtkWidget     *button;
   GtkWidget     *image;
@@ -663,8 +731,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   GtkWidget     *background_grid;
   GtkWidget     *entry;
   GtkWidget     *combo;
-  GtkTreeModel  *model;
-  GtkTreeIter    current_iter;
   gchar         *current;
   GValue         value = { 0, };
   gint           row = 0;
@@ -1258,7 +1324,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_spin_button_set_value (GTK_SPIN_BUTTON (button), terminal_preferences_dialog_geometry_get_columns (dialog));
   g_signal_connect (button, "value-changed",
                     G_CALLBACK (terminal_preferences_dialog_geometry_columns_changed), dialog);
-  /* TODO: Bind Object */
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 1, row, 1, 1);
   gtk_widget_show (button);
@@ -1272,7 +1337,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_spin_button_set_value (GTK_SPIN_BUTTON (button), terminal_preferences_dialog_geometry_get_rows (dialog));
   g_signal_connect (button, "value-changed",
                     G_CALLBACK (terminal_preferences_dialog_geometry_rows_changed), dialog);
-  /* TODO: Bind Object */
   gtk_widget_set_halign (button, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), button, 3, row, 1, 1);
   gtk_widget_show (button);
@@ -1500,17 +1564,24 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   /* section: Palette */
   terminal_preferences_dialog_new_section(&frame, &vbox, &grid, &label, &row, "Palette");
 
-  for ( ; row < 2; row++)
+  for (gint i = 0; i < 16; i++)
     {
-      for (int col = 0; col < 8; col++)
-        {
-          button = gtk_color_button_new ();
-          /* TODO: Binding */
-          gtk_widget_set_halign (button, GTK_ALIGN_START);
-          gtk_grid_attach (GTK_GRID (grid), button, col, row, 1, 1);
-          gtk_widget_show (button);
-        }
+      row = i / 8;
+      button = gtk_color_button_new ();
+      g_signal_connect (button, "color-set",
+                        G_CALLBACK (terminal_preferences_dialog_palette_changed), dialog);
+      gtk_widget_set_halign (button, GTK_ALIGN_START);
+      gtk_grid_attach (GTK_GRID (grid), button, i % 8, row, 1, 1);
+      gtk_widget_show (button);
+      dialog->buttons[i] = GTK_COLOR_BUTTON (button);
     }
+
+  dialog->palette_signal_id = g_signal_connect_swapped (G_OBJECT (dialog->preferences), "notify::color-palette",
+                                                        G_CALLBACK (terminal_preferences_dialog_palette_notify), dialog);
+  terminal_preferences_dialog_palette_notify (dialog);
+
+  /* next row */
+  row++;
 
   button = gtk_check_button_new_with_mnemonic (_("_Show bold text in bright colors:"));
   g_object_bind_property (G_OBJECT (dialog->preferences), "color-bold-is-bright",
@@ -1526,8 +1597,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   combo = gtk_combo_box_text_new ();
   terminal_preferences_dialog_presets_load (GTK_COMBO_BOX (combo), dialog);
-  /* TODO: add presets */
-  /* TODO: bind object */
   gtk_widget_set_halign (combo, GTK_ALIGN_START);
   gtk_grid_attach (GTK_GRID (grid), combo, 0, row, 1, 1);
   gtk_widget_show (combo);
@@ -1890,5 +1959,5 @@ terminal_preferences_dialog_response (GtkDialog *dialog,
 GtkWidget*
 terminal_preferences_dialog_new (GtkWindow *parent)
 {
-  return  g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
+  return g_object_new (TERMINAL_TYPE_PREFERENCES_DIALOG, NULL);
 }
