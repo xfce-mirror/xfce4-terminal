@@ -233,7 +233,8 @@ main (int argc, char **argv)
     {
       GtkWidget *dialog;
       gtk_init (&argc, &argv);
-      dialog = terminal_preferences_dialog_new (TRUE, FALSE);
+      /* TODO */   
+      dialog = terminal_preferences_dialog_new (TRUE, TRUE);
       g_signal_connect_after (G_OBJECT (dialog), "destroy",
           G_CALLBACK (gtk_main_quit), NULL);
       gtk_window_present (GTK_WINDOW (dialog));
