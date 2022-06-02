@@ -224,13 +224,16 @@ transform_combo_show_opacity_options (GBinding     *binding,
 
 
 
-#define SAVE_SCALE_VALUE(button, dialog, property) \
-  G_STMT_START { \
-  gdouble value; \
-  value = gtk_range_get_value (GTK_RANGE (button)); \
-  g_object_set (G_OBJECT (dialog->preferences), property, \
-                value, NULL); \
-  } G_STMT_END \
+static void
+terminal_preferences_dialog_save_scale_value (GtkScale                  *button,
+                                              TerminalPreferencesDialog *dialog,
+                                              const gchar               *property)
+{
+  gdouble value;
+  value = gtk_range_get_value (GTK_RANGE (button));
+  g_object_set (G_OBJECT (dialog->preferences), property,
+                value, NULL);
+}
 
 
 
@@ -238,7 +241,7 @@ static void
 terminal_preferences_dialog_image_shading_changed (GtkScale                  *scale,
                                                    TerminalPreferencesDialog *dialog)
 {
-  SAVE_SCALE_VALUE(scale, dialog, "background-image-shading");
+  terminal_preferences_dialog_save_scale_value (scale, dialog, "background-image-shading");
 }
 
 
@@ -247,7 +250,7 @@ static void
 terminal_preferences_dialog_opacity_changed (GtkScale                  *scale,
                                              TerminalPreferencesDialog *dialog)
 {
-  SAVE_SCALE_VALUE(scale, dialog, "background-darkness");
+  terminal_preferences_dialog_save_scale_value (scale, dialog, "background-darkness");
 }
 
 
@@ -322,7 +325,8 @@ terminal_preferences_dialog_encoding_changed (GtkComboBox               *combobo
 
 
 static gint
-terminal_preferences_dialog_get_geometry (gint axis, TerminalPreferencesDialog *dialog)
+terminal_preferences_dialog_get_geometry (gint                       axis,
+                                          TerminalPreferencesDialog *dialog)
 {
   gint    value;
   gchar  *geometry;
@@ -1647,16 +1651,6 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
 
   /* section: General */
   terminal_preferences_dialog_new_section (&frame, &vbox, &grid, &label, &row, "General");
-
-  /* is this needed ? by default cliking on a gtk-color-button will pop up a color select dialog. */
-  label = gtk_label_new ("Note: Ctrl + Click for color editor.");
-  gtk_label_set_xalign (GTK_LABEL (label), 0.0f);
-  gtk_widget_set_hexpand (label, TRUE);
-  gtk_grid_attach (GTK_GRID (grid), label, 0, row, 6, 1);
-  gtk_widget_show (label);
-
-  /* next row */
-  row++;
 
   label = gtk_label_new ("Text Color:");
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
