@@ -596,7 +596,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
-  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-width", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
@@ -621,7 +621,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
-  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 10, 100, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-height", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
@@ -671,7 +671,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_grid_attach (GTK_GRID (grid), label, 0, row, 1, 1);
   gtk_widget_show (label);
 
-  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
+  button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 500, 1);
   gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-animation-time", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
@@ -718,8 +718,13 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
-  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-position", &value);
+  gtk_scale_add_mark (GTK_SCALE (button), 0, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 25, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 50, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 75, GTK_POS_BOTTOM, NULL);
+  gtk_scale_add_mark (GTK_SCALE (button), 100, GTK_POS_BOTTOM, NULL);
+  gtk_scale_set_draw_value (GTK_SCALE (button), FALSE);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
   g_signal_connect_swapped (button, "value-changed",
                             G_CALLBACK (terminal_preferences_dialog_dropdown_position_changed), dialog);
@@ -743,7 +748,7 @@ terminal_preferences_dialog_init (TerminalPreferencesDialog *dialog)
   gtk_widget_show (label);
 
   button = gtk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL, 0, 100, 1);
-  gtk_scale_set_value_pos (GTK_SCALE (button), GTK_POS_RIGHT);
+  gtk_scale_set_draw_value (GTK_SCALE (button), FALSE);
   g_object_get_property (G_OBJECT (dialog->preferences), "dropdown-position-vertical", &value);
   gtk_range_set_value (GTK_RANGE (button), g_value_get_uint (&value));
   g_signal_connect_swapped (button, "value-changed",
