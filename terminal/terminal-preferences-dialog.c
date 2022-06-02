@@ -2180,7 +2180,7 @@ terminal_preferences_dialog_presets_load (TerminalPreferencesDialog *dialog,
 
       /* default item + separator */
       gtk_list_store_insert_with_values (store, &iter, 0,
-                                         PRESET_COLUMN_TITLE, _("Switch Preset"),
+                                         PRESET_COLUMN_TITLE, _("Select Preset"),
                                          -1);
       gtk_list_store_insert_with_values (store, NULL, 1,
                                          PRESET_COLUMN_IS_SEPARATOR, TRUE,
