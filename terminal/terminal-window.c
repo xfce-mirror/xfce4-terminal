@@ -3399,3 +3399,11 @@ terminal_window_get_action_entry (TerminalWindow      *window,
 {
   return (XfceGtkActionEntry*) get_action_entry (action);
 }
+
+
+
+XfceGtkActionEntry*
+terminal_window_get_action_entries (void)
+{
+  return action_entries;
+}
